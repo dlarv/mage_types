@@ -1,3 +1,7 @@
 - [x] Make basic ranged attack.
-- [ ] Add melee transmutation calculation.
+- [x] Add melee transmutation calculation.
+- [ ] Upon self reaction, make secondary type None.
 - [ ] Apply damage.
+- [ ] Using the same type attack twice in a row => transmutation.
+- [ ] Mana system design.
+- [ ] Element aesthetics.

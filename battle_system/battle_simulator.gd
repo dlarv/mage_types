@@ -94,7 +94,8 @@ func _on_team_using_attack(attack: Attack, team_index: int):
 	await perform_transmutations(target, attack, target_name, target_sprite)
 	
 	# If melee attack, calculate user's transmutations
-	# TODO
+	if attack.range == Attack.AttackRange.MELEE:
+		await perform_transmutations(user, attack, user_name, user_sprite)
 	
 	# Advance turn
 	if team_index == 0:
@@ -115,7 +116,7 @@ func calculate_damage(attacker: BattleActor.Fighter, defender: BattleActor.Fight
 	# i.e. a water-type would get stab for fire-type moves.
 	# var stab_exp = MatchupManager.get_matchup(attacker.primary_element, attack.element).modifier \
 		# + MatchupManager.get_matchup(attacker.secondary_element, attack.element).modifier
-	var stab_exp = int(attack.primary_element == attack.element) + int(attack.secondary_element == attack.element)
+	var stab_exp = int(attacker.primary_element == attack.element) + int(attacker.secondary_element == attack.element)
 	stab_exp += max(0, MatchupManager.get_matchup(attacker.primary_element, attack.element).modifier) 
 	stab_exp += max(0, MatchupManager.get_matchup(attacker.secondary_element, attack.element).modifier) 
 	var stab = pow(2, stab_exp)
@@ -129,10 +130,13 @@ func calculate_damage(attacker: BattleActor.Fighter, defender: BattleActor.Fight
 
 func perform_transmutations(target: BattleActor.Fighter, attack: Attack, name: String, sprite: TextureRect):
 	var mutations = calculate_transmutations(target, attack)
-	if not mutations[0].is_empty():
 
+	target.transmute(mutations[0], mutations[1])
+	sprite.texture = target.sprite.texture
+	if not mutations[0].is_empty():
 		await player_control.show_message( \
-			"Opponent's %s type reacted with the attack's %s type to form %s!" % [
+			"%s's %s type reacted with the attack's %s type to form %s!" % [
+				name,
 				target.primary_element.type_name.to_upper(),
 				attack.element.type_name.to_upper(),
 				mutations[0].element.type_name.to_upper()
@@ -145,8 +149,6 @@ func perform_transmutations(target: BattleActor.Fighter, attack: Attack, name: S
 				attack.element.type_name.to_upper(),
 				mutations[1].element.type_name.to_upper()
 			])
-	target.transmute(mutations[0], mutations[1])
-	sprite.texture = target.sprite.texture
 	
 	# Calc if target's new types react with themselves
 	var self_reaction = MatchupManager.get_matchup(target.primary_element, target.secondary_element)
