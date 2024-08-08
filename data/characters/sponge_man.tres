@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://cvxrhmbglpbwp"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://0belhw0jfvhe"]
 
-[ext_resource type="Resource" path="res://data/attacks/green1.tres" id="1_0de3l"]
 [ext_resource type="Script" path="res://data/battle_actor_res.gd" id="1_3c8co"]
+[ext_resource type="Resource" uid="uid://c6yk4lapugofi" path="res://data/attacks/red_ranged.tres" id="1_os6dn"]
 
 [resource]
 script = ExtResource("1_3c8co")
 actor_name = "Sponge Man"
 element1 = "Red"
 element2 = "None"
-attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_0de3l")])
+attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_os6dn")])
 hp = 1000
 attack = 10
 defense = 10

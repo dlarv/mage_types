@@ -1,21 +1,22 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://blvmu14eje405"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=11 format=3 uid="uid://dnwm4gqlh4eh0"]
 
-[ext_resource type="Resource" path="res://data/attacks/blue1.tres" id="1_4xcfq"]
-[ext_resource type="Resource" path="res://data/attacks/cyan1.tres" id="2_48je7"]
+[ext_resource type="Resource" uid="uid://bt4kefmisbo1o" path="res://data/attacks/blue_melee.tres" id="1_4xcfq"]
+[ext_resource type="Resource" uid="uid://bjigydgmx175j" path="res://data/attacks/cyan_melee.tres" id="2_a0yx0"]
 [ext_resource type="Script" path="res://data/battle_actor_res.gd" id="2_ii2su"]
-[ext_resource type="Resource" path="res://data/attacks/green1.tres" id="3_fvlf6"]
-[ext_resource type="Resource" path="res://data/attacks/magenta1.tres" id="4_ack3m"]
-[ext_resource type="Resource" path="res://data/attacks/orange1.tres" id="5_1jdgj"]
-[ext_resource type="Resource" path="res://data/attacks/purple1.tres" id="7_ketfo"]
-[ext_resource type="Resource" path="res://data/attacks/red1.tres" id="8_oxstk"]
-[ext_resource type="Resource" path="res://data/attacks/yellow1.tres" id="9_e6j1p"]
+[ext_resource type="Resource" path="res://data/attacks/green_melee.tres" id="3_hk3qb"]
+[ext_resource type="Resource" path="res://data/attacks/yellow_melee.tres" id="3_yyyyy"]
+[ext_resource type="Resource" path="res://data/attacks/red_melee.tres" id="3_yyyyz"]
+[ext_resource type="Resource" path="res://data/attacks/purple_melee.tres" id="3_yyyzz"]
+[ext_resource type="Resource" path="res://data/attacks/orange_melee.tres" id="3_yyzzz"]
+[ext_resource type="Resource" path="res://data/attacks/magenta_melee.tres" id="3_yzzzz"]
+[ext_resource type="Resource" uid="uid://m7aw0kkqbl3a" path="res://data/attacks/blue_ranged.tres" id="9_wtce2"]
 
 [resource]
 script = ExtResource("2_ii2su")
 actor_name = "Big Man"
 element1 = "Red"
 element2 = "Green"
-attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_4xcfq"), ExtResource("2_48je7"), ExtResource("3_fvlf6"), ExtResource("4_ack3m"), ExtResource("5_1jdgj"), ExtResource("7_ketfo"), ExtResource("8_oxstk"), ExtResource("9_e6j1p")])
+attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_4xcfq"), ExtResource("2_a0yx0"), ExtResource("3_hk3qb"), ExtResource("3_yyyyy"), ExtResource("3_yzzzz"), ExtResource("3_yyzzz"), ExtResource("3_yyyzz"), ExtResource("3_yyyyz"), ExtResource("9_wtce2")])
 hp = 500
 attack = 20
 defense = 20

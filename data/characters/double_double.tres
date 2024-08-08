@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://ddimax7ebe78n"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://bxnemvte2dbkh"]
 
-[ext_resource type="Resource" path="res://data/attacks/green1.tres" id="1_b8otk"]
+[ext_resource type="Resource" uid="uid://c6yk4lapugofi" path="res://data/attacks/red_ranged.tres" id="1_6dw0o"]
 [ext_resource type="Script" path="res://data/battle_actor_res.gd" id="2_mywos"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("2_mywos")
 actor_name = "Double Double"
 element1 = "Red"
 element2 = "Cyan"
-attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_b8otk")])
+attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_6dw0o")])
 hp = 1000
 attack = 10
 defense = 10

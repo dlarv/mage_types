@@ -3,7 +3,7 @@ extends Node
 @export var battle_actors: Array[BattleActor]
 
 func _ready():
-	print("here")
+	pass
 	
 
 func get_battle_actor(id):

@@ -203,7 +203,7 @@ func _on_character_selected(button: Button):
 	var character = control.character
 	character_display.display(character)
 	_displayed_character = control
-
+	
 
 func _on_start_battle_button_pressed():
 	var team1 = []

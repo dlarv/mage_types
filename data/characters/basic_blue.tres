@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://pxdyp3ohq1yo"]
 
-[ext_resource type="Resource" uid="uid://bwotcps80m73i" path="res://data/attacks/blue1.tres" id="1_3xtep"]
+[ext_resource type="Resource" uid="uid://rdh30gtrt8jx" path="res://data/attacks/blue_melee.tres" id="1_3xtep"]
 [ext_resource type="Script" path="res://data/battle_actor_res.gd" id="2_kh3h2"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("2_kh3h2")
 actor_name = "Basic Blue"
 element1 = "Blue"
 element2 = ""
-attacks = Array[Resource("res://data/attack_resource.gd")]([ExtResource("1_3xtep")])
+attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_3xtep")])
 hp = 50
 attack = 10
 defense = 10

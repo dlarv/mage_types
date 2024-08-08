@@ -17,6 +17,9 @@ opponent_control = NodePath("OpponentControl")
 opponent_sprite = NodePath("OpponentGUI/MarginContainer/VBoxContainer/TextureRect")
 opponent_health_bar = NodePath("OpponentGUI/MarginContainer/VBoxContainer/HealthBar")
 
+[node name="OpponentControl" type="Node" parent="."]
+script = ExtResource("4_h43h7")
+
 [node name="OpponentGUI" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="OpponentGUI"]
@@ -47,12 +50,9 @@ size_flags_vertical = 8
 
 [node name="PlayerGUI" parent="." instance=ExtResource("3_5mgaf")]
 
-[node name="OpponentControl" type="Node" parent="."]
-script = ExtResource("4_h43h7")
-
-[connection signal="actor_selected" from="PlayerGUI" to="." method="_on_team_switching_actor"]
-[connection signal="attack_selected" from="PlayerGUI" to="." method="_on_team_using_attack"]
 [connection signal="actor_selected" from="OpponentControl" to="." method="_on_team_switching_actor"]
 [connection signal="attack_selected" from="OpponentControl" to="." method="_on_team_using_attack"]
+[connection signal="actor_selected" from="PlayerGUI" to="." method="_on_team_switching_actor"]
+[connection signal="attack_selected" from="PlayerGUI" to="." method="_on_team_using_attack"]
 
 [editable path="PlayerGUI"]

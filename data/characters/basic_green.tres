@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://data/battle_actor_res.gd" id="1_pv0qb"]
-[ext_resource type="Resource" uid="uid://c0row1xodoilf" path="res://data/attacks/green1.tres" id="1_u6t63"]
+[ext_resource type="Resource" uid="uid://c0row1xodoilf" path="res://data/attacks/green_melee.tres" id="1_u6t63"]
 
 [resource]
 script = ExtResource("1_pv0qb")

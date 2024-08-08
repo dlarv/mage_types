@@ -34,6 +34,8 @@ func _ready():
 			child.set_coord(row_index, col_index)
 		row_index += 1
 
+	_on_load_button_pressed("res://elemental_system/matchup_data_files/default.txt")
+
 func _on_matchup_selected(row: int, col: int, element: int, effect: int, mod: int):
 	var element1 = elements[row]
 	var element2 = elements[col]
@@ -43,6 +45,7 @@ func _on_matchup_selected(row: int, col: int, element: int, effect: int, mod: in
 	
 	MatchupManager.add_matchup(element1, element2, element3, effect, mod)
 
+
 func _on_save_button_pressed():
 	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	file_dialog.show()
@@ -50,10 +53,11 @@ func _on_save_button_pressed():
 	MatchupManager.write_to_file(path)
 
 
-func _on_load_button_pressed():
-	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
-	file_dialog.show()
-	var path = await file_dialog.file_selected
+func _on_load_button_pressed(path=null):
+	if path == null:
+		file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+		file_dialog.show()
+		path = await file_dialog.file_selected
 
 	MatchupManager.load_from_file(path)
 	

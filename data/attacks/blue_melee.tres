@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=2 format=3 uid="uid://bt4kefmisbo1o"]
+
+[ext_resource type="Script" path="res://data/attack_res.gd" id="1_ndyqk"]
+
+[resource]
+script = ExtResource("1_ndyqk")
+attack_name = "Blue Hit"
+power = 30
+range = 0
+_element = "Blue"

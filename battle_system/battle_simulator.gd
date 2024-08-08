@@ -59,6 +59,7 @@ func _on_team_using_attack(attack: Attack, team_index: int):
 	var animation = attack.get_tinted_animation()
 	var target
 	var target_sprite
+	var user_sprite
 	var user
 	var target_name
 	var user_name
@@ -68,18 +69,17 @@ func _on_team_using_attack(attack: Attack, team_index: int):
 		target = active_opponent
 		user = active_player
 		target_sprite = opponent_sprite
+		user_sprite = player_sprite
 	else:
 		target_name = "Player %s" % active_player.actor_name
 		user_name = "Opponent %s" % active_opponent.actor_name
 		target = active_player
 		user = active_opponent
 		target_sprite = player_sprite
+		user_sprite = opponent_sprite
 	
-	# Center attack animation onto target
-	var val = target_sprite.scale.x / 2
-	animation.position.x += target_sprite.get_size().x / 2
-	animation.position.y += target_sprite.get_size().y / 2
-	target_sprite.add_child(animation)
+	animation.superimpose(user_sprite, target_sprite, team_index == 1)
+
 	
 	# Calculate damage
 	var damage = calculate_damage(user, target, attack)
@@ -91,10 +91,10 @@ func _on_team_using_attack(attack: Attack, team_index: int):
 	])
 	
 	# Calculate target transmutations
-	perform_transmutations(target, attack, target_name, target_sprite)
+	await perform_transmutations(target, attack, target_name, target_sprite)
 	
 	# If melee attack, calculate user's transmutations
-	
+	# TODO
 	
 	# Advance turn
 	if team_index == 0:
@@ -105,6 +105,7 @@ func _on_team_using_attack(attack: Attack, team_index: int):
 			active_player)
 	else:
 		player_control.set_enabled(true)
+
 
 func calculate_damage(attacker: BattleActor.Fighter, defender: BattleActor.Fighter, attack: Attack):
 	var stat_comp = attacker.attack / defender.defense

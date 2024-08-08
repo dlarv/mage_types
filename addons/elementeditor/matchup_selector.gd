@@ -72,7 +72,6 @@ func set_matchup(matchup: Matchup):
 	else:
 		rect.color = matchup.element.color
 		_element = MatchupManager.get_index_from_name(matchup.element.type_name)
-		print(_element)
 	_effect = matchup.effect
 	var icon = ElementalEffect.get_icon(matchup.effect)
 	label.text = icon
