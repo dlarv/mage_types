@@ -1,0 +1,3 @@
+- [ ] Make basic ranged attack.
+- [ ] Add melee transmutation calculation.
+- [ ] Apply damage.

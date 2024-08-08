@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm20ov1ws8k6r"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_b5eft"]
+[ext_resource type="PackedScene" uid="uid://boexlidldafi6" path="res://character_builder/character_builder.tscn" id="1_ltt8i"]
+[ext_resource type="PackedScene" uid="uid://bwf00kjxf1mn6" path="res://battle_system/battle_simulator.tscn" id="3_o58us"]
+
+[node name="main" type="Node" node_paths=PackedStringArray("builder", "simulator")]
+script = ExtResource("1_b5eft")
+builder = NodePath("CharacterBuilder")
+simulator = NodePath("BattleSimulator")
+
+[node name="CharacterBuilder" parent="." instance=ExtResource("1_ltt8i")]
+
+[node name="BattleSimulator" parent="." instance=ExtResource("3_o58us")]
+visible = false

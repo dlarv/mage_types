@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://b187ua827ssjm"]
+
+[ext_resource type="Script" path="res://character_builder/character_list_item.gd" id="1_24cdq"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_evgnc"]
+
+[node name="CharacterListItem" type="Control" node_paths=PackedStringArray("name_display", "element1_display", "element2_display", "team1_button", "team2_button", "delete_button", "selector")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_24cdq")
+name_display = NodePath("HBoxContainer/Name_Label")
+element1_display = NodePath("HBoxContainer/Element1_ColorRect")
+element2_display = NodePath("HBoxContainer/Element2_ColorRect")
+team1_button = NodePath("HBoxContainer/Team1_CheckBox")
+team2_button = NodePath("HBoxContainer/Team2_CheckBox")
+delete_button = NodePath("HBoxContainer/Delete_Button")
+selector = NodePath("HBoxContainer/CheckBox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name_Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Element1_ColorRect" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Element2_ColorRect" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[node name="Team1_CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_evgnc")
+
+[node name="Team2_CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_evgnc")
+
+[node name="Delete_Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"

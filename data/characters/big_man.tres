@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://blvmu14eje405"]
+
+[ext_resource type="Resource" path="res://data/attacks/blue1.tres" id="1_4xcfq"]
+[ext_resource type="Resource" path="res://data/attacks/cyan1.tres" id="2_48je7"]
+[ext_resource type="Script" path="res://data/battle_actor_res.gd" id="2_ii2su"]
+[ext_resource type="Resource" path="res://data/attacks/green1.tres" id="3_fvlf6"]
+[ext_resource type="Resource" path="res://data/attacks/magenta1.tres" id="4_ack3m"]
+[ext_resource type="Resource" path="res://data/attacks/orange1.tres" id="5_1jdgj"]
+[ext_resource type="Resource" path="res://data/attacks/purple1.tres" id="7_ketfo"]
+[ext_resource type="Resource" path="res://data/attacks/red1.tres" id="8_oxstk"]
+[ext_resource type="Resource" path="res://data/attacks/yellow1.tres" id="9_e6j1p"]
+
+[resource]
+script = ExtResource("2_ii2su")
+actor_name = "Big Man"
+element1 = "Red"
+element2 = "Green"
+attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_4xcfq"), ExtResource("2_48je7"), ExtResource("3_fvlf6"), ExtResource("4_ack3m"), ExtResource("5_1jdgj"), ExtResource("7_ketfo"), ExtResource("8_oxstk"), ExtResource("9_e6j1p")])
+hp = 500
+attack = 20
+defense = 20
+speed = 20

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttackResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/attack_res.gd" id="1_lhf6k"]
+[ext_resource type="PackedScene" uid="uid://crrsw78j6f8ok" path="res://data/attack_animations/basic_melee_animation.tscn" id="1_si7a4"]
+
+[resource]
+script = ExtResource("1_lhf6k")
+attack_name = "Cyan"
+power = 30
+range = 0
+_element = "Cyan"
+animation = ExtResource("1_si7a4")

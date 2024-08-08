@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://ddimax7ebe78n"]
+
+[ext_resource type="Resource" path="res://data/attacks/green1.tres" id="1_b8otk"]
+[ext_resource type="Script" path="res://data/battle_actor_res.gd" id="2_mywos"]
+
+[resource]
+script = ExtResource("2_mywos")
+actor_name = "Double Double"
+element1 = "Red"
+element2 = "Cyan"
+attacks = Array[Resource("res://data/attack_res.gd")]([ExtResource("1_b8otk")])
+hp = 1000
+attack = 10
+defense = 10
+speed = 10
