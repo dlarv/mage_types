@@ -111,8 +111,13 @@ func calculate_damage(attacker: BattleActor.Fighter, defender: BattleActor.Fight
 	var stat_comp = attacker.attack / defender.defense
 	var rand = randf_range(0.8, 1.0)
 	var power = attack.power
-	var stab_exp = MatchupManager.get_matchup(attacker.primary_element, attack.element).modifier \
-		+ MatchupManager.get_matchup(attacker.secondary_element, attack.element).modifier
+	# The following would give a 'stab' bonus to attacks the user is super effective against,
+	# i.e. a water-type would get stab for fire-type moves.
+	# var stab_exp = MatchupManager.get_matchup(attacker.primary_element, attack.element).modifier \
+		# + MatchupManager.get_matchup(attacker.secondary_element, attack.element).modifier
+	var stab_exp = int(attack.primary_element == attack.element) + int(attack.secondary_element == attack.element)
+	stab_exp += max(0, MatchupManager.get_matchup(attacker.primary_element, attack.element).modifier) 
+	stab_exp += max(0, MatchupManager.get_matchup(attacker.secondary_element, attack.element).modifier) 
 	var stab = pow(2, stab_exp)
 
 	var matchup_exp = MatchupManager.get_matchup(defender.primary_element, attack.element).modifier \
