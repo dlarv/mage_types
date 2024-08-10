@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci1e6d5tsu6uo"]
 
-[ext_resource type="Script" path="res://battle_system/player_gui.gd" id="1_d76vf"]
-[ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://battle_system/health_bar.tscn" id="1_ru1w3"]
+[ext_resource type="Script" path="res://battle_system/gui/player_gui.gd" id="1_d76vf"]
+[ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://battle_system/gui/health_bar.tscn" id="1_ru1w3"]
 [ext_resource type="PackedScene" uid="uid://3e3ijkeudgrf" path="res://addons/elementeditor/type_matchup_editor.tscn" id="3_n0e3q"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ysypq"]

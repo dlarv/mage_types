@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwf00kjxf1mn6"]
 
 [ext_resource type="Script" path="res://battle_system/battle_simulator.gd" id="1_hoodv"]
-[ext_resource type="PackedScene" uid="uid://ci1e6d5tsu6uo" path="res://battle_system/player_gui.tscn" id="3_5mgaf"]
-[ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://battle_system/health_bar.tscn" id="3_bf4wv"]
+[ext_resource type="PackedScene" uid="uid://ci1e6d5tsu6uo" path="res://battle_system/gui/player_gui.tscn" id="3_5mgaf"]
+[ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://battle_system/gui/health_bar.tscn" id="3_bf4wv"]
 [ext_resource type="Script" path="res://data/opponent_ai/simple_ai.gd" id="4_h43h7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7600w"]

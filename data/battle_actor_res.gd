@@ -6,7 +6,7 @@ const MIN_STAT: int = 10
 const MAX_STAT: int = 1000
 
 @export var actor_name: String
-@export var sprite: Sprite2D
+var sprite: Sprite2D
 @export_enum("Red", "Green", "Blue", "Yellow", "Magenta", "Cyan", "Orange", "Purple", "Pink")
 var element1: String:
 	set(val):
