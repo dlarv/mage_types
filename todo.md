@@ -5,3 +5,7 @@
 - [ ] Using the same type attack twice in a row => transmutation.
 - [ ] Mana system design.
 - [ ] Element aesthetics.
+
+- [ ] Design the elemental traits.
+- [ ] Plan dungeons (roughly).
+- [ ] Write script.
