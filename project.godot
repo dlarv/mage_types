@@ -11,13 +11,8 @@ config_version=5
 [application]
 
 config/name="Mage-Types"
-run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-MatchupManager="*res://elemental_system/matchup_manager.gd"
 
 [debug]
 
@@ -32,7 +27,7 @@ project/assembly_name="Mage-Types"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_nodes/plugin.cfg", "res://addons/elementeditor/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_nodes/plugin.cfg")
 
 [rendering]
 

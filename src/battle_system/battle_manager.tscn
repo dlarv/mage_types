@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://duimeafah7m81"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_manager.gd" id="1_0vdww"]
+[ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://src/battle_system/gui/actor_info.tscn" id="2_swq1x"]
+[ext_resource type="PackedScene" uid="uid://dx0u102umuomq" path="res://src/battle_system/gui/player_controls.tscn" id="3_lmo41"]
+[ext_resource type="Script" path="res://src/battle_system/Battle.cs" id="4_agniw"]
+
+[node name="BattleManager" type="Node2D" node_paths=PackedStringArray("allies_parent", "opponents_parent", "player_control")]
+script = ExtResource("1_0vdww")
+allies_parent = NodePath("CanvasLayer/VBoxContainer/Player_HBox")
+opponents_parent = NodePath("CanvasLayer/Opponent_HBox")
+player_control = NodePath("CanvasLayer/VBoxContainer/PlayerControls")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -254.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = -100
+
+[node name="Player_HBox" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="HealthBar" parent="CanvasLayer/VBoxContainer/Player_HBox" instance=ExtResource("2_swq1x")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 11
+
+[node name="HealthBar2" parent="CanvasLayer/VBoxContainer/Player_HBox" instance=ExtResource("2_swq1x")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 11
+
+[node name="HealthBar3" parent="CanvasLayer/VBoxContainer/Player_HBox" instance=ExtResource("2_swq1x")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 11
+
+[node name="PlayerControls" parent="CanvasLayer/VBoxContainer" instance=ExtResource("3_lmo41")]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+
+[node name="Opponent_HBox" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -608.0
+offset_bottom = 200.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_constants/separation = 50
+
+[node name="HealthBar" parent="CanvasLayer/Opponent_HBox" instance=ExtResource("2_swq1x")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 11
+
+[node name="HealthBar2" parent="CanvasLayer/Opponent_HBox" instance=ExtResource("2_swq1x")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 11
+
+[node name="HealthBar3" parent="CanvasLayer/Opponent_HBox" instance=ExtResource("2_swq1x")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 11
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_agniw")
