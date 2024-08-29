@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://ch0d7yocai0vt"]
+
+[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elements/blue.tres" id="1_ouyby"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_hhpeb"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="3_ckr1o"]
+
+[resource]
+script = ExtResource("3_ckr1o")
+Power = 0
+Range = 0
+Name = "Hit"
+animation = ExtResource("2_hhpeb")
+Element = ExtResource("1_ouyby")
+Target = 0

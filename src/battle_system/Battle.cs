@@ -4,26 +4,23 @@ using System.Linq;
 
 public partial class Battle : Node
 {
-	[Signal]
-	public delegate void TransmutationOccuredEventHandler(int actorIndex, Element a, Element b);
-	[Signal]
-	public delegate void HpChangedEventHandler(int actorIndex, int amount, bool isDead);
-	[Signal]
-	public delegate void StatusEffectInflictedEventHandler(int actorIndex, StatusEffect effect);
-
-	private BattleActor[] opponents;
+	private BattleActor[] enemies;
 	private BattleActor[] allies;
 	private BattleActor[] actors;
+	private BattleGUI gui;
+	private OpponentController ai;
 
-	public void StartBattle(BattleActor[] allies, BattleActor[] opponents) 
+	public void StartBattle(BattleActor[] allies, BattleActor[] enemies, OpponentController ai) 
 	{
 		this.allies = allies;
-		this.opponents = opponents;
-		actors = allies.Concat(opponents).ToArray();
+		this.enemies = enemies;
+		this.actors = allies.Concat(enemies).ToArray();
+		this.ai = ai;
+
+		gui = new BattleGUI(allies, enemies);
+		AddChild(gui);
 	}
 
-	public void UseItem() 
-	{
+	public void OnPlayerActionsSelected(BattleAction[] actions) {
 	}
-
 }

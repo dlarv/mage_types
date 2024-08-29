@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://duimeafah7m81"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_manager.gd" id="1_0vdww"]
-[ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://src/battle_system/gui/actor_info.tscn" id="2_swq1x"]
-[ext_resource type="PackedScene" uid="uid://dx0u102umuomq" path="res://src/battle_system/gui/player_controls.tscn" id="3_lmo41"]
+[ext_resource type="Script" path="res://src/battle_system/_gui/battle_manager.gd" id="1_0vdww"]
+[ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://src/battle_system/gui/components/battle_actor_display.tscn" id="2_swq1x"]
+[ext_resource type="PackedScene" uid="uid://dx0u102umuomq" path="res://src/battle_system/_gui/player_controls.tscn" id="3_lmo41"]
 [ext_resource type="Script" path="res://src/battle_system/Battle.cs" id="4_agniw"]
 
 [node name="BattleManager" type="Node2D" node_paths=PackedStringArray("allies_parent", "opponents_parent", "player_control")]

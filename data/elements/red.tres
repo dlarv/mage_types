@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Element" load_steps=2 format=3 uid="uid://bq45s4if56xdi"]
+
+[ext_resource type="Script" path="res://src/elements/Element.cs" id="1_4qfi8"]
+
+[resource]
+script = ExtResource("1_4qfi8")
+Name = "Red"
+MainColor = Color(1, 0, 0, 1)
+ColorPalette = PackedColorArray()

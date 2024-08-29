@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://bxe7rrdwy8tjq"]
+
+[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_52lot"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="2_gm17o"]
+
+[resource]
+script = ExtResource("2_gm17o")
+Power = 0
+Range = 1
+Name = "Throw"
+animation = ExtResource("1_52lot")
+Target = 0

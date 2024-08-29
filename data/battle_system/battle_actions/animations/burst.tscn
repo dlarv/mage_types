@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cacekiasojwya"]
+
+[ext_resource type="Script" path="res://data/battle_system/battle_actions/battle_action_animation.gd" id="1_f1j8e"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppq6a"]
+particle_flag_disable_z = true
+spread = 180.0
+radial_velocity_min = 100.0
+radial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 10.0
+
+[node name="Burst" type="Node2D" node_paths=PackedStringArray("animation")]
+script = ExtResource("1_f1j8e")
+animation = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_ppq6a")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0

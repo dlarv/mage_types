@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh33tsq5nhi6y"]
+
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_mkc7p"]
+[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/base_melee.tres" id="2_u26v7"]
+[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elements/blue.tres" id="2_vxy04"]
+
+[node name="BasicBattleActor" type="Node2D"]
+script = ExtResource("1_mkc7p")
+Hp = 1000
+Element1 = ExtResource("2_vxy04")
+Attacks = Array[Resource]([ExtResource("2_u26v7")])

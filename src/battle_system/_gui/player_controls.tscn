@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dx0u102umuomq"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/player_controls.gd" id="1_8fjn2"]
+[ext_resource type="Script" path="res://src/battle_system/_gui/player_controls.gd" id="1_8fjn2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dohd"]
 bg_color = Color(0.212305, 0.212305, 0.212305, 1)

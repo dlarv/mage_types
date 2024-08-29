@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bojailbsdt75"]
+
+[ext_resource type="Script" path="res://data/battle_system/battle_actions/animations/jet_animation.gd" id="1_q8cwd"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppq6a"]
+particle_flag_disable_z = true
+spread = 10.0
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 10.0
+
+[node name="Jet" type="Node2D" node_paths=PackedStringArray("animation")]
+script = ExtResource("1_q8cwd")
+animation = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(2, 4)
+emitting = false
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_ppq6a")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
