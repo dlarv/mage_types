@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BattleItem" load_steps=3 format=3 uid="uid://bku3sukfp6sdl"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.cs" id="1_8khq5"]
+[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elements/blue.tres" id="1_xojtl"]
+
+[resource]
+script = ExtResource("1_8khq5")
+Name = "Blue Powerup"
+Element = ExtResource("1_xojtl")
+Priority = 0
+Target = 3
+Details = "Gives a boost to the next [color=blue]blue[/color] move used by this character."

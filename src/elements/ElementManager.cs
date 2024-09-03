@@ -4,14 +4,18 @@ using System;
 /*[GlobalClass]*/
 public partial class ElementManager : Node
 {
+	public static ElementalType Blank { get; private set; } = null;
 	[Export]
-	public Element[] Elements { get; set; }
+	public ElementalType[] Elements { get; set; }
 
-	public Element GetElementFromName(string name) 
+	public override void _Ready() {
+		Blank = Elements[0];
+	}
+	public ElementalType GetElementFromName(string name) 
 	{
 		// Ensure basic typos won't interfere.
 		name = name.ToLower().Trim();
-		foreach(Element el in Elements) {
+		foreach(ElementalType el in Elements) {
 			if(el.Name.ToLower() == name) {
 				return el;
 			}

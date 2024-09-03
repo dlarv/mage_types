@@ -30,21 +30,22 @@ public partial class BattleActor : Node
 
 	[ExportCategory("General")]
 	[Export]
-	public Element Element1 { get; private set; }
+	public ElementalType Element1 { get; private set; }
 	[Export]
-	public Element Element2 { get; private set; }
+	public ElementalType Element2 { get; private set; }
 	[Export]
 	public Attack[] Attacks { get; set; }
 	[Export]
-	public Sprite2D Sprite = null;
-	protected bool use_gradient_sprite = false;
+	public Sprite Sprite = null;
+	/*public Sprite2D Sprite = null;*/
+	/*protected bool use_gradient_sprite = false;*/
 
     public override void _Ready() {
         base._Ready();
 
-		use_gradient_sprite = Sprite == null;
-		if(use_gradient_sprite) {
-			SetGradientSprite();
+		if(Sprite == null) {
+			Sprite = new();
+			Sprite.SetGradientSprite(Element1, Element2);
 		} 
 
 		var elementManager = GetNode<ElementManager>("/root/ElementManager");
@@ -60,38 +61,19 @@ public partial class BattleActor : Node
 		if(Element2 == null) {
 			Element2 = elementManager.GetElementFromName("blank");
 		}
-
-		/*AddChild(Sprite);*/
 	}
     
-	public void SetGradientSprite() {
-		Gradient grad = new Gradient();
-		if(Element1 != null) {
-			grad.SetColor(0, Element1.MainColor);
-		}
-		if(Element2 != null) {
-			grad.SetColor(1, Element2.MainColor);
-		}
-		
-		GradientTexture2D tex = new GradientTexture2D();
-		tex.Gradient = grad;
-		Sprite = new Sprite2D();
-		Sprite.Texture = tex;
-	}
 
-	public void SetElement(int id, Element element) {
+	public void SetElement(int id, ElementalType element) {
 		if(id == 0) {
 			Element1 = element;
 		} else {
 			Element2 = element;
 		}
-
-		if(use_gradient_sprite) {
-			((GradientTexture2D)Sprite.Texture).Gradient.SetColor(id, element.MainColor);
-		}
+		Sprite.SetElement(id, element);
 	}
 	
-	public static BattleActor Create(string actorName, Element element1, Element element2, Attack[] attacks, Dictionary<string, int> stats) {
+	public static BattleActor Create(string actorName, ElementalType element1, ElementalType element2, Attack[] attacks, Dictionary<string, int> stats) {
 		BattleActor actor = new BattleActor();
 		actor.ActorName = actorName;
 		actor.Element1 = element1;
@@ -130,6 +112,8 @@ public partial class BattleActor : Node
 			}
 		}
 
+		actor.Sprite = new Sprite();
+		actor.Sprite.SetGradientSprite(actor.Element1, actor.Element2);
 		return actor;
 	}
 

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Element" load_steps=2 format=3 uid="uid://bn6di6k824f3x"]
+[gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://bn6di6k824f3x"]
 
-[ext_resource type="Script" path="res://src/elements/Element.cs" id="1_rhvj1"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="1_rhvj1"]
 
 [resource]
 script = ExtResource("1_rhvj1")

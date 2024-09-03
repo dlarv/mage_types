@@ -1,6 +1,6 @@
 extends Control
 
-signal setup_finished(team1: Array, team2: Array)
+signal setup_finished(team1: Array, items: Array, team2: Array, ai)
 
 @export var AttackListItem: PackedScene
 @export var CharacterListItem: PackedScene
@@ -28,6 +28,10 @@ signal setup_finished(team1: Array, team2: Array)
 @export var attack_scroller: VBoxContainer
 @export var load_attack_button: Button
 
+@export_category("Items")
+@export var item_name_input: LineEdit
+@export var load_item_button: Button
+
 @export_category("Character Display")
 @export var character_scroller: VBoxContainer
 @export var character_display: Control
@@ -49,8 +53,12 @@ var _stats = {}:
 		defense_input.value = val.get("defense", defense_input.value)
 		speed_input.value = val.get("speed", speed_input.value)
 		
+var _attack_description = ""
+var _item_description = ""
 var _characters = []
 var _attacks = []
+var _items = []
+var ai
 
 func _ready():
 	# _populate_element_option_buttons()
@@ -62,15 +70,25 @@ func _ready():
 		file_popup.popup())
 		
 	load_attack_button.pressed.connect(func(): 
-		file_popup.set_current_dir("res://data/battle_system/attacks")
+		file_popup.set_current_dir("res://data/battle_system/battle_actions/attacks")
 		file_popup.popup())
 	
-	# load_default_teams()
+	load_item_button.pressed.connect(func():
+		file_popup.set_current_dir("res://data/battle_system/battle_actions/items")
+		file_popup.popup())
+
+	load_default_teams()
+
+func _unhandled_input(input):
+	if input.is_action_pressed("ui_accept"):
+		_on_start_battle_button_pressed()
 
 func load_default_teams():
-	_on_file_dialog_file_selected("res://data/characters/big_man.tres")
+	_on_file_dialog_file_selected("res://data/battle_system/battle_actors/basic_battle_actor.tscn")
 	_on_create_character_button_pressed()
-	_on_file_dialog_file_selected("res://data/characters/double_double.tres")
+	_on_file_dialog_file_selected("res://data/battle_system/battle_actors/basic_battle_actor.tscn")
+	_on_create_character_button_pressed()
+	_on_file_dialog_file_selected("res://data/battle_system/battle_actors/basic_battle_actor.tscn")
 	#_on_file_dialog_file_selected("res://data/characters/sponge_man.tres")
 	_on_create_character_button_pressed()
 	character_scroller.get_child(1).set_team_index(1)
@@ -122,7 +140,7 @@ func _on_create_attack_button_pressed():
 	var power = power_input.value
 	power_input.value = 10
 	
-	var range = range_input.get_selected_id()
+	var range_value = range_input.get_selected_id()
 	range_input.select(0)
 	
 	var element_index = attack_element_input.get_selected_id()
@@ -130,7 +148,7 @@ func _on_create_attack_button_pressed():
 	attack_element_input.select(0)
 	
 	var item = AttackListItem.instantiate()
-	var attack = Attack.Create(name, element, power, range)
+	var attack = Attack.Create(name, element, power, range_value, _attack_description)
 	_attacks.append(attack)
 	var button = item.create(attack)
 	attack_scroller.add_child(item)
@@ -190,6 +208,15 @@ func _on_create_character_button_pressed():
 	var selector: CheckBox = item.selector
 	selector.button_group = _button_group
 
+func _on_create_item_button_pressed():
+	var item_name = item_name_input.text
+	if item_name.is_empty(): 
+		alert_popup.get_label().text = "Item must be given a name."
+		alert_popup.show()
+		return
+
+	var item = BattleItem.Create(item_name, _item_description)
+	_items.append(item)
 
 func _on_character_selected(button: Button):
 	var control = button.get_parent().get_parent()
@@ -214,7 +241,7 @@ func _on_start_battle_button_pressed():
 		alert_popup.show()
 		return
 	
-	setup_finished.emit(team1, team2)
+	setup_finished.emit(team1, _items, team2, ai)
 
 
 func _on_file_dialog_file_selected(path):
@@ -222,19 +249,24 @@ func _on_file_dialog_file_selected(path):
 	
 	# Check if player is trying to load an attack or character
 	if actor is Attack:
-		attack_element_input.select(ElementManager.GetIndexFromName(actor.element.Name))
+		attack_element_input.select(ElementManager.GetIndexFromName(actor.Element.Name))
 		attack_name_input.text = actor.Name
 		power_input.value = actor.Power
 		range_input.select(actor.Range)
+		_attack_description = actor.Details
 		return
 	if actor is BattleItem:
+		_item_description = actor.Details
+		item_name_input.text = actor.Name
 		return
 
 	if actor is PackedScene:
 		actor = actor.instantiate()
 	
 	name_input.text = actor.ActorName
-	element1_input.select(ElementManager.GetIndexFromName(actor.Element1))
+	element1_input.select(ElementManager.GetIndexFromName(actor.Element1.Name))
+	element2_input.select(ElementManager.GetIndexFromName(actor.Element2.Name))
+
 	_stats = {
 		"hp": actor.Hp,
 		"attack": actor.MeleeAttack,
@@ -242,13 +274,11 @@ func _on_file_dialog_file_selected(path):
 		"speed": actor.Speed
 	}
 	
-	# Set 2nd element, if applicable
-	element2_input.select(ElementManager.GetIndexFromName(actor.Element2))
-	
 	# Set attacks
 	for attack in actor.Attacks:
 		attack_element_input.select(ElementManager.GetIndexFromName(attack.Element.Name))
 		attack_name_input.text = attack.Name
 		power_input.value = attack.Power
+		_attack_description = attack.Details
 		_on_create_attack_button_pressed()
 		range_input.select(attack.Range)

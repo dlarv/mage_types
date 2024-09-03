@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mage-Types"
-run/main_scene="res://src/battle_system/simulator/character_builder.tscn"
+run/main_scene="res://src/battle_system/simulator/battle_simulator.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 run/flush_stdout_on_print.debug=false
 config/icon="res://icon.svg"

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://bxe7rrdwy8tjq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://bxe7rrdwy8tjq"]
 
 [ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_52lot"]
+[ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elements/green.tres" id="1_oypeo"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="2_gm17o"]
 
 [resource]
@@ -9,4 +10,6 @@ Power = 0
 Range = 1
 Name = "Throw"
 animation = ExtResource("1_52lot")
-Target = 0
+Element = ExtResource("1_oypeo")
+Target = 3
+Details = ""

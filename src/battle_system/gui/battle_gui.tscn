@@ -1,8 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://1q27rku2p2g2"]
+[gd_scene load_steps=5 format=3 uid="uid://1q27rku2p2g2"]
 
 [ext_resource type="Script" path="res://src/battle_system/gui/BattleGUI.cs" id="1_ik08k"]
+[ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
+[ext_resource type="PackedScene" uid="uid://gtkhgnidq78a" path="res://src/battle_system/gui/components/player_controls.tscn" id="2_s8f4v"]
+[ext_resource type="PackedScene" uid="uid://cs6yjetfrdmgw" path="res://src/battle_system/gui/components/message_box.tscn" id="4_w3qmb"]
 
-[node name="BattleGUI" type="Node2D"]
+[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "allyDisplayParent", "enemyDisplayParent", "playerControls")]
 script = ExtResource("1_ik08k")
+messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/MessageBox")
+allyDisplayParent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay")
+enemyDisplayParent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Opponent_TeamDisplay")
+playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Opponent_TeamDisplay" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource("2_ov218")]
+layout_mode = 2
+size_flags_vertical = 3
+ShiftRight = true
+
+[node name="Ally_TeamDisplay" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource("2_ov218")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsSelected_VBox" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PlayerControls" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("2_s8f4v")]
+layout_mode = 2
+
+[node name="MessageBox" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("4_w3qmb")]
+layout_mode = 2
+
+[connection signal="ActionSelected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
+[connection signal="ActiveActorChanged" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]
+[connection signal="ShowInfo" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_show_info"]

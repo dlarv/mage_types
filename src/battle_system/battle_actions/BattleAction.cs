@@ -4,6 +4,7 @@ using System;
 [GlobalClass]
 public partial class BattleAction : Resource
 {
+	public static BattleAction Flee { get; private set; } = new();
 	public enum TargetType { Self, Ally, Allies, Enemy, Enemies }
 
 	[Export]
@@ -11,10 +12,13 @@ public partial class BattleAction : Resource
 	[Export]
 	protected PackedScene animation;
 	[Export]
-	public Element Element;
+	public ElementalType Element;
 	[Export]
-	public TargetType Target;
-
+	public int Priority { get; set; }
+	[Export]
+	public TargetType Target = TargetType.Enemy;
+	[Export(PropertyHint.MultilineText)]
+	public string Details { get; set; }
 
 	public virtual GodotObject PlayAnimation(Vector2 start, Vector2 end) 
 	{
@@ -25,7 +29,7 @@ public partial class BattleAction : Resource
 
 	// Main logic for action.
 	// Returns message stating what happened to actor. This is displayed for player.
-	public virtual string ApplyEffects(BattleActor actor) 
+	public virtual string ApplyEffects(BattleActor actor, BattleActor other=null) 
 	{
 		return "";
 	}

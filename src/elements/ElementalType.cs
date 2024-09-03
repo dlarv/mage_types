@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class Element : Resource
+public partial class ElementalType : Resource
 {
 	[Export]
 	public string Name;

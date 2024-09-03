@@ -1,0 +1,131 @@
+[gd_scene load_steps=2 format=3 uid="uid://gtkhgnidq78a"]
+
+[ext_resource type="Script" path="res://src/battle_system/gui/components/PlayerControls.cs" id="1_5ol5c"]
+
+[node name="PlayerControls" type="PanelContainer" node_paths=PackedStringArray("controlPanel", "attacksPanel", "itemsScroller", "characterScroller", "nextButton", "prevButton", "endButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_5ol5c")
+controlPanel = NodePath("VBoxContainer/TabContainer")
+attacksPanel = NodePath("VBoxContainer/TabContainer/Attacks_Tab/TabContainer")
+itemsScroller = NodePath("VBoxContainer/TabContainer/Items_Tab/ScrollContainer/VBoxContainer")
+characterScroller = NodePath("VBoxContainer/TabContainer/Characters_Tab/ScrollContainer/VBoxContainer")
+nextButton = NodePath("VBoxContainer/CharacterSelector/Next_Button")
+prevButton = NodePath("VBoxContainer/CharacterSelector/Prev_Button")
+endButton = NodePath("VBoxContainer/CharacterSelector/Start_Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CharacterSelector" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Prev_Button" type="Button" parent="VBoxContainer/CharacterSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Prev"
+
+[node name="Start_Button" type="Button" parent="VBoxContainer/CharacterSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "End Turn"
+
+[node name="Next_Button" type="Button" parent="VBoxContainer/CharacterSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Next"
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Home_VBox" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Attacks_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Attacks"
+
+[node name="Items_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Items"
+
+[node name="Characters_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Characters"
+
+[node name="Run_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Run
+"
+
+[node name="Attacks_Tab" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/TabContainer/Attacks_Tab"]
+layout_mode = 2
+text = "Back"
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/TabContainer/Attacks_Tab"]
+layout_mode = 2
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Items_Tab" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/TabContainer/Items_Tab"]
+layout_mode = 2
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Items_Tab"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Items_Tab/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Characters_Tab" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Back_Button" type="Button" parent="VBoxContainer/TabContainer/Characters_Tab"]
+layout_mode = 2
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Characters_Tab"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Characters_Tab/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/CharacterSelector/Prev_Button" to="." method="PrevCharacter"]
+[connection signal="pressed" from="VBoxContainer/CharacterSelector/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterSelector/Next_Button" to="." method="NextCharacter"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Home_VBox/Attacks_Button" to="." method="_on_attacks_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Home_VBox/Items_Button" to="." method="_on_items_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Home_VBox/Characters_Button" to="." method="_on_characters_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Home_VBox/Run_Button" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Attacks_Tab/Back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Items_Tab/Back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Characters_Tab/Back_Button" to="." method="_on_back_button_pressed"]

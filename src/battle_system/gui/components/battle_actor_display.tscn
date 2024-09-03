@@ -1,6 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://deg4ffl4kkgel"]
+[gd_scene load_steps=9 format=3 uid="uid://deg4ffl4kkgel"]
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/BattleActorDisplay.cs" id="1_5ryt8"]
+
+[sub_resource type="Gradient" id="Gradient_207nu"]
+offsets = PackedFloat32Array(0.664653, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8n0jh"]
+gradient = SubResource("Gradient_207nu")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdbtg"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_36xuc"]
 
@@ -12,7 +25,7 @@ bg_color = Color(0.6, 0, 0, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_igh2i"]
 
-[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("nameLabel", "healthBar", "hpLabel", "sprite")]
+[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "selectorButton")]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -20,33 +33,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 size_flags_vertical = 3
 script = ExtResource("1_5ryt8")
-nameLabel = NodePath("VBoxContainer/Label")
-healthBar = NodePath("VBoxContainer/HBoxContainer/HSlider")
-hpLabel = NodePath("VBoxContainer/HBoxContainer/Label")
-sprite = NodePath("VBoxContainer/TextureRect")
+highlightDisplay = NodePath("TextureRect")
+nameLabel = NodePath("VBoxContainer/MarginContainer/Name_Label")
+healthBar = NodePath("VBoxContainer/HealthBar/HSlider")
+hpLabel = NodePath("VBoxContainer/HealthBar/Label")
+spriteDisplay = NodePath("VBoxContainer/TextureRect")
+statusEffectIcons = NodePath("VBoxContainer/StatusEffects")
+selectorButton = NodePath("SelectorButton")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8n0jh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -53.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+[node name="Name_Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Basic"
+label_settings = SubResource("LabelSettings_tdbtg")
+
+[node name="HealthBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HealthBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/grabber = SubResource("PlaceholderTexture2D_36xuc")
@@ -54,13 +87,30 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_e1aos")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ea513")
 value = 50.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HealthBar"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "100/100"
+
+[node name="StatusEffects" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("PlaceholderTexture2D_igh2i")
+
+[node name="SelectorButton" type="Button" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="mouse_entered" from="SelectorButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SelectorButton" to="." method="_on_mouse_exited"]
