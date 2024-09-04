@@ -75,5 +75,6 @@ func add_attacks(attacks):
 	for attack in attacks:
 		var item = AttackListItem.instantiate()
 		var button = item.create(attack)
+		button.pressed.connect(_on_remove_attack_button_pressed.bind(item, len(attacks) - 1))
 		attack_scroller.add_child(item)
 

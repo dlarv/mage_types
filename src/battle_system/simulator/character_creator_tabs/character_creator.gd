@@ -51,8 +51,6 @@ func _ready():
 	speed_input.value_changed.connect(func(value):
 		character.SetStat("speed", value))
 
-func load_default_teams():
-	pass
 
 func set_character(actor):
 	## Receive actor from parent and populate its values.
