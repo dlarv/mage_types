@@ -40,15 +40,12 @@ func _ready():
 func load_default_teams():
 	var actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
 	_on_character_created(actor)
-	actor.UseGradientSprite();
 	character_scroller.get_child(0).set_team_index(1)
 
 	actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
-	actor.UseGradientSprite();
 	_on_character_created(actor)
 
 	actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
-	actor.UseGradientSprite();
 	_on_character_created(actor)
 
 func _unhandled_input(input):
@@ -114,6 +111,7 @@ func _on_start_battle_button_pressed():
 	
 	for actor in character_scroller.get_children():
 		var index = actor.get_team_index()
+		actor.character.UseGradientSprite()
 		if index == 0:
 			team1.append(actor.character)
 		else:

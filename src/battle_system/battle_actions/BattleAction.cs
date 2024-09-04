@@ -12,7 +12,7 @@ public partial class BattleAction : Resource
 	[Export]
 	protected PackedScene animation;
 	[Export]
-	public ElementalType Element;
+	public ElementalType Element = ElementManager.Blank;
 	[Export]
 	public int Priority { get; set; }
 	[Export]

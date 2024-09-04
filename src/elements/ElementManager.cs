@@ -4,13 +4,16 @@ using System;
 /*[GlobalClass]*/
 public partial class ElementManager : Node
 {
-	public static ElementalType Blank { get; private set; } = null;
+	[Export]
+	public static ElementalType Blank { get; private set; }
 	[Export]
 	public ElementalType[] Elements { get; set; }
 
-	public override void _Ready() {
+
+	public override void _EnterTree() {
 		Blank = Elements[0];
 	}
+
 	public ElementalType GetElementFromName(string name) 
 	{
 		// Ensure basic typos won't interfere.

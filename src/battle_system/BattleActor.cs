@@ -152,6 +152,7 @@ public partial class BattleActor : Node
 		switch(name.ToLower().Trim()) {
 			case "hp": 
 				Hp = value;
+				CurrentHp = value;
 				break;
 			case "attack": case "melee_attack": 
 				MeleeAttack = value;
