@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/battle_system/simulator/battle_simulator.gd" id="1_ipe0m"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_tcfip"]
-[ext_resource type="PackedScene" uid="uid://dapesoo2g5t40" path="res://src/battle_system/simulator/character_builder2.tscn" id="4_mif78"]
+[ext_resource type="PackedScene" uid="uid://dapesoo2g5t40" path="res://src/battle_system/simulator/character_builder.tscn" id="4_mif78"]
 
 [node name="BattleSimulator" type="Node2D" node_paths=PackedStringArray("character_builder")]
 script = ExtResource("1_ipe0m")

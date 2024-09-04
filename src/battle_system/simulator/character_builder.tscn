@@ -1,38 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://boexlidldafi6"]
+[gd_scene load_steps=5 format=3 uid="uid://dapesoo2g5t40"]
 
-[ext_resource type="Script" path="res://src/battle_system/simulator/character_builder.gd" id="1_dms6j"]
-[ext_resource type="PackedScene" uid="uid://lru2hepw8pt5" path="res://src/battle_system/simulator/components/attack_list_item.tscn" id="2_wnp16"]
-[ext_resource type="PackedScene" uid="uid://b187ua827ssjm" path="res://src/battle_system/simulator/components/character_list_item.tscn" id="3_dfge5"]
-[ext_resource type="PackedScene" uid="uid://crhlk7hcdainp" path="res://src/battle_system/simulator/components/element_option_button.tscn" id="4_67u31"]
-[ext_resource type="PackedScene" uid="uid://rcw2b2sorp8m" path="res://src/battle_system/simulator/components/battle_actor_display.tscn" id="4_q62c1"]
+[ext_resource type="Script" path="res://src/battle_system/simulator/character_builder.gd" id="1_of8lm"]
+[ext_resource type="PackedScene" uid="uid://b187ua827ssjm" path="res://src/battle_system/simulator/components/character_list_item.tscn" id="3_yqwsv"]
+[ext_resource type="PackedScene" uid="uid://dhbc51ehpk5id" path="res://src/battle_system/simulator/character_creator_tabs/character_creator.tscn" id="4_7ld46"]
+[ext_resource type="PackedScene" uid="uid://rcw2b2sorp8m" path="res://src/battle_system/simulator/components/battle_actor_display.tscn" id="5_mwtm5"]
 
-[node name="CharacterBuilder" type="Control" node_paths=PackedStringArray("alert_popup", "name_input", "element1_input", "element2_input", "load_character_button", "file_popup", "stats_header", "hp_input", "attack_input", "defense_input", "speed_input", "attack_element_input", "attack_name_input", "power_input", "range_input", "attack_scroller", "load_attack_button", "item_name_input", "load_item_button", "character_scroller", "character_display")]
+[node name="CharacterBuilder" type="Control" node_paths=PackedStringArray("alert_popup", "character_creator", "file_popup", "item_name_input", "load_item_button", "character_scroller", "character_display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dms6j")
-AttackListItem = ExtResource("2_wnp16")
-CharacterListItem = ExtResource("3_dfge5")
+script = ExtResource("1_of8lm")
+CharacterListItem = ExtResource("3_yqwsv")
 alert_popup = NodePath("AcceptDialog")
-name_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Name_HBox/LineEdit")
-element1_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Element1_HBox/ElementOptionButton")
-element2_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Element2_HBox/ElementOptionButton")
-load_character_button = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/LoadCharacter_Button")
+character_creator = NodePath("Panel/TabContainer/Character Creator")
 file_popup = NodePath("FileDialog")
-stats_header = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Stats_Label")
-hp_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Hp_HBox/SpinBox")
-attack_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Attack_HBox/SpinBox")
-defense_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Defense_HBox/SpinBox")
-speed_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Speed_HBox/SpinBox")
-attack_element_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Element_HBox/ElementOptionButton")
-attack_name_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Name_HBox/LineEdit")
-power_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Power_HBox/SpinBox")
-range_input = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Range_HBox/OptionButton")
-attack_scroller = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/ScrollContainer/VBoxContainer")
-load_attack_button = NodePath("Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/LoadAttack_Button")
 item_name_input = NodePath("Panel/TabContainer/Items/VBoxContainer/HBoxContainer/ItemName_LineEdit")
 load_item_button = NodePath("Panel/TabContainer/Items/VBoxContainer/LoadItem_Button")
 character_scroller = NodePath("Panel/TabContainer/Review Teams/VBoxContainer/HBoxContainer/List_VBox/ScrollContainer/VBoxContainer")
@@ -54,209 +38,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Character Creator" type="MarginContainer" parent="Panel/TabContainer"]
+[node name="Character Creator" parent="Panel/TabContainer" instance=ExtResource("4_7ld46")]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Character Creator"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Character_VBox" type="VBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-text = "Character Builder"
-
-[node name="Name_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Name_HBox"]
-layout_mode = 2
-text = "Player Name: "
-
-[node name="LineEdit" type="LineEdit" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Name_HBox"]
-layout_mode = 2
-theme_override_constants/minimum_character_width = 20
-
-[node name="Element1_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Element1_HBox"]
-layout_mode = 2
-text = "Primary Type: "
-
-[node name="ElementOptionButton" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Element1_HBox" instance=ExtResource("4_67u31")]
-layout_mode = 2
-
-[node name="Element2_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Element2_HBox"]
-layout_mode = 2
-text = "Secondary Type: "
-
-[node name="ElementOptionButton" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Element2_HBox" instance=ExtResource("4_67u31")]
-layout_mode = 2
-
-[node name="Stats_Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-text = "
-Stats: 4"
-
-[node name="Hp_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Hp_HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "    HP:"
-
-[node name="SpinBox" type="SpinBox" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Hp_HBox"]
-layout_mode = 2
-min_value = 1.0
-max_value = 1e+06
-value = 1.0
-
-[node name="Attack_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Attack_HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "    Attack:"
-
-[node name="SpinBox" type="SpinBox" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Attack_HBox"]
-layout_mode = 2
-min_value = 1.0
-max_value = 1e+06
-value = 1.0
-
-[node name="Defense_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Defense_HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "    Defense:"
-
-[node name="SpinBox" type="SpinBox" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Defense_HBox"]
-layout_mode = 2
-min_value = 1.0
-max_value = 1e+06
-value = 1.0
-
-[node name="Speed_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Speed_HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "    Speed:"
-
-[node name="SpinBox" type="SpinBox" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox/Speed_HBox"]
-layout_mode = 2
-min_value = 1.0
-max_value = 1e+06
-value = 1.0
-
-[node name="LoadCharacter_Button" type="Button" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Character_VBox"]
-show_behind_parent = true
-layout_mode = 2
-size_flags_vertical = 10
-text = "Load Character"
-
-[node name="Attack_VBox" type="VBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-text = "Attack Builder"
-
-[node name="Name_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Name_HBox"]
-layout_mode = 2
-text = "Attack Name: "
-
-[node name="LineEdit" type="LineEdit" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Name_HBox"]
-layout_mode = 2
-theme_override_constants/minimum_character_width = 20
-expand_to_text_length = true
-
-[node name="Power_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Power_HBox"]
-layout_mode = 2
-text = "Power: "
-
-[node name="SpinBox" type="SpinBox" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Power_HBox"]
-layout_mode = 2
-max_value = 500.0
-value = 10.0
-
-[node name="Range_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Range_HBox"]
-layout_mode = 2
-text = "Range: "
-
-[node name="OptionButton" type="OptionButton" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Range_HBox"]
-layout_mode = 2
-item_count = 2
-selected = 0
-popup/item_0/text = "Melee"
-popup/item_0/id = 0
-popup/item_1/text = "Ranged"
-popup/item_1/id = 1
-
-[node name="Element_HBox" type="HBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Element_HBox"]
-layout_mode = 2
-text = "Type: "
-
-[node name="ElementOptionButton" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Element_HBox" instance=ExtResource("4_67u31")]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-text = "Create"
-
-[node name="AttackList_Label" type="Label" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-text = "Attacks"
-horizontal_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="LoadAttack_Button" type="Button" parent="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox"]
-layout_mode = 2
-text = "Load Attack"
-
-[node name="Create_Button" type="Button" parent="Panel/TabContainer/Character Creator/VBoxContainer"]
-layout_mode = 2
-text = "Create Character"
 
 [node name="Items" type="MarginContainer" parent="Panel/TabContainer"]
 visible = false
@@ -334,7 +117,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "Selected Character Info"
 
-[node name="BattleActorDisplay" parent="Panel/TabContainer/Review Teams/VBoxContainer/HBoxContainer/Display_VBox" instance=ExtResource("4_q62c1")]
+[node name="BattleActorDisplay" parent="Panel/TabContainer/Review Teams/VBoxContainer/HBoxContainer/Display_VBox" instance=ExtResource("5_mwtm5")]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -354,8 +137,7 @@ root_subfolder = "data"
 filters = PackedStringArray("*.tres", "*tscn")
 show_hidden_files = true
 
-[connection signal="pressed" from="Panel/TabContainer/Character Creator/VBoxContainer/HBoxContainer/Attack_VBox/Button" to="." method="_on_create_attack_button_pressed"]
-[connection signal="pressed" from="Panel/TabContainer/Character Creator/VBoxContainer/Create_Button" to="." method="_on_create_character_button_pressed"]
+[connection signal="character_created" from="Panel/TabContainer/Character Creator" to="." method="_on_character_created"]
 [connection signal="pressed" from="Panel/TabContainer/Items/VBoxContainer/CreateItem_Button" to="." method="_on_create_item_button_pressed"]
 [connection signal="pressed" from="Panel/TabContainer/Review Teams/VBoxContainer/StartBattle_Button" to="." method="_on_start_battle_button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
