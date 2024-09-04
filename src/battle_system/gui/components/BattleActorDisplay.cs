@@ -33,6 +33,7 @@ public partial class BattleActorDisplay : Control
 		healthBar.Value = (actor.CurrentHp / actor.Hp) * 100;
 		hpLabel.Text = $"{actor.CurrentHp}/{actor.Hp}";
 		totalHp = actor.Hp;
+
 		spriteDisplay.Texture = actor.Sprite.Texture;
 
 		selectorButton.Pressed += () => EmitSignal(SignalName.Selected, actor);

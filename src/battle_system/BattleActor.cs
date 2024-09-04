@@ -43,6 +43,8 @@ public partial class BattleActor : Node
     public override void _Ready() {
         base._Ready();
 
+			Sprite = new();
+			Sprite.SetGradientSprite(Element1, Element2);
 		if(Sprite == null) {
 			Sprite = new();
 			Sprite.SetGradientSprite(Element1, Element2);
@@ -117,6 +119,11 @@ public partial class BattleActor : Node
 		return actor;
 	}
 
+	public void UseGradientSprite() {
+		Sprite = new Sprite();
+		Sprite.SetGradientSprite(Element1, Element2);
+	}
+
 	public static int GetMaxStat()
 	{
 		return MAX_STAT;
@@ -129,5 +136,38 @@ public partial class BattleActor : Node
 			{ "defense", MeleeDefense },
 			{ "speed", MeleeDefense },
 		};
+	}
+	public int GetStat(string name) {
+		switch(name.ToLower().Trim()) {
+			case "hp": return Hp;
+			case "attack": case "melee_attack": return MeleeAttack;
+			case "defense": case "melee_defense": return MeleeDefense;
+			case "ranged_attack": return RangedAttack;
+			case "ranged_defense": return RangedDefense;
+			case "speed": return Speed;
+			default: return -1;
+		}
+	}
+	public void SetStat(string name, int value) {
+		switch(name.ToLower().Trim()) {
+			case "hp": 
+				Hp = value;
+				break;
+			case "attack": case "melee_attack": 
+				MeleeAttack = value;
+				break;
+			case "defense": case "melee_defense": 
+				MeleeDefense = value;
+				break;
+			case "ranged_attack": 
+				RangedAttack = value;
+				break;
+			case "ranged_defense": 
+				RangedDefense = value;
+				break;
+			case "speed": 
+				Speed = value;
+				break;
+		}
 	}
 }

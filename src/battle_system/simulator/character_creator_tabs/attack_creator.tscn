@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtj13rv3gydaa"]
+
+[ext_resource type="PackedScene" uid="uid://crhlk7hcdainp" path="res://src/battle_system/simulator/components/element_option_button.tscn" id="1_ipbcl"]
+[ext_resource type="Script" path="res://src/battle_system/simulator/character_creator_tabs/attack_creator.gd" id="1_pqc2u"]
+[ext_resource type="PackedScene" uid="uid://lru2hepw8pt5" path="res://src/battle_system/simulator/components/attack_list_item.tscn" id="2_hgx0f"]
+
+[node name="Attack_VBox" type="VBoxContainer" node_paths=PackedStringArray("attack_element_input", "attack_name_input", "power_input", "range_input", "attack_scroller", "load_attack_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_pqc2u")
+AttackListItem = ExtResource("2_hgx0f")
+attack_element_input = NodePath("Element_HBox/ElementOptionButton")
+attack_name_input = NodePath("Name_HBox/LineEdit")
+power_input = NodePath("Power_HBox/SpinBox")
+range_input = NodePath("Range_HBox/OptionButton")
+attack_scroller = NodePath("ScrollContainer/VBoxContainer")
+load_attack_button = NodePath("LoadAttack_Button")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Attack Builder"
+
+[node name="Name_HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Name_HBox"]
+layout_mode = 2
+text = "Attack Name: "
+
+[node name="LineEdit" type="LineEdit" parent="Name_HBox"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 20
+expand_to_text_length = true
+
+[node name="Power_HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Power_HBox"]
+layout_mode = 2
+text = "Power: "
+
+[node name="SpinBox" type="SpinBox" parent="Power_HBox"]
+layout_mode = 2
+max_value = 500.0
+value = 10.0
+
+[node name="Range_HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Range_HBox"]
+layout_mode = 2
+text = "Range: "
+
+[node name="OptionButton" type="OptionButton" parent="Range_HBox"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Melee"
+popup/item_0/id = 0
+popup/item_1/text = "Ranged"
+popup/item_1/id = 1
+
+[node name="Element_HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Element_HBox"]
+layout_mode = 2
+text = "Type: "
+
+[node name="ElementOptionButton" parent="Element_HBox" instance=ExtResource("1_ipbcl")]
+layout_mode = 2
+
+[node name="Create_Button" type="Button" parent="."]
+layout_mode = 2
+text = "Create"
+
+[node name="AttackList_Label" type="Label" parent="."]
+layout_mode = 2
+text = "Attacks"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LoadAttack_Button" type="Button" parent="."]
+layout_mode = 2
+text = "Load Attack"
+
+[connection signal="pressed" from="Create_Button" to="." method="_on_create_button_pressed"]

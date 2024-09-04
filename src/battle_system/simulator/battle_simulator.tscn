@@ -1,18 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://8cdqkgh83j0s"]
 
 [ext_resource type="Script" path="res://src/battle_system/simulator/battle_simulator.gd" id="1_ipe0m"]
-[ext_resource type="PackedScene" uid="uid://boexlidldafi6" path="res://src/battle_system/simulator/character_builder.tscn" id="2_00b0l"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_tcfip"]
+[ext_resource type="PackedScene" uid="uid://dapesoo2g5t40" path="res://src/battle_system/simulator/character_builder2.tscn" id="4_mif78"]
 
 [node name="BattleSimulator" type="Node2D" node_paths=PackedStringArray("character_builder")]
 script = ExtResource("1_ipe0m")
-character_builder = NodePath("CanvasLayer/CharacterBuilder")
+character_builder = NodePath("CanvasLayer/CharacterBuilder2")
 battle_scene = ExtResource("2_tcfip")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CharacterBuilder" parent="CanvasLayer" instance=ExtResource("2_00b0l")]
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="CharacterBuilder2" parent="CanvasLayer" instance=ExtResource("4_mif78")]
 
-[connection signal="setup_finished" from="CanvasLayer/CharacterBuilder" to="." method="_on_character_builder_setup_finished"]
+[connection signal="setup_finished" from="CanvasLayer/CharacterBuilder2" to="." method="_on_character_builder_setup_finished"]

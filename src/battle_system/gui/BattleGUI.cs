@@ -34,6 +34,7 @@ public partial class BattleGUI: Node
 	public void InitAllies(BattleActor[] allies) {
 		this.allies = allies;
 		selectedActions = new ActorAction[allies.Length];
+
 		foreach (BattleActor actor in allies) {
 			allyDisplayParent.AddDisplay(actor);
 		}
@@ -99,7 +100,6 @@ public partial class BattleGUI: Node
 				break;
 			case BattleAction.TargetType.Enemy:
 				enemyDisplayParent.SelectTarget(true);
-				/*target = */
 				target = (BattleActor)(await ToSignal(enemyDisplayParent, "Selected"))[0]; 
 				targets = new BattleActor[] { target };
 				break;

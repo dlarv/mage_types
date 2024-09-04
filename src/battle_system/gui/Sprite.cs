@@ -7,7 +7,6 @@ public partial class Sprite : Sprite2D
 	private Sprite2D sprite = null;
 	private bool use_gradient_sprite = false;
 
-
 	public void SetGradientSprite(ElementalType element1, ElementalType element2) {
 		Gradient grad = new Gradient();
 		if(element1 != null) {
