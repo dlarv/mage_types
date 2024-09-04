@@ -30,6 +30,7 @@ public partial class PlayerControls : PanelContainer
 	// The index of the rightmost character who has selected an action.
 	private int edgeIndex = 0;
 	private int finalIndex = 0;
+	private bool allowEndTurn = false;
 
 	public override void _Ready() {
 		finalIndex = attacksPanel.GetChildCount() - 1;
@@ -99,12 +100,14 @@ public partial class PlayerControls : PanelContainer
 	}
 	public void _on_start_button_pressed() {
 		controlPanel.CurrentTab = 0;
+		allowEndTurn = false;
 		EmitSignal(SignalName.EndTurn, false);
 	}
 	private void calc_character_selector_state(int index) {
 		prevButton.Disabled = index == 0;
 		nextButton.Disabled = index == edgeIndex;
-		endButton.Disabled = edgeIndex < finalIndex;
+		/*endButton.Disabled = edgeIndex < finalIndex;*/
+		endButton.Disabled = !allowEndTurn;
 	}
 	public void _on_attacks_button_pressed() {
 		controlPanel.CurrentTab = 1;
@@ -131,6 +134,7 @@ public partial class PlayerControls : PanelContainer
 		}
 		if(meta) {
 			EmitSignal(SignalName.ActionSelected, index, action);
+			allowEndTurn = edgeIndex == finalIndex;
 		} else {
 			EmitSignal(SignalName.ShowInfo, action);	
 			button.SetMeta(KEY, true);
