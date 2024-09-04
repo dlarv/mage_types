@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/battle_system/simulator/character_creator_tabs/attack_creator.gd" id="1_pqc2u"]
 [ext_resource type="PackedScene" uid="uid://lru2hepw8pt5" path="res://src/battle_system/simulator/components/attack_list_item.tscn" id="2_hgx0f"]
 
-[node name="Attack_VBox" type="VBoxContainer" node_paths=PackedStringArray("attack_element_input", "attack_name_input", "power_input", "range_input", "attack_scroller", "load_attack_button")]
+[node name="Attack_VBox" type="VBoxContainer" node_paths=PackedStringArray("attack_element_input", "attack_name_input", "power_input", "range_input", "target_input", "attack_scroller", "load_attack_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,6 +17,7 @@ attack_element_input = NodePath("Element_HBox/ElementOptionButton")
 attack_name_input = NodePath("Name_HBox/LineEdit")
 power_input = NodePath("Power_HBox/SpinBox")
 range_input = NodePath("Range_HBox/OptionButton")
+target_input = NodePath("Target_HBox/OptionButton")
 attack_scroller = NodePath("ScrollContainer/VBoxContainer")
 load_attack_button = NodePath("LoadAttack_Button")
 
@@ -63,6 +64,28 @@ popup/item_0/text = "Melee"
 popup/item_0/id = 0
 popup/item_1/text = "Ranged"
 popup/item_1/id = 1
+
+[node name="Target_HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Target_HBox"]
+layout_mode = 2
+text = "Target: "
+
+[node name="OptionButton" type="OptionButton" parent="Target_HBox"]
+layout_mode = 2
+item_count = 5
+selected = 3
+popup/item_0/text = "Self"
+popup/item_0/id = 0
+popup/item_1/text = "Ally"
+popup/item_1/id = 1
+popup/item_2/text = "Allies"
+popup/item_2/id = 2
+popup/item_3/text = "Enemy"
+popup/item_3/id = 3
+popup/item_4/text = "Enemies"
+popup/item_4/id = 4
 
 [node name="Element_HBox" type="HBoxContainer" parent="."]
 layout_mode = 2

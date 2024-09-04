@@ -10,6 +10,7 @@ signal open_file(path: String)
 @export var attack_name_input: LineEdit
 @export var power_input: SpinBox
 @export var range_input: OptionButton
+@export var target_input: OptionButton
 @export var attack_scroller: VBoxContainer
 @export var load_attack_button: Button
 
@@ -30,6 +31,8 @@ func _ready():
 		attack.Power = val)
 	range_input.item_selected.connect(func(index):
 		attack.Range = index)
+	target_input.item_selected.connect(func(index):
+		attack.Target = index)
 
 func _on_create_button_pressed():
 	var item = AttackListItem.instantiate()
@@ -51,6 +54,7 @@ func clear():
 	attack_name_input.text = ""
 	power_input.value = attack.Power
 	range_input.select(0)
+	target_input.select(3)
 
 func clear_scroller():
 	attacks = []
@@ -63,6 +67,7 @@ func set_attack(attack):
 	attack_name_input.text = attack.Name
 	power_input.value = attack.Power
 	range_input.select(attack.Range)
+	target_input.select(attack.Target)
 
 func add_attacks(attacks):
 	self.attacks = attacks
