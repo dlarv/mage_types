@@ -4,7 +4,7 @@ using System;
 [GlobalClass]
 public partial class Attack : BattleAction 
 {
-	public enum AttackRange { Melee, Ranged, Self }
+	public enum AttackRange { Melee, Ranged }
 
 	[Export]
 	public int Power;
