@@ -12,6 +12,8 @@ scale_min = 8.0
 scale_max = 10.0
 
 [node name="Jet" type="Node2D" node_paths=PackedStringArray("animation")]
+z_index = 5
+z_as_relative = false
 script = ExtResource("1_q8cwd")
 animation = NodePath("GPUParticles2D")
 

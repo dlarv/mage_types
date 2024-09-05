@@ -26,6 +26,9 @@ public partial class TeamDisplay : Control
 			}
 		}
 	}
+	public int Length { 
+		get => displays.Count; 
+	}
 	private List<BattleActorDisplay> displays = new();
 	private int highlightedActorIndex = 0;
 
@@ -46,6 +49,15 @@ public partial class TeamDisplay : Control
 	public BattleActorDisplay GetDisplay(int index) {
 		if(index < displays.Count) {
 			return displays[index];
+		}
+		return null;
+	}
+
+	public BattleActorDisplay GetDisplay(BattleActor actor) {
+		foreach(BattleActorDisplay display in displays) {
+			if(display.Actor == actor) {
+				return display;
+			}
 		}
 		return null;
 	}

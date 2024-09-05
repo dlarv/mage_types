@@ -10,7 +10,7 @@ public partial class OpponentController : Node
 			if(team[i].Attacks.Length == 0) 
 				actions[i] = null;
 			else
-				actions[i] = null; //team[i].Attacks[0];
+				actions[i] = new ActorAction(team[i], team[i].Attacks[0], new BattleActor[] { otherTeam[0] }, 1);
 		}
 		return actions;
 	}

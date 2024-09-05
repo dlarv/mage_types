@@ -9,6 +9,8 @@ public partial class Sprite : Sprite2D
 
 	public void SetGradientSprite(ElementalType element1, ElementalType element2) {
 		Gradient grad = new Gradient();
+		use_gradient_sprite = true;
+
 		if(element1 != null) {
 			grad.SetColor(0, element1.MainColor);
 		}
@@ -25,7 +27,6 @@ public partial class Sprite : Sprite2D
 		if(use_gradient_sprite) {
 			((GradientTexture2D)Texture).Gradient.SetColor(id, element.MainColor);
 		}
-
 	}
 
 }

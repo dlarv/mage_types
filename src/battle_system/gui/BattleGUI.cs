@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 public partial class BattleGUI: Node
 {
 	[Signal]
-	public delegate void ActionsSelectedEventHandler(BattleAction[] actions);
+	public delegate void ActionsSelectedEventHandler(ActorAction[] actions);
 	[Signal]
 	public delegate void BattleEndedEventHandler();
 
@@ -74,11 +74,29 @@ public partial class BattleGUI: Node
 
 	public void RemoveActor(BattleActor target) {
 	}
+	public Vector2 GetActorDisplayPosition(int teamIndex, BattleActor actor=null) {
+		TeamDisplay teamDisplay;
+		if(teamIndex == 0) {
+			teamDisplay = allyDisplayParent;
+		} else {
+			teamDisplay = enemyDisplayParent;
+		}
+
+		if(actor == null) {
+			return teamDisplay.GlobalPosition;
+		}
+
+		BattleActorDisplay display = teamDisplay.GetDisplay(actor);
+		return display.GetPosition();
+	}
+	public void EnablePlayerControls(bool enable) {
+		playerControls.SetEnabled(enable);
+	}
 
 	public async void _on_action_selected(int index, BattleAction action) {
 		BattleActor[] targets = await SelectTargets(allies[index], action);
 
-		ActorAction actorAction = new(allies[index], action, targets);
+		ActorAction actorAction = new(allies[index], action, targets, 0);
 		selectedActions[index] = actorAction;
 		messageBox.Clear();
 		playerControls.NextCharacter();
@@ -86,22 +104,37 @@ public partial class BattleGUI: Node
 	private async Task<BattleActor[]> SelectTargets(BattleActor user, BattleAction action) {
 		BattleActor[] targets = null;
 		BattleActor target;
+
 		switch(action.Target) {
 			case BattleAction.TargetType.Self:
 				targets = new BattleActor[] { user };
 				break;
 			case BattleAction.TargetType.Ally:
-				allyDisplayParent.SelectTarget(false);
-				target = (BattleActor)(await ToSignal(allyDisplayParent, "Selected"))[0];
-				targets = new BattleActor[] { target };
+				if(allyDisplayParent.Length == 1) {
+					targets = new BattleActor[] { allyDisplayParent.GetDisplay(0).Actor };
+					// This pause is needed, otherwise the End turn button won't enable.
+					var timer = GetTree().CreateTimer(.1);
+					await ToSignal(timer, "timeout");
+				} else {
+					allyDisplayParent.SelectTarget(false);
+					target = (BattleActor)(await ToSignal(allyDisplayParent, "Selected"))[0];
+					targets = new BattleActor[] { target };
+				}
 				break;
 			case BattleAction.TargetType.Allies:
 				targets = allies;
 				break;
 			case BattleAction.TargetType.Enemy:
-				enemyDisplayParent.SelectTarget(true);
-				target = (BattleActor)(await ToSignal(enemyDisplayParent, "Selected"))[0]; 
-				targets = new BattleActor[] { target };
+				if(enemyDisplayParent.Length == 1) {
+					targets = new BattleActor[] { enemyDisplayParent.GetDisplay(0).Actor };
+					// This pause is needed, otherwise the End turn button won't enable.
+					var timer = GetTree().CreateTimer(.1);
+					await ToSignal(timer, "timeout");
+				} else {
+					enemyDisplayParent.SelectTarget(true);
+					target = (BattleActor)(await ToSignal(enemyDisplayParent, "Selected"))[0]; 
+					targets = new BattleActor[] { target };
+				}
 				break;
 			case BattleAction.TargetType.Enemies:
 				targets = enemies;
@@ -122,7 +155,6 @@ public partial class BattleGUI: Node
 	}
 	public void _on_show_info(BattleAction action) {
 		string msg = $"{action.Name}";
-		GD.Print(msg);
 		DisplayMessageNonBlocking("", action);
 	}
 }

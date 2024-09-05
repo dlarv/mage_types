@@ -11,9 +11,15 @@ public partial class BattleActor : Node
 	public string ActorName; 
 
 	[ExportCategory("Stats")]
+	private int _hp;
 	[Export]
-	public int Hp { get; set; }
-	[Export]
+	public int Hp { 
+		get => _hp; 
+		set {
+			_hp = value;
+			CurrentHp = value;
+		}
+	}
 	public int CurrentHp { get; set; }
 	[Export]
 	public int MeleeAttack { get; set; }
@@ -43,8 +49,8 @@ public partial class BattleActor : Node
     public override void _Ready() {
         base._Ready();
 
-			Sprite = new();
-			Sprite.SetGradientSprite(Element1, Element2);
+		Sprite = new();
+		Sprite.SetGradientSprite(Element1, Element2);
 		if(Sprite == null) {
 			Sprite = new();
 			Sprite.SetGradientSprite(Element1, Element2);
@@ -124,12 +130,10 @@ public partial class BattleActor : Node
 		Sprite.SetGradientSprite(Element1, Element2);
 	}
 
-	public static int GetMaxStat()
-	{
+	public static int GetMaxStat() {
 		return MAX_STAT;
 	}
-	public Dictionary<string, int> GetStats()
-	{
+	public Dictionary<string, int> GetStats() {
 		return new Dictionary<string, int>() {
 			{ "hp", Hp },
 			{ "attack", MeleeAttack },

@@ -1,11 +1,6 @@
-- [x] Make basic ranged attack.
-- [x] Add melee transmutation calculation.
-- [ ] Upon self reaction, make secondary type None.
-- [ ] Apply damage.
-- [ ] Using the same type attack twice in a row => transmutation.
-- [ ] Mana system design.
-- [ ] Element aesthetics.
-
-- [ ] Design the elemental traits.
-- [ ] Plan dungeons (roughly).
-- [ ] Write script.
+# Battle System
+- [ ] Have animations play above sprites.
+- [ ] Wait for animation to finish before displaying message.
+- [x] If only 1 target is available, automatically select them.
+- [x] Have button be highlighted a different color when displaying info vs selecting target.
+- [x] Disable control panel when turn is resolving.

@@ -13,6 +13,8 @@ public partial class PlayerControls : PanelContainer
 	public delegate void ActiveActorChangedEventHandler(int index);
 
 	[Export]
+	private Color targetingHoverColor;
+	[Export]
 	private TabContainer controlPanel;
 	[Export]
 	private TabContainer attacksPanel;
@@ -26,6 +28,8 @@ public partial class PlayerControls : PanelContainer
 	private Button prevButton;
 	[Export]
 	private Button endButton;
+	[Export]
+	private Panel blockingPanel;
 
 	// The index of the rightmost character who has selected an action.
 	private int edgeIndex = 0;
@@ -98,6 +102,9 @@ public partial class PlayerControls : PanelContainer
 		EmitSignal(SignalName.ActiveActorChanged, index);
 		calc_character_selector_state(index);
 	}
+	public void SetEnabled(bool enable) {
+		blockingPanel.Visible = !enable;
+	}
 	public void _on_start_button_pressed() {
 		controlPanel.CurrentTab = 0;
 		allowEndTurn = false;
@@ -130,14 +137,17 @@ public partial class PlayerControls : PanelContainer
 
 		if(!toggled) {
 			button.SetMeta(KEY, false);
+			button.SelfModulate = Colors.White;
 			return;
 		}
 		if(meta) {
 			EmitSignal(SignalName.ActionSelected, index, action);
 			allowEndTurn = edgeIndex == finalIndex;
+			button.SelfModulate = targetingHoverColor;
 		} else {
 			EmitSignal(SignalName.ShowInfo, action);	
 			button.SetMeta(KEY, true);
+			button.SelfModulate = Colors.White;
 		}
 	}
 }

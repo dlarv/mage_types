@@ -20,17 +20,21 @@ public partial class BattleAction : Resource
 	[Export(PropertyHint.MultilineText)]
 	public string Details { get; set; }
 
-	public virtual GodotObject PlayAnimation(Vector2 start, Vector2 end) 
+	public virtual Node PlayAnimation(Vector2 start, Vector2 end) 
 	{
-		GodotObject obj = animation.Instantiate();
+		Node obj = animation.Instantiate();
 		obj.Call("_play", start, end, Element);
 		return obj;
 	}
 
 	// Main logic for action.
 	// Returns message stating what happened to actor. This is displayed for player.
-	public virtual string ApplyEffects(BattleActor actor, BattleActor other=null) 
-	{
-		return "";
+	public virtual string ApplyEffects(BattleActor user, BattleActor[] targets=null) {
+		return $"{user.ActorName} used {Name} on {(targets.Length == 1 ? targets[0].ActorName : "opposing team")}";
+	}
+
+	/// The most basic damage calculation. Only accounts for attack, defense, and power.
+	public static int CalculateDamage(int attack, int defense, Attack action) {
+		return action.Power * (attack/defense) * (GD.RandRange(80, 100)/100);
 	}
 }

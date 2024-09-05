@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 [GlobalClass]
 public partial class Battle : Node
@@ -11,6 +12,7 @@ public partial class Battle : Node
 	private BattleActor[] actors;
 	[Export]
 	private BattleGUI gui;
+	[Export]
 	private OpponentController ai;
 
 	public void Start(BattleActor[] allies, BattleItem[] allyItems, BattleActor[] enemies, OpponentController ai) 
@@ -18,20 +20,90 @@ public partial class Battle : Node
 		this.allies = allies;
 		this.enemies = enemies;
 		this.actors = allies.Concat(enemies).ToArray();
-		this.ai = ai;
+		/*this.ai = ai;*/
 
 		gui.Setup(allies, allyItems, enemies);
 	}
 
-	public void OnPlayerActionsSelected(ActorAction[] allyActions) {
+	public async void OnPlayerActionsSelected(ActorAction[] allyActions) {
+		gui.EnablePlayerControls(false);
 		ActorAction[] enemyActions = ai.GetActions(enemies, allies);
-		List<ActorAction> actions = new(allyActions.Length + enemyActions.Length);
-
-		// Calculate priority.
+		List<ActorAction> actions = allyActions.Concat(enemyActions).ToList<ActorAction>();
+		// Calculate turn order based on priority and actor speed.
 		actions.Sort();
 
-		// 
+		foreach(ActorAction action in actions) {
+			// Play animation.
+			Vector2 userPosition = gui.GetActorDisplayPosition(action.teamIndex, action.actor);
+			Vector2 targetPosition = gui.GetActorDisplayPosition(
+					(action.teamIndex + 1) % 2, 
+					action.targets.Length == 1 ? action.targets[0] : null
+					);
+			Node animation = action.action.PlayAnimation(userPosition, targetPosition);
+			AddChild(animation);
+
+			// Apply action effects.
+			string msg = action.action.ApplyEffects(action.actor, action.targets);
+			// Display message and await input.
+			await gui.DisplayMessage(msg);
+
+			// Calculate target transmutations.
+			foreach(BattleActor target in action.targets) {
+				await CalculateTransmutaions(target, action.action);
+			}
+			// Calculate user transmutations.
+			// If the user targeted themselves using this attack, these calculations were already done.
+			// (e.g. Target = Allies || Self || Ally).
+			// This only applies to melee attacks.
+			if(!action.targets.Contains(action.actor) 
+					&& action.action is Attack 
+					&& ((Attack)action.action).Range == Attack.AttackRange.Melee) {
+				await CalculateTransmutaions(action.actor, action.action); 
+			}
+			// Apply new status effects.
+			// Resolve user's status effects.
+			
+			// Pause before processing next turn.
+			var timer = GetTree().CreateTimer(1);
+			await ToSignal(timer, "timeout");
+		}
+		gui.EnablePlayerControls(true);
+	}
+
+	public async Task CalculateTransmutaions(BattleActor target, BattleAction action) {
+		string msg = "";
+		string e1 = target.Element1.Name.ToLower();
+		string e2 = target.Element2.Name.ToLower();
+		string ea = action.Element.Name.ToLower();
+
+		// Calculate primary + attack 
+		ElementalType newType = ElementManager.GetMatchup(target.Element1, action.Element);
+		if(newType != null) {
+			msg += $"The target {target.Name}'s [color={e1}]{e1}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].\n";
+			target.SetElement(0, newType);
+		}
+
+		// Calculate secondary + attack 
+		newType = ElementManager.GetMatchup(target.Element2, action.Element);
+		if(newType != null) {
+			msg += $"The target {target.Name}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+			target.SetElement(1, newType);
+		}
+
+		// Only display message if applicable.
+		// If no changes occurred, iteration can end here.
+		if(msg.Length > 0) {
+			await gui.DisplayMessage(msg);
+		} else return;
+
+		// Calculate primary + secondary.
+		newType = ElementManager.GetMatchup(target.Element1, target.Element2);
+		if(newType != null) {
+			e1 = target.Element1.Name.ToLower();
+			e2 = target.Element2.Name.ToLower();
+			msg += $"The target {target.Name}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+			await gui.DisplayMessage(msg);
+		}
 	}
 
 }
-

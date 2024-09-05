@@ -51,4 +51,5 @@ layout_mode = 2
 
 [connection signal="ActionSelected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="ActiveActorChanged" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]
+[connection signal="EndTurn" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_turn_ended"]
 [connection signal="ShowInfo" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_show_info"]

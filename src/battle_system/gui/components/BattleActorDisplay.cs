@@ -24,6 +24,7 @@ public partial class BattleActorDisplay : Control
 	[Export]
 	private Button selectorButton;
 	private Color tint = Colors.White;
+	public BattleActor Actor { get; set; }
 
 	private Sprite sprite;
 	private int totalHp;
@@ -37,6 +38,7 @@ public partial class BattleActorDisplay : Control
 		spriteDisplay.Texture = actor.Sprite.Texture;
 
 		selectorButton.Pressed += () => EmitSignal(SignalName.Selected, actor);
+		Actor = actor;
 	}
 
 	public void SetElement(int id, ElementalType element) {
@@ -52,7 +54,11 @@ public partial class BattleActorDisplay : Control
 	}
 
 	public Vector2 GetPosition() {
-		return Vector2.Zero;
+		Vector2 position = GlobalPosition;
+		position.X += Size.X / 2;
+		position.Y += Size.Y / 2;
+
+		return position;
 	}
 
 	/// Disallow selection

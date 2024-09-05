@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://rdeiqoc7uc0n"]
+[gd_scene load_steps=4 format=3 uid="uid://rdeiqoc7uc0n"]
 
 [ext_resource type="Script" path="res://src/battle_system/Battle.cs" id="1_7277n"]
 [ext_resource type="PackedScene" uid="uid://1q27rku2p2g2" path="res://src/battle_system/gui/battle_gui.tscn" id="2_sq28q"]
+[ext_resource type="Script" path="res://src/battle_system/OpponentController.cs" id="3_p7an0"]
 
-[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui")]
+[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "ai")]
 script = ExtResource("1_7277n")
 gui = NodePath("BattleGUI")
+ai = NodePath("OpponentController")
 
 [node name="BattleGUI" parent="." instance=ExtResource("2_sq28q")]
+
+[node name="OpponentController" type="Node" parent="."]
+script = ExtResource("3_p7an0")
+
+[connection signal="ActionsSelected" from="BattleGUI" to="." method="OnPlayerActionsSelected"]

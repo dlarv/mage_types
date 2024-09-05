@@ -14,7 +14,7 @@ func _process(delta):
 
 func _play(start: Vector2i, end: Vector2i, element=null):
 	set_elemental_tint(element)
-	position = start
+	position = end 
 	self.start = start
 	self.end = end
 

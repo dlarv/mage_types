@@ -45,9 +45,6 @@ func load_default_teams():
 	actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
 	_on_character_created(actor)
 
-	actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
-	_on_character_created(actor)
-
 func _unhandled_input(input):
 	if input.is_action_pressed("ui_accept"):
 		_on_start_battle_button_pressed()

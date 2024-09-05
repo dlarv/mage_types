@@ -11,16 +11,16 @@ public partial class MessageBox : RichTextLabel
 	private Button button;
 
 	public override void _Ready() {
-		button.Pressed += Clear;
+		button.Pressed += ClearMessage;
 	}
 
 	public async Task DisplayMessageBlocking(string msg) {
-		Clear();
+		ClearMessage();
 		Text = msg;
 		await ToSignal(button, "pressed");
 	}
 	public void DisplayMessageNonBlocking(string msg, GodotObject obj=null) {
-		Clear();
+		ClearMessage();
 		if(obj == null) {
 			Text = msg;
 		}
@@ -92,5 +92,10 @@ public partial class MessageBox : RichTextLabel
 		AppendText(element.Name);
 		Pop(); // End color
 		Newline();
+	}
+
+	public void ClearMessage() {
+		Text = "";
+		Clear();
 	}
 }

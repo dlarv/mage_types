@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/PlayerControls.cs" id="1_5ol5c"]
 
-[node name="PlayerControls" type="PanelContainer" node_paths=PackedStringArray("controlPanel", "attacksPanel", "itemsScroller", "characterScroller", "nextButton", "prevButton", "endButton")]
+[node name="PlayerControls" type="PanelContainer" node_paths=PackedStringArray("controlPanel", "attacksPanel", "itemsScroller", "characterScroller", "nextButton", "prevButton", "endButton", "blockingPanel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,6 +10,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_5ol5c")
+targetingHoverColor = Color(0, 1, 0, 1)
 controlPanel = NodePath("VBoxContainer/TabContainer")
 attacksPanel = NodePath("VBoxContainer/TabContainer/Attacks_Tab/TabContainer")
 itemsScroller = NodePath("VBoxContainer/TabContainer/Items_Tab/ScrollContainer/VBoxContainer")
@@ -17,6 +18,7 @@ characterScroller = NodePath("VBoxContainer/TabContainer/Characters_Tab/ScrollCo
 nextButton = NodePath("VBoxContainer/CharacterSelector/Next_Button")
 prevButton = NodePath("VBoxContainer/CharacterSelector/Prev_Button")
 endButton = NodePath("VBoxContainer/CharacterSelector/Start_Button")
+blockingPanel = NodePath("Blocking_Panel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -118,6 +120,10 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Blocking_Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/CharacterSelector/Prev_Button" to="." method="PrevCharacter"]
 [connection signal="pressed" from="VBoxContainer/CharacterSelector/Start_Button" to="." method="_on_start_button_pressed"]
