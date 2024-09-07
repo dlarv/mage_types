@@ -21,17 +21,41 @@ public partial class BattleActor : Node {
 	}
 	public int CurrentHp { get; set; }
 	[Export]
-	public int MeleeAttack { get; set; }
+	public int MeleeAttack { 
+		get { return (int)(_meleeAttack + statuses.MeleeAttackMod); }
+		set => _meleeAttack = value; 
+	}
+	private int _meleeAttack;
 	[Export]
-	public int RangedAttack { get; set; }
+	public int RangedAttack { 
+		get { return (int)(_rangedAttack + statuses.RangedAttackMod); }
+		set => _rangedAttack = value; 
+	}
+	private int _rangedAttack;
 	[Export]
-	public int MeleeDefense { get; set; }
+	public int MeleeDefense { 
+		get { return (int)(_meleeDefense + statuses.MeleeDefenseMod); }
+		set => _meleeDefense = value; 
+	}
+	public int _meleeDefense;
 	[Export]
-	public int RangedDefense { get; set; }
+	public int RangedDefense { 
+		get { return (int)(_rangedDefense+ statuses.RangedDefenseMod); }
+		set => _rangedDefense = value; 
+	}
+	private int _rangedDefense;
 	[Export]
-	public int Speed { get; set; }
+	public int Speed { 
+		get { return (int)(_speed + statuses.SpeedMod); }
+		set => _speed = value; 
+	}
+	private int _speed;
 	[Export]
-	public int Evasion { get; set; }
+	public int Evasion { 
+		get { return (int)(_evasion + statuses.EvasionMod); }
+		set => _evasion = value; 
+	}
+	private int _evasion;
 
 	[ExportCategory("General")]
 	[Export]
@@ -39,11 +63,26 @@ public partial class BattleActor : Node {
 	[Export]
 	public ElementalType Element2 { get; private set; }
 	[Export]
+	public ElementalType ElementalBias { get; private set; }
+	[Export]
 	public Attack[] Attacks { get; set; }
 	[Export]
 	public Sprite Sprite = null;
-	/*public Sprite2D Sprite = null;*/
-	/*protected bool use_gradient_sprite = false;*/
+
+	private StatusEffectManager statuses = new();
+	public bool Dissonant { 
+		get => statuses.IsDissonant();
+	}
+	public bool Flinching {
+		get {
+			return statuses.IsFlinching();
+		}
+	}
+	public bool InStasis {
+		get {
+			return statuses.InStasis();
+		}
+	}
 
     public override void _Ready() {
         base._Ready();
@@ -69,7 +108,6 @@ public partial class BattleActor : Node {
 			Element2 = elementManager.GetElementFromName("blank");
 		}
 	}
-    
 
 	public void SetElement(int id, ElementalType element) {
 		if(id == 0) {
@@ -78,6 +116,14 @@ public partial class BattleActor : Node {
 			Element2 = element;
 		}
 		Sprite.SetElement(id, element);
+
+		StatusEffect mod;
+		if(statuses.IsPhobic(element, out mod)) {
+			CurrentHp -= (int)((double)Hp * mod.Strength);
+		}
+		else if(statuses.IsPhilic(element, out mod)) {
+			CurrentHp += (int)((double)Hp * mod.Strength);
+		}
 	}
 	
 	public static BattleActor Create(string actorName, ElementalType element1, ElementalType element2, Attack[] attacks, Dictionary<string, int> stats) {
@@ -185,5 +231,44 @@ public partial class BattleActor : Node {
 			return MeleeDefense;
 		}
 		return RangedDefense;
+	}
+	// Returns actual amount of damage applied, after accounting for status conditions.
+	public int ApplyDamage(int dmg) {
+		if(!statuses.IsBlocking()) {
+			CurrentHp -= dmg;
+			return dmg;
+		}
+		return 0;
+	}
+	public void AddStatusEffect(StatusEffect effect) {
+		statuses.Add(effect);
+	}
+
+	/* Status Effect Methods */
+	public bool TryRevertToBias() {
+		return false;
+	}
+	public StatusEffect[] ListStatusEffects() {
+		return statuses.List();
+	}
+	public string ResolveEndOfTurn() {
+		// Calc poison and healing.
+		string msg = "";
+		double mod = 0;
+		double poison = statuses.Poison;
+		double healing = statuses.Healing;
+
+		if(poison > 0) {
+			mod += poison;
+			msg += $"{ActorName} was hurt by poison ({Hp * poison})";
+		}
+		if(healing > 0) {
+			mod -= healing;
+			msg += $"{ActorName} recovered {Hp * healing} health";
+		}
+		CurrentHp -= (int)((double)Hp * mod);
+
+		statuses.CalculateExpirations();
+		return msg;
 	}
 }

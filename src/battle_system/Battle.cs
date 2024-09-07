@@ -29,10 +29,14 @@ public partial class Battle : Node
 		gui.EnablePlayerControls(false);
 		ActorAction[] enemyActions = ai.GetActions(enemies, allies);
 		List<ActorAction> actions = allyActions.Concat(enemyActions).ToList<ActorAction>();
+
 		// Calculate turn order based on priority and actor speed.
 		actions.Sort();
 
 		foreach(ActorAction action in actions) {
+			if(action.actor.Flinching) {
+				continue;
+			}
 			// Play animation.
 			Vector2 userPosition = gui.GetActorDisplayPosition(action.teamIndex, action.actor);
 			Vector2 targetPosition = gui.GetActorDisplayPosition(
@@ -43,20 +47,15 @@ public partial class Battle : Node
 			AddChild(animation);
 
 			// Apply action effects.
-			string msg = action.action.ApplyEffects(action.actor, action.targets);
 			TeamDisplay teamDisplay = action.teamIndex == 1 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;
-
-			// Update hp bars.
-			foreach(BattleActor target in action.targets) {
-				teamDisplay.GetDisplay(target).SetHealth(target.CurrentHp);
-			}
+			string msg = action.action.ApplyEffects(action.actor, action.targets, teamDisplay);
 
 			// Display message and await input.
 			await gui.DisplayMessage(msg);
 
 			// Calculate target transmutations.
 			foreach(BattleActor target in action.targets) {
-				await CalculateTransmutaions(target, action.action);
+				await CalculateTransmutations(target, action.action);
 			}
 			// Calculate user transmutations.
 			// If the user targeted themselves using this attack, these calculations were already done.
@@ -65,19 +64,25 @@ public partial class Battle : Node
 			if(!action.targets.Contains(action.actor) 
 					&& action.action is Attack 
 					&& ((Attack)action.action).Range == Attack.AttackRange.Melee) {
-				await CalculateTransmutaions(action.actor, action.action); 
+				await CalculateTransmutations(action.actor, action.action); 
 			}
-			// Apply new status effects.
+
 			// Resolve user's status effects.
-			
+			msg = action.actor.ResolveEndOfTurn();		
+			if(msg.Length > 0) {
+				teamDisplay = action.teamIndex == 0 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;
+				teamDisplay.GetDisplay(action.actor).SetHealth(action.actor.CurrentHp);
+				await gui.DisplayMessage(msg);
+			}
+
 			// Pause before processing next turn.
-			var timer = GetTree().CreateTimer(1);
+			var timer = GetTree().CreateTimer(.5);
 			await ToSignal(timer, "timeout");
 		}
 		gui.EnablePlayerControls(true);
 	}
 
-	public async Task CalculateTransmutaions(BattleActor target, BattleAction action) {
+	public async Task CalculateTransmutations(BattleActor target, BattleAction action) {
 		string msg = "";
 		string e1 = target.Element1.Name.ToLower();
 		string e2 = target.Element2.Name.ToLower();
@@ -92,7 +97,7 @@ public partial class Battle : Node
 
 		// Calculate secondary + attack 
 		newType = ElementManager.GetMatchup(target.Element2, action.Element);
-		if(newType != null) {
+		if(newType != null && !target.InStasis) {
 			msg += $"The target {target.Name}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
 			target.SetElement(1, newType);
 		}
@@ -105,7 +110,7 @@ public partial class Battle : Node
 
 		// Calculate primary + secondary.
 		newType = ElementManager.GetMatchup(target.Element1, target.Element2);
-		if(newType != null) {
+		if(newType != null && !target.Dissonant) {
 			e1 = target.Element1.Name.ToLower();
 			e2 = target.Element2.Name.ToLower();
 			msg += $"The target {target.Name}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";

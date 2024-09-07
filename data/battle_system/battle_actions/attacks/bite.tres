@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bwpyxutff85nq"]
+
+[ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elements/cyan.tres" id="1_4wufi"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_gh430"]
+[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_4143m"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="3_8816p"]
+[ext_resource type="Script" path="res://src/battle_system/status_effects/AttackEffect.cs" id="3_oujge"]
+
+[sub_resource type="Resource" id="Resource_w1nmq"]
+script = ExtResource("3_oujge")
+Effect = ExtResource("3_4143m")
+Chance = 0.8
+
+[resource]
+script = ExtResource("3_8816p")
+Power = 10
+effects = Array[Object]([SubResource("Resource_w1nmq")])
+Name = "Bite"
+animation = ExtResource("2_gh430")
+Element = ExtResource("1_4wufi")
+Priority = 0
+Range = 0
+Target = 3
+Details = ""

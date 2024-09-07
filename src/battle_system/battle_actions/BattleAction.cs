@@ -32,7 +32,7 @@ public partial class BattleAction : Resource
 
 	// Main logic for action.
 	// Returns message stating what happened to the targets. This is displayed for player.
-	public virtual string ApplyEffects(BattleActor user, BattleActor[] targets) {
+	public virtual string ApplyEffects(BattleActor user, BattleActor[] targets, TeamDisplay display) {
 		string end = "";
 		if(targets.Length == 1) {
 			if(user == targets[0]) {

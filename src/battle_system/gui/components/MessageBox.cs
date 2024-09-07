@@ -58,9 +58,9 @@ public partial class MessageBox : RichTextLabel
 	private void FormatItem(BattleItem item) {
 		AppendTitle(item.Name);
 
-		/*if(item.Element != ElementManager.Blank) {
+		if(item.Element != ElementManager.Blank) {
 			AppendElementalType(item.Element);
-		}*/
+		}
 		
 		if(item.Details.Length > 0) {
 			AppendHeader("Description");
@@ -69,11 +69,25 @@ public partial class MessageBox : RichTextLabel
 		}
 	}
 	private void FormatStatusEffect(StatusEffect effect) {
+		AppendTitle(effect.Name);
+		AppendHeader("Strength");
+		AppendText($"{effect.Strength * 100.0}%");
+		Newline();
+		AppendHeader("Duration");
+		AppendText($"{effect.Duration}");
+		Newline();
 	}
 	private void FormatBattleActor(BattleActor actor) {
 		AppendTitle(actor.ActorName);
 		AppendElementalType(actor.Element1, "Primary Element");
 		AppendElementalType(actor.Element2, "Secondary Element");
+
+		Newline();
+		AppendHeader("Status Effects");
+		Newline();
+		foreach(StatusEffect effect in actor.ListStatusEffects()) {
+			FormatStatusEffect(effect);
+		}
 
 		Newline();
 		AppendHeader("Stats");
