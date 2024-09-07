@@ -153,8 +153,15 @@ public partial class BattleGUI: Node
 			EmitSignal(SignalName.ActionsSelected, selectedActions);
 		}
 	}
-	public void _on_show_info(BattleAction action) {
-		string msg = $"{action.Name}";
+	public void _on_show_info(GodotObject action) {
+		string msg = "Empty";
+		if(action is BattleAction) {
+			msg = $"{((BattleAction)action).Name}";
+		} else if (action is BattleActor) {
+			msg = $"{((BattleActor)action).ActorName}";
+		}
+		GD.Print(msg);
+		
 		DisplayMessageNonBlocking("", action);
 	}
 }

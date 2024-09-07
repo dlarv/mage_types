@@ -4,7 +4,7 @@ using System;
 public partial class PlayerControls : PanelContainer
 {
 	[Signal]
-	public delegate void ActionSelectedEventHandler(int index, BattleAction action);
+	public delegate void ActionSelectedEventHandler(int index, GodotObject action);
 	[Signal]
 	public delegate void EndTurnEventHandler(bool tryRunAway);
 	[Signal]
@@ -45,7 +45,7 @@ public partial class PlayerControls : PanelContainer
 			PopulateNewAttackMenu(allies[i], i);
 		}
 		PopulateItemsMenu(items);
-		// Populate characters
+		PopulateCharactersMenu(allies, enemies);
 	}
 	private void PopulateNewAttackMenu(BattleActor actor, int index) {
 		ScrollContainer scroller = new();
@@ -78,6 +78,41 @@ public partial class PlayerControls : PanelContainer
 			button.Text = item.Name;
 			button.Toggled += (toggled) => OnActionSelected(button, toggled, attacksPanel.CurrentTab, item);
 			itemsScroller.AddChild(button);
+		}
+	}
+	private void PopulateCharactersMenu(BattleActor[] allies, BattleActor[] enemies) {
+		ButtonGroup group = new();
+
+		Label label = new();
+		label.Text = "Allies";
+		characterScroller.AddChild(label);
+		foreach(BattleActor ally in allies) {
+			Button button = new();
+			button.ButtonGroup = group;
+			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+			button.SizeFlagsVertical = SizeFlags.ExpandFill;
+			button.Text = ally.ActorName;
+			button.Pressed += () => {
+				EmitSignal(SignalName.ShowInfo, ally);	
+			};
+
+			characterScroller.AddChild(button);
+		}
+
+		label = new();
+		label.Text = "Enemies";
+		characterScroller.AddChild(label);
+		foreach(BattleActor enemy in enemies) {
+			Button button = new();
+			button.ButtonGroup = group;
+			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+			button.SizeFlagsVertical = SizeFlags.ExpandFill;
+			button.Text = enemy.ActorName;
+			button.Pressed += () => {
+				EmitSignal(SignalName.ShowInfo, enemy);	
+			};
+
+			characterScroller.AddChild(button);
 		}
 	}
 

@@ -71,23 +71,62 @@ public partial class MessageBox : RichTextLabel
 	private void FormatStatusEffect(StatusEffect effect) {
 	}
 	private void FormatBattleActor(BattleActor actor) {
+		AppendTitle(actor.ActorName);
+		AppendElementalType(actor.Element1, "Primary Element");
+		AppendElementalType(actor.Element2, "Secondary Element");
+
+		Newline();
+		AppendHeader("Stats");
+		Newline();
+		AppendHeader("Hp");
+		AppendText($"{actor.CurrentHp}/{actor.Hp}");
+		Newline();
+
+		AppendHeader("Melee Attack");
+		AppendText($"{actor.MeleeAttack}");
+		Newline();
+
+		AppendHeader("Ranged Attack");
+		AppendText($"{actor.RangedAttack}");
+		Newline();
+
+		AppendHeader("Melee Defense");
+		AppendText($"{actor.MeleeAttack}");
+		Newline();
+
+		AppendHeader("Ranged Defense");
+		AppendText($"{actor.RangedDefense}");
+		Newline();
+
+		AppendHeader("Speed");
+		AppendText($"{actor.Speed}");
+		Newline();
+
+		Newline();
+		AppendHeader("Attacks");
+		Newline();
+		foreach(Attack attack in actor.Attacks) {
+			FormatAttack(attack);
+		}
 	}
 
-	public void AppendHeader(string val) {
-		PushBold();
-		AppendText(val);
-		Pop(); // End bold 
-		AppendText(": ");
-	}
+	// [underline]<title>[/underline]\n
 	public void AppendTitle(string title) {
 		PushUnderline();
 		AppendText(title);
 		Pop();
 		Newline();
 	}
-	public void AppendElementalType(ElementalType element) {
-		// Add Element: [color]<Name>[/color]
-		AppendHeader("Element");
+	// [bold]<val>[/bold]: 
+	public void AppendHeader(string val) {
+		PushBold();
+		AppendText(val);
+		Pop(); // End bold 
+		AppendText(": ");
+	}
+	// [color]<element.Name>[/color]\n
+	public void AppendElementalType(ElementalType element, string msg="Element") {
+		AppendHeader(msg);
 		PushColor(element.MainColor);
 		AppendText(element.Name);
 		Pop(); // End color
