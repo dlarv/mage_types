@@ -6,10 +6,11 @@
 
 [resource]
 script = ExtResource("2_gm17o")
-Power = 0
-Range = 1
+Power = 30
 Name = "Throw"
 animation = ExtResource("1_52lot")
 Element = ExtResource("1_oypeo")
+Priority = 0
+Range = 1
 Target = 3
 Details = ""

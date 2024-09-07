@@ -10,6 +10,12 @@
 script = ExtResource("1_mkc7p")
 ActorName = "Basic Boy"
 Hp = 1000
+MeleeAttack = 100
+RangedAttack = 100
+MeleeDefense = 100
+RangedDefense = 100
+Speed = 100
+Evasion = 100
 Element1 = ExtResource("2_vxy04")
 Element2 = ExtResource("3_654uk")
 Attacks = Array[Resource]([ExtResource("2_u26v7"), ExtResource("5_ifo4e")])

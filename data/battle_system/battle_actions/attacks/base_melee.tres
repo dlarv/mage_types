@@ -6,11 +6,11 @@
 
 [resource]
 script = ExtResource("3_ckr1o")
-Power = 0
-Range = 0
+Power = 30
 Name = "Hit"
 animation = ExtResource("2_hhpeb")
 Element = ExtResource("1_ouyby")
 Priority = 0
+Range = 0
 Target = 3
 Details = ""
