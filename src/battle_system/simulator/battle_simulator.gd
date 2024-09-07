@@ -9,4 +9,5 @@ func _on_character_builder_setup_finished(team1:Array, items:Array, team2:Array,
 	character_builder.hide()
 	battle.Start(team1, items, team2, ai)
 	add_child(battle)
-
+	await battle.BattleEnded
+	character_builder.show()

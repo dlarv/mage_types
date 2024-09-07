@@ -110,12 +110,18 @@ public partial class StatusEffectManager : Node {
 		return statuses.ContainsKey(DISSONANT_KEY);
 	}
 	public bool IsBlocking() {
-		isBlocking = !isBlocking;
-		return !isBlocking;
+		if(isBlocking) {
+			isBlocking = false;
+			return true;
+		}
+		return false;
 	}
 	public bool InStasis() {
-		inStasis = !inStasis;
-		return !inStasis;
+		if(inStasis) {
+			inStasis = false;
+			return true;
+		}
+		return false;
 	}
 	public bool IsPhobic(ElementalType element, out StatusEffect mod) {
 		StatusEffect effect;

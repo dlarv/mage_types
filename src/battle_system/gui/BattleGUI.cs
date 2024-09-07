@@ -104,16 +104,20 @@ public partial class BattleGUI: Node
 	private async Task<BattleActor[]> SelectTargets(BattleActor user, BattleAction action) {
 		BattleActor[] targets = null;
 		BattleActor target;
+		SceneTreeTimer timer;
 
 		switch(action.Target) {
 			case BattleAction.TargetType.Self:
 				targets = new BattleActor[] { user };
+				// This pause is needed, otherwise the End turn button won't enable.
+				timer = GetTree().CreateTimer(.05);
+				await ToSignal(timer, "timeout");
 				break;
 			case BattleAction.TargetType.Ally:
 				if(AllyDisplayParent.Length == 1) {
 					targets = new BattleActor[] { AllyDisplayParent.GetDisplay(0).Actor };
 					// This pause is needed, otherwise the End turn button won't enable.
-					var timer = GetTree().CreateTimer(.05);
+					timer = GetTree().CreateTimer(.05);
 					await ToSignal(timer, "timeout");
 				} else {
 					AllyDisplayParent.SelectTarget(false);
@@ -128,7 +132,7 @@ public partial class BattleGUI: Node
 				if(EnemyDisplayParent.Length == 1) {
 					targets = new BattleActor[] { EnemyDisplayParent.GetDisplay(0).Actor };
 					// This pause is needed, otherwise the End turn button won't enable.
-					var timer = GetTree().CreateTimer(.05);
+					timer = GetTree().CreateTimer(.05);
 					await ToSignal(timer, "timeout");
 				} else {
 					EnemyDisplayParent.SelectTarget(true);
@@ -148,9 +152,10 @@ public partial class BattleGUI: Node
 	}
 	public void _on_turn_ended(bool tryRunningAway) {
 		if(tryRunningAway) {
-			EmitSignal(SignalName.ActionsSelected, BattleAction.Flee);
+			EmitSignal(SignalName.ActionsSelected, ActorAction.Flee);
 		} else {
 			EmitSignal(SignalName.ActionsSelected, selectedActions);
+			selectedActions = new ActorAction[allies.Length];
 		}
 	}
 	public void _on_show_info(GodotObject action) {

@@ -5,8 +5,7 @@ using System;
  * Name, Sprite, Health
  */
 
-public partial class BattleActorDisplay : Control
-{
+public partial class BattleActorDisplay : Control {
 	[Signal]
 	public delegate void SelectedEventHandler(BattleActor actor);
 	[Export]
@@ -23,9 +22,12 @@ public partial class BattleActorDisplay : Control
 	private Control statusEffectIcons;
 	[Export]
 	private Button selectorButton;
-	private Color tint = Colors.White;
+	[Export]
+	private Panel defeatedPanel;
+
 	public BattleActor Actor { get; set; }
 
+	private Color tint = Colors.White;
 	private Sprite sprite;
 	private int totalHp;
 
@@ -38,7 +40,11 @@ public partial class BattleActorDisplay : Control
 		spriteDisplay.Texture = actor.Sprite.Texture;
 
 		selectorButton.Pressed += () => EmitSignal(SignalName.Selected, actor);
+
 		Actor = actor;
+		actor.WasDefeated += () => {
+			defeatedPanel.Show();
+		};
 	}
 
 	public void SetElement(int id, ElementalType element) {
@@ -75,6 +81,10 @@ public partial class BattleActorDisplay : Control
 	}
 
 	public void RemoveStatusCondition(StatusEffect effect) {
+	}
+	public void SetDefeated() {
+		// TODO: Remove status effect icons.
+		defeatedPanel.Show();
 	}
 	public void SetHighlight(bool isHighlighted) {
 		highlightDisplay.SelfModulate = new Color(tint.R, tint.G, tint.B, isHighlighted ? 1 : 0);

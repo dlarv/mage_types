@@ -25,9 +25,18 @@ public partial class Attack : BattleAction
 
 		for(int i = 0; i < targets.Length; i++) {
 			var target = targets[i];
+
+			// Apply damage.
 			int dmg = CalculateDamage(attackStat, target.GetDefenseStat(this), this);
 			dmg = target.ApplyDamage(dmg);
-			msg += $"\nDealt {dmg} damage to {target.ActorName}";
+			msg += $"\nDealt {dmg} damage to {target.ActorName}.";
+
+			// Check if character was defeated.
+			if(target.Defeated) {
+				msg += $"........{target.ActorName} was defeated.";
+				display.GetDisplay(target).SetHealth(target.CurrentHp);
+				continue;
+			}
 
 			foreach(AttackEffect effect in effects) {
 				var rand = GD.RandRange(0, 1);

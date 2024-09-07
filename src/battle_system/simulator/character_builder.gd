@@ -6,6 +6,7 @@ signal setup_finished(team1: Array, items: Array, team2: Array, ai)
 @export var alert_popup: AcceptDialog
 @export var character_creator: Control
 @export var file_popup: FileDialog
+@export var default_ally_count: int
 
 @export_category("Items")
 @export var item_name_input: LineEdit
@@ -42,11 +43,12 @@ func load_default_teams():
 	_on_character_created(actor)
 	character_scroller.get_child(0).set_team_index(1)
 
-	actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
-	_on_character_created(actor)
+	for i in range(default_ally_count):
+		actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
+		_on_character_created(actor)
 
 func _unhandled_input(input):
-	if input.is_action_pressed("ui_accept"):
+	if visible && input.is_action_pressed("ui_accept"):
 		_on_start_battle_button_pressed()
 
 
@@ -108,6 +110,8 @@ func _on_start_battle_button_pressed():
 	
 	for actor in character_scroller.get_children():
 		var index = actor.get_team_index()
+		# Reset character's health, if a game was already played.
+		actor.character.CurrentHp = actor.character.Hp
 		actor.character.UseGradientSprite()
 		if index == 0:
 			team1.append(actor.character)

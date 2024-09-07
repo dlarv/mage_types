@@ -26,9 +26,7 @@ public partial class TeamDisplay : Control
 			}
 		}
 	}
-	public int Length { 
-		get => displays.Count; 
-	}
+	public int Length { get => displays.Count; }
 	private List<BattleActorDisplay> displays = new();
 	private int highlightedActorIndex = 0;
 

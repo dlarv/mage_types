@@ -49,6 +49,8 @@ public partial class BattleAction : Resource
 
 	/// The most basic damage calculation. Only accounts for attack, defense, and power.
 	public static int CalculateDamage(int attack, int defense, Attack action) {
-		return (int)((double)action.Power * ((double)attack/(double)defense) * (GD.RandRange(80.0, 100.0)/100.0));
+		double dmg = (double)action.Power * ((double)attack/(double)defense);
+		double rand = GD.RandRange(80.0, 100.0)/100.0;
+		return (int)(dmg * rand);
 	}
 }

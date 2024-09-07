@@ -26,7 +26,7 @@ bg_color = Color(0.6, 0, 0, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_igh2i"]
 
-[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "selectorButton")]
+[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "selectorButton", "defeatedPanel")]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -44,6 +44,7 @@ hpLabel = NodePath("VBoxContainer/HealthBar/Label")
 spriteDisplay = NodePath("VBoxContainer/TextureRect")
 statusEffectIcons = NodePath("VBoxContainer/StatusEffects")
 selectorButton = NodePath("SelectorButton")
+defeatedPanel = NodePath("Panel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -108,6 +109,15 @@ texture = SubResource("PlaceholderTexture2D_igh2i")
 [node name="SelectorButton" type="Button" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

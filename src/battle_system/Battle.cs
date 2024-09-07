@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 [GlobalClass]
 public partial class Battle : Node
 {
+	[Signal]
+	public delegate void BattleEndedEventHandler();
+
 	private BattleActor[] enemies;
 	private BattleActor[] allies;
 	private BattleActor[] actors;
@@ -14,6 +17,9 @@ public partial class Battle : Node
 	private BattleGUI gui;
 	[Export]
 	private OpponentController ai;
+	
+	private int defeatedAllies = 0;
+	private int defeatedEnemies = 0;
 
 	public void Start(BattleActor[] allies, BattleItem[] allyItems, BattleActor[] enemies, OpponentController ai) 
 	{
@@ -22,10 +28,24 @@ public partial class Battle : Node
 		this.actors = allies.Concat(enemies).ToArray();
 		/*this.ai = ai;*/
 
+		foreach(BattleActor ally in allies) {
+			ally.WasDefeated += () => defeatedAllies++;
+		}
+		foreach(BattleActor enemy in enemies) {
+			enemy.WasDefeated += () => defeatedEnemies++;
+		}
+
 		gui.Setup(allies, allyItems, enemies);
 	}
 
 	public async void OnPlayerActionsSelected(ActorAction[] allyActions) {
+		// If allyActions are empty, the player pressed the "Run" button.
+		if(allyActions.Length == 0) {
+			await gui.DisplayMessage("You ran away.");
+			EmitSignal(SignalName.BattleEnded);
+			QueueFree();
+		}
+
 		gui.EnablePlayerControls(false);
 		ActorAction[] enemyActions = ai.GetActions(enemies, allies);
 		List<ActorAction> actions = allyActions.Concat(enemyActions).ToList<ActorAction>();
@@ -34,20 +54,37 @@ public partial class Battle : Node
 		actions.Sort();
 
 		foreach(ActorAction action in actions) {
+			if(action == null) {
+				continue;
+			}
+
 			if(action.actor.Flinching) {
 				continue;
 			}
 			// Play animation.
 			Vector2 userPosition = gui.GetActorDisplayPosition(action.teamIndex, action.actor);
+			int targetTeamIndex;
+			TeamDisplay teamDisplay;
+			// Target same team as user.
+			if(action.action.Target == BattleAction.TargetType.Self 
+					|| action.action.Target == BattleAction.TargetType.Ally
+					|| action.action.Target == BattleAction.TargetType.Allies) {
+				targetTeamIndex = action.teamIndex;
+				teamDisplay = action.teamIndex == 0 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;
+			// Target opposite team from user.
+			} else {
+				targetTeamIndex = (action.teamIndex + 1) % 2;
+				teamDisplay = action.teamIndex == 1 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;
+			}
 			Vector2 targetPosition = gui.GetActorDisplayPosition(
-					(action.teamIndex + 1) % 2, 
+					targetTeamIndex, 
 					action.targets.Length == 1 ? action.targets[0] : null
 					);
+			
 			Node animation = action.action.PlayAnimation(userPosition, targetPosition);
 			AddChild(animation);
 
 			// Apply action effects.
-			TeamDisplay teamDisplay = action.teamIndex == 1 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;
 			string msg = action.action.ApplyEffects(action.actor, action.targets, teamDisplay);
 
 			// Display message and await input.
@@ -75,6 +112,16 @@ public partial class Battle : Node
 				await gui.DisplayMessage(msg);
 			}
 
+			// Check if battle should end.
+			if(defeatedAllies == allies.Length) {
+				await gui.DisplayMessage("You were defeated...");
+				EmitSignal(SignalName.BattleEnded);
+				QueueFree();
+			} else if(defeatedEnemies == enemies.Length) {
+				await gui.DisplayMessage("You won!");
+				EmitSignal(SignalName.BattleEnded);
+				QueueFree();
+			}
 			// Pause before processing next turn.
 			var timer = GetTree().CreateTimer(.5);
 			await ToSignal(timer, "timeout");
@@ -117,5 +164,4 @@ public partial class Battle : Node
 			await gui.DisplayMessage(msg);
 		}
 	}
-
 }

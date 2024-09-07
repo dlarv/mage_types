@@ -5,6 +5,8 @@ using System;
 /// These are basically like an instance of a BattleAction.
 public partial class ActorAction : Node, IComparable<ActorAction> 
 {
+	public static ActorAction[] Flee = new ActorAction[0];
+
 	public BattleActor actor;
 	public int priority;
 	public BattleAction action;
@@ -21,6 +23,9 @@ public partial class ActorAction : Node, IComparable<ActorAction>
 
 	public int CompareTo(ActorAction other)
 	{
+		if(other == null) {
+			return 1;
+		}
 		// Compare priority.
 		if(this.priority.CompareTo(other.priority) != 0)
 			return this.priority.CompareTo(other.priority);

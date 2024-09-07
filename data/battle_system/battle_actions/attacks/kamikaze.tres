@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://ce4825c7e8a6n"]
+
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elements/blank.tres" id="1_ddwsd"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_awrum"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_m0cdi"]
+
+[resource]
+script = ExtResource("5_m0cdi")
+Power = 50000
+effects = []
+Name = "Kamikaze"
+animation = ExtResource("2_awrum")
+Element = ExtResource("1_ddwsd")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

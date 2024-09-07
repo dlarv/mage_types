@@ -6,6 +6,9 @@ using System;
 public partial class BattleActor : Node {
 	public const int MAX_STAT = 1000;
 
+	[Signal]
+	public delegate void WasDefeatedEventHandler();
+
 	[Export]
 	public string ActorName; 
 
@@ -70,19 +73,12 @@ public partial class BattleActor : Node {
 	public Sprite Sprite = null;
 
 	private StatusEffectManager statuses = new();
-	public bool Dissonant { 
-		get => statuses.IsDissonant();
-	}
-	public bool Flinching {
-		get {
-			return statuses.IsFlinching();
-		}
-	}
-	public bool InStasis {
-		get {
-			return statuses.InStasis();
-		}
-	}
+	public bool Dissonant { get => statuses.IsDissonant(); }
+	public bool Flinching { get => statuses.IsFlinching(); }
+	public bool InStasis { get => statuses.InStasis(); }
+	public bool Defeated { get => CurrentHp <= 0; }
+
+	private bool aleadyDefeated = false;
 
     public override void _Ready() {
         base._Ready();
@@ -236,8 +232,13 @@ public partial class BattleActor : Node {
 	public int ApplyDamage(int dmg) {
 		if(!statuses.IsBlocking()) {
 			CurrentHp -= dmg;
+			if(CurrentHp <= 0 && !aleadyDefeated) {
+				aleadyDefeated = true;
+				EmitSignal(SignalName.WasDefeated);
+			}
 			return dmg;
 		}
+		GD.Print("Here");
 		return 0;
 	}
 	public void AddStatusEffect(StatusEffect effect) {

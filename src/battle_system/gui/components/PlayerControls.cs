@@ -1,5 +1,7 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
 public partial class PlayerControls : PanelContainer
 {
@@ -33,19 +35,38 @@ public partial class PlayerControls : PanelContainer
 
 	// The index of the rightmost character who has selected an action.
 	private int edgeIndex = 0;
+	// Index to reset to when a new turn is begun.
+	private int beginIndex = 0;
 	private int finalIndex = 0;
 	private bool allowEndTurn = false;
+	// List of indices of defeated actors.
+	private List<bool> skipIndices;
 
 	public override void _Ready() {
 		finalIndex = attacksPanel.GetChildCount() - 1;
 		calc_character_selector_state(attacksPanel.CurrentTab);
 	}
 	public void Setup(BattleActor[] allies, BattleItem[] items, BattleActor[] enemies) {
+		skipIndices = new();
+
 		for(int i = 0; i < allies.Length; i++) {
-			PopulateNewAttackMenu(allies[i], i);
+			var ally = allies[i];
+			PopulateNewAttackMenu(ally, i);
+			skipIndices.Add(false);
+			// Variable has to be set out here, otherwise it'll be passed by reference.
+			var index = i;
+			ally.WasDefeated += () => {
+				skipIndices[index] = true;
+				// Recalc beginIndex and finalIndex.
+				finalIndex = skipIndices.FindLastIndex((val) => !val);
+				beginIndex = skipIndices.FindIndex((val) => !val);
+			};
 		}
 		PopulateItemsMenu(items);
 		PopulateCharactersMenu(allies, enemies);
+
+		finalIndex = attacksPanel.GetChildCount() - 1;
+		calc_character_selector_state(attacksPanel.CurrentTab);
 	}
 	private void PopulateNewAttackMenu(BattleActor actor, int index) {
 		ScrollContainer scroller = new();
@@ -119,7 +140,10 @@ public partial class PlayerControls : PanelContainer
 	public void PrevCharacter() {
 		controlPanel.CurrentTab = 0;
 		int index = attacksPanel.CurrentTab;
-		index = Math.Max(index - 1, 0);
+		for(int i = 1; index - i >= beginIndex - 1; i++) {
+			index = Math.Max(index - i, beginIndex);
+			if(!skipIndices[index]) break;
+		}
 		attacksPanel.CurrentTab = index;
 
 		EmitSignal(SignalName.ActiveActorChanged, index);
@@ -127,9 +151,13 @@ public partial class PlayerControls : PanelContainer
 	}
 	public void NextCharacter() {
 		controlPanel.CurrentTab = 0;
+
 		int index = attacksPanel.CurrentTab;
-		/*index = Math.Min(index, finalIndex + 1);*/
-		index = Math.Min(index + 1, finalIndex);
+		for(int i = 1; index + i <= finalIndex + 1; i++) {
+			index = Math.Min(index + i, finalIndex);
+			if(!skipIndices[index]) break;
+		}
+
 		attacksPanel.CurrentTab = index;
 
 		edgeIndex = Math.Max(index, edgeIndex);
@@ -139,16 +167,21 @@ public partial class PlayerControls : PanelContainer
 	}
 	public void SetEnabled(bool enable) {
 		blockingPanel.Visible = !enable;
+		if(enable) {
+			attacksPanel.CurrentTab = beginIndex;
+			edgeIndex = beginIndex;
+			calc_character_selector_state(beginIndex);
+			EmitSignal(SignalName.ActiveActorChanged, beginIndex);
+		}
 	}
-	public void _on_start_button_pressed() {
+	public void _on_end_turn_button_pressed() {
 		controlPanel.CurrentTab = 0;
 		allowEndTurn = false;
 		EmitSignal(SignalName.EndTurn, false);
 	}
 	private void calc_character_selector_state(int index) {
-		prevButton.Disabled = index == 0;
+		prevButton.Disabled = index == beginIndex;
 		nextButton.Disabled = index == edgeIndex;
-		/*endButton.Disabled = edgeIndex < finalIndex;*/
 		endButton.Disabled = !allowEndTurn;
 	}
 	public void _on_attacks_button_pressed() {
@@ -177,7 +210,7 @@ public partial class PlayerControls : PanelContainer
 		}
 		if(meta) {
 			EmitSignal(SignalName.ActionSelected, index, action);
-			allowEndTurn = edgeIndex == finalIndex;
+			allowEndTurn = edgeIndex >= finalIndex;
 			button.SelfModulate = targetingHoverColor;
 		} else {
 			EmitSignal(SignalName.ShowInfo, action);	

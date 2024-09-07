@@ -9,5 +9,15 @@
 - [x] Implement status conditions.
 - [x] Account for stat changes in damage calculation.
     - [ ] Test stat changes.
+- [x] End battle when player presses run.
+- [x] End battle when character is defeated.
+- [x] Pressing enter multiple times will keep spawning battles.
+- [x] Prevent player from selecting actions for defeated allies.
+- [ ] Trying to create an empty character or attack will crash the game.
+- [ ] Loading character reduces all stats to 1.
+
 - [ ] Change character's type based on attack usage.
 - [ ] StatusManager will not list special case effects.
+- [ ] Create remaining status effect resources.
+- [ ] Create status effect icons.
+
