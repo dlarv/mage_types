@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://gtkhgnidq78a" path="res://src/battle_system/gui/components/player_controls.tscn" id="2_s8f4v"]
 [ext_resource type="PackedScene" uid="uid://cs6yjetfrdmgw" path="res://src/battle_system/gui/components/message_box.tscn" id="4_w3qmb"]
 
-[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "allyDisplayParent", "enemyDisplayParent", "playerControls")]
+[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "AllyDisplayParent", "EnemyDisplayParent", "playerControls")]
 script = ExtResource("1_ik08k")
 messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/MessageBox")
-allyDisplayParent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay")
-enemyDisplayParent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Opponent_TeamDisplay")
+AllyDisplayParent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay")
+EnemyDisplayParent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Opponent_TeamDisplay")
 playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -3,8 +3,7 @@ using Godot.Collections;
 using System;
 
 [GlobalClass]
-public partial class BattleActor : Node
-{
+public partial class BattleActor : Node {
 	public const int MAX_STAT = 1000;
 
 	[Export]
@@ -174,5 +173,17 @@ public partial class BattleActor : Node
 				Speed = value;
 				break;
 		}
+	}
+	public int GetAttackStat(BattleAction action) {
+		if(action.Range == BattleAction.AttackRange.Melee) {
+			return MeleeAttack;
+		}
+		return RangedAttack;
+	}
+	public int GetDefenseStat(BattleAction action) {
+		if(action.Range == BattleAction.AttackRange.Melee) {
+			return MeleeDefense;
+		}
+		return RangedDefense;
 	}
 }

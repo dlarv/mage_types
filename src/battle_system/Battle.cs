@@ -44,6 +44,13 @@ public partial class Battle : Node
 
 			// Apply action effects.
 			string msg = action.action.ApplyEffects(action.actor, action.targets);
+			TeamDisplay teamDisplay = action.teamIndex == 1 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;
+
+			// Update hp bars.
+			foreach(BattleActor target in action.targets) {
+				teamDisplay.GetDisplay(target).SetHealth(target.CurrentHp);
+			}
+
 			// Display message and await input.
 			await gui.DisplayMessage(msg);
 

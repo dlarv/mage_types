@@ -49,7 +49,7 @@ public partial class BattleActorDisplay : Control
 	}
 
 	public void SetHealth(int hp) {
-		healthBar.Value = (hp / totalHp) * 100;
+		healthBar.Value = ((double)hp / (double)totalHp) * 100.0;
 		hpLabel.Text = $"{hp}/{totalHp}";
 	}
 
