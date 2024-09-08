@@ -45,16 +45,20 @@ public partial class BattleActorDisplay : Control {
 		actor.WasDefeated += () => {
 			defeatedPanel.Show();
 		};
+		actor.ElementChanged += SetElement;
+		actor.DamageApplied += SetHealth;
+		actor.StatusEffectAdded += AddStatusEffect;
+		actor.StatusEffectsRemoved += RemoveStatusEffects;
 	}
 
-	public void SetElement(int id, ElementalType element) {
+	private void SetElement(int id, ElementalType element) {
 		// Update sprite's colors.
 		sprite.SetElement(id, element);
 		// Update sprite.
 		spriteDisplay.Texture = sprite.Texture;
 	}
 
-	public void SetHealth(int hp) {
+	private void SetHealth(int hp) {
 		healthBar.Value = ((double)hp / (double)totalHp) * 100.0;
 		hpLabel.Text = $"{hp}/{totalHp}";
 	}
@@ -77,10 +81,10 @@ public partial class BattleActorDisplay : Control {
 		selectorButton.Show();
 		tint = color;
 	}
-	public void AddStatusCondition(StatusEffect effect) {
+	private void AddStatusEffect(StatusEffect effect) {
 	}
 
-	public void RemoveStatusCondition(StatusEffect effect) {
+	private void RemoveStatusEffects(StatusEffect[] effect) {
 	}
 	public void SetDefeated() {
 		// TODO: Remove status effect icons.

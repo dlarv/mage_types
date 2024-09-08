@@ -42,9 +42,9 @@ public partial class MessageBox : RichTextLabel
 		AppendTitle(attack.Name);
 		AppendElementalType(attack.Element);
 
-		AppendHeader("Power");
-		AppendText("" + attack.Power);
-		Newline();
+		/*AppendHeader("Power");*/
+		/*AppendText("" + attack.Power);*/
+		/*Newline();*/
 		AppendHeader("Range");
 		AppendText("" + attack.Range);
 		Newline();

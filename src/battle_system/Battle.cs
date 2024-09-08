@@ -85,7 +85,7 @@ public partial class Battle : Node
 			AddChild(animation);
 
 			// Apply action effects.
-			string msg = action.action.ApplyEffects(action.actor, action.targets, teamDisplay);
+			string msg = action.action.ApplyEffects(action.actor, action.targets);
 
 			// Display message and await input.
 			await gui.DisplayMessage(msg);
@@ -107,8 +107,8 @@ public partial class Battle : Node
 			// Resolve user's status effects.
 			msg = action.actor.ResolveEndOfTurn();		
 			if(msg.Length > 0) {
-				teamDisplay = action.teamIndex == 0 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;
-				teamDisplay.GetDisplay(action.actor).SetHealth(action.actor.CurrentHp);
+				/*teamDisplay = action.teamIndex == 0 ? gui.AllyDisplayParent : gui.EnemyDisplayParent;*/
+				/*teamDisplay.GetDisplay(action.actor).SetHealth(action.actor.CurrentHp);*/
 				await gui.DisplayMessage(msg);
 			}
 

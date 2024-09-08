@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://bu3fmlsaalf2s"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_rugnf"]
+
+[resource]
+script = ExtResource("1_rugnf")
+Duration = 1
+ToolTip = ""
+Description = ""
+Message = "{ActorName} is locked in stasis!"
+Name = "Stasis"
+Chance = 1.0
+Strength = 0.0

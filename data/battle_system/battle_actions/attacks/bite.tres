@@ -1,26 +1,31 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://bwpyxutff85nq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bwpyxutff85nq"]
 
 [ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elements/cyan.tres" id="1_4wufi"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_gh430"]
 [ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_4143m"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="3_8816p"]
-[ext_resource type="Script" path="res://src/battle_system/status_effects/AttackEffect.cs" id="3_oujge"]
-[ext_resource type="Script" path="res://src/battle_system/status_effects/Damage.cs" id="5_jutqg"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_acumg"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.cs" id="5_jutqg"]
 
-[sub_resource type="Resource" id="Resource_w1nmq"]
-script = ExtResource("3_oujge")
-Effect = ExtResource("3_4143m")
-Chance = 0.8
-
-[sub_resource type="Resource" id="Resource_ol4sr"]
+[sub_resource type="Resource" id="Resource_686g4"]
 script = ExtResource("5_jutqg")
-Power = 0
-Chance = 0.0
+Name = ""
+Chance = 1.0
+Strength = 10.0
+
+[sub_resource type="Resource" id="Resource_fu14x"]
+script = ExtResource("4_acumg")
+AttackEffect = SubResource("Resource_686g4")
+Chance = 1.0
+
+[sub_resource type="Resource" id="Resource_6ok26"]
+script = ExtResource("4_acumg")
+AttackEffect = ExtResource("3_4143m")
+Chance = 0.5
 
 [resource]
 script = ExtResource("3_8816p")
-Power = 10
-effects = Array[Object]([SubResource("Resource_w1nmq"), SubResource("Resource_ol4sr")])
+effects = [SubResource("Resource_fu14x"), SubResource("Resource_6ok26")]
 Name = "Bite"
 animation = ExtResource("2_gh430")
 Element = ExtResource("1_4wufi")

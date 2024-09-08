@@ -8,6 +8,14 @@ public partial class BattleActor : Node {
 
 	[Signal]
 	public delegate void WasDefeatedEventHandler();
+	[Signal]
+	public delegate void StatusEffectAddedEventHandler(StatusEffect effect);
+	[Signal]
+	public delegate void StatusEffectsRemovedEventHandler(StatusEffect[] effect);
+	[Signal]
+	public delegate void DamageAppliedEventHandler(int hp);
+	[Signal]
+	public delegate void ElementChangedEventHandler(int id, ElementalType element);
 
 	[Export]
 	public string ActorName = "Guy"; 
@@ -112,6 +120,7 @@ public partial class BattleActor : Node {
 			Element2 = element;
 		}
 		Sprite.SetElement(id, element);
+		EmitSignal(SignalName.ElementChanged, id, element);
 
 		StatusEffect mod;
 		if(statuses.IsPhobic(element, out mod)) {
@@ -232,17 +241,18 @@ public partial class BattleActor : Node {
 	public int ApplyDamage(int dmg) {
 		if(!statuses.IsBlocking()) {
 			CurrentHp -= dmg;
+			EmitSignal(SignalName.DamageApplied, CurrentHp);
 			if(CurrentHp <= 0 && !aleadyDefeated) {
 				aleadyDefeated = true;
 				EmitSignal(SignalName.WasDefeated);
 			}
 			return dmg;
 		}
-		GD.Print("Here");
 		return 0;
 	}
 	public void AddStatusEffect(StatusEffect effect) {
 		statuses.Add(effect);
+		EmitSignal(SignalName.StatusEffectAdded, effect);
 	}
 
 	/* Status Effect Methods */
@@ -268,8 +278,10 @@ public partial class BattleActor : Node {
 			msg += $"{ActorName} recovered {Hp * healing} health";
 		}
 		CurrentHp -= (int)((double)Hp * mod);
+		EmitSignal(SignalName.DamageApplied, CurrentHp);
 
-		statuses.CalculateExpirations();
+		StatusEffect[] effects = statuses.CalculateExpirations();
+		EmitSignal(SignalName.StatusEffectsRemoved, effects);
 		return msg;
 	}
 }

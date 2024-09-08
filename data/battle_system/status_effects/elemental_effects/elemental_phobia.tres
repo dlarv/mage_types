@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ElementalEffect" load_steps=2 format=3 uid="uid://bvadtuxed6228"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="1_s8qjl"]
+
+[resource]
+script = ExtResource("1_s8qjl")
+Duration = 3
+ToolTip = ""
+Description = ""
+Message = "{ActorName} is feeling adverse to {Element}!"
+Name = "Phobic"
+Chance = 1.0
+Strength = 0.1

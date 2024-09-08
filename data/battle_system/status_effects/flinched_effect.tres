@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://dhghgo0ungrbg"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_d8bt7"]
+
+[resource]
+script = ExtResource("1_d8bt7")
+Duration = 1
+ToolTip = ""
+Description = ""
+Message = "{ActorName} flinched!"
+Name = "Flinching"
+Chance = 100.0
+Strength = 0.0

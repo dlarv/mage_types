@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://c5ro1exjhsu5o"]
 
-[ext_resource type="Script" path="res://src/battle_system/status_effects/StatusEffect.cs" id="1_d45ho"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_da1xl"]
 
 [resource]
-script = ExtResource("1_d45ho")
-Name = "Evasion"
+script = ExtResource("1_da1xl")
 Duration = 3
-Chance = 100.0
-Strength = -1.0
 ToolTip = ""
 Description = ""
+Message = ""
+Name = "Evasion"
+Chance = 1.0
+Strength = -1.0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://ck1einq7necor"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_0xufj"]
+
+[resource]
+script = ExtResource("1_0xufj")
+Duration = 3
+ToolTip = ""
+Description = ""
+Message = "{ActorName} was dazed!"
+Name = "Dazed"
+Chance = 0.5
+Strength = 0.0

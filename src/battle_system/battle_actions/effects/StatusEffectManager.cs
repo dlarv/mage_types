@@ -90,7 +90,7 @@ public partial class StatusEffectManager : Node {
 		}
 	}
 
-	public void CalculateExpirations() {
+	public StatusEffect[] CalculateExpirations() {
 		List<StatusEffect> effects = new();
 		foreach(StatusEffect effect in statuses.Values) {
 			effect.Duration--;
@@ -101,6 +101,7 @@ public partial class StatusEffectManager : Node {
 		foreach(StatusEffect effect in effects) {
 			statuses.Remove(effect.Name);
 		}
+		return effects.ToArray();
 	}
 	/* Status Effect Methods */
 	public bool IsFlinching() {

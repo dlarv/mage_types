@@ -32,7 +32,7 @@ public partial class BattleAction : Resource
 
 	// Main logic for action.
 	// Returns message stating what happened to the targets. This is displayed for player.
-	public virtual string ApplyEffects(BattleActor user, BattleActor[] targets, TeamDisplay display) {
+	public virtual string ApplyEffects(BattleActor user, BattleActor[] targets) {
 		string end = "";
 		if(targets.Length == 1) {
 			if(user == targets[0]) {
@@ -45,12 +45,5 @@ public partial class BattleAction : Resource
 		}
 
 		return $"{user.ActorName} used {Name} on {end}.";
-	}
-
-	/// The most basic damage calculation. Only accounts for attack, defense, and power.
-	public static int CalculateDamage(int attack, int defense, Attack action) {
-		double dmg = (double)action.Power * ((double)attack/(double)defense);
-		double rand = GD.RandRange(80.0, 100.0)/100.0;
-		return (int)(dmg * rand);
 	}
 }

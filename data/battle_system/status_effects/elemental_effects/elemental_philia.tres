@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ElementalEffect" load_steps=2 format=3 uid="uid://dce1ib1m1soc2"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="1_y8epl"]
+
+[resource]
+script = ExtResource("1_y8epl")
+Duration = 3
+ToolTip = ""
+Description = ""
+Message = "{ActorName} is feeling enraptured by {Element}!"
+Name = "Philic"
+Chance = 1.0
+Strength = 0.1

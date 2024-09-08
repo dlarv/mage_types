@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://dq0ck6mo6bcnq"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_gxjb0"]
+
+[resource]
+script = ExtResource("1_gxjb0")
+Duration = 3
+ToolTip = ""
+Description = ""
+Message = "{ActorName} is experiencing dissonance!"
+Name = "Dissonant"
+Chance = 1.0
+Strength = 0.0
