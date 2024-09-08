@@ -1,6 +1,6 @@
 # Battle System
 - [ ] Have animations play above sprites.
-- [ ] Wait for animation to finish before displaying message.
+- [-] Wait for animation to finish before displaying message.
 - [x] Display character information.
 - [x] If only 1 target is available, automatically select them.
 - [x] Have button be highlighted a different color when displaying info vs selecting target.

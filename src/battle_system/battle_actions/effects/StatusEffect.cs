@@ -7,9 +7,6 @@ public partial class StatusEffect : AttackEffect {
 	public int Duration { get; set; }
 	[Export]
 	public PackedScene Icon { get; set; } 
-	/// The text displayed when hovering over its icon on the BattleActorDisplay panel.
-	[Export]
-	public string ToolTip { get; set; }
 	/// The text displayed inside the MessageBox, etc.
 	[Export(PropertyHint.MultilineText)]
 	public string Description { get; set; }
@@ -23,8 +20,7 @@ public partial class StatusEffect : AttackEffect {
 	public bool IsExpired() {
 		return Duration == 0;
 	}
-
 	public virtual void Combine(StatusEffect a) {
-		Duration = a.Duration;
+		Duration += a.Duration;
 	}
 }

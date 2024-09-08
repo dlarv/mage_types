@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 /*
  * Shows information about a battle actor.
@@ -8,6 +9,9 @@ using System;
 public partial class BattleActorDisplay : Control {
 	[Signal]
 	public delegate void SelectedEventHandler(BattleActor actor);
+	[Signal]
+	public delegate void StatusEffectIconPressedEventHandler(StatusEffect effect);
+
 	[Export]
 	private TextureRect highlightDisplay;
 	[Export]
@@ -30,6 +34,7 @@ public partial class BattleActorDisplay : Control {
 	private Color tint = Colors.White;
 	private Sprite sprite;
 	private int totalHp;
+	private Dictionary<string, Node> icons = new();
 
 	public void Setup(BattleActor actor) {
 		nameLabel.Text = actor.ActorName;
@@ -82,13 +87,30 @@ public partial class BattleActorDisplay : Control {
 		tint = color;
 	}
 	private void AddStatusEffect(StatusEffect effect) {
+		if(icons.ContainsKey(effect.Name)) return;
+
+		var icon = effect.Icon.Instantiate();
+		statusEffectIcons.AddChild(icon);
+		icon.GetNode<Button>("Button").Pressed += () => EmitSignal(SignalName.StatusEffectIconPressed, effect);
+		icons.Add(effect.Name, icon);
 	}
 
-	private void RemoveStatusEffects(StatusEffect[] effect) {
+	private void RemoveStatusEffects(StatusEffect[] effects) {
+		foreach(StatusEffect effect in effects) {
+			if(!icons.ContainsKey(effect.Name)) continue;
+			var icon = icons[effect.Name];
+			statusEffectIcons.RemoveChild(icon);
+			icons.Remove(effect.Name);
+		}
 	}
 	public void SetDefeated() {
-		// TODO: Remove status effect icons.
 		defeatedPanel.Show();
+
+		foreach(string key in icons.Keys) {
+			var icon = icons[key];
+			statusEffectIcons.RemoveChild(icon);
+		}
+		icons.Clear();
 	}
 	public void SetHighlight(bool isHighlighted) {
 		highlightDisplay.SelfModulate = new Color(tint.R, tint.G, tint.B, isHighlighted ? 1 : 0);
@@ -100,5 +122,7 @@ public partial class BattleActorDisplay : Control {
 	public void _on_mouse_exited() {
 		if(selectorButton.Visible)
 			SetHighlight(false);
+	}
+	public void _OnStatusIconPressed(StatusEffect status) {
 	}
 }

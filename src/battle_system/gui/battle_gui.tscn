@@ -49,6 +49,8 @@ layout_mode = 2
 [node name="MessageBox" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("4_w3qmb")]
 layout_mode = 2
 
+[connection signal="StatusEffectIconPressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Opponent_TeamDisplay" to="." method="_on_show_info"]
+[connection signal="StatusEffectIconPressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay" to="." method="_on_show_info"]
 [connection signal="ActionSelected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="ActiveActorChanged" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]
 [connection signal="EndTurn" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_turn_ended"]

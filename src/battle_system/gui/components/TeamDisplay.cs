@@ -7,6 +7,8 @@ public partial class TeamDisplay : Control
 {
 	[Signal]
 	public delegate void SelectedEventHandler(BattleActor actor, int i);
+	[Signal]
+	public delegate void StatusEffectIconPressedEventHandler(StatusEffect effect);
 
 	[Export]
 	private PackedScene displayPrefab;
@@ -42,6 +44,7 @@ public partial class TeamDisplay : Control
 				display.DisableSelection();
 			}
 		};
+		display.StatusEffectIconPressed += (effect) => EmitSignal(SignalName.StatusEffectIconPressed, effect);
 	}
 
 	public BattleActorDisplay GetDisplay(int index) {
