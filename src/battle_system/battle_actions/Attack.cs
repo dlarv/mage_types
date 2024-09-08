@@ -5,7 +5,7 @@ using System;
 public partial class Attack : BattleAction 
 {
 	[Export]
-	public int Power;
+	public int Power = 0;
 	[Export]
 	public AttackEffect[] effects = new AttackEffect[0];
 

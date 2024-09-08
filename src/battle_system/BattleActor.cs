@@ -10,7 +10,7 @@ public partial class BattleActor : Node {
 	public delegate void WasDefeatedEventHandler();
 
 	[Export]
-	public string ActorName; 
+	public string ActorName = "Guy"; 
 
 	[ExportCategory("Stats")]
 	private int _hp;
@@ -62,11 +62,11 @@ public partial class BattleActor : Node {
 
 	[ExportCategory("General")]
 	[Export]
-	public ElementalType Element1 { get; private set; }
+	public ElementalType Element1 { get; private set; } = ElementManager.Blank;
 	[Export]
-	public ElementalType Element2 { get; private set; }
+	public ElementalType Element2 { get; private set; } = ElementManager.Blank;
 	[Export]
-	public ElementalType ElementalBias { get; private set; }
+	public ElementalType ElementalBias { get; private set; } = ElementManager.Blank;
 	[Export]
 	public Attack[] Attacks { get; set; }
 	[Export]

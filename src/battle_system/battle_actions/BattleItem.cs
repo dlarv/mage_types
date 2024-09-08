@@ -2,8 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class BattleItem : BattleAction
-{
+public partial class BattleItem : BattleAction {
 	[Export]
 	public bool IsConsumable { get; set; } = true;
 

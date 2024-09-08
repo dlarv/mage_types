@@ -10,15 +10,15 @@ public partial class BattleAction : Resource
 	public enum AttackRange { Melee, Ranged }
 
 	[Export]
-	public string Name { get; set; }
+	public string Name { get; set; } = "Hit";
 	[Export]
 	protected PackedScene animation;
 	[Export]
 	public ElementalType Element = ElementManager.Blank;
 	[Export]
-	public int Priority { get; set; }
+	public int Priority { get; set; } = 0;
 	[Export]
-	public AttackRange Range;
+	public AttackRange Range = AttackRange.Melee;
 	[Export]
 	public TargetType Target = TargetType.Enemy;
 	[Export(PropertyHint.MultilineText)]
