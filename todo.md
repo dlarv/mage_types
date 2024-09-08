@@ -15,9 +15,11 @@
 - [x] Prevent player from selecting actions for defeated allies.
 - [x] Trying to create an empty character or attack will crash the game.
 - [x] Create remaining status effect resources.
+- [x] StatusManager will not list special case effects.
 - [ ] Loading character reduces all stats to 1.
+- [ ] Allow user to edit all stats inside character creator.
+- [ ] Allow user to add attack effects inside character creator.
 
 - [ ] Change character's type based on attack usage.
-- [ ] StatusManager will not list special case effects.
 - [ ] Create status effect icons.
 

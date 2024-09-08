@@ -19,12 +19,60 @@ public partial class StatusEffectManager : Node {
 	const string PHOBIC_KEY = "Phobic";
 	const string PHILIC_KEY = "Philic";
 
-	public double MeleeAttackMod { get; set; } = 0;
-	public double MeleeDefenseMod { get; set; } = 0;
-	public double RangedAttackMod { get; set; } = 0;
-	public double RangedDefenseMod { get; set; } = 0;
-	public double SpeedMod { get; set; } = 0;
-	public double EvasionMod { get; set; } = 0;
+	public double MeleeAttackMod { 
+		get {
+			StatusEffect effect;
+			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
+				return effect.Strength * ((StatChange)effect).Stack;
+			}
+			return 0;
+		}
+	}
+	public double MeleeDefenseMod { 
+		get {
+			StatusEffect effect;
+			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
+				return effect.Strength * ((StatChange)effect).Stack;
+			}
+			return 0;
+		}
+	}
+	public double RangedAttackMod {
+		get {
+			StatusEffect effect;
+			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
+				return effect.Strength * ((StatChange)effect).Stack;
+			}
+			return 0;
+		}
+	}
+	public double RangedDefenseMod {
+		get {
+			StatusEffect effect;
+			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
+				return effect.Strength * ((StatChange)effect).Stack;
+			}
+			return 0;
+		}
+	}
+	public double SpeedMod {
+		get {
+			StatusEffect effect;
+			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
+				return effect.Strength * ((StatChange)effect).Stack;
+			}
+			return 0;
+		}
+	}
+	public double EvasionMod {
+		get {
+			StatusEffect effect;
+			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
+				return effect.Strength * ((StatChange)effect).Stack;
+			}
+			return 0;
+		}
+	}
 
 	public double Poison {
 		get {
@@ -49,40 +97,22 @@ public partial class StatusEffectManager : Node {
 		}
 	}
 
-	private bool isBlocking = false;
-	private bool inStasis = false;
+	private StatusEffect blocking = null;
+	private StatusEffect stasis = null;
 
 	private Dictionary<string, StatusEffect> statuses = new();
 
 	public void Add(StatusEffect status) {
 		switch(status.Name) {
-			case MELEE_ATTACK_KEY:
-				MeleeAttackMod += status.Strength;
-				break;
-			case MELEE_DEFENSE_KEY:
-				MeleeDefenseMod += status.Strength;
-				break;
-			case RANGED_ATTACK_KEY:
-				RangedAttackMod += status.Strength;
-				break;
-			case RANGED_DEFENSE_KEY:
-				RangedAttackMod += status.Strength;
-				break;
-			case SPEED_KEY:
-				SpeedMod += status.Strength;
-				break;
-			case EVASION_KEY:
-				EvasionMod += status.Strength;
-				break;
 			case BLOCKING_KEY:
-				isBlocking = true;
+				blocking = status;
 				break;
 			case STASIS_KEY:
-				inStasis = true;
+				stasis = status;
 				break;
 			default:
 				if(statuses.ContainsKey(status.Name)) {
-					statuses[status.Name] += status;
+					statuses[status.Name].Combine(status);
 				} else {
 					statuses.Add(status.Name, status);
 				}
@@ -111,15 +141,15 @@ public partial class StatusEffectManager : Node {
 		return statuses.ContainsKey(DISSONANT_KEY);
 	}
 	public bool IsBlocking() {
-		if(isBlocking) {
-			isBlocking = false;
+		if(blocking != null) {
+			blocking = null;
 			return true;
 		}
 		return false;
 	}
 	public bool InStasis() {
-		if(inStasis) {
-			inStasis = false;
+		if(stasis != null) {
+			stasis = null;
 			return true;
 		}
 		return false;
@@ -143,11 +173,17 @@ public partial class StatusEffectManager : Node {
 		return false;
 	}
 	public StatusEffect[] List() {
-		StatusEffect[] output = new StatusEffect[statuses.Count];
-		int i = 0;
-		foreach(StatusEffect effect in statuses.Values) {
-			output[i++] = effect;
+		List<StatusEffect> output = new();
+		if(blocking != null) {
+			output.Add(blocking);
 		}
-		return output;
+		if(stasis != null) {
+			output.Add(stasis);
+		}
+
+		foreach(StatusEffect effect in statuses.Values) {
+			output.Add(effect);
+		}
+		return output.ToArray();
 	}
 }

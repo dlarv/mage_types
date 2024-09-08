@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://dpdmudmansscw"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_wwif4"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.cs" id="1_wwif4"]
 
 [resource]
 script = ExtResource("1_wwif4")

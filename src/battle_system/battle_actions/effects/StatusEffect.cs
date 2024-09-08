@@ -24,9 +24,7 @@ public partial class StatusEffect : AttackEffect {
 		return Duration == 0;
 	}
 
-    public static StatusEffect operator + (StatusEffect a, StatusEffect b) {
-		StatusEffect output = (StatusEffect)b.Duplicate();
-		output.Duration = a.Duration + b.Duration;
-		return output;
+	public virtual void Combine(StatusEffect a) {
+		Duration = a.Duration;
 	}
 }
