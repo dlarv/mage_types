@@ -27,8 +27,8 @@ func _ready():
 		attack.Element = ElementManager.Elements[index])
 	attack_name_input.text_changed.connect(func(text):
 		attack.Name = text)
-	power_input.value_changed.connect(func(val):
-		attack.Power = val)
+	# power_input.value_changed.connect(func(val):
+	# 	attack.Power = val)
 	range_input.item_selected.connect(func(index):
 		attack.Range = index)
 	target_input.item_selected.connect(func(index):
@@ -52,7 +52,7 @@ func clear():
 	attack = Attack.new()
 	attack_element_input.select(0)
 	attack_name_input.text = ""
-	power_input.value = attack.Power
+	# power_input.value = attack.Power
 	range_input.select(0)
 	target_input.select(3)
 
@@ -65,7 +65,7 @@ func set_attack(attack):
 	self.attack = attack
 	attack_element_input.select(ElementManager.GetIndexFromName(attack.Element.Name))
 	attack_name_input.text = attack.Name
-	power_input.value = attack.Power
+	# power_input.value = attack.Power
 	range_input.select(attack.Range)
 	target_input.select(attack.Target)
 

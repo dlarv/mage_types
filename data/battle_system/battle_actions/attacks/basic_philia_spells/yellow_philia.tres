@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://bqutu8cv4elf6"]
+
+[ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="1_7je35"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_8pyr1"]
+[ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="3_pm8ou"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="4_tmun4"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="5_as7w7"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="6_ysabd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xp228"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_11l77"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("StatusEffectIcon", "Label", "text", "label_settings"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 2, 2, 1, 3, 2, 0),
+"variants": [ExtResource("3_pm8ou"), "+", SubResource("LabelSettings_xp228")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_43top"]
+script = ExtResource("4_tmun4")
+Element = ExtResource("1_7je35")
+Duration = 3
+Icon = SubResource("PackedScene_11l77")
+Description = ""
+Message = "{ActorName} is feeling enraptured by {Element}!"
+Name = "Philic"
+Chance = 1.0
+Strength = 0.1
+
+[sub_resource type="Resource" id="Resource_psxcy"]
+script = ExtResource("5_as7w7")
+AttackEffect = SubResource("Resource_43top")
+Chance = 1.0
+
+[resource]
+script = ExtResource("6_ysabd")
+effects = [SubResource("Resource_psxcy")]
+Name = "Photophilia"
+animation = ExtResource("2_8pyr1")
+Element = ExtResource("1_7je35")
+Priority = 0
+Range = 0
+Target = 1
+Details = ""

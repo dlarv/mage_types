@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://ygugy1tabpkl"]
+
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_wyfck"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_yyqje"]
+[ext_resource type="Resource" uid="uid://dpdmudmansscw" path="res://data/battle_system/status_effects/stat_changes/speed_down.tres" id="3_tuluy"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_mrofb"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_qh7by"]
+
+[sub_resource type="Resource" id="Resource_fp4xu"]
+script = ExtResource("4_mrofb")
+AttackEffect = ExtResource("3_tuluy")
+Chance = 1.0
+
+[resource]
+script = ExtResource("5_qh7by")
+effects = [SubResource("Resource_fp4xu")]
+Name = "Speed Down"
+animation = ExtResource("2_yyqje")
+Element = ExtResource("1_wyfck")
+Priority = 0
+Range = 0
+Target = 3
+Details = ""

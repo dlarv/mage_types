@@ -93,10 +93,10 @@ public partial class BattleActor : Node {
 
 		Sprite = new();
 		Sprite.SetGradientSprite(Element1, Element2);
-		if(Sprite == null) {
-			Sprite = new();
-			Sprite.SetGradientSprite(Element1, Element2);
-		} 
+		/*if(Sprite == null) {*/
+		/*	Sprite = new();*/
+		/*	Sprite.SetGradientSprite(Element1, Element2);*/
+		/*} */
 
 		var elementManager = GetNode<ElementManager>("/root/ElementManager");
 		// If only one element is blank, it should be the second one.
@@ -113,7 +113,8 @@ public partial class BattleActor : Node {
 		}
 	}
 
-	public void SetElement(int id, ElementalType element) {
+	public string SetElement(int id, ElementalType element) {
+		string msg = "";
 		if(id == 0) {
 			Element1 = element;
 		} else {
@@ -123,12 +124,18 @@ public partial class BattleActor : Node {
 		EmitSignal(SignalName.ElementChanged, id, element);
 
 		StatusEffect mod;
+		int dmg;
 		if(statuses.IsPhobic(element, out mod)) {
-			CurrentHp -= (int)((double)Hp * mod.Strength);
+			dmg = (int)((double)Hp * mod.Strength);
+			CurrentHp -= dmg;
+			msg += $"{ActorName} was hurt by its phobia! ({dmg} damage)";
 		}
 		else if(statuses.IsPhilic(element, out mod)) {
-			CurrentHp += (int)((double)Hp * mod.Strength);
+			dmg = (int)((double)Hp * mod.Strength);
+			CurrentHp += dmg;
+			msg += $"{ActorName} was healed by its philia! ({dmg} damage)";
 		}
+		return msg;
 	}
 	
 	public static BattleActor Create(string actorName, ElementalType element1, ElementalType element2, Attack[] attacks, Dictionary<string, int> stats) {

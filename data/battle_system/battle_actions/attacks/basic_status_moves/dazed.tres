@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://242khb2nahu0"]
+
+[ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="1_faefv"]
+[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="2_qxfnu"]
+[ext_resource type="Resource" uid="uid://ck1einq7necor" path="res://data/battle_system/status_effects/dazed_effect.tres" id="3_8ulbk"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_8csvf"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_butt7"]
+
+[sub_resource type="Resource" id="Resource_gq6w5"]
+script = ExtResource("4_8csvf")
+AttackEffect = ExtResource("3_8ulbk")
+Chance = 0.8
+
+[resource]
+script = ExtResource("5_butt7")
+effects = [SubResource("Resource_gq6w5")]
+Name = "Daze"
+animation = ExtResource("2_qxfnu")
+Element = ExtResource("1_faefv")
+Priority = 0
+Range = 1
+Target = 3
+Details = ""

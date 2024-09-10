@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://ck1einq7necor"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://ck1einq7necor"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_0xufj"]
+[ext_resource type="PackedScene" uid="uid://bfa3tpswl7wju" path="res://data/battle_system/status_effects/icons/dazed_icon.tscn" id="1_ja2h8"]
 
 [resource]
 script = ExtResource("1_0xufj")
 Duration = 3
-ToolTip = ""
+Icon = ExtResource("1_ja2h8")
 Description = ""
 Message = "{ActorName} was dazed!"
 Name = "Dazed"

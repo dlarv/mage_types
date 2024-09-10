@@ -23,4 +23,7 @@ public partial class StatusEffect : AttackEffect {
 	public virtual void Combine(StatusEffect a) {
 		Duration += a.Duration;
 	}
+	public virtual Node InstantiateIcon() {
+		return Icon.Instantiate();
+	}
 }

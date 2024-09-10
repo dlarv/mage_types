@@ -43,6 +43,7 @@ public partial class BattleActorDisplay : Control {
 		totalHp = actor.Hp;
 
 		spriteDisplay.Texture = actor.Sprite.Texture;
+		sprite = actor.Sprite;
 
 		selectorButton.Pressed += () => EmitSignal(SignalName.Selected, actor);
 
@@ -89,7 +90,7 @@ public partial class BattleActorDisplay : Control {
 	private void AddStatusEffect(StatusEffect effect) {
 		if(icons.ContainsKey(effect.Name)) return;
 
-		var icon = effect.Icon.Instantiate();
+		var icon = effect.InstantiateIcon();
 		statusEffectIcons.AddChild(icon);
 		icon.GetNode<Button>("Button").Pressed += () => EmitSignal(SignalName.StatusEffectIconPressed, effect);
 		icons.Add(effect.Name, icon);

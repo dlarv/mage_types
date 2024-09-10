@@ -138,15 +138,21 @@ public partial class Battle : Node
 		// Calculate primary + attack 
 		ElementalType newType = ElementManager.GetMatchup(target.Element1, action.Element);
 		if(newType != null) {
-			msg += $"The target {target.Name}'s [color={e1}]{e1}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].\n";
-			target.SetElement(0, newType);
+			msg += $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].\n";
+			string msg2 = target.SetElement(0, newType);
+			if(msg2.Length > 0) {
+				msg += $"\n{msg2}";
+			}
 		}
 
 		// Calculate secondary + attack 
 		newType = ElementManager.GetMatchup(target.Element2, action.Element);
 		if(newType != null && !target.InStasis) {
-			msg += $"The target {target.Name}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
-			target.SetElement(1, newType);
+			msg += $"The target {target.ActorName}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+			string msg2 = target.SetElement(1, newType);
+			if(msg2.Length > 0) {
+				msg += $"\n{msg2}";
+			}
 		}
 
 		// Only display message if applicable.
@@ -160,7 +166,12 @@ public partial class Battle : Node
 		if(newType != null && !target.Dissonant) {
 			e1 = target.Element1.Name.ToLower();
 			e2 = target.Element2.Name.ToLower();
-			msg += $"The target {target.Name}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+			msg += $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+			string msg2 = target.SetElement(0, newType);
+			target.SetElement(1, ElementManager.Blank);
+			if(msg2.Length > 0) {
+				msg += $"\n{msg2}";
+			}
 			await gui.DisplayMessage(msg);
 		}
 	}

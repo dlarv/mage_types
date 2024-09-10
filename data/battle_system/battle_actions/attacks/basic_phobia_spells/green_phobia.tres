@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://b3n0dro8r3h8l"]
+
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_ouk8b"]
+[ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="3_3txhq"]
+[ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="3_r7lih"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="4_c6qlu"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="5_24nq1"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="6_c3q0c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5mlal"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_ucuew"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("StatusEffectIcon", "Label", "text", "label_settings"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 2, 2, 1, 3, 2, 0),
+"variants": [ExtResource("3_r7lih"), "-", SubResource("LabelSettings_5mlal")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_ty1yv"]
+script = ExtResource("4_c6qlu")
+Element = ExtResource("3_3txhq")
+Duration = 3
+Icon = SubResource("PackedScene_ucuew")
+Description = ""
+Message = "{ActorName} is feeling adverse to {Element}!"
+Name = "Phobic"
+Chance = 1.0
+Strength = 0.1
+
+[sub_resource type="Resource" id="Resource_4e1kb"]
+script = ExtResource("5_24nq1")
+AttackEffect = SubResource("Resource_ty1yv")
+Chance = 1.0
+
+[resource]
+script = ExtResource("6_c3q0c")
+effects = [SubResource("Resource_4e1kb")]
+Name = "Prasinophobia"
+animation = ExtResource("2_ouk8b")
+Element = ExtResource("3_3txhq")
+Priority = 0
+Range = 0
+Target = 3
+Details = ""

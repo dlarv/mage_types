@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://bv5r6vblhf782"]
+
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="1_cl2uj"]
+
+[resource]
+script = ExtResource("1_cl2uj")
+Name = "Cyan"
+MainColor = Color(0, 1, 1, 1)
+ColorPalette = PackedColorArray()

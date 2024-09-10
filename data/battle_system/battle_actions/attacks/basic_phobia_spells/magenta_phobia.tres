@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://b7vvsc45eveqq"]
+
+[ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="1_88m1q"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_pssfp"]
+[ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="3_vnndu"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="4_ck66x"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="5_vg7c0"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="6_rwmih"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5mlal"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_h1wld"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("StatusEffectIcon", "Label", "text", "label_settings"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 2, 2, 1, 3, 2, 0),
+"variants": [ExtResource("3_vnndu"), "-", SubResource("LabelSettings_5mlal")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_4tdsn"]
+script = ExtResource("4_ck66x")
+Element = ExtResource("1_88m1q")
+Duration = 3
+Icon = SubResource("PackedScene_h1wld")
+Description = ""
+Message = "{ActorName} is feeling adverse to {Element}!"
+Name = "Phobic"
+Chance = 1.0
+Strength = 0.1
+
+[sub_resource type="Resource" id="Resource_4mywc"]
+script = ExtResource("5_vg7c0")
+AttackEffect = SubResource("Resource_4tdsn")
+Chance = 1.0
+
+[resource]
+script = ExtResource("6_rwmih")
+effects = [SubResource("Resource_4mywc")]
+Name = "Porphyrophobia"
+animation = ExtResource("2_pssfp")
+Element = ExtResource("1_88m1q")
+Priority = 0
+Range = 0
+Target = 3
+Details = ""

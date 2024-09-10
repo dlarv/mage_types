@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://mg2jc70wjqo8"]
+
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_0qtox"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="1_xp4rx"]
+[ext_resource type="Resource" uid="uid://cg8xywr207tu1" path="res://data/battle_system/status_effects/stat_changes/melee_attack_up.tres" id="2_14i10"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_dg0xf"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="3_5g38d"]
+
+[sub_resource type="Resource" id="Resource_ibimo"]
+script = ExtResource("3_5g38d")
+AttackEffect = ExtResource("2_14i10")
+Chance = 1.0
+
+[resource]
+script = ExtResource("1_xp4rx")
+effects = [SubResource("Resource_ibimo")]
+Name = "M. Attack Boost"
+animation = ExtResource("2_dg0xf")
+Element = ExtResource("1_0qtox")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cafow3ayf0uqw"]
+
+[ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="1_1revl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5mlal"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[node name="StatusEffectIcon" instance=ExtResource("1_1revl")]
+
+[node name="Label" parent="." index="0"]
+text = "-"
+label_settings = SubResource("LabelSettings_5mlal")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqr0otvu37726"]
+
+[ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="1_kxc7c"]
+
+[node name="StatusEffectIcon" instance=ExtResource("1_kxc7c")]
+color = Color(0.976471, 0.85098, 0, 1)
+
+[node name="Label" parent="." index="0"]
+text = "H"

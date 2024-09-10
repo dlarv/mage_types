@@ -11,7 +11,7 @@ func create(attack):
 	# then the following line throws the "Native class ElementalType not found" error.
 	type_display.color = attack.Element.MainColor
 	name_display.text = attack.Name
-	power_display.text = str(attack.Power)
+	# power_display.text = str(attack.Power)
 	
 	if attack.Range == 0:
 		range_display.text = "M"

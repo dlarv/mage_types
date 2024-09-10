@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh33tsq5nhi6y"]
+[gd_scene load_steps=7 format=3 uid="uid://dh33tsq5nhi6y"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_mkc7p"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_u26v7"]
-[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elements/blue.tres" id="2_vxy04"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elements/blank.tres" id="3_654uk"]
+[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="2_vxy04"]
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="3_654uk"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="5_ifo4e"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/bite.tres" id="6_0434p"]
-[ext_resource type="Resource" uid="uid://ce4825c7e8a6n" path="res://data/battle_system/battle_actions/attacks/kamikaze.tres" id="7_gtja2"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="6_0434p"]
 
 [node name="BasicBattleActor" type="Node2D"]
 script = ExtResource("1_mkc7p")
@@ -20,4 +19,4 @@ Speed = 100
 Evasion = 100
 Element1 = ExtResource("2_vxy04")
 Element2 = ExtResource("3_654uk")
-Attacks = Array[Resource]([ExtResource("2_u26v7"), ExtResource("5_ifo4e"), ExtResource("6_0434p"), ExtResource("7_gtja2")])
+Attacks = Array[Resource]([ExtResource("2_u26v7"), ExtResource("5_ifo4e"), ExtResource("6_0434p")])

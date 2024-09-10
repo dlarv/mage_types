@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://bvuxf0slrbb1m"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://bvuxf0slrbb1m"]
 
+[ext_resource type="PackedScene" uid="uid://dmrg6yfnlp2uw" path="res://data/battle_system/status_effects/icons/blocking_icon.tscn" id="1_174ot"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_ll5eu"]
 
 [resource]
 script = ExtResource("1_ll5eu")
 Duration = 1
-ToolTip = ""
+Icon = ExtResource("1_174ot")
 Description = ""
-Message = "{ActorName} was dazed!"
+Message = "{ActorName} is blocking!"
 Name = "Blocking"
 Chance = 1.0
 Strength = 0.0

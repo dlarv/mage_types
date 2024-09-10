@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bo3hkhuwqf373"]
+
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_rxg4m"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_jayfd"]
+[ext_resource type="Resource" uid="uid://bahofdms1h0nx" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_down.tres" id="3_qi5cp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_mymu7"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_ardcs"]
+
+[sub_resource type="Resource" id="Resource_ibimo"]
+script = ExtResource("4_mymu7")
+AttackEffect = ExtResource("3_qi5cp")
+Chance = 1.0
+
+[resource]
+script = ExtResource("5_ardcs")
+effects = [SubResource("Resource_ibimo")]
+Name = "R. Attack Down"
+animation = ExtResource("2_jayfd")
+Element = ExtResource("1_rxg4m")
+Priority = 0
+Range = 0
+Target = 3
+Details = ""

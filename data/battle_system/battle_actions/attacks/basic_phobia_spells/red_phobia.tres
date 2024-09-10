@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://de2o1rjags06x"]
+
+[ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="1_fj7p1"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_ofj1d"]
+[ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="3_mgw18"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="4_n4o12"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="5_ihfmu"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="6_hfbf2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5mlal"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_0d8ap"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("StatusEffectIcon", "Label", "text", "label_settings"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 2, 2, 1, 3, 2, 0),
+"variants": [ExtResource("3_mgw18"), "-", SubResource("LabelSettings_5mlal")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_5kenc"]
+script = ExtResource("4_n4o12")
+Element = ExtResource("1_fj7p1")
+Duration = 3
+Icon = SubResource("PackedScene_0d8ap")
+Description = ""
+Message = "{ActorName} is feeling adverse to {Element}!"
+Name = "Phobic"
+Chance = 1.0
+Strength = 0.1
+
+[sub_resource type="Resource" id="Resource_ox82x"]
+script = ExtResource("5_ihfmu")
+AttackEffect = SubResource("Resource_5kenc")
+Chance = 1.0
+
+[resource]
+script = ExtResource("6_hfbf2")
+effects = [SubResource("Resource_ox82x")]
+Name = "Hemophobia"
+animation = ExtResource("2_ofj1d")
+Element = ExtResource("1_fj7p1")
+Priority = 0
+Range = 0
+Target = 3
+Details = ""

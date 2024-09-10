@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://da27irgqjb8ob"]
+
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_rmm6x"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_a31v5"]
+[ext_resource type="Resource" uid="uid://c1wqtkfskoaar" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_up.tres" id="3_dry73"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_4tggi"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_y2owg"]
+
+[sub_resource type="Resource" id="Resource_ibimo"]
+script = ExtResource("4_4tggi")
+AttackEffect = ExtResource("3_dry73")
+Chance = 1.0
+
+[resource]
+script = ExtResource("5_y2owg")
+effects = [SubResource("Resource_ibimo")]
+Name = "R. Attack Boost"
+animation = ExtResource("2_a31v5")
+Element = ExtResource("1_rmm6x")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

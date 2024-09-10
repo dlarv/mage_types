@@ -82,7 +82,7 @@ func clear():
 	name_input.text = ""
 	element1_input.select(0)
 	element2_input.select(0)
-	hp_input.value = 0
-	attack_input.value = 0
-	defense_input.value = 0 
-	speed_input.value = 0
+	hp_input.value = 100
+	attack_input.value = 100
+	defense_input.value = 100 
+	speed_input.value = 100
