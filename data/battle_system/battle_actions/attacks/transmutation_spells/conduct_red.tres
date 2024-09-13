@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://buymubyl6j61a"]
+
+[ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="1_fcogb"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_8kvgt"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="3_k6v2x"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_ygl5i"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_qjtxs"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_vnoky"]
+
+[sub_resource type="Resource" id="Resource_8ei2c"]
+script = ExtResource("3_k6v2x")
+Name = "Red"
+MainColor = Color(1, 0, 0, 1)
+ColorPalette = PackedColorArray()
+
+[sub_resource type="Resource" id="Resource_emtmh"]
+script = ExtResource("3_ygl5i")
+Element = SubResource("Resource_8ei2c")
+ElementId = 1
+Name = ""
+Chance = 1.0
+Strength = 0.0
+Message = ""
+
+[sub_resource type="Resource" id="Resource_pw4hn"]
+script = ExtResource("4_qjtxs")
+AttackEffect = SubResource("Resource_emtmh")
+Chance = 1.0
+
+[resource]
+script = ExtResource("5_vnoky")
+effects = [SubResource("Resource_pw4hn")]
+Name = "Conduct Red"
+animation = ExtResource("2_8kvgt")
+Element = ExtResource("1_fcogb")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

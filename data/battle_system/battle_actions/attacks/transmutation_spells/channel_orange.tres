@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bicti8ot6uw3q"]
+
+[ext_resource type="Resource" uid="uid://b264df1pks5c0" path="res://data/elemental_types/orange.tres" id="1_h5rht"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="1_mcqsa"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_46t11"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_g2frl"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_501nw"]
+
+[sub_resource type="Resource" id="Resource_ietq8"]
+script = ExtResource("3_g2frl")
+Element = ExtResource("1_h5rht")
+ElementId = 0
+Name = ""
+Chance = 1.0
+Strength = 0.0
+Message = ""
+
+[sub_resource type="Resource" id="Resource_af8j7"]
+script = ExtResource("4_501nw")
+AttackEffect = SubResource("Resource_ietq8")
+Chance = 1.0
+
+[resource]
+script = ExtResource("1_mcqsa")
+effects = [SubResource("Resource_af8j7")]
+Name = "Channel Orange"
+animation = ExtResource("2_46t11")
+Element = ExtResource("1_h5rht")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

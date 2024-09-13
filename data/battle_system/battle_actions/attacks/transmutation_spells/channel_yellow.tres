@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://wrdi45xe6g8t"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="1_0ae1n"]
+[ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="1_2u1bt"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_0uv4l"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="3_0no7p"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_inpqt"]
+
+[sub_resource type="Resource" id="Resource_ib1xg"]
+script = ExtResource("3_inpqt")
+Element = ExtResource("1_2u1bt")
+ElementId = 0
+Name = ""
+Chance = 1.0
+Strength = 0.0
+Message = ""
+
+[sub_resource type="Resource" id="Resource_1sd8b"]
+script = ExtResource("3_0no7p")
+AttackEffect = SubResource("Resource_ib1xg")
+Chance = 1.0
+
+[resource]
+script = ExtResource("1_0ae1n")
+effects = [SubResource("Resource_1sd8b")]
+Name = "Channel Yellow"
+animation = ExtResource("2_0uv4l")
+Element = ExtResource("1_2u1bt")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

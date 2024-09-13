@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
+[Tool]
 [GlobalClass]
-public partial class BattleAction : Resource
-{
+public partial class BattleAction : Resource {
 	public static BattleAction Flee { get; private set; } = new();
 
 	public enum TargetType { Self, Ally, Allies, Enemy, Enemies }

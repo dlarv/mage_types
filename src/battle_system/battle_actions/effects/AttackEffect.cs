@@ -11,8 +11,10 @@ public partial class AttackEffect : Resource {
 	/// Effectiveness of this effect, usually as a percentage of health.
 	[Export]
 	public double Strength { get; set; }
+	[Export(PropertyHint.MultilineText)]
+	public string Message { get; set; }
 
 	public virtual string ApplyEffect(BattleActor user, BattleActor target, BattleAction action) {
-		return "";
+		return Message.Replace("{user}", user.ActorName).Replace("{target}", target.ActorName);
 	}
 }

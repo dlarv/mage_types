@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs3v2u5k7s6k6"]
+
+[ext_resource type="Script" path="res://src/overworld/actors/EnemyActor.cs" id="1_twpmh"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="2_2lyq2"]
+[ext_resource type="Script" path="res://src/battle_system/OpponentController.cs" id="3_hq4x0"]
+
+[sub_resource type="Resource" id="Resource_ibfhb"]
+script = ExtResource("2_2lyq2")
+ActorName = "Guy"
+Hp = 0
+MeleeAttack = 0
+RangedAttack = 0
+MeleeDefense = 0
+RangedDefense = 0
+Speed = 0
+Evasion = 0
+Attacks = null
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5p5k"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4dp5a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqelp"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="EnemyMage" type="RigidBody3D" node_paths=PackedStringArray("Ai") groups=["enemy"]]
+max_contacts_reported = 50
+contact_monitor = true
+script = ExtResource("1_twpmh")
+Ai = NodePath("AI")
+BattleActor = SubResource("Resource_ibfhb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_d5p5k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_4dp5a")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_rqelp")
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("3_hq4x0")

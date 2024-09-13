@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfpnrqolejh7g"]
+
+[ext_resource type="Script" path="res://data/player/companions/BaseCompanion.cs" id="1_8lqxn"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="2_srmh1"]
+
+[sub_resource type="Resource" id="Resource_oycku"]
+script = ExtResource("2_srmh1")
+ActorName = "Guy"
+Hp = 0
+MeleeAttack = 0
+RangedAttack = 0
+MeleeDefense = 0
+RangedDefense = 0
+Speed = 0
+Evasion = 0
+Attacks = null
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kdhlv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_prqaa"]
+
+[node name="BaseCompanion" type="CharacterBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_8lqxn")
+BattleActor = SubResource("Resource_oycku")
+Speed = 15.0
+DistanceToPlayer = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kdhlv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_prqaa")
+skeleton = NodePath("")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BattleItem" load_steps=2 format=3 uid="uid://b1u18gbqwwwl5"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.cs" id="1_fowwk"]
+
+[resource]
+script = ExtResource("1_fowwk")
+Name = "Hit"
+Priority = 0
+Range = 0
+Target = 3
+Details = ""

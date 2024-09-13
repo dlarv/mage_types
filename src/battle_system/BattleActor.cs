@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 
 [GlobalClass]
-public partial class BattleActor : Node {
+public partial class BattleActor : Resource {
 	public const int MAX_STAT = 1000;
 
 	[Signal]
@@ -78,6 +78,7 @@ public partial class BattleActor : Node {
 	[Export]
 	public Attack[] Attacks { get; set; }
 	[Export]
+	private PackedScene sprite_path;
 	public Sprite Sprite = null;
 
 	private StatusEffectManager statuses = new();
@@ -87,31 +88,6 @@ public partial class BattleActor : Node {
 	public bool Defeated { get => CurrentHp <= 0; }
 
 	private bool aleadyDefeated = false;
-
-    public override void _Ready() {
-        base._Ready();
-
-		Sprite = new();
-		Sprite.SetGradientSprite(Element1, Element2);
-		/*if(Sprite == null) {*/
-		/*	Sprite = new();*/
-		/*	Sprite.SetGradientSprite(Element1, Element2);*/
-		/*} */
-
-		var elementManager = GetNode<ElementManager>("/root/ElementManager");
-		// If only one element is blank, it should be the second one.
-		if(Element1 == null && Element2 != null) {
-			Element1 = Element2;
-			Element2 = elementManager.GetElementFromName("blank");
-		}
-		// The Blank Element should be used for empty types instead of null.
-		if(Element1 == null) {
-			Element1 = elementManager.GetElementFromName("blank");
-		}
-		if(Element2 == null) {
-			Element2 = elementManager.GetElementFromName("blank");
-		}
-	}
 
 	public string SetElement(int id, ElementalType element) {
 		string msg = "";

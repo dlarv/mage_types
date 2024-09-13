@@ -31,10 +31,10 @@ Element = ExtResource("1_88m1q")
 Duration = 3
 Icon = SubResource("PackedScene_h1wld")
 Description = ""
-Message = "{ActorName} is feeling adverse to {Element}!"
 Name = "Phobic"
 Chance = 1.0
 Strength = 0.1
+Message = "{target} is feeling adverse to {element}!"
 
 [sub_resource type="Resource" id="Resource_4mywc"]
 script = ExtResource("5_vg7c0")

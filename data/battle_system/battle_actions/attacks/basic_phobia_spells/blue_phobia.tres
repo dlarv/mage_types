@@ -11,7 +11,7 @@
 font_size = 50
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="PackedScene" id="PackedScene_p8hyu"]
+[sub_resource type="PackedScene" id="PackedScene_tsast"]
 _bundled = {
 "base_scene": 0,
 "conn_count": 0,
@@ -25,25 +25,25 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_vccny"]
+[sub_resource type="Resource" id="Resource_gnnr1"]
 script = ExtResource("4_oj4ai")
 Element = ExtResource("1_gyqgm")
 Duration = 3
-Icon = SubResource("PackedScene_p8hyu")
+Icon = SubResource("PackedScene_tsast")
 Description = ""
-Message = "{ActorName} is feeling adverse to {Element}!"
 Name = "Phobic"
 Chance = 1.0
 Strength = 0.1
+Message = "{target} is feeling adverse to {element}!"
 
-[sub_resource type="Resource" id="Resource_p10la"]
+[sub_resource type="Resource" id="Resource_0f64n"]
 script = ExtResource("3_fevoq")
-AttackEffect = SubResource("Resource_vccny")
+AttackEffect = SubResource("Resource_gnnr1")
 Chance = 1.0
 
 [resource]
 script = ExtResource("1_q23s8")
-effects = [SubResource("Resource_p10la")]
+effects = [SubResource("Resource_0f64n")]
 Name = "Hydrophobia"
 animation = ExtResource("1_7lok4")
 Element = ExtResource("1_gyqgm")

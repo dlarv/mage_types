@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=2 format=3 uid="uid://d1uh3xnn8ural"]
+
+[ext_resource type="Script" path="res://src/items/SpellScroll.cs" id="1_anwrk"]
+
+[resource]
+script = ExtResource("1_anwrk")
+Name = "Spell Scroll Test"
+IsConsumable = false
+Tags = null

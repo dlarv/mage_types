@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://bmcia4k0ec1wj"]
+
+[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="1_i4kid"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_llgem"]
+[ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="2_7ook1"]
+[ext_resource type="Resource" uid="uid://b264df1pks5c0" path="res://data/elemental_types/orange.tres" id="3_pucw6"]
+[ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="4_ruhn1"]
+
+[resource]
+script = ExtResource("1_llgem")
+ActorName = "Clown"
+Hp = 1000
+MeleeAttack = 100
+RangedAttack = 100
+MeleeDefense = 100
+RangedDefense = 100
+Speed = 100
+Evasion = 100
+Element1 = ExtResource("3_pucw6")
+Element2 = ExtResource("4_ruhn1")
+Attacks = Array[Object]([ExtResource("1_i4kid"), ExtResource("2_7ook1")])

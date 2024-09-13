@@ -42,6 +42,9 @@ public partial class BattleActorDisplay : Control {
 		hpLabel.Text = $"{actor.CurrentHp}/{actor.Hp}";
 		totalHp = actor.Hp;
 
+		if(actor.Sprite == null) {
+			actor.UseGradientSprite();
+		}
 		spriteDisplay.Texture = actor.Sprite.Texture;
 		sprite = actor.Sprite;
 

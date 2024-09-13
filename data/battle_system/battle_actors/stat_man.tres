@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=5 format=3 uid="uid://irsxmlbl5btw"]
+
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_6ld03"]
+[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_xldcf"]
+[ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="2_au651"]
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="3_1slg7"]
+
+[resource]
+script = ExtResource("1_6ld03")
+ActorName = "Stat Man"
+Hp = 1000
+MeleeAttack = 100
+RangedAttack = 100
+MeleeDefense = 100
+RangedDefense = 100
+Speed = 100
+Evasion = 100
+Element1 = ExtResource("2_au651")
+Element2 = ExtResource("3_1slg7")
+Attacks = Array[Object]([ExtResource("1_xldcf")])

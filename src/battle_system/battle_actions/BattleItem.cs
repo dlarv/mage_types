@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
+[Tool]
 [GlobalClass]
 public partial class BattleItem : BattleAction {
-	[Export]
 	public bool IsConsumable { get; set; } = true;
 
 	public static BattleItem Create(string name, string details="") {

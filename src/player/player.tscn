@@ -1,0 +1,61 @@
+[gd_scene load_steps=14 format=3 uid="uid://c4p3jn0diyrja"]
+
+[ext_resource type="Script" path="res://src/player/Player.cs" id="1_jd6jo"]
+[ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/pause_menu.tscn" id="2_1uj1b"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="3_pbcfq"]
+[ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="4_i4ud4"]
+[ext_resource type="Resource" uid="uid://dvd22ngec15cd" path="res://data/items/items/test_item.tres" id="5_1ny3f"]
+[ext_resource type="Script" path="res://src/items/Equipment.cs" id="6_xte6e"]
+[ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="8_7d2ke"]
+[ext_resource type="Resource" uid="uid://d1uh3xnn8ural" path="res://data/items/spell_scrolls/test_spell_scroll.tres" id="9_h1bsw"]
+[ext_resource type="Resource" uid="uid://bc2445kngh7ex" path="res://data/items/key_items/test_key_item.tres" id="10_oyer3"]
+
+[sub_resource type="Resource" id="Resource_rgltg"]
+script = ExtResource("3_pbcfq")
+ActorName = "Guy"
+Hp = 0
+MeleeAttack = 0
+RangedAttack = 0
+MeleeDefense = 0
+RangedDefense = 0
+Speed = 0
+Evasion = 0
+Attacks = null
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_prawd"]
+
+[sub_resource type="Resource" id="Resource_vo621"]
+script = ExtResource("6_xte6e")
+Name = "Equipment Test 2"
+IsConsumable = false
+Quantity = 0
+MaxQuantity = 0
+Tags = []
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("pauseMenu", "Inventory") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_jd6jo")
+pauseMenu = NodePath("CanvasLayer/PauseMenu")
+BattleActor = SubResource("Resource_rgltg")
+Inventory = NodePath("Inventory")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f637b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_prawd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_1uj1b")]
+visible = false
+
+[node name="Inventory" parent="." instance=ExtResource("4_i4ud4")]
+Items = [ExtResource("5_1ny3f")]
+Equipment = [SubResource("Resource_vo621"), ExtResource("8_7d2ke")]
+SpellScrolls = [ExtResource("9_h1bsw")]
+KeyItems = [ExtResource("10_oyer3")]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="KeyItem" load_steps=2 format=3 uid="uid://bc2445kngh7ex"]
+
+[ext_resource type="Script" path="res://src/items/KeyItem.cs" id="1_8gkux"]
+
+[resource]
+script = ExtResource("1_8gkux")
+Name = "KeyItem Test"
+IsConsumable = false
+Tags = null

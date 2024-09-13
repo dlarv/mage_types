@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b3u3wb71dsxxw"]
+
+[ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="1_igaer"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="1_y0csw"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_ouqob"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_cyqij"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_umf7e"]
+
+[sub_resource type="Resource" id="Resource_0klmw"]
+script = ExtResource("3_cyqij")
+Element = ExtResource("1_igaer")
+ElementId = 0
+Name = ""
+Chance = 1.0
+Strength = 0.0
+Message = ""
+
+[sub_resource type="Resource" id="Resource_4w7is"]
+script = ExtResource("4_umf7e")
+AttackEffect = SubResource("Resource_0klmw")
+Chance = 1.0
+
+[resource]
+script = ExtResource("1_y0csw")
+effects = [SubResource("Resource_4w7is")]
+Name = "Channel Red"
+animation = ExtResource("2_ouqob")
+Element = ExtResource("1_igaer")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

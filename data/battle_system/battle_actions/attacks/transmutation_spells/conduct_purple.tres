@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://dm2j18owvneaj"]
+
+[ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="1_pe6d0"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_ayoec"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="3_bgdbl"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_n63b3"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_y5mea"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_q4h7l"]
+
+[sub_resource type="Resource" id="Resource_kot3j"]
+script = ExtResource("3_bgdbl")
+Name = "Purple"
+MainColor = Color(0.501961, 0, 1, 1)
+ColorPalette = PackedColorArray()
+
+[sub_resource type="Resource" id="Resource_ehie7"]
+script = ExtResource("3_n63b3")
+Element = SubResource("Resource_kot3j")
+ElementId = 1
+Name = ""
+Chance = 1.0
+Strength = 0.0
+Message = ""
+
+[sub_resource type="Resource" id="Resource_lgn71"]
+script = ExtResource("4_y5mea")
+AttackEffect = SubResource("Resource_ehie7")
+Chance = 1.0
+
+[resource]
+script = ExtResource("5_q4h7l")
+effects = [SubResource("Resource_lgn71")]
+Name = "Conduct Purple"
+animation = ExtResource("2_ayoec")
+Element = ExtResource("1_pe6d0")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""

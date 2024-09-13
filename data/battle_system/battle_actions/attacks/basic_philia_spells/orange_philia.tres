@@ -31,10 +31,10 @@ Element = ExtResource("1_0xqxr")
 Duration = 3
 Icon = SubResource("PackedScene_oy6cw")
 Description = ""
-Message = "{ActorName} is feeling enraptured by {Element}!"
 Name = "Philic"
 Chance = 1.0
 Strength = 0.1
+Message = "{target} is feeling adverse to {element}!"
 
 [sub_resource type="Resource" id="Resource_fkx3y"]
 script = ExtResource("5_np8mw")

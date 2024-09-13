@@ -25,6 +25,7 @@ var _items = []
 var ai
 
 func _ready():
+	print("start")
 	_button_group = ButtonGroup.new()
 	_button_group.pressed.connect(_on_character_selected)
 
@@ -36,18 +37,20 @@ func _ready():
 		file_popup.set_current_dir(path)
 		file_popup.popup())
 
+	print("loading teams")
 	load_default_teams()
+	print("teams loaded")
 
 func load_default_teams():
-	var actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
+	var actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tres")
 	_on_character_created(actor)
 	character_scroller.get_child(0).set_team_index(1)
 
 	for i in range(default_ally_count):
-		actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tscn").instantiate()
+		actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tres")
 		_on_character_created(actor)
 
-	actor = ResourceLoader.load("res://data/battle_system/battle_actors/clown.tscn").instantiate()
+	actor = ResourceLoader.load("res://data/battle_system/battle_actors/clown.tres")
 	_on_character_created(actor)
 
 func _unhandled_input(input):
