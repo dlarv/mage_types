@@ -59,13 +59,13 @@ public partial class PlayerControls : PanelContainer
 			skipIndices.Add(false);
 			// Variable has to be set out here, otherwise it'll be passed by reference.
 			var index = i;
-			ally.WasDefeated += () => {
+			ally.Connect(BattleActor.SignalName.WasDefeated, Callable.From(() => {
 				skipIndices[index] = true;
 				// Recalc beginIndex and finalIndex.
 				finalIndex = skipIndices.FindLastIndex((val) => !val);
 				beginIndex = skipIndices.FindIndex((val) => !val);
-			};
-			attacksPanel.TabSelected += (tabIndex) => {
+				}));
+			attacksPanel.Connect(TabContainer.SignalName.TabSelected, Callable.From((int tabIndex) => {
 				if(tabIndex != index) return;
 				// Disable/Enable attacks based on mana.
 				for(int i = 0; i < ally.Attacks.Length; i++) {
@@ -79,7 +79,7 @@ public partial class PlayerControls : PanelContainer
 					Button button = ((Button)itemsScroller.GetChild(i));
 					button.SetMeta(DISABLED_KEY, !item.IsActionAvailable(ally));
 				}
-			};
+			}));
 		}
 		PopulateItemsMenu(items);
 		PopulateCharactersMenu(allies, enemies);
@@ -103,11 +103,11 @@ public partial class PlayerControls : PanelContainer
 			button.ButtonGroup = group;
 			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 			button.Text = attack.Name;
-			button.Toggled += (toggled) => OnActionSelected(button, toggled, index, attack);
-			this.EndTurn += (_) => {
+			button.Connect(Button.SignalName.Toggled, Callable.From((bool toggled) => OnActionSelected(button, toggled, index, attack)));
+			Connect(SignalName.EndTurn, Callable.From((bool _) => {
 				button.SetPressedNoSignal(false);
 				OnActionSelected(button, false, index, attack);
-			};
+			}));
 			vbox.AddChild(button);
 		}
 		attacksPanel.AddChild(scroller);
@@ -122,11 +122,12 @@ public partial class PlayerControls : PanelContainer
 			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 			button.SizeFlagsVertical = SizeFlags.ExpandFill;
 			button.Text = item.Name;
-			button.Toggled += (toggled) => OnActionSelected(button, toggled, attacksPanel.CurrentTab, item);
-			this.EndTurn += (_) => {
+			button.Connect(Button.SignalName.Toggled, Callable.From((bool toggled) => OnActionSelected(button, toggled, attacksPanel.CurrentTab, item)));
+
+			Connect(SignalName.EndTurn, Callable.From((bool _) => {
 				button.SetPressedNoSignal(false);
 				OnActionSelected(button, false, attacksPanel.CurrentTab, item);
-			};
+			}));
 			itemsScroller.AddChild(button);
 		}
 	}
@@ -142,9 +143,9 @@ public partial class PlayerControls : PanelContainer
 			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 			button.SizeFlagsVertical = SizeFlags.ExpandFill;
 			button.Text = ally.ActorName;
-			button.Pressed += () => {
+			button.Connect(Button.SignalName.Pressed, Callable.From(() => {
 				EmitSignal(SignalName.ShowInfo, ally);	
-			};
+			}));
 
 			characterScroller.AddChild(button);
 		}
@@ -158,9 +159,9 @@ public partial class PlayerControls : PanelContainer
 			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 			button.SizeFlagsVertical = SizeFlags.ExpandFill;
 			button.Text = enemy.ActorName;
-			button.Pressed += () => {
+			button.Connect(Button.SignalName.Pressed, Callable.From(() => {
 				EmitSignal(SignalName.ShowInfo, enemy);	
-			};
+			}));
 
 			characterScroller.AddChild(button);
 		}

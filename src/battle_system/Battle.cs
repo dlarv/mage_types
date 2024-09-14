@@ -28,10 +28,10 @@ public partial class Battle : Node
 		/*this.ai = ai;*/
 
 		foreach(BattleActor ally in allies) {
-			ally.WasDefeated += () => defeatedAllies++;
+			ally.Connect(BattleActor.SignalName.WasDefeated, Callable.From(() => defeatedAllies++));
 		}
 		foreach(BattleActor enemy in enemies) {
-			enemy.WasDefeated += () => defeatedEnemies++;
+			enemy.Connect(BattleActor.SignalName.WasDefeated, Callable.From(() => defeatedEnemies++));
 		}
 
 		gui.Setup(allies, allyItems, enemies);

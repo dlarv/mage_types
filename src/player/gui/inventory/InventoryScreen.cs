@@ -20,7 +20,7 @@ public partial class InventoryScreen : PanelContainer {
 				Button button = new();
 				button.Text = $"{item.Name} ({item.Quantity})";
 				var temp = item;
-				button.Pressed += () => DisplayItemDetails(temp);
+				button.Connect(Button.SignalName.Pressed, Callable.From(() => DisplayItemDetails(temp)));
 				scroller.AddChild(button);
 			}
 		};

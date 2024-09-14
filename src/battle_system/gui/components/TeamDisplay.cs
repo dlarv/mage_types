@@ -37,13 +37,13 @@ public partial class TeamDisplay : Control
 		display.Setup(actor);
 		displays.Add(display);
 		displayParent.AddChild(display);
-		display.Selected += (BattleActor actor) => {
+		display.Connect(BattleActorDisplay.SignalName.Selected, Callable.From((BattleActor actor) => {
 			EmitSignal(SignalName.Selected, actor, 11);
 			foreach(BattleActorDisplay display in displays) {
 				display.DisableSelection();
 			}
-		};
-		display.StatusEffectIconPressed += (effect) => EmitSignal(SignalName.StatusEffectIconPressed, effect);
+		}));
+		display.Connect(BattleActorDisplay.SignalName.StatusEffectIconPressed, Callable.From((StatusEffect effect) => EmitSignal(SignalName.StatusEffectIconPressed, effect)));
 	}
 
 	public BattleActorDisplay GetDisplay(int index) {

@@ -11,7 +11,7 @@ public partial class MessageBox : RichTextLabel
 	private Button button;
 
 	public override void _Ready() {
-		button.Pressed += ClearMessage;
+		button.Connect(Button.SignalName.Pressed, new Callable(this, MethodName.ClearMessage));
 	}
 
 	public async Task DisplayMessageBlocking(string msg) {

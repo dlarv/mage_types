@@ -97,7 +97,8 @@ public partial class BattleActorDisplay : Control {
 
 		var icon = effect.InstantiateIcon();
 		statusEffectIcons.AddChild(icon);
-		icon.GetNode<Button>("Button").Pressed += () => EmitSignal(SignalName.StatusEffectIconPressed, effect);
+		Button button = icon.GetNode<Button>("Button");
+		button.Connect(Button.SignalName.Pressed, Callable.From(() => EmitSignal(SignalName.StatusEffectIconPressed, effect))); 
 		icons.Add(effect.Name, icon);
 	}
 
