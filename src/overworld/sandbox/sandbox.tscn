@@ -33,7 +33,7 @@ MeleeDefense = 100
 RangedDefense = 100
 Speed = 100
 Evasion = 100
-Mana = 0
+Mana = 5
 Element1 = ExtResource("7_ap22b")
 Element2 = ExtResource("8_hn7ae")
 Attacks = Array[Object]([ExtResource("4_2g5ji"), ExtResource("5_bgxtk"), ExtResource("6_fv3t4"), ExtResource("7_wwnnl")])
@@ -70,6 +70,7 @@ Element2 = ExtResource("8_hn7ae")
 Attacks = Array[Object]([ExtResource("4_2g5ji"), ExtResource("5_bgxtk"), ExtResource("6_fv3t4")])
 
 [node name="Sandbox" type="Node3D" node_paths=PackedStringArray("world")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0728321, -0.110706, 0.0608318)
 script = ExtResource("1_wo6gm")
 battle_scene = ExtResource("2_t1trw")
 world = NodePath("World")

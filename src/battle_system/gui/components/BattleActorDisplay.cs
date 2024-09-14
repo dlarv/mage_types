@@ -48,16 +48,18 @@ public partial class BattleActorDisplay : Control {
 		spriteDisplay.Texture = actor.Sprite.Texture;
 		sprite = actor.Sprite;
 
-		selectorButton.Pressed += () => EmitSignal(SignalName.Selected, actor);
+		selectorButton.Connect(Button.SignalName.Pressed, Callable.From(() => EmitSignal(SignalName.Selected, actor)));
 
 		Actor = actor;
-		actor.WasDefeated += () => {
-			defeatedPanel.Show();
-		};
-		actor.ElementChanged += SetElement;
-		actor.DamageApplied += SetHealth;
-		actor.StatusEffectAdded += AddStatusEffect;
-		actor.StatusEffectsRemoved += RemoveStatusEffects;
+		actor.Connect(BattleActor.SignalName.WasDefeated, Callable.From(() => defeatedPanel.Show()));
+
+		actor.Connect(BattleActor.SignalName.DamageApplied, new Callable(this, MethodName.SetHealth));
+
+		actor.Connect(BattleActor.SignalName.StatusEffectAdded, new Callable(this, MethodName.AddStatusEffect));
+		actor.Connect(BattleActor.SignalName.StatusEffectsRemoved, new Callable(this, MethodName.RemoveStatusEffects));
+		actor.Connect(BattleActor.SignalName.ElementChanged, new Callable(this, MethodName.SetElement));
+	}
+	public override void _ExitTree() {
 	}
 
 	private void SetElement(int id, ElementalType element) {

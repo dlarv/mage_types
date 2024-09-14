@@ -21,8 +21,7 @@ public partial class Battle : Node
 	private int defeatedAllies = 0;
 	private int defeatedEnemies = 0;
 
-	public void Start(BattleActor[] allies, BattleItem[] allyItems, BattleActor[] enemies, OpponentController ai) 
-	{
+	public void Start(BattleActor[] allies, BattleItem[] allyItems, BattleActor[] enemies, OpponentController ai) {
 		this.allies = allies;
 		this.enemies = enemies;
 		this.actors = allies.Concat(enemies).ToArray();
@@ -43,7 +42,7 @@ public partial class Battle : Node
 		if(allyActions.Length == 0) {
 			await gui.DisplayMessage("You ran away.");
 			EmitSignal(SignalName.BattleEnded);
-			QueueFree();
+			return;
 		}
 
 		gui.EnablePlayerControls(false);
@@ -119,11 +118,9 @@ public partial class Battle : Node
 			if(defeatedAllies == allies.Length) {
 				await gui.DisplayMessage("You were defeated...");
 				EmitSignal(SignalName.BattleEnded);
-				QueueFree();
 			} else if(defeatedEnemies == enemies.Length) {
 				await gui.DisplayMessage("You won!");
 				EmitSignal(SignalName.BattleEnded);
-				QueueFree();
 			}
 			// Pause before processing next turn.
 			var timer = GetTree().CreateTimer(.5);

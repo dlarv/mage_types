@@ -14,6 +14,8 @@ public partial class PlayerControls : PanelContainer
 	[Signal]
 	public delegate void ActiveActorChangedEventHandler(int index);
 
+	private const string DISABLED_KEY = "disabled";
+
 	[Export]
 	private Color targetingHoverColor;
 	[Export]
@@ -68,14 +70,14 @@ public partial class PlayerControls : PanelContainer
 				// Disable/Enable attacks based on mana.
 				for(int i = 0; i < ally.Attacks.Length; i++) {
 					Attack attack = ally.Attacks[i];
-					((Button)attacksPanel.GetChild(index).GetChild(0).GetChild(i)).Disabled
-						= !attack.IsActionAvailable(ally);
+					Button button = ((Button)attacksPanel.GetChild(index).GetChild(0).GetChild(i));
+					button.SetMeta(DISABLED_KEY, !attack.IsActionAvailable(ally));
 				}
 				// Disable/Enable items based on reqs.
 				for(int i = 0; i < items.Length; i++) {
 					BattleItem item = items[i];
-					((Button)itemsScroller.GetChild(i)).Disabled 
-						= !item.IsActionAvailable(ally);
+					Button button = ((Button)itemsScroller.GetChild(i));
+					button.SetMeta(DISABLED_KEY, !item.IsActionAvailable(ally));
 				}
 			};
 		}
@@ -102,6 +104,10 @@ public partial class PlayerControls : PanelContainer
 			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 			button.Text = attack.Name;
 			button.Toggled += (toggled) => OnActionSelected(button, toggled, index, attack);
+			this.EndTurn += (_) => {
+				button.SetPressedNoSignal(false);
+				OnActionSelected(button, false, index, attack);
+			};
 			vbox.AddChild(button);
 		}
 		attacksPanel.AddChild(scroller);
@@ -117,6 +123,10 @@ public partial class PlayerControls : PanelContainer
 			button.SizeFlagsVertical = SizeFlags.ExpandFill;
 			button.Text = item.Name;
 			button.Toggled += (toggled) => OnActionSelected(button, toggled, attacksPanel.CurrentTab, item);
+			this.EndTurn += (_) => {
+				button.SetPressedNoSignal(false);
+				OnActionSelected(button, false, attacksPanel.CurrentTab, item);
+			};
 			itemsScroller.AddChild(button);
 		}
 	}
@@ -220,22 +230,24 @@ public partial class PlayerControls : PanelContainer
 	}
 	private void OnActionSelected(Button button, bool toggled, int index, BattleAction action) {
 		const string KEY = "is_selected";
-		bool meta = (bool)button.GetMeta(KEY, false);
+		bool is_selected = (bool)button.GetMeta(KEY, false);
+		bool is_disabled = (bool)button.GetMeta(DISABLED_KEY, false);
 
 		if(!toggled) {
 			button.SetMeta(KEY, false);
 			button.SelfModulate = Colors.White;
 			return;
 		}
-		if(meta) {
+		if(is_selected && !is_disabled) {
 			EmitSignal(SignalName.ActionSelected, index, action);
 			allowEndTurn = edgeIndex >= finalIndex;
-			button.SelfModulate = Colors.White;
+			// Button should be green/red when selecting action.
+			button.SelfModulate = targetingHoverColor;
 			button.SetMeta(KEY, false);
 		} else {
 			EmitSignal(SignalName.ShowInfo, action);	
 			button.SetMeta(KEY, true);
-			button.SelfModulate = targetingHoverColor;
+			button.SelfModulate = Colors.White;
 		}
 	}
 }

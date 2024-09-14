@@ -33,7 +33,6 @@ public partial class TeamDisplay : Control
 	private int highlightedActorIndex = 0;
 
 	public void AddDisplay(BattleActor actor) {
-		/*BattleActorDisplay display = new BattleActorDisplay(actor);*/
 		BattleActorDisplay display = displayPrefab.Instantiate<BattleActorDisplay>();
 		display.Setup(actor);
 		displays.Add(display);

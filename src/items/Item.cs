@@ -50,7 +50,7 @@ public partial class Item : Resource, IComparable<Item> {
 		get => _reqs; 
 		set {
 			_reqs = value;
-			if(BattleItem != null && value.BattleRelevant) {
+			if(BattleItem != null && value != null && value.BattleRelevant) {
 				BattleItem.Requirement = value;
 			}
 		}
