@@ -73,13 +73,13 @@ public partial class PlayerControls : PanelContainer
 				for(int i = 0; i < ally.Attacks.Length; i++) {
 					Attack attack = ally.Attacks[i];
 					ThreeStateButton button = ((ThreeStateButton)attacksPanel.GetChild(index).GetChild(0).GetChild(i));
-					button.SetMeta(DISABLED_KEY, !attack.IsActionAvailable(ally));
+					button.IsLocked = !attack.IsActionAvailable(ally);
 				}
 				// Disable/Enable items based on reqs.
 				for(int i = 0; i < items.Length; i++) {
 					BattleItem item = items[i];
 					ThreeStateButton button = ((ThreeStateButton)itemsScroller.GetChild(i));
-					button.SetMeta(DISABLED_KEY, !item.IsActionAvailable(ally));
+					button.IsLocked = item.IsActionAvailable(ally);
 				}
 			}));
 		}

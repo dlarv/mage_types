@@ -35,7 +35,7 @@ public partial class ThreeStateButton : Control{
 		set {
 			_isLocked = value;
 			state = UNSELECTED_STATE;
-			Modulate = lockedModulateColor;
+			Modulate = value ? lockedModulateColor : unselectedModulateColor;
 		}
 	}
 	private bool _isLocked = false;
@@ -44,7 +44,7 @@ public partial class ThreeStateButton : Control{
 	public void OnPressed(bool toggled) {
 		if(!toggled) {
 			state = UNSELECTED_STATE;
-			Modulate = unselectedModulateColor;
+			Modulate = IsLocked ? lockedModulateColor : unselectedModulateColor;
 			return;
 		}
 		if(!IsLocked && state == FIRST_SELECTED_STATE) {
