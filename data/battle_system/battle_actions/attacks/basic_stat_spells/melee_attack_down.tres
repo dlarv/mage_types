@@ -13,7 +13,7 @@ Chance = 1.0
 
 [resource]
 script = ExtResource("5_wql6p")
-effects = [SubResource("Resource_ibimo")]
+Effects = [SubResource("Resource_ibimo")]
 Name = "M. Attack Down"
 animation = ExtResource("2_8ehlc")
 Element = ExtResource("1_uchun")

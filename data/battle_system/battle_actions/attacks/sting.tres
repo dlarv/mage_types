@@ -26,7 +26,7 @@ Chance = 0.5
 
 [resource]
 script = ExtResource("3_8816p")
-effects = [SubResource("Resource_fu14x"), SubResource("Resource_6ok26")]
+Effects = [SubResource("Resource_fu14x"), SubResource("Resource_6ok26")]
 Name = "Sting"
 animation = ExtResource("2_gh430")
 Element = ExtResource("1_4wufi")

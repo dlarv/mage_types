@@ -20,7 +20,7 @@ Chance = 1.0
 
 [resource]
 script = ExtResource("2_gm17o")
-effects = [SubResource("Resource_4cnwt")]
+Effects = [SubResource("Resource_4cnwt")]
 Name = "Throw"
 animation = ExtResource("1_52lot")
 Element = ExtResource("1_oypeo")
