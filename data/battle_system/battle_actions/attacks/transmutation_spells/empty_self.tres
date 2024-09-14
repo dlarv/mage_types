@@ -23,6 +23,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("1_0r65f")
 Effects = [SubResource("Resource_au5aj")]
+Cost = 10
 Name = "Empty Self"
 animation = ExtResource("1_3ypsw")
 Element = ExtResource("1_sas4g")

@@ -14,6 +14,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("5_miml4")
 Effects = [SubResource("Resource_gq6w5")]
+Cost = 10
 Name = "Block"
 animation = ExtResource("2_uekhm")
 Element = ExtResource("1_5eksx")

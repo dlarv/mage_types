@@ -43,7 +43,8 @@ Chance = 1.0
 
 [resource]
 script = ExtResource("6_4hixe")
-effects = [SubResource("Resource_r3ib5")]
+Effects = [SubResource("Resource_r3ib5")]
+Cost = 10
 Name = "Porphyrophilia"
 animation = ExtResource("2_de3jl")
 Element = ExtResource("1_emswt")

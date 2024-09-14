@@ -44,6 +44,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("6_5u7bg")
 Effects = [SubResource("Resource_p10la")]
+Cost = 10
 Name = "Hydrophilia"
 animation = ExtResource("2_td35h")
 Element = ExtResource("1_kaqsx")

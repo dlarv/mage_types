@@ -14,6 +14,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("1_xp4rx")
 Effects = [SubResource("Resource_ibimo")]
+Cost = 10
 Name = "M. Attack Boost"
 animation = ExtResource("2_dg0xf")
 Element = ExtResource("1_0qtox")

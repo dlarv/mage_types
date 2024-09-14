@@ -23,6 +23,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("1_l2s4y")
 Effects = [SubResource("Resource_4p747")]
+Cost = 10
 Name = "Channel Cyan"
 animation = ExtResource("2_m4fy7")
 Element = ExtResource("1_vegvb")

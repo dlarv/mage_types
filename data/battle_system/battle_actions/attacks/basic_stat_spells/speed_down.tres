@@ -14,6 +14,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("5_qh7by")
 Effects = [SubResource("Resource_fp4xu")]
+Cost = 10
 Name = "Speed Down"
 animation = ExtResource("2_yyqje")
 Element = ExtResource("1_wyfck")

@@ -14,6 +14,7 @@ Chance = 0.8
 [resource]
 script = ExtResource("5_4c3k0")
 Effects = [SubResource("Resource_gq6w5")]
+Cost = 10
 Name = "Surprise"
 animation = ExtResource("2_2hwwn")
 Element = ExtResource("1_nir7v")

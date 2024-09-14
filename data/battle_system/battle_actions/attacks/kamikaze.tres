@@ -20,6 +20,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("5_m0cdi")
 Effects = [SubResource("Resource_uunw6")]
+Cost = 0
 Name = "Kamikaze"
 animation = ExtResource("2_awrum")
 Element = ExtResource("1_ddwsd")

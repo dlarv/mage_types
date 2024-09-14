@@ -14,6 +14,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("5_8rd2o")
 Effects = [SubResource("Resource_ibimo")]
+Cost = 10
 Name = "Evasion Down"
 animation = ExtResource("2_7do75")
 Element = ExtResource("1_1ngqb")

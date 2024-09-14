@@ -44,6 +44,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("6_c3q0c")
 Effects = [SubResource("Resource_4e1kb")]
+Cost = 10
 Name = "Prasinophobia"
 animation = ExtResource("2_ouk8b")
 Element = ExtResource("3_3txhq")

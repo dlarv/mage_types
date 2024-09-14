@@ -30,6 +30,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("5_y1vt6")
 Effects = [SubResource("Resource_bj6k7")]
+Cost = 10
 Name = "Conduct Yellow"
 animation = ExtResource("2_bj77c")
 Element = ExtResource("1_tlywl")

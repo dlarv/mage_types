@@ -21,6 +21,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("3_ckr1o")
 Effects = [SubResource("Resource_28y40")]
+Cost = 5
 Name = "Hit"
 animation = ExtResource("2_hhpeb")
 Element = ExtResource("1_ouyby")

@@ -43,7 +43,8 @@ Chance = 1.0
 
 [resource]
 script = ExtResource("1_q23s8")
-effects = [SubResource("Resource_0f64n")]
+Effects = [SubResource("Resource_0f64n")]
+Cost = 10
 Name = "Hydrophobia"
 animation = ExtResource("1_7lok4")
 Element = ExtResource("1_gyqgm")

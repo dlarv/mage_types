@@ -44,6 +44,7 @@ Chance = 1.0
 [resource]
 script = ExtResource("5_fve2l")
 Effects = [SubResource("Resource_rp18c")]
+Cost = 10
 Name = "Nyctophobia"
 animation = ExtResource("2_2rwhi")
 Element = ExtResource("1_71ru1")
