@@ -41,6 +41,7 @@ public partial class PlayerControls : PanelContainer
 	private bool allowEndTurn = false;
 	// List of indices of defeated actors.
 	private List<bool> skipIndices;
+	private BattleActor[] allies;
 
 	public override void _Ready() {
 		finalIndex = attacksPanel.GetChildCount() - 1;
@@ -48,6 +49,7 @@ public partial class PlayerControls : PanelContainer
 	}
 	public void Setup(BattleActor[] allies, BattleItem[] items, BattleActor[] enemies) {
 		skipIndices = new();
+		this.allies = allies;
 
 		for(int i = 0; i < allies.Length; i++) {
 			var ally = allies[i];
@@ -61,11 +63,28 @@ public partial class PlayerControls : PanelContainer
 				finalIndex = skipIndices.FindLastIndex((val) => !val);
 				beginIndex = skipIndices.FindIndex((val) => !val);
 			};
+			attacksPanel.TabSelected += (tabIndex) => {
+				if(tabIndex != index) return;
+				// Disable/Enable attacks based on mana.
+				for(int i = 0; i < ally.Attacks.Length; i++) {
+					Attack attack = ally.Attacks[i];
+					((Button)attacksPanel.GetChild(index).GetChild(0).GetChild(i)).Disabled
+						= !attack.IsActionAvailable(ally);
+				}
+				// Disable/Enable items based on reqs.
+				for(int i = 0; i < items.Length; i++) {
+					BattleItem item = items[i];
+					((Button)itemsScroller.GetChild(i)).Disabled 
+						= !item.IsActionAvailable(ally);
+				}
+			};
 		}
 		PopulateItemsMenu(items);
 		PopulateCharactersMenu(allies, enemies);
 
 		finalIndex = attacksPanel.GetChildCount() - 1;
+		// Doing this activates the "check if available" method.
+		attacksPanel.CurrentTab = attacksPanel.CurrentTab;
 		calc_character_selector_state(attacksPanel.CurrentTab);
 	}
 	private void PopulateNewAttackMenu(BattleActor actor, int index) {
@@ -211,11 +230,12 @@ public partial class PlayerControls : PanelContainer
 		if(meta) {
 			EmitSignal(SignalName.ActionSelected, index, action);
 			allowEndTurn = edgeIndex >= finalIndex;
-			button.SelfModulate = targetingHoverColor;
+			button.SelfModulate = Colors.White;
+			button.SetMeta(KEY, false);
 		} else {
 			EmitSignal(SignalName.ShowInfo, action);	
 			button.SetMeta(KEY, true);
-			button.SelfModulate = Colors.White;
+			button.SelfModulate = targetingHoverColor;
 		}
 	}
 }

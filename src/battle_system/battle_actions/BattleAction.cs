@@ -30,6 +30,10 @@ public partial class BattleAction : Resource {
 		return obj;
 	}
 
+	public virtual bool IsActionAvailable(BattleActor actor) {
+		return true;
+	}
+
 	// Main logic for action.
 	// Returns message stating what happened to the targets. This is displayed for player.
 	public virtual string ApplyEffects(BattleActor user, BattleActor[] targets) {
@@ -46,4 +50,6 @@ public partial class BattleAction : Resource {
 
 		return $"{user.ActorName} used {Name} on {end}.";
 	}
+
+	public virtual void ApplyCost(BattleActor user) { }
 }

@@ -67,6 +67,8 @@ public partial class BattleActor : Resource {
 		set => _evasion = value; 
 	}
 	private int _evasion;
+	[Export]
+	public int Mana { get; set; }
 
 	[ExportCategory("General")]
 	[Export]

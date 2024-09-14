@@ -49,6 +49,10 @@ public partial class MessageBox : RichTextLabel
 		AppendText("" + attack.Range);
 		Newline();
 
+		AppendHeader("Cost");
+		AppendText($"{attack.Cost}");
+		Newline();
+
 		if(attack.Details.Length > 0) {
 			AppendHeader("Description");
 			Newline();
@@ -60,6 +64,11 @@ public partial class MessageBox : RichTextLabel
 
 		if(item.Element != ElementManager.Blank) {
 			AppendElementalType(item.Element);
+		}
+		if(item.IsConsumable) {
+			AppendHeader("Quantity");
+			AppendText($"{item.Quantity}");
+			Newline();
 		}
 		
 		if(item.Details.Length > 0) {
@@ -94,6 +103,10 @@ public partial class MessageBox : RichTextLabel
 		Newline();
 		AppendHeader("Hp");
 		AppendText($"{actor.CurrentHp}/{actor.Hp}");
+		Newline();
+
+		AppendHeader("Mana");
+		AppendText($"{actor.Mana}");
 		Newline();
 
 		AppendHeader("Melee Attack");

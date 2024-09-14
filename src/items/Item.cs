@@ -33,11 +33,29 @@ public partial class Item : Resource, IComparable<Item> {
 	}
 	private bool _isConsumable;
 	[Export]
-	public int Quantity { get; set; }
+	public int Quantity { 
+		get => _quantity; 
+		set {
+			_quantity = value;
+			if(BattleItem != null) {
+				BattleItem.Quantity = value;
+			}
+		}
+	}
+	private int _quantity;
 	[Export]
 	public int MaxQuantity { get; set; }
 	[Export]
-	public ItemRequirements Requirements { get; set; }
+	public ItemRequirement Requirement { 
+		get => _reqs; 
+		set {
+			_reqs = value;
+			if(BattleItem != null && value.BattleRelevant) {
+				BattleItem.Requirement = value;
+			}
+		}
+	}
+	private ItemRequirement _reqs;
 	[Export]
 	public Array<string> Tags { get; set; }
 	[Export(PropertyHint.MultilineText)]
@@ -63,6 +81,10 @@ public partial class Item : Resource, IComparable<Item> {
 
 	public bool TryCombine(Item other) {
 		if(Quantity == MaxQuantity) return false;
+		if(MaxQuantity == -1) {
+			Quantity += other.Quantity;
+			return true;
+		}
 
 		int total = Quantity + other.Quantity;
 		Quantity = Math.Min(total, MaxQuantity);

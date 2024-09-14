@@ -68,7 +68,7 @@ public partial class Player : CharacterBody3D {
 			KinematicCollision3D collision = GetSlideCollision(i);
 
 			if(((Node)collision.GetCollider()).IsInGroup("enemy")) {
-				EmitSignal(SignalName.BattleStarted, Party, new BattleItem[0], (EnemyActor)collision.GetCollider());
+				EmitSignal(SignalName.BattleStarted, Party, Inventory.GetBattleItems(), (EnemyActor)collision.GetCollider());
 			}
 						
 		}

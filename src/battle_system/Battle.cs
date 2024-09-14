@@ -54,6 +54,7 @@ public partial class Battle : Node
 		actions.Sort();
 
 		foreach(ActorAction action in actions) {
+			// This means a character is defeated or flinched.
 			if(action == null) {
 				continue;
 			}
@@ -61,6 +62,8 @@ public partial class Battle : Node
 			if(action.actor.Flinching) {
 				continue;
 			}
+			action.action.ApplyCost(action.actor);
+
 			// Play animation.
 			Vector2 userPosition = gui.GetActorDisplayPosition(action.teamIndex, action.actor);
 			int targetTeamIndex;

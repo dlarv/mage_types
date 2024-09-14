@@ -1,27 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://2qmk37nb8emu"]
+[gd_scene load_steps=5 format=3 uid="uid://2qmk37nb8emu"]
 
 [ext_resource type="PackedScene" uid="uid://bfpnrqolejh7g" path="res://data/player/companions/base_companion.tscn" id="1_tfba6"]
 [ext_resource type="Script" path="res://data/player/companions/AliceCompanion.cs" id="2_pbd7w"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="3_ermdq"]
-
-[sub_resource type="Resource" id="Resource_nabwu"]
-script = ExtResource("3_ermdq")
-ActorName = "Guy"
-Hp = 0
-MeleeAttack = 0
-RangedAttack = 0
-MeleeDefense = 0
-RangedDefense = 0
-Speed = 0
-Evasion = 0
-Attacks = null
+[ext_resource type="Resource" uid="uid://bmcia4k0ec1wj" path="res://data/battle_system/battle_actors/clown.tres" id="3_8tbpk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsdae"]
 albedo_color = Color(0.501961, 0, 1, 1)
 
 [node name="Alice" instance=ExtResource("1_tfba6")]
 script = ExtResource("2_pbd7w")
-BattleActor = SubResource("Resource_nabwu")
+BattleActor = ExtResource("3_8tbpk")
 
 [node name="MeshInstance3D" parent="." index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gsdae")

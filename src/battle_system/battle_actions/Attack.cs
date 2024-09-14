@@ -5,7 +5,9 @@ using System;
 public partial class Attack : BattleAction 
 {
 	[Export]
-	public Effect[] effects = new Effect[0];
+	public Effect[] Effects = new Effect[0];
+	[Export]
+	public int Cost { get; set; }
 
 	public static Attack Create(string name, ElementalType element, int power, int range, string description="") {
 		Attack output = new Attack();
@@ -18,12 +20,11 @@ public partial class Attack : BattleAction
 
     public override string ApplyEffects(BattleActor user, BattleActor[] targets) {
         string msg = base.ApplyEffects(user, targets);
-		int attackStat = user.GetAttackStat(this);
 
 		for(int i = 0; i < targets.Length; i++) {
 			var target = targets[i];
 
-			foreach(Effect effect in effects) {
+			foreach(Effect effect in Effects) {
 				double rand = GD.RandRange(0.0, 1.0);
 
 				if(rand <= effect.Chance) {
@@ -41,5 +42,11 @@ public partial class Attack : BattleAction
 		}
 
 		return msg;
+    }
+	public override bool IsActionAvailable(BattleActor actor) {
+		return actor.Mana >= Cost;
+	}
+    public override void ApplyCost(BattleActor user) {
+		user.Mana -= Cost;
     }
 }

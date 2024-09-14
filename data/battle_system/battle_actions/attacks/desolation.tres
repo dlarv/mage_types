@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://camrsusk4heeo"]
+
+[ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="1_dq2v8"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="1_h8gwy"]
+[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="2_aiyre"]
+
+[resource]
+script = ExtResource("1_h8gwy")
+Effects = []
+Cost = 40
+Name = "Desolation"
+animation = ExtResource("2_aiyre")
+Element = ExtResource("1_dq2v8")
+Priority = 0
+Range = 1
+Target = 3
+Details = ""
