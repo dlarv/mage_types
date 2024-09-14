@@ -17,6 +17,8 @@ public partial class PlayerControls : PanelContainer
 	private const string DISABLED_KEY = "disabled";
 
 	[Export]
+	private PackedScene threeStateButton;
+	[Export]
 	private Color targetingHoverColor;
 	[Export]
 	private TabContainer controlPanel;
@@ -70,13 +72,13 @@ public partial class PlayerControls : PanelContainer
 				// Disable/Enable attacks based on mana.
 				for(int i = 0; i < ally.Attacks.Length; i++) {
 					Attack attack = ally.Attacks[i];
-					Button button = ((Button)attacksPanel.GetChild(index).GetChild(0).GetChild(i));
+					ThreeStateButton button = ((ThreeStateButton)attacksPanel.GetChild(index).GetChild(0).GetChild(i));
 					button.SetMeta(DISABLED_KEY, !attack.IsActionAvailable(ally));
 				}
 				// Disable/Enable items based on reqs.
 				for(int i = 0; i < items.Length; i++) {
 					BattleItem item = items[i];
-					Button button = ((Button)itemsScroller.GetChild(i));
+					ThreeStateButton button = ((ThreeStateButton)itemsScroller.GetChild(i));
 					button.SetMeta(DISABLED_KEY, !item.IsActionAvailable(ally));
 				}
 			}));
@@ -98,15 +100,14 @@ public partial class PlayerControls : PanelContainer
 		scroller.AddChild(vbox);
 
 		foreach(Attack attack in actor.Attacks) {
-			Button button = new();
-			button.ToggleMode = true;
+			ThreeStateButton button = threeStateButton.Instantiate<ThreeStateButton>();
 			button.ButtonGroup = group;
-			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 			button.Text = attack.Name;
-			button.Connect(Button.SignalName.Toggled, Callable.From((bool toggled) => OnActionSelected(button, toggled, index, attack)));
+			button.Connect(ThreeStateButton.SignalName.StateChanged, Callable.From((int state) => { 
+				OnActionSelected(state, index, attack); 
+			}));
 			Connect(SignalName.EndTurn, Callable.From((bool _) => {
-				button.SetPressedNoSignal(false);
-				OnActionSelected(button, false, index, attack);
+				button.Reset();
 			}));
 			vbox.AddChild(button);
 		}
@@ -116,17 +117,13 @@ public partial class PlayerControls : PanelContainer
 		ButtonGroup group = new();
 
 		foreach(BattleItem item in items) {
-			Button button = new();
-			button.ToggleMode = true;
+			ThreeStateButton button = threeStateButton.Instantiate<ThreeStateButton>();
 			button.ButtonGroup = group;
-			button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-			button.SizeFlagsVertical = SizeFlags.ExpandFill;
 			button.Text = item.Name;
-			button.Connect(Button.SignalName.Toggled, Callable.From((bool toggled) => OnActionSelected(button, toggled, attacksPanel.CurrentTab, item)));
+			button.Connect(ThreeStateButton.SignalName.StateChanged, Callable.From((int state) => { OnActionSelected(state, attacksPanel.CurrentTab, item); }));
 
 			Connect(SignalName.EndTurn, Callable.From((bool _) => {
-				button.SetPressedNoSignal(false);
-				OnActionSelected(button, false, attacksPanel.CurrentTab, item);
+				button.Reset();
 			}));
 			itemsScroller.AddChild(button);
 		}
@@ -249,6 +246,22 @@ public partial class PlayerControls : PanelContainer
 			EmitSignal(SignalName.ShowInfo, action);	
 			button.SetMeta(KEY, true);
 			button.SelfModulate = Colors.White;
+		}
+	}
+	private void OnActionSelected(int state, int index, BattleAction action) {
+		if(state == ThreeStateButton.FIRST_SELECTED_STATE) {
+			EmitSignal(SignalName.ShowInfo, action);	
+		} 
+		switch(state) {
+			case ThreeStateButton.FIRST_SELECTED_STATE:
+				EmitSignal(SignalName.ShowInfo, action);	
+				break;
+			case ThreeStateButton.SECOND_SELECTED_STATE:
+				EmitSignal(SignalName.ActionSelected, index, action);
+				allowEndTurn = edgeIndex >= finalIndex;
+				break;
+			default:
+				break;
 		}
 	}
 }
