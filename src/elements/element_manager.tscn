@@ -13,4 +13,4 @@
 
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
-Elements = Array[Object]([ExtResource("2_lj85t"), ExtResource("2_2na3h"), ExtResource("3_4ordb"), ExtResource("4_mwrkt"), ExtResource("5_ikpar"), ExtResource("6_eh1hp"), ExtResource("7_58n47"), ExtResource("8_j8x1x"), ExtResource("9_rqpl6")])
+Elements = [ExtResource("2_lj85t"), ExtResource("2_2na3h"), ExtResource("3_4ordb"), ExtResource("4_mwrkt"), ExtResource("5_ikpar"), ExtResource("6_eh1hp"), ExtResource("7_58n47"), ExtResource("8_j8x1x"), ExtResource("9_rqpl6")]
