@@ -33,7 +33,7 @@ project/assembly_name="Mage-Types"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_nodes/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_nodes/plugin.cfg", "res://addons/matchupmanager/plugin.cfg")
 
 [input]
 
