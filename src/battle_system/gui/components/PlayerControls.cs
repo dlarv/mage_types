@@ -19,8 +19,6 @@ public partial class PlayerControls : PanelContainer
 	[Export]
 	private PackedScene threeStateButton;
 	[Export]
-	private Color targetingHoverColor;
-	[Export]
 	private TabContainer controlPanel;
 	[Export]
 	private TabContainer attacksPanel;
@@ -225,28 +223,6 @@ public partial class PlayerControls : PanelContainer
 	}
 	public void _on_back_button_pressed() {
 		controlPanel.CurrentTab = 0;
-	}
-	private void OnActionSelected(Button button, bool toggled, int index, BattleAction action) {
-		const string KEY = "is_selected";
-		bool is_selected = (bool)button.GetMeta(KEY, false);
-		bool is_disabled = (bool)button.GetMeta(DISABLED_KEY, false);
-
-		if(!toggled) {
-			button.SetMeta(KEY, false);
-			button.SelfModulate = Colors.White;
-			return;
-		}
-		if(is_selected && !is_disabled) {
-			EmitSignal(SignalName.ActionSelected, index, action);
-			allowEndTurn = edgeIndex >= finalIndex;
-			// Button should be green/red when selecting action.
-			button.SelfModulate = targetingHoverColor;
-			button.SetMeta(KEY, false);
-		} else {
-			EmitSignal(SignalName.ShowInfo, action);	
-			button.SetMeta(KEY, true);
-			button.SelfModulate = Colors.White;
-		}
 	}
 	private void OnActionSelected(int state, int index, BattleAction action) {
 		if(state == ThreeStateButton.FIRST_SELECTED_STATE) {
