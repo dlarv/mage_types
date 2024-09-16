@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6m3bftlgbvbk"]
+[gd_scene load_steps=23 format=3 uid="uid://6m3bftlgbvbk"]
 
 [ext_resource type="Script" path="res://src/elements/ElementManager.cs" id="1_gyxhk"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="2_2na3h"]
@@ -16,9 +16,15 @@
 [ext_resource type="Resource" uid="uid://bphq7oo643e7" path="res://data/battle_system/status_effects/stat_changes/ranged_defense_up.tres" id="14_0joi6"]
 [ext_resource type="Resource" uid="uid://bk2m1s0l6l0gm" path="res://data/battle_system/status_effects/stat_changes/speed_up.tres" id="15_ojmb5"]
 [ext_resource type="Resource" uid="uid://cs5pftpng6bck" path="res://data/battle_system/status_effects/stat_changes/evasion_up.tres" id="16_ktaor"]
+[ext_resource type="Resource" uid="uid://dneceq24qw18b" path="res://data/battle_system/status_effects/stat_changes/melee_attack_down.tres" id="17_hu54e"]
+[ext_resource type="Resource" uid="uid://bahofdms1h0nx" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_down.tres" id="18_j0teb"]
+[ext_resource type="Resource" uid="uid://dchuhbbvv2f4i" path="res://data/battle_system/status_effects/stat_changes/melee_defense_down.tres" id="19_a1npl"]
+[ext_resource type="Resource" uid="uid://ctk6276lmrf4c" path="res://data/battle_system/status_effects/stat_changes/ranged_defense_down.tres" id="20_a8l5i"]
+[ext_resource type="Resource" uid="uid://dpdmudmansscw" path="res://data/battle_system/status_effects/stat_changes/speed_down.tres" id="21_gjete"]
+[ext_resource type="Resource" uid="uid://c5ro1exjhsu5o" path="res://data/battle_system/status_effects/stat_changes/evasion_down.tres" id="22_xxnyk"]
 
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
 Elements = [ExtResource("2_lj85t"), ExtResource("2_2na3h"), ExtResource("3_4ordb"), ExtResource("4_mwrkt"), ExtResource("5_ikpar"), ExtResource("6_eh1hp"), ExtResource("7_58n47"), ExtResource("8_j8x1x"), ExtResource("9_rqpl6")]
 BuffEffects = [null, ExtResource("11_jjx3p"), ExtResource("12_f21cn"), null, ExtResource("13_fkdds"), ExtResource("14_0joi6"), ExtResource("15_ojmb5"), ExtResource("16_ktaor"), null, null]
-DebuffEffects = []
+DebuffEffects = [null, ExtResource("17_hu54e"), ExtResource("18_j0teb"), null, ExtResource("19_a1npl"), ExtResource("20_a8l5i"), ExtResource("21_gjete"), ExtResource("22_xxnyk"), null]

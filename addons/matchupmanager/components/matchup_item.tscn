@@ -56,7 +56,6 @@ vertical_alignment = 1
 
 [node name="SideEffectOptions1" parent="." instance=ExtResource("1_foaj1")]
 layout_mode = 2
-selected = 0
 
 [node name="Negative_Label" type="Label" parent="."]
 custom_minimum_size = Vector2(30, 30)
@@ -69,4 +68,3 @@ vertical_alignment = 1
 [node name="SideEffectOptions2" parent="." instance=ExtResource("1_foaj1")]
 layout_mode = 2
 item_count = 10
-selected = 0

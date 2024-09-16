@@ -30,7 +30,7 @@ public partial class Player : CharacterBody3D {
 
     public override void _UnhandledInput(InputEvent @event) {
         // base._UnhandledInput(@event);
-		if(@event.IsActionPressed("ui_cancel")) {
+		if(@event.IsActionPressed("open_pause_menu")) {
 			pauseMenu.Visible = !pauseMenu.Visible;
 		}
     }

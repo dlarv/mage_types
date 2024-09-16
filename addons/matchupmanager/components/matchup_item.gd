@@ -20,3 +20,7 @@ func set_colors(e1: ElementalType, e2: ElementalType, e3: ElementalType):
 	color_rect_1.color = e1.MainColor
 	color_rect_2.color = e2.MainColor
 	color_rect_3.color = e3.MainColor
+
+func set_side_effects(buff_index, debuff_index):
+	get_node("SideEffectOptions1").selected = buff_index
+	get_node("SideEffectOptions2").selected = debuff_index

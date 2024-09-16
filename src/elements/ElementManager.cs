@@ -181,21 +181,29 @@ public partial class ElementManager : Node {
 		if(a == Blank || b == Blank) return (null, null);
 		return matchups[a.Name].GetEffect(b);
 	}
-	public Godot.Collections.Array<Godot.Collections.Array<ElementalType>> GetAllMatchups() {
-		Godot.Collections.Array<Godot.Collections.Array<ElementalType>> output = new();
+	public Godot.Collections.Array<Godot.Collections.Array<Variant>> GetAllMatchups() {
+		Godot.Collections.Array<Godot.Collections.Array<Variant>> output = new();
 		foreach(Node node in matchups.Values) {
 			foreach((ElementalType el, Edge edge) in node.Edges) {
-				Godot.Collections.Array<ElementalType> item = new();
+				Godot.Collections.Array<Variant> item = new();
 				item.Add(node.Element);
 				item.Add(el);
 				item.Add(edge.Result.Element);
+				item.Add(SideEffectToIndex(edge.BuffEffect, true));
+				item.Add(SideEffectToIndex(edge.DebuffEffect, false));
+
 				output.Add(item);
 			}
 		}
 		return output;
 	}
 	public void SetSideEffectFor(ElementalType a, ElementalType b, int index, bool isBuff) {
-		StatusEffect effect = isBuff ? BuffEffects[index] : DebuffEffects[index];
+		StatusEffect effect;
+		if(index == -1) {
+			effect = null;
+		} else {
+			effect = isBuff ? BuffEffects[index] : DebuffEffects[index];
+		}
 		matchups[a.Name].SetEffect(b, effect, isBuff);
 
 		var effects = matchups[a.Name].GetEffect(b);
@@ -203,14 +211,40 @@ public partial class ElementManager : Node {
 		var msg2 = effects.Item2 != null ? effects.Item2.Name : "null";
 		GD.Print($"Set side effect: {a.Name} & {b.Name} = {msg1}, {msg2}");
 	}
+	public int SideEffectToIndex(StatusEffect effect, bool isBuff) {
+		if(effect == null) return -1;
+		StatusEffect[] effects = isBuff ? BuffEffects : DebuffEffects;
 
-	public byte[] Serialize() {
-		return GD.VarToBytesWithObjects(this);
+		for(int i = 0; i < effects.Length; i++) {
+			if(effect == effects[i]) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
-	public void Deserialize(byte[] data) {
-		// I think since the relevant data is static, this should overwrite the original values.
-		ElementManager _ = (ElementManager)GD.BytesToVarWithObjects(data);
+	public string SaveAsCSV() {
+		List<string> output = new();
+		foreach(Node node in matchups.Values) {
+			foreach((ElementalType el, Edge edge) in node.Edges) {
+				string line = $"{node.Element.Name},{el.Name},{edge.Result.Element.Name},{SideEffectToIndex(edge.BuffEffect, true)},{SideEffectToIndex(edge.DebuffEffect, false)}";
+				output.Add(line);
+			}
+		}
+		return String.Join("\n", output);
+	}
+	public void LoadFromCSV(string data) {
+		string[] lines = data.Split("\n");
+
+		foreach(string line in lines) {
+			string[] values = line.Split(",");
+			ElementalType a = GetElementFromName(values[0]); 
+			ElementalType b = GetElementFromName(values[1]);
+			int buffIndex = int.Parse(values[3]);
+			SetSideEffectFor(a, b, buffIndex, true);
+			int debuffIndex = int.Parse(values[4]);
+			SetSideEffectFor(a, b, buffIndex, false);
+		}
 	}
 
 	protected class Node {

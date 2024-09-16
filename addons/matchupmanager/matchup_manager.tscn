@@ -25,6 +25,19 @@ grow_vertical = 2
 layout_mode = 2
 text = "Set side effects for different elemental reactions."
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Load_Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load"
+
+[node name="Save_Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 custom_minimum_size = Vector2(30, 15)
 layout_mode = 2
@@ -39,3 +52,13 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "END"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+position = Vector2i(500, 100)
+size = Vector2i(392, 500)
+root_subfolder = "res://data/elemental_types/matchup_files/"
+filters = PackedStringArray("*.txt")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Load_Button" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Save_Button" to="." method="_on_save_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
