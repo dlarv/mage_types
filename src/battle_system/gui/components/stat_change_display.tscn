@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0u0yls8gquxd"]
+
+[ext_resource type="Script" path="res://src/battle_system/gui/components/StatChangeDisplay.cs" id="1_lghwg"]
+
+[node name="StatChangeDisplay" type="HBoxContainer" node_paths=PackedStringArray("mAttack", "rAttack", "mDefense", "rDefense", "speed", "evasion")]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 5
+script = ExtResource("1_lghwg")
+mAttack = NodePath("MeleeAttack")
+rAttack = NodePath("RangedAttack")
+mDefense = NodePath("MeleeDefense")
+rDefense = NodePath("RangedDefense")
+speed = NodePath("Speed")
+evasion = NodePath("Evasion")
+
+[node name="MeleeAttack" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Melee Attack:"
+color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[node name="RangedAttack" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Ranged Attack:"
+color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[node name="MeleeDefense" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Melee Defense:"
+color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[node name="RangedDefense" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Ranged Defense:"
+color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[node name="Speed" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Speed:"
+color = Color(0.498039, 0.498039, 0.498039, 1)
+
+[node name="Evasion" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Evasion:"
+color = Color(0.498039, 0.498039, 0.498039, 1)

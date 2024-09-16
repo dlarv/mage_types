@@ -33,37 +33,37 @@ public partial class BattleActor : Resource {
 	public int CurrentHp { get; set; }
 	[Export]
 	public int MeleeAttack { 
-		get { return (int)(_meleeAttack + statuses.MeleeAttackMod); }
+		get { return (int)(_meleeAttack * statuses.MeleeAttackMod); }
 		set => _meleeAttack = value; 
 	}
 	private int _meleeAttack;
 	[Export]
 	public int RangedAttack { 
-		get { return (int)(_rangedAttack + statuses.RangedAttackMod); }
+		get { return (int)(_rangedAttack * statuses.RangedAttackMod); }
 		set => _rangedAttack = value; 
 	}
 	private int _rangedAttack;
 	[Export]
 	public int MeleeDefense { 
-		get { return (int)(_meleeDefense + statuses.MeleeDefenseMod); }
+		get { return (int)(_meleeDefense * statuses.MeleeDefenseMod); }
 		set => _meleeDefense = value; 
 	}
 	public int _meleeDefense;
 	[Export]
 	public int RangedDefense { 
-		get { return (int)(_rangedDefense+ statuses.RangedDefenseMod); }
+		get { return (int)(_rangedDefense* statuses.RangedDefenseMod); }
 		set => _rangedDefense = value; 
 	}
 	private int _rangedDefense;
 	[Export]
 	public int Speed { 
-		get { return (int)(_speed + statuses.SpeedMod); }
+		get { return (int)(_speed * statuses.SpeedMod); }
 		set => _speed = value; 
 	}
 	private int _speed;
 	[Export]
 	public int Evasion { 
-		get { return (int)(_evasion + statuses.EvasionMod); }
+		get { return (int)(_evasion * statuses.EvasionMod); }
 		set => _evasion = value; 
 	}
 	private int _evasion;
@@ -72,9 +72,27 @@ public partial class BattleActor : Resource {
 
 	[ExportCategory("General")]
 	[Export]
-	public ElementalType Element1 { get; private set; } = ElementManager.Blank;
+	public ElementalType Element1 { 
+		get {
+			if(_e1 == null) {
+				return ElementManager.Blank;
+			}
+			return _e1;
+		}
+		private set => _e1 = value; 
+	} 
+	private ElementalType _e1 = ElementManager.Blank;
 	[Export]
-	public ElementalType Element2 { get; private set; } = ElementManager.Blank;
+	public ElementalType Element2 { 
+		get {
+			if(_e2 == null) {
+				return ElementManager.Blank;
+			}
+			return _e2;
+		}
+		private set => _e2 = value; 
+	} 
+	private ElementalType _e2 = ElementManager.Blank;
 	[Export]
 	public ElementalType ElementalBias { get; private set; } = ElementManager.Blank;
 	[Export]
@@ -241,7 +259,7 @@ public partial class BattleActor : Resource {
 	}
 	public void AddStatusEffect(StatusEffect effect) {
 		statuses.Add(effect);
-		EmitSignal(SignalName.StatusEffectAdded, effect);
+		EmitSignal(SignalName.StatusEffectAdded, statuses.Get(effect));
 	}
 
 	public void UpdateElementalState() {

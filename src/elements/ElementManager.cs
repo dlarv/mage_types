@@ -23,8 +23,7 @@ public partial class ElementManager : Node {
 
 	protected static Dictionary<string, Node> matchups = new();
 
-	public override void _Ready() { 
-	}
+	public override void _Ready() { }
 	private void Test() {
 		ElementalType[,] actualResults = {
 			// Red

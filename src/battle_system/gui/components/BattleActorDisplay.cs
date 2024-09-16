@@ -25,6 +25,8 @@ public partial class BattleActorDisplay : Control {
 	[Export]
 	private Control statusEffectIcons;
 	[Export]
+	private StatChangeDisplay statChangeDisplay;
+	[Export]
 	private Button selectorButton;
 	[Export]
 	private Panel defeatedPanel;
@@ -59,21 +61,16 @@ public partial class BattleActorDisplay : Control {
 		actor.Connect(BattleActor.SignalName.StatusEffectsRemoved, new Callable(this, MethodName.RemoveStatusEffects));
 		actor.Connect(BattleActor.SignalName.ElementChanged, new Callable(this, MethodName.SetElement));
 	}
-	public override void _ExitTree() {
-	}
-
 	private void SetElement(int id, ElementalType element) {
 		// Update sprite's colors.
 		sprite.SetElement(id, element);
 		// Update sprite.
 		spriteDisplay.Texture = sprite.Texture;
 	}
-
 	private void SetHealth(int hp) {
 		healthBar.Value = ((double)hp / (double)totalHp) * 100.0;
 		hpLabel.Text = $"{hp}/{totalHp}";
 	}
-
 	public Vector2 GetPosition() {
 		Vector2 position = GlobalPosition;
 		position.X += Size.X / 2;
@@ -81,7 +78,6 @@ public partial class BattleActorDisplay : Control {
 
 		return position;
 	}
-
 	/// Disallow selection
 	public void DisableSelection() {
 		selectorButton.Hide();
@@ -93,6 +89,10 @@ public partial class BattleActorDisplay : Control {
 		tint = color;
 	}
 	private void AddStatusEffect(StatusEffect effect) {
+		if(effect is StatChange) {
+			statChangeDisplay.Add((StatChange)effect);
+			return;
+		}
 		if(icons.ContainsKey(effect.Name)) return;
 
 		var icon = effect.InstantiateIcon();
@@ -104,6 +104,10 @@ public partial class BattleActorDisplay : Control {
 
 	private void RemoveStatusEffects(StatusEffect[] effects) {
 		foreach(StatusEffect effect in effects) {
+			if(effect is StatChange) {
+				statChangeDisplay.Remove((StatChange)effect);
+				continue;
+			}
 			if(!icons.ContainsKey(effect.Name)) continue;
 			var icon = icons[effect.Name];
 			statusEffectIcons.RemoveChild(icon);

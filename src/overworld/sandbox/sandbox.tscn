@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=26 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://data/player/companions/player_party.tscn" id="1_k6oqa"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
@@ -9,19 +9,38 @@
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="5_bgxtk"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="6_fv3t4"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="7_ap22b"]
-[ext_resource type="Resource" uid="uid://camrsusk4heeo" path="res://data/battle_system/battle_actions/attacks/desolation.tres" id="7_wwnnl"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="8_hn7ae"]
+[ext_resource type="Resource" uid="uid://cg8xywr207tu1" path="res://data/battle_system/status_effects/stat_changes/melee_attack_up.tres" id="8_wrhyw"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="9_igig1"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="9_xktrv"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="10_auihc"]
 [ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="11_8148x"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
 [ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="14_wqv0v"]
 [ext_resource type="Resource" uid="uid://dvd22ngec15cd" path="res://data/items/items/test_item.tres" id="15_ipwj6"]
-[ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="16_fni5c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
 size = Vector3(100, 0.1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4c5f"]
 size = Vector3(100, 0.1, 100)
+
+[sub_resource type="Resource" id="Resource_dvdo2"]
+script = ExtResource("9_xktrv")
+AttackEffect = ExtResource("8_wrhyw")
+Chance = 1.0
+
+[sub_resource type="Resource" id="Resource_5og7d"]
+script = ExtResource("10_auihc")
+Effects = [SubResource("Resource_dvdo2")]
+Cost = 0
+Name = "Boost Attack"
+animation = ExtResource("9_igig1")
+Element = ExtResource("7_ap22b")
+Priority = 0
+Range = 0
+Target = 0
+Details = ""
 
 [sub_resource type="Resource" id="Resource_f6x0b"]
 script = ExtResource("4_iuiym")
@@ -33,10 +52,9 @@ MeleeDefense = 100
 RangedDefense = 100
 Speed = 100
 Evasion = 100
-Mana = 5
+Mana = 100
 Element1 = ExtResource("7_ap22b")
-Element2 = ExtResource("8_hn7ae")
-Attacks = Array[Object]([ExtResource("4_2g5ji"), ExtResource("5_bgxtk"), ExtResource("6_fv3t4"), ExtResource("7_wwnnl")])
+Attacks = Array[Object]([ExtResource("4_2g5ji"), ExtResource("5_bgxtk"), SubResource("Resource_5og7d"), ExtResource("6_fv3t4")])
 
 [sub_resource type="Resource" id="Resource_t37l6"]
 script = ExtResource("4_iuiym")
@@ -50,8 +68,6 @@ Speed = 100
 Evasion = 100
 Mana = 40
 Element1 = ExtResource("11_8148x")
-Element2 = ExtResource("8_hn7ae")
-ElementalBias = ExtResource("8_hn7ae")
 Attacks = Array[Object]([ExtResource("4_2g5ji")])
 
 [sub_resource type="Resource" id="Resource_mjorq"]
@@ -121,7 +137,6 @@ BattleActor = SubResource("Resource_mjorq")
 
 [node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
 Items = [ExtResource("14_wqv0v"), ExtResource("15_ipwj6")]
-Equipment = [ExtResource("16_fni5c")]
 
 [connection signal="BattleStarted" from="World/PlayerParty/Player" to="." method="_on_player_battle_started"]
 

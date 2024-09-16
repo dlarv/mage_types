@@ -77,7 +77,7 @@ public partial class PlayerControls : PanelContainer
 				for(int i = 0; i < items.Length; i++) {
 					BattleItem item = items[i];
 					ThreeStateButton button = ((ThreeStateButton)itemsScroller.GetChild(i));
-					button.IsLocked = item.IsActionAvailable(ally);
+					button.IsLocked = !item.IsActionAvailable(ally);
 				}
 			}));
 		}

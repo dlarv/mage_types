@@ -13,7 +13,7 @@ public partial class AttackEffect : Resource {
 	[Export]
 	public double Strength { get; set; }
 	[Export(PropertyHint.MultilineText)]
-	public string Message { get; set; }
+	public string Message { get; set; } = "";
 
 	public virtual string ApplyEffect(BattleActor user, BattleActor target, BattleAction action) {
 		return Message.Replace("{user}", user.ActorName).Replace("{target}", target.ActorName);

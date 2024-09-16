@@ -4,71 +4,71 @@ using System.Collections.Generic;
 
 public partial class StatusEffectManager : Node {
 	// The Name field of all status effects should match one of these.
-	const string ATTACK_KEY = "Attack";
-	const string DEFENSE_KEY = "Defense";
-	const string MELEE_ATTACK_KEY = "Melee Attack";
-	const string RANGED_ATTACK_KEY = "Ranged Attack";
-	const string  MELEE_DEFENSE_KEY = "Melee Defense";
-	const string RANGED_DEFENSE_KEY = "Ranged Defense";
-	const string SPEED_KEY = "Speed";
-	const string EVASION_KEY = "Evasion";
-	const string STASIS_KEY = "Stasis";
-	const string BLOCKING_KEY = "Blocking";
-	const string POISON_KEY = "Poison";
-	const string HEALING_KEY = "Healing";
-	const string DISSONANT_KEY = "Dissonant";
-	const string FLINCHING_KEY = "Flinching";
-	const string PHOBIC_KEY = "Phobic";
-	const string PHILIC_KEY = "Philic";
+	public const string ATTACK_KEY = "Attack";
+	public const string DEFENSE_KEY = "Defense";
+	public const string MELEE_ATTACK_KEY = "Melee Attack";
+	public const string RANGED_ATTACK_KEY = "Ranged Attack";
+	public const string MELEE_DEFENSE_KEY = "Melee Defense";
+	public const string RANGED_DEFENSE_KEY = "Ranged Defense";
+	public const string SPEED_KEY = "Speed";
+	public const string EVASION_KEY = "Evasion";
+	public const string STASIS_KEY = "Stasis";
+	public const string BLOCKING_KEY = "Blocking";
+	public const string POISON_KEY = "Poison";
+	public const string HEALING_KEY = "Healing";
+	public const string DISSONANT_KEY = "Dissonant";
+	public const string FLINCHING_KEY = "Flinching";
+	public const string PHOBIC_KEY = "Phobic";
+	public const string PHILIC_KEY = "Philic";
 
 	public double MeleeAttackMod { 
 		get {
-			double total = 0;
+			double total = 1;
 			StatusEffect effect;
 			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			if(statuses.TryGetValue(ATTACK_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			return total;
 		}
 	}
 	public double MeleeDefenseMod { 
 		get {
-			double total = 0;
+			double total = 1;
 			StatusEffect effect;
 			if(statuses.TryGetValue(MELEE_DEFENSE_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			if(statuses.TryGetValue(DEFENSE_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			return total;
 		}
 	}
 	public double RangedAttackMod {
 		get {
-			double total = 0;
+			double total = 1;
 			StatusEffect effect;
 			if(statuses.TryGetValue(RANGED_ATTACK_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			if(statuses.TryGetValue(ATTACK_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			return total;
 		}
 	}
 	public double RangedDefenseMod {
 		get {
-			double total = 0;
+			double total = 1;
 			StatusEffect effect;
 			if(statuses.TryGetValue(RANGED_DEFENSE_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			if(statuses.TryGetValue(DEFENSE_KEY, out effect)) {
-				total += effect.Strength * (((StatChange)effect).Stack);
+				total += ((StatChange)effect).GetMod();
 			}
 			return total;
 		}
@@ -77,18 +77,18 @@ public partial class StatusEffectManager : Node {
 		get {
 			StatusEffect effect;
 			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
-				return effect.Strength * ((StatChange)effect).Stack;
+				return ((StatChange)effect).GetMod();
 			}
-			return 0;
+			return 1;
 		}
 	}
 	public double EvasionMod {
 		get {
 			StatusEffect effect;
 			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
-				return effect.Strength * ((StatChange)effect).Stack;
+				return ((StatChange)effect).GetMod();
 			}
-			return 0;
+			return 1;
 		}
 	}
 
@@ -135,6 +135,16 @@ public partial class StatusEffectManager : Node {
 					statuses.Add(status.Name, status);
 				}
 				break;
+		}
+	}
+	public StatusEffect Get(StatusEffect status) {
+		switch(status.Name) {
+			case BLOCKING_KEY:
+				return blocking;
+			case STASIS_KEY:
+				return stasis;
+			default:
+				return statuses.GetValueOrDefault(status.Name, null);
 		}
 	}
 
