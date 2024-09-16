@@ -17,9 +17,20 @@ public partial class Battle : Node
 	private BattleGUI gui;
 	[Export]
 	private OpponentController ai;
+	[Export]
+	private CanvasLayer matchupManager;
 	
 	private int defeatedAllies = 0;
 	private int defeatedEnemies = 0;
+
+	public override void _UnhandledInput(InputEvent @event) {
+		if(@event.IsActionPressed("open_pause_menu")) {
+			matchupManager.Show();
+		}
+		else if(@event.IsActionPressed("ui_cancel")) {
+			matchupManager.Hide();
+		}
+	}
 
 	public void Start(BattleActor[] allies, BattleItem[] allyItems, BattleActor[] enemies, OpponentController ai) {
 		this.allies = allies;
@@ -157,7 +168,6 @@ public partial class Battle : Node
 			string msg2 = target.SetElement(0, newType);
 			if(msg2.Length > 0) {
 				msg += $"\n{msg2}";
-
 			}
 		}
 
@@ -181,8 +191,6 @@ public partial class Battle : Node
 			if(msg2.Length > 0) {
 				msg += $"\n{msg2}";
 			}
-
-
 		}
 
 		// Only display message if applicable.

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class StatusEffectManager : Node {
 	// The Name field of all status effects should match one of these.
+	const string ATTACK_KEY = "Attack";
+	const string DEFENSE_KEY = "Defense";
 	const string MELEE_ATTACK_KEY = "Melee Attack";
 	const string RANGED_ATTACK_KEY = "Ranged Attack";
 	const string  MELEE_DEFENSE_KEY = "Melee Defense";
@@ -21,38 +23,54 @@ public partial class StatusEffectManager : Node {
 
 	public double MeleeAttackMod { 
 		get {
+			double total = 0;
 			StatusEffect effect;
 			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
-				return effect.Strength * ((StatChange)effect).Stack;
+				total += effect.Strength * (((StatChange)effect).Stack);
 			}
-			return 0;
+			if(statuses.TryGetValue(ATTACK_KEY, out effect)) {
+				total += effect.Strength * (((StatChange)effect).Stack);
+			}
+			return total;
 		}
 	}
 	public double MeleeDefenseMod { 
 		get {
+			double total = 0;
 			StatusEffect effect;
-			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
-				return effect.Strength * ((StatChange)effect).Stack;
+			if(statuses.TryGetValue(MELEE_DEFENSE_KEY, out effect)) {
+				total += effect.Strength * (((StatChange)effect).Stack);
 			}
-			return 0;
+			if(statuses.TryGetValue(DEFENSE_KEY, out effect)) {
+				total += effect.Strength * (((StatChange)effect).Stack);
+			}
+			return total;
 		}
 	}
 	public double RangedAttackMod {
 		get {
+			double total = 0;
 			StatusEffect effect;
-			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
-				return effect.Strength * ((StatChange)effect).Stack;
+			if(statuses.TryGetValue(RANGED_ATTACK_KEY, out effect)) {
+				total += effect.Strength * (((StatChange)effect).Stack);
 			}
-			return 0;
+			if(statuses.TryGetValue(ATTACK_KEY, out effect)) {
+				total += effect.Strength * (((StatChange)effect).Stack);
+			}
+			return total;
 		}
 	}
 	public double RangedDefenseMod {
 		get {
+			double total = 0;
 			StatusEffect effect;
-			if(statuses.TryGetValue(MELEE_ATTACK_KEY, out effect)) {
-				return effect.Strength * ((StatChange)effect).Stack;
+			if(statuses.TryGetValue(RANGED_DEFENSE_KEY, out effect)) {
+				total += effect.Strength * (((StatChange)effect).Stack);
 			}
-			return 0;
+			if(statuses.TryGetValue(DEFENSE_KEY, out effect)) {
+				total += effect.Strength * (((StatChange)effect).Stack);
+			}
+			return total;
 		}
 	}
 	public double SpeedMod {

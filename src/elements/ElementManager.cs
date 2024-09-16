@@ -23,7 +23,9 @@ public partial class ElementManager : Node {
 
 	protected static Dictionary<string, Node> matchups = new();
 
-	public override void _Ready() { }
+	public override void _Ready() { 
+		GD.Print("On ready: Blue = " + matchups.ContainsKey("Blue"));
+	}
 	private void Test() {
 		ElementalType[,] actualResults = {
 			// Red
@@ -55,6 +57,7 @@ public partial class ElementManager : Node {
 		GD.Print($"Final result: {total}");
 	}
 	public override void _EnterTree() {
+		GD.Print("Entered tree: Blue = " + matchups.ContainsKey("Blue"));
 		ForceLoad();
 	}
 	public void ForceLoad() {
