@@ -17,4 +17,7 @@ public partial class AttackEffect : Resource {
 	public virtual string ApplyEffect(BattleActor user, BattleActor target, BattleAction action) {
 		return Message.Replace("{user}", user.ActorName).Replace("{target}", target.ActorName);
 	}
+	public virtual string ApplyEffect(BattleActor actor) {
+		return "";
+	}
 }

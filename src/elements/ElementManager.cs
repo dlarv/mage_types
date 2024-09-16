@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 
 [Tool]
-/*[GlobalClass]*/
 public partial class ElementManager : Node {
 	public static ElementalType Blank { get; private set; }
 	public static ElementalType Blue { get; private set; }
@@ -18,7 +17,6 @@ public partial class ElementManager : Node {
 	[Export]
 	public ElementalType[] Elements { get; set; }
 
-	private static Dictionary<(ElementalType, ElementalType), ElementalType> Matchups;
 	private static Dictionary<string, Node> matchups = new();
 
 	public override void _Ready() { }
@@ -86,26 +84,6 @@ public partial class ElementManager : Node {
 					break;
 			}
 		}
-		Matchups = new Dictionary<(ElementalType, ElementalType), ElementalType> {
-			// Blue, Cyan, Green, Magenta, Orange, Purple, Red, Yellow
-			{ (Blue, Magenta), Purple },
-			{ (Blue, Red), Magenta },
-			{ (Blue, Green), Cyan },
-			{ (Blue, Orange), Purple },
-			{ (Cyan, Yellow), Green },
-			{ (Cyan, Magenta), Blue },
-			{ (Cyan, Purple), Blue },
-			{ (Green, Red), Yellow },
-			{ (Green, Orange), Yellow },
-			{ (Green, Purple), Cyan },
-			{ (Magenta, Yellow), Red },
-			{ (Magenta, Orange), Red },
-			{ (Magenta, Purple), Blue },
-			{ (Orange, Yellow), Red },
-			{ (Orange, Purple), Magenta },
-			{ (Purple, Red), Magenta },
-			{ (Red, Yellow), Orange },
-		};
 
 		matchups = new();
 		Node blue = new(Blue);
@@ -187,9 +165,28 @@ public partial class ElementManager : Node {
 		return -1;
 	}
 	public static ElementalType GetMatchup(ElementalType element1, ElementalType element2) {
+		if(element1 == Blank || element2 == Blank) return null;
+
 		Node node = matchups[element1.Name];
 		ElementalType res = node.GetResult(element2);
 		return res;
+	}
+	public static StatusEffect GetSideEffect(ElementalType a, ElementalType b) {
+		if(a == Blank || b == Blank) return null;
+		return matchups[a.Name].GetEffect(b);
+	}
+	public Godot.Collections.Array<Godot.Collections.Array<ElementalType>> GetAllMatchups() {
+		Godot.Collections.Array<Godot.Collections.Array<ElementalType>> output = new();
+		foreach(Node node in matchups.Values) {
+			foreach((ElementalType el, Edge edge) in node.Edges) {
+				Godot.Collections.Array<ElementalType> item = new();
+				item.Add(node.Element);
+				item.Add(el);
+				item.Add(edge.Result.Element);
+				output.Add(item);
+			}
+		}
+		return output;
 	}
 
 	private class Node {
@@ -214,6 +211,13 @@ public partial class ElementManager : Node {
 			Edge edge = Edges.GetValueOrDefault(other, null);
 			if(edge == null) return null;
 			return edge.Effect;
+		}
+		/// Find the edge connecting this and end, then return its effect.
+		public StatusEffect FindEffectFor(ElementalType end) {
+			foreach(Edge edge in Edges.Values) {
+				if(edge.Result.Element == end) return edge.Effect;
+			}
+			return null;
 		}
 	}
 	private class Edge {

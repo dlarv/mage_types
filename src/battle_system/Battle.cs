@@ -38,7 +38,7 @@ public partial class Battle : Node
 	}
 
 	public async void OnPlayerActionsSelected(ActorAction[] allyActions) {
-		// If allyActions are empty, the player pressed the "Run" button.
+		// If allyActions is empty, the player pressed the "Run" button.
 		if(allyActions.Length == 0) {
 			await gui.DisplayMessage("You ran away.");
 			EmitSignal(SignalName.BattleEnded);
@@ -51,6 +51,10 @@ public partial class Battle : Node
 
 		// Calculate turn order based on priority and actor speed.
 		actions.Sort();
+
+		// Calculate side effects and abilities.
+		foreach(BattleActor actor in allies.Concat(enemies)) {
+		}
 
 		foreach(ActorAction action in actions) {
 			// This means a character is defeated or flinched.
@@ -139,9 +143,15 @@ public partial class Battle : Node
 		ElementalType newType = ElementManager.GetMatchup(target.Element1, action.Element);
 		if(newType != null) {
 			msg += $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].\n";
+			StatusEffect effect = ElementManager.GetSideEffect(target.Element1, action.Element);
+			if(effect != null) {
+				msg += $"\nThis reaction had side effects! {target.ActorName} received {effect.ApplyEffect(target)}";
+			}
+
 			string msg2 = target.SetElement(0, newType);
 			if(msg2.Length > 0) {
 				msg += $"\n{msg2}";
+
 			}
 		}
 
@@ -149,10 +159,18 @@ public partial class Battle : Node
 		newType = ElementManager.GetMatchup(target.Element2, action.Element);
 		if(newType != null && !target.InStasis) {
 			msg += $"The target {target.ActorName}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+
+			StatusEffect effect = ElementManager.GetSideEffect(target.Element2, action.Element);
+			if(effect != null) {
+				msg += $"\nThis reaction had side effects! {target.ActorName} received {effect.ApplyEffect(target)}";
+			}
+
 			string msg2 = target.SetElement(1, newType);
 			if(msg2.Length > 0) {
 				msg += $"\n{msg2}";
 			}
+
+
 		}
 
 		// Only display message if applicable.
@@ -167,6 +185,12 @@ public partial class Battle : Node
 			e1 = target.Element1.Name.ToLower();
 			e2 = target.Element2.Name.ToLower();
 			msg += $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+
+			StatusEffect effect = ElementManager.GetSideEffect(target.Element1, target.Element2);
+			if(effect != null) {
+				msg += $"\nThis reaction had side effects! {target.ActorName} received {effect.ApplyEffect(target)}";
+			}
+
 			string msg2 = target.SetElement(0, newType);
 			target.SetElement(1, ElementManager.Blank);
 			if(msg2.Length > 0) {

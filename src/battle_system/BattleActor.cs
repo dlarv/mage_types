@@ -88,6 +88,10 @@ public partial class BattleActor : Resource {
 	public bool Flinching { get => statuses.IsFlinching(); }
 	public bool InStasis { get => statuses.InStasis(); }
 	public bool Defeated { get => CurrentHp <= 0; }
+	public ElementalType prevElement1 { get; private set; } = ElementManager.Blank;
+	private int elementCounter1 = 0;
+	public ElementalType prevElement2 { get; private set; } = ElementManager.Blank;
+	private int elementCounter2 = 0;
 
 	private bool aleadyDefeated = false;
 
@@ -238,6 +242,16 @@ public partial class BattleActor : Resource {
 	public void AddStatusEffect(StatusEffect effect) {
 		statuses.Add(effect);
 		EmitSignal(SignalName.StatusEffectAdded, effect);
+	}
+
+	public void UpdateElementalState() {
+		if(prevElement1 == Element1) elementCounter1++;
+		else elementCounter1 = 0;
+		if(prevElement2 == Element2) elementCounter2++;
+		else elementCounter2 = 0;
+
+		prevElement1 = Element1;
+		prevElement2 = Element2;
 	}
 
 	/* Status Effect Methods */

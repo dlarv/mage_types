@@ -15,6 +15,11 @@ public partial class StatusEffect : AttackEffect {
 		target.AddStatusEffect((StatusEffect)Duplicate());
 		return base.ApplyEffect(user, target, action);
 	}
+    public override string ApplyEffect(BattleActor actor) {
+		actor.AddStatusEffect((StatusEffect)Duplicate());
+		return Name;
+    }
+	
 	public bool IsExpired() {
 		return Duration == 0;
 	}
