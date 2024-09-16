@@ -17,9 +17,9 @@ public partial class ElementManager : Node {
 	[Export]
 	public ElementalType[] Elements { get; set; }
 	[Export]
-	public StatusEffect[] BuffEffects { get; set; }
+	public AttackEffect[] BuffEffects { get; set; }
 	[Export]
-	public StatusEffect[] DebuffEffects { get; set; }
+	public AttackEffect[] DebuffEffects { get; set; }
 
 	protected static Dictionary<string, Node> matchups = new();
 
@@ -177,7 +177,7 @@ public partial class ElementManager : Node {
 		ElementalType res = node.GetResult(element2);
 		return res;
 	}
-	public static (StatusEffect, StatusEffect) GetSideEffect(ElementalType a, ElementalType b) {
+	public static (AttackEffect, AttackEffect) GetSideEffect(ElementalType a, ElementalType b) {
 		if(a == Blank || b == Blank) return (null, null);
 		return matchups[a.Name].GetEffect(b);
 	}
@@ -198,7 +198,7 @@ public partial class ElementManager : Node {
 		return output;
 	}
 	public void SetSideEffectFor(ElementalType a, ElementalType b, int index, bool isBuff) {
-		StatusEffect effect;
+		AttackEffect effect;
 		if(index == -1) {
 			effect = null;
 		} else {
@@ -211,9 +211,9 @@ public partial class ElementManager : Node {
 		var msg2 = effects.Item2 != null ? effects.Item2.Name : "null";
 		GD.Print($"Set side effect: {a.Name} & {b.Name} = {msg1}, {msg2}");
 	}
-	public int SideEffectToIndex(StatusEffect effect, bool isBuff) {
+	public int SideEffectToIndex(AttackEffect effect, bool isBuff) {
 		if(effect == null) return -1;
-		StatusEffect[] effects = isBuff ? BuffEffects : DebuffEffects;
+		AttackEffect[] effects = isBuff ? BuffEffects : DebuffEffects;
 
 		for(int i = 0; i < effects.Length; i++) {
 			if(effect == effects[i]) {
@@ -236,14 +236,27 @@ public partial class ElementManager : Node {
 	public void LoadFromCSV(string data) {
 		string[] lines = data.Split("\n");
 
+		int i = -1;
 		foreach(string line in lines) {
+			i++;
 			string[] values = line.Split(",");
-			ElementalType a = GetElementFromName(values[0]); 
-			ElementalType b = GetElementFromName(values[1]);
-			int buffIndex = int.Parse(values[3]);
-			SetSideEffectFor(a, b, buffIndex, true);
-			int debuffIndex = int.Parse(values[4]);
-			SetSideEffectFor(a, b, buffIndex, false);
+			if(values.Length == 1) continue;
+
+			try {
+				ElementalType a = GetElementFromName(values[0]); 
+				ElementalType b = GetElementFromName(values[1]);
+
+				int buffIndex = int.Parse(values[3]);
+				SetSideEffectFor(a, b, buffIndex, true);
+
+				int debuffIndex = int.Parse(values[4]);
+				SetSideEffectFor(a, b, debuffIndex, false);
+			} 
+			catch(IndexOutOfRangeException e) {
+				GD.PushWarning($"Error on line {i}. Values = {values}");
+				e.ToString();
+			}
+
 		}
 	}
 
@@ -257,7 +270,7 @@ public partial class ElementManager : Node {
 		public void AddConnection(ElementalType element, Node result) {
 			Edges.Add(element, new Edge(null, null, result));
 		}
-		public void AddConnection(ElementalType element, StatusEffect buffEffect, StatusEffect debuffEffect, Node result) {
+		public void AddConnection(ElementalType element, AttackEffect buffEffect, AttackEffect debuffEffect, Node result) {
 			Edges.Add(element, new Edge(buffEffect, debuffEffect, result));
 		}
 		public ElementalType GetResult(ElementalType other) {
@@ -265,18 +278,18 @@ public partial class ElementManager : Node {
 			if(edge == null) return null;
 			return edge.Result.Element;
 		}
-		public (StatusEffect, StatusEffect) GetEffect(ElementalType other) {
+		public (AttackEffect, AttackEffect) GetEffect(ElementalType other) {
 			Edge edge = Edges.GetValueOrDefault(other, null);
 			if(edge == null) return (null, null);
 			return (edge.BuffEffect, edge.DebuffEffect);
 		}
-		public void SetEffect(ElementalType other, StatusEffect effect, bool isBuff) {
+		public void SetEffect(ElementalType other, AttackEffect effect, bool isBuff) {
 			if(isBuff) Edges[other].BuffEffect = effect;
 			else Edges[other].DebuffEffect = effect;
 
 		}
 		/// Find the edge connecting this and end, then return its effect.
-		public StatusEffect FindEffectFor(ElementalType end) {
+		public AttackEffect FindEffectFor(ElementalType end) {
 			foreach(Edge edge in Edges.Values) {
 				if(edge.Result.Element == end) return edge.BuffEffect;
 			}
@@ -284,11 +297,11 @@ public partial class ElementManager : Node {
 		}
 	}
 	protected class Edge {
-		public StatusEffect	BuffEffect { get; set; }  
-		public StatusEffect DebuffEffect { get; set; }
+		public AttackEffect	BuffEffect { get; set; }  
+		public AttackEffect DebuffEffect { get; set; }
 		public Node Result { get; set; }
 
-		public Edge(StatusEffect buffEffect, StatusEffect debuffEffect, Node end) { 
+		public Edge(AttackEffect buffEffect, AttackEffect debuffEffect, Node end) { 
 			BuffEffect = buffEffect;
 			DebuffEffect = debuffEffect;
 			Result = end;

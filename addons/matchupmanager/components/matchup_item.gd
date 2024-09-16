@@ -11,7 +11,6 @@ var color_rect_3: ColorRect
 func _enter_tree():
 	get_node("SideEffectOptions1").item_selected.connect(func(index): buff_selected.emit(index))
 	get_node("SideEffectOptions2").item_selected.connect(func(index): debuff_selected.emit(index))
-
 func set_colors(e1: ElementalType, e2: ElementalType, e3: ElementalType):
 	color_rect_1 = get_node("ColorRect1")
 	color_rect_2 = get_node("ColorRect2")

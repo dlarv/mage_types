@@ -245,8 +245,8 @@ public partial class BattleActor : Resource {
 		return RangedDefense;
 	}
 	// Returns actual amount of damage applied, after accounting for status conditions.
-	public int ApplyDamage(int dmg) {
-		if(!statuses.IsBlocking()) {
+	public int ApplyDamage(int dmg, bool allowBlocking=true) {
+		if(!(statuses.IsBlocking() && allowBlocking)) {
 			CurrentHp -= dmg;
 			EmitSignal(SignalName.DamageApplied, CurrentHp);
 			if(CurrentHp <= 0 && !aleadyDefeated) {

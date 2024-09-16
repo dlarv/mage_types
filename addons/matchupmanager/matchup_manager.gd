@@ -19,6 +19,7 @@ func _ready():
 		items[[matchup[0], matchup[1]]] = item
 
 		item.buff_selected.connect(func(index):
+			print(index)
 			ElementManager.SetSideEffectFor(matchup[0], matchup[1], index, true))
 		item.debuff_selected.connect(func(index):
 			ElementManager.SetSideEffectFor(matchup[0], matchup[1], index, false))
@@ -38,8 +39,8 @@ func _on_load_button_pressed():
 
 func _on_file_dialog_file_selected(path: String):
 	if save_file:
-		if(not path.ends_with(".txt")):
-			path += ".txt"
+		if(not path.ends_with(".txt") and not path.ends_with(".csv")):
+			path += ".csv"
 
 		var data = ElementManager.SaveAsCSV()
 		var file = FileAccess.open(path, FileAccess.WRITE)

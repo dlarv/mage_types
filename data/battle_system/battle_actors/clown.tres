@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="2_7ook1"]
 [ext_resource type="Resource" uid="uid://b264df1pks5c0" path="res://data/elemental_types/orange.tres" id="3_pucw6"]
 [ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="4_ruhn1"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="5_anq3m"]
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="5_fjt6a"]
 
 [resource]
 script = ExtResource("1_llgem")
@@ -20,5 +20,5 @@ Evasion = 100
 Mana = 30
 Element1 = ExtResource("3_pucw6")
 Element2 = ExtResource("4_ruhn1")
-ElementalBias = ExtResource("5_anq3m")
+ElementalBias = ExtResource("5_fjt6a")
 Attacks = Array[Object]([ExtResource("1_i4kid"), ExtResource("2_7ook1")])

@@ -49,15 +49,11 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "END"
-
 [node name="FileDialog" type="FileDialog" parent="."]
 position = Vector2i(500, 100)
 size = Vector2i(392, 500)
 root_subfolder = "res://data/elemental_types/matchup_files/"
-filters = PackedStringArray("*.txt")
+filters = PackedStringArray("*.txt", "*.csv")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Load_Button" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Save_Button" to="." method="_on_save_button_pressed"]
