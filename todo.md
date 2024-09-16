@@ -17,9 +17,10 @@
 - [x] Create remaining status effect resources.
 - [x] StatusManager will not list special case effects.
 - [x] Create status effect icons.
-- [ ] Loading character reduces all stats to 1.
-- [ ] Allow user to edit all stats inside character creator.
-- [ ] Allow user to add attack effects inside character creator.
-- [ ] Change character's type based on attack usage.
+- [x] Loading character reduces all stats to 1.
+
+- [-] Allow user to edit all stats inside character creator.
+- [-] Allow user to add attack effects inside character creator.
+- [-] Change character's type based on attack usage.
 
 

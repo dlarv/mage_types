@@ -30,5 +30,5 @@
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
 Elements = [ExtResource("2_lj85t"), ExtResource("2_2na3h"), ExtResource("3_4ordb"), ExtResource("4_mwrkt"), ExtResource("5_ikpar"), ExtResource("6_eh1hp"), ExtResource("7_58n47"), ExtResource("8_j8x1x"), ExtResource("9_rqpl6")]
-BuffEffects = [ExtResource("11_2opo3"), ExtResource("11_jjx3p"), ExtResource("12_f21cn"), ExtResource("14_2183x"), ExtResource("13_fkdds"), ExtResource("14_0joi6"), ExtResource("15_ojmb5"), ExtResource("16_ktaor"), null, null]
-DebuffEffects = [ExtResource("19_ixuyb"), ExtResource("17_hu54e"), ExtResource("18_j0teb"), ExtResource("22_4n7so"), ExtResource("19_a1npl"), ExtResource("20_a8l5i"), ExtResource("21_gjete"), ExtResource("22_xxnyk"), null]
+BuffEffects = [null, ExtResource("11_2opo3"), ExtResource("11_jjx3p"), ExtResource("12_f21cn"), ExtResource("14_2183x"), ExtResource("13_fkdds"), ExtResource("14_0joi6"), ExtResource("15_ojmb5"), ExtResource("16_ktaor"), null, null]
+DebuffEffects = [null, ExtResource("19_ixuyb"), ExtResource("17_hu54e"), ExtResource("18_j0teb"), ExtResource("22_4n7so"), ExtResource("19_a1npl"), ExtResource("20_a8l5i"), ExtResource("21_gjete"), ExtResource("22_xxnyk"), null]

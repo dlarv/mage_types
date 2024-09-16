@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=8 format=3 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" path="res://src/player/Player.cs" id="1_jd6jo"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/pause_menu.tscn" id="2_1uj1b"]
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="2_tqkyx"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="3_pbcfq"]
 
 [sub_resource type="Resource" id="Resource_rgltg"]
@@ -15,6 +16,9 @@ RangedDefense = 0
 Speed = 0
 Evasion = 0
 Mana = 0
+Element1 = ExtResource("2_tqkyx")
+Element2 = ExtResource("2_tqkyx")
+ElementalBias = ExtResource("2_tqkyx")
 Attacks = null
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]

@@ -28,6 +28,7 @@ public partial class StatusEffect : AttackEffect {
 		Duration += a.Duration;
 	}
 	public virtual Node InstantiateIcon() {
+		if(Icon == null) return null;
 		return Icon.Instantiate();
 	}
 }
