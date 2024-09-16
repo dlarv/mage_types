@@ -3,12 +3,13 @@ extends EditorPlugin
 
 var plugin
 
-func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	plugin = preload("res://addons/matchupmanager/plugin.gd").new()
-	add_inspector_plugin(plugin)
+
+var dock
+
+func _enter_tree():
+	dock = preload("res://addons/matchupmanager/matchup_manager.tscn").instantiate()
+	add_control_to_dock(DOCK_SLOT_RIGHT_UR, dock)
 
 
 func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	pass
+	remove_control_from_docks(dock)

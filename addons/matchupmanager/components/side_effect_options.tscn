@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bwj6cmpttyeio"]
+
+[node name="SideEffectOptions" type="OptionButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 11
+popup/item_0/text = "Attack"
+popup/item_0/id = 0
+popup/item_1/text = "Melee Attack"
+popup/item_1/id = 1
+popup/item_2/text = "Ranged Attack"
+popup/item_2/id = 2
+popup/item_3/text = "Defense"
+popup/item_3/id = 3
+popup/item_4/text = "Melee Defense"
+popup/item_4/id = 4
+popup/item_5/text = "Ranged Defense"
+popup/item_5/id = 5
+popup/item_6/text = "Speed"
+popup/item_6/id = 6
+popup/item_7/text = "Evasion"
+popup/item_7/id = 7
+popup/item_8/text = "Special"
+popup/item_8/id = 8
+popup/item_8/separator = true
+popup/item_9/text = "Hp"
+popup/item_9/id = 10
+popup/item_10/text = "Status Cure"
+popup/item_10/id = 10

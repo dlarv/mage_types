@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[Tool]
 [GlobalClass]
 public partial class StatChange : StatusEffect {
 	public int Stack { get; private set; } = 1;

@@ -16,8 +16,12 @@ public partial class ElementManager : Node {
 
 	[Export]
 	public ElementalType[] Elements { get; set; }
+	[Export]
+	public StatusEffect[] BuffEffects { get; set; }
+	[Export]
+	public StatusEffect[] DebuffEffects { get; set; }
 
-	private static Dictionary<string, Node> matchups = new();
+	protected static Dictionary<string, Node> matchups = new();
 
 	public override void _Ready() { }
 	private void Test() {
@@ -50,8 +54,10 @@ public partial class ElementManager : Node {
 		}
 		GD.Print($"Final result: {total}");
 	}
-
 	public override void _EnterTree() {
+		ForceLoad();
+	}
+	public void ForceLoad() {
 		Blank = Elements[0];
 		foreach(ElementalType element in Elements) {
 			switch(element.Name.ToLower()) {
@@ -171,8 +177,8 @@ public partial class ElementManager : Node {
 		ElementalType res = node.GetResult(element2);
 		return res;
 	}
-	public static StatusEffect GetSideEffect(ElementalType a, ElementalType b) {
-		if(a == Blank || b == Blank) return null;
+	public static (StatusEffect, StatusEffect) GetSideEffect(ElementalType a, ElementalType b) {
+		if(a == Blank || b == Blank) return (null, null);
 		return matchups[a.Name].GetEffect(b);
 	}
 	public Godot.Collections.Array<Godot.Collections.Array<ElementalType>> GetAllMatchups() {
@@ -188,8 +194,26 @@ public partial class ElementManager : Node {
 		}
 		return output;
 	}
+	public void SetSideEffectFor(ElementalType a, ElementalType b, int index, bool isBuff) {
+		StatusEffect effect = isBuff ? BuffEffects[index] : DebuffEffects[index];
+		matchups[a.Name].SetEffect(b, effect, isBuff);
 
-	private class Node {
+		var effects = matchups[a.Name].GetEffect(b);
+		var msg1 = effects.Item1 != null ? effects.Item1.Name : "null";
+		var msg2 = effects.Item2 != null ? effects.Item2.Name : "null";
+		GD.Print($"Set side effect: {a.Name} & {b.Name} = {msg1}, {msg2}");
+	}
+
+	public byte[] Serialize() {
+		return GD.VarToBytesWithObjects(this);
+	}
+
+	public void Deserialize(byte[] data) {
+		// I think since the relevant data is static, this should overwrite the original values.
+		ElementManager _ = (ElementManager)GD.BytesToVarWithObjects(data);
+	}
+
+	protected class Node {
 		public ElementalType Element { get; set; } = Blank;
 		public Dictionary<ElementalType, Edge> Edges { get; set; } = new();
 
@@ -197,35 +221,42 @@ public partial class ElementManager : Node {
 			Element = element;
 		}
 		public void AddConnection(ElementalType element, Node result) {
-			Edges.Add(element, new Edge(null, result));
+			Edges.Add(element, new Edge(null, null, result));
 		}
-		public void AddConnection(ElementalType element, StatusEffect effect, Node result) {
-			Edges.Add(element, new Edge(effect, result));
+		public void AddConnection(ElementalType element, StatusEffect buffEffect, StatusEffect debuffEffect, Node result) {
+			Edges.Add(element, new Edge(buffEffect, debuffEffect, result));
 		}
 		public ElementalType GetResult(ElementalType other) {
 			Edge edge = Edges.GetValueOrDefault(other, null);
 			if(edge == null) return null;
 			return edge.Result.Element;
 		}
-		public StatusEffect GetEffect(ElementalType other) {
+		public (StatusEffect, StatusEffect) GetEffect(ElementalType other) {
 			Edge edge = Edges.GetValueOrDefault(other, null);
-			if(edge == null) return null;
-			return edge.Effect;
+			if(edge == null) return (null, null);
+			return (edge.BuffEffect, edge.DebuffEffect);
+		}
+		public void SetEffect(ElementalType other, StatusEffect effect, bool isBuff) {
+			if(isBuff) Edges[other].BuffEffect = effect;
+			else Edges[other].DebuffEffect = effect;
+
 		}
 		/// Find the edge connecting this and end, then return its effect.
 		public StatusEffect FindEffectFor(ElementalType end) {
 			foreach(Edge edge in Edges.Values) {
-				if(edge.Result.Element == end) return edge.Effect;
+				if(edge.Result.Element == end) return edge.BuffEffect;
 			}
 			return null;
 		}
 	}
-	private class Edge {
-		public StatusEffect Effect { get; set; }  
+	protected class Edge {
+		public StatusEffect	BuffEffect { get; set; }  
+		public StatusEffect DebuffEffect { get; set; }
 		public Node Result { get; set; }
 
-		public Edge(StatusEffect effect, Node end) { 
-			Effect = effect;
+		public Edge(StatusEffect buffEffect, StatusEffect debuffEffect, Node end) { 
+			BuffEffect = buffEffect;
+			DebuffEffect = debuffEffect;
 			Result = end;
 		}
 	}

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[Tool]
 [GlobalClass]
 public partial class RecoilDamage : Damage {
     public override string ApplyEffect(BattleActor user, BattleActor target, BattleAction action) {

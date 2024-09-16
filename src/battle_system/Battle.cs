@@ -143,9 +143,15 @@ public partial class Battle : Node
 		ElementalType newType = ElementManager.GetMatchup(target.Element1, action.Element);
 		if(newType != null) {
 			msg += $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].\n";
-			StatusEffect effect = ElementManager.GetSideEffect(target.Element1, action.Element);
-			if(effect != null) {
-				msg += $"\nThis reaction had side effects! {target.ActorName} received {effect.ApplyEffect(target)}";
+			(StatusEffect buff, StatusEffect debuff) = ElementManager.GetSideEffect(
+					target.Element1, action.Element);
+			if(buff != null) {
+				msg += $"\nThis reaction had side effects! "
+				+ $"{target.ActorName} received {buff.ApplyEffect(target)}";
+			}
+			if(debuff != null) {
+				msg += $"\nThis reaction had side effects! "
+				+ $"{target.ActorName} received {debuff.ApplyEffect(target)}";
 			}
 
 			string msg2 = target.SetElement(0, newType);
@@ -160,11 +166,17 @@ public partial class Battle : Node
 		if(newType != null && !target.InStasis) {
 			msg += $"The target {target.ActorName}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
 
-			StatusEffect effect = ElementManager.GetSideEffect(target.Element2, action.Element);
-			if(effect != null) {
-				msg += $"\nThis reaction had side effects! {target.ActorName} received {effect.ApplyEffect(target)}";
-			}
 
+			(StatusEffect buff, StatusEffect debuff) = ElementManager.GetSideEffect(
+					target.Element2, action.Element);
+			if(buff != null) {
+				msg += $"\nThis reaction had side effects! " 
+				+ $"{target.ActorName} received {buff.ApplyEffect(target)}";
+			}
+			if(debuff != null) {
+				msg += $"\nThis reaction had side effects! " 
+					+ $"{target.ActorName} received {debuff.ApplyEffect(target)}";
+			}
 			string msg2 = target.SetElement(1, newType);
 			if(msg2.Length > 0) {
 				msg += $"\n{msg2}";
@@ -186,9 +198,15 @@ public partial class Battle : Node
 			e2 = target.Element2.Name.ToLower();
 			msg += $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
 
-			StatusEffect effect = ElementManager.GetSideEffect(target.Element1, target.Element2);
-			if(effect != null) {
-				msg += $"\nThis reaction had side effects! {target.ActorName} received {effect.ApplyEffect(target)}";
+			(StatusEffect buff, StatusEffect debuff) = ElementManager.GetSideEffect(
+					target.Element1, target.Element2);
+			if(buff != null) {
+				msg += $"\nThis reaction had side effects! " 
+				+ $"{target.ActorName} received {buff.ApplyEffect(target)}";
+			}
+			if(debuff != null) {
+				msg += $"\nThis reaction had side effects! " 
+					+ $"{target.ActorName} received {debuff.ApplyEffect(target)}";
 			}
 
 			string msg2 = target.SetElement(0, newType);
