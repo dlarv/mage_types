@@ -19,6 +19,7 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 ElementManager="*res://src/elements/element_manager.tscn"
+Settings="*res://src/settings/settings.tscn"
 
 [debug]
 

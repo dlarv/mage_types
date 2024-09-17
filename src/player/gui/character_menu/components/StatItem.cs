@@ -69,6 +69,12 @@ public partial class StatItem : Control {
 	[Export]
 	private Button downButton;
 
+	public override void _Ready() {
+		Settings.Singleton.Connect(Settings.SignalName.DebugModeToggled, Callable.From((bool val) => {
+			GD.Print("Val changed");
+			DebugMode = val;
+		}));
+	}
 
 	private void IncrementStat(int direction) {
 		_value += direction;
