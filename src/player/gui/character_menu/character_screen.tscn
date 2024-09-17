@@ -1,0 +1,121 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwy6xlvmbrhjj"]
+
+[ext_resource type="Script" path="res://src/player/gui/character_menu/CharacterScreen.cs" id="1_djrqu"]
+[ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="2_i8dsj"]
+
+[node name="CharacterScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_djrqu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="InterfaceContainer" type="TabContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 1
+
+[node name="Info" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Stats" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Hp_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Max Health"
+
+[node name="Mana_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upButton", "downButton") instance=ExtResource("2_i8dsj")]
+clip_children = 1
+layout_mode = 2
+Text = "Mana"
+upButton = NodePath("../Evasion_StatItem/HBoxContainer/VBoxContainer/UpButton")
+downButton = NodePath("../Evasion_StatItem/HBoxContainer/VBoxContainer/DownButton")
+
+[node name="MAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Melee Attack"
+
+[node name="RAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Ranged Attack"
+
+[node name="MDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Melee Defense"
+
+[node name="RDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Ranged Defense"
+
+[node name="Speed_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Speed"
+
+[node name="Evasion_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Mana"
+
+[node name="Stamina_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+layout_mode = 2
+Text = "Stamina"
+
+[node name="Spells" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Equipment" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Misc" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
+layout_mode = 2
+
+[node name="DisplayContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/DisplayContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/DisplayContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true

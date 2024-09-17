@@ -3,7 +3,7 @@ using System;
 
 public partial class Actor : Resource {
 	[Export]
-	public BattleActor battleActor;
+	public BattleActor BattleActor;
 	[Export]
-	public StoryActor storyActor;
+	public StoryActor StoryActor;
 }

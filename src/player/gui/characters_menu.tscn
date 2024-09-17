@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bydn5qav2dgwy"]
+
+[ext_resource type="PackedScene" uid="uid://cwy6xlvmbrhjj" path="res://src/player/gui/character_menu/character_screen.tscn" id="1_ebiem"]
+[ext_resource type="Script" path="res://src/player/gui/CharactersMenu.cs" id="1_oje6s"]
+
+[node name="CharactersMenu" type="Control" node_paths=PackedStringArray("activeScreensParent", "inactiveScreensParent", "aliceScreen", "alexScreen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oje6s")
+activeScreensParent = NodePath("MarginContainer/ActiveTabs")
+inactiveScreensParent = NodePath("InactiveTabs")
+aliceScreen = NodePath("MarginContainer/ActiveTabs/Alice")
+alexScreen = NodePath("MarginContainer/ActiveTabs/Alex")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="ActiveTabs" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Player" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
+layout_mode = 2
+
+[node name="Alice" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
+visible = false
+layout_mode = 2
+
+[node name="Alex" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
+visible = false
+layout_mode = 2
+
+[node name="InactiveTabs" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0

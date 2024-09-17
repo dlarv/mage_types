@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=5 format=3 uid="uid://cj7rk23vvyppe"]
+
+[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_kuqt1"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_wyvu6"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="2_423j3"]
+[ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elemental_types/cyan.tres" id="3_7o72g"]
+
+[resource]
+script = ExtResource("1_wyvu6")
+ActorName = "Alice"
+Hp = 1000
+MeleeAttack = 100
+RangedAttack = 100
+MeleeDefense = 100
+RangedDefense = 100
+Speed = 100
+Evasion = 100
+Mana = 100
+Element1 = ExtResource("3_7o72g")
+Attacks = Array[Object]([ExtResource("1_kuqt1"), ExtResource("2_423j3")])

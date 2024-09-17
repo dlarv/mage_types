@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn3qgn2vc75yn"]
+
+[ext_resource type="Script" path="res://src/player/gui/character_menu/components/StatItem.cs" id="1_8hlo5"]
+
+[node name="StatItem" type="Control" node_paths=PackedStringArray("nameLabel", "numberLabel", "upButton", "downButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_8hlo5")
+nameLabel = NodePath("HBoxContainer/LabelContainer/Label")
+numberLabel = NodePath("HBoxContainer/NumberContainer/Number")
+upButton = NodePath("HBoxContainer/VBoxContainer/UpButton")
+downButton = NodePath("HBoxContainer/VBoxContainer/DownButton")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/LabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+vertical_alignment = 1
+
+[node name="NumberContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Number" type="Label" parent="HBoxContainer/NumberContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = -1
+
+[node name="UpButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "+"
+
+[node name="DownButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "-"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/UpButton" to="." method="IncrementStat" binds= [1]]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/DownButton" to="." method="IncrementStat" binds= [-1]]
