@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 [Tool]
 public partial class ElementManager : Node {
+	private const string DEFAULT_CSV_PATH = "res://data/elemental_types/matchup_files/default.csv";
+
 	public static ElementalType Blank { get; private set; }
 	public static ElementalType Blue { get; private set; }
 	public static ElementalType Purple { get; private set; }
@@ -56,6 +58,7 @@ public partial class ElementManager : Node {
 	}
 	public override void _EnterTree() {
 		ForceLoad();
+		LoadFromDefaultCSV();
 	}
 	public void ForceLoad() {
 		Blank = Elements[0];
@@ -258,6 +261,11 @@ public partial class ElementManager : Node {
 			}
 
 		}
+	}
+	public void LoadFromDefaultCSV() {
+		FileAccess @file = FileAccess.Open(DEFAULT_CSV_PATH, FileAccess.ModeFlags.Read);
+		string data = @file.GetAsText();
+		LoadFromCSV(data);
 	}
 
 	protected class Node {
