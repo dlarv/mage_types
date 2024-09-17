@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var battle_scene: PackedScene 
+@export var overworld: Node3D
 @export var world: Node3D
 
 func _on_player_battle_started(allies:Array, items:Array, enemy:Node3D) -> void:

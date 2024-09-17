@@ -199,7 +199,7 @@ public partial class BattleActor : Resource {
 	}
 	public int GetStat(string name) {
 		switch(name.ToLower().Trim()) {
-			case "hp": return Hp;
+			case "hp": case "health": case "max_health": case "max health": return Hp;
 			case "attack": case "melee_attack": case "melee attack": return MeleeAttack;
 			case "defense": case "melee_defense": case "melee defense": return MeleeDefense;
 			case "ranged_attack": case "ranged attack": return RangedAttack;
@@ -216,7 +216,7 @@ public partial class BattleActor : Resource {
 				Hp = value;
 				CurrentHp = value;
 				break;
-			case "attack": case "melee_attack": 
+			case "attack": case "melee_attack":  case "melee attack":
 				MeleeAttack = value;
 				break;
 			case "defense": case "melee_defense": 

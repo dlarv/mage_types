@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_ay17s"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_e5pp6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_ffy80"]
 [ext_resource type="Resource" uid="uid://rvgptfxqtoih" path="res://data/battle_system/battle_actions/attacks/basic_status_spells/block.tres" id="4_ch107"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="5_luyfi"]
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="6_xsukw"]
 
 [resource]
 script = ExtResource("1_ay17s")
@@ -19,4 +20,5 @@ Speed = 200
 Evasion = 100
 Mana = 100
 Element1 = ExtResource("5_luyfi")
+ElementalBias = ExtResource("6_xsukw")
 Attacks = Array[Object]([ExtResource("1_e5pp6"), ExtResource("2_8gw08"), ExtResource("3_ffy80"), ExtResource("4_ch107")])

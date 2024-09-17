@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=20 format=3 uid="uid://bie7bmgp8y2f1"]
 
-[ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://data/player/companions/player_party.tscn" id="1_k6oqa"]
+[ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://src/player/party/player_party.tscn" id="1_k6oqa"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/actors/enemy_mage.tscn" id="2_1w1kl"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://bh5734pj5bgq3" path="res://data/player/battle_actors/alex_battle_actor.tres" id="13_q14lb"]
 [ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="14_wqv0v"]
 [ext_resource type="Resource" uid="uid://dvd22ngec15cd" path="res://data/items/items/test_item.tres" id="15_ipwj6"]
+[ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/pause_menu.tscn" id="16_p60yf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
 size = Vector3(100, 0.1, 100)
@@ -37,59 +38,69 @@ Element1 = ExtResource("7_ap22b")
 Element2 = ExtResource("8_hn7ae")
 Attacks = Array[Object]([ExtResource("4_2g5ji"), ExtResource("5_bgxtk"), ExtResource("6_fv3t4")])
 
-[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("world")]
+[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0728321, -0.110706, 0.0608318)
 script = ExtResource("1_wo6gm")
 battle_scene = ExtResource("2_t1trw")
+overworld = NodePath("World/Overworld")
 world = NodePath("World")
+
+[node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
+Items = [ExtResource("14_wqv0v"), ExtResource("15_ipwj6")]
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+[node name="Overworld" type="Node3D" parent="World"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Overworld"]
 transform = Transform3D(1, 0, 0, 0, 0.167078, 0.985944, 0, -0.985944, 0.167078, 0, 10, 7.99588)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Overworld"]
 layers = 2
 mesh = SubResource("BoxMesh_wh0wd")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Overworld/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_a4c5f")
 
-[node name="PlayerParty" parent="World" instance=ExtResource("1_k6oqa")]
+[node name="PlayerParty" parent="World/Overworld" node_paths=PackedStringArray("pause_menu", "inventory") instance=ExtResource("1_k6oqa")]
+pause_menu = NodePath("../../CanvasLayer/PauseMenu")
+inventory = NodePath("../../../Inventory")
 
-[node name="Player" parent="World/PlayerParty" index="0" node_paths=PackedStringArray("Inventory")]
+[node name="Player" parent="World/Overworld/PlayerParty" index="0"]
 BattleActor = ExtResource("4_8t0xh")
-Inventory = NodePath("../../../Inventory")
 
-[node name="AliceTarget" parent="World/PlayerParty/Player" index="3"]
+[node name="AliceTarget" parent="World/Overworld/PlayerParty/Player" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14, -1, -2.014)
 
-[node name="Alice" parent="World/PlayerParty" index="1"]
+[node name="Alice" parent="World/Overworld/PlayerParty" index="1"]
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 DistanceToPlayer = 1.0
 
-[node name="Alex" parent="World/PlayerParty" index="2"]
+[node name="Alex" parent="World/Overworld/PlayerParty" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7581, 0.190724, -1.86462)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
 BattleActor = ExtResource("13_q14lb")
 DistanceToPlayer = 1.0
 
-[node name="EnemyMage" parent="World" instance=ExtResource("2_1w1kl")]
+[node name="EnemyMage" parent="World/Overworld" instance=ExtResource("2_1w1kl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.78956)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 BattleActor = SubResource("Resource_mjorq")
 
-[node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
-Items = [ExtResource("14_wqv0v"), ExtResource("15_ipwj6")]
+[node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
-[connection signal="BattleStarted" from="World/PlayerParty/Player" to="." method="_on_player_battle_started"]
+[node name="PauseMenu" parent="World/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("16_p60yf")]
+visible = false
+world = NodePath("../../Overworld")
 
-[editable path="World/PlayerParty"]
+[connection signal="BattleStarted" from="World/Overworld/PlayerParty/Player" to="." method="_on_player_battle_started"]
+
+[editable path="World/Overworld/PlayerParty"]

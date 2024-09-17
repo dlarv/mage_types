@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dthnhw8o26nkm"]
 
-[ext_resource type="PackedScene" uid="uid://bfpnrqolejh7g" path="res://data/player/companions/base_companion.tscn" id="1_qppk6"]
+[ext_resource type="PackedScene" uid="uid://bfpnrqolejh7g" path="res://src/player/party/base_companion.tscn" id="1_qppk6"]
 [ext_resource type="Script" path="res://data/player/companions/AlexCompanion.cs" id="2_rrqqh"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="3_ei818"]
 

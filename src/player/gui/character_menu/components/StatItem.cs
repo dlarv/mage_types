@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Text.RegularExpressions;
 
 [Tool]
 public partial class StatItem : Control {
@@ -30,6 +31,17 @@ public partial class StatItem : Control {
 		}
 	}
 	private bool _editable = true;
+	[Export]
+	public bool DebugMode {
+		get => _debugMode;
+		set {
+			_debugMode = value;
+			if(numberLabel == null) return;
+			numberLabel.Editable = value;
+			Editable = Editable || value;
+		}
+	}
+	private bool _debugMode = true;
 
 	[Export]
 	public int Value {
@@ -51,7 +63,7 @@ public partial class StatItem : Control {
 	[Export]
 	private Label nameLabel;
 	[Export]
-	private Label numberLabel;
+	private LineEdit numberLabel;
 	[Export]
 	private Button upButton;
 	[Export]
@@ -61,7 +73,7 @@ public partial class StatItem : Control {
 	private void IncrementStat(int direction) {
 		_value += direction;
 		numberLabel.Text = "" + _value;
-		EmitSignal(SignalName.StatModified, Text.ToLower().Trim(), _value);
+		EmitSignal(SignalName.StatModified, Text.ToLower().Trim(), Value);
 	}
 
 	public void ChangeValue(BattleActor actor) {
@@ -69,6 +81,14 @@ public partial class StatItem : Control {
 	}
 
 	public void ChangeValue(int value) {
-		this._value = value;
+		Value = value;
+	}
+
+	public void OnTextChanged(string newText) {
+		// From what I can tell, this should remove non-numeric symbols from string,
+		// but it doesn't seem to do that.
+		// Value = newText.ToInt();
+		Value = Regex.Replace(newText, "[^0-9]", "").ToInt();
+		EmitSignal(SignalName.StatModified, Text.ToLower().Trim(), Value);
 	}
 }

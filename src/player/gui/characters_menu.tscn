@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bydn5qav2dgwy"]
+[gd_scene load_steps=6 format=3 uid="uid://bydn5qav2dgwy"]
 
 [ext_resource type="PackedScene" uid="uid://cwy6xlvmbrhjj" path="res://src/player/gui/character_menu/character_screen.tscn" id="1_ebiem"]
 [ext_resource type="Script" path="res://src/player/gui/CharactersMenu.cs" id="1_oje6s"]
+[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="3_67vyo"]
 [ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="3_dxhqu"]
+[ext_resource type="Resource" uid="uid://bh5734pj5bgq3" path="res://data/player/battle_actors/alex_battle_actor.tres" id="5_07e8o"]
 
 [node name="CharactersMenu" type="Control" node_paths=PackedStringArray("activeScreensParent", "inactiveScreensParent", "aliceScreen", "alexScreen")]
 layout_mode = 3
@@ -31,6 +33,7 @@ layout_mode = 2
 
 [node name="Player" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 layout_mode = 2
+Actor = ExtResource("3_67vyo")
 
 [node name="Alice" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 visible = false
@@ -40,6 +43,7 @@ Actor = ExtResource("3_dxhqu")
 [node name="Alex" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 visible = false
 layout_mode = 2
+Actor = ExtResource("5_07e8o")
 
 [node name="InactiveTabs" type="Control" parent="."]
 visible = false

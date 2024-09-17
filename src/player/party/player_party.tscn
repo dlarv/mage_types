@@ -1,12 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcp041c8p7lm4"]
 
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_3ilgs"]
-[ext_resource type="Script" path="res://data/player/companions/player_party.gd" id="1_a50nr"]
+[ext_resource type="Script" path="res://src/player/party/player_party.gd" id="1_a50nr"]
 [ext_resource type="PackedScene" uid="uid://2qmk37nb8emu" path="res://data/player/companions/alice_companion.tscn" id="2_xp5nw"]
 [ext_resource type="PackedScene" uid="uid://dthnhw8o26nkm" path="res://data/player/companions/alex_companion.tscn" id="3_lrh5x"]
 
-[node name="PlayerParty" type="Node3D"]
+[node name="PlayerParty" type="Node3D" node_paths=PackedStringArray("player", "companions", "pause_menu")]
 script = ExtResource("1_a50nr")
+player = NodePath("Player")
+companions = [NodePath("Alice"), NodePath("Alex")]
+pause_menu = NodePath("")
 
 [node name="Player" parent="." instance=ExtResource("1_3ilgs")]
 

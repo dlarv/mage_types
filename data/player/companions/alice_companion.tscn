@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2qmk37nb8emu"]
 
-[ext_resource type="PackedScene" uid="uid://bfpnrqolejh7g" path="res://data/player/companions/base_companion.tscn" id="1_tfba6"]
+[ext_resource type="PackedScene" uid="uid://bfpnrqolejh7g" path="res://src/player/party/base_companion.tscn" id="1_tfba6"]
 [ext_resource type="Script" path="res://data/player/companions/AliceCompanion.cs" id="2_pbd7w"]
 [ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="3_5x1ae"]
 

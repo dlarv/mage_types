@@ -2,17 +2,15 @@ using Godot;
 using Godot.Collections;
 using System;
 
+[GlobalClass]
 public partial class Player : CharacterBody3D {
 
 	[Signal]
 	public delegate void BattleStartedEventHandler(BattleActor[] allies, BattleItem[] items, EnemyActor enemy);
 
 	[Export]
-	private PauseMenu pauseMenu;
-	[Export]
 	public BattleActor BattleActor { get; private set; }
 	public BattleActor[] Party;
-	[Export]
 	public Inventory Inventory { get; set; }
 
 	[ExportCategory("Movement")]
@@ -23,17 +21,6 @@ public partial class Player : CharacterBody3D {
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
-
-	public override void _Ready() {
-		pauseMenu.InitInventory(Inventory);
-	}
-
-    public override void _UnhandledInput(InputEvent @event) {
-        // base._UnhandledInput(@event);
-		if(@event.IsActionPressed("open_pause_menu")) {
-			pauseMenu.Visible = !pauseMenu.Visible;
-		}
-    }
 
 	public override void _PhysicsProcess(double delta) {
 		Vector3 velocity = Velocity;
