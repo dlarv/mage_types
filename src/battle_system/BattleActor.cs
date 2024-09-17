@@ -1,5 +1,7 @@
 using Godot;
-using Godot.Collections; using System;
+using Godot.Collections; 
+using System;
+using System.Text.RegularExpressions;
 
 [GlobalClass]
 public partial class BattleActor : Resource {
@@ -39,8 +41,7 @@ public partial class BattleActor : Resource {
 	[Export]
 	public int RangedAttack { 
 		get { return (int)(_rangedAttack * statuses.RangedAttackMod); }
-		set => _rangedAttack = value; 
-	}
+		set => _rangedAttack = value; }
 	private int _rangedAttack;
 	[Export]
 	public int MeleeDefense { 
@@ -211,25 +212,33 @@ public partial class BattleActor : Resource {
 		}
 	}
 	public void SetStat(string name, int value) {
-		switch(name.ToLower().Trim()) {
-			case "hp": 
+		GD.Print("Set " + name);
+		name = Regex.Replace(name, "[-_ ]", "").ToLower().Trim();
+		switch(name) {
+			case "hp": case "health": case "maxhealth": case "maxhp":
 				Hp = value;
 				CurrentHp = value;
 				break;
-			case "attack": case "melee_attack":  case "melee attack":
+			case "attack": case "meleeattack": case "mattack":
 				MeleeAttack = value;
 				break;
-			case "defense": case "melee_defense": 
+			case "defense": case "meleedefense": case "mdefense":
 				MeleeDefense = value;
 				break;
-			case "ranged_attack": 
+			case "rangedattack": case "rattack":
 				RangedAttack = value;
 				break;
-			case "ranged_defense": 
+			case "rangeddefense": case "rdefense": 
 				RangedDefense = value;
 				break;
-			case "speed": 
+			case "speed":
 				Speed = value;
+				break;
+			case "evasion":
+				Evasion = value;
+				break;
+			case "mana":
+				Mana = value;
 				break;
 		}
 	}

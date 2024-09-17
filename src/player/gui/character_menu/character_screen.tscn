@@ -61,7 +61,7 @@ size_flags_vertical = 3
 layout_mode = 2
 Text = "Max Health"
 
-[node name="StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Mana_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Mana"
 
@@ -119,6 +119,7 @@ size_flags_vertical = 3
 bbcode_enabled = true
 
 [connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/Hp_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/Mana_StatItem" to="." method="OnStatModified"]
 [connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/MAttack_StatItem" to="." method="OnStatModified"]
 [connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/RAttack_StatItem" to="." method="OnStatModified"]
 [connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/MDefense_StatItem" to="." method="OnStatModified"]

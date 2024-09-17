@@ -71,7 +71,6 @@ public partial class StatItem : Control {
 
 	public override void _Ready() {
 		Settings.Singleton.Connect(Settings.SignalName.DebugModeToggled, Callable.From((bool val) => {
-			GD.Print("Val changed");
 			DebugMode = val;
 		}));
 	}

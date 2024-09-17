@@ -25,10 +25,7 @@ public partial class Battle : Node
 
 	public override void _UnhandledInput(InputEvent @event) {
 		if(@event.IsActionPressed("open_pause_menu")) {
-			matchupManager.Show();
-		}
-		else if(@event.IsActionPressed("ui_cancel")) {
-			matchupManager.Hide();
+			matchupManager.Visible = !matchupManager.Visible;
 		}
 	}
 

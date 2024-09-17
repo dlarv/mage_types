@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn3qgn2vc75yn"]
+[gd_scene load_steps=4 format=3 uid="uid://bn3qgn2vc75yn"]
 
 [ext_resource type="Script" path="res://src/player/gui/character_menu/components/StatItem.cs" id="1_8hlo5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrrkk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ijqt"]
+bg_color = Color(0.00820202, 0.00820202, 0.00820202, 0)
 
 [node name="StatItem" type="Control" node_paths=PackedStringArray("nameLabel", "numberLabel", "upButton", "downButton")]
 layout_mode = 3
@@ -57,6 +63,8 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrkk")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_0ijqt")
 text = "0"
 alignment = 2
 editable = false
