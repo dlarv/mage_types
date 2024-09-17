@@ -1,6 +1,5 @@
 using Godot;
-using Godot.Collections;
-using System;
+using Godot.Collections; using System;
 
 [GlobalClass]
 public partial class BattleActor : Resource {
@@ -201,11 +200,13 @@ public partial class BattleActor : Resource {
 	public int GetStat(string name) {
 		switch(name.ToLower().Trim()) {
 			case "hp": return Hp;
-			case "attack": case "melee_attack": return MeleeAttack;
-			case "defense": case "melee_defense": return MeleeDefense;
-			case "ranged_attack": return RangedAttack;
-			case "ranged_defense": return RangedDefense;
+			case "attack": case "melee_attack": case "melee attack": return MeleeAttack;
+			case "defense": case "melee_defense": case "melee defense": return MeleeDefense;
+			case "ranged_attack": case "ranged attack": return RangedAttack;
+			case "ranged_defense": case "ranged defense": return RangedDefense;
 			case "speed": return Speed;
+			case "evasion": return Evasion;
+			case "mana": return Mana;
 			default: return -1;
 		}
 	}

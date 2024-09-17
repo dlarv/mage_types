@@ -117,6 +117,7 @@ public partial class StatusEffectManager : Node {
 
 	private StatusEffect blocking = null;
 	private StatusEffect stasis = null;
+	private List<StatusEffect> effectsToRemove = new();
 
 	private Dictionary<string, StatusEffect> statuses = new();
 
@@ -149,17 +150,18 @@ public partial class StatusEffectManager : Node {
 	}
 
 	public StatusEffect[] CalculateExpirations() {
-		List<StatusEffect> effects = new();
 		foreach(StatusEffect effect in statuses.Values) {
 			effect.Duration--;
 			if(effect.IsExpired()) {
-				effects.Add(effect);
+				effectsToRemove.Add(effect);
 			}
 		}
-		foreach(StatusEffect effect in effects) {
+		foreach(StatusEffect effect in effectsToRemove) {
 			statuses.Remove(effect.Name);
 		}
-		return effects.ToArray();
+		var output = effectsToRemove.ToArray();
+		effectsToRemove = new();
+		return output;
 	}
 	/* Status Effect Methods */
 	public bool IsFlinching() {
@@ -170,6 +172,7 @@ public partial class StatusEffectManager : Node {
 	}
 	public bool IsBlocking() {
 		if(blocking != null) {
+			effectsToRemove.Add(blocking);
 			blocking = null;
 			return true;
 		}
@@ -177,6 +180,7 @@ public partial class StatusEffectManager : Node {
 	}
 	public bool InStasis() {
 		if(stasis != null) {
+			effectsToRemove.Add(stasis);
 			stasis = null;
 			return true;
 		}

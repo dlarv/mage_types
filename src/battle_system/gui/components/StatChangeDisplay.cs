@@ -55,7 +55,7 @@ public partial class StatChangeDisplay : HBoxContainer {
 			rect.Color = Colors.Gray;
 		}
 		else if(mod < 1) {
-			rect.Color = new Color(1 * (float)mod - 1, 0, 0);
+			rect.Color = new Color((float)mod - 1, 0, 0);
 		} else {
 			rect.Color = new Color(0, (float)mod - 1, 0);
 		}

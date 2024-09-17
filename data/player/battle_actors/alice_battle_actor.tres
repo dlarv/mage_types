@@ -1,20 +1,22 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=5 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://cj7rk23vvyppe"]
 
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_kuqt1"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_wyvu6"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="2_423j3"]
 [ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elemental_types/cyan.tres" id="3_7o72g"]
+[ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="4_2f4hc"]
 
 [resource]
 script = ExtResource("1_wyvu6")
 ActorName = "Alice"
-Hp = 1000
-MeleeAttack = 100
+Hp = 200
+MeleeAttack = 200
 RangedAttack = 100
-MeleeDefense = 100
+MeleeDefense = 200
 RangedDefense = 100
 Speed = 100
 Evasion = 100
 Mana = 100
 Element1 = ExtResource("3_7o72g")
+Element2 = ExtResource("4_2f4hc")
 Attacks = Array[Object]([ExtResource("1_kuqt1"), ExtResource("2_423j3")])

@@ -32,6 +32,18 @@ public partial class StatItem : Control {
 	private bool _editable = true;
 
 	[Export]
+	public int Value {
+		get => _value;
+		set {
+			_value = value;
+			if(numberLabel == null) return;
+			numberLabel.Text = "" + value;
+		}
+	}
+	private int _value = 0;
+
+
+	[Export]
 	public int MinValue = 0;
 	[Export]
 	public int MaxValue = 1000;
@@ -45,11 +57,18 @@ public partial class StatItem : Control {
 	[Export]
 	private Button downButton;
 
-	private int value = 0;
 
 	private void IncrementStat(int direction) {
-		value += direction;
-		numberLabel.Text = "" + value;
-		EmitSignal(SignalName.StatModified, Text, value);
+		_value += direction;
+		numberLabel.Text = "" + _value;
+		EmitSignal(SignalName.StatModified, Text.ToLower().Trim(), _value);
+	}
+
+	public void ChangeValue(BattleActor actor) {
+		Value = actor.GetStat(Text.ToLower().Trim());
+	}
+
+	public void ChangeValue(int value) {
+		this._value = value;
 	}
 }

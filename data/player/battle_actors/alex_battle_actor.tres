@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://bh5734pj5bgq3"]
+
+[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="1_qpanr"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_s6y24"]
+[ext_resource type="Resource" uid="uid://da27irgqjb8ob" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_attack_up.tres" id="2_5rir6"]
+[ext_resource type="Resource" uid="uid://j7kja5ijt2a" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_defense_down.tres" id="3_oeb76"]
+[ext_resource type="Resource" uid="uid://ikbw5d3p3lq0" path="res://data/battle_system/battle_actions/attacks/basic_philia_spells/blue_philia.tres" id="4_milol"]
+[ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="5_kvyem"]
+
+[resource]
+script = ExtResource("1_s6y24")
+ActorName = "Alex"
+Hp = 200
+MeleeAttack = 100
+RangedAttack = 200
+MeleeDefense = 100
+RangedDefense = 200
+Speed = 200
+Evasion = 100
+Mana = 100
+Element1 = ExtResource("5_kvyem")
+Attacks = Array[Object]([ExtResource("1_qpanr"), ExtResource("2_5rir6"), ExtResource("3_oeb76"), ExtResource("4_milol")])
