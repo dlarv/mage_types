@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public partial class ElementManager : Node {
 	private const string DEFAULT_CSV_PATH = "res://data/elemental_types/matchup_files/default.csv";
 
-	public static ElementalType Blank { get; private set; }
+	public static ElementalType Blank { get; private set; } = new();
 	public static ElementalType Blue { get; private set; }
 	public static ElementalType Purple { get; private set; }
 	public static ElementalType Magenta { get; private set; }
@@ -61,12 +61,8 @@ public partial class ElementManager : Node {
 		LoadFromDefaultCSV();
 	}
 	public void ForceLoad() {
-		Blank = Elements[0];
 		foreach(ElementalType element in Elements) {
 			switch(element.Name.ToLower()) {
-				case "blank": 
-					Blank = element;
-					break;
 				case "blue": 
 					Blue = element;
 					break;
@@ -174,7 +170,7 @@ public partial class ElementManager : Node {
 		return -1;
 	}
 	public static ElementalType GetMatchup(ElementalType element1, ElementalType element2) {
-		if(element1 == Blank || element2 == Blank) return null;
+		if(element1.Name == "Blank" || element2.Name == "Blank") return null;
 
 		Node node = matchups[element1.Name];
 		ElementalType res = node.GetResult(element2);

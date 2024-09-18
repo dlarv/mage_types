@@ -70,9 +70,14 @@ public partial class StatItem : Control {
 	private Button downButton;
 
 	public override void _Ready() {
-		Settings.Singleton.Connect(Settings.SignalName.DebugModeToggled, Callable.From((bool val) => {
-			DebugMode = val;
-		}));
+		if(Settings.Singleton != null) {
+			Settings.Singleton.Connect(
+				Settings.SignalName.DebugModeToggled, 
+				Callable.From((bool val) => {
+					DebugMode = val;
+				})
+			);
+		}
 	}
 
 	private void IncrementStat(int direction) {

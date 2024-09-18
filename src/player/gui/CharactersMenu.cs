@@ -24,7 +24,6 @@ public partial class CharactersMenu : Control {
 				Node screen = inactiveScreensParent.GetNode("Alice");
 
 				if(screen == null) return;
-				GD.Print("Here1");
 				inactiveScreensParent.RemoveChild(screen);
 				activeScreensParent.AddChild(screen);
 				activeScreensParent.MoveChild(screen, 1);
@@ -61,4 +60,6 @@ public partial class CharactersMenu : Control {
 		}
 	}
 	private bool _isAlexActive = true;
+	[Export]
+	private int statsToDistribute = 0;
 }

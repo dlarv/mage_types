@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwy6xlvmbrhjj"]
+[gd_scene load_steps=7 format=3 uid="uid://cwy6xlvmbrhjj"]
 
 [ext_resource type="Script" path="res://src/player/gui/character_menu/CharacterScreen.cs" id="1_djrqu"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_cetjj"]
 [ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="2_i8dsj"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="3_y2ah5"]
 
-[node name="CharacterScreen" type="Control" node_paths=PackedStringArray("statItemsScroller")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vlcv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Resource" id="Resource_nd1mg"]
+script = ExtResource("3_y2ah5")
+Name = "blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = PackedColorArray()
+
+[node name="CharacterScreen" type="Control" node_paths=PackedStringArray("nameLabel", "elementIcon1", "elementIcon2", "biasIcon", "statItemsScroller")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +23,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_djrqu")
-statItemsScroller = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer")
+nameLabel = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/Name")
+elementIcon1 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType/ElementIcon1")
+elementIcon2 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType/ElementIcon2")
+biasIcon = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/BiasIcon")
+statItemsScroller = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,82 +44,139 @@ layout_mode = 2
 [node name="InterfaceContainer" type="TabContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
 
-[node name="Info" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-visible = false
+[node name="Info" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
 layout_mode = 2
-
-[node name="Stats" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer"]
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vlcv")
+text = "Name"
+
+[node name="HSeparator1" type="HSeparator" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ElementalType" type="HBoxContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="ElementIcon1" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType" instance=ExtResource("2_cetjj")]
+layout_mode = 2
+Element = SubResource("Resource_nd1mg")
+
+[node name="ElementIcon2" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType" instance=ExtResource("2_cetjj")]
+layout_mode = 2
+Element = SubResource("Resource_nd1mg")
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BiasLabel" type="Label" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+text = "Alignment:"
+vertical_alignment = 1
+
+[node name="BiasIcon" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer" instance=ExtResource("2_cetjj")]
+layout_mode = 2
+size_flags_vertical = 1
+Element = SubResource("Resource_nd1mg")
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ExpLabel" type="Label" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+text = "Exp"
+
+[node name="TextureProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+show_percentage = false
+
+[node name="Stats" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Hp_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Hp_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Max Health"
 
-[node name="Mana_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Mana_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Mana"
 
-[node name="MAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="MAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Melee Attack"
 
-[node name="RAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="RAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Ranged Attack"
 
-[node name="MDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="MDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Melee Defense"
 
-[node name="RDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="RDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Ranged Defense"
 
-[node name="Speed_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Speed_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Speed"
 
-[node name="Evasion_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Evasion_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Evasion"
 
-[node name="Stamina_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Stamina_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
 Text = "Stamina"
 
-[node name="Spells" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+[node name="Spells" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Equipment" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+[node name="Equipment" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Misc" type="Control" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+[node name="Misc" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="DisplayContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -118,12 +191,12 @@ layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/Hp_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/Mana_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/MAttack_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/RAttack_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/MDefense_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/RDefense_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/Speed_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/Evasion_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/MarginContainer/ScrollContainer/VBoxContainer/Stamina_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Hp_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Mana_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/MAttack_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/RAttack_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/MDefense_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/RDefense_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Speed_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Evasion_StatItem" to="." method="OnStatModified"]
+[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Stamina_StatItem" to="." method="OnStatModified"]

@@ -28,8 +28,6 @@ public partial class BattleActorDisplay : Control {
 	private StatChangeDisplay statChangeDisplay;
 	[Export]
 	private Button selectorButton;
-	[Export]
-	private Panel defeatedPanel;
 
 	public BattleActor Actor { get; set; }
 
@@ -53,7 +51,7 @@ public partial class BattleActorDisplay : Control {
 		selectorButton.Connect(Button.SignalName.Pressed, Callable.From(() => EmitSignal(SignalName.Selected, actor)));
 
 		Actor = actor;
-		actor.Connect(BattleActor.SignalName.WasDefeated, Callable.From(() => defeatedPanel.Show()));
+		actor.Connect(BattleActor.SignalName.WasDefeated, new Callable(this, MethodName.SetDefeated));
 
 		actor.Connect(BattleActor.SignalName.DamageApplied, new Callable(this, MethodName.SetHealth));
 
@@ -115,8 +113,7 @@ public partial class BattleActorDisplay : Control {
 		}
 	}
 	public void SetDefeated() {
-		defeatedPanel.Show();
-
+		Modulate = new Color(1, 1, 1, .5f);
 		foreach(string key in icons.Keys) {
 			var icon = icons[key];
 			statusEffectIcons.RemoveChild(icon);

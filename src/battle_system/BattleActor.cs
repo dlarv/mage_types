@@ -3,6 +3,7 @@ using Godot.Collections;
 using System;
 using System.Text.RegularExpressions;
 
+[Tool]
 [GlobalClass]
 public partial class BattleActor : Resource {
 	public const int MAX_STAT = 1000;

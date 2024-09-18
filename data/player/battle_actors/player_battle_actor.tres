@@ -1,12 +1,17 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://0vpn7c3pvu1d"]
 
+[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_1dbhv"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_ay17s"]
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_e5pp6"]
-[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="2_8gw08"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_ffy80"]
-[ext_resource type="Resource" uid="uid://rvgptfxqtoih" path="res://data/battle_system/battle_actions/attacks/basic_status_spells/block.tres" id="4_ch107"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="2_s23oy"]
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="4_nnk6v"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="5_luyfi"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="6_xsukw"]
+
+[sub_resource type="Resource" id="Resource_4astr"]
+script = ExtResource("2_s23oy")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = PackedColorArray()
 
 [resource]
 script = ExtResource("1_ay17s")
@@ -20,5 +25,6 @@ Speed = 200
 Evasion = 100
 Mana = 100
 Element1 = ExtResource("5_luyfi")
-ElementalBias = ExtResource("6_xsukw")
-Attacks = Array[Object]([ExtResource("1_e5pp6"), ExtResource("2_8gw08"), ExtResource("3_ffy80"), ExtResource("4_ch107")])
+Element2 = SubResource("Resource_4astr")
+ElementalBias = ExtResource("4_nnk6v")
+Attacks = [ExtResource("1_1dbhv")]

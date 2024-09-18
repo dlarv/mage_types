@@ -33,8 +33,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -952.0
-offset_bottom = -398.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 10
@@ -47,7 +45,7 @@ spriteDisplay = NodePath("MarginContainer/VBoxContainer/TextureRect")
 statusEffectIcons = NodePath("MarginContainer/VBoxContainer/StatusEffects")
 statChangeDisplay = NodePath("MarginContainer/VBoxContainer/StatChangeDisplay")
 selectorButton = NodePath("SelectorButton")
-defeatedPanel = NodePath("Panel")
+defeatedPanel = NodePath("")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -128,15 +126,6 @@ texture = SubResource("PlaceholderTexture2D_igh2i")
 [node name="SelectorButton" type="Button" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

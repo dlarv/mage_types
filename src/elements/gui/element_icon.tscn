@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://biqiuai6gr2tr"]
+
+[ext_resource type="Script" path="res://src/elements/gui/ElementIcon.cs" id="1_2nvp8"]
+
+[node name="ElementIcon" type="ColorRect" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(0, 25)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.5, 0.5, 0.5, 1)
+script = ExtResource("1_2nvp8")
+label = NodePath("Label")
+
+[node name="Label" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center][color=000000ff]Blank[/color][/center]"
+scroll_active = false

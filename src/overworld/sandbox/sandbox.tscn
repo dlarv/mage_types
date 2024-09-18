@@ -1,16 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=18 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://src/player/party/player_party.tscn" id="1_k6oqa"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/actors/enemy_mage.tscn" id="2_1w1kl"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="4_2g5ji"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="4_8t0xh"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="4_iuiym"]
-[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="5_bgxtk"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="6_fv3t4"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="7_ap22b"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="8_hn7ae"]
+[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="10_wd5s7"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
 [ext_resource type="Resource" uid="uid://bh5734pj5bgq3" path="res://data/player/battle_actors/alex_battle_actor.tres" id="13_q14lb"]
 [ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="14_wqv0v"]
@@ -36,7 +34,8 @@ Evasion = 100
 Mana = 1000
 Element1 = ExtResource("7_ap22b")
 Element2 = ExtResource("8_hn7ae")
-Attacks = Array[Object]([ExtResource("4_2g5ji"), ExtResource("5_bgxtk"), ExtResource("6_fv3t4")])
+ElementalBias = ExtResource("8_hn7ae")
+Attacks = [ExtResource("10_wd5s7")]
 
 [node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0728321, -0.110706, 0.0608318)
