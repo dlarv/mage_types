@@ -19,8 +19,8 @@ equipmentScroller = NodePath("HBoxContainer/InventoryScreen/Equipment/MarginCont
 spellsScroller = NodePath("HBoxContainer/InventoryScreen/Spells/MarginContainer/VBoxContainer")
 keyItemsScroller = NodePath("HBoxContainer/InventoryScreen/Key Items/MarginContainer/VBoxContainer")
 tabContainer = NodePath("HBoxContainer/InventoryScreen")
-idCheckBox = NodePath("SortHBox/CheckBox2")
-nameCheckBox = NodePath("SortHBox/CheckBox")
+idCheckBox = NodePath("SortHBox/IdCheckBox")
+nameCheckBox = NodePath("SortHBox/AlnumCheckBox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -103,24 +103,24 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Alphabetical_Label" type="Label" parent="SortHBox"]
+[node name="AlnumLabel" type="Label" parent="SortHBox"]
 layout_mode = 2
 text = "Alphabetical: "
 
-[node name="CheckBox" type="CheckBox" parent="SortHBox"]
+[node name="AlnumCheckBox" type="CheckBox" parent="SortHBox"]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_pqepw")
 
-[node name="Numercial" type="Label" parent="SortHBox"]
+[node name="IdLabel" type="Label" parent="SortHBox"]
 layout_mode = 2
 text = "By id: "
 
-[node name="CheckBox2" type="CheckBox" parent="SortHBox"]
+[node name="IdCheckBox" type="CheckBox" parent="SortHBox"]
 layout_mode = 2
 button_pressed = true
 button_group = SubResource("ButtonGroup_pqepw")
 
 [connection signal="hidden" from="." to="." method="SortById"]
 [connection signal="tab_changed" from="HBoxContainer/InventoryScreen" to="." method="OnTabChanged"]
-[connection signal="pressed" from="SortHBox/CheckBox" to="." method="SortByAlphabetical"]
-[connection signal="pressed" from="SortHBox/CheckBox2" to="." method="SortById"]
+[connection signal="pressed" from="SortHBox/AlnumCheckBox" to="." method="SortByAlphabetical"]
+[connection signal="pressed" from="SortHBox/IdCheckBox" to="." method="SortById"]
