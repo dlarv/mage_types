@@ -171,8 +171,7 @@ public partial class Battle : Node
 		// Calculate secondary + attack 
 		newType = ElementManager.GetMatchup(target.Element2, action.Element);
 		if(newType != null && !target.InStasis) {
-			msg += $"The target {target.ActorName}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
-
+			msg += $"\nThe target {target.ActorName}'s [color={e2}]{e2}[/color] reacted with the attack's [color={ea}]{ea}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
 
 			(AttackEffect buff, AttackEffect debuff) = ElementManager.GetSideEffect(
 					target.Element2, action.Element);
@@ -201,7 +200,7 @@ public partial class Battle : Node
 		if(newType != null && !target.Dissonant) {
 			e1 = target.Element1.Name.ToLower();
 			e2 = target.Element2.Name.ToLower();
-			msg += $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
+			msg = $"The target {target.ActorName}'s [color={e1}]{e1}[/color] reacted with it's [color={e2}]{e2}[/color] type to make [color={newType.Name.ToLower()}]{newType.Name.ToLower()}[/color].";
 
 			(AttackEffect buff, AttackEffect debuff) = ElementManager.GetSideEffect(
 					target.Element1, target.Element2);

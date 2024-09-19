@@ -148,6 +148,14 @@ public partial class StatusEffectManager : Node {
 				return statuses.GetValueOrDefault(status.Name, null);
 		}
 	}
+	public void Remove(StatusEffect[] effects) {
+		foreach(StatusEffect effect in effects) {
+			statuses.Remove(effect.Name);
+		}
+	}
+	public void Remove(StatusEffect effect) {
+		statuses.Remove(effect.Name);
+	}
 
 	public StatusEffect[] CalculateExpirations() {
 		foreach(StatusEffect effect in statuses.Values) {

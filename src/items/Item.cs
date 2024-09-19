@@ -34,7 +34,14 @@ public partial class Item : Resource, IComparable<Item> {
 	private bool _isConsumable;
 	[Export]
 	public int Quantity { 
-		get => _quantity; 
+		get {
+			if(BattleItem != null) {
+				return BattleItem.Quantity;
+			}
+			else {
+				return _quantity; 
+			}
+		}
 		set {
 			_quantity = value;
 			if(BattleItem != null) {

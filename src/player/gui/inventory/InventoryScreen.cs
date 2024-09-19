@@ -3,6 +3,9 @@ using Godot.Collections;
 using System;
 
 public partial class InventoryScreen : PanelContainer {
+	[Signal]
+	public delegate void ItemSelectedEventHandler(Item item);
+
 	[Export]
 	private InventoryDisplayPanel infoPanel;
 	[Export]
@@ -20,7 +23,8 @@ public partial class InventoryScreen : PanelContainer {
 				Button button = new();
 				button.Text = $"{item.Name} ({item.Quantity})";
 				var temp = item;
-				button.Connect(Button.SignalName.Pressed, Callable.From(() => DisplayItemDetails(temp)));
+				button.Connect(Button.SignalName.Pressed, 
+					Callable.From(() => EmitSignal(SignalName.ItemSelected, temp)));
 				scroller.AddChild(button);
 			}
 		};
@@ -28,9 +32,6 @@ public partial class InventoryScreen : PanelContainer {
 		populateTab(inventory.Equipment, equipmentScroller);
 		populateTab(inventory.SpellScrolls, spellsScroller);
 		populateTab(inventory.KeyItems, keyItemsScroller);
-	}
-	private void DisplayItemDetails(Item item) {
-		GD.Print(item.Name);
 	}
 
 	private void OnItemAdded(Item item, Inventory.Category cat) {

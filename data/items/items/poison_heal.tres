@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="Item" load_steps=14 format=3 uid="uid://cernb43lwpkc5"]
+
+[ext_resource type="Script" path="res://src/items/Item.cs" id="1_3hsa5"]
+[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="1_d0mjm"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="1_jvm73"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="2_ls58o"]
+[ext_resource type="Script" path="res://src/items/requirements/StatusEffectRequirement.cs" id="2_pk4mh"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.cs" id="2_t0yug"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.cs" id="3_313iu"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="5_qdl5o"]
+
+[sub_resource type="Resource" id="Resource_po4sy"]
+script = ExtResource("2_t0yug")
+Effect = ExtResource("1_d0mjm")
+Name = "Status Heal"
+Chance = 1.0
+Strength = 0.0
+Message = ""
+
+[sub_resource type="Resource" id="Resource_fxbdx"]
+script = ExtResource("1_jvm73")
+AttackEffect = SubResource("Resource_po4sy")
+Chance = 1.0
+
+[sub_resource type="Resource" id="Resource_qmj67"]
+script = ExtResource("2_ls58o")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = PackedColorArray()
+
+[sub_resource type="Resource" id="Resource_nluci"]
+script = ExtResource("3_313iu")
+Effects = [SubResource("Resource_fxbdx")]
+Name = "Poison Heal"
+animation = ExtResource("5_qdl5o")
+Element = SubResource("Resource_qmj67")
+Priority = 0
+Range = 0
+Target = 1
+Details = ""
+
+[sub_resource type="Resource" id="Resource_4m7no"]
+script = ExtResource("2_pk4mh")
+effect = ExtResource("1_d0mjm")
+BattleRelevant = true
+
+[resource]
+script = ExtResource("1_3hsa5")
+Name = "Poison Heal"
+BattleItem = SubResource("Resource_nluci")
+IsConsumable = true
+Quantity = 2
+MaxQuantity = 100
+Requirement = SubResource("Resource_4m7no")
+Tags = []
+Details = ""

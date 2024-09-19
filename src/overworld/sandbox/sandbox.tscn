@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="4_8t0xh"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="4_iuiym"]
+[ext_resource type="Resource" uid="uid://cernb43lwpkc5" path="res://data/items/items/poison_heal.tres" id="5_e7iu4"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="7_ap22b"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="8_hn7ae"]
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="10_wd5s7"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="10_ga7ve"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
 [ext_resource type="Resource" uid="uid://bh5734pj5bgq3" path="res://data/player/battle_actors/alex_battle_actor.tres" id="13_q14lb"]
 [ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="14_wqv0v"]
-[ext_resource type="Resource" uid="uid://dvd22ngec15cd" path="res://data/items/items/test_item.tres" id="15_ipwj6"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/pause_menu.tscn" id="16_p60yf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
@@ -35,17 +35,18 @@ Mana = 1000
 Element1 = ExtResource("7_ap22b")
 Element2 = ExtResource("8_hn7ae")
 ElementalBias = ExtResource("8_hn7ae")
-Attacks = [ExtResource("10_wd5s7")]
+Attacks = [ExtResource("10_ga7ve")]
 
-[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world")]
+[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world", "pause_menu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0728321, -0.110706, 0.0608318)
 script = ExtResource("1_wo6gm")
 battle_scene = ExtResource("2_t1trw")
 overworld = NodePath("World/Overworld")
 world = NodePath("World")
+pause_menu = NodePath("World/CanvasLayer/PauseMenu")
 
 [node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
-Items = [ExtResource("14_wqv0v"), ExtResource("15_ipwj6")]
+Items = [ExtResource("14_wqv0v"), ExtResource("5_e7iu4")]
 
 [node name="World" type="Node3D" parent="."]
 

@@ -35,13 +35,15 @@ public partial class CharacterScreen : Control {
 
 	public override void _Ready() {
 		SetActor(Actor);
-		Actor.Connect(
-			BattleActor.SignalName.ElementChanged, 
-			Callable.From((int id, ElementalType element) => {
-				if(id == 0) { elementIcon1.Element = element; }
-				else { elementIcon2.Element = element; }
-			})
-		);
+		if(!Engine.IsEditorHint()) {
+			Actor.Connect(
+				BattleActor.SignalName.ElementChanged, 
+				Callable.From((int id, ElementalType element) => {
+					if(id == 0) { elementIcon1.Element = element; }
+					else { elementIcon2.Element = element; }
+				})
+			);
+		}
 	}
 
 	public void SetActor(BattleActor actor) {

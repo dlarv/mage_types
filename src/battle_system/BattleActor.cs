@@ -212,6 +212,26 @@ public partial class BattleActor : Resource {
 			default: return -1;
 		}
 	}
+	public int GetStat(Stats stat) {
+		switch(stat) {
+			case Stats.MELEE_ATTACK:
+				return MeleeAttack;
+			case Stats.MELEE_DEFENSE:
+				return MeleeDefense;
+			case Stats.RANGED_ATTACK:
+				return RangedAttack;
+			case Stats.RANGED_DEFENSE:
+				return RangedDefense;
+			case Stats.SPEED:
+				return Speed;
+			case Stats.EVASION:
+				return Evasion;
+			case Stats.MANA:
+				return Mana;
+			default:
+				return -1;
+		}
+	}
 	public void SetStat(string name, int value) {
 		GD.Print("Set " + name);
 		name = Regex.Replace(name, "[-_ ]", "").ToLower().Trim();
@@ -239,6 +259,31 @@ public partial class BattleActor : Resource {
 				Evasion = value;
 				break;
 			case "mana":
+				Mana = value;
+				break;
+		}
+	}
+	public void SetStat(Stats stat, int value) {
+		switch(stat) {
+			case Stats.MELEE_ATTACK:
+				MeleeAttack = value;
+				break;
+			case Stats.MELEE_DEFENSE:
+				MeleeDefense = value;
+				break;
+			case Stats.RANGED_ATTACK:
+				RangedAttack = value;
+				break;
+			case Stats.RANGED_DEFENSE:
+				RangedDefense = value;
+				break;
+			case Stats.SPEED:
+				Speed = value;
+				break;
+			case Stats.EVASION:
+				Evasion = value;
+				break;
+			case Stats.MANA:
 				Mana = value;
 				break;
 		}
@@ -271,6 +316,13 @@ public partial class BattleActor : Resource {
 	public void AddStatusEffect(StatusEffect effect) {
 		statuses.Add(effect);
 		EmitSignal(SignalName.StatusEffectAdded, statuses.Get(effect));
+	}
+	public void RemoveStatusEffect(StatusEffect effect) {
+		statuses.Remove(effect);
+		EmitSignal(SignalName.StatusEffectsRemoved, new StatusEffect[] { effect });
+	}
+	public bool HasStatusEffect(StatusEffect effect) {
+		return statuses.Get(effect) != null;
 	}
 
 	public void UpdateElementalState() {

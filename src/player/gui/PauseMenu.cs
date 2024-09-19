@@ -18,4 +18,7 @@ public partial class PauseMenu : Control {
 			world.ProcessMode = !Visible ? ProcessModeEnum.Inherit : ProcessModeEnum.Disabled;
 		}
 	}
+
+	public void RefreshInventory() {
+	}
 }
