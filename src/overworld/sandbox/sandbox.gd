@@ -14,4 +14,3 @@ func _on_player_battle_started(allies:Array, items:Array, enemy:Node3D) -> void:
 	await battle.BattleEnded
 	battle.queue_free()
 	world.process_mode = Node.PROCESS_MODE_INHERIT
-	pause_menu.RefreshInventory()

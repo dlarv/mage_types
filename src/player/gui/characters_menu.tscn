@@ -14,6 +14,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oje6s")
+IsAliceActive = null
+IsAlexActive = null
+statsToDistribute = null
 activeScreensParent = NodePath("MarginContainer/ActiveTabs")
 inactiveScreensParent = NodePath("InactiveTabs")
 aliceScreen = NodePath("MarginContainer/ActiveTabs/Alice")
@@ -34,16 +37,22 @@ layout_mode = 2
 [node name="Player" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 layout_mode = 2
 Actor = ExtResource("3_67vyo")
+_actor = ExtResource("3_67vyo")
+_allowStatEditing = true
 
 [node name="Alice" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 visible = false
 layout_mode = 2
 Actor = ExtResource("3_dxhqu")
+_actor = ExtResource("3_dxhqu")
+_allowStatEditing = true
 
 [node name="Alex" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 visible = false
 layout_mode = 2
 Actor = ExtResource("5_07e8o")
+_actor = ExtResource("5_07e8o")
+_allowStatEditing = true
 
 [node name="InactiveTabs" type="Control" parent="."]
 visible = false

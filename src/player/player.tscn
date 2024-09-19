@@ -1,8 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=9 format=3 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" path="res://src/player/Player.cs" id="1_jd6jo"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="2_tqkyx"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="3_pbcfq"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="3_senr4"]
+
+[sub_resource type="Resource" id="Resource_cxdi8"]
+script = ExtResource("3_senr4")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = PackedColorArray()
 
 [sub_resource type="Resource" id="Resource_rgltg"]
 script = ExtResource("3_pbcfq")
@@ -17,7 +25,8 @@ Evasion = 0
 Mana = 0
 Element1 = ExtResource("2_tqkyx")
 Element2 = ExtResource("2_tqkyx")
-Attacks = null
+ElementalBias = SubResource("Resource_cxdi8")
+Attacks = []
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 

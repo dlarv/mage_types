@@ -9,9 +9,7 @@ public partial class Inventory : Node {
 
 	// NOTE: This is not called when loading from filesystem.
 	[Signal]
-	public delegate void ItemAddedEventHandler(Item item, int cat);
-	[Signal]
-	public delegate void ItemRemovedEventHandler(Item item, int cat);
+	public delegate void QuantityChangedEventHandler(Item item, int amount);
 
 	[Export]
 	public Array<Item> Items { get; private set; } = new();
@@ -86,10 +84,20 @@ public partial class Inventory : Node {
 					GD.Print($"{res} is not an item, skipping");
 					continue;
 				}
-				((Item)res).UpdateId();
+				Item itemObj = (Item)res;
+				itemObj.UpdateId();
 
-				if(((Item)res).BattleItem != null) {
-					battleItems.Add(((Item)res).BattleItem);
+				BattleItem battleItem = itemObj.BattleItem; 
+				if(battleItem != null) {
+					battleItems.Add(battleItem);
+					if(battleItem.IsConsumable) {
+						battleItem.Connect(
+								BattleItem.SignalName.ItemConsumed, 
+								Callable.From(() => EmitSignal(
+										SignalName.QuantityChanged, 
+										itemObj, 
+										itemObj.Quantity)));
+					}
 				}
 			} 
 			else if(item.Length != 0 && dir.DirExists(item)) {
@@ -117,11 +125,11 @@ public partial class Inventory : Node {
 		int index = list.BinarySearch(item);
 		if(list[index] == item) {
 			if(list[index].TryCombine(item)) {
-				EmitSignal(SignalName.ItemAdded, list[index], (int)cat);
+				EmitSignal(SignalName.QuantityChanged, list[index], (int)cat);
 			}
 		} else {
 			list.Insert(index, item);
-			EmitSignal(SignalName.ItemAdded, item, (int)cat);
+			EmitSignal(SignalName.QuantityChanged, item, (int)cat);
 		}
 	}
 	public Item Remove(Item item, int amount=-1) {
@@ -145,9 +153,10 @@ public partial class Inventory : Node {
 		if(list[index] == item) {
 			Item output = list[index];
 			list.RemoveAt(index);
-			EmitSignal(SignalName.ItemRemoved, output, ((int)cat));
+			EmitSignal(SignalName.QuantityChanged, output, ((int)cat));
 			return output;
 		}
 		return null;
 	}
+	
 }

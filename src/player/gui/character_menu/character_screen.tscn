@@ -170,6 +170,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
+[node name="Abilities" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
+layout_mode = 2
+
 [node name="Misc" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
 visible = false
 layout_mode = 2
@@ -190,13 +194,3 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Hp_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Mana_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/MAttack_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/RAttack_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/MDefense_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/RDefense_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Speed_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Evasion_StatItem" to="." method="OnStatModified"]
-[connection signal="StatModified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Stamina_StatItem" to="." method="OnStatModified"]

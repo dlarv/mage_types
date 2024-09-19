@@ -47,6 +47,7 @@ public partial class CharacterScreen : Control {
 	}
 
 	public void SetActor(BattleActor actor) {
+		if(actor == null) return;
 		_actor = actor;
 
 		if(statItemsScroller != null) { 

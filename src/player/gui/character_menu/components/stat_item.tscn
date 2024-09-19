@@ -86,5 +86,3 @@ size_flags_vertical = 2
 text = "-"
 
 [connection signal="text_submitted" from="HBoxContainer/NumberContainer/Number" to="." method="OnTextChanged"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/UpButton" to="." method="IncrementStat" binds= [1]]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/DownButton" to="." method="IncrementStat" binds= [-1]]

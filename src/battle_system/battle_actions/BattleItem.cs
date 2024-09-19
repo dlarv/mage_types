@@ -4,6 +4,9 @@ using System;
 [Tool]
 [GlobalClass]
 public partial class BattleItem : BattleAction {
+	[Signal]
+	public delegate void ItemConsumedEventHandler();
+
 	public bool IsConsumable { get; set; } = true;
 	public int Quantity { get; set; }
 	public ItemRequirement Requirement { get; set; } = null;
@@ -51,6 +54,7 @@ public partial class BattleItem : BattleAction {
     public override void ApplyCost(BattleActor user) {
 		if(IsConsumable) {
 			Quantity -= 1;
+			EmitSignal(SignalName.ItemConsumed);
 		}
     }
 }

@@ -46,7 +46,7 @@ world = NodePath("World")
 pause_menu = NodePath("World/CanvasLayer/PauseMenu")
 
 [node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
-Items = [ExtResource("14_wqv0v"), ExtResource("5_e7iu4")]
+Items = [ExtResource("5_e7iu4"), ExtResource("14_wqv0v")]
 
 [node name="World" type="Node3D" parent="."]
 
