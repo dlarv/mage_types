@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0ctqpfxrh7c3"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/ThreeStateButton.cs" id="1_qafsp"]
+[ext_resource type="Script" path="res://src/battle_system/gui/components/ThreeStateButton.gd" id="1_qafsp"]
 
-[node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("Button")]
+[node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ unselectedModulateColor = Color(1, 1, 1, 1)
 selected1ModulateColor = Color(1, 1, 1, 1)
 selected2ModulateColor = Color(0, 1, 0, 1)
 lockedModulateColor = Color(0.215686, 0.215686, 0.215686, 1)
-Button = NodePath("Button")
+button = NodePath("Button")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

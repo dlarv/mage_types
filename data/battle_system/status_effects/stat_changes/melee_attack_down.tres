@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://dneceq24qw18b"]
+[gd_resource type="Resource" script_class="StatChange" load_steps=2 format=3 uid="uid://dneceq24qw18b"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.cs" id="1_7hpr5"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="1_7hpr5"]
 
 [resource]
 script = ExtResource("1_7hpr5")
 Duration = 3
-ToolTip = ""
 Description = ""
 Name = "Melee Attack"
 Chance = 100.0
 Strength = -1.0
+Message = ""

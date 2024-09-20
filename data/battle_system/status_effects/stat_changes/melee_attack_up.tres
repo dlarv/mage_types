@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatChange" load_steps=2 format=3 uid="uid://cg8xywr207tu1"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.cs" id="1_t3g42"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="1_t3g42"]
 
 [resource]
 script = ExtResource("1_t3g42")

@@ -3,8 +3,8 @@
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_1ngqb"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_7do75"]
 [ext_resource type="Resource" uid="uid://c5ro1exjhsu5o" path="res://data/battle_system/status_effects/stat_changes/evasion_down.tres" id="3_g2us0"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_nkpdp"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_8rd2o"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_nkpdp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_8rd2o"]
 
 [sub_resource type="Resource" id="Resource_ibimo"]
 script = ExtResource("4_nkpdp")

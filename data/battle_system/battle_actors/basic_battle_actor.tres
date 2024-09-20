@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://bod1eny4l7qxi"]
 
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_a6tsy"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_a6tsy"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_gpx16"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="2_mxble"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_21ya8"]

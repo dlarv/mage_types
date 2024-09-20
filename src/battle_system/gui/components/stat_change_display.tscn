@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d0u0yls8gquxd"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/StatChangeDisplay.cs" id="1_lghwg"]
+[ext_resource type="Script" path="res://src/battle_system/gui/components/StatChangeDisplay.gd" id="1_lghwg"]
 
 [node name="StatChangeDisplay" type="HBoxContainer" node_paths=PackedStringArray("mAttack", "rAttack", "mDefense", "rDefense", "speed", "evasion")]
 custom_minimum_size = Vector2(0, 50)

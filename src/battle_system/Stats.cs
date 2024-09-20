@@ -1,6 +1,0 @@
-using Godot;
-using System;
-
-public enum Stats {
-	HP, MELEE_ATTACK, RANGED_ATTACK, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, EVASION, MANA,
-}

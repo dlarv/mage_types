@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_1dbhv"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_ay17s"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="2_s23oy"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_s23oy"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="4_nnk6v"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="5_luyfi"]
 
@@ -13,10 +13,17 @@ MainColor = Color(0.5, 0.5, 0.5, 1)
 TextColor = Color(0, 0, 0, 1)
 ColorPalette = PackedColorArray()
 
+[sub_resource type="Resource" id="Resource_ol8fk"]
+script = ExtResource("2_s23oy")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = PackedColorArray()
+
 [resource]
 script = ExtResource("1_ay17s")
-ActorName = "Player"
 Hp = 300
+CurrentHp = 300
 MeleeAttack = 200
 RangedAttack = 200
 MeleeDefense = 100
@@ -28,3 +35,22 @@ Element1 = ExtResource("5_luyfi")
 Element2 = SubResource("Resource_4astr")
 ElementalBias = ExtResource("4_nnk6v")
 Attacks = [ExtResource("1_1dbhv")]
+prevElement1 = SubResource("Resource_ol8fk")
+prevElement2 = SubResource("Resource_ol8fk")
+ActorName = "Player"
+_hp = 300
+_meleeAttack = 200
+_rangedAttack = 200
+_meleeDefense = 100
+_rangedDefense = 100
+_speed = 200
+_evasion = 100
+_e1 = ExtResource("5_luyfi")
+_e2 = SubResource("Resource_4astr")
+sprite_path = null
+Sprite = null
+statuses = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":Resource("res://src/battle_system/battle_actions/effects/StatusEffectManager.gd"),"blocking":null,"stasis":null)
+
+elementCounter1 = 0
+elementCounter2 = 0
+aleadyDefeated = false

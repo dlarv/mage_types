@@ -33,12 +33,14 @@ theme_override_constants/margin_top = 10
 
 [node name="ActiveTabs" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
+current_tab = 0
 
 [node name="Player" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 layout_mode = 2
 Actor = ExtResource("3_67vyo")
 _actor = ExtResource("3_67vyo")
 _allowStatEditing = true
+metadata/_tab_index = 0
 
 [node name="Alice" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 visible = false
@@ -46,6 +48,7 @@ layout_mode = 2
 Actor = ExtResource("3_dxhqu")
 _actor = ExtResource("3_dxhqu")
 _allowStatEditing = true
+metadata/_tab_index = 1
 
 [node name="Alex" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
 visible = false
@@ -53,6 +56,7 @@ layout_mode = 2
 Actor = ExtResource("5_07e8o")
 _actor = ExtResource("5_07e8o")
 _allowStatEditing = true
+metadata/_tab_index = 2
 
 [node name="InactiveTabs" type="Control" parent="."]
 visible = false

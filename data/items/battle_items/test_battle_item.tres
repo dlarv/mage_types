@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleItem" load_steps=2 format=3 uid="uid://b53shu5ega81j"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.cs" id="1_cha5k"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="1_cha5k"]
 
 [resource]
 script = ExtResource("1_cha5k")

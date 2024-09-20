@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://7n44jif83o35"]
 
-[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="1_tm0il"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="1_tm0il"]
 
 [resource]
 script = ExtResource("1_tm0il")
 Name = "Purple"
 MainColor = Color(0.501961, 0, 1, 1)
+TextColor = Color(0, 0, 0, 1)
 ColorPalette = PackedColorArray()

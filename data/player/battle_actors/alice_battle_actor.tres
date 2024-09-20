@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" load_steps=18 format=3 uid="uid://cj7rk23vvyppe"]
 
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_kuqt1"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="1_wyvu6"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.cs" id="2_isobn"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="3_4q1c8"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_isobn"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="3_4q1c8"]
 [ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elemental_types/cyan.tres" id="3_7o72g"]
 [ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="4_2f4hc"]
 [ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="4_wyjsy"]
 [ext_resource type="Script" path="res://data/battle_system/battle_actions/battle_action_animation.gd" id="5_gcfh7"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="6_e6qfo"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_e6qfo"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="9_owncg"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="10_f20qt"]
 
 [sub_resource type="Resource" id="Resource_4bvy1"]
 script = ExtResource("2_isobn")
@@ -47,20 +48,28 @@ _bundled = {
 
 [sub_resource type="Resource" id="Resource_bddf6"]
 script = ExtResource("6_e6qfo")
-Effects = [SubResource("Resource_28y40")]
-Cost = 5
 Name = "Hit2"
-animation = SubResource("PackedScene_7vwlr")
 Element = ExtResource("4_wyjsy")
 Priority = 0
+Details = ""
+animation = SubResource("PackedScene_7vwlr")
+_e = ExtResource("4_wyjsy")
 Range = 0
 Target = 3
-Details = ""
+Cost = 5
+Effects = [SubResource("Resource_28y40")]
+
+[sub_resource type="Resource" id="Resource_ol8fk"]
+script = ExtResource("10_f20qt")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = PackedColorArray()
 
 [resource]
 script = ExtResource("1_wyvu6")
-ActorName = "Alice"
 Hp = 200
+CurrentHp = 200
 MeleeAttack = 200
 RangedAttack = 100
 MeleeDefense = 200
@@ -72,3 +81,22 @@ Element1 = ExtResource("3_7o72g")
 Element2 = ExtResource("4_2f4hc")
 ElementalBias = ExtResource("9_owncg")
 Attacks = [ExtResource("1_kuqt1"), SubResource("Resource_bddf6")]
+prevElement1 = SubResource("Resource_ol8fk")
+prevElement2 = SubResource("Resource_ol8fk")
+ActorName = "Alice"
+_hp = 200
+_meleeAttack = 200
+_rangedAttack = 100
+_meleeDefense = 200
+_rangedDefense = 100
+_speed = 100
+_evasion = 100
+_e1 = ExtResource("3_7o72g")
+_e2 = ExtResource("4_2f4hc")
+sprite_path = null
+Sprite = null
+statuses = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":Resource("res://src/battle_system/battle_actions/effects/StatusEffectManager.gd"),"blocking":null,"stasis":null)
+
+elementCounter1 = 0
+elementCounter2 = 0
+aleadyDefeated = false

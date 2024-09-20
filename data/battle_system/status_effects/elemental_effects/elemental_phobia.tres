@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ElementalEffect" load_steps=4 format=3 uid="uid://bvadtuxed6228"]
 
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_b6sia"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="1_s8qjl"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="1_s8qjl"]
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/elemental_effect_icons/phobia_base_icon.tscn" id="2_1386x"]
 
 [resource]

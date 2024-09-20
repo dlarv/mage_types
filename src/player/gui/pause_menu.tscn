@@ -33,6 +33,8 @@ grow_vertical = 2
 
 [node name="Characters" parent="TabContainer" instance=ExtResource("2_leeag")]
 layout_mode = 2
+IsAliceActive = null
+IsAlexActive = null
 
 [node name="Inventory" parent="TabContainer" instance=ExtResource("2_tbsxp")]
 visible = false

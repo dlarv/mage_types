@@ -3,9 +3,9 @@
 [ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="1_fj7p1"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_ofj1d"]
 [ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="3_mgw18"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.cs" id="4_n4o12"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="5_ihfmu"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="6_hfbf2"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="4_n4o12"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="5_ihfmu"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_hfbf2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5mlal"]
 font_size = 50

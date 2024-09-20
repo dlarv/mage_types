@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://naddq5rv0dbw"]
 
-[ext_resource type="Script" path="res://src/items/Inventory.cs" id="1_16dxg"]
+[ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_16dxg"]
 [ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="5_5hpay"]
 [ext_resource type="Resource" uid="uid://d1uh3xnn8ural" path="res://data/items/spell_scrolls/test_spell_scroll.tres" id="6_xuuq7"]
 [ext_resource type="Resource" uid="uid://bc2445kngh7ex" path="res://data/items/key_items/test_key_item.tres" id="7_d6h5x"]

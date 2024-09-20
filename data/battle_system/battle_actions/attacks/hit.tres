@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://ch0d7yocai0vt"]
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://ch0d7yocai0vt"]
 
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="1_ouyby"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_hhpeb"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="3_ckr1o"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.cs" id="3_onw37"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_6aclq"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="3_ckr1o"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_onw37"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_6aclq"]
 
 [sub_resource type="Resource" id="Resource_4bvy1"]
 script = ExtResource("3_onw37")
@@ -20,12 +20,13 @@ Chance = 1.0
 
 [resource]
 script = ExtResource("3_ckr1o")
-Effects = [SubResource("Resource_28y40")]
-Cost = 5
 Name = "Hit"
-animation = ExtResource("2_hhpeb")
 Element = ExtResource("1_ouyby")
 Priority = 0
+Details = ""
+animation = ExtResource("2_hhpeb")
+_e = ExtResource("1_ouyby")
 Range = 0
 Target = 3
-Details = ""
+Cost = 5
+Effects = [SubResource("Resource_28y40")]

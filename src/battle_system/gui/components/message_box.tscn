@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cs6yjetfrdmgw"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/MessageBox.cs" id="1_twjid"]
+[ext_resource type="Script" path="res://src/battle_system/gui/components/MessageBox.gd" id="1_twjid"]
 
 [node name="MessageBox" type="RichTextLabel" node_paths=PackedStringArray("button")]
 anchors_preset = 15

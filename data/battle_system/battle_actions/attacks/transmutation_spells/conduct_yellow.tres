@@ -2,10 +2,10 @@
 
 [ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="1_tlywl"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_bj77c"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_4mkka"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="3_6vxc3"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_y36oa"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="5_y1vt6"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_4mkka"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_6vxc3"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_y36oa"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_y1vt6"]
 
 [sub_resource type="Resource" id="Resource_ii1x3"]
 script = ExtResource("3_6vxc3")

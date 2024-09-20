@@ -1,8 +1,8 @@
 [gd_scene load_steps=30 format=3 uid="uid://6m3bftlgbvbk"]
 
-[ext_resource type="Script" path="res://src/elements/ElementManager.cs" id="1_gyxhk"]
+[ext_resource type="Script" path="res://src/elements/ElementManager.gd" id="1_gyxhk"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="2_2na3h"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="2_lj85t"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_ohe7e"]
 [ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="3_4ordb"]
 [ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="4_mwrkt"]
 [ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="5_ikpar"]
@@ -21,7 +21,7 @@
 [ext_resource type="Resource" uid="uid://dneceq24qw18b" path="res://data/battle_system/status_effects/stat_changes/melee_attack_down.tres" id="17_hu54e"]
 [ext_resource type="Resource" uid="uid://bahofdms1h0nx" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_down.tres" id="18_j0teb"]
 [ext_resource type="Resource" uid="uid://dchuhbbvv2f4i" path="res://data/battle_system/status_effects/stat_changes/melee_defense_down.tres" id="19_a1npl"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.cs" id="19_cqy0o"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="19_cqy0o"]
 [ext_resource type="Resource" uid="uid://x6s6i84so1b3" path="res://data/battle_system/status_effects/stat_changes/attack_down.tres" id="19_ixuyb"]
 [ext_resource type="Resource" uid="uid://ctk6276lmrf4c" path="res://data/battle_system/status_effects/stat_changes/ranged_defense_down.tres" id="20_a8l5i"]
 [ext_resource type="Resource" uid="uid://dpdmudmansscw" path="res://data/battle_system/status_effects/stat_changes/speed_down.tres" id="21_gjete"]
@@ -44,6 +44,6 @@ Message = ""
 
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
-Elements = [ExtResource("2_lj85t"), ExtResource("2_2na3h"), ExtResource("3_4ordb"), ExtResource("4_mwrkt"), ExtResource("5_ikpar"), ExtResource("6_eh1hp"), ExtResource("7_58n47"), ExtResource("8_j8x1x"), ExtResource("9_rqpl6")]
+Elements = Array[ExtResource("2_ohe7e")]([ExtResource("2_2na3h"), ExtResource("9_rqpl6"), ExtResource("8_j8x1x"), ExtResource("4_mwrkt"), ExtResource("6_eh1hp"), ExtResource("3_4ordb"), ExtResource("5_ikpar"), ExtResource("7_58n47")])
 BuffEffects = [null, ExtResource("11_2opo3"), ExtResource("11_jjx3p"), ExtResource("12_f21cn"), ExtResource("14_2183x"), ExtResource("13_fkdds"), ExtResource("14_0joi6"), ExtResource("15_ojmb5"), ExtResource("16_ktaor"), SubResource("Resource_6j4h0"), null]
 DebuffEffects = [null, ExtResource("19_ixuyb"), ExtResource("17_hu54e"), ExtResource("18_j0teb"), ExtResource("22_4n7so"), ExtResource("19_a1npl"), ExtResource("20_a8l5i"), ExtResource("21_gjete"), ExtResource("22_xxnyk"), SubResource("Resource_t3o6g")]

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b3u3wb71dsxxw"]
 
 [ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="1_igaer"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="1_y0csw"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_y0csw"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_ouqob"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_cyqij"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_umf7e"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_cyqij"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_umf7e"]
 
 [sub_resource type="Resource" id="Resource_0klmw"]
 script = ExtResource("3_cyqij")

@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://c1wqtkfskoaar"]
+[gd_resource type="Resource" script_class="StatChange" load_steps=2 format=3 uid="uid://c1wqtkfskoaar"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.cs" id="1_m4jyu"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="1_m4jyu"]
 
 [resource]
 script = ExtResource("1_m4jyu")
 Duration = 3
-ToolTip = ""
 Description = ""
 Name = "Ranged Attack"
 Chance = 100.0
 Strength = 1.0
+Message = ""

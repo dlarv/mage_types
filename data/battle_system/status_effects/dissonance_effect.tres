@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://dq0ck6mo6bcnq"]
 
 [ext_resource type="PackedScene" uid="uid://buroc1tpwwet5" path="res://data/battle_system/status_effects/icons/dissonance_icon.tscn" id="1_dawjm"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.cs" id="1_gxjb0"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="1_gxjb0"]
 
 [resource]
 script = ExtResource("1_gxjb0")

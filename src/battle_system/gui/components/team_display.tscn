@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://66dqcg6jwva5"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/TeamDisplay.cs" id="1_48wpk"]
+[ext_resource type="Script" path="res://src/battle_system/gui/components/TeamDisplay.gd" id="1_48wpk"]
 [ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://src/battle_system/gui/components/battle_actor_display.tscn" id="2_mktld"]
 
 [node name="TeamDisplay" type="Control" node_paths=PackedStringArray("displayParent")]

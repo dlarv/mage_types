@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_acyta"]
 [ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="1_xnmv7"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.cs" id="1_yqd5r"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.cs" id="3_lna36"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="4_4ilq8"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_yqd5r"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_lna36"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_4ilq8"]
 
 [sub_resource type="Resource" id="Resource_6kb1j"]
 script = ExtResource("3_lna36")
