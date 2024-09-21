@@ -6,7 +6,6 @@ signal BattleEnded();
 # BattleActor[]
 var enemies = []
 var allies = []
-var actors = []
 
 @export
 var gui: BattleGUI
@@ -25,8 +24,6 @@ func _unhandled_input(event) -> void:
 func Start(allies, allyItems, enemies, ai) -> void:
 	self.allies = allies;
 	self.enemies = enemies;
-	actors = allies
-	actors.append_array(enemies)
 
 	for ally in allies:
 		ally.WasDefeated.connect(func(): defeatedAllies += 1)

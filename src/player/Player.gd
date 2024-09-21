@@ -4,7 +4,7 @@ class_name Player
 signal BattleStarted(allies, items, enemy);
 
 @export
-var battleActor : BattleActor 
+var battle_actor : BattleActor 
 var Party;
 var inventory : Inventory 
 
@@ -46,4 +46,4 @@ func _physics_process(delta) -> void:
 		var collision = get_slide_collision(i);
 
 		if collision.get_collider().is_in_group("enemy"):
-			BattleStarted.emit(Party, inventory.GetBattleItems(), collision.GetCollider())
+			BattleStarted.emit(Party, inventory.GetBattleItems(), collision.get_collider())

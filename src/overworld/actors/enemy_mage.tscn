@@ -1,20 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs3v2u5k7s6k6"]
+[gd_scene load_steps=7 format=3 uid="uid://bs3v2u5k7s6k6"]
 
 [ext_resource type="Script" path="res://src/overworld/actors/EnemyActor.gd" id="1_twpmh"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_2lyq2"]
+[ext_resource type="Resource" uid="uid://bod1eny4l7qxi" path="res://data/battle_system/battle_actors/basic_battle_actor.tres" id="2_qsane"]
 [ext_resource type="Script" path="res://src/battle_system/OpponentController.gd" id="3_hq4x0"]
-
-[sub_resource type="Resource" id="Resource_ibfhb"]
-script = ExtResource("2_2lyq2")
-ActorName = "Guy"
-Hp = 0
-MeleeAttack = 0
-RangedAttack = 0
-MeleeDefense = 0
-RangedDefense = 0
-Speed = 0
-Evasion = 0
-Attacks = null
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5p5k"]
 
@@ -24,11 +12,11 @@ Attacks = null
 albedo_color = Color(1, 0, 0, 1)
 
 [node name="EnemyMage" type="RigidBody3D" node_paths=PackedStringArray("Ai") groups=["enemy"]]
-max_contacts_reported = 50
 contact_monitor = true
+max_contacts_reported = 50
 script = ExtResource("1_twpmh")
 Ai = NodePath("AI")
-BattleActor = SubResource("Resource_ibfhb")
+BattleActor = ExtResource("2_qsane")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -5,7 +5,7 @@ class_name BaseCompanion
 @export
 var PlayerTarget : Node3D 
 @export
-var battleActor : BattleActor 
+var battle_actor : BattleActor 
 @export
 var Speed : float 
 @export

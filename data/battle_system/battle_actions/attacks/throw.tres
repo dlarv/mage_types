@@ -33,6 +33,6 @@ Name = "Throw"
 animation = ExtResource("1_52lot")
 Element = SubResource("Resource_5ne4w")
 Priority = 0
-ARange = 1
+attack_range = 0
 Target = 3
 Details = ""

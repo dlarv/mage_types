@@ -1,22 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=18 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://src/player/party/player_party.tscn" id="1_k6oqa"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/actors/enemy_mage.tscn" id="2_1w1kl"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
-[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="4_8t0xh"]
 [ext_resource type="Script" path="res://src/items/Item.gd" id="4_a7vqy"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="4_iuiym"]
 [ext_resource type="Resource" uid="uid://cernb43lwpkc5" path="res://data/items/items/poison_heal.tres" id="5_3ygnf"]
 [ext_resource type="Script" path="res://src/items/Equipment.gd" id="6_2fwpi"]
 [ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="6_ades4"]
-[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="7_ap22b"]
 [ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="7_armq2"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="7_fq6uo"]
 [ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="8_8ei6n"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="8_hn7ae"]
 [ext_resource type="Resource" uid="uid://d1uh3xnn8ural" path="res://data/items/spell_scrolls/test_spell_scroll.tres" id="9_vg7s4"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="10_ga7ve"]
 [ext_resource type="Script" path="res://src/items/KeyItem.gd" id="10_mucra"]
 [ext_resource type="Resource" uid="uid://bc2445kngh7ex" path="res://data/items/key_items/test_key_item.tres" id="11_037on"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
@@ -27,22 +21,6 @@ size = Vector3(100, 0.1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4c5f"]
 size = Vector3(100, 0.1, 100)
-
-[sub_resource type="Resource" id="Resource_mjorq"]
-script = ExtResource("4_iuiym")
-ActorName = "Guy"
-Hp = 1000
-MeleeAttack = 0
-RangedAttack = 0
-MeleeDefense = 0
-RangedDefense = 0
-Speed = 0
-Evasion = 0
-Mana = 1000
-Element1 = ExtResource("7_ap22b")
-Element2 = ExtResource("8_hn7ae")
-ElementalBias = ExtResource("8_hn7ae")
-Attacks = Array[ExtResource("7_fq6uo")]([ExtResource("10_ga7ve")])
 
 [node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world", "pause_menu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0728321, -0.110706, 0.0608318)
@@ -82,8 +60,6 @@ inventory = NodePath("../../../Inventory")
 
 [node name="Player" parent="World/Overworld/PlayerParty" index="0"]
 transform = Transform3D(0.99999, 0, 0.00436331, 0, 1, 0, -0.00436331, 0, 0.99999, 0, 1, 0)
-battleActor = ExtResource("4_8t0xh")
-JumpVelocity = null
 
 [node name="AliceTarget" parent="World/Overworld/PlayerParty/Player" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14, -1, -2.014)
@@ -104,12 +80,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.78956)
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-BattleActor = SubResource("Resource_mjorq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
 [node name="PauseMenu" parent="World/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("16_p60yf")]
 visible = false
 world = NodePath("../../Overworld")
+
+[connection signal="BattleStarted" from="World/Overworld/PlayerParty/Player" to="." method="_on_player_battle_started"]
 
 [editable path="World/Overworld/PlayerParty"]

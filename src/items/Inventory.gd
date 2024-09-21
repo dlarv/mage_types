@@ -81,7 +81,7 @@ func LoadFromDir(path: String) -> void:
 				battleItems.append(battleItem);
 				if battleItem.IsConsumable:
 					battleItem.ItemConsumed.connect(func(): QuantityChanged.emit(res, res.Quantity))
-		elif len(item) != 0 && dir.DirExists(item):
+		elif len(item) != 0 and dir.dir_exists(item):
 			LoadFromDir(path + item + "/");
 
 func Add(item: Item) -> void:
@@ -132,3 +132,4 @@ func Remove(item: Item, amount: int=-1) -> Item:
 		QuantityChanged.emit(output, cat)
 		return output;
 	return null;
+

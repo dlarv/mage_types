@@ -21,10 +21,10 @@ var idCheckBox: CheckBox
 var nameCheckBox: CheckBox 
 
 func Setup(inventory: Inventory) -> void:
-	_populate_tab(inventory.Items, itemsScroller)
-	_populate_tab(inventory.Equipment, equipmentScroller)
-	_populate_tab(inventory.SpellScrolls, spellsScroller)
-	_populate_tab(inventory.KeyItems, keyItemsScroller)
+	_populate_tab(inventory.items, itemsScroller)
+	_populate_tab(inventory.equipment, equipmentScroller)
+	_populate_tab(inventory.spell_scrolls, spellsScroller)
+	_populate_tab(inventory.key_items, keyItemsScroller)
 
 	inventory.QuantityChanged.connect(OnQuantityChanged)
 
