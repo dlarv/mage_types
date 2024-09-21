@@ -44,7 +44,7 @@ Name = "Hit2"
 animation = SubResource("PackedScene_7vwlr")
 Element = ExtResource("4_wyjsy")
 Priority = 0
-ARange = 0
+attack_range = 0
 Target = 3
 Details = ""
 

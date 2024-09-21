@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dufaudfvrhhui"]
 
-[ext_resource type="Script" path="res://src/player/gui/PauseMenu.cs" id="1_mwll5"]
+[ext_resource type="Script" path="res://src/player/gui/PauseMenu.gd" id="1_mwll5"]
 [ext_resource type="PackedScene" uid="uid://bydn5qav2dgwy" path="res://src/player/gui/characters_menu.tscn" id="2_leeag"]
 [ext_resource type="PackedScene" uid="uid://lf8pis6wd5qh" path="res://src/player/gui/inventory/inventory_screen.tscn" id="2_tbsxp"]
 [ext_resource type="PackedScene" uid="uid://dpr8pgu3aektj" path="res://src/player/gui/settings_menu.tscn" id="3_ld0ow"]

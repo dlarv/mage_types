@@ -1,112 +1,88 @@
-using Godot;
-using Godot.Collections;
-using System;
+@tool
+extends Resource
+class_name Item 
 
-[Tool]
-[GlobalClass]
-public partial class Item : Resource, IComparable<Item> {
-	private static int nextId = 0;
+var Id : int 
+@export
+var Name : String:
+	get:
+		return _name 
+	set(value):
+		_name = value
+		if battle_item != null:
+			battle_item.Name = value
 
-	public int Id { get; private set; }
-	[Export]
-	public string Name { 
-		get => _name; 
-		set {
-			_name = value;
-			if(BattleItem != null) {
-				BattleItem.Name = value;
-			}
-		}
-	}
-	private string _name;
-	[Export]
-	public BattleItem BattleItem { get; set; }
-	[Export]
-	public bool IsConsumable { 
-		get => _isConsumable; 
-		set {
-			_isConsumable = value;
-			if(BattleItem != null) {
-				BattleItem.IsConsumable = value;
-			}
-		}
-	}
-	private bool _isConsumable;
-	[Export]
-	public int Quantity { 
-		get {
-			if(BattleItem != null) {
-				return BattleItem.Quantity;
-			}
-			else {
-				return _quantity; 
-			}
-		}
-		set {
-			_quantity = value;
-			if(BattleItem != null) {
-				BattleItem.Quantity = value;
-			}
-		}
-	}
-	private int _quantity;
-	[Export]
-	public int MaxQuantity { get; set; }
-	[Export]
-	public ItemRequirement Requirement { 
-		get => _reqs; 
-		set {
-			_reqs = value;
-			if(BattleItem != null && value != null && value.BattleRelevant) {
-				BattleItem.Requirement = value;
-			}
-		}
-	}
-	private ItemRequirement _reqs;
-	[Export]
-	public Array<string> Tags { get; set; }
-	[Export(PropertyHint.MultilineText)]
-	public string Details { 
-		get => _details;
-		set {
-			_details = value;
-			if(BattleItem != null) {
-				BattleItem.Details = value;
-			}
-		}
-	}
-	private string _details;
+var _name: String 
+@export
+var battle_item : BattleItem 
+@export
+var IsConsumable : bool:
+	get:
+		return _isConsumable 
+	set(value):
+		_isConsumable = value
+		if battle_item != null:
+			battle_item.IsConsumable = value
 
-	public void UpdateId() {
-		Id = nextId;
-		nextId++;
-	}
-	public static void ResetIds() {
-		nextId = 0;
-	}
+var _isConsumable: bool 
+@export
+var Quantity : int:
+	get:
+		if battle_item != null:
+			return battle_item.Quantity
+		else:
+			return _quantity 
+	set(value):
+		_quantity = value
+		if battle_item != null:
+			battle_item.Quantity = value
+var _quantity: int 
+@export
+var MaxQuantity : int 
+@export
+var Requirement : ItemRequirement:
+	get: 
+		return _reqs 
+	set(value):
+		_reqs = value
+		if battle_item != null and value != null and value.BattleRelevant:
+			battle_item.Requirement = value
 
+var _reqs: ItemRequirement 
+@export
+var tags = []
+@export_multiline
+var Details : String: 
+	get:
+		return _details
+	set(value):
+		_details = value
+		if battle_item != null:
+			battle_item.Details = value
 
-	public bool TryCombine(Item other) {
-		if(Quantity == MaxQuantity) return false;
-		if(MaxQuantity == -1) {
-			Quantity += other.Quantity;
-			return true;
-		}
+var _details: String 
 
-		int total = Quantity + other.Quantity;
-		Quantity = Math.Min(total, MaxQuantity);
-		return true;
-	}
-	public bool TryRemove(Item other, int amount) {
-		if(Quantity == 0) return false;
-		if(amount == -1) amount = Quantity;
+func update_id(id):
+	Id = id
 
-		int total = Quantity - amount;
-		Quantity = Math.Max(0, total);
-		return true;
-	}
+func TryCombine(other: Item) -> bool:
+	if Quantity == MaxQuantity: return false
+	if MaxQuantity == -1:
+		Quantity += other.Quantity
+		return true
+	
 
-	public int CompareTo(Item other) {
-		return this.Id.CompareTo(other.Id);
-	}
-}
+	var total = Quantity + other.Quantity
+	Quantity = min(total, MaxQuantity)
+	return true
+
+func TryRemove(other: Item, amount: int) -> bool:
+	if Quantity == 0: return false
+	if amount == -1: amount = Quantity
+
+	var total = Quantity - amount
+	Quantity = max(0, total)
+	return true
+
+# public int CompareTo(Item other) {
+# 	return this.Id.CompareTo(other.Id)

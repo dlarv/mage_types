@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cwy6xlvmbrhjj"]
 
-[ext_resource type="Script" path="res://src/player/gui/character_menu/CharacterScreen.cs" id="1_djrqu"]
+[ext_resource type="Script" path="res://src/player/gui/character_menu/CharacterScreen.gd" id="1_djrqu"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_cetjj"]
 [ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="2_i8dsj"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="3_y2ah5"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_y2ah5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vlcv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

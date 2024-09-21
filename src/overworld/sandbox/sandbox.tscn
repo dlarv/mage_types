@@ -1,94 +1,26 @@
-[gd_scene load_steps=35 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=25 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://src/player/party/player_party.tscn" id="1_k6oqa"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/actors/enemy_mage.tscn" id="2_1w1kl"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="4_8t0xh"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.cs" id="4_iuiym"]
-[ext_resource type="Resource" uid="uid://cernb43lwpkc5" path="res://data/items/items/poison_heal.tres" id="5_e7iu4"]
-[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="6_bbs6c"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.cs" id="7_6taea"]
+[ext_resource type="Script" path="res://src/items/Item.gd" id="4_a7vqy"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="4_iuiym"]
+[ext_resource type="Resource" uid="uid://cernb43lwpkc5" path="res://data/items/items/poison_heal.tres" id="5_3ygnf"]
+[ext_resource type="Script" path="res://src/items/Equipment.gd" id="6_2fwpi"]
+[ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="6_ades4"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="7_ap22b"]
+[ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="7_armq2"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="7_fq6uo"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="8_8ei6n"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="8_hn7ae"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.cs" id="8_xehsh"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.cs" id="9_ac48s"]
+[ext_resource type="Resource" uid="uid://d1uh3xnn8ural" path="res://data/items/spell_scrolls/test_spell_scroll.tres" id="9_vg7s4"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="10_ga7ve"]
-[ext_resource type="Script" path="res://src/items/requirements/StatusEffectRequirement.cs" id="10_gvt2m"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="11_48ea4"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.cs" id="12_lqgmc"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.cs" id="13_35hdh"]
+[ext_resource type="Script" path="res://src/items/KeyItem.gd" id="10_mucra"]
+[ext_resource type="Resource" uid="uid://bc2445kngh7ex" path="res://data/items/key_items/test_key_item.tres" id="11_037on"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
-[ext_resource type="Resource" uid="uid://bh5734pj5bgq3" path="res://data/player/battle_actors/alex_battle_actor.tres" id="13_q14lb"]
-[ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="14_wqv0v"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/pause_menu.tscn" id="16_p60yf"]
-
-[sub_resource type="Resource" id="Resource_po4sy"]
-script = ExtResource("7_6taea")
-Name = "Status Heal"
-Chance = 1.0
-Strength = 0.0
-Message = ""
-Effect = ExtResource("6_bbs6c")
-
-[sub_resource type="Resource" id="Resource_fxbdx"]
-script = ExtResource("8_xehsh")
-AttackEffect = SubResource("Resource_po4sy")
-Chance = 1.0
-
-[sub_resource type="Resource" id="Resource_qmj67"]
-script = ExtResource("9_ac48s")
-Name = "Blank"
-MainColor = Color(0.5, 0.5, 0.5, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
-
-[sub_resource type="Resource" id="Resource_4m7no"]
-script = ExtResource("10_gvt2m")
-BattleRelevant = true
-effect = ExtResource("6_bbs6c")
-
-[sub_resource type="Resource" id="Resource_nluci"]
-script = ExtResource("12_lqgmc")
-Name = "Poison Heal"
-Element = SubResource("Resource_qmj67")
-Priority = 0
-Details = ""
-animation = ExtResource("11_48ea4")
-_e = SubResource("Resource_qmj67")
-Range = 0
-Target = 1
-IsConsumable = true
-Quantity = 2
-Requirement = SubResource("Resource_4m7no")
-Effects = [SubResource("Resource_fxbdx")]
-
-[sub_resource type="Resource" id="Resource_eansd"]
-script = ExtResource("13_35hdh")
-Name = ""
-Chance = 1.0
-Strength = 0.5
-Message = ""
-
-[sub_resource type="Resource" id="Resource_5pf4o"]
-script = ExtResource("8_xehsh")
-AttackEffect = SubResource("Resource_eansd")
-Chance = 1.0
-
-[sub_resource type="Resource" id="Resource_45mgf"]
-script = ExtResource("12_lqgmc")
-Name = "Healing Potion"
-Element = ExtResource("8_hn7ae")
-Priority = 0
-Details = ""
-animation = ExtResource("11_48ea4")
-_e = ExtResource("8_hn7ae")
-Range = 0
-Target = 1
-IsConsumable = true
-Quantity = 2
-Requirement = null
-Effects = [SubResource("Resource_5pf4o")]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
 size = Vector3(100, 0.1, 100)
@@ -96,47 +28,21 @@ size = Vector3(100, 0.1, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4c5f"]
 size = Vector3(100, 0.1, 100)
 
-[sub_resource type="Resource" id="Resource_ol8fk"]
-script = ExtResource("9_ac48s")
-Name = "Blank"
-MainColor = Color(0.5, 0.5, 0.5, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
-
 [sub_resource type="Resource" id="Resource_mjorq"]
 script = ExtResource("4_iuiym")
+ActorName = "Guy"
 Hp = 1000
-CurrentHp = 1000
-MeleeAttack = 100
-RangedAttack = 100
-MeleeDefense = 100
-RangedDefense = 100
-Speed = 100
-Evasion = 100
+MeleeAttack = 0
+RangedAttack = 0
+MeleeDefense = 0
+RangedDefense = 0
+Speed = 0
+Evasion = 0
 Mana = 1000
 Element1 = ExtResource("7_ap22b")
 Element2 = ExtResource("8_hn7ae")
 ElementalBias = ExtResource("8_hn7ae")
-Attacks = [ExtResource("10_ga7ve")]
-prevElement1 = SubResource("Resource_ol8fk")
-prevElement2 = SubResource("Resource_ol8fk")
-ActorName = "Guy"
-_hp = 1000
-_meleeAttack = 100
-_rangedAttack = 100
-_meleeDefense = 100
-_rangedDefense = 100
-_speed = 100
-_evasion = 100
-_e1 = ExtResource("7_ap22b")
-_e2 = ExtResource("8_hn7ae")
-sprite_path = null
-Sprite = null
-statuses = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://src/battle_system/battle_actions/effects/StatusEffectManager.cs"),"blocking":null,"stasis":null)
-
-elementCounter1 = 0
-elementCounter2 = 0
-aleadyDefeated = false
+Attacks = Array[ExtResource("7_fq6uo")]([ExtResource("10_ga7ve")])
 
 [node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world", "pause_menu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0728321, -0.110706, 0.0608318)
@@ -147,8 +53,10 @@ world = NodePath("World")
 pause_menu = NodePath("World/CanvasLayer/PauseMenu")
 
 [node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
-Items = [ExtResource("5_e7iu4"), ExtResource("14_wqv0v")]
-battleItems = [SubResource("Resource_nluci"), SubResource("Resource_45mgf")]
+items = Array[ExtResource("4_a7vqy")]([ExtResource("5_3ygnf"), ExtResource("6_ades4")])
+equipment = Array[ExtResource("6_2fwpi")]([ExtResource("7_armq2")])
+spell_scrolls = Array[ExtResource("8_8ei6n")]([ExtResource("9_vg7s4")])
+key_items = Array[ExtResource("10_mucra")]([ExtResource("11_037on")])
 
 [node name="World" type="Node3D" parent="."]
 
@@ -174,8 +82,7 @@ inventory = NodePath("../../../Inventory")
 
 [node name="Player" parent="World/Overworld/PlayerParty" index="0"]
 transform = Transform3D(0.99999, 0, 0.00436331, 0, 1, 0, -0.00436331, 0, 0.99999, 0, 1, 0)
-BattleActor = ExtResource("4_8t0xh")
-Speed = null
+battleActor = ExtResource("4_8t0xh")
 JumpVelocity = null
 
 [node name="AliceTarget" parent="World/Overworld/PlayerParty/Player" index="2"]
@@ -190,7 +97,6 @@ DistanceToPlayer = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7581, 0.190724, -1.86462)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
-BattleActor = ExtResource("13_q14lb")
 DistanceToPlayer = 1.0
 
 [node name="EnemyMage" parent="World/Overworld" instance=ExtResource("2_1w1kl")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn3qgn2vc75yn"]
 
-[ext_resource type="Script" path="res://src/player/gui/character_menu/components/StatItem.cs" id="1_8hlo5"]
+[ext_resource type="Script" path="res://src/player/gui/character_menu/components/StatItem.gd" id="1_8hlo5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrrkk"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

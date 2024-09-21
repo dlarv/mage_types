@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpr8pgu3aektj"]
 
-[ext_resource type="Script" path="res://src/player/gui/SettingsMenu.cs" id="1_tx88d"]
+[ext_resource type="Script" path="res://src/player/gui/SettingsMenu.gd" id="1_tx88d"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3

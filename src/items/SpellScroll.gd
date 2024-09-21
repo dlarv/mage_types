@@ -1,3 +1,3 @@
 @tool
 extends Item 
-class_name SpellScroll 
+class_name SpellScroll
