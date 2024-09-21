@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://bmcia4k0ec1wj"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://bmcia4k0ec1wj"]
 
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="1_i4kid"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_kqc0s"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_llgem"]
 [ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="2_7ook1"]
 [ext_resource type="Resource" uid="uid://b264df1pks5c0" path="res://data/elemental_types/orange.tres" id="3_pucw6"]
+[ext_resource type="Resource" uid="uid://ce4825c7e8a6n" path="res://data/battle_system/battle_actions/attacks/kamikaze.tres" id="4_if762"]
 [ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="4_ruhn1"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="5_fjt6a"]
 
@@ -17,8 +19,8 @@ MeleeDefense = 100
 RangedDefense = 100
 Speed = 100
 Evasion = 100
-Mana = 30
+Mana = 1000
 Element1 = ExtResource("3_pucw6")
 Element2 = ExtResource("4_ruhn1")
 ElementalBias = ExtResource("5_fjt6a")
-Attacks = Array[Object]([ExtResource("1_i4kid"), ExtResource("2_7ook1")])
+Attacks = Array[ExtResource("1_kqc0s")]([ExtResource("1_i4kid"), ExtResource("2_7ook1"), ExtResource("4_if762")])

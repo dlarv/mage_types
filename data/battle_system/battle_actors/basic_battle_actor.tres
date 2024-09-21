@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://bod1eny4l7qxi"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://bod1eny4l7qxi"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_a6tsy"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_gpx16"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_wt3pa"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="2_mxble"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_21ya8"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="4_ja4q3"]
+[ext_resource type="Resource" uid="uid://ce4825c7e8a6n" path="res://data/battle_system/battle_actions/attacks/kamikaze.tres" id="5_r8mw6"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="5_yy0sh"]
 
 [resource]
@@ -17,8 +19,8 @@ MeleeDefense = 100
 RangedDefense = 100
 Speed = 100
 Evasion = 100
-Mana = 30
+Mana = 1000
 Element1 = ExtResource("4_ja4q3")
 Element2 = ExtResource("5_yy0sh")
 ElementalBias = ExtResource("5_yy0sh")
-Attacks = Array[Object]([ExtResource("1_gpx16"), ExtResource("2_mxble"), ExtResource("3_21ya8")])
+Attacks = Array[ExtResource("1_wt3pa")]([ExtResource("1_gpx16"), ExtResource("2_mxble"), ExtResource("3_21ya8"), ExtResource("5_r8mw6")])

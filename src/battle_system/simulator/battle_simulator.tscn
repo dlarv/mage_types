@@ -8,6 +8,7 @@
 script = ExtResource("1_ipe0m")
 character_builder = NodePath("CanvasLayer/CharacterBuilder")
 battle_scene = ExtResource("2_tcfip")
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

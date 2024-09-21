@@ -2,6 +2,7 @@
 extends Node 
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
 
+@export
 var Blank : ElementalType = ElementalType.new()
 var Blue : ElementalType
 var Purple : ElementalType 

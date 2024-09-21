@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://6m3bftlgbvbk"]
+[gd_scene load_steps=31 format=3 uid="uid://6m3bftlgbvbk"]
 
 [ext_resource type="Script" path="res://src/elements/ElementManager.gd" id="1_gyxhk"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="2_2na3h"]
@@ -28,6 +28,13 @@
 [ext_resource type="Resource" uid="uid://c3cjp8ps55j6y" path="res://data/battle_system/status_effects/stat_changes/defense_down.tres" id="22_4n7so"]
 [ext_resource type="Resource" uid="uid://c5ro1exjhsu5o" path="res://data/battle_system/status_effects/stat_changes/evasion_down.tres" id="22_xxnyk"]
 
+[sub_resource type="Resource" id="Resource_5ne4w"]
+script = ExtResource("2_ohe7e")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = []
+
 [sub_resource type="Resource" id="Resource_6j4h0"]
 script = ExtResource("19_cqy0o")
 Name = "Hp"
@@ -44,6 +51,7 @@ Message = ""
 
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
+Blank = SubResource("Resource_5ne4w")
 Elements = Array[ExtResource("2_ohe7e")]([ExtResource("2_2na3h"), ExtResource("9_rqpl6"), ExtResource("8_j8x1x"), ExtResource("4_mwrkt"), ExtResource("6_eh1hp"), ExtResource("3_4ordb"), ExtResource("5_ikpar"), ExtResource("7_58n47")])
 BuffEffects = [null, ExtResource("11_2opo3"), ExtResource("11_jjx3p"), ExtResource("12_f21cn"), ExtResource("14_2183x"), ExtResource("13_fkdds"), ExtResource("14_0joi6"), ExtResource("15_ojmb5"), ExtResource("16_ktaor"), SubResource("Resource_6j4h0"), null]
 DebuffEffects = [null, ExtResource("19_ixuyb"), ExtResource("17_hu54e"), ExtResource("18_j0teb"), ExtResource("22_4n7so"), ExtResource("19_a1npl"), ExtResource("20_a8l5i"), ExtResource("21_gjete"), ExtResource("22_xxnyk"), SubResource("Resource_t3o6g")]

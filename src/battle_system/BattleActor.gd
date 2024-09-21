@@ -16,6 +16,7 @@ signal ElementChanged(id, element);
 var ActorName : String = "Guy"; 
 
 @export_category("Stats")
+var statuses = StatusEffectManager.new();
 var _hp: int
 @export
 var Hp : int : 
@@ -82,12 +83,11 @@ var _e2: ElementalType = ElementManager.Blank;
 var ElementalBias : ElementalType = ElementManager.Blank;
 @export
 # Attack[]
-var Attacks = []
+var Attacks: Array[Attack] = []
 @export
 var sprite_path: PackedScene;
 var sprite : Sprite = null;
 
-var statuses = StatusEffectManager.new();
 var Dissonant: 
 	get: statuses.IsDissonant()
 var Flinching: 
@@ -232,12 +232,12 @@ func SetStat(stat, value: int) -> void:
 			Mana = value;
 			
 func GetAttackStat(action: BattleAction) -> int:
-	if action.Range == BattleAction.AttackRange.Melee:
+	if action.attack_range == BattleAction.AttackRange.Melee:
 		return MeleeAttack;
 	return RangedAttack;
 
 func GetDefenseStat(action: BattleAction) -> int:
-	if action.Range == BattleAction.AttackRange.Melee:
+	if action.attack_range == BattleAction.AttackRange.Melee:
 		return MeleeDefense;
 	return RangedDefense;
 

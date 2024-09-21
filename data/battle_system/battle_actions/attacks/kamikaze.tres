@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_16ojn"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_m0cdi"]
 
-[sub_resource type="Resource" id="Resource_hjcud"]
+[sub_resource type="Resource" id="Resource_sp6ks"]
 script = ExtResource("3_y177y")
 Name = ""
 Chance = 1.0
@@ -15,17 +15,17 @@ Message = ""
 
 [sub_resource type="Resource" id="Resource_uunw6"]
 script = ExtResource("4_16ojn")
-AttackEffect = SubResource("Resource_hjcud")
+attack_effect = SubResource("Resource_sp6ks")
 Chance = 1.0
 
 [resource]
 script = ExtResource("5_m0cdi")
-Effects = [SubResource("Resource_uunw6")]
+Effects = Array[ExtResource("4_16ojn")]([SubResource("Resource_uunw6")])
 Cost = 0
 Name = "Kamikaze"
 animation = ExtResource("2_awrum")
 Element = ExtResource("1_ddwsd")
 Priority = 0
-Range = 0
+ARange = 0
 Target = 0
 Details = ""

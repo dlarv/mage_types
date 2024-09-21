@@ -37,7 +37,7 @@ func FormatAttack(attack: Attack) -> void:
 	AppendElementalType(attack.Element)
 
 	AppendHeader("Range")
-	append_text(str(attack.ARange))
+	append_text(str(attack.attack_range))
 	newline()
 
 	AppendHeader("Cost")

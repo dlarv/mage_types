@@ -61,7 +61,7 @@ public partial class Inventory : Node {
 		string item = "temp";
 
 		dir.ListDirBegin();
-		while(item.Length != 0 && dir != null) {
+		while(len(item) != 0 && dir != null) {
 			item = dir.GetNext();
 
 			if(dir.FileExists(item)) {
@@ -100,7 +100,7 @@ public partial class Inventory : Node {
 					}
 				}
 			} 
-			else if(item.Length != 0 && dir.DirExists(item)) {
+			else if(len(item) != 0 && dir.DirExists(item)) {
 				LoadFromDir(path + item + "/");
 			}
 		}

@@ -23,4 +23,8 @@
 - [-] Allow user to add attack effects inside character creator.
 - [-] Change character's type based on attack usage.
 
-
+# Refactor
+- [ ] items/
+- [ ] player/
+- [ ] Conform to gdscript styleguide
+- [ ] Fix throw attack animation, as it isn't starting in the correct location.

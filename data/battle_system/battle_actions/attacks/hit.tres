@@ -1,32 +1,38 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://ch0d7yocai0vt"]
+[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://ch0d7yocai0vt"]
 
-[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="1_ouyby"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_2q1h0"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_hhpeb"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_tg0cp"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="3_ckr1o"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_onw37"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_6aclq"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_j8lij"]
 
-[sub_resource type="Resource" id="Resource_4bvy1"]
-script = ExtResource("3_onw37")
+[sub_resource type="Resource" id="Resource_n4jnx"]
+script = ExtResource("2_tg0cp")
 Name = ""
 Chance = 1.0
 Strength = 30.0
 Message = ""
 
-[sub_resource type="Resource" id="Resource_28y40"]
-script = ExtResource("4_6aclq")
-AttackEffect = SubResource("Resource_4bvy1")
+[sub_resource type="Resource" id="Resource_7j0nw"]
+script = ExtResource("1_2q1h0")
+attack_effect = SubResource("Resource_n4jnx")
 Chance = 1.0
+
+[sub_resource type="Resource" id="Resource_5ne4w"]
+script = ExtResource("3_j8lij")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = []
 
 [resource]
 script = ExtResource("3_ckr1o")
-Name = "Hit"
-Element = ExtResource("1_ouyby")
-Priority = 0
-Details = ""
-animation = ExtResource("2_hhpeb")
-_e = ExtResource("1_ouyby")
-Range = 0
-Target = 3
+Effects = Array[ExtResource("1_2q1h0")]([SubResource("Resource_7j0nw")])
 Cost = 5
-Effects = [SubResource("Resource_28y40")]
+Name = "Hit"
+animation = ExtResource("2_hhpeb")
+Element = SubResource("Resource_5ne4w")
+Priority = 0
+ARange = 0
+Target = 3
+Details = ""

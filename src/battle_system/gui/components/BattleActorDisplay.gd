@@ -82,7 +82,7 @@ func AddStatusEffect(effect: StatusEffect) -> void:
 	if effect is StatChange:
 		statChangeDisplay.Add(effect)
 		return
-	if(icons.contains_key(effect.Name)): return
+	if(icons.has(effect.Name)): return
 
 	var icon = effect.InstantiateIcon()
 	statusEffectIcons.add_child(icon)
@@ -97,7 +97,7 @@ func RemoveStatusEffects(effects) -> void:
 			statChangeDisplay.remove(effect)
 			continue
 		
-		if !icons.contains_key(effect.Name): continue
+		if !icons.has(effect.Name): continue
 		var icon = icons[effect.Name]
 		statusEffectIcons.remove_child(icon)
 		icons.remove(effect.Name)

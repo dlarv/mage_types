@@ -22,21 +22,23 @@ const PHILIC_KEY: String = "Philic"
 var MeleeAttackMod : float:  
 	get:
 		var total = 1
-		var effect
-		if statuses.TryGetValue(MELEE_ATTACK_KEY, effect):
+		var effect = statuses.get(MELEE_ATTACK_KEY)
+		if effect != null:
 			total += effect.GetMod()
-		if statuses.TryGetValue(ATTACK_KEY, effect):
+		effect = statuses.get(ATTACK_KEY)
+		if effect != null:
 			total += effect.GetMod()
 		return total
 
 var MeleeDefenseMod : float: 
 	get:
 		var total = 1
-		var effect
-		if statuses.TryGetValue(MELEE_DEFENSE_KEY, effect):
+		var effect = statuses.get(MELEE_DEFENSE_KEY)
+		if effect != null:
 			total += effect.GetMod()
 		
-		if statuses.TryGetValue(DEFENSE_KEY, effect):
+		effect = statuses.get(DEFENSE_KEY)
+		if effect != null:
 			total += effect.GetMod()
 		
 		return total
@@ -44,53 +46,55 @@ var MeleeDefenseMod : float:
 var RangedAttackMod : float:
 	get:
 		var total = 1
-		var effect
-		if statuses.TryGetValue(RANGED_ATTACK_KEY, effect):
+		var effect = statuses.get(RANGED_ATTACK_KEY)
+		if effect != null:
 			total += effect.GetMod()
-		if statuses.TryGetValue(ATTACK_KEY, effect):
+		effect = statuses.get(ATTACK_KEY)
+		if effect != null:
 			total += effect.GetMod()
 		return total
 var RangedDefenseMod : float:
 	get:
 		var total = 1
-		var effect
-		if statuses.TryGetValue(RANGED_DEFENSE_KEY, effect):
+		var effect = statuses.get(RANGED_DEFENSE_KEY)
+		if effect != null:
 			total += effect.GetMod()
 		
-		if statuses.TryGetValue(DEFENSE_KEY, effect):
+		effect = statuses.get(DEFENSE_KEY)
+		if effect != null:
 			total += effect.GetMod()
 		
 		return total
 
 var SpeedMod : float:
 	get:
-		var effect
-		if statuses.TryGetValue(MELEE_ATTACK_KEY, effect):
+		var effect = statuses.get(MELEE_ATTACK_KEY)
+		if effect != null:
 			return effect.GetMod()
 		
 		return 1
 var EvasionMod : float:
 	get:
-		var effect
-		if statuses.TryGetValue(MELEE_ATTACK_KEY, effect):
+		var effect = statuses.get(MELEE_ATTACK_KEY)
+		if effect != null:
 			return effect.GetMod()
 		
 		return 1
 
 var Poison : float:
 	get:
-		var poison
-		if statuses.TryGetValue(POISON_KEY, poison):
-			if randf_range(0.0, 1.0) <= poison.Chance:
-				return poison.Strength
+		var effect = statuses.get(POISON_KEY)
+		if effect != null:
+			if randf_range(0.0, 1.0) <= effect.Chance:
+				return effect.Strength
 		return 0
 
 var Healing : float:
 	get:
-		var healing
-		if statuses.TryGetValue(HEALING_KEY, healing):
-			if randf_range(0.0, 1.0) <= healing.Chance:
-				return healing.Strength
+		var effect = statuses.get(HEALING_KEY)
+		if effect != null:
+			if randf_range(0.0, 1.0) <= effect.Chance:
+				return effect.Strength
 		return 0
 
 var blocking : StatusEffect = null
@@ -108,7 +112,7 @@ func Add(status):
 		STASIS_KEY:
 			stasis = status
 		_:
-			if statuses.contains_key(status.Name):
+			if statuses.has(status.Name):
 				statuses[status.Name].Combine(status)
 			else:
 				statuses.add(status.Name, status)
@@ -128,7 +132,7 @@ func Remove(effects):
 
 
 func CalculateExpirations():
-	for effect in statuses.Values:
+	for effect in statuses.values():
 		effect.Duration -= 1
 		if effect.IsExpired():
 			effectsToRemove.add(effect)
@@ -141,10 +145,10 @@ func CalculateExpirations():
 	return output
 
 func IsFlinching():
-	return statuses.contains_key(FLINCHING_KEY)
+	return statuses.has(FLINCHING_KEY)
 
 func IsDissonant():
-	return statuses.contains_key(DISSONANT_KEY)
+	return statuses.has(DISSONANT_KEY)
 
 func IsBlocking():
 	if blocking != null:
@@ -162,8 +166,8 @@ func InStasis():
 	return false
 
 func IsPhobic(element, mod):
-	var effect
-	if statuses.TryGetValue(PHOBIC_KEY, effect):
+	var effect = statuses.get(PHOBIC_KEY)
+	if effect != null:
 		mod = effect
 		return effect.Element.Name == element.Name
 	
@@ -171,8 +175,8 @@ func IsPhobic(element, mod):
 	return false
 
 func IsPhilic(element, mod):
-	var effect
-	if statuses.TryGetValue(PHILIC_KEY, effect):
+	var effect = statuses.get(PHOBIC_KEY)
+	if effect != null:
 		mod = effect
 		return effect.Element.Name == element.Name
 	mod = null
@@ -185,6 +189,6 @@ func List():
 	
 	if stasis != null:
 		output.add(stasis)
-	for effect in statuses.Values:
+	for effect in statuses.values():
 		output.add(effect)
 	return output

@@ -92,21 +92,21 @@ func OnPlayerActionsSelected(allyActions) -> void:
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
 		# This only applies to melee attacks.
-		if(!action.targets.contains(action.actor) \
+		if(action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
-				and (action.action).ARange == Attack.AttackRange.Melee):
+				and (action.action).attack_range == Attack.AttackRange.Melee):
 			await CalculateTransmutations(action.actor, action.action); 
 
 		# Resolve user's status effects.
 		msg = action.actor.ResolveEndOfTurn();		
-		if msg.Length > 0:
+		if len(msg) > 0:
 			await gui.DisplayMessage(msg);
 
 		# Check if battle should end.
-		if defeatedAllies == allies.Length:
+		if defeatedAllies == len(allies):
 			await gui.DisplayMessage("You were defeated...");
 			BattleEnded.emit()
-		elif defeatedEnemies == enemies.Length:
+		elif defeatedEnemies == len(enemies):
 			await gui.DisplayMessage("You won!");
 			BattleEnded.emit()
 		# Pause before processing next turn.
@@ -136,7 +136,7 @@ func CalculateTransmutations(target: BattleActor, action: BattleAction) -> void:
 # 		}
 #
 # 		string msg2 = target.SetElement(0, newType);
-# 		if msg2.Length > 0:
+# 		if len(msg2) > 0:
 # 			msg += $"\n{msg2}";
 # 		}
 # 	}
@@ -157,14 +157,14 @@ func CalculateTransmutations(target: BattleActor, action: BattleAction) -> void:
 # 				+ $"{target.ActorName} received {debuff.ApplyEffect(target)}";
 # 		}
 # 		string msg2 = target.SetElement(1, newType);
-# 		if msg2.Length > 0:
+# 		if len(msg2) > 0:
 # 			msg += $"\n{msg2}";
 # 		}
 # 	}
 #
 # 	# Only display message if applicable.
 # 	# If no changes occurred, iteration can end here.
-# 	if msg.Length > 0:
+# 	if len(msg) > 0:
 # 		await gui.DisplayMessage(msg);
 # 	} else return;
 #
@@ -188,7 +188,7 @@ func CalculateTransmutations(target: BattleActor, action: BattleAction) -> void:
 #
 # 		string msg2 = target.SetElement(0, newType);
 # 		target.SetElement(1, ElementManager.Blank);
-# 		if msg2.Length > 0:
+# 		if len(msg2) > 0:
 # 			msg += $"\n{msg2}";
 # 		}
 # 		await gui.DisplayMessage(msg);

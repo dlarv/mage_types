@@ -55,9 +55,8 @@ func Setup(allies, items, enemies) -> void:
 		ally.WasDefeated.connect(func():
 			skipIndices[index] = true
 			# Recalc beginIndex and finalIndex.
-			# finalIndex = skipIndices.FindLastIndex(func(val): not val)
-			# beginIndex = skipIndices.FindIndex(func(val): not val))
-			pass)
+			finalIndex = skipIndices.FindLastIndex(func(val): not val)
+			beginIndex = skipIndices.FindIndex(func(val): not val))
 
 		attacksPanel.tab_selected.connect(func(tabIndex):
 			if(tabIndex != index): return
@@ -98,7 +97,7 @@ func PopulateNewAttackMenu(actor: BattleActor, index: int) -> void:
 		button.StateChanged.connect(func(state):
 			OnActionSelected(state, index, attack)) 
 
-		EndTurn.connect(func(): button.Reset())
+		EndTurn.connect(func(a): button.Reset())
 		vbox.add_child(button)
 
 	attacksPanel.add_child(scroller)
@@ -155,6 +154,9 @@ func PrevCharacter() -> void:
 	# for(int i = 1 index - i >= beginIndex - 1 i++) {
 	# 	index = Math.Max(index - i, beginIndex)
 	# 	if(!skipIndices[index]) break
+	for i in range(index - 1, beginIndex - 1, -1):
+		index = max(i, beginIndex)
+		if(not skipIndices[index]): break
 
 	attacksPanel.current_tab = index
 
@@ -166,9 +168,9 @@ func NextCharacter() -> void:
 
 	var index = attacksPanel.current_tab
 	# for(int i = 1 index + i <= finalIndex + 1 i++) {
-	for i in range(finalIndex - index):
-		index = min(index + i, finalIndex)
-		if(!skipIndices[index]): break
+	for i in range(index + 1, finalIndex + 1):
+		index = min(i, finalIndex)
+		if(not skipIndices[index]): break
 
 
 	attacksPanel.current_tab = index

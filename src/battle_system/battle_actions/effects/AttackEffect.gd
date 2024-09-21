@@ -13,6 +13,7 @@ var Strength :float
 @export_multiline
 var Message : String = ""
 
+# virtual
 func ApplyEffect(user, target=null, action=null):
 	if target != null:
 		return Message.replace("{user}", user.ActorName).replace("{target}", target.ActorName)

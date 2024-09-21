@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://bh5734pj5bgq3"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bh5734pj5bgq3"]
 
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_cre2a"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_s6y24"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_skdfi"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_vrqin"]
 [ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="5_kvyem"]
 
@@ -19,44 +20,18 @@ MainColor = Color(0.5, 0.5, 0.5, 1)
 TextColor = Color(0, 0, 0, 1)
 ColorPalette = PackedColorArray()
 
-[sub_resource type="Resource" id="Resource_ol8fk"]
-script = ExtResource("2_vrqin")
-Name = "Blank"
-MainColor = Color(0.5, 0.5, 0.5, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
-
 [resource]
 script = ExtResource("1_s6y24")
+ActorName = "Alex"
 Hp = 200
-CurrentHp = 200
 MeleeAttack = 100
-RangedAttack = 200
+RangedAttack = 100
 MeleeDefense = 100
-RangedDefense = 200
-Speed = 200
+RangedDefense = 100
+Speed = 100
 Evasion = 100
 Mana = 100
 Element1 = ExtResource("5_kvyem")
 Element2 = SubResource("Resource_t4n4r")
 ElementalBias = SubResource("Resource_rxe3j")
-Attacks = [ExtResource("1_cre2a")]
-prevElement1 = SubResource("Resource_ol8fk")
-prevElement2 = SubResource("Resource_ol8fk")
-ActorName = "Alex"
-_hp = 200
-_meleeAttack = 100
-_rangedAttack = 200
-_meleeDefense = 100
-_rangedDefense = 200
-_speed = 200
-_evasion = 100
-_e1 = ExtResource("5_kvyem")
-_e2 = SubResource("Resource_t4n4r")
-sprite_path = null
-Sprite = null
-statuses = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":Resource("res://src/battle_system/battle_actions/effects/StatusEffectManager.gd"),"blocking":null,"stasis":null)
-
-elementCounter1 = 0
-elementCounter2 = 0
-aleadyDefeated = false
+Attacks = Array[ExtResource("1_skdfi")]([ExtResource("1_cre2a")])

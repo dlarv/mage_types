@@ -1,38 +1,44 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bwpyxutff85nq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://bwpyxutff85nq"]
 
-[ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elemental_types/cyan.tres" id="1_4wufi"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_t7pui"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_gh430"]
-[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_4143m"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_ue5fj"]
+[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_36x3k"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="3_8816p"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_acumg"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_jutqg"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="4_mqq7n"]
 
-[sub_resource type="Resource" id="Resource_686g4"]
-script = ExtResource("5_jutqg")
+[sub_resource type="Resource" id="Resource_33bnc"]
+script = ExtResource("2_ue5fj")
 Name = ""
 Chance = 1.0
-Strength = 10.0
+Strength = 20.0
 Message = ""
 
-[sub_resource type="Resource" id="Resource_fu14x"]
-script = ExtResource("4_acumg")
-AttackEffect = SubResource("Resource_686g4")
+[sub_resource type="Resource" id="Resource_4r6wf"]
+script = ExtResource("1_t7pui")
+attack_effect = SubResource("Resource_33bnc")
 Chance = 1.0
 
-[sub_resource type="Resource" id="Resource_6ok26"]
-script = ExtResource("4_acumg")
-AttackEffect = ExtResource("3_4143m")
-Chance = 0.5
+[sub_resource type="Resource" id="Resource_u4dru"]
+script = ExtResource("1_t7pui")
+attack_effect = ExtResource("3_36x3k")
+Chance = 1.0
+
+[sub_resource type="Resource" id="Resource_5ne4w"]
+script = ExtResource("4_mqq7n")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = []
 
 [resource]
 script = ExtResource("3_8816p")
-Name = "Sting"
-Element = ExtResource("1_4wufi")
-Priority = 0
-Details = ""
-animation = ExtResource("2_gh430")
-_e = ExtResource("1_4wufi")
-Range = 0
-Target = 3
+Effects = Array[ExtResource("1_t7pui")]([SubResource("Resource_4r6wf"), SubResource("Resource_u4dru")])
 Cost = 10
-Effects = [SubResource("Resource_fu14x"), SubResource("Resource_6ok26")]
+Name = "Sting"
+animation = ExtResource("2_gh430")
+Element = SubResource("Resource_5ne4w")
+Priority = 0
+ARange = 0
+Target = 3
+Details = ""

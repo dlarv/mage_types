@@ -24,7 +24,7 @@ var _e: ElementalType = ElementManager.Blank
 @export
 var Priority : int = 0
 @export
-var ARange: AttackRange = AttackRange.Melee
+var attack_range: AttackRange = AttackRange.Melee
 @export
 var Target : TargetType = TargetType.Enemy
 @export_multiline
@@ -32,8 +32,8 @@ var Details : String
 
 # virtual
 func PlayAnimation(start: Vector2, end: Vector2) -> Node:
-	var obj = animation.Instantiate()
-	obj.Call("_play", start, end, Element)
+	var obj = animation.instantiate()
+	obj._play(start, end, Element)
 	return obj
 
 # virtual

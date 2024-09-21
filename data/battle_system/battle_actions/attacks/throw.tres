@@ -1,31 +1,38 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bxe7rrdwy8tjq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://bxe7rrdwy8tjq"]
 
 [ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_52lot"]
-[ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="1_oypeo"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_gvwcg"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_gm17o"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_1mam3"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_2k577"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_lpafr"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_o0a25"]
 
-[sub_resource type="Resource" id="Resource_w005c"]
-script = ExtResource("3_1mam3")
+[sub_resource type="Resource" id="Resource_qcqe1"]
+script = ExtResource("2_lpafr")
 Name = ""
 Chance = 1.0
 Strength = 30.0
 Message = ""
 
-[sub_resource type="Resource" id="Resource_4cnwt"]
-script = ExtResource("4_2k577")
-AttackEffect = SubResource("Resource_w005c")
+[sub_resource type="Resource" id="Resource_tqudu"]
+script = ExtResource("1_gvwcg")
+attack_effect = SubResource("Resource_qcqe1")
 Chance = 1.0
+
+[sub_resource type="Resource" id="Resource_5ne4w"]
+script = ExtResource("3_o0a25")
+Name = "Blank"
+MainColor = Color(0.5, 0.5, 0.5, 1)
+TextColor = Color(0, 0, 0, 1)
+ColorPalette = []
 
 [resource]
 script = ExtResource("2_gm17o")
-Effects = [SubResource("Resource_4cnwt")]
+Effects = Array[ExtResource("1_gvwcg")]([SubResource("Resource_tqudu")])
 Cost = 5
 Name = "Throw"
 animation = ExtResource("1_52lot")
-Element = ExtResource("1_oypeo")
+Element = SubResource("Resource_5ne4w")
 Priority = 0
-Range = 1
+ARange = 1
 Target = 3
 Details = ""
