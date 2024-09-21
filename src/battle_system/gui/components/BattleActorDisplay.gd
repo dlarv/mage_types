@@ -55,7 +55,7 @@ func SetElement(id: int, element: ElementalType) -> void:
 	# Update Sprite's colors.
 	sprite.SetElement(id, element)
 	# Update Sprite.
-	spriteDisplay.texture = sprite.Texture
+	spriteDisplay.texture = sprite.texture
 
 func SetHealth(hp: int) -> void:
 	healthBar.value = hp / totalHp * 100.0

@@ -1,11 +1,60 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://0vpn7c3pvu1d"]
 
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_1dbhv"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_wlyon"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_l6eh6"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_s23oy"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_45nfb"]
+[ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="4_022se"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="4_nnk6v"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="5_luyfi"]
+[ext_resource type="Script" path="res://data/battle_system/battle_actions/battle_action_animation.gd" id="5_rlyml"]
+
+[sub_resource type="Resource" id="Resource_n4jnx"]
+script = ExtResource("3_45nfb")
+Name = ""
+Chance = 1.0
+Strength = 30.0
+Message = ""
+
+[sub_resource type="Resource" id="Resource_7j0nw"]
+script = ExtResource("2_l6eh6")
+attack_effect = SubResource("Resource_n4jnx")
+Chance = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppq6a"]
+particle_flag_disable_z = true
+spread = 180.0
+radial_velocity_min = 100.0
+radial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 10.0
+
+[sub_resource type="PackedScene" id="PackedScene_r7rvw"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Burst", "Node2D", "z_index", "z_as_relative", "script", "animation", "GPUParticles2D", "GPUParticles2D", "emitting", "amount", "process_material", "one_shot", "explosiveness", "randomness"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 4, 2, 0, 3, 1, 4, 2, 1073741829, 3, 0, 1073741824, 0, 7, 6, -1, 6, 8, 4, 9, 5, 10, 6, 11, 7, 12, 8, 13, 9, 0),
+"variants": [5, false, ExtResource("5_rlyml"), NodePath("GPUParticles2D"), false, 30, SubResource("ParticleProcessMaterial_ppq6a"), true, 1.0, 1.0],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_sdbly"]
+script = ExtResource("1_wlyon")
+Effects = Array[ExtResource("2_l6eh6")]([SubResource("Resource_7j0nw")])
+Cost = 5
+Name = "Hit"
+animation = SubResource("PackedScene_r7rvw")
+Element = ExtResource("4_022se")
+Priority = 0
+attack_range = 0
+Target = 3
+Details = ""
 
 [sub_resource type="Resource" id="Resource_4astr"]
 script = ExtResource("2_s23oy")
@@ -28,4 +77,4 @@ Mana = 100
 Element1 = ExtResource("5_luyfi")
 Element2 = SubResource("Resource_4astr")
 ElementalBias = ExtResource("4_nnk6v")
-Attacks = Array[ExtResource("1_wlyon")]([ExtResource("1_1dbhv")])
+Attacks = Array[ExtResource("1_wlyon")]([SubResource("Resource_sdbly")])

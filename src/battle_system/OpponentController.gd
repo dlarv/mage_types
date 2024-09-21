@@ -4,8 +4,9 @@ class_name OpponentController
 
 func GetActions(team, otherTeam):
 	var actions = []
+	actions.resize(len(team))
 
-	for i in range(len(actions)):
+	for i in range(len(team)):
 		if(len(team[i].Attacks) == 0):
 			actions[i] = null;
 		else:
