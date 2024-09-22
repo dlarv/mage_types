@@ -3,7 +3,7 @@ extends Damage
 class_name RecoilDamage 
 
 # override
-func ApplyEffect(user, target=null, action=null):
-	var dmg = CalculateDamage(user.GetAttackStat(action), user.GetDefenseStat(action), action)
-	dmg = user.ApplyDamage(dmg)
-	return "%s was hurt by recoil (%d damage)." % [ target.ActorName, dmg ]
+func apply_effect(user, target=null, action=null, duplicated_effect=null):
+	var dmg = calculate_damage(user.get_attack_stat(action), user.get_defense_stat(action), action)
+	dmg = user.apply_damage(dmg)
+	return "%s was hurt by recoil (%d damage)." % [ target.name, dmg ]

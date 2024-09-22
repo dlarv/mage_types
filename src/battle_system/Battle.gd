@@ -1,7 +1,7 @@
 extends Node
 class_name Battle 
 
-signal BattleEnded()
+signal battle_ended()
 
 # BattleActor[]
 var enemies = []
@@ -21,29 +21,27 @@ func _unhandled_input(event) -> void:
 	if event.is_action_pressed("open_pause_menu"):
 		matchupManager.visible = !matchupManager.visible
 
-func Start(allies, allyItems, enemies, ai) -> void:
+func start(allies, allyItems, enemies, ai) -> void:
 	self.allies = allies
 	self.enemies = enemies
 
 	for ally in allies:
-		ally.WasDefeated.connect(func(): defeatedAllies += 1)
+		ally.was_just_defeated.connect(func(): defeatedAllies += 1)
 	for enemy in enemies:
-		enemy.WasDefeated.connect(func(): defeatedEnemies += 1)
+		enemy.was_just_defeated.connect(func(): defeatedEnemies += 1)
 
-	gui.Setup(allies, allyItems, enemies)
+	gui.setup(allies, allyItems, enemies)
 
-func OnPlayerActionsSelected(allyActions) -> void:
+func on_player_actions_selected(allyActions) -> void:
 	# If allyActions is empty, the player pressed the "Run" button.
-	if len(allyActions) == 0:
-		await gui.DisplayMessage("You ran away.")
-		BattleEnded.emit()
+	if allyActions == null or len(allyActions) == 0:
+		await gui.display_message("You ran away.")
+		battle_ended.emit()
 
-	gui.EnablePlayerControls(false)
-	var enemyActions = ai.GetActions(enemies, allies)
+	gui.enable_player_controls(false)
+	var enemyActions = ai.get_actions(enemies, allies)
 	var actions = allyActions
 	actions.append_array(enemyActions)
-
-	print("length: " + str(len(enemyActions)))
 
 	# Calculate turn order based on priority and actor speed.
 	actions.sort()
@@ -53,39 +51,39 @@ func OnPlayerActionsSelected(allyActions) -> void:
 		if action == null:
 			continue
 
-		if action.actor.Flinching:
+		if action.actor.is_flinching:
 			continue
 
-		action.action.ApplyCost(action.actor)
+		action.action.apply_cost(action.actor)
 
 		# Play animation.
-		var userPosition = gui.GetActorDisplayPosition(action.teamIndex, action.actor)
+		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
 		var targetTeamIndex
 		var teamDisplay
 		# Target same team as user.
-		if(action.action.Target == BattleAction.TargetType.Self \
-				or action.action.Target == BattleAction.TargetType.Ally \
-				or action.action.Target == BattleAction.TargetType.Allies):
-			targetTeamIndex = action.teamIndex
-			teamDisplay =  gui.AllyDisplayParent  if action.teamIndex == 0  else  gui.EnemyDisplayParent
+		if(action.action.target == BattleAction.TargetType.SELF \
+				or action.action.target == BattleAction.TargetType.ALLY \
+				or action.action.target == BattleAction.TargetType.ALLIES):
+			targetTeamIndex = action.team_index
+			teamDisplay =  gui.ally_display_parent  if action.team_index == 0  else  gui.enemy_display_parent
 		# Target opposite team from user.
 		else:
-			targetTeamIndex = (action.teamIndex + 1) % 2
-			teamDisplay =  gui.AllyDisplayParent  if action.teamIndex == 1  else  gui.EnemyDisplayParent
-		var targetPosition = gui.GetActorDisplayPosition( targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
+			targetTeamIndex = (action.team_index + 1) % 2
+			teamDisplay =  gui.ally_display_parent  if action.team_index == 1  else  gui.enemy_display_parent
+		var targetPosition = gui.get_actor_display_position( targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
-		var animation = action.action.PlayAnimation(userPosition, targetPosition)
+		var animation = action.action.play_animation(userPosition, targetPosition)
 		add_child(animation)
 
 		# Apply action effects.
-		var msg = action.action.ApplyEffects(action.actor, action.targets)
+		var msg = action.action.apply_effects(action.actor, action.targets)
 
 		# Display message and await input.
-		await gui.DisplayMessage(msg)
+		await gui.display_message(msg)
 
 		# Calculate target transmutations.
 		for target in action.targets:
-			await CalculateTransmutations(target, action.action)
+			await calculate_transmutations(target, action.action)
 
 		# Calculate user transmutations.
 		# If the user targeted themselves 
@@ -93,72 +91,64 @@ func OnPlayerActionsSelected(allyActions) -> void:
 		# This only applies to melee attacks.
 		if(action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
-				and (action.action).attack_range == Attack.AttackRange.Melee):
-			await CalculateTransmutations(action.actor, action.action) 
+				and (action.action).attack_range == Attack.AttackRange.MELEE):
+			await calculate_transmutations(action.actor, action.action) 
 
 		# Resolve user's status effects.
-		msg = action.actor.ResolveEndOfTurn()		
+		msg = action.actor.resolve_end_of_turn()		
 		if len(msg) > 0:
-			await gui.DisplayMessage(msg)
+			await gui.display_message(msg)
 
 		# Check if battle should end.
 		if defeatedAllies == len(allies):
-			await gui.DisplayMessage("You were defeated...")
-			BattleEnded.emit()
+			await gui.display_message("You were defeated...")
+			battle_ended.emit()
 		elif defeatedEnemies == len(enemies):
-			await gui.DisplayMessage("You won!")
-			BattleEnded.emit()
+			await gui.display_message("You won!")
+			battle_ended.emit()
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
-	gui.EnablePlayerControls(true)
+	gui.enable_player_controls(true)
 
-func CalculateTransmutations(target: BattleActor, action: BattleAction) -> void:
+func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:
 	var msg = ""
-	var e1 = target.Element1.Name.to_lower()
-	var e2 = target.Element2.Name.to_lower()
-	var ea = action.Element.Name.to_lower()
+	var e1 = target.element1.name.to_lower()
+	var e2 = target.element2.name.to_lower()
+	var ea = action.element.name.to_lower()
 
-# 	# Calculate primary + attack 
-	var newType = ElementManager.GetMatchup(target.Element1, action.Element)
-	if newType != null and not target.InStasis:
-		msg += "The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color].\n" % [target.ActorName, e1, e1, ea, ea, newType.Name.to_lower(), newType.Name.to_lower()]
+ 	# Calculate primary + attack 
+	var newType = ElementManager.get_matchup(target.element1, action.element)
+	if newType != null and not target.in_stasis:
+		msg += "The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color].\n" % [target.name, e1, e1, ea, ea, newType.name.to_lower(), newType.name.to_lower()]
 
-		var vals = ElementManager.GetSideEffect(target.Element1, action.Element)
+		var vals = ElementManager.get_side_effect(target.element1, action.element)
 		var buff = vals[0]
 		var debuff = vals[1]
 
 		if buff != null:
-			msg += "\nThis reaction had side effects! %s received %s" % [
-				target.ActorName, 
-				buff.ApplyEffect(target)]
+			msg += "\nThis reaction had side effects! %s" % buff.apply_effect(target)
 		if debuff != null:
-			msg += "\nThis reaction had side effects! %s received %s" % [
-				target.ActorName, 
-				debuff.ApplyEffect(target)]
+			msg += "\nThis reaction had side effects! %s" % debuff.apply_effect(target)
 
-		var msg2 = target.SetElement(0, newType)
+		var msg2 = target.set_element(0, newType)
 		if len(msg2) > 0:
 			msg += "\n%s" % msg2
 
-# 	# Calculate secondary + attack 
-	newType = ElementManager.GetMatchup(target.Element2, action.Element)
-	if newType != null and not target.InStasis:
-		msg += "The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color].\n" % [ target.ActorName, e2, e2, ea, ea, newType.Name.to_lower(), newType.Name.to_lower()]
+ 	# Calculate secondary + attack 
+	newType = ElementManager.get_matchup(target.element2, action.element)
+	if newType != null and not target.in_stasis:
+		msg += "The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color].\n" % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()]
 
-		var vals = ElementManager.GetSideEffect(target.Element2, action.Element)
+		var vals = ElementManager.get_side_effect(target.element2, action.element)
 		var buff = vals[0]
 		var debuff = vals[1]
 
 		if buff != null:
-			msg += "\nThis reaction had side effects! %s received %s" % [
-				target.ActorName, 
-				buff.ApplyEffect(target)]
+			msg += "\nThis reaction had side effects! %s" % buff.apply_effect(target)
 		if debuff != null:
-			msg += "\nThis reaction had side effects! %s received %s" % [
-				target.ActorName, 
-				debuff.ApplyEffect(target)]
+			msg += "\nThis reaction had side effects! %s" % debuff.apply_effect(target)
 
-		var msg2 = target.SetElement(1, newType)
+		var msg2 = target.set_element(1, newType)
 		if len(msg2) > 0:
 			msg += "\n%s" % msg2
 
@@ -166,31 +156,27 @@ func CalculateTransmutations(target: BattleActor, action: BattleAction) -> void:
 	# Only display message if applicable.
 	# If no changes occurred, iteration can end here.
 	if len(msg) > 0:
-		await gui.DisplayMessage(msg)
+		await gui.display_message(msg)
 	else: return
 
-# 	# Calculate primary + secondary.
-	newType = ElementManager.GetMatchup(target.Element1, target.Element2)
-	if newType != null and not target.Dissonant:
-		e1 = target.Element1.Name.to_lower()
-		e2 = target.Element2.Name.to_lower()
-		msg = "The target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.ActorName, e1, e1, e2, e2, newType.Name.to_lower(), newType.Name.to_lower()]
+ 	# Calculate primary + secondary.
+	newType = ElementManager.get_matchup(target.element1, target.element2)
+	if newType != null and not target.is_dissonant:
+		e1 = target.element1.name.to_lower()
+		e2 = target.element2.name.to_lower()
+		msg = "The target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()]
 
-		var vals = ElementManager.GetSideEffect(target.Element1, target.Element2)
+		var vals = ElementManager.get_side_effect(target.element1, target.element2)
 		var buff = vals[0]
 		var debuff = vals[1]
 		if buff != null:
-			msg += "\nThis reaction had side effects! %s received %s" % [
-				target.ActorName, 
-				buff.ApplyEffect(target)]
+			msg += "\nThis reaction had side effects! %s" % buff.apply_effect(target)
 		if debuff != null:
-			msg += "\nThis reaction had side effects! %s received %s" % [
-				target.ActorName, 
-				debuff.ApplyEffect(target)]
+			msg += "\nThis reaction had side effects! %s" % debuff.apply_effect(target)
 
-		var msg2 = target.SetElement(0, newType)
-		target.SetElement(1, ElementManager.Blank)
+		var msg2 = target.set_element(0, newType)
+		target.set_element(1, ElementManager.Blank)
 		if len(msg2) > 0:
 			msg += "\n%s" % msg2
 		
-		await gui.DisplayMessage(msg)
+		await gui.display_message(msg)

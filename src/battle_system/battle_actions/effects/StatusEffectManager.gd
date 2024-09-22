@@ -19,82 +19,79 @@ const FLINCHING_KEY: String = "Flinching"
 const PHOBIC_KEY: String = "Phobic"
 const PHILIC_KEY: String = "Philic"
 
-var MeleeAttackMod : float:  
+var melee_attack_mod : float:  
 	get:
 		var total = 1
 		var effect = statuses.get(MELEE_ATTACK_KEY)
 		if effect != null:
-			total += effect.GetMod()
+			total += effect.get_mod()
 		effect = statuses.get(ATTACK_KEY)
 		if effect != null:
-			total += effect.GetMod()
+			total += effect.get_mod()
 		return total
 
-var MeleeDefenseMod : float: 
+var melee_defense_mod : float: 
 	get:
 		var total = 1
 		var effect = statuses.get(MELEE_DEFENSE_KEY)
 		if effect != null:
-			total += effect.GetMod()
+			total += effect.get_mod()
 		
 		effect = statuses.get(DEFENSE_KEY)
 		if effect != null:
-			total += effect.GetMod()
-		
+			total += effect.get_mod()
 		return total
 
-var RangedAttackMod : float:
+var ranged_attack_mod : float:
 	get:
 		var total = 1
 		var effect = statuses.get(RANGED_ATTACK_KEY)
 		if effect != null:
-			total += effect.GetMod()
+			total += effect.get_mod()
 		effect = statuses.get(ATTACK_KEY)
 		if effect != null:
-			total += effect.GetMod()
+			total += effect.get_mod()
 		return total
-var RangedDefenseMod : float:
+
+var ranged_defense_mod : float:
 	get:
 		var total = 1
 		var effect = statuses.get(RANGED_DEFENSE_KEY)
 		if effect != null:
-			total += effect.GetMod()
-		
+			total += effect.get_mod()
 		effect = statuses.get(DEFENSE_KEY)
 		if effect != null:
-			total += effect.GetMod()
-		
+			total += effect.get_mod()
 		return total
 
-var SpeedMod : float:
+var speed_mod : float:
 	get:
 		var effect = statuses.get(MELEE_ATTACK_KEY)
 		if effect != null:
-			return effect.GetMod()
-		
-		return 1
-var EvasionMod : float:
-	get:
-		var effect = statuses.get(MELEE_ATTACK_KEY)
-		if effect != null:
-			return effect.GetMod()
-		
+			return effect.get_mod()
 		return 1
 
-var Poison : float:
+var evasion_mod : float:
+	get:
+		var effect = statuses.get(MELEE_ATTACK_KEY)
+		if effect != null:
+			return effect.get_mod()
+		return 1
+
+var poison : float:
 	get:
 		var effect = statuses.get(POISON_KEY)
 		if effect != null:
-			if randf_range(0.0, 1.0) <= effect.Chance:
-				return effect.Strength
+			if randf_range(0.0, 1.0) <= effect.chance:
+				return effect.strength
 		return 0
 
-var Healing : float:
+var healing : float:
 	get:
 		var effect = statuses.get(HEALING_KEY)
 		if effect != null:
-			if randf_range(0.0, 1.0) <= effect.Chance:
-				return effect.Strength
+			if randf_range(0.0, 1.0) <= effect.chance:
+				return effect.strength
 		return 0
 
 var blocking : StatusEffect = null
@@ -105,59 +102,62 @@ var effectsToRemove = []
 # Dict<string, StatusEffect>
 var statuses = {}
 
-func Add(status):
-	match status.Name:
+func add_status(status):
+	# if status is ElementalEffect:
+	# 	status = status.duplicate()
+	# 	status.element = ElementManager.get_element_from_name(status.name)
+	match status.name:
 		BLOCKING_KEY:
 			blocking = status
 		STASIS_KEY:
 			stasis = status
 		_:
-			if statuses.has(status.Name):
-				statuses[status.Name].Combine(status)
+			if statuses.has(status.name):
+				statuses[status.name].combine(status)
 			else:
-				statuses.add(status.Name, status)
+				statuses[status.name] = status
 
-func Get(status):
-	match status.Name:
+func get_status(status):
+	match status.name:
 		BLOCKING_KEY:
 			return blocking
 		STASIS_KEY:
 			return stasis
 		_:
-			return statuses.get_value_or_default(status.Name, null)
+			return statuses.get(status.name)
 
-func Remove(effects):
+func remove(effects):
 	for effect in effects:
-		statuses.remove(effect.Name)
+		statuses.remove(effect.name)
 
 
-func CalculateExpirations():
+func calculate_expirations():
 	for effect in statuses.values():
-		effect.Duration -= 1
-		if effect.IsExpired():
-			effectsToRemove.add(effect)
+		effect.duration -= 1
+		if effect.is_expired():
+			effectsToRemove.append(effect)
 
 	for effect in effectsToRemove:
-		statuses.remove(effect.Name)
+		statuses.erase(effect.name)
 	
 	var output = effectsToRemove
 	effectsToRemove = []
 	return output
 
-func IsFlinching():
+func is_flinching():
 	return statuses.has(FLINCHING_KEY)
 
-func IsDissonant():
+func is_dissonant():
 	return statuses.has(DISSONANT_KEY)
 
-func IsBlocking():
+func is_blocking():
 	if blocking != null:
 		effectsToRemove.add(blocking)
 		blocking = null
 		return true
 	return false
 
-func InStasis():
+func in_stasis():
 	if stasis != null:
 		effectsToRemove.add(stasis)
 		stasis = null
@@ -165,30 +165,19 @@ func InStasis():
 	
 	return false
 
-func IsPhobic(element, mod):
-	var effect = statuses.get(PHOBIC_KEY)
-	if effect != null:
-		mod = effect
-		return effect.Element.Name == element.Name
-	
-	mod = null
-	return false
+func is_phobic(element):
+	return statuses.get(PHOBIC_KEY)
 
-func IsPhilic(element, mod):
-	var effect = statuses.get(PHOBIC_KEY)
-	if effect != null:
-		mod = effect
-		return effect.Element.Name == element.Name
-	mod = null
-	return false
+func is_philic(element):
+	return statuses.get(PHILIC_KEY)
 
-func List():
+func list():
 	var output = []
 	if blocking != null:
-		output.add(blocking)
+		output.append(blocking)
 	
 	if stasis != null:
-		output.add(stasis)
+		output.append(stasis)
 	for effect in statuses.values():
-		output.add(effect)
+		output.append(effect)
 	return output

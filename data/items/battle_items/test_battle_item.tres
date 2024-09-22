@@ -1,12 +1,21 @@
-[gd_resource type="Resource" script_class="BattleItem" load_steps=2 format=3 uid="uid://b53shu5ega81j"]
+[gd_resource type="Resource" script_class="BattleItem" load_steps=4 format=3 uid="uid://b53shu5ega81j"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="1_cha5k"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="1_wpsi0"]
+
+[sub_resource type="Resource" id="Resource_5ne4w"]
+script = ExtResource("1_wpsi0")
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = []
 
 [resource]
 script = ExtResource("1_cha5k")
-IsConsumable = true
-Name = "Battle Item Test"
-Priority = 0
-Range = 0
-Target = 3
-Details = ""
+effects = [null]
+name = "Hit"
+element = SubResource("Resource_5ne4w")
+priority = 0
+attack_range = 0
+target = 3
+details = ""

@@ -3,8 +3,8 @@ extends AttackEffect
 class_name InstantHealthChange 
 
 # override
-func ApplyEffect(user, target=null, action=null):
-	var health = target.Hp * Strength
-	target.ApplyDamage(-health, false)
-	var verb =  "lost"  if Strength < 0  else  "recovered"
-	return "%s %s %d hp!" % [ user.ActorName, verb, health ]
+func apply_effect(user, target=null, action=null, duplicated_effect=null):
+	var health = target.hp * strength
+	target.apply_damage(-health, false)
+	var verb =  "lost"  if strength < 0  else  "recovered"
+	return "%s %s %d hp!" % [ user.name, verb, health ]

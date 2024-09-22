@@ -6,9 +6,9 @@ class_name StatusEffectRequirement
 var effect: StatusEffect
 
 # override
-func Check(actor):
+func check(actor):
 	if(actor is BaseCompanion):
-		actor = actor.BattleActor
+		actor = actor.battle_actor
 	if(actor is Player):
-		actor = actor.BattleActor
-	return actor != null and actor.HasStatusEffect(effect)
+		actor = actor.battle_actor
+	return actor != null and actor.has_status_effect(effect)

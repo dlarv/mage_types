@@ -24,15 +24,15 @@ func _ready():
 		open_file.emit("res://data/battle_system/battle_actions/attacks"))
 
 	attack_element_input.item_selected.connect(func(index):
-		attack.Element = ElementManager.Elements[index])
+		attack.element = ElementManager.elements[index])
 	attack_name_input.text_changed.connect(func(text):
-		attack.Name = text)
+		attack.name = text)
 	# power_input.value_changed.connect(func(val):
 	# 	attack.Power = val)
 	range_input.item_selected.connect(func(index):
-		attack.Range = index)
+		attack.attack_range = index)
 	target_input.item_selected.connect(func(index):
-		attack.Target = index)
+		attack.target = index)
 
 func _on_create_button_pressed():
 	var item = AttackListItem.instantiate()
@@ -63,11 +63,11 @@ func clear_scroller():
 
 func set_attack(attack):
 	self.attack = attack
-	attack_element_input.select(ElementManager.GetIndexFromName(attack.Element.Name))
-	attack_name_input.text = attack.Name
+	attack_element_input.select(ElementManager.get_index_from_name(attack.element.name))
+	attack_name_input.text = attack.name
 	# power_input.value = attack.Power
-	range_input.select(attack.Range)
-	target_input.select(attack.Target)
+	range_input.select(attack.attack_range)
+	target_input.select(attack.target)
 
 func add_attacks(attacks):
 	self.attacks = attacks

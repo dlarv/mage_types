@@ -2,10 +2,10 @@ extends PanelContainer
 class_name PlayerControls 
 
 
-signal ActionSelected(index, action)
-signal EndTurn(tryRunAway)
-signal ShowInfo(action)
-signal ActiveActorChanged(index)
+signal action_selected(index, action)
+signal end_turn(tryRunAway)
+signal show_info(action)
+signal active_actor_changed(index)
 
 @export
 var threeStateButton: PackedScene 
@@ -42,46 +42,47 @@ func _ready() -> void:
 	finalIndex = attacksPanel.get_child_count() - 1
 	calc_character_selector_state(attacksPanel.current_tab)
 
-func Setup(allies, items, enemies) -> void:
+func setup(allies, items, enemies) -> void:
 	skipIndices = []
 	self.allies = allies
 
 	for i in range(len(allies)):
 		var ally = allies[i]
-		PopulateNewAttackMenu(ally, i)
+		populate_new_attack_menu(ally, i)
 		skipIndices.append(false)
 		# Variable has to be set out here, otherwise it'll be passed by reference.
 		var index = i
-		ally.WasDefeated.connect(func():
+		ally.was_just_defeated.connect(func():
 			skipIndices[index] = true
 			# Recalc beginIndex and finalIndex.
-			finalIndex = skipIndices.FindLastIndex(func(val): not val)
-			beginIndex = skipIndices.FindIndex(func(val): not val))
+			finalIndex = skipIndices.rfind(false)
+			beginIndex = skipIndices.find(false)
+		)
 
 		attacksPanel.tab_selected.connect(func(tabIndex):
 			if(tabIndex != index): return
 			# Disable/Enable attacks based on mana.
-			for j in range(len(ally.Attacks)):
-				var attack = ally.Attacks[j]
+			for j in range(len(ally.attacks)):
+				var attack = ally.attacks[j]
 				var button = (attacksPanel.get_child(index).get_child(0).get_child(j))
-				button.IsLocked = !attack.IsActionAvailable(ally)
+				button.is_locked = !attack.is_action_available(ally)
 
 			# Disable/Enable items based on reqs.
 			for j in range(len(items)):
-				var item = items[i]
+				var item = items[j]
 				var button = (itemsScroller.get_child(j))
-				button.IsLocked = !item.IsActionAvailable(ally)
+				button.is_locked = !item.is_action_available(ally)
 			)
 
-	PopulateItemsMenu(items)
-	PopulateCharactersMenu(allies, enemies)
+	populate_items_menu(items)
+	populate_characters_menu(allies, enemies)
 
 	finalIndex = attacksPanel.get_child_count() - 1
 	# Doing this activates the "check if available" method.
 	attacksPanel.current_tab = attacksPanel.current_tab
 	calc_character_selector_state(attacksPanel.current_tab)
 
-func PopulateNewAttackMenu(actor: BattleActor, index: int) -> void:
+func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	var scroller = ScrollContainer.new()
 	var vbox = VBoxContainer.new()
 	var group = ButtonGroup.new()
@@ -90,33 +91,33 @@ func PopulateNewAttackMenu(actor: BattleActor, index: int) -> void:
 	vbox.size_flags_vertical = VBoxContainer.SIZE_EXPAND_FILL
 	scroller.add_child(vbox)
 
-	for attack in actor.Attacks:
+	for attack in actor.attacks:
 		var button = threeStateButton.instantiate()
 		button.button_group = group
-		button.text = attack.Name
-		button.StateChanged.connect(func(state):
-			OnActionSelected(state, index, attack)) 
+		button.text = attack.name
+		button.state_changed.connect(func(state):
+			on_action_selected(state, index, attack)) 
 
-		EndTurn.connect(func(a): button.Reset())
+		end_turn.connect(func(a): button.reset())
 		vbox.add_child(button)
 
 	attacksPanel.add_child(scroller)
 
-func PopulateItemsMenu(items) -> void:
+func populate_items_menu(items) -> void:
 	var group = ButtonGroup.new()
 
 	for item in items:
 		var button = threeStateButton.instantiate()
-		button.ButtonGroup = group
-		button.Text = item.Name
+		button.button_group = group
+		button.text = item.name
 
-		button.StateChanged.connect(func(state): OnActionSelected(state, attacksPanel.current_tab, item))
+		button.state_changed.connect(func(state): on_action_selected(state, attacksPanel.current_tab, item))
 
-		EndTurn.connect(func(): button.Reset())
+		end_turn.connect(func(val): button.reset())
 		itemsScroller.add_child(button)
 
 
-func PopulateCharactersMenu(allies, enemies) -> void:
+func populate_characters_menu(allies, enemies) -> void:
 	var group = ButtonGroup.new()
 
 	var label = Label.new()
@@ -128,8 +129,8 @@ func PopulateCharactersMenu(allies, enemies) -> void:
 		button.button_group = group
 		button.size_flags_horizontal = Button.SIZE_EXPAND_FILL
 		button.size_flags_vertical = Button.SIZE_EXPAND_FILL
-		button.text = ally.ActorName
-		button.pressed.connect(func(): ShowInfo.emit(ally))
+		button.text = ally.name
+		button.pressed.connect(func(): show_info.emit(ally))
 
 		characterScroller.add_child(button)
 
@@ -142,12 +143,12 @@ func PopulateCharactersMenu(allies, enemies) -> void:
 		button.button_group = group
 		button.size_flags_horizontal = Button.SIZE_EXPAND_FILL
 		button.size_flags_vertical = Button.SIZE_EXPAND_FILL
-		button.text = enemy.ActorName
-		button.pressed.connect(func(): ShowInfo.emit(enemy))
+		button.text = enemy.name
+		button.pressed.connect(func(): show_info.emit(enemy))
 		characterScroller.add_child(button)
 
 
-func PrevCharacter() -> void:
+func prev_character() -> void:
 	controlPanel.current_tab = 0
 	var index = attacksPanel.current_tab
 
@@ -160,10 +161,10 @@ func PrevCharacter() -> void:
 
 	attacksPanel.current_tab = index
 
-	ActiveActorChanged.emit(index)
+	active_actor_changed.emit(index)
 	calc_character_selector_state(index)
 
-func NextCharacter() -> void:
+func next_character() -> void:
 	controlPanel.current_tab = 0
 
 	var index = attacksPanel.current_tab
@@ -177,22 +178,22 @@ func NextCharacter() -> void:
 
 	edgeIndex = max(index, edgeIndex)
 
-	ActiveActorChanged.emit(index)
+	active_actor_changed.emit(index)
 	calc_character_selector_state(index)
 
-func SetEnabled(enable: bool) -> void:
+func set_enabled(enable: bool) -> void:
 	blockingPanel.visible = !enable
 	if enable:
 		attacksPanel.current_tab = beginIndex
 		edgeIndex = beginIndex
 		calc_character_selector_state(beginIndex)
-		ActiveActorChanged.emit(beginIndex)
+		active_actor_changed.emit(beginIndex)
 
 
 func _on_end_turn_button_pressed() -> void:
 	controlPanel.current_tab = 0
 	allowEndTurn = false
-	EndTurn.emit(false)
+	end_turn.emit(false)
 
 func calc_character_selector_state(index: int) -> void:
 	prevButton.disabled = index == beginIndex
@@ -209,18 +210,15 @@ func _on_characters_button_pressed() -> void:
 	controlPanel.current_tab = 3
 
 func _on_run_button_pressed() -> void:
-	EndTurn.emit(true)
+	end_turn.emit(true)
 
 func _on_back_button_pressed() -> void:
 	controlPanel.current_tab = 0
 
-func OnActionSelected(state: int, index: int, action: BattleAction) -> void:
-	if state == ThreeStateButton.FIRST_SELECTED_STATE:
-		ShowInfo.emit(action)
-
+func on_action_selected(state: int, index: int, action: BattleAction) -> void:
 	match state:
 		ThreeStateButton.FIRST_SELECTED_STATE:
-			ShowInfo.emit(action)
+			show_info.emit(action)
 		ThreeStateButton.SECOND_SELECTED_STATE:
-			ActionSelected.emit(index, action)
+			action_selected.emit(index, action)
 			allowEndTurn = edgeIndex >= finalIndex

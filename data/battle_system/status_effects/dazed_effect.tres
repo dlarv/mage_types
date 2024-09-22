@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_0xufj")
-Duration = 3
-Icon = ExtResource("1_ja2h8")
-Description = ""
-Name = "Dazed"
-Chance = 0.5
-Strength = 0.0
-Message = "{target} was dazed!"
+duration = 3
+icon = ExtResource("1_ja2h8")
+description = ""
+name = "Dazed"
+chance = 1.0
+strength = 0.0
+message = ""

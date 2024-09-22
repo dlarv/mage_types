@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_m4jyu")
-Duration = 3
-Description = ""
-Name = "Ranged Attack"
-Chance = 100.0
-Strength = 1.0
-Message = ""
+duration = 3
+description = ""
+name = "Ranged Attack"
+chance = 1.0
+strength = 0.3
+message = "{target} ranged attack was boosted!"

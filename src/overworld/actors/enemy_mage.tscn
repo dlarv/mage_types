@@ -11,12 +11,11 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqelp"]
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="EnemyMage" type="RigidBody3D" node_paths=PackedStringArray("Ai") groups=["enemy"]]
+[node name="EnemyMage" type="RigidBody3D" groups=["enemy"]]
 contact_monitor = true
 max_contacts_reported = 50
 script = ExtResource("1_twpmh")
-Ai = NodePath("AI")
-BattleActor = ExtResource("2_qsane")
+battle_actor = ExtResource("2_qsane")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

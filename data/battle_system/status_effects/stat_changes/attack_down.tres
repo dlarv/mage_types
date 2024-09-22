@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_o4rdj")
-Duration = 3
-Description = ""
-Name = "Attack"
-Chance = 1.0
-Strength = -1.0
-Message = ""
+duration = 3
+description = ""
+name = "Attack"
+chance = 1.0
+strength = -0.3
+message = "{target} melee attack was lowered!
+{target} ranged attack was lowered!"

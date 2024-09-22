@@ -67,13 +67,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14, -1, -2.014)
 [node name="Alice" parent="World/Overworld/PlayerParty" index="1"]
 axis_lock_angular_x = false
 axis_lock_angular_z = false
-DistanceToPlayer = 1.0
+speed = 20.0
+distance_to_player = 1.0
 
 [node name="Alex" parent="World/Overworld/PlayerParty" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7581, 0.190724, -1.86462)
 axis_lock_angular_x = false
 axis_lock_angular_z = false
-DistanceToPlayer = 1.0
+distance_to_player = 1.0
 
 [node name="EnemyMage" parent="World/Overworld" instance=ExtResource("2_1w1kl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.78956)
@@ -87,6 +88,6 @@ axis_lock_angular_z = true
 visible = false
 world = NodePath("../../Overworld")
 
-[connection signal="BattleStarted" from="World/Overworld/PlayerParty/Player" to="." method="_on_player_battle_started"]
+[connection signal="battle_started" from="World/Overworld/PlayerParty/Player" to="." method="_on_player_battle_started"]
 
 [editable path="World/Overworld/PlayerParty"]

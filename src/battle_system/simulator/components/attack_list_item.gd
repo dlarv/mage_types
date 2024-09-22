@@ -9,11 +9,11 @@ extends Control
 func create(attack):
 	# If the parameter is given a type (i.e. attack: Attack),
 	# then the following line throws the "Native class ElementalType not found" error.
-	type_display.color = attack.Element.MainColor
-	name_display.text = attack.Name
+	type_display.color = attack.element.main_color
+	name_display.text = attack.name
 	# power_display.text = str(attack.Power)
 	
-	if attack.Range == 0:
+	if attack.attack_range == 0:
 		range_display.text = "M"
 	else:
 		range_display.text = "R"

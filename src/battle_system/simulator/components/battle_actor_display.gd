@@ -11,17 +11,17 @@ extends Control
 
 func display(character):
 	clear()
-	name_display.text = character.ActorName
-	element1_display.color = character.Element1.MainColor
-	element2_display.color = character.Element2.MainColor
+	name_display.text = character.name
+	element1_display.color = character.element1.main_color
+	element2_display.color = character.element2.main_color
 	
-	for attack in character.Attacks:
+	for attack in character.attacks:
 		var item = AttackListItem.instantiate()
 		var button = item.create(attack)
 		button.hide()
 		attacks_scroller.add_child(item)
 
-	for key in character.GetStats().keys():
+	for key in character.get_stats().keys():
 		var hbox = HBoxContainer.new()
 		hbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		var name_label = Label.new()
@@ -29,7 +29,7 @@ func display(character):
 		hbox.add_child(name_label)
 		
 		var value_label = Label.new()
-		value_label.text = str(character.GetStats()[key])
+		value_label.text = str(character.get_stats()[key])
 		hbox.add_child(value_label)
 		stats_vbox.add_child(hbox)
 

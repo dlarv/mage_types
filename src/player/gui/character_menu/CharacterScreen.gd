@@ -3,15 +3,15 @@ extends Control
 class_name CharacterScreen 
 
 @export
-var Actor: BattleActor:
+var actor: BattleActor:
 	get:
 		return _actor; 
 	set(value):
-		SetActor(value); 
+		set_actor(value); 
 
 var _actor;
 @export
-var AllowStatEditing : bool:
+var allow_stat_editing : bool:
 	get:
 		return _allowStatEditing;
 	set(value):
@@ -33,32 +33,32 @@ var biasIcon: ElementIcon ;
 @export
 var statItemsScroller: VBoxContainer ;
 
-func _Ready() -> void:
-	SetActor(Actor);
+func _ready() -> void:
+	set_actor(actor);
 	if not Engine.is_editor_hint():
-		Actor.ElementChanged.connect(func(id, element):
-			if id == 0: elementIcon1.Element = element
-			else: elementIcon2.Element = element)
+		actor.element_changed.connect(func(id, element):
+			if id == 0: elementIcon1.element = element
+			else: elementIcon2.element = element)
 
-func SetActor(actor: BattleActor) -> void:
+func set_actor(actor: BattleActor) -> void:
 	if actor == null: return;
 	_actor = actor;
 
 	if statItemsScroller != null: 
 		for item in statItemsScroller.get_children():
-			item.ChangeValue(actor);
+			item.change_value(actor);
 
 	if nameLabel != null:
-		nameLabel.text = actor.ActorName;
+		nameLabel.text = actor.name;
 	
 	if elementIcon1 != null:
-		elementIcon1.Element = actor.Element1;
+		elementIcon1.element = actor.element1;
 	
 	if elementIcon2 != null:
-		elementIcon2.Element = actor.Element2;
+		elementIcon2.element = actor.element2;
 	
 	if biasIcon != null:
-		biasIcon.Element = actor.ElementalBias;
+		biasIcon.element = actor.elemental_bias;
 
-func OnStatModified(name: String, amount: int) -> void:
-	Actor.SetStat(name, amount);
+func on_stat_modified(name: String, amount: int) -> void:
+	actor.set_stat(name, amount);

@@ -30,4 +30,4 @@ func set_elemental_tint(element):
 	if element is Color:
 		self.modulate = element
 	else:
-		self.modulate = element.MainColor
+		self.modulate = element.main_color

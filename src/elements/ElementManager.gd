@@ -15,20 +15,18 @@ var Cyan : ElementalType
 
 @export
 # ElementalType[]
-var Elements: Array[ElementalType] 
+var elements: Array[ElementalType] = [ ]
 @export
 # AttackEffect[]
-var BuffEffects = []
+var buff_effects = []
 @export
 # AttackEffect[]
-var DebuffEffects = []
+var debuff_effects = []
 
 # Dict<string, Node>
 var matchups = {}
 
-func _ready()-> void:
-	pass
-func Test()-> void:
+func test()-> void:
 	var actualResults = [
 		# Red
 		[ null, Yellow, Magenta, Orange, null, null, null, Magenta ],
@@ -51,18 +49,21 @@ func Test()-> void:
 	var total = true
 	for i in range(8):
 		for j in range(8):
-			var res = GetMatchup(headers[i], headers[j]) == actualResults[i][j]
-			if(!res): push_warning("%s + %s != %s" % [headers[i], headers[j], actualResults[i][j] ])
-			total &= res
+			var res = get_matchup(headers[i], headers[j])
+			if(res != actualResults[i][j]): 
+				push_warning("%s + %s != %s, == %s" % [headers[i].name, headers[j].name, actualResults[i][j].name, res.name ])
+
+			total = total and res
+
 	print("Final result: " + str(total))
 
 func _enter_tree()-> void:
-	ForceLoad()
-	LoadFromDefaultCSV()
+	force_load()
+	load_from_default_csv()
 
-func ForceLoad()-> void:
-	for element in Elements:
-		match element.Name.to_lower():
+func force_load()-> void:
+	for element in elements:
+		match element.name.to_lower():
 			"blue": 
 				Blue = element
 			"purple": 
@@ -83,139 +84,139 @@ func ForceLoad()-> void:
 
 	matchups = {}
 	var blue = ElementalNode.new(Blue)
-	matchups[Blue.Name] = blue
+	matchups[Blue.name] = blue
 	var purple = ElementalNode.new(Purple)
-	matchups[Purple.Name] = purple
+	matchups[Purple.name] = purple
 	var magenta = ElementalNode.new(Magenta)
-	matchups[Magenta.Name] = magenta
+	matchups[Magenta.name] = magenta
 	var red = ElementalNode.new(Red)
-	matchups[Red.Name] = red
+	matchups[Red.name] = red
 	var orange = ElementalNode.new(Orange)
-	matchups[Orange.Name] = orange
+	matchups[Orange.name] = orange
 	var yellow= ElementalNode.new(Yellow)
-	matchups[Yellow.Name] = yellow
+	matchups[Yellow.name] = yellow
 	var green = ElementalNode.new(Green)
-	matchups[Green.Name] = green
+	matchups[Green.name] = green
 	var cyan = ElementalNode.new(Cyan)
-	matchups[Cyan.Name] = cyan
+	matchups[Cyan.name] = cyan
 
-	blue.AddConnection(Red, magenta)
-	blue.AddConnection(Green, cyan)
-	blue.AddConnection(Magenta, purple)
-	blue.AddConnection(Orange, purple)
+	blue.add_connection(Red, magenta)
+	blue.add_connection(Green, cyan)
+	blue.add_connection(Magenta, purple)
+	blue.add_connection(Orange, purple)
 
-	purple.AddConnection(Red, magenta)
-	purple.AddConnection(Green, cyan)
-	purple.AddConnection(Cyan, blue)
-	purple.AddConnection(Magenta, blue)
-	purple.AddConnection(Orange, magenta)
+	purple.add_connection(Red, magenta)
+	purple.add_connection(Green, cyan)
+	purple.add_connection(Cyan, blue)
+	purple.add_connection(Magenta, blue)
+	purple.add_connection(Orange, magenta)
 
-	magenta.AddConnection(Blue, purple)
-	magenta.AddConnection(Yellow, red)
-	magenta.AddConnection(Cyan, blue)
-	magenta.AddConnection(Orange, red)
-	magenta.AddConnection(Purple, blue)
+	magenta.add_connection(Blue, purple)
+	magenta.add_connection(Yellow, red)
+	magenta.add_connection(Cyan, blue)
+	magenta.add_connection(Orange, red)
+	magenta.add_connection(Purple, blue)
 
-	red.AddConnection(Green, yellow)
-	red.AddConnection(Blue, magenta)
-	red.AddConnection(Yellow, orange)
-	red.AddConnection(Purple, magenta)
+	red.add_connection(Green, yellow)
+	red.add_connection(Blue, magenta)
+	red.add_connection(Yellow, orange)
+	red.add_connection(Purple, magenta)
 
-	orange.AddConnection(Green, yellow)
-	orange.AddConnection(Blue, purple)
-	orange.AddConnection(Yellow, red)
-	orange.AddConnection(Magenta, red)
-	orange.AddConnection(Purple, magenta)
+	orange.add_connection(Green, yellow)
+	orange.add_connection(Blue, purple)
+	orange.add_connection(Yellow, red)
+	orange.add_connection(Magenta, red)
+	orange.add_connection(Purple, magenta)
 
-	yellow.AddConnection(Red, orange)
-	yellow.AddConnection(Cyan, green)
-	yellow.AddConnection(Magenta, red)
-	yellow.AddConnection(Orange, red)
+	yellow.add_connection(Red, orange)
+	yellow.add_connection(Cyan, green)
+	yellow.add_connection(Magenta, red)
+	yellow.add_connection(Orange, red)
 
-	green.AddConnection(Red, yellow)
-	green.AddConnection(Blue, cyan)
-	green.AddConnection(Orange, yellow)
-	green.AddConnection(Purple, cyan)
+	green.add_connection(Red, yellow)
+	green.add_connection(Blue, cyan)
+	green.add_connection(Orange, yellow)
+	green.add_connection(Purple, cyan)
 
-	cyan.AddConnection(Yellow, green)
-	cyan.AddConnection(Magenta, blue)
-	cyan.AddConnection(Purple, blue)
+	cyan.add_connection(Yellow, green)
+	cyan.add_connection(Magenta, blue)
+	cyan.add_connection(Purple, blue)
 
-func GetElementFromName(name: String) -> ElementalType:
+func get_element_from_name(name: String) -> ElementalType:
 	# Ensure basic typos won't interfere.
 	name = name.to_lower().strip_edges()
-	for el in Elements:
-		if el.Name.to_lower() == name:
+	for el in elements:
+		if el.name.to_lower() == name:
 			return el
 	return null
 
-func GetIndexFromName(name: String) -> int:
+func get_index_from_name(name: String) -> int:
 	name = name.to_lower().strip_edges()
-	for i in range(len(Elements)):
-		if Elements[i].Name.to_lower() == name:
+	for i in range(len(elements)):
+		if elements[i].name.to_lower() == name:
 			return i
 	return -1
 
-func GetMatchup(element1: ElementalType, element2: ElementalType) -> ElementalType:
-	if(element1.Name == "Blank" || element2.Name == "Blank"): return null
+func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalType:
+	if(element1.name == "Blank" || element2.name == "Blank"): return null
 
-	var node = matchups[element1.Name]
-	var res = node.GetResult(element2)
+	var node = matchups[element1.name]
+	var res = node.get_result(element2)
 	return res
 
-func GetSideEffect(a: ElementalType, b: ElementalType):
+func get_side_effect(a: ElementalType, b: ElementalType):
 	if(a == Blank || b == Blank): return [null, null]
-	return matchups[a.Name].GetEffect(b)
+	return matchups[a.name].get_effect(b)
 
-func GetAllMatchups():
+func get_all_matchups():
 	var output = []
 	for node in matchups.values():
-		for el in node.Edges.keys():
-			var edge = node.Edges[el]
+		for el in node.edges.keys():
+			var edge = node.edges[el]
 			var item = []
-			item.append(node.Element)
+			item.append(node.element)
 			item.append(el)
-			item.append(edge.Result.Element)
-			item.append(SideEffectToIndex(edge.BuffEffect, true))
-			item.append(SideEffectToIndex(edge.DebuffEffect, false))
+			item.append(edge.result.element)
+			item.append(side_effect_to_index(edge.buff_effect, true))
+			item.append(side_effect_to_index(edge.debuff_effect, false))
 
 			output.append(item)
 	return output
 
-func SetSideEffectFor(a: ElementalType, b: ElementalType, index: int, isBuff: bool) -> void:
+func set_side_effect_for(a: ElementalType, b: ElementalType, index: int, isBuff: bool) -> void:
 	var effect
 	if index == -1:
 		effect = null
 	else:
-		effect = BuffEffects[index] if isBuff else DebuffEffects[index]
-	matchups[a.Name].SetEffect(b, effect, isBuff)
+		effect = buff_effects[index] if isBuff else debuff_effects[index]
+	matchups[a.name].set_effect(b, effect, isBuff)
 
-	var effects = matchups[a.Name].GetEffect(b)
-	var msg1 = effects[0].Name if effects[0] != null else "null"
-	var msg2 = effects[1].Name if effects[1] != null else "null"
+	var effects = matchups[a.name].get_effect(b)
+	var msg1 = effects[0].name if effects[0] != null else "null"
+	var msg2 = effects[1].name if effects[1] != null else "null"
 
-	print("Set side effect: %s & %s = %s, %s" % [a.Name, b.Name, msg1, msg2])
+	print("Set side effect: %s & %s = %s, %s" % [a.name, b.name, msg1, msg2])
 
-func SideEffectToIndex(effect: AttackEffect, isBuff: bool) -> int:
+func side_effect_to_index(effect: AttackEffect, isBuff: bool) -> int:
 	if(effect == null): return -1
-	var effects = BuffEffects if isBuff else DebuffEffects
+	var effects = buff_effects if isBuff else debuff_effects
 
 	for i in range(len(effects)):
 		if effect == effects[i]:
 			return i
 	return -1
 
-func SaveAsCSV()-> String:
+func save_as_csv()-> String:
 	var output= []
 	for node in matchups.values():
-		for val in node.Edges:
+		for val in node.edges:
 			var el = val[0]
 			var edge = val[1]
-			var line = "%s,%s,%s,%s,%s" % [ node.Element.Name, el.Name, edge.Result.Element.Name, str(SideEffectToIndex(edge.BuffEffect, true)), str(SideEffectToIndex(edge.DebuffEffect, false)) ]
+			var line = "%s,%s,%s,%s,%s" % [ node.element.name, el.name, edge.result.element.name, str(side_effect_to_index(edge.buff_effect, true)), str(side_effect_to_index(edge.debuff_effect, false)) ]
 			output.append(line)
 	return "\n".join(output)
 
-func LoadFromCSV(data: String) -> void:
+func load_from_csv(data: String) -> void:
 	var lines = data.split("\n")
 
 	var i = -1
@@ -223,60 +224,57 @@ func LoadFromCSV(data: String) -> void:
 		i += 1
 		var values = line.split(",")
 		if(len(values) == 1): continue
-		var a = GetElementFromName(values[0]) 
-		var b = GetElementFromName(values[1])
+		var a = get_element_from_name(values[0]) 
+		var b = get_element_from_name(values[1])
 
 		var buffIndex = values[3].to_int()
-		SetSideEffectFor(a, b, buffIndex, true)
+		set_side_effect_for(a, b, buffIndex, true)
 
 		var debuffIndex = values[4].to_int()
-		SetSideEffectFor(a, b, debuffIndex, false)
+		set_side_effect_for(a, b, debuffIndex, false)
 
-func LoadFromDefaultCSV()-> void:
+func load_from_default_csv()-> void:
 	var file = FileAccess.open(DEFAULT_CSV_PATH, FileAccess.ModeFlags.READ)
 	var data = file.get_as_text()
-	LoadFromCSV(data)
+	load_from_csv(data)
 
 class ElementalNode:
-	var Element : ElementalType = ElementManager.Blank
+	var element : ElementalType = ElementManager.Blank
 	# Dict<ElementalType, Edge>
-	var Edges = {}
+	var edges = {}
 
 	func _init(element: ElementalType):
-		Element = element
+		self.element = element
 	
-	func AddConnection(element: ElementalType, result: ElementalNode) -> void:
-		Edges[element] = Edge.new(null, null, result)
-	# 
-	# func AddConnection(element: ElementalType, buffEffect: AttackEffect, debuffEffect: AttackEffect, result: Node) -> void:
-	# 	Edges.Add(element, new Edge(buffEffect, debuffEffect, result))
-	# }
-	func GetResult(other: ElementalType) -> ElementalType:
-		var edge = Edges.get(other, null)
+	func add_connection(element: ElementalType, result: ElementalNode) -> void:
+		edges[element] = Edge.new(null, null, result)
+
+	func get_result(other: ElementalType) -> ElementalType:
+		var edge = edges.get(other, null)
 		if(edge == null): return null
-		return edge.Result.Element
+		return edge.result.element
 	
-	func GetEffect(other: ElementalType):
-		var edge = Edges.get(other, null)
+	func get_effect(other: ElementalType):
+		var edge = edges.get(other, null)
 		if(edge == null): return [null, null]
-		return [edge.BuffEffect, edge.DebuffEffect]
+		return [edge.buff_effect, edge.debuff_effect]
 	
-	func SetEffect(other: ElementalType, effect: AttackEffect, isBuff: bool) -> void:
-		if(isBuff): Edges[other].BuffEffect = effect
-		else: Edges[other].DebuffEffect = effect
+	func set_effect(other: ElementalType, effect: AttackEffect, isBuff: bool) -> void:
+		if(isBuff): edges[other].buff_effect = effect
+		else: edges[other].debuff_effect = effect
 
 	## Find the edge connecting this and end, then return its effect.
-	func FindEffectFor(end: ElementalType) -> AttackEffect:
-		for edge in Edges.values():
-			if(edge.Result.Element == end): return edge.BuffEffect
+	func find_effect_for(end: ElementalType) -> AttackEffect:
+		for edge in edges.values():
+			if(edge.result.element == end): return edge.buff_effect
 		return null
 
 class Edge:
-	var BuffEffect : AttackEffect	
-	var DebuffEffect : AttackEffect 
-	var Result : ElementalNode 
+	var buff_effect: AttackEffect	
+	var debuff_effect: AttackEffect 
+	var result: ElementalNode 
 
 	func _init(buffEffect: AttackEffect, debuffEffect: AttackEffect, end: ElementalNode):
-		BuffEffect = buffEffect
-		DebuffEffect = debuffEffect
-		Result = end
+		self.buff_effect = buffEffect
+		self.debuff_effect = debuffEffect
+		result = end

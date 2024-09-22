@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://ienicwu4kilx"]
+[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://ienicwu4kilx"]
 
-[ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="1_vp5dc"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_0bq8a"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_4vifu"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_f4cci"]
@@ -9,32 +8,33 @@
 
 [sub_resource type="Resource" id="Resource_6vscu"]
 script = ExtResource("3_f4cci")
-Name = "Magenta"
-MainColor = Color(1, 0, 1, 1)
-ColorPalette = PackedColorArray()
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = []
 
 [sub_resource type="Resource" id="Resource_crw6m"]
 script = ExtResource("3_4vifu")
-Element = SubResource("Resource_6vscu")
-ElementId = 1
-Name = ""
-Chance = 1.0
-Strength = 0.0
-Message = ""
+element = SubResource("Resource_6vscu")
+element_id = 1
+name = ""
+chance = 1.0
+strength = 0.0
+message = ""
 
 [sub_resource type="Resource" id="Resource_32ato"]
 script = ExtResource("4_1oq5t")
-AttackEffect = SubResource("Resource_crw6m")
-Chance = 1.0
+attack_effect = SubResource("Resource_crw6m")
+chance = 1.0
 
 [resource]
 script = ExtResource("5_t7xpq")
-Effects = [SubResource("Resource_32ato")]
-Cost = 10
-Name = "Conduct Magenta"
+effects = Array[ExtResource("4_1oq5t")]([SubResource("Resource_32ato")])
+cost = 10
+name = "Conduct Magenta"
 animation = ExtResource("2_0bq8a")
-Element = ExtResource("1_vp5dc")
-Priority = 0
-Range = 0
-Target = 0
-Details = ""
+_element = "magenta"
+priority = 0
+attack_range = 0
+target = 0
+details = ""

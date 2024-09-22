@@ -1,19 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfpnrqolejh7g"]
+[gd_scene load_steps=9 format=3 uid="uid://bfpnrqolejh7g"]
 
 [ext_resource type="Script" path="res://src/player/party/BaseCompanion.gd" id="1_8lqxn"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_o4cem"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_srmh1"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_2i1sk"]
 
-[sub_resource type="Resource" id="Resource_oycku"]
+[sub_resource type="Resource" id="Resource_5ne4w"]
+script = ExtResource("3_2i1sk")
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = []
+
+[sub_resource type="Resource" id="Resource_p7f3b"]
 script = ExtResource("2_srmh1")
-ActorName = "Guy"
-Hp = 0
-MeleeAttack = 0
-RangedAttack = 0
-MeleeDefense = 0
-RangedDefense = 0
-Speed = 0
-Evasion = 0
-Attacks = null
+name = "Guy"
+hp = 100
+melee_attack = 100
+ranged_attack = 100
+melee_defense = 100
+ranged_defense = 100
+speed = 100
+evasion = 100
+mana = 100
+element1 = SubResource("Resource_5ne4w")
+element2 = SubResource("Resource_5ne4w")
+elemental_bias = SubResource("Resource_5ne4w")
+attacks = Array[ExtResource("2_o4cem")]([])
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kdhlv"]
 
@@ -23,9 +36,10 @@ Attacks = null
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_8lqxn")
-BattleActor = SubResource("Resource_oycku")
-Speed = 15.0
-DistanceToPlayer = 2.0
+battle_actor = SubResource("Resource_p7f3b")
+speed = 0.0
+distance_to_player = 0.0
+max_distance = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

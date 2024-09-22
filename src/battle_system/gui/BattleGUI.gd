@@ -1,15 +1,15 @@
 extends Node
 class_name BattleGUI
 
-signal ActionsSelected(actions)
-signal BattleEnded()
+signal actions_selected(actions)
+signal battle_ended()
 
 @export
 var messageBox: MessageBox 
 @export
-var AllyDisplayParent : TeamDisplay 
+var ally_display_parent : TeamDisplay 
 @export
-var EnemyDisplayParent : TeamDisplay 
+var enemy_display_parent : TeamDisplay 
 @export
 var playerControls: PlayerControls 
 
@@ -21,44 +21,37 @@ var messages = []
 # ActorAction[]
 var selectedActions = []
 
-func Setup(allies, items, enemies) -> void:
-	InitAllies(allies)
-	InitEnemies(enemies)
+func setup(allies, items, enemies) -> void:
+	init_allies(allies)
+	init_enemies(enemies)
 	# AddItemsToInventory(items)
-	playerControls.Setup(allies, items, enemies)
+	playerControls.setup(allies, items, enemies)
 
 
-func InitAllies(allies) -> void:
+func init_allies(allies) -> void:
 	self.allies = allies
 	selectedActions = []
 	selectedActions.resize(len(allies))
 
 	for actor in allies:
-		AllyDisplayParent.AddDisplay(actor)
+		ally_display_parent.add_display(actor)
 	
-	AllyDisplayParent.Highlight(0)
+	ally_display_parent.highlight(0)
 
 
-func InitEnemies(enemies) -> void:
+func init_enemies(enemies) -> void:
 	self.enemies = enemies
 	for actor in enemies:
-		EnemyDisplayParent.AddDisplay(actor)
+		enemy_display_parent.add_display(actor)
 	
 
-
-# private void AddItemsToInventory(BattleItem[] items) {
-# 
-#
-# public void PlayAnimation(PackedScene animation, Vector2 start, Vector2 end) {
-
-
-func DisplayMessage(msg: String) -> void:
+func display_message(msg: String) -> void:
 	messages.append(msg)
-	await messageBox.DisplayMessageBlocking(msg)
+	await messageBox.display_message_blocking(msg)
 
-func DisplayMessageNonBlocking(msg: String, obj=null) -> void:
+func display_message_non_blocking(msg: String, obj=null) -> void:
 	messages.append(msg)
-	messageBox.DisplayMessageNonBlocking(msg, obj)
+	messageBox.display_message_non_blocking(msg, obj)
 
 
 # public void AddStatusEffect(StatusEffect effect, BattleActor target) {
@@ -66,78 +59,77 @@ func DisplayMessageNonBlocking(msg: String, obj=null) -> void:
 # public void ChangeHealth(int newHealth, BattleActor target) {
 # public void RemoveActor(BattleActor target) {
 
-func GetActorDisplayPosition(teamIndex: int, actor=null) -> Vector2:
+func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
 	var teamDisplay
 	if teamIndex == 0:
-		teamDisplay = AllyDisplayParent
+		teamDisplay = ally_display_parent
 	else:
-		teamDisplay = EnemyDisplayParent
+		teamDisplay = enemy_display_parent
 	
 
 	if actor == null:
 		return teamDisplay.global_position
 	
 
-	var display = teamDisplay.GetDisplay(actor)
-	return display.get_position()
+	var display = teamDisplay.get_display(actor)
+	return display.get_target_position()
 
-func EnablePlayerControls(enable: bool) -> void:
-	playerControls.SetEnabled(enable)
+func enable_player_controls(enable: bool) -> void:
+	playerControls.set_enabled(enable)
 
 
 func _on_action_selected(index: int, action: BattleAction) -> void:
-	var targets = await SelectTargets(allies[index], action)
+	var targets = await select_targets(allies[index], action)
 
 	var actorAction = ActorAction.new(allies[index], action, targets, 0)
 	selectedActions[index] = actorAction
-	messageBox.ClearMessage()
-	playerControls.NextCharacter()
+	messageBox.clear_message()
+	playerControls.next_character()
 
-func SelectTargets(user: BattleActor, action:BattleAction):
+func select_targets(user: BattleActor, action:BattleAction):
 	var targets = null
 	var target
 
-	match action.Target:
-		BattleAction.TargetType.Self:
+	match action.target:
+		BattleAction.TargetType.SELF:
 			targets = [ user ]
 			# This pause is needed, otherwise the End turn button won't enable.
 			await get_tree().create_timer(.05).timeout
 			
-		BattleAction.TargetType.Ally:
-			if AllyDisplayParent.Length == 1:
-				targets = [ AllyDisplayParent.GetDisplay(0).Actor ]
+		BattleAction.TargetType.ALLY:
+			if ally_display_parent.length == 1:
+				targets = [ ally_display_parent.get_display(0).actor ]
 				# This pause is needed, otherwise the End turn button won't enable.
 				await get_tree().create_timer(.05).timeout
 			else:
-				AllyDisplayParent.SelectTarget(false)
-				target = await AllyDisplayParent.Selected
+				ally_display_parent.select_target(false)
+				target = await ally_display_parent.selected
 				targets = [ target ]
 			
-		BattleAction.TargetType.Allies:
+		BattleAction.TargetType.ALLIES:
 			targets = allies
 			
-		BattleAction.TargetType.Enemy:
-			if EnemyDisplayParent.Length == 1:
-				targets = [ EnemyDisplayParent.GetDisplay(0).Actor ]
+		BattleAction.TargetType.ENEMY:
+			if enemy_display_parent.length == 1:
+				targets = [ enemy_display_parent.get_display(0).actor ]
 				# This pause is needed, otherwise the End turn button won't enable.
 				await get_tree().create_timer(.05).timeout
 			else:
-				EnemyDisplayParent.SelectTarget(true)
-				target = await EnemyDisplayParent.Selected
+				enemy_display_parent.select_target(true)
+				target = await enemy_display_parent.selected
 				targets = [ target ]
-		BattleAction.TargetType.Enemies:
+		BattleAction.TargetType.ENEMIES:
 			targets = enemies
-			
 	return targets
 
 func _on_active_actor_changed(index: int) -> void:
-	AllyDisplayParent.Highlight(index)
+	ally_display_parent.highlight(index)
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
-		ActionsSelected.emit(null)
+		actions_selected.emit(null)
 	else:
-		ActionsSelected.emit(selectedActions)
+		actions_selected.emit(selectedActions)
 		selectedActions = []
 		selectedActions.resize(len(allies))
 	
@@ -145,11 +137,10 @@ func _on_turn_ended(tryRunningAway: bool) -> void:
 func _on_show_info(action) -> void:
 	var msg = "Empty"
 	if action is BattleAction:
-		msg = action.Name
+		msg = action.name
 	elif (action is BattleActor):
-		msg = action.ActorName
+		msg = action.name
 	print(msg)
 	
-	DisplayMessageNonBlocking("", action)
-
+	display_message_non_blocking("", action)
 

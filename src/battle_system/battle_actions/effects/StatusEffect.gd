@@ -3,29 +3,31 @@ extends AttackEffect
 class_name StatusEffect 
 
 @export
-var Duration : int 
+var duration : int 
 @export
-var Icon : PackedScene 
+var icon : PackedScene 
 ## The text displayed inside the MessageBox, etc.
 @export_multiline
-var Description : String 
+var description : String 
 
 # override
-func ApplyEffect(user, target=null, action=null):
-	if target == null or action == null: return Name
+func apply_effect(user, target=null, action=null, duplicated_effect=null):
+	if target == null or action == null: return name
+	if duplicated_effect != null:
+		target.add_status_effect(duplicated_effect)
+	else:
+		target.add_status_effect(duplicate())
+	return super.apply_effect(user, target, action)
 
-	target.AddStatusEffect(duplicate())
-	return super.ApplyEffect(user, target, action)
 
-
-func IsExpired():
-	return Duration == 0
-
-# virtual
-func Combine(a):
-	Duration += a.Duration
+func is_expired():
+	return duration == 0
 
 # virtual
-func InstantiateIcon():
-	if(Icon == null): return null
-	return Icon.instantiate()
+func combine(a):
+	duration += a.duration
+
+# virtual
+func instantiate_icon():
+	if(icon == null): return null
+	return icon.instantiate()

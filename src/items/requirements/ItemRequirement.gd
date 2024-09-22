@@ -3,7 +3,7 @@ extends Resource
 class_name ItemRequirement 
 
 @export
-var BattleRelevant : bool 
+var battle_relevant : bool 
 
 # abstract
-func Check(companion) -> bool: return true
+func check(companion) -> bool: return true

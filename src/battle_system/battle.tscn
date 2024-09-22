@@ -30,4 +30,4 @@ size_flags_vertical = 3
 
 [node name="MatchupManager" parent="CanvasLayer" instance=ExtResource("4_2ceg4")]
 
-[connection signal="ActionsSelected" from="BattleGUI" to="." method="OnPlayerActionsSelected"]
+[connection signal="actions_selected" from="BattleGUI" to="." method="on_player_actions_selected"]

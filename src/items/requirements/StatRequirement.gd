@@ -8,9 +8,9 @@ var stat: BattleActor.Stats
 var threshold: float 
 
 # override
-func Check(actor):
+func check(actor):
 	if(actor is BaseCompanion):
-		actor = actor.BattleActor
+		actor = actor.battle_actor
 	if(actor is Player):
-		actor = actor.BattleActor
-	return actor != null and actor.GetStat(stat) >= threshold
+		actor = actor.battle_actor
+	return actor != null and actor.get_stat(stat) >= threshold

@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_k80dg")
-Duration = 3
-Description = ""
-Name = "Evasion"
-Chance = 100.0
-Strength = 1.0
-Message = ""
+duration = 3
+description = ""
+name = "Evasion"
+chance = 1.0
+strength = 0.3
+message = "{target} evasion was boosted!"

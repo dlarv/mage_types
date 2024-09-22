@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_ll5eu")
-Duration = 1
-Icon = ExtResource("1_174ot")
-Description = ""
-Name = "Blocking"
-Chance = 1.0
-Strength = 0.0
-Message = "{target} is blocking!"
+duration = 1
+icon = ExtResource("1_174ot")
+description = ""
+name = "Blocking"
+chance = 1.0
+strength = 0.0
+message = ""

@@ -2,64 +2,63 @@
 extends Control
 class_name TeamDisplay 
 
-signal Selected(actor, i)
-signal StatusEffectIconPressed(effect)
+signal selected(actor, i)
+signal status_effect_icon_pressed(effect)
 
 @export
 var displayPrefab: PackedScene 
 @export
 var displayParent: HBoxContainer 
-var _shiftRight
 @export
-var ShiftRight : bool: 
-	get: return _shiftRight
+var shift_right: bool = false: 
+	get: return shift_right
 	set(value):
-		_shiftRight = value
+		shift_right = value
 		if (displayParent == null): return
 		if value:
 			displayParent.alignment = BoxContainer.ALIGNMENT_END
 		else:
 			displayParent.alignment = BoxContainer.ALIGNMENT_BEGIN
 
-var Length: int: 
+var length: int: 
 	get: return len(displays)
 
 # BattleActorDisplay[]
 var displays = []
 var highlightedActorIndex : int = 0
 
-func AddDisplay(actor: BattleActor) -> void:
+func add_display(actor: BattleActor) -> void:
 	var display = displayPrefab.instantiate()
-	display.Setup(actor)
+	display.setup(actor)
 	displays.append(display)
 	displayParent.add_child(display)
 
-	display.Selected.connect(func(a):
-		Selected.emit(a, 11)
+	display.selected.connect(func(a):
+		selected.emit(a, 11)
 		for d in displays:
-			d.DisableSelection())
+			d.disableSelection())
 
-	display.StatusEffectIconPressed.connect(func(effect): StatusEffectIconPressed.emit(effect))
+	display.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
 
-func GetDisplayFromIndex(index: int) -> BattleActorDisplay:
+func get_display_from_index(index: int) -> BattleActorDisplay:
 	if index < len(displays):
 		return displays[index]
 	return null
 
-func GetDisplay(actor) -> BattleActorDisplay:
-	if(actor is int): return GetDisplayFromIndex(actor)
+func get_display(actor) -> BattleActorDisplay:
+	if(actor is int): return get_display_from_index(actor)
 	for display in displays:
-		if display.Actor == actor:
+		if display.actor == actor:
 			return display
 	return null
 
-func SelectTarget(isAttack: bool) -> void:
+func select_target(isAttack: bool) -> void:
 	var highlight =  Color.RED if isAttack else Color.GREEN
 	for display in displays:
-		display.EnableSelection(highlight)
+		display.enable_selection(highlight)
 
 # Highlight the display of the currently active actor.
-func Highlight(index: int) -> void:
-	displays[highlightedActorIndex].SetHighlight(false)
+func highlight(index: int) -> void:
+	displays[highlightedActorIndex].set_highlight(false)
 	highlightedActorIndex = index
-	displays[highlightedActorIndex].SetHighlight(true)
+	displays[highlightedActorIndex].set_highlight(true)

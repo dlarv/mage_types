@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_d8bt7")
-Duration = 1
-Icon = ExtResource("1_pbt1f")
-Description = ""
-Name = "Flinching"
-Chance = 100.0
-Strength = 0.0
-Message = "{target} flinched!"
+duration = 1
+icon = ExtResource("1_pbt1f")
+description = ""
+name = "Flinched"
+chance = 1.0
+strength = 0.0
+message = ""

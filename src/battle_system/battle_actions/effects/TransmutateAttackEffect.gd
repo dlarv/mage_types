@@ -2,11 +2,22 @@
 extends AttackEffect 
 class_name TransmutateAttackEffect 
 
-@export
-var Element: ElementalType 
+@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
+var _element: String = "blank":
+	get:
+		return _element
+	set(value):
+		_element = value
+		element = ElementManager.get_element_from_name(value)
+var element: ElementalType:
+	set(value): 
+		if value == null:
+			value = ElementManager.Blank
+		element = value 
+
 @export_range(0, 1)
-var ElementId : int 
+var element_id : int 
 
 #override
-func ApplyEffect(user, target=null, action=null):
-	return target.SetElement(ElementId, Element)
+func apply_effect(user, target=null, action=null, duplicated_effect=null):
+	return target.set_element(element_id, element)

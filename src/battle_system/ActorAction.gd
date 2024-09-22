@@ -8,18 +8,18 @@ class_name ActorAction
 var actor: BattleActor ;
 var priority: int ;
 var action: BattleAction ;
-# BattleACtor[]
+# BattleActor[]
 var targets = []
-var teamIndex: int
+var team_index: int
 
 func _init(actor: BattleActor, action: BattleAction, targets, teamIndex: int) -> void:
 	self.actor = actor;
 	self.action = action;
-	self.priority = action.Priority;
+	self.priority = action.priority;
 	self.targets = targets;
-	self.teamIndex = teamIndex;
+	self.team_index = teamIndex;
 
-func CompareTo(other: ActorAction) -> int: 
+func compare_to(other: ActorAction) -> int: 
 	return 0
 	# if other == null:
 	# 	return 1;

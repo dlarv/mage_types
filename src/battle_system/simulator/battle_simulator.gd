@@ -7,8 +7,8 @@ func _on_character_builder_setup_finished(team1:Array, items:Array, team2:Array,
 	var battle = battle_scene.instantiate()
 
 	character_builder.hide()
-	battle.Start(team1, items, team2, ai)
+	battle.start(team1, items, team2, ai)
 	add_child(battle)
-	await battle.BattleEnded
+	await battle.battle_ended
 	battle.queue_free()
 	character_builder.show()

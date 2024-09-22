@@ -1,38 +1,30 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://bxe7rrdwy8tjq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bxe7rrdwy8tjq"]
 
-[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_52lot"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_gvwcg"]
+[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_j2g2h"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_gm17o"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_lpafr"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_o0a25"]
 
 [sub_resource type="Resource" id="Resource_qcqe1"]
 script = ExtResource("2_lpafr")
-Name = ""
-Chance = 1.0
-Strength = 30.0
-Message = ""
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
 
 [sub_resource type="Resource" id="Resource_tqudu"]
 script = ExtResource("1_gvwcg")
 attack_effect = SubResource("Resource_qcqe1")
-Chance = 1.0
-
-[sub_resource type="Resource" id="Resource_5ne4w"]
-script = ExtResource("3_o0a25")
-Name = "Blank"
-MainColor = Color(0.5, 0.5, 0.5, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = []
+chance = 1.0
 
 [resource]
 script = ExtResource("2_gm17o")
-Effects = Array[ExtResource("1_gvwcg")]([SubResource("Resource_tqudu")])
-Cost = 5
-Name = "Throw"
-animation = ExtResource("1_52lot")
-Element = SubResource("Resource_5ne4w")
-Priority = 0
+effects = Array[ExtResource("1_gvwcg")]([SubResource("Resource_tqudu")])
+cost = 5
+name = "Throw"
+animation = ExtResource("1_j2g2h")
+_element = "purple"
+priority = 0
 attack_range = 0
-Target = 3
-Details = ""
+target = 3
+details = ""

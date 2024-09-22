@@ -8,17 +8,17 @@
 
 [sub_resource type="Resource" id="Resource_gq6w5"]
 script = ExtResource("4_w6rhm")
-AttackEffect = ExtResource("3_1ww1j")
-Chance = 1.0
+attack_effect = ExtResource("3_1ww1j")
+chance = 1.0
 
 [resource]
 script = ExtResource("5_c07yq")
-Effects = [SubResource("Resource_gq6w5")]
-Cost = 10
-Name = "Block"
+effects = [SubResource("Resource_gq6w5")]
+cost = 10
+name = "Block"
 animation = ExtResource("2_ejub3")
-Element = ExtResource("1_0wntg")
-Priority = 0
-Range = 0
-Target = 0
-Details = ""
+element = ExtResource("1_0wntg")
+priority = 0
+attack_range = 0
+target = 0
+details = ""

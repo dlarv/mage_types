@@ -37,41 +37,41 @@ func _ready():
 	
 	# Initialize controls.
 	name_input.text_changed.connect(func(text):
-		character.ActorName = text)
+		character.name = text)
 	element1_input.item_selected.connect(func(index):
-		character.Element1 = ElementManager.Elements[index])
+		character.element1 = ElementManager.elements[index])
 	element2_input.item_selected.connect(func(index):
-		character.Element2 = ElementManager.Elements[index])
+		character.element2 = ElementManager.elements[index])
 	hp_input.value_changed.connect(func(value):
-		character.SetStat("hp", value))
+		character.set_stat("hp", value))
 	attack_input.value_changed.connect(func(value):
-		character.SetStat("attack", value))
+		character.set_stat("attack", value))
 	defense_input.value_changed.connect(func(value):
-		character.SetStat("defense", value))
+		character.set_stat("defense", value))
 	speed_input.value_changed.connect(func(value):
-		character.SetStat("speed", value))
+		character.set_stat("speed", value))
 
 
 func set_character(actor):
 	## Receive actor from parent and populate its values.
 	character = actor
 
-	name_input.text = actor.ActorName
-	element1_input.select(ElementManager.GetIndexFromName(actor.Element1.Name))
-	element2_input.select(ElementManager.GetIndexFromName(actor.Element2.Name))
-	hp_input.value = actor.GetStat("hp")
-	attack_input.value = actor.GetStat("attack")
-	defense_input.value = actor.GetStat("defense")
-	speed_input.value = actor.GetStat("speed")
+	name_input.text = actor.name
+	element1_input.select(ElementManager.get_index_from_name(actor.element1.name))
+	element2_input.select(ElementManager.get_index_from_name(actor.element2.name))
+	hp_input.value = actor.get_stat("hp")
+	attack_input.value = actor.get_stat("attack")
+	defense_input.value = actor.get_stat("defense")
+	speed_input.value = actor.get_stat("speed")
 
-	attack_creator.add_attacks(actor.Attacks)
+	attack_creator.add_attacks(actor.attacks)
 
 func set_attack(attack):
 	attack_creator.set_attack(attack)
 
 func _on_create_button_pressed():
 	var _attacks = attack_creator.attacks
-	character.Attacks = _attacks
+	character.attacks = _attacks
 
 	character_created.emit(character)
 	clear()

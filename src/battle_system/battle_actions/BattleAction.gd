@@ -4,55 +4,57 @@ class_name BattleAction
 
 # public static BattleAction Flee { get private set } = new()
 
-enum TargetType { Self, Ally, Allies, Enemy, Enemies }
-enum AttackRange { Melee, Ranged }
+enum TargetType { SELF, ALLY, ALLIES, ENEMY, ENEMIES }
+enum AttackRange { MELEE, RANGED }
 
 @export
-var Name : String = "Hit"
+var name : String = "Hit"
 @export
 var animation: PackedScene
-@export
-var Element : ElementalType:
+@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
+var _element: String = "blank":
 	get:
-		if(_e == null):
-			return ElementManager.Blank
-		return _e
-	
-	set(value): _e = value
-
-var _e: ElementalType = ElementManager.Blank
+		return _element
+	set(value):
+		_element = value
+		element = ElementManager.get_element_from_name(value)
+var element: ElementalType = ElementManager.Blank:
+	set(value): 
+		if value == null:
+			value = ElementManager.Blank
+		element = value 
 @export
-var Priority : int = 0
+var priority : int = 0
 @export
-var attack_range: AttackRange = AttackRange.Melee
+var attack_range: AttackRange = AttackRange.MELEE
 @export
-var Target : TargetType = TargetType.Enemy
+var target : TargetType = TargetType.ENEMY
 @export_multiline
-var Details : String 
+var details : String 
 
 # virtual
-func PlayAnimation(start: Vector2, end: Vector2) -> Node:
+func play_animation(start: Vector2, end: Vector2) -> Node:
 	var obj = animation.instantiate()
-	obj._play(start, end, Element)
+	obj._play(start, end, element)
 	return obj
 
 # virtual
-func IsActionAvailable(actor: BattleActor) -> bool:
+func is_action_available(actor: BattleActor) -> bool:
 	return true
 
 # Main logic for action.
 # Returns message stating what happened to the targets. This is displayed for player.
-func ApplyEffects(user: BattleActor, targets) -> String:
+func apply_effects(user: BattleActor, targets) -> String:
 	var end = ""
 	if len(targets) == 1:
 		if user == targets[0]:
 			end = "itself"
 		else:
-			end =  targets[0].ActorName
+			end =  targets[0].name
 	else:
 		end = "the opposing team"
 
-	return "%s used %s on %s." % [ user.ActorName, Name, end ]
+	return "%s used %s on %s." % [ user.name, name, end ]
 
-func ApplyCost(user: BattleActor) -> void: 
+func apply_cost(user: BattleActor) -> void: 
 	pass

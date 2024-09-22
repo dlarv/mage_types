@@ -10,8 +10,8 @@ func _ready():
 	MatchupItem = preload("res://addons/matchupmanager/components/matchup_item.tscn")
 	vbox = get_node("VBoxContainer/ScrollContainer/VBoxContainer")
 
-	ElementManager.ForceLoad()
-	for matchup in ElementManager.GetAllMatchups():
+	ElementManager.force_load()
+	for matchup in ElementManager.get_all_matchups():
 		var item = MatchupItem.instantiate()
 		item.set_colors(matchup[0], matchup[1], matchup[2])
 		vbox.add_child(item)
@@ -20,9 +20,9 @@ func _ready():
 
 		item.buff_selected.connect(func(index):
 			print(index)
-			ElementManager.SetSideEffectFor(matchup[0], matchup[1], index, true))
+			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, true))
 		item.debuff_selected.connect(func(index):
-			ElementManager.SetSideEffectFor(matchup[0], matchup[1], index, false))
+			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, false))
 
 func _on_save_button_pressed():
 	var dialog: FileDialog = get_node("FileDialog")
@@ -42,12 +42,12 @@ func _on_file_dialog_file_selected(path: String):
 		if(not path.ends_with(".txt") and not path.ends_with(".csv")):
 			path += ".csv"
 
-		var data = ElementManager.SaveAsCSV()
+		var data = ElementManager.save_as_csv()
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		file.store_string(data)
 	else:
 		var file = FileAccess.open(path, FileAccess.READ)
 		var data = file.get_as_text()
-		ElementManager.LoadFromCSV(data)
-		for matchup in ElementManager.GetAllMatchups():
+		ElementManager.load_from_csv(data)
+		for matchup in ElementManager.get_all_matchups():
 			items[[matchup[0], matchup[1]]].set_side_effects(matchup[3], matchup[4])

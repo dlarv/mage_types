@@ -2,49 +2,48 @@
 extends BattleAction 
 class_name BattleItem 
 
-signal ItemConsumed()
+signal item_consumed()
 
-var IsConsumable : bool = true
-var Quantity : int 
-var Requirement : ItemRequirement = null
+var is_consumable : bool = true
+var quantity : int 
+var requirement : ItemRequirement = null
 
 @export
-# Effect[]
-var Effects = []
+var effects: Array[Effect] = []
 
-static func Create(name: String, details: String="") -> BattleItem:
+static func create(name: String, details: String="") -> BattleItem:
 	var item = BattleItem.new()
-	item.Name = name
-	item.Details = details
+	item.name = name
+	item.details = details
 	return item
 
-func ApplyEffects(user: BattleActor, targets) -> String:
-	var msg = super.ApplyEffects(user, targets)
+func apply_effects(user: BattleActor, targets) -> String:
+	var msg = super.apply_effects(user, targets)
 
 	for i in range(len(targets)):
 		var target = targets[i]
 
-		for effect in Effects:
+		for effect in effects:
 			var rand = randf_range(0.0, 1.0)
 
-			if rand <= effect.Chance:
-				msg += "\n{effect.AttackEffect.ApplyEffect(user, target, this)}" % effect.AttackEffect.ApplyEffect(user, target, self)
+			if rand <= effect.chance:
+				msg += "\n%s" % effect.AttackEffect.apply_effect(user, target, self)
 				# Add status effect icon.
-				if effect.AttackEffect is Damage:
+				if effect.attack_effect is Damage:
 					# Check if character was defeated.
-					if target.Defeated:
-						msg += "........{target.ActorName} was defeated." % target.ActorName
+					if target.is_defeated:
+						msg += "........%s was defeated." % target.ActorName
 						continue
 	return msg
 
 # Override
-func IsActionAvailable(actor: BattleActor) -> bool:
-	if(IsConsumable and Quantity == 0): return false
-	if(Requirement == null): return true
+func is_action_available(actor: BattleActor) -> bool:
+	if(is_consumable and quantity == 0): return false
+	if(requirement == null): return true
 
-	return Requirement.Check(actor)
+	return requirement.check(actor)
 # override
-func ApplyCost(user: BattleActor) -> void:
-	if IsConsumable:
-		Quantity -= 1
-		ItemConsumed.emit()
+func apply_cost(user: BattleActor) -> void:
+	if is_consumable:
+		quantity -= 1
+		item_consumed.emit()

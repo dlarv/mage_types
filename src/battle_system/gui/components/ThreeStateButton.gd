@@ -1,7 +1,7 @@
 extends Control
 class_name ThreeStateButton 
 
-signal StateChanged(state)
+signal state_changed(state)
 
 const UNSELECTED_STATE: int = 0
 const FIRST_SELECTED_STATE: int = 1
@@ -27,34 +27,33 @@ var button_group: ButtonGroup:
 	set(value): button.button_group = value
 
 # Prevents button from entering 3rd state.
-var IsLocked : bool: 
-	get: return _isLocked 
+var is_locked: bool = false: 
+	get: return is_locked 
 	set(value):
-		_isLocked = value
+		is_locked = value
 		state = UNSELECTED_STATE
-		modulate =  lockedModulateColor  if value  else  unselectedModulateColor
+		modulate = lockedModulateColor if value else unselectedModulateColor
 
 
-var _isLocked: bool = false
 var state : int = UNSELECTED_STATE
 
-func OnPressed(toggled: bool) -> void:
+func _on_pressed(toggled: bool) -> void:
 	if not toggled:
 		state = UNSELECTED_STATE
-		modulate =  lockedModulateColor  if IsLocked  else  unselectedModulateColor
+		modulate =  lockedModulateColor  if is_locked  else  unselectedModulateColor
 		return
 
-	if !IsLocked && state == FIRST_SELECTED_STATE:
+	if !is_locked && state == FIRST_SELECTED_STATE:
 		state = SECOND_SELECTED_STATE
 		modulate = selected2ModulateColor
 	else:
 		state = FIRST_SELECTED_STATE
 		modulate = selected1ModulateColor
 
-	StateChanged.emit(state)
+	state_changed.emit(state)
 
 
-func Reset() -> void:
+func reset() -> void:
 	modulate = unselectedModulateColor
 	state = UNSELECTED_STATE
 	button.set_pressed_no_signal(false)

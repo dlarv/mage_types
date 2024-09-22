@@ -8,17 +8,17 @@
 
 [sub_resource type="Resource" id="Resource_ibimo"]
 script = ExtResource("4_mymu7")
-AttackEffect = ExtResource("3_qi5cp")
-Chance = 1.0
+attack_effect = ExtResource("3_qi5cp")
+chance = 1.0
 
 [resource]
 script = ExtResource("5_ardcs")
-Effects = [SubResource("Resource_ibimo")]
-Cost = 10
-Name = "R. Attack Down"
+effects = [SubResource("Resource_ibimo")]
+cost = 10
+name = "R. Attack Down"
 animation = ExtResource("2_jayfd")
-Element = ExtResource("1_rxg4m")
-Priority = 0
-Range = 0
-Target = 3
-Details = ""
+element = ExtResource("1_rxg4m")
+priority = 0
+attack_range = 0
+target = 3
+details = ""

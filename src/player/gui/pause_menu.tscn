@@ -30,16 +30,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 0
 
 [node name="Characters" parent="TabContainer" instance=ExtResource("2_leeag")]
 layout_mode = 2
-IsAliceActive = null
-IsAlexActive = null
+metadata/_tab_index = 0
 
 [node name="Inventory" parent="TabContainer" instance=ExtResource("2_tbsxp")]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Settings" parent="TabContainer" instance=ExtResource("3_ld0ow")]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2

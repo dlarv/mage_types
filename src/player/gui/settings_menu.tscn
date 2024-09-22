@@ -36,4 +36,4 @@ text = "Debug Mode"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="toggled" from="ScrollContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="OnDebugModeToggled"]
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="on_debug_mode_toggled"]

@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://2qmk37nb8emu"]
+[gd_scene load_steps=4 format=3 uid="uid://2qmk37nb8emu"]
 
 [ext_resource type="PackedScene" uid="uid://bfpnrqolejh7g" path="res://src/player/party/base_companion.tscn" id="1_tfba6"]
 [ext_resource type="Script" path="res://data/player/companions/AliceCompanion.gd" id="2_pbd7w"]
-[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="3_5x1ae"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsdae"]
 albedo_color = Color(0.501961, 0, 1, 1)
 
 [node name="Alice" instance=ExtResource("1_tfba6")]
 script = ExtResource("2_pbd7w")
-BattleActor = ExtResource("3_5x1ae")
 
 [node name="MeshInstance3D" parent="." index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gsdae")

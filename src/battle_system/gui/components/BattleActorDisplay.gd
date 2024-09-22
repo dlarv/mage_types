@@ -1,8 +1,8 @@
 extends Control 
 class_name BattleActorDisplay 
 
-signal Selected(actor)
-signal StatusEffectIconPressed(effect)
+signal selected(actor)
+signal status_effect_icon_pressed(effect)
 
 @export
 var highlightDisplay: TextureRect 
@@ -21,7 +21,7 @@ var statChangeDisplay: StatChangeDisplay
 @export
 var selectorButton: Button 
 
-var Actor : BattleActor 
+var actor : BattleActor 
 
 var tint : Color = Color.WHITE
 var sprite: Sprite 
@@ -29,96 +29,95 @@ var totalHp: int
 # Dict<string, Node>
 var icons = {}
 
-func Setup(actor: BattleActor) -> void:
-	nameLabel.text = actor.ActorName
-	healthBar.value = (actor.CurrentHp / actor.Hp) * 100
-	hpLabel.text = "%d/%d" % [actor.CurrentHp, actor.Hp ]
-	totalHp = actor.Hp
+func setup(actor: BattleActor) -> void:
+	nameLabel.text = actor.name
+	healthBar.value = (actor.current_hp / actor.hp) * 100
+	hpLabel.text = "%d/%d" % [actor.current_hp, actor.hp ]
+	totalHp = actor.hp
 
 	if actor.sprite == null:
-		actor.UseGradientSprite()
+		actor.use_gradient_sprite()
 	spriteDisplay.texture = actor.sprite.texture
 	sprite = actor.sprite
 
 	selectorButton.pressed.connect(func():
-		Selected.emit(actor))
+		selected.emit(actor))
 
-	Actor = actor
-	actor.WasDefeated.connect(SetDefeated)
-	actor.DamageApplied.connect(SetHealth)
-	actor.StatusEffectAdded.connect(AddStatusEffect)
-	actor.StatusEffectsRemoved.connect(RemoveStatusEffects)
-	actor.ElementChanged.connect(SetElement)
+	self.actor = actor
+	actor.was_just_defeated.connect(set_defeated)
+	actor.damage_applied.connect(set_health)
+	actor.status_effect_added.connect(add_status_effect)
+	actor.status_effects_removed.connect(remove_status_effects)
+	actor.element_changed.connect(set_element)
 
 
-func SetElement(id: int, element: ElementalType) -> void:
+func set_element(id: int, element: ElementalType) -> void:
 	# Update Sprite's colors.
-	sprite.SetElement(id, element)
+	sprite.set_element(id, element)
 	# Update Sprite.
 	spriteDisplay.texture = sprite.texture
 
-func SetHealth(hp: int) -> void:
+func set_health(hp: int) -> void:
 	healthBar.value = hp / totalHp * 100.0
 	hpLabel.text = "%d/%d" % [ hp, totalHp ]
 
-func GetPosition() -> Vector2:
+func get_target_position() -> Vector2:
 	var position = global_position
 	position.x += size.x / 2
 	position.y += size.y / 2
-
 	return position
 
 ## Disallow selection
-func DisableSelection() -> void:
+func disable_selection() -> void:
 	selectorButton.hide()
 	tint = Color.WHITE
-	SetHighlight(false)
+	set_highlight(false)
 
-func EnableSelection(color: Color) -> void:
+func enable_selection(color: Color) -> void:
 	selectorButton.show()
 	tint = color
 
-func AddStatusEffect(effect: StatusEffect) -> void:
+func add_status_effect(effect: StatusEffect) -> void:
 	if effect is StatChange:
-		statChangeDisplay.Add(effect)
+		statChangeDisplay.add(effect)
 		return
-	if(icons.has(effect.Name)): return
+	if(icons.has(effect.name)): return
 
-	var icon = effect.InstantiateIcon()
+	var icon = effect.instantiate_icon()
 	statusEffectIcons.add_child(icon)
 	var button = icon.get_node("Button")
-	button.pressed.connect(StatusEffectIconPressed)
+	button.pressed.connect(func(): status_effect_icon_pressed.emit(effect))
 
-	icons.append(effect.Name, icon)
+	icons[effect.name] = icon
 
-func RemoveStatusEffects(effects) -> void:
+func remove_status_effects(effects) -> void:
 	for effect in effects:
 		if effect is StatChange:
 			statChangeDisplay.remove(effect)
 			continue
 		
-		if !icons.has(effect.Name): continue
-		var icon = icons[effect.Name]
+		if !icons.has(effect.name): continue
+		var icon = icons[effect.name]
 		statusEffectIcons.remove_child(icon)
-		icons.remove(effect.Name)
+		icons.remove(effect.name)
 
-func SetDefeated() -> void:
+func set_defeated() -> void:
 	modulate = Color(1, 1, 1, .5)
-	for key in icons.keys:
+	for key in icons.keys():
 		var icon = icons[key]
 		statusEffectIcons.remove_child(icon)
 	icons.clear()
 
-func SetHighlight(isHighlighted: bool) -> void:
+func set_highlight(isHighlighted: bool) -> void:
 	highlightDisplay.self_modulate =  Color(tint.r, tint.g, tint.b, 1 if isHighlighted  else  0)
 
 func _on_mouse_entered() -> void:
 	if(selectorButton.visible):
-		SetHighlight(true)
+		set_highlight(true)
 
 func _on_mouse_exited() -> void:
 	if(selectorButton.visible):
-		SetHighlight(false)
+		set_highlight(false)
 
-func _OnStatusIconPressed(status: StatusEffect) -> void:
+func _on_status_icon_pressed(status: StatusEffect) -> void:
 	pass

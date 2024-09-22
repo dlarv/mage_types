@@ -72,7 +72,7 @@ func _on_create_item_button_pressed():
 		alert_popup.show()
 		return
 
-	var item = BattleItem.Create(item_name, _item_description)
+	var item = BattleItem.create(item_name, _item_description)
 	_items.append(item)
 
 func _on_character_selected(button: Button):
@@ -90,8 +90,8 @@ func _on_file_dialog_file_selected(path):
 		character_creator.set_attack(actor)
 		return
 	if actor is BattleItem:
-		_item_description = actor.Details
-		item_name_input.text = actor.Name
+		_item_description = actor.details
+		item_name_input.text = actor.name
 		return
 
 	if actor is PackedScene:
@@ -117,8 +117,8 @@ func _on_start_battle_button_pressed():
 	for actor in character_scroller.get_children():
 		var index = actor.get_team_index()
 		# Reset character's health, if a game was already played.
-		actor.character.CurrentHp = actor.character.Hp
-		actor.character.UseGradientSprite()
+		actor.character.current_hp = actor.character.hp
+		actor.character.use_gradient_sprite()
 		if index == 0:
 			team1.append(actor.character)
 		else:

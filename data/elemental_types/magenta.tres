@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rhvj1")
-Name = "Magenta"
-MainColor = Color(1, 0, 1, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
+name = "Magenta"
+main_color = Color(1, 0, 1, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = []

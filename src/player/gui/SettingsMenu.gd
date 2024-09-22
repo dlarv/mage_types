@@ -1,6 +1,6 @@
 extends Control 
 class_name SettingsMenu 
 
-func OnDebugModeToggled(val: bool) -> void:
+func on_debug_mode_toggled(val: bool) -> void:
 	print("Debug mode toggled");
-	# Settings.Singleton.DebugMode = val;
+	Settings.debug_mode = val

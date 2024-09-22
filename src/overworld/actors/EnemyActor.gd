@@ -2,9 +2,10 @@ extends Node3D
 class_name EnemyActor 
 
 @export
-var Ai : OpponentController 
+var ai : OpponentController 
 @export
-var BattleActor : BattleActor 
-var Team: 
-	get: return [ BattleActor ]
+var battle_actor : BattleActor 
+
+var team: 
+	get: return [ battle_actor ]
 

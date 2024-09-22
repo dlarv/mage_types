@@ -1,18 +1,18 @@
 extends CharacterBody3D 
 class_name Player 
 
-signal BattleStarted(allies, items, enemy);
+signal battle_started(allies, items, enemies)
 
 @export
 var battle_actor : BattleActor 
-var Party;
+var party;
 var inventory : Inventory 
 
 @export_category("Movement")
 @export
-var Speed : float = 10.0
+var speed : float = 10.0
 @export
-var JumpVelocity : float = 4.5
+var jump_velocity : float = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
@@ -26,24 +26,25 @@ func _physics_process(delta) -> void:
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		vel.Y = JumpVelocity;
+		vel.y = jump_velocity;
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down");
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized();
 	if direction != Vector3.ZERO:
-		vel.x = direction.x * Speed;
-		vel.z = direction.z * Speed;
+		vel.x = direction.x * speed;
+		vel.z = direction.z * speed;
 	else:
-		vel.x = move_toward(velocity.x, 0, Speed);
-		vel.z = move_toward(velocity.z, 0, Speed);
+		vel.x = move_toward(velocity.x, 0, speed);
+		vel.z = move_toward(velocity.z, 0, speed);
 
 	velocity = vel;
 	move_and_slide();
 
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i);
+		var enemy = collision.get_collider()
 
-		if collision.get_collider().is_in_group("enemy"):
-			BattleStarted.emit(Party, inventory.GetBattleItems(), collision.get_collider())
+		if enemy.is_in_group("enemy"):
+			battle_started.emit(party, inventory.get_battle_items(), enemy)

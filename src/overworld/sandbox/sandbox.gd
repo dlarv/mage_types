@@ -9,8 +9,8 @@ func _on_player_battle_started(allies:Array, items:Array, enemy:Node3D) -> void:
 	var battle = battle_scene.instantiate()
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
-	battle.Start(allies, items, enemy.Team, enemy.Ai)
 	add_child(battle)
-	await battle.BattleEnded
+	battle.start(allies, items, enemy.team, enemy.ai)
+	await battle.battle_ended
 	battle.queue_free()
 	world.process_mode = Node.PROCESS_MODE_INHERIT

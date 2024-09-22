@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_rugnf")
-Duration = 1
-Icon = ExtResource("1_2jes6")
-Description = ""
-Name = "Stasis"
-Chance = 1.0
-Strength = 0.0
-Message = "{target} is locked in stasis!"
+duration = 1
+icon = ExtResource("1_2jes6")
+description = ""
+name = "Stasis"
+chance = 1.0
+strength = 0.0
+message = ""

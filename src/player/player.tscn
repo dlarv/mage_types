@@ -1,32 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=10 format=3 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_jd6jo"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_0xipm"]
 [ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="2_tqkyx"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_pbcfq"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_senr4"]
 
 [sub_resource type="Resource" id="Resource_cxdi8"]
 script = ExtResource("3_senr4")
-Name = "Blank"
-MainColor = Color(0.5, 0.5, 0.5, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = PackedColorArray()
 
 [sub_resource type="Resource" id="Resource_rgltg"]
 script = ExtResource("3_pbcfq")
-ActorName = "Guy"
-Hp = 0
-MeleeAttack = 0
-RangedAttack = 0
-MeleeDefense = 0
-RangedDefense = 0
-Speed = 0
-Evasion = 0
-Mana = 0
-Element1 = ExtResource("2_tqkyx")
-Element2 = ExtResource("2_tqkyx")
-ElementalBias = SubResource("Resource_cxdi8")
-Attacks = []
+name = "Guy"
+hp = 0
+melee_attack = 0
+ranged_attack = 0
+melee_defense = 0
+ranged_defense = 0
+speed = 0
+evasion = 0
+mana = 0
+element1 = ExtResource("2_tqkyx")
+element2 = ExtResource("2_tqkyx")
+elemental_bias = SubResource("Resource_cxdi8")
+attacks = Array[ExtResource("2_0xipm")]([])
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 
@@ -37,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_jd6jo")
-BattleActor = SubResource("Resource_rgltg")
+battle_actor = SubResource("Resource_rgltg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_f637b")

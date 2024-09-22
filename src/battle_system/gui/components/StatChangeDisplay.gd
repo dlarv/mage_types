@@ -2,47 +2,50 @@ extends HBoxContainer
 class_name StatChangeDisplay 
 
 @export
-var mAttack : ColorRect 
+var melee_attack : ColorRect 
 @export
-var rAttack : ColorRect 
+var ranged_attack : ColorRect 
 @export
-var mDefense : ColorRect 
+var melee_defense : ColorRect 
 @export
-var rDefense : ColorRect 
+var ranged_defense : ColorRect 
 @export
 var speed : ColorRect 
 @export
 var evasion : ColorRect 
 
-func Add(effect: StatChange) -> void:
-	match effect.Name:
+
+func add(effect: StatChange) -> void:
+	match effect.name:
 		StatusEffectManager.ATTACK_KEY:
-			UpdateNibs(mAttack, effect.GetMod())
-			UpdateNibs(rAttack, effect.GetMod())
+			update_nibs(melee_attack, effect.get_mod())
+			update_nibs(ranged_attack, effect.get_mod())
 			
 		StatusEffectManager.DEFENSE_KEY:
-			UpdateNibs(mDefense, effect.GetMod())
-			UpdateNibs(rDefense, effect.GetMod())
+			update_nibs(melee_defense, effect.get_mod())
+			update_nibs(ranged_defense, effect.get_mod())
 			
 		StatusEffectManager.MELEE_ATTACK_KEY:
-			UpdateNibs(mAttack, effect.GetMod())
+			update_nibs(melee_attack, effect.get_mod())
 			
 		StatusEffectManager.RANGED_ATTACK_KEY:
-			UpdateNibs(rAttack, effect.GetMod())
+			update_nibs(ranged_attack, effect.get_mod())
 			
 		StatusEffectManager.MELEE_DEFENSE_KEY:
-			UpdateNibs(mDefense, effect.GetMod())
+			update_nibs(melee_defense, effect.get_mod())
 			
 		StatusEffectManager.RANGED_DEFENSE_KEY:
-			UpdateNibs(rDefense, effect.GetMod())
+			update_nibs(ranged_defense, effect.get_mod())
 		StatusEffectManager.SPEED_KEY:
-			UpdateNibs(speed, effect.GetMod())
+			update_nibs(speed, effect.get_mod())
 		_:
-			UpdateNibs(evasion, effect.GetMod())
+			update_nibs(evasion, effect.get_mod())
 
-func UpdateNibs(rect: ColorRect, mod: float=1) -> void:
+func update_nibs(rect: ColorRect, mod: float=1) -> void:
 	var text = rect.tooltip_text
+	var index = text.rfind(":")
 	# rect.TooltipText = Regex.Replace(rect.TooltipText, ":.*$", $": {mod:P0}")
+	rect.tooltip_text = text.substr(0, index) + ": " + str(mod * 100) + "%"
 
 	if mod == 1:
 		rect.color = Color.GRAY
@@ -50,30 +53,29 @@ func UpdateNibs(rect: ColorRect, mod: float=1) -> void:
 		rect.color = Color(mod - 1, 0, 0)
 	else:
 		rect.color = Color(0, mod - 1, 0)
-func Remove(effect: StatChange) -> void:
-	match effect.Name:
+func remove(effect: StatChange) -> void:
+	match effect.name:
 		StatusEffectManager.ATTACK_KEY:
-			UpdateNibs(rAttack)
-			UpdateNibs(mAttack)
-			UpdateNibs(rAttack)
+			update_nibs(melee_attack)
+			update_nibs(ranged_attack)
 			
 		StatusEffectManager.DEFENSE_KEY:
-			UpdateNibs(mDefense)
-			UpdateNibs(rDefense)
+			update_nibs(melee_defense)
+			update_nibs(ranged_defense)
 			
 		StatusEffectManager.MELEE_ATTACK_KEY:
-			UpdateNibs(mAttack)
+			update_nibs(melee_attack)
 			
 		StatusEffectManager.RANGED_ATTACK_KEY:
-			UpdateNibs(rAttack)
+			update_nibs(ranged_attack)
 			
 		StatusEffectManager.MELEE_DEFENSE_KEY:
-			UpdateNibs(mDefense)
+			update_nibs(melee_defense)
 			
 		StatusEffectManager.RANGED_DEFENSE_KEY:
-			UpdateNibs(rDefense)
+			update_nibs(ranged_defense)
 			
 		StatusEffectManager.SPEED_KEY:
-			UpdateNibs(speed)
+			update_nibs(speed)
 		_:
-			UpdateNibs(evasion)
+			update_nibs(evasion)

@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_gxjb0")
-Duration = 3
-Icon = ExtResource("1_dawjm")
-Description = ""
-Name = "Dissonant"
-Chance = 1.0
-Strength = 0.0
-Message = "{target} is experiencing dissonance!"
+duration = 3
+icon = ExtResource("1_dawjm")
+description = ""
+name = "Dissonant"
+chance = 1.0
+strength = 0.0
+message = ""

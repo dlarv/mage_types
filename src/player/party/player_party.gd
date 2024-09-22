@@ -12,7 +12,7 @@ func _ready() -> void:
 	for companion in companions:
 		actors.append(companion.battle_actor)
 
-	player.Party = actors
+	player.party = actors
 
-	pause_menu.InitInventory(inventory)
+	pause_menu.init_inventory(inventory)
 	player.inventory = inventory

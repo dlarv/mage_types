@@ -3,19 +3,18 @@ extends Resource
 class_name ElementalType 
 
 @export
-var Name: String ;
+var name: String ;
 @export
-var MainColor: Color ;
+var main_color: Color ;
 @export
-var TextColor: Color ;
+var text_color: Color ;
 @export
-var ColorPalette = []
+var color_palette = []
 
 func _init():
-	Name = "Blank";
-	MainColor = Color(.5, .5, .5);
-	ColorPalette = []
-	TextColor = Color.BLACK;
+	name = "Blank"; main_color = Color(.5, .5, .5);
+	color_palette = []
+	text_color = Color.BLACK;
 
-func GetTextColor()-> Color:
-	return TextColor;
+func get_text_color()-> Color:
+	return text_color;

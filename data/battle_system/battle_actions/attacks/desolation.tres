@@ -8,24 +8,24 @@
 
 [sub_resource type="Resource" id="Resource_igxlq"]
 script = ExtResource("1_llchw")
-Name = ""
-Chance = 1.0
-Strength = 5000.0
-Message = ""
+name = ""
+chance = 1.0
+strength = 5000.0
+message = ""
 
 [sub_resource type="Resource" id="Resource_5rrbl"]
 script = ExtResource("2_r8sjh")
 attack_effect = SubResource("Resource_igxlq")
-Chance = 1.0
+chance = 1.0
 
 [resource]
 script = ExtResource("1_h8gwy")
-Effects = Array[ExtResource("2_r8sjh")]([SubResource("Resource_5rrbl")])
-Cost = 40
-Name = "Desolation"
+effects = Array[ExtResource("2_r8sjh")]([SubResource("Resource_5rrbl")])
+cost = 40
+name = "Desolation"
 animation = ExtResource("2_aiyre")
-Element = ExtResource("1_dq2v8")
-Priority = 0
+element = ExtResource("1_dq2v8")
+priority = 0
 attack_range = 0
-Target = 3
-Details = ""
+target = 3
+details = ""

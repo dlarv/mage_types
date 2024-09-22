@@ -131,9 +131,9 @@ size_flags_vertical = 3
 visible = false
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/CharacterSelector/Prev_Button" to="." method="PrevCharacter"]
+[connection signal="pressed" from="VBoxContainer/CharacterSelector/Prev_Button" to="." method="prev_character"]
 [connection signal="pressed" from="VBoxContainer/CharacterSelector/EndTurn_Button" to="." method="_on_end_turn_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CharacterSelector/Next_Button" to="." method="NextCharacter"]
+[connection signal="pressed" from="VBoxContainer/CharacterSelector/Next_Button" to="." method="next_character"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Home_VBox/Attacks_Button" to="." method="_on_attacks_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Home_VBox/Items_Button" to="." method="_on_items_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/TabContainer/Home_VBox/Characters_Button" to="." method="_on_characters_button_pressed"]

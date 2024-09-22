@@ -1,54 +1,23 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://ikbw5d3p3lq0"]
+[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://ikbw5d3p3lq0"]
 
-[ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="1_kaqsx"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_td35h"]
-[ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="3_4kplv"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="4_87v27"]
+[ext_resource type="Resource" uid="uid://dce1ib1m1soc2" path="res://data/battle_system/status_effects/elemental_effects/elemental_philia.tres" id="3_fwx0k"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="5_ji4vr"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_5u7bg"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_xp228"]
-font_size = 50
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="PackedScene" id="PackedScene_q0m02"]
-_bundled = {
-"base_scene": 0,
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("StatusEffectIcon", "Label", "text", "label_settings"),
-"node_count": 2,
-"node_paths": [NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 2, 2, 1, 3, 2, 0),
-"variants": [ExtResource("3_4kplv"), "+", SubResource("LabelSettings_xp228")],
-"version": 3
-}
-
-[sub_resource type="Resource" id="Resource_8qxkb"]
-script = ExtResource("4_87v27")
-Element = ExtResource("1_kaqsx")
-Duration = 3
-Icon = SubResource("PackedScene_q0m02")
-Description = ""
-Name = "Philic"
-Chance = 1.0
-Strength = 0.1
-Message = "{target} is feeling enraptured by {element}!"
-
 [sub_resource type="Resource" id="Resource_p10la"]
 script = ExtResource("5_ji4vr")
-AttackEffect = SubResource("Resource_8qxkb")
-Chance = 1.0
+attack_effect = ExtResource("3_fwx0k")
+chance = 1.0
 
 [resource]
 script = ExtResource("6_5u7bg")
-Effects = [SubResource("Resource_p10la")]
-Cost = 10
-Name = "Hydrophilia"
+effects = Array[ExtResource("5_ji4vr")]([SubResource("Resource_p10la")])
+cost = 10
+name = "Hydrophilia"
 animation = ExtResource("2_td35h")
-Element = ExtResource("1_kaqsx")
-Priority = 0
-Range = 0
-Target = 1
-Details = ""
+_element = "blue"
+priority = 0
+attack_range = 0
+target = 1
+details = ""

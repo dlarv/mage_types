@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_lp11x")
-Name = "Equipment Test"
-IsConsumable = false
-Tags = null
+name = "Equipment Test"
+is_consumable = false
+quantity = -1
+max_quantity = 0
+tags = []
+details = ""

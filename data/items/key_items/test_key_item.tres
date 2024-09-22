@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_8gkux")
-Name = "KeyItem Test"
-IsConsumable = false
-Tags = null
+name = "Key Item Test"
+is_consumable = false
+quantity = -1
+max_quantity = 0
+tags = []
+details = ""

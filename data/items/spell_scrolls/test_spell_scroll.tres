@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_anwrk")
-Name = "Spell Scroll Test"
-IsConsumable = false
-Tags = null
+name = "Test Spell Scroll"
+is_consumable = false
+quantity = -1
+max_quantity = 0
+tags = []
+details = ""

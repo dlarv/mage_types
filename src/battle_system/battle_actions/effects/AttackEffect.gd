@@ -3,19 +3,19 @@ extends Resource
 class_name AttackEffect 
 
 @export
-var Name : String 
+var name : String 
 ## Chance this effect will trigger each turn.
 @export_range(0, 1)
-var Chance : float = 1
+var chance : float = 1
 ## Effectiveness of this effect, usually as a percentage of health.
 @export
-var Strength :float  
+var strength :float  
 @export_multiline
-var Message : String = ""
+var message : String = ""
 
 # virtual
-func ApplyEffect(user, target=null, action=null):
+func apply_effect(user, target=null, action=null, duplicated_effect=null):
 	if target != null:
-		return Message.replace("{user}", user.ActorName).replace("{target}", target.ActorName)
+		return message.replace("{user}", user.name).replace("{target}", target.name)
 	else:
 		return ""

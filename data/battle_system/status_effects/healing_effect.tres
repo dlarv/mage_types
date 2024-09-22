@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_gh2co")
-Duration = 3
-Icon = ExtResource("1_f85tx")
-Description = ""
-Name = "Healing"
-Chance = 1.0
-Strength = 0.0
-Message = "{target} was wrapped in a healing aura!"
+duration = 3
+icon = ExtResource("1_f85tx")
+description = ""
+name = "Healing"
+chance = 1.0
+strength = 0.0
+message = ""

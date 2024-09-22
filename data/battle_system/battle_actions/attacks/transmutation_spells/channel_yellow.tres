@@ -8,26 +8,26 @@
 
 [sub_resource type="Resource" id="Resource_ib1xg"]
 script = ExtResource("3_inpqt")
-Element = ExtResource("1_2u1bt")
-ElementId = 0
-Name = ""
-Chance = 1.0
-Strength = 0.0
-Message = ""
+element = ExtResource("1_2u1bt")
+element_id = 0
+name = ""
+chance = 1.0
+strength = 0.0
+message = ""
 
 [sub_resource type="Resource" id="Resource_1sd8b"]
 script = ExtResource("3_0no7p")
-AttackEffect = SubResource("Resource_ib1xg")
-Chance = 1.0
+attack_effect = SubResource("Resource_ib1xg")
+chance = 1.0
 
 [resource]
 script = ExtResource("1_0ae1n")
-Effects = [SubResource("Resource_1sd8b")]
-Cost = 10
-Name = "Channel Yellow"
+effects = Array[ExtResource("3_0no7p")]([SubResource("Resource_1sd8b")])
+cost = 10
+name = "Channel Yellow"
 animation = ExtResource("2_0uv4l")
-Element = ExtResource("1_2u1bt")
-Priority = 0
-Range = 0
-Target = 0
-Details = ""
+_element = "yellow"
+priority = 0
+attack_range = 0
+target = 0
+details = ""

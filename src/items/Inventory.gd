@@ -2,10 +2,10 @@
 extends Node 
 class_name Inventory 
 
-enum Category { Item, Equipment, SpellScroll, KeyItem }
+enum Category { ITEM, EQUIPMENT, SPELLSCROLL, KEYITEM }
 
 # NOTE: This is not called when loading from filesystem.
-signal QuantityChanged(item, amount);
+signal quantity_changed(item, amount);
 
 var next_id = 0
 
@@ -22,32 +22,32 @@ var key_items: Array[KeyItem] = []
 var battleItems: Array[BattleItem] = []
 
 func _enter_tree() -> void:
-	LoadFromFS();
+	load_from_fs();
 
-func GetBattleItems():
+func get_battle_items():
 	return battleItems;
 
-func Search(term: String):
+func search(term: String):
 	return null;
 
-func LoadFromFS()-> void:
+func load_from_fs()-> void:
 	items = []
 	key_items = []
 	spell_scrolls = []
 	equipment = []
 	battleItems = []
 
-	LoadFromDir("res://data/items/items/");
-	LoadFromDir("res://data/items/key_items/");
-	LoadFromDir("res://data/items/equipment/");
-	LoadFromDir("res://data/items/spell_scrolls/");
+	load_from_dir("res://data/items/items/");
+	load_from_dir("res://data/items/key_items/");
+	load_from_dir("res://data/items/equipment/");
+	load_from_dir("res://data/items/spell_scrolls/");
 
 	# Lists should already be sorted.
 	# Items.Sort();
 	# KeyItems.Sort();
 	# SpellScrolls.Sort();
 	# Equipment.Sort();
-func LoadFromDir(path: String) -> void:
+func load_from_dir(path: String) -> void:
 	print("Loading from directory: %s" % path);
 	var dir = DirAccess.open(path);
 	var item = "temp";
@@ -79,57 +79,57 @@ func LoadFromDir(path: String) -> void:
 			var battleItem = res.battle_item; 
 			if battleItem != null:
 				battleItems.append(battleItem);
-				if battleItem.IsConsumable:
-					battleItem.ItemConsumed.connect(func(): QuantityChanged.emit(res, res.Quantity))
+				if battleItem.is_consumable:
+					battleItem.item_consumed.connect(func(): quantity_changed.emit(res, res.quantity))
 		elif len(item) != 0 and dir.dir_exists(item):
-			LoadFromDir(path + item + "/");
+			load_from_dir(path + item + "/");
 
-func Add(item: Item) -> void:
+func add(item: Item) -> void:
 	var list = []
-	var cat = Category.Item;
+	var cat = Category.ITEM
 
 	if item is Equipment:
-		list = Equipment;
-		cat = Category.Equipment;
+		list = equipment;
+		cat = Category.EQUIPMENT;
 	
 	elif item is KeyItem:
 		list = key_items;
-		cat = Category.KeyItem;
+		cat = Category.KEYITEM;
 	elif item is SpellScroll:
 		list = spell_scrolls;
-		cat = Category.SpellScroll;
+		cat = Category.SPELLSCROLL;
 
 	var index = list.binary_search(item);
 
 	if list[index] == item:
-		if list[index].TryCombine(item):
-			QuantityChanged.emit(list[index], cat)
+		if list[index].try_combine(item):
+			quantity_changed.emit(list[index], cat)
 	else:
-		list.Insert(index, item);
-		QuantityChanged.emit(list[index], cat)
+		list.insert(index, item);
+		quantity_changed.emit(list[index], cat)
 
-func Remove(item: Item, amount: int=-1) -> Item:
+func remove(item: Item, amount: int=-1) -> Item:
 	var list = []
-	var cat = Category.Item;
+	var cat = Category.ITEM;
 	if item is Equipment:
 		list = equipment;
-		cat = Category.Equipment;
+		cat = Category.EQUIPMENT;
 	
 	elif item is KeyItem:
 		list = key_items;
-		cat = Category.KeyItem;
+		cat = Category.KEYITEM;
 
 	elif item is SpellScroll:
 		list = spell_scrolls;
-		cat = Category.SpellScroll;
+		cat = Category.SPELLSCROLL;
 	
 	else: list = items;
 
-	var index = list.BinarySearch(item);
+	var index = list.binary_search(item);
 	if list[index] == item:
 		var output = list[index];
 		list.remove_at(index);
-		QuantityChanged.emit(output, cat)
+		quantity_changed.emit(output, cat)
 		return output;
 	return null;
 

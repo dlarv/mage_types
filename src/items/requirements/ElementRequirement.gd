@@ -6,9 +6,9 @@ class_name ElementRequirement
 var element: ElementalType ;
 
 # override
-func Check(actor):
+func check(actor):
 	if(actor is BaseCompanion):
-		actor = actor.BattleActor
+		actor = actor.battle_actor
 	if(actor is Player):
-		actor = actor.BattleActor
-	return actor != null and (actor.Element1 == element or actor.Element2 == element);
+		actor = actor.battle_actor
+	return actor != null and (actor.element1 == element or actor.element2 == element);

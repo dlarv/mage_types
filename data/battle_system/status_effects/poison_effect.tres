@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_5jwvx")
-Duration = 3
-Icon = ExtResource("1_8g1qy")
-Description = ""
-Name = "Poison"
-Chance = 100.0
-Strength = 0.1
-Message = "{target} was poisoned!"
+duration = 3
+icon = ExtResource("1_8g1qy")
+description = ""
+name = "Poison"
+chance = 1.0
+strength = 0.1
+message = "{target} was poisoned!"

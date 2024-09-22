@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/StatChangeDisplay.gd" id="1_lghwg"]
 
-[node name="StatChangeDisplay" type="HBoxContainer" node_paths=PackedStringArray("mAttack", "rAttack", "mDefense", "rDefense", "speed", "evasion")]
+[node name="StatChangeDisplay" type="HBoxContainer" node_paths=PackedStringArray("melee_attack", "ranged_attack", "melee_defense", "ranged_defense", "speed", "evasion")]
 custom_minimum_size = Vector2(0, 50)
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,10 +12,10 @@ grow_vertical = 2
 size_flags_horizontal = 2
 theme_override_constants/separation = 5
 script = ExtResource("1_lghwg")
-mAttack = NodePath("MeleeAttack")
-rAttack = NodePath("RangedAttack")
-mDefense = NodePath("MeleeDefense")
-rDefense = NodePath("RangedDefense")
+melee_attack = NodePath("MeleeAttack")
+ranged_attack = NodePath("RangedAttack")
+melee_defense = NodePath("MeleeDefense")
+ranged_defense = NodePath("RangedDefense")
 speed = NodePath("Speed")
 evasion = NodePath("Evasion")
 

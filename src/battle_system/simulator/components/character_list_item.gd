@@ -17,9 +17,9 @@ func _ready():
 
 func create(character):
 	self.character = character
-	name_display.text = character.ActorName
-	element1_display.color = character.Element1.MainColor
-	element2_display.color = character.Element2.MainColor
+	name_display.text = character.name
+	element1_display.color = character.element1.main_color
+	element2_display.color = character.element2.main_color
 
 	return delete_button
 

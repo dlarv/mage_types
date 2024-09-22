@@ -4,12 +4,13 @@ class_name StatChange
 
 # How each stack increases.
 const STACK_MODIFIER: float = 0.3
-var Stack: float = STACK_MODIFIER
+var stack: float = STACK_MODIFIER
 
 # override
-func Combine(a):
-	Duration = a.Duration
-	Stack += STACK_MODIFIER * (a.Strength / abs(a.Strength))
+func combine(a):
+	duration = a.duration
+	stack += STACK_MODIFIER * (a.strength / abs(a.strength))
 
-func GetMod():
-	return Stack * Strength + 1
+func get_mod():
+	return stack * strength + 1
+

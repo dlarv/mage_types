@@ -30,4 +30,4 @@ size_flags_vertical = 3
 toggle_mode = true
 text = "Text"
 
-[connection signal="toggled" from="Button" to="." method="OnPressed"]
+[connection signal="toggled" from="Button" to="." method="_on_pressed"]

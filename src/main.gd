@@ -2,5 +2,5 @@ extends Node
 
 func main():
 	# ElementManager
-	var e = ElementManager.Elements
+	var e = ElementManager.elements
 	print(e)

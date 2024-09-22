@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_etnfn")
-Name = "Yellow"
-MainColor = Color(1, 1, 0, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
+name = "Yellow"
+main_color = Color(1, 1, 0, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = []

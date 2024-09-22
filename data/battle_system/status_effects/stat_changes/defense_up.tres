@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_t6ph7")
-Duration = 3
-Description = ""
-Name = "Defense"
-Chance = 1.0
-Strength = 1.0
-Message = ""
+duration = 3
+description = ""
+name = "Defense"
+chance = 1.0
+strength = 0.3
+message = "{target} melee defense was boosted!
+{target} ranged defense was boosted!"

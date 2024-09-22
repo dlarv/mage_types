@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://2qmk37nb8emu" path="res://data/player/companions/alice_companion.tscn" id="2_xp5nw"]
 [ext_resource type="PackedScene" uid="uid://dthnhw8o26nkm" path="res://data/player/companions/alex_companion.tscn" id="3_lrh5x"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="3_uwj2q"]
-[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="5_f8qdw"]
+[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="5_up0s1"]
 [ext_resource type="Resource" uid="uid://bh5734pj5bgq3" path="res://data/player/battle_actors/alex_battle_actor.tres" id="7_a2pba"]
 
 [node name="PlayerParty" type="Node3D" node_paths=PackedStringArray("player", "companions")]
@@ -25,14 +25,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51065, 0, -1.82536)
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
 
-[node name="Alice" parent="." node_paths=PackedStringArray("PlayerTarget") instance=ExtResource("2_xp5nw")]
+[node name="Alice" parent="." node_paths=PackedStringArray("player_target") instance=ExtResource("2_xp5nw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14008, 0, -2.0142)
-PlayerTarget = NodePath("../Player/AliceTarget")
-battle_actor = ExtResource("5_f8qdw")
-Speed = 10.0
+player_target = NodePath("../Player/AliceTarget")
+battle_actor = ExtResource("5_up0s1")
 
-[node name="Alex" parent="." node_paths=PackedStringArray("PlayerTarget") instance=ExtResource("3_lrh5x")]
+[node name="Alex" parent="." instance=ExtResource("3_lrh5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51065, 0, -1.82536)
-PlayerTarget = NodePath("../Player/AlexTarget")
+player_target = NodePath("../Player/AlexTarget")
 battle_actor = ExtResource("7_a2pba")
-Speed = 10.0
+speed = 10.0

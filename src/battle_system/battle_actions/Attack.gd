@@ -4,42 +4,33 @@ class_name Attack
 
 @export
 # Effect[]
-var Effects: Array[Effect] = []
+var effects: Array[Effect] = []
 @export
-var Cost : int 
-
-# public static Attack Create(string name, ElementalType element, int power, int range, string description="") {
-# 	Attack output = new Attack()
-# 	output.Name = name
-# 	output.Element = element
-# 	output.Range = (AttackRange)range
-# 	output.Details = description
-# 	return output
-# }
+var cost : int 
 
 # override
-func ApplyEffects(user, targets):
-	var msg = super.ApplyEffects(user, targets)
+func apply_effects(user, targets):
+	var msg = super.apply_effects(user, targets)
 	for i in range(len(targets)):
 		var target = targets[i]
 
-		for effect in Effects:
+		for effect in effects:
 			var rand = randf_range(0.0, 1.0)
 
-			if rand <= effect.Chance:
-				msg += "\n%s" % [ effect.attack_effect.ApplyEffect(user, target, self) ]
+			if rand <= effect.chance:
+				msg += "\n%s" % [ effect.attack_effect.apply_effect(user, target, self) ]
 				# Add status effect icon.
 				if effect.attack_effect is Damage:
 					# Check if character was defeated.
-					if target.Defeated:
-						msg += "........%s was defeated." % target.ActorName
+					if target.is_defeated:
+						msg += "........%s was defeated." % target.name
 						continue
 	return msg
 
 # override
-func IsActionAvailable(actor):
-	return actor.Mana >= Cost
+func is_action_available(actor):
+	return actor.mana >= cost
 
 # override
-func ApplyCost(user):
-	user.Mana -= Cost
+func apply_cost(user):
+	user.mana -= cost

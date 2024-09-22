@@ -6,9 +6,9 @@ class_name BiasRequirement
 var element: ElementalType ;
 
 # override
-func Check(actor):
+func check(actor):
 	if(actor is BaseCompanion):
-		actor = actor.BattleActor
+		actor = actor.battle_actor
 	if(actor is Player):
-		actor = actor.BattleActor
-	return actor != null && actor.ElementalBias == element;
+		actor = actor.battle_actor
+	return actor != null && actor.elemental_bias == element;

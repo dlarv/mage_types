@@ -6,6 +6,6 @@ class_name StatusHeal
 var effect: StatusEffect 
 
 # override
-func ApplyEffect(user, target=null, action=null):
-	target.RemoveStatusEffect(Effect)
-	return "%s was healed from %s." % [ target.ActorName, effect.Name ]
+func apply_effect(user, target=null, action=null, duplicated_effect=null):
+	target.remove_status_effect(Effect)
+	return "%s was healed from %s." % [ target.name, effect.name ]

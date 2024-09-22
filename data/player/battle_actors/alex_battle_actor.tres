@@ -1,37 +1,32 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bh5734pj5bgq3"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://bh5734pj5bgq3"]
 
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="1_cre2a"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_s6y24"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_skdfi"]
+[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="2_fwsf3"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_vrqin"]
-[ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="5_kvyem"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_acnq6"]
+[ext_resource type="Resource" uid="uid://da27irgqjb8ob" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_attack_up.tres" id="4_kq6mw"]
+[ext_resource type="Resource" uid="uid://j7kja5ijt2a" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_defense_down.tres" id="5_yatqe"]
 
-[sub_resource type="Resource" id="Resource_t4n4r"]
+[sub_resource type="Resource" id="Resource_5ne4w"]
 script = ExtResource("2_vrqin")
-Name = "Blank"
-MainColor = Color(0.5, 0.5, 0.5, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
-
-[sub_resource type="Resource" id="Resource_rxe3j"]
-script = ExtResource("2_vrqin")
-Name = "blank"
-MainColor = Color(0.5, 0.5, 0.5, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = []
 
 [resource]
 script = ExtResource("1_s6y24")
-ActorName = "Alex"
-Hp = 200
-MeleeAttack = 100
-RangedAttack = 100
-MeleeDefense = 100
-RangedDefense = 100
-Speed = 100
-Evasion = 100
-Mana = 100
-Element1 = ExtResource("5_kvyem")
-Element2 = SubResource("Resource_t4n4r")
-ElementalBias = SubResource("Resource_rxe3j")
-Attacks = Array[ExtResource("1_skdfi")]([ExtResource("1_cre2a")])
+name = "Alex"
+hp = 300
+melee_attack = 50
+ranged_attack = 100
+melee_defense = 100
+ranged_defense = 100
+speed = 100
+evasion = 100
+mana = 100
+_element1 = "blue"
+_element2 = "blank"
+elemental_bias = SubResource("Resource_5ne4w")
+attacks = Array[ExtResource("1_skdfi")]([ExtResource("2_fwsf3"), ExtResource("3_acnq6"), ExtResource("4_kq6mw"), ExtResource("5_yatqe")])
