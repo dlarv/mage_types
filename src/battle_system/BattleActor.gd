@@ -13,7 +13,9 @@ signal damage_applied(hp);
 signal element_changed(id, element);
 
 @export
-var name : String = "Guy"; 
+var name : String = "Guy" 
+var level: int = 1
+var xp: float = 0
 
 @export_category("Stats")
 var statuses = StatusEffectManager.new();

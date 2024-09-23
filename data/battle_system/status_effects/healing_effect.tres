@@ -10,5 +10,5 @@ icon = ExtResource("1_f85tx")
 description = ""
 name = "Healing"
 chance = 1.0
-strength = 0.0
-message = ""
+strength = 0.1
+message = "{target} is wrapped in a healing aura!"

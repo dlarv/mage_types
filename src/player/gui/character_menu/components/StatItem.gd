@@ -58,7 +58,7 @@ var upButton: Button
 var downButton: Button 
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
+	if not Engine.is_editor_hint():
 		Settings.debug_mode_toggled.connect(func(val): debug_mode = val)
 
 func increment_stat(direction: int) -> void:

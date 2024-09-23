@@ -37,7 +37,7 @@ layout_mode = 2
 [node name="InterfaceContainer" type="TabContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 2
 
 [node name="Info" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
 visible = false
@@ -96,6 +96,7 @@ value = 50.0
 show_percentage = false
 
 [node name="Stats" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -148,13 +149,39 @@ layout_mode = 2
 text = "Stamina"
 
 [node name="Spells" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 2
+
+[node name="MoveSet" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
+layout_mode = 2
+text = "Spells:"
+
+[node name="Slot1" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Slot2" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Slot3" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Slot4" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Slot5" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Equipment" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
 visible = false

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://src/player/gui/character_menu/components/StatItem.gd" id="1_8hlo5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrrkk"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ijqt"]
 bg_color = Color(0.00820202, 0.00820202, 0.00820202, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrrkk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="StatItem" type="Control" node_paths=PackedStringArray("nameLabel", "numberLabel", "upButton", "downButton")]
 layout_mode = 3
@@ -17,7 +17,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_8hlo5")
-DebugMode = false
 nameLabel = NodePath("HBoxContainer/LabelContainer/Label")
 numberLabel = NodePath("HBoxContainer/NumberContainer/Number")
 upButton = NodePath("HBoxContainer/VBoxContainer/UpButton")
@@ -63,8 +62,8 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_hrrkk")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_0ijqt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrkk")
 text = "0"
 alignment = 2
 editable = false
