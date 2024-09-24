@@ -130,6 +130,11 @@ func set_element(id: int, element: ElementalType) -> String:
 		msg += "%s was healed by its philia! (%d hp)" % [ name, dmg ]
 	return msg;
 
+func learn_spell(index: int, spell: Attack):
+	if index >= len(attacks):
+		attacks.resize(index + 1)
+	attacks[index] = spell
+
 func use_gradient_sprite()-> void:
 	sprite = Sprite.new();
 	sprite.set_gradient_sprite(element1, element2);

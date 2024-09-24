@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bydn5qav2dgwy"]
+[gd_scene load_steps=10 format=3 uid="uid://bydn5qav2dgwy"]
 
 [ext_resource type="PackedScene" uid="uid://cwy6xlvmbrhjj" path="res://src/player/gui/character_menu/character_screen.tscn" id="1_ebiem"]
 [ext_resource type="Script" path="res://src/player/gui/CharactersMenu.gd" id="1_oje6s"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="3_67vyo"]
 [ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="3_dxhqu"]
 [ext_resource type="Resource" uid="uid://bh5734pj5bgq3" path="res://data/player/battle_actors/alex_battle_actor.tres" id="5_07e8o"]
+[ext_resource type="Script" path="res://src/player/Movepool.gd" id="6_7owod"]
+[ext_resource type="Script" path="res://src/player/MovepoolSlot.gd" id="7_sdaaj"]
+[ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="8_4xaes"]
+
+[sub_resource type="Resource" id="Resource_8dimj"]
+script = ExtResource("7_sdaaj")
+level_lock = -1
+scroll = ExtResource("8_4xaes")
 
 [node name="CharactersMenu" type="Control" node_paths=PackedStringArray("activeScreensParent", "inactiveScreensParent", "aliceScreen", "alexScreen")]
 layout_mode = 3
@@ -33,21 +41,24 @@ theme_override_constants/margin_top = 10
 layout_mode = 2
 current_tab = 0
 
-[node name="Player" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
+[node name="Player" parent="MarginContainer/ActiveTabs" node_paths=PackedStringArray("movepool") instance=ExtResource("1_ebiem")]
 layout_mode = 2
 actor = ExtResource("3_67vyo")
+movepool = NodePath("../../../PlayerMovepool")
 metadata/_tab_index = 0
 
-[node name="Alice" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
+[node name="Alice" parent="MarginContainer/ActiveTabs" node_paths=PackedStringArray("movepool") instance=ExtResource("1_ebiem")]
 visible = false
 layout_mode = 2
 actor = ExtResource("3_dxhqu")
+movepool = NodePath("../../../AliceMovepool")
 metadata/_tab_index = 1
 
-[node name="Alex" parent="MarginContainer/ActiveTabs" instance=ExtResource("1_ebiem")]
+[node name="Alex" parent="MarginContainer/ActiveTabs" node_paths=PackedStringArray("movepool") instance=ExtResource("1_ebiem")]
 visible = false
 layout_mode = 2
 actor = ExtResource("5_07e8o")
+movepool = NodePath("../../../AlexMovepool")
 metadata/_tab_index = 2
 
 [node name="InactiveTabs" type="Control" parent="."]
@@ -56,3 +67,15 @@ layout_mode = 2
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+
+[node name="PlayerMovepool" type="Node" parent="."]
+script = ExtResource("6_7owod")
+slots = Array[ExtResource("7_sdaaj")]([SubResource("Resource_8dimj")])
+
+[node name="AliceMovepool" type="Node" parent="."]
+script = ExtResource("6_7owod")
+slots = null
+
+[node name="AlexMovepool" type="Node" parent="."]
+script = ExtResource("6_7owod")
+slots = null

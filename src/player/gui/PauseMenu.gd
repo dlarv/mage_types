@@ -6,6 +6,9 @@ var inventoryScreen: InventoryScreen
 @export
 var world: Node3D 
 
+func init_movepool(id: int, movepool: Movepool):
+	pass
+
 func init_inventory(inventory: Inventory) -> void:
 	inventoryScreen.setup(inventory)
 

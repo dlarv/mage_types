@@ -2,7 +2,7 @@
 extends Node 
 class_name Inventory 
 
-enum Category { ITEM, EQUIPMENT, SPELLSCROLL, KEYITEM }
+enum Category { REGULAR_ITEM, EQUIPMENT, SPELLSCROLL, KEYITEM }
 
 # NOTE: This is not called when loading from filesystem.
 signal quantity_changed(item, amount);
@@ -67,7 +67,12 @@ func load_from_dir(path: String) -> void:
 				key_items.append(res);
 			elif res is SpellScroll:
 				spell_scrolls.append(res);
-			elif res is Item:
+			elif res is RegularItem:
+				var battleItem = res.battle_item; 
+				if battleItem != null:
+					battleItems.append(battleItem);
+					if battleItem.is_consumable:
+						battleItem.item_consumed.connect(func(): quantity_changed.emit(res, res.quantity))
 				items.append(res);
 			else:
 				print(" is not an item, skipping" % res);
@@ -76,17 +81,12 @@ func load_from_dir(path: String) -> void:
 			res.update_id(next_id);
 			next_id += 1
 
-			var battleItem = res.battle_item; 
-			if battleItem != null:
-				battleItems.append(battleItem);
-				if battleItem.is_consumable:
-					battleItem.item_consumed.connect(func(): quantity_changed.emit(res, res.quantity))
 		elif len(item) != 0 and dir.dir_exists(item):
 			load_from_dir(path + item + "/");
 
 func add(item: Item) -> void:
 	var list = []
-	var cat = Category.ITEM
+	var cat = Category.REGULAR_ITEM
 
 	if item is Equipment:
 		list = equipment;
@@ -95,6 +95,7 @@ func add(item: Item) -> void:
 	elif item is KeyItem:
 		list = key_items;
 		cat = Category.KEYITEM;
+
 	elif item is SpellScroll:
 		list = spell_scrolls;
 		cat = Category.SPELLSCROLL;
@@ -110,7 +111,7 @@ func add(item: Item) -> void:
 
 func remove(item: Item, amount: int=-1) -> Item:
 	var list = []
-	var cat = Category.ITEM;
+	var cat = Category.REGULAR_ITEM;
 	if item is Equipment:
 		list = equipment;
 		cat = Category.EQUIPMENT;

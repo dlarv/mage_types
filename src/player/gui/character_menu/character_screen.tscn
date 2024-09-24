@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwy6xlvmbrhjj"]
+[gd_scene load_steps=6 format=3 uid="uid://cwy6xlvmbrhjj"]
 
 [ext_resource type="Script" path="res://src/player/gui/character_menu/CharacterScreen.gd" id="1_djrqu"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_cetjj"]
 [ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="2_i8dsj"]
+[ext_resource type="PackedScene" uid="uid://b035qwjaysn7d" path="res://src/player/gui/movepool/spells_menu.tscn" id="4_f40yp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vlcv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="CharacterScreen" type="Control" node_paths=PackedStringArray("nameLabel", "elementIcon1", "elementIcon2", "biasIcon", "statItemsScroller")]
+[node name="CharacterScreen" type="Control" node_paths=PackedStringArray("nameLabel", "elementIcon1", "elementIcon2", "biasIcon", "statItemsScroller", "spells_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +22,7 @@ elementIcon1 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/V
 elementIcon2 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType/ElementIcon2")
 biasIcon = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/BiasIcon")
 statItemsScroller = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer")
+spells_menu = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Spells")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -148,39 +150,7 @@ text = "Evasion"
 layout_mode = 2
 text = "Stamina"
 
-[node name="Spells" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-metadata/_tab_index = 2
-
-[node name="MoveSet" type="VBoxContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
-layout_mode = 2
-text = "Spells:"
-
-[node name="Slot1" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Slot2" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Slot3" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Slot4" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Slot5" type="Button" parent="MarginContainer/HBoxContainer/InterfaceContainer/Spells/MoveSet"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Spells" parent="MarginContainer/HBoxContainer/InterfaceContainer" instance=ExtResource("4_f40yp")]
 layout_mode = 2
 
 [node name="Equipment" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
@@ -205,16 +175,3 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 5
-
-[node name="DisplayContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/DisplayContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/DisplayContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true

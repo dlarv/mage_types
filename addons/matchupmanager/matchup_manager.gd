@@ -19,7 +19,6 @@ func _ready():
 		items[[matchup[0], matchup[1]]] = item
 
 		item.buff_selected.connect(func(index):
-			print(index)
 			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, true))
 		item.debuff_selected.connect(func(index):
 			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, false))

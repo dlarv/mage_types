@@ -1,40 +1,40 @@
-[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://bq5irovryrgo2"]
+[gd_resource type="Resource" script_class="RegularItem" load_steps=9 format=3 uid="uid://bwldq3pk8rvsh"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="1_ar45h"]
-[ext_resource type="Script" path="res://src/items/Item.gd" id="1_jti0u"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_qwm21"]
+[ext_resource type="Script" path="res://src/items/RegularItem.gd" id="1_ut3pp"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_bxomy"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_p15lv"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="3_j7gxb"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="3_3vwkb"]
 
-[sub_resource type="Resource" id="Resource_nmbc1"]
-script = ExtResource("3_j7gxb")
+[sub_resource type="Resource" id="Resource_bh5co"]
+script = ExtResource("3_3vwkb")
 name = ""
 chance = 1.0
 strength = 0.5
 message = ""
 
-[sub_resource type="Resource" id="Resource_ffnms"]
+[sub_resource type="Resource" id="Resource_qqr4i"]
 script = ExtResource("2_bxomy")
-attack_effect = SubResource("Resource_nmbc1")
+attack_effect = SubResource("Resource_bh5co")
 chance = 1.0
 
-[sub_resource type="Resource" id="Resource_01ikr"]
+[sub_resource type="Resource" id="Resource_b15sa"]
 script = ExtResource("1_ar45h")
-effects = Array[ExtResource("2_bxomy")]([SubResource("Resource_ffnms")])
+effects = Array[ExtResource("2_bxomy")]([SubResource("Resource_qqr4i")])
 name = "Healing Potion"
-animation = ExtResource("2_p15lv")
-_element = null
+animation = ExtResource("1_qwm21")
+_element = "blank"
 priority = 0
 attack_range = 0
-target = 0
+target = 1
 details = ""
 
 [resource]
-script = ExtResource("1_jti0u")
-name = "Healing Potion"
-battle_item = SubResource("Resource_01ikr")
-is_consumable = false
+script = ExtResource("1_ut3pp")
+battle_item = SubResource("Resource_b15sa")
+is_consumable = true
 quantity = 2
-max_quantity = 1000
-tags = []
+max_quantity = 9999
+name = "Healing Potion"
 details = ""
+tags = []

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=9 format=3 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_jd6jo"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_0xipm"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="2_tqkyx"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_87jiw"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_pbcfq"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_senr4"]
 
@@ -24,21 +23,22 @@ ranged_defense = 0
 speed = 0
 evasion = 0
 mana = 0
-element1 = ExtResource("2_tqkyx")
-element2 = ExtResource("2_tqkyx")
+_element1 = "blue"
+_element2 = "blank"
 elemental_bias = SubResource("Resource_cxdi8")
-attacks = Array[ExtResource("2_0xipm")]([])
+attacks = Array[ExtResource("2_87jiw")]([])
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_prawd"]
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("movepool") groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_jd6jo")
 battle_actor = SubResource("Resource_rgltg")
+movepool = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_f637b")

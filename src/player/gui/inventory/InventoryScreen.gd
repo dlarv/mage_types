@@ -34,7 +34,7 @@ func _populate_tab(items, scroller):
 		button.name = item.name
 
 		button.set_meta("id", item.id)
-		if item.quantity != -1:
+		if "quantity" in item and item.quantity != -1:
 			button.text = "%s (%d)" % [item.name, item.quantity]
 		else:
 			button.text = "%s" % item.name
@@ -43,7 +43,7 @@ func _populate_tab(items, scroller):
 		button.pressed.connect(func(): item_selected.emit(temp))
 		scroller.add_child(button)
 
-		button.disabled = item.quantity == 0
+		button.disabled = "quantity" in item and item.quantity == 0
 
 func sort_by_id(tab: int=-1) -> void:
 	# This method is called when the user exits from this screen,

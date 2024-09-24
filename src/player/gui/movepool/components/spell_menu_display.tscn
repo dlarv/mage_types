@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://8mmt12j618us"]
+
+[ext_resource type="Script" path="res://src/player/gui/movepool/components/SpellMenuDisplay.gd" id="1_oqpuo"]
+
+[node name="SpellMenuDisplay" type="VBoxContainer" node_paths=PackedStringArray("hbox", "label", "replace_button", "learn_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_oqpuo")
+hbox = NodePath("HBoxContainer")
+label = NodePath("RichTextLabel")
+replace_button = NodePath("HBoxContainer/ReplaceSpell_Button")
+learn_button = NodePath("HBoxContainer/LearnSpell_Button")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Info"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="LearnSpell_Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Learn Spell"
+
+[node name="ReplaceSpell_Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Replace Spell"
+
+[node name="Cancel_Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[connection signal="pressed" from="HBoxContainer/LearnSpell_Button" to="." method="_on_learn_spell_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ReplaceSpell_Button" to="." method="_on_replace_spell_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Cancel_Button" to="." method="_on_cancel_button_pressed"]

@@ -48,3 +48,7 @@ func _physics_process(delta) -> void:
 
 		if enemy.is_in_group("enemy"):
 			battle_started.emit(party, inventory.get_battle_items(), enemy)
+@export_category("Movepool")
+@export
+var movepool: Movepool
+

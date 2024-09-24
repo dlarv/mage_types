@@ -1,13 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=11 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_16dxg"]
+[ext_resource type="Script" path="res://src/items/Item.gd" id="2_ad65x"]
+[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/items/poison_heal.tres" id="3_ho631"]
+[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/items/healing_potion.tres" id="4_8hl52"]
 [ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="5_5hpay"]
-[ext_resource type="Resource" uid="uid://d1uh3xnn8ural" path="res://data/items/spell_scrolls/test_spell_scroll.tres" id="6_xuuq7"]
+[ext_resource type="Script" path="res://src/items/Equipment.gd" id="5_r4a6g"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="7_cxxxa"]
 [ext_resource type="Resource" uid="uid://bc2445kngh7ex" path="res://data/items/key_items/test_key_item.tres" id="7_d6h5x"]
+[ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="8_intll"]
+[ext_resource type="Script" path="res://src/items/KeyItem.gd" id="9_ahgb0"]
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_16dxg")
-Items = []
-Equipment = [ExtResource("5_5hpay")]
-SpellScrolls = [ExtResource("6_xuuq7")]
-KeyItems = [ExtResource("7_d6h5x")]
+items = Array[ExtResource("2_ad65x")]([ExtResource("3_ho631"), ExtResource("4_8hl52")])
+equipment = Array[ExtResource("5_r4a6g")]([ExtResource("5_5hpay")])
+spell_scrolls = Array[ExtResource("7_cxxxa")]([ExtResource("8_intll")])
+key_items = Array[ExtResource("9_ahgb0")]([ExtResource("7_d6h5x")])

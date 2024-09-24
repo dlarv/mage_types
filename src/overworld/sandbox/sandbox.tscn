@@ -1,18 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=9 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://src/player/party/player_party.tscn" id="1_k6oqa"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/actors/enemy_mage.tscn" id="2_1w1kl"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
-[ext_resource type="Script" path="res://src/items/Item.gd" id="4_a7vqy"]
-[ext_resource type="Resource" uid="uid://cernb43lwpkc5" path="res://data/items/items/poison_heal.tres" id="5_3ygnf"]
-[ext_resource type="Script" path="res://src/items/Equipment.gd" id="6_2fwpi"]
-[ext_resource type="Resource" uid="uid://bq5irovryrgo2" path="res://data/items/items/healing_potion.tres" id="6_ades4"]
-[ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="7_armq2"]
-[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="8_8ei6n"]
-[ext_resource type="Resource" uid="uid://d1uh3xnn8ural" path="res://data/items/spell_scrolls/test_spell_scroll.tres" id="9_vg7s4"]
-[ext_resource type="Script" path="res://src/items/KeyItem.gd" id="10_mucra"]
-[ext_resource type="Resource" uid="uid://bc2445kngh7ex" path="res://data/items/key_items/test_key_item.tres" id="11_037on"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/pause_menu.tscn" id="16_p60yf"]
 
@@ -31,10 +22,6 @@ world = NodePath("World")
 pause_menu = NodePath("World/CanvasLayer/PauseMenu")
 
 [node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
-items = Array[ExtResource("4_a7vqy")]([ExtResource("5_3ygnf"), ExtResource("6_ades4")])
-equipment = Array[ExtResource("6_2fwpi")]([ExtResource("7_armq2")])
-spell_scrolls = Array[ExtResource("8_8ei6n")]([ExtResource("9_vg7s4")])
-key_items = Array[ExtResource("10_mucra")]([ExtResource("11_037on")])
 
 [node name="World" type="Node3D" parent="."]
 

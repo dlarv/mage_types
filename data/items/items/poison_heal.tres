@@ -1,42 +1,49 @@
-[gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://cernb43lwpkc5"]
+[gd_resource type="Resource" script_class="RegularItem" load_steps=12 format=3 uid="uid://dwfg404xs0toh"]
 
-[ext_resource type="Script" path="res://src/items/Item.gd" id="1_3hsa5"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_mvt4c"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_15lxo"]
-[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_4v1kk"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="4_2t87g"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="6_ynuqd"]
+[ext_resource type="Script" path="res://src/items/RegularItem.gd" id="1_5llkq"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_q4mom"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_i5ta5"]
+[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_j3o8v"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="4_gxykm"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="5_gbxks"]
+[ext_resource type="Script" path="res://src/items/requirements/StatusEffectRequirement.gd" id="6_4u1fn"]
 
-[sub_resource type="Resource" id="Resource_m1otd"]
-script = ExtResource("4_2t87g")
-effect = ExtResource("3_4v1kk")
+[sub_resource type="Resource" id="Resource_6dv7u"]
+script = ExtResource("4_gxykm")
+effect = ExtResource("3_j3o8v")
 name = ""
 chance = 1.0
 strength = 0.0
 message = ""
 
-[sub_resource type="Resource" id="Resource_5pjjv"]
-script = ExtResource("2_15lxo")
-attack_effect = SubResource("Resource_m1otd")
+[sub_resource type="Resource" id="Resource_8ebqj"]
+script = ExtResource("2_i5ta5")
+attack_effect = SubResource("Resource_6dv7u")
 chance = 1.0
 
-[sub_resource type="Resource" id="Resource_3k7fx"]
-script = ExtResource("6_ynuqd")
-effects = Array[ExtResource("2_15lxo")]([SubResource("Resource_5pjjv")])
+[sub_resource type="Resource" id="Resource_ltitp"]
+script = ExtResource("5_gbxks")
+effects = Array[ExtResource("2_i5ta5")]([SubResource("Resource_8ebqj")])
 name = "Poison Heal"
-animation = ExtResource("1_mvt4c")
-_element = null
+animation = ExtResource("1_q4mom")
+_element = "blank"
 priority = 0
 attack_range = 0
-target = 1
+target = 3
 details = ""
 
+[sub_resource type="Resource" id="Resource_o5h3c"]
+script = ExtResource("6_4u1fn")
+effect = ExtResource("3_j3o8v")
+battle_relevant = true
+
 [resource]
-script = ExtResource("1_3hsa5")
-name = "Poison Heal"
-battle_item = SubResource("Resource_3k7fx")
-is_consumable = false
+script = ExtResource("1_5llkq")
+battle_item = SubResource("Resource_ltitp")
+is_consumable = true
 quantity = 2
-max_quantity = 1000
-tags = []
+max_quantity = 9999
+name = "Poison Heal"
+requirement = SubResource("Resource_o5h3c")
 details = ""
+tags = []
