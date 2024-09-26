@@ -1,25 +1,26 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bxe7rrdwy8tjq"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_gvwcg"]
 [ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_j2g2h"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_2x0qd"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_gm17o"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_lpafr"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_3n6ij"]
 
-[sub_resource type="Resource" id="Resource_qcqe1"]
-script = ExtResource("2_lpafr")
+[sub_resource type="Resource" id="Resource_02dtx"]
+script = ExtResource("3_3n6ij")
 name = ""
 chance = 1.0
 strength = 30.0
 message = ""
 
-[sub_resource type="Resource" id="Resource_tqudu"]
-script = ExtResource("1_gvwcg")
-attack_effect = SubResource("Resource_qcqe1")
+[sub_resource type="Resource" id="Resource_m44uh"]
+script = ExtResource("2_2x0qd")
+attack_effect = SubResource("Resource_02dtx")
 chance = 1.0
+effect_target = 1
 
 [resource]
 script = ExtResource("2_gm17o")
-effects = Array[ExtResource("1_gvwcg")]([SubResource("Resource_tqudu")])
+effects = Array[ExtResource("2_2x0qd")]([SubResource("Resource_m44uh")])
 cost = 5
 name = "Throw"
 animation = ExtResource("1_j2g2h")

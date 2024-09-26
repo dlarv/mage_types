@@ -5,7 +5,7 @@ signal actions_selected(actions)
 signal battle_ended()
 
 @export
-var messageBox: MessageBox 
+var messageBox: RichTextLabel 
 @export
 var ally_display_parent : TeamDisplay 
 @export
@@ -49,9 +49,9 @@ func display_message(msg: String) -> void:
 	messages.append(msg)
 	await messageBox.display_message_blocking(msg)
 
-func display_message_non_blocking(msg: String, obj=null) -> void:
+func display_message_non_blocking(msg) -> void:
 	messages.append(msg)
-	messageBox.display_message_non_blocking(msg, obj)
+	messageBox.display_message_non_blocking(msg)
 
 
 # public void AddStatusEffect(StatusEffect effect, BattleActor target) {
@@ -142,5 +142,5 @@ func _on_show_info(action) -> void:
 		msg = action.name
 	print(msg)
 	
-	display_message_non_blocking("", action)
+	display_message_non_blocking(action)
 

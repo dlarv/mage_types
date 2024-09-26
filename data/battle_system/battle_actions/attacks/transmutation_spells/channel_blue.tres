@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_kilqu"]
 script = ExtResource("2_83fpb")
-_element = null
+_element = "blank"
 element_id = 0
 name = ""
 chance = 1.0
@@ -18,10 +18,11 @@ message = ""
 script = ExtResource("3_whgm4")
 attack_effect = SubResource("Resource_kilqu")
 chance = 1.0
+effect_target = 0
 
 [resource]
 script = ExtResource("1_ti5jx")
-effects = Array[ExtResource("3_whgm4")]([SubResource("Resource_1pv2y")])
+effects = [SubResource("Resource_1pv2y")]
 cost = 10
 name = "Channel Blue"
 animation = ExtResource("2_5bjfv")

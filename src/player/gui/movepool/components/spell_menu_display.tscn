@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8mmt12j618us"]
+[gd_scene load_steps=3 format=3 uid="uid://8mmt12j618us"]
 
 [ext_resource type="Script" path="res://src/player/gui/movepool/components/SpellMenuDisplay.gd" id="1_oqpuo"]
+[ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="2_yistu"]
 
 [node name="SpellMenuDisplay" type="VBoxContainer" node_paths=PackedStringArray("hbox", "label", "replace_button", "learn_button")]
 anchors_preset = 15
@@ -11,7 +12,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_oqpuo")
 hbox = NodePath("HBoxContainer")
-label = NodePath("RichTextLabel")
+label = NodePath("InfoDisplay")
 replace_button = NodePath("HBoxContainer/ReplaceSpell_Button")
 learn_button = NodePath("HBoxContainer/LearnSpell_Button")
 
@@ -19,9 +20,8 @@ learn_button = NodePath("HBoxContainer/LearnSpell_Button")
 layout_mode = 2
 text = "Info"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="InfoDisplay" parent="." instance=ExtResource("2_yistu")]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

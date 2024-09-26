@@ -5,7 +5,7 @@ class_name BattleAction
 # public static BattleAction Flee { get private set } = new()
 
 enum TargetType { SELF, ALLY, ALLIES, ENEMY, ENEMIES }
-enum AttackRange { MELEE, RANGED }
+enum AttackRange { MELEE, RANGED, STATUS }
 
 @export
 var name : String = "Hit"
@@ -18,11 +18,18 @@ var _element: String = "blank":
 	set(value):
 		_element = value
 		element = ElementManager.get_element_from_name(value)
+
 var element: ElementalType = ElementManager.Blank:
 	set(value): 
 		if value == null:
 			value = ElementManager.Blank
 		element = value 
+
+		if "_needs_elemental_effect_override" in self \
+				and self._needs_elemental_effect_override \
+				and self.has_method("elemental_effect_override"):
+			var indirect = self
+			indirect.elemental_effect_override(value)
 @export
 var priority : int = 0
 @export

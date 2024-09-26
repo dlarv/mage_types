@@ -1,30 +1,30 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://camrsusk4heeo"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://camrsusk4heeo"]
 
-[ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="1_dq2v8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_h8gwy"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="1_llchw"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_7w7si"]
 [ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="2_aiyre"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_r8sjh"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_5dodl"]
 
-[sub_resource type="Resource" id="Resource_igxlq"]
-script = ExtResource("1_llchw")
+[sub_resource type="Resource" id="Resource_bbgcm"]
+script = ExtResource("3_5dodl")
 name = ""
 chance = 1.0
 strength = 5000.0
 message = ""
 
-[sub_resource type="Resource" id="Resource_5rrbl"]
-script = ExtResource("2_r8sjh")
-attack_effect = SubResource("Resource_igxlq")
+[sub_resource type="Resource" id="Resource_jpd70"]
+script = ExtResource("2_7w7si")
+attack_effect = SubResource("Resource_bbgcm")
 chance = 1.0
+effect_target = 1
 
 [resource]
 script = ExtResource("1_h8gwy")
-effects = Array[ExtResource("2_r8sjh")]([SubResource("Resource_5rrbl")])
+effects = Array[ExtResource("2_7w7si")]([SubResource("Resource_jpd70")])
 cost = 40
 name = "Desolation"
 animation = ExtResource("2_aiyre")
-element = ExtResource("1_dq2v8")
+_element = "blank"
 priority = 0
 attack_range = 0
 target = 3

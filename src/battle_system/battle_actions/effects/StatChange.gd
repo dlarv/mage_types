@@ -14,3 +14,10 @@ func combine(a):
 func get_mod():
 	return stack * strength + 1
 
+func get_full_name():
+	var output = name
+	if strength < 0:
+		output += " Drop"
+	else:
+		output += " Boost"
+	return output

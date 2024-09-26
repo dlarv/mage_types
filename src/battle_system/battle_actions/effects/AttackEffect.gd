@@ -19,3 +19,6 @@ func apply_effect(user, target=null, action=null, duplicated_effect=null):
 		return message.replace("{user}", user.name).replace("{target}", target.name)
 	else:
 		return ""
+
+func get_full_name():
+	return name

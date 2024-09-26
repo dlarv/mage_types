@@ -1,12 +1,23 @@
-extends RichTextLabel 
-class_name MessageBox 
+extends RichTextLabel
+class_name InfoDisplay
 
 signal message_cleared()
 
 @export
 var button: Button 
+@export
+var tab_container: TabContainer
+@export
+var attack_formatter: Formatter
+@export
+var item_formatter: Formatter
+@export
+var actor_formatter: Formatter
+@export
+var status_effect_formatter: Formatter
 
 func _ready() -> void:
+	tab_container.hide()
 	button.pressed.connect(clear_message)
 
 func display_message_blocking(msg: String) -> void:
@@ -16,41 +27,61 @@ func display_message_blocking(msg: String) -> void:
 
 func display_message_non_blocking(obj) -> void:
 	clear_message()
+	button.hide()
 	if obj is String:
 		append_text(obj)
+	else:
+		format_msg(obj)
 
-	elif obj is Attack:
-		format_attack(obj)
-
-	elif obj is BattleItem:
-		format_item(obj)
-
+func format_msg(obj) -> void:
+	tab_container.show()
+	if obj is Attack:
+		attack_formatter.display(obj)
+	elif obj is Item or obj is BattleItem:
+		item_formatter.display(obj)
 	elif obj is StatusEffect:
-		format_status_effect(obj)
-
+		status_effect_formatter.display(obj)
 	elif obj is BattleActor:
-		format_battle_actor(obj)
+		actor_formatter.display(obj)
 
+func _on_link_clicked(obj) -> void:
+	display_message_non_blocking(obj)
 
-func format_attack(attack: Attack) -> void:
-	append_title(attack.name)
-	append_elemental_type(attack.element)
+# [underline]<title>[/underline]
+func append_title(title: String) -> void:
+	push_underline()
+	append_text(title)
+	pop()
 
-	append_header("Range")
-	append_text(str(attack.attack_range))
+# [bold]<val>[/bold]: 
+func append_header(val: String) -> void:
+	push_bold()
+	append_text(val)
+	pop() # End bold 
+	append_text(": ")
+
+# [color]<element.Name>[/color]\n
+func append_elemental_type(element: ElementalType, msg: String="Element") -> void:
+	append_header(msg)
+	append_elemental_color(element)
 	newline()
 
-	append_header("Cost")
-	append_text(str(attack.cost))
-	newline()
+func append_elemental_color(element: ElementalType):
+	push_color(element.main_color)
+	append_text(element.name)
+	pop() # End color
 
-	if len(attack.details) > 0:
-		append_header("Description")
-		newline()
-		append_text(attack.details)
+func clear_message()-> void:
+	tab_container.hide()
+	button.show()
+	text = ""
+	clear()
 
 
-func format_item(item: BattleItem) -> void:
+func format_item(item: Item) -> void:
+	pass
+
+func format_battle_item(item: BattleItem) -> void:
 	append_title(item.name)
 
 	if item.element != ElementManager.Blank:
@@ -60,13 +91,11 @@ func format_item(item: BattleItem) -> void:
 		append_header("Quantity")
 		append_text(str(item.quantity))
 		newline()
-
 	
 	if len(item.details) > 0:
 		append_header("Description")
 		newline()
 		append_text(item.details)
-
 
 func format_status_effect(effect: StatusEffect) -> void:
 	append_title(effect.name)
@@ -123,31 +152,5 @@ func format_battle_actor(actor: BattleActor) -> void:
 	newline()
 	append_header("Attacks")
 	newline()
-	for attack in actor.attacks:
-		format_attack(attack)
-
-# [underline]<title>[/underline]\n
-func append_title(title: String) -> void:
-	push_underline()
-	append_text(title)
-	pop()
-	newline()
-
-# [bold]<val>[/bold]: 
-func append_header(val: String) -> void:
-	push_bold()
-	append_text(val)
-	pop() # End bold 
-	append_text(": ")
-
-# [color]<element.Name>[/color]\n
-func append_elemental_type(element: ElementalType, msg: String="Element") -> void:
-	append_header(msg)
-	push_color(element.main_color)
-	append_text(element.name)
-	pop() # End color
-	newline()
-
-func clear_message()-> void:
-	text = ""
-	clear()
+	# for attack in actor.attacks:
+	# 	format_attack(attack)

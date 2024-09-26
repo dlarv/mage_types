@@ -19,13 +19,16 @@ var element: ElementalType:
 func apply_effect(user, target=null, action=null, duplicated_effect=null):
 	# If self.element is applied in the editor, each time this effect is used will have to be made into
 	# a unique instance. Defining it here allows the creation and editing of new attacks easier.
-	var effect = duplicate()
-	effect.element = action.element
-	var output = super.apply_effect(user, target, action, effect)
-	return output.replace("{element}", effect.element.name)
+	# var effect = duplicate()
+	# effect.element = action.element
+	var output = super.apply_effect(user, target, action)
+	return output.replace("{element}", element.name)
 
 # override
 func instantiate_icon():
 	var output = super.instantiate_icon()
 	output.color = element.main_color
 	return output
+
+func get_full_name():
+	return "[color=%s]%s[/color]-%s" % [element.name, element.name, name]

@@ -3,7 +3,7 @@ extends ItemRequirement
 class_name NameRequirement 
 
 @export
-var requiredName: String ;
+var required_name: String ;
 
 # override
 func check(actor):
@@ -11,4 +11,4 @@ func check(actor):
 		actor = actor.battle_actor
 	if(actor is Player):
 		actor = actor.battle_actor
-	return actor != null and actor.name == requiredName
+	return actor != null and actor.name == required_name

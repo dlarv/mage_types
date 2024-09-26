@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SpellScroll" load_steps=3 format=3 uid="uid://cs6ow5vypdgk2"]
 
 [ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="1_uyuym"]
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_t3si3"]
+[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_ve1vn"]
 
 [resource]
 script = ExtResource("1_uyuym")
-spell = ExtResource("2_t3si3")
-quantity = 1
+spell = ExtResource("2_ve1vn")
 name = "Hit Scroll"
 details = ""
 tags = []
+quantity = 1
