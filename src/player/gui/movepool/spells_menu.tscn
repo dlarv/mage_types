@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://10l6iyehmyos" path="res://src/player/gui/movepool/components/movepool_submenu.tscn" id="3_hplqh"]
 [ext_resource type="PackedScene" uid="uid://8mmt12j618us" path="res://src/player/gui/movepool/components/spell_menu_display.tscn" id="4_sd1mb"]
 
-[node name="SpellsMenu" type="MarginContainer" node_paths=PackedStringArray("tab_container", "movepool_submenu", "display", "moveset_scroller")]
+[node name="SpellsMenu" type="MarginContainer" node_paths=PackedStringArray("tab_container", "movepool_submenu", "display", "moveset_scroller", "popup")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,6 +21,7 @@ tab_container = NodePath("HBoxContainer/TabContainer")
 movepool_submenu = NodePath("HBoxContainer/TabContainer/MovepoolSubmenu")
 display = NodePath("HBoxContainer/SpellMenuDisplay")
 moveset_scroller = NodePath("HBoxContainer/TabContainer/Moveset")
+popup = NodePath("AcceptDialog")
 metadata/_tab_index = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -64,6 +65,10 @@ layout_mode = 2
 [node name="SpellMenuDisplay" parent="HBoxContainer" instance=ExtResource("4_sd1mb")]
 layout_mode = 2
 
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+
+[connection signal="set_spell_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot1" to="." method="_on_set_spell_requested"]
+[connection signal="show_info_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot1" to="." method="_on_show_info" binds= [true]]
 [connection signal="show_info_requested" from="HBoxContainer/TabContainer/MovepoolSubmenu" to="." method="_on_show_info" binds= [false]]
 [connection signal="canceled" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_canceled"]
 [connection signal="replace_spell_requested" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_replace_spell_requested"]

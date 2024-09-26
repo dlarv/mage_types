@@ -14,6 +14,8 @@ var movepool_submenu: Control
 var display: Control
 @export
 var moveset_scroller: VBoxContainer
+@export
+var popup: AcceptDialog
 
 var _button_group: ButtonGroup
 var _actor: BattleActor
@@ -28,6 +30,7 @@ func setup(actor: BattleActor, movepool: Movepool):
 	var index = 0
 	for attack in actor.attacks:
 		add_moveset_slot(attack, index)
+		index += 1
 	
 	var length = DEFAULT_SLOTS_COUNT - moveset_scroller.get_child_count() 
 	while length > 0:
@@ -60,22 +63,34 @@ func remove_moveset_slot():
 	child.clear()
 
 
-func _on_show_info(spell: Attack, replaceSpell=false):
+# Where spell is SpellScroll or Attack.
+func _on_show_info(spell, replaceSpell=false):
 	display.show_info(spell, replaceSpell)
 
 func _on_set_spell_requested(slot):
 	tab_container.current_tab = 1
 
-func _on_spell_menu_display_spell_selected(spell: Attack):
+func _on_spell_menu_display_spell_selected(scroll: SpellScroll):
 	var selected_button = _button_group.get_pressed_button()
 	if selected_button == null: return
 
-	selected_button.set_spell(spell)
 	var index = selected_button.index
-	_actor.learn_spell(index, spell)
 
 	tab_container.current_tab = 0
 	selected_button.set_pressed_no_signal(false)
+	var failed_reqs = _actor.learn_spell(index, scroll)
+
+	if len(failed_reqs) == 0: 
+		selected_button.set_spell(scroll.spell)
+		return
+
+	var msg = "%s cannot learn this spell, as they do not meet certain requirements.\n\nFailed requirements:\n" % _actor.name
+
+	for req in failed_reqs:
+		msg += "%s\n" % req.get_requirement_message()
+
+	popup.dialog_text = msg
+	popup.show()
 
 func _on_spell_menu_display_canceled():
 	var selected_button = _button_group.get_pressed_button()
@@ -86,4 +101,3 @@ func _on_spell_menu_display_canceled():
 
 func _on_spell_menu_display_replace_spell_requested() -> void:
 	tab_container.current_tab = 1
-

@@ -135,10 +135,16 @@ func set_element(id: int, element: ElementalType) -> String:
 		msg += "%s was healed by its philia! (%d hp)" % [ name, dmg ]
 	return msg
 
-func learn_spell(index: int, spell: Attack):
+# Teaches actor spell contained within scroll.
+# If the actor does not meet the requirements, return an array containing the unmet requirements.
+func learn_spell(index: int, scroll: SpellScroll):
 	if index >= len(attacks):
 		attacks.resize(index + 1)
-	attacks[index] = spell
+	
+	var output = scroll.check_requirements(self)
+	if len(output) == 0:
+		attacks[index] = scroll.spell
+	return output
 
 func use_gradient_sprite()-> void:
 	sprite = Sprite.new()

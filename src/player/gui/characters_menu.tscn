@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bydn5qav2dgwy"]
+[gd_scene load_steps=14 format=3 uid="uid://bydn5qav2dgwy"]
 
 [ext_resource type="PackedScene" uid="uid://cwy6xlvmbrhjj" path="res://src/player/gui/character_menu/character_screen.tscn" id="1_ebiem"]
 [ext_resource type="Script" path="res://src/player/gui/CharactersMenu.gd" id="1_oje6s"]
@@ -8,11 +8,23 @@
 [ext_resource type="Script" path="res://src/player/Movepool.gd" id="6_7owod"]
 [ext_resource type="Script" path="res://src/player/MovepoolSlot.gd" id="7_sdaaj"]
 [ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="8_4xaes"]
+[ext_resource type="Resource" uid="uid://b8xmok102kgt2" path="res://data/items/spell_scrolls/desolation_scroll.tres" id="9_h7fs0"]
+[ext_resource type="Resource" uid="uid://bday1iwr3418g" path="res://data/items/spell_scrolls/red_desolation.tres" id="10_o1ew6"]
 
 [sub_resource type="Resource" id="Resource_8dimj"]
 script = ExtResource("7_sdaaj")
 level_lock = -1
 scroll = ExtResource("8_4xaes")
+
+[sub_resource type="Resource" id="Resource_je84w"]
+script = ExtResource("7_sdaaj")
+level_lock = -1
+scroll = ExtResource("9_h7fs0")
+
+[sub_resource type="Resource" id="Resource_n25s3"]
+script = ExtResource("7_sdaaj")
+level_lock = -1
+scroll = ExtResource("10_o1ew6")
 
 [node name="CharactersMenu" type="Control" node_paths=PackedStringArray("activeScreensParent", "inactiveScreensParent", "aliceScreen", "alexScreen")]
 layout_mode = 3
@@ -70,7 +82,7 @@ offset_bottom = 648.0
 
 [node name="PlayerMovepool" type="Node" parent="."]
 script = ExtResource("6_7owod")
-slots = Array[ExtResource("7_sdaaj")]([SubResource("Resource_8dimj")])
+slots = Array[ExtResource("7_sdaaj")]([SubResource("Resource_8dimj"), SubResource("Resource_je84w"), SubResource("Resource_n25s3")])
 
 [node name="AliceMovepool" type="Node" parent="."]
 script = ExtResource("6_7owod")

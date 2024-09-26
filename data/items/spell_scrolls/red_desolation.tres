@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=6 format=3 uid="uid://bday1iwr3418g"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_s5pp5"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_i334r"]
+[ext_resource type="Script" path="res://src/items/requirements/BiasRequirement.gd" id="2_jhoum"]
+[ext_resource type="Resource" uid="uid://camrsusk4heeo" path="res://data/battle_system/battle_actions/attacks/desolation.tres" id="4_408qi"]
+
+[sub_resource type="Resource" id="Resource_j4fj1"]
+script = ExtResource("2_jhoum")
+_element = "red"
+battle_relevant = false
+
+[resource]
+script = ExtResource("2_i334r")
+spell = ExtResource("4_408qi")
+name = "Blood Pact"
+requirements = Array[ExtResource("1_s5pp5")]([SubResource("Resource_j4fj1")])
+details = ""
+tags = []
+quantity = 1

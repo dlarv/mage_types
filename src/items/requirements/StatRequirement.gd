@@ -14,3 +14,6 @@ func check(actor):
 	if(actor is Player):
 		actor = actor.battle_actor
 	return actor != null and actor.get_stat(stat) >= threshold
+
+func get_failure_message():
+	return "%s stat must be %d or higher." % [BattleActor.Stats.keys()[stat], threshold]

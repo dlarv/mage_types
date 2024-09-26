@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RegularItem" load_steps=12 format=3 uid="uid://dwfg404xs0toh"]
+[gd_resource type="Resource" script_class="RegularItem" load_steps=13 format=3 uid="uid://dwfg404xs0toh"]
 
 [ext_resource type="Script" path="res://src/items/RegularItem.gd" id="1_5llkq"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_q4mom"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="4_gxykm"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="5_gbxks"]
 [ext_resource type="Script" path="res://src/items/requirements/StatusEffectRequirement.gd" id="6_4u1fn"]
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="6_f4wql"]
 
 [sub_resource type="Resource" id="Resource_6dv7u"]
 script = ExtResource("4_gxykm")
@@ -33,7 +34,7 @@ attack_range = 0
 target = 3
 details = ""
 
-[sub_resource type="Resource" id="Resource_o5h3c"]
+[sub_resource type="Resource" id="Resource_ug1b0"]
 script = ExtResource("6_4u1fn")
 effect = ExtResource("3_j3o8v")
 battle_relevant = true
@@ -44,7 +45,7 @@ battle_item = SubResource("Resource_ltitp")
 is_consumable = true
 max_quantity = 9999
 name = "Poison Heal"
-requirement = SubResource("Resource_o5h3c")
+requirements = Array[ExtResource("6_f4wql")]([SubResource("Resource_ug1b0")])
 details = ""
 tags = []
 quantity = 3

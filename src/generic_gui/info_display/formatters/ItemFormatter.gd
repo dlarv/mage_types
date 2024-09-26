@@ -78,7 +78,9 @@ func display_battle_item(item: BattleItem):
 	details_label.newline()
 	_format_attack_effects(item.effects, details_label)
 
-	_format_requirement(item.requirement)
+	for req in item.requirements:
+		_format_requirement(req)
+		req_label.newline()
 
 func display_key_item(item: KeyItem):
 	id_label.hide()

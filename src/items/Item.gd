@@ -6,7 +6,7 @@ var id : int
 @export 
 var name: String: set = _set_name
 @export
-var requirement: ItemRequirement: set = _set_requirement
+var requirements: Array[ItemRequirement]: set = _set_requirement
 @export
 var details: String: set = _set_details
 @export
@@ -18,9 +18,14 @@ var _quantity: int
 func update_id(id):
 	self.id = id
 
-
-# public int CompareTo(Item other) {
-# 	return this.Id.CompareTo(other.Id)
+# Checks whether the actor matches all of the requirements.
+# If the actor does not meet the requirements, return an array containing the unmet requirements.
+func check_requirements(actor: BattleActor):
+	var output = []
+	for req in requirements:
+		if not req.check(actor):
+			output.append(req)
+	return output
 
 func _set_name(value):
 	name = value
@@ -29,7 +34,7 @@ func _set_details(value):
 	details = value
 
 func _set_requirement(value):
-	requirement = value
+	requirements = value
 
 func _set_quantity(value):
 	if value > 1:

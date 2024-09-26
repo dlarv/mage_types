@@ -6,4 +6,8 @@ class_name ItemRequirement
 var battle_relevant : bool 
 
 # abstract
-func check(companion) -> bool: return true
+func check(companion) -> bool: 
+	return true
+
+func get_requirement_message():
+	return ""

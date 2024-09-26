@@ -3,7 +3,7 @@ extends ItemRequirement
 class_name ElementRequirement 
 
 @export
-var element: ElementalType ;
+var element: ElementalType 
 
 # override
 func check(actor):
@@ -11,4 +11,7 @@ func check(actor):
 		actor = actor.battle_actor
 	if(actor is Player):
 		actor = actor.battle_actor
-	return actor != null and (actor.element1 == element or actor.element2 == element);
+	return actor != null and (actor.element1 == element or actor.element2 == element)
+
+func get_requirement_message():
+	return "Either primary or secondary element must be %s." % element.name

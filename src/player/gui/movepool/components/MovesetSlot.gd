@@ -19,7 +19,8 @@ func set_spell(attack):
 
 	if pressed.is_connected(_on_empty_slot_pressed):
 		pressed.disconnect(_on_empty_slot_pressed)
-	pressed.connect(_on_filled_slot_pressed)
+	if not pressed.is_connected(_on_filled_slot_pressed):
+		pressed.connect(_on_filled_slot_pressed)
 
 
 func clear():
@@ -28,9 +29,8 @@ func clear():
 
 	if pressed.is_connected(_on_filled_slot_pressed):
 		pressed.disconnect(_on_filled_slot_pressed)
-	if pressed.is_connected(_on_empty_slot_pressed):
-		pressed.disconnect(_on_empty_slot_pressed)
-	pressed.connect(_on_empty_slot_pressed)
+	if not pressed.is_connected(_on_empty_slot_pressed):
+		pressed.connect(_on_empty_slot_pressed)
 
 
 func _on_filled_slot_pressed():

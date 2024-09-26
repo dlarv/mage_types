@@ -238,6 +238,9 @@ func load_from_default_csv()-> void:
 	var data = file.get_as_text()
 	load_from_csv(data)
 
+func is_blank(element: ElementalType):
+	return element == null or element.name == Blank.name
+
 class ElementalNode:
 	var element : ElementalType = ElementManager.Blank
 	# Dict<ElementalType, Edge>

@@ -49,8 +49,12 @@ func _set_details(value):
 
 func _set_requirement(value):
 	super._set_requirement(value)
-	if battle_item != null and value.battle_relevant:
-		battle_item.requirement = value
+	if battle_item == null: return
+
+	battle_item.requirements = []
+	for req in value:
+		if req.battle_relevant:
+			battle_item.requirements.append(req)
 
 func _set_quantity(value):
 	if value > max_quantity:

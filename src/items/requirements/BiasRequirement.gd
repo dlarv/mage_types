@@ -2,8 +2,18 @@
 extends ItemRequirement 
 class_name BiasRequirement 
 
-@export
-var element: ElementalType ;
+@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
+var _element: String = "blank":
+	get:
+		return _element
+	set(value):
+		_element = value
+		element = ElementManager.get_element_from_name(value)
+var element: ElementalType = ElementManager.Blank:
+	set(value): 
+		if value == null:
+			value = ElementManager.Blank
+		element = value 
 
 # override
 func check(actor):
@@ -11,4 +21,12 @@ func check(actor):
 		actor = actor.battle_actor
 	if(actor is Player):
 		actor = actor.battle_actor
-	return actor != null && actor.elemental_bias == element;
+	# If the bias is Blank, this acts like a wildcard.
+	if element.is_blank():
+		return actor != null and not actor.elemental_bias.is_blank()
+	return actor != null and actor.elemental_bias == element
+
+func get_requirement_message():
+	if element == ElementManager.Blank:
+		return "Must have an Elemental alignment."
+	return "Must be %s-aligned." % element.name

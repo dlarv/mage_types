@@ -4,9 +4,9 @@ class_name BattleItem
 
 signal item_consumed()
 
-var is_consumable : bool = true
-var quantity : int 
-var requirement : ItemRequirement = null
+var is_consumable: bool = true
+var quantity: int 
+var requirements: Array[ItemRequirement] = [] 
 
 @export
 var effects: Array[Effect] = []
@@ -39,9 +39,14 @@ func apply_effects(user: BattleActor, targets) -> String:
 # Override
 func is_action_available(actor: BattleActor) -> bool:
 	if(is_consumable and quantity == 0): return false
-	if(requirement == null): return true
+	if(requirements == null): return true
+	if len(requirements) == 0: return true
 
-	return requirement.check(actor)
+	for req in requirements:
+		if not req.check(actor):
+			return false
+	return true
+
 # override
 func apply_cost(user: BattleActor) -> void:
 	if is_consumable:

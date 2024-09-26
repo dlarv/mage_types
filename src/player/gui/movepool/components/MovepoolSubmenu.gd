@@ -13,6 +13,6 @@ func setup(movepool: Movepool):
 		button.visible = slot.quantity == 1
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
-		button.pressed.connect(func(): show_info_requested.emit(slot.spell))
+		button.pressed.connect(func(): show_info_requested.emit(slot.scroll))
 		
 		scroller.add_child(button)
