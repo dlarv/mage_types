@@ -37,6 +37,7 @@ func on_player_actions_selected(allyActions) -> void:
 	if allyActions == null or len(allyActions) == 0:
 		await gui.display_message("You ran away.")
 		battle_ended.emit()
+		return
 
 	gui.enable_player_controls(false)
 	var enemyActions = ai.get_actions(enemies, allies)
