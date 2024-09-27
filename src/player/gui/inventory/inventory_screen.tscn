@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lf8pis6wd5qh"]
 
 [ext_resource type="Script" path="res://src/player/gui/inventory/InventoryScreen.gd" id="1_eqro5"]
-[ext_resource type="PackedScene" uid="uid://bjd70gxlb0qwn" path="res://src/player/gui/inventory/components/inventory_display_panel.tscn" id="2_2876a"]
+[ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="2_hx5tu"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_pqepw"]
 resource_name = "SortGroup"
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eqro5")
-infoPanel = NodePath("HBoxContainer/InventoryDisplayPanel")
+infoPanel = NodePath("HBoxContainer/InfoDisplay")
 itemsScroller = NodePath("HBoxContainer/InventoryScreen/Items/MarginContainer/VBoxContainer")
 equipmentScroller = NodePath("HBoxContainer/InventoryScreen/Equipment/MarginContainer/VBoxContainer")
 spellsScroller = NodePath("HBoxContainer/InventoryScreen/Spells/MarginContainer/VBoxContainer")
@@ -101,8 +101,9 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InventoryDisplayPanel" parent="HBoxContainer" instance=ExtResource("2_2876a")]
+[node name="InfoDisplay" parent="HBoxContainer" instance=ExtResource("2_hx5tu")]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="SortHBox" type="HBoxContainer" parent="."]
 layout_mode = 2

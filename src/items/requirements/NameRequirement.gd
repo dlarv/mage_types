@@ -13,5 +13,5 @@ func check(actor):
 		actor = actor.battle_actor
 	return actor != null and actor.name == required_name
 
-func get_failure_message():
+func get_requirement_message():
 	return "Can only be learned by %s." % required_name

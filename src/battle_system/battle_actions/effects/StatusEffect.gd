@@ -12,7 +12,9 @@ var description : String
 
 # override
 func apply_effect(user, target=null, action=null, duplicated_effect=null):
-	if target == null or action == null: return name
+	# if target == null or action == null: return name
+	if target == null:
+		target = user
 	if duplicated_effect != null:
 		target.add_status_effect(duplicated_effect)
 	else:

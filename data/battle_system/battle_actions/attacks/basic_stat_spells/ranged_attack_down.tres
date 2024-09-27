@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bo3hkhuwqf373"]
+[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://bo3hkhuwqf373"]
 
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_rxg4m"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_jayfd"]
 [ext_resource type="Resource" uid="uid://bahofdms1h0nx" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_down.tres" id="3_qi5cp"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_mymu7"]
@@ -10,14 +9,15 @@
 script = ExtResource("4_mymu7")
 attack_effect = ExtResource("3_qi5cp")
 chance = 1.0
+effect_target = 1
 
 [resource]
 script = ExtResource("5_ardcs")
-effects = [SubResource("Resource_ibimo")]
+effects = Array[ExtResource("4_mymu7")]([SubResource("Resource_ibimo")])
 cost = 10
 name = "R. Attack Down"
 animation = ExtResource("2_jayfd")
-element = ExtResource("1_rxg4m")
+_element = "blank"
 priority = 0
 attack_range = 0
 target = 3

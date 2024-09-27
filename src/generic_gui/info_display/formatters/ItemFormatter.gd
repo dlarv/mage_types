@@ -45,7 +45,7 @@ func display_regular_item(item: Item):
 		details_label.newline()
 		_format_attack_effects(item.battle_item.effects, details_label)
 
-	_format_requirement(item.requirement)
+	_format_requirement(item.requirements)
 
 func display_spell_scroll(item: SpellScroll):
 	id_label.show()
@@ -56,7 +56,7 @@ func display_spell_scroll(item: SpellScroll):
 
 	details_label.append_text(item.spell.details)
 
-	_format_requirement(item.requirement)
+	_format_requirement(item.requirements)
 
 func display_equipment(item: Equipment):
 	id_label.show()
@@ -66,7 +66,7 @@ func display_equipment(item: Equipment):
 	name_label.text = item.name
 
 	details_label.append_text(item.details)
-	_format_requirement(item.requirement)
+	_format_requirement(item.requirements)
 
 func display_battle_item(item: BattleItem):
 	id_label.hide()
@@ -78,9 +78,7 @@ func display_battle_item(item: BattleItem):
 	details_label.newline()
 	_format_attack_effects(item.effects, details_label)
 
-	for req in item.requirements:
-		_format_requirement(req)
-		req_label.newline()
+	_format_requirement(item.requirements)
 
 func display_key_item(item: KeyItem):
 	id_label.hide()
@@ -90,30 +88,32 @@ func display_key_item(item: KeyItem):
 	name_label.text = item.name
 	details_label.append_text(item.details)
 
-func _format_requirement(req: ItemRequirement):
-	req_vbox.visible = req != null
-	if req == null: return
+func _format_requirement(reqs: Array):
+	req_vbox.visible = len(reqs) > 0
+	if len(reqs) == 0: return
 
-	if req is BiasRequirement:
-		req_label.append_text("User must be ")
-		append_elemental_color(req_label, req.element)
-		req_label.append_text("-aligned to use this item.")
-	
-	elif req is ElementRequirement:
-		req_label.append_text("User's primary/secondary type must be ")
-		append_elemental_color(req_label, req.element)
-		req_label.append_text(" to use this item.")
+	for req in reqs:
+		if req is BiasRequirement:
+			req_label.append_text("User must be ")
+			append_elemental_color(req_label, req.element)
+			req_label.append_text("-aligned to use this item.")
+		
+		elif req is ElementRequirement:
+			req_label.append_text("User's primary/secondary type must be ")
+			append_elemental_color(req_label, req.element)
+			req_label.append_text(" to use this item.")
 
-	elif req is NameRequirement:
-		req_label.append_text("This item can only be used by %s." % req.required_name)
-	
-	elif req is StatRequirement:
-		req_label.append_text("The user's %s stat must be %d or higher." % [req.stat, req.threshold])
+		elif req is NameRequirement:
+			req_label.append_text("This item can only be used by %s." % req.required_name)
+		
+		elif req is StatRequirement:
+			req_label.append_text("The user's %s stat must be %d or higher." % [req.stat, req.threshold])
 
-	elif req is StatusEffectRequirement:
-		req_label.append_text("User must have the ")
-		req_label.push_meta(req.effect)
-		req_label.append_text("%s" % req.effect.name)
-		req_label.pop()
-		req_label.append_text(" status effect to use this item.")
+		elif req is StatusEffectRequirement:
+			req_label.append_text("User must have the ")
+			req_label.push_meta(req.effect)
+			req_label.append_text("%s" % req.effect.name)
+			req_label.pop()
+			req_label.append_text(" status effect to use this item.")
 
+		req_label.newline()

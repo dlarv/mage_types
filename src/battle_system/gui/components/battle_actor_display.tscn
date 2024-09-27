@@ -27,7 +27,7 @@ bg_color = Color(0.6, 0, 0, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_igh2i"]
 
-[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "statChangeDisplay", "selectorButton", "defeatedPanel")]
+[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "statChangeDisplay", "selectorButton")]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -45,7 +45,6 @@ spriteDisplay = NodePath("MarginContainer/VBoxContainer/TextureRect")
 statusEffectIcons = NodePath("MarginContainer/VBoxContainer/StatusEffects")
 statChangeDisplay = NodePath("MarginContainer/VBoxContainer/StatChangeDisplay")
 selectorButton = NodePath("SelectorButton")
-defeatedPanel = NodePath("")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)

@@ -4,7 +4,7 @@ class_name InventoryScreen
 signal item_selected(item)
 
 @export
-var infoPanel: InventoryDisplayPanel 
+var infoPanel: InfoDisplay 
 @export
 var itemsScroller: VBoxContainer 
 @export
@@ -40,7 +40,9 @@ func _populate_tab(items, scroller):
 			button.text = "%s" % item.name
 		var temp = item
 
-		button.pressed.connect(func(): item_selected.emit(temp))
+		button.pressed.connect(func(): 
+			infoPanel.display_message_non_blocking(item)
+			item_selected.emit(temp))
 		scroller.add_child(button)
 
 		button.disabled = "quantity" in item and item.quantity == 0
