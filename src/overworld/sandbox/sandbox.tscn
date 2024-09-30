@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=14 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="PackedScene" uid="uid://bcp041c8p7lm4" path="res://src/player/party/player_party.tscn" id="1_k6oqa"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="5_hnpcy"]
 [ext_resource type="Resource" uid="uid://bday1iwr3418g" path="res://data/items/spell_scrolls/red_desolation.tres" id="6_dfjre"]
 [ext_resource type="Resource" uid="uid://b8xmok102kgt2" path="res://data/items/spell_scrolls/desolation_scroll.tres" id="7_guoa8"]
+[ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="11_511t6"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 
@@ -79,6 +80,12 @@ axis_lock_angular_z = true
 [node name="PlayerMenu" parent="World/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("16_p60yf")]
 visible = false
 world = NodePath("../../Overworld")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_511t6")]
+visible = false
 
 [connection signal="battle_started" from="World/Overworld/PlayerParty/Player" to="." method="_on_player_battle_started"]
 

@@ -18,7 +18,7 @@ var defeatedAllies : int = 0
 var defeatedEnemies : int = 0
 
 func _unhandled_input(event) -> void:
-	if event.is_action_pressed("open_pause_menu"):
+	if event.is_action_pressed("open_player_menu"):
 		matchupManager.visible = !matchupManager.visible
 
 func start(allies, allyItems, enemies, ai) -> void:

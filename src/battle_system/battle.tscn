@@ -19,7 +19,7 @@ script = ExtResource("3_p7an0")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Bg" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -74,8 +74,11 @@ func get_target_position() -> Vector2:
 func disable_selection() -> void:
 	# selectorButton.hide()
 	selectorButton.set_selectable(false)
-	tint = Color.WHITE
-	set_highlight(false)
+	# If this is white, then its the indicator showing which character is currently active.
+	# Otherwise, its red or green, which indicate this character is being targeted.
+	if tint != Color.WHITE:
+		tint = Color.WHITE
+		set_highlight(false)
 
 func enable_selection(color: Color) -> void:
 	selectorButton.set_selectable(true)

@@ -12,6 +12,6 @@ func init_inventory(inventory: Inventory) -> void:
 	inventoryScreen.setup(inventory)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_pause_menu"):
+	if event.is_action_pressed("open_player_menu"):
 		visible = !visible
 		world.process_mode = Node.PROCESS_MODE_INHERIT if !visible  else Node.PROCESS_MODE_DISABLED

@@ -13,6 +13,9 @@ var inventory: Inventory
 var speed : float = 10.0
 @export
 var jump_velocity : float = 4.5
+@export_category("Movepool")
+@export
+var movepool: Movepool
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
@@ -48,7 +51,4 @@ func _physics_process(delta) -> void:
 
 		if enemy.is_in_group("enemy"):
 			battle_started.emit(party, inventory.get_battle_items(), enemy)
-@export_category("Movepool")
-@export
-var movepool: Movepool
 

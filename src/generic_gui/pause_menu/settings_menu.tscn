@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpr8pgu3aektj"]
+
+[ext_resource type="Script" path="res://src/generic_gui/pause_menu/SettingsMenu.gd" id="1_tx88d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ew87g"]
+font_size = 50
+
+[node name="SettingsMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tx88d")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_ew87g")
+horizontal_alignment = 1
+
+[node name="DebugMode_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Debug Mode"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TransmutationHints_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Show Transmutation Hints"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox/CheckBox" to="." method="on_debug_mode_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]

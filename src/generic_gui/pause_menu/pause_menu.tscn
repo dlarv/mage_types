@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhku25hv8a5d5"]
+
+[ext_resource type="Script" path="res://src/generic_gui/pause_menu/PauseMenu.gd" id="1_qciyj"]
+[ext_resource type="PackedScene" uid="uid://dpr8pgu3aektj" path="res://src/generic_gui/pause_menu/settings_menu.tscn" id="2_uq37m"]
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("settings_menu", "save_game_menu", "load_game_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qciyj")
+settings_menu = NodePath("TabContainer/SettingsMenu")
+save_game_menu = NodePath("TabContainer/SaveMenu")
+load_game_menu = NodePath("TabContainer/LoadMenu")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="Home" type="PanelContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Home"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Home/CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="OpenSettings_Button" type="Button" parent="TabContainer/Home/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="SaveGame_Button" type="Button" parent="TabContainer/Home/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Save Game"
+
+[node name="LoadGame_Button" type="Button" parent="TabContainer/Home/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="Quit" type="Button" parent="TabContainer/Home/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="SettingsMenu" parent="TabContainer" instance=ExtResource("2_uq37m")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="SaveMenu" type="PanelContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="LoadMenu" type="PanelContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[connection signal="pressed" from="TabContainer/Home/CenterContainer/VBoxContainer/OpenSettings_Button" to="." method="_on_open_settings_button_pressed"]
+[connection signal="pressed" from="TabContainer/Home/CenterContainer/VBoxContainer/SaveGame_Button" to="." method="_on_save_game_button_pressed"]
+[connection signal="pressed" from="TabContainer/Home/CenterContainer/VBoxContainer/LoadGame_Button" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="TabContainer/Home/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

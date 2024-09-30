@@ -3,7 +3,7 @@ extends Node3D
 @export var player: Node3D 
 @export var companions: Array[Node3D]
 
-@export var pause_menu: Control 
+@export var player_menu: Control 
 @export var inventory: Node
 
 func _ready() -> void:
@@ -14,5 +14,5 @@ func _ready() -> void:
 
 	player.party = actors
 
-	pause_menu.init_inventory(inventory)
+	player_menu.init_inventory(inventory)
 	player.inventory = inventory
