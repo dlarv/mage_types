@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm5d4v64vlqg7"]
+
+[ext_resource type="Script" path="res://src/battle_system/gui/components/TransmutationHint.gd" id="1_2qos5"]
+[ext_resource type="PackedScene" uid="uid://30dbgu5k66cc" path="res://src/battle_system/gui/components/transmutation_hint_icon.tscn" id="2_3h48n"]
+
+[node name="TransmutationHint" type="PanelContainer" node_paths=PackedStringArray("primary_element1", "primary_element2", "secondary_element1", "secondary_element2", "attack_element1", "attack_element2", "result_element1", "result_element2", "result_element3")]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qos5")
+primary_element1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon1")
+primary_element2 = NodePath("VBoxContainer/InternalTransmutation/Icon1")
+secondary_element1 = NodePath("VBoxContainer/SecondaryTransmutation/Icon1")
+secondary_element2 = NodePath("VBoxContainer/InternalTransmutation/Icon2")
+attack_element1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon2")
+attack_element2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon2")
+result_element1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon3")
+result_element2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon3")
+result_element3 = NodePath("VBoxContainer/InternalTransmutation/Icon3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Transmutations"
+
+[node name="PrimaryTransmutation" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon1" parent="VBoxContainer/PrimaryTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="Plus" type="Label" parent="VBoxContainer/PrimaryTransmutation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon2" parent="VBoxContainer/PrimaryTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="Equals" type="Label" parent="VBoxContainer/PrimaryTransmutation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon3" parent="VBoxContainer/PrimaryTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="SecondaryTransmutation" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon1" parent="VBoxContainer/SecondaryTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="Plus" type="Label" parent="VBoxContainer/SecondaryTransmutation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon2" parent="VBoxContainer/SecondaryTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="Equals" type="Label" parent="VBoxContainer/SecondaryTransmutation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon3" parent="VBoxContainer/SecondaryTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="InternalTransmutation" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon1" parent="VBoxContainer/InternalTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="Plus" type="Label" parent="VBoxContainer/InternalTransmutation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon2" parent="VBoxContainer/InternalTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2
+
+[node name="Equals" type="Label" parent="VBoxContainer/InternalTransmutation"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon3" parent="VBoxContainer/InternalTransmutation" instance=ExtResource("2_3h48n")]
+layout_mode = 2

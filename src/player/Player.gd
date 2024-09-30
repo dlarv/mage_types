@@ -4,9 +4,9 @@ class_name Player
 signal battle_started(allies, items, enemies)
 
 @export
-var battle_actor : BattleActor 
-var party;
-var inventory : Inventory 
+var battle_actor: BattleActor 
+var party
+var inventory: Inventory 
 
 @export_category("Movement")
 @export

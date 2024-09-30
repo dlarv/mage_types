@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://deg4ffl4kkgel"]
+[gd_scene load_steps=12 format=3 uid="uid://deg4ffl4kkgel"]
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/BattleActorDisplay.gd" id="1_5ryt8"]
 [ext_resource type="PackedScene" uid="uid://d0u0yls8gquxd" path="res://src/battle_system/gui/components/stat_change_display.tscn" id="2_mxncc"]
+[ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_ygao2"]
+[ext_resource type="Script" path="res://src/battle_system/gui/components/ActorDisplaySelectorButton.gd" id="4_xy0og"]
 
 [sub_resource type="Gradient" id="Gradient_207nu"]
 offsets = PackedFloat32Array(0.664653, 1)
@@ -125,12 +127,16 @@ texture = SubResource("PlaceholderTexture2D_igh2i")
 [node name="SelectorButton" type="Button" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "asdf"
+script = ExtResource("4_xy0og")
+TransmutationHint = ExtResource("2_ygao2")
 
 [connection signal="mouse_entered" from="SelectorButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="SelectorButton" to="." method="_on_mouse_exited"]

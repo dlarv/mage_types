@@ -3,6 +3,7 @@ class_name PlayerControls
 
 
 signal action_selected(index, action)
+signal action_target_selection_cancelled()
 signal end_turn(tryRunAway)
 signal show_info(action)
 signal active_actor_changed(index)
@@ -217,8 +218,13 @@ func _on_back_button_pressed() -> void:
 
 func on_action_selected(state: int, index: int, action: BattleAction) -> void:
 	match state:
+		ThreeStateButton.UNSELECTED_STATE:
+			action_target_selection_cancelled.emit()
 		ThreeStateButton.FIRST_SELECTED_STATE:
 			show_info.emit(action)
 		ThreeStateButton.SECOND_SELECTED_STATE:
 			action_selected.emit(index, action)
 			allowEndTurn = edgeIndex >= finalIndex
+		ThreeStateButton.SECOND_STATE_UNSELECTED:
+			action_target_selection_cancelled.emit()
+

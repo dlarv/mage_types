@@ -41,9 +41,12 @@ func setup(actor: BattleActor) -> void:
 	sprite = actor.sprite
 
 	selectorButton.pressed.connect(func():
+		if not selectorButton.is_selectable: return
 		selected.emit(actor))
 
 	self.actor = actor
+	selectorButton.actor = actor
+
 	actor.was_just_defeated.connect(set_defeated)
 	actor.damage_applied.connect(set_health)
 	actor.status_effect_added.connect(add_status_effect)
@@ -69,13 +72,24 @@ func get_target_position() -> Vector2:
 
 ## Disallow selection
 func disable_selection() -> void:
-	selectorButton.hide()
+	# selectorButton.hide()
+	selectorButton.set_selectable(false)
 	tint = Color.WHITE
 	set_highlight(false)
 
 func enable_selection(color: Color) -> void:
-	selectorButton.show()
+	selectorButton.set_selectable(true)
 	tint = color
+
+func disable_transmutation_hint() -> void:
+	# selectorButton.hide()
+	selectorButton.set_show_hint(false)
+	# selectorButton.attack_element = null
+
+func enable_transmutation_hint(attackElement: ElementalType) -> void:
+	selectorButton.set_show_hint(true, attackElement)
+	# selectorButton.attack_element = attackElement
+
 
 func add_status_effect(effect: StatusEffect) -> void:
 	if effect is StatChange:
@@ -112,11 +126,11 @@ func set_highlight(isHighlighted: bool) -> void:
 	highlightDisplay.self_modulate =  Color(tint.r, tint.g, tint.b, 1 if isHighlighted  else  0)
 
 func _on_mouse_entered() -> void:
-	if(selectorButton.visible):
+	if(selectorButton.visible and selectorButton.is_selectable):
 		set_highlight(true)
 
 func _on_mouse_exited() -> void:
-	if(selectorButton.visible):
+	if(selectorButton.visible and selectorButton.is_selectable):
 		set_highlight(false)
 
 func _on_status_icon_pressed(status: StatusEffect) -> void:

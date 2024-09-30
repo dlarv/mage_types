@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dufaudfvrhhui"]
+
+[ext_resource type="Script" path="res://src/player/gui/PlayerMenu.gd" id="1_fk17s"]
+[ext_resource type="PackedScene" uid="uid://bydn5qav2dgwy" path="res://src/player/gui/characters_menu.tscn" id="2_bem4u"]
+[ext_resource type="PackedScene" uid="uid://lf8pis6wd5qh" path="res://src/player/gui/inventory/inventory_screen.tscn" id="3_amx4t"]
+
+[node name="PlayerMenu" type="Control" node_paths=PackedStringArray("inventoryScreen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fk17s")
+inventoryScreen = NodePath("TabContainer/Inventory")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Characters" parent="TabContainer" instance=ExtResource("2_bem4u")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Inventory" parent="TabContainer" instance=ExtResource("3_amx4t")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

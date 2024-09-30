@@ -6,6 +6,7 @@ signal state_changed(state)
 const UNSELECTED_STATE: int = 0
 const FIRST_SELECTED_STATE: int = 1
 const SECOND_SELECTED_STATE: int = 2
+const SECOND_STATE_UNSELECTED: int = 3
 
 @export
 var unselectedModulateColor: Color 
@@ -41,11 +42,14 @@ func _on_pressed(toggled: bool) -> void:
 	if not toggled:
 		state = UNSELECTED_STATE
 		modulate =  lockedModulateColor  if is_locked  else  unselectedModulateColor
-		return
-
-	if !is_locked && state == FIRST_SELECTED_STATE:
+	elif !is_locked && state == FIRST_SELECTED_STATE:
 		state = SECOND_SELECTED_STATE
 		modulate = selected2ModulateColor
+	elif state == SECOND_SELECTED_STATE:
+		state = FIRST_SELECTED_STATE
+		modulate = selected1ModulateColor
+		state_changed.emit(SECOND_STATE_UNSELECTED)
+		return
 	else:
 		state = FIRST_SELECTED_STATE
 		modulate = selected1ModulateColor

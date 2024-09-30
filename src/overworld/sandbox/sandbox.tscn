@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://bday1iwr3418g" path="res://data/items/spell_scrolls/red_desolation.tres" id="6_dfjre"]
 [ext_resource type="Resource" uid="uid://b8xmok102kgt2" path="res://data/items/spell_scrolls/desolation_scroll.tres" id="7_guoa8"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
-[ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/pause_menu.tscn" id="16_p60yf"]
+[ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
 size = Vector3(100, 0.1, 100)
@@ -23,7 +23,7 @@ script = ExtResource("1_wo6gm")
 battle_scene = ExtResource("2_t1trw")
 overworld = NodePath("World/Overworld")
 world = NodePath("World")
-pause_menu = NodePath("World/CanvasLayer/PauseMenu")
+pause_menu = NodePath("World/CanvasLayer/PlayerMenu")
 
 [node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
 spell_scrolls = Array[ExtResource("4_wrj0s")]([ExtResource("5_hnpcy"), ExtResource("6_dfjre"), ExtResource("7_guoa8")])
@@ -46,8 +46,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_a4c5f")
 
-[node name="PlayerParty" parent="World/Overworld" node_paths=PackedStringArray("pause_menu", "inventory") instance=ExtResource("1_k6oqa")]
-pause_menu = NodePath("../../CanvasLayer/PauseMenu")
+[node name="PlayerParty" parent="World/Overworld" node_paths=PackedStringArray("player_menu", "inventory") instance=ExtResource("1_k6oqa")]
+player_menu = NodePath("../../CanvasLayer/PlayerMenu")
 inventory = NodePath("../../../Inventory")
 
 [node name="Player" parent="World/Overworld/PlayerParty" index="0"]
@@ -76,7 +76,7 @@ axis_lock_angular_z = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
-[node name="PauseMenu" parent="World/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("16_p60yf")]
+[node name="PlayerMenu" parent="World/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("16_p60yf")]
 visible = false
 world = NodePath("../../Overworld")
 
