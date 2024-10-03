@@ -39,10 +39,9 @@ layout_mode = 2
 [node name="InterfaceContainer" type="TabContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 2
+current_tab = 0
 
 [node name="Info" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -151,6 +150,7 @@ layout_mode = 2
 text = "Stamina"
 
 [node name="Spells" parent="MarginContainer/HBoxContainer/InterfaceContainer" instance=ExtResource("4_f40yp")]
+visible = false
 layout_mode = 2
 
 [node name="Equipment" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]

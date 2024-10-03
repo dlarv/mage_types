@@ -24,8 +24,8 @@ size = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1aos"]
 bg_color = Color(0, 1, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea513"]
-bg_color = Color(0.6, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omh3g"]
+bg_color = Color(0, 1, 0, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_igh2i"]
 
@@ -100,7 +100,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_81c2e")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_e1aos")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ea513")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_omh3g")
 value = 100.0
 editable = false
 scrollable = false

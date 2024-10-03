@@ -14,14 +14,18 @@ var ai: OpponentController
 @export
 var matchupManager: CanvasLayer
 
-var defeatedAllies : int = 0
-var defeatedEnemies : int = 0
+var defeatedAllies: int = 0
+var defeatedEnemies: int = 0
+var turnCounter: int = 0
 
 func _unhandled_input(event) -> void:
+	if event.is_action_pressed("create_log"):
+		Logger.save_log(Logger.LogType.BATTLE)
 	if event.is_action_pressed("open_player_menu"):
 		matchupManager.visible = !matchupManager.visible
 
 func start(allies, allyItems, enemies, ai) -> void:
+	ElementManager.load_from_default_csv()
 	self.allies = allies
 	self.enemies = enemies
 
@@ -30,9 +34,14 @@ func start(allies, allyItems, enemies, ai) -> void:
 	for enemy in enemies:
 		enemy.was_just_defeated.connect(func(): defeatedEnemies += 1)
 
+	ai.setup(enemies)
+	self.ai = ai	
 	gui.setup(allies, allyItems, enemies)
 
 func on_player_actions_selected(allyActions) -> void:
+	turnCounter += 1
+	Logger.append_log(Logger.LogType.BATTLE, "\nTurn %d" % turnCounter)
+
 	# If allyActions is empty, the player pressed the "Run" button.
 	if allyActions == null or len(allyActions) == 0:
 		await gui.display_message("You ran away.")
@@ -40,12 +49,19 @@ func on_player_actions_selected(allyActions) -> void:
 		return
 
 	gui.enable_player_controls(false)
-	var enemyActions = ai.get_actions(enemies, allies)
+	var enemyActions = ai.get_actions(allies)
 	var actions = allyActions
 	actions.append_array(enemyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	actions.sort()
+	actions.sort_custom(func(a, b):
+		# Higher priority goes first.
+		if a.priority != b.priority:
+			return a.priority > b.priority
+		# Then higher speed goes first.
+		if a.actor.speed != b.actor.speed:
+			return a.actor.speed < b.actor.speed
+		return randf_range(0, 1) < 0.5)
 
 	for action in actions:
 		# This means a character is defeated or flinched.
@@ -112,7 +128,7 @@ func on_player_actions_selected(allyActions) -> void:
 	gui.enable_player_controls(true)
 
 func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:
-	var msg = ""
+	var msg = []
 	var e1 = target.element1.name.to_lower()
 	var e2 = target.element2.name.to_lower()
 	var ea = action.element.name.to_lower()
@@ -120,38 +136,39 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
  	# Calculate primary + attack 
 	var newType = ElementManager.get_matchup(target.element1, action.element)
 	if newType != null and not target.in_stasis:
-		msg += "The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color].\n" % [target.name, e1, e1, ea, ea, newType.name.to_lower(), newType.name.to_lower()]
+		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
 
 		var vals = ElementManager.get_side_effect(target.element1, action.element)
 		var buff = vals[0]
 		var debuff = vals[1]
 
 		if buff != null:
-			msg += "\nThis reaction had side effects! %s" % buff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % buff.apply_effect(target))
 		if debuff != null:
-			msg += "\nThis reaction had side effects! %s" % debuff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
 		var msg2 = target.set_element(0, newType)
 		if len(msg2) > 0:
-			msg += "\n%s" % msg2
+			msg.append(msg2)
 
  	# Calculate secondary + attack 
 	newType = ElementManager.get_matchup(target.element2, action.element)
+	msg = []
 	if newType != null and not target.in_stasis:
-		msg += "\nThe target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()]
+		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
 
 		var vals = ElementManager.get_side_effect(target.element2, action.element)
 		var buff = vals[0]
 		var debuff = vals[1]
 
 		if buff != null:
-			msg += "\nThis reaction had side effects! %s" % buff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % buff.apply_effect(target))
 		if debuff != null:
-			msg += "\nThis reaction had side effects! %s" % debuff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
 		var msg2 = target.set_element(1, newType)
 		if len(msg2) > 0:
-			msg += "\n%s" % msg2
+			msg.append(msg2)
 
 
 	# Only display message if applicable.
@@ -162,22 +179,23 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
  	# Calculate primary + secondary.
 	newType = ElementManager.get_matchup(target.element1, target.element2)
+	msg = []
 	if newType != null and not target.is_dissonant:
 		e1 = target.element1.name.to_lower()
 		e2 = target.element2.name.to_lower()
-		msg = "\nThe target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()]
+		msg.append("The target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()])
 
 		var vals = ElementManager.get_side_effect(target.element1, target.element2)
 		var buff = vals[0]
 		var debuff = vals[1]
 		if buff != null:
-			msg += "\nThis reaction had side effects! %s" % buff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % buff.apply_effect(target))
 		if debuff != null:
-			msg += "\nThis reaction had side effects! %s" % debuff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
 		var msg2 = target.set_element(0, newType)
 		target.set_element(1, ElementManager.Blank)
 		if len(msg2) > 0:
-			msg += "\n%s" % msg2
+			msg.append(msg2)
 		
 		await gui.display_message(msg)

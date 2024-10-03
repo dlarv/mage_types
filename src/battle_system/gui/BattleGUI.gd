@@ -44,19 +44,26 @@ func init_enemies(enemies) -> void:
 		enemy_display_parent.add_display(actor)
 	
 
-func display_message(msg: String) -> void:
-	messages.append(msg)
+func display_message(msg) -> void:
+	if msg is Array:
+		msg = "\n".join(msg)
+
+	Logger.append_log(Logger.LogType.BATTLE, msg)
 	await messageBox.display_message_blocking(msg)
 
+
 func display_message_non_blocking(msg) -> void:
-	messages.append(msg)
+	var msgLog = msg
+
+	if msg is Array:
+		msg = "\n".join(msg)
+		msgLog = msg
+	elif msg is Resource and "name" in msg:
+		msgLog = "Player viewed %s." % msg.name
+
+	Logger.append_log(Logger.LogType.BATTLE, msgLog)
 	messageBox.display_message_non_blocking(msg)
 
-
-# public void AddStatusEffect(StatusEffect effect, BattleActor target) {
-# public void RemoveStatusEffect(StatusEffect effect, BattleActor target) {
-# public void ChangeHealth(int newHealth, BattleActor target) {
-# public void RemoveActor(BattleActor target) {
 
 func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
 	var teamDisplay

@@ -25,13 +25,12 @@ var hp: int:
 	set(value):
 		hp = value
 		current_hp = value
-
 var current_hp: int = 100
+
 @export
 var melee_attack: int: 
 	get: return melee_attack * statuses.melee_attack_mod
 	set(value): melee_attack = value 
-
 @export
 var ranged_attack: int: 
 	get: return ranged_attack * statuses.ranged_attack_mod
@@ -121,7 +120,7 @@ func set_element(id: int, element: ElementalType) -> String:
 	element_changed.emit(id, element)
 
 	var mod
-	var dmg
+	var dmg = 0
 	var effect = statuses.is_phobic(element)
 	if effect != null:
 		dmg = hp * effect.strength
@@ -133,7 +132,15 @@ func set_element(id: int, element: ElementalType) -> String:
 		dmg = hp * effect.strength
 		current_hp += dmg
 		msg += "%s was healed by its philia! (%d hp)" % [ name, dmg ]
+	if dmg != 0:
+		apply_damage(dmg)
+
 	return msg
+
+func get_element(id: int) -> ElementalType:
+	if id == 0:
+		return element1
+	return element2
 
 # Teaches actor spell contained within scroll.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
@@ -153,23 +160,21 @@ func use_gradient_sprite()-> void:
 static func get_max_stat()-> int:
 	return 100000
 
-# public Dictionary<string, int> GetStats() {
-# 	return new Dictionary<string, int>() {
-# 		{ "hp", hp },
-# 		{ "attack", melee_attack },
-# 		{ "defense", melee_defense },
-# 		{ "speed", melee_defense },
-# 	}
-# }
 func get_stat_from_string(name: String) -> int:
 	match name.to_lower().strip_edges():
 		"hp","health","max_health","max health": return hp
-		"attack","melee_attack","melee attack": return melee_attack
-		"defense","melee_defense","melee defense": return melee_defense
-		"ranged_attack","ranged attack": return ranged_attack
-		"ranged_defense","ranged defense": return ranged_defense
-		"speed": return speed
-		"evasion": return evasion
+		"attack","melee_attack","melee attack": 
+			return melee_attack
+		"defense","melee_defense","melee defense": 
+			return melee_defense
+		"ranged_attack","ranged attack": 
+			return ranged_attack
+		"ranged_defense","ranged defense": 
+			return ranged_defense
+		"speed": 
+			return speed
+		"evasion": 
+			return evasion
 		"current_mana": return current_mana
 		_: return -1
 
@@ -192,6 +197,23 @@ func get_stat(stat) -> int:
 			return evasion
 		Stats.MANA:
 			return current_mana
+		_:
+			return -1
+
+func get_base_stat_from_string(stat: String) -> int:
+	match stat.to_lower().strip_edges():
+		"attack","melee_attack","melee attack": 
+			return melee_attack / statuses.melee_attack_mod
+		"defense","melee_defense","melee defense": 
+			return melee_defense / statuses.melee_defense_mod
+		"ranged_attack","ranged attack": 
+			return ranged_attack / statuses.ranged_attack_mod
+		"ranged_defense","ranged defense": 
+			return ranged_defense / statuses.ranged_defense_mod
+		"speed": 
+			return speed / statuses.speed_mod
+		"evasion": 
+			return evasion / statuses.evasion_mod
 		_:
 			return -1
 
@@ -272,10 +294,24 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 	return 0
 
 func add_status_effect(effect: StatusEffect) -> void:
+	Logger.append_log(Logger.LogType.BATTLE, "%s was applied to %s." % [ effect.name, name ])
 	statuses.add_status(effect)
-	status_effect_added.emit(statuses.get_status(effect))
+	var status = statuses.get_status(effect)
+	status_effect_added.emit(status)
+
+	if effect is StatChange:
+		Logger.append_log(
+			Logger.LogType.BATTLE, 
+			"%s for %s. Base(%d) * Strength(%f) * Stack(%f) = %f" % [ 
+				effect.get_full_name(), 
+				name, 
+				get_base_stat_from_string(effect.name), 
+				status.strength, 
+				status.stack, 
+				get_stat_from_string(effect.name)])
 
 func remove_status_effect(effect: StatusEffect) -> void:
+	Logger.append_log(Logger.LogType.BATTLE, "%s's %s expired." % [ effect.name, name ])
 	statuses.remove(effect)
 	status_effects_removed.emit([ effect ])
 

@@ -1,8 +1,14 @@
 extends Node
 class_name OpponentController 
 
+const TEAM_INDEX = 1
 
-func get_actions(team, otherTeam):
+var team = []
+
+func setup(team):
+	self.team = team
+
+func get_actions(otherTeam):
 	var actions = []
 	actions.resize(len(team))
 
@@ -10,5 +16,5 @@ func get_actions(team, otherTeam):
 		if(len(team[i].attacks) == 0):
 			actions[i] = null;
 		else:
-			actions[i] = ActorAction.new(team[i], team[i].attacks[0],[ otherTeam[0] ], 1);
+			actions[i] = ActorAction.new(team[i], team[i].attacks[0],[ otherTeam[0] ], TEAM_INDEX);
 	return actions;

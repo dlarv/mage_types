@@ -31,7 +31,7 @@ func test()-> void:
 	var actualResults = [
 		# Red
 		[ null, Yellow, Magenta, Orange, null, null, null, Magenta ],
-		# Green 
+	# Green 
 		[ Yellow, null, Cyan, null, null, null, Yellow, Cyan ],
 		# Blue
 		[ Magenta, Cyan, null, null, null, Purple, Purple, null ],
@@ -58,7 +58,7 @@ func test()-> void:
 
 	print("Final result: " + str(total))
 
-func _enter_tree()-> void:
+func _enter_tree() -> void:
 	force_load()
 	for i in range(len(buff_effects)):
 		if buff_effects[i] == null: continue
@@ -66,7 +66,6 @@ func _enter_tree()-> void:
 		buff_effects[i].strength *= buff_multiplier
 		
 	load_from_default_csv()
-
 
 
 func force_load()-> void:

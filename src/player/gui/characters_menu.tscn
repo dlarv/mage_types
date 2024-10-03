@@ -38,7 +38,6 @@ activeScreensParent = NodePath("MarginContainer/ActiveTabs")
 inactiveScreensParent = NodePath("InactiveTabs")
 aliceScreen = NodePath("MarginContainer/ActiveTabs/Alice")
 alexScreen = NodePath("MarginContainer/ActiveTabs/Alex")
-statsToDistribute = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

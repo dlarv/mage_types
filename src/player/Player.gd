@@ -5,8 +5,12 @@ signal battle_started(allies, items, enemies)
 
 @export
 var battle_actor: BattleActor 
-var party
+@export
+var party: Array[BattleActor]
+@export
 var inventory: Inventory 
+@export 
+var player_menu: Control 
 
 @export_category("Movement")
 @export
@@ -19,6 +23,10 @@ var movepool: Movepool
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+
+func _ready():
+	player_menu.init_inventory(inventory)
+	party.insert(0, battle_actor)
 
 func _physics_process(delta) -> void:
 	var vel = velocity;

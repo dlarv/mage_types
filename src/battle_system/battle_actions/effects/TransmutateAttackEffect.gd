@@ -20,4 +20,6 @@ var element_id : int
 
 #override
 func apply_effect(user, target=null, action=null, duplicated_effect=null):
+	if target.get_element(element_id) == element:
+		return "But %s is already %s!" % [ user.name, element.name ]
 	return target.set_element(element_id, element)

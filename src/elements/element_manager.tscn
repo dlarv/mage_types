@@ -21,85 +21,85 @@
 [ext_resource type="Resource" uid="uid://c3cjp8ps55j6y" path="res://data/battle_system/status_effects/stat_changes/defense_down.tres" id="22_4n7so"]
 [ext_resource type="Resource" uid="uid://c5ro1exjhsu5o" path="res://data/battle_system/status_effects/stat_changes/evasion_down.tres" id="22_xxnyk"]
 
-[sub_resource type="Resource" id="Resource_iw27t"]
+[sub_resource type="Resource" id="Resource_jm58q"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Attack"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s melee attack was boosted!
 {target}'s ranged attack was boosted!"
 
-[sub_resource type="Resource" id="Resource_ybs07"]
+[sub_resource type="Resource" id="Resource_8ln88"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Melee Attack"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s melee attack was boosted!"
 
-[sub_resource type="Resource" id="Resource_a4edu"]
+[sub_resource type="Resource" id="Resource_15omg"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Ranged Attack"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s ranged attack was boosted!"
 
-[sub_resource type="Resource" id="Resource_wcl6g"]
+[sub_resource type="Resource" id="Resource_ajj4n"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Defense"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s melee defense was boosted!
 {target}'s ranged defense was boosted!"
 
-[sub_resource type="Resource" id="Resource_34xvg"]
+[sub_resource type="Resource" id="Resource_gmva3"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Melee Defense"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s melee defense was boosted!"
 
-[sub_resource type="Resource" id="Resource_y8dfv"]
+[sub_resource type="Resource" id="Resource_rui6r"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Ranged Defense"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s ranged defense was boosted!"
 
-[sub_resource type="Resource" id="Resource_gmj6b"]
+[sub_resource type="Resource" id="Resource_i81vi"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Speed"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s speed was lowered!"
 
-[sub_resource type="Resource" id="Resource_a7rk0"]
+[sub_resource type="Resource" id="Resource_k7cll"]
 script = ExtResource("11_ahixq")
 duration = 3
 description = ""
 name = "Evasion"
 chance = 1.0
-strength = 0.45
+strength = 0.675
 message = "{target}'s evasion was boosted!"
 
-[sub_resource type="Resource" id="Resource_f8fdb"]
+[sub_resource type="Resource" id="Resource_heirn"]
 script = ExtResource("19_cqy0o")
 name = "Hp"
 chance = 1.0
-strength = 0.15
+strength = 0.225
 message = ""
 
 [sub_resource type="Resource" id="Resource_t3o6g"]
@@ -112,5 +112,5 @@ message = ""
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
 elements = Array[ExtResource("2_ohe7e")]([ExtResource("2_2na3h"), ExtResource("9_rqpl6"), ExtResource("8_j8x1x"), ExtResource("4_mwrkt"), ExtResource("6_eh1hp"), ExtResource("3_4ordb"), ExtResource("5_ikpar"), ExtResource("7_58n47")])
-buff_effects = [null, SubResource("Resource_iw27t"), SubResource("Resource_ybs07"), SubResource("Resource_a4edu"), SubResource("Resource_wcl6g"), SubResource("Resource_34xvg"), SubResource("Resource_y8dfv"), SubResource("Resource_gmj6b"), SubResource("Resource_a7rk0"), SubResource("Resource_f8fdb"), null]
+buff_effects = [null, SubResource("Resource_jm58q"), SubResource("Resource_8ln88"), SubResource("Resource_15omg"), SubResource("Resource_ajj4n"), SubResource("Resource_gmva3"), SubResource("Resource_rui6r"), SubResource("Resource_i81vi"), SubResource("Resource_k7cll"), SubResource("Resource_heirn"), null]
 debuff_effects = [null, ExtResource("19_ixuyb"), ExtResource("17_hu54e"), ExtResource("18_j0teb"), ExtResource("22_4n7so"), ExtResource("19_a1npl"), ExtResource("20_a8l5i"), ExtResource("21_gjete"), ExtResource("22_xxnyk"), SubResource("Resource_t3o6g")]

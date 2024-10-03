@@ -116,8 +116,8 @@ func remove_status_effects(effects) -> void:
 		if !icons.has(effect.name): continue
 		var icon = icons[effect.name]
 		statusEffectIcons.remove_child(icon)
-		icons.remove(effect.name)
-
+		icons.erase(effect.name)
+		
 func set_defeated() -> void:
 	modulate = Color(1, 1, 1, .5)
 	for key in icons.keys():

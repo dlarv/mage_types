@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bs3v2u5k7s6k6"]
 
-[ext_resource type="Script" path="res://src/overworld/actors/EnemyActor.gd" id="1_twpmh"]
+[ext_resource type="Script" path="res://src/overworld/enemies/EnemyActor.gd" id="1_twpmh"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_ktkc1"]
 [ext_resource type="Resource" uid="uid://bod1eny4l7qxi" path="res://data/battle_system/battle_actors/basic_battle_actor.tres" id="2_qsane"]
-[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="3_hq4x0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5p5k"]
 
@@ -11,11 +11,11 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqelp"]
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="EnemyMage" type="RigidBody3D" groups=["enemy"]]
+[node name="EnemyActor" type="RigidBody3D" groups=["enemy"]]
 contact_monitor = true
 max_contacts_reported = 50
 script = ExtResource("1_twpmh")
-battle_actor = ExtResource("2_qsane")
+team = Array[ExtResource("2_ktkc1")]([ExtResource("2_qsane")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -26,6 +26,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_4dp5a")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_rqelp")
-
-[node name="AI" type="Node" parent="."]
-script = ExtResource("3_hq4x0")
