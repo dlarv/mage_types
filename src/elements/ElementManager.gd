@@ -2,7 +2,6 @@
 extends Node 
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
 
-@export
 var Blank : ElementalType = ElementalType.new()
 var Blue : ElementalType
 var Purple : ElementalType 
@@ -16,6 +15,8 @@ var Cyan : ElementalType
 @export
 # ElementalType[]
 var elements: Array[ElementalType] = [ ]
+@export
+var buff_multiplier = 1.5
 @export
 # AttackEffect[]
 var buff_effects = []
@@ -59,7 +60,14 @@ func test()-> void:
 
 func _enter_tree()-> void:
 	force_load()
+	for i in range(len(buff_effects)):
+		if buff_effects[i] == null: continue
+		buff_effects[i] = buff_effects[i].duplicate()
+		buff_effects[i].strength *= buff_multiplier
+		
 	load_from_default_csv()
+
+
 
 func force_load()-> void:
 	for element in elements:
@@ -104,7 +112,6 @@ func force_load()-> void:
 	blue.add_connection(Green, cyan)
 	blue.add_connection(Magenta, purple)
 	blue.add_connection(Orange, purple)
-
 	purple.add_connection(Red, magenta)
 	purple.add_connection(Green, cyan)
 	purple.add_connection(Cyan, blue)
@@ -195,8 +202,6 @@ func set_side_effect_for(a: ElementalType, b: ElementalType, index: int, isBuff:
 	var msg1 = effects[0].name if effects[0] != null else "null"
 	var msg2 = effects[1].name if effects[1] != null else "null"
 
-	print("Set side effect: %s & %s = %s, %s" % [a.name, b.name, msg1, msg2])
-
 func side_effect_to_index(effect: AttackEffect, isBuff: bool) -> int:
 	if(effect == null): return -1
 	var effects = buff_effects if isBuff else debuff_effects
@@ -209,10 +214,9 @@ func side_effect_to_index(effect: AttackEffect, isBuff: bool) -> int:
 func save_as_csv()-> String:
 	var output= []
 	for node in matchups.values():
-		for val in node.edges:
-			var el = val[0]
-			var edge = val[1]
-			var line = "%s,%s,%s,%s,%s" % [ node.element.name, el.name, edge.result.element.name, str(side_effect_to_index(edge.buff_effect, true)), str(side_effect_to_index(edge.debuff_effect, false)) ]
+		for key in node.edges.keys():
+			var edge = node.edges[key]
+			var line = "%s,%s,%s,%s,%s" % [ node.element.name, key.name, edge.result.element.name, str(side_effect_to_index(edge.buff_effect, true)), str(side_effect_to_index(edge.debuff_effect, false)) ]
 			output.append(line)
 	return "\n".join(output)
 

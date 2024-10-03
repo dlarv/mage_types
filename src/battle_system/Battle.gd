@@ -138,7 +138,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
  	# Calculate secondary + attack 
 	newType = ElementManager.get_matchup(target.element2, action.element)
 	if newType != null and not target.in_stasis:
-		msg += "The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color].\n" % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()]
+		msg += "\nThe target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()]
 
 		var vals = ElementManager.get_side_effect(target.element2, action.element)
 		var buff = vals[0]
@@ -165,7 +165,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	if newType != null and not target.is_dissonant:
 		e1 = target.element1.name.to_lower()
 		e2 = target.element2.name.to_lower()
-		msg = "The target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()]
+		msg = "\nThe target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()]
 
 		var vals = ElementManager.get_side_effect(target.element1, target.element2)
 		var buff = vals[0]

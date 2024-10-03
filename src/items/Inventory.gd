@@ -48,7 +48,6 @@ func load_from_fs()-> void:
 	# SpellScrolls.Sort();
 	# Equipment.Sort();
 func load_from_dir(path: String) -> void:
-	print("Loading from directory: %s" % path);
 	var dir = DirAccess.open(path);
 	var item = "temp";
 

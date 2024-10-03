@@ -115,6 +115,8 @@ func add_status(status):
 			if statuses.has(status.name):
 				statuses[status.name].combine(status)
 			else:
+				if status is StatChange:
+					print(status.stack)
 				statuses[status.name] = status
 
 func get_status(status):

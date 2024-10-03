@@ -98,8 +98,8 @@ func add_status_effect(effect: StatusEffect) -> void:
 	if effect is StatChange:
 		statChangeDisplay.add(effect)
 		return
-	if(icons.has(effect.name)): return
 
+	if(icons.has(effect.name)): return
 	var icon = effect.instantiate_icon()
 	statusEffectIcons.add_child(icon)
 	var button = icon.get_node("Button")

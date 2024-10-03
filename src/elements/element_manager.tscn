@@ -10,14 +10,7 @@
 [ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="7_58n47"]
 [ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="8_j8x1x"]
 [ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elemental_types/cyan.tres" id="9_rqpl6"]
-[ext_resource type="Resource" uid="uid://b4julle0iw81g" path="res://data/battle_system/status_effects/stat_changes/attack_up.tres" id="11_2opo3"]
-[ext_resource type="Resource" uid="uid://cg8xywr207tu1" path="res://data/battle_system/status_effects/stat_changes/melee_attack_up.tres" id="11_jjx3p"]
-[ext_resource type="Resource" uid="uid://c1wqtkfskoaar" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_up.tres" id="12_f21cn"]
-[ext_resource type="Resource" uid="uid://ckchtheg06whb" path="res://data/battle_system/status_effects/stat_changes/melee_defense_up.tres" id="13_fkdds"]
-[ext_resource type="Resource" uid="uid://bphq7oo643e7" path="res://data/battle_system/status_effects/stat_changes/ranged_defense_up.tres" id="14_0joi6"]
-[ext_resource type="Resource" uid="uid://bvx58mu0rxc35" path="res://data/battle_system/status_effects/stat_changes/defense_up.tres" id="14_2183x"]
-[ext_resource type="Resource" uid="uid://bk2m1s0l6l0gm" path="res://data/battle_system/status_effects/stat_changes/speed_up.tres" id="15_ojmb5"]
-[ext_resource type="Resource" uid="uid://cs5pftpng6bck" path="res://data/battle_system/status_effects/stat_changes/evasion_up.tres" id="16_ktaor"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="11_ahixq"]
 [ext_resource type="Resource" uid="uid://dneceq24qw18b" path="res://data/battle_system/status_effects/stat_changes/melee_attack_down.tres" id="17_hu54e"]
 [ext_resource type="Resource" uid="uid://bahofdms1h0nx" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_down.tres" id="18_j0teb"]
 [ext_resource type="Resource" uid="uid://dchuhbbvv2f4i" path="res://data/battle_system/status_effects/stat_changes/melee_defense_down.tres" id="19_a1npl"]
@@ -28,18 +21,85 @@
 [ext_resource type="Resource" uid="uid://c3cjp8ps55j6y" path="res://data/battle_system/status_effects/stat_changes/defense_down.tres" id="22_4n7so"]
 [ext_resource type="Resource" uid="uid://c5ro1exjhsu5o" path="res://data/battle_system/status_effects/stat_changes/evasion_down.tres" id="22_xxnyk"]
 
-[sub_resource type="Resource" id="Resource_5ne4w"]
-script = ExtResource("2_ohe7e")
-name = "Blank"
-main_color = Color(0.5, 0.5, 0.5, 1)
-text_color = Color(0, 0, 0, 1)
-color_palette = []
+[sub_resource type="Resource" id="Resource_iw27t"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Attack"
+chance = 1.0
+strength = 0.45
+message = "{target}'s melee attack was boosted!
+{target}'s ranged attack was boosted!"
 
-[sub_resource type="Resource" id="Resource_6j4h0"]
+[sub_resource type="Resource" id="Resource_ybs07"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Melee Attack"
+chance = 1.0
+strength = 0.45
+message = "{target}'s melee attack was boosted!"
+
+[sub_resource type="Resource" id="Resource_a4edu"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Ranged Attack"
+chance = 1.0
+strength = 0.45
+message = "{target}'s ranged attack was boosted!"
+
+[sub_resource type="Resource" id="Resource_wcl6g"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Defense"
+chance = 1.0
+strength = 0.45
+message = "{target}'s melee defense was boosted!
+{target}'s ranged defense was boosted!"
+
+[sub_resource type="Resource" id="Resource_34xvg"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Melee Defense"
+chance = 1.0
+strength = 0.45
+message = "{target}'s melee defense was boosted!"
+
+[sub_resource type="Resource" id="Resource_y8dfv"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Ranged Defense"
+chance = 1.0
+strength = 0.45
+message = "{target}'s ranged defense was boosted!"
+
+[sub_resource type="Resource" id="Resource_gmj6b"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Speed"
+chance = 1.0
+strength = 0.45
+message = "{target}'s speed was lowered!"
+
+[sub_resource type="Resource" id="Resource_a7rk0"]
+script = ExtResource("11_ahixq")
+duration = 3
+description = ""
+name = "Evasion"
+chance = 1.0
+strength = 0.45
+message = "{target}'s evasion was boosted!"
+
+[sub_resource type="Resource" id="Resource_f8fdb"]
 script = ExtResource("19_cqy0o")
 name = "Hp"
 chance = 1.0
-strength = 0.1
+strength = 0.15
 message = ""
 
 [sub_resource type="Resource" id="Resource_t3o6g"]
@@ -51,7 +111,6 @@ message = ""
 
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
-Blank = SubResource("Resource_5ne4w")
 elements = Array[ExtResource("2_ohe7e")]([ExtResource("2_2na3h"), ExtResource("9_rqpl6"), ExtResource("8_j8x1x"), ExtResource("4_mwrkt"), ExtResource("6_eh1hp"), ExtResource("3_4ordb"), ExtResource("5_ikpar"), ExtResource("7_58n47")])
-buff_effects = [null, ExtResource("11_2opo3"), ExtResource("11_jjx3p"), ExtResource("12_f21cn"), ExtResource("14_2183x"), ExtResource("13_fkdds"), ExtResource("14_0joi6"), ExtResource("15_ojmb5"), ExtResource("16_ktaor"), SubResource("Resource_6j4h0"), null]
+buff_effects = [null, SubResource("Resource_iw27t"), SubResource("Resource_ybs07"), SubResource("Resource_a4edu"), SubResource("Resource_wcl6g"), SubResource("Resource_34xvg"), SubResource("Resource_y8dfv"), SubResource("Resource_gmj6b"), SubResource("Resource_a7rk0"), SubResource("Resource_f8fdb"), null]
 debuff_effects = [null, ExtResource("19_ixuyb"), ExtResource("17_hu54e"), ExtResource("18_j0teb"), ExtResource("22_4n7so"), ExtResource("19_a1npl"), ExtResource("20_a8l5i"), ExtResource("21_gjete"), ExtResource("22_xxnyk"), SubResource("Resource_t3o6g")]

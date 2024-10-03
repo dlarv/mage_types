@@ -100,7 +100,7 @@ func select_targets(user: BattleActor, action:BattleAction):
 			await get_tree().create_timer(.05).timeout
 			
 		BattleAction.TargetType.ALLY:
-			if ally_display_parent.length == 1 and false:
+			if ally_display_parent.length == 1 and not Settings.enable_transmutation_hints:
 				targets = [ ally_display_parent.get_display(0).actor ]
 				# This pause is needed, otherwise the End turn button won't enable.
 				await get_tree().create_timer(.05).timeout
@@ -114,7 +114,7 @@ func select_targets(user: BattleActor, action:BattleAction):
 			targets = allies
 			
 		BattleAction.TargetType.ENEMY:
-			if enemy_display_parent.length == 1 and false:
+			if enemy_display_parent.length == 1 and not Settings.enable_transmutation_hints:
 				targets = [ enemy_display_parent.get_display(0).actor ]
 				# This pause is needed, otherwise the End turn button won't enable.
 				await get_tree().create_timer(.05).timeout
