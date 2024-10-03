@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://gtkhgnidq78a" path="res://src/battle_system/gui/components/player_controls.tscn" id="2_s8f4v"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="4_k2fdd"]
 
-[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls")]
+[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "sprite_parent")]
 script = ExtResource("1_ik08k")
 messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
 ally_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay")
 enemy_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Opponent_TeamDisplay")
 playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
+sprite_parent = NodePath("SpriteParent")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -49,6 +50,8 @@ layout_mode = 2
 [node name="InfoDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("4_k2fdd")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="SpriteParent" type="Node2D" parent="."]
 
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]

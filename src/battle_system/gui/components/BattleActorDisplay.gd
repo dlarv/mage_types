@@ -24,12 +24,13 @@ var selectorButton: Button
 var actor : BattleActor 
 
 var tint : Color = Color.WHITE
+@export
 var sprite: Sprite 
 var totalHp: int 
 # Dict<string, Node>
 var icons = {}
 
-func setup(actor: BattleActor) -> void:
+func setup(actor: BattleActor):
 	nameLabel.text = actor.name
 	healthBar.value = (actor.current_hp / actor.hp) * 100
 	hpLabel.text = "%d/%d" % [actor.current_hp, actor.hp ]
@@ -38,8 +39,7 @@ func setup(actor: BattleActor) -> void:
 	if actor.sprite == null:
 		actor.use_gradient_sprite()
 	
-	spriteDisplay.texture = actor.sprite.texture
-	sprite = actor.sprite
+	sprite.texture = actor.sprite.texture
 
 	selectorButton.pressed.connect(func():
 		if not selectorButton.is_selectable: return
@@ -57,10 +57,7 @@ func setup(actor: BattleActor) -> void:
 
 
 func set_element(id: int, element: ElementalType) -> void:
-	# Update Sprite's colors.
 	sprite.set_element(id, element)
-	# Update Sprite.
-	spriteDisplay.texture = sprite.texture
 
 func set_health(hp: int) -> void:
 	healthBar.value = hp / totalHp * 100.0

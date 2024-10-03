@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://deg4ffl4kkgel"]
+[gd_scene load_steps=13 format=3 uid="uid://deg4ffl4kkgel"]
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/BattleActorDisplay.gd" id="1_5ryt8"]
 [ext_resource type="PackedScene" uid="uid://d0u0yls8gquxd" path="res://src/battle_system/gui/components/stat_change_display.tscn" id="2_mxncc"]
 [ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_ygao2"]
 [ext_resource type="Script" path="res://src/battle_system/gui/components/ActorDisplaySelectorButton.gd" id="4_xy0og"]
+[ext_resource type="Script" path="res://src/battle_system/gui/Sprite.gd" id="5_hcp11"]
 
 [sub_resource type="Gradient" id="Gradient_207nu"]
 offsets = PackedFloat32Array(0.664653, 1)
@@ -27,7 +28,8 @@ bg_color = Color(0, 1, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omh3g"]
 bg_color = Color(0, 1, 0, 1)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p28il"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wrilo"]
+size = Vector2(50, 50)
 
 [node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "statChangeDisplay", "selectorButton", "sprite")]
 custom_minimum_size = Vector2(200, 250)
@@ -47,7 +49,7 @@ spriteDisplay = NodePath("MarginContainer/VBoxContainer/TextureRect")
 statusEffectIcons = NodePath("MarginContainer/VBoxContainer/StatusEffects")
 statChangeDisplay = NodePath("MarginContainer/VBoxContainer/StatChangeDisplay")
 selectorButton = NodePath("SelectorButton")
-sprite = NodePath("")
+sprite = NodePath("Sprite")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -112,6 +114,7 @@ size_flags_vertical = 0
 text = "100/100"
 
 [node name="StatusEffects" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 8
 
@@ -123,7 +126,6 @@ columns = 4
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_vertical = 3
-texture = SubResource("PlaceholderTexture2D_p28il")
 
 [node name="SelectorButton" type="Button" parent="."]
 visible = false
@@ -138,6 +140,12 @@ grow_vertical = 2
 tooltip_text = "asdf"
 script = ExtResource("4_xy0og")
 TransmutationHint = ExtResource("2_ygao2")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(100, 200)
+scale = Vector2(3.1, 3.1)
+texture = SubResource("PlaceholderTexture2D_wrilo")
+script = ExtResource("5_hcp11")
 
 [connection signal="mouse_entered" from="SelectorButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="SelectorButton" to="." method="_on_mouse_exited"]

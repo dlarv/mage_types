@@ -89,6 +89,7 @@ func on_player_actions_selected(allyActions) -> void:
 		else:
 			targetTeamIndex = (action.team_index + 1) % 2
 			teamDisplay =  gui.ally_display_parent  if action.team_index == 1  else  gui.enemy_display_parent
+
 		var targetPosition = gui.get_actor_display_position( targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
 		var animation = action.action.play_animation(userPosition, targetPosition)

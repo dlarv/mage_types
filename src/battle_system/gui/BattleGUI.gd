@@ -11,6 +11,8 @@ var ally_display_parent : TeamDisplay
 var enemy_display_parent : TeamDisplay 
 @export
 var playerControls: PlayerControls 
+@export
+var sprite_parent: Node2D
 
 # BattleActor[]
 var allies = []
@@ -19,6 +21,15 @@ var enemies = []
 var messages = []
 # ActorAction[]
 var selectedActions = []
+
+var _display
+# func _process(delta: float) -> void:
+# 	if _display == null: return
+# 	print(_display.get_target_position())
+# 	# print(get_actor_display_position(0, allies[0]))
+
+func _ready():
+	print("ready")
 
 func setup(allies, items, enemies) -> void:
 	init_allies(allies)
@@ -31,17 +42,29 @@ func init_allies(allies) -> void:
 	self.allies = allies
 	selectedActions = []
 	selectedActions.resize(len(allies))
+	var sprites = []
 
 	for actor in allies:
-		ally_display_parent.add_display(actor)
+		var display = ally_display_parent.add_display(actor)
+		# W/o this delay, get_target_position() gives the wrong answer, leading to 
+		await get_tree().create_timer(.1).timeout
+
+		var sprite = display.sprite
+		sprite.reparent(sprite_parent)
 	
 	ally_display_parent.highlight(0)
+
 
 
 func init_enemies(enemies) -> void:
 	self.enemies = enemies
 	for actor in enemies:
-		enemy_display_parent.add_display(actor)
+		var display = enemy_display_parent.add_display(actor)
+		# W/o this delay, get_target_position() gives the wrong answer, leading to 
+		await get_tree().create_timer(.1).timeout
+
+		var sprite = display.sprite
+		sprite.reparent(sprite_parent)
 	
 
 func display_message(msg) -> void:
@@ -76,7 +99,6 @@ func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
 	if actor == null:
 		return teamDisplay.global_position
 	
-
 	var display = teamDisplay.get_display(actor)
 	return display.get_target_position()
 

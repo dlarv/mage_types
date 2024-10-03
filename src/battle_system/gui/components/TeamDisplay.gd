@@ -27,7 +27,7 @@ var length: int:
 var displays = []
 var highlightedActorIndex : int = 0
 
-func add_display(actor: BattleActor) -> void:
+func add_display(actor: BattleActor) -> BattleActorDisplay:
 	var display = displayPrefab.instantiate()
 	display.setup(actor)
 	displays.append(display)
@@ -41,6 +41,7 @@ func add_display(actor: BattleActor) -> void:
 			d.disable_transmutation_hint())
 
 	display.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
+	return display
 
 func get_display_from_index(index: int) -> BattleActorDisplay:
 	if index < len(displays):
