@@ -113,41 +113,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Hp_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
-layout_mode = 2
-text = "Hp"
-
-[node name="Mana_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
-layout_mode = 2
-text = "Mana"
-
 [node name="MAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
+stat = 1
 text = "Melee Attack"
 
 [node name="RAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
+stat = 2
 text = "Ranged Attack"
 
 [node name="MDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
+stat = 4
 text = "Melee Defense"
 
 [node name="RDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
+stat = 5
 text = "Ranged Defense"
 
 [node name="Speed_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
+stat = 6
 text = "Speed"
 
 [node name="Evasion_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
 layout_mode = 2
+stat = 7
 text = "Evasion"
-
-[node name="Stamina_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
-layout_mode = 2
-text = "Stamina"
 
 [node name="Spells" parent="MarginContainer/HBoxContainer/InterfaceContainer" instance=ExtResource("4_f40yp")]
 visible = false

@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_ketro")
+stat = 4
 duration = 3
 description = ""
-name = "Melee Defense"
+name = "Melee Defense Drop"
 chance = 1.0
 strength = -0.3
 message = "{target}'s melee defense was lowered!"

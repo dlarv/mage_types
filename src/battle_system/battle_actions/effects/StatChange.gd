@@ -2,6 +2,9 @@
 extends StatusEffect 
 class_name StatChange 
 
+@export
+var stat: StatManager.Stat
+@export
 var stack: float = 1
 
 # override
@@ -11,12 +14,5 @@ func combine(a):
 	strength += a.strength
 
 func get_mod():
-	return stack * strength + 1
+	return stack * strength
 
-func get_full_name():
-	var output = name
-	if strength < 0:
-		output += " Drop"
-	else:
-		output += " Boost"
-	return output

@@ -19,10 +19,10 @@ var elements: Array[ElementalType] = [ ]
 var buff_multiplier = 1.5
 @export
 # AttackEffect[]
-var buff_effects = []
+var buff_effects: Array[AttackEffect]
 @export
 # AttackEffect[]
-var debuff_effects = []
+var debuff_effects: Array[AttackEffect]
 
 # Dict<string, Node>
 var matchups = {}
@@ -60,10 +60,12 @@ func test()-> void:
 
 func _enter_tree() -> void:
 	force_load()
-	for i in range(len(buff_effects)):
-		if buff_effects[i] == null: continue
-		buff_effects[i] = buff_effects[i].duplicate()
-		buff_effects[i].strength *= buff_multiplier
+
+	if not Engine.is_editor_hint():
+		for i in range(len(buff_effects)):
+			if buff_effects[i] == null: continue
+			buff_effects[i] = buff_effects[i].duplicate()
+			buff_effects[i].strength *= buff_multiplier
 		
 	load_from_default_csv()
 

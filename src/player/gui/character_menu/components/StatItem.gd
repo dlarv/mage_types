@@ -2,8 +2,10 @@
 extends Control 
 class_name StatItem 
 
-signal stat_modified(name, amount)
+signal stat_modified(stat, amount)
 
+@export
+var stat: StatManager.Stat
 @export
 var text : String:
 	get:
@@ -64,11 +66,11 @@ func _ready() -> void:
 func increment_stat(direction: int) -> void:
 	value += direction
 	numberLabel.text = str(value)
-	stat_modified.emit(text.to_lower().strip_edges(), value)
+	stat_modified.emit(stat, value)
 
 func change_value(value) -> void:
 	if value is BattleActor:
-		self.value = value.get_stat(text.to_lower().strip_edges())
+		self.value = value.get_stat(stat)
 	else:
 		self.value = value
 
@@ -76,4 +78,4 @@ func on_text_changed(newText: String) -> void:
 	# From what I can tell, this should remove non-numeric symbols from string,
 	# but it doesn't seem to do that.
 	value = newText.to_int()
-	stat_modified.emit(text.to_lower().strip_edges(), value)
+	stat_modified.emit(stat, value)

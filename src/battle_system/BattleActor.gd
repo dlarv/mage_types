@@ -20,6 +20,8 @@ var xp: float = 0
 @export_category("Stats")
 var statuses = StatusEffectManager.new()
 @export
+var stat_manager = StatManager.new()
+@export
 var hp: int: 
 	get: return hp 
 	set(value):
@@ -28,36 +30,17 @@ var hp: int:
 var current_hp: int = 100
 
 @export
-var melee_attack: int: 
-	get: return melee_attack * statuses.melee_attack_mod
-	set(value): melee_attack = value 
-@export
-var ranged_attack: int: 
-	get: return ranged_attack * statuses.ranged_attack_mod
-	set(value): ranged_attack = value
-@export
-var melee_defense: int = 100: 
-	get: return melee_defense * statuses.melee_defense_mod
-	set(value): melee_defense = value 
-@export
-var ranged_defense: int = 100:
-	get: return ranged_defense* statuses.ranged_defense_mod
-	set(value): ranged_defense = value 
-@export
-var speed: int: 
-	get: return speed * statuses.speed_mod
-	set(value): speed = value 
-@export
-var evasion: int:
-	get: return evasion * statuses.evasion_mod
-	set(value): evasion = value 
-@export
 var mana: int:
 	get: return mana
 	set(value):
 		mana = value
 		current_mana = value
 var current_mana: int
+
+var speed: float:
+	get: return stat_manager.speed
+var evasion: float:
+	get: return stat_manager.evasion
 
 @export_category("General")
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
@@ -94,14 +77,15 @@ var attacks: Array[Attack] = []
 var sprite_path: PackedScene
 var sprite : Sprite = null
 
-var is_dissonant: 
-	get: statuses.is_dissonant()
-var is_flinching: 
-	get: statuses.is_flinching()
-var in_stasis: 
-	get: statuses.in_stasis()
+var dissonant: 
+	get: return statuses.check_dissonant()
+var flinching: 
+	get: return statuses.check_flinching()
+var stasis: 
+	get: return statuses.check_stasis()
 var is_defeated: bool: 
 	get: return current_hp <= 0
+
 var prevElement1 : ElementalType = ElementManager.Blank
 var elementCounter1 : int = 0
 var prevElement2 : ElementalType = ElementManager.Blank
@@ -121,13 +105,13 @@ func set_element(id: int, element: ElementalType) -> String:
 
 	var mod
 	var dmg = 0
-	var effect = statuses.is_phobic(element)
+	var effect = statuses.check_phobic(element)
 	if effect != null:
 		dmg = hp * effect.strength
 		current_hp -= dmg
 		msg += "%s was hurt by its phobia! (%d damage)" % [ name, dmg ]
 
-	effect = statuses.is_philic(element)
+	effect = statuses.check_philic(element)
 	if effect != null:
 		dmg = hp * effect.strength
 		current_hp += dmg
@@ -157,134 +141,22 @@ func use_gradient_sprite()-> void:
 	sprite = Sprite.new()
 	sprite.set_gradient_sprite(element1, element2)
 
-static func get_max_stat()-> int:
-	return 100000
-
-func get_stat_from_string(name: String) -> int:
-	match name.to_lower().strip_edges():
-		"hp","health","max_health","max health": return hp
-		"attack","melee_attack","melee attack": 
-			return melee_attack
-		"defense","melee_defense","melee defense": 
-			return melee_defense
-		"ranged_attack","ranged attack": 
-			return ranged_attack
-		"ranged_defense","ranged defense": 
-			return ranged_defense
-		"speed": 
-			return speed
-		"evasion": 
-			return evasion
-		"current_mana": return current_mana
-		_: return -1
-
-func get_stat(stat) -> int:
-	if stat is String:
-		return get_stat_from_string(stat)
-
-	match stat:
-		Stats.MELEE_ATTACK:
-			return melee_attack
-		Stats.MELEE_DEFENSE:
-			return melee_defense
-		Stats.RANGED_ATTACK:
-			return ranged_attack
-		Stats.RANGED_DEFENSE:
-			return ranged_defense
-		Stats.SPEED:
-			return speed
-		Stats.EVASION:
-			return evasion
-		Stats.MANA:
-			return current_mana
-		_:
-			return -1
-
-func get_base_stat_from_string(stat: String) -> int:
-	match stat.to_lower().strip_edges():
-		"attack","melee_attack","melee attack": 
-			return melee_attack / statuses.melee_attack_mod
-		"defense","melee_defense","melee defense": 
-			return melee_defense / statuses.melee_defense_mod
-		"ranged_attack","ranged attack": 
-			return ranged_attack / statuses.ranged_attack_mod
-		"ranged_defense","ranged defense": 
-			return ranged_defense / statuses.ranged_defense_mod
-		"speed": 
-			return speed / statuses.speed_mod
-		"evasion": 
-			return evasion / statuses.evasion_mod
-		_:
-			return -1
-
-func set_stat_from_string(name: String, value: int) -> void:
-	# name = Regex.Replace(name, "[-_ ]", "").ToLower().Trim()
-	match name:
-		"hp","health","maxhealth","maxhp":
-			hp = value
-			current_hp = value
-			
-		"attack","meleeattack","mattack":
-			melee_attack = value
-			
-		"defense","meleedefense","mdefense":
-			melee_defense = value
-			
-		"rangedattack","rattack":
-			ranged_attack = value
-			
-		"rangeddefense","rdefense": 
-			ranged_defense = value
-			
-		"speed":
-			speed = value
-			
-		"evasion":
-			evasion = value
-			
-		"current_mana":
-			current_mana = value
-			
-func set_stat(stat, value: int) -> void:
-	if(stat is String):
-		set_stat_from_string(stat, value)
-		return
-
-	match stat:
-		Stats.MELEE_ATTACK:
-			melee_attack = value
-			
-		Stats.MELEE_DEFENSE:
-			melee_defense = value
-			
-		Stats.RANGED_ATTACK:
-			ranged_attack = value
-			
-		Stats.RANGED_DEFENSE:
-			ranged_defense = value
-			
-		Stats.SPEED:
-			speed = value
-			
-		Stats.EVASION:
-			evasion = value
-			
-		Stats.MANA:
-			current_mana = value
+func get_stat(stat: StatManager.Stat) -> float:
+	return stat_manager.get_stat(stat)
 			
 func get_attack_stat(action: BattleAction) -> int:
 	if action.attack_range == BattleAction.AttackRange.MELEE:
-		return melee_attack
-	return ranged_attack
+		return stat_manager.melee_attack
+	return stat_manager.ranged_attack
 
 func get_defense_stat(action: BattleAction) -> int:
 	if action.attack_range == BattleAction.AttackRange.MELEE:
-		return melee_defense
-	return ranged_defense
+		return stat_manager.melee_defense
+	return stat_manager.ranged_defense
 
 # Returns actual amount of damage applied, after accounting for status conditions.
 func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
-	if not (statuses.is_blocking() and allowBlocking):
+	if not (statuses.check_blocking() and allowBlocking):
 		current_hp -= dmg
 		damage_applied.emit(current_hp)
 		if current_hp <= 0 and not aleadyDefeated:
@@ -295,20 +167,11 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 
 func add_status_effect(effect: StatusEffect) -> void:
 	Logger.append_log(Logger.LogType.BATTLE, "%s was applied to %s." % [ effect.name, name ])
-	statuses.add_status(effect)
-	var status = statuses.get_status(effect)
-	status_effect_added.emit(status)
-
 	if effect is StatChange:
-		Logger.append_log(
-			Logger.LogType.BATTLE, 
-			"%s for %s. Base(%d) * Strength(%f) * Stack(%f) = %f" % [ 
-				effect.get_full_name(), 
-				name, 
-				get_base_stat_from_string(effect.name), 
-				status.strength, 
-				status.stack, 
-				get_stat_from_string(effect.name)])
+		stat_manager.add(effect, name)
+	else:
+		statuses.add_status(effect)
+		status_effect_added.emit(statuses.get_status(effect))
 
 func remove_status_effect(effect: StatusEffect) -> void:
 	Logger.append_log(Logger.LogType.BATTLE, "%s's %s expired." % [ effect.name, name ])

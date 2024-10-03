@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_t3g42")
+stat = 1
 duration = 3
 description = ""
-name = "Melee Attack"
+name = "Melee Attack Boost"
 chance = 1.0
 strength = 0.3
 message = "{target}'s melee attack was boosted!"

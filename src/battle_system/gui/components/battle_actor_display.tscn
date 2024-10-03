@@ -27,9 +27,9 @@ bg_color = Color(0, 1, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omh3g"]
 bg_color = Color(0, 1, 0, 1)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_igh2i"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p28il"]
 
-[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "statChangeDisplay", "selectorButton")]
+[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "statChangeDisplay", "selectorButton", "sprite")]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -47,6 +47,7 @@ spriteDisplay = NodePath("MarginContainer/VBoxContainer/TextureRect")
 statusEffectIcons = NodePath("MarginContainer/VBoxContainer/StatusEffects")
 statChangeDisplay = NodePath("MarginContainer/VBoxContainer/StatChangeDisplay")
 selectorButton = NodePath("SelectorButton")
+sprite = NodePath("")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -122,7 +123,7 @@ columns = 4
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_vertical = 3
-texture = SubResource("PlaceholderTexture2D_igh2i")
+texture = SubResource("PlaceholderTexture2D_p28il")
 
 [node name="SelectorButton" type="Button" parent="."]
 visible = false

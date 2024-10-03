@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_c0i7a")
+stat = 2
 duration = 3
 description = ""
-name = "Ranged Attack"
+name = "Ranged Attack Drop"
 chance = 1.0
 strength = -0.3
 message = "{target}'s ranged attack was lowered!"

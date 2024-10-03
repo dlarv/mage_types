@@ -65,5 +65,5 @@ func init_actor() -> void:
 	if spells_menu != null:
 		spells_menu.setup(actor, movepool)
 
-func on_stat_modified(name: String, amount: int) -> void:
-	actor.set_stat(name, amount)
+func on_stat_modified(stat: StatManager.Stat, amount: int) -> void:
+	actor.set_stat(stat, amount)

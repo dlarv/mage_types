@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_wlyon"]
@@ -6,6 +6,39 @@
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="3_hkgsr"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="4_8ytgk"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="5_fwiqp"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="5_k4waj"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="6_t7d5o"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="7_yp8pq"]
+
+[sub_resource type="Resource" id="Resource_bgrka"]
+script = ExtResource("7_yp8pq")
+stat = 0
+stack = 1.0
+duration = 0
+description = ""
+name = ""
+chance = 1.0
+strength = 500.0
+message = "{target}'s attacks gained an enormous boost!!"
+
+[sub_resource type="Resource" id="Resource_vn4e7"]
+script = ExtResource("6_t7d5o")
+attack_effect = SubResource("Resource_bgrka")
+chance = 1.0
+effect_target = 1
+
+[sub_resource type="Resource" id="Resource_xo4cj"]
+script = ExtResource("1_wlyon")
+effects = Array[ExtResource("6_t7d5o")]([SubResource("Resource_vn4e7")])
+cost = 0
+name = "Power up"
+animation = ExtResource("5_k4waj")
+_element = "blank"
+priority = 0
+attack_range = 0
+target = 0
+details = ""
 
 [sub_resource type="Resource" id="Resource_5ne4w"]
 script = ExtResource("5_fwiqp")
@@ -14,18 +47,22 @@ main_color = Color(0.5, 0.5, 0.5, 1)
 text_color = Color(0, 0, 0, 1)
 color_palette = []
 
+[sub_resource type="Resource" id="Resource_ii6l6"]
+script = ExtResource("7_b7k3c")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
 [resource]
 script = ExtResource("1_ay17s")
 name = "Player"
+stat_manager = SubResource("Resource_ii6l6")
 hp = 1000
-melee_attack = 100
-ranged_attack = 100
-melee_defense = 100
-ranged_defense = 100
-speed = 100
-evasion = 100
 mana = 100
 _element1 = "magenta"
 _element2 = "green"
 elemental_bias = SubResource("Resource_5ne4w")
-attacks = Array[ExtResource("1_wlyon")]([ExtResource("2_430d3"), ExtResource("3_hkgsr"), ExtResource("4_8ytgk")])
+attacks = Array[ExtResource("1_wlyon")]([ExtResource("2_430d3"), ExtResource("3_hkgsr"), ExtResource("4_8ytgk"), SubResource("Resource_xo4cj")])

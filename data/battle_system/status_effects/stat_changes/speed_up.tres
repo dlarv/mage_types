@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_vso25")
+stat = 6
 duration = 3
 description = ""
-name = "Speed"
+name = "Speed Boost"
 chance = 1.0
 strength = 0.3
-message = "{target}'s speed was lowered!"
+message = "{target}'s speed was boosted!"

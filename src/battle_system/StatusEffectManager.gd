@@ -96,6 +96,7 @@ var healing : float:
 
 var blocking : StatusEffect = null
 var stasis : StatusEffect = null
+
 # StatusEffect[]
 var effectsToRemove = []
 
@@ -103,20 +104,21 @@ var effectsToRemove = []
 var statuses = {}
 
 func add_status(status):
-	# if status is ElementalEffect:
-	# 	status = status.duplicate()
-	# 	status.element = ElementManager.get_element_from_name(status.name)
 	match status.name:
 		BLOCKING_KEY:
-			blocking = status
+			if blocking != null:
+				blocking.combine(status)
+			else:
+				blocking = status
 		STASIS_KEY:
-			stasis = status
+			if stasis != null:
+				stasis.combine(status)
+			else:
+				stasis = status
 		_:
 			if statuses.has(status.name):
 				statuses[status.name].combine(status)
 			else:
-				if status is StatChange:
-					print(status.stack)
 				statuses[status.name] = status
 
 func get_status(status):
@@ -130,7 +132,7 @@ func get_status(status):
 
 func remove(effects):
 	for effect in effects:
-		statuses.remove(effect.name)
+		statuses.erase(effect.name)
 
 
 func calculate_expirations():
@@ -146,32 +148,39 @@ func calculate_expirations():
 	effectsToRemove = []
 	return output
 
-func is_flinching():
-	return statuses.has(FLINCHING_KEY)
+func check_flinching():
+	return statuses.get(FLINCHING_KEY)
 
-func is_dissonant():
-	return statuses.has(DISSONANT_KEY)
+func check_dissonant():
+	return statuses.get(DISSONANT_KEY)
 
-func is_blocking():
+func check_blocking():
 	if blocking != null:
 		effectsToRemove.add(blocking)
 		blocking = null
 		return true
 	return false
 
-func in_stasis():
+func check_stasis():
 	if stasis != null:
+		var output = stasis
 		effectsToRemove.add(stasis)
 		stasis = null
-		return true
+		return stasis
 	
-	return false
+	return null
 
-func is_phobic(element):
-	return statuses.get(PHOBIC_KEY)
+func check_phobic(element):
+	var effect = statuses.get(PHOBIC_KEY)
+	if effect != null and effect.element == element:
+		return effect
+	return null
 
-func is_philic(element):
-	return statuses.get(PHILIC_KEY)
+func check_philic(element):
+	var effect = statuses.get(PHILIC_KEY)
+	if effect != null and effect.element == element:
+		return effect
+	return null
 
 func list():
 	var output = []

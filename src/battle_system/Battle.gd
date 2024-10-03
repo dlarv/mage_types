@@ -68,7 +68,9 @@ func on_player_actions_selected(allyActions) -> void:
 		if action == null:
 			continue
 
-		if action.actor.is_flinching:
+		var flinch = action.actor.flinching
+		if flinch != null:
+			await gui.display_message("%s flinched! They were unable to move" % action.actor.name)
 			continue
 
 		action.action.apply_cost(action.actor)
@@ -128,6 +130,10 @@ func on_player_actions_selected(allyActions) -> void:
 	gui.enable_player_controls(true)
 
 func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:
+	var stasis = target.stasis
+	if stasis != null:
+		await gui.display_message(stasis.message)
+		return
 	var msg = []
 	var e1 = target.element1.name.to_lower()
 	var e2 = target.element2.name.to_lower()
@@ -135,7 +141,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
  	# Calculate primary + attack 
 	var newType = ElementManager.get_matchup(target.element1, action.element)
-	if newType != null and not target.in_stasis:
+	if newType != null:
 		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
 
 		var vals = ElementManager.get_side_effect(target.element1, action.element)
@@ -151,10 +157,12 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if len(msg2) > 0:
 			msg.append(msg2)
 
+		await gui.display_message(msg)
+
  	# Calculate secondary + attack 
 	newType = ElementManager.get_matchup(target.element2, action.element)
 	msg = []
-	if newType != null and not target.in_stasis:
+	if newType != null:
 		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
 
 		var vals = ElementManager.get_side_effect(target.element2, action.element)
@@ -170,17 +178,17 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if len(msg2) > 0:
 			msg.append(msg2)
 
-
-	# Only display message if applicable.
-	# If no changes occurred, iteration can end here.
-	if len(msg) > 0:
 		await gui.display_message(msg)
-	else: return
 
  	# Calculate primary + secondary.
+	var dissonant = target.dissonant
+	if dissonant != null:
+		await gui.display_message(dissonant.message)
+		return
+
 	newType = ElementManager.get_matchup(target.element1, target.element2)
 	msg = []
-	if newType != null and not target.is_dissonant:
+	if newType != null:
 		e1 = target.element1.name.to_lower()
 		e2 = target.element2.name.to_lower()
 		msg.append("The target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()])

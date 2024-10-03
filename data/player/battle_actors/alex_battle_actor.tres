@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://bh5734pj5bgq3"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=11 format=3 uid="uid://bh5734pj5bgq3"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_s6y24"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_skdfi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_acnq6"]
 [ext_resource type="Resource" uid="uid://da27irgqjb8ob" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_attack_up.tres" id="4_kq6mw"]
 [ext_resource type="Resource" uid="uid://j7kja5ijt2a" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_defense_down.tres" id="5_yatqe"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="8_cqnen"]
 
 [sub_resource type="Resource" id="Resource_5ne4w"]
 script = ExtResource("2_vrqin")
@@ -15,16 +16,20 @@ main_color = Color(0.5, 0.5, 0.5, 1)
 text_color = Color(0, 0, 0, 1)
 color_palette = []
 
+[sub_resource type="Resource" id="Resource_w38wo"]
+script = ExtResource("8_cqnen")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
 [resource]
 script = ExtResource("1_s6y24")
 name = "Alex"
+stat_manager = SubResource("Resource_w38wo")
 hp = 300
-melee_attack = 50
-ranged_attack = 100
-melee_defense = 100
-ranged_defense = 100
-speed = 100
-evasion = 100
 mana = 100
 _element1 = "blue"
 _element2 = "blank"

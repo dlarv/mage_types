@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_wwif4")
+stat = 6
 duration = 0
 description = ""
-name = "Speed"
+name = "Speed Drop"
 chance = 1.0
 strength = -0.3
 message = "{target}'s speed was lowered!"

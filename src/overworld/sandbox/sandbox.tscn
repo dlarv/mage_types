@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=31 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/enemies/enemy_actor.tscn" id="2_1w1kl"]
@@ -17,9 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="13_g7ia1"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="14_ww7o4"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="15_kuiv7"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="16_571l7"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="17_hr46a"]
 [ext_resource type="PackedScene" uid="uid://df78txj1jxdu7" path="res://src/battle_system/opponent_controllers/scripted_opponent.tscn" id="18_bxbvk"]
+[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="20_a2tov"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
 size = Vector3(100, 0.1, 100)
@@ -61,16 +63,20 @@ main_color = Color(0.5, 0.5, 0.5, 1)
 text_color = Color(0, 0, 0, 1)
 color_palette = []
 
+[sub_resource type="Resource" id="Resource_7hmk6"]
+script = ExtResource("16_571l7")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
 [sub_resource type="Resource" id="Resource_n6pd8"]
 script = ExtResource("10_7knec")
 name = "Guy"
+stat_manager = SubResource("Resource_7hmk6")
 hp = 1000
-melee_attack = 100
-ranged_attack = 100
-melee_defense = 100
-ranged_defense = 100
-speed = 100
-evasion = 100
 mana = 101
 _element1 = "blue"
 _element2 = "blank"
@@ -124,6 +130,7 @@ ai = NodePath("AI")
 script = ExtResource("9_st78g")
 
 [node name="Player" parent="World/Overworld" node_paths=PackedStringArray("inventory", "player_menu") instance=ExtResource("9_8nykr")]
+party = Array[ExtResource("10_7knec")]([ExtResource("20_a2tov")])
 inventory = NodePath("../../../Inventory")
 player_menu = NodePath("../../CanvasLayer/PlayerMenu")
 

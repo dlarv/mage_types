@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://cj7rk23vvyppe"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_5o313"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_5633o"]
 [ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="4_2oeie"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_e6qfo"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
 
 [sub_resource type="Resource" id="Resource_5ne4w"]
 script = ExtResource("2_5o313")
@@ -14,16 +15,20 @@ main_color = Color(0.5, 0.5, 0.5, 1)
 text_color = Color(0, 0, 0, 1)
 color_palette = []
 
+[sub_resource type="Resource" id="Resource_my6ko"]
+script = ExtResource("7_mftjw")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
 [resource]
 script = ExtResource("1_wyvu6")
 name = "Alice"
+stat_manager = SubResource("Resource_my6ko")
 hp = 100
-melee_attack = 100
-ranged_attack = 100
-melee_defense = 100
-ranged_defense = 100
-speed = 100
-evasion = 100
 mana = 100
 _element1 = "purple"
 _element2 = "cyan"

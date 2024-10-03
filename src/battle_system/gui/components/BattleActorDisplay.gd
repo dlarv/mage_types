@@ -1,4 +1,4 @@
-extends Control 
+extends Control
 class_name BattleActorDisplay 
 
 signal selected(actor)
@@ -37,6 +37,7 @@ func setup(actor: BattleActor) -> void:
 
 	if actor.sprite == null:
 		actor.use_gradient_sprite()
+	
 	spriteDisplay.texture = actor.sprite.texture
 	sprite = actor.sprite
 
@@ -51,6 +52,7 @@ func setup(actor: BattleActor) -> void:
 	actor.damage_applied.connect(set_health)
 	actor.status_effect_added.connect(add_status_effect)
 	actor.status_effects_removed.connect(remove_status_effects)
+	actor.stat_manager.stat_changed.connect(display_stat_change)
 	actor.element_changed.connect(set_element)
 
 
@@ -95,10 +97,6 @@ func enable_transmutation_hint(attackElement: ElementalType) -> void:
 
 
 func add_status_effect(effect: StatusEffect) -> void:
-	if effect is StatChange:
-		statChangeDisplay.add(effect)
-		return
-
 	if(icons.has(effect.name)): return
 	var icon = effect.instantiate_icon()
 	statusEffectIcons.add_child(icon)
@@ -109,15 +107,14 @@ func add_status_effect(effect: StatusEffect) -> void:
 
 func remove_status_effects(effects) -> void:
 	for effect in effects:
-		if effect is StatChange:
-			statChangeDisplay.remove(effect)
-			continue
-		
 		if !icons.has(effect.name): continue
 		var icon = icons[effect.name]
 		statusEffectIcons.remove_child(icon)
 		icons.erase(effect.name)
 		
+func display_stat_change(stat: StatManager.Stat, value: float):
+	statChangeDisplay.add(stat, value)
+
 func set_defeated() -> void:
 	modulate = Color(1, 1, 1, .5)
 	for key in icons.keys():
