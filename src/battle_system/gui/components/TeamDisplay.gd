@@ -31,7 +31,10 @@ func add_display(actor: BattleActor) -> BattleActorDisplay:
 	var display = displayPrefab.instantiate()
 	display.setup(actor)
 	displays.append(display)
+	
 	displayParent.add_child(display)
+	if shift_right:
+		displayParent.move_child(display, 0)
 
 	display.selected.connect(func(a):
 		selected.emit(a)
@@ -41,6 +44,7 @@ func add_display(actor: BattleActor) -> BattleActorDisplay:
 			d.disable_transmutation_hint())
 
 	display.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
+
 	return display
 
 func get_display_from_index(index: int) -> BattleActorDisplay:

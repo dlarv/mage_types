@@ -18,12 +18,6 @@ func _play(start: Vector2i, end: Vector2i, element=null):
 	self.start = start
 	self.end = end
 
-func long_play():
-	# Used for testing.
-	# Will c# wait to continue for this script to execute before continuing?
-	await get_tree().create_timer(3).timeout
-	print("Here for GD")
-
 func set_elemental_tint(element):
 	if element == null: 
 		return

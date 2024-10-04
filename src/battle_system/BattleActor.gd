@@ -22,7 +22,7 @@ var statuses = StatusEffectManager.new()
 @export
 var stat_manager = StatManager.new()
 @export
-var hp: int: 
+var hp: int = 100:
 	get: return hp 
 	set(value):
 		hp = value

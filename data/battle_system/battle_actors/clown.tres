@@ -1,26 +1,34 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://bmcia4k0ec1wj"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bmcia4k0ec1wj"]
 
-[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="1_i4kid"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_kqc0s"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_llgem"]
-[ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="2_7ook1"]
-[ext_resource type="Resource" uid="uid://b264df1pks5c0" path="res://data/elemental_types/orange.tres" id="3_pucw6"]
-[ext_resource type="Resource" uid="uid://ce4825c7e8a6n" path="res://data/battle_system/battle_actions/attacks/kamikaze.tres" id="4_if762"]
-[ext_resource type="Resource" uid="uid://bn6di6k824f3x" path="res://data/elemental_types/magenta.tres" id="4_ruhn1"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="5_fjt6a"]
+[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_c353s"]
+[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_facsb"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_fty2v"]
+
+[sub_resource type="Resource" id="Resource_miugx"]
+script = ExtResource("2_facsb")
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = []
+
+[sub_resource type="Resource" id="Resource_hvyi6"]
+script = ExtResource("4_fty2v")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
 
 [resource]
 script = ExtResource("1_llgem")
-ActorName = "Clown"
-Hp = 1000
-MeleeAttack = 100
-RangedAttack = 100
-MeleeDefense = 100
-RangedDefense = 100
-Speed = 100
-Evasion = 100
-Mana = 1000
-Element1 = ExtResource("3_pucw6")
-Element2 = ExtResource("4_ruhn1")
-ElementalBias = ExtResource("5_fjt6a")
-Attacks = Array[ExtResource("1_kqc0s")]([ExtResource("1_i4kid"), ExtResource("2_7ook1"), ExtResource("4_if762")])
+name = "Guy"
+stat_manager = SubResource("Resource_hvyi6")
+hp = 100
+mana = 0
+_element1 = "blue"
+_element2 = "blank"
+elemental_bias = SubResource("Resource_miugx")
+attacks = Array[ExtResource("1_kqc0s")]([ExtResource("2_c353s")])

@@ -9,7 +9,7 @@
 script = ExtResource("1_ik08k")
 messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
 ally_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay")
-enemy_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Opponent_TeamDisplay")
+enemy_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/TeamDisplay")
 playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 sprite_parent = NodePath("SpriteParent")
 
@@ -26,7 +26,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Opponent_TeamDisplay" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource("2_ov218")]
+[node name="TeamDisplay" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource("2_ov218")]
 layout_mode = 2
 size_flags_vertical = 3
 shift_right = true
@@ -53,6 +53,7 @@ size_flags_horizontal = 3
 
 [node name="SpriteParent" type="Node2D" parent="."]
 
+[connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]
 [connection signal="active_actor_changed" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]
