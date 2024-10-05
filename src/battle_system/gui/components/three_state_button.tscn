@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/battle_system/gui/components/ThreeStateButton.gd" id="1_qafsp"]
 
 [node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("button")]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

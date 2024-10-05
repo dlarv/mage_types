@@ -48,7 +48,7 @@ func init_actor() -> void:
 
 	if statItemsScroller != null: 
 		for item in statItemsScroller.get_children():
-			item.change_value(actor)
+			item.set_value(actor)
 
 	if nameLabel != null:
 		nameLabel.text = actor.name
@@ -65,5 +65,16 @@ func init_actor() -> void:
 	if spells_menu != null:
 		spells_menu.setup(actor, movepool)
 
-func on_stat_modified(stat: StatManager.Stat, amount: int) -> void:
-	actor.set_stat(stat, amount)
+func _on_stat_modified(stat: String, amount: float) -> void:
+	match stat:
+		"MANA": 
+			actor.mana = amount
+		"CURRENT_MANA":
+			actor.current_mana = amount
+		"HP":
+			actor.hp = amount
+		"CURRENT_HP":
+			actor.current_hp = amount
+		_:
+			var key = StatManager.Stat.find_key(stat)
+			actor.set_stat(StatManager.Stat.get(stat), amount)

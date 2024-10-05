@@ -2,6 +2,8 @@
 extends Resource 
 class_name BattleActor 
 
+enum Stats { MELEE_ATTACK, RANGED_ATTACK, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, EVASION, HP, MANA, STAMINA }
+
 signal was_just_defeated()
 signal status_effect_added(effect)
 signal status_effects_removed(effect)
@@ -139,6 +141,9 @@ func use_gradient_sprite()-> void:
 
 func get_stat(stat: StatManager.Stat) -> float:
 	return stat_manager.get_stat(stat)
+
+func set_stat(stat: StatManager.Stat, amount: float) -> void:
+	stat_manager.set_stat(stat, amount)
 			
 func get_attack_stat(action: BattleAction) -> int:
 	if action.attack_range == BattleAction.AttackRange.MELEE:

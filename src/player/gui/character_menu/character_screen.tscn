@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/player/gui/character_menu/CharacterScreen.gd" id="1_djrqu"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_cetjj"]
-[ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="2_i8dsj"]
+[ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="3_br248"]
 [ext_resource type="PackedScene" uid="uid://b035qwjaysn7d" path="res://src/player/gui/movepool/spells_menu.tscn" id="4_f40yp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vlcv"]
@@ -113,59 +113,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Hp_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
-stat = 1
-text = "Melee Attack"
+stat = "HP"
 
-[node name="RAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="Mana_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
-stat = 2
-text = "Ranged Attack"
+stat = "MANA"
 
-[node name="MDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="MAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
-stat = 4
-text = "Melee Defense"
+stat = "MELEE_ATTACK"
 
-[node name="RDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="RAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
-stat = 5
-text = "Ranged Defense"
+stat = "RANGED_ATTACK"
 
-[node name="Speed_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="MDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
-stat = 6
-text = "Speed"
+stat = "MELEE_DEFENSE"
 
-[node name="Evasion_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("2_i8dsj")]
+[node name="RDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
-stat = 7
-text = "Evasion"
+stat = "RANGED_DEFENSE"
+
+[node name="Speed_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
+layout_mode = 2
+stat = "SPEED"
 
 [node name="Spells" parent="MarginContainer/HBoxContainer/InterfaceContainer" instance=ExtResource("4_f40yp")]
 visible = false
 layout_mode = 2
 
-[node name="Equipment" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-metadata/_tab_index = 3
-
-[node name="Abilities" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 4
-
-[node name="Misc" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-metadata/_tab_index = 5
+[connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Hp_StatItem" to="." method="_on_stat_modified"]
+[connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Mana_StatItem" to="." method="_on_stat_modified"]
+[connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/MAttack_StatItem" to="." method="_on_stat_modified"]
+[connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/RAttack_StatItem" to="." method="_on_stat_modified"]
+[connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/MDefense_StatItem" to="." method="_on_stat_modified"]
+[connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/RDefense_StatItem" to="." method="_on_stat_modified"]
+[connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Speed_StatItem" to="." method="_on_stat_modified"]
