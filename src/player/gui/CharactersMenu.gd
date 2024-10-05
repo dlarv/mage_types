@@ -21,8 +21,10 @@ var is_alice_active: bool = true:
 		is_alice_active = value
 		if activeScreensParent == null:
 			activeScreensParent = find_child("ActiveTabs")
+			if activeScreensParent == null: return
 		if inactiveScreensParent == null: 
 			inactiveScreensParent = find_child("InactiveTabs")
+			if inactiveScreensParent == null: return
 		if aliceScreen == null:
 			aliceScreen = find_child("Alice", true)
 
@@ -36,8 +38,10 @@ var is_alex_active: bool = true:
 		is_alex_active = value
 		if activeScreensParent == null:
 			activeScreensParent = find_child("ActiveTabs")
+			if activeScreensParent == null: return
 		if inactiveScreensParent == null: 
 			inactiveScreensParent = find_child("InactiveTabs")
+			if inactiveScreensParent == null: return
 		if alexScreen == null:
 			alexScreen = find_child("Alex", true)
 

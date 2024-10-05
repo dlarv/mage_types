@@ -31,12 +31,8 @@ grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
 
-[node name="Characters" parent="TabContainer" node_paths=PackedStringArray("aliceScreen", "alexScreen") instance=ExtResource("2_bem4u")]
+[node name="Characters" parent="TabContainer" instance=ExtResource("2_bem4u")]
 layout_mode = 2
-aliceScreen = NodePath("InactiveTabs/Alice")
-alexScreen = NodePath("InactiveTabs/Alex")
-is_alice_active = false
-is_alex_active = false
 metadata/_tab_index = 0
 
 [node name="Inventory" parent="TabContainer" instance=ExtResource("3_amx4t")]

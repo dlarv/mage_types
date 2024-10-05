@@ -36,8 +36,10 @@ grow_vertical = 2
 script = ExtResource("1_oje6s")
 activeScreensParent = NodePath("MarginContainer/ActiveTabs")
 inactiveScreensParent = NodePath("InactiveTabs")
-aliceScreen = NodePath("MarginContainer/ActiveTabs/Alice")
-alexScreen = NodePath("MarginContainer/ActiveTabs/Alex")
+aliceScreen = NodePath("InactiveTabs/Alice")
+alexScreen = NodePath("InactiveTabs/Alex")
+is_alice_active = false
+is_alex_active = false
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -58,26 +60,30 @@ actor = ExtResource("3_67vyo")
 movepool = NodePath("../../../PlayerMovepool")
 metadata/_tab_index = 0
 
-[node name="Alice" parent="MarginContainer/ActiveTabs" node_paths=PackedStringArray("movepool") instance=ExtResource("1_ebiem")]
-visible = false
-layout_mode = 2
-actor = ExtResource("3_dxhqu")
-movepool = NodePath("../../../AliceMovepool")
-metadata/_tab_index = 1
-
-[node name="Alex" parent="MarginContainer/ActiveTabs" node_paths=PackedStringArray("movepool") instance=ExtResource("1_ebiem")]
-visible = false
-layout_mode = 2
-actor = ExtResource("5_07e8o")
-movepool = NodePath("../../../AlexMovepool")
-metadata/_tab_index = 2
-
 [node name="InactiveTabs" type="Control" parent="."]
 visible = false
 layout_mode = 2
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+
+[node name="Alex" parent="InactiveTabs" node_paths=PackedStringArray("movepool") instance=ExtResource("1_ebiem")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_top = 10.0
+offset_bottom = 10.0
+actor = ExtResource("5_07e8o")
+movepool = NodePath("../../AlexMovepool")
+
+[node name="Alice" parent="InactiveTabs" node_paths=PackedStringArray("movepool") instance=ExtResource("1_ebiem")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_top = 10.0
+offset_bottom = 10.0
+actor = ExtResource("3_dxhqu")
+movepool = NodePath("../../AliceMovepool")
 
 [node name="PlayerMovepool" type="Node" parent="."]
 script = ExtResource("6_7owod")
