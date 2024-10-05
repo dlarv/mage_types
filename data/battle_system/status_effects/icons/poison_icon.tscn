@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://clhtfef315tlq"]
+[gd_scene load_steps=3 format=3 uid="uid://clhtfef315tlq"]
 
 [ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="1_u8ypi"]
+[ext_resource type="Texture2D" uid="uid://2gkuiepb2orm" path="res://assets/sprites/battle_gui/stat_icons/status_effect_icons/poison.png" id="2_5gmxk"]
 
 [node name="StatusEffectIcon" instance=ExtResource("1_u8ypi")]
-color = Color(0, 0.501961, 0, 1)
+modulate = Color(0, 0.294118, 0, 1)
+texture = ExtResource("2_5gmxk")
 
 [node name="Label" parent="." index="0"]
 text = "P"

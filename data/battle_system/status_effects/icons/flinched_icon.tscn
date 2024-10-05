@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3kpt65ai6xoj"]
+[gd_scene load_steps=3 format=3 uid="uid://c3kpt65ai6xoj"]
 
 [ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="1_v8kpj"]
+[ext_resource type="Texture2D" uid="uid://cx16ty2sf0kuk" path="res://assets/sprites/battle_gui/stat_icons/status_effect_icons/flinched.png" id="2_y5vdk"]
 
 [node name="StatusEffectIcon" instance=ExtResource("1_v8kpj")]
-color = Color(0.252028, 0.252028, 0.252028, 1)
+texture = ExtResource("2_y5vdk")
 
 [node name="Label" parent="." index="0"]
 text = "F"
+
+[node name="Button" parent="." index="1"]
+tooltip_text = "Flinched"

@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmrg6yfnlp2uw"]
+[gd_scene load_steps=3 format=3 uid="uid://dmrg6yfnlp2uw"]
 
 [ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="1_lxodk"]
+[ext_resource type="Texture2D" uid="uid://bdqh08qart82m" path="res://assets/sprites/battle_gui/stat_icons/status_effect_icons/blocking.png" id="2_7rxcw"]
 
 [node name="StatusEffectIcon" instance=ExtResource("1_lxodk")]
-color = Color(0, 1, 1, 1)
+modulate = Color(0, 0, 0.470588, 1)
+texture = ExtResource("2_7rxcw")
 
 [node name="Label" parent="." index="0"]
 text = "B"
+
+[node name="Button" parent="." index="1"]
+tooltip_text = "Blocking"

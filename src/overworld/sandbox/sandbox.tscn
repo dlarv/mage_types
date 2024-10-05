@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=30 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/enemies/enemy_actor.tscn" id="2_1w1kl"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="17_hr46a"]
 [ext_resource type="PackedScene" uid="uid://df78txj1jxdu7" path="res://src/battle_system/opponent_controllers/scripted_opponent.tscn" id="18_bxbvk"]
-[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="21_km0u4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
 size = Vector3(100, 0.1, 100)
@@ -130,7 +129,6 @@ ai = NodePath("AI")
 script = ExtResource("9_st78g")
 
 [node name="Player" parent="World/Overworld" node_paths=PackedStringArray("inventory", "player_menu") instance=ExtResource("9_8nykr")]
-party = Array[ExtResource("10_7knec")]([ExtResource("21_km0u4")])
 inventory = NodePath("../../../Inventory")
 player_menu = NodePath("../../CanvasLayer/PlayerMenu")
 

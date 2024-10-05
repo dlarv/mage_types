@@ -27,7 +27,8 @@ func apply_effect(user, target=null, action=null, duplicated_effect=null):
 # override
 func instantiate_icon():
 	var output = super.instantiate_icon()
-	output.color = element.main_color
+	output.modulate = element.main_color
+	output.get_node("Button").tooltip_text = "%s-%s" % [ element.name, name ] 
 	return output
 
 func get_full_name():

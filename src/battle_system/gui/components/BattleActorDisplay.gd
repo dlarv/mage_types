@@ -88,9 +88,9 @@ func disable_transmutation_hint() -> void:
 	selectorButton.set_show_hint(false)
 	# selectorButton.attack_element = null
 
+
 func enable_transmutation_hint(attackElement: ElementalType) -> void:
 	selectorButton.set_show_hint(true, attackElement)
-	# selectorButton.attack_element = attackElement
 
 
 func add_status_effect(effect: StatusEffect) -> void:

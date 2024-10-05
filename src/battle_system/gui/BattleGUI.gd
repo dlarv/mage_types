@@ -23,6 +23,7 @@ var messages = []
 var selectedActions = []
 
 var _finished_setup = false
+var _accept_messages = true
 
 func setup(allies, items, enemies) -> void:
 	init_allies(allies)
@@ -51,21 +52,24 @@ func init_enemies(enemies) -> void:
 	self.enemies = enemies
 	for actor in enemies:
 		var display = enemy_display_parent.add_display(actor)
-		# W/o this delay, get_target_position() gives the wrong answer, leading to 
+		# W/o this delay, get_target_position() gives the wrong answer.
 		await get_tree().create_timer(.1).timeout
 
 		var sprite = display.sprite
 		sprite.reparent(sprite_parent)
 
 func display_message(msg) -> void:
+	_accept_messages = false
 	if msg is Array:
 		msg = "\n".join(msg)
 
 	Logger.append_log(Logger.LogType.BATTLE, msg)
 	await messageBox.display_message_blocking(msg)
+	_accept_messages = true
 
 
 func display_message_non_blocking(msg) -> void:
+	if not _accept_messages: return
 	var msgLog = msg
 
 	if msg is Array:
@@ -175,5 +179,4 @@ func _on_show_info(action) -> void:
 	print(msg)
 	
 	display_message_non_blocking(action)
-
 

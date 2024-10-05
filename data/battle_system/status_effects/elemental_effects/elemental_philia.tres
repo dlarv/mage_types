@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ElementalEffect" load_steps=3 format=3 uid="uid://dce1ib1m1soc2"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="1_y8epl"]
-[ext_resource type="PackedScene" uid="uid://by2rhbdw7x2ew" path="res://data/battle_system/status_effects/icons/elemental_effect_icons/philia_base_icon.tscn" id="2_yy81x"]
+[ext_resource type="PackedScene" uid="uid://by2rhbdw7x2ew" path="res://data/battle_system/status_effects/icons/philia_base_icon.tscn" id="2_yy81x"]
 
 [resource]
 script = ExtResource("1_y8epl")

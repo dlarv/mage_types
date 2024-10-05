@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=18 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_wlyon"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_430d3"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="3_hkgsr"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="4_8ytgk"]
+[ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="4_r5jb5"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="5_fwiqp"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="5_k4waj"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="6_t7d5o"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="7_yp8pq"]
+[ext_resource type="Resource" uid="uid://7xv184vilpig" path="res://data/battle_system/battle_actions/attacks/basic_philia_spells/cyan_philia.tres" id="9_6cbdf"]
 
 [sub_resource type="Resource" id="Resource_bgrka"]
 script = ExtResource("7_yp8pq")
@@ -65,4 +67,4 @@ mana = 100
 _element1 = "magenta"
 _element2 = "green"
 elemental_bias = SubResource("Resource_5ne4w")
-attacks = Array[ExtResource("1_wlyon")]([ExtResource("2_430d3"), ExtResource("3_hkgsr"), ExtResource("4_8ytgk"), SubResource("Resource_xo4cj")])
+attacks = Array[ExtResource("1_wlyon")]([ExtResource("2_430d3"), ExtResource("4_8ytgk"), ExtResource("4_r5jb5"), SubResource("Resource_xo4cj"), ExtResource("3_hkgsr"), ExtResource("9_6cbdf"), ExtResource("9_6cbdf"), ExtResource("9_6cbdf"), ExtResource("9_6cbdf")])

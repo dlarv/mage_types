@@ -54,6 +54,8 @@ size_flags_horizontal = 3
 [node name="SpriteParent" type="Node2D" parent="."]
 
 [connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="status_effect_icon_pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/TeamDisplay" to="." method="display_message_non_blocking"]
+[connection signal="status_effect_icon_pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay" to="." method="display_message_non_blocking"]
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]
 [connection signal="active_actor_changed" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]

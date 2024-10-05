@@ -57,8 +57,7 @@ func setup(allies, items, enemies) -> void:
 			skipIndices[index] = true
 			# Recalc beginIndex and finalIndex.
 			finalIndex = skipIndices.rfind(false)
-			beginIndex = skipIndices.find(false)
-		)
+			beginIndex = skipIndices.find(false))
 
 		attacksPanel.tab_selected.connect(func(tabIndex):
 			if(tabIndex != index): return
