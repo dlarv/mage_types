@@ -1,11 +1,8 @@
 extends Control
 
-@export
-var settings_menu: Control
-@export
-var save_game_menu: Control
-@export
-var load_game_menu: Control
+@export var settings_menu: Control
+@export var save_game_menu: Control
+@export var load_game_menu: Control
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_pause_menu"):

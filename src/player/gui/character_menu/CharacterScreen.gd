@@ -9,61 +9,51 @@ var actor: BattleActor:
 	set(value):
 		actor = value
 		init_actor() 
-@export
-var movepool: Movepool
+@export var movepool: Movepool
 @export
 var allow_stat_editing : bool:
-	get:
-		return _allowStatEditing
 	set(value):
-		_allowStatEditing = value
-		if statItemsScroller == null: return
-		for item in statItemsScroller.get_children():
+		allow_stat_editing = value
+		if _stat_items_scroller == null: return
+		for item in _stat_items_scroller.get_children():
 			item.editable = value
 
-var _allowStatEditing = true
-@export
-var nameLabel: Label 
-@export
-var elementIcon1: ElementIcon 
-@export
-var elementIcon2: ElementIcon 
-@export
-var biasIcon: ElementIcon 
+@export var _name_label: Label 
+@export var _element_icon_1: ElementIcon 
+@export var _element_icon_2: ElementIcon 
+@export var _bias_icon: ElementIcon 
 
-@export
-var statItemsScroller: VBoxContainer 
-@export
-var spells_menu: Control
+@export var _stat_items_scroller: VBoxContainer 
+@export var _spells_menu: Control
 
 func _ready() -> void:
 	init_actor()
 	if not Engine.is_editor_hint():
 		actor.element_changed.connect(func(id, element):
-			if id == 0: elementIcon1.element = element
-			else: elementIcon2.element = element)
+			if id == 0: _element_icon_1.element = element
+			else: _element_icon_2.element = element)
 
 func init_actor() -> void:
 	if actor == null: return
 
-	if statItemsScroller != null: 
-		for item in statItemsScroller.get_children():
+	if _stat_items_scroller != null: 
+		for item in _stat_items_scroller.get_children():
 			item.set_value(actor)
 
-	if nameLabel != null:
-		nameLabel.text = actor.name
+	if _name_label != null:
+		_name_label.text = actor.name
 	
-	if elementIcon1 != null:
-		elementIcon1.element = actor.element1
+	if _element_icon_1 != null:
+		_element_icon_1.element = actor.element1
 	
-	if elementIcon2 != null:
-		elementIcon2.element = actor.element2
+	if _element_icon_2 != null:
+		_element_icon_2.element = actor.element2
 	
-	if biasIcon != null:
-		biasIcon.element = actor.elemental_bias
+	if _bias_icon != null:
+		_bias_icon.element = actor.elemental_bias
 	
-	if spells_menu != null:
-		spells_menu.setup(actor, movepool)
+	if _spells_menu != null:
+		_spells_menu.setup(actor, movepool)
 
 func _on_stat_modified(stat: String, amount: float) -> void:
 	match stat:

@@ -1,26 +1,19 @@
 @tool
 extends MarginContainer
 
-@export
-var DEFAULT_SLOTS_COUNT = 5
+@export var DEFAULT_SLOTS_COUNT = 5
 
-@export
-var MovesetSlot: PackedScene
-@export
-var tab_container: TabContainer
-@export 
-var movepool_submenu: Control
-@export
-var display: Control
-@export
-var moveset_scroller: VBoxContainer
-@export
-var popup: AcceptDialog
+@export var MovesetSlot: PackedScene
+@export var tab_container: TabContainer
+@export var movepool_submenu: Control
+@export var display: Control
+@export var moveset_scroller: VBoxContainer
+@export var popup: AcceptDialog
 
 var _button_group: ButtonGroup
 var _actor: BattleActor
 
-func setup(actor: BattleActor, movepool: Movepool):
+func setup(actor: BattleActor, movepool: Movepool) -> void:
 	_actor = actor
 	# Populate moveset
 	for child in moveset_scroller.get_children():
@@ -41,7 +34,7 @@ func setup(actor: BattleActor, movepool: Movepool):
 	if movepool != null: 
 		movepool_submenu.setup(movepool)
 
-func add_moveset_slot(attack=null, index=-1):
+func add_moveset_slot(attack=null, index=-1) -> void:
 	var obj = MovesetSlot.instantiate()
 	obj.button_group = _button_group
 	moveset_scroller.add_child(obj)
@@ -51,7 +44,7 @@ func add_moveset_slot(attack=null, index=-1):
 	obj.set_spell(attack)
 	obj.index = index
 
-func remove_moveset_slot():
+func remove_moveset_slot() -> void:
 	# Try to remove first empty slot.
 	# If all slots are filled, remove the last one.
 	var child
@@ -64,13 +57,13 @@ func remove_moveset_slot():
 
 
 # Where spell is SpellScroll or Attack.
-func _on_show_info(spell, replaceSpell=false):
+func _on_show_info(spell, replaceSpell=false) -> void:
 	display.show_info(spell, replaceSpell)
 
-func _on_set_spell_requested(slot):
+func _on_set_spell_requested(slot) -> void:
 	tab_container.current_tab = 1
 
-func _on_spell_menu_display_spell_selected(scroll: SpellScroll):
+func _on_spell_menu_display_spell_selected(scroll: SpellScroll) -> void:
 	var selected_button = _button_group.get_pressed_button()
 	if selected_button == null: return
 
@@ -92,7 +85,7 @@ func _on_spell_menu_display_spell_selected(scroll: SpellScroll):
 	popup.dialog_text = msg
 	popup.show()
 
-func _on_spell_menu_display_canceled():
+func _on_spell_menu_display_canceled() -> void:
 	var selected_button = _button_group.get_pressed_button()
 	tab_container.current_tab = 0
 

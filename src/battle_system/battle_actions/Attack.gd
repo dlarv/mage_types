@@ -11,12 +11,11 @@ var effects: Array[Effect]:
 			for effect in value:
 				if effect.attack_effect is ElementalEffect:
 					_needs_elemental_effect_override = true
-@export
-var cost: int 
+@export var cost: int 
 
 var _needs_elemental_effect_override = false
 
-func elemental_effect_override(element):
+func elemental_effect_override(element: ElementalType) -> void:
 	if not Engine.is_editor_hint():
 		for i in range(len(effects)):
 			if effects[i].attack_effect is ElementalEffect:
@@ -26,8 +25,8 @@ func elemental_effect_override(element):
 
 
 # override
-func apply_effects(user, targets):
-	var msg = super.apply_effects(user, targets)
+func apply_effects(user: BattleActor, targets: Array) -> String:
+	var msg := super.apply_effects(user, targets)
 	for i in range(len(targets)):
 		var target = targets[i]
 
@@ -43,9 +42,9 @@ func apply_effects(user, targets):
 	return msg
 
 # override
-func is_action_available(actor):
+func is_action_available(actor: BattleActor) -> bool:
 	return actor.current_mana >= cost
 
 # override
-func apply_cost(user):
+func apply_cost(user: BattleActor) -> void:
 	user.current_mana -= cost

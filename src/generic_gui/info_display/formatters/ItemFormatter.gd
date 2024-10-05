@@ -1,21 +1,14 @@
 extends Formatter
 
-@export
-var id_label: Label
-@export
-var name_label: Label
-@export
-var is_consumable_vbox: VBoxContainer
-@export
-var is_consumable_box: CheckBox 
-@export
-var req_vbox: VBoxContainer
-@export
-var req_label: RichTextLabel
-@export
-var details_label: RichTextLabel
+@export var id_label: Label
+@export var name_label: Label
+@export var is_consumable_vbox: VBoxContainer
+@export var is_consumable_box: CheckBox 
+@export var req_vbox: VBoxContainer
+@export var req_label: RichTextLabel
+@export var details_label: RichTextLabel
 
-func display(obj):
+func display(obj: Variant) -> void:
 	super.display(obj)
 	req_label.clear()
 	details_label.clear()
@@ -31,7 +24,7 @@ func display(obj):
 	else:
 		display_battle_item(obj)
 
-func display_regular_item(item: Item):
+func display_regular_item(item: Item) -> void:
 	id_label.show()
 	id_label.text = "#%d" % item.id
 	name_label.text = "%s (x%d)" % [ item.name, item.quantity ]
@@ -47,7 +40,7 @@ func display_regular_item(item: Item):
 
 	_format_requirement(item.requirements)
 
-func display_spell_scroll(item: SpellScroll):
+func display_spell_scroll(item: SpellScroll) -> void:
 	id_label.show()
 	is_consumable_vbox.hide()
 
@@ -58,7 +51,7 @@ func display_spell_scroll(item: SpellScroll):
 
 	_format_requirement(item.requirements)
 
-func display_equipment(item: Equipment):
+func display_equipment(item: Equipment) -> void:
 	id_label.show()
 	is_consumable_vbox.hide()
 
@@ -68,7 +61,7 @@ func display_equipment(item: Equipment):
 	details_label.append_text(item.details)
 	_format_requirement(item.requirements)
 
-func display_battle_item(item: BattleItem):
+func display_battle_item(item: BattleItem) -> void:
 	id_label.hide()
 	name_label.text = "%s (x%d)" % [ item.name, item.quantity ]
 	is_consumable_vbox.show()
@@ -80,7 +73,7 @@ func display_battle_item(item: BattleItem):
 
 	_format_requirement(item.requirements)
 
-func display_key_item(item: KeyItem):
+func display_key_item(item: KeyItem) -> void:
 	id_label.hide()
 	req_vbox.hide()
 	is_consumable_vbox.hide()
@@ -88,7 +81,7 @@ func display_key_item(item: KeyItem):
 	name_label.text = item.name
 	details_label.append_text(item.details)
 
-func _format_requirement(reqs: Array):
+func _format_requirement(reqs: Array) -> void:
 	req_vbox.visible = len(reqs) > 0
 	if len(reqs) == 0: return
 

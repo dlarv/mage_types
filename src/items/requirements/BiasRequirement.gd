@@ -16,7 +16,7 @@ var element: ElementalType = ElementManager.Blank:
 		element = value 
 
 # override
-func check(actor):
+func check(actor: Variant) -> bool:
 	if(actor is BaseCompanion):
 		actor = actor.battle_actor
 	if(actor is Player):
@@ -26,7 +26,7 @@ func check(actor):
 		return actor != null and not actor.elemental_bias.is_blank()
 	return actor != null and actor.elemental_bias == element
 
-func get_requirement_message():
+func get_requirement_message() -> String:
 	if element == ElementManager.Blank:
 		return "Must have an Elemental alignment."
 	return "Must be %s-aligned." % element.name

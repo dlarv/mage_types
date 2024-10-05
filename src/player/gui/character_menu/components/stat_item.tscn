@@ -21,6 +21,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_8hlo5")
 editable = true
+step_value = null
 _name_label = NodePath("HBoxContainer/LabelContainer/Name")
 _number_label = NodePath("HBoxContainer/NumberContainer/HBoxContainer/Number2")
 _extra_number_label = NodePath("HBoxContainer/NumberContainer/HBoxContainer/Number1")

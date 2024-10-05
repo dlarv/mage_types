@@ -2,16 +2,16 @@ extends OpponentController
 ## Cycles through each of its actors movesets.
 ## Targets are randomly selected.
 
-var indices = []
+var indices := []
 
-func setup(team):
+func setup(team: Array) -> void:
 	super.setup(team)
 	
 	for i in team:
 		indices.append(-1)
 
-func get_actions(otherTeam):
-	var actions = []
+func get_actions(otherTeam: Array) -> Array:
+	var actions := []
 	var i = -1
 	for actor in team:
 		i += 1

@@ -3,29 +3,24 @@ class_name BattleGUI
 
 signal actions_selected(actions)
 
-@export
-var messageBox: RichTextLabel 
-@export
-var ally_display_parent : TeamDisplay 
-@export
-var enemy_display_parent : TeamDisplay 
-@export
-var playerControls: PlayerControls 
-@export
-var sprite_parent: Node2D
+@export var messageBox: RichTextLabel 
+@export var ally_display_parent: TeamDisplay 
+@export var enemy_display_parent: TeamDisplay 
+@export var playerControls: PlayerControls 
+@export var sprite_parent: Node2D
 
 # BattleActor[]
-var allies = []
-var enemies = []
+var allies := []
+var enemies := []
 # String[]
-var messages = []
+var messages := []
+
 # ActorAction[]
-var selectedActions = []
+var _selected_actions := []
+var _finished_setup := false
+var _accept_messages := true
 
-var _finished_setup = false
-var _accept_messages = true
-
-func setup(allies, items, enemies) -> void:
+func setup(allies: Array, items: Array, enemies: Array) -> void:
 	init_allies(allies)
 	init_enemies(enemies)
 	# AddItemsToInventory(items)
@@ -33,10 +28,10 @@ func setup(allies, items, enemies) -> void:
 	_finished_setup = true
 
 
-func init_allies(allies) -> void:
+func init_allies(allies: Array) -> void:
 	self.allies = allies
-	selectedActions = []
-	selectedActions.resize(len(allies))
+	_selected_actions = []
+	_selected_actions.resize(len(allies))
 
 	for actor in allies:
 		var display = ally_display_parent.add_display(actor)
@@ -48,7 +43,7 @@ func init_allies(allies) -> void:
 	
 	ally_display_parent.highlight(0)
 
-func init_enemies(enemies) -> void:
+func init_enemies(enemies: Array) -> void:
 	self.enemies = enemies
 	for actor in enemies:
 		var display = enemy_display_parent.add_display(actor)
@@ -58,7 +53,7 @@ func init_enemies(enemies) -> void:
 		var sprite = display.sprite
 		sprite.reparent(sprite_parent)
 
-func display_message(msg) -> void:
+func display_message(msg: Variant) -> void:
 	_accept_messages = false
 	if msg is Array:
 		msg = "\n".join(msg)
@@ -68,7 +63,7 @@ func display_message(msg) -> void:
 	_accept_messages = true
 
 
-func display_message_non_blocking(msg) -> void:
+func display_message_non_blocking(msg: Variant) -> void:
 	if not _accept_messages: return
 	var msgLog = msg
 
@@ -108,7 +103,7 @@ func _on_action_selected(index: int, action: BattleAction) -> void:
 	if targets == null: return
 
 	var actorAction = ActorAction.new(allies[index], action, targets, 0)
-	selectedActions[index] = actorAction
+	_selected_actions[index] = actorAction
 	messageBox.clear_message()
 	playerControls.next_character()
 
@@ -163,11 +158,11 @@ func _on_active_actor_changed(index: int) -> void:
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
-		actions_selected.emit(null)
+		actions_selected.emit([ActorAction.flee()])
 	else:
-		actions_selected.emit(selectedActions)
-		selectedActions = []
-		selectedActions.resize(len(allies))
+		actions_selected.emit(_selected_actions)
+		_selected_actions = []
+		_selected_actions.resize(len(allies))
 	
 
 func _on_show_info(action) -> void:

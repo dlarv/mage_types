@@ -13,10 +13,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_qafsp")
-unselectedModulateColor = Color(1, 1, 1, 1)
-selected1ModulateColor = Color(1, 1, 1, 1)
-selected2ModulateColor = Color(0, 1, 0, 1)
-lockedModulateColor = Color(0.215686, 0.215686, 0.215686, 1)
+unselected_modulate_color = Color(1, 1, 1, 1)
+selected_1_modulate_color = Color(0.442911, 0.442911, 0.442911, 1)
+selected_2_modulate_color = Color(0, 1, 0, 1)
+locked_modulate_color = Color(0.259294, 0.259294, 0.259294, 1)
 button = NodePath("Button")
 
 [node name="Button" type="Button" parent="."]

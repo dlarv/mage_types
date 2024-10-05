@@ -8,24 +8,15 @@ signal end_turn(tryRunAway)
 signal show_info(action)
 signal active_actor_changed(index)
 
-@export
-var threeStateButton: PackedScene 
-@export
-var controlPanel: TabContainer 
-@export
-var attacksPanel: TabContainer 
-@export
-var itemsScroller: VBoxContainer 
-@export
-var characterScroller: VBoxContainer 
-@export
-var nextButton: Button 
-@export
-var prevButton: Button 
-@export
-var endButton: Button 
-@export
-var blockingPanel: Panel 
+@export var threeStateButton: PackedScene 
+@export var controlPanel: TabContainer 
+@export var attacksPanel: TabContainer 
+@export var itemsScroller: VBoxContainer 
+@export var characterScroller: VBoxContainer 
+@export var nextButton: Button 
+@export var prevButton: Button 
+@export var endButton: Button 
+@export var blockingPanel: Panel 
 
 # The index of the rightmost character who has selected an action.
 var edgeIndex : int = 0

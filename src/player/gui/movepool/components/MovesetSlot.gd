@@ -8,7 +8,7 @@ var index: int
 var spell: Attack = null
 
 
-func set_spell(attack):
+func set_spell(attack: Attack) -> void:
 	spell = attack
 
 	if attack == null:
@@ -23,7 +23,7 @@ func set_spell(attack):
 		pressed.connect(_on_filled_slot_pressed)
 
 
-func clear():
+func clear() -> void:
 	spell = null
 	text = ""
 
@@ -33,9 +33,9 @@ func clear():
 		pressed.connect(_on_empty_slot_pressed)
 
 
-func _on_filled_slot_pressed():
+func _on_filled_slot_pressed() -> void:
 	show_info_requested.emit(spell)
 
-func _on_empty_slot_pressed():
+func _on_empty_slot_pressed() -> void:
 	set_spell_requested.emit(self)
 	clear()

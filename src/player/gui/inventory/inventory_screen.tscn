@@ -6,21 +6,19 @@
 [sub_resource type="ButtonGroup" id="ButtonGroup_pqepw"]
 resource_name = "SortGroup"
 
-[node name="InventoryScreen" type="PanelContainer" node_paths=PackedStringArray("infoPanel", "itemsScroller", "equipmentScroller", "spellsScroller", "keyItemsScroller", "tabContainer", "idCheckBox", "nameCheckBox")]
+[node name="InventoryScreen" type="PanelContainer" node_paths=PackedStringArray("info_panel", "items_scroller", "spells_scroller", "tab_container", "id_check_box", "name_check_box")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eqro5")
-infoPanel = NodePath("HBoxContainer/InfoDisplay")
-itemsScroller = NodePath("HBoxContainer/InventoryScreen/Items/MarginContainer/VBoxContainer")
-equipmentScroller = NodePath("")
-spellsScroller = NodePath("HBoxContainer/InventoryScreen/Spells/MarginContainer/VBoxContainer")
-keyItemsScroller = NodePath("")
-tabContainer = NodePath("HBoxContainer/InventoryScreen")
-idCheckBox = NodePath("SortHBox/IdCheckBox")
-nameCheckBox = NodePath("SortHBox/AlnumCheckBox")
+info_panel = NodePath("HBoxContainer/InfoDisplay")
+items_scroller = NodePath("HBoxContainer/InventoryScreen/Items/MarginContainer/VBoxContainer")
+spells_scroller = NodePath("HBoxContainer/InventoryScreen/Spells/MarginContainer/VBoxContainer")
+tab_container = NodePath("HBoxContainer/InventoryScreen")
+id_check_box = NodePath("SortHBox/IdCheckBox")
+name_check_box = NodePath("SortHBox/AlnumCheckBox")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

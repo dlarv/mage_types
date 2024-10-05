@@ -3,16 +3,16 @@ class_name Formatter
 
 signal meta_clicked(obj)
 
-func append_elemental_color(label: RichTextLabel, element: ElementalType):
+func append_elemental_color(label: RichTextLabel, element: ElementalType) -> void:
 	label.push_color(element.main_color)
 	label.append_text(element.name)
 	label.pop() # End color
 
-func display(obj):
+func display(obj: Variant) -> void:
 	show()
 
-func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel):
-	var power = 0
+func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel) -> int:
+	var power := 0
 	for e in effects:
 		var chance = int(e.chance * 100)
 		var effect = e.attack_effect
@@ -58,5 +58,5 @@ func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel):
 
 	return power
 
-func _on_meta_clicked(meta):
+func _on_meta_clicked(meta: Variant) -> void:
 	meta_clicked.emit(meta)

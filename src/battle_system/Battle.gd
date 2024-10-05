@@ -4,46 +4,46 @@ class_name Battle
 signal battle_ended()
 
 # BattleActor[]
-var enemies = []
-var allies = []
+var enemies := []
+var allies := []
 
 @export
 var gui: BattleGUI
 @export
 var ai: OpponentController 
 @export
-var matchupManager: CanvasLayer
+var _matchup_manager: CanvasLayer
 
-var defeatedAllies: int = 0
-var defeatedEnemies: int = 0
-var turnCounter: int = 0
+var _defeated_allies: int = 0
+var _defeated_enemies: int = 0
+var _turn_counter: int = 0
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log(Logger.LogType.BATTLE)
 	if event.is_action_pressed("open_player_menu"):
-		matchupManager.visible = !matchupManager.visible
+		_matchup_manager.visible = !_matchup_manager.visible
 
-func start(allies, allyItems, enemies, ai) -> void:
+func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
 	ElementManager.load_from_default_csv()
 	self.allies = allies
 	self.enemies = enemies
 
 	for ally in allies:
-		ally.was_just_defeated.connect(func(): defeatedAllies += 1)
+		ally.was_just_defeated.connect(func(): _defeated_allies += 1)
 	for enemy in enemies:
-		enemy.was_just_defeated.connect(func(): defeatedEnemies += 1)
+		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
 
 	ai.setup(enemies)
 	self.ai = ai	
 	gui.setup(allies, allyItems, enemies)
 
-func on_player_actions_selected(allyActions) -> void:
-	turnCounter += 1
-	Logger.append_log(Logger.LogType.BATTLE, "\nTurn %d" % turnCounter)
+func on_player_actions_selected(allyActions: Array) -> void:
+	_turn_counter += 1
+	Logger.append_log(Logger.LogType.BATTLE, "\nTurn %d" % _turn_counter)
 
 	# If allyActions is empty, the player pressed the "Run" button.
-	if allyActions == null or len(allyActions) == 0:
+	if len(allyActions) == 1 and allyActions[0].is_flee():
 		await gui.display_message("You ran away.")
 		battle_ended.emit()
 		return
@@ -54,14 +54,7 @@ func on_player_actions_selected(allyActions) -> void:
 	actions.append_array(enemyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	actions.sort_custom(func(a, b):
-		# Higher priority goes first.
-		if a.priority != b.priority:
-			return a.priority > b.priority
-		# Then higher speed goes first.
-		if a.actor.speed != b.actor.speed:
-			return a.actor.speed < b.actor.speed
-		return randf_range(0, 1) < 0.5)
+	actions.sort_custom(func(a, b): return a.compare_to(b))
 
 	for action in actions:
 		# This means a character is defeated or flinched.
@@ -120,10 +113,10 @@ func on_player_actions_selected(allyActions) -> void:
 			await gui.display_message(msg)
 
 		# Check if battle should end.
-		if defeatedAllies == len(allies):
+		if _defeated_allies == len(allies):
 			await gui.display_message("You were defeated...")
 			battle_ended.emit()
-		elif defeatedEnemies == len(enemies):
+		elif _defeated_enemies == len(enemies):
 			await gui.display_message("You won!")
 			battle_ended.emit()
 		# Pause before processing next turn.
@@ -135,17 +128,18 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	if stasis != null:
 		await gui.display_message(stasis.message)
 		return
-	var msg = []
-	var e1 = target.element1.name.to_lower()
-	var e2 = target.element2.name.to_lower()
-	var ea = action.element.name.to_lower()
+
+	var msg := []
+	var e1 := target.element1.name.to_lower()
+	var e2 := target.element2.name.to_lower()
+	var ea := action.element.name.to_lower()
 
  	# Calculate primary + attack 
-	var newType = ElementManager.get_matchup(target.element1, action.element)
+	var newType := ElementManager.get_matchup(target.element1, action.element)
 	if newType != null:
 		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
 
-		var vals = ElementManager.get_side_effect(target.element1, action.element)
+		var vals := ElementManager.get_side_effect(target.element1, action.element)
 		var buff = vals[0]
 		var debuff = vals[1]
 
@@ -154,7 +148,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if debuff != null:
 			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 = target.set_element(0, newType)
+		var msg2 := target.set_element(0, newType)
 		if len(msg2) > 0:
 			msg.append(msg2)
 
@@ -166,7 +160,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	if newType != null:
 		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
 
-		var vals = ElementManager.get_side_effect(target.element2, action.element)
+		var vals := ElementManager.get_side_effect(target.element2, action.element)
 		var buff = vals[0]
 		var debuff = vals[1]
 
@@ -175,14 +169,14 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if debuff != null:
 			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 = target.set_element(1, newType)
+		var msg2 := target.set_element(1, newType)
 		if len(msg2) > 0:
 			msg.append(msg2)
 
 		await gui.display_message(msg)
 
  	# Calculate primary + secondary.
-	var dissonant = target.dissonant
+	var dissonant := target.dissonant
 	if dissonant != null:
 		await gui.display_message(dissonant.message)
 		return
@@ -194,7 +188,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		e2 = target.element2.name.to_lower()
 		msg.append("The target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()])
 
-		var vals = ElementManager.get_side_effect(target.element1, target.element2)
+		var vals := ElementManager.get_side_effect(target.element1, target.element2)
 		var buff = vals[0]
 		var debuff = vals[1]
 		if buff != null:
@@ -202,7 +196,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if debuff != null:
 			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 = target.set_element(0, newType)
+		var msg2 := target.set_element(0, newType)
 		target.set_element(1, ElementManager.Blank)
 		if len(msg2) > 0:
 			msg.append(msg2)

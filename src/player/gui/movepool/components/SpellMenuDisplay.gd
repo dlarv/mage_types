@@ -4,18 +4,14 @@ signal spell_selected(spell)
 signal canceled()
 signal replace_spell_requested()
 
-@export
-var hbox: HBoxContainer
-@export
-var label: InfoDisplay
-@export
-var replace_button: Button
-@export
-var learn_button: Button
+@export var hbox: HBoxContainer
+@export var label: InfoDisplay
+@export var replace_button: Button
+@export var learn_button: Button
 
 var _active_scroll: SpellScroll = null
 
-func show_info(scroll, replaceSpell: bool):
+func show_info(scroll: Variant, replaceSpell: bool) -> void:
 	hbox.show()
 	replace_button.visible = replaceSpell
 	learn_button.visible = not replaceSpell
@@ -27,19 +23,19 @@ func show_info(scroll, replaceSpell: bool):
 	_active_scroll = scroll
 	label.display_message_non_blocking(scroll.spell)
 
-func _on_cancel_button_pressed():
+func _on_cancel_button_pressed() -> void:
 	_active_scroll = null
 	hbox.hide()
 	label.clear_message()
 	canceled.emit()
 
-func _on_learn_spell_button_pressed():
+func _on_learn_spell_button_pressed() -> void:
 	spell_selected.emit(_active_scroll)
 	_active_scroll = null
 	hbox.hide()
 	label.clear_message()
 
-func _on_replace_spell_button_pressed():
+func _on_replace_spell_button_pressed() -> void:
 	replace_spell_requested.emit()
 	_active_scroll = null
 	hbox.hide()

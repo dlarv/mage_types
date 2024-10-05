@@ -1,9 +1,8 @@
 extends ColorRect
 
-@export
-var label: TextureRect
+@export var label: TextureRect
 
-func set_element(element: ElementalType):
+func set_element(element: ElementalType) -> void:
 	if element == null:
 		element = ElementManager.Blank
 

@@ -5,11 +5,10 @@
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="3_p7an0"]
 [ext_resource type="PackedScene" uid="uid://bycqt1dtij02l" path="res://addons/matchupmanager/matchup_manager.tscn" id="4_2ceg4"]
 
-[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "ai", "matchupManager")]
+[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "ai")]
 script = ExtResource("1_7277n")
 gui = NodePath("BattleGUI")
 ai = NodePath("OpponentController")
-matchupManager = NodePath("CanvasLayer")
 
 [node name="BattleGUI" parent="." instance=ExtResource("2_sq28q")]
 

@@ -16,7 +16,7 @@ var element: ElementalType:
 		element = value 
 
 # override
-func apply_effect(user, target=null, action=null, duplicated_effect=null):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null):
 	# If self.element is applied in the editor, each time this effect is used will have to be made into
 	# a unique instance. Defining it here allows the creation and editing of new attacks easier.
 	# var effect = duplicate()
@@ -25,11 +25,11 @@ func apply_effect(user, target=null, action=null, duplicated_effect=null):
 	return output.replace("{element}", element.name)
 
 # override
-func instantiate_icon():
+func instantiate_icon() -> Node:
 	var output = super.instantiate_icon()
 	output.modulate = element.main_color
 	output.get_node("Button").tooltip_text = "%s-%s" % [ element.name, name ] 
 	return output
 
-func get_full_name():
+func get_full_name() -> String:
 	return "[color=%s]%s[/color]-%s" % [element.name, element.name, name]

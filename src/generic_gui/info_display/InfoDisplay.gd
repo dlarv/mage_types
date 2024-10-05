@@ -1,20 +1,12 @@
 extends RichTextLabel
 class_name InfoDisplay
 
-signal message_cleared()
-
-@export
-var button: Button 
-@export
-var tab_container: TabContainer
-@export
-var attack_formatter: Formatter
-@export
-var item_formatter: Formatter
-@export
-var actor_formatter: Formatter
-@export
-var status_effect_formatter: Formatter
+@export var button: Button 
+@export var tab_container: TabContainer
+@export var attack_formatter: Formatter
+@export var item_formatter: Formatter
+@export var actor_formatter: Formatter
+@export var status_effect_formatter: Formatter
 
 func _ready() -> void:
 	tab_container.hide()
@@ -25,7 +17,7 @@ func display_message_blocking(msg: String) -> void:
 	append_text(msg)
 	await button.pressed
 
-func display_message_non_blocking(obj) -> void:
+func display_message_non_blocking(obj: Variant) -> void:
 	clear_message()
 	button.hide()
 	if obj is String:
@@ -33,7 +25,7 @@ func display_message_non_blocking(obj) -> void:
 	else:
 		format_msg(obj)
 
-func format_msg(obj) -> void:
+func format_msg(obj: Variant) -> void:
 	tab_container.show()
 	if obj is Attack:
 		attack_formatter.display(obj)
@@ -44,7 +36,7 @@ func format_msg(obj) -> void:
 	elif obj is BattleActor:
 		actor_formatter.display(obj)
 
-func _on_link_clicked(obj) -> void:
+func _on_link_clicked(obj: Variant) -> void:
 	display_message_non_blocking(obj)
 
 # [underline]<title>[/underline]

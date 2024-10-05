@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name Sprite 
-@export
-var sprite : Sprite2D = null
+
+@export var sprite: Sprite2D = null
 var use_gradient_sprite = false
 
 func set_gradient_sprite(element1: ElementalType, element2: ElementalType) -> void:

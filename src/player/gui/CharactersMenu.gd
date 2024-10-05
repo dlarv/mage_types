@@ -2,53 +2,48 @@
 extends Control 
 class_name CharactersMenu 
 
-@export
-var activeScreensParent: TabContainer 
-@export
-var inactiveScreensParent: Control 
+@export var active_screens_parent: TabContainer 
+@export var inactive_screens_parent: Control 
 
-@export
-var aliceScreen: CharacterScreen 
-@export
-var alexScreen: CharacterScreen 
+@export var alice_screen: CharacterScreen 
+@export var alex_screen: CharacterScreen 
 
-@export
-var statsToDistribute : int = 0
+@export var stats_to_distribute : int = 0
 
 @export
 var is_alice_active: bool = true:
 	set(value):
 		is_alice_active = value
-		if activeScreensParent == null:
-			activeScreensParent = find_child("ActiveTabs")
-			if activeScreensParent == null: return
-		if inactiveScreensParent == null: 
-			inactiveScreensParent = find_child("InactiveTabs")
-			if inactiveScreensParent == null: return
-		if aliceScreen == null:
-			aliceScreen = find_child("Alice", true)
+		if active_screens_parent == null:
+			active_screens_parent = find_child("ActiveTabs")
+			if active_screens_parent == null: return
+		if inactive_screens_parent == null: 
+			inactive_screens_parent = find_child("InactiveTabs")
+			if inactive_screens_parent == null: return
+		if alice_screen == null:
+			alice_screen = find_child("Alice", true)
 
-		if value and inactiveScreensParent.is_ancestor_of(aliceScreen):
-			aliceScreen.reparent(activeScreensParent)
-		elif not value and activeScreensParent.is_ancestor_of(aliceScreen):
-			aliceScreen.reparent(inactiveScreensParent)
+		if value and inactive_screens_parent.is_ancestor_of(alice_screen):
+			alice_screen.reparent(active_screens_parent)
+		elif not value and active_screens_parent.is_ancestor_of(alice_screen):
+			alice_screen.reparent(inactive_screens_parent)
 @export
 var is_alex_active: bool = true:
 	set(value):
 		is_alex_active = value
-		if activeScreensParent == null:
-			activeScreensParent = find_child("ActiveTabs")
-			if activeScreensParent == null: return
-		if inactiveScreensParent == null: 
-			inactiveScreensParent = find_child("InactiveTabs")
-			if inactiveScreensParent == null: return
-		if alexScreen == null:
-			alexScreen = find_child("Alex", true)
+		if active_screens_parent == null:
+			active_screens_parent = find_child("ActiveTabs")
+			if active_screens_parent == null: return
+		if inactive_screens_parent == null: 
+			inactive_screens_parent = find_child("InactiveTabs")
+			if inactive_screens_parent == null: return
+		if alex_screen == null:
+			alex_screen = find_child("Alex", true)
 
-		if value and inactiveScreensParent.is_ancestor_of(alexScreen):
-			alexScreen.reparent(activeScreensParent)
-		elif not value and activeScreensParent.is_ancestor_of(alexScreen):
-			alexScreen.reparent(inactiveScreensParent)
+		if value and inactive_screens_parent.is_ancestor_of(alex_screen):
+			alex_screen.reparent(active_screens_parent)
+		elif not value and active_screens_parent.is_ancestor_of(alex_screen):
+			alex_screen.reparent(inactive_screens_parent)
 			
 
 

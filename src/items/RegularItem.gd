@@ -2,8 +2,7 @@
 extends Item
 class_name RegularItem
 
-@export
-var battle_item: BattleItem 
+@export var battle_item: BattleItem 
 
 @export
 var is_consumable: bool:
@@ -15,8 +14,7 @@ var is_consumable: bool:
 			battle_item.is_consumable = value
 
 
-@export
-var max_quantity : int 
+@export var max_quantity : int 
 
 func try_combine(other: Item) -> bool:
 	if _quantity == max_quantity: return false
@@ -37,17 +35,17 @@ func try_remove(other: Item, amount: int) -> bool:
 	return true
 
 
-func _set_name(value: String):
+func _set_name(value: String) -> void:
 	super._set_name(value)
 	if battle_item != null:
 		battle_item.name = value
 
-func _set_details(value):
+func _set_details(value) -> void:
 	super._set_details(value)
 	if battle_item != null:
 		battle_item.details = value
 
-func _set_requirement(value):
+func _set_requirement(value) -> void:
 	super._set_requirement(value)
 	if battle_item == null: return
 
@@ -56,7 +54,7 @@ func _set_requirement(value):
 		if req.battle_relevant:
 			battle_item.requirements.append(req)
 
-func _set_quantity(value):
+func _set_quantity(value) -> void:
 	if value > max_quantity:
 		_quantity = max_quantity
 	elif value < 0:

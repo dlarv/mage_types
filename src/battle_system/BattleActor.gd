@@ -75,21 +75,21 @@ var attacks: Array[Attack] = []
 var sprite_path: PackedScene
 var sprite : Sprite = null
 
-var dissonant: 
+var dissonant: StatusEffect: 
 	get: return statuses.check_dissonant()
-var flinching: 
+var flinching: StatusEffect: 
 	get: return statuses.check_flinching()
-var stasis: 
+var stasis: StatusEffect: 
 	get: return statuses.check_stasis()
 var is_defeated: bool: 
 	get: return current_hp <= 0
 
-var prevElement1 : ElementalType = ElementManager.Blank
-var elementCounter1 : int = 0
-var prevElement2 : ElementalType = ElementManager.Blank
-var elementCounter2 : int = 0
+var prev_element_1: ElementalType = ElementManager.Blank
+var element_counter_1: int = 0
+var prev_element_2: ElementalType = ElementManager.Blank
+var element_counter_2: int = 0
 
-var aleadyDefeated : bool = false
+var aleady_defeated: bool = false
 
 func set_element(id: int, element: ElementalType) -> String:
 	var msg = ""
@@ -126,11 +126,11 @@ func get_element(id: int) -> ElementalType:
 
 # Teaches actor spell contained within scroll.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
-func learn_spell(index: int, scroll: SpellScroll):
+func learn_spell(index: int, scroll: SpellScroll) -> Array:
 	if index >= len(attacks):
 		attacks.resize(index + 1)
 	
-	var output = scroll.check_requirements(self)
+	var output := scroll.check_requirements(self)
 	if len(output) == 0:
 		attacks[index] = scroll.spell
 	return output
@@ -160,8 +160,8 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 	if not (statuses.check_blocking() and allowBlocking):
 		current_hp -= dmg
 		damage_applied.emit(current_hp)
-		if current_hp <= 0 and not aleadyDefeated:
-			aleadyDefeated = true
+		if current_hp <= 0 and not aleady_defeated:
+			aleady_defeated = true
 			was_just_defeated.emit()
 		return dmg
 	return 0
@@ -176,26 +176,26 @@ func add_status_effect(effect: StatusEffect) -> void:
 
 func remove_status_effect(effect: StatusEffect) -> void:
 	Logger.append_log(Logger.LogType.BATTLE, "%s's %s expired." % [ effect.name, name ])
-	statuses.remove(effect)
+	statuses.remove([effect])
 	status_effects_removed.emit([ effect ])
 
 func has_status_effect(effect: StatusEffect) -> bool:
 	return statuses.get_status(effect) != null
 
 func update_elemental_state()-> void:
-	if(prevElement1 == element1): elementCounter1 += 1
-	else: elementCounter1 = 0
+	if(prev_element_1 == element1): element_counter_1 += 1
+	else: element_counter_1 = 0
 
-	if(prevElement2 == element2): elementCounter2 += 1
-	else: elementCounter2 = 0
+	if(prev_element_2 == element2): element_counter_2 += 1
+	else: element_counter_2 = 0
 
-	prevElement1 = element1
-	prevElement2 = element2
+	prev_element_1 = element1
+	prev_element_2 = element2
 
 func try_revert_to_bias()-> bool:
 	return false
 
-func list_status_effects():
+func list_status_effects() -> Array:
 	return statuses.list()
 
 func resolve_end_of_turn()-> String:

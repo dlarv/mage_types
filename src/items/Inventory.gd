@@ -2,30 +2,26 @@
 extends Node 
 class_name Inventory 
 
-enum Category { REGULAR_ITEM, EQUIPMENT, SPELLSCROLL, KEYITEM }
+enum Category { REGULAR_ITEM, EQUIPMENT, SPELL_SCROLL, KEY_ITEM }
 
 # NOTE: This is not called when loading from filesystem.
 signal quantity_changed(item, amount);
 
 var next_id = 0
 
-@export
-var items: Array[Item] = []
-@export
-var equipment: Array[Equipment] = []
-@export
-var spell_scrolls: Array[SpellScroll] = []
-@export
-var key_items: Array[KeyItem] = []
+@export var items: Array[Item] = []
+@export var equipment: Array[Equipment] = []
+@export var spell_scrolls: Array[SpellScroll] = []
+@export var key_items: Array[KeyItem] = []
 
 # Secondary reference to battle items.
-var battleItems: Array[BattleItem] = []
+var _battle_items: Array[BattleItem] = []
 
 func _enter_tree() -> void:
 	load_from_fs();
 
-func get_battle_items():
-	return battleItems;
+func get_battle_items() -> Array:
+	return _battle_items;
 
 func search(term: String):
 	return null;
@@ -35,7 +31,7 @@ func load_from_fs()-> void:
 	key_items = []
 	spell_scrolls = []
 	equipment = []
-	battleItems = []
+	_battle_items = []
 
 	load_from_dir("res://data/items/items/");
 	load_from_dir("res://data/items/key_items/");
@@ -69,7 +65,7 @@ func load_from_dir(path: String) -> void:
 			elif res is RegularItem:
 				var battleItem = res.battle_item; 
 				if battleItem != null:
-					battleItems.append(battleItem);
+					_battle_items.append(battleItem);
 					if battleItem.is_consumable:
 						battleItem.item_consumed.connect(func(): quantity_changed.emit(res, res.quantity))
 				items.append(res);
@@ -93,11 +89,11 @@ func add(item: Item) -> void:
 	
 	elif item is KeyItem:
 		list = key_items;
-		cat = Category.KEYITEM;
+		cat = Category.KEY_ITEM;
 
 	elif item is SpellScroll:
 		list = spell_scrolls;
-		cat = Category.SPELLSCROLL;
+		cat = Category.SPELL_SCROLL;
 
 	var index = list.binary_search(item);
 
@@ -117,11 +113,11 @@ func remove(item: Item, amount: int=-1) -> Item:
 	
 	elif item is KeyItem:
 		list = key_items;
-		cat = Category.KEYITEM;
+		cat = Category.KEY_ITEM;
 
 	elif item is SpellScroll:
 		list = spell_scrolls;
-		cat = Category.SPELLSCROLL;
+		cat = Category.SPELL_SCROLL;
 	
 	else: list = items;
 

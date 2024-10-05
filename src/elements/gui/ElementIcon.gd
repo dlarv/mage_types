@@ -2,10 +2,9 @@
 extends ColorRect 
 class_name ElementIcon 
 
+@export var label: RichTextLabel 
 @export
-var label: RichTextLabel 
-@export
-var element : ElementalType:
+var element: ElementalType:
 	get: return _element
 	set(value):
 		if(label == null): return

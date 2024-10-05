@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/battle_system/gui/components/TransmutationHint.gd" id="1_2qos5"]
 [ext_resource type="PackedScene" uid="uid://30dbgu5k66cc" path="res://src/battle_system/gui/components/transmutation_hint_icon.tscn" id="2_3h48n"]
 
-[node name="TransmutationHint" type="PanelContainer" node_paths=PackedStringArray("primary_element1", "primary_element2", "secondary_element1", "secondary_element2", "attack_element1", "attack_element2", "result_element1", "result_element2", "result_element3")]
+[node name="TransmutationHint" type="PanelContainer" node_paths=PackedStringArray("primary_element_1", "primary_elemen_2", "secondary_element_1", "secondary_element_2", "attack_element_1", "attack_element_2", "result_element_1", "result_element_2", "result_element_3")]
 custom_minimum_size = Vector2(0, 150)
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,15 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2qos5")
-primary_element1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon1")
-primary_element2 = NodePath("VBoxContainer/InternalTransmutation/Icon1")
-secondary_element1 = NodePath("VBoxContainer/SecondaryTransmutation/Icon1")
-secondary_element2 = NodePath("VBoxContainer/InternalTransmutation/Icon2")
-attack_element1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon2")
-attack_element2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon2")
-result_element1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon3")
-result_element2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon3")
-result_element3 = NodePath("VBoxContainer/InternalTransmutation/Icon3")
+primary_element_1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon1")
+primary_elemen_2 = NodePath("VBoxContainer/InternalTransmutation/Icon1")
+secondary_element_1 = NodePath("VBoxContainer/SecondaryTransmutation/Icon1")
+secondary_element_2 = NodePath("VBoxContainer/InternalTransmutation/Icon2")
+attack_element_1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon2")
+attack_element_2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon2")
+result_element_1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon3")
+result_element_2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon3")
+result_element_3 = NodePath("VBoxContainer/InternalTransmutation/Icon3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

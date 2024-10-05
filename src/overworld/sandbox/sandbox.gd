@@ -6,7 +6,7 @@ extends Node3D
 @export var pause_menu: Control
 
 func _on_player_battle_started(allies:Array, items:Array, enemy:Node3D) -> void:
-	var battle = battle_scene.instantiate()
+	var battle := battle_scene.instantiate()
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	add_child(battle)

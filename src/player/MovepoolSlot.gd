@@ -2,10 +2,8 @@
 extends Resource
 class_name MovepoolSlot
 
-@export
-var level_lock: int = -1
-@export
-var scroll: SpellScroll
+@export var level_lock: int = -1
+@export var scroll: SpellScroll
 
 var spell:
 	get:

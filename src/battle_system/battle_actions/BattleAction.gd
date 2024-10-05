@@ -7,10 +7,8 @@ class_name BattleAction
 enum TargetType { SELF, ALLY, ALLIES, ENEMY, ENEMIES }
 enum AttackRange { MELEE, RANGED, STATUS }
 
-@export
-var name : String = "Hit"
-@export
-var animation: PackedScene
+@export var name: String = "Hit"
+@export var animation: PackedScene
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":
 	get:
@@ -30,14 +28,10 @@ var element: ElementalType = ElementManager.Blank:
 				and self.has_method("elemental_effect_override"):
 			var indirect = self
 			indirect.elemental_effect_override(value)
-@export
-var priority : int = 0
-@export
-var attack_range: AttackRange = AttackRange.MELEE
-@export
-var target : TargetType = TargetType.ENEMY
-@export_multiline
-var details : String 
+@export var priority: int = 0
+@export var attack_range: AttackRange = AttackRange.MELEE
+@export var target: TargetType = TargetType.ENEMY
+@export_multiline var details: String 
 
 # virtual
 func play_animation(start: Vector2, end: Vector2) -> Node:
@@ -51,7 +45,7 @@ func is_action_available(actor: BattleActor) -> bool:
 
 # Main logic for action.
 # Returns message stating what happened to the targets. This is displayed for player.
-func apply_effects(user: BattleActor, targets) -> String:
+func apply_effects(user: BattleActor, targets: Array) -> String:
 	var end = ""
 	if len(targets) == 1:
 		if user == targets[0]:

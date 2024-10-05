@@ -8,7 +8,7 @@ func display(item: Item) -> void:
 	elif item is SpellScroll: format_spell_scroll(item);
 	elif item is Item: format_item(item);
 
-func format_equipment(item: Equipment):
+func format_equipment(item: Equipment) -> void:
 	pass
 func format_key_item(item: KeyItem) -> void:
 	pass

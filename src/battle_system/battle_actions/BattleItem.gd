@@ -4,12 +4,12 @@ class_name BattleItem
 
 signal item_consumed()
 
+@export var effects: Array[Effect] = []
+
 var is_consumable: bool = true
 var quantity: int 
 var requirements: Array[ItemRequirement] = [] 
 
-@export
-var effects: Array[Effect] = []
 
 static func create(name: String, details: String="") -> BattleItem:
 	var item = BattleItem.new()
@@ -17,11 +17,11 @@ static func create(name: String, details: String="") -> BattleItem:
 	item.details = details
 	return item
 
-func apply_effects(user: BattleActor, targets) -> String:
-	var msg = super.apply_effects(user, targets)
+func apply_effects(user: BattleActor, targets: Array) -> String:
+	var msg := super.apply_effects(user, targets)
 
 	for i in range(len(targets)):
-		var target = targets[i]
+		var target: BattleActor = targets[i]
 
 		for effect in effects:
 			var rand = randf_range(0.0, 1.0)

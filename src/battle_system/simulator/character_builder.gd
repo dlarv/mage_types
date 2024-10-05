@@ -18,11 +18,11 @@ signal setup_finished(team1: Array, items: Array, team2: Array, ai)
 var _button_group: ButtonGroup
 var _displayed_character: Control
 
-var _item_description
+var _item_description: String
 
-var _characters = []
-var _items = []
-var ai
+var _characters := []
+var _items := []
+var ai: OpponentController
 
 func _ready():
 	print("start")

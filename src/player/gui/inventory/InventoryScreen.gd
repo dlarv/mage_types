@@ -3,32 +3,24 @@ class_name InventoryScreen
 
 signal item_selected(item)
 
-@export
-var infoPanel: InfoDisplay 
-@export
-var itemsScroller: VBoxContainer 
-@export
-var equipmentScroller: VBoxContainer 
-@export
-var spellsScroller: VBoxContainer 
-@export
-var keyItemsScroller: VBoxContainer 
-@export
-var tabContainer: TabContainer 
-@export
-var idCheckBox: CheckBox 
-@export
-var nameCheckBox: CheckBox 
+@export var info_panel: InfoDisplay 
+@export var items_scroller: VBoxContainer 
+@export var equipment_scroller: VBoxContainer 
+@export var spells_scroller: VBoxContainer 
+@export var key_items_scroller: VBoxContainer 
+@export var tab_container: TabContainer 
+@export var id_check_box: CheckBox 
+@export var name_check_box: CheckBox 
 
 func setup(inventory: Inventory) -> void:
-	_populate_tab(inventory.items, itemsScroller)
-	_populate_tab(inventory.spell_scrolls, spellsScroller)
-	# _populate_tab(inventory.equipment, equipmentScroller)
-	# _populate_tab(inventory.key_items, keyItemsScroller)
+	_populate_tab(inventory.items, items_scroller)
+	_populate_tab(inventory.spell_scrolls, spells_scroller)
+	# _populate_tab(inventory.equipment, equipment_scroller)
+	# _populate_tab(inventory.key_items, key_items_scroller)
 
 	inventory.quantity_changed.connect(on_quantity_changed)
 
-func _populate_tab(items, scroller):
+func _populate_tab(items: Array, scroller: VBoxContainer) -> void:
 	for item in items:
 		var button = Button.new()
 		button.name = item.name
@@ -41,7 +33,7 @@ func _populate_tab(items, scroller):
 		var temp = item
 
 		button.pressed.connect(func(): 
-			infoPanel.display_message_non_blocking(item)
+			info_panel.display_message_non_blocking(item)
 			item_selected.emit(temp))
 		scroller.add_child(button)
 
@@ -52,20 +44,20 @@ func sort_by_id(tab: int=-1) -> void:
 	# to help prevent potential bugs 
 	# (id will likely be used as an index, so they need to be in ord).
 	# When this happens, the checkboxes will not reset.
-	idCheckBox.set_pressed_no_signal(true)
-	nameCheckBox.set_pressed_no_signal(false)
+	id_check_box.set_pressed_no_signal(true)
+	name_check_box.set_pressed_no_signal(false)
 
 	var scroller
-	if tab == -1: tab = tabContainer.current_tab
+	if tab == -1: tab = tab_container.current_tab
 	match tab:
 		2: 
-			scroller = spellsScroller
+			scroller = spells_scroller
 		1:
-			scroller = equipmentScroller
+			scroller = equipment_scroller
 		3:
-			scroller = keyItemsScroller
+			scroller = key_items_scroller
 		_:
-			scroller = itemsScroller
+			scroller = items_scroller
 	var buttons = scroller.get_children()
 	buttons.get_children().sort_custom(func(a, b): return a.get_meta("id") < b.get_meta("id"))
 
@@ -73,17 +65,17 @@ func sort_by_id(tab: int=-1) -> void:
 		scroller.move_child(buttons[i], i)
 
 func sort_by_alphabetical()-> void:
-	# var buttons = Enumerable.OrderBy<Node, string>( itemsScroller.GetChildren(), (Node item) => item.name)
+	# var buttons = Enumerable.OrderBy<Node, string>( items_scroller.GetChildren(), (Node item) => item.name)
 	var scroller
-	match tabContainer.current_tab:
+	match tab_container.current_tab:
 		2: 
-			scroller = spellsScroller
+			scroller = spells_scroller
 		1:
-			scroller = equipmentScroller
+			scroller = equipment_scroller
 		3:
-			scroller = keyItemsScroller
+			scroller = key_items_scroller
 		_:
-			scroller = itemsScroller
+			scroller = items_scroller
 
 	var buttons = scroller.get_children()
 	buttons.get_children().sort_custom(func(a, b): return a.name < b.name)
@@ -95,16 +87,16 @@ func on_quantity_changed(item: Item, amount: int) -> void:
 	var scroller
 	var tab
 	if item is KeyItem:
-		scroller = keyItemsScroller
+		scroller = key_items_scroller
 		tab = 3
 	elif item is SpellScroll:
-		scroller = spellsScroller
+		scroller = spells_scroller
 		tab = 2
 	elif item is Equipment:
-		scroller = equipmentScroller
+		scroller = equipment_scroller
 		tab = 1
 	else:
-		scroller = itemsScroller
+		scroller = items_scroller
 		tab = 0
 
 	sort_by_id(tab)

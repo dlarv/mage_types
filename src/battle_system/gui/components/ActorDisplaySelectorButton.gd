@@ -1,13 +1,12 @@
 extends Button
 
-@export
-var TransmutationHint: PackedScene
+@export var TransmutationHint: PackedScene
 
-var actor
+var actor: BattleActor
 # Is null when BattleActor is not selectable by player.
 # Otherwise, stores the element of the attack the player is selecting the target for.
-var attack_element = null
-var is_selectable = false
+var attack_element: ElementalType = null
+var is_selectable := false
 
 func _make_custom_tooltip(for_text):
 	if attack_element == null: return null

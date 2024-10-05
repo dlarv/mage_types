@@ -3,28 +3,21 @@ class_name Player
 
 signal battle_started(allies, items, enemies)
 
-@export
-var battle_actor: BattleActor 
-@export
-var party: Array[BattleActor]
-@export
-var inventory: Inventory 
-@export 
-var player_menu: Control 
+@export var battle_actor: BattleActor 
+@export var party: Array[BattleActor]
+@export var inventory: Inventory 
+@export var player_menu: Control 
 
 @export_category("Movement")
-@export
-var speed : float = 10.0
-@export
-var jump_velocity : float = 4.5
+@export var speed : float = 10.0
+@export var jump_velocity : float = 4.5
 @export_category("Movepool")
-@export
-var movepool: Movepool
+@export var movepool: Movepool
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-func _ready():
+func _ready() -> void:
 	player_menu.init_inventory(inventory)
 	party.insert(0, battle_actor)
 

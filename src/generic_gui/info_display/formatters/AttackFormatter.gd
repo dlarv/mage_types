@@ -1,23 +1,15 @@
 extends Formatter
 
-@export
-var name_label: Label
-@export
-var range_label: Label
-@export
-var target_label: Label
-@export
-var power_hbox: HBoxContainer
-@export
-var power_label: Label
-@export
-var cost_label: Label
-@export
-var details: RichTextLabel
-@export
-var effects_label: RichTextLabel
+@export var name_label: Label
+@export var range_label: Label
+@export var target_label: Label
+@export var power_hbox: HBoxContainer
+@export var power_label: Label
+@export var cost_label: Label
+@export var details: RichTextLabel
+@export var effects_label: RichTextLabel
 
-func display(attack: Attack):
+func display(attack: Variant) -> void:
 	super.display(attack)
 	name_label.text = attack.name
 	
@@ -39,4 +31,3 @@ func display(attack: Attack):
 	if power > 0:
 		power_hbox.show()
 		power_label.text = str(power)
-

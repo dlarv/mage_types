@@ -2,17 +2,15 @@
 extends StatusEffect 
 class_name StatChange 
 
-@export
-var stat: StatManager.Stat
-@export
-var stack: float = 1
+@export var stat: StatManager.Stat
+@export var stack: float = 1
 
 # override
-func combine(a):
+func combine(a: StatusEffect):
 	duration = a.duration
 	stack += a.strength / abs(a.strength) #STACK_MODIFIER * (a.strength / abs(a.strength))
 	strength += a.strength
 
-func get_mod():
+func get_mod() -> float:
 	return stack * strength
 

@@ -31,7 +31,7 @@ bg_color = Color(0, 1, 0, 1)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wrilo"]
 size = Vector2(50, 50)
 
-[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlightDisplay", "nameLabel", "healthBar", "hpLabel", "spriteDisplay", "statusEffectIcons", "statChangeDisplay", "selectorButton", "sprite")]
+[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlight_display", "name_label", "health_bar", "hp_label", "sprite_display", "status_effect_icons", "stat_change_display", "selector_button", "sprite")]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -41,14 +41,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 10
 script = ExtResource("1_5ryt8")
-highlightDisplay = NodePath("TextureRect")
-nameLabel = NodePath("MarginContainer/VBoxContainer/MarginContainer/Name_Label")
-healthBar = NodePath("MarginContainer/VBoxContainer/HealthBar/HSlider")
-hpLabel = NodePath("MarginContainer/VBoxContainer/HealthBar/Label")
-spriteDisplay = NodePath("MarginContainer/VBoxContainer/TextureRect")
-statusEffectIcons = NodePath("MarginContainer/VBoxContainer/StatusEffects")
-statChangeDisplay = NodePath("MarginContainer/VBoxContainer/StatChangeDisplay")
-selectorButton = NodePath("SelectorButton")
+highlight_display = NodePath("TextureRect")
+name_label = NodePath("MarginContainer/VBoxContainer/MarginContainer/Name_Label")
+health_bar = NodePath("MarginContainer/VBoxContainer/HealthBar/HSlider")
+hp_label = NodePath("MarginContainer/VBoxContainer/HealthBar/Label")
+sprite_display = NodePath("MarginContainer/VBoxContainer/TextureRect")
+status_effect_icons = NodePath("MarginContainer/VBoxContainer/StatusEffects/GridContainer")
+stat_change_display = NodePath("MarginContainer/VBoxContainer/StatChangeDisplay")
+selector_button = NodePath("SelectorButton")
 sprite = NodePath("Sprite")
 
 [node name="TextureRect" type="TextureRect" parent="."]

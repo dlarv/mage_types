@@ -1,13 +1,10 @@
 extends Formatter 
 
-@export
-var name_label: RichTextLabel
-@export
-var details_label: RichTextLabel
-@export
-var icon_parent: Control 
+@export var name_label: RichTextLabel
+@export var details_label: RichTextLabel
+@export var icon_parent: Control 
 
-func display(effect):
+func display(effect: Variant) -> void:
 	super.display(effect)
 
 	if effect.icon != null:

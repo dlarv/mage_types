@@ -5,36 +5,34 @@ class_name TeamDisplay
 signal selected(actor)
 signal status_effect_icon_pressed(effect)
 
-@export
-var displayPrefab: PackedScene 
-@export
-var displayParent: HBoxContainer 
+@export var display_prefab: PackedScene 
+@export var display_parent: HBoxContainer 
 @export
 var shift_right: bool = false: 
 	get: return shift_right
 	set(value):
 		shift_right = value
-		if (displayParent == null): return
+		if (display_parent == null): return
 		if value:
-			displayParent.alignment = BoxContainer.ALIGNMENT_END
+			display_parent.alignment = BoxContainer.ALIGNMENT_END
 		else:
-			displayParent.alignment = BoxContainer.ALIGNMENT_BEGIN
+			display_parent.alignment = BoxContainer.ALIGNMENT_BEGIN
 
 var length: int: 
 	get: return len(displays)
 
 # BattleActorDisplay[]
-var displays = []
-var highlightedActorIndex : int = 0
+var displays := []
+var highlightedActorIndex: int = 0
 
 func add_display(actor: BattleActor) -> BattleActorDisplay:
-	var display = displayPrefab.instantiate()
+	var display = display_prefab.instantiate()
 	display.setup(actor)
 	displays.append(display)
 	
-	displayParent.add_child(display)
+	display_parent.add_child(display)
 	if shift_right:
-		displayParent.move_child(display, 0)
+		display_parent.move_child(display, 0)
 
 	display.selected.connect(func(a):
 		selected.emit(a)
@@ -52,7 +50,7 @@ func get_display_from_index(index: int) -> BattleActorDisplay:
 		return displays[index]
 	return null
 
-func get_display(actor) -> BattleActorDisplay:
+func get_display(actor: Variant) -> BattleActorDisplay:
 	if(actor is int): return get_display_from_index(actor)
 	for display in displays:
 		if display.actor == actor:

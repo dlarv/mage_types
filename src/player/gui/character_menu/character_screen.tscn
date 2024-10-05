@@ -8,7 +8,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vlcv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="CharacterScreen" type="Control" node_paths=PackedStringArray("nameLabel", "elementIcon1", "elementIcon2", "biasIcon", "statItemsScroller", "spells_menu")]
+[node name="CharacterScreen" type="Control" node_paths=PackedStringArray("_name_label", "_element_icon_1", "_element_icon_2", "_bias_icon", "_stat_items_scroller", "_spells_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,12 +17,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_djrqu")
 allow_stat_editing = true
-nameLabel = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/Name")
-elementIcon1 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType/ElementIcon1")
-elementIcon2 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType/ElementIcon2")
-biasIcon = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/BiasIcon")
-statItemsScroller = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer")
-spells_menu = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Spells")
+_name_label = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/Name")
+_element_icon_1 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType/ElementIcon1")
+_element_icon_2 = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/ElementalType/ElementIcon2")
+_bias_icon = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Info/VBoxContainer/BiasIcon")
+_stat_items_scroller = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer")
+_spells_menu = NodePath("MarginContainer/HBoxContainer/InterfaceContainer/Spells")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -116,30 +116,37 @@ size_flags_vertical = 3
 [node name="Hp_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
 stat = "HP"
+step_value = 1.0
 
 [node name="Mana_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
 stat = "MANA"
+step_value = 1.0
 
 [node name="MAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
 stat = "MELEE_ATTACK"
+step_value = 1.0
 
 [node name="RAttack_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
 stat = "RANGED_ATTACK"
+step_value = 1.0
 
 [node name="MDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
 stat = "MELEE_DEFENSE"
+step_value = 1.0
 
 [node name="RDefense_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
 stat = "RANGED_DEFENSE"
+step_value = 1.0
 
 [node name="Speed_StatItem" parent="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer" instance=ExtResource("3_br248")]
 layout_mode = 2
 stat = "SPEED"
+step_value = 1.0
 
 [node name="Spells" parent="MarginContainer/HBoxContainer/InterfaceContainer" instance=ExtResource("4_f40yp")]
 visible = false

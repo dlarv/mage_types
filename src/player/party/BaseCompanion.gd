@@ -1,16 +1,11 @@
 extends CharacterBody3D 
 class_name BaseCompanion 
 
-@export
-var player_target : Node3D 
-@export
-var battle_actor : BattleActor 
-@export
-var speed : float 
-@export
-var distance_to_player : float 
-@export
-var max_distance : float = 10
+@export var player_target : Node3D 
+@export var battle_actor : BattleActor 
+@export var speed : float 
+@export var distance_to_player : float 
+@export var max_distance : float = 10
 
 func _physics_process(delta: float) -> void:
 	if player_target == null: return

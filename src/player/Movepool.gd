@@ -2,5 +2,4 @@
 extends Node
 class_name Movepool
 
-@export
-var slots: Array[MovepoolSlot] = []
+@export var slots: Array[MovepoolSlot] = []

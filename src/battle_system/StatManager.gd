@@ -82,7 +82,7 @@ func get_stat_mod(stat: Stat) -> float:
 		Stat.EVASION: return _evasion_mod
 		_: return -1
 
-func add(effect: StatChange, name: String):
+func add(effect: StatChange, name: String) -> void:
 	var mod = effect.get_mod()
 	match effect.stat:
 		Stat.ATTACK: _attack_mod += effect.get_mod()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/battle_system/gui/components/TeamDisplay.gd" id="1_48wpk"]
 [ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://src/battle_system/gui/components/battle_actor_display.tscn" id="2_mktld"]
 
-[node name="TeamDisplay" type="Control" node_paths=PackedStringArray("displayParent")]
+[node name="TeamDisplay" type="Control" node_paths=PackedStringArray("display_parent")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_48wpk")
-displayPrefab = ExtResource("2_mktld")
-displayParent = NodePath("HBoxContainer")
+display_prefab = ExtResource("2_mktld")
+display_parent = NodePath("HBoxContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

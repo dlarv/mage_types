@@ -1,37 +1,22 @@
 extends Formatter
 
-@export
-var name_label: Label
-@export
-var element1_icon: ElementIcon
-@export
-var element2_icon: ElementIcon
-@export
-var bias_icon: ElementIcon
-@export
-var hp_label: Label
-@export
-var mana_label: Label
-@export
-var status_effect_vbox: VBoxContainer
-@export
-var effects_label: RichTextLabel
-@export
-var melee_attack_label: Label
-@export
-var ranged_attack_label: Label
-@export
-var melee_defense_label: Label
-@export
-var ranged_defense_label: Label
-@export
-var speed_label: Label
-@export
-var evasion_label: Label
-@export
-var attacks_label: RichTextLabel
+@export var name_label: Label
+@export var element1_icon: ElementIcon
+@export var element2_icon: ElementIcon
+@export var bias_icon: ElementIcon
+@export var hp_label: Label
+@export var mana_label: Label
+@export var status_effect_vbox: VBoxContainer
+@export var effects_label: RichTextLabel
+@export var melee_attack_label: Label
+@export var ranged_attack_label: Label
+@export var melee_defense_label: Label
+@export var ranged_defense_label: Label
+@export var speed_label: Label
+@export var evasion_label: Label
+@export var attacks_label: RichTextLabel
 
-func display(obj: BattleActor):
+func display(obj: Variant) -> void:
 	super.display(obj)
 	name_label.text = obj.name
 	element1_icon.element = obj.element1

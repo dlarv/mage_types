@@ -2,14 +2,10 @@
 extends Resource
 class_name ElementalType 
 
-@export
-var name: String 
-@export
-var main_color: Color 
-@export
-var text_color: Color 
-@export
-var color_palette = []
+@export var name: String 
+@export var main_color: Color 
+@export var text_color: Color 
+@export var color_palette: Array[Color]
 
 func _init():
 	name = "Blank" 

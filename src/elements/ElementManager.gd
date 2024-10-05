@@ -2,30 +2,23 @@
 extends Node 
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
 
-var Blank : ElementalType = ElementalType.new()
-var Blue : ElementalType
-var Purple : ElementalType 
-var Magenta : ElementalType 
-var Red : ElementalType 
-var Orange : ElementalType 
-var Yellow : ElementalType 
-var Green : ElementalType 
-var Cyan : ElementalType 
+var Blank: ElementalType = ElementalType.new()
+var Blue: ElementalType
+var Purple: ElementalType 
+var Magenta: ElementalType 
+var Red: ElementalType 
+var Orange: ElementalType 
+var Yellow: ElementalType 
+var Green: ElementalType 
+var Cyan: ElementalType 
 
-@export
-# ElementalType[]
-var elements: Array[ElementalType] = [ ]
-@export
-var buff_multiplier = 1.5
-@export
-# AttackEffect[]
-var buff_effects: Array[AttackEffect]
-@export
-# AttackEffect[]
-var debuff_effects: Array[AttackEffect]
+@export var elements: Array[ElementalType] = []
+@export var buff_multiplier := 1.5
+@export var buff_effects: Array[AttackEffect]
+@export var debuff_effects: Array[AttackEffect]
 
 # Dict<string, Node>
-var matchups = {}
+var matchups := {}
 
 func test()-> void:
 	var actualResults = [
@@ -172,11 +165,11 @@ func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalT
 	var res = node.get_result(element2)
 	return res
 
-func get_side_effect(a: ElementalType, b: ElementalType):
+func get_side_effect(a: ElementalType, b: ElementalType) -> Array:
 	if(a == Blank || b == Blank): return [null, null]
 	return matchups[a.name].get_effect(b)
 
-func get_all_matchups():
+func get_all_matchups() -> Array:
 	var output = []
 	for node in matchups.values():
 		for el in node.edges.keys():
@@ -243,7 +236,7 @@ func load_from_default_csv()-> void:
 	var data = file.get_as_text()
 	load_from_csv(data)
 
-func is_blank(element: ElementalType):
+func is_blank(element: ElementalType) -> bool:
 	return element == null or element.name == Blank.name
 
 class ElementalNode:
@@ -251,7 +244,7 @@ class ElementalNode:
 	# Dict<ElementalType, Edge>
 	var edges = {}
 
-	func _init(element: ElementalType):
+	func _init(element: ElementalType) -> void:
 		self.element = element
 	
 	func add_connection(element: ElementalType, result: ElementalNode) -> void:
@@ -262,7 +255,7 @@ class ElementalNode:
 		if(edge == null): return null
 		return edge.result.element
 	
-	func get_effect(other: ElementalType):
+	func get_effect(other: ElementalType) -> Array:
 		var edge = edges.get(other, null)
 		if(edge == null): return [null, null]
 		return [edge.buff_effect, edge.debuff_effect]
@@ -282,7 +275,7 @@ class Edge:
 	var debuff_effect: AttackEffect 
 	var result: ElementalNode 
 
-	func _init(buffEffect: AttackEffect, debuffEffect: AttackEffect, end: ElementalNode):
+	func _init(buffEffect: AttackEffect, debuffEffect: AttackEffect, end: ElementalNode) -> void:
 		self.buff_effect = buffEffect
 		self.debuff_effect = debuffEffect
 		result = end

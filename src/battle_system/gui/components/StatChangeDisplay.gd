@@ -1,19 +1,13 @@
 extends HBoxContainer 
 class_name StatChangeDisplay 
 
-@export
-var melee_attack : TextureRect
-@export
-var ranged_attack : TextureRect 
-@export
-var melee_defense : TextureRect 
-@export
-var ranged_defense : TextureRect 
-@export
-var speed : TextureRect 
+@export var melee_attack: TextureRect
+@export var ranged_attack: TextureRect 
+@export var melee_defense: TextureRect 
+@export var ranged_defense: TextureRect 
+@export var speed: TextureRect 
 
-
-func add(stat: StatManager.Stat, amount: float):
+func add(stat: StatManager.Stat, amount: float) -> void:
 	match stat:
 		StatManager.Stat.ATTACK:
 			update_nibs(melee_attack, amount)
@@ -49,27 +43,27 @@ func update_nibs(rect: TextureRect, mod: float=1) -> void:
 		# At 500%, green channel will be maxed out.
 		rect.modulate = Color(0, mod / 5, 0)
 
-func remove(effect: StatChange) -> void:
-	match effect.name:
-		StatusEffectManager.ATTACK_KEY:
-			update_nibs(melee_attack)
-			update_nibs(ranged_attack)
-			
-		StatusEffectManager.DEFENSE_KEY:
-			update_nibs(melee_defense)
-			update_nibs(ranged_defense)
-			
-		StatusEffectManager.MELEE_ATTACK_KEY:
-			update_nibs(melee_attack)
-			
-		StatusEffectManager.RANGED_ATTACK_KEY:
-			update_nibs(ranged_attack)
-			
-		StatusEffectManager.MELEE_DEFENSE_KEY:
-			update_nibs(melee_defense)
-			
-		StatusEffectManager.RANGED_DEFENSE_KEY:
-			update_nibs(ranged_defense)
-			
-		StatusEffectManager.SPEED_KEY:
-			update_nibs(speed)
+# func remove(effect: StatChange) -> void:
+# 	match effect.name:
+# 		StatusEffectManager.ATTACK_KEY:
+# 			update_nibs(melee_attack)
+# 			update_nibs(ranged_attack)
+# 			
+# 		StatusEffectManager.DEFENSE_KEY:
+# 			update_nibs(melee_defense)
+# 			update_nibs(ranged_defense)
+# 			
+# 		StatusEffectManager.MELEE_ATTACK_KEY:
+# 			update_nibs(melee_attack)
+# 			
+# 		StatusEffectManager.RANGED_ATTACK_KEY:
+# 			update_nibs(ranged_attack)
+# 			
+# 		StatusEffectManager.MELEE_DEFENSE_KEY:
+# 			update_nibs(melee_defense)
+# 			
+# 		StatusEffectManager.RANGED_DEFENSE_KEY:
+# 			update_nibs(ranged_defense)
+# 			
+# 		StatusEffectManager.SPEED_KEY:
+# 			update_nibs(speed)

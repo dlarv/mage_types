@@ -2,14 +2,6 @@ extends Node
 class_name StatusEffectManager 
 
 # The Name field of all status effects should match one of these.
-const ATTACK_KEY: String = "Attack"
-const DEFENSE_KEY: String = "Defense"
-const MELEE_ATTACK_KEY: String = "Melee Attack"
-const RANGED_ATTACK_KEY: String = "Ranged Attack"
-const MELEE_DEFENSE_KEY: String = "Melee Defense"
-const RANGED_DEFENSE_KEY: String = "Ranged Defense"
-const SPEED_KEY: String = "Speed"
-const EVASION_KEY: String = "Evasion"
 const STASIS_KEY: String = "Stasis"
 const BLOCKING_KEY: String = "Blocking"
 const POISON_KEY: String = "Poison"
@@ -19,66 +11,7 @@ const FLINCHING_KEY: String = "Flinching"
 const PHOBIC_KEY: String = "Phobic"
 const PHILIC_KEY: String = "Philic"
 
-var melee_attack_mod : float:  
-	get:
-		var total = 1
-		var effect = statuses.get(MELEE_ATTACK_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		effect = statuses.get(ATTACK_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		return total
-
-var melee_defense_mod : float: 
-	get:
-		var total = 1
-		var effect = statuses.get(MELEE_DEFENSE_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		
-		effect = statuses.get(DEFENSE_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		return total
-
-var ranged_attack_mod : float:
-	get:
-		var total = 1
-		var effect = statuses.get(RANGED_ATTACK_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		effect = statuses.get(ATTACK_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		return total
-
-var ranged_defense_mod : float:
-	get:
-		var total = 1
-		var effect = statuses.get(RANGED_DEFENSE_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		effect = statuses.get(DEFENSE_KEY)
-		if effect != null:
-			total += effect.get_mod()
-		return total
-
-var speed_mod : float:
-	get:
-		var effect = statuses.get(MELEE_ATTACK_KEY)
-		if effect != null:
-			return effect.get_mod()
-		return 1
-
-var evasion_mod : float:
-	get:
-		var effect = statuses.get(MELEE_ATTACK_KEY)
-		if effect != null:
-			return effect.get_mod()
-		return 1
-
-var poison : float:
+var poison: float:
 	get:
 		var effect = statuses.get(POISON_KEY)
 		if effect != null:
@@ -86,7 +19,7 @@ var poison : float:
 				return effect.strength
 		return 0
 
-var healing : float:
+var healing: float:
 	get:
 		var effect = statuses.get(HEALING_KEY)
 		if effect != null:
@@ -94,16 +27,16 @@ var healing : float:
 				return effect.strength
 		return 0
 
-var blocking : StatusEffect = null
-var stasis : StatusEffect = null
+var blocking: StatusEffect = null
+var stasis: StatusEffect = null
 
 # StatusEffect[]
-var effectsToRemove = []
+var _effects_to_remove = []
 
 # Dict<string, StatusEffect>
 var statuses = {}
 
-func add_status(status):
+func add_status(status: StatusEffect) -> void:
 	match status.name:
 		BLOCKING_KEY:
 			if blocking != null:
@@ -121,7 +54,7 @@ func add_status(status):
 			else:
 				statuses[status.name] = status
 
-func get_status(status):
+func get_status(status: StatusEffect) -> StatusEffect:
 	match status.name:
 		BLOCKING_KEY:
 			return blocking
@@ -129,60 +62,57 @@ func get_status(status):
 			return stasis
 		_:
 			return statuses.get(status.name)
-
-func remove(effects):
-	for effect in effects:
-		statuses.erase(effect.name)
+func remove(effects: Array) -> void: for effect in effects: statuses.erase(effect.name)
 
 
-func calculate_expirations():
+func calculate_expirations() -> Array:
 	for effect in statuses.values():
 		effect.duration -= 1
 		if effect.is_expired():
-			effectsToRemove.append(effect)
+			_effects_to_remove.append(effect)
 
-	for effect in effectsToRemove:
+	for effect in _effects_to_remove:
 		statuses.erase(effect.name)
 	
-	var output = effectsToRemove
-	effectsToRemove = []
+	var output = _effects_to_remove
+	_effects_to_remove = []
 	return output
 
-func check_flinching():
+func check_flinching() -> StatusEffect:
 	return statuses.get(FLINCHING_KEY)
 
-func check_dissonant():
+func check_dissonant() -> StatusEffect:
 	return statuses.get(DISSONANT_KEY)
 
-func check_blocking():
+func check_blocking() -> bool:
 	if blocking != null:
-		effectsToRemove.add(blocking)
+		_effects_to_remove.add(blocking)
 		blocking = null
 		return true
 	return false
 
-func check_stasis():
+func check_stasis() -> StatusEffect:
 	if stasis != null:
 		var output = stasis
-		effectsToRemove.add(stasis)
+		_effects_to_remove.add(stasis)
 		stasis = null
 		return stasis
 	
 	return null
 
-func check_phobic(element):
+func check_phobic(element) -> ElementalEffect:
 	var effect = statuses.get(PHOBIC_KEY)
 	if effect != null and effect.element == element:
 		return effect
 	return null
 
-func check_philic(element):
+func check_philic(element) -> ElementalEffect:
 	var effect = statuses.get(PHILIC_KEY)
 	if effect != null and effect.element == element:
 		return effect
 	return null
 
-func list():
+func list() -> Array:
 	var output = []
 	if blocking != null:
 		output.append(blocking)

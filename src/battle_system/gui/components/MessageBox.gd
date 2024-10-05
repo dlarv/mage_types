@@ -3,8 +3,7 @@ class_name MessageBox
 
 signal message_cleared()
 
-@export
-var button: Button 
+@export var button: Button 
 
 func _ready() -> void:
 	button.pressed.connect(clear_message)

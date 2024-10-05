@@ -3,10 +3,9 @@ extends VBoxContainer
 
 signal show_info_requested(spell)
 
-@export
-var scroller: VBoxContainer
+@export var scroller: VBoxContainer
 
-func setup(movepool: Movepool):
+func setup(movepool: Movepool) -> void:
 	for slot in movepool.slots:
 		var button = Button.new()
 		button.text = slot.spell.name
