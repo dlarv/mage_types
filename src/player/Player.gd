@@ -28,9 +28,9 @@ func _physics_process(delta) -> void:
 	if !is_on_floor():
 		vel.y -= gravity * delta;
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		vel.y = jump_velocity;
+	# # Handle Jump.
+	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	# 	vel.y = jump_velocity;
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -46,10 +46,6 @@ func _physics_process(delta) -> void:
 	velocity = vel;
 	move_and_slide();
 
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i);
-		var enemy = collision.get_collider()
-
-		if enemy.is_in_group("enemy"):
-			battle_started.emit(party, inventory.get_battle_items(), enemy)
+func start_battle(enemies: EnemyActor) -> void:
+	battle_started.emit(party, inventory.get_battle_items(), enemies)
 

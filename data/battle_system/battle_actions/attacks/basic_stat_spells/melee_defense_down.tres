@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://dl8tuatv2q3y5"]
+[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://dl8tuatv2q3y5"]
 
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_63vfp"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_mxjam"]
 [ext_resource type="Resource" uid="uid://dchuhbbvv2f4i" path="res://data/battle_system/status_effects/stat_changes/melee_defense_down.tres" id="3_kl4lf"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_skr1j"]
@@ -10,14 +9,15 @@
 script = ExtResource("4_skr1j")
 attack_effect = ExtResource("3_kl4lf")
 chance = 1.0
+effect_target = 1
 
 [resource]
 script = ExtResource("5_6th6i")
-effects = [SubResource("Resource_ibimo")]
+effects = Array[ExtResource("4_skr1j")]([SubResource("Resource_ibimo")])
 cost = 10
 name = "M. Defense Down"
 animation = ExtResource("2_mxjam")
-element = ExtResource("1_63vfp")
+_element = "blank"
 priority = 0
 attack_range = 0
 target = 3

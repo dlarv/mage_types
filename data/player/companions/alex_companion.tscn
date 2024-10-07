@@ -1,27 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dthnhw8o26nkm"]
+[gd_scene load_steps=4 format=3 uid="uid://dthnhw8o26nkm"]
 
 [ext_resource type="PackedScene" uid="uid://bfpnrqolejh7g" path="res://src/player/party/base_companion.tscn" id="1_qppk6"]
 [ext_resource type="Script" path="res://data/player/companions/AlexCompanion.gd" id="2_rrqqh"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_ei818"]
-
-[sub_resource type="Resource" id="Resource_h35jf"]
-script = ExtResource("3_ei818")
-ActorName = "Guy"
-Hp = 0
-MeleeAttack = 0
-RangedAttack = 0
-MeleeDefense = 0
-RangedDefense = 0
-Speed = 0
-Evasion = 0
-Attacks = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqhpy"]
 albedo_color = Color(0, 1, 1, 1)
 
 [node name="Alex" instance=ExtResource("1_qppk6")]
 script = ExtResource("2_rrqqh")
-BattleActor = SubResource("Resource_h35jf")
 
-[node name="MeshInstance3D" parent="." index="0"]
+[node name="MeshInstance3D" parent="." index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_nqhpy")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c150qdsgbvtp"]
+
+[ext_resource type="Script" path="res://src/overworld/characters/actors/EnemyActor.gd" id="1_3dtq3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_veksg"]
+radius = 0.6
+
+[node name="EnemyActor" type="Area3D"]
+script = ExtResource("1_3dtq3")
+shape = SubResource("CapsuleShape3D_veksg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_veksg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
