@@ -5,11 +5,10 @@ class_name StoryActor
 
 signal dialog_started(dialog_id, data)
 
-# @onready var _label: Label = get_node("Label")
-# @onready var _collision_shape: CollisionShape3D = get_node("DialogCollider")
 var _label: Label
 var _collision_shape: CollisionShape3D
 
+@export var actor_name: String
 @export var shape: Shape3D:
 	get:
 		if _collision_shape == null: return null

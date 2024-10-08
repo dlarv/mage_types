@@ -5,6 +5,7 @@ extends Node3D
 @export var world: Node3D
 @export var pause_menu: Control
 @export var dialog_box: DialogueBox
+@export var vendor_menu: VendorMenu
 
 @export var _player: Player
 
@@ -32,7 +33,8 @@ func _on_dialog_started(dialogId: String, data: Variant) -> void:
 		"combat_initiated":
 			_on_player_battle_started(_player.party, _player.inventory.get_battle_items(), data)
 		"menu_opened":
-			pass
+			vendor_menu.open_menu(data)
+			await vendor_menu.menu_closed
+			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 
 			world.process_mode = Node.PROCESS_MODE_INHERIT
-			return

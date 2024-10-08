@@ -21,7 +21,7 @@ var _turn_counter: int = 0
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log(Logger.LogType.BATTLE)
-	if event.is_action_pressed("open_player_menu"):
+	if event.is_action_pressed("toggle_player_menu"):
 		_matchup_manager.visible = !_matchup_manager.visible
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:

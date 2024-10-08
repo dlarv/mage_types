@@ -14,6 +14,8 @@ var next_id = 0
 @export var spell_scrolls: Array[SpellScroll] = []
 @export var key_items: Array[KeyItem] = []
 
+@export var money: int = 0
+
 # Secondary reference to battle items.
 var _battle_items: Array[BattleItem] = []
 
@@ -129,3 +131,5 @@ func remove(item: Item, amount: int=-1) -> Item:
 		return output;
 	return null;
 
+func get_item(item: Item) -> Item:
+	return null

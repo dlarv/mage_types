@@ -1,7 +1,6 @@
-[gd_scene load_steps=41 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=45 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
-[ext_resource type="PackedScene" uid="uid://bs3v2u5k7s6k6" path="res://src/overworld/characters/enemy_mage.tscn" id="2_1w1kl"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
 [ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="4_wrj0s"]
 [ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="5_hnpcy"]
@@ -19,49 +18,25 @@
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="17_hr46a"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="18_iwna7"]
-[ext_resource type="PackedScene" uid="uid://d3cg41fpvjxqy" path="res://src/overworld/characters/dialog_enemy.tscn" id="19_241ii"]
-[ext_resource type="PackedScene" uid="uid://byuq0l1et4wa2" path="res://src/overworld/characters/dialog_character.tscn" id="20_2wjox"]
 [ext_resource type="Resource" uid="uid://dl8tuatv2q3y5" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_defense_down.tres" id="20_83avj"]
+[ext_resource type="PackedScene" uid="uid://d1fwqalqmoi0q" path="res://src/overworld/characters/actors/vendor_actor.tscn" id="21_1qeiq"]
 [ext_resource type="PackedScene" uid="uid://df78txj1jxdu7" path="res://src/battle_system/opponent_controllers/scripted_opponent.tscn" id="21_arnrn"]
 [ext_resource type="Resource" uid="uid://6tirwdfy3cak" path="res://data/story/dialog_trees/sandbox_dialog.tres" id="22_2s6yx"]
 [ext_resource type="PackedScene" uid="uid://3g07bhv6nc63" path="res://src/overworld/characters/actors/dialog_enemy_actor.tscn" id="22_4ehv4"]
+[ext_resource type="PackedScene" uid="uid://dea7tl3imqnuh" path="res://src/overworld/characters/npc.tscn" id="22_73imk"]
+[ext_resource type="Script" path="res://src/items/vendors/vendor_menu/VendorItem.gd" id="22_af38h"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="23_65hmq"]
+[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/items/poison_heal.tres" id="23_dwqwn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="24_demi4"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="25_lyxcg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="26_571by"]
+[ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/items/vendors/vendor_menu/vendor_menu.tscn" id="30_85agy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wh0wd"]
 size = Vector3(100, 0.1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4c5f"]
 size = Vector3(100, 0.1, 100)
-
-[sub_resource type="Resource" id="Resource_7ts7h"]
-script = ExtResource("17_hr46a")
-name = "Blank"
-main_color = Color(0.5, 0.5, 0.5, 1)
-text_color = Color(0, 0, 0, 1)
-color_palette = Array[Color]([])
-
-[sub_resource type="Resource" id="Resource_hcblc"]
-script = ExtResource("16_571l7")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
-_base_speed = 100.0
-_base_evasion = 100.0
-
-[sub_resource type="Resource" id="Resource_x52uy"]
-script = ExtResource("10_7knec")
-name = "Guy"
-stat_manager = SubResource("Resource_hcblc")
-hp = 100
-mana = 0
-_element1 = "blue"
-_element2 = "blank"
-elemental_bias = SubResource("Resource_7ts7h")
-attacks = Array[ExtResource("10_s35ot")]([ExtResource("13_4xkw0")])
 
 [sub_resource type="Resource" id="Resource_v2wn4"]
 script = ExtResource("17_hr46a")
@@ -90,6 +65,45 @@ _element2 = "blank"
 elemental_bias = SubResource("Resource_v2wn4")
 attacks = Array[ExtResource("10_s35ot")]([ExtResource("13_4xkw0"), ExtResource("20_83avj")])
 
+[sub_resource type="Resource" id="Resource_7ts7h"]
+script = ExtResource("17_hr46a")
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+text_color = Color(0, 0, 0, 1)
+color_palette = Array[Color]([])
+
+[sub_resource type="Resource" id="Resource_hcblc"]
+script = ExtResource("16_571l7")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_x52uy"]
+script = ExtResource("10_7knec")
+name = "Guy"
+stat_manager = SubResource("Resource_hcblc")
+hp = 100
+mana = 0
+_element1 = "blue"
+_element2 = "blank"
+elemental_bias = SubResource("Resource_7ts7h")
+attacks = Array[ExtResource("10_s35ot")]([ExtResource("13_4xkw0")])
+
+[sub_resource type="Resource" id="Resource_ng3hd"]
+script = ExtResource("22_af38h")
+item = ExtResource("23_dwqwn")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_7qngb"]
+script = ExtResource("22_af38h")
+item = ExtResource("23_dwqwn")
+cost = 1000
+disabled = false
+
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("24_demi4")
 
@@ -99,7 +113,7 @@ script = ExtResource("25_lyxcg")
 [sub_resource type="RichTextEffect" id="RichTextEffect_jaqc2"]
 script = ExtResource("26_571by")
 
-[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world", "pause_menu", "dialog_box", "_player")]
+[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world", "pause_menu", "dialog_box", "vendor_menu", "_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0, 0.061)
 script = ExtResource("1_wo6gm")
 battle_scene = ExtResource("2_t1trw")
@@ -107,10 +121,12 @@ overworld = NodePath("World/Overworld")
 world = NodePath("World")
 pause_menu = NodePath("World/CanvasLayer/PlayerMenu")
 dialog_box = NodePath("CanvasLayer/DialogueBox")
+vendor_menu = NodePath("CanvasLayer/VendorMenu")
 _player = NodePath("World/Overworld/Player")
 
 [node name="Inventory" parent="." instance=ExtResource("13_82vxx")]
 spell_scrolls = Array[ExtResource("4_wrj0s")]([ExtResource("5_hnpcy"), ExtResource("6_dfjre"), ExtResource("7_guoa8")])
+money = 9000
 
 [node name="World" type="Node3D" parent="."]
 
@@ -121,6 +137,7 @@ transform = Transform3D(1, 0, 0, 0, 0.167078, 0.985944, 0, -0.985944, 0.167078, 
 shadow_enabled = true
 
 [node name="Ground" type="MeshInstance3D" parent="World/Overworld"]
+transform = Transform3D(0.998324, 0, -0.0578777, 0, 1, 0, 0.0578777, 0, 0.998324, 0, 0, 0)
 layers = 2
 mesh = SubResource("BoxMesh_wh0wd")
 skeleton = NodePath("")
@@ -137,28 +154,9 @@ player_menu = NodePath("../../CanvasLayer/PlayerMenu")
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
 
-[node name="EnemyMage" parent="World/Overworld" instance=ExtResource("2_1w1kl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.78956)
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-
-[node name="AI" type="Node" parent="World/Overworld/EnemyMage"]
-script = ExtResource("9_st78g")
-
-[node name="EnemyActor" parent="World/Overworld/EnemyMage" node_paths=PackedStringArray("ai") instance=ExtResource("10_pljnd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-ai = NodePath("../AI")
-team = Array[ExtResource("10_7knec")]([SubResource("Resource_x52uy")])
-
-[node name="DialogCharacter" parent="World/Overworld" instance=ExtResource("20_2wjox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.265, 0, 0)
-
-[node name="StoryActor" parent="World/Overworld/DialogCharacter" instance=ExtResource("18_iwna7")]
-dialog_ids = Array[String](["TEST"])
-
-[node name="DialogEnemy" parent="World/Overworld" instance=ExtResource("19_241ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9779, 0, 0)
+[node name="DialogEnemy" parent="World/Overworld" instance=ExtResource("22_73imk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.80334, 0, 0)
+color = Color(0.448815, 0.211617, 0.917898, 1)
 
 [node name="DialogEnemyActor" parent="World/Overworld/DialogEnemy" node_paths=PackedStringArray("enemy_actor") instance=ExtResource("22_4ehv4")]
 enemy_actor = NodePath("../EnemyActor")
@@ -170,6 +168,33 @@ team = Array[ExtResource("10_7knec")]([SubResource("Resource_rxwim")])
 fight_on_collision = false
 
 [node name="ScriptedOpponent" parent="World/Overworld/DialogEnemy" instance=ExtResource("21_arnrn")]
+
+[node name="EnemyMage" parent="World/Overworld" instance=ExtResource("22_73imk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278105, 0, 4.33499)
+color = Color(1, 0, 0, 1)
+
+[node name="AI" type="Node" parent="World/Overworld/EnemyMage"]
+script = ExtResource("9_st78g")
+
+[node name="EnemyActor" parent="World/Overworld/EnemyMage" node_paths=PackedStringArray("ai") instance=ExtResource("10_pljnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+ai = NodePath("../AI")
+team = Array[ExtResource("10_7knec")]([SubResource("Resource_x52uy")])
+
+[node name="DialogCharacter" parent="World/Overworld" instance=ExtResource("22_73imk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96031, 0, 0)
+color = Color(0.431546, 0.431546, 0, 1)
+
+[node name="StoryActor" parent="World/Overworld/DialogCharacter" instance=ExtResource("18_iwna7")]
+dialog_ids = Array[String](["TEST"])
+
+[node name="Vendor" parent="World/Overworld" instance=ExtResource("22_73imk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.00218)
+color = Color(2.5389e-06, 0.4224, 1.92523e-07, 1)
+
+[node name="VendorActor" parent="World/Overworld/Vendor" instance=ExtResource("21_1qeiq")]
+items = Array[ExtResource("22_af38h")]([SubResource("Resource_ng3hd"), SubResource("Resource_7qngb")])
+shape = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World"]
 
@@ -198,5 +223,9 @@ size_flags_vertical = 3
 script = ExtResource("23_65hmq")
 data = ExtResource("22_2s6yx")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2")])
+
+[node name="VendorMenu" parent="CanvasLayer" node_paths=PackedStringArray("inventory") instance=ExtResource("30_85agy")]
+visible = false
+inventory = NodePath("../../Inventory")
 
 [connection signal="battle_started" from="World/Overworld/Player" to="." method="_on_player_battle_started"]

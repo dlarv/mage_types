@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dea7tl3imqnuh"]
+
+[ext_resource type="Script" path="res://src/overworld/characters/Npc.gd" id="1_y6h28"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_867vt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d1irx"]
+
+[node name="Npc" type="RigidBody3D" node_paths=PackedStringArray("_mesh_instance")]
+script = ExtResource("1_y6h28")
+_mesh_instance = NodePath("MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_867vt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_d1irx")
+skeleton = NodePath("")

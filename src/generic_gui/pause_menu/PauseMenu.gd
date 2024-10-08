@@ -5,7 +5,8 @@ extends Control
 @export var load_game_menu: Control
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_pause_menu"):
+	if event.is_action_pressed("toggle_pause_menu"):
+		get_window().set_input_as_handled()
 		visible = not visible
 
 func _on_open_settings_button_pressed() -> void:

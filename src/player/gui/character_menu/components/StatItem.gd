@@ -85,12 +85,27 @@ func set_value(actor: BattleActor) -> void:
 func _on_value_1_text_changed(newText: String) -> void:
 	# From what I can tell, this should remove non-numeric symbols from string,
 	# but it doesn't seem to do that.
+	_number_label.release_focus()
 	value_1 = newText.to_int()
 	stat_modified.emit(stat, value_1)
 
 func _on_value_2_text_changed(newText: String) -> void:
 	value_2 = newText.to_int()
+	_extra_number_label.release_focus()
 	if stat == "MANA":
 		stat_modified.emit("CURRENT_MANA", value_2)
 	elif stat == "HP":
 		stat_modified.emit("CURRENT_HP", value_2)
+
+
+
+func _on_number_2_text_changed(newText:String) -> void:
+	if not newText.is_valid_int(): 
+		_on_value_1_text_changed(newText)
+		_number_label.release_focus()
+
+func _on_number_1_text_changed(newText:String) -> void:
+	if not newText.is_valid_int(): 
+		_on_value_2_text_changed(newText)
+		_extra_number_label.release_focus()
+
