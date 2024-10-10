@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqwxgdcmvjdq7"]
-
-[ext_resource type="Script" path="res://data/battle_system/battle_actions/AnimationTester.cs" id="1_nu7t7"]
-[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="2_xrh6v"]
-
-[node name="AnimationTester" type="Node2D"]
-script = ExtResource("1_nu7t7")
-animation = ExtResource("2_xrh6v")
