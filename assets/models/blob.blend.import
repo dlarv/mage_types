@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bxmppjbxrxsgr"
-path="res://.godot/imported/player.blend-eba222a5dac53431a4256fdd51a222e4.scn"
+uid="uid://c6wb3masbr1lq"
+path="res://.godot/imported/blob.blend-cf26847ec8b4ac78453f2c8b1f5ef568.scn"
 
 [deps]
 
-source_file="res://assets/models/player.blend"
-dest_files=["res://.godot/imported/player.blend-eba222a5dac53431a4256fdd51a222e4.scn"]
+source_file="res://assets/models/blob.blend"
+dest_files=["res://.godot/imported/blob.blend-cf26847ec8b4ac78453f2c8b1f5ef568.scn"]
 
 [params]
 
@@ -32,23 +32,8 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
-"meshes": {
-"player_Cylinder_005": {
-"save_to_file/enabled": true
-}
-},
 "nodes": {
-"PATH:Armature/Skeleton3D": {
-"rest_pose/external_animation_library": null
-},
-"PATH:Armature_bak": {
-"import/skip_import": true
-},
-"PATH:Armature_bak/Skeleton3D": {
-"import/skip_import": true,
-"rest_pose/external_animation_library": null
-},
-"PATH:Armature_bak/Skeleton3D/Cylinder": {
+"PATH:blob_bak": {
 "import/skip_import": true
 }
 }

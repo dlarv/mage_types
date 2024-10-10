@@ -152,11 +152,11 @@ inventory = NodePath("../../../Inventory")
 player_menu = NodePath("../../CanvasLayer/PlayerMenu")
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.02856, 3.44984)
 
 [node name="DialogEnemy" parent="World/Overworld" instance=ExtResource("22_73imk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.80334, 0, 0)
-color = Color(0.448815, 0.211617, 0.917898, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.81901, -0.0127561, -0.00361538)
+color = Color(0.680929, 0.669574, 1, 1)
 
 [node name="DialogEnemyActor" parent="World/Overworld/DialogEnemy" node_paths=PackedStringArray("enemy_actor") instance=ExtResource("22_4ehv4")]
 enemy_actor = NodePath("../EnemyActor")
@@ -171,7 +171,7 @@ fight_on_collision = false
 
 [node name="EnemyMage" parent="World/Overworld" instance=ExtResource("22_73imk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278105, 0, 4.33499)
-color = Color(1, 0, 0, 1)
+color = Color(1, 0.312295, 0.248027, 1)
 
 [node name="AI" type="Node" parent="World/Overworld/EnemyMage"]
 script = ExtResource("9_st78g")
@@ -189,8 +189,8 @@ color = Color(0.431546, 0.431546, 0, 1)
 dialog_ids = Array[String](["TEST"])
 
 [node name="Vendor" parent="World/Overworld" instance=ExtResource("22_73imk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.00218)
-color = Color(2.5389e-06, 0.4224, 1.92523e-07, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0539083, 0.0188937, -9.06995)
+color = Color(0, 0.56847, 0, 1)
 
 [node name="VendorActor" parent="World/Overworld/Vendor" instance=ExtResource("21_1qeiq")]
 items = Array[ExtResource("22_af38h")]([SubResource("Resource_ng3hd"), SubResource("Resource_7qngb")])

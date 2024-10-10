@@ -7,6 +7,7 @@ signal battle_started(allies, items, enemies)
 @export var party: Array[BattleActor]
 @export var inventory: Inventory 
 @export var player_menu: Control 
+@export var model: Node3D
 
 @export_category("Movement")
 @export var speed : float = 10.0
@@ -15,37 +16,39 @@ signal battle_started(allies, items, enemies)
 @export var movepool: Movepool
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 
 func _ready() -> void:
 	player_menu.init_inventory(inventory)
 	party.insert(0, battle_actor)
 
 func _physics_process(delta) -> void:
-	var vel = velocity;
+	var vel = velocity
 
 	# Add the gravity.
 	if !is_on_floor():
-		vel.y -= gravity * delta;
+		vel.y -= gravity * delta
 
 	# # Handle Jump.
 	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	# 	vel.y = jump_velocity;
+	# 	vel.y = jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down");
-	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized();
+	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 	if direction != Vector3.ZERO:
-		vel.x = direction.x * speed;
-		vel.z = direction.z * speed;
+		vel.x = direction.x * speed
+		vel.z = direction.z * speed
+		# Rotate model in direction of movement.
+		model.rotation.y = atan2(vel.x, vel.z)
 	else:
-		vel.x = move_toward(velocity.x, 0, speed);
-		vel.z = move_toward(velocity.z, 0, speed);
+		vel.x = move_toward(velocity.x, 0, speed)
+		vel.z = move_toward(velocity.z, 0, speed)
 
-	velocity = vel;
-	move_and_slide();
+
+	velocity = vel
+	move_and_slide()
 
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(party, inventory.get_battle_items(), enemies)
-
