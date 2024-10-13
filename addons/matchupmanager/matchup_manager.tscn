@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bycqt1dtij02l"]
+[gd_scene load_steps=3 format=3 uid="uid://bycqt1dtij02l"]
 
 [ext_resource type="Script" path="res://addons/matchupmanager/matchup_manager.gd" id="1_rjr63"]
+[ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/elements/MatchupChart.tscn" id="2_faf2p"]
 
-[node name="MatchupManager" type="Control"]
+[node name="MatchupManager" type="Control" node_paths=PackedStringArray("vbox", "tab_container", "chart")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,41 +13,68 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rjr63")
+vbox = NodePath("TabContainer/Side Effects/VBoxContainer/ScrollContainer/VBoxContainer")
+tab_container = NodePath("TabContainer")
+chart = NodePath("TabContainer/Chart/MatchupChart")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Chart" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 0
+
+[node name="MatchupChart" parent="TabContainer/Chart" instance=ExtResource("2_faf2p")]
+layout_mode = 2
+
+[node name="Side Effects" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Side Effects"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TabContainer/Side Effects/VBoxContainer"]
 layout_mode = 2
 text = "Set side effects for different elemental reactions."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Side Effects/VBoxContainer"]
 layout_mode = 2
 
-[node name="Load_Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Load_Button" type="Button" parent="TabContainer/Side Effects/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Load"
 
-[node name="Save_Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Save_Button" type="Button" parent="TabContainer/Side Effects/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Save"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Side Effects/VBoxContainer"]
 custom_minimum_size = Vector2(30, 15)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Side Effects/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Side Effects/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -55,6 +83,6 @@ size = Vector2i(392, 500)
 root_subfolder = "res://data/elemental_types/matchup_files/"
 filters = PackedStringArray("*.txt", "*.csv")
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Load_Button" to="." method="_on_load_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Save_Button" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="TabContainer/Side Effects/VBoxContainer/HBoxContainer/Load_Button" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="TabContainer/Side Effects/VBoxContainer/HBoxContainer/Save_Button" to="." method="_on_save_button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

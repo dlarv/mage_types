@@ -16,17 +16,16 @@ signal status_effect_icon_pressed(effect)
 var actor: BattleActor 
 
 var tint: Color = Color.WHITE
-@export
-var sprite: Sprite 
-var totalHp: int 
+@export var sprite: Sprite 
+var total_hp: float 
 # Dict<string, Node>
 var icons := {}
 
 func setup(actor: BattleActor):
 	name_label.text = actor.name
-	health_bar.value = (actor.current_hp / actor.hp) * 100
+	health_bar.value = (float(actor.current_hp) / actor.hp) * 100
 	hp_label.text = "%d/%d" % [actor.current_hp, actor.hp ]
-	totalHp = actor.hp
+	total_hp = actor.hp
 
 	if actor.sprite == null:
 		actor.use_gradient_sprite()
@@ -52,8 +51,8 @@ func set_element(id: int, element: ElementalType) -> void:
 	sprite.set_element(id, element)
 
 func set_health(hp: int) -> void:
-	health_bar.value = hp / totalHp * 100.0
-	hp_label.text = "%d/%d" % [ hp, totalHp ]
+	health_bar.value = (float(hp) / total_hp) * 100.0
+	hp_label.text = "%d/%d" % [ hp, total_hp ]
 
 func get_target_position() -> Vector2:
 	var position = global_position

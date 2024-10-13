@@ -58,13 +58,13 @@ func init_actor() -> void:
 func _on_stat_modified(stat: String, amount: float) -> void:
 	match stat:
 		"MANA": 
-			actor.mana = amount
+			actor.mana = int(amount)
 		"CURRENT_MANA":
-			actor.current_mana = amount
+			actor.current_mana = int(amount)
 		"HP":
-			actor.hp = amount
+			actor.hp = int(amount)
 		"CURRENT_HP":
-			actor.current_hp = amount
+			actor.current_hp = int(amount)
 		_:
 			var key = StatManager.Stat.find_key(stat)
 			actor.set_stat(StatManager.Stat.get(stat), amount)

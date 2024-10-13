@@ -1,14 +1,17 @@
 @tool
 extends Control
 
+@export var vbox: VBoxContainer
+@export var tab_container: TabContainer
+@export var chart: Control
+
 var MatchupItem
-var vbox
 var save_file = false
 var items = {}
 
 func _ready():
 	MatchupItem = preload("res://addons/matchupmanager/components/matchup_item.tscn")
-	vbox = get_node("VBoxContainer/ScrollContainer/VBoxContainer")
+	# vbox = get_node("TabContainer/VBoxContainer/ScrollContainer/VBoxContainer")
 
 	ElementManager.force_load()
 	for matchup in ElementManager.get_all_matchups():
@@ -22,6 +25,12 @@ func _ready():
 			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, true))
 		item.debuff_selected.connect(func(index):
 			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, false))
+	
+	ElementManager.side_effects_updated.connect(chart._on_side_effect_updated)
+	if Engine.is_editor_hint():
+		tab_container.current_tab = 1
+	else:
+		tab_container.current_tab = 0
 
 func _on_save_button_pressed():
 	var dialog: FileDialog = get_node("FileDialog")

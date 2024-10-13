@@ -8,7 +8,7 @@ radius = 1.5
 [node name="StoryActor" type="Area3D" groups=["dialog"]]
 script = ExtResource("1_txya0")
 shape = SubResource("SphereShape3D_uvoks")
-offset = Vector3(-0.3, 2, 0)
+offset = Vector3(-0.3, 4, 0)
 
 [node name="DialogCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_uvoks")

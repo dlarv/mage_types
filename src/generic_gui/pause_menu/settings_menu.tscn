@@ -5,7 +5,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ew87g"]
 font_size = 50
 
-[node name="SettingsMenu" type="PanelContainer" node_paths=PackedStringArray("_debug_mode_toggle", "_transmutation_hint_toggle")]
+[node name="SettingsMenu" type="PanelContainer" node_paths=PackedStringArray("_debug_mode_toggle", "_transmutation_hint_toggle", "_simple_effects_toggle")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_tx88d")
 _debug_mode_toggle = NodePath("MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox/CheckBox")
 _transmutation_hint_toggle = NodePath("MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox/CheckBox")
+_simple_effects_toggle = NodePath("MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox/CheckBox")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -48,6 +49,19 @@ text = "Debug Mode"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="SimpleEffects_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Use simplfied side effects"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
 [node name="TransmutationHints_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -62,4 +76,5 @@ size_flags_horizontal = 3
 button_pressed = true
 
 [connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox/CheckBox" to="." method="on_debug_mode_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox/CheckBox" to="." method="_on_simple_effects_toggled"]
 [connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]

@@ -1,6 +1,10 @@
 @tool
 extends Node 
+
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
+const SIMPLE_SIDE_EFFECTS_PATH: String = "res://data/elemental_types/matchup_files/simple.csv"
+
+signal side_effects_updated(e1, e2)
 
 var Blank: ElementalType = ElementalType.new()
 var Blue: ElementalType
@@ -59,8 +63,10 @@ func _enter_tree() -> void:
 			if buff_effects[i] == null: continue
 			buff_effects[i] = buff_effects[i].duplicate()
 			buff_effects[i].strength *= buff_multiplier
+		Settings.simplified_effects_toggled.connect(load_from_default_csv)
 		
-	load_from_default_csv()
+	load_from_default_csv(Settings.use_simplified_effects)
+	
 
 
 func force_load()-> void:
@@ -196,6 +202,8 @@ func set_side_effect_for(a: ElementalType, b: ElementalType, index: int, isBuff:
 	var msg1 = effects[0].name if effects[0] != null else "null"
 	var msg2 = effects[1].name if effects[1] != null else "null"
 
+	side_effects_updated.emit(a, b)
+
 func side_effect_to_index(effect: AttackEffect, isBuff: bool) -> int:
 	if(effect == null): return -1
 	var effects = buff_effects if isBuff else debuff_effects
@@ -231,8 +239,9 @@ func load_from_csv(data: String) -> void:
 		var debuffIndex = values[4].to_int()
 		set_side_effect_for(a, b, debuffIndex, false)
 
-func load_from_default_csv()-> void:
-	var file = FileAccess.open(DEFAULT_CSV_PATH, FileAccess.ModeFlags.READ)
+func load_from_default_csv(useSimplifiedEffects: bool)-> void:
+	var path = DEFAULT_CSV_PATH if not useSimplifiedEffects else SIMPLE_SIDE_EFFECTS_PATH
+	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
 	var data = file.get_as_text()
 	load_from_csv(data)
 

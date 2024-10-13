@@ -25,7 +25,7 @@ func _unhandled_input(event) -> void:
 		_matchup_manager.visible = !_matchup_manager.visible
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
-	ElementManager.load_from_default_csv()
+	ElementManager.load_from_default_csv(Settings.use_simplified_effects)
 	self.allies = allies
 	self.enemies = enemies
 
@@ -57,13 +57,19 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	actions.sort_custom(func(a, b): return a.compare_to(b))
 
 	for action in actions:
-		# This means a character is defeated or flinched.
+		# Allow opponents to talk to player.
+		if action.action is BattleTalk:
+			for message in action.action.dialog:
+				gui.display_message(message)
+			continue
+
+		# This means a character is defeated.
 		if action == null:
 			continue
 
 		var flinch = action.actor.flinching
 		if flinch != null:
-			await gui.display_message("%s flinched! They were unable to move" % action.actor.name)
+			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
 			continue
 
 		action.action.apply_cost(action.actor)

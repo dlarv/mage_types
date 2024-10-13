@@ -3,6 +3,7 @@ class_name Player
 
 signal battle_started(allies, items, enemies)
 
+@export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
 @export var party: Array[BattleActor]
 @export var inventory: Inventory 
@@ -10,28 +11,40 @@ signal battle_started(allies, items, enemies)
 @export var model: Node3D
 
 @export_category("Movement")
-@export var speed : float = 10.0
-@export var jump_velocity : float = 4.5
+@export var walk_speed := 10.0
+@export var run_speed := 30.0
+var _is_running := false
+# @export var jump_velocity: float = 4.5
 @export_category("Movepool")
 @export var movepool: Movepool
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
+var in_control := true
 
 func _ready() -> void:
-	player_menu.init_inventory(inventory)
 	party.insert(0, battle_actor)
+	if player_menu == null: return
+	player_menu.init_inventory(inventory)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_god_camera"):
+		switch_to_god_camera(in_control)
+
+	if not in_control: return
+	if event.is_action_pressed("player_run"):
+		_is_running = not _is_running
+	
 
 func _physics_process(delta) -> void:
+	if not in_control: return
 	var vel = velocity
+	var speed = walk_speed if not _is_running else run_speed
 
 	# Add the gravity.
 	if !is_on_floor():
 		vel.y -= gravity * delta
-
-	# # Handle Jump.
-	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	# 	vel.y = jump_velocity
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -52,3 +65,9 @@ func _physics_process(delta) -> void:
 
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(party, inventory.get_battle_items(), enemies)
+
+func switch_to_god_camera(value := true) -> void:
+	GodCamera.in_control = value
+	GodCamera.current = value
+	in_control = not value
+	$Camera3D.current = not value

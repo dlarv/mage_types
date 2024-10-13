@@ -3,19 +3,25 @@
 extends RigidBody3D
 
 @export var _mesh_instance: MeshInstance3D
-var _next_pass: StandardMaterial3D
-
-@export var color: Color:
+@export 
+var tint := Color.WHITE: 
 	set(value):
-		color = value
-		if _next_pass == null: return
-		_next_pass.albedo_color = value
+		tint = value
+		_next_pass.albedo_color = tint
+@export 
+var use_tint := false:
+	set(value):
+		use_tint = value
 
-func _enter_tree():
-	# _mesh_instance.set_surface_override_material(0, StandardMaterial3D.new())
-	# _mesh_instance.get_surface_override_material(0).albedo_color = color
-	var mat = _mesh_instance.get_active_material(0).duplicate()
-	_mesh_instance.set_surface_override_material(0, mat)
-	_next_pass = mat.next_pass.duplicate()
-	_mesh_instance.get_active_material(0).next_pass = _next_pass
-	_next_pass.albedo_color = color
+		# Return material to original state.
+		_mesh_instance.set_surface_override_material(0, null)
+		if not value: return
+
+		# Create new unique base texture.
+		var material := _mesh_instance.get_active_material(0).duplicate(true)
+		_mesh_instance.set_surface_override_material(0, material)
+		material.next_pass = _next_pass
+		_next_pass.blend_mode = BaseMaterial3D.BLEND_MODE_MUL
+
+
+var _next_pass := StandardMaterial3D.new()

@@ -31,6 +31,7 @@ func compare_to(other: ActorAction) -> bool:
 	if priority != other.priority:
 		return priority > other.priority
 	# Then higher speed goes first.
+	print("Speed: %f, Other: %f" % [actor.speed, other.actor.speed])
 	if actor.speed != other.actor.speed:
-		return actor.speed < other.actor.speed
+		return actor.speed > other.actor.speed
 	return randf_range(0, 1) < 0.5

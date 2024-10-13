@@ -22,6 +22,7 @@ func display(item: VendorItem, inventory: Inventory) -> void:
 	
 	var costLimit: int 
 	if item.cost != 0:
+		@warning_ignore("integer_division")
 		costLimit = inventory.money / item.cost
 	else:
 		costLimit = BASE_MAX_QUANTITY
