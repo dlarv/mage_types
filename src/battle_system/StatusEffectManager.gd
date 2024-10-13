@@ -80,8 +80,10 @@ func check_dissonant() -> StatusEffect:
 
 func check_blocking() -> bool:
 	if blocking != null:
-		_effects_to_remove.add(blocking)
-		blocking = null
+		blocking.duration -= 1
+		if blocking.is_expired():
+			_effects_to_remove.add(blocking)
+			blocking = null
 		return true
 	return false
 
