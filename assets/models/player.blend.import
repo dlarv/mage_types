@@ -34,21 +34,17 @@ import_script/path=""
 _subresources={
 "meshes": {
 "player_Cylinder_005": {
-"save_to_file/enabled": true
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/path": ""
 }
 },
 "nodes": {
-"PATH:Armature/Skeleton3D": {
-"rest_pose/external_animation_library": null
-},
-"PATH:Armature_bak": {
-"import/skip_import": true
-},
-"PATH:Armature_bak/Skeleton3D": {
-"import/skip_import": true,
-"rest_pose/external_animation_library": null
-},
-"PATH:Armature_bak/Skeleton3D/Cylinder": {
+"PATH:Cylinder_bak": {
 "import/skip_import": true
 }
 }

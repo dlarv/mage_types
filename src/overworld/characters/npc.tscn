@@ -47,12 +47,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_aavnk")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8k0p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyuqr"]
 blend_mode = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mci30"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jbwk"]
 resource_name = "image"
-next_pass = SubResource("StandardMaterial3D_x8k0p")
+next_pass = SubResource("StandardMaterial3D_qyuqr")
 cull_mode = 2
 shading_mode = 0
 albedo_texture = ExtResource("3_rbsxj")
@@ -74,7 +74,7 @@ color = Color(1, 1, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.492468, 0)
 mesh = SubResource("ArrayMesh_cirp3")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_mci30")
+surface_material_override/0 = SubResource("StandardMaterial3D_1jbwk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
