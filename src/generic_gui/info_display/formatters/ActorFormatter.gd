@@ -5,7 +5,7 @@ extends Formatter
 @export var element2_icon: ElementIcon
 @export var bias_icon: ElementIcon
 @export var hp_label: Label
-@export var mana_label: Label
+@export var cost_label: RichTextLabel
 @export var status_effect_vbox: VBoxContainer
 @export var effects_label: RichTextLabel
 @export var melee_attack_label: Label
@@ -24,7 +24,13 @@ func display(obj: Variant) -> void:
 	bias_icon.element = obj.elemental_bias
 
 	hp_label.text = "%d/%d" % [obj.current_hp, obj.hp]
-	mana_label.text = "%d/%d" % [obj.current_mana, obj.mana]
+	# cost_label.text = "%d/%d" % [obj.current_mana, obj.mana]
+	cost_label.clear()
+	for element in ElementManager.elements:
+		append_elemental_color(cost_label, element)
+		cost_label.append_text(": %d" % obj.affinity_manager.affinities[element])
+		cost_label.newline()
+
 
 	var effects = obj.list_status_effects()
 	if len(effects) == 0:

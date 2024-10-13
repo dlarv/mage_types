@@ -17,8 +17,7 @@ var xp: float = 0
 
 @export_category("Stats")
 var statuses = StatusEffectManager.new()
-@export
-var stat_manager = StatManager.new()
+@export var stat_manager = StatManager.new()
 @export
 var hp: int = 100:
 	get: return hp 
@@ -26,7 +25,6 @@ var hp: int = 100:
 		hp = value
 		current_hp = value
 var current_hp: int = 100
-
 @export
 var mana: int:
 	get: return mana
@@ -34,6 +32,8 @@ var mana: int:
 		mana = value
 		current_mana = value
 var current_mana: int
+@export var affinity_manager = AffinityManager.new()
+
 
 var speed: float:
 	get: return stat_manager.speed
@@ -84,20 +84,18 @@ var stasis: StatusEffect:
 var is_defeated: bool: 
 	get: return current_hp <= 0
 
-var prev_element_1: ElementalType = ElementManager.Blank
-var element_counter_1: int = 0
-var prev_element_2: ElementalType = ElementManager.Blank
-var element_counter_2: int = 0
-
 var aleady_defeated: bool = false
 
-func set_element(id: int, element: ElementalType) -> String:
-	var msg = ""
+func set_element(id: int, element: ElementalType) -> Array:
+	var msg := []
 	if id == 0:
 		element1 = element
 	else:
 		element2 = element
 	
+	if not element.is_blank():
+		var affinity = affinity_manager.set_element(id, element)
+		msg.append("%s gained %d %s affinity!" % [name, affinity, element.get_bb_code_name()])
 	sprite.set_element(id, element)
 	element_changed.emit(id, element)
 
@@ -107,13 +105,13 @@ func set_element(id: int, element: ElementalType) -> String:
 	if effect != null:
 		dmg = hp * effect.strength
 		current_hp -= dmg
-		msg += "%s was hurt by its phobia! (%d damage)" % [ name, dmg ]
+		msg.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 	effect = statuses.check_philic(element)
 	if effect != null:
 		dmg = hp * effect.strength
 		current_hp += dmg
-		msg += "%s was healed by its philia! (%d hp)" % [ name, dmg ]
+		msg.append("%s was healed by its philia! (%d hp)" % [ name, dmg ])
 	if dmg != 0:
 		apply_damage(dmg)
 
@@ -182,15 +180,12 @@ func remove_status_effect(effect: StatusEffect) -> void:
 func has_status_effect(effect: StatusEffect) -> bool:
 	return statuses.get_status(effect) != null
 
-func update_elemental_state()-> void:
-	if(prev_element_1 == element1): element_counter_1 += 1
-	else: element_counter_1 = 0
 
-	if(prev_element_2 == element2): element_counter_2 += 1
-	else: element_counter_2 = 0
-
-	prev_element_1 = element1
-	prev_element_2 = element2
+## Subtracts amount from the element's total affinity.
+## If amount > affinity, return affinity / amount.
+## If amount == 0, character had no affinity to begin with
+func lose_affinity(element: ElementalType, amount: int) -> float:
+	return affinity_manager.lose_affinity(element, amount)
 
 func try_revert_to_bias()-> bool:
 	return false
@@ -198,21 +193,30 @@ func try_revert_to_bias()-> bool:
 func list_status_effects() -> Array:
 	return statuses.list()
 
-func resolve_end_of_turn()-> String:
+func resolve_end_of_turn()-> Array:
 	# Calc poison and healing.
-	var msg = ""
+	var msg = []
 	var mod = 0
 	var poison = statuses.poison
 	var healing = statuses.healing
 
 	if poison > 0:
 		mod += poison
-		msg += "%s was hurt by poison (%d dmg)!\n" % [ name, poison * hp]
+		msg.append("%s was hurt by poison (%d dmg)!" % [ name, poison * hp])
 	if healing > 0:
 		mod -= healing
-		msg += "%s recovered %d health!" % [ name, hp * healing]
+		msg.append("%s recovered %d health!" % [ name, hp * healing])
 	current_hp -= hp * mod
 	damage_applied.emit(current_hp)
+
+	# Calculate consecutive turn affinity, if any.
+	var bonus := affinity_manager.gain_affinity(element1, AffinityManager.BonusReason.CONSECUTIVE)
+	if bonus > 0:
+		msg.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element1.get_bb_code_name(), bonus])
+
+	bonus = affinity_manager.gain_affinity(element2, AffinityManager.BonusReason.CONSECUTIVE)
+	if bonus > 0:
+		msg.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element2.get_bb_code_name(), bonus])
 
 	var effects = statuses.calculate_expirations()
 	status_effects_removed.emit(effects)

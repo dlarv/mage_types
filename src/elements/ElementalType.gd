@@ -16,5 +16,8 @@ func _init():
 func get_text_color()-> Color:
 	return text_color
 
+func get_bb_code_name() -> String:
+	return "[color=%s]%s[/color]" % [name, name]
+
 func is_blank():
 	return name == "Blank"

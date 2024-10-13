@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/generic_gui/info_display/formatters/ActorFormatter.gd" id="1_bro5u"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_qmtte"]
 
-[node name="ActorFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "element1_icon", "element2_icon", "bias_icon", "hp_label", "mana_label", "status_effect_vbox", "effects_label", "melee_attack_label", "ranged_attack_label", "melee_defense_label", "ranged_defense_label", "speed_label", "evasion_label", "attacks_label")]
+[node name="ActorFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "element1_icon", "element2_icon", "bias_icon", "hp_label", "cost_label", "status_effect_vbox", "effects_label", "melee_attack_label", "ranged_attack_label", "melee_defense_label", "ranged_defense_label", "speed_label", "evasion_label", "attacks_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,7 +15,7 @@ element1_icon = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Elements
 element2_icon = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Elements_VBox/SecondaryElement")
 bias_icon = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Bias_VBox/BiasElement")
 hp_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Hp_VBox/Hp")
-mana_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Mana_VBox/Mana")
+cost_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Cost_VBox/Cost")
 status_effect_vbox = NodePath("MarginContainer/ScrollContainer/VBoxContainer/StatusEffects_VBox")
 effects_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/StatusEffects_VBox/StatusEffects")
 melee_attack_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Stats_Grid/MAttack_HBox/MeleeAttack")
@@ -81,17 +81,18 @@ text = "Hp"
 layout_mode = 2
 text = "100/100"
 
-[node name="Mana_VBox" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Cost_VBox" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Mana_VBox"]
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Cost_VBox"]
 layout_mode = 2
-text = "Mana"
+text = "Elemental Affinities"
 
-[node name="Mana" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Mana_VBox"]
+[node name="Cost" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Cost_VBox"]
 layout_mode = 2
-text = "100/100"
+bbcode_enabled = true
+fit_content = true
 
 [node name="StatusEffects_VBox" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2

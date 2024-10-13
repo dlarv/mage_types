@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=11 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=13 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
+[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_cge1d"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_wlyon"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_430d3"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="3_hkgsr"]
@@ -8,6 +9,28 @@
 [ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="4_r5jb5"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="5_fwiqp"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
+
+[sub_resource type="Resource" id="Resource_yqccd"]
+script = ExtResource("1_cge1d")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+STRUGGLE_BONUS = 2
+initial_blue_affinity = 100
+initial_purple_affinity = 100
+initial_magenta_affinity = 100
+initial_red_affinity = 100
+initial_orange_affinity = 100
+initial_yellow_affinity = 100
+initial_green_affinity = 100
+initial_cyan_affinity = 100
+blue_threshold = 50
+purple_threshold = 50
+magenta_threshold = 50
+red_threshold = 50
+orange_threshold = 50
+yellow_threshold = 50
+green_threshold = 50
+cyan_threshold = 50
 
 [sub_resource type="Resource" id="Resource_5ne4w"]
 script = ExtResource("5_fwiqp")
@@ -31,6 +54,7 @@ name = "Player"
 stat_manager = SubResource("Resource_ii6l6")
 hp = 1000
 mana = 100
+affinity_manager = SubResource("Resource_yqccd")
 _element1 = "magenta"
 _element2 = "green"
 elemental_bias = SubResource("Resource_5ne4w")

@@ -70,6 +70,8 @@ func _enter_tree() -> void:
 
 
 func force_load()-> void:
+	if len(matchups.keys()) > 0: return
+
 	for element in elements:
 		match element.name.to_lower():
 			"blue": 

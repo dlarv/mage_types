@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=52 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="Script" path="res://src/overworld/sandbox/sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="10_pljnd"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="10_s35ot"]
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="11_511t6"]
+[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="13_2y8ye"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="13_4xkw0"]
 [ext_resource type="PackedScene" uid="uid://naddq5rv0dbw" path="res://src/items/Inventory.tscn" id="13_82vxx"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="16_571l7"]
@@ -32,6 +33,28 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="26_571by"]
 [ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/items/vendors/vendor_menu/vendor_menu.tscn" id="30_85agy"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/GodCamera.gd" id="32_fky1l"]
+
+[sub_resource type="Resource" id="Resource_e3cnw"]
+script = ExtResource("13_2y8ye")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+STRUGGLE_BONUS = 2
+initial_blue_affinity = 100
+initial_purple_affinity = 100
+initial_magenta_affinity = 100
+initial_red_affinity = 100
+initial_orange_affinity = 100
+initial_yellow_affinity = 100
+initial_green_affinity = 100
+initial_cyan_affinity = 100
+blue_threshold = 50
+purple_threshold = 50
+magenta_threshold = 50
+red_threshold = 50
+orange_threshold = 50
+yellow_threshold = 50
+green_threshold = 50
+cyan_threshold = 50
 
 [sub_resource type="Resource" id="Resource_v2wn4"]
 script = ExtResource("17_hr46a")
@@ -55,6 +78,7 @@ name = "Guy"
 stat_manager = SubResource("Resource_x2urj")
 hp = 1000
 mana = 1000
+affinity_manager = SubResource("Resource_e3cnw")
 _element1 = "blue"
 _element2 = "blank"
 elemental_bias = SubResource("Resource_v2wn4")

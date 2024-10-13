@@ -47,4 +47,4 @@ func is_action_available(actor: BattleActor) -> bool:
 
 # override
 func apply_cost(user: BattleActor) -> void:
-	user.current_mana -= cost
+	user.lose_affinity(element, cost)

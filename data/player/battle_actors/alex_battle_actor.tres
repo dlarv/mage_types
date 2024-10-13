@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=11 format=3 uid="uid://bh5734pj5bgq3"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=13 format=3 uid="uid://bh5734pj5bgq3"]
 
+[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_2ct8q"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_s6y24"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_skdfi"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="2_fwsf3"]
@@ -8,6 +9,29 @@
 [ext_resource type="Resource" uid="uid://da27irgqjb8ob" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_attack_up.tres" id="4_kq6mw"]
 [ext_resource type="Resource" uid="uid://j7kja5ijt2a" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_defense_down.tres" id="5_yatqe"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="8_cqnen"]
+
+[sub_resource type="Resource" id="Resource_31xdh"]
+script = ExtResource("1_2ct8q")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+ATTACK_BONUS = 1
+STRUGGLE_BONUS = 2
+initial_blue_affinity = 0
+initial_purple_affinity = 0
+initial_magenta_affinity = 0
+initial_red_affinity = 0
+initial_orange_affinity = 0
+initial_yellow_affinity = 0
+initial_green_affinity = 0
+initial_cyan_affinity = 0
+blue_threshold = 50
+purple_threshold = 50
+magenta_threshold = 50
+red_threshold = 50
+orange_threshold = 50
+yellow_threshold = 50
+green_threshold = 50
+cyan_threshold = 50
 
 [sub_resource type="Resource" id="Resource_5ne4w"]
 script = ExtResource("2_vrqin")
@@ -31,6 +55,7 @@ name = "Alex"
 stat_manager = SubResource("Resource_w38wo")
 hp = 300
 mana = 100
+affinity_manager = SubResource("Resource_31xdh")
 _element1 = "blue"
 _element2 = "blank"
 elemental_bias = SubResource("Resource_5ne4w")

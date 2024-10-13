@@ -28,7 +28,6 @@ var healing: float:
 		return 0
 
 var blocking: StatusEffect = null
-var stasis: StatusEffect = null
 
 # StatusEffect[]
 var _effects_to_remove = []
@@ -43,11 +42,6 @@ func add_status(status: StatusEffect) -> void:
 				blocking.combine(status)
 			else:
 				blocking = status
-		STASIS_KEY:
-			if stasis != null:
-				stasis.combine(status)
-			else:
-				stasis = status
 		_:
 			if statuses.has(status.name):
 				statuses[status.name].combine(status)
@@ -58,11 +52,11 @@ func get_status(status: StatusEffect) -> StatusEffect:
 	match status.name:
 		BLOCKING_KEY:
 			return blocking
-		STASIS_KEY:
-			return stasis
 		_:
 			return statuses.get(status.name)
-func remove(effects: Array) -> void: for effect in effects: statuses.erase(effect.name)
+
+func remove(effects: Array) -> void: 
+	for effect in effects: statuses.erase(effect.name)
 
 
 func calculate_expirations() -> Array:
@@ -92,13 +86,7 @@ func check_blocking() -> bool:
 	return false
 
 func check_stasis() -> StatusEffect:
-	if stasis != null:
-		var output = stasis
-		_effects_to_remove.add(stasis)
-		stasis = null
-		return stasis
-	
-	return null
+	return statuses.get(STASIS_KEY)
 
 func check_phobic(element) -> ElementalEffect:
 	var effect = statuses.get(PHOBIC_KEY)
@@ -117,8 +105,6 @@ func list() -> Array:
 	if blocking != null:
 		output.append(blocking)
 	
-	if stasis != null:
-		output.append(stasis)
 	for effect in statuses.values():
 		output.append(effect)
 	return output

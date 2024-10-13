@@ -114,7 +114,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			await calculate_transmutations(action.actor, action.action) 
 
 		# Resolve user's status effects.
-		msg = action.actor.resolve_end_of_turn()		
+		msg = "\n".join(action.actor.resolve_end_of_turn())
 		if len(msg) > 0:
 			await gui.display_message(msg)
 
@@ -136,14 +136,14 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		return
 
 	var msg := []
-	var e1 := target.element1.name.to_lower()
-	var e2 := target.element2.name.to_lower()
-	var ea := action.element.name.to_lower()
+	var e1 := target.element1.get_bb_code_name()
+	var e2 := target.element2.get_bb_code_name()
+	var ea := action.element.get_bb_code_name()
 
  	# Calculate primary + attack 
 	var newType := ElementManager.get_matchup(target.element1, action.element)
 	if newType != null:
-		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
+		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e1, ea, newType.get_bb_code_name()])
 
 		var vals := ElementManager.get_side_effect(target.element1, action.element)
 		var buff = vals[0]
@@ -154,7 +154,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if debuff != null:
 			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 := target.set_element(0, newType)
+		var msg2 := "\n".join(target.set_element(0, newType))
 		if len(msg2) > 0:
 			msg.append(msg2)
 
@@ -164,7 +164,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	newType = ElementManager.get_matchup(target.element2, action.element)
 	msg = []
 	if newType != null:
-		msg.append("The target %s's [color=%s]%s[/color] reacted with the attack's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [ target.name, e2, e2, ea, ea, newType.name.to_lower(), newType.name.to_lower()])
+		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e2, ea, newType.get_bb_code_name()])
 
 		var vals := ElementManager.get_side_effect(target.element2, action.element)
 		var buff = vals[0]
@@ -175,7 +175,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if debuff != null:
 			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 := target.set_element(1, newType)
+		var msg2 := "\n".join(target.set_element(1, newType))
 		if len(msg2) > 0:
 			msg.append(msg2)
 
@@ -190,9 +190,9 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	newType = ElementManager.get_matchup(target.element1, target.element2)
 	msg = []
 	if newType != null:
-		e1 = target.element1.name.to_lower()
-		e2 = target.element2.name.to_lower()
-		msg.append("The target %s's [color=%s]%s[/color] reacted with it's [color=%s]%s[/color] type to make [color=%s]%s[/color]." % [target.name, e1, e1, e2, e2, newType.name.to_lower(), newType.name.to_lower()])
+		e1 = target.element1.get_bb_code_name()
+		e2 = target.element2.get_bb_code_name()
+		msg.append("The target %s's %s reacted with it's %s type to make %s." % [target.name, e1, e2, newType.get_bb_code_name()])
 
 		var vals := ElementManager.get_side_effect(target.element1, target.element2)
 		var buff = vals[0]
@@ -202,7 +202,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		if debuff != null:
 			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 := target.set_element(0, newType)
+		var msg2 := "\n".join(target.set_element(0, newType))
 		target.set_element(1, ElementManager.Blank)
 		if len(msg2) > 0:
 			msg.append(msg2)
