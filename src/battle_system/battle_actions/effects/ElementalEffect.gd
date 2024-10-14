@@ -16,7 +16,7 @@ var element: ElementalType:
 		element = value 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0):
 	# If self.element is applied in the editor, each time this effect is used will have to be made into
 	# a unique instance. Defining it here allows the creation and editing of new attacks easier.
 	# var effect = duplicate()

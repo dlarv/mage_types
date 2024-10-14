@@ -10,11 +10,10 @@ class_name AttackEffect
 @export_multiline var message: String = ""
 
 # virtual
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0):
 	if target != null:
 		return message.replace("{user}", user.name).replace("{target}", target.name)
-	else:
-		return ""
+	return ""
 
 func get_full_name() -> String:
 	return name

@@ -68,6 +68,7 @@ func gain_affinity(element: ElementalType, reason: BonusReason) -> int:
 	return bonus
 
 func lose_affinity(element: ElementalType, amount: int) -> float:
+	if element.is_blank(): return 1
 	var affinity = affinities[element] - amount
 	affinities[element] = max(0, affinity)
 

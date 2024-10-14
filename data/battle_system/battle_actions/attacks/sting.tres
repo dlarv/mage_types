@@ -22,7 +22,7 @@ effect_target = 1
 [sub_resource type="Resource" id="Resource_cl0t4"]
 script = ExtResource("2_7ia5t")
 attack_effect = ExtResource("4_wjx8p")
-chance = 1.0
+chance = 0.5
 effect_target = 1
 
 [resource]

@@ -57,6 +57,8 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	actions.sort_custom(func(a, b): return a.compare_to(b))
 
 	for action in actions:
+		Logger.append_log(Logger.LogType.BATTLE, "\nActors turn: %s" % action.actor.name)
+
 		# Allow opponents to talk to player.
 		if action.action is BattleTalk:
 			for message in action.action.dialog:
@@ -71,8 +73,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if flinch != null:
 			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
 			continue
-
-		action.action.apply_cost(action.actor)
 
 		# Play animation.
 		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
@@ -127,6 +127,8 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			battle_ended.emit()
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
+
+	Logger.append_log(Logger.LogType.BATTLE, "\n\nPlayer is selecting actions...")
 	gui.enable_player_controls(true)
 
 func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:

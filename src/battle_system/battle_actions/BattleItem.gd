@@ -19,6 +19,7 @@ static func create(name: String, details: String="") -> BattleItem:
 
 func apply_effects(user: BattleActor, targets: Array) -> String:
 	var msg := super.apply_effects(user, targets)
+	apply_cost(user)
 
 	for i in range(len(targets)):
 		var target: BattleActor = targets[i]
@@ -34,6 +35,8 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 					if target.is_defeated:
 						msg += "........%s was defeated." % target.ActorName
 						continue
+			else:
+				Logger.append_log(Logger.LogType.BATTLE, "Item(%s) failed. Chance(%f) >= Rand(%f)" % [name, effect.chance, rand])
 	return msg
 
 # Override
@@ -48,7 +51,8 @@ func is_action_available(actor: BattleActor) -> bool:
 	return true
 
 # override
-func apply_cost(user: BattleActor) -> void:
+func apply_cost(user: BattleActor) -> float:
 	if is_consumable:
 		quantity -= 1
 		item_consumed.emit()
+	return 0

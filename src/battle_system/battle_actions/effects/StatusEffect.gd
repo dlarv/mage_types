@@ -8,7 +8,7 @@ class_name StatusEffect
 @export_multiline var description: String 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0):
 	# if target == null or action == null: return name
 	if target == null:
 		target = user

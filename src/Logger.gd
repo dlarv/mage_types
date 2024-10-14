@@ -5,13 +5,17 @@ enum LogType { BATTLE }
 var battle_logs := []
 
 func save_log(type: LogType) -> void:
+	var prefix := "res"
+	if OS.has_feature("standalone"):
+		prefix = "user"
+
 	var path: String
 	var output: String
 	var logName := Time.get_datetime_string_from_system().replace(":", "_")
 
 	match type:
 		LogType.BATTLE:
-			path = "res://logs/battles/%s.txt" % logName
+			path = "%s://logs/battles/%s.txt" % [prefix, logName]
 			output = "\n".join(battle_logs)
 
 	var file := FileAccess.open(path, FileAccess.WRITE)

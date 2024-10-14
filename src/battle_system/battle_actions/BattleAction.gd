@@ -54,8 +54,8 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 			end =  targets[0].name
 	else:
 		end = "the opposing team"
-
+	
 	return "%s used %s on %s." % [ user.name, name, end ]
 
-func apply_cost(user: BattleActor) -> void: 
-	pass
+func apply_cost(user: BattleActor) -> float: 
+	return 0
