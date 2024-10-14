@@ -1,13 +1,14 @@
 extends Resource
 class_name AffinityManager
 
-enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE }
+enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS }
 
 @export_category("Bonus values")
 @export var TRANSMUTATION_BONUS: int = 1
 ## BONUS * #turns
 @export var CONSECUTIVE_BONUS: int = 1
 @export var STRUGGLE_BONUS: int = 2
+@export var BIAS_BONUS: int = 2
 
 @export_category("Affinity Values")
 @export var initial_blue_affinity := 100
@@ -61,6 +62,8 @@ func gain_affinity(element: ElementalType, reason: BonusReason) -> int:
 				bonus = CONSECUTIVE_BONUS * _element_2_turn_counter
 		BonusReason.STRUGGLE:
 			bonus = STRUGGLE_BONUS
+		BonusReason.BIAS:
+			bonus = BIAS_BONUS
 	affinities[element] += bonus
 	return bonus
 
