@@ -4,7 +4,7 @@ extends Formatter
 @export var details_label: RichTextLabel
 @export var icon_parent: Control 
 
-func display(effect: Variant) -> void:
+func display(effect: Variant, limitInfo:=false) -> void:
 	super.display(effect)
 
 	if effect.icon != null:

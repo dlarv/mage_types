@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://crmrwla6yegut"]
+[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://crmrwla6yegut"]
 
-[ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/red.tres" id="1_5eksx"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_uekhm"]
 [ext_resource type="Resource" uid="uid://homntfrobese" path="res://data/battle_system/status_effects/healing_effect.tres" id="3_bafp7"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_16bfl"]
@@ -10,14 +9,15 @@
 script = ExtResource("4_16bfl")
 attack_effect = ExtResource("3_bafp7")
 chance = 1.0
+effect_target = 1
 
 [resource]
 script = ExtResource("5_miml4")
-effects = [SubResource("Resource_gq6w5")]
+effects = Array[ExtResource("4_16bfl")]([SubResource("Resource_gq6w5")])
 cost = 10
 name = "Heal"
 animation = ExtResource("2_uekhm")
-element = ExtResource("1_5eksx")
+_element = "blank"
 priority = 0
 attack_range = 0
 target = 0

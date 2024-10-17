@@ -42,6 +42,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func start_dialog():
 	dialog_started.emit(dialog_ids[current_id], null)
 	
+func set_size(size: Variant, height: float) -> void:
+	if size is float:
+		size = Vector3(size, size, size)
+
+	_collision_shape.scale = size
+	_collision_shape.position.y = height
 
 
 func _physics_process(delta: float) -> void:

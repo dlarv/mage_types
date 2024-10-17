@@ -62,7 +62,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# Allow opponents to talk to player.
 		if action.action is BattleTalk:
 			for message in action.action.dialog:
-				gui.display_message(message)
+				await gui.display_message(message)
 			continue
 
 		# This means a character is defeated.

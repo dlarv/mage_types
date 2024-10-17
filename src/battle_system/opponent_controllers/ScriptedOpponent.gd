@@ -20,7 +20,19 @@ func get_actions(otherTeam: Array) -> Array:
 		indices[i] %= len(actor.attacks)
 		var index = indices[i]
 
-		actions.append(ActorAction.new(actor, actor.attacks[index], [ otherTeam.pick_random() ], TEAM_INDEX))
+		var attack = actor.attacks[index]
+		if attack is BattleTalk:
+			actions.append(ActorAction.new(actor, attack, [ ], TEAM_INDEX))
+			if not attack.repeat:
+				attack.already_said = true
+				actor.attacks.remove_at(index)
+			else:
+				indices[i] += 1
+				indices[i] %= len(actor.attacks)
+				index += 1
+			attack = actor.attacks[index]
+
+		actions.append(ActorAction.new(actor, attack, [ otherTeam.pick_random() ], TEAM_INDEX))
 	
 	return actions
 

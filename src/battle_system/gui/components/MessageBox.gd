@@ -13,7 +13,7 @@ func display_message_blocking(msg: String) -> void:
 	append_text(msg)
 	await button.pressed
 
-func display_message_non_blocking(obj) -> void:
+func display_message_non_blocking(obj: Variant, limitInfo:=false) -> void:
 	clear_message()
 	if obj is String:
 		append_text(obj)
@@ -28,7 +28,7 @@ func display_message_non_blocking(obj) -> void:
 		format_status_effect(obj)
 
 	elif obj is BattleActor:
-		format_battle_actor(obj)
+		format_battle_actor(obj, limitInfo)
 
 
 func format_attack(attack: Attack) -> void:
@@ -76,7 +76,7 @@ func format_status_effect(effect: StatusEffect) -> void:
 	append_text(str(effect.duration))
 	newline()
 
-func format_battle_actor(actor: BattleActor) -> void:
+func format_battle_actor(actor: BattleActor, limitInfo: bool) -> void:
 	append_title(actor.name)
 	append_elemental_type(actor.element1, "Primary Element")
 	append_elemental_type(actor.element2, "Secondary Element")
@@ -95,9 +95,7 @@ func format_battle_actor(actor: BattleActor) -> void:
 	append_text("%d/%d" % [ actor.current_hp, actor.hp ])
 	newline()
 
-	append_header("Mana")
-	append_text(str(actor.current_mana))
-	newline()
+	if limitInfo: return
 
 	append_header("Melee Attack")
 	append_text(str(actor.melee_attack))

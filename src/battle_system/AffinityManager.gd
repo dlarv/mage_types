@@ -20,16 +20,6 @@ enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS }
 @export var initial_green_affinity := 100
 @export var initial_cyan_affinity := 100
 
-@export_category("Bias Values")
-@export var blue_threshold := 50
-@export var purple_threshold := 50
-@export var magenta_threshold := 50
-@export var red_threshold := 50
-@export var orange_threshold := 50
-@export var yellow_threshold := 50
-@export var green_threshold := 50
-@export var cyan_threshold := 50
-
 var affinities := {}
 var _element_1: ElementalType
 var _element_2: ElementalType

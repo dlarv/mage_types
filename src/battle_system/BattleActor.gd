@@ -25,13 +25,6 @@ var hp: int = 100:
 		hp = value
 		current_hp = value
 var current_hp: int = 100
-@export
-var mana: int:
-	get: return mana
-	set(value):
-		mana = value
-		current_mana = value
-var current_mana: int
 @export var affinity_manager = AffinityManager.new()
 
 
@@ -70,7 +63,7 @@ var element2: ElementalType = ElementManager.Blank:
 var elemental_bias : ElementalType = ElementManager.Blank
 @export
 # Attack[]
-var attacks: Array[Attack] = []
+var attacks: Array[BattleAction] = []
 @export
 var sprite_path: PackedScene
 var sprite : Sprite = null
@@ -186,6 +179,9 @@ func has_status_effect(effect: StatusEffect) -> bool:
 ## If amount == 0, character had no affinity to begin with
 func lose_affinity(element: ElementalType, amount: int) -> float:
 	return affinity_manager.lose_affinity(element, amount)
+
+func get_affinity_for(element: ElementalType) -> float:
+	return affinity_manager.affinities[element]
 
 func try_revert_to_bias()-> bool:
 	return false

@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="1_a3stx"]
 [ext_resource type="Script" path="res://src/overworld/characters/actors/DialogEnemy.gd" id="2_ghd1f"]
 
-[node name="DialogEnemyActor" instance=ExtResource("1_a3stx")]
+[node name="AggressiveDialogActor" instance=ExtResource("1_a3stx")]
 script = ExtResource("2_ghd1f")

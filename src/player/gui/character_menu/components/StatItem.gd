@@ -74,8 +74,7 @@ func _increment_stat(direction: int) -> void:
 
 func set_value(actor: BattleActor) -> void:
 	if stat == "MANA":
-		value_1 = actor.mana
-		value_2 = actor.current_mana
+		pass
 	elif stat == "HP":
 		value_1 = actor.hp
 		value_2 = actor.current_hp
@@ -83,8 +82,6 @@ func set_value(actor: BattleActor) -> void:
 		value_1 = actor.get_stat(StatManager.Stat.get(stat))
 
 func _on_value_1_text_changed(newText: String) -> void:
-	# From what I can tell, this should remove non-numeric symbols from string,
-	# but it doesn't seem to do that.
 	_number_label.release_focus()
 	value_1 = newText.to_int()
 	stat_modified.emit(stat, value_1)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/battle_system/gui/components/PlayerControls.gd" id="1_5ol5c"]
 [ext_resource type="PackedScene" uid="uid://b0ctqpfxrh7c3" path="res://src/battle_system/gui/components/three_state_button.tscn" id="2_vspmx"]
 
-[node name="PlayerControls" type="PanelContainer" node_paths=PackedStringArray("controlPanel", "attacksPanel", "itemsScroller", "characterScroller", "nextButton", "prevButton", "endButton", "blockingPanel")]
+[node name="PlayerControls" type="PanelContainer" node_paths=PackedStringArray("control_panel", "attacks_panel", "items_scroller", "character_scroller", "next_button", "prev_button", "end_button", "blocking_panel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,15 +11,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_5ol5c")
-threeStateButton = ExtResource("2_vspmx")
-controlPanel = NodePath("VBoxContainer/TabContainer")
-attacksPanel = NodePath("VBoxContainer/TabContainer/Attacks_Tab/TabContainer")
-itemsScroller = NodePath("VBoxContainer/TabContainer/Items_Tab/ScrollContainer/VBoxContainer")
-characterScroller = NodePath("VBoxContainer/TabContainer/Characters_Tab/ScrollContainer/VBoxContainer")
-nextButton = NodePath("VBoxContainer/CharacterSelector/Next_Button")
-prevButton = NodePath("VBoxContainer/CharacterSelector/Prev_Button")
-endButton = NodePath("VBoxContainer/CharacterSelector/EndTurn_Button")
-blockingPanel = NodePath("Blocking_Panel")
+three_state_button = ExtResource("2_vspmx")
+control_panel = NodePath("VBoxContainer/TabContainer")
+attacks_panel = NodePath("VBoxContainer/TabContainer/Attacks_Tab/TabContainer")
+items_scroller = NodePath("VBoxContainer/TabContainer/Items_Tab/ScrollContainer/VBoxContainer")
+character_scroller = NodePath("VBoxContainer/TabContainer/Characters_Tab/ScrollContainer/VBoxContainer")
+next_button = NodePath("VBoxContainer/CharacterSelector/Next_Button")
+prev_button = NodePath("VBoxContainer/CharacterSelector/Prev_Button")
+end_button = NodePath("VBoxContainer/CharacterSelector/EndTurn_Button")
+blocking_panel = NodePath("Blocking_Panel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

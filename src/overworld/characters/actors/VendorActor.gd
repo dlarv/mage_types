@@ -1,3 +1,4 @@
+@tool
 extends StoryActor
 class_name VendorActor
 
@@ -6,3 +7,4 @@ class_name VendorActor
 # Override
 func start_dialog():
 	dialog_started.emit(dialog_ids[current_id], self)
+

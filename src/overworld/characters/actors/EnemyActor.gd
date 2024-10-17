@@ -23,6 +23,11 @@ func _enter_tree():
 	_collision_shape = get_node("CollisionShape3D")
 	_collision_shape.disabled = not fight_on_collision
 	
+func set_size(size: Variant, height: float) -> void:
+	if size is float:
+		size = Vector3(size, size, size)
+	_collision_shape.scale = size
+	_collision_shape.position.y = height
 
 func _on_body_exited(body:Node3D) -> void:
 	if can_process() and body is Player:

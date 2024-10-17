@@ -8,7 +8,7 @@ func append_elemental_color(label: RichTextLabel, element: ElementalType) -> voi
 	label.append_text(element.name)
 	label.pop() # End color
 
-func display(obj: Variant) -> void:
+func display(obj: Variant, limitInfo:=false) -> void:
 	show()
 
 func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel) -> int:

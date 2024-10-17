@@ -8,7 +8,7 @@ extends Formatter
 @export var req_label: RichTextLabel
 @export var details_label: RichTextLabel
 
-func display(obj: Variant) -> void:
+func display(obj: Variant, limitInfo:=false) -> void:
 	super.display(obj)
 	req_label.clear()
 	details_label.clear()

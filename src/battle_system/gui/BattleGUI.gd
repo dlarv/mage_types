@@ -63,7 +63,7 @@ func display_message(msg: Variant) -> void:
 	_accept_messages = true
 
 
-func display_message_non_blocking(msg: Variant) -> void:
+func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	if not _accept_messages: return
 	var msgLog = msg
 
@@ -74,7 +74,7 @@ func display_message_non_blocking(msg: Variant) -> void:
 		msgLog = "Player viewed %s." % msg.name
 
 	Logger.append_log(Logger.LogType.BATTLE, msgLog)
-	messageBox.display_message_non_blocking(msg)
+	messageBox.display_message_non_blocking(msg, limitInfo)
 
 
 func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
@@ -165,7 +165,7 @@ func _on_turn_ended(tryRunningAway: bool) -> void:
 		_selected_actions.resize(len(allies))
 	
 
-func _on_show_info(action) -> void:
+func _on_show_info(action: Variant, limitInfo:=false) -> void:
 	var msg = "Empty"
 	if action is BattleAction:
 		msg = action.name
@@ -173,5 +173,4 @@ func _on_show_info(action) -> void:
 		msg = action.name
 	print(msg)
 	
-	display_message_non_blocking(action)
-
+	display_message_non_blocking(action, limitInfo)

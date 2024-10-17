@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/ThreeStateButton.gd" id="1_qafsp"]
 
-[node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("button")]
+[node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("button", "cost_label")]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 3
 anchors_preset = 15
@@ -18,8 +18,31 @@ selected_1_modulate_color = Color(0.442911, 0.442911, 0.442911, 1)
 selected_2_modulate_color = Color(0, 1, 0, 1)
 locked_modulate_color = Color(0.259294, 0.259294, 0.259294, 1)
 button = NodePath("Button")
+cost_label = NodePath("MarginContainer/RichTextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Text"
+fit_content = true
+autowrap_mode = 0
 
 [node name="Button" type="Button" parent="."]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

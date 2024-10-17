@@ -17,15 +17,15 @@ func display_message_blocking(msg: String) -> void:
 	append_text(msg)
 	await button.pressed
 
-func display_message_non_blocking(obj: Variant) -> void:
+func display_message_non_blocking(obj: Variant, limitInfo:=false) -> void:
 	clear_message()
 	button.hide()
 	if obj is String:
 		append_text(obj)
 	else:
-		format_msg(obj)
+		format_msg(obj, limitInfo)
 
-func format_msg(obj: Variant) -> void:
+func format_msg(obj: Variant, limitInfo: bool) -> void:
 	tab_container.show()
 	if obj is Attack:
 		attack_formatter.display(obj)
@@ -34,7 +34,7 @@ func format_msg(obj: Variant) -> void:
 	elif obj is StatusEffect:
 		status_effect_formatter.display(obj)
 	elif obj is BattleActor:
-		actor_formatter.display(obj)
+		actor_formatter.display(obj, limitInfo)
 
 func _on_link_clicked(obj: Variant) -> void:
 	display_message_non_blocking(obj)
@@ -98,7 +98,7 @@ func format_status_effect(effect: StatusEffect) -> void:
 	append_text(str(effect.duration))
 	newline()
 
-func format_battle_actor(actor: BattleActor) -> void:
+func format_battle_actor(actor: BattleActor, limitInfo: bool) -> void:
 	append_title(actor.name)
 	append_elemental_type(actor.element1, "Primary Element")
 	append_elemental_type(actor.element2, "Secondary Element")
@@ -111,6 +111,7 @@ func format_battle_actor(actor: BattleActor) -> void:
 
 
 	newline()
+	if limitInfo: return
 	append_header("Stats")
 	newline()
 	append_header("Hp")

@@ -9,6 +9,7 @@
 script = ExtResource("4_8csvf")
 attack_effect = ExtResource("3_8ulbk")
 chance = 0.8
+effect_target = 1
 
 [resource]
 script = ExtResource("5_butt7")
@@ -16,7 +17,7 @@ effects = Array[ExtResource("4_8csvf")]([SubResource("Resource_gq6w5")])
 cost = 10
 name = "Daze"
 animation = ExtResource("2_qxfnu")
-_element = "blank"
+_element = "magenta"
 priority = 0
 attack_range = 1
 target = 3

@@ -16,7 +16,7 @@ extends Formatter
 @export var evasion_label: Label
 @export var attacks_label: RichTextLabel
 
-func display(obj: Variant) -> void:
+func display(obj: Variant, limitInfo:=false) -> void:
 	super.display(obj)
 	name_label.text = obj.name
 	element1_icon.element = obj.element1

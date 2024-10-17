@@ -9,7 +9,7 @@ extends Formatter
 @export var details: RichTextLabel
 @export var effects_label: RichTextLabel
 
-func display(attack: Variant) -> void:
+func display(attack: Variant, limitInfo:=false) -> void:
 	super.display(attack)
 	name_label.text = attack.name
 	

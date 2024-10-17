@@ -52,7 +52,8 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 
 # override
 func is_action_available(actor: BattleActor) -> bool:
-	return actor.current_mana >= cost
+	return true
+	# return actor.current_mana >= cost
 
 # override
 func apply_cost(user: BattleActor) -> float:
