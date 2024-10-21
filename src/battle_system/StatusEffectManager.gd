@@ -15,7 +15,7 @@ var poison: float:
 	get:
 		var effect = statuses.get(POISON_KEY)
 		if effect != null:
-			if randf_range(0.0, 1.0) <= effect.chance:
+			if randf() <= effect.chance:
 				return effect.strength
 		return 0
 
@@ -23,17 +23,19 @@ var healing: float:
 	get:
 		var effect = statuses.get(HEALING_KEY)
 		if effect != null:
-			if randf_range(0.0, 1.0) <= effect.chance:
+			if randf() <= effect.chance:
 				return effect.strength
 		return 0
 
 var blocking: StatusEffect = null
 
+var phobias := {}
+
 # StatusEffect[]
-var _effects_to_remove = []
+var _effects_to_remove := []
 
 # Dict<string, StatusEffect>
-var statuses = {}
+var statuses := {}
 
 func add_status(status: StatusEffect) -> void:
 	match status.name:
@@ -42,6 +44,12 @@ func add_status(status: StatusEffect) -> void:
 				blocking.combine(status)
 			else:
 				blocking = status
+		PHOBIC_KEY:
+			var key := "%s_%s" % [status.element, status.name]
+			if statuses.has(key):
+				statuses[key].combine(status)
+			else:
+				statuses[key] = status
 		_:
 			if statuses.has(status.name):
 				statuses[status.name].combine(status)
@@ -52,6 +60,9 @@ func get_status(status: StatusEffect) -> StatusEffect:
 	match status.name:
 		BLOCKING_KEY:
 			return blocking
+		PHOBIC_KEY:
+			var key := "%s_%s" % [status.element, status.name]
+			return statuses.get(key)
 		_:
 			return statuses.get(status.name)
 
@@ -78,20 +89,19 @@ func check_flinching() -> StatusEffect:
 func check_dissonant() -> StatusEffect:
 	return statuses.get(DISSONANT_KEY)
 
-func check_blocking() -> bool:
+func remove_blocking() -> void:
 	if blocking != null:
 		blocking.duration -= 1
 		if blocking.is_expired():
-			_effects_to_remove.add(blocking)
+			_effects_to_remove.append(blocking)
 			blocking = null
-		return true
-	return false
 
 func check_stasis() -> StatusEffect:
 	return statuses.get(STASIS_KEY)
 
 func check_phobic(element) -> ElementalEffect:
-	var effect = statuses.get(PHOBIC_KEY)
+	var key := "%s_%s" % [element, PHOBIC_KEY]
+	var effect = statuses.get(key)
 	if effect != null and effect.element == element:
 		return effect
 	return null

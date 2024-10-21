@@ -85,13 +85,19 @@ func enable_transmutation_hint(attackElement: ElementalType) -> void:
 
 
 func add_status_effect(effect: StatusEffect) -> void:
-	if(icons.has(effect.name)): return
+	var key := effect.name
+	if effect.name == StatusEffectManager.PHOBIC_KEY:
+		key = "%s_%s" % [effect.element, StatusEffectManager.PHOBIC_KEY]
+
+	if(icons.has(key)): return
+
 	var icon = effect.instantiate_icon()
 	status_effect_icons.add_child(icon)
+	icons[key] = icon
+
 	var button = icon.get_node("Button")
 	button.pressed.connect(func(): status_effect_icon_pressed.emit(effect))
 
-	icons[effect.name] = icon
 
 func remove_status_effects(effects) -> void:
 	for effect in effects:

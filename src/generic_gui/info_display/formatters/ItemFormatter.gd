@@ -13,21 +13,29 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	req_label.clear()
 	details_label.clear()
 
-	if obj is KeyItem:
-		display_key_item(obj)
-	elif obj is SpellScroll:
-		display_spell_scroll(obj)
-	elif obj is RegularItem:
-		display_regular_item(obj)
-	elif obj is Equipment:
-		display_equipment(obj)
+	var quantity := 0
+	var item: Variant
+	if obj is ItemSlot:
+		item = obj.item
+		quantity = obj.quantity
 	else:
-		display_battle_item(obj)
+		item = obj
 
-func display_regular_item(item: Item) -> void:
+	if item is KeyItem:
+		display_key_item(item)
+	elif item is SpellScroll:
+		display_spell_scroll(item)
+	elif item is RegularItem:
+		display_regular_item(item, quantity)
+	elif item is Equipment:
+		display_equipment(item)
+	else:
+		display_battle_item(item)
+
+func display_regular_item(item: Item, quantity: int) -> void:
 	id_label.show()
 	id_label.text = "#%d" % item.id
-	name_label.text = "%s (x%d)" % [ item.name, item.quantity ]
+	name_label.text = "%s (x%d)" % [ item.name, quantity ]
 
 	is_consumable_vbox.show()
 	is_consumable_box.button_pressed = item.is_consumable

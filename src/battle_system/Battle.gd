@@ -1,18 +1,16 @@
 extends Node
 class_name Battle 
 
-signal battle_ended()
+signal battle_ended(playerWasDefeated: bool)
 
 # BattleActor[]
 var enemies := []
 var allies := []
 
-@export
-var gui: BattleGUI
-@export
-var ai: OpponentController 
-@export
-var _matchup_manager: CanvasLayer
+@export var gui: BattleGUI
+@export var ai: OpponentController 
+@export var _matchup_manager: CanvasLayer
+@export var _dialog_box: DialogueBox
 
 var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
@@ -23,6 +21,10 @@ func _unhandled_input(event) -> void:
 		Logger.save_log(Logger.LogType.BATTLE)
 	if event.is_action_pressed("toggle_player_menu"):
 		_matchup_manager.visible = !_matchup_manager.visible
+	if event is InputEventKey and _matchup_manager.visible and event.keycode == KEY_ESCAPE:
+		get_window().set_input_as_handled()
+		_matchup_manager.visible = false 
+			
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
 	ElementManager.load_from_default_csv(Settings.use_simplified_effects)
@@ -35,35 +37,43 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
 
 	ai.setup(enemies)
+	battle_ended.connect(ai._on_battle_ended)
 	self.ai = ai	
+	if ai.dialog_resource != null:
+		_dialog_box.data = ai.dialog_resource
+
 	gui.setup(allies, allyItems, enemies)
+	await dialog(false)
+	_dialog_box.skip_input_action = "interact"
+
 
 func on_player_actions_selected(allyActions: Array) -> void:
+	_dialog_box.stop()
+	gui.enable_player_controls(false)
+
 	_turn_counter += 1
+	gui.turn_counter = _turn_counter
+
 	Logger.append_log(Logger.LogType.BATTLE, "\nTurn %d" % _turn_counter)
 
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
 		await gui.display_message("You ran away.")
-		battle_ended.emit()
+		battle_ended.emit(true)
 		return
 
-	gui.enable_player_controls(false)
+	# Get actions for opponent's team.
 	var enemyActions = ai.get_actions(allies)
 	var actions = allyActions
 	actions.append_array(enemyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	actions.sort_custom(func(a, b): return a.compare_to(b))
+	actions.sort_custom(func(a, b): return ActorAction.compare_to(a, b))
+
+	await dialog(false)
 
 	for action in actions:
 		Logger.append_log(Logger.LogType.BATTLE, "\nActors turn: %s" % action.actor.name)
-
-		# Allow opponents to talk to player.
-		if action.action is BattleTalk:
-			for message in action.action.dialog:
-				await gui.display_message(message)
-			continue
 
 		# This means a character is defeated.
 		if action == null:
@@ -83,13 +93,13 @@ func on_player_actions_selected(allyActions: Array) -> void:
 				or action.action.target == BattleAction.TargetType.ALLY \
 				or action.action.target == BattleAction.TargetType.ALLIES):
 			targetTeamIndex = action.team_index
-			teamDisplay =  gui.ally_display_parent  if action.team_index == 0  else  gui.enemy_display_parent
+			teamDisplay =  gui.ally_display_parent if action.team_index == 0  else  gui.enemy_display_parent
 		# Target opposite team from user.
 		else:
 			targetTeamIndex = (action.team_index + 1) % 2
-			teamDisplay =  gui.ally_display_parent  if action.team_index == 1  else  gui.enemy_display_parent
+			teamDisplay = gui.ally_display_parent if action.team_index == 1  else  gui.enemy_display_parent
 
-		var targetPosition = gui.get_actor_display_position( targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
+		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
 		var animation = action.action.play_animation(userPosition, targetPosition)
 		add_child(animation)
@@ -99,6 +109,10 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		# Display message and await input.
 		await gui.display_message(msg)
+		
+		# Check if battle should end.
+		var endBattle := await _check_if_battle_ended()
+		if endBattle: return
 
 		# Calculate target transmutations.
 		for target in action.targets:
@@ -117,18 +131,32 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		msg = "\n".join(action.actor.resolve_end_of_turn())
 		if len(msg) > 0:
 			await gui.display_message(msg)
-
-		# Check if battle should end.
-		if _defeated_allies == len(allies):
-			await gui.display_message("You were defeated...")
-			battle_ended.emit()
-		elif _defeated_enemies == len(enemies):
-			await gui.display_message("You won!")
-			battle_ended.emit()
+			# Check if battle should end.
+			# e.g. if an actor was defeated by poison.
+			endBattle = await _check_if_battle_ended()
+			if endBattle: return
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
 
+	# Revert characters to biases.
+	var biasMsg := []
+	for ally in allies:
+		var msg = ally.try_revert_to_bias()
+		if len(msg) > 0:
+			biasMsg.append(msg)
+	if len(biasMsg) > 0:
+		await gui.display_message(biasMsg)
+
+	biasMsg = []
+	for enemy in enemies:
+		var msg = enemy.try_revert_to_bias()
+		if len(msg) > 0:
+			biasMsg.append(msg)
+	if len(biasMsg) > 0:
+		await gui.display_message(biasMsg)
+
 	Logger.append_log(Logger.LogType.BATTLE, "\n\nPlayer is selecting actions...")
+	await dialog(true)
 	gui.enable_player_controls(true)
 
 func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:
@@ -210,3 +238,21 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 			msg.append(msg2)
 		
 		await gui.display_message(msg)
+
+func dialog(isAfterTurn: bool) -> void:
+	var dialogId = ai.get_next_dialog_id(_turn_counter, isAfterTurn)
+
+	if len(dialogId) > 0:
+		_dialog_box.start(dialogId)
+		await _dialog_box.dialogue_ended
+
+func _check_if_battle_ended() -> bool:
+	if _defeated_allies == len(allies):
+		await gui.display_message("You were defeated...")
+		battle_ended.emit(true)
+		return true
+	elif _defeated_enemies == len(enemies):
+		await gui.display_message("You won!")
+		battle_ended.emit(false)
+		return true
+	return false

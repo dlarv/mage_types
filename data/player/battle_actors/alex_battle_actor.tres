@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=13 format=3 uid="uid://bh5734pj5bgq3"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=11 format=3 uid="uid://bh5734pj5bgq3"]
 
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_2ct8q"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_s6y24"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="2_fwsf3"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_h7t3r"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_vrqin"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_acnq6"]
 [ext_resource type="Resource" uid="uid://da27irgqjb8ob" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_attack_up.tres" id="4_kq6mw"]
 [ext_resource type="Resource" uid="uid://j7kja5ijt2a" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_defense_down.tres" id="5_yatqe"]
@@ -25,13 +24,6 @@ initial_yellow_affinity = 0
 initial_green_affinity = 0
 initial_cyan_affinity = 0
 
-[sub_resource type="Resource" id="Resource_5ne4w"]
-script = ExtResource("2_vrqin")
-name = "Blank"
-main_color = Color(0.5, 0.5, 0.5, 1)
-text_color = Color(0, 0, 0, 1)
-color_palette = Array[Color]([])
-
 [sub_resource type="Resource" id="Resource_w38wo"]
 script = ExtResource("8_cqnen")
 _base_melee_attack = 100.0
@@ -49,5 +41,6 @@ hp = 300
 affinity_manager = SubResource("Resource_31xdh")
 _element1 = "blue"
 _element2 = "blank"
-elemental_bias = SubResource("Resource_5ne4w")
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
 attacks = Array[ExtResource("2_h7t3r")]([ExtResource("2_fwsf3"), ExtResource("3_acnq6"), ExtResource("4_kq6mw"), ExtResource("5_yatqe")])

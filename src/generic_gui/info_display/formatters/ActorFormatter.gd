@@ -18,20 +18,27 @@ extends Formatter
 
 func display(obj: Variant, limitInfo:=false) -> void:
 	super.display(obj)
+
+	effects_label.clear()
+	cost_label.clear()
+	attacks_label.clear()
+
+	# Basic info.
 	name_label.text = obj.name
 	element1_icon.element = obj.element1
 	element2_icon.element = obj.element2
 	bias_icon.element = obj.elemental_bias
-
 	hp_label.text = "%d/%d" % [obj.current_hp, obj.hp]
-	# cost_label.text = "%d/%d" % [obj.current_mana, obj.mana]
-	cost_label.clear()
+
+	# Display affinities.
 	for element in ElementManager.elements:
 		append_elemental_color(cost_label, element)
 		cost_label.append_text(": %d" % obj.affinity_manager.affinities[element])
 		cost_label.newline()
 
+	display_stats(obj)
 
+	# Status effects.
 	var effects = obj.list_status_effects()
 	if len(effects) == 0:
 		status_effect_vbox.hide()
@@ -50,5 +57,34 @@ func display(obj: Variant, limitInfo:=false) -> void:
 		attacks_label.pop() # Pop meta
 		attacks_label.newline()
 
+func display_stats(actor: BattleActor) -> void:
+	var template := "%d = (%d) * (%d%%)"
+	var statManager := actor.stat_manager
+	var mod: float
+	var base: float
+	var actual: float
 
+	base = statManager.get_base_stat(StatManager.Stat.MELEE_ATTACK)
+	mod = statManager.get_stat_mod(StatManager.Stat.MELEE_ATTACK) * 100
+	actual = statManager.melee_attack
+	melee_attack_label.text = template % [int(actual), int(base), int(mod)]
+
+	base = statManager.get_base_stat(StatManager.Stat.RANGED_ATTACK)
+	mod = statManager.get_stat_mod(StatManager.Stat.RANGED_ATTACK) * 100
+	actual = statManager.ranged_attack
+	ranged_attack_label.text = template % [int(actual), int(base), int(mod)]
+
+	base = statManager.get_base_stat(StatManager.Stat.MELEE_DEFENSE)
+	mod = statManager.get_stat_mod(StatManager.Stat.MELEE_DEFENSE) * 100
+	actual = statManager.melee_defense
+	melee_defense_label.text = template % [int(actual), int(base), int(mod)]
 	
+	base = statManager.get_base_stat(StatManager.Stat.RANGED_DEFENSE)
+	mod = statManager.get_stat_mod(StatManager.Stat.RANGED_DEFENSE) * 100
+	actual = statManager.ranged_defense
+	ranged_defense_label.text = template % [int(actual), int(base), int(mod)]
+
+	base = statManager.get_base_stat(StatManager.Stat.SPEED)
+	mod = statManager.get_stat_mod(StatManager.Stat.SPEED) * 100
+	actual = statManager.speed
+	speed_label.text = template % [int(actual), int(base), int(mod)]

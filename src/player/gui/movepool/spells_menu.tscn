@@ -67,11 +67,9 @@ layout_mode = 2
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 
-[node name="AcceptDialog2" type="AcceptDialog" parent="."]
-auto_translate_mode = 1
-
 [connection signal="set_spell_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot1" to="." method="_on_set_spell_requested"]
 [connection signal="show_info_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot1" to="." method="_on_show_info" binds= [true]]
+[connection signal="set_spell_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot2" to="." method="_on_set_spell_requested"]
 [connection signal="show_info_requested" from="HBoxContainer/TabContainer/MovepoolSubmenu" to="." method="_on_show_info" binds= [false]]
 [connection signal="canceled" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_canceled"]
 [connection signal="replace_spell_requested" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_replace_spell_requested"]

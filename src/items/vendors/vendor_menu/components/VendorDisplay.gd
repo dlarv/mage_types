@@ -9,8 +9,8 @@ var _available_funds: int = 0
 var _max_quantity: int = BASE_MAX_QUANTITY
 var _current_quantity: int = 0
 
-func display(item: VendorItem, inventory: Inventory) -> void:
-	_available_funds = inventory.money
+func display(item: VendorItem) -> void:
+	_available_funds = Inventory.money
 	_current_quantity = 0
 	quantity_display.text = ""
 
@@ -23,7 +23,7 @@ func display(item: VendorItem, inventory: Inventory) -> void:
 	var costLimit: int 
 	if item.cost != 0:
 		@warning_ignore("integer_division")
-		costLimit = inventory.money / item.cost
+		costLimit = Inventory.money / item.cost
 	else:
 		costLimit = BASE_MAX_QUANTITY
 

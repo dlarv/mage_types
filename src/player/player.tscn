@@ -13,6 +13,7 @@ axis_lock_angular_z = true
 script = ExtResource("1_jd6jo")
 battle_actor = ExtResource("2_2jxe0")
 model = NodePath("player")
+run_speed = 60.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_f637b")

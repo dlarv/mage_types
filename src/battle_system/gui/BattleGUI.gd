@@ -8,12 +8,18 @@ signal actions_selected(actions)
 @export var enemy_display_parent: TeamDisplay 
 @export var playerControls: PlayerControls 
 @export var sprite_parent: Node2D
+@export var turn_counter_display: Label
 
 # BattleActor[]
 var allies := []
 var enemies := []
 # String[]
 var messages := []
+var turn_counter: 
+	set(value):
+		turn_counter = value
+		if turn_counter_display == null: return
+		turn_counter_display.text = "Turn %d" % value
 
 # ActorAction[]
 var _selected_actions := []
@@ -23,7 +29,6 @@ var _accept_messages := true
 func setup(allies: Array, items: Array, enemies: Array) -> void:
 	init_allies(allies)
 	init_enemies(enemies)
-	# AddItemsToInventory(items)
 	playerControls.setup(allies, items, enemies)
 	_finished_setup = true
 

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://m330ba6ofdki"
+
+[deps]
+
+files=["res://data/elemental_types/matchup_files/v3.Red.translation", "res://data/elemental_types/matchup_files/v3.Magenta.translation", "res://data/elemental_types/matchup_files/v3.7.translation"]
+
+source_file="res://data/elemental_types/matchup_files/v3.csv"
+dest_files=["res://data/elemental_types/matchup_files/v3.Red.translation", "res://data/elemental_types/matchup_files/v3.Magenta.translation", "res://data/elemental_types/matchup_files/v3.7.translation"]
+
+[params]
+
+compress=true
+delimiter=0

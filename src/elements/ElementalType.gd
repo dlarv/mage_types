@@ -16,7 +16,9 @@ func _init():
 func get_text_color()-> Color:
 	return text_color
 
-func get_bb_code_name() -> String:
+func get_bb_code_name(useAltColor:=false) -> String:
+	if useAltColor:
+		return "[color=%s]%s[/color]" % [text_color.to_html(), name]
 	return "[color=%s]%s[/color]" % [name, name]
 
 func is_blank():

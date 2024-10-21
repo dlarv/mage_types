@@ -8,6 +8,9 @@ extends Node3D
 @export var vendor_menu: VendorMenu
 
 @export var _player: Player
+@export var _rewards: Array[SpellScroll]
+
+var _reward_already_triggered := false
 
 func _ready():
 	for actor in get_tree().get_nodes_in_group("dialog"):
@@ -31,10 +34,23 @@ func _on_dialog_started(dialogId: String, data: Variant) -> void:
 	var val = await dialog_box.dialogue_signal
 	match val:
 		"combat_initiated":
-			_on_player_battle_started(_player.party, _player.inventory.get_battle_items(), data)
+			_on_player_battle_started(_player.party, Inventory.get_battle_items(), data)
 		"menu_opened":
 			vendor_menu.open_menu(data)
 			await vendor_menu.menu_closed
 			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 
 			world.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func _on_reward_trigger_body_entered(body:Node3D) -> void:
+	if _reward_already_triggered or not body is Player: return
+	print("Player was rewarded")
+	_reward_already_triggered = true
+
+	var actor: BattleActor = body.battle_actor
+	var i = 1
+	for reward in _rewards:
+		actor.learn_spell(i, reward)
+		(body as Player).player_menu.characters_menu.player_screen._spells_menu.set_moveset_slot(reward, i)
+		i += 1

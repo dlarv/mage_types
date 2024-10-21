@@ -5,15 +5,23 @@
 [ext_resource type="PackedScene" uid="uid://gtkhgnidq78a" path="res://src/battle_system/gui/components/player_controls.tscn" id="2_s8f4v"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="4_k2fdd"]
 
-[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "sprite_parent")]
+[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "sprite_parent", "turn_counter_display")]
 script = ExtResource("1_ik08k")
 messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
 ally_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay")
 enemy_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/TeamDisplay")
 playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 sprite_parent = NodePath("SpriteParent")
+turn_counter_display = NodePath("CanvasLayer/TurnCounter")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bg" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -50,6 +58,11 @@ layout_mode = 2
 [node name="InfoDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("4_k2fdd")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TurnCounter" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Turn 1"
 
 [node name="SpriteParent" type="Node2D" parent="."]
 

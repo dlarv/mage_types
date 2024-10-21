@@ -238,7 +238,7 @@ func _process(delta):
 
 
 func _input(event):
-	if is_running() and Input.is_action_just_pressed(skip_input_action):
+	if is_running() and Input.is_action_just_released(skip_input_action):
 		if _wait_effect:
 			_wait_effect.skip = true
 		_on_wait_finished()

@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://src/overworld/characters/actors/StoryActor.gd" id="1_txya0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uvoks"]
-radius = 1.5
+radius = 5.0
 
-[node name="StoryActor" type="Area3D" groups=["dialog"]]
+[node name="StoryActor" type="Area3D" node_paths=PackedStringArray("_collision_shape") groups=["dialog"]]
 script = ExtResource("1_txya0")
+_collision_shape = NodePath("DialogCollider")
 shape = SubResource("SphereShape3D_uvoks")
 offset = Vector3(-0.3, 4, 0)
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1yaqlajp62he"]
+
+[ext_resource type="PackedScene" uid="uid://dea7tl3imqnuh" path="res://src/overworld/characters/npc.tscn" id="1_re21b"]
+[ext_resource type="PackedScene" uid="uid://3g07bhv6nc63" path="res://src/overworld/characters/actors/aggressive_story_actor.tscn" id="2_amt5j"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="3_nw86a"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="4_qwk0s"]
+
+[node name="Boss" instance=ExtResource("1_re21b")]
+size = 1.0
+
+[node name="blob" parent="blob2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="AggressiveDialogActor" parent="." index="1" node_paths=PackedStringArray("enemy_actor") instance=ExtResource("2_amt5j")]
+enemy_actor = NodePath("../EnemyActor")
+
+[node name="EnemyActor" parent="." index="2" node_paths=PackedStringArray("_collision_shape", "ai") instance=ExtResource("3_nw86a")]
+_collision_shape = NodePath("CollisionShape3D")
+ai = NodePath("../Controller")
+
+[node name="Controller" type="Node" parent="." index="3"]
+script = ExtResource("4_qwk0s")
+
+[editable path="blob2"]

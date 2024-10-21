@@ -1,0 +1,174 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://d27gkasg854gk"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_piqvt"]
+
+[resource]
+script = ExtResource("1_piqvt")
+starts = {
+"END_1": &"0_2",
+"START_1": &"0_1",
+"START_2": &"0_3",
+"VENDOR_0": &"0_4"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-680, -360),
+"start_id": "START_1"
+},
+"0_2": {
+"link": &"1_4",
+"offset": Vector2(-840, 20),
+"start_id": "END_1"
+},
+"0_3": {
+"link": &"1_6",
+"offset": Vector2(-801.304, 512.656),
+"start_id": "START_2"
+},
+"0_4": {
+"link": &"1_9",
+"offset": Vector2(-589.454, -757.527),
+"start_id": "VENDOR_0"
+},
+"1_1": {
+"dialogue": "You're looking a little lost. Would you like some guidance?",
+"offset": Vector2(-460, -540),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Yes"
+},
+1: {
+"condition": {},
+"link": &"1_3",
+"text": "No"
+}
+},
+"size": Vector2(300, 289),
+"speaker": "Blu"
+},
+"1_2": {
+"dialogue": "Of course you do! Observe",
+"offset": Vector2(-96.9228, -506.059),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Blu"
+},
+"1_3": {
+"dialogue": "HA! I'm sure you'll come around...",
+"offset": Vector2(-100, -200),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Blu"
+},
+"1_4": {
+"dialogue": "I think you're ready now... I went easy on you, of course...",
+"offset": Vector2(-560, 0),
+"options": {
+0: {
+"condition": {},
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Blu"
+},
+"1_5": {
+"dialogue": "Go up this hill and you'll find my older brother.",
+"offset": Vector2(-196.892, 104.959),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Blu"
+},
+"1_6": {
+"dialogue": "Everything to know about transmutations.....heh!",
+"offset": Vector2(-562.585, 408.942),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Purr"
+},
+"1_7": {
+"dialogue": "Its just like my sibling to forget about affinity.",
+"offset": Vector2(-162.937, 455.229),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Purr"
+},
+"1_8": {
+"dialogue": "Sorry kid, one more tutorial. I promise I'm not as long winded as Blu. Not that that's much of a bar heh.",
+"offset": Vector2(255.595, 485.3),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Purr"
+},
+"1_9": {
+"dialogue": "Hey! Take a look at what I have to sell!",
+"offset": Vector2(-340, -880),
+"options": {
+0: {
+"condition": {},
+"link": &"3_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Vin"
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(284.151, -355.351),
+"signalValue": "combat_initiated"
+},
+"3_2": {
+"link": "END",
+"offset": Vector2(673.518, 595.853),
+"signalValue": "combat_initiated"
+},
+"3_3": {
+"link": "END",
+"offset": Vector2(139.949, -822.541),
+"signalValue": "menu_opened"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

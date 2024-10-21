@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://pejvhd3qb6b0"]
+[gd_scene load_steps=3 format=3 uid="uid://pejvhd3qb6b0"]
 
 [ext_resource type="Script" path="res://src/generic_gui/info_display/formatters/AttackFormatter.gd" id="1_xauya"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/generic_gui/element_icon.tscn" id="2_o1esy"]
 
-[node name="AttackFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "range_label", "target_label", "power_hbox", "power_label", "cost_label", "details", "effects_label")]
+[node name="AttackFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "range_label", "target_label", "power_hbox", "power_label", "cost_label", "details", "effects_label", "element_icon")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,6 +18,7 @@ power_label = NodePath("MarginContainer/VBoxContainer/Power_HBox/Power")
 cost_label = NodePath("MarginContainer/VBoxContainer/Cost_HBox/Cost")
 details = NodePath("MarginContainer/VBoxContainer/Details")
 effects_label = NodePath("MarginContainer/VBoxContainer/Effects")
+element_icon = NodePath("MarginContainer/VBoxContainer/ElementIcon")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -33,6 +35,12 @@ layout_mode = 2
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ElementIcon" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_o1esy")]
+layout_mode = 2
+size_flags_vertical = 1
+color = Color(0, 1, 0, 1)
+_element = "green"
 
 [node name="Power_HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

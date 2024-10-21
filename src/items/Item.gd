@@ -8,9 +8,6 @@ var id: int
 @export
 var details: String: set = _set_details
 @export var tags = []
-@export
-var quantity: int: set = _set_quantity, get = _get_quantity
-var _quantity: int
 
 func update_id(id) -> void:
 	self.id = id
@@ -24,6 +21,9 @@ func check_requirements(actor: BattleActor) -> Array:
 			output.append(req)
 	return output
 
+func try_combine(item: Item, amount: int) -> bool:
+	return true
+
 func _set_name(value: String) -> void:
 	name = value
 
@@ -33,13 +33,3 @@ func _set_details(value: String) -> void:
 func _set_requirement(value: Array) -> void:
 	requirements = value
 
-func _set_quantity(value: int) -> void:
-	if value > 1:
-		_quantity = 1
-	elif value < 0:
-		_quantity = 0
-	else:
-		_quantity = value
-
-func _get_quantity() -> int:
-	return _quantity

@@ -8,14 +8,17 @@ extends Formatter
 @export var cost_label: Label
 @export var details: RichTextLabel
 @export var effects_label: RichTextLabel
+@export var element_icon: ElementIcon
 
 func display(attack: Variant, limitInfo:=false) -> void:
 	super.display(attack)
-	name_label.text = attack.name
 	
+	# Basic info.
+	name_label.text = attack.name
 	range_label.text = Attack.AttackRange.keys()[attack.attack_range]
 	target_label.text = Attack.TargetType.keys()[attack.target]
 	cost_label.text = str(attack.cost)
+	element_icon.element = attack.element
 
 	# Only show power if attack has damage effects.
 	power_label.text = ""

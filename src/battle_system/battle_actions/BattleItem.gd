@@ -5,9 +5,9 @@ class_name BattleItem
 signal item_consumed()
 
 @export var effects: Array[Effect] = []
+var quantity: int 
 
 var is_consumable: bool = true
-var quantity: int 
 var requirements: Array[ItemRequirement] = [] 
 
 
@@ -25,10 +25,10 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 		var target: BattleActor = targets[i]
 
 		for effect in effects:
-			var rand = randf_range(0.0, 1.0)
+			var rand = randf()
 
 			if rand <= effect.chance:
-				msg += "\n%s" % effect.AttackEffect.apply_effect(user, target, self)
+				msg += "\n%s" % effect.attack_effect.apply_effect(user, target, self)
 				# Add status effect icon.
 				if effect.attack_effect is Damage:
 					# Check if character was defeated.
@@ -56,3 +56,4 @@ func apply_cost(user: BattleActor) -> float:
 		quantity -= 1
 		item_consumed.emit()
 	return 0
+

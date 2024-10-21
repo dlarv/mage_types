@@ -1,19 +1,48 @@
-[gd_scene load_steps=11 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=13 format=3 uid="uid://naddq5rv0dbw"]
 
-[ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_16dxg"]
-[ext_resource type="Script" path="res://src/items/Item.gd" id="2_ad65x"]
-[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/items/poison_heal.tres" id="3_ho631"]
-[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/items/healing_potion.tres" id="4_8hl52"]
-[ext_resource type="Resource" uid="uid://babh8c5eugfr0" path="res://data/items/equipment/test_equipment.tres" id="5_5hpay"]
-[ext_resource type="Script" path="res://src/items/Equipment.gd" id="5_r4a6g"]
-[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="7_cxxxa"]
-[ext_resource type="Resource" uid="uid://bc2445kngh7ex" path="res://data/items/key_items/test_key_item.tres" id="7_d6h5x"]
-[ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="8_intll"]
-[ext_resource type="Script" path="res://src/items/KeyItem.gd" id="9_ahgb0"]
+[ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_jis06"]
+[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_fvghd"]
+[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="3_fw4ng"]
+[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="4_cafs4"]
+[ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="5_kkvrm"]
+[ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="6_bgsqo"]
+[ext_resource type="Resource" uid="uid://cdwq01mquvfiy" path="res://data/items/spell_scrolls/block_scroll.tres" id="7_mpfwv"]
+
+[sub_resource type="Resource" id="Resource_51gic"]
+script = ExtResource("2_fvghd")
+item = ExtResource("3_fw4ng")
+id = 0
+quantity = 3
+
+[sub_resource type="Resource" id="Resource_8l5qe"]
+script = ExtResource("2_fvghd")
+item = ExtResource("4_cafs4")
+id = 1
+quantity = 3
+
+[sub_resource type="Resource" id="Resource_tw5l4"]
+script = ExtResource("2_fvghd")
+item = ExtResource("5_kkvrm")
+id = 4
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_lfqp7"]
+script = ExtResource("2_fvghd")
+item = ExtResource("6_bgsqo")
+id = 5
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_t8ikm"]
+script = ExtResource("2_fvghd")
+item = ExtResource("7_mpfwv")
+id = 6
+quantity = 0
 
 [node name="Inventory" type="Node"]
-script = ExtResource("1_16dxg")
-items = Array[ExtResource("2_ad65x")]([ExtResource("3_ho631"), ExtResource("4_8hl52")])
-equipment = Array[ExtResource("5_r4a6g")]([ExtResource("5_5hpay")])
-spell_scrolls = Array[ExtResource("7_cxxxa")]([ExtResource("8_intll")])
-key_items = Array[ExtResource("9_ahgb0")]([ExtResource("7_d6h5x")])
+script = ExtResource("1_jis06")
+money = 9999
+_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_51gic"), SubResource("Resource_8l5qe"), SubResource("Resource_tw5l4"), SubResource("Resource_lfqp7"), SubResource("Resource_t8ikm")])
+regular_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_51gic"), SubResource("Resource_8l5qe")])
+spell_scrolls = Array[ExtResource("2_fvghd")]([SubResource("Resource_tw5l4"), SubResource("Resource_lfqp7"), SubResource("Resource_t8ikm")])
+_regular_index = Vector2i(0, 2)
+_scroll_index = Vector2i(2, 5)

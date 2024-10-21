@@ -18,11 +18,12 @@ script = ExtResource("7_lufxd")
 [sub_resource type="RichTextEffect" id="RichTextEffect_4x15a"]
 script = ExtResource("8_67cow")
 
-[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "ai", "_matchup_manager")]
+[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "ai", "_matchup_manager", "_dialog_box")]
 script = ExtResource("1_7277n")
 gui = NodePath("BattleGUI")
 ai = NodePath("OpponentController")
 _matchup_manager = NodePath("CanvasLayer")
+_dialog_box = NodePath("DialogBox_Layer/DialogueBox")
 
 [node name="BattleGUI" parent="." instance=ExtResource("2_sq28q")]
 
@@ -47,8 +48,11 @@ size_flags_vertical = 3
 
 [node name="DialogueBox" type="Panel" parent="DialogBox_Layer"]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(500, 300)
+offset_right = 500.0
+offset_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("5_ari74")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_j0fqi"), SubResource("RichTextEffect_ec65t"), SubResource("RichTextEffect_4x15a")])
 

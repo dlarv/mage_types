@@ -6,7 +6,6 @@ signal battle_started(allies, items, enemies)
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
 @export var party: Array[BattleActor]
-@export var inventory: Inventory 
 @export var player_menu: Control 
 @export var model: Node3D
 
@@ -19,13 +18,11 @@ var _is_running := false
 @export var movepool: Movepool
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 9#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
+var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
 
 func _ready() -> void:
 	party.insert(0, battle_actor)
-	if player_menu == null: return
-	player_menu.init_inventory(inventory)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_god_camera"):
@@ -64,7 +61,7 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 func start_battle(enemies: EnemyActor) -> void:
-	battle_started.emit(party, inventory.get_battle_items(), enemies)
+	battle_started.emit(party, Inventory.get_battle_items(), enemies)
 
 func switch_to_god_camera(value := true) -> void:
 	GodCamera.in_control = value

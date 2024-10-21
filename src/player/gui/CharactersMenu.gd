@@ -5,6 +5,7 @@ class_name CharactersMenu
 @export var active_screens_parent: TabContainer 
 @export var inactive_screens_parent: Control 
 
+@export var player_screen: CharacterScreen
 @export var alice_screen: CharacterScreen 
 @export var alex_screen: CharacterScreen 
 

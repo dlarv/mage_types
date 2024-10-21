@@ -19,8 +19,9 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 ElementManager="*res://src/elements/element_manager.tscn"
-Settings="*res://src/settings/settings.tscn"
 Logger="*res://src/logger.tscn"
+Settings="*res://src/settings/settings.tscn"
+Inventory="*res://src/items/Inventory.tscn"
 GodCamera="*res://src/overworld/sandbox/GodCamera.gd"
 
 [debug]

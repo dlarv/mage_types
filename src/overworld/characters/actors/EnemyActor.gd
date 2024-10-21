@@ -2,6 +2,7 @@
 extends Area3D
 class_name EnemyActor 
 
+@export var _collision_shape: CollisionShape3D
 @export var shape: Shape3D:
 	get:
 		if _collision_shape == null: return null
@@ -16,16 +17,14 @@ class_name EnemyActor
 
 # Prevents this enemy from immediately starting a new battle once the first has ended.
 var _allow_collisions := true
-var _collision_shape: CollisionShape3D 
-
 
 func _enter_tree():
-	_collision_shape = get_node("CollisionShape3D")
 	_collision_shape.disabled = not fight_on_collision
 	
 func set_size(size: Variant, height: float) -> void:
 	if size is float:
 		size = Vector3(size, size, size)
+			
 	_collision_shape.scale = size
 	_collision_shape.position.y = height
 
@@ -40,4 +39,3 @@ func _on_body_entered(body:Node3D) -> void:
 	if body is Player:
 		_allow_collisions = false
 		body.call_deferred("start_battle", self)
-

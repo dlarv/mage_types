@@ -1,7 +1,6 @@
 extends PanelContainer
 class_name PlayerControls 
 
-
 signal action_selected(index, action)
 signal action_target_selection_cancelled()
 signal end_turn(tryRunAway)
@@ -101,8 +100,6 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 		end_turn.connect(func(a): button.reset())
 		start_turn.connect(func(): button.update_cost(actor))
 
-
-
 func populate_items_menu(items) -> void:
 	var group = ButtonGroup.new()
 
@@ -133,7 +130,6 @@ func populate_characters_menu(allies, enemies) -> void:
 		button.pressed.connect(func(): show_info.emit(ally, false))
 
 		character_scroller.add_child(button)
-
 
 	label = Label.new()
 	label.text = "Enemies"
@@ -192,6 +188,7 @@ func set_enabled(enable: bool) -> void:
 
 
 func _on_end_turn_button_pressed() -> void:
+	end_button.release_focus()
 	control_panel.current_tab = 0
 	_allow_end_turn = false
 	end_turn.emit(false)

@@ -1,7 +1,7 @@
 extends Resource
 class_name AffinityManager
 
-enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS }
+enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS, ATTACK_EFFECT }
 
 @export_category("Bonus values")
 @export var TRANSMUTATION_BONUS: int = 1
@@ -11,14 +11,31 @@ enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS }
 @export var BIAS_BONUS: int = 2
 
 @export_category("Affinity Values")
-@export var initial_blue_affinity := 100
-@export var initial_purple_affinity := 100
-@export var initial_magenta_affinity := 100
-@export var initial_red_affinity := 100
-@export var initial_orange_affinity := 100
-@export var initial_yellow_affinity := 100
-@export var initial_green_affinity := 100
-@export var initial_cyan_affinity := 100
+@export var initial_blue_affinity := 100:
+	set(value):
+		affinities[ElementManager.Blue] = value
+@export var initial_purple_affinity := 100: 
+	set(value):
+		affinities[ElementManager.Purple] = value
+@export var initial_magenta_affinity := 100:
+	set(value):
+		affinities[ElementManager.Magenta] = value
+@export var initial_red_affinity := 100:
+	set(value):
+		affinities[ElementManager.Red] = value
+@export var initial_orange_affinity := 100:
+	set(value):
+		affinities[ElementManager.Orange] = value
+@export var initial_yellow_affinity := 100:
+	set(value):
+		affinities[ElementManager.Yellow] = value
+@export var initial_green_affinity := 100:
+	set(value):
+		affinities[ElementManager.Green] = value
+@export var initial_cyan_affinity := 100:
+	set(value):
+		affinities[ElementManager.Cyan] = value
+
 
 var affinities := {}
 var _element_1: ElementalType
@@ -57,16 +74,21 @@ func gain_affinity(element: ElementalType, reason: BonusReason) -> int:
 	affinities[element] += bonus
 	return bonus
 
+func add_affinity(element: ElementalType, amount: int) -> void:
+	affinities[element] += amount
+
 func lose_affinity(element: ElementalType, amount: int) -> float:
 	if element.is_blank(): return 1
+	var prev = affinities[element]
 	var affinity = affinities[element] - amount
 	affinities[element] = max(0, affinity)
 
-	if affinities[element] == 1:
+	if affinity == -amount:
 		affinities[element] = STRUGGLE_BONUS
 		return 0
 	if affinity < 0:
-		return float(amount) / float(affinities[element])
+		var output = float(prev) / float(amount)
+		return output
 	return 1
 
 func set_element(id: int, element: ElementalType) -> int:

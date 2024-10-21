@@ -1,0 +1,111 @@
+[gd_scene load_steps=22 format=3 uid="uid://cw55perie2kol"]
+
+[ext_resource type="PackedScene" uid="uid://c1yaqlajp62he" path="res://data/story/demo/boss.tscn" id="1_pwn17"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_fhg3k"]
+[ext_resource type="Script" path="res://data/story/demo/boss_2/Boss2Controller.gd" id="2_md6uj"]
+[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="3_ujc0q"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="4_xuh43"]
+[ext_resource type="Resource" uid="uid://da27irgqjb8ob" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_attack_up.tres" id="5_xrp1k"]
+[ext_resource type="Resource" uid="uid://olgnrmvw2spc" path="res://data/battle_system/battle_actions/attacks/strikes/abyss_strike.tres" id="6_7ycbi"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="6_soq2k"]
+[ext_resource type="Resource" uid="uid://bxeeen1sy0nex" path="res://data/battle_system/battle_actions/attacks/abyssal_aspirations.tres" id="7_4s1nx"]
+[ext_resource type="Resource" uid="uid://lowq0j6n0k3p" path="res://data/story/demo/boss_2/dialog_2.tres" id="9_p56re"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="11_gtu70"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fxff1"]
+load_path = "res://.godot/imported/blob_diffuse.png-b79938f3b684857897170c5b03f53a65.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s54b"]
+blend_mode = 3
+albedo_color = Color(0.25098, 0, 0.501961, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qagmw"]
+load_path = "res://.godot/imported/blob_normal.png-f5fc97ed82150af7810bbbfea1e8103f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i30g"]
+resource_name = "image"
+next_pass = SubResource("StandardMaterial3D_4s54b")
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_fxff1")
+roughness = 0.5
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_qagmw")
+
+[sub_resource type="Resource" id="Resource_1ron3"]
+script = ExtResource("3_ujc0q")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 25
+STRUGGLE_BONUS = 3
+BIAS_BONUS = 0
+initial_blue_affinity = 100
+initial_purple_affinity = 27
+initial_magenta_affinity = 100
+initial_red_affinity = 100
+initial_orange_affinity = 100
+initial_yellow_affinity = 100
+initial_green_affinity = 100
+initial_cyan_affinity = 100
+
+[sub_resource type="Resource" id="Resource_d1uhf"]
+script = ExtResource("6_soq2k")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 95.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_5e5a6"]
+script = ExtResource("2_fhg3k")
+name = "Purr"
+stat_manager = SubResource("Resource_d1uhf")
+hp = 200
+affinity_manager = SubResource("Resource_1ron3")
+_element1 = "purple"
+_element2 = "blank"
+_elemental_bias = "purple"
+bias_reversion_threshold = 0.6
+attacks = Array[ExtResource("4_xuh43")]([ExtResource("5_xrp1k"), ExtResource("6_7ycbi"), ExtResource("7_4s1nx")])
+
+[sub_resource type="Resource" id="Resource_3t0ym"]
+script = ExtResource("11_gtu70")
+turn = 0
+id = "0"
+displayAfterTurn = false
+repeat = false
+
+[sub_resource type="Resource" id="Resource_aaf2t"]
+script = ExtResource("11_gtu70")
+turn = 2
+id = "2a"
+displayAfterTurn = false
+repeat = false
+
+[sub_resource type="Resource" id="Resource_6durd"]
+script = ExtResource("11_gtu70")
+turn = 2
+id = "2b"
+displayAfterTurn = true
+repeat = false
+
+[node name="Boss_2" instance=ExtResource("1_pwn17")]
+tint = Color(0.25098, 0, 0.501961, 1)
+use_tint = true
+size = 3.0
+
+[node name="blob" parent="blob2" index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.25, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1i30g")
+
+[node name="AggressiveDialogActor" parent="." index="1"]
+dialog_ids = Array[String](["START_2"])
+
+[node name="EnemyActor" parent="." index="2"]
+team = Array[ExtResource("2_fhg3k")]([SubResource("Resource_5e5a6")])
+
+[node name="Controller" parent="." index="3"]
+script = ExtResource("2_md6uj")
+dialog_resource = ExtResource("9_p56re")
+dialog_ids = Array[ExtResource("11_gtu70")]([SubResource("Resource_3t0ym"), SubResource("Resource_aaf2t"), SubResource("Resource_6durd")])
+
+[editable path="blob2"]

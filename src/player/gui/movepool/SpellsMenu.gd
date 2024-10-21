@@ -27,7 +27,8 @@ func setup(actor: BattleActor, movepool: Movepool) -> void:
 	
 	var length = DEFAULT_SLOTS_COUNT - moveset_scroller.get_child_count() 
 	while length > 0:
-		add_moveset_slot()
+		add_moveset_slot(null, index)
+		index += 1
 		length -= 1
 
 	# Populate movepool
@@ -55,6 +56,8 @@ func remove_moveset_slot() -> void:
 			return
 	child.clear()
 
+func set_moveset_slot(scroll: SpellScroll, index: int) -> void:
+	moveset_scroller.get_child(index).set_spell(scroll.spell)
 
 # Where spell is SpellScroll or Attack.
 func _on_show_info(spell, replaceSpell=false) -> void:

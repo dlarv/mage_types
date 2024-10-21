@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bydn5qav2dgwy" path="res://src/player/gui/characters_menu.tscn" id="2_bem4u"]
 [ext_resource type="PackedScene" uid="uid://lf8pis6wd5qh" path="res://src/player/gui/inventory/inventory_screen.tscn" id="3_amx4t"]
 
-[node name="PlayerMenu" type="Control" node_paths=PackedStringArray("inventory_screen")]
+[node name="PlayerMenu" type="Control" node_paths=PackedStringArray("inventory_screen", "characters_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fk17s")
 inventory_screen = NodePath("TabContainer/Inventory")
+characters_menu = NodePath("TabContainer/Characters")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

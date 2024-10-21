@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bxeeen1sy0nex"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_46hmk"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_swggm"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_abbsg"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/GenerateAffinity.gd" id="3_lr7a7"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="4_kbe5j"]
+
+[sub_resource type="Resource" id="Resource_xoar2"]
+script = ExtResource("3_lr7a7")
+name = ""
+chance = 1.0
+strength = 40.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_5kdg2"]
+script = ExtResource("1_46hmk")
+attack_effect = SubResource("Resource_xoar2")
+chance = 1.0
+effect_target = 0
+
+[sub_resource type="Resource" id="Resource_e3c2m"]
+script = ExtResource("4_kbe5j")
+stat = 3
+stack = 1.0
+duration = 3
+description = ""
+name = "Defense Drop"
+chance = 1.0
+strength = -0.9
+message = "{target}'s melee defense was lowered!
+{target}'s ranged defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_ptp5f"]
+script = ExtResource("1_46hmk")
+attack_effect = SubResource("Resource_e3c2m")
+chance = 1.0
+effect_target = 1
+
+[resource]
+script = ExtResource("2_abbsg")
+effects = Array[ExtResource("1_46hmk")]([SubResource("Resource_5kdg2"), SubResource("Resource_ptp5f")])
+cost = 0
+name = "Dark Aspirations"
+animation = ExtResource("1_swggm")
+_element = "purple"
+priority = 1
+attack_range = 2
+target = 0
+details = ""

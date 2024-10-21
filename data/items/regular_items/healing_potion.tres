@@ -26,8 +26,8 @@ effects = Array[ExtResource("2_bxomy")]([SubResource("Resource_qqr4i")])
 name = "Healing Potion"
 animation = ExtResource("1_qwm21")
 _element = "blank"
-priority = 0
-attack_range = 0
+priority = 5
+attack_range = 2
 target = 1
 details = ""
 
@@ -40,4 +40,3 @@ name = "Healing Potion"
 requirements = Array[ExtResource("5_cr37d")]([])
 details = ""
 tags = []
-quantity = 3

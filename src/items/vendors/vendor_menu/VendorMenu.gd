@@ -4,7 +4,6 @@ class_name VendorMenu
 signal menu_closed()
 
 @export var VendorItemSelector: PackedScene
-@export var inventory: Inventory
 @export var info_display: PanelContainer
 @export var item_scroller: VBoxContainer
 @export var label: Label
@@ -33,7 +32,7 @@ func open_menu(vendor: VendorActor) -> void:
 		item_scroller.add_child(selector)
 
 func _on_item_selected(item: VendorItem) -> void:
-	info_display.display(item, inventory)
+	info_display.display(item)
 
 func _on_hidden() -> void:
 	menu_closed.emit()

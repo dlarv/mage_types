@@ -13,26 +13,25 @@ var is_consumable: bool:
 		if battle_item != null:
 			battle_item.is_consumable = value
 
-
 @export var max_quantity : int 
 
-func try_combine(other: Item) -> bool:
-	if _quantity == max_quantity: return false
-	if max_quantity == -1:
-		quantity += other._quantity
-		return true
-
-	var total = _quantity + other._quantity
-	_quantity = min(total, max_quantity)
-	return true
-
-func try_remove(other: Item, amount: int) -> bool:
-	if _quantity == 0: return false
-	if amount == -1: amount = _quantity
-
-	var total = _quantity - amount
-	_quantity = max(0, total)
-	return true
+# func try_combine(other: Item, amount: int) -> bool:
+# 	if _quantity == max_quantity: return false
+# 	if max_quantity == -1:
+# 		quantity += other._quantity
+# 		return true
+#
+# 	var total = _quantity + other._quantity
+# 	_quantity = min(total, max_quantity)
+# 	return true
+#
+# func try_remove(other: Item, amount: int) -> bool:
+# 	if _quantity == 0: return false
+# 	if amount == -1: amount = _quantity
+#
+# 	var total = _quantity - amount
+# 	_quantity = max(0, total)
+# 	return true
 
 
 func _set_name(value: String) -> void:
@@ -54,13 +53,3 @@ func _set_requirement(value) -> void:
 		if req.battle_relevant:
 			battle_item.requirements.append(req)
 
-func _set_quantity(value) -> void:
-	if value > max_quantity:
-		_quantity = max_quantity
-	elif value < 0:
-		_quantity = 0
-	else:
-		_quantity = value
-
-	if battle_item != null:
-		battle_item.quantity = value

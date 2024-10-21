@@ -9,7 +9,7 @@ enum EffectTarget { USER, TARGET }
 @export var effect_target: EffectTarget = EffectTarget.TARGET
 
 func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, effectiveness:=1.0) -> String:
-	var rand = randf_range(0.0, 1.0)
+	var rand = randf()
 	if rand <= chance:
 		if effect_target == EffectTarget.TARGET:
 			return attack_effect.apply_effect(user, target, action, effectiveness)

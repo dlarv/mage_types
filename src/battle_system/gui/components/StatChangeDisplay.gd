@@ -29,41 +29,14 @@ func add(stat: StatManager.Stat, amount: float) -> void:
 func update_nibs(rect: TextureRect, mod: float=1) -> void:
 	var text = rect.tooltip_text
 	var index = text.rfind(":")
-	# rect.TooltipText = Regex.Replace(rect.TooltipText, ":.*$", $": {mod:P0}")
 	rect.tooltip_text = text.substr(0, index) + ": " + str(mod * 100) + "%"
 
-	var colorChannel = mod / 5
-
 	if mod == 1:
-		rect.color = Color.GRAY
+		rect.modulate = Color.GRAY
 	elif mod < 1:
 		# Approaching 0, red channel will be maxed.
 		rect.modulate = Color(1 - mod, 0, 0)
 	else:
 		# At 500%, green channel will be maxed out.
-		rect.modulate = Color(0, mod / 5, 0)
+		rect.modulate = Color(0, mod / StatManager.MAX_MOD, 0)
 
-# func remove(effect: StatChange) -> void:
-# 	match effect.name:
-# 		StatusEffectManager.ATTACK_KEY:
-# 			update_nibs(melee_attack)
-# 			update_nibs(ranged_attack)
-# 			
-# 		StatusEffectManager.DEFENSE_KEY:
-# 			update_nibs(melee_defense)
-# 			update_nibs(ranged_defense)
-# 			
-# 		StatusEffectManager.MELEE_ATTACK_KEY:
-# 			update_nibs(melee_attack)
-# 			
-# 		StatusEffectManager.RANGED_ATTACK_KEY:
-# 			update_nibs(ranged_attack)
-# 			
-# 		StatusEffectManager.MELEE_DEFENSE_KEY:
-# 			update_nibs(melee_defense)
-# 			
-# 		StatusEffectManager.RANGED_DEFENSE_KEY:
-# 			update_nibs(ranged_defense)
-# 			
-# 		StatusEffectManager.SPEED_KEY:
-# 			update_nibs(speed)

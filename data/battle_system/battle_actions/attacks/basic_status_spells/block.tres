@@ -9,6 +9,7 @@
 script = ExtResource("4_f7l1n")
 attack_effect = ExtResource("3_76751")
 chance = 1.0
+effect_target = 0
 
 [resource]
 script = ExtResource("5_nmpvg")
@@ -17,7 +18,7 @@ cost = 10
 name = "Block"
 animation = ExtResource("2_w2g4a")
 _element = "cyan"
-priority = 0
-attack_range = 0
+priority = 1
+attack_range = 2
 target = 0
 details = ""

@@ -10,7 +10,8 @@ var spell:
 		if scroll == null: return null
 		return scroll.spell
 
-var quantity:
-	get:
-		if scroll == null: return -1
-		return scroll.quantity
+var quantity: int = 0
+
+func _ready():
+	if not Engine.is_editor_hint(): 
+		pass

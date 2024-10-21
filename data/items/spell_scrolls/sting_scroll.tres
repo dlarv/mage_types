@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://dgyavaq3o5dot"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_41kc4"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_xprr8"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_87byw"]
+
+[resource]
+script = ExtResource("2_xprr8")
+spell = ExtResource("3_87byw")
+name = "Sting"
+requirements = Array[ExtResource("1_41kc4")]([])
+details = ""
+tags = []

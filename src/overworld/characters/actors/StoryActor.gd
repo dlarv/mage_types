@@ -6,7 +6,7 @@ class_name StoryActor
 signal dialog_started(dialog_id, data)
 
 var _label: Label
-var _collision_shape: CollisionShape3D
+@export var _collision_shape: CollisionShape3D
 
 @export var actor_name: String
 @export var shape: Shape3D:
@@ -69,3 +69,4 @@ func _on_body_exited(body: Node3D) -> void:
 	if body is Player:
 		_show_label = false
 		_label.visible = false
+

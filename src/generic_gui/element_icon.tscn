@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://biqiuai6gr2tr"]
 
-[ext_resource type="Script" path="res://src/elements/gui/ElementIcon.gd" id="1_2nvp8"]
+[ext_resource type="Script" path="res://src/generic_gui/ElementIcon.gd" id="1_2nvp8"]
 
 [node name="ElementIcon" type="ColorRect" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(0, 25)

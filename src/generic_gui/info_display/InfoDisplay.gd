@@ -29,7 +29,7 @@ func format_msg(obj: Variant, limitInfo: bool) -> void:
 	tab_container.show()
 	if obj is Attack:
 		attack_formatter.display(obj)
-	elif obj is Item or obj is BattleItem:
+	elif obj is ItemSlot or obj is Item or obj is BattleItem:
 		item_formatter.display(obj)
 	elif obj is StatusEffect:
 		status_effect_formatter.display(obj)

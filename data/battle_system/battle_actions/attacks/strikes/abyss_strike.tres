@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://olgnrmvw2spc"]
+
+[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_4wpqw"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_tg733"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_r5wf5"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_4nxyw"]
+
+[sub_resource type="Resource" id="Resource_35xl1"]
+script = ExtResource("3_4nxyw")
+_element = "purple"
+type = 0
+_positive_factor = 4.0
+_negative_factor = 0.1
+name = ""
+chance = 1.0
+strength = 25.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_15gl1"]
+script = ExtResource("1_tg733")
+attack_effect = SubResource("Resource_35xl1")
+chance = 1.0
+effect_target = 1
+
+[resource]
+script = ExtResource("2_r5wf5")
+effects = Array[ExtResource("1_tg733")]([SubResource("Resource_15gl1")])
+cost = 25
+name = "Abyss Strike"
+animation = ExtResource("1_4wpqw")
+_element = "purple"
+priority = 0
+attack_range = 1
+target = 3
+details = ""

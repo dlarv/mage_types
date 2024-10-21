@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=12 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://cj7rk23vvyppe"]
 
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_r1sef"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="2_5o313"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_cxfsv"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_t6yc2"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_5633o"]
@@ -24,13 +23,6 @@ initial_yellow_affinity = 0
 initial_green_affinity = 0
 initial_cyan_affinity = 0
 
-[sub_resource type="Resource" id="Resource_5ne4w"]
-script = ExtResource("2_5o313")
-name = "Blank"
-main_color = Color(0.5, 0.5, 0.5, 1)
-text_color = Color(0, 0, 0, 1)
-color_palette = Array[Color]([])
-
 [sub_resource type="Resource" id="Resource_my6ko"]
 script = ExtResource("7_mftjw")
 _base_melee_attack = 100.0
@@ -48,5 +40,6 @@ hp = 100
 affinity_manager = SubResource("Resource_wi5xr")
 _element1 = "purple"
 _element2 = "cyan"
-elemental_bias = SubResource("Resource_5ne4w")
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
 attacks = Array[ExtResource("2_t6yc2")]([ExtResource("2_cxfsv"), ExtResource("3_5633o"), ExtResource("4_2oeie")])

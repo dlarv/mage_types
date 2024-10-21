@@ -105,4 +105,3 @@ func _on_number_1_text_changed(newText:String) -> void:
 	if not newText.is_valid_int(): 
 		_on_value_2_text_changed(newText)
 		_extra_number_label.release_focus()
-

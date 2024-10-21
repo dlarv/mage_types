@@ -7,4 +7,4 @@ script = ExtResource("1_gm5y5")
 name = "Green"
 main_color = Color(0, 1, 0, 1)
 text_color = Color(0, 0, 0, 1)
-color_palette = []
+color_palette = Array[Color]([])

@@ -43,10 +43,18 @@ func _ready():
 	resize_actors()
 
 func find_actors() -> void:
+	var storyActor: StoryActor
+	var enemyActor: EnemyActor
 	_actors = []
 	for child in get_children(true):
-		if child is StoryActor or child is EnemyActor:
-			_actors.append(child)
+		if not child is StoryActor and not child is EnemyActor: continue
+		if child is AggressiveStoryActor: storyActor = child
+		elif child is EnemyActor: enemyActor = child
+		_actors.append(child)
+	
+	if Engine.is_editor_hint(): return
+	if storyActor != null and enemyActor != null and not enemyActor.ai.battle_ended.is_connected(storyActor._on_battle_ended):
+		enemyActor.ai.battle_ended.connect(storyActor._on_battle_ended)
 
 func resize_actors() -> void:
 	var s = Vector3(size, size, size)
