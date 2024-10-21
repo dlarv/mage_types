@@ -26,17 +26,12 @@ signal quantity_changed(item: ItemSlot)
 @export var _regular_index := Vector2i.ZERO
 @export var _scroll_index := Vector2i.ZERO
 
-### FIELDS
-# var regular_items: Array:
-# 	get:
-# 		return _items.slice(_regular_index.x, _regular_index.y).map(func(slot): return slot.item)
-# var spell_scrolls: Array:
-# 	get:
-# 		return _items.slice(_scroll_index.x, _scroll_index.y).map(func(slot): return slot.item)
-
 # Secondary reference to battle regular_items.
 var _battle_items: Array[BattleItem] = []
-var next_id := 0
+var next_id := {
+	Category.REGULAR_ITEM: 0,
+	Category.SPELL_SCROLL: 0
+}
 
 
 func _ready() -> void:
@@ -49,49 +44,58 @@ func get_battle_items() -> Array:
 
 func add(item: Item, amount=1) -> void:
 	var list := []
-	var cat := Category.REGULAR_ITEM
 
 	if item is SpellScroll:
 		list = spell_scrolls
-		cat = Category.SPELL_SCROLL
 	elif item is RegularItem:
 		list = regular_items
 	else:
 		# NOT YET IMPLEMENTED
 		return
-	var index = list.bsearch_custom(item, func(a, b): return a.id < b.id)
+	var index = list \
+			.map(func(a): return a.item) \
+			.bsearch_custom(item, func(a: Item, b: Item): return a.id < b.id)
 	var slot = list[index]
 
 	if slot.allow_stacking:
 		slot.quantity += amount
 		quantity_changed.emit(slot)
+
 	elif slot.quantity == 0:
 		slot.quantity = 1
 		quantity_changed.emit(slot)
 
-
 func remove(item: Item, amount: int=-1) -> ItemSlot:
 	var list := []
-	var cat := Category.REGULAR_ITEM
 
 	if item is SpellScroll:
 		list = spell_scrolls
-		cat = Category.SPELL_SCROLL
 	elif item is RegularItem:
 		list = regular_items
 	else:
 		# NOT YET IMPLEMENTED
 		return null
 
-	var index = list.bsearch_custom(item, func(a, b): return a.id < b.id)
+	var index = list \
+			.map(func(a): return a.item) \
+			.bsearch_custom(item, func(a: Item, b: Item): return a.id < b.id)
 	var slot = list[index]
 
 	if slot.quantity == 0: return null
 	quantity_changed.emit(slot)
 	return slot
 
-func get_item(item: Item) -> Item:
-	return null
+func get_item(item: Item) -> ItemSlot:
+	var list := []
+	if item is SpellScroll:
+		list = spell_scrolls
+	elif item is RegularItem:
+		list = regular_items
+	else:
+		# NOT YET IMPLEMENTED
+		return
+	var index = list.bsearch_custom(item, func(a, b): return a.id < b.id)
+	return list[index]
 
 func _combine_items(regularItems: Array, spellScrolls: Array) -> void:
 	_items.clear()
@@ -141,20 +145,28 @@ func _load_from_fs()-> void:
 
 				if res is Equipment:
 					equipment.append(slot)
+
 				elif res is KeyItem:
 					keyItems.append(slot)
+
 				elif res is SpellScroll:
 					spellScrolls.append(slot)
+
+					slot.id = next_id[Category.SPELL_SCROLL]
+					next_id[Category.SPELL_SCROLL] += 1
+
 				elif res is RegularItem:
+					regularItems.append(slot)
+
+					slot.id = next_id[Category.REGULAR_ITEM]
+					next_id[Category.REGULAR_ITEM] += 1
+
 					var battleItem = res.battle_item 
 					if battleItem != null:
 						_battle_items.append(battleItem)
 						if battleItem.is_consumable:
 							battleItem.item_consumed.connect(func(): quantity_changed.emit(res, res.quantity))
-					regularItems.append(slot)
 
-				slot.id = next_id
-				next_id += 1
 
 			elif len(item) != 0 and dir.dir_exists(item):
 				loadFromDir.call(path + item + "/")

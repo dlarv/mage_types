@@ -2,16 +2,18 @@ extends Formatter
 
 @export var id_label: Label
 @export var name_label: Label
-@export var is_consumable_vbox: VBoxContainer
+@export var is_consumable_hbox: HBoxContainer
 @export var is_consumable_box: CheckBox 
 @export var req_vbox: VBoxContainer
 @export var req_label: RichTextLabel
 @export var details_label: RichTextLabel
+@export var attack_formatter: Formatter
 
 func display(obj: Variant, limitInfo:=false) -> void:
 	super.display(obj)
 	req_label.clear()
 	details_label.clear()
+	attack_formatter.hide()
 
 	var quantity := 0
 	var item: Variant
@@ -37,7 +39,7 @@ func display_regular_item(item: Item, quantity: int) -> void:
 	id_label.text = "#%d" % item.id
 	name_label.text = "%s (x%d)" % [ item.name, quantity ]
 
-	is_consumable_vbox.show()
+	is_consumable_hbox.show()
 	is_consumable_box.button_pressed = item.is_consumable
 
 	details_label.append_text(item.details)
@@ -50,7 +52,7 @@ func display_regular_item(item: Item, quantity: int) -> void:
 
 func display_spell_scroll(item: SpellScroll) -> void:
 	id_label.show()
-	is_consumable_vbox.hide()
+	is_consumable_hbox.hide()
 
 	id_label.text = "#%d" % item.id
 	name_label.text = item.name
@@ -59,9 +61,11 @@ func display_spell_scroll(item: SpellScroll) -> void:
 
 	_format_requirement(item.requirements)
 
+	attack_formatter.display(item.spell)
+
 func display_equipment(item: Equipment) -> void:
 	id_label.show()
-	is_consumable_vbox.hide()
+	is_consumable_hbox.hide()
 
 	id_label.text = "#%d" % item.id
 	name_label.text = item.name
@@ -72,7 +76,7 @@ func display_equipment(item: Equipment) -> void:
 func display_battle_item(item: BattleItem) -> void:
 	id_label.hide()
 	name_label.text = "%s (x%d)" % [ item.name, item.quantity ]
-	is_consumable_vbox.show()
+	is_consumable_hbox.show()
 	is_consumable_box.button_pressed = item.is_consumable
 
 	details_label.append_text(item.details)
@@ -84,7 +88,7 @@ func display_battle_item(item: BattleItem) -> void:
 func display_key_item(item: KeyItem) -> void:
 	id_label.hide()
 	req_vbox.hide()
-	is_consumable_vbox.hide()
+	is_consumable_hbox.hide()
 
 	name_label.text = item.name
 	details_label.append_text(item.details)

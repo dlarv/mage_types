@@ -74,7 +74,7 @@ func _on_spell_menu_display_spell_selected(scroll: SpellScroll) -> void:
 
 	tab_container.current_tab = 0
 	selected_button.set_pressed_no_signal(false)
-	var failed_reqs = _actor.learn_spell(index, scroll)
+	var failed_reqs = _actor.learn_spell(scroll, index)
 
 	if len(failed_reqs) == 0: 
 		selected_button.set_spell(scroll.spell)

@@ -27,12 +27,16 @@ func display_message_non_blocking(obj: Variant, limitInfo:=false) -> void:
 
 func format_msg(obj: Variant, limitInfo: bool) -> void:
 	tab_container.show()
+
 	if obj is Attack:
 		attack_formatter.display(obj)
+
 	elif obj is ItemSlot or obj is Item or obj is BattleItem:
 		item_formatter.display(obj)
+
 	elif obj is StatusEffect:
 		status_effect_formatter.display(obj)
+
 	elif obj is BattleActor:
 		actor_formatter.display(obj, limitInfo)
 

@@ -25,7 +25,7 @@ func _populate_tab(slots: Array, scroller: VBoxContainer) -> void:
 		button.name = item.name
 
 		button.set_meta("id", item.id)
-		if "quantity" in item and slot.quantity != -1:
+		if slot.quantity > 1:
 			button.text = "%s (%d)" % [item.name, slot.quantity]
 		else:
 			button.text = "%s" % item.name
@@ -35,7 +35,37 @@ func _populate_tab(slots: Array, scroller: VBoxContainer) -> void:
 			item_selected.emit(item))
 		scroller.add_child(button)
 
-		button.disabled = slot.quantity == 0
+		button.visible = slot.quantity != 0
+
+func on_quantity_changed(slot: ItemSlot) -> void:
+	var scroller 
+	var tab: int
+	var item := slot.item
+	if item is KeyItem:
+		scroller = key_items_scroller
+		tab = 3
+	elif item is SpellScroll:
+		scroller = spells_scroller
+		tab = 2
+	elif item is Equipment:
+		scroller = equipment_scroller
+		tab = 1
+	else:
+		scroller = items_scroller
+		tab = 0
+
+	sort_by_id(tab)
+
+	var button = scroller.get_child(item.id)
+	if slot.quantity > 1:
+		button.text = "%s (%d)" % [item.name, slot.quantity]
+	else:
+		button.text = "%s" % item.name
+
+	button.visible = slot.quantity > 0
+
+func on_tab_changed(index: int) -> void:
+	sort_by_id()
 
 func sort_by_id(tab: int=-1) -> void:
 	# This method is called when the user exits from this screen,
@@ -81,29 +111,3 @@ func sort_by_alphabetical()-> void:
 	for i in range(len(buttons)):
 		scroller.move_child(buttons[i], i)
 
-func on_quantity_changed(slot: ItemSlot) -> void:
-	var scroller 
-	var tab: int
-	var item := slot.item
-	if item is KeyItem:
-		scroller = key_items_scroller
-		tab = 3
-	elif item is SpellScroll:
-		scroller = spells_scroller
-		tab = 2
-	elif item is Equipment:
-		scroller = equipment_scroller
-		tab = 1
-	else:
-		scroller = items_scroller
-		tab = 0
-
-	sort_by_id(tab)
-
-	var button = scroller.get_child(item.id)
-	button.text = "%s (%d)" % [ item.name, slot.quantity ]
-
-	if slot.quantity == 0: button.hide()
-
-func on_tab_changed(index: int) -> void:
-	sort_by_id()

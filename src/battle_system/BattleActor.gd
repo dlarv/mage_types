@@ -126,7 +126,9 @@ func is_element(element: ElementalType) -> bool:
 
 # Teaches actor spell contained within scroll.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
-func learn_spell(index: int, scroll: SpellScroll) -> Array:
+func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
+	if index == -1:
+		index = len(attacks)
 	if index >= len(attacks):
 		attacks.resize(index + 1)
 	
