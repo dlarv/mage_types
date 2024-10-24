@@ -1,8 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://cw55perie2kol"]
 
 [ext_resource type="PackedScene" uid="uid://c1yaqlajp62he" path="res://data/story/demo/boss.tscn" id="1_pwn17"]
+[ext_resource type="Texture2D" uid="uid://dh66sh8ql3buu" path="res://assets/models/textures/player/blob_diffuse.png" id="2_3uq4c"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_fhg3k"]
 [ext_resource type="Script" path="res://data/story/demo/boss_2/Boss2Controller.gd" id="2_md6uj"]
+[ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/models/textures/player/blob_normal.png" id="3_u7a3y"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="3_ujc0q"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="4_xuh43"]
 [ext_resource type="Resource" uid="uid://da27irgqjb8ob" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/ranged_attack_up.tres" id="5_xrp1k"]
@@ -12,24 +14,18 @@
 [ext_resource type="Resource" uid="uid://lowq0j6n0k3p" path="res://data/story/demo/boss_2/dialog_2.tres" id="9_p56re"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="11_gtu70"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fxff1"]
-load_path = "res://.godot/imported/blob_diffuse.png-b79938f3b684857897170c5b03f53a65.s3tc.ctex"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5fot"]
+albedo_color = Color(0.778407, 0.562554, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s54b"]
-blend_mode = 3
-albedo_color = Color(0.25098, 0, 0.501961, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qagmw"]
-load_path = "res://.godot/imported/blob_normal.png-f5fc97ed82150af7810bbbfea1e8103f.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i30g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugeas"]
 resource_name = "image"
-next_pass = SubResource("StandardMaterial3D_4s54b")
-cull_mode = 2
-albedo_texture = SubResource("CompressedTexture2D_fxff1")
+next_pass = SubResource("StandardMaterial3D_s5fot")
+blend_mode = 3
+albedo_color = Color(0.470588, 0, 1, 1)
+albedo_texture = ExtResource("2_3uq4c")
 roughness = 0.5
 normal_enabled = true
-normal_texture = SubResource("CompressedTexture2D_qagmw")
+normal_texture = ExtResource("3_u7a3y")
 
 [sub_resource type="Resource" id="Resource_1ron3"]
 script = ExtResource("3_ujc0q")
@@ -88,14 +84,14 @@ id = "2b"
 displayAfterTurn = true
 repeat = false
 
-[node name="Boss_2" instance=ExtResource("1_pwn17")]
-tint = Color(0.25098, 0, 0.501961, 1)
-use_tint = true
+[node name="Boss_2" node_paths=PackedStringArray("ai") instance=ExtResource("1_pwn17")]
+ai = NodePath("Controller")
+tint = Color(0.543307, 0.181674, 0.999993, 1)
 size = 3.0
 
 [node name="blob" parent="blob2" index="0"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.25, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_1i30g")
+surface_material_override/0 = SubResource("StandardMaterial3D_ugeas")
 
 [node name="AggressiveDialogActor" parent="." index="1"]
 dialog_ids = Array[String](["START_2"])

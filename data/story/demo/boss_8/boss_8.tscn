@@ -1,0 +1,122 @@
+[gd_scene load_steps=21 format=3 uid="uid://c86ll0tsqaqyf"]
+
+[ext_resource type="PackedScene" uid="uid://c1yaqlajp62he" path="res://data/story/demo/boss.tscn" id="1_608ge"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_7huyy"]
+[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="3_uwpae"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="4_im5dn"]
+[ext_resource type="Resource" uid="uid://mg2jc70wjqo8" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_attack_up.tres" id="5_4486c"]
+[ext_resource type="Resource" uid="uid://dl8tuatv2q3y5" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_defense_down.tres" id="6_4mkel"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_7c2nj"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="8_fkxv5"]
+[ext_resource type="Resource" uid="uid://rvgptfxqtoih" path="res://data/battle_system/battle_actions/attacks/basic_status_spells/block.tres" id="9_jsagh"]
+[ext_resource type="Script" path="res://data/story/demo/boss_3/Boss3Controller.gd" id="10_hiv8u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lvrco"]
+load_path = "res://.godot/imported/blob_diffuse.png-b79938f3b684857897170c5b03f53a65.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhi74"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2wtmc"]
+load_path = "res://.godot/imported/blob_normal.png-f5fc97ed82150af7810bbbfea1e8103f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1i5p"]
+resource_name = "image"
+next_pass = SubResource("StandardMaterial3D_uhi74")
+blend_mode = 3
+cull_mode = 2
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = SubResource("CompressedTexture2D_lvrco")
+roughness = 0.5
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_2wtmc")
+
+[sub_resource type="Resource" id="Resource_5oe8u"]
+script = ExtResource("3_uwpae")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+STRUGGLE_BONUS = 2
+BIAS_BONUS = 2
+initial_blue_affinity = 100
+initial_purple_affinity = 100
+initial_magenta_affinity = 100
+initial_red_affinity = 100
+initial_orange_affinity = 100
+initial_yellow_affinity = 100
+initial_green_affinity = 100
+initial_cyan_affinity = 100
+
+[sub_resource type="Resource" id="Resource_ap6c2"]
+script = ExtResource("8_fkxv5")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_tv6rh"]
+script = ExtResource("2_7huyy")
+name = "Maggie"
+stat_manager = SubResource("Resource_ap6c2")
+hp = 200
+affinity_manager = SubResource("Resource_5oe8u")
+_element1 = "magenta"
+_element2 = "blank"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("4_im5dn")]([ExtResource("5_4486c"), ExtResource("6_4mkel"), ExtResource("7_7c2nj")])
+
+[sub_resource type="Resource" id="Resource_pahpx"]
+script = ExtResource("3_uwpae")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+STRUGGLE_BONUS = 2
+BIAS_BONUS = 2
+initial_blue_affinity = 100
+initial_purple_affinity = 100
+initial_magenta_affinity = 100
+initial_red_affinity = 100
+initial_orange_affinity = 100
+initial_yellow_affinity = 100
+initial_green_affinity = 100
+initial_cyan_affinity = 100
+
+[sub_resource type="Resource" id="Resource_nxxru"]
+script = ExtResource("8_fkxv5")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_orhvy"]
+script = ExtResource("2_7huyy")
+name = "Jen"
+stat_manager = SubResource("Resource_nxxru")
+hp = 150
+affinity_manager = SubResource("Resource_pahpx")
+_element1 = "magenta"
+_element2 = "magenta"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("4_im5dn")]([ExtResource("9_jsagh"), ExtResource("7_7c2nj")])
+
+[node name="Boss_8" instance=ExtResource("1_608ge")]
+tint = Color(0.999999, 0.371568, 0.99102, 1)
+size = 3.0
+
+[node name="blob" parent="blob2" index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.25, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_v1i5p")
+
+[node name="AggressiveDialogActor" parent="." index="1"]
+actor_name = "Maggie"
+
+[node name="EnemyActor" parent="." index="2"]
+team = Array[ExtResource("2_7huyy")]([SubResource("Resource_tv6rh"), SubResource("Resource_orhvy")])
+
+[node name="Controller" parent="." index="3"]
+script = ExtResource("10_hiv8u")
+
+[editable path="blob2"]

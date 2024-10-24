@@ -20,17 +20,16 @@ func setup(team: Array) -> void:
 	_purple = ElementManager.Purple
 
 func get_actions(otherTeam: Array) -> Array:
-	var actor = team[0]
 	var actions := []
 	var targets := []
 	var attack: Attack
 	_turn_counter += 1
 
 	if _turn_counter == 1:
-		actor.bias_reversion_threshold = 1.1
+		_actor.bias_reversion_threshold = 1.1
 		_strike_attack.priority = 1
 	elif _turn_counter == 4:
-		actor.bias_reversion_threshold = 0.6
+		_actor.bias_reversion_threshold = 0.6
 		_strike_attack.priority = 0
 
 	#  Always use strike on the first two turns.
@@ -51,7 +50,7 @@ func get_actions(otherTeam: Array) -> Array:
 	# If boss is not purple...
 	else:
 		attack = _buff_attack
-		targets.append(actor)
+		targets.append(_actor)
 
-	actions.append(ActorAction.new(team[0], attack, targets, TEAM_INDEX))
+	actions.append(ActorAction.new(_actor, attack, targets, TEAM_INDEX))
 	return actions
