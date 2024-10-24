@@ -327,6 +327,7 @@ func _on_variable_changed(variable_name : String, value):
 func _on_dialogue_ended():
 	if hide_on_dialogue_end: hide()
 	dialogue_ended.emit()
+	# Dlarv
 	dialogue_signal.emit("dialogue_ended")
 
 
