@@ -8,7 +8,7 @@ func _init():
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0) -> String:
 	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, effectiveness)
-	return _apply_to(target, dmg)
+	return _apply_to(target, dmg, user)
 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
 func calculate_damage(attack: float, defense: float, action: BattleAction, effectiveness: float) -> int:
@@ -18,7 +18,7 @@ func calculate_damage(attack: float, defense: float, action: BattleAction, effec
 			% [dmg, strength, attack, defense, effectiveness, rand])
 	return int(dmg * rand)
 
-func _apply_to(target: BattleActor, dmg: int) -> String:
+func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 	var actualDmg = target.apply_damage(dmg)
 	if actualDmg == dmg:
 		return "Dealt %d damage to %s." % [dmg, target.name]

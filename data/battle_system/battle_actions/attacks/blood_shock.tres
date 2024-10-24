@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://mwxg2wlabpnk"]
+
+[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://data/battle_system/battle_actions/animations/jet.tscn" id="1_hs2t3"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_pg7ig"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_6sxx5"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_cgp3y"]
+
+[sub_resource type="Resource" id="Resource_1iaj8"]
+script = ExtResource("3_cgp3y")
+name = ""
+chance = 1.0
+strength = 70.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_5q3rt"]
+script = ExtResource("1_pg7ig")
+attack_effect = SubResource("Resource_1iaj8")
+chance = 1.0
+effect_target = 1
+
+[sub_resource type="Resource" id="Resource_pnlro"]
+script = ExtResource("3_cgp3y")
+name = ""
+chance = 1.0
+strength = 50.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_e2ptt"]
+script = ExtResource("1_pg7ig")
+attack_effect = SubResource("Resource_pnlro")
+chance = 1.0
+effect_target = 0
+
+[resource]
+script = ExtResource("2_6sxx5")
+effects = Array[ExtResource("1_pg7ig")]([SubResource("Resource_5q3rt"), SubResource("Resource_e2ptt")])
+cost = 0
+name = "Blood Shock"
+animation = ExtResource("1_hs2t3")
+_element = "red"
+priority = 0
+attack_range = 0
+target = 3
+details = ""

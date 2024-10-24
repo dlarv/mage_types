@@ -30,4 +30,3 @@ func get_actions(otherTeam: Array) -> Array:
 		
 func _on_battle_ended(playerWasDefeated: bool) -> void:
 	battle_ended.emit(playerWasDefeated)
-

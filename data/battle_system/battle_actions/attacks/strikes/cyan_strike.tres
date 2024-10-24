@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bhx77misimdoa"]
+
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_7gxbi"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_7xeuy"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_iby04"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="4_g8m4y"]
+
+[sub_resource type="Resource" id="Resource_wv144"]
+script = ExtResource("3_iby04")
+_element = "cyan"
+type = 1
+_positive_factor = 2.0
+_negative_factor = 0.5
+name = ""
+chance = 1.0
+strength = 50.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_6k5so"]
+script = ExtResource("2_7xeuy")
+attack_effect = SubResource("Resource_wv144")
+chance = 1.0
+effect_target = 1
+
+[resource]
+script = ExtResource("4_g8m4y")
+effects = Array[ExtResource("2_7xeuy")]([SubResource("Resource_6k5so")])
+cost = 10
+name = "Cyan Strike"
+animation = ExtResource("1_7gxbi")
+_element = "cyan"
+priority = 0
+attack_range = 0
+target = 3
+details = ""

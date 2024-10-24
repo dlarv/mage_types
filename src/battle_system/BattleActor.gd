@@ -176,6 +176,16 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 			was_just_defeated.emit()
 	return dmg
 
+func heal(dmg: int, allowOverflow: bool=false) -> int:
+	current_hp += dmg
+	if not allowOverflow:
+		current_hp = min(current_hp, hp)
+
+	damage_applied.emit(current_hp)
+
+	return dmg
+
+
 func add_status_effect(effect: StatusEffect) -> void:
 	Logger.append_log(Logger.LogType.BATTLE, "%s was applied to %s." % [ effect.name, name ])
 	if effect is StatChange:

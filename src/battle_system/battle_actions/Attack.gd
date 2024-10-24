@@ -62,6 +62,9 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 			didDmg = true
 			var msg2 = effect.apply_effect(user, target, self, affinity)
 			if len(msg2) > 0:
+				if effect.attack_effect is Damage \
+						and effect.effect_target == Effect.EffectTarget.USER:
+					msg.append("This attack has recoil!")
 				msg.append("%s" % msg2)
 
 				if effect.attack_effect is Damage and target.is_defeated:
