@@ -20,8 +20,8 @@ func check(actor: Variant) -> bool:
 func _has_any(actorAttacks: Array) -> bool:
 	for attack in attacks:
 		if attack in actorAttacks:
-			return true
-	return false
+			return false
+	return true
 
 func _has_all(actorAttacks: Array) -> bool:
 	for attack in attacks:
@@ -38,6 +38,7 @@ func get_requirement_message() -> String:
 		msg.append("This actor must know all of the following spells:")
 
 	for attack in attacks:
-		msg.append(attack.name)
+		# • = U+2022
+		msg.append("• %s" % attack.name)
 
 	return "\n".join(msg)
