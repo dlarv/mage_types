@@ -7,6 +7,19 @@ signal player_was_rewarded(id: int)
 @export var rewards: Array[Item]
 @export var auto_teach_spells := false
 @export var enemy_lock: Npc
+@export_category("Extra rewards")
+@export var money := 0
+@export var affinities := {
+	"blue": 0,
+	"purple": 0,
+	"magenta": 0,
+	"red": 0,
+	"orange": 0,
+	"yellow": 0,
+	"green": 0,
+	"cyan": 0,
+}
+
 
 var _collision_shape: CollisionShape3D:
 	get:
@@ -26,8 +39,6 @@ func _ready():
 		_collision_shape.disabled = true
 		enemy_lock.ai.battle_ended.connect(func(playerWasDefeated: bool): 
 				_collision_shape.disabled = playerWasDefeated)
-
-
 	
 func _on_body_entered(body: Node3D) -> void:
 	if _already_triggered or not body is Player: return
@@ -38,7 +49,14 @@ func _on_body_entered(body: Node3D) -> void:
 		Inventory.add(reward, 1)
 		if auto_teach_spells and reward is SpellScroll:
 			body.battle_actor.learn_spell(reward, i)
-
-		(body as Player).player_menu.characters_menu.player_screen._spells_menu.set_moveset_slot(reward, i)
+			(body as Player).player_menu.characters_menu.player_screen._spells_menu.set_moveset_slot(reward, i)
 		i += 1
+	
+	if money > 0:
+		Inventory.money += money
+	
+	for key in affinities.keys():
+		for actor in body.team:
+			actor.add_affinity(ElementManager.get_element_from_name(key), affinities[key])
+
 	player_was_rewarded.emit(id)

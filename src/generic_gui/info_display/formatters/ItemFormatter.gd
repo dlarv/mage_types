@@ -121,4 +121,18 @@ func _format_requirement(reqs: Array) -> void:
 			req_label.pop()
 			req_label.append_text(" status effect to use this item.")
 
+		elif req is AttackRequirement:
+			if req.incompatible:
+				req_label.append_text("User must not know any of the following spells:")	
+			else:
+				req_label.append_text("User must know all of the following spells:")
+
+			for attack in req.attacks:
+				req_label.push_list(1, RichTextLabel.ListType.LIST_DOTS, true)
+				req_label.push_meta(attack)
+				req_label.append_text(attack.name)
+				req_label.pop() # Pop meta
+				req_label.pop() # Pop list
+
+
 		req_label.newline()

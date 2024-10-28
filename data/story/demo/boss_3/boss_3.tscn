@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3aysvh2jhmt8"]
+[gd_scene load_steps=17 format=3 uid="uid://c3aysvh2jhmt8"]
 
 [ext_resource type="PackedScene" uid="uid://c1yaqlajp62he" path="res://data/story/demo/boss.tscn" id="1_078sc"]
 [ext_resource type="Texture2D" uid="uid://dh66sh8ql3buu" path="res://assets/models/textures/player/blob_diffuse.png" id="2_035nx"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="5_vxy51"]
 [ext_resource type="Resource" uid="uid://dl8tuatv2q3y5" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_defense_down.tres" id="6_3303j"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_5lesv"]
-[ext_resource type="Resource" uid="uid://rvgptfxqtoih" path="res://data/battle_system/battle_actions/attacks/basic_status_spells/block.tres" id="9_8rwbd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpwk7"]
 
@@ -62,42 +61,6 @@ _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
 attacks = Array[ExtResource("4_wbn1y")]([ExtResource("5_8b4a4"), ExtResource("6_3303j"), ExtResource("7_5lesv")])
 
-[sub_resource type="Resource" id="Resource_pahpx"]
-script = ExtResource("3_lqspt")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_blue_affinity = 100
-initial_purple_affinity = 100
-initial_magenta_affinity = 100
-initial_red_affinity = 100
-initial_orange_affinity = 100
-initial_yellow_affinity = 100
-initial_green_affinity = 100
-initial_cyan_affinity = 100
-
-[sub_resource type="Resource" id="Resource_nxxru"]
-script = ExtResource("5_vxy51")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
-_base_speed = 100.0
-_base_evasion = 100.0
-
-[sub_resource type="Resource" id="Resource_orhvy"]
-script = ExtResource("2_g6tqm")
-name = "Jen"
-stat_manager = SubResource("Resource_nxxru")
-hp = 150
-affinity_manager = SubResource("Resource_pahpx")
-_element1 = "magenta"
-_element2 = "magenta"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("4_wbn1y")]([ExtResource("9_8rwbd"), ExtResource("7_5lesv")])
-
 [node name="Boss_3" node_paths=PackedStringArray("ai") instance=ExtResource("1_078sc")]
 actor_name = "Maggie"
 ai = NodePath("Controller")
@@ -112,7 +75,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pq5no")
 actor_name = "Maggie"
 
 [node name="EnemyActor" parent="." index="2"]
-team = Array[ExtResource("2_g6tqm")]([SubResource("Resource_tv6rh"), SubResource("Resource_orhvy")])
+team = Array[ExtResource("2_g6tqm")]([SubResource("Resource_tv6rh")])
 
 [node name="Controller" parent="." index="3"]
 script = ExtResource("2_risbo")

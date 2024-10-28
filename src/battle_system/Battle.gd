@@ -68,7 +68,15 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	actions.append_array(enemyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	actions.sort_custom(func(a, b): return ActorAction.compare_to(a, b))
+	var speedTieBreaker := randf() < 0.5
+	actions.sort_custom(func(a, b):
+		# Higher priority goes first.
+		if a.priority != b.priority:
+			return a.priority > b.priority
+		# Then higher speed goes first.
+		if a.actor.speed != b.actor.speed:
+			return a.actor.speed > b.actor.speed
+		return speedTieBreaker)
 
 	await dialog(false)
 
@@ -101,8 +109,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
-		var animation = action.action.play_animation(userPosition, targetPosition)
-		add_child(animation)
+		action.action.play_animation(userPosition, targetPosition, self)
 
 		# Apply action effects.
 		var msg = action.action.apply_effects(action.actor, action.targets)

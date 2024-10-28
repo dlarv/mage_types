@@ -18,6 +18,7 @@ func setup(team: Array) -> void:
 	_buff_attack = _actor.attacks[BUFF_INDEX]
 	_generate_attack = _actor.attacks[GENERATE_INDEX]
 	_purple = ElementManager.Purple
+	_turn_counter = 0
 
 func get_actions(otherTeam: Array) -> Array:
 	var actions := []

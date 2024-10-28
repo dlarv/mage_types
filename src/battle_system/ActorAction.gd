@@ -26,11 +26,3 @@ static func flee():
 func is_flee():
 	return actor == null
 
-static func compare_to(a: ActorAction, b: ActorAction) -> bool: 
-	# Higher priority goes first.
-	if a.priority != b.priority:
-		return a.priority > b.priority
-	# Then higher speed goes first.
-	if a.actor.speed != b.actor.speed:
-		return a.actor.speed > b.actor.speed
-	return randf() < 0.5

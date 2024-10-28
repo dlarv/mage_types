@@ -7,7 +7,7 @@ const TEAM_INDEX = 1
 
 @export var dialog_resource: DialogueData
 @export var dialog_ids: Array[BattleTalk]
-@export var heal_after_battle := true
+@export var heal_after_battle := true 
 
 var team := []
 

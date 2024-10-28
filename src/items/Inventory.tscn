@@ -1,48 +1,105 @@
-[gd_scene load_steps=13 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=29 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_fvghd"]
 [ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="3_fw4ng"]
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="4_cafs4"]
 [ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="5_kkvrm"]
+[ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="6_2ean2"]
 [ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="6_bgsqo"]
+[ext_resource type="Resource" uid="uid://bqv0v7l6vqeeu" path="res://data/items/spell_scrolls/strikes/m_strike_scroll.tres" id="7_2ftem"]
 [ext_resource type="Resource" uid="uid://cdwq01mquvfiy" path="res://data/items/spell_scrolls/block_scroll.tres" id="7_mpfwv"]
+[ext_resource type="Resource" uid="uid://biujho1cv84is" path="res://data/items/spell_scrolls/strikes/r_strike_scroll.tres" id="8_fxmff"]
+[ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="9_h5mxq"]
+[ext_resource type="Resource" uid="uid://de8dpi4u0pici" path="res://data/items/spell_scrolls/strikes/o_strike_scroll.tres" id="10_4qy7o"]
+[ext_resource type="Resource" uid="uid://4cqj7vqfwjdv" path="res://data/items/spell_scrolls/strikes/c_strike_scroll.tres" id="11_leq67"]
+[ext_resource type="Resource" uid="uid://6xeq4kt74iij" path="res://data/items/spell_scrolls/strikes/g_strike_scroll.tres" id="12_liujo"]
+[ext_resource type="Resource" uid="uid://bs7w81umm54rg" path="res://data/items/spell_scrolls/strikes/y_strike_scroll.tres" id="13_i2sbw"]
 
-[sub_resource type="Resource" id="Resource_u0qk2"]
+[sub_resource type="Resource" id="Resource_gijdr"]
 script = ExtResource("2_fvghd")
 item = ExtResource("3_fw4ng")
 id = 0
 quantity = 3
 
-[sub_resource type="Resource" id="Resource_5ultb"]
+[sub_resource type="Resource" id="Resource_4ea74"]
 script = ExtResource("2_fvghd")
 item = ExtResource("4_cafs4")
 id = 1
 quantity = 3
 
-[sub_resource type="Resource" id="Resource_0k4yi"]
+[sub_resource type="Resource" id="Resource_ff72n"]
 script = ExtResource("2_fvghd")
 item = ExtResource("5_kkvrm")
 id = 0
 quantity = 0
 
-[sub_resource type="Resource" id="Resource_is344"]
+[sub_resource type="Resource" id="Resource_hagwo"]
 script = ExtResource("2_fvghd")
 item = ExtResource("6_bgsqo")
 id = 1
 quantity = 0
 
-[sub_resource type="Resource" id="Resource_ivxyr"]
+[sub_resource type="Resource" id="Resource_0ks55"]
 script = ExtResource("2_fvghd")
 item = ExtResource("7_mpfwv")
 id = 2
 quantity = 0
 
+[sub_resource type="Resource" id="Resource_reu6j"]
+script = ExtResource("2_fvghd")
+item = ExtResource("6_2ean2")
+id = 3
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_6dewu"]
+script = ExtResource("2_fvghd")
+item = ExtResource("7_2ftem")
+id = 4
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_17mru"]
+script = ExtResource("2_fvghd")
+item = ExtResource("8_fxmff")
+id = 5
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_dr5wt"]
+script = ExtResource("2_fvghd")
+item = ExtResource("9_h5mxq")
+id = 6
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_17fij"]
+script = ExtResource("2_fvghd")
+item = ExtResource("10_4qy7o")
+id = 7
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_07d4l"]
+script = ExtResource("2_fvghd")
+item = ExtResource("11_leq67")
+id = 8
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_pc7ke"]
+script = ExtResource("2_fvghd")
+item = ExtResource("12_liujo")
+id = 9
+quantity = 0
+
+[sub_resource type="Resource" id="Resource_1og2r"]
+script = ExtResource("2_fvghd")
+item = ExtResource("13_i2sbw")
+id = 10
+quantity = 0
+
 [node name="Inventory" type="Node"]
 script = ExtResource("1_jis06")
 money = 9999
-_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_u0qk2"), SubResource("Resource_5ultb"), SubResource("Resource_0k4yi"), SubResource("Resource_is344"), SubResource("Resource_ivxyr")])
-regular_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_u0qk2"), SubResource("Resource_5ultb")])
-spell_scrolls = Array[ExtResource("2_fvghd")]([SubResource("Resource_0k4yi"), SubResource("Resource_is344"), SubResource("Resource_ivxyr")])
+reload_items = null
+_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_gijdr"), SubResource("Resource_4ea74"), SubResource("Resource_ff72n"), SubResource("Resource_hagwo"), SubResource("Resource_0ks55"), SubResource("Resource_reu6j"), SubResource("Resource_6dewu"), SubResource("Resource_17mru"), SubResource("Resource_dr5wt"), SubResource("Resource_17fij"), SubResource("Resource_07d4l"), SubResource("Resource_pc7ke"), SubResource("Resource_1og2r")])
+regular_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_gijdr"), SubResource("Resource_4ea74")])
+spell_scrolls = Array[ExtResource("2_fvghd")]([SubResource("Resource_ff72n"), SubResource("Resource_hagwo"), SubResource("Resource_0ks55"), SubResource("Resource_reu6j"), SubResource("Resource_6dewu"), SubResource("Resource_17mru"), SubResource("Resource_dr5wt"), SubResource("Resource_17fij"), SubResource("Resource_07d4l"), SubResource("Resource_pc7ke"), SubResource("Resource_1og2r")])
 _regular_index = Vector2i(0, 2)
-_scroll_index = Vector2i(2, 5)
+_scroll_index = Vector2i(2, 13)

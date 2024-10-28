@@ -34,9 +34,9 @@ var element: ElementalType = ElementManager.Blank:
 @export_multiline var details: String 
 
 # virtual
-func play_animation(start: Vector2, end: Vector2) -> Node:
+func play_animation(start: Vector2, end: Vector2, parent: Node2D) -> Node:
 	var obj = animation.instantiate()
-	obj._play(start, end, element)
+	obj._play(start, end, parent, element)
 	return obj
 
 # virtual

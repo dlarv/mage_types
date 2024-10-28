@@ -1,15 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1ohjifobtsmb"]
+[gd_scene load_steps=24 format=3 uid="uid://c1ohjifobtsmb"]
 
 [ext_resource type="PackedScene" uid="uid://c1yaqlajp62he" path="res://data/story/demo/boss.tscn" id="1_vgjee"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_g65j0"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="3_c521g"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="4_eamw2"]
-[ext_resource type="Resource" uid="uid://mg2jc70wjqo8" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_attack_up.tres" id="5_ixcbq"]
-[ext_resource type="Resource" uid="uid://dl8tuatv2q3y5" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_defense_down.tres" id="6_7ldvj"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_m1h84"]
+[ext_resource type="Resource" uid="uid://c0drgn5hkvd2t" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/terrify.tres" id="5_tuvy8"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleActionAnimation.gd" id="6_lxpqj"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="7_gbm1m"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="8_61wjr"]
-[ext_resource type="Resource" uid="uid://rvgptfxqtoih" path="res://data/battle_system/battle_actions/attacks/basic_status_spells/block.tres" id="9_d4o0u"]
-[ext_resource type="Script" path="res://data/story/demo/boss_3/Boss3Controller.gd" id="10_hb117"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="8_bmtrc"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="9_v16rr"]
+[ext_resource type="Script" path="res://data/story/demo/boss_5/Boss5Controller.gd" id="10_j3m27"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e3ssy"]
 load_path = "res://.godot/imported/blob_diffuse.png-b79938f3b684857897170c5b03f53a65.s3tc.ctex"
@@ -30,7 +31,7 @@ roughness = 0.5
 normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_bi8f2")
 
-[sub_resource type="Resource" id="Resource_5oe8u"]
+[sub_resource type="Resource" id="Resource_be4i0"]
 script = ExtResource("3_c521g")
 TRANSMUTATION_BONUS = 1
 CONSECUTIVE_BONUS = 1
@@ -45,7 +46,54 @@ initial_yellow_affinity = 100
 initial_green_affinity = 100
 initial_cyan_affinity = 100
 
-[sub_resource type="Resource" id="Resource_ap6c2"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppq6a"]
+particle_flag_disable_z = true
+spread = 180.0
+radial_velocity_min = 100.0
+radial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 10.0
+
+[sub_resource type="PackedScene" id="PackedScene_xbica"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Burst", "Node2D", "z_index", "z_as_relative", "script", "animation", "GPUParticles2D", "GPUParticles2D", "emitting", "amount", "process_material", "one_shot", "explosiveness", "randomness"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 4, 2, 0, 3, 1, 4, 2, 1073741829, 3, 0, 1073741824, 0, 7, 6, -1, 6, 8, 4, 9, 5, 10, 6, 11, 7, 12, 8, 13, 9, 0),
+"variants": [5, false, ExtResource("6_lxpqj"), NodePath("GPUParticles2D"), false, 30, SubResource("ParticleProcessMaterial_ppq6a"), true, 1.0, 1.0],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_ed301"]
+script = ExtResource("8_bmtrc")
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_0yygv"]
+script = ExtResource("7_gbm1m")
+attack_effect = SubResource("Resource_ed301")
+chance = 1.0
+effect_target = 1
+
+[sub_resource type="Resource" id="Resource_f00gu"]
+script = ExtResource("9_v16rr")
+effects = Array[ExtResource("7_gbm1m")]([SubResource("Resource_0yygv")])
+cost = 5
+name = "Hit"
+animation = SubResource("PackedScene_xbica")
+_element = "blue"
+priority = 0
+attack_range = 0
+target = 3
+details = ""
+
+[sub_resource type="Resource" id="Resource_c4to6"]
 script = ExtResource("8_61wjr")
 _base_melee_attack = 100.0
 _base_ranged_attack = 100.0
@@ -54,55 +102,21 @@ _base_ranged_defense = 100.0
 _base_speed = 100.0
 _base_evasion = 100.0
 
-[sub_resource type="Resource" id="Resource_tv6rh"]
+[sub_resource type="Resource" id="Resource_c5ols"]
 script = ExtResource("2_g65j0")
-name = "Maggie"
-stat_manager = SubResource("Resource_ap6c2")
-hp = 200
-affinity_manager = SubResource("Resource_5oe8u")
-_element1 = "magenta"
+name = "Orro"
+stat_manager = SubResource("Resource_c4to6")
+hp = 300
+affinity_manager = SubResource("Resource_be4i0")
+_element1 = "orange"
 _element2 = "blank"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("4_eamw2")]([ExtResource("5_ixcbq"), ExtResource("6_7ldvj"), ExtResource("7_m1h84")])
+attacks = Array[ExtResource("4_eamw2")]([ExtResource("5_tuvy8"), SubResource("Resource_f00gu")])
 
-[sub_resource type="Resource" id="Resource_pahpx"]
-script = ExtResource("3_c521g")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_blue_affinity = 100
-initial_purple_affinity = 100
-initial_magenta_affinity = 100
-initial_red_affinity = 100
-initial_orange_affinity = 100
-initial_yellow_affinity = 100
-initial_green_affinity = 100
-initial_cyan_affinity = 100
-
-[sub_resource type="Resource" id="Resource_nxxru"]
-script = ExtResource("8_61wjr")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
-_base_speed = 100.0
-_base_evasion = 100.0
-
-[sub_resource type="Resource" id="Resource_orhvy"]
-script = ExtResource("2_g65j0")
-name = "Jen"
-stat_manager = SubResource("Resource_nxxru")
-hp = 150
-affinity_manager = SubResource("Resource_pahpx")
-_element1 = "magenta"
-_element2 = "magenta"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("4_eamw2")]([ExtResource("9_d4o0u"), ExtResource("7_m1h84")])
-
-[node name="Boss_5" instance=ExtResource("1_vgjee")]
+[node name="Boss_5" node_paths=PackedStringArray("ai") instance=ExtResource("1_vgjee")]
+actor_name = "Orro"
+ai = NodePath("Controller")
 tint = Color(0.999999, 0.371568, 0.99102, 1)
 size = 3.0
 
@@ -111,12 +125,13 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.25, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_pk3d5")
 
 [node name="AggressiveDialogActor" parent="." index="1"]
-actor_name = "Maggie"
+actor_name = "Orro"
+dialog_ids = Array[String](["START_5"])
 
 [node name="EnemyActor" parent="." index="2"]
-team = Array[ExtResource("2_g65j0")]([SubResource("Resource_tv6rh"), SubResource("Resource_orhvy")])
+team = Array[ExtResource("2_g65j0")]([SubResource("Resource_c5ols")])
 
 [node name="Controller" parent="." index="3"]
-script = ExtResource("10_hb117")
+script = ExtResource("10_j3m27")
 
 [editable path="blob2"]

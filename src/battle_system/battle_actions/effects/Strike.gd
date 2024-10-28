@@ -12,8 +12,8 @@ var _element: String = "blank":
 		element = ElementManager.get_element_from_name(value)
 var element: ElementalType
 @export var type: StrikeType
-@export var _positive_factor: float
-@export var _negative_factor: float
+@export var positive_factor: float
+@export var negative_factor: float
 
 
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0):
@@ -26,10 +26,10 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAct
 		StrikeType.STAB,_: actor = user 
 	
 	if actor.get_element(0) == element or actor.get_element(1) == element:
-		factor = _positive_factor
+		factor = positive_factor
 		msg = "It was super effective!"
 	else:
-		factor = _negative_factor
+		factor = negative_factor
 		msg = "It wasn't very effective..."
 
 	dmg *= factor
