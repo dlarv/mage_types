@@ -13,87 +13,52 @@ extends MarginContainer
 var _button_group: ButtonGroup
 var _actor: BattleActor
 
-func setup(actor: BattleActor, movepool: Movepool) -> void:
+func setup(actor: BattleActor) -> void:
 	_actor = actor
-	# Populate moveset
-	for child in moveset_scroller.get_children():
-		moveset_scroller.remove_child(child)
-
 	_button_group = ButtonGroup.new()
-	var index = 0
+
+	var slots := moveset_scroller.get_children().slice(1)
+	_actor.attacks.resize(len(slots))
+	var i := 0
 	for attack in actor.attacks:
-		add_moveset_slot(attack, index)
-		index += 1
-	
-	var length = DEFAULT_SLOTS_COUNT - moveset_scroller.get_child_count() 
-	while length > 0:
-		add_moveset_slot(null, index)
-		index += 1
-		length -= 1
+		var slot = slots[i]
+		slot.set_spell(attack, i)
+
+		actor.spell_learned.connect(func(spell, index): 
+			if slot.index == index: slot.set_spell(spell, index))
+		i += 1
+		slot.button_group = _button_group
 
 	# Populate movepool
-	if movepool != null: 
-		movepool_submenu.setup(movepool)
+	movepool_submenu.setup()
 
-func add_moveset_slot(attack=null, index=-1) -> void:
-	var obj = MovesetSlot.instantiate()
-	obj.button_group = _button_group
-	moveset_scroller.add_child(obj)
-	obj.show_info_requested.connect(_on_show_info.bind(true))
-	obj.set_spell_requested.connect(_on_set_spell_requested)
 
-	obj.set_spell(attack)
-	obj.index = index
+func _on_moveset_slot_pressed(isEmpty: bool, index: int) -> void:
+	if isEmpty:
+		tab_container.current_tab = 1
+		display.view_mode = SpellMenuDisplay.ViewMode.REPLACE
+		var scroll = await display.spell_selected
+		tab_container.current_tab = 0
 
-func remove_moveset_slot() -> void:
-	# Try to remove first empty slot.
-	# If all slots are filled, remove the last one.
-	var child
-	for c in moveset_scroller.get_children():
-		child = c
-		if child.is_empty():
-			child.clear()
-			return
-	child.clear()
+		if scroll == null: return
 
-func set_moveset_slot(scroll: SpellScroll, index: int) -> void:
-	moveset_scroller.get_child(index).set_spell(scroll.spell)
+		_actor.attacks[index] = scroll.spell
+		var failedReqs = _actor.learn_spell(scroll, index)
+		if len(failedReqs) == 0: return
 
-# Where spell is SpellScroll or Attack.
-func _on_show_info(spell, replaceSpell=false) -> void:
-	display.show_info(spell, replaceSpell)
+		# If user could not learn attack, inform player as to why.
+		var msg = "%s cannot learn this spell, as they do not meet certain requirements.\n\nFailed requirements:\n" % _actor.name
+		for req in failedReqs:
+			msg += "%s\n" % req.get_requirement_message()
 
-func _on_set_spell_requested(slot) -> void:
-	tab_container.current_tab = 1
+		popup.dialog_text = msg
+		popup.show()
 
-func _on_spell_menu_display_spell_selected(scroll: SpellScroll) -> void:
-	var selected_button = _button_group.get_pressed_button()
-	if selected_button == null: return
 
-	var index = selected_button.index
+	else:
+		display.view_mode = SpellMenuDisplay.ViewMode.INFO
+		display.show_info(_actor.attacks[index], index)
 
-	tab_container.current_tab = 0
-	selected_button.set_pressed_no_signal(false)
-	var failed_reqs = _actor.learn_spell(scroll, index)
 
-	if len(failed_reqs) == 0: 
-		selected_button.set_spell(scroll.spell)
-		return
-
-	var msg = "%s cannot learn this spell, as they do not meet certain requirements.\n\nFailed requirements:\n" % _actor.name
-
-	for req in failed_reqs:
-		msg += "%s\n" % req.get_requirement_message()
-
-	popup.dialog_text = msg
-	popup.show()
-
-func _on_spell_menu_display_canceled() -> void:
-	var selected_button = _button_group.get_pressed_button()
-	tab_container.current_tab = 0
-
-	if selected_button == null or selected_button.spell == null: return
-	_on_show_info(selected_button.spell)
-
-func _on_spell_menu_display_replace_spell_requested() -> void:
-	tab_container.current_tab = 1
+func _on_spell_menu_display_forget_spell_requested(index: int) -> void:
+	_actor.learn_spell(null, index)

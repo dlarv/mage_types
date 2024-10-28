@@ -44,13 +44,11 @@ func _on_body_entered(body: Node3D) -> void:
 	if _already_triggered or not body is Player: return
 	_already_triggered = true
 
-	var i = len(body.battle_actor.attacks)
 	for reward in rewards:
 		Inventory.add(reward, 1)
 		if auto_teach_spells and reward is SpellScroll:
-			body.battle_actor.learn_spell(reward, i)
-			(body as Player).player_menu.characters_menu.player_screen._spells_menu.set_moveset_slot(reward, i)
-		i += 1
+			body.battle_actor.learn_spell(reward)
+			# (body as Player).player_menu.characters_menu.player_screen._spells_menu.set_moveset_slot(reward, i)
 	
 	if money > 0:
 		Inventory.money += money

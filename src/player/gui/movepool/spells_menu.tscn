@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b035qwjaysn7d"]
+[gd_scene load_steps=10 format=3 uid="uid://b035qwjaysn7d"]
 
 [ext_resource type="Script" path="res://src/player/gui/movepool/SpellsMenu.gd" id="1_n17o7"]
 [ext_resource type="PackedScene" uid="uid://q4ykanwkcbv" path="res://src/player/gui/movepool/components/moveset_slot.tscn" id="2_qbgx0"]
 [ext_resource type="PackedScene" uid="uid://10l6iyehmyos" path="res://src/player/gui/movepool/components/movepool_submenu.tscn" id="3_hplqh"]
 [ext_resource type="PackedScene" uid="uid://8mmt12j618us" path="res://src/player/gui/movepool/components/spell_menu_display.tscn" id="4_sd1mb"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_la8wq"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_4t35w"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_au08b"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_1gyt7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6rra0"]
 
 [node name="SpellsMenu" type="MarginContainer" node_paths=PackedStringArray("tab_container", "movepool_submenu", "display", "moveset_scroller", "popup")]
 anchors_preset = 15
@@ -45,18 +55,23 @@ text = "Spells:"
 
 [node name="MovesetSlot1" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_la8wq")
 
 [node name="MovesetSlot2" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_4t35w")
 
 [node name="MovesetSlot3" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_au08b")
 
 [node name="MovesetSlot4" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_1gyt7")
 
 [node name="MovesetSlot5" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
+button_group = SubResource("ButtonGroup_6rra0")
 
 [node name="MovepoolSubmenu" parent="HBoxContainer/TabContainer" instance=ExtResource("3_hplqh")]
 visible = false
@@ -67,10 +82,11 @@ layout_mode = 2
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 
-[connection signal="set_spell_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot1" to="." method="_on_set_spell_requested"]
-[connection signal="show_info_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot1" to="." method="_on_show_info" binds= [true]]
-[connection signal="set_spell_requested" from="HBoxContainer/TabContainer/Moveset/MovesetSlot2" to="." method="_on_set_spell_requested"]
-[connection signal="show_info_requested" from="HBoxContainer/TabContainer/MovepoolSubmenu" to="." method="_on_show_info" binds= [false]]
-[connection signal="canceled" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_canceled"]
-[connection signal="replace_spell_requested" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_replace_spell_requested"]
+[connection signal="pressed2" from="HBoxContainer/TabContainer/Moveset/MovesetSlot1" to="." method="_on_moveset_slot_pressed"]
+[connection signal="pressed2" from="HBoxContainer/TabContainer/Moveset/MovesetSlot2" to="." method="_on_moveset_slot_pressed"]
+[connection signal="pressed2" from="HBoxContainer/TabContainer/Moveset/MovesetSlot3" to="." method="_on_moveset_slot_pressed"]
+[connection signal="pressed2" from="HBoxContainer/TabContainer/Moveset/MovesetSlot4" to="." method="_on_moveset_slot_pressed"]
+[connection signal="pressed2" from="HBoxContainer/TabContainer/Moveset/MovesetSlot5" to="." method="_on_moveset_slot_pressed"]
+[connection signal="show_info_requested" from="HBoxContainer/TabContainer/MovepoolSubmenu" to="HBoxContainer/SpellMenuDisplay" method="show_info"]
+[connection signal="forget_spell_requested" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_forget_spell_requested"]
 [connection signal="spell_selected" from="HBoxContainer/SpellMenuDisplay" to="." method="_on_spell_menu_display_spell_selected"]

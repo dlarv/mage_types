@@ -9,6 +9,7 @@ signal status_effect_added(effect)
 signal status_effects_removed(effect)
 signal damage_applied(hp)
 signal element_changed(id, element)
+signal spell_learned(spell, index)
 
 @export
 var name : String = "Guy" 
@@ -103,7 +104,6 @@ func set_element(id: int, element: ElementalType) -> Array:
 	var effect = statuses.check_phobic(element)
 	if effect != null:
 		dmg = hp * effect.strength
-		current_hp -= dmg
 		msg.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 	effect = statuses.check_philic(element)
@@ -111,6 +111,7 @@ func set_element(id: int, element: ElementalType) -> Array:
 		dmg = hp * effect.strength
 		current_hp += dmg
 		msg.append("%s was healed by its philia! (%d hp)" % [ name, dmg ])
+
 	if dmg != 0:
 		apply_damage(dmg)
 
@@ -127,14 +128,25 @@ func is_element(element: ElementalType) -> bool:
 # Teaches actor spell contained within scroll.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
 func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
+	if scroll == null:
+		attacks.remove_at(index)
+		attacks.append(null)
+
+		for i in range(index, len(attacks)): spell_learned.emit(attacks[i], i)
+		return []
+
 	if index == -1:
-		index = len(attacks)
+		index = attacks.find(null)
+		if index == -1:
+			index = len(attacks)
 	if index >= len(attacks):
 		attacks.resize(index + 1)
 	
 	var output := scroll.check_requirements(self)
 	if len(output) == 0:
 		attacks[index] = scroll.spell
+		spell_learned.emit(scroll.spell, index)
+
 	return output
 
 func use_gradient_sprite()-> void:
@@ -240,8 +252,7 @@ func resolve_end_of_turn()-> Array:
 	if healing > 0:
 		mod -= healing
 		msg.append("%s recovered %d health!" % [ name, hp * healing])
-	current_hp -= hp * mod
-	damage_applied.emit(current_hp)
+	apply_damage(hp * mod)
 
 	# Calculate consecutive turn affinity, if any.
 	var bonus := affinity_manager.gain_affinity(element1, AffinityManager.BonusReason.CONSECUTIVE)

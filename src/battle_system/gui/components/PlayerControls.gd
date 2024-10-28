@@ -54,6 +54,7 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 			if(tabIndex != index): return
 			# Disable/Enable attacks based on mana.
 			for j in range(len(ally.attacks)):
+				if ally.attacks[j] == null: continue
 				var attack = ally.attacks[j]
 				var button = (attacks_panel.get_child(index).get_child(0).get_child(j))
 				button.is_locked = !attack.is_action_available(ally)
@@ -84,6 +85,7 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	attacks_panel.add_child(scroller)
 
 	for attack in actor.attacks:
+		if attack == null: continue
 		# Init.
 		var button: ThreeStateButton = three_state_button.instantiate()
 		button.button_group = group
@@ -224,4 +226,3 @@ func on_action_selected(state: int, index: int, action: BattleAction) -> void:
 			_allow_end_turn = _edge_index >= _final_index
 		ThreeStateButton.SECOND_STATE_UNSELECTED:
 			action_target_selection_cancelled.emit()
-

@@ -53,7 +53,7 @@ func init_actor() -> void:
 		_bias_icon.element = actor.elemental_bias
 	
 	if _spells_menu != null:
-		_spells_menu.setup(actor, movepool)
+		_spells_menu.setup(actor)
 
 func _on_stat_modified(stat: String, amount: float) -> void:
 	match stat:
