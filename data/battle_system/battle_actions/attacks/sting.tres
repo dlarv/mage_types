@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://bwpyxutff85nq"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_v7dve"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_v7dve"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_7ia5t"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="3_8816p"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_elq2r"]

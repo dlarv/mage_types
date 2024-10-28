@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=14 format=3 uid="uid://bqv0v7l6vqeeu"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_e5w7o"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_3rxgx"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_px72i"]
+[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="3_ckydo"]
+[ext_resource type="Resource" uid="uid://ctlauvjcfmpog" path="res://data/battle_system/battle_actions/attacks/strikes/blue_strike.tres" id="3_ltivr"]
+[ext_resource type="Resource" uid="uid://bhx77misimdoa" path="res://data/battle_system/battle_actions/attacks/strikes/cyan_strike.tres" id="4_5etsb"]
+[ext_resource type="Resource" uid="uid://bfjk3jf15fgeh" path="res://data/battle_system/battle_actions/attacks/strikes/green_strike.tres" id="5_kafo3"]
+[ext_resource type="Resource" uid="uid://bxhigobikymm" path="res://data/battle_system/battle_actions/attacks/strikes/orange_strike.tres" id="7_ktkq6"]
+[ext_resource type="Resource" uid="uid://idlpjrj0qtgr" path="res://data/battle_system/battle_actions/attacks/strikes/purple_strike.tres" id="8_84ot4"]
+[ext_resource type="Resource" uid="uid://b5rkqbayc06h6" path="res://data/battle_system/battle_actions/attacks/strikes/red_strike.tres" id="9_higk7"]
+[ext_resource type="Resource" uid="uid://d5le4hwdg070" path="res://data/battle_system/battle_actions/attacks/strikes/yellow_strike.tres" id="10_f5dcc"]
+[ext_resource type="Script" path="res://src/items/requirements/AttackRequirement.gd" id="11_7bmj2"]
+
+[sub_resource type="Resource" id="Resource_dd5bq"]
+script = ExtResource("11_7bmj2")
+attacks = Array[ExtResource("2_px72i")]([ExtResource("3_ltivr"), ExtResource("4_5etsb"), ExtResource("5_kafo3"), ExtResource("7_ktkq6"), ExtResource("8_84ot4"), ExtResource("9_higk7"), ExtResource("10_f5dcc")])
+incompatible = true
+battle_relevant = false
+
+[resource]
+script = ExtResource("2_3rxgx")
+spell = ExtResource("3_ckydo")
+name = "Magenta Strike Scroll"
+requirements = Array[ExtResource("1_e5w7o")]([SubResource("Resource_dd5bq")])
+details = ""
+tags = []

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RandomPhobia" load_steps=3 format=3 uid="uid://bvhygcjrk2h5a"]
+
+[ext_resource type="Resource" uid="uid://bvadtuxed6228" path="res://data/battle_system/status_effects/elemental_effects/elemental_phobia.tres" id="1_iwas6"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/RandomPhobia.gd" id="2_3nwx1"]
+
+[resource]
+script = ExtResource("2_3nwx1")
+Phobia = ExtResource("1_iwas6")
+min_count = 3
+max_count = 3
+name = ""
+chance = 1.0
+strength = 0.0
+message = ""

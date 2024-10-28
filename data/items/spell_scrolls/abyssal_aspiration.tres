@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://cwn5jymtvdcry"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_pxgbk"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_g5mnr"]
+[ext_resource type="Resource" uid="uid://bxeeen1sy0nex" path="res://data/battle_system/battle_actions/attacks/abyssal_aspirations.tres" id="3_3xvoh"]
+
+[resource]
+script = ExtResource("2_g5mnr")
+spell = ExtResource("3_3xvoh")
+name = "Dark Aspirations Scroll"
+requirements = Array[ExtResource("1_pxgbk")]([])
+details = ""
+tags = []

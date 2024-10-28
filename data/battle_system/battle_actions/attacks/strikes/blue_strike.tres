@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://ctlauvjcfmpog"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_2cjcd"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_op2ym"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_op2ym"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_8wafb"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_6x0xa"]
 
@@ -9,8 +9,8 @@
 script = ExtResource("3_6x0xa")
 _element = "blue"
 type = 1
-_positive_factor = 2.0
-_negative_factor = 0.5
+positive_factor = 1.5
+negative_factor = 0.5
 name = ""
 chance = 1.0
 strength = 50.0

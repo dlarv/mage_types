@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RegularItem" load_steps=10 format=3 uid="uid://bwldq3pk8rvsh"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="1_ar45h"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_qwm21"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_qwm21"]
 [ext_resource type="Script" path="res://src/items/RegularItem.gd" id="1_ut3pp"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_bxomy"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="3_3vwkb"]
@@ -9,6 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_bh5co"]
 script = ExtResource("3_3vwkb")
+allow_overflow = false
 name = ""
 chance = 1.0
 strength = 0.5

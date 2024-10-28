@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://rvgptfxqtoih"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_w2g4a"]
+[ext_resource type="PackedScene" uid="uid://ch3nnueyugf36" path="res://src/battle_system/battle_actions/animations/wall.tscn" id="1_pp0rm"]
 [ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="3_76751"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_f7l1n"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_nmpvg"]
@@ -16,7 +16,7 @@ script = ExtResource("5_nmpvg")
 effects = Array[ExtResource("4_f7l1n")]([SubResource("Resource_gq6w5")])
 cost = 10
 name = "Block"
-animation = ExtResource("2_w2g4a")
+animation = ExtResource("1_pp0rm")
 _element = "cyan"
 priority = 1
 attack_range = 2

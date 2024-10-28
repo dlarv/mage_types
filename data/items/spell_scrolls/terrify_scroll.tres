@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://bndwxx88tetyb"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_28tmt"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_exxyv"]
+[ext_resource type="Resource" uid="uid://c0drgn5hkvd2t" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/terrify.tres" id="3_b6nbt"]
+
+[resource]
+script = ExtResource("2_exxyv")
+spell = ExtResource("3_b6nbt")
+name = "Terrify Scroll"
+requirements = Array[ExtResource("1_28tmt")]([])
+details = ""
+tags = []

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://53axni6101at"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="2_3fvdj"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_3fvdj"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_6g4pa"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_scijl"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_h8btn"]

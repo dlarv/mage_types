@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch3nnueyugf36"]
+
+[ext_resource type="PackedScene" uid="uid://djuyvkmv08sf3" path="res://src/battle_system/battle_actions/base_particle_animation.tscn" id="1_51lt6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0lmd"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(100, 100, 1)
+spread = 10.0
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 10.0
+
+[node name="Wall" instance=ExtResource("1_51lt6")]
+
+[node name="GPUParticles2D" parent="." index="0"]
+position = Vector2(0, 100)
+rotation = -1.5708
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_v0lmd")
+lifetime = 0.75
+explosiveness = 0.05

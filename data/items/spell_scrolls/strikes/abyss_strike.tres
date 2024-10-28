@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://dg4sxkniinu41"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_7i7dq"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_tmvnf"]
+[ext_resource type="Resource" uid="uid://olgnrmvw2spc" path="res://data/battle_system/battle_actions/attacks/strikes/abyss_strike.tres" id="3_0rw5k"]
+
+[resource]
+script = ExtResource("2_tmvnf")
+spell = ExtResource("3_0rw5k")
+name = "Abyss Strike"
+requirements = Array[ExtResource("1_7i7dq")]([])
+details = ""
+tags = []

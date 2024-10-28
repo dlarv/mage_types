@@ -1,0 +1,43 @@
+extends ItemRequirement
+class_name AttackRequirement
+
+@export var attacks: Array[Attack]
+## If true, character trying to use this item cannot know any of these attacks.
+## If false, they must know all of these attacks.
+@export var incompatible: bool
+
+# override
+func check(actor: Variant) -> bool:
+	if(actor is BaseCompanion):
+		actor = actor.battle_actor
+	if(actor is Player):
+		actor = actor.battle_actor
+
+	if incompatible:
+		return _has_any(actor.attacks)
+	return _has_all(actor.attacks)
+
+func _has_any(actorAttacks: Array) -> bool:
+	for attack in attacks:
+		if attack in actorAttacks:
+			return true
+	return false
+
+func _has_all(actorAttacks: Array) -> bool:
+	for attack in attacks:
+		if not attack in actorAttacks:
+			return false
+	return true 
+
+
+func get_requirement_message() -> String:
+	var msg := []
+	if incompatible:
+		msg.append("This actor cannot know any of the following spells:")
+	else:
+		msg.append("This actor must know all of the following spells:")
+
+	for attack in attacks:
+		msg.append(attack.name)
+
+	return "\n".join(msg)

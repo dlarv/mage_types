@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=14 format=3 uid="uid://fiifovcljr50"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_j17i2"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_iberu"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_md488"]
+[ext_resource type="Resource" uid="uid://idlpjrj0qtgr" path="res://data/battle_system/battle_actions/attacks/strikes/purple_strike.tres" id="3_8174b"]
+[ext_resource type="Resource" uid="uid://ctlauvjcfmpog" path="res://data/battle_system/battle_actions/attacks/strikes/blue_strike.tres" id="3_n8u06"]
+[ext_resource type="Resource" uid="uid://bhx77misimdoa" path="res://data/battle_system/battle_actions/attacks/strikes/cyan_strike.tres" id="4_i57l6"]
+[ext_resource type="Resource" uid="uid://bfjk3jf15fgeh" path="res://data/battle_system/battle_actions/attacks/strikes/green_strike.tres" id="5_ihvr6"]
+[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="6_n71r6"]
+[ext_resource type="Resource" uid="uid://bxhigobikymm" path="res://data/battle_system/battle_actions/attacks/strikes/orange_strike.tres" id="7_ycfh5"]
+[ext_resource type="Resource" uid="uid://b5rkqbayc06h6" path="res://data/battle_system/battle_actions/attacks/strikes/red_strike.tres" id="9_ykv1f"]
+[ext_resource type="Resource" uid="uid://d5le4hwdg070" path="res://data/battle_system/battle_actions/attacks/strikes/yellow_strike.tres" id="10_adjg7"]
+[ext_resource type="Script" path="res://src/items/requirements/AttackRequirement.gd" id="11_0rhgj"]
+
+[sub_resource type="Resource" id="Resource_u4wml"]
+script = ExtResource("11_0rhgj")
+attacks = Array[ExtResource("2_iberu")]([ExtResource("3_n8u06"), ExtResource("4_i57l6"), ExtResource("5_ihvr6"), ExtResource("6_n71r6"), ExtResource("7_ycfh5"), ExtResource("9_ykv1f"), ExtResource("10_adjg7")])
+incompatible = true
+battle_relevant = false
+
+[resource]
+script = ExtResource("2_md488")
+spell = ExtResource("3_8174b")
+name = "Purple Strike Scroll"
+requirements = Array[ExtResource("1_j17i2")]([SubResource("Resource_u4wml")])
+details = ""
+tags = []

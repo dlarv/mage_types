@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://cfagm6rkf5sym"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_h0bbq"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/battle_actions/animations/burst.tscn" id="1_h4747"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_h4747"]
 [ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="1_scdxq"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_vi5tw"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_unwl5"]
