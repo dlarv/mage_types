@@ -42,7 +42,7 @@ func _on_moveset_slot_pressed(isEmpty: bool, index: int) -> void:
 
 		if scroll == null: return
 
-		_actor.attacks[index] = scroll.spell
+		# _actor.attacks[index] = scroll.spell
 		var failedReqs = _actor.learn_spell(scroll, index)
 		if len(failedReqs) == 0: return
 
