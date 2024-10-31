@@ -23,6 +23,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Green Strike"
 script = ExtResource("4_816ed")
 effects = Array[ExtResource("2_ir48y")]([SubResource("Resource_6k5so")])
 cost = 10

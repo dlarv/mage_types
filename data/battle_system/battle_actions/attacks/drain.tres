@@ -21,6 +21,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Drain"
 script = ExtResource("2_ieu5f")
 effects = Array[ExtResource("1_05kai")]([SubResource("Resource_cogv3")])
 cost = 1

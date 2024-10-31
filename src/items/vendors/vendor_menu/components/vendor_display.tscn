@@ -37,6 +37,7 @@ layout_mode = 2
 placeholder_text = "0"
 alignment = 1
 max_length = 4
+editable = false
 
 [node name="Plus_Button" type="Button" parent="VBoxContainer/QuantityControls"]
 layout_mode = 2
@@ -58,3 +59,5 @@ text = "Cancel"
 [connection signal="pressed" from="VBoxContainer/QuantityControls/Minus_Button" to="." method="_on_quantity_button_pressed" binds= [-1]]
 [connection signal="pressed" from="VBoxContainer/QuantityControls/Plus_Button" to="." method="_on_quantity_button_pressed" binds= [1]]
 [connection signal="pressed" from="VBoxContainer/QuantityControls/Plus10_Button" to="." method="_on_quantity_button_pressed" binds= [10]]
+[connection signal="pressed" from="VBoxContainer/Buy_Button" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Cancel_Button" to="." method="_on_cancel_button_pressed"]

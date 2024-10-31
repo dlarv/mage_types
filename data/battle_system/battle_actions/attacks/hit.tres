@@ -19,6 +19,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Hit"
 script = ExtResource("3_ckr1o")
 effects = Array[ExtResource("2_7v22j")]([SubResource("Resource_0yygv")])
 cost = 5

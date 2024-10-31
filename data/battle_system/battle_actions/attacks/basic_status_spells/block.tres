@@ -12,6 +12,7 @@ chance = 1.0
 effect_target = 0
 
 [resource]
+resource_name = "Block"
 script = ExtResource("5_nmpvg")
 effects = Array[ExtResource("4_f7l1n")]([SubResource("Resource_gq6w5")])
 cost = 10

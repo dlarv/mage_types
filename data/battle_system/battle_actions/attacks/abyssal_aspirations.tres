@@ -38,6 +38,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Dark Aspirations"
 script = ExtResource("2_abbsg")
 effects = Array[ExtResource("1_46hmk")]([SubResource("Resource_5kdg2"), SubResource("Resource_ptp5f")])
 cost = 0

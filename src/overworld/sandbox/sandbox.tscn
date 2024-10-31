@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=76 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="Script" path="res://src/overworld/sandbox/Sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
@@ -6,37 +6,37 @@
 [ext_resource type="Resource" uid="uid://cdwq01mquvfiy" path="res://data/items/spell_scrolls/block_scroll.tres" id="5_27sh5"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="9_8nykr"]
 [ext_resource type="PackedScene" uid="uid://cw55perie2kol" path="res://data/story/demo/boss_2/boss_2.tscn" id="9_rt61r"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_7knec"]
-[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="10_pljnd"]
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="11_511t6"]
 [ext_resource type="PackedScene" uid="uid://c3aysvh2jhmt8" path="res://data/story/demo/boss_3/boss_3.tscn" id="12_vyjap"]
-[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="13_2y8ye"]
 [ext_resource type="PackedScene" uid="uid://ce36kh40ekgv5" path="res://data/story/demo/boss_4/boss_4.tscn" id="13_64su3"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="13_n8q2y"]
 [ext_resource type="PackedScene" uid="uid://c1ohjifobtsmb" path="res://data/story/demo/boss_5/boss_5.tscn" id="14_q0wnl"]
 [ext_resource type="PackedScene" uid="uid://8voq463tp3pa" path="res://data/story/demo/boss_6/boss_6.tscn" id="15_2qcw7"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="16_571l7"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 [ext_resource type="PackedScene" uid="uid://btsew7rcy0ge2" path="res://data/story/demo/boss_7/boss_7.tscn" id="16_qvblr"]
 [ext_resource type="PackedScene" uid="uid://c86ll0tsqaqyf" path="res://data/story/demo/boss_8/boss_8.tscn" id="17_asi6o"]
-[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="18_iwna7"]
 [ext_resource type="PackedScene" uid="uid://r08onqdbxja" path="res://data/story/demo/boss_1/boss_1.tscn" id="20_pqg08"]
 [ext_resource type="PackedScene" uid="uid://d1fwqalqmoi0q" path="res://src/overworld/characters/actors/vendor_actor.tscn" id="21_1qeiq"]
-[ext_resource type="PackedScene" uid="uid://df78txj1jxdu7" path="res://src/battle_system/opponent_controllers/scripted_opponent.tscn" id="21_arnrn"]
-[ext_resource type="PackedScene" uid="uid://3g07bhv6nc63" path="res://src/overworld/characters/actors/aggressive_story_actor.tscn" id="22_4ehv4"]
 [ext_resource type="PackedScene" uid="uid://dea7tl3imqnuh" path="res://src/overworld/characters/npc.tscn" id="22_73imk"]
 [ext_resource type="Script" path="res://src/items/vendors/vendor_menu/VendorItem.gd" id="22_af38h"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="23_65hmq"]
-[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="23_dwqwn"]
+[ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="23_ecc4b"]
+[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="23_iggdn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="24_demi4"]
+[ext_resource type="Resource" uid="uid://657el8nv01yf" path="res://data/items/spell_scrolls/throw_scroll.tres" id="24_ectad"]
 [ext_resource type="PackedScene" uid="uid://dv7uq5f17j1gx" path="res://assets/models/sandbox_environment.blend" id="24_rmwx5"]
 [ext_resource type="Shader" path="res://assets/shaders/clay.gdshader" id="25_bcnfn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="25_lyxcg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="26_571by"]
+[ext_resource type="Resource" uid="uid://cwn5jymtvdcry" path="res://data/items/spell_scrolls/abyssal_aspiration.tres" id="27_fg1rv"]
 [ext_resource type="PackedScene" uid="uid://denwrcbpm4d2q" path="res://src/overworld/reward_trigger.tscn" id="27_jybjt"]
 [ext_resource type="Resource" uid="uid://d27gkasg854gk" path="res://data/story/demo/demo_dialog.tres" id="28_1sf1r"]
+[ext_resource type="Resource" uid="uid://cjis241a7rywd" path="res://data/items/spell_scrolls/blood_shock_scroll.tres" id="28_uvryl"]
 [ext_resource type="Script" path="res://src/items/Item.gd" id="28_ylwvx"]
+[ext_resource type="Resource" uid="uid://bpgkg6f5qnd42" path="res://data/items/spell_scrolls/drain_scroll.tres" id="29_d4uwd"]
 [ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/items/vendors/vendor_menu/vendor_menu.tscn" id="30_85agy"]
+[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="30_mwd5c"]
+[ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/terrify_scroll.tres" id="30_qdpk6"]
+[ext_resource type="Resource" uid="uid://dg4sxkniinu41" path="res://data/items/spell_scrolls/strikes/abyss_strike.tres" id="31_aj1j1"]
 [ext_resource type="Script" path="res://src/overworld/sandbox/GodCamera.gd" id="32_fky1l"]
 [ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="35_4bg3c"]
 [ext_resource type="Resource" uid="uid://4cqj7vqfwjdv" path="res://data/items/spell_scrolls/strikes/c_strike_scroll.tres" id="36_afgtg"]
@@ -56,52 +56,137 @@ script = ExtResource("25_lyxcg")
 [sub_resource type="RichTextEffect" id="RichTextEffect_jaqc2"]
 script = ExtResource("26_571by")
 
-[sub_resource type="Resource" id="Resource_yhg8p"]
-script = ExtResource("13_2y8ye")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_blue_affinity = 100
-initial_purple_affinity = 100
-initial_magenta_affinity = 100
-initial_red_affinity = 100
-initial_orange_affinity = 100
-initial_yellow_affinity = 100
-initial_green_affinity = 100
-initial_cyan_affinity = 100
-
-[sub_resource type="Resource" id="Resource_eyibd"]
-script = ExtResource("16_571l7")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
-_base_speed = 100.0
-_base_evasion = 100.0
-
-[sub_resource type="Resource" id="Resource_buppp"]
-script = ExtResource("10_7knec")
-name = "Guy"
-stat_manager = SubResource("Resource_eyibd")
-hp = 1000
-affinity_manager = SubResource("Resource_yhg8p")
-_element1 = "blue"
-_element2 = "blank"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("13_n8q2y")]([])
-
 [sub_resource type="Resource" id="Resource_ng3hd"]
+resource_name = "Healing Potion"
 script = ExtResource("22_af38h")
-item = ExtResource("23_dwqwn")
+item = ExtResource("30_mwd5c")
 cost = 0
 disabled = false
 
-[sub_resource type="Resource" id="Resource_7qngb"]
+[sub_resource type="Resource" id="Resource_gi780"]
+resource_name = "Poison Heal"
 script = ExtResource("22_af38h")
-item = ExtResource("23_dwqwn")
-cost = 1000
+item = ExtResource("23_iggdn")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_g75m8"]
+resource_name = "Hit Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("23_ecc4b")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_hb871"]
+resource_name = "Throw Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("24_ectad")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_t2rff"]
+resource_name = "Block Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("5_27sh5")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_nvamf"]
+resource_name = "Sting Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("4_mefin")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_rvmtp"]
+resource_name = "Dark Aspirations Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("27_fg1rv")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_qn62k"]
+resource_name = "Blood Shock Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("28_uvryl")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_1grwh"]
+resource_name = "Drain Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("29_d4uwd")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_fseok"]
+resource_name = "Terrify Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("30_qdpk6")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_2yuee"]
+resource_name = "Abyss Strike"
+script = ExtResource("22_af38h")
+item = ExtResource("31_aj1j1")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_o8ca4"]
+resource_name = "Blue Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("35_4bg3c")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_86kse"]
+resource_name = "Cyan Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("36_afgtg")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_qvwji"]
+resource_name = "Green Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("37_ylib8")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_vm372"]
+resource_name = "Magenta Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("38_v3lr5")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_26dj0"]
+resource_name = "Orange Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("39_rbn3k")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_b1bl3"]
+resource_name = "Purple Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("40_mtsbp")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_clxm0"]
+resource_name = "Red Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("41_je5pc")
+cost = 0
+disabled = false
+
+[sub_resource type="Resource" id="Resource_1on6h"]
+resource_name = "Yellow Strike Scroll"
+script = ExtResource("22_af38h")
+item = ExtResource("42_dlkm6")
+cost = 0
 disabled = false
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0tv6f"]
@@ -206,34 +291,6 @@ player_menu = NodePath("../../../CanvasLayer/PlayerMenu")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 5)
 current = true
 
-[node name="DialogEnemy" parent="World/Overworld/Characters_Empty" instance=ExtResource("22_73imk")]
-transform = Transform3D(0.509852, 0, -0.860262, 0, 1, 0, 0.860262, 0, 0.509852, -56.3756, 87.0006, 34.7444)
-visible = false
-tint = Color(1, 0.525908, 0.460418, 1)
-use_tint = true
-
-[node name="AggressiveDialogActor" parent="World/Overworld/Characters_Empty/DialogEnemy" node_paths=PackedStringArray("enemy_actor") instance=ExtResource("22_4ehv4")]
-enemy_actor = NodePath("../EnemyActor")
-dialog_ids = Array[String](["FIGHT"])
-
-[node name="EnemyActor" parent="World/Overworld/Characters_Empty/DialogEnemy" node_paths=PackedStringArray("_collision_shape", "ai") instance=ExtResource("10_pljnd")]
-visible = false
-_collision_shape = NodePath("CollisionShape3D")
-ai = NodePath("../ScriptedOpponent")
-team = Array[ExtResource("10_7knec")]([SubResource("Resource_buppp")])
-fight_on_collision = false
-
-[node name="ScriptedOpponent" parent="World/Overworld/Characters_Empty/DialogEnemy" instance=ExtResource("21_arnrn")]
-
-[node name="DialogCharacter" parent="World/Overworld/Characters_Empty" instance=ExtResource("22_73imk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5978, 88.9384, 14.608)
-visible = false
-tint = Color(7.70092e-06, 0.611222, 0.944655, 1)
-use_tint = true
-
-[node name="StoryActor" parent="World/Overworld/Characters_Empty/DialogCharacter" instance=ExtResource("18_iwna7")]
-dialog_ids = Array[String](["TEST"])
-
 [node name="Vendor" parent="World/Overworld/Characters_Empty" instance=ExtResource("22_73imk")]
 transform = Transform3D(0.634164, 0, -0.773199, 0, 1, 0, 0.773199, 0, 0.634164, -123.064, -2.06803, -15.5534)
 tint = Color(0, 0.753689, 0.153071, 1)
@@ -241,7 +298,9 @@ use_tint = true
 size = 1.0
 
 [node name="VendorActor" parent="World/Overworld/Characters_Empty/Vendor" instance=ExtResource("21_1qeiq")]
-items = Array[ExtResource("22_af38h")]([SubResource("Resource_ng3hd"), SubResource("Resource_7qngb")])
+items = Array[ExtResource("22_af38h")]([SubResource("Resource_ng3hd"), SubResource("Resource_gi780")])
+spells = Array[ExtResource("22_af38h")]([SubResource("Resource_g75m8"), SubResource("Resource_hb871"), SubResource("Resource_t2rff"), SubResource("Resource_nvamf"), SubResource("Resource_rvmtp"), SubResource("Resource_qn62k"), SubResource("Resource_1grwh"), SubResource("Resource_fseok"), SubResource("Resource_2yuee"), SubResource("Resource_o8ca4"), SubResource("Resource_86kse"), SubResource("Resource_qvwji"), SubResource("Resource_vm372"), SubResource("Resource_26dj0"), SubResource("Resource_b1bl3"), SubResource("Resource_clxm0"), SubResource("Resource_1on6h")])
+add_item = null
 offset = Vector3(-0.3, 2, 0)
 dialog_ids = Array[String](["VENDOR_0"])
 

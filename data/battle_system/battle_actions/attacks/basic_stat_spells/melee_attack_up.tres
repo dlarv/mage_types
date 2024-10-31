@@ -12,6 +12,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "M. Attack Boost"
 script = ExtResource("1_xp4rx")
 effects = Array[ExtResource("3_5g38d")]([SubResource("Resource_ibimo")])
 cost = 10

@@ -12,6 +12,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Glaukophobia"
 script = ExtResource("6_pej2m")
 effects = Array[ExtResource("2_upu2q")]([SubResource("Resource_r063c")])
 cost = 10

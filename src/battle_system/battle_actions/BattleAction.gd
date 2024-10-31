@@ -7,7 +7,10 @@ class_name BattleAction
 enum TargetType { SELF, ALLY, ALLIES, ENEMY, ENEMIES }
 enum AttackRange { MELEE, RANGED, STATUS }
 
-@export var name: String = "Hit"
+@export var name: String = "Hit":
+	set(value):
+		name = value
+		resource_name = value
 @export var animation: PackedScene
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":

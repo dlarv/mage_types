@@ -22,6 +22,7 @@ chance = 1.0
 effect_target = 1
 
 [sub_resource type="Resource" id="Resource_b15sa"]
+resource_name = "Healing Potion"
 script = ExtResource("1_ar45h")
 effects = Array[ExtResource("2_bxomy")]([SubResource("Resource_qqr4i")])
 name = "Healing Potion"

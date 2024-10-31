@@ -100,7 +100,8 @@ func get_item(item: Item) -> ItemSlot:
 	else:
 		# NOT YET IMPLEMENTED
 		return
-	var index = list.bsearch_custom(item, func(a, b): return a.id < b.id)
+	var dummySlot = ItemSlot.new(item)
+	var index = list.bsearch_custom(dummySlot, func(a, b): return a.id < b.id)
 	return list[index]
 
 func _combine_items(regularItems: Array, spellScrolls: Array) -> void:

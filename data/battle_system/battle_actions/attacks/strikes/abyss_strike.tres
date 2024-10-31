@@ -23,6 +23,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Abyss Strike"
 script = ExtResource("2_r5wf5")
 effects = Array[ExtResource("1_tg733")]([SubResource("Resource_15gl1")])
 cost = 25

@@ -23,6 +23,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Blue Strike"
 script = ExtResource("2_8wafb")
 effects = Array[ExtResource("1_2cjcd")]([SubResource("Resource_6k5so")])
 cost = 10

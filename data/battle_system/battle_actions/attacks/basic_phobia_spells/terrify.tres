@@ -12,6 +12,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Terrify"
 script = ExtResource("2_riqhc")
 effects = Array[ExtResource("1_b7plu")]([SubResource("Resource_0rhwa")])
 cost = 0

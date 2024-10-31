@@ -26,6 +26,7 @@ chance = 0.5
 effect_target = 1
 
 [resource]
+resource_name = "Sting"
 script = ExtResource("3_8816p")
 effects = Array[ExtResource("2_7ia5t")]([SubResource("Resource_yok2p"), SubResource("Resource_cl0t4")])
 cost = 10

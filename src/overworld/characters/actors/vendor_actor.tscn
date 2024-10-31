@@ -7,5 +7,6 @@
 [node name="VendorActor" instance=ExtResource("1_k28s6")]
 script = ExtResource("2_vrwgg")
 items = Array[ExtResource("3_6oo2a")]([])
+spells = Array[ExtResource("3_6oo2a")]([])
 actor_name = "Vendor"
 dialog_ids = Array[String](["VENDOR0"])

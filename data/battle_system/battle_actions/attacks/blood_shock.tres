@@ -32,6 +32,7 @@ chance = 1.0
 effect_target = 0
 
 [resource]
+resource_name = "Blood Shock"
 script = ExtResource("2_6sxx5")
 effects = Array[ExtResource("1_pg7ig")]([SubResource("Resource_5q3rt"), SubResource("Resource_e2ptt")])
 cost = 0

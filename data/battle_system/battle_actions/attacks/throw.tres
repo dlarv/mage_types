@@ -19,6 +19,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "Throw"
 script = ExtResource("2_gm17o")
 effects = Array[ExtResource("2_2x0qd")]([SubResource("Resource_m44uh")])
 cost = 5

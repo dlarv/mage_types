@@ -12,6 +12,7 @@ chance = 1.0
 effect_target = 1
 
 [resource]
+resource_name = "M. Defense Down"
 script = ExtResource("5_6th6i")
 effects = Array[ExtResource("4_skr1j")]([SubResource("Resource_ibimo")])
 cost = 10

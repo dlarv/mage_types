@@ -43,17 +43,17 @@ func show_info(scroll: Variant, index:=-1) -> void:
 func _on_cancel_button_pressed() -> void:
 	_active_scroll = null
 	hbox.hide()
-	label.clear_message()
+	label.clear()
 	spell_selected.emit(null)
 
 func _on_learn_spell_button_pressed() -> void:
 	spell_selected.emit(_active_scroll)
 	_active_scroll = null
 	hbox.hide()
-	label.clear_message()
+	label.clear()
 
 func _on_forget_spell_button_pressed() -> void:
 	forget_spell_requested.emit(_index)
 	_active_scroll = null
 	hbox.hide()
-	label.clear_message()
+	label.clear()

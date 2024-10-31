@@ -35,7 +35,7 @@ var _already_triggered := false:
 		lambda.call_deferred()
 
 func _ready():
-	if enemy_lock != null:
+	if enemy_lock != null and not Engine.is_editor_hint():
 		_collision_shape.disabled = true
 		enemy_lock.ai.battle_ended.connect(func(playerWasDefeated: bool): 
 				_collision_shape.disabled = playerWasDefeated)
