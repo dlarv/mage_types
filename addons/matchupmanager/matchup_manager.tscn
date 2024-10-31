@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bycqt1dtij02l"]
+[gd_scene load_steps=4 format=3 uid="uid://bycqt1dtij02l"]
 
 [ext_resource type="Script" path="res://addons/matchupmanager/matchup_manager.gd" id="1_rjr63"]
 [ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/elements/MatchupChart.tscn" id="2_faf2p"]
+[ext_resource type="Texture2D" uid="uid://dpu3ulhyd4t2h" path="res://docs/pics/design_doc/matchups_graph.svg" id="3_mn1vt"]
 
 [node name="MatchupManager" type="Control" node_paths=PackedStringArray("vbox", "tab_container", "chart")]
 layout_mode = 3
@@ -24,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 2
 
 [node name="Chart" type="MarginContainer" parent="TabContainer"]
 visible = false
@@ -39,6 +40,7 @@ metadata/_tab_index = 0
 layout_mode = 2
 
 [node name="Side Effects" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -76,6 +78,19 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Side Effects/VBoxContainer/ScrollContainer"]
 layout_mode = 2
+
+[node name="Graph" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Graph"]
+layout_mode = 2
+texture = ExtResource("3_mn1vt")
+stretch_mode = 2
 
 [node name="FileDialog" type="FileDialog" parent="."]
 position = Vector2i(500, 100)
