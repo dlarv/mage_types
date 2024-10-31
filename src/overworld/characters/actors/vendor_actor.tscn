@@ -8,5 +8,6 @@
 script = ExtResource("2_vrwgg")
 items = Array[ExtResource("3_6oo2a")]([])
 spells = Array[ExtResource("3_6oo2a")]([])
+add_item = null
 actor_name = "Vendor"
 dialog_ids = Array[String](["VENDOR0"])

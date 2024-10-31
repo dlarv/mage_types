@@ -300,7 +300,6 @@ size = 1.0
 [node name="VendorActor" parent="World/Overworld/Characters_Empty/Vendor" instance=ExtResource("21_1qeiq")]
 items = Array[ExtResource("22_af38h")]([SubResource("Resource_ng3hd"), SubResource("Resource_gi780")])
 spells = Array[ExtResource("22_af38h")]([SubResource("Resource_g75m8"), SubResource("Resource_hb871"), SubResource("Resource_t2rff"), SubResource("Resource_nvamf"), SubResource("Resource_rvmtp"), SubResource("Resource_qn62k"), SubResource("Resource_1grwh"), SubResource("Resource_fseok"), SubResource("Resource_2yuee"), SubResource("Resource_o8ca4"), SubResource("Resource_86kse"), SubResource("Resource_qvwji"), SubResource("Resource_vm372"), SubResource("Resource_26dj0"), SubResource("Resource_b1bl3"), SubResource("Resource_clxm0"), SubResource("Resource_1on6h")])
-add_item = null
 offset = Vector3(-0.3, 2, 0)
 dialog_ids = Array[String](["VENDOR_0"])
 
