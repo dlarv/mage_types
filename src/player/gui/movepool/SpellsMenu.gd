@@ -14,6 +14,8 @@ var _button_group: ButtonGroup
 var _actor: BattleActor
 
 func setup(actor: BattleActor) -> void:
+	if Engine.is_editor_hint(): return
+
 	_actor = actor
 	_button_group = ButtonGroup.new()
 
