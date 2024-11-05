@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwy6xlvmbrhjj"]
 
 [ext_resource type="Script" path="res://src/player/gui/character_menu/CharacterScreen.gd" id="1_djrqu"]
-[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/generic_gui/element_icon.tscn" id="2_cetjj"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_cetjj"]
 [ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="3_br248"]
 [ext_resource type="PackedScene" uid="uid://b035qwjaysn7d" path="res://src/player/gui/movepool/spells_menu.tscn" id="4_f40yp"]
 

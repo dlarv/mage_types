@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://pejvhd3qb6b0"]
 
 [ext_resource type="Script" path="res://src/generic_gui/info_display/formatters/AttackFormatter.gd" id="1_xauya"]
-[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/generic_gui/element_icon.tscn" id="2_o1esy"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_o1esy"]
 
 [node name="AttackFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "range_label", "target_label", "power_hbox", "power_label", "cost_label", "details", "effects_label", "element_icon")]
 anchors_preset = 15

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0qe3566t1c63"]
+
+[ext_resource type="Script" path="res://src/overworld/projectile_testing/Projectile.gd" id="1_j7x4x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w4ruy"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nmcjf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_crgu1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7ucb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t3ntk"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -2, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7m1y"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Projectile" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 2
+axis_lock_linear_y = true
+axis_lock_angular_y = true
+physics_material_override = SubResource("PhysicsMaterial_w4ruy")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 100
+script = ExtResource("1_j7x4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nmcjf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_crgu1")
+surface_material_override/0 = SubResource("StandardMaterial3D_t7ucb")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_t3ntk")
+draw_pass_1 = SubResource("BoxMesh_i7m1y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
