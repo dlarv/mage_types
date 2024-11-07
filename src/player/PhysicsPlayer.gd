@@ -1,5 +1,5 @@
-extends CharacterBody3D 
-class_name Player 
+extends RigidBody3D
+class_name PhysicsPlayer
 
 signal battle_started(allies, items, enemies)
 
@@ -28,35 +28,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
 	if event.is_action_pressed("player_run"):
 		_is_running = not _is_running
-	
 
-func _physics_process(delta) -> void:
-	if not in_control: return
-	var vel = velocity
-	var speed = walk_speed if not _is_running else run_speed
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	var inputDir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var speed := walk_speed if not _is_running else run_speed
 
-	# Add the gravity.
-	if !is_on_floor():
-		vel.y -= gravity * delta
-	
+	var direction := (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
+	var velocity := Vector3(inputDir.x, 0, inputDir.y) * speed
+	velocity.y = state.linear_velocity.y
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 	if direction != Vector3.ZERO:
-		vel.x = direction.x * speed
-		vel.z = direction.z * speed
 		# Rotate model in direction of movement.
-		model.rotation.y = atan2(vel.x, vel.z)
-	else:
-		vel.x = move_toward(velocity.x, 0, speed)
-		vel.z = move_toward(velocity.z, 0, speed)
+		model.rotation.y = atan2(inputDir.x, inputDir.y)
 
-
-	velocity = vel
-	move_and_slide()
-
+	state.linear_velocity = velocity
+	
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(team, Inventory.get_battle_items(), enemies)
 

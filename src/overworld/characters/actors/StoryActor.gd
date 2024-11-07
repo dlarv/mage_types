@@ -60,13 +60,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is Player:
+	if body is Player or body is PhysicsPlayer:
 		_show_label = true
 		_label.visible = true
 
 
 func _on_body_exited(body: Node3D) -> void:
-	if body is Player:
+	if body is Player or body is PhysicsPlayer:
 		_show_label = false
 		_label.visible = false
 

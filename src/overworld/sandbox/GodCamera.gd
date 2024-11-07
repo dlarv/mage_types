@@ -1,9 +1,10 @@
 extends Camera3D
 
-@export var player: Player
+# Player or PhysicsPlayer
+@export var player: PhysicsBody3D
 @export var in_control := false
 var _cam_rotation := Vector2()
-var speed := 50.0
+var speed := 10.0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return

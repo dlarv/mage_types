@@ -7,7 +7,8 @@ extends Node3D
 @export var dialog_box: DialogueBox
 @export var vendor_menu: VendorMenu
 
-@export var _player: Player
+# Player or PhysicsPlayer
+@export var _player: PhysicsBody3D
 
 func _ready():
 	for actor in get_tree().get_nodes_in_group("dialog"):

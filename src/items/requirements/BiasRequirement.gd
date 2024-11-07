@@ -19,7 +19,7 @@ var element: ElementalType = ElementManager.Blank:
 func check(actor: Variant) -> bool:
 	if(actor is BaseCompanion):
 		actor = actor.battle_actor
-	if(actor is Player):
+	if(actor is Player or actor is PhysicsPlayer):
 		actor = actor.battle_actor
 	# If the bias is Blank, this acts like a wildcard.
 	if element.is_blank():

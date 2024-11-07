@@ -8,7 +8,7 @@ class_name ElementRequirement
 func check(actor: Variant) -> bool:
 	if(actor is BaseCompanion):
 		actor = actor.battle_actor
-	if(actor is Player):
+	if(actor is Player or actor is PhysicsPlayer):
 		actor = actor.battle_actor
 	return actor != null and (actor.element1 == element or actor.element2 == element)
 

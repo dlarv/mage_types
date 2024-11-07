@@ -14,28 +14,19 @@ var _element: ElementalType = ElementManager.Blue:
 		_material = StandardMaterial3D.new()
 
 		_material.albedo_color = color
-		if _lower_opacity:
-			_material.albedo_color.a = .2
-
 
 		_mesh_instance.set_surface_override_material(0, _material)
 		_particles.draw_pass_1.surface_set_material(0, _material)
 
-var _lower_opacity := false
-
-func setup(initialPos: Vector3, element: ElementalType=null, lowerOpacity:=false) -> void:
+func setup(initialPos: Vector3, element: ElementalType=null) -> void:
 	if element == null: 
 		element = ElementManager.Blank
 	_element = element
-	_lower_opacity = lowerOpacity
 
 	position = initialPos
 	var trans := get_global_transform().basis
 	apply_central_impulse(-trans.z * speed)
 
-	if lowerOpacity:
-		_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-		_material.albedo_color.a = .2
 
 
 func _on_body_entered(body:Node) -> void:
@@ -51,5 +42,4 @@ func _on_body_entered(body:Node) -> void:
 		_particles.emitting = true
 		_particles.reparent(body)
 		queue_free()
-	
 

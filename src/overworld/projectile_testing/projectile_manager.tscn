@@ -15,7 +15,6 @@ height = 0.5
 script = ExtResource("1_1gu4q")
 Projectile = ExtResource("2_ex78c")
 max_bounces = -1
-override_bounces = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
