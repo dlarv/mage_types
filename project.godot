@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Mage-Types"
-run/main_scene="res://src/overworld/projectile_testing/projectile_testing.tscn"
+config/version="0.1.0"
+run/main_scene="res://src/overworld/demo/room_1.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/flush_stdout_on_print.debug=false
 config/icon="res://assets/sprites/icon.svg"

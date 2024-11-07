@@ -247,8 +247,19 @@ func load_from_default_csv(useSimplifiedEffects: bool)-> void:
 	var data = file.get_as_text()
 	load_from_csv(data)
 
-func is_blank(element: ElementalType) -> bool:
-	return element == null or element.name == Blank.name
+func transmute_alchemic_object(object: Alchemic) -> ProjectileState:
+	var mat := PhysicsMaterial.new()
+	object.physics_material_override = mat
+
+	match(object.element):
+		Cyan:
+			mat.friction = 0
+		Magenta:
+			mat.bounce = 1
+		Blank,_:
+			pass
+
+	return null
 
 class ElementalNode:
 	var element : ElementalType = ElementManager.Blank

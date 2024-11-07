@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://8deigpes47mg"]
+[gd_scene load_steps=6 format=3 uid="uid://8deigpes47mg"]
 
 [ext_resource type="Script" path="res://src/overworld/projectile_testing/alchemy/AlchemicObject.gd" id="1_xvygn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_opwb5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbi0k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m2qqc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftogl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8gt3"]
 
-[node name="AlchemicObject" type="RigidBody3D" groups=["alchemic"]]
+[node name="AlchemicObject" type="RigidBody3D"]
 collision_layer = 3
 collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_opwb5")
 script = ExtResource("1_xvygn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -18,4 +21,4 @@ shape = SubResource("BoxShape3D_qbi0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_m2qqc")
-surface_material_override/0 = SubResource("StandardMaterial3D_ftogl")
+surface_material_override/0 = SubResource("StandardMaterial3D_h8gt3")

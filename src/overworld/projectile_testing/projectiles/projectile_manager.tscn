@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7h5jlvedd3xp"]
 
-[ext_resource type="Script" path="res://src/overworld/projectile_testing/ProjectileManager.gd" id="1_1gu4q"]
-[ext_resource type="PackedScene" uid="uid://c0qe3566t1c63" path="res://src/overworld/projectile_testing/projectile.tscn" id="2_ex78c"]
+[ext_resource type="Script" path="res://src/overworld/projectile_testing/projectiles/ProjectileManager.gd" id="1_1gu4q"]
+[ext_resource type="PackedScene" uid="uid://c0qe3566t1c63" path="res://src/overworld/projectile_testing/projectiles/projectile.tscn" id="2_ex78c"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="3_4jijb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m6jp"]

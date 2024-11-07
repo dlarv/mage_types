@@ -20,16 +20,23 @@ var _material: BaseMaterial3D = null
 func _init():
 	super._init()
 	_material = StandardMaterial3D.new()
+	set_collision_layer(3)
+	set_collision_mask(3)
 
 
 func _ready():
-	$MeshInstance3D.set_surface_override_material(0, _material)
+	if get_parent_node_3d() is MeshInstance3D:
+		get_parent_node_3d().set_surface_override_material(0, _material)
+	elif $MeshInstance3D != null:
+		$MeshInstance3D.set_surface_override_material(0, _material)
+	ElementManager.transmute_alchemic_object(self)
 
 
 ## Tries to transmute this object.
 ## Returns null if 
-func transmute(element: ElementalType) -> ElementalType:
+func transmute(element: ElementalType) -> ProjectileState:
 	var reaction = ElementManager.get_matchup(self.element, element)
 	if reaction != null: 
 		self.element = reaction
+		return ElementManager.transmute_alchemic_object(self)
 	return null 

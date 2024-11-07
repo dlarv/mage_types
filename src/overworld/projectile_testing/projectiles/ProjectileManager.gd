@@ -14,10 +14,22 @@ var element : ElementalType = ElementManager.Blank:
 		if value == null:
 			value = ElementManager.Blank
 		element = value 
+@export_category("Usable Elements")
+@export var usable_elements := {
+	"blue": true,
+	"purple": true,
+	"magenta": true,
+	"red": true,
+	"orange": true,
+	"yellow": true,
+	"green": true,
+	"cyan": true,
+}
 	
 @onready var targeting_gizmo = $TargetingGizmo
 @onready var _timer := $Timer
 
+var _elements: Array
 var _icons: Array
 var _current_index := -1
 var _is_targeting := false
@@ -28,8 +40,30 @@ var _scroll_wheel_delay := .1
 func _ready():
 	_icons = []
 	if Engine.is_editor_hint(): return
+
+	_elements = []
+
+	var i := 1
 	for child in $CanvasLayer/VBoxContainer.get_children():
+		#if not child is ElementIcon: continue
+
+		var icon := (child.get_child(1) as ElementIcon)
+		var el := icon.element
+		var name := el.name.to_lower()
+		child.get_child(0).text = str(i)
+		
+		if not usable_elements[name]: 
+			child.hide()
+			# In case _elements and _icons are out of sync.
+			continue
+		_elements.append(el)
+		if el == element:
+			child.modulate.a = 1
+			_current_index = i - 1
+
 		_icons.append(child)
+		i += 1
+
 
 func _process(delta: float) -> void:
 	if _is_targeting: 
@@ -57,17 +91,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		else: return
 		# Wait 3 frames before listening to the next scroll up command.
 		_timer.start(_scroll_wheel_delay)
-		_current_index %= len(ElementManager.elements)
+		_current_index %= len(_elements)
 
 	elif event is InputEventKey: 
 		if event.keycode >= KEY_1 and event.keycode <= KEY_8:
-			_current_index = event.keycode - KEY_1
+			_current_index = min(event.keycode - KEY_1, len(_elements) - 1)
 		elif event.keycode >= KEY_KP_1 and event.keycode <= KEY_KP_8:
-			_current_index = event.keycode - KEY_KP_1
+			_current_index = min(event.keycode - KEY_KP_1, len(_elements) - 1)
+		
+
+	if prevIndex >= 0 and prevIndex != _current_index:
 		# Adjust the opacity of the previous icon.
-	if prevIndex != _current_index:
 		_icons[prevIndex].modulate.a = 0.5
-		element = ElementManager.elements[_current_index]
+		element = _elements[_current_index]
 		_icons[_current_index].modulate.a = 1
 
 func trace_spell() -> void:

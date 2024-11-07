@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0qe3566t1c63"]
 
-[ext_resource type="Script" path="res://src/overworld/projectile_testing/Projectile.gd" id="1_j7x4x"]
+[ext_resource type="Script" path="res://src/overworld/projectile_testing/projectiles/Projectile.gd" id="1_j7x4x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w4ruy"]
 bounce = 1.0
