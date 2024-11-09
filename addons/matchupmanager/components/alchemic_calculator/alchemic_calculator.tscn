@@ -36,7 +36,6 @@ text = "Check a puzzle's configuration for potential softlocks."
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Setup"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 30
 
 [node name="Spells" type="VBoxContainer" parent="VBoxContainer/Setup/HBoxContainer"]
 layout_mode = 2
@@ -46,7 +45,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 tooltip_text = "These are the elements the player can cast directly."
 mouse_filter = 1
-text = "Enabled Spell Elements:"
+text = "Spell Elements:"
 
 [node name="Blue" parent="VBoxContainer/Setup/HBoxContainer/Spells" instance=ExtResource("1_43kax")]
 layout_mode = 2

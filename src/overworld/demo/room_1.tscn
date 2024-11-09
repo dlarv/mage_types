@@ -21,10 +21,10 @@ data = PackedVector3Array(-1, -1, -2.1195, -1, 1, -4.9864, -1, 1, -2.1195, -1, -
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_s2u45"]
 data = PackedVector3Array(-1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygtgl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2edir"]
 albedo_color = Color(0, 1, 1, 1)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7t5pp"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3j7q0"]
 friction = 0.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2aomt"]
@@ -33,10 +33,10 @@ data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_85ixx"]
 data = PackedVector3Array(-2.1642, -1, 1, -2.1642, 1, -1, -2.1642, 1, 1, -2.1642, -1, 1, -2.1642, -1, -1, -2.1642, 1, -1, -2.1642, -1, -1, 1, 1, -1, -2.1642, 1, -1, -2.1642, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -2.1642, 1, 1, 1, 1, 1, 1, -1, 1, -2.1642, -1, 1, -2.1642, 1, 1, -2.1642, -1, -1, 1, -1, 1, 1, -1, -1, -2.1642, -1, -1, -2.1642, -1, 1, 1, -1, 1, 1, 1, -1, -2.1642, 1, 1, -2.1642, 1, -1, 1, 1, -1, 1, 1, 1, -2.1642, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_215c4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwv08"]
 albedo_color = Color(0.5, 0.25098, 0, 1)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iwnhb"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tdyk7"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bpoe3"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
@@ -150,12 +150,12 @@ shape = SubResource("ConcavePolygonShape3D_s2u45")
 
 [node name="BouncePad" parent="Environment/room_1_environment" index="2"]
 transform = Transform3D(3.72777, 0, 0, 0, 1, 0, 0, 0, 3.72777, -2.336, 0.5, -6.25)
-surface_material_override/0 = SubResource("StandardMaterial3D_ygtgl")
+surface_material_override/0 = SubResource("StandardMaterial3D_2edir")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/room_1_environment/BouncePad" index="0"]
 collision_layer = 3
 collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_7t5pp")
+physics_material_override = SubResource("PhysicsMaterial_3j7q0")
 script = ExtResource("4_7wdw6")
 _element = "cyan"
 
@@ -170,12 +170,12 @@ collision_mask = 0
 shape = SubResource("ConcavePolygonShape3D_85ixx")
 
 [node name="SideBlock" parent="Environment/room_1_environment" index="4"]
-surface_material_override/0 = SubResource("StandardMaterial3D_215c4")
+surface_material_override/0 = SubResource("StandardMaterial3D_fwv08")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/room_1_environment/SideBlock" index="0"]
 collision_layer = 3
 collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_iwnhb")
+physics_material_override = SubResource("PhysicsMaterial_tdyk7")
 script = ExtResource("5_17fu0")
 _element = "orange"
 transmutes_projectile = true

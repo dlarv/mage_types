@@ -8,6 +8,7 @@ var _element := "blank":
 	set(value):
 		_element = value
 		element = ElementManager.get_element_from_name(value)
+
 var element: ElementalType:
 	set(value):
 		element = value
@@ -17,3 +18,4 @@ var element: ElementalType:
 		else: element = value 
 		label.text = "[center]%s[/center]" % element.get_bb_code_name(true)
 		color = element.main_color
+

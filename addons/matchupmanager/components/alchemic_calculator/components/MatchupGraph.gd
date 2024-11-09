@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 @export var b: Control
@@ -40,6 +41,15 @@ extends Control
 @export var c_b: Control
 @export var c_g: Control
 
+var _b_edges: Array
+var _p_edges: Array
+var _m_edges: Array
+var _r_edges: Array
+var _o_edges: Array
+var _y_edges: Array
+var _g_edges: Array
+var _c_edges: Array
+
 var _edges = {}
 
 func _ready() -> void:
@@ -75,6 +85,15 @@ func _ready() -> void:
 	_edges[[C,B]] = c_b
 	_edges[[C,G]] = c_g
 
+	_b_edges = [ b_p, b_m, b_c, p_b, m_b, c_b ]
+	_p_edges = [ p_b, p_m, o_p, b_p, m_p ]
+	_m_edges = [ m_p, m_r, m_b, o_m, r_m, p_m, b_m ]
+	_r_edges = [ r_m, r_o, r_y, o_r, m_r, y_r ]
+	_o_edges = [ o_r, o_m, o_p, o_y, y_o, y_r ]
+	_y_edges = [ y_o, y_r, y_g, r_y, g_y, o_y ]
+	_g_edges = [ g_y, g_c, c_g, y_g ]
+	_c_edges = [ c_b, c_g, g_c, b_c, p_c ]
+
 
 func draw_graph(graph: Dictionary, elements: Array) -> void:
 	clear()
@@ -88,65 +107,70 @@ func draw_graph(graph: Dictionary, elements: Array) -> void:
 func remove_islands(elements: Array) -> void:
 	if not ElementManager.Blue in elements:
 		b.override_to_empty()
-		b_p.override_to_empty()
-		b_m.override_to_empty()
-		b_c.override_to_empty()
-		p_b.override_to_empty()
-		m_b.override_to_empty()
-		c_b.override_to_empty()
+		for edge in _b_edges:
+			edge.override_to_empty()
+	else:
+		b.clear_override()
+		for edge in _b_edges:
+			edge.clear_override()
 	if not ElementManager.Purple in elements:
 		p.override_to_empty()
-		p_b.override_to_empty()
-		p_m.override_to_empty()
-		o_p.override_to_empty()
-		b_p.override_to_empty()
-		m_p.override_to_empty()
+		for edge in _p_edges:
+			edge.override_to_empty()
+	else:
+		p.clear_override()
+		for edge in _p_edges:
+			edge.clear_override()
 	if not ElementManager.Magenta in elements:
 		m.override_to_empty()
-		m_p.override_to_empty()
-		m_r.override_to_empty()
-		m_b.override_to_empty()
-		o_m.override_to_empty()
-		r_m.override_to_empty()
-		p_m.override_to_empty()
-		b_m.override_to_empty()
+		for edge in _m_edges:
+			edge.override_to_empty()
+	else:
+		m.clear_override()
+		for edge in _m_edges:
+			edge.clear_override()
 	if not ElementManager.Red in elements:
 		r.override_to_empty()
-		r_m.override_to_empty()
-		r_o.override_to_empty()
-		r_y.override_to_empty()
-		o_r.override_to_empty()
-		m_r.override_to_empty()
-		y_r.override_to_empty()
+		for edge in _r_edges:
+			edge.override_to_empty()
+	else:
+		r.clear_override()
+		for edge in _r_edges:
+			edge.clear_override()
 	if not ElementManager.Orange in elements:
 		o.override_to_empty()
-		o_r.override_to_empty()
-		o_m.override_to_empty()
-		o_p.override_to_empty()
-		o_y.override_to_empty()
-		y_o.override_to_empty()
-		y_r.override_to_empty()
+		for edge in _o_edges:
+			edge.override_to_empty()
+	else:
+		o.clear_override()
+		for edge in _o_edges:
+			edge.clear_override()
 	if not ElementManager.Yellow in elements:
 		y.override_to_empty()
-		y_o.override_to_empty()
-		y_r.override_to_empty()
-		y_g.override_to_empty()
-		r_y.override_to_empty()
-		g_y.override_to_empty()
-		o_y.override_to_empty()
+		for edge in _y_edges:
+			edge.override_to_empty()
+	else:
+		y.clear_override()
+		for edge in _y_edges:
+			edge.clear_override()
 	if not ElementManager.Green in elements:
 		g.override_to_empty()
-		g_y.override_to_empty()
-		g_c.override_to_empty()
-		c_g.override_to_empty()
-		y_g.override_to_empty()
+		for edge in _g_edges:
+			edge.override_to_empty()
+	else:
+		g.clear_override()
+		for edge in _g_edges:
+			edge.clear_override()
 	if not ElementManager.Cyan in elements:
 		c.override_to_empty()
-		c_b.override_to_empty()
-		c_g.override_to_empty()
-		g_c.override_to_empty()
-		b_c.override_to_empty()
-		p_c.override_to_empty()
+		for edge in _c_edges:
+			edge.override_to_empty()
+	else:
+		c.clear_override()
+		for edge in _c_edges:
+			edge.clear_override()
+
+
 
 func clear() -> void:
 	for child in get_child(0).get_children():

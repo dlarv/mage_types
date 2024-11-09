@@ -1,3 +1,4 @@
+@tool
 extends MarginContainer
 
 @export var spells_vbox: VBoxContainer
@@ -17,12 +18,6 @@ func _on_calculate_button_pressed() -> void:
 		if child.pressed:
 			spell_elements.append(child.element)
 	
-	if len(spell_elements) == len(ElementManager.elements):
-		print("No softlocks detected.")
-		popup.get_label().text = "No softlocks detected."
-		popup.show()
-		return
-
 	for child in terrains_vbox.get_children():
 		if child is Label: continue
 		if child.pressed:
