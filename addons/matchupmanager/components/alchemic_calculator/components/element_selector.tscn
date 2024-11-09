@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ygb8hiewhfdi"]
+
+[ext_resource type="Script" path="res://addons/matchupmanager/components/alchemic_calculator/components/ElementSelector.gd" id="1_jh04o"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_3usj3"]
+
+[node name="ElementSelector" type="HBoxContainer" node_paths=PackedStringArray("icon", "checkbox")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jh04o")
+icon = NodePath("ElementIcon")
+checkbox = NodePath("CheckBox")
+_element = "blue"
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+
+[node name="ElementIcon" parent="." instance=ExtResource("2_3usj3")]
+layout_mode = 2
+color = Color(0, 0, 1, 1)
+_element = "blue"
+
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]

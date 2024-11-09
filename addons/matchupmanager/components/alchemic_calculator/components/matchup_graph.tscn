@@ -1,0 +1,244 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba2opwq6nuks1"]
+
+[ext_resource type="PackedScene" uid="uid://b6ql512sa1chs" path="res://addons/matchupmanager/components/alchemic_calculator/components/graph_cell.tscn" id="1_5vtu6"]
+[ext_resource type="Script" path="res://addons/matchupmanager/components/alchemic_calculator/components/MatchupGraph.gd" id="1_60r54"]
+
+[node name="MatchupGraph" type="Control" node_paths=PackedStringArray("b", "p", "m", "r", "o", "y", "g", "c", "b_p", "b_m", "b_c", "p_b", "p_m", "p_c", "m_b", "m_p", "m_r", "r_o", "r_m", "r_y", "o_r", "o_p", "o_m", "o_y", "y_r", "y_g", "y_o", "g_y", "g_c", "c_b", "c_g")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_60r54")
+b = NodePath("GridContainer/GraphCell43")
+p = NodePath("GridContainer/GraphCell22")
+m = NodePath("GridContainer/GraphCell25")
+r = NodePath("GridContainer/GraphCell7")
+o = NodePath("GridContainer/GraphCell4")
+y = NodePath("GridContainer/GraphCell28")
+g = NodePath("GridContainer/GraphCell49")
+c = NodePath("GridContainer/GraphCell46")
+b_p = NodePath("GridContainer/GraphCell29")
+b_m = NodePath("GridContainer/GraphCell31")
+b_c = NodePath("GridContainer/GraphCell45")
+p_b = NodePath("GridContainer/GraphCell36")
+p_m = NodePath("GridContainer/GraphCell24")
+p_c = NodePath("GridContainer/GraphCell38")
+m_b = NodePath("GridContainer/GraphCell37")
+m_p = NodePath("GridContainer/GraphCell23")
+m_r = NodePath("GridContainer/GraphCell13")
+r_o = NodePath("GridContainer/GraphCell5")
+r_m = NodePath("GridContainer/GraphCell19")
+r_y = NodePath("GridContainer/GraphCell21")
+o_r = NodePath("GridContainer/GraphCell6")
+o_p = NodePath("GridContainer/GraphCell16")
+o_m = NodePath("GridContainer/GraphCell18")
+o_y = NodePath("GridContainer/GraphCell20")
+y_r = NodePath("GridContainer/GraphCell14")
+y_g = NodePath("GridContainer/GraphCell42")
+y_o = NodePath("GridContainer/GraphCell12")
+g_y = NodePath("GridContainer/GraphCell35")
+g_c = NodePath("GridContainer/GraphCell47")
+c_b = NodePath("GridContainer/GraphCell44")
+c_g = NodePath("GridContainer/GraphCell48")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 7
+
+[node name="GraphCell1" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell2" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell3" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell4" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "orange"
+
+[node name="GraphCell5" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_l"
+
+[node name="GraphCell6" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_r"
+
+[node name="GraphCell7" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "red"
+
+[node name="GraphCell8" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell9" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell10" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "dash_/"
+
+[node name="GraphCell11" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "dash_v"
+
+[node name="GraphCell12" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_tl"
+
+[node name="GraphCell13" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_tr"
+
+[node name="GraphCell14" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_u"
+
+[node name="GraphCell15" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell16" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_bl"
+
+[node name="GraphCell17" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell18" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_d"
+
+[node name="GraphCell19" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_bl"
+
+[node name="GraphCell20" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_br"
+
+[node name="GraphCell21" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_d"
+
+[node name="GraphCell22" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "purple"
+
+[node name="GraphCell23" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_l"
+
+[node name="GraphCell24" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_r"
+
+[node name="GraphCell25" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "magenta"
+
+[node name="GraphCell26" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell27" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell28" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "yellow"
+
+[node name="GraphCell29" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_u"
+
+[node name="GraphCell30" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "dash_\\"
+
+[node name="GraphCell31" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_tr"
+
+[node name="GraphCell32" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell33" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell34" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell35" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_u"
+
+[node name="GraphCell36" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_d"
+
+[node name="GraphCell37" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_bl"
+
+[node name="GraphCell38" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_br"
+
+[node name="GraphCell39" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell40" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell41" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+
+[node name="GraphCell42" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_d"
+
+[node name="GraphCell43" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "blue"
+
+[node name="GraphCell44" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_l"
+
+[node name="GraphCell45" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_r"
+
+[node name="GraphCell46" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "cyan"
+
+[node name="GraphCell47" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_l"
+
+[node name="GraphCell48" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "arrow_r"
+
+[node name="GraphCell49" parent="GridContainer" instance=ExtResource("1_5vtu6")]
+layout_mode = 2
+type = "color"
+_element = "green"
