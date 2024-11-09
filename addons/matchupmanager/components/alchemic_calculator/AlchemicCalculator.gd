@@ -6,7 +6,7 @@ extends MarginContainer
 @export var objects_vbox: VBoxContainer
 @export var popup: AcceptDialog
 @export var display_parent: Control
-
+@export var hidden_tabs: Control
 
 func _on_calculate_button_pressed() -> void:
 	var spell_elements := []
@@ -35,9 +35,14 @@ func _on_calculate_button_pressed() -> void:
 			if result != null and not result in spell_elements:
 				spell_elements.append(result)
 	
+	# Replace all hidden tabs:
+	for child in hidden_tabs.get_children():
+		child.reparent(display_parent)
+
 	# Generate a graph for each AlchemicObject.
 	var graphs := {}
 	var displays := display_parent.get_children()
+
 
 	for display in displays:
 		var originalElement := ElementManager.get_element_from_name(display.name)
@@ -45,10 +50,8 @@ func _on_calculate_button_pressed() -> void:
 
 		# Hide tabs that aren't relevant.
 		if not originalElement in object_elements:
-			display_parent.move_child(display, -1)
-			display.get_child(0).hide()
+			display.reparent(hidden_tabs)
 			continue
-		display.get_child(0).show()
 
 		var graph := {}
 		graphs[originalElement] = graph

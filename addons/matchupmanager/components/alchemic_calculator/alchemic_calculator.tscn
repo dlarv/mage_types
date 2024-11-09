@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/matchupmanager/components/alchemic_calculator/AlchemicCalculator.gd" id="1_dpgol"]
 [ext_resource type="PackedScene" uid="uid://ba2opwq6nuks1" path="res://addons/matchupmanager/components/alchemic_calculator/components/matchup_graph.tscn" id="3_64h60"]
 
-[node name="AlchemicCalculator" type="MarginContainer" node_paths=PackedStringArray("spells_vbox", "terrains_vbox", "objects_vbox", "popup", "display_parent")]
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("spells_vbox", "terrains_vbox", "objects_vbox", "popup", "display_parent", "hidden_tabs")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,6 +20,7 @@ terrains_vbox = NodePath("VBoxContainer/Setup/HBoxContainer/Terrains")
 objects_vbox = NodePath("VBoxContainer/Setup/HBoxContainer/Objects")
 popup = NodePath("AcceptDialog")
 display_parent = NodePath("VBoxContainer/Display")
+hidden_tabs = NodePath("HiddenTabs")
 metadata/_tab_index = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -167,112 +168,142 @@ text = "Calculate"
 [node name="Display" type="TabContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
-
-[node name="Blue" type="Control" parent="VBoxContainer/Display"]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Blue" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Purple" type="Control" parent="VBoxContainer/Display"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Purple" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Magenta" type="Control" parent="VBoxContainer/Display"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Magenta" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Red" type="Control" parent="VBoxContainer/Display"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Red" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Orange" type="Control" parent="VBoxContainer/Display"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 4
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Orange" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Yellow" type="Control" parent="VBoxContainer/Display"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 5
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Yellow" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Green" type="Control" parent="VBoxContainer/Display"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Green" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Cyan" type="Control" parent="VBoxContainer/Display"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 7
-
-[node name="MatchupGraph" parent="VBoxContainer/Display/Cyan" instance=ExtResource("3_64h60")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 title = ""
+
+[node name="HiddenTabs" type="Control" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Blue" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 357.0
+offset_right = 10.0
+offset_bottom = 357.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Blue" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Purple" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 326.0
+offset_right = 10.0
+offset_bottom = 326.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Purple" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Magenta" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 326.0
+offset_right = 10.0
+offset_bottom = 326.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Magenta" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Red" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 326.0
+offset_right = 10.0
+offset_bottom = 326.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Red" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Orange" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 326.0
+offset_right = 10.0
+offset_bottom = 326.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Orange" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Yellow" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 326.0
+offset_right = 10.0
+offset_bottom = 326.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Yellow" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Green" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 326.0
+offset_right = 10.0
+offset_bottom = 326.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Green" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Cyan" type="Control" parent="HiddenTabs"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 326.0
+offset_right = 10.0
+offset_bottom = 326.0
+
+[node name="MatchupGraph" parent="HiddenTabs/Cyan" instance=ExtResource("3_64h60")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [connection signal="pressed" from="VBoxContainer/Setup/Calculate_Button" to="." method="_on_calculate_button_pressed"]
