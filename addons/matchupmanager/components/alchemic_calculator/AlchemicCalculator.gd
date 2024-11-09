@@ -43,7 +43,6 @@ func _on_calculate_button_pressed() -> void:
 	var graphs := {}
 	var displays := display_parent.get_children()
 
-
 	for display in displays:
 		var originalElement := ElementManager.get_element_from_name(display.name)
 		var elements := [originalElement]
@@ -63,19 +62,11 @@ func _on_calculate_button_pressed() -> void:
 				graph[[element, result]] = null
 				if not result in elements:
 					elements.append(result)
-		display.get_child(0).draw_graph(graph, elements)
+
+		if len(graph) == 0:
+			display.reparent(hidden_tabs)
+		else:
+			display.get_child(0).draw_graph(graph, elements)
 
 	display_parent.current_tab = 0
-
-class ElementalNode:
-	var element : ElementalType = ElementManager.Blank
-	# Dict<ElementalType, ElementalNode>
-	var edges = {}
-
-	func _init(element: ElementalType) -> void:
-		self.element = element
-	
-	func add_connection(element: ElementalType, result: ElementalNode) -> void:
-		edges[element] = result
-
 

@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+@export var label: Label
+@export var grid: GridContainer
 @export var b: Control
 @export var p: Control
 @export var m: Control
@@ -98,10 +100,41 @@ func _ready() -> void:
 func draw_graph(graph: Dictionary, elements: Array) -> void:
 	clear()
 	remove_islands(elements)
+	var startNodes := []
+	var endNodes := []
 
 	for key in _edges.keys():
 		if not key in graph.keys() and not _edges[key].is_empty:
 			_edges[key].override_to_dash()
+	for key in graph.keys():
+		if not key[0] in startNodes:
+			startNodes.append(key[0])
+		if not key[1] in endNodes:
+			endNodes.append(key[1])
+
+	var counter := 0
+	for end in endNodes:
+		if not end in startNodes:
+			counter += 1
+			match end:
+				ElementManager.Blue:
+					b.mark_as_softlock()
+				ElementManager.Purple:
+					p.mark_as_softlock()
+				ElementManager.Magenta:
+					m.mark_as_softlock()
+				ElementManager.Red:
+					r.mark_as_softlock()
+				ElementManager.Orange:
+					o.mark_as_softlock()
+				ElementManager.Yellow:
+					y.mark_as_softlock()
+				ElementManager.Green:
+					g.mark_as_softlock()
+				ElementManager.Cyan:
+					c.mark_as_softlock()
+
+	label.text = "%d softlock(s) detected." % counter
 
 
 func remove_islands(elements: Array) -> void:
@@ -171,8 +204,7 @@ func remove_islands(elements: Array) -> void:
 			edge.clear_override()
 
 
-
 func clear() -> void:
-	for child in get_child(0).get_children():
+	for child in grid.get_children():
 		if child.is_empty: continue
 		child.clear_override()

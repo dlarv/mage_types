@@ -186,3 +186,16 @@ func override_to_dash() -> void:
 func clear_override() -> void:
 	_overridden = ""
 	_set_type(type)
+
+func mark_as_softlock() -> void:
+	if type != "color": return
+	var i := 0
+	for cell in get_children():
+		if i < 5 or i > 20 or i % 5 == 0 or i % 5 == 4:
+			cell.color = Color.DARK_RED
+		i += 1
+
+func unmark_softlock() -> void:
+	if type != "color": return
+	for cell in get_children().slice(-5):
+		cell.color = element.main_color
