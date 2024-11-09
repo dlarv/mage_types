@@ -1,6 +1,8 @@
 extends PhysicsBody3D
 class_name Alchemic
 
+@export var transmutes_projectile := false
+
 func _init():
 	add_to_group("alchemic")
 	self.physics_material_override = PhysicsMaterial.new() 

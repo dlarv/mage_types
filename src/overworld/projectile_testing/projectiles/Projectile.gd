@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Projectile
 
 @export var bounces := 3
 @export var speed := 20.0
@@ -37,15 +38,18 @@ func _on_body_entered(body:Node) -> void:
 		if state != null:
 			state.apply_changes(self)
 		else:
-			# Projectile is absorbed, unless overwritten in apply_changes()
-			bounces = 0
+			# ProjectilePrefab is absorbed, unless overwritten in apply_changes()
+			# bounces = 0
+			pass
 
 
 	if bounces == 0: 
+		break_projectile(body)
+
+
+func break_projectile(body) -> void:
 		_mesh_instance.hide()
 		_particles.emitting = true
 		_particles.reparent(body)
 		queue_free()
-
-
 

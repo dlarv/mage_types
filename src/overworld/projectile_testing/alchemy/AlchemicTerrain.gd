@@ -26,6 +26,7 @@ func _init():
 	_material = StandardMaterial3D.new()
 	set_collision_layer(3)
 	set_collision_mask(0)
+	transmutes_projectile = true
 
 
 func _ready():

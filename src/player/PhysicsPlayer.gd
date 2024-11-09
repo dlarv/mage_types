@@ -15,6 +15,7 @@ signal battle_started(allies, items, enemies)
 @export var jump_speed := 10.0
 var _is_running := false
 var _is_grounded := true
+var projectile_manager: Node3D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
@@ -22,6 +23,8 @@ var in_control := true
 
 func _ready() -> void:
 	team.insert(0, battle_actor)
+	projectile_manager = find_child("ProjectileManager", true)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_god_camera"):
@@ -66,3 +69,5 @@ func switch_to_god_camera(value := true) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if not _is_grounded and body.get_collision_layer_value(1):
 		_is_grounded = true
+
+

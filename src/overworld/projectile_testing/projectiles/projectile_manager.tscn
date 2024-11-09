@@ -2,19 +2,18 @@
 
 [ext_resource type="Script" path="res://src/overworld/projectile_testing/projectiles/ProjectileManager.gd" id="1_1gu4q"]
 [ext_resource type="PackedScene" uid="uid://c0qe3566t1c63" path="res://src/overworld/projectile_testing/projectiles/projectile.tscn" id="2_ex78c"]
+[ext_resource type="PackedScene" uid="uid://cqh671qcxcshd" path="res://src/overworld/projectile_testing/projectiles/ghost_projectile.tscn" id="3_1vfsr"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="3_4jijb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m6jp"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_onif4"]
-material = SubResource("StandardMaterial3D_3m6jp")
-radius = 0.25
-height = 0.5
+[ext_resource type="PackedScene" uid="uid://c3anfmh4tgvmu" path="res://src/overworld/projectile_testing/projectiles/targeting_gizmo.tscn" id="5_nhrom"]
 
 [node name="ProjectileManager" type="Node3D"]
 script = ExtResource("1_1gu4q")
-Projectile = ExtResource("2_ex78c")
+ProjectilePrefab = ExtResource("2_ex78c")
+GhostProjectile = ExtResource("3_1vfsr")
 max_bounces = -1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -150,11 +149,5 @@ size_flags_vertical = 1
 color = Color(0, 1, 1, 1)
 _element = "cyan"
 
-[node name="TargetingGizmo" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-top_level = true
+[node name="TargetingGizmo" parent="." instance=ExtResource("5_nhrom")]
 visible = false
-mesh = SubResource("SphereMesh_onif4")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true

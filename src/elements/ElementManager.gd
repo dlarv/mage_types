@@ -254,6 +254,9 @@ func transmute_alchemic_object(object: Alchemic) -> ProjectileState:
 	match(object.element):
 		Cyan:
 			mat.friction = 0
+		Yellow:
+			if "constant_linear_velocity" in object:
+				object.constant_linear_velocity = Vector3(0, 5, 0)
 		Magenta:
 			mat.bounce = 1
 		Blank,_:

@@ -1,7 +1,8 @@
 @tool
 extends Node3D
 
-@export var Projectile: PackedScene
+@export var ProjectilePrefab: PackedScene
+@export var GhostProjectile: PackedScene
 @export var max_bounces := 3
 @export var override_bounces := true
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
@@ -26,8 +27,14 @@ var element : ElementalType = ElementManager.Blank:
 	"cyan": true,
 }
 	
-@onready var targeting_gizmo = $TargetingGizmo
+@onready var targeting_gizmo: Node3D = $TargetingGizmo
 @onready var _timer := $Timer
+
+var disabled := false:
+	set(value):
+		disabled = value
+		_is_targeting = _is_targeting and value
+		targeting_gizmo.clear_ghosts()
 
 var _elements: Array
 var _icons: Array
@@ -66,21 +73,21 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	if _is_targeting: 
-		trace_spell()
+	if _is_targeting and not disabled:
+		targeting_gizmo.trace_spell(element)
 
 func _unhandled_input(event: InputEvent) -> void:
 	var prevIndex := _current_index
 	if _is_targeting and event.is_action_pressed("cancel_simple_spell"):
 		_is_targeting = false
-		targeting_gizmo.hide()
+		targeting_gizmo.clear_ghosts()
 		get_window().set_input_as_handled()
-	elif event.is_action_pressed("cast_simple_spell"):
+	elif event.is_action_pressed("cast_simple_spell") and not disabled:
 		_is_targeting = true
 		targeting_gizmo.show()
-	elif _is_targeting and event.is_action_released("cast_simple_spell"):
+	elif _is_targeting and event.is_action_released("cast_simple_spell") and not disabled:
 		_is_targeting = false
-		targeting_gizmo.hide()
+		targeting_gizmo.clear_ghosts()
 		cast_spell()
 	
 	elif event is InputEventMouseButton and _timer.is_stopped():
@@ -106,27 +113,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		element = _elements[_current_index]
 		_icons[_current_index].modulate.a = 1
 
-func trace_spell() -> void:
-	var mousePos := get_viewport().get_mouse_position()
-
-	# Cast ray to find intersection with ground (y=0).
-	# Find where a ray intersects with an axis.
-	# https://gamedev.stackexchange.com/questions/194616/how-to-raycast-down-to-the-floor-plane-to-determine-world-space-coordinates-in-g
-	var cam := get_viewport().get_camera_3d()
-	var origin := cam.project_ray_origin(mousePos)
-	var end := cam.project_ray_normal(mousePos)
-	var distance := -origin.y/end.y
-	var pos := origin + end * distance
-
-	# Show targeting info.
-	targeting_gizmo.position = pos
-
-
 func cast_spell() -> void:
-	var projectile = Projectile.instantiate()
+	var projectile = ProjectilePrefab.instantiate()
 	# Override number of bounces until destroy.
 	if override_bounces: projectile.bounces = max_bounces
 
-	projectile.look_at_from_position(global_position, targeting_gizmo.position)
+	projectile.look_at_from_position(global_position, targeting_gizmo.get_direction())
 	get_tree().get_root().add_child(projectile)
 	projectile.setup(global_position, element)
