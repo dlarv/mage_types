@@ -44,26 +44,26 @@ const ARROW_BR := [
 	B,E,E,E,E,
 	E,B,E,E,E,
 	E,E,B,E,B,
-	E,E,E,B,B,
+	E,E,E,E,B,
 	E,E,B,B,B,
 ]
 const ARROW_BL := [
 	E,E,E,E,B,
 	E,E,E,B,E,
 	B,E,B,E,E,
-	B,B,E,E,E,
+	B,E,E,E,E,
 	B,B,B,E,E,
 ]
 const ARROW_TL := [
 	B,B,B,E,E,
-	B,B,E,E,E,
+	B,E,E,E,E,
 	B,E,B,E,E,
 	E,E,E,B,E,
 	E,E,E,E,B,
 ]
 const ARROW_TR := [
 	E,E,B,B,B,
-	E,E,E,B,B,
+	E,E,E,E,B,
 	E,E,B,E,B,
 	E,B,E,E,E,
 	B,E,E,E,E,
