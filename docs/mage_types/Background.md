@@ -113,3 +113,261 @@ Going into city hall, the two are introduced to an artisan, who creates a magic 
 The pair then prepare to begin their quest and the player is given the freedom to explore the town. They are able to talk to different NPC, who give extra info about the town, world, etc. As the player tries to leave the town, they are interrupted by the arrival of Alex. Alex has just completed their quest (and is the person who arrived less than a month ago, mentioned by the mayor). Him and the beach-caretaker (the one who first found you) begin to talk, and the caretaker jokingly asks him which bias he’s selected. Its revealed that Alex, immediately upon hearing about the concept, became enamored with the idea. This shocks Alice and it becomes apparent through the caretaker that Alex holds a minority opinion. Most people view biasing as an inevitable horror, believing it to be unrealistic to remain unbiased forever. Despite being open to the idea, however, Alex cannot decide which element he would want to align with, being fascinated by all of them. (Maybe before Alex left he expressed interest in a specific element, only to find he liked something about all of them. This specific element could be Alice’s fated bias).
 
 Upon learning that the two of you are about to embark on your quest, Alex asks to join you. The caretaker says its fine, if not a bit unorthodox. Despite her disgust with his life choices, Alice doesn’t mind him coming along (and the player doesn’t have a choice). And with that, the three of you head out.
+
+# 1. Elemental System
+The elemental system has 4 components:
+- [[#Transmutation Info|Transmutations]]
+- [[#Side Effect Info|Side-effects]]
+- [[#P1 x S1 (Resistant)|Resistances]]
+- [[#Affinity Info|Affinity]]
+
+When a mage is hit with an elemental attack, the effectiveness of the attack is determined by their initial element’s weaknesses/resistances. Then, if applicable, the mage is transmuted into a new element and receives a stat buff (aka, a side effect).
+
+Since a mage can have both a primary and secondary type, the transmutation process is applied 3 times:
+1. Attack + Primary
+2. Attack + Secondary
+3. Primary + Secondary
+
+Notably, if the attack used is a melee attack, will also apply the applicable transmutations and side effects to the user.
+
+Finally, affinity is the resource spent to use an attack. It acts as 3 separate mana pools (Red, Green, and Blue). Attacks with secondary elemental typing pull from both applicable pools. So a Blue attack might cost 2 Blue affinity, while a Magenta attack might cost 1 Blue and 1 Red.
+## Transmutation Info
+
+![[comprehensive_type_chart.png]]
+*Fig 1.1: Comprehensive Matchup Chart*
+
+![[simple_type_chart.png]]*Fig 1.2: Simplified Matchup Chart*
+
+| Element | Reactions (#other elements it can react with)(unique elements) | Reactants (#of reactions that form it) |
+| ------- | -------------------------------------------------------------- | -------------------------------------- |
+| Blue    | 4 (3)                                                          | 3                                      |
+| Purple  | 5 (3)                                                          | 2                                      |
+| Magenta | 5 (3)                                                          | 3                                      |
+| Red     | 4 (3)                                                          | 3                                      |
+| Orange  | 5 (4)                                                          | 1                                      |
+| Yellow  | 4 (3)                                                          | 2                                      |
+| Green   | 4 (2)                                                          | 1                                      |
+| Cyan    | 3 (2)                                                          | 2                                      |
+*Fig 1.3: Table showing number of transmutations per element*
+
+| **Attacker Type**                                                                | **Defender Type**                                                             | **Attack Type**                               | **Attacker Result**                                                                    | **Defender Result**                                                                   |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| <span style="color:#ff0000">Red</span>                                           | <span style="color:#00f">Blue</span>                                          | <span style="color:#ff0000">Red</span> Melee  | <span style="color:#f0f">Magenta</span>                                                | <span style="color:#f0f">Magenta</span>                                               |
+| <span style="color:#ff0000">Red</span>                                           | <span style="color:#00f">Blue</span>                                          | <span style="color:#ff0000">Red</span> Ranged | …                                                                                      | <span style="color:#f0f">Magenta</span>                                               |
+| <span style="color:#ff0000">Red</span>                                           | <span style="color:#ff0000">Red</span> & <span style="color:#00f">Blue</span> | <span style="color:#ff0000">Red</span> Ranged | …                                                                                      | … & <span style="color:#f0f">Magenta</span>                                           |
+| <span style="color:#ff0000">Red</span>                                           | <span style="color:#00f">Blue</span> & <span style="color:#0ff">Cyan</span>   | <span style="color:#ff0000">Red</span> Ranged | …                                                                                      | <span style="color:#f0f">Magenta</span> & … →<br><span style="color:#00f">Blue</span> |
+| <span style="color:#ff0000">Red</span> & <span style="color:#f0f">Magenta</span> | <span style="color:#00f">Blue</span> & <span style="color:#ff0">Yellow</span> | <span style="color: #0f0">Green</span> Melee  | <span style="color:#ff0">Yellow</span> & … →<br><span style="color:#ff0000">Red</span> | <span style="color:#0ff">Cyan</span> & … -><br><span style="color: #0f0">Green</span> |
+*Fig 1.4: A few scenarios showcasing how transmutations work.*
+
+![[matchup_graph_v3.png]]
+*Fig 1.5: A graph showing which elements each element can be transmuted into. Nodes are the mage’s type and arrows show the attack’s type. So Orange can be transmuted into Red via either Yellow or Magenta, but Red can only be transmuted into Orange via Yellow.*
+
+## Justifications for Each Matchup    
+| **­Color 1**                              | **Color 2**                               | **Result**                                | **Selected Color**                        | **Explanation** |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | --------------- |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#00FF00">00FF00</span> | <span style="color:#808000">808000</span> | <span style="color:#FFFF00">FFFF00</span> | Proportional    |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#0000FF">0000FF</span> | <span style="color:#800080">800080</span> | <span style="color:#FF00FF">FF00FF</span> | Proportional    |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#FFFF00">FFFF00</span> | <span style="color:#FF8000">FF8000</span> | None                                      | Resembles 2     |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#00FFFF">00FFFF</span> | <span style="color:#808080">808080</span> | None                                      | No Match        |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#FF00FF">FF00FF</span> | <span style="color:#FF0080">FF0080</span> | None                                      | Resembles 2     |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#FF7F00">FF7F00</span> | <span style="color:#FF4000">FF4000</span> | None                                      | Resembles 2     |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#7F00FF">7F00FF</span> | <span style="color:#C00080">C00080</span> | <span style="color:#FF00FF">FF00FF</span> | Proportionalish |
+| <span style="color:#00FF00">00FF00</span> | <span style="color:#0000FF">0000FF</span> | <span style="color:#008080">008080</span> | <span style="color:#00FFFF">00FFFF</span> | Proportional    |
+| <span style="color:#00FF00">00FF00</span> | <span style="color:#FFFF00">FFFF00</span> | <span style="color:#80FF00">80FF00</span> | None                                      | Resembles 1     |
+| <span style="color:#00FF00">00FF00</span> | <span style="color:#00FFFF">00FFFF</span> | <span style="color:#00FF80">00FF80</span> | None                                      | Resembles 2     |
+| <span style="color:#00FF00">00FF00</span> | <span style="color:#FF00FF">FF00FF</span> | <span style="color:#808080">808080</span> | None                                      | No Match        |
+| <span style="color:#00FF00">00FF00</span> | <span style="color:#FF7F00">FF7F00</span> | <span style="color:#80C000">80C000</span> | <span style="color:#FFFF00">FFFF00</span> | Proportionalish |
+| <span style="color:#00FF00">00FF00</span> | <span style="color:#7F00FF">7F00FF</span> | <span style="color:#408080">408080</span> | <span style="color:#00FFFF">00FFFF</span> | Proportionalish |
+| <span style="color:#0000FF">0000FF</span> | <span style="color:#FFFF00">FFFF00</span> | <span style="color:#808080">808080</span> | None                                      | No Match        |
+| <span style="color:#0000FF">0000FF</span> | <span style="color:#00FFFF">00FFFF</span> | <span style="color:#0080FF">0080FF</span> | None                                      | Resembles 1     |
+| <span style="color:#0000FF">0000FF</span> | <span style="color:#FF00FF">FF00FF</span> | <span style="color:#8000FF">8000FF</span> | <span style="color:#7F00FF">7F00FF</span> | Exact           |
+| <span style="color:#0000FF">0000FF</span> | <span style="color:#FF7F00">FF7F00</span> | <span style="color:#804080">804080</span> | <span style="color:#7F00FF">7F00FF</span> | Proportionalish |
+| <span style="color:#0000FF">0000FF</span> | <span style="color:#7F00FF">7F00FF</span> | <span style="color:#4000FF">4000FF</span> | None                                      | Resembles 1     |
+| <span style="color:#FFFF00">FFFF00</span> | <span style="color:#00FFFF">00FFFF</span> | <span style="color:#80FF80">80FF80</span> | <span style="color:#00FF00">00FF00</span> | Max Channel     |
+| <span style="color:#FFFF00">FFFF00</span> | <span style="color:#FF00FF">FF00FF</span> | <span style="color:#FF8080">FF8080</span> | <span style="color:#FF0000">FF0000</span> | Max Channel     |
+| <span style="color:#FFFF00">FFFF00</span> | <span style="color:#FF7F00">FF7F00</span> | <span style="color:#FFC000">FFC000</span> | <span style="color:#FF0000">FF0000</span> | Max Channel     |
+| <span style="color:#FFFF00">FFFF00</span> | <span style="color:#7F00FF">7F00FF</span> | <span style="color:#C08080">C08080</span> | None                                      | No Match        |
+| <span style="color:#00FFFF">00FFFF</span> | <span style="color:#FF00FF">FF00FF</span> | <span style="color:#8080FF">8080FF</span> | <span style="color:#0000FF">0000FF</span> | Max Channel     |
+| <span style="color:#00FFFF">00FFFF</span> | <span style="color:#FF7F00">FF7F00</span> | <span style="color:#80C080">80C080</span> | None                                      | Mb Green**      |
+| <span style="color:#00FFFF">00FFFF</span> | <span style="color:#7F00FF">7F00FF</span> | <span style="color:#4080FF">4080FF</span> | <span style="color:#0000FF">0000FF</span> | Max Channel     |
+| <span style="color:#FF00FF">FF00FF</span> | <span style="color:#FF7F00">FF7F00</span> | <span style="color:#FF4080">FF4080</span> | <span style="color:#FF0000">FF0000</span> | Max Channel     |
+| <span style="color:#FF00FF">FF00FF</span> | <span style="color:#7F00FF">7F00FF</span> | <span style="color:#C000FF">C000FF</span> | <span style="color:#0000FF">0000FF</span> | Max Channel     |
+| <span style="color:#FF7F00">FF7F00</span> | <span style="color:#7F00FF">7F00FF</span> | <span style="color:#C04080">C04080</span> | <span style="color:#FF00FF">FF00FF</span> | Proportionalish |
+Originally, I wanted to have a type system that heavily featured transmutations. I could have done something to the effect of Fire + Grass = Air or Smoke or something, but I was worried that could quickly become contrived. I chose colors initially to act as abstract labels, intending to test out multiple different type charts. Basically, I wanted to find some matchup chart that looked nice, and then reflavor the labels. What I’m trying to say is that my initial plan would allow for scuffed stuffed like Red + Blue = Yellow. I think what I chose makes decent sense and it could have been a lot worse.
+
+I’m a programmer first and an artist… somewhere after that. I think of colors as hexcodes for the most part. If you’re unfamiliar with how they work, here’s what you need to know. Each character in a hexcode represents a number between 0 and 15. You can separate the code into three pairs, representing the red, green, and blue channels. In short, when a pair is 00, that color is not present. FF means that channel is maxed out. 7F is the halfway point, but 80 is really close. For our purposes here, 7F and 80 are equivalent.
+
+So Red, Green, and Blue were chosen b/c they are the primary colors of light and each have 1 color channel maxed out.
+
+Yellow, Cyan, and Magenta each have two channels maxed out.
+
+Orange and Purple have one channel fully maxed out and one halfway. There are technically 6 different colors that can be made this way, but I didn’t want to have too many types.
+
+When deciding color combinations, I used the following guidelines:
+1. A color mixing with another cannot form itself. So Red + Orange = Orange isn’t valid.
+2. If the result is a valid element, then its result is straightforward (Blue + Magenta = Purple).
+3. If the result is just a darker version of an element (Red + Green = Dark Yellow = Yellow).
+4. If a color channel is maxed out, then the result should be that color (Yellow + Cyan = Green, b/c green channel is FF).
+## Side Effect Info
+The elements are divided into two groups: offensive and defensive:
+
+| Offensive Types | Defensive Types |
+| --------------- | --------------- |
+| <span style="color:Red">Red</span>             | <span style="color:Magenta">Magenta</span>         |
+| <span style="color:Orange">Orange</span>          | <span style="color:Yellow">Yellow</span>          |
+| <span style="color:Purple">Purple</span>          | <span style="color:Blue">Blue</span>            |
+| <span style="color:Green">Green</span>           | <span style="color:Cyan">Cyan</span>            |
+Where:
+Defensive -> Offensive = Attack buff
+Offensive -> Defensive = Defense buff
+Defensive -> Defensive = Speed buff
+Offensive -> Offensive = Speed buff
+
+> [!NOTE] 
+> This is version 3 of the side effect system. Originally, every interaction had a unique set of side effects. However, this was too complicated.
+> 
+> Version 2 was splitting the elements into offensive/defensive based on warm/cold colors. However, I wanted Green to be an offensive element, which didn't really work.
+>
+>So ultimately, this version is a compromise between 1 & 2.
+
+## Resistance Info
+Initially, this wasn't part of the system. However, I enjoy this aspect of other type systems and so decided to include it as well. 
+
+> [!note]
+> In lore, Red, Green, and Blue are not fundamental building blocks (like a Cyan object is not composed of Green and Blue atoms). However, this is a useful way of thinking about it when considering resistances/weaknesses.
+
+The foundational principle is that an element is weak to the primary color(s) not present in itself and resistant to the ones that are.
+
+|     | R   | G   | B   |
+| --- | --- | --- | --- |
+| R   | --- | +++ | +++ |
+| G   | +++ | --- | +++ |
+| B   | +++ | +++ | --- |
+> Where the first column is the attacking type
+> and the first row is defending.
+> Where +++ denotes a weakness and --- a resistance.
+
+So R, G, B all have 2 weaknesses and 1 resistance (so far).
+
+When Cyan is hit with a Blue attack, the resist and weakness cancel out, leaving it neutral to the attack. However, if Cyan is hit with Red, it is super effective!
+
+>[!question]
+>Should the supereffective modifier cap out at x2 or be unbounded?
+>e.g.
+>Cyan + Red => x2
+>or
+>Cyan + Red => x4
+
+>[!note] Purple and Orange
+>For the sake of these calculations, 
+>- Purple = Magenta 
+>- Orange = Yellow.
+### The Basic Algorithm
+Formalized, the process looks like this:
+1. Consider E and D, which are elements represented as sets of RGB.
+	1. E.g. Cyan = {B, G}, Blue = {B}
+2. Let ExD denote that a mage of type E is hit with an attack of type D.
+	1. DEFENSExATTACK
+3. T = Intersection(E, D)
+	1. Consider the venn diagram between E and D. These are the elements in both sets.
+	2. BxC = {B}x{B, G} => T = {B}
+4. S = Cartesian(E, D) 
+	1. E.g. every pair of elements.
+	2. If Length(T) > 0, one of these pairs is of the form {x,x}. These represent resistances.
+5. U = Length(S) - Length(T), if Length(S)>0 else 1/2.
+6. V = Length(T), if Length(T)>0 else 2.
+7. Matchup = ${1 \over 2}V * 2 * U$
+8. Matchup' = ${U \over V}$
+	1. If Length(T) or Length(S) = 0, they both become 1/2.
+### Conclusion
+Because of symmetries in the color chart, a mage's resistances and weaknesses can be summarized as follows:
+- P1 x P1 => x0.5 
+- P1 x P2 => x2
+- S1 x S1 => x1
+- P1 x S1
+	- If P1 and S1 share an subelement=> x1
+	- Otherwise => x4
+Where:
+P = Primary Color = {R, G, B}
+S = Secondary Color = {P, M, O, Y, C}
+
+>[!question] Potential Overrides
+>There are two potential changes to this system, which would likely be implemented as hardcoded overrides:
+>- P1 x P2 => ~~x4~~ =>x2
+>- S1 x S1 => ~~x1~~ => x0.5
+
+### Proofs
+#### P1 x P1
+Blue x Blue
+$$\set{B} \times \set{B} $$
+$$T = B \cap B = \set{B}$$
+$$V=Length(T)=1$$
+$$S=[\set{B,B}]$$
+$$U=Length(S)-Length(T)=1-1=0$$
+$$U=0\therefore U={1 \over 2}$$
+$$Matchup = {1 \over 2}V*2U = {1 \over 2}(1)*2({1 \over 2})={1 \over 2}$$
+$$Matchup'={U\over V} = {{1 \over 2} \over 1}={1 \over 2}$$
+#### P1 x P2
+Blue x Red
+$$\set{B} \times \set{R} $$
+$$T = B \cap R = \set{}$$
+$$V=Length(T)=0\therefore V=2$$
+$$S=[\set{B,R}]$$
+$$U=Length(S)-Length(T)=1-0=1$$
+$$Matchup = {1 \over 2}V*2U = {1 \over 2}(2)*2(1)=2$$
+$$Matchup'={U\over V} = {1 \over {1 \over 2}}=2$$
+#### S1 x S1
+Cyan x Cyan
+$$\set{B,G} \times \set{B,G} $$
+$$T = C \cap C = \set{B,G}$$
+$$V=Length(T)=2$$
+$$S=[\set{B,B}, \set{B,G}, \set{G,B}, \set{G,G})]$$
+$$U=Length(S)-Length(T)=4-2=2$$
+$$Matchup = {1 \over 2}V*2U = {1 \over 2}(2)*2(2)=4$$
+$$Matchup'={U\over V} = {2 \over 2}=1$$
+
+#### S1 x S2
+Cyan x Magenta
+$$\set{B,G} \times \set{B,R} $$
+$$T = C \cap M = \set{B}$$
+$$V=Length(T)=1$$
+$$S=[\set{B,B}, \set{B,R}, \set{G,B}, \set{G,R})]$$
+$$U=Length(S)-Length(T)=4-1=3$$
+$$Matchup = {1 \over 2}V*2U = {1 \over 2}(1)*2(3)=3$$
+$$Matchup'={U\over V} = {3 \over 1}=3$$
+
+#### P1 x S1 (Resistant)
+Cyan x Blue
+$$C \times B = \Set{B, G} \times \Set{B}$$
+$$T = B \cap C=\set{B}$$
+$$V=Length(T)=1$$
+$$S = [\set{B,B},\set{G,B}]$$
+$$U=Length(S)-Length(T) = 2 - 1 = 1$$
+$$Matchup = {1 \over 2}V * 2U = {1 \over 2}(1)* 2(1)=1$$
+$$Matchup' = {U\over V} = {1 \over 1} = 1$$
+Blue x Cyan
+$$B \times C = \Set{B} \times \Set{B, G}$$
+$$T = B \cap C=\set{B}$$
+$$V=Length(T)=1$$
+$$S=[\set{B,B}, \set{B,G}]$$
+$$U=Length(S) - Length(T) = 2 - 1 = 1$$
+$$Matchup = {1 \over 2}V * 2U = {1 \over 2}(1)* 2(1)=1$$
+$$Matchup' = {U\over V} = {1 \over 1} = 1$$
+>[!note] ExD = DxE
+>As shown above, it shouldn't matter if a Cyan mage is hit with a Blue attack or a Blue mage is hit with a Cyan attack. The effect on the mage will be the same regardless.
+
+
+#### P1 x S1 (Supereffective)
+Cyan x Red
+$$C \times R = \Set{B, G} \times \Set{R}$$
+$$T = C \cap R=\set{}$$
+$$V=Length(T)=0\therefore V = 2$$
+$$S=[\set{B,R}, \set{G,R}]$$
+$$U=Length(S) - Length(T) = 2 - 0 = 2$$
+$$Matchup = {1 \over 2}V * 2U = {1 \over 2}(2)* 2(2)=4$$
+$$Matchup' = {U\over V} = {2 \over {1 \over 2}} = 4$$
+>[!note]
+> This will get clamped down to x2, if that's the direction I decide to take.
+## Affinity Info
+
+# 2. Battle System
