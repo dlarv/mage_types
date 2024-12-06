@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/matchupmanager/matchup_manager.gd" id="1_rjr63"]
 [ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/elements/MatchupChart.tscn" id="2_faf2p"]
-[ext_resource type="Texture2D" uid="uid://dpu3ulhyd4t2h" path="res://docs/pics/design_doc/matchups_graph.svg" id="3_mn1vt"]
+[ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graph_v3.png" id="3_prq33"]
 [ext_resource type="PackedScene" uid="uid://l8iukq4yeyk1" path="res://addons/matchupmanager/components/alchemic_calculator/alchemic_calculator.tscn" id="4_8n2ko"]
 
 [node name="MatchupManager" type="Control" node_paths=PackedStringArray("vbox", "tab_container", "chart")]
@@ -90,8 +90,9 @@ metadata/_tab_index = 2
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Graph"]
 layout_mode = 2
-texture = ExtResource("3_mn1vt")
-stretch_mode = 2
+texture = ExtResource("3_prq33")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="Alchemic Calculator" parent="TabContainer" instance=ExtResource("4_8n2ko")]
 visible = false

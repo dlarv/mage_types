@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3anfmh4tgvmu"]
 
-[ext_resource type="Script" path="res://src/overworld/projectile_testing/projectiles/TargetingGizmo.gd" id="1_e15g5"]
-[ext_resource type="PackedScene" uid="uid://cqh671qcxcshd" path="res://src/overworld/projectile_testing/projectiles/ghost_projectile.tscn" id="2_jd3h0"]
+[ext_resource type="Script" path="res://src/player/projectiles/TargetingGizmo.gd" id="1_e15g5"]
+[ext_resource type="PackedScene" uid="uid://cqh671qcxcshd" path="res://src/player/projectiles/ghost_projectile.tscn" id="2_jd3h0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_onif4"]
 radius = 0.25

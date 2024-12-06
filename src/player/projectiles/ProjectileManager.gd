@@ -1,9 +1,12 @@
 @tool
 extends Node3D
 
+signal projectiles_broken()
+
 @export var ProjectilePrefab: PackedScene
 @export var GhostProjectile: PackedScene
 @export var max_bounces := 3
+@export var max_projectiles := 5
 @export var override_bounces := true
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":
@@ -15,7 +18,6 @@ var element : ElementalType = ElementManager.Blank:
 		if value == null:
 			value = ElementManager.Blank
 		element = value 
-@export_category("Usable Elements")
 @export var usable_elements := {
 	"blue": true,
 	"purple": true,
@@ -35,6 +37,7 @@ var disabled := false:
 		disabled = value
 		_is_targeting = _is_targeting and value
 		targeting_gizmo.clear_ghosts()
+		$CanvasLayer.visible = not value
 
 var _elements: Array
 var _icons: Array
@@ -52,8 +55,6 @@ func _ready():
 
 	var i := 1
 	for child in $CanvasLayer/VBoxContainer.get_children():
-		#if not child is ElementIcon: continue
-
 		var icon := (child.get_child(1) as ElementIcon)
 		var el := icon.element
 		var name := el.name.to_lower()
@@ -78,7 +79,8 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	var prevIndex := _current_index
-	if _is_targeting and event.is_action_pressed("cancel_simple_spell"):
+	if event.is_action_pressed("cancel_simple_spell"):
+		projectiles_broken.emit()
 		_is_targeting = false
 		targeting_gizmo.clear_ghosts()
 		get_window().set_input_as_handled()
@@ -115,6 +117,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func cast_spell() -> void:
 	var projectile = ProjectilePrefab.instantiate()
+	projectiles_broken.connect(func(): if projectile != null: projectile.break_projectile(self))
 	# Override number of bounces until destroy.
 	if override_bounces: projectile.bounces = max_bounces
 

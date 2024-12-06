@@ -33,10 +33,9 @@ func _ready():
 
 
 ## Tries to transmute this object.
-## Returns null if 
 func transmute(element: ElementalType) -> ProjectileState:
 	var reaction = ElementManager.get_matchup(self.element, element)
 	if reaction != null: 
 		self.element = reaction
 		return ElementManager.transmute_alchemic_object(self)
-	return null 
+	return ProjectileState.new()

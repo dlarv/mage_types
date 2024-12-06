@@ -39,8 +39,7 @@ func _on_body_entered(body:Node) -> void:
 			state.apply_changes(self)
 		else:
 			# ProjectilePrefab is absorbed, unless overwritten in apply_changes()
-			# bounces = 0
-			pass
+			bounces = 0
 
 
 	if bounces == 0: 
@@ -48,8 +47,7 @@ func _on_body_entered(body:Node) -> void:
 
 
 func break_projectile(body) -> void:
-		_mesh_instance.hide()
-		_particles.emitting = true
-		_particles.reparent(body)
-		queue_free()
-
+	_mesh_instance.hide()
+	_particles.emitting = true
+	_particles.reparent(body)
+	queue_free()

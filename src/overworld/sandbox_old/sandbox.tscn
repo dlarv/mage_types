@@ -1,6 +1,6 @@
 [gd_scene load_steps=76 format=3 uid="uid://bie7bmgp8y2f1"]
 
-[ext_resource type="Script" path="res://src/overworld/sandbox/Sandbox.gd" id="1_wo6gm"]
+[ext_resource type="Script" path="res://src/overworld/sandbox_old/Sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
 [ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="4_mefin"]
 [ext_resource type="Resource" uid="uid://cdwq01mquvfiy" path="res://data/items/spell_scrolls/block_scroll.tres" id="5_27sh5"]
@@ -37,7 +37,7 @@
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="30_mwd5c"]
 [ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/terrify_scroll.tres" id="30_qdpk6"]
 [ext_resource type="Resource" uid="uid://dg4sxkniinu41" path="res://data/items/spell_scrolls/strikes/abyss_strike.tres" id="31_aj1j1"]
-[ext_resource type="Script" path="res://src/overworld/sandbox/GodCamera.gd" id="32_fky1l"]
+[ext_resource type="Script" path="res://src/overworld/sandbox_old/GodCamera.gd" id="32_fky1l"]
 [ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="35_4bg3c"]
 [ext_resource type="Resource" uid="uid://4cqj7vqfwjdv" path="res://data/items/spell_scrolls/strikes/c_strike_scroll.tres" id="36_afgtg"]
 [ext_resource type="Resource" uid="uid://6xeq4kt74iij" path="res://data/items/spell_scrolls/strikes/g_strike_scroll.tres" id="37_ylib8"]

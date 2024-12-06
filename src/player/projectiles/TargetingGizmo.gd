@@ -64,7 +64,7 @@ func trace_spell(element: ElementalType) -> void:
 	projectile.look_at_from_position(global_position, impact_gizmo.position)
 	_ghosts.append(projectile)
 	get_tree().get_root().add_child(projectile)
-	projectile.setup(global_position)
+	projectile.setup(impact_gizmo.global_position)
 
 func get_direction() -> Vector3:
 	return impact_gizmo.position

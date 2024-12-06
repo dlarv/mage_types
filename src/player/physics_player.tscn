@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6hxgpvaoulp7"]
+[gd_scene load_steps=6 format=3 uid="uid://b6hxgpvaoulp7"]
 
 [ext_resource type="Script" path="res://src/player/PhysicsPlayer.gd" id="1_rh8eo"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/models/player.blend" id="1_ws1pf"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_fefq7"]
+[ext_resource type="PackedScene" uid="uid://d2v1jfmn5v6qc" path="res://src/player/gui/matchup_menu.tscn" id="4_jpyhm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8hkbp"]
 
-[node name="PhysicsPlayer" type="RigidBody3D" node_paths=PackedStringArray("model")]
+[node name="Player" type="RigidBody3D" node_paths=PackedStringArray("model", "matchup_menu")]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -15,6 +16,7 @@ max_contacts_reported = 100
 script = ExtResource("1_rh8eo")
 battle_actor = ExtResource("2_fefq7")
 model = NodePath("player")
+matchup_menu = NodePath("CanvasLayer/MatchupMenu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -26,5 +28,10 @@ visible = false
 
 [node name="player" parent="." instance=ExtResource("1_ws1pf")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MatchupMenu" parent="CanvasLayer" instance=ExtResource("4_jpyhm")]
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

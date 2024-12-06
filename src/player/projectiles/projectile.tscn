@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0qe3566t1c63"]
 
-[ext_resource type="Script" path="res://src/overworld/projectile_testing/projectiles/Projectile.gd" id="1_j7x4x"]
+[ext_resource type="Script" path="res://src/player/projectiles/Projectile.gd" id="1_j7x4x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w4ruy"]
 bounce = 1.0
@@ -29,6 +29,8 @@ physics_material_override = SubResource("PhysicsMaterial_w4ruy")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 100
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_j7x4x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
