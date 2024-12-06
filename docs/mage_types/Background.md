@@ -11,6 +11,25 @@ Each region and element has an industry it contributes towards the larger civili
 
 Each region should have its own visual identity. Ideally, a player should be able to tell what region they’re in, even if the screen was in gray scale (this is more of a guideline than a rule. Each area should also have its own color palette). 
 
+### Theming
+[[element_theming]]
+
+>[!note]
+>I think an unspoken design principle I've been using regarding the Elements is as follows:
+>- Red: Physical
+>- Blue: Mental
+>- Green: Emotional
+
+| Element | Mappings                      |           |
+| ------- | ----------------------------- | --------- |
+| Blue    | Astral, Psychic, Water        | Mental    |
+| Purple  | Astral, Psychic, Ghost, Dark  | Mental    |
+| Magenta | Fairy, Glitter (Whimsy)       | Emotional |
+| Red     | Blood, Ground, Plant          | Physical  |
+| Orange  | Plastic, Fire (Artifical)     | Physical  |
+| Yellow  | Lightning, Air, Sand (Dry)    | Physical  |
+| Green   | Poison, Earth, Rock (Nuclear) | Emotional |
+| Cyan    | Ice, Steel                    | Mental    |
 ### Blue
 Blue is a very introspective, internal element, creating a sort of psychic link between its wielders and the world. As such, Blue-biased people tend to have deep insight into how the world of Forlorn works. This would make them ideal scientists, with one important caveat. Blue is, for lack of a better term, a very self-absorbed element. This makes Blue researchers excellent at discovering and explaining general principles and Blue related info, but unable to adequately study any other elements, with the exception of Purple.
 
@@ -230,7 +249,7 @@ Offensive -> Offensive = Speed buff
 >
 >So ultimately, this version is a compromise between 1 & 2.
 
-## Resistance Info
+## Resistance Info (V1)
 Initially, this wasn't part of the system. However, I enjoy this aspect of other type systems and so decided to include it as well. 
 
 > [!note]
@@ -287,87 +306,54 @@ Because of symmetries in the color chart, a mage's resistances and weaknesses ca
 - P1 x S1
 	- If P1 and S1 share an subelement=> x1
 	- Otherwise => x4
+- S1 x S2 => x3
 Where:
 P = Primary Color = {R, G, B}
 S = Secondary Color = {P, M, O, Y, C}
 
+[[resistances_v1_proofs|Click here to see where these numbers came from.]]
+
 >[!question] Potential Overrides
->There are two potential changes to this system, which would likely be implemented as hardcoded overrides:
+>There are three potential changes to this system, which would likely be implemented as hardcoded overrides:
 >- P1 x P2 => ~~x4~~ =>x2
 >- S1 x S1 => ~~x1~~ => x0.5
+>- S1 x S2 => ~~x3~~ => x2
 
-### Proofs
-#### P1 x P1
-Blue x Blue
-$$\set{B} \times \set{B} $$
-$$T = B \cap B = \set{B}$$
-$$V=Length(T)=1$$
-$$S=[\set{B,B}]$$
-$$U=Length(S)-Length(T)=1-1=0$$
-$$U=0\therefore U={1 \over 2}$$
-$$Matchup = {1 \over 2}V*2U = {1 \over 2}(1)*2({1 \over 2})={1 \over 2}$$
-$$Matchup'={U\over V} = {{1 \over 2} \over 1}={1 \over 2}$$
-#### P1 x P2
-Blue x Red
-$$\set{B} \times \set{R} $$
-$$T = B \cap R = \set{}$$
-$$V=Length(T)=0\therefore V=2$$
-$$S=[\set{B,R}]$$
-$$U=Length(S)-Length(T)=1-0=1$$
-$$Matchup = {1 \over 2}V*2U = {1 \over 2}(2)*2(1)=2$$
-$$Matchup'={U\over V} = {1 \over {1 \over 2}}=2$$
-#### S1 x S1
-Cyan x Cyan
-$$\set{B,G} \times \set{B,G} $$
-$$T = C \cap C = \set{B,G}$$
-$$V=Length(T)=2$$
-$$S=[\set{B,B}, \set{B,G}, \set{G,B}, \set{G,G})]$$
-$$U=Length(S)-Length(T)=4-2=2$$
-$$Matchup = {1 \over 2}V*2U = {1 \over 2}(2)*2(2)=4$$
-$$Matchup'={U\over V} = {2 \over 2}=1$$
+### Matchup Charts
+![[resistances_v1.png]]
+*Fig 1.6: Chart showing the resistances of different type matchups (unclamped version.*
 
-#### S1 x S2
-Cyan x Magenta
-$$\set{B,G} \times \set{B,R} $$
-$$T = C \cap M = \set{B}$$
-$$V=Length(T)=1$$
-$$S=[\set{B,B}, \set{B,R}, \set{G,B}, \set{G,R})]$$
-$$U=Length(S)-Length(T)=4-1=3$$
-$$Matchup = {1 \over 2}V*2U = {1 \over 2}(1)*2(3)=3$$
-$$Matchup'={U\over V} = {3 \over 1}=3$$
+![[simple_resistances_v1.png]]
+*Fig 1.7: Simplified version of figure 1.6.*
 
-#### P1 x S1 (Resistant)
-Cyan x Blue
-$$C \times B = \Set{B, G} \times \Set{B}$$
-$$T = B \cap C=\set{B}$$
-$$V=Length(T)=1$$
-$$S = [\set{B,B},\set{G,B}]$$
-$$U=Length(S)-Length(T) = 2 - 1 = 1$$
-$$Matchup = {1 \over 2}V * 2U = {1 \over 2}(1)* 2(1)=1$$
-$$Matchup' = {U\over V} = {1 \over 1} = 1$$
-Blue x Cyan
-$$B \times C = \Set{B} \times \Set{B, G}$$
-$$T = B \cap C=\set{B}$$
-$$V=Length(T)=1$$
-$$S=[\set{B,B}, \set{B,G}]$$
-$$U=Length(S) - Length(T) = 2 - 1 = 1$$
-$$Matchup = {1 \over 2}V * 2U = {1 \over 2}(1)* 2(1)=1$$
-$$Matchup' = {U\over V} = {1 \over 1} = 1$$
->[!note] ExD = DxE
->As shown above, it shouldn't matter if a Cyan mage is hit with a Blue attack or a Blue mage is hit with a Cyan attack. The effect on the mage will be the same regardless.
+![[clamped_resistances_v1.png]]
+*Fig 1.8: Clamped version of figure 1.7.*
+## Resistance Info (V2) 
+V1 is very busy, with most matchups having a modifier. It could be interesting to see how a simple rock-paper-scissors system would turn out.
 
+The transmutation chart has a lot of holes, it could be interesting to use this system to fill in these holes. So type matchups would either have a transmutation, a resistance/weakness, or no reaction.
 
-#### P1 x S1 (Supereffective)
-Cyan x Red
-$$C \times R = \Set{B, G} \times \Set{R}$$
-$$T = C \cap R=\set{}$$
-$$V=Length(T)=0\therefore V = 2$$
-$$S=[\set{B,R}, \set{G,R}]$$
-$$U=Length(S) - Length(T) = 2 - 0 = 2$$
-$$Matchup = {1 \over 2}V * 2U = {1 \over 2}(2)* 2(2)=4$$
-$$Matchup' = {U\over V} = {2 \over {1 \over 2}} = 4$$
->[!note]
-> This will get clamped down to x2, if that's the direction I decide to take.
+>[!note] Design Principles
+>- Defensive types {B, C, Y, M} should have more resistances.
+>- Offensive types {P, G, R, O} should have more supereffective matchups/be resisted by fewer types.
+>- Each element should have at least 1 supereffective matchup and 1 resistance.
+>- I want to minimize the number of direct cycles (AxB and BxA both being supereffective).
+
+[[reactions_comprehensive|See every matchup reaction.]]
+[[resists_explained|See an explanation for why every matchup was chosen]].
+
+![[resistances_v3.png]]
+*Fig 1.9: Chart showing the weakness and resistances of each element.*
+
 ## Affinity Info
+Affinity is essentially the mana system in this game. In v0.1.0, the player had 8 pools of affinity, which was a little much. In this version, the player will have 3 (R, G, B). Attacks will have the ability to cost any combination of affinity.
 
+Player's affinity will go up everytime they interact with an element.
+- Hit by an attack.
+- Use an attack.
+- Transmute into an attack.
+There will also be ways to gather affinity in the overworld.
+
+One feature of the affinity system is that player's can use attacks even if they don't have enough. If an attack costs 10 affinity, but the player only has 5, the attack will be used at 50% power. Trying to use an attack with 0 affinity instead gives the player affinity.
 # 2. Battle System
+# 3. Overworld System
