@@ -206,3 +206,4 @@ And make Red slightly more tanky:
 | Resistance Only                                      | 13     |
 | Both                                                 | 23     |
 | Cycles (2 elements are supereffective to each other) | 2      |
+

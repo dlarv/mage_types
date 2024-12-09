@@ -249,79 +249,12 @@ Offensive -> Offensive = Speed buff
 >
 >So ultimately, this version is a compromise between 1 & 2.
 
-## Resistance Info (V1)
-Initially, this wasn't part of the system. However, I enjoy this aspect of other type systems and so decided to include it as well. 
+## Matchup Charts
+>[!note]
+>Figures 1.6 and 1.7 are for v1 of the resistance system, which has been deprecated. Its details are saved here for posterity:[[resistance_info_v1]].
 
-> [!note]
-> In lore, Red, Green, and Blue are not fundamental building blocks (like a Cyan object is not composed of Green and Blue atoms). However, this is a useful way of thinking about it when considering resistances/weaknesses.
-
-The foundational principle is that an element is weak to the primary color(s) not present in itself and resistant to the ones that are.
-
-|     | R   | G   | B   |
-| --- | --- | --- | --- |
-| R   | --- | +++ | +++ |
-| G   | +++ | --- | +++ |
-| B   | +++ | +++ | --- |
-> Where the first column is the attacking type
-> and the first row is defending.
-> Where +++ denotes a weakness and --- a resistance.
-
-So R, G, B all have 2 weaknesses and 1 resistance (so far).
-
-When Cyan is hit with a Blue attack, the resist and weakness cancel out, leaving it neutral to the attack. However, if Cyan is hit with Red, it is super effective!
-
->[!question]
->Should the supereffective modifier cap out at x2 or be unbounded?
->e.g.
->Cyan + Red => x2
->or
->Cyan + Red => x4
-
->[!note] Purple and Orange
->For the sake of these calculations, 
->- Purple = Magenta 
->- Orange = Yellow.
-### The Basic Algorithm
-Formalized, the process looks like this:
-1. Consider E and D, which are elements represented as sets of RGB.
-	1. E.g. Cyan = {B, G}, Blue = {B}
-2. Let ExD denote that a mage of type E is hit with an attack of type D.
-	1. DEFENSExATTACK
-3. T = Intersection(E, D)
-	1. Consider the venn diagram between E and D. These are the elements in both sets.
-	2. BxC = {B}x{B, G} => T = {B}
-4. S = Cartesian(E, D) 
-	1. E.g. every pair of elements.
-	2. If Length(T) > 0, one of these pairs is of the form {x,x}. These represent resistances.
-5. U = Length(S) - Length(T), if Length(S)>0 else 1/2.
-6. V = Length(T), if Length(T)>0 else 2.
-7. Matchup = ${1 \over 2}V * 2 * U$
-8. Matchup' = ${U \over V}$
-	1. If Length(T) or Length(S) = 0, they both become 1/2.
-### Conclusion
-Because of symmetries in the color chart, a mage's resistances and weaknesses can be summarized as follows:
-- P1 x P1 => x0.5 
-- P1 x P2 => x2
-- S1 x S1 => x1
-- P1 x S1
-	- If P1 and S1 share an subelement=> x1
-	- Otherwise => x4
-- S1 x S2 => x3
-Where:
-P = Primary Color = {R, G, B}
-S = Secondary Color = {P, M, O, Y, C}
-
-[[resistances_v1_proofs|Click here to see where these numbers came from.]]
-
->[!question] Potential Overrides
->There are three potential changes to this system, which would likely be implemented as hardcoded overrides:
->- P1 x P2 => ~~x4~~ =>x2
->- S1 x S1 => ~~x1~~ => x0.5
->- S1 x S2 => ~~x3~~ => x2
-
-### Matchup Charts
 ![[resistances_v1.png]]
-*Fig 1.6: Chart showing the resistances of different type matchups (unclamped version.*
+*Fig 1.6: Chart showing the resistances of different type matchups (unclamped version).*
 
 ![[simple_resistances_v1.png]]
 *Fig 1.7: Simplified version of figure 1.6.*
@@ -342,6 +275,7 @@ The transmutation chart has a lot of holes, it could be interesting to use this 
 [[reactions_comprehensive|See every matchup reaction.]]
 [[resists_explained|See an explanation for why every matchup was chosen]].
 
+
 ![[resistances_v3.png]]
 *Fig 1.9: Chart showing the weakness and resistances of each element.*
 
@@ -352,8 +286,50 @@ Player's affinity will go up everytime they interact with an element.
 - Hit by an attack.
 - Use an attack.
 - Transmute into an attack.
+- Consequetive turns as an element.
 There will also be ways to gather affinity in the overworld.
 
-One feature of the affinity system is that player's can use attacks even if they don't have enough. If an attack costs 10 affinity, but the player only has 5, the attack will be used at 50% power. Trying to use an attack with 0 affinity instead gives the player affinity.
+One feature of the affinity system is that player's can use attacks even if they don't have enough. If an attack costs 10 affinity, but the player only has 5, the attack will be used at 50% power. Trying to use an attack with 0 affinity will instead give the player some amount of affinity.
 # 2. Battle System
+## Basic Requirements
+- Turn based.
+- The player will have 1-3 actor under their control, but could have more at different times.
+- The opponents will have 1+ actor under their control.
+- Every turn, each actor has 1 action.
+	- An action can be either an attack or an item.
+	- The player also has the option to run away.
+- Each actor can have a list of status effects and stat changes effecting them.
+- After all actors have selected their move, their moves are resolved in priority-speed-random order.
+- When an attack is used, resolve any applicable transmutations.
+- At the end of turn, resolve any status conditions and decrement any related counters.
+## 2D vs 3D
+In v0.1.0, the battle UI was completed implemented in 2D. However, it might make more sense to use 3D, so that I can resuse assets.
+## Stats
+Each combatant will have the following basic stats:
+- Melee Attack
+- Ranged Attack
+- Melee Defense
+- Ranged Defense
+- Speed
+
+There's also 2 stats, typically hidden in other similar styles of game:
+- Accuracy
+- Evasion
+If present, I would like the ability to view these stats, at least in debug mode.
+## Status Effects
+| Name       | Description                                                         |
+| ---------- | ------------------------------------------------------------------- |
+| Poison     | Damage over time.                                                   |
+| Blocking   | Prevents the next damage the actor would take.                      |
+| Dissonance | Prevents Primary + Secondary transmutations.                        |
+| Stasis     | Prevents Attack + (Primary \| Secondary) transmutations.            |
+| Healing    | Healing over time.                                                  |
+| Phobia     | Damages the actor everytime they transmute into a specific element. |
+| Philia*    | Heals the actor everytime they transmute into a specific element.   |
+| Flinched** | Skips the actor's next turn.                                        |
+\*Philia: I don't like this name.
+\*\*Flinched: The v0.1.0 build of the battle ui does not easily support this. I might remove it from at least the demo version.
 # 3. Overworld System
+## Transmutation Puzzles
+In v0.1.0, the player had the ability to transmute certain objects at any time. 
+## Overworld Spells
