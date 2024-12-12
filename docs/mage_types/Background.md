@@ -12,24 +12,7 @@ Each region and element has an industry it contributes towards the larger civili
 Each region should have its own visual identity. Ideally, a player should be able to tell what region they’re in, even if the screen was in gray scale (this is more of a guideline than a rule. Each area should also have its own color palette). 
 
 ### Theming
-[[element_theming]]
-
->[!note]
->I think an unspoken design principle I've been using regarding the Elements is as follows:
->- Red: Physical
->- Blue: Mental
->- Green: Emotional
-
-| Element | Mappings                      |           |
-| ------- | ----------------------------- | --------- |
-| Blue    | Astral, Psychic, Water        | Mental    |
-| Purple  | Astral, Psychic, Ghost, Dark  | Mental    |
-| Magenta | Fairy, Glitter (Whimsy)       | Emotional |
-| Red     | Blood, Ground, Plant          | Physical  |
-| Orange  | Plastic, Fire (Artifical)     | Physical  |
-| Yellow  | Lightning, Air, Sand (Dry)    | Physical  |
-| Green   | Poison, Earth, Rock (Nuclear) | Emotional |
-| Cyan    | Ice, Steel                    | Mental    |
+![[element_theming#Theming Summarized]]
 ### Blue
 Blue is a very introspective, internal element, creating a sort of psychic link between its wielders and the world. As such, Blue-biased people tend to have deep insight into how the world of Forlorn works. This would make them ideal scientists, with one important caveat. Blue is, for lack of a better term, a very self-absorbed element. This makes Blue researchers excellent at discovering and explaining general principles and Blue related info, but unable to adequately study any other elements, with the exception of Purple.
 
@@ -331,5 +314,5 @@ If present, I would like the ability to view these stats, at least in debug mode
 \*\*Flinched: The v0.1.0 build of the battle ui does not easily support this. I might remove it from at least the demo version.
 # 3. Overworld System
 ## Transmutation Puzzles
-In v0.1.0, the player had the ability to transmute certain objects at any time. 
+In v0.1.0, the player had the ability to transmute certain objects at any time. This system will be removed, with the possibility of a more limited version being introduced in the future.
 ## Overworld Spells

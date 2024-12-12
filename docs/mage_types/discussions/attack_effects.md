@@ -10,7 +10,7 @@ _BattleAction_: Resource:
 - Details: string
 
 >[!note] Battle Items
->Battle Items also inherit from BattleAction. Discussion of them can be found here: [[discussions/item_management]].
+>Battle Items also inherit from BattleAction. Discussion of them can be found here: [[item_management]].
 
 _Attack_: BattleAction:
 - Cost

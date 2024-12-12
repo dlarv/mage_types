@@ -25,6 +25,8 @@ Green would make a lot of sense as an Earth/Poison type.
 
 Magenta makes a lot of sense as a Fairy type. The aesthetics of CB's Glitter type (tho not its mechanic) are also suitable. Its a very whimsical, artsy type.
 
+# Theming Summarized
+
 | Element | Other Elements               |           | Keywords                |
 | ------- | ---------------------------- | --------- | ----------------------- |
 | Blue    | Astral, Psychic, Water       | Mental    | Ocean of consciousness. |
