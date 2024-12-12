@@ -55,6 +55,7 @@ func get_stat(stat: Stat) -> float:
 		Stat.EVASION: return evasion
 		_: return -1
 
+
 func set_base_stat(stat: Stat, val: float):
 	match stat:
 		Stat.MELEE_ATTACK: 

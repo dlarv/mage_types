@@ -32,7 +32,6 @@ func _on_body_exited(body:Node3D) -> void:
 	if can_process() and (body is Player or body is PhysicsPlayer):
 		_allow_collisions = true
 
-
 func _on_body_entered(body:Node3D) -> void:
 	if not _allow_collisions: return
 

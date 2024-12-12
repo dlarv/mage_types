@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=77 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="Script" path="res://src/overworld/sandbox_old/Sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 [ext_resource type="PackedScene" uid="uid://btsew7rcy0ge2" path="res://data/story/demo/boss_7/boss_7.tscn" id="16_qvblr"]
 [ext_resource type="PackedScene" uid="uid://c86ll0tsqaqyf" path="res://data/story/demo/boss_8/boss_8.tscn" id="17_asi6o"]
+[ext_resource type="PackedScene" uid="uid://b6hxgpvaoulp7" path="res://src/player/physics_player.tscn" id="19_4pf13"]
 [ext_resource type="PackedScene" uid="uid://r08onqdbxja" path="res://data/story/demo/boss_1/boss_1.tscn" id="20_pqg08"]
 [ext_resource type="PackedScene" uid="uid://d1fwqalqmoi0q" path="res://src/overworld/characters/actors/vendor_actor.tscn" id="21_1qeiq"]
 [ext_resource type="PackedScene" uid="uid://dea7tl3imqnuh" path="res://src/overworld/characters/npc.tscn" id="22_73imk"]
@@ -285,10 +286,15 @@ transform = Transform3D(0.873687, 0, 0.486488, 0, 1, 0, -0.486488, 0, 0.873687, 
 
 [node name="Player" parent="World/Overworld/Characters_Empty" node_paths=PackedStringArray("player_menu") instance=ExtResource("9_8nykr")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.19711, -7.99447, 34.5008)
+visible = false
 player_menu = NodePath("../../../CanvasLayer/PlayerMenu")
 
-[node name="Camera3D" type="Camera3D" parent="World/Overworld/Characters_Empty/Player"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 5)
+[node name="Player2" parent="World/Overworld/Characters_Empty" node_paths=PackedStringArray("player_menu") groups=["player"] instance=ExtResource("19_4pf13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.19711, -7.99447, 34.5008)
+player_menu = NodePath("../../../CanvasLayer/PlayerMenu")
+
+[node name="Camera3D" type="Camera3D" parent="World/Overworld/Characters_Empty/Player2"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -7.19711, 17.0055, 19.8994)
 current = true
 
 [node name="Vendor" parent="World/Overworld/Characters_Empty" instance=ExtResource("22_73imk")]
@@ -409,5 +415,6 @@ script = ExtResource("32_fky1l")
 player = NodePath("../World/Overworld/Characters_Empty/Player")
 
 [connection signal="battle_started" from="World/Overworld/Characters_Empty/Player" to="." method="_on_player_battle_started"]
+[connection signal="battle_started" from="World/Overworld/Characters_Empty/Player2" to="." method="_on_player_battle_started"]
 
 [editable path="World/Overworld/sandbox_environment"]

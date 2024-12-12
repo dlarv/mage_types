@@ -247,23 +247,6 @@ func load_from_default_csv(useSimplifiedEffects: bool)-> void:
 	var data = file.get_as_text()
 	load_from_csv(data)
 
-func transmute_alchemic_object(object: Alchemic) -> ProjectileState:
-	var mat := PhysicsMaterial.new()
-	object.physics_material_override = mat
-
-	match(object.element):
-		Cyan:
-			mat.friction = 0
-		Yellow:
-			if "constant_linear_velocity" in object:
-				object.constant_linear_velocity = Vector3(0, 5, 0)
-		Magenta:
-			mat.bounce = 1
-		Blank,_:
-			pass
-
-	return null
-
 class ElementalNode:
 	var element : ElementalType = ElementManager.Blank
 	# Dict<ElementalType, Edge>

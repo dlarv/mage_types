@@ -83,14 +83,15 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	for action in actions:
 		Logger.append_log(Logger.LogType.BATTLE, "\nActors turn: %s" % action.actor.name)
 
-		# This means a character is defeated.
-		if action == null:
-			continue
-
 		var flinch = action.actor.flinching
 		if flinch != null:
 			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
 			continue
+
+		# This means a character is defeated.
+		if action == null:
+			continue
+
 
 		# Play animation.
 		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
@@ -143,7 +144,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# This will trigger if final actor died to phobia.
 		endBattle = await _check_if_battle_ended()
 		if endBattle: return
-
 		# Resolve user's status effects.
 		msg = "\n".join(action.actor.resolve_end_of_turn())
 		if len(msg) > 0:
