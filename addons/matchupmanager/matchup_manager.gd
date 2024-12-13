@@ -14,6 +14,7 @@ func _ready():
 	# vbox = get_node("TabContainer/VBoxContainer/ScrollContainer/VBoxContainer")
 
 	ElementManager.force_load()
+	return
 	for matchup in ElementManager.get_all_matchups():
 		var item = MatchupItem.instantiate()
 		item.set_colors(matchup[0], matchup[1], matchup[2])
@@ -21,12 +22,12 @@ func _ready():
 
 		items[[matchup[0], matchup[1]]] = item
 
-		item.buff_selected.connect(func(index):
-			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, true))
-		item.debuff_selected.connect(func(index):
-			ElementManager.set_side_effect_for(matchup[0], matchup[1], index, false))
+		# item.buff_selected.connect(func(index):
+		# 	ElementManager.set_side_effect_for(matchup[0], matchup[1], index, true))
+		# item.debuff_selected.connect(func(index):
+		# 	ElementManager.set_side_effect_for(matchup[0], matchup[1], index, false))
 	
-	ElementManager.side_effects_updated.connect(chart._on_side_effect_updated)
+	# ElementManager.side_effects_updated.connect(chart._on_side_effect_updated)
 	if Engine.is_editor_hint():
 		tab_container.current_tab = 1
 	else:

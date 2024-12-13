@@ -45,5 +45,3 @@ func _on_dialog_started(dialogId: String, data: Variant) -> void:
 			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 
 			world.process_mode = Node.PROCESS_MODE_INHERIT
-
-

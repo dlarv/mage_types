@@ -134,7 +134,6 @@ Notably, if the attack used is a melee attack, will also apply the applicable tr
 
 Finally, affinity is the resource spent to use an attack. It acts as 3 separate mana pools (Red, Green, and Blue). Attacks with secondary elemental typing pull from both applicable pools. So a Blue attack might cost 2 Blue affinity, while a Magenta attack might cost 1 Blue and 1 Red.
 ## Transmutation Info
-
 ![[comprehensive_type_chart.png]]
 *Fig 1.1: Comprehensive Matchup Chart*
 
@@ -232,7 +231,7 @@ Offensive -> Offensive = Speed buff
 >
 >So ultimately, this version is a compromise between 1 & 2.
 
-## Matchup Charts
+## ~~Resistance Info (V1)~~
 >[!note]
 >Figures 1.6 and 1.7 are for v1 of the resistance system, which has been deprecated. Its details are saved here for posterity:[[resistance_info_v1]].
 

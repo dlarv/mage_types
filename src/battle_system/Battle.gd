@@ -24,10 +24,9 @@ func _unhandled_input(event) -> void:
 	if event is InputEventKey and _matchup_manager.visible and event.keycode == KEY_ESCAPE:
 		get_window().set_input_as_handled()
 		_matchup_manager.visible = false 
-			
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
-	ElementManager.load_from_default_csv(Settings.use_simplified_effects)
+	#ElementManager.load_from_default_csv(Settings.use_simplified_effects)
 	self.allies = allies
 	self.enemies = enemies
 
@@ -45,7 +44,6 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 	gui.setup(allies, allyItems, enemies)
 	await dialog(false)
 	_dialog_box.skip_input_action = "interact"
-
 
 func on_player_actions_selected(allyActions: Array) -> void:
 	_dialog_box.stop()

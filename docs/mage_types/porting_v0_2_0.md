@@ -5,6 +5,7 @@ What needs to change going from v0.1.0 -> v0.2.0
 - [ ] Change battle gui to support 3D models instead of sprites.
 - [ ] Move ElementalEffect.Element into Effect.Element.
 - [ ] Create Generic Overworld Battle Connection class.
-- [ ] Refactor ElementManager class: Hardcode values that won't change.
+- [x] Refactor ElementManager class: Hardcode values that won't change.
+- [ ] Refactor Element info panels.
 - [ ] Have battle system use dialog nodes addons, or at least their style.
 - [ ] Add new OpponentController methods: [[Technical#Opponent Controllers|AI]].
