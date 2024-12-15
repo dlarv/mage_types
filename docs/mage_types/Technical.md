@@ -171,6 +171,9 @@ As discussed in [[Background#Affinity Info]], there will be 3 types of affinity 
 	- Green costs Green affinity.
 	- Blue, Purple, Cyan cost Blue affinity.
 I lean towards the third, but I think it makes the 2nd most sense.
+
+> After some consideration, I think I will have two affinity pools: offensive and defensive. This way, there is conceptual overlap with the side effect system.
+
 #### Damage
 The current damage formula is as follows: $$Damage = Power \times {Attack \over Defense} \times Affinity \times Rand$$
 Where:

@@ -3,6 +3,9 @@ class_name AffinityManager
 
 enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS, ATTACK_EFFECT }
 
+const OFFENSIVE_INDEX: int = 0
+const DEFENSIVE_INDEX: int = 1
+
 @export_category("Bonus values")
 @export var TRANSMUTATION_BONUS: int = 1
 ## BONUS * #turns
@@ -11,18 +14,14 @@ enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS, ATTACK_EFFECT }
 @export var BIAS_BONUS: int = 2
 
 @export_category("Affinity Values")
-@export var initial_blue_affinity := 100:
+@export var initial_offensive_affinity := 100:
 	set(value):
-		affinities[ElementManager.Blue] = value
-@export var initial_red_affinity := 100:
+		affinities[OFFENSIVE_INDEX] = value
+@export var initial_defensive_affinity := 100:
 	set(value):
-		affinities[ElementManager.Red] = value
-@export var initial_green_affinity := 100:
-	set(value):
-		affinities[ElementManager.Green] = value
+		affinities[DEFENSIVE_INDEX] = value
 
-
-var affinities := {}
+var affinities := [0, 0]
 var _element_1: ElementalType
 var _element_2: ElementalType
 var _element_1_turn_counter := 0
@@ -30,11 +29,10 @@ var _element_2_turn_counter := 0
 
 func _init():
 	ElementManager.force_load()
-	affinities = {
-		ElementManager.Blue: initial_blue_affinity,
-		ElementManager.Red: initial_red_affinity,
-		ElementManager.Green: initial_green_affinity,
-	}
+	affinities = [
+		initial_offensive_affinity,
+		initial_defensive_affinity,
+	]
 
 func gain_affinity(element: ElementalType, reason: BonusReason) -> int:
 	if element.is_blank(): return 0
@@ -59,14 +57,14 @@ func add_affinity(element: ElementalType, amount: int) -> void:
 
 func lose_affinity(element: ElementalType, amount: int) -> float:
 	if element.is_blank(): return 1
-	element = _map_key(element)
+	var index := _map_key(element)
 
-	var prev = affinities[element]
-	var affinity = affinities[element] - amount
-	affinities[element] = max(0, affinity)
+	var prev = affinities[index]
+	var affinity = affinities[index] - amount
+	affinities[index] = max(0, affinity)
 
 	if affinity == -amount:
-		affinities[element] = STRUGGLE_BONUS
+		affinities[index] = STRUGGLE_BONUS
 		return 0
 	if affinity < 0:
 		var output = float(prev) / float(amount)
@@ -84,11 +82,12 @@ func set_element(id: int, element: ElementalType) -> int:
 	affinities[_map_key(element)] += bonus
 	return bonus
 
-func _map_key(e: ElementalType) -> ElementalType:
+func get_affinity(element: ElementalType) -> int:
+	return affinities[_map_key(element)]
+
+func _map_key(e: ElementalType) -> int:
 	match e:
-		ElementManager.Blue,ElementManager.Purple,ElementManager.Cyan:
-			return ElementManager.Blue
-		ElementManager.Red,ElementManager.Orange,ElementManager.Yellow,ElementManager.Magenta:
-			return ElementManager.Red
-		_:
-			return e
+		ElementManager.Blue,ElementManager.Cyan, ElementManager.Yellow,ElementManager.Magenta:
+			return DEFENSIVE_INDEX
+		ElementManager.Red,ElementManager.Purple,ElementManager.Orange,ElementManager.Green,_:
+			return OFFENSIVE_INDEX

@@ -225,7 +225,7 @@ func add_affinity(element: ElementalType, amount: int) -> void:
 	affinity_manager.add_affinity(element, amount)
 
 func get_affinity_for(element: ElementalType) -> float:
-	return affinity_manager.affinities[element]
+	return float(affinity_manager.get_affinity(element))
 
 func try_revert_to_bias()-> String:
 	if elemental_bias.is_blank(): return "" 
