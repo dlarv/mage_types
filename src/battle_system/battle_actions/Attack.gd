@@ -24,7 +24,6 @@ func elemental_effect_override(element: ElementalType) -> void:
 				effects[i].attack_effect.element = element
 				effects[i].attack_effect._element = _element
 
-
 # override
 func apply_effects(user: BattleActor, targets: Array) -> String:
 	var msg := [super.apply_effects(user, targets)]

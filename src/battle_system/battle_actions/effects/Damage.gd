@@ -7,8 +7,16 @@ func _init():
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0) -> String:
+	var msg := ""
+	# Under what conditions would action be null!? Dlarv, wtf???
+	var resist := check_resistance(user.element1, action.element) * check_resistance(user.element2, action.element)
+	if resist > 1:
+		msg = "It was supereffective!\n"
+	elif resist < 1:
+		msg = "It wasn't very effective...\n"
+
 	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, effectiveness)
-	return _apply_to(target, dmg, user)
+	return "%s%s" % [ msg, _apply_to(target, dmg, user) ]
 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
 func calculate_damage(attack: float, defense: float, action: BattleAction, effectiveness: float) -> int:
@@ -30,5 +38,5 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 		msg += "But %s deflected some of the damage!\nDealt %d damage to %s." % [target.name, actualDmg, target.name]
 	return msg
 
-
-
+func check_resistance(e1: ElementalType, e2: ElementalType) -> float:
+	return ElementManager.get_resistance(e1, e2)	

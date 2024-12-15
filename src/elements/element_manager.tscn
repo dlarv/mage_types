@@ -16,7 +16,7 @@
 
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
-elements = Array[ExtResource("2_ohe7e")]([ExtResource("3_72u1f"), ExtResource("4_jxqxw"), ExtResource("5_mrhmg"), ExtResource("6_djrcb"), ExtResource("7_wy64i"), ExtResource("8_rraxm"), ExtResource("9_xevhv"), ExtResource("10_rnxsd")])
+elements = Array[ExtResource("2_ohe7e")]([ExtResource("3_72u1f"), ExtResource("8_rraxm"), ExtResource("6_djrcb"), ExtResource("9_xevhv"), ExtResource("7_wy64i"), ExtResource("10_rnxsd"), ExtResource("5_mrhmg"), ExtResource("4_jxqxw")])
 attack_buff = ExtResource("12_sg7j5")
 defense_buff = ExtResource("15_h6jt7")
 speed_buff = ExtResource("18_htfua")
