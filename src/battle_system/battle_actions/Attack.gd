@@ -4,25 +4,8 @@ class_name Attack
 
 @export
 # Effect[]
-var effects: Array[Effect]: 
-	set(value):
-		effects = value
-		if not Engine.is_editor_hint():
-			for effect in value:
-				if effect.attack_effect is ElementalEffect:
-					_needs_elemental_effect_override = true
+var effects: Array[Effect]
 @export var cost: int 
-
-var _needs_elemental_effect_override = false
-
-func elemental_effect_override(element: ElementalType) -> void:
-	if not Engine.is_editor_hint():
-		for i in range(len(effects)):
-			if effects[i].attack_effect is ElementalEffect \
-					and effects[i].attack_effect.element.is_blank():
-				effects[i].attack_effect = effects[i].attack_effect.duplicate()
-				effects[i].attack_effect.element = element
-				effects[i].attack_effect._element = _element
 
 # override
 func apply_effects(user: BattleActor, targets: Array) -> String:

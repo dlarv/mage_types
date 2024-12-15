@@ -6,7 +6,7 @@ func _init():
 	pass
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:
 	var msg := ""
 	# Under what conditions would action be null!? Dlarv, wtf???
 	var resist := check_resistance(user.element1, action.element) * check_resistance(user.element2, action.element)

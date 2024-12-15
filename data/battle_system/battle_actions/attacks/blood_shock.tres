@@ -17,6 +17,7 @@ script = ExtResource("1_pg7ig")
 attack_effect = SubResource("Resource_1iaj8")
 chance = 1.0
 effect_target = 1
+_element = "blank"
 
 [sub_resource type="Resource" id="Resource_pnlro"]
 script = ExtResource("3_cgp3y")
@@ -30,6 +31,7 @@ script = ExtResource("1_pg7ig")
 attack_effect = SubResource("Resource_pnlro")
 chance = 1.0
 effect_target = 0
+_element = "blank"
 
 [resource]
 resource_name = "Blood Shock"

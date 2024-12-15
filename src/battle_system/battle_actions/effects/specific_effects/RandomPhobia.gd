@@ -5,7 +5,7 @@ class_name RandomPhobia
 @export_range(1, 8) var min_count := 1
 @export_range(1, 8) var max_count := 1
 
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:
 	var msg := []
 	var count = randi_range(min_count, max_count)
 	var indices := range(0, 8)
@@ -16,9 +16,9 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAct
 		var index = indices.pop_back()
 
 		# Create effect.
-		var element = ElementManager.elements[index]
+		var e = ElementManager.elements[index]
 		var phobia = Phobia.duplicate()
-		phobia._element = element.name.to_lower()
+		phobia.element = e
 
 		# Apply effect.
 		target.add_status_effect(phobia)

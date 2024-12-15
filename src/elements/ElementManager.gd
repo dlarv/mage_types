@@ -4,7 +4,7 @@ extends Node
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
 const SIMPLE_SIDE_EFFECTS_PATH: String = "res://data/elemental_types/matchup_files/simple.csv"
 
-var Blank: ElementalType = ElementalType.new()
+var Blank := ElementalType.new()
 var Blue: ElementalType
 var Purple: ElementalType 
 var Magenta: ElementalType 

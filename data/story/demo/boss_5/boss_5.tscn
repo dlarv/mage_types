@@ -80,8 +80,10 @@ script = ExtResource("7_gbm1m")
 attack_effect = SubResource("Resource_ed301")
 chance = 1.0
 effect_target = 1
+_element = "blank"
 
 [sub_resource type="Resource" id="Resource_f00gu"]
+resource_name = "Hit"
 script = ExtResource("9_v16rr")
 effects = Array[ExtResource("7_gbm1m")]([SubResource("Resource_0yygv")])
 cost = 5

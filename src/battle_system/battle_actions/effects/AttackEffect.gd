@@ -10,7 +10,7 @@ class_name AttackEffect
 @export_multiline var message: String = ""
 
 # virtual
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	if target != null:
 		return message.replace("{user}", user.name).replace("{target}", target.name)
 	return ""

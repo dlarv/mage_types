@@ -6,15 +6,19 @@ class_name StatusEffect
 @export var icon: PackedScene 
 ## The text displayed inside the MessageBox, etc.
 @export_multiline var description: String 
+var element: ElementalType
+
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	# if target == null or action == null: return name
 	if target == null:
 		target = user
-	target.add_status_effect(duplicate())
-	return super.apply_effect(user, target, action)
 
+	var dupe = duplicate()
+	dupe.element = element
+	target.add_status_effect(dupe)
+	return super.apply_effect(user, target, action)
 
 func is_expired() -> bool:
 	return duration == 0
@@ -25,5 +29,5 @@ func combine(a: StatusEffect) -> void:
 
 # virtual
 func instantiate_icon() -> Node:
-	if(icon == null): return null
+	if icon == null : return null
 	return icon.instantiate()

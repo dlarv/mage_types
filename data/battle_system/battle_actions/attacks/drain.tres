@@ -19,6 +19,7 @@ script = ExtResource("1_05kai")
 attack_effect = SubResource("Resource_0hgvx")
 chance = 1.0
 effect_target = 1
+_element = "blank"
 
 [resource]
 resource_name = "Drain"

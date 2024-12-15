@@ -17,6 +17,7 @@ script = ExtResource("2_2x0qd")
 attack_effect = SubResource("Resource_02dtx")
 chance = 1.0
 effect_target = 1
+_element = "blank"
 
 [resource]
 resource_name = "Throw"
