@@ -20,7 +20,6 @@ var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSing
 var in_control := true
 
 @export_category("GUI")
-@export var matchup_menu: Control
 @export var player_menu: Control 
 
 func _ready() -> void:
@@ -28,9 +27,6 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_god_camera"):
-		switch_to_god_camera(in_control)
-
 	if not in_control: return
 	if event.is_action_pressed("player_run"):
 		_is_running = not _is_running
@@ -61,17 +57,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(team, Inventory.get_battle_items(), enemies)
 
-func switch_to_god_camera(value := true) -> void:
-	GodCamera.in_control = value
-	GodCamera.current = value
-	in_control = not value
-	$Camera3D.current = not value
-
 func set_active(isActive: bool) -> void:
 	visible = isActive
 	$Camera3D.current = isActive
-
-
 
 func _on_body_entered(body: Node3D) -> void:
 	if not _is_grounded and body.get_collision_layer_value(1):

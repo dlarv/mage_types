@@ -22,8 +22,6 @@ func _ready() -> void:
 	team.insert(0, battle_actor)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_god_camera"):
-		switch_to_god_camera(in_control)
 
 	if not in_control: return
 	if event.is_action_pressed("player_run"):
@@ -60,8 +58,3 @@ func _physics_process(delta) -> void:
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(team, Inventory.get_battle_items(), enemies)
 
-func switch_to_god_camera(value := true) -> void:
-	GodCamera.in_control = value
-	GodCamera.current = value
-	in_control = not value
-	$Camera3D.current = not value

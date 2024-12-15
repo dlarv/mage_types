@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bie7bmgp8y2f1"]
+[gd_scene load_steps=76 format=3 uid="uid://bie7bmgp8y2f1"]
 
 [ext_resource type="Script" path="res://src/overworld/sandbox_old/Sandbox.gd" id="1_wo6gm"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_t1trw"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ce36kh40ekgv5" path="res://data/story/demo/boss_4/boss_4.tscn" id="13_64su3"]
 [ext_resource type="PackedScene" uid="uid://c1ohjifobtsmb" path="res://data/story/demo/boss_5/boss_5.tscn" id="14_q0wnl"]
 [ext_resource type="PackedScene" uid="uid://8voq463tp3pa" path="res://data/story/demo/boss_6/boss_6.tscn" id="15_2qcw7"]
-[ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="16_p60yf"]
 [ext_resource type="PackedScene" uid="uid://btsew7rcy0ge2" path="res://data/story/demo/boss_7/boss_7.tscn" id="16_qvblr"]
 [ext_resource type="PackedScene" uid="uid://c86ll0tsqaqyf" path="res://data/story/demo/boss_8/boss_8.tscn" id="17_asi6o"]
 [ext_resource type="PackedScene" uid="uid://b6hxgpvaoulp7" path="res://src/player/physics_player.tscn" id="19_4pf13"]
@@ -29,7 +28,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="25_lyxcg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="26_571by"]
 [ext_resource type="Resource" uid="uid://cwn5jymtvdcry" path="res://data/items/spell_scrolls/abyssal_aspiration.tres" id="27_fg1rv"]
-[ext_resource type="PackedScene" uid="uid://denwrcbpm4d2q" path="res://src/overworld/reward_trigger.tscn" id="27_jybjt"]
+[ext_resource type="PackedScene" uid="uid://denwrcbpm4d2q" path="res://src/overworld/sandbox_old/reward_trigger.tscn" id="27_jybjt"]
 [ext_resource type="Resource" uid="uid://d27gkasg854gk" path="res://data/story/demo/demo_dialog.tres" id="28_1sf1r"]
 [ext_resource type="Resource" uid="uid://cjis241a7rywd" path="res://data/items/spell_scrolls/blood_shock_scroll.tres" id="28_uvryl"]
 [ext_resource type="Script" path="res://src/items/Item.gd" id="28_ylwvx"]
@@ -213,13 +212,12 @@ data = PackedVector3Array(-1.2009, -0.2156, 1.0381, -1.2008, -0.2062, 1.0416, -1
 [sub_resource type="BoxShape3D" id="BoxShape3D_h3quo"]
 size = Vector3(10, 35.4745, 69.8123)
 
-[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world", "pause_menu", "dialog_box", "vendor_menu", "_player")]
+[node name="Sandbox" type="Node3D" node_paths=PackedStringArray("overworld", "world", "dialog_box", "vendor_menu", "_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0, 0.061)
 script = ExtResource("1_wo6gm")
 battle_scene = ExtResource("2_t1trw")
 overworld = NodePath("World/Overworld")
 world = NodePath("World")
-pause_menu = NodePath("World/CanvasLayer/PlayerMenu")
 dialog_box = NodePath("CanvasLayer/DialogueBox")
 vendor_menu = NodePath("CanvasLayer/VendorMenu")
 _player = NodePath("World/Overworld/Characters_Empty/Player")
@@ -284,14 +282,12 @@ transform = Transform3D(0.757155, 0, -0.653236, 0, 1, 0, 0.653236, 0, 0.757155, 
 [node name="Boss_8" parent="World/Overworld/Characters_Empty/Boss_Empty" instance=ExtResource("17_asi6o")]
 transform = Transform3D(0.873687, 0, 0.486488, 0, 1, 0, -0.486488, 0, 0.873687, -101.138, 71.2049, -219.623)
 
-[node name="Player" parent="World/Overworld/Characters_Empty" node_paths=PackedStringArray("player_menu") instance=ExtResource("9_8nykr")]
+[node name="Player" parent="World/Overworld/Characters_Empty" instance=ExtResource("9_8nykr")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.19711, -7.99447, 34.5008)
 visible = false
-player_menu = NodePath("../../../CanvasLayer/PlayerMenu")
 
-[node name="Player2" parent="World/Overworld/Characters_Empty" node_paths=PackedStringArray("player_menu") groups=["player"] instance=ExtResource("19_4pf13")]
+[node name="Player2" parent="World/Overworld/Characters_Empty" groups=["player"] instance=ExtResource("19_4pf13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.19711, 45.1391, -104.326)
-player_menu = NodePath("../../../CanvasLayer/PlayerMenu")
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Characters_Empty/Player2"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -7.19711, 17.0055, 19.8994)
@@ -402,12 +398,6 @@ affinities = {
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.2172, 18.3487, 2.66789)
 shape = SubResource("BoxShape3D_h3quo")
 disabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="World"]
-
-[node name="PlayerMenu" parent="World/CanvasLayer" node_paths=PackedStringArray("world") instance=ExtResource("16_p60yf")]
-visible = false
-world = NodePath("../../Overworld")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.8766, 0)

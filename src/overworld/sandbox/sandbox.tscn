@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://cujbohucty4vy"]
+
+[ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="1_eq535"]
+[ext_resource type="PackedScene" uid="uid://bfyxjj3qj48nf" path="res://src/overworld/battle_overworld_connector.tscn" id="1_glfkx"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_yueml"]
+[ext_resource type="Resource" uid="uid://d27gkasg854gk" path="res://data/story/demo/demo_dialog.tres" id="3_nitk0"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_l2hbl"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_msj35"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_dk0id"]
+[ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/items/vendors/vendor_menu/vendor_menu.tscn" id="7_dl08r"]
+[ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="8_lk5jx"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
+script = ExtResource("4_l2hbl")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3ubor"]
+script = ExtResource("5_msj35")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jaqc2"]
+script = ExtResource("6_dk0id")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k237j"]
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4a137"]
+data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
+
+[node name="Sandbox" type="Node3D"]
+
+[node name="BattleOverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld") instance=ExtResource("1_glfkx")]
+world = NodePath("../World")
+overworld = NodePath("../World/Overworld")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_eq535")]
+visible = false
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_yueml")
+data = ExtResource("3_nitk0")
+skip_input_action = "interact"
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2")])
+
+[node name="VendorMenu" parent="CanvasLayer" instance=ExtResource("7_dl08r")]
+visible = false
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Overworld" type="Node3D" parent="World"]
+
+[node name="Ground" type="MeshInstance3D" parent="World/Overworld"]
+mesh = SubResource("PlaneMesh_k237j")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Overworld/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4a137")
+
+[node name="Player" parent="World/Overworld" instance=ExtResource("8_lk5jx")]
+
+[node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16.3266, 0)
+
+[connection signal="battle_started" from="World/Overworld/Player" to="BattleOverworldConnector" method="_on_player_battle_started"]

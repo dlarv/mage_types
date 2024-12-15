@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=7 format=3 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_jd6jo"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_2jxe0"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/models/player.blend" id="3_xfaiw"]
+[ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/elements/gui/info_charts/element_menu.tscn" id="4_nia5t"]
+[ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="5_eh2ql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("model") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_menu", "model") groups=["player"]]
 collision_layer = 0
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_jd6jo")
 battle_actor = ExtResource("2_2jxe0")
+player_menu = NodePath("CanvasLayer/PlayerMenu")
 model = NodePath("player")
 run_speed = 60.0
 
@@ -25,3 +28,11 @@ visible = false
 
 [node name="player" parent="." instance=ExtResource("3_xfaiw")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ElementMenu" parent="CanvasLayer" instance=ExtResource("4_nia5t")]
+visible = false
+
+[node name="PlayerMenu" parent="CanvasLayer" instance=ExtResource("5_eh2ql")]
+visible = false
