@@ -17,6 +17,7 @@ script = ExtResource("2_7v22j")
 attack_effect = SubResource("Resource_ed301")
 chance = 1.0
 effect_target = 1
+_element = "blank"
 
 [resource]
 resource_name = "Hit"

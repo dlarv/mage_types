@@ -290,7 +290,7 @@ visible = false
 player_menu = NodePath("../../../CanvasLayer/PlayerMenu")
 
 [node name="Player2" parent="World/Overworld/Characters_Empty" node_paths=PackedStringArray("player_menu") groups=["player"] instance=ExtResource("19_4pf13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.19711, -7.99447, 34.5008)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.19711, 45.1391, -104.326)
 player_menu = NodePath("../../../CanvasLayer/PlayerMenu")
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Characters_Empty/Player2"]
