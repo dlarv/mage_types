@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/player/PhysicsPlayer.gd" id="1_rh8eo"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/models/player.blend" id="1_ws1pf"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_fefq7"]
-[ext_resource type="PackedScene" uid="uid://d2v1jfmn5v6qc" path="res://src/player/gui/matchup_menu.tscn" id="4_jpyhm"]
+[ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/elements/gui/info_charts/element_menu.tscn" id="4_jbnpg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8hkbp"]
 
@@ -16,7 +16,7 @@ max_contacts_reported = 100
 script = ExtResource("1_rh8eo")
 battle_actor = ExtResource("2_fefq7")
 model = NodePath("player")
-matchup_menu = NodePath("CanvasLayer/MatchupMenu")
+matchup_menu = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 2.5, 0)
@@ -31,7 +31,7 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 2.75, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MatchupMenu" parent="CanvasLayer" instance=ExtResource("4_jpyhm")]
+[node name="ElementMenu" parent="CanvasLayer" instance=ExtResource("4_jbnpg")]
 visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

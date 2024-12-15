@@ -6,6 +6,7 @@ What needs to change going from v0.1.0 -> v0.2.0
 - [ ] Move ElementalEffect.Element into Effect.Element.
 - [ ] Create Generic Overworld Battle Connection class.
 - [x] Refactor ElementManager class: Hardcode values that won't change.
+- [x] Have attacks take resistances into account.
 - [ ] Refactor Element info panels.
 - [ ] Have battle system use dialog nodes addons, or at least their style.
 - [ ] Add new OpponentController methods: [[Technical#Opponent Controllers|AI]].

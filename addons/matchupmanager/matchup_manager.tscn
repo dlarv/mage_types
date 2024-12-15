@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bycqt1dtij02l"]
 
 [ext_resource type="Script" path="res://addons/matchupmanager/matchup_manager.gd" id="1_rjr63"]
-[ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/elements/MatchupChart.tscn" id="2_faf2p"]
+[ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/elements/gui/info_charts/matchup_chart.tscn" id="2_faf2p"]
 [ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graph_v3.png" id="3_prq33"]
 [ext_resource type="PackedScene" uid="uid://l8iukq4yeyk1" path="res://addons/matchupmanager/components/alchemic_calculator/alchemic_calculator.tscn" id="4_8n2ko"]
 

@@ -14,7 +14,6 @@ signal battle_started(allies, items, enemies)
 @export var jump_speed := 10.0
 var _is_running := false
 var _is_grounded := true
-var projectile_manager: Node3D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
@@ -26,13 +25,6 @@ var in_control := true
 
 func _ready() -> void:
 	team.insert(0, battle_actor)
-	projectile_manager = find_child("ProjectileManager", true)
-
-	if not find_child("Camera3D").current:
-		if projectile_manager != null:
-			projectile_manager.disabled = true
-		hide()
-		process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -76,8 +68,6 @@ func switch_to_god_camera(value := true) -> void:
 	$Camera3D.current = not value
 
 func set_active(isActive: bool) -> void:
-	if projectile_manager != null:
-		projectile_manager.disabled = not isActive
 	visible = isActive
 	$Camera3D.current = isActive
 
