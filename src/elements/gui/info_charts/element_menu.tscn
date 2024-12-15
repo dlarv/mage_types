@@ -28,17 +28,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Matchup Chart" parent="TabContainer" instance=ExtResource("1_x58qa")]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="Flow Chart" type="TextureRect" parent="TabContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("2_uimaq")
 expand_mode = 2
 metadata/_tab_index = 1
-
-[connection signal="gui_input" from="TabContainer/Flow Chart" to="TabContainer/Flow Chart" method="_on_gui_input"]

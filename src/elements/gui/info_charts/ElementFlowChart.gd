@@ -10,9 +10,6 @@ func _on_gui_input(event:InputEvent) -> void:
 	if color.r == color.g and color.g == color.b:
 		return
 
-	var red := int(color.r)
-	var green := int(color.g)
-	var blue := int(color.b)
 
 
 
