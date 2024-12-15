@@ -2,6 +2,7 @@ extends RigidBody3D
 class_name PhysicsPlayer
 
 signal battle_started(allies, items, enemies)
+signal pause_world(value: bool)
 
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
@@ -24,6 +25,10 @@ var in_control := true
 
 func _ready() -> void:
 	team.insert(0, battle_actor)
+	player_menu.pause_world.connect(func(value): 
+		# in_control = not value
+		freeze = not value
+		pause_world.emit(value))
 
 
 func _unhandled_input(event: InputEvent) -> void:

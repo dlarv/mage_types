@@ -20,3 +20,5 @@ func _on_player_battle_started(allies: Array, items:Array, enemy:EnemyActor) -> 
 	
 	world.process_mode = Node.PROCESS_MODE_INHERIT
 
+func _on_player_pause_world(value: bool) -> void:
+	overworld.process_mode = Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED

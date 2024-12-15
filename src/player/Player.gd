@@ -1,6 +1,7 @@
 extends CharacterBody3D 
 class_name Player 
 
+signal pause_world(val: bool)
 signal battle_started(allies, items, enemies)
 
 @export_category("Scene Nodes")
@@ -20,16 +21,20 @@ var in_control := true
 
 func _ready() -> void:
 	team.insert(0, battle_actor)
+	player_menu.pause_world.connect(func(value): 
+		in_control = value
+		pause_world.emit(value))
 
 func _unhandled_input(event: InputEvent) -> void:
-
 	if not in_control: return
 	if event.is_action_pressed("player_run"):
 		_is_running = not _is_running
 	
 
 func _physics_process(delta) -> void:
-	if not in_control: return
+	if not in_control: 
+		velocity = Vector3.ZERO
+		return
 	var vel = velocity
 	var speed = walk_speed if not _is_running else run_speed
 

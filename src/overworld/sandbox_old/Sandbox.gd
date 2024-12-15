@@ -45,3 +45,8 @@ func _on_dialog_started(dialogId: String, data: Variant) -> void:
 			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 
 			world.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func _on_player_pause_world(value:bool) -> void:
+	overworld.process_mode = Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED
+

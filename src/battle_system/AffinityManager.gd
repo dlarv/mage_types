@@ -14,27 +14,12 @@ enum BonusReason { TRANSMUTATION, CONSECUTIVE, STRUGGLE, BIAS, ATTACK_EFFECT }
 @export var initial_blue_affinity := 100:
 	set(value):
 		affinities[ElementManager.Blue] = value
-@export var initial_purple_affinity := 100: 
-	set(value):
-		affinities[ElementManager.Purple] = value
-@export var initial_magenta_affinity := 100:
-	set(value):
-		affinities[ElementManager.Magenta] = value
 @export var initial_red_affinity := 100:
 	set(value):
 		affinities[ElementManager.Red] = value
-@export var initial_orange_affinity := 100:
-	set(value):
-		affinities[ElementManager.Orange] = value
-@export var initial_yellow_affinity := 100:
-	set(value):
-		affinities[ElementManager.Yellow] = value
 @export var initial_green_affinity := 100:
 	set(value):
 		affinities[ElementManager.Green] = value
-@export var initial_cyan_affinity := 100:
-	set(value):
-		affinities[ElementManager.Cyan] = value
 
 
 var affinities := {}
@@ -47,13 +32,8 @@ func _init():
 	ElementManager.force_load()
 	affinities = {
 		ElementManager.Blue: initial_blue_affinity,
-		ElementManager.Purple: initial_purple_affinity,
-		ElementManager.Magenta: initial_magenta_affinity,
 		ElementManager.Red: initial_red_affinity,
-		ElementManager.Orange: initial_orange_affinity,
-		ElementManager.Yellow: initial_yellow_affinity,
 		ElementManager.Green: initial_green_affinity,
-		ElementManager.Cyan: initial_cyan_affinity,
 	}
 
 func gain_affinity(element: ElementalType, reason: BonusReason) -> int:
@@ -71,14 +51,16 @@ func gain_affinity(element: ElementalType, reason: BonusReason) -> int:
 			bonus = STRUGGLE_BONUS
 		BonusReason.BIAS:
 			bonus = BIAS_BONUS
-	affinities[element] += bonus
+	affinities[_map_key(element)] += bonus
 	return bonus
 
 func add_affinity(element: ElementalType, amount: int) -> void:
-	affinities[element] += amount
+	affinities[_map_key(element)] += amount
 
 func lose_affinity(element: ElementalType, amount: int) -> float:
 	if element.is_blank(): return 1
+	element = _map_key(element)
+
 	var prev = affinities[element]
 	var affinity = affinities[element] - amount
 	affinities[element] = max(0, affinity)
@@ -99,5 +81,14 @@ func set_element(id: int, element: ElementalType) -> int:
 		_element_2 = element
 		_element_2_turn_counter = 0
 	var bonus := TRANSMUTATION_BONUS
-	affinities[element] += bonus
+	affinities[_map_key(element)] += bonus
 	return bonus
+
+func _map_key(e: ElementalType) -> ElementalType:
+	match e:
+		ElementManager.Blue,ElementManager.Purple,ElementManager.Cyan:
+			return ElementManager.Blue
+		ElementManager.Red,ElementManager.Orange,ElementManager.Yellow,ElementManager.Magenta:
+			return ElementManager.Red
+		_:
+			return e

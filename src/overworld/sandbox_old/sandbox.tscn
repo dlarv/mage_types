@@ -220,7 +220,7 @@ overworld = NodePath("World/Overworld")
 world = NodePath("World")
 dialog_box = NodePath("CanvasLayer/DialogueBox")
 vendor_menu = NodePath("CanvasLayer/VendorMenu")
-_player = NodePath("World/Overworld/Characters_Empty/Player")
+_player = NodePath("World/Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -281,17 +281,6 @@ transform = Transform3D(0.757155, 0, -0.653236, 0, 1, 0, 0.653236, 0, 0.757155, 
 
 [node name="Boss_8" parent="World/Overworld/Characters_Empty/Boss_Empty" instance=ExtResource("17_asi6o")]
 transform = Transform3D(0.873687, 0, 0.486488, 0, 1, 0, -0.486488, 0, 0.873687, -101.138, 71.2049, -219.623)
-
-[node name="Player" parent="World/Overworld/Characters_Empty" instance=ExtResource("9_8nykr")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.19711, -7.99447, 34.5008)
-visible = false
-
-[node name="Player2" parent="World/Overworld/Characters_Empty" groups=["player"] instance=ExtResource("19_4pf13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.19711, 45.1391, -104.326)
-
-[node name="Camera3D" type="Camera3D" parent="World/Overworld/Characters_Empty/Player2"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -7.19711, 17.0055, 19.8994)
-current = true
 
 [node name="Vendor" parent="World/Overworld/Characters_Empty" instance=ExtResource("22_73imk")]
 transform = Transform3D(0.634164, 0, -0.773199, 0, 1, 0, 0.773199, 0, 0.634164, -123.064, -2.06803, -15.5534)
@@ -399,12 +388,24 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.21
 shape = SubResource("BoxShape3D_h3quo")
 disabled = true
 
+[node name="Player" parent="World" instance=ExtResource("9_8nykr")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -22.1101, -7.88804, 34.5008)
+visible = false
+
+[node name="Player2" parent="World" groups=["player"] instance=ExtResource("19_4pf13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1101, 45.2455, -104.326)
+
+[node name="Camera3D" type="Camera3D" parent="World/Player2"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -7.19711, 17.0055, 19.8994)
+current = true
+
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.8766, 0)
 script = ExtResource("32_fky1l")
-player = NodePath("../World/Overworld/Characters_Empty/Player")
+player = NodePath("../World/Player")
 
-[connection signal="battle_started" from="World/Overworld/Characters_Empty/Player" to="." method="_on_player_battle_started"]
-[connection signal="battle_started" from="World/Overworld/Characters_Empty/Player2" to="." method="_on_player_battle_started"]
+[connection signal="battle_started" from="World/Player" to="." method="_on_player_battle_started"]
+[connection signal="battle_started" from="World/Player2" to="." method="_on_player_battle_started"]
+[connection signal="pause_world" from="World/Player2" to="." method="_on_player_pause_world"]
 
 [editable path="World/Overworld/sandbox_environment"]

@@ -167,10 +167,10 @@ As discussed in [[Background#Affinity Info]], there will be 3 types of affinity 
 - An attack's cost is not tied to its type (so a Blue attack can cost Green affinity).
 - An attack's cost is based on its composite colors (so a Yellow attack costs 1+ Green and 1+ Red).
 - An attack's cost is determined by its lore relationships.
-	- Red, Orange, Yellow cost Red affinity.
+	- Red, Orange, Yellow, Magenta cost Red affinity.
 	- Green costs Green affinity.
 	- Blue, Purple, Cyan cost Blue affinity.
-I lean towards the latter, but I think it makes the 2nd most sense.
+I lean towards the third, but I think it makes the 2nd most sense.
 #### Damage
 The current damage formula is as follows: $$Damage = Power \times {Attack \over Defense} \times Affinity \times Rand$$
 Where:
