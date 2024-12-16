@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name OpponentController 
 
 signal battle_ended(playerWasDefeated: bool)

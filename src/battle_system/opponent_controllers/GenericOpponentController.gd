@@ -1,4 +1,5 @@
 extends OpponentController
+class_name GenericOpponentController
 
 @export_range(0, 1) var aggression: float
 @export_range(0, 1) var intelligence: float

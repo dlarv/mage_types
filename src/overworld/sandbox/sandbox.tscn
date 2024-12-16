@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cujbohucty4vy"]
+[gd_scene load_steps=40 format=3 uid="uid://cujbohucty4vy"]
 
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="1_eq535"]
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_glfkx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="8_lk5jx"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="9_ilwgm"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="10_oo4fc"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="11_eunq0"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="11_yp7r4"]
 [ext_resource type="Resource" uid="uid://bod1eny4l7qxi" path="res://data/battle_system/battle_actors/basic_battle_actor.tres" id="12_epopn"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="13_f5t4m"]
@@ -43,6 +44,11 @@ material = SubResource("StandardMaterial3D_hei7n")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l2asf"]
 
+[sub_resource type="Resource" id="Resource_gdspl"]
+script = ExtResource("13_f5t4m")
+dialog_ids = Array[ExtResource("11_eunq0")]([])
+heal_after_battle = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rulo"]
 albedo_color = Color(0, 0, 1, 1)
 
@@ -73,6 +79,11 @@ material = SubResource("StandardMaterial3D_e24j5")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ay4h"]
 radius = 2.0
+
+[sub_resource type="Resource" id="Resource_4vsfh"]
+script = ExtResource("13_f5t4m")
+dialog_ids = Array[ExtResource("11_eunq0")]([])
+heal_after_battle = true
 
 [node name="Sandbox" type="Node3D"]
 
@@ -137,12 +148,9 @@ mesh = SubResource("CapsuleMesh_ggfgs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_l2asf")
 
-[node name="EnemyActor" parent="World/Overworld/Characters/WildEnemy" node_paths=PackedStringArray("ai") instance=ExtResource("10_oo4fc")]
-ai = NodePath("Node")
+[node name="EnemyActor" parent="World/Overworld/Characters/WildEnemy" instance=ExtResource("10_oo4fc")]
+ai = SubResource("Resource_gdspl")
 team = Array[ExtResource("11_yp7r4")]([ExtResource("12_epopn")])
-
-[node name="Node" type="Node" parent="World/Overworld/Characters/WildEnemy/EnemyActor"]
-script = ExtResource("13_f5t4m")
 
 [node name="StoryActor" parent="World/Overworld/Characters" instance=ExtResource("9_ilwgm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
@@ -180,12 +188,9 @@ mesh = SubResource("CapsuleMesh_fippu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Characters/EnemyActor"]
 shape = SubResource("SphereShape3D_3ay4h")
 
-[node name="EnemyActor" parent="World/Overworld/Characters/EnemyActor" node_paths=PackedStringArray("ai") instance=ExtResource("10_oo4fc")]
-ai = NodePath("Node")
+[node name="EnemyActor" parent="World/Overworld/Characters/EnemyActor" instance=ExtResource("10_oo4fc")]
+ai = SubResource("Resource_4vsfh")
 team = Array[ExtResource("11_yp7r4")]([ExtResource("12_epopn"), ExtResource("18_j8vto")])
-
-[node name="Node" type="Node" parent="World/Overworld/Characters/EnemyActor/EnemyActor"]
-script = ExtResource("13_f5t4m")
 
 [node name="StoryActor" parent="World/Overworld/Characters/EnemyActor" instance=ExtResource("14_owapv")]
 dialog_ids = Array[String](["FIGHT0"])
