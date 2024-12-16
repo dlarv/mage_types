@@ -2,8 +2,9 @@
 extends AttackEffect 
 class_name Damage 
 
-func _init():
-	pass
+func get_dmg_potential(user: BattleActor, action: BattleAction, target: BattleActor) -> int:
+	var resist := check_resistance(user.element1, action.element) * check_resistance(user.element2, action.element)
+	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, 1.0)
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:

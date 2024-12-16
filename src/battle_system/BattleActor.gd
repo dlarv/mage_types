@@ -266,3 +266,6 @@ func resolve_end_of_turn()-> Array:
 	var effects = statuses.calculate_expirations()
 	status_effects_removed.emit(effects)
 	return msg
+
+func has_phobia(element: ElementalType) -> bool:
+	return statuses.check_phobic(element) != null

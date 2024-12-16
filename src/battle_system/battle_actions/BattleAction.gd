@@ -46,6 +46,11 @@ func play_animation(start: Vector2, end: Vector2, parent: Node2D) -> Node:
 func is_action_available(actor: BattleActor) -> bool:
 	return true
 
+# virtual
+## Used by opponent controllers to determine the probability of inflicting a status condition and amount of dmg.
+func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
+	return {}
+
 # Main logic for action.
 # Returns message stating what happened to the targets. This is displayed for player.
 func apply_effects(user: BattleActor, targets: Array) -> String:
@@ -62,3 +67,4 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 
 func apply_cost(user: BattleActor) -> float: 
 	return 0
+

@@ -12,9 +12,8 @@ TRANSMUTATION_BONUS = 1
 CONSECUTIVE_BONUS = 1
 STRUGGLE_BONUS = 2
 BIAS_BONUS = 2
-initial_blue_affinity = 100
-initial_red_affinity = 100
-initial_green_affinity = 100
+initial_offensive_affinity = 100
+initial_defensive_affinity = 100
 
 [sub_resource type="Resource" id="Resource_ii6l6"]
 script = ExtResource("7_b7k3c")

@@ -66,3 +66,17 @@ func is_action_available(actor: BattleActor) -> bool:
 # override
 func apply_cost(user: BattleActor) -> float:
 	return user.lose_affinity(element, cost)
+
+# override
+func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
+	var statusPotential := 0.0
+	var dmg := 0
+	for effect in effects:
+		dmg += effect.get_dmg_potential(user, self, target)
+		if effect.attack_effect is StatusEffect:
+			statusPotential += effect.chance
+	return { 
+		"status": statusPotential,
+		"dmg": dmg,
+	}
+
