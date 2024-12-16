@@ -1,5 +1,5 @@
 @tool
-extends StoryActor
+extends Node3D
 class_name VendorActor
 
 @export var items: Array[VendorItem]
@@ -12,7 +12,4 @@ class_name VendorActor
 		elif item is SpellScroll:
 			spells.append(VendorItem.new(item))
 
-# Override
-func start_dialog():
-	dialog_started.emit(dialog_ids[current_id], self)
 

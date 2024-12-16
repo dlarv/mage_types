@@ -1,5 +1,5 @@
 @tool
-extends Area3D
+extends Node3D
 class_name StoryActor
 ## Allows a character to participate in the game's story, mostly through dialog .
 

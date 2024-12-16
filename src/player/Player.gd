@@ -3,6 +3,7 @@ class_name Player
 
 signal pause_world(val: bool)
 signal battle_started(allies, items, enemies)
+signal dialog_started(dialog_id, enemy_actor, vendor_actor)
 
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
@@ -60,12 +61,11 @@ func _physics_process(delta) -> void:
 	velocity = vel
 	move_and_slide()
 
-func start_battle(enemies: EnemyActor) -> void:
-	battle_started.emit(team, Inventory.get_battle_items(), enemies)
+func start_battle(npc: Variant) -> void:
+	battle_started.emit(team, Inventory.get_battle_items(), npc.enemy_actor)
 
-func open_shop(vendor: VendorActor) -> void:
-	pass
+func open_shop(npc: Variant) -> void:
+	dialog_started.emit("VENDOR_MAIN", npc.enemy_actor, npc.vendor_actor)
 
-func start_dialog(storyActor: StoryActor) -> void:
-	pass
-
+func start_dialog(npc: Variant) -> void:
+	dialog_started.emit(npc.story_actor.dialog_ids[npc.story_actor.current_id], npc.enemy_actor, npc.vendor_actor)

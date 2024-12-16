@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cujbohucty4vy"]
+[gd_scene load_steps=37 format=3 uid="uid://cujbohucty4vy"]
 
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="1_eq535"]
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_glfkx"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_yueml"]
-[ext_resource type="Resource" uid="uid://d27gkasg854gk" path="res://data/story/demo/demo_dialog.tres" id="3_nitk0"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_l2hbl"]
+[ext_resource type="Resource" uid="uid://bf3by0bbrpnol" path="res://src/overworld/sandbox/sandbox_dialog.tres" id="4_rxtsv"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_msj35"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_dk0id"]
 [ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/items/vendors/vendor_menu/vendor_menu.tscn" id="7_dl08r"]
@@ -14,6 +14,11 @@
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="11_yp7r4"]
 [ext_resource type="Resource" uid="uid://bod1eny4l7qxi" path="res://data/battle_system/battle_actors/basic_battle_actor.tres" id="12_epopn"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="13_f5t4m"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="14_owapv"]
+[ext_resource type="PackedScene" uid="uid://d1fwqalqmoi0q" path="res://src/overworld/characters/actors/vendor_actor.tscn" id="15_ae5km"]
+[ext_resource type="Script" path="res://src/items/vendors/vendor_menu/VendorItem.gd" id="16_alx6a"]
+[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="17_8pgyp"]
+[ext_resource type="Resource" uid="uid://bmcia4k0ec1wj" path="res://data/battle_system/battle_actors/clown.tres" id="18_j8vto"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_l2hbl")
@@ -30,17 +35,54 @@ size = Vector2(100, 100)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4a137"]
 data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_emsjn"]
-radius = 2.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hei7n"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ggfgs"]
+material = SubResource("StandardMaterial3D_hei7n")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l2asf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rulo"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ehwbw"]
+material = SubResource("StandardMaterial3D_0rulo")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mup33"]
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0mwm"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o1pj6"]
+material = SubResource("StandardMaterial3D_d0mwm")
+
+[sub_resource type="Resource" id="Resource_5mjrg"]
+resource_name = "Healing Potion"
+script = ExtResource("16_alx6a")
+item = ExtResource("17_8pgyp")
+cost = 0
+disabled = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e24j5"]
+albedo_color = Color(1, 0.517647, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fippu"]
+material = SubResource("StandardMaterial3D_e24j5")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ay4h"]
+radius = 2.0
 
 [node name="Sandbox" type="Node3D"]
 
-[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld") instance=ExtResource("1_glfkx")]
+[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "vendor_menu", "_player") instance=ExtResource("1_glfkx")]
 world = NodePath("../World")
 overworld = NodePath("../World/Overworld")
+dialog_box = NodePath("../CanvasLayer/DialogueBox")
+vendor_menu = NodePath("../CanvasLayer/VendorMenu")
 battle_delay = 2.0
+_player = NodePath("../World/Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -61,7 +103,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_yueml")
-data = ExtResource("3_nitk0")
+data = ExtResource("4_rxtsv")
 skip_input_action = "interact"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2")])
 
@@ -81,23 +123,72 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4a137")
 
-[node name="NPC" parent="World/Overworld" groups=["wild_enemies"] instance=ExtResource("9_ilwgm")]
+[node name="Characters" type="Node3D" parent="World/Overworld"]
+
+[node name="WildEnemy" parent="World/Overworld/Characters" groups=["wild_enemies"] instance=ExtResource("9_ilwgm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 label_offset = Vector3(0, 2, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/NPC"]
-shape = SubResource("SphereShape3D_emsjn")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Overworld/Characters/WildEnemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ggfgs")
 
-[node name="EnemyActor" parent="World/Overworld/NPC" node_paths=PackedStringArray("ai") instance=ExtResource("10_oo4fc")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Characters/WildEnemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_l2asf")
+
+[node name="EnemyActor" parent="World/Overworld/Characters/WildEnemy" node_paths=PackedStringArray("ai") instance=ExtResource("10_oo4fc")]
 ai = NodePath("Node")
 team = Array[ExtResource("11_yp7r4")]([ExtResource("12_epopn")])
 
-[node name="Node" type="Node" parent="World/Overworld/NPC/EnemyActor"]
+[node name="Node" type="Node" parent="World/Overworld/Characters/WildEnemy/EnemyActor"]
 script = ExtResource("13_f5t4m")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Overworld/NPC"]
+[node name="StoryActor" parent="World/Overworld/Characters" instance=ExtResource("9_ilwgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Overworld/Characters/StoryActor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_ggfgs")
+mesh = SubResource("CapsuleMesh_ehwbw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Characters/StoryActor"]
+shape = SubResource("SphereShape3D_mup33")
+
+[node name="StoryActor" parent="World/Overworld/Characters/StoryActor" instance=ExtResource("14_owapv")]
+dialog_ids = Array[String](["STORY0"])
+
+[node name="Vendor" parent="World/Overworld/Characters" instance=ExtResource("9_ilwgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Overworld/Characters/Vendor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_o1pj6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Characters/Vendor"]
+shape = SubResource("SphereShape3D_mup33")
+
+[node name="VendorActor" parent="World/Overworld/Characters/Vendor" instance=ExtResource("15_ae5km")]
+items = Array[ExtResource("16_alx6a")]([SubResource("Resource_5mjrg")])
+
+[node name="EnemyActor" parent="World/Overworld/Characters" instance=ExtResource("9_ilwgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Overworld/Characters/EnemyActor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_fippu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Characters/EnemyActor"]
+shape = SubResource("SphereShape3D_3ay4h")
+
+[node name="EnemyActor" parent="World/Overworld/Characters/EnemyActor" node_paths=PackedStringArray("ai") instance=ExtResource("10_oo4fc")]
+ai = NodePath("Node")
+team = Array[ExtResource("11_yp7r4")]([ExtResource("12_epopn"), ExtResource("18_j8vto")])
+
+[node name="Node" type="Node" parent="World/Overworld/Characters/EnemyActor/EnemyActor"]
+script = ExtResource("13_f5t4m")
+
+[node name="StoryActor" parent="World/Overworld/Characters/EnemyActor" instance=ExtResource("14_owapv")]
+dialog_ids = Array[String](["FIGHT0"])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16.3266, 0)
@@ -109,4 +200,5 @@ collision_layer = 1
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)
 
 [connection signal="battle_started" from="World/Player" to="OverworldConnector" method="_on_player_battle_started"]
+[connection signal="dialog_started" from="World/Player" to="OverworldConnector" method="_on_dialog_started"]
 [connection signal="pause_world" from="World/Player" to="OverworldConnector" method="_on_player_pause_world"]

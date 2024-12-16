@@ -3,9 +3,13 @@ extends Node3D
 @export var battle_scene: PackedScene 
 @export var world: Node3D
 @export var overworld: Node3D
+@export var dialog_box: DialogueBox
+@export var vendor_menu: Control
 
 # Amount of time to wait between a battle ending and a new one starting.
 @export var battle_delay: float
+
+@export var _player: Player
 
 func _on_player_battle_started(allies: Array, items:Array, enemy:EnemyActor) -> void:
 	var battle := battle_scene.instantiate()
@@ -30,3 +34,20 @@ func _on_player_battle_started(allies: Array, items:Array, enemy:EnemyActor) -> 
 
 func _on_player_pause_world(value: bool) -> void:
 	overworld.process_mode = Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED
+
+func _on_dialog_started(dialogId: String, enemy_actor: EnemyActor, vendor_actor: VendorActor) -> void:
+	world.process_mode = Node.PROCESS_MODE_DISABLED
+
+	dialog_box.start(dialogId)
+
+	var val = await dialog_box.dialogue_signal
+	match val:
+		"battle_started":
+			_on_player_battle_started(_player.team, Inventory.get_battle_items(), enemy_actor)
+		"menu_opened":
+			vendor_menu.open_menu(vendor_actor)
+			await vendor_menu.menu_closed
+			world.process_mode = Node.PROCESS_MODE_INHERIT
+		"dialogue_ended","pivot_declined",_: 
+			world.process_mode = Node.PROCESS_MODE_INHERIT
+

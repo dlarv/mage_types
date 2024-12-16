@@ -67,15 +67,15 @@
 	7. Wild Enemies:
 		1. Set which enemies can spawn in a location and how frequently.
 		2. Allow level of randomization when deciding enemies movesets/drops/etc.
-		3. Initiate combat with player upon collision.
+		3. [x] Initiate combat with player upon collision.
 		4. Control movement states (Wandering, Hunting, Chasing, etc).
-	8. Use a generic NPC class to manage a charater's actors:
-		1. Detect collisions with player.
-		2. Show/hide interact label upon collision.
-		3. If StoryActor is present, display dialog when player interacts.
-			1. Allow StoryActor to pivot to battle or shop.
-		4. If only VendorActor is present, open shop menu and pass data to it.
-		5. If only EnemyActor is present, start battle.
+	8. [x] Use a generic NPC class to manage a charater's actors:
+		1. [x] Detect collisions with player.
+		2. [x]  Show/hide interact label upon collision.
+		3. [x] If StoryActor is present, display dialog when player interacts.
+			1. [x] Allow StoryActor to pivot to battle or shop.
+		4. [x] If only VendorActor is present, open shop menu and pass data to it.
+		5. [x] If only EnemyActor is present, start battle.
 # Story (STRY)
 1. [x] Use dialog nodes to talk with NPCs.(@8837853166851985954)
 	1. [x] A character has simple dialog that remains constant throughout the game.(@691467087424049585)

@@ -313,7 +313,7 @@ foreach(BattleAction action in actions) {
 >So in this example an Enemy will have 1 `EnemyActor`, but ~6 `BattleActor`s.
 #### Enemies
 There are two types of enemies the player will interact with:
-- Wild enemies, which attack on sight.
+- [[#Wild Enemies]], which attack on collision.
 - Aggressive Story Actors, which have dialog pre-fight which can be used to pivot into the battle. 
 
 In order to participate in battles, a character must have an `EnemyActor`. This `EnemyActor`, in turn, has 1+ `BattleActor`s.
@@ -348,12 +348,12 @@ Story Actors need to have to ability:
 #### Dialog Pivots
 A pivot represents what the game should do (re: pivot to) once the dialog has ended. Whichever class called `DialogueBox.start(…)` should await for `DialogueBox.dialog_signal`, the return value of which represents the pivot.
 
-| Name             | Description                                                  | Value of Data Param |
-| ---------------- | ------------------------------------------------------------ | ------------------- |
-| dialogue_ended*  | Dialog simply ends without pivoting to anything.             | null                |
-| pivot_declined   | Emitted if player has option to start pivot, but declines.   | n/a                 |
-| combat_initiated | Signals that battle should be initiated.                     | EnemyActor          |
-| menu_opened      | Emitted if menu should be opened, e.g. a shop keeper/vendor. | VendorActor         |
+| Name            | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| dialogue_ended* | Dialog simply ends without pivoting to anything.             |
+| pivot_declined  | Emitted if player has option to start pivot, but declines.   |
+| battle_started  | Signals that battle should be initiated.                     |
+| menu_opened     | Emitted if menu should be opened, e.g. a shop keeper/vendor. |
 \*The Dialogue Node addon was modified to emit this signal alongside `DialogueBox.dialogue_ended` to facilitate this. So the node now emits both a `dialogue_ended` signal as well as `dialogue_signal("dialogue_ended")`.
 #### Creating an NPC
 Each type of actor will be added as a child to NPC node.
@@ -378,11 +378,12 @@ _NPC_: Node3D:
 	- Manage Actor precedence. See table above.
 	- Set collider size and shape in inspector.
 	- Show 'interact' prompt, if applicable.
+[[Design#Characters|See here for instructions on how to add new characters to scene]].
 
-1. Add NPC to scene.
-2. Add CollisionShape3D, MeshInstance3D, etc.
-3. Add applicable actors.
-4. 
+### Wild Enemies
+#### Spawning
+#### Behavior
+#### Combat
 ## Story (STRY)
 ## Character Management and Inventory (CHAR)
 ## Setting and Accessibility (ACCS)

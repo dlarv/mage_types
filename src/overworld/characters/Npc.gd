@@ -4,9 +4,9 @@ extends Area3D
 @export var label_offset: Vector3
 var _label: Label
 
-var _story_actor: StoryActor = null
-var _vendor_actor: VendorActor = null
-var _enemy_actor: EnemyActor = null
+var story_actor: StoryActor = null
+var vendor_actor: VendorActor = null
+var enemy_actor: EnemyActor = null
 # Player or PhysicsPlayer
 var _player: Variant
 
@@ -22,20 +22,20 @@ func _enter_tree():
 
 	for child in get_children():
 		if child is VendorActor: 
-			_vendor_actor = child
+			vendor_actor = child
 		elif child is StoryActor:
-			_story_actor = child
+			story_actor = child
 		elif child is EnemyActor:
-			_enemy_actor = child
+			enemy_actor = child
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not _label.visible or _player == null: return
 
 	if event.is_action_pressed("interact"):
-		if _story_actor != null:
-			_player.call_deferred("start_dialog", _story_actor)
+		if story_actor != null:
+			_player.call_deferred("start_dialog", self)
 		else:
-			_player.call_deferred("open_shop", _vendor_actor)
+			_player.call_deferred("open_shop", self)
 		_player = null
 		_label.hide()
 
@@ -52,12 +52,12 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body:Node3D) -> void:
 	if not (body is Player or body is PhysicsPlayer): return
 
-	if _story_actor != null or _vendor_actor != null: 
+	if story_actor != null or vendor_actor != null: 
 		_label.show()
 		_player = body
 	elif not _on_cooldown:
 		get_tree().call_group("wild_enemies", "_start_battle_cooldown")
-		body.call_deferred("start_battle", _enemy_actor)
+		body.call_deferred("start_battle", self)
 			
 
 func _on_body_exited(body:Node3D) -> void:

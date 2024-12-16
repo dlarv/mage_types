@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bf3by0bbrpnol"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_asxuq"]
+
+[resource]
+script = ExtResource("1_asxuq")
+starts = {
+"FIGHT0": &"0_3",
+"STORY0": &"0_1",
+"VENDOR_MAIN": &"0_2"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-589, -315),
+"start_id": "STORY0"
+},
+"0_2": {
+"link": &"1_2",
+"offset": Vector2(-380, -660),
+"start_id": "VENDOR_MAIN"
+},
+"0_3": {
+"link": &"1_3",
+"offset": Vector2(-443.546, 5.38603),
+"start_id": "FIGHT0"
+},
+"1_1": {
+"dialogue": "Hi!",
+"offset": Vector2(-316, -379),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Bob"
+},
+"1_2": {
+"dialogue": "Hello, take a look at my wares.",
+"offset": Vector2(-120, -740),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_3": {
+"dialogue": "Oi, wanna go?",
+"offset": Vector2(-200, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": "Yes"
+},
+1: {
+"condition": {},
+"link": &"1_5",
+"text": " No"
+}
+},
+"size": Vector2(320, 320),
+"speaker": ""
+},
+"1_4": {
+"dialogue": "Then let's go!",
+"offset": Vector2(189.173, -74.1363),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_5": {
+"dialogue": "Coward...",
+"offset": Vector2(200, 240),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(280, -680),
+"signalValue": "menu_opened"
+},
+"3_2": {
+"link": "END",
+"offset": Vector2(618.174, 55.6927),
+"signalValue": "battle_started"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""
