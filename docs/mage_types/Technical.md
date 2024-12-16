@@ -301,6 +301,86 @@ foreach(BattleAction action in actions) {
 }
 ```
 ## Overworld (OVER)
+### Actor System
+- `BattleActor`: Each individual participating in a battle must have its own `BattleActor`.
+- `EnemyActor`: An enemy from the overworld who can participate in the battle.
+- `StoryActor`: All character's who can react to the story and/or have dialog must have a `StoryActor`.
+- `VendorActor`: A character who gives the player access to a shop.
+
+>[!note] BattleActors vs EnemyActors
+>To draw an analogy:
+>A `BattleActor` is like an individual Pokemon, while an `EnemyActor` is like a trainer.
+>So in this example an Enemy will have 1 `EnemyActor`, but ~6 `BattleActor`s.
+#### Enemies
+There are two types of enemies the player will interact with:
+- Wild enemies, which attack on sight.
+- Aggressive Story Actors, which have dialog pre-fight which can be used to pivot into the battle. 
+
+In order to participate in battles, a character must have an `EnemyActor`. This `EnemyActor`, in turn, has 1+ `BattleActor`s.
+
+Wild Enemies:
+- ~~Player monitors for collisions with EnemyActors.~~
+- Enemy is removed from scene.
+- Player emits `battle_started` signal.
+
+A. Story Actor:
+- ~~Player monitors for collisions with StoryActors.~~
+- Player clicks thru dialog.
+- At end of dialog tree/branch, DialogNode emits `battle_started` signal.
+- Player emits `battle_started` signal.
+
+>[!important] 
+>In v0.1.0, there is a separate class for AggressiveEnemyActors. I'd prefer this not to be the case.
+>Currently, the `EnemyActor` has a `fight_on_collision` toggle. I would prefer to have the `StoryActor`'s collision take precedence over `EnemyActor`.
+#### Story Actors
+Story Actors need to have to ability:
+- \*Display dialog when talked to by the player.
+- \*Change their dialog in response to story events.
+- Have dialog that involves multiple characters.
+- A character gives/takes an item from the player.
+	- For multiple items, use `VendorActor`.
+- Character is able to remember simple info given to them by a player.
+	- A nickname, answer to a question.
+- Move camera while a character talks.
+- \*Pivot into combat.
+\*Aspects that belong in the MVP.
+
+#### Dialog Pivots
+A pivot represents what the game should do (re: pivot to) once the dialog has ended. Whichever class called `DialogueBox.start(…)` should await for `DialogueBox.dialog_signal`, the return value of which represents the pivot.
+
+| Name             | Description                                                  | Value of Data Param |
+| ---------------- | ------------------------------------------------------------ | ------------------- |
+| dialogue_ended*  | Dialog simply ends without pivoting to anything.             | null                |
+| pivot_declined   | Emitted if player has option to start pivot, but declines.   | n/a                 |
+| combat_initiated | Signals that battle should be initiated.                     | EnemyActor          |
+| menu_opened      | Emitted if menu should be opened, e.g. a shop keeper/vendor. | VendorActor         |
+\*The Dialogue Node addon was modified to emit this signal alongside `DialogueBox.dialogue_ended` to facilitate this. So the node now emits both a `dialogue_ended` signal as well as `dialogue_signal("dialogue_ended")`.
+#### Creating an NPC
+Each type of actor will be added as a child to NPC node.
+
+| Enemy | Vendor | Story | Behavior                                                                                           |
+| ----- | ------ | ----- | -------------------------------------------------------------------------------------------------- |
+|       |        |       | The NPC will do nothing.                                                                           |
+| x     |        |       | NPC immediately starts a battle upon collision.                                                    |
+| x     |        | x     | Display interact prompt upon collision.<br>Optionally pivot into battle depending on player input. |
+| x     | x      |       | *Not really intended*.                                                                             |
+|       | x      |       | Display interact prompt upon collision.<br>If player interacts, immediately open shop menu.        |
+|       | x      | x     | NPC has 1+ dialog trees. <br>At least 1 contains the ability to open shop menu.                    |
+|       |        | x     | NPC has 1+ dialog trees. Start active one when interacted with.                                    |
+The `StoryActor` will contain dialog data.
+The `VendorActor` will contain shop data.
+The `EnemyActor` will contain a list of `BattleActor`s and an `OpponentController`.
+
+Actors will be managed by the `NPC` class. 
+_NPC_: Node3D:
+- Reqs:
+	- Detect collisions with player.
+	- Manage Actor precedence see table above.
+	- Set collider size and shape in inspector.
+
+1. Appropriate actors are attached to NPC and their data is filled in.
+2. NPC detects collision with player.
+3. 
 ## Story (STRY)
 ## Character Management and Inventory (CHAR)
 ## Setting and Accessibility (ACCS)
