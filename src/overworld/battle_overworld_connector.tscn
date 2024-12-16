@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfyxjj3qj48nf"]
-
-[ext_resource type="Script" path="res://src/overworld/BattleOverworldConnector.gd" id="1_iftmm"]
-[ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_l64iy"]
-
-[node name="BattleOverworldConnector" type="Node3D"]
-script = ExtResource("1_iftmm")
-battle_scene = ExtResource("2_l64iy")

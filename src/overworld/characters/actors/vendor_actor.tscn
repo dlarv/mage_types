@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1fwqalqmoi0q"]
+[gd_scene load_steps=2 format=3 uid="uid://d1fwqalqmoi0q"]
 
-[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="1_k28s6"]
 [ext_resource type="Script" path="res://src/overworld/characters/actors/VendorActor.gd" id="2_vrwgg"]
-[ext_resource type="Script" path="res://src/items/vendors/vendor_menu/VendorItem.gd" id="3_6oo2a"]
 
-[node name="VendorActor" instance=ExtResource("1_k28s6")]
+[node name="VendorActor" type="Node3D" groups=["dialog"]]
 script = ExtResource("2_vrwgg")
-items = Array[ExtResource("3_6oo2a")]([])
-spells = Array[ExtResource("3_6oo2a")]([])
-add_item = null
-actor_name = "Vendor"
-dialog_ids = Array[String](["VENDOR0"])

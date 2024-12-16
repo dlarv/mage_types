@@ -63,3 +63,9 @@ func _physics_process(delta) -> void:
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(team, Inventory.get_battle_items(), enemies)
 
+func open_shop(vendor: VendorActor) -> void:
+	pass
+
+func start_dialog(storyActor: StoryActor) -> void:
+	pass
+

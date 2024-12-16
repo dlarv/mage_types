@@ -375,12 +375,14 @@ Actors will be managed by the `NPC` class.
 _NPC_: Node3D:
 - Reqs:
 	- Detect collisions with player.
-	- Manage Actor precedence see table above.
+	- Manage Actor precedence. See table above.
 	- Set collider size and shape in inspector.
+	- Show 'interact' prompt, if applicable.
 
-1. Appropriate actors are attached to NPC and their data is filled in.
-2. NPC detects collision with player.
-3. 
+1. Add NPC to scene.
+2. Add CollisionShape3D, MeshInstance3D, etc.
+3. Add applicable actors.
+4. 
 ## Story (STRY)
 ## Character Management and Inventory (CHAR)
 ## Setting and Accessibility (ACCS)

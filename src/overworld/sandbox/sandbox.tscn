@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cujbohucty4vy"]
+[gd_scene load_steps=22 format=3 uid="uid://cujbohucty4vy"]
 
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="1_eq535"]
-[ext_resource type="PackedScene" uid="uid://bfyxjj3qj48nf" path="res://src/overworld/battle_overworld_connector.tscn" id="1_glfkx"]
+[ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_glfkx"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_yueml"]
 [ext_resource type="Resource" uid="uid://d27gkasg854gk" path="res://data/story/demo/demo_dialog.tres" id="3_nitk0"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_l2hbl"]
@@ -9,6 +9,11 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_dk0id"]
 [ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/items/vendors/vendor_menu/vendor_menu.tscn" id="7_dl08r"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="8_lk5jx"]
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="9_ilwgm"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="10_oo4fc"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="11_yp7r4"]
+[ext_resource type="Resource" uid="uid://bod1eny4l7qxi" path="res://data/battle_system/battle_actors/basic_battle_actor.tres" id="12_epopn"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="13_f5t4m"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_l2hbl")
@@ -25,11 +30,17 @@ size = Vector2(100, 100)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4a137"]
 data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_emsjn"]
+radius = 2.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ggfgs"]
+
 [node name="Sandbox" type="Node3D"]
 
-[node name="BattleOverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld") instance=ExtResource("1_glfkx")]
+[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld") instance=ExtResource("1_glfkx")]
 world = NodePath("../World")
 overworld = NodePath("../World/Overworld")
+battle_delay = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -70,13 +81,32 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4a137")
 
+[node name="NPC" parent="World/Overworld" groups=["wild_enemies"] instance=ExtResource("9_ilwgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+label_offset = Vector3(0, 2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Overworld/NPC"]
+shape = SubResource("SphereShape3D_emsjn")
+
+[node name="EnemyActor" parent="World/Overworld/NPC" node_paths=PackedStringArray("ai") instance=ExtResource("10_oo4fc")]
+ai = NodePath("Node")
+team = Array[ExtResource("11_yp7r4")]([ExtResource("12_epopn")])
+
+[node name="Node" type="Node" parent="World/Overworld/NPC/EnemyActor"]
+script = ExtResource("13_f5t4m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Overworld/NPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ggfgs")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16.3266, 0)
 
 [node name="Player" parent="World" instance=ExtResource("8_lk5jx")]
+collision_layer = 1
 
 [node name="Camera3D" type="Camera3D" parent="World/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)
 
-[connection signal="battle_started" from="World/Player" to="BattleOverworldConnector" method="_on_player_battle_started"]
-[connection signal="pause_world" from="World/Player" to="BattleOverworldConnector" method="_on_player_pause_world"]
+[connection signal="battle_started" from="World/Player" to="OverworldConnector" method="_on_player_battle_started"]
+[connection signal="pause_world" from="World/Player" to="OverworldConnector" method="_on_player_pause_world"]

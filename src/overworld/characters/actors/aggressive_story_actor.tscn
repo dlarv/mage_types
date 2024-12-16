@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://3g07bhv6nc63"]
-
-[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="1_ds5xx"]
-[ext_resource type="Script" path="res://src/overworld/characters/actors/AggressiveStoryActor.gd" id="2_eu4on"]
-
-[node name="AggressiveStoryActor" instance=ExtResource("1_ds5xx")]
-script = ExtResource("2_eu4on")
-post_battle_id = 0

@@ -1,26 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcttnbqwhpyrf"]
+[gd_scene load_steps=2 format=3 uid="uid://dcttnbqwhpyrf"]
 
 [ext_resource type="Script" path="res://src/overworld/characters/actors/StoryActor.gd" id="1_txya0"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_uvoks"]
-radius = 5.0
-
-[node name="StoryActor" type="Area3D" node_paths=PackedStringArray("_collision_shape") groups=["dialog"]]
+[node name="StoryActor" type="Node3D" groups=["dialog"]]
 script = ExtResource("1_txya0")
-_collision_shape = NodePath("DialogCollider")
-shape = SubResource("SphereShape3D_uvoks")
-offset = Vector3(-0.3, 4, 0)
-
-[node name="DialogCollider" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_uvoks")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 91.0
-offset_bottom = 23.0
-text = "Press Space"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
