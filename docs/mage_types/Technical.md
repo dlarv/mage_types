@@ -379,7 +379,6 @@ _NPC_: Node3D:
 	- Set collider size and shape in inspector.
 	- Show 'interact' prompt, if applicable.
 [[Design#Characters|See here for instructions on how to add new characters to scene]].
-
 ### Wild Enemies
 #### Spawning
 - An area monsters can spawn in.
@@ -387,11 +386,48 @@ _NPC_: Node3D:
 	- A list of attacks each monster can know.
 	- How many attacks should each monster know.
 	- Loot tables for each monster.
+	- How many BattleActors per EnemyActor.
 - How likely each monster can spawn.
 - A default opponent controller.
+- How often to spawn a new enemy.
+- Maximum number of entities to spawn.
 #### Behavior
-#### Combat
+### Level Design
+I prefer working with Blender's 3D editor over Godot's, so I'd like to do as much as possible in the former.
+#### Chunking
+- World
+	- Regions
+		- Rooms
+The `Regions` are the same as in the lore.
+The world will be loaded in one `Room` at a time.
+
 ## Story (STRY)
 ## Character Management and Inventory (CHAR)
+The PlayerMenu has 2 major tabs: `Characters` and `Inventory`.
+The Characters tab is broken into `Info`, `Stats`, and `Spells`.
+The Inventory tab is broken into `Items` and `Spells`.
+### Character Menu
+Each character controlled by the player has their own tab. Each of these tabs, in turn, have 6 subtabs: Info, Stats, Spells, Equipment, Abilities, Misc. Each of these tabs are split in half vertically. The left column has ui elements, while the right displays info about whatever the player has currently selected.
+#### The Info Tab
+This tab displays general information about the character, including:
+- Their name.
+- The primary and secondary types.
+- Their alignment (bias).
+- Their exp/level.
+#### The Stats Tab
+All players have 8 stats: hp, melee/ranged attack, melee/ranged defense, speed, evasion. The player character has 1 more: stamina.
+The stat screen has 2 boolean switches: editable and debug mode.
+- If editable is on, player can increment/decrement stats by 1.
+- If debug mode is on, player can enter any arbitrary number.
+
+How should character’s stats grow over time?
+- Stat points: player earns points that they can invest into whatever stats they want.
+- Automatically: as the player levels up.
+#### The Spells Tab
+This tab is the only way in game that the player can interact with their moveset, which means all restrictions should be handled here.
+- View info about spells.
+- Learn new spell.
+- Replace spell.
+- Forget spell.
 ## Setting and Accessibility (ACCS)
 ## Polish and Aesthetics (POLI)
