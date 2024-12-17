@@ -382,6 +382,13 @@ _NPC_: Node3D:
 
 ### Wild Enemies
 #### Spawning
+- An area monsters can spawn in.
+- A list of monsters that can spawn.
+	- A list of attacks each monster can know.
+	- How many attacks should each monster know.
+	- Loot tables for each monster.
+- How likely each monster can spawn.
+- A default opponent controller.
 #### Behavior
 #### Combat
 ## Story (STRY)

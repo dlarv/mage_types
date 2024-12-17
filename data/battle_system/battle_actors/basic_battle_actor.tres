@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bod1eny4l7qxi"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://bod1eny4l7qxi"]
 
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_64esd"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_a6tsy"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ekbj0"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_um40p"]
+[ext_resource type="Resource" uid="uid://mwxg2wlabpnk" path="res://data/battle_system/battle_actions/attacks/blood_shock.tres" id="4_xoway"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="5_7obdg"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="5_j6rs2"]
 
 [sub_resource type="Resource" id="Resource_mqv7k"]
 script = ExtResource("1_64esd")
@@ -34,4 +36,4 @@ _element1 = "blue"
 _element2 = "blank"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_ekbj0")]([ExtResource("2_um40p")])
+attacks = Array[ExtResource("2_ekbj0")]([ExtResource("2_um40p"), ExtResource("4_xoway"), ExtResource("5_j6rs2")])

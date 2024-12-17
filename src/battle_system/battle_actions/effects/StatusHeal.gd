@@ -8,3 +8,6 @@ class_name StatusHeal
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	target.remove_status_effect(effect)
 	return "%s was healed from %s." % [ target.name, effect.name ]
+
+func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+	return int(target.has_status_effect(effect))

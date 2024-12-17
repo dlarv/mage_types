@@ -25,3 +25,6 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAct
 		msg.append(phobia.apply_effect(user, target, action))
 
 	return "\n".join(msg)
+
+func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+	return 1

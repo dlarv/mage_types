@@ -8,3 +8,5 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAct
 
 	return "%s gained %d %s affinity!" % [user.name, amount, element.name]
 
+func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+	return 1

@@ -10,8 +10,10 @@ script = ExtResource("5_ihfmu")
 attack_effect = ExtResource("3_ecw2h")
 chance = 1.0
 effect_target = 1
+_element = "blank"
 
 [resource]
+resource_name = "Hemophobia"
 script = ExtResource("6_hfbf2")
 effects = Array[ExtResource("5_ihfmu")]([SubResource("Resource_ox82x")])
 cost = 10

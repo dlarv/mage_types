@@ -69,14 +69,13 @@ func apply_cost(user: BattleActor) -> float:
 
 # override
 func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
-	var statusPotential := 0.0
+	var setupPotential := 0.0
 	var dmg := 0
+
 	for effect in effects:
-		dmg += effect.get_dmg_potential(user, self, target)
-		if effect.attack_effect is StatusEffect:
-			statusPotential += effect.chance
+		dmg += effect.attack_effect.get_dmg_potential(user, self, target)
+		setupPotential += effect.attack_effect.get_setup_potential(user, target) * effect.chance
 	return { 
-		"status": statusPotential,
+		"setup": setupPotential,
 		"dmg": dmg,
 	}
-

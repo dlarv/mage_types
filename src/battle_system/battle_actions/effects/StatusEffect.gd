@@ -8,7 +8,6 @@ class_name StatusEffect
 @export_multiline var description: String 
 var element: ElementalType
 
-
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	# if target == null or action == null: return name
@@ -31,3 +30,6 @@ func combine(a: StatusEffect) -> void:
 func instantiate_icon() -> Node:
 	if icon == null : return null
 	return icon.instantiate()
+
+func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+	return 1

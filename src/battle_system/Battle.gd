@@ -68,6 +68,8 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	# Calculate turn order based on priority and actor speed.
 	var speedTieBreaker := randf() < 0.5
 	actions.sort_custom(func(a, b):
+		if a == null: return false
+		elif b == null: return true
 		# Higher priority goes first.
 		if a.priority != b.priority:
 			return a.priority > b.priority

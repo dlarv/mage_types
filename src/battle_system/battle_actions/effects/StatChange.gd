@@ -14,3 +14,5 @@ func combine(a: StatusEffect):
 func get_mod() -> float:
 	return stack * strength
 
+func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+	return 1

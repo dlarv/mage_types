@@ -9,8 +9,11 @@
 script = ExtResource("5_m23vy")
 attack_effect = ExtResource("3_jry5h")
 chance = 1.0
+effect_target = 1
+_element = "blank"
 
 [resource]
+resource_name = "Xanthophobia"
 script = ExtResource("6_pgxqk")
 effects = Array[ExtResource("5_m23vy")]([SubResource("Resource_iv12v")])
 cost = 10

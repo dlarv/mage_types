@@ -22,3 +22,4 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 		user.heal(actualDmg, allow_overflow)
 		msg += "\n%s drained %d from the target!" % [ user.name, actualDmg ]
 	return msg
+
