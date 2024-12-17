@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://denwrcbpm4d2q"]
-
-[ext_resource type="Script" path="res://src/overworld/sandbox_old/RewardTrigger.gd" id="1_hu6l7"]
-
-[node name="RewardTrigger" type="Area3D"]
-script = ExtResource("1_hu6l7")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
