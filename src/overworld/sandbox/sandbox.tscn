@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cujbohucty4vy"]
+[gd_scene load_steps=41 format=3 uid="uid://cujbohucty4vy"]
 
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="1_eq535"]
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_glfkx"]
@@ -21,7 +21,6 @@
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="17_8pgyp"]
 [ext_resource type="Resource" uid="uid://bmcia4k0ec1wj" path="res://data/battle_system/battle_actors/clown.tres" id="18_j8vto"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="19_uryvx"]
-[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="21_62e5c"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_l2hbl")
@@ -205,7 +204,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Player" parent="World" instance=ExtResource("8_lk5jx")]
 collision_layer = 1
-team = Array[ExtResource("11_yp7r4")]([ExtResource("21_62e5c")])
 
 [node name="Camera3D" type="Camera3D" parent="World/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)

@@ -11,13 +11,17 @@ enum ViewMode { INFO, REPLACE }
 @export var forget_button: Button
 @export var learn_button: Button
 
+var allow_forgetting := true
 var view_mode: ViewMode:
 	set(value):
 		view_mode = value
 		match value:
 			ViewMode.INFO:
-				forget_button.show()
 				learn_button.show()
+				if allow_forgetting:
+					forget_button.show()
+				else:
+					forget_button.hide()
 			ViewMode.REPLACE:
 				learn_button.show()
 				forget_button.hide()

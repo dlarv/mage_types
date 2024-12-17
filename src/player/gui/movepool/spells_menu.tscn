@@ -5,15 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://10l6iyehmyos" path="res://src/player/gui/movepool/components/movepool_submenu.tscn" id="3_hplqh"]
 [ext_resource type="PackedScene" uid="uid://8mmt12j618us" path="res://src/player/gui/movepool/components/spell_menu_display.tscn" id="4_sd1mb"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_pblt7"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_e0txt"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_5f3gd"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_e7yst"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_c3mic"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_wfadq"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_exwf0"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_087sm"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_mgd21"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_crkwj"]
 
 [node name="SpellsMenu" type="MarginContainer" node_paths=PackedStringArray("tab_container", "movepool_submenu", "display", "moveset_scroller", "popup")]
 anchors_preset = 15
@@ -55,23 +55,23 @@ text = "Spells:"
 
 [node name="MovesetSlot1" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_pblt7")
+button_group = SubResource("ButtonGroup_e0txt")
 
 [node name="MovesetSlot2" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_5f3gd")
+button_group = SubResource("ButtonGroup_e7yst")
 
 [node name="MovesetSlot3" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_c3mic")
+button_group = SubResource("ButtonGroup_wfadq")
 
 [node name="MovesetSlot4" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_exwf0")
+button_group = SubResource("ButtonGroup_087sm")
 
 [node name="MovesetSlot5" parent="HBoxContainer/TabContainer/Moveset" instance=ExtResource("2_qbgx0")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_mgd21")
+button_group = SubResource("ButtonGroup_crkwj")
 
 [node name="MovepoolSubmenu" parent="HBoxContainer/TabContainer" instance=ExtResource("3_hplqh")]
 visible = false
