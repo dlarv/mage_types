@@ -11,6 +11,7 @@
 - [x] Have attacks take resistances into account.
 - [x] Refactor Element info panels.
 # Demo v0.2.0+
+- [x] Battle 3-state button: Combine info and target selection states into one.
 - [ ] Design demo area.
 	- [ ] Mini-bosses.
 	- [ ] Puzzles.
@@ -20,6 +21,7 @@
 	- [ ] Sandbox area.
 - [ ] Texture world.
 - [ ] Music/audio.
+- [ ] Animations.
 # Bugs
 - [ ] Actor formatter is broken (if attack is null, it fails).
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".

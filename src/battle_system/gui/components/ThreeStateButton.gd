@@ -1,16 +1,10 @@
 extends Control
 class_name ThreeStateButton 
 
-signal state_changed(state)
-
-const UNSELECTED_STATE: int = 0
-const FIRST_SELECTED_STATE: int = 1
-const SECOND_SELECTED_STATE: int = 2
-const SECOND_STATE_UNSELECTED: int = 3
+signal state_changed(state: bool)
 
 @export var unselected_modulate_color: Color 
-@export var selected_1_modulate_color: Color 
-@export var selected_2_modulate_color: Color 
+@export var selected_modulate_color: Color 
 @export var locked_modulate_color: Color 
 
 @export var button: Button 
@@ -30,11 +24,10 @@ var is_locked: bool = false:
 	get: return is_locked 
 	set(value):
 		is_locked = value
-		state = UNSELECTED_STATE
+		state = false
 		modulate = locked_modulate_color if value else unselected_modulate_color
 
-var state: int = UNSELECTED_STATE
-
+var state: bool = false
 
 func _enter_tree():
 	cost_label.hide()
@@ -65,24 +58,19 @@ func update_cost(actor: BattleActor) -> void:
 
 func _on_pressed(toggled: bool) -> void:
 	if not toggled:
-		state = UNSELECTED_STATE
-		modulate =  locked_modulate_color  if is_locked  else  unselected_modulate_color
-	elif !is_locked && state == FIRST_SELECTED_STATE:
-		state = SECOND_SELECTED_STATE
-		modulate = selected_2_modulate_color
-	elif state == SECOND_SELECTED_STATE:
-		state = FIRST_SELECTED_STATE
-		modulate = selected_1_modulate_color
-		state_changed.emit(SECOND_STATE_UNSELECTED)
-		return
+		state = false
+		modulate = locked_modulate_color if is_locked else unselected_modulate_color
+	elif !is_locked:
+		state = true
+		modulate = selected_modulate_color
 	else:
-		state = FIRST_SELECTED_STATE
-		modulate = selected_1_modulate_color
+		state = false
+		modulate = unselected_modulate_color
 
 	state_changed.emit(state)
 
 
 func reset() -> void:
 	modulate = unselected_modulate_color
-	state = UNSELECTED_STATE
+	state = false
 	button.set_pressed_no_signal(false)

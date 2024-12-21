@@ -87,7 +87,7 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	for attack in actor.attacks:
 		if attack == null: continue
 		# Init.
-		var button: ThreeStateButton = three_state_button.instantiate()
+		var button = three_state_button.instantiate()
 		button.button_group = group
 		button.text = attack.name
 		button.state_changed.connect(func(state):
@@ -216,13 +216,11 @@ func _on_back_button_pressed() -> void:
 	control_panel.current_tab = 0
 
 func on_action_selected(state: int, index: int, action: BattleAction) -> void:
-	match state:
-		ThreeStateButton.UNSELECTED_STATE:
-			action_target_selection_cancelled.emit()
-		ThreeStateButton.FIRST_SELECTED_STATE:
-			show_info.emit(action)
-		ThreeStateButton.SECOND_SELECTED_STATE:
-			action_selected.emit(index, action)
-			_allow_end_turn = _edge_index >= _final_index
-		ThreeStateButton.SECOND_STATE_UNSELECTED:
-			action_target_selection_cancelled.emit()
+	# Press 1: Show info & select target
+	# Press 2: Goto default.
+	if not state:
+		action_target_selection_cancelled.emit()
+	else:
+		show_info.emit(action)
+		action_selected.emit(index, action)
+		_allow_end_turn = _edge_index >= _final_index

@@ -43,10 +43,6 @@ shift_right = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ActionsSelected_VBox" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2

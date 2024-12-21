@@ -32,7 +32,6 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 	playerControls.setup(allies, items, enemies)
 	_finished_setup = true
 
-
 func init_allies(allies: Array) -> void:
 	self.allies = allies
 	_selected_actions = []
@@ -123,11 +122,11 @@ func select_targets(user: BattleActor, action:BattleAction):
 			await get_tree().create_timer(.05).timeout
 			
 		BattleAction.TargetType.ALLY:
-			if ally_display_parent.length == 1 and not Settings.enable_transmutation_hints:
-				targets = [ ally_display_parent.get_display(0).actor ]
-				# This pause is needed, otherwise the End turn button won't enable.
-				await get_tree().create_timer(.05).timeout
-			else:
+			# if ally_display_parent.length == 1 and not Settings.enable_transmutation_hints:
+			# 	targets = [ ally_display_parent.get_display(0).actor ]
+			# 	# This pause is needed, otherwise the End turn button won't enable.
+			# 	await get_tree().create_timer(.05).timeout
+			# else:
 				ally_display_parent.select_target(false, action.element)
 				target = await ally_display_parent.selected
 				targets = [ target ]
@@ -137,11 +136,11 @@ func select_targets(user: BattleActor, action:BattleAction):
 			targets = allies
 			
 		BattleAction.TargetType.ENEMY:
-			if enemy_display_parent.length == 1 and not Settings.enable_transmutation_hints:
-				targets = [ enemy_display_parent.get_display(0).actor ]
-				# This pause is needed, otherwise the End turn button won't enable.
-				await get_tree().create_timer(.05).timeout
-			else:
+			# if enemy_display_parent.length == 1 and not Settings.enable_transmutation_hints:
+			# 	targets = [ enemy_display_parent.get_display(0).actor ]
+			# 	# This pause is needed, otherwise the End turn button won't enable.
+			# 	await get_tree().create_timer(.05).timeout
+			# else:
 				if action.attack_range == Attack.AttackRange.MELEE:
 					# Checking if transmutation hints are enabled is the responsibility of TeamDisplay.
 					ally_display_parent.enable_transmutation_hint(user, action.element)
