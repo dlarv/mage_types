@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_mcgo6")
-Name = "Blank"
-MainColor = Color(0.501961, 0.501961, 0.501961, 1)
-TextColor = Color(0, 0, 0, 1)
-ColorPalette = PackedColorArray()
+name = "Blank"
+main_color = Color(0.5, 0.5, 0.5, 1)
+is_defensive_type = true
+text_color = Color(0, 0, 0, 1)
+color_palette = Array[Color]([])

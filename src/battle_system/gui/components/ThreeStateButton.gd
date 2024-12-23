@@ -43,7 +43,7 @@ func update_cost(actor: BattleActor) -> void:
 	if not cost_label.visible: return
 
 	var affinity := actor.get_affinity_for(_element)
-	var color = _element.main_color * min(affinity / _total_cost, 1)
+	var color = _element.get_off_def_color() * min(affinity / _total_cost, 2)
 	color.a = 1
 
 	cost_label.clear()
@@ -51,7 +51,7 @@ func update_cost(actor: BattleActor) -> void:
 	cost_label.append_text("%d" % affinity)
 	cost_label.pop() # Pop color
 
-	cost_label.push_color(_element.main_color)
+	cost_label.push_color(_element.get_off_def_color())
 	cost_label.append_text("/%d" % _total_cost)
 	cost_label.pop() # Pop color
 

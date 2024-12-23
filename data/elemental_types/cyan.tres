@@ -6,5 +6,6 @@
 script = ExtResource("1_cl2uj")
 name = "Cyan"
 main_color = Color(0, 1, 1, 1)
+is_defensive_type = true
 text_color = Color(0, 0, 0, 1)
-color_palette = []
+color_palette = Array[Color]([])

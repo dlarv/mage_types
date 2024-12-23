@@ -23,6 +23,7 @@ In sandbox mode, the user should be given a spellscroll containing their new mov
 # Effect Builder
 ![[attack_effects#List of Attack Effects (v0.1.0)]]
 
+
 # Additional Fields
 - Strength
 	- Damage (int)

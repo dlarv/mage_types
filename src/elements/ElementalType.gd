@@ -4,6 +4,7 @@ class_name ElementalType
 
 @export var name: String 
 @export var main_color: Color 
+@export var is_defensive_type: bool
 @export var text_color: Color 
 @export var color_palette: Array[Color]
 
@@ -21,5 +22,11 @@ func get_bb_code_name(useAltColor:=false) -> String:
 		return "[color=%s]%s[/color]" % [text_color.to_html(), name]
 	return "[color=%s]%s[/color]" % [name, name]
 
-func is_blank():
+func is_blank() -> bool:
 	return name == "Blank"
+
+func get_off_def_color() -> Color:
+	if is_defensive_type:
+		return Color.BLUE
+	return Color.RED
+
