@@ -2,8 +2,6 @@
 extends EditorPlugin
 
 var plugin
-
-
 var dock
 
 func _enter_tree():

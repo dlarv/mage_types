@@ -1,0 +1,98 @@
+[gd_scene load_steps=19 format=3 uid="uid://bwedv008fwyuu"]
+
+[sub_resource type="Gradient" id="Gradient_5gymf"]
+colors = PackedColorArray(0.501961, 0.501961, 0.501961, 1, 0.501961, 0.501961, 0.501961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_estf0"]
+gradient = SubResource("Gradient_5gymf")
+
+[sub_resource type="Gradient" id="Gradient_bj7mu"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e1jn2"]
+gradient = SubResource("Gradient_bj7mu")
+
+[sub_resource type="Gradient" id="Gradient_xxqbb"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.498039, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a1522"]
+gradient = SubResource("Gradient_xxqbb")
+
+[sub_resource type="Gradient" id="Gradient_su3q5"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a4u57"]
+gradient = SubResource("Gradient_su3q5")
+
+[sub_resource type="Gradient" id="Gradient_de2il"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7l5u6"]
+gradient = SubResource("Gradient_de2il")
+
+[sub_resource type="Gradient" id="Gradient_f0p0f"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.501961, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xpomd"]
+gradient = SubResource("Gradient_f0p0f")
+
+[sub_resource type="Gradient" id="Gradient_nqpwx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_te1hc"]
+gradient = SubResource("Gradient_nqpwx")
+
+[sub_resource type="Gradient" id="Gradient_u5mmx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5eg6d"]
+gradient = SubResource("Gradient_u5mmx")
+
+[sub_resource type="Gradient" id="Gradient_ukhtn"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3twbj"]
+gradient = SubResource("Gradient_ukhtn")
+
+[node name="ElementDropdown" type="OptionButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+selected = 0
+item_count = 9
+popup/item_0/text = "Blank"
+popup/item_0/icon = SubResource("GradientTexture2D_estf0")
+popup/item_1/text = "Blue"
+popup/item_1/icon = SubResource("GradientTexture2D_e1jn2")
+popup/item_1/id = 1
+popup/item_2/text = "Purple"
+popup/item_2/icon = SubResource("GradientTexture2D_a1522")
+popup/item_2/id = 2
+popup/item_3/text = "Magenta"
+popup/item_3/icon = SubResource("GradientTexture2D_a4u57")
+popup/item_3/id = 3
+popup/item_4/text = "Red"
+popup/item_4/icon = SubResource("GradientTexture2D_7l5u6")
+popup/item_4/id = 4
+popup/item_5/text = "Orange"
+popup/item_5/icon = SubResource("GradientTexture2D_xpomd")
+popup/item_5/id = 5
+popup/item_6/text = "Yellow"
+popup/item_6/icon = SubResource("GradientTexture2D_te1hc")
+popup/item_6/id = 6
+popup/item_7/text = "Green"
+popup/item_7/icon = SubResource("GradientTexture2D_5eg6d")
+popup/item_7/id = 7
+popup/item_8/text = "Cyan"
+popup/item_8/icon = SubResource("GradientTexture2D_3twbj")
+popup/item_8/id = 8

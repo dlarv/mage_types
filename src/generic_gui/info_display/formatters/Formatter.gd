@@ -19,7 +19,7 @@ func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel) -> int:
 
 		if effect is ElementalEffect:
 			effectsLabel.push_meta(effect)
-			append_elemental_color(effectsLabel, effect.element)
+			append_elemental_color(effectsLabel, e.element)
 			effectsLabel.append_text("-%s" % effect.name)
 			effectsLabel.pop() # Close meta tag
 			effectsLabel.append_text(" %d%%." % chance)
