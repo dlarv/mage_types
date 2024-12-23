@@ -204,6 +204,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Player" parent="World" instance=ExtResource("8_lk5jx")]
 collision_layer = 1
+run_speed = 40.0
 
 [node name="Camera3D" type="Camera3D" parent="World/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)

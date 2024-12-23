@@ -10,8 +10,10 @@ script = ExtResource("5_24nq1")
 attack_effect = ExtResource("3_njiur")
 chance = 1.0
 effect_target = 1
+_element = "green"
 
 [resource]
+resource_name = "Prasinophobia"
 script = ExtResource("6_c3q0c")
 effects = Array[ExtResource("5_24nq1")]([SubResource("Resource_4e1kb")])
 cost = 10

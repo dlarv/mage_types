@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_cge1d"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
 [ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="3_hkgsr"]
+[ext_resource type="Resource" uid="uid://b3n0dro8r3h8l" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/green_phobia.tres" id="4_01q54"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
 
 [sub_resource type="Resource" id="Resource_yqccd"]
@@ -34,4 +35,4 @@ _element1 = "blue"
 _element2 = "purple"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_hkgsr")])
+attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_hkgsr"), ExtResource("4_01q54")])
