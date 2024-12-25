@@ -384,7 +384,6 @@ I prefer working with Blender's 3D editor over Godot's, so I'd like to do as muc
 		- Rooms
 The `Regions` are the same as in the lore.
 The world will be loaded in one `Room` at a time.
-
 ## Story (STRY)
 ## Character Management and Inventory (CHAR)
 The PlayerMenu has 2 major tabs: `Characters` and `Inventory`.
@@ -413,5 +412,20 @@ This tab is the only way in game that the player can interact with their moveset
 - Learn new spell.
 - Replace spell.
 - Forget spell.
+### Inventory
+- Quickly load items from filesystem.
+- Dynamically add items during runtime.
+- Provide access to inventory from battle.
+
+There are 4 types of items:
+- Regular Items
+- Spell Scrolls
+- Equipment
+- Key Item
+
+Regular items can optionally have a `BattleItem` component, which allows them to be used in battle.
+
+The `Inventory` will have *4 subarrays* (1 for each item type) and provide a *helper method* for `BattleItem` access.
+
 ## Setting and Accessibility (ACCS)
 ## Polish and Aesthetics (POLI)
