@@ -260,7 +260,6 @@ The transmutation chart has a lot of holes, it could be interesting to use this 
 
 ![[resistances_v3.png]]
 *Fig 1.9: Chart showing the weakness and resistances of each element.*
-
 ## Affinity Info
 Affinity is essentially the mana system in this game. In v0.1.0, the player had 8 pools of affinity, which was a little much. In this version, the player will have 3 (R, G, B). Attacks will have the ability to cost any combination of affinity.
 
@@ -299,19 +298,59 @@ There's also 2 stats, typically hidden in other similar styles of game:
 - Evasion
 If present, I would like the ability to view these stats, at least in debug mode.
 ## Status Effects
-| Name       | Description                                                         |
-| ---------- | ------------------------------------------------------------------- |
-| Poison     | Damage over time.                                                   |
-| Blocking   | Prevents the next damage the actor would take.                      |
-| Dissonance | Prevents Primary + Secondary transmutations.                        |
-| Stasis     | Prevents Attack + (Primary \| Secondary) transmutations.            |
-| Healing    | Healing over time.                                                  |
-| Phobia     | Damages the actor everytime they transmute into a specific element. |
-| Philia*    | Heals the actor everytime they transmute into a specific element.   |
-| Flinched** | Skips the actor's next turn.                                        |
-\*Philia: I don't like this name.
-\*\*Flinched: The v0.1.0 build of the battle ui does not easily support this. I might remove it from at least the demo version.
+![[status_effects#Proposal v2]]
 # 3. Overworld System
 ## Transmutation Puzzles
 In v0.1.0, the player had the ability to transmute certain objects at any time. This system will be removed, with the possibility of a more limited version being introduced in the future.
-## Overworld Spells
+## Overworld Spells/Temple Mechanics
+For discussion of temples, see [[Design#Dungeons|here]].
+For discussion of how these should be implemented, see [[Technical#Overworld Spells|here]].
+Discussion of lock and key philosophy: .
+
+In this [[overworld_spells|document]], I discuss a simpler version of the Overworld spells, treating it more like a straightforward lock-and-key system.
+Each spell should only be design to remove a specific type of obstacle, with more complex synergies being more of a stretch goal.
+
+It would be best if the spells also tied into the preexisting systems:
+1. Resistances & Weaknesses
+2. Affinity (Offensive/Defensive)
+3. Transmutations
+### General Mechanics
+Each spell a player has will be accessed thru a hotkey. Targeting should generally work based on the direction the player is facing or on the spot the player is standing on.
+### List of Overworld Spells
+- **Stasis**([[Design#Blue Temple|Blue Temple]]): Prevents an object from transmuting or moving.
+- **Destroy**\*(Purple Temple?): Breaks an object, based on the resistance system(1).
+- **Catalyst**([[Design#Sunset Temple|Sunset Temple]]): Forces a transmutation to happen.
+- **Vines**([[Design#Red Temple|Red Temple]]): Grows vines out of a patch of clay.
+- **Tunnel**\*:([[Design#Abandoned Temple|Abandoned (Green) Temple]]) Fast travel between two points.
+\*WIP name.
+#### Stasis
+Player selects an adjacent object. This object cannot be transmuted. If object is moving (e.g. an automated platform or enemy sprite), it stops until effect wears out. 
+#### Destroy
+Player channels element found at their feet. A projectile of this type is launched in a straight line. Upon collision with a _Cracked Clay Obstacle_: 
+- If `object.element` is weak to `projectile.element` both projectile and object are destroyed.
+- If `object.element` resists `projectile.element`, projectile is destroyed.
+- If `object.element` is neutral to `projectile.element`, projectile bounces.
+#### Vines
+Player channels energy, encouraging the growth of nearby flora. When used on _Clay Terrain_, grow one of the following formations:
+- Bridge: Creates a horizontal platform.
+- Wall: Grows climbable section on nearby wall.
+- Shoot: Grows a climbable, vertical platform.
+#### Catalyst
+Similar to destroy, player channels element found at their feet. A projectile of this type is launched in a straight line. Upon collision with a _Clay Obstacle_:
+- If a transmutation exists, transmute object and destroy projectile.
+- Otherwise, projectile bounces.
+#### Tunnel
+When used on _Clay Terrain_:
+- Some _Clay Terrain_ contains the entrance to a secret room/area. If this is one such instance, open a doorway to area.
+- Otherwise, creates a tunnel between nearest `terrain.element`.
+### Other Ideas
+Other than claymation, these artforms could serve as inspiration for overworld spells.
+- Origami
+- Sewing
+	- Needle and thread
+	- Knitting
+- Paint
+
+To avoid making this game more convoluted, only one of these mechanics should be implemented as overworld spells, if any. 
+
+Particularly, I like the origami idea best. I think it could make an interesting late-game addition.

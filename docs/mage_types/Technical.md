@@ -313,7 +313,7 @@ A. Story Actor:
 - At end of dialog tree/branch, DialogNode emits `battle_started` signal.
 - Player emits `battle_started` signal.
 
->[!important] 
+>[!question] 
 >In v0.1.0, there is a separate class for AggressiveEnemyActors. I'd prefer this not to be the case.
 >Currently, the `EnemyActor` has a `fight_on_collision` toggle. I would prefer to have the `StoryActor`'s collision take precedence over `EnemyActor`.
 #### Story Actors
@@ -384,7 +384,25 @@ I prefer working with Blender's 3D editor over Godot's, so I'd like to do as muc
 		- Rooms
 The `Regions` are the same as in the lore.
 The world will be loaded in one `Room` at a time.
+### Overworld Spells
+1. Allow user to select spell.
+2. Apply effects of spell to overworld.
+	1. Particle effect/animation.
+	2. Apply effect to entity.
+	3. Apply effect to MagiClay.
+3. Remove spell effects from overworld after expiration.
+
+Entities:
+- MagiClay (2.3, 3)
+- SpellManager (1)
+	- Parent to all OverworldSpell objects.
+	- Child of Player.
+	- Interfaces with inventory to determine which spells are disabled.
+	- Selects which spell is currently active.
+- OverworldSpell (2.1, 2.2)
+	- Handles UI and activation.
 ## Story (STRY)
+#todo
 ## Character Management and Inventory (CHAR)
 The PlayerMenu has 2 major tabs: `Characters` and `Inventory`.
 The Characters tab is broken into `Info`, `Stats`, and `Spells`.

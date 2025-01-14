@@ -28,6 +28,7 @@
 - [ ] Animations.
 - [ ] Have battle access inventory directly.
 	- [ ] Prevent items from being double-spent in battle.
+- [ ] Test whether GenericOpponentController works as intended (ain't no way).
 # Bugs
 - [ ] Actor formatter is broken (if attack is null, it fails).
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".
