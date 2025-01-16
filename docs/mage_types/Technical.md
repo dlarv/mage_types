@@ -401,6 +401,25 @@ Entities:
 	- Selects which spell is currently active.
 - OverworldSpell (2.1, 2.2)
 	- Handles UI and activation.
+
+_SpellManager_: Node:
+- EnableSpell(`OverworldSpell`, `bool`)
+- ActivateSpell(`OverworldSpell`, `bool`)
+#### Overworld Spell: Stasis
+#### Overworld Spell: Destroy
+1. Get element of MagiClay under player's feet.
+2. Shoot projectile in direction the player is facing.
+3. If projectile collides with a *breakable* MagiClay *obstacle*, get resistance matchup:
+	1. If projectile is super-effective, destroy obstacle and projectile.
+	2. Otherwise, projectile bounces (or is destroyed).
+#### Overworld Spell: Vines
+#### Overworld Spell: Catalyst
+1. Get element of MagiClay under player's feet.
+2. Shoot projectile in direction the player is facing.
+3. If projectile collides with a *transmutable* MagiClay *obstacle*, get resistance matchup:
+	1. If transmutation exists, transmute obstacle.
+	2. Otherwise, projectile bounces (or is destroyed).
+#### Overworld Spell: Tunnel
 ## Story (STRY)
 #todo
 ## Character Management and Inventory (CHAR)
