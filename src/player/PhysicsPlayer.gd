@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name PhysicsPlayer
 
-signal battle_started(allies, items, enemies)
+signal battle_started(allies, enemies)
 signal pause_world(value: bool)
 
 @export_category("Scene Nodes")
@@ -60,7 +60,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	state.linear_velocity = velocity
 	
 func start_battle(enemies: EnemyActor) -> void:
-	battle_started.emit(team, Inventory.get_battle_items(), enemies)
+	battle_started.emit(team, enemies)
 
 func set_active(isActive: bool) -> void:
 	visible = isActive

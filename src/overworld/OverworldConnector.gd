@@ -11,12 +11,12 @@ extends Node3D
 
 @export var _player: Player
 
-func _on_player_battle_started(allies: Array, items:Array, enemy:EnemyActor) -> void:
+func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	var battle := battle_scene.instantiate()
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	add_child(battle)
-	battle.start(allies, items, enemy.team, enemy.ai)
+	battle.start(allies, Inventory.get_battle_items(), enemy.team, enemy.ai)
 	await battle.battle_ended
 	battle.queue_free()
 	
@@ -43,7 +43,7 @@ func _on_dialog_started(dialogId: String, enemy_actor: EnemyActor, vendor_actor:
 	var val = await dialog_box.dialogue_signal
 	match val:
 		"battle_started":
-			_on_player_battle_started(_player.team, Inventory.get_battle_items(), enemy_actor)
+			_on_player_battle_started(_player.team, enemy_actor)
 		"menu_opened":
 			vendor_menu.open_menu(vendor_actor)
 			await vendor_menu.menu_closed

@@ -401,11 +401,14 @@ Entities:
 	- Selects which spell is currently active.
 - OverworldSpell (2.1, 2.2)
 	- Handles UI and activation.
-
-_SpellManager_: Node:
-- EnableSpell(`OverworldSpell`, `bool`)
-- ActivateSpell(`OverworldSpell`, `bool`)
+- Projectile
+	- Exist in 3D physics space.
+	- Collide with 1+ objects.
 #### Overworld Spell: Stasis
+1. Project a ray from the player to ground in front of them.
+2. Rotate ray around player until MagiClay or PhysicsObject is found, or ray completes 360deg.
+3. If projectile collides with MagiClay, prevent effects until expiration.
+4. Elif projectile collides with PhysicsObject, prevent physics until expiration.
 #### Overworld Spell: Destroy
 1. Get element of MagiClay under player's feet.
 2. Shoot projectile in direction the player is facing.
@@ -413,6 +416,9 @@ _SpellManager_: Node:
 	1. If projectile is super-effective, destroy obstacle and projectile.
 	2. Otherwise, projectile bounces (or is destroyed).
 #### Overworld Spell: Vines
+1. Project a ray from the player to ground in front of them.
+2. Rotate ray around player until *blooming* MagiClay is found or ray completes 360deg.
+3. If MagiClay is found, begin growing sequence.
 #### Overworld Spell: Catalyst
 1. Get element of MagiClay under player's feet.
 2. Shoot projectile in direction the player is facing.
@@ -420,6 +426,49 @@ _SpellManager_: Node:
 	1. If transmutation exists, transmute obstacle.
 	2. Otherwise, projectile bounces (or is destroyed).
 #### Overworld Spell: Tunnel
+1. When game is compiled, all MagiClay without a *tunnel override* finds its closest neighbor.
+2. Project a ray from the player to ground in front of them.
+3. If ray collides with MagiClay, create a tunnel instance.
+4. When player collides with tunnel instance, teleport them to *other side*.
+#### Summary
+_MagiClay_:
+- Subtypes:
+	- Terrain: Part of the ground/walls.
+	- Obstacle
+- Fields:
+	- Is Blooming: `bool`
+	- Is Breakable: `bool`
+	- Is Transmutable: `bool`
+	- Is Active: `bool`
+	- Tunnel Override: *MagiClay*
+- Methods:
+	- PerformAction(`ElementalType`, `func`)
+_SpellManager_: `Node3D`:
+- Reqs:
+	- Enable spells based on game events.
+		- Interface with Inventory.
+	- Get input from user to activate spell.
+- Methods:
+	- EnableSpell(`OverworldSpell`, `bool`)
+	- ActivateSpell(`OverworldSpell`, `bool`)
+_OverworldSpell_: `Interface` | `Node3D`:
+- Reqs:
+	- When active, listen for player input.
+- Methods:
+	- SetActive(`bool`)
+_Projectile_: `Node3D`:
+- Reqs:
+	- Travel in straight line upon creation.
+	- When collision, test for MagiClay. 
+		- If test passes, perform action on MagiClay.
+		- Otherwise, bounce.
+			- Once `max_bounce` threshold is reached, destroy self.
+- Fields:
+	- MaxBounces: `int`
+	- CollisionTest: `func(Node3D) -> bool`
+	- ActionToPerform: func(`Node3D`, `ElementalType`)
+- Methods:
+	- Constructor(`func`, `func`, `ElementalType`)
 ## Story (STRY)
 #todo
 ## Character Management and Inventory (CHAR)
@@ -450,8 +499,9 @@ This tab is the only way in game that the player can interact with their moveset
 - Replace spell.
 - Forget spell.
 ### Inventory
-- Quickly load items from filesystem.
-- Dynamically add items during runtime.
+- ~~Quickly load items from filesystem.~~
+- Easily add items inside of editor (wrapping them in ItemSlot).
+- Dynamically add items during runtime (e.g. if player creates an item using the debugger).
 - Provide access to inventory from battle.
 
 There are 4 types of items:
@@ -461,8 +511,12 @@ There are 4 types of items:
 - Key Item
 
 Regular items can optionally have a `BattleItem` component, which allows them to be used in battle.
+Each type of item will be kept in its own array. An `item.id` is relative to its array (i.e. there can be up to 4 items with `id=0`). An item's id will be the same as its index. *This is used when searching for items.*
 
-The `Inventory` will have *4 subarrays* (1 for each item type) and provide a *helper method* for `BattleItem` access.
+There will be several helper vars exposed to the editor:
+- `add_item`: Dragging items here will add them to the correct array and wrap them in an `ItemSlot`.
+- `add_item_dir`: Like `add_item`, except it will perform a dfs on a directory, loading all items it finds. *It will not check if the item has already been added to the list!*
+- `recalc_ids_*`: Each item array will have its own `bool` var. When pressed, it will recalculate all item ids. This is useful when used to manually sort the order items will appear, after loading them in using the other helper vars.
 
 ## Setting and Accessibility (ACCS)
 ## Polish and Aesthetics (POLI)

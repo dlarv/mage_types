@@ -1,130 +1,185 @@
-[gd_scene load_steps=29 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=41 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_jis06"]
-[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_fvghd"]
-[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="3_fw4ng"]
-[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="4_cafs4"]
-[ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="5_kkvrm"]
-[ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="6_2ean2"]
-[ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="6_bgsqo"]
-[ext_resource type="Resource" uid="uid://bqv0v7l6vqeeu" path="res://data/items/spell_scrolls/strikes/m_strike_scroll.tres" id="7_2ftem"]
-[ext_resource type="Resource" uid="uid://cdwq01mquvfiy" path="res://data/items/spell_scrolls/block_scroll.tres" id="7_mpfwv"]
-[ext_resource type="Resource" uid="uid://biujho1cv84is" path="res://data/items/spell_scrolls/strikes/r_strike_scroll.tres" id="8_fxmff"]
-[ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="9_h5mxq"]
-[ext_resource type="Resource" uid="uid://de8dpi4u0pici" path="res://data/items/spell_scrolls/strikes/o_strike_scroll.tres" id="10_4qy7o"]
-[ext_resource type="Resource" uid="uid://4cqj7vqfwjdv" path="res://data/items/spell_scrolls/strikes/c_strike_scroll.tres" id="11_leq67"]
-[ext_resource type="Resource" uid="uid://6xeq4kt74iij" path="res://data/items/spell_scrolls/strikes/g_strike_scroll.tres" id="12_liujo"]
-[ext_resource type="Resource" uid="uid://bs7w81umm54rg" path="res://data/items/spell_scrolls/strikes/y_strike_scroll.tres" id="13_i2sbw"]
+[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_xejte"]
+[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="3_3atr7"]
+[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="4_klwlq"]
+[ext_resource type="Resource" uid="uid://cwn5jymtvdcry" path="res://data/items/spell_scrolls/abyssal_aspiration.tres" id="5_3po7c"]
+[ext_resource type="Resource" uid="uid://cs6ow5vypdgk2" path="res://data/items/spell_scrolls/hit_scroll.tres" id="6_fb5af"]
+[ext_resource type="Resource" uid="uid://cjis241a7rywd" path="res://data/items/spell_scrolls/blood_shock_scroll.tres" id="7_ehvag"]
+[ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/terrify_scroll.tres" id="8_vcgc2"]
+[ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="9_inlsm"]
+[ext_resource type="Resource" uid="uid://bpgkg6f5qnd42" path="res://data/items/spell_scrolls/drain_scroll.tres" id="10_eksn8"]
+[ext_resource type="Resource" uid="uid://cdwq01mquvfiy" path="res://data/items/spell_scrolls/block_scroll.tres" id="11_v1oxf"]
+[ext_resource type="Resource" uid="uid://657el8nv01yf" path="res://data/items/spell_scrolls/throw_scroll.tres" id="12_f1qag"]
+[ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="13_l1x6d"]
+[ext_resource type="Resource" uid="uid://bqv0v7l6vqeeu" path="res://data/items/spell_scrolls/strikes/m_strike_scroll.tres" id="14_cys5c"]
+[ext_resource type="Resource" uid="uid://biujho1cv84is" path="res://data/items/spell_scrolls/strikes/r_strike_scroll.tres" id="15_crq3u"]
+[ext_resource type="Resource" uid="uid://dg4sxkniinu41" path="res://data/items/spell_scrolls/strikes/abyss_strike.tres" id="16_pu3bs"]
+[ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="17_pe1tn"]
+[ext_resource type="Resource" uid="uid://de8dpi4u0pici" path="res://data/items/spell_scrolls/strikes/o_strike_scroll.tres" id="18_v86o4"]
+[ext_resource type="Resource" uid="uid://4cqj7vqfwjdv" path="res://data/items/spell_scrolls/strikes/c_strike_scroll.tres" id="19_ngs3k"]
+[ext_resource type="Resource" uid="uid://6xeq4kt74iij" path="res://data/items/spell_scrolls/strikes/g_strike_scroll.tres" id="20_ouyko"]
+[ext_resource type="Resource" uid="uid://bs7w81umm54rg" path="res://data/items/spell_scrolls/strikes/y_strike_scroll.tres" id="21_1lo4t"]
 
-[sub_resource type="Resource" id="Resource_gijdr"]
-resource_name = "Poison Heal"
-script = ExtResource("2_fvghd")
-item = ExtResource("3_fw4ng")
-id = 0
-quantity = 3
-max_quantity = 9999
-
-[sub_resource type="Resource" id="Resource_4ea74"]
+[sub_resource type="Resource" id="Resource_q8puk"]
 resource_name = "Healing Potion"
-script = ExtResource("2_fvghd")
-item = ExtResource("4_cafs4")
-id = 1
-quantity = 3
-max_quantity = 9999
-
-[sub_resource type="Resource" id="Resource_ff72n"]
-resource_name = "Hit Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("5_kkvrm")
+script = ExtResource("2_xejte")
+item = ExtResource("3_3atr7")
 id = 0
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_hagwo"]
-resource_name = "Sting Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("6_bgsqo")
+[sub_resource type="Resource" id="Resource_gu68u"]
+resource_name = "Poison Heal"
+script = ExtResource("2_xejte")
+item = ExtResource("4_klwlq")
 id = 1
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_0ks55"]
+[sub_resource type="Resource" id="Resource_cgnje"]
+resource_name = "Hit Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("6_fb5af")
+id = 0
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_yuvwl"]
+resource_name = "Sting Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("9_inlsm")
+id = 1
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_ko57n"]
 resource_name = "Block Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("7_mpfwv")
+script = ExtResource("2_xejte")
+item = ExtResource("11_v1oxf")
 id = 2
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_reu6j"]
-resource_name = "Purple Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("6_2ean2")
+[sub_resource type="Resource" id="Resource_goyqj"]
+resource_name = "Dark Aspirations Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("5_3po7c")
 id = 3
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_6dewu"]
-resource_name = "Magenta Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("7_2ftem")
+[sub_resource type="Resource" id="Resource_2i48l"]
+resource_name = "Blood Shock Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("7_ehvag")
 id = 4
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_17mru"]
-resource_name = "Red Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("8_fxmff")
+[sub_resource type="Resource" id="Resource_18syq"]
+resource_name = "Terrify Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("8_vcgc2")
 id = 5
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_dr5wt"]
-resource_name = "Blue Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("9_h5mxq")
+[sub_resource type="Resource" id="Resource_e61ev"]
+resource_name = "Drain Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("10_eksn8")
 id = 6
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_17fij"]
-resource_name = "Orange Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("10_4qy7o")
+[sub_resource type="Resource" id="Resource_ahvk5"]
+resource_name = "Throw Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("12_f1qag")
 id = 7
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_07d4l"]
-resource_name = "Cyan Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("11_leq67")
+[sub_resource type="Resource" id="Resource_t4ca6"]
+resource_name = "Purple Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("13_l1x6d")
 id = 8
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_pc7ke"]
-resource_name = "Green Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("12_liujo")
+[sub_resource type="Resource" id="Resource_8mika"]
+resource_name = "Magenta Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("14_cys5c")
 id = 9
 quantity = 0
 max_quantity = 9999
 
-[sub_resource type="Resource" id="Resource_1og2r"]
-resource_name = "Yellow Strike Scroll"
-script = ExtResource("2_fvghd")
-item = ExtResource("13_i2sbw")
+[sub_resource type="Resource" id="Resource_cs2b2"]
+resource_name = "Red Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("15_crq3u")
 id = 10
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_jlm0e"]
+resource_name = "Abyss Strike"
+script = ExtResource("2_xejte")
+item = ExtResource("16_pu3bs")
+id = 11
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_pu25d"]
+resource_name = "Blue Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("17_pe1tn")
+id = 12
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_t81so"]
+resource_name = "Orange Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("18_v86o4")
+id = 13
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_jwp7j"]
+resource_name = "Cyan Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("19_ngs3k")
+id = 14
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_l82yb"]
+resource_name = "Green Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("20_ouyko")
+id = 15
+quantity = 0
+max_quantity = 9999
+
+[sub_resource type="Resource" id="Resource_j6xh1"]
+resource_name = "Yellow Strike Scroll"
+script = ExtResource("2_xejte")
+item = ExtResource("21_1lo4t")
+id = 16
 quantity = 0
 max_quantity = 9999
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_jis06")
 money = 9999
-_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_gijdr"), SubResource("Resource_4ea74"), SubResource("Resource_ff72n"), SubResource("Resource_hagwo"), SubResource("Resource_0ks55"), SubResource("Resource_reu6j"), SubResource("Resource_6dewu"), SubResource("Resource_17mru"), SubResource("Resource_dr5wt"), SubResource("Resource_17fij"), SubResource("Resource_07d4l"), SubResource("Resource_pc7ke"), SubResource("Resource_1og2r")])
-regular_items = Array[ExtResource("2_fvghd")]([SubResource("Resource_gijdr"), SubResource("Resource_4ea74")])
-spell_scrolls = Array[ExtResource("2_fvghd")]([SubResource("Resource_ff72n"), SubResource("Resource_hagwo"), SubResource("Resource_0ks55"), SubResource("Resource_reu6j"), SubResource("Resource_6dewu"), SubResource("Resource_17mru"), SubResource("Resource_dr5wt"), SubResource("Resource_17fij"), SubResource("Resource_07d4l"), SubResource("Resource_pc7ke"), SubResource("Resource_1og2r")])
-_regular_index = Vector2i(0, 2)
-_scroll_index = Vector2i(2, 13)
+regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
+recalc_ids_r = null
+spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_cgnje"), SubResource("Resource_yuvwl"), SubResource("Resource_ko57n"), SubResource("Resource_goyqj"), SubResource("Resource_2i48l"), SubResource("Resource_18syq"), SubResource("Resource_e61ev"), SubResource("Resource_ahvk5"), SubResource("Resource_t4ca6"), SubResource("Resource_8mika"), SubResource("Resource_cs2b2"), SubResource("Resource_jlm0e"), SubResource("Resource_pu25d"), SubResource("Resource_t81so"), SubResource("Resource_jwp7j"), SubResource("Resource_l82yb"), SubResource("Resource_j6xh1")])
+recalc_ids_s = null
+recalc_ids_k = null
+recalc_ids_e = null

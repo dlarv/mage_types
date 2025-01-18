@@ -8,9 +8,8 @@ class_name ItemSlot
 		if value != null:
 			resource_name = item.name
 @export var id: int: 
-	set(value):
-		id = value
-		if item != null: item.id = id
+	get:
+		return item.id
 @export var quantity: int:
 	set(value):
 		quantity = value

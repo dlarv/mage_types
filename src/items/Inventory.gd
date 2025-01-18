@@ -9,48 +9,62 @@ signal quantity_changed(item: ItemSlot)
 @export var money: int = 0
 
 @export_category("Item Arrays")
-@export var reload_items := false:
-	set(value):
-		if not value or not Engine.is_editor_hint(): return
-		_load_from_fs()
-@export var _items: Array[ItemSlot]
-@export var regular_items: Array[ItemSlot]:
-	get:
-		return _items.slice(_regular_index.x, _regular_index.y) as Array[ItemSlot]
-	set(values):
-		if not Engine.is_editor_hint: return
-		_combine_items(values, spell_scrolls)
-@export var spell_scrolls: Array[ItemSlot]:
-	get:
-		return _items.slice(_scroll_index.x, _scroll_index.y) as Array[ItemSlot]
-	set(values):
-		if not Engine.is_editor_hint: return
-		_combine_items(regular_items, values)
-## Indices of start(inclusive) and end(exclusive) of category into _items array.
-@export var _regular_index := Vector2i.ZERO
-@export var _scroll_index := Vector2i.ZERO
+var _battle_items: Array[RegularItem]
+@export var regular_items: Array[ItemSlot]
+@export var recalc_ids_r: bool:
+	set(val):
+		_reorder_item_array(regular_items)
+@export var spell_scrolls: Array[ItemSlot]
+@export var recalc_ids_s: bool:
+	set(val):
+		_reorder_item_array(spell_scrolls)
+@export var key_items: Array[ItemSlot]
+@export var recalc_ids_k: bool:
+	set(val):
+		_reorder_item_array(key_items)
+@export var equipment: Array[ItemSlot]
+@export var recalc_ids_e: bool:
+	set(val):
+		_reorder_item_array(equipment)
+@export var _add_item: Item:
+	set(item):
+		var list: Array
+		if item is RegularItem:
+			list = regular_items
+			_try_add_battle_item(item)
+		elif item is SpellScroll:
+			list = spell_scrolls
+		elif item is KeyItem:
+			list = key_items
+		else:
+			list = equipment
 
+		item.id = len(list)
+		list.append(ItemSlot.new(item))
 
-
-# Secondary reference to battle regular_items.
-var _battle_items: Array[BattleItem] = []
-var next_id := {
-	Category.REGULAR_ITEM: 0,
-	Category.SPELL_SCROLL: 0
-}
-
-
-func _ready() -> void:
-	if len(_items) == 0:
-		_load_from_fs()
+## Copy-paste file path into here to recursively load all items in a directory.
+## This will not check that an item has not been added yet!
+@export var _add_item_dir: String:
+	set(path):
+		_add_items_from_dir(path)
+		_add_item_dir = ""
+func _try_add_battle_item(item: RegularItem)  -> void:
+	if item.battle_item == null: 
 		return
+	if _battle_items == null:
+		_battle_items = []
+	_battle_items.append(item)
 
+## Returns list of **RegularItems** that contain BattleItems.
 func get_battle_items() -> Array:
 	return _battle_items
 
 func add(item: Item, amount=1) -> void:
-	var list := []
+	if item.id == -1:
+		_add_item = item
+		return
 
+	var list := []
 	if item is SpellScroll:
 		list = spell_scrolls
 	elif item is RegularItem:
@@ -58,10 +72,9 @@ func add(item: Item, amount=1) -> void:
 	else:
 		# NOT YET IMPLEMENTED
 		return
-	var index = list \
-			.map(func(a): return a.item) \
-			.bsearch_custom(item, func(a: Item, b: Item): return a.id < b.id)
-	var slot = list[index]
+
+	# If this throws an index out of bounds error, something has gone wrong and it should crash.
+	var slot: ItemSlot = list[item.id]
 
 	if slot.allow_stacking:
 		slot.quantity += amount
@@ -72,8 +85,9 @@ func add(item: Item, amount=1) -> void:
 		quantity_changed.emit(slot)
 
 func remove(item: Item, amount: int=-1) -> ItemSlot:
-	var list := []
+	if item.id == -1: return null
 
+	var list := []
 	if item is SpellScroll:
 		list = spell_scrolls
 	elif item is RegularItem:
@@ -82,16 +96,16 @@ func remove(item: Item, amount: int=-1) -> ItemSlot:
 		# NOT YET IMPLEMENTED
 		return null
 
-	var index = list \
-			.map(func(a): return a.item) \
-			.bsearch_custom(item, func(a: Item, b: Item): return a.id < b.id)
-	var slot = list[index]
+	if item.id >= len(list): return null
 
+	var slot = list[item.id]
 	if slot.quantity == 0: return null
 	quantity_changed.emit(slot)
 	return slot
 
 func get_item(item: Item) -> ItemSlot:
+	if item.id == -1: return null
+
 	var list := []
 	if item is SpellScroll:
 		list = spell_scrolls
@@ -99,95 +113,36 @@ func get_item(item: Item) -> ItemSlot:
 		list = regular_items
 	else:
 		# NOT YET IMPLEMENTED
-		return
-	var dummySlot = ItemSlot.new(item)
-	var index = list.bsearch_custom(dummySlot, func(a, b): return a.id < b.id)
-	return list[index]
+		return null
 
-func _combine_items(regularItems: Array, spellScrolls: Array) -> void:
-	_items.clear()
-	var start: int
+	return list[item.id]
 
-	_items.append_array(regularItems)
-	_regular_index = Vector2i(0, len(_items))
-	start = len(_items)
+func _add_items_from_dir(path: String) -> void:
+		print("Loading items from: " + path)
+		var root := DirAccess.open(path)
+		var dirs := []
 
-	_items.append_array(spellScrolls)
-	_scroll_index = Vector2i(start, len(_items))
+		# Breadth first search of files.
+		root.list_dir_begin()
+		var file := root.get_next()
+		while len(file) > 0 and root != null:
+			if root.file_exists(file) and file.ends_with(".tres"):
+				var item := load(path + file)
+				if item is Item: 
+					_add_item = item
 
-	_battle_items.clear()
-	for slot in regularItems:
-		slot.allow_stacking = true
-		if slot.item.battle_item != null:
-			_battle_items.append(slot.item.battle_item)
+			elif root.dir_exists(file):
+				dirs.append(path + file + "/")
 
-func _load_from_fs()-> void:
-	var regularItems = []
-	var keyItems = []
-	var spellScrolls = []
-	var equipment = []
-	_battle_items = []
+			file = root.get_next()
 
-	print("Loading regular items")
-	regularItems = _load_from_dir.call("res://data/items/regular_items/", regular_items)
-	print("\nLoading spell scrolls")
-	spellScrolls = _load_from_dir.call("res://data/items/spell_scrolls/", spell_scrolls)
+		print(len(dirs))
+		for dir in dirs:
+			_add_items_from_dir(dir)
 
-	var start := 0
-	_items = []
+func _reorder_item_array(list: Array) -> void:
+	var i := 0
+	for item in list:
+		item.item.id = i
+		i += 1
 
-	_items.append_array(regularItems)
-	_regular_index = Vector2i(0, len(_items))
-	start = len(_items) 
-
-	_items.append_array(spellScrolls)
-	_scroll_index = Vector2i(start, len(_items))
-
-func _load_from_dir(path: String, originalDir:=[], nextId:=0) -> Array:
-	var output := []
-	var root := DirAccess.open(path)
-	var file := "file"
-	var dirs := []
-
-	print("Opening directory: %s" % path)
-	root.list_dir_begin()
-	while len(file) != 0 and root != null:
-		file = root.get_next()
-
-		if root.file_exists(file):
-			if !file.ends_with(".tres"): continue
-
-			var item = load(path + file)
-			if(item == null): continue
-			if not item is Item: continue
-
-			print("Loaded %s" % file)
-			var slot = ItemSlot.new()
-			slot.setup(item)
-			output.append(slot)
-			
-			var matches = originalDir.filter(func(a): return a.id == slot.item.id)
-			# Copy over data.
-			for m in matches:
-				if slot.item == m.item:
-					slot.quantity = m.quantity
-
-			slot.id = nextId 
-			nextId += 1
-
-			if "battle_item" in item and item.battle_item != null:
-				var battleItem = item.battle_item 
-				if battleItem != null:
-					_battle_items.append(battleItem)
-					if battleItem.is_consumable:
-						battleItem.item_consumed.connect(func(): quantity_changed.emit(item, item.quantity))
-
-		elif len(file) != 0 and root.dir_exists(file):
-			dirs.append(path + file + "/")
-	
-	for dir in dirs:
-		var subdir = _load_from_dir(dir, originalDir, nextId)
-		nextId += len(subdir)
-		output.append_array(subdir)
-
-	return output

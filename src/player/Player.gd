@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player 
 
 signal pause_world(val: bool)
-signal battle_started(allies, items, enemies)
+signal battle_started(allies, enemies)
 signal dialog_started(dialog_id, enemy_actor, vendor_actor)
 
 @export_category("Scene Nodes")
@@ -62,7 +62,7 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 func start_battle(npc: Variant) -> void:
-	battle_started.emit(team, Inventory.get_battle_items(), npc.enemy_actor)
+	battle_started.emit(team, npc.enemy_actor)
 
 func open_shop(npc: Variant) -> void:
 	dialog_started.emit("VENDOR_MAIN", npc.enemy_actor, npc.vendor_actor)
