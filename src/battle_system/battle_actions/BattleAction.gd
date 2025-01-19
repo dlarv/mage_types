@@ -26,11 +26,11 @@ var element: ElementalType = ElementManager.Blank:
 			value = ElementManager.Blank
 		element = value 
 
-		if "_needs_elemental_effect_override" in self \
-				and self._needs_elemental_effect_override \
-				and self.has_method("elemental_effect_override"):
-			var indirect = self
-			indirect.elemental_effect_override(value)
+		# if "_needs_elemental_effect_override" in self \
+		# 		and self._needs_elemental_effect_override \
+		# 		and self.has_method("elemental_effect_override"):
+		# 	var indirect = self
+		# 	indirect.elemental_effect_override(value)
 @export var priority: int = 0
 @export var attack_range: AttackRange = AttackRange.MELEE
 @export var target: TargetType = TargetType.ENEMY
