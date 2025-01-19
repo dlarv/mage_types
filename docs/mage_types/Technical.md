@@ -495,6 +495,19 @@ The following system will need to interface with the Overworld Spells, esp which
 > Projectile collision layer is 2.
 > MagiClay collision layer is 3.
 #### MagiClay
+MagiClay is used for parts of the environment that must interact with OverworldSpells and/or have elemental types.
+
+It must have the ability to support the following effects:
+- Stasis: Freeze physics and other spell effects.
+- Catalyst: Causes a transmutation to occur.
+- Destroy: Removes object.
+- Vines: 
+- Tunnel:
+
+Not every instance of MagiClay has to support every effect. Which effects a particular instance supports is controlled using exported boolean values.
+
+>[!important]
+>For the demo, only Stasis, Catalyst, and Destroy will be available.
 
 ## Story (STRY)
 #todo

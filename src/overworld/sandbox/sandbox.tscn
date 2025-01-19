@@ -223,9 +223,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="MagiclayCube" parent="." instance=ExtResource("25_6fiie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.77951, 0.486951, 4.81272)
 _element = "blue"
+is_transmutable = true
 
 [node name="MagiclayTerrain" parent="." instance=ExtResource("27_n8rno")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39401, 4.76837e-07, 6.40443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39401, 4.76837e-07, 4.63499)
 _element = "magenta"
 
 [connection signal="battle_started" from="World/Player" to="OverworldConnector" method="_on_player_battle_started"]

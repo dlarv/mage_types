@@ -10,6 +10,9 @@ var collision_test: Callable
 
 var element: ElementalType
 
+func _enter_tree() -> void:
+	get_tree().create_timer(5).timeout.connect(func(): queue_free())
+
 func setup(collision_test: Callable, action_to_perform: Callable, element: ElementalType, forward: Vector3) -> void:
 	self.collision_test = collision_test
 	self.action_to_perform = action_to_perform

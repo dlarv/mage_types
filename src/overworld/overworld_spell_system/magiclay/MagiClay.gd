@@ -20,7 +20,7 @@ var element: ElementalType = ElementManager.Blank:
 @export var is_blooming: bool
 @export var is_breakable: bool
 @export var is_transmutable: bool
-@export var is_active: bool
+@export var in_stasis: bool
 @export var tunnel_override: MagiClay
 
 var _mesh: MeshInstance3D:
@@ -42,14 +42,28 @@ func _try_set_color() -> void:
 	_material.albedo_color = element.main_color
 
 func set_element(e: ElementalType) -> void:
+	if in_stasis: return
+	if not is_transmutable: return
+	if e.is_blank(): return
 	element = e
 	_try_set_color()
 	
 func set_stasis(val: bool, timeLength:=0.5) -> void:
-	print("%s is under stasis" % name)
+	if in_stasis: return
+	in_stasis = true
 	var prevColor := _material.albedo_color
 	_material.albedo_color = Color.BLACK
 	await get_tree().create_timer(timeLength).timeout
-	print("%s is no longer under stasis" % name)
-
 	_material.albedo_color = prevColor
+	in_stasis = false
+
+
+func bloom(val: bool, e: ElementalType) -> void:
+	if not is_blooming: return
+
+func destroy() -> void:
+	if not is_breakable: return
+	queue_free()
+
+func try_tunnel() -> void:
+	if tunnel_override == null: return

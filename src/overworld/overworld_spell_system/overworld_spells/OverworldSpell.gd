@@ -10,6 +10,7 @@ var is_active := false
 var keycode: String
 
 var _magiclay_terrain: MagiClay
+var _current_mouse_pos: Vector3
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return
@@ -18,6 +19,9 @@ func _input(event: InputEvent) -> void:
 		_perform_action()
 
 func _physics_process(delta: float) -> void:
+	_get_magiclay()
+
+func _get_magiclay() -> void:
 	_magiclay_terrain = null
 	var space := get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(global_position, global_position - Vector3(0, 10, 0), 4)
@@ -28,6 +32,9 @@ func _physics_process(delta: float) -> void:
 	var clay = result["collider"]
 	if clay is MagiClay:
 		_magiclay_terrain = clay
+
+func _find_mouse_position() -> void:
+	if not Settings.use_mouse_targeting: return
 
 
 func deactivate() -> void:
@@ -51,7 +58,14 @@ func _channel_element() -> ElementalType:
 
 func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, element: ElementalType) -> void:
 	var projectile := Projectile.instantiate()
-	var forward: Vector3 = global_basis.z
-	projectile.setup(collision_test, action_to_perform, element, forward)
+	var target: Vector3
+	# if not Settings.use_mouse_targeting:
+	# 	target = global_basis.z
+	# else:
+	# 	target = _current_mouse_pos
+	target = global_basis.z
+
+	projectile.setup(collision_test, action_to_perform, element, target)
 	get_tree().get_root().add_child(projectile)
 	projectile.global_position = global_position
+

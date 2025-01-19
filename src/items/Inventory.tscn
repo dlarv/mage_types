@@ -179,3 +179,6 @@ script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
 spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_cgnje"), SubResource("Resource_yuvwl"), SubResource("Resource_ko57n"), SubResource("Resource_goyqj"), SubResource("Resource_2i48l"), SubResource("Resource_18syq"), SubResource("Resource_e61ev"), SubResource("Resource_ahvk5"), SubResource("Resource_t4ca6"), SubResource("Resource_8mika"), SubResource("Resource_cs2b2"), SubResource("Resource_jlm0e"), SubResource("Resource_pu25d"), SubResource("Resource_t81so"), SubResource("Resource_jwp7j"), SubResource("Resource_l82yb"), SubResource("Resource_j6xh1")])
+stasis_spell_enabled = true
+destroy_spell_enabled = true
+catalyst_spell_enabled = true

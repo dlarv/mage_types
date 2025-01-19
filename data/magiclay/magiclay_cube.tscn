@@ -6,13 +6,14 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_xew6s"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp6pm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrjn2"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiClayCube" type="StaticBody3D"]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_vdo2r")
+is_active = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_lqgnt")
@@ -20,4 +21,4 @@ shape = SubResource("BoxShape3D_lqgnt")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_xew6s")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_cp6pm")
+surface_material_override/0 = SubResource("StandardMaterial3D_wrjn2")

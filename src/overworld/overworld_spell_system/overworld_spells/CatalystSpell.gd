@@ -2,13 +2,13 @@ extends OverworldSpell
 
 # Override 
 func _perform_action() -> void: 
-	print(_channel_element().name)
-	_spawn_projectile(collision_test, action_to_perform, _channel_element()) 
+	_spawn_projectile(collision_test, action_to_perform, _channel_element())
 
 
 func action_to_perform(body: Node3D, element: ElementalType) -> void:
 	var res := ElementManager.get_matchup(element, body.element)
 	body.set_element(res)
+
 
 func collision_test(body: Variant) -> bool:
 	return body is MagiClay

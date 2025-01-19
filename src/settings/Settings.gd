@@ -16,3 +16,4 @@ var use_simplified_effects: bool = true:
 		simplified_effects_toggled.emit(value)
 
 @export var enable_transmutation_hints: bool = true
+@export var use_mouse_targeting := true

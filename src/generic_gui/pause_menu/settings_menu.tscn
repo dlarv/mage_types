@@ -43,7 +43,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Debug Mode"
+text = "Debug Mode:"
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox"]
 layout_mode = 2
@@ -55,7 +55,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Use simplfied side effects"
+text = "Use simplfied side effects:"
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox"]
 layout_mode = 2
@@ -68,9 +68,22 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Show Transmutation Hints"
+text = "Show transmutation hints:"
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="UseMouseTargeting_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/UseMouseTargeting_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Use mouse for spell targeting:"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/UseMouseTargeting_HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 button_pressed = true
@@ -78,3 +91,4 @@ button_pressed = true
 [connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox/CheckBox" to="." method="on_debug_mode_toggled"]
 [connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox/CheckBox" to="." method="_on_simple_effects_toggled"]
 [connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]
+[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/UseMouseTargeting_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]

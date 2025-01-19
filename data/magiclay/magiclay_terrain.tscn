@@ -8,13 +8,14 @@ size = Vector3(3, 0.1, 3)
 [sub_resource type="PlaneMesh" id="PlaneMesh_y6v23"]
 size = Vector2(3, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyg1y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffof4"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiClayTerrain" type="Area3D"]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_5m2di")
+is_active = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_yl113")
@@ -23,4 +24,4 @@ shape = SubResource("BoxShape3D_yl113")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("PlaneMesh_y6v23")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_dyg1y")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffof4")
