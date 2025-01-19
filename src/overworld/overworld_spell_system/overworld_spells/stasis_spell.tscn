@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://duai8gqdgu21m"]
+
+[ext_resource type="Script" path="res://src/overworld/overworld_spell_system/overworld_spells/StasisSpell.gd" id="1_j33xc"]
+
+[node name="StasisSpell" type="Node3D"]
+script = ExtResource("1_j33xc")
+stasis_length = 5.0

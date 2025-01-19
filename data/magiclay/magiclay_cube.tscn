@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b64p6638ydh2j"]
+
+[ext_resource type="Script" path="res://src/overworld/overworld_spell_system/magiclay/MagiClay.gd" id="1_vdo2r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqgnt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xew6s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp6pm"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="MagiClayCube" type="StaticBody3D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_vdo2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lqgnt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xew6s")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_cp6pm")

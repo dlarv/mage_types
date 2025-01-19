@@ -5,6 +5,8 @@ enum Category { REGULAR_ITEM, EQUIPMENT, SPELL_SCROLL, KEY_ITEM }
 
 # NOTE: This is not called when loading from filesystem.
 signal quantity_changed(item: ItemSlot)
+signal overworld_spell_selected(id: OverworldSpell.Spells, isPrimary: bool)
+signal overworld_spell_enabled(id: OverworldSpell.Spells, isEnabled: bool)
 
 @export var money: int = 0
 
@@ -54,6 +56,13 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 	if _battle_items == null:
 		_battle_items = []
 	_battle_items.append(item)
+
+@export_category("Overworld Spells")
+@export var stasis_spell_enabled: bool
+@export var destroy_spell_enabled: bool
+@export var vines_spell_enabled: bool
+@export var catalyst_spell_enabled: bool
+@export var tunnel_spell_enabled: bool
 
 ## Returns list of **RegularItems** that contain BattleItems.
 func get_battle_items() -> Array:
@@ -116,6 +125,23 @@ func get_item(item: Item) -> ItemSlot:
 		return null
 
 	return list[item.id]
+
+func enable_overworld_spell(id: OverworldSpell.Spells, val:=true) -> void:
+	match id:
+		OverworldSpell.Spells.STASIS: 
+			stasis_spell_enabled = val
+		OverworldSpell.Spells.CATALYST: 
+			catalyst_spell_enabled = val
+		OverworldSpell.Spells.DESTROY: 
+			destroy_spell_enabled = val
+		OverworldSpell.Spells.VINES: 
+			vines_spell_enabled = val
+		_: 
+			tunnel_spell_enabled = val
+	overworld_spell_enabled.emit(id, val)
+
+func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:
+	overworld_spell_selected.emit(id, isPrimary)
 
 func _add_items_from_dir(path: String) -> void:
 		print("Loading items from: " + path)

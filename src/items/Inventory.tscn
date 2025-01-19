@@ -26,7 +26,7 @@
 resource_name = "Healing Potion"
 script = ExtResource("2_xejte")
 item = ExtResource("3_3atr7")
-id = 0
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -34,7 +34,7 @@ max_quantity = 9999
 resource_name = "Poison Heal"
 script = ExtResource("2_xejte")
 item = ExtResource("4_klwlq")
-id = 1
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -42,7 +42,7 @@ max_quantity = 9999
 resource_name = "Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("6_fb5af")
-id = 0
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -50,7 +50,7 @@ max_quantity = 9999
 resource_name = "Sting Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("9_inlsm")
-id = 1
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -58,7 +58,7 @@ max_quantity = 9999
 resource_name = "Block Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("11_v1oxf")
-id = 2
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -66,7 +66,7 @@ max_quantity = 9999
 resource_name = "Dark Aspirations Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("5_3po7c")
-id = 3
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -74,7 +74,7 @@ max_quantity = 9999
 resource_name = "Blood Shock Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("7_ehvag")
-id = 4
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -82,7 +82,7 @@ max_quantity = 9999
 resource_name = "Terrify Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("8_vcgc2")
-id = 5
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -90,7 +90,7 @@ max_quantity = 9999
 resource_name = "Drain Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("10_eksn8")
-id = 6
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -98,7 +98,7 @@ max_quantity = 9999
 resource_name = "Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("12_f1qag")
-id = 7
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -106,7 +106,7 @@ max_quantity = 9999
 resource_name = "Purple Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("13_l1x6d")
-id = 8
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -114,7 +114,7 @@ max_quantity = 9999
 resource_name = "Magenta Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("14_cys5c")
-id = 9
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -122,7 +122,7 @@ max_quantity = 9999
 resource_name = "Red Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("15_crq3u")
-id = 10
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -130,7 +130,7 @@ max_quantity = 9999
 resource_name = "Abyss Strike"
 script = ExtResource("2_xejte")
 item = ExtResource("16_pu3bs")
-id = 11
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -138,7 +138,7 @@ max_quantity = 9999
 resource_name = "Blue Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("17_pe1tn")
-id = 12
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -146,7 +146,7 @@ max_quantity = 9999
 resource_name = "Orange Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("18_v86o4")
-id = 13
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -154,7 +154,7 @@ max_quantity = 9999
 resource_name = "Cyan Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("19_ngs3k")
-id = 14
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -162,7 +162,7 @@ max_quantity = 9999
 resource_name = "Green Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("20_ouyko")
-id = 15
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -170,7 +170,7 @@ max_quantity = 9999
 resource_name = "Yellow Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("21_1lo4t")
-id = 16
+id = -1
 quantity = 0
 max_quantity = 9999
 
@@ -178,8 +178,4 @@ max_quantity = 9999
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
-recalc_ids_r = null
 spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_cgnje"), SubResource("Resource_yuvwl"), SubResource("Resource_ko57n"), SubResource("Resource_goyqj"), SubResource("Resource_2i48l"), SubResource("Resource_18syq"), SubResource("Resource_e61ev"), SubResource("Resource_ahvk5"), SubResource("Resource_t4ca6"), SubResource("Resource_8mika"), SubResource("Resource_cs2b2"), SubResource("Resource_jlm0e"), SubResource("Resource_pu25d"), SubResource("Resource_t81so"), SubResource("Resource_jwp7j"), SubResource("Resource_l82yb"), SubResource("Resource_j6xh1")])
-recalc_ids_s = null
-recalc_ids_k = null
-recalc_ids_e = null

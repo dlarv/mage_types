@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cujbohucty4vy"]
+[gd_scene load_steps=46 format=3 uid="uid://cujbohucty4vy"]
 
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="1_eq535"]
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_glfkx"]
@@ -20,7 +20,10 @@
 [ext_resource type="Script" path="res://src/items/vendors/vendor_menu/VendorItem.gd" id="16_alx6a"]
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="17_8pgyp"]
 [ext_resource type="Resource" uid="uid://bmcia4k0ec1wj" path="res://data/battle_system/battle_actors/clown.tres" id="18_j8vto"]
+[ext_resource type="Shader" path="res://assets/shaders/clay.gdshader" id="19_11b6c"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="19_uryvx"]
+[ext_resource type="PackedScene" uid="uid://b64p6638ydh2j" path="res://data/magiclay/magiclay_cube.tscn" id="25_6fiie"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="27_n8rno"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_l2hbl")
@@ -72,11 +75,20 @@ item = ExtResource("17_8pgyp")
 cost = 0
 disabled = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e24j5"]
-albedo_color = Color(1, 0.517647, 0, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_456df"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iomxl"]
+noise = SubResource("FastNoiseLite_456df")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpjo1"]
+render_priority = 0
+shader = ExtResource("19_11b6c")
+shader_parameter/noise = SubResource("NoiseTexture2D_iomxl")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fippu"]
-material = SubResource("StandardMaterial3D_e24j5")
+material = SubResource("ShaderMaterial_wpjo1")
+radial_segments = 512
+rings = 64
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ay4h"]
 radius = 2.0
@@ -203,11 +215,18 @@ dialog_ids = Array[String](["FIGHT0"])
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16.3266, 0)
 
 [node name="Player" parent="World" instance=ExtResource("8_lk5jx")]
-collision_layer = 1
 run_speed = 40.0
 
 [node name="Camera3D" type="Camera3D" parent="World/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)
+
+[node name="MagiclayCube" parent="." instance=ExtResource("25_6fiie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.77951, 0.486951, 4.81272)
+_element = "blue"
+
+[node name="MagiclayTerrain" parent="." instance=ExtResource("27_n8rno")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39401, 4.76837e-07, 6.40443)
+_element = "magenta"
 
 [connection signal="battle_started" from="World/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="dialog_started" from="World/Player" to="OverworldConnector" method="_on_dialog_started"]
