@@ -56,12 +56,22 @@
 	2. [x] Controlled largely thru keyboard.(@4057359145727073018)
 	3. Player will have their stamina, hp, and affinities exposed to the overworld.(@13977967063554720592)
 		1. All stats should have the ability to regenerate overtime, with the exact rate being adjustable.(@11167689440989266699)
-	4. Overworld spells.(@13177450868467670674)
-		1. Player should have the ability to use certain spells in the overworld.(@3637818524981319528)
-		2. Accessing these spells should be straightforward (no deep menus).(@12927390295256370612)
-	5. Player's partners should follow them closely.(@5043925264516831302)
-		1. If a partner gets stuck, teleport them to the player's position.(@12688312621439297000)
-		2. Partners should not obstruct player.(@7180663358581215774)
+	4. Player's partners should follow them closely.
+		1. If a partner gets stuck, teleport them to the player's position.
+		2. Partners should not obstruct player.
+	5. Overworld spells.
+		1. [x] Control which spells are available to the player at a particular point in time.
+		2. [x] Allow player to select a spell to use, w/o clunky menus.
+		3. [ ] Apply spell's effect to overworld.
+			1. [ ] Particles/animations.
+			2. [ ] Pause physics.
+			3. [ ] Pause transmutations and destruction.
+		4. [ ] Remove expired spell's effects from overworld.
+		5. [ ] Allow game objects to determine which effects can apply to them.
+			1. [ ] Transmutation.
+			2. [ ] Destruction.
+			3. [ ] Vines.
+			4. [ ] Tunneling.
 	6. Level design.(@42657584933772299)
 		1. Assets should be modeled and textured in Blender.(@14191188016667340564)
 	7. Wild Enemies:

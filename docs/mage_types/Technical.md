@@ -445,11 +445,10 @@ _MagiClay_:
 	- PerformAction(`ElementalType`, `func`)
 _SpellManager_: `Node3D`:
 - Reqs:
-	- Enable spells based on game events.
-		- Interface with Inventory.
+	~~- Enable spells based on game events.
+		- Interface with Inventory.~~
 	- Get input from user to activate spell.
 - Methods:
-	- EnableSpell(`OverworldSpell`, `bool`)
 	- ActivateSpell(`OverworldSpell`, `bool`)
 _OverworldSpell_: `Interface` | `Node3D`:
 - Reqs:
@@ -469,6 +468,34 @@ _Projectile_: `Node3D`:
 	- ActionToPerform: func(`Node3D`, `ElementalType`)
 - Methods:
 	- Constructor(`func`, `func`, `ElementalType`)
+
+The following system will need to interface with the Overworld Spells, esp which ones are currently enabled:
+- Inventory Screen
+	- Allow player to select which spells they want active.
+- OverworldSpellManager
+	- Controls which spells are currently active.
+- Overworld UI
+	- Show which 2 spells the player has active.
+
+**When a spell is enabled(disabled)**:
+1. When player unlocks a new overworld spell, call `Inventory.enable_overworld_spell`.
+2. `Inventory` emits `overworld_spell_enabled(OverworldSpell.Spells, bool)` signal.
+3. `OverworldSpellMenu` listens to aforementioned signal and shows(hides) appropriate spell.
+
+**When a spell is selected**:
+1. Player selects primary/secondary spell from `OverworldSpellMenu` (inside of `PlayerMenu`).
+2. `OverworldSpellMenu` sets values inside of `Inventory` singleton using `Inventory.select_overworld_spell(OverworldSpell.Spells, bool)`.
+3. `Inventory` emits `overworld_spell_selected(OverworldSpell.Spells, bool)` signal.
+4. `OverworldSpellManager` listens to aforementioned signal.
+5. Player gives use-spell input.
+6. `OverworldSpell` triggers its effect.
+
+>[!important] 
+> Players collision layer is 1.
+> Projectile collision layer is 2.
+> MagiClay collision layer is 3.
+#### MagiClay
+
 ## Story (STRY)
 #todo
 ## Character Management and Inventory (CHAR)
