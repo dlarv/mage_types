@@ -44,7 +44,7 @@ func _try_set_color() -> void:
 func set_element(e: ElementalType) -> void:
 	if in_stasis: return
 	if not is_transmutable: return
-	if e.is_blank(): return
+	if e == null or e.is_blank(): return
 	element = e
 	_try_set_color()
 	
