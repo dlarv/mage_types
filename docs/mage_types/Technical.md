@@ -384,6 +384,8 @@ I prefer working with Blender's 3D editor over Godot's, so I'd like to do as muc
 		- Rooms
 The `Regions` are the same as in the lore.
 The world will be loaded in one `Room` at a time.
+#### Demo Area
+[[demo]]
 ### Overworld Spells
 1. Allow user to select spell.
 2. Apply effects of spell to overworld.

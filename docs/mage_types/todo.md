@@ -26,7 +26,7 @@
 - [ ] Texture world.
 - [ ] Music/audio.
 - [ ] Animations.
-- [ ] Have battle access inventory directly.
+- [x] Have battle access inventory directly.
 	- [ ] Prevent items from being double-spent in battle.
 - [ ] Test whether GenericOpponentController works as intended (ain't no way).
 # Bugs
