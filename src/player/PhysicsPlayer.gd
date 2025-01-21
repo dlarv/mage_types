@@ -8,6 +8,7 @@ signal pause_world(value: bool)
 @export var battle_actor: BattleActor 
 @export var team: Array[BattleActor]
 @export var model: Node3D
+@export var anim_player: AnimationPlayer
 
 @export_category("Movement")
 @export var walk_speed := 10.0
@@ -58,6 +59,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		model.rotation.y = atan2(inputDir.x, inputDir.y)
 
 	state.linear_velocity = velocity
+
 	
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(team, enemies)

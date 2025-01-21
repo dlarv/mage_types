@@ -9,13 +9,14 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_menu", "model") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_menu", "model", "anim_player") groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_jd6jo")
 battle_actor = ExtResource("2_2jxe0")
 player_menu = NodePath("CanvasLayer/PlayerMenu")
 model = NodePath("player")
+anim_player = NodePath("player/AnimationPlayer")
 run_speed = 60.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -29,9 +30,20 @@ visible = false
 [node name="player" parent="." instance=ExtResource("3_xfaiw")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0)
 
+[node name="Skeleton3D" parent="player/Armature" index="0"]
+bones/1/rotation = Quaternion(-2.93176e-08, -3.26299e-08, -0.69775, 0.716341)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-5.94409e-08, 5.82422e-09, -0.275297, 0.961359)
+bones/2/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-2.66925e-08, 2.66925e-08, 0.707107, 0.707107)
+bones/5/rotation = Quaternion(-5.75703e-08, -9.23613e-16, 0.274332, 0.961635)
+bones/7/rotation = Quaternion(-0.494287, -0.505649, -0.494287, 0.505648)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.715095, -7.77969e-10, 5.53573e-08, 0.699027)
+bones/11/rotation = Quaternion(-0.712137, 8.5248e-08, -8.64739e-08, 0.702041)
+bones/12/rotation = Quaternion(0.00713899, -2.40746e-08, 1.56189e-09, 0.999974)
+
 [node name="SpellManager" parent="player" instance=ExtResource("3_e1u62")]
-secondary_override = 2
-use_override = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -40,3 +52,5 @@ visible = false
 
 [node name="PlayerMenu" parent="CanvasLayer" instance=ExtResource("5_eh2ql")]
 visible = false
+
+[editable path="player"]

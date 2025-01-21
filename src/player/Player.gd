@@ -10,6 +10,7 @@ signal dialog_started(dialog_id, enemy_actor, vendor_actor)
 @export var team: Array[BattleActor]
 @export var player_menu: Control 
 @export var model: Node3D
+@export var anim_player: AnimationPlayer
 
 @export_category("Movement")
 @export var walk_speed := 10.0
@@ -59,6 +60,10 @@ func _physics_process(delta) -> void:
 
 
 	velocity = vel
+	if vel == Vector3.ZERO:
+		anim_player.play("idle")
+	else:
+		anim_player.play("walk")
 	move_and_slide()
 
 func start_battle(npc: Variant) -> void:
