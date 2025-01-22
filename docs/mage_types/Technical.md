@@ -386,6 +386,16 @@ The `Regions` are the same as in the lore.
 The world will be loaded in one `Room` at a time.
 #### Demo Area
 [[demo]]
+#### Puzzle Blocks
+> Puzzle blocks, MagiClay, and physics objects can all overlap.
+
+Puzzle blocks are logical elements that are used to build puzzles (if you can believe such a thing). Under the hood, these will function using signals.
+There are 3 types:
+- Emitters: send out a signal when a criteria is met.
+	- They should have both an `on` and `off` signal.
+- Receiver: Receives the on/off signal from a specific emitter.
+- Medium: e.g. wire that glows when button is pressed. These should listen to an emitter's on/off signals, but are purely for aesthetic and informational purposes.
+More info can be found [[puzzle_archetypes|here]].
 ### Overworld Spells
 1. Allow user to select spell.
 2. Apply effects of spell to overworld.

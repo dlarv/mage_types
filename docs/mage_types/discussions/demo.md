@@ -40,7 +40,7 @@ General Progression:
 ## Lower Beach
 - Cove
 - Player's initial spawn location.
-### Geyser: 
+### Geyser Obstacle 
 On the leftmost edge of the area is a Yellow geyser. This will block the player, unless they use *Stasis* on it, stopping the stream.
 - Behind the stream is a boulder, which can be broken using the *Destroy* spell.
 	- This leads to a hidden area.
@@ -63,7 +63,26 @@ Companion walks player thru battle UI, transmutations, and affinity.
 - Destroy obstacle:
 	- There will be a large obstacle the companion has the player use their newfound Stasis ability on. This same obstacle will break when Destroy is used on it, revealing a hidden area.
 ## Stasis Puzzles
-- 
+- This room will be split into 2(3?) parts.
+- Puzzle (\#0): The upper section of the room will be blocked by a gate. To pass it, the player will have to place colored rocks onto matching pressure plates. 
+	- This is less to test the player and more to demonstrate that this is a mechanic.
+
+**Puzzle \#1** 
+- Magenta laser (pulsing).
+- Alternating Red geysers.
+- Large Blue boulder.
+- Large Purple pressure plate. 
+Use *Stasis* to pause geyser, stopping the boulder on top of the pressure plate.
+Magenta transmutes boulder -> Purple.
+
+**Puzzle \#2**
+- Red Geyser.
+- Red pressure plate.
+- Yellow rock sitting on top of geyser.
+Use *Stasis* to pause geyser.
+Grab rock.
+Transmute rock into Red by placing it in front of Magenta laser (from part 1).
+Place rock onto pressure plate.
 ## Cave Entry
 - Weakness and resistance tutorial
 - Catalyst obstacle.
@@ -73,8 +92,9 @@ Companion walks player thru battle UI, transmutations, and affinity.
 - Miniboss \#2
 - Catalyst spell.
 ## Cave Exit (Catalyst Puzzles)
+
 ## Lower Approach
-## Upper Approach
+## Upper Approach (Final Puzzle)
 - "Final" puzzle room: puzzle that requires use of both Stasis and Catalyst.
 	- Preferably, this puzzle should have 2 solutions.
 		- Solution 1: Reveals [[#Final Boss Room]].
@@ -88,5 +108,5 @@ Areas off of the main path, which may or may not be hidden behind an obstacle.
 - cave_exit --> deep_cave
 - hidden area \#3 --> deep_cave (but not vice versa)
 - upper_approach --> (puzzle solution \#2) --> destruction_room
-## Destruction Room
+## Destruction Room (Destroy Puzzles)
 - Find Destroy spell.
