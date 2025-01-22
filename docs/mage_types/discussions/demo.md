@@ -63,13 +63,16 @@ Companion walks player thru battle UI, transmutations, and affinity.
 - Destroy obstacle:
 	- There will be a large obstacle the companion has the player use their newfound Stasis ability on. This same obstacle will break when Destroy is used on it, revealing a hidden area.
 ## Stasis Puzzles
-## Cave \#1
+- 
+## Cave Entry
 - Weakness and resistance tutorial
 - Catalyst obstacle.
-## Cave \#2
+	- A geyser will prevent the player from accessing the leftmost side of the room. A further boulder will block the actual exit. The Yellow geyser will not be strong enough to push this boulder by itself. The player can use *Catalyst* on it, turning it Red. This will be strong enough to push the boulder away from the exit.
+		- This way, the player cannot simply use *Stasis* to bypass this obstacle.
+## Cave Mid
 - Miniboss \#2
 - Catalyst spell.
-## Cave \#3 (Catalyst Puzzles)
+## Cave Exit (Catalyst Puzzles)
 ## Lower Approach
 ## Upper Approach
 - "Final" puzzle room: puzzle that requires use of both Stasis and Catalyst.
@@ -77,5 +80,13 @@ Companion walks player thru battle UI, transmutations, and affinity.
 		- Solution 1: Reveals [[#Final Boss Room]].
 		- Solution 2: Reveals [[#Destruction Room]].
 ## Final Boss Room
-# Hidden Areas
+# Extra Areas
+Areas off of the main path, which may or may not be hidden behind an obstacle.
+- lower_beach --> (destroy) --> hidden area \#1
+- upper_path --> (destroy) --> hidden area \#2
+- cave_entry --> (catalyst) --> hidden area \#3 
+- cave_exit --> deep_cave
+- hidden area \#3 --> deep_cave (but not vice versa)
+- upper_approach --> (puzzle solution \#2) --> destruction_room
 ## Destruction Room
+- Find Destroy spell.
