@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cujbohucty4vy"]
+[gd_scene load_steps=49 format=3 uid="uid://cujbohucty4vy"]
 
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="1_eq535"]
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_glfkx"]
@@ -22,8 +22,11 @@
 [ext_resource type="Resource" uid="uid://bmcia4k0ec1wj" path="res://data/battle_system/battle_actors/clown.tres" id="18_j8vto"]
 [ext_resource type="Shader" path="res://assets/shaders/clay.gdshader" id="19_11b6c"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="19_uryvx"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="23_vsmvj"]
 [ext_resource type="PackedScene" uid="uid://b64p6638ydh2j" path="res://data/magiclay/magiclay_cube.tscn" id="25_6fiie"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/gate.tscn" id="26_plwqp"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="27_n8rno"]
+[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="27_w2lr5"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_l2hbl")
@@ -220,6 +223,9 @@ run_speed = 40.0
 [node name="Camera3D" type="Camera3D" parent="World/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)
 
+[node name="SmallPressurePlate" parent="World" instance=ExtResource("23_vsmvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38281, -4.76837e-07, 9.38127)
+
 [node name="MagiclayCube" parent="." instance=ExtResource("25_6fiie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.77951, 0.486951, 4.81272)
 _element = "blue"
@@ -228,6 +234,18 @@ is_transmutable = true
 [node name="MagiclayTerrain" parent="." instance=ExtResource("27_n8rno")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39401, 4.76837e-07, 4.63499)
 _element = "magenta"
+
+[node name="Gate" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("26_plwqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.293826, 4.76837e-07, 7.29424)
+locks = [NodePath("../World/SmallPressurePlate")]
+
+[node name="Wire" parent="." instance=ExtResource("27_w2lr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97495, -4.76837e-07, 4.25549)
+
+[node name="Marker3D" type="Marker3D" parent="Wire"]
+
+[node name="Marker3D2" type="Marker3D" parent="Wire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.94606)
 
 [connection signal="battle_started" from="World/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="dialog_started" from="World/Player" to="OverworldConnector" method="_on_dialog_started"]

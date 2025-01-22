@@ -23,9 +23,7 @@ var element: ElementalType = ElementManager.Blank:
 @export var in_stasis: bool
 @export var tunnel_override: MagiClay
 
-var _mesh: MeshInstance3D:
-	get:
-		return $MeshInstance3D
+var _mesh: MeshInstance3D: get = _get_mesh
 var _material: StandardMaterial3D:
 	set(val):
 		_material = val
@@ -67,3 +65,6 @@ func destroy() -> void:
 
 func try_tunnel() -> void:
 	if tunnel_override == null: return
+
+func _get_mesh() -> MeshInstance3D:
+	return $MeshInstance3D
