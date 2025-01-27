@@ -19,8 +19,10 @@
 	- [ ] Mini-bosses.
 	- [ ] Puzzles.
 	- [ ] Setpieces.
+- [ ] Create reusable puzzle pieces:
 - [ ] Write demo story and tutorial.
 	- [ ] [[tutorial]]
+- [ ] Partner follow mechanic.
 - [x] Attack builder addon.
 	- [ ] Sandbox area.
 - [ ] Texture world.
@@ -32,3 +34,4 @@
 # Bugs
 - [ ] Actor formatter is broken (if attack is null, it fails).
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".
+- [ ] Player normal map is inverted.

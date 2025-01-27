@@ -5,7 +5,7 @@
 Hitting the base with *Stasis* will pause the stream.
 Using *Catalyst* will change the composition of the stream. This will mostly change its height, but a few elements will have secondary effects.
 - Yellow will be the default composition and will have the biggest stream.
-- Red will have a similarly large stream, but also be able to push objects.
+- Red will have a similarly large stream, but also be able to push objects. It will also prevent the player from stepping onto the geyser while it is active.
 
 **Large Boulder**: Can be targeted by *Catalyst* or *Stasis*. Weight depends on elemental composition:
 B > C > G     Heavy

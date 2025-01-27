@@ -13,7 +13,7 @@
 	- Regions.
 The demo should have a main track the player will follow, which will feature multiple battles and the *stasis* and *catalyst* spells. But I want the player to have the ability to stray from this main track and explore. The *destroy* spell will be located on a slight detour, such that the player will have to go off the main track, preferably behind a puzzle that requires both other spells.
 
-General Progression:
+
 # Story
 > The companion went to the starting area for research purposes and get attacked by miniboss 1&2, dropping their bag (which contained, among other things, some spell scrolls). They run into the player and team up, reasoning that together they could win.
 >
@@ -36,6 +36,10 @@ General Progression:
 8. Player solves a few simple Stasis puzzles.
 9. Player fights wild monsters.
 	1. Learn about weaknesses and resistances.
+10. Player passes a *Catalyst* obstacle they can backtrack to.
+11. Player fights miniboss \#2.
+12. Player receives *Catalyst* and solves a few puzzles relating to it.
+13. Player solves the final puzzle, granting them access to the final boss, and optionally, the destruction room and sandbox.
 # Main Areas
 ## Lower Beach
 - Cove
@@ -62,6 +66,8 @@ Companion walks player thru battle UI, transmutations, and affinity.
 - Spell Scrolls
 - Destroy obstacle:
 	- There will be a large obstacle the companion has the player use their newfound Stasis ability on. This same obstacle will break when Destroy is used on it, revealing a hidden area.
+### Miniboss \#1
+- 
 ## Stasis Puzzles
 - This room will be split into 2(3?) parts.
 - Puzzle (\#0): The upper section of the room will be blocked by a gate. To pass it, the player will have to place colored rocks onto matching pressure plates. 
@@ -108,5 +114,10 @@ Areas off of the main path, which may or may not be hidden behind an obstacle.
 - cave_exit --> deep_cave
 - hidden area \#3 --> deep_cave (but not vice versa)
 - upper_approach --> (puzzle solution \#2) --> destruction_room
-## Destruction Room (Destroy Puzzles)
+- destruction_room --> sandbox
+## Destruction Room (Destroy Puzzle)
 - Find Destroy spell.
+## Sandbox
+## Hidden Area \#1: Western Tide Pools
+## Hidden Area \#2: Eastern Hills
+## Hidden Area \#3: Deep Caves

@@ -521,6 +521,10 @@ Not every instance of MagiClay has to support every effect. Which effects a part
 >[!important]
 >For the demo, only Stasis, Catalyst, and Destroy will be available.
 
+### Grabbable
+Adding this component as a child to a MagiClay/PuzzleBlock/OverworldItem will allow the player to grab/pick it up.
+
+Its primary purpose is to display a 'pickup' prompt when the player is near. *its parent must determine what happens when the player presses this button*. The parent can accomplish this by listening to the `Grabbable.grabbed(Node3D, Player)` signal.
 ## Story (STRY)
 #todo
 ## Character Management and Inventory (CHAR)
