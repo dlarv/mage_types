@@ -396,6 +396,20 @@ There are 3 types:
 - Receiver: Receives the on/off signal from a specific emitter.
 - Medium: e.g. wire that glows when button is pressed. These should listen to an emitter's on/off signals, but are purely for aesthetic and informational purposes.
 More info can be found [[puzzle_archetypes|here]].
+##### Lasers
+- Emitter
+- Laser
+	- Stasis | Catalyst
+- Mirror
+	- Bends `Laser` 90degs.
+	- Optionally changes color of beam.
+		- If Laser is Blank, it matches color of Mirror.
+		- Otherwise, it transmutes, when applicable.
+- Receiver
+	- When hit by a `Laser`, emit an `On` signal.
+	- Optionally require `Laser` to be a specific color.
+
+1. When on, an emitter will send out an invisible sphere to collide with surfaces.
 ### Overworld Spells
 1. Allow user to select spell.
 2. Apply effects of spell to overworld.
@@ -506,6 +520,7 @@ The following system will need to interface with the Overworld Spells, esp which
 > Players collision layer is 1.
 > Projectile collision layer is 2.
 > MagiClay collision layer is 3.
+> Laser collision layer is 4.
 #### MagiClay
 MagiClay is used for parts of the environment that must interact with OverworldSpells and/or have elemental types.
 

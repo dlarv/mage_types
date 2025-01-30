@@ -101,7 +101,31 @@ Speed of bias (fastest – slowest): Magenta > Blue > Yellow, Purple, Orange, Gr
 	- Green is either trying to build or has built a second city at its Northern most tip. 
 	- They also lowkey resent not having great access to any of the other capitals.
 	- The Northern section of Green is covered with really dense jungle.
+## History
+### Prehistory
+### The War
+The *Cold Alliance*, a island wide corporation, was originally founded with the goal to more efficiently manage the production and industry of Forlorn. Primarily staffed by Blue, Cyan, and Purple, but not exclusively. Their main base of operations was in Cyan, where they controlled several large manufactory/industrial plants.
+
+The *Union* was a pseudo-governmental body that naturally developed over time. They manage general island policy, including the Quest. They are a democratic organization, but most people on Forlorn don't vote.
+
+Around 80 years ago, the Alliance made a large powergrab, trying to overthrow the Union. Though not entirely divided along region-lines, it is seen as Green vs Purple & Cyan, with Blue being split down the center. 
+### Post-War Period
+After the war, the Union took control of many of the Alliance's plants, making Cyan the manufacturing capital of the island. As a result, Green felt that Cyan was being unfairly elevated at their expense, citing the many sacrifices they had made to win the war. Furthermore, it was well known that Blue viewed Cyan as their little brother, further inflaming tensions.
+
+More recently, #todo 
+### Project Newton
+Initially started by independent Blue researchers, this initiative was adopted by the Alliance (before the war ended). Inside a facility on the Northern Island, researchers found a way to temporarily bring back lost elements, like Chartreuse, as well as artificial elements, like Dark-Blank. 
+
+Some time after the end of the war, an organization of ex-Project-Newton staff was founded. While the *Newton Foundation* was initially founded to harmlessly revive the project, it soon faced an internal schism. Simple researchers found themselves expelled from the group or killed, until only those with the darkest of intentions were left. The Foundation's stated goal is to discover a way off of the island, thru harnessing the powers of ancient elements. In truth, their goals are much less concise. Each captain seems to have their own ideas of what their organizations objectives should be, tho most agree they should gather power and influence for themselves. The Foundation has many bases around the island, with their secret homebase being located on the Northern Island.
+
+While building their new capital and navy, Green discovered the previously secret island. Realizing it to be a remanent of the Alliance, Green soon grew wary of the Foundation's intentions, believing them to be the heirs of the Alliance. Tho they tried to keep their new knowledge secret (hoping to hold onto it until they figured out what to do). Unfortunately, the Foundation discovered their snooping, and began a defamation campaign against them. As a result, Green further secluded themselves, believing the rest of the island would side with the Foundation instead of them.
+
+While somewhat correct in their assumption, Green had no idea that it would be Red, and their Blood Priesthood, that would uncover this plot. Growing suspicious of the Foundation and their smear campaign against Green, Red investigated, finding evidence sufficient to convince them of the Foundation's malice (Despite turning out to be on the 'good' side, it is heavily implied that they used underhanded means to obtain some of this information).
+
+>[!note]
+>The Foundation trying to recruit any Red-aligned people was a fatal mistake on their part. Those aligned with Red are essentially in a cult, with all the resulting inter-group loyalty.
 # Story
+## Intro
 The player wakes up to find themselves on a raft as it comes aground on a lonely blue beach. A light in a nearby shack turns on and you watch as a figure exits and heads towards you. They help you to your feet, greeting you in several languages until settling on your mother tongue. They seem friendly enough, so you follow them back to the shack. Where else are you supposed to go?
 
 Inside sits another castaway, a girl by the name of Alice. The three of you chat, getting to know each other. The man tells you the broad strokes of the setting, remarking how unusual it is to have two survivors arrive within such a short time period.
