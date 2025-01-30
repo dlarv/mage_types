@@ -521,6 +521,7 @@ The following system will need to interface with the Overworld Spells, esp which
 > Projectile collision layer is 2.
 > MagiClay collision layer is 3.
 > Laser collision layer is 4.
+> - The lasers themselves are on layer 5.
 #### MagiClay
 MagiClay is used for parts of the environment that must interact with OverworldSpells and/or have elemental types.
 

@@ -19,7 +19,9 @@ func _input(event: InputEvent) -> void:
 		_perform_action()
 
 func _physics_process(delta: float) -> void:
+	if not is_active: return
 	_get_magiclay()
+	_find_mouse_position()
 
 func _get_magiclay() -> void:
 	_magiclay_terrain = null
@@ -34,7 +36,20 @@ func _get_magiclay() -> void:
 		_magiclay_terrain = clay
 
 func _find_mouse_position() -> void:
-	if not Settings.use_mouse_targeting: return
+	# if not Settings.use_mouse_targeting: return
+	var cam = get_viewport().get_camera_3d()
+	var mousePos := get_viewport().get_mouse_position()
+
+	var origin := cam.project_ray_origin(mousePos)
+	var end := origin + cam.project_ray_normal(mousePos) * 1000
+	var query := PhysicsRayQueryParameters3D.create(origin, end, 2)
+	var pos = get_world_3d().direct_space_state.intersect_ray(query).get("position")
+
+	if pos != null:
+		_current_mouse_pos = pos - global_position
+		_current_mouse_pos.y = position.y
+	else:
+		_current_mouse_pos = position
 
 
 func deactivate() -> void:
@@ -59,11 +74,11 @@ func _channel_element() -> ElementalType:
 func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, element: ElementalType) -> void:
 	var projectile := Projectile.instantiate()
 	var target: Vector3
-	# if not Settings.use_mouse_targeting:
-	# 	target = global_basis.z
-	# else:
-	# 	target = _current_mouse_pos
-	target = global_basis.z
+	if not Settings.use_mouse_targeting:
+		target = global_basis.z
+	else:
+		target = _current_mouse_pos.normalized()
+	print(target)
 
 	projectile.setup(collision_test, action_to_perform, element, target)
 	get_tree().get_root().add_child(projectile)

@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuu0bcxy1x8xp"]
+
+[ext_resource type="PackedScene" uid="uid://cnt7eo4sau3ym" path="res://assets/demo/stasis_puzzles.fbx" id="1_h8h0i"]
+[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="2_7srj1"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="3_mi5ru"]
+[ext_resource type="PackedScene" uid="uid://ujn580ouc14d" path="res://src/overworld/puzzle_blocks/flip_flop.tscn" id="4_6rd1j"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="5_s1xkt"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="6_tkj1o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5holi"]
+size = Vector3(28.1498, 5.84131, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4c4dd"]
+data = PackedVector3Array(0.02, 0.0064, -0.0133, 0.02, -0.02, -0.0133, 0.002, -0.02, -0.0133, 0.002, -0.02, -0.0133, 0.002, 0.0064, -0.0133, 0.02, 0.0064, -0.0133, 0.02, 0.0064, 0.0167, 0.02, 0.0064, -0.0133, 0.002, 0.0064, -0.0133, 0.002, 0.0064, -0.0133, 0.002, 0.0064, 0.0167, 0.02, 0.0064, 0.0167, 0.02, -0.02, 0.0167, 0.02, -0.02, -0.0133, 0.02, 0.0064, -0.0133, 0.02, 0.0064, -0.0133, 0.02, 0.0064, 0.0167, 0.02, -0.02, 0.0167, -0.02, 0.0064, 0.0167, -0.02, 0.0064, -0.0133, -0.02, -0.02, -0.0133, -0.02, -0.02, -0.0133, -0.02, -0.02, 0.0167, -0.02, 0.0064, 0.0167, -0.002, 0.0064, 0.0167, -0.002, 0.0064, -0.0133, -0.02, 0.0064, -0.0133, -0.02, 0.0064, -0.0133, -0.02, 0.0064, 0.0167, -0.002, 0.0064, 0.0167, 0.002, 0.0077, 0.0167, 0.002, 0.0064, 0.0167, 0.002, 0.0064, -0.0133, 0.002, 0.0064, -0.0133, 0.002, 0.0077, -0.0133, 0.002, 0.0077, 0.0167, -0.002, 0.0064, -0.0133, -0.002, -0.02, -0.0133, -0.02, -0.02, -0.0133, -0.02, -0.02, -0.0133, -0.02, 0.0064, -0.0133, -0.002, 0.0064, -0.0133, 0.002, 0.0064, -0.0133, 0.002, -0.02, -0.0133, -0.002, -0.02, -0.0133, -0.002, -0.02, -0.0133, -0.002, 0.0064, -0.0133, 0.002, 0.0064, -0.0133, -0.002, 0.0077, 0.0167, -0.002, 0.0064, 0.0167, 0.002, 0.0064, 0.0167, 0.002, 0.0064, 0.0167, 0.002, 0.0077, 0.0167, -0.002, 0.0077, 0.0167, 0.002, 0.0077, -0.0133, 0.002, 0.0064, -0.0133, -0.002, 0.0064, -0.0133, -0.002, 0.0064, -0.0133, -0.002, 0.0077, -0.0133, 0.002, 0.0077, -0.0133, -0.002, 0.0077, -0.0133, -0.002, 0.0064, -0.0133, -0.002, 0.0064, 0.0167, -0.002, 0.0064, 0.0167, -0.002, 0.0077, 0.0167, -0.002, 0.0077, -0.0133)
+
+[node name="StasisPuzzles" type="Node3D"]
+
+[node name="FrontWall" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0802307, 8.93981, 14.2058)
+shape = SubResource("BoxShape3D_5holi")
+
+[node name="stasis_puzzles" parent="." instance=ExtResource("1_h8h0i")]
+
+[node name="StasisPuzzles" parent="stasis_puzzles" index="0"]
+transform = Transform3D(700, 0, 0, 0, 0, 100, 0, -700, 0, 0, 7.711, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stasis_puzzles/StasisPuzzles" index="0"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stasis_puzzles/StasisPuzzles/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4c4dd")
+
+[node name="GeyserTop" parent="." instance=ExtResource("2_7srj1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10.3924, 8.62903, -3.68121)
+size = 16.0
+base_strength = 50.0
+_element = "red"
+
+[node name="GeyserBottom" parent="." instance=ExtResource("2_7srj1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.3924, 8.62903, 13.7318)
+size = 16.0
+base_strength = 50.0
+is_on = false
+_element = "red"
+
+[node name="Geyser_FlipFlop" parent="." instance=ExtResource("4_6rd1j")]
+on_length = 10.0
+off_length = 10.0
+
+[node name="Emitter" parent="." instance=ExtResource("5_s1xkt")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 7.14734, 5.05792)
+_element = "magenta"
+
+[node name="Emitter_FlipFlop" parent="." instance=ExtResource("4_6rd1j")]
+on_length = 4.0
+off_length = 0.5
+start_state = false
+offset = 0.25
+
+[node name="PressurePlate" parent="." instance=ExtResource("6_tkj1o")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10.4155, 6.54004, 5.20774)
+can_player_trigger = false
+_element = "purple"
+
+[node name="MagiclayBoulder" parent="." instance=ExtResource("3_mi5ru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3219, 7.94286, 11.7849)
+linear_damp = 10.0
+_element = "blue"
+is_transmutable = true
+
+[connection signal="off" from="Geyser_FlipFlop" to="GeyserTop" method="start"]
+[connection signal="off" from="Geyser_FlipFlop" to="GeyserBottom" method="stop"]
+[connection signal="on" from="Geyser_FlipFlop" to="GeyserTop" method="stop"]
+[connection signal="on" from="Geyser_FlipFlop" to="GeyserBottom" method="start"]
+[connection signal="off" from="Emitter_FlipFlop" to="Emitter" method="stop"]
+[connection signal="on" from="Emitter_FlipFlop" to="Emitter" method="start"]
+
+[editable path="stasis_puzzles"]

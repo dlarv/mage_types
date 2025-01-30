@@ -10,10 +10,11 @@ size = Vector3(1, 1, 2)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8g24h"]
 data = PackedVector3Array(0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)
 
-[node name="Mirror" type="StaticBody3D"]
-collision_layer = 13
+[node name="Mirror" type="StaticBody3D" groups=["mirror"]]
+collision_layer = 15
 collision_mask = 5
 script = ExtResource("1_dbg3p")
+is_transmutable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)

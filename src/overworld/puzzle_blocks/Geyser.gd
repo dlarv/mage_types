@@ -80,7 +80,8 @@ func _on_stream_hit_box_exited(body: Node3D) -> void:
 func set_stasis(val: bool, timeLength:=0.5) -> void:
 	$AnimationPlayer.play("pausing")
 	await super.set_stasis(val, timeLength)
-	$AnimationPlayer.play("starting")
+	if not in_stasis:
+		$AnimationPlayer.play("starting")
 
 func _set_keyframes() -> void:
 	var val := Vector3(0, size, 0)
@@ -102,5 +103,7 @@ func stop(val: Variant=null) -> void:
 
 #Override
 func start(val: Variant=null) -> void:
+	if in_stasis:
+		await self.stasis_ended
 	super.start()
 	$AnimationPlayer.play("starting")

@@ -2,6 +2,8 @@
 extends CollisionObject3D
 class_name MagiClay
 
+signal stasis_ended()
+
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":
 	get:
@@ -31,6 +33,11 @@ var _material: StandardMaterial3D:
 		_mesh.set_surface_override_material(0, _material)
 		_try_set_color()
 
+# When this object is hit by a laser, this value is checked against the projectile's value.
+# Every laser projectile in a beam has the same value and it is rerolled when the laser stops and starts again.
+# This will prevent the object from strobing when hit by a laser.
+var _rand_val: int
+
 func _ready():
 	_material = StandardMaterial3D.new()
 
@@ -40,10 +47,12 @@ func _try_set_color() -> void:
 	if element == null: return
 	_material.albedo_color = element.main_color
 
-func set_element(e: ElementalType) -> bool:
+func set_element(e: ElementalType, randVal:=-2) -> bool:
 	if in_stasis: return false
 	if not is_transmutable: return false
 	if e == null or e.is_blank(): return false
+	if _rand_val == randVal: return false
+	_rand_val = randVal
 	element = e
 	_try_set_color()
 	return true
@@ -54,6 +63,7 @@ func set_stasis(val: bool, timeLength:=0.5) -> void:
 	var prevColor := _material.albedo_color
 	_material.albedo_color = Color.BLACK
 	await get_tree().create_timer(timeLength).timeout
+	stasis_ended.emit()
 	_material.albedo_color = prevColor
 	in_stasis = false
 

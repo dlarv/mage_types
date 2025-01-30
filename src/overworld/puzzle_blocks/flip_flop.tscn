@@ -7,14 +7,14 @@
 [node name="FlipFlop" type="Area3D"]
 script = ExtResource("1_cotf7")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ubq2b")
+
 [node name="On" type="Timer" parent="."]
 one_shot = true
 
 [node name="Off" type="Timer" parent="."]
 one_shot = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_ubq2b")
 
 [connection signal="timeout" from="On" to="." method="_on_on_timeout"]
 [connection signal="timeout" from="Off" to="." method="_on_off_timeout"]
