@@ -7,6 +7,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if can_player_trigger and _test_for_player(body):
 		_try_emit_on()
 	elif body is MagiClay and body.element == element:
+		print("Pressure plate activated")
 		_try_emit_on()
 
 

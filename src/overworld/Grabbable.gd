@@ -1,16 +1,13 @@
 @tool
-extends Area3D
+extends Node3D
+class_name Grabbable
+
+signal grabbed(obj: Node3D, player: Node3D)
+signal dropped(obj: Node3D, player: Node3D)
 
 @export var label_offset: Vector3
 var _label: Label
-
-var story_actor: StoryActor = null
-var vendor_actor: VendorActor = null
-var enemy_actor: EnemyActor = null
-# Player or PhysicsPlayer
-var _player: Variant
-
-var _on_cooldown := false
+var _player: Node3D
 
 func _enter_tree():
 	# Interaction prompt
@@ -20,25 +17,12 @@ func _enter_tree():
 		var actions := InputMap.action_get_events("interact")
 		_label.text = "Press %s" % actions[0].as_text().split(" ")[0]
 
-	for child in get_children():
-		if child is VendorActor: 
-			vendor_actor = child
-		elif child is StoryActor:
-			story_actor = child
-		elif child is EnemyActor:
-			enemy_actor = child
-
 func _unhandled_input(event: InputEvent) -> void:
 	if not _label.visible or _player == null: return
 
 	if event.is_action_pressed("interact"):
 		get_window().set_input_as_handled()
-		if story_actor != null:
-			_player.call_deferred("start_dialog", self)
-		else:
-			_player.call_deferred("open_shop", self)
-		_player = null
-		_label.hide()
+		grabbed.emit(self, _player)
 
 func _physics_process(delta: float) -> void:
 	if not _label.visible: return
@@ -52,23 +36,15 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body:Node3D) -> void:
 	if not body.is_in_group("player"): return
+	_player = body
+	_label.show()
 
-	if story_actor != null or vendor_actor != null: 
-		_label.show()
-		_player = body
-	elif not _on_cooldown:
-		get_tree().call_group("wild_enemies", "_start_battle_cooldown")
-		body.call_deferred("start_battle", self)
-			
 
 func _on_body_exited(body:Node3D) -> void:
 	if not body.is_in_group("player"): return
 	_label.hide()
+	dropped.emit(self, _player)
 	_player = null
 
-## Called by OverworldConnector is this character is part of the "wild_enemies" group.
-func _end_battle_cooldown() -> void:
-	_on_cooldown = false 
 
-func _start_battle_cooldown() -> void:
-	_on_cooldown = true
+	

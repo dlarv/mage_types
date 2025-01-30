@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://4aym0b1yryr0"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Laser.gd" id="1_s4vi6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5e5he"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cdyfq"]
+radius = 0.1
+
+[sub_resource type="Gradient" id="Gradient_h3ok0"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_78ow7"]
+gradient = SubResource("Gradient_h3ok0")
+
+[node name="Laser" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 12
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_5e5he")
+gravity_scale = 0.0
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1000
+linear_damp_mode = 1
+script = ExtResource("1_s4vi6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_cdyfq")
+
+[node name="Decal" type="Decal" parent="."]
+size = Vector3(2, 2, 0.2)
+texture_albedo = SubResource("GradientTexture1D_78ow7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

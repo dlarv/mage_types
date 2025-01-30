@@ -16,10 +16,13 @@ signal dialog_started(dialog_id, enemy_actor, vendor_actor)
 @export var walk_speed := 10.0
 @export var run_speed := 30.0
 var _is_running := false
+## Is the player holding a Grabbable object.
+var held_object: Node3D = null 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
+var outside_forces := Vector3.ZERO
 
 func _ready() -> void:
 	team.insert(0, battle_actor)
@@ -53,13 +56,15 @@ func _physics_process(delta) -> void:
 		vel.x = direction.x * speed
 		vel.z = direction.z * speed
 		# Rotate model in direction of movement.
-		model.rotation.y = atan2(vel.x, vel.z)
+		if not held_object:
+			model.rotation.y = atan2(vel.x, vel.z)
 	else:
 		vel.x = move_toward(velocity.x, 0, speed)
 		vel.z = move_toward(velocity.z, 0, speed)
 
 
-	velocity = vel
+	velocity = vel + outside_forces
+	outside_forces = Vector3.ZERO
 	if vel == Vector3.ZERO:
 		anim_player.play("idle")
 	else:
@@ -74,3 +79,10 @@ func open_shop(npc: Variant) -> void:
 
 func start_dialog(npc: Variant) -> void:
 	dialog_started.emit(npc.story_actor.dialog_ids[npc.story_actor.current_id], npc.enemy_actor, npc.vendor_actor)
+
+func pickup_object(obj: Node3D, val: bool) -> void:
+	if val:
+		held_object = obj 
+		obj.reparent(self)
+	else:
+		held_object = null

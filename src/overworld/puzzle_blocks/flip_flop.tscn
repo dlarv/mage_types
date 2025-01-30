@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ujn580ouc14d"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/FlipFlop.gd" id="1_cotf7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubq2b"]
+
+[node name="FlipFlop" type="Area3D"]
+script = ExtResource("1_cotf7")
+
+[node name="On" type="Timer" parent="."]
+one_shot = true
+
+[node name="Off" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ubq2b")
+
+[connection signal="timeout" from="On" to="." method="_on_on_timeout"]
+[connection signal="timeout" from="Off" to="." method="_on_off_timeout"]

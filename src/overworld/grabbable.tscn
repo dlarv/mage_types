@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://drgbwti23hs40"]
+
+[ext_resource type="Script" path="res://src/overworld/Grabbable.gd" id="1_8eut7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gcr07"]
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_els1g"]
+radius = 2.0
+
+[node name="Grabbable" type="Node3D"]
+script = ExtResource("1_8eut7")
+label_offset = Vector3(0, 1, 0)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 91.0
+offset_bottom = 23.0
+text = "Press Space"
+label_settings = SubResource("LabelSettings_gcr07")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_els1g")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited"]

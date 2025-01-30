@@ -27,6 +27,7 @@ var _mesh: MeshInstance3D: get = _get_mesh
 var _material: StandardMaterial3D:
 	set(val):
 		_material = val
+		if _mesh == null: return
 		_mesh.set_surface_override_material(0, _material)
 		_try_set_color()
 
@@ -39,12 +40,13 @@ func _try_set_color() -> void:
 	if element == null: return
 	_material.albedo_color = element.main_color
 
-func set_element(e: ElementalType) -> void:
-	if in_stasis: return
-	if not is_transmutable: return
-	if e == null or e.is_blank(): return
+func set_element(e: ElementalType) -> bool:
+	if in_stasis: return false
+	if not is_transmutable: return false
+	if e == null or e.is_blank(): return false
 	element = e
 	_try_set_color()
+	return true
 	
 func set_stasis(val: bool, timeLength:=0.5) -> void:
 	if in_stasis: return

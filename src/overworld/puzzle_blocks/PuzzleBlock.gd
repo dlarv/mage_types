@@ -5,7 +5,16 @@ class_name PuzzleBlock
 signal on(node: PuzzleBlock)
 signal off(node: PuzzleBlock)
 
-@export var is_on := false
+@export var is_on := true:
+	set(val):
+		is_on = val
+		if val:
+			start()
+		else:
+			stop()
+
+func start(val: Variant=null) -> void: pass
+func stop(val: Variant=null) -> void: pass
 
 func _try_emit_on():
 	if not in_stasis and not is_on:

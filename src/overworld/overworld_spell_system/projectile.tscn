@@ -5,6 +5,7 @@
 [sub_resource type="SphereMesh" id="SphereMesh_bhm3j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_33ncv"]
+radius = 0.709274
 
 [node name="Projectile" type="RigidBody3D"]
 collision_layer = 2
