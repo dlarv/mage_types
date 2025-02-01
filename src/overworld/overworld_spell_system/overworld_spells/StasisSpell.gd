@@ -1,6 +1,7 @@
 extends OverworldSpell
 
-@export var stasis_length: float
+@export var max_stasis_objects := 3
+var _stasis_queue := []
 
 # Override 
 func _perform_action() -> void: 
@@ -8,7 +9,20 @@ func _perform_action() -> void:
 
 
 func action_to_perform(body: Node3D, element: ElementalType) -> void:
-	body.set_stasis(true, stasis_length)
+	body.set_stasis()
+
+	if not body.in_stasis:
+		var index := _stasis_queue.find(body)
+		if index != -1:
+			_stasis_queue.remove_at(index)
+			print(len(_stasis_queue))
+		return
+
+	if len(_stasis_queue) == max_stasis_objects:
+		var obj = _stasis_queue.pop_front()
+		if obj.in_stasis:
+			obj.set_stasis()
+	_stasis_queue.append(body)
 
 func collision_test(body: Variant) -> bool:
 	return body is MagiClay

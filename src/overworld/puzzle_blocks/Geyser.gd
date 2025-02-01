@@ -78,21 +78,21 @@ func _on_stream_hit_box_exited(body: Node3D) -> void:
 		_player = null
 
 # Override
-func set_stasis(val: bool, timeLength:=0.5) -> void:
-	if in_stasis: return
-	$AnimationPlayer.play("pausing")
-	await super.set_stasis(val, timeLength)
-	if not in_stasis:
+func set_stasis() -> void:
+	super.set_stasis()
+	if in_stasis:
+		$AnimationPlayer.play("pausing")
+	else:
 		$AnimationPlayer.play("starting")
 
 #Override
 func stop(val: Variant=null) -> void:
+	if in_stasis: return
 	super.stop()
 	$AnimationPlayer.play("pausing")
 
 #Override
 func start(val: Variant=null) -> void:
-	if in_stasis:
-		await self.stasis_ended
+	if in_stasis: return
 	super.start()
 	$AnimationPlayer.play("starting")
