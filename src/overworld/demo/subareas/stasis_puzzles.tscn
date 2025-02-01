@@ -45,13 +45,13 @@ shape = SubResource("ConcavePolygonShape3D_gk4m0")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10.392, 7.82, -3.681)
 size = 16.0
 base_strength = 50.0
+is_on = false
 _element = "red"
 
 [node name="Geyser_South" parent="." instance=ExtResource("2_7srj1")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.3924, 7.81971, 12.9929)
 size = 16.0
 base_strength = 50.0
-is_on = false
 _element = "red"
 
 [node name="Geyser_FlipFlop" parent="." instance=ExtResource("4_6rd1j")]
@@ -74,7 +74,8 @@ start_state = false
 offset = 5.0
 
 [node name="MagiclayBoulder" parent="." instance=ExtResource("3_mi5ru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3219, 7.94286, 10.6232)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3219, 7.94286, 9.61624)
+inertia = Vector3(10, 10, 10)
 linear_damp = 8.0
 _element = "blue"
 is_transmutable = true
@@ -110,7 +111,7 @@ can_player_trigger = false
 _element = "blue"
 
 [node name="MagiclayRockBlue" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7.1, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7.1, 17.6112)
 _element = "blue"
 
 [node name="PressurePlatePurple" parent="EntryPuzzle" instance=ExtResource("6_tkj1o")]
@@ -119,7 +120,7 @@ can_player_trigger = false
 _element = "purple"
 
 [node name="MagiclayRockPurple" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7.1, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7.1, 14.6112)
 _element = "purple"
 
 [node name="PressurePlateGreen" parent="EntryPuzzle" instance=ExtResource("6_tkj1o")]
@@ -128,7 +129,7 @@ can_player_trigger = false
 _element = "green"
 
 [node name="MagiclayRockGreen" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7.1, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7.1, 14.6112)
 _element = "green"
 
 [node name="PressurePlateCyan" parent="EntryPuzzle" instance=ExtResource("6_tkj1o")]
@@ -137,7 +138,7 @@ can_player_trigger = false
 _element = "cyan"
 
 [node name="MagiclayRockCyan" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7.1, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7.1, 17.6112)
 _element = "cyan"
 
 [node name="PressurePlateMagenta" parent="EntryPuzzle" instance=ExtResource("6_tkj1o")]
@@ -146,7 +147,7 @@ can_player_trigger = false
 _element = "magenta"
 
 [node name="MagiclayRockMagenta" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.1, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.1, 17.6112)
 _element = "magenta"
 
 [node name="PressurePlateYellow" parent="EntryPuzzle" instance=ExtResource("6_tkj1o")]
@@ -155,7 +156,7 @@ can_player_trigger = false
 _element = "yellow"
 
 [node name="MagiclayRockYellow" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 7.1, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 7.1, 17.6112)
 _element = "yellow"
 
 [node name="PressurePlateRed" parent="EntryPuzzle" instance=ExtResource("6_tkj1o")]
@@ -164,7 +165,7 @@ can_player_trigger = false
 _element = "red"
 
 [node name="MagiclayRockRed" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.32532, 7.1, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.32532, 7.1, 14.6112)
 _element = "red"
 
 [node name="PressurePlateOrange" parent="EntryPuzzle" instance=ExtResource("6_tkj1o")]
@@ -173,7 +174,7 @@ can_player_trigger = false
 _element = "orange"
 
 [node name="MagiclayRockOrange" parent="EntryPuzzle" instance=ExtResource("9_eoebi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.1, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.1, 14.6112)
 _element = "orange"
 
 [connection signal="off" from="Geyser_FlipFlop" to="Geyser_North" method="start"]
