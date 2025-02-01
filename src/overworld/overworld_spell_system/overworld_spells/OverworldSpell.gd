@@ -51,7 +51,6 @@ func _find_mouse_position() -> void:
 	else:
 		_current_mouse_pos = position
 
-
 func deactivate() -> void:
 	is_active = false
 	keycode = ""
@@ -78,9 +77,7 @@ func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, el
 		target = global_basis.z
 	else:
 		target = _current_mouse_pos.normalized()
-	print(target)
 
 	projectile.setup(collision_test, action_to_perform, element, target)
 	get_tree().get_root().add_child(projectile)
 	projectile.global_position = global_position
-
