@@ -7,11 +7,11 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_1h0bu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyw3b"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jb5y7"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiclayRock" type="RigidBody3D"]
-collision_layer = 4
+collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_k4ig1")
 
@@ -20,7 +20,7 @@ shape = SubResource("BoxShape3D_gvndh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1h0bu")
-surface_material_override/0 = SubResource("StandardMaterial3D_tyw3b")
+surface_material_override/0 = SubResource("StandardMaterial3D_jb5y7")
 
 [node name="Grabbable" parent="." instance=ExtResource("2_75jtu")]
 

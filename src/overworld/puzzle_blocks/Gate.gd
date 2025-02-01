@@ -8,6 +8,11 @@ var _is_opened: bool
 var _opened_locks := {}
 
 func _ready() -> void:
+	if _is_opened and permanent:
+		collision_layer = 0
+		$AnimationPlayer.play("opening")
+		return
+
 	_is_opened = false
 	for lock in locks:
 		_opened_locks[lock] = false
@@ -23,9 +28,10 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 func _on_lock_closed(block: PuzzleBlock) -> void:
 	if _is_opened and permanent: return
 	if _opened_locks.has(block):
-		print("lock closed")
+		print("%s lock closed" % block.name)
 		_opened_locks[block] = false
-		_close()
+		if _is_opened:
+			_close()
 
 func _open():
 	for openedLock in _opened_locks.values():
@@ -33,6 +39,7 @@ func _open():
 	collision_layer = 0
 	$AnimationPlayer.play("opening")
 	_is_opened = true
+	print("Opened")
 
 func _close():
 	collision_layer = 1

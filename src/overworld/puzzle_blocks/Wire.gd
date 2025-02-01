@@ -1,27 +1,29 @@
 @tool
 extends Node3D
 
-@export var decal: Decal
-@export var from: PuzzleBlock
-@export var to: PuzzleBlock
+@export var target: PuzzleBlock
+@export var on_color := Color.RED
+@export var off_color := Color.DIM_GRAY
+
+var gradient: Gradient
 
 func _ready() -> void:
-	if from != null:
-		from.on.connect(_on_block_on)
-	if to != null:
-		to.off.connect(_on_block_off)
+	if target != null:
+		target.on.connect(_on_block_on)
+		target.off.connect(_on_block_off)
+
+	gradient = Gradient.new()
+	gradient.add_point(0, off_color)
+	while gradient.get_point_count() > 1:
+		gradient.remove_point(0)
+
+	$Decal.texture_albedo = GradientTexture1D.new()
+	$Decal.texture_albedo.gradient = gradient
+
 
 func _on_block_on(block: PuzzleBlock) -> void:
-	pass
+	gradient.set_color(0, on_color)
+
 
 func _on_block_off(block: PuzzleBlock) -> void:
-	pass
-
-
-func _on_child_entered_tree(node:Node) -> void:
-	if node is Marker3D:
-		var d := decal.duplicate() 
-		d.show()
-		node.add_child(d)
-
-
+	gradient.set_color(0, off_color)
