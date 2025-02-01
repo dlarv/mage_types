@@ -67,6 +67,7 @@ func set_element(e: ElementalType, randVal:=-2) -> bool:
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"MagiClay(%s).set_element(%s) succeeded." % [puzzle_name, e.name])
 
+	_flicker_collider()
 	return true
 	
 func set_stasis() -> void:
@@ -81,6 +82,7 @@ func set_stasis() -> void:
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
 		stasis_ended.emit()
+	_flicker_collider()
 
 
 func bloom(val: bool, e: ElementalType) -> void:
@@ -95,3 +97,13 @@ func try_tunnel() -> void:
 
 func _get_mesh() -> MeshInstance3D:
 	return $MeshInstance3D
+
+func _flicker_collider() -> void:
+	# Use case example:
+	# 1. Object is Blue and is sitting on a Purple pressure plate.
+	# 2. Object is transmuted into Purple.
+	# 3. Collider is flickered, which re-triggers pressure plate.
+	var val := collision_layer
+	collision_layer = 1
+	await get_tree().create_timer(0.01).timeout
+	collision_layer = val

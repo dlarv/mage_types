@@ -17,10 +17,14 @@ func _ready() -> void:
 
 func _on_on_timeout() -> void:
 	on.emit(self)
+	Logger.append_log(Logger.LogType.PUZZLE, 
+			"FlipFlop(%s) turned on." % [puzzle_name])
 	if is_on:
 		$Off.start()
 
 func _on_off_timeout() -> void:
 	off.emit(self)
+	Logger.append_log(Logger.LogType.PUZZLE, 
+			"FlipFlop(%s) turned off." % [puzzle_name])
 	if is_on:
 		$On.start()

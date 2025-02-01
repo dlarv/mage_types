@@ -12,6 +12,8 @@ signal off(node: PuzzleBlock)
 			start()
 		else:
 			stop()
+
+
 func start(val: Variant=null) -> void: pass
 func stop(val: Variant=null) -> void: pass
 
