@@ -7,3 +7,13 @@
 		- Transmutation hints.
 	- Affinity.
 	- Resistances/Weaknesses.
+- OverworldSpells:
+	- Aiming and selection.
+	- Stasis.
+	- Catalyst.
+	- Destroy.
+- Item usage.
+- Puzzle Blocks:
+	- Geyser.
+	- Pressure plates.
+	- Lasers.
