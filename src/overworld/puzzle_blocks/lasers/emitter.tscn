@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2c6cvf2k0bf4"]
+[gd_scene load_steps=8 format=3 uid="uid://b2c6cvf2k0bf4"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_1e8qi"]
 [ext_resource type="PackedScene" uid="uid://4aym0b1yryr0" path="res://src/overworld/puzzle_blocks/lasers/laser.tscn" id="2_rp82n"]
@@ -10,6 +10,9 @@ height = 0.5
 radial_segments = 8
 rings = 6
 is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gj4p5"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndnw5"]
 emission_shape = 3
@@ -39,6 +42,7 @@ shape = SubResource("SphereShape3D_nfnt1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_s6ud6")
+surface_material_override/0 = SubResource("StandardMaterial3D_gj4p5")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 visible = false

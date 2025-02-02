@@ -59,11 +59,11 @@ visible = false
 [node name="Overworld" type="Node3D" parent="World"]
 
 [node name="Player" parent="World/Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.174, 8.38894, 8.9819)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.174, 8.38894, 7.93063)
 run_speed = 40.0
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 7)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Overworld"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
@@ -89,5 +89,5 @@ other_side = NodePath("../../StasisPuzzles/Doorway")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.513, 0, 0)
 
 [node name="Doorway" parent="World/Overworld/StasisPuzzles" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0488205, 6.88221, 13.2161)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0488205, 6.88221, 22.0887)
 other_side = NodePath("../../LowerPath/Doorway2")

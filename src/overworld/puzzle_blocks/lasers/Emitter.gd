@@ -26,7 +26,11 @@ func start(val: Variant=null) -> void:
 	super.start(val)
 	_is_on = true
 	_hash = Time.get_ticks_msec()
+	Logger.append_log(Logger.LogType.PUZZLE, 
+			"Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element.name, _hash])
 
 func stop(val: Variant=null) -> void: 
 	super.stop(val)
 	_is_on = false
+	Logger.append_log(Logger.LogType.PUZZLE, 
+			"Emitter(%s) stopped." % [puzzle_name])

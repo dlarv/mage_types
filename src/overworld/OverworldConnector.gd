@@ -11,6 +11,10 @@ extends Node3D
 
 @export var _player: Player
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("create_log"):
+		Logger.save_log(Logger.LogType.PUZZLE)
+
 func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	var battle := battle_scene.instantiate()
 

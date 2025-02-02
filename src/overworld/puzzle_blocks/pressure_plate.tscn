@@ -8,10 +8,12 @@ size = Vector3(1, 0.1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_yjbx8"]
 size = Vector3(1, 0.1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_megbv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgls1"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="PressurePlate" type="Area3D"]
+collision_layer = 5
+collision_mask = 4
 script = ExtResource("1_78xe4")
 can_player_trigger = true
 is_on = false
@@ -22,7 +24,7 @@ shape = SubResource("BoxShape3D_0p7xg")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_yjbx8")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_megbv")
+surface_material_override/0 = SubResource("StandardMaterial3D_mgls1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

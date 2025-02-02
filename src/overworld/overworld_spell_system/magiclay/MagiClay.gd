@@ -25,6 +25,9 @@ var element: ElementalType = ElementManager.Blank:
 @export var in_stasis: bool
 @export var tunnel_override: MagiClay
 
+var puzzle_name: String:
+	get:
+		return "%s.%s" % [get_parent().name, name]
 var _mesh: MeshInstance3D: get = _get_mesh
 var _material: StandardMaterial3D:
 	set(val):
@@ -48,24 +51,38 @@ func _try_set_color() -> void:
 	_material.albedo_color = element.main_color
 
 func set_element(e: ElementalType, randVal:=-2) -> bool:
-	if in_stasis: return false
-	if not is_transmutable: return false
-	if e == null or e.is_blank(): return false
-	if _rand_val == randVal: return false
+	if in_stasis: 
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." % [puzzle_name, e.name])
+		return false
+	elif not is_transmutable: 
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"MagiClay(%s).set_element(%s) failed, b/c Clay is in not transmutable." % [puzzle_name, e.name])
+		return false
+	elif e == null or e.is_blank(): return false
+	elif _rand_val == randVal: return false
 	_rand_val = randVal
 	element = e
 	_try_set_color()
+	Logger.append_log(Logger.LogType.PUZZLE, 
+			"MagiClay(%s).set_element(%s) succeeded." % [puzzle_name, e.name])
+
+	_flicker_collider()
 	return true
 	
-func set_stasis(val: bool, timeLength:=0.5) -> void:
-	if in_stasis: return
-	in_stasis = true
-	var prevColor := _material.albedo_color
-	_material.albedo_color = Color.BLACK
-	await get_tree().create_timer(timeLength).timeout
-	stasis_ended.emit()
-	_material.albedo_color = prevColor
-	in_stasis = false
+func set_stasis() -> void:
+	in_stasis = not in_stasis
+	if in_stasis:
+		_material.albedo_color = Color.BLACK
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
+
+	else:
+		_material.albedo_color = element.main_color
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
+		stasis_ended.emit()
+	_flicker_collider()
 
 
 func bloom(val: bool, e: ElementalType) -> void:
@@ -80,3 +97,13 @@ func try_tunnel() -> void:
 
 func _get_mesh() -> MeshInstance3D:
 	return $MeshInstance3D
+
+func _flicker_collider() -> void:
+	# Use case example:
+	# 1. Object is Blue and is sitting on a Purple pressure plate.
+	# 2. Object is transmuted into Purple.
+	# 3. Collider is flickered, which re-triggers pressure plate.
+	var val := collision_layer
+	collision_layer = 1
+	await get_tree().create_timer(0.01).timeout
+	collision_layer = val

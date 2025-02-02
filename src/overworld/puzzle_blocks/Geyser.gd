@@ -7,7 +7,6 @@ extends PuzzleBlock
 		top_hitbox.position.y = size
 		body_hitbox.position.y = size / 2
 		body_hitbox.shape.size.y = size
-		_set_keyframes()
 
 @export var base_strength := 15.0:
 	set(val):
@@ -41,6 +40,8 @@ func _enter_tree():
 
 func _ready() -> void:
 	super._ready()
+
+	
 
 func _physics_process(delta: float) -> void:
 	if _player != null:
@@ -77,33 +78,21 @@ func _on_stream_hit_box_exited(body: Node3D) -> void:
 		_player = null
 
 # Override
-func set_stasis(val: bool, timeLength:=0.5) -> void:
-	$AnimationPlayer.play("pausing")
-	await super.set_stasis(val, timeLength)
-	if not in_stasis:
+func set_stasis() -> void:
+	super.set_stasis()
+	if in_stasis:
+		$AnimationPlayer.play("pausing")
+	else:
 		$AnimationPlayer.play("starting")
-
-func _set_keyframes() -> void:
-	var val := Vector3(0, size, 0)
-	var pausing: Animation = $AnimationPlayer.get_animation("pausing")
-	pausing.track_set_key_value(0, 0, val / 2)
-	pausing.track_set_key_value(0, 1, -val / 2)
-	pausing.track_set_key_value(1, 0, val)
-	# pausing.track_set_key_value(1, 1, -size / 2)
-
-	var starting: Animation = $AnimationPlayer.get_animation("starting")
-	starting.track_set_key_value(0, 1, val)
-	starting.track_set_key_value(1, 0, -val / 2)
-	starting.track_set_key_value(1, 1, val / 2)
 
 #Override
 func stop(val: Variant=null) -> void:
+	if in_stasis: return
 	super.stop()
 	$AnimationPlayer.play("pausing")
 
 #Override
 func start(val: Variant=null) -> void:
-	if in_stasis:
-		await self.stasis_ended
+	if in_stasis: return
 	super.start()
 	$AnimationPlayer.play("starting")
