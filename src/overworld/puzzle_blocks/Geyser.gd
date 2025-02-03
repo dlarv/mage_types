@@ -33,6 +33,7 @@ var is_blocking: bool:
 var _player: Node3D
 
 func _enter_tree():
+	super._enter_tree()
 	body_hitbox.shape = BoxShape3D.new()
 	body_hitbox.shape.size = Vector3(1, size, 1)
 	top_hitbox.shape = BoxShape3D.new()

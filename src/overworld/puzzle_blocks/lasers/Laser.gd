@@ -17,11 +17,13 @@ func _ready() -> void:
 func setup(pos: Vector3, direction: Vector3, e: ElementalType, randVal: int) -> void:
 	position = pos
 	self.linear_velocity = direction * laser_speed
-	# print(self.linear_velocity)
 	set_element(e)
 	rand_val = randVal
 
 func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		queue_free()
+
 	if body.get_collision_layer_value(5):
 		if "rand_val" in body:
 			if rand_val != body.rand_val:
@@ -69,7 +71,7 @@ func _physics_process(delta: float) -> void:
 
 
 #Override
-func set_element(e: ElementalType, randVal:=-2) -> bool:
+func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	element = e
 	$Decal.texture_albedo.gradient.set_color(0, element.main_color)
 	return true

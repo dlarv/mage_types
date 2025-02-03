@@ -13,6 +13,9 @@ signal off(node: PuzzleBlock)
 		else:
 			stop()
 
+func _enter_tree() -> void:
+	super._enter_tree()
+
 
 func start(val: Variant=null) -> void: pass
 func stop(val: Variant=null) -> void: pass

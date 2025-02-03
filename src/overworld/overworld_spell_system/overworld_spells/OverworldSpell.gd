@@ -42,9 +42,6 @@ func _get_magiclay() -> void:
 	var clay = result["collider"]
 	if clay is MagiClay:
 		_magiclay_terrain = clay
-		print(clay.element.name)
-	else:
-		print(clay.name)
 
 func _find_mouse_position() -> void:
 	# if not Settings.use_mouse_targeting: return

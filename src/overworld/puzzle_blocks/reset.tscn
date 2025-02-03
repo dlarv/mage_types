@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://db77srkl7kagj"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Reset.gd" id="1_ditw8"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_j8q3r"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_fge2y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u56ta"]
+
+[node name="Reset" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51784, 0)
+script = ExtResource("1_ditw8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_fge2y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_u56ta")
+
+[node name="Grabbable" parent="." instance=ExtResource("2_j8q3r")]
+
+[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]

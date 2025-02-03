@@ -42,8 +42,9 @@ func _get_mesh() -> MeshInstance3D:
 	return $Mirror/MeshInstance3D
 
 # Override
-func set_element(e: ElementalType, randVal:=-2) -> bool:
-	if super.set_element(e, randVal):
-		$Mirror.set_element(e, randVal)
+func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
+	if super.set_element(e, randVal, force):
+		$Mirror.set_element(e, randVal, force)
+		$Mirror._original_element = e
 		return true
 	return false

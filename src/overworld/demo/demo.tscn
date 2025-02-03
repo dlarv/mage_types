@@ -60,7 +60,7 @@ visible = false
 [node name="Overworld" type="Node3D" parent="World"]
 
 [node name="Player" parent="World/Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.2438, 8.38894, 7.93063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.6959, 8.38894, 20.1639)
 run_speed = 40.0
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv47pvyrqg7y0"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/RotatableMirror.gd" id="1_f0x3o"]
+[ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="1_p2inl"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_23mvk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3cdpd"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6k8re"]
+height = 0.5
+radius = 1.0
+
+[node name="RotatableMirror" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_f0x3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_3cdpd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_6k8re")
+
+[node name="Mirror" parent="." instance=ExtResource("1_p2inl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242849, 0)
+
+[node name="Grabbable" parent="." instance=ExtResource("2_23mvk")]
+
+[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]

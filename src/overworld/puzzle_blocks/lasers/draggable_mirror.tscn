@@ -10,7 +10,7 @@ size = Vector3(2, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ael3"]
 size = Vector3(2, 1, 2)
 
-[node name="DraggableMirror" type="RigidBody3D" groups=["mirror"]]
+[node name="DraggableMirror" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 7
 axis_lock_angular_x = true
