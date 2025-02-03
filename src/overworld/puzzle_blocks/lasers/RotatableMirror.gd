@@ -22,3 +22,8 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 		$Mirror.set_element(e, randVal, force)
 		return true
 	return false
+
+# Override
+func set_stasis() -> void:
+	super.set_stasis()
+	$Mirror.in_stasis = in_stasis

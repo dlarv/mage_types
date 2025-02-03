@@ -96,10 +96,9 @@ func set_stasis() -> void:
 	_flicker_collider()
 
 func reset() -> void:
-	print("%s reverted to original element. Element(%s) --> Element(%s)." 
+	Logger.append_log(Logger.LogType.PUZZLE, "%s reverted to original element. Element(%s) --> Element(%s)." 
 			% [puzzle_name, element.name, _original_element.name])
 	in_stasis = false
-
 	set_element(_original_element, _rand_val, true)
 
 func bloom(val: bool, e: ElementalType) -> void:

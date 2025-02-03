@@ -48,3 +48,8 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 		$Mirror._original_element = e
 		return true
 	return false
+
+# Override
+func set_stasis() -> void:
+	super.set_stasis()
+	$Mirror.in_stasis = in_stasis

@@ -435,6 +435,10 @@ Entities:
 2. Rotate ray around player until MagiClay or PhysicsObject is found, or ray completes 360deg.
 3. If projectile collides with MagiClay, prevent effects until expiration.
 4. Elif projectile collides with PhysicsObject, prevent physics until expiration.
+>[!important] 
+> Stasis now works like a toggle. I.e. it doesn't expire after a certain amount of time, instead turning off if the player hits the object with a second stasis spell.
+>
+> The player can also only have 3 objects under stasis at a time. If they select a fourth, the first object they selected is released from stasis.
 #### Overworld Spell: Destroy
 1. Get element of MagiClay under player's feet.
 2. Shoot projectile in direction the player is facing.
