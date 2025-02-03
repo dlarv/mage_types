@@ -18,11 +18,16 @@ signal dialog_started(dialog_id, enemy_actor, vendor_actor)
 var _is_running := false
 ## Is the player holding a Grabbable object.
 var held_object: Node3D = null 
+var restricted_axis := Vector3.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
 var outside_forces := Vector3.ZERO
+
+var _god_mode := false
+var _prev_collision_layer := collision_layer
+var _prev_collision_mask := collision_mask
 
 func _ready() -> void:
 	team.insert(0, battle_actor)
@@ -34,9 +39,22 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
 	if event.is_action_pressed("player_run"):
 		_is_running = not _is_running
+	elif event.is_action_pressed("toggle_god_mode"):
+		_god_mode = not _god_mode
+		if _god_mode:
+			_prev_collision_layer = collision_layer
+			_prev_collision_mask = collision_mask
+			collision_layer = 0
+			collision_mask = 0
+		else:
+			collision_layer = _prev_collision_layer
+			collision_mask = _prev_collision_mask
 	
 
-func _physics_process(delta) -> void:
+func _physics_process(delta: float) -> void:
+	if _god_mode: 
+		_move_god_mode(delta)
+		return
 	if not in_control: 
 		velocity = Vector3.ZERO
 		return
@@ -52,7 +70,11 @@ func _physics_process(delta) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
+
 	if direction != Vector3.ZERO:
+		# Player can only move along one axis.
+		if restricted_axis != Vector3.ZERO:
+			vel = restricted_axis * direction.dot(restricted_axis) * speed
 		vel.x = direction.x * speed
 		vel.z = direction.z * speed
 		# Rotate model in direction of movement.
@@ -71,6 +93,19 @@ func _physics_process(delta) -> void:
 		anim_player.play("walk")
 	move_and_slide()
 
+func _move_god_mode(delta: float) -> void:
+	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
+	velocity = direction * walk_speed * 2
+
+	if Input.is_key_pressed(KEY_SPACE):
+		velocity.y += walk_speed
+	elif Input.is_key_pressed(KEY_SHIFT):
+		velocity.y -= walk_speed
+
+	move_and_slide()
+
+
 func start_battle(npc: Variant) -> void:
 	battle_started.emit(team, npc.enemy_actor)
 
@@ -80,9 +115,15 @@ func open_shop(npc: Variant) -> void:
 func start_dialog(npc: Variant) -> void:
 	dialog_started.emit(npc.story_actor.dialog_ids[npc.story_actor.current_id], npc.enemy_actor, npc.vendor_actor)
 
-func pickup_object(obj: Node3D, val: bool) -> void:
-	if val:
-		held_object = obj 
-		obj.reparent(self)
-	else:
+func pickup_object(obj: Node3D, val: bool, axis:=Vector3.ZERO) -> void:
+	if not val:
 		held_object = null
+		restricted_axis = Vector3.ZERO
+		return
+	held_object = obj 
+	obj.reparent(self)
+
+	if axis != Vector3.ZERO:
+		velocity = Vector3.ZERO
+		restricted_axis = axis
+
