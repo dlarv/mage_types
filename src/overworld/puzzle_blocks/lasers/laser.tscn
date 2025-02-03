@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://4aym0b1yryr0"]
+[gd_scene load_steps=7 format=3 uid="uid://4aym0b1yryr0"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Laser.gd" id="1_s4vi6"]
+[ext_resource type="PackedScene" uid="uid://clejre8fraaxc" path="res://src/overworld/puzzle_blocks/lasers/laser_disruption.tscn" id="2_udy2p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5e5he"]
+friction = 0.0
 bounce = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cdyfq"]
@@ -17,7 +19,7 @@ gradient = SubResource("Gradient_h3ok0")
 
 [node name="Laser" type="RigidBody3D"]
 collision_layer = 16
-collision_mask = 12
+collision_mask = 28
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_5e5he")
@@ -27,6 +29,8 @@ contact_monitor = true
 max_contacts_reported = 1000
 linear_damp_mode = 1
 script = ExtResource("1_s4vi6")
+Disruption = ExtResource("2_udy2p")
+is_transmutable = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_cdyfq")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=18 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="2_k2anp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://crkshju7vltr4" path="res://src/overworld/demo/subareas/lower_path.tscn" id="11_xdamf"]
 [ext_resource type="PackedScene" uid="uid://mcdeecdrywbc" path="res://src/overworld/doorway.tscn" id="12_8fng1"]
 [ext_resource type="PackedScene" uid="uid://cuu0bcxy1x8xp" path="res://src/overworld/demo/subareas/stasis_puzzles.tscn" id="13_tehf6"]
+[ext_resource type="PackedScene" uid="uid://brs3ov2whut2i" path="res://src/overworld/demo/subareas/catalyst_puzzles.tscn" id="14_1tf5l"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("5_6t7e1")
@@ -59,7 +60,7 @@ visible = false
 [node name="Overworld" type="Node3D" parent="World"]
 
 [node name="Player" parent="World/Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.174, 8.38894, 7.93063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.2438, 8.38894, 7.93063)
 run_speed = 40.0
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
@@ -72,22 +73,28 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Doorway" parent="World/Overworld/LowerBeach" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0757694, 4.82672, -8.30941)
+visible = false
 other_side = NodePath("../../LowerPath/Doorway")
 
 [node name="LowerPath" parent="World/Overworld" instance=ExtResource("11_xdamf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2998, 6.14591, 2.19641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68347, 4.11234, -15.8081)
 
 [node name="Doorway" parent="World/Overworld/LowerPath" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.62553, 0.338971, 5.81457)
+visible = false
 other_side = NodePath("../../LowerBeach/Doorway")
 
 [node name="Doorway2" parent="World/Overworld/LowerPath" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
 transform = Transform3D(11.3179, 0, 0, 0, 2, 0, 0, 0, 2, 4.86889, -0.182012, -9.55638)
+visible = false
 other_side = NodePath("../../StasisPuzzles/Doorway")
 
 [node name="StasisPuzzles" parent="World/Overworld" instance=ExtResource("13_tehf6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.513, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.7942, 0, 0)
 
 [node name="Doorway" parent="World/Overworld/StasisPuzzles" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0488205, 6.88221, 22.0887)
 other_side = NodePath("../../LowerPath/Doorway2")
+
+[node name="CatalystPuzzles" parent="World/Overworld" instance=ExtResource("14_1tf5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5804, 10.0015, 0)

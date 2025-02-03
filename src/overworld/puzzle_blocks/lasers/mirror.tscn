@@ -1,29 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://c035hnsf22h3r"]
+[gd_scene load_steps=7 format=3 uid="uid://c035hnsf22h3r"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Mirror.gd" id="1_dbg3p"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_enaet"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_vjj5k"]
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brcmq"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8g24h"]
 data = PackedVector3Array(0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3gi7"]
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7al7x"]
+size = Vector3(1, 2, 0.1)
+
 [node name="Mirror" type="StaticBody3D" groups=["mirror"]]
-collision_layer = 15
-collision_mask = 5
+collision_layer = 7
 script = ExtResource("1_dbg3p")
 is_transmutable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("PrismMesh_vjj5k")
+surface_material_override/0 = SubResource("StandardMaterial3D_brcmq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 shape = SubResource("ConcavePolygonShape3D_8g24h")
 
-[node name="Grabbable" parent="." instance=ExtResource("2_enaet")]
+[node name="Area3DX" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.477711, 0)
+collision_layer = 7
+collision_mask = 21
 
-[connection signal="grabbed" from="Grabbable" to="." method="_on_rotated"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
+shape = SubResource("BoxShape3D_m3gi7")
+
+[node name="Marker3DX" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1, 0)
+
+[node name="Area3DZ" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477711, 0.55)
+collision_layer = 7
+collision_mask = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
+shape = SubResource("BoxShape3D_7al7x")
+
+[node name="Marker3DZ" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.8)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="body_entered" from="Area3DX" to="." method="_on_area_3d_x_body_entered"]
+[connection signal="body_entered" from="Area3DZ" to="." method="_on_area_3d_z_body_entered"]

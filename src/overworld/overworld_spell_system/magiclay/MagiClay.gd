@@ -27,6 +27,8 @@ var element: ElementalType = ElementManager.Blank:
 
 var puzzle_name: String:
 	get:
+		if get_parent() == null:
+			return "%s" % name
 		return "%s.%s" % [get_parent().name, name]
 var _mesh: MeshInstance3D: get = _get_mesh
 var _material: StandardMaterial3D:

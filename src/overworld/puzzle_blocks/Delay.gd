@@ -38,5 +38,5 @@ func _on_lock_closed(block: PuzzleBlock) -> void:
 		_opened_locks[block] = false
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"Delay(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
-	off.emit()
+	off.emit(self)
 	_is_opened = false

@@ -15,7 +15,6 @@ func action_to_perform(body: Node3D, element: ElementalType) -> void:
 		var index := _stasis_queue.find(body)
 		if index != -1:
 			_stasis_queue.remove_at(index)
-			print(len(_stasis_queue))
 		return
 
 	if len(_stasis_queue) == max_stasis_objects:

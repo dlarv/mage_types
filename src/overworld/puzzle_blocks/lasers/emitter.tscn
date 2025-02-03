@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2c6cvf2k0bf4"]
+[gd_scene load_steps=6 format=3 uid="uid://b2c6cvf2k0bf4"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_1e8qi"]
 [ext_resource type="PackedScene" uid="uid://4aym0b1yryr0" path="res://src/overworld/puzzle_blocks/lasers/laser.tscn" id="2_rp82n"]
@@ -14,25 +14,9 @@ is_hemisphere = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gj4p5"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndnw5"]
-emission_shape = 3
-emission_box_extents = Vector3(0.1, 0.1, 0.1)
-angle_min = 1.07288e-05
-angle_max = 1.07288e-05
-direction = Vector3(0, 1, 0)
-spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = -2.23517e-06
-
-[sub_resource type="BoxMesh" id="BoxMesh_qdq5r"]
-size = Vector3(0.1, 0.1, 0.1)
-
 [node name="Emitter" type="StaticBody3D"]
 collision_layer = 3
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_1e8qi")
 Laser = ExtResource("2_rp82n")
 is_transmutable = true
@@ -44,15 +28,11 @@ shape = SubResource("SphereShape3D_nfnt1")
 mesh = SubResource("SphereMesh_s6ud6")
 surface_material_override/0 = SubResource("StandardMaterial3D_gj4p5")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-visible = false
-emitting = false
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_ndnw5")
-draw_pass_1 = SubResource("BoxMesh_qdq5r")
-
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545541, 0)

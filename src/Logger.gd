@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 enum LogType { BATTLE, PUZZLE }
@@ -26,6 +27,7 @@ func save_log(type: LogType) -> void:
 	file.store_string(output)
 
 func append_log(type: LogType, msg: Variant) -> void:
+	if Engine.is_editor_hint(): return
 	var logs: Array
 	match type:
 		LogType.BATTLE:

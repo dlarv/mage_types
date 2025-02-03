@@ -67,7 +67,8 @@ Companion walks player thru battle UI, transmutations, and affinity.
 - Destroy obstacle:
 	- There will be a large obstacle the companion has the player use their newfound Stasis ability on. This same obstacle will break when Destroy is used on it, revealing a hidden area.
 ### Miniboss \#1
-- 
+- Simple boss.
+- Player will try to hit it with their anti-magenta attack.
 ## Stasis Puzzles
 - This room will be split into 2(3?) parts.
 - Puzzle (\#0): The upper section of the room will be blocked by a gate. To pass it, the player will have to place colored rocks onto matching pressure plates. 
@@ -97,7 +98,16 @@ Place rock onto pressure plate.
 ## Cave Mid
 - Miniboss \#2
 - Catalyst spell.
+### Miniboss \#2
+- This boss will use the stasis status effect to hinder the player from transmuting it.
 ## Cave Exit (Catalyst Puzzles)
+- Consists of 3 puzzles. 
+	- The first two will be optional. They're mostly to teach the player how the laser mirrors work
+	- The third puzzle will unlock the way forward (to [[#Lower Approach]]).
+	- There will be a small gap in the separator between the second and third puzzles. The beam from the second can be used to solve the third.
+		- If this is done it will open a door to a section of the [[#Hidden Area 3 Deep Caves|Deep Caves]].
+
+This will be a laser puzzle, where the player must matchup different beams.
 
 ## Lower Approach
 ## Upper Approach (Final Puzzle)
@@ -117,6 +127,7 @@ Areas off of the main path, which may or may not be hidden behind an obstacle.
 - destruction_room --> sandbox
 ## Destruction Room (Destroy Puzzle)
 - Find Destroy spell.
+- Complete time trial.
 ## Sandbox
 ## Hidden Area \#1: Western Tide Pools
 ## Hidden Area \#2: Eastern Hills

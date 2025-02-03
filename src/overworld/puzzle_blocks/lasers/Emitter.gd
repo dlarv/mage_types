@@ -11,21 +11,25 @@ var _hash := -1
 # or else there will be a recursive bomb.
 var _is_on: bool
 
+func _ready() -> void:
+	if Engine.is_editor_hint(): return
+	super._ready()
+
+	if is_on:
+		start()
+
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	if _is_on and $Timer.is_stopped() and not in_stasis:
 		var laser := Laser.instantiate()
-		laser.linear_velocity = transform.basis.y * laser_speed
-		laser.set_element(element)
-		laser.lifetime = laser_lifetime
-		laser.rand_val = _hash
+		laser.setup($Marker3D.position, transform.basis.y, element, _hash)
 		add_child(laser)
 		$Timer.start()
 
 func start(val: Variant=null) -> void: 
 	super.start(val)
 	_is_on = true
-	_hash = Time.get_ticks_msec()
+	_hash = Time.get_ticks_usec()
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element.name, _hash])
 

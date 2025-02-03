@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8862iat02o7"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/DraggableMirror.gd" id="1_lav1w"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_t5nh5"]
+[ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_b1r0o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4tnhy"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ael3"]
+size = Vector3(2, 1, 2)
+
+[node name="DraggableMirror" type="RigidBody3D" groups=["mirror"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 7
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+script = ExtResource("1_lav1w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4tnhy")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4ael3")
+
+[node name="Grabbable" parent="." instance=ExtResource("2_t5nh5")]
+
+[node name="Mirror" parent="." instance=ExtResource("3_b1r0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509829, 0)
+
+[connection signal="dropped" from="Grabbable" to="." method="_on_grabbable_dropped"]
+[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]

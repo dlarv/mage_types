@@ -9,8 +9,14 @@ var Projectile: PackedScene
 var is_active := false
 var keycode: String
 
+var _terrain_exclusions: Array
+
 var _magiclay_terrain: MagiClay
 var _current_mouse_pos: Vector3
+
+func _ready() -> void:
+	_terrain_exclusions = get_tree().get_nodes_in_group("player")
+
 
 func _input(event: InputEvent) -> void:
 	if not is_active: return
@@ -26,7 +32,9 @@ func _physics_process(delta: float) -> void:
 func _get_magiclay() -> void:
 	_magiclay_terrain = null
 	var space := get_world_3d().direct_space_state
-	var query := PhysicsRayQueryParameters3D.create(global_position, global_position - Vector3(0, 10, 0), 4)
+	var start := global_position
+	start.y += 2
+	var query := PhysicsRayQueryParameters3D.create(start, global_position - Vector3(0, 10, 0), 4)
 	query.collide_with_areas = true
 	var result := space.intersect_ray(query)
 	if result.get("collider") == null: return
@@ -34,6 +42,9 @@ func _get_magiclay() -> void:
 	var clay = result["collider"]
 	if clay is MagiClay:
 		_magiclay_terrain = clay
+		print(clay.element.name)
+	else:
+		print(clay.name)
 
 func _find_mouse_position() -> void:
 	# if not Settings.use_mouse_targeting: return

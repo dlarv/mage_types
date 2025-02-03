@@ -61,7 +61,6 @@ func test_transmutations()-> void:
 
 			total = total and res == actualResults[i][j]
 
-	print("Final Transmutations Test Result: " + str(total))
 
 func test_resistances() -> void:
 	var g := resistance_mod
@@ -94,7 +93,6 @@ func test_resistances() -> void:
 			if res != actualResults[i][j]:
 				push_warning("%s + %s != %f, == %f" % [headers[i].name, headers[j].name, actualResults[i][j], res ])
 			total = total and res == actualResults[i][j]
-	print("Final Resistances Test Result: " + str(total))
 
 
 func test_side_effects() -> void:
@@ -135,7 +133,6 @@ func test_side_effects() -> void:
 						res.name if res != null else "null"
 						])
 			total = total and res == actualResults[i][j]
-	print("Final Side Effects Test Result: " + str(total))
 
 
 func _enter_tree() -> void:
