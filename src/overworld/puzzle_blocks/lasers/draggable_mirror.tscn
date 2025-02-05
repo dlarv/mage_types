@@ -30,6 +30,8 @@ shape = SubResource("BoxShape3D_4ael3")
 
 [node name="Mirror" parent="." instance=ExtResource("3_b1r0o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509829, 0)
+impact_delay = 1.0
+emit_delay = 0.1
 
 [connection signal="dropped" from="Grabbable" to="." method="_on_grabbable_dropped"]
 [connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]

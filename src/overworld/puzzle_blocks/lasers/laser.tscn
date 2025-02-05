@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4aym0b1yryr0"]
+[gd_scene load_steps=8 format=3 uid="uid://4aym0b1yryr0"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Laser.gd" id="1_s4vi6"]
 [ext_resource type="PackedScene" uid="uid://clejre8fraaxc" path="res://src/overworld/puzzle_blocks/lasers/laser_disruption.tscn" id="2_udy2p"]
@@ -16,6 +16,10 @@ colors = PackedColorArray(0, 0, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_78ow7"]
 gradient = SubResource("Gradient_h3ok0")
+
+[sub_resource type="SphereMesh" id="SphereMesh_prqn6"]
+radius = 0.1
+height = 0.2
 
 [node name="Laser" type="RigidBody3D"]
 collision_layer = 16
@@ -36,7 +40,12 @@ is_transmutable = true
 shape = SubResource("SphereShape3D_cdyfq")
 
 [node name="Decal" type="Decal" parent="."]
-size = Vector3(2, 2, 0.2)
+visible = false
+size = Vector3(10, 10, 0.2)
 texture_albedo = SubResource("GradientTexture1D_78ow7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_prqn6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

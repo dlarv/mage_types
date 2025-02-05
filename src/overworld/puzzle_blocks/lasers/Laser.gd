@@ -7,6 +7,7 @@ extends MagiClay
 var rand_val: int
 
 func _ready() -> void:
+	super._ready()
 	if Engine.is_editor_hint(): return
 
 	var tex = $Decal.texture_albedo.duplicate()
@@ -24,43 +25,20 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		queue_free()
 
-	if body.get_collision_layer_value(5):
+	elif body.get_collision_layer_value(5):
+		# If body has rand_val attribute, it is another Laser projectile. 
 		if "rand_val" in body:
 			if rand_val != body.rand_val:
 				var obj := Disruption.instantiate()
 				obj.position = position
 				get_parent().add_child(obj)
-		# Collided with a mirror.
-		else:
-			queue_free()
+		# Otherwise, collided with a mirror.
+		queue_free()
 
-	if not body.get_collision_layer_value(4): 
+	elif not body.get_collision_layer_value(4): 
 		if "element" in body:
 			body.set_element(ElementManager.get_matchup(body.element, element), rand_val)
 		queue_free()
-		return
-	if not body is MagiClay: return
-	#
-	# if body.is_in_group("mirror") and not element.is_blank() and not body.in_stasis:
-	# 	var e := ElementManager.get_matchup(element, body.element)
-	# 	body.create_log(self, e)
-	# 	if e != null:
-	# 		set_element(e)
-	#
-	#
-	# lifetime = 5.0
-	#
-	# var x: float = abs(self.linear_velocity.x)
-	# var z: float = abs(self.linear_velocity.z)
-	#
-	# self.angular_velocity = Vector3.ZERO
-	# if x > z:
-	# 	self.linear_velocity.z = 0
-	# 	rotation_degrees = Vector3(0, 0, 0)
-	# elif z > x:
-	# 	self.linear_velocity.x = 0
-	# 	rotation_degrees = Vector3(90, 0, 0)
-	# self.linear_velocity.y = 0
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
@@ -73,9 +51,13 @@ func _physics_process(delta: float) -> void:
 #Override
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	element = e
+	var mat = StandardMaterial3D.new()
+	mat.albedo_color = e.main_color
+	# $MeshInstance3D.set_surface_override_material(0, mat)
 	$Decal.texture_albedo.gradient.set_color(0, element.main_color)
 	return true
 
 #Override
 func _get_mesh() -> MeshInstance3D:
-	return null
+	# return null
+	return $MeshInstance3D

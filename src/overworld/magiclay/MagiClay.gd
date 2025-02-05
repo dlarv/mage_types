@@ -58,8 +58,6 @@ func _try_set_color() -> void:
 	_material.albedo_color = element.main_color
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
-	if puzzle_name == "CatalystSubPuzzle_East.DraggableMirror1":
-		pass
 	if e == null or e.is_blank(): return false
 	if in_stasis and not force:
 		Logger.append_log(Logger.LogType.PUZZLE, 

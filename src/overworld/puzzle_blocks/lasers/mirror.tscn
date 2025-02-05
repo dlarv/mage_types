@@ -21,6 +21,8 @@ size = Vector3(1, 2, 0.1)
 [node name="Mirror" type="StaticBody3D"]
 collision_layer = 7
 script = ExtResource("1_dbg3p")
+impact_delay = null
+emit_delay = null
 is_transmutable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

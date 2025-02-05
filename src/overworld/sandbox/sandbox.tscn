@@ -273,18 +273,25 @@ _element = "blue"
 
 [node name="Emitter" parent="World/Overworld" instance=ExtResource("29_o5bgj")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 15.7954, 0.796529, -6.4192)
+delay = 0.1
 _element = "blue"
 
 [node name="Mirror" parent="World/Overworld" instance=ExtResource("30_oodx3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.35294, 0, -6.44003)
+impact_delay = 1.0
+emit_delay = 0.1
 
 [node name="Mirror2" parent="World/Overworld" instance=ExtResource("30_oodx3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.35294, 0, -10.4825)
+impact_delay = 1.0
+emit_delay = 0.1
 _element = "green"
 is_transmutable = false
 
 [node name="Mirror3" parent="World/Overworld" instance=ExtResource("30_oodx3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.15548, 3.93561, 7.79167)
+impact_delay = 1.0
+emit_delay = 0.1
 _element = "green"
 is_transmutable = false
 

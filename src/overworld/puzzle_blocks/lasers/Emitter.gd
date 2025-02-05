@@ -2,8 +2,8 @@
 extends PuzzleBlock
 
 @export var Laser: PackedScene
-@export var laser_speed := 10.0
-@export var laser_lifetime := 8.0
+@export var delay := 0.1
+
 
 var _hash := -1
 
@@ -14,14 +14,17 @@ var _is_on: bool
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	super._ready()
+	$Timer.wait_time = delay
 
 	if is_on:
 		start()
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
+
 	if _is_on and $Timer.is_stopped() and not in_stasis:
 		var laser := Laser.instantiate()
+		print(element.name)
 		laser.setup($Marker3D.position, transform.basis.y, element, _hash)
 		add_child(laser)
 		$Timer.start()

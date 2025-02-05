@@ -25,6 +25,8 @@ shape = SubResource("CylinderShape3D_6k8re")
 
 [node name="Mirror" parent="." instance=ExtResource("1_p2inl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242849, 0)
+impact_delay = 1.0
+emit_delay = 0.1
 
 [node name="Grabbable" parent="." instance=ExtResource("2_23mvk")]
 
