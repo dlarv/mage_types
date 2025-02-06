@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c035hnsf22h3r"]
+[gd_scene load_steps=10 format=3 uid="uid://c035hnsf22h3r"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Mirror.gd" id="1_dbg3p"]
+[ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_pewdx"]
+[ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_u2i3p"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_vjj5k"]
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c48ue"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnb02"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8g24h"]
@@ -18,48 +20,52 @@ size = Vector3(0.1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7al7x"]
 size = Vector3(1, 2, 0.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxymf"]
+size = Vector3(0.15, 2.06174, 0.15)
+
 [node name="Mirror" type="StaticBody3D"]
-collision_layer = 7
+collision_layer = 23
 script = ExtResource("1_dbg3p")
-impact_delay = null
-emit_delay = null
 is_transmutable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("PrismMesh_vjj5k")
-surface_material_override/0 = SubResource("StandardMaterial3D_c48ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_tnb02")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 shape = SubResource("ConcavePolygonShape3D_8g24h")
 
-[node name="Area3DX" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.477711, 0)
-collision_layer = 7
-collision_mask = 21
+[node name="SubEmitterX" parent="." instance=ExtResource("3_u2i3p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.919238, 1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DX"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
+[node name="SubReceiverX" parent="." instance=ExtResource("2_pewdx")]
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.00771, 0)
 shape = SubResource("BoxShape3D_m3gi7")
 
-[node name="Marker3DX" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1, 0)
+[node name="SubEmitterZ" parent="." instance=ExtResource("3_u2i3p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.00729)
 
-[node name="Area3DZ" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477711, 0.55)
-collision_layer = 7
-collision_mask = 17
+[node name="SubReceiverZ" parent="." instance=ExtResource("2_pewdx")]
+collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DZ"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00771, 0.55)
 shape = SubResource("BoxShape3D_7al7x")
 
-[node name="Marker3DZ" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.8)
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 0
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55056, 0.980872, 0.55056)
+shape = SubResource("BoxShape3D_cxymf")
 
-[connection signal="body_entered" from="Area3DX" to="." method="_on_area_3d_x_body_entered"]
-[connection signal="body_entered" from="Area3DZ" to="." method="_on_area_3d_z_body_entered"]
+[connection signal="laser_dropped" from="SubReceiverX" to="." method="_on_laser_dropped"]
+[connection signal="laser_received" from="SubReceiverX" to="." method="_on_sub_receiver_x_laser_received"]
+[connection signal="laser_dropped" from="SubReceiverZ" to="." method="_on_laser_dropped"]
+[connection signal="laser_received" from="SubReceiverZ" to="." method="_on_sub_receiver_z_laser_received"]

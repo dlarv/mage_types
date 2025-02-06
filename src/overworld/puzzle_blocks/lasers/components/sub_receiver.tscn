@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf5nklwcjoux1"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/SubReceiver.gd" id="1_qsq3v"]
+
+[node name="SubReceiver" type="Area3D"]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_qsq3v")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

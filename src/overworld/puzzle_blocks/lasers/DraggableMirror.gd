@@ -46,6 +46,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if super.set_element(e, randVal, force):
 		$Mirror.set_element(e, randVal, force)
 		$Mirror._original_element = e
+		$Mirror._flicker_collider()
 		return true
 	return false
 
@@ -53,3 +54,4 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 func set_stasis() -> void:
 	super.set_stasis()
 	$Mirror.in_stasis = in_stasis
+	$Mirror._flicker_collider()

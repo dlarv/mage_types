@@ -1,7 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2c6cvf2k0bf4"]
+[gd_scene load_steps=8 format=3 uid="uid://b2c6cvf2k0bf4"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_1e8qi"]
-[ext_resource type="PackedScene" uid="uid://4aym0b1yryr0" path="res://src/overworld/puzzle_blocks/lasers/laser.tscn" id="2_rp82n"]
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/Laser.gd" id="2_ev44r"]
+[ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_l2c7w"]
+
+[sub_resource type="Resource" id="Resource_fg03s"]
+script = ExtResource("2_ev44r")
+_element = "blank"
+rand_val = 0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nfnt1"]
 
@@ -11,29 +17,22 @@ radial_segments = 8
 rings = 6
 is_hemisphere = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gj4p5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2x10"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="Emitter" type="StaticBody3D"]
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_1e8qi")
-Laser = ExtResource("2_rp82n")
-delay = null
+laser = SubResource("Resource_fg03s")
 is_transmutable = true
+
+[node name="SubEmitter" parent="." instance=ExtResource("3_l2c7w")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_nfnt1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_s6ud6")
-surface_material_override/0 = SubResource("StandardMaterial3D_gj4p5")
-
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.1
-one_shot = true
-autostart = true
-
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545541, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_f2x10")

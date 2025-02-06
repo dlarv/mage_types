@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgskhp8lbdjsd"]
+[gd_scene load_steps=9 format=3 uid="uid://cgskhp8lbdjsd"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/LaserReceiver.gd" id="1_hbigv"]
+[ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_widym"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kwb7f"]
 size = Vector3(1, 1, 0.5)
@@ -8,15 +9,20 @@ size = Vector3(1, 1, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_tm5pc"]
 size = Vector3(1, 1, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qheb4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3ss7"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_68ba7"]
 size = Vector3(1.5, 1.5, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8a1x"]
+albedo_color = Color(0.745098, 0.745098, 0.745098, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_teih8"]
+size = Vector3(1, 1, 0.504761)
+
 [node name="LaserReceiver" type="Area3D"]
-collision_layer = 9
-collision_mask = 29
+collision_mask = 5
 script = ExtResource("1_hbigv")
 delay = 5.0
 
@@ -25,10 +31,19 @@ shape = SubResource("BoxShape3D_kwb7f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_tm5pc")
-surface_material_override/0 = SubResource("StandardMaterial3D_qheb4")
+surface_material_override/0 = SubResource("StandardMaterial3D_n3ss7")
 
 [node name="Indicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.183085)
 mesh = SubResource("BoxMesh_68ba7")
+surface_material_override/0 = SubResource("StandardMaterial3D_u8a1x")
+
+[node name="SubReceiver" parent="." instance=ExtResource("2_widym")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0043335)
+shape = SubResource("BoxShape3D_teih8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="laser_dropped" from="SubReceiver" to="." method="_on_sub_receiver_laser_dropped"]
+[connection signal="laser_received" from="SubReceiver" to="." method="_on_sub_receiver_laser_received"]
