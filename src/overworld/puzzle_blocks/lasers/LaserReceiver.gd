@@ -9,7 +9,6 @@ extends PuzzleBlock
 var _valid_mat: BaseMaterial3D
 var _invalid_mat: BaseMaterial3D
 var _off_mat: BaseMaterial3D
-var _delay := 0.0
 var _prev_val := -2
 
 func _ready() -> void:
@@ -29,11 +28,13 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 	if element.is_blank() or laser.element == element:
 		_try_emit_on()
 		$Indicator.set_surface_override_material(0, _valid_mat)
+		on.emit(self)
 		msg = "LaserReceiver(%s) hit by valid laser." % [puzzle_name]
 	else:
 		$Indicator.set_surface_override_material(0, _invalid_mat)
 		msg = "LaserReceiver(%s) hit by invalid laser. Laser was Element(%s), but requires Element(%s)." \
 				% [puzzle_name, laser.element.name, element.name]
+		off.emit(self)
 
 	if _prev_val != laser.rand_val:
 		Logger.append_log(Logger.LogType.PUZZLE, msg)
@@ -43,4 +44,5 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 
 func _on_sub_receiver_laser_dropped() -> void:
 	$Indicator.set_surface_override_material(0, _off_mat)
+	off.emit(self)
 

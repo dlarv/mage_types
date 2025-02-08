@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/Laser.gd" id="2_ev44r"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_l2c7w"]
 
-[sub_resource type="Resource" id="Resource_fg03s"]
+[sub_resource type="Resource" id="Resource_yqon3"]
 script = ExtResource("2_ev44r")
 _element = "blank"
 rand_val = 0
@@ -24,7 +24,7 @@ albedo_color = Color(0.5, 0.5, 0.5, 1)
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_1e8qi")
-laser = SubResource("Resource_fg03s")
+laser = SubResource("Resource_yqon3")
 is_transmutable = true
 
 [node name="SubEmitter" parent="." instance=ExtResource("3_l2c7w")]

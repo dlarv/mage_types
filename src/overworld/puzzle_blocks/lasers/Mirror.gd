@@ -58,14 +58,10 @@ func _on_laser_dropped() -> void:
 
 # Override
 func _flicker_collider() -> void:
-	# Use case example:
-	# 1. Object is Blue and is sitting on a Purple pressure plate.
-	# 2. Object is transmuted into Purple.
-	# 3. Collider is flickered, which re-triggers pressure plate.
-	if not _active_receiver: return
-	var val = _active_receiver.collision_layer
-	_active_receiver.collision_layer = 1
-	_active_emitter.stop()
+	block(true)
 	await get_tree().create_timer(0.01).timeout
-	_active_receiver.collision_layer = val
-	_active_emitter.start()
+	block(false)
+
+func block(val: bool) -> void:
+	$Blocker.set_collision_layer_value(5, val)
+
