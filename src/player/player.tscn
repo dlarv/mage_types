@@ -18,7 +18,7 @@ battle_actor = ExtResource("2_2jxe0")
 player_menu = NodePath("CanvasLayer/PlayerMenu")
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
-run_speed = 60.0
+run_speed = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
