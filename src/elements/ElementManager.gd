@@ -274,7 +274,7 @@ func get_index_from_name(name: String) -> int:
 	return -1
 
 func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalType:
-	if(element1.name == "Blank" || element2.name == "Blank"): return null
+	if not element1 or not element2 or element1.name == "Blank" || element2.name == "Blank": return null
 
 	var node = matchups[element1.name]
 	return node.get_result(element2)
