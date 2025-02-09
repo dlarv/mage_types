@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://brs3ov2whut2i"]
+[gd_scene load_steps=19 format=3 uid="uid://brs3ov2whut2i"]
 
-[ext_resource type="PackedScene" uid="uid://bxukx3jny04bt" path="res://assets/demo/catalyst_puzzles.fbx" id="1_5vwqo"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_6xcrn"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_mwdp0"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_o81tf"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="3_30a4y"]
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/Laser.gd" id="5_cr6h4"]
@@ -12,17 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_pxaef"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xiadh"]
-size = Vector3(23.79, 11.6768, 45.8054)
+size = Vector3(27, 6, 45)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ttxb6"]
-data = PackedVector3Array(-0.0036, -0.0244, 0.0643, -0.0146, -0.0244, 0.0643, -0.0146, -0.0244, -0.0158, -0.0146, -0.0244, -0.0158, -0.0036, -0.0244, -0.0158, -0.0036, -0.0244, 0.0643, 0.0153, -0.0244, 0.0643, 0.004, -0.0244, 0.0643, 0.004, -0.0244, -0.0158, 0.004, -0.0244, -0.0158, 0.0153, -0.0244, -0.0158, 0.0153, -0.0244, 0.0643, -0.0146, 0.0285, 0.0643, -0.0036, 0.0285, 0.0643, -0.0036, 0.0285, -0.0158, -0.0036, 0.0285, -0.0158, -0.0146, 0.0285, -0.0158, -0.0146, 0.0285, 0.0643, 0.004, 0.03, 0.0643, -0.0036, 0.03, 0.0643, -0.0036, 0.0285, 0.0643, -0.0036, 0.0285, 0.0643, 0.004, 0.0285, 0.0643, 0.004, 0.03, 0.0643, -0.0036, -0.027, -0.0158, -0.0036, -0.027, 0.0643, -0.0036, -0.0244, 0.0643, -0.0036, -0.0244, 0.0643, -0.0036, -0.0244, -0.0158, -0.0036, -0.027, -0.0158, -0.0146, -0.0244, 0.0643, -0.0146, -0.0098, 0.0643, -0.0146, -0.0098, -0.0158, -0.0146, -0.0098, -0.0158, -0.0146, -0.0244, -0.0158, -0.0146, -0.0244, 0.0643, 0.0153, 0.0285, 0.0643, 0.0153, 0.0244, 0.0643, 0.0153, 0.0244, -0.0158, 0.0153, 0.0244, -0.0158, 0.0153, 0.0285, -0.0158, 0.0153, 0.0285, 0.0643, 0.004, 0.0285, 0.0643, 0.0153, 0.0285, 0.0643, 0.0153, 0.0285, -0.0158, 0.0153, 0.0285, -0.0158, 0.004, 0.0285, -0.0158, 0.004, 0.0285, 0.0643, 0.004, 0.0285, -0.0158, 0.004, 0.0244, -0.0158, -0.0036, 0.0244, -0.0158, -0.0036, 0.0244, -0.0158, -0.0036, 0.0285, -0.0158, 0.004, 0.0285, -0.0158, -0.0036, 0.0285, -0.0158, -0.0036, 0.0244, -0.0158, -0.0146, 0.0244, -0.0158, -0.0146, 0.0244, -0.0158, -0.0146, 0.0285, -0.0158, -0.0036, 0.0285, -0.0158, 0.0153, 0.0285, -0.0158, 0.0153, 0.0244, -0.0158, 0.004, 0.0244, -0.0158, 0.004, 0.0244, -0.0158, 0.004, 0.0285, -0.0158, 0.0153, 0.0285, -0.0158, 0.0153, 0.0177, -0.0158, 0.0153, -0.0082, -0.0158, 0.004, -0.0082, -0.0158, 0.004, -0.0082, -0.0158, 0.004, 0.0177, -0.0158, 0.0153, 0.0177, -0.0158, -0.0036, 0.03, 0.0643, -0.0036, 0.03, -0.0158, -0.0036, 0.0285, -0.0158, -0.0036, 0.0285, -0.0158, -0.0036, 0.0285, 0.0643, -0.0036, 0.03, 0.0643, 0.004, 0.03, -0.0158, 0.004, 0.03, 0.0643, 0.004, 0.0285, 0.0643, 0.004, 0.0285, 0.0643, 0.004, 0.0285, -0.0158, 0.004, 0.03, -0.0158, -0.0036, 0.03, -0.0158, 0.004, 0.03, -0.0158, 0.004, 0.0285, -0.0158, 0.004, 0.0285, -0.0158, -0.0036, 0.0285, -0.0158, -0.0036, 0.03, -0.0158, 0.004, -0.027, 0.0643, 0.004, -0.027, -0.0158, 0.004, -0.0244, -0.0158, 0.004, -0.0244, -0.0158, 0.004, -0.0244, 0.0643, 0.004, -0.027, 0.0643, -0.0036, -0.027, 0.0643, 0.004, -0.027, 0.0643, 0.004, -0.0244, 0.0643, 0.004, -0.0244, 0.0643, -0.0036, -0.0244, 0.0643, -0.0036, -0.027, 0.0643, 0.004, -0.027, -0.0158, -0.0036, -0.027, -0.0158, -0.0036, -0.0244, -0.0158, -0.0036, -0.0244, -0.0158, 0.004, -0.0244, -0.0158, 0.004, -0.027, -0.0158, 0.0153, 0.0244, -0.0158, 0.0153, 0.0177, -0.0158, 0.004, 0.0177, -0.0158, 0.004, 0.0177, -0.0158, 0.004, 0.0244, -0.0158, 0.0153, 0.0244, -0.0158, -0.0036, 0.0177, -0.0158, -0.0036, -0.0082, -0.0158, -0.0146, -0.0082, -0.0158, -0.0146, -0.0082, -0.0158, -0.0146, 0.0177, -0.0158, -0.0036, 0.0177, -0.0158, -0.0036, 0.0244, -0.0158, -0.0036, 0.0177, -0.0158, -0.0146, 0.0177, -0.0158, -0.0146, 0.0177, -0.0158, -0.0146, 0.0244, -0.0158, -0.0036, 0.0244, -0.0158, 0.004, 0.0177, -0.0158, 0.004, -0.0082, -0.0158, -0.0036, -0.0082, -0.0158, -0.0036, -0.0082, -0.0158, -0.0036, 0.0177, -0.0158, 0.004, 0.0177, -0.0158, 0.004, 0.0244, -0.0158, 0.004, 0.0177, -0.0158, -0.0036, 0.0177, -0.0158, -0.0036, 0.0177, -0.0158, -0.0036, 0.0244, -0.0158, 0.004, 0.0244, -0.0158, 0.0153, 0.0177, 0.0643, 0.0153, -0.0082, 0.0643, 0.0153, -0.0082, -0.0158, 0.0153, -0.0082, -0.0158, 0.0153, 0.0177, -0.0158, 0.0153, 0.0177, 0.0643, 0.0153, 0.0244, 0.0643, 0.0153, 0.0177, 0.0643, 0.0153, 0.0177, -0.0158, 0.0153, 0.0177, -0.0158, 0.0153, 0.0244, -0.0158, 0.0153, 0.0244, 0.0643, -0.0146, 0.0244, 0.0643, -0.0146, 0.0285, 0.0643, -0.0146, 0.0285, -0.0158, -0.0146, 0.0285, -0.0158, -0.0146, 0.0244, -0.0158, -0.0146, 0.0244, 0.0643, -0.0146, 0.0177, 0.0643, -0.0146, 0.0244, 0.0643, -0.0146, 0.0244, -0.0158, -0.0146, 0.0244, -0.0158, -0.0146, 0.0177, -0.0158, -0.0146, 0.0177, 0.0643, 0.0153, -0.0098, 0.0643, 0.0153, -0.0244, 0.0643, 0.0153, -0.0244, -0.0158, 0.0153, -0.0244, -0.0158, 0.0153, -0.0098, -0.0158, 0.0153, -0.0098, 0.0643, 0.004, -0.0098, -0.0158, 0.004, -0.0244, -0.0158, -0.0036, -0.0244, -0.0158, -0.0036, -0.0244, -0.0158, -0.0036, -0.0098, -0.0158, 0.004, -0.0098, -0.0158, -0.0036, -0.0098, -0.0158, -0.0036, -0.0244, -0.0158, -0.0146, -0.0244, -0.0158, -0.0146, -0.0244, -0.0158, -0.0146, -0.0098, -0.0158, -0.0036, -0.0098, -0.0158, 0.0153, -0.0098, -0.0158, 0.0153, -0.0244, -0.0158, 0.004, -0.0244, -0.0158, 0.004, -0.0244, -0.0158, 0.004, -0.0098, -0.0158, 0.0153, -0.0098, -0.0158, -0.0146, -0.0098, 0.0643, -0.0146, -0.0082, 0.0643, -0.0146, -0.0082, -0.0158, -0.0146, -0.0082, -0.0158, -0.0146, -0.0098, -0.0158, -0.0146, -0.0098, 0.0643, -0.0146, -0.0082, 0.0643, -0.0146, 0.0177, 0.0643, -0.0146, 0.0177, -0.0158, -0.0146, 0.0177, -0.0158, -0.0146, -0.0082, -0.0158, -0.0146, -0.0082, 0.0643, 0.0153, -0.0082, 0.0643, 0.0153, -0.0098, 0.0643, 0.0153, -0.0098, -0.0158, 0.0153, -0.0098, -0.0158, 0.0153, -0.0082, -0.0158, 0.0153, -0.0082, 0.0643, 0.004, -0.0082, -0.0158, 0.004, -0.0098, -0.0158, -0.0036, -0.0098, -0.0158, -0.0036, -0.0098, -0.0158, -0.0036, -0.0082, -0.0158, 0.004, -0.0082, -0.0158, -0.0146, -0.0082, 0.0402, -0.0146, -0.0082, -0.0158, -0.0036, -0.0082, -0.0158, -0.0036, -0.0082, -0.0158, -0.0036, -0.0082, 0.0402, -0.0146, -0.0082, 0.0402, -0.0036, -0.0082, 0.0402, -0.0036, -0.0082, -0.0158, -0.0036, -0.0098, -0.0158, -0.0036, -0.0098, -0.0158, -0.0036, -0.0098, 0.0402, -0.0036, -0.0082, 0.0402, -0.0036, -0.0082, 0.0402, -0.0036, -0.0098, 0.0402, -0.0146, -0.0098, 0.0402, -0.0146, -0.0098, 0.0402, -0.0146, -0.0082, 0.0402, -0.0036, -0.0082, 0.0402, 0.0153, -0.0082, 0.008, 0.0153, -0.0098, 0.008, 0.004, -0.0098, 0.008, 0.004, -0.0098, 0.008, 0.004, -0.0082, 0.008, 0.0153, -0.0082, 0.008, 0.0153, -0.0098, 0.008, 0.0153, -0.0098, -0.0158, 0.004, -0.0098, -0.0158, 0.004, -0.0098, -0.0158, 0.004, -0.0098, 0.008, 0.0153, -0.0098, 0.008, 0.0153, -0.0082, 0.008, 0.0153, -0.0082, -0.0158, 0.0153, -0.0098, -0.0158, 0.0153, -0.0098, -0.0158, 0.0153, -0.0098, 0.008, 0.0153, -0.0082, 0.008, -0.0146, -0.0098, 0.0402, -0.0146, -0.0098, -0.0158, -0.0146, -0.0082, -0.0158, -0.0146, -0.0082, -0.0158, -0.0146, -0.0082, 0.0402, -0.0146, -0.0098, 0.0402, 0.004, -0.0098, 0.008, 0.004, -0.0098, -0.0158, 0.004, -0.0082, -0.0158, 0.004, -0.0082, -0.0158, 0.004, -0.0082, 0.008, 0.004, -0.0098, 0.008, 0.004, -0.0082, 0.008, 0.004, -0.0082, -0.0158, 0.0153, -0.0082, -0.0158, 0.0153, -0.0082, -0.0158, 0.0153, -0.0082, 0.008, 0.004, -0.0082, 0.008, -0.0036, -0.0098, 0.0402, -0.0036, -0.0098, -0.0158, -0.0146, -0.0098, -0.0158, -0.0146, -0.0098, -0.0158, -0.0146, -0.0098, 0.0402, -0.0036, -0.0098, 0.0402)
-
-[sub_resource type="Resource" id="Resource_bt2ki"]
+[sub_resource type="Resource" id="Resource_2g5gp"]
 script = ExtResource("5_cr6h4")
 _element = "blank"
 rand_val = 0
 
-[sub_resource type="Resource" id="Resource_1i2if"]
+[sub_resource type="Resource" id="Resource_bjbdd"]
 script = ExtResource("5_cr6h4")
 _element = "blank"
 rand_val = 0
@@ -33,17 +30,17 @@ size = Vector3(2.23236, 1, 30.8647)
 [sub_resource type="BoxMesh" id="BoxMesh_u635b"]
 size = Vector3(2, 1, 41)
 
-[sub_resource type="Resource" id="Resource_4fuke"]
+[sub_resource type="Resource" id="Resource_2i1cl"]
 script = ExtResource("5_cr6h4")
 _element = "blank"
 rand_val = 0
 
-[sub_resource type="Resource" id="Resource_b46j5"]
+[sub_resource type="Resource" id="Resource_xkosb"]
 script = ExtResource("5_cr6h4")
 _element = "blank"
 rand_val = 0
 
-[sub_resource type="Resource" id="Resource_ykxhm"]
+[sub_resource type="Resource" id="Resource_fi5iw"]
 script = ExtResource("5_cr6h4")
 _element = "blank"
 rand_val = 0
@@ -54,92 +51,130 @@ chunk = NodePath("CatalystPuzzles")
 resets = [NodePath("CatalystPuzzles/CatalystSubPuzzles_North/Reset"), NodePath("CatalystPuzzles/CatalystSubPuzzle_South/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284, 4.16162, 11.8127)
 shape = SubResource("BoxShape3D_xiadh")
 
 [node name="CatalystPuzzles" type="Node3D" parent="."]
 
-[node name="catalyst_puzzles" parent="CatalystPuzzles" instance=ExtResource("1_5vwqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.0547)
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CatalystPuzzles"]
+use_collision = true
 
-[node name="CatalystPuzzles" parent="CatalystPuzzles/catalyst_puzzles" index="0"]
-transform = Transform3D(800, 0, 0, 0, -3.49691e-05, 100, 0, -800, -4.37114e-06, 0, 0, 0)
+[node name="CSGBox3D1" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+size = Vector3(27, 6, 45)
+material = ExtResource("2_mwdp0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CatalystPuzzles/catalyst_puzzles/CatalystPuzzles" index="0"]
-collision_layer = 19
+[node name="CSGBox3D2" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+operation = 2
+size = Vector3(25, 6, 43)
+material = ExtResource("2_mwdp0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CatalystPuzzles/catalyst_puzzles/CatalystPuzzles/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ttxb6")
+[node name="CSGBox3D3" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+size = Vector3(25, 6, 1)
+material = ExtResource("2_mwdp0")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+operation = 2
+size = Vector3(3, 6, 2)
+material = ExtResource("2_mwdp0")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 7)
+operation = 2
+size = Vector3(1, 4, 2)
+material = ExtResource("2_mwdp0")
+
+[node name="EXIT_SOUTH" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 22)
+operation = 2
+size = Vector3(3, 6, 1)
+material = ExtResource("2_mwdp0")
+
+[node name="EXIT_NORTH" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -22)
+operation = 2
+size = Vector3(3, 6, 1)
+material = ExtResource("2_mwdp0")
+
+[node name="EXIT_WEST" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -18)
+operation = 2
+size = Vector3(1, 6, 3)
+material = ExtResource("2_mwdp0")
 
 [node name="CatalystSubPuzzles_North" type="Node3D" parent="CatalystPuzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 
 [node name="Reset" parent="CatalystPuzzles/CatalystSubPuzzles_North" instance=ExtResource("9_pxaef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09511, -1.13183, 17.5746)
 
 [node name="CatalystSubPuzzle_West" type="Node3D" parent="CatalystPuzzles/CatalystSubPuzzles_North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="Emitter" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("2_o81tf")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.675, 1, 12)
-laser = SubResource("Resource_bt2ki")
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.675, 2, 12)
+laser = SubResource("Resource_2g5gp")
 _element = "yellow"
 
 [node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("3_30a4y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.4706, 1, 13)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.4706, 2, 13)
 _element = "yellow"
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, -1, 12)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 12)
 _element = "cyan"
 is_transmutable = true
 
 [node name="DraggableMirror2" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, -1, 7)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 7)
 _element = "orange"
 is_transmutable = true
 
 [node name="DraggableMirror3" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, -1, 2)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 2)
 _element = "cyan"
 is_transmutable = true
 
 [node name="DraggableMirror4" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, -1, -8)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -7)
 _element = "purple"
 is_transmutable = true
 
 [node name="CatalystSubPuzzle_East" type="Node3D" parent="CatalystPuzzles/CatalystSubPuzzles_North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="Emitter" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("2_o81tf")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 12.3408, 1, 1.71233)
-laser = SubResource("Resource_1i2if")
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 12.3408, 2, 1.71233)
+laser = SubResource("Resource_bjbdd")
 _element = "purple"
 
 [node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("3_30a4y")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 1, 0.693)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 2, 0.693)
 _element = "purple"
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, -1, 13)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 13)
 _element = "green"
 is_transmutable = true
 
 [node name="DraggableMirror2" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
 _element = "yellow"
 is_transmutable = true
 
 [node name="DraggableMirror3" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, -1, 1)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, 1)
 _element = "orange"
 is_transmutable = true
 
 [node name="DraggableMirror4" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
 _element = "purple"
 is_transmutable = true
 
 [node name="MiddlePath" type="StaticBody3D" parent="CatalystPuzzles/CatalystSubPuzzles_North"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.80653, -0.968226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 collision_layer = 2
 collision_mask = 2
 
@@ -153,54 +188,55 @@ visible = false
 mesh = SubResource("BoxMesh_u635b")
 
 [node name="MagiClayTerrain1" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, -7)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, -7)
 _element = "green"
 
 [node name="MagiClayTerrain2" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, -4.5)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, -4.5)
 _element = "red"
 
 [node name="MagiClayTerrain3" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, -2)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, -2)
 _element = "blue"
 
 [node name="MagiClayTerrain4" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 0.5)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 0.5)
 _element = "green"
 
 [node name="MagiClayTerrain5" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 3)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 3)
 _element = "red"
 
 [node name="MagiClayTerrain6" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 5.5)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 5.5)
 _element = "blue"
 
 [node name="MagiClayTerrain7" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 8)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 8)
 _element = "green"
 
 [node name="MagiClayTerrain8" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 10.5)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 10.5)
 _element = "red"
 
 [node name="MagiClayTerrain9" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 13)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 13)
 _element = "blue"
 
 [node name="MagiClayTerrain10" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 15.5)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 15.5)
 _element = "green"
 
 [node name="MagiClayTerrain11" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 18)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 18)
 _element = "red"
 
 [node name="MagiClayTerrain12" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.27061, 20.5)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.0706099, 20.5)
 _element = "blue"
 
 [node name="CatalystSubPuzzle_South" type="Node3D" parent="CatalystPuzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 
 [node name="Reset" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("9_pxaef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09511, -1.13183, 22.1238)
@@ -211,17 +247,17 @@ _element = "yellow"
 
 [node name="Emitter1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.691, 0, 26)
-laser = SubResource("Resource_4fuke")
+laser = SubResource("Resource_2i1cl")
 _element = "cyan"
 
 [node name="Emitter2" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.691, 0, 29)
-laser = SubResource("Resource_b46j5")
+laser = SubResource("Resource_xkosb")
 _element = "yellow"
 
 [node name="Emitter3" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.691, 0, 31)
-laser = SubResource("Resource_ykxhm")
+laser = SubResource("Resource_fi5iw")
 _element = "magenta"
 
 [node name="LaserReceiver1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]
@@ -259,5 +295,3 @@ _element = "yellow"
 [node name="MagiClayTerrain" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("5_fnfmo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.53592, 29.7326)
 _element = "orange"
-
-[editable path="CatalystPuzzles/catalyst_puzzles"]

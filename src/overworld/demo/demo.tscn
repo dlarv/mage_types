@@ -9,11 +9,11 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_oalpa"]
 [ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/items/vendors/vendor_menu/vendor_menu.tscn" id="8_iwi7w"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="9_qicvs"]
-[ext_resource type="PackedScene" uid="uid://dqsbw3gr02t36" path="res://src/overworld/demo/subareas/lower_beach.tscn" id="10_gvwyi"]
-[ext_resource type="PackedScene" uid="uid://crkshju7vltr4" path="res://src/overworld/demo/subareas/lower_path.tscn" id="11_xdamf"]
-[ext_resource type="PackedScene" uid="uid://mcdeecdrywbc" path="res://src/overworld/doorway.tscn" id="12_8fng1"]
+[ext_resource type="PackedScene" uid="uid://4ft3p5xs6uk5" path="res://src/overworld/demo/subareas/beach.tscn" id="10_bysgw"]
+[ext_resource type="PackedScene" uid="uid://cy8e0cndhkub5" path="res://src/overworld/demo/subareas/tidepools.tscn" id="12_hj0aa"]
 [ext_resource type="PackedScene" uid="uid://cuu0bcxy1x8xp" path="res://src/overworld/demo/subareas/stasis_puzzles.tscn" id="13_tehf6"]
 [ext_resource type="PackedScene" uid="uid://brs3ov2whut2i" path="res://src/overworld/demo/subareas/catalyst_puzzles.tscn" id="14_1tf5l"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/textures/placeholder_grid_texture/placeholder_grid.tres" id="14_xbgwf"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("5_6t7e1")
@@ -60,8 +60,8 @@ visible = false
 [node name="Overworld" type="Node3D" parent="World"]
 
 [node name="Player" parent="World/Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.6959, 8.38894, 20.1639)
-run_speed = 40.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20649, 3.95849, -23.399)
+collision_mask = 5
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
@@ -69,32 +69,109 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Overworld"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
-[node name="LowerBeach" parent="World/Overworld" instance=ExtResource("10_gvwyi")]
-
-[node name="Doorway" parent="World/Overworld/LowerBeach" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0757694, 4.82672, -8.30941)
-visible = false
-other_side = NodePath("../../LowerPath/Doorway")
-
-[node name="LowerPath" parent="World/Overworld" instance=ExtResource("11_xdamf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68347, 4.11234, -15.8081)
-
-[node name="Doorway" parent="World/Overworld/LowerPath" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.62553, 0.338971, 5.81457)
-visible = false
-other_side = NodePath("../../LowerBeach/Doorway")
-
-[node name="Doorway2" parent="World/Overworld/LowerPath" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
-transform = Transform3D(11.3179, 0, 0, 0, 2, 0, 0, 0, 2, 4.86889, -0.182012, -9.55638)
-visible = false
-other_side = NodePath("../../StasisPuzzles/Doorway")
+[node name="Beach" parent="World/Overworld" instance=ExtResource("10_bysgw")]
 
 [node name="StasisPuzzles" parent="World/Overworld" instance=ExtResource("13_tehf6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.7942, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 3.5, -50.5)
 
-[node name="Doorway" parent="World/Overworld/StasisPuzzles" node_paths=PackedStringArray("other_side") instance=ExtResource("12_8fng1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0488205, 6.88221, 22.0887)
-other_side = NodePath("../../LowerPath/Doorway2")
+[node name="Tidepools" parent="World/Overworld" instance=ExtResource("12_hj0aa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 2, -5)
+visible = false
 
 [node name="CatalystPuzzles" parent="World/Overworld" instance=ExtResource("14_1tf5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5804, 10.0015, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 5, -77.5)
+visible = false
+
+[node name="Caves" type="Node3D" parent="World/Overworld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 3.5, -63.5)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World/Overworld/Caves"]
+use_collision = true
+
+[node name="CaveEntry" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+size = Vector3(32, 3, 7)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 4)
+operation = 2
+size = Vector3(30, 3, 5)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -8)
+size = Vector3(48, 3, 12)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -8)
+operation = 2
+size = Vector3(46, 3, 10)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+size = Vector3(5, 3, 4)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -17)
+size = Vector3(30, 3, 8)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -17)
+operation = 2
+size = Vector3(28, 3, 6)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -23)
+size = Vector3(6, 3, 4)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -28)
+size = Vector3(14, 3, 7)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -28)
+operation = 2
+size = Vector3(13, 3, 5)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -1)
+operation = 2
+size = Vector3(3, 3, 6)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -13.5)
+operation = 2
+size = Vector3(27, 3, 3)
+material = ExtResource("14_xbgwf")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -22.5)
+operation = 2
+size = Vector3(4, 3, 7)
+material = ExtResource("14_xbgwf")
+
+[node name="CE_" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1, -17)
+operation = 2
+size = Vector3(2, 3, 6)
+material = ExtResource("14_xbgwf")
+
+[node name="EXIT_SOUTH" type="CSGBox3D" parent="World/Overworld/Caves/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 6.5)
+operation = 2
+size = Vector3(3, 3, 2)
+material = ExtResource("14_xbgwf")

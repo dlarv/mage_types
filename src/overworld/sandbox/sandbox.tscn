@@ -118,7 +118,7 @@ heal_after_battle = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f8mm"]
 
-[sub_resource type="Resource" id="Resource_4clns"]
+[sub_resource type="Resource" id="Resource_78hak"]
 script = ExtResource("30_mudn6")
 _element = "blank"
 rand_val = 0
@@ -254,7 +254,6 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.354
 
 [node name="MagiclayRock" parent="World/Overworld" instance=ExtResource("27_8u0py")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8135, 0.464497, 44.7389)
-collision_layer = 13
 _element = "red"
 is_transmutable = true
 
@@ -281,7 +280,7 @@ _element = "blue"
 
 [node name="Emitter" parent="World/Overworld" instance=ExtResource("29_o5bgj")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 15.7954, 0.796529, -6.4192)
-laser = SubResource("Resource_4clns")
+laser = SubResource("Resource_78hak")
 _element = "blue"
 
 [node name="Mirror" parent="World/Overworld" instance=ExtResource("30_oodx3")]
