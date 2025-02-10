@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://src/items/vendors/vendor_menu/VendorItem.gd" id="16_alx6a"]
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="17_8pgyp"]
 [ext_resource type="Resource" uid="uid://bmcia4k0ec1wj" path="res://data/battle_system/battle_actors/clown.tres" id="18_j8vto"]
-[ext_resource type="Shader" path="res://assets/shaders/clay.gdshader" id="19_11b6c"]
+[ext_resource type="Shader" path="res://assets/3d/shaders/clay.gdshader" id="19_11b6c"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="19_uryvx"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="23_vsmvj"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="25_4yrhn"]
@@ -118,7 +118,7 @@ heal_after_battle = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f8mm"]
 
-[sub_resource type="Resource" id="Resource_78hak"]
+[sub_resource type="Resource" id="Resource_kljom"]
 script = ExtResource("30_mudn6")
 _element = "blank"
 rand_val = 0
@@ -280,7 +280,7 @@ _element = "blue"
 
 [node name="Emitter" parent="World/Overworld" instance=ExtResource("29_o5bgj")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 15.7954, 0.796529, -6.4192)
-laser = SubResource("Resource_78hak")
+laser = SubResource("Resource_kljom")
 _element = "blue"
 
 [node name="Mirror" parent="World/Overworld" instance=ExtResource("30_oodx3")]

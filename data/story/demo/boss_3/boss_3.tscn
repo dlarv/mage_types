@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://c3aysvh2jhmt8"]
 
 [ext_resource type="PackedScene" uid="uid://c1yaqlajp62he" path="res://data/story/demo/boss.tscn" id="1_078sc"]
-[ext_resource type="Texture2D" uid="uid://dh66sh8ql3buu" path="res://assets/models/textures/player/blob_diffuse.png" id="2_035nx"]
+[ext_resource type="Texture2D" uid="uid://dh66sh8ql3buu" path="res://assets/3d/textures/player/blob_diffuse.png" id="2_035nx"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_g6tqm"]
 [ext_resource type="Script" path="res://data/story/demo/boss_3/Boss3Controller.gd" id="2_risbo"]
-[ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/models/textures/player/blob_normal.png" id="3_i8hgk"]
+[ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="3_i8hgk"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="3_lqspt"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="4_wbn1y"]
 [ext_resource type="Resource" uid="uid://mg2jc70wjqo8" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_attack_up.tres" id="5_8b4a4"]

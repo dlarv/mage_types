@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Mage-Types"
 config/version="0.1.0"
-run/main_scene="res://src/overworld/demo/demo.tscn"
+run/main_scene="res://data/demo/demo.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/flush_stdout_on_print.debug=false
 config/icon="res://assets/sprites/icon.svg"
