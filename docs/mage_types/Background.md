@@ -267,7 +267,7 @@ Offensive -> Offensive = Speed buff
 
 ![[clamped_resistances_v1.png]]
 *Fig 1.8: Clamped version of figure 1.7.*
-## Resistance Info (V2) 
+## Resistance Info (V2/3) 
 V1 is very busy, with most matchups having a modifier. It could be interesting to see how a simple rock-paper-scissors system would turn out.
 
 The transmutation chart has a lot of holes, it could be interesting to use this system to fill in these holes. So type matchups would either have a transmutation, a resistance/weakness, or no reaction.
@@ -284,6 +284,10 @@ The transmutation chart has a lot of holes, it could be interesting to use this 
 
 ![[resistances_v3.png]]
 *Fig 1.9: Chart showing the weakness and resistances of each element.*
+
+>[!important] 
+>I think the resistance system ultimately muddies this game's identity too much; It feels a little too contrived.
+>Therefore, I think it might be best to shelve it.
 ## Affinity Info
 Affinity is essentially the mana system in this game. In v0.1.0, the player had 8 pools of affinity, which was a little much. In this version, the player will have 3 (R, G, B). Attacks will have the ability to cost any combination of affinity.
 

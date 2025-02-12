@@ -389,27 +389,30 @@ The world will be loaded in one `Room` at a time.
 #### Puzzle Blocks
 > Puzzle blocks, MagiClay, and physics objects can all overlap.
 
-Puzzle blocks are logical elements that are used to build puzzles (if you can believe such a thing). Under the hood, these will function using signals.
-There are 3 types:
-- Emitters: send out a signal when a criteria is met.
-	- They should have both an `on` and `off` signal.
-- Receiver: Receives the on/off signal from a specific emitter.
-- Medium: e.g. wire that glows when button is pressed. These should listen to an emitter's on/off signals, but are purely for aesthetic and informational purposes.
-More info can be found [[puzzle_archetypes|here]].
-##### Lasers
-- Emitter
-- Laser
-	- Stasis | Catalyst
-- Mirror
-	- Bends `Laser` 90degs.
-	- Optionally changes color of beam.
-		- If Laser is Blank, it matches color of Mirror.
-		- Otherwise, it transmutes, when applicable.
-- Receiver
-	- When hit by a `Laser`, emit an `On` signal.
-	- Optionally require `Laser` to be a specific color.
+Puzzle blocks are logical elements that are used to build puzzles (if you can believe such a thing). Most PuzzleBlocks should be effected by at least Catalyst and Stasis.
 
-1. When on, an emitter will send out an invisible sphere to collide with surfaces.
+```
+PuzzleBlock extends MagiClay
+
+signal on(PuzzleBlock)
+signal off(PuzzleBlock)
+
+public bool is_on
+
+public void start(Variant)
+public void stop(Variant)
+
+private void _try_emit_on()
+private void _try_emit_off()
+```
+
+#todo 
+- MagiClay.\_flicker_collider()
+- Laser.rand_val
+- puzzle chunks and reset blocks
+##### Lasers
+![[laser_system]]
+
 ### Overworld Spells
 1. Allow user to select spell.
 2. Apply effects of spell to overworld.

@@ -57,7 +57,7 @@ I think these are solid canidates for the canonical matchups:
 w = weak to = x2
 r = resists = x0.5
 n = neutral = x1
-# Matchup Expansion
+# Matchup Explained 
 Green and Cyan are the architypical Offensive and Defensive type, so it makes sense for them to have the most supereffective or resistances respectively. I think each having 5 positive matchups is a good ballpark.
 
 **Cyan**
@@ -157,9 +157,9 @@ As a rule of thumb, I'd like each element to have more in its respective good co
 As it stands now, the defensive types are pretty solid. Magenta is a little lacking, but I'm still on the fence about whether to give it 7* resists. The offensive types, however, could definitely use some attention.
 
 I'd like to buff Magenta:
-- B(Emotional)xM(Oblivious) => x0.5
+- B(~~Emotional~~Mental)xM(Oblivious) => x0.5
 - G(Emotional)xM(Oblivious)=> x0.5
-- C(Emotional)xM(Oblivious) => x0.5
+- C(~~Emotional~~Mental)xM(Oblivious) => x0.5
 - OxM => x2
 
 |             | Offense       |                | Defense        |             |
@@ -206,4 +206,200 @@ And make Red slightly more tanky:
 | Resistance Only                                      | 13     |
 | Both                                                 | 23     |
 | Cycles (2 elements are supereffective to each other) | 2      |
+# Post-Analysis
+After not looking at this system for over a month, I'm going to analyze it once more, to determine whether it is worth pursuing.
 
+The main angle I'm analyzing here is "how easy would this be to explain to the player, and for the player to internalize and use?"
+## Theming
+Blue(Astral, Water)
+Purple(Astral, Dark)
+Magenta(Glitter, Fairy)
+Red(Blood, Plant)
+Orange(Plastic, Fire)
+Yellow(Air, Light)
+Green(Nuclear, Poison)
+Cyan(Ice, Steel)
+## Matchups
+~~B()xM() => x0.5~~ B(Mental)xM(Oblivious) => x0.5
+B(Water)xR(Plant) => x0.5
+B(Water)xO(Fire) => x2
+B(Water)xG(Nuclear) => x2
+
+P(Dark)xB(Astral) => x2
+P(Dark)xP(Dark) => x2
+P(Dark)xM(Whimsy) => x0.5
+P()xR() => x2
+P(Fear)xC(Stalwart) => x0.5
+
+M(Emotional)xB(Calm) => x0.5
+M(Whimsy)xP(Dark) => x0.5
+M(Whimsy)xR(Blood) => x0.5
+M(Emotional)xC(Stalwart) => x0.5
+
+R(Plant)xB(Water) => x2
+R(Blood)xM(Whimsy) => x2
+~~R()xY() => x0.5~~ R(Physical)xY(Gaseous) => x0.5
+
+O(Fire)xP(Dark) => x2
+O()xM() => x2
+~~O(Fire)xY(Air) => x0.5~~ O(Physical)xY(Gaseous) => x0.5
+O(Fire)xC(Ice) => x2
+
+Y()xB() => x0.5
+Y(Light)xP(Dark) => x2
+~~Y()xR() => x0.5~~ Y(Defensive)xR(Offensive Tank) => x0.5
+~~Y()xY() => x0.5~~ Y(Physical)xY(Gaseous) => x0.5
+Y(Air)xC(Ice) => x0.5
+
+G(Nuclear)xB(Water) => x0.5
+G(Offense)xP() => x2
+~~G(Offense)xM(Defense) => x0.5~~ G(Emotional)xM(Oblivious) => x0.5
+G(Offense)xR() => x2
+G(Offense)xO() => x2
+G(Offense)xY(Fragile) => x2
+G(Offense)xG() => x2
+G(Offense)xC() => x0.5
+
+>[!note]
+>A lot of Green's matchups have to do with it being an offensive type. It is resisted by every defensive type, except for Yellow (which is more of an 'evasive' type).
+
+C(Stalwart)xM(Emotional) => x0.5
+~~C()xR() => x0.5~~ C(Defensive)xR(Offensive Tank) => x0.5
+C(Ice)xO(Fire) => x0.5
+C(Ice)xY(Air) => x2
+
+| Category                                                                                                       | Number           |
+| -------------------------------------------------------------------------------------------------------------- | ---------------- |
+| Simple: Matchup can be explained using simple type analogies (e.g. fire beats ice).                            | ~~14~~ 13        |
+| Secondary: Matchup is explained using secondary analogies or attributes (e.g. Cyan resists emotional elements) | ~~14~~ ~~19~~ 21 |
+| Non-obvious                                                                                                    | ~~9~~ ~~5~~ 3    |
+>[!done]
+>Using this data, I think the resistance system can be kept as-is and still be explained. However, it still might be somewhat difficult, as it doesn't quite translate as well as simpler type systems. 
+
+## Non-Obvious
+A lot of the 'non-obvious' category were probably added previously for balancing purposes, which makes me hesitate to remove them. 
+
+For reference, the following were added as buffs:
+- B(Emotional)xM(Oblivious) => x0.5
+- BxR => x0.5
+- PxR => x2
+- ~~PxY => x1~~
+- OxM => x2
+- YxR => x0.5
+- G(Emotional)xM(Oblivious)=> x0.5
+- C(Emotional)xM(Oblivious) => x0.5
+- CxR => x0.5
+
+And here are the non-obvious:
+- ~~B()xM() => x0.5
+- ~~P()xR() => x2
+- ~~O()xM() => x2
+- ~~Y()xR() => x0.5
+- ~~C()xR() => x0.5
+- M()xB() => x0.5
+- R()xY() => x0.5
+- Y()xY() => x0.5
+
+The crossed out ones are present in both lists, and therefore explained by this section's hypothesis. That leaves the following 3 non-obvious matchups:
+- M()xB() => x0.5
+- R()xY() => x0.5
+- Y()xY() => x0.5
+
+The original reasons given for these matchups are as follows:
+- M(Emotional)xB(Calm) => x0.5
+	- Blue has a dampening effect, bringing order to chaos and calming the intense emotional elements.
+- Yellow is a very gaseous type, making it resistant to the other physical elements.
+	- RxY => x0.5
+	- YxY => x0.5 
+	- ~~OxY => x0.5
+
+Returning to the changes made for balancing:
+- B()xM() => x0.5
+- O()xM() => x2
+- P()xR() => x2
+- Y()xR() => x0.5
+- C()xR() => x0.5
+
+Like a defensive version of Green, I made Red resist all defensive types. It isn't weak to all offensive types, however (its neutral against Red and Orange).
+- Y(Defensive)xR(Offensive) => x0.5
+- C(Defensive)xR(Offensive) => x0.5
+
+I made a mistake, which has been corrected in the notes above, labelling Blue as an emotional element.
+- B(Mental)xM(Oblivious) => x0.5
+This is fine, b/c Magenta resists all mental elements and the only other emotional element (Green).
+
+This leaves the following unexplained:
+- OxM
+- PxR
+# Improved Explanations
+This will hopefully be an alternative way of viewing the chart, w/o too many changes. Most of the matchup explanations in the previous section use secondary attributes, like mental/emotional/physical or offense/defense. Hopefully these rules can be generalized.
+
+![[resistances_v3.png]]
+
+| Element | Defense/Offense | M/E/P     | Type 1  | Type 2    |
+| ------- | --------------- | --------- | ------- | --------- |
+| Blue    | Defense         | Mental    | Water   | Astral    |
+| Purple  | Offense         | Mental    | Dark    | Astral    |
+| Magenta | Defense         | Emotional | Fairy   |           |
+| Red     | Offense         | Physical  | Plant   | Blood     |
+| Orange  | Offense         | Physical  | Fire    | Synthetic |
+| Yellow  | Defense         | Physical  | Air     | Light     |
+| Green   | Offense         | Emotional | Nuclear | Poison    |
+| Cyan    | Defense         | Mental    | Steel   | Ice       |
+Blue resists all emotional elements.
+Magenta lives in a world of its own, resisting mental and emotional elements.
+Yellow is gaseous, resisting all physical elements.
+Cyan is Stoic and Stalwart, so it resists the Emotional types.
+
+***Blue***
+B(Mental)xM(Oblivious) => x0.5
+B(Water)xR(Plant) => x0.5
+B(Water)xO(Fire) => x2
+B(Water)xG(Nuclear) => x2
+
+***Purple***
+P(Dark)xB(Astral) => x2
+P(Dark)xP(Dark) => x2
+P(Dark)xM(Whimsy) => x0.5
+P()xR() => x2
+P(Fear)xC(Stalwart) => x0.5
+
+***Magenta***
+M(Emotional)xB(Calm) => x0.5
+M(Whimsy)xP(Dark) => x0.5
+M(Whimsy)xR(Blood) => x0.5
+M(Emotional)xC(Stalwart) => x0.5
+
+***Red***
+R(Plant)xB(Water) => x2
+R(Blood)xM(Whimsy) => x2
+R(Physical)xY(Gaseous) => x0.5
+
+***Orange***
+O(Fire)xP(Dark) => x2
+O(Synthetic)xM() => x2
+O(Fire)xY(Air) => x0.5
+O(Fire)xC(Ice) => x2
+
+***Yellow***
+Y()xB() => x0.5
+Y(Light)xP(Dark) => x2
+Y(Defensive)xR(Offensive Tank) => x0.5
+Y(Physical)xY(Gaseous) => x0.5
+Y(Air)xC(Ice) => x0.5
+
+***Green***
+G(Nuclear)xB(Water) => x0.5
+G(Hyper-Offense)xP(Offense) => x2
+G(Emotional)xM(Oblivious) => x0.5
+G(Hyper-Offense)xR(Offense) => x2
+G(Hyper-Offense)xO(Offense) => x2
+G(Hyper-Offense)xY(Fragile) => x2
+G(Hyper-Offense)xG(Offense) => x2
+G()xC() => x0.5
+
+***Cyan***
+C(Stalwart)xM(Emotional) => x0.5
+C(Defensive)xR(Offensive Tank) => x0.5
+C(Ice)xO(Fire) => x0.5
+C(Ice)xY(Air) => x2

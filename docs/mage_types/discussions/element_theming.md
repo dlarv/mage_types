@@ -27,13 +27,24 @@ Magenta makes a lot of sense as a Fairy type. The aesthetics of CB's Glitter typ
 
 # Theming Summarized
 
-| Element | Other Elements               |           | Keywords                         |
-| ------- | ---------------------------- | --------- | -------------------------------- |
-| Blue    | Astral, Psychic, Water       | Mental    | Ocean of consciousness, cerebral |
-| Purple  | Astral, Psychic, Ghost, Dark | Mental    | Darkness                         |
-| Magenta | Fairy, Glitter               | Emotional | Whimsy                           |
-| Red     | Blood, Ground, Plant         | Physical  |                                  |
-| Orange  | Plastic, Fire                | Physical  | Artificial                       |
-| Yellow  | Light, Air, Sand             | Physical  | Dry                              |
-| Green   | Poison, Earth, Rock, Nuclear | Emotional |                                  |
-| Cyan    | Ice, Steel                   | Mental    | Fortitude, Temperance            |
+| Element | Other Elements               | MEP       | Off/Def | Keywords                         |
+| ------- | ---------------------------- | --------- | ------- | -------------------------------- |
+| Blue    | Astral, Psychic, Water       | Mental    | Defense | Ocean of consciousness, cerebral |
+| Purple  | Astral, Psychic, Ghost, Dark | Mental    | Defense | Darkness                         |
+| Magenta | Fairy, Glitter               | Emotional | Defense | Whimsy                           |
+| Red     | Blood, Ground, Plant         | Physical  | Offense |                                  |
+| Orange  | Plastic, Fire                | Physical  | Offense | Artificial                       |
+| Yellow  | Light, Air, Sand             | Physical  | Defense | Dry                              |
+| Green   | Poison, Earth, Rock, Nuclear | Emotional | Offense |                                  |
+| Cyan    | Ice, Steel                   | Mental    | Defense | Fortitude, Temperance            |
+# Visual Identities
+**Blue**: Water, tide pool.
+**Purple**: Deep ocean, deep caves.
+**Magenta**: Deep woods, carnival.
+**Red**: Gardens, marshes.
+**Orange**: Artifical, plastic, laboratory.
+**Yellow**: Sand/desert, mist/fog.
+**Green**: Crystals, rainforests.
+**Cyan**: Icy mountains.
+
+Magenta and Orange's visual identities are definitly the weakest.
