@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c035hnsf22h3r"]
+[gd_scene load_steps=11 format=3 uid="uid://c035hnsf22h3r"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Mirror.gd" id="1_dbg3p"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_pewdx"]
@@ -8,7 +8,7 @@
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnb02"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_025qx"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8g24h"]
@@ -23,6 +23,9 @@ size = Vector3(1, 2, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxymf"]
 size = Vector3(0.15, 2.06174, 0.15)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ckdic"]
+size = Vector3(1.29272, 2.62781, 1.26697)
+
 [node name="Mirror" type="StaticBody3D"]
 collision_layer = 23
 script = ExtResource("1_dbg3p")
@@ -31,7 +34,7 @@ is_transmutable = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("PrismMesh_vjj5k")
-surface_material_override/0 = SubResource("StandardMaterial3D_tnb02")
+surface_material_override/0 = SubResource("StandardMaterial3D_025qx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
@@ -64,6 +67,16 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55056, 0.980872, 0.55056)
 shape = SubResource("BoxShape3D_cxymf")
+
+[node name="Blocker" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0394287, 1.0232, 0.0504761)
+shape = SubResource("BoxShape3D_ckdic")
 
 [connection signal="laser_dropped" from="SubReceiverX" to="." method="_on_laser_dropped"]
 [connection signal="laser_received" from="SubReceiverX" to="." method="_on_sub_receiver_x_laser_received"]

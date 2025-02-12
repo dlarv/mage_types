@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6hxgpvaoulp7"]
 
 [ext_resource type="Script" path="res://src/player/PhysicsPlayer.gd" id="1_rh8eo"]
-[ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/models/player.blend" id="1_ws1pf"]
+[ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/player.blend" id="1_ws1pf"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_fefq7"]
 [ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/elements/gui/info_charts/element_menu.tscn" id="4_jbnpg"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="5_831qy"]

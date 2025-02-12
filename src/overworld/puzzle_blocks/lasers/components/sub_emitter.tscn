@@ -10,7 +10,7 @@ script = ExtResource("1_3jvxr")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 100)
-collision_mask = 24
+collision_mask = 28
 collide_with_areas = true
 
 [node name="Scalar" type="Node3D" parent="."]

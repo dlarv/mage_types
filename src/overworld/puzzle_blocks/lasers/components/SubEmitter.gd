@@ -33,6 +33,9 @@ func _physics_process(delta: float) -> void:
 			if _prev_body != body:
 				_prev_body = body
 				body.set_laser(laser, $RayCast3D.get_collision_point())
+		elif body.get_collision_layer_value(3) and body is MagiClay:
+			var res := ElementManager.get_matchup(laser.element, body.element)
+			body.set_element(res, laser.rand_val)
 	else:
 		distance = $RayCast3D.target_position.z
 

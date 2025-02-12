@@ -40,3 +40,9 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 
 	return true
 
+func set_stasis() -> void:
+	super.set_stasis()
+	if in_stasis:
+		stop()
+	else:
+		start()

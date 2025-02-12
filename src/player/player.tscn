@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_jd6jo"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_2jxe0"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="3_e1u62"]
-[ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/models/player.blend" id="3_xfaiw"]
+[ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/player.blend" id="3_xfaiw"]
 [ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/elements/gui/info_charts/element_menu.tscn" id="4_nia5t"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="5_eh2ql"]
 
@@ -18,7 +18,7 @@ battle_actor = ExtResource("2_2jxe0")
 player_menu = NodePath("CanvasLayer/PlayerMenu")
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
-run_speed = 60.0
+run_speed = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -45,7 +45,7 @@ bones/11/rotation = Quaternion(-0.712137, 8.5248e-08, -8.64739e-08, 0.702041)
 bones/12/rotation = Quaternion(0.00713899, -2.40746e-08, 1.56189e-09, 0.999974)
 
 [node name="SpellManager" parent="player" instance=ExtResource("3_e1u62")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.946146, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

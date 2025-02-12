@@ -14,13 +14,10 @@ func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
 	if not $Mirror._active_receiver: 
 		rotation_degrees.y += 90
 		return
-	var val = $Mirror._active_receiver.collision_layer
-	$Mirror._active_receiver.collision_layer = 1
-	$Mirror._active_emitter.stop()
-	await get_tree().create_timer(0.01).timeout
+	$Mirror.block(true)
+	await get_tree().create_timer(0.2).timeout
 	rotation_degrees.y += 90
-	$Mirror._active_receiver.collision_layer = val
-	$Mirror._active_emitter.start()
+	$Mirror.block(false)
 
 func _get_mesh() -> MeshInstance3D:
 	return $Mirror/MeshInstance3D
