@@ -2,9 +2,7 @@
 extends BattleAction 
 class_name Attack 
 
-@export
-# Effect[]
-var effects: Array[Effect]
+@export var effects: Array[Effect]
 @export var cost: int 
 
 # override
@@ -43,6 +41,11 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 
 			didDmg = true
 			var msg2 = effect.apply_effect(user, target, self, affinity)
+
+			var msg3 = target.get_and_flush_msgs()
+			if len(msg3) > 0:
+				msg.append_array(msg3)
+
 			if len(msg2) > 0:
 				if effect.attack_effect is Damage \
 						and effect.effect_target == Effect.EffectTarget.USER:

@@ -37,6 +37,7 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 		msg += "But %s blocked the attack!" % target.name
 	else:
 		msg += "But %s deflected some of the damage!\nDealt %d damage to %s." % [target.name, actualDmg, target.name]
+
 	return msg
 
 func check_resistance(e1: ElementalType, e2: ElementalType) -> float:

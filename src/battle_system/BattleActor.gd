@@ -7,7 +7,7 @@ enum Stats { MELEE_ATTACK, RANGED_ATTACK, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, 
 signal was_just_defeated()
 signal status_effect_added(effect)
 signal status_effects_removed(effect)
-signal damage_applied(hp)
+signal damage_applied(current_hp)
 signal element_changed(id, element)
 signal spell_learned(spell, index)
 
@@ -67,11 +67,9 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 			value = ElementManager.Blank
 		elemental_bias = value
 @export var bias_reversion_threshold := 0.4
-@export
-# Attack[]
-var attacks: Array[BattleAction] = []
-@export
-var sprite_path: PackedScene
+@export var attacks: Array[BattleAction] = []
+@export var equipment: Equipment = null
+@export var sprite_path: PackedScene
 var sprite : Sprite = null
 
 var dissonant: StatusEffect: 
@@ -85,8 +83,24 @@ var is_defeated: bool:
 
 var aleady_defeated: bool = false
 
-func set_element(id: int, element: ElementalType) -> Array:
-	var msg := []
+var _msgs := []
+
+func setup() -> void:
+	if equipment != null:
+		equipment.equip(self)
+
+func get_and_flush_msgs() -> Array:
+	var output := _msgs
+	_msgs = []
+
+	var equipmentMsgs := equipment.get_and_flush_msgs()
+	if len(equipmentMsgs) > 0:
+		output.append("%s's %s activated!" % [name, equipment.name])
+		output.append_array(equipmentMsgs)
+	
+	return output
+
+func set_element(id: int, element: ElementalType) -> void:
 	if id == 0:
 		element1 = element
 	else:
@@ -95,7 +109,7 @@ func set_element(id: int, element: ElementalType) -> Array:
 	if not element.is_blank():
 		var affinity = affinity_manager.set_element(id, element)
 		if affinity > 0:
-			msg.append("%s gained %d %s affinity!" % [name, affinity, element.get_bb_code_name()])
+			_msgs.append("%s gained %d %s affinity!" % [name, affinity, element.get_bb_code_name()])
 	sprite.set_element(id, element)
 	element_changed.emit(id, element)
 
@@ -104,18 +118,16 @@ func set_element(id: int, element: ElementalType) -> Array:
 	var effect = statuses.check_phobic(element)
 	if effect != null:
 		dmg = hp * effect.strength
-		msg.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
+		_msgs.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 	effect = statuses.check_philic(element)
 	if effect != null:
 		dmg = hp * effect.strength
 		current_hp += dmg
-		msg.append("%s was healed by its philia! (%d hp)" % [ name, dmg ])
+		_msgs.append("%s was healed by its philia! (%d hp)" % [ name, dmg ])
 
 	if dmg != 0:
 		apply_damage(dmg)
-
-	return msg
 
 func get_element(id: int) -> ElementalType:
 	if id == 0:
@@ -227,45 +239,44 @@ func add_affinity(element: ElementalType, amount: int) -> void:
 func get_affinity_for(element: ElementalType) -> float:
 	return float(affinity_manager.get_affinity(element))
 
-func try_revert_to_bias()-> String:
-	if elemental_bias.is_blank(): return "" 
-	if element1 == elemental_bias or element2 == elemental_bias: return ""
+func try_revert_to_bias()-> bool:
+	if elemental_bias.is_blank(): return false
+	if element1 == elemental_bias or element2 == elemental_bias: return false
 	var rand = randf()
 	if rand < bias_reversion_threshold:
 		set_element(0, elemental_bias)
-		return "%s realigned to %s!" % [name, elemental_bias.get_bb_code_name()]
-	return ""
+		_msgs.append("%s realigned to %s!" % [name, elemental_bias.get_bb_code_name()])
+		return true
+	return false
 
 func list_status_effects() -> Array:
 	return statuses.list()
 
-func resolve_end_of_turn()-> Array:
+func resolve_end_of_turn()-> void:
 	# Calc poison and healing.
-	var msg = []
 	var mod = 0
 	var poison = statuses.poison
 	var healing = statuses.healing
 
 	if poison > 0:
 		mod += poison
-		msg.append("%s was hurt by poison (%d dmg)!" % [ name, poison * hp])
+		_msgs.append("%s was hurt by poison (%d dmg)!" % [ name, poison * hp])
 	if healing > 0:
 		mod -= healing
-		msg.append("%s recovered %d health!" % [ name, hp * healing])
+		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
 	apply_damage(hp * mod)
 
 	# Calculate consecutive turn affinity, if any.
 	var bonus := affinity_manager.gain_affinity(element1, AffinityManager.BonusReason.CONSECUTIVE)
 	if bonus > 0:
-		msg.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element1.get_bb_code_name(), bonus])
+		_msgs.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element1.get_bb_code_name(), bonus])
 
 	bonus = affinity_manager.gain_affinity(element2, AffinityManager.BonusReason.CONSECUTIVE)
 	if bonus > 0:
-		msg.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element2.get_bb_code_name(), bonus])
+		_msgs.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element2.get_bb_code_name(), bonus])
 
 	var effects = statuses.calculate_expirations()
 	status_effects_removed.emit(effects)
-	return msg
 
 func has_phobia(element: ElementalType) -> bool:
 	return statuses.check_phobic(element) != null

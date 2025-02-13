@@ -21,4 +21,5 @@ var element: ElementalType:
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	if target.get_element(element_id) == element:
 		return "But %s is already %s!" % [ user.name, element.name ]
-	return target.set_element(element_id, element)
+	target.set_element(element_id, element)
+	return target.get_and_flush_msgs()

@@ -92,7 +92,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if action == null:
 			continue
 
-
 		# Play animation.
 		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
 		var targetTeamIndex
@@ -144,8 +143,10 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# This will trigger if final actor died to phobia.
 		endBattle = await _check_if_battle_ended()
 		if endBattle: return
+
 		# Resolve user's status effects.
-		msg = "\n".join(action.actor.resolve_end_of_turn())
+		action.actor.resolve_end_of_turn()
+		msg = "\n".join(action.actor.get_and_flush_msgs())
 		if len(msg) > 0:
 			await gui.display_message(msg)
 			# Check if battle should end.
@@ -158,17 +159,15 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	# Revert characters to biases.
 	var biasMsg := []
 	for ally in allies:
-		var msg = ally.try_revert_to_bias()
-		if len(msg) > 0:
-			biasMsg.append(msg)
+		if ally.try_revert_to_bias():
+			biasMsg.append(ally.get_and_flush_msgs())
 	if len(biasMsg) > 0:
 		await gui.display_message(biasMsg)
 
 	biasMsg = []
 	for enemy in enemies:
-		var msg = enemy.try_revert_to_bias()
-		if len(msg) > 0:
-			biasMsg.append(msg)
+		if enemy.try_revert_to_bias():
+			biasMsg.append(enemy.get_and_flush_msgs())
 	if len(biasMsg) > 0:
 		await gui.display_message(biasMsg)
 
@@ -194,14 +193,16 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
 		var vals := ElementManager.get_side_effect(target.element1, action.element)
 		var buff = vals[0]
-		var debuff = vals[1]
+		# var debuff = vals[1]
 
 		if buff != null:
-			msg.append("This reaction had side effects! %s" % buff.apply_effect(target))
-		if debuff != null:
-			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
+			buff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
+		# if debuff != null:
+		# 	msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 := "\n".join(target.set_element(0, newType))
+		target.set_element(0, newType)
+		var msg2 := "\n".join(target.get_and_flush_msgs())
 		if len(msg2) > 0:
 			msg.append(msg2)
 
@@ -215,14 +216,16 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
 		var vals := ElementManager.get_side_effect(target.element2, action.element)
 		var buff = vals[0]
-		var debuff = vals[1]
+		# var debuff = vals[1]
 
 		if buff != null:
-			msg.append("This reaction had side effects! %s" % buff.apply_effect(target))
-		if debuff != null:
-			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
+			buff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
+		# if debuff != null:
+		# 	msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 := "\n".join(target.set_element(1, newType))
+		target.set_element(1, newType)
+		var msg2 := "\n".join(target.get_and_flush_msgs())
 		if len(msg2) > 0:
 			msg.append(msg2)
 
@@ -243,13 +246,15 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
 		var vals := ElementManager.get_side_effect(target.element1, target.element2)
 		var buff = vals[0]
-		var debuff = vals[1]
+		# var debuff = vals[1]
 		if buff != null:
-			msg.append("This reaction had side effects! %s" % buff.apply_effect(target))
-		if debuff != null:
-			msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
+			buff.apply_effect(target)
+			msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
+		# if debuff != null:
+		# 	msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
 
-		var msg2 := "\n".join(target.set_element(0, newType))
+		target.set_element(0, newType)
+		var msg2 := "\n".join(target.get_and_flush_msgs())
 		target.set_element(1, ElementManager.Blank)
 		if len(msg2) > 0:
 			msg.append(msg2)
