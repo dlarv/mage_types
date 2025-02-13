@@ -42,8 +42,6 @@ func _enter_tree():
 func _ready() -> void:
 	super._ready()
 
-	
-
 func _physics_process(delta: float) -> void:
 	if _player != null:
 		_player.outside_forces += transform.basis.y * strength * delta
@@ -97,3 +95,4 @@ func start(val: Variant=null) -> void:
 	if in_stasis: return
 	super.start()
 	$AnimationPlayer.play("starting")
+

@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://brs3ov2whut2i"]
+[gd_scene load_steps=13 format=3 uid="uid://brs3ov2whut2i"]
 
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_6xcrn"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_mwdp0"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_o81tf"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="3_30a4y"]
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/Laser.gd" id="5_cr6h4"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="5_fnfmo"]
 [ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="5_mef7p"]
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="7_fn5ea"]
@@ -14,36 +13,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_xiadh"]
 size = Vector3(27, 6, 45)
 
-[sub_resource type="Resource" id="Resource_iih64"]
-script = ExtResource("5_cr6h4")
-_element = "blank"
-rand_val = 0
-
-[sub_resource type="Resource" id="Resource_k3ye8"]
-script = ExtResource("5_cr6h4")
-_element = "blank"
-rand_val = 0
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
 size = Vector3(2.23236, 1, 30.8647)
 
 [sub_resource type="BoxMesh" id="BoxMesh_u635b"]
 size = Vector3(2, 1, 41)
-
-[sub_resource type="Resource" id="Resource_hu223"]
-script = ExtResource("5_cr6h4")
-_element = "blank"
-rand_val = 0
-
-[sub_resource type="Resource" id="Resource_mwclc"]
-script = ExtResource("5_cr6h4")
-_element = "blank"
-rand_val = 0
-
-[sub_resource type="Resource" id="Resource_1wr2e"]
-script = ExtResource("5_cr6h4")
-_element = "blank"
-rand_val = 0
 
 [node name="CatalystPuzzles" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_6xcrn")
@@ -114,7 +88,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="Emitter" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.675, 2, 12)
-laser = SubResource("Resource_iih64")
 _element = "yellow"
 
 [node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("3_30a4y")]
@@ -146,7 +119,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="Emitter" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 12.3408, 2, 1.71233)
-laser = SubResource("Resource_k3ye8")
 _element = "purple"
 
 [node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("3_30a4y")]
@@ -247,17 +219,14 @@ _element = "yellow"
 
 [node name="Emitter1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.691, 0, 26)
-laser = SubResource("Resource_hu223")
 _element = "cyan"
 
 [node name="Emitter2" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.691, 0, 29)
-laser = SubResource("Resource_mwclc")
 _element = "yellow"
 
 [node name="Emitter3" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.691, 0, 31)
-laser = SubResource("Resource_1wr2e")
 _element = "magenta"
 
 [node name="LaserReceiver1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]

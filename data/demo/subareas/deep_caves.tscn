@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7snvw34rt406"]
+[gd_scene load_steps=4 format=3 uid="uid://c7snvw34rt406"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_rjqcc"]
+[ext_resource type="PackedScene" uid="uid://b2pq1a3k01vk" path="res://src/overworld/magiclay/magiclay_monolith.tscn" id="2_p06f5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qb3xd"]
+size = Vector3(22, 7, 22)
 
 [node name="DeepCaves" type="Node3D"]
 metadata/_edit_group_ = true
@@ -470,3 +474,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 4, -56.5)
 operation = 2
 size = Vector3(2, 7, 3)
 material = ExtResource("1_rjqcc")
+
+[node name="EXIT_SOUTH" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.5, 4, 3)
+operation = 2
+size = Vector3(3, 7, 2)
+material = ExtResource("1_rjqcc")
+
+[node name="MagiclayMonolith_SE" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_SE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")
+
+[node name="MagiclayMonolith_S" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_S"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")
+
+[node name="MagiclayMonolith_SW" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_SW"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")
+
+[node name="MagiclayMonolith_W" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0, -32)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_W"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")
+
+[node name="MagiclayMonolith_NW" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0, -56)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_NW"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")
+
+[node name="MagiclayMonolith_N" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -56)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_N"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")
+
+[node name="MagiclayMonolith_NE" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -56)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_NE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")
+
+[node name="MagiclayMonolith_E" parent="." instance=ExtResource("2_p06f5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -32)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiclayMonolith_E"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_qb3xd")

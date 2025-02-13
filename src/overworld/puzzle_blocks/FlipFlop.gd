@@ -28,3 +28,6 @@ func _on_off_timeout() -> void:
 			"FlipFlop(%s) turned off." % [puzzle_name])
 	if is_on:
 		$On.start()
+
+func _get_mesh() -> MeshInstance3D:
+	return null

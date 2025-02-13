@@ -40,3 +40,6 @@ func _on_lock_closed(block: PuzzleBlock) -> void:
 				"Delay(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
 	off.emit(self)
 	_is_opened = false
+
+func _get_mesh() -> MeshInstance3D:
+	return null
