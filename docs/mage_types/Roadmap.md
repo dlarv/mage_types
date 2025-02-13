@@ -13,7 +13,7 @@
 - [ ] Player normal map is inverted.
 # Upcoming Versions
 [[version_naming_scheme]]
-## v0.3.0
+## v0.3.x
 Demo main track implemented. Player can play through the main story of the demo, but not necessarily any of the extra content.
 
 **STRY.x**
@@ -30,7 +30,7 @@ Demo main track implemented. Player can play through the main story of the demo,
 - [ ] Wild enemies implemented.
 **OVER.publ**
 - [ ] Light up indicator wire created.
-## v0.4.0
+## v0.4.x
 Demo MVP. Player can visit every area of the demo and experience the major features.
 
 **STRY.x**
@@ -44,7 +44,7 @@ Demo MVP. Player can visit every area of the demo and experience the major featu
 - [ ] Player companions follow player.
 **OVER.spel**
 - [ ] Destroy spell implemented.
-## v0.5.0+
+## v0.5.x+
 Demo playtest candidate.
 
 **OVER.clay**
