@@ -3,18 +3,18 @@ extends AttackEffect
 class_name Damage 
 
 func get_dmg_potential(user: BattleActor, action: BattleAction, target: BattleActor) -> int:
-	var resist := check_resistance(user.element1, action.element) * check_resistance(user.element2, action.element)
+	# var resist := check_resistance(user.element1, action.element) * check_resistance(user.element2, action.element)
 	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, 1.0)
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:
 	var msg := ""
 	# Under what conditions would action be null!? Dlarv, wtf???
-	var resist := check_resistance(user.element1, action.element) * check_resistance(user.element2, action.element)
-	if resist > 1:
-		msg = "It was supereffective!\n"
-	elif resist < 1:
-		msg = "It wasn't very effective...\n"
+	# var resist := check_resistance(user.element1, action.element) * check_resistance(user.element2, action.element)
+	# if resist > 1:
+	# 	msg = "It was supereffective!\n"
+	# elif resist < 1:
+	# 	msg = "It wasn't very effective...\n"
 
 	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, effectiveness)
 	return "%s%s" % [ msg, _apply_to(target, dmg, user) ]
@@ -40,5 +40,5 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 
 	return msg
 
-func check_resistance(e1: ElementalType, e2: ElementalType) -> float:
-	return ElementManager.get_resistance(e1, e2)	
+# func check_resistance(e1: ElementalType, e2: ElementalType) -> float:
+# 	return ElementManager.get_resistance(e1, e2)	

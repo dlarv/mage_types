@@ -139,7 +139,7 @@ func _enter_tree() -> void:
 	force_load()
 
 	test_transmutations()
-	test_resistances()
+	# test_resistances()
 	test_side_effects()
 	
 func force_load()-> void:
@@ -165,8 +165,8 @@ func force_load()-> void:
 				Cyan = element
 				
 	# Temp vars for brevity
-	var wm := weakness_mod
-	var rm := resistance_mod
+	var wm := 1.0
+	var rm := 1.0 
 
 	matchups = {}
 	var blue = ElementalNode.new(Blue)
