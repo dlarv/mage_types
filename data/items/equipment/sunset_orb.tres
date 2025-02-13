@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=13 format=3 uid="uid://cwk4v4cvwgmus"]
+
+[ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_hxlbf"]
+[ext_resource type="Script" path="res://src/items/equipment/triggers/ElementTrigger.gd" id="2_311dr"]
+[ext_resource type="Script" path="res://src/items/equipment/bonuses/StatBonus.gd" id="2_q1qq6"]
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="2_whcob"]
+[ext_resource type="Script" path="res://src/items/Equipment.gd" id="3_bo7o4"]
+[ext_resource type="Resource" uid="uid://b4julle0iw81g" path="res://data/battle_system/status_effects/stat_changes/attack_up.tres" id="3_kdqlv"]
+
+[sub_resource type="Resource" id="Resource_1t5iv"]
+script = ExtResource("2_q1qq6")
+stat = ExtResource("3_kdqlv")
+
+[sub_resource type="Resource" id="Resource_5rky0"]
+resource_name = "Orange Trigger"
+script = ExtResource("2_311dr")
+_element = "orange"
+index = "either"
+
+[sub_resource type="Resource" id="Resource_kgv7o"]
+script = ExtResource("1_hxlbf")
+trigger = SubResource("Resource_5rky0")
+bonus = SubResource("Resource_1t5iv")
+
+[sub_resource type="Resource" id="Resource_i5oum"]
+script = ExtResource("2_q1qq6")
+stat = ExtResource("3_kdqlv")
+
+[sub_resource type="Resource" id="Resource_gw4en"]
+resource_name = "Yellow Trigger"
+script = ExtResource("2_311dr")
+_element = "yellow"
+index = "either"
+
+[sub_resource type="Resource" id="Resource_1y50a"]
+script = ExtResource("1_hxlbf")
+trigger = SubResource("Resource_gw4en")
+bonus = SubResource("Resource_i5oum")
+
+[resource]
+script = ExtResource("3_bo7o4")
+effects = Array[ExtResource("1_hxlbf")]([SubResource("Resource_kgv7o"), SubResource("Resource_1y50a")])
+name = "Sunset Orb"
+requirements = Array[ExtResource("2_whcob")]([])
+details = ""
+tags = []

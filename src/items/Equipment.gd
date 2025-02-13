@@ -4,6 +4,7 @@ class_name Equipment
 
 @export var effects: Array[EquipmentEffect]:
 	set(value):
+		effects = value
 		for effect in effects:
 			if not effect.activated.is_connected(_on_activated):
 				effect.activated.connect(_on_activated)
@@ -13,7 +14,8 @@ var _msgs := []
 
 func equip(battleActor: BattleActor) -> void:
 	if _connected_to != null:
-		if _connected_to == battleActor: return
+		if _connected_to == battleActor: 
+			return
 		else:
 			unequip(_connected_to)
 	_connected_to = battleActor

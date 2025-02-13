@@ -93,10 +93,11 @@ func get_and_flush_msgs() -> Array:
 	var output := _msgs
 	_msgs = []
 
-	var equipmentMsgs := equipment.get_and_flush_msgs()
-	if len(equipmentMsgs) > 0:
-		output.append("%s's %s activated!" % [name, equipment.name])
-		output.append_array(equipmentMsgs)
+	if equipment != null:
+		var equipmentMsgs := equipment.get_and_flush_msgs()
+		if len(equipmentMsgs) > 0:
+			output.append("%s's %s activated!" % [name, equipment.name])
+			output.append_array(equipmentMsgs)
 	
 	return output
 

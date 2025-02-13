@@ -31,8 +31,10 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 	self.enemies = enemies
 
 	for ally in allies:
+		ally.setup()
 		ally.was_just_defeated.connect(func(): _defeated_allies += 1)
 	for enemy in enemies:
+		enemy.setup()
 		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
 
 	ai.setup(enemies)
