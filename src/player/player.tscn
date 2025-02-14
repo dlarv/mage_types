@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=10 format=3 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_jd6jo"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_2jxe0"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="3_e1u62"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/player.blend" id="3_xfaiw"]
+[ext_resource type="Resource" uid="uid://dkgwtmxs7v2mq" path="res://data/demo/partner_battle_actor.tres" id="4_ljayj"]
 [ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/elements/gui/info_charts/element_menu.tscn" id="4_nia5t"]
 [ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="5_eh2ql"]
 
@@ -15,6 +17,7 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_jd6jo")
 battle_actor = ExtResource("2_2jxe0")
+team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
 player_menu = NodePath("CanvasLayer/PlayerMenu")
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
@@ -29,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 
 [node name="player" parent="." instance=ExtResource("3_xfaiw")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.12623, 0)
 
 [node name="Skeleton3D" parent="player/Armature" index="0"]
 bones/1/rotation = Quaternion(-2.93176e-08, -3.26299e-08, -0.69775, 0.716341)
@@ -48,6 +51,7 @@ bones/12/rotation = Quaternion(0.00713899, -2.40746e-08, 1.56189e-09, 0.999974)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="ElementMenu" parent="CanvasLayer" instance=ExtResource("4_nia5t")]
 visible = false

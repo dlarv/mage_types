@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="PackedScene" uid="uid://bhku25hv8a5d5" path="res://src/generic_gui/pause_menu/pause_menu.tscn" id="2_k2anp"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
-[ext_resource type="Resource" uid="uid://bf3by0bbrpnol" path="res://src/overworld/sandbox/sandbox_dialog.tres" id="4_e1j3i"]
+[ext_resource type="Resource" uid="uid://dv7ytd0jknbh6" path="res://data/demo/dialog_tree.tres" id="4_ehffl"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="5_6t7e1"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="6_ielsv"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_oalpa"]
@@ -28,8 +28,13 @@ script = ExtResource("7_oalpa")
 
 [node name="Demo" type="Node3D"]
 
-[node name="OverworldConnector" parent="." instance=ExtResource("1_x5fo8")]
+[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "vendor_menu", "_player") instance=ExtResource("1_x5fo8")]
+world = NodePath("../World")
+overworld = NodePath("../World/Overworld")
+dialog_box = NodePath("../CanvasLayer/DialogueBox")
+vendor_menu = NodePath("../CanvasLayer/VendorMenu")
 battle_delay = 2.0
+_player = NodePath("../World/Overworld/Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -50,7 +55,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("3_5sixp")
-data = ExtResource("4_e1j3i")
+data = ExtResource("4_ehffl")
 skip_input_action = "interact"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2")])
 
@@ -62,7 +67,7 @@ visible = false
 [node name="Overworld" type="Node3D" parent="World"]
 
 [node name="Player" parent="World/Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2065, 8.95849, -60.399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2065, 8.95849, -21.399)
 collision_mask = 5
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
@@ -90,3 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5.5, -81)
 
 [node name="RiverFront" parent="World/Overworld" instance=ExtResource("16_bh4i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 2.5, -168)
+
+[connection signal="battle_started" from="World/Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
+[connection signal="dialog_started" from="World/Overworld/Player" to="OverworldConnector" method="_on_dialog_started"]
+[connection signal="pause_world" from="World/Overworld/Player" to="OverworldConnector" method="_on_player_pause_world"]

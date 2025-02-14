@@ -163,7 +163,7 @@ Finally, affinity is the resource spent to use an attack. It acts as 3 separate 
 
 ![[simple_type_chart.png]]*Fig 1.2: Simplified Matchup Chart*
 
-| Element | Reactions (#other elements it can react with)(unique elements) | Reactants (#of reactions that form it) |
+| Element | Reactions (#other elements it can react with)(unique products) | Reactants (#of reactions that form it) |
 | ------- | -------------------------------------------------------------- | -------------------------------------- |
 | Blue    | 4 (3)                                                          | 3                                      |
 | Purple  | 5 (3)                                                          | 2                                      |

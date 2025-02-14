@@ -16,7 +16,7 @@ var element: ElementalType
 @export var negative_factor: float
 
 
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, e:ElementalType=ElementManager.Blank):
 	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, effectiveness)
 	var factor: float
 	var msg = ""
@@ -25,12 +25,13 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAct
 		StrikeType.TARGETED: actor = target
 		StrikeType.STAB,_: actor = user 
 	
+
 	if actor.get_element(0) == element or actor.get_element(1) == element:
 		factor = positive_factor
-		msg = "It was super effective!"
+		msg = "It was super effective!\n"
 	else:
 		factor = negative_factor
-		msg = "It wasn't very effective..."
+		msg = "It wasn't very effective...\n"
 
 	dmg *= factor
-	return _apply_to(target, dmg)
+	return  msg + _apply_to(target, dmg)

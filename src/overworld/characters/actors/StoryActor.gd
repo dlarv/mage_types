@@ -10,5 +10,6 @@ signal dialog_started(dialog_id, data)
 
 # Virtual
 func start_dialog():
+	print("HERE")
 	dialog_started.emit(dialog_ids[current_id], null)
 

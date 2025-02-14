@@ -23,8 +23,8 @@ func get_actions(otherTeam: Array) -> Array:
 
 func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 	var maxVal := 0.0
-	var maxTarget: BattleActor
-	var maxAction: BattleAction
+	var maxTarget: BattleActor = targets[0]
+	var maxAction: BattleAction = user.attacks[0]
 
 	for action in user.attacks:
 		Logger.append_log(Logger.LogType.BATTLE, "\nEvaluating action: %s" % action.name)
@@ -90,4 +90,3 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 	Logger.append_log(Logger.LogType.BATTLE, "%s is using %s against %s.\n"
 			% [user.name, maxAction.name, maxTarget.name])
 	return ActorAction.new(user, maxAction, [ maxTarget ], TEAM_INDEX)
-

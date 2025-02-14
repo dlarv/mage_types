@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=3 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
+[ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="2_gq4vp"]
 
 [node name="Beach" type="Node3D"]
 
@@ -89,3 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 2, -5)
 operation = 2
 size = Vector3(3, 3, 3)
 material = ExtResource("1_kv0ly")
+
+[node name="Boss1" parent="." instance=ExtResource("2_gq4vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.49705, -25)
+label_offset = Vector3(0, 1.5, 0)

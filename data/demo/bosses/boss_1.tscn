@@ -1,0 +1,36 @@
+[gd_scene load_steps=11 format=3 uid="uid://deg7o2or7hfh5"]
+
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_k87ii"]
+[ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/blob.blend" id="2_n8kln"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_4bap8"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="4_4b73r"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="5_dve33"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="6_1lbkl"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="7_0w68n"]
+[ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/demo/bosses/boss_1.tres" id="8_704m5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ucadb"]
+radius = 1.56864
+
+[sub_resource type="Resource" id="Resource_lweek"]
+script = ExtResource("6_1lbkl")
+aggression = 0.0
+intelligence = 0.0
+transmutation_bias = 0.0
+dialog_ids = Array[ExtResource("5_dve33")]([])
+heal_after_battle = true
+
+[node name="Boss1" instance=ExtResource("1_k87ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
+
+[node name="blob2" parent="." index="1" instance=ExtResource("2_n8kln")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+shape = SubResource("SphereShape3D_ucadb")
+
+[node name="StoryActor" parent="." index="3" instance=ExtResource("3_4bap8")]
+dialog_ids = Array[String](["BOSS1"])
+
+[node name="EnemyActor" parent="." index="4" instance=ExtResource("4_4b73r")]
+ai = SubResource("Resource_lweek")
+team = Array[ExtResource("7_0w68n")]([ExtResource("8_704m5")])

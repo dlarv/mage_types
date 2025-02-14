@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_cge1d"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
-[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="3_hkgsr"]
-[ext_resource type="Resource" uid="uid://b3n0dro8r3h8l" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/green_phobia.tres" id="4_01q54"]
-[ext_resource type="Script" path="res://src/items/Equipment.gd" id="5_yoa6o"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="3_1eowu"]
+[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="3_ni3h5"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_bvbrp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_rytj8"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pm1eu"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
 
 [sub_resource type="Resource" id="Resource_yqccd"]
@@ -16,6 +18,46 @@ STRUGGLE_BONUS = 2
 BIAS_BONUS = 2
 initial_offensive_affinity = 100
 initial_defensive_affinity = 100
+
+[sub_resource type="Resource" id="Resource_ed301"]
+script = ExtResource("5_rytj8")
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_0yygv"]
+script = ExtResource("4_bvbrp")
+attack_effect = SubResource("Resource_ed301")
+chance = 1.0
+effect_target = 1
+_element = "blank"
+
+[sub_resource type="Resource" id="Resource_qo41q"]
+resource_name = "Hit"
+script = ExtResource("6_pm1eu")
+effects = Array[ExtResource("4_bvbrp")]([SubResource("Resource_0yygv")])
+cost = 5
+name = "Hit"
+animation = ExtResource("3_1eowu")
+_element = "orange"
+priority = 0
+attack_range = 0
+target = 3
+details = ""
+
+[sub_resource type="Resource" id="Resource_0tf1n"]
+resource_name = "Hit"
+script = ExtResource("6_pm1eu")
+effects = Array[ExtResource("4_bvbrp")]([SubResource("Resource_0yygv")])
+cost = 5
+name = "Hit"
+animation = ExtResource("3_1eowu")
+_element = "purple"
+priority = 0
+attack_range = 0
+target = 3
+details = ""
 
 [sub_resource type="Resource" id="Resource_ii6l6"]
 script = ExtResource("7_b7k3c")
@@ -32,9 +74,8 @@ name = "Player"
 stat_manager = SubResource("Resource_ii6l6")
 hp = 200
 affinity_manager = SubResource("Resource_yqccd")
-_element1 = "blue"
-_element2 = "purple"
+_element1 = "blank"
+_element2 = "blank"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_hkgsr"), ExtResource("4_01q54")])
-equipment = Array[ExtResource("5_yoa6o")]([])
+attacks = Array[ExtResource("2_ynay7")]([SubResource("Resource_qo41q"), SubResource("Resource_0tf1n"), ExtResource("3_ni3h5")])
