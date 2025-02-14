@@ -83,8 +83,24 @@ Companion walks player thru battle UI, transmutations, and affinity.
 - Simple boss.
 - Player will try to hit it with their anti-magenta attack.
 - Reinforce transmutation mechanics.
-	- Boss gets attack buff anytime they become Orange or Yellow.
-	- So the player will try and turn the Boss Magenta, without turning them Orange or Yellow.
+	- Boss gets attack buff anytime they become Orange or Red (b/c they are holding the Sunset Orb).
+	- So the player will try and turn the Boss Magenta, without turning them Orange or Red.
+
+Player is given 3 attacks:
+- Orange Hit
+- Purple Hit
+- Magenta Strike: This attack is the one that does extra damage to Magenta types.
+These attacks offer the most reactions, allowing the player to prioritize transmutations without overwhelming them with options.
+
+Demo partner moveset:
+- Orange Hit
+- Purple Hit
+- Sting
+
+Boss has 3 attacks:
+- Orange Melee
+- Yellow Melee
+- Green Ranged
 ## Stasis Puzzles (Z1)
 - This room will be split into 2(3?) parts.
 - Puzzle (\#0): The upper section of the room will be blocked by a gate. To pass it, the player will have to place colored rocks onto matching pressure plates.
