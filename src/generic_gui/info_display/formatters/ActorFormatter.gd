@@ -31,10 +31,8 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	hp_label.text = "%d/%d" % [obj.current_hp, obj.hp]
 
 	# Display affinities.
-	for element in ElementManager.elements:
-		append_elemental_color(cost_label, element)
-		cost_label.append_text(": %d" % obj.affinity_manager.affinities[element])
-		cost_label.newline()
+	cost_label.append_text("Offensive: %d\n" % obj.affinity_manager.affinities[0])
+	cost_label.append_text("Defensive: %d" % obj.affinity_manager.affinities[1])
 
 	display_stats(obj)
 
@@ -52,6 +50,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 			effects_label.newline()
 	
 	for attack in obj.attacks:
+		if attack == null: continue
 		attacks_label.push_meta(attack)
 		attacks_label.append_text(attack.name)
 		attacks_label.pop() # Pop meta
