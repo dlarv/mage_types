@@ -16,7 +16,7 @@ var _label_settings: LabelSettings = null:
 			_label_settings.font_color = Color.BLACK
 		return _label_settings
 
-func _init(color:= Color.DARK_GRAY, resist := 1.0, isHidden:=false):
+func _init(color:= Color.DARK_GRAY, isHidden:=false):
 	is_hidden = isHidden
 	if is_hidden:
 		# Cell has nothing to hide:
@@ -33,7 +33,6 @@ func _init(color:= Color.DARK_GRAY, resist := 1.0, isHidden:=false):
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_vertical = Control.SIZE_EXPAND_FILL
 
-	if resist == 1.0: return 
 
 	var text := Label.new()
 	text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -41,11 +40,6 @@ func _init(color:= Color.DARK_GRAY, resist := 1.0, isHidden:=false):
 
 	text.label_settings = _label_settings
 	text.set_anchors_preset(Control.LayoutPreset.PRESET_FULL_RECT)
-
-	if resist < 1.0:
-		text.text = "--"
-	else:
-		text.text = "++"
 
 	add_child(text)
 

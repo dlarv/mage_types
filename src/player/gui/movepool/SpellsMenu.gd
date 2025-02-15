@@ -36,7 +36,7 @@ func setup(actor: BattleActor) -> void:
 
 
 func _on_moveset_slot_pressed(isEmpty: bool, index: int) -> void:
-	display.allow_forgetting = len(_actor.attacks.filter(func(x): x != null)) > 0
+	display.allow_forgetting = len(_actor.attacks.filter(func(x): return x != null)) > 0
 
 	if isEmpty:
 		tab_container.current_tab = 1

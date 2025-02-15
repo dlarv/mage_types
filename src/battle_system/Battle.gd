@@ -193,15 +193,11 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	if newType != null:
 		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e1, ea, newType.get_bb_code_name()])
 
-		var vals := ElementManager.get_side_effect(target.element1, action.element)
-		var buff = vals[0]
-		# var debuff = vals[1]
+		var buff := ElementManager.get_side_effect(target.element1, action.element)
 
-		if buff != null:
-			buff.apply_effect(target)
-			msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
-		# if debuff != null:
-		# 	msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
+		# if buff != null:
+		buff.apply_effect(target)
+		msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
 
 		target.set_element(0, newType)
 		var msg2 := "\n".join(target.get_and_flush_msgs())
@@ -216,15 +212,11 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	if newType != null:
 		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e2, ea, newType.get_bb_code_name()])
 
-		var vals := ElementManager.get_side_effect(target.element2, action.element)
-		var buff = vals[0]
-		# var debuff = vals[1]
+		var buff := ElementManager.get_side_effect(target.element2, action.element)
 
-		if buff != null:
-			buff.apply_effect(target)
-			msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
-		# if debuff != null:
-		# 	msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
+		# if buff != null:
+		buff.apply_effect(target)
+		msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
 
 		target.set_element(1, newType)
 		var msg2 := "\n".join(target.get_and_flush_msgs())
@@ -246,14 +238,11 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		e2 = target.element2.get_bb_code_name()
 		msg.append("The target %s's %s reacted with it's %s type to make %s." % [target.name, e1, e2, newType.get_bb_code_name()])
 
-		var vals := ElementManager.get_side_effect(target.element1, target.element2)
-		var buff = vals[0]
-		# var debuff = vals[1]
-		if buff != null:
-			buff.apply_effect(target)
-			msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
-		# if debuff != null:
-		# 	msg.append("This reaction had side effects! %s" % debuff.apply_effect(target))
+		var buff := ElementManager.get_side_effect(target.element1, target.element2)
+
+		# if buff != null:
+		buff.apply_effect(target)
+		msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
 
 		target.set_element(0, newType)
 		var msg2 := "\n".join(target.get_and_flush_msgs())

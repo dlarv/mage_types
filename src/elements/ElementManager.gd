@@ -61,40 +61,6 @@ func test_transmutations()-> void:
 
 			total = total and res == actualResults[i][j]
 
-
-func test_resistances() -> void:
-	var g := resistance_mod
-	var r := weakness_mod
-	var b := 1
-
-	var actualResults = [
-		# Blue
-		[ b, b, g, g, r, b, r, b ],
-		# Purple
-		[ r, r, g, r, b, b, b, g ],
-		# Magenta
-		[ g, g, b, g, b, b, b, g ],
-		# Red
-		[ r, b, r, b, b, g, b, b ],
-		# Orange
-		[ b, r, r, b, b, g, b, r ],
-		# Yellow
-		[ g, r, b, g, b, g, b, g ],
-		# Green
-		[ g, r, g, r, r, r, r, g ],
-		# Cyan
-		[ b, b, g, g, g, r, b, b],
-	]
-	var headers = [ Blue, Purple, Magenta, Red, Orange, Yellow, Green, Cyan ]
-	var total = true
-	for i in range(8):
-		for j in range(8):
-			var res = get_resistance(headers[i], headers[j])
-			if res != actualResults[i][j]:
-				push_warning("%s + %s != %f, == %f" % [headers[i].name, headers[j].name, actualResults[i][j], res ])
-			total = total and res == actualResults[i][j]
-
-
 func test_side_effects() -> void:
 	var a := attack_buff
 	var d := defense_buff
@@ -124,7 +90,7 @@ func test_side_effects() -> void:
 	var headers = [ Red, Green, Blue, Yellow, Cyan, Magenta, Orange, Purple ]
 	for i in range(8):
 		for j in range(8):
-			var res = get_side_effect(headers[i], headers[j])[0]
+			var res = get_side_effect(headers[i], headers[j])
 			if res != actualResults[i][j]:
 				push_warning("%s + %s != %s, == %s" % [
 						headers[i].name, 
@@ -133,13 +99,13 @@ func test_side_effects() -> void:
 						res.name if res != null else "null"
 						])
 			total = total and res == actualResults[i][j]
+	print("Side effects test: %s" % str(total)) 
 
 
 func _enter_tree() -> void:
 	force_load()
 
 	test_transmutations()
-	# test_resistances()
 	test_side_effects()
 	
 func force_load()-> void:
@@ -164,10 +130,6 @@ func force_load()-> void:
 			"cyan": 
 				Cyan = element
 				
-	# Temp vars for brevity
-	var wm := 1.0
-	var rm := 1.0 
-
 	matchups = {}
 	var blue = ElementalNode.new(Blue)
 	matchups[Blue.name] = blue
@@ -187,76 +149,50 @@ func force_load()-> void:
 	matchups[Cyan.name] = cyan
 
 	# B
-	blue.add_resistance_connection(Purple, wm)
-	blue.add_connection(Magenta, purple, attack_buff, rm)
-	blue.add_connection(Red, magenta, speed_buff, wm)
+	blue.add_connection(Magenta, purple, attack_buff)
+	blue.add_connection(Red, magenta, speed_buff)
 	blue.add_connection(Orange, purple,	 attack_buff)
-	blue.add_resistance_connection(Yellow, rm)
-	blue.add_connection(Green, cyan, speed_buff, rm)
-	# C
+	blue.add_connection(Green, cyan, speed_buff)
 
 	# B
-	purple.add_resistance_connection(Purple, wm)
-	purple.add_connection(Magenta, blue, defense_buff, rm)
+	purple.add_connection(Magenta, blue, defense_buff)
 	purple.add_connection(Red, magenta,	 defense_buff)
-	purple.add_connection(Orange, magenta, defense_buff, wm)
-	purple.add_resistance_connection(Yellow, wm)
-	purple.add_connection(Green, cyan, defense_buff, wm)
+	purple.add_connection(Orange, magenta, defense_buff)
+	purple.add_connection(Green, cyan, defense_buff)
 	purple.add_connection(Cyan, blue, defense_buff)
 
-	magenta.add_connection(Blue, purple, attack_buff, rm)
-	magenta.add_connection(Purple, blue, speed_buff, rm)
 	# M
-	magenta.add_resistance_connection(Red, wm)
-	magenta.add_connection(Orange, red,	 attack_buff, wm)
+	magenta.add_connection(Blue, purple, attack_buff)
+	magenta.add_connection(Purple, blue, speed_buff)
+	magenta.add_connection(Orange, red,	 attack_buff)
 	magenta.add_connection(Yellow, red,	 attack_buff)
-	magenta.add_resistance_connection(Green, rm)
-	magenta.add_connection(Cyan, blue, speed_buff, rm)
+	magenta.add_connection(Cyan, blue, speed_buff)
 
-	red.add_connection(Blue, magenta, defense_buff, rm)
-	red.add_connection(Purple, magenta,	 defense_buff, wm)
-	red.add_resistance_connection(Magenta, rm)
-	# R_
-	# O_
-	red.add_connection(Yellow, orange, speed_buff, rm)
-	red.add_connection(Green, yellow, defense_buff, wm)
-	red.add_resistance_connection(Cyan, rm)
+	# R
+	red.add_connection(Blue, magenta, defense_buff)
+	red.add_connection(Purple, magenta,	 defense_buff)
+	red.add_connection(Yellow, orange, speed_buff)
+	red.add_connection(Green, yellow, defense_buff)
 
-	orange.add_connection(Blue, purple,	 speed_buff, wm)
+	orange.add_connection(Blue, purple,	 speed_buff)
 	orange.add_connection(Purple, magenta, defense_buff)
 	orange.add_connection(Magenta, red,	 speed_buff)
-	# R
-	# O
 	orange.add_connection(Yellow, red, speed_buff)
-	orange.add_connection(Green, yellow, defense_buff, wm)
-	orange.add_resistance_connection(Cyan, rm)
+	orange.add_connection(Green, yellow, defense_buff)
 
-	# B
-	# P
 	yellow.add_connection(Magenta, red,	 attack_buff)
-	yellow.add_connection(Red, orange, attack_buff, rm)
-	yellow.add_connection(Orange, red, attack_buff, rm)
-	yellow.add_resistance_connection(Yellow, rm)
-	yellow.add_resistance_connection(Green, wm)
-	yellow.add_connection(Cyan, green, attack_buff, wm)
+	yellow.add_connection(Red, orange, attack_buff)
+	yellow.add_connection(Orange, red, attack_buff)
+	yellow.add_connection(Cyan, green, attack_buff)
 
-	green.add_connection(Blue, cyan, defense_buff, wm)
+	green.add_connection(Blue, cyan, defense_buff)
 	green.add_connection(Purple, cyan, defense_buff)
-	# M
 	green.add_connection(Red, yellow, defense_buff)
 	green.add_connection(Orange, yellow, defense_buff)
-	# Y
-	green.add_resistance_connection(Green, wm)
-	# C
 
-	# B
-	cyan.add_connection(Purple, blue, speed_buff, rm)
-	cyan.add_connection(Magenta, blue, speed_buff, rm)
-	# R
-	cyan.add_resistance_connection(Orange, wm)
-	cyan.add_connection(Yellow, green, attack_buff, rm)
-	cyan.add_resistance_connection(Green, rm)
-	# C
+	cyan.add_connection(Purple, blue, speed_buff)
+	cyan.add_connection(Magenta, blue, speed_buff)
+	cyan.add_connection(Yellow, green, attack_buff)
 
 func get_element_from_name(name: String) -> ElementalType:
 	# Ensure basic typos won't interfere.
@@ -279,14 +215,9 @@ func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalT
 	var node = matchups[element1.name]
 	return node.get_result(element2)
 
-func get_resistance(element1: ElementalType, element2: ElementalType) -> float:
-	if(element1.name == "Blank" || element2.name == "Blank"): return 1
-
-	var node = matchups[element2.name]
-	return node.get_resistance(element1)
-
-func get_side_effect(a: ElementalType, b: ElementalType) -> Array:
-	if(a == Blank || b == Blank): return [null, null]
+func get_side_effect(a: ElementalType, b: ElementalType) -> AttackEffect:
+	if a.is_blank() || b.is_blank(): 
+		return null
 	return matchups[a.name].get_effect(b)
 
 func get_all_matchups() -> Array:
@@ -324,14 +255,9 @@ class ElementalNode:
 	func _init(element: ElementalType) -> void:
 		self.element = element
 	
-	func add_connection(element: ElementalType, result: ElementalNode, buff: AttackEffect, resist:=1.0) -> void:
-		edges[element] = Edge.new(buff, result, resist)
+	func add_connection(element: ElementalType, result: ElementalNode, buff: AttackEffect) -> void:
+		edges[element] = Edge.new(buff, result)
 	
-	func add_resistance_connection(element: ElementalType, resist: float) -> void:
-		if element in edges.keys(): 
-			edges.resistance = resist
-			return
-		edges[element] = Edge.new(null, null, resist)
 
 	func get_result(other: ElementalType) -> ElementalType:
 		var edge = edges.get(other, null)
@@ -339,15 +265,11 @@ class ElementalNode:
 			return null
 		return edge.result.element
 	
-	func get_effect(other: ElementalType) -> Array:
+	func get_effect(other: ElementalType) -> AttackEffect:
 		var edge = edges.get(other, null)
-		if edge == null : return [null, null]
-		return [edge.buff_effect, null]
-
-	func get_resistance(other: ElementalType) -> float:
-		var edge = edges.get(other)
-		if edge == null: return 1
-		return edge.resistance
+		if edge == null: 
+			return null
+		return edge.buff_effect
 
 	## Find the edge connecting this and end, then return its effect.
 	func find_effect_for(end: ElementalType) -> AttackEffect:
@@ -356,11 +278,9 @@ class ElementalNode:
 		return null
 
 class Edge:
-	var buff_effect: AttackEffect	
+	var buff_effect: AttackEffect
 	var result: ElementalNode 
-	var resistance: float
 
-	func _init(buffEffect: AttackEffect, end: ElementalNode, resist: float) -> void:
+	func _init(buffEffect: AttackEffect, end: ElementalNode) -> void:
 		self.buff_effect = buffEffect
-		self.resistance = resist
 		result = end

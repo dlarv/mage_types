@@ -55,7 +55,6 @@ func create_grid(mirror:=false) -> void:
 		var i = 1
 		for colElement in _elements:
 			var result = ElementManager.get_matchup(rowElement, colElement)
-			var resist := ElementManager.get_resistance(colElement, rowElement)
 			var color: Color 
 			var text := []
 
@@ -63,17 +62,12 @@ func create_grid(mirror:=false) -> void:
 				color = MatchupCell.ALT_GRAY
 			else:
 				color = result.main_color
-				var buff = ElementManager.get_side_effect(rowElement, colElement)[0].name
+				var buff = ElementManager.get_side_effect(rowElement, colElement).name
 				text.append("+%s" % buff)
 
 			var isHidden: bool = i <= skip
 
-			if resist > 1:
-				text.append("%s resists %s" % [ colElement.name, rowElement.name])
-			elif resist < 1:
-				text.append("%s beats %s" % [ rowElement.name, colElement.name])
-
-			rect = MatchupCell.new(color, resist, isHidden)
+			rect = MatchupCell.new(color, isHidden)
 			_matchups[[rowElement, colElement]] = rect
 			rect.tooltip_text = "\n".join(text)	
 			grid.add_child(rect)
@@ -94,11 +88,10 @@ func _on_check_box_toggled(toggledOn: bool) -> void:
 
 
 func _on_side_effect_updated(e1: ElementalType, e2: ElementalType) -> void:
-	var vals = ElementManager.get_side_effect(e1, e2)
+	var val = ElementManager.get_side_effect(e1, e2)
 	var text := ""
-	var buff = vals[0].name if vals[0] != null else "none"
-	var debuff = vals[1].name if vals[1] != null else "none"
-	text = "+%s / -%s" % [ buff, debuff ]
+	var buff = val.name if val != null else "none"
+	text = "+%s" % buff
 
 	_matchups[[e1, e2]].tooltip_text = text
 
@@ -116,4 +109,3 @@ func _on_highlight_checkbox_toggled(toggledOn:bool) -> void:
 
 	for child in grid.get_children():
 		child.focus(true)
-

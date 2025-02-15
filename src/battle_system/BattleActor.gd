@@ -70,10 +70,11 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 @export var attacks: Array[BattleAction] = []
 @export var equipment: Equipment = null:
 	set(value):
-		if equipment != null:
+		if not Engine.is_editor_hint() and equipment != null:
 			equipment.unequip(self)
 		equipment = value
-		equipment.equip(self)
+		if not Engine.is_editor_hint() and value != null:
+			equipment.equip(self)
 @export var sprite_path: PackedScene
 var sprite : Sprite = null
 

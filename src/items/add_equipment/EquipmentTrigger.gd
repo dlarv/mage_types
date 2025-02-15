@@ -1,6 +1,7 @@
 extends Resource
 class_name EquipmentTrigger
 
+@warning_ignore("unused_signal")
 signal activated(msg: String)
 
 # virtual
