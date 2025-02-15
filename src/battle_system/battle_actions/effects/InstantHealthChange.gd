@@ -15,7 +15,7 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAct
 	else:
 		target.heal(health, allow_overflow)
 
-	return "%s %s %d hp!" % [ user.name, verb, health ]
+	return "%s %s %d hp!" % [ target.name, verb, health ]
 
 func get_dmg_potential(user: BattleActor, action: BattleAction, target: BattleActor) -> int:
 	return -int(target.hp * strength) 
