@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=17 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_cge1d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_rytj8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pm1eu"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
+[ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="8_kxgh3"]
 
 [sub_resource type="Resource" id="Resource_yqccd"]
 script = ExtResource("1_cge1d")
@@ -79,3 +80,4 @@ _element2 = "blank"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
 attacks = Array[ExtResource("2_ynay7")]([SubResource("Resource_qo41q"), SubResource("Resource_0tf1n"), ExtResource("3_ni3h5")])
+equipment = ExtResource("8_kxgh3")

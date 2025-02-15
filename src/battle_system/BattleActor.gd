@@ -4,6 +4,7 @@ class_name BattleActor
 
 enum Stats { MELEE_ATTACK, RANGED_ATTACK, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, EVASION, HP, MANA, STAMINA }
 
+signal battle_setup_completed()
 signal was_just_defeated()
 signal status_effect_added(effect)
 signal status_effects_removed(effect)
@@ -90,9 +91,11 @@ var is_defeated: bool:
 var aleady_defeated: bool = false
 
 var _msgs := []
+# Dict<StringName, Callable> 
+var _func_overrides := {}
 
-func setup() -> void:
-	pass
+func setup() -> void: 
+	battle_setup_completed.emit()
 
 func get_and_flush_msgs() -> Array:
 	var output := _msgs
@@ -189,6 +192,9 @@ func get_defense_stat(action: BattleAction) -> float:
 
 ## Returns actual amount of damage applied, after accounting for status conditions.
 func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
+	if _func_overrides.has(apply_damage.get_method()):
+		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking)
+
 	var blocking = null
 	if dmg > 0 and allowBlocking:
 		blocking = statuses.blocking
@@ -217,6 +223,9 @@ func heal(dmg: int, allowOverflow: bool=false) -> int:
 
 
 func add_status_effect(effect: StatusEffect) -> void:
+	if _func_overrides.has(add_status_effect.get_method()):
+		_func_overrides.get(add_status_effect.get_method()).call(effect)
+		return 
 	Logger.append_log(Logger.LogType.BATTLE, "%s was applied to %s." % [ effect.name, name ])
 	if effect is StatChange:
 		stat_manager.add(effect, name)
@@ -237,15 +246,23 @@ func has_status_effect(effect: StatusEffect) -> bool:
 ## If amount > affinity, return affinity / amount.
 ## If amount == 0, character had no affinity to begin with
 func lose_affinity(element: ElementalType, amount: int) -> float:
+	if _func_overrides.has(lose_affinity.get_method()):
+		return _func_overrides.get(lose_affinity.get_method()).call(element, amount)
 	return affinity_manager.lose_affinity(element, amount)
 
 func add_affinity(element: ElementalType, amount: int) -> void:
+	if _func_overrides.has(add_affinity.get_method()):
+		_func_overrides.get(add_affinity.get_method()).call(element, amount)
+		return 
 	affinity_manager.add_affinity(element, amount)
 
 func get_affinity_for(element: ElementalType) -> float:
 	return float(affinity_manager.get_affinity(element))
 
 func try_revert_to_bias()-> bool:
+	if _func_overrides.has(try_revert_to_bias.get_method()):
+		return _func_overrides.get(try_revert_to_bias.get_method()).call()
+
 	if elemental_bias.is_blank(): return false
 	if element1 == elemental_bias or element2 == elemental_bias: return false
 	var rand = randf()
@@ -259,6 +276,9 @@ func list_status_effects() -> Array:
 	return statuses.list()
 
 func resolve_end_of_turn()-> void:
+	if _func_overrides.has(resolve_end_of_turn.get_method()):
+		_func_overrides.get(resolve_end_of_turn.get_method()).call()
+		return 
 	# Calc poison and healing.
 	var mod = 0
 	var poison = statuses.poison
@@ -286,3 +306,9 @@ func resolve_end_of_turn()-> void:
 
 func has_phobia(element: ElementalType) -> bool:
 	return statuses.check_phobic(element) != null
+
+func add_func_override(old: Callable, new: Callable) -> void:
+	_func_overrides[old.get_method()] = new
+
+func remove_func_override(old: Callable) -> void:
+	_func_overrides.erase(old.get_method())
