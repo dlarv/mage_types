@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=11 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://cj7rk23vvyppe"]
 
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_r1sef"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_t6yc2"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_5633o"]
 [ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="4_2oeie"]
-[ext_resource type="Script" path="res://src/items/Equipment.gd" id="6_5s18h"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
 
 [sub_resource type="Resource" id="Resource_wi5xr"]
@@ -38,4 +37,3 @@ _element2 = "cyan"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
 attacks = Array[ExtResource("2_t6yc2")]([ExtResource("2_cxfsv"), ExtResource("3_5633o"), ExtResource("4_2oeie"), null, null])
-equipment = Array[ExtResource("6_5s18h")]([])

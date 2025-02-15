@@ -1,33 +1,21 @@
-@tool
-extends Item 
-class_name Equipment 
+extends Item
+class_name Equipment
 
-@export var effects: Array[EquipmentEffect]:
-	set(value):
-		effects = value
-		for effect in effects:
-			if not effect.activated.is_connected(_on_activated):
-				effect.activated.connect(_on_activated)
 var _connected_to: BattleActor = null
 var _msgs := []
 
-
-func equip(battleActor: BattleActor) -> void:
+# virtual
+func equip(actor: BattleActor) -> void: 
 	if _connected_to != null:
-		if _connected_to == battleActor: 
+		if _connected_to == actor: 
 			return
 		else:
 			unequip(_connected_to)
-	_connected_to = battleActor
+	_connected_to = actor
 
-	for effect in effects:
-		effect.equip(battleActor)
-
-func unequip(battleActor: BattleActor) -> void:
+# virtual
+func unequip(actor: BattleActor) -> void: 
 	_connected_to = null
-
-	for effect in effects:
-		effect.unequip(battleActor)
 
 func _on_activated(msg: String) -> void:
 	_msgs.append(msg)

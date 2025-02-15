@@ -68,7 +68,12 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 		elemental_bias = value
 @export var bias_reversion_threshold := 0.4
 @export var attacks: Array[BattleAction] = []
-@export var equipment: Equipment = null
+@export var equipment: Equipment = null:
+	set(value):
+		if equipment != null:
+			equipment.unequip(self)
+		equipment = value
+		equipment.equip(self)
 @export var sprite_path: PackedScene
 var sprite : Sprite = null
 
@@ -86,8 +91,7 @@ var aleady_defeated: bool = false
 var _msgs := []
 
 func setup() -> void:
-	if equipment != null:
-		equipment.equip(self)
+	pass
 
 func get_and_flush_msgs() -> Array:
 	var output := _msgs

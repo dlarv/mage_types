@@ -1,5 +1,5 @@
 extends Resource
-class_name EquipmentEffect
+class_name AddEquipmentEffect
 
 signal activated(msg: String)
 
@@ -8,6 +8,7 @@ signal activated(msg: String)
 
 var _actor: BattleActor
 
+# override
 func equip(actor: BattleActor) -> void:
 	trigger.equip(actor, bonus)
 	_actor = actor
@@ -16,11 +17,14 @@ func equip(actor: BattleActor) -> void:
 		trigger.activated.connect(_on_trigger)
 		
 
+# override
 func unequip(actor: BattleActor) -> void:
 	_actor = null 
 	trigger.unequip(actor, bonus)
 
 
 func _on_trigger(msg: String) -> void:
-	msg += "\n" + bonus.apply_to(_actor)
+	if len(msg) > 0:
+		msg += "\n"
+	msg += bonus.apply_to(_actor)
 	activated.emit(msg)
