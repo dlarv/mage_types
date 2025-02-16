@@ -41,6 +41,11 @@ func _enter_tree():
 
 func _ready() -> void:
 	super._ready()
+	if is_blocking:
+		$PlayerBlocker/CollisionShape3D.disabled = false
+	else:
+		$PlayerBlocker/CollisionShape3D.disabled = true
+
 
 func _physics_process(delta: float) -> void:
 	if _player != null:
@@ -55,9 +60,8 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 	elif body is CharacterBody3D:
 		if is_blocking:
 			body.outside_forces = -body.velocity * 3
-		else:
-			body.outside_forces += transform.basis.y * strength
-			_player = body
+		body.outside_forces += transform.basis.y * strength
+		_player = body
 
 	
 func _on_stream_top_hit_box_entered(body: Node3D) -> void:
@@ -75,6 +79,17 @@ func _on_stream_hit_box_exited(body: Node3D) -> void:
 		body.constant_force = Vector3.ZERO
 	elif body is CharacterBody3D:
 		_player = null
+
+func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
+	if not super.set_element(e, randVal, force): return false
+
+	if is_blocking:
+		$PlayerBlocker/CollisionShape3D.disabled = false
+	else:
+		$PlayerBlocker/CollisionShape3D.disabled = true
+
+	return true
+
 
 # Override
 func set_stasis() -> void:
