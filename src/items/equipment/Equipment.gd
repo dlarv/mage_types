@@ -3,7 +3,7 @@ class_name Equipment
 
 @export var effects: Array[EquipmentEffect]:
 	set(value):
-		effects = value
+		effects = value.filter(func(val): return val != null)
 		if Engine.is_editor_hint(): return
 		for effect in effects:
 			if not effect.activated.is_connected(_on_activated):

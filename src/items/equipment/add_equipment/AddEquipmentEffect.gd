@@ -1,8 +1,6 @@
 extends EquipmentEffect
 class_name AddEquipmentEffect
 
-signal activated(msg: String)
-
 @export var trigger: EquipmentTrigger
 @export var bonus: EquipmentBonus
 

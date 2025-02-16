@@ -110,6 +110,7 @@ func try_tunnel() -> void:
 	if tunnel_override == null: return
 
 func _get_mesh() -> MeshInstance3D:
+	if find_child("MeshInstance3D") == null: return null
 	return $MeshInstance3D
 
 func _flicker_collider() -> void:

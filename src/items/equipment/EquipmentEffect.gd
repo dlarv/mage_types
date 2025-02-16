@@ -1,6 +1,9 @@
 extends Resource
 class_name EquipmentEffect
 
+@warning_ignore("unused_signal")
+signal activated(msg: String)
+
 #virtual
 func equip(actor: BattleActor) -> void: pass
 #virtual
