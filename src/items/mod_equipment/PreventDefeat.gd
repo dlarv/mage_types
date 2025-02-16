@@ -1,9 +1,6 @@
 extends ModEquipmentEffect
 class_name PreventDefeat
 
-const SIGNAL_NAME := "death_averted"
-const META_NAME := "used_death_averted"
-
 var _actor: BattleActor
 var _death_averted := false
 
@@ -17,6 +14,7 @@ func equip(actor: BattleActor) -> void:
 func unequip(actor: BattleActor) -> void:
 	actor.battle_setup_completed.disconnect(setup)
 	actor.remove_func_override(actor.apply_damage)
+	_actor = null
 
 func setup() -> void:
 	_death_averted = false
@@ -35,7 +33,7 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 		_actor.current_hp -= dmg
 		if _actor.current_hp <= 0 and not _actor.aleady_defeated:
 			if not _death_averted:
-				self.activated.emit("")
+				self.activated.emit("They survived the attack!")
 				_actor.current_hp = 1
 				_death_averted = true
 			else:

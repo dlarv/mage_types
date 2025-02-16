@@ -1,6 +1,7 @@
 extends Resource
 class_name ModEquipmentEffect
 
+@warning_ignore("unused_signal")
 signal activated(msg: String)
 
 #virtual
