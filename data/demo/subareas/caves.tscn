@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkhryrwbn73l3"]
+[gd_scene load_steps=3 format=3 uid="uid://bkhryrwbn73l3"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
+[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="2_e8x54"]
 
 [node name="Caves" type="Node3D"]
 
@@ -145,3 +146,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -58)
 operation = 2
 size = Vector3(3, 5, 3)
 material = ExtResource("1_b2eha")
+
+[node name="Boss2" parent="." instance=ExtResource("2_e8x54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.502952, -46)

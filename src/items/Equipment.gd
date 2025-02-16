@@ -18,7 +18,8 @@ func unequip(actor: BattleActor) -> void:
 	_connected_to = null
 
 func _on_activated(msg: String) -> void:
-	_msgs.append(msg)
+	if len(msg) > 0:
+		_msgs.append(msg)
 
 func get_and_flush_msgs() -> Array:
 	var output := _msgs

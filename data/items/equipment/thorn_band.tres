@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ModEquipment" load_steps=3 format=3 uid="uid://8av0pai6ayun"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_fai67"]
+[ext_resource type="Script" path="res://src/items/ModEquipment.gd" id="2_ypaho"]
+
+[resource]
+script = ExtResource("2_ypaho")
+name = "Thorn Band"
+requirements = Array[ExtResource("1_fai67")]([])
+details = ""
+tags = []

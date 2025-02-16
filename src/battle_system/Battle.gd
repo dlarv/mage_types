@@ -88,6 +88,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		var flinch = action.actor.flinching
 		if flinch != null:
 			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
+			action.actor.turn_ended.emit()
 			continue
 
 		# This means a character is defeated.
@@ -150,6 +151,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		var a = allies if action.team_index == 0 else enemies
 		var o = enemies if action.team_index == 0 else allies
 		action.actor.resolve_end_of_turn(a, o)
+		action.actor.turn_ended.emit()
 		msg = "\n".join(action.actor.get_and_flush_msgs())
 		if len(msg) > 0:
 			await gui.display_message(msg)
@@ -157,6 +159,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			# e.g. if an actor was defeated by poison.
 			endBattle = await _check_if_battle_ended()
 			if endBattle: return
+
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
 
@@ -182,7 +185,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:
 	var stasis = target.stasis
 	if stasis != null:
-		await gui.display_message(stasis.message)
+		# await gui.display_message(stasis.message)
 		return
 
 	var msg := []
