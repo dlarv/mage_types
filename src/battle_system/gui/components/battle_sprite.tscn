@@ -66,5 +66,6 @@ transform = Transform3D(-2.39347e-08, -3.65761e-08, -1, -0.836764, 0.547563, 0, 
 [connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]
+[connection signal="pin_selected" from="PinManager" to="." method="_on_pin_selected"]
 
 [editable path="PinManager"]
