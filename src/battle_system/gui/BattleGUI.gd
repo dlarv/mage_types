@@ -40,8 +40,6 @@ func init_allies(allies: Array) -> void:
 
 	for actor in allies:
 		var display = ally_display_parent.add_display(actor)
-		# W/o this delay, get_target_position() gives the wrong answer.
-		await get_tree().create_timer(.1).timeout
 	
 	ally_display_parent.highlight(0)
 
@@ -49,8 +47,6 @@ func init_enemies(enemies: Array) -> void:
 	self.enemies = enemies
 	for actor in enemies:
 		var display = enemy_display_parent.add_display(actor)
-		# W/o this delay, get_target_position() gives the wrong answer.
-		await get_tree().create_timer(.1).timeout
 
 func display_message(msg: Variant) -> void:
 	_accept_messages = false

@@ -1,22 +1,17 @@
 extends Control
 class_name BattleActorDisplay 
 
-signal selected(actor)
 signal status_effect_icon_pressed(effect)
 
-@export var highlight_display: TextureRect 
 @export var name_label: Label 
 @export var health_bar: HSlider 
 @export var hp_label: Label 
-@export var sprite_display: TextureRect 
 @export var status_effect_icons: Control 
 @export var stat_change_display: StatChangeDisplay 
 @export var selector_button: Button 
 
 var actor: BattleActor 
 
-var tint: Color = Color.WHITE
-# @export var sprite: Sprite 
 var total_hp: float 
 # Dict<string, Node>
 var icons := {}
@@ -27,12 +22,7 @@ func setup(actor: BattleActor):
 	hp_label.text = "%d/%d" % [actor.current_hp, actor.hp ]
 	total_hp = actor.hp
 
-	selector_button.pressed.connect(func():
-		if not selector_button.is_selectable: return
-		selected.emit(actor))
-
 	self.actor = actor
-	selector_button.actor = actor
 
 	actor.was_just_defeated.connect(set_defeated)
 	actor.damage_applied.connect(set_health)

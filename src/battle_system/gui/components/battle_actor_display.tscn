@@ -1,19 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://deg4ffl4kkgel"]
+[gd_scene load_steps=7 format=3 uid="uid://deg4ffl4kkgel"]
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/BattleActorDisplay.gd" id="1_5ryt8"]
 [ext_resource type="PackedScene" uid="uid://d0u0yls8gquxd" path="res://src/battle_system/gui/components/stat_change_display.tscn" id="2_mxncc"]
-[ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_ygao2"]
-[ext_resource type="Script" path="res://src/battle_system/gui/components/ActorDisplaySelectorButton.gd" id="4_xy0og"]
-[ext_resource type="Script" path="res://src/battle_system/gui/Sprite.gd" id="5_hcp11"]
-
-[sub_resource type="Gradient" id="Gradient_207nu"]
-offsets = PackedFloat32Array(0.664653, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8n0jh"]
-gradient = SubResource("Gradient_207nu")
-fill = 2
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tdbtg"]
 outline_size = 10
@@ -28,10 +16,7 @@ bg_color = Color(0, 1, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omh3g"]
 bg_color = Color(0, 1, 0, 1)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wrilo"]
-size = Vector2(50, 50)
-
-[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("highlight_display", "name_label", "health_bar", "hp_label", "status_effect_icons", "stat_change_display", "selector_button")]
+[node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("name_label", "health_bar", "hp_label", "status_effect_icons", "stat_change_display")]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -39,27 +24,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 10
 size_flags_vertical = 10
 script = ExtResource("1_5ryt8")
-highlight_display = NodePath("TextureRect")
 name_label = NodePath("MarginContainer/VBoxContainer/MarginContainer/Name_Label")
 health_bar = NodePath("MarginContainer/VBoxContainer/HealthBar/HSlider")
 hp_label = NodePath("MarginContainer/VBoxContainer/HealthBar/Label")
 status_effect_icons = NodePath("MarginContainer/VBoxContainer/StatusEffects/GridContainer")
 stat_change_display = NodePath("MarginContainer/VBoxContainer/StatChangeDisplay")
-selector_button = NodePath("SelectorButton")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -47.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_8n0jh")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -120,27 +92,3 @@ size_flags_vertical = 8
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/StatusEffects"]
 layout_mode = 2
 columns = 4
-
-[node name="SelectorButton" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-show_behind_parent = true
-z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "asdf"
-script = ExtResource("4_xy0og")
-TransmutationHint = ExtResource("2_ygao2")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(100, 200)
-scale = Vector2(3.1, 3.1)
-texture = SubResource("PlaceholderTexture2D_wrilo")
-script = ExtResource("5_hcp11")
-
-[connection signal="mouse_entered" from="SelectorButton" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="SelectorButton" to="." method="_on_mouse_exited"]

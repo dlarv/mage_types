@@ -14,9 +14,9 @@ var shift_right: bool = false:
 		shift_right = value
 		if (display_parent == null): return
 		if value:
-			display_parent.anchors_preset = Control.PRESET_TOP_RIGHT
+			$CanvasLayer/MarginContainer.anchors_preset = Control.PRESET_TOP_RIGHT
 		else:
-			display_parent.anchors_preset = Control.PRESET_TOP_LEFT
+			$CanvasLayer/MarginContainer.anchors_preset = Control.PRESET_TOP_LEFT
 
 var length: int: 
 	get: return len(displays)

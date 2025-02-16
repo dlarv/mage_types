@@ -29,6 +29,7 @@ ranged_defense = NodePath("RangedDefense")
 speed = NodePath("Speed")
 
 [node name="MeleeAttack" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Melee Attack:"
@@ -36,6 +37,7 @@ texture = ExtResource("2_mnt8c")
 expand_mode = 1
 
 [node name="RangedAttack" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Ranged Attack:"
@@ -43,6 +45,7 @@ texture = ExtResource("3_q7lq3")
 expand_mode = 1
 
 [node name="MeleeDefense" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Melee Defense:"
@@ -50,6 +53,7 @@ texture = ExtResource("4_c0pfy")
 expand_mode = 1
 
 [node name="RangedDefense" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Ranged Defense:"
@@ -57,6 +61,7 @@ texture = ExtResource("2_ilxpf")
 expand_mode = 1
 
 [node name="Speed" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Speed:"
