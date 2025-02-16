@@ -87,8 +87,8 @@ func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
 	if actor == null:
 		return teamDisplay.global_position
 	
-	var display = teamDisplay.get_display(actor)
-	return display.get_target_position()
+	var sprite = teamDisplay.get_sprite(actor)
+	return sprite.get_target_position()
 
 func enable_player_controls(enable: bool) -> void:
 	playerControls.set_enabled(enable)

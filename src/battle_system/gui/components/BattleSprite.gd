@@ -69,6 +69,13 @@ func set_highlight(isHighlighted: bool) -> void:
 	else:
 		_indicator_mat.albedo_color =  Color(tint.r, tint.g, tint.b, 1 if isHighlighted else 0)
 
+func get_target_position() -> Vector2:
+	var cam := get_viewport().get_camera_3d()
+	var pos2D := cam.unproject_position(global_position)
+	pos2D.x += scale.x / 2
+	pos2D.y += scale.y / 2
+	return pos2D
+
 func _on_mouse_entered() -> void:
 	if is_selectable:
 		set_highlight(true)

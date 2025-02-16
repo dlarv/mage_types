@@ -70,15 +70,12 @@ func get_sprite_from_index(index: int) -> Node3D:
 		return sprites[index]
 	return null
 
-
 func get_sprite(actor: Variant) -> Node3D:
 	if(actor is int): return get_sprite_from_index(actor)
 	for sprite in sprites:
 		if sprite.actor == actor:
 			return sprite
 	return null
-
-	
 
 ## Allow the player to highlight and select one of the contained BattleActorDisplays.
 func select_target(isAttack: bool, element: ElementalType) -> void:
