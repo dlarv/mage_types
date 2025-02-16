@@ -80,7 +80,6 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 			equipment.equip(self)
 
 @export var sprite_path: PackedScene
-var sprite: Node3D = null
 
 var dissonant: StatusEffect: 
 	get: return statuses.check_dissonant()

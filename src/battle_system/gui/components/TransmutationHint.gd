@@ -45,6 +45,5 @@ func _process(delta: float) -> void:
 	if not is_active: return
 	# Adjust position of label to be floating above character's head.
 	var cam := get_viewport().get_camera_3d()
-	if cam == null: return
 	var pos2D := cam.unproject_position(_pos3D)
 	global_position = pos2D
