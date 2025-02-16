@@ -7,7 +7,6 @@ const TEAM_INDEX = 1
 
 @export var dialog_resource: DialogueData
 @export var dialog_ids: Array[BattleTalk]
-@export var heal_after_battle := true 
 
 var team := []
 
@@ -23,9 +22,6 @@ func setup(team: Array) -> void:
 
 func _on_battle_ended(playerWasDefeated: bool) -> void:
 	battle_ended.emit(playerWasDefeated)
-	if heal_after_battle:
-		for ally in team:
-			ally.current_hp = ally.hp
 
 func get_actions(otherTeam: Array) -> Array:
 	var actions := []

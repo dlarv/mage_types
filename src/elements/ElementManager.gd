@@ -101,7 +101,6 @@ func test_side_effects() -> void:
 			total = total and res == actualResults[i][j]
 	print("Side effects test: %s" % str(total)) 
 
-
 func _enter_tree() -> void:
 	force_load()
 

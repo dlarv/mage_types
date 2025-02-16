@@ -20,13 +20,13 @@ var xp: float = 0
 @export_category("Stats")
 var statuses := StatusEffectManager.new()
 @export var stat_manager := StatManager.new()
-@export
-var hp: int = 100:
+@export var hp: int = 100:
 	get: return hp 
 	set(value):
 		hp = value
 		current_hp = value
 var current_hp: int = 100
+@export var reset_hp_after_battle := true
 @export var affinity_manager = AffinityManager.new()
 
 
@@ -94,7 +94,11 @@ var _msgs := []
 # Dict<StringName, Callable> 
 var _func_overrides := {}
 
-func setup() -> void: 
+func setup(battle: Battle) -> void: 
+	battle.battle_ended.connect(func(playerWasDefeated): 
+		stat_manager.reset()
+		if reset_hp_after_battle: 
+			current_hp = hp)
 	battle_setup_completed.emit()
 
 func get_and_flush_msgs() -> Array:

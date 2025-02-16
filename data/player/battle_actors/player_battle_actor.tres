@@ -74,6 +74,7 @@ script = ExtResource("1_ay17s")
 name = "Player"
 stat_manager = SubResource("Resource_ii6l6")
 hp = 200
+reset_hp_after_battle = true
 affinity_manager = SubResource("Resource_yqccd")
 _element1 = "blank"
 _element2 = "blank"

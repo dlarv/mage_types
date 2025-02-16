@@ -97,6 +97,15 @@ func mod_base_stat(stat: Stat, amount: float, minAmount:=0.0) -> void:
 		Stat.EVASION: 
 			_base_evasion = max(_base_evasion + amount, minAmount)
 
+func reset() -> void:
+	_attack_mod = 0
+	_defense_mod = 0
+	_melee_attack_mod = 1
+	_ranged_attack_mod = 1
+	_melee_defense_mod = 1
+	_ranged_defense_mod = 1
+	_speed_mod = 1
+	_evasion_mod = 1
 
 func get_stat_mod(stat: Stat) -> float:
 	match stat:

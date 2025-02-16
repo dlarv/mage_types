@@ -31,10 +31,10 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 	self.enemies = enemies
 
 	for ally in allies:
-		ally.setup()
+		ally.setup(self)
 		ally.was_just_defeated.connect(func(): _defeated_allies += 1)
 	for enemy in enemies:
-		enemy.setup()
+		enemy.setup(self)
 		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
 
 	ai.setup(enemies)
@@ -191,11 +191,11 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	var ea := action.element.get_bb_code_name()
 
  	# Calculate primary + attack 
-	var newType := ElementManager.get_matchup(target.element1, action.element)
+	var newType = ElementManager.get_matchup(target.element1, action.element)
 	if newType != null:
 		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e1, ea, newType.get_bb_code_name()])
 
-		var buff := ElementManager.get_side_effect(target.element1, action.element)
+		var buff = ElementManager.get_side_effect(target.element1, action.element)
 
 		# if buff != null:
 		buff.apply_effect(target)
@@ -214,7 +214,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 	if newType != null:
 		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e2, ea, newType.get_bb_code_name()])
 
-		var buff := ElementManager.get_side_effect(target.element2, action.element)
+		var buff = ElementManager.get_side_effect(target.element2, action.element)
 
 		# if buff != null:
 		buff.apply_effect(target)
@@ -240,7 +240,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 		e2 = target.element2.get_bb_code_name()
 		msg.append("The target %s's %s reacted with it's %s type to make %s." % [target.name, e1, e2, newType.get_bb_code_name()])
 
-		var buff := ElementManager.get_side_effect(target.element1, target.element2)
+		var buff = ElementManager.get_side_effect(target.element1, target.element2)
 
 		# if buff != null:
 		buff.apply_effect(target)
