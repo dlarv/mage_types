@@ -201,6 +201,18 @@ _AffinityManager_: Resource:
 - Initial Blue Affinity: int
 - Element1 Counter: int
 - Element2 Counter: int
+
+>[!important] Equipment Changes (v0.3.4)
+>Added `_func_overrides`. This allows ModEquipment to replace methods inside of BattleActor with new ones. 
+>For instance, the item Willpower acts similar to the focus band from Pokemon, leaving the holder with 1hp the first time they would have been knocked out. This is done by replacing the BattleActor.apply_damage method with one that does the relevant checks.
+>
+>The following methods can be overridden:
+>- apply_damage()
+>- add_status_effect()
+>- add_affinity()
+>- lose_affinity()
+>- try_revert_to_bias()
+>- resolve_end_of_turn()
 ### Attack Builder Addon
 [[attack_builder|GUI Layout]]
 I want to make an interface to make creating new attacks, which can be exposed as an addon, as well as in-game (in a sandbox mode).

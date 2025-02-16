@@ -1,4 +1,4 @@
-***Current Version***: 0.3.1
+***Current Version***: 0.3.6
 # Todo
 - [ ] Refactor menu screen management to use stacks.
 - [ ] Add demo content.
@@ -8,17 +8,25 @@
 - [ ] Add textures and animations to demo.
 - [ ] Change battle gui to support 3D models instead of sprites.
 ## Known Bugs
-- [ ] Actor formatter is broken (if attack is null, it fails).
+- [x] Actor formatter is broken (if attack is null, it fails).
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".
+	- Cannot replicate?
 - [ ] Player normal map is inverted.
+- [ ] Shadow on blob texture.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.3.x
 Demo main track implemented. Player can play through the main story of the demo, but not necessarily any of the extra content.
 
 **STRY.x**
-- [ ] Battle actors for each boss created (x3).
-- [ ] Main puzzles designed, implemented, and tested (x3).
+- Battle actors for each boss created (x3).
+	- [x] Boss 1
+	- [ ] Boss 2
+	- [ ] Final Boss
+- Main puzzles designed and implemented (x3).
+	- [ ] Stasis
+	- [x] Catalyst
+	- [ ] Final
 - [ ] Demo partner tutorial dialog written.
 - [ ] Blocking and non-blocking dialog triggers implemented.
 **OVER.spel**

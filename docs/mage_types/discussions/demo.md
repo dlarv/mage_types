@@ -133,8 +133,9 @@ Place rock onto pressure plate.
 - Catalyst spell.
 ### Miniboss \#2
 - This boss will use the stasis status effect to hinder the player from transmuting it (and relying too heavily on their anti-magenta attack).
+	- This will be provided to them by their equipment (Stasis Shard).
 - Reinforce ~~weakness/resistance system~~ Offensive/Defensive types.
-	- Boss has ability which boosts defense/attack stats gained from side effects.
+
 ## Catalyst Puzzles (Z2)
 - Consists of 3 puzzles. 
 	- The first two will be optional. They're mostly to teach the player how the laser mirrors work. Solving them will unlock a chest?
