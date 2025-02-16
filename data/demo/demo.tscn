@@ -67,7 +67,7 @@ visible = false
 [node name="Overworld" type="Node3D" parent="World"]
 
 [node name="Player" parent="World/Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2065, 8.95849, -21.399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2065, 4.95849, -34.399)
 collision_mask = 5
 
 [node name="Camera3D" type="Camera3D" parent="World/Overworld/Player"]
