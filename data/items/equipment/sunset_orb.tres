@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="AddEquipment" load_steps=13 format=3 uid="uid://cwk4v4cvwgmus"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=14 format=3 uid="uid://cwk4v4cvwgmus"]
 
-[ext_resource type="Script" path="res://src/items/add_equipment/AddEquipmentEffect.gd" id="1_dd61b"]
-[ext_resource type="Script" path="res://src/items/add_equipment/bonuses/StatBonus.gd" id="2_pciia"]
+[ext_resource type="Script" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="1_dd61b"]
+[ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_twp2o"]
+[ext_resource type="Script" path="res://src/items/equipment/add_equipment/bonuses/StatBonus.gd" id="2_pciia"]
 [ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="2_whcob"]
-[ext_resource type="Script" path="res://src/items/AddEquipment.gd" id="3_bo7o4"]
+[ext_resource type="Script" path="res://src/items/equipment/Equipment.gd" id="3_bo7o4"]
 [ext_resource type="Resource" uid="uid://b4julle0iw81g" path="res://data/battle_system/status_effects/stat_changes/attack_up.tres" id="3_wljrg"]
-[ext_resource type="Script" path="res://src/items/add_equipment/triggers/ElementTrigger.gd" id="4_1nkck"]
+[ext_resource type="Script" path="res://src/items/equipment/add_equipment/triggers/ElementTrigger.gd" id="4_1nkck"]
 
 [sub_resource type="Resource" id="Resource_hmx35"]
 script = ExtResource("2_pciia")
@@ -39,7 +40,7 @@ bonus = SubResource("Resource_f8mby")
 
 [resource]
 script = ExtResource("3_bo7o4")
-effects = Array[ExtResource("1_dd61b")]([SubResource("Resource_mcfi2"), SubResource("Resource_b6iix")])
+effects = Array[ExtResource("1_twp2o")]([SubResource("Resource_mcfi2"), SubResource("Resource_b6iix"), null])
 name = "Sunset Orb"
 requirements = Array[ExtResource("2_whcob")]([])
 details = ""

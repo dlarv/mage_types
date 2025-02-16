@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="ModEquipment" load_steps=6 format=3 uid="uid://sgingeb41cun"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://sgingeb41cun"]
 
-[ext_resource type="Script" path="res://src/items/mod_equipment/ModEquipmentEffect.gd" id="1_squn5"]
-[ext_resource type="Script" path="res://src/items/mod_equipment/MatchingElementDynamic.gd" id="2_0nnol"]
+[ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_4hwlw"]
+[ext_resource type="Script" path="res://src/items/equipment/mod_equipment/MatchingElementDynamic.gd" id="2_0nnol"]
 [ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="2_mgbmb"]
-[ext_resource type="Script" path="res://src/items/ModEquipment.gd" id="3_imcfy"]
+[ext_resource type="Script" path="res://src/items/equipment/Equipment.gd" id="3_imcfy"]
 
 [sub_resource type="Resource" id="Resource_jyd0e"]
 script = ExtResource("2_0nnol")
@@ -15,7 +15,7 @@ targeted_stat = "both"
 
 [resource]
 script = ExtResource("3_imcfy")
-effects = Array[ExtResource("1_squn5")]([SubResource("Resource_jyd0e")])
+effects = Array[ExtResource("1_4hwlw")]([SubResource("Resource_jyd0e")])
 name = "Reactor Shard"
 requirements = Array[ExtResource("2_mgbmb")]([])
 details = ""

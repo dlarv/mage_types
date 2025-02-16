@@ -1,4 +1,4 @@
-extends Resource
+extends EquipmentEffect
 class_name ModEquipmentEffect
 
 @warning_ignore("unused_signal")

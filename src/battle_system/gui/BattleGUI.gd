@@ -57,7 +57,6 @@ func display_message(msg: Variant) -> void:
 	await messageBox.display_message_blocking(msg)
 	_accept_messages = true
 
-
 func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	if not _accept_messages: return
 	var msgLog = msg

@@ -1,6 +1,14 @@
 extends Item
 class_name Equipment
 
+@export var effects: Array[EquipmentEffect]:
+	set(value):
+		effects = value
+		if Engine.is_editor_hint(): return
+		for effect in effects:
+			if not effect.activated.is_connected(_on_activated):
+				effect.activated.connect(_on_activated)
+
 var _connected_to: BattleActor = null
 var _msgs := []
 
@@ -13,9 +21,14 @@ func equip(actor: BattleActor) -> void:
 			unequip(_connected_to)
 	_connected_to = actor
 
+	for effect in effects:
+		effect.equip(actor)
+
 # virtual
 func unequip(actor: BattleActor) -> void: 
 	_connected_to = null
+	for effect in effects:
+		effect.unequip(actor)
 
 func _on_activated(msg: String) -> void:
 	if len(msg) > 0:

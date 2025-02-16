@@ -1,12 +1,6 @@
 extends Equipment
 class_name ModEquipment
 
-@export var effects: Array[ModEquipmentEffect]:
-	set(value):
-		effects = value
-		for effect in effects:
-			if not effect.activated.is_connected(_on_activated):
-				effect.activated.connect(_on_activated)
 
 #override
 func equip(battleActor: BattleActor) -> void:

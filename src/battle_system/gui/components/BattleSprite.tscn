@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_ink3e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ivek1"]
+size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
 
@@ -15,11 +16,11 @@ script = ExtResource("1_jqqgr")
 transmutation_hint = NodePath("TransmutationHint")
 
 [node name="Primary" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1, 0)
 mesh = SubResource("BoxMesh_ivek1")
 
 [node name="Secondary" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0)
 mesh = SubResource("BoxMesh_ivek1")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]

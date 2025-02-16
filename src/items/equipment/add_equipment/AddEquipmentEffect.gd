@@ -1,4 +1,4 @@
-extends Resource
+extends EquipmentEffect
 class_name AddEquipmentEffect
 
 signal activated(msg: String)

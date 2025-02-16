@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="ModEquipment" load_steps=6 format=3 uid="uid://bbec0n6bcglhb"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://bbec0n6bcglhb"]
 
-[ext_resource type="Script" path="res://src/items/mod_equipment/ModEquipmentEffect.gd" id="1_otrc8"]
-[ext_resource type="Script" path="res://src/items/mod_equipment/PreventDefeat.gd" id="2_550x6"]
+[ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_gj31e"]
+[ext_resource type="Script" path="res://src/items/equipment/mod_equipment/PreventDefeat.gd" id="2_550x6"]
 [ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="2_ks20p"]
-[ext_resource type="Script" path="res://src/items/ModEquipment.gd" id="3_tsc7p"]
+[ext_resource type="Script" path="res://src/items/equipment/Equipment.gd" id="3_tsc7p"]
 
 [sub_resource type="Resource" id="Resource_tkq77"]
 script = ExtResource("2_550x6")
 
 [resource]
 script = ExtResource("3_tsc7p")
-effects = Array[ExtResource("1_otrc8")]([SubResource("Resource_tkq77")])
+effects = Array[ExtResource("1_gj31e")]([SubResource("Resource_tkq77")])
 name = "Willpower"
 requirements = Array[ExtResource("2_ks20p")]([])
 details = ""
