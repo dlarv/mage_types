@@ -20,6 +20,8 @@ func setup() -> void:
 	_death_averted = false
 
 func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
+	Logger.append_log(Logger.LogType.BATTLE, "PreventDefeat equipment altered %s.apply_damage(...)" 
+			% _actor.name)
 	var blocking = null
 	if dmg > 0 and allowBlocking:
 		blocking = _actor.statuses.blocking

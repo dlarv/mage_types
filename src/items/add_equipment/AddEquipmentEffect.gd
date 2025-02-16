@@ -26,5 +26,9 @@ func unequip(actor: BattleActor) -> void:
 func _on_trigger(msg: String) -> void:
 	if len(msg) > 0:
 		msg += "\n"
+	Logger.append_log(Logger.LogType.BATTLE, 
+			"BattleActor(%s) equipment activated. Trigger(%s)." 
+			% [_actor.name, trigger.get_class()])
 	msg += bonus.apply_to(_actor)
+	Logger.append_log(Logger.LogType.BATTLE, "Final Msg(%s)." % msg) 
 	activated.emit(msg)
