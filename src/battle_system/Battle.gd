@@ -152,7 +152,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		var o = enemies if action.team_index == 0 else allies
 		action.actor.resolve_end_of_turn(a, o)
 		action.actor.turn_ended.emit()
-		msg = "\n".join(action.actor.get_and_flush_msgs())
+		msg = action.actor.get_and_flush_msgs()
 		if len(msg) > 0:
 			await gui.display_message(msg)
 			# Check if battle should end.
@@ -167,14 +167,14 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	var biasMsg := []
 	for ally in allies:
 		if ally.try_revert_to_bias():
-			biasMsg.append(ally.get_and_flush_msgs())
+			biasMsg.append_array(ally.get_and_flush_msgs())
 	if len(biasMsg) > 0:
 		await gui.display_message(biasMsg)
 
 	biasMsg = []
 	for enemy in enemies:
 		if enemy.try_revert_to_bias():
-			biasMsg.append(enemy.get_and_flush_msgs())
+			biasMsg.append_array(enemy.get_and_flush_msgs())
 	if len(biasMsg) > 0:
 		await gui.display_message(biasMsg)
 
@@ -202,12 +202,13 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
 		# if buff != null:
 		buff.apply_effect(target)
-		msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
+		msg.append("This reaction had side effects!")
+		msg.append_array(target.get_and_flush_msgs())
 
 		target.set_element(0, newType)
-		var msg2 := "\n".join(target.get_and_flush_msgs())
+		var msg2 := target.get_and_flush_msgs()
 		if len(msg2) > 0:
-			msg.append(msg2)
+			msg.append_array(msg2)
 
 		await gui.display_message(msg)
 
@@ -221,12 +222,13 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
 		# if buff != null:
 		buff.apply_effect(target)
-		msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
+		msg.append("This reaction had side effects!") 
+		msg.append_array(target.get_and_flush_msgs())
 
 		target.set_element(1, newType)
-		var msg2 := "\n".join(target.get_and_flush_msgs())
+		var msg2 := target.get_and_flush_msgs()
 		if len(msg2) > 0:
-			msg.append(msg2)
+			msg.append_array(msg2)
 
 		await gui.display_message(msg)
 
@@ -247,13 +249,14 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
 		# if buff != null:
 		buff.apply_effect(target)
-		msg.append("This reaction had side effects! %s" % "\n".join(target.get_and_flush_msgs()))
+		msg.append("This reaction had side effects! %s")
+		msg.append_array(target.get_and_flush_msgs())
 
 		target.set_element(0, newType)
-		var msg2 := "\n".join(target.get_and_flush_msgs())
+		var msg2 := target.get_and_flush_msgs()
 		target.set_element(1, ElementManager.Blank)
 		if len(msg2) > 0:
-			msg.append(msg2)
+			msg.append_array(msg2)
 		
 		await gui.display_message(msg)
 

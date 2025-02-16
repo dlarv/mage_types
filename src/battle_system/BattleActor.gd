@@ -5,6 +5,7 @@ class_name BattleActor
 enum Stats { MELEE_ATTACK, RANGED_ATTACK, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, EVASION, HP, MANA, STAMINA }
 
 signal battle_setup_completed()
+@warning_ignore("unused_signal")
 signal turn_ended()
 signal was_just_defeated()
 signal status_effect_added(effect)
