@@ -38,5 +38,4 @@ func update_nibs(rect: TextureRect, mod: float=1) -> void:
 		rect.modulate = Color(1 - mod, 0, 0)
 	else:
 		# At 500%, green channel will be maxed out.
-		rect.modulate = Color(0, mod / StatManager.MAX_MOD, 0)
-
+		rect.modulate = Color(0, mod / StatManager.BASE_MAX_MOD, 0)

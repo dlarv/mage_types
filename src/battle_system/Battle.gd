@@ -147,7 +147,9 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if endBattle: return
 
 		# Resolve user's status effects.
-		action.actor.resolve_end_of_turn()
+		var a = allies if action.team_index == 0 else enemies
+		var o = enemies if action.team_index == 0 else allies
+		action.actor.resolve_end_of_turn(a, o)
 		msg = "\n".join(action.actor.get_and_flush_msgs())
 		if len(msg) > 0:
 			await gui.display_message(msg)

@@ -275,9 +275,9 @@ func try_revert_to_bias()-> bool:
 func list_status_effects() -> Array:
 	return statuses.list()
 
-func resolve_end_of_turn()-> void:
-	if _func_overrides.has(resolve_end_of_turn.get_method()):
-		_func_overrides.get(resolve_end_of_turn.get_method()).call()
+func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
+	if useOverride and _func_overrides.has(resolve_end_of_turn.get_method()):
+		_func_overrides.get(resolve_end_of_turn.get_method()).call(allies, opponents)
 		return 
 	# Calc poison and healing.
 	var mod = 0

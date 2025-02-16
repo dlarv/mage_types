@@ -5,6 +5,8 @@ class_name StatManager
 enum Stat { ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, EVASION }
 
 signal stat_changed(stat: StatusEffect, mod: float)
+const BASE_MIN_MOD := 0.1
+const BASE_MAX_MOD := 3.0
 
 var MIN_MOD := 0.1
 var MAX_MOD := 3.0
@@ -80,20 +82,20 @@ func get_base_stat(stat: Stat) -> float:
 		Stat.EVASION: return _base_evasion
 		_: return -1
 
-func mod_base_stat(stat: Stat, amount: float) -> void:
+func mod_base_stat(stat: Stat, amount: float, minAmount:=0.0) -> void:
 	match stat:
 		Stat.MELEE_ATTACK: 
-			_base_melee_attack += amount
+			_base_melee_attack = max(_base_melee_attack + amount, minAmount)
 		Stat.RANGED_ATTACK: 
-			_base_ranged_attack += amount
+			_base_ranged_attack = max(_base_ranged_attack + amount, minAmount)
 		Stat.MELEE_DEFENSE: 
-			_base_melee_defense += amount
+			_base_melee_defense = max(_base_melee_defense + amount, minAmount)
 		Stat.RANGED_DEFENSE: 
-			_base_ranged_defense += amount
+			_base_ranged_defense = max(_base_ranged_defense + amount, minAmount)
 		Stat.SPEED: 
-			_base_speed += amount
+			_base_speed = max(_base_speed + amount, minAmount)
 		Stat.EVASION: 
-			_base_evasion += amount
+			_base_evasion = max(_base_evasion + amount, minAmount)
 
 
 func get_stat_mod(stat: Stat) -> float:
