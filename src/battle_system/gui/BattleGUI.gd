@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name BattleGUI
 
 signal actions_selected(actions)
@@ -31,6 +31,7 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 	init_enemies(enemies)
 	playerControls.setup(allies, items, enemies)
 	_finished_setup = true
+	$Camera3D.make_current()
 
 func init_allies(allies: Array) -> void:
 	self.allies = allies
@@ -42,8 +43,8 @@ func init_allies(allies: Array) -> void:
 		# W/o this delay, get_target_position() gives the wrong answer.
 		await get_tree().create_timer(.1).timeout
 
-		var sprite = display.sprite
-		sprite.reparent(sprite_parent)
+		#var sprite = display.sprite
+		#sprite.reparent(sprite_parent)
 	
 	ally_display_parent.highlight(0)
 
@@ -54,8 +55,8 @@ func init_enemies(enemies: Array) -> void:
 		# W/o this delay, get_target_position() gives the wrong answer.
 		await get_tree().create_timer(.1).timeout
 
-		var sprite = display.sprite
-		sprite.reparent(sprite_parent)
+		#var sprite = display.sprite
+		#sprite.reparent(sprite_parent)
 
 func display_message(msg: Variant) -> void:
 	_accept_messages = false

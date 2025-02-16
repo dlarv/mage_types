@@ -1,22 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://1q27rku2p2g2"]
+[gd_scene load_steps=7 format=3 uid="uid://1q27rku2p2g2"]
 
 [ext_resource type="Script" path="res://src/battle_system/gui/BattleGUI.gd" id="1_ik08k"]
 [ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
 [ext_resource type="PackedScene" uid="uid://gtkhgnidq78a" path="res://src/battle_system/gui/components/player_controls.tscn" id="2_s8f4v"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="4_k2fdd"]
 
-[node name="BattleGUI" type="Node2D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "sprite_parent", "turn_counter_display")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5iq7"]
+albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_633xf"]
+material = SubResource("StandardMaterial3D_u5iq7")
+size = Vector2(50, 50)
+
+[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "turn_counter_display")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 script = ExtResource("1_ik08k")
 messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
-ally_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay")
-enemy_display_parent = NodePath("CanvasLayer/VBoxContainer/VBoxContainer/TeamDisplay")
+ally_display_parent = NodePath("Ally_TeamDisplay")
+enemy_display_parent = NodePath("Opponent_TeamDisplay")
 playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
-sprite_parent = NodePath("SpriteParent")
 turn_counter_display = NodePath("CanvasLayer/TurnCounter")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Bg" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,15 +39,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TeamDisplay" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource("2_ov218")]
-layout_mode = 2
-size_flags_vertical = 3
-shift_right = true
-
-[node name="Ally_TeamDisplay" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource("2_ov218")]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -60,13 +59,24 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Turn 1"
 
-[node name="SpriteParent" type="Node2D" parent="."]
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("PlaneMesh_633xf")
 
-[connection signal="draw" from="." to="." method="_on_draw"]
-[connection signal="status_effect_icon_pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/TeamDisplay" to="." method="display_message_non_blocking"]
-[connection signal="status_effect_icon_pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Ally_TeamDisplay" to="." method="display_message_non_blocking"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 5, 10)
+
+[node name="Opponent_TeamDisplay" parent="." instance=ExtResource("2_ov218")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
+shift_right = true
+
+[node name="Ally_TeamDisplay" parent="." instance=ExtResource("2_ov218")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5)
+
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]
 [connection signal="active_actor_changed" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]
 [connection signal="end_turn" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_turn_ended"]
 [connection signal="show_info" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_show_info"]
+[connection signal="status_effect_icon_pressed" from="Opponent_TeamDisplay" to="." method="display_message_non_blocking"]
+[connection signal="status_effect_icon_pressed" from="Ally_TeamDisplay" to="." method="display_message_non_blocking"]

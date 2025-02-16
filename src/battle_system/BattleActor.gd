@@ -78,8 +78,9 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 		equipment = value
 		if not Engine.is_editor_hint() and value != null:
 			equipment.equip(self)
+
 @export var sprite_path: PackedScene
-var sprite : Sprite = null
+var sprite: Node3D = null
 
 var dissonant: StatusEffect: 
 	get: return statuses.check_dissonant()
@@ -125,7 +126,7 @@ func set_element(id: int, element: ElementalType) -> void:
 		var affinity = affinity_manager.set_element(id, element)
 		if affinity > 0:
 			_msgs.append("%s gained %d %s affinity!" % [name, affinity, element.get_bb_code_name()])
-	sprite.set_element(id, element)
+	#sprite.set_element(id, element)
 	element_changed.emit(id, element)
 
 	var mod
@@ -175,10 +176,6 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
 		spell_learned.emit(scroll.spell, index)
 
 	return output
-
-func use_gradient_sprite()-> void:
-	sprite = Sprite.new()
-	sprite.set_gradient_sprite(element1, element2)
 
 func get_stat(stat: StatManager.Stat) -> float:
 	return stat_manager.get_stat(stat)

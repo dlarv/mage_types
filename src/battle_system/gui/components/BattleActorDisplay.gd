@@ -16,7 +16,7 @@ signal status_effect_icon_pressed(effect)
 var actor: BattleActor 
 
 var tint: Color = Color.WHITE
-@export var sprite: Sprite 
+# @export var sprite: Sprite 
 var total_hp: float 
 # Dict<string, Node>
 var icons := {}
@@ -26,11 +26,6 @@ func setup(actor: BattleActor):
 	health_bar.value = (float(actor.current_hp) / actor.hp) * 100
 	hp_label.text = "%d/%d" % [actor.current_hp, actor.hp ]
 	total_hp = actor.hp
-
-	if actor.sprite == null:
-		actor.use_gradient_sprite()
-	
-	sprite.texture = actor.sprite.texture
 
 	selector_button.pressed.connect(func():
 		if not selector_button.is_selectable: return
@@ -44,11 +39,8 @@ func setup(actor: BattleActor):
 	actor.status_effect_added.connect(add_status_effect)
 	actor.status_effects_removed.connect(remove_status_effects)
 	actor.stat_manager.stat_changed.connect(display_stat_change)
-	actor.element_changed.connect(set_element)
+	# actor.element_changed.connect(set_element)
 
-
-func set_element(id: int, element: ElementalType) -> void:
-	sprite.set_element(id, element)
 
 func set_health(hp: int) -> void:
 	health_bar.value = (float(hp) / total_hp) * 100.0
@@ -60,28 +52,28 @@ func get_target_position() -> Vector2:
 	position.y += size.y / 2
 	return position
 
-## Disallow selection
-func disable_selection() -> void:
-	# selector_button.hide()
-	selector_button.set_selectable(false)
-	# If this is white, then its the indicator showing which character is currently active.
-	# Otherwise, its red or green, which indicate this character is being targeted.
-	if tint != Color.WHITE:
-		tint = Color.WHITE
-		set_highlight(false)
-
-func enable_selection(color: Color) -> void:
-	selector_button.set_selectable(true)
-	tint = color
-
-func disable_transmutation_hint() -> void:
-	# selector_button.hide()
-	selector_button.set_show_hint(false)
-	# selector_button.attack_element = null
-
-
-func enable_transmutation_hint(attackElement: ElementalType) -> void:
-	selector_button.set_show_hint(true, attackElement)
+# ## Disallow selection
+# func disable_selection() -> void:
+# 	# selector_button.hide()
+# 	selector_button.set_selectable(false)
+# 	# If this is white, then its the indicator showing which character is currently active.
+# 	# Otherwise, its red or green, which indicate this character is being targeted.
+# 	if tint != Color.WHITE:
+# 		tint = Color.WHITE
+# 		set_highlight(false)
+#
+# func enable_selection(color: Color) -> void:
+# 	selector_button.set_selectable(true)
+# 	tint = color
+#
+# func disable_transmutation_hint() -> void:
+# 	# selector_button.hide()
+# 	selector_button.set_show_hint(false)
+# 	# selector_button.attack_element = null
+#
+#
+# func enable_transmutation_hint(attackElement: ElementalType) -> void:
+# 	selector_button.set_show_hint(true, attackElement)
 
 
 func add_status_effect(effect: StatusEffect) -> void:
@@ -116,13 +108,13 @@ func set_defeated() -> void:
 		status_effect_icons.remove_child(icon)
 	icons.clear()
 
-func set_highlight(isHighlighted: bool) -> void:
-	highlight_display.self_modulate =  Color(tint.r, tint.g, tint.b, 1 if isHighlighted else 0)
-
-func _on_mouse_entered() -> void:
-	if(selector_button.visible and selector_button.is_selectable):
-		set_highlight(true)
-
-func _on_mouse_exited() -> void:
-	if(selector_button.visible and selector_button.is_selectable):
-		set_highlight(false)
+# func set_highlight(isHighlighted: bool) -> void:
+# 	highlight_display.self_modulate =  Color(tint.r, tint.g, tint.b, 1 if isHighlighted else 0)
+#
+# func _on_mouse_entered() -> void:
+# 	if(selector_button.visible and selector_button.is_selectable):
+# 		set_highlight(true)
+#
+# func _on_mouse_exited() -> void:
+# 	if(selector_button.visible and selector_button.is_selectable):
+# 		set_highlight(false)

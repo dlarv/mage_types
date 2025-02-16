@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4a31odwnedry"]
+
+[ext_resource type="Script" path="res://src/battle_system/gui/components/BattleSprite.gd" id="1_jqqgr"]
+[ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_ink3e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ivek1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ocyf"]
+size = Vector3(1.5, 0.2, 1.5)
+
+[node name="BattleSprite" type="Node3D" node_paths=PackedStringArray("transmutation_hint")]
+script = ExtResource("1_jqqgr")
+transmutation_hint = NodePath("TransmutationHint")
+
+[node name="Primary" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0)
+mesh = SubResource("BoxMesh_ivek1")
+
+[node name="Secondary" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+mesh = SubResource("BoxMesh_ivek1")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_a1sjx")
+
+[node name="Indicator" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5ocyf")
+
+[node name="TransmutationHint" parent="." instance=ExtResource("2_ink3e")]
+visible = false
+custom_minimum_size = Vector2(150, 150)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 228.0
+offset_bottom = 227.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+size = Vector2i(236, 235)
+
+[connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]

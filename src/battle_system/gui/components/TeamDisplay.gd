@@ -1,45 +1,53 @@
 @tool
-extends Control
+extends Node3D
 class_name TeamDisplay 
 
 signal selected(actor)
 signal status_effect_icon_pressed(effect)
 
+@export var BattleSprite: PackedScene
 @export var display_prefab: PackedScene 
-@export var display_parent: HBoxContainer 
+@export var display_parent: VBoxContainer 
 @export
 var shift_right: bool = false: 
-	get: return shift_right
 	set(value):
 		shift_right = value
 		if (display_parent == null): return
 		if value:
-			display_parent.alignment = BoxContainer.ALIGNMENT_END
+			display_parent.anchors_preset = Control.PRESET_TOP_RIGHT
 		else:
-			display_parent.alignment = BoxContainer.ALIGNMENT_BEGIN
+			display_parent.anchors_preset = Control.PRESET_TOP_LEFT
 
 var length: int: 
 	get: return len(displays)
 
 # BattleActorDisplay[]
 var displays := []
+# BattleSprite[]
+var sprites := []
+
 var highlightedActorIndex: int = 0
 
 func add_display(actor: BattleActor) -> BattleActorDisplay:
+	var sprite = BattleSprite.instantiate()
+	sprite.setup(actor)
+	sprites.append(sprite)
+
+	actor.element_changed.connect(sprite.set_element)
+	sprite.selected.connect(func(a):
+		selected.emit(a)
+		for d in sprites:
+			d.disable_selection()
+			if not Settings.enable_transmutation_hints: continue
+			d.disable_transmutation_hint())
+	add_child(sprite)
+	sprite.position.x += len(sprites) * 2
+
 	var display = display_prefab.instantiate()
 	display.setup(actor)
 	displays.append(display)
 	
 	display_parent.add_child(display)
-	if shift_right:
-		display_parent.move_child(display, 0)
-
-	display.selected.connect(func(a):
-		selected.emit(a)
-		for d in displays:
-			d.disable_selection()
-			if not Settings.enable_transmutation_hints: continue
-			d.disable_transmutation_hint())
 
 	display.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
 
@@ -57,26 +65,41 @@ func get_display(actor: Variant) -> BattleActorDisplay:
 			return display
 	return null
 
+func get_sprite_from_index(index: int) -> Node3D:
+	if index < len(sprites):
+		return sprites[index]
+	return null
+
+
+func get_sprite(actor: Variant) -> Node3D:
+	if(actor is int): return get_sprite_from_index(actor)
+	for sprite in sprites:
+		if sprite.actor == actor:
+			return sprite
+	return null
+
+	
+
 ## Allow the player to highlight and select one of the contained BattleActorDisplays.
 func select_target(isAttack: bool, element: ElementalType) -> void:
 	var highlight =  Color.RED if isAttack else Color.GREEN
-	for display in displays:
-		display.enable_selection(highlight)
+	for sprite in sprites:
+		sprite.enable_selection(highlight)
 
 		if Settings.enable_transmutation_hints:
-			display.enable_transmutation_hint(element)
+			sprite.enable_transmutation_hint(element)
 
 func select_all_as_target(isAttack: bool, element: ElementalType) -> void:
 	var highlight =  Color.RED if isAttack else Color.GREEN
 
 	if not Settings.enable_transmutation_hints: return 
 
-	for display in displays:
-		display.enable_transmutation_hint(element)
+	for sprite in sprites:
+		sprite.enable_transmutation_hint(element)
 
 func cancel_target_selection():
 	selected.emit(null)
-	for d in displays:
+	for d in sprites:
 		d.disable_selection()
 
 		if Settings.enable_transmutation_hints:
@@ -84,11 +107,11 @@ func cancel_target_selection():
 
 func enable_transmutation_hint(user: BattleActor, element: ElementalType):
 	if not Settings.enable_transmutation_hints: return
-	get_display(user).enable_transmutation_hint(element)
+	get_sprite(user).enable_transmutation_hint(element)
 
 
 # Highlight the display of the currently active actor.
 func highlight(index: int) -> void:
-	displays[highlightedActorIndex].set_highlight(false)
+	sprites[highlightedActorIndex].set_highlight(false)
 	highlightedActorIndex = index
-	displays[highlightedActorIndex].set_highlight(true)
+	sprites[highlightedActorIndex].set_highlight(true)

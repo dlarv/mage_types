@@ -10,7 +10,11 @@ extends PanelContainer
 @export var result_element_2: ColorRect
 @export var result_element_3: ColorRect
 
-func setup(actor: BattleActor, attackElement: ElementalType) -> void:
+var _pos3D: Vector3
+var is_active := false 
+
+func setup(actor: BattleActor, attackElement: ElementalType, pos3D: Vector3) -> void:
+	_pos3D = pos3D
 	var result1 = ElementManager.get_matchup(actor.element1, attackElement)
 	attack_element_1.set_element(attackElement)
 	primary_element_1.set_element(actor.element1)
@@ -28,3 +32,19 @@ func setup(actor: BattleActor, attackElement: ElementalType) -> void:
 	primary_elemen_2.set_element(primary)
 	secondary_element_2.set_element(secondary)
 	result_element_3.set_element(result3)
+
+func activate():
+	is_active = true
+	show()
+
+func deactivate():
+	is_active = false
+	hide()
+
+func _process(delta: float) -> void:
+	if not is_active: return
+	# Adjust position of label to be floating above character's head.
+	var cam := get_viewport().get_camera_3d()
+	if cam == null: return
+	var pos2D := cam.unproject_position(_pos3D)
+	global_position = pos2D
