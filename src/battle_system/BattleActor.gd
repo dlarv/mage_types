@@ -307,6 +307,8 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 		_msgs.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element2.get_bb_code_name(), bonus])
 
 	var effects = statuses.calculate_expirations()
+	if len(effects) > 0:
+		_msgs.append("Status effects wore off! (%s)" % effects.map(func(x): return x.name))
 	status_effects_removed.emit(effects)
 
 func has_phobia(element: ElementalType) -> bool:

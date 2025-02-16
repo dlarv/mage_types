@@ -185,7 +185,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:
 	var stasis = target.stasis
 	if stasis != null:
-		# await gui.display_message(stasis.message)
+		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)
 		return
 
 	var msg := []

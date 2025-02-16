@@ -73,6 +73,7 @@ func remove(effects: Array) -> void:
 func calculate_expirations() -> Array:
 	for effect in statuses.values():
 		effect.duration -= 1
+		print(effect.name)
 		if effect.is_expired():
 			_effects_to_remove.append(effect)
 
