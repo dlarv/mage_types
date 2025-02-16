@@ -42,9 +42,9 @@ func _enter_tree():
 func _ready() -> void:
 	super._ready()
 	if is_blocking:
-		$PlayerBlocker/CollisionShape3D.disabled = false
+		_set_blocking(true)
 	else:
-		$PlayerBlocker/CollisionShape3D.disabled = true
+		_set_blocking(false)
 
 
 func _physics_process(delta: float) -> void:
@@ -58,8 +58,6 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 			body.linear_velocity /= 2
 		body.add_constant_force(transform.basis.y * strength)
 	elif body is CharacterBody3D:
-		if is_blocking:
-			body.outside_forces = -body.velocity * 3
 		body.outside_forces += transform.basis.y * strength
 		_player = body
 
@@ -84,9 +82,9 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if not super.set_element(e, randVal, force): return false
 
 	if is_blocking:
-		$PlayerBlocker/CollisionShape3D.disabled = false
+		_set_blocking(true)
 	else:
-		$PlayerBlocker/CollisionShape3D.disabled = true
+		_set_blocking(false)
 
 	return true
 
@@ -96,18 +94,29 @@ func set_stasis() -> void:
 	super.set_stasis()
 	if in_stasis:
 		$AnimationPlayer.play("pausing")
+		_set_blocking(false)
 	else:
 		$AnimationPlayer.play("starting")
+		start()
 
 #Override
 func stop(val: Variant=null) -> void:
 	if in_stasis: return
 	super.stop()
 	$AnimationPlayer.play("pausing")
+	_set_blocking(false)
 
 #Override
 func start(val: Variant=null) -> void:
 	if in_stasis: return
 	super.start()
 	$AnimationPlayer.play("starting")
+	if is_blocking:
+		await get_tree().create_timer(0.1).timeout
+		_set_blocking(true)
+	else:
+		_set_blocking(false)
+
+func _set_blocking(val: bool) -> void:
+	$PlayerBlocker.set_collision_layer_value(6, val)
 
