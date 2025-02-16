@@ -30,10 +30,11 @@ var highlightedActorIndex: int = 0
 
 func add_display(actor: BattleActor) -> BattleActorDisplay:
 	var sprite = BattleSprite.instantiate()
-	sprite.setup(actor)
+	sprite.setup(actor, shift_right)
 	sprites.append(sprite)
 
 	actor.element_changed.connect(sprite.set_element)
+	sprite.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
 	sprite.selected.connect(func(a):
 		selected.emit(a)
 		for d in sprites:
@@ -41,7 +42,8 @@ func add_display(actor: BattleActor) -> BattleActorDisplay:
 			if not Settings.enable_transmutation_hints: continue
 			d.disable_transmutation_hint())
 	add_child(sprite)
-	sprite.position.x += len(sprites) * 2
+	sprite.position.x += len(sprites) * 3
+	# sprite.position.z += len(sprites) * 1.5
 
 	var display = display_prefab.instantiate()
 	display.setup(actor)
@@ -49,7 +51,7 @@ func add_display(actor: BattleActor) -> BattleActorDisplay:
 	
 	display_parent.add_child(display)
 
-	display.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
+	# display.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
 
 	return display
 

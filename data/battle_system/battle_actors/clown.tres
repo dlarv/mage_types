@@ -32,6 +32,7 @@ script = ExtResource("1_llgem")
 name = "Clown"
 stat_manager = SubResource("Resource_hvyi6")
 hp = 100
+reset_hp_after_battle = true
 affinity_manager = SubResource("Resource_w6017")
 _element1 = "orange"
 _element2 = "magenta"

@@ -5,11 +5,12 @@ class_name StatusEffectManager
 const STASIS_KEY: String = "Stasis"
 const BLOCKING_KEY: String = "Blocking"
 const POISON_KEY: String = "Poison"
+const PHOBIC_KEY: String = "Phobic"
 const HEALING_KEY: String = "Healing"
+
+const PHILIC_KEY: String = "Philic"
 const DISSONANT_KEY: String = "Dissonant"
 const FLINCHING_KEY: String = "Flinching"
-const PHOBIC_KEY: String = "Phobic"
-const PHILIC_KEY: String = "Philic"
 
 var poison: float:
 	get:

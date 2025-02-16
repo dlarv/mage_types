@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://dkgwtmxs7v2mq"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=17 format=3 uid="uid://dkgwtmxs7v2mq"]
 
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_lnfgi"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_aok80"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_cy3bc"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_fywi4"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_15lc2"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="8_0pcay"]
 
 [sub_resource type="Resource" id="Resource_dbaky"]
 script = ExtResource("1_lnfgi")
@@ -79,4 +80,4 @@ _element1 = "blue"
 _element2 = "blank"
 _elemental_bias = "blue"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_aok80")]([SubResource("Resource_78242"), SubResource("Resource_dg4oj"), ExtResource("7_15lc2")])
+attacks = Array[ExtResource("2_aok80")]([SubResource("Resource_78242"), SubResource("Resource_dg4oj"), ExtResource("7_15lc2"), ExtResource("8_0pcay")])

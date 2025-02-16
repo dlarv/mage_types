@@ -67,11 +67,11 @@ mesh = SubResource("PlaneMesh_633xf")
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 5, 10)
 
 [node name="Opponent_TeamDisplay" parent="." instance=ExtResource("2_ov218")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
+transform = Transform3D(0.962398, 0, -0.271642, 0, 1, 0, 0.271642, 0, 0.962398, -3.523, 2, 0.853577)
 shift_right = true
 
 [node name="Ally_TeamDisplay" parent="." instance=ExtResource("2_ov218")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5)
+transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -9.2825, 1, 4.141)
 
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]

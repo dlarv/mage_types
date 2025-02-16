@@ -1,6 +1,7 @@
 extends Node3D
 
 signal selected(actor: BattleActor)
+signal status_effect_icon_pressed(effect)
 
 @export var transmutation_hint: Control
 @export var use_gradient := true:
@@ -23,7 +24,7 @@ var tint: Color = Color.WHITE
 var is_selectable := false
 var actor: BattleActor
 
-func setup(actor: BattleActor) -> void:
+func setup(actor: BattleActor, shiftRight: bool) -> void:
 	self.actor = actor
 	_mat1 = StandardMaterial3D.new()
 	_mat2 = StandardMaterial3D.new()
@@ -36,6 +37,12 @@ func setup(actor: BattleActor) -> void:
 	_mat1.albedo_color = actor.element1.main_color
 	_mat2.albedo_color = actor.element2.main_color
 	_indicator_mat.albedo_color = Color.DARK_GRAY
+
+	if shiftRight:
+		$PinManager/PhobiaCrown.rotation_degrees.y += 180
+
+	actor.status_effect_added.connect(add_status_effect)
+	actor.status_effects_removed.connect(remove_status_effects)
 
 
 func set_element(id: int, element: ElementalType) -> void:
@@ -92,3 +99,13 @@ func _on_input_event(camera:Node, event:InputEvent, event_position:Vector3, norm
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed:
 			selected.emit(actor)
 			transmutation_hint.deactivate()
+
+func add_status_effect(effect: StatusEffect) -> void:
+	$PinManager.insert_pin(effect)
+
+func remove_status_effects(effects) -> void:
+	$PinManager.remove_pins(effects)
+
+func _on_pin_selected(effect: StatusEffect) -> void:
+	status_effect_icon_pressed.emit(effect)
+

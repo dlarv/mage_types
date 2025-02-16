@@ -32,6 +32,7 @@ script = ExtResource("1_a6tsy")
 name = "Guy"
 stat_manager = SubResource("Resource_2qu8o")
 hp = 1000
+reset_hp_after_battle = true
 affinity_manager = SubResource("Resource_mqv7k")
 _element1 = "red"
 _element2 = "blank"
