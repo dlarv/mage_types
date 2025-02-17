@@ -4,6 +4,7 @@ extends PuzzleBlock
 var _prev_val := -1
 var _active_emitter: Node3D = null
 var _active_receiver: Node3D = null
+var _is_emitting := false
 
 func _ready() -> void:
 	super._ready()
@@ -11,12 +12,24 @@ func _ready() -> void:
 	$SubEmitterZ.stop()
 
 func _on_sub_receiver_z_laser_received(laser:Laser, point: Vector3) -> void:
+	if _is_emitting: 
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"Mirror(%s) emitting laser of Element(%s), but was hit with a laser of Element(%s)."
+				% [puzzle_name, _active_emitter.laser.element.name, laser.element.name])
+		# _flicker_collider()
+		return
 	$SubEmitterX.stop()
 	$SubEmitterZ.stop()
 	_active_receiver = $SubReceiverZ
 	_on_laser_received($SubEmitterX, laser, point)
 
 func _on_sub_receiver_x_laser_received(laser:Laser, point: Vector3) -> void:
+	if _is_emitting: 
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"Mirror(%s) emitting laser of Element(%s), but was hit with a laser of Element(%s)."
+				% [puzzle_name, _active_emitter.laser.element.name, laser.element.name])
+		# _flicker_collider()
+		return
 	$SubEmitterX.stop()
 	$SubEmitterZ.stop()
 	_active_receiver = $SubReceiverX
@@ -24,6 +37,7 @@ func _on_sub_receiver_x_laser_received(laser:Laser, point: Vector3) -> void:
 	_on_laser_received($SubEmitterZ, laser, point)
 
 func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> void:
+	_is_emitting = true
 	subEmitter.global_position.y = point.y
 	_active_emitter = subEmitter
 	var e := ElementManager.get_matchup(element, laser.element)
@@ -51,8 +65,12 @@ func create_log(body: MagiClay, e: ElementalType) -> void:
 			% [puzzle_name, element.name, body.element.name, e.name])
 
 func _on_laser_dropped() -> void:
+	_is_emitting = false
 	if _active_emitter:
 		_active_emitter.stop()
+		var e = _active_emitter.laser.element.name if _active_emitter != null else "null"
+		Logger.append_log(Logger.LogType.PUZZLE, "Mirror(%s) stopped emitting laser of Element(%s)."
+				% [puzzle_name, e])
 		_active_emitter = null
 		_active_receiver = null
 
@@ -64,4 +82,3 @@ func _flicker_collider() -> void:
 
 func block(val: bool) -> void:
 	$Blocker.set_collision_layer_value(5, val)
-

@@ -101,7 +101,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.17
 _element = "yellow"
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0, 17)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
 _element = "magenta"
 is_transmutable = true
 
@@ -111,7 +111,7 @@ _element = "yellow"
 is_transmutable = true
 
 [node name="DraggableMirror3" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 2)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 8)
 _element = "cyan"
 is_transmutable = true
 
@@ -147,7 +147,7 @@ _element = "green"
 is_transmutable = true
 
 [node name="DraggableMirror4" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
 _element = "yellow"
 is_transmutable = true
 
@@ -221,7 +221,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09511, -1.13183, 22.1238)
 
 [node name="RotatableMirror" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("7_fn5ea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 25)
-collision_layer = 23
 _element = "yellow"
 
 [node name="Emitter1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
@@ -236,7 +235,6 @@ _element = "yellow"
 
 [node name="Emitter3" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -11.691, 0, 31)
-is_on = false
 _element = "magenta"
 
 [node name="LaserReceiver1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]

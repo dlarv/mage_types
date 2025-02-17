@@ -25,18 +25,20 @@ func save_log(type: LogType) -> void:
 			path = "%s://logs/battles/%s.txt" % [prefix, logName]
 			output = "\n".join(battle_logs)
 			logs = battle_logs
+			if clear_on_save:
+				battle_logs = []
 		LogType.PUZZLE:
 			path = "%s://logs/puzzles/%s.txt" % [prefix, logName]
 			output = "\n".join(puzzle_logs)
 			logs = puzzle_logs
+			if clear_on_save:
+				puzzle_logs = []
 
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(output)
 
 	if print_logs_on_save:
 		print(output)
-	if clear_on_save:
-		logs = []
 		
 
 func append_log(type: LogType, msg: Variant) -> void:
