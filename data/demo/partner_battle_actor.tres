@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=17 format=3 uid="uid://dkgwtmxs7v2mq"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=18 format=3 uid="uid://dkgwtmxs7v2mq"]
 
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_lnfgi"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_aok80"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="3_l75wd"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_1t6uh"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_7sif1"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="4_p663b"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_cy3bc"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_fywi4"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_15lc2"]
-[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="8_0pcay"]
+[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/shield.tres" id="9_7sc76"]
 
 [sub_resource type="Resource" id="Resource_dbaky"]
 script = ExtResource("1_lnfgi")
@@ -30,14 +31,14 @@ message = ""
 [sub_resource type="Resource" id="Resource_0yygv"]
 script = ExtResource("4_1t6uh")
 attack_effect = SubResource("Resource_ed301")
-chance = 1.0
 effect_target = 1
+chance = 1.0
 _element = "blank"
 
 [sub_resource type="Resource" id="Resource_78242"]
 resource_name = "Hit"
 script = ExtResource("6_fywi4")
-effects = Array[ExtResource("4_1t6uh")]([SubResource("Resource_0yygv")])
+effects = Array[ExtResource("4_p663b")]([SubResource("Resource_0yygv")])
 cost = 5
 name = "Hit"
 animation = ExtResource("3_l75wd")
@@ -50,7 +51,7 @@ details = ""
 [sub_resource type="Resource" id="Resource_dg4oj"]
 resource_name = "Hit"
 script = ExtResource("6_fywi4")
-effects = Array[ExtResource("4_1t6uh")]([SubResource("Resource_0yygv")])
+effects = Array[ExtResource("4_p663b")]([SubResource("Resource_0yygv")])
 cost = 5
 name = "Hit"
 animation = ExtResource("3_l75wd")
@@ -76,8 +77,8 @@ stat_manager = SubResource("Resource_pvhim")
 hp = 100
 reset_hp_after_battle = true
 affinity_manager = SubResource("Resource_dbaky")
-_element1 = "blue"
+_element1 = "magenta"
 _element2 = "blank"
 _elemental_bias = "blue"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_aok80")]([SubResource("Resource_78242"), SubResource("Resource_dg4oj"), ExtResource("7_15lc2"), ExtResource("8_0pcay")])
+attacks = Array[ExtResource("2_aok80")]([SubResource("Resource_78242"), SubResource("Resource_dg4oj"), ExtResource("7_15lc2"), ExtResource("9_7sc76")])

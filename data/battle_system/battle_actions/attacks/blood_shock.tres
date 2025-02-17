@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://mwxg2wlabpnk"]
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://mwxg2wlabpnk"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_4r1uc"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_pg7ig"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_6sxx5"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_oh8k5"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_cgp3y"]
 
 [sub_resource type="Resource" id="Resource_1iaj8"]
@@ -36,7 +37,7 @@ _element = "blank"
 [resource]
 resource_name = "Blood Shock"
 script = ExtResource("2_6sxx5")
-effects = Array[ExtResource("1_pg7ig")]([SubResource("Resource_5q3rt"), SubResource("Resource_e2ptt")])
+effects = Array[ExtResource("2_oh8k5")]([SubResource("Resource_5q3rt"), SubResource("Resource_e2ptt")])
 cost = 0
 name = "Blood Shock"
 animation = ExtResource("1_4r1uc")

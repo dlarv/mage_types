@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://q1l847rlbb6i"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://q1l847rlbb6i"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_7lok4"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_q23s8"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_tkr0o"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="3_fevoq"]
 [ext_resource type="Resource" uid="uid://bvadtuxed6228" path="res://data/battle_system/status_effects/elemental_effects/elemental_phobia.tres" id="3_t85wf"]
 
@@ -15,7 +16,7 @@ _element = "blue"
 [resource]
 resource_name = "Hydrophobia"
 script = ExtResource("1_q23s8")
-effects = Array[ExtResource("3_fevoq")]([SubResource("Resource_0f64n")])
+effects = Array[ExtResource("2_tkr0o")]([SubResource("Resource_0f64n")])
 cost = 10
 name = "Hydrophobia"
 animation = ExtResource("1_7lok4")

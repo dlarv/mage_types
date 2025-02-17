@@ -2,7 +2,7 @@
 extends BattleAction 
 class_name Attack 
 
-@export var effects: Array[Effect]
+@export var effects: Array[BaseEffect]
 @export var cost: int 
 
 # override
@@ -47,12 +47,12 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 				msg.append_array(msg3)
 
 			if len(msg2) > 0:
-				if effect.attack_effect is Damage \
+				if effect.get_attack_effect() is Damage \
 						and effect.effect_target == Effect.EffectTarget.USER:
 					msg.append("This attack has recoil!")
 				msg.append("%s" % msg2)
 
-				if effect.attack_effect is Damage and target.is_defeated:
+				if effect.get_attack_effect() is Damage and target.is_defeated:
 					msg.append("........%s was defeated." % target.name)
 					continue
 

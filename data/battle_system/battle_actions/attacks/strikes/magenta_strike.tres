@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://hkrnwogog5bu"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://hkrnwogog5bu"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_b0nlx"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_b7rvv"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_u3pan"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_l6p7g"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="4_7l6ub"]
 
@@ -26,7 +27,7 @@ _element = "blank"
 [resource]
 resource_name = "Magenta Strike"
 script = ExtResource("4_7l6ub")
-effects = Array[ExtResource("2_b7rvv")]([SubResource("Resource_6k5so")])
+effects = Array[ExtResource("2_u3pan")]([SubResource("Resource_6k5so")])
 cost = 10
 name = "Magenta Strike"
 animation = ExtResource("1_b0nlx")

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://rvgptfxqtoih"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://rvgptfxqtoih"]
 
 [ext_resource type="PackedScene" uid="uid://ch3nnueyugf36" path="res://src/battle_system/battle_actions/animations/wall.tscn" id="1_pp0rm"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_5xdpe"]
 [ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="3_76751"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_f7l1n"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_nmpvg"]
@@ -15,7 +16,7 @@ _element = "blank"
 [resource]
 resource_name = "Block"
 script = ExtResource("5_nmpvg")
-effects = Array[ExtResource("4_f7l1n")]([SubResource("Resource_gq6w5")])
+effects = Array[ExtResource("2_5xdpe")]([SubResource("Resource_gq6w5")])
 cost = 10
 name = "Block"
 animation = ExtResource("1_pp0rm")

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://j7kja5ijt2a"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://j7kja5ijt2a"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_1xbwv"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_07bay"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_a48nd"]
 [ext_resource type="Resource" uid="uid://ctk6276lmrf4c" path="res://data/battle_system/status_effects/stat_changes/ranged_defense_down.tres" id="3_0gffd"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_80d70"]
@@ -15,7 +16,7 @@ _element = "blank"
 [resource]
 resource_name = "R. Defense Down"
 script = ExtResource("5_80d70")
-effects = Array[ExtResource("2_1xbwv")]([SubResource("Resource_vw251")])
+effects = Array[ExtResource("2_07bay")]([SubResource("Resource_vw251")])
 cost = 10
 name = "R. Defense Down"
 animation = ExtResource("2_a48nd")

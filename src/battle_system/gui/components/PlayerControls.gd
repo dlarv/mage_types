@@ -76,7 +76,7 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 
 func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	var scroller := ScrollContainer.new()
-	var vbox := VBoxContainer.new()
+	var vbox := GridContainer.new()
 	var group := ButtonGroup.new()
 
 	vbox.size_flags_horizontal = VBoxContainer.SIZE_EXPAND_FILL

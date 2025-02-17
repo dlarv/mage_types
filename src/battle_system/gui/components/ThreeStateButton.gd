@@ -32,12 +32,10 @@ var state: bool = false
 func _enter_tree():
 	cost_label.hide()
 
-
 func init_cost(element: ElementalType, cost: int) -> void:
 	_element = element
 	_total_cost = cost
 	cost_label.show()
-
 
 func update_cost(actor: BattleActor) -> void:
 	if not cost_label.visible: return
@@ -55,7 +53,6 @@ func update_cost(actor: BattleActor) -> void:
 	cost_label.append_text("/%d" % _total_cost)
 	cost_label.pop() # Pop color
 
-
 func _on_pressed(toggled: bool) -> void:
 	if not toggled:
 		state = false
@@ -68,7 +65,6 @@ func _on_pressed(toggled: bool) -> void:
 		modulate = unselected_modulate_color
 
 	state_changed.emit(state)
-
 
 func reset() -> void:
 	modulate = unselected_modulate_color

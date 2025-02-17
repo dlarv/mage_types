@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://d5le4hwdg070"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://d5le4hwdg070"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_og7p3"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_7cpu1"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_n70hp"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_j4e6d"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="4_nqau6"]
@@ -26,7 +27,7 @@ _element = "blank"
 [resource]
 resource_name = "Yellow Strike"
 script = ExtResource("4_nqau6")
-effects = Array[ExtResource("2_n70hp")]([SubResource("Resource_6k5so")])
+effects = Array[ExtResource("2_7cpu1")]([SubResource("Resource_6k5so")])
 cost = 10
 name = "Yellow Strike"
 animation = ExtResource("1_og7p3")

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=17 format=3 uid="uid://bo4oib5wr8f3r"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=18 format=3 uid="uid://bo4oib5wr8f3r"]
 
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_ti1jl"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_0kd5o"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="3_456to"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_w7ijy"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="4_c8n8g"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="4_j3sx6"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_jl8bw"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_oy67b"]
@@ -37,7 +38,7 @@ _element = "blank"
 [sub_resource type="Resource" id="Resource_4yusp"]
 resource_name = "Hit"
 script = ExtResource("6_l7mmw")
-effects = Array[ExtResource("4_jl8bw")]([SubResource("Resource_0yygv")])
+effects = Array[ExtResource("4_c8n8g")]([SubResource("Resource_0yygv")])
 cost = 5
 name = "Hit"
 animation = ExtResource("3_456to")
@@ -50,7 +51,7 @@ details = ""
 [sub_resource type="Resource" id="Resource_bykf0"]
 resource_name = "Hit"
 script = ExtResource("6_l7mmw")
-effects = Array[ExtResource("4_jl8bw")]([SubResource("Resource_0yygv")])
+effects = Array[ExtResource("4_c8n8g")]([SubResource("Resource_0yygv")])
 cost = 5
 name = "Hit"
 animation = ExtResource("3_456to")

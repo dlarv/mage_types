@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://olgnrmvw2spc"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://olgnrmvw2spc"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_4wpqw"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_tg733"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_eji5g"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_r5wf5"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_4nxyw"]
 
@@ -26,7 +27,7 @@ _element = "blank"
 [resource]
 resource_name = "Abyss Strike"
 script = ExtResource("2_r5wf5")
-effects = Array[ExtResource("1_tg733")]([SubResource("Resource_15gl1")])
+effects = Array[ExtResource("2_eji5g")]([SubResource("Resource_15gl1")])
 cost = 25
 name = "Abyss Strike"
 animation = ExtResource("1_4wpqw")

@@ -88,6 +88,15 @@ func select_target(isAttack: bool, element: ElementalType) -> void:
 		if Settings.enable_transmutation_hints:
 			sprite.enable_transmutation_hint(element)
 
+func select_specific_target(isAttack: bool, element: ElementalType, actor: BattleActor) -> void:
+	var highlight =  Color.RED if isAttack else Color.GREEN
+	var sprite := get_sprite(actor)
+	sprite.enable_selection(highlight)
+
+	if Settings.enable_transmutation_hints:
+		sprite.enable_transmutation_hint(element)
+
+
 func select_all_as_target(isAttack: bool, element: ElementalType) -> void:
 	var highlight =  Color.RED if isAttack else Color.GREEN
 

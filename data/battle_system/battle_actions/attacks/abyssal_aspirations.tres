@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bxeeen1sy0nex"]
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://bxeeen1sy0nex"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_46hmk"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_swggm"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_abbsg"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_vllkb"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/GenerateAffinity.gd" id="3_lr7a7"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="4_kbe5j"]
 
@@ -42,7 +43,7 @@ _element = "blank"
 [resource]
 resource_name = "Dark Aspirations"
 script = ExtResource("2_abbsg")
-effects = Array[ExtResource("1_46hmk")]([SubResource("Resource_5kdg2"), SubResource("Resource_ptp5f")])
+effects = Array[ExtResource("2_vllkb")]([SubResource("Resource_5kdg2"), SubResource("Resource_ptp5f")])
 cost = 0
 name = "Dark Aspirations"
 animation = ExtResource("1_swggm")

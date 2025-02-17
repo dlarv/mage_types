@@ -19,10 +19,10 @@ initial_defensive_affinity = 100
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("4_s70gu")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
-_base_melee_defense = 120.0
-_base_ranged_defense = 120.0
+_base_melee_attack = 50.0
+_base_ranged_attack = 50.0
+_base_melee_defense = 300.0
+_base_ranged_defense = 300.0
 _base_speed = 80.0
 _base_evasion = 100.0
 

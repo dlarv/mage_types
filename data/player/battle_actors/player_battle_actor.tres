@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=17 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=18 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_cge1d"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="3_1eowu"]
 [ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="3_ni3h5"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_bvbrp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="4_tanau"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_rytj8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pm1eu"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
@@ -37,7 +38,7 @@ _element = "blank"
 [sub_resource type="Resource" id="Resource_qo41q"]
 resource_name = "Hit"
 script = ExtResource("6_pm1eu")
-effects = Array[ExtResource("4_bvbrp")]([SubResource("Resource_0yygv")])
+effects = Array[ExtResource("4_tanau")]([SubResource("Resource_0yygv")])
 cost = 5
 name = "Hit"
 animation = ExtResource("3_1eowu")
@@ -50,7 +51,7 @@ details = ""
 [sub_resource type="Resource" id="Resource_0tf1n"]
 resource_name = "Hit"
 script = ExtResource("6_pm1eu")
-effects = Array[ExtResource("4_bvbrp")]([SubResource("Resource_0yygv")])
+effects = Array[ExtResource("4_tanau")]([SubResource("Resource_0yygv")])
 cost = 5
 name = "Hit"
 animation = ExtResource("3_1eowu")

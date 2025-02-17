@@ -14,8 +14,20 @@ func display(obj: Variant, limitInfo:=false) -> void:
 func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel) -> int:
 	var power := 0
 	for e in effects:
+		if e is Effect:
+			power += _format_attack_effect(e, effectsLabel)
+		elif e is ConditionalEffect:
+			if e.condition is ElementalCondition:
+				effectsLabel.append_text("Elemental Condition")
+				power += _format_elemental_condition(e, effectsLabel)
+			pass
+
+	return power
+
+func _format_attack_effect(e: Effect, effectsLabel: RichTextLabel) -> int:
 		var chance = int(e.chance * 100)
 		var effect = e.attack_effect
+		var power := 0
 
 		if effect is ElementalEffect:
 			effectsLabel.push_meta(effect)
@@ -86,9 +98,51 @@ func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel) -> int:
 				power += effect.strength
 			else:
 				effectsLabel.append_text("%d%% chance to hurt the user.")
+		return power
 
+func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLabel) -> int:
+	var success_power := 0
+	var fail_power := 0
 
-	return power
+	var elements = e.condition.elements.map(func(x): return x.get_bb_code_name())
+	var op: String
+	var op2 := ""
+	match e.condition.operator:
+		"any":
+			op = "OR"
+		"all":
+			op = "AND"
+		"ne":
+			op = "OR"
+			op2 = "NOT "
+
+	if len(elements) > 0:
+		elements[-1] = "%s %s" % [op, elements[-1]]
+		elements = ", ".join(elements)
+	else:
+		push_warning("ElementalCondition has empty elements array.")
+		elements = "null"
+	
+	effectsLabel.newline()
+	effectsLabel.append_text("Condition(s):")
+	effectsLabel.newline()
+	if e.condition.apply_to == "user" or e.condition.apply_to == "both":
+		effectsLabel.append_text("- User is %s%s" % [op2, elements])
+		effectsLabel.newline()
+	if e.condition.apply_to == "target" or e.condition.apply_to == "both":
+		effectsLabel.append_text("- Target is %s%s" % [op2, elements])
+		effectsLabel.newline()
+
+	effectsLabel.append_text("If all conditions are true:")
+	effectsLabel.newline()
+	success_power += _format_attack_effect(e.success_effect, effectsLabel)
+	if e.failed_effect != null:
+		effectsLabel.newline()
+		effectsLabel.append_text("Otherwise:")
+		effectsLabel.newline()
+		fail_power += _format_attack_effect(e.failed_effect, effectsLabel)
+
+	return int((success_power + fail_power) / 2.0)
 
 func _on_meta_clicked(meta: Variant) -> void:
 	meta_clicked.emit(meta)

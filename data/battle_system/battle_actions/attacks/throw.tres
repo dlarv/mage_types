@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bxe7rrdwy8tjq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bxe7rrdwy8tjq"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_m72kp"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_2x0qd"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_ajine"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_gm17o"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_3n6ij"]
 
@@ -22,7 +23,7 @@ _element = "blank"
 [resource]
 resource_name = "Throw"
 script = ExtResource("2_gm17o")
-effects = Array[ExtResource("2_2x0qd")]([SubResource("Resource_m44uh")])
+effects = Array[ExtResource("2_ajine")]([SubResource("Resource_m44uh")])
 cost = 5
 name = "Throw"
 animation = ExtResource("1_m72kp")

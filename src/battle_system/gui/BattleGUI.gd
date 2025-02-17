@@ -109,7 +109,9 @@ func select_targets(user: BattleActor, action:BattleAction):
 		BattleAction.TargetType.SELF:
 			targets = [ user ]
 			# This pause is needed, otherwise the End turn button won't enable.
-			await get_tree().create_timer(.05).timeout
+			ally_display_parent.select_specific_target(false, action.element, user)
+			await ally_display_parent.selected
+			# await get_tree().create_timer(.05).timeout
 			
 		BattleAction.TargetType.ALLY:
 			# if ally_display_parent.length == 1 and not Settings.enable_transmutation_hints:

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://biyyeewaek1sj"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://biyyeewaek1sj"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="1_05kai"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_ycgn8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_ieu5f"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_ros8b"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="3_mv66e"]
 
 [sub_resource type="Resource" id="Resource_0hgvx"]
@@ -24,7 +25,7 @@ _element = "blank"
 [resource]
 resource_name = "Drain"
 script = ExtResource("2_ieu5f")
-effects = Array[ExtResource("1_05kai")]([SubResource("Resource_cogv3")])
+effects = Array[ExtResource("2_ros8b")]([SubResource("Resource_cogv3")])
 cost = 1
 name = "Drain"
 animation = ExtResource("1_ycgn8")
