@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://djyd1nordbavf"]
+[gd_scene load_steps=4 format=3 uid="uid://djyd1nordbavf"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/SubEmitter.gd" id="1_3jvxr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a3k3g"]
 size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdv30"]
 
 [node name="SubEmitter" type="Node3D"]
 script = ExtResource("1_3jvxr")
@@ -19,3 +21,4 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 mesh = SubResource("BoxMesh_a3k3g")
 skeleton = NodePath("../../RayCast3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_bdv30")
