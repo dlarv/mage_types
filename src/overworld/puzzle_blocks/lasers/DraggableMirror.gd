@@ -24,10 +24,11 @@ func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
 		reparent(_prev_parent)
 		_prev_parent = null
 		player.pickup_object(self, false)
-		if obj.is_connected("dropped",_on_grabbable_dropped):
-			obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)
+		# if obj.is_connected("dropped",_on_grabbable_dropped):
+		# 	obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)
 
 func _on_grabbable_dropped(obj:Node3D, player:Node3D) -> void:
+	if not player: return
 	if player.held_object == self:
 		call_deferred("reparent", _prev_parent)
 		_prev_parent = null

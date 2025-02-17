@@ -220,7 +220,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09511, -1.13183, 22.1238)
 
 [node name="RotatableMirror" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("7_fn5ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -2, 25)
 _element = "yellow"
 
 [node name="Emitter1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]

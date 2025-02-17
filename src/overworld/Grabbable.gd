@@ -23,6 +23,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		get_window().set_input_as_handled()
 		grabbed.emit(self, _player)
+		var n = name
+		if "puzzle_name" in get_parent():
+			n = get_parent().puzzle_name
+		Logger.append_log(Logger.LogType.PUZZLE, "Player grabbed Grabbable(%s)." % n)
 
 func _physics_process(delta: float) -> void:
 	if not _label.visible: return
@@ -36,6 +40,16 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body:Node3D) -> void:
 	if not body.is_in_group("player"): return
+	# Prevent player from picking up object, if they are already holding something.
+	if body.held_object and body.held_object != get_parent(): 
+		var n = name
+		if "puzzle_name" in get_parent():
+			n = get_parent().puzzle_name
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"Player collided with Grabbable(%s), but could not pick it up, as they were already holding %s." 
+				% [n, body.held_object.name])
+		return
+
 	_player = body
 	_label.show()
 

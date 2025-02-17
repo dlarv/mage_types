@@ -7,8 +7,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_4tnhy"]
 size = Vector3(2, 0.5, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4ael3"]
-size = Vector3(2, 0.5, 2)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pqgmg"]
+height = 0.5
+radius = 0.994533
 
 [node name="DraggableMirror" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -16,7 +17,7 @@ collision_layer = 23
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-gravity_scale = 0.0
+inertia = Vector3(20, 20, 20)
 script = ExtResource("1_lav1w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -26,7 +27,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("BoxShape3D_4ael3")
+shape = SubResource("CylinderShape3D_pqgmg")
 
 [node name="Grabbable" parent="." instance=ExtResource("2_t5nh5")]
 
