@@ -4,6 +4,7 @@ class_name PuzzleBlock
 
 signal on(node: PuzzleBlock)
 signal off(node: PuzzleBlock)
+signal invalid_off(node: PuzzleBlock)
 
 @export var is_on := true:
 	set(val):

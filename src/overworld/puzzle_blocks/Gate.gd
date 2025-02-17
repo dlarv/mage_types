@@ -55,4 +55,3 @@ func _close():
 	_is_opened = false 
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"Gate(%s)was closed." % [puzzle_name])
-

@@ -26,6 +26,8 @@ func _on_body_entered(body: Node3D) -> void:
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"PressurePlate(%s) was stepped on, but not activated, by Object(%s). Object is Element(%s), but plate requires Element(%s)." 
 				% [puzzle_name, bodyName, bodyElement, element.name])
+		_try_emit_off()
+		invalid_off.emit(self)
 
 func _on_body_exited(body: Node3D) -> void:
 	if (can_player_trigger and _test_for_player(body)) or body is MagiClay:

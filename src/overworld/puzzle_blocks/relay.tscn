@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c68p6h8se2syt"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Relay.gd" id="1_vfkjx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wfya"]
+
+[node name="Relay" type="Area3D"]
+script = ExtResource("1_vfkjx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0wfya")

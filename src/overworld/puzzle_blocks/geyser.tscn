@@ -29,10 +29,10 @@ linear_accel_max = -2.23517e-06
 [sub_resource type="BoxMesh" id="BoxMesh_4qchg"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_61to0"]
-size = Vector3(1, 8, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_seege"]
+size = Vector3(1, 26.5, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1e788"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ubao"]
 
 [sub_resource type="Animation" id="Animation_bfj0g"]
 resource_name = "RESET"
@@ -185,13 +185,13 @@ draw_pass_1 = SubResource("BoxMesh_4qchg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StreamBodyHitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-shape = SubResource("BoxShape3D_61to0")
+shape = SubResource("BoxShape3D_seege")
 
 [node name="StreamTopHitBox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StreamTopHitBox"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 5, 0)
-shape = SubResource("BoxShape3D_1e788")
+shape = SubResource("BoxShape3D_7ubao")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

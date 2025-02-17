@@ -1,6 +1,6 @@
 extends PuzzleBlock
 
-@export var time_length := 0.5
+@export var open_delay := 0.5
 @export var locks: Array[PuzzleBlock]
 
 var _opened_locks := {}
@@ -23,7 +23,7 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 			return
 
 	_is_opened = true
-	await get_tree().create_timer(time_length).timeout
+	await get_tree().create_timer(open_delay).timeout
 	if _is_opened:
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"Delay(%s) was opened." % [puzzle_name])
