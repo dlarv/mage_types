@@ -6,6 +6,7 @@ signal grabbed(obj: Node3D, player: Node3D)
 signal dropped(obj: Node3D, player: Node3D)
 
 @export var label_offset: Vector3
+var is_being_reparented := false
 var _label: Label
 var _player: Node3D
 
@@ -20,7 +21,7 @@ func _enter_tree():
 func _unhandled_input(event: InputEvent) -> void:
 	if not _label.visible or _player == null: return
 
-	if event.is_action_pressed("interact"):
+	if event.is_action_released("interact"):
 		get_window().set_input_as_handled()
 		grabbed.emit(self, _player)
 		var n = name
@@ -55,6 +56,7 @@ func _on_body_entered(body:Node3D) -> void:
 
 
 func _on_body_exited(body:Node3D) -> void:
+	if is_being_reparented: return
 	if not body.is_in_group("player"): return
 	_label.hide()
 	dropped.emit(self, _player)
@@ -62,3 +64,4 @@ func _on_body_exited(body:Node3D) -> void:
 
 
 	
+

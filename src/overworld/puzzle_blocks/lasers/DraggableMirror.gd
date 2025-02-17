@@ -2,28 +2,28 @@
 extends PuzzleBlock
 
 var _prev_parent: Node3D = null
+var grabbable: Grabbable
 
 func _ready() -> void:
 	super._ready()
 	position = position.snapped(Vector3(1, 1, 1))
 	$Mirror.set_element(element)
+	
+	grabbable = find_child("Grabbable", true)
+	if not grabbable.is_connected("grabbed", _on_grabbable_grabbed):
+		grabbable.grabbed.connect(_on_grabbable_grabbed)
 
-func _on_child_entered_tree(node: Node) -> void:
-	if node is Grabbable:
-		if not node.is_connected("grabbed", _on_grabbable_grabbed):
-			node.grabbed.connect(_on_grabbable_grabbed)
-			
 func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
 	if _prev_parent == null:
 		_prev_parent = get_parent()
 		# reparent(player)
-		player.pickup_object(self, true, Vector3.RIGHT)
+		player.pickup_object(self, grabbable, true, Vector3.RIGHT)
 		if not obj.is_connected("dropped",_on_grabbable_dropped):
 			obj.call_deferred("connect", "dropped", _on_grabbable_dropped)
 	else:
 		reparent(_prev_parent)
 		_prev_parent = null
-		player.pickup_object(self, false)
+		player.pickup_object(self, grabbable, false)
 		# if obj.is_connected("dropped",_on_grabbable_dropped):
 		# 	obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)
 
@@ -32,7 +32,7 @@ func _on_grabbable_dropped(obj:Node3D, player:Node3D) -> void:
 	if player.held_object == self:
 		call_deferred("reparent", _prev_parent)
 		_prev_parent = null
-		player.pickup_object(self, false)
+		player.pickup_object(self, grabbable, false)
 
 		if obj.is_connected("dropped",_on_grabbable_dropped):
 			obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)

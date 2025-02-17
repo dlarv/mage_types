@@ -115,15 +115,17 @@ func open_shop(npc: Variant) -> void:
 func start_dialog(npc: Variant) -> void:
 	dialog_started.emit(npc.story_actor.dialog_ids[npc.story_actor.current_id], npc.enemy_actor, npc.vendor_actor)
 
-func pickup_object(obj: Node3D, val: bool, axis:=Vector3.ZERO) -> void:
+func pickup_object(obj: Node3D, grabbable: Grabbable, val: bool, axis:=Vector3.ZERO) -> void:
 	if not val:
 		held_object = null
 		restricted_axis = Vector3.ZERO
 		return
-	held_object = obj 
+	held_object = obj
+	
+	grabbable.is_being_reparented = true
 	obj.reparent(self)
+	grabbable.is_being_reparented = false
 
 	if axis != Vector3.ZERO:
 		velocity = Vector3.ZERO
 		restricted_axis = axis
-
