@@ -25,6 +25,11 @@ func _ready() -> void:
 
 func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 	var msg: String
+
+	if _prev_val != laser.rand_val:
+		_prev_val = laser.rand_val
+		Logger.append_log(Logger.LogType.PUZZLE, msg)
+
 	if element.is_blank() or laser.element == element:
 		_try_emit_on()
 		$Indicator.set_surface_override_material(0, _valid_mat)
@@ -36,10 +41,6 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 				% [puzzle_name, laser.element.name, element.name]
 		off.emit(self)
 
-	if _prev_val != laser.rand_val:
-		Logger.append_log(Logger.LogType.PUZZLE, msg)
-	else:
-		_prev_val = laser.rand_val
 
 
 func _on_sub_receiver_laser_dropped() -> void:

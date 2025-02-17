@@ -19,7 +19,7 @@ size = Vector3(2.5, 2.5, 2.5)
 [sub_resource type="BoxMesh" id="BoxMesh_hscpx"]
 size = Vector3(2.5, 2.5, 2.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k45wl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mbsd"]
 albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxte6"]
@@ -109,7 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -5.7, 15)
 base_strength = 20.0
 
 [node name="MagiclayBoulder" parent="StasisPuzzles/Puzzle" instance=ExtResource("3_mi5ru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5.5, 6.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5.5, 13.5)
 physics_material_override = SubResource("PhysicsMaterial_7t00q")
 linear_damp_mode = 1
 linear_damp = 10.0
@@ -123,7 +123,7 @@ shape = SubResource("BoxShape3D_solmf")
 [node name="MeshInstance3D" parent="StasisPuzzles/Puzzle/MagiclayBoulder" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 mesh = SubResource("BoxMesh_hscpx")
-surface_material_override/0 = SubResource("StandardMaterial3D_k45wl")
+surface_material_override/0 = SubResource("StandardMaterial3D_7mbsd")
 
 [node name="Geyser_NW" parent="StasisPuzzles/Puzzle" instance=ExtResource("2_7srj1")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -13.3, -5, -3.5)
@@ -151,7 +151,6 @@ _element = "red"
 
 [node name="Emitter_NW" parent="StasisPuzzles/Puzzle" instance=ExtResource("7_81bel")]
 transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 0, -5, 6)
-is_on = false
 _element = "magenta"
 
 [node name="Emitter_NE" parent="StasisPuzzles/Puzzle" instance=ExtResource("7_81bel")]
@@ -168,7 +167,7 @@ _element = "magenta"
 
 [node name="Gate" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_gkg8c")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, -0.5, -4)
-locks = [NodePath("../Relay_N"), NodePath("../Relay_E"), NodePath("../Relay_S"), NodePath("../Relay_W")]
+locks = [NodePath("../Relay_N"), NodePath("../Relay_E"), NodePath("../Relay_S"), NodePath("../PressurePlate_W")]
 
 [node name="PressurePlate_N" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11, -5.4, -3)
@@ -178,17 +177,17 @@ _element = "blue"
 [node name="PressurePlate_E" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 16, -5.4, 14)
 can_player_trigger = false
-_element = "blue"
+_element = "purple"
 
 [node name="PressurePlate_S" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8, -5.4, 19)
 can_player_trigger = false
-_element = "blue"
+_element = "purple"
 
 [node name="PressurePlate_W" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -12, -5.4, 11)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7, -5.4, -3)
 can_player_trigger = false
-_element = "blue"
+_element = "purple"
 
 [node name="Relay_N" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("lock") instance=ExtResource("8_tmabh")]
 lock = NodePath("../PressurePlate_N")
@@ -198,9 +197,6 @@ lock = NodePath("../PressurePlate_E")
 
 [node name="Relay_S" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("lock") instance=ExtResource("8_tmabh")]
 lock = NodePath("../PressurePlate_S")
-
-[node name="Relay_W" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("lock") instance=ExtResource("8_tmabh")]
-lock = NodePath("../PressurePlate_W")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03066, 0.49097, 7.9826)

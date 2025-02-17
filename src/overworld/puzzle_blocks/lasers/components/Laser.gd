@@ -10,3 +10,4 @@ var _element: String = "blank":
 		element = ElementManager.get_element_from_name(value)
 var element: ElementalType
 @export var rand_val: int
+@export var emitter_puzzle_name: String

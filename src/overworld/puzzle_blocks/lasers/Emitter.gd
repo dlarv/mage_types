@@ -12,6 +12,7 @@ func _ready() -> void:
 	super._ready()
 
 	laser = $SubEmitter.laser
+	laser.emitter_puzzle_name = puzzle_name
 	$SubEmitter.set_element(element)
 
 	if is_on:

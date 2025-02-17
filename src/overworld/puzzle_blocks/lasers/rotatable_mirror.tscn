@@ -14,8 +14,9 @@ height = 0.5
 radius = 1.0
 
 [node name="RotatableMirror" type="StaticBody3D"]
-collision_layer = 3
+collision_layer = 23
 script = ExtResource("1_f0x3o")
+is_transmutable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_3cdpd")

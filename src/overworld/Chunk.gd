@@ -1,4 +1,5 @@
 extends Area3D
+class_name Chunk
 
 @export var chunk: Node3D
 @export var resets: Array[Node3D]
