@@ -144,6 +144,9 @@ Place rock onto pressure plate.
 		- If this is done it will open a door to a section of the [[#Hidden Area Deep Caves|Deep Caves]].
 
 This will be a laser puzzle, where the player must match different beams.
+
+![[catalyst_solution_p1.jpg]]
+![[catalyst_solution_p2.jpg]]
 ## River Front (Lower/Upper Approach)
 ## Final Puzzle (Z3)
 - "Final" puzzle room: puzzle that requires use of both Stasis and Catalyst.

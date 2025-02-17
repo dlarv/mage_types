@@ -6,7 +6,6 @@
 		- Side effects.
 		- Transmutation hints.
 	- Affinity.
-	- Resistances/Weaknesses.
 - OverworldSpells:
 	- Aiming and selection.
 	- Stasis.
@@ -17,3 +16,4 @@
 	- Geyser.
 	- Pressure plates.
 	- Lasers.
+# Demo

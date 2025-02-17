@@ -1,18 +1,25 @@
-***Current Version***: 0.3.6
+***Current Version***: 0.3.9
 # Todo
+- [x] Change battle gui to support 3D models instead of sprites.
 - [ ] Refactor menu screen management to use stacks.
 - [ ] Add demo content.
 	- [ ] Demo Item list created.
 	- [ ] Demo attack list created.
 	- [ ] Demo beastiary created.
 - [ ] Add textures and animations to demo.
-- [ ] Change battle gui to support 3D models instead of sprites.
+- [ ] Save/load system.
+- [x] Grabbable dynamics.
+- [ ] Geyser dynamics.
+	- [x] Geyser not lifting player.
+	- [x] When two geysers are in opposition and one is turned off, the other will not push on objects inside of it.
 ## Known Bugs
 - [x] Actor formatter is broken (if attack is null, it fails).
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".
 	- Cannot replicate?
 - [ ] Player normal map is inverted.
 - [ ] Shadow on blob texture.
+- [x] Laser bugs:
+	- [x] If laser doubles back on itself, mirrors immediately glitch out.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.3.x

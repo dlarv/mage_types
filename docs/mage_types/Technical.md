@@ -422,6 +422,7 @@ private void _try_emit_off()
 - MagiClay.\_flicker_collider()
 - Laser.rand_val
 - puzzle chunks and reset blocks
+- Relays, delays, and flipflops.
 ##### Lasers
 ![[laser_system]]
 
@@ -540,7 +541,8 @@ The following system will need to interface with the Overworld Spells, esp which
 > Projectile collision layer is 2.
 > MagiClay collision layer is 3.
 > Laser collision layer is 4.
-> - The lasers themselves are on layer 5.
+>- Things that block lasers are on layer 5.
+> - Layer 6 is for things that only affect the player.
 #### MagiClay
 MagiClay is used for parts of the environment that must interact with OverworldSpells and/or have elemental types.
 
