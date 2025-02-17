@@ -51,10 +51,10 @@ func focus(val: bool) -> void:
 			col_header.color.a = 1
 			row_header.color.a = 1
 	else:
-		color.a = .2
+		color.a = .5
 		if col_header != null:
-			col_header.color.a = .2
-			row_header.color.a = .2
+			col_header.color.a = .5
+			row_header.color.a = .5
 
 func set_headers(col: ColorRect, row: ColorRect) -> void:
 	col_header = col
