@@ -37,6 +37,9 @@ func init_cost(element: ElementalType, cost: int) -> void:
 	_total_cost = cost
 	cost_label.show()
 
+	var style_box := get_theme_stylebox(element.name, "Control")
+	button.add_theme_stylebox_override("normal", style_box)
+
 func update_cost(actor: BattleActor) -> void:
 	if not cost_label.visible: return
 

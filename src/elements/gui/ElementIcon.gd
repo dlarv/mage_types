@@ -17,5 +17,4 @@ var element: ElementalType:
 		if(value == null):  element = ElementManager.Blank 
 		else: element = value 
 		label.text = "[center]%s[/center]" % element.get_bb_code_name(true)
-		color = element.main_color
-
+		color = get_theme_color(element.name, "Control")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0ctqpfxrh7c3"]
+[gd_scene load_steps=3 format=3 uid="uid://b0ctqpfxrh7c3"]
 
 [ext_resource type="Script" path="res://src/battle_system/gui/components/ThreeStateButton.gd" id="1_qafsp"]
+[ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme.tres" id="2_puxxf"]
 
 [node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("button", "cost_label")]
 custom_minimum_size = Vector2(0, 50)
@@ -14,11 +15,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_qafsp")
 unselected_modulate_color = Color(1, 1, 1, 1)
-selected_1_modulate_color = Color(0.442911, 0.442911, 0.442911, 1)
-selected_2_modulate_color = Color(0, 1, 0, 1)
 locked_modulate_color = Color(0.259294, 0.259294, 0.259294, 1)
 button = NodePath("Button")
-cost_label = NodePath("MarginContainer/RichTextLabel")
+cost_label = NodePath("MarginContainer/PanelContainer/MarginContainer/RichTextLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,9 +31,21 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Text"
@@ -51,6 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_puxxf")
 toggle_mode = true
 text = "Text"
 

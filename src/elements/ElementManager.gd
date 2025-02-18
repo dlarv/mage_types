@@ -15,14 +15,10 @@ var Green: ElementalType
 var Cyan: ElementalType 
 
 @export var elements: Array[ElementalType] = []
-# @export var buff_multiplier := 1.5
-# @export var buff_effects: Array[AttackEffect]
-# @export var debuff_effects: Array[AttackEffect]
 @export var attack_buff: AttackEffect
 @export var defense_buff: AttackEffect
 @export var speed_buff: AttackEffect
-@export var resistance_mod := 0.5
-@export var weakness_mod := 2
+@export var theme: Theme
 
 # Dict<string, Node>
 var matchups := {}
@@ -234,7 +230,6 @@ func get_all_matchups() -> Array:
 			output.append(item)
 	return output
 
-
 func side_effect_to_index(effect: AttackEffect, isBuff: bool) -> int:
 	if effect == null : 
 		return -1
@@ -244,6 +239,16 @@ func side_effect_to_index(effect: AttackEffect, isBuff: bool) -> int:
 		return 1
 	else:
 		return 2
+
+func modify_color(element: Variant, newColor: Color) -> void:
+	if element is String:
+		element = get_element_from_name(element)
+	element.main_color = newColor
+
+	theme.set_color(element.name, "Control", newColor)
+	var stylebox = theme.get_stylebox(element.name, "Control")
+	stylebox.bg_color = newColor
+	# theme.set_stylebox(element.name, "Control", stylebox)
 
 
 class ElementalNode:

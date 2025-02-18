@@ -52,8 +52,8 @@ size_flags_vertical = 0
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="Name_Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2

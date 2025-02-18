@@ -20,7 +20,7 @@ func get_text_color()-> Color:
 func get_bb_code_name(useAltColor:=false) -> String:
 	if useAltColor:
 		return "[color=%s]%s[/color]" % [text_color.to_html(), name]
-	return "[color=%s]%s[/color]" % [name, name]
+	return "[color=%s]%s[/color]" % [main_color.to_html(), main_color.to_html()]
 
 func is_blank() -> bool:
 	return name == "Blank"
@@ -29,4 +29,3 @@ func get_off_def_color() -> Color:
 	if is_defensive_type:
 		return Color.BLUE
 	return Color.RED
-

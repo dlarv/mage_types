@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg2x7kkp5udcq"]
+
+[ext_resource type="Script" path="res://src/generic_gui/pause_menu/accessibility/ColorSelector.gd" id="1_y6sga"]
+
+[node name="ColorSelector" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_y6sga")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+horizontal_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="color_changed" from="VBoxContainer/ColorPickerButton" to="." method="_on_color_changed"]

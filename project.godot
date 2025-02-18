@@ -39,6 +39,10 @@ project/assembly_name="Mage-Types"
 
 enabled=PackedStringArray("res://addons/attackbuilder/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg")
 
+[gui]
+
+theme/custom="res://assets/theme.tres"
+
 [input]
 
 ui_cancel={

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpr8pgu3aektj"]
+[gd_scene load_steps=4 format=3 uid="uid://dpr8pgu3aektj"]
 
 [ext_resource type="Script" path="res://src/generic_gui/pause_menu/SettingsMenu.gd" id="1_tx88d"]
+[ext_resource type="PackedScene" uid="uid://dtnvdlbt7x1aw" path="res://src/generic_gui/pause_menu/accessibility/colorblindness_menu.tscn" id="2_sdn2o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ew87g"]
 font_size = 50
@@ -12,9 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tx88d")
-_debug_mode_toggle = NodePath("MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox/CheckBox")
-_transmutation_hint_toggle = NodePath("MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox/CheckBox")
-_simple_effects_toggle = NodePath("MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox/CheckBox")
+_debug_mode_toggle = NodePath("MarginContainer/TabContainer/General Settings/VBoxContainer/DebugMode_HBox/CheckBox")
+_transmutation_hint_toggle = NodePath("MarginContainer/TabContainer/General Settings/VBoxContainer/TransmutationHints_HBox/CheckBox")
+_simple_effects_toggle = NodePath("MarginContainer/TabContainer/General Settings/VBoxContainer/SimpleEffects_HBox/CheckBox")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -23,72 +24,82 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
+current_tab = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="General Settings" type="ScrollContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/General Settings"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/General Settings/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 label_settings = SubResource("LabelSettings_ew87g")
 horizontal_alignment = 1
 
-[node name="DebugMode_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="DebugMode_HBox" type="HBoxContainer" parent="MarginContainer/TabContainer/General Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/DebugMode_HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Debug Mode:"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/DebugMode_HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SimpleEffects_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="SimpleEffects_HBox" type="HBoxContainer" parent="MarginContainer/TabContainer/General Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/SimpleEffects_HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Use simplfied side effects:"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/SimpleEffects_HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 button_pressed = true
 
-[node name="TransmutationHints_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="TransmutationHints_HBox" type="HBoxContainer" parent="MarginContainer/TabContainer/General Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/TransmutationHints_HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Show transmutation hints:"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/TransmutationHints_HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 button_pressed = true
 
-[node name="UseMouseTargeting_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="UseMouseTargeting_HBox" type="HBoxContainer" parent="MarginContainer/TabContainer/General Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/UseMouseTargeting_HBox"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/UseMouseTargeting_HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Use mouse for spell targeting:"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/ScrollContainer/VBoxContainer/UseMouseTargeting_HBox"]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/General Settings/VBoxContainer/UseMouseTargeting_HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 button_pressed = true
 
-[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/DebugMode_HBox/CheckBox" to="." method="on_debug_mode_toggled"]
-[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/SimpleEffects_HBox/CheckBox" to="." method="_on_simple_effects_toggled"]
-[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/TransmutationHints_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]
-[connection signal="toggled" from="MarginContainer/ScrollContainer/VBoxContainer/UseMouseTargeting_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]
+[node name="Colorblindness" parent="MarginContainer/TabContainer" instance=ExtResource("2_sdn2o")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[connection signal="toggled" from="MarginContainer/TabContainer/General Settings/VBoxContainer/DebugMode_HBox/CheckBox" to="." method="on_debug_mode_toggled"]
+[connection signal="toggled" from="MarginContainer/TabContainer/General Settings/VBoxContainer/SimpleEffects_HBox/CheckBox" to="." method="_on_simple_effects_toggled"]
+[connection signal="toggled" from="MarginContainer/TabContainer/General Settings/VBoxContainer/TransmutationHints_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]
+[connection signal="toggled" from="MarginContainer/TabContainer/General Settings/VBoxContainer/UseMouseTargeting_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]
