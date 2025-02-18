@@ -17,15 +17,15 @@ message = ""
 [sub_resource type="Resource" id="Resource_yok2p"]
 script = ExtResource("2_7ia5t")
 attack_effect = SubResource("Resource_s7d2j")
-chance = 1.0
 effect_target = 1
+chance = 1.0
 _element = "blank"
 
 [sub_resource type="Resource" id="Resource_cl0t4"]
 script = ExtResource("2_7ia5t")
 attack_effect = ExtResource("4_wjx8p")
-chance = 0.5
 effect_target = 1
+chance = 0.5
 _element = "blank"
 
 [resource]

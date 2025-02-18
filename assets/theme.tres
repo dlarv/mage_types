@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bfk63x8qgtxhe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddfhq"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xn48"]
+bg_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lmos"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n7xq"]
+bg_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu3ce"]
+bg_color = Color(1, 0.501961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81vnu"]
+bg_color = Color(0.501961, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7b3a"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwua3"]
+bg_color = Color(1, 1, 0, 1)
+
+[resource]
+Control/colors/Blue = Color(0, 0, 1, 1)
+Control/colors/Cyan = Color(0, 1, 1, 1)
+Control/colors/Green = Color(0, 1, 0, 1)
+Control/colors/Magenta = Color(1, 0, 1, 1)
+Control/colors/Orange = Color(1, 0.498039, 0, 1)
+Control/colors/Purple = Color(0.498039, 0, 1, 1)
+Control/colors/Red = Color(1, 0, 0, 1)
+Control/colors/Yellow = Color(1, 1, 0, 1)
+Control/styles/Blue = SubResource("StyleBoxFlat_ddfhq")
+Control/styles/Cyan = SubResource("StyleBoxFlat_6xn48")
+Control/styles/Green = SubResource("StyleBoxFlat_0lmos")
+Control/styles/Magenta = SubResource("StyleBoxFlat_7n7xq")
+Control/styles/Orange = SubResource("StyleBoxFlat_uu3ce")
+Control/styles/Purple = SubResource("StyleBoxFlat_81vnu")
+Control/styles/Red = SubResource("StyleBoxFlat_v7b3a")
+Control/styles/Yellow = SubResource("StyleBoxFlat_nwua3")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10

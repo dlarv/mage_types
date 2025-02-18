@@ -19,7 +19,7 @@ size = Vector3(2.5, 2.5, 2.5)
 [sub_resource type="BoxMesh" id="BoxMesh_hscpx"]
 size = Vector3(2.5, 2.5, 2.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgf1m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t84y8"]
 albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxte6"]
@@ -123,7 +123,7 @@ shape = SubResource("BoxShape3D_solmf")
 [node name="MeshInstance3D" parent="StasisPuzzles/Puzzle/MagiclayBoulder" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 mesh = SubResource("BoxMesh_hscpx")
-surface_material_override/0 = SubResource("StandardMaterial3D_qgf1m")
+surface_material_override/0 = SubResource("StandardMaterial3D_t84y8")
 
 [node name="Geyser_NW" parent="StasisPuzzles/Puzzle" instance=ExtResource("2_7srj1")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -13.3, -5, -3.5)

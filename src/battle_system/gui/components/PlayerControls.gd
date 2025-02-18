@@ -1,5 +1,4 @@
 extends PanelContainer
-class_name PlayerControls 
 
 signal action_selected(index, action)
 signal action_target_selection_cancelled()
@@ -11,7 +10,7 @@ signal start_turn()
 @export var three_state_button: PackedScene 
 @export var control_panel: TabContainer 
 @export var attacks_panel: TabContainer 
-@export var items_scroller: VBoxContainer 
+@export var items_scroller: GridContainer
 @export var character_scroller: VBoxContainer 
 @export var next_button: Button 
 @export var prev_button: Button 
@@ -76,12 +75,13 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 
 func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	var scroller := ScrollContainer.new()
-	var vbox := GridContainer.new()
+	var grid := GridContainer.new()
+	grid.columns = 2
 	var group := ButtonGroup.new()
 
-	vbox.size_flags_horizontal = VBoxContainer.SIZE_EXPAND_FILL
-	vbox.size_flags_vertical = VBoxContainer.SIZE_EXPAND_FILL
-	scroller.add_child(vbox)
+	grid.size_flags_horizontal = VBoxContainer.SIZE_EXPAND_FILL
+	grid.size_flags_vertical = VBoxContainer.SIZE_EXPAND_FILL
+	scroller.add_child(grid)
 	attacks_panel.add_child(scroller)
 
 	for attack in actor.attacks:
@@ -92,7 +92,7 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 		button.text = attack.name
 		button.state_changed.connect(func(state):
 			on_action_selected(state, index, attack)) 
-		vbox.add_child(button)
+		grid.add_child(button)
 
 		# Show affinity cost.
 		button.init_cost(attack.element, attack.cost)

@@ -6,7 +6,7 @@ signal actions_selected(actions)
 @export var messageBox: RichTextLabel 
 @export var ally_display_parent: TeamDisplay 
 @export var enemy_display_parent: TeamDisplay 
-@export var playerControls: PlayerControls 
+@export var playerControls: Control
 @export var sprite_parent: Node2D
 @export var turn_counter_display: Label
 

@@ -17,8 +17,8 @@ message = ""
 [sub_resource type="Resource" id="Resource_5kdg2"]
 script = ExtResource("1_46hmk")
 attack_effect = SubResource("Resource_xoar2")
-chance = 1.0
 effect_target = 0
+chance = 1.0
 _element = "blank"
 
 [sub_resource type="Resource" id="Resource_e3c2m"]
@@ -36,8 +36,8 @@ message = "{target}'s melee defense was lowered!
 [sub_resource type="Resource" id="Resource_ptp5f"]
 script = ExtResource("1_46hmk")
 attack_effect = SubResource("Resource_e3c2m")
-chance = 1.0
 effect_target = 1
+chance = 1.0
 _element = "blank"
 
 [resource]

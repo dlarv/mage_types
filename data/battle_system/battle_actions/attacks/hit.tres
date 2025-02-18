@@ -16,8 +16,8 @@ message = ""
 [sub_resource type="Resource" id="Resource_0yygv"]
 script = ExtResource("2_7v22j")
 attack_effect = SubResource("Resource_ed301")
-chance = 1.0
 effect_target = 1
+chance = 1.0
 _element = "blank"
 
 [resource]
