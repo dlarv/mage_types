@@ -4,7 +4,6 @@ extends Node3D
 @export var world: Node3D
 @export var overworld: Node3D
 @export var dialog_box: DialogueBox
-@export var vendor_menu: Control
 
 # Amount of time to wait between a battle ending and a new one starting.
 @export var battle_delay: float
@@ -36,9 +35,6 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	await get_tree().create_timer(battle_delay).timeout
 	get_tree().call_group("wild_enemies", "_end_battle_cooldown")
 
-func _on_player_pause_world(value: bool) -> void:
-	overworld.process_mode = Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED
-
 func _on_dialog_started(dialogId: String, enemy_actor: EnemyActor, vendor_actor: VendorActor) -> void:
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -49,9 +45,8 @@ func _on_dialog_started(dialogId: String, enemy_actor: EnemyActor, vendor_actor:
 		"battle_started":
 			_on_player_battle_started(_player.team, enemy_actor)
 		"menu_opened":
-			vendor_menu.open_menu(vendor_actor)
-			await vendor_menu.menu_closed
+			MenuManager.open_vendor_menu(vendor_actor)
+			await MenuManager.vendor_menu_closed
 			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 
 			world.process_mode = Node.PROCESS_MODE_INHERIT
-

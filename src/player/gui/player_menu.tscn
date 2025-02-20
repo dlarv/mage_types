@@ -5,43 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://lf8pis6wd5qh" path="res://src/player/gui/inventory/inventory_screen.tscn" id="3_amx4t"]
 [ext_resource type="PackedScene" uid="uid://co83hy4vr7ndn" path="res://src/player/gui/overworld_spell_menu/overworld_spells.tscn" id="4_ky6qd"]
 
-[node name="PlayerMenu" type="Control" node_paths=PackedStringArray("inventory_screen", "characters_menu")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_fk17s")
-inventory_screen = NodePath("TabContainer/Inventory")
-characters_menu = NodePath("TabContainer/Characters")
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 1
+[node name="PlayerMenu" type="TabContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
+script = ExtResource("1_fk17s")
 
-[node name="Characters" parent="TabContainer" instance=ExtResource("2_bem4u")]
+[node name="Characters" parent="." instance=ExtResource("2_bem4u")]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Inventory" parent="TabContainer" instance=ExtResource("3_amx4t")]
+[node name="Inventory" parent="." instance=ExtResource("3_amx4t")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Overworld Spells" parent="TabContainer" instance=ExtResource("4_ky6qd")]
+[node name="Overworld Spells" parent="." instance=ExtResource("4_ky6qd")]
 visible = false
 layout_mode = 2

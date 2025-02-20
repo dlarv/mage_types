@@ -1,14 +1,12 @@
 extends CharacterBody3D 
 class_name Player 
 
-signal pause_world(val: bool)
 signal battle_started(allies, enemies)
 signal dialog_started(dialog_id, enemy_actor, vendor_actor)
 
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
 @export var team: Array[BattleActor]
-@export var player_menu: Control 
 @export var model: Node3D
 @export var anim_player: AnimationPlayer
 
@@ -31,9 +29,6 @@ var _prev_collision_mask := collision_mask
 
 func _ready() -> void:
 	team.insert(0, battle_actor)
-	player_menu.pause_world.connect(func(value): 
-		in_control = value
-		pause_world.emit(value))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return

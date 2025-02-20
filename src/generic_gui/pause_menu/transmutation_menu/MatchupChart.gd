@@ -1,13 +1,12 @@
 @tool
 extends Control
 
-
 @export var grid: GridContainer
 @export var reload: bool:
 	set(value):
 		create_grid()
 
-var MatchupCell := preload("./MatchupCell.gd")
+@export var MatchupCell: GDScript
 
 var _elements := []
 var _matchups := {}
@@ -29,7 +28,7 @@ func create_grid(mirror:=false) -> void:
 		grid.remove_child(child)
 	
 	# Add empty spacer to top-left corner.
-	var rect := MatchupCell.new(Color.GRAY)
+	var rect = MatchupCell.new(Color.GRAY)
 	grid.add_child(rect)
 
 	# Add column headers.
@@ -45,7 +44,7 @@ func create_grid(mirror:=false) -> void:
 	
 	var skip = 1 if not mirror else 0
 	for rowElement in _elements:
-		var rowHeader :=  MatchupCell.new(rowElement.main_color)
+		var rowHeader =  MatchupCell.new(rowElement.main_color)
 		rowHeader.mouse_entered.connect(func():
 			if not do_highlighting: return
 			for child in grid.get_children():

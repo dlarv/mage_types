@@ -11,20 +11,39 @@ signal overworld_spell_enabled(id: OverworldSpell.Spells, isEnabled: bool)
 @export var money: int = 0
 
 @export_category("Item Arrays")
-var _battle_items: Array[RegularItem]
-@export var regular_items: Array[ItemSlot]
+var _battle_items: Array
+@export var regular_items: Array[ItemSlot]:
+	set(vals):
+		regular_items = vals
+		_battle_items = []
+		for item in vals:
+			if "battle_item" in item.item and item.item.battle_item != null:
+				_battle_items.append(item.item.battle_item)
+				item.item.battle_item.item_consumed.connect(func():
+					item.quantity -= 1
+					quantity_changed.emit(item))
+		_reorder_item_array(regular_items)
 @export var recalc_ids_r: bool:
 	set(val):
 		_reorder_item_array(regular_items)
-@export var spell_scrolls: Array[ItemSlot]
+@export var spell_scrolls: Array[ItemSlot]:
+	set(vals):
+		spell_scrolls = vals
+		_reorder_item_array(regular_items)
 @export var recalc_ids_s: bool:
 	set(val):
 		_reorder_item_array(spell_scrolls)
-@export var key_items: Array[ItemSlot]
+@export var key_items: Array[ItemSlot]:
+	set(vals):
+		key_items = vals
+		_reorder_item_array(key_items)
 @export var recalc_ids_k: bool:
 	set(val):
 		_reorder_item_array(key_items)
-@export var equipment: Array[ItemSlot]
+@export var equipment: Array[ItemSlot]:
+	set(vals):
+		equipment = vals
+		_reorder_item_array(equipment)
 @export var recalc_ids_e: bool:
 	set(val):
 		_reorder_item_array(equipment)

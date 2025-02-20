@@ -4,11 +4,11 @@ class_name StatItem
 
 signal stat_modified(stat, amount)
 
-@export_enum("MELEE_ATTACK", "RANGED_ATTACK", "MELEE_DEFENSE", "RANGED_DEFENSE", "SPEED", "EVASION", "HP", "MANA")
+@export_enum("MELEE_ATTACK", "RANGED_ATTACK", "MELEE_DEFENSE", "RANGED_DEFENSE", "SPEED", "EVASION", "HP", "O_MANA", "D_MANA")
 var stat: String:
 	set(value):
 		stat = value
-		_double_value = value == "HP" or value == "MANA"
+		_double_value = value == "HP" or value == "O_MANA" or value == "D_MANA"
 		if _name_label == null: return
 		_name_label.text = value.replace("_", " ").capitalize()
 
@@ -73,8 +73,12 @@ func _increment_stat(direction: int) -> void:
 	stat_modified.emit(stat, value_1)
 
 func set_value(actor: BattleActor) -> void:
-	if stat == "MANA":
-		pass
+	if stat == "O_MANA":
+		value_1 = actor.affinity_manager.get_current_offensive_affinity()
+		value_2 = actor.affinity_manager.get_base_offensive_affinity()
+	elif stat == "D_MANA":
+		value_1 = actor.affinity_manager.get_current_defensive_affinity()
+		value_2 = actor.affinity_manager.get_base_defensive_affinity()
 	elif stat == "HP":
 		value_1 = actor.hp
 		value_2 = actor.current_hp

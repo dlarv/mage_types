@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk5s033cfegw5"]
+
+[ext_resource type="Script" path="res://src/generic_gui/pause_menu/player_menu/components/CharacterScreen.gd" id="1_pabo1"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_p3dnk"]
+[ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="3_j3qxa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lgfw"]
+font_size = 30
+
+[node name="CharacterScreen" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("1_pabo1")
+
+[node name="General" type="MarginContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="General"]
+layout_mode = 2
+
+[node name="Name_Label" type="Label" parent="General/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_1lgfw")
+
+[node name="HSeparator" type="HSeparator" parent="General/VBoxContainer"]
+layout_mode = 2
+
+[node name="Elements_HBox" type="HBoxContainer" parent="General/VBoxContainer"]
+layout_mode = 2
+
+[node name="Primary" parent="General/VBoxContainer/Elements_HBox" instance=ExtResource("2_p3dnk")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Secondary" parent="General/VBoxContainer/Elements_HBox" instance=ExtResource("2_p3dnk")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Bias_Label" type="Label" parent="General/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bias:"
+
+[node name="Bias_ElementIcon" parent="General/VBoxContainer" instance=ExtResource("2_p3dnk")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HSeparator2" type="HSeparator" parent="General/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="General/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="General/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Stats:"
+horizontal_alignment = 1
+
+[node name="Stats_HBox" type="HBoxContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Hp_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_HBox" instance=ExtResource("3_j3qxa")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 1
+stat = "HP"
+
+[node name="Affinity1_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_HBox" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "O_MANA"
+
+[node name="Affinity1_StatItem2" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_HBox" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "D_MANA"
+
+[node name="HSeparator" type="HSeparator" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Stats_Container" type="GridContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="MAttack_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "MELEE_ATTACK"
+
+[node name="RAttack_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "RANGED_ATTACK"
+
+[node name="MDefense_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "MELEE_DEFENSE"
+
+[node name="RDefense_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "RANGED_DEFENSE"
+
+[node name="Speed_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "SPEED"
+
+[node name="Evasion_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+layout_mode = 2
+stat = "EVASION"
+
+[node name="Button and Beads" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button and Beads/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Button and Beads/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Equipment (Button)"
+
+[node name="Label2" type="Label" parent="Button and Beads/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Spells (Beads)"

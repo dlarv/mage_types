@@ -39,9 +39,10 @@ layout_mode = 2
 [node name="InterfaceContainer" type="TabContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 2
 
 [node name="Info" type="MarginContainer" parent="MarginContainer/HBoxContainer/InterfaceContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -142,7 +143,6 @@ layout_mode = 2
 stat = "SPEED"
 
 [node name="Spells" parent="MarginContainer/HBoxContainer/InterfaceContainer" instance=ExtResource("4_f40yp")]
-visible = false
 layout_mode = 2
 
 [connection signal="stat_modified" from="MarginContainer/HBoxContainer/InterfaceContainer/Stats/ScrollContainer/VBoxContainer/Hp_StatItem" to="." method="_on_stat_modified"]

@@ -1,6 +1,5 @@
 @tool
 extends Control 
-class_name CharacterScreen 
 
 @export
 var actor: BattleActor:

@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch52g6fw70mk4"]
+
+[ext_resource type="Script" path="res://src/generic_gui/MenuManager.gd" id="1_nwhru"]
+[ext_resource type="PackedScene" uid="uid://b644ydrvhju3b" path="res://src/generic_gui/pause_menu/player_menu/player_menu.tscn" id="2_i5nhe"]
+[ext_resource type="PackedScene" uid="uid://dpr8pgu3aektj" path="res://src/generic_gui/pause_menu/settings_menu/settings_menu.tscn" id="4_sopbh"]
+[ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/generic_gui/pause_menu/vendor_menu/vendor_menu.tscn" id="5_b4qo4"]
+[ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/generic_gui/pause_menu/transmutation_menu/element_menu.tscn" id="5_la646"]
+[ext_resource type="PackedScene" uid="uid://cla1fukn637mm" path="res://src/generic_gui/pause_menu/inventory/inventory_menu.tscn" id="6_f4ewy"]
+
+[node name="MenuManager" type="PanelContainer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nwhru")
+main_menu = NodePath("MarginContainer/TabContainer/MainMenu")
+player_menu = NodePath("MarginContainer/TabContainer/PlayerMenu")
+inventory = NodePath("MarginContainer/TabContainer/InventoryMenu")
+matchup_chart = NodePath("MarginContainer/TabContainer/ElementMenu")
+settings_menu = NodePath("MarginContainer/TabContainer/SettingsMenu")
+vendor_menu = NodePath("MarginContainer/TabContainer/VendorMenu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="MainMenu" type="Control" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/TabContainer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/MainMenu/CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Player_Button" type="Button" parent="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Party"
+
+[node name="Inventory_Button" type="Button" parent="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Transmutation_Button" type="Button" parent="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Transmutation Chart"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="OpenSettings_Button" type="Button" parent="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="SaveGame_Button" type="Button" parent="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Save/Load"
+
+[node name="Quit" type="Button" parent="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="PlayerMenu" parent="MarginContainer/TabContainer" instance=ExtResource("2_i5nhe")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="SettingsMenu" parent="MarginContainer/TabContainer" instance=ExtResource("4_sopbh")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VendorMenu" parent="MarginContainer/TabContainer" instance=ExtResource("5_b4qo4")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="ElementMenu" parent="MarginContainer/TabContainer" instance=ExtResource("5_la646")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="InventoryMenu" parent="MarginContainer/TabContainer" instance=ExtResource("6_f4ewy")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 5
+
+[connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Player_Button" to="." method="_on_player_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Inventory_Button" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Transmutation_Button" to="." method="_on_transmutation_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/OpenSettings_Button" to="." method="_on_open_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/SaveGame_Button" to="." method="_on_save_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="menu_closed" from="MarginContainer/TabContainer/VendorMenu" to="MarginContainer/TabContainer" method="_on_vendor_menu_menu_closed"]

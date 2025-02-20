@@ -1,5 +1,4 @@
-extends Control 
-class_name SettingsMenu 
+extends Menu
 
 @export var _debug_mode_toggle: CheckBox
 @export var _transmutation_hint_toggle: CheckBox

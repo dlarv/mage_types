@@ -12,12 +12,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 font_size = 32
 
 [node name="StatItem" type="Control" node_paths=PackedStringArray("_name_label", "_number_label", "_extra_number_label", "_number_label_separator", "_up_button", "_down_button")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_8hlo5")
 editable = true
@@ -29,7 +31,6 @@ _up_button = NodePath("HBoxContainer/VBoxContainer/UpButton")
 _down_button = NodePath("HBoxContainer/VBoxContainer/DownButton")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 10)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,8 +48,7 @@ grow_vertical = 2
 
 [node name="LabelContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 20
 
 [node name="Name" type="Label" parent="HBoxContainer/LabelContainer"]
 layout_mode = 2
@@ -58,7 +58,7 @@ vertical_alignment = 1
 
 [node name="NumberContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -70,7 +70,7 @@ size_flags_horizontal = 8
 
 [node name="Number1" type="LineEdit" parent="HBoxContainer/NumberContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 32
 theme_override_styles/read_only = SubResource("StyleBoxFlat_0ijqt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hrrkk")
@@ -86,7 +86,7 @@ label_settings = SubResource("LabelSettings_42cte")
 
 [node name="Number2" type="LineEdit" parent="HBoxContainer/NumberContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 32
 theme_override_styles/read_only = SubResource("StyleBoxFlat_0ijqt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hrrkk")
@@ -101,12 +101,16 @@ size_flags_horizontal = 8
 theme_override_constants/separation = -1
 
 [node name="UpButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 10
 text = "+"
 
 [node name="DownButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 2
 text = "-"
 

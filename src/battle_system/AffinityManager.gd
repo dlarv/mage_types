@@ -85,6 +85,18 @@ func set_element(id: int, element: ElementalType) -> int:
 func get_affinity(element: ElementalType) -> int:
 	return affinities[_map_key(element)]
 
+func get_current_offensive_affinity() -> int:
+	return affinities[OFFENSIVE_INDEX]
+
+func get_current_defensive_affinity() -> int:
+	return affinities[DEFENSIVE_INDEX]
+
+func get_base_offensive_affinity() -> int:
+	return initial_offensive_affinity
+
+func get_base_defensive_affinity() -> int:
+	return initial_defensive_affinity
+
 func _map_key(e: ElementalType) -> int:
 	match e:
 		ElementManager.Blue,ElementManager.Cyan, ElementManager.Yellow,ElementManager.Magenta:

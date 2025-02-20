@@ -31,7 +31,6 @@ var current_hp: int = 100
 @export var reset_hp_after_battle := true
 @export var affinity_manager = AffinityManager.new()
 
-
 var speed: float:
 	get: return stat_manager.speed
 var evasion: float:

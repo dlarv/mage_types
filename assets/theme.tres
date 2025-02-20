@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bfk63x8qgtxhe"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bfk63x8qgtxhe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g62fv"]
+bg_color = Color(0.498039, 0.498039, 0.498039, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddfhq"]
 bg_color = Color(0, 0, 1, 1)
@@ -24,7 +27,11 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwua3"]
 bg_color = Color(1, 1, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1n5p"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
 [resource]
+Control/colors/Blank = Color(0.498039, 0.498039, 0.498039, 1)
 Control/colors/Blue = Color(0, 0, 1, 1)
 Control/colors/Cyan = Color(0, 1, 1, 1)
 Control/colors/Green = Color(0, 1, 0, 1)
@@ -33,6 +40,7 @@ Control/colors/Orange = Color(1, 0.498039, 0, 1)
 Control/colors/Purple = Color(0.498039, 0, 1, 1)
 Control/colors/Red = Color(1, 0, 0, 1)
 Control/colors/Yellow = Color(1, 1, 0, 1)
+Control/styles/Blank = SubResource("StyleBoxFlat_g62fv")
 Control/styles/Blue = SubResource("StyleBoxFlat_ddfhq")
 Control/styles/Cyan = SubResource("StyleBoxFlat_6xn48")
 Control/styles/Green = SubResource("StyleBoxFlat_0lmos")
@@ -45,3 +53,4 @@ MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
+TabContainer/styles/panel = SubResource("StyleBoxFlat_y1n5p")

@@ -19,8 +19,8 @@ var _turn_counter: int = 0
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log(Logger.LogType.BATTLE)
-	if event.is_action_pressed("toggle_player_menu"):
-		_matchup_manager.visible = !_matchup_manager.visible
+	# if event.is_action_pressed("toggle_player_menu"):
+	# 	_matchup_manager.visible = !_matchup_manager.visible
 	if event is InputEventKey and _matchup_manager.visible and event.keycode == KEY_ESCAPE:
 		get_window().set_input_as_handled()
 		_matchup_manager.visible = false 

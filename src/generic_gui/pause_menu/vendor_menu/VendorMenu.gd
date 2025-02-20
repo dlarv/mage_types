@@ -1,5 +1,4 @@
-extends PanelContainer
-class_name VendorMenu
+extends Menu
 
 signal menu_closed()
 
@@ -12,16 +11,8 @@ signal menu_closed()
 
 var current_vendor: VendorActor = null
 
-
 func _ready():
 	info_display.item_bought.connect(Inventory.add)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if not visible: return
-	if event.is_action_pressed("close_menu"):
-		get_window().set_input_as_handled()
-		hide()
 
 func open_menu(vendor: VendorActor) -> void:
 	show()
@@ -56,5 +47,3 @@ func _on_item_selected(item: VendorItem) -> void:
 
 func _on_hidden() -> void:
 	menu_closed.emit()
-
-
