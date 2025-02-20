@@ -5,6 +5,7 @@ var grabbable: Grabbable
 var _prev_parent: Node3D = null
 
 func _ready() -> void:
+	super._ready()
 	grabbable = find_child("Grabbable", true)
 	if not grabbable.is_connected("grabbed", _on_grabbed):
 		grabbable.grabbed.connect(_on_grabbed)

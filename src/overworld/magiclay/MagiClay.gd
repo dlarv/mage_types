@@ -34,7 +34,9 @@ var _mesh: MeshInstance3D: get = _get_mesh
 var _material: StandardMaterial3D:
 	set(val):
 		_material = val
-		if _mesh == null: return
+		if _mesh == null:
+			push_warning("%s has no mesh!" % puzzle_name)
+			return
 		_mesh.set_surface_override_material(0, _material)
 		_try_set_color()
 var _original_element: ElementalType
