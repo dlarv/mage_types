@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/generic_gui/pause_menu/player_menu/components/CharacterScreen.gd" id="1_pabo1"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_p3dnk"]
-[ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="3_j3qxa"]
+[ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/generic_gui/pause_menu/player_menu/components/stat_item.tscn" id="3_j3qxa"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="4_3lj6l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lgfw"]
