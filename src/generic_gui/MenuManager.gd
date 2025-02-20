@@ -11,12 +11,19 @@ signal vendor_menu_closed
 
 var overworld: Node
 var _active_menu: Menu = null
+var _block_input := false
 
 func _ready() -> void:
 	overworld = get_tree().get_root().get_children()[-1].get_node("%Overworld")
 	hide()
 
 func _unhandled_input(input: InputEvent) -> void:
+	if _block_input: 
+		if not inventory.visible: return
+		if input.is_action_pressed("ui_cancel"):
+			inventory.spell_scroll_selected.emit(null)
+			inventory.equipment_selected.emit(null)
+		return
 	if not visible: 
 		_try_toggle_menu(input)
 		return
@@ -67,3 +74,21 @@ func _on_quit_pressed() -> void:
 func _on_vendor_menu_menu_closed() -> void:
 	vendor_menu_closed.emit()
 	vendor_menu.hide()
+
+func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
+	_block_input = true
+	inventory.show()
+	var selection = await inventory.open_spell_scroll_menu()
+	_active_menu.show()
+	_block_input = false
+	if selection != null:
+		actor.learn_spell(selection, index)
+
+func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
+	_block_input = true
+	inventory.show()
+	var selection = await inventory.open_equipment_menu()
+	_active_menu.show()
+	_block_input = false
+	if selection != null:
+		actor.equipment = selection

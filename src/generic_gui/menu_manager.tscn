@@ -103,4 +103,6 @@ metadata/_tab_index = 5
 [connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/OpenSettings_Button" to="." method="_on_open_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/SaveGame_Button" to="." method="_on_save_game_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="open_equipment_menu" from="MarginContainer/TabContainer/PlayerMenu" to="." method="_on_player_menu_open_equipment_menu"]
+[connection signal="open_spell_menu" from="MarginContainer/TabContainer/PlayerMenu" to="." method="_on_player_menu_open_spell_menu"]
 [connection signal="menu_closed" from="MarginContainer/TabContainer/VendorMenu" to="MarginContainer/TabContainer" method="_on_vendor_menu_menu_closed"]

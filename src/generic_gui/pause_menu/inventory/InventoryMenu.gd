@@ -1,5 +1,9 @@
 extends Menu
 
+signal regular_item_selected(item: Item)
+signal spell_scroll_selected(item: Item)
+signal equipment_selected(item: Item)
+
 func _ready() -> void:
 	$Regular.setup(Inventory.regular_items)
 	$"Spell Beads".setup(Inventory.spell_scrolls)
@@ -18,3 +22,29 @@ func _on_quantity_changed(item: ItemSlot) -> void:
 		$Equipment.change_quantity(item)
 	else:
 		$"Key Items".change_quantity(item)
+
+func open_regular_menu() -> Item:
+	tabs_visible = false
+	current_tab = 0
+	var item = await regular_item_selected
+	return item
+
+func open_spell_scroll_menu() -> Item:
+	tabs_visible = false
+	current_tab = 1
+	var item = await spell_scroll_selected
+	return item
+
+func open_equipment_menu() -> Item:
+	tabs_visible = false
+	current_tab = 2
+	var item = await equipment_selected
+	return item 
+
+func _on_item_selected(item:Item) -> void:
+	if item is RegularItem:
+		regular_item_selected.emit(item)
+	elif item is SpellScroll:
+		spell_scroll_selected.emit(item)
+	elif item is Equipment:
+		equipment_selected.emit(item)

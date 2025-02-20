@@ -36,34 +36,44 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/List_VBox/HBoxContainer"]
 layout_mode = 2
-text = "Sort by:        "
-
-[node name="Id_Label" type="Label" parent="HBoxContainer/List_VBox/HBoxContainer"]
-layout_mode = 2
-text = "Id
-"
+text = "Sort by:"
 
 [node name="Id_CheckBox" type="CheckBox" parent="HBoxContainer/List_VBox/HBoxContainer"]
 layout_mode = 2
 button_pressed = true
 button_group = SubResource("ButtonGroup_id3j4")
-
-[node name="Alnum_Label" type="Label" parent="HBoxContainer/List_VBox/HBoxContainer"]
-layout_mode = 2
-text = "Alphanumeric
-"
+text = "Id"
 
 [node name="Alnum_CheckBox" type="CheckBox" parent="HBoxContainer/List_VBox/HBoxContainer"]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_id3j4")
+text = "Alphanumeric"
 
 [node name="Display_VBox" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="InfoDisplay" parent="HBoxContainer/Display_VBox" instance=ExtResource("2_js2lc")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Controls_HBox" type="HBoxContainer" parent="HBoxContainer/Display_VBox"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
+
+[node name="Select_Button" type="Button" parent="HBoxContainer/Display_VBox/Controls_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select"
+
+[node name="Cancel_Button" type="Button" parent="HBoxContainer/Display_VBox/Controls_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[connection signal="toggled" from="HBoxContainer/List_VBox/HBoxContainer/Id_CheckBox" to="." method="_on_id_check_box_toggled"]
+[connection signal="toggled" from="HBoxContainer/List_VBox/HBoxContainer/Alnum_CheckBox" to="." method="_on_alnum_check_box_toggled"]
+[connection signal="pressed" from="HBoxContainer/Display_VBox/Controls_HBox/Select_Button" to="." method="_on_item_selected"]
+[connection signal="pressed" from="HBoxContainer/Display_VBox/Controls_HBox/Cancel_Button" to="." method="_on_item_canceled"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk5s033cfegw5"]
+[gd_scene load_steps=6 format=3 uid="uid://dk5s033cfegw5"]
 
 [ext_resource type="Script" path="res://src/generic_gui/pause_menu/player_menu/components/CharacterScreen.gd" id="1_pabo1"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_p3dnk"]
 [ext_resource type="PackedScene" uid="uid://bn3qgn2vc75yn" path="res://src/player/gui/character_menu/components/stat_item.tscn" id="3_j3qxa"]
+[ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="4_3lj6l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lgfw"]
 font_size = 30
@@ -13,10 +14,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 script = ExtResource("1_pabo1")
 
 [node name="General" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -125,21 +127,63 @@ layout_mode = 2
 stat = "EVASION"
 
 [node name="Button and Beads" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads"]
 layout_mode = 2
 
+[node name="List_VBox" type="VBoxContainer" parent="Button and Beads/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Button and Beads/HBoxContainer/List_VBox"]
+layout_mode = 2
+text = "Equipment (Button)"
+
+[node name="Equipment_Button" type="Button" parent="Button and Beads/HBoxContainer/List_VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Button and Beads/HBoxContainer/List_VBox"]
+layout_mode = 2
+text = "Spells (Beads)"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Button and Beads/HBoxContainer/List_VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SpellScroller" type="VBoxContainer" parent="Button and Beads/HBoxContainer/List_VBox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Button and Beads/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Button and Beads/HBoxContainer/VBoxContainer"]
+[node name="InfoDisplay" parent="Button and Beads/HBoxContainer/VBoxContainer" instance=ExtResource("4_3lj6l")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Equipment (Button)"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Label2" type="Label" parent="Button and Beads/HBoxContainer/VBoxContainer"]
+[node name="Control_HBox" type="HBoxContainer" parent="Button and Beads/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Spells (Beads)"
+
+[node name="Replace_Button" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Replace"
+
+[node name="Cancel_Button" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[connection signal="pressed" from="Button and Beads/HBoxContainer/List_VBox/Equipment_Button" to="." method="_on_item_selected" binds= [-1]]
+[connection signal="pressed" from="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox/Replace_Button" to="." method="_on_replace_button_pressed"]
+[connection signal="pressed" from="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox/Cancel_Button" to="." method="_on_cancel_button_pressed"]

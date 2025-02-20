@@ -13,6 +13,7 @@ signal status_effects_removed(effect)
 signal damage_applied(current_hp)
 signal element_changed(id, element)
 signal spell_learned(spell, index)
+signal equipment_equipped(equipment)
 
 @export
 var name : String = "Guy" 
@@ -77,6 +78,7 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 		equipment = value
 		if not Engine.is_editor_hint() and value != null:
 			equipment.equip(self)
+		equipment_equipped.emit(value)
 
 @export var sprite_path: PackedScene
 

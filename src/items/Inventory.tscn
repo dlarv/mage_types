@@ -26,7 +26,7 @@
 resource_name = "Healing Potion"
 script = ExtResource("2_xejte")
 item = ExtResource("3_3atr7")
-id = -1
+id = 0
 quantity = 2
 max_quantity = 9999
 
@@ -34,7 +34,7 @@ max_quantity = 9999
 resource_name = "Poison Heal"
 script = ExtResource("2_xejte")
 item = ExtResource("4_klwlq")
-id = -1
+id = 1
 quantity = 0
 max_quantity = 9999
 
@@ -51,7 +51,7 @@ resource_name = "Sting Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("9_inlsm")
 id = -1
-quantity = 0
+quantity = 1
 max_quantity = 9999
 
 [sub_resource type="Resource" id="Resource_ko57n"]
