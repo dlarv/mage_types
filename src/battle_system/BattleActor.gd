@@ -98,7 +98,7 @@ var _msgs := []
 var _func_overrides := {}
 
 func setup(battle: Battle) -> void: 
-	battle.battle_ended.connect(func(playerWasDefeated): 
+	battle.battle_ended.connect(func(endState): 
 		stat_manager.reset()
 		if reset_hp_after_battle: 
 			current_hp = hp)

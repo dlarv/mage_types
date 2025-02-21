@@ -1,7 +1,7 @@
 extends Resource
 class_name OpponentController 
 
-signal battle_ended(playerWasDefeated: bool)
+signal battle_ended(endState: Battle.EndState)
 
 const TEAM_INDEX = 1
 
@@ -20,8 +20,8 @@ func setup(team: Array) -> void:
 			return not a.displayAfterTurn
 		return a.turn < b.turn)
 
-func _on_battle_ended(playerWasDefeated: bool) -> void:
-	battle_ended.emit(playerWasDefeated)
+func _on_battle_ended(endState: Battle.EndState) -> void:
+	battle_ended.emit(endState)
 
 func get_actions(otherTeam: Array) -> Array:
 	var actions := []

@@ -1,7 +1,9 @@
 extends Node
 class_name Battle 
 
-signal battle_ended(playerWasDefeated: bool)
+signal battle_ended(endState: EndState)
+
+enum EndState { WON, DEFEATED, FLED }
 
 # BattleActor[]
 var enemies := []
@@ -26,7 +28,6 @@ func _unhandled_input(event) -> void:
 		_matchup_manager.visible = false 
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
-	#ElementManager.load_from_default_csv(Settings.use_simplified_effects)
 	self.allies = allies
 	self.enemies = enemies
 
@@ -59,7 +60,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
 		await gui.display_message("You ran away.")
-		battle_ended.emit(true)
+		battle_ended.emit(EndState.FLED)
 		return
 
 	# Get actions for opponent's team.
@@ -270,10 +271,10 @@ func dialog(isAfterTurn: bool) -> void:
 func _check_if_battle_ended() -> bool:
 	if _defeated_allies == len(allies):
 		await gui.display_message("You were defeated...")
-		battle_ended.emit(true)
+		battle_ended.emit(EndState.DEFEATED)
 		return true
 	elif _defeated_enemies == len(enemies):
 		await gui.display_message("You won!")
-		battle_ended.emit(false)
+		battle_ended.emit(EndState.WON)
 		return true
 	return false

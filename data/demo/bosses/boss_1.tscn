@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://deg7o2or7hfh5"]
+[gd_scene load_steps=12 format=3 uid="uid://deg7o2or7hfh5"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_k87ii"]
 [ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/blob.blend" id="2_n8kln"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="6_1lbkl"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="7_0w68n"]
 [ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/demo/bosses/boss_1.tres" id="8_704m5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4gwb2"]
+radius = 1.41572
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ucadb"]
 radius = 1.56864
@@ -24,6 +27,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
 
 [node name="blob2" parent="." index="1" instance=ExtResource("2_n8kln")]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="blob2/blob" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blob2/blob/StaticBody3D" index="0"]
+shape = SubResource("SphereShape3D_4gwb2")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 shape = SubResource("SphereShape3D_ucadb")
 
@@ -33,3 +41,5 @@ dialog_ids = Array[String](["BOSS1"])
 [node name="EnemyActor" parent="." index="4" instance=ExtResource("4_4b73r")]
 ai = SubResource("Resource_lweek")
 team = Array[ExtResource("7_0w68n")]([ExtResource("8_704m5")])
+
+[editable path="blob2"]
