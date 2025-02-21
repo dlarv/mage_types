@@ -4,6 +4,7 @@ class_name PuzzleBlock
 
 signal on(node: PuzzleBlock)
 signal off(node: PuzzleBlock)
+@warning_ignore("UNUSED_SIGNAL")
 signal invalid_off(node: PuzzleBlock)
 
 @export var is_on := true:

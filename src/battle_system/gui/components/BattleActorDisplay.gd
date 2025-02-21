@@ -1,8 +1,6 @@
 extends Control
 class_name BattleActorDisplay 
 
-signal status_effect_icon_pressed(effect)
-
 @export var name_label: Label 
 @export var health_bar: HSlider 
 @export var hp_label: Label 
