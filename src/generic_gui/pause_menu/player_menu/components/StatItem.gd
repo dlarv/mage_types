@@ -2,7 +2,7 @@
 extends Control 
 class_name StatItem 
 
-signal stat_modified(stat, amount)
+signal stat_modified(stat: String, amount: int)
 
 @export_enum("MELEE_ATTACK", "RANGED_ATTACK", "MELEE_DEFENSE", "RANGED_DEFENSE", "SPEED", "EVASION", "HP", "O_MANA", "D_MANA")
 var stat: String:
@@ -84,6 +84,8 @@ func set_value(actor: BattleActor) -> void:
 		value_2 = actor.current_hp
 	else:
 		value_1 = actor.get_stat(StatManager.Stat.get(stat))
+	stat_modified.connect(actor.set_stat)
+	
 
 func _on_value_1_text_changed(newText: String) -> void:
 	_number_label.release_focus()
@@ -93,12 +95,12 @@ func _on_value_1_text_changed(newText: String) -> void:
 func _on_value_2_text_changed(newText: String) -> void:
 	value_2 = newText.to_int()
 	_extra_number_label.release_focus()
-	if stat == "MANA":
-		stat_modified.emit("CURRENT_MANA", value_2)
+	if stat == "O_MANA":
+		stat_modified.emit("CURRENT_O_MANA", value_2)
+	elif stat == "D_MANA":
+		stat_modified.emit("CURRENT_D_MANA", value_2)
 	elif stat == "HP":
 		stat_modified.emit("CURRENT_HP", value_2)
-
-
 
 func _on_number_2_text_changed(newText:String) -> void:
 	if not newText.is_valid_int(): 

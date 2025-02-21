@@ -12,6 +12,7 @@ func setup(actor: BattleActor) -> void:
 	_actor = actor
 
 	%Name_Label.text = actor.name
+	_init_stats(actor)
 
 	if actor.elemental_bias.is_blank():
 		%Bias_Label.hide()
@@ -42,6 +43,14 @@ func setup(actor: BattleActor) -> void:
 		%Equipment_Button.text = actor.equipment.name
 	else:
 		%Equipment_Button.text = " "
+
+
+func _init_stats(actor: BattleActor) -> void:
+	for child in %Stats_HBox.get_children():
+		child.set_value(actor)
+
+	for child in %Stats_Container.get_children():
+		child.set_value(actor)
 
 
 func _set_attack(attack: Attack, index: int) -> void:

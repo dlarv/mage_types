@@ -180,8 +180,27 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
 func get_stat(stat: StatManager.Stat) -> float:
 	return stat_manager.get_stat(stat)
 
-func set_stat(stat: StatManager.Stat, amount: float) -> void:
-	stat_manager.set_base_stat(stat, amount)
+func set_stat(stat: Variant, amount: float) -> void:
+	if stat == "HP":
+		hp = int(amount)
+		current_hp = int(amount)
+	elif stat == "CURRENT_HP":
+		current_hp = int(amount)
+	elif stat == "D_MANA":
+		affinity_manager.initial_defensive_affinity = amount
+		affinity_manager.affinities[AffinityManager.DEFENSIVE_INDEX] = amount
+	elif stat == "O_MANA":
+		affinity_manager.initial_offensive_affinity = amount
+		affinity_manager.affinities[AffinityManager.OFFENSIVE_INDEX] = amount
+	elif stat == "CURRENT_D_MANA":
+		affinity_manager.affinities[AffinityManager.DEFENSIVE_INDEX] = amount
+	elif stat == "CURRENT_O_MANA":
+		affinity_manager.affinities[AffinityManager.OFFENSIVE_INDEX] = amount
+	else:
+		if stat is String:
+			stat = StatManager.Stat[stat]
+		stat_manager.set_base_stat(stat, amount)
+
 			
 func get_attack_stat(action: BattleAction) -> float:
 	if action.attack_range == BattleAction.AttackRange.MELEE:
