@@ -57,7 +57,7 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), Sub
 unique_name_in_owner = true
 
 [node name="Player" parent="Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2065, 2.95849, -122.399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7935, 0.95849, -4.399)
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
