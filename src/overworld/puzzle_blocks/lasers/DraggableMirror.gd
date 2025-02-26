@@ -16,28 +16,19 @@ func _ready() -> void:
 func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
 	if _prev_parent == null:
 		_prev_parent = get_parent()
-		# reparent(player)
 		player.pickup_object(self, grabbable, true, Vector3.RIGHT)
-		if not obj.is_connected("dropped",_on_grabbable_dropped):
-			obj.call_deferred("connect", "dropped", _on_grabbable_dropped)
 	else:
-		reparent(_prev_parent)
-		_prev_parent = null
-		player.pickup_object(self, grabbable, false)
-		# if obj.is_connected("dropped",_on_grabbable_dropped):
-		# 	obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)
+		_on_grabbable_dropped(obj, player)
 
 func _on_grabbable_dropped(obj:Node3D, player:Node3D) -> void:
 	if not player: return
 	if player.held_object == self:
-		call_deferred("reparent", _prev_parent)
-		_prev_parent = null
+		call_deferred("drop")
 		player.pickup_object(self, grabbable, false)
 
-		if obj.is_connected("dropped",_on_grabbable_dropped):
-			obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)
+		# if obj.is_connected("dropped",_on_grabbable_dropped):
+		# 	obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)
 
-		obj.position = obj.position.snapped(Vector3(1,1,1))
 
 func _get_mesh() -> MeshInstance3D:
 	return $Mirror/MeshInstance3D
@@ -56,3 +47,8 @@ func set_stasis() -> void:
 	super.set_stasis()
 	$Mirror.in_stasis = in_stasis
 	$Mirror._flicker_collider()
+
+func drop() -> void:
+	reparent(_prev_parent)
+	_prev_parent = null
+	global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
