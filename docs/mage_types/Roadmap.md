@@ -1,13 +1,17 @@
-***Current Version***: 0.3.9
+***Current Version***: 0.3.12
 # Todo
 - [x] Change battle gui to support 3D models instead of sprites.
-- [ ] Refactor menu screen management to use stacks.
+- [x] Refactor menu screen management.
 - [ ] Add demo content.
 	- [ ] Demo Item list created.
 	- [ ] Demo attack list created.
 	- [ ] Demo beastiary created.
 - [ ] Add textures and animations to demo.
 - [ ] Save/load system.
+- [ ] Color blind accessibility.
+	- [x] Backend architecture.
+	- [ ] Preset options. 
+- [ ] Input remapping.
 - [x] Grabbable dynamics.
 - [ ] Geyser dynamics.
 	- [x] Geyser not lifting player.
@@ -17,7 +21,9 @@
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".
 	- Cannot replicate?
 - [ ] Player normal map is inverted.
-- [ ] Shadow on blob texture.
+	- Cannot replicate?
+- [x] Shadow on blob texture.
+	- Try known workaround (Worked!).
 - [x] Laser bugs:
 	- [x] If laser doubles back on itself, mirrors immediately glitch out.
 # Upcoming Versions
@@ -31,7 +37,7 @@ Demo main track implemented. Player can play through the main story of the demo,
 	- [ ] Boss 2
 	- [ ] Final Boss
 - Main puzzles designed and implemented (x3).
-	- [ ] Stasis
+	- [x] Stasis
 	- [x] Catalyst
 	- [ ] Final
 - [ ] Demo partner tutorial dialog written.
@@ -231,7 +237,7 @@ Demo playtest candidate.
 ### Keybindings (keyb)
 **Allow player to reassign keybindings.**
 ### Colorblindness (colb)
-- [ ] Allow RGB values for each Element to be changed.
+- [x] Allow RGB values for each Element to be changed.
 - [ ] Provide RGB presets for colorblind players.
 ### Localizations (locl)
 **Allow for localizations of text and dialog.**

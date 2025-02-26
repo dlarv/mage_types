@@ -13,6 +13,44 @@ Each region should have its own visual identity. Ideally, a player should be abl
 
 ### Theming
 ![[element_theming#Theming Summarized]]
+
+Blue-biased people become rooted in spot and psychically linked to the island. They start hearing a distant rushing sound, like rain or a waterfall, that no one else can hear. Those that suffer this condition insist that this is the island speaking to them, but everyone else is not too sure.
+- Rooted in place
+- Psychic connection to world (inward focus)
+
+Purple-biased people become aggressive and reclusive. They develop a sensitivity to light, forcing them deep into the cave systems of their native region. They do not talk much, but somehow fight with perfect cohesion with their Purple allies. 
+- Sensitive to light, glowing eyes.
+- Psychic intuition (outward focus)
+
+Cyan-biased people are robotic and straightforward. Their skin becomes hard, almost metallic, suiting them for life in the rugged Cyan region. They are archetypal engineers, with their projects being renown throughout the island. Direct and honest, those aligned with Cyan tend to dislike subterfuge, even to their own detriment. (What if they can't lie and have intuition about when they're being lied to, almost like the fae).
+- Metallic skin
+- Direct, straightforward
+
+Magenta-biased people feel an insatiable call to the wild, which tends to go one of two ways. Some harness the passion and pain from this to create amazing works of art, many of which have been incorporated into the Carnival. Others revert to a primal state.
+
+Red-biased
+- Glowing eyes
+- ~Hivemind
+
+The eventual fate of those who become Yellow-aligned is to join the storm forever churning above the region. As their condition progresses, their body begins to dissolve into Yellow mist. They gain the ability to fly and become flighty and chaotic. They may control the bulk of the islands logistics network, though many may wish it were in the hands of a more serious bunch.
+- Half-gaseous form
+- ADHD
+
+Orange-biased people share some of the hivemind-like qualities of Red, tho this takes the form of sharing knowledge. Blue gets a lot of credit for their researchers, however some of the brightest minds on the island are actually in Orange. Knowledge permeates thru their compound via osmosis, allowing for a high level of collaboration.
+
+>[!idea]
+>Cyan has asked both Orange and Blue to conduct research on various materials. Both say they will get around to it eventually.
+
+Those biased towards Green tend to be glass cannons, free spirits, and passionate idealists. They are known for their aggression, which is definitely present in their characters, if not a little exaggerated. They're typically stubborn and loud, which contribute to this stereotype. They glow faintly in the dark.
+- Glow in the dark
+- Passionate, free spirited
+
+Blue-adjacent: Psychic, static, calm.
+Red-adjacent: Hivemind, culty.
+Green-adjacent: Free spirit, passionate.
+
+Magenta feels the call to the wild, similar to the psychic link Blue has with the Island. Their passion, though it would seem to be more inline with a Green color, is born from the energy they channel using this link.
+- I can't swap them, because it conflicts with their color, but Cyan and Magenta make more sense personality wise if they were swapped (at least from a color-theory-adjacent perspective). But also, Yellow doesn't seem to inherit much from Red, so I think its fine.
 ### Blue
 Blue is a very introspective, internal element, creating a sort of psychic link between its wielders and the world. As such, Blue-biased people tend to have deep insight into how the world of Forlorn works. This would make them ideal scientists, with one important caveat. Blue is, for lack of a better term, a very self-absorbed element. This makes Blue researchers excellent at discovering and explaining general principles and Blue related info, but unable to adequately study any other elements, with the exception of Purple.
 
@@ -156,7 +194,7 @@ Since a mage can have both a primary and secondary type, the transmutation proce
 
 Notably, if the attack used is a melee attack, will also apply the applicable transmutations and side effects to the user.
 
-Finally, affinity is the resource spent to use an attack. It acts as 3 separate mana pools (Red, Green, and Blue). Attacks with secondary elemental typing pull from both applicable pools. So a Blue attack might cost 2 Blue affinity, while a Magenta attack might cost 1 Blue and 1 Red.
+Finally, affinity is the resource spent to use an attack. ~~It acts as 3 separate mana pools (Red, Green, and Blue). Attacks with secondary elemental typing pull from both applicable pools. So a Blue attack might cost 2 Blue affinity, while a Magenta attack might cost 1 Blue and 1 Red.~~
 ## Transmutation Info
 ![[comprehensive_type_chart.png]]
 *Fig 1.1: Comprehensive Matchup Chart*

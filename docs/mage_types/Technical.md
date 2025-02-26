@@ -120,13 +120,21 @@ _BattleAction_: Resource:
 
 _Attack_: BattleAction:
 - Cost: int
-- Effects: _Effect_\[]
+- Effects: _BaseEffect_\[]
 
-Sealed _Effect_: Resource:
+_BaseEffect_: Resource:
 - Target: { User, Target }
 - Chance: percentage
 - AttackEffect: _AttackEffect_
+- Element: ElementalType
 **Acts as a wrapper, encapsulating a specific subclass of AttackEffect.**
+
+_Effect_: BaseEffect:
+
+_ConditionalEffect_: BaseEffect
+- Condition: _Condition_
+- Success Effect: _Effect_ (**not** _BaseEffect_)
+- Failure Effect: _Effect_
 
 Abstract _AttackEffect_: Resource:
 - Name: string
@@ -613,3 +621,21 @@ There will be several helper vars exposed to the editor:
 
 ## Setting and Accessibility (ACCS)
 ## Polish and Aesthetics (POLI)
+### MenuManager
+- Settings
+- Save/Load
+- Transmutation reference
+- Player character management
+- Player inventory management
+- Item selector
+	- Equipment
+	- Regular
+	- Attack
+- Vendor/merchant
+
+Player selects new spell or equipment:
+1. Player presses `Replace` button.
+2. `MenuManager` opens limited inventory screen.
+3. Game awaits for player to select an item or cancel.
+4. Modify `BattleActor`.
+5. `CharacterScreen` (which listens for changes to `BattleActor`) updates GUI.

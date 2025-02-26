@@ -44,17 +44,36 @@ General Progression:
 12. Player receives *Catalyst* and solves a few puzzles relating to it.
 13. Player solves the final puzzle, granting them access to the final boss, and optionally, the destruction room and sandbox.
 ## Demo Partner
-The player's partner will be a researcher stationed on the Tail Islands. They will be in the early stages of Blue-alignment, which affects their presence of mind, making them scatterbrained and dreamy.
+- Partner is part of a research team sent to one of the Southern Islands.
+- They are very scatterbrained and have strewn their stuff all across the beach. They agree to help you out, taking you back to the mainland, if you help them regather their stuff.
+	- All this stuff is located on the main path, consisting of several bags, notebooks, etc.
+	- Whenever the player finds a new pile of stuff they will get access to new attacks, overworld spells, and items.
+- They were warned to get back to base by sundown, which at first seems like your goal. However, the player meets them moments before this deadline. Dangerous monsters have began stalking the main path, which the player must fight.
+
+The player's partner will be a researcher stationed on the Tail Islands. They will be in the early stages of Blue-alignment, which affects their presence of mind, making them scatterbrained and dreamy. I want them to be endearing.
 
 >[!important]
->The partner still needs to be helpful, as they will be the primary way the player learns about the systems.
-
-Partner will be a junior Elemental Researcher. As they are Blue-aligned, their primary focus is their element, but they're not so far along that they're disconnected from the others. This way, they can still help the player, they'll just be a little... out there.
-
-
+> Despite being a little disconnected, the partner still needs to be helpful, as they will be the primary way the player learns about the systems.
+## Script Planning
+You wash up directly in front of your partner. They immediately ask you "Oh did you just wash up here?" 
+- They are extremely non-chalant about the fact that they've just been attacked by a giant monster (boss 1).
+- They enlist the help of the player to fight the monster. (But why would you, a newcomer, be any more helpful than they were?)
+	1. They never actually state that they want your help with the monster. You ask them some unrelated question, they nerd out and take you along to answer that question, and forget the monster is there?
+	2. Maybe its insinuated the player is supposed to help and after the fight you find out that not only did they not think you would, they fully thought you were going to die.
+	3. Talking over a walkie with another researcher, the partner states that \<the players name but with one letter different> will come help them. The person on the other end expresses confusion.
+		- The player will think that their scatterbrained friend has simple misremembered their name.
+		- The other researcher is confused because they didn't know the partner was in trouble, and hence haven't actually sent their 'hero' yet.
+		- After the player wins the fight, the partner expresses their surprise and the confusion is resolved.
+		- **They never call to tell the base their fine, so the person they sent never gets called off.**
+Player and partner meet.
+Partner and homebase talk.
+Player can ask partner how to fight or get into a fight, and the partner will coach them.
+	The idea of teaching the player to fight shouldn't be the partner's idea. After all, they are expecting someone else to come. But they also can't try and convince the player to wait around.
+[[demo_script]]
 # Map
 ![[demo_map.jpg]]
-
+- I want more distance between LP and UP.
+	- The room south of UP should be connected to LP, since its position must remain relative to the player's starting on the beach.
 # Main Areas
 ## Beach
 - Cove
@@ -135,7 +154,8 @@ Place rock onto pressure plate.
 - This boss will use the stasis status effect to hinder the player from transmuting it (and relying too heavily on their anti-magenta attack).
 	- This will be provided to them by their equipment (Stasis Shard).
 - Reinforce ~~weakness/resistance system~~ Offensive/Defensive types.
-
+This boss should have really high defensive stats, such that the player needs to accumulate offensive stat buffs. 
+- It might be necessary to rig the battle in such a way that the boss doesn't get too many defensive buffs.
 ## Catalyst Puzzles (Z2)
 - Consists of 3 puzzles. 
 	- The first two will be optional. They're mostly to teach the player how the laser mirrors work. Solving them will unlock a chest?
@@ -145,7 +165,9 @@ Place rock onto pressure plate.
 
 This will be a laser puzzle, where the player must match different beams.
 
+(Mirrors are numbered from right to left, top to bottom).
 ![[catalyst_solution_p1.jpg]]
+- Mirror 5 (Red): Starting color changed from Yellow to Green.
 ![[catalyst_solution_p2.jpg]]
 ## River Front (Lower/Upper Approach)
 ## Final Puzzle (Z3)
@@ -153,7 +175,6 @@ This will be a laser puzzle, where the player must match different beams.
 	- Preferably, this puzzle should have 2 solutions.
 		- Solution 1: Reveals [[#Final Boss Room]].
 		- Solution 2: Reveals [[#Destruction Room]].
-
 ## Final Boss Room
 - Phobia strat.
 	- Boss tries to apply as many phobias as possible for 1-4 turns.
@@ -195,7 +216,7 @@ The correct pairs:
 
 Complicating the matter, anytime the player changes rooms, they have to potential to react together. Therefore, elements have to be placed adjacent to elements they will not react with. To my knowledge, there is only one valid sequence: M, R, O, C, B, P, Y, G. 
 
-1. Three elements have only 2 non-reactive relationships: Purple, Orange, & Magenta.
+2. Three elements have only 2 non-reactive relationships: Purple, Orange, & Magenta.
 ```mermaid
 stateDiagram-v2
 
@@ -207,9 +228,9 @@ O --> R
 O --> C
 
 ```
-2. Therefore, the sequence G, M, R, O, C is required.
-3. B's valid remaining neighbors would be Y or C. it cannot connect to Y, as that would end the sequence prematurely, which means it must be added to the end of the current sequence. G, M, R, O, C, B, P, Y.
-4. Every element has now been included in the sequence. Since Y and G are valid neighbors, the chain is now complete. 
+3. Therefore, the sequence G, M, R, O, C is required.
+4. B's valid remaining neighbors would be Y or C. it cannot connect to Y, as that would end the sequence prematurely, which means it must be added to the end of the current sequence. G, M, R, O, C, B, P, Y.
+5. Every element has now been included in the sequence. Since Y and G are valid neighbors, the chain is now complete. 
 
 **The MagiClay rocks in the central chamber will give the player a place to figure this sequence out.**
 
