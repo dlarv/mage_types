@@ -22,11 +22,10 @@ script = ExtResource("7_lufxd")
 [sub_resource type="RichTextEffect" id="RichTextEffect_4x15a"]
 script = ExtResource("8_67cow")
 
-[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "_matchup_manager", "_dialog_box")]
+[node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "_dialog_box")]
 script = ExtResource("1_7277n")
 gui = NodePath("BattleGUI")
 ai = SubResource("Resource_4h2rc")
-_matchup_manager = NodePath("CanvasLayer")
 _dialog_box = NodePath("DialogBox_Layer/DialogueBox")
 
 [node name="BattleGUI" parent="." instance=ExtResource("2_sq28q")]

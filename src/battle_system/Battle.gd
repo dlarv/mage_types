@@ -11,7 +11,6 @@ var allies := []
 
 @export var gui: BattleGUI
 @export var ai: OpponentController 
-@export var _matchup_manager: CanvasLayer
 @export var _dialog_box: DialogueBox
 
 var _defeated_allies: int = 0
@@ -21,11 +20,9 @@ var _turn_counter: int = 0
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log(Logger.LogType.BATTLE)
-	# if event.is_action_pressed("toggle_player_menu"):
-	# 	_matchup_manager.visible = !_matchup_manager.visible
-	if event is InputEventKey and _matchup_manager.visible and event.keycode == KEY_ESCAPE:
-		get_window().set_input_as_handled()
-		_matchup_manager.visible = false 
+	if event.is_action_pressed("open_transmutation_menu"):
+		MenuManager.toggle_transmutation_menu()
+	
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
 	self.allies = allies
