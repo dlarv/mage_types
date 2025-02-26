@@ -17,17 +17,17 @@ func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
 	if _prev_parent == null:
 		_prev_parent = get_parent()
 		player.pickup_object(self, grabbable, true, Vector3.RIGHT)
+		if not obj.is_connected("dropped",_on_grabbable_dropped):
+			obj.call_deferred("connect", "dropped", _on_grabbable_dropped)
 	else:
 		_on_grabbable_dropped(obj, player)
 
 func _on_grabbable_dropped(obj:Node3D, player:Node3D) -> void:
 	if not player: return
+	if _prev_parent == null: return
 	if player.held_object == self:
 		call_deferred("drop")
 		player.pickup_object(self, grabbable, false)
-
-		# if obj.is_connected("dropped",_on_grabbable_dropped):
-		# 	obj.call_deferred("disconnect", "dropped", _on_grabbable_dropped)
 
 
 func _get_mesh() -> MeshInstance3D:
@@ -51,4 +51,6 @@ func set_stasis() -> void:
 func drop() -> void:
 	reparent(_prev_parent)
 	_prev_parent = null
-	global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
+	var pos := global_position.snapped(Vector3(0.5, 0.5, 0.5))
+	pos.y = global_position.y
+	global_position = pos

@@ -20,12 +20,16 @@ func _on_child_entered_tree(node: Node) -> void:
 func _on_grabbed(obj: Node3D, player: Node3D) -> void:
 	if _prev_parent == null:
 		_prev_parent = get_parent()
+		# reparent(player)
 		player.pickup_object(self, grabbable, true)
+		if not obj.is_connected("dropped",_on_dropped):
+			obj.call_deferred("connect", "dropped", _on_dropped)
 	else:
 		_on_dropped(obj, player)
 		player.pickup_object(self, grabbable, false)
 
 func _on_dropped(obj: Node3D, player: Node3D) -> void:
+	if _prev_parent == null: return
 	if player.held_object == self:
 		call_deferred("drop")
 		player.pickup_object(self, grabbable, false)
