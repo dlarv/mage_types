@@ -70,6 +70,62 @@ Partner: I think there's some laser up here actually. I'll show you.
 *Player enters the Lower Path, where the partner is waiting for you.*
 Partner: Hmm, I guess they're actually much further ahead. Well, we can use these slimes instead.
 *Battle starts.*
-
+# Battle 1
 > I'll just rip the battle tutorial from one of the old bosses.
 
+Turn 0
+To start, select your attack from the menu below. You'll have to press the button twice. The text should be highlighted [color=green]green[/color].  
+[br][br]Press [b]Space[/b] once you've done so.
+
+Great! Now hover your mouse over me.  
+[br][br][b]Space[/b]
+
+Now what you're seeing is called the [i]transmutation hint[/i]. It might not make much sense, but that's okay. 
+[br][br]Just remember that the top-right square is [color=cyan]cyan[/color].
+[br][br][b]Space[/b]
+
+Now click on my health bar, then press the [i]End Turn[/i] button below.
+
+Turn 1
+Your attack channeled the element of [color=green]Green[/color], which reacted with my [color=Blue]Blue[/color] composition, creating [color=cyan]Cyan[/color].
+
+What's more, these reactions can have side effects! 
+[ul]When [color=blue]defensive element[/color] transmute into another [color=blue]defensive element[/color], they get a speed boost.[/ul]
+[ul]The same goes for when a [color=red]offensive element[/color] transmutes into another [color=red]offensive element[/color].[/ul]
+[ul]When a [color=red]offensive element[/color] transmutes into a  [color=blue]defensive element[/color], they get a defensive bonus.[/ul]
+[ul] When a [color=blue]defensive element[/color] transmutes into a  [color=red]offensive element[/color], they get an offensive bonus.[/ul]
+
+Offensive Types:
+[ul][color=green]Green[/color][/ul]
+[ul][color=purple]Purple[/color][/ul]
+[ul][color=orange]Orange[/color][/ul]
+[ul][color=red]Red[/color][/ul]
+
+Defensive Types:
+[ul][color=Blue]Blue[/color][/ul]
+[ul][color=Cyan]Cyan[/color][/ul]
+[ul][color=magenta]Magenta[/color][/ul]
+[ul][color=yellow]Yellow[/color][/ul]
+
+Press [i]E[/i] to pull up the type chart. Hovering over any of the colored squares will show that reaction's side effects.
+
+Turn 2a
+Now I have 2 more things to show you.
+
+You may have noticed that you have 2 types: [color=blue]Blue[/color] and [color=purple]Purple[/color]. 
+[br][br]I myself only have 1.
+
+The first 2 rows of a transmutation hint shows how those 2 types will react to an attack.
+
+You may have guessed what the 3rd row is hinting to you, but if not watch how you're typing reacts to my next attack.
+
+Turn 2b
+So not only will your typing react to your opponent's attacks (and vice versa), but your primary and secondary types can react together!
+
+Finally, just one more thing.
+[br][br]So far, we've only been using [i]ranged[/i] attacks. My next attack will be [i]melee[/i].
+
+Turn 3
+Congratulations! Now you know everything there is to know about transmutations!
+
+Why don't you finish off the battle here and head on your way.
