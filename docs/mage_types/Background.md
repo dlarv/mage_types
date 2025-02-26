@@ -230,7 +230,7 @@ Finally, affinity is the resource spent to use an attack. ~~It acts as 3 separat
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | --------------- |
 | <span style="color:#FF0000">FF0000</span> | <span style="color:#00FF00">00FF00</span> | <span style="color:#808000">808000</span> | <span style="color:#FFFF00">FFFF00</span> | Proportional    |
 | <span style="color:#FF0000">FF0000</span> | <span style="color:#0000FF">0000FF</span> | <span style="color:#800080">800080</span> | <span style="color:#FF00FF">FF00FF</span> | Proportional    |
-| <span style="color:#FF0000">FF0000</span> | <span style="color:#FFFF00">FFFF00</span> | <span style="color:#FF8000">FF8000</span> | None                                      | Resembles 2     |
+| <span style="color:#FF0000">FF0000</span> | <span style="color:#FFFF00">FFFF00</span> | <span style="color:#FF8000">FF8000</span> | <span style="color:#FF7F00">FF7F00</span> | Exact           |
 | <span style="color:#FF0000">FF0000</span> | <span style="color:#00FFFF">00FFFF</span> | <span style="color:#808080">808080</span> | None                                      | No Match        |
 | <span style="color:#FF0000">FF0000</span> | <span style="color:#FF00FF">FF00FF</span> | <span style="color:#FF0080">FF0080</span> | None                                      | Resembles 2     |
 | <span style="color:#FF0000">FF0000</span> | <span style="color:#FF7F00">FF7F00</span> | <span style="color:#FF4000">FF4000</span> | None                                      | Resembles 2     |
