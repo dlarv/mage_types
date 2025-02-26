@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdv06avwh4v6g"]
+
+[ext_resource type="Script" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_g7i1a"]
+[ext_resource type="PackedScene" uid="uid://dmpasgilggksi" path="res://src/overworld/enemies/gradient_ball.tscn" id="2_fxe68"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="3_3n8aq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_81beb"]
+
+[node name="WildEnemyActor" type="Area3D" groups=["wild_enemies"]]
+script = ExtResource("1_g7i1a")
+ball = ExtResource("2_fxe68")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_81beb")
+
+[node name="EnemyActor" parent="." instance=ExtResource("3_3n8aq")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

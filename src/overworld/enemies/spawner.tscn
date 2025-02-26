@@ -1,0 +1,121 @@
+[gd_scene load_steps=20 format=3 uid="uid://cjkcvlvidp24x"]
+
+[ext_resource type="Script" path="res://src/overworld/enemies/Spawner.gd" id="1_gtanb"]
+[ext_resource type="PackedScene" uid="uid://bdv06avwh4v6g" path="res://src/overworld/enemies/wild_enemy_actor.tscn" id="2_b57t8"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_ty1x5"]
+[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="4_wkgwl"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="5_h0ssj"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="6_lsjr5"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="7_851q1"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="8_0ir3c"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="9_rm4jm"]
+
+[sub_resource type="Resource" id="Resource_krnjd"]
+script = ExtResource("4_wkgwl")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+STRUGGLE_BONUS = 2
+BIAS_BONUS = 2
+initial_offensive_affinity = 100
+initial_defensive_affinity = 100
+
+[sub_resource type="Resource" id="Resource_1xkno"]
+script = ExtResource("6_lsjr5")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_2jow8"]
+script = ExtResource("3_ty1x5")
+name = "Guy"
+stat_manager = SubResource("Resource_1xkno")
+hp = 100
+reset_hp_after_battle = true
+affinity_manager = SubResource("Resource_krnjd")
+_element1 = "blue"
+_element2 = "purple"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("5_h0ssj")]([])
+
+[sub_resource type="Resource" id="Resource_lq0ih"]
+script = ExtResource("4_wkgwl")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+STRUGGLE_BONUS = 2
+BIAS_BONUS = 2
+initial_offensive_affinity = 100
+initial_defensive_affinity = 100
+
+[sub_resource type="Resource" id="Resource_3k74b"]
+script = ExtResource("6_lsjr5")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_vwc2b"]
+script = ExtResource("3_ty1x5")
+name = "Guy"
+stat_manager = SubResource("Resource_3k74b")
+hp = 100
+reset_hp_after_battle = true
+affinity_manager = SubResource("Resource_lq0ih")
+_element1 = "red"
+_element2 = "orange"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("5_h0ssj")]([])
+
+[sub_resource type="Resource" id="Resource_r1ox0"]
+script = ExtResource("4_wkgwl")
+TRANSMUTATION_BONUS = 1
+CONSECUTIVE_BONUS = 1
+STRUGGLE_BONUS = 2
+BIAS_BONUS = 2
+initial_offensive_affinity = 100
+initial_defensive_affinity = 100
+
+[sub_resource type="Resource" id="Resource_wux6n"]
+script = ExtResource("6_lsjr5")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_h3nlw"]
+script = ExtResource("3_ty1x5")
+name = "Guy"
+stat_manager = SubResource("Resource_wux6n")
+hp = 100
+reset_hp_after_battle = true
+affinity_manager = SubResource("Resource_r1ox0")
+_element1 = "green"
+_element2 = "blank"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("5_h0ssj")]([])
+
+[sub_resource type="Resource" id="Resource_6vu4l"]
+script = ExtResource("9_rm4jm")
+aggression = 0.0
+intelligence = 0.0
+transmutation_bias = 0.0
+dialog_ids = Array[ExtResource("8_0ir3c")]([])
+
+[node name="Spawner" type="Area3D"]
+script = ExtResource("1_gtanb")
+BaseEnemyActor = ExtResource("2_b57t8")
+battle_actors = Array[ExtResource("3_ty1x5")]([SubResource("Resource_2jow8"), SubResource("Resource_vwc2b"), SubResource("Resource_h3nlw")])
+controllers = Array[ExtResource("7_851q1")]([SubResource("Resource_6vu4l")])
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
