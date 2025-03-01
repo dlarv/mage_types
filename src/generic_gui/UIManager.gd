@@ -10,11 +10,17 @@ signal vendor_menu_closed
 @export var vendor_menu: Menu
 
 var overworld: Node
+var dialog_box: DialogueBox
 var _active_menu: Menu = null
 var _block_input := false
 
 func _ready() -> void:
-	overworld = get_tree().get_root().get_children()[-1].get_node("%Overworld")
+	# Children of Root are all singletons, then world.
+	# So this should always get the world node.
+	var root := get_tree().get_current_scene()
+	overworld = root.get_node("%Overworld")
+	dialog_box = root.get_node("%DialogueBox")
+	
 	hide()
 
 func _unhandled_input(input: InputEvent) -> void:
@@ -49,7 +55,13 @@ func _try_toggle_menu(input: InputEvent) -> void:
 		_active_menu = matchup_chart
 		show()
 
-
+func show_dialog(msg: String) -> void:
+	# Gets empty dialog box attached to MISC start node.
+	dialog_box.data.nodes[dialog_box.data.nodes[dialog_box.data.starts["MISC"]]["link"]].dialogue = msg
+	overworld.process_mode = Node.PROCESS_MODE_DISABLED
+	dialog_box.start("MISC")
+	await dialog_box.dialogue_ended
+	overworld.process_mode = Node.PROCESS_MODE_INHERIT
 
 func open_vendor_menu(vendor: VendorActor) -> void:
 	_active_menu = vendor_menu

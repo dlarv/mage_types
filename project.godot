@@ -23,7 +23,7 @@ ElementManager="*res://src/elements/element_manager.tscn"
 Logger="*res://src/logger.tscn"
 Settings="*res://src/settings/settings.tscn"
 Inventory="*res://src/items/Inventory.tscn"
-MenuManager="*res://src/generic_gui/menu_manager.tscn"
+UIManager="*res://src/generic_gui/ui_manager.tscn"
 
 [debug]
 

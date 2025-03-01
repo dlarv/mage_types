@@ -45,8 +45,8 @@ func _on_dialog_started(dialogId: String, enemy_actor: EnemyActor, vendor_actor:
 		"battle_started":
 			_on_player_battle_started(_player.team, enemy_actor)
 		"menu_opened":
-			MenuManager.open_vendor_menu(vendor_actor)
-			await MenuManager.vendor_menu_closed
+			UIManager.open_vendor_menu(vendor_actor)
+			await UIManager.vendor_menu_closed
 			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 
 			world.process_mode = Node.PROCESS_MODE_INHERIT

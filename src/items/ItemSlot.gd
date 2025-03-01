@@ -9,6 +9,7 @@ class_name ItemSlot
 			resource_name = item.name
 @export var id: int: 
 	get:
+		if item == null: return -1
 		return item.id
 @export var quantity: int:
 	set(value):
@@ -17,7 +18,9 @@ class_name ItemSlot
 		if item.battle_item != null:
 			item.battle_item.quantity = value
 @export var max_quantity := 9999
-var allow_stacking := false
+@export var allow_stacking: bool:
+	get:
+		return item and (not item is KeyItem)
 
 
 func _init(item: Item = null):

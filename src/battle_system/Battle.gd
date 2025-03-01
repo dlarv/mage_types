@@ -21,7 +21,7 @@ func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log(Logger.LogType.BATTLE)
 	if event.is_action_pressed("open_transmutation_menu"):
-		MenuManager.toggle_transmutation_menu()
+		UIManager.toggle_transmutation_menu()
 	
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:

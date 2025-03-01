@@ -97,9 +97,10 @@ func add(item: Item, amount=1) -> void:
 		list = spell_scrolls
 	elif item is RegularItem:
 		list = regular_items
+	elif item is Equipment:
+		list = equipment
 	else:
-		# NOT YET IMPLEMENTED
-		return
+		list = key_items
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
 	var slot: ItemSlot = list[item.id]
@@ -190,4 +191,3 @@ func _reorder_item_array(list: Array) -> void:
 	for item in list:
 		item.item.id = i
 		i += 1
-

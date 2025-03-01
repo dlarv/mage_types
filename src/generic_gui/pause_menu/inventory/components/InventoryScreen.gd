@@ -18,6 +18,7 @@ func setup(items: Array) -> void:
 
 func change_quantity(item: ItemSlot) -> void:
 	_buttons[item.id].text = _format_name(item)
+	_buttons[item.id].visible = item.quantity > 0
 
 
 func _on_item_pressed(item: ItemSlot) -> void:

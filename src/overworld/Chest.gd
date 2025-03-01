@@ -1,13 +1,19 @@
 extends StaticBody3D
 
+@export var items: Array[ItemSlot]
 var is_opened := false
-
 
 func _on_grabbed(obj: Node3D, player: Node3D) -> void:
 	if is_opened: return
 	is_opened = true
 	$Grabbable.set_disabled(true)
+	var msg := "You opened a chest!"
+	for item in items:
+		msg += "[br]%s (x%d)" % [ item.item.name, item.quantity ]
+		Inventory.add(item.item, item.quantity)
+	await UIManager.show_dialog(msg)
 	_update_mesh()
+
 
 
 func _update_mesh() -> void:
