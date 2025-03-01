@@ -28,3 +28,5 @@ func load(player: Node3D) -> void:
 func unload(player: Node3D) -> void:
 	if not player.is_in_group("player"): return
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
+
+
