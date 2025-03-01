@@ -11,7 +11,7 @@ signal vendor_menu_closed
 
 var overworld: Node
 var dialog_box: DialogueBox
-var _active_menu: Menu = null
+var _menu_stack := []
 var _block_input := false
 
 func _ready() -> void:
@@ -29,40 +29,45 @@ func _unhandled_input(input: InputEvent) -> void:
 		if input.is_action_pressed("ui_cancel"):
 			inventory.spell_scroll_selected.emit(null)
 			inventory.equipment_selected.emit(null)
-		return
-	if not visible: 
-		_try_toggle_menu(input)
-		return
-	if input.is_action_pressed("close_menu") or input.is_action_pressed("pause_game"):
-		if _active_menu == vendor_menu:
+	elif visible and (input.is_action_pressed("close_menu") or input.is_action_pressed("pause_game")):
+		if len(_menu_stack) > 0 and _menu_stack[-1] == vendor_menu:
 			vendor_menu_closed.emit()
-		_active_menu = null
-		overworld.process_mode = Node.PROCESS_MODE_INHERIT
-		hide()
-	elif input.is_action_pressed("next_menu_screen") and _active_menu != null:
-		_active_menu.next_screen()
-	elif input.is_action_pressed("prev_menu_screen") and _active_menu != null:
-		_active_menu.prev_screen()
+		pop_menu()
+	elif len(_menu_stack) > 0 and input.is_action_pressed("next_menu_screen"):
+		_menu_stack[-1].next_screen()
+	elif len(_menu_stack) > 0 and input.is_action_pressed("prev_menu_screen"):
+		_menu_stack[-1].prev_screen()
+	else:
+		_try_toggle_menu(input)
 
 func _try_toggle_menu(input: InputEvent) -> void:
 	if input.is_action_pressed("pause_game"):
-		overworld.process_mode = Node.PROCESS_MODE_DISABLED
-		main_menu.show()
-		show()
+		push_menu(main_menu)
 	elif input.is_action_pressed("open_transmutation_menu"):
-		_open_menu(matchup_chart)
+		push_menu(matchup_chart)
 	elif input.is_action_pressed("open_inventory_menu"):
-		_open_menu(inventory)
+		push_menu(inventory)
 	elif input.is_action_pressed("open_player_menu"):
-		_open_menu(player_menu)
+		push_menu(player_menu)
 
-
-func _open_menu(menu: Menu) -> void:
+func push_menu(menu: Control) -> void:
 	overworld.process_mode = Node.PROCESS_MODE_DISABLED
+	if len(_menu_stack) > 0 and menu == _menu_stack[-1]:
+		pop_menu()
+		return
 	menu.show()
-	_active_menu = menu
+	_menu_stack.append(menu)
 	show()
 
+func pop_menu() -> void:
+	var menu = _menu_stack.pop_back()
+	if menu:
+		menu.hide()
+	if len(_menu_stack) == 0:
+		overworld.process_mode = Node.PROCESS_MODE_INHERIT
+		hide()
+	else:
+		_menu_stack[-1].show()
 
 func show_dialog(msg: String) -> void:
 	# Gets empty dialog box attached to MISC start node.
@@ -73,35 +78,43 @@ func show_dialog(msg: String) -> void:
 	overworld.process_mode = Node.PROCESS_MODE_INHERIT
 
 func open_vendor_menu(vendor: VendorActor) -> void:
-	_active_menu = vendor_menu
+	_menu_stack.append(vendor_menu)
 	vendor_menu.open_menu(vendor)
 	vendor_menu.show()
 
 func toggle_transmutation_menu() -> void:
-	if _active_menu == matchup_chart:
-		_active_menu = null
+	if _menu_stack[-1] == matchup_chart:
+		_menu_stack.pop_back()
 		matchup_chart.hide()
 		hide()
 	else:
-		_active_menu = matchup_chart
+		_menu_stack.append(matchup_chart)
 		matchup_chart.show()
 		show()
 
 func _on_player_button_pressed() -> void:
-	_active_menu = player_menu
-	player_menu.show()
+	# if _menu_stack[-1] == player_menu: 
+	# 	_menu_stack.pop_back()
+	# 	matchup_chart.hide()
+	# 	hide()
+	# else:
+	# 	_menu_stack.append(matchup_chart)
+	# 	matchup_chart.show()
+	# 	show()
+	# _menu_stack.append(player_menu)	
+	# player_menu.show()
+	push_menu(player_menu)
 
 func _on_inventory_button_pressed() -> void:
-	_active_menu = inventory
-	inventory.show()
+	push_menu(inventory)
+	# _menu_stack = inventory
+	# inventory.show()
 
 func _on_transmutation_button_pressed() -> void:
-	_active_menu = matchup_chart
-	matchup_chart.show()
+	push_menu(matchup_chart)
 
 func _on_open_settings_button_pressed() -> void:
-	_active_menu = settings_menu
-	settings_menu.show()
+	push_menu(settings_menu)
 
 func _on_save_game_button_pressed() -> void:
 	pass # Replace with function body.
@@ -117,7 +130,7 @@ func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 	_block_input = true
 	inventory.show()
 	var selection = await inventory.open_spell_scroll_menu()
-	_active_menu.show()
+	_menu_stack[-1].show()
 	_block_input = false
 	if selection != null:
 		actor.learn_spell(selection, index)
@@ -126,7 +139,7 @@ func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 	_block_input = true
 	inventory.show()
 	var selection = await inventory.open_equipment_menu()
-	_active_menu.show()
+	_menu_stack[-1].show()
 	_block_input = false
 	if selection != null:
 		actor.equipment = selection
