@@ -50,10 +50,19 @@ func _try_toggle_menu(input: InputEvent) -> void:
 		main_menu.show()
 		show()
 	elif input.is_action_pressed("open_transmutation_menu"):
-		overworld.process_mode = Node.PROCESS_MODE_DISABLED
-		matchup_chart.show()
-		_active_menu = matchup_chart
-		show()
+		_open_menu(matchup_chart)
+	elif input.is_action_pressed("open_inventory_menu"):
+		_open_menu(inventory)
+	elif input.is_action_pressed("open_player_menu"):
+		_open_menu(player_menu)
+
+
+func _open_menu(menu: Menu) -> void:
+	overworld.process_mode = Node.PROCESS_MODE_DISABLED
+	menu.show()
+	_active_menu = menu
+	show()
+
 
 func show_dialog(msg: String) -> void:
 	# Gets empty dialog box attached to MISC start node.
