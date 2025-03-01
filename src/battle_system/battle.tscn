@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rdeiqoc7uc0n"]
+[gd_scene load_steps=15 format=3 uid="uid://rdeiqoc7uc0n"]
 
 [ext_resource type="Script" path="res://src/battle_system/Battle.gd" id="1_7277n"]
 [ext_resource type="PackedScene" uid="uid://1q27rku2p2g2" path="res://src/battle_system/gui/battle_gui.tscn" id="2_sq28q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_w22k8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_lufxd"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="8_67cow"]
+[ext_resource type="Script" path="res://src/generic_gui/RichTextElement.gd" id="9_fi3yn"]
 
 [sub_resource type="Resource" id="Resource_4h2rc"]
 script = ExtResource("3_p7an0")
@@ -21,6 +22,9 @@ script = ExtResource("7_lufxd")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_4x15a"]
 script = ExtResource("8_67cow")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ipreh"]
+script = ExtResource("9_fi3yn")
 
 [node name="Battle" type="Node2D" node_paths=PackedStringArray("gui", "_dialog_box")]
 script = ExtResource("1_7277n")
@@ -47,11 +51,20 @@ size_flags_vertical = 3
 [node name="DialogueBox" type="Panel" parent="DialogBox_Layer"]
 visible = false
 custom_minimum_size = Vector2(500, 300)
-offset_right = 500.0
-offset_bottom = 300.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -150.0
+offset_bottom = 150.0
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("5_ari74")
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_j0fqi"), SubResource("RichTextEffect_ec65t"), SubResource("RichTextEffect_4x15a")])
+skip_input_action = "interact"
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_j0fqi"), SubResource("RichTextEffect_ec65t"), SubResource("RichTextEffect_4x15a"), SubResource("RichTextEffect_ipreh")])
 
 [connection signal="actions_selected" from="BattleGUI" to="." method="on_player_actions_selected"]

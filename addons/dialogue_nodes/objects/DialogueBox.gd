@@ -64,7 +64,9 @@ signal dialogue_ended
 @export var custom_effects : Array[RichTextEffect] = [
 	RichTextWait.new(),
 	RichTextGhost.new(),
-	RichTextMatrix.new()
+	RichTextMatrix.new(),
+	# Dlarv:
+	RichTextElement.new()
 	]
 
 @export_group('Options')
