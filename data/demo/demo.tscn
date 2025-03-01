@@ -1,13 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=22 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
 [ext_resource type="Resource" uid="uid://dv7ytd0jknbh6" path="res://data/demo/dialog_tree.tres" id="4_ehffl"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="5_6t7e1"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="6_ielsv"]
+[ext_resource type="Script" path="res://src/generic_gui/RichTextElement.gd" id="7_3o8i5"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_oalpa"]
+[ext_resource type="Resource" uid="uid://dkgwtmxs7v2mq" path="res://data/demo/partner_battle_actor.tres" id="9_oh653"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="9_qicvs"]
 [ext_resource type="PackedScene" uid="uid://4ft3p5xs6uk5" path="res://data/demo/subareas/beach.tscn" id="10_bysgw"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_wgmfh"]
 [ext_resource type="PackedScene" uid="uid://cy8e0cndhkub5" path="res://data/demo/subareas/tidepools.tscn" id="12_hj0aa"]
 [ext_resource type="PackedScene" uid="uid://cuu0bcxy1x8xp" path="res://data/demo/subareas/stasis_puzzles.tscn" id="13_tehf6"]
 [ext_resource type="PackedScene" uid="uid://brs3ov2whut2i" path="res://data/demo/subareas/catalyst_puzzles.tscn" id="14_1tf5l"]
@@ -23,6 +26,9 @@ script = ExtResource("6_ielsv")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jaqc2"]
 script = ExtResource("7_oalpa")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
+script = ExtResource("7_3o8i5")
 
 [node name="Demo" type="Node3D"]
 
@@ -51,13 +57,15 @@ size_flags_vertical = 3
 script = ExtResource("3_5sixp")
 data = ExtResource("4_ehffl")
 skip_input_action = "interact"
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2")])
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2"), SubResource("RichTextEffect_mlf2c")])
 
 [node name="Overworld" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="Player" parent="Overworld" instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7935, 0.95849, -4.399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7935, 0.95849, 2.601)
+battle_actor = ExtResource("9_oh653")
+team = Array[ExtResource("10_wgmfh")]([])
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
