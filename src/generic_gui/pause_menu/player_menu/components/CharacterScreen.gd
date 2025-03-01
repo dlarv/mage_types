@@ -39,6 +39,8 @@ func setup(actor: BattleActor) -> void:
 		else:
 			button.text = " "
 
+	actor.equipment_equipped.connect(_set_equipment)
+	%Equipment_Button.pressed.connect(_on_item_selected.bind(-1))
 	if actor.equipment != null:
 		%Equipment_Button.text = actor.equipment.name
 	else:
@@ -60,6 +62,9 @@ func _set_attack(attack: Attack, index: int) -> void:
 	%SpellScroller.get_children()[index].text = attack.name
 	_attacks[index] = attack
 
+func _set_equipment(e: Equipment) -> void:
+	%Equipment_Button.text = e.name
+
 
 func _on_element_changed(id: int, element: ElementalType) -> void:
 	if id == 0:
@@ -77,9 +82,11 @@ func _on_item_selected(item: Variant) -> void:
 			return
 		%InfoDisplay.display_message_non_blocking(_attacks[item])
 		%Control_HBox.show()
-	else:
+	elif _actor.equipment:
 		%InfoDisplay.display_message_non_blocking(_actor.equipment)
 		%Control_HBox.show()
+	else:
+		_on_replace_button_pressed()
 
 
 func _on_cancel_button_pressed() -> void:
