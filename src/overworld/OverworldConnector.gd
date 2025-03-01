@@ -4,6 +4,7 @@ extends Node3D
 @export var world: Node3D
 @export var overworld: Node3D
 @export var dialog_box: DialogueBox
+@export var hud: CanvasLayer
 
 # Amount of time to wait between a battle ending and a new one starting.
 @export var battle_delay: float
@@ -18,10 +19,12 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	var battle := battle_scene.instantiate()
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
+	hud.hide()
 	add_child(battle)
 	battle.start(allies, Inventory.get_battle_items(), enemy.team, enemy.ai)
 	await battle.battle_ended
 	battle.queue_free()
+	hud.show()
 	
 	for actor in allies:
 		actor.current_hp = actor.hp

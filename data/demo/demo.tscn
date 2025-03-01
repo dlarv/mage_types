@@ -33,10 +33,11 @@ script = ExtResource("7_3o8i5")
 
 [node name="Demo" type="Node3D"]
 
-[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "_player") instance=ExtResource("1_x5fo8")]
+[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_x5fo8")]
 world = NodePath("../Overworld")
 overworld = NodePath("../Overworld")
 dialog_box = NodePath("../DialogueBox_Layer/DialogueBox")
+hud = NodePath("../HUD_Layer")
 battle_delay = 2.0
 _player = NodePath("../Overworld/Player")
 
