@@ -633,9 +633,15 @@ There will be several helper vars exposed to the editor:
 	- Attack
 - Vendor/merchant
 
-Player selects new spell or equipment:
+Player selects new spell or equipment from inside Character Screen:
 1. Player presses `Replace` button.
 2. `MenuManager` opens limited inventory screen.
 3. Game awaits for player to select an item or cancel.
 4. Modify `BattleActor`.
 5. `CharacterScreen` (which listens for changes to `BattleActor`) updates GUI.
+
+Player selects new spell or equipment from inside Inventory:
+1. Player selects item from `InventoryMenu`.
+2. Player presses `Select` button.
+3. Player selects which character to apply to.
+4. Player confirms which 

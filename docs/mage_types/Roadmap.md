@@ -1,4 +1,4 @@
-***Current Version***: 0.3.12
+***Current Version***: 0.3.15
 # Todo
 - [x] Change battle gui to support 3D models instead of sprites.
 - [x] Refactor menu screen management.
@@ -42,13 +42,14 @@ Demo main track implemented. Player can play through the main story of the demo,
 	- [ ] Final
 - [ ] Demo partner tutorial dialog written.
 - [ ] Blocking and non-blocking dialog triggers implemented.
+- [ ] Cutscenes.
 **OVER.spel**
 - Overworld spells implemented:
 	- [x] Stasis
 	- [x] Catalyst
-- [ ] Graphic showing which overworld spell is currently selected.
+- [x] Graphic showing which overworld spell is currently selected.
 **OVER.wild**
-- [ ] Wild enemies implemented.
+- [x] Wild enemies implemented.
 **OVER.publ**
 - [ ] Light up indicator wire created.
 ## v0.4.x
@@ -60,7 +61,7 @@ Demo MVP. Player can visit every area of the demo and experience the major featu
 - [ ] Deep caves puzzle implemented and tested.
 - [ ] Destroy time trial designed, implemented, and tested.
 **OVER.chco**
-- [ ] Player can open chests and obtain items.
+- [x] Player can open chests and obtain items.
 **OVER.plco**
 - [ ] Player companions follow player.
 **OVER.spel**
@@ -158,7 +159,7 @@ Demo playtest candidate.
 - [ ] Each player action should have corresponding animations.
 
 ### Player Companions (plco)
-**The player's current companions should have overworld models that follow the player, without geting in the way.**
+**The player's current companions should have overworld models that follow the player, without getting in the way.**
 - [ ] Status
 
 ### Overworld Spells (spel)
@@ -190,9 +191,9 @@ Demo playtest candidate.
 - [ ] Wild enemies should have overworld models.
 	- [ ] These models should show some information about the enemies involved (e.g. their starting typing, difficulty).
 	- [ ] When the player collides with these models, a battle should commence.
-- [ ] Spawner fields should be used to control what can spawn and where.
-	- [ ] A Spawner should be given a list of BattleActors, which act as the base template for each enemy that can spawn.
-	- [ ] When an enemy is instantiated, its stats should be subject to some amount of variance.
+- [x] Spawner fields should be used to control what can spawn and where.
+	- [x] A Spawner should be given a list of BattleActors, which act as the base template for each enemy that can spawn.
+	- [x] When an enemy is instantiated, its stats should be subject to some amount of variance.
 - [ ] Wild enemies should be physics objects.
 - [ ] Different enemies should have different overworld behavior.
 	- [ ] Chasing player.
@@ -215,9 +216,9 @@ Demo playtest candidate.
 
 ### Party Info (pinf)
 **Player should be able to view information about their current party.**
-- [ ] Name.
-- [ ] Current primary and secondary typing.
-- [ ] Bias, if any.
+- [x] Name.
+- [x] Current primary and secondary typing.
+- [x] Bias, if any.
 - [ ] Level and experience.
 
 ### Stat Management (stat)
@@ -225,14 +226,39 @@ Demo playtest candidate.
 
 ### Item Management (iman)
 **Player should be able to view and use items in their inventory.**
+- [x] Player can view items inside their inventory.
+- [ ] Player can sort inventory by item id or alphabetically.
+- [ ] Player can select items from their inventory to use.
+- [x] Inventory hides items the player has none of.
+- [x] Player can open chests which add items to their inventory.
+- [ ] NPCs can add/remove items from inventory.
+- [ ] Vendors can buy/sell items with the player.
 
 ### Spell Management (sman)
 **Player should be able to manage their current spell movesets.**
-- [ ] Teach character a new spell.
-	- [ ]  Require player to have proper SpellScroll available.
+- [x] Teach character a new spell.
+	- [x]  Require player to have proper SpellScroll available.
+	- [ ] Ensure character meets item requirements.
 - [ ] Remove spell from moveset.
 - [ ] Reorder spells in moveset.
-- [ ] Replace spell.
+- [x] Replace spell.
+	- [x] From inside character management menu.
+	- [ ] From inside inventory menu. 
+
+Player selects new spell or equipment from inside Character Screen:
+1. Player presses `Replace` button.
+2. `MenuManager` opens limited inventory screen.
+3. Game awaits for player to select an item or cancel.
+4. Modify `BattleActor`.
+5. `CharacterScreen` (which listens for changes to `BattleActor`) updates GUI.
+
+Player selects new spell or equipment from inside Inventory:
+1. Player selects item from `InventoryMenu`.
+2. Player presses `Select` button.
+3. Player selects which character to apply to.
+4. Player confirms which spell/equipment to replace.
+5. Modify `BattleActor`.
+6. `CharacterScreen` (which listens for changes to `BattleActor`) updates GUI.
 ## Settings and Accessibility (ACCS)
 ### Keybindings (keyb)
 **Allow player to reassign keybindings.**

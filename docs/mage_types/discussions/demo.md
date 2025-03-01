@@ -13,6 +13,9 @@
 	- Regions.
 The demo should have a main track the player will follow, which will feature multiple battles and the *stasis* and *catalyst* spells. But I want the player to have the ability to stray from this main track and explore. The *destroy* spell will be located on a slight detour, such that the player will have to go off the main track, preferably behind a puzzle that requires both other spells.
 
+>[!important] Reinforcing the Transmutations 
+>It might be helpful for the player to have 8 little sections to help reinforce what each element can transmute into. Maybe I can add a couple rooms inside of the cave.
+
 [[demo_content]]
 # Story
 > The companion went to the starting area for research purposes and get attacked by miniboss 1&2, dropping their bag (which contained, among other things, some spell scrolls). They run into the player and team up, reasoning that together they could win.

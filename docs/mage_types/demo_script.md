@@ -1,8 +1,13 @@
 # Part 1
 - Introduce demo partner.
-- Teach player about elemental system.
-	- Transmutations. 
-- The player will also need to learn about **affinity** and **side-effects**, but that will undoubtably make things much more complicated.
+- Pivot into battle and transmutation system tutorial.
+
+>[!summary] Partner Bio
+>Partner is:
+>- ~~Scatterbrained, but knowledgeable.~~
+>- Lost in thought, terse.
+>- Calm under pressure.
+>	- They're cornered on the beach by a monster, but aren't really phased.
 
 *Partner is sitting on beach, alone. A wave surges up, washing against them gently. As the wave recedes, the player's model is left laying in front of them.*
 
@@ -16,7 +21,7 @@ Partner: Oh hi! Did you just wash up here?
 	Response 2: No, I've been sitting here the whole time.
 	Partner: Really? Did I zone out again? No, no, I don't think so.
 
-Partner: Well anyway, welcome to Forlorn! Wait, no... where are we again? ... Unimportant, unimportant... My name is \_\_\_, what's yours?
+Partner: ~~Well anyway, welcome to Forlorn! Wait, no... where are we again? ... Unimportant, unimportant... My name is \_\_\_, what's yours?~~ 
 *Player is given an input prompt.*
 *Partner receives call on their walkie.*
 
@@ -71,53 +76,55 @@ Partner: I think there's some laser up here actually. I'll show you.
 Partner: Hmm, I guess they're actually much further ahead. Well, we can use these slimes instead.
 *Battle starts.*
 # Battle 1
+- Teach player about elemental system.
+	- Transmutations. 
+- The player will also need to learn about **affinity** and **side-effects**, but that will undoubtably make things much more complicated.
+
 > I'll just rip the battle tutorial from one of the old bosses.
 
+```
 Turn 0
-To start, select your attack from the menu below. You'll have to press the button twice. The text should be highlighted [color=green]green[/color].  
+To start, select the first attack from the menu below and hover your mouse over the slime.
 [br][br]Press [b]Space[/b] once you've done so.
 
-Great! Now hover your mouse over me.  
+What you're seeing is called the [i]transmutation hint[/i]. It might not make much sense yet, but that's okay. 
+[br][br]Just remember that the [i]top-right[/i] square is [color=cyan]cyan[/color].
 [br][br][b]Space[/b]
 
-Now what you're seeing is called the [i]transmutation hint[/i]. It might not make much sense, but that's okay. 
-[br][br]Just remember that the top-right square is [color=cyan]cyan[/color].
-[br][br][b]Space[/b]
-
-Now click on my health bar, then press the [i]End Turn[/i] button below.
+Now click on the slime and press the [i]End Turn[/i] button below.
 
 Turn 1
-Your attack channeled the element of [color=green]Green[/color], which reacted with my [color=Blue]Blue[/color] composition, creating [color=cyan]Cyan[/color].
+My attack channeled the element of [el]Green[/el], which reacted with their [el]Blue[/el] composition, creating [el]Cyan[/el].
 
 What's more, these reactions can have side effects! 
 [ul]When [color=blue]defensive element[/color] transmute into another [color=blue]defensive element[/color], they get a speed boost.[/ul]
 [ul]The same goes for when a [color=red]offensive element[/color] transmutes into another [color=red]offensive element[/color].[/ul]
-[ul]When a [color=red]offensive element[/color] transmutes into a  [color=blue]defensive element[/color], they get a defensive bonus.[/ul]
-[ul] When a [color=blue]defensive element[/color] transmutes into a  [color=red]offensive element[/color], they get an offensive bonus.[/ul]
+[ul]When a [color=red]offensive element[/color] transmutes into a [color=blue]defensive element[/color], they get a defensive bonus.[/ul]
+[ul] When a [color=blue]defensive element[/color] transmutes into a [color=red]offensive element[/color], they get an offensive bonus.[/ul]
 
 Offensive Types:
-[ul][color=green]Green[/color][/ul]
-[ul][color=purple]Purple[/color][/ul]
-[ul][color=orange]Orange[/color][/ul]
-[ul][color=red]Red[/color][/ul]
+[ul][el]Green[/el][/ul]
+[ul][el]Purple[/el][/ul]
+[ul][el]Orange[/el][/ul]
+[ul][el]Red[/el][/ul]
 
 Defensive Types:
-[ul][color=Blue]Blue[/color][/ul]
-[ul][color=Cyan]Cyan[/color][/ul]
-[ul][color=magenta]Magenta[/color][/ul]
-[ul][color=yellow]Yellow[/color][/ul]
+[ul][el]Blue[/el][/ul]
+[ul][el]Cyan[/el][/ul]
+[ul][el]Magenta[/el][/ul]
+[ul][el]Yellow[/el][/ul]
 
-Press [i]E[/i] to pull up the type chart. Hovering over any of the colored squares will show that reaction's side effects.
+Press [i]T[/i] to pull up the type chart. Hovering over any of the colored squares will show that reaction's side effects.
 
 Turn 2a
-Now I have 2 more things to show you.
+I have 2 more things to show you.
 
-You may have noticed that you have 2 types: [color=blue]Blue[/color] and [color=purple]Purple[/color]. 
+You may have noticed that the slime has 2 types: [el]Blue[/el] and [el]Purple[/el]. 
 [br][br]I myself only have 1.
 
 The first 2 rows of a transmutation hint shows how those 2 types will react to an attack.
 
-You may have guessed what the 3rd row is hinting to you, but if not watch how you're typing reacts to my next attack.
+You may have guessed what the 3rd row is hinting to you, but if not watch how its typing reacts to my next attack.
 
 Turn 2b
 So not only will your typing react to your opponent's attacks (and vice versa), but your primary and secondary types can react together!
@@ -126,6 +133,8 @@ Finally, just one more thing.
 [br][br]So far, we've only been using [i]ranged[/i] attacks. My next attack will be [i]melee[/i].
 
 Turn 3
-Congratulations! Now you know everything there is to know about transmutations!
+As you can see, using a melee attack will not only affect your opponent's type, it'll affect yours as well!
+```
+# Part 2
+>Insert walkie convo as soon as battle ends.
 
-Why don't you finish off the battle here and head on your way.
