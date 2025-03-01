@@ -43,6 +43,7 @@ _player = NodePath("../Overworld/Player")
 layer = 3
 
 [node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 200)
 anchors_preset = 12

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh6ti3acb6qa"]
+
+[ext_resource type="Script" path="res://src/overworld/Chest.gd" id="1_rdalo"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_vc6ax"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j8s6l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w50y8"]
+
+[node name="Chest" type="StaticBody3D"]
+script = ExtResource("1_rdalo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_j8s6l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_w50y8")
+
+[node name="Grabbable" parent="." instance=ExtResource("2_vc6ax")]
+
+[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbed"]

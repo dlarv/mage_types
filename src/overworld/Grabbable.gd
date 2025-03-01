@@ -6,6 +6,7 @@ signal grabbed(obj: Node3D, player: Node3D)
 signal dropped(obj: Node3D, player: Node3D)
 
 @export var label_offset: Vector3
+var disabled := false
 var is_being_reparented := false
 var _label: Label
 var _player: Node3D
@@ -19,7 +20,7 @@ func _enter_tree():
 		_label.text = "Press %s" % actions[0].as_text().split(" ")[0]
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not _label.visible or _player == null: return
+	if disabled or not _label.visible or _player == null: return
 
 	if event.is_action_released("interact"):
 		get_window().set_input_as_handled()
@@ -40,7 +41,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body:Node3D) -> void:
+	if disabled: return
 	if not body.is_in_group("player"): return
+
 	# Prevent player from picking up object, if they are already holding something.
 	if body.held_object and body.held_object != get_parent(): 
 		var n = name
@@ -56,12 +59,18 @@ func _on_body_entered(body:Node3D) -> void:
 
 
 func _on_body_exited(body:Node3D) -> void:
+	if disabled: return
 	if is_being_reparented: return
 	if not body.is_in_group("player"): return
 	_label.hide()
 	dropped.emit(self, _player)
 	_player = null
 
-
+func set_disabled(val: bool) -> void:
+	disabled = val
+	if disabled:
+		dropped.emit(self, _player)
+		_label.hide()
+		_player = null
 	
 
