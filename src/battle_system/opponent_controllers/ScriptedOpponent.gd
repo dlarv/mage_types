@@ -28,5 +28,5 @@ func get_actions(otherTeam: Array) -> Array:
 	return actions
 
 		
-func _on_battle_ended(playerWasDefeated: bool) -> void:
+func _on_battle_ended(playerWasDefeated: Battle.EndState) -> void:
 	battle_ended.emit(playerWasDefeated)

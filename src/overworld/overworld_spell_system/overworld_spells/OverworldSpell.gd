@@ -3,7 +3,7 @@ class_name OverworldSpell
 
 enum Spells { STASIS, DESTROY, CATALYST, VINES, TUNNEL }
 
-@export var icon: Image
+@export var icon: CompressedTexture2D
 var Projectile: PackedScene
 
 var is_active := false
