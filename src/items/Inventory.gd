@@ -82,6 +82,9 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 @export var vines_spell_enabled: bool
 @export var catalyst_spell_enabled: bool
 @export var tunnel_spell_enabled: bool
+@export var primary_override: OverworldSpell.Spells
+@export var secondary_override: OverworldSpell.Spells
+@export var use_override: bool
 
 ## Returns list of **RegularItems** that contain BattleItems.
 func get_battle_items() -> Array:
@@ -140,9 +143,10 @@ func get_item(item: Item) -> ItemSlot:
 		list = spell_scrolls
 	elif item is RegularItem:
 		list = regular_items
-	else:
-		# NOT YET IMPLEMENTED
-		return null
+	elif item is SpellScroll:
+		list = spell_scrolls
+	elif item is KeyItem:
+		list = key_items
 
 	return list[item.id]
 

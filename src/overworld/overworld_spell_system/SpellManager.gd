@@ -9,28 +9,20 @@ signal spell_selected(is_primary: bool, spell: OverworldSpell)
 @export var catalyst_spell: OverworldSpell
 @export var vines_spell: OverworldSpell
 @export var tunnel_spell: OverworldSpell
-@export var primary_override: OverworldSpell.Spells
-@export var secondary_override: OverworldSpell.Spells
-@export var use_override: bool
-
+# @export var primary_override: OverworldSpell.Spells
+# @export var secondary_override: OverworldSpell.Spells
+# @export var use_override: bool
 
 var active_spell_1: OverworldSpell
 var active_spell_2: OverworldSpell
 
-func _ready():
+func _enter_tree():
 	Inventory.overworld_spell_selected.connect(activate_spell)
 	stasis_spell.Projectile = Projectile
 	destroy_spell.Projectile = Projectile
 	catalyst_spell.Projectile = Projectile
 	vines_spell.Projectile = Projectile
 	tunnel_spell.Projectile = Projectile
-
-	spell_selected.connect(UIManager.hud.show_overworld_spell)
-
-	if use_override:
-		activate_spell(primary_override, true)
-		activate_spell(secondary_override, false)
-	
 
 
 func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
@@ -56,5 +48,7 @@ func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
 		spell_selected.emit(false, spell)
 
 	spell.set_primary(isPrimary)
+	#await UIManager.ready
+	UIManager.hud.show_overworld_spell(isPrimary, spell)
 
 	

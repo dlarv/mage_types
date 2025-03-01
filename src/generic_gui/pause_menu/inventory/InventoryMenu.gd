@@ -9,9 +9,9 @@ func _ready() -> void:
 	$"Spell Beads".setup(Inventory.spell_scrolls)
 	$Equipment.setup(Inventory.equipment)
 	$"Key Items".setup(Inventory.key_items)
+	$"Overworld Spells".setup()
 
 	Inventory.quantity_changed.connect(_on_quantity_changed)
-
 
 func _on_quantity_changed(item: ItemSlot) -> void:
 	if item.item is RegularItem:
@@ -48,3 +48,4 @@ func _on_item_selected(item:Item) -> void:
 		spell_scroll_selected.emit(item)
 	elif item is Equipment:
 		equipment_selected.emit(item)
+
