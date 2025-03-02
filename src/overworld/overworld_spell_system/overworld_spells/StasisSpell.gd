@@ -25,3 +25,19 @@ func action_to_perform(body: Node3D, element: ElementalType) -> void:
 
 func collision_test(body: Variant) -> bool:
 	return body is MagiClay
+
+func serialize() -> Dictionary:
+	var objs := []
+	for obj in _stasis_queue:
+		objs.append(obj.get_path())
+
+	return {
+		"path": get_path(),
+		"queue": objs,
+	}
+
+func deserialize(data: Dictionary) -> void:
+	_stasis_queue = []
+	for obj in data["queue"]:
+		_stasis_queue.append(get_node(obj))
+

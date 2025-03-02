@@ -21,10 +21,8 @@ destroy_spell = NodePath("DestroySpell")
 catalyst_spell = NodePath("CatalystSpell")
 vines_spell = NodePath("VinesSpell")
 tunnel_spell = NodePath("TunnelSpell")
-secondary_override = 2
-use_override = true
 
-[node name="StasisSpell" parent="." instance=ExtResource("2_6ebf8")]
+[node name="StasisSpell" parent="." groups=["persist"] instance=ExtResource("2_6ebf8")]
 icon = ExtResource("4_knxsu")
 
 [node name="DestroySpell" parent="." instance=ExtResource("3_cfami")]
