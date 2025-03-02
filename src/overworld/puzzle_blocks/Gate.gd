@@ -76,7 +76,3 @@ func deserialize(data: Dictionary) -> void:
 		_open(true)
 	else:
 		_close()
-
-
-func _on_tree_exiting() -> void:
-	print('Here')
