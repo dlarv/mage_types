@@ -20,3 +20,16 @@ func _update_mesh() -> void:
 	var mat := StandardMaterial3D.new()
 	mat.albedo_color = Color.BLACK
 	$MeshInstance3D.set_surface_override_material(0, mat)
+
+func serialize() -> Dictionary:
+	return {
+		"path": get_path(),
+		"opened": is_opened,
+	}
+
+func deserialize(data: Dictionary) -> void:
+	if "opened" in data:
+		is_opened = data["opened"]
+		if is_opened:
+			_update_mesh()
+			$Grabbable.set_disabled(is_opened)

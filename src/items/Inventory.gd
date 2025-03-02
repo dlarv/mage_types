@@ -86,6 +86,9 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 @export var secondary_override: OverworldSpell.Spells
 @export var use_override: bool
 
+var spell1: OverworldSpell.Spells
+var spell2: OverworldSpell.Spells
+
 ## Returns list of **RegularItems** that contain BattleItems.
 func get_battle_items() -> Array:
 	return _battle_items
@@ -166,6 +169,10 @@ func enable_overworld_spell(id: OverworldSpell.Spells, val:=true) -> void:
 
 func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:
 	overworld_spell_selected.emit(id, isPrimary)
+	if isPrimary:
+		spell1 = id
+	else:
+		spell2 = id
 
 func _add_items_from_dir(path: String) -> void:
 		print("Loading items from: " + path)
@@ -195,3 +202,91 @@ func _reorder_item_array(list: Array) -> void:
 	for item in list:
 		item.item.id = i
 		i += 1
+
+func serialize() -> Dictionary:
+	var reg := []
+	for item in regular_items:
+		if item.quantity > 0:
+			reg.append(Vector2i(item.id, item.quantity))
+
+	var scrolls := []
+	for item in spell_scrolls:
+		if item.quantity > 0:
+			scrolls.append(Vector2i(item.id, item.quantity))
+
+	var es := []
+	for item in equipment:
+		if item.quantity > 0:
+			es.append(Vector2i(item.id, item.quantity))
+
+	var ki := []
+	for item in key_items:
+		if item.quantity > 0:
+			ki.append(Vector2i(item.id, item.quantity))
+
+	return {
+		"path": get_path(),
+		"regular_items": reg,
+		"spells": scrolls,
+		"equipment": es,
+		"key_items": ki,
+		"stasis": stasis_spell_enabled,
+		"catalyst": catalyst_spell_enabled,
+		"destroy": destroy_spell_enabled,
+		"vines": vines_spell_enabled,
+		"tunnel": tunnel_spell_enabled,
+		"spell1": spell1,
+		"spell2": spell2,
+	}
+
+func deserialize(data: Dictionary) -> void:
+	var top := 0
+	var list = data["regular_items"]
+	for item in regular_items:
+		if len(list) > top and item.id == list[top].x:
+			item.quantity = list[top].y
+			top += 1
+		else:
+			item.quantity = 0
+		quantity_changed.emit(item)
+
+	top = 0
+	list = data["spells"]
+	for item in spell_scrolls: 
+		if len(list) > top and item.id == list[top].x:
+			item.quantity = list[top].y
+			top += 1
+		else:
+			item.quantity = 0
+		quantity_changed.emit(item)
+
+	top = 0
+	list = data["equipment"]
+	for item in equipment:
+		var id = item.id
+		if len(list) > top and item.id == list[top].x:
+			item.quantity = list[top].y
+			top += 1
+		else:
+			item.quantity = 0
+		quantity_changed.emit(item)
+
+	top = 0
+	list = data["key_items"]
+	for item in key_items:
+		if len(list) > top and item.id == list[top].x:
+			item.quantity = list[top].y
+			top += 1
+		else:
+			item.quantity = 0
+		quantity_changed.emit(item)
+
+	enable_overworld_spell(OverworldSpell.Spells.STASIS, data["stasis"])
+	enable_overworld_spell(OverworldSpell.Spells.CATALYST, data["catalyst"])
+	enable_overworld_spell(OverworldSpell.Spells.DESTROY, data["destroy"])
+	enable_overworld_spell(OverworldSpell.Spells.VINES, data["vines"])
+	enable_overworld_spell(OverworldSpell.Spells.TUNNEL, data["tunnel"])
+
+	UIManager.inventory.overworld_spells_menu.set_primary(data["spell1"])
+	UIManager.inventory.overworld_spells_menu.set_secondary(data["spell2"])
+
