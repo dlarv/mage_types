@@ -30,7 +30,6 @@ func _ready() -> void:
 		obj.tree_exiting.connect(func():
 			_freed_objs.append(obj.get_path()))
 
-
 func save() -> void:
 	var fileName = %LineEdit.text
 	var path := "%s/%s" % [ SAVE_ROOT_DIR, fileName ]
@@ -81,7 +80,6 @@ func load() -> void:
 func _on_visibility_changed() -> void:
 	if not visible: return
 	%LineEdit.text = _player.player_name
-
 
 func _on_delete_button_pressed() -> void:
 	var fileName = %LineEdit.text

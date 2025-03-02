@@ -85,7 +85,6 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 		_set_blocking(true)
 	else:
 		_set_blocking(false)
-
 	return true
 
 
