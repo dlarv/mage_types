@@ -122,3 +122,14 @@ func list() -> Array:
 	for effect in statuses.values():
 		output.append(effect)
 	return output
+
+# func serialize() -> Dictionary: 
+# 	return {
+# 		"statuses": statuses,
+# 		"phobias": phobias,
+# 	}
+# func deserialize(data: Dictionary) -> void: 
+# 	if "statuses" in data:
+# 		statuses = data["statuses"]
+# 	if "phobias" in data:
+# 		phobias = data["phobias"]

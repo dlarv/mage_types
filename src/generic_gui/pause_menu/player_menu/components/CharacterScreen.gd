@@ -63,7 +63,10 @@ func _set_attack(attack: Attack, index: int) -> void:
 	_attacks[index] = attack
 
 func _set_equipment(e: Equipment) -> void:
-	%Equipment_Button.text = e.name
+	if e: 
+		%Equipment_Button.text = e.name
+	else:
+		%Equipment_Button.text = " "
 
 
 func _on_element_changed(id: int, element: ElementalType) -> void:
@@ -97,4 +100,3 @@ func _on_replace_button_pressed() -> void:
 		open_equipment_menu.emit()
 	else:
 		open_spell_menu.emit(_open_mode)
-

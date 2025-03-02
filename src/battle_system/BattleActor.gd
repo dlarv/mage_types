@@ -24,7 +24,6 @@ var xp: float = 0
 var statuses := StatusEffectManager.new()
 @export var stat_manager := StatManager.new()
 @export var hp: int = 100:
-	get: return hp 
 	set(value):
 		hp = value
 		current_hp = value
@@ -336,3 +335,59 @@ func add_func_override(old: Callable, new: Callable) -> void:
 
 func remove_func_override(old: Callable) -> void:
 	_func_overrides.erase(old.get_method())
+
+func serialize() -> Dictionary:
+	var attackData := []
+	for attack in attacks:
+		attackData.append(attack.resource_path)
+	var equipmentData := ""
+	if equipment:
+		equipmentData = equipment.resource_path
+
+	return {
+		"name": name,
+		# "statuses": statuses.serialize(),
+		"affinity": affinity_manager.serialize(),
+		"stats": stat_manager.serialize(),
+		"hp": hp,
+		"current_hp": current_hp,
+		"element1": element1.name,
+		"element2": element2.name,
+		"bias": elemental_bias.name,
+		"brt": bias_reversion_threshold,
+		"attacks": attackData,
+		"equipment": equipmentData,
+	}
+
+func deserialize(data: Dictionary) -> void:
+	if "name" in data:
+		name = data["name"]
+	# if "statuses" in data:
+	# 	# statuses.deserialize(data["statuses"])
+	# 	statuses
+	if "affinity" in data:
+		affinity_manager.deserialize(data["affinity"])
+	if "stats" in data:
+		stat_manager.deserialize(data["stats"])
+	if "hp" in data:
+		hp = data["hp"]
+	if "current_hp" in data:
+		current_hp = data["current_hp"]
+	if "element1" in data:
+		_element1 = data["element1"]
+	if "element2" in data:
+		_element2 = data["element2"]
+	if "bias" in data:
+		_elemental_bias = data["bias"]
+	if "brt" in data:
+		bias_reversion_threshold = data["brt"]
+	if "attacks" in data:
+		attacks = []
+		for d in data["attacks"]:
+			attacks.append(ResourceLoader.load(d))
+	if "equipment" in data:
+		var d = data["equipment"]
+		if not d.is_empty():
+			equipment = ResourceLoader.load(d)
+		else:
+			equipment = null

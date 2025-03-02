@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch52g6fw70mk4"]
+[gd_scene load_steps=8 format=3 uid="uid://ch52g6fw70mk4"]
 
 [ext_resource type="Script" path="res://src/generic_gui/UIManager.gd" id="1_86rq7"]
 [ext_resource type="PackedScene" uid="uid://b644ydrvhju3b" path="res://src/generic_gui/pause_menu/player_menu/player_menu.tscn" id="2_i5nhe"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://by0ntehaimsts" path="res://src/generic_gui/pause_menu/vendor_menu/vendor_menu.tscn" id="5_b4qo4"]
 [ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/generic_gui/pause_menu/transmutation_menu/element_menu.tscn" id="5_la646"]
 [ext_resource type="PackedScene" uid="uid://cla1fukn637mm" path="res://src/generic_gui/pause_menu/inventory/inventory_menu.tscn" id="6_f4ewy"]
+[ext_resource type="PackedScene" uid="uid://0e2avc6gqayk" path="res://src/generic_gui/pause_menu/save_menu.tscn" id="7_8cc7c"]
 
-[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu")]
+[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu")]
 layer = 5
 script = ExtResource("1_86rq7")
 main_menu = NodePath("PanelContainer/MarginContainer/TabContainer/MainMenu")
@@ -16,6 +17,7 @@ inventory = NodePath("PanelContainer/MarginContainer/TabContainer/InventoryMenu"
 matchup_chart = NodePath("PanelContainer/MarginContainer/TabContainer/ElementMenu")
 settings_menu = NodePath("PanelContainer/MarginContainer/TabContainer/SettingsMenu")
 vendor_menu = NodePath("PanelContainer/MarginContainer/TabContainer/VendorMenu")
+save_menu = NodePath("PanelContainer/MarginContainer/TabContainer/SaveMenu")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -103,6 +105,11 @@ metadata/_tab_index = 4
 visible = false
 layout_mode = 2
 metadata/_tab_index = 5
+
+[node name="SaveMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("7_8cc7c")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 6
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Player_Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Inventory_Button" to="." method="_on_inventory_button_pressed"]

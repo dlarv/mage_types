@@ -27,6 +27,12 @@ var _god_mode := false
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
 
+var player_name: 
+	get:
+		return battle_actor.name
+	set(val):
+		battle_actor.name = player_name
+
 func _ready() -> void:
 	team.insert(0, battle_actor)
 
@@ -124,3 +130,33 @@ func pickup_object(obj: Node3D, grabbable: Grabbable, val: bool, axis:=Vector3.Z
 	if axis != Vector3.ZERO:
 		velocity = Vector3.ZERO
 		restricted_axis = axis
+
+func serialize() -> Dictionary:
+	var teamData := []
+	for t in team:
+		teamData.append(t.serialize())
+	return {
+		"path": get_path(),
+		"battle_actor": battle_actor.serialize(),
+		"team": teamData,
+		"position": global_position,
+		"rotation": global_rotation,
+		"model_rotation": model.global_rotation,
+	}
+
+func deserialize(data: Dictionary):
+	if "position" in data:
+		global_position = data["position"]
+	if "rotation" in data:
+		global_rotation = data["rotation"]
+	if "model_rotation" in data:
+		model.global_rotation = data["model_rotation"]
+	if "battle_actor" in data:
+		battle_actor.deserialize(data["battle_actor"])
+	# if "team" in data:
+	# 	team = []
+	# 	for t in data["team"]:
+	# 		team.append(BattleActor.new())
+
+
+

@@ -152,3 +152,20 @@ func add(effect: StatChange, name: String) -> void:
 		Logger.append_log(Logger.LogType.BATTLE, 
 			msg % [effect.name, name, get_base_stat(effect.stat), get_stat_mod(effect.stat), get_stat(effect.stat), ""])
 		stat_changed.emit(effect.stat, get_stat_mod(effect.stat))
+
+func serialize() -> Dictionary: 
+	return {
+		"melee_attack": _base_melee_attack,
+		"ranged_attack": _base_ranged_attack,
+		"melee_defense": _base_melee_defense,
+		"ranged_defense": _base_ranged_defense,
+		"speed": _base_speed,
+		"evasion": _base_evasion,
+	}
+func deserialize(data: Dictionary) -> void: 
+	_base_melee_attack = data["melee_attack"]
+	_base_ranged_attack = data["ranged_attack"]
+	_base_melee_defense = data["melee_defense"]
+	_base_ranged_defense = data["ranged_defense"]
+	_base_speed = data["speed"]
+	_base_evasion = data["evasion"]

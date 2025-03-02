@@ -68,7 +68,7 @@ unique_name_in_owner = true
 [node name="Overworld" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Overworld" instance=ExtResource("9_qicvs")]
+[node name="Player" parent="Overworld" groups=["persist"] instance=ExtResource("9_qicvs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7935, 0.95849, 2.601)
 battle_actor = ExtResource("9_oh653")
 team = Array[ExtResource("10_wgmfh")]([])

@@ -103,3 +103,11 @@ func _map_key(e: ElementalType) -> int:
 			return DEFENSIVE_INDEX
 		ElementManager.Red,ElementManager.Purple,ElementManager.Orange,ElementManager.Green,_:
 			return OFFENSIVE_INDEX
+
+func serialize() -> Dictionary: 
+	return {
+		"affinities": affinities,
+	}
+
+func deserialize(data: Dictionary) -> void: 
+	affinities = data["affinities"]

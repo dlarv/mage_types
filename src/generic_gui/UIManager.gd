@@ -8,6 +8,7 @@ signal vendor_menu_closed
 @export var matchup_chart: Menu
 @export var settings_menu: Menu
 @export var vendor_menu: Menu
+@export var save_menu: Menu
 
 var overworld: Node
 var dialog_box: DialogueBox
@@ -116,7 +117,7 @@ func _on_open_settings_button_pressed() -> void:
 	push_menu(settings_menu)
 
 func _on_save_game_button_pressed() -> void:
-	pass # Replace with function body.
+	push_menu(save_menu)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

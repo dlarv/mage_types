@@ -124,3 +124,30 @@ func _flicker_collider() -> void:
 	collision_layer = 1
 	await get_tree().create_timer(0.01).timeout
 	collision_layer = val
+
+func serialize() -> Dictionary:
+	return {
+		"path": get_path(),
+		"name": name,
+		"position": global_position,
+		"rotation": global_rotation,
+		"scale": scale,
+		"element": element.name,
+		"in_stasis": in_stasis,
+		"visible": visible,
+	}
+
+func deserialize(data: Dictionary) -> void:
+	if "position" in data:
+		global_position = data["position"]
+	if "rotation" in data:
+		global_rotation = data["rotation"]
+	if "scale" in data:
+		scale = data["scale"]
+	if "element" in data:
+		element = ElementManager.get_element_from_name(data["element"])
+	if "in_stasis" in data:
+		in_stasis = not data["in_stasis"]
+		set_stasis()
+	if "visible" in data:
+		visible = data["visible"]
