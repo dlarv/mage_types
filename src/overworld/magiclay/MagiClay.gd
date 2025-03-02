@@ -56,6 +56,7 @@ func _ready():
 
 func _try_set_color() -> void:
 	if _mesh == null: return
+	if _material == null: return
 	if element == null: return
 	_material.albedo_color = element.main_color
 
@@ -89,7 +90,8 @@ func set_stasis() -> void:
 				"MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
 
 	else:
-		_material.albedo_color = element.main_color
+		#_material.albedo_color = element.main_color
+		_try_set_color()
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
 		stasis_ended.emit()

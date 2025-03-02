@@ -55,3 +55,18 @@ func _close():
 	_is_opened = false 
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"Gate(%s)was closed." % [puzzle_name])
+
+func serialize() -> Dictionary:
+	var data = super.serialize()
+	data.merge({
+		"opened": _is_opened,
+	}, true)
+	return data
+
+func deserialize(data: Dictionary) -> void:
+	super.deserialize(data)
+	if data["opened"] and permanent:
+		_open()
+	else:
+		_close()
+
