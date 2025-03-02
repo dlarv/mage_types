@@ -303,7 +303,7 @@ max_spawn_count = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
 shape = SubResource("BoxShape3D_g4ltx")
 
-[node name="Enemy1" type="Area3D" parent="."]
+[node name="Enemy1" type="Area3D" parent="." groups=["wild_enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -19)
 script = ExtResource("8_lqy14")
 
