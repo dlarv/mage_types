@@ -22,6 +22,11 @@ func _ready() -> void:
 		lock.on.connect(_on_lock_opened)
 		lock.off.connect(_on_lock_closed)
 
+func _physics_process(delta: float) -> void:
+	# For some reason, collision_layer would oscillate between 0 and 1.
+	if _is_opened:
+		collision_layer = 0
+
 func _on_lock_opened(block: PuzzleBlock) -> void:
 	if _is_opened and permanent: return
 
@@ -40,9 +45,11 @@ func _on_lock_closed(block: PuzzleBlock) -> void:
 		if _is_opened:
 			_close()
 
-func _open():
-	for openedLock in _opened_locks.values():
-		if not openedLock: return
+func _open(force:=false):
+	if not force:
+		for openedLock in _opened_locks.values():
+			if not openedLock: return
+	#call_deferred("set_collision_layer", 0)
 	collision_layer = 0
 	$AnimationPlayer.play("opening")
 	_is_opened = true
@@ -66,7 +73,10 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> void:
 	super.deserialize(data)
 	if data["opened"] and permanent:
-		_open()
+		_open(true)
 	else:
 		_close()
 
+
+func _on_tree_exiting() -> void:
+	print('Here')

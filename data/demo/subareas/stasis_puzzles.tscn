@@ -168,13 +168,7 @@ _element = "magenta"
 [node name="Gate" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_gkg8c")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, -0.5, -4)
 locks = [NodePath("../Relay_N"), NodePath("../Relay_E"), NodePath("../Relay_S"), NodePath("../PressurePlate_W")]
-permanent = null
-is_on = null
-_element = null
-is_blooming = null
-is_breakable = null
-is_transmutable = null
-in_stasis = null
+permanent = true
 
 [node name="PressurePlate_N" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11, -5.4, -3)
@@ -208,5 +202,7 @@ lock = NodePath("../PressurePlate_S")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03066, 0.49097, 7.9826)
 shape = SubResource("BoxShape3D_uxte6")
+
+[connection signal="tree_exiting" from="StasisPuzzles/Puzzle/Gate" to="StasisPuzzles/Puzzle/Gate" method="_on_tree_exiting"]
 
 [editable path="StasisPuzzles/Puzzle/MagiclayBoulder"]

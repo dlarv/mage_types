@@ -33,10 +33,14 @@ func _ready() -> void:
 
 func load(player: Node3D) -> void:
 	if not player.is_in_group("player"): return
+	Logger.append_log(Logger.LogType.PUZZLE, "Player loaded Chunk(%s)" % name)
+	print("Player loaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
 
 func unload(player: Node3D) -> void:
 	if not player.is_in_group("player"): return
+	Logger.append_log(Logger.LogType.PUZZLE, "Player unloaded Chunk(%s)" % name)
+	print("Player unloaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
 
 func serialize() -> Dictionary:
@@ -52,5 +56,4 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> void:
 	for key in data.keys():
 		if key is String and key == "path": continue
-
 		_persistent_objs[key].deserialize(data[key])
