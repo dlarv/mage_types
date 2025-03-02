@@ -9,9 +9,6 @@ signal spell_selected(is_primary: bool, spell: OverworldSpell)
 @export var catalyst_spell: OverworldSpell
 @export var vines_spell: OverworldSpell
 @export var tunnel_spell: OverworldSpell
-# @export var primary_override: OverworldSpell.Spells
-# @export var secondary_override: OverworldSpell.Spells
-# @export var use_override: bool
 
 var active_spell_1: OverworldSpell
 var active_spell_2: OverworldSpell
@@ -24,6 +21,11 @@ func _enter_tree():
 	vines_spell.Projectile = Projectile
 	tunnel_spell.Projectile = Projectile
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("cast_spell_1") and active_spell_1:
+		active_spell_1.perform_action()
+	if event.is_action_pressed("cast_spell_2") and active_spell_2:
+		active_spell_2.perform_action()
 
 func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
 	var spell
@@ -48,7 +50,4 @@ func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
 		spell_selected.emit(false, spell)
 
 	spell.set_primary(isPrimary)
-	#await UIManager.ready
 	UIManager.hud.show_overworld_spell(isPrimary, spell)
-
-	

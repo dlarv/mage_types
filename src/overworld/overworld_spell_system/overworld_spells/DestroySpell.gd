@@ -1,7 +1,7 @@
 extends OverworldSpell
 
 # Override 
-func _perform_action() -> void: 
+func perform_action() -> void: 
 	_spawn_projectile(collision_test, action_to_perform, _channel_element())
 
 

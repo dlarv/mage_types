@@ -7,7 +7,6 @@ enum Spells { STASIS, DESTROY, CATALYST, VINES, TUNNEL }
 var Projectile: PackedScene
 
 var is_active := false
-var keycode: String
 
 var _terrain_exclusions: Array
 
@@ -16,13 +15,6 @@ var _current_mouse_pos: Vector3
 
 func _ready() -> void:
 	_terrain_exclusions = get_tree().get_nodes_in_group("player")
-
-
-func _input(event: InputEvent) -> void:
-	if not is_active: return
-
-	if event.is_action_pressed(keycode):
-		_perform_action()
 
 func _physics_process(delta: float) -> void:
 	if not is_active: return
@@ -61,17 +53,12 @@ func _find_mouse_position() -> void:
 
 func deactivate() -> void:
 	is_active = false
-	keycode = ""
 
 func set_primary(val: bool) -> void:
 	is_active = true
-	if val:
-		keycode = "cast_spell_1"
-	else:
-		keycode = "cast_spell_2"
 
 # Virtual
-func _perform_action() -> void: pass
+func perform_action() -> void: pass
 
 func _channel_element() -> ElementalType: 
 	if _magiclay_terrain != null:

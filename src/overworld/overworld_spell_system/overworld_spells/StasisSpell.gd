@@ -4,7 +4,7 @@ extends OverworldSpell
 var _stasis_queue := []
 
 # Override 
-func _perform_action() -> void: 
+func perform_action() -> void: 
 	_spawn_projectile(collision_test, action_to_perform, ElementManager.Blank)
 
 

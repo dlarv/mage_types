@@ -1,5 +1,5 @@
 extends OverworldSpell
 
 # Override 
-func _perform_action() -> void: 
+func perform_action() -> void: 
 	print("Cast vines")
