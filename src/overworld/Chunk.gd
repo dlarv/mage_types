@@ -28,6 +28,10 @@ func _ready() -> void:
 		var child = children.pop_back()
 		if child.has_method("serialize"):
 			_persistent_objs[child.get_path()] = child
+			if child.is_in_group("persist"):
+				child.remove_from_group("persist")
+				push_warning("Node(%s) is in persist group but is also child of persistent Chunk(%s)" 
+						% [ child.puzzle_name, name])
 		children.append_array(child.get_children())
 
 
