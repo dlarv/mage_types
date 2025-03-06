@@ -52,9 +52,14 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _on_body_exited(body: Node3D) -> void:
+	var bodyName: String
+	if body.is_in_group("player"):
+		bodyName = "Player"
+	else:
+		bodyName = body.puzzle_name
 	if (can_player_trigger and _test_for_player(body)) or body is MagiClay:
 		Logger.append_log(Logger.LogType.PUZZLE, 
-				"PressurePlate(%s) was deactivated by MagiClay(%s)." % [puzzle_name, body.puzzle_name])
+				"PressurePlate(%s) was deactivated by MagiClay(%s)." % [puzzle_name, bodyName])
 		_try_emit_off()
 
 

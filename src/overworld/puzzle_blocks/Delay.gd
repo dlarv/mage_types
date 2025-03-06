@@ -1,12 +1,15 @@
 extends PuzzleBlock
 
-@export var open_delay := 0.5
+@export var open_delay := 0.5:
+	set(val):
+		open_delay = val
 @export var locks: Array[PuzzleBlock]
 
 var _opened_locks := {}
 var _is_opened := false
 
 func _ready() -> void:
+	$AnimationPlayer.speed_scale = 60 / open_delay
 	_is_opened = false
 	for lock in locks:
 		_opened_locks[lock] = false
@@ -23,7 +26,10 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 			return
 
 	_is_opened = true
-	await get_tree().create_timer(open_delay).timeout
+	$AnimationPlayer.play("turning")
+	$Timer.start(open_delay)
+	await $Timer.timeout
+	print("HERE")
 	if _is_opened:
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"Delay(%s) was opened." % [puzzle_name])
@@ -40,6 +46,13 @@ func _on_lock_closed(block: PuzzleBlock) -> void:
 				"Delay(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
 	off.emit(self)
 	_is_opened = false
+	$Timer.stop()
+	# $Timer.timeout.emit()
+	if $AnimationPlayer.is_playing():
+		$AnimationPlayer.speed_scale *= -6
+		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.speed_scale /= -6
+		
 
 func _get_mesh() -> MeshInstance3D:
 	return null

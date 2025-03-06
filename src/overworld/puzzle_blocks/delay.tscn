@@ -1,11 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://do43qejpr6n5i"]
+[gd_scene load_steps=8 format=3 uid="uid://do43qejpr6n5i"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Delay.gd" id="1_xhgfr"]
+[ext_resource type="PackedScene" uid="uid://fyo5j6bk3nke" path="res://assets/3d/models/kitchen_timer.blend" id="2_ql13y"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ocv1n"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4el27"]
+radius = 1.00012
+height = 2.35211
 
-[node name="Delay" type="Area3D"]
+[sub_resource type="Animation" id="Animation_4m6i3"]
+resource_name = "turning"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("kitchen_timer/Cap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15.0667, 30.1, 45.1333, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fuitb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("kitchen_timer/Cap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t4ox6"]
+resource_name = "snap_shut"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o46k5"]
+_data = {
+"RESET": SubResource("Animation_fuitb"),
+"snap_shut": SubResource("Animation_t4ox6"),
+"turning": SubResource("Animation_4m6i3")
+}
+
+[node name="Delay" type="StaticBody3D"]
 script = ExtResource("1_xhgfr")
+open_delay = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_ocv1n")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352953, 0)
+shape = SubResource("CapsuleShape3D_4el27")
+
+[node name="kitchen_timer" parent="." instance=ExtResource("2_ql13y")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o46k5")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[editable path="kitchen_timer"]

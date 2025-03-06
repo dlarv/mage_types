@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Wire.gd" id="1_psfo7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7leh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qahxk"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_t5j86"]
 radius = 0.3
@@ -26,9 +27,9 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
-material = SubResource("StandardMaterial3D_a7leh")
+material = SubResource("StandardMaterial3D_qahxk")
 
 [node name="Head" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_t5j86")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_a7leh")
+surface_material_override/0 = SubResource("StandardMaterial3D_qahxk")
