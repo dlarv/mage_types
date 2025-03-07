@@ -29,7 +29,6 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 	$AnimationPlayer.play("turning")
 	$Timer.start(open_delay)
 	await $Timer.timeout
-	print("HERE")
 	if _is_opened:
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"Delay(%s) was opened." % [puzzle_name])
@@ -47,7 +46,6 @@ func _on_lock_closed(block: PuzzleBlock) -> void:
 	off.emit(self)
 	_is_opened = false
 	$Timer.stop()
-	# $Timer.timeout.emit()
 	if $AnimationPlayer.is_playing():
 		$AnimationPlayer.speed_scale *= -6
 		await $AnimationPlayer.animation_finished

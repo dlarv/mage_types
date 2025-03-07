@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://brs3ov2whut2i"]
+[gd_scene load_steps=20 format=3 uid="uid://brs3ov2whut2i"]
 
 [ext_resource type="Script" path="res://data/demo/subareas/CatalystPuzzles.gd" id="1_n5073"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_mwdp0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_ryjpb"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="5_fnfmo"]
 [ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="5_mef7p"]
+[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="7_0xjvi"]
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="7_fn5ea"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="8_5a631"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_pxaef"]
@@ -14,6 +15,26 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xiadh"]
 size = Vector3(27, 6, 45)
+
+[sub_resource type="Curve3D" id="Curve3D_x8c8c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10.62, 0, 0, 0, 0, 0, 0, -21.167, 0, -10.508, 0, 0, 0, 0, 0, 0, -21.167, -0.5, -10.508),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oi6a5"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_4k3xo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10.367, 0, 0, 0, 0, 0, 0, 8.919, 0, -10.367, 0, 0, 0, 0, 0, 0, 8.919, -0.5, -10.367),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umdgo"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
 size = Vector3(2.23236, 1, 30.8647)
@@ -101,6 +122,21 @@ _element = "yellow"
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1706, 2, 13)
 _element = "yellow"
 
+[node name="Wire" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver" node_paths=PackedStringArray("target") instance=ExtResource("7_0xjvi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1, 1, 10.3)
+target = NodePath("..")
+
+[node name="Path" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 0, 0)
+curve = SubResource("Curve3D_x8c8c")
+
+[node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire/Path" index="0"]
+material = SubResource("StandardMaterial3D_oi6a5")
+
+[node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_oi6a5")
+
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
 _element = "magenta"
@@ -125,12 +161,25 @@ is_transmutable = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="Emitter" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("2_o81tf")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 12.3408, 2, 1.71233)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 12.5408, 2, 1.71233)
 _element = "purple"
 
 [node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("3_30a4y")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 2, 0.693)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.3, 2, 0.693)
 _element = "purple"
+
+[node name="Wire" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver" node_paths=PackedStringArray("target") instance=ExtResource("7_0xjvi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9, 1, 10.2)
+target = NodePath("..")
+
+[node name="Path" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="0"]
+curve = SubResource("Curve3D_4k3xo")
+
+[node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire/Path" index="0"]
+material = SubResource("StandardMaterial3D_umdgo")
+
+[node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_umdgo")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, -5)
@@ -154,8 +203,8 @@ is_transmutable = true
 
 [node name="MiddlePath" type="StaticBody3D" parent="CatalystPuzzles/CatalystSubPuzzles_North"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00253686, 0.20652, 7.19969)
@@ -278,3 +327,6 @@ locks = [NodePath("../CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle
 
 [connection signal="off" from="CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver2" to="." method="_on_laser_receiver_off"]
 [connection signal="on" from="CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver2" to="." method="_on_laser_receiver_on"]
+
+[editable path="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire"]
+[editable path="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire"]

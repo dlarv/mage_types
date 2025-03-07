@@ -18,7 +18,7 @@ func _enter_tree() -> void:
 			reset.magiclay_reset.connect(child.reset)
 	else:
 		for reset in resets:
-			for child in reset.get_parent().find_children("", "MagiClay"):
+			for child in reset.get_parent().find_children("", "MagiClay", true):
 				reset.magiclay_reset.connect(child.reset)
 
 func _ready() -> void:
