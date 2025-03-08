@@ -1,7 +1,19 @@
-extends StaticBody3D
+extends PuzzleBlock
 
+@export var locks: Array[PuzzleBlock]
 @export var items: Array[ItemSlot]
 var is_opened := false
+
+var _opened_locks := {}
+
+func _ready() -> void:
+	if len(locks) > 0:
+		$Grabbable.set_disabled(true)
+
+	for lock in locks:
+		_opened_locks[lock] = false
+		lock.on.connect(_on_lock_opened)
+		lock.off.connect(_on_lock_closed)
 
 func _on_grabbed(obj: Node3D, player: Node3D) -> void:
 	if is_opened: return
@@ -14,6 +26,24 @@ func _on_grabbed(obj: Node3D, player: Node3D) -> void:
 	await UIManager.show_dialog(msg)
 	_update_mesh()
 
+func _on_lock_opened(block: PuzzleBlock) -> void:
+	if is_opened: return
+	if not _opened_locks.get(block):
+		_opened_locks[block] = true
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"Chest(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
+
+	for openedLock in _opened_locks.values():
+		if not openedLock: return
+	$Grabbable.set_disabled(false)
+
+func _on_lock_closed(block: PuzzleBlock) -> void:
+	if is_opened: return
+	if _opened_locks.get(block):
+		_opened_locks[block] = true
+		$Grabbable.set_disabled(true)
+		Logger.append_log(Logger.LogType.PUZZLE, 
+				"Chest(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
 
 
 func _update_mesh() -> void:
