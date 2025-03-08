@@ -23,7 +23,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oi6a5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg4hv"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_4k3xo"]
@@ -33,7 +33,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umdgo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d36wi"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
@@ -131,29 +131,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 0, 0)
 curve = SubResource("Curve3D_x8c8c")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_oi6a5")
+material = SubResource("StandardMaterial3D_bg4hv")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_oi6a5")
+surface_material_override/0 = SubResource("StandardMaterial3D_bg4hv")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
+inertia = Vector3(20, 20, 20)
 _element = "magenta"
 is_transmutable = true
 
 [node name="DraggableMirror2" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 0, 3)
+inertia = Vector3(20, 20, 20)
 _element = "yellow"
 is_transmutable = true
 
 [node name="DraggableMirror3" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 8)
+inertia = Vector3(20, 20, 20)
 _element = "cyan"
 is_transmutable = true
 
 [node name="DraggableMirror4" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -3)
+inertia = Vector3(20, 20, 20)
 _element = "orange"
 is_transmutable = true
 
@@ -176,28 +180,32 @@ target = NodePath("..")
 curve = SubResource("Curve3D_4k3xo")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_umdgo")
+material = SubResource("StandardMaterial3D_d36wi")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_umdgo")
+surface_material_override/0 = SubResource("StandardMaterial3D_d36wi")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, -5)
+inertia = Vector3(20, 20, 20)
 _element = "green"
 is_transmutable = true
 
 [node name="DraggableMirror2" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+inertia = Vector3(20, 20, 20)
 _element = "orange"
 is_transmutable = true
 
 [node name="DraggableMirror3" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, 2)
+inertia = Vector3(20, 20, 20)
 _element = "green"
 is_transmutable = true
 
 [node name="DraggableMirror4" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+inertia = Vector3(20, 20, 20)
 _element = "yellow"
 is_transmutable = true
 
