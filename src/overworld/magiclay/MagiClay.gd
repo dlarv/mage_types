@@ -30,16 +30,16 @@ var puzzle_name: String:
 		if get_parent() == null:
 			return "%s" % name
 		return "%s.%s" % [get_parent().name, name]
-var _mesh: MeshInstance3D: get = _get_mesh
+var _mesh_instance: MeshInstance3D: get = _get_mesh
 var _material: StandardMaterial3D:
 	set(val):
 		_material = val
-		if _mesh == null:
+		if _mesh_instance == null:
 			push_warning("%s has no mesh!" % puzzle_name)
 			return
-		_mesh.set_surface_override_material(0, _material)
+		_mesh_instance.set_surface_override_material(0, _material)
 		_try_set_color()
-var _original_element: ElementalType
+var _original_element: ElementalType = null
 
 # When this object is hit by a laser, this value is checked against the projectile's value.
 # Every laser projectile in a beam has the same value and it is rerolled when the laser stops and starts again.
@@ -47,7 +47,8 @@ var _original_element: ElementalType
 var _rand_val: int
 
 func _enter_tree():
-	_original_element = element
+	if _original_element == null:
+		_original_element = element
 
 
 func _ready():
@@ -55,7 +56,7 @@ func _ready():
 
 
 func _try_set_color() -> void:
-	if _mesh == null: return
+	if _mesh_instance == null: return
 	if _material == null: return
 	if element == null: return
 	_material.albedo_color = element.main_color

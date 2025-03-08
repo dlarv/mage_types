@@ -28,11 +28,13 @@ func _on_grabbed(obj: Node3D, player: Node3D) -> void:
 		_on_dropped(obj, player)
 		player.pickup_object(self, grabbable, false)
 
+
 func _on_dropped(obj: Node3D, player: Node3D) -> void:
 	if _prev_parent == null: return
 	if player.held_object == self:
 		call_deferred("drop")
 		player.pickup_object(self, grabbable, false)
+
 
 func drop() -> void:
 	reparent(_prev_parent)

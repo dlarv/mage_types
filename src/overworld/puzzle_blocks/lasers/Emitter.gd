@@ -32,7 +32,7 @@ func stop(val: Variant=null) -> void:
 	_is_on = false
 	$SubEmitter.stop()
 	Logger.append_log(Logger.LogType.PUZZLE, 
-			"Emitter(%s) stopped." % [puzzle_name])
+		"Emitter(%s) stopped." % [puzzle_name])
 
 # Override
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
