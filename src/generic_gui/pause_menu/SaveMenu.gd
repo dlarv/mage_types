@@ -7,7 +7,11 @@ var _saved_games := []
 var _freed_objs := []
 
 func _ready() -> void:
-	_player = get_tree().get_nodes_in_group("player")[0]
+	var players = get_tree().get_nodes_in_group("player")
+	if len(players) > 0:
+		_player = players[0]
+	else:
+		return
 
 	var root := DirAccess.open("user://")
 	root.make_dir_recursive("games")
