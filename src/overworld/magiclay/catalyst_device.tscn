@@ -8,7 +8,6 @@
 size = Vector3(0.9, 1.2, 0.5)
 
 [node name="CatalystDevice" type="StaticBody3D"]
-process_mode = 3
 script = ExtResource("1_0y1qt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

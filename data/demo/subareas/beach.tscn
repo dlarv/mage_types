@@ -62,10 +62,10 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_2nhrq"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpftx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6e6j"]
 albedo_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afe7u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wetu7"]
 albedo_color = Color(1, 0.501961, 0, 1)
 
 [sub_resource type="Resource" id="Resource_ub1vh"]
@@ -430,7 +430,7 @@ shape = SubResource("BoxShape3D_v24cq")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_2nhrq")
-surface_material_override/0 = SubResource("StandardMaterial3D_rpftx")
+surface_material_override/0 = SubResource("StandardMaterial3D_u6e6j")
 
 [node name="MagiclayRock2" parent="Chunk/Puzzle_North" instance=ExtResource("4_wmol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 6)
@@ -441,7 +441,7 @@ shape = SubResource("BoxShape3D_v24cq")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock2" index="1"]
 mesh = SubResource("BoxMesh_2nhrq")
-surface_material_override/0 = SubResource("StandardMaterial3D_afe7u")
+surface_material_override/0 = SubResource("StandardMaterial3D_wetu7")
 
 [node name="PressurePlate" parent="Chunk/Puzzle_North" instance=ExtResource("21_wyiua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -8)
