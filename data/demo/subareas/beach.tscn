@@ -62,10 +62,10 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_2nhrq"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cchpe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpftx"]
 albedo_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u2pm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afe7u"]
 albedo_color = Color(1, 0.501961, 0, 1)
 
 [sub_resource type="Resource" id="Resource_ub1vh"]
@@ -127,7 +127,7 @@ dialog_ids = Array[ExtResource("9_ih2xv")]([SubResource("Resource_bcofw"), SubRe
 [node name="Beach" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_sl1hi")
 chunk = NodePath("Chunk")
-resets = [NodePath("Chunk/Puzzle_North/Reset")]
+resets = [NodePath("Chunk/Puzzle_North/Reset"), NodePath("Chunk/Puzzle2/Reset")]
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 4)
@@ -304,9 +304,9 @@ size = Vector3(4, 3, 2.1)
 material = ExtResource("1_kv0ly")
 
 [node name="LP_SP2" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2, -43.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, 2, -43.6)
 operation = 2
-size = Vector3(4, 3, 2)
+size = Vector3(5, 3, 2)
 material = ExtResource("1_kv0ly")
 
 [node name="LP_SP3" type="CSGBox3D" parent="Chunk/CSGCombiner3D" node_paths=PackedStringArray("locks") groups=["persist"]]
@@ -430,7 +430,7 @@ shape = SubResource("BoxShape3D_v24cq")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_2nhrq")
-surface_material_override/0 = SubResource("StandardMaterial3D_cchpe")
+surface_material_override/0 = SubResource("StandardMaterial3D_rpftx")
 
 [node name="MagiclayRock2" parent="Chunk/Puzzle_North" instance=ExtResource("4_wmol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 6)
@@ -441,7 +441,7 @@ shape = SubResource("BoxShape3D_v24cq")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock2" index="1"]
 mesh = SubResource("BoxMesh_2nhrq")
-surface_material_override/0 = SubResource("StandardMaterial3D_1u2pm")
+surface_material_override/0 = SubResource("StandardMaterial3D_afe7u")
 
 [node name="PressurePlate" parent="Chunk/Puzzle_North" instance=ExtResource("21_wyiua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -8)
@@ -491,6 +491,9 @@ _element = "cyan"
 [node name="Puzzle2" type="Node3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, -28)
 
+[node name="Reset" parent="Chunk/Puzzle2" instance=ExtResource("13_wf8nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.21784, 3)
+
 [node name="Gate" parent="Chunk/Puzzle2" node_paths=PackedStringArray("locks") groups=["persist"] instance=ExtResource("16_1unvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8)
 locks = [NodePath("../PressurePlate")]
@@ -506,20 +509,38 @@ _element = "cyan"
 
 [node name="Emitter1" parent="Chunk/Puzzle2" instance=ExtResource("13_qy70b")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -8.4, 1, -7)
-_element = "orange"
+_element = "blue"
 metadata/_edit_group_ = true
 
 [node name="Emitter2" parent="Chunk/Puzzle2" instance=ExtResource("13_qy70b")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 6.3, 1, -7)
-_element = "yellow"
+_element = "blue"
 
 [node name="CatalystDevice1" parent="Chunk/Puzzle2" instance=ExtResource("18_w6661")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, -7)
-_element = "orange"
+elements = {
+"Blue": true,
+"Cyan": false,
+"Green": false,
+"Magenta": true,
+"Orange": true,
+"Purple": true,
+"Red": true,
+"Yellow": true
+}
 
 [node name="CatalystDevice2" parent="Chunk/Puzzle2" instance=ExtResource("18_w6661")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0.5, -7)
-_element = "yellow"
+elements = {
+"Blue": true,
+"Cyan": false,
+"Green": false,
+"Magenta": true,
+"Orange": true,
+"Purple": true,
+"Red": true,
+"Yellow": true
+}
 
 [node name="Puzzle3" type="Node3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, -44)
@@ -530,7 +551,27 @@ locks = [NodePath("../PressurePlate")]
 permanent = true
 
 [node name="PressurePlate" parent="Chunk/Puzzle3" instance=ExtResource("21_wyiua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, 44)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.5, -5.2)
+_element = "blue"
+
+[node name="MagiclayRock" parent="Chunk/Puzzle3" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 1, 4.5)
+_element = "blue"
+
+[node name="CatalystDevice" parent="Chunk/Puzzle3" instance=ExtResource("18_w6661")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 4.1)
+
+[node name="Emitter1" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, 2)
+_element = "red"
+
+[node name="Emitter2" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, 0)
+_element = "blue"
+
+[node name="Emitter3" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, -2)
+_element = "cyan"
 
 [node name="Enemy1" type="Area3D" parent="." groups=["wild_enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -19)
@@ -548,6 +589,7 @@ _team = Array[ExtResource("11_nw0sk")]([ExtResource("12_j3eh3")])
 
 [connection signal="element_selected" from="Chunk/Puzzle2/CatalystDevice1" to="Chunk/Puzzle2/Emitter1" method="set_element"]
 [connection signal="element_selected" from="Chunk/Puzzle2/CatalystDevice2" to="Chunk/Puzzle2/Emitter2" method="set_element"]
+[connection signal="element_selected" from="Chunk/Puzzle3/CatalystDevice" to="Chunk/Puzzle3/MagiclayRock" method="set_element"]
 [connection signal="body_entered" from="Enemy1" to="Enemy1" method="_on_body_entered"]
 
 [editable path="Chunk/Puzzle_North/MagiclayRock"]

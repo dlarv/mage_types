@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch52g6fw70mk4"]
+[gd_scene load_steps=9 format=3 uid="uid://ch52g6fw70mk4"]
 
 [ext_resource type="Script" path="res://src/generic_gui/UIManager.gd" id="1_86rq7"]
 [ext_resource type="PackedScene" uid="uid://b644ydrvhju3b" path="res://src/generic_gui/pause_menu/player_menu/player_menu.tscn" id="2_i5nhe"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/generic_gui/pause_menu/transmutation_menu/element_menu.tscn" id="5_la646"]
 [ext_resource type="PackedScene" uid="uid://cla1fukn637mm" path="res://src/generic_gui/pause_menu/inventory/inventory_menu.tscn" id="6_f4ewy"]
 [ext_resource type="PackedScene" uid="uid://0e2avc6gqayk" path="res://src/generic_gui/pause_menu/save_menu.tscn" id="7_8cc7c"]
+[ext_resource type="PackedScene" uid="uid://c2bjj71mm57fa" path="res://src/generic_gui/pause_menu/catalyst_device_menu.tscn" id="8_mil63"]
 
-[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu")]
+[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu", "catalyst_menu")]
 layer = 5
 script = ExtResource("1_86rq7")
 main_menu = NodePath("PanelContainer/MarginContainer/TabContainer/MainMenu")
@@ -18,6 +19,7 @@ matchup_chart = NodePath("PanelContainer/MarginContainer/TabContainer/ElementMen
 settings_menu = NodePath("PanelContainer/MarginContainer/TabContainer/SettingsMenu")
 vendor_menu = NodePath("PanelContainer/MarginContainer/TabContainer/VendorMenu")
 save_menu = NodePath("PanelContainer/MarginContainer/TabContainer/SaveMenu")
+catalyst_menu = NodePath("PanelContainer/MarginContainer/TabContainer/CatalystDeviceMenu")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -111,6 +113,10 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 6
 
+[node name="CatalystDeviceMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("8_mil63")]
+visible = false
+layout_mode = 2
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Player_Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Inventory_Button" to="." method="_on_inventory_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Transmutation_Button" to="." method="_on_transmutation_button_pressed"]
@@ -120,3 +126,4 @@ metadata/_tab_index = 6
 [connection signal="open_equipment_menu" from="PanelContainer/MarginContainer/TabContainer/PlayerMenu" to="." method="_on_player_menu_open_equipment_menu"]
 [connection signal="open_spell_menu" from="PanelContainer/MarginContainer/TabContainer/PlayerMenu" to="." method="_on_player_menu_open_spell_menu"]
 [connection signal="menu_closed" from="PanelContainer/MarginContainer/TabContainer/VendorMenu" to="PanelContainer/MarginContainer/TabContainer" method="_on_vendor_menu_menu_closed"]
+[connection signal="menu_closed" from="PanelContainer/MarginContainer/TabContainer/CatalystDeviceMenu" to="." method="_on_catalyst_menu_closed"]

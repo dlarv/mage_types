@@ -27,14 +27,7 @@ var element: ElementalType = ElementManager.Blue:
 		element = value 
 
 func _ready() -> void:
-	for child in %GridContainer.get_children():
-		child.disabled = not elements[child.name]
-
-	$CanvasLayer.hide()
 	_rotate_wheel(element)
-
-func _on_element_button_pressed(element: ElementalType) -> void:
-	self.element = element
 
 
 func _rotate_wheel(element: ElementalType) -> void:
@@ -54,17 +47,9 @@ func _rotate_wheel(element: ElementalType) -> void:
 
 
 func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
-	$CanvasLayer.show()
-	if not %Close_Button.pressed.is_connected(_on_close_button_pressed):
-		%Close_Button.pressed.connect(_on_close_button_pressed.bind(player))
-	player.process_mode = Node.PROCESS_MODE_DISABLED
-	UIManager.hud.hide()
-
-
-func _on_close_button_pressed(player: Node3D) -> void:
-	$CanvasLayer.hide()
-	player.process_mode = Node.PROCESS_MODE_INHERIT
-	UIManager.hud.show()
+	UIManager.open_catalyst_menu(elements)
+	print("HERE")
+	element = await UIManager.catalyst_menu_closed
 	if element:
 		_rotate_wheel(element)
 		element_selected.emit(element)

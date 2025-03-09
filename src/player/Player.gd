@@ -157,6 +157,3 @@ func deserialize(data: Dictionary):
 	# 	team = []
 	# 	for t in data["team"]:
 	# 		team.append(BattleActor.new())
-
-
-

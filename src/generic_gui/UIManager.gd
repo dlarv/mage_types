@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal vendor_menu_closed
+signal catalyst_menu_closed(element: ElementalType)
 
 @export var main_menu: Control
 @export var player_menu: Menu
@@ -9,6 +10,7 @@ signal vendor_menu_closed
 @export var settings_menu: Menu
 @export var vendor_menu: Menu
 @export var save_menu: Menu
+@export var catalyst_menu: Menu
 
 var overworld: Node
 var dialog_box: DialogueBox
@@ -81,6 +83,19 @@ func open_vendor_menu(vendor: VendorActor) -> void:
 	_menu_stack.append(vendor_menu)
 	vendor_menu.open_menu(vendor)
 	vendor_menu.show()
+	show()
+
+func open_catalyst_menu(validElements: Dictionary) -> void:
+	_menu_stack.append(catalyst_menu)
+	catalyst_menu.open_menu(validElements)
+	catalyst_menu.show()
+	show()
+
+func _on_catalyst_menu_closed(element:ElementalType) -> void:
+	_menu_stack.pop_back()
+	catalyst_menu.hide()
+	catalyst_menu_closed.emit(element)
+	hide()
 
 func toggle_transmutation_menu() -> void:
 	if _menu_stack[-1] == matchup_chart:
@@ -93,22 +108,10 @@ func toggle_transmutation_menu() -> void:
 		show()
 
 func _on_player_button_pressed() -> void:
-	# if _menu_stack[-1] == player_menu: 
-	# 	_menu_stack.pop_back()
-	# 	matchup_chart.hide()
-	# 	hide()
-	# else:
-	# 	_menu_stack.append(matchup_chart)
-	# 	matchup_chart.show()
-	# 	show()
-	# _menu_stack.append(player_menu)	
-	# player_menu.show()
 	push_menu(player_menu)
 
 func _on_inventory_button_pressed() -> void:
 	push_menu(inventory)
-	# _menu_stack = inventory
-	# inventory.show()
 
 func _on_transmutation_button_pressed() -> void:
 	push_menu(matchup_chart)
@@ -123,6 +126,7 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_vendor_menu_menu_closed() -> void:
+	_menu_stack.pop_back()
 	vendor_menu_closed.emit()
 	vendor_menu.hide()
 

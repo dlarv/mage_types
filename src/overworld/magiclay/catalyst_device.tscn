@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxjdlm0ubsvy6"]
+[gd_scene load_steps=5 format=3 uid="uid://cxjdlm0ubsvy6"]
 
 [ext_resource type="Script" path="res://src/overworld/magiclay/CatalystDevice.gd" id="1_0y1qt"]
-[ext_resource type="PackedScene" uid="uid://dhhecfwq3jkw6" path="res://src/elements/gui/element_button.tscn" id="2_kx7q8"]
 [ext_resource type="PackedScene" uid="uid://tc1hr4ycv8bn" path="res://assets/3d/models/catalyst_device.blend" id="3_mgr76"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="4_risfn"]
 
@@ -16,82 +15,10 @@ script = ExtResource("1_0y1qt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0.6, 0.15)
 shape = SubResource("BoxShape3D_1on13")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Select an Element:"
-
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/h_separation = 20
-columns = 2
-
-[node name="Blue" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "blue"
-
-[node name="Purple" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "purple"
-
-[node name="Magenta" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "magenta"
-
-[node name="Red" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "red"
-
-[node name="Orange" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "orange"
-
-[node name="Yellow" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "yellow"
-
-[node name="Green" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "green"
-
-[node name="Cyan" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_kx7q8")]
-layout_mode = 2
-_element = "cyan"
-
-[node name="Close_Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Close"
-
 [node name="catalyst_device" parent="." instance=ExtResource("3_mgr76")]
 
 [node name="Grabbable" parent="." instance=ExtResource("4_risfn")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Blue" to="." method="_on_element_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Purple" to="." method="_on_element_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Magenta" to="." method="_on_element_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Red" to="." method="_on_element_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Orange" to="." method="_on_element_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Yellow" to="." method="_on_element_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Green" to="." method="_on_element_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/Cyan" to="." method="_on_element_button_pressed"]
 [connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]
 
 [editable path="catalyst_device"]

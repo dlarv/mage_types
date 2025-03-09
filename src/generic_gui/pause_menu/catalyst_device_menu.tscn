@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2bjj71mm57fa"]
+
+[ext_resource type="PackedScene" uid="uid://dhhecfwq3jkw6" path="res://src/elements/gui/element_button.tscn" id="1_hyigp"]
+[ext_resource type="Script" path="res://src/generic_gui/pause_menu/CatalystDeviceMenu.gd" id="1_o6clk"]
+
+[node name="CatalystDeviceMenu" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_o6clk")
+metadata/_tab_index = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select an Element:"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="Blue" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "blue"
+
+[node name="Purple" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "purple"
+
+[node name="Magenta" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "magenta"
+
+[node name="Red" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "red"
+
+[node name="Orange" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "orange"
+
+[node name="Yellow" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "yellow"
+
+[node name="Green" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "green"
+
+[node name="Cyan" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("1_hyigp")]
+layout_mode = 2
+_element = "cyan"
+
+[node name="Close_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Blue" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Purple" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Magenta" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Red" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Orange" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Yellow" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Green" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Cyan" to="." method="_on_element_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Close_Button" to="." method="_on_close_button_pressed"]
