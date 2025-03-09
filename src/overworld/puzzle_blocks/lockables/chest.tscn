@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh6ti3acb6qa"]
 
-[ext_resource type="Script" path="res://src/overworld/Chest.gd" id="1_rdalo"]
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/Chest.gd" id="1_rdalo"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_vc6ax"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j8s6l"]

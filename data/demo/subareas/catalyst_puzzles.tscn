@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="7_fn5ea"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="8_5a631"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_pxaef"]
-[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/gate.tscn" id="10_ju77r"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="10_ju77r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xiadh"]
 size = Vector3(27, 6, 45)
@@ -23,7 +23,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbhfx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uory"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_4k3xo"]
@@ -33,7 +33,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44ydc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsmxh"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
@@ -131,11 +131,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 0, 0)
 curve = SubResource("Curve3D_x8c8c")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_bbhfx")
+material = SubResource("StandardMaterial3D_6uory")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_bbhfx")
+surface_material_override/0 = SubResource("StandardMaterial3D_6uory")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
@@ -176,10 +176,10 @@ target = NodePath("..")
 curve = SubResource("Curve3D_4k3xo")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_44ydc")
+material = SubResource("StandardMaterial3D_xsmxh")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_44ydc")
+surface_material_override/0 = SubResource("StandardMaterial3D_xsmxh")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, -5)

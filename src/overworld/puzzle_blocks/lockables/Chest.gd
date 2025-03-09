@@ -1,10 +1,7 @@
-extends PuzzleBlock
+extends Lockable
 
-@export var locks: Array[PuzzleBlock]
 @export var items: Array[ItemSlot]
-var is_opened := false
-
-var _opened_locks := {}
+var _is_opened := false
 
 func _ready() -> void:
 	if len(locks) > 0:
@@ -16,8 +13,8 @@ func _ready() -> void:
 		lock.off.connect(_on_lock_closed)
 
 func _on_grabbed(obj: Node3D, player: Node3D) -> void:
-	if is_opened: return
-	is_opened = true
+	if _is_opened: return
+	_is_opened = true
 	$Grabbable.set_disabled(true)
 	var msg := "You opened a chest!"
 	for item in items:
@@ -26,25 +23,23 @@ func _on_grabbed(obj: Node3D, player: Node3D) -> void:
 	await UIManager.show_dialog(msg)
 	_update_mesh()
 
-func _on_lock_opened(block: PuzzleBlock) -> void:
-	if is_opened: return
-	if not _opened_locks.get(block):
-		_opened_locks[block] = true
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"Chest(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
+func _on_lock_opened(block: PuzzleBlock) -> bool:
+	if _is_opened: return false
+	if not super._on_lock_opened(block): return false
 
-	for openedLock in _opened_locks.values():
-		if not openedLock: return
+	Logger.append_log(Logger.LogType.PUZZLE, 
+			"Chest(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
 	$Grabbable.set_disabled(false)
+	return true
 
-func _on_lock_closed(block: PuzzleBlock) -> void:
-	if is_opened: return
-	if _opened_locks.get(block):
-		_opened_locks[block] = true
-		$Grabbable.set_disabled(true)
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"Chest(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
+func _on_lock_closed(block: PuzzleBlock) -> bool:
+	if _is_opened: return false
+	if not super._on_lock_closed(block): return false
 
+	$Grabbable.set_disabled(true)
+	Logger.append_log(Logger.LogType.PUZZLE, 
+			"Chest(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
+	return true
 
 func _update_mesh() -> void:
 	var mat := StandardMaterial3D.new()
@@ -54,12 +49,12 @@ func _update_mesh() -> void:
 func serialize() -> Dictionary:
 	return {
 		"path": get_path(),
-		"opened": is_opened,
+		"opened": _is_opened,
 	}
 
 func deserialize(data: Dictionary) -> void:
 	if "opened" in data:
-		is_opened = data["opened"]
-		if is_opened:
+		_is_opened = data["opened"]
+		if _is_opened:
 			_update_mesh()
-			$Grabbable.set_disabled(is_opened)
+			$Grabbable.set_disabled(_is_opened)

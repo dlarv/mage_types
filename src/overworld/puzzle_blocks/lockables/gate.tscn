@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://yhrncuvcuqjc"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Gate.gd" id="1_dbpd8"]
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/Gate.gd" id="1_dbpd8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8txmk"]
 size = Vector3(1, 2, 0.5)
