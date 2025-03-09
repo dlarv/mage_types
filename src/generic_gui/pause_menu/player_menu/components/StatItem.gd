@@ -1,6 +1,5 @@
 @tool
 extends Control 
-class_name StatItem 
 
 signal stat_modified(stat: String, amount: int)
 
