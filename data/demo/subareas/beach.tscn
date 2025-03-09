@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=40 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -52,6 +52,18 @@ allow_stacking = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ltx"]
 size = Vector3(14, 2, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v24cq"]
+size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2nhrq"]
+size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3t2f"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffof8"]
+albedo_color = Color(1, 0.501961, 0, 1)
 
 [sub_resource type="Resource" id="Resource_ub1vh"]
 resource_name = "Reactor Shard"
@@ -322,31 +334,53 @@ shape = SubResource("BoxShape3D_g4ltx")
 [node name="Puzzle" type="Node3D" parent="Chunk"]
 
 [node name="Reset" parent="Chunk/Puzzle" instance=ExtResource("13_wf8nf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1.51784, -51)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1.01784, -51)
 
 [node name="Emitter1" parent="Chunk/Puzzle" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -32, 1, -53)
 _element = "yellow"
 
 [node name="Emitter2" parent="Chunk/Puzzle" instance=ExtResource("13_qy70b")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -32, 1, -55)
-_element = "magenta"
-
-[node name="Emitter5" parent="Chunk/Puzzle" instance=ExtResource("13_qy70b")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -32, 1, -57)
-_element = "cyan"
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -16, 1, -54)
+_element = "orange"
 
 [node name="Emitter3" parent="Chunk/Puzzle" instance=ExtResource("13_qy70b")]
-transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -16, 1, -54)
-_element = "red"
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -32, 1, -55)
+_element = "magenta"
 
 [node name="Emitter4" parent="Chunk/Puzzle" instance=ExtResource("13_qy70b")]
 transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -16, 1, -56)
 _element = "blue"
 
+[node name="Emitter5" parent="Chunk/Puzzle" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -32, 1, -57)
+_element = "purple"
+
+[node name="Emitter6" parent="Chunk/Puzzle" instance=ExtResource("13_qy70b")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -16, 1, -58)
+_element = "green"
+
 [node name="MagiclayRock" parent="Chunk/Puzzle" instance=ExtResource("4_wmol4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1, -48)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1.5, -48)
 _element = "cyan"
+
+[node name="CollisionShape3D" parent="Chunk/Puzzle/MagiclayRock" index="0"]
+shape = SubResource("BoxShape3D_v24cq")
+
+[node name="MeshInstance3D" parent="Chunk/Puzzle/MagiclayRock" index="1"]
+mesh = SubResource("BoxMesh_2nhrq")
+surface_material_override/0 = SubResource("StandardMaterial3D_y3t2f")
+
+[node name="MagiclayRock2" parent="Chunk/Puzzle" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1.5, -48)
+_element = "orange"
+
+[node name="CollisionShape3D" parent="Chunk/Puzzle/MagiclayRock2" index="0"]
+shape = SubResource("BoxShape3D_v24cq")
+
+[node name="MeshInstance3D" parent="Chunk/Puzzle/MagiclayRock2" index="1"]
+mesh = SubResource("BoxMesh_2nhrq")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffof8")
 
 [node name="PressurePlate" parent="Chunk/Puzzle" instance=ExtResource("21_wyiua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.6, -62)
@@ -373,3 +407,6 @@ ai = SubResource("Resource_ndlyw")
 _team = Array[ExtResource("11_nw0sk")]([ExtResource("12_j3eh3")])
 
 [connection signal="body_entered" from="Enemy1" to="Enemy1" method="_on_body_entered"]
+
+[editable path="Chunk/Puzzle/MagiclayRock"]
+[editable path="Chunk/Puzzle/MagiclayRock2"]

@@ -50,16 +50,18 @@ func _enter_tree():
 	if _original_element == null:
 		_original_element = element
 
-
 func _ready():
 	_material = StandardMaterial3D.new()
 
-
-func _try_set_color() -> void:
-	if _mesh_instance == null: return
-	if _material == null: return
-	if element == null: return
-	_material.albedo_color = element.main_color
+# color: Color | null
+func _try_set_color(color=null) -> void:
+	if not _mesh_instance: return
+	if not _material: return
+	if not element: return
+	if color == null:
+		_material.albedo_color = element.main_color
+	else:
+		_material.albedo_color = color
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if e == null or e.is_blank(): return false
@@ -83,15 +85,17 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	_flicker_collider()
 	return true
 	
-func set_stasis() -> void:
-	in_stasis = not in_stasis
+func set_stasis(val=null) -> void:
+	if val == null:
+		in_stasis = not in_stasis
+	else:
+		in_stasis = val
+
 	if in_stasis:
-		_material.albedo_color = Color.BLACK
+		_try_set_color(Color.BLACK)
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
-
 	else:
-		#_material.albedo_color = element.main_color
 		_try_set_color()
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
@@ -101,7 +105,7 @@ func set_stasis() -> void:
 func reset() -> void:
 	Logger.append_log(Logger.LogType.PUZZLE, "%s reverted to original element. Element(%s) --> Element(%s)." 
 			% [puzzle_name, element.name, _original_element.name])
-	in_stasis = false
+	set_stasis(false)
 	set_element(_original_element, _rand_val, true)
 
 func bloom(val: bool, e: ElementalType) -> void:
@@ -124,9 +128,9 @@ func _flicker_collider() -> void:
 	# 2. Object is transmuted into Purple.
 	# 3. Collider is flickered, which re-triggers pressure plate.
 	var val := collision_layer
-	collision_layer = 1
+	set_collision_layer_value(3, false)
 	await get_tree().create_timer(0.01).timeout
-	collision_layer = val
+	set_collision_layer_value(3, true)
 
 func serialize() -> Dictionary:
 	return {

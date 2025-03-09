@@ -12,7 +12,6 @@ height = 0.5
 radius = 0.994533
 
 [node name="DraggableMirror" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 23
 collision_mask = 3
 axis_lock_linear_x = true

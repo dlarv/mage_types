@@ -21,11 +21,9 @@ func _ready() -> void:
 func start(val: Variant=null) -> void: 
 	super.start(val)
 	_is_on = true
-	var _hash = Time.get_ticks_usec()
-	laser.rand_val = _hash
 	$SubEmitter.start()
 	Logger.append_log(Logger.LogType.PUZZLE, 
-			"Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element.name, _hash])
+			"Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element.name, laser.rand_val])
 
 func stop(val: Variant=null) -> void: 
 	super.stop(val)
@@ -41,8 +39,8 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 
 	return true
 
-func set_stasis() -> void:
-	super.set_stasis()
+func set_stasis(val=null) -> void:
+	super.set_stasis(val)
 	if in_stasis:
 		stop()
 	else:

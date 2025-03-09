@@ -89,8 +89,8 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 
 
 # Override
-func set_stasis() -> void:
-	super.set_stasis()
+func set_stasis(val=null) -> void:
+	super.set_stasis(val)
 	if in_stasis:
 		$AnimationPlayer.play("pausing")
 		_set_blocking(false)
@@ -118,4 +118,3 @@ func start(val: Variant=null) -> void:
 
 func _set_blocking(val: bool) -> void:
 	$PlayerBlocker.set_collision_layer_value(6, val)
-
