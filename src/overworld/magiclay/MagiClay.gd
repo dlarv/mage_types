@@ -82,7 +82,10 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"MagiClay(%s).set_element(%s) succeeded." % [puzzle_name, e.name])
 
-	_flicker_collider()
+	# The Catalyst overworld spell does not provide a randVal, so this can be used to test if this transmutation
+	# was because of a laser or Catalyst.
+	if randVal == -2:
+		_flicker_collider()
 	return true
 	
 func set_stasis(val=null) -> void:

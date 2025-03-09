@@ -1,5 +1,7 @@
 extends Lockable
 
+var _already_opened := false
+
 func _ready() -> void:
 	if not _is_locked and permanent:
 		self.collision_layer = 0
@@ -17,8 +19,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_lock_opened(block: PuzzleBlock) -> bool:
 	if not super._on_lock_opened(block): return false
-	
 	_open()
+	_already_opened = true
 	return true
 
 func _on_lock_closed(block: PuzzleBlock) -> bool:
@@ -28,12 +30,14 @@ func _on_lock_closed(block: PuzzleBlock) -> bool:
 
 
 func _open(force:=false):
+	if _already_opened: return
 	self.collision_layer = 0
 	$AnimationPlayer.play("opening")
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"Gate(%s)was opened." % [puzzle_name])
 
 func _close():
+	if not _already_opened: return
 	self.collision_layer = 1
 	$AnimationPlayer.play_backwards("opening")
 	Logger.append_log(Logger.LogType.PUZZLE, 

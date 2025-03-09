@@ -14,8 +14,6 @@ var _prev_clay: MagiClay
 var is_on := true
 
 func _ready() -> void:
-	$Timer.paused = true
-	$Timer.start()
 	_mat = StandardMaterial3D.new()
 	mesh.set_surface_override_material(0, _mat)
 	laser = Laser.new()
@@ -28,8 +26,9 @@ func _physics_process(delta: float) -> void:
 		_prev_body.clear_laser()
 		_prev_body = null
 	if _prev_clay != null and _prev_clay != body:
+		# Reset hash when object is removed from emitter.
 		_prev_clay = null
-		$Timer.paused = false
+		laser.rand_val = Time.get_ticks_usec()
 	
 	var distance: float
 	if body:
@@ -41,7 +40,6 @@ func _physics_process(delta: float) -> void:
 		elif not body.get_collision_layer_value(5) and body.get_collision_layer_value(3) and body is MagiClay:
 			var res := ElementManager.get_matchup(laser.element, body.element)
 			body.set_element(res, laser.rand_val)
-			$Timer.paused = true
 			_prev_clay = body
 	else:
 		distance = $RayCast3D.target_position.z
@@ -67,8 +65,3 @@ func set_element(e: ElementalType) -> void:
 	laser.element = e
 	_mat.albedo_color = e.main_color
 	mesh.set_surface_override_material(0, _mat)
-
-func _on_timer_timeout() -> void:
-	# Reset laser hash.
-	# Allows laser to transmute the same block twice, if enough time has passed.
-	laser.rand_val = Time.get_ticks_usec()

@@ -61,10 +61,10 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_2nhrq"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fa0kc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r54vb"]
 albedo_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc7e3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uwup"]
 albedo_color = Color(1, 0.501961, 0, 1)
 
 [sub_resource type="Resource" id="Resource_ub1vh"]
@@ -131,7 +131,7 @@ resets = [NodePath("Chunk/Puzzle_North/Reset")]
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 4)
 depth = 20.0
-polygon = PackedVector2Array(-37.9626, -1.12915, 52.4743, -1.19315, 50.7722, 16.7914, 35.7757, 34.0969, 11, 34, 11, 77, -33, 77, -39.0074, 53.3959)
+polygon = PackedVector2Array(-53, -1, 52.4743, -1.19315, 50.7722, 16.7914, 35.7757, 34.0969, 11, 34, 11, 77, -33, 77, -53, 55)
 
 [node name="Chunk" type="Node3D" parent="."]
 
@@ -314,7 +314,7 @@ operation = 2
 size = Vector3(4, 3, 2)
 material = ExtResource("1_kv0ly")
 script = ExtResource("3_pvsap")
-locks = [NodePath("../../Puzzle1/PressurePlate")]
+locks = [NodePath("../../Puzzle3/PressurePlate")]
 permanent = true
 
 [node name="LB_LP2" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
@@ -429,7 +429,7 @@ shape = SubResource("BoxShape3D_v24cq")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_2nhrq")
-surface_material_override/0 = SubResource("StandardMaterial3D_fa0kc")
+surface_material_override/0 = SubResource("StandardMaterial3D_r54vb")
 
 [node name="MagiclayRock2" parent="Chunk/Puzzle_North" instance=ExtResource("4_wmol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 6)
@@ -440,11 +440,10 @@ shape = SubResource("BoxShape3D_v24cq")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock2" index="1"]
 mesh = SubResource("BoxMesh_2nhrq")
-surface_material_override/0 = SubResource("StandardMaterial3D_yc7e3")
+surface_material_override/0 = SubResource("StandardMaterial3D_0uwup")
 
 [node name="PressurePlate" parent="Chunk/Puzzle_North" instance=ExtResource("21_wyiua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -8)
-can_player_trigger = false
 _element = "cyan"
 
 [node name="Chest" parent="Chunk/Puzzle_North" node_paths=PackedStringArray("locks") instance=ExtResource("15_xriqk")]
@@ -455,31 +454,73 @@ locks = [NodePath("../PressurePlate")]
 [node name="Puzzle1" type="Node3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -29)
 
-[node name="PressurePlate" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -3)
-can_player_trigger = false
-_element = "blue"
-
-[node name="MagiclayRock" parent="Chunk/Puzzle1" instance=ExtResource("4_wmol4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 1)
-_element = "blue"
-
 [node name="Gate" parent="Chunk/Puzzle1" node_paths=PackedStringArray("locks") groups=["persist"] instance=ExtResource("16_1unvm")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.9, 0.5, 1.5)
+locks = [NodePath("../PressurePlate1"), NodePath("../PressurePlate2"), NodePath("../PressurePlate3")]
+permanent = true
+
+[node name="PressurePlate1" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+_element = "red"
+
+[node name="PressurePlate2" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+_element = "green"
+
+[node name="PressurePlate3" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -5)
+_element = "blue"
+
+[node name="MagiclayRock1" parent="Chunk/Puzzle1" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -1)
+_element = "red"
+
+[node name="MagiclayRock2" parent="Chunk/Puzzle1" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -1)
+_element = "yellow"
+
+[node name="MagiclayRock3" parent="Chunk/Puzzle1" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+_element = "magenta"
+
+[node name="Emitter" parent="Chunk/Puzzle1" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.9, 1, 5.8)
+_element = "cyan"
+
+[node name="Puzzle2" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, -28)
+
+[node name="Gate" parent="Chunk/Puzzle2" node_paths=PackedStringArray("locks") groups=["persist"] instance=ExtResource("16_1unvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8)
 locks = [NodePath("../PressurePlate")]
 permanent = true
 
-[node name="Puzzle2" type="Node3D" parent="Chunk"]
+[node name="PressurePlate" parent="Chunk/Puzzle2" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -5)
+_element = "orange"
 
-[node name="Gate" parent="Chunk/Puzzle2" groups=["persist"] instance=ExtResource("16_1unvm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0.5, -36)
-permanent = true
+[node name="MagiclayRock1" parent="Chunk/Puzzle2" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -1)
+_element = "cyan"
+
+[node name="Emitter1" parent="Chunk/Puzzle2" instance=ExtResource("13_qy70b")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -8.4, 1, -7)
+_element = "orange"
+
+[node name="Emitter2" parent="Chunk/Puzzle2" instance=ExtResource("13_qy70b")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 6.3, 1, 6)
+_element = "yellow"
 
 [node name="Puzzle3" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, -44)
 
-[node name="Gate" parent="Chunk/Puzzle3" groups=["persist"] instance=ExtResource("16_1unvm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33, 0.5, -43.7)
+[node name="Gate" parent="Chunk/Puzzle3" node_paths=PackedStringArray("locks") groups=["persist"] instance=ExtResource("16_1unvm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0.5, 0.299999)
+locks = [NodePath("../PressurePlate")]
 permanent = true
+
+[node name="PressurePlate" parent="Chunk/Puzzle3" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, 44)
 
 [node name="Enemy1" type="Area3D" parent="." groups=["wild_enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -19)

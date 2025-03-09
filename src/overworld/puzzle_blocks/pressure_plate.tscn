@@ -8,13 +8,13 @@ size = Vector3(1, 0.1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_yjbx8"]
 size = Vector3(1, 0.1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fttw5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kya5o"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_et7wn"]
 size = Vector3(1.2, 0.05, 1.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bypw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aoq7u"]
 albedo_color = Color(0.662745, 0.662745, 0.662745, 1)
 
 [sub_resource type="Animation" id="Animation_wmrrd"]
@@ -58,7 +58,6 @@ _data = {
 collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_78xe4")
-can_player_trigger = true
 is_on = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -69,12 +68,12 @@ shape = SubResource("BoxShape3D_0p7xg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 mesh = SubResource("BoxMesh_yjbx8")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_fttw5")
+surface_material_override/0 = SubResource("StandardMaterial3D_kya5o")
 
 [node name="Base_MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_et7wn")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_6bypw")
+surface_material_override/0 = SubResource("StandardMaterial3D_aoq7u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
