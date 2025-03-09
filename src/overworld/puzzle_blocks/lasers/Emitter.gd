@@ -36,7 +36,6 @@ func stop(val: Variant=null) -> void:
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if not super.set_element(e, randVal, force): return false
 	$SubEmitter.set_element(e)
-
 	return true
 
 func set_stasis(val=null) -> void:
