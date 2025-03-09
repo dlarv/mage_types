@@ -29,7 +29,6 @@ var element: ElementalType = ElementManager.Blue:
 func _ready() -> void:
 	_rotate_wheel(element)
 
-
 func _rotate_wheel(element: ElementalType) -> void:
 	var tween = get_tree().create_tween()
 	var degrees: float
@@ -48,8 +47,8 @@ func _rotate_wheel(element: ElementalType) -> void:
 
 func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
 	UIManager.open_catalyst_menu(elements)
-	print("HERE")
-	element = await UIManager.catalyst_menu_closed
-	if element:
+	var e = await UIManager.catalyst_menu_closed
+	if e:
+		element = e
 		_rotate_wheel(element)
 		element_selected.emit(element)

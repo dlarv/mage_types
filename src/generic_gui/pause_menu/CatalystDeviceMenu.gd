@@ -2,7 +2,6 @@ extends Menu
 
 signal menu_closed(element: ElementalType)
 
-
 func open_menu(validElements: Dictionary) -> void:
 	for child in %GridContainer.get_children():
 		child.disabled = not validElements[child.name]

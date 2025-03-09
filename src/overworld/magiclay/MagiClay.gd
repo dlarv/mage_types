@@ -4,6 +4,7 @@ class_name MagiClay
 
 signal stasis_ended()
 
+@export_category("Elemental Traits")
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":
 	get:
@@ -24,6 +25,16 @@ var element: ElementalType = ElementManager.Blank:
 @export var is_transmutable: bool
 @export var in_stasis: bool
 @export var tunnel_override: MagiClay
+
+@export_category("Sizing")
+@export var scaling_factor := Vector3(1, 1, 1):
+	set(val):
+		scaling_factor = val
+		$MeshInstance3D.mesh = $MeshInstance3D.mesh.duplicate(true)
+		$CollisionShape3D.shape = $CollisionShape3D.shape.duplicate(true)
+		_set_size()
+
+@export var base_size := Vector3(1, 1, 1)
 
 var puzzle_name: String:
 	get:
@@ -161,3 +172,8 @@ func deserialize(data: Dictionary) -> void:
 		set_stasis()
 	if "visible" in data:
 		visible = data["visible"]
+
+func _set_size() -> void:
+	$MeshInstance3D.mesh.size = base_size * scaling_factor
+	$CollisionShape3D.shape.size = base_size * scaling_factor
+
