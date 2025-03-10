@@ -1,11 +1,16 @@
 extends Lockable
 
 @export var items: Array[ItemSlot]
+@export var _locked_color := Color.RED
+@export var _unlocked_color := Color.WHITE
+@export var _opened_color := Color.BLACK
 var _is_opened := false
+var _mat: StandardMaterial3D
 
 func _ready() -> void:
-	if len(locks) > 0:
-		$Grabbable.set_disabled(true)
+	_mat = StandardMaterial3D.new()
+	$MeshInstance3D.set_surface_override_material(0, _mat)
+	_lock(len(locks) > 0)
 
 	for lock in locks:
 		_opened_locks[lock] = false
@@ -29,22 +34,20 @@ func _on_lock_opened(block: PuzzleBlock) -> bool:
 
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"Chest(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
-	$Grabbable.set_disabled(false)
+	_lock(false)
 	return true
 
 func _on_lock_closed(block: PuzzleBlock) -> bool:
 	if _is_opened: return false
 	if not super._on_lock_closed(block): return false
 
-	$Grabbable.set_disabled(true)
+	_lock(true)
 	Logger.append_log(Logger.LogType.PUZZLE, 
 			"Chest(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
 	return true
 
 func _update_mesh() -> void:
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color.BLACK
-	$MeshInstance3D.set_surface_override_material(0, mat)
+	_mat.albedo_color = _opened_color
 
 func serialize() -> Dictionary:
 	return {
@@ -58,3 +61,10 @@ func deserialize(data: Dictionary) -> void:
 		if _is_opened:
 			_update_mesh()
 			$Grabbable.set_disabled(_is_opened)
+
+func _lock(val) -> void:
+	$Grabbable.set_disabled(val)
+	if val:
+		_mat.albedo_color = _locked_color
+	else:
+		_mat.albedo_color = _unlocked_color
