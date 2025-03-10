@@ -43,17 +43,19 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 
 	dialog_box.start(dialogId)
 
-	var val: String
+	var sigName: String
 	while dialog_box.is_running():
-		val = await dialog_box.dialogue_signal
+		var val = await dialog_box.dialogue_signal
 		if val == "play_cutscene": 
 			var id = dialog_box.variables["current_cutscene"]
 			await npc.story_actor.play_cutscene(id)
 		elif val == "change_emotion":
 			var id = dialog_box.variables["current_emotion"]
 			npc.story_actor.change_emotion(id)
+		elif val != "dialogue_ended":
+			sigName = val
 
-	match val:
+	match sigName:
 		"battle_started":
 			_on_player_battle_started(_player.team, npc.enemy_actor)
 		"menu_opened":

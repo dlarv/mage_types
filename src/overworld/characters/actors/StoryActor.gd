@@ -23,6 +23,7 @@ func play_cutscene(id: String) -> void:
 
 
 func change_emotion(id:="NEUTRAL") -> void:
+	if not character: return
 	if character.image is StoryActorAnimatedTexture:
 		character.image.set_emotion(id)
 

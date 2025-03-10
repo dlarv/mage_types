@@ -166,7 +166,7 @@ radius = 2.0
 [node name="Beach" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_sl1hi")
 chunk = NodePath("Chunk")
-resets = [NodePath("Chunk/Puzzle_North/Reset"), NodePath("Chunk/Puzzle2/Reset")]
+resets = [NodePath("Chunk/Puzzle2/Reset")]
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 4)
@@ -429,9 +429,6 @@ shape = SubResource("BoxShape3D_g4ltx")
 [node name="Puzzle_North" type="Node3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -54)
 
-[node name="Reset" parent="Chunk/Puzzle_North" instance=ExtResource("13_wf8nf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.01784, 3)
-
 [node name="Emitter1" parent="Chunk/Puzzle_North" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8, 1, 1)
 _element = "cyan"
@@ -575,7 +572,7 @@ permanent = true
 
 [node name="PressurePlate" parent="Chunk/Puzzle3" instance=ExtResource("21_wyiua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.5, -5.2)
-_element = "blue"
+_element = "cyan"
 
 [node name="MagiclayRock" parent="Chunk/Puzzle3" instance=ExtResource("4_wmol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 1, 6.5)
@@ -594,11 +591,11 @@ _element = "red"
 
 [node name="Emitter2" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, 0)
-_element = "blue"
+_element = "green"
 
 [node name="Emitter3" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, -2)
-_element = "cyan"
+_element = "blue"
 
 [node name="Enemy1" type="Area3D" parent="." groups=["wild_enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -19)

@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_cy3bc"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_fywi4"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_15lc2"]
-[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/shield.tres" id="9_7sc76"]
+[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="9_lnelq"]
 
 [sub_resource type="Resource" id="Resource_dbaky"]
 script = ExtResource("1_lnfgi")
@@ -81,4 +81,4 @@ _element1 = "magenta"
 _element2 = "blank"
 _elemental_bias = "blue"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_aok80")]([SubResource("Resource_78242"), SubResource("Resource_dg4oj"), ExtResource("7_15lc2"), ExtResource("9_7sc76")])
+attacks = Array[ExtResource("2_aok80")]([SubResource("Resource_78242"), SubResource("Resource_dg4oj"), ExtResource("7_15lc2"), ExtResource("9_lnelq")])
