@@ -110,7 +110,6 @@ func add_node(id : int, node_name := '', offset := cursor_pos):
 	
 	# create new node
 	var new_node := NodeScenes[id].instantiate()
-	print(new_node.get_property_list())
 	new_node.position_offset = offset
 	new_node.undo_redo = undo_redo
 	new_node.selected = true
