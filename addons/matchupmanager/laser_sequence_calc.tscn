@@ -1,0 +1,292 @@
+[gd_scene load_steps=4 format=3 uid="uid://kknk1uiljhxn"]
+
+[ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="1_mpit3"]
+[ext_resource type="Script" path="res://addons/matchupmanager/LaserSequenceCalc.gd" id="1_ymx5o"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_jq5jr"]
+
+[node name="Laser Sequence Calc" type="MarginContainer" node_paths=PackedStringArray("b_icon", "p_icon", "m_icon", "r_icon", "o_icon", "y_icon", "g_icon", "c_icon")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ymx5o")
+b_icon = NodePath("HBoxContainer/Results_VBox/Result1/ElementIcon2")
+p_icon = NodePath("HBoxContainer/Results_VBox/Result2/ElementIcon2")
+m_icon = NodePath("HBoxContainer/Results_VBox/Result3/ElementIcon2")
+r_icon = NodePath("HBoxContainer/Results_VBox/Result4/ElementIcon2")
+o_icon = NodePath("HBoxContainer/Results_VBox/Result5/ElementIcon2")
+y_icon = NodePath("HBoxContainer/Results_VBox/Result6/ElementIcon2")
+g_icon = NodePath("HBoxContainer/Results_VBox/Result7/ElementIcon2")
+c_icon = NodePath("HBoxContainer/Results_VBox/Result8/ElementIcon2")
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LaserSelector_VBox" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+text = "Select Laser Sequence:"
+
+[node name="Laser1" type="HBoxContainer" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox/Laser1"]
+layout_mode = 2
+text = "Laser #1:"
+
+[node name="ElementDropdown" parent="HBoxContainer/LaserSelector_VBox/Laser1" instance=ExtResource("1_mpit3")]
+layout_mode = 2
+
+[node name="Laser2" type="HBoxContainer" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox/Laser2"]
+layout_mode = 2
+text = "Laser #2:"
+
+[node name="ElementDropdown" parent="HBoxContainer/LaserSelector_VBox/Laser2" instance=ExtResource("1_mpit3")]
+layout_mode = 2
+
+[node name="Laser3" type="HBoxContainer" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox/Laser3"]
+layout_mode = 2
+text = "Laser #3:"
+
+[node name="ElementDropdown" parent="HBoxContainer/LaserSelector_VBox/Laser3" instance=ExtResource("1_mpit3")]
+layout_mode = 2
+
+[node name="Laser4" type="HBoxContainer" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox/Laser4"]
+layout_mode = 2
+text = "Laser #4:"
+
+[node name="ElementDropdown" parent="HBoxContainer/LaserSelector_VBox/Laser4" instance=ExtResource("1_mpit3")]
+layout_mode = 2
+
+[node name="Laser5" type="HBoxContainer" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox/Laser5"]
+layout_mode = 2
+text = "Laser #5:"
+
+[node name="ElementDropdown" parent="HBoxContainer/LaserSelector_VBox/Laser5" instance=ExtResource("1_mpit3")]
+layout_mode = 2
+
+[node name="Laser6" type="HBoxContainer" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox/Laser6"]
+layout_mode = 2
+text = "Laser #6:"
+
+[node name="ElementDropdown" parent="HBoxContainer/LaserSelector_VBox/Laser6" instance=ExtResource("1_mpit3")]
+layout_mode = 2
+
+[node name="Laser7" type="HBoxContainer" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LaserSelector_VBox/Laser7"]
+layout_mode = 2
+text = "Laser #7:"
+
+[node name="ElementDropdown" parent="HBoxContainer/LaserSelector_VBox/Laser7" instance=ExtResource("1_mpit3")]
+layout_mode = 2
+
+[node name="Calculate_Button" type="Button" parent="HBoxContainer/LaserSelector_VBox"]
+layout_mode = 2
+text = "Calculate"
+
+[node name="Results_VBox" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+text = "Results:"
+
+[node name="Result1" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result1" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 0, 1, 1)
+_element = "blue"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result1"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result1" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Result2" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result2" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0.501961, 0, 1, 1)
+_element = "purple"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result2"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result2" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Result3" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result3" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 0, 1, 1)
+_element = "magenta"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result3"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result3" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Result4" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result4" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 0, 0, 1)
+_element = "red"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result4"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result4" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Result5" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result5" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 0.501961, 0, 1)
+_element = "orange"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result5"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result5" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Result6" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result6" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 1, 0, 1)
+_element = "yellow"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result6"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result6" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Result7" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result7" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 1, 0, 1)
+_element = "green"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result7"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result7" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Result8" type="HBoxContainer" parent="HBoxContainer/Results_VBox"]
+layout_mode = 2
+
+[node name="ElementIcon" parent="HBoxContainer/Results_VBox/Result8" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 1, 1, 1)
+_element = "cyan"
+
+[node name="Label" type="Label" parent="HBoxContainer/Results_VBox/Result8"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "==>"
+
+[node name="ElementIcon2" parent="HBoxContainer/Results_VBox/Result8" instance=ExtResource("2_jq5jr")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="item_selected" from="HBoxContainer/LaserSelector_VBox/Laser1/ElementDropdown" to="." method="_on_element_dropdown_item_selected" binds= [0]]
+[connection signal="item_selected" from="HBoxContainer/LaserSelector_VBox/Laser2/ElementDropdown" to="." method="_on_element_dropdown_item_selected" binds= [1]]
+[connection signal="item_selected" from="HBoxContainer/LaserSelector_VBox/Laser3/ElementDropdown" to="." method="_on_element_dropdown_item_selected" binds= [2]]
+[connection signal="item_selected" from="HBoxContainer/LaserSelector_VBox/Laser4/ElementDropdown" to="." method="_on_element_dropdown_item_selected" binds= [3]]
+[connection signal="item_selected" from="HBoxContainer/LaserSelector_VBox/Laser5/ElementDropdown" to="." method="_on_element_dropdown_item_selected" binds= [4]]
+[connection signal="item_selected" from="HBoxContainer/LaserSelector_VBox/Laser6/ElementDropdown" to="." method="_on_element_dropdown_item_selected" binds= [5]]
+[connection signal="item_selected" from="HBoxContainer/LaserSelector_VBox/Laser7/ElementDropdown" to="." method="_on_element_dropdown_item_selected" binds= [6]]
+[connection signal="pressed" from="HBoxContainer/LaserSelector_VBox/Calculate_Button" to="." method="_on_calculate_button_pressed"]

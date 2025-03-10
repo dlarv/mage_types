@@ -578,7 +578,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.5, -5.2)
 _element = "blue"
 
 [node name="MagiclayRock" parent="Chunk/Puzzle3" instance=ExtResource("4_wmol4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 1, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 1, 6.5)
 _element = "blue"
 
 [node name="CatalystDevice" parent="Chunk/Puzzle3" instance=ExtResource("18_w6661")]

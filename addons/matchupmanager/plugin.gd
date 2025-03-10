@@ -1,13 +1,29 @@
 @tool
 extends EditorPlugin
 
+var editor
 var plugin
-var dock
 
 func _enter_tree():
-	dock = preload("res://addons/matchupmanager/matchup_manager.tscn").instantiate()
-	add_control_to_dock(DOCK_SLOT_RIGHT_UR, dock)
+	editor = preload("res://addons/matchupmanager/matchup_manager.tscn").instantiate()
+	# add editor to main viewport
+	get_editor_interface().get_editor_main_screen().add_child(editor)
+	editor.hide()
+	# _make_visible(false)
 
+func _exit_tree():
+	# remove from main viewport
+	if is_instance_valid(editor):
+		editor.queue_free()
+	
+	print_debug('Plugin Disabled')
 
-func _exit_tree() -> void:
-	remove_control_from_docks(dock)
+func _has_main_screen():
+	return true
+
+func _make_visible(visible):
+	if is_instance_valid(editor):
+		editor.visible = visible
+
+func _get_plugin_name():
+	return 'Matchup Manager'
