@@ -34,6 +34,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		get_window().set_input_as_handled()
 		if story_actor != null:
+			story_actor.change_emotion()
 			_player.call_deferred("start_dialog", self)
 		else:
 			_player.call_deferred("open_shop", self)

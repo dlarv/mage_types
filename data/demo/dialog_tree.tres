@@ -27,8 +27,8 @@ nodes = {
 "start_id": "PARTNER_INTRO_TEST"
 },
 "0_4": {
-"link": &"1_6",
-"offset": Vector2(-1040, 660),
+"link": &"6_2",
+"offset": Vector2(-1400, 680),
 "start_id": "PARTNER_INTRO"
 },
 "1_1": {
@@ -63,7 +63,7 @@ nodes = {
 "options": {
 0: {
 "condition": {},
-"link": &"4_1",
+"link": &"6_1",
 "text": ""
 }
 },
@@ -72,11 +72,11 @@ nodes = {
 },
 "1_4": {
 "dialogue": "I'm over here now",
-"offset": Vector2(600, -120),
+"offset": Vector2(440, 120),
 "options": {
 0: {
 "condition": {},
-"link": &"4_2",
+"link": "END",
 "text": ""
 }
 },
@@ -98,11 +98,11 @@ nodes = {
 },
 "1_6": {
 "dialogue": "!!!",
-"offset": Vector2(-820, 640),
+"offset": Vector2(-800, 640),
 "options": {
 0: {
 "condition": {},
-"link": &"4_3",
+"link": &"6_3",
 "text": ""
 }
 },
@@ -111,7 +111,7 @@ nodes = {
 },
 "1_7": {
 "dialogue": "asdfdasfa",
-"offset": Vector2(79.0069, 671.971),
+"offset": Vector2(-100, 720),
 "options": {
 0: {
 "condition": {},
@@ -127,37 +127,6 @@ nodes = {
 "offset": Vector2(40, -260),
 "signalValue": "battle_started"
 },
-"3_2": {
-"link": &"1_4",
-"offset": Vector2(340, -20),
-"signalValue": "play_cutscene"
-},
-"3_3": {
-"link": &"1_7",
-"offset": Vector2(-160, 800),
-"signalValue": "change_emotion"
-},
-"4_1": {
-"link": &"3_2",
-"offset": Vector2(-40, 60),
-"type": 0,
-"value": "intro_walking",
-"variable": "current_cutscene"
-},
-"4_2": {
-"link": "END",
-"offset": Vector2(967.097, 18.3327),
-"type": 0,
-"value": "false",
-"variable": "not_introduced"
-},
-"4_3": {
-"link": &"3_3",
-"offset": Vector2(-400, 680),
-"type": 0,
-"value": "ANGER",
-"variable": "current_emotion"
-},
 "5_1": {
 "false": &"1_5",
 "offset": Vector2(-760, 60),
@@ -167,12 +136,28 @@ nodes = {
 "value2": "true"
 },
 "6_1": {
-"link": "END",
-"offset": Vector2(259.125, 181.636),
-"set_node_value": "intro_walking",
+"link": &"1_4",
+"offset": Vector2(80, 140),
 "signalValue": "play_cutscene",
 "type": 0,
+"value": "intro_walking",
 "variable": "current_cutscene"
+},
+"6_2": {
+"link": &"1_6",
+"offset": Vector2(-1120, 700),
+"signalValue": "change_emotion",
+"type": 0,
+"value": "ANGER",
+"variable": "current_emotion"
+},
+"6_3": {
+"link": &"1_7",
+"offset": Vector2(-400, 780),
+"signalValue": "change_emotion",
+"type": 0,
+"value": "ANGER",
+"variable": "current_emotion"
 }
 }
 variables = {
@@ -189,5 +174,5 @@ variables = {
 "value": true
 }
 }
-strays = Array[String](["6_1"])
+strays = Array[String]([])
 characters = "res://data/demo/character_files/character_list.tres"

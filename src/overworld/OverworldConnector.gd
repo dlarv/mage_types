@@ -49,6 +49,9 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 		if val == "play_cutscene": 
 			var id = dialog_box.variables["current_cutscene"]
 			await npc.story_actor.play_cutscene(id)
+		elif val == "change_emotion":
+			var id = dialog_box.variables["current_emotion"]
+			npc.story_actor.change_emotion(id)
 
 	match val:
 		"battle_started":

@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/generic_gui/RichTextElement.gd" id="7_3o8i5"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_oalpa"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/generic_gui/hud_layer.tscn" id="8_ox27g"]
-[ext_resource type="Resource" uid="uid://dkgwtmxs7v2mq" path="res://data/demo/partner_battle_actor.tres" id="9_oh653"]
+[ext_resource type="Resource" uid="uid://dkgwtmxs7v2mq" path="res://data/demo/character_files/battle_actors/partner_battle_actor.tres" id="9_oh653"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="9_qicvs"]
 [ext_resource type="PackedScene" uid="uid://4ft3p5xs6uk5" path="res://data/demo/subareas/beach.tscn" id="10_bysgw"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_wgmfh"]
