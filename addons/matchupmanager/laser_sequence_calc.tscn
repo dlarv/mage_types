@@ -4,21 +4,15 @@
 [ext_resource type="Script" path="res://addons/matchupmanager/LaserSequenceCalc.gd" id="1_ymx5o"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_jq5jr"]
 
-[node name="Laser Sequence Calc" type="MarginContainer" node_paths=PackedStringArray("b_icon", "p_icon", "m_icon", "r_icon", "o_icon", "y_icon", "g_icon", "c_icon")]
+[node name="Laser Sequence Calc" type="MarginContainer" node_paths=PackedStringArray("result_icons", "result_labels")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ymx5o")
-b_icon = NodePath("HBoxContainer/Results_VBox/Result1/ElementIcon2")
-p_icon = NodePath("HBoxContainer/Results_VBox/Result2/ElementIcon2")
-m_icon = NodePath("HBoxContainer/Results_VBox/Result3/ElementIcon2")
-r_icon = NodePath("HBoxContainer/Results_VBox/Result4/ElementIcon2")
-o_icon = NodePath("HBoxContainer/Results_VBox/Result5/ElementIcon2")
-y_icon = NodePath("HBoxContainer/Results_VBox/Result6/ElementIcon2")
-g_icon = NodePath("HBoxContainer/Results_VBox/Result7/ElementIcon2")
-c_icon = NodePath("HBoxContainer/Results_VBox/Result8/ElementIcon2")
+result_icons = [NodePath("HBoxContainer/Results_VBox/Result1/ElementIcon2"), NodePath("HBoxContainer/Results_VBox/Result2/ElementIcon2"), NodePath("HBoxContainer/Results_VBox/Result3/ElementIcon2"), NodePath("HBoxContainer/Results_VBox/Result4/ElementIcon2"), NodePath("HBoxContainer/Results_VBox/Result5/ElementIcon2"), NodePath("HBoxContainer/Results_VBox/Result6/ElementIcon2"), NodePath("HBoxContainer/Results_VBox/Result7/ElementIcon2"), NodePath("HBoxContainer/Results_VBox/Result8/ElementIcon2")]
+result_labels = [NodePath("HBoxContainer/Results_VBox/Result1/Label"), NodePath("HBoxContainer/Results_VBox/Result2/Label"), NodePath("HBoxContainer/Results_VBox/Result3/Label"), NodePath("HBoxContainer/Results_VBox/Result4/Label"), NodePath("HBoxContainer/Results_VBox/Result5/Label"), NodePath("HBoxContainer/Results_VBox/Result6/Label"), NodePath("HBoxContainer/Results_VBox/Result7/Label"), NodePath("HBoxContainer/Results_VBox/Result8/Label")]
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
