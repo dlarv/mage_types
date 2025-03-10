@@ -38,17 +38,23 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	await get_tree().create_timer(battle_delay).timeout
 	get_tree().call_group("wild_enemies", "_end_battle_cooldown")
 
-func _on_dialog_started(dialogId: String, enemy_actor: EnemyActor, vendor_actor: VendorActor) -> void:
+func _on_dialog_started(dialogId: String, npc) -> void:
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 
 	dialog_box.start(dialogId)
 
-	var val = await dialog_box.dialogue_signal
+	var val: String
+	while dialog_box.is_running():
+		val = await dialog_box.dialogue_signal
+		if val == "play_cutscene": 
+			var id = dialog_box.variables["current_cutscene"]
+			await npc.story_actor.play_cutscene(id)
+
 	match val:
 		"battle_started":
-			_on_player_battle_started(_player.team, enemy_actor)
+			_on_player_battle_started(_player.team, npc.enemy_actor)
 		"menu_opened":
-			UIManager.open_vendor_menu(vendor_actor)
+			UIManager.open_vendor_menu(npc.vendor_actor)
 			await UIManager.vendor_menu_closed
 			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 

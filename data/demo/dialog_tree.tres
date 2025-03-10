@@ -6,7 +6,8 @@
 script = ExtResource("1_7sxr6")
 starts = {
 "BOSS1": &"0_1",
-"MISC": &"0_2"
+"MISC": &"0_2",
+"PARTNER_INTRO": &"0_3"
 }
 nodes = {
 "0_1": {
@@ -18,6 +19,11 @@ nodes = {
 "link": &"1_2",
 "offset": Vector2(-580, -620),
 "start_id": "MISC"
+},
+"0_3": {
+"link": &"5_1",
+"offset": Vector2(-1040, 20),
+"start_id": "PARTNER_INTRO"
 },
 "1_1": {
 "dialogue": "RAWR xd",
@@ -45,12 +51,87 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": ""
 },
+"1_3": {
+"dialogue": "Follow Me",
+"offset": Vector2(-360, 20),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Partner"
+},
+"1_4": {
+"dialogue": "I'm over here now",
+"offset": Vector2(600, -120),
+"options": {
+0: {
+"condition": {},
+"link": &"4_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Partner"
+},
+"1_5": {
+"dialogue": "I'm still over here",
+"offset": Vector2(-320, 380),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Partner"
+},
 "3_1": {
 "link": "END",
 "offset": Vector2(40, -260),
 "signalValue": "battle_started"
+},
+"3_2": {
+"link": &"1_4",
+"offset": Vector2(340, -20),
+"signalValue": "play_cutscene"
+},
+"4_1": {
+"link": &"3_2",
+"offset": Vector2(-40, 60),
+"type": 0,
+"value": "intro_walking",
+"variable": "current_cutscene"
+},
+"4_2": {
+"link": "END",
+"offset": Vector2(967.097, 18.3327),
+"type": 0,
+"value": "false",
+"variable": "not_introduced"
+},
+"5_1": {
+"false": &"1_5",
+"offset": Vector2(-760, 60),
+"operator": 0,
+"true": &"1_3",
+"value1": "{{not_introduced}}",
+"value2": "true"
 }
 }
-variables = {}
+variables = {
+"current_cutscene": {
+"type": 4,
+"value": ""
+},
+"not_introduced": {
+"type": 1,
+"value": true
+}
+}
 strays = Array[String]([])
 characters = ""

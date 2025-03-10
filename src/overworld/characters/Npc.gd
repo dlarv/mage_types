@@ -76,3 +76,7 @@ func _start_battle_cooldown() -> void:
 func _set_label_visibility(val: bool) -> void:
 	if _label:
 		_label.visible = val
+
+func get_next_dialog_id() -> String:
+	if not story_actor: return ""
+	return story_actor.get_next_dialog_id()

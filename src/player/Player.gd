@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player 
 
 signal battle_started(allies, enemies)
-signal dialog_started(dialog_id, enemy_actor, vendor_actor)
+signal dialog_started(dialog_id, npc)
 
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
@@ -111,10 +111,10 @@ func start_battle(npc: Variant) -> void:
 	battle_started.emit(team, npc.enemy_actor)
 
 func open_shop(npc: Variant) -> void:
-	dialog_started.emit("VENDOR_MAIN", npc.enemy_actor, npc.vendor_actor)
+	dialog_started.emit("VENDOR_MAIN", npc)
 
 func start_dialog(npc: Variant) -> void:
-	dialog_started.emit(npc.story_actor.dialog_ids[npc.story_actor.current_id], npc.enemy_actor, npc.vendor_actor)
+	dialog_started.emit(npc.get_next_dialog_id(), npc)
 
 func pickup_object(obj: Node3D, grabbable: Grabbable, val: bool, axis:=Vector3.ZERO) -> void:
 	if not val:

@@ -10,13 +10,13 @@ starts = {
 nodes = {
 "0_1": {
 "link": &"1_1",
-"offset": Vector2(0, 0),
+"offset": Vector2(-300, -100),
 "start_id": "START"
 },
 "1_1": {
 "dialogue": "You can store and use variables from your dialogue tree.
 Like: You have {{COINS}} coins!",
-"offset": Vector2(220, 0),
+"offset": Vector2(-260, 80),
 "options": {
 0: {
 "condition": {},
@@ -29,7 +29,7 @@ Like: You have {{COINS}} coins!",
 },
 "1_2": {
 "dialogue": "What would you like to try?",
-"offset": Vector2(700, 0),
+"offset": Vector2(460, 40),
 "options": {
 0: {
 "condition": {},
@@ -47,7 +47,7 @@ Like: You have {{COINS}} coins!",
 "text": "Nothing"
 }
 },
-"size": Vector2(300, 308),
+"size": Vector2(300, 322),
 "speaker": "Greg"
 },
 "1_3": {
@@ -93,7 +93,7 @@ Current value: {{COINS}}
 "text": "Bye"
 }
 },
-"size": Vector2(300, 275),
+"size": Vector2(300, 289),
 "speaker": "Greg"
 },
 "1_6": {
@@ -150,7 +150,7 @@ Current value: {{COINS}}
 "text": "Bye"
 }
 },
-"size": Vector2(300, 275),
+"size": Vector2(300, 289),
 "speaker": "Greg"
 },
 "4_1": {
