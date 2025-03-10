@@ -74,7 +74,6 @@ func remove(effects: Array) -> void:
 func calculate_expirations() -> Array:
 	for effect in statuses.values():
 		effect.duration -= 1
-		print(effect.name)
 		if effect.is_expired():
 			_effects_to_remove.append(effect)
 
@@ -91,12 +90,13 @@ func check_flinching() -> StatusEffect:
 func check_dissonant() -> StatusEffect:
 	return statuses.get(DISSONANT_KEY)
 
-func remove_blocking() -> void:
+func remove_blocking() -> bool:
 	if blocking != null:
 		blocking.duration -= 1
 		if blocking.is_expired():
-			_effects_to_remove.append(blocking)
 			blocking = null
+			return true
+	return false
 
 func check_stasis() -> StatusEffect:
 	return statuses.get(STASIS_KEY)

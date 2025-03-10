@@ -222,8 +222,8 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 
 	if blocking != null:
 		dmg *= 1 - blocking.strength
-		statuses.remove_blocking()
-		status_effects_removed.emit([blocking])
+		if statuses.remove_blocking():
+			status_effects_removed.emit([blocking])
 
 	if dmg != 0:
 		current_hp -= dmg
