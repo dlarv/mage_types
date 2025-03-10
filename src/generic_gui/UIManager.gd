@@ -98,7 +98,7 @@ func _on_catalyst_menu_closed(element:ElementalType) -> void:
 	hide()
 
 func toggle_transmutation_menu() -> void:
-	if _menu_stack[-1] == matchup_chart:
+	if len(_menu_stack) > 0 and _menu_stack[-1] == matchup_chart:
 		_menu_stack.pop_back()
 		matchup_chart.hide()
 		hide()
