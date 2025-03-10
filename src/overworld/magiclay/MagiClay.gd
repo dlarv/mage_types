@@ -106,6 +106,7 @@ func set_stasis(val=null) -> void:
 		in_stasis = val
 
 	if in_stasis:
+		set_element(_original_element, -2, true)
 		_try_set_color(Color.BLACK)
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
