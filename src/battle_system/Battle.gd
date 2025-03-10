@@ -81,7 +81,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	await dialog(false)
 
 	for action in actions:
-		Logger.append_log(Logger.LogType.BATTLE, "\nActors turn: %s" % action.actor.name)
 
 		var flinch = action.actor.flinching
 		if flinch != null:
@@ -90,8 +89,9 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			continue
 
 		# This means a character is defeated.
-		if action == null:
+		if action == null or action.actor.is_defeated:
 			continue
+		Logger.append_log(Logger.LogType.BATTLE, "\nActors turn: %s" % action.actor.name)
 
 		# Play animation.
 		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
