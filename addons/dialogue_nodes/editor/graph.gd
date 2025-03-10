@@ -12,7 +12,8 @@ signal run_requested(start_node_idx : int)
 	preload("res://addons/dialogue_nodes/nodes/CommentNode.tscn"),
 	preload("res://addons/dialogue_nodes/nodes/SignalNode.tscn"),
 	preload("res://addons/dialogue_nodes/nodes/SetNode.tscn"),
-	preload("res://addons/dialogue_nodes/nodes/ConditionNode.tscn")
+	preload("res://addons/dialogue_nodes/nodes/ConditionNode.tscn"),
+	preload("res://addons/dialogue_nodes/nodes/SetSignalNode.tscn"),
 ]
 
 @onready var popup_menu = $PopupMenu
@@ -109,6 +110,7 @@ func add_node(id : int, node_name := '', offset := cursor_pos):
 	
 	# create new node
 	var new_node := NodeScenes[id].instantiate()
+	print(new_node.get_property_list())
 	new_node.position_offset = offset
 	new_node.undo_redo = undo_redo
 	new_node.selected = true

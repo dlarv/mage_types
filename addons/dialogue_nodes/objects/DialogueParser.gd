@@ -108,11 +108,11 @@ func _proceed(node_name : String):
 		func(): pass, # comment
 		_process_signal,
 		_process_set,
-		_process_condition
+		_process_condition,
+		_process_set_signal,
 	]
 	
 	var id := int(node_name.split('_')[0])
-	
 	process_functions[id].call(data.nodes[node_name])
 
 
@@ -204,6 +204,10 @@ func _process_condition(dict : Dictionary):
 	var result = _check_condition(dict)
 	_proceed(dict[str(result).to_lower()])
 
+# Combines both set and signal node into one.
+func _process_set_signal(dict: Dictionary):
+	_process_set(dict)
+	_process_signal(dict)
 
 # Checks the condition based on dict.value1, dict.value2 and dict.operator
 func _check_condition(dict : Dictionary):
