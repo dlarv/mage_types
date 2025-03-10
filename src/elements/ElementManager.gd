@@ -97,11 +97,92 @@ func test_side_effects() -> void:
 			total = total and res == actualResults[i][j]
 	print("Side effects test: %s" % str(total)) 
 
+func test_traversals() -> void:
+	var length := 5
+	var seq := [-1, 0, 0, 0, 0]
+	var file := FileAccess.open("res://logs/sequences.csv", FileAccess.WRITE)
+
+	var incrementSeq = func() -> void:
+		for i in range(len(seq)):
+			seq[i] += 1
+			# Overflow?
+			if seq[i] == 8:
+				seq[i] = 0
+				continue
+			break
+	var countNonZero = func(acc, num):
+		if num > 0:
+			acc += 1
+		return acc
+	# Returns false if seq should be discarded.
+	# Sequences should have at most 2 repeating elements.
+	var filterSeq = func() -> bool:
+		var reachedMax := false
+		for num in seq:
+			var count := seq.count(num)
+			if count > 2:
+				return false
+			if count >= 2:
+				if reachedMax:
+					return false
+				reachedMax = true
+
+		return true
+
+	for i in range(pow(8, 5) - 1):
+		incrementSeq.call()
+		if not filterSeq.call(): 
+			continue
+
+		# Iterating through every combination of 5 lasers, where order matters.
+		var lasers := [
+			elements[seq[0]],
+			elements[seq[1]],
+			elements[seq[2]],
+			elements[seq[3]],
+			elements[seq[4]],
+		]
+		# Each row will be identified by "%s", where %s is the first letter of each laser's element's name.
+		var header := "".join(lasers.map(func(x): return x.name[0]))
+		var body := []
+		# Get the average result for sequence.
+		var averages := {
+			elements[0]: 0,
+			elements[1]: 0,
+			elements[2]: 0,
+			elements[3]: 0,
+			elements[4]: 0,
+			elements[5]: 0,
+			elements[6]: 0,
+			elements[7]: 0,
+		}
+
+		# Iterate over each element.
+		# This will be what element the block starts out as.
+		for startingElement in elements:
+			var element := startingElement
+			for laser in lasers:
+				var e = get_matchup(element, laser)
+				if e:
+					element = e
+
+			# Update the average
+			averages[element] += 1.0/8.0
+			body.append(element.name)
+		
+		# Print output in csv format.
+		var output := "%s,%s,%s,%s" \
+				% [ header, ",".join(body), ",".join(averages.values()), 
+						str(averages.values().reduce(countNonZero, 0))] 
+		print(output)
+		file.store_line(output)
+
+
 func _enter_tree() -> void:
 	force_load()
-
-	test_transmutations()
-	test_side_effects()
+	# test_transmutations()
+	# test_side_effects()
+	# test_traversals()
 	
 func force_load()-> void:
 	if len(matchups.keys()) > 0: return
