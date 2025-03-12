@@ -143,16 +143,18 @@ func _process_dialogue(dict : Dictionary):
 
 
 # Processes the signal node data (dict).
-func _process_signal(dict : Dictionary):
+func _process_signal(dict : Dictionary, auto:=true):
 	dialogue_signal.emit(dict.signalValue)
-	_proceed(dict.link)
+	if auto:
+		_proceed(dict.link)
 
 
 # Processes the set node data (dict).
-func _process_set(dict : Dictionary):
+func _process_set(dict : Dictionary, auto:=true):
 	if not variables.has(dict.variable):
 		printerr('Variable ', dict.variable, ' not found in variables list')
-		_proceed(dict.link)
+		if auto:
+			_proceed(dict.link)
 		return
 	
 	var type = typeof(variables[dict.variable])
@@ -196,7 +198,8 @@ func _process_set(dict : Dictionary):
 			variables[dict.variable] /= value
 	
 	variable_changed.emit(dict.variable, variables[dict.variable])
-	_proceed(dict.link)
+	if auto:
+		_proceed(dict.link)
 
 
 # Processes the condition node data (dict).
@@ -206,8 +209,9 @@ func _process_condition(dict : Dictionary):
 
 # Combines both set and signal node into one.
 func _process_set_signal(dict: Dictionary):
-	_process_set(dict)
-	_process_signal(dict)
+	_process_set(dict, false)
+	_process_signal(dict, false)
+	_proceed(dict.link)
 
 # Checks the condition based on dict.value1, dict.value2 and dict.operator
 func _check_condition(dict : Dictionary):
