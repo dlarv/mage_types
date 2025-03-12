@@ -2,7 +2,7 @@
 extends BattleAction 
 class_name Attack 
 
-@export var effects: Array[BaseEffect]
+@export var effects: Array[BaseEffectSlot]
 @export var cost: int 
 
 # override
@@ -42,13 +42,14 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 			didDmg = true
 			var msg2 = effect.apply_effect(user, target, self, affinity)
 
+			# Get equipment logs, etc.
 			var msg3 = target.get_and_flush_msgs()
 			if len(msg3) > 0:
 				msg.append_array(msg3)
 
 			if len(msg2) > 0:
 				if effect.get_attack_effect() is Damage \
-						and effect.effect_target == Effect.EffectTarget.USER:
+						and effect.effect_target == EffectSlot.EffectTarget.USER:
 					msg.append("This attack has recoil!")
 				msg.append("%s" % msg2)
 

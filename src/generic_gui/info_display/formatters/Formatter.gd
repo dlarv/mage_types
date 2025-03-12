@@ -14,7 +14,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel) -> int:
 	var power := 0
 	for e in effects:
-		if e is Effect:
+		if e is EffectSlot:
 			power += _format_attack_effect(e, effectsLabel)
 		elif e is ConditionalEffect:
 			if e.condition is ElementalCondition:
@@ -24,7 +24,7 @@ func _format_attack_effects(effects: Array, effectsLabel: RichTextLabel) -> int:
 
 	return power
 
-func _format_attack_effect(e: Effect, effectsLabel: RichTextLabel) -> int:
+func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		var chance = int(e.chance * 100)
 		var effect = e.attack_effect
 		var power := 0
@@ -94,7 +94,7 @@ func _format_attack_effect(e: Effect, effectsLabel: RichTextLabel) -> int:
 			effectsLabel.append_text("Heals the user for x%.1f the damage dealt.")
 
 		elif effect is Damage:
-			if e.effect_target == Effect.EffectTarget.TARGET:
+			if e.effect_target == EffectSlot.EffectTarget.TARGET:
 				power += effect.strength
 			else:
 				effectsLabel.append_text("%d%% chance to hurt the user.")

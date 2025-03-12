@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_381n2"]
 [ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_pn114"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_v0gsn"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_n7sh1"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_n7sh1"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_6c7fr"]
 
 [sub_resource type="Resource" id="Resource_8t06t"]

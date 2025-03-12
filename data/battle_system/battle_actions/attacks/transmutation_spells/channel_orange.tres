@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_mcqsa"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_46t11"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_501nw"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_501nw"]
 
 [sub_resource type="Resource" id="Resource_af8j7"]
 script = ExtResource("4_501nw")

@@ -1,6 +1,6 @@
 @tool
-extends BaseEffect
-class_name Effect 
+extends BaseEffectSlot
+class_name EffectSlot
 
 @export var attack_effect: AttackEffect 
 

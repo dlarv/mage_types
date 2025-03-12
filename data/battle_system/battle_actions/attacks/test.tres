@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://2vorni4hhsj"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_ngd3g"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_0bmyf"]
+
+[resource]
+resource_name = "Hit"
+script = ExtResource("2_0bmyf")
+effects = Array[ExtResource("1_ngd3g")]([])
+cost = 0
+name = "Hit"
+_element = "blank"
+priority = 0
+attack_range = 0
+target = 3
+details = ""

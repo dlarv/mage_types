@@ -1,14 +1,14 @@
-extends BaseEffect
+extends BaseEffectSlot
 class_name ConditionalEffect
 
 @export var condition: Condition
-@export var success_effect: Effect = null
-@export var failed_effect: Effect = null
+@export var success_effect: BaseEffectSlot = null
+@export var failed_effect: BaseEffectSlot = null
 ## If true, if this effect fails, "But it failed" will be printed to player's console.
 ## Otherwise, this will only be printed if failed effect is null or returns no output.
 @export var print_failed_status := false
 
-var _last_activated_effect: Effect = null
+var _last_activated_effect: BaseEffectSlot = null
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, effectiveness:=1.0) -> String:

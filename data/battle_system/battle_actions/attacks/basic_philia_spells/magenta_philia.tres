@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_de3jl"]
 [ext_resource type="Resource" uid="uid://dce1ib1m1soc2" path="res://data/battle_system/status_effects/elemental_effects/elemental_philia.tres" id="3_lk6h7"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="5_wcec2"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_wcec2"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_4hixe"]
 
 [sub_resource type="Resource" id="Resource_r3ib5"]

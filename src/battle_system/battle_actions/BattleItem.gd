@@ -4,7 +4,7 @@ class_name BattleItem
 
 signal item_consumed()
 
-@export var effects: Array[Effect] = []
+@export var effects: Array[EffectSlot] = []
 var quantity: int 
 
 var is_consumable: bool = true

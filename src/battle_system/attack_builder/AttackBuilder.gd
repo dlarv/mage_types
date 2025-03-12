@@ -87,7 +87,7 @@ func _on_cost_value_changed(value:float) -> void:
 func _on_name_submitted(newText:String) -> void:
 	_attack.name = newText
 
-func _on_effect_builder_effect_created(effect:Effect) -> void:
+func _on_effect_builder_effect_created(effect:EffectSlot) -> void:
 	var effectButton = EffectSlotButton.instantiate()
 	effectButton.create(effect)
 	effects_scroller.add_child(effectButton)

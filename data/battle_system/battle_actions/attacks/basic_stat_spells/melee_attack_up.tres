@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_xp4rx"]
 [ext_resource type="Resource" uid="uid://cg8xywr207tu1" path="res://data/battle_system/status_effects/stat_changes/melee_attack_up.tres" id="2_14i10"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_dg0xf"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="3_5g38d"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="3_5g38d"]
 
 [sub_resource type="Resource" id="Resource_ibimo"]
 script = ExtResource("3_5g38d")

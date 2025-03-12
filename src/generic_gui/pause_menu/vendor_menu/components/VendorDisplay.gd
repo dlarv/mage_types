@@ -20,7 +20,7 @@ func display(item: VendorItem) -> void:
 	quantity_display.text = ""
 
 	var quantityLimit: int
-	var slot := Inventory.get_item(item.item)
+	var slot = Inventory.get_item(item.item)
 	if item.item is RegularItem:
 		quantityLimit = min(BASE_MAX_QUANTITY, slot.max_quantity - slot.quantity)
 	else:
@@ -66,4 +66,3 @@ func _on_cancel_button_pressed() -> void:
 func _on_buy_button_pressed() -> void:
 	item_bought.emit(_current_item, _current_quantity)
 	_on_cancel_button_pressed()
-

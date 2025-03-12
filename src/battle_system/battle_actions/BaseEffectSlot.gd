@@ -1,5 +1,5 @@
 extends Resource
-class_name BaseEffect
+class_name BaseEffectSlot
 
 enum EffectTarget { USER, TARGET }
 

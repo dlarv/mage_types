@@ -2,9 +2,9 @@
 
 [ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="1_nfnb2"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_rubut"]
-[ext_resource type="PackedScene" uid="uid://bojailbsdt75" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="2_x05yb"]
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="2_x05yb"]
 [ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_efla1"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="4_8crca"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_8crca"]
 
 [sub_resource type="Resource" id="Resource_gq6w5"]
 script = ExtResource("4_8crca")

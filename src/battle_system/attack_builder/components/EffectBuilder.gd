@@ -1,7 +1,7 @@
 @tool
 extends VBoxContainer
 
-signal effect_created(effect: Effect)
+signal effect_created(effect: EffectSlot)
 
 @export var attack_effects: Array[AttackEffect]
 @export var stats: Array[StatChange]
@@ -9,10 +9,10 @@ signal effect_created(effect: Effect)
 @export var stat_option_button: OptionButton
 @export var stat_hbox: HBoxContainer
 
-var _effect: Effect
+var _effect: EffectSlot
 
 func _enter_tree():
-	_effect = Effect.new()
+	_effect = EffectSlot.new()
 	_effect.attack_effect = attack_effects[0]
 
 	for effect in attack_effects:
@@ -25,7 +25,7 @@ func _on_effect_item_selected(index:int) -> void:
 	var e := attack_effects[index]
 	var attack_effect: AttackEffect
 
-	_effect = Effect.new()
+	_effect = EffectSlot.new()
 
 	if e is StatChange:
 		stat_hbox.show()

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="4_eamw2"]
 [ext_resource type="Resource" uid="uid://c0drgn5hkvd2t" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/terrify.tres" id="5_tuvy8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleActionAnimation.gd" id="6_lxpqj"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="7_gbm1m"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="7_gbm1m"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="8_61wjr"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="8_bmtrc"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="9_v16rr"]

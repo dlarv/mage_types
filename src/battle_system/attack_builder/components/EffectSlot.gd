@@ -20,9 +20,9 @@ signal delete_button_pressed()
 @export var max_float: SpinBox
 @export var strike_type: OptionButton
 
-var _effect: Effect
+var _effect: EffectSlot
 
-func create(effect: Effect):
+func create(effect: EffectSlot):
 	_effect = effect
 	var e := effect.attack_effect
 
@@ -65,7 +65,7 @@ func create(effect: Effect):
 		strength_int.value = e.strength
 		allow_overflow.set_pressed_no_signal(e.allow_overflow)
 
-func get_effect() -> Effect:
+func get_effect() -> EffectSlot:
 	return _effect
 
 func _on_delete_button_pressed():

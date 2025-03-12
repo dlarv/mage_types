@@ -1,29 +1,13 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bxe7rrdwy8tjq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://bxe7rrdwy8tjq"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_m72kp"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="2_2x0qd"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_ajine"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_gm17o"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_3n6ij"]
-
-[sub_resource type="Resource" id="Resource_02dtx"]
-script = ExtResource("3_3n6ij")
-name = ""
-chance = 1.0
-strength = 30.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_m44uh"]
-script = ExtResource("2_2x0qd")
-attack_effect = SubResource("Resource_02dtx")
-effect_target = 1
-chance = 1.0
-_element = "blank"
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_lekx5"]
 
 [resource]
 resource_name = "Throw"
 script = ExtResource("2_gm17o")
-effects = Array[ExtResource("2_ajine")]([SubResource("Resource_m44uh")])
+effects = Array[ExtResource("2_lekx5")]([])
 cost = 5
 name = "Throw"
 animation = ExtResource("1_m72kp")
