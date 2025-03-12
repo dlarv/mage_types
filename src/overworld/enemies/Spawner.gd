@@ -32,7 +32,7 @@ func _get_rand_enemy() -> Node3D:
 	var team = []
 	var count := randi_range(team_count_range.x, team_count_range.y)
 	for i in range(count):
-		team.append(battle_actors.pick_random())
+		team.append(battle_actors.pick_random().duplicate(true))
 	
 	actor.setup(team, controllers.pick_random())
 	return actor
