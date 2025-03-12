@@ -21,6 +21,10 @@ func skip_dialog():
 		var animation = $AnimationPlayer.get_animation(dialog.end_state)
 		$AnimationPlayer.play(dialog.end_state)
 		$AnimationPlayer.advance(animation.length)
+	elif $AnimationPlayer.is_playing():
+		var animation = $AnimationPlayer.get_animation($AnimationPlayer.current_animation)
+		$AnimationPlayer.advance(animation.length)
+
 
 func play_cutscene(id: String) -> void:
 	if not $AnimationPlayer: 
