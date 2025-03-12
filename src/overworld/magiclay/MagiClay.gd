@@ -98,6 +98,12 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if randVal == -2:
 		_flicker_collider()
 	return true
+
+
+func react(e: ElementalType, randVal:=-2) -> bool:
+	var res := ElementManager.get_matchup(element, e)
+	return set_element(res, randVal)
+
 	
 func set_stasis(val=null) -> void:
 	if val == null:

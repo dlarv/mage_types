@@ -1,5 +1,5 @@
 @tool
-extends Area3D
+extends MagiClay
 
 @export var label_offset: Vector3
 @export var auto_trigger := false
@@ -91,13 +91,13 @@ func get_next_dialog_id() -> String:
 func serialize() -> Dictionary:
 	return {
 		"path": get_path(),
-		"monitoring": monitoring,
+		"monitoring": self.monitoring,
 		"dialog_id": story_actor.current_id if story_actor else -2,
 		"position": global_position,
 	}
 
 func deserialize(data: Dictionary) -> void:
-	monitoring = data["monitoring"]
+	self.monitoring = data["monitoring"]
 	if data["dialog_id"] != -2:
 		story_actor.current_id = data["dialog_id"]
 	global_position = data["position"]

@@ -6,8 +6,9 @@ func perform_action() -> void:
 
 
 func action_to_perform(body: Node3D, element: ElementalType) -> void:
-	var res := ElementManager.get_matchup(element, body.element)
-	body.set_element(res)
+	# var res := ElementManager.get_matchup(element, body.element)
+	# body.set_element(res)
+	body.react(element)
 
 
 func collision_test(body: Variant) -> bool:

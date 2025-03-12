@@ -344,6 +344,13 @@ team = Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0")])
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
 
 [node name="Partner" parent="Overworld" instance=ExtResource("20_2sxei")]
+_element = null
+is_blooming = null
+is_breakable = null
+is_transmutable = null
+in_stasis = null
+scaling_factor = null
+base_size = null
 
 [node name="StoryActor" parent="Overworld/Partner" instance=ExtResource("21_xbfho")]
 character = ExtResource("23_sfjag")
@@ -386,6 +393,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 2.5, -168)
 [node name="BattleStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -14)
 auto_trigger = true
+_element = null
+is_blooming = null
+is_breakable = null
+is_transmutable = null
+in_stasis = null
+scaling_factor = null
+base_size = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/BattleStoryTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
@@ -407,6 +421,13 @@ _team = Array[ExtResource("10_wgmfh")]([ExtResource("31_qv7w7")])
 
 [node name="IntroStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 auto_trigger = true
+_element = null
+is_blooming = null
+is_breakable = null
+is_transmutable = null
+in_stasis = null
+scaling_factor = null
+base_size = null
 
 [node name="StoryActor" parent="Overworld/IntroStoryTrigger" instance=ExtResource("21_xbfho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49042, -1, 3.51004)

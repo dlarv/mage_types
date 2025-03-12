@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=44 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -26,7 +26,9 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Effect.gd" id="19_uvq5w"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="20_ipvyi"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="21_wyiua"]
+[ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="21_y7w8y"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="22_sipbl"]
+[ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="25_caj5v"]
 [ext_resource type="PackedScene" uid="uid://bdm2iqu5gdils" path="res://src/overworld/magiclay/catalyst_platform.tscn" id="26_jxvc7"]
 
 [sub_resource type="Resource" id="Resource_7ip05"]
@@ -117,12 +119,30 @@ attacks = Array[ExtResource("15_o5iye")]([SubResource("Resource_4yusp")])
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ltx"]
 size = Vector3(14, 2, 8)
 
-[sub_resource type="Resource" id="Resource_ub1vh"]
-resource_name = "Reactor Shard"
+[sub_resource type="Resource" id="Resource_xuc6x"]
+resource_name = "Sunset Orb"
 script = ExtResource("16_m6hrw")
-item = ExtResource("17_7ejy0")
-id = 4
-quantity = 0
+item = ExtResource("21_y7w8y")
+id = 2
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_jge8a"]
+resource_name = "Stasis Shard"
+script = ExtResource("16_m6hrw")
+item = ExtResource("25_caj5v")
+id = 3
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_l7ikq"]
+resource_name = "Healing Potion"
+script = ExtResource("16_m6hrw")
+item = ExtResource("18_lqpp6")
+id = 0
+quantity = 5
 max_quantity = 9999
 allow_stacking = true
 
@@ -422,18 +442,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, 6)
 _element = "magenta"
 scaling_factor = Vector3(0.5, 2, 0.5)
 
-[node name="MagiclayRock2" parent="Chunk/Puzzle_North" instance=ExtResource("4_wmol4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 6)
-_element = "red"
-scaling_factor = Vector3(0.5, 2, 0.5)
-
 [node name="PressurePlate" parent="Chunk/Puzzle_North" instance=ExtResource("21_wyiua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -8)
 _element = "magenta"
 
 [node name="Chest" parent="Chunk/Puzzle_North" node_paths=PackedStringArray("locks") instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -13)
-items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_ub1vh")])
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_xuc6x"), SubResource("Resource_jge8a"), SubResource("Resource_l7ikq")])
 locks = [NodePath("../PressurePlate")]
 
 [node name="Puzzle1" type="Node3D" parent="Chunk"]
@@ -560,6 +575,45 @@ _element = "green"
 [node name="Emitter3" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, -2)
 _element = "blue"
+
+[node name="OpenArea" type="Node3D" parent="Chunk"]
+
+[node name="MagiclayRock4" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 1, 4, -47)
+
+[node name="MagiclayRock3" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1, 3, -47)
+
+[node name="MagiclayRock2" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1, 2, -47)
+
+[node name="MagiclayRock" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1, 1, -47)
+
+[node name="PressurePlate" parent="Chunk/OpenArea" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -50)
+_element = "yellow"
+
+[node name="MagiclayRock5" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -57)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="Emitter" parent="Chunk/OpenArea/MagiclayRock5" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.5, 0, 0)
+_element = "blue"
+
+[node name="Emitter1" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5, 1, -61)
+_element = "magenta"
+
+[node name="Emitter2" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8, 1, -61)
+_element = "purple"
 
 [node name="Boss1" parent="." groups=["persist"] instance=ExtResource("2_gq4vp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.49705, -28)
