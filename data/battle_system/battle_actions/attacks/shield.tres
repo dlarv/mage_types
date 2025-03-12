@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=13 format=3 uid="uid://dqcoagywyfuiv"]
+[gd_resource type="Resource" script_class="Attack" load_steps=15 format=3 uid="uid://dqcoagywyfuiv"]
 
 [ext_resource type="PackedScene" uid="uid://ch3nnueyugf36" path="res://src/battle_system/battle_actions/animations/wall.tscn" id="1_ubptg"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_o6ise"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://bv5r6vblhf782" path="res://data/elemental_types/cyan.tres" id="4_uot6p"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="5_vb8jx"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/ElementalCondition.gd" id="6_shisw"]
+[ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="8_6ayh8"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="9_8euii"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="9_eqi6k"]
 
 [sub_resource type="Resource" id="Resource_nyia0"]
@@ -15,16 +17,26 @@ elements = Array[ExtResource("3_t6q7u")]([ExtResource("4_uot6p"), ExtResource("5
 operator = "any"
 apply_to = "user"
 
-[sub_resource type="Resource" id="Resource_ys7nd"]
+[sub_resource type="Resource" id="Resource_2hx7p"]
+script = ExtResource("9_8euii")
+attack_effect = ExtResource("8_6ayh8")
+effect_target = 1
+chance = 0.4
+_element = "blank"
 
-[sub_resource type="Resource" id="Resource_aln1m"]
+[sub_resource type="Resource" id="Resource_0qwck"]
+script = ExtResource("9_8euii")
+attack_effect = ExtResource("8_6ayh8")
+effect_target = 1
+chance = 1.0
+_element = "blank"
 
 [sub_resource type="Resource" id="Resource_aqs56"]
 script = ExtResource("9_eqi6k")
 condition = SubResource("Resource_nyia0")
-success_effect = SubResource("Resource_aln1m")
-failed_effect = SubResource("Resource_ys7nd")
-print_failed_status = false
+success_effect = SubResource("Resource_0qwck")
+failed_effect = SubResource("Resource_2hx7p")
+print_failed_status = "TOTAL_FAILURE"
 effect_target = 1
 chance = 1.0
 _element = "blank"

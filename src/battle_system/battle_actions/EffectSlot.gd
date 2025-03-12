@@ -8,6 +8,8 @@ class_name EffectSlot
 func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, effectiveness:=1.0) -> String:
 	var rand = randf()
 	if rand <= chance:
+		if chance != 1.0:
+			Logger.append_log(Logger.LogType.BATTLE, "Action(%s) Succeeded. Chance(%f) >= Rand(%f)" % [attack_effect.name, chance, rand])
 		if effect_target == EffectTarget.TARGET:
 			return attack_effect.apply_effect(user, target, action, effectiveness, element)
 		return attack_effect.apply_effect(user, user, action, effectiveness, element)
