@@ -496,7 +496,6 @@ _element = "blue"
 [node name="Boss1" parent="." groups=["persist"] instance=ExtResource("2_gq4vp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.49705, -28)
 label_offset = Vector3(0, 1.5, 0)
-auto_trigger = false
 
 [connection signal="element_selected" from="Chunk/Puzzle2/CatalystDevice1" to="Chunk/Puzzle2/Emitter1" method="set_element"]
 [connection signal="element_selected" from="Chunk/Puzzle2/CatalystDevice2" to="Chunk/Puzzle2/Emitter2" method="set_element"]

@@ -10,10 +10,17 @@ extends Node3D
 @export var battle_delay: float
 
 @export var _player: Player
+var _current_story_actor: StoryActor = null
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log(Logger.LogType.PUZZLE)
+	if event.is_action_pressed("skip_dialog"):
+		if _current_story_actor:
+			_current_story_actor.skip_dialog()
+		dialog_box.stop()
+
+
 
 func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	var battle := battle_scene.instantiate()
@@ -40,6 +47,7 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 
 func _on_dialog_started(dialogId: String, npc) -> void:
 	world.process_mode = Node.PROCESS_MODE_DISABLED
+	_current_story_actor = npc.story_actor
 
 	dialog_box.start(dialogId)
 
@@ -47,15 +55,7 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 	while dialog_box.is_running():
 		var val = await dialog_box.dialogue_signal
 		if val == "play_cutscene": 
-			var id = dialog_box.variables["current_cutscene"]
-			dialog_box.process_mode = PROCESS_MODE_DISABLED
-			dialog_box.hide()
-			await npc.story_actor.play_cutscene(id)
-			# If cutscene is last node of branch, the last dialog spoken will be stuck on screen.
-			if dialog_box.is_running():
-				dialog_box.show()
-			dialog_box.process_mode = PROCESS_MODE_INHERIT
-
+			await _play_cutscene(npc)
 		elif val == "change_emotion":
 			var id = dialog_box.variables["current_emotion"]
 			npc.story_actor.change_emotion(id)
@@ -75,3 +75,18 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"dialogue_ended","pivot_declined",_: 
 			world.process_mode = Node.PROCESS_MODE_INHERIT
+
+	_current_story_actor = null
+
+func _play_cutscene(npc) -> void:
+	var id = dialog_box.variables["current_cutscene"]
+
+	dialog_box.process_mode = PROCESS_MODE_DISABLED
+	dialog_box.hide()
+
+	await npc.story_actor.play_cutscene(id)
+
+	# If cutscene is last node of branch, the last dialog spoken will be stuck on screen.
+	if dialog_box.is_running():
+		dialog_box.show()
+	dialog_box.process_mode = PROCESS_MODE_INHERIT

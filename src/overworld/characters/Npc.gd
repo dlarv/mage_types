@@ -6,6 +6,7 @@ extends Area3D
 var _label: Label
 
 var story_actor: StoryActor = null
+var animation_player: AnimationPlayer
 var vendor_actor: VendorActor = null
 var enemy_actor: EnemyActor = null
 # Player or PhysicsPlayer
@@ -26,6 +27,7 @@ func _enter_tree():
 			vendor_actor = child
 		elif child is StoryActor:
 			story_actor = child
+			animation_player = story_actor.find_child("AnimationPlayer")
 		elif child is EnemyActor:
 			enemy_actor = child
 

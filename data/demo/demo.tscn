@@ -57,6 +57,7 @@ script = ExtResource("22_kchl7")
 id = "TUTORIAL_FIGHT"
 next = -1
 starting_emotion = "NEUTRAL"
+end_state = ""
 
 [sub_resource type="Animation" id="Animation_xbcar"]
 length = 0.001
@@ -214,6 +215,7 @@ script = ExtResource("22_kchl7")
 id = "PARTNER_INTRO"
 next = -1
 starting_emotion = "NEUTRAL"
+end_state = "intro_walking"
 
 [sub_resource type="Animation" id="Animation_8suiq"]
 length = 0.001
