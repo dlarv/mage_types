@@ -36,6 +36,7 @@ script = ExtResource("9_eqi6k")
 condition = SubResource("Resource_nyia0")
 success_effect = SubResource("Resource_aln1m")
 failed_effect = SubResource("Resource_ys7nd")
+print_failed_status = false
 effect_target = 1
 chance = 1.0
 _element = "blank"
