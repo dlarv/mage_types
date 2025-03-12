@@ -15,6 +15,7 @@ var _player: Variant
 var _on_cooldown := false
 
 func _enter_tree():
+	super._enter_tree()
 	# Interaction prompt
 	_label = find_child("Label")
 	if not Engine.is_editor_hint() and _label:

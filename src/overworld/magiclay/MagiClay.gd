@@ -183,4 +183,3 @@ func deserialize(data: Dictionary) -> void:
 func _set_size() -> void:
 	$MeshInstance3D.mesh.size = base_size * scaling_factor
 	$CollisionShape3D.shape.size = base_size * scaling_factor
-
