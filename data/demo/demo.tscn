@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=54 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -41,36 +41,6 @@ script = ExtResource("7_oalpa")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
 script = ExtResource("7_3o8i5")
-
-[sub_resource type="Resource" id="Resource_ooh14"]
-script = ExtResource("22_kchl7")
-id = "PARTNER_INTRO"
-next = 1
-starting_emotion = "NEUTRAL"
-
-[sub_resource type="Resource" id="Resource_c1oq2"]
-script = ExtResource("22_kchl7")
-id = "PARTNER_2"
-next = -1
-starting_emotion = "NEUTRAL"
-
-[sub_resource type="Resource" id="Resource_vonp8"]
-script = ExtResource("22_kchl7")
-id = "BEACH_PUZZLE_INTRO"
-next = -1
-starting_emotion = "NEUTRAL"
-
-[sub_resource type="Resource" id="Resource_exu6v"]
-script = ExtResource("22_kchl7")
-id = "BEACH_PUZZLES"
-next = -1
-starting_emotion = "NEUTRAL"
-
-[sub_resource type="Resource" id="Resource_i58nt"]
-script = ExtResource("22_kchl7")
-id = "FAVOR"
-next = -1
-starting_emotion = "NEUTRAL"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8a8ea"]
 
@@ -374,7 +344,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="Partner" parent="Overworld" instance=ExtResource("20_2sxei")]
 
 [node name="StoryActor" parent="Overworld/Partner" instance=ExtResource("21_xbfho")]
-dialog_ids = Array[ExtResource("22_kchl7")]([SubResource("Resource_ooh14"), SubResource("Resource_c1oq2"), SubResource("Resource_vonp8"), SubResource("Resource_exu6v"), SubResource("Resource_i58nt")])
 character = ExtResource("23_sfjag")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Overworld/Partner"]
@@ -412,7 +381,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5.5, -81)
 [node name="RiverFront" parent="Overworld" instance=ExtResource("16_bh4i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 2.5, -168)
 
-[node name="BattleStoryTrigger" parent="Overworld" instance=ExtResource("20_2sxei")]
+[node name="BattleStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -14)
 auto_trigger = true
 
@@ -434,7 +403,7 @@ libraries = {
 ai = SubResource("Resource_6gydk")
 _team = Array[ExtResource("10_wgmfh")]([ExtResource("31_qv7w7")])
 
-[node name="IntroStoryTrigger" parent="Overworld" instance=ExtResource("20_2sxei")]
+[node name="IntroStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 auto_trigger = true
 
 [node name="StoryActor" parent="Overworld/IntroStoryTrigger" instance=ExtResource("21_xbfho")]

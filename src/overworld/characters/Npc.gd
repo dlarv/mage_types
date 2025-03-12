@@ -90,11 +90,13 @@ func serialize() -> Dictionary:
 	return {
 		"path": get_path(),
 		"monitoring": monitoring,
-		"dialog_id": story_actor.current_id if story_actor else -2
+		"dialog_id": story_actor.current_id if story_actor else -2,
+		"position": global_position,
 	}
 
 func deserialize(data: Dictionary) -> void:
 	monitoring = data["monitoring"]
 	if data["dialog_id"] != -2:
 		story_actor.current_id = data["dialog_id"]
+	global_position = data["position"]
 

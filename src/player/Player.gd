@@ -114,7 +114,9 @@ func open_shop(npc: Variant) -> void:
 	dialog_started.emit("VENDOR_MAIN", npc)
 
 func start_dialog(npc: Variant) -> void:
-	dialog_started.emit(npc.get_next_dialog_id(), npc)
+	var id = npc.get_next_dialog_id()
+	if len(id) == 0: return
+	dialog_started.emit(id, npc)
 
 func pickup_object(obj: Node3D, grabbable: Grabbable, val: bool, axis:=Vector3.ZERO) -> void:
 	if not val:
