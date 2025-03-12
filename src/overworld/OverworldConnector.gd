@@ -48,7 +48,14 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 		var val = await dialog_box.dialogue_signal
 		if val == "play_cutscene": 
 			var id = dialog_box.variables["current_cutscene"]
+			dialog_box.process_mode = PROCESS_MODE_DISABLED
+			dialog_box.hide()
 			await npc.story_actor.play_cutscene(id)
+			# If cutscene is last node of branch, the last dialog spoken will be stuck on screen.
+			if dialog_box.is_running():
+				dialog_box.show()
+			dialog_box.process_mode = PROCESS_MODE_INHERIT
+
 		elif val == "change_emotion":
 			var id = dialog_box.variables["current_emotion"]
 			npc.story_actor.change_emotion(id)
@@ -56,6 +63,10 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 			sigName = val
 
 	match sigName:
+		"play_cutscene": 
+			var id = dialog_box.variables["current_cutscene"]
+			print(id)
+			await npc.story_actor.play_cutscene(id)
 		"battle_started":
 			_on_player_battle_started(_player.team, npc.enemy_actor)
 		"menu_opened":

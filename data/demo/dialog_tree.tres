@@ -5,10 +5,14 @@
 [resource]
 script = ExtResource("1_7sxr6")
 starts = {
+"BEACH_PUZZLES": &"0_7",
+"BEACH_PUZZLE_INTRO": &"0_6",
 "BOSS1": &"0_1",
+"FAVOR": &"0_8",
 "MISC": &"0_2",
 "PARTNER_INTRO": &"0_4",
-"PARTNER_INTRO_TEST": &"0_3"
+"PARTNER_INTRO_TEST": &"0_3",
+"TUTORIAL_FIGHT": &"0_5"
 }
 nodes = {
 "0_1": {
@@ -27,9 +31,29 @@ nodes = {
 "start_id": "PARTNER_INTRO_TEST"
 },
 "0_4": {
-"link": &"6_2",
-"offset": Vector2(-1400, 680),
+"link": &"1_6",
+"offset": Vector2(-1740, 640),
 "start_id": "PARTNER_INTRO"
+},
+"0_5": {
+"link": &"1_15",
+"offset": Vector2(-1380, 1060),
+"start_id": "TUTORIAL_FIGHT"
+},
+"0_6": {
+"link": &"1_16",
+"offset": Vector2(-1380, 1380),
+"start_id": "BEACH_PUZZLE_INTRO"
+},
+"0_7": {
+"link": &"1_18",
+"offset": Vector2(-1460, 1660),
+"start_id": "BEACH_PUZZLES"
+},
+"0_8": {
+"link": &"1_20",
+"offset": Vector2(-1315.94, 2031.1),
+"start_id": "FAVOR"
 },
 "1_1": {
 "dialogue": "RAWR xd",
@@ -44,6 +68,151 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": ""
 },
+"1_10": {
+"dialogue": "Unfortunately, not... at least not that I know",
+"offset": Vector2(440, 920),
+"options": {
+0: {
+"condition": {},
+"link": &"1_11",
+"text": "Why are you so Blue?"
+},
+1: {
+"condition": {},
+"link": &"1_13",
+"text": "Why is this place so Blue?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_11": {
+"dialogue": "Probably because I'm cornered on the beach by a monster",
+"offset": Vector2(820, 520),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": "I'm not the monster, am I?"
+},
+1: {
+"condition": {},
+"link": &"1_13",
+"text": "Huh?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_12": {
+"dialogue": "No... no, its a long story...",
+"offset": Vector2(1520, 360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_13": {
+"dialogue": "Its a long story...",
+"offset": Vector2(1200, 760),
+"options": {
+0: {
+"condition": {},
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_14": {
+"dialogue": "It might be easier to show you. Follow me.",
+"offset": Vector2(2320, 640),
+"options": {
+0: {
+"condition": {},
+"link": &"6_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_15": {
+"dialogue": "<TODO>",
+"offset": Vector2(-1140, 1000),
+"options": {
+0: {
+"condition": {},
+"link": &"6_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_16": {
+"dialogue": "It looks like Aqua left a few of their experiments out. ",
+"offset": Vector2(-1140, 1320),
+"options": {
+0: {
+"condition": {},
+"link": &"1_17",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_17": {
+"dialogue": "I'll let you take a stab at this. Remember, you can press 'T' to pull up the transmutation menu.",
+"offset": Vector2(-757.497, 1390.11),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_18": {
+"dialogue": "",
+"offset": Vector2(-1220, 1660),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Why do [i]I[/i] have to be the one to solve these?"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Can I have a hint?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_19": {
+"dialogue": "!!!",
+"offset": Vector2(-720.823, 581.112),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
 "1_2": {
 "dialogue": "",
 "offset": Vector2(-360, -640),
@@ -56,6 +225,32 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": ""
+},
+"1_20": {
+"dialogue": "",
+"offset": Vector2(-1080, 2000),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_21": {
+"dialogue": "Ack",
+"offset": Vector2(-460, 1060),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
 },
 "1_3": {
 "dialogue": "Follow Me",
@@ -97,25 +292,61 @@ nodes = {
 "speaker": 0
 },
 "1_6": {
-"dialogue": "!!!",
-"offset": Vector2(-800, 640),
+"dialogue": "THUD",
+"offset": Vector2(-1480, 600),
 "options": {
 0: {
 "condition": {},
-"link": &"6_3",
+"link": &"6_2",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": ""
 },
 "1_7": {
-"dialogue": "asdfdasfa",
-"offset": Vector2(-100, 720),
+"dialogue": "Hey there, are you okay?",
+"offset": Vector2(-340, 680),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_8",
+"text": "Where am I?"
+},
+1: {
+"condition": {},
+"link": &"1_9",
+"text": "Am I dreaming?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_8": {
+"dialogue": "<insert response here>",
+"offset": Vector2(320, 600),
+"options": {
+0: {
+"condition": {},
+"link": &"1_11",
+"text": "Why are you so Blue?"
+},
+1: {
+"condition": {},
+"link": &"1_13",
+"text": "Why is this place so Blue?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_9": {
+"dialogue": "Yeah, this place has a surreal vibe to it.",
+"offset": Vector2(20, 880),
+"options": {
+0: {
+"condition": {},
+"link": &"1_10",
 "text": ""
 }
 },
@@ -126,6 +357,18 @@ nodes = {
 "link": "END",
 "offset": Vector2(40, -260),
 "signalValue": "battle_started"
+},
+"3_2": {
+"link": "END",
+"offset": Vector2(-67.9991, 1259.85),
+"signalValue": "battle_started"
+},
+"4_1": {
+"link": &"1_12",
+"offset": Vector2(1180, 560),
+"type": 0,
+"value": "true",
+"variable": "was_monster_mentioned"
 },
 "5_1": {
 "false": &"1_5",
@@ -144,20 +387,28 @@ nodes = {
 "variable": "current_cutscene"
 },
 "6_2": {
-"link": &"1_6",
-"offset": Vector2(-1120, 700),
-"signalValue": "change_emotion",
+"link": &"1_19",
+"offset": Vector2(-1100, 660),
+"signalValue": "play_cutscene",
 "type": 0,
-"value": "ANGER",
-"variable": "current_emotion"
+"value": "pull_from_surf",
+"variable": "current_cutscene"
 },
 "6_3": {
-"link": &"1_7",
-"offset": Vector2(-400, 780),
-"signalValue": "change_emotion",
+"link": "END",
+"offset": Vector2(2760, 540),
+"signalValue": "play_cutscene",
 "type": 0,
-"value": "ANGER",
-"variable": "current_emotion"
+"value": "intro_walking",
+"variable": "current_cutscene"
+},
+"6_4": {
+"link": &"1_21",
+"offset": Vector2(-760, 1000),
+"signalValue": "play_cutscene",
+"type": 0,
+"value": "start_tutorial_battle",
+"variable": "current_cutscene"
 }
 }
 variables = {
@@ -169,9 +420,9 @@ variables = {
 "type": 4,
 "value": ""
 },
-"not_introduced": {
+"was_monster_mentioned": {
 "type": 1,
-"value": true
+"value": false
 }
 }
 strays = Array[String]([])

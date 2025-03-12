@@ -1,7 +1,8 @@
 @tool
-extends CollisionObject3D
+extends Area3D
 
 @export var label_offset: Vector3
+@export var auto_trigger := false
 var _label: Label
 
 var story_actor: StoryActor = null
@@ -34,7 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		get_window().set_input_as_handled()
 		if story_actor != null:
-			story_actor.change_emotion()
+			story_actor.get_starting_emotion()
 			_player.call_deferred("start_dialog", self)
 		else:
 			_player.call_deferred("open_shop", self)
@@ -54,6 +55,9 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body:Node3D) -> void:
 	if not body.is_in_group("player"): return
 
+	if story_actor and auto_trigger:
+		body.call_deferred("start_dialog", self)
+		set_deferred("monitoring", false)
 	if story_actor != null or vendor_actor != null: 
 		_set_label_visibility(true)
 		_player = body
@@ -81,3 +85,16 @@ func _set_label_visibility(val: bool) -> void:
 func get_next_dialog_id() -> String:
 	if not story_actor: return ""
 	return story_actor.get_next_dialog_id()
+
+func serialize() -> Dictionary:
+	return {
+		"path": get_path(),
+		"monitoring": monitoring,
+		"dialog_id": story_actor.current_id if story_actor else -2
+	}
+
+func deserialize(data: Dictionary) -> void:
+	monitoring = data["monitoring"]
+	if data["dialog_id"] != -2:
+		story_actor.current_id = data["dialog_id"]
+

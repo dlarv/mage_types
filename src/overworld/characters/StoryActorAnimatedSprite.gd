@@ -16,4 +16,3 @@ func set_emotion(key: String) -> void:
 		current_frame = index
 	elif key == "NEUTRAL":
 		current_frame = 0
-

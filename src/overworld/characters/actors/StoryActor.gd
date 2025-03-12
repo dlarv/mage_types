@@ -27,6 +27,11 @@ func change_emotion(id:="NEUTRAL") -> void:
 	if character.image is StoryActorAnimatedTexture:
 		character.image.set_emotion(id)
 
+func get_starting_emotion() -> void:
+	if not character: return
+	if character.image is StoryActorAnimatedTexture:
+		character.image.set_emotion(dialog_ids[current_id].starting_emotion)
+
 
 func get_next_dialog_id() -> String:
 	var output := dialog_ids[current_id]
