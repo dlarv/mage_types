@@ -11,24 +11,18 @@ starts = {
 "FAVOR": &"0_8",
 "MISC": &"0_2",
 "PARTNER_INTRO": &"0_4",
-"PARTNER_INTRO_TEST": &"0_3",
 "TUTORIAL_FIGHT": &"0_5"
 }
 nodes = {
 "0_1": {
 "link": &"1_1",
-"offset": Vector2(-597, -287),
+"offset": Vector2(-1760, 260),
 "start_id": "BOSS1"
 },
 "0_2": {
 "link": &"1_2",
-"offset": Vector2(-580, -620),
+"offset": Vector2(-1760, -100),
 "start_id": "MISC"
-},
-"0_3": {
-"link": &"5_1",
-"offset": Vector2(-1040, 20),
-"start_id": "PARTNER_INTRO_TEST"
 },
 "0_4": {
 "link": &"1_6",
@@ -37,27 +31,27 @@ nodes = {
 },
 "0_5": {
 "link": &"1_15",
-"offset": Vector2(-1380, 1060),
+"offset": Vector2(1280, 1320),
 "start_id": "TUTORIAL_FIGHT"
 },
 "0_6": {
 "link": &"1_16",
-"offset": Vector2(-1380, 1380),
+"offset": Vector2(-1380, 1300),
 "start_id": "BEACH_PUZZLE_INTRO"
 },
 "0_7": {
 "link": &"1_18",
-"offset": Vector2(-1460, 1660),
+"offset": Vector2(-1360, 1580),
 "start_id": "BEACH_PUZZLES"
 },
 "0_8": {
 "link": &"1_20",
-"offset": Vector2(-1315.94, 2031.1),
+"offset": Vector2(-1400, 2020),
 "start_id": "FAVOR"
 },
 "1_1": {
 "dialogue": "RAWR xd",
-"offset": Vector2(-370, -326),
+"offset": Vector2(-1540, 220),
 "options": {
 0: {
 "condition": {},
@@ -119,7 +113,7 @@ nodes = {
 },
 "1_13": {
 "dialogue": "Its a long story...",
-"offset": Vector2(1200, 760),
+"offset": Vector2(1540, 840),
 "options": {
 0: {
 "condition": {},
@@ -132,7 +126,7 @@ nodes = {
 },
 "1_14": {
 "dialogue": "It might be easier to show you. Follow me.",
-"offset": Vector2(2100, 680),
+"offset": Vector2(1960, 680),
 "options": {
 0: {
 "condition": {},
@@ -144,8 +138,8 @@ nodes = {
 "speaker": 0
 },
 "1_15": {
-"dialogue": "<TODO>",
-"offset": Vector2(-1140, 1000),
+"dialogue": "asdf",
+"offset": Vector2(1520, 1260),
 "options": {
 0: {
 "condition": {},
@@ -158,7 +152,7 @@ nodes = {
 },
 "1_16": {
 "dialogue": "It looks like Aqua left a few of their experiments out. ",
-"offset": Vector2(-1120, 1360),
+"offset": Vector2(-1120, 1280),
 "options": {
 0: {
 "condition": {},
@@ -171,7 +165,7 @@ nodes = {
 },
 "1_17": {
 "dialogue": "I'll let you take a stab at this. Remember, you can press 'T' to pull up the transmutation menu.",
-"offset": Vector2(-740, 1420),
+"offset": Vector2(-740, 1280),
 "options": {
 0: {
 "condition": {},
@@ -184,7 +178,7 @@ nodes = {
 },
 "1_18": {
 "dialogue": "asdfdasf",
-"offset": Vector2(-1180, 1680),
+"offset": Vector2(-1080, 1600),
 "options": {
 0: {
 "condition": {},
@@ -215,7 +209,7 @@ nodes = {
 },
 "1_2": {
 "dialogue": "",
-"offset": Vector2(-360, -640),
+"offset": Vector2(-1540, -120),
 "options": {
 0: {
 "condition": {},
@@ -228,7 +222,7 @@ nodes = {
 },
 "1_20": {
 "dialogue": "",
-"offset": Vector2(-1060, 2260),
+"offset": Vector2(-1120, 2000),
 "options": {
 0: {
 "condition": {},
@@ -241,50 +235,11 @@ nodes = {
 },
 "1_21": {
 "dialogue": "Ack",
-"offset": Vector2(-460, 1060),
+"offset": Vector2(2180, 1260),
 "options": {
 0: {
 "condition": {},
 "link": &"3_2",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-"1_3": {
-"dialogue": "Follow Me",
-"offset": Vector2(-360, 20),
-"options": {
-0: {
-"condition": {},
-"link": &"6_1",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-"1_4": {
-"dialogue": "I'm over here now",
-"offset": Vector2(440, 120),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-"1_5": {
-"dialogue": "I'm still over here",
-"offset": Vector2(-340, 300),
-"options": {
-0: {
-"condition": {},
-"link": "END",
 "text": ""
 }
 },
@@ -342,7 +297,7 @@ nodes = {
 },
 "1_9": {
 "dialogue": "Yeah, this place has a surreal vibe to it.",
-"offset": Vector2(20, 880),
+"offset": Vector2(40, 960),
 "options": {
 0: {
 "condition": {},
@@ -355,12 +310,12 @@ nodes = {
 },
 "3_1": {
 "link": "END",
-"offset": Vector2(40, -260),
+"offset": Vector2(-1120, 280),
 "signalValue": "battle_started"
 },
 "3_2": {
 "link": "END",
-"offset": Vector2(-67.9991, 1259.85),
+"offset": Vector2(2560, 1280),
 "signalValue": "battle_started"
 },
 "4_1": {
@@ -369,22 +324,6 @@ nodes = {
 "type": 0,
 "value": "true",
 "variable": "was_monster_mentioned"
-},
-"5_1": {
-"false": &"1_5",
-"offset": Vector2(-760, 60),
-"operator": 0,
-"true": &"1_3",
-"value1": "{{not_introduced}}",
-"value2": "true"
-},
-"6_1": {
-"link": &"1_4",
-"offset": Vector2(80, 140),
-"signalValue": "play_cutscene",
-"type": 0,
-"value": "intro_walking",
-"variable": "current_cutscene"
 },
 "6_2": {
 "link": &"1_19",
@@ -396,7 +335,7 @@ nodes = {
 },
 "6_3": {
 "link": "END",
-"offset": Vector2(2480, 640),
+"offset": Vector2(2340, 720),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "intro_walking",
@@ -404,7 +343,7 @@ nodes = {
 },
 "6_4": {
 "link": &"1_21",
-"offset": Vector2(-760, 1000),
+"offset": Vector2(1900, 1260),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "start_tutorial_battle",
@@ -412,7 +351,7 @@ nodes = {
 },
 "6_5": {
 "link": "END",
-"offset": Vector2(-360, 1440),
+"offset": Vector2(-360, 1340),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "post_battle_prep",

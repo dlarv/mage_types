@@ -64,6 +64,7 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 		"play_cutscene": 
 			var id = dialog_box.variables["current_cutscene"]
 			await npc.story_actor.play_cutscene(id)
+			world.process_mode = Node.PROCESS_MODE_INHERIT
 		"battle_started":
 			_on_player_battle_started(_player.team, npc.enemy_actor)
 		"menu_opened":
@@ -87,3 +88,9 @@ func _play_cutscene(npc) -> void:
 	if dialog_box.is_running():
 		dialog_box.show()
 	dialog_box.process_mode = PROCESS_MODE_INHERIT
+
+func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
+	overworld.process_mode = PROCESS_MODE_DISABLED
+	player.play(id)
+	await player.animation_finished
+	overworld.process_mode = PROCESS_MODE_INHERIT

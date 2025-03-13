@@ -8,8 +8,13 @@ signal dialog_started(dialog_id, data)
 @export var dialog_ids: Array[Dialog]
 @export var current_id: int = 0
 @export var character: Character
+@export var animation_player: AnimationPlayer
 
 var _prev_id := current_id
+
+func _ready() -> void:
+	if not animation_player:
+		animation_player = find_child("AnimationPlayer")
 
 # Virtual
 func start_dialog():
@@ -18,20 +23,20 @@ func start_dialog():
 func skip_dialog():
 	var dialog := dialog_ids[_prev_id]
 	if len(dialog.end_state) > 0:
-		var animation = $AnimationPlayer.get_animation(dialog.end_state)
-		$AnimationPlayer.play(dialog.end_state)
-		$AnimationPlayer.advance(animation.length)
-	elif $AnimationPlayer.is_playing():
-		var animation = $AnimationPlayer.get_animation($AnimationPlayer.current_animation)
-		$AnimationPlayer.advance(animation.length)
+		var animation = animation_player.get_animation(dialog.end_state)
+		animation_player.play(dialog.end_state)
+		animation_player.advance(animation.length)
+	elif animation_player.is_playing():
+		var animation = animation_player.get_animation(animation_player.current_animation)
+		animation_player.advance(animation.length)
 
 
 func play_cutscene(id: String) -> void:
-	if not $AnimationPlayer: 
+	if not animation_player: 
 		push_warning("No animation player attached to this StoryActor(%s)")
 		return
-	$AnimationPlayer.play(id)
-	await $AnimationPlayer.animation_finished
+	animation_player.play(id)
+	await animation_player.animation_finished
 
 
 func change_emotion(id:="NEUTRAL") -> void:

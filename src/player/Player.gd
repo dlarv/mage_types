@@ -3,6 +3,7 @@ class_name Player
 
 signal battle_started(allies, enemies)
 signal dialog_started(dialog_id, npc)
+signal cutscene_started(player: AnimationPlayer, id: String)
 
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
@@ -118,6 +119,9 @@ func start_dialog(npc: Variant) -> void:
 	var id = npc.get_next_dialog_id()
 	if len(id) == 0: return
 	dialog_started.emit(id, npc)
+
+func play_cutscene(player: AnimationPlayer, id: String) -> void:
+	cutscene_started.emit(player, id)
 
 func pickup_object(obj: Node3D, grabbable: Grabbable, val: bool, axis:=Vector3.ZERO) -> void:
 	if not val:

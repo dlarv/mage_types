@@ -6,9 +6,9 @@ extends MagiClay
 var _label: Label
 
 var story_actor: StoryActor = null
-var animation_player: AnimationPlayer
 var vendor_actor: VendorActor = null
 var enemy_actor: EnemyActor = null
+var animation_actor: AnimationActor = null
 # Player or PhysicsPlayer
 var _player: Variant
 
@@ -28,9 +28,10 @@ func _enter_tree():
 			vendor_actor = child
 		elif child is StoryActor:
 			story_actor = child
-			animation_player = story_actor.find_child("AnimationPlayer")
 		elif child is EnemyActor:
 			enemy_actor = child
+		elif child is AnimationActor:
+			animation_actor = child
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (_label and not _label.visible) or _player == null: return
@@ -58,13 +59,16 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body:Node3D) -> void:
 	if not body.is_in_group("player"): return
 
-	if story_actor and auto_trigger:
+	if animation_actor and auto_trigger:
+		animation_actor.play_animation(body)
+		set_deferred("monitoring", false)
+	elif story_actor and auto_trigger:
 		body.call_deferred("start_dialog", self)
 		set_deferred("monitoring", false)
-	if story_actor != null or vendor_actor != null: 
+	elif story_actor or vendor_actor: 
 		_set_label_visibility(true)
 		_player = body
-	elif not _on_cooldown:
+	elif enemy_actor and not _on_cooldown:
 		get_tree().call_group("wild_enemies", "_start_battle_cooldown")
 		body.call_deferred("start_battle", self)
 			
