@@ -81,19 +81,30 @@ Player can ask partner how to fight or get into a fight, and the partner will co
 ## Beach
 - Cove
 - Player's initial spawn location.
+- Player meets the companion here.
 ### Geyser Obstacle 
 On the leftmost edge of the area is a Yellow geyser. This will block the player, unless they use *Stasis* on it, stopping the stream.
 - Behind the stream is a boulder, which can be broken using the *Destroy* spell.
 	- This leads to [[#Hidden Area: Tide Pools|Tide Pools]]
 - If the player is standing on the geyser when Stasis wears off, they will be lifted into the air, revealing a hidden platform. On this platform will be a powerful spell scroll.
+### Meeting your Companion
 ## Lower Path
 - Find anti-magenta spell here.
 - Stasis Obstacle: Object will be on the main path, so the player cannot miss it.
-- Player meets the companion here.
 - Monsters will spawn here (until the player defeats the first miniboss? This will prevent the player from battling after beating the first miniboss, but before reaching the second tutorial).
-### Meeting your Companion
 ### Battle Tutorial
 Companion walks player thru battle UI, transmutations, and affinity.
+### Side Path
+There are 3 small rooms the player must traverse thru before they can exit the Lower Path. Each room features a basic puzzle featuring lasers, MagiClay rocks, and pressure plates. These rooms also feature the **Reset** and **Catalyst Device** [[PuzzleBlocks]].
+
+Solving the last puzzle opens a short cut between the LowerPath and Beach.
+### Optional Puzzle
+- Features a narrow hallway blocked by 5 lasers (3 on one side, 2 on the other). The player is tasked with getting a Cyan block to the other side, where there is a Cyan pressure plate. There are 3 solutions:
+	- Solution 1: If the block is transmuted into Orange, it will be Cyan after the 5 transmutations are applied.
+	- Solution 2: The player can use their body to block all the lasers on one side. None of the lasers on one side react with Cyan, while the others will revert it back to Cyan by the end.
+	- Once solved, this puzzle will unlock a chest. IDK what to put inside it yet.
+- I want this section to have a few blocks and lasers the player can experiment with.
+
 ## Upper Path
 - Miniboss \#1
 - Stasis Spell
@@ -172,6 +183,7 @@ This will be a laser puzzle, where the player must match different beams.
 ![[catalyst_solution_p1.jpg]]
 - Mirror 5 (Red): Starting color changed from Yellow to Green.
 ![[catalyst_solution_p2.jpg]]
+- Mirror 6 starting element changed from Orange to Green.
 ## River Front (Lower/Upper Approach)
 ## Final Puzzle (Z3)
 - "Final" puzzle room: puzzle that requires use of both Stasis and Catalyst.

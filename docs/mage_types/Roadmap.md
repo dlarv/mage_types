@@ -1,4 +1,4 @@
-***Current Version***: 0.3.15
+***Current Version***: 0.3.23
 # Todo
 - [x] Change battle gui to support 3D models instead of sprites.
 - [x] Refactor menu screen management.
@@ -7,15 +7,18 @@
 	- [ ] Demo attack list created.
 	- [ ] Demo beastiary created.
 - [ ] Add textures and animations to demo.
-- [ ] Save/load system.
+- [x] Save/load system.
 - [ ] Color blind accessibility.
 	- [x] Backend architecture.
 	- [ ] Preset options. 
 - [ ] Input remapping.
 - [x] Grabbable dynamics.
-- [ ] Geyser dynamics.
+- Geyser dynamics.
 	- [x] Geyser not lifting player.
 	- [x] When two geysers are in opposition and one is turned off, the other will not push on objects inside of it.
+- [ ] Achievements.
+- [x] Cutscenes
+- [ ] Have draggables snap player to grid.
 ## Known Bugs
 - [x] Actor formatter is broken (if attack is null, it fails).
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".
@@ -42,7 +45,9 @@ Demo main track implemented. Player can play through the main story of the demo,
 	- [ ] Final
 - [ ] Demo partner tutorial dialog written.
 - [ ] Blocking and non-blocking dialog triggers implemented.
-- [ ] Cutscenes.
+	- [x] Blocking.
+	- [ ] Non-blocking.
+- [x] Cutscenes.
 **OVER.spel**
 - Overworld spells implemented:
 	- [x] Stasis
@@ -50,8 +55,14 @@ Demo main track implemented. Player can play through the main story of the demo,
 - [x] Graphic showing which overworld spell is currently selected.
 **OVER.wild**
 - [x] Wild enemies implemented.
+- [ ] Simple wild enemy behavior.
 **OVER.publ**
-- [ ] Light up indicator wire created.
+- [x] Light up indicator wire created.
+**CHAR.save**
+- [x] Save/load architecture implemented.
+**STRY.trig**
+- [x] Allow StoryActors to share AnimationPlayers.
+- [x] Allow StoryTriggers/StoryActors to play animations asynchronously.
 ## v0.4.x
 Demo MVP. Player can visit every area of the demo and experience the major features.
 
@@ -71,6 +82,9 @@ Demo playtest candidate.
 
 **OVER.clay**
 - [ ] Visual indicator on MagiClay objects.
+
+**POLI.achi**
+- [ ] Achievements.
 # The List
 ## Battle (BATT)
 ### Actor Info (ainf)
@@ -140,7 +154,7 @@ Demo playtest candidate.
 
 ### Attack Creator (atcr)
 **Have means to quickly create new attacks both in-game and in-engine.**
-- [ ] Select required attributes: Name, Element, Priority, Range, Target, Cost. 
+- [x] Select required attributes: Name, Element, Priority, Range, Target, Cost. 
 - [ ] Fill out optional details section.
 - [ ] The following attributes will need to be manually filled out or give the user access to the filesystem: Animation, AttackEffects.
 - [ ] Allow the user to create 1+ Effects.
@@ -154,7 +168,7 @@ Demo playtest candidate.
 - [x] Walking/running.
 - [ ] Jumping
 - [x]  Pickup objects and place in inventory.
-- [ ] Open chests.
+- [x] Open chests.
 - [x] Drag objects.
 - [ ] Each player action should have corresponding animations.
 
@@ -168,7 +182,7 @@ Demo playtest candidate.
 - [x] Should utilize Godot's existing systems.
 - [x] Should integrate with the chemistry and puzzle block systems.
 - [x] Allow player to select up to 2 overworld spells to use at a time.
-	- [ ] A graphic should be used to show which 2 overworld spells are currently selected.
+	- [x] A graphic should be used to show which 2 overworld spells are currently selected.
 - [ ] New overworld spells should be able to be added in 1-2 steps.
 
 ### Chemistry System/MagiClay (clay)
@@ -210,6 +224,20 @@ Demo playtest candidate.
 
 ### Save and Load Game (save)
 **Player should have ability to save/load games.**
+- [x] Player can save games under unique names.
+- [x] Player can load previously saved games.
+- [x] Objects can determine whether or not they should be saved.
+
+All objects that can be saved must be added to the `persist` group.
+All nodes in this group must have the following 2 methods:
+- `dict serialize()`
+- `void deserialize(data: dict)`
+The `dict` returned by `serialize()` must have a `path` field.
+
+The `SaveMenu` keeps track of which `persist` items are deleted using `queue_free()` or similar means. When a save file is loaded, the `SaveMenu` calls `queue_free()` on all of these nodes. This is done during the ready phase, so if nodes are instantiated later on, they will not included. I don't think this will be a problem.
+
+`Chunk`s can be added to the `persist` group. If they are, they will automatically handle all of their serializable children. To avoid double saving, `Chunk`s will remove all their children from this group.
+
 
 ### Settings Menu (sett)
 **Player should have access to settings menu.**
@@ -268,6 +296,61 @@ Player selects new spell or equipment from inside Inventory:
 ### Localizations (locl)
 **Allow for localizations of text and dialog.**
 ## Story and Content (STRY)
+- Npc nodes can have `StoryActor`, `EnemyActor`, `VendorActor` children.
+	- If no StoryActor or VendorActor children exist, but an EnemyActor does, colliding with this npc will start a battle.
+	- Otherwise, Npc checks if player is nearby, displaying prompt to talk if they are.
+	- If player presses interact button, Npc uses `player.call_deferred` to instruct player node to start dialog or battle.
+- Player emits appropirate signal, which is picked up by the `OverworldConnector`.
+- OverworldConnector pauses overworld and displays dialog.
+- If this Npc has a cutscene that should play while they are talking:
+	- Npc.storyactor should have an `AnimationPlayer` child containing the cutscene.
+	- The appropriate dialog tree should have a `SetNode` which sets a value for "current_cutscene". The value should match the name of the animation inside of the `AnimationPlayer`.
+		- This `SetNode` should feed directly into a `SignalNode` which emits the "play_cutscene" signal.
+	- AnimationPlayer.process_mode should be set to Always. None of the nodes it controls need this attribute.
+	- **There is now a SetSignalNode added to accomplish this with just one node.**
+
+To manage a character who has multiple dialog trees, there are a few options:
+1. StoryActor stores its dialog_ids in a list. Each item in the list has a string `id` and an int `next`. If `next==-1`, then the current dialog will loop. Otherwise, its treated as the next index to start dialog at.
+2. The DialogueNodes addon has the ability to set and check variables. **This is the preferred option.**
+
+TODO:
+- [ ] Allow StoryActors to share AnimationPlayers.
+- [ ] Allow StoryActor to trigger animations directly.
+
+### Dialog (dial)
+**Display dialog when player talks to character.**
+- Allow characters to vary dialog based on :
+	- Number of times player has talked to them.
+	- Story events that have/have not happened.
+	- Answers player has previously given them.
+	- Items in player's inventory.
+	- If the player has defeated them in battle.
+### Story Events (even)
+- Play cutscene.
+- Add/remove items from player's inventory.
+- Set/check story variables.
+- Add/remove companion.
+
+_StoryEvent_
+- Is triggered by an external factor, usually an action the player has taken.
+- Changes something about the game's state.
+	- This should probably be a global variable any other actor can check.
+	- This should probably interface with the variables used in the Dialogue nodes addon.
+### Story Triggers (trig)
+- [x] Trigger story event when player steps on a specific spot in world.
+- [x] Trigger story event when player talks to specific character.
+
+StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true` and with a `StoryActor` or `AnimationActor` child. 
+- `StoryActor` is for events that have any dialog.
+- `AnimationActor` is for events with no dialog. They can be blocking (prevent player input) or non-blocking.
+
+>[!important] 
+>If `Npc.auto_trigger = true` and both a `StoryActor` and `AnimationActor`, the `AnimationActor` will take priority.
+### Quest System (ques)
+- [ ] Assigned to player by another character or a StoryEvent.
+- [ ] Show player a list of their active, expired and completed quests.
+- [ ] Remove expired quests.
+### Write and Design Content (writ)
 - Content
 	- Level design
 	- Asset design
@@ -278,6 +361,7 @@ Player selects new spell or equipment from inside Inventory:
 	- Character bios.
 	- Main plot and side quests.
 ## Polish and Aesthetics (POLI)
+Misc
 - 3D
 	- Modeling
 	- Texturing
@@ -289,3 +373,7 @@ Player selects new spell or equipment from inside Inventory:
 - Audio
 	- Music
 	- Sound effects
+### Achievements (achi)
+**Give the player rewards/badges for completing certain objectives.**
+- [ ] Allow easy addition of achievements for arbitrary game states.
+- [ ] Have achievements sync with steam library.
