@@ -19,6 +19,7 @@ func setup(player: Player) -> void:
 	$Player.open_spell_menu.connect(_on_open_spell_menu.bind(_player.battle_actor))
 
 	for actor in player.team:
+		if actor == _player.battle_actor: continue
 		var screen := CharacterScreen.instantiate()
 		screen.setup(actor)
 		screen.name = actor.name

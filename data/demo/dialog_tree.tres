@@ -132,7 +132,7 @@ nodes = {
 },
 "1_14": {
 "dialogue": "It might be easier to show you. Follow me.",
-"offset": Vector2(2320, 640),
+"offset": Vector2(2100, 680),
 "options": {
 0: {
 "condition": {},
@@ -158,7 +158,7 @@ nodes = {
 },
 "1_16": {
 "dialogue": "It looks like Aqua left a few of their experiments out. ",
-"offset": Vector2(-1140, 1320),
+"offset": Vector2(-1120, 1360),
 "options": {
 0: {
 "condition": {},
@@ -171,11 +171,11 @@ nodes = {
 },
 "1_17": {
 "dialogue": "I'll let you take a stab at this. Remember, you can press 'T' to pull up the transmutation menu.",
-"offset": Vector2(-757.497, 1390.11),
+"offset": Vector2(-740, 1420),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"6_5",
 "text": ""
 }
 },
@@ -183,13 +183,13 @@ nodes = {
 "speaker": 0
 },
 "1_18": {
-"dialogue": "",
-"offset": Vector2(-1220, 1660),
+"dialogue": "asdfdasf",
+"offset": Vector2(-1180, 1680),
 "options": {
 0: {
 "condition": {},
 "link": "END",
-"text": "Why do [i]I[/i] have to be the one to solve these?"
+"text": "Why do I have to be the one to solve these?"
 },
 1: {
 "condition": {},
@@ -228,7 +228,7 @@ nodes = {
 },
 "1_20": {
 "dialogue": "",
-"offset": Vector2(-1080, 2000),
+"offset": Vector2(-1060, 2260),
 "options": {
 0: {
 "condition": {},
@@ -396,7 +396,7 @@ nodes = {
 },
 "6_3": {
 "link": "END",
-"offset": Vector2(2760, 540),
+"offset": Vector2(2480, 640),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "intro_walking",
@@ -408,6 +408,14 @@ nodes = {
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "start_tutorial_battle",
+"variable": "current_cutscene"
+},
+"6_5": {
+"link": "END",
+"offset": Vector2(-360, 1440),
+"signalValue": "play_cutscene",
+"type": 0,
+"value": "post_battle_prep",
 "variable": "current_cutscene"
 }
 }

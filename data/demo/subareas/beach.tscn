@@ -106,7 +106,7 @@ stat_manager = SubResource("Resource_yyime")
 hp = 150
 reset_hp_after_battle = true
 _element1 = "orange"
-_element2 = "blank"
+_element2 = "orange"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
 attacks = Array[ExtResource("15_o5iye")]([SubResource("Resource_4yusp")])
@@ -366,6 +366,7 @@ material = ExtResource("1_kv0ly")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -44)
+visible = false
 navigation_mesh = SubResource("NavigationMesh_i6l1g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk/NavigationRegion3D"]

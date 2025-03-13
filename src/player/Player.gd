@@ -34,7 +34,8 @@ var player_name:
 		battle_actor.name = player_name
 
 func _ready() -> void:
-	team.insert(0, battle_actor)
+	if not battle_actor in team:
+		team.insert(0, battle_actor)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return

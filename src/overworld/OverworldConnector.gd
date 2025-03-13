@@ -20,8 +20,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			_current_story_actor.skip_dialog()
 		dialog_box.stop()
 
-
-
 func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	var battle := battle_scene.instantiate()
 
@@ -65,7 +63,6 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 	match sigName:
 		"play_cutscene": 
 			var id = dialog_box.variables["current_cutscene"]
-			print(id)
 			await npc.story_actor.play_cutscene(id)
 		"battle_started":
 			_on_player_battle_started(_player.team, npc.enemy_actor)
