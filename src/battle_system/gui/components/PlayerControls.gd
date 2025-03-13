@@ -94,13 +94,11 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 			on_action_selected(state, index, attack)) 
 		grid.add_child(button)
 
-		# Show affinity cost.
-		button.init_cost(attack.element, attack.cost)
-		button.update_cost(actor)
+		# Set button's color to match element.
+		button.setup(attack.element)
 
 		# Connect signals.
 		end_turn.connect(func(a): button.reset())
-		start_turn.connect(func(): button.update_cost(actor))
 
 func populate_items_menu(items) -> void:
 	var group = ButtonGroup.new()

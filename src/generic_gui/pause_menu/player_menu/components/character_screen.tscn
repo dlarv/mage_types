@@ -14,11 +14,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 script = ExtResource("1_pabo1")
 
 [node name="General" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -85,14 +84,6 @@ layout_mode = 2
 size_flags_vertical = 1
 stat = "HP"
 
-[node name="OAffinity_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_HBox" instance=ExtResource("3_j3qxa")]
-layout_mode = 2
-stat = "O_MANA"
-
-[node name="DAffinity_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_HBox" instance=ExtResource("3_j3qxa")]
-layout_mode = 2
-stat = "D_MANA"
-
 [node name="HSeparator" type="HSeparator" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -127,6 +118,7 @@ layout_mode = 2
 stat = "EVASION"
 
 [node name="Button and Beads" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

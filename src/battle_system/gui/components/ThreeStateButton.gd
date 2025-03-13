@@ -8,9 +8,7 @@ signal state_changed(state: bool)
 @export var locked_modulate_color: Color 
 
 @export var button: Button 
-@export var cost_label: RichTextLabel
 var _element: ElementalType
-var _total_cost: int
 var text: String:
 	get: return button.text
 	set(value):  button.text = value
@@ -29,32 +27,11 @@ var is_locked: bool = false:
 
 var state: bool = false
 
-func _enter_tree():
-	cost_label.hide()
-
-func init_cost(element: ElementalType, cost: int) -> void:
+func setup(element: ElementalType) -> void:
 	_element = element
-	_total_cost = cost
-	cost_label.show()
 
 	var style_box := get_theme_stylebox(element.name.to_lower(), "Control")
 	button.add_theme_stylebox_override("normal", style_box)
-
-func update_cost(actor: BattleActor) -> void:
-	if not cost_label.visible: return
-
-	var affinity := actor.get_affinity_for(_element)
-	var color = _element.get_off_def_color() * min(affinity / _total_cost, 2)
-	color.a = 1
-
-	cost_label.clear()
-	cost_label.push_color(color)
-	cost_label.append_text("%d" % affinity)
-	cost_label.pop() # Pop color
-
-	cost_label.push_color(_element.get_off_def_color())
-	cost_label.append_text("/%d" % _total_cost)
-	cost_label.pop() # Pop color
 
 func _on_pressed(toggled: bool) -> void:
 	if not toggled:

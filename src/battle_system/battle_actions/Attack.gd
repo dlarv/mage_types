@@ -3,46 +3,33 @@ extends BattleAction
 class_name Attack 
 
 @export var effects: Array[BaseEffectSlot]
-@export var cost: int 
 
 # override
 func apply_effects(user: BattleActor, targets: Array) -> String:
 	var msg := [super.apply_effects(user, targets)]
-	var affinity := 1.0
 
-	if cost > 0:
-		affinity = apply_cost(user)
+	var affinity := 0.5 
+	if not user.element1.is_blank() and user.element1.is_defensive_type == element.is_defensive_type:
+		Logger.append_log(Logger.LogType.BATTLE, "User(%s)'s primary Element(%s) has affinity for Attack.Element(%s)"
+				% [user.name, user.element1.name, element.name])
+		affinity *= 2.0
+	if not user.element2.is_blank() and user.element2.is_defensive_type == element.is_defensive_type: 
+		Logger.append_log(Logger.LogType.BATTLE, "User(%s) secondary Element(%s) has affinity for Attack.Element(%s)"
+				% [user.name, user.element2.name, element.name])
+		affinity *= 2.0
+
+	Logger.append_log(Logger.LogType.BATTLE, "Affinity(%.2f)" % affinity)
+	
 
 	for i in range(len(targets)):
 		var target = targets[i]
-		if affinity == 0:
-			msg.append("%s's affinity for %s is empty! This attack had no effect!" 
-					% [user.name, element.get_bb_code_name()])
-			msg.append("%s received %d affinity from their struggle!" 
-					% [user.name, user.get_affinity_for(element)])
-			return "\n".join(msg)
-
-		var rand = randf()
-		if rand > affinity:
-			msg.append("%s's affinity for %s is low! The power of this attack was weakened!" 
-					% [user.name, element.get_bb_code_name()])
-			Logger.append_log(Logger.LogType.BATTLE, 
-					"Low %s affinity weakened the attack. Affinity(%f) < Rand(%f)" 
-						% [element.name, affinity, rand])
-
 		var missedMsg := ""
 		var didDmg := false
-		for effect in effects:
-			if rand > affinity and not effect.attack_effect is Damage: 
-				Logger.append_log(Logger.LogType.BATTLE, "Effect(%s) missed due to low affinity." 
-						% effect.attack_effect.name)
-				missedMsg = "The attack missed due to low affinity!"
-				continue
 
+		for effect in effects:
 			didDmg = true
 			var msg2 = effect.apply_effect(user, target, self, affinity)
 
-			# Get equipment logs, etc.
 			var msg3 = target.get_and_flush_msgs()
 			if len(msg3) > 0:
 				msg.append_array(msg3)
@@ -65,11 +52,6 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 # override
 func is_action_available(actor: BattleActor) -> bool:
 	return true
-	# return actor.current_mana >= cost
-
-# override
-func apply_cost(user: BattleActor) -> float:
-	return user.lose_affinity(element, cost)
 
 # override
 func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:

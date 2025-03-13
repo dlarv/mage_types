@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=44 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="13_qy70b"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="13_wf8nf"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="13_xexyo"]
-[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="14_wm5rh"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="15_o5iye"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="15_xriqk"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="16_1unvm"]
@@ -65,15 +64,6 @@ quantity = 3
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_qjpkm"]
-script = ExtResource("14_wm5rh")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_offensive_affinity = 100
-initial_defensive_affinity = 100
-
 [sub_resource type="Resource" id="Resource_ed301"]
 script = ExtResource("18_lupee")
 name = ""
@@ -92,7 +82,6 @@ _element = "blank"
 resource_name = "Hit"
 script = ExtResource("20_ipvyi")
 effects = Array[ExtResource("17_rm5vl")]([SubResource("Resource_0yygv")])
-cost = 5
 name = "Hit"
 animation = ExtResource("16_fq825")
 _element = "orange"
@@ -116,7 +105,6 @@ name = "Rust Slime"
 stat_manager = SubResource("Resource_yyime")
 hp = 150
 reset_hp_after_battle = true
-affinity_manager = SubResource("Resource_qjpkm")
 _element1 = "orange"
 _element2 = "blank"
 _elemental_bias = "blank"

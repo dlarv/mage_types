@@ -29,7 +29,6 @@ var statuses := StatusEffectManager.new()
 		current_hp = value
 var current_hp: int = 100
 @export var reset_hp_after_battle := true
-@export var affinity_manager = AffinityManager.new()
 
 var speed: float:
 	get: return stat_manager.speed
@@ -120,12 +119,7 @@ func set_element(id: int, element: ElementalType) -> void:
 		element1 = element
 	else:
 		element2 = element
-	
-	if not element.is_blank():
-		var affinity = affinity_manager.set_element(id, element)
-		if affinity > 0:
-			_msgs.append("%s gained %d %s affinity!" % [name, affinity, element.get_bb_code_name()])
-	#sprite.set_element(id, element)
+
 	element_changed.emit(id, element)
 
 	var mod
@@ -185,16 +179,6 @@ func set_stat(stat: Variant, amount: float) -> void:
 		current_hp = int(amount)
 	elif stat == "CURRENT_HP":
 		current_hp = int(amount)
-	elif stat == "D_MANA":
-		affinity_manager.initial_defensive_affinity = amount
-		affinity_manager.affinities[AffinityManager.DEFENSIVE_INDEX] = amount
-	elif stat == "O_MANA":
-		affinity_manager.initial_offensive_affinity = amount
-		affinity_manager.affinities[AffinityManager.OFFENSIVE_INDEX] = amount
-	elif stat == "CURRENT_D_MANA":
-		affinity_manager.affinities[AffinityManager.DEFENSIVE_INDEX] = amount
-	elif stat == "CURRENT_O_MANA":
-		affinity_manager.affinities[AffinityManager.OFFENSIVE_INDEX] = amount
 	else:
 		if stat is String:
 			stat = StatManager.Stat[stat]
@@ -263,23 +247,6 @@ func has_status_effect(effect: StatusEffect) -> bool:
 	return statuses.get_status(effect) != null
 
 
-## Subtracts amount from the element's total affinity.
-## If amount > affinity, return affinity / amount.
-## If amount == 0, character had no affinity to begin with
-func lose_affinity(element: ElementalType, amount: int) -> float:
-	if _func_overrides.has(lose_affinity.get_method()):
-		return _func_overrides.get(lose_affinity.get_method()).call(element, amount)
-	return affinity_manager.lose_affinity(element, amount)
-
-func add_affinity(element: ElementalType, amount: int) -> void:
-	if _func_overrides.has(add_affinity.get_method()):
-		_func_overrides.get(add_affinity.get_method()).call(element, amount)
-		return 
-	affinity_manager.add_affinity(element, amount)
-
-func get_affinity_for(element: ElementalType) -> float:
-	return float(affinity_manager.get_affinity(element))
-
 func try_revert_to_bias()-> bool:
 	if _func_overrides.has(try_revert_to_bias.get_method()):
 		return _func_overrides.get(try_revert_to_bias.get_method()).call()
@@ -313,15 +280,6 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
 	apply_damage(hp * mod)
 
-	# Calculate consecutive turn affinity, if any.
-	var bonus := affinity_manager.gain_affinity(element1, AffinityManager.BonusReason.CONSECUTIVE)
-	if bonus > 0:
-		_msgs.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element1.get_bb_code_name(), bonus])
-
-	bonus = affinity_manager.gain_affinity(element2, AffinityManager.BonusReason.CONSECUTIVE)
-	if bonus > 0:
-		_msgs.append("%s has spent %d consecutive turns as %s. Gained %d affinity!" % [name, bonus / affinity_manager.CONSECUTIVE_BONUS, element2.get_bb_code_name(), bonus])
-
 	var effects = statuses.calculate_expirations()
 	if len(effects) > 0:
 		_msgs.append("Status effects wore off! (%s)" % effects.map(func(x): return x.name))
@@ -347,7 +305,6 @@ func serialize() -> Dictionary:
 	return {
 		"name": name,
 		# "statuses": statuses.serialize(),
-		"affinity": affinity_manager.serialize(),
 		"stats": stat_manager.serialize(),
 		"hp": hp,
 		"current_hp": current_hp,
@@ -365,8 +322,6 @@ func deserialize(data: Dictionary) -> void:
 	# if "statuses" in data:
 	# 	# statuses.deserialize(data["statuses"])
 	# 	statuses
-	if "affinity" in data:
-		affinity_manager.deserialize(data["affinity"])
 	if "stats" in data:
 		stat_manager.deserialize(data["stats"])
 	if "hp" in data:

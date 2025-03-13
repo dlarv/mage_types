@@ -65,9 +65,6 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		elif effect is InstantHealthChange:
 			effectsLabel.append_text("Heals target by x%f their max hp." % effect.strength)
 
-		elif effect is GenerateAffinity:
-			effectsLabel.append_text("Gives %d affinity to the user. The element matches their current primary element." % effect.strength)
-
 		elif effect is RandomPhobia:
 			var a = effect.min_count
 			var b = effect.max_count

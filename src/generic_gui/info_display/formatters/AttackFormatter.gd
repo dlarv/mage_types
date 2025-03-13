@@ -17,7 +17,6 @@ func display(attack: Variant, limitInfo:=false) -> void:
 	name_label.text = attack.name
 	range_label.text = Attack.AttackRange.keys()[attack.attack_range]
 	target_label.text = Attack.TargetType.keys()[attack.target]
-	cost_label.text = str(attack.cost)
 	element_icon.element = attack.element
 
 	# Only show power if attack has damage effects.

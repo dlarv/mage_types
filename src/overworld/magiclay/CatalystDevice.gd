@@ -15,8 +15,6 @@ signal element_selected(element: ElementalType)
 }
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blue":
-	get:
-		return _element
 	set(value):
 		_element = value
 		element = ElementManager.get_element_from_name(value)
@@ -27,6 +25,9 @@ var element: ElementalType = ElementManager.Blue:
 		element = value 
 
 func _ready() -> void:
+	# This script randomly started throwing an error where this value was
+	# not initialized. I'm not sure why.
+	element = ElementManager.get_element_from_name(_element)
 	_rotate_wheel(element)
 
 func _rotate_wheel(element: ElementalType) -> void:

@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=20 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=18 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
-[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_cge1d"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="3_1eowu"]
 [ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="3_ni3h5"]
@@ -11,15 +10,6 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pm1eu"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
 [ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="8_kxgh3"]
-
-[sub_resource type="Resource" id="Resource_yqccd"]
-script = ExtResource("1_cge1d")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_offensive_affinity = 100
-initial_defensive_affinity = 100
 
 [sub_resource type="Resource" id="Resource_d1x85"]
 script = ExtResource("5_auh3w")
@@ -39,7 +29,6 @@ _element = "blank"
 resource_name = "Hit"
 script = ExtResource("6_pm1eu")
 effects = Array[ExtResource("4_b8e3o")]([SubResource("Resource_fungm")])
-cost = 5
 name = "Hit"
 animation = ExtResource("3_1eowu")
 _element = "orange"
@@ -66,7 +55,6 @@ _element = "blank"
 resource_name = "Hit"
 script = ExtResource("6_pm1eu")
 effects = Array[ExtResource("4_b8e3o")]([SubResource("Resource_y2dhe")])
-cost = 5
 name = "Hit"
 animation = ExtResource("3_1eowu")
 _element = "purple"
@@ -90,7 +78,6 @@ name = "Player"
 stat_manager = SubResource("Resource_ii6l6")
 hp = 200
 reset_hp_after_battle = true
-affinity_manager = SubResource("Resource_yqccd")
 _element1 = "blank"
 _element2 = "blank"
 _elemental_bias = "blank"

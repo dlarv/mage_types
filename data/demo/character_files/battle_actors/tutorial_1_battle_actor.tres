@@ -1,19 +1,9 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://cm4wr6tvgqw55"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://cm4wr6tvgqw55"]
 
-[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_jo5of"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_qnp4c"]
 [ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="3_111ib"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="4_5ngg0"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="5_tkpf5"]
-
-[sub_resource type="Resource" id="Resource_8dkm5"]
-script = ExtResource("1_jo5of")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_offensive_affinity = 100
-initial_defensive_affinity = 100
 
 [sub_resource type="Resource" id="Resource_h1bhc"]
 script = ExtResource("5_tkpf5")
@@ -30,7 +20,6 @@ name = "Guy"
 stat_manager = SubResource("Resource_h1bhc")
 hp = 100
 reset_hp_after_battle = true
-affinity_manager = SubResource("Resource_8dkm5")
 _element1 = "blue"
 _element2 = "blank"
 _elemental_bias = "blank"

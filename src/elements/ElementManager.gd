@@ -177,7 +177,6 @@ func test_traversals() -> void:
 		print(output)
 		file.store_line(output)
 
-
 func _enter_tree() -> void:
 	force_load()
 	# test_transmutations()

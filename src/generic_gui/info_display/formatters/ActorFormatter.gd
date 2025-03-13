@@ -30,10 +30,6 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	bias_icon.element = obj.elemental_bias
 	hp_label.text = "%d/%d" % [obj.current_hp, obj.hp]
 
-	# Display affinities.
-	cost_label.append_text("Offensive: %d\n" % obj.affinity_manager.affinities[0])
-	cost_label.append_text("Defensive: %d" % obj.affinity_manager.affinities[1])
-
 	display_stats(obj)
 
 	# Status effects.
