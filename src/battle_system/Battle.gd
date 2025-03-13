@@ -79,7 +79,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	await dialog(false)
 
 	for action in actions:
-
 		var flinch = action.actor.flinching
 		if flinch != null:
 			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
@@ -129,11 +128,26 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		endBattle = await _check_if_battle_ended()
 		if endBattle: return
 
+		# Change any of user's blank typing to match type of this attack.
+		var updatedType := false
+		msg = ""
+		if action.actor.element1.is_blank():
+			action.actor.set_element(0, action.action.element)
+			updatedType = true
+			msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
+		elif action.actor.element2.is_blank():
+			action.actor.set_element(1, action.action.element)
+			updatedType = true
+			msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
+
+		if len(msg) > 0:
+			await gui.display_message(msg)
+
 		# Calculate user transmutations.
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
 		# This only applies to melee attacks.
-		if(action.targets.find(action.actor) == -1 \
+		if updatedType or (action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
 				and (action.action).attack_range == Attack.AttackRange.MELEE):
 			await calculate_transmutations(action.actor, action.action) 
