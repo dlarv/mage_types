@@ -24,7 +24,29 @@ slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color(1, 1, 1, 1)
+slot/3/left_icon = null
+slot/3/right_enabled = false
+slot/3/right_type = 0
+slot/3/right_color = Color(1, 1, 1, 1)
+slot/3/right_icon = null
+slot/3/draw_stylebox = true
 script = ExtResource("1_kwfna")
+
+[node name="Label1" type="Label" parent="."]
+layout_mode = 2
+text = "Set variable"
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 2
@@ -64,6 +86,10 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "Signal"
+
 [node name="SignalValue" type="LineEdit" parent="."]
 layout_mode = 2
 tooltip_text = "The String value passed in the signal parameter."
@@ -78,6 +104,6 @@ one_shot = true
 [connection signal="text_changed" from="BoxContainer/Value" to="." method="_on_value_changed"]
 [connection signal="timeout" from="VariableTimer" to="." method="_on_variable_timer_timeout"]
 [connection signal="timeout" from="ValueTimer" to="." method="_on_value_timer_timeout"]
-[connection signal="text_changed" from="SignalValue" to="." method="_on_signal_value_changed"]
 [connection signal="text_changed" from="SignalValue" to="." method="_on_node_modified"]
+[connection signal="text_changed" from="SignalValue" to="." method="_on_signal_value_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
