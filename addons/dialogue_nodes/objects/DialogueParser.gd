@@ -127,6 +127,7 @@ func _proceed(node_name: String) -> void:
 		_process_condition,
 		_process_nest,
 		_process_fork,
+		# Dlarv: Added these two items.
 		func(): pass,# graphframe
 		_process_set_signal,
 	]
@@ -226,7 +227,7 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 	if auto_proceed:
 		_proceed(dict.link)
 
-# Processes the setsignal node data (dict). 
+# Dlarv: Processes the setsignal node data (dict). 
 func _process_set_signal(dict: Dictionary) -> void:
 	_process_set(dict, false)
 	dialogue_signal.emit(dict.signalValue)
