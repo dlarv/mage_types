@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://addons/dialogue_nodes/nodes/NestNode.tscn" id="7_bbhno"]
 [ext_resource type="PackedScene" path="res://addons/dialogue_nodes/nodes/ForkNode.tscn" id="8_rv1ta"]
 [ext_resource type="PackedScene" path="res://addons/dialogue_nodes/nodes/GraphFrame.tscn" id="9_mrf2v"]
-[ext_resource type="Texture2D" uid="uid://wi6brbfwuyyn" path="res://addons/dialogue_nodes/icons/ExternalLink.svg" id="10_7fopr"]
+[ext_resource type="PackedScene" uid="uid://bk88778awqf1k" path="res://addons/dialogue_nodes/nodes/SetSignalNode.tscn" id="10_hmvjq"]
 
 [sub_resource type="GDScript" id="GDScript_rmhin"]
 script/source = "@tool
@@ -85,8 +85,7 @@ right_disconnects = true
 zoom_min = 0.5
 zoom_max = 2.0
 script = ExtResource("1_7isyk")
-NodeScenes = Array[PackedScene]([ExtResource("2_vth6c"), ExtResource("3_xrua3"), ExtResource("4_cm4a7"), ExtResource("5_6fr2y"), ExtResource("6_nfo3d"), SubResource("PackedScene_b1xjv"), ExtResource("7_bbhno"), ExtResource("8_rv1ta"), ExtResource("9_mrf2v")])
-detach_icon = ExtResource("10_7fopr")
+NodeScenes = Array[PackedScene]([ExtResource("2_vth6c"), ExtResource("3_xrua3"), ExtResource("4_cm4a7"), ExtResource("5_6fr2y"), ExtResource("6_nfo3d"), SubResource("PackedScene_b1xjv"), ExtResource("7_bbhno"), ExtResource("8_rv1ta"), ExtResource("9_mrf2v"), ExtResource("10_hmvjq")])
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
 item_count = 9

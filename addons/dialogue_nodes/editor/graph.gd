@@ -16,7 +16,8 @@ signal run_requested(start_node_idx: int)
 	preload('res://addons/dialogue_nodes/nodes/ConditionNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/NestNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/ForkNode.tscn'),
-	preload('res://addons/dialogue_nodes/nodes/GraphFrame.tscn')
+	preload('res://addons/dialogue_nodes/nodes/GraphFrame.tscn'),
+	preload('res://addons/dialogue_nodes/nodes/SetSignalNode.tscn'),
 ]
 @export var detach_icon: Texture2D = preload('res://addons/dialogue_nodes/icons/ExternalLink.svg')
 
@@ -148,6 +149,8 @@ func add_node(id: int, node_name := '', offset := cursor_pos) -> GraphElement:
 			new_node._on_variables_updated(last_variable_list)
 		5: # conditional node
 			new_node._on_variables_updated(last_variable_list)
+		9:
+			new_node._on_variables_updated(last_variable_list)
 	
 	return new_node
 
@@ -172,6 +175,8 @@ func connect_node_signals(node: GraphElement) -> void:
 		7: # fork node
 			node.disconnection_from_request.connect(_on_disconnection_from_request)
 			node.connection_shift_request.connect(_on_connection_shift_request)
+		9: # setsignal node
+			variables_updated.connect(node._on_variables_updated)
 
 
 func disconnect_node_signals(node: GraphElement) -> void:
@@ -368,7 +373,7 @@ func _on_duplicate_nodes_request() -> void:
 		clone_node.position_offset = node.position_offset + _duplicate_offset
 		if clone_id == 1:
 			clone_node._on_characters_updated(last_character_list)
-		elif clone_id == 4 or clone_id == 5:
+		elif clone_id == 4 or clone_id == 5 or clone_id == 9:
 			clone_node._on_variables_updated(last_variable_list)
 			
 		duplicated_nodes.append(clone_node)

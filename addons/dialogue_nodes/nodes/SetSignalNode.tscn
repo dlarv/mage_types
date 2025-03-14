@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk88778awqf1k"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/nodes/setSignalNode.gd" id="1_kwfna"]
+
+[node name="SetSignalNode" type="GraphNode"]
+offset_right = 194.0
+offset_bottom = 119.0
+title = "SetSignalNode"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_kwfna")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Variable" type="OptionButton" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "The property to set the value of."
+
+[node name="Type" type="OptionButton" parent="BoxContainer"]
+layout_mode = 2
+tooltip_text = "The type of the value to set."
+selected = 0
+item_count = 5
+popup/item_0/text = "="
+popup/item_1/text = "+="
+popup/item_1/id = 1
+popup/item_2/text = "-="
+popup/item_2/id = 2
+popup/item_3/text = "*="
+popup/item_3/id = 3
+popup/item_4/text = "/="
+popup/item_4/id = 4
+
+[node name="Value" type="LineEdit" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "The value to set the property to.
+Eg: Bob, 12, 0.5, false, etc."
+placeholder_text = "Value"
+
+[node name="VariableTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ValueTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="SignalValue" type="LineEdit" parent="."]
+layout_mode = 2
+tooltip_text = "The String value passed in the signal parameter."
+placeholder_text = "Value"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="item_selected" from="BoxContainer/Variable" to="." method="_on_variable_selected"]
+[connection signal="item_selected" from="BoxContainer/Type" to="." method="_on_type_selected"]
+[connection signal="text_changed" from="BoxContainer/Value" to="." method="_on_value_changed"]
+[connection signal="timeout" from="VariableTimer" to="." method="_on_variable_timer_timeout"]
+[connection signal="timeout" from="ValueTimer" to="." method="_on_value_timer_timeout"]
+[connection signal="text_changed" from="SignalValue" to="." method="_on_node_modified"]
+[connection signal="text_changed" from="SignalValue" to="." method="_on_signal_value_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

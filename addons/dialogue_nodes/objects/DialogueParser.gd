@@ -125,7 +125,9 @@ func _proceed(node_name: String) -> void:
 		_process_set,
 		_process_condition,
 		_process_nest,
-		_process_fork
+		_process_fork,
+		func(): pass,# graphframe
+		_process_set_signal,
 	]
 	
 	var id := int(node_name.split('_')[0])
@@ -170,10 +172,12 @@ func _process_signal(dict: Dictionary) -> void:
 
 
 # Processes the set node data (dict).
-func _process_set(dict: Dictionary) -> void:
+func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 	if not variables.has(dict.variable):
 		printerr('Variable ', dict.variable, ' not found in variables list')
-		_proceed(dict.link)
+		# Dlarv: Done this way so that SetSignal can call this method too.
+		if auto_proceed:
+			_proceed(dict.link)
 		return
 	
 	var type = typeof(variables[dict.variable])
@@ -217,6 +221,14 @@ func _process_set(dict: Dictionary) -> void:
 			variables[dict.variable] /= value
 	
 	variable_changed.emit(dict.variable, variables[dict.variable])
+	# Dlarv: Done this way so that SetSignal can call this method too.
+	if auto_proceed:
+		_proceed(dict.link)
+
+# Processes the setsignal node data (dict). 
+func _process_set_signal(dict: Dictionary) -> void:
+	_process_set(dict, false)
+	dialogue_signal.emit(dict.signalValue)
 	_proceed(dict.link)
 
 

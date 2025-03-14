@@ -1,9 +1,9 @@
 @tool
-extends GraphNode
-
+extends Control
 
 signal modified
 
+# SetNode variables
 @onready var variable := $BoxContainer/Variable
 @onready var variable_timer := $VariableTimer
 @onready var type := $BoxContainer/Type
@@ -16,6 +16,12 @@ var last_type: int
 var last_value: String
 var cur_variable := -1
 
+# SignalNode variables
+@onready var signal_value := $SignalValue
+@onready var timer := $Timer
+
+var last_signal_value := ''
+
 func _to_dict(graph: GraphEdit) -> Dictionary:
 	var dict := {}
 	var connections: Array = graph.get_connections(name)
@@ -24,19 +30,24 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 	dict['variable'] = graph.last_variable_list[cur_variable]
 	dict['type'] = type.selected
 	dict['value'] = value.text
+
+	dict['signalValue'] = signal_value.text
 	dict['link'] = connections[0]['to_node'] if connections.size() > 0 else 'END'
-	
 	return dict
 
 
 func _from_dict(dict: Dictionary) -> Array[String]:
 	cur_variable = dict['cur_variable']
+
 	type.selected = dict['type']
 	value.text = dict['value']
 	
 	last_variable = variable.text
 	last_type = type.selected
 	last_value = value.text
+
+	signal_value.text = dict['signalValue']
+	last_signal_value = signal_value.text
 	
 	return [dict['link']]
 
@@ -129,3 +140,26 @@ func _on_variable_selected(idx: int) -> void:
 	undo_redo.add_undo_property(self, 'cur_variable', cur_variable)
 	undo_redo.add_undo_method(variable, 'select', cur_variable)
 	undo_redo.commit_action()
+
+func set_signal_value(new_value: String) -> void:
+	if value.text != new_value:
+		value.text = new_value
+	last_value = new_value
+
+
+func _on_signal_value_changed(_new_text) -> void:
+	timer.stop()
+	timer.start()
+
+
+func _on_timer_timeout() -> void:
+	if not undo_redo: return
+	
+	undo_redo.create_action('Set signal value')
+	undo_redo.add_do_method(self, 'set_signal_value', value.text)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, 'set_signal_value', last_value)
+	undo_redo.commit_action()
+
+

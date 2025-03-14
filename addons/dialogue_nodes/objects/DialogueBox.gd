@@ -25,7 +25,7 @@ signal dialogue_ended
 
 @export_group('Data')
 ## Contains the [param DialogueData] resource created using the Dialogue Nodes editor.
-@export var data: DialogueData :
+@export var data: DialogueData:
 	get:
 		return data
 	set(value):
@@ -210,8 +210,10 @@ func _enter_tree() -> void:
 	
 	_dialogue_parser = DialogueParser.new()
 	add_child(_dialogue_parser)
-	_dialogue_parser.data = data
+	# _dialogue_parser.data = data
+	_dialogue_parser.set_data(data)
 	variables = _dialogue_parser.variables
+	print(variables)
 	characters = _dialogue_parser.characters
 	skip_options_condition_checks = skip_options_condition_checks
 	

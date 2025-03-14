@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dv7ytd0jknbh6"]
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://18q5iqow8oua"]
 
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_7sxr6"]
 
@@ -10,8 +10,7 @@ starts = {
 "BOSS1": &"0_1",
 "FAVOR": &"0_8",
 "MISC": &"0_2",
-"PARTNER_INTRO": &"0_4",
-"TUTORIAL_FIGHT": &"0_5"
+"PARTNER_INTRO": &"0_4"
 }
 nodes = {
 "0_1": {
@@ -28,11 +27,6 @@ nodes = {
 "link": &"1_6",
 "offset": Vector2(-1740, 640),
 "start_id": "PARTNER_INTRO"
-},
-"0_5": {
-"link": &"1_15",
-"offset": Vector2(1280, 1320),
-"start_id": "TUTORIAL_FIGHT"
 },
 "0_6": {
 "link": &"1_16",
@@ -61,19 +55,6 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": ""
-},
-"1_15": {
-"dialogue": "asdf",
-"offset": Vector2(1520, 1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([{}]),
-"link": &"6_4",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
 },
 "1_16": {
 "dialogue": "It looks like Aqua left a few of their experiments out. ",
@@ -116,7 +97,7 @@ nodes = {
 "text": "Can I have a hint?"
 }
 },
-"size": Vector2(300, 292),
+"size": Vector2(300, 308),
 "speaker": 0
 },
 "1_2": {
@@ -151,7 +132,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"9_1",
 "text": ""
 }
 },
@@ -163,17 +144,14 @@ nodes = {
 "offset": Vector2(-1120, 280),
 "signalValue": "battle_started"
 },
-"6_3": {
-"file_path": "",
+"9_1": {
+"cur_variable": 0,
 "link": "END",
-"offset": Vector2(1120, 720),
-"start_id": ""
-},
-"6_4": {
-"file_path": "",
-"link": "END",
-"offset": Vector2(1900, 1260),
-"start_id": ""
+"offset": Vector2(-1000, 520),
+"signalValue": "play_cutscene",
+"type": 0,
+"value": "pull_from_surf",
+"variable": "current_cutscene"
 }
 }
 variables = {
@@ -190,5 +168,5 @@ variables = {
 "value": false
 }
 }
-strays = Array[String](["6_3"])
+strays = Array[String]([])
 characters = "res://data/demo/character_files/character_list.tres"
