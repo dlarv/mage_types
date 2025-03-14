@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_7sxr6")
 starts = {
-"BEACH_PUZZLES": &"0_7",
 "BEACH_PUZZLE_INTRO": &"0_6",
 "BOSS1": &"0_1",
 "FAVOR": &"0_8",
@@ -34,7 +33,7 @@ nodes = {
 "start_id": "BEACH_PUZZLE_INTRO"
 },
 "0_7": {
-"link": &"1_18",
+"link": "END",
 "offset": Vector2(-1720, 1320),
 "start_id": "BEACH_PUZZLES"
 },
@@ -80,24 +79,6 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
-},
-"1_18": {
-"dialogue": "asdfdasf",
-"offset": Vector2(-1440, 1340),
-"options": {
-0: {
-"condition": Array[Dictionary]([{}]),
-"link": "END",
-"text": "Why do I have to be the one to solve these?"
-},
-1: {
-"condition": Array[Dictionary]([{}]),
-"link": "END",
-"text": "Can I have a hint?"
-}
-},
-"size": Vector2(300, 308),
 "speaker": 0
 },
 "1_2": {
@@ -147,7 +128,7 @@ nodes = {
 "9_1": {
 "cur_variable": 0,
 "link": "END",
-"offset": Vector2(-1000, 520),
+"offset": Vector2(-1160, 600),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "pull_from_surf",
@@ -168,5 +149,5 @@ variables = {
 "value": false
 }
 }
-strays = Array[String]([])
+strays = Array[String](["0_7"])
 characters = "res://data/demo/character_files/character_list.tres"

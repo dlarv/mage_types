@@ -30,7 +30,7 @@ var cur_variable := -1
 
 func _to_dict() -> Dictionary:
 	if is_empty():
-		print_rich('[color=yellow]Condition is empty![/color]')
+		#print_rich('[color=yellow]Condition is empty![/color]')
 		return {}
 	
 	var dict:= {
@@ -70,7 +70,7 @@ func _from_dict(dict: Dictionary) -> void:
 
 
 func is_empty() -> bool:
-	return (value1.text == '') and (operator.selected == 0) and (value2.text == '')
+	return (value1.selected == -1) and (operator.selected == 0) and (value2.text == '')
 
 
 func _on_condition_changing(_a=0) -> void:
