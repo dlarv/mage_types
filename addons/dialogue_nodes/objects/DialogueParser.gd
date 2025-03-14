@@ -52,6 +52,7 @@ func load_data(path: String) -> void:
 ## Setter for [member data].
 func set_data(new_data: DialogueData) -> void:
 	data = new_data
+	if not data: return
 	_data.clear()
 	_characters.clear()
 	_nest_links.clear()
