@@ -78,6 +78,6 @@ one_shot = true
 [connection signal="text_changed" from="BoxContainer/Value" to="." method="_on_value_changed"]
 [connection signal="timeout" from="VariableTimer" to="." method="_on_variable_timer_timeout"]
 [connection signal="timeout" from="ValueTimer" to="." method="_on_value_timer_timeout"]
-[connection signal="text_changed" from="SignalValue" to="." method="_on_node_modified"]
 [connection signal="text_changed" from="SignalValue" to="." method="_on_signal_value_changed"]
+[connection signal="text_changed" from="SignalValue" to="." method="_on_node_modified"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
