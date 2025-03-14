@@ -170,7 +170,8 @@ func disconnect_node_signals(node : GraphNode):
 
 
 func show_add_menu(pos : Vector2):
-	var pop_pos := pos + global_position + Vector2(get_window().position)
+	# DLarv: Using a tiled window manager causes the position of the popup to break.
+	var pop_pos := pos + global_position #+ Vector2(get_window().position)
 	popup_menu.popup(Rect2(pop_pos.x, pop_pos.y, popup_menu.size.x, popup_menu.size.y))
 	cursor_pos = (pos + scroll_offset) / zoom
 
