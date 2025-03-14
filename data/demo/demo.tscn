@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=57 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -28,7 +28,6 @@
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="28_vtokk"]
 [ext_resource type="Resource" uid="uid://se30wrmyq86g" path="res://data/demo/battle_1_dialog_tree.tres" id="29_iranb"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="30_p27dt"]
-[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="30_qndnp"]
 [ext_resource type="Resource" uid="uid://cm4wr6tvgqw55" path="res://data/demo/character_files/battle_actors/tutorial_1_battle_actor.tres" id="31_qv7w7"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
@@ -45,7 +44,7 @@ script = ExtResource("7_3o8i5")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8a8ea"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sopia"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikkfa"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_660mf"]
@@ -337,9 +336,6 @@ _data = {
 "test": SubResource("Animation_m5x7d")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_66i6d"]
-radius = 1.0
-
 [node name="Demo" type="Node3D"]
 
 [node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_x5fo8")]
@@ -392,7 +388,7 @@ character = ExtResource("23_sfjag")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.5, 0.4)
 mesh = SubResource("CapsuleMesh_8a8ea")
-surface_material_override/0 = SubResource("StandardMaterial3D_sopia")
+surface_material_override/0 = SubResource("StandardMaterial3D_ikkfa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -476,20 +472,6 @@ process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_ddao4")
 }
-
-[node name="NPC" parent="Overworld" instance=ExtResource("20_2sxei")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
-auto_trigger = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/NPC"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-shape = SubResource("SphereShape3D_66i6d")
-
-[node name="AnimationActor" parent="Overworld/NPC" node_paths=PackedStringArray("animation_player") instance=ExtResource("30_qndnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4)
-animation_name = "test"
-animation_player = NodePath("../../AnimationPlayer")
-is_blocking = true
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

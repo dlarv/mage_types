@@ -3,24 +3,25 @@ extends HBoxContainer
 
 
 signal modified
-signal delete_requested(node : BoxContainer)
+signal delete_requested(node: BoxContainer)
+signal name_updated(new_name: String, old_name: String)
 
-@onready var var_name = $Name
-@onready var type = $Type
-@onready var string_value = $StringValue
-@onready var int_value = $IntValue
-@onready var float_value = $FloatValue
-@onready var bool_value = $BoolValue
+@onready var var_name := $Name
+@onready var type := $Type
+@onready var string_value := $StringValue
+@onready var int_value := $IntValue
+@onready var float_value := $FloatValue
+@onready var bool_value := $BoolValue
 
 const types := [TYPE_STRING, TYPE_INT, TYPE_FLOAT, TYPE_BOOL]
-var undo_redo : EditorUndoRedoManager
-var last_set_name : String
-var last_set_type : int
-var last_shown_input : Control
+var undo_redo: EditorUndoRedoManager
+var last_set_name: String
+var last_set_type: int
+var last_shown_input: Control
 var last_value := ['', 0, 0.0, false]
 
 
-func _ready():
+func _ready() -> void:
 	last_set_name = var_name.text
 	last_set_type = type.selected
 	last_shown_input = string_value
@@ -30,14 +31,16 @@ func _ready():
 		type.set_item_id(i, types[i])
 
 
-func get_var_name():
+func get_var_name() -> String:
 	return var_name.text
 
 
-func set_var_name(new_name : String):
+func set_var_name(new_name: String) -> void:
 	if new_name != var_name.text:
 		var_name.text = new_name
+	name_updated.emit(new_name, last_set_name)
 	last_set_name = var_name.text
+
 
 
 func get_value():
@@ -53,7 +56,7 @@ func get_value():
 	return ''
 
 
-func set_value(new_value):
+func set_value(new_value) -> void:
 	match types[type.selected]:
 		TYPE_STRING:
 			if new_value != string_value.text:
@@ -73,7 +76,7 @@ func set_value(new_value):
 	]
 
 
-func set_type(new_idx : int):
+func set_type(new_idx: int) -> void:
 	if last_shown_input:
 		last_shown_input.hide()
 	
@@ -94,21 +97,22 @@ func set_type(new_idx : int):
 	last_set_type = new_idx
 
 
-func get_data():
-	var data_type : int = type.get_item_id(type.selected)
+func get_data() -> Dictionary:
+	var data_type: int = type.get_item_id(type.selected)
 	var data_value = get_value()
 	return {'type': data_type, 'value': data_value}
 
 
-func load_data(new_name : String, data : Dictionary):
+func load_data(new_name: String, data: Dictionary) -> void:
 	set_var_name(new_name)
 	type.select(types.find(data['type']))
 	set_type(types.find(data['type']))
 	set_value(data['value'])
 
 
-func _on_name_changed(new_text : String):
+func _on_name_changed(new_text: String) -> void:
 	if not undo_redo:
+		set_var_name(new_text)
 		return
 	
 	undo_redo.create_action('Set variable name')
@@ -117,9 +121,10 @@ func _on_name_changed(new_text : String):
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_var_name', last_set_name)
 	undo_redo.commit_action()
+	
 
 
-func _on_type_changed(new_idx : int):
+func _on_type_changed(new_idx: int) -> void:
 	if not undo_redo:
 		set_type(new_idx)
 		return
@@ -134,7 +139,7 @@ func _on_type_changed(new_idx : int):
 	undo_redo.commit_action()
 
 
-func _on_value_changed(new_value):
+func _on_value_changed(new_value) -> void:
 	if not undo_redo:
 		return
 	
@@ -146,9 +151,9 @@ func _on_value_changed(new_value):
 	undo_redo.commit_action()
 
 
-func _on_delete_pressed():
+func _on_delete_pressed() -> void:
 	delete_requested.emit(self)
 
 
-func _on_modified(_a= 0, _b= 0):
+func _on_modified(_a= 0, _b= 0) -> void:
 	modified.emit()

@@ -49,7 +49,7 @@ nodes = {
 "offset": Vector2(-520, -620),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_2",
 "text": ""
 }
@@ -62,7 +62,7 @@ nodes = {
 "offset": Vector2(380, 560),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_11",
 "text": ""
 }
@@ -75,7 +75,7 @@ nodes = {
 "offset": Vector2(820, 700),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([]),
 "link": "END",
 "text": ""
 }
@@ -88,7 +88,7 @@ nodes = {
 "offset": Vector2(-400, 900),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_13",
 "text": ""
 }
@@ -102,7 +102,7 @@ nodes = {
 "offset": Vector2(0, 920),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([]),
 "link": "END",
 "text": ""
 }
@@ -115,7 +115,7 @@ nodes = {
 "offset": Vector2(-220, 1260),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_15",
 "text": ""
 }
@@ -128,7 +128,7 @@ nodes = {
 "offset": Vector2(160, 1300),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([]),
 "link": "END",
 "text": ""
 }
@@ -141,7 +141,7 @@ nodes = {
 "offset": Vector2(-420, 40),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_17",
 "text": ""
 }
@@ -158,7 +158,7 @@ nodes = {
 "offset": Vector2(-60, 140),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_19",
 "text": ""
 }
@@ -171,7 +171,7 @@ nodes = {
 "offset": Vector2(1040, 420),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([]),
 "link": "END",
 "text": ""
 }
@@ -188,7 +188,7 @@ nodes = {
 "offset": Vector2(320, 220),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_20",
 "text": ""
 }
@@ -202,7 +202,7 @@ nodes = {
 "offset": Vector2(-140, -620),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_3",
 "text": ""
 }
@@ -219,7 +219,7 @@ nodes = {
 "offset": Vector2(700, 260),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_18",
 "text": ""
 }
@@ -234,7 +234,7 @@ nodes = {
 "offset": Vector2(240, -620),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_4",
 "text": ""
 }
@@ -247,7 +247,7 @@ nodes = {
 "offset": Vector2(638.034, -611.848),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([]),
 "link": "END",
 "text": ""
 }
@@ -260,7 +260,7 @@ nodes = {
 "offset": Vector2(-420, -260),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_6",
 "text": ""
 }
@@ -277,7 +277,7 @@ nodes = {
 "offset": Vector2(-40, -240),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_7",
 "text": ""
 }
@@ -290,7 +290,7 @@ nodes = {
 "offset": Vector2(280, -220),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([]),
 "link": "END",
 "text": ""
 }
@@ -303,7 +303,7 @@ nodes = {
 "offset": Vector2(-400, 540),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_9",
 "text": ""
 }
@@ -317,7 +317,7 @@ nodes = {
 "offset": Vector2(0, 540),
 "options": {
 0: {
-"condition": {},
+"condition": Array[Dictionary]([{}]),
 "link": &"1_10",
 "text": ""
 }

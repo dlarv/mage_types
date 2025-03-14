@@ -1,6 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://c77r4qmw3a416"]
+[gd_scene load_steps=13 format=3 uid="uid://c77r4qmw3a416"]
 
 [ext_resource type="Script" path="res://addons/dialogue_nodes/editor/graph.gd" id="1_7isyk"]
+[ext_resource type="PackedScene" uid="uid://c3p0644abxxbm" path="res://addons/dialogue_nodes/nodes/StartNode.tscn" id="2_vth6c"]
+[ext_resource type="PackedScene" uid="uid://b60fa8vcjuoo6" path="res://addons/dialogue_nodes/nodes/DialogueNode.tscn" id="3_xrua3"]
+[ext_resource type="PackedScene" uid="uid://h3hkys0mgvji" path="res://addons/dialogue_nodes/nodes/CommentNode.tscn" id="4_cm4a7"]
+[ext_resource type="PackedScene" uid="uid://v3g2kwpbw3u6" path="res://addons/dialogue_nodes/nodes/SignalNode.tscn" id="5_6fr2y"]
+[ext_resource type="PackedScene" uid="uid://dsllcvm7vi10m" path="res://addons/dialogue_nodes/nodes/SetNode.tscn" id="6_nfo3d"]
+[ext_resource type="PackedScene" path="res://addons/dialogue_nodes/nodes/NestNode.tscn" id="7_bbhno"]
+[ext_resource type="PackedScene" path="res://addons/dialogue_nodes/nodes/ForkNode.tscn" id="8_rv1ta"]
+[ext_resource type="PackedScene" path="res://addons/dialogue_nodes/nodes/GraphFrame.tscn" id="9_mrf2v"]
+[ext_resource type="Texture2D" uid="uid://wi6brbfwuyyn" path="res://addons/dialogue_nodes/icons/ExternalLink.svg" id="10_7fopr"]
+
+[sub_resource type="GDScript" id="GDScript_rmhin"]
+script/source = "@tool
+extends GraphNode
+
+
+signal modified
+
+@onready var condition_list: BoxContainer = $ConditionList
+
+var undo_redo: EditorUndoRedoManager
+
+
+func _ready() -> void:
+	condition_list = $ConditionList
+	condition_list.undo_redo = undo_redo
+
+
+func _to_dict(graph: GraphEdit) -> Dictionary:
+	var dict = {}
+	dict['condition'] = condition_list._to_dict()
+	
+	dict['true'] = 'END'
+	dict['false'] = 'END'
+	
+	for connection in graph.get_connection_list():
+		if connection['from_node'] == name:
+			if connection['from_port'] == 0:
+				dict['true'] = connection['to_node']
+			elif connection['from_port'] == 1:
+				dict['false'] = connection['to_node']
+	
+	return dict
+
+
+func _from_dict(dict: Dictionary) -> Array[String]:
+	condition_list._from_dict(dict['condition'])
+	
+	return [dict['true'], dict['false']]
+
+
+func _on_modified() -> void:
+	reset_size()
+	modified.emit()
+
+func _on_variables_updated(variables_list: Array[String]) -> void:
+	condition_list.update_variables(variables_list)
+"
+
+[sub_resource type="PackedScene" id="PackedScene_b1xjv"]
+_bundled = {
+"conn_count": 5,
+"conns": PackedInt32Array(1073741833, 1073741832, 92, 91, 2, 0, 0, 1073741835, 1073741834, 94, 93, 2, 0, 0, 1073741837, 1073741836, 96, 95, 2, 0, 0, 1073741839, 1073741838, 98, 97, 2, 0, 0, 1073741841, 1073741840, 100, 99, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("ConditionNode", "GraphNode", "offset_right", "offset_bottom", "title", "slot/0/left_enabled", "slot/0/left_type", "slot/0/left_color", "slot/0/left_icon", "slot/0/right_enabled", "slot/0/right_type", "slot/0/right_color", "slot/0/right_icon", "slot/0/draw_stylebox", "slot/1/left_enabled", "slot/1/left_type", "slot/1/left_color", "slot/1/left_icon", "slot/1/right_enabled", "slot/1/right_type", "slot/1/right_color", "slot/1/right_icon", "slot/1/draw_stylebox", "slot/2/left_enabled", "slot/2/left_type", "slot/2/left_color", "slot/2/left_icon", "slot/2/right_enabled", "slot/2/right_type", "slot/2/right_color", "slot/2/right_icon", "slot/2/draw_stylebox", "script", "BoxContainer", "BoxContainer", "layout_mode", "vertical", "Value1", "LineEdit", "layout_mode", "size_flags_horizontal", "tooltip_text", "placeholder_text", "metadata/last_value", "Operator", "OptionButton", "custom_minimum_size", "layout_mode", "size_flags_horizontal", "selected", "item_count", "popup/item_0/text", "popup/item_1/text", "popup/item_1/id", "popup/item_2/text", "popup/item_2/id", "popup/item_3/text", "popup/item_3/id", "popup/item_4/text", "popup/item_4/id", "popup/item_5/text", "popup/item_5/id", "Value2", "LineEdit", "layout_mode", "size_flags_horizontal", "tooltip_text", "placeholder_text", "metadata/last_value", "TrueLabel", "ItemList", "layout_mode", "mouse_filter", "auto_height", "item_count", "item_0/text", "FalseLabel", "ItemList", "layout_mode", "mouse_filter", "auto_height", "item_count", "item_0/text", "Value1Timer", "Timer", "wait_time", "one_shot", "Value2Timer", "Timer", "wait_time", "one_shot", "_on_value1_changed", "text_changed", "_on_operator_selected", "item_selected", "_on_value2_changed", "text_changed", "_on_value1_timer_timeout", "timeout", "_on_value2_timer_timeout", "timeout"),
+"node_count": 9,
+"node_paths": [NodePath("."), NodePath("./BoxContainer"), NodePath("./BoxContainer"), NodePath("./BoxContainer"), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("BoxContainer/Value1"), NodePath("."), NodePath("BoxContainer/Operator"), NodePath("."), NodePath("BoxContainer/Value2"), NodePath("."), NodePath("Value1Timer"), NodePath("."), NodePath("Value2Timer")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 31, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 15, 18, 16, 19, 17, 20, 18, 21, 19, 22, 20, 23, 21, 24, 22, 25, 23, 26, 24, 27, 25, 28, 26, 29, 27, 30, 28, 31, 29, 32, 30, 0, 1073741824, 0, 34, 33, -1, 2, 35, 31, 36, 32, 0, 1073741825, 0, 38, 37, -1, 5, 39, 33, 40, 34, 41, 35, 42, 36, 43, 37, 0, 1073741826, 0, 45, 44, -1, 16, 46, 38, 47, 39, 48, 40, 49, 41, 50, 42, 51, 43, 52, 44, 53, 45, 54, 46, 55, 47, 56, 48, 57, 49, 58, 50, 59, 51, 60, 52, 61, 53, 0, 1073741827, 0, 63, 62, -1, 5, 64, 54, 65, 55, 66, 56, 67, 57, 68, 58, 0, 1073741828, 0, 70, 69, -1, 5, 71, 59, 72, 60, 73, 61, 74, 62, 75, 63, 0, 1073741829, 0, 77, 76, -1, 5, 78, 64, 79, 65, 80, 66, 81, 67, 82, 68, 0, 1073741830, 0, 84, 83, -1, 2, 85, 69, 86, 70, 0, 1073741831, 0, 88, 87, -1, 2, 89, 71, 90, 72, 0),
+"variants": [300.0, 110.0, "ConditionNode", true, 0, Color(1, 1, 1, 1), null, false, 0, Color(1, 1, 1, 1), null, true, false, 0, Color(1, 1, 1, 1), null, true, 0, Color(0.647059, 0.937255, 0.67451, 1), null, true, false, 0, Color(1, 1, 1, 1), null, true, 0, Color(1, 0.364706, 0.364706, 1), null, true, SubResource("GDScript_rmhin"), 2, true, 2, 3, "The property to set the value of.", "Value", "", Vector2(48, 0), 2, 4, 0, 6, "==", "!=", 1, ">", 2, "<", 3, ">=", 4, "<=", 5, 2, 3, "The value to set the property to.
+Eg: Bob, 12, 0.5, false, etc.", "Value", "", 2, 2, true, 1, "True", 2, 2, true, 1, "False", 0.5, true, 0.5, true],
+"version": 3
+}
 
 [node name="Graph" type="GraphEdit"]
 custom_minimum_size = Vector2(400, 0)
@@ -14,10 +85,11 @@ right_disconnects = true
 zoom_min = 0.5
 zoom_max = 2.0
 script = ExtResource("1_7isyk")
+NodeScenes = Array[PackedScene]([ExtResource("2_vth6c"), ExtResource("3_xrua3"), ExtResource("4_cm4a7"), ExtResource("5_6fr2y"), ExtResource("6_nfo3d"), SubResource("PackedScene_b1xjv"), ExtResource("7_bbhno"), ExtResource("8_rv1ta"), ExtResource("9_mrf2v")])
+detach_icon = ExtResource("10_7fopr")
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
-size = Vector2i(138, 197)
-item_count = 7
+item_count = 9
 item_0/text = "StartNode"
 item_1/text = "DialogueNode"
 item_1/id = 1
@@ -29,14 +101,19 @@ item_4/text = "SetNode"
 item_4/id = 4
 item_5/text = "ConditionNode"
 item_5/id = 5
-item_6/text = "SetSignalNode"
+item_6/text = "NestNode"
 item_6/id = 6
+item_7/text = "ForkNode"
+item_7/id = 7
+item_8/text = "GraphFrame"
+item_8/id = 8
 
 [connection signal="connection_request" from="." to="." method="_on_connection_request"]
 [connection signal="connection_to_empty" from="." to="." method="_on_connection_to_empty"]
 [connection signal="delete_nodes_request" from="." to="." method="_on_delete_nodes_request"]
 [connection signal="disconnection_request" from="." to="." method="_on_disconnection_request"]
 [connection signal="duplicate_nodes_request" from="." to="." method="_on_duplicate_nodes_request"]
+[connection signal="graph_elements_linked_to_frame_request" from="." to="." method="_on_graph_elements_linked_to_frame_request"]
 [connection signal="node_deselected" from="." to="." method="_on_node_deselected"]
 [connection signal="node_selected" from="." to="." method="_on_node_selected"]
 [connection signal="popup_request" from="." to="." method="show_add_menu"]
