@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://nkt3ddqnpyrd" path="res://data/demo/character_files/partner_character.tres" id="23_sfjag"]
 [ext_resource type="Script" path="res://src/overworld/characters/actors/StoryActor.gd" id="25_dqkiw"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="27_nauye"]
+[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="28_d00jv"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="28_vtokk"]
 [ext_resource type="Resource" uid="uid://se30wrmyq86g" path="res://data/demo/battle_1_dialog_tree.tres" id="29_iranb"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="30_p27dt"]
@@ -44,7 +45,7 @@ script = ExtResource("7_3o8i5")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8a8ea"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dckxl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2162"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_660mf"]
@@ -54,13 +55,6 @@ radius = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dfr2x"]
 size = Vector3(3, 1, 4.5)
-
-[sub_resource type="Resource" id="Resource_pqu0n"]
-script = ExtResource("22_kchl7")
-id = "BEACH_PUZZLE_INTRO"
-next = -1
-starting_emotion = "NEUTRAL"
-end_state = ""
 
 [sub_resource type="Resource" id="Resource_bcofw"]
 script = ExtResource("28_vtokk")
@@ -388,7 +382,7 @@ character = ExtResource("23_sfjag")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.5, 0.4)
 mesh = SubResource("CapsuleMesh_8a8ea")
-surface_material_override/0 = SubResource("StandardMaterial3D_dckxl")
+surface_material_override/0 = SubResource("StandardMaterial3D_k2162")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -429,14 +423,13 @@ auto_trigger = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 shape = SubResource("BoxShape3D_dfr2x")
 
-[node name="StoryActor" type="Node3D" parent="Overworld/PuzzleIntroTrigger" node_paths=PackedStringArray("animation_player")]
-script = ExtResource("25_dqkiw")
-dialog_ids = Array[ExtResource("22_kchl7")]([SubResource("Resource_pqu0n")])
-animation_player = NodePath("../../AnimationPlayer")
-
 [node name="EnemyActor" parent="Overworld/PuzzleIntroTrigger" instance=ExtResource("27_nauye")]
 ai = SubResource("Resource_6gydk")
 _team = Array[ExtResource("10_wgmfh")]([ExtResource("31_qv7w7")])
+
+[node name="AnimationActor" parent="Overworld/PuzzleIntroTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("28_d00jv")]
+animation_name = "post_battle_prep"
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="BattleStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -14)

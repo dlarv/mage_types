@@ -5,11 +5,12 @@
 [resource]
 script = ExtResource("1_7sxr6")
 starts = {
-"BEACH_PUZZLE_INTRO": &"0_6",
+"BEACH_PUZZLES": &"0_7",
 "BOSS1": &"0_1",
 "FAVOR": &"0_8",
 "MISC": &"0_2",
-"PARTNER_INTRO": &"0_4"
+"PARTNER_INTRO": &"0_4",
+"TUTORIAL_FIGHT": &"0_6"
 }
 nodes = {
 "0_1": {
@@ -23,18 +24,18 @@ nodes = {
 "start_id": "MISC"
 },
 "0_4": {
-"link": &"1_6",
+"link": &"5_1",
 "offset": Vector2(-1740, 640),
 "start_id": "PARTNER_INTRO"
 },
 "0_6": {
 "link": &"1_16",
-"offset": Vector2(-1740, 1040),
-"start_id": "BEACH_PUZZLE_INTRO"
+"offset": Vector2(-2100, 920),
+"start_id": "TUTORIAL_FIGHT"
 },
 "0_7": {
-"link": "END",
-"offset": Vector2(-1720, 1320),
+"link": &"1_10",
+"offset": Vector2(-2080, 1280),
 "start_id": "BEACH_PUZZLES"
 },
 "0_8": {
@@ -55,22 +56,9 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": ""
 },
-"1_16": {
-"dialogue": "It looks like Aqua left a few of their experiments out. ",
-"offset": Vector2(-1480, 1020),
-"options": {
-0: {
-"condition": Array[Dictionary]([{}]),
-"link": &"1_17",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-"1_17": {
-"dialogue": "I'll let you take a stab at this. Remember, you can press 'T' to pull up the transmutation menu.",
-"offset": Vector2(-1100, 1020),
+"1_10": {
+"dialogue": "",
+"offset": Vector2(-1820, 1300),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -79,6 +67,115 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
+"speaker": ""
+},
+"1_11": {
+"dialogue": "Luckily for you, there should be a supply boat coming in a few days. It can take you back to the mainland.",
+"offset": Vector2(1260, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_12",
+"text": "Is that how you get back to Earth?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_12": {
+"dialogue": "Well, no... sorry. We're not really sure how, or even if, that can be done.",
+"offset": Vector2(1600, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_13": {
+"dialogue": "I know that must be disappointing...",
+"offset": Vector2(1940, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_14",
+"text": "Not really"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_18",
+"text": "A little..."
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_14": {
+"dialogue": "Oh, well in that case you might really like it here.",
+"offset": Vector2(2280, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_15",
+"text": "What makes you say that?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_15": {
+"dialogue": "It might be easier to show you. Follow me.",
+"offset": Vector2(2660, 780),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"9_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_16": {
+"dialogue": "I think Aqua left a few of their experiments up ahead.",
+"offset": Vector2(-1840, 900),
+"options": {
+0: {
+"condition": Array[Dictionary]([{}]),
+"link": &"9_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_17": {
+"dialogue": "Ack!",
+"offset": Vector2(-1180, 900),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_18": {
+"dialogue": "I'm sorry. But this place isn't all bad.",
+"offset": Vector2(2280, 880),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_15",
+"text": "Yeah?"
+}
+},
+"size": Vector2(300, 257),
 "speaker": 0
 },
 "1_2": {
@@ -107,6 +204,45 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": ""
 },
+"1_3": {
+"dialogue": "Are you okay?!",
+"offset": Vector2(-780, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_4",
+"text": "I think so"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_4": {
+"dialogue": "Good, because I don't have a first aid kit on me.",
+"offset": Vector2(-440, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_5",
+"text": "Where am I?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_5": {
+"dialogue": "*Gathers thoughts*",
+"offset": Vector2(-100, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
 "1_6": {
 "dialogue": "THUD",
 "offset": Vector2(-1480, 600),
@@ -120,18 +256,90 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": ""
 },
+"1_7": {
+"dialogue": "Well, the general consensus is that w're in some sort of ephemeral sub-space, recessed away from reality. ",
+"offset": Vector2(240, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_8",
+"text": "It looks like a beach..."
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_8": {
+"dialogue": "Sorry, I've been solely around researchers for the past few months. I may have forgotten how to talk to normal people.",
+"offset": Vector2(580, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_9",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_9": {
+"dialogue": "We're on the Southern-most beach of an island. There's a research station North of here and not much else for miles.",
+"offset": Vector2(920, 560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
 "3_1": {
 "link": "END",
 "offset": Vector2(-1120, 280),
 "signalValue": "battle_started"
 },
+"3_2": {
+"link": "END",
+"offset": Vector2(-840, 940),
+"signalValue": "battle_started"
+},
+"5_1": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": 1,
+"value2": "asdf"
+}]),
+"false": "END",
+"offset": Vector2(-1080, 400),
+"true": "END"
+},
 "9_1": {
 "cur_variable": 0,
-"link": "END",
+"link": &"1_3",
 "offset": Vector2(-1160, 600),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "pull_from_surf",
+"variable": "current_cutscene"
+},
+"9_2": {
+"cur_variable": 0,
+"link": "END",
+"offset": Vector2(3000, 780),
+"signalValue": "play_cutscene",
+"type": 0,
+"value": "intro_walking",
+"variable": "current_cutscene"
+},
+"9_3": {
+"cur_variable": 0,
+"link": &"1_17",
+"offset": Vector2(-1500, 900),
+"signalValue": "play_cutscene",
+"type": 0,
+"value": "start_tutorial_battle",
 "variable": "current_cutscene"
 }
 }
@@ -143,11 +351,7 @@ variables = {
 "current_emotion": {
 "type": 4,
 "value": ""
-},
-"was_monster_mentioned": {
-"type": 1,
-"value": false
 }
 }
-strays = Array[String](["0_7"])
+strays = Array[String](["1_6", "9_1", "1_3", "1_4", "1_5", "1_7", "1_8", "1_9", "1_11", "1_12", "1_13", "1_14", "1_15", "9_2", "1_18"])
 characters = "res://data/demo/character_files/character_list.tres"
