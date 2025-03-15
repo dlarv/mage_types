@@ -45,7 +45,7 @@ script = ExtResource("7_3o8i5")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8a8ea"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_miigf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htolc"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_660mf"]
@@ -382,7 +382,7 @@ character = ExtResource("23_sfjag")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.5, 0.4)
 mesh = SubResource("CapsuleMesh_8a8ea")
-surface_material_override/0 = SubResource("StandardMaterial3D_miigf")
+surface_material_override/0 = SubResource("StandardMaterial3D_htolc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -432,7 +432,7 @@ animation_name = "post_battle_prep"
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="BattleStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -14)
 auto_trigger = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/BattleStoryTrigger"]
