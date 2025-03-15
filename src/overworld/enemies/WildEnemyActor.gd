@@ -27,6 +27,6 @@ func react(e: ElementalType, randVal:=-2) -> bool:
 
 		var e2 = ElementManager.get_matchup(actor.element2, e)
 		if e2:
-			actor.set_element(0, e2)
+			actor.set_element(1, e2)
 
 	return true
