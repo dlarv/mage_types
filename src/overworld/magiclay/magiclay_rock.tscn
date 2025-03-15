@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bro12iw6ll4yg"]
+[gd_scene load_steps=7 format=3 uid="uid://bro12iw6ll4yg"]
 
 [ext_resource type="Script" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_k4ig1"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_75jtu"]
+[ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="2_88vum"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gvndh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1h0bu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j7i0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ggy3"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hl4uj"]
 
 [node name="MagiclayRock" type="RigidBody3D"]
 collision_layer = 7
@@ -21,8 +23,24 @@ shape = SubResource("BoxShape3D_gvndh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1h0bu")
-surface_material_override/0 = SubResource("StandardMaterial3D_2j7i0")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ggy3")
 
-[node name="Grabbable" parent="." instance=ExtResource("2_75jtu")]
+[node name="Draggable" parent="." instance=ExtResource("2_88vum")]
+
+[node name="Marker3D_South" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="Marker3D_North" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)
+
+[node name="Marker3D_East" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="Marker3D_West" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Draggable"]
+shape = SubResource("BoxShape3D_hl4uj")
+disabled = true
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

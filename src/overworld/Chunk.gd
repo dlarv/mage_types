@@ -10,6 +10,7 @@ func _enter_tree() -> void:
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
 	body_entered.connect(load)
 	body_exited.connect(unload)
+	collision_mask = 32
 
 	if len(resets) == 0: return
 	elif len(resets) == 1:
@@ -36,13 +37,13 @@ func _ready() -> void:
 
 
 func load(player: Node3D) -> void:
-	if not player.is_in_group("player"): return
+	# if not player.is_in_group("player"): return
 	Logger.append_log(Logger.LogType.PUZZLE, "Player loaded Chunk(%s)" % name)
 	print("Player loaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
 
 func unload(player: Node3D) -> void:
-	if not player.is_in_group("player"): return
+	# if not player.is_in_group("player"): return
 	Logger.append_log(Logger.LogType.PUZZLE, "Player unloaded Chunk(%s)" % name)
 	print("Player unloaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED

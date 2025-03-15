@@ -14,7 +14,8 @@ var active_spell_1: OverworldSpell
 var active_spell_2: OverworldSpell
 
 func _enter_tree():
-	Inventory.overworld_spell_selected.connect(activate_spell)
+	if not Inventory.overworld_spell_selected.is_connected(activate_spell):
+		Inventory.overworld_spell_selected.connect(activate_spell)
 	stasis_spell.Projectile = Projectile
 	destroy_spell.Projectile = Projectile
 	catalyst_spell.Projectile = Projectile

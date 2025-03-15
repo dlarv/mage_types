@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8862iat02o7"]
+[gd_scene load_steps=5 format=3 uid="uid://b8862iat02o7"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/DraggableMirror.gd" id="1_lav1w"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_t5nh5"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_b1r0o"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4tnhy"]
@@ -31,10 +30,5 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_pqgmg")
 
-[node name="Grabbable" parent="." instance=ExtResource("2_t5nh5")]
-
 [node name="Mirror" parent="." instance=ExtResource("3_b1r0o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[connection signal="dropped" from="Grabbable" to="." method="_on_grabbable_dropped"]
-[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]

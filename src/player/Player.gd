@@ -142,6 +142,13 @@ func pickup_object(obj: Node3D, grabbable: Interactable, val: bool, axis:=Vector
 		velocity = Vector3.ZERO
 		restricted_axis = axis
 
+func look_towards(point: Vector3, yOnly := true) -> void:
+	if yOnly:
+		point.y = model.global_position.y
+	model.look_at(point)
+	# Model is facing the opposite way, so correct.
+	model.global_rotation_degrees.y += 180
+
 func serialize() -> Dictionary:
 	var teamData := []
 	for t in team:

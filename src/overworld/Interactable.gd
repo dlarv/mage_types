@@ -26,11 +26,10 @@ func _enter_tree():
 		_label.text = "Press %s" % actions[0].as_text().split(" ")[0]
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if disabled or not _label.visible or _player == null: return
 
 	if event.is_action_released("interact"):
-		get_window().set_input_as_handled()
 		interacted.emit(self)
 		var n = name
 		if "puzzle_name" in get_parent():
@@ -50,7 +49,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body:Node3D) -> void:
 	if disabled: return
-	if not body.is_in_group("player"): return
+	# Used to differentiate between player and player when dragging object.
+	if not body.is_in_group("player") or not body.in_control: return
 
 	# Prevent player from picking up object, if they are already holding something.
 	if body.held_object and body.held_object != get_parent(): 
@@ -68,7 +68,8 @@ func _on_body_entered(body:Node3D) -> void:
 
 func _on_body_exited(body:Node3D) -> void:
 	if disabled: return
-	if not body.is_in_group("player"): return
+	# Used to differentiate between player and player when dragging object.
+	if not body.is_in_group("player") or not body.in_control: return
 	_label.hide()
 	_player = null
 
@@ -79,3 +80,8 @@ func set_disabled(val: bool) -> void:
 		_label.hide()
 		_player = null
 
+## Used when player tries to pick up two objects at once.
+## Without this, they'll get teleported to the second object after dropping the first.
+func ignore() -> void:
+	_label.hide()
+	_player = null

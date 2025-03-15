@@ -1,0 +1,151 @@
+extends CharacterBody3D
+
+@export var scaling_factor: float:
+	get:
+		return $Interactable.scaling_factor
+	set(val):
+		$Interactable.scaling_factor = val
+
+var in_control := false
+# Array[Vector3]: Player is placed on the nearest one when they pick up this object.
+var _handles := []
+var _prev_player_parent: Node3D = null
+var _prev_parent: Node3D = null
+var _player: Node3D = null
+
+func _ready() -> void:
+	_handles = []
+	for child in get_children():
+		if child is Marker3D:
+			_handles.append(child)
+
+func _input(event: InputEvent) -> void:
+	if not in_control: return
+
+	if event.is_action_released("interact"):
+		var n = name
+		if "puzzle_name" in get_parent():
+			n = get_parent().puzzle_name
+		Logger.append_log(Logger.LogType.PUZZLE, "Player dropped Draggable(%s)." % n)
+
+		drop()
+		in_control = false
+		
+
+func _physics_process(delta: float) -> void:
+	if not in_control: return
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var vel = velocity
+	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
+
+	if direction != Vector3.ZERO:
+		# Player can only move along one axis.
+		vel.x = direction.x * _player.walk_speed
+		vel.z = direction.z * _player.walk_speed
+		# Rotate model in direction of movement.
+	else:
+		vel.x = move_toward(velocity.x, 0, _player.walk_speed)
+		vel.z = move_toward(velocity.z, 0, _player.walk_speed)
+
+
+	velocity = vel
+	if velocity != Vector3.ZERO:
+		move_and_slide()
+	else:
+		# Snap to grid.
+		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
+
+
+
+func _on_interactable_interacted(interactable: Node3D) -> void:
+	# This means player tried to pick up two objects at once, which isn't allowed.
+	if not _player and not interactable._player.in_control: 
+		interactable.ignore()
+		return
+
+	in_control = not in_control
+
+	if in_control:
+		_pickup(interactable._player)
+	else:
+		drop()
+
+func _pickup(player: Node3D) -> void:
+	_player = player
+	_player.global_position = _snap_player_to_handle(_player.global_position)
+	_player.look_towards(global_position)
+	_make_root(_player)
+	_player.in_control = false
+	$CollisionShape3D.disabled = false
+
+func drop() -> void:
+	$CollisionShape3D.disabled = true
+	_player.in_control = true
+	_restore_root(_player)
+
+func _snap_player_to_handle(pos: Vector3) -> Vector3:
+	if len(_handles) == 0: return pos
+
+	var minDist := INF
+	var minHandle: Marker3D
+
+	for handle in _handles:
+		var dist = handle.global_position.distance_to(pos)
+		if dist < minDist:
+			minDist = dist
+			minHandle = handle
+	
+	var output = minHandle.global_position
+	output.y = pos.y
+	return output
+
+
+func _make_root(player: Node3D) -> void:
+	# Swap parent and Draggable w/o creating a cyclical dependency.
+	var grandparent = get_parent().get_parent()
+	var parent = get_parent()
+	reparent(grandparent)
+	parent.reparent(self)
+	_prev_parent = parent
+
+	# Prevent parent's physics body from colliding/altering state.
+	parent.get_node("CollisionShape3D").disabled = true
+	if parent is RigidBody3D:
+		parent.axis_lock_angular_x = true
+		parent.axis_lock_angular_y = true
+		parent.axis_lock_angular_z = true
+		parent.axis_lock_linear_x = true
+		parent.axis_lock_linear_y = true
+		parent.axis_lock_linear_z = true
+
+	# Preserve player's initial state and reparent.
+	_prev_player_parent = player.get_parent()
+	_player.get_node("CollisionShape3D").disabled = true
+	player.reparent(self)
+
+	set_collision_layer_value(6, true)
+
+
+func _restore_root(player: Node3D) -> void:
+	_prev_parent.reparent(get_parent())
+	reparent(_prev_parent)
+
+	# Restore control to parent's physics body.
+	_prev_parent.get_node("CollisionShape3D").disabled = false
+	if _prev_parent is RigidBody3D:
+		_prev_parent.axis_lock_angular_x = false
+		_prev_parent.axis_lock_angular_y = false
+		_prev_parent.axis_lock_angular_z = false
+		_prev_parent.axis_lock_linear_x = false
+		_prev_parent.axis_lock_linear_y = false
+		_prev_parent.axis_lock_linear_z = false
+
+	# Restore player's state from before they picked up this item.
+	player.reparent(_prev_player_parent)
+	_player.get_node("CollisionShape3D").disabled = false
+	_player = null
+
+	# Draggable can no longer activate chunks.
+	set_collision_layer_value(6, false)

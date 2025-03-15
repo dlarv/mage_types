@@ -36,11 +36,7 @@ var element: ElementalType = ElementManager.Blank:
 
 @export var base_size := Vector3(1, 1, 1)
 
-var puzzle_name: String:
-	get:
-		if get_parent() == null:
-			return "%s" % name
-		return "%s.%s" % [get_parent().name, name]
+var puzzle_name: String
 var _mesh_instance: MeshInstance3D: get = _get_mesh
 var _material: StandardMaterial3D:
 	set(val):
@@ -63,6 +59,7 @@ func _enter_tree():
 
 func _ready():
 	_material = StandardMaterial3D.new()
+	puzzle_name = "%s.%s" % [get_parent().name, name]
 
 # color: Color | null
 func _try_set_color(color=null) -> void:

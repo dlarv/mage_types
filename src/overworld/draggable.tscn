@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7g6etnd40veg"]
+
+[ext_resource type="Script" path="res://src/overworld/Draggable.gd" id="1_m62it"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_opcrd"]
+
+[node name="Draggable" type="CharacterBody3D"]
+process_mode = 3
+script = ExtResource("1_m62it")
+
+[node name="Interactable" parent="." instance=ExtResource("2_opcrd")]
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
