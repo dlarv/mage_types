@@ -17,12 +17,22 @@ func _to_dict() -> Array[Dictionary]:
 	
 	for child in get_children():
 		if child is Button: continue
-		dict.append(child._to_dict())
+		var child_dict = child._to_dict()
+		# child_dict.value1 = last_variable_list[child_dict.cur_variable]
+
+		if child_dict.cur_variable != -1:
+			child_dict["value1"] = last_variable_list[child_dict.cur_variable]
+		else:
+			child_dict["value1"] = ""
+
+		dict.append(child_dict)
 	
 	return dict
 
 
 func _from_dict(dict: Array[Dictionary]) -> void:
+	if len(last_variable_list) == 0:
+		recreate_variable_list(dict)
 	for idx in range(dict.size()):
 		var new_item = ConditionItemScene.instantiate()
 		add_item(new_item, idx)
@@ -104,3 +114,16 @@ func update_variables(variable_list: Array[String]) -> void:
 	for child in get_children():
 		if child.has_method("_on_variables_updated"):
 			child._on_variables_updated(variable_list)
+
+# We are given enough information via _from_dict to recreate the last_variable_array.
+# Doing this allows ForkNodes to display their conditions as soon as the file is loaded.
+func recreate_variable_list(dict: Array[Dictionary]) -> void:
+	# Variable name is stored in value1
+	# Index is stored in cur_variable
+	last_variable_list = []
+	for cond in dict:
+		var idx = cond.cur_variable
+		if idx >= len(last_variable_list):
+			last_variable_list.resize(idx + 1)
+		last_variable_list[idx] = cond.value1
+

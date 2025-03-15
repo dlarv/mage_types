@@ -30,11 +30,11 @@ var cur_variable := -1
 
 func _to_dict() -> Dictionary:
 	if is_empty():
-		#print_rich('[color=yellow]Condition is empty![/color]')
+		print_rich('[color=yellow]Condition is empty![/color]')
 		return {}
 	
 	var dict:= {
-		'value1': value1.selected,
+		'cur_variable': value1.selected,
 		'operator': operator.selected,
 		'value2': value2.text
 	}
@@ -58,8 +58,8 @@ func _from_dict(dict: Dictionary) -> void:
 	else:
 		reset_button.show()
 	
-	if cur_variable != int(dict['value1']):
-		cur_variable = int(dict['value1'])
+	if cur_variable != int(dict['cur_variable']):
+		cur_variable = dict['cur_variable']
 		value1.selected = cur_variable
 	if operator.selected != dict['operator']:
 		operator.selected = dict['operator']

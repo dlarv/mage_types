@@ -264,8 +264,7 @@ func _check_condition(conditions: Array) -> bool:
 		var value2 = dict.value2
 		
 		# get variables if needed
-		if value1.count('{{') > 0:
-			value1 = _parse_variables(value1)
+		value1 = str(variables[value1])
 		if value2.count('{{') > 0:
 			value2 = _parse_variables(value2)
 		
