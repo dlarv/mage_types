@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/overworld/magiclay/CatalystDevice.gd" id="1_0y1qt"]
 [ext_resource type="PackedScene" uid="uid://tc1hr4ycv8bn" path="res://assets/3d/models/catalyst_device.blend" id="3_mgr76"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="4_risfn"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="4_risfn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1on13"]
 size = Vector3(0.9, 1.2, 0.5)
@@ -16,8 +16,8 @@ shape = SubResource("BoxShape3D_1on13")
 
 [node name="catalyst_device" parent="." instance=ExtResource("3_mgr76")]
 
-[node name="Grabbable" parent="." instance=ExtResource("4_risfn")]
+[node name="Interactable" parent="." instance=ExtResource("4_risfn")]
 
-[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 
 [editable path="catalyst_device"]

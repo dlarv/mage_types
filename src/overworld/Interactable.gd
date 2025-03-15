@@ -1,13 +1,19 @@
 @tool
 extends Node3D
-class_name Grabbable
+class_name Interactable
 
-signal grabbed(obj: Node3D, player: Node3D)
-signal dropped(obj: Node3D, player: Node3D)
+signal interacted(obj: Node3D)
 
 @export var label_offset: Vector3
+@export var scaling_factor := 1.0:
+	set(val):
+		scaling_factor = val
+		$Area3D/CollisionShape3D.shape = $Area3D/CollisionShape3D.shape.duplicate(true)
+		$Area3D/CollisionShape3D.shape.radius = scaling_factor * base_size
+
+@export var base_size := 1.0
+
 var disabled := false
-var is_being_reparented := false
 var _label: Label
 var _player: Node3D
 
@@ -19,16 +25,18 @@ func _enter_tree():
 		var actions := InputMap.action_get_events("interact")
 		_label.text = "Press %s" % actions[0].as_text().split(" ")[0]
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if disabled or not _label.visible or _player == null: return
 
 	if event.is_action_released("interact"):
 		get_window().set_input_as_handled()
-		grabbed.emit(self, _player)
+		interacted.emit(self)
 		var n = name
 		if "puzzle_name" in get_parent():
 			n = get_parent().puzzle_name
-		Logger.append_log(Logger.LogType.PUZZLE, "Player grabbed Grabbable(%s)." % n)
+		Logger.append_log(Logger.LogType.PUZZLE, "Player used Interactable(%s)." % n)
+
 
 func _physics_process(delta: float) -> void:
 	if not _label.visible: return
@@ -50,7 +58,7 @@ func _on_body_entered(body:Node3D) -> void:
 		if "puzzle_name" in get_parent():
 			n = get_parent().puzzle_name
 		Logger.append_log(Logger.LogType.PUZZLE, 
-				"Player collided with Grabbable(%s), but could not pick it up, as they were already holding %s." 
+				"Player collided with Interactable(%s), but could not pick it up, as they were already holding %s." 
 				% [n, body.held_object.name])
 		return
 
@@ -60,17 +68,14 @@ func _on_body_entered(body:Node3D) -> void:
 
 func _on_body_exited(body:Node3D) -> void:
 	if disabled: return
-	if is_being_reparented: return
 	if not body.is_in_group("player"): return
 	_label.hide()
-	dropped.emit(self, _player)
 	_player = null
+
 
 func set_disabled(val: bool) -> void:
 	disabled = val
 	if disabled:
-		dropped.emit(self, _player)
 		_label.hide()
 		_player = null
-	
 

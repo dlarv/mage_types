@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://bro12iw6ll4yg"]
 
 [ext_resource type="Script" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_k4ig1"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_75jtu"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_75jtu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gvndh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1h0bu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmq5p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j7i0"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiclayRock" type="RigidBody3D"]
@@ -21,7 +21,7 @@ shape = SubResource("BoxShape3D_gvndh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1h0bu")
-surface_material_override/0 = SubResource("StandardMaterial3D_xmq5p")
+surface_material_override/0 = SubResource("StandardMaterial3D_2j7i0")
 
 [node name="Grabbable" parent="." instance=ExtResource("2_75jtu")]
 

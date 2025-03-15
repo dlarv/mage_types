@@ -17,16 +17,6 @@ func _ready() -> void:
 		lock.on.connect(_on_lock_opened)
 		lock.off.connect(_on_lock_closed)
 
-func _on_grabbed(obj: Node3D, player: Node3D) -> void:
-	if _is_opened: return
-	_is_opened = true
-	$Grabbable.set_disabled(true)
-	var msg := "You opened a chest!"
-	for item in items:
-		msg += "[br]%s (x%d)" % [ item.item.name, item.quantity ]
-		Inventory.add(item.item, item.quantity)
-	await UIManager.show_dialog(msg)
-	_update_mesh()
 
 func _on_lock_opened(block: PuzzleBlock) -> bool:
 	if _is_opened: return false
@@ -37,6 +27,7 @@ func _on_lock_opened(block: PuzzleBlock) -> bool:
 	_lock(false)
 	return true
 
+
 func _on_lock_closed(block: PuzzleBlock) -> bool:
 	if _is_opened: return false
 	if not super._on_lock_closed(block): return false
@@ -46,8 +37,10 @@ func _on_lock_closed(block: PuzzleBlock) -> bool:
 			"Chest(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
 	return true
 
+
 func _update_mesh() -> void:
 	_mat.albedo_color = _opened_color
+
 
 func serialize() -> Dictionary:
 	return {
@@ -55,16 +48,31 @@ func serialize() -> Dictionary:
 		"opened": _is_opened,
 	}
 
+
 func deserialize(data: Dictionary) -> void:
 	if "opened" in data:
 		_is_opened = data["opened"]
 		if _is_opened:
 			_update_mesh()
-			$Grabbable.set_disabled(_is_opened)
+			$Interactable.set_disabled(_is_opened)
+
 
 func _lock(val) -> void:
-	$Grabbable.set_disabled(val)
+	$Interactable.set_disabled(val)
 	if val:
 		_mat.albedo_color = _locked_color
 	else:
 		_mat.albedo_color = _unlocked_color
+
+
+func _on_interactable_interacted(obj:Node3D) -> void:
+	if _is_opened: return
+	_is_opened = true
+	$Interactable.set_disabled(true)
+	var msg := "You opened a chest!"
+	for item in items:
+		msg += "[br]%s (x%d)" % [ item.item.name, item.quantity ]
+		Inventory.add(item.item, item.quantity)
+	await UIManager.show_dialog(msg)
+	_update_mesh()
+

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh6ti3acb6qa"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/Chest.gd" id="1_rdalo"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_vc6ax"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_vc6ax"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j8s6l"]
 
@@ -18,6 +18,7 @@ mesh = SubResource("BoxMesh_j8s6l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_w50y8")
 
-[node name="Grabbable" parent="." instance=ExtResource("2_vc6ax")]
+[node name="Interactable" parent="." instance=ExtResource("2_vc6ax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbed"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

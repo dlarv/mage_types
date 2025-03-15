@@ -46,10 +46,11 @@ func _rotate_wheel(element: ElementalType) -> void:
 	tween.tween_property($catalyst_device/Plane, "rotation_degrees", Vector3(0, 0, degrees), 1) 
 
 
-func _on_grabbable_grabbed(obj:Node3D, player:Node3D) -> void:
+func _on_interactable_interacted(obj:Node3D) -> void:
 	UIManager.open_catalyst_menu(elements)
 	var e = await UIManager.catalyst_menu_closed
 	if e:
 		element = e
 		_rotate_wheel(element)
 		element_selected.emit(element)
+

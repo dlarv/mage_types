@@ -15,7 +15,7 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export var walk_speed := 10.0
 @export var run_speed := 30.0
 var _is_running := false
-## Is the player holding a Grabbable object.
+## Is the player holding a Interactable object.
 var held_object: Node3D = null 
 var restricted_axis := Vector3.ZERO
 
@@ -100,7 +100,6 @@ func _physics_process(delta: float) -> void:
 		position = position.snapped(Vector3(0.5, 0.5, 0.5))
 
 
-
 func _move_god_mode(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
@@ -128,7 +127,7 @@ func start_dialog(npc: Variant) -> void:
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
 	cutscene_started.emit(player, id)
 
-func pickup_object(obj: Node3D, grabbable: Grabbable, val: bool, axis:=Vector3.ZERO) -> void:
+func pickup_object(obj: Node3D, grabbable: Interactable, val: bool, axis:=Vector3.ZERO) -> void:
 	if not val:
 		held_object = null
 		restricted_axis = Vector3.ZERO

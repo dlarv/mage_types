@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/RotatableMirror.gd" id="1_f0x3o"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="1_p2inl"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/grabbable.tscn" id="2_23mvk"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_23mvk"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3cdpd"]
 top_radius = 1.0
@@ -27,6 +27,7 @@ shape = SubResource("CylinderShape3D_6k8re")
 [node name="Mirror" parent="." instance=ExtResource("1_p2inl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242849, 0)
 
-[node name="Grabbable" parent="." instance=ExtResource("2_23mvk")]
+[node name="Interactable" parent="." instance=ExtResource("2_23mvk")]
+scaling_factor = 2.0
 
-[connection signal="grabbed" from="Grabbable" to="." method="_on_grabbable_grabbed"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
