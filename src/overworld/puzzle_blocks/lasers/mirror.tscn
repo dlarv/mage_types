@@ -8,10 +8,10 @@
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4miw7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lre38"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8g24h"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l0vtn"]
 data = PackedVector3Array(0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m3gi7"]
@@ -34,11 +34,11 @@ is_transmutable = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("PrismMesh_vjj5k")
-surface_material_override/0 = SubResource("StandardMaterial3D_4miw7")
+surface_material_override/0 = SubResource("StandardMaterial3D_lre38")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
-shape = SubResource("ConcavePolygonShape3D_8g24h")
+shape = SubResource("ConcavePolygonShape3D_l0vtn")
 
 [node name="SubEmitterX" parent="." instance=ExtResource("3_u2i3p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.919238, 1, 0)

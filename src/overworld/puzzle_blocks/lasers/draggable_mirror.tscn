@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8862iat02o7"]
+[gd_scene load_steps=7 format=3 uid="uid://b8862iat02o7"]
 
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/DraggableMirror.gd" id="1_lav1w"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_b1r0o"]
+[ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="3_ityay"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4tnhy"]
 size = Vector3(2, 0.5, 2)
@@ -9,6 +10,9 @@ size = Vector3(2, 0.5, 2)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pqgmg"]
 height = 0.5
 radius = 0.994533
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3422r"]
+size = Vector3(2, 0.4, 2)
 
 [node name="DraggableMirror" type="StaticBody3D"]
 collision_layer = 23
@@ -32,3 +36,22 @@ shape = SubResource("CylinderShape3D_pqgmg")
 
 [node name="Mirror" parent="." instance=ExtResource("3_b1r0o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Draggable" parent="." instance=ExtResource("3_ityay")]
+scaling_factor = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226855, 0)
+shape = SubResource("BoxShape3D_3422r")
+
+[node name="Marker3D_South" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="Marker3D_North" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="Marker3D_East" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+
+[node name="Marker3D_West" type="Marker3D" parent="Draggable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)

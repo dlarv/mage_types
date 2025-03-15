@@ -5,13 +5,17 @@ extends CharacterBody3D
 		return $Interactable.scaling_factor
 	set(val):
 		$Interactable.scaling_factor = val
+@export var drag_speed := 10.0
+@export var restrict_axis := false
 
 var in_control := false
+
 # Array[Vector3]: Player is placed on the nearest one when they pick up this object.
 var _handles := []
 var _prev_player_parent: Node3D = null
 var _prev_parent: Node3D = null
 var _player: Node3D = null
+var _current_axis := Vector3.ONE
 
 func _ready() -> void:
 	_handles = []
@@ -34,29 +38,22 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not in_control: return
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var vel = velocity
-	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
+	velocity = Vector3.ZERO
 
-	if direction != Vector3.ZERO:
-		# Player can only move along one axis.
-		vel.x = direction.x * _player.walk_speed
-		vel.z = direction.z * _player.walk_speed
-		# Rotate model in direction of movement.
-	else:
-		vel.x = move_toward(velocity.x, 0, _player.walk_speed)
-		vel.z = move_toward(velocity.z, 0, _player.walk_speed)
+	if Input.is_action_pressed("ui_up") and _current_axis.z > 0:
+		velocity.z -= drag_speed
+	elif Input.is_action_pressed("ui_down") and _current_axis.z > 0:
+		velocity.z += drag_speed
+	elif Input.is_action_pressed("ui_left") and _current_axis.x > 0:
+		velocity.x -= drag_speed
+	elif Input.is_action_pressed("ui_right") and _current_axis.x > 0:
+		velocity.x += drag_speed
 
-
-	velocity = vel
-	if velocity != Vector3.ZERO:
-		move_and_slide()
-	else:
-		# Snap to grid.
+	# Snap to grid.
+	if velocity == Vector3.ZERO:
 		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
-
+	else:
+		move_and_slide()
 
 
 func _on_interactable_interacted(interactable: Node3D) -> void:
@@ -76,7 +73,9 @@ func _pickup(player: Node3D) -> void:
 	_player = player
 	_player.global_position = _snap_player_to_handle(_player.global_position)
 	_player.look_towards(global_position)
+
 	_make_root(_player)
+
 	_player.in_control = false
 	$CollisionShape3D.disabled = false
 
@@ -99,6 +98,12 @@ func _snap_player_to_handle(pos: Vector3) -> Vector3:
 	
 	var output = minHandle.global_position
 	output.y = pos.y
+
+	if restrict_axis and abs(minHandle.position.x) > abs(minHandle.position.z):
+		_current_axis = Vector3(1, 0, 0)
+	elif restrict_axis:
+		_current_axis = Vector3(0, 0, 1)
+
 	return output
 
 
@@ -125,6 +130,7 @@ func _make_root(player: Node3D) -> void:
 	_player.get_node("CollisionShape3D").disabled = true
 	player.reparent(self)
 
+	# Allows draggable to activate chunks.
 	set_collision_layer_value(6, true)
 
 
