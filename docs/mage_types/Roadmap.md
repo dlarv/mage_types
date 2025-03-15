@@ -172,6 +172,16 @@ Demo playtest candidate.
 - [x] Drag objects.
 - [ ] Each player action should have corresponding animations.
 
+#### Grabbables
+In v0.3.26, all interactable objects were managed thru a child (the grabbable). I find this system clunky.
+
+I think grabbables are fine as a method of iterating is fine, when its one off. I.e. a sort of button, where the player presses it, is suited for the grabbable. Draggable items, however, should likely be managed by a different mechanic.
+
+For v0.3.27:
+- Grabbable => Interactable
+	- Dropped signals and plumbing removed.
+	- When player interacts with object, emit one-and-done signal.
+
 ### Player Companions (plco)
 **The player's current companions should have overworld models that follow the player, without getting in the way.**
 - [ ] Status
