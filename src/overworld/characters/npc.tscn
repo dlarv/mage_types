@@ -1,22 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cslj0rb0d4weo"]
 
 [ext_resource type="Script" path="res://src/overworld/characters/Npc.gd" id="1_lo024"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_u1ful"]
-shadow_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_kks6f"]
 
 [node name="NPC" type="Area3D"]
 script = ExtResource("1_lo024")
 label_offset = Vector3(0, 1, 0)
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 91.0
-offset_bottom = 23.0
-text = "Press Space"
-label_settings = SubResource("LabelSettings_u1ful")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Interactable" parent="." instance=ExtResource("2_kks6f")]
+scaling_factor = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
