@@ -30,17 +30,17 @@ nodes = {
 },
 "0_6": {
 "link": &"1_16",
-"offset": Vector2(-2100, 920),
+"offset": Vector2(-2300, 900),
 "start_id": "TUTORIAL_FIGHT"
 },
 "0_7": {
 "link": &"1_10",
-"offset": Vector2(-2080, 1280),
+"offset": Vector2(-2300, 1220),
 "start_id": "BEACH_PUZZLES"
 },
 "0_8": {
 "link": &"1_20",
-"offset": Vector2(-1740, 1740),
+"offset": Vector2(-2300, 1520),
 "start_id": "FAVOR"
 },
 "1_1": {
@@ -58,7 +58,7 @@ nodes = {
 },
 "1_10": {
 "dialogue": "",
-"offset": Vector2(-1820, 1300),
+"offset": Vector2(-2080, 1220),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -79,7 +79,7 @@ nodes = {
 "text": "Is that how you get back to Earth?"
 }
 },
-"size": Vector2(300, 257),
+"size": Vector2(300, 240),
 "speaker": 0
 },
 "1_12": {
@@ -141,7 +141,7 @@ nodes = {
 },
 "1_16": {
 "dialogue": "I think Aqua left a few of their experiments up ahead.",
-"offset": Vector2(-1840, 900),
+"offset": Vector2(-2080, 900),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -154,7 +154,7 @@ nodes = {
 },
 "1_17": {
 "dialogue": "Ack!",
-"offset": Vector2(-1180, 900),
+"offset": Vector2(-1420, 900),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -171,11 +171,24 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_18",
+"link": &"1_15",
 "text": "Yeah?"
 }
 },
 "size": Vector2(300, 257),
+"speaker": 0
+},
+"1_19": {
+"dialogue": "",
+"offset": Vector2(580, 880),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
 "speaker": 0
 },
 "1_2": {
@@ -185,7 +198,7 @@ nodes = {
 0: {
 "condition": Array[Dictionary]([]),
 "link": "END",
-"text": "asdf"
+"text": ""
 }
 },
 "size": Vector2(300, 240),
@@ -193,7 +206,7 @@ nodes = {
 },
 "1_20": {
 "dialogue": "",
-"offset": Vector2(-1460, 1720),
+"offset": Vector2(-2080, 1520),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -264,6 +277,11 @@ nodes = {
 "condition": Array[Dictionary]([]),
 "link": &"1_8",
 "text": "It looks like a beach..."
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_19",
+"text": "That makes sense"
 }
 },
 "size": Vector2(300, 257),
@@ -302,7 +320,7 @@ nodes = {
 },
 "3_2": {
 "link": "END",
-"offset": Vector2(-840, 940),
+"offset": Vector2(-1080, 940),
 "signalValue": "battle_started"
 },
 "9_1": {
@@ -326,7 +344,7 @@ nodes = {
 "9_3": {
 "cur_variable": 0,
 "link": &"1_17",
-"offset": Vector2(-1500, 900),
+"offset": Vector2(-1740, 900),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "start_tutorial_battle",
