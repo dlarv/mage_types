@@ -5,17 +5,18 @@ class_name RichTextMatrix
 # Syntax: [matrix clean=2.0 dirty=1.0 span=50][/matrix]
 
 # Define the tag name.
-var bbcode = "matrix"
+var bbcode := 'matrix'
 
 # Gets TextServer for retrieving font information.
-func get_text_server():
+func get_text_server() -> TextServer:
 	return TextServerManager.get_primary_interface()
 
-func _process_custom_fx(char_fx):
+
+func _process_custom_fx(char_fx: CharFXTransform) -> bool:
 	# Get parameters, or use the provided default value if missing.
-	var clear_time = char_fx.env.get("clean", 2.0)
-	var dirty_time = char_fx.env.get("dirty", 1.0)
-	var text_span = char_fx.env.get("span", 50)
+	var clear_time = char_fx.env.get('clean', 2.0)
+	var dirty_time = char_fx.env.get('dirty', 1.0)
+	var text_span = char_fx.env.get('span', 50)
 
 	var value = char_fx.glyph_index
 

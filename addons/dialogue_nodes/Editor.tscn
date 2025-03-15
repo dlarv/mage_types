@@ -108,9 +108,12 @@ focus_mode = 2
 keep_pressed_outside = true
 text = "Debug"
 switch_on_hover = true
-item_count = 1
+item_count = 2
 popup/item_0/text = "Print Debug Messages"
 popup/item_0/checkable = 1
+popup/item_1/text = "Skip option condition checks"
+popup/item_1/checkable = 1
+popup/item_1/id = 1
 
 [node name="Workspace" type="HSplitContainer" parent="Main"]
 layout_mode = 2
@@ -205,7 +208,7 @@ initial_position = 1
 size = Vector2i(600, 400)
 ok_button_text = "Open"
 file_mode = 0
-filters = PackedStringArray("*.tres; Character resource")
+filters = PackedStringArray("*.tres; CharacterList resource")
 
 [node name="Statusbar" type="HBoxContainer" parent="Main"]
 custom_minimum_size = Vector2(0, 38)
@@ -224,7 +227,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.533333, 0.533333, 0.533333, 1)
-text = "1.2.0"
+text = "1.3.0"
 underline = 1
 
 [node name="DialogueBackground" type="Panel" parent="."]

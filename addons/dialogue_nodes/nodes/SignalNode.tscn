@@ -26,6 +26,6 @@ placeholder_text = "Value"
 wait_time = 0.5
 one_shot = true
 
-[connection signal="text_changed" from="SignalValue" to="." method="_on_node_modified"]
 [connection signal="text_changed" from="SignalValue" to="." method="_on_signal_value_changed"]
+[connection signal="text_changed" from="SignalValue" to="." method="_on_node_modified"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

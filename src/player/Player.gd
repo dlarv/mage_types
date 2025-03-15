@@ -96,6 +96,11 @@ func _physics_process(delta: float) -> void:
 		anim_player.play("walk")
 	move_and_slide()
 
+	if held_object and velocity == Vector3.ZERO:
+		position = position.snapped(Vector3(0.5, 0.5, 0.5))
+
+
+
 func _move_god_mode(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
