@@ -16,6 +16,7 @@ var _prev_player_parent: Node3D = null
 var _prev_parent: Node3D = null
 var _player: Node3D = null
 var _current_axis := Vector3.ONE
+var _initial_axis_linear_y = null
 
 func _ready() -> void:
 	_handles = []
@@ -120,12 +121,8 @@ func _make_root(player: Node3D) -> void:
 	# Prevent parent's physics body from colliding/altering state.
 	parent.get_node("CollisionShape3D").disabled = true
 	if parent is RigidBody3D:
-		parent.axis_lock_angular_x = true
-		parent.axis_lock_angular_y = true
-		parent.axis_lock_angular_z = true
-		parent.axis_lock_linear_x = true
+		_initial_axis_linear_y = parent.axis_lock_linear_y
 		parent.axis_lock_linear_y = true
-		parent.axis_lock_linear_z = true
 
 	# Preserve player's initial state and reparent.
 	_prev_player_parent = player.get_parent()
@@ -142,12 +139,8 @@ func _restore_root(player: Node3D) -> void:
 	# Restore control to parent's physics body.
 	_prev_parent.get_node("CollisionShape3D").disabled = false
 	if _prev_parent is RigidBody3D:
-		_prev_parent.axis_lock_angular_x = false
-		_prev_parent.axis_lock_angular_y = false
-		_prev_parent.axis_lock_angular_z = false
-		_prev_parent.axis_lock_linear_x = false
-		_prev_parent.axis_lock_linear_y = false
-		_prev_parent.axis_lock_linear_z = false
+		_prev_parent.axis_lock_linear_y = _initial_axis_linear_y
+		_initial_axis_linear_y = null
 
 	# Restore player's state from before they picked up this item.
 	player.reparent(_prev_player_parent)
