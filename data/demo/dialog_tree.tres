@@ -50,7 +50,7 @@ nodes = {
 },
 "0_5": {
 "link": &"1_21",
-"offset": Vector2(-2420, 2240),
+"offset": Vector2(-2400, 2160),
 "start_id": "1"
 },
 "0_6": {
@@ -70,7 +70,7 @@ nodes = {
 },
 "0_9": {
 "link": &"1_27",
-"offset": Vector2(-2420, 2520),
+"offset": Vector2(-2380, 2460),
 "start_id": "2a"
 },
 "1_1": {
@@ -141,10 +141,10 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_14": {
-"dialogue": "To start, click the Attacks button, then select the [el]Green[/el] attack in the leftmost slot. [br][br]Press Space when you've done so.
+"dialogue": "To start, click the Attacks button, then select the [el]Green[/el] attack. [br][br]Press Space when you've done so.
 ",
 "offset": Vector2(-1340, 1480),
 "options": {
@@ -155,7 +155,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_15": {
 "dialogue": "Great! Now hover your mouse over the enemy.  
@@ -169,7 +169,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_16": {
 "dialogue": "I think Aqua left a few of his experiments up ahead.",
@@ -210,7 +210,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_19": {
 "dialogue": "Now click on the enemy and press the \"End Turn\" button below.",
@@ -223,7 +223,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_2": {
 "dialogue": "",
@@ -262,7 +262,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_22": {
 "dialogue": "What's more, these reactions have side effects! Elements are broken into 2 subgroups: [color=blue]Defensive[/color] and [color=red]Offensive[/color].
@@ -271,52 +271,19 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_23",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-"1_23": {
-"dialogue": "[ul]When a [color=blue]defensive element[/color] transmute into another [color=blue]defensive element[/color], they get a speed boost.[/ul]
-[ul]The same goes for when a [color=red]offensive element[/color] transmutes into another [color=red]offensive element[/color].[/ul]
-[ul]When a [color=red]offensive element[/color] transmutes into a  [color=blue]defensive element[/color], they get a defensive bonus.[/ul]
-[ul] When a [color=blue]defensive element[/color] transmutes into a  [color=red]offensive element[/color], they get an offensive bonus.[/ul]",
-"offset": Vector2(-1520, 2160),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
 "link": &"1_24",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
-"1_24": {
-"dialogue": "Defensive Types:
-[ul][el]Blue[/el][/ul]
-[ul][el]Cyan[/el][/ul]
-[ul][el]Magenta[/el][/ul]
-[ul][el]Yellow[/el][/ul]",
-"offset": Vector2(-1180, 2160),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_25",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-"1_25": {
-"dialogue": "Offensive Types:
-[ul][el]Green[/el][/ul]
-[ul][el]Purple[/el][/ul]
-[ul][el]Orange[/el][/ul]
-[ul][el]Red[/el][/ul]",
+"1_23": {
+"dialogue": "When you go from:
+[ul][color=blue]Defensive[/color] -> [color=blue]Defensive[/color] = Speed boost.[/ul]
+[ul][color=red]Offensive[/color] -> [color=red]Offensive[/color] = Speed boost.[/ul]
+[ul][color=red]Offensive[/color] -> [color=blue]Defensive[/color] = Defense boost.[/ul]
+[ul] [color=blue]Defensive[/color] -> [color=red]Offensive[/color] = Attack boost.[/ul]",
 "offset": Vector2(-840, 2160),
 "options": {
 0: {
@@ -326,20 +293,54 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
-"1_26": {
-"dialogue": "Press [i]T[/i] to pull up the Transmutation Menu. The second tab contains the type chart. Hover over any of the squares will show you that combos side effects.",
-"offset": Vector2(-501.381, 2170.08),
+"1_24": {
+"dialogue": "Defensive Types:
+[ul][el]Blue[/el][/ul]
+[ul][el]Cyan[/el][/ul]
+[ul][el]Magenta[/el][/ul]
+[ul][el]Yellow[/el][/ul]",
+"offset": Vector2(-1520, 2160),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_45",
+"link": &"1_25",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
+},
+"1_25": {
+"dialogue": "Offensive Types:
+[ul][el]Green[/el][/ul]
+[ul][el]Purple[/el][/ul]
+[ul][el]Orange[/el][/ul]
+[ul][el]Red[/el][/ul]",
+"offset": Vector2(-1180, 2160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_23",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Partner"
+},
+"1_26": {
+"dialogue": "Press [i]T[/i] to pull up the Transmutation Menu. The second tab contains the type chart. Hover over any of the squares will show you that combos side effects.",
+"offset": Vector2(-500, 2160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Partner"
 },
 "1_27": {
 "dialogue": "Now I have 2 more things to show you.",
@@ -352,7 +353,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_28": {
 "dialogue": "You probably noticed that I have 2  colors, while the opponent only has 1.",
@@ -365,7 +366,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_29": {
 "dialogue": "The first 2 rows of a transmutation hint shows how those 2 types will react to an attack.",
@@ -378,7 +379,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_3": {
 "dialogue": "Are you okay?!",
@@ -590,7 +591,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_42": {
 "dialogue": "So not only will your typing react to your opponent's attacks (and vice versa), but your primary and secondary types can react together!",
@@ -603,11 +604,11 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_43": {
 "dialogue": "Finally, just one more thing.
-[br][br]So far, we've only been using [i]ranged[/i] attacks. Try selecting the orange attack this time.",
+[br][br]So far, we've only been using [i]ranged[/i] attacks. Watch what happens when the opponent uses a melee attack instead.",
 "offset": Vector2(-1840, 2760),
 "options": {
 0: {
@@ -617,10 +618,10 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_44": {
-"dialogue": "Finally, using a ranged attack will only affect your opponent's typing. However, melee attacks will affect both the target and the user.",
+"dialogue": "But more importantly, using a ranged attack will only affect your opponent's typing. However, melee attacks will affect both the target and the user.",
 "offset": Vector2(-1820, 3080),
 "options": {
 0: {
@@ -630,23 +631,10 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
-},
-"1_45": {
-"dialogue": "Try using the Green attack again.",
-"offset": Vector2(-160, 2180),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_46": {
-"dialogue": "If your second type is Blank (i.e. has no type), it will change to match the attack you used.",
+"dialogue": "If your second type is Gray (Blank), it will change to match the attack you used.",
 "offset": Vector2(-2160, 3080),
 "options": {
 0: {
@@ -656,7 +644,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_5": {
 "dialogue": "...",
@@ -708,7 +696,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_9": {
 "dialogue": "What? I mean part of it is, I guess",
@@ -741,6 +729,14 @@ reference to the fact that there is currrently
 nothing on the mainland.",
 "offset": Vector2(1480, 60),
 "size": Vector2(340, 120)
+},
+"2_3": {
+"comment": "[ul]When a [color=blue]defensive element[/color] transmute into another [color=blue]defensive element[/color], they get a speed boost.[/ul]
+[ul]The same goes for when a [color=red]offensive element[/color] transmutes into another [color=red]offensive element[/color].[/ul]
+[ul]When a [color=red]offensive element[/color] transmutes into a  [color=blue]defensive element[/color], they get a defensive bonus.[/ul]
+[ul] When a [color=blue]defensive element[/color] transmutes into a  [color=red]offensive element[/color], they get an offensive bonus.[/ul]",
+"offset": Vector2(-1276.8, 1922.8),
+"size": Vector2(200, 100)
 },
 "3_1": {
 "link": "END",
@@ -848,7 +844,7 @@ nothing on the mainland.",
 "title": "Misc"
 },
 "8_2": {
-"attached_nodes": Array[StringName]([&"0_3", &"1_8", &"7_1", &"1_14", &"1_13", &"1_15", &"1_18", &"1_19", &"0_5", &"1_21", &"1_22", &"1_23", &"1_24", &"1_25", &"0_9", &"1_27", &"1_28", &"1_29", &"0_10", &"1_42", &"1_43", &"0_11", &"1_44", &"1_45", &"1_46"]),
+"attached_nodes": Array[StringName]([&"0_3", &"1_8", &"7_1", &"1_14", &"1_13", &"1_15", &"1_18", &"1_19", &"0_5", &"1_21", &"1_22", &"1_23", &"1_24", &"1_25", &"0_9", &"1_27", &"1_28", &"1_29", &"0_10", &"1_42", &"1_43", &"0_11", &"1_44", &"1_46", &"1_26"]),
 "offset": Vector2(-2480, 1440),
 "tint_color": Color(0.133333, 0.133333, 0.87451, 0.203922),
 "title": "Tutorial Battle"
@@ -908,5 +904,5 @@ variables = {
 "value": ""
 }
 }
-strays = Array[String](["8_1", "8_2", "2_2", "2_1"])
+strays = Array[String](["8_1", "8_2", "2_2", "2_1", "2_3"])
 characters = "res://data/demo/character_files/character_list.tres"
