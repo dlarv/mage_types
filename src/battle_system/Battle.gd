@@ -79,15 +79,16 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	await dialog(false)
 
 	for action in actions:
+		# This means a character is defeated.
+		if action == null or action.actor.is_defeated:
+			continue
+			
 		var flinch = action.actor.flinching
 		if flinch != null:
 			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
 			action.actor.turn_ended.emit()
 			continue
 
-		# This means a character is defeated.
-		if action == null or action.actor.is_defeated:
-			continue
 		Logger.append_log(Logger.LogType.BATTLE, "\nActors turn: %s" % action.actor.name)
 
 		# Play animation.

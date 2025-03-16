@@ -69,16 +69,16 @@ _base_melee_attack = 100.0
 _base_ranged_attack = 100.0
 _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
-_base_speed = 100.0
+_base_speed = 130.0
 _base_evasion = 100.0
 
 [resource]
 script = ExtResource("1_ay17s")
 name = "Player"
 stat_manager = SubResource("Resource_ii6l6")
-hp = 200
+hp = 150
 reset_hp_after_battle = true
-_element1 = "blank"
+_element1 = "blue"
 _element2 = "blank"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4

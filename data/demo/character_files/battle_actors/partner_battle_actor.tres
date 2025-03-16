@@ -1,44 +1,19 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=12 format=3 uid="uid://dkgwtmxs7v2mq"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://dkgwtmxs7v2mq"]
 
+[ext_resource type="Resource" uid="uid://docdwxk76wvo1" path="res://data/battle_system/battle_actions/attacks/basic/throw_g.tres" id="2_6olw7"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_aok80"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_2eocn"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="3_l75wd"]
+[ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="3_p80ub"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_7sif1"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="4_rfnfn"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_fywi4"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_15lc2"]
 [ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/shield.tres" id="9_7sc76"]
-
-[sub_resource type="Resource" id="Resource_78242"]
-resource_name = "Hit"
-script = ExtResource("6_fywi4")
-effects = Array[ExtResource("4_rfnfn")]([])
-name = "Hit"
-animation = ExtResource("3_l75wd")
-_element = "orange"
-priority = 0
-attack_range = 0
-target = 3
-details = ""
-
-[sub_resource type="Resource" id="Resource_dg4oj"]
-resource_name = "Hit"
-script = ExtResource("6_fywi4")
-effects = Array[ExtResource("4_rfnfn")]([])
-name = "Hit"
-animation = ExtResource("3_l75wd")
-_element = "purple"
-priority = 0
-attack_range = 1
-target = 3
-details = ""
 
 [sub_resource type="Resource" id="Resource_pvhim"]
 script = ExtResource("4_7sif1")
 _base_melee_attack = 100.0
 _base_ranged_attack = 100.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
+_base_melee_defense = 115.0
+_base_ranged_defense = 115.0
 _base_speed = 50.0
 _base_evasion = 100.0
 
@@ -46,10 +21,10 @@ _base_evasion = 100.0
 script = ExtResource("3_2eocn")
 name = "Partner"
 stat_manager = SubResource("Resource_pvhim")
-hp = 100
+hp = 200
 reset_hp_after_battle = true
 _element1 = "magenta"
 _element2 = "blank"
 _elemental_bias = "blue"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_aok80")]([SubResource("Resource_78242"), SubResource("Resource_dg4oj"), ExtResource("7_15lc2"), ExtResource("9_7sc76")])
+attacks = Array[ExtResource("2_aok80")]([ExtResource("2_6olw7"), ExtResource("3_p80ub"), ExtResource("7_15lc2"), ExtResource("9_7sc76")])
