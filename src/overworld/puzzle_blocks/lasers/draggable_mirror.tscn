@@ -38,6 +38,7 @@ shape = SubResource("CylinderShape3D_pqgmg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Draggable" parent="." instance=ExtResource("3_ityay")]
+collision_mask = 3
 scaling_factor = 2.0
 restrict_axis = true
 
