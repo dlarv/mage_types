@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://8qnf8bbhl6hh"]
+
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_dms75"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_yg8c2"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_y5w8c"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_h4jjc"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_5vr4v"]
+
+[sub_resource type="Resource" id="Resource_uqe8c"]
+script = ExtResource("3_y5w8c")
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_dqyoq"]
+script = ExtResource("4_h4jjc")
+attack_effect = SubResource("Resource_uqe8c")
+effect_target = 1
+chance = 1.0
+_element = "blank"
+
+[resource]
+resource_name = "Blue Hit"
+script = ExtResource("5_5vr4v")
+effects = Array[ExtResource("2_yg8c2")]([SubResource("Resource_dqyoq")])
+name = "Blue Hit"
+animation = ExtResource("1_dms75")
+_element = "blue"
+priority = 0
+attack_range = 1
+target = 3
+details = ""

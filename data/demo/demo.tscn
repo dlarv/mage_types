@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="27_nauye"]
 [ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="28_d00jv"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="28_vtokk"]
-[ext_resource type="Resource" uid="uid://se30wrmyq86g" path="res://data/demo/battle_1_dialog_tree.tres" id="29_iranb"]
+[ext_resource type="Resource" uid="uid://1dfekg1k1xgj" path="res://data/demo/character_files/battle_actors/tutorial_partner.tres" id="30_gvytb"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="30_p27dt"]
 [ext_resource type="Resource" uid="uid://cm4wr6tvgqw55" path="res://data/demo/character_files/battle_actors/tutorial_1_battle_actor.tres" id="31_qv7w7"]
 
@@ -55,6 +55,16 @@ radius = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dfr2x"]
 size = Vector3(3, 1, 4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ptgv"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="Resource" id="Resource_b5tjt"]
+script = ExtResource("22_kchl7")
+id = "TUTORIAL_FIGHT"
+next = -1
+starting_emotion = "NEUTRAL"
+end_state = ""
 
 [sub_resource type="Resource" id="Resource_bcofw"]
 script = ExtResource("28_vtokk")
@@ -96,18 +106,8 @@ script = ExtResource("30_p27dt")
 aggression = 0.0
 intelligence = 0.0
 transmutation_bias = 0.0
-dialog_resource = ExtResource("29_iranb")
+dialog_resource = ExtResource("3_kx8wq")
 dialog_ids = Array[ExtResource("28_vtokk")]([SubResource("Resource_bcofw"), SubResource("Resource_85eik"), SubResource("Resource_nxjpy"), SubResource("Resource_8qdrb"), SubResource("Resource_uj3io")])
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1ptgv"]
-size = Vector3(3, 1, 1)
-
-[sub_resource type="Resource" id="Resource_b5tjt"]
-script = ExtResource("22_kchl7")
-id = "TUTORIAL_FIGHT"
-next = -1
-starting_emotion = "NEUTRAL"
-end_state = ""
 
 [sub_resource type="Resource" id="Resource_qlloq"]
 script = ExtResource("22_kchl7")
@@ -148,7 +148,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Enemy1:position")
+tracks/2/path = NodePath("TutorialEnemy:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -259,7 +259,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Enemy1:position")
+tracks/1/path = NodePath("TutorialEnemy:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -302,7 +302,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")]), Array[ExtResource("10_wgmfh")]([ExtResource("9_oh653")])]
+"values": [Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")]), Array[ExtResource("10_wgmfh")]([ExtResource("30_gvytb")])]
 }
 
 [sub_resource type="Animation" id="Animation_m5x7d"]
@@ -388,7 +388,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_htolc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("SphereShape3D_660mf")
 
-[node name="Enemy1" type="MeshInstance3D" parent="Overworld"]
+[node name="TutorialEnemy" type="MeshInstance3D" parent="Overworld"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -26)
 mesh = SubResource("SphereMesh_n0u1l")
 
@@ -422,10 +422,6 @@ auto_trigger = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/PuzzleIntroTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 shape = SubResource("BoxShape3D_dfr2x")
-
-[node name="EnemyActor" parent="Overworld/PuzzleIntroTrigger" instance=ExtResource("27_nauye")]
-ai = SubResource("Resource_6gydk")
-_team = Array[ExtResource("10_wgmfh")]([ExtResource("31_qv7w7")])
 
 [node name="AnimationActor" parent="Overworld/PuzzleIntroTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("28_d00jv")]
 animation_name = "post_battle_prep"

@@ -5,7 +5,6 @@
 
 [node name="NPC" type="Area3D"]
 script = ExtResource("1_lo024")
-label_offset = Vector3(0, 1, 0)
 
 [node name="Interactable" parent="." instance=ExtResource("2_kks6f")]
 scaling_factor = 2.0

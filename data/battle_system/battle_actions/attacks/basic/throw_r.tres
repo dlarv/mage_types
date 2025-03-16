@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b4d7tphii0oh6"]
+
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_efj58"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_1q01h"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_wnfy6"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_k61xx"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_xslk2"]
+
+[sub_resource type="Resource" id="Resource_uqe8c"]
+script = ExtResource("3_wnfy6")
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_dqyoq"]
+script = ExtResource("4_k61xx")
+attack_effect = SubResource("Resource_uqe8c")
+effect_target = 1
+chance = 1.0
+_element = "blank"
+
+[resource]
+resource_name = "Red Throw"
+script = ExtResource("5_xslk2")
+effects = Array[ExtResource("2_1q01h")]([SubResource("Resource_dqyoq")])
+name = "Red Throw"
+animation = ExtResource("1_efj58")
+_element = "red"
+priority = 0
+attack_range = 1
+target = 3
+details = ""

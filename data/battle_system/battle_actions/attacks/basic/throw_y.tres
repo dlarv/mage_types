@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bufn6dgeaaumv"]
+
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_kg6eu"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_pjr33"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_yc1rq"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_d7171"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_qp3el"]
+
+[sub_resource type="Resource" id="Resource_uqe8c"]
+script = ExtResource("3_yc1rq")
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_dqyoq"]
+script = ExtResource("4_d7171")
+attack_effect = SubResource("Resource_uqe8c")
+effect_target = 1
+chance = 1.0
+_element = "blank"
+
+[resource]
+resource_name = "Yellow Throw"
+script = ExtResource("5_qp3el")
+effects = Array[ExtResource("2_pjr33")]([SubResource("Resource_dqyoq")])
+name = "Yellow Throw"
+animation = ExtResource("1_kg6eu")
+_element = "yellow"
+priority = 0
+attack_range = 1
+target = 3
+details = ""
