@@ -15,9 +15,6 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export var walk_speed := 10.0
 @export var run_speed := 30.0
 var _is_running := false
-## Is the player holding a Interactable object.
-var held_object: Node3D = null 
-var restricted_axis := Vector3.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
@@ -75,14 +72,10 @@ func _physics_process(delta: float) -> void:
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
 	if direction != Vector3.ZERO:
-		# Player can only move along one axis.
-		if restricted_axis != Vector3.ZERO:
-			vel = restricted_axis * direction.dot(restricted_axis) * speed
 		vel.x = direction.x * speed
 		vel.z = direction.z * speed
 		# Rotate model in direction of movement.
-		if not held_object:
-			model.rotation.y = atan2(vel.x, vel.z)
+		model.rotation.y = atan2(vel.x, vel.z)
 	else:
 		vel.x = move_toward(velocity.x, 0, speed)
 		vel.z = move_toward(velocity.z, 0, speed)
@@ -96,8 +89,6 @@ func _physics_process(delta: float) -> void:
 		anim_player.play("walk")
 	move_and_slide()
 
-	if held_object and velocity == Vector3.ZERO:
-		position = position.snapped(Vector3(0.5, 0.5, 0.5))
 
 
 func _move_god_mode(delta: float) -> void:
@@ -127,20 +118,6 @@ func start_dialog(npc: Variant) -> void:
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
 	cutscene_started.emit(player, id)
 
-func pickup_object(obj: Node3D, grabbable: Interactable, val: bool, axis:=Vector3.ZERO) -> void:
-	if not val:
-		held_object = null
-		restricted_axis = Vector3.ZERO
-		return
-	held_object = obj
-	
-	grabbable.is_being_reparented = true
-	obj.reparent(self)
-	grabbable.is_being_reparented = false
-
-	if axis != Vector3.ZERO:
-		velocity = Vector3.ZERO
-		restricted_axis = axis
 
 func look_towards(point: Vector3, yOnly := true) -> void:
 	if yOnly:

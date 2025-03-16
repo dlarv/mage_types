@@ -52,16 +52,6 @@ func _on_body_entered(body:Node3D) -> void:
 	# Used to differentiate between player and player when dragging object.
 	if not body.is_in_group("player") or not body.in_control: return
 
-	# Prevent player from picking up object, if they are already holding something.
-	if body.held_object and body.held_object != get_parent(): 
-		var n = name
-		if "puzzle_name" in get_parent():
-			n = get_parent().puzzle_name
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"Player collided with Interactable(%s), but could not pick it up, as they were already holding %s." 
-				% [n, body.held_object.name])
-		return
-
 	_player = body
 	_label.show()
 

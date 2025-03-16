@@ -127,7 +127,6 @@ func _make_root(player: Node3D) -> void:
 
 	# Preserve player's initial state and reparent.
 	_prev_player_parent = player.get_parent()
-	_player.get_node("CollisionShape3D").disabled = true
 	player.reparent(self)
 
 	# Allows draggable to activate chunks.
@@ -150,7 +149,6 @@ func _restore_root(player: Node3D) -> void:
 
 	# Restore player's state from before they picked up this item.
 	player.reparent(_prev_player_parent)
-	_player.get_node("CollisionShape3D").disabled = false
 	_player = null
 
 	# Draggable can no longer activate chunks.
