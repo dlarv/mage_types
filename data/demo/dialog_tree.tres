@@ -5,6 +5,11 @@
 [resource]
 script = ExtResource("1_7sxr6")
 starts = {
+"0": &"0_3",
+"1": &"0_5",
+"2a": &"0_9",
+"2b": &"0_10",
+"3": &"0_11",
 "BEACH_PUZZLES": &"0_7",
 "BOSS1": &"0_1",
 "FAVOR": &"0_8",
@@ -15,37 +20,62 @@ starts = {
 nodes = {
 "0_1": {
 "link": &"1_1",
-"offset": Vector2(-1760, 260),
+"offset": Vector2(-1720, -300),
 "start_id": "BOSS1"
+},
+"0_10": {
+"link": &"1_42",
+"offset": Vector2(-2400, 2760),
+"start_id": "2b"
+},
+"0_11": {
+"link": &"1_46",
+"offset": Vector2(-2380, 3080),
+"start_id": "3"
 },
 "0_2": {
 "link": &"1_2",
-"offset": Vector2(-1760, -100),
+"offset": Vector2(-1720, -620),
 "start_id": "MISC"
+},
+"0_3": {
+"link": &"7_1",
+"offset": Vector2(-2440, 1480),
+"start_id": "0"
 },
 "0_4": {
 "link": &"1_6",
-"offset": Vector2(-1860, 580),
+"offset": Vector2(-1760, 180),
 "start_id": "PARTNER_INTRO"
 },
+"0_5": {
+"link": &"1_21",
+"offset": Vector2(-2420, 2240),
+"start_id": "1"
+},
 "0_6": {
-"link": &"1_16",
-"offset": Vector2(-2300, 900),
+"link": &"5_1",
+"offset": Vector2(-2900, 880),
 "start_id": "TUTORIAL_FIGHT"
 },
 "0_7": {
 "link": &"1_10",
-"offset": Vector2(-2300, 1220),
+"offset": Vector2(-2940, 3400),
 "start_id": "BEACH_PUZZLES"
 },
 "0_8": {
 "link": &"1_20",
-"offset": Vector2(-2300, 1520),
+"offset": Vector2(-2920, 3700),
 "start_id": "FAVOR"
+},
+"0_9": {
+"link": &"1_27",
+"offset": Vector2(-2420, 2520),
+"start_id": "2a"
 },
 "1_1": {
 "dialogue": "RAWR xd",
-"offset": Vector2(-1540, 220),
+"offset": Vector2(-1500, -300),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -58,7 +88,7 @@ nodes = {
 },
 "1_10": {
 "dialogue": "",
-"offset": Vector2(-2080, 1220),
+"offset": Vector2(-2720, 3400),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -70,25 +100,30 @@ nodes = {
 "speaker": ""
 },
 "1_11": {
-"dialogue": "Luckily for you, there should be a supply boat coming in a few days. It can take you back to the mainland.",
-"offset": Vector2(1260, 560),
+"dialogue": "Well, you should probably get used to it.",
+"offset": Vector2(2480, 880),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_12",
-"text": "Is that how you get back to Earth?"
+"link": &"1_40",
+"text": "Why's that?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_5",
+"text": "I guess I'll try..."
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 290),
 "speaker": 0
 },
 "1_12": {
-"dialogue": "Well, no... sorry. We're not really sure how, or even if, that can be done.",
-"offset": Vector2(1600, 560),
+"dialogue": "If you like this, I have something interesting to show you. Follow me!",
+"offset": Vector2(2488.15, 1201.49),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_13",
+"link": &"9_4",
 "text": ""
 }
 },
@@ -96,43 +131,40 @@ nodes = {
 "speaker": 0
 },
 "1_13": {
-"dialogue": "I know that must be disappointing...",
-"offset": Vector2(1940, 560),
+"dialogue": "Hmm, well this isn't very peaceful... But its important to learn, so bear with me. Sorry.",
+"offset": Vector2(-1760, 1560),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_14",
-"text": "Not really"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_18",
-"text": "A little..."
+"text": ""
 }
 },
-"size": Vector2(300, 290),
+"size": Vector2(300, 240),
 "speaker": 0
 },
 "1_14": {
-"dialogue": "Oh, well in that case you might really like it here.",
-"offset": Vector2(2280, 560),
+"dialogue": "To start, click the Attacks button, then select the [el]Green[/el] attack in the leftmost slot. [br][br]Press Space when you've done so.
+",
+"offset": Vector2(-1340, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_15",
-"text": "What makes you say that?"
+"text": ""
 }
 },
-"size": Vector2(300, 257),
+"size": Vector2(300, 240),
 "speaker": 0
 },
 "1_15": {
-"dialogue": "It might be easier to show you. Follow me.",
-"offset": Vector2(2660, 780),
+"dialogue": "Great! Now hover your mouse over the enemy.  
+[br][br][b]Space[/b]",
+"offset": Vector2(-1000, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"9_2",
+"link": &"1_18",
 "text": ""
 }
 },
@@ -140,8 +172,8 @@ nodes = {
 "speaker": 0
 },
 "1_16": {
-"dialogue": "I think Aqua left a few of their experiments up ahead.",
-"offset": Vector2(-2080, 900),
+"dialogue": "I think Aqua left a few of his experiments up ahead.",
+"offset": Vector2(-2260, 1100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -154,7 +186,7 @@ nodes = {
 },
 "1_17": {
 "dialogue": "Ack!",
-"offset": Vector2(-1420, 900),
+"offset": Vector2(-1580, 1100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -166,21 +198,23 @@ nodes = {
 "speaker": 0
 },
 "1_18": {
-"dialogue": "I'm sorry. But this place isn't all bad.",
-"offset": Vector2(2280, 880),
+"dialogue": "Now what you're seeing is called the [i]transmutation hint[/i]. It might not make much sense, but that's okay. 
+[br][br]Just remember that the top-right square is [el]cyan[/el].
+[br][br][b]Space[/b]",
+"offset": Vector2(-660, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_15",
-"text": "Yeah?"
+"link": &"1_19",
+"text": ""
 }
 },
-"size": Vector2(300, 257),
+"size": Vector2(300, 240),
 "speaker": 0
 },
 "1_19": {
-"dialogue": "",
-"offset": Vector2(580, 880),
+"dialogue": "Now click on the enemy and press the \"End Turn\" button below.",
+"offset": Vector2(-340, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -193,7 +227,7 @@ nodes = {
 },
 "1_2": {
 "dialogue": "",
-"offset": Vector2(-1540, -120),
+"offset": Vector2(-1500, -620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -206,7 +240,7 @@ nodes = {
 },
 "1_20": {
 "dialogue": "",
-"offset": Vector2(-2080, 1520),
+"offset": Vector2(-2700, 3700),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -217,35 +251,416 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": ""
 },
-"1_3": {
-"dialogue": "Are you okay?!",
-"offset": Vector2(-780, 560),
+"1_21": {
+"dialogue": "My attack channeled the elemental power of [el]Green[/el], which reacted with the opponent's [el]Blue[/el] typing to create [el]Cyan[/el].",
+"offset": Vector2(-2200, 2160),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_4",
+"link": &"1_22",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_22": {
+"dialogue": "What's more, these reactions have side effects! Elements are broken into 2 subgroups: [color=blue]Defensive[/color] and [color=red]Offensive[/color].
+",
+"offset": Vector2(-1860, 2160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_23",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_23": {
+"dialogue": "[ul]When a [color=blue]defensive element[/color] transmute into another [color=blue]defensive element[/color], they get a speed boost.[/ul]
+[ul]The same goes for when a [color=red]offensive element[/color] transmutes into another [color=red]offensive element[/color].[/ul]
+[ul]When a [color=red]offensive element[/color] transmutes into a  [color=blue]defensive element[/color], they get a defensive bonus.[/ul]
+[ul] When a [color=blue]defensive element[/color] transmutes into a  [color=red]offensive element[/color], they get an offensive bonus.[/ul]",
+"offset": Vector2(-1520, 2160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_24",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_24": {
+"dialogue": "Defensive Types:
+[ul][el]Blue[/el][/ul]
+[ul][el]Cyan[/el][/ul]
+[ul][el]Magenta[/el][/ul]
+[ul][el]Yellow[/el][/ul]",
+"offset": Vector2(-1180, 2160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_25",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_25": {
+"dialogue": "Offensive Types:
+[ul][el]Green[/el][/ul]
+[ul][el]Purple[/el][/ul]
+[ul][el]Orange[/el][/ul]
+[ul][el]Red[/el][/ul]",
+"offset": Vector2(-840, 2160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_26",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_26": {
+"dialogue": "Press [i]T[/i] to pull up the Transmutation Menu. The second tab contains the type chart. Hover over any of the squares will show you that combos side effects.",
+"offset": Vector2(-501.381, 2170.08),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_45",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_27": {
+"dialogue": "Now I have 2 more things to show you.",
+"offset": Vector2(-2180, 2460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_28",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_28": {
+"dialogue": "You probably noticed that I have 2  colors, while the opponent only has 1.",
+"offset": Vector2(-1840, 2460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_29",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_29": {
+"dialogue": "The first 2 rows of a transmutation hint shows how those 2 types will react to an attack.",
+"offset": Vector2(-1500, 2460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_41",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_3": {
+"dialogue": "Are you okay?!",
+"offset": Vector2(-880, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_30",
 "text": "I think so"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": "I'm good, how are you?"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_30": {
+"dialogue": "Good, because I don't have a first aid kit on me.",
+"offset": Vector2(-540, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_33",
+"text": "What is this place?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"4_1",
+"text": "Where am I?"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_31": {
+"dialogue": "Right, sorry. I've been solely around researchers for the past few months. I may have forgotten how to talk to normal people.",
+"offset": Vector2(800, 200),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": "asdf"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_32": {
+"dialogue": "Well, the general consensus is that w're in some sort of ephemeral sub-space, recessed away from reality. ",
+"offset": Vector2(140, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"4_3",
+"text": "It looks like a beach..."
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"4_2",
+"text": "That makes sense"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_33": {
+"dialogue": "*Gathers thoughts*",
+"offset": Vector2(-200, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_32",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_34": {
+"dialogue": "We're on the Southern-most beach of an island. There's a research station North of here and not much else for miles.",
+"offset": Vector2(1140, 200),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_35",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_35": {
+"dialogue": "Luckily for you, there should be a supply boat coming in a few days. It can take you back to the mainland.",
+"offset": Vector2(1480, 200),
+"options": {
+0: {
+"condition": Array[Dictionary]([{
+"cur_variable": 2,
+"operator": 0,
+"value1": "homesick",
+"value2": "smart"
+}]),
+"link": &"1_36",
+"text": "Is that how you get back to reality?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_9",
+"text": "Is the mainland this blue too?"
+}
+},
+"size": Vector2(300, 291),
+"speaker": 0
+},
+"1_36": {
+"dialogue": "Well, no... sorry. We're not really sure how, or even if, that can be done.",
+"offset": Vector2(1820, 240),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_37",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_37": {
+"dialogue": "I know that must be disappointing...",
+"offset": Vector2(2160, 240),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_38",
+"text": "Not really"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"4_6",
+"text": "A little..."
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_38": {
+"dialogue": "Oh, well in that case you might really like it here.",
+"offset": Vector2(2800, 240),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_40",
+"text": "What makes you say that?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 0
+},
+"1_39": {
+"dialogue": "I'm sorry. But this place isn't all bad.",
+"offset": Vector2(2800, 540),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_40",
+"text": "Yeah?"
 }
 },
 "size": Vector2(300, 257),
 "speaker": 0
 },
 "1_4": {
-"dialogue": "Good, because I don't have a first aid kit on me.",
-"offset": Vector2(-440, 560),
+"dialogue": "There should be a slime around here somewhere...",
+"offset": Vector2(-2260, 780),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_5",
-"text": "Where am I?"
+"link": &"9_2",
+"text": ""
 }
 },
-"size": Vector2(300, 257),
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_40": {
+"dialogue": "It might be easier to show you. Follow me.",
+"offset": Vector2(3200, 760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"9_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_41": {
+"dialogue": "You may have guessed what the 3rd row is hinting to you, but if not watch how my typing reacts to the opponent's next attack.",
+"offset": Vector2(-1158.54, 2484.62),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_42": {
+"dialogue": "So not only will your typing react to your opponent's attacks (and vice versa), but your primary and secondary types can react together!",
+"offset": Vector2(-2180, 2760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_43",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_43": {
+"dialogue": "Finally, just one more thing.
+[br][br]So far, we've only been using [i]ranged[/i] attacks. Try selecting the orange attack this time.",
+"offset": Vector2(-1840, 2760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_44": {
+"dialogue": "Finally, using a ranged attack will only affect your opponent's typing. However, melee attacks will affect both the target and the user.",
+"offset": Vector2(-1820, 3080),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_45": {
+"dialogue": "Try using the Green attack again.",
+"offset": Vector2(-160, 2180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_46": {
+"dialogue": "If your second type is Blank (i.e. has no type), it will change to match the attack you used.",
+"offset": Vector2(-2160, 3080),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_44",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
 "speaker": 0
 },
 "1_5": {
-"dialogue": "*Gathers thoughts*",
-"offset": Vector2(-100, 560),
+"dialogue": "...",
+"offset": Vector2(2840, 1100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -258,7 +673,7 @@ nodes = {
 },
 "1_6": {
 "dialogue": "THUD",
-"offset": Vector2(-1580, 560),
+"offset": Vector2(-1540, 180),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -270,30 +685,25 @@ nodes = {
 "speaker": ""
 },
 "1_7": {
-"dialogue": "Well, the general consensus is that w're in some sort of ephemeral sub-space, recessed away from reality. ",
-"offset": Vector2(240, 560),
+"dialogue": "As much as I don't want to, I should probably give you the Forlorn crash course. Follow me.",
+"offset": Vector2(3220, 1060),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_8",
-"text": "It looks like a beach..."
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_19",
-"text": "That makes sense"
+"link": &"9_4",
+"text": ""
 }
 },
-"size": Vector2(300, 257),
+"size": Vector2(300, 240),
 "speaker": 0
 },
 "1_8": {
-"dialogue": "Sorry, I've been solely around researchers for the past few months. I may have forgotten how to talk to normal people.",
-"offset": Vector2(580, 560),
+"dialogue": "You know what? This works too.",
+"offset": Vector2(-1760, 1860),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_9",
+"link": &"1_14",
 "text": ""
 }
 },
@@ -301,32 +711,152 @@ nodes = {
 "speaker": 0
 },
 "1_9": {
-"dialogue": "We're on the Southern-most beach of an island. There's a research station North of here and not much else for miles.",
-"offset": Vector2(920, 560),
+"dialogue": "What? I mean part of it is, I guess",
+"offset": Vector2(1820, 560),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_11",
-"text": ""
+"link": &"4_4",
+"text": "Hopefully not *this* blue..."
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"4_5",
+"text": "Its kinda peaceful"
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 290),
 "speaker": 0
+},
+"2_1": {
+"comment": "Objectives for intro:
+- Segue into transmutation system.
+- Introduce monster?",
+"offset": Vector2(-1540, 500),
+"size": Vector2(420, 220)
+},
+"2_2": {
+"comment": "The second option here is a subtle 
+reference to the fact that there is currrently 
+nothing on the mainland.",
+"offset": Vector2(1480, 60),
+"size": Vector2(340, 120)
 },
 "3_1": {
 "link": "END",
-"offset": Vector2(-1120, 280),
+"offset": Vector2(-1140, -300),
 "signalValue": "battle_started"
 },
 "3_2": {
 "link": "END",
-"offset": Vector2(-1080, 940),
+"offset": Vector2(-1240, 1100),
 "signalValue": "battle_started"
+},
+"3_3": {
+"link": "END",
+"offset": Vector2(-1580, 780),
+"signalValue": "battle_started"
+},
+"4_1": {
+"cur_variable": 2,
+"link": &"1_34",
+"offset": Vector2(-200, 520),
+"type": 0,
+"value": "fast",
+"variable": "homesick"
+},
+"4_2": {
+"cur_variable": 2,
+"link": &"1_34",
+"offset": Vector2(460, 560),
+"type": 0,
+"value": "smart",
+"variable": "homesick"
+},
+"4_3": {
+"cur_variable": 2,
+"link": &"1_31",
+"offset": Vector2(460, 200),
+"type": 0,
+"value": "confused",
+"variable": "homesick"
+},
+"4_4": {
+"cur_variable": 2,
+"link": &"1_11",
+"offset": Vector2(2140, 720),
+"type": 0,
+"value": "rude",
+"variable": "homesick"
+},
+"4_5": {
+"cur_variable": 2,
+"link": &"1_12",
+"offset": Vector2(2127.88, 908.003),
+"type": 0,
+"value": "peaceful",
+"variable": "homesick"
+},
+"4_6": {
+"cur_variable": 3,
+"link": &"1_39",
+"offset": Vector2(2480, 520),
+"type": 0,
+"value": "true",
+"variable": "introduction_state"
+},
+"5_1": {
+"condition": Array[Dictionary]([{
+"cur_variable": 2,
+"operator": 0,
+"value1": "homesick",
+"value2": "rude"
+}]),
+"false": &"1_16",
+"offset": Vector2(-2680, 880),
+"true": &"1_4"
+},
+"7_1": {
+"default": &"1_8",
+"fork_title": "",
+"forks": {
+0: {
+"condition": Array[Dictionary]([{
+"cur_variable": 2,
+"operator": 0,
+"value1": "homesick",
+"value2": "rude"
+}]),
+"link": &"1_14"
+},
+1: {
+"condition": Array[Dictionary]([{
+"cur_variable": 2,
+"operator": 0,
+"value1": "homesick",
+"value2": "peaceful"
+}]),
+"link": &"1_13"
+}
+},
+"offset": Vector2(-2200, 1480)
+},
+"8_1": {
+"attached_nodes": Array[StringName]([&"1_2", &"0_2", &"3_1", &"1_1", &"0_1"]),
+"offset": Vector2(-1760, -660),
+"tint_color": Color(0.133333, 0.133333, 0.133333, 0.294118),
+"title": "Misc"
+},
+"8_2": {
+"attached_nodes": Array[StringName]([&"0_3", &"1_8", &"7_1", &"1_14", &"1_13", &"1_15", &"1_18", &"1_19", &"0_5", &"1_21", &"1_22", &"1_23", &"1_24", &"1_25", &"0_9", &"1_27", &"1_28", &"1_29", &"0_10", &"1_42", &"1_43", &"0_11", &"1_44", &"1_45", &"1_46"]),
+"offset": Vector2(-2480, 1440),
+"tint_color": Color(0.133333, 0.133333, 0.87451, 0.203922),
+"title": "Tutorial Battle"
 },
 "9_1": {
 "cur_variable": 0,
 "link": &"1_3",
-"offset": Vector2(-1160, 600),
+"offset": Vector2(-1200, 180),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "pull_from_surf",
@@ -334,20 +864,29 @@ nodes = {
 },
 "9_2": {
 "cur_variable": 0,
-"link": "END",
-"offset": Vector2(3000, 780),
+"link": &"3_3",
+"offset": Vector2(-1920, 780),
 "signalValue": "play_cutscene",
 "type": 0,
-"value": "intro_walking",
+"value": "start_tutorial_battle",
 "variable": "current_cutscene"
 },
 "9_3": {
 "cur_variable": 0,
 "link": &"1_17",
-"offset": Vector2(-1740, 900),
+"offset": Vector2(-1920, 1100),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "start_tutorial_battle",
+"variable": "current_cutscene"
+},
+"9_4": {
+"cur_variable": 0,
+"link": "END",
+"offset": Vector2(3660, 1320),
+"signalValue": "play_cutscene",
+"type": 0,
+"value": "intro_walking",
 "variable": "current_cutscene"
 }
 }
@@ -359,7 +898,15 @@ variables = {
 "current_emotion": {
 "type": 4,
 "value": ""
+},
+"homesick": {
+"type": 1,
+"value": false
+},
+"introduction_state": {
+"type": 4,
+"value": ""
 }
 }
-strays = Array[String]([])
+strays = Array[String](["8_1", "8_2", "2_2", "2_1"])
 characters = "res://data/demo/character_files/character_list.tres"
