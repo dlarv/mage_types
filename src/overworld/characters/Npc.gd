@@ -1,7 +1,6 @@
 @tool
 extends MagiClay
 
-@export var label_offset: Vector3
 @export var auto_trigger := false
 
 var story_actor: StoryActor = null
@@ -36,9 +35,11 @@ func _on_body_entered(body:Node3D) -> void:
 
 	if animation_actor and auto_trigger:
 		animation_actor.play_animation(body)
+		$Interactable.set_disabled(true)
 		set_deferred("monitoring", false)
 	elif story_actor and auto_trigger:
 		body.call_deferred("start_dialog", self)
+		$Interactable.set_disabled(true)
 		set_deferred("monitoring", false)
 	elif story_actor or vendor_actor: 
 		pass
