@@ -10,6 +10,7 @@ starts = {
 "2a": &"0_9",
 "2b": &"0_10",
 "3": &"0_11",
+"BEACH_PUZZLE": &"0_12",
 "BEACH_PUZZLES_INTRO": &"0_7",
 "BOSS1": &"0_1",
 "FAVOR": &"0_8",
@@ -32,6 +33,11 @@ nodes = {
 "link": &"1_46",
 "offset": Vector2(-2380, 3080),
 "start_id": "3"
+},
+"0_12": {
+"link": &"1_45",
+"offset": Vector2(-2480, 3740),
+"start_id": "BEACH_PUZZLE"
 },
 "0_2": {
 "link": &"1_2",
@@ -65,7 +71,7 @@ nodes = {
 },
 "0_8": {
 "link": &"1_20",
-"offset": Vector2(-2460, 3720),
+"offset": Vector2(-2480, 4040),
 "start_id": "FAVOR"
 },
 "0_9": {
@@ -240,7 +246,7 @@ nodes = {
 },
 "1_20": {
 "dialogue": "",
-"offset": Vector2(-2240, 3720),
+"offset": Vector2(-2260, 4040),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -482,7 +488,7 @@ nodes = {
 "condition": Array[Dictionary]([{
 "cur_variable": 2,
 "operator": 0,
-"value1": "homesick",
+"value1": "introduction_state",
 "value2": "smart"
 }]),
 "link": &"1_36",
@@ -556,7 +562,7 @@ nodes = {
 },
 "1_4": {
 "dialogue": "There should be a slime around here somewhere...",
-"offset": Vector2(-2260, 780),
+"offset": Vector2(-2260, 800),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -632,6 +638,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "Partner"
+},
+"1_45": {
+"dialogue": "",
+"offset": Vector2(-2260, 3740),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
 },
 "1_46": {
 "dialogue": "If your second type is Gray (Blank), it will change to match the attack you used.",
@@ -750,7 +769,7 @@ nothing on the mainland.",
 },
 "3_3": {
 "link": "END",
-"offset": Vector2(-1580, 780),
+"offset": Vector2(-1580, 800),
 "signalValue": "battle_started"
 },
 "4_1": {
@@ -759,7 +778,7 @@ nothing on the mainland.",
 "offset": Vector2(-200, 520),
 "type": 0,
 "value": "fast",
-"variable": "homesick"
+"variable": "introduction_state"
 },
 "4_2": {
 "cur_variable": 2,
@@ -767,7 +786,7 @@ nothing on the mainland.",
 "offset": Vector2(460, 560),
 "type": 0,
 "value": "smart",
-"variable": "homesick"
+"variable": "introduction_state"
 },
 "4_3": {
 "cur_variable": 2,
@@ -775,7 +794,7 @@ nothing on the mainland.",
 "offset": Vector2(460, 200),
 "type": 0,
 "value": "confused",
-"variable": "homesick"
+"variable": "introduction_state"
 },
 "4_4": {
 "cur_variable": 2,
@@ -783,7 +802,7 @@ nothing on the mainland.",
 "offset": Vector2(2140, 720),
 "type": 0,
 "value": "rude",
-"variable": "homesick"
+"variable": "introduction_state"
 },
 "4_5": {
 "cur_variable": 2,
@@ -791,21 +810,21 @@ nothing on the mainland.",
 "offset": Vector2(2127.88, 908.003),
 "type": 0,
 "value": "peaceful",
-"variable": "homesick"
+"variable": "introduction_state"
 },
 "4_6": {
-"cur_variable": 3,
+"cur_variable": 1,
 "link": &"1_39",
 "offset": Vector2(2480, 520),
 "type": 0,
 "value": "true",
-"variable": "introduction_state"
+"variable": "homesick"
 },
 "5_1": {
 "condition": Array[Dictionary]([{
-"cur_variable": 3,
+"cur_variable": 0,
 "operator": 0,
-"value1": "introduction_state",
+"value1": "current_cutscene",
 "value2": "rude"
 }]),
 "false": &"1_16",
@@ -814,9 +833,9 @@ nothing on the mainland.",
 },
 "5_2": {
 "condition": Array[Dictionary]([{
-"cur_variable": 3,
+"cur_variable": 0,
 "operator": 1,
-"value1": "introduction_state",
+"value1": "current_cutscene",
 "value2": "rude"
 }]),
 "false": &"9_5",
@@ -831,7 +850,7 @@ nothing on the mainland.",
 "condition": Array[Dictionary]([{
 "cur_variable": 2,
 "operator": 0,
-"value1": "homesick",
+"value1": "introduction_state",
 "value2": "rude"
 }]),
 "link": &"1_14"
@@ -840,7 +859,7 @@ nothing on the mainland.",
 "condition": Array[Dictionary]([{
 "cur_variable": 2,
 "operator": 0,
-"value1": "homesick",
+"value1": "introduction_state",
 "value2": "peaceful"
 }]),
 "link": &"1_13"
@@ -872,7 +891,7 @@ nothing on the mainland.",
 "9_2": {
 "cur_variable": 0,
 "link": &"3_3",
-"offset": Vector2(-1920, 780),
+"offset": Vector2(-1920, 800),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "start_tutorial_battle",
@@ -908,10 +927,6 @@ nothing on the mainland.",
 }
 variables = {
 "current_cutscene": {
-"type": 4,
-"value": ""
-},
-"current_emotion": {
 "type": 4,
 "value": ""
 },

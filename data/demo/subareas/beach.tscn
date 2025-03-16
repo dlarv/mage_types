@@ -381,27 +381,27 @@ is_breakable = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -6)
 items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_7ip05"), SubResource("Resource_colgn"), SubResource("Resource_5k7y4")])
 
-[node name="TidePoolObstacle" type="Node3D" parent="Chunk"]
+[node name="TidePoolEntry" type="Node3D" parent="Chunk"]
 
-[node name="Geyser" parent="Chunk/TidePoolObstacle" groups=["persist"] instance=ExtResource("3_h0s0g")]
+[node name="Geyser" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("3_h0s0g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.4, -5)
 size = 8.0
 base_strength = 21.0
 _element = "red"
 
-[node name="MagiclayRock1" parent="Chunk/TidePoolObstacle" groups=["persist"] instance=ExtResource("4_wmol4")]
+[node name="MagiclayRock1" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("4_wmol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, -11)
 _element = "green"
 
-[node name="MagiclayRock2" parent="Chunk/TidePoolObstacle" groups=["persist"] instance=ExtResource("4_wmol4")]
+[node name="MagiclayRock2" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("4_wmol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, -11)
 _element = "blue"
 
-[node name="MagiclayRock3" parent="Chunk/TidePoolObstacle" groups=["persist"] instance=ExtResource("4_wmol4")]
+[node name="MagiclayRock3" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("4_wmol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 1, -11)
 _element = "red"
 
-[node name="Chest" parent="Chunk/TidePoolObstacle" instance=ExtResource("15_xriqk")]
+[node name="Chest" parent="Chunk/TidePoolEntry" instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 8, 2)
 
 [node name="Spawner" parent="Chunk" instance=ExtResource("6_n6i80")]

@@ -41,13 +41,259 @@ script = ExtResource("7_oalpa")
 [sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
 script = ExtResource("7_3o8i5")
 
+[sub_resource type="Animation" id="Animation_vuqvq"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Partner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.5, 10, 3.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialEnemy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-11, 0, -26)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player:team")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")])]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Partner:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TutorialEnemy:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_54mdu"]
+resource_name = "intro_walking"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Partner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.6375, 0, 0.1375), Vector3(-1.6375, 0, 0.1375), Vector3(-6, 0, -11), Vector3(-8, 0, -11), Vector3(-8, 0, -14), Vector3(-5, 0, -14)]
+}
+
+[sub_resource type="Animation" id="Animation_tf1x4"]
+resource_name = "post_battle_prep"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:team")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Array[ExtResource("10_wgmfh")]([ExtResource("30_gvytb")]), Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")])]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Partner:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Partner:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-11, 0, -25.5), Vector3(-11, 0, -27), Vector3(-17, 0, -27), Vector3(-17, 0, -25.5)]
+}
+
+[sub_resource type="Animation" id="Animation_s2oyq"]
+resource_name = "pull_from_surf"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.5, 0.5, 3.5), Vector3(-3.5, 0.5, 3.5), Vector3(-3.5, 0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Partner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 0.366667, 0.566667, 1, 2.03333, 2.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0), Vector3(-2.1375, 0, 3.1375), Vector3(-2.1375, 0, 0.1375), Vector3(-1.6375, 0, 0.1375)]
+}
+
+[sub_resource type="Animation" id="Animation_kymq4"]
+resource_name = "start_tutorial_battle"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Partner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-5, 0, -14), Vector3(-11, 0, -25.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialEnemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-11, 0, -26), Vector3(-11, 1, -26)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-8, 0.5, -13.5), Vector3(-8, 0.5, -13.5), Vector3(-11, 0.5, -22.125), Vector3(-11, 0.5, -23.625)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player:team")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")]), Array[ExtResource("10_wgmfh")]([ExtResource("30_gvytb")])]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TutorialEnemy:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_m5x7d"]
+resource_name = "test"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Partner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-13, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddao4"]
+_data = {
+"RESET": SubResource("Animation_vuqvq"),
+"intro_walking": SubResource("Animation_54mdu"),
+"post_battle_prep": SubResource("Animation_tf1x4"),
+"pull_from_surf": SubResource("Animation_s2oyq"),
+"start_tutorial_battle": SubResource("Animation_kymq4"),
+"test": SubResource("Animation_m5x7d")
+}
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8a8ea"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htolc"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_660mf"]
-radius = 2.0
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gdcpl"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_n0u1l"]
 
@@ -58,7 +304,7 @@ size = Vector3(3, 1, 4.5)
 script = ExtResource("22_kchl7")
 id = "BEACH_PUZZLES_INTRO"
 next = -1
-end_state = ""
+end_state = "post_battle_prep"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ptgv"]
 size = Vector3(3, 1, 1)
@@ -118,217 +364,6 @@ end_state = "intro_walking"
 [sub_resource type="SphereShape3D" id="SphereShape3D_nj7rh"]
 radius = 2.0
 
-[sub_resource type="Animation" id="Animation_vuqvq"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Partner:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-3.5, 10, 3.5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TutorialEnemy:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-11, 0, -26)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Partner/MeshInstance3D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.4, 1.5, 0.4)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Player:team")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")])]
-}
-
-[sub_resource type="Animation" id="Animation_54mdu"]
-resource_name = "intro_walking"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Partner:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.4, 1.6, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.6375, 0, 0.1375), Vector3(-1.6375, 0, 0.1375), Vector3(-6, 0, -11), Vector3(-8, 0, -11), Vector3(-8, 0, -14), Vector3(-5, 0, -14)]
-}
-
-[sub_resource type="Animation" id="Animation_tf1x4"]
-resource_name = "post_battle_prep"
-length = 0.21
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:team")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Array[ExtResource("10_wgmfh")]([ExtResource("30_gvytb")]), Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")])]
-}
-
-[sub_resource type="Animation" id="Animation_s2oyq"]
-resource_name = "pull_from_surf"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2.03333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-3.5, 0.5, 3.5), Vector3(-3.5, 0.5, 3.5), Vector3(-3.5, 0.5, 0.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Partner:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.166667, 0.366667, 0.566667, 1, 2.03333, 2.23333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0), Vector3(-2.1375, 0, 3.1375), Vector3(-2.1375, 0, 0.1375), Vector3(-1.6375, 0, 0.1375)]
-}
-
-[sub_resource type="Animation" id="Animation_kymq4"]
-resource_name = "start_tutorial_battle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Partner:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-5, 0, -14), Vector3(-11, 0, -25.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TutorialEnemy:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.9, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-11, 0, -26), Vector3(-11, 1, -26)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Partner/MeshInstance3D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.4, 1.5, 0.4)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-8, 0.5, -13.5), Vector3(-8, 0.5, -13.5), Vector3(-11, 0.5, -22.125), Vector3(-11, 0.5, -23.625)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Player:team")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")]), Array[ExtResource("10_wgmfh")]([ExtResource("30_gvytb")])]
-}
-
-[sub_resource type="Animation" id="Animation_m5x7d"]
-resource_name = "test"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Partner:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-13, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddao4"]
-_data = {
-"RESET": SubResource("Animation_vuqvq"),
-"intro_walking": SubResource("Animation_54mdu"),
-"post_battle_prep": SubResource("Animation_tf1x4"),
-"pull_from_surf": SubResource("Animation_s2oyq"),
-"start_tutorial_battle": SubResource("Animation_kymq4"),
-"test": SubResource("Animation_m5x7d")
-}
-
 [node name="Demo" type="Node3D"]
 
 [node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_x5fo8")]
@@ -366,25 +401,33 @@ unique_name_in_owner = true
 [node name="Overworld" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Overworld"]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_ddao4")
+}
+
 [node name="Player" parent="Overworld" groups=["persist"] instance=ExtResource("9_qicvs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 10, 3.5)
+disable_mode = 1
 team = Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")])
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
 
 [node name="Partner" parent="Overworld" instance=ExtResource("20_2sxei")]
+disabled = true
 
 [node name="StoryActor" parent="Overworld/Partner" instance=ExtResource("21_xbfho")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Overworld/Partner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.5, 0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 mesh = SubResource("CapsuleMesh_8a8ea")
 surface_material_override/0 = SubResource("StandardMaterial3D_htolc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("SphereShape3D_660mf")
+shape = SubResource("CapsuleShape3D_gdcpl")
 
 [node name="TutorialEnemy" type="MeshInstance3D" parent="Overworld"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -26)
@@ -452,12 +495,6 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/IntroStoryTrigger"]
 shape = SubResource("SphereShape3D_nj7rh")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Overworld"]
-process_mode = 3
-libraries = {
-"": SubResource("AnimationLibrary_ddao4")
-}
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
