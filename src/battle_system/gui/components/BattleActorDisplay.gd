@@ -24,8 +24,6 @@ func setup(actor: BattleActor):
 
 	actor.was_just_defeated.connect(set_defeated)
 	actor.damage_applied.connect(set_health)
-	#actor.status_effect_added.connect(add_status_effect)
-	#actor.status_effects_removed.connect(remove_status_effects)
 	actor.stat_manager.stat_changed.connect(display_stat_change)
 
 
@@ -39,29 +37,6 @@ func get_target_position() -> Vector2:
 	position.y += size.y / 2
 	return position
 
-
-# func add_status_effect(effect: StatusEffect) -> void:
-# 	var key := effect.name
-# 	if effect.name == StatusEffectManager.PHOBIC_KEY:
-# 		key = "%s_%s" % [effect.element, StatusEffectManager.PHOBIC_KEY]
-#
-# 	if(icons.has(key)): return
-#
-# 	var icon = effect.instantiate_icon()
-# 	status_effect_icons.add_child(icon)
-# 	icons[key] = icon
-#
-# 	var button = icon.get_node("Button")
-# 	button.pressed.connect(func(): status_effect_icon_pressed.emit(effect))
-#
-#
-# func remove_status_effects(effects) -> void:
-# 	for effect in effects:
-# 		if !icons.has(effect.name): continue
-# 		var icon = icons[effect.name]
-# 		status_effect_icons.remove_child(icon)
-# 		icons.erase(effect.name)
-		
 func display_stat_change(stat: StatManager.Stat, value: float) -> void:
 	stat_change_display.add(stat, value)
 

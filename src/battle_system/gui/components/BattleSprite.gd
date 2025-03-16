@@ -16,16 +16,18 @@ signal status_effect_icon_pressed(effect)
 			$Secondary.hide()
 			$Mesh.show()
 
-var _mat1: StandardMaterial3D
-var _mat2: StandardMaterial3D
-var _indicator_mat: StandardMaterial3D
-
 var tint: Color = Color.WHITE
 var is_selectable := false
 var actor: BattleActor
 
+var _mat1: StandardMaterial3D
+var _mat2: StandardMaterial3D
+var _indicator_mat: StandardMaterial3D
+var _is_defeated := false
+
 func setup(actor: BattleActor, shiftRight: bool) -> void:
 	self.actor = actor
+	_is_defeated = false
 	_mat1 = StandardMaterial3D.new()
 	_mat2 = StandardMaterial3D.new()
 	_indicator_mat = StandardMaterial3D.new()
@@ -43,6 +45,11 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 
 	actor.status_effect_added.connect(add_status_effect)
 	actor.status_effects_removed.connect(remove_status_effects)
+	actor.was_just_defeated.connect(func(): 
+		_indicator_mat.albedo_color = Color.BLACK
+		_mat1.albedo_color = _mat1.albedo_color.darkened(0.5)
+		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
+		_is_defeated = true)
 
 
 func set_element(id: int, element: ElementalType) -> void:
@@ -60,6 +67,7 @@ func disable_selection() -> void:
 		set_highlight(false)
 
 func enable_selection(color: Color) -> void:
+	if _is_defeated: return
 	is_selectable = true
 	tint = color
 
