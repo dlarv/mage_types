@@ -31,8 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://bdm2iqu5gdils" path="res://src/overworld/magiclay/catalyst_platform.tscn" id="26_jxvc7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_pkk22"]
-vertices = PackedVector3Array(-16.526, 1.1, -52.848, -16.526, 1.1, -70.348, -31.276, 1.1, -70.348, -31.276, 1.1, -52.598, -16.526, 1.1, -37.598, -16.276, 1.1, -36.848, -13.526, 1.1, -36.598, -13.526, 1.1, -51.348, -16.026, 1.1, -51.098, 9.474, 1.1, -29.598, 9.474, 1.1, -60.598, -13.526, 1.1, -29.598, -13.526, 1.1, -60.598, -16.526, 1.1, -51.348, -31.276, 1.1, -37.598)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(8, 7, 4), PackedInt32Array(4, 7, 6), PackedInt32Array(6, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(9, 11, 6), PackedInt32Array(7, 12, 10), PackedInt32Array(8, 4, 13), PackedInt32Array(13, 4, 14), PackedInt32Array(13, 14, 3), PackedInt32Array(3, 0, 13)]
+vertices = PackedVector3Array(-16.526, 1.1, -52.848, -16.526, 1.1, -70.348, -31.276, 1.1, -70.348, -31.276, 1.1, -52.598, -12.276, 1.1, -60.098, -12.276, 1.1, -16.098, 18.224, 1.1, -16.098, 18.224, 1.1, -60.098, -16.526, 1.1, -37.598, -16.276, 1.1, -36.848, -13.776, 1.1, -36.848, -13.776, 1.1, -51.098, -16.276, 1.1, -51.098, -31.276, 1.1, -37.598)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(12, 8, 0), PackedInt32Array(0, 8, 3), PackedInt32Array(3, 8, 13)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_eqm52"]
 
@@ -368,7 +368,7 @@ visible = false
 navigation_mesh = SubResource("NavigationMesh_pkk22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk/NavigationRegion3D"]
-transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 16, -2, 0.6, -45)
+transform = Transform3D(15.6, 0, 0, 0, 1, 0, 0, 0, 22.4, 3, 0.6, -38)
 mesh = SubResource("PlaneMesh_eqm52")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Chunk/NavigationRegion3D"]

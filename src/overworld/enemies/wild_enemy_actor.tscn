@@ -20,6 +20,8 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_g7i1a")
 ball = ExtResource("2_fxe68")
+sense_range = 20.0
+speed = 4.0
 auto_trigger = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
