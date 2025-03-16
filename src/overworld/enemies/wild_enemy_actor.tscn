@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdv06avwh4v6g"]
+[gd_scene load_steps=7 format=3 uid="uid://bdv06avwh4v6g"]
 
 [ext_resource type="Script" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_g7i1a"]
 [ext_resource type="PackedScene" uid="uid://dmpasgilggksi" path="res://src/overworld/enemies/gradient_ball.tscn" id="2_fxe68"]
@@ -9,6 +9,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_nh6v1"]
 radius = 1.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_hjcob"]
+radius = 10.0
+
 [node name="WildEnemyActor" type="RigidBody3D" groups=["wild_enemies"]]
 collision_layer = 7
 collision_mask = 3
@@ -17,6 +20,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_g7i1a")
 ball = ExtResource("2_fxe68")
+auto_trigger = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -24,9 +28,20 @@ shape = SubResource("SphereShape3D_81beb")
 
 [node name="EnemyActor" parent="." instance=ExtResource("3_3n8aq")]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="BattleInitiator" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleInitiator"]
 shape = SubResource("SphereShape3D_nh6v1")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[node name="PlayerSensor" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSensor"]
+shape = SubResource("SphereShape3D_hjcob")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="body_entered" from="BattleInitiator" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="PlayerSensor" to="." method="_on_player_sensor_body_entered"]
+[connection signal="body_exited" from="PlayerSensor" to="." method="_on_player_sensor_body_exited"]

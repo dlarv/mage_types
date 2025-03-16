@@ -1,7 +1,17 @@
 extends "res://src/overworld/characters/Npc.gd"
 
 @export var ball: PackedScene
+@export var sense_range := 10.0:
+	set(val):
+		sense_range = val
+		$PlayerSensor/CollisionShape3D.shape = SphereShape3D.new()
+		$PlayerSensor/CollisionShape3D.shape.radius = sense_range
+@export var speed := 2.0
+@export_enum("AGGRO", "FLEE", "PASSIVE")
+var behavior := "AGGRO"
+
 var _spheres := 0
+var _can_see_player := false
 
 func setup(team: Array, controller: OpponentController) -> void:
 	for actor in team:
@@ -10,6 +20,16 @@ func setup(team: Array, controller: OpponentController) -> void:
 	$EnemyActor.ai = controller
 	$EnemyActor.team = team
 
+
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	if not _can_see_player: 
+		state.linear_velocity = Vector3.ZERO
+		return
+	$NavigationAgent3D.set_target_position(_player.global_position)
+	var nextPosition = $NavigationAgent3D.get_next_path_position()
+	state.linear_velocity = global_position.direction_to(nextPosition) * speed
+
+
 func _add_new_gradient_sprite(actor: BattleActor) -> void:
 	_spheres += 1
 	var mesh = ball.instantiate()
@@ -17,6 +37,7 @@ func _add_new_gradient_sprite(actor: BattleActor) -> void:
 
 	mesh.position.y = 1 * _spheres
 	add_child(mesh)
+
 
 # Override
 func react(e: ElementalType, randVal:=-2) -> bool:
@@ -30,3 +51,12 @@ func react(e: ElementalType, randVal:=-2) -> bool:
 			actor.set_element(1, e2)
 
 	return true
+
+
+func _on_player_sensor_body_exited(body:Node3D) -> void:
+	_can_see_player = false 
+	_player = null
+
+func _on_player_sensor_body_entered(body:Node3D) -> void:
+	_can_see_player = true
+	_player = body
