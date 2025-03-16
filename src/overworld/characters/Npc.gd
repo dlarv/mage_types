@@ -2,6 +2,10 @@
 extends MagiClay
 
 @export var auto_trigger := false
+@export var disabled := false:
+	set(val):
+		disabled = val
+		$Interactable.disabled = val
 
 var story_actor: StoryActor = null
 var vendor_actor: VendorActor = null
