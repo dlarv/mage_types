@@ -39,6 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Draggable" parent="." instance=ExtResource("3_ityay")]
 scaling_factor = 2.0
+restrict_axis = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Draggable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226855, 0)

@@ -99,7 +99,9 @@ func _snap_player_to_handle(pos: Vector3) -> Vector3:
 	var output = minHandle.global_position
 	output.y = pos.y
 
-	if restrict_axis and abs(minHandle.position.x) > abs(minHandle.position.z):
+	var xPos = abs(global_position.x - minHandle.global_position.x)
+	var zPos = abs(global_position.z - minHandle.global_position.z)
+	if restrict_axis and xPos > zPos:
 		_current_axis = Vector3(1, 0, 0)
 	elif restrict_axis:
 		_current_axis = Vector3(0, 0, 1)
