@@ -7,7 +7,6 @@ signal dialog_started(dialog_id, data)
 
 @export var dialog_ids: Array[Dialog]
 @export var current_id: int = 0
-@export var character: Character
 @export var animation_player: AnimationPlayer
 
 var _prev_id := current_id
@@ -37,19 +36,6 @@ func play_cutscene(id: String) -> void:
 		return
 	animation_player.play(id)
 	await animation_player.animation_finished
-
-
-func change_emotion(id:="NEUTRAL") -> void:
-	if not character: return
-	if character.image is StoryActorAnimatedTexture:
-		character.image.set_emotion(id)
-
-func get_starting_emotion() -> void:
-	if not character: return
-	if len(dialog_ids) == 0: return
-	if character.image is StoryActorAnimatedTexture:
-		character.image.set_emotion(dialog_ids[current_id].starting_emotion)
-
 
 func get_next_dialog_id() -> String:
 	if len(dialog_ids) == 0: return ""

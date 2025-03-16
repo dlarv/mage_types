@@ -74,10 +74,9 @@ func deserialize(data: Dictionary) -> void:
 	global_position = data["position"]
 
 func _on_interactable_interacted(obj:Node3D) -> void:
-		if story_actor != null:
-			story_actor.get_starting_emotion()
-			_player.call_deferred("start_dialog", self)
-		else:
-			_player.call_deferred("open_shop", self)
-		_player = null
-
+	if not _player: return
+	if story_actor != null:
+		_player.call_deferred("start_dialog", self)
+	else:
+		_player.call_deferred("open_shop", self)
+	_player = null

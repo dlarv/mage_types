@@ -54,9 +54,6 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 		var val = await dialog_box.dialogue_signal
 		if val == "play_cutscene": 
 			await _play_cutscene(npc)
-		elif val == "change_emotion":
-			var id = dialog_box.variables["current_emotion"]
-			npc.story_actor.change_emotion(id)
 		elif val != "dialogue_ended":
 			sigName = val
 

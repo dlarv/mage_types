@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=56 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -22,11 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="20_2sxei"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="21_xbfho"]
 [ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="22_kchl7"]
-[ext_resource type="Resource" uid="uid://nkt3ddqnpyrd" path="res://data/demo/character_files/partner_character.tres" id="23_sfjag"]
 [ext_resource type="Script" path="res://src/overworld/characters/actors/StoryActor.gd" id="25_dqkiw"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="27_nauye"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="28_6vn3d"]
-[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="28_d00jv"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="28_vtokk"]
 [ext_resource type="Resource" uid="uid://1dfekg1k1xgj" path="res://data/demo/character_files/battle_actors/tutorial_partner.tres" id="30_gvytb"]
 [ext_resource type="Resource" uid="uid://cm4wr6tvgqw55" path="res://data/demo/character_files/battle_actors/tutorial_1_battle_actor.tres" id="31_qv7w7"]
@@ -56,6 +54,12 @@ radius = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_dfr2x"]
 size = Vector3(3, 1, 4.5)
 
+[sub_resource type="Resource" id="Resource_d067t"]
+script = ExtResource("22_kchl7")
+id = "BEACH_PUZZLES_INTRO"
+next = -1
+end_state = ""
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ptgv"]
 size = Vector3(3, 1, 1)
 
@@ -63,7 +67,6 @@ size = Vector3(3, 1, 1)
 script = ExtResource("22_kchl7")
 id = "TUTORIAL_FIGHT"
 next = -1
-starting_emotion = "NEUTRAL"
 end_state = ""
 
 [sub_resource type="Resource" id="Resource_bcofw"]
@@ -110,7 +113,6 @@ dialog_ids = Array[ExtResource("28_vtokk")]([SubResource("Resource_bcofw"), SubR
 script = ExtResource("22_kchl7")
 id = "PARTNER_INTRO"
 next = -1
-starting_emotion = "NEUTRAL"
 end_state = "intro_walking"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nj7rh"]
@@ -374,7 +376,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="Partner" parent="Overworld" instance=ExtResource("20_2sxei")]
 
 [node name="StoryActor" parent="Overworld/Partner" instance=ExtResource("21_xbfho")]
-character = ExtResource("23_sfjag")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Overworld/Partner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.5, 0.4)
@@ -420,8 +421,8 @@ auto_trigger = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 shape = SubResource("BoxShape3D_dfr2x")
 
-[node name="AnimationActor" parent="Overworld/PuzzleIntroTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("28_d00jv")]
-animation_name = "post_battle_prep"
+[node name="StoryActor" parent="Overworld/PuzzleIntroTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("21_xbfho")]
+dialog_ids = Array[ExtResource("22_kchl7")]([SubResource("Resource_d067t")])
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="BattleStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]

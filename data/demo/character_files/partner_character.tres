@@ -1,35 +1,11 @@
-[gd_resource type="Resource" script_class="Character" load_steps=8 format=3 uid="uid://nkt3ddqnpyrd"]
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://nkt3ddqnpyrd"]
 
-[ext_resource type="Script" path="res://src/overworld/characters/StoryActorAnimatedSprite.gd" id="1_d6qpi"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_x818c"]
 
-[sub_resource type="Gradient" id="Gradient_8b65g"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.498039, 0.498039, 0.498039, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e64s3"]
-gradient = SubResource("Gradient_8b65g")
-
-[sub_resource type="Gradient" id="Gradient_wmrig"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ao58"]
-gradient = SubResource("Gradient_wmrig")
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_lmhly"]
-frames = 2
-speed_scale = 0.0
-frame_0/texture = SubResource("GradientTexture2D_e64s3")
-frame_0/duration = 0.0
-frame_1/texture = SubResource("GradientTexture2D_5ao58")
-frame_1/duration = 0.0
-script = ExtResource("1_d6qpi")
-order = Array[String](["NEUTRAL", "ANGER"])
-_current_frame = 0
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7gu2v"]
 
 [resource]
 script = ExtResource("1_x818c")
 name = "Partner"
-image = SubResource("AnimatedTexture_lmhly")
+image = SubResource("PlaceholderTexture2D_7gu2v")
 color = Color(1, 1, 1, 1)

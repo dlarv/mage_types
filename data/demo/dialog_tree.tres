@@ -10,7 +10,7 @@ starts = {
 "2a": &"0_9",
 "2b": &"0_10",
 "3": &"0_11",
-"BEACH_PUZZLES": &"0_7",
+"BEACH_PUZZLES_INTRO": &"0_7",
 "BOSS1": &"0_1",
 "FAVOR": &"0_8",
 "MISC": &"0_2",
@@ -59,13 +59,13 @@ nodes = {
 "start_id": "TUTORIAL_FIGHT"
 },
 "0_7": {
-"link": &"1_10",
-"offset": Vector2(-2940, 3400),
-"start_id": "BEACH_PUZZLES"
+"link": &"5_2",
+"offset": Vector2(-2480, 3420),
+"start_id": "BEACH_PUZZLES_INTRO"
 },
 "0_8": {
 "link": &"1_20",
-"offset": Vector2(-2920, 3700),
+"offset": Vector2(-2460, 3720),
 "start_id": "FAVOR"
 },
 "0_9": {
@@ -87,17 +87,17 @@ nodes = {
 "speaker": ""
 },
 "1_10": {
-"dialogue": "",
-"offset": Vector2(-2720, 3400),
+"dialogue": "Aqua's ",
+"offset": Vector2(-1760, 3440),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"9_5",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": 0
 },
 "1_11": {
 "dialogue": "Well, you should probably get used to it.",
@@ -240,7 +240,7 @@ nodes = {
 },
 "1_20": {
 "dialogue": "",
-"offset": Vector2(-2700, 3700),
+"offset": Vector2(-2240, 3720),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -423,8 +423,8 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
-"text": "asdf"
+"link": &"1_34",
+"text": ""
 }
 },
 "size": Vector2(300, 257),
@@ -803,14 +803,25 @@ nothing on the mainland.",
 },
 "5_1": {
 "condition": Array[Dictionary]([{
-"cur_variable": 2,
+"cur_variable": 3,
 "operator": 0,
-"value1": "homesick",
+"value1": "introduction_state",
 "value2": "rude"
 }]),
 "false": &"1_16",
 "offset": Vector2(-2680, 880),
 "true": &"1_4"
+},
+"5_2": {
+"condition": Array[Dictionary]([{
+"cur_variable": 3,
+"operator": 1,
+"value1": "introduction_state",
+"value2": "rude"
+}]),
+"false": &"9_5",
+"offset": Vector2(-2260, 3420),
+"true": &"1_10"
 },
 "7_1": {
 "default": &"1_8",
@@ -883,6 +894,15 @@ nothing on the mainland.",
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "intro_walking",
+"variable": "current_cutscene"
+},
+"9_5": {
+"cur_variable": 0,
+"link": "END",
+"offset": Vector2(-1380, 3540),
+"signalValue": "play_cutscene",
+"type": 0,
+"value": "post_battle_prep",
 "variable": "current_cutscene"
 }
 }
