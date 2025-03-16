@@ -1,8 +1,11 @@
 extends OpponentController
 class_name GenericOpponentController
 
+## How much does this opponent value damage over setup.
 @export_range(0, 1) var aggression: float
+## How much should randomness influence this opponent's decisions.
 @export_range(0, 1) var intelligence: float
+## How much should opponent value causing transmutations.
 @export_range(0, 1) var transmutation_bias: float
 
 var aggression_bias: float
