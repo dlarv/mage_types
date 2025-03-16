@@ -122,6 +122,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		# Calculate target transmutations.
 		for target in action.targets:
+			if target.is_defeated: continue
 			await calculate_transmutations(target, action.action)
 
 		# Check if battle should end.
