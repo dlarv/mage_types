@@ -259,7 +259,7 @@ func calculate_transmutations(target: BattleActor, action: BattleAction) -> void
 
 		# if buff != null:
 		buff.apply_effect(target)
-		msg.append("This reaction had side effects! %s")
+		msg.append("This reaction had side effects!")
 		msg.append_array(target.get_and_flush_msgs())
 
 		target.set_element(0, newType)
