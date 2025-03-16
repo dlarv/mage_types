@@ -24,9 +24,9 @@ end_state = ""
 
 [sub_resource type="Resource" id="Resource_lweek"]
 script = ExtResource("6_1lbkl")
-aggression = 0.0
-intelligence = 0.0
-transmutation_bias = 0.0
+aggression = 1.0
+intelligence = 0.5
+transmutation_bias = 1.0
 dialog_ids = Array[ExtResource("5_dve33")]([])
 
 [node name="Boss1" instance=ExtResource("1_k87ii")]

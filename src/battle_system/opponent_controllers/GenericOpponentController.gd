@@ -29,7 +29,7 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 	for action in user.attacks:
 		Logger.append_log(Logger.LogType.BATTLE, "\nEvaluating action: %s" % action.name)
 		for target in targets:
-			Logger.append_log(Logger.LogType.BATTLE, "\nEvaluating action against target: %s" % action.name)
+			Logger.append_log(Logger.LogType.BATTLE, "\nEvaluating action against target: %s" % target.name)
 			# Count number of transmutations.
 			var e1 := ElementManager.get_matchup(target.element1, action.element)
 			var e2 := ElementManager.get_matchup(target.element2, action.element)

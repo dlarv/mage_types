@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_1h0bu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axrop"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtm4b"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hl4uj"]
@@ -23,7 +23,7 @@ shape = SubResource("BoxShape3D_gvndh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1h0bu")
-surface_material_override/0 = SubResource("StandardMaterial3D_axrop")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtm4b")
 
 [node name="Draggable" parent="." instance=ExtResource("2_88vum")]
 
