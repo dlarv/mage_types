@@ -181,6 +181,13 @@ For v0.3.27:
 - Grabbable => Interactable
 	- Dropped signals and plumbing removed.
 	- When player interacts with object, emit one-and-done signal.
+- Draggable created
+	- Must be child of object it moves.
+		- MagiClay.puzzle_name would be broken.
+		- It would obscure the names of the important objects in the scene tree.
+	- When player interacts, control should be passed to Draggable.
+		- Both Draggable.parent and player is changed to be the children of Draggable.
+		- In this state, Draggable.collision_layer.6 is set to true. This ensures the Chunk remains loaded.
 
 ### Player Companions (plco)
 **The player's current companions should have overworld models that follow the player, without getting in the way.**
