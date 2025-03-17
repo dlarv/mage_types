@@ -11,6 +11,9 @@ var _spheres := 0
 var _can_see_player := false
 var _spawn_position := Vector3.ZERO
 
+func _enter_tree() -> void:
+	_spawn_position = global_position
+
 func setup(team: Array, controller: OpponentController) -> void:
 	for actor in team:
 		_add_new_gradient_sprite(actor)
@@ -21,7 +24,6 @@ func setup(team: Array, controller: OpponentController) -> void:
 	$PlayerSensor/CollisionShape3D.shape = SphereShape3D.new()
 	$PlayerSensor/CollisionShape3D.shape.radius = sense_range
 
-	_spawn_position = global_position
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not _can_see_player: 
