@@ -213,7 +213,7 @@ func _on_run_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	control_panel.current_tab = 0
 
-func on_action_selected(state: int, index: int, action: BattleAction) -> void:
+func on_action_selected(state: int, index: int, action: _BattleAction) -> void:
 	# Press 1: Show info & select target
 	# Press 2: Goto default.
 	if not state:

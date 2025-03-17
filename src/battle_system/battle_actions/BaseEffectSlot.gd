@@ -1,5 +1,5 @@
 extends Resource
-class_name BaseEffectSlot
+class_name _BaseEffectSlot
 
 enum EffectTarget { USER, TARGET }
 
@@ -19,8 +19,8 @@ var element: ElementalType:
 		element = value 
 
 #virtual
-func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
 	return ""
 
-func get_attack_effect() -> AttackEffect:
+func get_attack_effect() -> _AttackEffect:
 	return null

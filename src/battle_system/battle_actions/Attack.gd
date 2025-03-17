@@ -1,8 +1,8 @@
 @tool
-extends BattleAction 
+extends _BattleAction 
 class_name Attack 
 
-@export var effects: Array[BaseEffectSlot]
+@export var effects: Array[_BaseEffectSlot]
 
 # override
 func apply_effects(user: BattleActor, targets: Array) -> String:

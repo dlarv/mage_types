@@ -1,17 +1,17 @@
 @tool
-extends AttackEffect 
+extends _AttackEffect 
 class_name Damage 
 
-func get_dmg_potential(user: BattleActor, action: BattleAction, target: BattleActor) -> int:
+func get_dmg_potential(user: BattleActor, action: _BattleAction, target: BattleActor) -> int:
 	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, 1.0)
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:
 	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, effectiveness)
 	return "%s" % [ _apply_to(target, dmg, user) ]
 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
-func calculate_damage(attack: float, defense: float, action: BattleAction, effectiveness: float) -> int:
+func calculate_damage(attack: float, defense: float, action: _BattleAction, effectiveness: float) -> int:
 	var dmg := strength * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
 	Logger.append_log(Logger.LogType.BATTLE, "Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 

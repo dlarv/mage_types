@@ -3,7 +3,7 @@ extends StatusEffect
 class_name ElementalEffect 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element: ElementalType =ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element: ElementalType =ElementManager.Blank):
 	# If self.element is applied in the editor, each time this effect is used will have to be made into
 	# a unique instance. Defining it here allows the creation and editing of new attacks easier.
 	# var effect = duplicate()

@@ -15,9 +15,9 @@ var Green: ElementalType
 var Cyan: ElementalType 
 
 @export var elements: Array[ElementalType] = []
-@export var attack_buff: AttackEffect
-@export var defense_buff: AttackEffect
-@export var speed_buff: AttackEffect
+@export var attack_buff: _AttackEffect
+@export var defense_buff: _AttackEffect
+@export var speed_buff: _AttackEffect
 @export var theme: Theme
 
 # Dict<string, Node>
@@ -290,7 +290,7 @@ func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalT
 	var node = matchups[element1.name]
 	return node.get_result(element2)
 
-func get_side_effect(a: ElementalType, b: ElementalType) -> AttackEffect:
+func get_side_effect(a: ElementalType, b: ElementalType) -> _AttackEffect:
 	if a.is_blank() || b.is_blank(): 
 		return null
 	return matchups[a.name].get_effect(b)
@@ -310,7 +310,7 @@ func get_all_matchups() -> Array:
 			output.append(item)
 	return output
 
-func side_effect_to_index(effect: AttackEffect, isBuff: bool) -> int:
+func side_effect_to_index(effect: _AttackEffect, isBuff: bool) -> int:
 	if effect == null : 
 		return -1
 	elif effect == attack_buff:
@@ -338,7 +338,7 @@ class ElementalNode:
 	func _init(element: ElementalType) -> void:
 		self.element = element
 	
-	func add_connection(element: ElementalType, result: ElementalNode, buff: AttackEffect) -> void:
+	func add_connection(element: ElementalType, result: ElementalNode, buff: _AttackEffect) -> void:
 		edges[element] = Edge.new(buff, result)
 	
 
@@ -348,22 +348,22 @@ class ElementalNode:
 			return null
 		return edge.result.element
 	
-	func get_effect(other: ElementalType) -> AttackEffect:
+	func get_effect(other: ElementalType) -> _AttackEffect:
 		var edge = edges.get(other, null)
 		if edge == null: 
 			return null
 		return edge.buff_effect
 
 	## Find the edge connecting this and end, then return its effect.
-	func find_effect_for(end: ElementalType) -> AttackEffect:
+	func find_effect_for(end: ElementalType) -> _AttackEffect:
 		for edge in edges.values():
 			if(edge.result.element == end): return edge.buff_effect
 		return null
 
 class Edge:
-	var buff_effect: AttackEffect
+	var buff_effect: _AttackEffect
 	var result: ElementalNode 
 
-	func _init(buffEffect: AttackEffect, end: ElementalNode) -> void:
+	func _init(buffEffect: _AttackEffect, end: ElementalNode) -> void:
 		self.buff_effect = buffEffect
 		result = end

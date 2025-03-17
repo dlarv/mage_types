@@ -68,7 +68,7 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 			value = ElementManager.Blank
 		elemental_bias = value
 @export var bias_reversion_threshold := 0.4
-@export var attacks: Array[BattleAction] = []
+@export var attacks: Array[_BattleAction] = []
 @export var equipment: Equipment = null:
 	set(value):
 		if not Engine.is_editor_hint() and equipment != null:
@@ -185,13 +185,13 @@ func set_stat(stat: Variant, amount: float) -> void:
 		stat_manager.set_base_stat(stat, amount)
 
 			
-func get_attack_stat(action: BattleAction) -> float:
-	if action.attack_range == BattleAction.AttackRange.MELEE:
+func get_attack_stat(action: _BattleAction) -> float:
+	if action.attack_range == _BattleAction.AttackRange.MELEE:
 		return stat_manager.melee_attack
 	return stat_manager.ranged_attack
 
-func get_defense_stat(action: BattleAction) -> float:
-	if action.attack_range == BattleAction.AttackRange.MELEE:
+func get_defense_stat(action: _BattleAction) -> float:
+	if action.attack_range == _BattleAction.AttackRange.MELEE:
 		return stat_manager.melee_defense
 	return stat_manager.ranged_defense
 

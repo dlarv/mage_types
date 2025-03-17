@@ -7,7 +7,7 @@
 [resource]
 resource_name = "Green Strike"
 script = ExtResource("4_816ed")
-effects = Array[ExtResource("2_tgwkw")]([])
+effects = Array[ExtResource("2_tgwkw")]([null])
 name = "Green Strike"
 animation = ExtResource("1_rm1nk")
 _element = "purple"

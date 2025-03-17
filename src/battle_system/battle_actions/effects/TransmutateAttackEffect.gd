@@ -1,5 +1,5 @@
 @tool
-extends AttackEffect 
+extends _AttackEffect 
 class_name TransmutateAttackEffect 
 
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
@@ -18,7 +18,7 @@ var element: ElementalType:
 @export_range(0, 1) var element_id: int 
 
 #override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	if target.get_element(element_id) == element:
 		return "But %s is already %s!" % [ user.name, element.name ]
 	target.set_element(element_id, element)

@@ -15,4 +15,3 @@ func _enter_tree() -> void:
 func _on_battle_ended(endState: Battle.EndState) -> void: 
 	if not Engine.is_editor_hint() and endState == Battle.EndState.WON and disappear_on_defeat:
 		get_parent().queue_free()
-

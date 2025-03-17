@@ -1,4 +1,4 @@
-extends BaseEffectSlot
+extends _BaseEffectSlot
 class_name ConditionalEffect
 
 @export var condition: Condition
@@ -12,10 +12,10 @@ class_name ConditionalEffect
 var print_failed_status := "FAILURE"
 
 
-var _last_activated_effect: BaseEffectSlot = null
+var _last_activated_effect: _BaseEffectSlot = null
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
 	if condition.check(user, target, action, effectiveness):
 		_last_activated_effect = success_effect
 		return success_effect.apply_effect(user, target, action, effectiveness)
@@ -36,7 +36,7 @@ func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, 
 		return "But it failed!\n"
 	return ""
 
-## Used to check the type of the last AttackEffect.
+## Used to check the type of the last _AttackEffect.
 ## e.g. if it was Damage, StatusEffect, etc.
-func get_attack_effect() -> AttackEffect:
+func get_attack_effect() -> _AttackEffect:
 	return _last_activated_effect.attack_effect

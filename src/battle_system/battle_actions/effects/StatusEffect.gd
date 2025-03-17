@@ -1,5 +1,5 @@
 @tool
-extends AttackEffect 
+extends _AttackEffect 
 class_name StatusEffect 
 
 @export var duration: int 
@@ -9,7 +9,7 @@ class_name StatusEffect
 var element: ElementalType
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	# if target == null or action == null: return name
 	if target == null:
 		target = user

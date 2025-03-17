@@ -96,9 +96,9 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		var targetTeamIndex
 		var teamDisplay
 		# Target same team as user.
-		if(action.action.target == BattleAction.TargetType.SELF \
-				or action.action.target == BattleAction.TargetType.ALLY \
-				or action.action.target == BattleAction.TargetType.ALLIES):
+		if(action.action.target == _BattleAction.TargetType.SELF \
+				or action.action.target == _BattleAction.TargetType.ALLY \
+				or action.action.target == _BattleAction.TargetType.ALLIES):
 			targetTeamIndex = action.team_index
 			teamDisplay =  gui.ally_display_parent if action.team_index == 0  else  gui.enemy_display_parent
 		# Target opposite team from user.
@@ -194,7 +194,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	await dialog(true)
 	gui.enable_player_controls(true)
 
-func calculate_transmutations(target: BattleActor, action: BattleAction) -> void:
+func calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
 	var stasis = target.stasis
 	if stasis != null:
 		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)

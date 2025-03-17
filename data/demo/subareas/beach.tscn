@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=34 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -14,16 +14,9 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="15_o5iye"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="15_xriqk"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="16_1unvm"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="16_fq825"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
 [ext_resource type="Resource" uid="uid://sgingeb41cun" path="res://data/items/equipment/reactor_shard.tres" id="17_7ejy0"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="17_rm5vl"]
-[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="18_lqpp6"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="18_lupee"]
 [ext_resource type="PackedScene" uid="uid://cxjdlm0ubsvy6" path="res://src/overworld/magiclay/catalyst_device.tscn" id="18_w6661"]
-[ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="19_78mm0"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="19_uvq5w"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="20_ipvyi"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="21_wyiua"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="21_y7w8y"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="22_sipbl"]
@@ -48,46 +41,18 @@ allow_stacking = true
 [sub_resource type="Resource" id="Resource_colgn"]
 resource_name = "Healing Potion"
 script = ExtResource("16_m6hrw")
-item = ExtResource("18_lqpp6")
-id = 0
+id = -1
 quantity = 5
 max_quantity = 9999
-allow_stacking = true
+allow_stacking = false
 
 [sub_resource type="Resource" id="Resource_5k7y4"]
 resource_name = "Poison Heal"
 script = ExtResource("16_m6hrw")
-item = ExtResource("19_78mm0")
-id = 1
+id = -1
 quantity = 3
 max_quantity = 9999
-allow_stacking = true
-
-[sub_resource type="Resource" id="Resource_ed301"]
-script = ExtResource("18_lupee")
-name = ""
-chance = 1.0
-strength = 30.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_0yygv"]
-script = ExtResource("19_uvq5w")
-attack_effect = SubResource("Resource_ed301")
-effect_target = 1
-chance = 1.0
-_element = "blank"
-
-[sub_resource type="Resource" id="Resource_4yusp"]
-resource_name = "Hit"
-script = ExtResource("20_ipvyi")
-effects = Array[ExtResource("17_rm5vl")]([SubResource("Resource_0yygv")])
-name = "Hit"
-animation = ExtResource("16_fq825")
-_element = "orange"
-priority = 0
-attack_range = 0
-target = 3
-details = ""
+allow_stacking = false
 
 [sub_resource type="Resource" id="Resource_yyime"]
 script = ExtResource("22_sipbl")
@@ -108,7 +73,7 @@ _element1 = "orange"
 _element2 = "orange"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("15_o5iye")]([SubResource("Resource_4yusp")])
+attacks = Array[ExtResource("15_o5iye")]([])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ltx"]
 size = Vector3(14, 2, 8)
@@ -134,11 +99,10 @@ allow_stacking = true
 [sub_resource type="Resource" id="Resource_l7ikq"]
 resource_name = "Healing Potion"
 script = ExtResource("16_m6hrw")
-item = ExtResource("18_lqpp6")
-id = 0
+id = -1
 quantity = 5
 max_quantity = 9999
-allow_stacking = true
+allow_stacking = false
 
 [node name="Beach" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_sl1hi")

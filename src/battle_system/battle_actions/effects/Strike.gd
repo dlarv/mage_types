@@ -16,7 +16,7 @@ var element: ElementalType
 @export var negative_factor: float
 
 
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, e:ElementalType=ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, e:ElementalType=ElementManager.Blank):
 	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), action, effectiveness)
 	var factor: float
 	var msg = ""

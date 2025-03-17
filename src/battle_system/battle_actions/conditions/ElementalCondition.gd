@@ -8,7 +8,7 @@ var operator := "any"
 var apply_to := "user"
 
 #override
-func check(user: BattleActor, target: BattleActor, action: BattleAction, effectiveness:=1.0) -> bool:
+func check(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> bool:
 	var output := true
 	var f: Callable
 	var op := ""

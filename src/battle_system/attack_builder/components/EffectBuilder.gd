@@ -3,7 +3,7 @@ extends VBoxContainer
 
 signal effect_created(effect: EffectSlot)
 
-@export var attack_effects: Array[AttackEffect]
+@export var attack_effects: Array[_AttackEffect]
 @export var stats: Array[StatChange]
 @export var effect_option_button: OptionButton
 @export var stat_option_button: OptionButton
@@ -23,7 +23,7 @@ func _enter_tree():
 
 func _on_effect_item_selected(index:int) -> void:
 	var e := attack_effects[index]
-	var attack_effect: AttackEffect
+	var attack_effect: _AttackEffect
 
 	_effect = EffectSlot.new()
 

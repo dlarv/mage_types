@@ -1,6 +1,6 @@
 @tool
 extends Resource 
-class_name AttackEffect 
+class_name _AttackEffect 
 
 @export var name: String 
 ## Chance this effect will trigger each turn.
@@ -10,13 +10,13 @@ class_name AttackEffect
 @export_multiline var message: String = ""
 
 # virtual
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	if target != null:
 		return message.replace("{user}", user.name).replace("{target}", target.name)
 	return ""
 
 # virtual
-func get_dmg_potential(user: BattleActor, action: BattleAction, target: BattleActor) -> int:
+func get_dmg_potential(user: BattleActor, action: _BattleAction, target: BattleActor) -> int:
 	return 0
 
 func get_setup_potential(user: BattleActor, target: BattleActor) -> float:

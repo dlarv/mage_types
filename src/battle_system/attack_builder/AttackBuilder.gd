@@ -51,25 +51,25 @@ func _on_details_text_changed() -> void:
 func _on_target_item_selected(index:int) -> void:
 	match index:
 		1:
-			_attack.target = BattleAction.TargetType.ENEMIES
+			_attack.target = _BattleAction.TargetType.ENEMIES
 		2:
-			_attack.target = BattleAction.TargetType.SELF
+			_attack.target = _BattleAction.TargetType.SELF
 		3:
-			_attack.target = BattleAction.TargetType.ALLY
+			_attack.target = _BattleAction.TargetType.ALLY
 		4:
-			_attack.target = BattleAction.TargetType.ALLIES
+			_attack.target = _BattleAction.TargetType.ALLIES
 		0,_:
-			_attack.target = BattleAction.TargetType.ENEMY
+			_attack.target = _BattleAction.TargetType.ENEMY
 
 
 func _on_range_item_selected(index:int) -> void:
 	match index:
 		0: 
-			_attack.attack_range = BattleAction.AttackRange.MELEE
+			_attack.attack_range = _BattleAction.AttackRange.MELEE
 		1:
-			_attack.attack_range = BattleAction.AttackRange.RANGED
+			_attack.attack_range = _BattleAction.AttackRange.RANGED
 		2,_:
-			_attack.attack_range = BattleAction.AttackRange.STATUS
+			_attack.attack_range = _BattleAction.AttackRange.STATUS
 
 func _on_priority_value_changed(value:float) -> void:
 	_attack.priority = int(value)

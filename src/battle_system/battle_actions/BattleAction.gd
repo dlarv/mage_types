@@ -1,8 +1,8 @@
 @tool
 extends Resource 
-class_name BattleAction 
+class_name _BattleAction 
 
-# public static BattleAction Flee { get private set } = new()
+# public static _BattleAction Flee { get private set } = new()
 
 enum TargetType { SELF, ALLY, ALLIES, ENEMY, ENEMIES }
 enum AttackRange { MELEE, RANGED, STATUS }

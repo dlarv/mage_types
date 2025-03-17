@@ -1,40 +1,9 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=14 format=3 uid="uid://bo4oib5wr8f3r"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://bo4oib5wr8f3r"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_0kd5o"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="3_456to"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_w7ijy"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="4_8xwmo"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="4_j3sx6"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_oy67b"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_28k81"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="6_2igug"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_l7mmw"]
-
-[sub_resource type="Resource" id="Resource_m0i7n"]
-script = ExtResource("5_28k81")
-name = ""
-chance = 1.0
-strength = 30.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_3j1rb"]
-script = ExtResource("6_2igug")
-attack_effect = SubResource("Resource_m0i7n")
-effect_target = 1
-chance = 1.0
-_element = "blank"
-
-[sub_resource type="Resource" id="Resource_4yusp"]
-resource_name = "Hit"
-script = ExtResource("6_l7mmw")
-effects = Array[ExtResource("4_8xwmo")]([SubResource("Resource_3j1rb")])
-name = "Hit"
-animation = ExtResource("3_456to")
-_element = "orange"
-priority = 0
-attack_range = 0
-target = 3
-details = ""
 
 [sub_resource type="Resource" id="Resource_advf4"]
 script = ExtResource("4_oy67b")
@@ -55,5 +24,5 @@ _element1 = "orange"
 _element2 = "orange"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_0kd5o")]([SubResource("Resource_4yusp")])
+attacks = Array[ExtResource("2_0kd5o")]([])
 equipment = ExtResource("4_j3sx6")

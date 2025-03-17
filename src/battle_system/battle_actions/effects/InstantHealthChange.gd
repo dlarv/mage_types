@@ -1,11 +1,11 @@
 @tool
-extends AttackEffect 
+extends _AttackEffect 
 class_name InstantHealthChange 
 
 @export var allow_overflow := false
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
 	var health := int(target.hp * strength * effectiveness) 
 	var verb: String
 
@@ -17,5 +17,5 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: BattleAct
 
 	return "%s %s %d hp!" % [ target.name, verb, health ]
 
-func get_dmg_potential(user: BattleActor, action: BattleAction, target: BattleActor) -> int:
+func get_dmg_potential(user: BattleActor, action: _BattleAction, target: BattleActor) -> int:
 	return -int(target.hp * strength) 

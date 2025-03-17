@@ -1,11 +1,11 @@
 @tool
-extends BaseEffectSlot
+extends _BaseEffectSlot
 class_name EffectSlot
 
-@export var attack_effect: AttackEffect 
+@export var attack_effect: _AttackEffect 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
 	var rand = randf()
 	if rand <= chance:
 		if chance != 1.0:
@@ -19,5 +19,5 @@ func apply_effect(user: BattleActor, target: BattleActor, action: BattleAction, 
 
 	return "" 
 
-func get_attack_effect() -> AttackEffect:
+func get_attack_effect() -> _AttackEffect:
 	return attack_effect 

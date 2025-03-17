@@ -1,5 +1,5 @@
 @tool
-extends BattleAction 
+extends _BattleAction 
 class_name BattleItem 
 
 signal item_consumed()

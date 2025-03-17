@@ -92,7 +92,7 @@ func _on_action_target_selection_cancelled() -> void:
 	ally_display_parent.cancel_target_selection()
 	enemy_display_parent.cancel_target_selection()
 
-func _on_action_selected(index: int, action: BattleAction) -> void:
+func _on_action_selected(index: int, action: _BattleAction) -> void:
 	var targets = await select_targets(allies[index], action)
 	if targets == null: return
 
@@ -101,19 +101,19 @@ func _on_action_selected(index: int, action: BattleAction) -> void:
 	messageBox.clear_message()
 	playerControls.next_character()
 
-func select_targets(user: BattleActor, action:BattleAction):
+func select_targets(user: BattleActor, action:_BattleAction):
 	var targets = null
 	var target
 
 	match action.target:
-		BattleAction.TargetType.SELF:
+		_BattleAction.TargetType.SELF:
 			targets = [ user ]
 			# This pause is needed, otherwise the End turn button won't enable.
 			ally_display_parent.select_specific_target(false, action.element, user)
 			await ally_display_parent.selected
 			# await get_tree().create_timer(.05).timeout
 			
-		BattleAction.TargetType.ALLY:
+		_BattleAction.TargetType.ALLY:
 			# if ally_display_parent.length == 1 and not Settings.enable_transmutation_hints:
 			# 	targets = [ ally_display_parent.get_display(0).actor ]
 			# 	# This pause is needed, otherwise the End turn button won't enable.
@@ -123,11 +123,11 @@ func select_targets(user: BattleActor, action:BattleAction):
 				target = await ally_display_parent.selected
 				targets = [ target ]
 			
-		BattleAction.TargetType.ALLIES:
+		_BattleAction.TargetType.ALLIES:
 			# enemy_display_parent.select_all_as_target(false, action.element)
 			targets = allies
 			
-		BattleAction.TargetType.ENEMY:
+		_BattleAction.TargetType.ENEMY:
 			# if enemy_display_parent.length == 1 and not Settings.enable_transmutation_hints:
 			# 	targets = [ enemy_display_parent.get_display(0).actor ]
 			# 	# This pause is needed, otherwise the End turn button won't enable.
@@ -141,7 +141,7 @@ func select_targets(user: BattleActor, action:BattleAction):
 				target = await enemy_display_parent.selected
 				targets = [ target ]
 
-		BattleAction.TargetType.ENEMIES:
+		_BattleAction.TargetType.ENEMIES:
 			# ally_display_parent.select_all_as_target(true, action.element)
 			targets = enemies
 	
@@ -163,7 +163,7 @@ func _on_turn_ended(tryRunningAway: bool) -> void:
 
 func _on_show_info(action: Variant, limitInfo:=false) -> void:
 	var msg = "Empty"
-	if action is BattleAction:
+	if action is _BattleAction:
 		msg = action.name
 	elif (action is BattleActor):
 		msg = action.name

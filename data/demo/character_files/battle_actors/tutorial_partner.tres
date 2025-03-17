@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://1dfekg1k1xgj"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=5 format=3 uid="uid://1dfekg1k1xgj"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_keptm"]
-[ext_resource type="Resource" uid="uid://docdwxk76wvo1" path="res://data/battle_system/battle_actions/attacks/basic/throw_g.tres" id="2_dby6o"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_dqe8y"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="3_pmabh"]
 
@@ -24,4 +23,4 @@ _element1 = "blue"
 _element2 = "purple"
 _elemental_bias = "blue"
 bias_reversion_threshold = 0.0
-attacks = Array[ExtResource("1_keptm")]([ExtResource("2_dby6o")])
+attacks = Array[ExtResource("1_keptm")]([])
