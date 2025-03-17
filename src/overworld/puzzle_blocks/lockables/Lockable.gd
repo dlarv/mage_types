@@ -1,6 +1,9 @@
 extends Node3D
 class_name Lockable
 
+signal on(node: PuzzleBlock)
+signal off(node: PuzzleBlock)
+
 ## The number of PuzzleBlocks that must emit the on signal for this gate to open.
 @export var locks: Array[PuzzleBlock]
 ## Once this gate has been opened, can it close again?
@@ -30,6 +33,7 @@ func _on_lock_closed(lock: PuzzleBlock) -> bool:
 		_is_locked = true
 		Logger.append_log(Logger.LogType.PUZZLE, 
 				"Lockable(%s)'s Lock(%s) was closed." % [puzzle_name, lock.puzzle_name])
+		off.emit(self)
 		return true
 	return false
 
@@ -48,6 +52,7 @@ func _on_lock_opened(lock: PuzzleBlock) -> bool:
 	for val in _opened_locks.values():
 		if not val: return false
 	_is_locked = false
+	on.emit(self)
 	return true
 
 func serialize() -> Dictionary:
