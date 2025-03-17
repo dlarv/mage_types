@@ -56,6 +56,8 @@ var _rand_val: int
 func _enter_tree():
 	if _original_element == null:
 		_original_element = element
+	_flicker_collider()
+
 
 func _ready():
 	_material = StandardMaterial3D.new()

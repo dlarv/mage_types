@@ -442,29 +442,35 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.9, 
 locks = [NodePath("../PressurePlate1"), NodePath("../PressurePlate2"), NodePath("../PressurePlate3")]
 permanent = true
 
-[node name="PressurePlate1" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
-_element = "red"
-
-[node name="PressurePlate2" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
-_element = "green"
-
-[node name="PressurePlate3" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -5)
-_element = "blue"
-
 [node name="MagiclayRock1" parent="Chunk/Puzzle1" instance=ExtResource("4_wmol4")]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -1)
 _element = "red"
 
 [node name="MagiclayRock2" parent="Chunk/Puzzle1" instance=ExtResource("4_wmol4")]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -1)
 _element = "yellow"
 
 [node name="MagiclayRock3" parent="Chunk/Puzzle1" instance=ExtResource("4_wmol4")]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 _element = "magenta"
+
+[node name="PressurePlate1" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+_element = "red"
+
+[node name="PressurePlate2" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+_element = "green"
+
+[node name="PressurePlate3" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -5)
+_element = "blue"
 
 [node name="Emitter" parent="Chunk/Puzzle1" instance=ExtResource("13_qy70b")]
 transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, 8.1, 1, 5.8)
@@ -627,14 +633,17 @@ _element = "orange"
 
 [node name="Boss1" parent="." groups=["persist"] instance=ExtResource("2_gq4vp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.49705, -28)
+collision_layer = 5
 
 [node name="StoryTrigger" parent="." instance=ExtResource("23_xpl60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 1, -28)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -28)
 story_vars = Array[ExtResource("24_yjape")]([SubResource("Resource_3naks")])
+trigger_on_contact = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StoryTrigger"]
 shape = SubResource("SphereShape3D_2o4wh")
 
+[connection signal="on" from="Chunk/Puzzle1/Gate" to="StoryTrigger" method="trigger"]
 [connection signal="element_selected" from="Chunk/Puzzle2/CatalystDevice1" to="Chunk/Puzzle2/Emitter1" method="set_element"]
 [connection signal="element_selected" from="Chunk/Puzzle2/CatalystDevice2" to="Chunk/Puzzle2/Emitter2" method="set_element"]
 [connection signal="element_selected" from="Chunk/Puzzle3/CatalystDevice" to="Chunk/Puzzle3/CatalystPlatform" method="set_element"]

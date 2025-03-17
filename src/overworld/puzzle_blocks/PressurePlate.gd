@@ -22,7 +22,6 @@ func _ready() -> void:
 
 	$Base_MeshInstance3D.set_surface_override_material(0, _off_mat)
 
-
 func _on_body_entered(body: Node3D) -> void:
 	var bodyName: String
 	var bodyElement: String
@@ -52,14 +51,9 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _on_body_exited(body: Node3D) -> void:
-	var bodyName: String
-	if body.is_in_group("player"):
-		bodyName = "Player"
-	else:
-		bodyName = body.puzzle_name
 	if (can_player_trigger and _test_for_player(body)) or body is MagiClay:
 		Logger.append_log(Logger.LogType.PUZZLE, 
-				"PressurePlate(%s) was deactivated by MagiClay(%s)." % [puzzle_name, bodyName])
+				"PressurePlate(%s) was deactivated by MagiClay(%s)." % [puzzle_name, body.puzzle_name])
 		_try_emit_off()
 
 

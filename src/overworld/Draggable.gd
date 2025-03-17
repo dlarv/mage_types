@@ -140,13 +140,14 @@ func _make_root(player: Node3D) -> void:
 		parent.axis_lock_linear_y = true
 	_prev_parent.set_collision_layer_value(1, false)
 
+	# Allows draggable to activate chunks.
+	set_collision_layer_value(6, true)
+
 	# Preserve player's initial state and reparent.
 	_prev_player_parent = player.get_parent()
 	player.reparent(self)
 	player.set_collision_layer_value(1, false)
 
-	# Allows draggable to activate chunks.
-	set_collision_layer_value(6, true)
 
 
 func _restore_root(player: Node3D) -> void:
