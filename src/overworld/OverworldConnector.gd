@@ -54,6 +54,8 @@ func _on_dialog_started(dialogId: String, npc) -> void:
 		var val = await dialog_box.dialogue_signal
 		if val == "play_cutscene": 
 			await _play_cutscene(npc)
+		elif val == "update_story":
+			StoryManager.trigger_story_event(dialog_box.variables.get("story_event", ""))
 		elif val != "dialogue_ended":
 			sigName = val
 

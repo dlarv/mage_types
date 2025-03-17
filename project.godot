@@ -24,6 +24,7 @@ Logger="*res://src/logger.tscn"
 Settings="*res://src/settings/settings.tscn"
 Inventory="*res://src/items/Inventory.tscn"
 UIManager="*res://src/generic_gui/ui_manager.tscn"
+StoryManager="*res://src/story_system/story_manager.tscn"
 
 [debug]
 

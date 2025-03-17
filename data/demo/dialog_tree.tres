@@ -640,13 +640,18 @@ nodes = {
 "speaker": "Partner"
 },
 "1_45": {
-"dialogue": "",
+"dialogue": "asdf",
 "offset": Vector2(-2260, 3740),
 "options": {
 0: {
-"condition": Array[Dictionary]([]),
+"condition": Array[Dictionary]([{
+"cur_variable": 3,
+"operator": 0,
+"value1": "puzzle_1",
+"value2": "true"
+}]),
 "link": "END",
-"text": ""
+"text": "Puzzle 1 is active"
 }
 },
 "size": Vector2(300, 240),
@@ -937,6 +942,18 @@ variables = {
 "introduction_state": {
 "type": 4,
 "value": ""
+},
+"puzzle_1": {
+"type": 1,
+"value": false
+},
+"puzzle_2": {
+"type": 1,
+"value": false
+},
+"puzzle_3": {
+"type": 1,
+"value": false
 }
 }
 strays = Array[String](["8_1", "8_2", "2_2", "2_1", "2_3"])

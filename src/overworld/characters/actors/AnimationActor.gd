@@ -6,7 +6,7 @@ class_name AnimationActor
 ## Prevent player from moving while animation is playing.
 @export var is_blocking := false
 
-func play_animation(player) -> void:
+func play_animation(player: Node3D) -> void:
 	print("AnimationActor played %s cutscene." % animation_name)
 	Logger.append_log(Logger.LogType.PUZZLE, "AnimationActor played %s cutscene." % animation_name)
 	if is_blocking:

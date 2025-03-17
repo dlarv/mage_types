@@ -3,6 +3,9 @@ class_name Chunk
 
 @export var chunk: Node3D
 @export var resets: Array[Node3D]
+## Should be set in parent scene. 
+## This value is passed to any animation_actors in scene that do not have their own.
+@export var animation_player: AnimationPlayer
 
 var _persistent_objs := {}
 
@@ -24,6 +27,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	if not is_in_group("persist"): return
+	# BFS on all children
 	var children := chunk.get_children()
 	while len(children) > 0:
 		var child = children.pop_back()
@@ -33,6 +37,13 @@ func _ready() -> void:
 				child.remove_from_group("persist")
 				push_warning("Node(%s) is in persist group but is also child of persistent Chunk(%s)" 
 						% [ child.puzzle_name, name])
+
+		# Set value for animation_actors w/o their own players.
+		# Typically, there will be 1 animation player in the main scene which everything shares.
+		# This way, it can access other chunks and characters.
+		if animation_player and child is AnimationActor and not child.animation_player:
+			child.animation_player = animation_player
+
 		children.append_array(child.get_children())
 
 

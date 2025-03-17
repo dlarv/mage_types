@@ -77,6 +77,12 @@ func start(start_id: String) -> void:
 		printerr('Start ID ', start_id, ' not found in dialogue data!')
 		return
 	
+	# Dlarv: ensure parser has lastest versions of the variables.
+	variables.clear()
+	for var_name in data.variables:
+		variables[var_name] = data.variables[var_name].value
+	
+	
 	_running = true
 	if _nest_links.size() == 0:
 		dialogue_started.emit(start_id)

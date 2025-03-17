@@ -93,7 +93,10 @@ var spell2: OverworldSpell.Spells
 func get_battle_items() -> Array:
 	return _battle_items
 
-func add(item: Item, amount=1) -> void:
+func add(item: Item, amount:=1) -> void:
+	if amount < 0:
+		remove(item, -amount)
+		return
 	if item.id == -1:
 		_add_item = item
 		return
@@ -119,7 +122,10 @@ func add(item: Item, amount=1) -> void:
 		slot.quantity = 1
 		quantity_changed.emit(slot)
 
-func remove(item: Item, amount: int=-1) -> ItemSlot:
+func remove(item: Item, amount:=1) -> ItemSlot:
+	if amount < 0:
+		remove(item, -amount)
+		return
 	if item.id == -1: return null
 
 	var list := []
@@ -135,6 +141,7 @@ func remove(item: Item, amount: int=-1) -> ItemSlot:
 
 	var slot = list[item.id]
 	if slot.quantity == 0: return null
+	slot.quantity -= amount
 	quantity_changed.emit(slot)
 	return slot
 
