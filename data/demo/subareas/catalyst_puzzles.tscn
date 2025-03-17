@@ -24,7 +24,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usmvq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfspt"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_4k3xo"]
@@ -34,7 +34,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2ny8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j67p3"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
@@ -121,6 +121,7 @@ _element = "yellow"
 
 [node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("3_30a4y")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1706, 2, 13)
+collision_layer = 5
 _element = "yellow"
 
 [node name="Wire" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver" node_paths=PackedStringArray("target") instance=ExtResource("7_0xjvi")]
@@ -132,11 +133,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 0, 0)
 curve = SubResource("Curve3D_x8c8c")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_usmvq")
+material = SubResource("StandardMaterial3D_wfspt")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_usmvq")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfspt")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
@@ -167,6 +168,7 @@ _element = "purple"
 
 [node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("3_30a4y")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.3, 2, 0.693)
+collision_layer = 5
 _element = "purple"
 
 [node name="Wire" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver" node_paths=PackedStringArray("target") instance=ExtResource("7_0xjvi")]
@@ -177,10 +179,10 @@ target = NodePath("..")
 curve = SubResource("Curve3D_4k3xo")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_w2ny8")
+material = SubResource("StandardMaterial3D_j67p3")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_w2ny8")
+surface_material_override/0 = SubResource("StandardMaterial3D_j67p3")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 13)
@@ -288,14 +290,17 @@ _element = "magenta"
 
 [node name="LaserReceiver1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 20.722)
+collision_layer = 5
 _element = "blue"
 
 [node name="LaserReceiver2" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 11.6668, 0, 24.159)
+collision_layer = 5
 _element = "red"
 
 [node name="LaserReceiver3" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, -1, 34.186)
+collision_layer = 5
 _element = "green"
 
 [node name="Mirror1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("8_5a631")]

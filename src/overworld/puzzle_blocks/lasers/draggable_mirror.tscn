@@ -38,7 +38,6 @@ shape = SubResource("CylinderShape3D_pqgmg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Draggable" parent="." instance=ExtResource("3_ityay")]
-collision_mask = 3
 scaling_factor = 2.0
 restrict_axis = true
 
@@ -47,13 +46,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226855, 0)
 shape = SubResource("BoxShape3D_3422r")
 
 [node name="Marker3D_South" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="Marker3D_North" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Marker3D_East" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="Marker3D_West" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=58 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="27_nauye"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="28_6vn3d"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="28_vtokk"]
+[ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="29_xx5yg"]
 [ext_resource type="Resource" uid="uid://1dfekg1k1xgj" path="res://data/demo/character_files/battle_actors/tutorial_partner.tres" id="30_gvytb"]
 [ext_resource type="Resource" uid="uid://cm4wr6tvgqw55" path="res://data/demo/character_files/battle_actors/tutorial_1_battle_actor.tres" id="31_qv7w7"]
 
@@ -422,6 +423,7 @@ team = Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_o
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
 
 [node name="Partner" parent="Overworld" instance=ExtResource("20_2sxei")]
+collision_layer = 5
 disabled = true
 
 [node name="StoryActor" parent="Overworld/Partner" instance=ExtResource("21_xbfho")]
@@ -465,6 +467,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 2.5, -168)
 
 [node name="PuzzleIntroTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, -26)
+collision_layer = 5
 auto_trigger = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/PuzzleIntroTrigger"]
@@ -477,6 +480,7 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="BattleStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -14)
+collision_layer = 5
 auto_trigger = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/BattleStoryTrigger"]
@@ -494,6 +498,7 @@ _team = Array[ExtResource("10_wgmfh")]([ExtResource("31_qv7w7")])
 
 [node name="IntroStoryTrigger" parent="Overworld" groups=["persist"] instance=ExtResource("20_2sxei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49042, -1, 3.51004)
+collision_layer = 5
 auto_trigger = true
 
 [node name="StoryActor" parent="Overworld/IntroStoryTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("21_xbfho")]
@@ -502,6 +507,9 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/IntroStoryTrigger"]
 shape = SubResource("SphereShape3D_nj7rh")
+
+[node name="DraggableMirror" parent="." instance=ExtResource("29_xx5yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -2)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
