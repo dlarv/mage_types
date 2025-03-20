@@ -33,8 +33,10 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	
 	for actor in allies:
 		actor.current_hp = actor.hp
-	for actor in enemy.team:
-		actor.current_hp = actor.hp
+
+	if is_instance_valid(enemy):
+		for actor in enemy.team:
+			actor.current_hp = actor.hp
 	
 	world.process_mode = Node.PROCESS_MODE_INHERIT
 
