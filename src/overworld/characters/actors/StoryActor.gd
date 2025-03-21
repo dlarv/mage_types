@@ -25,7 +25,7 @@ func skip_dialog():
 		var animation = animation_player.get_animation(dialog.end_state)
 		animation_player.play(dialog.end_state)
 		animation_player.advance(animation.length)
-	elif animation_player.is_playing():
+	elif animation_player and animation_player.is_playing():
 		var animation = animation_player.get_animation(animation_player.current_animation)
 		animation_player.advance(animation.length)
 
