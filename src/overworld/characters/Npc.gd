@@ -83,4 +83,3 @@ func _on_interactable_interacted(obj:Node3D) -> void:
 		_player.call_deferred("start_dialog", self)
 	else:
 		_player.call_deferred("open_shop", self)
-	#_player = null

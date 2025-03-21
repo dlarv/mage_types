@@ -69,6 +69,7 @@ func _on_player_sensor_body_entered(body:Node3D) -> void:
 	_can_see_player = true
 	_player = body
 
+
 func _on_body_entered(body:Node3D) -> void:
 	if not body.is_in_group("player"): return
 	if not _on_cooldown:
