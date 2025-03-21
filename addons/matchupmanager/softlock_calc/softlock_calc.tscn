@@ -1,0 +1,173 @@
+[gd_scene load_steps=21 format=3 uid="uid://6ahbmwjju175"]
+
+[ext_resource type="Script" path="res://addons/matchupmanager/softlock_calc/SoftlockCalc.gd" id="1_4sxv6"]
+[ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="1_d7psa"]
+[ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graph_v3.png" id="3_cpmwa"]
+[ext_resource type="PackedScene" uid="uid://c64wgmltumtyl" path="res://assets/graphics/layered_matchup_graph.tscn" id="4_lq2jc"]
+
+[sub_resource type="Gradient" id="Gradient_bj7mu"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e1jn2"]
+gradient = SubResource("Gradient_bj7mu")
+
+[sub_resource type="Gradient" id="Gradient_xxqbb"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.498039, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a1522"]
+gradient = SubResource("Gradient_xxqbb")
+
+[sub_resource type="Gradient" id="Gradient_su3q5"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a4u57"]
+gradient = SubResource("Gradient_su3q5")
+
+[sub_resource type="Gradient" id="Gradient_de2il"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7l5u6"]
+gradient = SubResource("Gradient_de2il")
+
+[sub_resource type="Gradient" id="Gradient_f0p0f"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.501961, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xpomd"]
+gradient = SubResource("Gradient_f0p0f")
+
+[sub_resource type="Gradient" id="Gradient_nqpwx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_te1hc"]
+gradient = SubResource("Gradient_nqpwx")
+
+[sub_resource type="Gradient" id="Gradient_u5mmx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5eg6d"]
+gradient = SubResource("Gradient_u5mmx")
+
+[sub_resource type="Gradient" id="Gradient_ukhtn"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3twbj"]
+gradient = SubResource("Gradient_ukhtn")
+
+[node name="SoftlockCalc" type="MarginContainer" node_paths=PackedStringArray("result_rect_1", "_magiclay_parent", "_catalyst_parent")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sxv6")
+original_graph = ExtResource("3_cpmwa")
+result_rect_1 = NodePath("HBoxContainer/ResultsContainer/Result1/MatchupGraph")
+_magiclay_parent = NodePath("HBoxContainer/VBoxContainer/MagiClay")
+_catalyst_parent = NodePath("HBoxContainer/VBoxContainer/Catalysts/GridContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MagiClay" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MagiClay"]
+layout_mode = 2
+text = "MagiClay"
+
+[node name="ElementDropdown1" parent="HBoxContainer/VBoxContainer/MagiClay" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+item_count = 8
+popup/item_0/text = "Blue"
+popup/item_0/icon = SubResource("GradientTexture2D_e1jn2")
+popup/item_0/id = 1
+popup/item_1/text = "Purple"
+popup/item_1/icon = SubResource("GradientTexture2D_a1522")
+popup/item_1/id = 2
+popup/item_2/text = "Magenta"
+popup/item_2/icon = SubResource("GradientTexture2D_a4u57")
+popup/item_2/id = 3
+popup/item_3/text = "Red"
+popup/item_3/icon = SubResource("GradientTexture2D_7l5u6")
+popup/item_3/id = 4
+popup/item_4/text = "Orange"
+popup/item_4/icon = SubResource("GradientTexture2D_xpomd")
+popup/item_4/id = 5
+popup/item_5/text = "Yellow"
+popup/item_5/icon = SubResource("GradientTexture2D_te1hc")
+popup/item_5/id = 6
+popup/item_6/text = "Green"
+popup/item_6/icon = SubResource("GradientTexture2D_5eg6d")
+popup/item_6/id = 7
+popup/item_7/text = "Cyan"
+popup/item_7/icon = SubResource("GradientTexture2D_3twbj")
+popup/item_7/id = 8
+
+[node name="Catalysts" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Catalysts"]
+layout_mode = 2
+text = "Catalyst/Lasers"
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/Catalysts"]
+layout_mode = 2
+columns = 2
+
+[node name="ElementDropdown1" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="ElementDropdown2" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="ElementDropdown3" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="ElementDropdown4" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="ElementDropdown5" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="ElementDropdown6" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="ElementDropdown7" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="ElementDropdown8" parent="HBoxContainer/VBoxContainer/Catalysts/GridContainer" instance=ExtResource("1_d7psa")]
+layout_mode = 2
+
+[node name="Calculate_Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Calculate"
+
+[node name="ResultsContainer" type="TabContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+
+[node name="Result1" type="VBoxContainer" parent="HBoxContainer/ResultsContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="HBoxContainer/ResultsContainer/Result1"]
+layout_mode = 2
+
+[node name="MatchupGraph" parent="HBoxContainer/ResultsContainer/Result1" instance=ExtResource("4_lq2jc")]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Calculate_Button" to="." method="_on_calculate_button_pressed"]

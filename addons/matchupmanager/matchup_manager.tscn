@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bycqt1dtij02l"]
 
 [ext_resource type="Script" path="res://addons/matchupmanager/matchup_manager.gd" id="1_rjr63"]
-[ext_resource type="PackedScene" uid="uid://kknk1uiljhxn" path="res://addons/matchupmanager/laser_sequence_calc.tscn" id="2_xj8da"]
+[ext_resource type="PackedScene" uid="uid://kknk1uiljhxn" path="res://addons/matchupmanager/sequence_calc/laser_sequence_calc.tscn" id="2_xj8da"]
 
 [node name="MatchupManager" type="Control"]
 layout_mode = 3
