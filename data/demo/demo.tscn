@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=47 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -21,8 +21,12 @@
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="14_utqig"]
 [ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="15_f0yc5"]
 [ext_resource type="PackedScene" uid="uid://c7snvw34rt406" path="res://data/demo/subareas/deep_caves.tscn" id="15_gbwmn"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="16_4qjm6"]
 [ext_resource type="PackedScene" uid="uid://r3fqpgt5gk0n" path="res://data/demo/subareas/river_front.tscn" id="16_bh4i5"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="17_odkw1"]
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="18_gjo2s"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="18_q5x77"]
+[ext_resource type="Resource" uid="uid://cm4wr6tvgqw55" path="res://data/demo/character_files/battle_actors/tutorial_1_battle_actor.tres" id="19_qfsqe"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="19_x7gdy"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="20_stfpx"]
 [ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="20_ykdw8"]
@@ -43,9 +47,86 @@ script = ExtResource("7_3o8i5")
 
 [sub_resource type="Animation" id="Animation_vjtay"]
 resource_name = "tutorial_battle"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(12, 0, -21), Vector3(12, 0, -21), Vector3(12, 1, -21), Vector3(12, 1, -21), Vector3(10, 1, -21)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Partner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(9, 0.5, -31), Vector3(9, 0.5, -21)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -23.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ny78i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12, 0, -21)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Partner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9, 0.5, -31)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-9.5, 0.5, 3.5)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ddao4"]
 _data = {
+"RESET": SubResource("Animation_ny78i"),
 "tutorial_battle": SubResource("Animation_vjtay")
 }
 
@@ -58,14 +139,21 @@ end_state = ""
 [sub_resource type="BoxShape3D" id="BoxShape3D_s66wg"]
 size = Vector3(5, 2, 1)
 
+[sub_resource type="Resource" id="Resource_6wi6w"]
+script = ExtResource("18_q5x77")
+aggression = 0.0
+intelligence = 0.0
+transmutation_bias = 0.0
+dialog_ids = Array[ExtResource("17_odkw1")]([])
+
 [sub_resource type="SphereMesh" id="SphereMesh_n0u1l"]
 
 [sub_resource type="Resource" id="Resource_yyime"]
 script = ExtResource("20_stfpx")
-_base_melee_attack = 80.0
-_base_ranged_attack = 80.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
+_base_melee_attack = 70.0
+_base_ranged_attack = 70.0
+_base_melee_defense = 70.0
+_base_ranged_defense = 70.0
 _base_speed = 60.0
 _base_evasion = 100.0
 
@@ -128,30 +216,35 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" groups=["persist"] instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, 3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.5, 3.5)
 disable_mode = 1
 team = Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")])
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
 
+[node name="Partner" parent="Overworld" instance=ExtResource("21_pmbco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -31)
+
 [node name="PartnerIntroTrigger" parent="Overworld" instance=ExtResource("13_fxkjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -32)
 collision_layer = 5
 auto_trigger = true
 
-[node name="StoryActor" parent="Overworld/PartnerIntroTrigger" instance=ExtResource("14_utqig")]
+[node name="StoryActor" parent="Overworld/PartnerIntroTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("14_utqig")]
 dialog_ids = Array[ExtResource("15_f0yc5")]([SubResource("Resource_p1v21")])
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/PartnerIntroTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 shape = SubResource("BoxShape3D_s66wg")
 
-[node name="Partner" parent="Overworld" instance=ExtResource("21_pmbco")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -31)
+[node name="EnemyActor" parent="Overworld/PartnerIntroTrigger" instance=ExtResource("16_4qjm6")]
+ai = SubResource("Resource_6wi6w")
+_team = Array[ExtResource("10_wgmfh")]([ExtResource("19_qfsqe")])
 
 [node name="TutorialEnemy" type="MeshInstance3D" parent="Overworld"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -21)
 mesh = SubResource("SphereMesh_n0u1l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld"]

@@ -100,7 +100,7 @@ nodes = {
 "speaker": 0
 },
 "1_11": {
-"dialogue": "I liike your enthusiasm!",
+"dialogue": "I like your enthusiasm!",
 "offset": Vector2(-603.3, 544.271),
 "options": {
 0: {
@@ -167,12 +167,25 @@ nodes = {
 "speaker": "Partner"
 },
 "1_16": {
-"dialogue": "Here, I'll show you.",
+"dialogue": "Here, I'll show you. Follow me.",
 "offset": Vector2(-257.222, -60.3562),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"9_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_17": {
+"dialogue": "Ah, here we go",
+"offset": Vector2(413.689, -60.4633),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"3_2",
 "text": ""
 }
 },
@@ -506,7 +519,7 @@ nodes = {
 "text": "Sure!"
 }
 },
-"size": Vector2(300, 290),
+"size": Vector2(300, 323),
 "speaker": 0
 },
 "1_7": {
@@ -561,6 +574,11 @@ nodes = {
 "offset": Vector2(-1140, -300),
 "signalValue": "battle_started"
 },
+"3_2": {
+"link": "END",
+"offset": Vector2(760, -60),
+"signalValue": "battle_started"
+},
 "5_2": {
 "condition": Array[Dictionary]([{
 "cur_variable": 0,
@@ -611,7 +629,7 @@ nodes = {
 },
 "9_1": {
 "cur_variable": 0,
-"link": "END",
+"link": &"1_17",
 "offset": Vector2(80, -60),
 "signalValue": "play_cutscene",
 "type": 0,
