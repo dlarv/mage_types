@@ -18,3 +18,7 @@ Partner offers player a gift (Magenta Strike) in return for helping them with th
 - "Idk how to fight" => Starts tutorial battle.
 - Less confident option => Partner suggests fighting the Rust Slimes for practice.
 - Confident option => Fast track option.
+
+# Intro Playtesting Questions
+- Will players resort to brute forcing the puzzles.
+	- What's the best way to introduce and teach them about the graph?
