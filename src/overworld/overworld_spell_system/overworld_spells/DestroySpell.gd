@@ -6,7 +6,8 @@ func perform_action() -> void:
 
 
 func action_to_perform(body: Node3D, element: ElementalType) -> void:
-	body.destroy()
+	if element.is_defensive_type != body.element.is_defensive_type:
+		body.destroy()
 
 
 func collision_test(body: Variant) -> bool:
