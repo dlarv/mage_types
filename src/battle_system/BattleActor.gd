@@ -14,6 +14,9 @@ signal damage_applied(current_hp)
 signal element_changed(id, element)
 signal spell_learned(spell, index)
 signal equipment_equipped(equipment)
+## Called when opponents choose their action during battle.
+@warning_ignore("unused_signal")
+signal action_selected(action: _BattleAction)
 
 @export
 var name : String = "Guy" 

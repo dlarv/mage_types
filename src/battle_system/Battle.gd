@@ -16,6 +16,7 @@ var allies := []
 var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
 var _turn_counter: int = 0
+var _actions := []
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
@@ -35,11 +36,14 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 
 	ai.setup(enemies)
 	battle_ended.connect(ai._on_battle_ended)
+
 	self.ai = ai	
 	if ai.dialog_resource != null:
 		_dialog_box.data = ai.dialog_resource
 
+
 	gui.setup(allies, allyItems, enemies)
+	_actions = ai.get_actions(allies)
 	await dialog(false)
 	_dialog_box.skip_input_action = "interact"
 
@@ -59,13 +63,13 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		return
 
 	# Get actions for opponent's team.
-	var enemyActions = ai.get_actions(allies)
-	var actions = allyActions
-	actions.append_array(enemyActions)
+	# var enemyActions = ai.get_actions(allies)
+	# var _actions = allyActions
+	_actions.append_array(allyActions)
 
 	# Calculate turn order based on priority and actor speed.
 	var speedTieBreaker := randf() < 0.5
-	actions.sort_custom(func(a, b):
+	_actions.sort_custom(func(a, b):
 		if a == null: return false
 		elif b == null: return true
 		# Higher priority goes first.
@@ -78,7 +82,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 	await dialog(false)
 
-	for action in actions:
+	for action in _actions:
 		# This means a character is defeated.
 		if action == null or action.actor.is_defeated:
 			continue
@@ -190,8 +194,9 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	if len(biasMsg) > 0:
 		await gui.display_message(biasMsg)
 
-	Logger.append_log(Logger.LogType.BATTLE, "\n\nPlayer is selecting actions...")
+	Logger.append_log(Logger.LogType.BATTLE, "\n\nPlayer is selecting _actions...")
 	await dialog(true)
+	_actions = ai.get_actions(allies)
 	gui.enable_player_controls(true)
 
 func calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:

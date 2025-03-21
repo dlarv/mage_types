@@ -21,7 +21,9 @@ func get_actions(otherTeam: Array) -> Array:
 
 	for user in team:
 		Logger.append_log(Logger.LogType.BATTLE, "\nChoosing action for user: %s" % user.name)
-		actions.append(_get_action(user, otherTeam))
+		var action := _get_action(user, otherTeam)
+		actions.append(action)
+		user.action_selected.emit(action.action)
 	return actions;
 
 func _get_action(user: BattleActor, targets: Array) -> ActorAction:

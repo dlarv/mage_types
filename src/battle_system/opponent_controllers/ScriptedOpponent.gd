@@ -24,6 +24,7 @@ func get_actions(otherTeam: Array) -> Array:
 
 		var attack = actor.attacks[index]
 		actions.append(ActorAction.new(actor, attack, [ otherTeam.pick_random() ], TEAM_INDEX))
+		actor.action_selected.emit(attack)
 	
 	return actions
 

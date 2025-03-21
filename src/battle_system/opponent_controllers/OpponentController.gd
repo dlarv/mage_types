@@ -29,9 +29,10 @@ func get_actions(otherTeam: Array) -> Array:
 
 	for i in range(len(team)):
 		if(len(team[i].attacks) == 0):
-			actions[i] = null;
+			actions[i] = null
 		else:
-			actions[i] = ActorAction.new(team[i], team[i].attacks[0],[ otherTeam[0] ], TEAM_INDEX);
+			actions[i] = ActorAction.new(team[i], team[i].attacks[0],[ otherTeam[0] ], TEAM_INDEX)
+			team[i].action_selected.emit(team[i].attacks[0])
 	return actions;
 
 ## Return the id of which dialog option to display.

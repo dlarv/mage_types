@@ -23,6 +23,7 @@ var actor: BattleActor
 var _mat1: StandardMaterial3D
 var _mat2: StandardMaterial3D
 var _indicator_mat: StandardMaterial3D
+var _particle_mat: StandardMaterial3D
 var _is_defeated := false
 
 func setup(actor: BattleActor, shiftRight: bool) -> void:
@@ -31,10 +32,12 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 	_mat1 = StandardMaterial3D.new()
 	_mat2 = StandardMaterial3D.new()
 	_indicator_mat = StandardMaterial3D.new()
+	_particle_mat = StandardMaterial3D.new()
 
 	$Primary.set_surface_override_material(0, _mat1)
 	$Secondary.set_surface_override_material(0, _mat2)
 	$Indicator.set_surface_override_material(0, _indicator_mat)
+	$GPUParticles3D.draw_pass_1.material = _particle_mat
 
 	_mat1.albedo_color = actor.element1.main_color
 	_mat2.albedo_color = actor.element2.main_color
@@ -50,6 +53,14 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 		_mat1.albedo_color = _mat1.albedo_color.darkened(0.5)
 		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
 		_is_defeated = true)
+	actor.action_selected.connect(func(action: _BattleAction):
+		if action.element.is_blank():
+			$GPUParticles3D.emitting = false
+			return
+		$GPUParticles3D.emitting = true
+		_particle_mat.albedo_color = action.element.main_color)
+
+
 
 
 func set_element(id: int, element: ElementalType) -> void:
