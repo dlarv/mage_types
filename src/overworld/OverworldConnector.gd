@@ -12,6 +12,14 @@ extends Node3D
 @export var _player: Player
 var _current_story_actor: StoryActor = null
 
+@export_category("Demo")
+@export_range(0, 3) var stencil_index := 0:
+	set(val):
+		stencil_index = val
+		if Settings.use_graph_stencils:
+			UIManager.matchup_chart.current_graphic = val
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log(Logger.LogType.PUZZLE)

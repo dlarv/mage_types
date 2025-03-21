@@ -27,3 +27,9 @@ func _on_show_turn_order_toggled(value: bool) -> void:
 	print("Show turn order toggled")
 	Settings.show_battle_turn_order = value
 
+
+
+func _on_use_graph_stencils_toggled(value: bool) -> void:
+	print("Use graph stencils toggled.")
+	Settings.use_graph_stencils = value
+

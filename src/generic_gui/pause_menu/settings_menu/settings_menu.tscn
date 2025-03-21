@@ -14,13 +14,12 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 1142.0
 offset_bottom = 638.0
-current_tab = 1
+current_tab = 0
 script = ExtResource("1_tx88d")
 _debug_mode_toggle = NodePath("General Settings/VBoxContainer/DebugMode_HBox/CheckBox")
 _transmutation_hint_toggle = NodePath("General Settings/VBoxContainer/TransmutationHints_HBox/CheckBox")
 
 [node name="General Settings" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -74,7 +73,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 button_pressed = true
 
+[node name="UseGraphStencils_HBox" type="HBoxContainer" parent="General Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="General Settings/VBoxContainer/UseGraphStencils_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Use graph stencils:"
+
+[node name="CheckBox" type="CheckBox" parent="General Settings/VBoxContainer/UseGraphStencils_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="UseGraphStencilsDescription" type="Label" parent="General Settings/VBoxContainer"]
+layout_mode = 2
+text = "Use simplified versions of the transmutation graph during the tutorial."
+label_settings = SubResource("LabelSettings_eheh8")
+
 [node name="Battle" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -121,5 +139,6 @@ metadata/_tab_index = 2
 
 [connection signal="toggled" from="General Settings/VBoxContainer/DebugMode_HBox/CheckBox" to="." method="_on_debug_mode_toggled"]
 [connection signal="toggled" from="General Settings/VBoxContainer/TransmutationHints_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]
+[connection signal="toggled" from="General Settings/VBoxContainer/UseGraphStencils_HBox/CheckBox" to="." method="_on_use_graph_stencils_toggled"]
 [connection signal="toggled" from="Battle/VBoxContainer/ShowIntentions_HBox/CheckBox" to="." method="_on_show_intentions_toggled"]
 [connection signal="toggled" from="Battle/VBoxContainer/ShowTurnOrder_HBox/CheckBox" to="." method="_on_show_turn_order_toggled"]
