@@ -10,10 +10,11 @@ top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkii5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6w0c"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="CatalystPlatform" type="Area3D"]
+process_mode = 1
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_5kuer")
@@ -24,7 +25,7 @@ shape = SubResource("BoxShape3D_xdfa5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_vriah")
-surface_material_override/0 = SubResource("StandardMaterial3D_nkii5")
+surface_material_override/0 = SubResource("StandardMaterial3D_y6w0c")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -31,6 +31,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_released("interact"):
 		interacted.emit(self)
+		get_viewport().set_input_as_handled()
 		var n = name
 		if "puzzle_name" in get_parent():
 			n = get_parent().puzzle_name
