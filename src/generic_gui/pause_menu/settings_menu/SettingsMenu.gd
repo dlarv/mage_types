@@ -2,16 +2,10 @@ extends Menu
 
 @export var _debug_mode_toggle: CheckBox
 @export var _transmutation_hint_toggle: CheckBox
-@export var _simple_effects_toggle: CheckBox
 
 func _ready():
 	_debug_mode_toggle.set_pressed_no_signal(Settings.debug_mode)
 	_transmutation_hint_toggle.set_pressed_no_signal(Settings.enable_transmutation_hints)
-	_simple_effects_toggle.set_pressed_no_signal(Settings.use_simplified_effects)
-
-func on_debug_mode_toggled(value: bool) -> void:
-	print("Debug mode toggled")
-	Settings.debug_mode = value
 
 
 func _on_transmutation_hints_toggled(value: bool) -> void:
@@ -19,7 +13,17 @@ func _on_transmutation_hints_toggled(value: bool) -> void:
 	Settings.enable_transmutation_hints = value
 
 
+func _on_debug_mode_toggled(value: bool) -> void:
+	print("Debug mode toggled")
+	Settings.debug_mode = value
 
-func _on_simple_effects_toggled(value: bool) -> void:
-	print("Simple side effects toggled")
-	Settings.use_simplified_effects = value
+
+func _on_show_intentions_toggled(value: bool) -> void:
+	print("Show intentions toggled")
+	Settings.show_opponent_intentions = value
+
+
+func _on_show_turn_order_toggled(value: bool) -> void:
+	print("Show turn order toggled")
+	Settings.show_battle_turn_order = value
+

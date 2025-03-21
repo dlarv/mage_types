@@ -172,6 +172,12 @@ func _on_show_info(action: Variant, limitInfo:=false) -> void:
 	display_message_non_blocking(action, limitInfo)
 
 func display_turn_order(actors: Array) -> void:
+	if not Settings.show_battle_turn_order:
+		turn_order_display.get_parent().hide()
+		return
+	else:
+		turn_order_display.get_parent().show()
+
 	for child in turn_order_display.get_children():
 		turn_order_display.remove_child(child)
 	

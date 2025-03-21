@@ -1,7 +1,6 @@
 extends Node
 
 signal debug_mode_toggled(debugOn)
-signal simplified_effects_toggled(toggled)
 
 @export 
 var debug_mode: bool: 
@@ -9,11 +8,7 @@ var debug_mode: bool:
 		debug_mode = value
 		debug_mode_toggled.emit(value)
 
-@export 
-var use_simplified_effects: bool = true:
-	set(value):
-		use_simplified_effects = value
-		simplified_effects_toggled.emit(value)
-
-@export var enable_transmutation_hints: bool = true
+@export var enable_transmutation_hints := true
 @export var use_mouse_targeting := true
+@export var show_battle_turn_order := true
+@export var show_opponent_intentions := true

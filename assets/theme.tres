@@ -1,14 +1,4 @@
-[gd_resource type="Theme" load_steps=22 format=3 uid="uid://bfk63x8qgtxhe"]
-
-[sub_resource type="Gradient" id="Gradient_2cgjx"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.14375, 0.1625)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lnjs0"]
-gradient = SubResource("Gradient_2cgjx")
-fill = 1
-fill_from = Vector2(0.136752, 0.132479)
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://bfk63x8qgtxhe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g62fv"]
 bg_color = Color(0.498039, 0.498039, 0.498039, 1)
@@ -68,7 +58,6 @@ bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 bg_color = Color(0.133333, 0.133333, 0.133333, 1)
 
 [resource]
-CheckBox/icons/radio_unchecked = SubResource("GradientTexture2D_lnjs0")
 Control/colors/Blank = Color(0.498039, 0.498039, 0.498039, 1)
 Control/colors/Blue = Color(0, 0, 1, 1)
 Control/colors/Cyan = Color(0, 1, 1, 1)

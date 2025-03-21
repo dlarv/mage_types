@@ -54,13 +54,11 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
 		_is_defeated = true)
 	actor.action_selected.connect(func(action: _BattleAction):
-		if action.element.is_blank():
+		if not Settings.show_opponent_intentions or action.element.is_blank():
 			$GPUParticles3D.emitting = false
 			return
 		$GPUParticles3D.emitting = true
 		_particle_mat.albedo_color = action.element.main_color)
-
-
 
 
 func set_element(id: int, element: ElementalType) -> void:
