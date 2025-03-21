@@ -7,7 +7,6 @@ signal actions_selected(actions)
 @export var ally_display_parent: TeamDisplay 
 @export var enemy_display_parent: TeamDisplay 
 @export var playerControls: Control
-@export var sprite_parent: Node2D
 @export var turn_counter_display: Label
 @export var turn_order_display: VBoxContainer
 
