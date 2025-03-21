@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2cifsivdxxbt"]
+
+[ext_resource type="Script" path="res://src/overworld/characters/Npc.gd" id="1_dlikj"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="2_gvig4"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_pxk60"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sibqn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t46fn"]
+
+[node name="Partner" type="StaticBody3D"]
+collision_layer = 5
+script = ExtResource("1_dlikj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_sibqn")
+
+[node name="Interactable" parent="." instance=ExtResource("2_pxk60")]
+scaling_factor = 2.0
+
+[node name="StoryActor" parent="." instance=ExtResource("2_gvig4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_t46fn")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
