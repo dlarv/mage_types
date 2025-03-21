@@ -12,7 +12,7 @@ albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
 material = SubResource("StandardMaterial3D_u5iq7")
 size = Vector2(50, 50)
 
-[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "turn_counter_display")]
+[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "turn_counter_display", "turn_order_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 script = ExtResource("1_ik08k")
 messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
@@ -20,6 +20,7 @@ ally_display_parent = NodePath("Ally_TeamDisplay")
 enemy_display_parent = NodePath("Opponent_TeamDisplay")
 playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 turn_counter_display = NodePath("CanvasLayer/TurnCounter")
+turn_order_display = NodePath("CanvasLayer/TurnOrder/VBoxContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -58,6 +59,26 @@ size_flags_horizontal = 3
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Turn 1"
+
+[node name="TurnOrder" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+tooltip_text = "The order in which the combatants will move. This does not account for priority!"
+
+[node name="Label" type="Label" parent="CanvasLayer/TurnOrder"]
+layout_mode = 2
+text = "Turn Order"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TurnOrder"]
+layout_mode = 2
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

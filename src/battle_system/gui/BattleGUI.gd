@@ -9,6 +9,7 @@ signal actions_selected(actions)
 @export var playerControls: Control
 @export var sprite_parent: Node2D
 @export var turn_counter_display: Label
+@export var turn_order_display: VBoxContainer
 
 # BattleActor[]
 var allies := []
@@ -170,3 +171,14 @@ func _on_show_info(action: Variant, limitInfo:=false) -> void:
 	print(msg)
 	
 	display_message_non_blocking(action, limitInfo)
+
+func display_turn_order(actors: Array) -> void:
+	for child in turn_order_display.get_children():
+		turn_order_display.remove_child(child)
+	
+	for actor in actors:
+		var label := Label.new()
+		label.text = actor.name
+		turn_order_display.add_child(label)
+
+		

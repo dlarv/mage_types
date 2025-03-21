@@ -17,6 +17,7 @@ var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
 var _turn_counter: int = 0
 var _actions := []
+var tie_breaker := false
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
@@ -43,7 +44,7 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 
 
 	gui.setup(allies, allyItems, enemies)
-	_actions = ai.get_actions(allies)
+	_prep_next_turn()
 	await dialog(false)
 	_dialog_box.skip_input_action = "interact"
 
@@ -68,7 +69,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	_actions.append_array(allyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	var speedTieBreaker := randf() < 0.5
 	_actions.sort_custom(func(a, b):
 		if a == null: return false
 		elif b == null: return true
@@ -78,7 +78,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# Then higher speed goes first.
 		if a.actor.speed != b.actor.speed:
 			return a.actor.speed > b.actor.speed
-		return speedTieBreaker)
+		return tie_breaker)
 
 	await dialog(false)
 
@@ -196,7 +196,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 	Logger.append_log(Logger.LogType.BATTLE, "\n\nPlayer is selecting _actions...")
 	await dialog(true)
-	_actions = ai.get_actions(allies)
+	_prep_next_turn()
 	gui.enable_player_controls(true)
 
 func calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
@@ -294,3 +294,20 @@ func _check_if_battle_ended() -> bool:
 		battle_ended.emit(EndState.WON)
 		return true
 	return false
+
+
+func _prep_next_turn() -> void:
+	_actions = ai.get_actions(allies)
+	tie_breaker = randf() < 0.5
+
+	var speedRank := allies.duplicate()
+	speedRank.append_array(enemies)
+	speedRank.sort_custom(func(a, b):
+		if a.speed != b.speed:
+			return a.speed > b.speed
+		return tie_breaker)
+	speedRank.map(func(a): return a.name)
+
+	gui.display_turn_order(speedRank)
+
+
