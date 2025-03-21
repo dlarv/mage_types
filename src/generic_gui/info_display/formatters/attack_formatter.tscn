@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/generic_gui/info_display/formatters/AttackFormatter.gd" id="1_xauya"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_o1esy"]
 
-[node name="AttackFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "range_label", "target_label", "power_hbox", "power_label", "cost_label", "details", "effects_label", "element_icon")]
+[node name="AttackFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "range_label", "target_label", "power_hbox", "power_label", "priority_label", "details", "effects_label", "element_icon")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,7 +15,7 @@ range_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Range_HBox
 target_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Target_HBox/Target")
 power_hbox = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Power_HBox")
 power_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Power_HBox/Power")
-cost_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Cost_HBox/Cost")
+priority_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Priority_HBox/Priority")
 details = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Details")
 effects_label = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Effects")
 element_icon = NodePath("MarginContainer/ScrollContainer/VBoxContainer/ElementIcon")
@@ -61,17 +61,17 @@ fit_content = true
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="Cost_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Priority_HBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/Cost_HBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/Priority_HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[b]Cost[/b]:"
+text = "[b]Priority[/b]:"
 fit_content = true
 
-[node name="Cost" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Cost_HBox"]
+[node name="Priority" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Priority_HBox"]
 layout_mode = 2
 size_flags_horizontal = 2
 

@@ -5,7 +5,7 @@ extends Formatter
 @export var target_label: Label
 @export var power_hbox: HBoxContainer
 @export var power_label: Label
-@export var cost_label: Label
+@export var priority_label: Label
 @export var details: RichTextLabel
 @export var effects_label: RichTextLabel
 @export var element_icon: ElementIcon
@@ -17,6 +17,7 @@ func display(attack: Variant, limitInfo:=false) -> void:
 	name_label.text = attack.name
 	range_label.text = Attack.AttackRange.keys()[attack.attack_range]
 	target_label.text = Attack.TargetType.keys()[attack.target]
+	priority_label.text = str(attack.priority)
 	element_icon.element = attack.element
 
 	# Only show power if attack has damage effects.
