@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=40 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -14,11 +14,18 @@
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_wgmfh"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="12_5cwv0"]
 [ext_resource type="PackedScene" uid="uid://cy8e0cndhkub5" path="res://data/demo/subareas/tidepools.tscn" id="12_hj0aa"]
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="13_fxkjb"]
 [ext_resource type="PackedScene" uid="uid://cuu0bcxy1x8xp" path="res://data/demo/subareas/stasis_puzzles.tscn" id="13_tehf6"]
 [ext_resource type="PackedScene" uid="uid://brs3ov2whut2i" path="res://data/demo/subareas/catalyst_puzzles.tscn" id="14_1tf5l"]
 [ext_resource type="PackedScene" uid="uid://bkhryrwbn73l3" path="res://data/demo/subareas/caves.tscn" id="14_qawye"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="14_utqig"]
+[ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="15_f0yc5"]
 [ext_resource type="PackedScene" uid="uid://c7snvw34rt406" path="res://data/demo/subareas/deep_caves.tscn" id="15_gbwmn"]
 [ext_resource type="PackedScene" uid="uid://r3fqpgt5gk0n" path="res://data/demo/subareas/river_front.tscn" id="16_bh4i5"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="18_gjo2s"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="19_x7gdy"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="20_stfpx"]
+[ext_resource type="PackedScene" uid="uid://d2cifsivdxxbt" path="res://data/demo/partner.tscn" id="21_pmbco"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="21_vw276"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
@@ -33,9 +40,48 @@ script = ExtResource("7_oalpa")
 [sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
 script = ExtResource("7_3o8i5")
 
+[sub_resource type="Animation" id="Animation_vjtay"]
+resource_name = "tutorial_battle"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ddao4"]
+_data = {
+"tutorial_battle": SubResource("Animation_vjtay")
+}
+
+[sub_resource type="Resource" id="Resource_p1v21"]
+script = ExtResource("15_f0yc5")
+id = "PARTNER_INTRO"
+next = -1
+end_state = ""
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s66wg"]
+size = Vector3(5, 2, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_n0u1l"]
+
+[sub_resource type="Resource" id="Resource_yyime"]
+script = ExtResource("20_stfpx")
+_base_melee_attack = 80.0
+_base_ranged_attack = 80.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 60.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_2inu0"]
+script = ExtResource("10_wgmfh")
+name = "Rust Slime"
+stat_manager = SubResource("Resource_yyime")
+hp = 150
+reset_hp_after_battle = true
+_element1 = "orange"
+_element2 = "orange"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("19_x7gdy")]([])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4b2va"]
+size = Vector3(14, 2, 9)
 
 [node name="Demo" type="Node3D"]
 
@@ -88,6 +134,21 @@ team = Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_o
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
 
+[node name="PartnerIntroTrigger" parent="Overworld" instance=ExtResource("13_fxkjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -32)
+collision_layer = 5
+auto_trigger = true
+
+[node name="StoryActor" parent="Overworld/PartnerIntroTrigger" instance=ExtResource("14_utqig")]
+dialog_ids = Array[ExtResource("15_f0yc5")]([SubResource("Resource_p1v21")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/PartnerIntroTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+shape = SubResource("BoxShape3D_s66wg")
+
+[node name="Partner" parent="Overworld" instance=ExtResource("21_pmbco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -31)
+
 [node name="TutorialEnemy" type="MeshInstance3D" parent="Overworld"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -26)
 mesh = SubResource("SphereMesh_n0u1l")
@@ -96,6 +157,17 @@ mesh = SubResource("SphereMesh_n0u1l")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
 [node name="Beach" parent="Overworld" instance=ExtResource("10_bysgw")]
+
+[node name="Spawner" parent="Overworld/Beach" instance=ExtResource("18_gjo2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.5, -24)
+visible = false
+battle_actors = Array[ExtResource("10_wgmfh")]([SubResource("Resource_2inu0")])
+team_count_range = Vector2i(1, 2)
+max_spawn_count = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Beach/Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.5)
+shape = SubResource("BoxShape3D_4b2va")
 
 [node name="StasisPuzzles" parent="Overworld" instance=ExtResource("13_tehf6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 3.5, -94.5)

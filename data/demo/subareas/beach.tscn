@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=27 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -7,18 +7,15 @@
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="3_pvsap"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_wmol4"]
 [ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="5_bxt50"]
-[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="6_n6i80"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="13_qy70b"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="13_wf8nf"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="13_xexyo"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="15_o5iye"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="15_xriqk"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="16_1unvm"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
 [ext_resource type="Resource" uid="uid://sgingeb41cun" path="res://data/items/equipment/reactor_shard.tres" id="17_7ejy0"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="21_k36mp"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="21_wyiua"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="21_y7w8y"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="22_sipbl"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="25_caj5v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcqmo"]
@@ -54,30 +51,6 @@ id = -1
 quantity = 3
 max_quantity = 9999
 allow_stacking = false
-
-[sub_resource type="Resource" id="Resource_yyime"]
-script = ExtResource("22_sipbl")
-_base_melee_attack = 80.0
-_base_ranged_attack = 80.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
-_base_speed = 60.0
-_base_evasion = 100.0
-
-[sub_resource type="Resource" id="Resource_2inu0"]
-script = ExtResource("13_xexyo")
-name = "Rust Slime"
-stat_manager = SubResource("Resource_yyime")
-hp = 150
-reset_hp_after_battle = true
-_element1 = "orange"
-_element2 = "orange"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("15_o5iye")]([])
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g4ltx"]
-size = Vector3(14, 2, 9)
 
 [sub_resource type="Resource" id="Resource_xuc6x"]
 resource_name = "Sunset Orb"
@@ -433,8 +406,13 @@ mesh = SubResource("PlaneMesh_eqm52")
 transform = Transform3D(1.555, 0, 0, 0, 1, 0, 0, 0, 7.581, -15, 0.6, -44)
 mesh = SubResource("PlaneMesh_eqm52")
 
+[node name="MagiClayTerrain" parent="Chunk" instance=ExtResource("21_k36mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, -17)
+_element = "orange"
+
 [node name="DestroyObstacle_South" parent="Chunk" groups=["persist"] instance=ExtResource("5_bxt50")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5, -12)
+_element = "blue"
 is_breakable = true
 
 [node name="Chest_South" parent="Chunk" groups=["persist"] instance=ExtResource("15_xriqk")]
@@ -463,16 +441,6 @@ _element = "red"
 
 [node name="Chest" parent="Chunk/TidePoolEntry" instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 8, 2)
-
-[node name="Spawner" parent="Chunk" instance=ExtResource("6_n6i80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.5, -24)
-battle_actors = Array[ExtResource("13_xexyo")]([SubResource("Resource_2inu0")])
-team_count_range = Vector2i(1, 2)
-max_spawn_count = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Spawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.5)
-shape = SubResource("BoxShape3D_g4ltx")
 
 [node name="Puzzle_North" type="Node3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -54)
@@ -653,5 +621,5 @@ _element = "orange"
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 38, 1, -16)
 _element = "yellow"
 
-[node name="Chest" parent="Chunk" instance=ExtResource("15_xriqk")]
+[node name="Chest" parent="Chunk/OpenArea" instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -50)
