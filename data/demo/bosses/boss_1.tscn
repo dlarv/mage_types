@@ -31,6 +31,7 @@ dialog_ids = Array[ExtResource("5_dve33")]([])
 
 [node name="Boss1" instance=ExtResource("1_k87ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
+collision_layer = 5
 
 [node name="blob2" parent="." index="1" instance=ExtResource("2_n8kln")]
 

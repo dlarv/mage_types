@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=41 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="18_gjo2s"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="19_x7gdy"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="20_stfpx"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="20_ykdw8"]
 [ext_resource type="PackedScene" uid="uid://d2cifsivdxxbt" path="res://data/demo/partner.tscn" id="21_pmbco"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="21_vw276"]
 
@@ -78,7 +79,7 @@ _element1 = "orange"
 _element2 = "orange"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("19_x7gdy")]([])
+attacks = Array[ExtResource("19_x7gdy")]([ExtResource("20_ykdw8")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4b2va"]
 size = Vector3(14, 2, 9)
@@ -160,7 +161,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Spawner" parent="Overworld/Beach" instance=ExtResource("18_gjo2s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.5, -24)
-visible = false
 battle_actors = Array[ExtResource("10_wgmfh")]([SubResource("Resource_2inu0")])
 team_count_range = Vector2i(1, 2)
 max_spawn_count = 3
@@ -189,7 +189,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 2.5, -212)
 
 [node name="Boss1" parent="Overworld" groups=["persist"] instance=ExtResource("21_vw276")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.99705, -53)
-collision_layer = 5
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
