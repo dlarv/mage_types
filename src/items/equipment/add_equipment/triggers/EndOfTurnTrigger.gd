@@ -1,3 +1,4 @@
+@tool
 extends EquipmentTrigger
 class_name EndOfTurnTrigger
 

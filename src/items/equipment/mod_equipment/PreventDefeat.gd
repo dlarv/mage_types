@@ -1,3 +1,4 @@
+@tool
 extends ModEquipmentEffect
 class_name PreventDefeat
 

@@ -1,3 +1,4 @@
+@tool
 extends EquipmentEffect
 class_name AddEquipmentEffect
 
