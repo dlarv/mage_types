@@ -2,15 +2,12 @@
 extends Resource
 class_name Item 
 
-var id := -1  
+var id := -1
 @export var name: String: set = _set_name
 @export var requirements: Array[ItemRequirement]: set = _set_requirement
 @export
 var details: String: set = _set_details
 @export var tags = []
-
-func update_id(id) -> void:
-	self.id = id
 
 # Checks whether the actor matches all of the requirements.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
@@ -32,4 +29,3 @@ func _set_details(value: String) -> void:
 
 func _set_requirement(value: Array) -> void:
 	requirements = value
-

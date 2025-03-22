@@ -29,7 +29,7 @@ var _battle_items: Array
 @export var spell_scrolls: Array[ItemSlot]:
 	set(vals):
 		spell_scrolls = vals
-		_reorder_item_array(regular_items)
+		_reorder_item_array(spell_scrolls)
 @export var recalc_ids_s: bool:
 	set(val):
 		_reorder_item_array(spell_scrolls)
@@ -296,4 +296,3 @@ func deserialize(data: Dictionary) -> void:
 
 	UIManager.inventory.overworld_spells_menu.set_primary(data["spell1"])
 	UIManager.inventory.overworld_spells_menu.set_secondary(data["spell2"])
-

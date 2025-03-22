@@ -47,46 +47,6 @@ script = ExtResource("7_oalpa")
 [sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
 script = ExtResource("7_3o8i5")
 
-[sub_resource type="Animation" id="Animation_vjtay"]
-resource_name = "tutorial_battle"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TutorialEnemy:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.13333, 1.3, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(12, 0, -21), Vector3(12, 0, -21), Vector3(12, 1, -21), Vector3(12, 1, -21), Vector3(10, 1, -21)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Partner:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(9, 0.5, -31), Vector3(9, 0.5, -21)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -23.5)]
-}
-
 [sub_resource type="Animation" id="Animation_ny78i"]
 length = 0.001
 tracks/0/type = "value"
@@ -136,6 +96,46 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vjtay"]
+resource_name = "tutorial_battle"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.13333, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(12, 0, -21), Vector3(12, 0, -21), Vector3(12, 1, -21), Vector3(12, 1, -21), Vector3(10, 1, -21)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Partner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(9, 0.5, -31), Vector3(9, 0.5, -21)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -23.5)]
 }
 
 [sub_resource type="Animation" id="Animation_utc6c"]

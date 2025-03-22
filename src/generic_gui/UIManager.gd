@@ -136,7 +136,9 @@ func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 	var selection = await inventory.open_spell_scroll_menu()
 	_menu_stack[-1].show()
 	_block_input = false
+
 	if selection != null:
+		Inventory.remove(selection, 1)
 		actor.learn_spell(selection, index)
 
 func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
@@ -145,5 +147,7 @@ func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 	var selection = await inventory.open_equipment_menu()
 	_menu_stack[-1].show()
 	_block_input = false
+
 	if selection != null:
+		Inventory.remove(selection, 1)
 		actor.equipment = selection
