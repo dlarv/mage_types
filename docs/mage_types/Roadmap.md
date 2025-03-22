@@ -63,6 +63,84 @@ Demo main track implemented. Player can play through the main story of the demo,
 **STRY.trig**
 - [x] Allow StoryActors to share AnimationPlayers.
 - [x] Allow StoryTriggers/StoryActors to play animations asynchronously.
+- [ ] Create trigger to add items to player's inventory.
+- [ ] Create trigger to add attack to player's movepool.
+## v0.4.x
+Demo MVP. Player can visit every area of the demo and experience the major features.
+
+**STRY.x**
+- [ ] Purposes for Forest, Tidepools, and Riverfront determined.
+- [ ] Whiteboxed mockup of map. Unimplemented areas can be blocked off.
+- [ ] Deep caves puzzle implemented and tested.
+- [ ] Destroy time trial designed, implemented, and tested.
+**OVER.chco**
+- [x] Player can open chests and obtain items.
+**OVER.plco**
+- [ ] Player companions follow player.
+**OVER.spel**
+- [ ] Destroy spell implemented.
+## v0.5.x+
+Demo playtest candidate.
+
+**OVER.clay**
+- [ ] Visual indicator on MagiClay objects.
+
+**POLI.achi**
+- [ ] Achievements.
+# The List
+## Battle (BATT)
+### Actor Info (ainf)
+**Show information about each actor:**
+- [x] Name, Hp.
+- [x] Current Element.
+- [ ] Elemental Bias.
+- [x] Status effects.
+	- [ ] Use 3d model pins instead of 2d sprites.
+- [x] Stat changes.
+- [ ] Use 3d models instead of 2d sprites for characters.
+
+### General Info (ginf)
+**Show information about the following, when queried by player:**
+- [ ] Attack info.
+- [ ] Item info.
+- [ ] Battle Actor info.
+- [ ] Status conditions.
+- [ ] Debug info.
+
+### Battle Logging (blog)
+**Create detailed battle logs for diagnostic purposes.**
+- [x] Status
+
+### Action Selection (acse)
+**Allow player to select, deselect, and submit actions.**
+- [x] Player selects an action for each actor, moving from right to left.
+- [x] Once an action is selected, UI automatically moves to next actor.
+- [x] The player has the option to select different actions for previous actors.
+	- [x] This should not cause the game to forget any other selected actions (e.g. Alice chooses attack, then Bob chooses attack. If player goes back to change Alices action, this should not deselect Bobs action).
+- [x] Prevent player from selecting actions they do not meet the requirements for.
+>[!bug]
+>- [ ] Prevent player from double spending item. I.e. when two actors try to use the same item on the same turn.
+
+### Turn Order (tuor)
+**Calculate turn order based on actor's speed and action priority.**
+- [x] Status
+
+### Action Effects (acef)
+ **Calculate and resolve attack/item effects.**
+- [x] Damage.
+- [x] Additional effects.
+- [x] Apply affinity costs.
+- [x] Remove item from inventory.
+
+### Transmutations (tran)
+**Apply transmutations and related effects when necessary.**
+- [x] (Primary | Secondary) + Attack
+- [x] Primary + Secondary
+- [x] Apply side effects.
+
+>[!question] 
+>There should be some way for the player to change their secondary Blank typing to another element.
+>Maybe if their secondary typing is Blank, it will change to match the typing of the move they just used?
 ## v0.4.x
 Demo MVP. Player can visit every area of the demo and experience the major features.
 
@@ -342,17 +420,16 @@ TODO:
 	- Answers player has previously given them.
 	- Items in player's inventory.
 	- If the player has defeated them in battle.
-### Story Events (even)
-- Play cutscene.
-- Add/remove items from player's inventory.
-- Set/check story variables.
-- Add/remove companion.
+### Story Manager and Events (even)
+- Communicate specified story vars between DialogueData objects.
+- ~~Facilitate StoryEvents.
+	- ~~Trigger.
+	- ~~Effect.
 
 _StoryEvent_
-- Is triggered by an external factor, usually an action the player has taken.
-- Changes something about the game's state.
-	- This should probably be a global variable any other actor can check.
-	- This should probably interface with the variables used in the Dialogue nodes addon.
+- Set variable.
+- Add/remove items from inventory.
+- Add/remove companion => **This can be done using AnimationPlayers.**
 ### Story Triggers (trig)
 - [x] Trigger story event when player steps on a specific spot in world.
 - [x] Trigger story event when player talks to specific character.
