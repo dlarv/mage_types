@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://dy7x06nfhr1r7"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://dy7x06nfhr1r7"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_2rwhi"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_5jowh"]
 [ext_resource type="Resource" uid="uid://bvadtuxed6228" path="res://data/battle_system/status_effects/elemental_effects/elemental_phobia.tres" id="3_prk26"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_4b86v"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_fve2l"]
@@ -8,15 +9,14 @@
 [sub_resource type="Resource" id="Resource_rp18c"]
 script = ExtResource("4_4b86v")
 attack_effect = ExtResource("3_prk26")
-chance = 1.0
 effect_target = 1
+chance = 1.0
 _element = "purple"
 
 [resource]
 resource_name = "Nyctophobia"
 script = ExtResource("5_fve2l")
-effects = Array[ExtResource("4_4b86v")]([SubResource("Resource_rp18c")])
-cost = 10
+effects = Array[ExtResource("2_5jowh")]([SubResource("Resource_rp18c")])
 name = "Nyctophobia"
 animation = ExtResource("2_2rwhi")
 _element = "purple"

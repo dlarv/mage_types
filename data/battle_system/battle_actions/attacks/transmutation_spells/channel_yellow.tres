@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://wrdi45xe6g8t"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_0ae1n"]
-[ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="1_2u1bt"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_0uv4l"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_un0k6"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="3_0no7p"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_inpqt"]
 
 [sub_resource type="Resource" id="Resource_ib1xg"]
 script = ExtResource("3_inpqt")
-element = ExtResource("1_2u1bt")
+_element = "yellow"
 element_id = 0
 name = ""
 chance = 1.0
@@ -18,16 +18,18 @@ message = ""
 [sub_resource type="Resource" id="Resource_1sd8b"]
 script = ExtResource("3_0no7p")
 attack_effect = SubResource("Resource_ib1xg")
+effect_target = 1
 chance = 1.0
+_element = "blank"
 
 [resource]
+resource_name = "Channel Yellow"
 script = ExtResource("1_0ae1n")
-effects = Array[ExtResource("3_0no7p")]([SubResource("Resource_1sd8b")])
-cost = 10
+effects = Array[ExtResource("2_un0k6")]([SubResource("Resource_1sd8b")])
 name = "Channel Yellow"
 animation = ExtResource("2_0uv4l")
 _element = "yellow"
 priority = 0
-attack_range = 0
+attack_range = 2
 target = 0
 details = ""

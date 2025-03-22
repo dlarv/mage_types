@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_0r65f"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_3ypsw"]
-[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="1_sas4g"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_u7n5s"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_dnujh"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_qf0hr"]
 
 [sub_resource type="Resource" id="Resource_vjika"]
 script = ExtResource("3_dnujh")
-element = ExtResource("1_sas4g")
+_element = "blank"
 element_id = 1
 name = ""
 chance = 1.0
@@ -18,16 +18,18 @@ message = ""
 [sub_resource type="Resource" id="Resource_au5aj"]
 script = ExtResource("4_qf0hr")
 attack_effect = SubResource("Resource_vjika")
+effect_target = 1
 chance = 1.0
+_element = "blank"
 
 [resource]
+resource_name = "Empty Self"
 script = ExtResource("1_0r65f")
-effects = Array[ExtResource("4_qf0hr")]([SubResource("Resource_au5aj")])
-cost = 10
+effects = Array[ExtResource("2_u7n5s")]([SubResource("Resource_au5aj")])
 name = "Empty Self"
 animation = ExtResource("1_3ypsw")
 _element = "blank"
 priority = 0
-attack_range = 0
+attack_range = 2
 target = 0
 details = ""

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_h0bbq"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_h4747"]
-[ext_resource type="Resource" uid="uid://c6faueqchwfh5" path="res://data/elemental_types/green.tres" id="1_scdxq"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_m0q8y"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_vi5tw"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_unwl5"]
 
 [sub_resource type="Resource" id="Resource_7d6oa"]
 script = ExtResource("3_vi5tw")
-element = ExtResource("1_scdxq")
+_element = "green"
 element_id = 0
 name = ""
 chance = 1.0
@@ -18,16 +18,18 @@ message = ""
 [sub_resource type="Resource" id="Resource_xe24q"]
 script = ExtResource("4_unwl5")
 attack_effect = SubResource("Resource_7d6oa")
+effect_target = 1
 chance = 1.0
+_element = "blank"
 
 [resource]
+resource_name = "Channel Green"
 script = ExtResource("1_h0bbq")
-effects = Array[ExtResource("4_unwl5")]([SubResource("Resource_xe24q")])
-cost = 0
+effects = Array[ExtResource("2_m0q8y")]([SubResource("Resource_xe24q")])
 name = "Channel Green"
 animation = ExtResource("1_h4747")
 _element = "green"
 priority = 0
-attack_range = 0
+attack_range = 2
 target = 0
 details = ""

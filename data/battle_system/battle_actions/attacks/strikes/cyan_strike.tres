@@ -1,13 +1,33 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://bhx77misimdoa"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bhx77misimdoa"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_7gxbi"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_xyw4n"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_x56xr"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_1nl27"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="4_g8m4y"]
+
+[sub_resource type="Resource" id="Resource_sxcv7"]
+script = ExtResource("3_x56xr")
+_element = "cyan"
+type = 1
+positive_factor = 2.5
+negative_factor = 0.2
+name = ""
+chance = 1.0
+strength = 50.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_7l5ob"]
+script = ExtResource("4_1nl27")
+attack_effect = SubResource("Resource_sxcv7")
+effect_target = 1
+chance = 1.0
+_element = "blank"
 
 [resource]
 resource_name = "Cyan Strike"
 script = ExtResource("4_g8m4y")
-effects = Array[ExtResource("2_xyw4n")]([null])
+effects = Array[ExtResource("2_xyw4n")]([SubResource("Resource_7l5ob")])
 name = "Cyan Strike"
 animation = ExtResource("1_7gxbi")
 _element = "purple"

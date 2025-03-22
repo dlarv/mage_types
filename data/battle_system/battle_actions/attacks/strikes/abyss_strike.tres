@@ -1,13 +1,33 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://olgnrmvw2spc"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://olgnrmvw2spc"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_4wpqw"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_cinsk"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_r5wf5"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_31kku"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_ajged"]
+
+[sub_resource type="Resource" id="Resource_rbc0b"]
+script = ExtResource("3_31kku")
+_element = "purple"
+type = 0
+positive_factor = 4.0
+negative_factor = 0.2
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_lliuw"]
+script = ExtResource("4_ajged")
+attack_effect = SubResource("Resource_rbc0b")
+effect_target = 1
+chance = 1.0
+_element = "blank"
 
 [resource]
 resource_name = "Abyss Strike"
 script = ExtResource("2_r5wf5")
-effects = Array[ExtResource("2_cinsk")]([])
+effects = Array[ExtResource("2_cinsk")]([SubResource("Resource_lliuw")])
 name = "Abyss Strike"
 animation = ExtResource("1_4wpqw")
 _element = "purple"

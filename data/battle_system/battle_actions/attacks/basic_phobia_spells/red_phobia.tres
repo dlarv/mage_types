@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=6 format=3 uid="uid://de2o1rjags06x"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://de2o1rjags06x"]
 
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_7gb7r"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_ofj1d"]
 [ext_resource type="Resource" uid="uid://bvadtuxed6228" path="res://data/battle_system/status_effects/elemental_effects/elemental_phobia.tres" id="3_ecw2h"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_ihfmu"]
@@ -8,15 +9,14 @@
 [sub_resource type="Resource" id="Resource_ox82x"]
 script = ExtResource("5_ihfmu")
 attack_effect = ExtResource("3_ecw2h")
-chance = 1.0
 effect_target = 1
+chance = 1.0
 _element = "red"
 
 [resource]
 resource_name = "Hemophobia"
 script = ExtResource("6_hfbf2")
-effects = Array[ExtResource("5_ihfmu")]([SubResource("Resource_ox82x")])
-cost = 10
+effects = Array[ExtResource("2_7gb7r")]([SubResource("Resource_ox82x")])
 name = "Hemophobia"
 animation = ExtResource("2_ofj1d")
 _element = "red"

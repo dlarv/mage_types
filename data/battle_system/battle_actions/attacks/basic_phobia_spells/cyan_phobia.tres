@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://dfw4ok6p0v3ei"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_8rd4o"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffect.gd" id="2_8so8y"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_8so8y"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="2_upu2q"]
 [ext_resource type="Resource" uid="uid://bvadtuxed6228" path="res://data/battle_system/status_effects/elemental_effects/elemental_phobia.tres" id="3_m3xtl"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pej2m"]
@@ -17,7 +17,6 @@ _element = "cyan"
 resource_name = "Glaukophobia"
 script = ExtResource("6_pej2m")
 effects = Array[ExtResource("2_8so8y")]([SubResource("Resource_r063c")])
-cost = 10
 name = "Glaukophobia"
 animation = ExtResource("2_8rd4o")
 _element = "cyan"

@@ -1,10 +1,9 @@
-[gd_scene load_steps=79 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=77 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_xejte"]
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="3_3atr7"]
 [ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="4_klwlq"]
-[ext_resource type="Resource" uid="uid://cwn5jymtvdcry" path="res://data/items/spell_scrolls/abyssal_aspiration.tres" id="5_3po7c"]
 [ext_resource type="Resource" uid="uid://cdjv85cqd8f7i" path="res://data/items/spell_scrolls/basic/hit_b.tres" id="5_ufsgb"]
 [ext_resource type="Resource" uid="uid://xvxjic61ytl2" path="res://data/items/spell_scrolls/basic/hit_c.tres" id="6_v0bcu"]
 [ext_resource type="Resource" uid="uid://cjis241a7rywd" path="res://data/items/spell_scrolls/blood_shock_scroll.tres" id="7_ehvag"]
@@ -311,20 +310,11 @@ quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_qwhbk"]
-resource_name = "Dark Aspirations Scroll"
-script = ExtResource("2_xejte")
-item = ExtResource("5_3po7c")
-id = 28
-quantity = 0
-max_quantity = 9999
-allow_stacking = true
-
 [sub_resource type="Resource" id="Resource_6agee"]
 resource_name = "Blood Shock Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("7_ehvag")
-id = 29
+id = 28
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -333,7 +323,7 @@ allow_stacking = true
 resource_name = "Terrify Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("8_vcgc2")
-id = 30
+id = 29
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -387,7 +377,7 @@ allow_stacking = true
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
-spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_u77uh"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_qwhbk"), SubResource("Resource_6agee"), SubResource("Resource_1i18h")])
+spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_u77uh"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_6agee"), SubResource("Resource_1i18h")])
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
 stasis_spell_enabled = true
 destroy_spell_enabled = true

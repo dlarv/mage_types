@@ -1,13 +1,37 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=4 format=3 uid="uid://bwpyxutff85nq"]
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bwpyxutff85nq"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_v7dve"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_beg3r"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="3_8816p"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_j6bua"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_y3gk5"]
+[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="5_arj8y"]
+
+[sub_resource type="Resource" id="Resource_o30l2"]
+script = ExtResource("3_j6bua")
+name = ""
+chance = 1.0
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_qxkeg"]
+script = ExtResource("4_y3gk5")
+attack_effect = SubResource("Resource_o30l2")
+effect_target = 1
+chance = 1.0
+_element = "blank"
+
+[sub_resource type="Resource" id="Resource_dq5hx"]
+script = ExtResource("4_y3gk5")
+attack_effect = ExtResource("5_arj8y")
+effect_target = 1
+chance = 0.5
+_element = "blank"
 
 [resource]
 resource_name = "Sting"
 script = ExtResource("3_8816p")
-effects = Array[ExtResource("2_beg3r")]([])
+effects = Array[ExtResource("2_beg3r")]([SubResource("Resource_qxkeg"), SubResource("Resource_dq5hx")])
 name = "Sting"
 animation = ExtResource("1_v7dve")
 _element = "orange"

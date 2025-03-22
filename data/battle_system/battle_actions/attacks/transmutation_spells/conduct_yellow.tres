@@ -1,21 +1,14 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://b6tgqcseb5bm7"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b6tgqcseb5bm7"]
 
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_6a1eq"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_bj77c"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_4mkka"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_6vxc3"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_y36oa"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_y1vt6"]
 
-[sub_resource type="Resource" id="Resource_ii1x3"]
-script = ExtResource("3_6vxc3")
-name = "Yellow"
-main_color = Color(1, 1, 0, 1)
-text_color = Color(0, 0, 0, 1)
-color_palette = PackedColorArray()
-
 [sub_resource type="Resource" id="Resource_4tyhu"]
 script = ExtResource("3_4mkka")
-element = SubResource("Resource_ii1x3")
+_element = "yellow"
 element_id = 1
 name = ""
 chance = 1.0
@@ -25,16 +18,18 @@ message = ""
 [sub_resource type="Resource" id="Resource_bj6k7"]
 script = ExtResource("4_y36oa")
 attack_effect = SubResource("Resource_4tyhu")
+effect_target = 1
 chance = 1.0
+_element = "blank"
 
 [resource]
+resource_name = "Conduct Yellow"
 script = ExtResource("5_y1vt6")
-effects = Array[ExtResource("4_y36oa")]([SubResource("Resource_bj6k7")])
-cost = 10
+effects = Array[ExtResource("2_6a1eq")]([SubResource("Resource_bj6k7")])
 name = "Conduct Yellow"
 animation = ExtResource("2_bj77c")
 _element = "yellow"
 priority = 0
-attack_range = 0
+attack_range = 2
 target = 0
 details = ""
