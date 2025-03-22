@@ -1,21 +1,17 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=14 format=3 uid="uid://biujho1cv84is"]
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=10 format=3 uid="uid://biujho1cv84is"]
 
 [ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_gijj2"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_j237j"]
 [ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_uqypi"]
 [ext_resource type="Resource" uid="uid://b5rkqbayc06h6" path="res://data/battle_system/battle_actions/attacks/strikes/red_strike.tres" id="3_feaux"]
-[ext_resource type="Resource" uid="uid://ctlauvjcfmpog" path="res://data/battle_system/battle_actions/attacks/strikes/blue_strike.tres" id="3_p77cy"]
-[ext_resource type="Resource" uid="uid://bhx77misimdoa" path="res://data/battle_system/battle_actions/attacks/strikes/cyan_strike.tres" id="4_fwadl"]
 [ext_resource type="Resource" uid="uid://bfjk3jf15fgeh" path="res://data/battle_system/battle_actions/attacks/strikes/green_strike.tres" id="5_etqho"]
-[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="6_3lek4"]
 [ext_resource type="Resource" uid="uid://bxhigobikymm" path="res://data/battle_system/battle_actions/attacks/strikes/orange_strike.tres" id="7_drl5x"]
 [ext_resource type="Resource" uid="uid://idlpjrj0qtgr" path="res://data/battle_system/battle_actions/attacks/strikes/purple_strike.tres" id="8_a5so4"]
-[ext_resource type="Resource" uid="uid://d5le4hwdg070" path="res://data/battle_system/battle_actions/attacks/strikes/yellow_strike.tres" id="10_jh5sb"]
 [ext_resource type="Script" path="res://src/items/requirements/AttackRequirement.gd" id="11_sunft"]
 
 [sub_resource type="Resource" id="Resource_khnqx"]
 script = ExtResource("11_sunft")
-attacks = Array[ExtResource("2_j237j")]([ExtResource("3_p77cy"), ExtResource("4_fwadl"), ExtResource("5_etqho"), ExtResource("6_3lek4"), ExtResource("7_drl5x"), ExtResource("8_a5so4"), ExtResource("10_jh5sb")])
+attacks = Array[ExtResource("2_j237j")]([ExtResource("5_etqho"), ExtResource("7_drl5x"), ExtResource("8_a5so4")])
 incompatible = true
 battle_relevant = false
 
