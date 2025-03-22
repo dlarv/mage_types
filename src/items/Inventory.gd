@@ -122,6 +122,13 @@ func add(item: Item, amount:=1) -> void:
 		slot.quantity = 1
 		quantity_changed.emit(slot)
 
+func add_spell(spell: Attack) -> void:
+	for slot in spell_scrolls:
+		if slot.item.spell == spell:
+			slot.quantity += 1
+			quantity_changed.emit(slot)
+			return
+
 func remove(item: Item, amount:=1) -> ItemSlot:
 	if amount < 0:
 		remove(item, -amount)

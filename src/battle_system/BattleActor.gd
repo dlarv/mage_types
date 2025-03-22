@@ -153,6 +153,9 @@ func is_element(element: ElementalType) -> bool:
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
 func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
 	if scroll == null:
+		var attack = attacks[index]
+		if attack:
+			Inventory.add_spell(attack)
 		attacks.remove_at(index)
 		attacks.append(null)
 
@@ -168,8 +171,13 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
 	
 	var output := scroll.check_requirements(self)
 	if len(output) == 0:
+		if attacks[index]:
+			Inventory.add_spell(attacks[index])
 		attacks[index] = scroll.spell
 		spell_learned.emit(scroll.spell, index)
+	else:
+		print("Could not learn selected Spell(%s). BattleActor(%s) does not meet the following reqs: %s" 
+				% [scroll.spell.name, name, str(output) ])
 
 	return output
 
