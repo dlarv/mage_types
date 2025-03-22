@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://cttohg0e1an0u"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_b1056"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_jrl2s"]
+[ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="3_0xeem"]
+
+[resource]
+script = ExtResource("2_jrl2s")
+spell = ExtResource("3_0xeem")
+name = "Purple Hit Scroll"
+requirements = Array[ExtResource("1_b1056")]([])
+details = ""
+tags = []

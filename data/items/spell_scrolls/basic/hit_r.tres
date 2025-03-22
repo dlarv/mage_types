@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://b0hf1tbttw2y7"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_4aqrr"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_12pac"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="3_bllyq"]
+
+[resource]
+script = ExtResource("2_12pac")
+spell = ExtResource("3_bllyq")
+name = "Red Hit Scroll"
+requirements = Array[ExtResource("1_4aqrr")]([])
+details = ""
+tags = []

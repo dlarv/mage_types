@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://gbh13s2b3fi"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_lhyxf"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_u7tg7"]
+[ext_resource type="Resource" uid="uid://b4d7tphii0oh6" path="res://data/battle_system/battle_actions/attacks/basic/throw_r.tres" id="3_ewbs3"]
+
+[resource]
+script = ExtResource("2_u7tg7")
+spell = ExtResource("3_ewbs3")
+name = "Red Throw Scroll"
+requirements = Array[ExtResource("1_lhyxf")]([])
+details = ""
+tags = []

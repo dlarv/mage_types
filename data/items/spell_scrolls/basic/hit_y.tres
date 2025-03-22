@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://dxog01ajisqd2"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_p7jyk"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_qfdmo"]
+[ext_resource type="Resource" uid="uid://bgcfvlaa71k81" path="res://data/battle_system/battle_actions/attacks/basic/hit_y.tres" id="3_ll6gq"]
+
+[resource]
+script = ExtResource("2_qfdmo")
+spell = ExtResource("3_ll6gq")
+name = "Yellow Hit Scroll"
+requirements = Array[ExtResource("1_p7jyk")]([])
+details = ""
+tags = []

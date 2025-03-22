@@ -191,9 +191,8 @@ func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:
 func _add_items_from_dir(path: String) -> void:
 		print("Loading items from: " + path)
 		var root := DirAccess.open(path)
-		var dirs := []
 
-		# Breadth first search of files.
+		# Depth first search of files.
 		root.list_dir_begin()
 		var file := root.get_next()
 		while len(file) > 0 and root != null:
@@ -203,13 +202,10 @@ func _add_items_from_dir(path: String) -> void:
 					_add_item = item
 
 			elif root.dir_exists(file):
-				dirs.append(path + file + "/")
+				_add_items_from_dir(path + file + "/")
 
 			file = root.get_next()
 
-		print(len(dirs))
-		for dir in dirs:
-			_add_items_from_dir(dir)
 
 func _reorder_item_array(list: Array) -> void:
 	var i := 0
