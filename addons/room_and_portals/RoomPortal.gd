@@ -15,10 +15,14 @@ var _prev_pos_1 := Vector3.ZERO
 var _prev_pos_2 := Vector3.ZERO
 
 func _enter_tree() -> void:
-	body_shape_entered.connect(_on_body_shape_entered)
-	body_shape_exited.connect(_on_body_shape_exited)
-	child_entered_tree.connect(_on_child_entering_tree)
-	child_exiting_tree.connect(_on_child_exiting_tree)
+	if not body_shape_entered.is_connected(_on_body_shape_entered):
+		body_shape_entered.connect(_on_body_shape_entered)
+	if not body_shape_exited.is_connected(_on_body_shape_exited):
+		body_shape_exited.connect(_on_body_shape_exited)
+	if not child_entered_tree.is_connected(_on_child_entering_tree):
+		child_entered_tree.connect(_on_child_entering_tree)
+	if not child_exiting_tree.is_connected(_on_child_exiting_tree):
+		child_exiting_tree.connect(_on_child_exiting_tree)
 
 
 func _ready() -> void:
