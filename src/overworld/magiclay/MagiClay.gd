@@ -180,5 +180,13 @@ func deserialize(data: Dictionary) -> void:
 		visible = data["visible"]
 
 func _set_size() -> void:
-	$MeshInstance3D.mesh.size = base_size * scaling_factor
-	$CollisionShape3D.shape.size = base_size * scaling_factor
+	if "top_radius" in $MeshInstance3D.mesh:
+		$MeshInstance3D.mesh.top_radius = base_size.x * scaling_factor.x
+		$MeshInstance3D.mesh.bottom_radius = base_size.x * scaling_factor.x
+		$MeshInstance3D.mesh.height = base_size.z * scaling_factor.z
+		$CollisionShape3D.shape.radius = base_size.x * scaling_factor.x
+		$CollisionShape3D.shape.height = base_size.z * scaling_factor.z
+	else:
+		$MeshInstance3D.mesh.size = base_size * scaling_factor
+		$CollisionShape3D.shape.size = base_size * scaling_factor
+

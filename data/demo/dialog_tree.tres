@@ -25,12 +25,12 @@ nodes = {
 },
 "0_10": {
 "link": &"1_42",
-"offset": Vector2(-2240, 2140),
+"offset": Vector2(-2140, 2700),
 "start_id": "2b"
 },
 "0_11": {
 "link": &"1_46",
-"offset": Vector2(-2220, 2460),
+"offset": Vector2(-2120, 3020),
 "start_id": "3"
 },
 "0_12": {
@@ -44,8 +44,8 @@ nodes = {
 "start_id": "MISC"
 },
 "0_3": {
-"link": &"7_1",
-"offset": Vector2(-2280, 860),
+"link": &"1_30",
+"offset": Vector2(-1920, 940),
 "start_id": "0"
 },
 "0_4": {
@@ -55,7 +55,7 @@ nodes = {
 },
 "0_5": {
 "link": &"1_21",
-"offset": Vector2(-2240, 1540),
+"offset": Vector2(-2140, 2100),
 "start_id": "1"
 },
 "0_7": {
@@ -70,7 +70,7 @@ nodes = {
 },
 "0_9": {
 "link": &"1_27",
-"offset": Vector2(-2220, 1840),
+"offset": Vector2(-2120, 2400),
 "start_id": "2a"
 },
 "1_1": {
@@ -127,7 +127,7 @@ nodes = {
 },
 "1_13": {
 "dialogue": "Hmm, well this isn't very peaceful... But its important to learn, so bear with me. Sorry.",
-"offset": Vector2(-1600, 940),
+"offset": Vector2(-1500, 1500),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -141,7 +141,7 @@ nodes = {
 "1_14": {
 "dialogue": "To start, click the Attacks button, then select the [el]Green[/el] attack. [br][br]Press Space when you've done so.
 ",
-"offset": Vector2(-1180, 860),
+"offset": Vector2(-1080, 1420),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -155,7 +155,7 @@ nodes = {
 "1_15": {
 "dialogue": "Great! Now hover your mouse over the enemy.  
 [br][br][b]Space[/b]",
-"offset": Vector2(-840, 860),
+"offset": Vector2(-740, 1420),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -196,7 +196,7 @@ nodes = {
 "dialogue": "Now what you're seeing is called the [i]transmutation hint[/i]. It might not make much sense, but that's okay. 
 [br][br]Just remember that the top-right square is [el]cyan[/el].
 [br][br][b]Space[/b]",
-"offset": Vector2(-500, 860),
+"offset": Vector2(-400, 1420),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -209,7 +209,7 @@ nodes = {
 },
 "1_19": {
 "dialogue": "Now click on the enemy and press the \"End Turn\" button below.",
-"offset": Vector2(-180, 860),
+"offset": Vector2(-80, 1420),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -248,7 +248,7 @@ nodes = {
 },
 "1_21": {
 "dialogue": "My attack channeled the elemental power of [el]Green[/el], which reacted with the opponent's [el]Blue[/el] typing to create [el]Cyan[/el].",
-"offset": Vector2(-2040, 1540),
+"offset": Vector2(-1940, 2100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -262,7 +262,7 @@ nodes = {
 "1_22": {
 "dialogue": "What's more, these reactions have side effects! Elements are broken into 2 subgroups: [color=blue]Defensive[/color] and [color=red]Offensive[/color].
 ",
-"offset": Vector2(-1700, 1540),
+"offset": Vector2(-1600, 2100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -279,7 +279,7 @@ nodes = {
 [ul][color=red]Offensive[/color] -> [color=red]Offensive[/color] = Speed boost.[/ul]
 [ul][color=red]Offensive[/color] -> [color=blue]Defensive[/color] = Defense boost.[/ul]
 [ul] [color=blue]Defensive[/color] -> [color=red]Offensive[/color] = Attack boost.[/ul]",
-"offset": Vector2(-680, 1540),
+"offset": Vector2(-580, 2100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -296,7 +296,7 @@ nodes = {
 [ul][el]Cyan[/el][/ul]
 [ul][el]Magenta[/el][/ul]
 [ul][el]Yellow[/el][/ul]",
-"offset": Vector2(-1360, 1540),
+"offset": Vector2(-1260, 2100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -313,7 +313,7 @@ nodes = {
 [ul][el]Purple[/el][/ul]
 [ul][el]Orange[/el][/ul]
 [ul][el]Red[/el][/ul]",
-"offset": Vector2(-1020, 1540),
+"offset": Vector2(-920, 2100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -326,7 +326,7 @@ nodes = {
 },
 "1_26": {
 "dialogue": "Press [i]T[/i] to pull up the Transmutation Menu. The second tab contains the type chart. Hover over any of the squares will show you that combos side effects.",
-"offset": Vector2(-340, 1540),
+"offset": Vector2(-240, 2100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -339,7 +339,7 @@ nodes = {
 },
 "1_27": {
 "dialogue": "Now I have 2 more things to show you.",
-"offset": Vector2(-2020, 1840),
+"offset": Vector2(-1920, 2400),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -352,7 +352,7 @@ nodes = {
 },
 "1_28": {
 "dialogue": "You probably noticed that I have 2  colors, while the opponent only has 1.",
-"offset": Vector2(-1680, 1840),
+"offset": Vector2(-1580, 2400),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -365,7 +365,7 @@ nodes = {
 },
 "1_29": {
 "dialogue": "The first 2 rows of a transmutation hint shows how those 2 types will react to an attack.",
-"offset": Vector2(-1340, 1840),
+"offset": Vector2(-1240, 2400),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -383,6 +383,45 @@ nodes = {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_30": {
+"dialogue": "Just like in the overworld, the the elements will react with one another.",
+"offset": Vector2(-1700, 940),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_31",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_31": {
+"dialogue": "Notably, combatants can have 2 types at a time, which complicates the dynamic somewhat.",
+"offset": Vector2(-1357.15, 942.636),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_32",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_32": {
+"dialogue": "",
+"offset": Vector2(-1018.75, 942.241),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
 "text": ""
 }
 },
@@ -417,7 +456,7 @@ nodes = {
 },
 "1_42": {
 "dialogue": "So not only will your typing react to your opponent's attacks (and vice versa), but your primary and secondary types can react together!",
-"offset": Vector2(-2020, 2140),
+"offset": Vector2(-1920, 2700),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -431,7 +470,7 @@ nodes = {
 "1_43": {
 "dialogue": "Finally, just one more thing.
 [br][br]So far, we've only been using [i]ranged[/i] attacks. Watch what happens when the opponent uses a melee attack instead.",
-"offset": Vector2(-1680, 2140),
+"offset": Vector2(-1580, 2700),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -444,7 +483,7 @@ nodes = {
 },
 "1_44": {
 "dialogue": "But more importantly, using a ranged attack will only affect your opponent's typing. However, melee attacks will affect both the target and the user.",
-"offset": Vector2(-1660, 2460),
+"offset": Vector2(-1560, 3020),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -475,7 +514,7 @@ nodes = {
 },
 "1_46": {
 "dialogue": "If your second type is Gray (Blank), it will change to match the attack you used.",
-"offset": Vector2(-2000, 2460),
+"offset": Vector2(-1900, 3020),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -537,7 +576,7 @@ nodes = {
 },
 "1_8": {
 "dialogue": "You know what? This works too.",
-"offset": Vector2(-1600, 1240),
+"offset": Vector2(-1500, 1800),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -560,6 +599,16 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": 0
+},
+"2_1": {
+"comment": "Objectives:
+- Attack + Primary/Secondary
+- Primary + Secondary
+- Side effects
+- Melee vs ranged
+- Intentions",
+"offset": Vector2(-1440, 1220),
+"size": Vector2(360, 180)
 },
 "2_3": {
 "comment": "[ul]When a [color=blue]defensive element[/color] transmute into another [color=blue]defensive element[/color], they get a speed boost.[/ul]
@@ -613,7 +662,7 @@ nodes = {
 "link": &"1_13"
 }
 },
-"offset": Vector2(-2040, 860)
+"offset": Vector2(-1940, 1420)
 },
 "8_1": {
 "attached_nodes": Array[StringName]([&"1_2", &"0_2", &"3_1", &"1_1", &"0_1"]),
@@ -622,8 +671,8 @@ nodes = {
 "title": "Misc"
 },
 "8_2": {
-"attached_nodes": Array[StringName]([&"0_3", &"1_8", &"7_1", &"1_14", &"1_13", &"1_15", &"1_18", &"1_19", &"0_5", &"1_21", &"1_22", &"1_23", &"1_24", &"1_25", &"0_9", &"1_27", &"1_28", &"1_29", &"0_10", &"1_42", &"1_43", &"0_11", &"1_44", &"1_46", &"1_26"]),
-"offset": Vector2(-2320, 820),
+"attached_nodes": Array[StringName]([&"0_3", &"1_8", &"7_1", &"1_14", &"1_13", &"1_15", &"1_18", &"1_19", &"0_5", &"1_21", &"1_22", &"1_23", &"1_24", &"1_25", &"0_9", &"1_27", &"1_28", &"1_29", &"0_10", &"1_42", &"1_43", &"0_11", &"1_44", &"1_46", &"1_26", &"1_30", &"2_1"]),
+"offset": Vector2(-2180, 900),
 "tint_color": Color(0.133333, 0.133333, 0.87451, 0.203922),
 "title": "Tutorial Battle"
 },
@@ -672,5 +721,5 @@ variables = {
 "value": false
 }
 }
-strays = Array[String](["8_1", "8_2", "2_3"])
+strays = Array[String](["8_1", "8_2", "1_14", "1_15", "1_18", "1_19", "1_13", "1_8", "2_3", "7_1", "2_1"])
 characters = "res://data/demo/character_files/character_list.tres"
