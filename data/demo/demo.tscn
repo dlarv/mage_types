@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/generic_gui/RichTextElement.gd" id="7_3o8i5"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_oalpa"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/generic_gui/hud_layer.tscn" id="8_ox27g"]
-[ext_resource type="PackedScene" uid="uid://b6hxgpvaoulp7" path="res://src/player/physics_player.tscn" id="9_d3iix"]
+[ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="9_qicvs"]
 [ext_resource type="PackedScene" uid="uid://4ft3p5xs6uk5" path="res://data/demo/subareas/beach.tscn" id="10_bysgw"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_wgmfh"]
 [ext_resource type="PackedScene" uid="uid://cy8e0cndhkub5" path="res://data/demo/subareas/tidepools.tscn" id="12_hj0aa"]
@@ -219,13 +219,12 @@ size = Vector3(3, 1, 1)
 
 [node name="Demo" type="Node3D"]
 
-[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_x5fo8")]
+[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud") instance=ExtResource("1_x5fo8")]
 world = NodePath("../Overworld")
 overworld = NodePath("../Overworld")
 dialog_box = NodePath("../DialogueBox_Layer/DialogueBox")
 hud = NodePath("../HUD_Layer")
 battle_delay = 2.0
-_player = NodePath("")
 
 [node name="DialogueBox_Layer" type="CanvasLayer" parent="."]
 layer = 3
@@ -260,7 +259,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ddao4")
 }
 
-[node name="Player" parent="Overworld" groups=["persist", "player"] instance=ExtResource("9_d3iix")]
+[node name="Player" parent="Overworld" instance=ExtResource("9_qicvs")]
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
@@ -360,4 +359,4 @@ animation_player = NodePath("../../Overworld/AnimationPlayer")
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
-[connection signal="dialog_started" from="Overworld/Player" to="OverworldConnector" method="_on_dialog_started"]
+[connection signal="dialog_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_dialog_started"]

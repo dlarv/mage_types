@@ -15,6 +15,7 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export var walk_speed := 10.0
 @export var run_speed := 30.0
 var _is_running := false
+var draggable = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
@@ -90,7 +91,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-
 func _move_god_mode(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
@@ -152,3 +152,9 @@ func deserialize(data: Dictionary):
 	# 	team = []
 	# 	for t in data["team"]:
 	# 		team.append(BattleActor.new())
+
+func is_dragging() -> bool:
+	return draggable != null
+
+func set_draggable(obj: Node3D) -> void:
+	draggable = obj

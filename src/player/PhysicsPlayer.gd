@@ -15,6 +15,7 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export var walk_speed := 10.0
 @export var run_speed := 20.0
 var _is_running := false
+var draggable = null 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
@@ -55,6 +56,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if _god_mode:
 		_move_god_mode(state)
 		return
+	elif is_dragging():
+		_move_drag_mode(state)
+		return
 
 	var inputDir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
@@ -70,6 +74,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 	state.linear_velocity = velocity
 
+
 func _move_god_mode(state: PhysicsDirectBodyState3D) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := Vector3(inputDir.x, 0, inputDir.y).normalized()
@@ -80,17 +85,40 @@ func _move_god_mode(state: PhysicsDirectBodyState3D) -> void:
 	elif Input.is_key_pressed(KEY_SHIFT):
 		state.linear_velocity.y -= walk_speed
 
-	
+
+func _move_drag_mode(state: PhysicsDirectBodyState3D) -> void:
+	var velocity := Vector3.ZERO
+
+	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
+		velocity.z -= draggable.drag_speed
+	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
+		velocity.z += draggable.drag_speed
+	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
+		velocity.x -= draggable.drag_speed
+	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
+		velocity.x += draggable.drag_speed
+
+	# Snap to grid.
+	if velocity == Vector3.ZERO:
+		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
+	else:
+		state.linear_velocity = velocity
+		draggable.move(velocity)
+
+
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(team, enemies)
 
+
 func open_shop(npc: Variant) -> void:
 	dialog_started.emit("VENDOR_MAIN", npc)
+
 
 func start_dialog(npc: Variant) -> void:
 	var id = npc.get_next_dialog_id()
 	if len(id) == 0: return
 	dialog_started.emit(id, npc)
+
 
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
 	cutscene_started.emit(player, id)
@@ -102,6 +130,7 @@ func look_towards(point: Vector3, yOnly := true) -> void:
 	model.look_at(point)
 	# Model is facing the opposite way, so correct.
 	model.global_rotation_degrees.y += 180
+
 
 func serialize() -> Dictionary:
 	var teamData := []
@@ -116,6 +145,7 @@ func serialize() -> Dictionary:
 		"model_rotation": model.global_rotation,
 	}
 
+
 func deserialize(data: Dictionary):
 	if "position" in data:
 		global_position = data["position"]
@@ -129,3 +159,10 @@ func deserialize(data: Dictionary):
 	# 	team = []
 	# 	for t in data["team"]:
 	# 		team.append(BattleActor.new())
+
+func is_dragging() -> bool:
+	return draggable != null
+
+
+func set_draggable(obj: Node3D) -> void:
+	draggable = obj

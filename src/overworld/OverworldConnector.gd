@@ -53,7 +53,7 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	await get_tree().create_timer(battle_delay).timeout
 	get_tree().call_group("wild_enemies", "_end_battle_cooldown")
 
-func _on_dialog_started(dialogId: String, npc) -> void:
+func _on_player_dialog_started(dialogId: String, npc) -> void:
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	_current_story_actor = npc.story_actor
 
@@ -103,3 +103,5 @@ func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
 	player.play(id)
 	await player.animation_finished
 	overworld.process_mode = PROCESS_MODE_INHERIT
+
+
