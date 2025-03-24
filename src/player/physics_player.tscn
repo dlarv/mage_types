@@ -1,41 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6hxgpvaoulp7"]
+[gd_scene load_steps=6 format=3 uid="uid://b6hxgpvaoulp7"]
 
 [ext_resource type="Script" path="res://src/player/PhysicsPlayer.gd" id="1_rh8eo"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/player.blend" id="1_ws1pf"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_fefq7"]
-[ext_resource type="PackedScene" uid="uid://bxssuq50oieby" path="res://src/generic_gui/pause_menu/transmutation_menu/element_menu.tscn" id="4_jbnpg"]
-[ext_resource type="PackedScene" uid="uid://dufaudfvrhhui" path="res://src/player/gui/player_menu.tscn" id="5_831qy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s13s1"]
+rough = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8hkbp"]
 
-[node name="Player" type="RigidBody3D" node_paths=PackedStringArray("model", "player_menu")]
+[node name="Player" type="RigidBody3D" node_paths=PackedStringArray("model")]
+collision_layer = 49
+collision_mask = 49
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 0.05
+physics_material_override = SubResource("PhysicsMaterial_s13s1")
 contact_monitor = true
 max_contacts_reported = 100
+linear_damp = 5.0
 script = ExtResource("1_rh8eo")
 battle_actor = ExtResource("2_fefq7")
 model = NodePath("player")
-player_menu = NodePath("CanvasLayer/PlayerMenu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03468, 0)
 shape = SubResource("CapsuleShape3D_8hkbp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-
 [node name="player" parent="." instance=ExtResource("1_ws1pf")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.12322, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ElementMenu" parent="CanvasLayer" instance=ExtResource("4_jbnpg")]
-visible = false
-
-[node name="PlayerMenu" parent="CanvasLayer" instance=ExtResource("5_831qy")]
-visible = false
+[node name="Skeleton3D" parent="player/Armature" index="0"]
+bones/2/rotation = Quaternion(-5.94409e-08, 5.82422e-09, -0.275297, 0.961359)
+bones/5/rotation = Quaternion(-5.75703e-08, -9.23613e-16, 0.274332, 0.961635)
+bones/8/rotation = Quaternion(-0.715095, -7.77969e-10, 5.53573e-08, 0.699027)
+bones/11/rotation = Quaternion(-0.712137, 8.5248e-08, -8.64739e-08, 0.702041)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="player"]

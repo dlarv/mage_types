@@ -2,7 +2,8 @@ extends RigidBody3D
 class_name PhysicsPlayer
 
 signal battle_started(allies, enemies)
-signal pause_world(value: bool)
+signal dialog_started(dialog_id, npc)
+signal cutscene_started(player: AnimationPlayer, id: String)
 
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor 
@@ -12,47 +13,56 @@ signal pause_world(value: bool)
 
 @export_category("Movement")
 @export var walk_speed := 10.0
-@export var run_speed := 30.0
-@export var jump_speed := 10.0
+@export var run_speed := 20.0
 var _is_running := false
-var _is_grounded := true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
+var player_name: 
+	get:
+		return battle_actor.name
+	set(val):
+		battle_actor.name = player_name
 
-@export_category("GUI")
-@export var player_menu: Control 
+var _god_mode := false
+var _prev_collision_layer := collision_layer
+var _prev_collision_mask := collision_mask
+
 
 func _ready() -> void:
-	team.insert(0, battle_actor)
-	player_menu.pause_world.connect(func(value): 
-		# in_control = not value
-		freeze = not value
-		pause_world.emit(value))
+	if not battle_actor in team:
+		team.insert(0, battle_actor)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
 	if event.is_action_pressed("player_run"):
 		_is_running = not _is_running
+	elif event.is_action_pressed("toggle_god_mode"):
+		_god_mode = not _god_mode
+		if _god_mode:
+			_prev_collision_layer = collision_layer
+			_prev_collision_mask = collision_mask
+			collision_layer = 0
+			collision_mask = 0
+		else:
+			collision_layer = _prev_collision_layer
+			collision_mask = _prev_collision_mask
+
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	if _god_mode:
+		_move_god_mode(state)
+		return
+
 	var inputDir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var jump := Input.is_key_label_pressed(KEY_SPACE)
 
 	var speed := walk_speed if not _is_running else run_speed
-	var airMod := .3 if not _is_grounded else 1.0
 
-	var direction := (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
-	var velocity := Vector3(
-			clampf(inputDir.x * airMod + state.linear_velocity.x, -speed, speed),
-			state.linear_velocity.y, 
-			clampf(inputDir.y * airMod + state.linear_velocity.z, -speed, speed))
-
-	if jump_speed > 0 and jump and _is_grounded:
-		velocity.y += jump_speed
-		_is_grounded = false
+	var direction := Vector3(inputDir.x, 0, inputDir.y).normalized()
+	var velocity := direction * speed
+	velocity.y = state.linear_velocity.y
 
 	if direction != Vector3.ZERO:
 		# Rotate model in direction of movement.
@@ -60,14 +70,62 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 	state.linear_velocity = velocity
 
+func _move_god_mode(state: PhysicsDirectBodyState3D) -> void:
+	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction := Vector3(inputDir.x, 0, inputDir.y).normalized()
+	state.linear_velocity = direction * run_speed * 2
+
+	if Input.is_key_pressed(KEY_SPACE):
+		state.linear_velocity.y += walk_speed 
+	elif Input.is_key_pressed(KEY_SHIFT):
+		state.linear_velocity.y -= walk_speed
+
 	
 func start_battle(enemies: EnemyActor) -> void:
 	battle_started.emit(team, enemies)
 
-func set_active(isActive: bool) -> void:
-	visible = isActive
-	$Camera3D.current = isActive
+func open_shop(npc: Variant) -> void:
+	dialog_started.emit("VENDOR_MAIN", npc)
 
-func _on_body_entered(body: Node3D) -> void:
-	if not _is_grounded and body.get_collision_layer_value(1):
-		_is_grounded = true
+func start_dialog(npc: Variant) -> void:
+	var id = npc.get_next_dialog_id()
+	if len(id) == 0: return
+	dialog_started.emit(id, npc)
+
+func play_cutscene(player: AnimationPlayer, id: String) -> void:
+	cutscene_started.emit(player, id)
+
+
+func look_towards(point: Vector3, yOnly := true) -> void:
+	if yOnly:
+		point.y = model.global_position.y
+	model.look_at(point)
+	# Model is facing the opposite way, so correct.
+	model.global_rotation_degrees.y += 180
+
+func serialize() -> Dictionary:
+	var teamData := []
+	for t in team:
+		teamData.append(t.serialize())
+	return {
+		"path": get_path(),
+		"battle_actor": battle_actor.serialize(),
+		"team": teamData,
+		"position": global_position,
+		"rotation": global_rotation,
+		"model_rotation": model.global_rotation,
+	}
+
+func deserialize(data: Dictionary):
+	if "position" in data:
+		global_position = data["position"]
+	if "rotation" in data:
+		global_rotation = data["rotation"]
+	if "model_rotation" in data:
+		model.global_rotation = data["model_rotation"]
+	if "battle_actor" in data:
+		battle_actor.deserialize(data["battle_actor"])
+	# if "team" in data:
+	# 	team = []
+	# 	for t in data["team"]:
+	# 		team.append(BattleActor.new())

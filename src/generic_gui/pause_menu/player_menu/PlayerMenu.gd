@@ -5,14 +5,14 @@ signal open_equipment_menu(actor: BattleActor)
 
 @export var CharacterScreen: PackedScene
 
-var _player: Player
+var _player: Node3D
 
 func _ready() -> void:
 	var p =get_tree().get_nodes_in_group("player") 
 	if len(p) > 0:
 		setup(p[0])
 
-func setup(player: Player) -> void:
+func setup(player: Node3D) -> void:
 	_player = player
 	$Player.setup(player.battle_actor)
 	$Player.open_equipment_menu.connect(_on_open_equipment_menu.bind(_player.battle_actor))
