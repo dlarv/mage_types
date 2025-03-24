@@ -1,13 +1,11 @@
 # Objectives
-- Teach the player the following concepts:
-	- Battle UI and combat:
-		- Transmutation system.
-		- Affinity.
-		- Resistances and weaknesses.
-	- Overworld spells:
-		- Catalyst.
-		- Stasis.
-		- Destroy.
+- Battle UI and combat:
+	- Transmutation system.
+	- Affinity groups.
+- Overworld spells and puzzles:
+	- Catalyst.
+	- Stasis.
+	- Destroy.
 - Introduce player to world's lore:
 	- Forlorn.
 	- Regions.
@@ -87,15 +85,39 @@ On the leftmost edge of the area is a Yellow geyser. This will block the player,
 - Behind the stream is a boulder, which can be broken using the *Destroy* spell.
 	- This leads to [[#Hidden Area: Tide Pools|Tide Pools]]
 - If the player is standing on the geyser when Stasis wears off, they will be lifted into the air, revealing a hidden platform. On this platform will be a powerful spell scroll.
-### Meeting your Companion
-## Lower Path
-- Find anti-magenta spell here.
-- Stasis Obstacle: Object will be on the main path, so the player cannot miss it.
-- Monsters will spawn here (until the player defeats the first miniboss? This will prevent the player from battling after beating the first miniboss, but before reaching the second tutorial).
-### Battle Tutorial
-Companion walks player thru battle UI, transmutations, and affinity.
-### Side Path
-There are 3 small rooms the player must traverse thru before they can exit the Lower Path. Each room features a basic puzzle featuring lasers, MagiClay rocks, and pressure plates. These rooms also feature the **Reset** and **Catalyst Device** [[PuzzleBlocks]].
+### Intro Puzzles
+- The beach contains 3 small 'puzzles,' which are mostly intended to teach the player how to control their character and use the transmutation graph.
+>[!attention] Un-unsolvable puzzles.
+>Each of these puzzles can be easily solved via brute force, which isn't ideal.
+- I'd like to convey how to use the transmutation graph using the environment.
+	- Blocks are cylindrical, to resemble the nodes.
+	- Lasers resemble arrows (long and thin).
+- Instead of putting tutorial graphics inside of transmutation menu, I'll put them into little StoryActor stones. These stones will contain 'hints,' which the player can choose to read.
+- I created 3 simplified versions of the graph, which show only the elements involved in each puzzle. The hidden elements are colored gray, so the player can see that there will be something there.
+	- I'll only use this if playtesters need it. Before then, the tutorial will be contained within the hint stones.
+#### Puzzle 1
+- R, G, B pressure plates.
+- R, M, Y block.
+- C laser.
+Player uses Laser(C): M->B & Y->G.
+#### Puzzle 2
+- O pressure plate.
+- P, C block.
+- R, Y, B lasers.
+Two possible solutions:
+- Laser(R): P->M, Laser(Y): M->R, Laser(Y): R->O
+- Laser(Y): C->G, Laser(R): G->Y, Laser(R): Y->O
+#### Puzzle 3
+- P pressure plate.
+- Y block.
+- M, P lasers.
+- {R,G,B} laser sequence.
+
+To pass the sequence, the block must be B, P, M.
+All three of these starting states are reachable and they overlap.
+
+To reach P:
+- Laser(M): Y->R, Laser(P): R->M, Laser(P): M->B, Laser(M): B->P
 
 Solving the last puzzle opens a short cut between the LowerPath and Beach.
 ### Optional Puzzle
@@ -104,14 +126,18 @@ Solving the last puzzle opens a short cut between the LowerPath and Beach.
 	- Solution 2: The player can use their body to block all the lasers on one side. None of the lasers on one side react with Cyan, while the others will revert it back to Cyan by the end.
 	- Once solved, this puzzle will unlock a chest. IDK what to put inside it yet.
 - I want this section to have a few blocks and lasers the player can experiment with.
-
-## Upper Path
-- Miniboss \#1
-- Stasis Spell
-- Player becomes Blue.
-- Spell Scrolls
-- Destroy obstacle:
-	- There will be a large obstacle the companion has the player use their newfound Stasis ability on. This same obstacle will break when Destroy is used on it, revealing a hidden area.
+### Meeting your Companion
+- Partner is added to player's team.
+- Partner asks the player for help with boss 1.
+	- It should be believable that the partner needs help. The Doylist explanation is that I want the player to have a companion, but I don't want it to seem like the partner is less competent than some rando who just washed up.
+- If player asks, start battle tutorial.
+	- This is skippable depending on the dialog options the player selects.
+		- This fact should be made more obvious.
+- The partner will give the player Magenta Strike.
+### Rust Slimes
+- Right before the boss there are is a Rust Slime spawner. These enemies are weaker versions of the boss, which the partner can point out. This allows the player to figure out the optimal strategy before fighting the boss.
+### Destroy Obstacle
+- Obstacle is placed directly on the player's path, so they will definitely see it.
 ### Miniboss \#1
 - Simple boss.
 - Player will try to hit it with their anti-magenta attack.
@@ -134,36 +160,57 @@ Boss has 3 attacks:
 - Orange Melee
 - Yellow Melee
 - Green Ranged
+### Stasis Spell
+- Player is given the stasis spell by the partner after beating the boss.
+	- It was with their stuff, which they left behind the boss.
+- There should be a geyser stasis obstacle next to where the player obtains the spell.
+	- This should tell the player that they can step onto the geysers when they are under stasis.
 ## Stasis Puzzles (Z1)
-- This room will be split into 2(3?) parts.
-- Puzzle (\#0): The upper section of the room will be blocked by a gate. To pass it, the player will have to place colored rocks onto matching pressure plates.
-	- This is less to test the player and more to demonstrate that this is a mechanic.
+- Large Blue block is pushed around the outer edges of the room by geysers.
+- Magenta lasers (x4) oscillate block between Blue and Purple.
+- Pressure plates (x4) are placed along the block's path.
+	- 3 plates are connected to relays, so they stay on once pressed.
+	- The other plate is connected to delay, so the block must stay on it for a set period of time.
+- Player must use stasis on the lasers such that the block's element matches the plates.
+- After activating the other plates, the player must use stasis on the geyser, such that the block stops on the delayed plate.
+## Caves 
+- Lore elements?
+- Battle Challenges?
+	- Something other than bosses.
+	- Maybe rooms have spawners that can be turned off, but only when certain conditions are met (certain number of enemies defeated, etc).
+- Mirror puzzles:
+	- I don't want the catalyst puzzle to be the first place the player finds the mirrors.
+- Caves are broken into East, West, and Central.
+	- Only the East and Central caves are part of the main path.
+	- The Western Caves, aka the Deep Caves, are accessible after the player obtains the Catalyst spell.
+### Collapsed Shaft
+- Normally, the cave system has a shaft which cuts directly thru the mountain. However, part of this central shaft has collapsed, forcing the player to go thru the eastern section of the caves.
+- Once the player reaches the other side, they are able to clear this obstacle, creating a shortcut.
+### Eastern Caves
+- Contains small mirror puzzles and enemy challenges.
+- Area should be somewhat labyrinthine, with rooms either dedicated to puzzles or battle, but not both.
+	- Player should have the ability to tell which rooms are which and take a route biased accordingly (e.g. there should be a puzzle route with a higher ratio of puzzles and vice versa).
+- Design question: the player might not have much equipment or many spells at this point.
+	- Maybe there will be a switch at the end of the section the player can toggle. When on, this section is replaced with a more difficult version, with higher level enemies and more complicated puzzles.
+	- Pressing the switch will cause a message to display, saying something like "You hear something moving far away." This should guide the player to venture as far East into the caves as possible, where the reward will be (idk what this will be yet).
+- Eastern caves consist of 12 rooms: 6 puzzles and 6 enemies.
+	- Player shouldn't have to do all 12 rooms to escape. 
+	- Each room will have a color theme.
+	- What's the gimmick?
+		- Rooms will have switches that toggle between ???.
+			- Cold/warm and Offensive/Defensive. When switch is cold/warm, doors between warm and cold colors close, and vice versa.
+		- Player is given instructions they have to follow or else they'll be sent back to the beginning ala the Lost Woods.
+		- **Player must alternate between Defensive/Offensive rooms.**
+			- If they stray from this path, they'll get sent back to the beginning.
+			- Defensive rooms are puzzles.
+			- Offensive rooms are enemies.
+			- Player must go thru 8 rooms total, 4 of which will have some kind of challenge.
 
-**Puzzle \#1** 
-- Magenta laser (pulsing).
-- Alternating Red geysers.
-- Large Blue boulder.
-- Large Purple pressure plate. 
-Use *Stasis* to pause geyser, stopping the boulder on top of the pressure plate.
-Magenta transmutes boulder -> Purple.
+Correct Sequence: B O* Y* P M R C* G*
+\* Extra challenge room
 
-**Puzzle \#2**
-- Red Geyser.
-- Red pressure plate.
-- Yellow rock sitting on top of geyser.
-Use *Stasis* to pause geyser.
-Grab rock.
-Transmute rock into Red by placing it in front of Magenta laser (from part 1).
-Place rock onto pressure plate.
-## Cave Entry
-- ~~Weakness and resistance tutorial.~~ Offensive/Defensive type tutorial.
-- Environmental storytelling: Show what different elements represent.
-- Catalyst obstacle.
-	- A geyser will prevent the player from accessing the leftmost side of the room. A further boulder will block the actual exit. The Yellow geyser will not be strong enough to push this boulder by itself. The player can use *Catalyst* on it, turning it Red. This will be strong enough to push the boulder away from the exit.
-		- This way, the player cannot simply use *Stasis* to bypass this obstacle.
-## Cave Mid
-- Miniboss \#2
-- Catalyst spell.
+>[!note] Room and Portal System
+>Godot3 had a Room and Portal System which could be used to make separate rooms. Godot4 doesn't seem to have this feature, so I will likely have to create it myself. [[room_and_portals]].
 ### Miniboss \#2
 - This boss will use the stasis status effect to hinder the player from transmuting it (and relying too heavily on their anti-magenta attack).
 	- This will be provided to them by their equipment (Stasis Shard).
@@ -171,9 +218,9 @@ Place rock onto pressure plate.
 This boss should have really high defensive stats, such that the player needs to accumulate offensive stat buffs. 
 - It might be necessary to rig the battle in such a way that the boss doesn't get too many defensive buffs.
 ## Catalyst Puzzles (Z2)
-- Consists of 3 puzzles. 
-	- The first two will be optional. They're mostly to teach the player how the laser mirrors work. Solving them will unlock a chest?
-	- The third puzzle will unlock the way forward (to [[#Lower Approach]]).
+- Consists of 2 puzzles. 
+	- The first will be optional. They're mostly to teach the player how the laser mirrors work. Solving them will unlock a chest.
+		- The third puzzle will unlock the way forward (to [[#Lower Approach]]).
 	- There will be a small gap in the separator between the second and third puzzles. The beam from the second can be used to solve the third.
 		- If this is done it will open a door to a section of the [[#Hidden Area Deep Caves|Deep Caves]].
 

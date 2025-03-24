@@ -18,7 +18,8 @@
 	- [x] When two geysers are in opposition and one is turned off, the other will not push on objects inside of it.
 - [ ] Achievements.
 - [x] Cutscenes
-- [ ] Have draggables snap player to grid.
+- [x] Have draggables snap player to grid.
+- [ ] Upon defeat, player should be transported to edge of Chunk.
 ## Known Bugs
 - [x] Actor formatter is broken (if attack is null, it fails).
 - [ ] Message displayed when actor is inflicted with phobia just says "Blank".
@@ -37,16 +38,19 @@ Demo main track implemented. Player can play through the main story of the demo,
 **STRY.x**
 - Battle actors for each boss created (x3).
 	- [x] Boss 1
-	- [ ] Boss 2
+	- [x] Boss 2
 	- [ ] Final Boss
 - Main puzzles designed and implemented (x3).
 	- [x] Stasis
 	- [x] Catalyst
 	- [ ] Final
-- [ ] Demo partner tutorial dialog written.
+- [ ] Demo tutorial written.
+	- [ ] Transmutation graph and intro puzzles.
+	- [ ] Battle tutorial.
+	- [ ] Partner introduction.
 - [ ] Blocking and non-blocking dialog triggers implemented.
 	- [x] Blocking.
-	- [ ] Non-blocking.
+	- [ ] ~~Non-blocking.
 - [x] Cutscenes.
 **OVER.spel**
 - Overworld spells implemented:
@@ -55,9 +59,11 @@ Demo main track implemented. Player can play through the main story of the demo,
 - [x] Graphic showing which overworld spell is currently selected.
 **OVER.wild**
 - [x] Wild enemies implemented.
-- [ ] Simple wild enemy behavior.
 **OVER.publ**
 - [x] Light up indicator wire created.
+**OVER.clay**
+- [ ] Unique materials system planned.
+- [ ] Visual indicator of MagiClay object properties (destructable, etc).
 **CHAR.save**
 - [x] Save/load architecture implemented.
 **STRY.trig**
@@ -77,13 +83,15 @@ Demo MVP. Player can visit every area of the demo and experience the major featu
 - [x] Player can open chests and obtain items.
 **OVER.plco**
 - [ ] Player companions follow player.
+**OVER.wild**
+- [ ] Simple wild enemy behavior.
+	- [ ] Aggressive
+	- [ ] Passive
+	- [ ] Scared
 **OVER.spel**
-- [ ] Destroy spell implemented.
+- [x] Destroy spell implemented.
 ## v0.5.x+
-Demo playtest candidate.
-
-**OVER.clay**
-- [ ] Visual indicator on MagiClay objects.
+Demo playtest candidate. Game should be visually and auditorially presentable.
 
 **POLI.achi**
 - [ ] Achievements.
@@ -95,17 +103,19 @@ Demo playtest candidate.
 - [x] Current Element.
 - [ ] Elemental Bias.
 - [x] Status effects.
-	- [ ] Use 3d model pins instead of 2d sprites.
+	- [x] Use 3d model pins instead of 2d sprites.
 - [x] Stat changes.
-- [ ] Use 3d models instead of 2d sprites for characters.
+- [x] Use 3d models instead of 2d sprites for characters.
 
 ### General Info (ginf)
 **Show information about the following, when queried by player:**
-- [ ] Attack info.
-- [ ] Item info.
-- [ ] Battle Actor info.
-- [ ] Status conditions.
-- [ ] Debug info.
+- [x] Attack info.
+- [x] Item info.
+- [x] Battle Actor info.
+- [x] Status conditions.
+- [x] Debug info.
+- [ ] Have beasiary/info book player can reference.
+	- [ ] Hide info not yet discovered by player.
 
 ### Battle Logging (blog)
 **Create detailed battle logs for diagnostic purposes.**
@@ -137,86 +147,6 @@ Demo playtest candidate.
 - [x] (Primary | Secondary) + Attack
 - [x] Primary + Secondary
 - [x] Apply side effects.
-
->[!question] 
->There should be some way for the player to change their secondary Blank typing to another element.
->Maybe if their secondary typing is Blank, it will change to match the typing of the move they just used?
-## v0.4.x
-Demo MVP. Player can visit every area of the demo and experience the major features.
-
-**STRY.x**
-- [ ] Purposes for Forest, Tidepools, and Riverfront determined.
-- [ ] Whiteboxed mockup of map. Unimplemented areas can be blocked off.
-- [ ] Deep caves puzzle implemented and tested.
-- [ ] Destroy time trial designed, implemented, and tested.
-**OVER.chco**
-- [x] Player can open chests and obtain items.
-**OVER.plco**
-- [ ] Player companions follow player.
-**OVER.spel**
-- [ ] Destroy spell implemented.
-## v0.5.x+
-Demo playtest candidate.
-
-**OVER.clay**
-- [ ] Visual indicator on MagiClay objects.
-
-**POLI.achi**
-- [ ] Achievements.
-# The List
-## Battle (BATT)
-### Actor Info (ainf)
-**Show information about each actor:**
-- [x] Name, Hp.
-- [x] Current Element.
-- [ ] Elemental Bias.
-- [x] Status effects.
-	- [ ] Use 3d model pins instead of 2d sprites.
-- [x] Stat changes.
-- [ ] Use 3d models instead of 2d sprites for characters.
-
-### General Info (ginf)
-**Show information about the following, when queried by player:**
-- [ ] Attack info.
-- [ ] Item info.
-- [ ] Battle Actor info.
-- [ ] Status conditions.
-- [ ] Debug info.
-
-### Battle Logging (blog)
-**Create detailed battle logs for diagnostic purposes.**
-- [x] Status
-
-### Action Selection (acse)
-**Allow player to select, deselect, and submit actions.**
-- [x] Player selects an action for each actor, moving from right to left.
-- [x] Once an action is selected, UI automatically moves to next actor.
-- [x] The player has the option to select different actions for previous actors.
-	- [x] This should not cause the game to forget any other selected actions (e.g. Alice chooses attack, then Bob chooses attack. If player goes back to change Alices action, this should not deselect Bobs action).
-- [x] Prevent player from selecting actions they do not meet the requirements for.
->[!bug]
->- [ ] Prevent player from double spending item. I.e. when two actors try to use the same item on the same turn.
-
-### Turn Order (tuor)
-**Calculate turn order based on actor's speed and action priority.**
-- [x] Status
-
-### Action Effects (acef)
- **Calculate and resolve attack/item effects.**
-- [x] Damage.
-- [x] Additional effects.
-- [x] Apply affinity costs.
-- [x] Remove item from inventory.
-
-### Transmutations (tran)
-**Apply transmutations and related effects when necessary.**
-- [x] (Primary | Secondary) + Attack
-- [x] Primary + Secondary
-- [x] Apply side effects.
-
->[!question] 
->There should be some way for the player to change their secondary Blank typing to another element.
->Maybe if their secondary typing is Blank, it will change to match the typing of the move they just used?
 
 ### Animations (anim)
 **Allow attacks to play unique animations.**
@@ -287,10 +217,17 @@ For v0.3.27:
 - [x] There should be the option to toggle whether each spell can effect an object.
 - [ ] There should be a visual indicator of which objects can be targeted by which spells.
 - [ ] These visual indicators shouldn't interfere with each other, if a single object can be targetable by multiple spells.
+- [ ] Different elements should have unique physical properties.
+	- Magenta: Bouncy
+	- Cyan: Frictionless
+	- Yellow: Antigrav
+	- Blue: Heavy/high inertia
+	- Red: Biological => What this means exactly is TBD.
+	- The rest have to be 'refined' in order to display their unique features, restricting them to machines/etc. 
 
 ### Puzzle Blocks (publ)
 **Puzzles should be designed using simple building blocks.**
-- [ ] Light up wire should show how different puzzle blocks are connected and whether they are active.
+- [x] Light up wire should show how different puzzle blocks are connected and whether they are active.
 
 ### Puzzle Archetype (puar)
 **Puzzles should follow different archetypes that expand on each other.**
@@ -299,13 +236,13 @@ For v0.3.27:
 **Wild enemies should spawn inside defined areas of the map.**
 - [ ] Wild enemies should have overworld models.
 	- [ ] These models should show some information about the enemies involved (e.g. their starting typing, difficulty).
-	- [ ] When the player collides with these models, a battle should commence.
+	- [x] When the player collides with these models, a battle should commence.
 - [x] Spawner fields should be used to control what can spawn and where.
 	- [x] A Spawner should be given a list of BattleActors, which act as the base template for each enemy that can spawn.
 	- [x] When an enemy is instantiated, its stats should be subject to some amount of variance.
-- [ ] Wild enemies should be physics objects.
+- [x] Wild enemies should be physics objects.
 - [ ] Different enemies should have different overworld behavior.
-	- [ ] Chasing player.
+	- [x] Chasing player.
 	- [ ] Charging at player.
 	- [ ] Fleeing from player.
 	- [ ] Attacking other wild monsters.
@@ -316,7 +253,7 @@ For v0.3.27:
 ## Character Management and Inventory (CHAR)
 ### Pausing Game (paus)
 **Opening a menu should pause overworld/game.**
-
+- [x] Status
 ### Save and Load Game (save)
 **Player should have ability to save/load games.**
 - [x] Player can save games under unique names.
@@ -336,7 +273,8 @@ The `SaveMenu` keeps track of which `persist` items are deleted using `queue_fre
 
 ### Settings Menu (sett)
 **Player should have access to settings menu.**
-
+- [x] Status
+See [[#Settings and Accessibility (ACCS)]] for more details.
 ### Party Info (pinf)
 **Player should be able to view information about their current party.**
 - [x] Name.
@@ -361,8 +299,9 @@ The `SaveMenu` keeps track of which `persist` items are deleted using `queue_fre
 **Player should be able to manage their current spell movesets.**
 - [x] Teach character a new spell.
 	- [x]  Require player to have proper SpellScroll available.
-	- [ ] Ensure character meets item requirements.
-- [ ] Remove spell from moveset.
+	- [x] Ensure character meets item requirements.
+	- [x] Ensure player meets quantity requirements.
+- [x] Remove spell from moveset.
 - [ ] Reorder spells in moveset.
 - [x] Replace spell.
 	- [x] From inside character management menu.
@@ -409,8 +348,8 @@ To manage a character who has multiple dialog trees, there are a few options:
 2. The DialogueNodes addon has the ability to set and check variables. **This is the preferred option.**
 
 TODO:
-- [ ] Allow StoryActors to share AnimationPlayers.
-- [ ] Allow StoryActor to trigger animations directly.
+- [x] Allow StoryActors to share AnimationPlayers.
+- [x] Allow StoryActor to trigger animations directly.
 
 ### Dialog (dial)
 **Display dialog when player talks to character.**
@@ -470,4 +409,4 @@ Misc
 ### Achievements (achi)
 **Give the player rewards/badges for completing certain objectives.**
 - [ ] Allow easy addition of achievements for arbitrary game states.
-- [ ] Have achievements sync with steam library.
+- [ ] Have achievements sync with steam library/etc.
