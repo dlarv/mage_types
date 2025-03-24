@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=53 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -8,11 +8,9 @@
 [ext_resource type="Script" path="res://src/generic_gui/RichTextElement.gd" id="7_3o8i5"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_oalpa"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/generic_gui/hud_layer.tscn" id="8_ox27g"]
-[ext_resource type="Resource" uid="uid://dkgwtmxs7v2mq" path="res://data/demo/character_files/battle_actors/partner_battle_actor.tres" id="9_oh653"]
-[ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="9_qicvs"]
+[ext_resource type="PackedScene" uid="uid://b6hxgpvaoulp7" path="res://src/player/physics_player.tscn" id="9_d3iix"]
 [ext_resource type="PackedScene" uid="uid://4ft3p5xs6uk5" path="res://data/demo/subareas/beach.tscn" id="10_bysgw"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_wgmfh"]
-[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="12_5cwv0"]
 [ext_resource type="PackedScene" uid="uid://cy8e0cndhkub5" path="res://data/demo/subareas/tidepools.tscn" id="12_hj0aa"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="13_fxkjb"]
 [ext_resource type="PackedScene" uid="uid://cuu0bcxy1x8xp" path="res://data/demo/subareas/stasis_puzzles.tscn" id="13_tehf6"]
@@ -112,18 +110,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(9, 0.5, -31), Vector3(9, 0.5, -21)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -32.5), Vector3(8.5, 0.5, -23.5)]
 }
 
 [sub_resource type="Animation" id="Animation_utc6c"]
@@ -239,7 +225,7 @@ overworld = NodePath("../Overworld")
 dialog_box = NodePath("../DialogueBox_Layer/DialogueBox")
 hud = NodePath("../HUD_Layer")
 battle_delay = 2.0
-_player = NodePath("../Overworld/Player")
+_player = NodePath("")
 
 [node name="DialogueBox_Layer" type="CanvasLayer" parent="."]
 layer = 3
@@ -274,10 +260,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ddao4")
 }
 
-[node name="Player" parent="Overworld" groups=["persist"] instance=ExtResource("9_qicvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 5.5, -107.5)
-disable_mode = 1
-team = Array[ExtResource("10_wgmfh")]([ExtResource("12_5cwv0"), ExtResource("9_oh653")])
+[node name="Player" parent="Overworld" groups=["persist", "player"] instance=ExtResource("9_d3iix")]
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)

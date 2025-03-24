@@ -24,7 +24,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfspt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot3sn"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_4k3xo"]
@@ -34,7 +34,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j67p3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pejkr"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
@@ -133,11 +133,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 0, 0)
 curve = SubResource("Curve3D_x8c8c")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_wfspt")
+material = SubResource("StandardMaterial3D_ot3sn")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_wfspt")
+surface_material_override/0 = SubResource("StandardMaterial3D_ot3sn")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
@@ -179,10 +179,10 @@ target = NodePath("..")
 curve = SubResource("Curve3D_4k3xo")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_j67p3")
+material = SubResource("StandardMaterial3D_pejkr")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_j67p3")
+surface_material_override/0 = SubResource("StandardMaterial3D_pejkr")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 13)

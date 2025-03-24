@@ -178,3 +178,7 @@ skip_dialog={
 3d_physics/layer_4="Lasers"
 3d_physics/layer_5="Laser Blockers"
 3d_physics/layer_6="Player Only"
+
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true
