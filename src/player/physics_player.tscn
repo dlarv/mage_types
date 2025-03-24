@@ -9,7 +9,7 @@ rough = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8hkbp"]
 
-[node name="Player" type="RigidBody3D" node_paths=PackedStringArray("model")]
+[node name="Player" type="RigidBody3D" node_paths=PackedStringArray("model") groups=["player"]]
 collision_layer = 49
 collision_mask = 49
 axis_lock_angular_x = true

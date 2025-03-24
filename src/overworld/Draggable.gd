@@ -5,7 +5,7 @@ extends CharacterBody3D
 		return $Interactable.scaling_factor
 	set(val):
 		$Interactable.scaling_factor = val
-@export var drag_speed := 10.0
+@export var drag_speed := 30.0
 @export var restrict_axis := false
 
 var in_control := false
@@ -16,7 +16,10 @@ var parent: Node3D
 # Array[Vector3]: Player is placed on the nearest one when they pick up this object.
 var _handles := []
 var _prev_parent: Node3D = null
+var _prev_damp: float
+var _prev_axis_lock := [false, false, false]
 var _player: Node3D = null
+
 var current_axis := Vector3.ONE
 var current_handle: Marker3D = null
 
@@ -68,6 +71,18 @@ func pickup(player: Node3D) -> void:
 	_player.global_position = _snap_player_to_handle(_player.global_position)
 	_player.look_towards(global_position)
 
+	if parent is RigidBody3D:
+		if _player is RigidBody3D:
+			_prev_damp = parent.linear_damp
+			parent.linear_damp = _player.linear_damp
+		_prev_axis_lock = [
+			parent.axis_lock_angular_x,
+			parent.axis_lock_angular_y,
+			parent.axis_lock_angular_z]
+		parent.axis_lock_angular_x = true
+		parent.axis_lock_angular_y = true
+		parent.axis_lock_angular_z = true
+
 	_prev_parent = parent.get_parent()
 	parent.reparent(_player)
 	_player.set_draggable(self)
@@ -77,6 +92,11 @@ func drop() -> void:
 	_player.set_draggable(null)
 	_player = null
 	parent.reparent(_prev_parent)
+	if parent is RigidBody3D:
+		parent.linear_damp = _prev_damp
+		parent.axis_lock_angular_x = _prev_axis_lock[0]
+		parent.axis_lock_angular_y = _prev_axis_lock[1]
+		parent.axis_lock_angular_z = _prev_axis_lock[2]
 
 
 func move(velocity: Vector3) -> void:

@@ -7,13 +7,15 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_1h0bu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igiay"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utu8o"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiclayRock" type="RigidBody3D"]
 process_mode = 1
 collision_layer = 7
 collision_mask = 5
+axis_lock_angular_y = true
+mass = 10.0
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_k4ig1")
@@ -24,7 +26,7 @@ shape = SubResource("BoxShape3D_gvndh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1h0bu")
-surface_material_override/0 = SubResource("StandardMaterial3D_igiay")
+surface_material_override/0 = SubResource("StandardMaterial3D_utu8o")
 
 [node name="Draggable" parent="." instance=ExtResource("2_88vum")]
 

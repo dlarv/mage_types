@@ -99,11 +99,11 @@ func _move_drag_mode(state: PhysicsDirectBodyState3D) -> void:
 		velocity.x += draggable.drag_speed
 
 	# Snap to grid.
+	draggable.move(velocity)
 	if velocity == Vector3.ZERO:
 		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
 	else:
 		state.linear_velocity = velocity
-		draggable.move(velocity)
 
 
 func start_battle(enemies: EnemyActor) -> void:
@@ -162,7 +162,6 @@ func deserialize(data: Dictionary):
 
 func is_dragging() -> bool:
 	return draggable != null
-
 
 func set_draggable(obj: Node3D) -> void:
 	draggable = obj

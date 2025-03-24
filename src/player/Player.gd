@@ -56,8 +56,8 @@ func _physics_process(delta: float) -> void:
 	if _god_mode: 
 		_move_god_mode(delta)
 		return
-	if not in_control: 
-		velocity = Vector3.ZERO
+	if is_dragging():
+		_move_drag_mode(delta)
 		return
 	var vel = velocity
 	var speed = walk_speed if not _is_running else run_speed
@@ -65,7 +65,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if !is_on_floor():
 		vel.y -= gravity * delta
-	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -82,7 +81,7 @@ func _physics_process(delta: float) -> void:
 		vel.z = move_toward(velocity.z, 0, speed)
 
 
-	velocity = vel + outside_forces
+	velocity = vel + outside_forces * delta
 	outside_forces = Vector3.ZERO
 	if vel == Vector3.ZERO:
 		anim_player.play("idle")
@@ -103,6 +102,24 @@ func _move_god_mode(delta: float) -> void:
 
 	move_and_slide()
 
+func _move_drag_mode(delta: float) -> void:
+	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
+		velocity.z -= draggable.drag_speed
+	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
+		velocity.z += draggable.drag_speed
+	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
+		velocity.x -= draggable.drag_speed
+	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
+		velocity.x += draggable.drag_speed
+	
+	velocity *= delta * 10
+
+	# Snap to grid.
+	if velocity.length() < 0.1:
+		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
+		draggable.parent.global_position = draggable.parent.global_position.snapped(Vector3(0.5, 0.5, 0.5))
+	else:
+		move_and_slide()
 
 func start_battle(npc: Variant) -> void:
 	battle_started.emit(team, npc.enemy_actor)
