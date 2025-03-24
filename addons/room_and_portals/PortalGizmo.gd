@@ -12,7 +12,6 @@ func _redraw():
 	var lines := PackedVector3Array()
 	var start = portal.get_door_position(0)
 	var end = portal.get_door_position(1)
-	print("Start(%s), End(%s)" % [ str(start), str(end) ])
 	var mat = get_plugin().get_material("twoway", self) if not portal.is_one_way(-1) else get_plugin().get_material("oneway", self)
 
 	lines.push_back(start)
