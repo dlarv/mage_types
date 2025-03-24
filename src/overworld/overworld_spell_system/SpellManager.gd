@@ -51,4 +51,4 @@ func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
 		spell_selected.emit(false, spell)
 
 	spell.set_primary(isPrimary)
-	UIManager.hud.show_overworld_spell(isPrimary, spell)
+	UIManager.show_overworld_spell(isPrimary, spell)

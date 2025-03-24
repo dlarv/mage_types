@@ -151,3 +151,7 @@ func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 	if selection != null:
 		Inventory.remove(selection, 1)
 		actor.equipment = selection
+
+func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
+	if hud:
+		hud.show_overworld_spell(isPrimary, spell)
