@@ -48,7 +48,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if not _player: return
 	var dist := _player.global_position.distance_to(current_handle.global_position)
-	if dist > 1.0:
+	if dist > 0.8:
 		drop()
 
 
