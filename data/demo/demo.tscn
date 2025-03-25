@@ -260,6 +260,7 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" instance=ExtResource("9_qicvs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 walk_speed = null
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
