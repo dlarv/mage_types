@@ -21,6 +21,7 @@ var draggable = null
 var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
 var outside_forces := Vector3.ZERO
+var block_input_until_grounded := false
 
 var _god_mode := false
 var _prev_collision_layer := collision_layer
@@ -56,9 +57,15 @@ func _physics_process(delta: float) -> void:
 	if _god_mode: 
 		_move_god_mode(delta)
 		return
+	if not in_control:
+		velocity += outside_forces
+		outside_forces = Vector3.ZERO
+		move_and_slide()
+		return
 	if is_dragging():
 		_move_drag_mode(delta)
 		return
+
 	var vel = velocity
 	var speed = walk_speed if not _is_running else run_speed
 
@@ -81,7 +88,7 @@ func _physics_process(delta: float) -> void:
 		vel.z = move_toward(velocity.z, 0, speed)
 
 
-	velocity = vel + outside_forces * delta
+	velocity = vel + outside_forces
 	outside_forces = Vector3.ZERO
 	if vel == Vector3.ZERO:
 		anim_player.play("idle")
@@ -175,3 +182,8 @@ func is_dragging() -> bool:
 
 func set_draggable(obj: Node3D) -> void:
 	draggable = obj
+
+func block_control(delay: float) -> void:
+	in_control = false
+	await get_tree().create_timer(delay).timeout
+	in_control = true
