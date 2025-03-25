@@ -3,13 +3,16 @@ extends MagiClay
 
 const MATERIALS := {
 	"Magenta": preload("physics_materials/magenta.tres"),
+	"Cyan": preload("physics_materials/cyan.tres"),
 }
 
 var _area_3d: Area3D
+var _default_damp: float
 
 func _enter_tree() -> void:
 	super._enter_tree()
 
+	_default_damp = self.linear_damp
 	if get_parent().is_in_group("player"):
 		self.physics_material_override = null
 	elif MATERIALS.has(element.name):
@@ -38,6 +41,11 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 
 	if MATERIALS.has(e.name):
 		self.physics_material_override = MATERIALS[e.name]
+	
+	if e == ElementManager.Cyan:
+		self.linear_damp = 0
+	else:
+		self.linear_damp = _default_damp
 	return true
 
 
