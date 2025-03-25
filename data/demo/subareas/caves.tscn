@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkhryrwbn73l3"]
+[gd_scene load_steps=19 format=3 uid="uid://bkhryrwbn73l3"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="2_e8x54"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="5_0jutu"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="5_x7704"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_ds18g"]
+[ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="8_wl0ax"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_8ivut"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgb7e"]
+size = Vector3(224, 2005, 82)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rnvhl"]
 size = Vector3(1, 1, 3)
@@ -31,1120 +37,1132 @@ size = Vector3(3.1, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yyxan"]
 size = Vector3(1, 1, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sgb7e"]
-size = Vector3(224, 2005, 82)
-
 [node name="Caves" type="Area3D" node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_l1j24")
-chunk = NodePath("Node3D")
+chunk = NodePath("Chunk")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 1002, -18.5)
+shape = SubResource("BoxShape3D_sgb7e")
 
-[node name="Boss2" parent="Node3D" instance=ExtResource("2_e8x54")]
+[node name="Chunk" type="Node3D" parent="."]
+
+[node name="Boss2" parent="Chunk" instance=ExtResource("2_e8x54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, -45)
 collision_layer = 5
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Node3D"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Chunk"]
 use_collision = true
+collision_layer = 19
+collision_mask = 3
 
-[node name="CaveEntry" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="CaveEntry" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 size = Vector3(0, 0, 0)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.5)
 size = Vector3(10, 3, 10)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 4)
 operation = 2
 size = Vector3(8, 7, 5)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -8)
 size = Vector3(34, 3, 12)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 3, -8)
 operation = 2
 size = Vector3(32, 7, 10)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 size = Vector3(5, 3, 4)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -17)
 size = Vector3(24, 3, 8)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, -17)
 operation = 2
 size = Vector3(22, 7, 6)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -23)
 size = Vector3(6, 3, 4)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -30.5)
 size = Vector3(14, 3, 12)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -30.5)
 operation = 2
 size = Vector3(13, 7, 10)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -1)
 operation = 2
 size = Vector3(3, 7, 6)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -13.5)
 operation = 2
 size = Vector3(21, 7, 3)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -22.5)
 operation = 2
 size = Vector3(4, 7, 7)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveEntry"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -30.5)
 size = Vector3(13, 1, 1)
 material = ExtResource("2_0r40v")
 
-[node name="CaveMid" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="CaveMid" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -32)
 size = Vector3(0, 0, 0)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -16)
 size = Vector3(7, 3, 23)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, -13)
 operation = 2
 size = Vector3(3, 7, 25)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0, -13.5)
 size = Vector3(12.5, 3, 6)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 3, -13.5)
 operation = 2
 size = Vector3(14, 7, 4)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 1.5)
 size = Vector3(27, 3, 12)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 18)
 size = Vector3(19, 3, 19)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -15)
 size = Vector3(19, 3, 19)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 18)
 operation = 2
 size = Vector3(17, 3, 17)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -15)
 operation = 2
 size = Vector3(17, 3, 17)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 1.5)
 operation = 2
 size = Vector3(25, 3, 10)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 1.5)
 size = Vector3(25, 1, 2)
 material = ExtResource("2_0r40v")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 8)
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -5)
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 8)
 operation = 2
 size = Vector3(3, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, -5)
 operation = 2
 size = Vector3(3, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D72" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D72" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.45, 0, -11)
 size = Vector3(3.9, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D73" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D73" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1, -11)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D74" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D74" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.45, 0, 13)
 size = Vector3(3.9, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D75" type="CSGBox3D" parent="Node3D/CSGCombiner3D/CaveMid"]
+[node name="CSGBox3D75" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1, 13)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="EasternCave" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="EasternCave" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, -31)
 size = Vector3(0, 0, 0)
 
-[node name="Room1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1, 12)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "blue"
 
-[node name="MagiClayTerrain2" parent="Node3D/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain2" parent="Chunk/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, -0.5, -10.3)
 _element = "orange"
 
-[node name="MagiClayTerrain3" parent="Node3D/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain3" parent="Chunk/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -0.5, 0)
 _element = "cyan"
 
-[node name="MagiClayTerrain4" parent="Node3D/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain4" parent="Chunk/CSGCombiner3D/EasternCave/Room1" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, -0.5, 10.5)
 _element = "yellow"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.55, 1, 0)
 operation = 2
 size = Vector3(4.9, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_West" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_West" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 script = ExtResource("5_x7704")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_West"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
 shape = SubResource("BoxShape3D_rnvhl")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_West/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_West/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_West"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299999, 0, 0)
 shape = SubResource("BoxShape3D_s3xo2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_West/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_West/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 0, 0)
 
-[node name="Door_East1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_East1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_East2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.49999, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_North1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 0, -11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_North2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 1, -9.3)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 1, 9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 0)
 
-[node name="Marker3D2" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1"]
+[node name="Marker3D2" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 0)
 
-[node name="RoomPortal_East" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_East" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_East"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_East"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_East/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_East/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_East"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_East"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, -10)
 
-[node name="RoomPortal_South" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_South" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_South"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_South"]
 transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 0.200001, 0, 1.7)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_South/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_South/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_South"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, -10)
 
-[node name="RoomPortal_North" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_North" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_North"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_North"]
 transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 0.199997, 0, -21.3)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_North/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_North/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_North"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_North"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2, 0, 26.5)
 shape = SubResource("BoxShape3D_nsmck")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room1/RoomPortal_North/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room1/RoomPortal_North/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Room2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 1, 37)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room2" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room2" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "orange"
 
-[node name="MagiClayTerrain3" parent="Node3D/CSGCombiner3D/EasternCave/Room2" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain3" parent="Chunk/CSGCombiner3D/EasternCave/Room2" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10.5)
 _element = "blue"
 
-[node name="MagiClayTerrain2" parent="Node3D/CSGCombiner3D/EasternCave/Room2" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain2" parent="Chunk/CSGCombiner3D/EasternCave/Room2" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -0.5, 0)
 _element = "yellow"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.55, 1, 0)
 operation = 2
 size = Vector3(4.9, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_East1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_East2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.49999, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_North1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 0, -11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_North2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 1, -9.3)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -7.62939e-06, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -7.62939e-06, 1, 9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_East" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_East" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_East"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_East"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_East/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_East/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_East"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_East"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5, 0, -35)
 
-[node name="RoomPortal_North" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_North" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_North"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_North"]
 transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 0.199997, 0, -21.3)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_North/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_North/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_North"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_North"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5, 0, -35)
 
-[node name="RoomPortal_West" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_West" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 script = ExtResource("5_x7704")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_West"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 shape = SubResource("BoxShape3D_v4uoi")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_West/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_West/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_West"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_West"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23.5, 0, -52)
 shape = SubResource("BoxShape3D_v4uoi")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room2/RoomPortal_West/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room2/RoomPortal_West/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
 
-[node name="Room3" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 1, -15)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room3" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room3" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "yellow"
 
-[node name="MagiClayTerrain3" parent="Node3D/CSGCombiner3D/EasternCave/Room3" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain3" parent="Chunk/CSGCombiner3D/EasternCave/Room3" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -0.5, 0)
 _element = "orange"
 
-[node name="MagiClayTerrain2" parent="Node3D/CSGCombiner3D/EasternCave/Room3" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain2" parent="Chunk/CSGCombiner3D/EasternCave/Room3" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -0.5, 0)
 _element = "purple"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.55, 1, 0)
 operation = 2
 size = Vector3(4.9, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_East1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_East2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.49999, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_North1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 0, -11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_North2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 1, -9.3)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199989, 1, 9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_South" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_South" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_South"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199997, 0, 1.5)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_South/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_South/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_South"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5, 0, 17)
 
-[node name="RoomPortal_North" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_North" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_North"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_North"]
 transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 0.199997, 0, -21.3)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_North/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_North/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_North"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_North"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5, 0, 17)
 
-[node name="RoomPortal_West" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_West" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
 script = ExtResource("5_x7704")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_West"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 shape = SubResource("BoxShape3D_bagie")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_West/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_West/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_West"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5, 0, 27)
 shape = SubResource("BoxShape3D_bagie")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room3/RoomPortal_West/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room3/RoomPortal_West/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
 
-[node name="Room4" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 1, 12)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room4" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room4" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "purple"
 
-[node name="MagiClayTerrain3" parent="Node3D/CSGCombiner3D/EasternCave/Room4" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain3" parent="Chunk/CSGCombiner3D/EasternCave/Room4" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -0.5, 0)
 _element = "yellow"
 
-[node name="MagiClayTerrain2" parent="Node3D/CSGCombiner3D/EasternCave/Room4" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain2" parent="Chunk/CSGCombiner3D/EasternCave/Room4" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199997, -0.5, 10.5)
 _element = "magenta"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.6, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_East1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_East2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.49999, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_North1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 0, -11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_North2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 1, -9.3)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199989, 1, 9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_West" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_West" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_West"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_West"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_West/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_West/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_West"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.5, 0, -10)
 
-[node name="RoomPortal_North" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_North" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_North"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_North"]
 transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 0.199997, 0, -21.3)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_North/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_North/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_North"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_North"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.5, 0, -10)
 
-[node name="RoomPortal_South" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_South" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_South"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_South"]
 transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 0.199997, 0, 1.5)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_South/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_South/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_South"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.25, 0, 3.5)
 shape = SubResource("BoxShape3D_i22cx")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room4/RoomPortal_South/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room4/RoomPortal_South/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
-[node name="Room5" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104, 1, 37)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room5" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room5" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "magenta"
 
-[node name="MagiClayTerrain3" parent="Node3D/CSGCombiner3D/EasternCave/Room5" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain3" parent="Chunk/CSGCombiner3D/EasternCave/Room5" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10.3)
 _element = "purple"
 
-[node name="MagiClayTerrain2" parent="Node3D/CSGCombiner3D/EasternCave/Room5" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain2" parent="Chunk/CSGCombiner3D/EasternCave/Room5" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -0.5, 0)
 _element = "red"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.6, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_East1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_East2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.49999, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_North1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 0, -11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_North2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1, -9.3)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199997, 1, 9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_South" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_South" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5/RoomPortal_South"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199997, 0, 1.5)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5/RoomPortal_South/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5/RoomPortal_South/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5/RoomPortal_South"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.5, 0, -35)
 
-[node name="RoomPortal_West" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_West" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5/RoomPortal_West"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5/RoomPortal_West"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5/RoomPortal_West/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5/RoomPortal_West/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room5/RoomPortal_West"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room5/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.5, 0, -35)
 
-[node name="Room6" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104, 1, -15)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room6" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room6" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "red"
 
-[node name="MagiClayTerrain2" parent="Node3D/CSGCombiner3D/EasternCave/Room6" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain2" parent="Chunk/CSGCombiner3D/EasternCave/Room6" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -0.5, 0)
 _element = "cyan"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.55, 1, 0)
 operation = 2
 size = Vector3(4.9, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_East1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_East2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.49999, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_North1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 0, -11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_North2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 1, -9.3)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199997, 1, 9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_South" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_South" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_South"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199997, 0, 1.5)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_South/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_South/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_South"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.5, 0, 17)
 
-[node name="RoomPortal_East" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_East" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_East"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_East"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_East/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_East/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_East"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_East"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.5, 0, 17)
 
-[node name="RoomPortal_North" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_North" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_North"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_North"]
 transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 0.199997, 0, -21.3)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_North/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_North/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room6/RoomPortal_North"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room6/RoomPortal_North"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.5, 0, 17)
 
-[node name="Room7" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room7" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 1, 12)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room7" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room7" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "cyan"
 
-[node name="MagiClayTerrain2" parent="Node3D/CSGCombiner3D/EasternCave/Room7" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain2" parent="Chunk/CSGCombiner3D/EasternCave/Room7" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199997, -0.5, -10.5)
 _element = "green"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.55, 1, 0)
 operation = 2
 size = Vector3(4.9, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_East1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_East2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_East2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.49999, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_North1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199993, 0, -11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_North2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_North2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0.199997, 1, -9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199997, 1, 9.4)
 operation = 2
 size = Vector3(5.2, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_South" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_South" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_South"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199997, 0, 1.5)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_South/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_South/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_South"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_South"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.5, 0, -10)
 
-[node name="RoomPortal_East" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_East" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_East"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_East"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_East/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_East/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_East"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_East"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.5, 0, -10)
 
-[node name="RoomPortal_West" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_West" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_West"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_West"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_West/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_West/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room7/RoomPortal_West"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room7/RoomPortal_West"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.5, 0, -10)
 
-[node name="Room8" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave"]
+[node name="Room8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153, 1, 37)
 size = Vector3(20, 3, 20)
 material = ExtResource("1_b2eha")
 
-[node name="MagiClayTerrain" parent="Node3D/CSGCombiner3D/EasternCave/Room8" instance=ExtResource("5_0jutu")]
+[node name="MagiClayTerrain" parent="Chunk/CSGCombiner3D/EasternCave/Room8" instance=ExtResource("5_0jutu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 _element = "green"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 operation = 2
 size = Vector3(18, 3, 18)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8"]
+[node name="Door_West" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 0)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_West2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8"]
+[node name="Door_West2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.6, 1, 0)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South1" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8"]
+[node name="Door_South1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 0, 11)
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="Door_South2" type="CSGBox3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8"]
+[node name="Door_South2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8"]
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 0.199993, 1, 9.3)
 operation = 2
 size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
-[node name="RoomPortal_East" type="Area3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8" node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal_East" type="Area3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("5_x7704")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8/RoomPortal_East"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8/RoomPortal_East"]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -11.5, 0, -10)
 shape = SubResource("BoxShape3D_8p6l2")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8/RoomPortal_East/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8/RoomPortal_East/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8/RoomPortal_East"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8/RoomPortal_East"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151, 0, -59)
 shape = SubResource("BoxShape3D_yyxan")
 
-[node name="Marker3D" type="Marker3D" parent="Node3D/CSGCombiner3D/EasternCave/Room8/RoomPortal_East/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Chunk/CSGCombiner3D/EasternCave/Room8/RoomPortal_East/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 0)
 
-[node name="CE_SouthEast" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="CE_SouthEast" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1, -17)
 operation = 2
 size = Vector3(4, 3, 6)
 material = ExtResource("1_b2eha")
 
-[node name="CM_East" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="CM_East" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -45.5)
 operation = 2
 size = Vector3(3, 3, 4)
 material = ExtResource("1_b2eha")
 
-[node name="CE_CM" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="CE_CM" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -36)
 operation = 2
 size = Vector3(3, 5, 3)
 material = ExtResource("1_b2eha")
 
-[node name="CM_EC1" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="CM_EC1" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, -27.5)
 operation = 2
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="CM_EC2" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="CM_EC2" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, -33.5)
 operation = 2
 size = Vector3(4, 3, 5)
 material = ExtResource("1_b2eha")
 
-[node name="EXIT_SOUTH" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="EXIT_SOUTH" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 6.5)
 operation = 2
 size = Vector3(3, 3, 2)
 material = ExtResource("1_b2eha")
 
-[node name="EXIT_NORTH" type="CSGBox3D" parent="Node3D/CSGCombiner3D"]
+[node name="EXIT_NORTH" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -58)
 operation = 2
 size = Vector3(3, 5, 3)
 material = ExtResource("1_b2eha")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 1002, -18.5)
-shape = SubResource("BoxShape3D_sgb7e")
+[node name="CaveEntry" type="Node3D" parent="Chunk"]
+
+[node name="Emitter" parent="Chunk/CaveEntry" instance=ExtResource("7_ds18g")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10.5, 1, -6)
+_element = "purple"
+
+[node name="RotatableMirror" parent="Chunk/CaveEntry" instance=ExtResource("8_wl0ax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -6)
+
+[node name="LaserReceiver" parent="Chunk/CaveEntry" instance=ExtResource("9_8ivut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.7, -12.8)
+collision_layer = 5
