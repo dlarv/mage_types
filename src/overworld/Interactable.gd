@@ -14,6 +14,7 @@ signal interacted(obj: Node3D)
 @export var base_size := 1.0
 
 var disabled := false
+var force := false
 var _label: Label
 var _player: Node3D
 
@@ -50,17 +51,15 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body:Node3D) -> void:
 	if disabled: return
-	# Used to differentiate between player and player when dragging object.
-	if not body.is_in_group("player") or not body.in_control: return
+	if not body.is_in_group("player") and body.draggable != self: return
 
 	_player = body
 	_label.show()
 
 
 func _on_body_exited(body:Node3D) -> void:
-	if disabled: return
-	# Used to differentiate between player and player when dragging object.
-	if not body.is_in_group("player") or not body.in_control: return
+	if disabled or force: return
+	if not body.is_in_group("player"): return
 	_label.hide()
 	_player = null
 
@@ -76,3 +75,8 @@ func set_disabled(val: bool) -> void:
 func ignore() -> void:
 	_label.hide()
 	_player = null
+
+
+func toggle_force_show(val: bool) -> void:
+	force = val
+	_label.visible = val

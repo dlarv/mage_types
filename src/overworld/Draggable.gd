@@ -87,6 +87,8 @@ func pickup(player: Node3D) -> void:
 	parent.reparent(_player)
 	_player.set_draggable(self)
 
+	$Interactable.toggle_force_show(true)
+
 
 func drop() -> void:
 	_player.set_draggable(null)
@@ -98,6 +100,7 @@ func drop() -> void:
 		parent.axis_lock_angular_y = _prev_axis_lock[1]
 		parent.axis_lock_angular_z = _prev_axis_lock[2]
 
+	$Interactable.toggle_force_show(false)
 
 func move(velocity: Vector3) -> void:
 	if parent is RigidBody3D:
