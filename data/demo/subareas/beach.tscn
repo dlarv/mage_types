@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=31 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -78,6 +78,9 @@ id = -1
 quantity = 5
 max_quantity = 9999
 allow_stacking = false
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wfxal"]
+friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tqc8d"]
 size = Vector3(5, 1, 1)
@@ -634,7 +637,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.9, 0)
 collision_mask = 7
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-_element = "magenta"
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_wfxal")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.2, -1)
