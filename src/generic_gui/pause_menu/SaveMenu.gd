@@ -48,6 +48,7 @@ func save() -> void:
 	var file := FileAccess.open(path, FileAccess.WRITE)
 
 	file.store_var(_freed_objs)
+	file.store_var(_player.player_name)
 
 	for obj in objs:
 		if obj.has_method("serialize"):
@@ -77,6 +78,9 @@ func load() -> void:
 				var node = get_node(o)
 				if node:
 					node.queue_free()
+		elif obj is String:
+			Settings.set_player_name(obj)
+			print("Set player name to %s" % obj)
 
 	print("Loaded game from %s" % path)
 	file.close()
