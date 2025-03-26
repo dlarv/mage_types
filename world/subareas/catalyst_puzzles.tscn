@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://brs3ov2whut2i"]
 
-[ext_resource type="Script" path="res://data/demo/subareas/CatalystPuzzles.gd" id="1_n5073"]
+[ext_resource type="Script" path="res://world/subareas/CatalystPuzzles.gd" id="1_n5073"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_mwdp0"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_o81tf"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="3_30a4y"]

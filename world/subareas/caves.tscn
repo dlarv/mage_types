@@ -1,0 +1,304 @@
+[gd_scene load_steps=17 format=3 uid="uid://bkhryrwbn73l3"]
+
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
+[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
+[ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="2_0r40v"]
+[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="2_e8x54"]
+[ext_resource type="PackedScene" uid="uid://bouuyhug0ks48" path="res://world/subareas/eastern_caves/room_1.tscn" id="5_agsyu"]
+[ext_resource type="PackedScene" uid="uid://cflqrhots0ukn" path="res://world/subareas/eastern_caves/room_2.tscn" id="6_qwxxc"]
+[ext_resource type="PackedScene" uid="uid://cwn6ssjbs0g1v" path="res://world/subareas/eastern_caves/room_3.tscn" id="7_6r8ms"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_ds18g"]
+[ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="8_wl0ax"]
+[ext_resource type="PackedScene" uid="uid://ygvjlc6owc5" path="res://world/subareas/eastern_caves/room_4.tscn" id="8_y4e7d"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_8ivut"]
+[ext_resource type="PackedScene" uid="uid://dcbssqmtcfplk" path="res://world/subareas/eastern_caves/room_5.tscn" id="9_yi7ip"]
+[ext_resource type="PackedScene" uid="uid://bge6ti5vrunnf" path="res://world/subareas/eastern_caves/room_6.tscn" id="10_nm1ot"]
+[ext_resource type="PackedScene" uid="uid://dlolytn0jffk" path="res://world/subareas/eastern_caves/room_7.tscn" id="11_tsvrh"]
+[ext_resource type="PackedScene" uid="uid://c647p8kb2h4we" path="res://world/subareas/eastern_caves/room_8.tscn" id="12_g1u37"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgb7e"]
+size = Vector3(224, 2005, 82)
+
+[node name="Caves" type="Area3D" node_paths=PackedStringArray("chunk")]
+script = ExtResource("1_l1j24")
+chunk = NodePath("Chunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 1002, -18.5)
+shape = SubResource("BoxShape3D_sgb7e")
+
+[node name="Chunk" type="Node3D" parent="."]
+
+[node name="Boss2" parent="Chunk" instance=ExtResource("2_e8x54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, -45)
+collision_layer = 5
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Chunk"]
+use_collision = true
+collision_layer = 19
+collision_mask = 3
+
+[node name="CaveEntry" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.5)
+size = Vector3(10, 3, 10)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 4)
+operation = 2
+size = Vector3(8, 7, 5)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -8)
+size = Vector3(34, 3, 12)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 3, -8)
+operation = 2
+size = Vector3(32, 7, 10)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+size = Vector3(5, 3, 4)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -17)
+size = Vector3(24, 3, 8)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, -17)
+operation = 2
+size = Vector3(22, 7, 6)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -23)
+size = Vector3(6, 3, 4)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -30.5)
+size = Vector3(14, 3, 12)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -30.5)
+operation = 2
+size = Vector3(13, 7, 10)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -1)
+operation = 2
+size = Vector3(3, 7, 6)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -13.5)
+operation = 2
+size = Vector3(21, 7, 3)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -22.5)
+operation = 2
+size = Vector3(4, 7, 7)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -30)
+size = Vector3(6, 1, 4)
+material = ExtResource("2_0r40v")
+
+[node name="CaveMid" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -32)
+size = Vector3(0, 0, 0)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -16)
+size = Vector3(7, 3, 23)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, -13)
+operation = 2
+size = Vector3(3, 7, 25)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0, -13.5)
+size = Vector3(12.5, 3, 6)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 3, -13.5)
+operation = 2
+size = Vector3(14, 7, 4)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 1.5)
+size = Vector3(27, 3, 12)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 18)
+size = Vector3(19, 3, 19)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -15)
+size = Vector3(19, 3, 19)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 18)
+operation = 2
+size = Vector3(17, 3, 17)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -15)
+operation = 2
+size = Vector3(17, 3, 17)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 1.5)
+operation = 2
+size = Vector3(25, 3, 10)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 1.5)
+size = Vector3(25, 1, 2)
+material = ExtResource("2_0r40v")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 8)
+size = Vector3(5, 3, 3)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -5)
+size = Vector3(5, 3, 3)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 8)
+operation = 2
+size = Vector3(3, 3, 5)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, -5)
+operation = 2
+size = Vector3(3, 3, 5)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D72" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.45, 0, -11)
+size = Vector3(3.9, 3, 5)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D73" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1, -11)
+operation = 2
+size = Vector3(5, 3, 3)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D74" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.45, 0, 13)
+size = Vector3(3.9, 3, 5)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D75" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1, 13)
+operation = 2
+size = Vector3(5, 3, 3)
+material = ExtResource("1_b2eha")
+
+[node name="EasternCave" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, -31)
+size = Vector3(0, 0, 0)
+
+[node name="Room1" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("5_agsyu")]
+
+[node name="Room2" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("6_qwxxc")]
+
+[node name="Room3" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("7_6r8ms")]
+
+[node name="Room4" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("8_y4e7d")]
+
+[node name="Room5" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("9_yi7ip")]
+
+[node name="Room6" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("10_nm1ot")]
+
+[node name="Room7" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("11_tsvrh")]
+
+[node name="Room8" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("12_g1u37")]
+
+[node name="CE_SouthEast" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1, -17)
+operation = 2
+size = Vector3(4, 3, 6)
+material = ExtResource("1_b2eha")
+
+[node name="CM_East" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -45.5)
+operation = 2
+size = Vector3(3, 3, 4)
+material = ExtResource("1_b2eha")
+
+[node name="CE_CM" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -36)
+operation = 2
+size = Vector3(3, 5, 3)
+material = ExtResource("1_b2eha")
+
+[node name="CM_EC1" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, -27.5)
+operation = 2
+size = Vector3(4, 3, 5)
+material = ExtResource("1_b2eha")
+
+[node name="CM_EC2" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1, -33.5)
+operation = 2
+size = Vector3(4, 3, 5)
+material = ExtResource("1_b2eha")
+
+[node name="EXIT_SOUTH" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 6.5)
+operation = 2
+size = Vector3(3, 3, 2)
+material = ExtResource("1_b2eha")
+
+[node name="EXIT_NORTH" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -58)
+operation = 2
+size = Vector3(3, 5, 3)
+material = ExtResource("1_b2eha")
+
+[node name="CaveEntry" type="Node3D" parent="Chunk"]
+
+[node name="Emitter" parent="Chunk/CaveEntry" instance=ExtResource("7_ds18g")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10.5, 1, -6)
+_element = "purple"
+
+[node name="RotatableMirror" parent="Chunk/CaveEntry" instance=ExtResource("8_wl0ax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -6)
+
+[node name="LaserReceiver" parent="Chunk/CaveEntry" instance=ExtResource("9_8ivut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.7, -12.8)
+collision_layer = 5
