@@ -78,6 +78,9 @@ func _on_child_exiting_tree(child: Node3D) -> void:
 
 
 func _on_body_shape_entered(bodyRid:RID, body:Node3D, bodyShapeIndex:int, localShapeIndex:int) -> void:
+	if not is_complete():
+		push_warning("Portal is not complete!")
+		return
 	_player = body
 
 	var shapeOwner := shape_find_owner(localShapeIndex)
