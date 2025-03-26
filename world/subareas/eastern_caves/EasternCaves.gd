@@ -3,7 +3,8 @@ extends Chunk
 const Room := preload("room_templates/EasternCaveRoom.gd")
 const RoomPortal := preload("res://addons/room_and_portals/RoomPortal.gd")
 
-@export var templates: Array[PackedScene]
+@export var defensive_templates: Array[PackedScene]
+@export var offensive_templates: Array[PackedScene]
 @export var room_count := 8
 @export var correct_marker: Marker3D
 @export var start_portal: RoomPortal
@@ -37,7 +38,11 @@ func _ready() -> void:
 
 	_rooms = []
 	_rooms.resize(room_count)
-	_rooms.fill(preload("room_templates/small_square.tscn"))
+	for i in range(len(_rooms)):
+		if i % 2 == 0:
+			_rooms[i] = defensive_templates.pick_random()
+		else:
+			_rooms[i] = offensive_templates.pick_random()
 	_setup_rooms(_rooms)
 
 	
@@ -57,14 +62,6 @@ func _setup_rooms(rooms: Array) -> void:
 	for room in rooms:
 		room = room.instantiate()
 		$Chunk.add_child(room)
-
-		## Connect start portal to beginning of cave system.
-		#if i == 0:
-			#var portal = room.get_portal(Room.Direction.W)
-			#start_portal.point_2 = portal.point_1
-			#currElement = _defensive_elements[_d_index]
-			#_d_index += 1
-		#i += 1
 
 		# Position room.
 		room.global_position.y = yOffset

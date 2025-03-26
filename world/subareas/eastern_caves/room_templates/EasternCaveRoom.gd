@@ -32,7 +32,7 @@ func setup(next: ElementalType, curr: ElementalType, prev: ElementalType, prevDi
 
 	# Setup door to previous room.
 	prevDir = _get_opposite_direction(prevDir)
-	_set_door_element(prev, prevDir)
+	# _set_door_element(prev, prevDir)
 	_mark_door_as_prev(prevDir)
 	dirs.remove_at(dirs.find(prevDir))
 	doors[prevDir] = curr 
