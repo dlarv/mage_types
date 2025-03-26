@@ -14,6 +14,7 @@ const DOOR_DECALS := {
 }
 
 var correct_door: Direction
+var element: ElementalType
 var doors := {}
 
 ## Assign elements to physical door.
@@ -34,13 +35,13 @@ func setup(next: ElementalType, curr: ElementalType, prev: ElementalType, prevDi
 	_set_door_element(prev, prevDir)
 	_mark_door_as_prev(prevDir)
 	dirs.remove_at(dirs.find(prevDir))
-	doors[curr] = prevDir
+	doors[prevDir] = curr 
 	_connect_portal(prevDir, fakeMarker)
 
 	# Setup correct door.
 	correct_door = dirs.pop_back()
 	_set_door_element(next, correct_door)
-	doors[next] = correct_door
+	doors[correct_door] = next
 
 	# Setup incorrect doors.
 	var i := 0
@@ -48,7 +49,7 @@ func setup(next: ElementalType, curr: ElementalType, prev: ElementalType, prevDi
 		var door = dirs.pop_back()
 		var e: ElementalType = fakes[i]
 		i += 1
-		doors[e] = door
+		doors[door] = e
 		_set_door_element(e, door)
 		_connect_portal(door, fakeMarker)
 
@@ -65,6 +66,8 @@ func connect_correct_portal(nextRoom: Node3D, dir: Direction) -> void:
 	var portal := get_portal(correct_door)
 	portal.point_2 = nextRoom.get_portal(_get_opposite_direction(dir)).point_1
 
+func get_element_of(dir: Direction) -> ElementalType:
+	return doors[dir]
 
 func _get_opposite_direction(dir: Direction) -> Direction:
 	match dir:
@@ -74,6 +77,7 @@ func _get_opposite_direction(dir: Direction) -> Direction:
 		Direction.W,_: return Direction.E
 
 func _set_room_element(element: ElementalType) -> void:
+	self.element = element
 	if element.is_blank(): return
 	var decal = DOOR_DECALS[element.name].instantiate()
 	add_child(decal)

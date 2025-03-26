@@ -14,6 +14,7 @@ var _offensive_elements := []
 var _o_index := 0
 var _defensive_elements := []
 var _d_index := 0
+var _rooms := []
 
 func _ready() -> void:
 	_offensive_elements = [
@@ -34,10 +35,10 @@ func _ready() -> void:
 	_defensive_elements.shuffle()
 	_d_index = 0
 
-	var rooms := []
-	rooms.resize(room_count)
-	rooms.fill(preload("room_templates/small_square.tscn"))
-	_setup_rooms(rooms)
+	_rooms = []
+	_rooms.resize(room_count)
+	_rooms.fill(preload("room_templates/small_square.tscn"))
+	_setup_rooms(_rooms)
 
 	
 func _setup_rooms(rooms: Array) -> void:
@@ -46,7 +47,8 @@ func _setup_rooms(rooms: Array) -> void:
 
 	var yOffset := 0.0
 	var prevDirection := Room.Direction.E
-	var currElement := ElementManager.Blue
+	var currElement: ElementalType = _defensive_elements[_d_index]
+	_d_index += 1
 	var prevElement := ElementManager.Blank
 	var prevRoom: Room = null
 	var isDefensive := false
@@ -56,30 +58,31 @@ func _setup_rooms(rooms: Array) -> void:
 		room = room.instantiate()
 		$Chunk.add_child(room)
 
-		# Connect start portal to beginning of cave system.
-		if i == 0:
-			var portal = room.get_portal(Room.Direction.W)
-			start_portal.point_2 = portal.point_1
-			currElement = _defensive_elements[_d_index]
-			_d_index += 1
-		i += 1
+		## Connect start portal to beginning of cave system.
+		#if i == 0:
+			#var portal = room.get_portal(Room.Direction.W)
+			#start_portal.point_2 = portal.point_1
+			#currElement = _defensive_elements[_d_index]
+			#_d_index += 1
+		#i += 1
 
 		# Position room.
 		room.global_position.y = yOffset
 		yOffset += room_offset
 
-		var data := _setup_room(room, currElement, prevElement, prevDirection, isDefensive)
+		_setup_room(room, currElement, prevElement, prevDirection, isDefensive)
 
 		# Shift current room to previous.
 		if prevRoom:
 			prevRoom.connect_correct_portal(room, prevDirection)
 		prevRoom = room
 
-		prevDirection = data[0]
+		prevDirection = room.correct_door
 		prevElement = currElement
-		currElement = data[1]
+		currElement = room.get_element_of(room.correct_door)
 		isDefensive = not isDefensive
 
+	# Connect last room to end.
 	prevRoom.get_portal(prevDirection).point_2 = correct_marker
 
 
