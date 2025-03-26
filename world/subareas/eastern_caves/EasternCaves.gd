@@ -1,13 +1,14 @@
 extends Chunk
 
 const Room := preload("room_templates/EasternCaveRoom.gd")
+const RoomPortal := preload("res://addons/room_and_portals/RoomPortal.gd")
 
 @export var templates: Array[PackedScene]
 @export var room_count := 8
-@export var incorrect_marker: Marker3D
 @export var correct_marker: Marker3D
-## How much vertical distance to put between each room instance. Rooms are stacked vertically from top to bottom.
-@export var room_offset := 10.0
+@export var start_portal: RoomPortal
+## How much vertical distance to put between each room instance.
+@export var room_offset := -10.0
 
 var _offensive_elements := []
 var _o_index := 0
@@ -40,30 +41,45 @@ func _ready() -> void:
 
 	
 func _setup_rooms(rooms: Array) -> void:
-	var yOffset := -20.0
+	$CollisionShape3D.shape.size = Vector3(40, abs(room_offset * room_count), 40)
+	$CollisionShape3D.position.y = room_offset * room_count / 2
+
+	var yOffset := 0.0
 	var prevDirection := Room.Direction.E
-	var currElement := ElementManager.Blank
+	var currElement := ElementManager.Blue
 	var prevElement := ElementManager.Blank
 	var prevRoom: Room = null
-	var isDefensive := true
+	var isDefensive := false
 
+	var i := 0
 	for room in rooms:
 		room = room.instantiate()
 		$Chunk.add_child(room)
 
+		# Connect start portal to beginning of cave system.
+		if i == 0:
+			var portal = room.get_portal(Room.Direction.W)
+			start_portal.point_2 = portal.point_1
+			currElement = _defensive_elements[_d_index]
+			_d_index += 1
+		i += 1
+
 		# Position room.
 		room.global_position.y = yOffset
-		yOffset -= room_offset
+		yOffset += room_offset
 
 		var data := _setup_room(room, currElement, prevElement, prevDirection, isDefensive)
+
+		# Shift current room to previous.
+		if prevRoom:
+			prevRoom.connect_correct_portal(room, prevDirection)
+		prevRoom = room
+
 		prevDirection = data[0]
 		prevElement = currElement
 		currElement = data[1]
 		isDefensive = not isDefensive
 
-		if prevRoom:
-			prevRoom.connect_correct_portal(room, prevDirection)
-		prevRoom = room
 	prevRoom.get_portal(prevDirection).point_2 = correct_marker
 
 
@@ -72,7 +88,10 @@ func _setup_room(instance: Room, currElement: ElementalType, prevElement: Elemen
 	var otherElements: Array
 
 	# Determine what colors the neighbors will be.
-	if isDefensive:
+	if _d_index == 4 and _o_index == 4:
+		nextElement = ElementManager.Blank
+		otherElements = _offensive_elements
+	elif isDefensive:
 		nextElement = _defensive_elements[_d_index]
 		_d_index += 1
 		otherElements = _offensive_elements
@@ -89,6 +108,5 @@ func _setup_room(instance: Room, currElement: ElementalType, prevElement: Elemen
 			nextRooms.append(e)
 	
 	return [
-		instance.setup(nextElement, currElement, prevElement, prevDir, nextRooms, incorrect_marker),
+		instance.setup(nextElement, currElement, prevElement, prevDir, nextRooms, start_portal.point_1),
 		nextElement ]
-

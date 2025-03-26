@@ -1,16 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkhryrwbn73l3"]
+[gd_scene load_steps=12 format=3 uid="uid://bkhryrwbn73l3"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="2_0r40v"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="2_e8x54"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_ds18g"]
+[ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="8_5xiv5"]
 [ext_resource type="PackedScene" uid="uid://b2nokkpwhj5nq" path="res://world/subareas/eastern_caves/eastern_caves.tscn" id="8_r105b"]
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="8_wl0ax"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_8ivut"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgb7e"]
 size = Vector3(224, 2005, 82)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fa7fq"]
+size = Vector3(1.5, 1, 3)
 
 [node name="Caves" type="Area3D" node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_l1j24")
@@ -280,13 +284,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.7, -12.8)
 collision_layer = 5
 
-[node name="EasternCaves" parent="Chunk" node_paths=PackedStringArray("incorrect_marker", "correct_marker") instance=ExtResource("8_r105b")]
+[node name="Start" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.1, -19)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("8_5xiv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Start"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+shape = SubResource("BoxShape3D_fa7fq")
+
+[node name="Marker3D" type="Marker3D" parent="Start/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="End" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.1, -43)
+
+[node name="EasternCaves" parent="." node_paths=PackedStringArray("correct_marker", "start_portal") instance=ExtResource("8_r105b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0, -20)
-incorrect_marker = NodePath("../Start")
 correct_marker = NodePath("../End")
-
-[node name="Start" type="Marker3D" parent="Chunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, -45)
-
-[node name="End" type="Marker3D" parent="Chunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, -45)
+start_portal = NodePath("../Start")

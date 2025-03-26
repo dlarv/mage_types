@@ -63,7 +63,7 @@ func get_portal(dir: Direction) -> Node3D:
 	
 func connect_correct_portal(nextRoom: Node3D, dir: Direction) -> void:
 	var portal := get_portal(correct_door)
-	portal.point_2 = nextRoom.get_portal(dir).point_1
+	portal.point_2 = nextRoom.get_portal(_get_opposite_direction(dir)).point_1
 
 
 func _get_opposite_direction(dir: Direction) -> Direction:
