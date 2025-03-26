@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd7t8arvdnqv5"]
+[gd_scene load_steps=8 format=3 uid="uid://cd7t8arvdnqv5"]
 
+[ext_resource type="Script" path="res://src/overworld/room_and_portal_test.gd" id="1_2p4jp"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_jo2nv"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_ogmmp"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="3_1kwqv"]
@@ -10,7 +11,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wymea"]
 
-[node name="RoomAndPortalTest" type="Node3D"]
+[node name="RoomAndPortalTest" type="Node3D" node_paths=PackedStringArray("marker", "portal")]
+script = ExtResource("1_2p4jp")
+marker = NodePath("RoomPortal2/Marker3D")
+portal = NodePath("RoomPortal4")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -45,11 +49,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
 
-[node name="RoomPortal" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+[node name="RoomPortal" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("2_ogmmp")
-point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomPortal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
@@ -93,4 +96,16 @@ point_2 = NodePath("../RoomPortal2/Marker3D")
 shape = SubResource("BoxShape3D_wymea")
 
 [node name="Marker3D" type="Marker3D" parent="RoomPortal3/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="RoomPortal4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("2_ogmmp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomPortal4"]
+shape = SubResource("BoxShape3D_wymea")
+
+[node name="Marker3D" type="Marker3D" parent="RoomPortal4/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)

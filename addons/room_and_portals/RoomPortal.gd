@@ -4,7 +4,6 @@ extends Area3D
 ## For a two-way door, add two CollisionShape3D as children. Each shape should be the parent to a Marker3D.
 ## For a one-way door, add one CollisionShape/Marker and one Marker3D as children.
 
-
 var door_1: CollisionShape3D
 var point_1: Marker3D
 var door_2: CollisionShape3D
