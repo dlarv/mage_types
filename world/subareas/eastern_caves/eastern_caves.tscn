@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2nokkpwhj5nq"]
+
+[ext_resource type="Script" path="res://world/subareas/eastern_caves/EasternCaves.gd" id="1_kxg6y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6pgw"]
+
+[node name="EasternCaves" type="Area3D" node_paths=PackedStringArray("chunk")]
+script = ExtResource("1_kxg6y")
+chunk = NodePath("Chunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k6pgw")
+
+[node name="Chunk" type="Node3D" parent="."]

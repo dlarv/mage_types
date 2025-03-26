@@ -1,0 +1,93 @@
+extends Node3D
+
+enum Direction { N, E, S, W }
+
+const DOOR_DECALS := {
+	"Blue": preload("door_decals/blue.tscn"),
+	"Purple": preload("door_decals/purple.tscn"),
+	"Magenta": preload("door_decals/magenta.tscn"),
+	"Red": preload("door_decals/red.tscn"),
+	"Orange": preload("door_decals/orange.tscn"),
+	"Yellow": preload("door_decals/yellow.tscn"),
+	"Green": preload("door_decals/green.tscn"),
+	"Cyan": preload("door_decals/cyan.tscn"),
+}
+
+var correct_door: Direction
+var doors := {}
+
+## Assign elements to physical door.
+## Show the correct puzzle/decor.
+## element: Element of this room.
+## prev: Element of previous room.
+## prevDir: Direction of previous correct door. Entrance should be placed opposite of this.
+## fakes: Array containing incorrect options.
+## fakeMarker: This is where the player should be sent if they choose the wrong door.
+func setup(next: ElementalType, curr: ElementalType, prev: ElementalType, prevDir: Direction, fakes: Array, fakeMarker: Marker3D) -> Direction:
+	var dirs := [ Direction.N, Direction.E, Direction.S, Direction.W ]
+	dirs.shuffle()
+
+	_set_room_element(curr)
+
+	# Setup door to previous room.
+	prevDir = _get_opposite_direction(prevDir)
+	_set_door_element(prev, prevDir)
+	_mark_door_as_prev(prevDir)
+	dirs.remove_at(dirs.find(prevDir))
+	doors[curr] = prevDir
+	_connect_portal(prevDir, fakeMarker)
+
+	# Setup correct door.
+	correct_door = dirs.pop_back()
+	_set_door_element(next, correct_door)
+	doors[next] = correct_door
+
+	# Setup incorrect doors.
+	var i := 0
+	while len(dirs) > 0:
+		var door = dirs.pop_back()
+		var e: ElementalType = fakes[i]
+		i += 1
+		doors[e] = door
+		_set_door_element(e, door)
+		_connect_portal(door, fakeMarker)
+
+	return correct_door
+
+func get_portal(dir: Direction) -> Node3D:
+	match dir:
+		Direction.N: return $RoomPortal_N
+		Direction.E: return $RoomPortal_E
+		Direction.S: return $RoomPortal_S
+		Direction.W,_: return $RoomPortal_W
+	
+func connect_correct_portal(nextRoom: Node3D, dir: Direction) -> void:
+	var portal := get_portal(correct_door)
+	portal.point_2 = nextRoom.get_portal(dir).point_1
+
+
+func _get_opposite_direction(dir: Direction) -> Direction:
+	match dir:
+		Direction.N: return Direction.S
+		Direction.E: return Direction.W
+		Direction.S: return Direction.N
+		Direction.W,_: return Direction.E
+
+func _set_room_element(element: ElementalType) -> void:
+	if element.is_blank(): return
+	var decal = DOOR_DECALS[element.name].instantiate()
+	add_child(decal)
+	
+
+func _set_door_element(element: ElementalType, dir: Direction) -> void:
+	if element.is_blank(): return
+	var decal = DOOR_DECALS[element.name].instantiate()
+	add_child(decal)
+	decal.global_position = get_portal(dir).global_position
+
+func _mark_door_as_prev(dir: Direction) -> void:
+	pass
+
+func _connect_portal(dir: Direction, marker: Marker3D) -> void:
+	var portal := get_portal(dir)
+	portal.point_2 = marker

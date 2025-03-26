@@ -1,20 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkhryrwbn73l3"]
+[gd_scene load_steps=10 format=3 uid="uid://bkhryrwbn73l3"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="2_0r40v"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="2_e8x54"]
-[ext_resource type="PackedScene" uid="uid://bouuyhug0ks48" path="res://world/subareas/eastern_caves/room_1.tscn" id="5_agsyu"]
-[ext_resource type="PackedScene" uid="uid://cflqrhots0ukn" path="res://world/subareas/eastern_caves/room_2.tscn" id="6_qwxxc"]
-[ext_resource type="PackedScene" uid="uid://cwn6ssjbs0g1v" path="res://world/subareas/eastern_caves/room_3.tscn" id="7_6r8ms"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_ds18g"]
+[ext_resource type="PackedScene" uid="uid://b2nokkpwhj5nq" path="res://world/subareas/eastern_caves/eastern_caves.tscn" id="8_r105b"]
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="8_wl0ax"]
-[ext_resource type="PackedScene" uid="uid://ygvjlc6owc5" path="res://world/subareas/eastern_caves/room_4.tscn" id="8_y4e7d"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_8ivut"]
-[ext_resource type="PackedScene" uid="uid://dcbssqmtcfplk" path="res://world/subareas/eastern_caves/room_5.tscn" id="9_yi7ip"]
-[ext_resource type="PackedScene" uid="uid://bge6ti5vrunnf" path="res://world/subareas/eastern_caves/room_6.tscn" id="10_nm1ot"]
-[ext_resource type="PackedScene" uid="uid://dlolytn0jffk" path="res://world/subareas/eastern_caves/room_7.tscn" id="11_tsvrh"]
-[ext_resource type="PackedScene" uid="uid://c647p8kb2h4we" path="res://world/subareas/eastern_caves/room_8.tscn" id="12_g1u37"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgb7e"]
 size = Vector3(224, 2005, 82)
@@ -232,22 +225,6 @@ material = ExtResource("1_b2eha")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, -31)
 size = Vector3(0, 0, 0)
 
-[node name="Room1" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("5_agsyu")]
-
-[node name="Room2" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("6_qwxxc")]
-
-[node name="Room3" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("7_6r8ms")]
-
-[node name="Room4" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("8_y4e7d")]
-
-[node name="Room5" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("9_yi7ip")]
-
-[node name="Room6" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("10_nm1ot")]
-
-[node name="Room7" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("11_tsvrh")]
-
-[node name="Room8" parent="Chunk/CSGCombiner3D/EasternCave" instance=ExtResource("12_g1u37")]
-
 [node name="CE_SouthEast" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1, -17)
 operation = 2
@@ -302,3 +279,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -6)
 [node name="LaserReceiver" parent="Chunk/CaveEntry" instance=ExtResource("9_8ivut")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.7, -12.8)
 collision_layer = 5
+
+[node name="EasternCaves" parent="Chunk" node_paths=PackedStringArray("incorrect_marker", "correct_marker") instance=ExtResource("8_r105b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 0, -20)
+incorrect_marker = NodePath("../Start")
+correct_marker = NodePath("../End")
+
+[node name="Start" type="Marker3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, -45)
+
+[node name="End" type="Marker3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, -45)
