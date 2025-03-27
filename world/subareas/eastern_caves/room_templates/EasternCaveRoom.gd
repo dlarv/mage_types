@@ -13,9 +13,13 @@ const DOOR_DECALS := {
 	"Cyan": preload("door_decals/cyan.tscn"),
 }
 
+
 var correct_door: Direction
 var element: ElementalType
 var doors := {}
+
+@onready var _decor_parent: Node3D = $Decor
+@onready var _puzzle_parent: Node3D = $Puzzle
 
 ## Assign elements to physical door.
 ## Show the correct puzzle/decor.
@@ -69,6 +73,24 @@ func connect_correct_portal(nextRoom: Node3D, dir: Direction) -> void:
 func get_element_of(dir: Direction) -> ElementalType:
 	return doors[dir]
 
+func set_difficulty(level: int) -> void:
+	if level <= 0: return
+	var puzzle = _puzzle_parent.find_child(element.name)
+	if not puzzle or puzzle.get_child_count() == 0: return
+	puzzle.show()
+
+	if puzzle.get_child(0).visible: 
+		return
+	elif puzzle.get_child_count() == 1: 
+		puzzle.get_child(0).show()
+		return
+
+	match level:
+		1,2,3:
+			puzzle.get_child(0).show()
+		4,5,6,_:
+			puzzle.get_child(1).show()
+
 func _get_opposite_direction(dir: Direction) -> Direction:
 	match dir:
 		Direction.N: return Direction.S
@@ -79,9 +101,14 @@ func _get_opposite_direction(dir: Direction) -> Direction:
 func _set_room_element(element: ElementalType) -> void:
 	self.element = element
 	if element.is_blank(): return
+
 	var decal = DOOR_DECALS[element.name].instantiate()
 	add_child(decal)
-	
+
+	var decor = $Decor.find_child(element.name)
+	if decor:
+		decor.show()
+
 
 func _set_door_element(element: ElementalType, dir: Direction) -> void:
 	if element.is_blank(): return

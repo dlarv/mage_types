@@ -58,9 +58,11 @@ func _setup_rooms(rooms: Array) -> void:
 	var prevRoom: Room = null
 	var isDefensive := false
 
-	var i := 0
+	var i := -1
 	for room in rooms:
+		i += 1
 		room = room.instantiate()
+		_rooms[i] = room
 		$Chunk.add_child(room)
 
 		# Position room.
@@ -68,6 +70,7 @@ func _setup_rooms(rooms: Array) -> void:
 		yOffset += room_offset
 
 		_setup_room(room, currElement, prevElement, prevDirection, isDefensive)
+		room.set_difficulty(i - 1)
 
 		# Shift current room to previous.
 		if prevRoom:
@@ -79,6 +82,8 @@ func _setup_rooms(rooms: Array) -> void:
 		currElement = room.get_element_of(room.correct_door)
 		isDefensive = not isDefensive
 
+	# Connect first room to start.
+	start_portal.point_2 = _rooms[0].get_portal(Room.Direction.W).point_1 
 	# Connect last room to end.
 	prevRoom.get_portal(prevDirection).point_2 = correct_marker
 

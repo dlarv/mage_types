@@ -122,3 +122,5 @@ shape = SubResource("BoxShape3D_d62wh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
 [node name="Puzzle" type="Node3D" parent="."]
+
+[node name="Decor" type="Node3D" parent="."]

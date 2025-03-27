@@ -120,3 +120,7 @@ shape = SubResource("BoxShape3D_s0b3o")
 
 [node name="Marker3D" type="Marker3D" parent="RoomPortal_S/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Puzzle" type="Node3D" parent="."]
+
+[node name="Decor" type="Node3D" parent="."]
