@@ -18,9 +18,8 @@ signal equipment_equipped(equipment)
 @warning_ignore("unused_signal")
 signal action_selected(action: _BattleAction)
 
-@export
-var name : String = "Guy" 
-var level: int = 1
+@export var name: String = "Guy" 
+@export var level: int = 1
 var xp: float = 0
 
 @export_category("Stats")
@@ -83,13 +82,13 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 
 @export var sprite_path: PackedScene
 
-var dissonant: StatusEffect: 
+var dissonant: StatusEffect:
 	get: return statuses.check_dissonant()
-var flinching: StatusEffect: 
+var flinching: StatusEffect:
 	get: return statuses.check_flinching()
-var stasis: StatusEffect: 
+var stasis: StatusEffect:
 	get: return statuses.check_stasis()
-var is_defeated: bool: 
+var is_defeated: bool:
 	get: return current_hp <= 0
 
 var aleady_defeated: bool = false
@@ -316,6 +315,7 @@ func serialize() -> Dictionary:
 	return {
 		"name": name,
 		# "statuses": statuses.serialize(),
+		"level": level,
 		"stats": stat_manager.serialize(),
 		"hp": hp,
 		"current_hp": current_hp,
@@ -333,6 +333,8 @@ func deserialize(data: Dictionary) -> void:
 	# if "statuses" in data:
 	# 	# statuses.deserialize(data["statuses"])
 	# 	statuses
+	if "level" in data:
+		level = data["level"]
 	if "stats" in data:
 		stat_manager.deserialize(data["stats"])
 	if "hp" in data:
