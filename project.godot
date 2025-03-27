@@ -33,6 +33,10 @@ gdscript/warnings/unused_parameter=0
 gdscript/warnings/shadowed_variable=0
 gdscript/warnings/shadowed_variable_base_class=0
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [dotnet]
 
 project/assembly_name="Mage-Types"
