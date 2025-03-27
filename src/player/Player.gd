@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 		vel.z = move_toward(velocity.z, 0, speed)
 
 
-	velocity = vel + outside_forces * delta
+	velocity = vel + outside_forces# * delta
 	outside_forces = Vector3.ZERO
 	if vel == Vector3.ZERO:
 		anim_player.play("idle")
