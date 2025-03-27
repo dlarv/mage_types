@@ -20,6 +20,7 @@ var _current_story_actor: StoryActor = null
 			UIManager.matchup_chart.current_graphic = val
 
 func _ready() -> void:
+	#await get_tree().create_timer(5).timeout
 	UIManager.setup()
 
 
@@ -106,5 +107,3 @@ func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
 	player.play(id)
 	await player.animation_finished
 	overworld.process_mode = PROCESS_MODE_INHERIT
-
-

@@ -29,6 +29,11 @@ func setup() -> void:
 	hud = root.get_node("%HUD_Layer")
 	_block_input = false
 
+	save_menu.setup()
+	var p = get_tree().get_nodes_in_group("player") 
+	if len(p) > 0:
+		player_menu.setup(p[0])
+
 func _unhandled_input(input: InputEvent) -> void:
 	if _block_input: 
 		if not inventory.visible: return

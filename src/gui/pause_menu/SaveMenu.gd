@@ -1,23 +1,22 @@
 extends Menu
 
-const SAVE_ROOT_DIR := "user://games"
 
-var _player: Node3D
+var _player: Node3D:
+	get:
+		if _player == null:
+			var players = get_tree().get_nodes_in_group("player")
+			if len(players) > 0:
+				_player = players[0]
+		return _player
 var _saved_games := []
 var _freed_objs := []
 
-func _ready() -> void:
-	var players = get_tree().get_nodes_in_group("player")
-	if len(players) > 0:
-		_player = players[0]
-	else:
-		return
-
+func setup() -> void:
 	var root := DirAccess.open("user://")
 	root.make_dir_recursive("games")
 
 	var group := ButtonGroup.new()
-	var dir := DirAccess.open(SAVE_ROOT_DIR)
+	var dir := DirAccess.open(Settings.SAVE_ROOT_DIR)
 	if dir:
 		_saved_games = dir.get_files()
 		for file in _saved_games:
@@ -34,9 +33,14 @@ func _ready() -> void:
 		obj.tree_exiting.connect(func():
 			_freed_objs.append(obj.get_path()))
 
+	if Settings.loaded_save_data:
+		read_file(Settings.loaded_save_data)
+		Settings.loaded_save_data = null
+
+
 func save() -> void:
 	var fileName = %LineEdit.text
-	var path := "%s/%s" % [ SAVE_ROOT_DIR, fileName ]
+	var path := "%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ]
 	if not fileName in _saved_games:
 		var button := Button.new()
 		button.text = fileName
@@ -47,8 +51,9 @@ func save() -> void:
 	var objs := get_tree().get_nodes_in_group("persist")
 	var file := FileAccess.open(path, FileAccess.WRITE)
 
+	# Store info that does not rely on main scene being loaded.
+	file.store_var({"player_name": _player.player_name})
 	file.store_var(_freed_objs)
-	file.store_var(_player.player_name)
 
 	for obj in objs:
 		if obj.has_method("serialize"):
@@ -61,9 +66,22 @@ func save() -> void:
 
 func load() -> void:
 	var fileName = %LineEdit.text
-	var path := "%s/%s" % [ SAVE_ROOT_DIR, fileName ]
+	var path := "%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ]
 	var file := FileAccess.open(path, FileAccess.READ)
 
+	# Information that must be accessed by home page before main scene is instantiated is saved at the beginning
+	# of the file inside a dictionary.
+	var data = file.get_var()
+	if data.has("player_name"):
+		Settings.set_player_name(data["player_name"])
+		print("Set player name to %s" % data["player_name"])
+
+	# Read rest of data.
+	read_file(file)
+	print("Loaded game from %s" % path)
+	file.close()
+
+func read_file(file: FileAccess) -> void:
 	while file.get_position() < file.get_length():
 		var obj = file.get_var()
 		if obj is Dictionary:
@@ -78,12 +96,7 @@ func load() -> void:
 				var node = get_node(o)
 				if node:
 					node.queue_free()
-		elif obj is String:
-			Settings.set_player_name(obj)
-			print("Set player name to %s" % obj)
 
-	print("Loaded game from %s" % path)
-	file.close()
 
 func _on_visibility_changed() -> void:
 	if not visible: return
@@ -96,7 +109,7 @@ func _on_delete_button_pressed() -> void:
 	var index := _saved_games.find(fileName)
 	_saved_games.remove_at(index)
 
-	DirAccess.remove_absolute("%s/%s" % [ SAVE_ROOT_DIR, fileName ])
+	DirAccess.remove_absolute("%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ])
 
 	for child in %SavedGamesScroller.get_children():
 		if child.text == fileName:

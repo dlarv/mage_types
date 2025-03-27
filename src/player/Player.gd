@@ -35,6 +35,10 @@ var player_name:
 func _ready() -> void:
 	if not battle_actor in team:
 		team.insert(0, battle_actor)
+	
+	player_name = Settings.player_name
+	Settings.player_name_changed.connect(func(name):
+		player_name = name)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return

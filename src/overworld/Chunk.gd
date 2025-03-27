@@ -9,23 +9,12 @@ class_name Chunk
 
 var _persistent_objs := {}
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
 	body_entered.connect(load)
 	body_exited.connect(unload)
 	collision_mask = 32
-
-	if len(resets) == 0: return
-	elif len(resets) == 1:
-		var reset := resets[0]
-		for child in find_children("", "MagiClay"):
-			reset.magiclay_reset.connect(child.reset)
-	else:
-		for reset in resets:
-			for child in reset.get_parent().find_children("", "MagiClay", true):
-				reset.magiclay_reset.connect(child.reset)
-
-func _ready() -> void:
+				
 	if not is_in_group("persist"): return
 	# BFS on all children
 	var children := chunk.get_children()
@@ -37,7 +26,6 @@ func _ready() -> void:
 				child.remove_from_group("persist")
 				push_warning("Node(%s) is in persist group but is also child of persistent Chunk(%s)" 
 						% [ child.puzzle_name, name])
-
 		# Set value for animation_actors w/o their own players.
 		# Typically, there will be 1 animation player in the main scene which everything shares.
 		# This way, it can access other chunks and characters.
@@ -45,7 +33,16 @@ func _ready() -> void:
 			child.animation_player = animation_player
 
 		children.append_array(child.get_children())
-
+	print("LOADED CHILDREN")
+	if len(resets) == 0: return
+	elif len(resets) == 1:
+		var reset := resets[0]
+		for child in find_children("", "MagiClay"):
+			reset.magiclay_reset.connect(child.reset)
+	else:
+		for reset in resets:
+			for child in reset.get_parent().find_children("", "MagiClay", true):
+				reset.magiclay_reset.connect(child.reset)
 
 func load(player: Node3D) -> void:
 	# if not player.is_in_group("player"): return
@@ -70,6 +67,8 @@ func serialize() -> Dictionary:
 	return data
 
 func deserialize(data: Dictionary) -> void:
+	if not is_node_ready():
+		await ready
 	for key in data.keys():
 		if key is String and key == "path": continue
 		_persistent_objs[key].deserialize(data[key])
