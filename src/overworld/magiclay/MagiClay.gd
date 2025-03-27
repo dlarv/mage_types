@@ -37,15 +37,9 @@ var element: ElementalType = ElementManager.Blank:
 @export var base_size := Vector3(1, 1, 1)
 
 var puzzle_name: String
+
 var _mesh_instance: MeshInstance3D: get = _get_mesh
-var _material: StandardMaterial3D:
-	set(val):
-		_material = val
-		if _mesh_instance == null:
-			push_warning("%s has no mesh!" % puzzle_name)
-			return
-		_mesh_instance.set_surface_override_material(0, _material)
-		_try_set_color()
+var _material: BaseMaterial3D: set = _set_material
 var _original_element: ElementalType = null
 
 # When this object is hit by a laser, this value is checked against the projectile's value.
@@ -63,6 +57,7 @@ func _ready():
 	_material = StandardMaterial3D.new()
 	puzzle_name = "%s.%s" % [get_parent().name, name]
 
+
 # color: Color | null
 func _try_set_color(color=null) -> void:
 	if not _mesh_instance: return
@@ -72,6 +67,7 @@ func _try_set_color(color=null) -> void:
 		_material.albedo_color = element.main_color
 	else:
 		_material.albedo_color = color
+
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if e == null or e.is_blank(): return false
@@ -133,22 +129,8 @@ func destroy() -> void:
 func try_tunnel() -> void:
 	if tunnel_override == null: return
 
-func _get_mesh() -> MeshInstance3D:
-	if find_child("MeshInstance3D") == null: return null
-	return $MeshInstance3D
 
-func _flicker_collider() -> void:
-	# Use case example:
-	# 1. Object is Blue and is sitting on a Purple pressure plate.
-	# 2. Object is transmuted into Purple.
-	# 3. Collider is flickered, which re-triggers pressure plate.
-	var val := collision_layer
-	set_collision_layer_value(3, false)
-	await get_tree().create_timer(0.01).timeout
-	set_collision_layer_value(3, true)
-
-func serialize() -> Dictionary:
-	return {
+func serialize() -> Dictionary: return {
 		"path": get_path(),
 		"name": name,
 		"position": global_position,
@@ -158,6 +140,7 @@ func serialize() -> Dictionary:
 		"in_stasis": in_stasis,
 		"visible": visible,
 	}
+
 
 func deserialize(data: Dictionary) -> void:
 	if "position" in data:
@@ -173,6 +156,30 @@ func deserialize(data: Dictionary) -> void:
 		set_stasis()
 	if "visible" in data:
 		visible = data["visible"]
+
+
+func _get_mesh() -> MeshInstance3D:
+	if find_child("MeshInstance3D") == null: return null
+	return $MeshInstance3D
+
+func _set_material(val: BaseMaterial3D) -> void:
+		_material = val
+		if _mesh_instance == null:
+			push_warning("%s has no mesh!" % puzzle_name)
+			return
+		_mesh_instance.set_surface_override_material(0, _material)
+		_try_set_color()
+
+func _flicker_collider() -> void:
+	# Use case example:
+	# 1. Object is Blue and is sitting on a Purple pressure plate.
+	# 2. Object is transmuted into Purple.
+	# 3. Collider is flickered, which re-triggers pressure plate.
+	var val := collision_layer
+	set_collision_layer_value(3, false)
+	await get_tree().create_timer(0.01).timeout
+	set_collision_layer_value(3, true)
+
 
 func _set_size() -> void:
 	var mesh = $MeshInstance3D.mesh

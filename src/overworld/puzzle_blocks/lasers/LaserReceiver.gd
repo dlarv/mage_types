@@ -42,7 +42,6 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 		off.emit(self)
 
 
-
 func _on_sub_receiver_laser_dropped() -> void:
 	$Indicator.set_surface_override_material(0, _off_mat)
 	off.emit(self)
