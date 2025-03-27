@@ -21,6 +21,9 @@ var doors := {}
 @onready var _decor_parent: Node3D = $Decor
 @onready var _puzzle_parent: Node3D = $Puzzle
 
+func _ready() -> void:
+	_puzzle_parent.hide()
+
 ## Assign elements to physical door.
 ## Show the correct puzzle/decor.
 ## element: Element of this room.
@@ -80,6 +83,9 @@ func set_difficulty(level: int) -> void:
 			level = 0
 		_:
 			level = 1
+
+	_puzzle_parent.process_mode = Node.PROCESS_MODE_INHERIT
+	_puzzle_parent.show()
 
 	var puzzleName := element.name
 	var puzzleNameAlt := "%s_%d" % [ puzzleName, level ]

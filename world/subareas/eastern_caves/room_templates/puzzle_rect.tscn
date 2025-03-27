@@ -94,11 +94,11 @@ collision_mask = 32
 script = ExtResource("3_mmffx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomPortal_E"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, 0, -2.49594e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, -2.49594e-07)
 shape = SubResource("BoxShape3D_w8b64")
 
 [node name="Marker3D" type="Marker3D" parent="RoomPortal_E/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0)
 
 [node name="RoomPortal_N" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.9, 0, -10)
@@ -127,6 +127,26 @@ shape = SubResource("BoxShape3D_w8b64")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 0.0999999)
 
 [node name="Puzzle" type="Node3D" parent="."]
+process_mode = 4
+
+[node name="OrGate" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("7_gx7pa")]
+locks = [NodePath("../Blue_0/LaserReceiver"), NodePath("../Magenta_0/LaserReceiver"), NodePath("../Yellow_0/LaserReceiver"), NodePath("../Cyan_0/LaserReceiver")]
+
+[node name="Gate_S" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, -0.4, 10)
+locks = [NodePath("../OrGate")]
+
+[node name="Gate_E" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 13, -0.4, -1.78814e-07)
+locks = [NodePath("../OrGate")]
+
+[node name="Gate_W" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -13, -0.4, -1.78814e-07)
+locks = [NodePath("../OrGate")]
+
+[node name="Gate_N" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
+transform = Transform3D(3, 0, 2.06324e-07, 0, 3, 0, -2.06324e-07, 0, 3, -5, -0.4, -10)
+locks = [NodePath("../OrGate")]
 
 [node name="Blue_0" type="Node3D" parent="Puzzle"]
 process_mode = 4
@@ -217,25 +237,6 @@ _element = "magenta"
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.8, 1, -5)
 collision_layer = 5
 _element = "blue"
-
-[node name="OrGate" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("7_gx7pa")]
-locks = [NodePath("../Blue_0/LaserReceiver"), NodePath("../Magenta_0/LaserReceiver"), NodePath("../Yellow_0/LaserReceiver"), NodePath("../Cyan_0/LaserReceiver")]
-
-[node name="Gate_S" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, -0.4, 10)
-locks = [NodePath("../OrGate")]
-
-[node name="Gate_E" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 13, -0.4, -1.78814e-07)
-locks = [NodePath("../OrGate")]
-
-[node name="Gate_W" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -13, -0.4, -1.78814e-07)
-locks = [NodePath("../OrGate")]
-
-[node name="Gate_N" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
-transform = Transform3D(3, 0, 2.06324e-07, 0, 3, 0, -2.06324e-07, 0, 3, -5, -0.4, -10)
-locks = [NodePath("../OrGate")]
 
 [node name="Decor" type="Node3D" parent="."]
 visible = false
