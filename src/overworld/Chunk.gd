@@ -33,7 +33,6 @@ func _ready() -> void:
 			child.animation_player = animation_player
 
 		children.append_array(child.get_children())
-	print("LOADED CHILDREN")
 	if len(resets) == 0: return
 	elif len(resets) == 1:
 		var reset := resets[0]

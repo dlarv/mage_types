@@ -24,11 +24,15 @@ func setup(actor: BattleActor) -> void:
 	
 	%Primary.element = actor.element1
 	%Secondary.element = actor.element2
-	actor.element_changed.connect(_on_element_changed)
+	if not actor.element_changed.is_connected(_on_element_changed):
+		actor.element_changed.connect(_on_element_changed)
 	
 	_attacks = []
 	_attacks.resize(max_spell_slots)
-	actor.spell_learned.connect(_set_attack)
+
+	if not actor.spell_learned.is_connected(_set_attack):
+		actor.spell_learned.connect(_set_attack)
+
 	for i in range(max_spell_slots):
 		var button := Button.new()
 		%SpellScroller.add_child(button)
@@ -39,8 +43,11 @@ func setup(actor: BattleActor) -> void:
 		else:
 			button.text = " "
 
-	actor.equipment_equipped.connect(_set_equipment)
-	%Equipment_Button.pressed.connect(_on_item_selected.bind(-1))
+	if not actor.equipment_equipped.is_connected(_set_equipment):
+		actor.equipment_equipped.connect(_set_equipment)
+
+	if not %Equipment_Button.pressed.is_connected(_on_item_selected.bind(-1)):
+		%Equipment_Button.pressed.connect(_on_item_selected.bind(-1))
 	if actor.equipment != null:
 		%Equipment_Button.text = actor.equipment.name
 	else:

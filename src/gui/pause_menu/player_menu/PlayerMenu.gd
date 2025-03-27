@@ -15,8 +15,11 @@ func _ready() -> void:
 func setup(player: Node3D) -> void:
 	_player = player
 	$Player.setup(player.battle_actor)
-	$Player.open_equipment_menu.connect(_on_open_equipment_menu.bind(_player.battle_actor))
-	$Player.open_spell_menu.connect(_on_open_spell_menu.bind(_player.battle_actor))
+
+	if not $Player.open_equipment_menu.is_connected(_on_open_equipment_menu):
+		$Player.open_equipment_menu.connect(_on_open_equipment_menu.bind(_player.battle_actor))
+	if not $Player.open_spell_menu.is_connected(_on_open_spell_menu):
+		$Player.open_spell_menu.connect(_on_open_spell_menu.bind(_player.battle_actor))
 
 	for actor in player.team:
 		if actor == _player.battle_actor: continue
