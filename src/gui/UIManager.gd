@@ -168,6 +168,6 @@ func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	hide()
-	get_tree().change_scene_to_file("res://src/gui/home/home_page.tscn")
+	get_tree().change_scene_to_file("res://src/gui/main_menu/main_menu.tscn")
 
 
