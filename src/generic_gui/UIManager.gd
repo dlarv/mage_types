@@ -19,11 +19,15 @@ var _menu_stack := []
 var _block_input := false
 
 func _ready() -> void:
+	_block_input = true
+	hide()
+
+func setup() -> void:
 	var root := get_tree().get_current_scene()
 	overworld = root.get_node("%Overworld")
 	dialog_box = root.get_node("%DialogueBox")
 	hud = root.get_node("%HUD_Layer")
-	hide()
+	_block_input = false
 
 func _unhandled_input(input: InputEvent) -> void:
 	if _block_input: 

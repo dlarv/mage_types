@@ -19,6 +19,9 @@ var _current_story_actor: StoryActor = null
 		if Settings.use_graph_stencils:
 			UIManager.matchup_chart.current_graphic = val
 
+func _ready() -> void:
+	UIManager.setup()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
