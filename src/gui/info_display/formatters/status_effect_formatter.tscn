@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm864gf38ms1c"]
+
+[ext_resource type="Script" path="res://src/gui/info_display/formatters/StatusEffectFormatter.gd" id="1_1atow"]
+
+[node name="StatusEffectFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "details_label", "icon_parent")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1atow")
+name_label = NodePath("VBoxContainer/HBoxContainer/Label")
+details_label = NodePath("VBoxContainer/RichTextLabel")
+icon_parent = NodePath("VBoxContainer/HBoxContainer/IconParent")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="IconParent" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Name"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="meta_clicked" from="VBoxContainer/RichTextLabel" to="." method="_on_meta_clicked"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpfs4g2v7ybgs"]
+
+[ext_resource type="Script" path="res://src/gui/info_display/formatters/ItemFormatter.gd" id="1_pcjbf"]
+[ext_resource type="PackedScene" uid="uid://pejvhd3qb6b0" path="res://src/gui/info_display/formatters/attack_formatter.tscn" id="2_kp4tt"]
+
+[node name="ItemFormatter" type="PanelContainer" node_paths=PackedStringArray("id_label", "name_label", "is_consumable_hbox", "is_consumable_box", "req_vbox", "req_label", "details_label", "attack_formatter")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pcjbf")
+id_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Id")
+name_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Name")
+is_consumable_hbox = NodePath("MarginContainer/VBoxContainer/IsConsumable")
+is_consumable_box = NodePath("MarginContainer/VBoxContainer/IsConsumable/CheckBox")
+req_vbox = NodePath("MarginContainer/VBoxContainer/Requirements")
+req_label = NodePath("MarginContainer/VBoxContainer/Requirements/RichTextLabel")
+details_label = NodePath("MarginContainer/VBoxContainer/Details")
+attack_formatter = NodePath("MarginContainer/VBoxContainer/AttackFormatter")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Id" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "#0"
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name (x0)"
+horizontal_alignment = 1
+
+[node name="IsConsumable" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/IsConsumable"]
+layout_mode = 2
+text = "Is Consumable? "
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/IsConsumable"]
+layout_mode = 2
+disabled = true
+
+[node name="Details" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Requirements" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Requirements"]
+layout_mode = 2
+text = "Requirements
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Requirements"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AttackFormatter" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_kp4tt")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Details" to="." method="_on_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Requirements/RichTextLabel" to="." method="_on_meta_clicked"]

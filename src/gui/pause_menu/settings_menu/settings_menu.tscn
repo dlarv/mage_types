@@ -1,0 +1,144 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpr8pgu3aektj"]
+
+[ext_resource type="Script" path="res://src/gui/pause_menu/settings_menu/SettingsMenu.gd" id="1_tx88d"]
+[ext_resource type="PackedScene" uid="uid://dtnvdlbt7x1aw" path="res://src/gui/pause_menu/settings_menu/accessibility/colorblindness_menu.tscn" id="2_sdn2o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ew87g"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_eheh8"]
+font_size = 13
+
+[node name="SettingsMenu" type="TabContainer" node_paths=PackedStringArray("_debug_mode_toggle", "_transmutation_hint_toggle")]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 638.0
+current_tab = 0
+script = ExtResource("1_tx88d")
+_debug_mode_toggle = NodePath("General Settings/VBoxContainer/DebugMode_HBox/CheckBox")
+_transmutation_hint_toggle = NodePath("General Settings/VBoxContainer/TransmutationHints_HBox/CheckBox")
+
+[node name="General Settings" type="MarginContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="General Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="General Settings/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_ew87g")
+horizontal_alignment = 1
+
+[node name="DebugMode_HBox" type="HBoxContainer" parent="General Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="General Settings/VBoxContainer/DebugMode_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Debug Mode:"
+
+[node name="CheckBox" type="CheckBox" parent="General Settings/VBoxContainer/DebugMode_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TransmutationHints_HBox" type="HBoxContainer" parent="General Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="General Settings/VBoxContainer/TransmutationHints_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Show transmutation hints:"
+
+[node name="CheckBox" type="CheckBox" parent="General Settings/VBoxContainer/TransmutationHints_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="UseMouseTargeting_HBox" type="HBoxContainer" parent="General Settings/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="General Settings/VBoxContainer/UseMouseTargeting_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Use mouse for spell targeting:"
+
+[node name="CheckBox" type="CheckBox" parent="General Settings/VBoxContainer/UseMouseTargeting_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="UseGraphStencils_HBox" type="HBoxContainer" parent="General Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="General Settings/VBoxContainer/UseGraphStencils_HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Use graph stencils:"
+
+[node name="CheckBox" type="CheckBox" parent="General Settings/VBoxContainer/UseGraphStencils_HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+
+[node name="UseGraphStencilsDescription" type="Label" parent="General Settings/VBoxContainer"]
+layout_mode = 2
+text = "Use simplified versions of the transmutation graph during the tutorial."
+label_settings = SubResource("LabelSettings_eheh8")
+
+[node name="Battle" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Battle"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Battle/VBoxContainer"]
+layout_mode = 2
+text = "Battle"
+label_settings = SubResource("LabelSettings_ew87g")
+horizontal_alignment = 1
+
+[node name="ShowIntentions_HBox" type="HBoxContainer" parent="Battle/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Battle/VBoxContainer/ShowIntentions_HBox"]
+layout_mode = 2
+text = "Show intentions: "
+
+[node name="CheckBox" type="CheckBox" parent="Battle/VBoxContainer/ShowIntentions_HBox"]
+layout_mode = 2
+button_pressed = true
+
+[node name="ShowIntentionsDescription" type="Label" parent="Battle/VBoxContainer"]
+layout_mode = 2
+text = "Shows what element an opponent's next attack will be."
+label_settings = SubResource("LabelSettings_eheh8")
+
+[node name="ShowTurnOrder_HBox" type="HBoxContainer" parent="Battle/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Battle/VBoxContainer/ShowTurnOrder_HBox"]
+layout_mode = 2
+text = "Show turn order: "
+
+[node name="CheckBox" type="CheckBox" parent="Battle/VBoxContainer/ShowTurnOrder_HBox"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Colorblindness" parent="." instance=ExtResource("2_sdn2o")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[connection signal="toggled" from="General Settings/VBoxContainer/DebugMode_HBox/CheckBox" to="." method="_on_debug_mode_toggled"]
+[connection signal="toggled" from="General Settings/VBoxContainer/TransmutationHints_HBox/CheckBox" to="." method="_on_transmutation_hints_toggled"]
+[connection signal="toggled" from="General Settings/VBoxContainer/UseGraphStencils_HBox/CheckBox" to="." method="_on_use_graph_stencils_toggled"]
+[connection signal="toggled" from="Battle/VBoxContainer/ShowIntentions_HBox/CheckBox" to="." method="_on_show_intentions_toggled"]
+[connection signal="toggled" from="Battle/VBoxContainer/ShowTurnOrder_HBox/CheckBox" to="." method="_on_show_turn_order_toggled"]

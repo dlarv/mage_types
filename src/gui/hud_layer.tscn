@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c51362yiro4j6"]
+
+[ext_resource type="Script" path="res://src/gui/HudLayer.gd" id="1_ifgal"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_785qo"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_w26hi"]
+
+[node name="HUD_Layer" type="CanvasLayer"]
+script = ExtResource("1_ifgal")
+
+[node name="OverworldSpellIcons" type="HFlowContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="PrimarySpell_Rect" type="TextureRect" parent="OverworldSpellIcons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("ImageTexture_785qo")
+expand_mode = 3
+
+[node name="SecondarySpell_Rect" type="TextureRect" parent="OverworldSpellIcons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("ImageTexture_w26hi")
+expand_mode = 3

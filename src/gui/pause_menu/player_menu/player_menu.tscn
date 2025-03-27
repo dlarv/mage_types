@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b644ydrvhju3b"]
+
+[ext_resource type="Script" path="res://src/gui/pause_menu/player_menu/PlayerMenu.gd" id="1_lhqub"]
+[ext_resource type="PackedScene" uid="uid://dk5s033cfegw5" path="res://src/gui/pause_menu/player_menu/components/character_screen.tscn" id="2_ac000"]
+
+[node name="PlayerMenu" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("1_lhqub")
+CharacterScreen = ExtResource("2_ac000")
+
+[node name="Player" parent="." instance=ExtResource("2_ac000")]
+layout_mode = 2
+metadata/_tab_index = 0

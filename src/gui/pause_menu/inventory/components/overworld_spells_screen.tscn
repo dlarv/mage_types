@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://nqh84losfog6"]
+
+[ext_resource type="Script" path="res://src/gui/pause_menu/inventory/components/OverworldSpellsScreen.gd" id="1_gyawe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_88ukm"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_pry3t"]
+font_size = 20
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ky5hl"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_1be3m"]
+
+[node name="Overworld Spells" type="MarginContainer"]
+script = ExtResource("1_gyawe")
+metadata/_tab_index = 4
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="NameHeader" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+label_settings = SubResource("LabelSettings_88ukm")
+
+[node name="PrimaryHeader" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Primary"
+label_settings = SubResource("LabelSettings_88ukm")
+
+[node name="SecondaryHeader" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Secondary"
+label_settings = SubResource("LabelSettings_88ukm")
+
+[node name="Stasis_Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Stasis"
+label_settings = SubResource("LabelSettings_pry3t")
+
+[node name="Stasis_CheckBox1" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_ky5hl")
+
+[node name="Stasis_CheckBox2" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_1be3m")
+
+[node name="Catalyst_Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Catalyst"
+label_settings = SubResource("LabelSettings_pry3t")
+
+[node name="Catalyst_CheckBox1" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_ky5hl")
+
+[node name="Catalyst_CheckBox2" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_1be3m")
+
+[node name="Destroy_Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Destroy
+"
+label_settings = SubResource("LabelSettings_pry3t")
+
+[node name="Destroy_CheckBox1" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_ky5hl")
+
+[node name="Destroy_CheckBox2" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_1be3m")
+
+[node name="Vines_Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Vines"
+label_settings = SubResource("LabelSettings_pry3t")
+
+[node name="Vines_CheckBox1" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_ky5hl")
+
+[node name="Vines_CheckBox2" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_1be3m")
+
+[node name="Tunnel_Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Tunnel"
+label_settings = SubResource("LabelSettings_pry3t")
+
+[node name="Tunnel_CheckBox1" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_ky5hl")
+
+[node name="Tunnel_CheckBox2" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_1be3m")

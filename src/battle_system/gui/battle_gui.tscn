@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/battle_system/gui/BattleGUI.gd" id="1_ik08k"]
 [ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
 [ext_resource type="PackedScene" uid="uid://gtkhgnidq78a" path="res://src/battle_system/gui/components/player_controls.tscn" id="2_s8f4v"]
-[ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/generic_gui/info_display/info_display.tscn" id="4_k2fdd"]
+[ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="4_k2fdd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5iq7"]
 albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
