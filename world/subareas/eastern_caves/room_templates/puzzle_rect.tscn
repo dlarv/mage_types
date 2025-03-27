@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7otrw71fg2lc"]
+[gd_scene load_steps=11 format=3 uid="uid://b7otrw71fg2lc"]
 
 [ext_resource type="Script" path="res://world/subareas/eastern_caves/room_templates/EasternCaveRoom.gd" id="1_rns7y"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_0anr6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="6_8mf4k"]
 [ext_resource type="PackedScene" uid="uid://dr82ihfer1ek6" path="res://src/overworld/puzzle_blocks/or_gate.tscn" id="7_gx7pa"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="8_tsrv5"]
+[ext_resource type="PackedScene" uid="uid://c8x2e1fn77n3a" path="res://src/overworld/puzzle_blocks/stasis_target.tscn" id="9_ndwfu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8b64"]
 size = Vector3(3, 2, 5)
@@ -129,8 +130,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 0.0999999)
 [node name="Puzzle" type="Node3D" parent="."]
 process_mode = 4
 
+[node name="StasisTarget" parent="Puzzle" instance=ExtResource("9_ndwfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -8)
+is_on = true
+
 [node name="OrGate" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("7_gx7pa")]
-locks = [NodePath("../Blue_0/LaserReceiver"), NodePath("../Magenta_0/LaserReceiver"), NodePath("../Yellow_0/LaserReceiver"), NodePath("../Cyan_0/LaserReceiver")]
+locks = [NodePath("../Blue_0/LaserReceiver"), NodePath("../Magenta_0/LaserReceiver"), NodePath("../Yellow_0/LaserReceiver"), NodePath("../Cyan_0/LaserReceiver"), NodePath("../StasisTarget")]
 
 [node name="Gate_S" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_tsrv5")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, -0.4, 10)

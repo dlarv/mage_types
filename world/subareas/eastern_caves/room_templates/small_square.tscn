@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3e6yue1cf473"]
+[gd_scene load_steps=6 format=3 uid="uid://d3e6yue1cf473"]
 
 [ext_resource type="Script" path="res://world/subareas/eastern_caves/room_templates/EasternCaveRoom.gd" id="1_n37uk"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_t5hd7"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_fjlj6"]
+[ext_resource type="PackedScene" uid="uid://c8x2e1fn77n3a" path="res://src/overworld/puzzle_blocks/stasis_target.tscn" id="4_d1kde"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d62wh"]
 size = Vector3(3, 2, 4.1)
@@ -124,3 +125,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 [node name="Puzzle" type="Node3D" parent="."]
 
 [node name="Decor" type="Node3D" parent="."]
+
+[node name="StasisTarget" parent="." instance=ExtResource("4_d1kde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -8.5)
