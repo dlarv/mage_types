@@ -1,8 +1,8 @@
 extends PanelContainer
 
 func _ready() -> void:
-	$MarginContainer/Version_Label.text = "v" + ProjectSettings.get_setting("application/config/version")
-	$MarginContainer/Title.text = ProjectSettings.get_setting("application/config/name")
+	%Version_Label.text = "v" + ProjectSettings.get_setting("application/config/version")
+	%Title.text = ProjectSettings.get_setting("application/config/name")
 
 
 func open(fileName: String) -> void:
@@ -25,3 +25,18 @@ func open(fileName: String) -> void:
 func _on_load_game_button_pressed() -> void:
 	open("Player")
 
+
+
+func _on_exit_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_settings_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_new_game_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_back_button_pressed() -> void:
+	pass # Replace with function body.

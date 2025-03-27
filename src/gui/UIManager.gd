@@ -164,3 +164,10 @@ func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
 	if hud:
 		hud.show_overworld_spell(isPrimary, spell)
+
+
+func _on_main_menu_button_pressed() -> void:
+	hide()
+	get_tree().change_scene_to_file("res://src/gui/home/home_page.tscn")
+
+

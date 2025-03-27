@@ -79,6 +79,10 @@ text = "Settings"
 layout_mode = 2
 text = "Save/Load"
 
+[node name="MainMenu_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
 [node name="Quit" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
@@ -122,6 +126,7 @@ layout_mode = 2
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Transmutation_Button" to="." method="_on_transmutation_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/OpenSettings_Button" to="." method="_on_open_settings_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/SaveGame_Button" to="." method="_on_save_game_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/MainMenu_Button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="open_equipment_menu" from="PanelContainer/MarginContainer/TabContainer/PlayerMenu" to="." method="_on_player_menu_open_equipment_menu"]
 [connection signal="open_spell_menu" from="PanelContainer/MarginContainer/TabContainer/PlayerMenu" to="." method="_on_player_menu_open_spell_menu"]
