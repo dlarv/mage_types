@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=56 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="33_yiqc7"]
 [ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="34_71jxw"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="34_bcawc"]
+[ext_resource type="PackedScene" uid="uid://c8x2e1fn77n3a" path="res://src/overworld/puzzle_blocks/stasis_target.tscn" id="35_skv64"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("5_6t7e1")
@@ -367,6 +368,9 @@ _element = "red"
 [node name="Emitter" parent="." instance=ExtResource("34_bcawc")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10, 1, -10)
 _element = "blue"
+
+[node name="StasisTarget" parent="." instance=ExtResource("35_skv64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
