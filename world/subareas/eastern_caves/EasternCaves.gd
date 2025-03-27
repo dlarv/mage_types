@@ -70,7 +70,7 @@ func _setup_rooms(rooms: Array) -> void:
 		yOffset += room_offset
 
 		_setup_room(room, currElement, prevElement, prevDirection, isDefensive)
-		room.set_difficulty(i - 1)
+		room.set_difficulty(i + 1)
 
 		# Shift current room to previous.
 		if prevRoom:

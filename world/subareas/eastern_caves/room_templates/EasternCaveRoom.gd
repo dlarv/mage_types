@@ -86,11 +86,13 @@ func set_difficulty(level: int) -> void:
 
 	var puzzle = _puzzle_parent.find_child(puzzleName)
 	if puzzle:
+		puzzle.process_mode = PROCESS_MODE_INHERIT
 		puzzle.show()
 		return
 
 	puzzle = _puzzle_parent.find_child(puzzleNameAlt)
 	if puzzle:
+		puzzle.process_mode = PROCESS_MODE_INHERIT
 		puzzle.show()
 	else:
 		Logger.append_log(Logger.LogType.WORLD, "No Element(%s) puzzle found in %s." % [ element.name, name ])
