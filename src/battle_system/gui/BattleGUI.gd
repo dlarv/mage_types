@@ -53,7 +53,7 @@ func display_message(msg: Variant) -> void:
 	if msg is Array:
 		msg = "\n".join(msg)
 
-	Logger.append_log(Logger.LogType.BATTLE, msg)
+	Logger.append_battle_log(msg)
 	await messageBox.display_message_blocking(msg)
 	_accept_messages = true
 
@@ -67,7 +67,7 @@ func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	elif msg is Resource and "name" in msg:
 		msgLog = "Player viewed %s." % msg.name
 
-	Logger.append_log(Logger.LogType.BATTLE, msgLog)
+	Logger.append_battle_log(msgLog)
 	messageBox.display_message_non_blocking(msg, limitInfo)
 
 

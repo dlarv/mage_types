@@ -33,7 +33,7 @@ func check(user: BattleActor, target: BattleActor, action: _BattleAction, effect
 	
 	var msg := "ElementalCondition: %s %s {%s} => %s." \
 			% ["&".join(t), op, ",".join(elements.map(func(x): return x.name)), output]
-	Logger.append_log(Logger.LogType.BATTLE, msg)
+	Logger.append_battle_log(msg)
 	return output
 
 func _ne(actor: BattleActor) -> bool:

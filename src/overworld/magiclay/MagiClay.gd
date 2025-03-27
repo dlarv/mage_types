@@ -76,12 +76,10 @@ func _try_set_color(color=null) -> void:
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if e == null or e.is_blank(): return false
 	if in_stasis and not force:
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." % [puzzle_name, e.name])
+		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." % [puzzle_name, e.name])
 		return false
 	elif not is_transmutable and not force: 
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"MagiClay(%s).set_element(%s) failed, b/c Clay is in not transmutable." % [puzzle_name, e.name])
+		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in not transmutable." % [puzzle_name, e.name])
 		return false
 	elif randVal != -2 and _rand_val == randVal and not force: 
 		return false
@@ -89,8 +87,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 		_rand_val = randVal
 	element = e
 	_try_set_color()
-	Logger.append_log(Logger.LogType.PUZZLE, 
-			"MagiClay(%s).set_element(%s) succeeded." % [puzzle_name, e.name])
+	Logger.append_puzzle_log("MagiClay(%s).set_element(%s) succeeded." % [puzzle_name, e.name])
 
 	# The Catalyst overworld spell does not provide a randVal, so this can be used to test if this transmutation
 	# was because of a laser or Catalyst.
@@ -113,17 +110,15 @@ func set_stasis(val=null) -> void:
 	if in_stasis:
 		set_element(_original_element, -2, true)
 		_try_set_color(Color.BLACK)
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
+		Logger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
 	else:
 		_try_set_color()
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
+		Logger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
 		stasis_ended.emit()
 	_flicker_collider()
 
 func reset() -> void:
-	Logger.append_log(Logger.LogType.PUZZLE, "%s reverted to original element. Element(%s) --> Element(%s)." 
+	Logger.append_puzzle_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
 			% [puzzle_name, element.name, _original_element.name])
 	set_stasis(false)
 	set_element(_original_element, _rand_val, true)

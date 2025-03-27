@@ -14,7 +14,7 @@
 size = Vector3(224, 2005, 82)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fa7fq"]
-size = Vector3(1.5, 1, 3)
+size = Vector3(1.5, 1, 4)
 
 [node name="Caves" type="Area3D" node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_l1j24")
@@ -111,11 +111,6 @@ operation = 2
 size = Vector3(4, 7, 7)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveEntry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -30)
-size = Vector3(6, 1, 4)
-material = ExtResource("2_0r40v")
-
 [node name="CaveMid" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -32)
 size = Vector3(0, 0, 0)
@@ -148,20 +143,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 1.5)
 size = Vector3(27, 3, 12)
 material = ExtResource("1_b2eha")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 18)
-size = Vector3(19, 3, 19)
-material = ExtResource("1_b2eha")
-
 [node name="CSGBox3D8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -15)
 size = Vector3(19, 3, 19)
-material = ExtResource("1_b2eha")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 18)
-operation = 2
-size = Vector3(17, 3, 17)
 material = ExtResource("1_b2eha")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
@@ -181,20 +165,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 1.5)
 size = Vector3(25, 1, 2)
 material = ExtResource("2_0r40v")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 8)
-size = Vector3(5, 3, 3)
-material = ExtResource("1_b2eha")
-
 [node name="CSGBox3D13" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -5)
 size = Vector3(5, 3, 3)
-material = ExtResource("1_b2eha")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 8)
-operation = 2
-size = Vector3(3, 3, 5)
 material = ExtResource("1_b2eha")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
@@ -215,19 +188,50 @@ size = Vector3(5, 3, 3)
 material = ExtResource("1_b2eha")
 
 [node name="CSGBox3D74" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.45, 0, 13)
-size = Vector3(3.9, 3, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.45, 0, 4.5)
+size = Vector3(3.9, 3, 6)
 material = ExtResource("1_b2eha")
 
 [node name="CSGBox3D75" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1, 4.5)
 operation = 2
-size = Vector3(5, 3, 3)
+size = Vector3(5, 3, 4)
 material = ExtResource("1_b2eha")
 
-[node name="EasternCave" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, -31)
-size = Vector3(0, 0, 0)
+[node name="Obstacle" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -30)
+size = Vector3(6, 1, 4)
+material = ExtResource("2_0r40v")
+
+[node name="CSGBox" type="CSGBox3D" parent="Chunk/CSGCombiner3D/Obstacle"]
+transform = Transform3D(-4.2222e-08, 0.258819, -0.965926, 1.13133e-08, 0.965926, 0.258819, 1, 0, -4.37114e-08, 3.9, 0.6, -0.5)
+size = Vector3(2, 1, 4)
+material = ExtResource("2_0r40v")
+
+[node name="CSGBox2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/Obstacle"]
+transform = Transform3D(0.5, 4.25765e-31, -0.866026, -8.88178e-16, 1, 3.88235e-23, 0.866025, -1.80508e-30, 0.5, -1.56651, 0.6, -0.308012)
+size = Vector3(4, 1, 3.5)
+material = ExtResource("2_0r40v")
+
+[node name="CSGBox4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/Obstacle"]
+transform = Transform3D(0, 1.22939e-23, -1, -8.88178e-16, 1, 3.18e-23, 1, -7.05803e-24, -2.98023e-08, -6.1, 2.98023e-08, -0.5)
+size = Vector3(2, 1, 2)
+material = ExtResource("2_0r40v")
+
+[node name="CSGBox5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/Obstacle"]
+transform = Transform3D(0, 1.22939e-23, -1, -8.88178e-16, 1, 3.18e-23, 1, -7.05803e-24, -2.98023e-08, -4.1, 2.98023e-08, 0.5)
+size = Vector3(2, 1, 2)
+material = ExtResource("2_0r40v")
+
+[node name="CSGBox6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/Obstacle"]
+transform = Transform3D(0, 1.22939e-23, -1, -8.88178e-16, 1, 3.18e-23, 1, -7.05803e-24, -2.98023e-08, -5.1, 1, 0)
+size = Vector3(3, 1, 2)
+material = ExtResource("2_0r40v")
+
+[node name="CSGBox3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/Obstacle"]
+transform = Transform3D(0.258819, 5.68236e-24, -0.965926, -8.88178e-16, 1, 3.18e-23, 0.965926, -4.33828e-24, 0.258819, -1.35, 1.6, -0.433012)
+size = Vector3(2, 1, 2)
+material = ExtResource("2_0r40v")
 
 [node name="CE_SouthEast" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1, -17)
@@ -291,7 +295,7 @@ collision_mask = 32
 script = ExtResource("8_5xiv5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Start"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, -8.5)
 shape = SubResource("BoxShape3D_fa7fq")
 
 [node name="Marker3D" type="Marker3D" parent="Start/CollisionShape3D"]

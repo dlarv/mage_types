@@ -28,7 +28,7 @@ var random_seed := -1:
 		if val > -1:
 			seed(val)
 			random_seed_changed.emit(val)
-			Logger.append_log(Logger.LogType.PUZZLE, "Set Seed(%d)" % val)
+			Logger.append_log(Logger.LogType.WORLD, "Set Seed(%d)" % val)
 
 var loaded_save_data: FileAccess = null
 var player_name: String = "Player":

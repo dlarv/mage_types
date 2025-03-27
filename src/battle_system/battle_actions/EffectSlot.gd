@@ -9,13 +9,15 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 	var rand = randf()
 	if rand <= chance:
 		if chance != 1.0:
-			Logger.append_log(Logger.LogType.BATTLE, "Action(%s) Succeeded. Chance(%f) >= Rand(%f)" % [attack_effect.name, chance, rand])
+			Logger.append_battle_log("Action(%s) Succeeded. Chance(%f) >= Rand(%f)" 
+					% [attack_effect.name, chance, rand])
 		if effect_target == EffectTarget.TARGET:
 			return attack_effect.apply_effect(user, target, action, effectiveness, element)
 		return attack_effect.apply_effect(user, user, action, effectiveness, element)
 	
 	else:
-		Logger.append_log(Logger.LogType.BATTLE, "Action(%s) failed. Chance(%f) >= Rand(%f)" % [attack_effect.name, chance, rand])
+		Logger.append_battle_log("Action(%s) failed. Chance(%f) >= Rand(%f)" 
+				% [attack_effect.name, chance, rand])
 
 	return "" 
 

@@ -22,15 +22,13 @@ func start(val: Variant=null) -> void:
 	super.start(val)
 	_is_on = true
 	$SubEmitter.start()
-	Logger.append_log(Logger.LogType.PUZZLE, 
-			"Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element.name, laser.rand_val])
+	Logger.append_puzzle_log("Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element.name, laser.rand_val])
 
 func stop(val: Variant=null) -> void: 
 	super.stop(val)
 	_is_on = false
 	$SubEmitter.stop()
-	Logger.append_log(Logger.LogType.PUZZLE, 
-		"Emitter(%s) stopped." % [puzzle_name])
+	Logger.append_puzzle_log("Emitter(%s) stopped." % [puzzle_name])
 
 # Override
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:

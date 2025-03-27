@@ -7,3 +7,5 @@ extends Node3D
 func _ready() -> void:
 	portal.point_2 = marker
 
+func _process(delta: float) -> void:
+	print(Engine.get_frames_per_second())

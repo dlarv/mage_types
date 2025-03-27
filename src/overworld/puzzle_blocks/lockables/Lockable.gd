@@ -31,8 +31,7 @@ func _on_lock_closed(lock: PuzzleBlock) -> bool:
 	if _opened_locks.has(lock):
 		_opened_locks[lock] = false
 		_is_locked = true
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"Lockable(%s)'s Lock(%s) was closed." % [puzzle_name, lock.puzzle_name])
+		Logger.append_puzzle_log("Lockable(%s)'s Lock(%s) was closed." % [puzzle_name, lock.puzzle_name])
 		off.emit(self)
 		return true
 	return false
@@ -44,8 +43,7 @@ func _on_lock_opened(lock: PuzzleBlock) -> bool:
 
 	if _opened_locks.has(lock):
 		_opened_locks[lock] = true
-		Logger.append_log(Logger.LogType.PUZZLE, 
-				"Gate(%s)'s Lock(%s) was opened." % [puzzle_name, lock.puzzle_name])
+		Logger.append_puzzle_log("Gate(%s)'s Lock(%s) was opened." % [puzzle_name, lock.puzzle_name])
 	else:
 		return false
 

@@ -44,7 +44,7 @@ func unequip(actor: BattleActor) -> void:
 	_actor = null
 
 func end_of_turn(allies:Array, opponents: Array) -> void:
-	Logger.append_log(Logger.LogType.BATTLE, "MED equipment altered %s.apply_damage(...)" 
+	Logger.append_battle_log("MED equipment altered %s.apply_damage(...)" 
 			% _actor.name)
 	_actor.resolve_end_of_turn(allies, opponents, false)
 	if not _actor.is_element(element): return

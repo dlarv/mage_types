@@ -10,8 +10,7 @@ func _ready() -> void:
 	lock.invalid_off.connect(_on_lock_closed)
 
 func _on_lock_opened(block: PuzzleBlock) -> void:
-	Logger.append_log(Logger.LogType.PUZZLE, 
-			"Relay(%s) was opened." % [puzzle_name])
+	Logger.append_puzzle_log("Relay(%s) was opened." % [puzzle_name])
 	if not _depressed:
 		$relay_pin/AnimationPlayer.play("depress")
 	_depressed = true
@@ -20,8 +19,7 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 	on.emit(self)
 
 func _on_lock_closed(block: PuzzleBlock) -> void:
-	Logger.append_log(Logger.LogType.PUZZLE, 
-			"Relay(%s) was closed." % [puzzle_name])
+	Logger.append_puzzle_log("Relay(%s) was closed." % [puzzle_name])
 	if _depressed:
 		$relay_pin/AnimationPlayer.play_backwards("depress")
 	_depressed = false

@@ -14,7 +14,7 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 func calculate_damage(attack: float, defense: float, action: _BattleAction, effectiveness: float) -> int:
 	var dmg := strength * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
-	Logger.append_log(Logger.LogType.BATTLE, "Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
+	Logger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
 			% [dmg, strength, attack, defense, effectiveness, rand])
 	return int(dmg * rand)
 

@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
 		var n = name
 		if "puzzle_name" in get_parent():
 			n = get_parent().puzzle_name
-		Logger.append_log(Logger.LogType.PUZZLE, "Player used Interactable(%s)." % n)
+		Logger.append_puzzle_log("Player used Interactable(%s)." % n)
 
 
 func _physics_process(delta: float) -> void:

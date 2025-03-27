@@ -133,23 +133,21 @@ func add(effect: StatChange, name: String) -> void:
 
 	var msg = "%s for %s. Base(%f) * Mod(%f) = %f%s"
 	if effect.stat == StatManager.Stat.ATTACK:
-		Logger.append_log(Logger.LogType.BATTLE, 
-			msg % [effect.name, name, _base_melee_attack, _melee_attack_mod + _attack_mod, melee_attack, "(melee attack)"])
-		Logger.append_log(Logger.LogType.BATTLE, 
-			msg % [effect.name, name, _base_ranged_attack, _ranged_attack_mod + _attack_mod, ranged_attack, "(ranged attack)"])
+		Logger.append_battle_log(msg % [effect.name, name, _base_melee_attack, _melee_attack_mod + _attack_mod, melee_attack, "(melee attack)"])
+		Logger.append_battle_log(msg % [effect.name, name, _base_ranged_attack, _ranged_attack_mod + _attack_mod, ranged_attack, "(ranged attack)"])
 		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_ATTACK))
 		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_ATTACK))
 
 	elif effect.stat == StatManager.Stat.DEFENSE:
-		Logger.append_log(Logger.LogType.BATTLE, 
+		Logger.append_battle_log(
 			msg % [effect.name, name, _base_melee_defense, _melee_defense_mod + _defense_mod, melee_defense, "(melee defense)"])
-		Logger.append_log(Logger.LogType.BATTLE, 
+		Logger.append_battle_log(
 			msg % [effect.name, name, _base_ranged_defense, _ranged_defense_mod + _defense_mod, ranged_defense, "(ranged defense)"])
 		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_DEFENSE))
 		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_DEFENSE))
 
 	else:
-		Logger.append_log(Logger.LogType.BATTLE, 
+		Logger.append_battle_log(
 			msg % [effect.name, name, get_base_stat(effect.stat), get_stat_mod(effect.stat), get_stat(effect.stat), ""])
 		stat_changed.emit(effect.stat, get_stat_mod(effect.stat))
 

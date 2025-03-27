@@ -55,7 +55,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	_turn_counter += 1
 	gui.turn_counter = _turn_counter
 
-	Logger.append_log(Logger.LogType.BATTLE, "\nTurn %d" % _turn_counter)
+	Logger.append_battle_log("\nTurn %d" % _turn_counter)
 
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
@@ -93,7 +93,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			action.actor.turn_ended.emit()
 			continue
 
-		Logger.append_log(Logger.LogType.BATTLE, "\nActors turn: %s" % action.actor.name)
+		Logger.append_battle_log("\nActors turn: %s" % action.actor.name)
 
 		# Play animation.
 		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
@@ -194,7 +194,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	if len(biasMsg) > 0:
 		await gui.display_message(biasMsg)
 
-	Logger.append_log(Logger.LogType.BATTLE, "\n\nPlayer is selecting _actions...")
+	Logger.append_battle_log("\n\nPlayer is selecting _actions...")
 	await dialog(true)
 	_prep_next_turn()
 	gui.enable_player_controls(true)

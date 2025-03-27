@@ -75,21 +75,27 @@ func get_element_of(dir: Direction) -> ElementalType:
 
 func set_difficulty(level: int) -> void:
 	if level <= 0: return
-	var puzzle = _puzzle_parent.find_child(element.name)
-	if not puzzle or puzzle.get_child_count() == 0: return
-	puzzle.show()
-
-	if puzzle.get_child(0).visible: 
-		return
-	elif puzzle.get_child_count() == 1: 
-		puzzle.get_child(0).show()
-		return
-
 	match level:
-		1,2,3:
-			puzzle.get_child(0).show()
-		4,5,6,_:
-			puzzle.get_child(1).show()
+		1, 2, 3: 
+			level = 0
+		_:
+			level = 1
+
+	var puzzleName := element.name
+	var puzzleNameAlt := "%s_%d" % [ puzzleName, level ]
+
+	var puzzle = _puzzle_parent.find_child(puzzleName)
+	if puzzle:
+		puzzle.show()
+		return
+
+	puzzle = _puzzle_parent.find_child(puzzleNameAlt)
+	if puzzle:
+		puzzle.show()
+	else:
+		Logger.append_log(Logger.LogType.WORLD, "No Element(%s) puzzle found in %s." % [ element.name, name ])
+		push_warning("No Element(%s) puzzle found in %s." % [ element.name, name ])
+
 
 func _get_opposite_direction(dir: Direction) -> Direction:
 	match dir:

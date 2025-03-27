@@ -242,7 +242,7 @@ func add_status_effect(effect: StatusEffect) -> void:
 	if _func_overrides.has(add_status_effect.get_method()):
 		_func_overrides.get(add_status_effect.get_method()).call(effect)
 		return 
-	Logger.append_log(Logger.LogType.BATTLE, "%s was applied to %s." % [ effect.name, name ])
+	Logger.append_battle_log("%s was applied to %s." % [ effect.name, name ])
 	if effect is StatChange:
 		stat_manager.add(effect, name)
 	else:
@@ -250,7 +250,7 @@ func add_status_effect(effect: StatusEffect) -> void:
 		status_effect_added.emit(statuses.get_status(effect))
 
 func remove_status_effect(effect: StatusEffect) -> void:
-	Logger.append_log(Logger.LogType.BATTLE, "%s's %s expired." % [ effect.name, name ])
+	Logger.append_battle_log("%s's %s expired." % [ effect.name, name ])
 	statuses.remove([effect])
 	status_effects_removed.emit([ effect ])
 

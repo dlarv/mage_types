@@ -36,7 +36,8 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 						msg += "........%s was defeated." % target.ActorName
 						continue
 			else:
-				Logger.append_log(Logger.LogType.BATTLE, "Item(%s) failed. Chance(%f) >= Rand(%f)" % [name, effect.chance, rand])
+				Logger.append_battle_log("Item(%s) failed. Chance(%f) >= Rand(%f)" 
+						% [name, effect.chance, rand])
 	return msg
 
 # Override

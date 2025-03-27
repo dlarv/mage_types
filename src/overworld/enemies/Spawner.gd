@@ -1,5 +1,9 @@
 extends Area3D
 
+signal player_defeated_enemy()
+signal enemy_defeated_player()
+signal player_ran()
+
 @export var BaseEnemyActor: PackedScene
 @export var battle_actors: Array[BattleActor]
 @export var controllers: Array[OpponentController]
@@ -34,7 +38,17 @@ func _get_rand_enemy() -> Node3D:
 	for i in range(count):
 		team.append(battle_actors.pick_random().duplicate(true))
 	
-	actor.setup(team, controllers.pick_random())
+	var controller: OpponentController = controllers.pick_random()
+	controller.battle_ended.connect(func(endState):
+		match endState:
+			Battle.EndState.WON:
+				player_defeated_enemy.emit()
+			Battle.EndState.DEFEATED:
+				enemy_defeated_player.emit()
+			Battle.EndState.FLED:
+				player_ran.emit()
+		)
+	actor.setup(team, controller)
 	return actor
 
 func _restart_timer() -> void:
