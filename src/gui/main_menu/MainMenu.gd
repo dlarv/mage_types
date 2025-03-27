@@ -18,25 +18,54 @@ func open(fileName: String) -> void:
 		print("Set player name to %s" % data["player_name"])
 
 	Settings.loaded_save_data = file
-
 	get_tree().change_scene_to_file("res://world/demo.tscn")
 
 
 func _on_load_game_button_pressed() -> void:
-	open("Player")
+	%SaveMenu.show()
+	%Back_Button.show()
 
+
+func _on_continue_button_pressed() -> void:
+	var savedGames: Array = %SaveMenu.saved_games
+	if len(savedGames) == 0:
+		%NewGame.show()
+		return
+
+	var path: String
+
+	var maxTime := -1
+	var maxPath: String
+	for game in %SaveMenu.saved_games:
+		var time := FileAccess.get_modified_time("%s/%s" % [Settings.SAVE_ROOT_DIR, game])
+		if time > maxTime:
+			maxPath = game
+			maxTime = time
+
+	open(maxPath)
 
 
 func _on_exit_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit()
 
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	%SettinsMenu.show()
+	%Back_Button.show()
 
 
 func _on_new_game_button_pressed() -> void:
-	pass # Replace with function body.
+	%NewGame.show()
+	%Back_Button.show()
+
 
 func _on_back_button_pressed() -> void:
-	pass # Replace with function body.
+	%TabContainer.current_tab = 0
+	%Back_Button.hide()
+
+
+func _on_save_menu_load_button_pressed(fileName:String) -> void:
+	open(fileName)
+
+
+

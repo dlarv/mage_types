@@ -39,7 +39,8 @@ func _get_rand_enemy() -> Node3D:
 
 func _restart_timer() -> void:
 	var freq := randf_range(spawn_frequency_range.x, spawn_frequency_range.y)
-	$Timer.start(freq)
+	if $Timer.is_inside_tree():
+		$Timer.start(freq)
 
 func spawn() -> void:
 	var enemy := _get_rand_enemy()
