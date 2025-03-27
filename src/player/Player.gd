@@ -97,12 +97,17 @@ func _physics_process(delta: float) -> void:
 func _move_god_mode(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
-	velocity = direction * run_speed * 2
+
+	var speedMod := 1.0
+	if Input.is_key_pressed(KEY_CTRL):
+		speedMod *= 3
+
+	velocity = direction * run_speed * speedMod * 2
 
 	if Input.is_key_pressed(KEY_SPACE):
-		velocity.y += walk_speed
+		velocity.y += walk_speed * speedMod
 	elif Input.is_key_pressed(KEY_SHIFT):
-		velocity.y -= walk_speed
+		velocity.y -= walk_speed * 3
 
 	move_and_slide()
 
