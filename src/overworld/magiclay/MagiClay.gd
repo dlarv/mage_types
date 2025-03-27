@@ -59,14 +59,14 @@ func _ready():
 
 
 # color: Color | null
-func _try_set_color(color=null) -> void:
-	if not _mesh_instance: return
-	if not _material: return
-	if not element: return
+func _try_set_color(color=null) -> bool:
+	if not _material: return false
+	if not element: return false
 	if color == null:
 		_material.albedo_color = element.main_color
 	else:
 		_material.albedo_color = color
+	return true
 
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:

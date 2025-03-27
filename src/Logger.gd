@@ -80,4 +80,3 @@ func append_puzzle_log(msg: Variant) -> void:
 
 func append_world_log(msg: Variant) -> void:
 	append_log(LogType.WORLD, msg)
-

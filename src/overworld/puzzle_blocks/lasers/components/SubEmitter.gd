@@ -62,6 +62,13 @@ func start() -> void:
 	$RayCast3D.enabled = true
 	$Scalar.show()
 
+## Acts like start/stop, but preserves laser data.
+func pause() -> void:
+	is_on = not is_on
+	$RayCast3D.enabled = is_on
+	$Scalar.visible = is_on
+
+
 func set_element(e: ElementalType) -> void:
 	laser.element = e
 	_mat.albedo_color = e.main_color
