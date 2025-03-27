@@ -13,14 +13,10 @@ func _ready() -> void:
 	# As this is not a singleton, it will not be ready until after this object.
 	# Putting the await clause in the UIManager.hud method will cause it to hang after setup is complete.
 	# This is the next best place to put it.
-	await UIManager.ready
-	if not Inventory.use_override: return
-	_activate_spell(true, Inventory.primary_override, true)
-	_activate_spell(true, Inventory.secondary_override, false)
+	# await UIManager.ready
+	if not Inventory.overworld_spell_enabled.is_connected(_on_overworld_spell_enabled):
+		Inventory.overworld_spell_enabled.connect(_on_overworld_spell_enabled)
 
-
-func setup() -> void:
-	Inventory.overworld_spell_enabled.connect(_on_overworld_spell_enabled)
 	for child in $GridContainer.get_children():
 		if child.name.contains("Header"): continue
 
@@ -53,6 +49,13 @@ func setup() -> void:
 	_on_overworld_spell_enabled(OverworldSpell.Spells.DESTROY, Inventory.destroy_spell_enabled)
 	_on_overworld_spell_enabled(OverworldSpell.Spells.VINES, Inventory.vines_spell_enabled)
 	_on_overworld_spell_enabled(OverworldSpell.Spells.TUNNEL, Inventory.tunnel_spell_enabled)
+
+
+func setup() -> void:
+	if not Inventory.use_override: return
+	_activate_spell(true, Inventory.primary_override, true)
+	_activate_spell(true, Inventory.secondary_override, false)
+
 	
 func _on_overworld_spell_enabled(spell: OverworldSpell.Spells, val: bool) -> void:
 	for child in rows[spell]:

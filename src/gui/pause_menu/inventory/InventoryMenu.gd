@@ -6,15 +6,18 @@ signal equipment_selected(item: Item)
 
 var overworld_spells_menu: Control
 
-func _ready() -> void:
+func _ready():
 	$Regular.setup(Inventory.regular_items)
 	$"Spell Beads".setup(Inventory.spell_scrolls)
 	$Equipment.setup(Inventory.equipment)
 	$"Key Items".setup(Inventory.key_items)
-	$"Overworld Spells".setup()
 	overworld_spells_menu = $"Overworld Spells"
 
 	Inventory.quantity_changed.connect(_on_quantity_changed)
+	setup()
+
+func setup() -> void:
+	$"Overworld Spells".setup()
 
 func _on_quantity_changed(item: ItemSlot) -> void:
 	if item.item is RegularItem:

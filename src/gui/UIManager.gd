@@ -33,6 +33,7 @@ func setup() -> void:
 	var p = get_tree().get_nodes_in_group("player") 
 	if len(p) > 0:
 		player_menu.setup(p[0])
+	inventory.setup()
 
 func _unhandled_input(input: InputEvent) -> void:
 	if _block_input: 

@@ -10,7 +10,8 @@ func setup(items: Array) -> void:
 		var button := Button.new()
 		button.text = _format_name(item)
 		button.visible = item.quantity > 0
-		button.pressed.connect(_on_item_pressed.bind(item))
+		if not button.pressed.is_connected(_on_item_pressed):
+			button.pressed.connect(_on_item_pressed.bind(item))
 
 		_buttons.append(button)
 		%SpellsScroller.add_child(button)
