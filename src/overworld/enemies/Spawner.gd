@@ -8,6 +8,7 @@ signal player_ran()
 @export var battle_actors: Array[BattleActor]
 @export var controllers: Array[OpponentController]
 
+@export var level_range := Vector2i(1, 1)
 @export var team_count_range := Vector2i(1, 3)
 @export var spawn_frequency_range := Vector2(1.0, 5.0)
 @export var max_spawn_count := 10
@@ -36,7 +37,9 @@ func _get_rand_enemy() -> Node3D:
 	var team = []
 	var count := randi_range(team_count_range.x, team_count_range.y)
 	for i in range(count):
-		team.append(battle_actors.pick_random().duplicate(true))
+		var battleActor: BattleActor = battle_actors.pick_random().duplicate(true)
+		battleActor.level = randi_range(level_range.x, level_range.y)
+		team.append(battleActor)
 	
 	var controller: OpponentController = controllers.pick_random()
 	controller.battle_ended.connect(func(endState):
