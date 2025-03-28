@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=36 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -14,9 +14,14 @@
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="17_6sjel"]
 [ext_resource type="Resource" uid="uid://sgingeb41cun" path="res://data/items/equipment/reactor_shard.tres" id="17_7ejy0"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="19_b8v62"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="20_dejeb"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="21_k36mp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="21_kghrr"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="21_wyiua"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="21_y7w8y"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="22_gga4f"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="23_nxqmg"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="25_caj5v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcqmo"]
@@ -78,6 +83,31 @@ id = -1
 quantity = 5
 max_quantity = 9999
 allow_stacking = false
+
+[sub_resource type="Resource" id="Resource_yyime"]
+script = ExtResource("23_nxqmg")
+_base_melee_attack = 70.0
+_base_ranged_attack = 70.0
+_base_melee_defense = 70.0
+_base_ranged_defense = 70.0
+_base_speed = 60.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_2inu0"]
+script = ExtResource("20_dejeb")
+name = "Rust Slime"
+level = 1
+stat_manager = SubResource("Resource_yyime")
+hp = 150
+reset_hp_after_battle = true
+_element1 = "orange"
+_element2 = "orange"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("21_kghrr")]([ExtResource("22_gga4f")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qr7x"]
+size = Vector3(14, 2, 9)
 
 [node name="Beach" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_sl1hi")
@@ -623,3 +653,13 @@ _element = "yellow"
 
 [node name="Chest" parent="Chunk/OpenArea" instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -50)
+
+[node name="Spawner" parent="Chunk" instance=ExtResource("19_b8v62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.5, -24)
+battle_actors = Array[ExtResource("20_dejeb")]([SubResource("Resource_2inu0")])
+team_count_range = Vector2i(1, 2)
+max_spawn_count = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.5)
+shape = SubResource("BoxShape3D_3qr7x")

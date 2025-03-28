@@ -123,6 +123,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
 [node name="Puzzle" type="Node3D" parent="."]
 
-[node name="Blue" type="Node3D" parent="Puzzle"]
-
 [node name="Decor" type="Node3D" parent="."]

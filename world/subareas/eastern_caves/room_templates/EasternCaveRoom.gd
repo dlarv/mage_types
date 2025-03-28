@@ -19,9 +19,10 @@ var element: ElementalType
 var doors := {}
 
 @onready var _decor_parent: Node3D = $Decor
-@onready var _puzzle_parent: Node3D = $Puzzle
+var _puzzle_parent: Node3D
 
 func _ready() -> void:
+	_puzzle_parent = $Puzzle
 	_puzzle_parent.hide()
 
 ## Assign elements to physical door.
