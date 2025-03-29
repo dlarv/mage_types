@@ -33,10 +33,19 @@ var strength: float:
 
 var top_hitbox: CollisionShape3D:
 	get:
-		return get_node("StreamTopHitBox/CollisionShape3D")
+		if not top_hitbox:
+			top_hitbox = get_node("StreamTopHitBox/CollisionShape3D")
+		return top_hitbox
 var body_hitbox: CollisionShape3D:
 	get:
-		return get_node("StreamBodyHitBox/CollisionShape3D")
+		if not body_hitbox:
+			body_hitbox = get_node("StreamBodyHitBox/CollisionShape3D")
+		return body_hitbox
+var blocker_hitbox: CollisionShape3D:
+	get:
+		if not blocker_hitbox:
+			blocker_hitbox = get_node("PlayerBlocker/CollisionShape3D")
+		return blocker_hitbox
 
 var is_blocking: bool:
 	get:
@@ -50,7 +59,8 @@ func _enter_tree():
 	body_hitbox.shape.size = Vector3(1, size, 1)
 	top_hitbox.shape = BoxShape3D.new()
 	top_hitbox.shape.size = Vector3(1, 1, 1)
-	$PlayerBlocker.get_node("CollisionShape3D").shape = $PlayerBlocker.get_node("CollisionShape3D").shape.duplicate()
+	blocker_hitbox.shape = BoxShape3D.new()
+	blocker_hitbox.shape.size = Vector3(1.5, 0.5, 1.5)
 
 func _ready() -> void:
 	super._ready()
@@ -142,9 +152,8 @@ func _set_spout_size(val: float) -> void:
 	body_hitbox.shape.size.y = val
 
 	if horizontal:
-		print(puzzle_name)
-		$PlayerBlocker.get_node("CollisionShape3D").shape.size.y = val
-		$PlayerBlocker.get_node("CollisionShape3D").position.y = val / 2
+		blocker_hitbox.shape.size.y = val
+		blocker_hitbox.position.y = val / 2
 
 func _animate_spout_size(val: float) -> void:
 	top_hitbox.position.y = val
@@ -152,7 +161,5 @@ func _animate_spout_size(val: float) -> void:
 	body_hitbox.shape.size.y = val
 
 	if horizontal:
-		print(puzzle_name)
-		$PlayerBlocker.get_node("CollisionShape3D").shape.size.y = val
-		$PlayerBlocker.get_node("CollisionShape3D").position.y = val / 2
-
+		blocker_hitbox.shape.size.y = val
+		blocker_hitbox.position.y = val / 2
