@@ -31,7 +31,7 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 func set_stasis(val=null) -> void:
 	super.set_stasis(val)
 	
-	$SubEmitter.pause()
+	$SubEmitter.pause(in_stasis)
 
 func _flicker_collider() -> void:
 	var val := collision_layer

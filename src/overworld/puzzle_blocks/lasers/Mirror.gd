@@ -12,7 +12,7 @@ func _ready() -> void:
 	$SubEmitterZ.stop()
 
 func _on_sub_receiver_z_laser_received(laser:Laser, point: Vector3) -> void:
-	if _is_emitting: 
+	if _is_emitting:
 		Logger.append_puzzle_log("Mirror(%s) emitting laser of Element(%s), but was hit with a laser of Element(%s)."
 				% [puzzle_name, _active_emitter.laser.element.name, laser.element.name])
 		# _flicker_collider()

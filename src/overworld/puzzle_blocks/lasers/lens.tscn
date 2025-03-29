@@ -12,7 +12,7 @@ top_radius = 0.1
 bottom_radius = 0.7
 height = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o28hp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1cxj"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_b7i8g"]
@@ -20,7 +20,7 @@ top_radius = 0.1
 bottom_radius = 0.7
 height = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnm6j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_811tq"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0me1"]
@@ -38,12 +38,12 @@ shape = SubResource("BoxShape3D_32gow")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.300662)
 mesh = SubResource("CylinderMesh_f28pe")
-surface_material_override/0 = SubResource("StandardMaterial3D_o28hp")
+surface_material_override/0 = SubResource("StandardMaterial3D_m1cxj")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.295207)
 mesh = SubResource("CylinderMesh_b7i8g")
-surface_material_override/0 = SubResource("StandardMaterial3D_wnm6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_811tq")
 
 [node name="SubReceiver1" parent="." instance=ExtResource("1_v6um2")]
 

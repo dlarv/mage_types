@@ -47,6 +47,12 @@ func _physics_process(delta: float) -> void:
 
 	$Scalar.scale.z = distance
 
+func start() -> void:
+	is_on = true 
+	laser.rand_val = Time.get_ticks_usec()
+	$RayCast3D.enabled = true
+	$Scalar.show()
+
 func stop() -> void:
 	if not is_on: return
 	is_on = false
@@ -56,17 +62,12 @@ func stop() -> void:
 		_prev_body.clear_laser()
 		_prev_body = null
 
-func start() -> void:
-	is_on = true 
-	laser.rand_val = Time.get_ticks_usec()
-	$RayCast3D.enabled = true
-	$Scalar.show()
-
 ## Acts like start/stop, but preserves laser data.
-func pause() -> void:
-	is_on = not is_on
-	$RayCast3D.enabled = is_on
-	$Scalar.visible = is_on
+func pause(val: bool) -> void:
+	if val:
+		stop()
+	else:
+		start()
 
 
 func set_element(e: ElementalType) -> void:

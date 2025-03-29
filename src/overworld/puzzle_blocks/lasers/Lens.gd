@@ -70,7 +70,7 @@ func set_stasis(val=null) -> void:
 	super.set_stasis(val)
 	if not _active_emitter: return
 	
-	_active_emitter.pause()
+	_active_emitter.pause(in_stasis)
 	if not in_stasis:
 		_active_material.albedo_color = _active_emitter.laser.element.main_color.darkened(0.5)
 
