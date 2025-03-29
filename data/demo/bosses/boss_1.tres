@@ -20,6 +20,7 @@ _base_evasion = 100.0
 [resource]
 script = ExtResource("3_w7ijy")
 name = "Boss 1"
+level = 1
 stat_manager = SubResource("Resource_advf4")
 hp = 200
 reset_hp_after_battle = true

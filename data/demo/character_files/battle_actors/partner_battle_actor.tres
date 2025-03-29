@@ -20,6 +20,7 @@ _base_evasion = 100.0
 [resource]
 script = ExtResource("3_2eocn")
 name = "Partner"
+level = 1
 stat_manager = SubResource("Resource_pvhim")
 hp = 200
 reset_hp_after_battle = true

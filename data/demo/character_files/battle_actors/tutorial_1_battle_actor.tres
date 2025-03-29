@@ -17,6 +17,7 @@ _base_evasion = 100.0
 [resource]
 script = ExtResource("4_5ngg0")
 name = "Guy"
+level = 1
 stat_manager = SubResource("Resource_h1bhc")
 hp = 100
 reset_hp_after_battle = true
