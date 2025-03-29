@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkhryrwbn73l3"]
+[gd_scene load_steps=15 format=3 uid="uid://bkhryrwbn73l3"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_8ivut"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="10_dqew1"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="11_xejjv"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="12_41bv6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgb7e"]
 size = Vector3(224, 2005, 82)
@@ -183,6 +184,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.45, 0, -22)
 size = Vector3(3.9, 3, 5)
 material = ExtResource("1_b2eha")
 
+[node name="CSGBox3D76" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4, 0, -20.5)
+size = Vector3(2, 3, 8)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D77" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4, 0, -9.5)
+size = Vector3(2, 3, 8)
+material = ExtResource("1_b2eha")
+
+[node name="CSGBox3D78" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4, 0, -9.5)
+size = Vector3(2, 3, 8)
+material = ExtResource("1_b2eha")
+
 [node name="CSGBox3D73" type="CSGBox3D" parent="Chunk/CSGCombiner3D/CaveMid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 1, -22)
 operation = 2
@@ -291,33 +307,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.7, -12.8)
 collision_layer = 5
 
 [node name="MagiClayTerrain" parent="Chunk" instance=ExtResource("10_dqew1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -0.5, -50)
-_element = "purple"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -0.5, -46.5)
+_element = "green"
 
 [node name="Geyser" parent="Chunk" instance=ExtResource("11_xejjv")]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 26, 0, -55.5)
 horizontal = true
-size = 18.0
-_element = "red"
+size = 12.0
+base_strength = 50.0
+_element = "blue"
 
-[node name="Geyser2" parent="Chunk" instance=ExtResource("11_xejjv")]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 22.3179, 0, -55.5177)
-horizontal = true
-size = 18.0
-base_strength = 18.0
-_element = "red"
-
-[node name="Geyser3" parent="Chunk" instance=ExtResource("11_xejjv")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.3179, 0, -38.5177)
-horizontal = true
-size = 18.0
-_element = "red"
-
-[node name="Geyser4" parent="Chunk" instance=ExtResource("11_xejjv")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21, 0, -38.5)
-horizontal = true
-size = 18.0
-_element = "red"
+[node name="MagiclayBoulder" parent="Chunk" instance=ExtResource("12_41bv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -1, -47)
+linear_damp_mode = 1
+linear_damp = 50.0
 
 [node name="Start" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.1, -19)
