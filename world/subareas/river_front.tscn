@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://r3fqpgt5gk0n"]
 
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_05t2e"]
+[ext_resource type="Material" uid="uid://ceo6m3wglwsxq" path="res://assets/3d/textures/placeholder_grid_texture/wip.tres" id="1_yv5du"]
 
 [node name="RiverFront" type="Node3D"]
 
@@ -9,51 +9,53 @@ use_collision = true
 
 [node name="LowerApproach" type="CSGBox3D" parent="CSGCombiner3D"]
 size = Vector3(0, 0, 0)
+material = ExtResource("1_yv5du")
 
 [node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/LowerApproach"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
 size = Vector3(5, 3, 12)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/LowerApproach"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -16)
 size = Vector3(5, 5, 10)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/LowerApproach"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -6)
 operation = 2
 size = Vector3(3, 3, 12)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/LowerApproach"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -16.5)
 operation = 2
 size = Vector3(3, 5, 11)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D/LowerApproach"]
 transform = Transform3D(-4.37114e-08, 0, 2.9, 0, 1, 0, -1, 0, -1.26763e-07, 1.4, 0, -11)
 polygon = PackedVector2Array(0, 0, -6, 0.5, 1, 2.5, 1, 0)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
 
 [node name="UpperApproach" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
 size = Vector3(0, 0, 0)
+material = ExtResource("1_yv5du")
 
 [node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/UpperApproach"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, -10)
 size = Vector3(51, 3, 20)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/UpperApproach"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, -10)
 operation = 2
 size = Vector3(49, 3, 18)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
 
 [node name="LA_UA" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -21.5)
 operation = 2
 size = Vector3(3, 3, 2)
-material = ExtResource("1_05t2e")
+material = ExtResource("1_yv5du")
