@@ -1,19 +1,31 @@
 @tool
 extends PuzzleBlock
 
+@export var horizontal := false
 @export var size := 5.0:
 	set(val):
 		size = val
-		top_hitbox.position.y = size
-		body_hitbox.position.y = size / 2
-		body_hitbox.shape.size.y = size
+		_set_spout_size(size * _size_mod)
 
 @export var base_strength := 15.0:
 	set(val):
 		base_strength = val
 		# dot ~= 1, when geyser is pointing upward.
 		_mod = Vector3.UP.dot(transform.basis.y)
-	
+
+var _size_mod: float:
+	get:
+		match element:
+			ElementManager.Blue, ElementManager.Magenta: 
+				return 0.5
+			ElementManager.Purple: 
+				return 0.8
+			ElementManager.Orange:
+				return 1.5
+			ElementManager.Green:
+				return 2.0
+			ElementManager.Red,ElementManager.Yellow,ElementManager.Cyan,_: 
+				return 1.0
 var _mod := 1.0
 var strength: float:
 	get:
@@ -38,6 +50,7 @@ func _enter_tree():
 	body_hitbox.shape.size = Vector3(1, size, 1)
 	top_hitbox.shape = BoxShape3D.new()
 	top_hitbox.shape.size = Vector3(1, 1, 1)
+	$PlayerBlocker.get_node("CollisionShape3D").shape = $PlayerBlocker.get_node("CollisionShape3D").shape.duplicate()
 
 func _ready() -> void:
 	super._ready()
@@ -45,6 +58,7 @@ func _ready() -> void:
 		_set_blocking(true)
 	else:
 		_set_blocking(false)
+	_set_spout_size(size * _size_mod)
 
 
 func _physics_process(delta: float) -> void:
@@ -85,6 +99,9 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 		_set_blocking(true)
 	else:
 		_set_blocking(false)
+	
+	_animate_spout_size(size * _size_mod)
+
 	return true
 
 
@@ -118,3 +135,24 @@ func start(val: Variant=null) -> void:
 
 func _set_blocking(val: bool) -> void:
 	$PlayerBlocker.set_collision_layer_value(6, val)
+
+func _set_spout_size(val: float) -> void:
+	top_hitbox.position.y = val
+	body_hitbox.position.y = val / 2
+	body_hitbox.shape.size.y = val
+
+	if horizontal:
+		print(puzzle_name)
+		$PlayerBlocker.get_node("CollisionShape3D").shape.size.y = val
+		$PlayerBlocker.get_node("CollisionShape3D").position.y = val / 2
+
+func _animate_spout_size(val: float) -> void:
+	top_hitbox.position.y = val
+	body_hitbox.position.y = val / 2
+	body_hitbox.shape.size.y = val
+
+	if horizontal:
+		print(puzzle_name)
+		$PlayerBlocker.get_node("CollisionShape3D").shape.size.y = val
+		$PlayerBlocker.get_node("CollisionShape3D").position.y = val / 2
+
