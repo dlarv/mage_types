@@ -42,15 +42,9 @@ func _get_rand_enemy() -> Node3D:
 		team.append(battleActor)
 	
 	var controller: OpponentController = controllers.pick_random()
-	controller.battle_ended.connect(func(endState):
-		match endState:
-			Battle.EndState.WON:
-				player_defeated_enemy.emit()
-			Battle.EndState.DEFEATED:
-				enemy_defeated_player.emit()
-			Battle.EndState.FLED:
-				player_ran.emit()
-		)
+	if not controller.battle_ended.is_connected(_on_battle_ended):
+		controller.battle_ended.connect(_on_battle_ended)
+
 	actor.setup(team, controller)
 	return actor
 
@@ -71,3 +65,12 @@ func spawn() -> void:
 		var index := _enemies.find(enemy)
 		_enemies.remove_at(index)
 		_restart_timer())
+
+func _on_battle_ended(endState: Battle.EndState) -> void:
+	match endState:
+		Battle.EndState.WON:
+			player_defeated_enemy.emit()
+		Battle.EndState.DEFEATED:
+			enemy_defeated_player.emit()
+		Battle.EndState.FLED:
+			player_ran.emit()
