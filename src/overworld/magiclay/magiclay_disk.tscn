@@ -3,16 +3,15 @@
 [ext_resource type="Script" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_3jqdt"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="1_jy6gi"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_nc6py"]
-height = 1.0
-radius = 0.7
+[sub_resource type="BoxShape3D" id="BoxShape3D_kfreq"]
+size = Vector3(1.4, 1, 1.4)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4vvit"]
 top_radius = 0.7
 bottom_radius = 0.7
 height = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snhjv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y83r0"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiclayDisk" type="RigidBody3D"]
@@ -31,11 +30,12 @@ is_transmutable = true
 base_size = Vector3(0.7, 0.7, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_nc6py")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08)
+shape = SubResource("BoxShape3D_kfreq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_4vvit")
-surface_material_override/0 = SubResource("StandardMaterial3D_snhjv")
+surface_material_override/0 = SubResource("StandardMaterial3D_y83r0")
 
 [node name="Draggable" parent="." instance=ExtResource("1_jy6gi")]
 

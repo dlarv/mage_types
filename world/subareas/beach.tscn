@@ -360,8 +360,8 @@ size = Vector3(42, 3, 19)
 material = ExtResource("1_kv0ly")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1, -53)
-size = Vector3(6, 3, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1, -52.5)
+size = Vector3(6, 3, 3)
 material = ExtResource("1_kv0ly")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
