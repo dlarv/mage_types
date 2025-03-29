@@ -294,6 +294,31 @@ collision_layer = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -0.5, -50)
 _element = "purple"
 
+[node name="Geyser" parent="Chunk" instance=ExtResource("11_xejjv")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 26, 0, -55.5)
+horizontal = true
+size = 18.0
+_element = "red"
+
+[node name="Geyser2" parent="Chunk" instance=ExtResource("11_xejjv")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 22.3179, 0, -55.5177)
+horizontal = true
+size = 18.0
+base_strength = 18.0
+_element = "red"
+
+[node name="Geyser3" parent="Chunk" instance=ExtResource("11_xejjv")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.3179, 0, -38.5177)
+horizontal = true
+size = 18.0
+_element = "red"
+
+[node name="Geyser4" parent="Chunk" instance=ExtResource("11_xejjv")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21, 0, -38.5)
+horizontal = true
+size = 18.0
+_element = "red"
+
 [node name="Start" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.1, -19)
 collision_layer = 0
@@ -314,9 +339,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.1, -54)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, -20)
 correct_marker = NodePath("../End")
 start_portal = NodePath("../Start")
-
-[node name="Geyser" parent="." instance=ExtResource("11_xejjv")]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 26, 0, -55.4)
-horizontal = true
-size = 18.0
-_element = "red"
