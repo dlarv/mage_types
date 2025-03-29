@@ -192,11 +192,14 @@ func _set_size() -> void:
 	elif mesh is PlaneMesh:
 		mesh.size.x = base_size.x * scaling_factor.x
 		mesh.size.y = base_size.z * scaling_factor.z
-	else:
+	elif mesh is SphereMesh:
+		mesh.radius = base_size.x * scaling_factor.x
+		mesh.height = base_size.y * scaling_factor.y
+	elif "size" in mesh:
 		mesh.size = base_size * scaling_factor
 
 	if shape is CylinderShape3D:
 		shape.radius = base_size.x * scaling_factor.x
 		shape.height = base_size.z * scaling_factor.z
-	else:
+	elif "size" in shape:
 		shape.size = base_size * scaling_factor
