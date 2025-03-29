@@ -6,6 +6,8 @@ const RoomPortal := preload("res://addons/room_and_portals/RoomPortal.gd")
 @export var defensive_templates: Array[PackedScene]
 @export var offensive_templates: Array[PackedScene]
 @export var room_count := 8
+## How many rooms should have challenges.
+@export var challenge_room_count := 6
 @export var correct_marker: Marker3D
 @export var start_portal: RoomPortal
 ## How much vertical distance to put between each room instance.
@@ -59,6 +61,7 @@ func _setup_rooms(rooms: Array) -> void:
 	var isDefensive := false
 
 	var i := -1
+	var challengeLevel := challenge_room_count - room_count
 	for room in rooms:
 		i += 1
 		room = room.instantiate()
@@ -70,7 +73,8 @@ func _setup_rooms(rooms: Array) -> void:
 		yOffset += room_offset
 
 		_setup_room(room, currElement, prevElement, prevDirection, isDefensive)
-		room.set_difficulty(i + 1)
+		room.set_difficulty(challengeLevel)
+		challengeLevel += 1
 
 		# Shift current room to previous.
 		if prevRoom:

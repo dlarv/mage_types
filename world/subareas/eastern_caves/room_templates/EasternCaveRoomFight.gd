@@ -7,19 +7,21 @@ const Spawner := preload("res://src/overworld/enemies/Spawner.gd")
 @export var max_spawn_count: int
 @export var required_victories := 3
 
-@onready var relay_1 := $Relay
-@onready var relay_2 := $Relay2
-@onready var relay_3 := $Relay3
+@onready var relay_1 := $EastRoomFightChallenge/Relay
+@onready var relay_2 := $EastRoomFightChallenge/Relay2
+@onready var relay_3 := $EastRoomFightChallenge/Relay3
 
 var _level: int
 
 func _ready() -> void:
 	_puzzle_parent = $EastRoomFightChallenge/Chunk
-	# _puzzle_parent.hide()
+	_puzzle_parent.hide()
 
 
 func set_difficulty(level: int) -> void:
 	if level <= 0: return
+	$EastRoomFightChallenge.process_mode = Node.PROCESS_MODE_INHERIT
+	_puzzle_parent.process_mode = Node.PROCESS_MODE_INHERIT
 	_puzzle_parent.show()
 	_level = base_level + level - 1
 

@@ -163,6 +163,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 [node name="Decor" type="Node3D" parent="."]
 
 [node name="EastRoomFightChallenge" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+process_mode = 4
 script = ExtResource("5_btrw6")
 chunk = NodePath("Chunk")
 
@@ -170,35 +171,38 @@ chunk = NodePath("Chunk")
 shape = SubResource("BoxShape3D_q1uxr")
 
 [node name="Chunk" type="Node3D" parent="EastRoomFightChallenge"]
+process_mode = 4
 
 [node name="Purple" parent="EastRoomFightChallenge/Chunk" instance=ExtResource("4_udggu")]
+process_mode = 4
+visible = false
 battle_actors = Array[ExtResource("7_otd4f")]([SubResource("Resource_o4341")])
 max_spawn_count = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EastRoomFightChallenge/Chunk/Purple"]
 shape = SubResource("BoxShape3D_jxtsn")
 
-[node name="Relay" parent="." instance=ExtResource("8_57omm")]
+[node name="Gate_S" parent="EastRoomFightChallenge/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.4, 10)
+locks = [NodePath("../../Relay"), NodePath("../../Relay2"), NodePath("../../Relay3")]
+
+[node name="Gate_E" parent="EastRoomFightChallenge/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 10, -0.4, -1.78814e-07)
+locks = [NodePath("../../Relay"), NodePath("../../Relay2"), NodePath("../../Relay3")]
+
+[node name="Gate_W" parent="EastRoomFightChallenge/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -10, -0.4, -1.78814e-07)
+locks = [NodePath("../../Relay"), NodePath("../../Relay2"), NodePath("../../Relay3")]
+
+[node name="Gate_N" parent="EastRoomFightChallenge/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
+transform = Transform3D(3, 0, 2.06324e-07, 0, 3, 0, -2.06324e-07, 0, 3, 0, -0.4, -10)
+locks = [NodePath("../../Relay"), NodePath("../../Relay2"), NodePath("../../Relay3")]
+
+[node name="Relay" parent="EastRoomFightChallenge" instance=ExtResource("8_57omm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -8)
 
-[node name="Relay2" parent="." instance=ExtResource("8_57omm")]
+[node name="Relay2" parent="EastRoomFightChallenge" instance=ExtResource("8_57omm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, -8)
 
-[node name="Relay3" parent="." instance=ExtResource("8_57omm")]
+[node name="Relay3" parent="EastRoomFightChallenge" instance=ExtResource("8_57omm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -8)
-
-[node name="Gate_S" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.4, 10)
-locks = [NodePath("../Relay"), NodePath("../Relay2"), NodePath("../Relay3")]
-
-[node name="Gate_E" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 10, -0.4, -1.78814e-07)
-locks = [NodePath("../Relay"), NodePath("../Relay2"), NodePath("../Relay3")]
-
-[node name="Gate_W" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -10, -0.4, -1.78814e-07)
-locks = [NodePath("../Relay"), NodePath("../Relay2"), NodePath("../Relay3")]
-
-[node name="Gate_N" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
-transform = Transform3D(3, 0, 2.06324e-07, 0, 3, 0, -2.06324e-07, 0, 3, 0, -0.4, -10)
-locks = [NodePath("../Relay"), NodePath("../Relay2"), NodePath("../Relay3")]

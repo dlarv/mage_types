@@ -11,6 +11,7 @@
 script = ExtResource("1_kxg6y")
 defensive_templates = Array[PackedScene]([ExtResource("2_r6f8r"), ExtResource("3_6mt33")])
 offensive_templates = Array[PackedScene]([ExtResource("2_58v11")])
+challenge_room_count = 0
 chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

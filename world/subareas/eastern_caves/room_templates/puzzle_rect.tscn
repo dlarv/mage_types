@@ -159,6 +159,7 @@ _element = "blue"
 [node name="Magenta_0" type="Node3D" parent="Puzzle"]
 process_mode = 4
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -2)
+visible = false
 
 [node name="Emitter" parent="Puzzle/Magenta_0" instance=ExtResource("4_pbk1g")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 1, 9)

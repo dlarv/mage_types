@@ -139,9 +139,12 @@ shape = SubResource("BoxShape3D_s0b3o")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
 [node name="Puzzle" type="Node3D" parent="."]
+process_mode = 4
+visible = false
 
 [node name="Blue_0" type="Node3D" parent="Puzzle"]
 process_mode = 4
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Puzzle/Blue_0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -196,12 +199,12 @@ _element = "yellow"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.5, 4)
 _element = "yellow"
 
-[node name="OrGate" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("5_bdo5a")]
-locks = [NodePath("../Blue_0/PressurePlate")]
-
-[node name="MagiclayRock" parent="Puzzle" instance=ExtResource("4_ja6al")]
+[node name="MagiclayRock" parent="Puzzle/Blue_0" instance=ExtResource("4_ja6al")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 4)
 _element = "blue"
+
+[node name="OrGate" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("5_bdo5a")]
+locks = [NodePath("../Blue_0/PressurePlate")]
 
 [node name="Gate_S" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_i03r6")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.4, 15)
