@@ -307,7 +307,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.7, -12.8)
 collision_layer = 5
 
 [node name="MagiClayTerrain" parent="Chunk" instance=ExtResource("10_dqew1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -0.5, -46.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -0.5, -47)
 _element = "green"
 
 [node name="Geyser" parent="Chunk" instance=ExtResource("11_xejjv")]
