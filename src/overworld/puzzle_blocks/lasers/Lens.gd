@@ -44,6 +44,7 @@ func _on_sub_receiver_1_laser_received(laser:Laser, point:Vector3) -> void:
 
 
 func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> void:
+	if in_stasis: return
 	_is_emitting = true
 	subEmitter.global_position.y = point.y
 	_active_emitter = subEmitter

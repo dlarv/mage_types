@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
+	if in_stasis: return
 	_is_emitting = true
 	$SubEmitter.global_position.y = point.y
 
