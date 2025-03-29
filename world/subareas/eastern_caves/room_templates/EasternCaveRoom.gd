@@ -13,6 +13,7 @@ const DOOR_DECALS := {
 	"Cyan": preload("door_decals/cyan.tscn"),
 }
 
+@export var room_override: String
 
 var correct_door: Direction
 var element: ElementalType
@@ -79,6 +80,15 @@ func get_element_of(dir: Direction) -> ElementalType:
 
 func set_difficulty(level: int) -> void:
 	if level <= 0: return
+	if not room_override.is_empty():
+		_puzzle_parent.process_mode = PROCESS_MODE_INHERIT
+		_puzzle_parent.show()
+
+		var p = _puzzle_parent.find_child(room_override)
+		p.process_mode = PROCESS_MODE_INHERIT
+		p.show()
+		return
+
 	match level:
 		1, 2, 3: 
 			level = 0
@@ -91,13 +101,16 @@ func set_difficulty(level: int) -> void:
 	var puzzleName := element.name
 	var puzzleNameAlt := "%s_%d" % [ puzzleName, level ]
 
-	var puzzle = _puzzle_parent.find_child(puzzleName)
-	if puzzle:
-		puzzle.process_mode = PROCESS_MODE_INHERIT
-		puzzle.show()
-		return
+	var puzzle: Node3D
+	for child in _puzzle_parent.get_children():
+		if child is PuzzleBlock or child is MagiClay or child is Lockable: continue
+		# If child is already visible, its because its the one I'm currently testing.
+		if child.visible:
+			puzzle = child
+			break
+		if child.name == puzzleName or child.name == puzzleNameAlt:
+			puzzle = child
 
-	puzzle = _puzzle_parent.find_child(puzzleNameAlt)
 	if puzzle:
 		puzzle.process_mode = PROCESS_MODE_INHERIT
 		puzzle.show()

@@ -23,7 +23,7 @@ script = ExtResource("10_vrkw6")
 _base_melee_attack = 100.0
 _base_ranged_attack = 100.0
 _base_melee_defense = 1.0
-_base_ranged_defense = 1.0
+_base_ranged_defense = 100.0
 _base_speed = 100.0
 _base_evasion = 100.0
 
@@ -179,13 +179,13 @@ max_spawn_count = 3
 shape = SubResource("BoxShape3D_jxtsn")
 
 [node name="Relay" parent="." instance=ExtResource("8_57omm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -8)
 
 [node name="Relay2" parent="." instance=ExtResource("8_57omm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, -8)
 
 [node name="Relay3" parent="." instance=ExtResource("8_57omm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -8)
 
 [node name="Gate_S" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("9_vuxc6")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.4, 10)
