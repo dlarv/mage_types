@@ -15,26 +15,8 @@ func _ready() -> void:
 	body_exited.connect(unload)
 	collision_mask = 32
 				
-	if not is_in_group("persist"): return
-	# BFS on all children
-	var children := chunk.get_children()
-	while len(children) > 0:
-		var child = children.pop_back()
-		if child.has_method("serialize"):
-			_persistent_objs[child.get_path()] = child
-			if child.is_in_group("persist"):
-				child.remove_from_group("persist")
-				push_warning("Node(%s) is in persist group but is also child of persistent Chunk(%s)" 
-						% [ child.puzzle_name, name])
-		# Set value for animation_actors w/o their own players.
-		# Typically, there will be 1 animation player in the main scene which everything shares.
-		# This way, it can access other chunks and characters.
-		if animation_player and child is AnimationActor and not child.animation_player:
-			child.animation_player = animation_player
-
-		children.append_array(child.get_children())
-	if len(resets) == 0: return
-	elif len(resets) == 1:
+	# if len(resets) == 0: return
+	if len(resets) == 1:
 		var reset := resets[0]
 		for child in find_children("", "MagiClay"):
 			reset.magiclay_reset.connect(child.reset)
@@ -42,6 +24,27 @@ func _ready() -> void:
 		for reset in resets:
 			for child in reset.get_parent().find_children("", "MagiClay", true):
 				reset.magiclay_reset.connect(child.reset)
+
+	# BFS on all children
+	var children := chunk.get_children()
+	while len(children) > 0:
+		var child = children.pop_back()
+
+		if is_in_group("persist"): 
+			if child.has_method("serialize"):
+				_persistent_objs[child.get_path()] = child
+				if child.is_in_group("persist"):
+					child.remove_from_group("persist")
+					push_warning("Node(%s) is in persist group but is also child of persistent Chunk(%s)" 
+							% [ child.puzzle_name, name])
+
+		# Set value for animation_actors w/o their own players.
+		# Typically, there will be 1 animation player in the main scene which everything shares.
+		# This way, it can access other chunks and characters.
+		if animation_player and child is AnimationActor and not child.animation_player:
+			child.animation_player = animation_player
+
+		children.append_array(child.get_children())
 
 func load(player: Node3D) -> void:
 	# if not player.is_in_group("player"): return
