@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2cifsivdxxbt"]
+[gd_scene load_steps=7 format=3 uid="uid://d2cifsivdxxbt"]
 
 [ext_resource type="Script" path="res://src/overworld/characters/Npc.gd" id="1_dlikj"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="2_gvig4"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_pxk60"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vu1g"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sibqn"]
+material = SubResource("StandardMaterial3D_6vu1g")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t46fn"]
 

@@ -21,6 +21,10 @@ var _current_story_actor: StoryActor = null
 
 func _ready() -> void:
 	#await get_tree().create_timer(5).timeout
+	var p = get_tree().get_nodes_in_group("player") 
+	if len(p) > 0:
+		_player = p[0]
+
 	UIManager.setup()
 
 

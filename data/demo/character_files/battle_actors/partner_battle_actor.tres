@@ -1,31 +1,30 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://dkgwtmxs7v2mq"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://dkgwtmxs7v2mq"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_aok80"]
-[ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="2_xhvpj"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_2eocn"]
 [ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="3_w620r"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_7sif1"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="4_j1bqv"]
-[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/shield.tres" id="5_3np0q"]
+[ext_resource type="Resource" uid="uid://ee57154ypnv1" path="res://data/battle_system/battle_actions/attacks/desolation.tres" id="4_wb0kn"]
 
 [sub_resource type="Resource" id="Resource_pvhim"]
 script = ExtResource("4_7sif1")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
-_base_melee_defense = 115.0
-_base_ranged_defense = 115.0
+_base_melee_attack = 115.0
+_base_ranged_attack = 115.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
 _base_speed = 50.0
 _base_evasion = 100.0
 
 [resource]
 script = ExtResource("3_2eocn")
-name = "Partner"
+name = "Crimson"
 level = 1
 stat_manager = SubResource("Resource_pvhim")
 hp = 200
 reset_hp_after_battle = true
-_element1 = "blue"
-_element2 = "blank"
-_elemental_bias = "blue"
+_element1 = "red"
+_element2 = "orange"
+_elemental_bias = "red"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_aok80")]([ExtResource("2_xhvpj"), ExtResource("3_w620r"), ExtResource("4_j1bqv"), ExtResource("5_3np0q")])
+attacks = Array[ExtResource("2_aok80")]([ExtResource("3_w620r"), ExtResource("4_j1bqv"), ExtResource("4_wb0kn")])

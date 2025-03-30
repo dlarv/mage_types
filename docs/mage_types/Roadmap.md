@@ -147,6 +147,9 @@ Demo playtest candidate. Game should be visually and auditorially presentable.
 - [x] Apply affinity costs.
 - [x] Remove item from inventory.
 
+Both EffectSlot and AttackEffect have a Chance property. 
+- If AttackEffect is damage, then  `EffectSlot.chance` is considered accuracy. This will fail with a message like "The attack missed."
+- `AttackEffect.chance` will fail silently.
 ### Transmutations (tran)
 **Apply transmutations and related effects when necessary.**
 - [x] (Primary | Secondary) + Attack
