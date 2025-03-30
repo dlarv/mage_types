@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://ee57154ypnv1"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_lpeax"]
+[ext_resource type="PackedScene" uid="uid://chvddpwtc6d1r" path="res://src/battle_system/battle_actions/animations/geyser.tscn" id="1_sm806"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_dtei8"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_37dw4"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_o170a"]
+
+[sub_resource type="Resource" id="Resource_kwvki"]
+script = ExtResource("3_37dw4")
+name = ""
+chance = 1.0
+strength = 100.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_r3ina"]
+script = ExtResource("4_o170a")
+attack_effect = SubResource("Resource_kwvki")
+effect_target = 1
+chance = 0.5
+_element = "blank"
+
+[resource]
+resource_name = "Desolation"
+script = ExtResource("2_dtei8")
+effects = Array[ExtResource("1_lpeax")]([SubResource("Resource_r3ina")])
+name = "Desolation"
+animation = ExtResource("1_sm806")
+_element = "red"
+priority = 0
+attack_range = 1
+target = 3
+details = ""
