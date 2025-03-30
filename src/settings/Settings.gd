@@ -36,15 +36,15 @@ var player_name: String = "Player":
 		player_name = val
 		player_name_changed.emit(val)
 
+
 func _ready() -> void:
 	random_seed = "Player".hash()
 
+
 func set_player_name(name: String) -> void:
-	var player = get_tree().get_nodes_in_group("player")
-	if len(player) > 0:
-		player = player[0]
-	else:
-		pass
+	# var player = get_tree().get_nodes_in_group("player")
+	# if len(player) > 0:
+	# 	player = player[0]
 
 	player_name = name
 	random_seed = name.hash()

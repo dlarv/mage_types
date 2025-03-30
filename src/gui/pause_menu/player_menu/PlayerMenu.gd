@@ -14,7 +14,11 @@ func _ready() -> void:
 
 func setup(player: Node3D) -> void:
 	_player = player
-	$Player.setup(player.battle_actor)
+
+	if not Settings.player_name.is_empty():
+		_player.battle_actor.name = Settings.player_name
+
+	$Player.setup(_player.battle_actor)
 
 	if not $Player.open_equipment_menu.is_connected(_on_open_equipment_menu):
 		$Player.open_equipment_menu.connect(_on_open_equipment_menu.bind(_player.battle_actor))

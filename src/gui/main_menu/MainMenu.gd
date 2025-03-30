@@ -15,7 +15,6 @@ func open(fileName: String) -> void:
 	var data = file.get_var()
 	if data.has("player_name"):
 		Settings.set_player_name(data["player_name"])
-		print("Set player name to %s" % data["player_name"])
 
 	Settings.loaded_save_data = file
 	get_tree().change_scene_to_file("res://world/demo.tscn")
@@ -68,4 +67,10 @@ func _on_save_menu_load_button_pressed(fileName:String) -> void:
 	open(fileName)
 
 
+func _on_create_game_button_pressed() -> void:
+	var playerName: String = %Name_LineEdit.text
+	if playerName.is_empty():
+		playerName = "Player"
 
+	Settings.set_player_name(playerName)
+	get_tree().change_scene_to_file("res://world/demo.tscn")
