@@ -1,24 +1,110 @@
->[!note] Changes from v1
->Version 1 of the script/intro used the player's first battle as the vehicle to introduce the transmutation system, then showed the player some puzzles. This is backwards. Battles are much more complicated and I think the player would benefit from already having some familiarity with it.
+# Characters
+- Basil (Green): Himbo security. Your partner. Himbo. Likes fighting.
+	- I think having your partner be stereotypically Green will help the player internalize why the Offensive/Defensive isn' Warm/Cold.
+- Aqua (Cyan): Passionate engineer. Built a lot of the main puzzles the player has to solve.
+- Ultramarine (Blue): Serene benefactor. Likes reading. Is the admin/financier of the expedition.
+- Lavender (Purple): Creepy zoologist. Created the deep cave puzzle, the notes are their madman ramblings. If you talk to them 3 times they attack you.
+- Rose (Magenta): Bubbly architect. Most down to Earth person on the island.
+- Crimson (Red): Brooding botanist. Laments being so far from the hivemind.
+- Tang/Tangerine (Orange): Practical chemist. Has trouble connecting with others who are not connected to the Orange-consciousness.
+- Low (Yellow): Distractable communicator. Handles communication with the mainland, organizing shipments.
 
-**Ways to introduce the partner**:
-- Prof Birch method: Partner is in the process of being attacked, asks player for help.
-- Cassette beasts method: Player gets attacked, partner steps in to help them.
-- Player meets partner after tutorial battle.
-**What does player need to know about battles**:
-- Primary/Secondary + Attack transmutations.
-- Primary + Secondary transmutations.
-- Side effects.
-- Melee vs ranged.
-**Player should already know**:
-- The base concept.
-- How to use the transmutation chart.
+Naming Schemes: In general, people on Forlorn choose names related to their bias (shades of that color or things typically that color).
+- Blue tends to have somewhat pretentious names. This works because a lot of shades of blue have pretentious names.
+- Purple, Magenta, and Cyan have the most basic names (shades or objects). 
+- Green tends to be names after plants.
+- Orange and Yellow tends to have long name that are shortened as nickname.
+	- Orange and Yellow have a lot of overlapping culture (see the Sunset Temple).
+	- Orange and Cyan share a sort of practicality, however Orange are typically more academic.
+	- Yellow is very free spirited, but, all things considered, handle their business well.
+- Red reuse the same few names. Internally, they don't really need names as their sort-of hivemind makes them somewhat unnecessary.
 
-Partner offers player a gift (Magenta Strike) in return for helping them with the first boss. Player is given three options:
-- "Idk how to fight" => Starts tutorial battle.
-- Less confident option => Partner suggests fighting the Rust Slimes for practice.
-- Confident option => Fast track option.
+The rest of the crew is somewhat condescending to Basil, seeing him as a dumb brute. While they are a himbo, this is mostly due to their prejudice against Green. I want the plot to be lighthearted, so this should be more of an undercurrent.
+# Scene 0 (Intro Puzzle Hint Stones)
+- These should be signed off as Aqua.
+- "The writing is somewhat obscured. Would you like to look closer?"
 
-# Intro Playtesting Questions
-- Will players resort to brute forcing the puzzles.
-	- What's the best way to introduce and teach them about the graph?
+**Puzzle 1 Hint 1**:
+
+# Scene 1
+- Player's partner is now Crimson (name: wip). I think they make a good middle ground between Blue and Green, they're more serious, while also more likely to drag the player into a battle 'for experience.'
+- Crimson is looking for Basil, who has wandered off. Crimson is lowkey pissed at the others for their treatment of Basil, blaming the otheris for essentially chasing him off.
+- Crimson is willing to let the player tag along. 
+- Crimson is used to being around the rest of the hivemind, where people can pick up on their meaning. This manifests in them almost seeming to talk to themselves as much as the player.
+
+*Player walks up to Crimson.*
+>**Crimson**: You just washed up on the beach, haven't you. Tell me, did you see a large, green man down that way?
+>>**Player**: No...
+>**Crimson**: ... I'm sorry, how hypocritical\* of me. My name is Crimson, who might you be?
+>>**Player**: Introduces themselves.
+>**Crimson**: ... I know we just met, but would you kindly do me a favor?
+>>**Player**: Sure! 
+>>**Player**: What's up?
+>>>**Crimson**: I have a friend who seems to have wandered off. The aforementioned Green man. Would you help me find them?
+>>>>**Player**: Of course!
+>>>>>**Crimson**: You're kindness is most appreciated.
+>>>>**Player**: What do you need me for?
+>>>>>**Crimson**: In truth, my offer is more for you than me. It would be unkind to leave you to their mercy. Helping you is what Basil would do.
+>>>>>>**Player**: Basil? Is that your Green friend's name?
+>>>>>>>**Crimson**: Indeed.
+>>>>>>**Player**: Oh, well thanks.
+>**Crimson**: I'm sure Basil will not be found on the beach. Let's move Northward. Here, take these. They'll help you against what is to come.
+
+*Player is given Shield and Magenta Strike.*
+>**Crimson**: I must warn you. Up ahead, there is a dangerous foe. A large slime. We'll have to fight it.
+>>**Player**: I don't know how to fight. (Start battle tutorial).
+>>>**Crimson**: Then I will teach you.
+>>**Player**: I'm not so sure.
+>>>**Crimson**: We will win. But if you'd like, the slimes in the next room should act as a weaker version.
+>>**Player**: Let's do it!
+>>>**Crimson**: Your enthusiasm. You will get along well with Basil.
+
+\*it won't be obvious to the player yet, but Crimson is referring to their criticisms of the others' unfriendly treatment of Basil. 
+# Scene 2 (Battle Tutorial)
+- Objectives:
+	- Transmutation hint
+	- Attack + Primary||Secondary
+	- Primary + Secondary
+	- Side effects
+	- Attack + Blank secondary typing
+Player (Blue/Blank/None):
+- Purple Throw
+- Orange Throw
+- Magenta Strike
+- Shield (Cyan)
+
+Crimson (Red/Orange/Red):
+- Sting (Orange/Ranged)
+- Purple Hit
+- Scarlet Mist (Red/Ranged/All): Heals red types. Damages all others.
+- Desolation (Red/Ranged): High base power, but lower accuracy.
+
+Enemy (Purple/Purple/None):
+- Purple Throw
+
+Turn 0:
+>**Crimson**: Since you were able to bypass Aqua's little experiments on the beach, I assume you have a basic understanding of the transmutation system. But should you need a reminded, you can press 'T' to view the menu.
+>**Crimson**: Unlike Aqua's little blocks, however, combatants can have 2 types.
+>**Crimson**: Select an attack from the menu below. If you hover your mouse over the opponent, you'll be shown the Transmutation hint. For now, simply remember the color in the top-right square.
+
+Turn 1:
+>**Crimson**: 
+# Scene 3
+- Player obtains Stasis Spell and Basil explains how it works.
+
+*The boss disappears after being defeated. Behind it is a pile of stuff.*
+>**Crimson**: It appears Basil left their possessions here.
+>>**Player**: Do you think they're okay?
+>>>**Crimson**: Hmm. It is possible he dropped it under duress. However, it is more likely they simply forgot.
+
+*Crimson moves towards the pile and picks it up.*
+>**Crimson**: Here take this.
+*Player receives stasis spell. A title card explains how it works.*
+>**Crimson**: Ahead are more of Aqua's obstacles. Stasis will certainly be necessary to progress.
+>>**Player**: Should I be taking Basil's stuff?
+>>>**Crimson**: That is one of 2 copies of Stasis we share between the 8 of us, it doesn't just belong to Basil. Besides, he is clearly not using it currently.
+# Scene 4
+- Player and Crimson go through the Eastern Caves.
+	- Player: Did Aqua design this too?
+	- Crimson: Ha. Aqua wishes.
+- Player obtains Catalyst spell after beating boss 2.

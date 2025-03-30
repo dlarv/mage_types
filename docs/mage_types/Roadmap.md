@@ -33,8 +33,12 @@
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.3.x
-Demo main track implemented. Player can play through the main story of the demo, but not necessarily any of the extra content.
+Demo main track implemented. Player can play through the main story of the demo, but not necessarily any of the extra content. First wave of play testing can commence upon completion of this version.
 
+- [ ] New Game creation screen.
+- [ ] Enable/disable overworld spells.
+	- [ ] Display info screen describing overworld spell upon first time it is enabled.
+- [ ] Add loot to chests.
 **STRY.x**
 - Battle actors for each boss created (x3).
 	- [x] Boss 1
@@ -47,7 +51,7 @@ Demo main track implemented. Player can play through the main story of the demo,
 - [ ] Demo tutorial written.
 	- [ ] Transmutation graph and intro puzzles.
 	- [ ] Battle tutorial.
-	- [ ] Partner introduction.
+	- [x] Partner introduction.
 - [ ] Blocking and non-blocking dialog triggers implemented.
 	- [x] Blocking.
 	- [ ] ~~Non-blocking.
@@ -62,7 +66,8 @@ Demo main track implemented. Player can play through the main story of the demo,
 **OVER.publ**
 - [x] Light up indicator wire created.
 **OVER.clay**
-- [ ] Unique materials system planned.
+- [ ] ~~Unique materials system planned.
+	- [ ] ~~Apply physics materials to transformed MagiClay.
 - [ ] Visual indicator of MagiClay object properties (destructable, etc).
 **CHAR.save**
 - [x] Save/load architecture implemented.
@@ -85,7 +90,7 @@ Demo MVP. Player can visit every area of the demo and experience the major featu
 - [ ] Player companions follow player.
 **OVER.wild**
 - [ ] Simple wild enemy behavior.
-	- [ ] Aggressive
+	- [x] Aggressive
 	- [ ] Passive
 	- [ ] Scared
 **OVER.spel**
@@ -224,6 +229,15 @@ For v0.3.27:
 	- Blue: Heavy/high inertia
 	- Red: Biological => What this means exactly is TBD.
 	- The rest have to be 'refined' in order to display their unique features, restricting them to machines/etc. 
+
+I think the physical properties idea is excellent in theory, but has proven an absolute pain to implement. I also suspect it might have some performance issues. There are two approaches I could take to address this:
+- Implement a physics system in C++ from the ground up.
+- Restrict this aspect to 'refined matter,' allowing me to control which objects/machines are affected by transmutations.
+
+The issues arise between the player controller, Draggables, and the interaction between MagiClay objects.
+- If the player is a RigidBody the Chemistry system is more interactable and natural, but Draggables break.
+- Using a CharacterBody allows the Draggables to work, but makes interacting with the system difficult.
+- Since the player cannot jump, their ability to interact with these physics effects are limited.
 
 ### Puzzle Blocks (publ)
 **Puzzles should be designed using simple building blocks.**

@@ -1,3 +1,6 @@
+# Intro Playtesting Questions
+- Will players resort to brute forcing the puzzles.
+	- What's the best way to introduce and teach them about the graph?
 # Objectives
 - Battle UI and combat:
 	- Transmutation system.
@@ -206,8 +209,9 @@ Boss has 3 attacks:
 			- Offensive rooms are enemies.
 			- Player must go thru 8 rooms total, 4 of which will have some kind of challenge.
 
-Correct Sequence: B O* Y* P M R C* G*
-\* Extra challenge room
+Room order will ideally be randomly generated. There will always be 8 rooms, one of each element. The contents of the room will remain the same.
+The first two rooms will be empty, allowing the player to quickly determine their next move. The next six will be populated with some form of challenge.
+- It would be cool if the rooms were randomly generated at first, but remained the same for the rest of the player's game.
 
 >[!note] Room and Portal System
 >Godot3 had a Room and Portal System which could be used to make separate rooms. Godot4 doesn't seem to have this feature, so I will likely have to create it myself. [[room_and_portals]].
