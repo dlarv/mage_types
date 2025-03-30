@@ -12,13 +12,13 @@ albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
 material = SubResource("StandardMaterial3D_u5iq7")
 size = Vector2(50, 50)
 
-[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("messageBox", "ally_display_parent", "enemy_display_parent", "playerControls", "turn_counter_display", "turn_order_display")]
+[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("message_box", "ally_display_parent", "enemy_display_parent", "player_controls", "turn_counter_display", "turn_order_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 script = ExtResource("1_ik08k")
-messageBox = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
+message_box = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
 ally_display_parent = NodePath("Ally_TeamDisplay")
 enemy_display_parent = NodePath("Opponent_TeamDisplay")
-playerControls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
+player_controls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 turn_counter_display = NodePath("CanvasLayer/TurnCounter")
 turn_order_display = NodePath("CanvasLayer/TurnOrder/VBoxContainer")
 

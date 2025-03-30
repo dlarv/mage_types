@@ -51,6 +51,7 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 func on_player_actions_selected(allyActions: Array) -> void:
 	_dialog_box.stop()
 	gui.enable_player_controls(false)
+	gui.show_enemy_intentions(false)
 
 	_turn_counter += 1
 	gui.turn_counter = _turn_counter
@@ -298,6 +299,7 @@ func _check_if_battle_ended() -> bool:
 
 func _prep_next_turn() -> void:
 	_actions = ai.get_actions(allies)
+	gui.show_enemy_intentions(true)
 	tie_breaker = randf() < 0.5
 
 	var speedRank := allies.duplicate()

@@ -100,6 +100,10 @@ func get_target_position() -> Vector2:
 	pos2D.y += scale.y / 2
 	return pos2D
 
+func show_intentions(val: bool) -> void:
+	$GPUParticles3D.emitting = val
+	$GPUParticles3D.visible = val
+
 func _on_mouse_entered() -> void:
 	if is_selectable:
 		set_highlight(true)

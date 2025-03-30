@@ -3,10 +3,10 @@ class_name BattleGUI
 
 signal actions_selected(actions)
 
-@export var messageBox: RichTextLabel 
+@export var message_box: RichTextLabel 
 @export var ally_display_parent: TeamDisplay 
 @export var enemy_display_parent: TeamDisplay 
-@export var playerControls: Control
+@export var player_controls: Control
 @export var turn_counter_display: Label
 @export var turn_order_display: VBoxContainer
 
@@ -29,7 +29,7 @@ var _accept_messages := true
 func setup(allies: Array, items: Array, enemies: Array) -> void:
 	init_allies(allies)
 	init_enemies(enemies)
-	playerControls.setup(allies, items, enemies)
+	player_controls.setup(allies, items, enemies)
 	_finished_setup = true
 	$Camera3D.make_current()
 
@@ -54,7 +54,7 @@ func display_message(msg: Variant) -> void:
 		msg = "\n".join(msg)
 
 	Logger.append_battle_log(msg)
-	await messageBox.display_message_blocking(msg)
+	await message_box.display_message_blocking(msg)
 	_accept_messages = true
 
 func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
@@ -68,7 +68,7 @@ func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 		msgLog = "Player viewed %s." % msg.name
 
 	Logger.append_battle_log(msgLog)
-	messageBox.display_message_non_blocking(msg, limitInfo)
+	message_box.display_message_non_blocking(msg, limitInfo)
 
 
 func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
@@ -86,7 +86,7 @@ func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
 	return sprite.get_target_position()
 
 func enable_player_controls(enable: bool) -> void:
-	playerControls.set_enabled(enable)
+	player_controls.set_enabled(enable)
 
 func _on_action_target_selection_cancelled() -> void:
 	ally_display_parent.cancel_target_selection()
@@ -98,8 +98,8 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 
 	var actorAction = ActorAction.new(allies[index], action, targets, 0)
 	_selected_actions[index] = actorAction
-	messageBox.clear_message()
-	playerControls.next_character()
+	message_box.clear_message()
+	player_controls.next_character()
 
 func select_targets(user: BattleActor, action:_BattleAction):
 	var targets = null
@@ -149,8 +149,14 @@ func select_targets(user: BattleActor, action:_BattleAction):
 		return null
 	return targets
 
+
+func show_enemy_intentions(val: bool) -> void:
+	enemy_display_parent.show_intentions(val)
+
+
 func _on_active_actor_changed(index: int) -> void:
 	ally_display_parent.highlight(index)
+
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:

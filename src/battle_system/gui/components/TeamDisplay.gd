@@ -123,3 +123,8 @@ func highlight(index: int) -> void:
 	sprites[highlightedActorIndex].set_highlight(false)
 	highlightedActorIndex = index
 	sprites[highlightedActorIndex].set_highlight(true)
+
+## Show intentions particle effect.
+func show_intentions(val: bool) -> void:
+	for sprite in sprites:
+		sprite.show_intentions(val)
