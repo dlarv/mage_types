@@ -7,6 +7,7 @@ class_name ItemSlot
 		item = value
 		if value != null:
 			resource_name = item.name
+			if item == null or not item is RegularItem: return
 			if item.battle_item:
 				item.battle_item.quantity = quantity
 @export var id: int: 
@@ -32,4 +33,3 @@ func _init(item: Item = null):
 
 	if item is RegularItem and item.battle_item != null:
 		item.battle_item.quantity = quantity
-

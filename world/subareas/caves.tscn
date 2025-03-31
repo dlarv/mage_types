@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkhryrwbn73l3"]
+[gd_scene load_steps=15 format=3 uid="uid://bkhryrwbn73l3"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="2_0r40v"]
-[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="2_e8x54"]
 [ext_resource type="Material" uid="uid://ceo6m3wglwsxq" path="res://assets/3d/textures/placeholder_grid_texture/wip.tres" id="5_kgaij"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_ds18g"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="8_5xiv5"]
@@ -29,10 +28,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5, 1002, -18.5)
 shape = SubResource("BoxShape3D_sgb7e")
 
 [node name="Chunk" type="Node3D" parent="."]
-
-[node name="Boss2" parent="Chunk" instance=ExtResource("2_e8x54")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, -45)
-collision_layer = 5
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Chunk"]
 use_collision = true

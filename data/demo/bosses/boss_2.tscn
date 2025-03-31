@@ -18,6 +18,7 @@ radius = 1.56864
 script = ExtResource("4_bqxmt")
 id = "BOSS1"
 next = -1
+end_state = ""
 
 [sub_resource type="Resource" id="Resource_5do5k"]
 script = ExtResource("6_a3ylm")
@@ -28,6 +29,7 @@ dialog_ids = Array[ExtResource("5_hphma")]([])
 
 [node name="Boss2" instance=ExtResource("1_gljf2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
+collision_layer = 5
 
 [node name="blob2" parent="." index="1" instance=ExtResource("2_vqxvv")]
 
@@ -39,7 +41,7 @@ shape = SubResource("SphereShape3D_0mcoh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 shape = SubResource("SphereShape3D_ucadb")
 
-[node name="StoryActor" parent="." index="3" instance=ExtResource("3_bqnv6")]
+[node name="StoryActor" parent="." index="3" groups=["persist"] instance=ExtResource("3_bqnv6")]
 dialog_ids = Array[ExtResource("4_bqxmt")]([SubResource("Resource_xpu74")])
 
 [node name="EnemyActor" parent="." index="4" instance=ExtResource("4_htvo1")]

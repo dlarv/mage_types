@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=67 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -15,7 +15,6 @@
 [ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="16_c81wx"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="17_6sjel"]
-[ext_resource type="Resource" uid="uid://sgingeb41cun" path="res://data/items/equipment/reactor_shard.tres" id="17_7ejy0"]
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="17_g7uef"]
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="19_b8v62"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="20_dejeb"]
@@ -34,6 +33,12 @@
 [ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="26_q248r"]
 [ext_resource type="Resource" uid="uid://biujho1cv84is" path="res://data/items/spell_scrolls/strikes/r_strike_scroll.tres" id="27_npiqw"]
 [ext_resource type="Resource" uid="uid://bs7w81umm54rg" path="res://data/items/spell_scrolls/strikes/y_strike_scroll.tres" id="28_ofiwo"]
+[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="35_63ow1"]
+[ext_resource type="Resource" uid="uid://docdwxk76wvo1" path="res://data/battle_system/battle_actions/attacks/basic/throw_g.tres" id="35_nbiip"]
+[ext_resource type="Resource" uid="uid://ctlauvjcfmpog" path="res://data/battle_system/battle_actions/attacks/strikes/blue_strike.tres" id="36_8pp8m"]
+[ext_resource type="Resource" uid="uid://b3n0dro8r3h8l" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/green_phobia.tres" id="36_lvoq8"]
+[ext_resource type="Resource" uid="uid://bfjk3jf15fgeh" path="res://data/battle_system/battle_actions/attacks/strikes/green_strike.tres" id="37_5b4jx"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="37_51rth"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcqmo"]
 size = Vector3(109, 15, 81)
@@ -43,15 +48,6 @@ vertices = PackedVector3Array(-16.526, 1.1, -52.848, -16.526, 1.1, -70.348, -31.
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(12, 8, 0), PackedInt32Array(0, 8, 3), PackedInt32Array(3, 8, 13)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_eqm52"]
-
-[sub_resource type="Resource" id="Resource_7ip05"]
-resource_name = "Reactor Shard"
-script = ExtResource("16_m6hrw")
-item = ExtResource("17_7ejy0")
-id = 4
-quantity = 1
-max_quantity = 9999
-allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_d2uvq"]
 resource_name = "Terrify Scroll"
@@ -86,7 +82,7 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_minc2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85721"]
 albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_l7ikq"]
@@ -189,10 +185,10 @@ allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_yyime"]
 script = ExtResource("23_nxqmg")
-_base_melee_attack = 70.0
-_base_ranged_attack = 70.0
-_base_melee_defense = 70.0
-_base_ranged_defense = 70.0
+_base_melee_attack = 80.0
+_base_ranged_attack = 80.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
 _base_speed = 60.0
 _base_evasion = 100.0
 
@@ -201,13 +197,57 @@ script = ExtResource("20_dejeb")
 name = "Rust Slime"
 level = 1
 stat_manager = SubResource("Resource_yyime")
-hp = 150
+hp = 200
 reset_hp_after_battle = true
 _element1 = "orange"
 _element2 = "orange"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
 attacks = Array[ExtResource("21_kghrr")]([ExtResource("22_gga4f")])
+
+[sub_resource type="Resource" id="Resource_fkgfx"]
+script = ExtResource("23_nxqmg")
+_base_melee_attack = 100.0
+_base_ranged_attack = 150.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 300.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_gtv84"]
+script = ExtResource("20_dejeb")
+name = "Green Elemental"
+level = 1
+stat_manager = SubResource("Resource_fkgfx")
+hp = 100
+reset_hp_after_battle = true
+_element1 = "green"
+_element2 = "blank"
+_elemental_bias = "green"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("21_kghrr")]([ExtResource("35_nbiip"), ExtResource("36_lvoq8"), ExtResource("37_5b4jx")])
+
+[sub_resource type="Resource" id="Resource_6ro7p"]
+script = ExtResource("23_nxqmg")
+_base_melee_attack = 150.0
+_base_ranged_attack = 150.0
+_base_melee_defense = 150.0
+_base_ranged_defense = 150.0
+_base_speed = 150.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_6n4tm"]
+script = ExtResource("20_dejeb")
+name = "Blue Elemental"
+level = 1
+stat_manager = SubResource("Resource_6ro7p")
+hp = 100
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "blank"
+_elemental_bias = "blue"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("21_kghrr")]([ExtResource("35_63ow1"), ExtResource("36_8pp8m"), ExtResource("37_51rth")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qr7x"]
 size = Vector3(14, 2, 9)
@@ -572,8 +612,8 @@ _element = "blue"
 is_breakable = true
 
 [node name="Chest_South" parent="Chunk" groups=["persist"] instance=ExtResource("15_xriqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -6)
-items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_7ip05"), SubResource("Resource_d2uvq")])
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -50)
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_d2uvq")])
 
 [node name="TidePoolEntry" type="Node3D" parent="Chunk"]
 
@@ -636,7 +676,7 @@ shape = SubResource("BoxShape3D_t08x8")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_rnvix")
-surface_material_override/0 = SubResource("StandardMaterial3D_minc2")
+surface_material_override/0 = SubResource("StandardMaterial3D_85721")
 
 [node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
@@ -654,7 +694,7 @@ transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, -1.04, -0.3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -8)
 _element = "magenta"
 
-[node name="Chest" parent="Chunk/Puzzle_North" node_paths=PackedStringArray("locks") instance=ExtResource("15_xriqk")]
+[node name="Chest" parent="Chunk/Puzzle_North" node_paths=PackedStringArray("locks") groups=["persist"] instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -13)
 items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_l7ikq"), SubResource("Resource_ug6rn"), SubResource("Resource_w66jm")])
 locks = [NodePath("../PressurePlate")]
@@ -806,21 +846,16 @@ size = 1.0
 _element = "red"
 scaling_factor = Vector3(2, 2, 1)
 
-[node name="MagiclayRock" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -50)
-_element = "magenta"
-
 [node name="CaveApproach" type="Node3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -59)
 
-[node name="Chest" parent="Chunk/CaveApproach" instance=ExtResource("15_xriqk")]
+[node name="Chest" parent="Chunk/CaveApproach" groups=["persist"] instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, -4)
 items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_o4yjh"), SubResource("Resource_rdk0t"), SubResource("Resource_3bmnv"), SubResource("Resource_cymaj"), SubResource("Resource_0xiio"), SubResource("Resource_b5bak"), SubResource("Resource_vmq77"), SubResource("Resource_hrqgv")])
 
 [node name="Spawner2" parent="Chunk/CaveApproach" instance=ExtResource("19_b8v62")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 3.5, -9)
-battle_actors = Array[ExtResource("20_dejeb")]([SubResource("Resource_2inu0")])
-team_count_range = Vector2i(1, 2)
+battle_actors = Array[ExtResource("20_dejeb")]([SubResource("Resource_2inu0"), SubResource("Resource_gtv84"), SubResource("Resource_6n4tm")])
 max_spawn_count = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CaveApproach/Spawner2"]
