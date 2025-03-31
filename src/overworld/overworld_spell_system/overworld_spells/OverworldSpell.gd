@@ -1,7 +1,7 @@
 extends Node3D
 class_name OverworldSpell
 
-enum Spells { STASIS, DESTROY, CATALYST, VINES, TUNNEL }
+enum Spells { STASIS, DESTROY, CATALYST, VINES, TUNNEL, NONE }
 
 @export var icon: CompressedTexture2D
 var Projectile: PackedScene

@@ -36,10 +36,15 @@ var _battle_items: Array
 @export var key_items: Array[ItemSlot]:
 	set(vals):
 		key_items = vals
-		_reorder_item_array(key_items)
+		key_items.sort_custom(func(a, b): 
+			a.item.id = a.item.unique_id
+			b.item.id = b.item.unique_id
+			return a.item.unique_id < b.item.unique_id)
+		# _reorder_item_array(key_items)
 @export var recalc_ids_k: bool:
 	set(val):
-		_reorder_item_array(key_items)
+		key_items.sort_custom(func(a, b): return a.item.unique_id < b.item.unique_id)
+		# _reorder_item_array(key_items)
 @export var equipment: Array[ItemSlot]:
 	set(vals):
 		equipment = vals
@@ -77,21 +82,22 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 	_battle_items.append(item)
 
 @export_category("Overworld Spells")
-@export var stasis_spell_enabled: bool
-@export var destroy_spell_enabled: bool
-@export var vines_spell_enabled: bool
-@export var catalyst_spell_enabled: bool
-@export var tunnel_spell_enabled: bool
+# @export var stasis_spell_enabled: bool
+# @export var destroy_spell_enabled: bool
+# @export var vines_spell_enabled: bool
+# @export var catalyst_spell_enabled: bool
+# @export var tunnel_spell_enabled: bool
 @export var primary_override: OverworldSpell.Spells
 @export var secondary_override: OverworldSpell.Spells
 @export var use_override: bool
 
-var spell1: OverworldSpell.Spells
-var spell2: OverworldSpell.Spells
+var spell1 := OverworldSpell.Spells.NONE
+var spell2 := OverworldSpell.Spells.NONE
 
 ## Returns list of **RegularItems** that contain BattleItems.
 func get_battle_items() -> Array:
 	return _battle_items
+
 
 func add(item: Item, amount:=1) -> void:
 	if amount < 0:
@@ -109,6 +115,7 @@ func add(item: Item, amount:=1) -> void:
 	elif item is Equipment:
 		list = equipment
 	else:
+		add_key_item(item)
 		list = key_items
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
@@ -122,12 +129,33 @@ func add(item: Item, amount:=1) -> void:
 		slot.quantity = 1
 		quantity_changed.emit(slot)
 
+
 func add_spell(spell: Attack) -> void:
 	for slot in spell_scrolls:
 		if slot.item.spell == spell:
 			slot.quantity += 1
 			quantity_changed.emit(slot)
 			return
+
+
+func add_key_item(item: KeyItem) -> void:
+	var overworldSpell = -1
+	match item.unique_id:
+		KeyItem.UniqueId.STASIS:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.STASIS, true)
+			overworldSpell = OverworldSpell.Spells.STASIS 
+		KeyItem.UniqueId.CATALYST:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.CATALYST, true)
+			overworldSpell = OverworldSpell.Spells.CATALYST 
+		KeyItem.UniqueId.DESTROY:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.DESTROY, true)
+			overworldSpell = OverworldSpell.Spells.DESTROY
+
+	if overworldSpell != -1:
+		if spell1 == OverworldSpell.Spells.NONE:
+			select_overworld_spell(overworldSpell, true)
+		elif spell2 == OverworldSpell.Spells.NONE:
+			select_overworld_spell(overworldSpell, false)
 
 func remove(item: Item, amount:=1) -> ItemSlot:
 	if amount < 0:
@@ -141,8 +169,9 @@ func remove(item: Item, amount:=1) -> ItemSlot:
 	elif item is RegularItem:
 		list = regular_items
 	else:
-		# NOT YET IMPLEMENTED
-		return null
+		list = key_items
+		remove_key_item(item)
+
 
 	if item.id >= len(list): return null
 
@@ -151,6 +180,22 @@ func remove(item: Item, amount:=1) -> ItemSlot:
 	slot.quantity -= amount
 	quantity_changed.emit(slot)
 	return slot
+
+
+func remove_key_item(item: KeyItem) -> void:
+	match item.unique_id:
+		KeyItem.UniqueId.STASIS:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.STASIS, false)
+		KeyItem.UniqueId.CATALYST:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.CATALYST, false)
+		KeyItem.UniqueId.DESTROY:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.DESTROY, false)
+
+
+func has_key_item(id: KeyItem.UniqueId) -> bool:
+	if id >= len(key_items): return false
+	return key_items[id].quantity > 0
+
 
 func get_item(item: Item) -> ItemSlot:
 	if item.id == -1: return null
@@ -167,19 +212,21 @@ func get_item(item: Item) -> ItemSlot:
 
 	return list[item.id]
 
-func enable_overworld_spell(id: OverworldSpell.Spells, val:=true) -> void:
-	match id:
-		OverworldSpell.Spells.STASIS: 
-			stasis_spell_enabled = val
-		OverworldSpell.Spells.CATALYST: 
-			catalyst_spell_enabled = val
-		OverworldSpell.Spells.DESTROY: 
-			destroy_spell_enabled = val
-		OverworldSpell.Spells.VINES: 
-			vines_spell_enabled = val
-		_: 
-			tunnel_spell_enabled = val
+
+func _enable_overworld_spell(id: OverworldSpell.Spells, val:=true) -> void:
+	# match id:
+	# 	OverworldSpell.Spells.STASIS: 
+	# 		stasis_spell_enabled = val
+	# 	OverworldSpell.Spells.CATALYST: 
+	# 		catalyst_spell_enabled = val
+	# 	OverworldSpell.Spells.DESTROY: 
+	# 		destroy_spell_enabled = val
+	# 	OverworldSpell.Spells.VINES: 
+	# 		vines_spell_enabled = val
+	# 	_: 
+	# 		tunnel_spell_enabled = val
 	overworld_spell_enabled.emit(id, val)
+
 
 func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:
 	overworld_spell_selected.emit(id, isPrimary)
@@ -187,6 +234,7 @@ func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:
 		spell1 = id
 	else:
 		spell2 = id
+
 
 func _add_items_from_dir(path: String) -> void:
 		print("Loading items from: " + path)
@@ -212,6 +260,7 @@ func _reorder_item_array(list: Array) -> void:
 	for item in list:
 		item.item.id = i
 		i += 1
+
 
 func serialize() -> Dictionary:
 	var reg := []
@@ -240,14 +289,10 @@ func serialize() -> Dictionary:
 		"spells": scrolls,
 		"equipment": es,
 		"key_items": ki,
-		"stasis": stasis_spell_enabled,
-		"catalyst": catalyst_spell_enabled,
-		"destroy": destroy_spell_enabled,
-		"vines": vines_spell_enabled,
-		"tunnel": tunnel_spell_enabled,
 		"spell1": spell1,
 		"spell2": spell2,
 	}
+
 
 func deserialize(data: Dictionary) -> void:
 	var top := 0
@@ -290,12 +335,6 @@ func deserialize(data: Dictionary) -> void:
 		else:
 			item.quantity = 0
 		quantity_changed.emit(item)
-
-	enable_overworld_spell(OverworldSpell.Spells.STASIS, data["stasis"])
-	enable_overworld_spell(OverworldSpell.Spells.CATALYST, data["catalyst"])
-	enable_overworld_spell(OverworldSpell.Spells.DESTROY, data["destroy"])
-	enable_overworld_spell(OverworldSpell.Spells.VINES, data["vines"])
-	enable_overworld_spell(OverworldSpell.Spells.TUNNEL, data["tunnel"])
 
 	UIManager.inventory.overworld_spells_menu.set_primary(data["spell1"])
 	UIManager.inventory.overworld_spells_menu.set_secondary(data["spell2"])

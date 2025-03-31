@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeyItem" load_steps=3 format=3 uid="uid://d2uymuumb873y"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_6i63b"]
+[ext_resource type="Script" path="res://src/items/KeyItem.gd" id="2_kio26"]
+
+[resource]
+script = ExtResource("2_kio26")
+unique_id = 2
+name = "Destroy Spell"
+requirements = Array[ExtResource("1_6i63b")]([])
+details = ""
+tags = []

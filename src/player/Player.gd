@@ -152,9 +152,6 @@ func play_cutscene(player: AnimationPlayer, id: String) -> void:
 	cutscene_started.emit(player, id)
 
 
-func open_info_graphic(key: String) -> void:
-	UIManager.show_info_graphic(key)
-
 
 func look_towards(point: Vector3, yOnly := true) -> void:
 	if yOnly:

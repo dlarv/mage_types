@@ -44,11 +44,11 @@ func _ready() -> void:
 				child.set_pressed_no_signal(true)
 				#_activate_spell(true, id, false)
 	
-	_on_overworld_spell_enabled(OverworldSpell.Spells.STASIS, Inventory.stasis_spell_enabled)
-	_on_overworld_spell_enabled(OverworldSpell.Spells.CATALYST, Inventory.catalyst_spell_enabled)
-	_on_overworld_spell_enabled(OverworldSpell.Spells.DESTROY, Inventory.destroy_spell_enabled)
-	_on_overworld_spell_enabled(OverworldSpell.Spells.VINES, Inventory.vines_spell_enabled)
-	_on_overworld_spell_enabled(OverworldSpell.Spells.TUNNEL, Inventory.tunnel_spell_enabled)
+	_on_overworld_spell_enabled(OverworldSpell.Spells.STASIS, Inventory.has_key_item(KeyItem.UniqueId.STASIS))
+	_on_overworld_spell_enabled(OverworldSpell.Spells.CATALYST, Inventory.has_key_item(KeyItem.UniqueId.CATALYST))
+	_on_overworld_spell_enabled(OverworldSpell.Spells.DESTROY, Inventory.has_key_item(KeyItem.UniqueId.DESTROY))
+	_on_overworld_spell_enabled(OverworldSpell.Spells.VINES, Inventory.has_key_item(KeyItem.UniqueId.VINES))
+	_on_overworld_spell_enabled(OverworldSpell.Spells.TUNNEL, Inventory.has_key_item(KeyItem.UniqueId.TUNNEL))
 
 
 func setup() -> void:

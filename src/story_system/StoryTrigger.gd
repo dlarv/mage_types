@@ -41,11 +41,10 @@ func trigger(body) -> void:
 		animation_actor.play_animation(body)
 
 	for item in items:
-		Inventory.add_item(item.item, item.quantity)
+		Inventory.add(item.item, item.quantity)
 	
 	for v in story_vars:
 		StoryManager.export_variable(v.name, v.value)
 
 	if not info_graphic_key.is_empty():
 		UIManager.show_info_graphic(info_graphic_key)
-
