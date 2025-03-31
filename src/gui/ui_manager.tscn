@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch52g6fw70mk4"]
+[gd_scene load_steps=10 format=3 uid="uid://ch52g6fw70mk4"]
 
 [ext_resource type="Script" path="res://src/gui/UIManager.gd" id="1_86rq7"]
 [ext_resource type="PackedScene" uid="uid://b644ydrvhju3b" path="res://src/gui/pause_menu/player_menu/player_menu.tscn" id="2_i5nhe"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cla1fukn637mm" path="res://src/gui/pause_menu/inventory/inventory_menu.tscn" id="6_f4ewy"]
 [ext_resource type="PackedScene" uid="uid://0e2avc6gqayk" path="res://src/gui/pause_menu/save_menu.tscn" id="7_8cc7c"]
 [ext_resource type="PackedScene" uid="uid://c2bjj71mm57fa" path="res://src/gui/pause_menu/catalyst_device_menu.tscn" id="8_mil63"]
+[ext_resource type="PackedScene" uid="uid://iqgiudb0sfsq" path="res://src/gui/info_graphics/stasis_overworld_spell.tscn" id="9_pssjn"]
 
 [node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu", "catalyst_menu")]
 layer = 5
@@ -120,6 +121,11 @@ metadata/_tab_index = 6
 [node name="CatalystDeviceMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("8_mil63")]
 visible = false
 layout_mode = 2
+
+[node name="StasisOverworldSpell" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("9_pssjn")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 8
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Player_Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Inventory_Button" to="." method="_on_inventory_button_pressed"]

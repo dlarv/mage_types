@@ -12,6 +12,10 @@ signal catalyst_menu_closed(element: ElementalType)
 @export var save_menu: Menu
 @export var catalyst_menu: Menu
 
+@onready var info_graphics := {
+	"stasis": $PanelContainer/MarginContainer/TabContainer/StasisOverworldSpell,
+}
+
 var overworld: Node
 var dialog_box: DialogueBox
 var hud: CanvasLayer
@@ -101,11 +105,18 @@ func open_catalyst_menu(validElements: Dictionary) -> void:
 	catalyst_menu.show()
 	show()
 
-func _on_catalyst_menu_closed(element:ElementalType) -> void:
-	_menu_stack.pop_back()
-	catalyst_menu.hide()
-	catalyst_menu_closed.emit(element)
-	hide()
+func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
+	if hud:
+		hud.show_overworld_spell(isPrimary, spell)
+
+func show_info_graphic(key: String) -> void:
+	if info_graphics.has(key):
+		var graphic: Menu = info_graphics[key]
+		push_menu(graphic)
+		await graphic.info_graphic_closed
+		pop_menu()
+	else:
+		push_warning("No info graphic with Key(%s) found." % key)
 
 func toggle_transmutation_menu() -> void:
 	if len(_menu_stack) > 0 and _menu_stack[-1] == matchup_chart:
@@ -162,13 +173,13 @@ func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 		Inventory.remove(selection, 1)
 		actor.equipment = selection
 
-func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
-	if hud:
-		hud.show_overworld_spell(isPrimary, spell)
-
-
 func _on_main_menu_button_pressed() -> void:
 	hide()
 	get_tree().change_scene_to_file("res://src/gui/main_menu/main_menu.tscn")
 
+func _on_catalyst_menu_closed(element:ElementalType) -> void:
+	_menu_stack.pop_back()
+	catalyst_menu.hide()
+	catalyst_menu_closed.emit(element)
+	hide()
 

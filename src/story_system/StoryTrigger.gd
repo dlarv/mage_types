@@ -7,6 +7,8 @@ extends Area3D
 ## If true, trigger effects as soon as player touches CollisionShape.
 ## Otherwise, wait for signal (e.g. from a PuzzleBlock).
 @export var trigger_on_contact := true
+## Show an info graphic. Value must match one stored in UIManager.info_graphics.
+@export var info_graphic_key := ""
 
 # An animation to play when player trips this trigger.
 var animation_actor: AnimationActor
@@ -43,4 +45,7 @@ func trigger(body) -> void:
 	
 	for v in story_vars:
 		StoryManager.export_variable(v.name, v.value)
+
+	if not info_graphic_key.is_empty():
+		UIManager.show_info_graphic(info_graphic_key)
 

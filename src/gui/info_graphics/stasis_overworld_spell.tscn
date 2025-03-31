@@ -1,0 +1,183 @@
+[gd_scene load_steps=3 format=3 uid="uid://iqgiudb0sfsq"]
+
+[ext_resource type="Script" path="res://src/gui/info_graphics/InfoGraphicMenu.gd" id="1_uevk4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_glfyl"]
+font_size = 30
+
+[node name="StasisOverworldSpell" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_uevk4")
+
+[node name="Slide1" type="VBoxContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="Slide1"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Slide1"]
+layout_mode = 2
+text = "You obtained the Stasis spell!"
+label_settings = SubResource("LabelSettings_glfyl")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Slide1"]
+layout_mode = 2
+text = "Press LMB to fire a projectile."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Slide1"]
+layout_mode = 2
+text = "Use your cursor to aim."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slide1"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Prev_Button" type="Button" parent="Slide1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="Next_Button" type="Button" parent="Slide1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[node name="Slide2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="Slide2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Slide2"]
+layout_mode = 2
+text = "When certain objects (MagiClay) are hit by stasis, they cannot be transmuted."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Slide2"]
+layout_mode = 2
+text = " Objects that have been transmuted will return to their original state."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slide2"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Prev_Button" type="Button" parent="Slide2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="Next_Button" type="Button" parent="Slide2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[node name="Slide3" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="TextureRect" type="TextureRect" parent="Slide3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Slide3"]
+layout_mode = 2
+text = "Objects can be freed from stasis by hitting them again."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slide3"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Prev_Button" type="Button" parent="Slide3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="Next_Button" type="Button" parent="Slide3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[node name="Slide4" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="TextureRect" type="TextureRect" parent="Slide4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Slide4"]
+layout_mode = 2
+text = "Only three objects can be under stasis at a time."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slide4"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Prev_Button" type="Button" parent="Slide4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="Next_Button" type="Button" parent="Slide4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[node name="Slide5" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="TextureRect" type="TextureRect" parent="Slide5"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Slide5"]
+layout_mode = 2
+text = "As you play through the demo, you might find other overworld spells."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Slide5"]
+layout_mode = 2
+text = "You can manage these inside your inventory."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slide5"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Prev_Button" type="Button" parent="Slide5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="Next_Button" type="Button" parent="Slide5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="pressed" from="Slide1/HBoxContainer/Prev_Button" to="." method="prev_screen"]
+[connection signal="pressed" from="Slide1/HBoxContainer/Next_Button" to="." method="next_screen"]
+[connection signal="pressed" from="Slide2/HBoxContainer/Prev_Button" to="." method="prev_screen"]
+[connection signal="pressed" from="Slide2/HBoxContainer/Next_Button" to="." method="next_screen"]
+[connection signal="pressed" from="Slide3/HBoxContainer/Prev_Button" to="." method="prev_screen"]
+[connection signal="pressed" from="Slide3/HBoxContainer/Next_Button" to="." method="next_screen"]
+[connection signal="pressed" from="Slide4/HBoxContainer/Prev_Button" to="." method="prev_screen"]
+[connection signal="pressed" from="Slide4/HBoxContainer/Next_Button" to="." method="next_screen"]
+[connection signal="pressed" from="Slide5/HBoxContainer/Prev_Button" to="." method="prev_screen"]
+[connection signal="pressed" from="Slide5/HBoxContainer/Next_Button" to="." method="next_screen"]

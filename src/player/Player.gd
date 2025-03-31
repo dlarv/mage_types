@@ -32,6 +32,7 @@ var player_name:
 	set(val):
 		battle_actor.name = player_name
 
+
 func _ready() -> void:
 	if not battle_actor in team:
 		team.insert(0, battle_actor)
@@ -39,6 +40,7 @@ func _ready() -> void:
 	player_name = Settings.player_name
 	Settings.player_name_changed.connect(func(name):
 		player_name = name)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
@@ -111,6 +113,7 @@ func _move_god_mode(delta: float) -> void:
 
 	move_and_slide()
 
+
 func _move_drag_mode(delta: float) -> void:
 	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
 		velocity.z -= draggable.drag_speed
@@ -130,19 +133,27 @@ func _move_drag_mode(delta: float) -> void:
 	else:
 		move_and_slide()
 
+
 func start_battle(npc: Variant) -> void:
 	battle_started.emit(team, npc.enemy_actor)
 
+
 func open_shop(npc: Variant) -> void:
 	dialog_started.emit("VENDOR_MAIN", npc)
+
 
 func start_dialog(npc: Variant) -> void:
 	var id = npc.get_next_dialog_id()
 	if len(id) == 0: return
 	dialog_started.emit(id, npc)
 
+
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
 	cutscene_started.emit(player, id)
+
+
+func open_info_graphic(key: String) -> void:
+	UIManager.show_info_graphic(key)
 
 
 func look_towards(point: Vector3, yOnly := true) -> void:
@@ -151,6 +162,7 @@ func look_towards(point: Vector3, yOnly := true) -> void:
 	model.look_at(point)
 	# Model is facing the opposite way, so correct.
 	model.global_rotation_degrees.y += 180
+
 
 func serialize() -> Dictionary:
 	var teamData := []
@@ -164,6 +176,7 @@ func serialize() -> Dictionary:
 		"rotation": global_rotation,
 		"model_rotation": model.global_rotation,
 	}
+
 
 func deserialize(data: Dictionary):
 	if "position" in data:
@@ -179,8 +192,10 @@ func deserialize(data: Dictionary):
 	# 	for t in data["team"]:
 	# 		team.append(BattleActor.new())
 
+
 func is_dragging() -> bool:
 	return draggable != null
+
 
 func set_draggable(obj: Node3D) -> void:
 	draggable = obj
