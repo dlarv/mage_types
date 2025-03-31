@@ -675,7 +675,7 @@ _element = "purple"
 [node name="OpenArea" type="Node3D" parent="Chunk"]
 
 [node name="MagiclayRock5" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -16)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -694,25 +694,25 @@ axis_lock_angular_z = true
 _element = "green"
 
 [node name="Emitter1" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -13.5, 1, -35)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -14, 1, -35)
 _element = "blue"
 
 [node name="Emitter2" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -13.5, 1, -33.5)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -14, 1, -33.5)
 _element = "orange"
 
 [node name="Emitter" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 38, 1, -16)
 _element = "yellow"
 
-[node name="Chest" parent="Chunk/OpenArea" instance=ExtResource("15_xriqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -50)
-
 [node name="Geyser" parent="Chunk/OpenArea" instance=ExtResource("3_h0s0g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -46)
 size = 1.0
 _element = "red"
 scaling_factor = Vector3(2, 2, 1)
+
+[node name="MagiclayRock" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -50)
 
 [node name="CaveApproach" type="Node3D" parent="Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -59)
