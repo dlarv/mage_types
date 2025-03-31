@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=54 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://d2cifsivdxxbt" path="res://data/demo/partner.tscn" id="21_pmbco"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="21_vw276"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="23_60oy1"]
-[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="30_1tmgj"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="30_bei3i"]
 [ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="31_bgmhm"]
 [ext_resource type="Resource" uid="uid://fs0y578r1jan" path="res://data/items/key_items/catalyst_spell.tres" id="31_wygu8"]
@@ -396,9 +395,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 2.5, -212)
 
 [node name="Boss1" parent="Overworld" groups=["persist"] instance=ExtResource("21_vw276")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.99705, -53)
-
-[node name="Geyser" parent="Overworld" instance=ExtResource("30_1tmgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -3)
 
 [node name="StasisSpellStoryTrigger" parent="." instance=ExtResource("33_pt6jj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1, -55)

@@ -14,6 +14,7 @@ signal catalyst_menu_closed(element: ElementalType)
 
 @onready var info_graphics := {
 	"stasis": $PanelContainer/MarginContainer/TabContainer/StasisOverworldSpell,
+	"catalyst": $PanelContainer/MarginContainer/TabContainer/CatalystTutorial,
 }
 
 var overworld: Node

@@ -28,6 +28,9 @@ func _on_hidden() -> void:
 		_video_player.stop()
 		_video_player = null
 
+func _draw() -> void:
+	_check_for_video_player()
+
 func _check_for_video_player() -> void:
 	if _video_player:
 		_video_player.stop()

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjwddbcld2qul"]
+
+[ext_resource type="Script" path="res://src/gui/info_graphics/InfoGraphicMenu.gd" id="1_23pcw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlxow"]
+font_size = 30
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_nlljl"]
+file = "res://assets/graphics/info_graphics/catalyst_tutorial/catalyst_1.ogv"
+
+[node name="CatalystTutorial" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_23pcw")
+
+[node name="Slide1" type="VBoxContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Title" type="Label" parent="Slide1"]
+layout_mode = 2
+text = "You obtained the Catalyst spell!"
+label_settings = SubResource("LabelSettings_mlxow")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Slide1"]
+layout_mode = 2
+text = "Catalyst channels the element of the MagiClay you're standing on."
+horizontal_alignment = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Slide1"]
+custom_minimum_size = Vector2(720, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+stream = SubResource("VideoStreamTheora_nlljl")
+expand = true
+loop = true
+
+[node name="Label2" type="Label" parent="Slide1"]
+layout_mode = 2
+text = "Catalyst acts as a portable laser, transmuting MagiClay you find in the overworld."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slide1"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Prev_Button" type="Button" parent="Slide1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous"
+
+[node name="Next_Button" type="Button" parent="Slide1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Next"
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="pressed" from="Slide1/HBoxContainer/Prev_Button" to="." method="prev_screen"]
+[connection signal="pressed" from="Slide1/HBoxContainer/Next_Button" to="." method="next_screen"]
