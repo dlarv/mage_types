@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=59 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -12,11 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://4ft3p5xs6uk5" path="res://world/subareas/beach.tscn" id="10_bysgw"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_wgmfh"]
 [ext_resource type="PackedScene" uid="uid://cy8e0cndhkub5" path="res://world/subareas/tidepools.tscn" id="12_hj0aa"]
+[ext_resource type="Script" path="res://src/story_system/StoryTrigger.gd" id="12_yhg8g"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="13_fxkjb"]
 [ext_resource type="PackedScene" uid="uid://cuu0bcxy1x8xp" path="res://world/subareas/stasis_puzzles.tscn" id="13_tehf6"]
 [ext_resource type="PackedScene" uid="uid://brs3ov2whut2i" path="res://world/subareas/catalyst_puzzles.tscn" id="14_1tf5l"]
+[ext_resource type="Resource" uid="uid://bqv0v7l6vqeeu" path="res://data/items/spell_scrolls/strikes/m_strike_scroll.tres" id="14_ig71t"]
 [ext_resource type="PackedScene" uid="uid://bkhryrwbn73l3" path="res://world/subareas/caves.tscn" id="14_qawye"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="14_utqig"]
+[ext_resource type="Script" path="res://src/story_system/StoryVar.gd" id="15_a11fu"]
 [ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="15_f0yc5"]
 [ext_resource type="PackedScene" uid="uid://c7snvw34rt406" path="res://world/subareas/deep_caves.tscn" id="15_gbwmn"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="16_4qjm6"]
@@ -195,6 +198,15 @@ _data = {
 "use_stencil_3": SubResource("Animation_12t7b")
 }
 
+[sub_resource type="Resource" id="Resource_oa20y"]
+resource_name = "Magenta Strike Scroll"
+script = ExtResource("30_bei3i")
+item = ExtResource("14_ig71t")
+id = 20
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
 [sub_resource type="Resource" id="Resource_p1v21"]
 script = ExtResource("15_f0yc5")
 id = "PARTNER_INTRO"
@@ -306,7 +318,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -31)
 [node name="PartnerIntroTrigger" parent="Overworld" instance=ExtResource("13_fxkjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -32)
 collision_layer = 5
-auto_trigger = true
+script = ExtResource("12_yhg8g")
+items = Array[ExtResource("30_bei3i")]([SubResource("Resource_oa20y")])
+story_vars = Array[ExtResource("15_a11fu")]([])
+trigger_on_contact = true
+info_graphic_key = ""
 
 [node name="StoryActor" parent="Overworld/PartnerIntroTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("14_utqig")]
 dialog_ids = Array[ExtResource("15_f0yc5")]([SubResource("Resource_p1v21")])
@@ -399,7 +415,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.99705, -53)
 
 [node name="Boss2" parent="Overworld" groups=["persist"] instance=ExtResource("30_ex5f4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 3.4, -153)
-collision_layer = 5
 
 [node name="StasisSpellStoryTrigger" parent="." instance=ExtResource("33_pt6jj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1, -55)

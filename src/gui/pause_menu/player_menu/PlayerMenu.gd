@@ -7,11 +7,6 @@ signal open_equipment_menu(actor: BattleActor)
 
 var _player: Node3D
 
-func _ready() -> void:
-	var p =get_tree().get_nodes_in_group("player") 
-	if len(p) > 0:
-		setup(p[0])
-
 func setup(player: Node3D) -> void:
 	_player = player
 

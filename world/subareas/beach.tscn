@@ -82,7 +82,7 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85721"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyv1l"]
 albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_l7ikq"]
@@ -676,7 +676,7 @@ shape = SubResource("BoxShape3D_t08x8")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_rnvix")
-surface_material_override/0 = SubResource("StandardMaterial3D_85721")
+surface_material_override/0 = SubResource("StandardMaterial3D_tyv1l")
 
 [node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
