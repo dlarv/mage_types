@@ -330,7 +330,7 @@ func deserialize(data: Dictionary) -> void:
 	list = data["key_items"]
 	for item in key_items:
 		if len(list) > top and item.id == list[top].x:
-			item.quantity = list[top].y
+			add_key_item(key_items[list[top].x].item)
 			top += 1
 		else:
 			item.quantity = 0

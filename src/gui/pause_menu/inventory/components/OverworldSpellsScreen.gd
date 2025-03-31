@@ -66,11 +66,9 @@ func _activate_spell(toggledOn: bool, spell: OverworldSpell.Spells, isPrimary: b
 		Inventory.select_overworld_spell(spell, isPrimary)
 
 func set_primary(id: OverworldSpell.Spells) -> void:
-	rows[id][1].button_group.get_pressed_button().set_pressed_no_signal(false)
 	rows[id][1].set_pressed_no_signal(true)
 	_activate_spell(true, id, true)
 
 func set_secondary(id: OverworldSpell.Spells) -> void:
-	rows[id][2].button_group.get_pressed_button().set_pressed_no_signal(false)
 	rows[id][2].set_pressed_no_signal(true)
 	_activate_spell(true, id, false)
