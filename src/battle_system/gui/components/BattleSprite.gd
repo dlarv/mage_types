@@ -84,8 +84,8 @@ func disable_transmutation_hint() -> void:
 	transmutation_hint.deactivate()
 
 
-func enable_transmutation_hint(attackElement: ElementalType) -> void:
-	transmutation_hint.setup(actor, attackElement, self.global_position)
+func enable_transmutation_hint(action: _BattleAction) -> void:
+	transmutation_hint.setup(actor, action, self.global_position)
 
 func set_highlight(isHighlighted: bool) -> void:
 	if not isHighlighted:

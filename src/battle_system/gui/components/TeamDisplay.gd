@@ -80,13 +80,13 @@ func get_sprite(actor: Variant) -> Node3D:
 	return null
 
 ## Allow the player to highlight and select one of the contained BattleActorDisplays.
-func select_target(isAttack: bool, element: ElementalType) -> void:
+func select_target(isAttack: bool, action: _BattleAction) -> void:
 	var highlight =  Color.RED if isAttack else Color.GREEN
 	for sprite in sprites:
 		sprite.enable_selection(highlight)
 
 		if Settings.enable_transmutation_hints:
-			sprite.enable_transmutation_hint(element)
+			sprite.enable_transmutation_hint(action)
 
 func select_specific_target(isAttack: bool, element: ElementalType, actor: BattleActor) -> void:
 	var highlight =  Color.RED if isAttack else Color.GREEN
@@ -113,9 +113,9 @@ func cancel_target_selection():
 		if Settings.enable_transmutation_hints:
 			d.disable_transmutation_hint()
 
-func enable_transmutation_hint(user: BattleActor, element: ElementalType):
+func enable_transmutation_hint(target: BattleActor, action: _BattleAction):
 	if not Settings.enable_transmutation_hints: return
-	get_sprite(user).enable_transmutation_hint(element)
+	get_sprite(target).enable_transmutation_hint(action)
 
 
 # Highlight the display of the currently active actor.

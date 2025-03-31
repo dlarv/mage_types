@@ -119,7 +119,7 @@ func select_targets(user: BattleActor, action:_BattleAction):
 			# 	# This pause is needed, otherwise the End turn button won't enable.
 			# 	await get_tree().create_timer(.05).timeout
 			# else:
-				ally_display_parent.select_target(false, action.element)
+				ally_display_parent.select_target(false, action)
 				target = await ally_display_parent.selected
 				targets = [ target ]
 			
@@ -135,9 +135,9 @@ func select_targets(user: BattleActor, action:_BattleAction):
 			# else:
 				if action.attack_range == Attack.AttackRange.MELEE:
 					# Checking if transmutation hints are enabled is the responsibility of TeamDisplay.
-					ally_display_parent.enable_transmutation_hint(user, action.element)
+					ally_display_parent.enable_transmutation_hint(user, action)
 
-				enemy_display_parent.select_target(true, action.element)
+				enemy_display_parent.select_target(true, action)
 				target = await enemy_display_parent.selected
 				targets = [ target ]
 
