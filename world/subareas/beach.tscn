@@ -663,7 +663,7 @@ axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-_element = "blue"
+_element = "green"
 
 [node name="Emitter1" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -13.5, 1, -35)
@@ -678,6 +678,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -50)
 
 [node name="Geyser" parent="Chunk/OpenArea" instance=ExtResource("3_h0s0g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -46)
+size = 1.0
 _element = "red"
 scaling_factor = Vector3(2, 2, 1)
 
