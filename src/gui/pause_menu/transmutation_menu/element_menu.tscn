@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/gui/pause_menu/transmutation_menu/ElementMenu.gd" id="1_j1lwt"]
 [ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/gui/pause_menu/transmutation_menu/matchup_chart.tscn" id="1_x58qa"]
-[ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graph_v3.png" id="2_uimaq"]
+[ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graphs/matchup_graph_v3.png" id="2_uimaq"]
 
 [node name="ElementMenu" type="TabContainer"]
 anchors_preset = 15

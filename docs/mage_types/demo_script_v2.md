@@ -67,28 +67,28 @@ The rest of the crew is somewhat condescending to Basil, seeing him as a dumb br
 	- Primary + Secondary
 	- Side effects
 	- Attack + Blank secondary typing
-Player (Blue/Blank/None):
-- Purple Throw
-- Orange Throw
+Player (Blue/Yellow/None):
+- Purple Hit
+- Orange Hit
 - Magenta Strike
 - Shield (Cyan)
 
 Crimson (Red/Orange/Red):
-- Sting (Orange/Ranged)
-- Purple Hit
-- Scarlet Mist (Red/Ranged/All): Heals red types. Damages all others.
+- Orange Throw
+- Purple Throw
+- ~~Scarlet Mist (Red/Ranged/All): Heals red types. Damages all others.
 - Desolation (Red/Ranged): High base power, but lower accuracy.
 
-Enemy (Purple/Purple/None):
-- Purple Throw
+Enemy (Orange/Blank/None):
+- Cyan Throw
 
 Turn 0:
->**Crimson**: Since you were able to bypass Aqua's little experiments on the beach, I assume you have a basic understanding of the transmutation system. But should you need a reminded, you can press 'T' to view the menu.
+>**Crimson**: Since you were able to bypass Aqua's little experiments on the beach, I assume you have a basic understanding of the transmutation system. But should you need a reminder, you can press 'T' to view the menu.
 >**Crimson**: Unlike Aqua's little blocks, however, combatants can have 2 types.
 >**Crimson**: Select an attack from the menu below. If you hover your mouse over the opponent, you'll be shown the Transmutation hint. For now, simply remember the color in the top-right square.
 
 Turn 1:
->**Crimson**: 
+>**Crimson**: When combatants transmute, there are additional side effects.
 # Scene 3
 - Player obtains Stasis Spell and Basil explains how it works.
 

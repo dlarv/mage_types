@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=54 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -203,12 +203,26 @@ end_state = ""
 [sub_resource type="BoxShape3D" id="BoxShape3D_s66wg"]
 size = Vector3(5, 2, 1)
 
+[sub_resource type="Resource" id="Resource_mn17e"]
+script = ExtResource("17_odkw1")
+turn = 0
+id = "0a"
+displayAfterTurn = false
+repeat = false
+
+[sub_resource type="Resource" id="Resource_8an4r"]
+script = ExtResource("17_odkw1")
+turn = 0
+id = "0b"
+displayAfterTurn = true
+repeat = false
+
 [sub_resource type="Resource" id="Resource_6wi6w"]
 script = ExtResource("18_q5x77")
 aggression = 0.0
 intelligence = 0.0
 transmutation_bias = 0.0
-dialog_ids = Array[ExtResource("17_odkw1")]([])
+dialog_ids = Array[ExtResource("17_odkw1")]([SubResource("Resource_mn17e"), SubResource("Resource_8an4r")])
 
 [sub_resource type="SphereMesh" id="SphereMesh_n0u1l"]
 

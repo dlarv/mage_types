@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://addons/matchupmanager/softlock_calc/SoftlockCalc.gd" id="1_4sxv6"]
 [ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="1_d7psa"]
-[ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graph_v3.png" id="3_cpmwa"]
-[ext_resource type="PackedScene" uid="uid://c64wgmltumtyl" path="res://assets/graphics/layered_matchup_graph.tscn" id="4_lq2jc"]
+[ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graphs/matchup_graph_v3.png" id="3_cpmwa"]
+[ext_resource type="PackedScene" path="res://assets/graphics/layered_matchup_graph.tscn" id="4_lq2jc"]
 
 [sub_resource type="Gradient" id="Gradient_bj7mu"]
 offsets = PackedFloat32Array(1)

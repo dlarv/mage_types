@@ -21,12 +21,12 @@ chance = 1.0
 _element = "blank"
 
 [resource]
-resource_name = "Blue Hit"
+resource_name = "Purple Throw"
 script = ExtResource("5_5vr4v")
 effects = Array[ExtResource("2_yg8c2")]([SubResource("Resource_dqyoq")])
-name = "Blue Hit"
+name = "Purple Throw"
 animation = ExtResource("1_dms75")
-_element = "blue"
+_element = "purple"
 priority = 0
 attack_range = 1
 target = 3

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
-[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="2_n1vp0"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
+[ext_resource type="Resource" uid="uid://di3c5k8fhu4n7" path="res://data/battle_system/battle_actions/attacks/basic/throw_o.tres" id="3_0xmcy"]
 [ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="3_op30g"]
 [ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="4_p66h2"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
@@ -25,8 +25,8 @@ stat_manager = SubResource("Resource_ii6l6")
 hp = 150
 reset_hp_after_battle = true
 _element1 = "blue"
-_element2 = "blank"
+_element2 = "yellow"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("2_n1vp0"), ExtResource("3_op30g"), ExtResource("4_p66h2")])
+attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_op30g"), ExtResource("3_0xmcy"), ExtResource("4_p66h2")])
 equipment = ExtResource("8_kxgh3")

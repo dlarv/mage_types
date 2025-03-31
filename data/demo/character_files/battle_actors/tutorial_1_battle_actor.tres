@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://cm4wr6tvgqw55"]
 
-[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_iasnh"]
+[ext_resource type="Resource" uid="uid://bkg6ove3jbkgg" path="res://data/battle_system/battle_actions/attacks/basic/throw_c.tres" id="2_l8pfp"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_qnp4c"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="4_5ngg0"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="5_tkpf5"]
@@ -21,8 +21,8 @@ level = 1
 stat_manager = SubResource("Resource_h1bhc")
 hp = 100
 reset_hp_after_battle = true
-_element1 = "blue"
-_element2 = "blue"
+_element1 = "orange"
+_element2 = "blank"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_qnp4c")]([ExtResource("2_iasnh")])
+attacks = Array[ExtResource("2_qnp4c")]([ExtResource("2_l8pfp")])
