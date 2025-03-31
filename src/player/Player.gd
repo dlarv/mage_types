@@ -12,13 +12,14 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export var anim_player: AnimationPlayer
 
 @export_category("Movement")
-@export var walk_speed := 10.0
-@export var run_speed := 30.0
+@export var walk_speed := 600.0
+@export var run_speed := 800.0
+@export var drag_speed := 500.0
 var _is_running := false
 var draggable = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 25#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
+var gravity = 980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
 var outside_forces := Vector3.ZERO
 
@@ -69,8 +70,9 @@ func _physics_process(delta: float) -> void:
 	var speed = walk_speed if not _is_running else run_speed
 
 	# Add the gravity.
-	if !is_on_floor():
-		vel.y -= gravity * delta
+	if !is_on_floor() and outside_forces.y == 0:
+		vel.y -= gravity
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -86,8 +88,7 @@ func _physics_process(delta: float) -> void:
 		vel.x = move_toward(velocity.x, 0, speed)
 		vel.z = move_toward(velocity.z, 0, speed)
 
-
-	velocity = vel + outside_forces# * delta
+	velocity = (vel + outside_forces) * delta
 	outside_forces = Vector3.ZERO
 	if vel == Vector3.ZERO:
 		anim_player.play("idle")
@@ -100,29 +101,29 @@ func _move_god_mode(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
-	var speedMod := 1.0
+	var speedMod := 2.0
 	if Input.is_key_pressed(KEY_CTRL):
 		speedMod *= 3
 
-	velocity = direction * run_speed * speedMod * 2
+	velocity = direction * run_speed * speedMod * delta
 
 	if Input.is_key_pressed(KEY_SPACE):
-		velocity.y += walk_speed * speedMod
+		velocity.y += walk_speed / 2 * speedMod * delta
 	elif Input.is_key_pressed(KEY_SHIFT):
-		velocity.y -= walk_speed * 3
+		velocity.y -= walk_speed * delta
 
 	move_and_slide()
 
 
 func _move_drag_mode(delta: float) -> void:
 	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
-		velocity.z -= draggable.drag_speed
+		velocity.z -= drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
-		velocity.z += draggable.drag_speed
+		velocity.z += drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
-		velocity.x -= draggable.drag_speed
+		velocity.x -= drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
-		velocity.x += draggable.drag_speed
+		velocity.x += drag_speed * draggable.weight
 	
 	velocity *= delta * 10
 
@@ -150,7 +151,6 @@ func start_dialog(npc: Variant) -> void:
 
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
 	cutscene_started.emit(player, id)
-
 
 
 func look_towards(point: Vector3, yOnly := true) -> void:

@@ -52,6 +52,7 @@ var is_blocking: bool:
 		return element != ElementManager.Yellow
 
 var _player: Node3D
+var _in_top_hitbox := false
 
 func _enter_tree():
 	super._enter_tree()
@@ -73,7 +74,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _player != null:
-		_player.outside_forces += transform.basis.y * strength * delta
+		_player.outside_forces += transform.basis.y * strength * 100
+		# if _in_top_hitbox:
+		# 	_player.outside_forces.y -= _player.gravity
 
 func _on_stream_hit_box_entered(body: Node3D) -> void:
 	if body is RigidBody3D:
@@ -82,7 +85,7 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 			body.linear_velocity /= 2
 		body.add_constant_force(transform.basis.y * strength)
 	elif body is CharacterBody3D:
-		body.outside_forces += transform.basis.y * strength
+		body.outside_forces += transform.basis.y * strength * 100
 		_player = body
 
 	
@@ -93,14 +96,16 @@ func _on_stream_top_hit_box_entered(body: Node3D) -> void:
 			body.linear_velocity /= 2
 		body.add_constant_force(transform.basis.y * strength)
 	elif body is CharacterBody3D:
-		body.outside_forces += transform.basis.y * strength
+		_in_top_hitbox = true
 
 
 func _on_stream_hit_box_exited(body: Node3D) -> void:
 	if body is RigidBody3D:
 		body.constant_force = Vector3.ZERO
 	elif body is CharacterBody3D:
+		# _player.outside_forces += transform.basis.y * strength * 3000
 		_player = null
+		_in_top_hitbox = false
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if not super.set_element(e, randVal, force): return false

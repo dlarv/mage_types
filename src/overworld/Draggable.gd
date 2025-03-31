@@ -5,8 +5,8 @@ extends CharacterBody3D
 		return $Interactable.scaling_factor
 	set(val):
 		$Interactable.scaling_factor = val
-@export var drag_speed := 30.0
 @export var restrict_axis := false
+@export var weight := 1.0
 
 var in_control := false
 var puzzle_name := ""
