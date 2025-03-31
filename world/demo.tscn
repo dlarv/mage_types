@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="21_vw276"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="23_60oy1"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="30_bei3i"]
-[ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="31_bgmhm"]
+[ext_resource type="Resource" uid="uid://fs0y578r1jan" path="res://data/items/key_items/catalyst_spell.tres" id="31_wygu8"]
 [ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="33_pt6jj"]
 [ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="34_71jxw"]
 
@@ -224,10 +224,10 @@ size = Vector3(1, 1, 2.2)
 size = Vector3(3, 1, 1)
 
 [sub_resource type="Resource" id="Resource_0xbah"]
-resource_name = "Stasis Spell"
+resource_name = "Catalyst Spell"
 script = ExtResource("30_bei3i")
-item = ExtResource("31_bgmhm")
-id = 0
+item = ExtResource("31_wygu8")
+id = 1
 quantity = 1
 max_quantity = 9999
 allow_stacking = false
@@ -419,6 +419,15 @@ items = Array[ExtResource("30_bei3i")]([SubResource("Resource_0xbah")])
 info_graphic_key = "stasis"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StasisSpellStoryTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+shape = SubResource("BoxShape3D_qmo33")
+
+[node name="CatalystSpellStoryTrigger" parent="." instance=ExtResource("33_pt6jj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7, 3, -156)
+items = Array[ExtResource("30_bei3i")]([SubResource("Resource_0xbah")])
+info_graphic_key = "catalyst"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CatalystSpellStoryTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 shape = SubResource("BoxShape3D_qmo33")
 
