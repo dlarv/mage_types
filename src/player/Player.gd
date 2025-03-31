@@ -125,7 +125,7 @@ func _move_drag_mode(delta: float) -> void:
 	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
 		velocity.x += drag_speed * draggable.weight
 	
-	velocity *= delta * 10
+	velocity *= delta
 
 	# Snap to grid.
 	if velocity.length() < 0.1:

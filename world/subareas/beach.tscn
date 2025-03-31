@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=68 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="15_xriqk"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="16_1unvm"]
 [ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="16_c81wx"]
+[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="16_dsupm"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="17_6sjel"]
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="17_g7uef"]
@@ -82,16 +83,17 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyv1l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjfkl"]
 albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_l7ikq"]
 resource_name = "Healing Potion"
 script = ExtResource("16_m6hrw")
-id = -1
+item = ExtResource("16_dsupm")
+id = 0
 quantity = 5
 max_quantity = 9999
-allow_stacking = false
+allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_ug6rn"]
 resource_name = "Sting Scroll"
@@ -676,7 +678,7 @@ shape = SubResource("BoxShape3D_t08x8")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_rnvix")
-surface_material_override/0 = SubResource("StandardMaterial3D_tyv1l")
+surface_material_override/0 = SubResource("StandardMaterial3D_bjfkl")
 
 [node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
