@@ -73,4 +73,3 @@ func _on_interactable_interacted(obj:Node3D) -> void:
 		Inventory.add(item.item, item.quantity)
 	await UIManager.show_dialog(msg)
 	_update_mesh()
-
