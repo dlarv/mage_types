@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=53 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://d2cifsivdxxbt" path="res://data/demo/partner.tscn" id="21_pmbco"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="21_vw276"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="23_60oy1"]
+[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="30_bei3i"]
+[ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="31_bgmhm"]
 [ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="33_pt6jj"]
 [ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="34_71jxw"]
 
@@ -221,6 +223,15 @@ size = Vector3(1, 1, 2.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_85k41"]
 size = Vector3(3, 1, 1)
 
+[sub_resource type="Resource" id="Resource_0xbah"]
+resource_name = "Stasis Spell"
+script = ExtResource("30_bei3i")
+item = ExtResource("31_bgmhm")
+id = 0
+quantity = 1
+max_quantity = 9999
+allow_stacking = false
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qmo33"]
 size = Vector3(5, 2, 1)
 
@@ -402,11 +413,12 @@ shape = SubResource("BoxShape3D_85k41")
 animation_name = "use_stencil_3"
 animation_player = NodePath("../../Overworld/AnimationPlayer")
 
-[node name="StoryTrigger" parent="." instance=ExtResource("33_pt6jj")]
+[node name="StasisSpellStoryTrigger" parent="." instance=ExtResource("33_pt6jj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1, -55)
+items = Array[ExtResource("30_bei3i")]([SubResource("Resource_0xbah")])
 info_graphic_key = "stasis"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StoryTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StasisSpellStoryTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 shape = SubResource("BoxShape3D_qmo33")
 
