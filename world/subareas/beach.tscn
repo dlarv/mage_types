@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=39 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -57,6 +57,15 @@ id = -1
 quantity = 3
 max_quantity = 9999
 allow_stacking = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t08x8"]
+size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
+size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ixx6"]
+albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_xuc6x"]
 resource_name = "Sunset Orb"
@@ -527,6 +536,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, 6)
 _element = "magenta"
 scaling_factor = Vector3(0.5, 2, 0.5)
 
+[node name="CollisionShape3D" parent="Chunk/Puzzle_North/MagiclayRock" index="0"]
+shape = SubResource("BoxShape3D_t08x8")
+
+[node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
+mesh = SubResource("BoxMesh_rnvix")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ixx6")
+
+[node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
+
+[node name="Marker3D_North" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="3"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, -1.04)
+
+[node name="Marker3D_East" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="4"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.04, -0.3, 0)
+
+[node name="Marker3D_West" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="5"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, -1.04, -0.3, 0)
+
 [node name="PressurePlate" parent="Chunk/Puzzle_North" instance=ExtResource("21_wyiua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -8)
 _element = "magenta"
@@ -647,7 +675,7 @@ _element = "purple"
 [node name="OpenArea" type="Node3D" parent="Chunk"]
 
 [node name="MagiclayRock5" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -27)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -667,6 +695,10 @@ _element = "green"
 
 [node name="Emitter1" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -13.5, 1, -35)
+_element = "blue"
+
+[node name="Emitter2" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -13.5, 1, -33.5)
 _element = "orange"
 
 [node name="Emitter" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
@@ -731,3 +763,5 @@ max_spawn_count = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Spawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.5)
 shape = SubResource("BoxShape3D_3qr7x")
+
+[editable path="Chunk/Puzzle_North/MagiclayRock"]
