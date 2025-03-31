@@ -28,8 +28,6 @@ func _on_show_turn_order_toggled(value: bool) -> void:
 	Settings.show_battle_turn_order = value
 
 
-
-func _on_use_graph_stencils_toggled(value: bool) -> void:
-	print("Use graph stencils toggled.")
-	Settings.use_graph_stencils = value
+func _on_auto_end_turn_toggled(value: bool) -> void:
+	Settings.auto_end_turn = value
 

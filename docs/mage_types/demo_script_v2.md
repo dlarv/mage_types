@@ -42,9 +42,9 @@ The rest of the crew is somewhat condescending to Basil, seeing him as a dumb br
 >>**Player**: What's up?
 >>>**Crimson**: I have a friend who seems to have wandered off. The aforementioned Green man. Would you help me find them?
 >>>>**Player**: Of course!
->>>>>**Crimson**: You're kindness is most appreciated.
+>>>>>**Crimson**: Your kindness is most appreciated.
 >>>>**Player**: What do you need me for?
->>>>>**Crimson**: In truth, my offer is more for you than me. It would be unkind to leave you to their mercy. Helping you is what Basil would do.
+>>>>>**Crimson**: In truth, my offer is more for you than me. This  It would be unkind to leave you to their mercy. Helping you is what Basil would do.
 >>>>>>**Player**: Basil? Is that your Green friend's name?
 >>>>>>>**Crimson**: Indeed.
 >>>>>>**Player**: Oh, well thanks.

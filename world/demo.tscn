@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=52 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -215,15 +215,6 @@ dialog_ids = Array[ExtResource("17_odkw1")]([])
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2ytq"]
 size = Vector3(2, 3, 4.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ywc0n"]
-size = Vector3(1, 1, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s2m6i"]
-size = Vector3(1, 1, 2.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_85k41"]
-size = Vector3(3, 1, 1)
-
 [sub_resource type="Resource" id="Resource_6c3vh"]
 resource_name = "Stasis Spell"
 script = ExtResource("30_bei3i")
@@ -389,39 +380,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 2.5, -212)
 
 [node name="Boss1" parent="Overworld" groups=["persist"] instance=ExtResource("21_vw276")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0.99705, -53)
-
-[node name="StencilTrigger1" parent="." instance=ExtResource("33_pt6jj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, -28)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StencilTrigger1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.449999)
-shape = SubResource("BoxShape3D_ywc0n")
-
-[node name="AnimationActor" parent="StencilTrigger1" node_paths=PackedStringArray("animation_player") instance=ExtResource("34_71jxw")]
-animation_name = "use_stencil_1"
-animation_player = NodePath("../../Overworld/AnimationPlayer")
-
-[node name="StencilTrigger2" parent="." instance=ExtResource("33_pt6jj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -28)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StencilTrigger2"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, 0.449999)
-shape = SubResource("BoxShape3D_s2m6i")
-
-[node name="AnimationActor" parent="StencilTrigger2" node_paths=PackedStringArray("animation_player") instance=ExtResource("34_71jxw")]
-animation_name = "use_stencil_2"
-animation_player = NodePath("../../Overworld/AnimationPlayer")
-
-[node name="StencilTrigger3" parent="." instance=ExtResource("33_pt6jj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 1, -36)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StencilTrigger3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.500004)
-shape = SubResource("BoxShape3D_85k41")
-
-[node name="AnimationActor" parent="StencilTrigger3" node_paths=PackedStringArray("animation_player") instance=ExtResource("34_71jxw")]
-animation_name = "use_stencil_3"
-animation_player = NodePath("../../Overworld/AnimationPlayer")
 
 [node name="StasisSpellStoryTrigger" parent="." instance=ExtResource("33_pt6jj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1, -55)

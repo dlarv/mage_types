@@ -186,7 +186,6 @@ func set_enabled(enable: bool) -> void:
 	
 	start_turn.emit()
 
-
 func _on_end_turn_button_pressed() -> void:
 	end_button.release_focus()
 	control_panel.current_tab = 0
@@ -197,6 +196,9 @@ func calc_character_selector_state(index: int) -> void:
 	prev_button.disabled = index == _begin_index
 	next_button.disabled = index == _edge_index
 	end_button.disabled = !_allow_end_turn
+
+	if _allow_end_turn and Settings.auto_end_turn:
+		_on_end_turn_button_pressed()
 
 func _on_attacks_button_pressed() -> void:
 	control_panel.current_tab = 1
