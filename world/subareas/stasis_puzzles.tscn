@@ -20,7 +20,7 @@ size = Vector3(2.5, 2.5, 2.5)
 [sub_resource type="BoxMesh" id="BoxMesh_hscpx"]
 size = Vector3(2.5, 2.5, 2.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhu8r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ur8i"]
 albedo_color = Color(0.501961, 0, 1, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_j2j7m"]
@@ -30,7 +30,7 @@ _data = {
 }
 point_count = 7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0lm5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y62nn"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_30pi7"]
@@ -40,7 +40,7 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my74t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3g77c"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_5qe4t"]
@@ -50,7 +50,7 @@ _data = {
 }
 point_count = 7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vayu3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2k43t"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_bh0pg"]
@@ -60,7 +60,7 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jh4a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1qbs"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_m5rw7"]
@@ -70,7 +70,7 @@ _data = {
 }
 point_count = 9
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htsl5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hugif"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_8knga"]
@@ -80,7 +80,7 @@ _data = {
 }
 point_count = 9
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlds4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqgw1"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_d7cox"]
@@ -90,7 +90,7 @@ _data = {
 }
 point_count = 10
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjuat"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isstm"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxte6"]
@@ -172,11 +172,11 @@ material = ExtResource("2_eob6h")
 [node name="Puzzle" type="Node3D" parent="StasisPuzzles"]
 
 [node name="Geyser_North" parent="StasisPuzzles/Puzzle" instance=ExtResource("2_7srj1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -5.7, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -5.5, 1)
 base_strength = 20.0
 
 [node name="Geyser_South" parent="StasisPuzzles/Puzzle" instance=ExtResource("2_7srj1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -5.7, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -5.5, 15)
 base_strength = 20.0
 
 [node name="MagiclayBoulder" parent="StasisPuzzles/Puzzle" instance=ExtResource("3_mi5ru")]
@@ -185,7 +185,6 @@ physics_material_override = SubResource("PhysicsMaterial_7t00q")
 linear_damp_mode = 1
 linear_damp = 10.0
 _element = "purple"
-is_transmutable = true
 
 [node name="CollisionShape3D" parent="StasisPuzzles/Puzzle/MagiclayBoulder" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -194,10 +193,10 @@ shape = SubResource("BoxShape3D_solmf")
 [node name="MeshInstance3D" parent="StasisPuzzles/Puzzle/MagiclayBoulder" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 mesh = SubResource("BoxMesh_hscpx")
-surface_material_override/0 = SubResource("StandardMaterial3D_mhu8r")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ur8i")
 
 [node name="Geyser_NW" parent="StasisPuzzles/Puzzle" instance=ExtResource("2_7srj1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -13.3, -5, -3.5)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -13.4, -5, -3.5)
 size = 26.0
 base_strength = 50.0
 _element = "red"
@@ -256,11 +255,11 @@ curve = SubResource("Curve3D_j2j7m")
 
 [node name="Body" parent="StasisPuzzles/Puzzle/PressurePlate_N/Wire/Path" index="0"]
 path_interval = 0.01
-material = SubResource("StandardMaterial3D_h0lm5")
+material = SubResource("StandardMaterial3D_y62nn")
 
 [node name="Head" parent="StasisPuzzles/Puzzle/PressurePlate_N/Wire" index="1"]
 visible = false
-surface_material_override/0 = SubResource("StandardMaterial3D_h0lm5")
+surface_material_override/0 = SubResource("StandardMaterial3D_y62nn")
 
 [node name="PressurePlate_E" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 16, -5.4, 14)
@@ -276,11 +275,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133333, 0)
 curve = SubResource("Curve3D_30pi7")
 
 [node name="Body" parent="StasisPuzzles/Puzzle/PressurePlate_E/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_my74t")
+material = SubResource("StandardMaterial3D_3g77c")
 
 [node name="Head" parent="StasisPuzzles/Puzzle/PressurePlate_E/Wire" index="1"]
 visible = false
-surface_material_override/0 = SubResource("StandardMaterial3D_my74t")
+surface_material_override/0 = SubResource("StandardMaterial3D_3g77c")
 
 [node name="PressurePlate_S" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8, -5.4, 19)
@@ -296,11 +295,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0666668, 0)
 curve = SubResource("Curve3D_5qe4t")
 
 [node name="Body" parent="StasisPuzzles/Puzzle/PressurePlate_S/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_vayu3")
+material = SubResource("StandardMaterial3D_2k43t")
 
 [node name="Head" parent="StasisPuzzles/Puzzle/PressurePlate_S/Wire" index="1"]
 visible = false
-surface_material_override/0 = SubResource("StandardMaterial3D_vayu3")
+surface_material_override/0 = SubResource("StandardMaterial3D_2k43t")
 
 [node name="PressurePlate_W" parent="StasisPuzzles/Puzzle" instance=ExtResource("9_jvtjb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -5.4, -3)
@@ -315,10 +314,10 @@ target = NodePath("..")
 curve = SubResource("Curve3D_bh0pg")
 
 [node name="Body" parent="StasisPuzzles/Puzzle/PressurePlate_W/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_3jh4a")
+material = SubResource("StandardMaterial3D_t1qbs")
 
 [node name="Head" parent="StasisPuzzles/Puzzle/PressurePlate_W/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_3jh4a")
+surface_material_override/0 = SubResource("StandardMaterial3D_t1qbs")
 
 [node name="Relay_N" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("lock") instance=ExtResource("8_tmabh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -5.5, 1)
@@ -332,10 +331,10 @@ target = NodePath("..")
 curve = SubResource("Curve3D_m5rw7")
 
 [node name="Body" parent="StasisPuzzles/Puzzle/Relay_N/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_htsl5")
+material = SubResource("StandardMaterial3D_hugif")
 
 [node name="Head" parent="StasisPuzzles/Puzzle/Relay_N/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_htsl5")
+surface_material_override/0 = SubResource("StandardMaterial3D_hugif")
 
 [node name="Relay_E" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("lock") instance=ExtResource("8_tmabh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -5.5, 14)
@@ -349,10 +348,10 @@ target = NodePath("..")
 curve = SubResource("Curve3D_8knga")
 
 [node name="Body" parent="StasisPuzzles/Puzzle/Relay_E/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_hlds4")
+material = SubResource("StandardMaterial3D_fqgw1")
 
 [node name="Head" parent="StasisPuzzles/Puzzle/Relay_E/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_hlds4")
+surface_material_override/0 = SubResource("StandardMaterial3D_fqgw1")
 
 [node name="Relay_S" parent="StasisPuzzles/Puzzle" node_paths=PackedStringArray("lock") instance=ExtResource("8_tmabh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -5.5, 14)
@@ -366,11 +365,11 @@ target = NodePath("..")
 curve = SubResource("Curve3D_d7cox")
 
 [node name="Body" parent="StasisPuzzles/Puzzle/Relay_S/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_xjuat")
+material = SubResource("StandardMaterial3D_isstm")
 
 [node name="Head" parent="StasisPuzzles/Puzzle/Relay_S/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_xjuat")
+surface_material_override/0 = SubResource("StandardMaterial3D_isstm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03066, 0.49097, 7.9826)
