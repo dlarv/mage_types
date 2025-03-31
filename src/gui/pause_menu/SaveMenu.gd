@@ -26,6 +26,12 @@ func setup() -> void:
 
 	var group := ButtonGroup.new()
 	var dir := DirAccess.open(Settings.SAVE_ROOT_DIR)
+
+	# Remove previous children
+	for child in %SavedGamesScroller.get_children():
+		%SavedGamesScroller.remove_child(child)
+
+	# Add saved games to scroller
 	if dir:
 		saved_games = dir.get_files()
 		for file in saved_games:
