@@ -7,15 +7,17 @@ class_name ItemSlot
 		item = value
 		if value != null:
 			resource_name = item.name
+			if item.battle_item:
+				item.battle_item.quantity = quantity
 @export var id: int: 
 	get:
 		if item == null: return -1
 		return item.id
-@export var quantity: int:
+@export var quantity := 1:
 	set(value):
 		quantity = value
 		if item == null or not item is RegularItem: return
-		if item.battle_item != null:
+		if item.battle_item:
 			item.battle_item.quantity = value
 @export var max_quantity := 9999
 @export var allow_stacking: bool:
