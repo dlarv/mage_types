@@ -6,14 +6,9 @@
 script = ExtResource("1_7sxr6")
 starts = {
 "0a": &"0_3",
-"0b": &"0_5",
-"2a": &"0_9",
-"2b": &"0_10",
-"3": &"0_11",
-"BEACH_PUZZLE": &"0_12",
-"BEACH_PUZZLES_INTRO": &"0_7",
+"1a": &"0_5",
+"2": &"0_9",
 "BOSS1": &"0_1",
-"FAVOR": &"0_8",
 "MISC": &"0_2",
 "PARTNER_INTRO": &"0_4"
 }
@@ -22,21 +17,6 @@ nodes = {
 "link": &"1_1",
 "offset": Vector2(-1720, -300),
 "start_id": "BOSS1"
-},
-"0_10": {
-"link": &"1_42",
-"offset": Vector2(-2140, 2700),
-"start_id": "2b"
-},
-"0_11": {
-"link": &"1_46",
-"offset": Vector2(-2120, 3020),
-"start_id": "3"
-},
-"0_12": {
-"link": &"1_45",
-"offset": Vector2(-2480, 3740),
-"start_id": "BEACH_PUZZLE"
 },
 "0_2": {
 "link": &"1_2",
@@ -56,22 +36,12 @@ nodes = {
 "0_5": {
 "link": &"1_21",
 "offset": Vector2(-1900, 1260),
-"start_id": "0b"
-},
-"0_7": {
-"link": &"5_2",
-"offset": Vector2(-2480, 3420),
-"start_id": "BEACH_PUZZLES_INTRO"
-},
-"0_8": {
-"link": &"1_20",
-"offset": Vector2(-2480, 4040),
-"start_id": "FAVOR"
+"start_id": "1a"
 },
 "0_9": {
 "link": &"1_27",
-"offset": Vector2(-2120, 2400),
-"start_id": "2a"
+"offset": Vector2(-1920, 1600),
+"start_id": "2"
 },
 "1_1": {
 "dialogue": "RAWR xd",
@@ -87,17 +57,17 @@ nodes = {
 "speaker": ""
 },
 "1_10": {
-"dialogue": "Aqua's experiments are just in this room here.",
-"offset": Vector2(-1760, 3440),
+"dialogue": "Finally, using a ranged attack will only transmute your opponent. Melee attacks will affect both you and your opponent.",
+"offset": Vector2(-708.979, 1611.65),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"9_5",
+"link": "END",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_11": {
 "dialogue": "I have a friend, Basil, who seems to have wandered off. The aforementioned Green man. Would you help me find them?",
@@ -169,19 +139,6 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": ""
 },
-"1_20": {
-"dialogue": "",
-"offset": Vector2(-2260, 4040),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
 "1_21": {
 "dialogue": "When combatants transmute, there are side effects that alter our stats.",
 "offset": Vector2(-1700, 1260),
@@ -218,7 +175,7 @@ nodes = {
 [ul][el]Cyan[/el][/ul]
 [ul][el]Magenta[/el][/ul]
 [ul][el]Yellow[/el][/ul]",
-"offset": Vector2(-1460, 2000),
+"offset": Vector2(-2320, 1300),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -235,7 +192,7 @@ nodes = {
 [ul][el]Purple[/el][/ul]
 [ul][el]Orange[/el][/ul]
 [ul][el]Red[/el][/ul]",
-"offset": Vector2(-1120, 2000),
+"offset": Vector2(-2320, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -260,8 +217,8 @@ nodes = {
 "speaker": "Partner"
 },
 "1_27": {
-"dialogue": "Now I have 2 more things to show you.",
-"offset": Vector2(-1920, 2400),
+"dialogue": "Two more things.",
+"offset": Vector2(-1720, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -273,8 +230,8 @@ nodes = {
 "speaker": "Partner"
 },
 "1_28": {
-"dialogue": "You probably noticed that I have 2  colors, while the opponent only has 1.",
-"offset": Vector2(-1580, 2400),
+"dialogue": "Firstly, sometimes your secondary type will become gray, or blank. ",
+"offset": Vector2(-1380, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -286,12 +243,12 @@ nodes = {
 "speaker": "Partner"
 },
 "1_29": {
-"dialogue": "The first 2 rows of a transmutation hint shows how those 2 types will react to an attack.",
-"offset": Vector2(-1240, 2400),
+"dialogue": "Blank does not react with any other elements. However, channelling elemental energy via an attack will cause your Blank typing to match that of the attack.",
+"offset": Vector2(-1040, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_41",
+"link": &"1_10",
 "text": ""
 }
 },
@@ -312,20 +269,20 @@ nodes = {
 "speaker": 0
 },
 "1_30": {
-"dialogue": "Since you were able to bypass Aqua's little experiments on the beach, I assume you have a basic understanding of the transmutation system. But should you need a reminder, you can press 'T' to view the menu.",
+"dialogue": "Since you were able to bypass Aqua's little experiments on the beach, I assume you have a basic understanding of the transmutation system.[br][br]But should you need a reminder, you can press 'T' to view the menu.",
 "offset": Vector2(-1700, 940),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_31",
-"text": "Just like in the overworld, the the elements will react with one another."
+"text": ""
 }
 },
 "size": Vector2(300, 265),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_31": {
-"dialogue": " Unlike Aqua's little blocks, however, combatants can have 2 types.",
+"dialogue": "Unlike Aqua's little blocks, however, combatants can have 2 types.",
 "offset": Vector2(-1357.15, 942.636),
 "options": {
 0: {
@@ -335,7 +292,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_32": {
 "dialogue": "Select an attack from the menu below. I suggest selecting [el]Purple Hit[/el].",
@@ -348,7 +305,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
+"speaker": "Partner"
 },
 "1_33": {
 "dialogue": " I'm sure Basil will not be found on the beach. Let's move Northward.",
@@ -465,96 +422,12 @@ nodes = {
 "speaker": 0
 },
 "1_40": {
-"dialogue": "If you hover your mouse over the opponent, you'll be shown the Transmutation hint. For now, simply remember the color in the top-right square.",
+"dialogue": "If you hover your mouse over the opponent, you'll be shown the Transmutation Hint.",
 "offset": Vector2(-660, 940),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-"1_41": {
-"dialogue": "You may have guessed what the 3rd row is hinting to you, but if not watch how my typing reacts to the opponent's next attack.",
-"offset": Vector2(-900, 2400),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Partner"
-},
-"1_42": {
-"dialogue": "So not only will your typing react to your opponent's attacks (and vice versa), but your primary and secondary types can react together!",
-"offset": Vector2(-1920, 2700),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_43",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Partner"
-},
-"1_43": {
-"dialogue": "Finally, just one more thing.
-[br][br]So far, we've only been using [i]ranged[/i] attacks. Watch what happens when the opponent uses a melee attack instead.",
-"offset": Vector2(-1580, 2700),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Partner"
-},
-"1_44": {
-"dialogue": "But more importantly, using a ranged attack will only affect your opponent's typing. However, melee attacks will affect both the target and the user.",
-"offset": Vector2(-1560, 3020),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Partner"
-},
-"1_45": {
-"dialogue": "asdf",
-"offset": Vector2(-2260, 3740),
-"options": {
-0: {
-"condition": Array[Dictionary]([{
-"cur_variable": 0,
-"operator": 0,
-"value1": "current_cutscene",
-"value2": "true"
-}]),
-"link": "END",
-"text": "Puzzle 1 is active"
-}
-},
-"size": Vector2(300, 258),
-"speaker": 0
-},
-"1_46": {
-"dialogue": "If your second type is Gray (Blank), it will change to match the attack you used.",
-"offset": Vector2(-1900, 3020),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_44",
+"link": &"1_8",
 "text": ""
 }
 },
@@ -599,6 +472,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": 0
+},
+"1_8": {
+"dialogue": "The first two rows show how the target's primary and secondary typings will react with the attack.[br][br]The third row shows whether the resulting primary and secondary typings will react with each other.",
+"offset": Vector2(-320, 940),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Partner"
 },
 "1_9": {
 "dialogue": "I know we just met, but would you kindly do me a favor?",
@@ -656,17 +542,6 @@ nodes = {
 "offset": Vector2(3240, 80),
 "signalValue": "battle_started"
 },
-"5_2": {
-"condition": Array[Dictionary]([{
-"cur_variable": 0,
-"operator": 1,
-"value1": "current_cutscene",
-"value2": "rude"
-}]),
-"false": &"9_5",
-"offset": Vector2(-2260, 3420),
-"true": &"1_10"
-},
 "8_1": {
 "attached_nodes": Array[StringName]([&"1_2", &"0_2", &"3_1", &"1_1", &"0_1"]),
 "offset": Vector2(-1760, -660),
@@ -674,7 +549,7 @@ nodes = {
 "title": "Misc"
 },
 "8_2": {
-"attached_nodes": Array[StringName]([&"0_3", &"0_9", &"1_27", &"1_28", &"1_29", &"0_10", &"1_42", &"1_43", &"0_11", &"1_44", &"1_46", &"1_30", &"2_1", &"2_3", &"1_24", &"1_25", &"1_23", &"1_26", &"1_41", &"1_21", &"0_5", &"1_40"]),
+"attached_nodes": Array[StringName]([&"0_3", &"0_9", &"1_27", &"1_28", &"1_29", &"1_30", &"2_1", &"2_3", &"1_24", &"1_25", &"1_23", &"1_26", &"1_21", &"0_5", &"1_40", &"1_8"]),
 "offset": Vector2(-2360, 880),
 "tint_color": Color(0.133333, 0.133333, 0.87451, 0.203922),
 "title": "Tutorial Battle"
@@ -686,15 +561,6 @@ nodes = {
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "tutorial_battle",
-"variable": "current_cutscene"
-},
-"9_5": {
-"cur_variable": 0,
-"link": "END",
-"offset": Vector2(-1380, 3540),
-"signalValue": "play_cutscene",
-"type": 0,
-"value": "post_battle_prep",
 "variable": "current_cutscene"
 }
 }
