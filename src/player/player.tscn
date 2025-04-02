@@ -9,7 +9,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("model", "anim_player") groups=["persist", "player"]]
-collision_layer = 49
+collision_layer = 33
 collision_mask = 49
 axis_lock_angular_x = true
 axis_lock_angular_z = true

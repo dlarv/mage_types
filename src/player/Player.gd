@@ -1,4 +1,4 @@
-extends CharacterBody3D 
+extends MagiClay
 class_name Player 
 
 signal battle_started(allies, enemies)
@@ -6,7 +6,7 @@ signal dialog_started(dialog_id, npc)
 signal cutscene_started(player: AnimationPlayer, id: String)
 
 @export_category("Scene Nodes")
-@export var battle_actor: BattleActor 
+@export var battle_actor: BattleActor
 @export var team: Array[BattleActor]
 @export var model: Node3D
 @export var anim_player: AnimationPlayer
@@ -42,6 +42,10 @@ func _ready() -> void:
 	Settings.player_name_changed.connect(func(name):
 		player_name = name)
 
+	model.get_active_material(0).albedo_color = battle_actor.element1.main_color
+	model.get_active_material(1).albedo_color = battle_actor.element2.main_color
+	battle_actor.element_changed.connect(_on_battle_actor_element_changed)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
@@ -66,11 +70,12 @@ func _physics_process(delta: float) -> void:
 	if is_dragging():
 		_move_drag_mode(delta)
 		return
-	var vel = velocity
+	var vel = self.velocity
 	var speed = walk_speed if not _is_running else run_speed
 
 	# Add the gravity.
-	if !is_on_floor() and outside_forces.y == 0:
+	var s = self
+	if !s.is_on_floor() and outside_forces.y == 0:
 		vel.y -= gravity
 		
 
@@ -85,16 +90,16 @@ func _physics_process(delta: float) -> void:
 		# Rotate model in direction of movement.
 		model.rotation.y = atan2(vel.x, vel.z)
 	else:
-		vel.x = move_toward(velocity.x, 0, speed)
-		vel.z = move_toward(velocity.z, 0, speed)
+		vel.x = move_toward(self.velocity.x, 0, speed)
+		vel.z = move_toward(self.velocity.z, 0, speed)
 
-	velocity = (vel + outside_forces) * delta
+	self.velocity = (vel + outside_forces) * delta
 	outside_forces = Vector3.ZERO
 	if vel == Vector3.ZERO:
 		anim_player.play("idle")
 	else:
 		anim_player.play("walk")
-	move_and_slide()
+	s.move_and_slide()
 
 
 func _move_god_mode(delta: float) -> void:
@@ -105,34 +110,36 @@ func _move_god_mode(delta: float) -> void:
 	if Input.is_key_pressed(KEY_CTRL):
 		speedMod *= 3
 
-	velocity = direction * run_speed * speedMod * delta
+	self.velocity = direction * run_speed * speedMod * delta
 
 	if Input.is_key_pressed(KEY_SPACE):
-		velocity.y += walk_speed / 2 * speedMod * delta
+		self.velocity.y += walk_speed / 2 * speedMod * delta
 	elif Input.is_key_pressed(KEY_SHIFT):
-		velocity.y -= walk_speed * delta
+		self.velocity.y -= walk_speed * delta
 
-	move_and_slide()
+	var s = self
+	s.move_and_slide()
 
 
 func _move_drag_mode(delta: float) -> void:
 	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
-		velocity.z -= drag_speed * draggable.weight
+		self.velocity.z -= drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
-		velocity.z += drag_speed * draggable.weight
+		self.velocity.z += drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
-		velocity.x -= drag_speed * draggable.weight
+		self.velocity.x -= drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
-		velocity.x += drag_speed * draggable.weight
+		self.velocity.x += drag_speed * draggable.weight
 	
-	velocity *= delta
+	self.velocity *= delta
 
 	# Snap to grid.
-	if velocity.length() < 0.1:
+	if self.velocity.length() < 0.1:
 		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
 		draggable.parent.global_position = draggable.parent.global_position.snapped(Vector3(0.5, 0.5, 0.5))
 	else:
-		move_and_slide()
+		var s = self
+		s.move_and_slide()
 
 
 func start_battle(npc: Variant) -> void:
@@ -196,3 +203,23 @@ func is_dragging() -> bool:
 
 func set_draggable(obj: Node3D) -> void:
 	draggable = obj
+
+
+func react(element: ElementalType, randVal:=-2) -> bool:
+	if randVal == _rand_val: return false
+	_rand_val = randVal
+
+	var e1 := ElementManager.get_matchup(battle_actor.element1, element)
+	if e1:
+		battle_actor.set_element(0, e1)
+
+	var e2 := ElementManager.get_matchup(battle_actor.element2, element)
+	if e2:
+		battle_actor.set_element(1, e2)
+	return true
+
+func _on_battle_actor_element_changed(id: int, element: ElementalType) -> void:
+		model.get_active_material(id).albedo_color = element.main_color
+
+func _get_mesh() -> MeshInstance3D:
+	return model
