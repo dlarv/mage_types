@@ -39,12 +39,14 @@ func open_spell_scroll_menu() -> Item:
 	tabs_visible = false
 	current_tab = 1
 	var item = await spell_scroll_selected
+	tabs_visible = true
 	return item
 
 func open_equipment_menu() -> Item:
 	tabs_visible = false
 	current_tab = 2
 	var item = await equipment_selected
+	tabs_visible = true
 	return item 
 
 func _on_item_selected(item:Item) -> void:
