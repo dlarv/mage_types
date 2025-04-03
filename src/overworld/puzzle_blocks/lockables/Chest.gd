@@ -9,7 +9,6 @@ var _mat: StandardMaterial3D
 
 func _ready() -> void:
 	_mat = StandardMaterial3D.new()
-	$MeshInstance3D.set_surface_override_material(0, _mat)
 	_lock(len(locks) > 0)
 
 	for lock in locks:
@@ -37,7 +36,9 @@ func _on_lock_closed(block: PuzzleBlock) -> bool:
 
 
 func _update_mesh() -> void:
+	$chest/Ribbon.hide()
 	_mat.albedo_color = _opened_color
+	$chest/Box.set_surface_override_material(0, _mat)
 
 
 func serialize() -> Dictionary:
@@ -58,9 +59,9 @@ func deserialize(data: Dictionary) -> void:
 func _lock(val) -> void:
 	$Interactable.set_disabled(val)
 	if val:
-		_mat.albedo_color = _locked_color
+		$chest/Ribbon.show()
 	else:
-		_mat.albedo_color = _unlocked_color
+		$chest/Ribbon.hide()
 
 
 func _on_interactable_interacted(obj:Node3D) -> void:
