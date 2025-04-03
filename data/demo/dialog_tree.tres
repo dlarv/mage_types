@@ -8,6 +8,10 @@ starts = {
 "0a": &"0_3",
 "1a": &"0_5",
 "2": &"0_9",
+"BEACH_0": &"0_6",
+"BEACH_1": &"0_7",
+"BEACH_2": &"0_8",
+"BEACH_3": &"0_10",
 "BOSS1": &"0_1",
 "MISC": &"0_2",
 "PARTNER_INTRO": &"0_4"
@@ -15,12 +19,17 @@ starts = {
 nodes = {
 "0_1": {
 "link": &"1_1",
-"offset": Vector2(-1720, -300),
+"offset": Vector2(-2140, 160),
 "start_id": "BOSS1"
+},
+"0_10": {
+"link": &"1_18",
+"offset": Vector2(-1280, 160),
+"start_id": "BEACH_3"
 },
 "0_2": {
 "link": &"1_2",
-"offset": Vector2(-1720, -620),
+"offset": Vector2(-2140, -160),
 "start_id": "MISC"
 },
 "0_3": {
@@ -30,13 +39,28 @@ nodes = {
 },
 "0_4": {
 "link": &"1_3",
-"offset": Vector2(-2240, 120),
+"offset": Vector2(-2220, 480),
 "start_id": "PARTNER_INTRO"
 },
 "0_5": {
 "link": &"1_21",
 "offset": Vector2(-1900, 1260),
 "start_id": "1a"
+},
+"0_6": {
+"link": &"1_13",
+"offset": Vector2(-1300, -760),
+"start_id": "BEACH_0"
+},
+"0_7": {
+"link": &"1_14",
+"offset": Vector2(-1300, -440),
+"start_id": "BEACH_1"
+},
+"0_8": {
+"link": &"1_15",
+"offset": Vector2(-1280, -140),
+"start_id": "BEACH_2"
 },
 "0_9": {
 "link": &"1_27",
@@ -45,7 +69,7 @@ nodes = {
 },
 "1_1": {
 "dialogue": "RAWR xd",
-"offset": Vector2(-1500, -300),
+"offset": Vector2(-1920, 160),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -71,7 +95,7 @@ nodes = {
 },
 "1_11": {
 "dialogue": "I have a friend, Basil, who seems to have wandered off. The aforementioned Green man. Would you help me find them?",
-"offset": Vector2(80, 100),
+"offset": Vector2(100, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -89,7 +113,7 @@ nodes = {
 },
 "1_12": {
 "dialogue": "Your kindness is most appreciated.",
-"offset": Vector2(760, 120),
+"offset": Vector2(780, 480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -100,9 +124,48 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": 0
 },
+"1_13": {
+"dialogue": "Hint: Pressure plates will only react to MagiClay of the matching color.[br][br]-Aqua",
+"offset": Vector2(-1080, -760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Hint Stone"
+},
+"1_14": {
+"dialogue": "The elements contained within MagiClay will react with powerful sources of color energy.[br][br]-Aqua",
+"offset": Vector2(-1080, -460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Hint Stone"
+},
+"1_15": {
+"dialogue": "Press 'T' to open up your transmutation menu.",
+"offset": Vector2(-1060, -160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_19",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Hint Stone"
+},
 "1_16": {
-"dialogue": "In truth, my offer is more for you than me. This island is filled with monsters. It would be unkind to leave you to their mercy. ",
-"offset": Vector2(420, 400),
+"dialogue": "In truth, my offer is more for yelementou than me. This island is filled with monsters. It would be unkind to leave you to their mercy. ",
+"offset": Vector2(440, 760),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -115,7 +178,7 @@ nodes = {
 },
 "1_17": {
 "dialogue": "Helping you is what Basil would do.",
-"offset": Vector2(762.121, 398.358),
+"offset": Vector2(780, 760),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -126,9 +189,40 @@ nodes = {
 "size": Vector2(300, 257),
 "speaker": 0
 },
+"1_18": {
+"dialogue": "asdf",
+"offset": Vector2(-1060, 140),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Hint Stone"
+},
+"1_19": {
+"dialogue": "The rest of the text is obscured. Keep reading?",
+"offset": Vector2(-720, -160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_20",
+"text": "Hint 1"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": "No"
+}
+},
+"size": Vector2(300, 256),
+"speaker": "Hint Stone"
+},
 "1_2": {
 "dialogue": "",
-"offset": Vector2(-1500, -620),
+"offset": Vector2(-1920, -160),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -138,6 +232,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": ""
+},
+"1_20": {
+"dialogue": "asdf",
+"offset": Vector2(-380, -160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Hint Stone"
 },
 "1_21": {
 "dialogue": "When combatants transmute, there are side effects that alter our stats.",
@@ -257,7 +364,7 @@ nodes = {
 },
 "1_3": {
 "dialogue": "You just washed up on the beach, didn't you. ",
-"offset": Vector2(-1960, 100),
+"offset": Vector2(-1940, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -309,7 +416,7 @@ nodes = {
 },
 "1_33": {
 "dialogue": " I'm sure Basil will not be found on the beach. Let's move Northward.",
-"offset": Vector2(1200, 240),
+"offset": Vector2(1220, 600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -322,7 +429,7 @@ nodes = {
 },
 "1_34": {
 "dialogue": " Here, take these. They'll help you against what is to come.[br][br]Player obtained [el]Magenta[/el] Strike!",
-"offset": Vector2(1540, 240),
+"offset": Vector2(1560, 600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -335,7 +442,7 @@ nodes = {
 },
 "1_35": {
 "dialogue": "I must warn you. Up ahead, there is a dangerous foe. A large slime. We'll have to fight it.",
-"offset": Vector2(1880, 240),
+"offset": Vector2(1900, 600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -358,7 +465,7 @@ nodes = {
 },
 "1_36": {
 "dialogue": "Then I will teach you.",
-"offset": Vector2(2240, 80),
+"offset": Vector2(2260, 440),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -371,7 +478,7 @@ nodes = {
 },
 "1_37": {
 "dialogue": "We will win. But if you'd like, the slimes in the enxt room should act as a weaker version.",
-"offset": Vector2(2243.14, 382.947),
+"offset": Vector2(2260, 740),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -384,7 +491,7 @@ nodes = {
 },
 "1_38": {
 "dialogue": "Your enthusiasm... You will get along well with Basil.",
-"offset": Vector2(2240, 700),
+"offset": Vector2(2260, 1060),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -397,7 +504,7 @@ nodes = {
 },
 "1_39": {
 "dialogue": "Ah, here we go",
-"offset": Vector2(2900, 80),
+"offset": Vector2(2920, 440),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -410,7 +517,7 @@ nodes = {
 },
 "1_4": {
 "dialogue": "Tell me, did you see a large, green man down that way?",
-"offset": Vector2(-1620, 100),
+"offset": Vector2(-1600, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -436,7 +543,7 @@ nodes = {
 },
 "1_5": {
 "dialogue": "Interesting... perhaps then he is up by the caves.",
-"offset": Vector2(-1280, 100),
+"offset": Vector2(-1260, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -449,7 +556,7 @@ nodes = {
 },
 "1_6": {
 "dialogue": "I'm sorry, how rude of me. My name is Crimson, who might you be?",
-"offset": Vector2(-940, 100),
+"offset": Vector2(-920, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -462,7 +569,7 @@ nodes = {
 },
 "1_7": {
 "dialogue": "...",
-"offset": Vector2(-600, 100),
+"offset": Vector2(-580, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -488,7 +595,7 @@ nodes = {
 },
 "1_9": {
 "dialogue": "I know we just met, but would you kindly do me a favor?",
-"offset": Vector2(-256.935, 104.043),
+"offset": Vector2(-240, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -516,7 +623,7 @@ nodes = {
 },
 "2_2": {
 "comment": "Thoughtful",
-"offset": Vector2(-1620, 420),
+"offset": Vector2(-1600, 780),
 "size": Vector2(200, 100)
 },
 "2_3": {
@@ -529,22 +636,22 @@ nodes = {
 },
 "2_4": {
 "comment": "Smile",
-"offset": Vector2(2540, 700),
+"offset": Vector2(2560, 1060),
 "size": Vector2(200, 100)
 },
 "3_1": {
 "link": "END",
-"offset": Vector2(-1140, -300),
+"offset": Vector2(-1560, 160),
 "signalValue": "battle_started"
 },
 "3_2": {
 "link": "END",
-"offset": Vector2(3240, 80),
+"offset": Vector2(3260, 440),
 "signalValue": "battle_started"
 },
 "8_1": {
 "attached_nodes": Array[StringName]([&"1_2", &"0_2", &"3_1", &"1_1", &"0_1"]),
-"offset": Vector2(-1760, -660),
+"offset": Vector2(-2180, -200),
 "tint_color": Color(0.133333, 0.133333, 0.133333, 0.294118),
 "title": "Misc"
 },
@@ -557,7 +664,7 @@ nodes = {
 "9_1": {
 "cur_variable": 0,
 "link": &"1_39",
-"offset": Vector2(2580, 80),
+"offset": Vector2(2600, 440),
 "signalValue": "play_cutscene",
 "type": 0,
 "value": "tutorial_battle",
@@ -570,5 +677,5 @@ variables = {
 "value": ""
 }
 }
-strays = Array[String](["8_1", "8_2", "2_2", "2_4", "1_25", "2_1", "2_3", "1_24"])
+strays = Array[String](["8_2", "8_1", "2_2", "1_25", "2_1", "2_3", "1_24", "2_4"])
 characters = "res://data/demo/character_files/character_list.tres"
