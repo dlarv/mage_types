@@ -1,28 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqn3fdhxmh1vh"]
+[gd_scene load_steps=7 format=3 uid="uid://bqn3fdhxmh1vh"]
 
 [ext_resource type="Script" path="res://world/subareas/eastern_caves/room_templates/EasternCaveRoom.gd" id="1_iguqr"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_ry3j8"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="3_r6neq"]
-[ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_ja6al"]
 [ext_resource type="PackedScene" uid="uid://dr82ihfer1ek6" path="res://src/overworld/puzzle_blocks/or_gate.tscn" id="5_bdo5a"]
-[ext_resource type="PackedScene" uid="uid://cspipog36hcdh" path="res://src/overworld/puzzle_blocks/lasers/draggable_emitter.tscn" id="5_hvbpd"]
-[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="6_3r08l"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="8_i03r6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0b3o"]
 size = Vector3(3, 2, 4.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sbo0y"]
-size = Vector3(30, 0.5, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5wsvr"]
-size = Vector3(28, 0.1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qoed8"]
-size = Vector3(1, 1, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b7r7g"]
-size = Vector3(1, 0.1, 5)
 
 [node name="LargeSquare" type="Node3D"]
 script = ExtResource("1_iguqr")
@@ -142,69 +127,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 process_mode = 4
 visible = false
 
-[node name="Blue_0" type="Node3D" parent="Puzzle"]
-process_mode = 4
-visible = false
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Puzzle/Blue_0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape3D_N" type="CollisionShape3D" parent="Puzzle/Blue_0/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.293543, -5.5)
-shape = SubResource("BoxShape3D_sbo0y")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/Blue_0/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -5.5)
-mesh = SubResource("BoxMesh_5wsvr")
-
-[node name="CollisionShape3D_S" type="CollisionShape3D" parent="Puzzle/Blue_0/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -1.5)
-shape = SubResource("BoxShape3D_sbo0y")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzle/Blue_0/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1.5)
-mesh = SubResource("BoxMesh_5wsvr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/Blue_0/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -3.5)
-shape = SubResource("BoxShape3D_qoed8")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Puzzle/Blue_0/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -0.5, -3.5)
-mesh = SubResource("BoxMesh_b7r7g")
-
-[node name="DraggableEmitter" parent="Puzzle/Blue_0" instance=ExtResource("5_hvbpd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, 0, -6)
-axis_lock_angular_y = true
-_element = "purple"
-
-[node name="DraggableEmitter4" parent="Puzzle/Blue_0" instance=ExtResource("5_hvbpd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9, 0, -6)
-axis_lock_angular_y = true
-_element = "green"
-
-[node name="DraggableEmitter2" parent="Puzzle/Blue_0" instance=ExtResource("5_hvbpd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -6)
-axis_lock_angular_y = true
-_element = "red"
-
-[node name="DraggableEmitter3" parent="Puzzle/Blue_0" instance=ExtResource("5_hvbpd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -6)
-axis_lock_angular_y = true
-_element = "yellow"
-
-[node name="PressurePlate" parent="Puzzle/Blue_0" instance=ExtResource("6_3r08l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.5, 4)
-_element = "yellow"
-
-[node name="MagiclayRock" parent="Puzzle/Blue_0" instance=ExtResource("4_ja6al")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 4)
-_element = "blue"
-
 [node name="OrGate" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("5_bdo5a")]
-locks = [NodePath("../Blue_0/PressurePlate")]
+locks = [NodePath("")]
 
 [node name="Gate_S" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_i03r6")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.4, 15)
