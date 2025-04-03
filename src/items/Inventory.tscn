@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=85 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_xejte"]
@@ -39,6 +39,7 @@
 [ext_resource type="Resource" uid="uid://b0hf1tbttw2y7" path="res://data/items/spell_scrolls/basic/hit_r.tres" id="33_x0gag"]
 [ext_resource type="Resource" uid="uid://du76fln60mnsx" path="res://data/items/spell_scrolls/basic/throw_c.tres" id="34_8ev2q"]
 [ext_resource type="Resource" uid="uid://fs0y578r1jan" path="res://data/items/key_items/catalyst_spell.tres" id="35_ex8ue"]
+[ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="35_glgke"]
 [ext_resource type="Resource" uid="uid://b2qk5bljx7w84" path="res://data/items/spell_scrolls/basic/throw_m.tres" id="35_pnyuv"]
 [ext_resource type="Resource" uid="uid://d2uymuumb873y" path="res://data/items/key_items/destroy_spell.tres" id="36_0aymk"]
 [ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="37_o6yus"]
@@ -331,6 +332,15 @@ quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
+[sub_resource type="Resource" id="Resource_l4gd1"]
+resource_name = "Shield Spell Bead"
+script = ExtResource("2_xejte")
+item = ExtResource("35_glgke")
+id = 30
+quantity = 0
+max_quantity = 9999
+allow_stacking = true
+
 [sub_resource type="Resource" id="Resource_cewsy"]
 resource_name = "Stasis Spell"
 script = ExtResource("2_xejte")
@@ -407,7 +417,7 @@ allow_stacking = true
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
-spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_u77uh"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_6agee"), SubResource("Resource_1i18h")])
+spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_u77uh"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_6agee"), SubResource("Resource_1i18h"), SubResource("Resource_l4gd1")])
 key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m")])
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
 secondary_override = 2
