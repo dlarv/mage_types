@@ -1,4 +1,4 @@
-extends MagiClay
+extends CharacterBody3D
 class_name Player 
 
 signal battle_started(allies, enemies)
@@ -70,12 +70,11 @@ func _physics_process(delta: float) -> void:
 	if is_dragging():
 		_move_drag_mode(delta)
 		return
-	var vel = self.velocity
+	var vel = velocity
 	var speed = walk_speed if not _is_running else run_speed
 
 	# Add the gravity.
-	var s = self
-	if !s.is_on_floor() and outside_forces.y == 0:
+	if !self.is_on_floor() and outside_forces.y == 0:
 		vel.y -= gravity
 		
 
@@ -90,16 +89,16 @@ func _physics_process(delta: float) -> void:
 		# Rotate model in direction of movement.
 		model.rotation.y = atan2(vel.x, vel.z)
 	else:
-		vel.x = move_toward(self.velocity.x, 0, speed)
-		vel.z = move_toward(self.velocity.z, 0, speed)
+		vel.x = move_toward(velocity.x, 0, speed)
+		vel.z = move_toward(velocity.z, 0, speed)
 
-	self.velocity = (vel + outside_forces) * delta
+	velocity = (vel + outside_forces) * delta
 	outside_forces = Vector3.ZERO
 	if vel == Vector3.ZERO:
 		anim_player.play("idle")
 	else:
 		anim_player.play("walk")
-	s.move_and_slide()
+	move_and_slide()
 
 
 func _move_god_mode(delta: float) -> void:
@@ -110,36 +109,34 @@ func _move_god_mode(delta: float) -> void:
 	if Input.is_key_pressed(KEY_CTRL):
 		speedMod *= 3
 
-	self.velocity = direction * run_speed * speedMod * delta
+	velocity = direction * run_speed * speedMod * delta
 
 	if Input.is_key_pressed(KEY_SPACE):
-		self.velocity.y += walk_speed / 2 * speedMod * delta
+		velocity.y += walk_speed / 2 * speedMod * delta
 	elif Input.is_key_pressed(KEY_SHIFT):
-		self.velocity.y -= walk_speed * delta
+		velocity.y -= walk_speed * delta
 
-	var s = self
-	s.move_and_slide()
+	move_and_slide()
 
 
 func _move_drag_mode(delta: float) -> void:
 	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
-		self.velocity.z -= drag_speed * draggable.weight
+		velocity.z -= drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
-		self.velocity.z += drag_speed * draggable.weight
+		velocity.z += drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
-		self.velocity.x -= drag_speed * draggable.weight
+		velocity.x -= drag_speed * draggable.weight
 	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
-		self.velocity.x += drag_speed * draggable.weight
+		velocity.x += drag_speed * draggable.weight
 	
-	self.velocity *= delta
+	velocity *= delta
 
 	# Snap to grid.
-	if self.velocity.length() < 0.1:
+	if velocity.length() < 0.1:
 		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
 		draggable.parent.global_position = draggable.parent.global_position.snapped(Vector3(0.5, 0.5, 0.5))
 	else:
-		var s = self
-		s.move_and_slide()
+		move_and_slide()
 
 
 func start_battle(npc: Variant) -> void:

@@ -36,8 +36,7 @@ func _get_magiclay() -> void:
 		_magiclay_terrain = clay
 
 func _find_mouse_position() -> void:
-	# if not Settings.use_mouse_targeting: return
-	var cam = get_viewport().get_camera_3d()
+	var cam := get_viewport().get_camera_3d()
 	var mousePos := get_viewport().get_mouse_position()
 
 	var origin := cam.project_ray_origin(mousePos)
