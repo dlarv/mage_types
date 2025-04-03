@@ -42,8 +42,8 @@ func _ready() -> void:
 	Settings.player_name_changed.connect(func(name):
 		player_name = name)
 
-	model.get_active_material(0).albedo_color = battle_actor.element1.main_color
-	model.get_active_material(1).albedo_color = battle_actor.element2.main_color
+	# model.get_active_material(0).albedo_color = battle_actor.element1.main_color.lightened(0.2)
+	# model.get_active_material(1).albedo_color = battle_actor.element2.main_color.lightened(0.2)
 	battle_actor.element_changed.connect(_on_battle_actor_element_changed)
 
 
@@ -206,20 +206,22 @@ func set_draggable(obj: Node3D) -> void:
 
 
 func react(element: ElementalType, randVal:=-2) -> bool:
-	if randVal == _rand_val: return false
-	_rand_val = randVal
-
-	var e1 := ElementManager.get_matchup(battle_actor.element1, element)
-	if e1:
-		battle_actor.set_element(0, e1)
-
-	var e2 := ElementManager.get_matchup(battle_actor.element2, element)
-	if e2:
-		battle_actor.set_element(1, e2)
-	return true
+	return false
+	# if randVal == _rand_val: return false
+	# _rand_val = randVal
+	#
+	# var e1 := ElementManager.get_matchup(battle_actor.element1, element)
+	# if e1:
+	# 	battle_actor.set_element(0, e1)
+	#
+	# var e2 := ElementManager.get_matchup(battle_actor.element2, element)
+	# if e2:
+	# 	battle_actor.set_element(1, e2)
+	# return true
 
 func _on_battle_actor_element_changed(id: int, element: ElementalType) -> void:
-		model.get_active_material(id).albedo_color = element.main_color
+		# model.get_active_material(id).albedo_color = element.main_color.lightened(0.2)
+		pass
 
 func _get_mesh() -> MeshInstance3D:
 	return model
