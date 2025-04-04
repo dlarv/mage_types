@@ -1,21 +1,11 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://bfcmgeugkgdc4"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bfcmgeugkgdc4"]
 
-[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_8if41"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_uqmjw"]
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="3_bimwo"]
+[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_vxj3h"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="3_cyfgb"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_ris70"]
+[ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_ssl3l"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_s70gu"]
-[ext_resource type="Resource" uid="uid://bxe7rrdwy8tjq" path="res://data/battle_system/battle_actions/attacks/throw.tres" id="4_tvt3h"]
-
-[sub_resource type="Resource" id="Resource_7dqi1"]
-script = ExtResource("1_8if41")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_offensive_affinity = 100
-initial_defensive_affinity = 100
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("4_s70gu")
@@ -29,13 +19,13 @@ _base_evasion = 100.0
 [resource]
 script = ExtResource("3_ris70")
 name = "Guy"
+level = 1
 stat_manager = SubResource("Resource_6u7d0")
 hp = 250
 reset_hp_after_battle = true
-affinity_manager = SubResource("Resource_7dqi1")
 _element1 = "blue"
 _element2 = "blank"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_uqmjw")]([ExtResource("3_bimwo"), ExtResource("4_tvt3h")])
+attacks = Array[ExtResource("2_uqmjw")]([ExtResource("2_vxj3h"), ExtResource("3_ssl3l")])
 equipment = ExtResource("3_cyfgb")

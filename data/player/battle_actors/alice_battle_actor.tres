@@ -1,21 +1,8 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=5 format=3 uid="uid://cj7rk23vvyppe"]
 
-[ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="1_r1sef"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
-[ext_resource type="Resource" uid="uid://ch0d7yocai0vt" path="res://data/battle_system/battle_actions/attacks/hit.tres" id="2_cxfsv"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_t6yc2"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="3_5633o"]
-[ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="4_2oeie"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
-
-[sub_resource type="Resource" id="Resource_wi5xr"]
-script = ExtResource("1_r1sef")
-TRANSMUTATION_BONUS = 1
-CONSECUTIVE_BONUS = 1
-STRUGGLE_BONUS = 2
-BIAS_BONUS = 2
-initial_offensive_affinity = 100
-initial_defensive_affinity = 100
 
 [sub_resource type="Resource" id="Resource_my6ko"]
 script = ExtResource("7_mftjw")
@@ -29,12 +16,12 @@ _base_evasion = 100.0
 [resource]
 script = ExtResource("1_wyvu6")
 name = "Alice"
+level = 1
 stat_manager = SubResource("Resource_my6ko")
 hp = 100
 reset_hp_after_battle = true
-affinity_manager = SubResource("Resource_wi5xr")
 _element1 = "purple"
 _element2 = "cyan"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_t6yc2")]([ExtResource("2_cxfsv"), ExtResource("3_5633o"), ExtResource("4_2oeie"), null, null])
+attacks = Array[ExtResource("2_t6yc2")]([])
