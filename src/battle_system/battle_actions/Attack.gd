@@ -8,15 +8,15 @@ class_name Attack
 func apply_effects(user: BattleActor, targets: Array) -> String:
 	var msg := [super.apply_effects(user, targets)]
 
-	var affinity := 1.0 
+	var affinity := 0.8 
 	if not user.element1.is_blank() and user.element1.is_defensive_type == element.is_defensive_type:
 		Logger.append_battle_log("User(%s)'s primary Element(%s) has affinity for Attack.Element(%s)"
 				% [user.name, user.element1.name, element.name])
-		affinity *= 1.2
+		affinity += 0.2
 	if not user.element2.is_blank() and user.element2.is_defensive_type == element.is_defensive_type: 
 		Logger.append_battle_log("User(%s) secondary Element(%s) has affinity for Attack.Element(%s)"
 				% [user.name, user.element2.name, element.name])
-		affinity *= 1.2
+		affinity += 0.2
 
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
