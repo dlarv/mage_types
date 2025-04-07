@@ -24,10 +24,5 @@ metadata/_tab_index = 0
 visible = false
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
 [connection signal="row_selected" from="AttackManager" to="." method="_on_attack_manager_row_selected"]
 [connection signal="back_button_pressed" from="Builder" to="." method="_on_builder_back_button_pressed"]
