@@ -2,7 +2,7 @@
 extends Resource
 class_name StatManager
 
-enum Stat { ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, EVASION }
+enum Stat { ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, MELEE, RANGED, SPEED, EVASION }
 
 signal stat_changed(stat: StatusEffect, mod: float)
 const BASE_MIN_MOD := 0.1
@@ -132,24 +132,86 @@ func add(effect: StatChange, name: String) -> void:
 		Stat.EVASION: _evasion_mod += effect.get_mod()
 
 	var msg = "%s for %s. Base(%f) * Mod(%f) = %f%s"
-	if effect.stat == StatManager.Stat.ATTACK:
-		Logger.append_battle_log(msg % [effect.name, name, _base_melee_attack, _melee_attack_mod + _attack_mod, melee_attack, "(melee attack)"])
-		Logger.append_battle_log(msg % [effect.name, name, _base_ranged_attack, _ranged_attack_mod + _attack_mod, ranged_attack, "(ranged attack)"])
-		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_ATTACK))
-		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_ATTACK))
+	match effect.stat:
+		StatManager.Stat.ATTACK:
+			Logger.append_battle_log(msg % [
+					effect.name, 
+					name, 
+					_base_melee_attack, 
+					_melee_attack_mod + _attack_mod, 
+					melee_attack, 
+					"(melee attack)"])
+			Logger.append_battle_log(msg % [
+						effect.name, 
+						name, 
+						_base_ranged_attack, 
+						_ranged_attack_mod + _attack_mod,
+						ranged_attack,
+						"(ranged attack)"])
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_ATTACK))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_ATTACK))
 
-	elif effect.stat == StatManager.Stat.DEFENSE:
-		Logger.append_battle_log(
-			msg % [effect.name, name, _base_melee_defense, _melee_defense_mod + _defense_mod, melee_defense, "(melee defense)"])
-		Logger.append_battle_log(
-			msg % [effect.name, name, _base_ranged_defense, _ranged_defense_mod + _defense_mod, ranged_defense, "(ranged defense)"])
-		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_DEFENSE))
-		stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_DEFENSE))
+		StatManager.Stat.DEFENSE:
+			Logger.append_battle_log( msg % [
+					effect.name,
+					name,
+					_base_melee_defense,
+					_melee_defense_mod + _defense_mod,
+					melee_defense,
+					"(melee defense)"])
+			Logger.append_battle_log( msg % [
+					effect.name,
+					name,
+					_base_ranged_defense,
+					_ranged_defense_mod + _defense_mod,
+					ranged_defense,
+					"(ranged defense)"])
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_DEFENSE))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_DEFENSE))
 
-	else:
-		Logger.append_battle_log(
-			msg % [effect.name, name, get_base_stat(effect.stat), get_stat_mod(effect.stat), get_stat(effect.stat), ""])
-		stat_changed.emit(effect.stat, get_stat_mod(effect.stat))
+		StatManager.Stat.MELEE:
+			Logger.append_battle_log( msg % [
+					effect.name,
+					name,
+					_base_melee_attack,
+					_melee_attack_mod + _attack_mod,
+					melee_attack,
+					"(melee attack)"])
+			Logger.append_battle_log( msg % [
+					effect.name,
+					name,
+					_base_melee_defense,
+					_melee_defense_mod + _defense_mod,
+					melee_defense,
+					"(melee defense)"])
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_ATTACK))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_DEFENSE))
+		StatManager.Stat.RANGED:
+			Logger.append_battle_log( msg % [
+					effect.name,
+					name,
+					_base_ranged_attack,
+					_ranged_attack_mod + _attack_mod,
+					ranged_attack,
+					"(ranged attack)"])
+			Logger.append_battle_log( msg % [
+					effect.name,
+					name,
+					_base_ranged_defense,
+					_ranged_defense_mod + _defense_mod,
+					ranged_defense,
+					"(ranged defense)"])
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_ATTACK))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_DEFENSE))
+		_:
+			Logger.append_battle_log(msg % [
+					effect.name,
+					name,
+					get_base_stat(effect.stat),
+					get_stat_mod(effect.stat),
+					get_stat(effect.stat),
+					""])
+			stat_changed.emit(effect.stat, get_stat_mod(effect.stat))
 
 func serialize() -> Dictionary: 
 	return {
@@ -160,6 +222,7 @@ func serialize() -> Dictionary:
 		"speed": _base_speed,
 		"evasion": _base_evasion,
 	}
+
 func deserialize(data: Dictionary) -> void: 
 	_base_melee_attack = data["melee_attack"]
 	_base_ranged_attack = data["ranged_attack"]

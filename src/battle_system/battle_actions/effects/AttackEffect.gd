@@ -5,7 +5,7 @@ class_name _AttackEffect
 @export var name: String 
 ## Effectiveness of this effect, usually as a percentage of health.
 @export var strength: float  
-@export_multiline var message: String = ""
+@export_multiline var message: String = "": get = _get_message
 
 # virtual
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
@@ -22,3 +22,7 @@ func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
 
 func get_full_name() -> String:
 	return name
+
+
+func _get_message() -> String:
+	return message
