@@ -105,34 +105,8 @@ func _on_accuracy_value_changed(value:float) -> void:
 	_attack.accuracy = value
 
 
-func _on_save_button_pressed() -> void:
-	_copy_attack(_row.attack, _attack)
-	_row.update()
-
-	_attack.effects = []
-	for effect in effects_scroller.get_children():
-		_attack.effects.append(effect.get_effect())
-
-	if true or Engine.is_editor_hint():
-		# Save attack to fs.
-		var p: String
-		if _output_path.is_empty():
-			print("Generating path")
-			p = "%s/%s.tres" % [ path, _attack.name.to_lower().replace(" ", "_") ]
-		else:
-			p = _output_path
-
-		print("Saving attack to %s." % p)
-		
-		var err := ResourceSaver.save(_attack, p)
-		if err != OK:
-			print("Error: " + error_string(err))
-	else:
-		# Create SpellScroll and give it to player.
-		print("Creating spell scroll...")
-		var err := ResourceSaver.save(_attack, "%s/%s.tres" % [ path, _attack.name ])
-		if err != OK:
-			print("Error: " + error_string(err))
+func _on_power_value_changed(value:float) -> void:
+	_attack.power = int(value) 
 
 
 func _on_back_button_pressed() -> void:
@@ -142,8 +116,10 @@ func _on_back_button_pressed() -> void:
 
 func open_row(row: Row) -> void:
 	_row = row
+	var animation := row.attack.animation
 	_attack = row.attack.duplicate(true)
 	_output_path = row.attack.resource_path
+	_attack.animation = animation
 
 	var attack: Attack = row.attack
 	if attack:
@@ -200,11 +176,34 @@ func open_row(row: Row) -> void:
 				effects_scroller.add_child(l1)
 		
 
+func _on_save_button_pressed() -> void:
+	_copy_attack(_row.attack, _attack)
+	_row.update()
 
+	_attack.effects = []
+	for effect in effects_scroller.get_children():
+		_attack.effects.append(effect.get_effect())
 
+	if true or Engine.is_editor_hint():
+		# Save attack to fs.
+		var p: String
+		if _output_path.is_empty():
+			print("Generating path")
+			p = "%s/%s.tres" % [ path, _attack.name.to_lower().replace(" ", "_") ]
+		else:
+			p = _output_path
 
-func _on_power_value_changed(value:float) -> void:
-	_attack.power = int(value) 
+		print("Saving attack to %s." % p)
+		
+		var err := ResourceSaver.save(_attack, p)
+		if err != OK:
+			print("Error: " + error_string(err))
+	else:
+		# Create SpellScroll and give it to player.
+		print("Creating spell scroll...")
+		var err := ResourceSaver.save(_attack, "%s/%s.tres" % [ path, _attack.name ])
+		if err != OK:
+			print("Error: " + error_string(err))
 
 
 func _copy_attack(a: Attack, b: Attack) -> void:
@@ -218,5 +217,5 @@ func _copy_attack(a: Attack, b: Attack) -> void:
 	a.power = b.power
 	a.animation = b.animation
 	a.details = b.details
-	a.attack_effects = b.attack_effects
+	a.effects = b.effects
 	
