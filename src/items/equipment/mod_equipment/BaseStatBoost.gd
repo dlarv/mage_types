@@ -2,7 +2,7 @@
 extends ModEquipmentEffect
 class_name BaseStatBoost
 
-@export var stat: StatManager.Stat
+@export var stat: StatManager.Stats
 @export var amount: float
 
 #override

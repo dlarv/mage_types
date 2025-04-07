@@ -37,7 +37,7 @@ func get_target_position() -> Vector2:
 	position.y += size.y / 2
 	return position
 
-func display_stat_change(stat: StatManager.Stat, value: float) -> void:
+func display_stat_change(stat: StatManager.Stats, value: float) -> void:
 	stat_change_display.add(stat, value)
 
 func set_defeated() -> void:

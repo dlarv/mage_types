@@ -2,8 +2,6 @@
 extends Resource 
 class_name BattleActor 
 
-enum Stats { MELEE_ATTACK, RANGED_ATTACK, MELEE_DEFENSE, RANGED_DEFENSE, SPEED, EVASION, HP, MANA, STAMINA }
-
 signal battle_setup_completed()
 @warning_ignore("unused_signal")
 signal turn_ended()
@@ -172,7 +170,7 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
 
 	return output
 
-func get_stat(stat: StatManager.Stat) -> float:
+func get_stat(stat: StatManager.Stats) -> float:
 	return stat_manager.get_stat(stat)
 
 func set_stat(stat: Variant, amount: float) -> void:
@@ -183,7 +181,7 @@ func set_stat(stat: Variant, amount: float) -> void:
 		current_hp = int(amount)
 	else:
 		if stat is String:
-			stat = StatManager.Stat[stat]
+			stat = StatManager.Stats[stat]
 		stat_manager.set_base_stat(stat, amount)
 
 			

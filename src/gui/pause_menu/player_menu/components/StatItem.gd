@@ -76,7 +76,7 @@ func set_value(actor: BattleActor) -> void:
 		value_1 = actor.hp
 		value_2 = actor.current_hp
 	else:
-		value_1 = actor.get_stat(StatManager.Stat.get(stat))
+		value_1 = actor.get_stat(StatManager.Stats.get(stat))
 	if not stat_modified.is_connected(actor.set_stat):
 		stat_modified.connect(actor.set_stat)
 	

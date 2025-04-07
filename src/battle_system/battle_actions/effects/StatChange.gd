@@ -4,12 +4,12 @@ class_name StatChange
 
 const MODIFIER := 0.3
 
-@export var stat: StatManager.Stat:
+@export var stat: StatManager.Stats:
 	set(val):
 		stat = val
 		var dir := "Drop" if strength < 0 else "Boost"
 		name = "%s %s" % [
-				" ".join(Array(StatManager.Stat.keys()[stat].split("_")).map(func(x): return x.capitalize())),
+				" ".join(Array(StatManager.Stats.keys()[stat].split("_")).map(func(x): return x.capitalize())),
 				dir]
 
 func get_strength() -> float:
@@ -24,21 +24,21 @@ func _get_message() -> String:
 	var dir := "lowered" if strength < 0 else "boosted"
 
 	match stat:
-		StatManager.Stat.ATTACK:
+		StatManager.Stats.ATTACK:
 			output = "{target}'s melee attack was %s!\n" % dir
 			output += "{target}'s ranged attack was %s!" % dir
-		StatManager.Stat.DEFENSE:
+		StatManager.Stats.DEFENSE:
 			output = "{target}'s melee defense was %s!\n" % dir
 			output += "{target}'s ranged defense was %s!" % dir
-		StatManager.Stat.MELEE:
+		StatManager.Stats.MELEE:
 			output = "{target}'s melee attack was %s!\n" % dir
 			output += "{target}'s melee defense was %s!" % dir
-		StatManager.Stat.RANGED:
+		StatManager.Stats.RANGED:
 			output = "{target}'s ranged attack was %s!\n" % dir
 			output += "{target}'s ranged defense was %s!" % dir
 		_:
 			output = "{target}'s %s was %s!" % [ 
-				StatManager.Stat.keys()[stat].to_lower().replace("_", " "), 
+				StatManager.Stats.keys()[stat].to_lower().replace("_", " "), 
 				dir]
 	
 	return output

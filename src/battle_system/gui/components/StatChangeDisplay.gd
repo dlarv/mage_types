@@ -7,23 +7,23 @@ class_name StatChangeDisplay
 @export var ranged_defense: TextureRect 
 @export var speed: TextureRect 
 
-func add(stat: StatManager.Stat, amount: float) -> void:
+func add(stat: StatManager.Stats, amount: float) -> void:
 	match stat:
-		StatManager.Stat.ATTACK:
+		StatManager.Stats.ATTACK:
 			update_nibs(melee_attack, amount)
 			update_nibs(ranged_attack, amount)
-		StatManager.Stat.MELEE_ATTACK:
+		StatManager.Stats.MELEE_ATTACK:
 			update_nibs(melee_attack, amount)
-		StatManager.Stat.RANGED_ATTACK:
+		StatManager.Stats.RANGED_ATTACK:
 			update_nibs(ranged_attack, amount)
-		StatManager.Stat.DEFENSE:
+		StatManager.Stats.DEFENSE:
 			update_nibs(melee_defense, amount)
 			update_nibs(ranged_defense, amount)
-		StatManager.Stat.MELEE_DEFENSE:
+		StatManager.Stats.MELEE_DEFENSE:
 			update_nibs(melee_defense, amount)
-		StatManager.Stat.RANGED_DEFENSE:
+		StatManager.Stats.RANGED_DEFENSE:
 			update_nibs(ranged_defense, amount)
-		StatManager.Stat.SPEED: 
+		StatManager.Stats.SPEED: 
 			update_nibs(speed, amount)
 
 func update_nibs(rect: TextureRect, mod: float=1) -> void:

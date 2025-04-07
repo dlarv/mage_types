@@ -78,7 +78,7 @@ func end_of_turn(allies:Array, opponents: Array) -> void:
 	activated.emit(msg + verb)
 
 	if targeted_stat == "both" or targeted_stat == "melee":
-		_actor.stat_manager.mod_base_stat(StatManager.Stat.MELEE_ATTACK, mod, 1)
+		_actor.stat_manager.mod_base_stat(StatManager.Stats.MELEE_ATTACK, mod, 1)
 	if targeted_stat == "both" or targeted_stat == "ranged":
-		_actor.stat_manager.mod_base_stat(StatManager.Stat.RANGED_ATTACK, mod, 1)
+		_actor.stat_manager.mod_base_stat(StatManager.Stats.RANGED_ATTACK, mod, 1)
 	

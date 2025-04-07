@@ -59,27 +59,27 @@ func display_stats(actor: BattleActor) -> void:
 	var base: float
 	var actual: float
 
-	base = statManager.get_base_stat(StatManager.Stat.MELEE_ATTACK)
-	mod = statManager.get_stat_mod(StatManager.Stat.MELEE_ATTACK) * 100
+	base = statManager.get_base_stat(StatManager.Stats.MELEE_ATTACK)
+	mod = statManager.get_stat_mod(StatManager.Stats.MELEE_ATTACK) * 100
 	actual = statManager.melee_attack
 	melee_attack_label.text = template % [int(actual), int(base), int(mod)]
 
-	base = statManager.get_base_stat(StatManager.Stat.RANGED_ATTACK)
-	mod = statManager.get_stat_mod(StatManager.Stat.RANGED_ATTACK) * 100
+	base = statManager.get_base_stat(StatManager.Stats.RANGED_ATTACK)
+	mod = statManager.get_stat_mod(StatManager.Stats.RANGED_ATTACK) * 100
 	actual = statManager.ranged_attack
 	ranged_attack_label.text = template % [int(actual), int(base), int(mod)]
 
-	base = statManager.get_base_stat(StatManager.Stat.MELEE_DEFENSE)
-	mod = statManager.get_stat_mod(StatManager.Stat.MELEE_DEFENSE) * 100
+	base = statManager.get_base_stat(StatManager.Stats.MELEE_DEFENSE)
+	mod = statManager.get_stat_mod(StatManager.Stats.MELEE_DEFENSE) * 100
 	actual = statManager.melee_defense
 	melee_defense_label.text = template % [int(actual), int(base), int(mod)]
 	
-	base = statManager.get_base_stat(StatManager.Stat.RANGED_DEFENSE)
-	mod = statManager.get_stat_mod(StatManager.Stat.RANGED_DEFENSE) * 100
+	base = statManager.get_base_stat(StatManager.Stats.RANGED_DEFENSE)
+	mod = statManager.get_stat_mod(StatManager.Stats.RANGED_DEFENSE) * 100
 	actual = statManager.ranged_defense
 	ranged_defense_label.text = template % [int(actual), int(base), int(mod)]
 
-	base = statManager.get_base_stat(StatManager.Stat.SPEED)
-	mod = statManager.get_stat_mod(StatManager.Stat.SPEED) * 100
+	base = statManager.get_base_stat(StatManager.Stats.SPEED)
+	mod = statManager.get_stat_mod(StatManager.Stats.SPEED) * 100
 	actual = statManager.speed
 	speed_label.text = template % [int(actual), int(base), int(mod)]

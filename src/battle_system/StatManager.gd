@@ -2,7 +2,7 @@
 extends Resource
 class_name StatManager
 
-enum Stat { ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, MELEE, RANGED, SPEED, EVASION }
+enum Stats { ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, MELEE, RANGED, SPEED, EVASION }
 
 signal stat_changed(stat: StatusEffect, mod: float)
 const BASE_MIN_MOD := 0.1
@@ -47,54 +47,54 @@ func _get_value(base: float, mod1: float, mod2:=0.0) -> float:
 		output = 0.1
 	return output
 
-func get_stat(stat: Stat) -> float:
+func get_stat(stat: Stats) -> float:
 	match stat:
-		Stat.MELEE_ATTACK: return melee_attack
-		Stat.RANGED_ATTACK: return ranged_attack
-		Stat.MELEE_DEFENSE: return melee_defense
-		Stat.RANGED_DEFENSE: return ranged_defense
-		Stat.SPEED: return speed
-		Stat.EVASION: return evasion
+		Stats.MELEE_ATTACK: return melee_attack
+		Stats.RANGED_ATTACK: return ranged_attack
+		Stats.MELEE_DEFENSE: return melee_defense
+		Stats.RANGED_DEFENSE: return ranged_defense
+		Stats.SPEED: return speed
+		Stats.EVASION: return evasion
 		_: return -1
 
-func set_base_stat(stat: Stat, val: float):
+func set_base_stat(stat: Stats, val: float):
 	match stat:
-		Stat.MELEE_ATTACK: 
+		Stats.MELEE_ATTACK: 
 			_base_melee_attack = val
-		Stat.RANGED_ATTACK: 
+		Stats.RANGED_ATTACK: 
 			_base_ranged_attack = val
-		Stat.MELEE_DEFENSE: 
+		Stats.MELEE_DEFENSE: 
 			_base_melee_defense = val
-		Stat.RANGED_DEFENSE: 
+		Stats.RANGED_DEFENSE: 
 			_base_ranged_defense = val
-		Stat.SPEED: 
+		Stats.SPEED: 
 			_base_speed = val
-		Stat.EVASION: 
+		Stats.EVASION: 
 			_base_evasion = val
 
-func get_base_stat(stat: Stat) -> float:
+func get_base_stat(stat: Stats) -> float:
 	match stat:
-		Stat.MELEE_ATTACK: return _base_melee_attack
-		Stat.RANGED_ATTACK: return _base_ranged_attack
-		Stat.MELEE_DEFENSE: return _base_melee_defense
-		Stat.RANGED_DEFENSE: return _base_ranged_defense
-		Stat.SPEED: return _base_speed
-		Stat.EVASION: return _base_evasion
+		Stats.MELEE_ATTACK: return _base_melee_attack
+		Stats.RANGED_ATTACK: return _base_ranged_attack
+		Stats.MELEE_DEFENSE: return _base_melee_defense
+		Stats.RANGED_DEFENSE: return _base_ranged_defense
+		Stats.SPEED: return _base_speed
+		Stats.EVASION: return _base_evasion
 		_: return -1
 
-func mod_base_stat(stat: Stat, amount: float, minAmount:=0.0) -> void:
+func mod_base_stat(stat: Stats, amount: float, minAmount:=0.0) -> void:
 	match stat:
-		Stat.MELEE_ATTACK: 
+		Stats.MELEE_ATTACK: 
 			_base_melee_attack = max(_base_melee_attack + amount, minAmount)
-		Stat.RANGED_ATTACK: 
+		Stats.RANGED_ATTACK: 
 			_base_ranged_attack = max(_base_ranged_attack + amount, minAmount)
-		Stat.MELEE_DEFENSE: 
+		Stats.MELEE_DEFENSE: 
 			_base_melee_defense = max(_base_melee_defense + amount, minAmount)
-		Stat.RANGED_DEFENSE: 
+		Stats.RANGED_DEFENSE: 
 			_base_ranged_defense = max(_base_ranged_defense + amount, minAmount)
-		Stat.SPEED: 
+		Stats.SPEED: 
 			_base_speed = max(_base_speed + amount, minAmount)
-		Stat.EVASION: 
+		Stats.EVASION: 
 			_base_evasion = max(_base_evasion + amount, minAmount)
 
 func reset() -> void:
@@ -107,33 +107,33 @@ func reset() -> void:
 	_speed_mod = 1
 	_evasion_mod = 1
 
-func get_stat_mod(stat: Stat) -> float:
+func get_stat_mod(stat: Stats) -> float:
 	match stat:
-		Stat.ATTACK: return _attack_mod
-		Stat.MELEE_ATTACK: return _melee_attack_mod + _attack_mod
-		Stat.RANGED_ATTACK: return _ranged_attack_mod + _attack_mod
-		Stat.DEFENSE: return _defense_mod
-		Stat.MELEE_DEFENSE: return _melee_defense_mod + _defense_mod
-		Stat.RANGED_DEFENSE: return _ranged_defense_mod + _defense_mod
-		Stat.SPEED: return _speed_mod
-		Stat.EVASION: return _evasion_mod
+		Stats.ATTACK: return _attack_mod
+		Stats.MELEE_ATTACK: return _melee_attack_mod + _attack_mod
+		Stats.RANGED_ATTACK: return _ranged_attack_mod + _attack_mod
+		Stats.DEFENSE: return _defense_mod
+		Stats.MELEE_DEFENSE: return _melee_defense_mod + _defense_mod
+		Stats.RANGED_DEFENSE: return _ranged_defense_mod + _defense_mod
+		Stats.SPEED: return _speed_mod
+		Stats.EVASION: return _evasion_mod
 		_: return -1
 
 func add(effect: StatChange, name: String) -> void:
 	var mod := effect.get_strength()
 	match effect.stat:
-		Stat.ATTACK: _attack_mod += mod
-		Stat.MELEE_ATTACK: _melee_attack_mod += mod
-		Stat.RANGED_ATTACK: _ranged_attack_mod += mod
-		Stat.DEFENSE: _defense_mod += mod
-		Stat.MELEE_DEFENSE: _melee_defense_mod += mod
-		Stat.RANGED_DEFENSE: _ranged_defense_mod += mod
-		Stat.SPEED: _speed_mod += mod
-		Stat.EVASION: _evasion_mod += mod
+		Stats.ATTACK: _attack_mod += mod
+		Stats.MELEE_ATTACK: _melee_attack_mod += mod
+		Stats.RANGED_ATTACK: _ranged_attack_mod += mod
+		Stats.DEFENSE: _defense_mod += mod
+		Stats.MELEE_DEFENSE: _melee_defense_mod += mod
+		Stats.RANGED_DEFENSE: _ranged_defense_mod += mod
+		Stats.SPEED: _speed_mod += mod
+		Stats.EVASION: _evasion_mod += mod
 
 	var msg := "%s for %s. Base(%f) * Mod(%f) = %f%s"
 	match effect.stat:
-		StatManager.Stat.ATTACK:
+		StatManager.Stats.ATTACK:
 			Logger.append_battle_log(msg % [
 					effect.name, 
 					name, 
@@ -148,10 +148,10 @@ func add(effect: StatChange, name: String) -> void:
 						_ranged_attack_mod + _attack_mod,
 						ranged_attack,
 						"(ranged attack)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_ATTACK))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_ATTACK))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_ATTACK))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_ATTACK))
 
-		StatManager.Stat.DEFENSE:
+		StatManager.Stats.DEFENSE:
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
@@ -166,10 +166,10 @@ func add(effect: StatChange, name: String) -> void:
 					_ranged_defense_mod + _defense_mod,
 					ranged_defense,
 					"(ranged defense)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_DEFENSE))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_DEFENSE))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_DEFENSE))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_DEFENSE))
 
-		StatManager.Stat.MELEE:
+		StatManager.Stats.MELEE:
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
@@ -184,9 +184,9 @@ func add(effect: StatChange, name: String) -> void:
 					_melee_defense_mod + _defense_mod,
 					melee_defense,
 					"(melee defense)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_ATTACK))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.MELEE_DEFENSE))
-		StatManager.Stat.RANGED:
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_ATTACK))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_DEFENSE))
+		StatManager.Stats.RANGED:
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
@@ -201,8 +201,8 @@ func add(effect: StatChange, name: String) -> void:
 					_ranged_defense_mod + _defense_mod,
 					ranged_defense,
 					"(ranged defense)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_ATTACK))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stat.RANGED_DEFENSE))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_ATTACK))
+			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_DEFENSE))
 		_:
 			Logger.append_battle_log(msg % [
 					effect.name,

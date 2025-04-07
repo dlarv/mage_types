@@ -1,6 +1,8 @@
 extends Node 
 class_name StatusEffectManager 
 
+enum StatusEffects { }
+
 # The Name field of all status effects should match one of these.
 const STASIS_KEY: String = "Stasis"
 const BLOCKING_KEY: String = "Blocking"
