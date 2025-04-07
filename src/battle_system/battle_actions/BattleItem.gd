@@ -17,8 +17,8 @@ static func create(name: String, details: String="") -> BattleItem:
 	item.details = details
 	return item
 
-func apply_effects(user: BattleActor, targets: Array) -> String:
-	var msg := super.apply_effects(user, targets)
+func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
+	var msg: String = super.apply_effects(user, targets).msg
 	apply_cost(user)
 
 	for i in range(len(targets)):
@@ -38,7 +38,7 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 			else:
 				Logger.append_battle_log("Item(%s) failed. Chance(%f) >= Rand(%f)" 
 						% [name, effect.chance, rand])
-	return msg
+	return { "msg": msg }
 
 # Override
 func is_action_available(actor: BattleActor) -> bool:

@@ -6,15 +6,15 @@ class_name Attack
 @export_range(0, 1) var accuracy := 1.0
 
 # override
-func apply_effects(user: BattleActor, targets: Array) -> String:
-	var msg := [super.apply_effects(user, targets)]
+func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
+	var msg := [super.apply_effects(user, targets).msg]
 
 	# Calculate accuracy.
 	var rand := randf()
 	if rand > accuracy:
 		Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
 		msg.append("But it missed!")
-		return "\n".join(msg)
+		return { msg: "\n".join(msg), "missed": true }
 
 	var affinity := 0.8 
 	if not user.element1.is_blank() and user.element1.is_defensive_type == element.is_defensive_type:
@@ -50,7 +50,7 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 					msg.append("........%s was defeated." % target.name)
 					continue
 
-	return "\n".join(msg)
+	return { "msg": "\n".join(msg) }
 
 # override
 func is_action_available(actor: BattleActor) -> bool:

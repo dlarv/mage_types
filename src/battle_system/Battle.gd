@@ -114,9 +114,10 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
 		# Apply action effects.
-		var msg = action.action.apply_effects(action.actor, action.targets)
+		var res: Dictionary = action.action.apply_effects(action.actor, action.targets)
+		var msg = res.msg
 
-		if not msg.contains("missed!"):
+		if not res.has("missed") or not res.missed:
 			action.action.play_animation(userPosition, targetPosition, self)
 
 		# Display message and await input.
@@ -312,5 +313,3 @@ func _prep_next_turn() -> void:
 	speedRank.map(func(a): return a.name)
 
 	gui.display_turn_order(speedRank)
-
-
