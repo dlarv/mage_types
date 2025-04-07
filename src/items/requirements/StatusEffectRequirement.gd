@@ -13,4 +13,4 @@ func check(actor: Variant) -> bool:
 	return actor != null and actor.has_status_effect(effect)
 
 func get_requirement_message() -> String:
-	return "Must have the %s status effect." % effect.get_full_name()
+	return "Must have the %s status effect." % effect.name

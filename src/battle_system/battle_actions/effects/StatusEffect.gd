@@ -6,16 +6,14 @@ class_name StatusEffect
 @export var icon: PackedScene 
 ## The text displayed inside the MessageBox, etc.
 @export_multiline var description: String 
-var element: ElementalType
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0):
 	# if target == null or action == null: return name
 	if target == null:
 		target = user
 
 	var dupe = duplicate()
-	dupe.element = element
 	target.add_status_effect(dupe)
 	return super.apply_effect(user, target, action)
 

@@ -14,30 +14,32 @@ _element = "orange"
 apply_to = "target"
 
 [sub_resource type="Resource" id="Resource_fe3uk"]
+resource_name = "Damage"
 script = ExtResource("6_te854")
-name = ""
+name = "Damage"
 strength = 10.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_cs80b"]
+resource_name = "Damage"
 script = ExtResource("4_q66rn")
 attack_effect = SubResource("Resource_fe3uk")
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [sub_resource type="Resource" id="Resource_owp58"]
+resource_name = "Damage"
 script = ExtResource("6_te854")
-name = ""
+name = "Damage"
 strength = 125.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_vdgsf"]
+resource_name = "Damage"
 script = ExtResource("4_q66rn")
 attack_effect = SubResource("Resource_owp58")
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [sub_resource type="Resource" id="Resource_s84b7"]
 script = ExtResource("7_vklot")
@@ -48,7 +50,6 @@ print_failed_status = "FAILURE"
 failure_msg = "INEFFECTIVE"
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [resource]
 resource_name = "Orange Strike"

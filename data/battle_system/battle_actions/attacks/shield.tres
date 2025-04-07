@@ -18,18 +18,18 @@ operator = "any"
 apply_to = "user"
 
 [sub_resource type="Resource" id="Resource_2hx7p"]
+resource_name = "Blocking"
 script = ExtResource("9_8euii")
 attack_effect = ExtResource("8_6ayh8")
 effect_target = 1
 chance = 0.4
-_element = "blank"
 
 [sub_resource type="Resource" id="Resource_0qwck"]
+resource_name = "Blocking"
 script = ExtResource("9_8euii")
 attack_effect = ExtResource("8_6ayh8")
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [sub_resource type="Resource" id="Resource_aqs56"]
 script = ExtResource("9_eqi6k")
@@ -37,10 +37,9 @@ condition = SubResource("Resource_nyia0")
 success_effect = SubResource("Resource_0qwck")
 failed_effect = SubResource("Resource_2hx7p")
 print_failed_status = "TOTAL_FAILURE"
-failed_status_msg = "FAILED"
+failure_msg = "FAILED"
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [resource]
 resource_name = "Shield"

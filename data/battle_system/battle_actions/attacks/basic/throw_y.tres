@@ -7,17 +7,18 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_qp3el"]
 
 [sub_resource type="Resource" id="Resource_uqe8c"]
+resource_name = "Damage"
 script = ExtResource("3_yc1rq")
-name = ""
+name = "Damage"
 strength = 30.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_dqyoq"]
+resource_name = "Damage"
 script = ExtResource("4_d7171")
 attack_effect = SubResource("Resource_uqe8c")
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [resource]
 resource_name = "Yellow Throw"

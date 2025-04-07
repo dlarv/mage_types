@@ -2,13 +2,26 @@
 extends StatusEffect 
 class_name ElementalEffect 
 
+@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
+var _element: String = "blank":
+	get:
+		return _element
+	set(value):
+		_element = value
+		element = ElementManager.get_element_from_name(value)
+var element: ElementalType:
+	set(value): 
+		if value == null:
+			value = ElementManager.Blank
+		element = value 
+
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element: ElementalType =ElementManager.Blank):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0):
 	# If self.element is applied in the editor, each time this effect is used will have to be made into
 	# a unique instance. Defining it here allows the creation and editing of new attacks easier.
 	# var effect = duplicate()
 	# effect.element = action.element
-	var output = super.apply_effect(user, target, action, effectiveness, element)
+	var output = super.apply_effect(user, target, action, effectiveness)
 	return output.replace("{element}", element.name)
 
 # override
@@ -17,3 +30,8 @@ func instantiate_icon() -> Node:
 	output.modulate = element.main_color
 	output.get_node("Button").tooltip_text = "%s-%s" % [ element.name, name ] 
 	return output
+
+# override
+func _set_name(val: String) -> void:
+	name = "%s-Phobic" % element.name
+	resource_name = name

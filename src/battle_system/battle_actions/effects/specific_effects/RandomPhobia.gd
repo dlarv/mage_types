@@ -5,7 +5,7 @@ class_name RandomPhobia
 @export_range(1, 8) var min_count := 1
 @export_range(1, 8) var max_count := 1
 
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
 	var msg := []
 	var count = randi_range(min_count, max_count)
 	var indices := range(0, 8)

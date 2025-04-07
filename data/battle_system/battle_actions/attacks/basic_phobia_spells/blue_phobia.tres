@@ -1,17 +1,29 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://q1l847rlbb6i"]
+[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://q1l847rlbb6i"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_7lok4"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="1_q23s8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_tkr0o"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="3_fevoq"]
-[ext_resource type="Resource" uid="uid://bvadtuxed6228" path="res://data/battle_system/status_effects/elemental_effects/elemental_phobia.tres" id="3_t85wf"]
+[ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="3_o1s7p"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="4_tvr3y"]
+
+[sub_resource type="Resource" id="Resource_4iq1y"]
+resource_name = "Blue-Phobic"
+script = ExtResource("4_tvr3y")
+_element = "blue"
+duration = 3
+icon = ExtResource("3_o1s7p")
+description = ""
+name = "Blue-Phobic"
+strength = 0.1
+message = "{target} is feeling adverse to [color={element}]{element}[/color]!"
 
 [sub_resource type="Resource" id="Resource_0f64n"]
+resource_name = "Blue-Phobic"
 script = ExtResource("3_fevoq")
-attack_effect = ExtResource("3_t85wf")
+attack_effect = SubResource("Resource_4iq1y")
 effect_target = 1
 chance = 1.0
-_element = "blue"
 
 [resource]
 resource_name = "Hydrophobia"

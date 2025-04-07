@@ -2,11 +2,15 @@
 extends _AttackEffect 
 class_name Damage 
 
+func _init():
+	# Force call of _set_name()
+	name = "Damage"
+
 func get_dmg_potential(user: BattleActor, action: _BattleAction, target: BattleActor) -> int:
 	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, action, 1.0)
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0, element:ElementalType=ElementManager.Blank) -> String:
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
 	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, action, effectiveness)
 	return "%s" % [ _apply_to(target, dmg, user) ]
 
@@ -31,5 +35,8 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 
 	return msg
 
-# func check_resistance(e1: ElementalType, e2: ElementalType) -> float:
-# 	return ElementManager.get_resistance(e1, e2)	
+
+func _set_name(_val: String) -> void:
+	name = "Damage"
+	resource_name = name
+

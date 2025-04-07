@@ -8,24 +8,25 @@
 [ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="5_arj8y"]
 
 [sub_resource type="Resource" id="Resource_o30l2"]
+resource_name = "Damage"
 script = ExtResource("3_j6bua")
-name = ""
+name = "Damage"
 strength = 30.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_qxkeg"]
+resource_name = "Damage"
 script = ExtResource("4_y3gk5")
 attack_effect = SubResource("Resource_o30l2")
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [sub_resource type="Resource" id="Resource_dq5hx"]
+resource_name = "Poison"
 script = ExtResource("4_y3gk5")
 attack_effect = ExtResource("5_arj8y")
 effect_target = 1
 chance = 0.5
-_element = "blank"
 
 [resource]
 resource_name = "Sting"

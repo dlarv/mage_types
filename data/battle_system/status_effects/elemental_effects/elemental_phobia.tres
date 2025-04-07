@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="2_1386x"]
 
 [resource]
+resource_name = "Phobic"
 script = ExtResource("1_s8qjl")
+_element = "green"
 duration = 3
 icon = ExtResource("2_1386x")
 description = ""
 name = "Phobic"
 strength = 0.1
-message = "{target} is feeling adverse to [el]{element}[/el]!"
+message = "{target} is feeling adverse to [color={element}]{element}[/color]!"

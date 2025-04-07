@@ -6,17 +6,17 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_24nq1"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_c3q0c"]
 
-[sub_resource type="Resource" id="Resource_4e1kb"]
+[sub_resource type="Resource" id="Resource_v2113"]
+resource_name = "Green-Phobic"
 script = ExtResource("5_24nq1")
 attack_effect = ExtResource("3_njiur")
 effect_target = 1
 chance = 1.0
-_element = "green"
 
 [resource]
 resource_name = "Prasinophobia"
 script = ExtResource("6_c3q0c")
-effects = Array[ExtResource("2_74a4l")]([SubResource("Resource_4e1kb")])
+effects = Array[ExtResource("2_74a4l")]([SubResource("Resource_v2113")])
 accuracy = 1.0
 name = "Prasinophobia"
 animation = ExtResource("2_ouk8b")

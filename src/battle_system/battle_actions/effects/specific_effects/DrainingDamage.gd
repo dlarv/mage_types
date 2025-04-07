@@ -23,3 +23,6 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 		msg += "\n%s drained %d from the target!" % [ user.name, actualDmg ]
 	return msg
 
+func _set_name(_val: String) -> void:
+	name = "Draining Damage"
+	resource_name = name
