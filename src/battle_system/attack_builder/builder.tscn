@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c5f80")
+path = "res://data/battle_system/battle_actions/attacks/attack_builder"
 effects_scroller = NodePath("MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/Effect_VBox/ScrollContainer/VBoxContainer")
 _animation_option_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Animation/AnimationOptionButton")
 _details_text_box = NodePath("MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Details/DetailsTextEdit")
@@ -70,6 +71,9 @@ text = "Accuracy:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Accuracy"]
 layout_mode = 2
@@ -103,15 +107,6 @@ text = "Animation:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-selected = 0
-item_count = 4
-popup/item_0/text = "burst"
-popup/item_1/text = "jet"
-popup/item_1/id = 1
-popup/item_2/text = "geyser"
-popup/item_2/id = 2
-popup/item_3/text = "wall"
-popup/item_3/id = 3
 
 [node name="Range" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox"]
 layout_mode = 2

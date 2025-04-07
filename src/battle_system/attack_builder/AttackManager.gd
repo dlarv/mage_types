@@ -1,3 +1,4 @@
+@tool
 extends PanelContainer
 
 signal row_selected(row: Row)
@@ -86,7 +87,11 @@ func remove_row() -> void:
 func edit_row() -> void:
 	if not _selected_row: return
 	row_selected.emit(_selected_row)
-
+	
+	var button :=_button_group.get_pressed_button()
+	if button:
+		button.set_pressed_no_signal(false)
+	_selected_row = null
 
 
 func _on_row_selected(row: Row) -> void:
@@ -108,5 +113,3 @@ func traverse(root: String) -> void:
 			traverse(root + "/" + fileName)
 
 		fileName = dir.get_next()
-
-
