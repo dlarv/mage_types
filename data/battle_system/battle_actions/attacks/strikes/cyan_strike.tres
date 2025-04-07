@@ -13,7 +13,6 @@ type = 1
 positive_factor = 2.5
 negative_factor = 0.2
 name = ""
-chance = 1.0
 strength = 50.0
 message = ""
 
@@ -28,6 +27,7 @@ _element = "blank"
 resource_name = "Cyan Strike"
 script = ExtResource("4_g8m4y")
 effects = Array[ExtResource("2_xyw4n")]([SubResource("Resource_7l5ob")])
+accuracy = 1.0
 name = "Cyan Strike"
 animation = ExtResource("1_7gxbi")
 _element = "purple"

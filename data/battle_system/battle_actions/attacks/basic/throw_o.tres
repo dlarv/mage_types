@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_uqe8c"]
 script = ExtResource("3_34x4o")
 name = ""
-chance = 1.0
 strength = 30.0
 message = ""
 
@@ -24,6 +23,7 @@ _element = "blank"
 resource_name = "Orange Throw"
 script = ExtResource("5_nu67t")
 effects = Array[ExtResource("2_4m3lk")]([SubResource("Resource_dqyoq")])
+accuracy = 1.0
 name = "Orange Throw"
 animation = ExtResource("1_pol06")
 _element = "orange"

@@ -5,11 +5,9 @@
 
 [resource]
 script = ExtResource("1_s8qjl")
-_element = "blank"
 duration = 3
 icon = ExtResource("2_1386x")
 description = ""
 name = "Phobic"
-chance = 1.0
 strength = 0.1
-message = "{target} is feeling adverse to [color={element}]{element}[/color]!"
+message = "{target} is feeling adverse to [el]{element}[/el]!"

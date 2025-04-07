@@ -13,7 +13,6 @@ type = 1
 positive_factor = 2.5
 negative_factor = 0.2
 name = ""
-chance = 1.0
 strength = 50.0
 message = ""
 
@@ -28,6 +27,7 @@ _element = "blank"
 resource_name = "Blue Strike"
 script = ExtResource("2_8wafb")
 effects = Array[ExtResource("2_ngfcu")]([SubResource("Resource_s0tr5")])
+accuracy = 1.0
 name = "Blue Strike"
 animation = ExtResource("1_op2ym")
 _element = "purple"

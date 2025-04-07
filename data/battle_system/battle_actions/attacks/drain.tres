@@ -11,7 +11,6 @@ script = ExtResource("3_mv66e")
 heal_percent = 1.5
 allow_overflow = true
 name = ""
-chance = 1.0
 strength = 50.0
 message = ""
 
@@ -26,6 +25,7 @@ _element = "blank"
 resource_name = "Drain"
 script = ExtResource("2_ieu5f")
 effects = Array[ExtResource("2_pfuya")]([SubResource("Resource_cogv3")])
+accuracy = 1.0
 name = "Drain"
 animation = ExtResource("1_ycgn8")
 _element = "red"

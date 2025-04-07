@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_1iaj8"]
 script = ExtResource("3_cgp3y")
 name = ""
-chance = 1.0
 strength = 70.0
 message = ""
 
@@ -23,7 +22,6 @@ _element = "blank"
 [sub_resource type="Resource" id="Resource_pnlro"]
 script = ExtResource("3_cgp3y")
 name = ""
-chance = 1.0
 strength = 20.0
 message = ""
 
@@ -38,6 +36,7 @@ _element = "blank"
 resource_name = "Blood Shock"
 script = ExtResource("2_6sxx5")
 effects = Array[ExtResource("2_lj5d3")]([SubResource("Resource_5q3rt"), SubResource("Resource_e2ptt")])
+accuracy = 1.0
 name = "Blood Shock"
 animation = ExtResource("1_4r1uc")
 _element = "red"
