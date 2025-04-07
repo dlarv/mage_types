@@ -11,7 +11,6 @@ script = ExtResource("3_dnujh")
 _element = "blank"
 element_id = 1
 name = ""
-chance = 1.0
 strength = 0.0
 message = ""
 
@@ -26,6 +25,7 @@ _element = "blank"
 resource_name = "Empty Self"
 script = ExtResource("1_0r65f")
 effects = Array[ExtResource("2_u7n5s")]([SubResource("Resource_au5aj")])
+accuracy = 1.0
 name = "Empty Self"
 animation = ExtResource("1_3ypsw")
 _element = "blank"

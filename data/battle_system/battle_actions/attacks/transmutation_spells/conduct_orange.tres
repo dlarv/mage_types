@@ -11,7 +11,6 @@ script = ExtResource("3_6g4pa")
 _element = "orange"
 element_id = 1
 name = ""
-chance = 1.0
 strength = 0.0
 message = ""
 
@@ -26,6 +25,7 @@ _element = "blank"
 resource_name = "Conduct Orange"
 script = ExtResource("5_s0sy6")
 effects = Array[ExtResource("2_ekyc1")]([SubResource("Resource_h7bgv")])
+accuracy = 1.0
 name = "Conduct Orange"
 animation = ExtResource("2_3fvdj")
 _element = "orange"
