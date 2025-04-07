@@ -40,7 +40,7 @@ func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
 
 func _get_message() -> String:
 	if name.contains("Phobic"):
-		return "{target} is feeling adverse to [color={element}]{element}[/color]!"
+		return "{target} is feeling adverse to [el]{element}[/el]!"
 	return message
 
 

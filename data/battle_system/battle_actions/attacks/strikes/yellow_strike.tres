@@ -56,10 +56,12 @@ resource_name = "Yellow Strike"
 script = ExtResource("4_nqau6")
 effects = Array[ExtResource("2_4chmo")]([SubResource("Resource_64dq5")])
 accuracy = 1.0
+power = 50
 name = "Yellow Strike"
 animation = ExtResource("1_og7p3")
 _element = "purple"
 priority = 0
 attack_range = 0
 target = 3
-details = ""
+details = "Has x2 power if target is [el]Yellow[/el].
+Otherwise, power is x0.2."

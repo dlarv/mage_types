@@ -56,10 +56,12 @@ resource_name = "Abyss Strike"
 script = ExtResource("2_r5wf5")
 effects = Array[ExtResource("2_cinsk")]([SubResource("Resource_txnwn")])
 accuracy = 1.0
+power = 50
 name = "Abyss Strike"
 animation = ExtResource("1_4wpqw")
 _element = "purple"
 priority = 0
 attack_range = 1
 target = 3
-details = ""
+details = "Has x2 power if user is [el]Purple[/el].
+Otherwise, power is x0.2."
