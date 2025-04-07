@@ -47,13 +47,6 @@ func create(effect: EffectSlot):
 		max_int.show()
 		min_int.value = e.min_count
 		max_int.value = e.max_count
-	elif e is Strike:
-		strength_int.show()
-		min_float.show()
-		max_float.show()
-		strength_int.value = e.strength
-		min_float.value = e.negative_factor
-		max_float.value = e.positive_factor
 	elif e is DrainingDamage:
 		strength_int.show()
 		heal_percent.show()
@@ -77,17 +70,11 @@ func _on_strike_type_item_selected(index:int) -> void:
 
 
 func _on_max_value_changed(value:float) -> void:
-	if _effect.attack_effect is Strike:
-		_effect.attack_effect.positive_factor = value
-	else:
-		_effect.attack_effect.max_count = int(value)
+	_effect.attack_effect.max_count = int(value)
 
 
 func _on_min_value_changed(value:float) -> void:
-	if _effect.attack_effect is Strike:
-		_effect.attack_effect.negative_factor = value
-	else:
-		_effect.attack_effect.min_count = int(value)
+	_effect.attack_effect.min_count = int(value)
 
 
 func _on_heal_percent_value_changed(value:float) -> void:
