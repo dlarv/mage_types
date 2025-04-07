@@ -8,17 +8,19 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_fve2l"]
 
 [sub_resource type="Resource" id="Resource_42lny"]
-resource_name = "Phobic"
+resource_name = "Purple-Phobic"
 script = ExtResource("4_6cur6")
 _element = "purple"
+id = 0
 duration = 3
 icon = ExtResource("3_bxyds")
 description = ""
-name = "Phobic"
+name = "Purple-Phobic"
 strength = 0.1
-message = "{target} is feeling adverse to [color={element}]{element}[/color]!"
+message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_rp18c"]
+resource_name = "Purple-Phobic"
 script = ExtResource("4_4b86v")
 attack_effect = SubResource("Resource_42lny")
 effect_target = 1
@@ -29,6 +31,7 @@ resource_name = "Nyctophobia"
 script = ExtResource("5_fve2l")
 effects = Array[ExtResource("2_5jowh")]([SubResource("Resource_rp18c")])
 accuracy = 1.0
+power = -9223372036854775808
 name = "Nyctophobia"
 animation = ExtResource("2_2rwhi")
 _element = "purple"

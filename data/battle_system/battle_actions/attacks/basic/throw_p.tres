@@ -25,6 +25,7 @@ resource_name = "Purple Throw"
 script = ExtResource("5_5vr4v")
 effects = Array[ExtResource("2_yg8c2")]([SubResource("Resource_dqyoq")])
 accuracy = 1.0
+power = 30
 name = "Purple Throw"
 animation = ExtResource("1_dms75")
 _element = "purple"

@@ -25,6 +25,7 @@ resource_name = "Green Throw"
 script = ExtResource("5_mbl80")
 effects = Array[ExtResource("2_qy5ot")]([SubResource("Resource_dqyoq")])
 accuracy = 1.0
+power = 30
 name = "Green Throw"
 animation = ExtResource("1_ix6xn")
 _element = "green"

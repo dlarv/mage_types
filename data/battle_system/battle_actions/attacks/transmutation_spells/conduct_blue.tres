@@ -19,13 +19,13 @@ script = ExtResource("3_ppkp7")
 attack_effect = SubResource("Resource_2x8ab")
 effect_target = 1
 chance = 1.0
-_element = "blank"
 
 [resource]
 resource_name = "Conduct Blue"
 script = ExtResource("4_vhpt0")
 effects = Array[ExtResource("2_5gyhy")]([SubResource("Resource_xir5w")])
 accuracy = 1.0
+power = 0
 name = "Conduct Blue"
 animation = ExtResource("2_lrnni")
 _element = "blue"

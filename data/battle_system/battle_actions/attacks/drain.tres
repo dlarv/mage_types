@@ -25,6 +25,7 @@ resource_name = "Drain"
 script = ExtResource("2_ieu5f")
 effects = Array[ExtResource("2_pfuya")]([SubResource("Resource_cogv3")])
 accuracy = 1.0
+power = 50
 name = "Drain"
 animation = ExtResource("1_ycgn8")
 _element = "red"

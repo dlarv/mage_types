@@ -25,6 +25,7 @@ resource_name = "Terrify"
 script = ExtResource("2_riqhc")
 effects = Array[ExtResource("2_47wdh")]([SubResource("Resource_0rhwa")])
 accuracy = 1.0
+power = -9223372036854775808
 name = "Terrify"
 animation = ExtResource("1_svmts")
 _element = "purple"

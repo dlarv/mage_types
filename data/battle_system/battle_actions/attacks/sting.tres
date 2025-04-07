@@ -33,6 +33,7 @@ resource_name = "Sting"
 script = ExtResource("3_8816p")
 effects = Array[ExtResource("2_beg3r")]([SubResource("Resource_qxkeg"), SubResource("Resource_dq5hx")])
 accuracy = 1.0
+power = 30
 name = "Sting"
 animation = ExtResource("1_v7dve")
 _element = "orange"

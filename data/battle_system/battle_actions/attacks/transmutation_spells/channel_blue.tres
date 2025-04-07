@@ -25,6 +25,7 @@ resource_name = "Channel Blue"
 script = ExtResource("1_ti5jx")
 effects = Array[ExtResource("2_oqlr0")]([SubResource("Resource_1pv2y")])
 accuracy = 1.0
+power = 0
 name = "Channel Blue"
 animation = ExtResource("2_5bjfv")
 _element = "blue"

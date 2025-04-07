@@ -8,17 +8,19 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pgxqk"]
 
 [sub_resource type="Resource" id="Resource_fdoj7"]
-resource_name = "Phobic"
+resource_name = "Orange-Phobic"
 script = ExtResource("4_i3pwb")
 _element = "orange"
+id = 0
 duration = 3
 icon = ExtResource("3_rcssw")
 description = ""
-name = "Phobic"
+name = "Orange-Phobic"
 strength = 0.1
-message = "{target} is feeling adverse to [color={element}]{element}[/color]!"
+message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_iv12v"]
+resource_name = "Orange-Phobic"
 script = ExtResource("5_m23vy")
 attack_effect = SubResource("Resource_fdoj7")
 effect_target = 1
@@ -29,6 +31,7 @@ resource_name = "Xanthophobia"
 script = ExtResource("6_pgxqk")
 effects = Array[ExtResource("2_k76ns")]([SubResource("Resource_iv12v")])
 accuracy = 1.0
+power = -9223372036854775808
 name = "Xanthophobia"
 animation = ExtResource("2_aw513")
 _element = "orange"

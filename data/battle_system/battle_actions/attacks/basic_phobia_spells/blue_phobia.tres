@@ -11,13 +11,13 @@
 resource_name = "Blue-Phobic"
 script = ExtResource("4_tvr3y")
 _element = "blue"
-id = null
+id = 3
 duration = 3
 icon = ExtResource("3_o1s7p")
 description = ""
 name = "Blue-Phobic"
 strength = 0.1
-message = "{target} is feeling adverse to [color={element}]{element}[/color]!"
+message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_0f64n"]
 resource_name = "Blue-Phobic"
@@ -31,6 +31,7 @@ resource_name = "Hydrophobia"
 script = ExtResource("1_q23s8")
 effects = Array[ExtResource("2_tkr0o")]([SubResource("Resource_0f64n")])
 accuracy = 1.0
+power = -9223372036854775808
 name = "Hydrophobia"
 animation = ExtResource("1_7lok4")
 _element = "blue"

@@ -8,17 +8,19 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pej2m"]
 
 [sub_resource type="Resource" id="Resource_qfnlr"]
-resource_name = "Cyan-phobic"
+resource_name = "Cyan-Phobic"
 script = ExtResource("4_ls4qf")
 _element = "cyan"
+id = 0
 duration = 3
 icon = ExtResource("3_spfjl")
 description = ""
-name = "Cyan-phobic"
+name = "Cyan-Phobic"
 strength = 0.1
-message = "{target} is feeling adverse to [color={element}]{element}[/color]!"
+message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_r063c"]
+resource_name = "Cyan-Phobic"
 script = ExtResource("2_upu2q")
 attack_effect = SubResource("Resource_qfnlr")
 effect_target = 1
@@ -29,6 +31,7 @@ resource_name = "Glaukophobia"
 script = ExtResource("6_pej2m")
 effects = Array[ExtResource("2_8so8y")]([SubResource("Resource_r063c")])
 accuracy = 1.0
+power = -9223372036854775808
 name = "Glaukophobia"
 animation = ExtResource("2_8rd4o")
 _element = "cyan"

@@ -25,6 +25,7 @@ resource_name = "Empty Self"
 script = ExtResource("1_0r65f")
 effects = Array[ExtResource("2_u7n5s")]([SubResource("Resource_au5aj")])
 accuracy = 1.0
+power = 0
 name = "Empty Self"
 animation = ExtResource("1_3ypsw")
 _element = "blank"

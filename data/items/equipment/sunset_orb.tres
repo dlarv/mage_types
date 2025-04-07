@@ -12,7 +12,7 @@
 resource_name = "Attack Boost"
 script = ExtResource("6_ex0f4")
 stat = 0
-status_effect = 0
+id = 6
 duration = 0
 description = ""
 name = "Attack Boost"
@@ -39,7 +39,7 @@ bonus = SubResource("Resource_hghoq")
 resource_name = "Attack Boost"
 script = ExtResource("6_ex0f4")
 stat = 0
-status_effect = 0
+id = 6
 duration = 3
 description = ""
 name = "Attack Boost"
