@@ -57,8 +57,10 @@ func create(effect: EffectSlot):
 		strength_int.value = e.strength
 		allow_overflow.set_pressed_no_signal(e.allow_overflow)
 
+
 func get_effect() -> EffectSlot:
 	return _effect
+
 
 func _on_delete_button_pressed():
 	delete_button_pressed.emit()

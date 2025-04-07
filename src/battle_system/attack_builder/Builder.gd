@@ -167,6 +167,9 @@ func open_row(row: Row) -> void:
 		%AccuracySpinBox.value = attack.accuracy
 		%DetailsTextEdit.text = attack.details
 
+	for child in effects_scroller.get_children():
+		effects_scroller.remove_child(child)
+
 	for slot in attack.effects:
 		var effectSlot := EffectSlotButton.instantiate()
 		effectSlot.create(slot)

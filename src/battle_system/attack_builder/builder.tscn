@@ -107,15 +107,6 @@ text = "Animation:"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-selected = 0
-item_count = 4
-popup/item_0/text = "burst"
-popup/item_1/text = "jet"
-popup/item_1/id = 1
-popup/item_2/text = "geyser"
-popup/item_2/id = 2
-popup/item_3/text = "wall"
-popup/item_3/id = 3
 
 [node name="Range" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox"]
 layout_mode = 2
