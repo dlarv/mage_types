@@ -145,6 +145,11 @@ func open_row(row: Row) -> void:
 				%AnimationOptionButton.selected = i
 				break
 
-		# TODO: Power?
+		%PowerSpinBox.value = attack.power
 		%AccuracySpinBox.value = attack.accuracy
 		%DetailsTextEdit.text = attack.details
+
+
+func _on_power_value_changed(value:float) -> void:
+	_attack.power = int(value) 
+

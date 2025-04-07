@@ -31,7 +31,7 @@ func display(attack: Variant, limitInfo:=false) -> void:
 		details.append_text(attack.details)
 	
 	effects_label.clear()
-	var power = _format_attack_effects(attack.effects, effects_label)
+	var power = attack.power
 
 	if power > 0:
 		power_hbox.show()

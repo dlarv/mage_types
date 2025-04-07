@@ -72,7 +72,7 @@ func add_row(attack: Attack=null) -> void:
 		attackRange.selected = attack.attack_range
 		targets.selected = attack.target
 		priority.value = attack.priority
-		# TODO: Power?
+		power.value = attack.power
 		accuracy.value = attack.accuracy
 		description.text = attack.details
 

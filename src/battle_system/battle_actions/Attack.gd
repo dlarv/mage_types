@@ -5,6 +5,29 @@ class_name Attack
 @export var effects: Array[_BaseEffectSlot]
 @export_range(0, 1) var accuracy := 1.0
 
+## This is a helper property which should be set manually.
+@export var power := -1:
+	get:
+		if power >= 0: return power
+		if attack_range == AttackRange.STATUS: return 0
+
+		var total := 0
+		var count := 0
+		for slot in effects:
+			if slot is EffectSlot and slot.attack_effect is Damage:
+				total += slot.attack_effect.strength
+				count += 1
+			elif slot is ConditionalEffect:
+				if slot.success_effect and slot.success_effect.attack_effect is Damage:
+					total += slot.success_effect.attack_effect.strength
+					count += 1
+
+				if slot.failed_effect and slot.failed_effect.attack_effect is Damage:
+					total += slot.failed_effect.attack_effect.strength
+					count += 1
+		return int(float(total) / float(count))
+
+
 # override
 func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 	var msg := [super.apply_effects(user, targets).msg]

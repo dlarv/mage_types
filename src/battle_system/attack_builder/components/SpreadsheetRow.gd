@@ -52,6 +52,7 @@ func _init(select=null, name=null, elements=null, attackRange=null, targets=null
 	self.priority = priority
 	self.priority.value_changed.connect(func(val: float): self.attack.priority = int(val))
 	self.power = power
+	self.power.value_changed.connect(func(val: float): self.attack.power = int(val))
 	self.accuracy = accuracy
 	self.accuracy.value_changed.connect(func(val: float): self.attack.accuracy = val)
 	self.description = description
@@ -86,6 +87,6 @@ func update() -> void:
 		attackRange.selected = attack.attack_range
 		targets.selected = attack.target
 		priority.value = attack.priority
-		# TODO: Power?
+		power.value = attack.power
 		accuracy.value = attack.accuracy
 		description.text = attack.details

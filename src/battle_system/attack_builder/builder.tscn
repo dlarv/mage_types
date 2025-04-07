@@ -59,18 +59,6 @@ text = "Element:"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Priority" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Priority"]
-layout_mode = 2
-text = "Priority:"
-
-[node name="PrioritySpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Priority"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="Accuracy" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox"]
 layout_mode = 2
 
@@ -79,6 +67,27 @@ layout_mode = 2
 text = "Accuracy:"
 
 [node name="AccuracySpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Accuracy"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Accuracy"]
+layout_mode = 2
+text = "Power:"
+
+[node name="PowerSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Accuracy"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Priority" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Priority"]
+layout_mode = 2
+text = "Priority:"
+
+[node name="PrioritySpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Priority"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -214,8 +223,9 @@ text = "Cancel"
 
 [connection signal="text_submitted" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Name_Cost/NameLineEdit" to="." method="_on_name_submitted"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Element/ElementOptionButton" to="." method="_on_element_item_selected"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Priority/PrioritySpinBox" to="." method="_on_priority_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Accuracy/AccuracySpinBox" to="." method="_on_accuracy_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Accuracy/PowerSpinBox" to="." method="_on_power_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Priority/PrioritySpinBox" to="." method="_on_priority_value_changed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Animation/AnimationOptionButton" to="." method="_on_animation_item_selected"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Range/RangeOptionButton" to="." method="_on_range_item_selected"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/BattleAction_VBox/Target/TargetOptionButton" to="." method="_on_target_item_selected"]
