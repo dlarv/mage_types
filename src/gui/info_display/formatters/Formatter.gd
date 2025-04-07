@@ -76,16 +76,16 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 			if b > 1:
 				effectsLabel.append_text(" Each phobia is of a unique element.")
 
-		elif effect is Strike:
-			if effect.type == Strike.StrikeType.STAB:
-				effectsLabel.append_text("Deals x%.1f damage to " % effect.positive_factor)
-				append_elemental_color(effectsLabel, effect.element)
-				effectsLabel.append_text(" enemies. Otherwise, deals x%.1f damage." % effect.negative_factor)
-			else:
-				effectsLabel.append_text("Deals x%.1f damage if the user is " % effect.positive_factor)
-				append_elemental_color(effectsLabel, effect.element)
-				effectsLabel.append_text(". Otherwise, deals x%.1f damage." % effect.negative_factor)
-		
+		#elif effect is Strike:
+			#if effect.type == Strike.StrikeType.STAB:
+				#effectsLabel.append_text("Deals x%.1f damage to " % effect.positive_factor)
+				#append_elemental_color(effectsLabel, effect.element)
+				#effectsLabel.append_text(" enemies. Otherwise, deals x%.1f damage." % effect.negative_factor)
+			#else:
+				#effectsLabel.append_text("Deals x%.1f damage if the user is " % effect.positive_factor)
+				#append_elemental_color(effectsLabel, effect.element)
+				#effectsLabel.append_text(". Otherwise, deals x%.1f damage." % effect.negative_factor)
+		#
 		elif effect is DrainingDamage:
 			power += effect.strength
 			effectsLabel.append_text("Heals the user for x%.1f the damage dealt.")

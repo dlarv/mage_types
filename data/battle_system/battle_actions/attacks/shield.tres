@@ -37,6 +37,7 @@ condition = SubResource("Resource_nyia0")
 success_effect = SubResource("Resource_0qwck")
 failed_effect = SubResource("Resource_2hx7p")
 print_failed_status = "TOTAL_FAILURE"
+failed_status_msg = "FAILED"
 effect_target = 1
 chance = 1.0
 _element = "blank"

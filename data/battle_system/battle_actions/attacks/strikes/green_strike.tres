@@ -1,24 +1,51 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bfjk3jf15fgeh"]
+[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://bfjk3jf15fgeh"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_rm1nk"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_tgwkw"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="3_26u3g"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_e8pdo"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="4_816ed"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_p78y1"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_uabak"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="6_v5gtk"]
 
-[sub_resource type="Resource" id="Resource_3b1xh"]
-script = ExtResource("3_26u3g")
+[sub_resource type="Resource" id="Resource_pnf0w"]
+script = ExtResource("3_e8pdo")
 _element = "green"
-type = 1
-positive_factor = 2.5
-negative_factor = 0.2
+apply_to = "target"
+
+[sub_resource type="Resource" id="Resource_fe3uk"]
+script = ExtResource("4_p78y1")
 name = ""
-strength = 50.0
+strength = 10.0
 message = ""
 
-[sub_resource type="Resource" id="Resource_xcji4"]
+[sub_resource type="Resource" id="Resource_cs80b"]
 script = ExtResource("4_uabak")
-attack_effect = SubResource("Resource_3b1xh")
+attack_effect = SubResource("Resource_fe3uk")
+effect_target = 1
+chance = 1.0
+_element = "blank"
+
+[sub_resource type="Resource" id="Resource_owp58"]
+script = ExtResource("4_p78y1")
+name = ""
+strength = 125.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_vdgsf"]
+script = ExtResource("4_uabak")
+attack_effect = SubResource("Resource_owp58")
+effect_target = 1
+chance = 1.0
+_element = "blank"
+
+[sub_resource type="Resource" id="Resource_e2hl6"]
+script = ExtResource("6_v5gtk")
+condition = SubResource("Resource_pnf0w")
+success_effect = SubResource("Resource_vdgsf")
+failed_effect = SubResource("Resource_cs80b")
+print_failed_status = "FAILURE"
+failure_msg = "INEFFECTIVE"
 effect_target = 1
 chance = 1.0
 _element = "blank"
@@ -26,7 +53,7 @@ _element = "blank"
 [resource]
 resource_name = "Green Strike"
 script = ExtResource("4_816ed")
-effects = Array[ExtResource("2_tgwkw")]([SubResource("Resource_xcji4")])
+effects = Array[ExtResource("2_tgwkw")]([SubResource("Resource_e2hl6")])
 accuracy = 1.0
 name = "Green Strike"
 animation = ExtResource("1_rm1nk")

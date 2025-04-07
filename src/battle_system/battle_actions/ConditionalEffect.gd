@@ -4,12 +4,18 @@ class_name ConditionalEffect
 @export var condition: Condition
 @export var success_effect: EffectSlot = null
 @export var failed_effect: EffectSlot = null
-## When to print "But it failed." to console.
+## When to print FAILURE_MSG to console.
 ## SILENT: Never
 ## FAILURE: If condition.check returns false.
 ## TOTAL_FAILURE: If condition.check returns false and failed_effect.apply_effect returns an empty string.
 @export_enum("SILENT", "FAILURE", "TOTAL_FAILURE")
 var print_failed_status := "FAILURE"
+## Contents of FAILURE_MSG
+## FAILED: But it failed!
+## MISSED: But it missed!
+## INEFFECTIVE: It wasn't very effective...
+@export_enum("FAILED", "MISSED", "INEFFECTIVE")
+var failure_msg := "FAILED"
 
 var _last_activated_effect: _BaseEffectSlot = null
 
@@ -26,16 +32,25 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 		msg.append(failed_effect.apply_effect(user, target, action, effectiveness))
 
 		if print_failed_status == "FAILURE":
-			msg.insert(0, "But it failed!\n")
+			msg.insert(0, _get_failure_msg())
 		elif print_failed_status == "TOTAL_FAILURE" and (len(msg) == 0 or msg[0].is_empty()):
-			msg.insert(0, "But it failed!\n")
+			msg.insert(0, _get_failure_msg())
 
 		return "\n".join(msg)
 	elif print_failed_status != "SILENT":
-		return "But it failed!\n"
+		return _get_failure_msg()
 	return ""
 
 ## Used to check the type of the last _AttackEffect.
 ## e.g. if it was Damage, StatusEffect, etc.
 func get_attack_effect() -> _AttackEffect:
 	return _last_activated_effect.attack_effect
+
+func _get_failure_msg() -> String:
+	match failure_msg:
+		"FAILED":
+			return "But it failed!\n"
+		"MISSED":
+			return "But it missed!\n"
+		_:
+			return "It wasn't very effective...\n"
