@@ -4,11 +4,12 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="1_ll5eu"]
 
 [resource]
+resource_name = "Blocking"
 script = ExtResource("1_ll5eu")
+status_effect = 1
 duration = 1
 icon = ExtResource("1_174ot")
 description = ""
 name = "Blocking"
-chance = 1.0
 strength = 1.0
 message = "{target} is blocking!"

@@ -12,11 +12,17 @@ const MODIFIER := 0.3
 				" ".join(Array(StatManager.Stats.keys()[stat].split("_")).map(func(x): return x.capitalize())),
 				dir]
 
+func _init():
+	id = StatusEffectManager.StatusEffects.STAT_CHANGE
+
+
 func get_strength() -> float:
 	return strength * MODIFIER
 
+
 func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
 	return 1
+
 
 # override
 func _get_message() -> String:
@@ -43,3 +49,6 @@ func _get_message() -> String:
 	
 	return output
 
+# override
+func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:
+	id = StatusEffectManager.StatusEffects.STAT_CHANGE

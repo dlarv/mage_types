@@ -4,11 +4,12 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="1_rugnf"]
 
 [resource]
+resource_name = "Stasis"
 script = ExtResource("1_rugnf")
+status_effect = 0
 duration = 1
 icon = ExtResource("1_2jes6")
 description = ""
 name = "Stasis"
-chance = 1.0
 strength = 0.0
 message = "{target} has entered stasis!"

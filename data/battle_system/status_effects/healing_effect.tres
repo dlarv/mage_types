@@ -4,11 +4,12 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="1_gh2co"]
 
 [resource]
+resource_name = "Healing"
 script = ExtResource("1_gh2co")
+status_effect = 4
 duration = 3
 icon = ExtResource("1_f85tx")
 description = ""
 name = "Healing"
-chance = 1.0
 strength = 0.1
 message = "{target} is wrapped in a healing aura!"

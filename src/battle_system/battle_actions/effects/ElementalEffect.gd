@@ -35,3 +35,8 @@ func instantiate_icon() -> Node:
 func _set_name(val: String) -> void:
 	name = "%s-Phobic" % element.name
 	resource_name = name
+
+
+# override
+func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:
+	id = StatusEffectManager.StatusEffects.PHOBIC

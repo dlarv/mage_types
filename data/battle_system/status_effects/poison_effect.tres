@@ -4,11 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://clhtfef315tlq" path="res://data/battle_system/status_effects/icons/poison_icon.tscn" id="1_8g1qy"]
 
 [resource]
+resource_name = "Poison"
 script = ExtResource("1_5jwvx")
+status_effect = 2
 duration = 3
 icon = ExtResource("1_8g1qy")
 description = ""
 name = "Poison"
-chance = 1.0
 strength = 0.1
 message = "{target} was poisoned!"
