@@ -2,6 +2,12 @@ extends Control
 class_name Formatter
 
 signal meta_clicked(obj)
+const ElementEffect := preload("res://src/gui/RichTextElement.gd")
+
+func _enter_tree() -> void:
+	var effect := ElementEffect.new()
+	for child in find_children("", "RichTextLabel", true):
+		child.install_effect(effect)
 
 func append_elemental_color(label: RichTextLabel, element: ElementalType) -> void:
 	label.push_color(element.main_color)
