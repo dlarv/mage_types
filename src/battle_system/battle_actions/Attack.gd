@@ -3,10 +3,18 @@ extends _BattleAction
 class_name Attack 
 
 @export var effects: Array[_BaseEffectSlot]
+@export_range(0, 1) var accuracy := 1.0
 
 # override
 func apply_effects(user: BattleActor, targets: Array) -> String:
 	var msg := [super.apply_effects(user, targets)]
+
+	# Calculate accuracy.
+	var rand := randf()
+	if rand > accuracy:
+		Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
+		msg.append("But it missed!")
+		return "\n".join(msg)
 
 	var affinity := 0.8 
 	if not user.element1.is_blank() and user.element1.is_defensive_type == element.is_defensive_type:
@@ -20,10 +28,8 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
-
 	for i in range(len(targets)):
 		var target = targets[i]
-		var missedMsg := ""
 		var didDmg := false
 
 		for effect in effects:
@@ -43,9 +49,6 @@ func apply_effects(user: BattleActor, targets: Array) -> String:
 				if effect.get_attack_effect() is Damage and target.is_defeated:
 					msg.append("........%s was defeated." % target.name)
 					continue
-
-		if not didDmg and len(missedMsg) > 0:
-			msg.append(missedMsg)
 
 	return "\n".join(msg)
 

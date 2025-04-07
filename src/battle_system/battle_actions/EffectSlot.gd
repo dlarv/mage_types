@@ -15,9 +15,6 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 		if effect_target == EffectTarget.TARGET:
 			return attack_effect.apply_effect(user, target, action, effectiveness, element)
 		return attack_effect.apply_effect(user, user, action, effectiveness, element)
-	
-	elif attack_effect is Damage:
-		msg = "But it missed!"
 
 	Logger.append_battle_log("Action(%s) failed. Chance(%f) >= Rand(%f)" 
 			% [attack_effect.name, chance, rand])

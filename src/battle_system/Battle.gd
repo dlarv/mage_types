@@ -115,9 +115,9 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		
 		# Apply action effects.
 		var msg = action.action.apply_effects(action.actor, action.targets)
+
 		if not msg.contains("missed!"):
 			action.action.play_animation(userPosition, targetPosition, self)
-
 
 		# Display message and await input.
 		await gui.display_message(msg)

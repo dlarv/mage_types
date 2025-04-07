@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_kwvki"]
 script = ExtResource("3_37dw4")
 name = ""
-chance = 1.0
 strength = 100.0
 message = ""
 
@@ -17,13 +16,14 @@ message = ""
 script = ExtResource("4_o170a")
 attack_effect = SubResource("Resource_kwvki")
 effect_target = 1
-chance = 0.5
+chance = 1.0
 _element = "blank"
 
 [resource]
 resource_name = "Desolation"
 script = ExtResource("2_dtei8")
 effects = Array[ExtResource("1_lpeax")]([SubResource("Resource_r3ina")])
+accuracy = 0.5
 name = "Desolation"
 animation = ExtResource("1_sm806")
 _element = "red"

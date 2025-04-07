@@ -5,6 +5,7 @@ extends Formatter
 @export var target_label: Label
 @export var power_hbox: HBoxContainer
 @export var power_label: Label
+@export var accuracy_label: Label
 @export var priority_label: Label
 @export var details: RichTextLabel
 @export var effects_label: RichTextLabel
@@ -15,6 +16,7 @@ func display(attack: Variant, limitInfo:=false) -> void:
 	
 	# Basic info.
 	name_label.text = attack.name
+	accuracy_label.text = "%d%%" % [ int(attack.accuracy * 100.0) ]
 	range_label.text = Attack.AttackRange.keys()[attack.attack_range]
 	target_label.text = Attack.TargetType.keys()[attack.target]
 	priority_label.text = str(attack.priority)
