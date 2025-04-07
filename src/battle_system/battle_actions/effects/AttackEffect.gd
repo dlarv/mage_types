@@ -2,7 +2,10 @@
 extends Resource 
 class_name _AttackEffect 
 
-@export var name: String 
+@export var name: String:
+	set(val):
+		name = val
+		resource_name = val
 ## Effectiveness of this effect, usually as a percentage of health.
 @export var strength: float  
 @export_multiline var message: String = "": get = _get_message

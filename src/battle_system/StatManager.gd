@@ -120,18 +120,18 @@ func get_stat_mod(stat: Stat) -> float:
 		_: return -1
 
 func add(effect: StatChange, name: String) -> void:
-	var mod = effect.get_mod()
+	var mod := effect.get_strength()
 	match effect.stat:
-		Stat.ATTACK: _attack_mod += effect.get_mod()
-		Stat.MELEE_ATTACK: _melee_attack_mod+= effect.get_mod()
-		Stat.RANGED_ATTACK: _ranged_attack_mod+= effect.get_mod()
-		Stat.DEFENSE: _defense_mod += effect.get_mod()
-		Stat.MELEE_DEFENSE: _melee_defense_mod+= effect.get_mod()
-		Stat.RANGED_DEFENSE: _ranged_defense_mod+= effect.get_mod()
-		Stat.SPEED: _speed_mod += effect.get_mod()
-		Stat.EVASION: _evasion_mod += effect.get_mod()
+		Stat.ATTACK: _attack_mod += mod
+		Stat.MELEE_ATTACK: _melee_attack_mod += mod
+		Stat.RANGED_ATTACK: _ranged_attack_mod += mod
+		Stat.DEFENSE: _defense_mod += mod
+		Stat.MELEE_DEFENSE: _melee_defense_mod += mod
+		Stat.RANGED_DEFENSE: _ranged_defense_mod += mod
+		Stat.SPEED: _speed_mod += mod
+		Stat.EVASION: _evasion_mod += mod
 
-	var msg = "%s for %s. Base(%f) * Mod(%f) = %f%s"
+	var msg := "%s for %s. Base(%f) * Mod(%f) = %f%s"
 	match effect.stat:
 		StatManager.Stat.ATTACK:
 			Logger.append_battle_log(msg % [

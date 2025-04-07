@@ -2,22 +2,174 @@
 
 [ext_resource type="Script" path="res://src/battle_system/attack_builder/components/EffectBuilder.gd" id="1_p5hak"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="4_qyr0m"]
-[ext_resource type="Resource" uid="uid://x6s6i84so1b3" path="res://data/battle_system/status_effects/stat_changes/attack_down.tres" id="20_m4vfg"]
-[ext_resource type="Resource" uid="uid://b4julle0iw81g" path="res://data/battle_system/status_effects/stat_changes/attack_up.tres" id="21_4bgrh"]
-[ext_resource type="Resource" uid="uid://dneceq24qw18b" path="res://data/battle_system/status_effects/stat_changes/melee_attack_down.tres" id="22_cmm3w"]
-[ext_resource type="Resource" uid="uid://cg8xywr207tu1" path="res://data/battle_system/status_effects/stat_changes/melee_attack_up.tres" id="23_rhycm"]
-[ext_resource type="Resource" uid="uid://bahofdms1h0nx" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_down.tres" id="24_mxdnv"]
-[ext_resource type="Resource" uid="uid://c1wqtkfskoaar" path="res://data/battle_system/status_effects/stat_changes/ranged_attack_up.tres" id="25_mswl6"]
-[ext_resource type="Resource" uid="uid://c3cjp8ps55j6y" path="res://data/battle_system/status_effects/stat_changes/defense_down.tres" id="26_vlk6l"]
-[ext_resource type="Resource" uid="uid://bvx58mu0rxc35" path="res://data/battle_system/status_effects/stat_changes/defense_up.tres" id="27_7da4m"]
-[ext_resource type="Resource" uid="uid://dchuhbbvv2f4i" path="res://data/battle_system/status_effects/stat_changes/melee_defense_down.tres" id="28_u10ar"]
-[ext_resource type="Resource" uid="uid://ckchtheg06whb" path="res://data/battle_system/status_effects/stat_changes/melee_defense_up.tres" id="29_14uj7"]
-[ext_resource type="Resource" uid="uid://ctk6276lmrf4c" path="res://data/battle_system/status_effects/stat_changes/ranged_defense_down.tres" id="30_0quyg"]
-[ext_resource type="Resource" uid="uid://bphq7oo643e7" path="res://data/battle_system/status_effects/stat_changes/ranged_defense_up.tres" id="31_d3xqf"]
-[ext_resource type="Resource" uid="uid://dpdmudmansscw" path="res://data/battle_system/status_effects/stat_changes/speed_down.tres" id="32_wappq"]
-[ext_resource type="Resource" uid="uid://bk2m1s0l6l0gm" path="res://data/battle_system/status_effects/stat_changes/speed_up.tres" id="33_wnx60"]
-[ext_resource type="Resource" uid="uid://c5ro1exjhsu5o" path="res://data/battle_system/status_effects/stat_changes/evasion_down.tres" id="34_nunam"]
-[ext_resource type="Resource" uid="uid://cs5pftpng6bck" path="res://data/battle_system/status_effects/stat_changes/evasion_up.tres" id="35_mfui2"]
+
+[sub_resource type="Resource" id="Resource_4dbsf"]
+resource_name = "Attack Drop"
+script = ExtResource("4_qyr0m")
+stat = 0
+duration = 3
+description = ""
+name = "Attack Drop"
+strength = -0.3
+message = "{target}'s melee attack was lowered!
+{target}'s ranged attack was lowered!"
+
+[sub_resource type="Resource" id="Resource_a87u6"]
+resource_name = "Attack Boost"
+script = ExtResource("4_qyr0m")
+stat = 0
+duration = 3
+description = ""
+name = "Attack Boost"
+strength = 0.3
+message = "{target}'s melee attack was boosted!
+{target}'s ranged attack was boosted!"
+
+[sub_resource type="Resource" id="Resource_srnd8"]
+resource_name = "Melee Attack Drop"
+script = ExtResource("4_qyr0m")
+stat = 1
+duration = 3
+description = ""
+name = "Melee Attack Drop"
+strength = -0.3
+message = "{target}'s melee attack was lowered!"
+
+[sub_resource type="Resource" id="Resource_1h1r0"]
+resource_name = "Melee Attack Boost"
+script = ExtResource("4_qyr0m")
+stat = 1
+duration = 3
+description = ""
+name = "Melee Attack Boost"
+strength = 0.3
+message = "{target}'s melee attack was boosted!"
+
+[sub_resource type="Resource" id="Resource_12cku"]
+resource_name = "Ranged Attack Drop"
+script = ExtResource("4_qyr0m")
+stat = 2
+duration = 3
+description = ""
+name = "Ranged Attack Drop"
+strength = -0.3
+message = "{target}'s ranged attack was lowered!"
+
+[sub_resource type="Resource" id="Resource_kaj8h"]
+resource_name = "Ranged Attack Boost"
+script = ExtResource("4_qyr0m")
+stat = 2
+duration = 3
+description = ""
+name = "Ranged Attack Boost"
+strength = 0.3
+message = "{target}'s ranged attack was boosted!"
+
+[sub_resource type="Resource" id="Resource_442u4"]
+resource_name = "Defense Drop"
+script = ExtResource("4_qyr0m")
+stat = 3
+duration = 3
+description = ""
+name = "Defense Drop"
+strength = -0.3
+message = "{target}'s melee defense was lowered!
+{target}'s ranged defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_50csm"]
+resource_name = "Defense Boost"
+script = ExtResource("4_qyr0m")
+stat = 3
+duration = 3
+description = ""
+name = "Defense Boost"
+strength = 0.3
+message = "{target}'s melee defense was boosted!
+{target}'s ranged defense was boosted!"
+
+[sub_resource type="Resource" id="Resource_opljs"]
+resource_name = "Melee Defense Drop"
+script = ExtResource("4_qyr0m")
+stat = 4
+duration = 3
+description = ""
+name = "Melee Defense Drop"
+strength = -0.3
+message = "{target}'s melee defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_bmoeh"]
+resource_name = "Melee Defense Boost"
+script = ExtResource("4_qyr0m")
+stat = 4
+duration = 3
+description = ""
+name = "Melee Defense Boost"
+strength = 0.3
+message = "{target}'s melee defense was boosted!"
+
+[sub_resource type="Resource" id="Resource_sgm7r"]
+resource_name = "Ranged Defense Drop"
+script = ExtResource("4_qyr0m")
+stat = 5
+duration = 3
+description = ""
+name = "Ranged Defense Drop"
+strength = -0.3
+message = "{target}'s ranged defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_nnu2d"]
+resource_name = "Ranged Defense Boost"
+script = ExtResource("4_qyr0m")
+stat = 5
+duration = 3
+description = ""
+name = "Ranged Defense Boost"
+strength = 0.3
+message = "{target}'s ranged defense was boosted!"
+
+[sub_resource type="Resource" id="Resource_f6cgi"]
+resource_name = "Speed Drop"
+script = ExtResource("4_qyr0m")
+stat = 6
+duration = 0
+description = ""
+name = "Speed Drop"
+strength = -0.3
+message = "{target}'s melee attack was lowered!
+{target}'s melee defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_sikyo"]
+resource_name = "Speed Boost"
+script = ExtResource("4_qyr0m")
+stat = 6
+duration = 3
+description = ""
+name = "Speed Boost"
+strength = 0.3
+message = "{target}'s melee attack was boosted!
+{target}'s melee defense was boosted!"
+
+[sub_resource type="Resource" id="Resource_8cssb"]
+resource_name = "Evasion Drop"
+script = ExtResource("4_qyr0m")
+stat = 7
+duration = 3
+description = ""
+name = "Evasion Drop"
+strength = -0.3
+message = "{target}'s ranged attack was lowered!
+{target}'s ranged defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_qm3wn"]
+resource_name = "Evasion Boost"
+script = ExtResource("4_qyr0m")
+stat = 7
+duration = 3
+description = ""
+name = "Evasion Boost"
+strength = 0.3
+message = "{target}'s ranged attack was boosted!
+{target}'s ranged defense was boosted!"
 
 [node name="EffectBuilder" type="VBoxContainer" node_paths=PackedStringArray("effect_option_button", "stat_option_button", "stat_hbox")]
 anchors_preset = 15
@@ -26,7 +178,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p5hak")
-stats = Array[ExtResource("4_qyr0m")]([ExtResource("20_m4vfg"), ExtResource("21_4bgrh"), ExtResource("22_cmm3w"), ExtResource("23_rhycm"), ExtResource("24_mxdnv"), ExtResource("25_mswl6"), ExtResource("26_vlk6l"), ExtResource("27_7da4m"), ExtResource("28_u10ar"), ExtResource("29_14uj7"), ExtResource("30_0quyg"), ExtResource("31_d3xqf"), ExtResource("32_wappq"), ExtResource("33_wnx60"), ExtResource("34_nunam"), ExtResource("35_mfui2")])
+stats = Array[ExtResource("4_qyr0m")]([SubResource("Resource_4dbsf"), SubResource("Resource_a87u6"), SubResource("Resource_srnd8"), SubResource("Resource_1h1r0"), SubResource("Resource_12cku"), SubResource("Resource_kaj8h"), SubResource("Resource_442u4"), SubResource("Resource_50csm"), SubResource("Resource_opljs"), SubResource("Resource_bmoeh"), SubResource("Resource_sgm7r"), SubResource("Resource_nnu2d"), SubResource("Resource_f6cgi"), SubResource("Resource_sikyo"), SubResource("Resource_8cssb"), SubResource("Resource_qm3wn")])
 effect_option_button = NodePath("EffectSelector/OptionButton")
 stat_option_button = NodePath("StatSelector/OptionButton")
 stat_hbox = NodePath("StatSelector")

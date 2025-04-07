@@ -11,7 +11,6 @@ class_name ConditionalEffect
 @export_enum("SILENT", "FAILURE", "TOTAL_FAILURE")
 var print_failed_status := "FAILURE"
 
-
 var _last_activated_effect: _BaseEffectSlot = null
 
 # override

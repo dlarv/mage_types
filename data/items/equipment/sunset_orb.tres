@@ -1,16 +1,27 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=14 format=3 uid="uid://cwk4v4cvwgmus"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=16 format=3 uid="uid://cwk4v4cvwgmus"]
 
 [ext_resource type="Script" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="1_dd61b"]
 [ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_twp2o"]
 [ext_resource type="Script" path="res://src/items/equipment/add_equipment/bonuses/StatBonus.gd" id="2_pciia"]
 [ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="2_whcob"]
 [ext_resource type="Script" path="res://src/items/equipment/Equipment.gd" id="3_bo7o4"]
-[ext_resource type="Resource" uid="uid://b4julle0iw81g" path="res://data/battle_system/status_effects/stat_changes/attack_up.tres" id="3_wljrg"]
 [ext_resource type="Script" path="res://src/items/equipment/add_equipment/triggers/ElementTrigger.gd" id="4_1nkck"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="6_ex0f4"]
 
-[sub_resource type="Resource" id="Resource_hmx35"]
+[sub_resource type="Resource" id="Resource_kty0t"]
+resource_name = "Attack Boost"
+script = ExtResource("6_ex0f4")
+stat = 0
+duration = 0
+description = ""
+name = "Attack Boost"
+strength = 1.0
+message = "{target}'s melee attack was boosted!
+{target}'s ranged attack was boosted!"
+
+[sub_resource type="Resource" id="Resource_hghoq"]
 script = ExtResource("2_pciia")
-stat = ExtResource("3_wljrg")
+stat = SubResource("Resource_kty0t")
 
 [sub_resource type="Resource" id="Resource_nr40x"]
 resource_name = "Orange Trigger"
@@ -21,11 +32,22 @@ index = "either"
 [sub_resource type="Resource" id="Resource_mcfi2"]
 script = ExtResource("1_dd61b")
 trigger = SubResource("Resource_nr40x")
-bonus = SubResource("Resource_hmx35")
+bonus = SubResource("Resource_hghoq")
+
+[sub_resource type="Resource" id="Resource_ggigm"]
+resource_name = "Attack Boost"
+script = ExtResource("6_ex0f4")
+stat = 0
+duration = 3
+description = ""
+name = "Attack Boost"
+strength = 1.0
+message = "{target}'s melee attack was boosted!
+{target}'s ranged attack was boosted!"
 
 [sub_resource type="Resource" id="Resource_f8mby"]
 script = ExtResource("2_pciia")
-stat = ExtResource("3_wljrg")
+stat = SubResource("Resource_ggigm")
 
 [sub_resource type="Resource" id="Resource_3pyk5"]
 resource_name = "Red Trigger"

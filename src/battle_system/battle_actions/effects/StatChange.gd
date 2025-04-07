@@ -2,17 +2,18 @@
 extends StatusEffect 
 class_name StatChange 
 
-@export var stat: StatManager.Stat
-@export var stack: float = 1
+const MODIFIER := 0.3
 
-# override
-func combine(a: StatusEffect):
-	duration = a.duration
-	stack += a.strength / abs(a.strength) #STACK_MODIFIER * (a.strength / abs(a.strength))
-	strength += a.strength
+@export var stat: StatManager.Stat:
+	set(val):
+		stat = val
+		var dir := "Drop" if strength < 0 else "Boost"
+		name = "%s %s" % [
+				" ".join(Array(StatManager.Stat.keys()[stat].split("_")).map(func(x): return x.capitalize())),
+				dir]
 
-func get_mod() -> float:
-	return stack * strength
+func get_strength() -> float:
+	return strength * MODIFIER
 
 func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
 	return 1
@@ -41,3 +42,4 @@ func _get_message() -> String:
 				dir]
 	
 	return output
+
