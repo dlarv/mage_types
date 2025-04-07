@@ -142,7 +142,6 @@ func _on_back_button_pressed() -> void:
 
 func open_row(row: Row) -> void:
 	_row = row
-	# _attack = row.attack
 	_attack = row.attack.duplicate(true)
 	_output_path = row.attack.resource_path
 
@@ -171,9 +170,37 @@ func open_row(row: Row) -> void:
 		effects_scroller.remove_child(child)
 
 	for slot in attack.effects:
-		var effectSlot := EffectSlotButton.instantiate()
-		effectSlot.create(slot)
-		effects_scroller.add_child(effectSlot)
+
+		if slot is EffectSlot:
+			var effectSlot := EffectSlotButton.instantiate()
+			effectSlot.create(slot)
+			effects_scroller.add_child(effectSlot)
+		elif slot is ConditionalEffect:
+			var l1 := RichTextLabel.new()
+			l1.fit_content = true
+			l1.bbcode_enabled = true
+			l1.text = "[b]" + str(slot.condition) + "[/b]:"
+			effects_scroller.add_child(l1)
+
+			var e1 := EffectSlotButton.instantiate()
+			e1.create(slot.success_effect)
+			effects_scroller.add_child(e1)
+
+			l1 = RichTextLabel.new()
+			l1.fit_content = true
+			if slot.failed_effect:
+				l1.text = "[b]Otherwise[/b]:"
+				effects_scroller.add_child(l1)
+
+				var e2 := EffectSlotButton.instantiate()
+				e2.create(slot.failed_effect)
+				effects_scroller.add_child(e2)
+			else:
+				l1.text = "-------------------------"
+				effects_scroller.add_child(l1)
+		
+
+
 
 
 func _on_power_value_changed(value:float) -> void:
@@ -191,4 +218,5 @@ func _copy_attack(a: Attack, b: Attack) -> void:
 	a.power = b.power
 	a.animation = b.animation
 	a.details = b.details
+	a.attack_effects = b.attack_effects
 	

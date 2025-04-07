@@ -39,7 +39,7 @@ message = "{target}'s melee attack was boosted!
 [sub_resource type="Resource" id="Resource_uqccw"]
 resource_name = "Status Heal"
 script = ExtResource("5_4weft")
-name = ""
+name = "Status Heal"
 strength = 0.0
 message = ""
 
@@ -119,6 +119,7 @@ item_count = 13
 popup/item_0/text = "Damage"
 popup/item_1/text = "Stat Change"
 popup/item_1/id = 1
+popup/item_2/text = "Status Heal"
 popup/item_2/id = 2
 popup/item_3/text = "Transmutate"
 popup/item_3/id = 3

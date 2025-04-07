@@ -28,3 +28,15 @@ func check(user: BattleActor, target: BattleActor, action: _BattleAction, effect
 			return target.is_element(element) and user.is_element(element)
 
 
+func _to_string() -> String:
+	var output := ""
+	if apply_to == "user":
+		output = "User "
+	elif apply_to != "both":
+		output = "Target "
+	if apply_to == "both":
+		output += "& Target "
+	
+	output += "must be [color=%s]%s[/color]" % [ element.name, element.name ]
+
+	return output

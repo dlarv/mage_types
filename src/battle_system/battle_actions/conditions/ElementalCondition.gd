@@ -51,3 +51,27 @@ func _all(actor: BattleActor) -> bool:
 		if not actor.is_element(element): return false
 	return true
 
+func _to_string() -> String:
+	var output := ""
+	if apply_to == "user":
+		output = "User "
+	elif apply_to != "both":
+		output = "Target "
+	if apply_to == "both":
+		output += "& Target "
+	
+	if operator == "ne":
+		output += "must not be any of the following: { "
+	elif operator == "any":
+		output += "must be any of the following: { "
+	else:
+		output += "must be all of the following: { "
+	
+	output += "[color=%s]%s[/color]" % [ elements[0].name, elements[0].name ]
+	
+	for element in elements.slice(1):
+		output += ", [color=%s]%s[/color]" % [ element, element ]
+	
+	output += " }"
+
+	return output

@@ -20,9 +20,11 @@ signal delete_button_pressed()
 
 var _effect: EffectSlot
 
-func create(effect: EffectSlot):
+func create(effect: _BaseEffectSlot):
+	if not effect is EffectSlot: return
+
 	_effect = effect
-	var e := effect.attack_effect
+	var e: _AttackEffect = effect.attack_effect
 
 	name_label.text = e.name
 	chance.value = effect.chance
