@@ -167,6 +167,11 @@ func open_row(row: Row) -> void:
 		%AccuracySpinBox.value = attack.accuracy
 		%DetailsTextEdit.text = attack.details
 
+	for slot in attack.effects:
+		var effectSlot := EffectSlotButton.instantiate()
+		effectSlot.create(slot)
+		effects_scroller.add_child(effectSlot)
+
 
 func _on_power_value_changed(value:float) -> void:
 	_attack.power = int(value) 
