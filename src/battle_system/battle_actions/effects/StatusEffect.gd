@@ -33,3 +33,9 @@ func instantiate_icon() -> Node:
 
 func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
 	return 1
+
+func _get_message() -> String:
+	if name.contains("Phobic"):
+		return "{target} is feeling adverse to [color={element}]{element}[/color]!"
+	return message
+
