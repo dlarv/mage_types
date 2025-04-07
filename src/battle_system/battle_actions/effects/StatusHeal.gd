@@ -11,3 +11,8 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 
 func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
 	return int(target.has_status_effect(effect))
+
+# override
+func _set_name(val: String) -> void:
+	name = "%s Heal" % effect.name
+	resource_name = name
