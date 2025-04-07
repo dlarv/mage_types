@@ -1,7 +1,6 @@
 extends _AttackEffect 
 class_name RandomPhobia
 
-@export var Phobia: StatusEffect
 @export_range(1, 8) var min_count := 1
 @export_range(1, 8) var max_count := 1
 
@@ -17,7 +16,7 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 
 		# Create effect.
 		var e = ElementManager.elements[index]
-		var phobia = Phobia.duplicate()
+		var phobia = ElementalEffect.new()
 		phobia.element = e
 
 		# Apply effect.
