@@ -1,24 +1,7 @@
-[gd_scene load_steps=43 format=3 uid="uid://c0yk4b0ig5108"]
+[gd_scene load_steps=19 format=3 uid="uid://c0yk4b0ig5108"]
 
 [ext_resource type="Script" path="res://src/battle_system/attack_builder/components/EffectBuilder.gd" id="1_p5hak"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/AttackEffect.gd" id="2_ehtn7"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_ewl2k"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="4_qyr0m"]
-[ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="5_5g3e6"]
-[ext_resource type="Resource" uid="uid://ck1einq7necor" path="res://data/battle_system/status_effects/dazed_effect.tres" id="6_fchvv"]
-[ext_resource type="Resource" uid="uid://dq0ck6mo6bcnq" path="res://data/battle_system/status_effects/dissonance_effect.tres" id="7_pclcw"]
-[ext_resource type="Resource" uid="uid://dhghgo0ungrbg" path="res://data/battle_system/status_effects/flinched_effect.tres" id="8_q5q60"]
-[ext_resource type="Resource" uid="uid://homntfrobese" path="res://data/battle_system/status_effects/healing_effect.tres" id="9_7ju0g"]
-[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="10_75yr6"]
-[ext_resource type="Resource" uid="uid://bu3fmlsaalf2s" path="res://data/battle_system/status_effects/stasis_effect.tres" id="11_i5ujs"]
-[ext_resource type="Resource" uid="uid://bvadtuxed6228" path="res://data/battle_system/status_effects/elemental_effects/elemental_phobia.tres" id="12_xk776"]
-[ext_resource type="Resource" uid="uid://dce1ib1m1soc2" path="res://data/battle_system/status_effects/elemental_effects/elemental_philia.tres" id="13_vjj1j"]
-[ext_resource type="Resource" uid="uid://bvhygcjrk2h5a" path="res://data/battle_system/status_effects/elemental_effects/random_phobia.tres" id="14_43p4l"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="14_girmr"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Strike.gd" id="15_lwveb"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="16_j1xyb"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/GenerateAffinity.gd" id="17_caw4q"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="18_fhfil"]
 [ext_resource type="Resource" uid="uid://x6s6i84so1b3" path="res://data/battle_system/status_effects/stat_changes/attack_down.tres" id="20_m4vfg"]
 [ext_resource type="Resource" uid="uid://b4julle0iw81g" path="res://data/battle_system/status_effects/stat_changes/attack_up.tres" id="21_4bgrh"]
 [ext_resource type="Resource" uid="uid://dneceq24qw18b" path="res://data/battle_system/status_effects/stat_changes/melee_attack_down.tres" id="22_cmm3w"]
@@ -36,68 +19,6 @@
 [ext_resource type="Resource" uid="uid://c5ro1exjhsu5o" path="res://data/battle_system/status_effects/stat_changes/evasion_down.tres" id="34_nunam"]
 [ext_resource type="Resource" uid="uid://cs5pftpng6bck" path="res://data/battle_system/status_effects/stat_changes/evasion_up.tres" id="35_mfui2"]
 
-[sub_resource type="Resource" id="Resource_q46fu"]
-script = ExtResource("3_ewl2k")
-name = "Damage"
-chance = 1.0
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_nov7o"]
-script = ExtResource("4_qyr0m")
-stat = 0
-stack = 1.0
-duration = 0
-description = ""
-name = "Stat Change"
-chance = 1.0
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_nueef"]
-script = ExtResource("14_girmr")
-_element = "blank"
-element_id = 0
-name = "Transmutate"
-chance = 1.0
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_umxac"]
-script = ExtResource("15_lwveb")
-_element = "blank"
-type = 0
-positive_factor = 0.0
-negative_factor = 0.0
-name = "Strike"
-chance = 1.0
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_oodpo"]
-script = ExtResource("16_j1xyb")
-heal_percent = 0.5
-allow_overflow = false
-name = "Draining Damage"
-chance = 1.0
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_51bvt"]
-script = ExtResource("17_caw4q")
-name = "Generate Affinity"
-chance = 1.0
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_fqdpx"]
-script = ExtResource("18_fhfil")
-allow_overflow = false
-name = "Instant Health Change"
-chance = 1.0
-strength = 0.0
-message = ""
-
 [node name="EffectBuilder" type="VBoxContainer" node_paths=PackedStringArray("effect_option_button", "stat_option_button", "stat_hbox")]
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,7 +26,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p5hak")
-attack_effects = Array[ExtResource("2_ehtn7")]([SubResource("Resource_q46fu"), SubResource("Resource_nov7o"), ExtResource("5_5g3e6"), ExtResource("6_fchvv"), ExtResource("7_pclcw"), ExtResource("8_q5q60"), ExtResource("9_7ju0g"), ExtResource("10_75yr6"), ExtResource("11_i5ujs"), ExtResource("12_xk776"), ExtResource("13_vjj1j"), SubResource("Resource_nueef"), ExtResource("14_43p4l"), SubResource("Resource_umxac"), SubResource("Resource_oodpo"), SubResource("Resource_51bvt"), SubResource("Resource_fqdpx")])
 stats = Array[ExtResource("4_qyr0m")]([ExtResource("20_m4vfg"), ExtResource("21_4bgrh"), ExtResource("22_cmm3w"), ExtResource("23_rhycm"), ExtResource("24_mxdnv"), ExtResource("25_mswl6"), ExtResource("26_vlk6l"), ExtResource("27_7da4m"), ExtResource("28_u10ar"), ExtResource("29_14uj7"), ExtResource("30_0quyg"), ExtResource("31_d3xqf"), ExtResource("32_wappq"), ExtResource("33_wnx60"), ExtResource("34_nunam"), ExtResource("35_mfui2")])
 effect_option_button = NodePath("EffectSelector/OptionButton")
 stat_option_button = NodePath("StatSelector/OptionButton")
@@ -123,7 +43,7 @@ text = "Effect:"
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
-item_count = 17
+item_count = 15
 popup/item_0/text = "Damage"
 popup/item_1/text = "Stat Change"
 popup/item_1/id = 1
@@ -131,32 +51,28 @@ popup/item_2/text = "Blocking"
 popup/item_2/id = 2
 popup/item_3/text = "Dazed"
 popup/item_3/id = 3
-popup/item_4/text = "Dissonant"
-popup/item_4/id = 4
-popup/item_5/text = "Flinched"
-popup/item_5/id = 5
-popup/item_6/text = "Healing"
-popup/item_6/id = 6
-popup/item_7/text = "Poison"
-popup/item_7/id = 7
-popup/item_8/text = "Stasis"
-popup/item_8/id = 8
-popup/item_9/text = "Phobic"
-popup/item_9/id = 9
-popup/item_10/text = "Philic"
-popup/item_10/id = 10
-popup/item_11/text = "Transmutate"
-popup/item_11/id = 11
-popup/item_12/text = "Random Phobia"
-popup/item_12/id = 12
-popup/item_13/text = "Strike"
-popup/item_13/id = 13
-popup/item_14/text = "Draining Damage"
-popup/item_14/id = 14
-popup/item_15/text = "Generate Affinity"
-popup/item_15/id = 15
-popup/item_16/text = "Instant Health Change"
-popup/item_16/id = 16
+popup/item_4/text = "Flinched"
+popup/item_4/id = 5
+popup/item_5/text = "Healing"
+popup/item_5/id = 6
+popup/item_6/text = "Poison"
+popup/item_6/id = 7
+popup/item_7/text = "Stasis"
+popup/item_7/id = 8
+popup/item_8/text = "Phobic"
+popup/item_8/id = 9
+popup/item_9/text = "Transmutate"
+popup/item_9/id = 11
+popup/item_10/text = "Random Phobia"
+popup/item_10/id = 12
+popup/item_11/text = "Strike"
+popup/item_11/id = 13
+popup/item_12/text = "Draining Damage"
+popup/item_12/id = 14
+popup/item_13/text = "Generate Affinity"
+popup/item_13/id = 15
+popup/item_14/text = "Instant Health Change"
+popup/item_14/id = 16
 
 [node name="StatSelector" type="HBoxContainer" parent="."]
 visible = false

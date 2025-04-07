@@ -82,8 +82,6 @@ var elemental_bias: ElementalType = ElementManager.Blank:
 
 @export var sprite_path: PackedScene
 
-var dissonant: StatusEffect:
-	get: return statuses.check_dissonant()
 var flinching: StatusEffect:
 	get: return statuses.check_flinching()
 var stasis: StatusEffect:
@@ -130,12 +128,6 @@ func set_element(id: int, element: ElementalType) -> void:
 	if effect != null:
 		dmg = hp * effect.strength
 		_msgs.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
-
-	effect = statuses.check_philic(element)
-	if effect != null:
-		dmg = hp * effect.strength
-		current_hp += dmg
-		_msgs.append("%s was healed by its philia! (%d hp)" % [ name, dmg ])
 
 	if dmg != 0:
 		apply_damage(dmg)

@@ -252,12 +252,6 @@ func calculate_transmutations(target: BattleActor, action: _BattleAction) -> voi
 
 		await gui.display_message(msg)
 
- 	# Calculate primary + secondary.
-	var dissonant := target.dissonant
-	if dissonant != null:
-		await gui.display_message(dissonant.message)
-		return
-
 	newType = ElementManager.get_matchup(target.element1, target.element2)
 	msg = []
 	if newType != null:

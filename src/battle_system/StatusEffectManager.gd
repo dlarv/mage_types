@@ -8,8 +8,6 @@ const POISON_KEY: String = "Poison"
 const PHOBIC_KEY: String = "Phobic"
 const HEALING_KEY: String = "Healing"
 
-const PHILIC_KEY: String = "Philic"
-const DISSONANT_KEY: String = "Dissonant"
 const FLINCHING_KEY: String = "Flinching"
 
 var poison: float:
@@ -87,9 +85,6 @@ func calculate_expirations() -> Array:
 func check_flinching() -> StatusEffect:
 	return statuses.get(FLINCHING_KEY)
 
-func check_dissonant() -> StatusEffect:
-	return statuses.get(DISSONANT_KEY)
-
 func remove_blocking() -> bool:
 	if blocking != null:
 		blocking.duration -= 1
@@ -104,12 +99,6 @@ func check_stasis() -> StatusEffect:
 func check_phobic(element) -> ElementalEffect:
 	var key := "%s_%s" % [element, PHOBIC_KEY]
 	var effect = statuses.get(key)
-	if effect != null and effect.element == element:
-		return effect
-	return null
-
-func check_philic(element) -> ElementalEffect:
-	var effect = statuses.get(PHILIC_KEY)
 	if effect != null and effect.element == element:
 		return effect
 	return null
