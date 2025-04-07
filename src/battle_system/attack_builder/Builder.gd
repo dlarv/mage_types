@@ -146,7 +146,6 @@ func open_row(row: Row) -> void:
 	_attack = row.attack.duplicate(true)
 	_output_path = row.attack.resource_path
 
-
 	var attack: Attack = row.attack
 	if attack:
 		%NameLineEdit.text = attack.name

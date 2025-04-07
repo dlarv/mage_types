@@ -11,14 +11,12 @@ signal delete_button_pressed()
 @export var strength_float: SpinBox
 @export var element_dropdown: OptionButton
 @export var allow_overflow: CheckBox
-@export var stack: SpinBox
 @export var element_id: CheckButton
 @export var heal_percent: SpinBox
 @export var min_int: SpinBox
 @export var max_int: SpinBox
 @export var min_float: SpinBox
 @export var max_float: SpinBox
-@export var strike_type: OptionButton
 
 var _effect: EffectSlot
 
@@ -33,12 +31,12 @@ func create(effect: EffectSlot):
 		strength_int.show()
 		strength_int.value = e.strength
 	elif e is StatChange:
-		stack.show()
-		stack.value = e.stack
+		strength_int.show()
+		strength_int.value = e.strength
 	elif e is StatusHeal:
 		pass
 	elif e is ElementalEffect:
-		element_dropdown.select(ElementManager.get_index_from_name(effect.element.name))
+		element_dropdown.select(ElementManager.get_index_from_name(effect.attack_effect.element.name))
 	elif e is TransmutateAttackEffect:
 		element_id.show()
 		element_id.set_pressed_no_signal(e.element_id)
@@ -80,6 +78,7 @@ func _on_min_value_changed(value:float) -> void:
 func _on_heal_percent_value_changed(value:float) -> void:
 	_effect.attack_effect.heal_percent = value
 
+
 func _on_element_id_toggled(toggled_on:bool) -> void:
 	_effect.attack_effect.element_id = int(toggled_on)
 
@@ -98,5 +97,3 @@ func _on_element_dropdown_item_selected(index:int) -> void:
 
 func _on_strength_value_changed(value:float) -> void:
 	_effect.attack_effect.strength = value
-
-

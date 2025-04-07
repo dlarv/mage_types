@@ -1,12 +1,21 @@
-[gd_scene load_steps=28 format=3 uid="uid://c0yk4b0ig5108"]
+[gd_scene load_steps=25 format=3 uid="uid://c0yk4b0ig5108"]
 
 [ext_resource type="Script" path="res://src/battle_system/attack_builder/components/EffectBuilder.gd" id="1_p5hak"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/AttackEffect.gd" id="2_y33t8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_bf03p"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="4_0v6wl"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="4_qyr0m"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="5_4weft"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="5_n7kb6"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="6_xjxuf"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/RandomPhobia.gd" id="6_yyxxg"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="7_hrkhj"]
+[ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="8_2irqn"]
+[ext_resource type="Resource" uid="uid://dhghgo0ungrbg" path="res://data/battle_system/status_effects/flinched_effect.tres" id="9_2crn3"]
+[ext_resource type="Resource" uid="uid://homntfrobese" path="res://data/battle_system/status_effects/healing_effect.tres" id="10_vgwbk"]
+[ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="11_60n4n"]
+[ext_resource type="Resource" uid="uid://bu3fmlsaalf2s" path="res://data/battle_system/status_effects/stasis_effect.tres" id="12_5r2fc"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="13_jw53u"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="16_6cyos"]
 
 [sub_resource type="Resource" id="Resource_2lxjd"]
 resource_name = "Damage"
@@ -15,225 +24,84 @@ name = "Damage"
 strength = 0.0
 message = ""
 
-[sub_resource type="Resource" id="Resource_7rouw"]
-script = ExtResource("4_0v6wl")
-heal_percent = 0.5
-allow_overflow = false
-name = ""
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_dbt34"]
-script = ExtResource("5_n7kb6")
-allow_overflow = false
-name = ""
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_354vq"]
-script = ExtResource("6_yyxxg")
-min_count = 1
-max_count = 1
-name = ""
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_4dbsf"]
-resource_name = "Attack Drop"
-script = ExtResource("4_qyr0m")
+[sub_resource type="Resource" id="Resource_kpa5w"]
+resource_name = "Stat Change"
+script = ExtResource("7_hrkhj")
 stat = 0
-id = null
-duration = 3
+id = 6
+duration = 0
 description = ""
-name = "Attack Drop"
-strength = -0.3
-message = "{target}'s melee attack was lowered!
-{target}'s ranged attack was lowered!"
-
-[sub_resource type="Resource" id="Resource_a87u6"]
-resource_name = "Attack Boost"
-script = ExtResource("4_qyr0m")
-stat = 0
-id = null
-duration = 3
-description = ""
-name = "Attack Boost"
-strength = 0.3
+name = "Stat Change"
+strength = 0.0
 message = "{target}'s melee attack was boosted!
 {target}'s ranged attack was boosted!"
 
-[sub_resource type="Resource" id="Resource_srnd8"]
-resource_name = "Melee Attack Drop"
-script = ExtResource("4_qyr0m")
-stat = 1
-id = null
-duration = 3
-description = ""
-name = "Melee Attack Drop"
-strength = -0.3
-message = "{target}'s melee attack was lowered!"
+[sub_resource type="Resource" id="Resource_uqccw"]
+resource_name = "Status Heal"
+script = ExtResource("5_4weft")
+name = ""
+strength = 0.0
+message = ""
 
-[sub_resource type="Resource" id="Resource_1h1r0"]
-resource_name = "Melee Attack Boost"
-script = ExtResource("4_qyr0m")
-stat = 1
-id = null
-duration = 3
-description = ""
-name = "Melee Attack Boost"
-strength = 0.3
-message = "{target}'s melee attack was boosted!"
+[sub_resource type="Resource" id="Resource_05pvi"]
+resource_name = "Transmutate"
+script = ExtResource("6_xjxuf")
+_element = "blank"
+element_id = 0
+name = "Transmutate"
+strength = 0.0
+message = ""
 
-[sub_resource type="Resource" id="Resource_12cku"]
-resource_name = "Ranged Attack Drop"
-script = ExtResource("4_qyr0m")
-stat = 2
-id = null
-duration = 3
-description = ""
-name = "Ranged Attack Drop"
-strength = -0.3
-message = "{target}'s ranged attack was lowered!"
+[sub_resource type="Resource" id="Resource_2plwf"]
+resource_name = "Instant Health Change"
+script = ExtResource("5_n7kb6")
+allow_overflow = false
+name = "Instant Health Change"
+strength = 0.0
+message = ""
 
-[sub_resource type="Resource" id="Resource_kaj8h"]
-resource_name = "Ranged Attack Boost"
-script = ExtResource("4_qyr0m")
-stat = 2
-id = null
-duration = 3
-description = ""
-name = "Ranged Attack Boost"
-strength = 0.3
-message = "{target}'s ranged attack was boosted!"
-
-[sub_resource type="Resource" id="Resource_442u4"]
-resource_name = "Defense Drop"
-script = ExtResource("4_qyr0m")
-stat = 3
-id = null
-duration = 3
-description = ""
-name = "Defense Drop"
-strength = -0.3
-message = "{target}'s melee defense was lowered!
-{target}'s ranged defense was lowered!"
-
-[sub_resource type="Resource" id="Resource_50csm"]
-resource_name = "Defense Boost"
-script = ExtResource("4_qyr0m")
-stat = 3
-id = null
-duration = 3
-description = ""
-name = "Defense Boost"
-strength = 0.3
-message = "{target}'s melee defense was boosted!
-{target}'s ranged defense was boosted!"
-
-[sub_resource type="Resource" id="Resource_opljs"]
-resource_name = "Melee Defense Drop"
-script = ExtResource("4_qyr0m")
-stat = 4
-id = null
-duration = 3
-description = ""
-name = "Melee Defense Drop"
-strength = -0.3
-message = "{target}'s melee defense was lowered!"
-
-[sub_resource type="Resource" id="Resource_bmoeh"]
-resource_name = "Melee Defense Boost"
-script = ExtResource("4_qyr0m")
-stat = 4
-id = null
-duration = 3
-description = ""
-name = "Melee Defense Boost"
-strength = 0.3
-message = "{target}'s melee defense was boosted!"
-
-[sub_resource type="Resource" id="Resource_sgm7r"]
-resource_name = "Ranged Defense Drop"
-script = ExtResource("4_qyr0m")
-stat = 5
-id = null
-duration = 3
-description = ""
-name = "Ranged Defense Drop"
-strength = -0.3
-message = "{target}'s ranged defense was lowered!"
-
-[sub_resource type="Resource" id="Resource_nnu2d"]
-resource_name = "Ranged Defense Boost"
-script = ExtResource("4_qyr0m")
-stat = 5
-id = null
-duration = 3
-description = ""
-name = "Ranged Defense Boost"
-strength = 0.3
-message = "{target}'s ranged defense was boosted!"
-
-[sub_resource type="Resource" id="Resource_f6cgi"]
-resource_name = "Speed Drop"
-script = ExtResource("4_qyr0m")
-stat = 6
-id = null
+[sub_resource type="Resource" id="Resource_4uoqg"]
+resource_name = "Blank-Phobic"
+script = ExtResource("13_jw53u")
+_element = "blank"
+id = 3
 duration = 0
 description = ""
-name = "Speed Drop"
-strength = -0.3
-message = "{target}'s melee attack was lowered!
-{target}'s melee defense was lowered!"
+name = "Blank-Phobic"
+strength = 0.0
+message = "{target} is feeling adverse to [el]{element}[/el]!"
 
-[sub_resource type="Resource" id="Resource_sikyo"]
-resource_name = "Speed Boost"
-script = ExtResource("4_qyr0m")
-stat = 6
-id = null
-duration = 3
-description = ""
-name = "Speed Boost"
-strength = 0.3
-message = "{target}'s melee attack was boosted!
-{target}'s melee defense was boosted!"
+[sub_resource type="Resource" id="Resource_kiwne"]
+script = ExtResource("6_yyxxg")
+min_count = 1
+max_count = 1
+name = "Random Phobia"
+strength = 0.0
+message = ""
 
-[sub_resource type="Resource" id="Resource_8cssb"]
-resource_name = "Evasion Drop"
-script = ExtResource("4_qyr0m")
-stat = 7
-id = null
-duration = 3
-description = ""
-name = "Evasion Drop"
-strength = -0.3
-message = "{target}'s ranged attack was lowered!
-{target}'s ranged defense was lowered!"
+[sub_resource type="Resource" id="Resource_wqgbk"]
+script = ExtResource("4_0v6wl")
+heal_percent = 0.5
+allow_overflow = false
+name = "Draining Damage"
+strength = 0.0
+message = ""
 
-[sub_resource type="Resource" id="Resource_qm3wn"]
-resource_name = "Evasion Boost"
-script = ExtResource("4_qyr0m")
-stat = 7
-id = null
-duration = 3
-description = ""
-name = "Evasion Boost"
-strength = 0.3
-message = "{target}'s ranged attack was boosted!
-{target}'s ranged defense was boosted!"
-
-[node name="EffectBuilder" type="VBoxContainer" node_paths=PackedStringArray("effect_option_button", "stat_option_button", "stat_hbox")]
+[node name="EffectBuilder" type="VBoxContainer" node_paths=PackedStringArray("effect_option_button", "stat_option_button", "stat_hbox", "status_heal_hbox", "status_heal_option_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p5hak")
-attack_effects = Array[ExtResource("2_y33t8")]([SubResource("Resource_2lxjd"), SubResource("Resource_7rouw"), SubResource("Resource_dbt34"), SubResource("Resource_354vq")])
-stats = Array[ExtResource("4_qyr0m")]([SubResource("Resource_4dbsf"), SubResource("Resource_a87u6"), SubResource("Resource_srnd8"), SubResource("Resource_1h1r0"), SubResource("Resource_12cku"), SubResource("Resource_kaj8h"), SubResource("Resource_442u4"), SubResource("Resource_50csm"), SubResource("Resource_opljs"), SubResource("Resource_bmoeh"), SubResource("Resource_sgm7r"), SubResource("Resource_nnu2d"), SubResource("Resource_f6cgi"), SubResource("Resource_sikyo"), SubResource("Resource_8cssb"), SubResource("Resource_qm3wn")])
+attack_effects = Array[ExtResource("2_y33t8")]([SubResource("Resource_2lxjd"), SubResource("Resource_kpa5w"), SubResource("Resource_uqccw"), SubResource("Resource_05pvi"), SubResource("Resource_2plwf"), ExtResource("8_2irqn"), ExtResource("9_2crn3"), ExtResource("10_vgwbk"), ExtResource("11_60n4n"), ExtResource("12_5r2fc"), SubResource("Resource_4uoqg"), SubResource("Resource_kiwne"), SubResource("Resource_wqgbk")])
+stats = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+status_effects = Array[ExtResource("16_6cyos")]([ExtResource("8_2irqn"), ExtResource("9_2crn3"), ExtResource("10_vgwbk"), ExtResource("11_60n4n"), ExtResource("12_5r2fc")])
 effect_option_button = NodePath("EffectSelector/OptionButton")
 stat_option_button = NodePath("StatSelector/OptionButton")
 stat_hbox = NodePath("StatSelector")
+status_heal_hbox = NodePath("StatusHealSelector")
+status_heal_option_button = NodePath("StatusHealSelector/OptionButton")
 
 [node name="EffectSelector" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -247,36 +115,31 @@ text = "Effect:"
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
-item_count = 15
+item_count = 13
 popup/item_0/text = "Damage"
 popup/item_1/text = "Stat Change"
 popup/item_1/id = 1
-popup/item_2/text = "Blocking"
 popup/item_2/id = 2
-popup/item_3/text = "Dazed"
+popup/item_3/text = "Transmutate"
 popup/item_3/id = 3
-popup/item_4/text = "Flinched"
-popup/item_4/id = 5
-popup/item_5/text = "Healing"
-popup/item_5/id = 6
-popup/item_6/text = "Poison"
-popup/item_6/id = 7
-popup/item_7/text = "Stasis"
-popup/item_7/id = 8
-popup/item_8/text = "Phobic"
-popup/item_8/id = 9
-popup/item_9/text = "Transmutate"
-popup/item_9/id = 11
-popup/item_10/text = "Random Phobia"
-popup/item_10/id = 12
-popup/item_11/text = "Strike"
-popup/item_11/id = 13
+popup/item_4/text = "Instant Health Change"
+popup/item_4/id = 4
+popup/item_5/text = "Blocking"
+popup/item_5/id = 5
+popup/item_6/text = "Flinched"
+popup/item_6/id = 6
+popup/item_7/text = "Healing"
+popup/item_7/id = 7
+popup/item_8/text = "Poison"
+popup/item_8/id = 8
+popup/item_9/text = "Stasis"
+popup/item_9/id = 9
+popup/item_10/text = "Blank-Phobic"
+popup/item_10/id = 10
+popup/item_11/text = "Random Phobia"
+popup/item_11/id = 11
 popup/item_12/text = "Draining Damage"
-popup/item_12/id = 14
-popup/item_13/text = "Generate Affinity"
-popup/item_13/id = 15
-popup/item_14/text = "Instant Health Change"
-popup/item_14/id = 16
+popup/item_12/id = 12
 
 [node name="StatSelector" type="HBoxContainer" parent="."]
 visible = false
@@ -291,38 +154,51 @@ text = "Stat:"
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
-item_count = 16
-popup/item_0/text = "Attack Drop"
-popup/item_1/text = "Attack Boost"
+item_count = 10
+popup/item_0/text = "ATTACK"
+popup/item_1/text = "MELEE_ATTACK"
 popup/item_1/id = 1
-popup/item_2/text = "Melee Attack Drop"
+popup/item_2/text = "RANGED_ATTACK"
 popup/item_2/id = 2
-popup/item_3/text = "Melee Attack Boost"
+popup/item_3/text = "DEFENSE"
 popup/item_3/id = 3
-popup/item_4/text = "Ranged Attack Drop"
+popup/item_4/text = "MELEE_DEFENSE"
 popup/item_4/id = 4
-popup/item_5/text = "Ranged Attack Boost"
+popup/item_5/text = "RANGED_DEFENSE"
 popup/item_5/id = 5
-popup/item_6/text = "Defense Drop"
+popup/item_6/text = "MELEE"
 popup/item_6/id = 6
-popup/item_7/text = "Defense Boost"
+popup/item_7/text = "RANGED"
 popup/item_7/id = 7
-popup/item_8/text = "Melee Defense Drop"
+popup/item_8/text = "SPEED"
 popup/item_8/id = 8
-popup/item_9/text = "Melee Defense Boost"
+popup/item_9/text = "EVASION"
 popup/item_9/id = 9
-popup/item_10/text = "Ranged Defense Drop"
-popup/item_10/id = 10
-popup/item_11/text = "Ranged Defense Boost"
-popup/item_11/id = 11
-popup/item_12/text = "Speed Drop"
-popup/item_12/id = 12
-popup/item_13/text = "Speed Boost"
-popup/item_13/id = 13
-popup/item_14/text = "Evasion Drop"
-popup/item_14/id = 14
-popup/item_15/text = "Evasion Boost"
-popup/item_15/id = 15
+
+[node name="StatusHealSelector" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="StatusHealSelector"]
+layout_mode = 2
+text = "Stat:"
+
+[node name="OptionButton" type="OptionButton" parent="StatusHealSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+flat = true
+selected = 0
+item_count = 5
+popup/item_0/text = "Blocking"
+popup/item_1/text = "Flinched"
+popup/item_1/id = 1
+popup/item_2/text = "Healing"
+popup/item_2/id = 2
+popup/item_3/text = "Poison"
+popup/item_3/id = 3
+popup/item_4/text = "Stasis"
+popup/item_4/id = 4
 
 [node name="Create_Button" type="Button" parent="."]
 layout_mode = 2
@@ -330,4 +206,5 @@ text = "Create"
 
 [connection signal="item_selected" from="EffectSelector/OptionButton" to="." method="_on_effect_item_selected"]
 [connection signal="item_selected" from="StatSelector/OptionButton" to="." method="_on_stat_item_selected"]
+[connection signal="item_selected" from="StatusHealSelector/OptionButton" to="." method="_on_status_heal_item_selected"]
 [connection signal="pressed" from="Create_Button" to="." method="_on_create_button_pressed"]

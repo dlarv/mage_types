@@ -2,7 +2,10 @@
 extends _AttackEffect 
 class_name StatusHeal 
 
-@export var effect: StatusEffect 
+@export var effect: StatusEffect:
+	set(val):
+		effect = val
+		_set_name("")
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0):
@@ -14,5 +17,5 @@ func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
 
 # override
 func _set_name(val: String) -> void:
-	name = "%s Heal" % effect.name
+	name = "%s Heal" % [ effect.name if effect else "Status" ]
 	resource_name = name
