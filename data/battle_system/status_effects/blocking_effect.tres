@@ -6,8 +6,8 @@
 [resource]
 resource_name = "Blocking"
 script = ExtResource("1_ll5eu")
-status_effect = 1
-duration = 1
+id = 1
+duration = 2
 icon = ExtResource("1_174ot")
 description = ""
 name = "Blocking"

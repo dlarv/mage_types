@@ -26,7 +26,6 @@ var phobias := {}
 
 # StatusEffect[]
 var _effects_to_remove := []
-
 # Dict<string, StatusEffect>
 var statuses := {}
 

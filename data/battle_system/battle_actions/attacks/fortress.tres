@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bx48nu4cu54b6"]
+
+[ext_resource type="PackedScene" uid="uid://ch3nnueyugf36" path="res://src/battle_system/battle_actions/animations/wall.tscn" id="1_kauj7"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_suq6r"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_cxp1q"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_j1c53"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_0tkgy"]
+[ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="5_3iqxs"]
+
+[sub_resource type="Resource" id="Resource_avrho"]
+resource_name = "Damage"
+script = ExtResource("3_j1c53")
+name = "Damage"
+strength = 40.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_1ri3s"]
+resource_name = "Recoil Damage"
+script = ExtResource("4_0tkgy")
+attack_effect = SubResource("Resource_avrho")
+effect_target = 0
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_h1l5r"]
+resource_name = "Blocking"
+script = ExtResource("4_0tkgy")
+attack_effect = ExtResource("5_3iqxs")
+effect_target = 1
+chance = 1.0
+
+[resource]
+resource_name = "Fortress"
+script = ExtResource("2_cxp1q")
+effects = Array[ExtResource("1_suq6r")]([SubResource("Resource_1ri3s"), SubResource("Resource_h1l5r")])
+accuracy = 1.0
+power = 0
+name = "Fortress"
+animation = ExtResource("1_kauj7")
+_element = "cyan"
+priority = 0
+attack_range = 2
+target = 2
+details = ""

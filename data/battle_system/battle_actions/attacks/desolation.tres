@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b3nggi4ftlucw"]
 
-[ext_resource type="PackedScene" path="res://src/battle_system/battle_actions/animations/geyser.tscn" id="1_01xj0"]
+[ext_resource type="PackedScene" uid="uid://chvddpwtc6d1r" path="res://src/battle_system/battle_actions/animations/geyser.tscn" id="1_01xj0"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_lpeax"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_dtei8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_twwtw"]

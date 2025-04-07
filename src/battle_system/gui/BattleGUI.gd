@@ -78,9 +78,8 @@ func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
 	else:
 		teamDisplay = enemy_display_parent
 	
-
 	if actor == null:
-		return teamDisplay.global_position
+		return Vector2(teamDisplay.global_position.x, teamDisplay.global_position.y)
 	
 	var sprite = teamDisplay.get_sprite(actor)
 	return sprite.get_target_position()
@@ -109,7 +108,7 @@ func select_targets(user: BattleActor, action:_BattleAction):
 		_BattleAction.TargetType.SELF:
 			targets = [ user ]
 			# This pause is needed, otherwise the End turn button won't enable.
-			ally_display_parent.select_specific_target(false, action.element, user)
+			ally_display_parent.select_specific_target(false, action, user)
 			await ally_display_parent.selected
 			# await get_tree().create_timer(.05).timeout
 			
