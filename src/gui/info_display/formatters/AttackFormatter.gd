@@ -27,10 +27,12 @@ func display(attack: Variant, limitInfo:=false) -> void:
 	power_hbox.hide()
 
 	details.clear()
+	effects_label.clear()
 	if attack.details != null and len(attack.details) > 0:
 		details.append_text(attack.details)
+	else:
+		_format_attack_effects(attack.effects, effects_label)
 	
-	effects_label.clear()
 	var power = attack.power
 
 	if power > 0:

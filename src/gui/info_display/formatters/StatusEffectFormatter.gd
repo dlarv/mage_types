@@ -11,7 +11,7 @@ func display(effect: Variant, limitInfo:=false) -> void:
 		icon_parent.add_child(effect.instantiate_icon())
 	
 	name_label.clear()
-	name_label.append_text(effect.get_full_name())
+	name_label.append_text(effect.name)
 	# if effect is ElementalEffect:
 	# 	# append_elemental_color(name_label, effect.element)
 	# 	# name_label.append_text("-%s" % effect.name)
