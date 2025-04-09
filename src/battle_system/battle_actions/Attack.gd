@@ -59,6 +59,7 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 			didDmg = true
 			var msg2 = effect.apply_effect(user, target, self, affinity)
 
+			# Get equipment effect logs, etc.
 			var msg3 = target.get_and_flush_msgs()
 			if len(msg3) > 0:
 				msg.append_array(msg3)

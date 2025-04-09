@@ -4,7 +4,7 @@ class_name _BattleAction
 
 # public static _BattleAction Flee { get private set } = new()
 
-enum TargetType { SELF, ALLY, ALLIES, ENEMY, ENEMIES, ALL, RANDOM }
+enum TargetType { SELF, ALLY, ALLIES, ENEMY, ENEMIES, ALL, ANY, RANDOM }
 enum AttackRange { MELEE, RANGED, STATUS }
 
 @export var name: String = "Hit":

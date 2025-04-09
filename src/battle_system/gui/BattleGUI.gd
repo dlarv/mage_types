@@ -143,6 +143,13 @@ func select_targets(user: BattleActor, action:_BattleAction):
 		_BattleAction.TargetType.ENEMIES:
 			# ally_display_parent.select_all_as_target(true, action.element)
 			targets = enemies
+
+		_BattleAction.TargetType.ALL:
+			targets = allies + enemies
+
+		_BattleAction.TargetType.RANDOM:
+			targets = [ (allies + enemies).pick_random() ]
+
 	
 	if len(targets) == 1 and targets[0] == null:
 		return null
