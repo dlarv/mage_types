@@ -19,7 +19,7 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 		if chance != 1.0:
 			Logger.append_battle_log("Action(%s) Succeeded. Chance(%f) >= Rand(%f)" 
 					% [attack_effect.name, chance, rand])
-		if effect_target == EffectTarget.TARGET:
+		if effect_target == EffectTarget.TARGET or effect_target == EffectTarget.NOT_USER:
 			return attack_effect.apply_effect(user, target, action, effectiveness)
 		return attack_effect.apply_effect(user, user, action, effectiveness)
 
@@ -41,4 +41,3 @@ func _set_effect_target(val: EffectTarget) -> void:
 		resource_name = "Recoil %s" % attack_effect.resource_name
 	else:
 		resource_name = attack_effect.resource_name
-

@@ -1,7 +1,7 @@
 extends Resource
 class_name _BaseEffectSlot
 
-enum EffectTarget { USER, TARGET }
+enum EffectTarget { USER, TARGET, NOT_USER, USER_ONCE }
 
 @export var effect_target: EffectTarget = EffectTarget.TARGET: set = _set_effect_target
 @export_range(0, 1) var chance: float = 1

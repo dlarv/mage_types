@@ -7,16 +7,14 @@ var poison: float:
 	get:
 		var effect = statuses.get(StatusEffects.POISON)
 		if effect != null:
-			if randf() <= effect.chance:
-				return effect.strength
+			return effect.strength
 		return 0
 
 var healing: float:
 	get:
 		var effect = statuses.get(StatusEffects.HEALING)
 		if effect != null:
-			if randf() <= effect.chance:
-				return effect.strength
+			return effect.strength
 		return 0
 
 var blocking: StatusEffect = null

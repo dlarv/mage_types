@@ -56,6 +56,9 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 		var didDmg := false
 
 		for effect in effects:
+			if effect.effect_target == _BaseEffectSlot.EffectTarget.NOT_USER and target == user: 
+				continue
+
 			didDmg = true
 			var msg2 = effect.apply_effect(user, target, self, affinity)
 
@@ -76,9 +79,11 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 
 	return { "msg": "\n".join(msg) }
 
+
 # override
 func is_action_available(actor: BattleActor) -> bool:
 	return true
+
 
 # override
 func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
