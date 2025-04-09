@@ -80,6 +80,7 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 	if _battle_items == null:
 		_battle_items = []
 	_battle_items.append(item)
+@export var add_all_items := false
 
 @export_category("Overworld Spells")
 # @export var stasis_spell_enabled: bool
@@ -93,6 +94,16 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 
 var spell1 := OverworldSpell.Spells.NONE
 var spell2 := OverworldSpell.Spells.NONE
+
+func _enter_tree() -> void:
+	if add_all_items:
+		for item in regular_items:
+			item.quantity = 99
+		for item in spell_scrolls:
+			item.quantity = 99
+		for item in equipment:
+			item.quantity = 99
+
 
 ## Returns list of **RegularItems** that contain BattleItems.
 func get_battle_items() -> Array:
