@@ -55,14 +55,16 @@ func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
 # Returns message stating what happened to the targets. This is displayed for player.
 func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 	var end = ""
-	if len(targets) == 1:
-		if user == targets[0]:
+	match target:
+		TargetType.SELF:
 			end = "itself"
-		else:
-			end =  targets[0].name
-	else:
-		end = "the opposing team"
-	
+		TargetType.ENEMIES:
+			end = "the opposing team"
+		TargetType.ALLIES:
+			end = "its own team"
+		_:
+			end = targets[0].name
+
 	return { "msg": "%s used %s on %s." % [ user.name, name, end ] }
 
 func apply_cost(user: BattleActor) -> float: 
