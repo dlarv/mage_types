@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=99 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_xejte"]
@@ -10,7 +10,6 @@
 [ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/phobias/terrify_scroll.tres" id="8_vcgc2"]
 [ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="9_inlsm"]
 [ext_resource type="Resource" uid="uid://bpgkg6f5qnd42" path="res://data/items/spell_scrolls/drain_scroll.tres" id="10_eksn8"]
-[ext_resource type="Resource" uid="uid://cdwq01mquvfiy" path="res://data/items/spell_scrolls/block_scroll.tres" id="11_v1oxf"]
 [ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="13_l1x6d"]
 [ext_resource type="Resource" uid="uid://bqv0v7l6vqeeu" path="res://data/items/spell_scrolls/strikes/m_strike_scroll.tres" id="14_cys5c"]
 [ext_resource type="Resource" uid="uid://biujho1cv84is" path="res://data/items/spell_scrolls/strikes/r_strike_scroll.tres" id="15_crq3u"]
@@ -57,7 +56,7 @@ resource_name = "Healing Potion"
 script = ExtResource("2_xejte")
 item = ExtResource("3_3atr7")
 id = 0
-quantity = 2
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -66,7 +65,7 @@ resource_name = "Poison Heal"
 script = ExtResource("2_xejte")
 item = ExtResource("4_klwlq")
 id = 1
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -75,7 +74,7 @@ resource_name = "Blue Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("5_ufsgb")
 id = 0
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -84,7 +83,7 @@ resource_name = "Purple Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("29_c0dhh")
 id = 1
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -93,7 +92,7 @@ resource_name = "Magenta Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("31_w75pi")
 id = 2
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -102,7 +101,7 @@ resource_name = "Red Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("33_x0gag")
 id = 3
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -111,7 +110,7 @@ resource_name = "Orange Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("23_dq1ou")
 id = 4
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -120,7 +119,7 @@ resource_name = "Yellow Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("30_u8jql")
 id = 5
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -129,7 +128,7 @@ resource_name = "Green Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("28_xbgpo")
 id = 6
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -138,7 +137,7 @@ resource_name = "Cyan Hit Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("6_v0bcu")
 id = 7
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -147,7 +146,7 @@ resource_name = "Blue Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("27_tmanp")
 id = 8
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -156,7 +155,7 @@ resource_name = "Purple Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("22_sp23l")
 id = 9
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -165,7 +164,7 @@ resource_name = "Magenta Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("35_pnyuv")
 id = 10
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -174,7 +173,7 @@ resource_name = "Red Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("26_e3cwp")
 id = 11
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -183,7 +182,7 @@ resource_name = "Orange Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("24_ieyon")
 id = 12
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -192,7 +191,7 @@ resource_name = "Yellow Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("32_pcqn2")
 id = 13
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -201,7 +200,7 @@ resource_name = "Green Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("25_tpatv")
 id = 14
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -210,16 +209,7 @@ resource_name = "Cyan Throw Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("34_8ev2q")
 id = 15
-quantity = 0
-max_quantity = 9999
-allow_stacking = true
-
-[sub_resource type="Resource" id="Resource_u77uh"]
-resource_name = "Block Scroll"
-script = ExtResource("2_xejte")
-item = ExtResource("11_v1oxf")
-id = 16
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -227,8 +217,8 @@ allow_stacking = true
 resource_name = "Sting Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("9_inlsm")
-id = 17
-quantity = 0
+id = 16
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -236,8 +226,8 @@ allow_stacking = true
 resource_name = "Blue Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("17_pe1tn")
-id = 18
-quantity = 0
+id = 17
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -245,8 +235,8 @@ allow_stacking = true
 resource_name = "Purple Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("13_l1x6d")
-id = 19
-quantity = 0
+id = 18
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -254,8 +244,8 @@ allow_stacking = true
 resource_name = "Magenta Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("14_cys5c")
-id = 20
-quantity = 0
+id = 19
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -263,8 +253,8 @@ allow_stacking = true
 resource_name = "Red Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("15_crq3u")
-id = 21
-quantity = 0
+id = 20
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -272,8 +262,8 @@ allow_stacking = true
 resource_name = "Orange Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("18_v86o4")
-id = 22
-quantity = 0
+id = 21
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -281,8 +271,8 @@ allow_stacking = true
 resource_name = "Yellow Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("21_1lo4t")
-id = 23
-quantity = 0
+id = 22
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -290,8 +280,8 @@ allow_stacking = true
 resource_name = "Green Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("20_ouyko")
-id = 24
-quantity = 0
+id = 23
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -299,8 +289,8 @@ allow_stacking = true
 resource_name = "Cyan Strike Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("19_ngs3k")
-id = 25
-quantity = 0
+id = 24
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -308,8 +298,8 @@ allow_stacking = true
 resource_name = "Abyss Strike"
 script = ExtResource("2_xejte")
 item = ExtResource("16_pu3bs")
-id = 26
-quantity = 0
+id = 25
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -317,8 +307,8 @@ allow_stacking = true
 resource_name = "Drain Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("10_eksn8")
-id = 27
-quantity = 0
+id = 26
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -326,17 +316,8 @@ allow_stacking = true
 resource_name = "Blood Shock Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("7_ehvag")
-id = 28
-quantity = 0
-max_quantity = 9999
-allow_stacking = true
-
-[sub_resource type="Resource" id="Resource_1i18h"]
-resource_name = "Terrify Scroll"
-script = ExtResource("2_xejte")
-item = ExtResource("8_vcgc2")
-id = 39
-quantity = 0
+id = 27
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -344,8 +325,8 @@ allow_stacking = true
 resource_name = "Shield Spell Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("35_glgke")
-id = 30
-quantity = 0
+id = 28
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -353,8 +334,8 @@ allow_stacking = true
 resource_name = "Hydrophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("36_a6i7l")
-id = 31
-quantity = 0
+id = 29
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -362,8 +343,8 @@ allow_stacking = true
 resource_name = "Nyctophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("37_crr7r")
-id = 32
-quantity = 0
+id = 30
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -371,8 +352,8 @@ allow_stacking = true
 resource_name = "Porphyrophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("38_1kiw8")
-id = 33
-quantity = 0
+id = 31
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -380,8 +361,8 @@ allow_stacking = true
 resource_name = "Hemophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("39_oh7cu")
-id = 34
-quantity = 0
+id = 32
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -389,8 +370,8 @@ allow_stacking = true
 resource_name = "Xanthophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("40_shlil")
-id = 35
-quantity = 0
+id = 33
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -398,8 +379,8 @@ allow_stacking = true
 resource_name = "Photophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("41_quj10")
-id = 36
-quantity = 0
+id = 34
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -407,8 +388,8 @@ allow_stacking = true
 resource_name = "Prasinophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("42_u1qav")
-id = 37
-quantity = 0
+id = 35
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -416,8 +397,8 @@ allow_stacking = true
 resource_name = "Glaukophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("43_74f1i")
-id = 38
-quantity = 0
+id = 36
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -425,8 +406,8 @@ allow_stacking = true
 resource_name = "Terrify Scroll"
 script = ExtResource("2_xejte")
 item = ExtResource("8_vcgc2")
-id = 39
-quantity = 0
+id = 37
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -462,7 +443,7 @@ resource_name = "Thorn Band"
 script = ExtResource("2_xejte")
 item = ExtResource("22_xbbng")
 id = 0
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -471,7 +452,7 @@ resource_name = "Willpower"
 script = ExtResource("2_xejte")
 item = ExtResource("23_2mgyt")
 id = 1
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -480,7 +461,7 @@ resource_name = "Sunset Orb"
 script = ExtResource("2_xejte")
 item = ExtResource("24_rw6d2")
 id = 2
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -489,7 +470,7 @@ resource_name = "Stasis Shard"
 script = ExtResource("2_xejte")
 item = ExtResource("25_aqy3a")
 id = 3
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -498,7 +479,7 @@ resource_name = "Reactor Shard"
 script = ExtResource("2_xejte")
 item = ExtResource("26_isgka")
 id = 4
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -506,7 +487,7 @@ allow_stacking = true
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
-spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_u77uh"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_6agee"), SubResource("Resource_1i18h"), SubResource("Resource_l4gd1"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_6ru0s")])
+spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_6agee"), SubResource("Resource_l4gd1"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_6ru0s")])
 key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m")])
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
 add_all_items = true

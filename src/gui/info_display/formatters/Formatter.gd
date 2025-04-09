@@ -76,7 +76,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 			var b = effect.max_count
 			var number = str(a) if a == b else "%d-%d" % [a, b]
 			effectsLabel.append_text("Gives the target %s random ")
-			effectsLabel.push_meta(effect.Phobia)
+			effectsLabel.push_meta(ElementalEffect.new())
 			effectsLabel.append_text("phobias.")
 			effectsLabel.pop() # pop meta
 			if b > 1:
