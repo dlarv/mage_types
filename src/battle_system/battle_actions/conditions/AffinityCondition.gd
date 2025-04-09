@@ -1,3 +1,4 @@
+@tool
 extends Condition
 class_name AffinityCondition
 

@@ -164,6 +164,7 @@ func open_row(row: Row) -> void:
 
 			l1 = RichTextLabel.new()
 			l1.fit_content = true
+			l1.bbcode_enabled = true
 			if slot.failed_effect:
 				l1.text = "[b]Otherwise[/b]:"
 				effects_scroller.add_child(l1)

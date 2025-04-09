@@ -1,3 +1,4 @@
+@tool
 extends Condition
 class_name ElementalCondition
 
@@ -70,7 +71,7 @@ func _to_string() -> String:
 	output += "[color=%s]%s[/color]" % [ elements[0].name, elements[0].name ]
 	
 	for element in elements.slice(1):
-		output += ", [color=%s]%s[/color]" % [ element, element ]
+		output += ", [color=%s]%s[/color]" % [ element.name, element.name ]
 	
 	output += " }"
 

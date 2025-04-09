@@ -28,28 +28,10 @@ func _init(select=null, name=null, elements=null, attackRange=null, targets=null
 			self.attack.element = element)
 	self.attackRange = attackRange
 	self.attackRange.item_selected.connect(func(index: int):
-		match index:
-			0: 
-				self.attack.attack_range = _BattleAction.AttackRange.MELEE
-			1:
-				self.attack.attack_range = _BattleAction.AttackRange.RANGED
-			2,_:
-				self.attack.attack_range = _BattleAction.AttackRange.STATUS
-		)
+		self.attack.attack_range = index as _BattleAction.AttackRange)
 	self.targets = targets
 	self.targets.item_selected.connect(func(index: int):
-		match index:
-			1:
-				self.attack.target = _BattleAction.TargetType.ENEMIES
-			2:
-				self.attack.target = _BattleAction.TargetType.SELF
-			3:
-				self.attack.target = _BattleAction.TargetType.ALLY
-			4:
-				self.attack.target = _BattleAction.TargetType.ALLIES
-			0,_:
-				self.attack.target = _BattleAction.TargetType.ENEMY
-		)
+		self.attack.target = index as _BattleAction.TargetType)
 	self.priority = priority
 	self.priority.value_changed.connect(func(val: float): self.attack.priority = int(val))
 	self.power = power
