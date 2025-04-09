@@ -1,35 +1,66 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bufn6dgeaaumv"]
+[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://bufn6dgeaaumv"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_kg6eu"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_pjr33"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_uyi2b"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_yc1rq"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_d7171"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_qp3el"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="6_768h8"]
 
-[sub_resource type="Resource" id="Resource_uqe8c"]
+[sub_resource type="Resource" id="Resource_hrn8y"]
+script = ExtResource("3_uyi2b")
+_element = "yellow"
+apply_to = "user"
+
+[sub_resource type="Resource" id="Resource_0jqm0"]
+resource_name = "Damage"
+script = ExtResource("3_yc1rq")
+name = "Damage"
+strength = 15.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_tep4t"]
+resource_name = "Damage"
+script = ExtResource("4_d7171")
+attack_effect = SubResource("Resource_0jqm0")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_hc33j"]
 resource_name = "Damage"
 script = ExtResource("3_yc1rq")
 name = "Damage"
 strength = 30.0
 message = ""
 
-[sub_resource type="Resource" id="Resource_dqyoq"]
+[sub_resource type="Resource" id="Resource_apnsr"]
 resource_name = "Damage"
 script = ExtResource("4_d7171")
-attack_effect = SubResource("Resource_uqe8c")
+attack_effect = SubResource("Resource_hc33j")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_hdvt0"]
+script = ExtResource("6_768h8")
+condition = SubResource("Resource_hrn8y")
+success_effect = SubResource("Resource_apnsr")
+failed_effect = SubResource("Resource_tep4t")
+print_failed_status = "SILENT"
+failure_msg = "FAILED"
 effect_target = 1
 chance = 1.0
 
 [resource]
 resource_name = "Yellow Throw"
 script = ExtResource("5_qp3el")
-effects = Array[ExtResource("2_pjr33")]([SubResource("Resource_dqyoq")])
+effects = Array[ExtResource("2_pjr33")]([SubResource("Resource_hdvt0")])
 accuracy = 1.0
-power = 30
+power = 15
 name = "Yellow Throw"
 animation = ExtResource("1_kg6eu")
 _element = "yellow"
 priority = 0
 attack_range = 1
 target = 3
-details = ""
+details = "Has x2 power if user is [el]Yellow[/el]."

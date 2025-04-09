@@ -44,7 +44,7 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 ## Used to check the type of the last _AttackEffect.
 ## e.g. if it was Damage, StatusEffect, etc.
 func get_attack_effect() -> _AttackEffect:
-	return _last_activated_effect.attack_effect
+	return success_effect.attack_effect
 
 func _get_failure_msg() -> String:
 	match failure_msg:

@@ -99,6 +99,10 @@ func _on_row_selected(row: Row) -> void:
 
 
 func _on_load_button_pressed() -> void:
+	for row in rows:
+		row.delete()
+	rows = []
+
 	traverse(ATTACK_PATH)
 
 func traverse(root: String) -> void:

@@ -85,8 +85,8 @@ func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
 	var dmg := 0
 
 	for effect in effects:
-		dmg += effect.attack_effect.get_dmg_potential(user, self, target)
-		setupPotential += effect.attack_effect.get_setup_potential(user, target) * effect.chance
+		dmg += effect.get_attack_effect().get_dmg_potential(user, self, target)
+		setupPotential += effect.get_attack_effect().get_setup_potential(user, target) * effect.chance
 	return { 
 		"setup": setupPotential,
 		"dmg": dmg,

@@ -43,6 +43,7 @@ message = "{target}'s melee defense was boosted!
 {target}'s ranged defense was boosted!"
 
 [sub_resource type="Resource" id="Resource_qsduf"]
+resource_name = "Defense Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_aqwi5")
 effect_target = 1
