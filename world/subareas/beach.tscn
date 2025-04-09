@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=76 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="3_pvsap"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_wmol4"]
 [ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="5_bxt50"]
-[ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/terrify_scroll.tres" id="10_oif81"]
+[ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/phobias/terrify_scroll.tres" id="10_oif81"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="13_qy70b"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="13_wf8nf"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="15_xriqk"]
@@ -62,6 +62,13 @@ quantity = 1
 max_quantity = 9999
 allow_stacking = true
 
+[sub_resource type="Resource" id="Resource_ojw8l"]
+script = ExtResource("16_m6hrw")
+id = -1
+quantity = 1
+max_quantity = 9999
+allow_stacking = false
+
 [sub_resource type="Resource" id="Resource_u6p17"]
 resource_name = "Stasis Shard"
 script = ExtResource("16_m6hrw")
@@ -86,7 +93,7 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8106"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62a2r"]
 albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_l7ikq"]
@@ -636,7 +643,7 @@ is_breakable = true
 
 [node name="Chest_South" parent="Chunk" groups=["persist"] instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -50)
-items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_d2uvq")])
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_d2uvq"), SubResource("Resource_ojw8l")])
 
 [node name="TidePoolEntry" type="Node3D" parent="Chunk"]
 
@@ -699,7 +706,7 @@ shape = SubResource("BoxShape3D_t08x8")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_rnvix")
-surface_material_override/0 = SubResource("StandardMaterial3D_f8106")
+surface_material_override/0 = SubResource("StandardMaterial3D_62a2r")
 
 [node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
@@ -839,7 +846,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -5)
 _element = "red"
 
 [node name="MagiclayDisk1" parent="Chunk/Puzzle2" instance=ExtResource("17_6sjel")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -1)
 _element = "cyan"
 
 [node name="Emitter1" parent="Chunk/Puzzle2" instance=ExtResource("13_qy70b")]

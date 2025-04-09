@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://cwjiv3e1abevd"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_m88t7"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_upxlg"]
+[ext_resource type="Resource" uid="uid://wc6nsqhqv1mp" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/yellow_phobia.tres" id="3_jkqir"]
+
+[resource]
+script = ExtResource("2_upxlg")
+spell = ExtResource("3_jkqir")
+name = "Photophobia Bead"
+requirements = Array[ExtResource("1_m88t7")]([])
+details = ""
+tags = []

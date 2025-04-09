@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://ixmwadvjexrp"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_bjqyh"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_4v5x8"]
+[ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="3_yw6xl"]
+
+[resource]
+script = ExtResource("2_4v5x8")
+spell = ExtResource("3_yw6xl")
+name = "Glaukophobia Bead"
+requirements = Array[ExtResource("1_bjqyh")]([])
+details = ""
+tags = []

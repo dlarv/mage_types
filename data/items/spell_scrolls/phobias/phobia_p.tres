@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://bmw0g3a6ir15u"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_8fnva"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_v3ypq"]
+[ext_resource type="Resource" uid="uid://dy7x06nfhr1r7" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/purple_phobia.tres" id="3_at6rj"]
+
+[resource]
+script = ExtResource("2_v3ypq")
+spell = ExtResource("3_at6rj")
+name = "Nyctophobia Bead"
+requirements = Array[ExtResource("1_8fnva")]([])
+details = ""
+tags = []
