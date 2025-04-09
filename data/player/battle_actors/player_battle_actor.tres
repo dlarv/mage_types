@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
 [ext_resource type="Resource" uid="uid://di3c5k8fhu4n7" path="res://data/battle_system/battle_actions/attacks/basic/throw_o.tres" id="3_0xmcy"]
 [ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="3_op30g"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="4_wd0kr"]
-[ext_resource type="Resource" uid="uid://bx48nu4cu54b6" path="res://data/battle_system/battle_actions/attacks/fortress.tres" id="5_w8oj8"]
+[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="4_57hcv"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
 [ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="8_kxgh3"]
 
@@ -29,5 +28,5 @@ _element1 = "blue"
 _element2 = "yellow"
 _elemental_bias = "blank"
 bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_op30g"), ExtResource("3_0xmcy"), ExtResource("4_wd0kr"), ExtResource("5_w8oj8")])
+attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_op30g"), ExtResource("3_0xmcy"), ExtResource("4_57hcv")])
 equipment = ExtResource("8_kxgh3")
