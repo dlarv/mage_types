@@ -24,7 +24,7 @@ nodes = {
 },
 "0_10": {
 "link": &"1_18",
-"offset": Vector2(-1280, 160),
+"offset": Vector2(-1300, 140),
 "start_id": "BEACH_3"
 },
 "0_2": {
@@ -54,12 +54,12 @@ nodes = {
 },
 "0_7": {
 "link": &"1_14",
-"offset": Vector2(-1300, -440),
+"offset": Vector2(-1300, -460),
 "start_id": "BEACH_1"
 },
 "0_8": {
 "link": &"1_15",
-"offset": Vector2(-1280, -140),
+"offset": Vector2(-1300, -160),
 "start_id": "BEACH_2"
 },
 "0_9": {
@@ -138,7 +138,7 @@ nodes = {
 "speaker": "Hint Stone"
 },
 "1_14": {
-"dialogue": "The elements contained within MagiClay will react with powerful sources of color energy.[br][br]-Aqua",
+"dialogue": "The elements contained within MagiClay will react with powerful sources of color energy, like a laser.[br][br]-Aqua",
 "offset": Vector2(-1080, -460),
 "options": {
 0: {
@@ -152,11 +152,11 @@ nodes = {
 },
 "1_15": {
 "dialogue": "Press 'T' to open up your transmutation menu.",
-"offset": Vector2(-1060, -160),
+"offset": Vector2(-1080, -160),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_19",
+"link": "END",
 "text": ""
 }
 },
@@ -190,8 +190,8 @@ nodes = {
 "speaker": 0
 },
 "1_18": {
-"dialogue": "asdf",
-"offset": Vector2(-1060, 140),
+"dialogue": "Sometimes it helps to work backwards.",
+"offset": Vector2(-1080, 140),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -200,24 +200,6 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Hint Stone"
-},
-"1_19": {
-"dialogue": "The rest of the text is obscured. Keep reading?",
-"offset": Vector2(-720, -160),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_20",
-"text": "Hint 1"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "No"
-}
-},
-"size": Vector2(300, 256),
 "speaker": "Hint Stone"
 },
 "1_2": {
@@ -232,19 +214,6 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": ""
-},
-"1_20": {
-"dialogue": "asdf",
-"offset": Vector2(-380, -160),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Hint Stone"
 },
 "1_21": {
 "dialogue": "When combatants transmute, there are side effects that alter our stats.",
