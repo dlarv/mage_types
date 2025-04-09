@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://di5n24gw3krxl"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_vrblp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_i47wp"]
+
+[resource]
+resource_name = "Mirror"
+script = ExtResource("2_i47wp")
+effects = Array[ExtResource("1_vrblp")]([])
+accuracy = 1.0
+power = 0
+name = "Mirror"
+_element = "yellow"
+priority = 0
+attack_range = 2
+target = 3
+details = "Changes user's defensive stats to match offensive stats of target."

@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://ela4jxp8bcph"]
+
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_jsude"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_k7nd4"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_qkigx"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_7tme4"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="5_4se75"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_poe4l"]
+
+[sub_resource type="Resource" id="Resource_2dip1"]
+resource_name = "Damage"
+script = ExtResource("3_qkigx")
+name = "Damage"
+strength = 140.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_2yxjm"]
+resource_name = "Damage"
+script = ExtResource("4_7tme4")
+attack_effect = SubResource("Resource_2dip1")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_70lv3"]
+resource_name = "Defense Drop"
+script = ExtResource("5_4se75")
+stat = 3
+id = 6
+duration = 0
+description = ""
+name = "Defense Drop"
+strength = -100.0
+message = "{target}'s melee defense was lowered!
+{target}'s ranged defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_bh22a"]
+resource_name = "Defense Boost"
+script = ExtResource("4_7tme4")
+attack_effect = SubResource("Resource_70lv3")
+effect_target = 0
+chance = 1.0
+
+[resource]
+resource_name = "Total Meltdown"
+script = ExtResource("6_poe4l")
+effects = Array[ExtResource("2_k7nd4")]([SubResource("Resource_2yxjm"), SubResource("Resource_bh22a")])
+accuracy = 1.0
+power = 140
+name = "Total Meltdown"
+animation = ExtResource("1_jsude")
+_element = "green"
+priority = 0
+attack_range = 0
+target = 4
+details = "Gives maximum defense debuff."
