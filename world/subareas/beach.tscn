@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://4ft3p5xs6uk5"]
+[gd_scene load_steps=91 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
@@ -7,16 +7,24 @@
 [ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="3_pvsap"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_wmol4"]
 [ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="5_bxt50"]
+[ext_resource type="Resource" uid="uid://bm7p4gie7rf0y" path="res://data/items/spell_scrolls/phobias/phobia_b.tres" id="10_17ek5"]
 [ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/phobias/terrify_scroll.tres" id="10_oif81"]
+[ext_resource type="Resource" uid="uid://ixmwadvjexrp" path="res://data/items/spell_scrolls/phobias/phobia_c.tres" id="11_aggqn"]
+[ext_resource type="Resource" uid="uid://coelvvbcbe8hl" path="res://data/items/spell_scrolls/phobias/phobia_g.tres" id="12_66puj"]
+[ext_resource type="Resource" uid="uid://cm7f6hye8cnv8" path="res://data/items/spell_scrolls/phobias/phobia_m.tres" id="13_2iuu0"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="13_qy70b"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="13_wf8nf"]
+[ext_resource type="Resource" uid="uid://b0wddlydt8k14" path="res://data/items/spell_scrolls/phobias/phobia_o.tres" id="14_xlak8"]
+[ext_resource type="Resource" uid="uid://bmw0g3a6ir15u" path="res://data/items/spell_scrolls/phobias/phobia_p.tres" id="15_gyh0j"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="15_xriqk"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="16_1unvm"]
 [ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="16_c81wx"]
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="16_dsupm"]
 [ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
+[ext_resource type="Resource" uid="uid://crnal5pig1ahg" path="res://data/items/spell_scrolls/phobias/phobia_r.tres" id="16_xi36j"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="17_6sjel"]
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="17_g7uef"]
+[ext_resource type="Resource" uid="uid://cwjiv3e1abevd" path="res://data/items/spell_scrolls/phobias/phobia_y.tres" id="17_rcww2"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="19_3xoh5"]
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="19_b8v62"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="20_dejeb"]
@@ -57,17 +65,82 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 resource_name = "Terrify Scroll"
 script = ExtResource("16_m6hrw")
 item = ExtResource("10_oif81")
-id = 29
+id = 39
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_ojw8l"]
+resource_name = "Hydrophobia Bead"
 script = ExtResource("16_m6hrw")
-id = -1
+item = ExtResource("10_17ek5")
+id = 31
 quantity = 1
 max_quantity = 9999
-allow_stacking = false
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_n702h"]
+resource_name = "Glaukophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("11_aggqn")
+id = 38
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_2wabg"]
+resource_name = "Prasinophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("12_66puj")
+id = 37
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_ikyxd"]
+resource_name = "Porphyrophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("13_2iuu0")
+id = 33
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_g8ru8"]
+resource_name = "Xanthophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("14_xlak8")
+id = 35
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_3a848"]
+resource_name = "Nyctophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("15_gyh0j")
+id = 32
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_fejxy"]
+resource_name = "Hemophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("16_xi36j")
+id = 34
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_20rrw"]
+resource_name = "Photophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("17_rcww2")
+id = 36
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_u6p17"]
 resource_name = "Stasis Shard"
@@ -93,7 +166,7 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62a2r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tt4cl"]
 albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_l7ikq"]
@@ -643,7 +716,7 @@ is_breakable = true
 
 [node name="Chest_South" parent="Chunk" groups=["persist"] instance=ExtResource("15_xriqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -50)
-items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_d2uvq"), SubResource("Resource_ojw8l")])
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_d2uvq"), SubResource("Resource_ojw8l"), SubResource("Resource_n702h"), SubResource("Resource_2wabg"), SubResource("Resource_ikyxd"), SubResource("Resource_g8ru8"), SubResource("Resource_3a848"), SubResource("Resource_fejxy"), SubResource("Resource_20rrw")])
 
 [node name="TidePoolEntry" type="Node3D" parent="Chunk"]
 
@@ -706,7 +779,7 @@ shape = SubResource("BoxShape3D_t08x8")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_rnvix")
-surface_material_override/0 = SubResource("StandardMaterial3D_62a2r")
+surface_material_override/0 = SubResource("StandardMaterial3D_tt4cl")
 
 [node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
