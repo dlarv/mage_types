@@ -158,6 +158,14 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
 	if index >= len(attacks):
 		attacks.resize(index + 1)
 	
+	# E.g. player can only know 1 offensive strike attack at a time.
+	# If player is trying to replace a strike move with another strike, 
+	# the check_requirements call will fail.
+	var prevAttack: Attack = null
+	if attacks[index]:
+		prevAttack = attacks[index]
+		attacks[index] = null
+		
 	var output := scroll.check_requirements(self)
 	if len(output) == 0:
 		if attacks[index]:
@@ -167,7 +175,8 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
 	else:
 		print("Could not learn selected Spell(%s). BattleActor(%s) does not meet the following reqs: %s" 
 				% [scroll.spell.name, name, str(output) ])
-
+		if prevAttack:
+			attacks[index] = prevAttack
 	return output
 
 func get_stat(stat: StatManager.Stats) -> float:

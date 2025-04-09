@@ -183,4 +183,3 @@ func _on_catalyst_menu_closed(element:ElementalType) -> void:
 	catalyst_menu.hide()
 	catalyst_menu_closed.emit(element)
 	hide()
-
