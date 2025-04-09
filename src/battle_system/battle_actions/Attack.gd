@@ -37,7 +37,7 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 	if rand > accuracy:
 		Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
 		msg.append("But it missed!")
-		return { msg: "\n".join(msg), "missed": true }
+		return { "msg": "\n".join(msg), "missed": true }
 
 	var affinity := 0.8 
 	if not user.element1.is_blank() and user.element1.is_defensive_type == element.is_defensive_type:
