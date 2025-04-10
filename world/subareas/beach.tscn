@@ -721,7 +721,7 @@ _element = "blue"
 is_breakable = true
 
 [node name="Chest_South" parent="Chunk" groups=["persist"] instance=ExtResource("15_xriqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -50)
 items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_d2uvq"), SubResource("Resource_ojw8l"), SubResource("Resource_n702h"), SubResource("Resource_2wabg"), SubResource("Resource_ikyxd"), SubResource("Resource_g8ru8"), SubResource("Resource_3a848"), SubResource("Resource_fejxy"), SubResource("Resource_20rrw")])
 
 [node name="TidePoolEntry" type="Node3D" parent="Chunk"]

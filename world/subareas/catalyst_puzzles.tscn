@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://brs3ov2whut2i"]
+[gd_scene load_steps=29 format=3 uid="uid://brs3ov2whut2i"]
 
 [ext_resource type="Script" path="res://world/subareas/CatalystPuzzles.gd" id="1_n5073"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_mwdp0"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="10_ju77r"]
 [ext_resource type="PackedScene" uid="uid://c48iivqbcp8bi" path="res://src/overworld/puzzle_blocks/lasers/one_way_lens.tscn" id="12_86we7"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="13_uklwk"]
+[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="15_ndxfa"]
+[ext_resource type="Resource" uid="uid://cjis241a7rywd" path="res://data/items/spell_scrolls/blood_shock_scroll.tres" id="16_egvb8"]
+[ext_resource type="Resource" uid="uid://bpgkg6f5qnd42" path="res://data/items/spell_scrolls/drain_scroll.tres" id="17_imtmn"]
+[ext_resource type="Resource" uid="uid://ckl16fwx0wyvy" path="res://data/items/spell_scrolls/total_meltdown.tres" id="18_8rdxk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xiadh"]
 size = Vector3(27, 6, 45)
@@ -25,7 +29,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2sef"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sgbi"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_4k3xo"]
@@ -35,7 +39,7 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0ubq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imef6"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
@@ -43,6 +47,33 @@ size = Vector3(2.23236, 1, 30.8647)
 
 [sub_resource type="BoxMesh" id="BoxMesh_u635b"]
 size = Vector3(2, 1, 41)
+
+[sub_resource type="Resource" id="Resource_lnyyj"]
+resource_name = "Blood Shock Bead"
+script = ExtResource("15_ndxfa")
+item = ExtResource("16_egvb8")
+id = 27
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_05plj"]
+resource_name = "Drain Bead"
+script = ExtResource("15_ndxfa")
+item = ExtResource("17_imtmn")
+id = 26
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_f5g3y"]
+resource_name = "Total Meltdown Bead"
+script = ExtResource("15_ndxfa")
+item = ExtResource("18_8rdxk")
+id = 38
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
 
 [node name="CatalystPuzzles" type="Area3D" node_paths=PackedStringArray("emitter", "west_wall", "chunk", "resets")]
 script = ExtResource("1_n5073")
@@ -134,11 +165,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 0, 0)
 curve = SubResource("Curve3D_x8c8c")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_i2sef")
+material = SubResource("StandardMaterial3D_5sgbi")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_i2sef")
+surface_material_override/0 = SubResource("StandardMaterial3D_5sgbi")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
@@ -182,10 +213,10 @@ target = NodePath("..")
 curve = SubResource("Curve3D_4k3xo")
 
 [node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire/Path" index="0"]
-material = SubResource("StandardMaterial3D_l0ubq")
+material = SubResource("StandardMaterial3D_imef6")
 
 [node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_l0ubq")
+surface_material_override/0 = SubResource("StandardMaterial3D_imef6")
 
 [node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 13)
@@ -327,6 +358,7 @@ locks = [NodePath("../CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle
 
 [node name="Chest" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("13_uklwk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, 9)
+items = Array[ExtResource("15_ndxfa")]([SubResource("Resource_lnyyj"), SubResource("Resource_05plj"), SubResource("Resource_f5g3y")])
 locks = [NodePath("../CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver1"), NodePath("../CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver3")]
 
 [connection signal="off" from="CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver2" to="." method="_on_laser_receiver_off"]
