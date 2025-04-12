@@ -18,16 +18,16 @@ Each element will have 3 status effects:
 - 1 philia
 - Other
 
-| Element | Effect   | Description                                 |
-| ------- | -------- | ------------------------------------------- |
-| Blue    | Stasis*  | Prevents transmutations.                    |
-| Purple  | Flinched | Skips turn.                                 |
-| Magenta | Healing  | Healing over time.                          |
-| Red     |          |                                             |
-| Orange  |          |                                             |
-| Yellow  |          |                                             |
-| Green   | Poison   | Damage over time.                           |
-| Cyan    | Blocking | Prevents the next attack from doing damage. |
+| Element | Effect    | Description                                 |
+| ------- | --------- | ------------------------------------------- |
+| Blue    | Stasis*   | Prevents transmutations.                    |
+| Purple  | Flinched  | Skips turn.                                 |
+| Magenta | Healing   | Healing over time.                          |
+| Red     | Leech     | Damages opponent and heals team.            |
+| Orange  | Confusion | Randomizes RGB value of elements.           |
+| Yellow  | Airy      | Evasion boost.                              |
+| Green   | Poison    | Damage over time.                           |
+| Cyan    | Blocking  | Prevents the next attack from doing damage. |
 \*Stasis and dissonance will be combined.
 # Brainstorm
 - Red

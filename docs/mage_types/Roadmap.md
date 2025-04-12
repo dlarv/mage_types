@@ -30,15 +30,23 @@
 	- Try known workaround (Worked!).
 - [x] Laser bugs:
 	- [x] If laser doubles back on itself, mirrors immediately glitch out.
+- [ ] Bugs in Fortress attack
+	- [x] Message reads "Attack was used on opposing team, but effects are applied to player's team."
+	- [ ] Animation plays in top-right corner.
+	- [x] Claims player & partner are in stasis.
+		- [x] Blocking appears to have gotten confused with stasis, as no damage is being prevented either.
+	- [x] Blocking immediately wears off when applied to user.
+	- [x] Blocking is applied to player, then immediately removed when player hits itself with recoil.
+	- [ ] Recoil is applied for every ally, instead of just once.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.3.x
 Demo main track implemented. Player can play through the main story of the demo, but not necessarily any of the extra content. First wave of play testing can commence upon completion of this version.
 
-- [ ] New Game creation screen.
-- [ ] Enable/disable overworld spells.
-	- [ ] Display info screen describing overworld spell upon first time it is enabled.
-- [ ] Add loot to chests.
+- [x] New Game creation screen.
+- [x] Enable/disable overworld spells.
+	- [x] Display info screen describing overworld spell upon first time it is enabled.
+- [x] Add loot to chests.
 **STRY.x**
 - Battle actors for each boss created (x3).
 	- [x] Boss 1
@@ -50,7 +58,7 @@ Demo main track implemented. Player can play through the main story of the demo,
 	- [ ] Final
 - [ ] Demo tutorial written.
 	- [ ] Transmutation graph and intro puzzles.
-	- [ ] Battle tutorial.
+	- [x] Battle tutorial.
 	- [x] Partner introduction.
 - [ ] Blocking and non-blocking dialog triggers implemented.
 	- [x] Blocking.
@@ -74,8 +82,8 @@ Demo main track implemented. Player can play through the main story of the demo,
 **STRY.trig**
 - [x] Allow StoryActors to share AnimationPlayers.
 - [x] Allow StoryTriggers/StoryActors to play animations asynchronously.
-- [ ] Create trigger to add items to player's inventory.
-- [ ] Create trigger to add attack to player's movepool.
+- [x] Create trigger to add items to player's inventory.
+- [x] Create trigger to add attack to player's movepool.
 ## v0.4.x
 Demo MVP. Player can visit every area of the demo and experience the major features.
 
@@ -147,9 +155,21 @@ Demo playtest candidate. Game should be visually and auditorially presentable.
 - [x] Apply affinity costs.
 - [x] Remove item from inventory.
 
-Both EffectSlot and AttackEffect have a Chance property. 
+~~Both EffectSlot and AttackEffect have a Chance property. 
 - If AttackEffect is damage, then  `EffectSlot.chance` is considered accuracy. This will fail with a message like "The attack missed."
 - `AttackEffect.chance` will fail silently.
+`Attack` and `EffectSlot` both have a `chance` property (called `accuracy` for Attacks).
+- `_BaseEffectSlot.chance` will fail silently.
+- `ConditionalEffectSlot` has a `print_failed_status` which can have values { SILENT, FAILURE, TOTAL_FAILURE }.
+	- FAILURE prints a message if `ConditionalEffect.check` returns false.
+	- TOTAL_FAILURE prints a message if `ConditionalEffect.check` returns false and failed_effect.apply_effect returns no output.
+	- SILENT never prints a failed message.
+
+StatChanges (v0.3.43)
+- Instead of having a directory full of resources, StatChange effects are dynamically created by the attacks/etc that define them.
+- The actual strength of a StatChange is calculated using `strength * MODIFIER` 
+	- where MODIFIER is a constant currently set to 0.3.
+ 
 ### Transmutations (tran)
 **Apply transmutations and related effects when necessary.**
 - [x] (Primary | Secondary) + Attack
@@ -301,6 +321,10 @@ See [[#Settings and Accessibility (ACCS)]] for more details.
 
 ### Stat Management (stat)
 **Player should have a way to distribute stat points when they level up.**
+- [ ] Player should gain experience from battles.
+- [ ] Upon gaining a threshold of experience, player should level up.
+- [ ] Leveling up should boost player and partner's base stats.
+- [x] Character level should be used in damage calculations.
 
 ### Item Management (iman)
 **Player should be able to view and use items in their inventory.**
