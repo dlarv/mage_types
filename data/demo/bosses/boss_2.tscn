@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://duf3dedsle555"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_gljf2"]
-[ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/blob.blend" id="2_vqxvv"]
+[ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_vqxvv"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_bqnv6"]
 [ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="4_bqxmt"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="4_htvo1"]

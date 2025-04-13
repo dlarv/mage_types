@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bihss5o636fyv"]
 
-[ext_resource type="PackedScene" uid="uid://diveahhxe7xsh" path="res://assets/3d/models/status_pin.blend" id="1_7dhbf"]
+[ext_resource type="PackedScene" uid="uid://diveahhxe7xsh" path="res://assets/3d/models/objects/status_pin.blend" id="1_7dhbf"]
 [ext_resource type="Script" path="res://src/battle_system/gui/components/StatusEffectPin.gd" id="1_vqfle"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imgg6"]
