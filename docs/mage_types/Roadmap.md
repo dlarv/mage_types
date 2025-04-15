@@ -224,7 +224,10 @@ For v0.3.27:
 	- When player interacts, control should be passed to Draggable.
 		- Both Draggable.parent and player is changed to be the children of Draggable.
 		- In this state, Draggable.collision_layer.6 is set to true. This ensures the Chunk remains loaded.
-
+For v0.3.45:
+- Idea \#1: I think it would be cool if, when the player opens a chest, a menu opens up showing its contents. The player can choose which items to select and view their descriptions. Admittedly, this is mostly for my current concept of the opening scene, where the player opens their fridge and finds the takeout container.
+- Idea \#2: A menu screen similar to idea \#1, but instead of allowing the player to not select items, instead just allows them to read the item descriptions.
+I think idea \#2 would fit better with the currently designed systems.
 ### Player Companions (plco)
 **The player's current companions should have overworld models that follow the player, without getting in the way.**
 - [ ] Status
