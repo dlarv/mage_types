@@ -62,7 +62,7 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 [sub_resource type="PlaneMesh" id="PlaneMesh_eqm52"]
 
 [sub_resource type="Resource" id="Resource_d2uvq"]
-resource_name = "Terrify Scroll"
+resource_name = "Terrify Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("10_oif81")
 id = 37
@@ -166,7 +166,7 @@ size = Vector3(0.5, 2, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
 size = Vector3(0.5, 2, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tt4cl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otbpg"]
 albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Resource" id="Resource_l7ikq"]
@@ -179,7 +179,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_ug6rn"]
-resource_name = "Sting Scroll"
+resource_name = "Sting Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("16_c81wx")
 id = 16
@@ -188,7 +188,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_w66jm"]
-resource_name = "Shield Spell Bead"
+resource_name = "Shield Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("17_g7uef")
 id = 28
@@ -221,7 +221,7 @@ next = -1
 end_state = ""
 
 [sub_resource type="Resource" id="Resource_o4yjh"]
-resource_name = "Blue Strike Scroll"
+resource_name = "Blue Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("21_ag3af")
 id = 17
@@ -230,7 +230,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_rdk0t"]
-resource_name = "Cyan Strike Scroll"
+resource_name = "Cyan Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("22_60tdk")
 id = 24
@@ -239,7 +239,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_3bmnv"]
-resource_name = "Green Strike Scroll"
+resource_name = "Green Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("23_k4th4")
 id = 23
@@ -248,7 +248,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_cymaj"]
-resource_name = "Magenta Strike Scroll"
+resource_name = "Magenta Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("24_o4qvi")
 id = 19
@@ -257,7 +257,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_0xiio"]
-resource_name = "Orange Strike Scroll"
+resource_name = "Orange Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("25_exhuc")
 id = 21
@@ -266,7 +266,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_b5bak"]
-resource_name = "Purple Strike Scroll"
+resource_name = "Purple Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("26_q248r")
 id = 18
@@ -275,7 +275,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_vmq77"]
-resource_name = "Red Strike Scroll"
+resource_name = "Red Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("27_npiqw")
 id = 20
@@ -284,7 +284,7 @@ max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_hrqgv"]
-resource_name = "Yellow Strike Scroll"
+resource_name = "Yellow Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("28_ofiwo")
 id = 22
@@ -785,7 +785,7 @@ shape = SubResource("BoxShape3D_t08x8")
 
 [node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
 mesh = SubResource("BoxMesh_rnvix")
-surface_material_override/0 = SubResource("StandardMaterial3D_tt4cl")
+surface_material_override/0 = SubResource("StandardMaterial3D_otbpg")
 
 [node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
