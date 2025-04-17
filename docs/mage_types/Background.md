@@ -1,188 +1,199 @@
 # Lore
-Forlorn is a pocket dimension tucked away from mainstream reality that people sometimes get stuck in. The survivors here have done their best to cope in this hostile environment, building little communities and studying the world and its magic. Forlorn consists of an island, surrounding by an inky sea underneath a rocky dome made of strange black rock. There is a day-night cycle, however its not quite clear where the daylight comes from.
+>[!note] Lattice World
+>Forlorn is now a Lattice world. 
+>It is an ephemeral subspace, which unlike the 4 main subspaces is (relatively) temporary. By temporary, this just means it'll likely only last a few centuries.
+>
+>The greater concepts of the Lattice will not be explained or necessary to understand to play the game; moreso present in the form of easter eggs.
 
-Forlorn is currently governed by 8 elements: Red, Green, Blue, Yellow, Cyan, Magenta, Orange, and Purple... although elder survivors recall a time when there were more, like Pink or Chartreuse. These tertiary types have long been consumed by the current 8. As it stands, Purple will likely be consumed by either Blue or Magenta, but this process seems to be happening very slowly. Forlorn is divided into 8 regions, each one representing a concentrated pool of an element’s energy. 
+Forlorn was conceived as a Backrooms style otherworld, where people get trapped and lost. It has themes of mutation, adaptation, and survival. The previous version felt a little too 'light,' perse, with the inhabitants being systemically helpful. While I like the idea of pockets of cooperation, I think as a whole the place should be... well, Forlorn. Not grimdark, but a gloomy little place full of gloomy people.
 
-Certain combinations of these elements are highly reactive, quickly transmuting into another element. For instance, upon contact Red and Blue forms Magenta. What’s more, the survivors find themselves transmuting from earthly matter into Forlorn matter. Survivors find themselves experiencing superficial transmutations as they use different tools and spells. Frequent, prolonged exposure to a single element leads to a phenomena called ‘biasing,’ where their bodies permanently shift to be composed of that element. With enough care, survivors can keep their composition balance, however this is rarely achieved. Staying within a specific region for too long, using elemental magic too often, and even prolonged contact with certain items can all lead to a bias forming. 
-To keep them from becoming biased too quickly, newcomers are given a ‘quest.’ This entails traveling to each region and completing various challenges devised from the locals. This acts as a way to introduce newcomers to the attributes of each element, as well as provide a distraction to the survivors. To begin their quest, the newcomers are brought to Blue and given either a necklace or bracelet containing a sample of each element. Technically the trials are optional, but highly encouraged.
+Instead of regions, each element will have various factions. These factions are largely divided based on alignment/bias or shared interests.
 
-## The Elements and their Regions 
-Each region and element has an industry it contributes towards the larger civilization, although these are not strictly region-locked. Each region has its own research, manufacturing, food production, etc and could be somewhat self sufficient.
+The island itself is a somewhat surreal landscape of natural and manmade environments. The entry point begins deep in the ground in a subterranean cave network. But with one wrong turn, you might find yourself in a parking garage controlled by Purple.
+## Blue
+Those aligned with Blue find themselves beset by apathy and stagnation. As the condition progresses, they find themselves rooted in spot, their new forms resembling that of coral or sea anemones. Similar to other elements like Red and Purple, Blue-aligned find themselves developing psychic powers, connecting them to the island. However, unlike the other psychic elements, Blue's connection is very individual, coming with no telepathic capabilities.
 
-Each region should have its own visual identity. Ideally, a player should be able to tell what region they’re in, even if the screen was in gray scale (this is more of a guideline than a rule. Each area should also have its own color palette). 
+Blue-aligned pull nutrients from the ground, like a plant. With time, they sight will begin to lessen, forcing them to rely more heavily on their psychic senses.
 
-### Theming
+Long ago when the island was still young, it is theorized that half of it was submerged. Though the waters have long since receded, the consequences of this can be found deep within the caves of Blue. These include large fossils of ancient sea life as well as disparate tidepools.
+
+**Magic**: Insight, stasis
+
+>[!note] The Poolrooms
+>The poolrooms are a definite a good inspiration for these locations, but I don't want to rip them directly, as there is already a lot of art that feature them directly.
+
+## Purple
+While the Green-biased have a reputation for being aggressive and isolationist, this would be better attributed towards Purple. This is likely because people are too afraid of bad-talking Purple. Purple inherits their psychic abilities from both Red and Blue, being both telepathically linked to each other and fairly individualistic. They also share Blue's connection to the island itself, using the clairvoyant understanding gained from this to uncover weaknesses in their prey.
+
+The area controlled by Purple is a large parking garage. There are no working cars on the island nor have there ever been. It is unknown where this location originated from, as it predates the invention of cars or concrete. This location is known for hosting many dangerous monsters, including several bosses, and for a strange convenience store. This shop is run by an odd character who is certainly not human and definitely not altruistic.
+
+**Magic**: Foresight, targeting
+
+>[!important] Red + Blue != Magenta
+>In the mechanics of the elemental system, the secondary colors (Cyan, Magenta, Yellow) are not related to the primary ones. So for Magenta any overlap between Blue or Red are purely coincedence. 
+>
+>However, this is not the case for Orange and Purple. These elements are largely the children of Red and Blue respectively, but inherit traits from both.
+## Magenta
+>[!note] L2 
+>L2 of Forlorn is itself divided into 3 sections:
+>- The lower subterranean sections form the first subsection.
+>- The Central Disk forms a relatively flat, open area. This is where Magenta, Red, Orange, and Green's territories can be found.
+>- Sandwiching the Central Disk are the Yellow Spire and Cyan Mountains, marking a steep increase in elevation.
+
+Upon leaving the subterranean depths of Blue, one will stumble upon the Central Disk and Magenta controlled territory. Dominating the flat landscape is a large community center, though Magenta also controls much of the surrounding area. This location is bigger on the inside and seems to shift and change with time.
+
+Those aligned with Magenta are by far the most productive and amiable of the elements. The stated goal of the faction in control of the community center is to make the island more amenable. The group consists of artists, designers, etc who are free to create and expand the community center, using the powers afforded to them by Magenta magic.
+
+Several sections of the center have been boarded off, citing monster infestations.
+
+**Magic**: Creation, manifestation
+## Red
+Exiting through a greenhouse located in the back of the Magenta community center, one will find themselves in a blood red forest. Those aligned with Red are best known for their "hivemind" and cult-like devotion to a mysterious higher power. 
+
+Everything you need to know about the Red-aligned is that their HQ can be found next to a graveyard, inside of an old gothic chapel. There are, of course, catacombs located underneath the forest floor, the entrance of which can be found inside the graveyard.
+
+**Magic**: Healing, strength
+## Orange
+Hidden away in the depths of the forest is an inconspicuous building, inside of which Orange conduct their research. Those aligned with Orange share a telepathic link, allowing them to share knowledge of their discoveries with each other.
+
+While slime monsters exist throughout the island, in all different colors, Orange matter turns gelatinous more frequently. Senior researchers begin to melt, sprouting extra eyes and arms, with the oldest researchers being more amorphous.
+
+**Magic**: Transmutation
+## Yellow
+Those aligned with Yellow are energetic and non-chalant. As their condition progresses, they begin to evaporate. However, this slow transformation does come with the ability to fly, which many of the Yellow-aligned seem to consider a fair trade. Not that much can phase these optimistic sprites.
+
+**Magic**: Flight, utility
+## Green
+The Green-aligned have a reputation for being aggressive and violent. As previously mentioned, this reputation could be better attributed to Purple, or even Red. The likely reason for this misplacement is that Purple and Red are both far scarier than those in Green. Those biased towards Green have access to powerful combat magic, which also lends itself towards this reputation as well. Those biased towards Green tend to be glass cannons, free spirits, and passionate idealists.
+
+Fittingly, Green's main haunt is an abandoned nuclear powerplant in the northern areas of the forest
+
+**Magic**: Combat
+## Cyan
+Rugged and practical, the Cyan-aligned live in the Northern snowy mountains.
+
+**Magic**: Defense
+## Theming
 ![[element_theming#Theming Summarized]]
-
-Blue-biased people become rooted in spot and psychically linked to the island. They start hearing a distant rushing sound, like rain or a waterfall, that no one else can hear. Those that suffer this condition insist that this is the island speaking to them, but everyone else is not too sure.
-- Rooted in place
-- Psychic connection to world (inward focus)
-
-Purple-biased people become aggressive and reclusive. They develop a sensitivity to light, forcing them deep into the cave systems of their native region. They do not talk much, but somehow fight with perfect cohesion with their Purple allies. 
-- Sensitive to light, glowing eyes.
-- Psychic intuition (outward focus)
-
-Cyan-biased people are robotic and straightforward. Their skin becomes hard, almost metallic, suiting them for life in the rugged Cyan region. They are archetypal engineers, with their projects being renown throughout the island. Direct and honest, those aligned with Cyan tend to dislike subterfuge, even to their own detriment. (What if they can't lie and have intuition about when they're being lied to, almost like the fae).
-- Metallic skin
-- Direct, straightforward
-
-Magenta-biased people feel an insatiable call to the wild, which tends to go one of two ways. Some harness the passion and pain from this to create amazing works of art, many of which have been incorporated into the Carnival. Others revert to a primal state.
-
-Red-biased
-- Glowing eyes
-- ~Hivemind
-
-The eventual fate of those who become Yellow-aligned is to join the storm forever churning above the region. As their condition progresses, their body begins to dissolve into Yellow mist. They gain the ability to fly and become flighty and chaotic. They may control the bulk of the islands logistics network, though many may wish it were in the hands of a more serious bunch.
-- Half-gaseous form
-- ADHD
-
-Orange-biased people share some of the hivemind-like qualities of Red, tho this takes the form of sharing knowledge. Blue gets a lot of credit for their researchers, however some of the brightest minds on the island are actually in Orange. Knowledge permeates thru their compound via osmosis, allowing for a high level of collaboration.
 
 >[!idea]
 >Cyan has asked both Orange and Blue to conduct research on various materials. Both say they will get around to it eventually.
-
-Those biased towards Green tend to be glass cannons, free spirits, and passionate idealists. They are known for their aggression, which is definitely present in their characters, if not a little exaggerated. They're typically stubborn and loud, which contribute to this stereotype. They glow faintly in the dark.
-- Glow in the dark
-- Passionate, free spirited
-
-Blue-adjacent: Psychic, static, calm.
-Red-adjacent: Hivemind, culty.
-Green-adjacent: Free spirit, passionate.
-
-Magenta feels the call to the wild, similar to the psychic link Blue has with the Island. Their passion, though it would seem to be more inline with a Green color, is born from the energy they channel using this link.
-- I can't swap them, because it conflicts with their color, but Cyan and Magenta make more sense personality wise if they were swapped (at least from a color-theory-adjacent perspective). But also, Yellow doesn't seem to inherit much from Red, so I think its fine.
-### Blue
-Blue is a very introspective, internal element, creating a sort of psychic link between its wielders and the world. As such, Blue-biased people tend to have deep insight into how the world of Forlorn works. This would make them ideal scientists, with one important caveat. Blue is, for lack of a better term, a very self-absorbed element. This makes Blue researchers excellent at discovering and explaining general principles and Blue related info, but unable to adequately study any other elements, with the exception of Purple.
-
-Blue is also a very static element and those that bias towards Blue eventually become rooted in place. Many of the original founders of Forlorn biased towards Blue (for various reasons), which contributed to the region becoming the administrative capital.
-
-Blue is located inside of a valley, between the cliffs of Purple and mountains of Cyan. The landscape largely consists of rocky beaches and tide pools, interspersed with towering pillars of rough stone. Many grand architectural projects can be found tucked away in secluded corners of this region, however all have been abandoned before being completed. These projects were all borne out of ego, an attempt to match the physical wonders built by other regions. Blue architecture developed more naturally tends towards simplicity.
-
-**Industry**: Administration and research
-
-### Purple
-Towering over the Northwest of Blue are the cliffs of Purple. The surface of this region is perpetually covered in a thick, ominous fog. While this suits the light-sensitive inhabitants of Purple, most of them still take refuge in the deep cave system below. In contrast to the wide open mines of Green and Cyan, these caves are winding and claustrophobic. The denizens of Purple are typically very reclusive, with feral energy and glowing eyes. These factors combine to make Purple a place few outsiders want to visit.
-
-Purple, like Blue, is a very introspective element. Those who wield it develop deep insight into the world around them. However, Purple is less ‘self-absorbed,’ allowing those who use it to explore broader topics, including other elements.
-
-### Magenta
-Magenta is the entertainment capital of Forlorn. Large amounts of the region have been developed into fairgrounds, gardens, and similar features. Magenta acts as a sort of resort for the rest of the island. People can typically visit for a couple of days w/o risk of biasing. Magenta is a very soft element as well, which greatly reduces the risk of injury. 
-
-Those who are Magenta-aligned tend to go one of two ways. Some become artistic visionaries, contributing to the overall industry. Others become hedonistic, becoming the main patrons of the latter. Despite their differences, however, both paths share a similar destination. If not careful, those who are Magenta-aligned can quickly spiral, losing sight of everything except their pursuit of passion.
-
-Due to the nature of their industry, Magenta’s leadership are heavily invested in keeping their parks safe. This has led to them blocking off dangerous attractions, leading to the formation of these off-limits abandoned backrooms. These areas tend to be infested with monsters, with deeper sections being reclaimed by the wilds of Magenta. In stark contrast to their developed areas, the wildlands of Magenta are some of the most dangerous areas on Forlorn, comparable to the jungles of Green.
-
-**Industry**: Entertainment
-
-### Red
-The vast plains of Red make excellent farmlands, responsible for the majority of food production on the island. The monotony of the landscape is broken by these large, uncanny machines. Many of these machines were built to help with agricultural production, or are walking greenhouses themselves. A select few, however, were built as proofs of concept, acting as prototypes for the more useful counterparts.
-
-Though livestock consists of a relatively small percentage of their agricultural output, most of their food has a visceral, fleshy appearance. Even plants grown in Red could easily be mistaken for meat, at least by appearance. When refined into machinery, Red matter loses some of its visceral quality, although there is still something strangely alive about them.
-
-Red is not a common element to become biased towards. For unknown reasons, the process of becoming Red-biased is very long, almost requiring active participation from the person. A common adage on Forlorn is that ‘Becoming Blue drives you mad, becoming Red requires you already be mad.’ This is due to the fanatical nature of Red-biased people, who form what some might call a cult. 
-
-**Industry**: Agriculture/Food production
-
-### Orange
-The entire region of Orange is contained inside of a subterranean compound, full of research labs and libraries. Orange is unique as far as regions go. Firstly, it is unique in that it is completely inside of Red. Secondly, Orange is the only region to begin getting absorbed into another color (Red), only for this process to completely halt with no signs of resuming. Orange is the only element to be liquid in its base form, forming a viscous goop many find to be unpleasant.
-
-Orange is a highly reactive element, being used to create a wide variety of volatile compounds. In earlier drafts of the game, Orange had the most reactions, reacting with 6 different elements. The only element that was close to this was Magenta, having 5. However, this turned out to be a mistake. Originally, Orange + Cyan => Blue && Cyan + Purple => None. This relationship was meant to be flipped, however, leading to Orange being in a 3 way tie for most reactions (Orange, Purple, Magenta). Despite this, I intend to keep the lore calling Orange the most reactive.
-
-Being composed of the highly volatile Orange, those with this condition are confined largely to their compound. Here they form a tight knit group of researchers and alchemists. They are considered to be the foremost experts on the topic of transmutation.
-
-**Industry**: Research, Alchemy, Chemical Manufacturing
-
-### Yellow
-On the ground, Yellow seems like a barren desert, covered with raging sandstorms and high winds. However, despite the difficult to traverse landscape, Yellow acts as the transportation hub of Forlorn. This is because the vast majority of Yellow’s infrastructure is located in the clouds. A perpetual hurricane is centered above Yellow, with tendrils reaching across the entire island. As one becomes more Yellow-aligned, they begin to lose density, as their bodies slowly evaporate into the air around them, gaining the ability to fly/float. It is all but confirmed that the storm is composed of the bodies of the ancient Yellow-aligned. The storm currently touches down at one location, near the center of Forlorn. This location can be changed via powerful Yellow magic; its current location was chosen based on its proximity to the capitals of Red and Cyan, who have the most goods in need of transport.
-
-This element resembles a yellow mist and is the only Element to be a gas in its base state. Yellow magic contains a lot of useful utility spells, allowing for fast travel and communication. As such, its a common secondary type (for the elements that do not react with it).
-
-**Industry**: Communication, transportation, logistics
-
-### Green
-The region of Green is home to a dense jungle, although the Southern half has been cleared to make place for mining and manufacturing infrastructure. Decades ago in Forlorn’s history, there was a great war. During this time, Green was the most powerful region, home to both powerful weapons and warriors. This region was instrumental in ending the war and bringing in the current era of peace, however this prestige did not last. Many of the other regions preferred dealing with calm and pragmatic Cyan, over the fierce and solitary Green, leading to the latter taking on most of the former’s industry. This has led to much discontent on the part of Green, who feel abandoned and disrespected. These feelings were further exacerbated by Cyan, after years of indifference towards them, suddenly asked for a large shipment of a deadly power source, the mining operations of which had been long abandoned. Feeling used, Green made a shift, isolating themselves from the rest of the island. Their capital was moved to the Northern-most tip of the island, deep in the jungle.
-
-One of the main resources native to Green is a green crystalline power source, reminiscent of uranium. It is commonly believed that this material is radioactive, however this seems to be based on it being a glowing green rock used for power. This connection is intentional, one of Green’s abilities is a ‘uranium type’ ability I’ve been sitting on for years. Essentially, when a Green-type is alone on the field, they receive a massive attack buff. This buff is removed when the opponent uses their own Green-type (so basically MAD). In lore, this is considered to be a battle trance certain Green-aligned warriors can enter, where they progressively become more powerful. Mechanically, this concept is helped by the fact that only 1 combination of types forms Green (Cyan + Yellow).
-
-Despite being in a time of peace, some Green-aligned warriors are used as hunters to track down and kill dangerous monsters.
-
-**Industry**: Hunters, special weapons, soldiers.
-
-### Cyan
-Cyan is by far the largest region, taking up most of the Eastern half of the island. It is comprised mostly of mountainous terrain. Cyan acts as the manufacturing capital of Forlorn, home to many factories, warehouses, mines, etc. Cyan is the most stable element, only reacting with 3 other elements. This makes it a good material for building durable tools. Furthermore, Cyan matter can take many forms, including metallic and stone like materials. Cyan matter also seems to radiate a cold energy, leading to their region being noticeably colder than the rest, even at lower altitudes.
-
-Though they do rely somewhat on Yellow for logistics (especially for inter-region trade), Cyan has invested heavily in internal transportation. These include railways and cable lifts. They also have dabbled in shipping via boats, though this is mostly in shallow waters.
-
-Becoming Cyan-aligned is difficult, much like Red. Those who do become very stiff, their skin taking on a metallic quality. They tend to be very focused and calm, bordering on robotic.
-
-**Industry**: Manufacturing
 ## Elemental Bias and Transmutation
-A bias forms when a person experiences frequent, prolonged exposure to one particular element. This bias drastically changes the composition of their body, affecting their appearance, abilities, and sometimes even personality. Someone with a bias can be transmuted, but this state is typically temporary, only affecting their outermost layers of skin. However, more debilitating transmutations can occur, usually as a result of injury or attack. Transmutations that penetrate deeper have a greater risk of causing a runaway reaction, resulting in death. In general, transmutations act similar to physical injuries. A Red-biased person entering the Blue region will experience discomfort and superficial patches of Magenta will grow on their skin, but they will generally be fine (barring injury and the like).
-Someone who does not have a bias can experience transmutations as well. In these cases, only patches of the body are affected, allowing up to two elements to be present at once. These changes will last until actions are taken to revert back (magic, etc) or another transmutation occurs. Maintaining the same transmutation for extended periods of time increases one’s risk of becoming biased towards that element, however this by itself isn’t enough to bias someone (quickly, it would take over a year). Usually, bias occurs with a combination of factors. E.g. being Blue-transmuted, inside the Blue region, while using Blue spells and tools. Becoming seriously injured inside a region is the only factor that by itself causes bias, but even this takes upwards of a week.
-The process of becoming biased is perceived as inevitable, but it is by no means a fast process. One person in Forlorn’s history has gone 12 years (and counting, they’re still alive and unbiased) without becoming biased. Most people who participated in the Quest last an average of 5 years. People before the Questing system was implemented would last an average of 2. Many people start out vigilant, making sure to travel to different regions regularly and to vary the spells/tools they use. However, over time people get complacent. This isn’t helped by the fact that the consequences are not immediately apparent and by the time you notice yourself changing its too late.
-Different elements bias people at different rates. The following time-spans assume a person isn’t actively trying to become biased, except when otherwise mentioned (Red and Purple). Magenta happens the fastest, helped by the pleasant nature of both the region and the element (Average: ~2y, post-quest). Red is the slowest, you essentially have to try to become Red-biased. Cyan is also rather slow (~6y). Green biases people at an average rate, however it takes a certain personality type to choose to camp out in the jungle and specialize almost entirely on combat. Yellow also biases people at an average rate, however this is a rather common bias to form, as many useful spells draw on the Yellow element (teleportation, long distance communication, flight). Blue is also a common bias to form (~3-4y). People tend to resign themselves to becoming Blue-biased​ much earlier than other elements (even if they still have time to reverse the transformation, they frequently won’t). Purple is similar to Red and Green, where is takes a certain personality type (reclusive) and a degree of effort to become Purple-biased. Purple is one of, if not the most, rare bias to form and not much is known about the process (ppl in universe don’t know this for sure, but its about ~5y to form). Orange is second rarest, owing to the small size of its region and specialized nature of many of its spells/etc.
+>[!note] Bias vs Alignment
+> Bias and alignment are used interchangably, but if you want to be technically correct: "If someone is Blue-aligned, they have a bias for Blue." 
+> 'Aligned' is supposed to be used as a suffix.
+> Bias is a noun.
+> If someone says "Afflicted by Blue" they're old af.
 
-Rarity of bias to form (Rarest – Most common): Purple > Orange > Green > Red, Cyan > Blue, Magenta, Yellow. This acts as a general guideline of the population of each region.
-Speed of bias (fastest – slowest): Magenta > Blue > Yellow, Purple, Orange, Green > Red, Cyan.
+Prolonged exposure to the elements of Forlorn and its magic causes heavy strain on the body, eventually resulting in a phenomena called alignment. Alignment is a permanent, one time transformation that comes with drastic physcial, mental, and emotional changes. These changes aren't solely negative, but whether the tradeoffs are worth it depends on the individual.
 
-## Map
-![Map](files/crude_map.png)
-*A crude map of the island of Forlorn and its regions.*
-- Capitals are typically placed towards the center of the island, to give close access to other regions, especially Red, Cyan, and Yellow.
-	-  Close access to Yellow gives access to their communication and logistics networks, which lessens the need to be close to Red or Cyan.
-	- The Blue capital is placed nearest to where survivors typically wash ashore.
-	- Purple, being more a network of individuals than a full-fledged region, placed their capital to maximize solitude.	
-- Secondary towns are typically placed deep inside of a region, where the elemental energy is most concentrated.
-	- A large, permanent vortex resembling a hurricane sits above Yellow. The arms radiating off of this stretch across the entirety of the island, acting as one way routes to deliver stuff from Yellow to the other regions.
-	- Very, very few people know about the Northeastern island above Green.
-	- Orange is too small to have its own city. Instead, its more of one large compound expanding vertically into the ground.
-	- Green is either trying to build or has built a second city at its Northern most tip. 
-	- They also lowkey resent not having great access to any of the other capitals.
-	- The Northern section of Green is covered with really dense jungle.
-## History
-### Prehistory
-### The War
-The *Cold Alliance*, a island wide corporation, was originally founded with the goal to more efficiently manage the production and industry of Forlorn. Primarily staffed by Blue, Cyan, and Purple, but not exclusively. Their main base of operations was in Cyan, where they controlled several large manufactory/industrial plants.
+However, there is a dark elephant in the room. Many of the monsters infesting Forlorn bear striking similarities to late-stage alignment. It is unknown the exact conditions that lead to this transformation, whether it is inevitable or not, but this reality is only denied by the most delusional: many of the most powerful monsters on the island were once the most powerful mages.
 
-The *Union* was a pseudo-governmental body that naturally developed over time. They manage general island policy, including the Quest. They are a democratic organization, but most people on Forlorn don't vote.
+Monsters that spawn from non-mage origins are referred to as *natural*.
+# Map
+![[map_v2.png]]
+- Lighthouse (Bottom): Cutaway showing entry point to island. Through the large door on the far side of pier leads to Blue Caverns.
+- Blue Caverns and Poolrooms (not shown): #todo
+- Parking Garage (Geometric, cubic shape to the East of the Lighthouse room): Bigger on the inside, extends infinitely down.
+- The Convenience Store (not shown): Tucked away in the parking garage is an odd sight: A convenience store, its lights out of place in the gloomy depths. Its host, an entity known as the Clerk or Her, seems human... at first. But spend any time in her presence and you will begin to get the feeling that she is much more... much older.
+- Magenta Community Center (Red buildin): Also bigger on the inside. The many, many rooms inside are used by the Magenta-aligned to house their art and projects. These rooms also serve a secondary purpose: hiding away those that are lost.
+- Greenhouse (Blue building tucked away behind the community center): This location is controlled mostly by a joint coalition betwen Red and Magenta. It produces a lot of the food found on the island, as well as a lot of monsters.
+- The Forest: #todo 
+	- Ranger Camp (not shown): #todo
+- The Graveyard and Chapel (Directly North of the community center): Controlled by Red. 
+- The Catacombs (not shown): #todo
+- Yellow Tower (Tall yellow-brown tower): This tower seems to extend infinitely in both directions. It is the main congregation spot for most of the Yellow-aligned, who spend their days floating around high above the ground.
+- Orange Research Campus & Entrance (Orange-yellow igloo shaped building to the East of the tower): This building serves as the entrance to the Orange Research Campus, which is largely subterranean. Here, the Orange-aligned spend their time delving into the mysteries of the world.
+- Powerplant (East of Graveyard): Abandoned nuclear powerplant used by the Green-aligned. It's chainlink and barbed wire fence serves as a strong barrier to monsters, however it seems just as good at keeping them inside as without.
+	- I like the idea of a garden tucked away in here, which serves as the Green faction's primary source of food. Red and Magenta aren't very willing to allow the faction access to their greenhouse.
+- Cyan Interstate (Road on the Eastern side of the island): Serves as a 3-way fork to L3, the Diner, and Cyan Backroads.
+- The Diner (East of the Cyan Interstate): This location, like the convenience store, is ran by an Eldritch Old One known only as the Cook. Like the Clerk, the Cook is not hostile, preferring to help the hungry. But don't get too comfortable, they are not too fond of free-loaders.
+- The Cyan Backroads (not shown): Hidden among the icy mountains, the Cyan Backroads are a very liminal location. The various tribes of Cyan-aligned make their homes in the abandoned buildings which can be found here.
+## The Factions
+The different alignments tend to stick to themselves, but this is not strictly the case. Essentially, there are 8 main factions, with multiple satellite organizations, created to fulfill certain needs around the island.
+### The Old Guard
+Ancient survivors, scattered around the island, united in purpose (not location). These idealist did what they could to create a civilization on Forlorn, sacrificing everything to grant the survivors the means to persist. Though their vision never truly manifested, without their contributions everyone on the island would have long since starved, froze, or otherwise perished.
+- Made the magic safer to use by restricting it to 6 types (they originally wanted to remove Orange and Purple, but were unsuccessful).
+	- Lessened the massively corruptive effects of magic into greatly corruptive effects. It used to be that people became god-like monsters of immense power.
+	- It was predicted that the pressure exerted from all the energy and power would collapse the space in on itself, with unpredictable, devastating consequences.
+- Stabilized time and space.
+- Obtained food source, creating the primordial garden. This location was the origin of both the greenhouse and the powerplant gardens.
+- Killed the previously created god-like monsters.
+- Convinced dangerous Old Ones to leave.
+To accomplish these reality bending feats, the Old Guard both enlisted the help of powerful Old Ones as well as harnessed an old form of magic which had tremendous power and greater costs.
 
-Around 80 years ago, the Alliance made a large powergrab, trying to overthrow the Union. Though not entirely divided along region-lines, it is seen as Green vs Purple & Cyan, with Blue being split down the center. 
-### Post-War Period
-After the war, the Union took control of many of the Alliance's plants, making Cyan the manufacturing capital of the island. As a result, Green felt that Cyan was being unfairly elevated at their expense, citing the many sacrifices they had made to win the war. Furthermore, it was well known that Blue viewed Cyan as their little brother, further inflaming tensions.
+The powers they harnessed have made them too dangerous, too radioactive and destructive, to exist around what they have built. Today, only one remains active. The youngest of the Old Guard, their exposure to these corrupting powers were minimal. Instead of warping reality, their job is to hunt the last of the Old Guard, putting them out of their misery. This is no easy feat, as many of their fallen comrades are nigh immortal, requiring them to utilize their knowledge of their compatriots to determine what their weaknesses might be.
 
-More recently, #todo 
-### Project Newton
-Initially started by independent Blue researchers, this initiative was adopted by the Alliance (before the war ended). Inside a facility on the Northern Island, researchers found a way to temporarily bring back lost elements, like Chartreuse, as well as artificial elements, like Dark-Blank. 
+Though all but one are inactive, a few are still alive, some of them lucid enough to hold conversations. These (relatively) less dangerous members can be found in the darkest recesses of the island.
 
-Some time after the end of the war, an organization of ex-Project-Newton staff was founded. While the *Newton Foundation* was initially founded to harmlessly revive the project, it soon faced an internal schism. Simple researchers found themselves expelled from the group or killed, until only those with the darkest of intentions were left. The Foundation's stated goal is to discover a way off of the island, thru harnessing the powers of ancient elements. In truth, their goals are much less concise. Each captain seems to have their own ideas of what their organizations objectives should be, tho most agree they should gather power and influence for themselves. The Foundation has many bases around the island, with their secret homebase being located on the Northern Island.
+The plan went something like this:
+- It started with the *First*, who harnessed the power of foresight. They laid the plan the other's executed. They succumbed to the madness that power brought and took their own life.
+	- The vision was granted to them using Azure.
+- Next reality had to be stabilized. This task was taken by the *Second*. Through their efforts space was twisted into a mostly eucildean form. Their soul too was twisted into the fabric of reality. The psychically inclined Old Guards could hear their gentle weeping.
+	- Used a combination of Blue, Cyan, and Azure.
+- The power found in Seafoam could be used to sustain the body, but came with grave consequences. The *Third* took on the task of obtaining a reliable source of food and water.
+	- This was accomplished through a deal with a higher power.
+	- Many of the subsequent 'devil deals' were overseen by *3*, as they possessed shrewd bargaining and diplomatic skills.
+	- They've since taken on a tree-like form and are confined to their original garden. They are lucid and friendly (due in no small part to their disdain of magic), but tire easily from visitors.
+- Many of the previous inhabitants of the world were violent and dangerous, almost all were in tremendous pain. The *Fourth* and *Fifth* were tasked with studying and removing these threats. Through their efforts much was learned about the practical art of using Forlorn's colorful magic. For their efforts, both Guardians were turned into powerful monsters, at least one of which is still around today.
+	- Accomplished through a combination of the Offensive colors, Chartreuse, powerful artifacts, and devil deals.
+- The *Sixth* built upon the now stable environment, creating many of the structures that can be found on the island to this day. These include the community center and Research Campus. Many of the most dangerous locations were tucked or sealed away, such that newbies could not accidentally stumble upon them. Their ultimate fate is unknown, though it is likely they were eventually mercy killed.
+	- Accomplished through a combination of Pink and Magenta magic.
+	- Many structures were pulled in from superspace (not by *6*, through 'natural' means).
+- The *Seventh*, utilizing the campus recently built by *6*, used their brilliant intellect to unravel the mysteries of the island. They are credited with illuminating an unclear part of *1*'s plan, for the *First* did not realize the other elements had to be reduced. The foundations of most non-combat knowledge originated from them, with help from *6* and *8*. Their immortal form is rumored to still be somewhere in the depths of their campus.
+	- A combination of Blue, Pink, and Orange magic was used here.
+	- Pink was safe enough that *7* is not a high priority for the *Last*.
+- The act of reducing the elements was taken on by the *Eighth*, once all the rest had finished their work. Channeling and sealing that much power turn *8* into a chromatic beast, still capable of channeling the vestiges of those forgotten powers.
+	- Accomplished by a combination of all elements, as well as multiple devil deals.
+	- This was not entirely successful, as Orange and Purple could not be removed.
+- Several Old Ones remained on the island, some of which continued to cause problems for the Old Guard and their fledgling civilization. Unable to remove these entities through force alone, the diplomatic skills of *3* were needed once again.
+	- Accomplished through diplomacy, devil deals.
+	- Some entities had to be removed by force, a task carried out by RED, who was sympathetic to the cause.
+	- A few Old Ones remain, including the Clerk, Cook, and RED.
+- The *Last* of the Old Guard joined them late, shortly before *8* finished their task. Largely untouched by the most corruptive of forces. Their task was to put the Old Guard to rest, including their dear friends *3* and *8*.
+	- This task requires a lot of research, which is not the hunter's strong suit.
+	- The "hitlist" was organized based on danger and pain, which is why *3* and *7* are not being actively pursued. 
+	- The hunter is currently pursuing *8* and either 4/5 (one or both; TBD).
+	- The hunter main exposure the the forgotten powers was Azure and Seafoam, which was used to prolong their life. **Their body was also fortified to resist alignment, though the means have since been lost.**
 
-While building their new capital and navy, Green discovered the previously secret island. Realizing it to be a remanent of the Alliance, Green soon grew wary of the Foundation's intentions, believing them to be the heirs of the Alliance. Tho they tried to keep their new knowledge secret (hoping to hold onto it until they figured out what to do). Unfortunately, the Foundation discovered their snooping, and began a defamation campaign against them. As a result, Green further secluded themselves, believing the rest of the island would side with the Foundation instead of them.
+**A general idea of what some of the forgotten powers were like**
+<span style="color:#ff007f">Pink (f08)</span>: Psychic
+<span style="color:#00ff7f">Seafoam (0f8)</span>: Could be used to sustain the body.
+<span style="color:#7fff00">Chartreuse (8f0)</span>: Has unspecified combat capabilities.
+<span style="color:#007fff">Azure(08f)</span>: Used to manipulate time.
 
-While somewhat correct in their assumption, Green had no idea that it would be Red, and their Blood Priesthood, that would uncover this plot. Growing suspicious of the Foundation and their smear campaign against Green, Red investigated, finding evidence sufficient to convince them of the Foundation's malice (Despite turning out to be on the 'good' side, it is heavily implied that they used underhanded means to obtain some of this information).
+*The Old Guard must die, so the new may live.*
+### Blue Enclaves
+As many of the older Blue-aligned have limited to no mobility, their locations are somewhat haphazard. As such, they lack the greater coordination of the other factions. When 2+ Blue-aligned are rooted within talking distance, they form what is known as an enclave. There are several of these enclaves, usually with 2-6 members. Deep in the caverns of Blue, however, there is the *Great Enclave*, once consisting of dozens of members. Once a hub of enlightenment, many of the foundational members have long since lost their minds, fracturing the Enclave. Several remanant groups along the outside of the whole, consisting of younger members, have kept the tradition alive, each claiming to be the original. 
+### Purple
+The Purple-aligned prefer to fight in small groups of 4-6 members, as this size is most efficient for their telepathy. They fight for resources and territory in the parking garage.
+### The Community Center
+Though all elements are allowed into the center, the leadership is largely comprised on Magenta-aligned.
 
->[!note]
->The Foundation trying to recruit any Red-aligned people was a fatal mistake on their part. Those aligned with Red are essentially in a cult, with all the resulting inter-group loyalty.
+Community Center Rules:
+- No combat magic of any kind.
+- No entering barricaded rooms.
+### The Magenta Peacekeepers
+Magenta mages that take issue with the first rule of the community center, believing violence may be necessary to claw back the boarded up sections of the center.
+### Gardeners
+A coalition of Magenta and Red aligned, which produces the majority of food for the island. The gardening process has a tendency to produce plant-like monsters, hence the need for help from the offensive capable Red-aligned.
+### Rangers
+A group of adventurous survivors, living in the forest. Though Magenta has tried to make the community center an amenable place to live, some people find the location stifling, unnerving, or dislike the rules set in place. Some of these free-spirits formed the Rangers. They spend their days foraging for food, fighting monsters, and playing games. They are the most open minded of the factions, sharing an equal distribution of alignments.
+### Hunters
+*Mom, can we play bloodborne? No sweetie, we have bloodborne at home.*
+A group consisting largely of Purple, Green, and Cyan mages. They hunt mages who have fully transformed into monsters and lost control. They are led by a member of the Old Guard, who promised to bring mercy to their old comrades, many of which are nigh immortal.
+### Other Ideas
+**The Catacomb Keepers vs the Chapel Keepers:**
+Two Red subfactions. Though largely in lockstep, there are slight disagreements on doctrine governing the Catacombs. This has resulted in a partition in the hivemind, with the two subfactions having limited cross-faction telepathy. This schism hasn't resulted in too much violence, as they believe this partition could only manifest with the will of RED, but there is definitely tensions.
+
+**Orange Researchers**
 # Story
-## Intro
-The player wakes up to find themselves on a raft as it comes aground on a lonely blue beach. A light in a nearby shack turns on and you watch as a figure exits and heads towards you. They help you to your feet, greeting you in several languages until settling on your mother tongue. They seem friendly enough, so you follow them back to the shack. Where else are you supposed to go?
-
-Inside sits another castaway, a girl by the name of Alice. The three of you chat, getting to know each other. The man tells you the broad strokes of the setting, remarking how unusual it is to have two survivors arrive within such a short time period.
-
-You are given the option to ask Alice a few different questions, as well as respond to a few of hers. The options you select are used to select her fated bias. A key character trait of Alice is that she _hates_ the idea of forming a bias, but falls in love with a specific element. The element she falls in love in is considered her ‘fated bias.’
-
-The man then takes you to a nearby town. It is currently early morning, so not many people are around. One of these is the mayor, who is sitting on the steps going up to the city hall, wrapped in a blanket. They seem surprised not only that the island received two survivors in such a short time span, but that they would receive new survivors “less than a month since the last arrival.” The mayor explains about quest, the different regions, and the elements. They also reveal that they are Blue-biased and explain the concept. Alice expresses horror at the concept. The mayor doesn’t find this offensive, in fact expressing a similar horror, jaded by the seeming inevitability of the phenomena. They tell Alice about a woman living in Cyan (the last area the players will find) who has the ongoing record for going the longest without forming a bias. Alice wants to visit Cyan immediately, but the mayor explains that the entire purpose of the quest is to help prevent people from biasing, so she will be perfectly fine.
-
-Going into city hall, the two are introduced to an artisan, who creates a magic item that allows survivors to learn to channel elemental energy, as well as staving off bias. The player is offered a choice between a necklace or a bracelet. The necklace gives a boost to ranged attack/defense, while the bracelet gives the same boost but for melee. Alice will choose the opposite of whatever the player picks.
-
-The pair then prepare to begin their quest and the player is given the freedom to explore the town. They are able to talk to different NPC, who give extra info about the town, world, etc. As the player tries to leave the town, they are interrupted by the arrival of Alex. Alex has just completed their quest (and is the person who arrived less than a month ago, mentioned by the mayor). Him and the beach-caretaker (the one who first found you) begin to talk, and the caretaker jokingly asks him which bias he’s selected. Its revealed that Alex, immediately upon hearing about the concept, became enamored with the idea. This shocks Alice and it becomes apparent through the caretaker that Alex holds a minority opinion. Most people view biasing as an inevitable horror, believing it to be unrealistic to remain unbiased forever. Despite being open to the idea, however, Alex cannot decide which element he would want to align with, being fascinated by all of them. (Maybe before Alex left he expressed interest in a specific element, only to find he liked something about all of them. This specific element could be Alice’s fated bias).
-
-Upon learning that the two of you are about to embark on your quest, Alex asks to join you. The caretaker says its fine, if not a bit unorthodox. Despite her disgust with his life choices, Alice doesn’t mind him coming along (and the player doesn’t have a choice). And with that, the three of you head out.
-
+[[Story]]
 # 1. Elemental System
 The elemental system has 4 components:
 - [[#Transmutation Info|Transmutations]]
 - [[#Side Effect Info|Side-effects]]
-- [[#P1 x S1 (Resistant)|Resistances]]
+- ~~[[#P1 x S1 (Resistant)|Resistances]]
 - [[#Affinity Info|Affinity]]
 
 When a mage is hit with an elemental attack, the effectiveness of the attack is determined by their initial element’s weaknesses/resistances. Then, if applicable, the mage is transmuted into a new element and receives a stat buff (aka, a side effect).
@@ -274,12 +285,12 @@ When deciding color combinations, I used the following guidelines:
 ## Side Effect Info
 The elements are divided into two groups: offensive and defensive:
 
-| Offensive Types | Defensive Types |
-| --------------- | --------------- |
-| <span style="color:Red">Red</span>             | <span style="color:Magenta">Magenta</span>         |
-| <span style="color:Orange">Orange</span>          | <span style="color:Yellow">Yellow</span>          |
-| <span style="color:Purple">Purple</span>          | <span style="color:Blue">Blue</span>            |
-| <span style="color:Green">Green</span>           | <span style="color:Cyan">Cyan</span>            |
+| Offensive Types                          | Defensive Types                            |
+| ---------------------------------------- | ------------------------------------------ |
+| <span style="color:Red">Red</span>       | <span style="color:Magenta">Magenta</span> |
+| <span style="color:Orange">Orange</span> | <span style="color:Yellow">Yellow</span>   |
+| <span style="color:Purple">Purple</span> | <span style="color:Blue">Blue</span>       |
+| <span style="color:Green">Green</span>   | <span style="color:Cyan">Cyan</span>       |
 Where:
 Defensive -> Offensive = Attack buff
 Offensive -> Defensive = Defense buff
@@ -293,36 +304,7 @@ Offensive -> Offensive = Speed buff
 >
 >So ultimately, this version is a compromise between 1 & 2.
 
-## ~~Resistance Info (V1)~~
->[!note]
->Figures 1.6 and 1.7 are for v1 of the resistance system, which has been deprecated. Its details are saved here for posterity:[[resistance_info_v1]].
-
-![[resistances_v1.png]]
-*Fig 1.6: Chart showing the resistances of different type matchups (unclamped version).*
-
-![[simple_resistances_v1.png]]
-*Fig 1.7: Simplified version of figure 1.6.*
-
-![[clamped_resistances_v1.png]]
-*Fig 1.8: Clamped version of figure 1.7.*
-## Resistance Info (V2/3) 
-V1 is very busy, with most matchups having a modifier. It could be interesting to see how a simple rock-paper-scissors system would turn out.
-
-The transmutation chart has a lot of holes, it could be interesting to use this system to fill in these holes. So type matchups would either have a transmutation, a resistance/weakness, or no reaction.
-
->[!note] Design Principles
->- Defensive types {B, C, Y, M} should have more resistances.
->- Offensive types {P, G, R, O} should have more supereffective matchups/be resisted by fewer types.
->- Each element should have at least 1 supereffective matchup and 1 resistance.
->- I want to minimize the number of direct cycles (AxB and BxA both being supereffective).
-
-[[reactions_comprehensive|See every matchup reaction.]]
-[[resists_explained|See an explanation for why every matchup was chosen]].
-
-
-![[resistances_v3.png]]
-*Fig 1.9: Chart showing the weakness and resistances of each element.*
-
+## Resistances
 >[!important] 
 >I think the resistance system ultimately muddies this game's identity too much; It feels a little too contrived.
 >Therefore, I think it might be best to shelve it.

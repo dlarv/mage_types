@@ -30,7 +30,7 @@ Magenta makes a lot of sense as a Fairy type. The aesthetics of CB's Glitter typ
 | Element | Other Elements               | MEP       | Off/Def | Keywords                         |
 | ------- | ---------------------------- | --------- | ------- | -------------------------------- |
 | Blue    | Astral, Psychic, Water       | Mental    | Defense | Ocean of consciousness, cerebral |
-| Purple  | Astral, Psychic, Ghost, Dark | Mental    | Defense | Darkness                         |
+| Purple  | Astral, Psychic, Ghost, Dark | Mental    | Offense | Darkness                         |
 | Magenta | Fairy, Glitter               | Emotional | Defense | Whimsy                           |
 | Red     | Blood, Ground, Plant         | Physical  | Offense |                                  |
 | Orange  | Plastic, Fire                | Physical  | Offense | Artificial                       |
