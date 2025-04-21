@@ -25,7 +25,6 @@ func _ready() -> void:
 			for child in reset.get_parent().find_children("", "MagiClay", true):
 				reset.magiclay_reset.connect(child.reset)
 
-	# BFS on all children
 	var children := chunk.get_children()
 	while len(children) > 0:
 		var child = children.pop_back()
