@@ -56,7 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if _god_mode:
 			_prev_collision_layer = collision_layer
 			_prev_collision_mask = collision_mask
-			collision_layer = 0
+			collision_layer = 32
 			collision_mask = 0
 		else:
 			collision_layer = _prev_collision_layer
