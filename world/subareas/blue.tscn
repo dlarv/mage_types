@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=88 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_n1lwk"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -243,6 +243,18 @@ size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5rhi"]
 size = Vector3(22, 11, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2l62m"]
+size = Vector3(96, 25, 71)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gumrr"]
+size = Vector3(96, 25, 34)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uke47"]
+size = Vector3(24, 25, 34)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maxj3"]
+size = Vector3(69, 25, 34)
 
 [node name="BluePurple" type="Node3D"]
 
@@ -677,7 +689,7 @@ shape = SubResource("BoxShape3D_2yg5f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Hall1ToHall2"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -35.4, 1, 0.300003)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.4, 1, 0.300003)
 shape = SubResource("BoxShape3D_2yg5f")
 
 [node name="Marker3D" type="Marker3D" parent="Hall1ToHall2/CollisionShape3D2"]
@@ -691,26 +703,60 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall2ToHall3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.9, 0.8, -1.10001)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.30001, 0.8, -1.10001)
 shape = SubResource("BoxShape3D_2yg5f")
 
 [node name="Marker3D" type="Marker3D" parent="Hall2ToHall3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Hall2ToHall3"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 40.8, 0.5, -32.2)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.9, 0.5, -13.6)
 shape = SubResource("BoxShape3D_2yg5f")
 
 [node name="Marker3D" type="Marker3D" parent="Hall2ToHall3/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="HouseChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, -6)
 script = ExtResource("3_4g4u6")
 chunk = NodePath("../blue")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HouseChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -35, 0.5)
 shape = SubResource("BoxShape3D_t5rhi")
+
+[node name="BeachChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+script = ExtResource("3_4g4u6")
+chunk = NodePath("../blue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BeachChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 7.5, -22)
+shape = SubResource("BoxShape3D_2l62m")
+
+[node name="HallChunk1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+script = ExtResource("3_4g4u6")
+chunk = NodePath("../blue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 7.5, -73.5)
+shape = SubResource("BoxShape3D_gumrr")
+
+[node name="HallChunk2" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89, 0, -78)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("../blue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7.5, 2.5)
+shape = SubResource("BoxShape3D_uke47")
+
+[node name="HallChunk3" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89, 0, -119)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("../blue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.5, 2.5)
+shape = SubResource("BoxShape3D_maxj3")
 
 [editable path="blue"]
