@@ -167,8 +167,10 @@ The plan went something like this:
 As many of the older Blue-aligned have limited to no mobility, their locations are somewhat haphazard. As such, they lack the greater coordination of the other factions. When 2+ Blue-aligned are rooted within talking distance, they form what is known as an enclave. There are several of these enclaves, usually with 2-6 members. Deep in the caverns of Blue, however, there is the *Great Enclave*, once consisting of dozens of members. Once a hub of enlightenment, many of the foundational members have long since lost their minds, fracturing the Enclave. Several remanant groups along the outside of the whole, consisting of younger members, have kept the tradition alive, each claiming to be the original. 
 ### Purple
 The Purple-aligned prefer to fight in small groups of 4-6 members, as this size is most efficient for their telepathy. They fight for resources and territory in the parking garage.
+### The Convenience Store
+Inside the parking lot is a strange convenience store run by an eldritch entity called the *Clerk*. A cold, ruthless figure they are willing to use their unlimited access to material goods in exchange for a fee. The location of the store is technically on the first level of the garage, but entrances can be found throughout the levels.
 ### The Community Center
-Though all elements are allowed into the center, the leadership is largely comprised on Magenta-aligned.
+Though all elements are allowed into the center, the leadership is largely comprised on Magenta-aligned. Furthermore, due to tensions between Magenta and Green, there is currently only one Green mage who resides inside the center, though no formal ban has been instituted.
 
 Community Center Rules:
 - No combat magic of any kind.
