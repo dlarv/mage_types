@@ -1,0 +1,149 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqn3fdhxmh1vh"]
+
+[ext_resource type="Script" path="res://world/subareas_1/eastern_caves/room_templates/EasternCaveRoom.gd" id="1_iguqr"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_ry3j8"]
+[ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="3_r6neq"]
+[ext_resource type="PackedScene" uid="uid://dr82ihfer1ek6" path="res://src/overworld/puzzle_blocks/or_gate.tscn" id="5_bdo5a"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="8_i03r6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0b3o"]
+size = Vector3(3, 2, 4.1)
+
+[node name="LargeSquare" type="Node3D"]
+script = ExtResource("1_iguqr")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 19
+collision_mask = 3
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(30, 3, 30)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+operation = 2
+size = Vector3(28, 3, 28)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
+size = Vector3(6, 3, 6)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, 0)
+operation = 2
+size = Vector3(8, 3, 4)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.37114e-08, 0, -17)
+size = Vector3(6, 3, 6)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.37114e-08, 1, -15)
+operation = 2
+size = Vector3(8, 3, 4)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 17, 0, 0)
+size = Vector3(6, 3, 6)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14.5, 1, 0)
+operation = 2
+size = Vector3(8, 3, 4)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 17)
+size = Vector3(6, 3, 6)
+material = ExtResource("1_ry3j8")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 1, 15)
+operation = 2
+size = Vector3(8, 3, 4)
+material = ExtResource("1_ry3j8")
+
+[node name="RoomPortal_W" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_r6neq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomPortal_W"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, -0.0500003)
+shape = SubResource("BoxShape3D_s0b3o")
+
+[node name="Marker3D" type="Marker3D" parent="RoomPortal_W/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="RoomPortal_E" type="Area3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.5, 0, 0)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_r6neq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomPortal_E"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, -0.0500003)
+shape = SubResource("BoxShape3D_s0b3o")
+
+[node name="Marker3D" type="Marker3D" parent="RoomPortal_E/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="RoomPortal_N" type="Area3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.1, 0, -14)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_r6neq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomPortal_N"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, -0.0500003)
+shape = SubResource("BoxShape3D_s0b3o")
+
+[node name="Marker3D" type="Marker3D" parent="RoomPortal_N/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="RoomPortal_S" type="Area3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -0.1, 0, 14)
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_r6neq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomPortal_S"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.5, -0.0500003)
+shape = SubResource("BoxShape3D_s0b3o")
+
+[node name="Marker3D" type="Marker3D" parent="RoomPortal_S/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Puzzle" type="Node3D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="OrGate" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("5_bdo5a")]
+locks = [NodePath("")]
+
+[node name="Gate_S" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_i03r6")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.4, 15)
+locks = [NodePath("../OrGate")]
+
+[node name="Gate_E" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_i03r6")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 15, -0.4, -1.78814e-07)
+locks = [NodePath("../OrGate")]
+
+[node name="Gate_W" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_i03r6")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -15, -0.4, -1.78814e-07)
+locks = [NodePath("../OrGate")]
+
+[node name="Gate_N" parent="Puzzle" node_paths=PackedStringArray("locks") instance=ExtResource("8_i03r6")]
+transform = Transform3D(3, 0, 2.06324e-07, 0, 3, 0, -2.06324e-07, 0, 3, 0, -0.4, -15)
+locks = [NodePath("../OrGate")]
+
+[node name="Decor" type="Node3D" parent="."]

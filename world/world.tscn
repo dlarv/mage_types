@@ -1,0 +1,74 @@
+[gd_scene load_steps=15 format=3 uid="uid://dtmepgi2qn6wl"]
+
+[ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
+[ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_pewre"]
+[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/dialog_tree.tres" id="3_dned5"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_5bktp"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
+[ext_resource type="Script" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
+[ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
+[ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue.tscn" id="10_5iu1q"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
+script = ExtResource("4_5bktp")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3ubor"]
+script = ExtResource("5_h16lu")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jaqc2"]
+script = ExtResource("6_ndt0m")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
+script = ExtResource("7_jdm3g")
+
+[node name="World" type="Node3D"]
+
+[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_lyukn")]
+world = NodePath("../Overworld")
+overworld = NodePath("../Overworld")
+dialog_box = NodePath("../DialogueBox_Layer/DialogueBox")
+hud = NodePath("../HUD_Layer")
+battle_delay = 2.0
+_player = NodePath("../Overworld/Player")
+
+[node name="DialogueBox_Layer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="DialogueBox" type="Panel" parent="DialogueBox_Layer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_pewre")
+data = ExtResource("3_dned5")
+skip_input_action = "interact"
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2"), SubResource("RichTextEffect_mlf2c")])
+
+[node name="HUD_Layer" parent="." instance=ExtResource("8_mswir")]
+unique_name_in_owner = true
+
+[node name="Overworld" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+run_speed = 900.0
+drag_speed = 400.0
+
+[node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="BluePurple" parent="Overworld" instance=ExtResource("10_5iu1q")]

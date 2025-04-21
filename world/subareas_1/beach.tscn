@@ -1,0 +1,1076 @@
+[gd_scene load_steps=92 format=3 uid="uid://4ft3p5xs6uk5"]
+
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
+[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
+[ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_bw7a8"]
+[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="3_h0s0g"]
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="3_pvsap"]
+[ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_wmol4"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="5_bxt50"]
+[ext_resource type="Resource" uid="uid://bm7p4gie7rf0y" path="res://data/items/spell_scrolls/phobias/phobia_b.tres" id="10_17ek5"]
+[ext_resource type="Resource" uid="uid://bndwxx88tetyb" path="res://data/items/spell_scrolls/phobias/terrify_scroll.tres" id="10_oif81"]
+[ext_resource type="Resource" uid="uid://ixmwadvjexrp" path="res://data/items/spell_scrolls/phobias/phobia_c.tres" id="11_aggqn"]
+[ext_resource type="Resource" uid="uid://coelvvbcbe8hl" path="res://data/items/spell_scrolls/phobias/phobia_g.tres" id="12_66puj"]
+[ext_resource type="Resource" uid="uid://cm7f6hye8cnv8" path="res://data/items/spell_scrolls/phobias/phobia_m.tres" id="13_2iuu0"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="13_qy70b"]
+[ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="13_wf8nf"]
+[ext_resource type="Resource" uid="uid://b0wddlydt8k14" path="res://data/items/spell_scrolls/phobias/phobia_o.tres" id="14_xlak8"]
+[ext_resource type="Resource" uid="uid://bmw0g3a6ir15u" path="res://data/items/spell_scrolls/phobias/phobia_p.tres" id="15_gyh0j"]
+[ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="15_xriqk"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="16_1unvm"]
+[ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="16_c81wx"]
+[ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="16_dsupm"]
+[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
+[ext_resource type="Resource" uid="uid://crnal5pig1ahg" path="res://data/items/spell_scrolls/phobias/phobia_r.tres" id="16_xi36j"]
+[ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="17_6sjel"]
+[ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="17_g7uef"]
+[ext_resource type="Resource" uid="uid://cwjiv3e1abevd" path="res://data/items/spell_scrolls/phobias/phobia_y.tres" id="17_rcww2"]
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="19_3xoh5"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="19_b8v62"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="20_dejeb"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="20_wwne6"]
+[ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="21_ag3af"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="21_k36mp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="21_kghrr"]
+[ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="21_waht2"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="21_wyiua"]
+[ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="21_y7w8y"]
+[ext_resource type="Resource" uid="uid://4cqj7vqfwjdv" path="res://data/items/spell_scrolls/strikes/c_strike_scroll.tres" id="22_60tdk"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="22_gga4f"]
+[ext_resource type="Resource" uid="uid://6xeq4kt74iij" path="res://data/items/spell_scrolls/strikes/g_strike_scroll.tres" id="23_k4th4"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="23_nxqmg"]
+[ext_resource type="Resource" uid="uid://bqv0v7l6vqeeu" path="res://data/items/spell_scrolls/strikes/m_strike_scroll.tres" id="24_o4qvi"]
+[ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="25_caj5v"]
+[ext_resource type="Resource" uid="uid://de8dpi4u0pici" path="res://data/items/spell_scrolls/strikes/o_strike_scroll.tres" id="25_exhuc"]
+[ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="26_q248r"]
+[ext_resource type="Resource" uid="uid://biujho1cv84is" path="res://data/items/spell_scrolls/strikes/r_strike_scroll.tres" id="27_npiqw"]
+[ext_resource type="Resource" uid="uid://bs7w81umm54rg" path="res://data/items/spell_scrolls/strikes/y_strike_scroll.tres" id="28_ofiwo"]
+[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="35_63ow1"]
+[ext_resource type="Resource" uid="uid://docdwxk76wvo1" path="res://data/battle_system/battle_actions/attacks/basic/throw_g.tres" id="35_nbiip"]
+[ext_resource type="Resource" uid="uid://ctlauvjcfmpog" path="res://data/battle_system/battle_actions/attacks/strikes/blue_strike.tres" id="36_8pp8m"]
+[ext_resource type="Resource" uid="uid://b3n0dro8r3h8l" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/green_phobia.tres" id="36_lvoq8"]
+[ext_resource type="Resource" uid="uid://bfjk3jf15fgeh" path="res://data/battle_system/battle_actions/attacks/strikes/green_strike.tres" id="37_5b4jx"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="37_51rth"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qcqmo"]
+size = Vector3(109, 15, 81)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pkk22"]
+vertices = PackedVector3Array(-16.526, 1.1, -52.848, -16.526, 1.1, -70.348, -31.276, 1.1, -70.348, -31.276, 1.1, -52.598, -12.276, 1.1, -60.098, -12.276, 1.1, -16.098, 18.224, 1.1, -16.098, 18.224, 1.1, -60.098, -16.526, 1.1, -37.598, -16.276, 1.1, -36.848, -13.776, 1.1, -36.848, -13.776, 1.1, -51.098, -16.276, 1.1, -51.098, -31.276, 1.1, -37.598)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(12, 8, 0), PackedInt32Array(0, 8, 3), PackedInt32Array(3, 8, 13)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eqm52"]
+
+[sub_resource type="Resource" id="Resource_d2uvq"]
+resource_name = "Terrify Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("10_oif81")
+id = 37
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_ojw8l"]
+resource_name = "Hydrophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("10_17ek5")
+id = 29
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_n702h"]
+resource_name = "Glaukophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("11_aggqn")
+id = 36
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_2wabg"]
+resource_name = "Prasinophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("12_66puj")
+id = 35
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_ikyxd"]
+resource_name = "Porphyrophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("13_2iuu0")
+id = 31
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_g8ru8"]
+resource_name = "Xanthophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("14_xlak8")
+id = 33
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_3a848"]
+resource_name = "Nyctophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("15_gyh0j")
+id = 30
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_fejxy"]
+resource_name = "Hemophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("16_xi36j")
+id = 32
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_20rrw"]
+resource_name = "Photophobia Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("17_rcww2")
+id = 34
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_u6p17"]
+resource_name = "Stasis Shard"
+script = ExtResource("16_m6hrw")
+item = ExtResource("25_caj5v")
+id = 3
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_itf6t"]
+resource_name = "Sunset Orb"
+script = ExtResource("16_m6hrw")
+item = ExtResource("21_y7w8y")
+id = 2
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t08x8"]
+size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnvix"]
+size = Vector3(0.5, 2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn3r1"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="Resource" id="Resource_l7ikq"]
+resource_name = "Healing Potion"
+script = ExtResource("16_m6hrw")
+item = ExtResource("16_dsupm")
+id = 0
+quantity = 5
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_ug6rn"]
+resource_name = "Sting Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("16_c81wx")
+id = 16
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_w66jm"]
+resource_name = "Shield Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("17_g7uef")
+id = 28
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_foypw"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_idwrv"]
+radius = 1.0
+
+[sub_resource type="Resource" id="Resource_sdu5w"]
+script = ExtResource("21_waht2")
+id = "BEACH_0"
+next = -1
+end_state = ""
+
+[sub_resource type="Resource" id="Resource_6h6f8"]
+script = ExtResource("21_waht2")
+id = "BEACH_1"
+next = -1
+end_state = ""
+
+[sub_resource type="Resource" id="Resource_bmdh4"]
+script = ExtResource("21_waht2")
+id = "BEACH_2"
+next = -1
+end_state = ""
+
+[sub_resource type="Resource" id="Resource_o4yjh"]
+resource_name = "Blue Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("21_ag3af")
+id = 17
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_rdk0t"]
+resource_name = "Cyan Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("22_60tdk")
+id = 24
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_3bmnv"]
+resource_name = "Green Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("23_k4th4")
+id = 23
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_cymaj"]
+resource_name = "Magenta Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("24_o4qvi")
+id = 19
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_0xiio"]
+resource_name = "Orange Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("25_exhuc")
+id = 21
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_b5bak"]
+resource_name = "Purple Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("26_q248r")
+id = 18
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_vmq77"]
+resource_name = "Red Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("27_npiqw")
+id = 20
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_hrqgv"]
+resource_name = "Yellow Strike Bead"
+script = ExtResource("16_m6hrw")
+item = ExtResource("28_ofiwo")
+id = 22
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_yyime"]
+script = ExtResource("23_nxqmg")
+_base_melee_attack = 80.0
+_base_ranged_attack = 80.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 60.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_2inu0"]
+script = ExtResource("20_dejeb")
+name = "Rust Slime"
+level = 1
+stat_manager = SubResource("Resource_yyime")
+hp = 200
+reset_hp_after_battle = true
+_element1 = "orange"
+_element2 = "orange"
+_elemental_bias = "blank"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("21_kghrr")]([ExtResource("22_gga4f")])
+
+[sub_resource type="Resource" id="Resource_fkgfx"]
+script = ExtResource("23_nxqmg")
+_base_melee_attack = 100.0
+_base_ranged_attack = 150.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 300.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_gtv84"]
+script = ExtResource("20_dejeb")
+name = "Green Elemental"
+level = 1
+stat_manager = SubResource("Resource_fkgfx")
+hp = 100
+reset_hp_after_battle = true
+_element1 = "green"
+_element2 = "blank"
+_elemental_bias = "green"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("21_kghrr")]([ExtResource("35_nbiip"), ExtResource("36_lvoq8"), ExtResource("37_5b4jx")])
+
+[sub_resource type="Resource" id="Resource_6ro7p"]
+script = ExtResource("23_nxqmg")
+_base_melee_attack = 150.0
+_base_ranged_attack = 150.0
+_base_melee_defense = 150.0
+_base_ranged_defense = 150.0
+_base_speed = 150.0
+_base_evasion = 100.0
+
+[sub_resource type="Resource" id="Resource_6n4tm"]
+script = ExtResource("20_dejeb")
+name = "Blue Elemental"
+level = 1
+stat_manager = SubResource("Resource_6ro7p")
+hp = 100
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "blank"
+_elemental_bias = "blue"
+bias_reversion_threshold = 0.4
+attacks = Array[ExtResource("21_kghrr")]([ExtResource("35_63ow1"), ExtResource("36_8pp8m"), ExtResource("37_51rth")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qr7x"]
+size = Vector3(14, 2, 9)
+
+[node name="Beach" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
+script = ExtResource("1_sl1hi")
+chunk = NodePath("Chunk")
+resets = [NodePath("Chunk/Puzzle2/Reset")]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 4)
+visible = false
+depth = 20.0
+polygon = PackedVector2Array(-53, -1, 52.4743, -1.19315, 50.7722, 16.7914, 51, 37, 51, 77, 11, 77, -33, 77, -53, 55)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 7, -33)
+shape = SubResource("BoxShape3D_qcqmo")
+
+[node name="Chunk" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Chunk"]
+use_collision = true
+collision_layer = 19
+collision_mask = 3
+
+[node name="LowerBeach" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CSGBox3D_Base" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -3)
+size = Vector3(90, 3, 18)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -3)
+operation = 2
+size = Vector3(88, 3, 16.2397)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.076, 1, -3)
+size = Vector3(2, 2, 18)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.424, 6, -3)
+size = Vector3(1, 12, 18)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.424, 9.5, 1.71436)
+size = Vector3(7, 5, 8.5)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.424, 7, 5.46436)
+size = Vector3(21, 10, 1)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.924, 10.5, 0.964355)
+operation = 2
+size = Vector3(6, 5, 8)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -12.5)
+size = Vector3(5, 3, 2)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerBeach"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -12.5)
+size = Vector3(5, 3, 2)
+material = ExtResource("1_kv0ly")
+
+[node name="LowerPath" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -13)
+size = Vector3(0, 0, 0)
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -8)
+size = Vector3(36, 3, 18)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -8)
+operation = 2
+size = Vector3(34, 3, 16)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.5, -8)
+size = Vector3(2, 2, 16)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9, 1, -34.5)
+size = Vector3(17.8, 3, 53)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 7, -34.5)
+operation = 2
+size = Vector3(16, 13, 51)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9, 0.95, -23.2)
+size = Vector3(17.8, 2.9, 1)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -13)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -28.5)
+size = Vector3(26, 3, 21)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1, -18.5)
+size = Vector3(7, 3, 5)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -28.5)
+operation = 2
+size = Vector3(24, 3, 19)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2, -17.5)
+operation = 2
+size = Vector3(5, 3, 5)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7.5, -30.9237)
+operation = 2
+size = Vector3(4, 14, 14.1706)
+material = ExtResource("1_kv0ly")
+
+[node name="Pillar1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.5, -34)
+size = Vector3(1, 4, 1)
+material = ExtResource("3_bw7a8")
+
+[node name="Pillar2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, -36.25)
+size = Vector3(0.5, 2, 3.5)
+material = ExtResource("3_bw7a8")
+
+[node name="Pillar3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 1.5, -34)
+size = Vector3(0.5, 2, 3.5)
+material = ExtResource("3_bw7a8")
+
+[node name="Pillar4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/LowerPath"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.05, 1, -34)
+size = Vector3(0.5, 1, 4)
+material = ExtResource("3_bw7a8")
+
+[node name="SidePath" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, -47)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D/SidePath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, 18.5)
+size = Vector3(20, 3, 15)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/SidePath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299999, 2, 18.5)
+operation = 2
+size = Vector3(18, 3, 13)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/SidePath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299999, 1, 0.5)
+size = Vector3(20, 3, 21)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/SidePath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299999, 2, 0.5)
+operation = 2
+size = Vector3(18, 3, 19)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/SidePath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.549999, 2, 10.5)
+operation = 2
+size = Vector3(2.5, 3, 5)
+material = ExtResource("1_kv0ly")
+
+[node name="UpperPath" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, -21)
+size = Vector3(18, 3, 18)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.5, -21)
+operation = 2
+size = Vector3(16, 4, 16)
+material = ExtResource("1_kv0ly")
+
+[node name="Pillar" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.5, -17)
+size = Vector3(1, 4, 1)
+material = ExtResource("3_bw7a8")
+
+[node name="Pillar2" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.25, 1.5, -17)
+size = Vector3(7.5, 2, 0.5)
+material = ExtResource("3_bw7a8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1, -41.5)
+size = Vector3(18, 3, 21)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, -41.5)
+operation = 2
+size = Vector3(16, 3, 19)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 1, -30.5)
+size = Vector3(3, 3, 3)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 2, -30)
+operation = 2
+size = Vector3(2, 3, 6)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2, -63.5)
+size = Vector3(44, 5, 21)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, -63.5)
+operation = 2
+size = Vector3(42, 7, 19)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1, -52.5)
+size = Vector3(6, 3, 3)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 3, -52.5)
+operation = 2
+size = Vector3(4, 5, 5)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 28.5, 1.5, -71)
+polygon = PackedVector2Array(-2, -1, -2, 1, 1, -1, 1, -1)
+depth = 3.0
+material = ExtResource("1_kv0ly")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 3.5, 1.5, -54)
+polygon = PackedVector2Array(-2, -1, -2, 1, 1, -1, 1, -1)
+depth = 8.0
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -68)
+size = Vector3(26, 3, 12)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1, -58)
+size = Vector3(5.5, 3, 8)
+material = ExtResource("1_kv0ly")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Chunk/CSGCombiner3D/UpperPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 4, -72)
+operation = 2
+size = Vector3(3, 3, 8)
+material = ExtResource("1_kv0ly")
+
+[node name="LB_LP1" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -11.5)
+operation = 2
+size = Vector3(3, 3, 4)
+material = ExtResource("1_kv0ly")
+
+[node name="LP_SP1" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 2, -27.55)
+operation = 2
+size = Vector3(4, 3, 2.1)
+material = ExtResource("1_kv0ly")
+
+[node name="LP_SP2" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5, 2, -43.6)
+operation = 2
+size = Vector3(5, 3, 2)
+material = ExtResource("1_kv0ly")
+
+[node name="LP_SP3" type="CSGBox3D" parent="Chunk/CSGCombiner3D" node_paths=PackedStringArray("locks") groups=["persist"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 2, -36.2)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_kv0ly")
+script = ExtResource("3_pvsap")
+locks = [NodePath("../../Puzzle3/PressurePlate")]
+permanent = true
+
+[node name="LB_LP2" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2, -11.5)
+operation = 2
+size = Vector3(3, 3, 4)
+material = ExtResource("1_kv0ly")
+
+[node name="LP_UP" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 4, -21)
+operation = 2
+size = Vector3(3, 7, 3.1)
+material = ExtResource("1_kv0ly")
+
+[node name="EXIT_WEST" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 2, -5)
+operation = 2
+size = Vector3(3, 3, 3)
+material = ExtResource("1_kv0ly")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Chunk"]
+visible = false
+navigation_mesh = SubResource("NavigationMesh_pkk22")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk/NavigationRegion3D"]
+transform = Transform3D(15.6, 0, 0, 0, 1, 0, 0, 0, 22.4, 3, 0.6, -38)
+mesh = SubResource("PlaneMesh_eqm52")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Chunk/NavigationRegion3D"]
+transform = Transform3D(7.776, 0, 0, 0, 1, 0, 0, 0, 16.848, -24, 0.6, -54)
+mesh = SubResource("PlaneMesh_eqm52")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Chunk/NavigationRegion3D"]
+transform = Transform3D(1.555, 0, 0, 0, 1, 0, 0, 0, 7.581, -15, 0.6, -44)
+mesh = SubResource("PlaneMesh_eqm52")
+
+[node name="MagiClayTerrain" parent="Chunk" instance=ExtResource("21_k36mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5, -15)
+_element = "orange"
+
+[node name="DestroyObstacle_South" parent="Chunk" groups=["persist"] instance=ExtResource("5_bxt50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5, -12)
+_element = "blue"
+is_breakable = true
+
+[node name="Chest_South" parent="Chunk" groups=["persist"] instance=ExtResource("15_xriqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -50)
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_d2uvq"), SubResource("Resource_ojw8l"), SubResource("Resource_n702h"), SubResource("Resource_2wabg"), SubResource("Resource_ikyxd"), SubResource("Resource_g8ru8"), SubResource("Resource_3a848"), SubResource("Resource_fejxy"), SubResource("Resource_20rrw")])
+
+[node name="TidePoolEntry" type="Node3D" parent="Chunk"]
+
+[node name="Geyser" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("3_h0s0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.5, -5)
+size = 13.0
+base_strength = 21.0
+_element = "red"
+
+[node name="MagiclayRock1" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, -9)
+_element = "green"
+
+[node name="MagiclayRock2" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, -9)
+_element = "blue"
+
+[node name="MagiclayRock3" parent="Chunk/TidePoolEntry" groups=["persist"] instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 1, -9)
+_element = "red"
+
+[node name="Chest" parent="Chunk/TidePoolEntry" instance=ExtResource("15_xriqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 8, 2)
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_u6p17"), SubResource("Resource_itf6t")])
+
+[node name="Puzzle_North" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -54)
+
+[node name="Emitter1" parent="Chunk/Puzzle_North" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8, 1, 1)
+_element = "cyan"
+
+[node name="Emitter2" parent="Chunk/Puzzle_North" instance=ExtResource("13_qy70b")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 8, 1, 0)
+_element = "green"
+
+[node name="Emitter3" parent="Chunk/Puzzle_North" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8, 1, -1)
+_element = "yellow"
+
+[node name="Emitter4" parent="Chunk/Puzzle_North" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8, 1, -2)
+_element = "orange"
+
+[node name="Emitter5" parent="Chunk/Puzzle_North" instance=ExtResource("13_qy70b")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 8, 1, -3)
+_element = "red"
+
+[node name="Emitter6" parent="Chunk/Puzzle_North" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8, 1, -4)
+_element = "blue"
+
+[node name="MagiclayRock" parent="Chunk/Puzzle_North" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, 6)
+_element = "magenta"
+scaling_factor = Vector3(0.5, 2, 0.5)
+
+[node name="CollisionShape3D" parent="Chunk/Puzzle_North/MagiclayRock" index="0"]
+shape = SubResource("BoxShape3D_t08x8")
+
+[node name="MeshInstance3D" parent="Chunk/Puzzle_North/MagiclayRock" index="1"]
+mesh = SubResource("BoxMesh_rnvix")
+surface_material_override/0 = SubResource("StandardMaterial3D_bn3r1")
+
+[node name="Marker3D_South" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="2"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, 1.04)
+
+[node name="Marker3D_North" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="3"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, -0.3, -1.04)
+
+[node name="Marker3D_East" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="4"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 1.04, -0.3, 0)
+
+[node name="Marker3D_West" parent="Chunk/Puzzle_North/MagiclayRock/Draggable" index="5"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, -1.04, -0.3, 0)
+
+[node name="PressurePlate" parent="Chunk/Puzzle_North" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -8)
+_element = "magenta"
+
+[node name="Chest" parent="Chunk/Puzzle_North" node_paths=PackedStringArray("locks") groups=["persist"] instance=ExtResource("15_xriqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -13)
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_l7ikq"), SubResource("Resource_ug6rn"), SubResource("Resource_w66jm")])
+locks = [NodePath("../PressurePlate")]
+
+[node name="Puzzle0" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21)
+
+[node name="HintStone0" parent="Chunk/Puzzle0" instance=ExtResource("19_3xoh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7)
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk/Puzzle0/HintStone0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 0)
+mesh = SubResource("BoxMesh_foypw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Puzzle0/HintStone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_idwrv")
+
+[node name="StoryActor" parent="Chunk/Puzzle0/HintStone0" instance=ExtResource("20_wwne6")]
+dialog_ids = Array[ExtResource("21_waht2")]([SubResource("Resource_sdu5w")])
+
+[node name="Gate" parent="Chunk/Puzzle0" node_paths=PackedStringArray("locks") instance=ExtResource("16_1unvm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 1, -5)
+locks = [NodePath("../PressurePlate")]
+permanent = true
+
+[node name="PressurePlate" parent="Chunk/Puzzle0" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7)
+_element = "blue"
+
+[node name="MagiclayRock" parent="Chunk/Puzzle0" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+_element = "red"
+
+[node name="MagiclayRock2" parent="Chunk/Puzzle0" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -7)
+_element = "blue"
+
+[node name="Puzzle1" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -29)
+
+[node name="HintStone0" parent="Chunk/Puzzle1" instance=ExtResource("19_3xoh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk/Puzzle1/HintStone0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 0)
+mesh = SubResource("BoxMesh_foypw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Puzzle1/HintStone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_idwrv")
+
+[node name="StoryActor" parent="Chunk/Puzzle1/HintStone0" instance=ExtResource("20_wwne6")]
+dialog_ids = Array[ExtResource("21_waht2")]([SubResource("Resource_6h6f8")])
+
+[node name="Gate" parent="Chunk/Puzzle1" node_paths=PackedStringArray("locks") instance=ExtResource("16_1unvm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.9, 0.5, 1.5)
+locks = [NodePath("../PressurePlate1"), NodePath("../PressurePlate2"), NodePath("../PressurePlate3")]
+permanent = true
+
+[node name="MagiclayDisk1" parent="Chunk/Puzzle1" instance=ExtResource("17_6sjel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.5)
+_element = "magenta"
+
+[node name="MagiclayDisk2" parent="Chunk/Puzzle1" instance=ExtResource("17_6sjel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.2, -0.5)
+_element = "red"
+
+[node name="MagiclayDisk3" parent="Chunk/Puzzle1" instance=ExtResource("17_6sjel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.2, -0.5)
+_element = "yellow"
+
+[node name="PressurePlate1" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+_element = "red"
+
+[node name="PressurePlate2" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5)
+_element = "green"
+
+[node name="PressurePlate3" parent="Chunk/Puzzle1" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -5)
+_element = "blue"
+
+[node name="Emitter" parent="Chunk/Puzzle1" instance=ExtResource("13_qy70b")]
+transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, 8.1, 1, 4.8)
+_element = "cyan"
+
+[node name="Puzzle2" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, -28)
+
+[node name="HintStone0" parent="Chunk/Puzzle2" instance=ExtResource("19_3xoh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2)
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk/Puzzle2/HintStone0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 0)
+mesh = SubResource("BoxMesh_foypw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Puzzle2/HintStone0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_idwrv")
+
+[node name="StoryActor" parent="Chunk/Puzzle2/HintStone0" instance=ExtResource("20_wwne6")]
+dialog_ids = Array[ExtResource("21_waht2")]([SubResource("Resource_bmdh4")])
+
+[node name="Reset" parent="Chunk/Puzzle2" instance=ExtResource("13_wf8nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.21784, 3)
+
+[node name="Gate" parent="Chunk/Puzzle2" node_paths=PackedStringArray("locks") instance=ExtResource("16_1unvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -8)
+locks = [NodePath("../PressurePlate")]
+permanent = true
+
+[node name="PressurePlate" parent="Chunk/Puzzle2" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -5)
+_element = "red"
+
+[node name="MagiclayDisk1" parent="Chunk/Puzzle2" instance=ExtResource("17_6sjel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -1)
+_element = "cyan"
+
+[node name="Emitter1" parent="Chunk/Puzzle2" instance=ExtResource("13_qy70b")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -7.4, 1, -7)
+_element = "orange"
+metadata/_edit_group_ = true
+
+[node name="Emitter2" parent="Chunk/Puzzle2" instance=ExtResource("13_qy70b")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 5.3, 1, -7)
+_element = "purple"
+
+[node name="Puzzle3" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, -44)
+
+[node name="Gate" parent="Chunk/Puzzle3" node_paths=PackedStringArray("locks") instance=ExtResource("16_1unvm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0.5, 0.299999)
+locks = [NodePath("../PressurePlate")]
+permanent = true
+
+[node name="PressurePlate" parent="Chunk/Puzzle3" instance=ExtResource("21_wyiua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
+_element = "yellow"
+
+[node name="MagiclayDisk" parent="Chunk/Puzzle3" instance=ExtResource("17_6sjel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+_element = "red"
+
+[node name="Emitter1" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, -3)
+_element = "green"
+
+[node name="Emitter2" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, -5)
+_element = "yellow"
+
+[node name="Emitter3" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.8, 1, -7)
+_element = "red"
+
+[node name="Emitter5" parent="Chunk/Puzzle3" instance=ExtResource("13_qy70b")]
+transform = Transform3D(3.58063e-08, -0.819152, -0.573576, -1, -4.37114e-08, 0, -2.50718e-08, 0.573576, -0.819152, 9.2, 1, 3)
+_element = "blue"
+
+[node name="HintStone1" parent="Chunk/Puzzle3" instance=ExtResource("19_3xoh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 4)
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk/Puzzle3/HintStone1"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 0)
+mesh = SubResource("BoxMesh_foypw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Puzzle3/HintStone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_idwrv")
+
+[node name="StoryActor" parent="Chunk/Puzzle3/HintStone1" instance=ExtResource("20_wwne6")]
+dialog_ids = Array[ExtResource("21_waht2")]([SubResource("Resource_6h6f8")])
+
+[node name="OpenArea" type="Node3D" parent="Chunk"]
+
+[node name="MagiclayRock5" parent="Chunk/OpenArea" instance=ExtResource("4_wmol4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -16)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+
+[node name="Emitter" parent="Chunk/OpenArea/MagiclayRock5" instance=ExtResource("13_qy70b")]
+transform = Transform3D(4.37114e-08, 1, 8.9407e-08, 1, -4.37114e-08, 0, 2.66454e-15, 8.9407e-08, -1, 0.5, 0, 0)
+collision_layer = 6
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+_element = "green"
+
+[node name="Emitter1" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -14, 1, -35)
+_element = "blue"
+
+[node name="Emitter2" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -14, 1, -33.5)
+_element = "orange"
+
+[node name="Emitter" parent="Chunk/OpenArea" instance=ExtResource("13_qy70b")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 38, 1, -16)
+_element = "yellow"
+
+[node name="Geyser" parent="Chunk/OpenArea" instance=ExtResource("3_h0s0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -46)
+size = 1.0
+_element = "red"
+scaling_factor = Vector3(2, 2, 1)
+
+[node name="CaveApproach" type="Node3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -59)
+
+[node name="Chest" parent="Chunk/CaveApproach" groups=["persist"] instance=ExtResource("15_xriqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.5, -4)
+items = Array[ExtResource("16_m6hrw")]([SubResource("Resource_o4yjh"), SubResource("Resource_rdk0t"), SubResource("Resource_3bmnv"), SubResource("Resource_cymaj"), SubResource("Resource_0xiio"), SubResource("Resource_b5bak"), SubResource("Resource_vmq77"), SubResource("Resource_hrqgv")])
+
+[node name="Spawner2" parent="Chunk/CaveApproach" instance=ExtResource("19_b8v62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 3.5, -9)
+battle_actors = Array[ExtResource("20_dejeb")]([SubResource("Resource_2inu0"), SubResource("Resource_gtv84"), SubResource("Resource_6n4tm")])
+max_spawn_count = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/CaveApproach/Spawner2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.5)
+shape = SubResource("BoxShape3D_3qr7x")
+
+[node name="Geyser" parent="Chunk/CaveApproach" instance=ExtResource("3_h0s0g")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -8, 1, -3)
+horizontal = true
+size = 8.0
+_element = "red"
+
+[node name="Geyser2" parent="Chunk/CaveApproach" instance=ExtResource("3_h0s0g")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, 1, 5)
+horizontal = true
+size = 8.0
+_element = "red"
+
+[node name="Geyser3" parent="Chunk/CaveApproach" instance=ExtResource("3_h0s0g")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12, 1, -3)
+horizontal = true
+size = 8.0
+_element = "red"
+
+[node name="Geyser4" parent="Chunk/CaveApproach" instance=ExtResource("3_h0s0g")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14, 1, 5)
+horizontal = true
+size = 8.0
+_element = "red"
+
+[node name="Spawner" parent="Chunk" instance=ExtResource("19_b8v62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.5, -24)
+battle_actors = Array[ExtResource("20_dejeb")]([SubResource("Resource_2inu0")])
+team_count_range = Vector2i(1, 2)
+max_spawn_count = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0.5)
+shape = SubResource("BoxShape3D_3qr7x")
+
+[editable path="Chunk/Puzzle_North/MagiclayRock"]

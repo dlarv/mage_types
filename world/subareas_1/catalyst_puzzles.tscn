@@ -1,0 +1,368 @@
+[gd_scene load_steps=29 format=3 uid="uid://brs3ov2whut2i"]
+
+[ext_resource type="Script" path="res://world/subareas_1/CatalystPuzzles.gd" id="1_n5073"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_mwdp0"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_o81tf"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="3_30a4y"]
+[ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_ryjpb"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="5_fnfmo"]
+[ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="5_mef7p"]
+[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="7_0xjvi"]
+[ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="7_fn5ea"]
+[ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="8_5a631"]
+[ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_pxaef"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="10_ju77r"]
+[ext_resource type="PackedScene" uid="uid://c48iivqbcp8bi" path="res://src/overworld/puzzle_blocks/lasers/one_way_lens.tscn" id="12_86we7"]
+[ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="13_uklwk"]
+[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="15_ndxfa"]
+[ext_resource type="Resource" uid="uid://cjis241a7rywd" path="res://data/items/spell_scrolls/blood_shock_scroll.tres" id="16_egvb8"]
+[ext_resource type="Resource" uid="uid://bpgkg6f5qnd42" path="res://data/items/spell_scrolls/drain_scroll.tres" id="17_imtmn"]
+[ext_resource type="Resource" uid="uid://ckl16fwx0wyvy" path="res://data/items/spell_scrolls/total_meltdown.tres" id="18_8rdxk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xiadh"]
+size = Vector3(27, 6, 45)
+
+[sub_resource type="Curve3D" id="Curve3D_x8c8c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10.62, 0, 0, 0, 0, 0, 0, -21.167, 0, -10.508, 0, 0, 0, 0, 0, 0, -21.167, -0.5, -10.508),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sgbi"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_4k3xo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10.367, 0, 0, 0, 0, 0, 0, 8.919, 0, -10.367, 0, 0, 0, 0, 0, 0, 8.919, -0.5, -10.367),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imef6"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvb7n"]
+size = Vector3(2.23236, 1, 30.8647)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u635b"]
+size = Vector3(2, 1, 41)
+
+[sub_resource type="Resource" id="Resource_lnyyj"]
+resource_name = "Blood Shock Bead"
+script = ExtResource("15_ndxfa")
+item = ExtResource("16_egvb8")
+id = 27
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_05plj"]
+resource_name = "Drain Bead"
+script = ExtResource("15_ndxfa")
+item = ExtResource("17_imtmn")
+id = 26
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_f5g3y"]
+resource_name = "Total Meltdown Bead"
+script = ExtResource("15_ndxfa")
+item = ExtResource("18_8rdxk")
+id = 38
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+
+[node name="CatalystPuzzles" type="Area3D" node_paths=PackedStringArray("emitter", "west_wall", "chunk", "resets")]
+script = ExtResource("1_n5073")
+emitter = NodePath("CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/Emitter")
+west_wall = NodePath("CatalystPuzzles/CSGCombiner3D/EXIT_WEST")
+chunk = NodePath("CollisionShape3D")
+resets = [NodePath("CatalystPuzzles/CatalystSubPuzzles_North/Reset"), NodePath("CatalystPuzzles/CatalystSubPuzzle_South/Reset")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xiadh")
+
+[node name="CatalystPuzzles" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CatalystPuzzles"]
+use_collision = true
+collision_layer = 19
+collision_mask = 3
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+size = Vector3(27, 6, 45)
+material = ExtResource("2_mwdp0")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+operation = 2
+size = Vector3(25, 6, 43)
+material = ExtResource("2_mwdp0")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+size = Vector3(25, 6, 1)
+material = ExtResource("3_ryjpb")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+operation = 2
+size = Vector3(3, 6, 2)
+material = ExtResource("3_ryjpb")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 7)
+operation = 2
+size = Vector3(1, 4, 2)
+material = ExtResource("3_ryjpb")
+
+[node name="EXIT_SOUTH" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 22)
+operation = 2
+size = Vector3(3, 6, 1)
+material = ExtResource("2_mwdp0")
+
+[node name="EXIT_NORTH" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -22)
+operation = 2
+size = Vector3(3, 6, 1)
+material = ExtResource("2_mwdp0")
+
+[node name="EXIT_WEST" type="CSGBox3D" parent="CatalystPuzzles/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -18)
+visible = false
+operation = 2
+size = Vector3(1, 6, 3)
+material = ExtResource("2_mwdp0")
+
+[node name="CatalystSubPuzzles_North" type="Node3D" parent="CatalystPuzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+
+[node name="Reset" parent="CatalystPuzzles/CatalystSubPuzzles_North" instance=ExtResource("9_pxaef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09511, -1.13183, 17.5746)
+
+[node name="CatalystSubPuzzle_West" type="Node3D" parent="CatalystPuzzles/CatalystSubPuzzles_North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Emitter" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("2_o81tf")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -12.375, 2, 12)
+_element = "yellow"
+
+[node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("3_30a4y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1706, 2, 13)
+collision_layer = 5
+_element = "yellow"
+
+[node name="Wire" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver" node_paths=PackedStringArray("target") instance=ExtResource("7_0xjvi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1, 1, 10.3)
+target = NodePath("..")
+
+[node name="Path" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 0, 0)
+curve = SubResource("Curve3D_x8c8c")
+
+[node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire/Path" index="0"]
+material = SubResource("StandardMaterial3D_5sgbi")
+
+[node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_5sgbi")
+
+[node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 12)
+axis_lock_linear_x = false
+axis_lock_linear_z = false
+_element = "magenta"
+is_transmutable = true
+
+[node name="DraggableMirror2" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 7)
+_element = "yellow"
+is_transmutable = true
+
+[node name="DraggableMirror3" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 2)
+_element = "cyan"
+is_transmutable = true
+
+[node name="DraggableMirror4" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West" instance=ExtResource("5_mef7p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, -5)
+_element = "orange"
+is_transmutable = true
+
+[node name="CatalystSubPuzzle_East" type="Node3D" parent="CatalystPuzzles/CatalystSubPuzzles_North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Emitter" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("2_o81tf")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 12.5408, 2, 1.71233)
+_element = "purple"
+
+[node name="LaserReceiver" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("3_30a4y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.3, 2, 0.693)
+collision_layer = 5
+_element = "purple"
+
+[node name="Wire" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver" node_paths=PackedStringArray("target") instance=ExtResource("7_0xjvi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9, 1, 10.2)
+target = NodePath("..")
+
+[node name="Path" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="0"]
+curve = SubResource("Curve3D_4k3xo")
+
+[node name="Body" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire/Path" index="0"]
+material = SubResource("StandardMaterial3D_imef6")
+
+[node name="Head" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_imef6")
+
+[node name="DraggableMirror1" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 13)
+_element = "green"
+is_transmutable = true
+
+[node name="DraggableMirror2" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
+_element = "green"
+is_transmutable = true
+
+[node name="DraggableMirror3" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7, 0, 1)
+_element = "green"
+is_transmutable = true
+
+[node name="DraggableMirror4" parent="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East" instance=ExtResource("5_mef7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
+_element = "yellow"
+is_transmutable = true
+
+[node name="MiddlePath" type="StaticBody3D" parent="CatalystPuzzles/CatalystSubPuzzles_North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00253686, -0.380882, 7.19969)
+shape = SubResource("BoxShape3D_uvb7n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172104, 0)
+visible = false
+mesh = SubResource("BoxMesh_u635b")
+
+[node name="MagiClayTerrain1" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, -7)
+_element = "green"
+
+[node name="MagiClayTerrain2" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, -4.5)
+_element = "red"
+
+[node name="MagiClayTerrain3" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, -2)
+_element = "blue"
+
+[node name="MagiClayTerrain4" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0.5)
+_element = "green"
+
+[node name="MagiClayTerrain5" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 3)
+_element = "red"
+
+[node name="MagiClayTerrain6" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 5.5)
+_element = "blue"
+
+[node name="MagiClayTerrain7" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 8)
+_element = "green"
+
+[node name="MagiClayTerrain8" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 10.5)
+_element = "red"
+
+[node name="MagiClayTerrain9" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 13)
+_element = "blue"
+
+[node name="MagiClayTerrain10" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 15.5)
+_element = "green"
+
+[node name="MagiClayTerrain11" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 18)
+_element = "red"
+
+[node name="MagiClayTerrain12" parent="CatalystPuzzles/CatalystSubPuzzles_North/MiddlePath" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 20.5)
+_element = "blue"
+
+[node name="CatalystSubPuzzle_South" type="Node3D" parent="CatalystPuzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+
+[node name="Reset" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("9_pxaef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09511, -1.13183, 22.1238)
+
+[node name="RotatableMirror" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("7_fn5ea")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, -2, 25)
+_element = "yellow"
+
+[node name="Emitter1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -12.491, -1, 26)
+_element = "cyan"
+
+[node name="Emitter3" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("2_o81tf")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -12.491, -1, 31)
+_element = "magenta"
+
+[node name="LaserReceiver1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 20.722)
+collision_layer = 5
+_element = "blue"
+
+[node name="LaserReceiver2" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.25, 0, 25)
+collision_layer = 5
+_element = "red"
+
+[node name="LaserReceiver3" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("3_30a4y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8, -1, 34.186)
+collision_layer = 5
+_element = "green"
+
+[node name="Mirror1" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("8_5a631")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, -1.624, 26)
+_element = "blue"
+
+[node name="Mirror4" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("8_5a631")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -1.624, 31)
+_element = "blue"
+
+[node name="Mirror5" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("8_5a631")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, -1.624, 25)
+_element = "green"
+
+[node name="MagiClayTerrain" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("5_fnfmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 29.733)
+_element = "orange"
+
+[node name="OneWayLens" parent="CatalystPuzzles/CatalystSubPuzzle_South" instance=ExtResource("12_86we7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, -1, 25)
+
+[node name="Gate" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("10_ju77r")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -2, -22)
+locks = [NodePath("../CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver"), NodePath("../CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver")]
+
+[node name="Chest" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("13_uklwk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, 9)
+items = Array[ExtResource("15_ndxfa")]([SubResource("Resource_lnyyj"), SubResource("Resource_05plj"), SubResource("Resource_f5g3y")])
+locks = [NodePath("../CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver1"), NodePath("../CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver3")]
+
+[connection signal="off" from="CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver2" to="." method="_on_laser_receiver_off"]
+[connection signal="on" from="CatalystPuzzles/CatalystSubPuzzle_South/LaserReceiver2" to="." method="_on_laser_receiver_on"]
+
+[editable path="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_West/LaserReceiver/Wire"]
+[editable path="CatalystPuzzles/CatalystSubPuzzles_North/CatalystSubPuzzle_East/LaserReceiver/Wire"]

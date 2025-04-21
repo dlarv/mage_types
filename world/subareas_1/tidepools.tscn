@@ -1,0 +1,237 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy8e0cndhkub5"]
+
+[ext_resource type="Material" uid="uid://ceo6m3wglwsxq" path="res://assets/3d/textures/placeholder_grid_texture/wip.tres" id="1_rmf2v"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="2_m3hss"]
+
+[node name="Tidepools" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Pool_SouthEast" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_SouthEast"]
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_SouthEast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_South" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9493, 0, 0)
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_South"]
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_South"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_SouthWest" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_SouthWest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 0)
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_SouthWest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, 0)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_East" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_East"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_East"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -24)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_West" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_West"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -24)
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_West"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, -24)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_Middle" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_Middle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -24)
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_Middle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 1, -24)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_North" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -48)
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 1, -48)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_NorthEast" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_NorthEast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48)
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_NorthEast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -48)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="Pool_NorthWest" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0, 0, 0)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D1" type="CSGBox3D" parent="CSGCombiner3D/Pool_NorthWest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -48)
+size = Vector3(24, 5, 24)
+material = ExtResource("1_rmf2v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Pool_NorthWest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1, -48)
+operation = 2
+size = Vector3(22, 5, 22)
+material = ExtResource("1_rmf2v")
+
+[node name="SE_E" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+operation = 2
+size = Vector3(2, 3, 4)
+material = ExtResource("1_rmf2v")
+
+[node name="E_NE" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36)
+operation = 2
+size = Vector3(2, 3, 4)
+material = ExtResource("1_rmf2v")
+
+[node name="S_M" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -12)
+operation = 2
+size = Vector3(2, 3, 4)
+material = ExtResource("1_rmf2v")
+
+[node name="N_M" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -36)
+operation = 2
+size = Vector3(2, 3, 4)
+material = ExtResource("1_rmf2v")
+
+[node name="E_NW" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -36)
+operation = 2
+size = Vector3(2, 3, 4)
+material = ExtResource("1_rmf2v")
+
+[node name="SW_W" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -12)
+operation = 2
+size = Vector3(2, 3, 4)
+material = ExtResource("1_rmf2v")
+
+[node name="SE_S" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_rmf2v")
+
+[node name="S_SW" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 0)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_rmf2v")
+
+[node name="W_M" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -24)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_rmf2v")
+
+[node name="N_NW" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -48)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_rmf2v")
+
+[node name="E_M" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -24)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_rmf2v")
+
+[node name="N_NE" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -48)
+operation = 2
+size = Vector3(4, 3, 2)
+material = ExtResource("1_rmf2v")
+
+[node name="Bridge" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
+size = Vector3(20, 5, 9)
+material = ExtResource("1_rmf2v")
+
+[node name="CSG" type="CSGBox3D" parent="CSGCombiner3D/Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+operation = 2
+size = Vector3(20, 6, 7)
+material = ExtResource("1_rmf2v")
+
+[node name="EXIT_EAST" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 0, 0)
+operation = 2
+size = Vector3(21, 3, 3)
+material = ExtResource("1_rmf2v")
+
+[node name="MagiclayBoulder" parent="." groups=["persist"] instance=ExtResource("2_m3hss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, -1.5, 0)
+is_breakable = true
+is_transmutable = true
