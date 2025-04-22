@@ -124,8 +124,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		await gui.display_message(msg)
 		
 		# Check if battle should end.
-		var endBattle := await _check_if_battle_ended()
-		if endBattle: return
+		if await _check_if_battle_ended(): return
 
 		# Calculate target transmutations.
 		for target in action.targets:
@@ -134,8 +133,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
-		endBattle = await _check_if_battle_ended()
-		if endBattle: return
+		if await _check_if_battle_ended(): return
 
 		# Change any of user's blank typing to match type of this attack.
 		var updatedType := false
@@ -163,8 +161,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
-		endBattle = await _check_if_battle_ended()
-		if endBattle: return
+		if await _check_if_battle_ended(): return
 
 		# Resolve user's status effects.
 		var a = allies if action.team_index == 0 else enemies
@@ -176,8 +173,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			await gui.display_message(msg)
 			# Check if battle should end.
 			# e.g. if an actor was defeated by poison.
-			endBattle = await _check_if_battle_ended()
-			if endBattle: return
+			if await _check_if_battle_ended(): return
 
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
@@ -203,76 +199,60 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	gui.enable_player_controls(true)
 
 func calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
-	var stasis = target.stasis
-	if stasis != null:
+	if target.stasis:
 		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)
 		return
 
-	var msg := []
-	var e1 := target.element1.get_bb_code_name()
-	var e2 := target.element2.get_bb_code_name()
-	var ea := action.element.get_bb_code_name()
-
  	# Calculate primary + attack 
-	var newType = ElementManager.get_matchup(target.element1, action.element)
-	if newType != null:
-		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e1, ea, newType.get_bb_code_name()])
+	await _calculate_transmutation(target.element1, action.element, target, 0)
+ 	# Calculate secondary + attack 
+	await _calculate_transmutation(target.element2, action.element, target, 1)
+	# Calculate internal transmutation.
+	if await _calculate_transmutation(target.element1, target.element2, target, 0, true):
+		target.set_element(1, ElementManager.Blank)
 
-		var buff = ElementManager.get_side_effect(target.element1, action.element)
 
-		# if buff != null:
-		buff.apply_effect(target)
-		msg.append("This reaction had side effects!")
-		msg.append_array(target.get_and_flush_msgs())
-
-		target.set_element(0, newType)
-		var msg2 := target.get_and_flush_msgs()
-		if len(msg2) > 0:
-			msg.append_array(msg2)
-
-		await gui.display_message(msg)
+func calculate_transmutations_2(target: BattleActor, action: _BattleAction) -> void:
+	if target.stasis:
+		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)
+		return
 
  	# Calculate secondary + attack 
-	newType = ElementManager.get_matchup(target.element2, action.element)
-	msg = []
-	if newType != null:
-		msg.append("The target %s's %s reacted with the attack's %s type to make %s." % [ target.name, e2, ea, newType.get_bb_code_name()])
+	await _calculate_transmutation(target.element2, action.element, target, 1)
+	# Calculate internal transmutation.
+	await _calculate_transmutation(target.element1, target.element2, target, 1, true)
 
-		var buff = ElementManager.get_side_effect(target.element2, action.element)
 
-		# if buff != null:
-		buff.apply_effect(target)
-		msg.append("This reaction had side effects!") 
-		msg.append_array(target.get_and_flush_msgs())
+func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false) -> bool:
+	var newType = ElementManager.get_matchup(e1, e2)
+	if newType == null: return false
 
-		target.set_element(1, newType)
-		var msg2 := target.get_and_flush_msgs()
-		if len(msg2) > 0:
-			msg.append_array(msg2)
+	var e1Name := e1.get_bb_code_name()
+	var e2Name := e2.get_bb_code_name()
+	var msg := []
 
-		await gui.display_message(msg)
+	if isInternal:
+		msg.append("The target %s's %s reacted with it's %s type to make %s." 
+				% [ target.name, e1Name, e2Name, newType.get_bb_code_name()])
+	else:
+		msg.append("The target %s's %s reacted with the attack's %s type to make %s." 
+				% [ target.name, e1Name, e2Name, newType.get_bb_code_name()])
 
-	newType = ElementManager.get_matchup(target.element1, target.element2)
-	msg = []
-	if newType != null:
-		e1 = target.element1.get_bb_code_name()
-		e2 = target.element2.get_bb_code_name()
-		msg.append("The target %s's %s reacted with it's %s type to make %s." % [target.name, e1, e2, newType.get_bb_code_name()])
+	var buff = ElementManager.get_side_effect(e1, e2)
 
-		var buff = ElementManager.get_side_effect(target.element1, target.element2)
+	# if buff != null:
+	buff.apply_effect(target)
+	msg.append("This reaction had side effects!")
+	msg.append_array(target.get_and_flush_msgs())
 
-		# if buff != null:
-		buff.apply_effect(target)
-		msg.append("This reaction had side effects!")
-		msg.append_array(target.get_and_flush_msgs())
+	target.set_element(id, newType)
+	var msg2 := target.get_and_flush_msgs()
+	if len(msg2) > 0:
+		msg.append_array(msg2)
 
-		target.set_element(0, newType)
-		var msg2 := target.get_and_flush_msgs()
-		target.set_element(1, ElementManager.Blank)
-		if len(msg2) > 0:
-			msg.append_array(msg2)
-		
-		await gui.display_message(msg)
+	await gui.display_message(msg)
+	return true
+
 
 func dialog(isAfterTurn: bool) -> void:
 	var dialogId = ai.get_next_dialog_id(_turn_counter, isAfterTurn)
@@ -280,6 +260,7 @@ func dialog(isAfterTurn: bool) -> void:
 	if len(dialogId) > 0:
 		_dialog_box.start(dialogId)
 		await _dialog_box.dialogue_ended
+
 
 func _check_if_battle_ended() -> bool:
 	if _defeated_allies == len(allies):
