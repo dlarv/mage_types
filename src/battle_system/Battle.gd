@@ -129,7 +129,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# Calculate target transmutations.
 		for target in action.targets:
 			if target.is_defeated: continue
-			await calculate_transmutations(target, action.action)
+			await calculate_transmutations_2(target, action.action)
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -157,7 +157,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if updatedType or (action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
 				and (action.action).attack_range == Attack.AttackRange.MELEE):
-			await calculate_transmutations(action.actor, action.action) 
+			await calculate_transmutations_2(action.actor, action.action) 
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
