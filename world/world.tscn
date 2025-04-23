@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=17 format=3 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue.tscn" id="10_5iu1q"]
+[ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="11_tyily"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -22,6 +23,9 @@ script = ExtResource("6_ndt0m")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
 script = ExtResource("7_jdm3g")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vjxc"]
+size = Vector3(9.9, 1, 1)
 
 [node name="World" type="Node3D"]
 
@@ -61,7 +65,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0.6, -96)
 run_speed = 900.0
 drag_speed = 400.0
 
@@ -71,4 +75,18 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
-[node name="BluePurple" parent="Overworld" instance=ExtResource("10_5iu1q")]
+[node name="Blue" parent="Overworld" instance=ExtResource("10_5iu1q")]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1, 0, -90.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0499992, -1, 0)
+shape = SubResource("BoxShape3D_3vjxc")
+
+[node name="Boss1" parent="Overworld/Blue" instance=ExtResource("11_tyily")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1.50295, -101)
+
+[connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
+[connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
+[connection signal="dialog_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_dialog_started"]
