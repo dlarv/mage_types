@@ -1,18 +1,22 @@
 shader_type spatial;
-uniform sampler2D normalmap;
-uniform sampler2D diffusemap;
-varying vec2 tex_position;
+uniform sampler2D diffuse;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	tex_position = VERTEX.xy;
-	//float height = texture(noise, tex_position).x;
 }
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	//NORMAL_MAP = texture(normalmap, tex_position).xyz;
-	//ALBEDO = texture(diffusemap, tex_position).xyz;
+	//vec4 color = texture(diffuse, UV);
+	//
+	//if(color.r >= 0.5) {
+		//ALBEDO = vec3(1, 0, 0);
+	//} else {
+		//ALBEDO = vec3(0, 0, 0);
+	//}
+	//ALBEDO = color.rgb;
+
+	ALPHA = 0.0;
 }
 
 //void light() {
