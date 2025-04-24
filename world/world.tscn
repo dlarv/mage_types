@@ -65,7 +65,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0.6, -96)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -2.4, -96)
 run_speed = 900.0
 drag_speed = 400.0
 
@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0499992, -1, 0)
 shape = SubResource("BoxShape3D_3vjxc")
 
 [node name="Boss1" parent="Overworld/Blue" instance=ExtResource("11_tyily")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1.50295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1.80295, -101)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

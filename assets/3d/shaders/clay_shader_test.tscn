@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ufn0uppvqfk"]
+
+[ext_resource type="Shader" path="res://assets/3d/shaders/clay.gdshader" id="1_q6fdj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gbuk"]
+render_priority = 0
+shader = ExtResource("1_q6fdj")
+shader_parameter/base_color = null
+shader_parameter/finger_color = null
+shader_parameter/finger_color_intensity = null
+shader_parameter/global_scale = null
+shader_parameter/finger_scale = null
+shader_parameter/finger_impressions = null
+shader_parameter/finger_prints = null
+
+[sub_resource type="SphereMesh" id="SphereMesh_46jrg"]
+material = SubResource("ShaderMaterial_7gbuk")
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("SphereMesh_46jrg")
