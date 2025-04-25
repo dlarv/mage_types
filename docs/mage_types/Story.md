@@ -113,7 +113,7 @@ The doll fights you on sight, only talking after you defeat them. Four of the fi
 >[!idea] Demonic Rivalry
 > An interesting easter egg: A demon hidden away in the catacombs. Finishing both the Missing People's quest and discovering the demon will show unique dialog hinting at the Demon-Porcelain war.
 ### Mr. Beau
-Mr. Beau's ultimate objective is to find the Primordial Garden, where he believes the secret to immortality rests.
+Mr. Beau's ultimate objective is to find the Primordial Garden, where he believes the secret to immortality rests.j
 ### The Orange Campus
 About a month or so before the player arrived on the island, an enormous explosion shook the Orange Campus. Several floors of their subterranean complex were rendered inaccessible, either physically cut off or full of dangerous chemicals. Soon, deadly monsters began to form, instantly halting any rebuilding efforts the researchers had began. The Hunters were called in to help stabilize the area and have spent the past month tirelessly working.
 
