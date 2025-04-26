@@ -19,9 +19,13 @@ const G_EDGE := "4db427"
 const C_EDGE := "62b4b5"
 
 @export var flow_chart: TextureRect
+@export var advanced_options_parent: VBoxContainer
+@export var element_selection_parent: VBoxContainer
+@export var nodes_selection_parent: HBoxContainer
+
+@export var elements_check_box_parent: VBoxContainer
 @export var nodes_check_box_parent: VBoxContainer
 @export var edges_check_box_parent: VBoxContainer
-@export var advanced_options_parent: VBoxContainer
 
 var _original_image: Image
 
@@ -127,22 +131,43 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_hide_elements_button_pressed() -> void:
-	# var checkBoxes = check_box_parent.find_children("", "CheckBox")
-	var nodeCheckBoxes = nodes_check_box_parent.find_children("", "CheckBox")
-	var edgeCheckBoxes = edges_check_box_parent.find_children("", "CheckBox")
 	var nodes := []
-	var edges := []
+	var edges: Variant = null
 
-	var i = -1
-	for box in nodeCheckBoxes:
-		i += 1
-		if box.button_pressed:
-			nodes.append(ElementManager.elements[i])
+	if nodes_selection_parent.visible:
+		var nodeCheckBoxes = nodes_check_box_parent.find_children("", "CheckBox")
+		var edgeCheckBoxes = edges_check_box_parent.find_children("", "CheckBox")
+		edges = []
 
-	i = -1
-	for box in edgeCheckBoxes:
-		i += 1
-		if box.button_pressed:
-			edges.append(ElementManager.elements[i])
-	
+		var i = -1
+		for box in nodeCheckBoxes:
+			i += 1
+			if box.button_pressed:
+				nodes.append(ElementManager.elements[i])
+
+		i = -1
+		for box in edgeCheckBoxes:
+			i += 1
+			if box.button_pressed:
+				edges.append(ElementManager.elements[i])
+		
+	else:
+		var checkBoxes = elements_check_box_parent.find_children("", "CheckBox")
+
+		var i = -1
+		for box in checkBoxes:
+			i += 1
+			if box.button_pressed:
+				nodes.append(ElementManager.elements[i])
+
 	restrict_graph(nodes, edges)
+
+
+func _on_by_element_button_pressed() -> void:
+	nodes_selection_parent.hide()
+	element_selection_parent.show()
+
+
+func _on_nodes_edges_button_pressed() -> void:
+	element_selection_parent.hide()
+	nodes_selection_parent.show()
