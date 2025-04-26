@@ -10,9 +10,6 @@ func _ready() -> void:
 	_original_image = flow_chart.texture.get_image().duplicate()
 
 
-	restrict_graph([ElementManager.Green])
-
-
 func restrict_graph(restrictedElements: Array) -> void:
 	if len(restrictedElements) == 0:
 		flow_chart.texture = ImageTexture.create_from_image(_original_image.duplicate())
