@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://src/gui/pause_menu/transmutation_menu/ElementMenu.gd" id="1_j1lwt"]
 [ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/gui/pause_menu/transmutation_menu/matchup_chart.tscn" id="1_x58qa"]
-[ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graphs/matchup_graph_v3.png" id="2_uimaq"]
+[ext_resource type="Texture2D" uid="uid://cxxtn4egbgve" path="res://assets/graphics/matchup_graphs/matchup_graph_v4.png" id="2_pf2ld"]
 [ext_resource type="Texture2D" uid="uid://cj0m8q8hgm0ed" path="res://addons/dialogue_nodes/icons/Add.svg" id="3_frjtc"]
 
-[node name="ElementMenu" type="TabContainer" node_paths=PackedStringArray("flow_chart", "check_box_parent")]
+[node name="ElementMenu" type="TabContainer" node_paths=PackedStringArray("flow_chart", "nodes_check_box_parent", "edges_check_box_parent", "advanced_options_parent")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,7 +14,9 @@ grow_vertical = 2
 current_tab = 0
 script = ExtResource("1_j1lwt")
 flow_chart = NodePath("Flow Chart/TextureRect")
-check_box_parent = NodePath("Flow Chart/AdvancedOptions/VBoxContainer")
+nodes_check_box_parent = NodePath("Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox")
+edges_check_box_parent = NodePath("Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox")
+advanced_options_parent = NodePath("Flow Chart/AdvancedOptions/VBoxContainer")
 
 [node name="Flow Chart" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -23,7 +25,7 @@ metadata/_tab_index = 0
 [node name="TextureRect" type="TextureRect" parent="Flow Chart"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("2_uimaq")
+texture = ExtResource("2_pf2ld")
 expand_mode = 2
 
 [node name="AdvancedOptions" type="VBoxContainer" parent="Flow Chart"]
@@ -36,43 +38,88 @@ Options"
 icon = ExtResource("3_frjtc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Flow Chart/AdvancedOptions"]
-visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+layout_mode = 2
+
+[node name="Nodes_VBox" type="VBoxContainer" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Label" type="Label" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
-text = "Hide Elements"
+text = "Hide Nodes"
 
-[node name="Blue" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Blue" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
 text = "Blue"
 
-[node name="Purple" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Purple" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
 text = "Purple"
 
-[node name="Magenta" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Magenta" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
 text = "Magenta"
 
-[node name="Red" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Red" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
 text = "Red"
 
-[node name="Orange" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Orange" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
 text = "Orange"
 
-[node name="Yellow" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Yellow" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
 text = "Yellow"
 
-[node name="Green" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Green" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
 layout_mode = 2
 text = "Green"
 
-[node name="Cyan" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Cyan" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Nodes_VBox"]
+layout_mode = 2
+text = "Cyan"
+
+[node name="Edges_VBox" type="VBoxContainer" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Hide Edges"
+
+[node name="Blue" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Blue"
+
+[node name="Purple" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Purple"
+
+[node name="Magenta" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Magenta"
+
+[node name="Red" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Red"
+
+[node name="Orange" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Orange"
+
+[node name="Yellow" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Yellow"
+
+[node name="Green" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
+layout_mode = 2
+text = "Green"
+
+[node name="Cyan" type="CheckBox" parent="Flow Chart/AdvancedOptions/VBoxContainer/HBoxContainer/Edges_VBox"]
 layout_mode = 2
 text = "Cyan"
 
@@ -86,4 +133,4 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [connection signal="pressed" from="Flow Chart/AdvancedOptions/Button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="Flow Chart/AdvancedOptions/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Flow Chart/AdvancedOptions/VBoxContainer/Button" to="." method="_on_hide_elements_button_pressed"]
