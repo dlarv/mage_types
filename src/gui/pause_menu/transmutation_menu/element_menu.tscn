@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 2
+current_tab = 0
 script = ExtResource("1_j1lwt")
 flow_chart = NodePath("Flow Chart/VBoxContainer/TextureRect")
 advanced_options_parent = NodePath("Flow Chart/VBoxContainer/AdvancedOptions/VBoxContainer")
@@ -31,7 +31,6 @@ nodes_check_box_parent = NodePath("Flow Chart/VBoxContainer/AdvancedOptions/VBox
 edges_check_box_parent = NodePath("Flow Chart/VBoxContainer/AdvancedOptions/VBoxContainer/NodesEdges_VBox/Edges_VBox")
 
 [node name="Flow Chart" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -216,6 +215,7 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="Affinity" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

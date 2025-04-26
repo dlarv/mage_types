@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://wkxnw2pf28jp"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_qn43i"]
+
+[resource]
+script = ExtResource("1_qn43i")
+name = "Alice"
+color = Color(0, 1, 1, 1)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
-[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/dialog_tree.tres" id="3_kx8wq"]
+[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/combat_candidate_dialog.tres" id="3_kx8wq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="5_6t7e1"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="6_ielsv"]
 [ext_resource type="Script" path="res://src/gui/RichTextElement.gd" id="7_3o8i5"]
