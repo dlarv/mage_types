@@ -136,16 +136,16 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if await _check_if_battle_ended(): return
 
 		# Change any of user's blank typing to match type of this attack.
-		var updatedType := false
-		msg = ""
-		if action.actor.element1.is_blank():
-			action.actor.set_element(0, action.action.element)
-			updatedType = true
-			msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
-		elif action.actor.element2.is_blank():
-			action.actor.set_element(1, action.action.element)
-			updatedType = true
-			msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
+		# var updatedType := false
+		# msg = ""
+		# if action.actor.element1.is_blank():
+		# 	action.actor.set_element(0, action.action.element)
+		# 	updatedType = true
+		# 	msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
+		# elif action.actor.element2.is_blank():
+		# 	action.actor.set_element(1, action.action.element)
+		# 	updatedType = true
+		# 	msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
 
 		if len(msg) > 0:
 			await gui.display_message(msg)
@@ -154,9 +154,9 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
 		# This only applies to melee attacks.
-		if updatedType or (action.targets.find(action.actor) == -1 \
+		if action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
-				and (action.action).attack_range == Attack.AttackRange.MELEE):
+				and (action.action).attack_range == Attack.AttackRange.MELEE:
 			await calculate_transmutations_2(action.actor, action.action) 
 
 		# Check if battle should end.
