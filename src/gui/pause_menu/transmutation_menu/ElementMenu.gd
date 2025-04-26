@@ -70,3 +70,8 @@ func _on_button_pressed() -> void:
 			elements.append(ElementManager.elements[i])
 	
 	restrict_graph(elements)
+
+	
+func _on_options_button_pressed() -> void:
+	check_box_parent.visible = not check_box_parent.visible
+
