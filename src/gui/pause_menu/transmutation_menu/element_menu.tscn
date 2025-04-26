@@ -107,6 +107,9 @@ text = "Green"
 layout_mode = 2
 text = "Cyan"
 
+[node name="VSeparator" type="VSeparator" parent="Flow Chart/AdvancedOptions/VBoxContainer/NodesEdges_VBox"]
+layout_mode = 2
+
 [node name="Edges_VBox" type="VBoxContainer" parent="Flow Chart/AdvancedOptions/VBoxContainer/NodesEdges_VBox"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -188,9 +191,13 @@ text = "Green"
 layout_mode = 2
 text = "Cyan"
 
-[node name="Button" type="Button" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+[node name="Hide_Button" type="Button" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
 layout_mode = 2
 text = "Hide"
+
+[node name="Clear_Button" type="Button" parent="Flow Chart/AdvancedOptions/VBoxContainer"]
+layout_mode = 2
+text = "Clear"
 
 [node name="Matchup Chart" parent="." instance=ExtResource("1_x58qa")]
 visible = false
@@ -200,4 +207,5 @@ metadata/_tab_index = 1
 [connection signal="pressed" from="Flow Chart/AdvancedOptions/Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Flow Chart/AdvancedOptions/VBoxContainer/NodesEdges_Button" to="." method="_on_nodes_edges_button_pressed"]
 [connection signal="pressed" from="Flow Chart/AdvancedOptions/VBoxContainer/ByElement_Button" to="." method="_on_by_element_button_pressed"]
-[connection signal="pressed" from="Flow Chart/AdvancedOptions/VBoxContainer/Button" to="." method="_on_hide_elements_button_pressed"]
+[connection signal="pressed" from="Flow Chart/AdvancedOptions/VBoxContainer/Hide_Button" to="." method="_on_hide_elements_button_pressed"]
+[connection signal="pressed" from="Flow Chart/AdvancedOptions/VBoxContainer/Clear_Button" to="." method="_on_clear_button_pressed"]

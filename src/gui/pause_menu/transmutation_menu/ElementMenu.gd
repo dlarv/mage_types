@@ -201,3 +201,14 @@ func _on_by_element_button_pressed() -> void:
 func _on_nodes_edges_button_pressed() -> void:
 	element_selection_parent.hide()
 	nodes_selection_parent.show()
+
+
+func _on_clear_button_pressed() -> void:
+	var checkBoxes = elements_check_box_parent.find_children("", "CheckBox")
+	checkBoxes.append_array(nodes_check_box_parent.find_children("", "CheckBox"))
+	checkBoxes.append_array(edges_check_box_parent.find_children("", "CheckBox"))
+
+	for box in checkBoxes:
+		box.button_pressed = false
+
+	restrict_graph([])
