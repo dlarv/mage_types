@@ -19,76 +19,31 @@ The demo should have a main track the player will follow, which will feature mul
 
 [[demo_content]]
 # Story
-> The companion went to the starting area for research purposes and get attacked by miniboss 1&2, dropping their bag (which contained, among other things, some spell scrolls). They run into the player and team up, reasoning that together they could win.
->
-> Since the player has just washed up, their body hasn't fully acclimated to the elements, making them Blank. To start, they only know 2 attacks, which are both Blank. For this reason, the companion doesn't see fit to teach them about resistances.
->
-> The companion is extremely scatterbrained and has left their stuff scattered all over the demo area. They are also extremely bad at navigation, and have no idea how to get back to town. The player's main task in the demo will be getting to the town's gate, with the added subgoal of helping the companion regain all their lost things.
+The demo will take place in the actual first area of the game, instead of some fake secondary location.
+# Demo: Combat Candidate
+This candidate will be locked inside of the Rec Room.
 
->[!note] The Setting
->Instead of washing up on the southern beach, like in the main story, the demo will take place on one of the Tail Islands. This will allow the demo's geography to be developed separately from the main game, without having it be completely separate.
+>[!note] Transmutation Differences
+>This candidate will use the new primary/secondary typing, where the primary will not change.
 
-General Progression:
-1. Player spawns in on [[#Lower Beach]].
-2. Player meets companion.
-3. Player fights wild monsters.
-	1. Learn about transmutation system and affinity.
-4. Player receives powerful Blank-type attack that deals extra damage to Magenta.
-5. Player defeats miniboss \#1.
-6. Player becomes Blue-type.
-7. Player retrieves companion's satchel.
-	1. Player receives several spell scrolls.
-	2. Player receives *Stasis*.
-		1. Player can backtrack to 2 previous obstacles. One will be very obvious (it was directly on the main path) and the other will be hidden off to the side in the starting area.
-8. Player solves a few simple Stasis puzzles.
-9. Player fights wild monsters.
-	1. Learn about weaknesses and resistances.
-10. Player passes a *Catalyst* obstacle they can backtrack to.
-11. Player fights miniboss \#2.
-12. Player receives *Catalyst* and solves a few puzzles relating to it.
-13. Player solves the final puzzle, granting them access to the final boss, and optionally, the destruction room and sandbox.
-## Demo Partner
-- Partner is part of a research team sent to one of the Southern Islands.
-- They are very scatterbrained and have strewn their stuff all across the beach. They agree to help you out, taking you back to the mainland, if you help them regather their stuff.
-	- All this stuff is located on the main path, consisting of several bags, notebooks, etc.
-	- Whenever the player finds a new pile of stuff they will get access to new attacks, overworld spells, and items.
-- They were warned to get back to base by sundown, which at first seems like your goal. However, the player meets them moments before this deadline. Dangerous monsters have began stalking the main path, which the player must fight.
-
-The player's partner will be a researcher stationed on the Tail Islands. They will be in the early stages of Blue-alignment, which affects their presence of mind, making them scatterbrained and dreamy. I want them to be endearing.
-
->[!important]
-> Despite being a little disconnected, the partner still needs to be helpful, as they will be the primary way the player learns about the systems.
-## Script Planning
-You wash up directly in front of your partner. They immediately ask you "Oh did you just wash up here?" 
-- They are extremely non-chalant about the fact that they've just been attacked by a giant monster (boss 1).
-- They enlist the help of the player to fight the monster. (But why would you, a newcomer, be any more helpful than they were?)
-	1. They never actually state that they want your help with the monster. You ask them some unrelated question, they nerd out and take you along to answer that question, and forget the monster is there?
-	2. Maybe its insinuated the player is supposed to help and after the fight you find out that not only did they not think you would, they fully thought you were going to die.
-	3. Talking over a walkie with another researcher, the partner states that \<the players name but with one letter different> will come help them. The person on the other end expresses confusion.
-		- The player will think that their scatterbrained friend has simple misremembered their name.
-		- The other researcher is confused because they didn't know the partner was in trouble, and hence haven't actually sent their 'hero' yet.
-		- After the player wins the fight, the partner expresses their surprise and the confusion is resolved.
-		- **They never call to tell the base their fine, so the person they sent never gets called off.**
-Player and partner meet.
-Partner and homebase talk.
-Player can ask partner how to fight or get into a fight, and the partner will coach them.
-	The idea of teaching the player to fight shouldn't be the partner's idea. After all, they are expecting someone else to come. But they also can't try and convince the player to wait around.
-[[demo_script]]
-# Map
-![[demo_map.jpg]]
-- I want more distance between LP and UP.
-	- The room south of UP should be connected to LP, since its position must remain relative to the player's starting on the beach.
-# Main Areas
-## Beach
-- Cove
-- Player's initial spawn location.
-- Player meets the companion here.
-### Geyser Obstacle 
-On the leftmost edge of the area is a Yellow geyser. This will block the player, unless they use *Stasis* on it, stopping the stream.
-- Behind the stream is a boulder, which can be broken using the *Destroy* spell.
-	- This leads to [[#Hidden Area: Tide Pools|Tide Pools]]
-- If the player is standing on the geyser when Stasis wears off, they will be lifted into the air, revealing a hidden platform. On this platform will be a powerful spell scroll.
-### Intro Puzzles
+- The lore-basis of alignment, transmutation.
+	- Primary type = the element of your core.
+	- Secondary type = the element of your surface.
+- Somehow limit the amount of transmutations.
+	- Player will be given access to all spell beads, but the default set they are given should limit transmutations as much as possible.
+		- Combatants will all be either Red, Magenta, Blue, and Purple.
+		- Spells will not be Green, Yellow.
+		- Allowing Yellow spells will allow combatants to become Orange.
+		- All combatant alignments also cannot be Green, Cyan, or Yellow.
+>[!note] All cycles
+> ~~{ G, Y, O, C, P } + { R, B, G, Y }~~ // Purple + Red connects Magenta, which also adds Red.
+> { R, M, B, P } + !{ G, Y }
+> { R, M, B, P, O } + !{ G }
+> { C, B, P, M } + !{ Y, O }
+> { G, Y, R, O } + !{ B, P }
+> { Y, R, O } + !{ C, P, B }
+# From Previous Version
+## Intro Puzzles
 - The beach contains 3 small 'puzzles,' which are mostly intended to teach the player how to control their character and use the transmutation graph.
 >[!attention] Un-unsolvable puzzles.
 >Each of these puzzles can be easily solved via brute force, which isn't ideal.
@@ -98,19 +53,19 @@ On the leftmost edge of the area is a Yellow geyser. This will block the player,
 - Instead of putting tutorial graphics inside of transmutation menu, I'll put them into little StoryActor stones. These stones will contain 'hints,' which the player can choose to read.
 - I created 3 simplified versions of the graph, which show only the elements involved in each puzzle. The hidden elements are colored gray, so the player can see that there will be something there.
 	- I'll only use this if playtesters need it. Before then, the tutorial will be contained within the hint stones.
-#### Puzzle 1
+### Puzzle 1
 - R, G, B pressure plates.
 - R, M, Y block.
 - C laser.
 Player uses Laser(C): M->B & Y->G.
-#### Puzzle 2
+### Puzzle 2
 - O pressure plate.
 - P, C block.
 - R, Y, B lasers.
 Two possible solutions:
 - Laser(R): P->M, Laser(Y): M->R, Laser(Y): R->O
 - Laser(Y): C->G, Laser(R): G->Y, Laser(R): Y->O
-#### Puzzle 3
+### Puzzle 3
 - P pressure plate.
 - Y block.
 - M, P lasers.
@@ -123,25 +78,15 @@ To reach P:
 - Laser(M): Y->R, Laser(P): R->M, Laser(P): M->B, Laser(M): B->P
 
 Solving the last puzzle opens a short cut between the LowerPath and Beach.
-### Optional Puzzle
+## Optional Puzzle
 - Features a narrow hallway blocked by 5 lasers (3 on one side, 2 on the other). The player is tasked with getting a Cyan block to the other side, where there is a Cyan pressure plate. There are 3 solutions:
 	- Solution 1: If the block is transmuted into Orange, it will be Cyan after the 5 transmutations are applied.
 	- Solution 2: The player can use their body to block all the lasers on one side. None of the lasers on one side react with Cyan, while the others will revert it back to Cyan by the end.
 	- Once solved, this puzzle will unlock a chest. IDK what to put inside it yet.
 - I want this section to have a few blocks and lasers the player can experiment with.
-### Meeting your Companion
-- Partner is added to player's team.
-- Partner asks the player for help with boss 1.
-	- It should be believable that the partner needs help. The Doylist explanation is that I want the player to have a companion, but I don't want it to seem like the partner is less competent than some rando who just washed up.
-- If player asks, start battle tutorial.
-	- This is skippable depending on the dialog options the player selects.
-		- This fact should be made more obvious.
-- The partner will give the player Magenta Strike.
+## Miniboss \#1
 ### Rust Slimes
 - Right before the boss there are is a Rust Slime spawner. These enemies are weaker versions of the boss, which the partner can point out. This allows the player to figure out the optimal strategy before fighting the boss.
-### Destroy Obstacle
-- Obstacle is placed directly on the player's path, so they will definitely see it.
-### Miniboss \#1
 - Simple boss.
 - Player will try to hit it with their anti-magenta attack.
 - Reinforce transmutation mechanics.
@@ -163,11 +108,6 @@ Boss has 3 attacks:
 - Orange Melee
 - Yellow Melee
 - Green Ranged
-### Stasis Spell
-- Player is given the stasis spell by the partner after beating the boss.
-	- It was with their stuff, which they left behind the boss.
-- There should be a geyser stasis obstacle next to where the player obtains the spell.
-	- This should tell the player that they can step onto the geysers when they are under stasis.
 ## Stasis Puzzles (Z1)
 - Large Blue block is pushed around the outer edges of the room by geysers.
 - Magenta lasers (x4) oscillate block between Blue and Purple.
@@ -176,46 +116,12 @@ Boss has 3 attacks:
 	- The other plate is connected to delay, so the block must stay on it for a set period of time.
 - Player must use stasis on the lasers such that the block's element matches the plates.
 - After activating the other plates, the player must use stasis on the geyser, such that the block stops on the delayed plate.
-## Caves 
-- Lore elements?
-- Battle Challenges?
-	- Something other than bosses.
-	- Maybe rooms have spawners that can be turned off, but only when certain conditions are met (certain number of enemies defeated, etc).
-- Mirror puzzles:
-	- I don't want the catalyst puzzle to be the first place the player finds the mirrors.
-- Caves are broken into East, West, and Central.
-	- Only the East and Central caves are part of the main path.
-	- The Western Caves, aka the Deep Caves, are accessible after the player obtains the Catalyst spell.
-### Collapsed Shaft
-- Normally, the cave system has a shaft which cuts directly thru the mountain. However, part of this central shaft has collapsed, forcing the player to go thru the eastern section of the caves.
-- Once the player reaches the other side, they are able to clear this obstacle, creating a shortcut.
-### Eastern Caves
-- Contains small mirror puzzles and enemy challenges.
-- Area should be somewhat labyrinthine, with rooms either dedicated to puzzles or battle, but not both.
-	- Player should have the ability to tell which rooms are which and take a route biased accordingly (e.g. there should be a puzzle route with a higher ratio of puzzles and vice versa).
-- Design question: the player might not have much equipment or many spells at this point.
-	- Maybe there will be a switch at the end of the section the player can toggle. When on, this section is replaced with a more difficult version, with higher level enemies and more complicated puzzles.
-	- Pressing the switch will cause a message to display, saying something like "You hear something moving far away." This should guide the player to venture as far East into the caves as possible, where the reward will be (idk what this will be yet).
-- Eastern caves consist of 12 rooms: 6 puzzles and 6 enemies.
-	- Player shouldn't have to do all 12 rooms to escape. 
-	- Each room will have a color theme.
-	- What's the gimmick?
-		- Rooms will have switches that toggle between ???.
-			- Cold/warm and Offensive/Defensive. When switch is cold/warm, doors between warm and cold colors close, and vice versa.
-		- Player is given instructions they have to follow or else they'll be sent back to the beginning ala the Lost Woods.
-		- **Player must alternate between Defensive/Offensive rooms.**
-			- If they stray from this path, they'll get sent back to the beginning.
-			- Defensive rooms are puzzles.
-			- Offensive rooms are enemies.
-			- Player must go thru 8 rooms total, 4 of which will have some kind of challenge.
-
-Room order will ideally be randomly generated. There will always be 8 rooms, one of each element. The contents of the room will remain the same.
-The first two rooms will be empty, allowing the player to quickly determine their next move. The next six will be populated with some form of challenge.
-- It would be cool if the rooms were randomly generated at first, but remained the same for the rest of the player's game.
-
->[!note] Room and Portal System
->Godot3 had a Room and Portal System which could be used to make separate rooms. Godot4 doesn't seem to have this feature, so I will likely have to create it myself. [[room_and_portals]].
-### Miniboss \#2
+### Stasis Spell
+- Player is given the stasis spell by the partner after beating the boss.
+	- It was with their stuff, which they left behind the boss.
+- There should be a geyser stasis obstacle next to where the player obtains the spell.
+	- This should tell the player that they can step onto the geysers when they are under stasis.
+## Miniboss \#2
 - This boss will use the stasis status effect to hinder the player from transmuting it (and relying too heavily on their anti-magenta attack).
 	- This will be provided to them by their equipment (Stasis Shard).
 - Reinforce ~~weakness/resistance system~~ Offensive/Defensive types.
@@ -235,22 +141,17 @@ This will be a laser puzzle, where the player must match different beams.
 - Mirror 5 (Red): Starting color changed from Yellow to Green.
 ![[catalyst_solution_p2.jpg]]
 - Mirror 6 starting element changed from Orange to Green.
-## River Front (Lower/Upper Approach)
-## Final Puzzle (Z3)
+# River Front (Lower/Upper Approach)
+# Final Puzzle (Z3)
 - "Final" puzzle room: puzzle that requires use of both Stasis and Catalyst.
 	- Preferably, this puzzle should have 2 solutions.
 		- Solution 1: Reveals [[#Final Boss Room]].
 		- Solution 2: Reveals [[#Destruction Room]].
-## Final Boss Room
+# Final Boss Room
 - Phobia strat.
 	- Boss tries to apply as many phobias as possible for 1-4 turns.
 	- Afterwards, Boss hits player with low-power attack. Typing is selected to cause as much phobia damage as possible.
-# Extra Areas
-## Destruction Room (Destroy Puzzle/Time Trial) (Z4)
 - Find Destroy spell.
-- Complete time trial.
-## Sandbox
-## Hidden Area: Tide Pools
 ## Hidden Area: Deep Caves
 - The deep caves are composed of a central chamber surrounded by 8 outer caves.
 - The outer caves each have: 
@@ -266,7 +167,6 @@ This will be a laser puzzle, where the player must match different beams.
 	- A patch of `Elemental Terrain` and a switch, which can be used to change the terrain's element. The terrain is in the center of the aforementioned rocks.
 		- When the player steps on the terrain, it will act like a pressure plate and raise a set of dividers between each rock.
 		- When the player steps off the terrain, the dividers will fall, and the rocks will react together (like the `Elemental Monoliths`/rooms).
-	
 ### The Puzzle
 To solve the puzzle, the player will have to match the outer cave's elemental attribute with the correct animal statue. This can be deduced using the Zoologist Clues. 
 
@@ -302,7 +202,7 @@ O --> C
 
 >[!important]
 >I'd like the fact that this section of the map is a giant puzzle to not be immediately apparent.
-### The Clues
+## The Clues
 The clues will be scattered around the deep caves, styled as notes from a zoologist. To keep the puzzle non-apparent, these hints would also have to be non-apparent. Or the more apparent clues would have to be a little more hidden.
 
 Animal Placement Clues:
@@ -335,7 +235,5 @@ Combo (Animal + Element) Clues:
 	- Offense rooms have 10 total legs & 4 wings.
 	- Defense rooms have 12 total legs & 4 wings.
 - The only amphibian is in a Cold and Offensive room.
-### The Solution
+## The Solution
 ![[deep_cave_solution#Final Clue Selection]]
-
-## Hidden Area: Forest
