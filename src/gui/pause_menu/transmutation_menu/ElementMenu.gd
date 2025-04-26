@@ -1,8 +1,7 @@
 extends Menu
 
-var flow_chart: TextureRect:
-	get:
-		return $"Flow Chart"
+@export var flow_chart: TextureRect
+@export var check_box_parent: VBoxContainer
 
 var _original_image: Image
 
@@ -34,6 +33,7 @@ func restrict_graph(restrictedElements: Array) -> void:
 				image.set_pixel(x, y, Color.BLACK)
 	flow_chart.texture.update(image)
 
+
 func find_closest(hex: String) -> String:
 	var r := hex.substr(0, 2).hex_to_int()
 	var g := hex.substr(2, 2).hex_to_int()
@@ -57,3 +57,16 @@ func find_closest(hex: String) -> String:
 	elif b >= threshold:
 		return "b"
 	return ""
+
+
+func _on_button_pressed() -> void:
+	var checkBoxes = check_box_parent.find_children("", "CheckBox")
+
+	var i = -1
+	var elements := []
+	for box in checkBoxes:
+		i += 1
+		if box.button_pressed:
+			elements.append(ElementManager.elements[i])
+	
+	restrict_graph(elements)
