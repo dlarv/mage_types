@@ -129,6 +129,9 @@ func toggle_transmutation_menu() -> void:
 		matchup_chart.show()
 		show()
 
+func restrict_transmutation_menu(elements: Array) -> void:
+	matchup_chart.restrict_graph(elements)
+
 func _on_player_button_pressed() -> void:
 	push_menu(player_menu)
 
