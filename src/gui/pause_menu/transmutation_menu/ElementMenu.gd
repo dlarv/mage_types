@@ -31,7 +31,7 @@ var _original_image: Image
 
 func _ready() -> void:
 	_original_image = flow_chart.texture.get_image().duplicate()
-
+	restrict_graph([ElementManager.Blue])
 
 func restrict_graph(nodes: Array, edges: Variant=null) -> void:
 	if len(nodes) == 0 and edges == null:
@@ -46,17 +46,28 @@ func restrict_graph(nodes: Array, edges: Variant=null) -> void:
 	if edges and edges is Array:
 		for i in range(len(edges)):
 			edges[i] = edges[i].name[0].to_lower()
-
+	var counter := {}
+	var prevKey: String = ""
+	var prevCol: Color
 	for x in image.get_width():
 		for y in image.get_height():
 			var col := image.get_pixel(x, y)
-			if col.a < 0.2: continue
 
+			var alpha := col.to_html().substr(6, 2)
+
+			if col.a <= 0.2: continue
 			var key := col.to_html(false)
+
 			if _is_restricted(key, nodes, edges):
 				image.set_pixel(x, y, Color.BLACK)
+			elif _is_orphan(alpha, nodes):
+				image.set_pixel(x, y, Color.BLACK)
+	
 
+
+	
 	flow_chart.texture.update(image)
+
 
 func _is_restricted(key: String, nodes: Array, edges: Variant) -> bool:
 	if edges == null:
@@ -99,6 +110,26 @@ func _is_restricted(key: String, nodes: Array, edges: Variant) -> bool:
 			return "c" in edges
 			
 	return false
+
+
+func _is_orphan(alpha: String, nodes: Array) -> bool:
+	var a := alpha.hex_to_int()
+	#if a == 0xFF or a < 0xF2: return false
+	match a:
+		0xFC: return "b" in nodes or "c" in nodes
+		0xFA: return "p" in nodes or "c" in nodes
+		0xF7: return "b" in nodes or "p" in nodes
+		0xF5: return "b" in nodes or "m" in nodes
+		0xF2: return "p" in nodes or "m" in nodes
+		0xF0: return "p" in nodes or "o" in nodes
+		0xED: return "m" in nodes or "o" in nodes
+		0xEB: return "m" in nodes or "r" in nodes
+		0xE8: return "o" in nodes or "r" in nodes
+		0xE6: return "o" in nodes or "y" in nodes
+		0xE3: return "r" in nodes or "y" in nodes
+		0xE0: return "g" in nodes or "y" in nodes
+		0xDE: return "g" in nodes or "c" in nodes
+		_: return false
 
 
 func find_closest(hex: String) -> String:
