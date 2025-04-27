@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bfcmgeugkgdc4"]
 
+[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="2_emwl8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_uqmjw"]
-[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_vxj3h"]
-[ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="3_cyfgb"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_ris70"]
-[ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_ssl3l"]
+[ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="3_y4nfe"]
+[ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="4_jwv5r"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_s70gu"]
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("4_s70gu")
-_base_melee_attack = 50.0
+_base_melee_attack = 120.0
 _base_ranged_attack = 50.0
-_base_melee_defense = 300.0
-_base_ranged_defense = 300.0
+_base_melee_defense = 80.0
+_base_ranged_defense = 80.0
 _base_speed = 80.0
 _base_evasion = 100.0
 
@@ -23,8 +23,8 @@ level = 1
 stat_manager = SubResource("Resource_6u7d0")
 hp = 250
 reset_hp_after_battle = true
-_element1 = "blue"
-_element2 = "blank"
-_alignment = "blank"
-attacks = Array[ExtResource("2_uqmjw")]([ExtResource("2_vxj3h"), ExtResource("3_ssl3l")])
-equipment = ExtResource("3_cyfgb")
+_element1 = "red"
+_element2 = "red"
+_alignment = "red"
+attacks = Array[ExtResource("2_uqmjw")]([ExtResource("2_emwl8"), ExtResource("3_y4nfe")])
+equipment = ExtResource("4_jwv5r")
