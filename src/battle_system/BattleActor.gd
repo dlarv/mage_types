@@ -301,9 +301,11 @@ func resolve_end_of_battle() -> String:
 		var prevAlign := alignment_manager.current_alignment
 		var alignmentLocked := alignment_manager.normalize_and_add()
 		if alignmentLocked:
+			set_element(0, alignment_manager.current_alignment)
 			return "!!!!!!!!!!!!!!\n%s has become aligned to %s!" \
 					% [name, alignment_manager.current_alignment.name]
 		elif prevAlign != alignment_manager.current_alignment:
+			set_element(0, alignment_manager.current_alignment)
 			return "!!!\n%s's core changed to %s!" \
 					% [name, alignment_manager.current_alignment.name]
 	return ""
