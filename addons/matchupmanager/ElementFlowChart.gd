@@ -1,4 +1,5 @@
-extends Menu
+@tool
+extends Control
 
 const B_NODE := "0442b5"
 const P_NODE := "6e5db7"
