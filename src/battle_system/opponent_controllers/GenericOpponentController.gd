@@ -11,10 +11,12 @@ class_name GenericOpponentController
 var aggression_bias: float
 var setup_bias: float
 
+
 func setup(team: Array) -> void:
 	super.setup(team)
 	aggression_bias = aggression
 	setup_bias = 1 - aggression
+
 
 func get_actions(otherTeam: Array) -> Array:
 	var actions := []
@@ -26,15 +28,17 @@ func get_actions(otherTeam: Array) -> Array:
 		user.action_selected.emit(action.action)
 	return actions;
 
+
 func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 	var maxVal := 0.0
 	var maxTarget: BattleActor = targets[0]
 	var maxAction: _BattleAction = user.attacks[0]
 
 	for action in user.attacks:
-		Logger.append_battle_log("\nEvaluating action: %s" % action.name)
 		for target in targets:
-			Logger.append_battle_log("\nEvaluating action against target: %s" % target.name)
+			Logger.append_battle_log("\nEvaluating BattleAction(%s) against Target(%s)" 
+					% [ action.name, target.name ])
+
 			# Count number of transmutations.
 			var e1 := ElementManager.get_matchup(target.element1, action.element)
 			var e2 := ElementManager.get_matchup(target.element2, action.element)
@@ -44,10 +48,9 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 
 			var potential := action.get_attack_potential(user, target)
 
+			# Check damage.
 			var currDmg: int = potential.get("dmg", 0)
 			Logger.append_battle_log("This action will do ~%.2f base damage." % currDmg)
-			var currStatusPotential: float = potential.get("setup", 0)
-			Logger.append_battle_log("This attack has %.2f status potential." % currStatusPotential)
 
 			# Check potential phobia damage.
 			var phobiaDmg = int(target.has_phobia(e1))
@@ -57,12 +60,16 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 			currDmg += phobiaDmg
 			Logger.append_battle_log("This action will do ~%.2f total damage." % currDmg)
 
+			# Check non-damage related attack potential.
+			var currStatusPotential: float = potential.get("setup", 0)
+			Logger.append_battle_log("This attack has %.2f status potential." % currStatusPotential)
+
 			# Get random influence.
 			var rand := randf_range(-2, 2 * intelligence)
 			Logger.append_battle_log("Rand(%.2f) = [-2, 2 * Intelligence(%.2f)]" 
 					% [rand, intelligence])
 
-			# Calculate value.
+			# Normalize damage, otherwise this value will always beat out the others.
 			var agg := currDmg * aggression_bias
 			Logger.append_battle_log("Agg(%.2f) = Dmg(%.2f) * Aggression(%.2f)" 
 					% [agg, currDmg, aggression_bias])

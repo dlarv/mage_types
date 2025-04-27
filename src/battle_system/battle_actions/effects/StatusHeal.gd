@@ -12,8 +12,8 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 	target.remove_status_effect(effect)
 	return "%s was healed from %s." % [ target.name, effect.name ]
 
-func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
-	return int(target.has_status_effect(effect))
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+	return float(target.has_status_effect(effect))
 
 # override
 func _set_name(val: String) -> void:

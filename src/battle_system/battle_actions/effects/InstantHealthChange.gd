@@ -17,5 +17,13 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 
 	return "%s %s %d hp!" % [ target.name, verb, health ]
 
-func get_dmg_potential(user: BattleActor, action: _BattleAction, target: BattleActor) -> int:
+func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool, action: _BattleAction) -> int:
+	if isFriendly: return 0
 	return -int(target.hp * strength) 
+
+# override
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+	if not isFriendly: return -int(target.hp * strength)
+	elif allow_overflow: return int(target.hp * strength)
+	else: return min(int(target.hp * strength), target.hp - target.current_hp)
+

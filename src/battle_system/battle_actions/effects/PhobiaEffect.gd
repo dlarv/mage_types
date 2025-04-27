@@ -37,7 +37,7 @@ func _set_name(val: String) -> void:
 	resource_name = name
 
 # override
-func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
 	# Phobia could activate up to 0 turns.
 	return target.hp * strength * randi_range(0, duration)
 

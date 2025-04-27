@@ -93,8 +93,13 @@ func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
 	var dmg := 0
 
 	for effect in effects:
-		dmg += effect.get_attack_effect().get_dmg_potential(user, self, target)
-		setupPotential += effect.get_attack_effect().get_setup_potential(user, target) * effect.chance
+		var isFriendly: bool = self.target == _BattleAction.TargetType.SELF \
+				or self.target == _BattleAction.TargetType.ALLY \
+				or self.target == _BattleAction.TargetType.ALLIES
+
+		dmg += effect.get_attack_effect().get_dmg_potential(user, target, isFriendly, self)
+		setupPotential += effect.get_attack_effect().get_setup_potential(user, target, isFriendly) * effect.chance
+
 	return { 
 		"setup": setupPotential,
 		"dmg": dmg,

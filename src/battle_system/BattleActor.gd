@@ -310,8 +310,9 @@ func resolve_end_of_battle() -> String:
 					% [name, alignment_manager.current_alignment.name]
 	return ""
 
-
-func has_phobia(element: ElementalType) -> bool:
+func has_phobia(element: ElementalType=null) -> bool:
+	# If value is null, return true if they have any phobias.
+	if not element: return len(statuses.phobias) > 0
 	return statuses.check_phobic(element) != null
 
 func add_func_override(old: Callable, new: Callable) -> void:

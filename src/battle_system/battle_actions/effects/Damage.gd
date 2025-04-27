@@ -6,21 +6,25 @@ func _init():
 	# Force call of _set_name()
 	name = "Damage"
 
-func get_dmg_potential(user: BattleActor, action: _BattleAction, target: BattleActor) -> int:
-	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, action, 1.0)
+
+func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
+	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, 1.0)
+
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
-	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, action, effectiveness)
+	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, effectiveness)
 	return "%s" % [ _apply_to(target, dmg, user) ]
 
+
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
-func calculate_damage(attack: float, defense: float, level: int, action: _BattleAction, effectiveness: float) -> int:
+func calculate_damage(attack: float, defense: float, level: int, effectiveness: float) -> int:
 	var dmg := strength * (attack/defense) * effectiveness * level
 	var rand := randf_range(.8, 1)
 	Logger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
 			% [dmg, strength, attack, defense, effectiveness, rand])
 	return int(dmg * rand)
+
 
 func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 	var actualDmg = target.apply_damage(dmg)

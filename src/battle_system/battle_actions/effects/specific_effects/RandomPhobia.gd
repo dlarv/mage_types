@@ -26,4 +26,11 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 	return "\n".join(msg)
 
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
-	return 1
+	var output := 0.0
+
+	var count = randi_range(min_count, max_count)
+	for i in range(count):
+		var phobia = PhobiaEffect.new()
+		output += phobia.get_setup_potential(user, target, isFriendly)
+
+	return output

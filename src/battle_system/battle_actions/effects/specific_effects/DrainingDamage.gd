@@ -23,6 +23,13 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 		msg += "\n%s drained %d from the target!" % [ user.name, actualDmg ]
 	return msg
 
+
 func _set_name(_val: String) -> void:
 	name = "Draining Damage"
 	resource_name = name
+
+
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+	if not isFriendly: return -int(target.hp * heal_percent)
+	elif allow_overflow: return int(target.hp * heal_percent)
+	else: return min(int(target.hp * heal_percent), target.hp - target.current_hp)

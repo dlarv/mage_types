@@ -20,8 +20,18 @@ func get_strength() -> float:
 	return strength * MODIFIER
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
-	return 1
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+	# Output should scale inversely with current stat buffs.
+	var val: float
+	if strength > 0:
+		val = target.stat_manager.MAX_MOD - target.stat_manager.get_stat_mod(stat)
+	else:
+		val = target.stat_manager.get_stat_mod(stat)
+
+	if not isFriendly:
+		val *= -strength
+
+	return val
 
 
 # override
