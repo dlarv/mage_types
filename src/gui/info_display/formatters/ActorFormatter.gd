@@ -27,7 +27,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	name_label.text = obj.name
 	element1_icon.element = obj.element1
 	element2_icon.element = obj.element2
-	bias_icon.element = obj.elemental_bias
+	bias_icon.element = obj.alignment
 	hp_label.text = "%d/%d" % [obj.current_hp, obj.hp]
 
 	display_stats(obj)
@@ -40,7 +40,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 		status_effect_vbox.show()
 		for effect in effects:
 			effects_label.push_meta(effect)
-			effects_label.append_text(effect.get_full_name())
+			effects_label.append_text(effect.name)
 			effects_label.pop() # Pop meta
 			effects_label.append_text(": %d turns remaining." % effect.duration)
 			effects_label.newline()
