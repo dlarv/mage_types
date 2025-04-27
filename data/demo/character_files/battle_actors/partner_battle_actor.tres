@@ -25,6 +25,5 @@ hp = 200
 reset_hp_after_battle = true
 _element1 = "red"
 _element2 = "cyan"
-_elemental_bias = "red"
-bias_reversion_threshold = 0.4
+_alignment = "blue"
 attacks = Array[ExtResource("2_aok80")]([ExtResource("2_5cg1i"), ExtResource("3_8ap0k"), ExtResource("4_wb0kn")])

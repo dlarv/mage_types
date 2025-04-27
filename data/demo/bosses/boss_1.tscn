@@ -96,5 +96,6 @@ dialog_ids = Array[ExtResource("4_6lbrx")]([SubResource("Resource_teu4u")])
 [node name="EnemyActor" parent="." index="4" groups=["persist"] instance=ExtResource("4_4b73r")]
 ai = SubResource("Resource_lweek")
 _team = Array[ExtResource("7_0w68n")]([ExtResource("8_704m5")])
+disappear_on_defeat = false
 
 [editable path="blob2"]

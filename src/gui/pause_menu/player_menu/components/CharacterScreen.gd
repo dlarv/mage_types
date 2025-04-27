@@ -14,13 +14,13 @@ func setup(actor: BattleActor) -> void:
 	%Name_Label.text = actor.name
 	_init_stats(actor)
 
-	if actor.elemental_bias.is_blank():
+	if actor.alignment.is_blank():
 		%Bias_Label.hide()
 		%Bias_ElementIcon.hide()
 	else:
 		%Bias_Label.show()
 		%Bias_ElementIcon.show()
-		%Bias_ElementIcon.element = actor.elemental_bias
+		%Bias_ElementIcon.element = actor.alignment
 	
 	%Primary.element = actor.element1
 	%Secondary.element = actor.element2

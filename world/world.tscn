@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=30 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="14_p05cy"]
 [ext_resource type="Texture2D" uid="uid://b0kj6udppi815" path="res://assets/3d/textures/player/player_diffuse.png" id="15_0b8p6"]
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="16_gm161"]
+[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="18_3lqrh"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -166,6 +167,9 @@ mesh = SubResource("ArrayMesh_nrfl8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Alice/player/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_i1awl")
+
+[node name="Boss2" parent="Overworld/Blue" instance=ExtResource("18_3lqrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.50295, -101)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

@@ -29,10 +29,10 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 	self.enemies = enemies
 
 	for ally in allies:
-		ally.setup(self)
+		ally.setup()
 		ally.was_just_defeated.connect(func(): _defeated_allies += 1)
 	for enemy in enemies:
-		enemy.setup(self)
+		enemy.setup()
 		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
 
 	ai.setup(enemies)
@@ -135,21 +135,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# This will trigger if final actor died to phobia.
 		if await _check_if_battle_ended(): return
 
-		# Change any of user's blank typing to match type of this attack.
-		# var updatedType := false
-		# msg = ""
-		# if action.actor.element1.is_blank():
-		# 	action.actor.set_element(0, action.action.element)
-		# 	updatedType = true
-		# 	msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
-		# elif action.actor.element2.is_blank():
-		# 	action.actor.set_element(1, action.action.element)
-		# 	updatedType = true
-		# 	msg = "Channeling the power of %s changed %s Blank typing." % [ action.action.element.get_bb_code_name(), action.actor.name]
-
-		if len(msg) > 0:
-			await gui.display_message(msg)
-
 		# Calculate user transmutations.
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
@@ -177,21 +162,6 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
-
-	# Revert characters to biases.
-	var biasMsg := []
-	for ally in allies:
-		if ally.try_revert_to_bias():
-			biasMsg.append_array(ally.get_and_flush_msgs())
-	if len(biasMsg) > 0:
-		await gui.display_message(biasMsg)
-
-	biasMsg = []
-	for enemy in enemies:
-		if enemy.try_revert_to_bias():
-			biasMsg.append_array(enemy.get_and_flush_msgs())
-	if len(biasMsg) > 0:
-		await gui.display_message(biasMsg)
 
 	Logger.append_battle_log("\n\nPlayer is selecting _actions...")
 	await dialog(true)
@@ -265,14 +235,24 @@ func dialog(isAfterTurn: bool) -> void:
 func _check_if_battle_ended() -> bool:
 	if _defeated_allies == len(allies):
 		await gui.display_message("You were defeated...")
-		battle_ended.emit(EndState.DEFEATED)
+		await _resolve_end_of_battle()
+		battle_ended.emit(EndState.WON)
 		return true
 	elif _defeated_enemies == len(enemies):
 		await gui.display_message("You won!")
+		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.WON)
 		return true
 	return false
 
+func _resolve_end_of_battle() -> void:
+	for ally in allies:
+		var msg: String = ally.resolve_end_of_battle()
+		if len(msg) > 0:
+			await gui.display_message(msg)
+	
+	for enemy in enemies:
+		enemy.resolve_end_of_battle()
 
 func _prep_next_turn() -> void:
 	_actions = ai.get_actions(allies)

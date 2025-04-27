@@ -21,8 +21,8 @@ var _prev_threshold: float
 #override
 func equip(actor: BattleActor) -> void:
 	if not bias.is_blank():
-		_prev_bias = actor.elemental_bias
-		actor.elemental_bias = bias
+		_prev_bias = actor.alignment
+		actor.alignment = bias
 	if reversion_threshold != -1:
 		_prev_threshold = actor.bias_reversion_threshold
 		actor.bias_reversion_threshold = reversion_threshold
@@ -30,6 +30,6 @@ func equip(actor: BattleActor) -> void:
 #override
 func unequip(actor: BattleActor) -> void:
 	if not bias.is_blank():
-		actor.elemental_bias = _prev_bias
+		actor.alignment = _prev_bias
 	if reversion_threshold != -1:
 		actor.bias_reversion_threshold = _prev_threshold

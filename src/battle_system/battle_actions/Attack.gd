@@ -31,6 +31,8 @@ class_name Attack
 # override
 func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 	var msg := [super.apply_effects(user, targets).msg]
+	if user.alignment_manager:
+		user.alignment_manager.append_unnormalized(element, 1, AlignmentManager.Type.ATTACK)
 
 	# Calculate accuracy.
 	var rand := randf()

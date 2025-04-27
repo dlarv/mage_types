@@ -3,7 +3,7 @@ extends Node
 
 enum LogType { BATTLE, PUZZLE, WORLD }
 
-@export var print_logs := false
+@export var print_logs := true
 @export var print_logs_on_save := true
 @export var clear_on_save := true
 

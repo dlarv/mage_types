@@ -43,4 +43,3 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 				_actor.was_just_defeated.emit()
 		_actor.damage_applied.emit(_actor.current_hp)
 	return dmg
-

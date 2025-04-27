@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://duf3dedsle555"]
+[gd_scene load_steps=14 format=3 uid="uid://duf3dedsle555"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_gljf2"]
 [ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_vqxvv"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="4_htvo1"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="5_hphma"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="6_a3ylm"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="8_qtm81"]
+[ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/demo/bosses/boss_2.tres" id="9_4r0bf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0mcoh"]
 radius = 1.3856
@@ -46,5 +48,7 @@ dialog_ids = Array[ExtResource("4_bqxmt")]([SubResource("Resource_xpu74")])
 
 [node name="EnemyActor" parent="." index="4" instance=ExtResource("4_htvo1")]
 ai = SubResource("Resource_5do5k")
+_team = Array[ExtResource("8_qtm81")]([ExtResource("9_4r0bf")])
+disappear_on_defeat = false
 
 [editable path="blob2"]

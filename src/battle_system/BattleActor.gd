@@ -2,7 +2,7 @@
 extends Resource 
 class_name BattleActor 
 
-signal battle_setup_completed()
+signal battle_setup_completed
 @warning_ignore("unused_signal")
 signal turn_ended()
 signal was_just_defeated()
@@ -57,17 +57,19 @@ var element2: ElementalType = ElementManager.Blank:
 		if value == null:
 			value = ElementManager.Blank
 		element2 = value 
+@export var alignment_manager: AlignmentManager = null
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _elemental_bias: String = "blank":
+var _alignment: String = "blank":
 	set(value):
-		_elemental_bias = value
-		elemental_bias = ElementManager.get_element_from_name(value)
-var elemental_bias: ElementalType = ElementManager.Blank:
-	set(value):
-		if value == null:
-			value = ElementManager.Blank
-		elemental_bias = value
-@export var bias_reversion_threshold := 0.4
+		if alignment_manager:
+			_alignment = alignment_manager.current_alignment.name.to_lower()
+			return
+		_alignment = value
+		alignment = ElementManager.get_element_from_name(value)
+var alignment: ElementalType = ElementManager.Blank:
+	get:
+		if alignment_manager: return alignment_manager.current_alignment
+		return alignment
 @export var attacks: Array[_BattleAction] = []
 @export var equipment: Equipment = null:
 	set(value):
@@ -93,12 +95,10 @@ var _msgs := []
 # Dict<StringName, Callable> 
 var _func_overrides := {}
 
-func setup(battle: Battle) -> void: 
-	battle.battle_ended.connect(func(endState): 
-		stat_manager.reset()
-		if reset_hp_after_battle: 
-			current_hp = hp)
+
+func setup() -> void:
 	battle_setup_completed.emit()
+
 
 func get_and_flush_msgs() -> Array:
 	var output := _msgs
@@ -119,6 +119,8 @@ func set_element(id: int, element: ElementalType) -> void:
 		element2 = element
 
 	element_changed.emit(id, element)
+	if alignment_manager:
+		alignment_manager.append_unnormalized(element, 1, AlignmentManager.Type.TRANSMUTATION)
 
 	var mod
 	var dmg = 0
@@ -239,38 +241,31 @@ func heal(dmg: int, allowOverflow: bool=false) -> int:
 func add_status_effect(effect: StatusEffect) -> void:
 	if _func_overrides.has(add_status_effect.get_method()):
 		_func_overrides.get(add_status_effect.get_method()).call(effect)
-		return 
-	Logger.append_battle_log("%s was applied to %s." % [ effect.name, name ])
-	if effect is StatChange:
-		stat_manager.add(effect, name)
 	else:
-		statuses.add_status(effect)
-		status_effect_added.emit(statuses.get_status(effect))
+		Logger.append_battle_log("%s was applied to %s." % [ effect.name, name ])
+		if effect is StatChange:
+			stat_manager.add(effect, name)
+		else:
+			statuses.add_status(effect)
+			status_effect_added.emit(statuses.get_status(effect))
+
+	if alignment_manager and effect.id == StatusEffectManager.StatusEffects.PHOBIC:
+		alignment_manager.add(effect.element, -1)
+
 
 func remove_status_effect(effect: StatusEffect) -> void:
 	Logger.append_battle_log("%s's %s expired." % [ effect.name, name ])
 	statuses.remove([effect])
 	status_effects_removed.emit([ effect ])
 
+
 func has_status_effect(effect: StatusEffect) -> bool:
 	return statuses.get_status(effect) != null
 
 
-func try_revert_to_bias()-> bool:
-	if _func_overrides.has(try_revert_to_bias.get_method()):
-		return _func_overrides.get(try_revert_to_bias.get_method()).call()
-
-	if elemental_bias.is_blank(): return false
-	if element1 == elemental_bias or element2 == elemental_bias: return false
-	var rand = randf()
-	if rand < bias_reversion_threshold:
-		set_element(0, elemental_bias)
-		_msgs.append("%s realigned to %s!" % [name, elemental_bias.get_bb_code_name()])
-		return true
-	return false
-
 func list_status_effects() -> Array:
 	return statuses.list()
+
 
 func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 	if useOverride and _func_overrides.has(resolve_end_of_turn.get_method()):
@@ -294,6 +289,26 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 		_msgs.append("Status effects wore off! (%s)" % effects.map(func(x): return x.name))
 	status_effects_removed.emit(effects)
 
+
+func resolve_end_of_battle() -> String:
+	stat_manager.reset()
+	if reset_hp_after_battle: 
+		current_hp = hp
+	
+	# Update alignment.
+	if alignment_manager and not alignment_manager.alignment_locked:
+		Logger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
+		var prevAlign := alignment_manager.current_alignment
+		var alignmentLocked := alignment_manager.normalize_and_add()
+		if alignmentLocked:
+			return "!!!!!!!!!!!!!!\n%s has become aligned to %s!" \
+					% [name, alignment_manager.current_alignment.name]
+		elif prevAlign != alignment_manager.current_alignment:
+			return "!!!\n%s's core changed to %s!" \
+					% [name, alignment_manager.current_alignment.name]
+	return ""
+
+
 func has_phobia(element: ElementalType) -> bool:
 	return statuses.check_phobic(element) != null
 
@@ -310,6 +325,10 @@ func serialize() -> Dictionary:
 	var equipmentData := ""
 	if equipment:
 		equipmentData = equipment.resource_path
+	
+	var alignmentData := ""
+	if alignment_manager:
+		alignment_manager.serialize()
 
 	return {
 		"name": name,
@@ -320,8 +339,7 @@ func serialize() -> Dictionary:
 		"current_hp": current_hp,
 		"element1": element1.name,
 		"element2": element2.name,
-		"bias": elemental_bias.name,
-		"brt": bias_reversion_threshold,
+		"alignment": alignmentData,
 		"attacks": attackData,
 		"equipment": equipmentData,
 	}
@@ -344,10 +362,6 @@ func deserialize(data: Dictionary) -> void:
 		_element1 = data["element1"]
 	if "element2" in data:
 		_element2 = data["element2"]
-	if "bias" in data:
-		_elemental_bias = data["bias"]
-	if "brt" in data:
-		bias_reversion_threshold = data["brt"]
 	if "attacks" in data:
 		attacks = []
 		for d in data["attacks"]:
@@ -358,3 +372,7 @@ func deserialize(data: Dictionary) -> void:
 			equipment = ResourceLoader.load(d)
 		else:
 			equipment = null
+	if "alignment" in data:
+		if not alignment_manager:
+			alignment_manager = AlignmentManager.new()
+		alignment_manager.deserialize(data["alignment"])
