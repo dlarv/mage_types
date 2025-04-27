@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="3_i8hgk"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="3_lqspt"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="4_wbn1y"]
-[ext_resource type="Resource" uid="uid://mg2jc70wjqo8" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_attack_up.tres" id="5_8b4a4"]
+[ext_resource type="Resource" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_attack_up.tres" id="5_8b4a4"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="5_vxy51"]
-[ext_resource type="Resource" uid="uid://dl8tuatv2q3y5" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_defense_down.tres" id="6_3303j"]
-[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/sting.tres" id="7_5lesv"]
+[ext_resource type="Resource" path="res://data/battle_system/battle_actions/attacks/basic_stat_spells/melee_defense_down.tres" id="6_3303j"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/elementals/green/sting.tres" id="7_5lesv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpwk7"]
 

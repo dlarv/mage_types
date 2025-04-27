@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_sxsct"]
 [ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_xmq2j"]
-[ext_resource type="Resource" uid="uid://ela4jxp8bcph" path="res://data/battle_system/battle_actions/attacks/total_meltdown.tres" id="3_j4x8r"]
+[ext_resource type="Resource" uid="uid://ela4jxp8bcph" path="res://data/battle_system/battle_actions/attacks/elementals/green/total_meltdown.tres" id="3_j4x8r"]
 
 [resource]
 script = ExtResource("2_xmq2j")

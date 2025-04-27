@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c1yaqlajp62he" path="res://data/story/demo/boss.tscn" id="1_viarl"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="4_jsiqc"]
-[ext_resource type="Resource" uid="uid://biyyeewaek1sj" path="res://data/battle_system/battle_actions/attacks/drain.tres" id="5_bopo2"]
+[ext_resource type="Resource" uid="uid://biyyeewaek1sj" path="res://data/battle_system/battle_actions/attacks/elementals/red/drain.tres" id="5_bopo2"]
 [ext_resource type="Script" path="res://src/battle_system/AffinityManager.gd" id="5_o0idu"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="6_g2lrf"]
-[ext_resource type="Resource" uid="uid://mwxg2wlabpnk" path="res://data/battle_system/battle_actions/attacks/blood_shock.tres" id="6_vhcca"]
+[ext_resource type="Resource" uid="uid://mwxg2wlabpnk" path="res://data/battle_system/battle_actions/attacks/elementals/red/blood_shock.tres" id="6_vhcca"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="10_18ilu"]
 [ext_resource type="Script" path="res://data/story/demo/boss_4/Boss4Controller.gd" id="10_bqnsv"]
 
