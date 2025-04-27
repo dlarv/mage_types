@@ -24,7 +24,7 @@ func _ready() -> void:
 func insert_pin(effect: StatusEffect) -> void:
 	var key := effect.name
 	if effect.id == StatusEffectManager.StatusEffects.PHOBIC:
-		key = "%sPhobic" % effect.element.name
+		key = "%sPhobic" % effect.element
 	
 	var pin = pins.get(key)
 	if pin:
@@ -36,7 +36,7 @@ func remove_pins(effects: Array) -> void:
 	for effect in effects:
 		var key = effect.name
 		if effect.id == StatusEffectManager.StatusEffects.PHOBIC:
-			key = "%sPhobic" % effect.element.name
+			key = "%sPhobic" % effect.element
 
 		var pin = pins.get(key)
 		if pin != null:

@@ -14,7 +14,7 @@ func _ready() -> void:
 func _on_sub_receiver_z_laser_received(laser:Laser, point: Vector3) -> void:
 	if _is_emitting:
 		Logger.append_puzzle_log("Mirror(%s) emitting laser of Element(%s), but was hit with a laser of Element(%s)."
-				% [puzzle_name, _active_emitter.laser.element.name, laser.element.name])
+				% [puzzle_name, _active_emitter.laser.element, laser.element])
 		# _flicker_collider()
 		return
 	$SubEmitterX.stop()
@@ -25,7 +25,7 @@ func _on_sub_receiver_z_laser_received(laser:Laser, point: Vector3) -> void:
 func _on_sub_receiver_x_laser_received(laser:Laser, point: Vector3) -> void:
 	if _is_emitting: 
 		Logger.append_puzzle_log("Mirror(%s) emitting laser of Element(%s), but was hit with a laser of Element(%s)."
-				% [puzzle_name, _active_emitter.laser.element.name, laser.element.name])
+				% [puzzle_name, _active_emitter.laser.element, laser.element])
 		# _flicker_collider()
 		return
 	$SubEmitterX.stop()
@@ -54,13 +54,13 @@ func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> voi
 func create_log(body: MagiClay, e: ElementalType) -> void:
 	if in_stasis:
 		Logger.append_puzzle_log("Mirror(%s) in stasis collided with laser of Element(%s)."
-			% [puzzle_name, body.element.name])
+			% [puzzle_name, body.element])
 	elif e == null or e.is_blank():
 		Logger.append_puzzle_log("Mirror(%s) of Element(%s) collided with laser of Element(%s)."
-			% [puzzle_name, element.name, body.element.name])
+			% [puzzle_name, element, body.element])
 	else:
 		Logger.append_puzzle_log("Mirror(%s) of Element(%s) transmuted laser of Element(%s) into Element(%s)." 
-			% [puzzle_name, element.name, body.element.name, e.name])
+			% [puzzle_name, element, body.element, e])
 
 func _on_laser_dropped() -> void:
 	_is_emitting = false

@@ -38,6 +38,6 @@ func _to_string() -> String:
 	if apply_to == "both":
 		output += "& Target "
 	
-	output += "must be [color=%s]%s[/color]" % [ element.name, element.name ]
+	output += "must be [color=%s]%s[/color]" % [ element, element ]
 
 	return output

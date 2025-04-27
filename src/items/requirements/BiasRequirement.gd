@@ -29,4 +29,4 @@ func check(actor: Variant) -> bool:
 func get_requirement_message() -> String:
 	if element == ElementManager.Blank:
 		return "Must have an Elemental alignment."
-	return "Must be %s-aligned." % element.name
+	return "Must be %s-aligned." % element

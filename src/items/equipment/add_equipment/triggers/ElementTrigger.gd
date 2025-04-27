@@ -10,7 +10,7 @@ var _element: String = "blank":
 var element: ElementalType:
 	set(value):
 		element = value
-		resource_name = "%s Trigger" % element.name
+		resource_name = "%s Trigger" % element
 @export_enum("primary", "secondary", "either")
 var index := "either"
 

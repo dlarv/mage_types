@@ -30,7 +30,7 @@ func _on_body_entered(body: Node3D) -> void:
 		bodyElement = "n/a"
 	else:
 		bodyName = body.puzzle_name
-		bodyElement = body.element.name
+		bodyElement = body.element
 
 	if can_player_trigger and _test_for_player(body):
 		_try_emit_on()
@@ -41,7 +41,7 @@ func _on_body_entered(body: Node3D) -> void:
 		_try_emit_on()
 	else:
 		Logger.append_puzzle_log("PressurePlate(%s) was stepped on, but not activated, by Object(%s). Object is Element(%s), but plate requires Element(%s)." 
-				% [puzzle_name, bodyName, bodyElement, element.name])
+				% [puzzle_name, bodyName, bodyElement, element])
 		_try_emit_off()
 		$Base_MeshInstance3D.set_surface_override_material(0, _invalid_mat)
 		invalid_off.emit(self)

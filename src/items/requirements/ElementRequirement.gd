@@ -13,4 +13,4 @@ func check(actor: Variant) -> bool:
 	return actor != null and (actor.element1 == element or actor.element2 == element)
 
 func get_requirement_message() -> String:
-	return "Either primary or secondary element must be %s." % element.name
+	return "Either primary or secondary element must be %s." % element

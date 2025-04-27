@@ -68,10 +68,10 @@ func _to_string() -> String:
 	else:
 		output += "must be all of the following: { "
 	
-	output += "[color=%s]%s[/color]" % [ elements[0].name, elements[0].name ]
+	output += "[color=%s]%s[/color]" % [ elements[0], elements[0] ]
 	
 	for element in elements.slice(1):
-		output += ", [color=%s]%s[/color]" % [ element.name, element.name ]
+		output += ", [color=%s]%s[/color]" % [ element, element ]
 	
 	output += " }"
 

@@ -25,7 +25,12 @@ func get_bb_code_name(useAltColor:=false) -> String:
 func is_blank() -> bool:
 	return name == "Blank"
 
+
 func get_off_def_color() -> Color:
 	if is_defensive_type:
 		return Color.BLUE
 	return Color.RED
+
+
+func _to_string() -> String:
+	return name

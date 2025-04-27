@@ -22,7 +22,7 @@ func start(val: Variant=null) -> void:
 	super.start(val)
 	_is_on = true
 	$SubEmitter.start()
-	Logger.append_puzzle_log("Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element.name, laser.rand_val])
+	Logger.append_puzzle_log("Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element, laser.rand_val])
 
 func stop(val: Variant=null) -> void: 
 	super.stop(val)

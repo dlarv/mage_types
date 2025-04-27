@@ -44,11 +44,11 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 	var affinity := 0.8 
 	if not user.element1.is_blank() and user.element1.is_defensive_type == element.is_defensive_type:
 		Logger.append_battle_log("User(%s)'s primary Element(%s) has affinity for Attack.Element(%s)"
-				% [user.name, user.element1.name, element.name])
+				% [user.name, user.element1, element])
 		affinity += 0.2
 	if not user.element2.is_blank() and user.element2.is_defensive_type == element.is_defensive_type: 
 		Logger.append_battle_log("User(%s) secondary Element(%s) has affinity for Attack.Element(%s)"
-				% [user.name, user.element2.name, element.name])
+				% [user.name, user.element2, element])
 		affinity += 0.2
 
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)

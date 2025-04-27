@@ -38,7 +38,7 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 	else:
 		$Indicator.set_surface_override_material(0, _invalid_mat)
 		msg = "LaserReceiver(%s) hit by invalid laser. Laser was Element(%s), but requires Element(%s)." \
-				% [puzzle_name, laser.element.name, element.name]
+				% [puzzle_name, laser.element, element]
 		off.emit(self)
 
 

@@ -28,12 +28,12 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 func instantiate_icon() -> Node:
 	var output = super.instantiate_icon()
 	output.modulate = element.main_color
-	output.get_node("Button").tooltip_text = "%s-%s" % [ element.name, name ] 
+	output.get_node("Button").tooltip_text = "%s-%s" % [ element, name ] 
 	return output
 
 # override
 func _set_name(val: String) -> void:
-	name = "%s-Phobic" % element.name
+	name = "%s-Phobic" % element
 	resource_name = name
 
 

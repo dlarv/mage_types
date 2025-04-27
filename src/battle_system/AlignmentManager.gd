@@ -58,7 +58,7 @@ func normalize_and_add() -> bool:
 		if val > average:
 			var element: ElementalType = ElementManager.elements[i]
 			add(element)
-			Logger.append_battle_log("%s: +1 = %d" % [element.name, alignment_values[i]])
+			Logger.append_battle_log("%s: +1 = %d" % [element, alignment_values[i]])
 
 	_unnormalized_values = [0, 0, 0, 0, 0, 0, 0, 0 ]
 	return update_current_alignment()
