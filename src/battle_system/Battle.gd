@@ -154,11 +154,10 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		action.actor.resolve_end_of_turn(a, o)
 		action.actor.turn_ended.emit()
 		msg = action.actor.get_and_flush_msgs()
-		if len(msg) > 0:
-			await gui.display_message(msg)
-			# Check if battle should end.
-			# e.g. if an actor was defeated by poison.
-			if await _check_if_battle_ended(): return
+		await gui.display_message(msg)
+		# Check if battle should end.
+		# e.g. if an actor was defeated by poison.
+		if await _check_if_battle_ended(): return
 
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
@@ -248,8 +247,7 @@ func _check_if_battle_ended() -> bool:
 func _resolve_end_of_battle() -> void:
 	for ally in allies:
 		var msg: String = ally.resolve_end_of_battle()
-		if len(msg) > 0:
-			await gui.display_message(msg)
+		await gui.display_message(msg)
 	
 	for enemy in enemies:
 		enemy.resolve_end_of_battle()

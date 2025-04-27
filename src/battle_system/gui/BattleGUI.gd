@@ -49,6 +49,7 @@ func init_enemies(enemies: Array) -> void:
 		var display = enemy_display_parent.add_display(actor)
 
 func display_message(msg: Variant) -> void:
+	if len(msg) == 0: return
 	_accept_messages = false
 	if msg is Array:
 		msg = "\n".join(msg)
