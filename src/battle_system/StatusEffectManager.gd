@@ -98,7 +98,7 @@ func check_stasis() -> StatusEffect:
 	return statuses.get(StatusEffects.STASIS)
 
 
-func check_phobic(element) -> ElementalEffect:
+func check_phobic(element:ElementalType) -> PhobiaEffect:
 	var effect = phobias.get(element)
 	if effect != null:
 		return effect

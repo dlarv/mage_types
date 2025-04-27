@@ -37,7 +37,7 @@ func create(effect: _BaseEffectSlot):
 		strength_int.value = e.strength
 	elif e is StatusHeal:
 		pass
-	elif e is ElementalEffect:
+	elif e is PhobiaEffect:
 		element_dropdown.show()
 		element_dropdown.select(ElementManager.get_index_from_name(effect.attack_effect.element.name))
 	elif e is TransmutateAttackEffect:

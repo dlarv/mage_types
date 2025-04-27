@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_74a4l"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_ouk8b"]
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="3_m4t5d"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="4_m3x5i"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="4_m3x5i"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_24nq1"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_c3q0c"]
 

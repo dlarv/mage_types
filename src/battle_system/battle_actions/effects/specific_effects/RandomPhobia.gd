@@ -16,7 +16,7 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 
 		# Create effect.
 		var e = ElementManager.elements[index]
-		var phobia = ElementalEffect.new()
+		var phobia = PhobiaEffect.new()
 		phobia.element = e
 
 		# Apply effect.
@@ -25,5 +25,5 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 
 	return "\n".join(msg)
 
-func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
 	return 1

@@ -1,6 +1,6 @@
 @tool
 extends StatusEffect 
-class_name ElementalEffect 
+class_name PhobiaEffect 
 
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":
@@ -36,6 +36,10 @@ func _set_name(val: String) -> void:
 	name = "%s-Phobic" % element
 	resource_name = name
 
+# override
+func get_setup_potential(user: BattleActor, target: BattleActor) -> float:
+	# Phobia could activate up to 0 turns.
+	return target.hp * strength * randi_range(0, duration)
 
 # override
 func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:

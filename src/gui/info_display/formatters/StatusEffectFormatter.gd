@@ -12,7 +12,7 @@ func display(effect: Variant, limitInfo:=false) -> void:
 	
 	name_label.clear()
 	name_label.append_text(effect.name)
-	# if effect is ElementalEffect:
+	# if effect is PhobiaEffect:
 	# 	# append_elemental_color(name_label, effect.element)
 	# 	# name_label.append_text("-%s" % effect.name)
 	# 	name_label.append_text(effect.get_full_name())

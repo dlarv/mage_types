@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://homntfrobese" path="res://data/battle_system/status_effects/healing_effect.tres" id="10_vgwbk"]
 [ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="11_60n4n"]
 [ext_resource type="Resource" uid="uid://bu3fmlsaalf2s" path="res://data/battle_system/status_effects/stasis_effect.tres" id="12_5r2fc"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/ElementalEffect.gd" id="13_jw53u"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="13_jw53u"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="16_6cyos"]
 
 [sub_resource type="Resource" id="Resource_2lxjd"]
