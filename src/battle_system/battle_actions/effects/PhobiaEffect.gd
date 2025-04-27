@@ -15,6 +15,9 @@ var element: ElementalType:
 			value = ElementManager.Blank
 		element = value 
 
+func _init():
+	id = StatusEffectManager.StatusEffects.PHOBIC
+
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0):
 	# If self.element is applied in the editor, each time this effect is used will have to be made into
@@ -38,8 +41,7 @@ func _set_name(val: String) -> void:
 
 # override
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
-	# Phobia could activate up to 0 turns.
-	return target.hp * strength * randi_range(0, duration)
+	return 1.0
 
 # override
 func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:

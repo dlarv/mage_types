@@ -22,16 +22,39 @@ func get_strength() -> float:
 
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
 	# Output should scale inversely with current stat buffs.
-	var val: float
+	if isFriendly:
+		return _get_setup_potential_ally(target)
+	return _get_setup_potential_enemy(target)
+
+
+func _get_setup_potential_ally(target: BattleActor) -> float:
+	var mod := target.stat_manager.get_stat_mod(stat) 
+	var maxMod := target.stat_manager.MAX_MOD 
+	var minMod := target.stat_manager.MIN_MOD 
+
 	if strength > 0:
-		val = target.stat_manager.MAX_MOD - target.stat_manager.get_stat_mod(stat)
-	else:
-		val = target.stat_manager.get_stat_mod(stat)
+		if mod <= 0: 
+			return 1.0
+		return (maxMod - mod) / maxMod
+	# If current stat_mod is really low, further debuffing is neglible.
+	# Likewise if stat_mod is really high.
+	if mod <= minMod * 0.66 or mod >= maxMod * 0.66: 
+		return 0.0
+	return -1.0
 
-	if not isFriendly:
-		val *= -strength
+func _get_setup_potential_enemy(target: BattleActor) -> float:
+	var mod := target.stat_manager.get_stat_mod(stat) 
+	var maxMod := target.stat_manager.MAX_MOD 
+	var minMod := target.stat_manager.MIN_MOD 
 
-	return val
+	if strength < 0:
+		if mod >= 0:
+			return 1.0
+		return (minMod - mod) / minMod
+
+	if mod <= minMod * 0.66 or mod >= maxMod * 0.66:
+		return 0.0
+	return -1.0
 
 
 # override
@@ -58,6 +81,7 @@ func _get_message() -> String:
 				dir]
 	
 	return output
+
 
 # override
 func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:

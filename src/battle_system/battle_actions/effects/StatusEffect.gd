@@ -39,33 +39,31 @@ func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: boo
 	var doesNotHave := 0 if target.has_status_effect(self) else 1
 	var bias: int
 	match id:
-		StatusEffectManager.StatusEffects.STASIS: 
+		StatusEffectManager.StatusEffects.STASIS:
 			positiveEffect = 1 if isFriendly else -1
-			bias = 1 if target.has_phobia() else 0
+			bias = 2 if target.has_phobia() else 0
 
 		StatusEffectManager.StatusEffects.BLOCKING: 
-			positiveEffect = isFriendly
-			if not isFriendly: bias = -1
-			elif float(target.hp) / float(target.current_hp) < 0.5: bias = 2
+			positiveEffect = 1 if isFriendly else -1
+			if float(target.current_hp) / float(target.hp) <= 0.5: bias = 2
 			else: bias = 1
 			# Don't worry about stacking.
 			doesNotHave = 1
 
 		StatusEffectManager.StatusEffects.POISON: 
-			positiveEffect = not isFriendly
-			if float(target.hp) / float(target.current_hp) > 0.5: bias = 2
+			positiveEffect = -1 if isFriendly else 1
+			if float(target.current_hp) / float(target.hp) > 0.5: bias = 2
 			else: bias = 1
 
 		StatusEffectManager.StatusEffects.HEALING: 
-			positiveEffect = isFriendly
-			if not isFriendly: bias = -1
-			elif float(target.hp) / float(target.current_hp) < 0.5: bias = 2
+			positiveEffect = 1 if isFriendly else -1
+			if float(target.current_hp) / float(target.hp) <= 0.5: bias = 2
 			else: bias = 1
 
 		StatusEffectManager.StatusEffects.FLINCHING: 
-			positiveEffect = 1 if isFriendly else -1
+			positiveEffect = -1 if isFriendly else 1
 
-	return bias * positiveEffect * doesNotHave
+	return float(bias * positiveEffect * doesNotHave) / 2.0
 
 
 func _get_message() -> String:

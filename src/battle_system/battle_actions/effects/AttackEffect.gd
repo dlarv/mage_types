@@ -4,7 +4,7 @@ class_name _AttackEffect
 
 @export var name: String: set = _set_name
 ## Effectiveness of this effect, usually as a percentage of health.
-@export var strength: float  
+@export var strength: float
 @export_multiline var message: String = "": get = _get_message
 
 # virtual
@@ -30,3 +30,4 @@ func _get_message() -> String:
 func _set_name(val: String) -> void:
 	name = val
 	resource_name = val
+

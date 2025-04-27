@@ -22,8 +22,9 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 	return -int(target.hp * strength) 
 
 # override
+## Return what % of hp will be healed.
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
-	if not isFriendly: return -int(target.hp * strength)
-	elif allow_overflow: return int(target.hp * strength)
-	else: return min(int(target.hp * strength), target.hp - target.current_hp)
-
+	var mod := 1 if isFriendly else -1
+	if allow_overflow: 
+		return mod * strength
+	return mod * float(min(target.hp * strength, target.hp - target.current_hp)) / float(target.hp)

@@ -48,7 +48,7 @@ movie_writer/disable_vsync=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/attackbuilder/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/matchupmanager/plugin.cfg", "res://addons/room_and_portals/plugin.cfg")
+enabled=PackedStringArray("res://addons/attackbuilder/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/matchupmanager/plugin.cfg", "res://addons/room_and_portals/plugin.cfg")
 
 [global_group]
 
