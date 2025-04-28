@@ -35,13 +35,61 @@ This candidate will be locked inside of the Rec Room.
 		- Spells will not be Green, Yellow.
 		- Allowing Yellow spells will allow combatants to become Orange.
 		- All combatant alignments also cannot be Green, Cyan, or Yellow.
->[!note] All cycles
-> ~~{ G, Y, O, C, P } + { R, B, G, Y }~~ // Purple + Red connects Magenta, which also adds Red.
-> { R, M, B, P } + !{ G, Y }
-> { R, M, B, P, O } + !{ G }
-> { C, B, P, M } + !{ Y, O }
-> { G, Y, R, O } + !{ B, P }
-> { Y, R, O } + !{ C, P, B }
+	- I think there should be an NPC the player can talk to.
+		- Explain transmutation/concepts.
+		- Change presets (boss configs, player spells, etc).
+			- These can be selected from any of the cycles below.
+		- Explain presets (why they're available, that the player can ignore the presets if they want, player has access to all spells).
+- Provide multiple strategies, using the presets.
+	- One will definitely be the Strike strategy.
+	- Removing target's stat buffs. This would be a long-game.
+	- Powerful attack that removes user's stat buffs, such that the player must be precise about when they use it.
+	- Phobia strat (apply as many phobias, then cause as many transmutations).
+		- Terrify is a little cheap, like it doesn't require a lot of planning/thought.
+		
+**All 3-Cycles**
+ROY + !{ B, P, C }
+BPM + ! { O, Y, G } 
+BPC + !{ Y, R, O }
+MRO + !{ B, P, G, C } *`M unreachable`*
+PMO + !{ Y, O, P, C, G} *`All`*
+
+**All 4-Cycles**
+ROYG + !{ B, P }
+MROY + !{ B, P, C }
+BMRO + !{ B, M, O, G }
+PMRO + !{ P, M, G, C } 
+BPMR + !{ M, Y, G }
+BPMC + ! { O, Y } 
+BPGC + !{ R, O }
+PROY *`P island`*
+PYMO + !{ P, M, G, C } *`All`*
+BPMO + !{ M, O, Y, G } *`O island`*
+PMOC  *`C & O islands`*
+## Preset 1
+BPMR + !{ Y, G }
+- This restricted graph centers around Magenta, which would make it work well with a phobia or Magenta Strike strat.
+- This restricted graph has a Red-Magenta tail. This means you can oscillate between Red and Magenta.
+### Boss 1
+- Boss will be Magenta-aligned.
+	- Inflict Blue-phobia.
+	- Turn Boss 1 Purple.
+	- Boss's Primary + Secondary => Blue
+- Boss will use Orange/Melee moves, as these will apply a Red-wards pressure.
+	- This is complimented to the player's benefit as 
+### Boss 2
+- Boss will hold a Sunset Orb, which buffs its attack when it transmutes into Red (and Orange, but that's not available).
+- Since Red is the tail, its harder for this boss to activate it.
+- Boss will use Orange/Melee moves, as these will apply a Red-wards pressure.
+- Boss will be Red-aligned. This synergizes well with its orb and Orange/Melee spam, as it further applies Red-ward pressure.
+### Boss 3
+- This will be essentially the same as Boss 2, but will be Orange-aligned. This will make it impossible for the player to make it Magenta, debuffing the Magenta Strike strat.
+## Preset 2
+ROYG + !{ B, P }
+- This restricted graph centers around Yellow, which would make it work well with a phobia or Yellow Strike strat.
+- This restricted graph has a Green-Yellow tail.
+## Preset 3
+BPMC + ! { O, Y } 
 # From Previous Version
 ## Intro Puzzles
 - The beach contains 3 small 'puzzles,' which are mostly intended to teach the player how to control their character and use the transmutation graph.

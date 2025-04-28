@@ -41,49 +41,37 @@
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.3.x
-Demo main track implemented. Player can play through the main story of the demo, but not necessarily any of the extra content. First wave of play testing can commence upon completion of this version.
+Combat test candidate. Players can fight a series of 9 simple bosses. Player will be confined to Rec Room in Blue, but can essentially go out of bounds to see the rest of the map.
 
-- [x] New Game creation screen.
-- [x] Enable/disable overworld spells.
-	- [x] Display info screen describing overworld spell upon first time it is enabled.
-- [x] Add loot to chests.
-**STRY.x**
-- Battle actors for each boss created (x3).
-	- [x] Boss 1
-	- [x] Boss 2
-	- [ ] Final Boss
-- Main puzzles designed and implemented (x3).
-	- [x] Stasis
-	- [x] Catalyst
-	- [ ] Final
-- [ ] Demo tutorial written.
-	- [ ] Transmutation graph and intro puzzles.
-	- [x] Battle tutorial.
-	- [x] Partner introduction.
-- [ ] Blocking and non-blocking dialog triggers implemented.
-	- [x] Blocking.
-	- [ ] ~~Non-blocking.
-- [x] Cutscenes.
-**OVER.spel**
-- Overworld spells implemented:
-	- [x] Stasis
-	- [x] Catalyst
-- [x] Graphic showing which overworld spell is currently selected.
-**OVER.wild**
-- [x] Wild enemies implemented.
-**OVER.publ**
-- [x] Light up indicator wire created.
-**OVER.clay**
-- [ ] ~~Unique materials system planned.
-	- [ ] ~~Apply physics materials to transformed MagiClay.
-- [ ] Visual indicator of MagiClay object properties (destructable, etc).
-**CHAR.save**
-- [x] Save/load architecture implemented.
-**STRY.trig**
-- [x] Allow StoryActors to share AnimationPlayers.
-- [x] Allow StoryTriggers/StoryActors to play animations asynchronously.
-- [x] Create trigger to add items to player's inventory.
-- [x] Create trigger to add attack to player's movepool.
+**Final Stretch**
+- [ ] Select player's attack. Selector advances to partner. Click prev button and select attack again. Turn will auto end and partner's turn will be skipped.
+- [ ] Chunk disappears when player talks to NPC.
+- [ ] Phobias are not expiring or displaying in Character tab of BattleGUI.
+- [ ] Block not expiring?
+- [ ] Preset options do not currently do anything.
+- [ ] Fix transmutation hints to no longer show primary type transmutations.
+- [ ] Transmutation hints for allies hidden by PlayerControls.
+- [ ] BattleActor displays in battle show unused 'Elemental Affinities' section.
+- [ ] BattleActor displays in battle do not show equipment.
+- [ ] BattleActor displays in battle not properly formating floats (%.1f shown instead of percentage.)
+- [ ] BattleActor Bias and Primary elements are shown separately in various displays.
+- [ ] Clear status effects after battle.
+
+**Preset 1**
+- [x] Boss 1 
+- [x] Boss 2
+- [ ] Boss 3
+
+**Preset 2**
+- [ ] Boss 1 
+- [ ] Boss 2
+- [ ] Boss 3
+
+**Preset 3**
+- [ ] Boss 1 
+- [ ] Boss 2
+- [ ] Boss 3
+
 ## v0.4.x
 Demo MVP. Player can visit every area of the demo and experience the major features.
 
@@ -365,6 +353,14 @@ Player selects new spell or equipment from inside Inventory:
 4. Player confirms which spell/equipment to replace.
 5. Modify `BattleActor`.
 6. `CharacterScreen` (which listens for changes to `BattleActor`) updates GUI.
+### Alignment Manager (alig)
+- [ ] Update alignment values after every battle for all player characters.
+	- [ ] Using an attack. This value should be normalized after every battle.
+	- [ ] Transmuting into an element. This value should be normalized after every battle.
+	- [ ] Developing a phobia -1. This value is NOT normalized.
+- [x] Prevent character from aligning with an element, if they already have an alignment.
+- [ ] Ensure character's alignment and primary type match.
+
 ## Settings and Accessibility (ACCS)
 ### Keybindings (keyb)
 **Allow player to reassign keybindings.**
