@@ -51,6 +51,9 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 		var userTransCount = len([e0, e1].filter(func(item): return item != null))
 
 		for target in currentTargets:
+			if target.is_defeated:
+				Logger.append_battle_log("\nSkipping Target(%s), as they have been defeated." % target.name) 
+				continue
 			Logger.append_battle_log("\nEvaluating BattleAction(%s) against Target(%s)" 
 					% [ action.name, target.name ])
 
