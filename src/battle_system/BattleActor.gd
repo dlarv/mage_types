@@ -348,6 +348,7 @@ func serialize() -> Dictionary:
 		"equipment": equipmentData,
 	}
 
+
 func deserialize(data: Dictionary) -> void:
 	if "name" in data:
 		name = data["name"]

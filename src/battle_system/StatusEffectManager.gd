@@ -73,8 +73,22 @@ func calculate_expirations() -> Array:
 		if effect.is_expired():
 			_effects_to_remove.append(effect)
 
+	for phobia in phobias.values():
+		phobia.duration -= 1
+		if phobia.is_expired():
+			_effects_to_remove.append(phobia)
+
+	if blocking:
+		blocking.duration -= 1
+		if blocking.is_expired():
+			_effects_to_remove.append(blocking)
+			blocking = null
+
 	for effect in _effects_to_remove:
-		statuses.erase(effect.id)
+		if effect is PhobiaEffect:
+			phobias.erase(effect.element)
+		else:
+			statuses.erase(effect.id)
 	
 	var output = _effects_to_remove
 	_effects_to_remove = []
@@ -110,8 +124,8 @@ func list() -> Array:
 	if blocking != null:
 		output.append(blocking)
 	
-	for effect in statuses.values():
-		output.append(effect)
+	output.append_array(statuses.values())
+	output.append_array(phobias.values())
 	return output
 
 
