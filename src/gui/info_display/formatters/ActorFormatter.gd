@@ -5,7 +5,6 @@ extends Formatter
 @export var element2_icon: ElementIcon
 @export var bias_icon: ElementIcon
 @export var hp_label: Label
-@export var cost_label: RichTextLabel
 @export var status_effect_vbox: VBoxContainer
 @export var effects_label: RichTextLabel
 @export var melee_attack_label: Label
@@ -14,20 +13,28 @@ extends Formatter
 @export var ranged_defense_label: Label
 @export var speed_label: Label
 @export var evasion_label: Label
+@export var equipment_hbox: HBoxContainer
 @export var attacks_label: RichTextLabel
 
 func display(obj: Variant, limitInfo:=false) -> void:
 	super.display(obj)
 
 	effects_label.clear()
-	cost_label.clear()
 	attacks_label.clear()
+	equipment_hbox.get_child(0).text = ""
+	equipment_hbox.get_child(1).clear()
 
 	# Basic info.
 	name_label.text = obj.name
 	element1_icon.element = obj.element1
 	element2_icon.element = obj.element2
-	bias_icon.element = obj.alignment
+
+	if obj.alignment and not obj.alignment.is_blank():
+		bias_icon.show()
+		bias_icon.element = obj.alignment
+	else:
+		bias_icon.hide()
+
 	hp_label.text = "%d/%d" % [obj.current_hp, obj.hp]
 
 	display_stats(obj)
@@ -44,6 +51,14 @@ func display(obj: Variant, limitInfo:=false) -> void:
 			effects_label.pop() # Pop meta
 			effects_label.append_text(": %d turns remaining." % effect.duration)
 			effects_label.newline()
+
+	# Equipment
+	if obj.equipment:
+		equipment_hbox.show()
+		equipment_hbox.get_child(0).text = obj.equipment.name
+		equipment_hbox.get_child(1).append_text(obj.equipment.details)
+	else:
+		equipment_hbox.hide()
 	
 	for attack in obj.attacks:
 		if attack == null: continue

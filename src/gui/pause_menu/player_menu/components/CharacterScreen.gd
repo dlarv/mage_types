@@ -8,13 +8,14 @@ var _actor: BattleActor
 var _attacks: Array
 var _open_mode := 0
 
+
 func setup(actor: BattleActor) -> void:
 	_actor = actor
 
 	%Name_Label.text = actor.name
 	_init_stats(actor)
 
-	if actor.alignment.is_blank():
+	if not actor.alignment:
 		%Bias_Label.hide()
 		%Bias_ElementIcon.hide()
 	else:
@@ -69,6 +70,7 @@ func _set_attack(attack: Attack, index: int) -> void:
 				% [max_spell_slots, index])
 	%SpellScroller.get_children()[index].text = attack.name
 	_attacks[index] = attack
+
 
 func _set_equipment(e: Equipment) -> void:
 	if e: 

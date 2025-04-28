@@ -47,7 +47,7 @@ layout_mode = 2
 [node name="Bias_Label" type="Label" parent="General/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Bias:"
+text = "Alignment:"
 
 [node name="Bias_ElementIcon" parent="General/VBoxContainer" instance=ExtResource("2_p3dnk")]
 unique_name_in_owner = true
