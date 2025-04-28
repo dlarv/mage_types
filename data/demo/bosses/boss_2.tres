@@ -1,24 +1,26 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bfcmgeugkgdc4"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://bfcmgeugkgdc4"]
 
 [ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="2_emwl8"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_uqmjw"]
+[ext_resource type="Resource" uid="uid://b4d7tphii0oh6" path="res://data/battle_system/battle_actions/attacks/basic/throw_r.tres" id="3_8nplf"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_ris70"]
-[ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="3_y4nfe"]
+[ext_resource type="Resource" uid="uid://biyyeewaek1sj" path="res://data/battle_system/battle_actions/attacks/elementals/red/drain.tres" id="4_ivo2m"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="4_jwv5r"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_s70gu"]
+[ext_resource type="Resource" uid="uid://34n0lh5ijyi3" path="res://data/battle_system/battle_actions/attacks/elementals/red/consume.tres" id="5_cdw4o"]
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("4_s70gu")
 _base_melee_attack = 120.0
 _base_ranged_attack = 50.0
-_base_melee_defense = 80.0
-_base_ranged_defense = 80.0
-_base_speed = 80.0
+_base_melee_defense = 120.0
+_base_ranged_defense = 120.0
+_base_speed = 100.0
 _base_evasion = 100.0
 
 [resource]
 script = ExtResource("3_ris70")
-name = "Guy"
+name = "Boss 2"
 level = 1
 stat_manager = SubResource("Resource_6u7d0")
 hp = 250
@@ -26,5 +28,5 @@ reset_hp_after_battle = true
 _element1 = "red"
 _element2 = "red"
 _alignment = "red"
-attacks = Array[ExtResource("2_uqmjw")]([ExtResource("2_emwl8"), ExtResource("3_y4nfe")])
+attacks = Array[ExtResource("2_uqmjw")]([ExtResource("2_emwl8"), ExtResource("3_8nplf"), ExtResource("4_ivo2m"), ExtResource("5_cdw4o")])
 equipment = ExtResource("4_jwv5r")

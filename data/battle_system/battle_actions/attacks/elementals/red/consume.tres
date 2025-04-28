@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://34n0lh5ijyi3"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_3dgnf"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_aj6lg"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_iqdov"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="3_qhxvf"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_bbow0"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="5_r4umc"]
+
+[sub_resource type="Resource" id="Resource_0x7ke"]
+resource_name = "Instant Health Change"
+script = ExtResource("3_qhxvf")
+allow_overflow = false
+name = "Instant Health Change"
+strength = 0.4
+message = ""
+
+[sub_resource type="Resource" id="Resource_onwey"]
+script = ExtResource("4_bbow0")
+attack_effect = SubResource("Resource_0x7ke")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_grinx"]
+script = ExtResource("5_r4umc")
+stat = 6
+id = 6
+duration = 0
+description = ""
+name = "Melee Drop"
+strength = -2.0
+message = "{target}'s melee attack was lowered!
+{target}'s melee defense was lowered!"
+
+[sub_resource type="Resource" id="Resource_7d562"]
+script = ExtResource("4_bbow0")
+attack_effect = SubResource("Resource_grinx")
+effect_target = 1
+chance = 1.0
+
+[resource]
+resource_name = "Consume"
+script = ExtResource("2_iqdov")
+effects = Array[ExtResource("1_3dgnf")]([SubResource("Resource_onwey"), SubResource("Resource_7d562")])
+accuracy = 1.0
+power = 0
+name = "Consume"
+animation = ExtResource("1_aj6lg")
+_element = "red"
+priority = 0
+attack_range = 2
+target = 1
+details = ""

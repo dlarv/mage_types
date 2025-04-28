@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=5 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://cj7rk23vvyppe"]
 
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
+[ext_resource type="Resource" uid="uid://8qnf8bbhl6hh" path="res://data/battle_system/battle_actions/attacks/basic/throw_p.tres" id="2_mngg3"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_t6yc2"]
+[ext_resource type="Resource" uid="uid://di3c5k8fhu4n7" path="res://data/battle_system/battle_actions/attacks/basic/throw_o.tres" id="3_rog5s"]
+[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="3_se801"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="4_ae1kp"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
 
 [sub_resource type="Resource" id="Resource_my6ko"]
 script = ExtResource("7_mftjw")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
+_base_melee_attack = 120.0
+_base_ranged_attack = 120.0
 _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
 _base_speed = 100.0
@@ -18,10 +22,9 @@ script = ExtResource("1_wyvu6")
 name = "Alice"
 level = 1
 stat_manager = SubResource("Resource_my6ko")
-hp = 100
+hp = 200
 reset_hp_after_battle = true
 _element1 = "purple"
-_element2 = "cyan"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
-attacks = Array[ExtResource("2_t6yc2")]([])
+_element2 = "purple"
+_alignment = "purple"
+attacks = Array[ExtResource("2_t6yc2")]([ExtResource("2_mngg3"), ExtResource("3_rog5s"), ExtResource("4_ae1kp"), ExtResource("3_se801")])
