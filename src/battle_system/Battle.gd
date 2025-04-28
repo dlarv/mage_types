@@ -56,7 +56,8 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	_turn_counter += 1
 	gui.turn_counter = _turn_counter
 
-	Logger.append_battle_log("\nTurn %d" % _turn_counter)
+	Logger.append_battle_log("\n********************************Turn %d********************************" 
+			% _turn_counter)
 
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
@@ -253,7 +254,9 @@ func _resolve_end_of_battle() -> void:
 		enemy.resolve_end_of_battle()
 
 func _prep_next_turn() -> void:
+	Logger.append_battle_log("\n********************************AI********************************")
 	_actions = ai.get_actions(allies)
+	Logger.append_battle_log("\n********************************END AI********************************")
 	gui.show_enemy_intentions(true)
 	tie_breaker = randf() < 0.5
 
