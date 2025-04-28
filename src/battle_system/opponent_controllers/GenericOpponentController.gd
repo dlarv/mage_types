@@ -78,9 +78,9 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 			var currStatusPotential: float = potential[1]
 			Logger.append_battle_log("This attack has %.2f status potential." % currStatusPotential)
 
-			var agg := currDmg * aggression_bias / 10.0
-			Logger.append_battle_log("Agg(%.2f) = Dmg(%.2f) * Aggression(%.2f) / 10.0" 
-					% [agg, currDmg, aggression_bias])
+			var agg: float = currDmg * aggression_bias * action.accuracy / 10.0
+			Logger.append_battle_log("Agg(%.2f) = Dmg(%.2f) * Aggression(%.2f) * Accuracy(%.2f) / 10.0" 
+					% [agg, currDmg, aggression_bias, action.accuracy])
 
 			# If damage is directed towards ally, its a negative factor.
 			if currentTargets == team:
@@ -152,11 +152,11 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 		dmg += effect.get_attack_effect().get_dmg_potential(user, target, isFriendly, action)
 		var pot: float = effect.get_attack_effect().get_setup_potential(user, target, isFriendly, dmg)
 		var weight := _weighted_setup_potential(user, target, effect, isFriendly)
-		var val: float =  pot * weight * effect.chance * action.accuracy
+		var val: float =  pot * weight * effect.chance
 		
 		setupPotential += val
 
-	return [dmg * action.accuracy, setupPotential]
+	return [dmg, setupPotential]
 
 
 # All setup potential values should be [0, 1].

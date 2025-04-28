@@ -22,16 +22,16 @@ effect_target = 1
 chance = 1.0
 
 [sub_resource type="Resource" id="Resource_3y4p3"]
-resource_name = "Melee Drop"
+resource_name = "Ranged Drop"
 script = ExtResource("4_cjny5")
-stat = 6
+stat = 7
 id = 6
 duration = 0
 description = ""
-name = "Melee Drop"
+name = "Ranged Drop"
 strength = -3.0
-message = "{target}'s melee attack was lowered!
-{target}'s melee defense was lowered!"
+message = "{target}'s ranged attack was lowered!
+{target}'s ranged defense was lowered!"
 
 [sub_resource type="Resource" id="Resource_5mfrq"]
 resource_name = "Defense Drop"
@@ -52,4 +52,4 @@ _element = "red"
 priority = 0
 attack_range = 0
 target = 4
-details = "Drastically lowers the user's defense."
+details = "Drastically lowers the user's ranged attack and ranged defense."
