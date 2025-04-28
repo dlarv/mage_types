@@ -16,12 +16,14 @@ strength = 0.4
 message = ""
 
 [sub_resource type="Resource" id="Resource_onwey"]
+resource_name = "Instant Health Change"
 script = ExtResource("4_bbow0")
 attack_effect = SubResource("Resource_0x7ke")
 effect_target = 1
 chance = 1.0
 
 [sub_resource type="Resource" id="Resource_grinx"]
+resource_name = "Melee Drop"
 script = ExtResource("5_r4umc")
 stat = 6
 id = 6
@@ -33,6 +35,7 @@ message = "{target}'s melee attack was lowered!
 {target}'s melee defense was lowered!"
 
 [sub_resource type="Resource" id="Resource_7d562"]
+resource_name = "Melee Drop"
 script = ExtResource("4_bbow0")
 attack_effect = SubResource("Resource_grinx")
 effect_target = 1

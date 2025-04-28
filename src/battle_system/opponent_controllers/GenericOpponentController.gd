@@ -118,9 +118,19 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 			Logger.append_battle_log("PrevAction(%s) vs CurrAction(%s) ---> Action(%s)"
 					% [prevTarget.name, target.name, maxTarget.name])
 
-	Logger.append_battle_log("%s is using %s against %s.\n"
-			% [user.name, maxAction.name, maxTarget.name])
-	return ActorAction.new(user, maxAction, [ maxTarget ], TEAM_INDEX)
+	match maxAction.target:
+		_BattleAction.TargetType.ALLIES:
+			Logger.append_battle_log("%s is using %s on its team.\n"
+					% [user.name, maxAction.name])
+			return ActorAction.new(user, maxAction, team, TEAM_INDEX)
+		_BattleAction.TargetType.ENEMIES:
+			Logger.append_battle_log("%s is using %s against the opposing team.\n"
+					% [user.name, maxAction.name])
+			return ActorAction.new(user, maxAction, targets, TEAM_INDEX)
+		_:
+			Logger.append_battle_log("%s is using %s against %s.\n"
+					% [user.name, maxAction.name, maxTarget.name])
+			return ActorAction.new(user, maxAction, [maxTarget], TEAM_INDEX)
 
 
 func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _BattleAction) -> Array:

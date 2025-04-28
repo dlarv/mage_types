@@ -64,10 +64,11 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 			end = "its own team"
 		_:
 			if len(targets) > 0 and targets[0] == user:
-				"itself"
-			end = targets[0].name
+				end = "itself"
+			else:
+				end = targets[0].name
 
-	return { "msg": "%s used %s on %s." % [ user.name, name, end ] }
+	return { "msg": "%s used %s on %s.\n" % [ user.name, name, end ] }
 
 func apply_cost(user: BattleActor) -> float: 
 	return 0

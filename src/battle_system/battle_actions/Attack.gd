@@ -53,12 +53,17 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
+	var delayedEffects := []
 	for i in range(len(targets)):
 		var target = targets[i]
 		var didDmg := false
 
 		for effect in effects:
 			if effect.effect_target == _BaseEffectSlot.EffectTarget.NOT_USER and target == user: 
+				continue
+			elif effect.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE:
+				if not effect in delayedEffects:
+					delayedEffects.append(effect)
 				continue
 
 			didDmg = true
@@ -78,6 +83,25 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 				if effect.get_attack_effect() is Damage and target.is_defeated:
 					msg.append("........%s was defeated." % target.name)
 					continue
+		
+	for effect in delayedEffects:
+		var didDmg := true
+		var msg2 = effect.apply_effect(user, user, self, affinity)
+
+		# Get equipment effect logs, etc.
+		var msg3 = user.get_and_flush_msgs()
+		if len(msg3) > 0:
+			msg.append_array(msg3)
+
+		if len(msg2) > 0:
+			if effect.get_attack_effect() is Damage:
+				msg.append("This attack has recoil!")
+
+				if user.is_defeated:
+					msg.append("........%s was defeated." % effect.target.name)
+					continue
+		msg.append("%s" % msg2)
+
 
 	return { "msg": "\n".join(msg) }
 
