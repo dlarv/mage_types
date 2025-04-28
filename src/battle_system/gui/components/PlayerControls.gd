@@ -28,6 +28,7 @@ var _allow_end_turn: bool = false
 var _skip_indices := []
 # BattleActor[]
 var _allies := []
+var _selected_actions := []
 
 func _ready() -> void:
 	_final_index = attacks_panel.get_child_count() - 1
@@ -36,9 +37,11 @@ func _ready() -> void:
 func setup(allies: Array, items: Array, enemies: Array) -> void:
 	_skip_indices = []
 	self._allies = allies
+	_selected_actions = []
 
 	for i in range(len(allies)):
 		var ally = allies[i]
+		_selected_actions.append(0)
 		populate_new_attack_menu(ally, i)
 		_skip_indices.append(false)
 		# Variable has to be set out here, otherwise it'll be passed by reference.
@@ -72,6 +75,7 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 	# Doing this activates the "check if available" method.
 	attacks_panel.current_tab = attacks_panel.current_tab
 	calc_character_selector_state(attacks_panel.current_tab)
+
 
 func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	var scroller := ScrollContainer.new()
@@ -191,6 +195,7 @@ func _on_end_turn_button_pressed() -> void:
 	control_panel.current_tab = 0
 	_allow_end_turn = false
 	end_turn.emit(false)
+	_reset_selected()
 
 func calc_character_selector_state(index: int) -> void:
 	prev_button.disabled = index == _begin_index
@@ -223,4 +228,11 @@ func on_action_selected(state: int, index: int, action: _BattleAction) -> void:
 	else:
 		show_info.emit(action)
 		action_selected.emit(index, action)
-		_allow_end_turn = _edge_index >= _final_index
+		_selected_actions[index] = 1
+		_allow_end_turn = _selected_actions.min() == 1
+
+
+func _reset_selected() -> void:
+	for i in len(_allies):
+		_selected_actions[i] = int(_allies[i].is_defeated)
+		
