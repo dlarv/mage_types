@@ -113,3 +113,10 @@ func list() -> Array:
 	for effect in statuses.values():
 		output.append(effect)
 	return output
+
+
+func clear() -> void:
+	blocking = null
+	phobias = {}
+	_effects_to_remove = []
+	statuses = {}

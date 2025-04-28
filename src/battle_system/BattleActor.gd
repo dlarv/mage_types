@@ -292,6 +292,7 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 
 func resolve_end_of_battle() -> String:
 	stat_manager.reset()
+	statuses.clear()
 	if reset_hp_after_battle: 
 		current_hp = hp
 	
