@@ -130,6 +130,12 @@ func add(effect: StatChange, name: String) -> void:
 		Stats.RANGED_DEFENSE: _ranged_defense_mod += mod
 		Stats.SPEED: _speed_mod += mod
 		Stats.EVASION: _evasion_mod += mod
+		Stats.MELEE: 
+			_melee_attack_mod += mod
+			_melee_defense_mod += mod
+		Stats.RANGED: 
+			_ranged_attack_mod += mod
+			_ranged_defense_mod += mod
 
 	var msg := "%s for %s. Base(%f) * Mod(%f) = %f%s"
 	match effect.stat:

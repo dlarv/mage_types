@@ -25,6 +25,12 @@ func add(stat: StatManager.Stats, amount: float) -> void:
 			update_nibs(ranged_defense, amount)
 		StatManager.Stats.SPEED: 
 			update_nibs(speed, amount)
+		StatManager.Stats.MELEE:
+			update_nibs(melee_attack, amount)
+			update_nibs(melee_defense, amount)
+		StatManager.Stats.RANGED:
+			update_nibs(ranged_attack, amount)
+			update_nibs(ranged_defense, amount)
 
 func update_nibs(rect: TextureRect, mod: float=1) -> void:
 	var text = rect.tooltip_text
