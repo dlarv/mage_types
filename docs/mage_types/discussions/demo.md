@@ -82,6 +82,10 @@ BPMR + !{ Y, G }
 - Since Red is the tail, its harder for this boss to activate it.
 - Boss will use Orange/Melee moves, as these will apply a Red-wards pressure.
 - Boss will be Red-aligned. This synergizes well with its orb and Orange/Melee spam, as it further applies Red-ward pressure.
+- Boss has 2 healing moves: Drain and Consume. The latter harshly drops the user's melee stats.
+
+>[!note]
+>Shield is op as hell.
 ### Boss 3
 - This will be essentially the same as Boss 2, but will be Orange-aligned. This will make it impossible for the player to make it Magenta, debuffing the Magenta Strike strat.
 ## Preset 2
