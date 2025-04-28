@@ -3,108 +3,129 @@
 [ext_resource type="Script" path="res://src/battle_system/gui/components/TransmutationHint.gd" id="1_2qos5"]
 [ext_resource type="PackedScene" uid="uid://30dbgu5k66cc" path="res://src/battle_system/gui/components/transmutation_hint_icon.tscn" id="2_3h48n"]
 
-[node name="TransmutationHint" type="PanelContainer" node_paths=PackedStringArray("primary_element_1", "primary_elemen_2", "secondary_element_1", "secondary_element_2", "attack_element_1", "attack_element_2", "result_element_1", "result_element_2", "result_element_3")]
-custom_minimum_size = Vector2(0, 150)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TransmutationHint" type="PanelContainer" node_paths=PackedStringArray("attack_element_1", "attack_element_2", "attack_element_3", "internal_element_1", "internal_element_2", "internal_element_3")]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 395.0
+offset_bottom = 200.0
 script = ExtResource("1_2qos5")
-primary_element_1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon1")
-primary_elemen_2 = NodePath("VBoxContainer/InternalTransmutation/Icon1")
-secondary_element_1 = NodePath("VBoxContainer/SecondaryTransmutation/Icon1")
-secondary_element_2 = NodePath("VBoxContainer/InternalTransmutation/Icon2")
-attack_element_1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon2")
-attack_element_2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon2")
-result_element_1 = NodePath("VBoxContainer/PrimaryTransmutation/Icon3")
-result_element_2 = NodePath("VBoxContainer/SecondaryTransmutation/Icon3")
-result_element_3 = NodePath("VBoxContainer/InternalTransmutation/Icon3")
+attack_element_1 = NodePath("GridContainer/Icon1")
+attack_element_2 = NodePath("GridContainer/Icon2")
+attack_element_3 = NodePath("GridContainer/Icon3")
+internal_element_1 = NodePath("GridContainer/Icon4")
+internal_element_2 = NodePath("GridContainer/Icon5")
+internal_element_3 = NodePath("GridContainer/Icon6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+columns = 5
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Secondary"
+
+[node name="Label2" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "          +          "
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Label4" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "          =          "
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Result 1"
+
+[node name="Icon1" parent="GridContainer" instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Transmutations"
-
-[node name="PrimaryTransmutation" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Icon1" parent="VBoxContainer/PrimaryTransmutation" instance=ExtResource("2_3h48n")]
-layout_mode = 2
-
-[node name="Plus" type="Label" parent="VBoxContainer/PrimaryTransmutation"]
+[node name="Plus" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "+"
+text = "          +          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon2" parent="VBoxContainer/PrimaryTransmutation" instance=ExtResource("2_3h48n")]
+[node name="Icon2" parent="GridContainer" instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Equals" type="Label" parent="VBoxContainer/PrimaryTransmutation"]
+[node name="Equals" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "="
+text = "          =          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon3" parent="VBoxContainer/PrimaryTransmutation" instance=ExtResource("2_3h48n")]
+[node name="Icon3" parent="GridContainer" instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="SecondaryTransmutation" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="GridContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/separation = 10
 
-[node name="Icon1" parent="VBoxContainer/SecondaryTransmutation" instance=ExtResource("2_3h48n")]
+[node name="HSeparator2" type="HSeparator" parent="GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator3" type="HSeparator" parent="GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator4" type="HSeparator" parent="GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator5" type="HSeparator" parent="GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label6" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Primary"
+
+[node name="Label7" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "          +          "
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Result 1"
+
+[node name="Label9" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "          =          "
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Result 2"
+
+[node name="Icon4" parent="GridContainer" instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Plus" type="Label" parent="VBoxContainer/SecondaryTransmutation"]
+[node name="Plus2" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "+"
+text = "          +          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon2" parent="VBoxContainer/SecondaryTransmutation" instance=ExtResource("2_3h48n")]
+[node name="Icon5" parent="GridContainer" instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Equals" type="Label" parent="VBoxContainer/SecondaryTransmutation"]
+[node name="Equals2" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "="
+text = "          =          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon3" parent="VBoxContainer/SecondaryTransmutation" instance=ExtResource("2_3h48n")]
-layout_mode = 2
-
-[node name="InternalTransmutation" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Icon1" parent="VBoxContainer/InternalTransmutation" instance=ExtResource("2_3h48n")]
-layout_mode = 2
-
-[node name="Plus" type="Label" parent="VBoxContainer/InternalTransmutation"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "+"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Icon2" parent="VBoxContainer/InternalTransmutation" instance=ExtResource("2_3h48n")]
-layout_mode = 2
-
-[node name="Equals" type="Label" parent="VBoxContainer/InternalTransmutation"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "="
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Icon3" parent="VBoxContainer/InternalTransmutation" instance=ExtResource("2_3h48n")]
+[node name="Icon6" parent="GridContainer" instance=ExtResource("2_3h48n")]
 layout_mode = 2
