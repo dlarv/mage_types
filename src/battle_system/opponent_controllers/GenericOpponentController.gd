@@ -87,7 +87,6 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 				agg *= -1
 				Logger.append_battle_log("Damage is directed towards ally... Agg(%.2f)" % agg) 
 
-
 			var tCount = currTransCount * transmutation_bias * 2
 			Logger.append_battle_log("TransmutationCount(%.2f) = Count(%.2f) * T_Bias(%.2f) * 2" 
 					% [tCount, currTransCount, transmutation_bias])
