@@ -215,7 +215,7 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 	if dmg > 0 and allowBlocking:
 		blocking = statuses.blocking
 
-	if blocking != null:
+	if blocking:
 		dmg *= 1 - blocking.strength
 		if statuses.remove_blocking():
 			status_effects_removed.emit([blocking])
