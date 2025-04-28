@@ -18,30 +18,28 @@ var MAX_MOD := 3.0
 @export var _base_speed: float = 100
 @export var _base_evasion: float = 100
 
-var _attack_mod: float = 0
 var _melee_attack_mod: float = 1
 var _ranged_attack_mod: float = 1
-var _defense_mod: float = 0
 var _melee_defense_mod: float = 1
 var _ranged_defense_mod: float = 1
 var _speed_mod: float = 1
 var _evasion_mod: float = 1
 
 var melee_attack: float:
-	get: return _get_value(_base_melee_attack, _melee_attack_mod, _attack_mod)
+	get: return _get_value(_base_melee_attack, _melee_attack_mod)
 var ranged_attack: float:
-	get: return  _get_value(_base_ranged_attack, _ranged_attack_mod, _attack_mod)
+	get: return  _get_value(_base_ranged_attack, _ranged_attack_mod)
 var melee_defense: float:
-	get: return _get_value(_base_melee_defense, _melee_defense_mod, _defense_mod)
+	get: return _get_value(_base_melee_defense, _melee_defense_mod)
 var ranged_defense: float:
-	get: return _get_value(_base_ranged_defense, _ranged_defense_mod, _defense_mod)
+	get: return _get_value(_base_ranged_defense, _ranged_defense_mod)
 var speed: float:
 	get: return _get_value(_base_speed, _speed_mod)
 var evasion: float:
 	get: return _get_value(_base_evasion, _evasion_mod)
 
-func _get_value(base: float, mod1: float, mod2:=0.0) -> float:
-	var output = base * clampf(mod1 + mod2, MIN_MOD, MAX_MOD)
+func _get_value(base: float, mod1: float) -> float:
+	var output = base * clampf(mod1, MIN_MOD, MAX_MOD)
 	# Output==0. its not a direct comparison b/c of float nonsense.
 	if 1 / output == INF:
 		output = 0.1
@@ -98,8 +96,6 @@ func mod_base_stat(stat: Stats, amount: float, minAmount:=0.0) -> void:
 			_base_evasion = max(_base_evasion + amount, minAmount)
 
 func reset() -> void:
-	_attack_mod = 0
-	_defense_mod = 0
 	_melee_attack_mod = 1
 	_ranged_attack_mod = 1
 	_melee_defense_mod = 1
@@ -109,33 +105,39 @@ func reset() -> void:
 
 func get_stat_mod(stat: Stats) -> float:
 	match stat:
-		Stats.ATTACK: return _attack_mod
-		Stats.MELEE_ATTACK: return _melee_attack_mod + _attack_mod
-		Stats.RANGED_ATTACK: return _ranged_attack_mod + _attack_mod
-		Stats.DEFENSE: return _defense_mod
-		Stats.MELEE_DEFENSE: return _melee_defense_mod + _defense_mod
-		Stats.RANGED_DEFENSE: return _ranged_defense_mod + _defense_mod
+		# Stats.ATTACK: return _attack_mod
+		Stats.MELEE_ATTACK: return _melee_attack_mod
+		Stats.RANGED_ATTACK: return _ranged_attack_mod
+		# Stats.DEFENSE: return _defense_mod
+		Stats.MELEE_DEFENSE: return _melee_defense_mod
+		Stats.RANGED_DEFENSE: return _ranged_defense_mod
 		Stats.SPEED: return _speed_mod
 		Stats.EVASION: return _evasion_mod
 		_: return -1
 
 func add(effect: StatChange, name: String) -> void:
-	var mod := effect.get_strength()
+	var mod: float = effect.get_strength()
+	var keep: bool = not effect.clear_first
+
 	match effect.stat:
-		Stats.ATTACK: _attack_mod += mod
-		Stats.MELEE_ATTACK: _melee_attack_mod += mod
-		Stats.RANGED_ATTACK: _ranged_attack_mod += mod
-		Stats.DEFENSE: _defense_mod += mod
-		Stats.MELEE_DEFENSE: _melee_defense_mod += mod
-		Stats.RANGED_DEFENSE: _ranged_defense_mod += mod
-		Stats.SPEED: _speed_mod += mod
-		Stats.EVASION: _evasion_mod += mod
+		Stats.ATTACK: 
+			_melee_attack_mod = _melee_attack_mod * int(keep) + mod
+			_ranged_attack_mod = _ranged_attack_mod * int(keep) + mod
+		Stats.MELEE_ATTACK: _melee_attack_mod = _melee_attack_mod * int(keep) + mod
+		Stats.RANGED_ATTACK: _ranged_attack_mod = _ranged_attack_mod * int(keep) + mod
+		Stats.DEFENSE: 
+			_melee_defense_mod = _melee_defense_mod * int(keep) + mod
+			_ranged_defense_mod = _ranged_defense_mod * int(keep) + mod
+		Stats.MELEE_DEFENSE: _melee_defense_mod = _melee_defense_mod * int(keep) + mod
+		Stats.RANGED_DEFENSE: _ranged_defense_mod = _ranged_defense_mod * int(keep) + mod
+		Stats.SPEED: _speed_mod = _speed_mod * int(keep) + mod
+		Stats.EVASION: _evasion_mod = _evasion_mod * int(keep) + mod
 		Stats.MELEE: 
-			_melee_attack_mod += mod
-			_melee_defense_mod += mod
+			_melee_attack_mod = _melee_attack_mod * int(keep) + mod
+			_melee_defense_mod = _melee_defense_mod * int(keep) + mod
 		Stats.RANGED: 
-			_ranged_attack_mod += mod
-			_ranged_defense_mod += mod
+			_ranged_attack_mod = _ranged_attack_mod * int(keep) + mod
+			_ranged_defense_mod = _ranged_defense_mod * int(keep) + mod
 
 	var msg := "%s for %s. Base(%f) * Mod(%f) = %f%s"
 	match effect.stat:
@@ -144,71 +146,71 @@ func add(effect: StatChange, name: String) -> void:
 					effect.name, 
 					name, 
 					_base_melee_attack, 
-					_melee_attack_mod + _attack_mod, 
+					_melee_attack_mod, 
 					melee_attack, 
 					"(melee attack)"])
 			Logger.append_battle_log(msg % [
 						effect.name, 
 						name, 
 						_base_ranged_attack, 
-						_ranged_attack_mod + _attack_mod,
+						_ranged_attack_mod,
 						ranged_attack,
 						"(ranged attack)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_ATTACK))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_ATTACK))
+			stat_changed.emit(StatManager.Stats.MELEE_ATTACK, get_stat_mod(StatManager.Stats.MELEE_ATTACK))
+			stat_changed.emit(StatManager.Stats.RANGED_ATTACK, get_stat_mod(StatManager.Stats.RANGED_ATTACK))
 
 		StatManager.Stats.DEFENSE:
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
 					_base_melee_defense,
-					_melee_defense_mod + _defense_mod,
+					_melee_defense_mod,
 					melee_defense,
 					"(melee defense)"])
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
 					_base_ranged_defense,
-					_ranged_defense_mod + _defense_mod,
+					_ranged_defense_mod,
 					ranged_defense,
 					"(ranged defense)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_DEFENSE))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_DEFENSE))
+			stat_changed.emit(StatManager.Stats.MELEE_DEFENSE, get_stat_mod(StatManager.Stats.MELEE_DEFENSE))
+			stat_changed.emit(StatManager.Stats.RANGED_DEFENSE, get_stat_mod(StatManager.Stats.RANGED_DEFENSE))
 
 		StatManager.Stats.MELEE:
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
 					_base_melee_attack,
-					_melee_attack_mod + _attack_mod,
+					_melee_attack_mod,
 					melee_attack,
 					"(melee attack)"])
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
 					_base_melee_defense,
-					_melee_defense_mod + _defense_mod,
+					_melee_defense_mod,
 					melee_defense,
 					"(melee defense)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_ATTACK))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.MELEE_DEFENSE))
+			stat_changed.emit(StatManager.Stats.MELEE_ATTACK, get_stat_mod(StatManager.Stats.MELEE_ATTACK))
+			stat_changed.emit(StatManager.Stats.MELEE_DEFENSE, get_stat_mod(StatManager.Stats.MELEE_DEFENSE))
 		StatManager.Stats.RANGED:
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
 					_base_ranged_attack,
-					_ranged_attack_mod + _attack_mod,
+					_ranged_attack_mod,
 					ranged_attack,
 					"(ranged attack)"])
 			Logger.append_battle_log( msg % [
 					effect.name,
 					name,
 					_base_ranged_defense,
-					_ranged_defense_mod + _defense_mod,
+					_ranged_defense_mod,
 					ranged_defense,
 					"(ranged defense)"])
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_ATTACK))
-			stat_changed.emit(effect.stat, get_stat_mod(StatManager.Stats.RANGED_DEFENSE))
+			stat_changed.emit(StatManager.Stats.RANGED_ATTACK, get_stat_mod(StatManager.Stats.RANGED_ATTACK))
+			stat_changed.emit(StatManager.Stats.RANGED_DEFENSE, get_stat_mod(StatManager.Stats.RANGED_DEFENSE))
 		_:
 			Logger.append_battle_log(msg % [
 					effect.name,
