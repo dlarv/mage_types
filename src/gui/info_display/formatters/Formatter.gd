@@ -75,7 +75,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 			var a = effect.min_count
 			var b = effect.max_count
 			var number = str(a) if a == b else "%d-%d" % [a, b]
-			effectsLabel.append_text("Gives the target %s random ")
+			effectsLabel.append_text("Gives the target %d random " % number)
 			effectsLabel.push_meta(PhobiaEffect.new())
 			effectsLabel.append_text("phobias.")
 			effectsLabel.pop() # pop meta
@@ -94,13 +94,13 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		#
 		elif effect is DrainingDamage:
 			power += effect.strength
-			effectsLabel.append_text("Heals the user for x%.1f the damage dealt.")
+			effectsLabel.append_text("Heals the user for x%.1f the damage dealt." % effect.heal_percent)
 
 		elif effect is Damage:
 			if e.effect_target == EffectSlot.EffectTarget.TARGET:
 				power += effect.strength
 			else:
-				effectsLabel.append_text("%d%% chance to hurt the user.")
+				effectsLabel.append_text("Does recoil damage on user.")
 		return power
 
 func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLabel) -> int:
