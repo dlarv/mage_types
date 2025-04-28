@@ -4,8 +4,8 @@
 [ext_resource type="Resource" uid="uid://8qnf8bbhl6hh" path="res://data/battle_system/battle_actions/attacks/basic/throw_p.tres" id="2_mngg3"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_t6yc2"]
 [ext_resource type="Resource" uid="uid://di3c5k8fhu4n7" path="res://data/battle_system/battle_actions/attacks/basic/throw_o.tres" id="3_rog5s"]
-[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="3_se801"]
 [ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="4_ae1kp"]
+[ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="5_7nw6m"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
 
 [sub_resource type="Resource" id="Resource_my6ko"]
@@ -27,4 +27,4 @@ reset_hp_after_battle = true
 _element1 = "purple"
 _element2 = "purple"
 _alignment = "blank"
-attacks = Array[ExtResource("2_t6yc2")]([ExtResource("2_mngg3"), ExtResource("3_rog5s"), ExtResource("4_ae1kp"), ExtResource("3_se801")])
+attacks = Array[ExtResource("2_t6yc2")]([ExtResource("2_mngg3"), ExtResource("3_rog5s"), ExtResource("4_ae1kp"), ExtResource("5_7nw6m")])

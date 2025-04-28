@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_e335a"]
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
+[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="3_2wteg"]
 [ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="4_fy1xy"]
 [ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="5_0ga81"]
-[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="6_88cs6"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
 [ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="8_kxgh3"]
 
@@ -28,5 +28,5 @@ reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "blue"
 _alignment = "blank"
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("2_e335a"), ExtResource("6_88cs6"), ExtResource("4_fy1xy"), ExtResource("5_0ga81")])
+attacks = Array[ExtResource("2_ynay7")]([ExtResource("2_e335a"), ExtResource("4_fy1xy"), ExtResource("3_2wteg"), ExtResource("5_0ga81")])
 equipment = ExtResource("8_kxgh3")
