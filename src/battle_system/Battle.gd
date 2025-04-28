@@ -189,6 +189,8 @@ func calculate_transmutations_2(target: BattleActor, action: _BattleAction) -> v
 
  	# Calculate secondary + attack 
 	await _calculate_transmutation(target.element2, action.element, target, 1)
+	# Return early if target died due to phobia.
+	if target.is_defeated: return
 	# Calculate internal transmutation.
 	await _calculate_transmutation(target.element1, target.element2, target, 1, true)
 
@@ -244,6 +246,7 @@ func _check_if_battle_ended() -> bool:
 		battle_ended.emit(EndState.WON)
 		return true
 	return false
+
 
 func _resolve_end_of_battle() -> void:
 	for ally in allies:
