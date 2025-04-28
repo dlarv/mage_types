@@ -140,7 +140,9 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 	for effect in action.effects:
 		var isFriendly: bool = action.target == _BattleAction.TargetType.SELF \
 				or action.target == _BattleAction.TargetType.ALLY \
-				or action.target == _BattleAction.TargetType.ALLIES
+				or action.target == _BattleAction.TargetType.ALLIES \
+				or effect.effect_target == _BaseEffectSlot.EffectTarget.USER \
+				or effect.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE
 
 		dmg += effect.get_attack_effect().get_dmg_potential(user, target, isFriendly, action)
 		var pot: float = effect.get_attack_effect().get_setup_potential(user, target, isFriendly, dmg)
@@ -170,3 +172,7 @@ func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: _Ba
 			return base
 
 	return 1.0
+
+
+func _is_friendly(attackTarget: _BattleAction.TargetType, slot: _BaseEffectSlot) -> bool:
+	return false
