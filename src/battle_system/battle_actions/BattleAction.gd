@@ -63,10 +63,11 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 		TargetType.ALLIES:
 			end = "its own team"
 		_:
+			if len(targets) > 0 and targets[0] == user:
+				"itself"
 			end = targets[0].name
 
 	return { "msg": "%s used %s on %s." % [ user.name, name, end ] }
 
 func apply_cost(user: BattleActor) -> float: 
 	return 0
-

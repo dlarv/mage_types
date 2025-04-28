@@ -20,7 +20,7 @@ func get_strength() -> float:
 	return strength * MODIFIER
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	# Output should scale inversely with current stat buffs.
 	if isFriendly:
 		return _get_setup_potential_ally(target)

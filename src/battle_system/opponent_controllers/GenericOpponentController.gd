@@ -1,6 +1,8 @@
 extends OpponentController
 class_name GenericOpponentController
 
+const BASE_WEIGHT_UNIT: float = 10
+
 ## How much does this opponent value damage over setup.
 @export_range(0, 1) var aggression: float
 ## How much should randomness influence this opponent's decisions.
@@ -10,7 +12,6 @@ class_name GenericOpponentController
 
 var aggression_bias: float
 var setup_bias: float
-
 
 func setup(team: Array) -> void:
 	super.setup(team)
@@ -34,54 +35,72 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 	var maxTarget: BattleActor = targets[0]
 	var maxAction: _BattleAction = user.attacks[0]
 
+	var currentTargets: Array
+
 	for action in user.attacks:
-		for target in targets:
+		if action.target == _BattleAction.TargetType.ALLY \
+				or action.target == _BattleAction.TargetType.ALLIES \
+				or action.target == _BattleAction.TargetType.SELF:
+			currentTargets = team
+		else:
+			currentTargets = targets
+
+		for target in currentTargets:
 			Logger.append_battle_log("\nEvaluating BattleAction(%s) against Target(%s)" 
 					% [ action.name, target.name ])
 
 			# Count number of transmutations.
-			var e1 := ElementManager.get_matchup(target.element1, action.element)
 			var e2 := ElementManager.get_matchup(target.element2, action.element)
 			var e3 := ElementManager.get_matchup(target.element1, target.element2)
-			var currTransCount = len([e1, e2, e3].filter(func(item): return item != null))
+			var currTransCount = len([e2, e3].filter(func(item): return item != null))
 			Logger.append_battle_log("This action will cause %d transmutations." % currTransCount)
 
-			var potential := action.get_attack_potential(user, target)
+			var potential := _evaluate_setup_potential(user, target, action)
 
 			# Check damage.
-			var currDmg: int = potential.get("dmg", 0)
+			var currDmg: int = potential[0]
 			Logger.append_battle_log("This action will do ~%.2f base damage." % currDmg)
 
 			# Check potential phobia damage.
-			var phobiaDmg = int(target.has_phobia(e1))
-			phobiaDmg += int(target.has_phobia(e2))
+			var phobiaDmg = int(target.has_phobia(e2))
 			phobiaDmg += int(target.has_phobia(e3))
 			Logger.append_battle_log("This action will do ~%.2f phobia damage." % phobiaDmg)
 			currDmg += phobiaDmg
 			Logger.append_battle_log("This action will do ~%.2f total damage." % currDmg)
 
 			# Check non-damage related attack potential.
-			var currStatusPotential: float = potential.get("setup", 0)
+			var currStatusPotential: float = potential[1]
 			Logger.append_battle_log("This attack has %.2f status potential." % currStatusPotential)
 
-			# Get random influence.
-			var rand := randf_range(-2, 2 * intelligence)
-			Logger.append_battle_log("Rand(%.2f) = [-2, 2 * Intelligence(%.2f)]" 
-					% [rand, intelligence])
-
-			# Normalize damage, otherwise this value will always beat out the others.
-			var agg := currDmg * aggression_bias
-			Logger.append_battle_log("Agg(%.2f) = Dmg(%.2f) * Aggression(%.2f)" 
+			var agg := currDmg * aggression_bias / 10.0
+			Logger.append_battle_log("Agg(%.2f) = Dmg(%.2f) * Aggression(%.2f) / 10.0" 
 					% [agg, currDmg, aggression_bias])
+
+			# If damage is directed towards ally, its a negative factor.
+			if currentTargets == team:
+				agg *= -1
+				Logger.append_battle_log("Damage is directed towards ally... Agg(%.2f)" % agg) 
+
+
 			var tCount = currTransCount * transmutation_bias
 			Logger.append_battle_log("TransmutationCount(%.2f) = Count(%.2f) * T_Bias(%.2f)" 
 					% [tCount, currTransCount, transmutation_bias])
-			var sPot := currStatusPotential * setup_bias
-			Logger.append_battle_log("StatusPotential(%.2f) = Potential(%.2f) * S_Bias(%.2f)" 
+			var sPot := currStatusPotential * setup_bias * 2
+			Logger.append_battle_log("StatusPotential(%.2f) = Potential(%.2f) * S_Bias(%.2f) * 2" 
 					% [sPot, currStatusPotential, setup_bias])
+			# Status only moves get +2 in order to compete.
+			if action.attack_range == _BattleAction.AttackRange.STATUS:
+				sPot += 2
 
-			var val: float = agg + tCount + sPot + rand
-			Logger.append_battle_log("Value(%.2f) = Aggression(%.2f) + TransmutationCount(%.2f) + StatusPotential(%.2f) + Random(%.2f)" 
+
+			var val: float = agg + tCount + sPot
+			# Get random influence.
+			var rand := randf_range(intelligence, 1)
+			Logger.append_battle_log("Rand(%.2f) = [Intelligence(%.2f), 1]" 
+					% [rand, intelligence])
+			
+			val *= rand
+			Logger.append_battle_log("VALUE(%.2f) = (Aggression(%.2f) + TransmutationCount(%.2f) + StatusPotential(%.2f)) * Random(%.2f)" 
 					% [val, agg, tCount, sPot, rand])
 
 			# Update maximum value.
@@ -96,9 +115,48 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 					% [prevMaxVal, val, maxVal])
 			Logger.append_battle_log("PrevTarget(%s) vs CurrTarget(%s) ---> Target(%s)"
 					% [prevTarget.name, target.name, maxTarget.name])
-			Logger.append_battle_log("PrevAction(%s) vs CurrAction(%sf) ---> Action(%s)"
+			Logger.append_battle_log("PrevAction(%s) vs CurrAction(%s) ---> Action(%s)"
 					% [prevTarget.name, target.name, maxTarget.name])
 
 	Logger.append_battle_log("%s is using %s against %s.\n"
 			% [user.name, maxAction.name, maxTarget.name])
 	return ActorAction.new(user, maxAction, [ maxTarget ], TEAM_INDEX)
+
+
+func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _BattleAction) -> Array:
+	var setupPotential := 0.0
+	var dmg := 0
+
+	for effect in action.effects:
+		var isFriendly: bool = action.target == _BattleAction.TargetType.SELF \
+				or action.target == _BattleAction.TargetType.ALLY \
+				or action.target == _BattleAction.TargetType.ALLIES
+
+		dmg += effect.get_attack_effect().get_dmg_potential(user, target, isFriendly, action)
+		var pot: float = effect.get_attack_effect().get_setup_potential(user, target, isFriendly, dmg)
+		var weight := _weighted_setup_potential(user, target, effect, isFriendly)
+		var val: float =  pot * weight * effect.chance * action.accuracy
+		
+		setupPotential += val
+
+	return [dmg * action.accuracy, setupPotential]
+
+
+# All setup potential values should be [0, 1].
+# Modify these weights so they can compete with damage numbers.
+func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: _BaseEffectSlot, isFriendly: bool) -> float:
+	var effect := slot.get_attack_effect()
+	# If opponent has low health, they will prioritize healing themselves if possible.
+	if float(user.current_hp) < float(user.hp) / 2.0:
+		var base := (float(user.hp) - float(user.current_hp)) * slot.chance
+		if target == user and effect is InstantHealthChange :
+			Logger.append_battle_log("BattleActor(%s) is low on health. Boosting Effect(%s) by %.2f" 
+				% [user.name, effect.name, base])
+			return base
+		# Account for fact that target could block, etc.
+		elif effect is DrainingDamage:
+			Logger.append_battle_log("BattleActor(%s) is low on health. Boosting Effect(%s) by %.2f" 
+				% [user.name, effect.name, base])
+			return base
+
+	return 1.0

@@ -65,7 +65,7 @@ func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
 	for effect in effects:
 		dmg += effect.get_dmg_potential(user, self, target)
 		if effect.attack_effect is StatusEffect:
-			statusPotential += effect.chance
+			statusPotential += effect.get_setup_potential(user, target, self)
 	return { 
 		"status": statusPotential,
 		"dmg": dmg,

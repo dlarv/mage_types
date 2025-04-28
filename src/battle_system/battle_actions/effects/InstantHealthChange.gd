@@ -13,6 +13,7 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 		target.apply_damage(health, allow_overflow)
 		verb = "lost"
 	else:
+		verb = "gained"
 		target.heal(health, allow_overflow)
 
 	return "%s %s %d hp!" % [ target.name, verb, health ]
@@ -23,7 +24,7 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 
 # override
 ## Return what % of hp will be healed.
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	var mod := 1 if isFriendly else -1
 	if allow_overflow: 
 		return mod * strength

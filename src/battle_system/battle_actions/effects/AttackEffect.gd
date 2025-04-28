@@ -19,7 +19,7 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 
 
 # override
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	return 0
 
 

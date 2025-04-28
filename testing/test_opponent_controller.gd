@@ -17,12 +17,12 @@ class TestSetupPotential extends GutTest:
 		var expected := 0.5
 		effect.strength = 0.5
 
-		assert_eq(effect.get_setup_potential(user, target, true), 0.0)
-		assert_eq(effect.get_setup_potential(user, target, false), 0.0)
+		assert_eq(effect.get_setup_potential(user, target, true, 100), 0.0)
+		assert_eq(effect.get_setup_potential(user, target, false, 100), 0.0)
 
 		target.current_hp = 75
-		assert_eq(effect.get_setup_potential(user, target, true), 0.25)
-		assert_eq(effect.get_setup_potential(user, target, false), -0.25)
+		assert_eq(effect.get_setup_potential(user, target, true, 100), 0.25)
+		assert_eq(effect.get_setup_potential(user, target, false, 100), -0.25)
 
 
 	func test_instant_health_change_with_overflow() -> void:
@@ -32,12 +32,12 @@ class TestSetupPotential extends GutTest:
 		var expected := 0.5
 		effect.strength = 0.5
 
-		assert_eq(effect.get_setup_potential(user, target, true), expected)
-		assert_eq(effect.get_setup_potential(user, target, false), -expected)
+		assert_eq(effect.get_setup_potential(user, target, true, 100), expected)
+		assert_eq(effect.get_setup_potential(user, target, false, 100), -expected)
 
 		target.current_hp = 1
-		assert_eq(effect.get_setup_potential(user, target, true), expected)
-		assert_eq(effect.get_setup_potential(user, target, false), -expected)
+		assert_eq(effect.get_setup_potential(user, target, true, 100), expected)
+		assert_eq(effect.get_setup_potential(user, target, false, 100), -expected)
 
 
 	func test_stat_buff() -> void:
@@ -45,14 +45,14 @@ class TestSetupPotential extends GutTest:
 		effect.strength = 0.3
 
 		# The more stat buffs your ally has, the less setup potential.
-		var a := effect.get_setup_potential(user, target, true)
+		var a := effect.get_setup_potential(user, target, true, 0)
 		target.add_status_effect(effect)
-		var b := effect.get_setup_potential(user, target, true)
+		var b := effect.get_setup_potential(user, target, true, 0)
 		assert_gt(a, b)
 
-		a = effect.get_setup_potential(user, target, false)
+		a = effect.get_setup_potential(user, target, false, 0)
 		target.add_status_effect(effect)
-		b = effect.get_setup_potential(user, target, false)
+		b = effect.get_setup_potential(user, target, false, 0)
 		assert_eq(a, b)
 		assert_eq(a, -1.0)
 
@@ -61,18 +61,18 @@ class TestSetupPotential extends GutTest:
 		var effect: StatChange = autofree(StatChange.new())
 		effect.strength = -0.3
 
-		var a := effect.get_setup_potential(user, target, true)
+		var a := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(a, -1.0)
 
 		# If stat mod is maxed out (positive or negative), any further buffs are considered neglible.
 		effect.strength = 100
 		target.add_status_effect(effect)
 		effect.strength = -0.3
-		var b := effect.get_setup_potential(user, target, true)
+		var b := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(b, 0.0)
 
 
-		var c := effect.get_setup_potential(user, target, false)
+		var c := effect.get_setup_potential(user, target, false, 0)
 		assert_eq(c, 1.0)
 
 	
@@ -80,9 +80,9 @@ class TestSetupPotential extends GutTest:
 		var effect: StatusEffect = autofree(StatusEffect.new())
 		effect.id = StatusEffectManager.StatusEffects.STASIS
 
-		var woPhobia := effect.get_setup_potential(user, target, true)
+		var woPhobia := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(woPhobia, 0.0)
-		woPhobia = effect.get_setup_potential(user, target, false)
+		woPhobia = effect.get_setup_potential(user, target, false, 0)
 		assert_eq(woPhobia, 0.0)
 
 		# Stasis only cares about whether target has stasis.
@@ -90,10 +90,10 @@ class TestSetupPotential extends GutTest:
 		phobia.element = ElementManager.Blue
 		target.add_status_effect(phobia)
 
-		var wPhobia := effect.get_setup_potential(user, target, true)
+		var wPhobia := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(wPhobia, 1.0)
 
-		wPhobia = effect.get_setup_potential(user, target, false)
+		wPhobia = effect.get_setup_potential(user, target, false, 0)
 		assert_eq(wPhobia, -1.0)
 
 
@@ -101,16 +101,16 @@ class TestSetupPotential extends GutTest:
 		var effect: StatusEffect = autofree(StatusEffect.new())
 		effect.id = StatusEffectManager.StatusEffects.BLOCKING
 
-		var fullHp := effect.get_setup_potential(user, target, true)
+		var fullHp := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(fullHp, 0.5)
-		fullHp = effect.get_setup_potential(user, target, false)
+		fullHp = effect.get_setup_potential(user, target, false, 0)
 		assert_eq(fullHp, -0.5)
 
 		target.current_hp = int(target.hp / 2.0)
 
-		var halfHp := effect.get_setup_potential(user, target, true)
+		var halfHp := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(halfHp, 1.0)
-		halfHp = effect.get_setup_potential(user, target, false)
+		halfHp = effect.get_setup_potential(user, target, false, 0)
 		assert_eq(halfHp, -1.0)
 
 
@@ -118,15 +118,15 @@ class TestSetupPotential extends GutTest:
 		var effect: StatusEffect = autofree(StatusEffect.new())
 		effect.id = StatusEffectManager.StatusEffects.POISON
 
-		var fullHp := effect.get_setup_potential(user, target, false)
+		var fullHp := effect.get_setup_potential(user, target, false, 0)
 		assert_eq(fullHp, 1.0)
-		fullHp = effect.get_setup_potential(user, target, true)
+		fullHp = effect.get_setup_potential(user, target, true, 0)
 		assert_eq(fullHp, -1.0)
 
 		target.current_hp = int(target.hp / 2.0)
-		var halfHp := effect.get_setup_potential(user, target, false)
+		var halfHp := effect.get_setup_potential(user, target, false, 0)
 		assert_eq(halfHp, 0.5)
-		halfHp = effect.get_setup_potential(user, target, true)
+		halfHp = effect.get_setup_potential(user, target, true, 0)
 		assert_eq(halfHp, -0.5)
 		
 	
@@ -134,13 +134,13 @@ class TestSetupPotential extends GutTest:
 		var effect: StatusEffect = autofree(StatusEffect.new())
 		effect.id = StatusEffectManager.StatusEffects.HEALING
 
-		var fullHp := effect.get_setup_potential(user, target, true)
+		var fullHp := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(fullHp, 0.5)
-		fullHp = effect.get_setup_potential(user, target, false)
+		fullHp = effect.get_setup_potential(user, target, false, 0)
 		assert_eq(fullHp, -0.5)
 
 		target.current_hp = int(target.hp / 2.0)
-		var halfHp := effect.get_setup_potential(user, target, true)
+		var halfHp := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(halfHp, 1.0)
-		halfHp = effect.get_setup_potential(user, target, false)
+		halfHp = effect.get_setup_potential(user, target, false, 0)
 		assert_eq(halfHp, -1.0)

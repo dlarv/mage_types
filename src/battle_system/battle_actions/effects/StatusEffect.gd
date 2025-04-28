@@ -34,7 +34,7 @@ func instantiate_icon() -> Node:
 	return icon.instantiate()
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	var positiveEffect: int
 	var doesNotHave := 0 if target.has_status_effect(self) else 1
 	var bias: int

@@ -27,7 +27,7 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 	return target.get_and_flush_msgs()
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	return float(target.stasis != null)
 
 

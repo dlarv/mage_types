@@ -8,6 +8,7 @@ func _init():
 
 
 func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
+	if target.statuses.blocking: return 0
 	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, 1.0)
 
 
@@ -43,4 +44,3 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 func _set_name(_val: String) -> void:
 	name = "Damage"
 	resource_name = name
-

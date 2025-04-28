@@ -20,7 +20,7 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 	actualDmg *= heal_percent
 	if actualDmg > 0:
 		user.heal(actualDmg, allow_overflow)
-		msg += "\n%s drained %d from the target!" % [ user.name, actualDmg ]
+		msg += "\n%s drained %d hp from the target!" % [ user.name, actualDmg ]
 	return msg
 
 
@@ -29,7 +29,11 @@ func _set_name(_val: String) -> void:
 	resource_name = name
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool) -> float:
-	if isFriendly: return -int(target.hp * heal_percent)
-	elif allow_overflow: return int(target.hp * heal_percent)
-	else: return min(int(target.hp * heal_percent), target.hp - target.current_hp)
+func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
+	var amount := dmg * heal_percent / float(user.hp)
+	if isFriendly: 
+		return -amount
+	elif allow_overflow: 
+		return amount
+	else: 
+		return min(amount, target.hp - target.current_hp)
