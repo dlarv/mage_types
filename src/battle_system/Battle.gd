@@ -117,8 +117,9 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# Apply action effects.
 		var res: Dictionary = action.action.apply_effects(action.actor, action.targets)
 		var msg = res.msg
+		var missed: bool = res.get("missed", false)
 
-		if not res.has("missed") or not res.missed:
+		if not missed:
 			action.action.play_animation(userPosition, targetPosition, self)
 
 		# Display message and await input.
@@ -128,9 +129,10 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if await _check_if_battle_ended(): return
 
 		# Calculate target transmutations.
-		for target in action.targets:
-			if target.is_defeated: continue
-			await calculate_transmutations_2(target, action.action)
+		if not missed:
+			for target in action.targets:
+				if target.is_defeated: continue
+				await calculate_transmutations_2(target, action.action)
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -140,7 +142,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
 		# This only applies to melee attacks.
-		if action.targets.find(action.actor) == -1 \
+		if not missed and action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
 				and (action.action).attack_range == Attack.AttackRange.MELEE:
 			await calculate_transmutations_2(action.actor, action.action) 
