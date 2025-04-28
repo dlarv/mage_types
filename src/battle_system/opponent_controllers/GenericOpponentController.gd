@@ -164,8 +164,9 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: _BaseEffectSlot, isFriendly: bool) -> float:
 	var effect := slot.get_attack_effect()
 	# If opponent has low health, they will prioritize healing themselves if possible.
-	if float(user.current_hp) < float(user.hp) / 2.0:
+	if float(user.current_hp) < float(user.hp) / 3.0:
 		var base := (float(user.hp) - float(user.current_hp)) * slot.chance
+
 		if target == user and effect is InstantHealthChange :
 			Logger.append_battle_log("BattleActor(%s) is low on health. Boosting Effect(%s) by %.2f" 
 				% [user.name, effect.name, base])
@@ -178,6 +179,3 @@ func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: _Ba
 
 	return 1.0
 
-
-func _is_friendly(attackTarget: _BattleAction.TargetType, slot: _BaseEffectSlot) -> bool:
-	return false
