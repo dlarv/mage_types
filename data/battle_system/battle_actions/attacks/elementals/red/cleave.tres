@@ -34,6 +34,7 @@ message = "{target}'s melee defense was lowered!
 {target}'s ranged defense was lowered!"
 
 [sub_resource type="Resource" id="Resource_5mfrq"]
+resource_name = "Defense Drop"
 script = ExtResource("3_p22hq")
 attack_effect = SubResource("Resource_3y4p3")
 effect_target = 0

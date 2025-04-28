@@ -14,17 +14,19 @@ affinity_category = "defensive"
 apply_to = "target"
 
 [sub_resource type="Resource" id="Resource_fh11p"]
+resource_name = "Attack Boost"
 script = ExtResource("3_73hrh")
 stat = 0
 id = 6
 duration = 0
 description = ""
-name = ""
+name = "Attack Boost"
 strength = 1.0
 message = "{target}'s melee attack was boosted!
 {target}'s ranged attack was boosted!"
 
 [sub_resource type="Resource" id="Resource_w03i2"]
+resource_name = "Attack Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_fh11p")
 effect_target = 1
