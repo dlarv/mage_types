@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://bjfbrkbhkveyr"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_w5u1n"]
+[ext_resource type="Resource" uid="uid://di3c5k8fhu4n7" path="res://data/battle_system/battle_actions/attacks/basic/throw_o.tres" id="2_ynniy"]
+[ext_resource type="Resource" uid="uid://bkg6ove3jbkgg" path="res://data/battle_system/battle_actions/attacks/basic/throw_c.tres" id="3_jamdd"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/elementals/green/sting.tres" id="4_wxq7q"]
+[ext_resource type="Resource" uid="uid://ela4jxp8bcph" path="res://data/battle_system/battle_actions/attacks/elementals/green/total_meltdown.tres" id="5_xhxve"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="6_pv8dw"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_5ev5u"]
+
+[sub_resource type="Resource" id="Resource_my6ko"]
+script = ExtResource("7_5ev5u")
+_base_melee_attack = 120.0
+_base_ranged_attack = 120.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[resource]
+script = ExtResource("6_pv8dw")
+name = "Alice"
+level = 1
+stat_manager = SubResource("Resource_my6ko")
+hp = 200
+reset_hp_after_battle = true
+_element1 = "yellow"
+_element2 = "yellow"
+_alignment = "blank"
+attacks = Array[ExtResource("1_w5u1n")]([ExtResource("2_ynniy"), ExtResource("3_jamdd"), ExtResource("4_wxq7q"), ExtResource("5_xhxve")])

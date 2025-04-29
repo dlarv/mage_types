@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://g8xbj66ldn2v"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_5pmv6"]
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_f4la3"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_ieb1n"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_22vgf"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_46fy4"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_heba5"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="6_cric7"]
+
+[sub_resource type="Resource" id="Resource_nfer4"]
+script = ExtResource("3_22vgf")
+_element = "green"
+apply_to = "user"
+
+[sub_resource type="Resource" id="Resource_34db7"]
+resource_name = "Damage"
+script = ExtResource("4_46fy4")
+name = "Damage"
+strength = 90.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_n548g"]
+resource_name = "Recoil Damage"
+script = ExtResource("5_heba5")
+attack_effect = SubResource("Resource_34db7")
+effect_target = 0
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_aistk"]
+resource_name = "Damage"
+script = ExtResource("4_46fy4")
+name = "Damage"
+strength = 90.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_b5vqi"]
+resource_name = "Damage"
+script = ExtResource("5_heba5")
+attack_effect = SubResource("Resource_aistk")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_iosgp"]
+script = ExtResource("6_cric7")
+condition = SubResource("Resource_nfer4")
+success_effect = SubResource("Resource_b5vqi")
+failed_effect = SubResource("Resource_n548g")
+print_failed_status = "FAILURE"
+failure_msg = "FAILED"
+effect_target = 1
+chance = 1.0
+
+[resource]
+resource_name = "Orbital Strike"
+script = ExtResource("2_ieb1n")
+effects = Array[ExtResource("1_5pmv6")]([SubResource("Resource_iosgp")])
+accuracy = 1.0
+power = 90
+name = "Orbital Strike"
+animation = ExtResource("1_f4la3")
+_element = "green"
+priority = -1
+attack_range = 1
+target = 3
+details = "If user is Green, hits target.
+Otherwise hits user."

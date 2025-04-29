@@ -181,4 +181,3 @@ func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: _Ba
 			return base
 
 	return 1.0
-

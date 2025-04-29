@@ -32,8 +32,8 @@ var _original_image: Image
 
 func _ready() -> void:
 	_original_image = flow_chart.texture.get_image().duplicate()
-	restrict_graph([ElementManager.Orange, ElementManager.Yellow, ElementManager.Green, ElementManager.Cyan],
-			[ElementManager.Yellow, ElementManager.Green])
+	# restrict_graph([ElementManager.Orange, ElementManager.Yellow, ElementManager.Green, ElementManager.Cyan],
+			# [ElementManager.Yellow, ElementManager.Green])
 
 func restrict_graph(nodes: Array, edges: Variant=null) -> void:
 	if len(nodes) == 0 and edges == null:

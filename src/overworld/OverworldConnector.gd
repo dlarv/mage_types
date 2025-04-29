@@ -111,5 +111,3 @@ func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
 	player.play(id)
 	await player.animation_finished
 	overworld.process_mode = PROCESS_MODE_INHERIT
-
-

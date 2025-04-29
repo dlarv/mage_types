@@ -25,6 +25,7 @@ chance = 1.0
 resource_name = "Melee Drop"
 script = ExtResource("4_cjny5")
 stat = 6
+clear_first = null
 id = 6
 duration = 0
 description = ""

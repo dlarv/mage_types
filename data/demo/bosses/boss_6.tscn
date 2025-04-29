@@ -1,0 +1,54 @@
+[gd_scene load_steps=14 format=3 uid="uid://o4rkr1o8fo2u"]
+
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_0121t"]
+[ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_t0t1e"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_0giny"]
+[ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="4_648el"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="5_j2dgg"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_hoqx1"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="7_7wqcj"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="8_1uhlu"]
+[ext_resource type="Resource" uid="uid://c58tb3xrod70g" path="res://data/demo/bosses/boss_6.tres" id="9_12wlq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0mcoh"]
+radius = 1.3856
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ucadb"]
+radius = 1.56864
+
+[sub_resource type="Resource" id="Resource_xpu74"]
+script = ExtResource("4_648el")
+id = "BOSS1"
+next = -1
+end_state = ""
+
+[sub_resource type="Resource" id="Resource_cokyi"]
+script = ExtResource("7_7wqcj")
+aggression = 0.5
+intelligence = 0.4
+transmutation_bias = 1.0
+dialog_ids = Array[ExtResource("6_hoqx1")]([])
+
+[node name="Boss6" instance=ExtResource("1_0121t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
+collision_layer = 5
+
+[node name="blob2" parent="." index="1" instance=ExtResource("2_t0t1e")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="blob2/blob" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blob2/blob/StaticBody3D" index="0"]
+shape = SubResource("SphereShape3D_0mcoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+shape = SubResource("SphereShape3D_ucadb")
+
+[node name="StoryActor" parent="." index="3" groups=["persist"] instance=ExtResource("3_0giny")]
+dialog_ids = Array[ExtResource("4_648el")]([SubResource("Resource_xpu74")])
+
+[node name="EnemyActor" parent="." index="4" instance=ExtResource("5_j2dgg")]
+ai = SubResource("Resource_cokyi")
+_team = Array[ExtResource("8_1uhlu")]([ExtResource("9_12wlq")])
+disappear_on_defeat = false
+
+[editable path="blob2"]

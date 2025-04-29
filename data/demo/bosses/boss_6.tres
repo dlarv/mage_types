@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://c58tb3xrod70g"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_i5fw2"]
+[ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="2_atyb7"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_80gql"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_fhsaf"]
+
+[sub_resource type="Resource" id="Resource_6u7d0"]
+script = ExtResource("4_fhsaf")
+_base_melee_attack = 120.0
+_base_ranged_attack = 120.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+
+[resource]
+script = ExtResource("3_80gql")
+name = "Boss 6"
+level = 1
+stat_manager = SubResource("Resource_6u7d0")
+hp = 300
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "magenta"
+_alignment = "blue"
+attacks = Array[ExtResource("1_i5fw2")]([])
+equipment = ExtResource("2_atyb7")
