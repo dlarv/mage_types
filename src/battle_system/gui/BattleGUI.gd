@@ -142,7 +142,6 @@ func select_targets(user: BattleActor, action:_BattleAction):
 				targets = [ target ]
 
 		_BattleAction.TargetType.ENEMIES:
-			# ally_display_parent.select_all_as_target(true, action.element)
 			targets = enemies
 
 		_BattleAction.TargetType.ALL:

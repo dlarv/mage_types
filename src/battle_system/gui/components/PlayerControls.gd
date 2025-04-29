@@ -181,6 +181,7 @@ func next_character() -> void:
 func set_enabled(enable: bool) -> void:
 	blocking_panel.visible = !enable
 	if not enable: return
+	_reset_selected()
 
 	# Reset to first character.
 	attacks_panel.current_tab = _begin_index
@@ -195,7 +196,6 @@ func _on_end_turn_button_pressed() -> void:
 	control_panel.current_tab = 0
 	_allow_end_turn = false
 	end_turn.emit(false)
-	_reset_selected()
 
 func calc_character_selector_state(index: int) -> void:
 	prev_button.disabled = index == _begin_index
@@ -227,9 +227,9 @@ func on_action_selected(state: int, index: int, action: _BattleAction) -> void:
 		action_target_selection_cancelled.emit()
 	else:
 		show_info.emit(action)
-		action_selected.emit(index, action)
 		_selected_actions[index] = 1
 		_allow_end_turn = _selected_actions.min() == 1
+		action_selected.emit(index, action)
 
 
 func _reset_selected() -> void:
