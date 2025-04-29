@@ -10,6 +10,18 @@ const BASE_WEIGHT_UNIT: float = 10
 ## How much should opponent value causing transmutations.
 @export_range(0, 1) var transmutation_bias: float
 
+## Add extra weight to actions that will transmute an actor to this color. 
+@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
+var _transmutation_pref: String = "blank":
+	set(value):
+		_transmutation_pref = value
+		transmutation_pref = ElementManager.get_element_from_name(value)
+var transmutation_pref: ElementalType = ElementManager.Blank:
+	set(value): 
+		if value == null:
+			value = ElementManager.Blank
+		transmutation_pref = value 
+
 var aggression_bias: float
 var setup_bias: float
 
@@ -48,7 +60,8 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 		# If attack is melee, calculate user's transmutations.
 		var e0 = ElementManager.get_matchup(user.element2, action.element)
 		var e1 = ElementManager.get_matchup(user.element1, e0)
-		var userTransCount = len([e0, e1].filter(func(item): return item != null))
+		var pref := int(e0 == transmutation_pref) + int(e1 == transmutation_pref)
+		var userTransCount := int(e0 != null) + int(e1 != null)
 
 		for target in currentTargets:
 			if target.is_defeated:
@@ -60,9 +73,10 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 			# Count number of transmutations.
 			var e2 := ElementManager.get_matchup(target.element2, action.element)
 			var e3 := ElementManager.get_matchup(target.element1, e2)
-			var currTransCount = len([e2, e3].filter(func(item): return item != null))
-			Logger.append_battle_log("Total transmutations(%d) = Target(%d) + User(%d)." 
-					% [currTransCount + userTransCount, currTransCount, userTransCount])
+			var currTransCount: float = int(e2 != null) + int(e1 != null)
+			Logger.append_battle_log("Total transmutations(%.2f) = Target(%d) + User(%d) + Pref(%.2f)." 
+					% [currTransCount + userTransCount + pref, currTransCount, userTransCount, pref])
+			currTransCount += userTransCount + pref
 
 			var potential := _evaluate_setup_potential(user, target, action)
 
@@ -90,8 +104,8 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 				agg *= -1
 				Logger.append_battle_log("Damage is directed towards ally... Agg(%.2f)" % agg) 
 
-			var tCount = currTransCount * transmutation_bias * 2
-			Logger.append_battle_log("TransmutationCount(%.2f) = Count(%.2f) * T_Bias(%.2f) * 2" 
+			var tCount = currTransCount * transmutation_bias
+			Logger.append_battle_log("TransmutationCount(%.2f) = Count(%.2f) * T_Bias(%.2f)" 
 					% [tCount, currTransCount, transmutation_bias])
 			var sPot := currStatusPotential * setup_bias * 2
 			Logger.append_battle_log("StatusPotential(%.2f) = Potential(%.2f) * S_Bias(%.2f) * 2" 

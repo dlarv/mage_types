@@ -27,6 +27,7 @@ script = ExtResource("7_dqtvd")
 aggression = 0.5
 intelligence = 0.4
 transmutation_bias = 1.0
+_transmutation_pref = "blank"
 dialog_ids = Array[ExtResource("6_nhmxp")]([])
 
 [node name="Boss3" instance=ExtResource("1_7pwyx")]
