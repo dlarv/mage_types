@@ -109,28 +109,3 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 # override
 func is_action_available(actor: BattleActor) -> bool:
 	return true
-
-
-# override
-func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
-	var setupPotential := 0.0
-	var dmg := 0
-
-	for effect in effects:
-		var isFriendly: bool = self.target == _BattleAction.TargetType.SELF \
-				or self.target == _BattleAction.TargetType.ALLY \
-				or self.target == _BattleAction.TargetType.ALLIES
-
-		dmg += effect.get_attack_effect().get_dmg_potential(user, target, isFriendly, self)
-		var val := effect.get_attack_effect().get_setup_potential(user, target, isFriendly, dmg) \
-				* effect.chance
-				# * _weighted_setup_potential(user, target, effect.get_attack_effect(), isFriendly)
-
-
-		setupPotential += val
-
-
-	return { 
-		"setup": setupPotential,
-		"dmg": dmg,
-	}
