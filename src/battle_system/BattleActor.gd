@@ -130,7 +130,7 @@ func set_element(id: int, element: ElementalType) -> void:
 		_msgs.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 	if dmg != 0:
-		apply_damage(dmg)
+		apply_damage(dmg, false)
 
 func get_element(id: int) -> ElementalType:
 	if id == 0:
@@ -282,7 +282,7 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 	if healing > 0:
 		mod -= healing
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
-	apply_damage(hp * mod)
+	apply_damage(hp * mod, false)
 
 	var effects = statuses.calculate_expirations()
 	if len(effects) > 0:
