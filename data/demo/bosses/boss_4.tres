@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://duw316wovswh"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://duw316wovswh"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_isllc"]
 [ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="2_favyr"]
 [ext_resource type="Resource" uid="uid://vhtwa50btn1" path="res://data/battle_system/battle_actions/attacks/elementals/yellow/rush.tres" id="3_vwaqv"]
 [ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="4_vg7en"]
+[ext_resource type="Resource" uid="uid://ctbnp06ti551l" path="res://data/battle_system/battle_actions/attacks/elementals/orange/alchemy_beam.tres" id="5_t5wea"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="6_kjlc6"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="7_kweii"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="8_wxfs2"]
@@ -12,8 +13,8 @@
 script = ExtResource("8_wxfs2")
 _base_melee_attack = 100.0
 _base_ranged_attack = 100.0
-_base_melee_defense = 80.0
-_base_ranged_defense = 80.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
 _base_speed = 50.0
 _base_evasion = 100.0
 
@@ -24,8 +25,8 @@ level = 1
 stat_manager = SubResource("Resource_o5r2s")
 hp = 200
 reset_hp_after_battle = true
-_element1 = "orange"
+_element1 = "yellow"
 _element2 = "red"
 _alignment = "orange"
-attacks = Array[ExtResource("1_isllc")]([ExtResource("2_favyr"), ExtResource("3_vwaqv"), ExtResource("4_vg7en")])
+attacks = Array[ExtResource("1_isllc")]([ExtResource("2_favyr"), ExtResource("3_vwaqv"), ExtResource("4_vg7en"), ExtResource("5_t5wea")])
 equipment = ExtResource("6_kjlc6")
