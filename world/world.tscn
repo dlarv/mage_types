@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=42 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="18_3lqrh"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="18_p65bs"]
 [ext_resource type="PackedScene" uid="uid://b5vei7g5idme8" path="res://data/demo/bosses/boss_4.tscn" id="27_yi4cx"]
+[ext_resource type="PackedScene" uid="uid://ppa46ytf2itt" path="res://data/demo/bosses/boss_5.tscn" id="29_dyyk6"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -365,6 +366,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.50295, -101)
 [node name="Boss4" parent="Overworld/Blue/Preset2" instance=ExtResource("27_yi4cx")]
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1.80295, -101)
+
+[node name="Boss5" parent="Overworld/Blue/Preset2" instance=ExtResource("29_dyyk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.50295, -101)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

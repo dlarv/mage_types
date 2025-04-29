@@ -152,9 +152,15 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 				or effect.effect_target == _BaseEffectSlot.EffectTarget.USER \
 				or effect.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE
 
-		dmg += effect.get_attack_effect().get_dmg_potential(user, target, isFriendly, action)
-		var pot: float = effect.get_attack_effect().get_setup_potential(user, target, isFriendly, dmg)
-		var weight := _weighted_setup_potential(user, target, effect, isFriendly)
+		var slot: EffectSlot = effect.get_effect_slot(user, target, action, 1.0)
+
+		# ConditionalEffect, where effect will fail.
+		if not slot:
+			continue
+
+		dmg += slot.attack_effect.get_dmg_potential(user, target, isFriendly, action)
+		var pot: float = slot.attack_effect.get_setup_potential(user, target, isFriendly, dmg)
+		var weight := _weighted_setup_potential(user, target, slot, isFriendly)
 		var val: float =  pot * weight * effect.chance
 		
 		setupPotential += val
@@ -164,8 +170,8 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 
 # All setup potential values should be [0, 1].
 # Modify these weights so they can compete with damage numbers.
-func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: _BaseEffectSlot, isFriendly: bool) -> float:
-	var effect := slot.get_attack_effect()
+func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: EffectSlot, isFriendly: bool) -> float:
+	var effect := slot.attack_effect
 	# If opponent has low health, they will prioritize healing themselves if possible.
 	if float(user.current_hp) < float(user.hp) / 3.0:
 		var base := (float(user.hp) - float(user.current_hp)) * slot.chance

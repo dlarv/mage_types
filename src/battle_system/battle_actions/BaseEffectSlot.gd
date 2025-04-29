@@ -10,8 +10,12 @@ enum EffectTarget { USER, TARGET, NOT_USER, USER_ONCE }
 func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
 	return ""
 
-func get_attack_effect() -> _AttackEffect:
+## If object is of type EffectSlot, returns itself.
+## Otherwise, if object is of type ConditionalEffectSlot, return whichever Slot will activate.
+func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
 	return null
+
+func get_attack_effect() -> _AttackEffect: return null
 
 func _set_effect_target(val: EffectTarget) -> void:
 	effect_target = val

@@ -30,9 +30,11 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 
 
 # override
-func get_attack_effect() -> _AttackEffect:
-	return attack_effect 
+func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
+	return self
 
+func get_attack_effect() -> _AttackEffect: 
+	return attack_effect
 
 # override
 func _set_effect_target(val: EffectTarget) -> void:

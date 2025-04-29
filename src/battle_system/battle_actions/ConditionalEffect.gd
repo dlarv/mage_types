@@ -43,6 +43,17 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 
 ## Used to check the type of the last _AttackEffect.
 ## e.g. if it was Damage, StatusEffect, etc.
+func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
+	if user == null:
+		return success_effect
+	elif condition.check(user, target, action, effectiveness):
+		return success_effect
+	elif failed_effect:
+		return failed_effect
+	else:
+		return null
+
+
 func get_attack_effect() -> _AttackEffect:
 	return success_effect.attack_effect
 
