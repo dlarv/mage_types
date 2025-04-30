@@ -48,6 +48,7 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 	await dialog(false)
 	_dialog_box.skip_input_action = "interact"
 
+
 func on_player_actions_selected(allyActions: Array) -> void:
 	_dialog_box.stop()
 	gui.enable_player_controls(false)
@@ -99,18 +100,27 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		# Play animation.
 		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
-		var targetTeamIndex
-		var teamDisplay
-		# Target same team as user.
-		if(action.action.target == _BattleAction.TargetType.SELF \
-				or action.action.target == _BattleAction.TargetType.ALLY \
-				or action.action.target == _BattleAction.TargetType.ALLIES):
-			targetTeamIndex = action.team_index
-			teamDisplay =  gui.ally_display_parent if action.team_index == 0  else  gui.enemy_display_parent
-		# Target opposite team from user.
-		else:
-			targetTeamIndex = (action.team_index + 1) % 2
-			teamDisplay = gui.ally_display_parent if action.team_index == 1  else  gui.enemy_display_parent
+		var targetTeamIndex: int
+		var teamDisplay: TeamDisplay
+
+		match action.action.target:
+			# Target same team as user.
+			_BattleAction.TargetType.SELF,_BattleAction.TargetType.ALLY,_BattleAction.TargetType.ALLIES:
+				targetTeamIndex = action.team_index
+				teamDisplay = gui.ally_display_parent if action.team_index == 0 else gui.enemy_display_parent
+			# Target opposite team from user.
+			_BattleAction.TargetType.ENEMY,_BattleAction.TargetType.ENEMIES:
+				targetTeamIndex = (action.team_index + 1) % 2
+				teamDisplay = gui.ally_display_parent if action.team_index == 1 else gui.enemy_display_parent
+			_:
+				var isTargetEnemy := gui.enemy_display_parent.has_actor(action.targets[0])
+				if isTargetEnemy:
+					targetTeamIndex = (action.team_index + 1) % 2
+					teamDisplay = gui.enemy_display_parent
+				else:
+					targetTeamIndex = action.team_index
+					teamDisplay = gui.ally_display_parent
+
 
 		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
@@ -169,6 +179,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	await dialog(true)
 	_prep_next_turn()
 	gui.enable_player_controls(true)
+
 
 func calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
 	if target.stasis:
@@ -257,6 +268,7 @@ func _resolve_end_of_battle() -> void:
 	
 	for enemy in enemies:
 		enemy.resolve_end_of_battle()
+
 
 func _prep_next_turn() -> void:
 	Logger.append_battle_log("\n********************************AI********************************")
