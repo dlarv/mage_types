@@ -1,11 +1,14 @@
 @tool
 extends Condition
 class_name AffinityCondition
+## 
 
 @export_enum("defensive", "offensive") 
 var affinity_category := "defensive"
 @export_enum("user", "target", "both")
 var apply_to := "user"
+@export_enum("primary", "secondary", "both", "either")
+var slot := "secondary"
 
 #override
 func check(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> bool:
@@ -14,9 +17,16 @@ func check(user: BattleActor, target: BattleActor, action: _BattleAction, effect
 		"target": return _check_actor(target)
 		_: return _check_actor(user) and _check_actor(target)
 
+
 func _check_actor(user: BattleActor) -> bool:
-	return user.element1.is_defensive_type == (affinity_category == "defensive") \
+	match slot:
+		"primary": return user.element1.is_defensive_type == (affinity_category == "defensive")
+		"secondary": return user.element2.is_defensive_type == (affinity_category == "defensive")
+		"both": return user.element1.is_defensive_type == (affinity_category == "defensive") \
+				and user.element2.is_defensive_type == (affinity_category == "defensive")
+		"either",_: return user.element1.is_defensive_type == (affinity_category == "defensive") \
 				or user.element2.is_defensive_type == (affinity_category == "defensive")
+
 
 func _to_string() -> String:
 	var output := ""
