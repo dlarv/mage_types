@@ -25,7 +25,7 @@ chance = 1.0
 resource_name = "Ranged Drop"
 script = ExtResource("5_4se75")
 stat = 7
-clear_first = null
+clear_first = false
 id = 6
 duration = 0
 description = ""
@@ -35,7 +35,7 @@ message = "{target}'s ranged attack was lowered!
 {target}'s ranged defense was lowered!"
 
 [sub_resource type="Resource" id="Resource_bh22a"]
-resource_name = "Defense Drop"
+resource_name = "Ranged Drop"
 script = ExtResource("4_7tme4")
 attack_effect = SubResource("Resource_70lv3")
 effect_target = 0
