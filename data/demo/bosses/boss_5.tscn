@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ppa46ytf2itt"]
+[gd_scene load_steps=14 format=3 uid="uid://ppa46ytf2itt"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_y3wdx"]
 [ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_7rhoo"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_7yq5o"]
 [ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="4_2jnx3"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="5_1x6q8"]
+[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_tbjyt"]
 [ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="7_yhqsr"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="8_raroa"]
 [ext_resource type="Resource" uid="uid://dxuewc6tukepc" path="res://data/demo/bosses/boss_5.tres" id="9_yp16w"]
@@ -27,7 +28,7 @@ aggression = 0.5
 intelligence = 0.5
 transmutation_bias = 1.0
 _transmutation_pref = "orange"
-dialog_ids = null
+dialog_ids = Array[ExtResource("6_tbjyt")]([])
 
 [node name="Boss5" instance=ExtResource("1_y3wdx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
