@@ -63,6 +63,8 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 			end = "the opposing team"
 		TargetType.ALLIES:
 			end = "its own team"
+		TargetType.ALL:
+			end = "everyone"
 		_:
 			if len(targets) > 0 and targets[0] == user:
 				end = "itself"

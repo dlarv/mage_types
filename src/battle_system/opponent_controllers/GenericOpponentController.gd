@@ -149,6 +149,15 @@ func _get_action(user: BattleActor, targets: Array) -> ActorAction:
 			Logger.append_battle_log("%s is using %s against the opposing team.\n"
 					% [user.name, maxAction.name])
 			return ActorAction.new(user, maxAction, targets, TEAM_INDEX)
+		_BattleAction.TargetType.ALL:
+			Logger.append_battle_log("%s is using %s on everyone.\n"
+					% [user.name, maxAction.name])
+			return ActorAction.new(user, maxAction, team + targets, TEAM_INDEX)
+		_BattleAction.TargetType.RANDOM:
+			var target: BattleActor = (team + targets).pick_random()
+			Logger.append_battle_log("%s is using on %s.\n"
+					% [user.name, maxAction.name, target.name])
+			return ActorAction.new(user, maxAction, [target], TEAM_INDEX)
 		_:
 			Logger.append_battle_log("%s is using %s against %s.\n"
 					% [user.name, maxAction.name, maxTarget.name])
@@ -160,13 +169,13 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 	var dmg := 0
 
 	for effect in action.effects:
+		var slot: EffectSlot = effect.get_effect_slot(user, target, action, 1.0)
 		var isFriendly: bool = action.target == _BattleAction.TargetType.SELF \
 				or action.target == _BattleAction.TargetType.ALLY \
 				or action.target == _BattleAction.TargetType.ALLIES \
-				or effect.effect_target == _BaseEffectSlot.EffectTarget.USER \
-				or effect.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE
+				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER \
+				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE
 
-		var slot: EffectSlot = effect.get_effect_slot(user, target, action, 1.0)
 
 		# ConditionalEffect, where effect will fail.
 		if not slot:
