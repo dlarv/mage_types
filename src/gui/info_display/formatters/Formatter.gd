@@ -38,7 +38,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		if effect is PhobiaEffect:
 			effectsLabel.push_meta(effect)
 			append_elemental_color(effectsLabel, effect.element)
-			effectsLabel.append_text("-%s" % effect.name)
+			effectsLabel.append_text("-Phobia")
 			effectsLabel.pop() # Close meta tag
 			effectsLabel.append_text(" %d%%." % chance)
 
@@ -148,4 +148,10 @@ func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLab
 	return int((success_power + fail_power) / 2.0)
 
 func _on_meta_clicked(meta: Variant) -> void:
-	meta_clicked.emit(meta)
+	if meta is String:
+		var statuses := StatusEffectManager.StatusEffects.keys()
+		if meta.to_upper() in statuses:
+			meta_clicked.emit(StatusEffectManager.get_generic_status_effect(
+				StatusEffectManager.StatusEffects[meta.to_upper()]))
+	else:
+		meta_clicked.emit(meta)
