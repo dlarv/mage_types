@@ -36,7 +36,8 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 	if actualDmg == 0:
 		msg += "But %s blocked the attack!" % target.name
 	else:
-		msg += "But %s deflected some of the damage!\nDealt %d damage to %s." % [target.name, actualDmg, target.name]
+		msg += "But %s deflected some of the damage!\nDealt %d damage to %s." \
+				% [target.name, actualDmg, target.name]
 
 	return msg
 

@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=15 format=3 uid="uid://c4lyg4rq0tpt2"]
+
+[ext_resource type="PackedScene" uid="uid://chvddpwtc6d1r" path="res://src/battle_system/battle_actions/animations/geyser.tscn" id="1_p0nfe"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_peqn3"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_ebunw"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_7av7j"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_44j6p"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_re8ld"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="6_8smkb"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="7_5vclh"]
+
+[sub_resource type="Resource" id="Resource_k1p8r"]
+script = ExtResource("3_7av7j")
+_element = "green"
+apply_to = "target"
+
+[sub_resource type="Resource" id="Resource_8q577"]
+resource_name = "Damage"
+script = ExtResource("4_44j6p")
+name = "Damage"
+strength = 100.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_ki5nu"]
+resource_name = "Damage"
+script = ExtResource("5_re8ld")
+attack_effect = SubResource("Resource_8q577")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_hmoyi"]
+script = ExtResource("7_5vclh")
+allow_overflow = false
+name = "InstantHealthChange"
+strength = 0.1
+message = ""
+
+[sub_resource type="Resource" id="Resource_76u0o"]
+script = ExtResource("5_re8ld")
+attack_effect = SubResource("Resource_hmoyi")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_p6yoh"]
+script = ExtResource("6_8smkb")
+condition = SubResource("Resource_k1p8r")
+success_effect = SubResource("Resource_76u0o")
+failed_effect = SubResource("Resource_ki5nu")
+print_failed_status = "SILENT"
+failure_msg = "FAILED"
+effect_target = 1
+chance = 1.0
+
+[resource]
+resource_name = "Reactor Breach"
+script = ExtResource("2_ebunw")
+effects = Array[ExtResource("1_peqn3")]([SubResource("Resource_p6yoh")])
+accuracy = 1.0
+power = 100
+name = "Reactor Breach"
+animation = ExtResource("1_p0nfe")
+_element = "green"
+priority = 0
+attack_range = 1
+target = 5
+details = "Hits all combatants. If combatant is [el]Green[/el], heals 10% of their total hp. Otherwise does damage."

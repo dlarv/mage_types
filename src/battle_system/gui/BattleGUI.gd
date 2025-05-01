@@ -1,7 +1,8 @@
 extends Node3D
 class_name BattleGUI
 
-signal actions_selected(actions)
+signal actions_selected(actions: Array)
+signal target_selected(actor: BattleActor)
 
 @export var message_box: RichTextLabel 
 @export var ally_display_parent: TeamDisplay 
@@ -42,11 +43,13 @@ func init_allies(allies: Array) -> void:
 		var display = ally_display_parent.add_display(actor)
 	
 	ally_display_parent.highlight(0)
+	ally_display_parent.selected.connect(_on_target_selected)
 
 func init_enemies(enemies: Array) -> void:
 	self.enemies = enemies
 	for actor in enemies:
 		var display = enemy_display_parent.add_display(actor)
+	enemy_display_parent.selected.connect(_on_target_selected)
 
 func display_message(msg: Variant) -> void:
 	if len(msg) == 0: return
@@ -110,21 +113,17 @@ func select_targets(user: BattleActor, action:_BattleAction):
 			targets = [ user ]
 			# This pause is needed, otherwise the End turn button won't enable.
 			ally_display_parent.select_specific_target(false, action, user)
-			await ally_display_parent.selected
-			# await get_tree().create_timer(.05).timeout
+			# await ally_display_parent.selected
+			await target_selected
 			
 		_BattleAction.TargetType.ALLY:
-			# if ally_display_parent.length == 1 and not Settings.enable_transmutation_hints:
-			# 	targets = [ ally_display_parent.get_display(0).actor ]
-			# 	# This pause is needed, otherwise the End turn button won't enable.
-			# 	await get_tree().create_timer(.05).timeout
-			# else:
-				ally_display_parent.select_target(false, action)
-				target = await ally_display_parent.selected
-				targets = [ target ]
+			ally_display_parent.select_target(false, action)
+			# target = await ally_display_parent.selected
+			# target = await target_selected
+			target = await target_selected
+			targets = [ target ]
 			
 		_BattleAction.TargetType.ALLIES:
-			# enemy_display_parent.select_all_as_target(false, action.element)
 			targets = allies
 			
 		_BattleAction.TargetType.ENEMY:
@@ -138,19 +137,24 @@ func select_targets(user: BattleActor, action:_BattleAction):
 					ally_display_parent.enable_transmutation_hint(user, action)
 
 				enemy_display_parent.select_target(true, action)
-				target = await enemy_display_parent.selected
+				# target = await enemy_display_parent.selected
+				target = await target_selected
 				targets = [ target ]
 
 		_BattleAction.TargetType.ENEMIES:
-			# ally_display_parent.select_all_as_target(true, action.element)
 			targets = enemies
 
 		_BattleAction.TargetType.ALL:
 			targets = allies + enemies
 
+		_BattleAction.TargetType.ANY:
+			enemy_display_parent.select_target(true, action)
+			ally_display_parent.select_target(false, action)
+			target = await target_selected
+			targets = [ target ]
+
 		_BattleAction.TargetType.RANDOM:
 			targets = [ (allies + enemies).pick_random() ]
-
 	
 	if len(targets) == 1 and targets[0] == null:
 		return null
@@ -200,3 +204,5 @@ func display_turn_order(actors: Array) -> void:
 		turn_order_display.add_child(label)
 
 		
+func _on_target_selected(actor: BattleActor) -> void:
+	target_selected.emit(actor)

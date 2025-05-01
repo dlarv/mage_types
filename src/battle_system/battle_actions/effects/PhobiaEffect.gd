@@ -14,6 +14,7 @@ var element: ElementalType:
 		if value == null:
 			value = ElementManager.Blank
 		element = value 
+		_set_name("")
 
 func _init():
 	id = StatusEffectManager.StatusEffects.PHOBIC
@@ -36,7 +37,10 @@ func instantiate_icon() -> Node:
 
 # override
 func _set_name(val: String) -> void:
-	name = "%s-Phobic" % element
+	if element.is_blank():
+		name = "Phobic"
+	else:
+		name = "%s-Phobic" % element
 	resource_name = name
 
 # override

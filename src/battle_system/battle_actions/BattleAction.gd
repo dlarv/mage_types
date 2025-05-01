@@ -38,6 +38,7 @@ var element: ElementalType = ElementManager.Blank:
 
 # virtual
 func play_animation(start: Vector2, end: Vector2, parent: Node2D) -> Node:
+	if not animation: return null
 	var obj = animation.instantiate()
 	obj._play(start, end, parent, element)
 	return obj
@@ -62,12 +63,15 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 			end = "the opposing team"
 		TargetType.ALLIES:
 			end = "its own team"
+		TargetType.ALL:
+			end = "everyone"
 		_:
 			if len(targets) > 0 and targets[0] == user:
-				"itself"
-			end = targets[0].name
+				end = "itself"
+			else:
+				end = targets[0].name
 
-	return { "msg": "%s used %s on %s." % [ user.name, name, end ] }
+	return { "msg": "%s used %s on %s.\n" % [ user.name, name, end ] }
 
 func apply_cost(user: BattleActor) -> float: 
 	return 0

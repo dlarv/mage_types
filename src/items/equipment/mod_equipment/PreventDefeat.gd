@@ -9,6 +9,7 @@ var _death_averted := false
 func equip(actor: BattleActor) -> void:
 	_actor = actor
 	actor.battle_setup_completed.connect(setup)
+	Logger.append_battle_log("PreventDefeat equipment altered %s.apply_damage(...)" % actor.name)
 	actor.add_func_override(actor.apply_damage, apply_damage)
 
 #override
@@ -21,7 +22,6 @@ func setup() -> void:
 	_death_averted = false
 
 func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
-	Logger.append_battle_log("PreventDefeat equipment altered %s.apply_damage(...)" % _actor.name)
 	var blocking = null
 	if dmg > 0 and allowBlocking:
 		blocking = _actor.statuses.blocking

@@ -29,3 +29,7 @@ func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: boo
 	if allow_overflow: 
 		return mod * strength
 	return mod * float(min(target.hp * strength, target.hp - target.current_hp)) / float(target.hp)
+
+func _set_name(val: String) -> void:
+	name = "InstantHealthChange"
+

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://br4jbqaramsnj"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_u5e8c"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="2_djsen"]
+[ext_resource type="Resource" uid="uid://wc6nsqhqv1mp" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/yellow_phobia.tres" id="3_jgxx4"]
+[ext_resource type="Resource" uid="uid://drcu827fevmfu" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/steel_shot.tres" id="4_23k5r"]
+[ext_resource type="Resource" uid="uid://ctbnp06ti551l" path="res://data/battle_system/battle_actions/attacks/elementals/orange/alchemy_beam.tres" id="5_g4hkp"]
+[ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="6_fcoj6"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="7_lsv5j"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="8_oyf57"]
+
+[sub_resource type="Resource" id="Resource_ii6l6"]
+script = ExtResource("8_oyf57")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 140.0
+_base_evasion = 100.0
+
+[resource]
+script = ExtResource("7_lsv5j")
+name = "Player"
+level = 1
+stat_manager = SubResource("Resource_ii6l6")
+hp = 200
+reset_hp_after_battle = true
+_element1 = "red"
+_element2 = "orange"
+_alignment = "blank"
+attacks = Array[ExtResource("1_u5e8c")]([ExtResource("2_djsen"), ExtResource("3_jgxx4"), ExtResource("4_23k5r"), ExtResource("5_g4hkp")])
+equipment = ExtResource("6_fcoj6")

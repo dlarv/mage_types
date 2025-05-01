@@ -96,6 +96,12 @@ func select_specific_target(isAttack: bool, action: _BattleAction, actor: Battle
 	if Settings.enable_transmutation_hints:
 		sprite.enable_transmutation_hint(action)
 
+func has_actor(actor: BattleActor) -> bool:
+	for display in displays:
+		if actor == display.actor:
+			return true
+	return false
+
 
 func select_all_as_target(isAttack: bool, action: _BattleAction) -> void:
 	var highlight =  Color.RED if isAttack else Color.GREEN

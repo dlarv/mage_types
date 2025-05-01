@@ -10,7 +10,7 @@ class_name StatusHeal
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0):
 	target.remove_status_effect(effect)
-	return "%s was healed from %s." % [ target.name, effect.name ]
+	return "%s's %s was removed!" % [ target.name, effect.name ]
 
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	return float(target.has_status_effect(effect))

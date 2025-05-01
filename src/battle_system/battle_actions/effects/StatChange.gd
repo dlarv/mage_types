@@ -12,6 +12,9 @@ const MODIFIER := 0.3
 				" ".join(Array(StatManager.Stats.keys()[stat].split("_")).map(func(x): return x.capitalize())),
 				dir]
 
+## If true, set target's stat to 0 before apply buff/debuff.
+@export var clear_first := false
+
 func _init():
 	id = StatusEffectManager.StatusEffects.STAT_CHANGE
 

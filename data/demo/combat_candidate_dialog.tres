@@ -54,7 +54,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": -1
 },
 "1_10": {
 "dialogue": "Finally, using a ranged attack will only transmute your opponent. Melee attacks will affect both you and your opponent.",
@@ -109,7 +109,7 @@ nodes = {
 "speaker": 0
 },
 "1_14": {
-"dialogue": "Sure thing, preset {{preset}} is now active.",
+"dialogue": "Sure thing,{{current_cutscene}} is now active.",
 "offset": Vector2(280, 300),
 "options": {
 0: {
@@ -219,7 +219,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": -1
 },
 "1_20": {
 "dialogue": "Preset 3 will prevent [b]combatants[/b] from being [el]Yellow[/el], [el]Green[/el], or [el]Cyan[/el]. ",
@@ -977,18 +977,18 @@ cont...",
 "signalValue": "battle_started"
 },
 "4_1": {
-"cur_variable": 2,
+"cur_variable": 1,
 "link": &"1_33",
 "offset": Vector2(320, -1580),
 "type": 0,
 "value": "true",
-"variable": "preset"
+"variable": "learned_elements"
 },
 "5_1": {
 "condition": Array[Dictionary]([{
-"cur_variable": 2,
+"cur_variable": 0,
 "operator": 0,
-"value1": "preset",
+"value1": "current_cutscene",
 "value2": "true"
 }]),
 "false": &"1_43",
@@ -1008,31 +1008,31 @@ cont...",
 "title": "Tutorial Battle"
 },
 "9_1": {
-"cur_variable": 1,
+"cur_variable": 0,
 "link": &"1_14",
 "offset": Vector2(-220, 0),
-"signalValue": "preset_updated",
+"signalValue": "play_cutscene",
 "type": 0,
-"value": "1",
-"variable": "learned_elements"
+"value": "preset_1",
+"variable": "current_cutscene"
 },
 "9_2": {
-"cur_variable": 1,
+"cur_variable": 0,
 "link": &"1_14",
 "offset": Vector2(-180, 320),
-"signalValue": "preset_updated",
+"signalValue": "play_cutscene",
 "type": 0,
-"value": "2",
-"variable": "learned_elements"
+"value": "preset_2",
+"variable": "current_cutscene"
 },
 "9_3": {
-"cur_variable": 1,
+"cur_variable": 0,
 "link": &"1_14",
 "offset": Vector2(-220, 680),
-"signalValue": "preset_updated",
+"signalValue": "play_cutscene",
 "type": 0,
-"value": "3",
-"variable": "learned_elements"
+"value": "preset_3",
+"variable": "current_cutscene"
 },
 "9_4": {
 "cur_variable": 1,
@@ -1052,10 +1052,6 @@ variables = {
 "learned_elements": {
 "type": 1,
 "value": false
-},
-"preset": {
-"type": 4,
-"value": ""
 }
 }
 strays = Array[String](["8_1", "8_2", "1_25", "2_1", "2_3", "1_24"])

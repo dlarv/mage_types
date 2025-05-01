@@ -43,7 +43,7 @@ func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: boo
 			positiveEffect = 1 if isFriendly else -1
 			bias = 2 if target.has_phobia() else 0
 
-		StatusEffectManager.StatusEffects.BLOCKING: 
+		StatusEffectManager.StatusEffects.BLOCK: 
 			positiveEffect = 1 if isFriendly else -1
 			if float(target.current_hp) / float(target.hp) <= 0.5: bias = 2
 			else: bias = 1
@@ -60,7 +60,7 @@ func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: boo
 			if float(target.current_hp) / float(target.hp) <= 0.5: bias = 2
 			else: bias = 1
 
-		StatusEffectManager.StatusEffects.FLINCHING: 
+		StatusEffectManager.StatusEffects.FLINCH: 
 			positiveEffect = -1 if isFriendly else 1
 
 	return float(bias * positiveEffect * doesNotHave) / 2.0

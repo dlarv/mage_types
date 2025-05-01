@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://dxuewc6tukepc"]
+
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_v07ui"]
+[ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="2_k1frh"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="2_sjfl8"]
+[ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="3_e745c"]
+[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_hjcvx"]
+[ext_resource type="Resource" uid="uid://vhtwa50btn1" path="res://data/battle_system/battle_actions/attacks/elementals/yellow/rush.tres" id="4_fm2b6"]
+[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_qdnfr"]
+[ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="5_kf0x7"]
+
+[sub_resource type="Resource" id="Resource_w6ghj"]
+script = ExtResource("4_qdnfr")
+_base_melee_attack = 110.0
+_base_ranged_attack = 110.0
+_base_melee_defense = 120.0
+_base_ranged_defense = 120.0
+_base_speed = 80.0
+_base_evasion = 100.0
+
+[resource]
+script = ExtResource("3_hjcvx")
+name = "Boss 5"
+level = 1
+stat_manager = SubResource("Resource_w6ghj")
+hp = 250
+reset_hp_after_battle = true
+_element1 = "yellow"
+_element2 = "green"
+_alignment = "yellow"
+attacks = Array[ExtResource("1_v07ui")]([ExtResource("2_sjfl8"), ExtResource("3_e745c"), ExtResource("4_fm2b6"), ExtResource("5_kf0x7")])
+equipment = ExtResource("2_k1frh")

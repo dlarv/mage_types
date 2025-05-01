@@ -48,6 +48,7 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 	await dialog(false)
 	_dialog_box.skip_input_action = "interact"
 
+
 func on_player_actions_selected(allyActions: Array) -> void:
 	_dialog_box.stop()
 	gui.enable_player_controls(false)
@@ -56,7 +57,8 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	_turn_counter += 1
 	gui.turn_counter = _turn_counter
 
-	Logger.append_battle_log("\nTurn %d" % _turn_counter)
+	Logger.append_battle_log("\n********************************Turn %d********************************" 
+			% _turn_counter)
 
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
@@ -98,26 +100,36 @@ func on_player_actions_selected(allyActions: Array) -> void:
 
 		# Play animation.
 		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
-		var targetTeamIndex
-		var teamDisplay
-		# Target same team as user.
-		if(action.action.target == _BattleAction.TargetType.SELF \
-				or action.action.target == _BattleAction.TargetType.ALLY \
-				or action.action.target == _BattleAction.TargetType.ALLIES):
-			targetTeamIndex = action.team_index
-			teamDisplay =  gui.ally_display_parent if action.team_index == 0  else  gui.enemy_display_parent
-		# Target opposite team from user.
-		else:
-			targetTeamIndex = (action.team_index + 1) % 2
-			teamDisplay = gui.ally_display_parent if action.team_index == 1  else  gui.enemy_display_parent
+		var targetTeamIndex: int
+		var teamDisplay: TeamDisplay
+
+		match action.action.target:
+			# Target same team as user.
+			_BattleAction.TargetType.SELF,_BattleAction.TargetType.ALLY,_BattleAction.TargetType.ALLIES:
+				targetTeamIndex = action.team_index
+				teamDisplay = gui.ally_display_parent if action.team_index == 0 else gui.enemy_display_parent
+			# Target opposite team from user.
+			_BattleAction.TargetType.ENEMY,_BattleAction.TargetType.ENEMIES:
+				targetTeamIndex = (action.team_index + 1) % 2
+				teamDisplay = gui.ally_display_parent if action.team_index == 1 else gui.enemy_display_parent
+			_:
+				var isTargetEnemy := gui.enemy_display_parent.has_actor(action.targets[0])
+				if isTargetEnemy:
+					targetTeamIndex = (action.team_index + 1) % 2
+					teamDisplay = gui.enemy_display_parent
+				else:
+					targetTeamIndex = action.team_index
+					teamDisplay = gui.ally_display_parent
+
 
 		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
 		# Apply action effects.
 		var res: Dictionary = action.action.apply_effects(action.actor, action.targets)
 		var msg = res.msg
+		var missed: bool = res.get("missed", false)
 
-		if not res.has("missed") or not res.missed:
+		if not missed:
 			action.action.play_animation(userPosition, targetPosition, self)
 
 		# Display message and await input.
@@ -127,9 +139,10 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if await _check_if_battle_ended(): return
 
 		# Calculate target transmutations.
-		for target in action.targets:
-			if target.is_defeated: continue
-			await calculate_transmutations_2(target, action.action)
+		if not missed:
+			for target in action.targets:
+				if target.is_defeated: continue
+				await calculate_transmutations_2(target, action.action)
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -139,7 +152,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
 		# This only applies to melee attacks.
-		if action.targets.find(action.actor) == -1 \
+		if not missed and action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
 				and (action.action).attack_range == Attack.AttackRange.MELEE:
 			await calculate_transmutations_2(action.actor, action.action) 
@@ -167,6 +180,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	_prep_next_turn()
 	gui.enable_player_controls(true)
 
+
 func calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
 	if target.stasis:
 		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)
@@ -188,6 +202,8 @@ func calculate_transmutations_2(target: BattleActor, action: _BattleAction) -> v
 
  	# Calculate secondary + attack 
 	await _calculate_transmutation(target.element2, action.element, target, 1)
+	# Return early if target died due to phobia.
+	if target.is_defeated: return
 	# Calculate internal transmutation.
 	await _calculate_transmutation(target.element1, target.element2, target, 1, true)
 
@@ -244,6 +260,7 @@ func _check_if_battle_ended() -> bool:
 		return true
 	return false
 
+
 func _resolve_end_of_battle() -> void:
 	for ally in allies:
 		var msg: String = ally.resolve_end_of_battle()
@@ -252,8 +269,11 @@ func _resolve_end_of_battle() -> void:
 	for enemy in enemies:
 		enemy.resolve_end_of_battle()
 
+
 func _prep_next_turn() -> void:
+	Logger.append_battle_log("\n********************************AI********************************")
 	_actions = ai.get_actions(allies)
+	Logger.append_battle_log("\n********************************END AI********************************")
 	gui.show_enemy_intentions(true)
 	tie_breaker = randf() < 0.5
 

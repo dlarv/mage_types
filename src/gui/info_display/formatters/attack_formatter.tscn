@@ -44,7 +44,6 @@ vertical_alignment = 1
 
 [node name="ElementIcon" parent="MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_o1esy")]
 layout_mode = 2
-size_flags_vertical = 1
 color = Color(0, 1, 0, 1)
 _element = "green"
 

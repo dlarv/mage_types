@@ -53,12 +53,17 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
+	var delayedEffects := []
 	for i in range(len(targets)):
 		var target = targets[i]
 		var didDmg := false
 
 		for effect in effects:
 			if effect.effect_target == _BaseEffectSlot.EffectTarget.NOT_USER and target == user: 
+				continue
+			elif effect.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE:
+				if not effect in delayedEffects:
+					delayedEffects.append(effect)
 				continue
 
 			didDmg = true
@@ -70,7 +75,7 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 				msg.append_array(msg3)
 
 			if len(msg2) > 0:
-				if effect.get_attack_effect() is Damage \
+				if effect.get_attack_effect(user, target, self) is Damage \
 						and effect.effect_target == EffectSlot.EffectTarget.USER:
 					msg.append("This attack has recoil!")
 				msg.append("%s" % msg2)
@@ -78,6 +83,25 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 				if effect.get_attack_effect() is Damage and target.is_defeated:
 					msg.append("........%s was defeated." % target.name)
 					continue
+		
+	for effect in delayedEffects:
+		var didDmg := true
+		var msg2 = effect.apply_effect(user, user, self, affinity)
+
+		# Get equipment effect logs, etc.
+		var msg3 = user.get_and_flush_msgs()
+		if len(msg3) > 0:
+			msg.append_array(msg3)
+
+		if len(msg2) > 0:
+			if effect.get_attack_effect() is Damage:
+				msg.append("This attack has recoil!")
+
+				if user.is_defeated:
+					msg.append("........%s was defeated." % effect.target.name)
+					continue
+		msg.append("%s" % msg2)
+
 
 	return { "msg": "\n".join(msg) }
 
@@ -85,28 +109,3 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 # override
 func is_action_available(actor: BattleActor) -> bool:
 	return true
-
-
-# override
-func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
-	var setupPotential := 0.0
-	var dmg := 0
-
-	for effect in effects:
-		var isFriendly: bool = self.target == _BattleAction.TargetType.SELF \
-				or self.target == _BattleAction.TargetType.ALLY \
-				or self.target == _BattleAction.TargetType.ALLIES
-
-		dmg += effect.get_attack_effect().get_dmg_potential(user, target, isFriendly, self)
-		var val := effect.get_attack_effect().get_setup_potential(user, target, isFriendly, dmg) \
-				* effect.chance
-				# * _weighted_setup_potential(user, target, effect.get_attack_effect(), isFriendly)
-
-
-		setupPotential += val
-
-
-	return { 
-		"setup": setupPotential,
-		"dmg": dmg,
-	}

@@ -99,7 +99,7 @@ class TestSetupPotential extends GutTest:
 
 	func test_blocking_effect() -> void:
 		var effect: StatusEffect = autofree(StatusEffect.new())
-		effect.id = StatusEffectManager.StatusEffects.BLOCKING
+		effect.id = StatusEffectManager.StatusEffects.BLOCK
 
 		var fullHp := effect.get_setup_potential(user, target, true, 0)
 		assert_eq(fullHp, 0.5)

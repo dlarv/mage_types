@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_0hgvx"]
 script = ExtResource("3_mv66e")
 heal_percent = 0.4
-allow_overflow = true
+allow_overflow = false
 name = ""
 strength = 50.0
 message = ""

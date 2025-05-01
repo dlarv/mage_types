@@ -11,7 +11,7 @@
 resource_name = "Damage"
 script = ExtResource("3_qkigx")
 name = "Damage"
-strength = 140.0
+strength = 90.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_2yxjm"]
@@ -22,19 +22,20 @@ effect_target = 1
 chance = 1.0
 
 [sub_resource type="Resource" id="Resource_70lv3"]
-resource_name = "Defense Drop"
+resource_name = "Ranged Drop"
 script = ExtResource("5_4se75")
-stat = 3
+stat = 7
+clear_first = false
 id = 6
 duration = 0
 description = ""
-name = "Defense Drop"
-strength = -100.0
-message = "{target}'s melee defense was lowered!
+name = "Ranged Drop"
+strength = -3.5
+message = "{target}'s ranged attack was lowered!
 {target}'s ranged defense was lowered!"
 
 [sub_resource type="Resource" id="Resource_bh22a"]
-resource_name = "Defense Drop"
+resource_name = "Ranged Drop"
 script = ExtResource("4_7tme4")
 attack_effect = SubResource("Resource_70lv3")
 effect_target = 0
@@ -45,11 +46,11 @@ resource_name = "Total Meltdown"
 script = ExtResource("6_poe4l")
 effects = Array[ExtResource("2_k7nd4")]([SubResource("Resource_2yxjm"), SubResource("Resource_bh22a")])
 accuracy = 1.0
-power = 140
+power = 90
 name = "Total Meltdown"
 animation = ExtResource("1_jsude")
 _element = "green"
 priority = 0
-attack_range = 0
+attack_range = 1
 target = 4
-details = "Gives maximum defense debuff."
+details = "Drastically lowers the user's ranged attack and ranged defense."

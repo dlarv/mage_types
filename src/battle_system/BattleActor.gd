@@ -101,7 +101,7 @@ func setup() -> void:
 
 
 func get_and_flush_msgs() -> Array:
-	var output := _msgs
+	var output = _msgs
 	_msgs = []
 
 	if equipment != null:
@@ -130,7 +130,7 @@ func set_element(id: int, element: ElementalType) -> void:
 		_msgs.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 	if dmg != 0:
-		apply_damage(dmg)
+		apply_damage(dmg, false)
 
 func get_element(id: int) -> ElementalType:
 	if id == 0:
@@ -246,7 +246,7 @@ func add_status_effect(effect: StatusEffect) -> void:
 		if effect is StatChange:
 			stat_manager.add(effect, name)
 		else:
-			statuses.add_status(effect)
+			statuses.add(effect)
 			status_effect_added.emit(statuses.get_status(effect))
 
 	if alignment_manager and effect.id == StatusEffectManager.StatusEffects.PHOBIC:
@@ -254,13 +254,13 @@ func add_status_effect(effect: StatusEffect) -> void:
 
 
 func remove_status_effect(effect: StatusEffect) -> void:
-	Logger.append_battle_log("%s's %s expired." % [ effect.name, name ])
+	Logger.append_battle_log("%s's %s expired." % [ name, effect.name ])
 	statuses.remove([effect])
 	status_effects_removed.emit([ effect ])
 
 
 func has_status_effect(effect: StatusEffect) -> bool:
-	return statuses.get_status(effect) != null
+	return statuses.has(effect)
 
 
 func list_status_effects() -> Array:
@@ -282,7 +282,7 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 	if healing > 0:
 		mod -= healing
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
-	apply_damage(hp * mod)
+	apply_damage(hp * mod, false)
 
 	var effects = statuses.calculate_expirations()
 	if len(effects) > 0:
@@ -292,6 +292,7 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 
 func resolve_end_of_battle() -> String:
 	stat_manager.reset()
+	statuses.clear()
 	if reset_hp_after_battle: 
 		current_hp = hp
 	
@@ -346,6 +347,7 @@ func serialize() -> Dictionary:
 		"attacks": attackData,
 		"equipment": equipmentData,
 	}
+
 
 func deserialize(data: Dictionary) -> void:
 	if "name" in data:

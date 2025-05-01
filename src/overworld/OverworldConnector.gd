@@ -39,6 +39,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	var battle := battle_scene.instantiate()
 
+	# If an animation player messes with the player's team, they'll be removed from it.
+	if not _player.battle_actor in allies:
+		allies.insert(0, _player.battle_actor)
+
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	hud.hide()
 	add_child(battle)
@@ -111,5 +115,3 @@ func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
 	player.play(id)
 	await player.animation_finished
 	overworld.process_mode = PROCESS_MODE_INHERIT
-
-

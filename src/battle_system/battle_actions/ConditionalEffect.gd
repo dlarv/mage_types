@@ -4,6 +4,7 @@ class_name ConditionalEffect
 @export var condition: Condition
 @export var success_effect: EffectSlot = null
 @export var failed_effect: EffectSlot = null
+@export var invert := false
 ## When to print FAILURE_MSG to console.
 ## SILENT: Never
 ## FAILURE: If condition.check returns false.
@@ -21,7 +22,9 @@ var _last_activated_effect: _BaseEffectSlot = null
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
-	if condition.check(user, target, action, effectiveness):
+	# Godot doesn't have a XOR operator for bools, so I made do.
+	if (condition.check(user, target, action, effectiveness) or invert) \
+			and not (condition.check(user, target, action, effectiveness) and invert):
 		_last_activated_effect = success_effect
 		return success_effect.apply_effect(user, target, action, effectiveness)
 	elif failed_effect != null:
@@ -43,8 +46,27 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 
 ## Used to check the type of the last _AttackEffect.
 ## e.g. if it was Damage, StatusEffect, etc.
-func get_attack_effect() -> _AttackEffect:
-	return success_effect.attack_effect
+func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
+	if user == null:
+		return success_effect
+	elif condition.check(user, target, action, effectiveness):
+		return success_effect
+	elif failed_effect:
+		return failed_effect
+	else:
+		return null
+
+
+func get_attack_effect(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> _AttackEffect:
+	if user == null:
+		return success_effect.attack_effect
+	elif condition.check(user, target, action, effectiveness):
+		return success_effect.attack_effect
+	elif failed_effect:
+		return failed_effect.attack_effect
+	else:
+		return null
+
 
 func _get_failure_msg() -> String:
 	match failure_msg:

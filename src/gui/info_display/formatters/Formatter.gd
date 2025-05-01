@@ -38,7 +38,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		if effect is PhobiaEffect:
 			effectsLabel.push_meta(effect)
 			append_elemental_color(effectsLabel, effect.element)
-			effectsLabel.append_text("-%s" % effect.name)
+			effectsLabel.append_text("-Phobia")
 			effectsLabel.pop() # Close meta tag
 			effectsLabel.append_text(" %d%%." % chance)
 
@@ -75,7 +75,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 			var a = effect.min_count
 			var b = effect.max_count
 			var number = str(a) if a == b else "%d-%d" % [a, b]
-			effectsLabel.append_text("Gives the target %s random ")
+			effectsLabel.append_text("Gives the target %d random " % number)
 			effectsLabel.push_meta(PhobiaEffect.new())
 			effectsLabel.append_text("phobias.")
 			effectsLabel.pop() # pop meta
@@ -94,13 +94,13 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		#
 		elif effect is DrainingDamage:
 			power += effect.strength
-			effectsLabel.append_text("Heals the user for x%.1f the damage dealt.")
+			effectsLabel.append_text("Heals the user for x%.1f the damage dealt." % effect.heal_percent)
 
 		elif effect is Damage:
 			if e.effect_target == EffectSlot.EffectTarget.TARGET:
 				power += effect.strength
 			else:
-				effectsLabel.append_text("%d%% chance to hurt the user.")
+				effectsLabel.append_text("Does recoil damage on user.")
 		return power
 
 func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLabel) -> int:
@@ -148,4 +148,10 @@ func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLab
 	return int((success_power + fail_power) / 2.0)
 
 func _on_meta_clicked(meta: Variant) -> void:
-	meta_clicked.emit(meta)
+	if meta is String:
+		var statuses := StatusEffectManager.StatusEffects.keys()
+		if meta.to_upper() in statuses:
+			meta_clicked.emit(StatusEffectManager.get_generic_status_effect(
+				StatusEffectManager.StatusEffects[meta.to_upper()]))
+	else:
+		meta_clicked.emit(meta)

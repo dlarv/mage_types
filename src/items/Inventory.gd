@@ -179,10 +179,11 @@ func remove(item: Item, amount:=1) -> ItemSlot:
 		list = spell_scrolls
 	elif item is RegularItem:
 		list = regular_items
+	elif item is Equipment:
+		list = equipment
 	else:
 		list = key_items
 		remove_key_item(item)
-
 
 	if item.id >= len(list): return null
 

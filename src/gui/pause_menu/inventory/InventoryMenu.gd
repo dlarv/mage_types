@@ -56,4 +56,3 @@ func _on_item_selected(item:Item) -> void:
 		spell_scroll_selected.emit(item)
 	elif item is Equipment:
 		equipment_selected.emit(item)
-
