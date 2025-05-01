@@ -31,6 +31,7 @@ chance = 1.0
 script = ExtResource("3_3hlwd")
 condition = SubResource("Resource_2ypds")
 success_effect = SubResource("Resource_4dcr5")
+invert = false
 print_failed_status = "FAILURE"
 failure_msg = "FAILED"
 effect_target = 1

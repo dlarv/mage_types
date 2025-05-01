@@ -45,6 +45,7 @@ script = ExtResource("4_ehodv")
 condition = SubResource("Resource_wfh6n")
 success_effect = SubResource("Resource_p0q85")
 failed_effect = SubResource("Resource_iqodu")
+invert = false
 print_failed_status = "SILENT"
 failure_msg = "FAILED"
 effect_target = 1

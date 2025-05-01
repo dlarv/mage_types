@@ -46,6 +46,7 @@ script = ExtResource("6_n1fyj")
 condition = SubResource("Resource_5oost")
 success_effect = SubResource("Resource_vdgsf")
 failed_effect = SubResource("Resource_cs80b")
+invert = false
 print_failed_status = "FAILURE"
 failure_msg = "INEFFECTIVE"
 effect_target = 1
