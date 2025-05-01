@@ -27,6 +27,7 @@ strength = 0.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_1r0y0"]
+resource_name = "Phobic Heal"
 script = ExtResource("4_lu4xl")
 attack_effect = SubResource("Resource_38qny")
 effect_target = 1
