@@ -1,7 +1,7 @@
 extends Node 
 class_name StatusEffectManager 
 
-enum StatusEffects { STASIS, BLOCKING, POISON, PHOBIC, HEALING, FLINCHING, STAT_CHANGE }
+enum StatusEffects { STASIS, BLOCK, POISON, PHOBIC, HEALING, FLINCH, STAT_CHANGE }
 
 var poison: float:
 	get:
@@ -28,9 +28,9 @@ var _effects_to_remove := []
 var statuses := {}
 
 
-func add_status(status: StatusEffect) -> void:
+func add(status: StatusEffect) -> void:
 	match status.id:
-		StatusEffects.BLOCKING:
+		StatusEffects.BLOCK:
 			if blocking != null:
 				blocking.combine(status)
 			else:
@@ -50,7 +50,7 @@ func add_status(status: StatusEffect) -> void:
 
 func get_status(status: StatusEffect) -> StatusEffect:
 	match status.id:
-		StatusEffects.BLOCKING:
+		StatusEffects.BLOCK:
 			return blocking
 		StatusEffects.PHOBIC:
 			var key: ElementalType = status.element
@@ -68,6 +68,17 @@ func remove(effects: Array) -> void:
 				phobias.erase(effect.element)
 		else:
 			statuses.erase(effect.id)
+
+
+func has(effect: StatusEffect) -> bool:
+	if not effect: 
+		return len(statuses) > 0 or blocking or len(phobias) > 0
+	elif effect.id == StatusEffects.PHOBIC and effect.element.is_blank():
+		return len(phobias) > 0
+	elif effect.id == StatusEffects.BLOCK:
+		return blocking != null
+	else:
+		return statuses.has(effect.id)
 
 
 func calculate_expirations() -> Array:
@@ -99,7 +110,7 @@ func calculate_expirations() -> Array:
 
 
 func check_flinching() -> StatusEffect:
-	return statuses.get(StatusEffects.FLINCHING)
+	return statuses.get(StatusEffects.FLINCH)
 
 
 func remove_blocking() -> bool:
@@ -137,3 +148,22 @@ func clear() -> void:
 	phobias = {}
 	_effects_to_remove = []
 	statuses = {}
+
+
+static func get_generic_status_effect(status: StatusEffects) -> StatusEffect:
+	match status:
+		StatusEffects.STASIS:
+			return load("res://data/battle_system/status_effects/stasis_effect.tres")
+		StatusEffects.BLOCK:
+			return load("res://data/battle_system/status_effects/blocking_effect.tres")
+		StatusEffects.POISON:
+			return load("res://data/battle_system/status_effects/poison_effect.tres")
+		StatusEffects.HEALING:
+			return load("res://data/battle_system/status_effects/healing_effect.tres")
+		StatusEffects.FLINCH:
+			return load("res://data/battle_system/status_effects/flinching_effect.tres")
+		# StatusEffects.PHOBIC:
+		# 	return load("res://data/battle_system/status_effects/blocking_effect.tres")
+		# StatusEffects.STAT_CHANGE:
+		# 	return load("res://data/battle_system/status_effects/blocking_effect.tres")
+	return null
