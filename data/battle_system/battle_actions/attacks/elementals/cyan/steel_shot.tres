@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=21 format=3 uid="uid://drcu827fevmfu"]
+
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_atqa7"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_csok2"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_qj3pp"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="3_4m2fq"]
+[ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="3_dyyhn"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/StatusEffectCondition.gd" id="4_jvgg1"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_mcwoq"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="6_jalum"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="8_l1i3r"]
+
+[sub_resource type="Resource" id="Resource_wt46x"]
+script = ExtResource("4_jvgg1")
+apply_to = "user"
+effect = ExtResource("3_dyyhn")
+
+[sub_resource type="Resource" id="Resource_vr61x"]
+resource_name = "Damage"
+script = ExtResource("5_mcwoq")
+name = "Damage"
+strength = 30.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_6jaqi"]
+resource_name = "Damage"
+script = ExtResource("6_jalum")
+attack_effect = SubResource("Resource_vr61x")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_7mylh"]
+resource_name = "Damage"
+script = ExtResource("5_mcwoq")
+name = "Damage"
+strength = 60.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_65ba3"]
+resource_name = "Damage"
+script = ExtResource("6_jalum")
+attack_effect = SubResource("Resource_7mylh")
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_redgd"]
+script = ExtResource("3_4m2fq")
+condition = SubResource("Resource_wt46x")
+success_effect = SubResource("Resource_65ba3")
+failed_effect = SubResource("Resource_6jaqi")
+invert = false
+print_failed_status = "SILENT"
+failure_msg = "FAILED"
+effect_target = 1
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_c65of"]
+script = ExtResource("4_jvgg1")
+apply_to = "user"
+effect = ExtResource("3_dyyhn")
+
+[sub_resource type="Resource" id="Resource_8pfw5"]
+resource_name = "Blocking"
+script = ExtResource("6_jalum")
+attack_effect = ExtResource("3_dyyhn")
+effect_target = 0
+chance = 0.4
+
+[sub_resource type="Resource" id="Resource_ct0os"]
+resource_name = "Blocking Heal"
+script = ExtResource("8_l1i3r")
+effect = ExtResource("3_dyyhn")
+name = "Blocking Heal"
+strength = 0.0
+message = ""
+
+[sub_resource type="Resource" id="Resource_r65er"]
+resource_name = "Blocking Heal"
+script = ExtResource("6_jalum")
+attack_effect = SubResource("Resource_ct0os")
+effect_target = 0
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_vrige"]
+script = ExtResource("3_4m2fq")
+condition = SubResource("Resource_c65of")
+success_effect = SubResource("Resource_r65er")
+failed_effect = SubResource("Resource_8pfw5")
+invert = false
+print_failed_status = "SILENT"
+failure_msg = "FAILED"
+effect_target = 0
+chance = 1.0
+
+[resource]
+resource_name = "Steel Shot"
+script = ExtResource("2_qj3pp")
+effects = Array[ExtResource("1_csok2")]([SubResource("Resource_redgd"), SubResource("Resource_vrige")])
+accuracy = 1.0
+power = 30
+name = "Steel Shot"
+animation = ExtResource("1_atqa7")
+_element = "cyan"
+priority = 0
+attack_range = 1
+target = 3
+details = "If user has [url]Block[/url], deal double damage and remove the effect. Otherwise, has 40% chance of applying [url]Block[/url] to user."
