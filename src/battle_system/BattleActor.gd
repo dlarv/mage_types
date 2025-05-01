@@ -101,7 +101,7 @@ func setup() -> void:
 
 
 func get_and_flush_msgs() -> Array:
-	var output := _msgs
+	var output = _msgs
 	_msgs = []
 
 	if equipment != null:
