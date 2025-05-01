@@ -33,7 +33,7 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
 	return self
 
-func get_attack_effect() -> _AttackEffect: 
+func get_attack_effect(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> _AttackEffect: 
 	return attack_effect
 
 # override

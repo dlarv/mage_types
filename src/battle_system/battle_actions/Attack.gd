@@ -75,7 +75,7 @@ func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
 				msg.append_array(msg3)
 
 			if len(msg2) > 0:
-				if effect.get_attack_effect() is Damage \
+				if effect.get_attack_effect(user, target, self) is Damage \
 						and effect.effect_target == EffectSlot.EffectTarget.USER:
 					msg.append("This attack has recoil!")
 				msg.append("%s" % msg2)

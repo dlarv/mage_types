@@ -246,7 +246,7 @@ func add_status_effect(effect: StatusEffect) -> void:
 		if effect is StatChange:
 			stat_manager.add(effect, name)
 		else:
-			statuses.add_status(effect)
+			statuses.add(effect)
 			status_effect_added.emit(statuses.get_status(effect))
 
 	if alignment_manager and effect.id == StatusEffectManager.StatusEffects.PHOBIC:
@@ -260,7 +260,7 @@ func remove_status_effect(effect: StatusEffect) -> void:
 
 
 func has_status_effect(effect: StatusEffect) -> bool:
-	return statuses.get_status(effect) != null
+	return statuses.has(effect)
 
 
 func list_status_effects() -> Array:
