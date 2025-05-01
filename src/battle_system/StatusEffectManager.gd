@@ -66,6 +66,8 @@ func remove(effects: Array) -> void:
 				phobias = {}
 			else:
 				phobias.erase(effect.element)
+		elif effect.id == StatusEffects.BLOCK:
+			blocking = null
 		else:
 			statuses.erase(effect.id)
 
