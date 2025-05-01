@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://bjfbrkbhkveyr"]
 
 [ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_w5u1n"]
-[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="2_vo7kk"]
 [ext_resource type="Resource" uid="uid://vhtwa50btn1" path="res://data/battle_system/battle_actions/attacks/elementals/yellow/rush.tres" id="3_iewld"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/elementals/green/sting.tres" id="4_wxq7q"]
+[ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="5_x57a8"]
 [ext_resource type="Resource" uid="uid://ela4jxp8bcph" path="res://data/battle_system/battle_actions/attacks/elementals/green/total_meltdown.tres" id="5_xhxve"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="6_pv8dw"]
 [ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_5ev5u"]
@@ -27,4 +27,4 @@ reset_hp_after_battle = true
 _element1 = "green"
 _element2 = "yellow"
 _alignment = "blank"
-attacks = Array[ExtResource("1_w5u1n")]([ExtResource("2_vo7kk"), ExtResource("3_iewld"), ExtResource("4_wxq7q"), ExtResource("5_xhxve")])
+attacks = Array[ExtResource("1_w5u1n")]([ExtResource("4_wxq7q"), ExtResource("3_iewld"), ExtResource("5_xhxve"), ExtResource("5_x57a8")])
