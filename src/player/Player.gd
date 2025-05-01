@@ -8,6 +8,13 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export_category("Scene Nodes")
 @export var battle_actor: BattleActor
 @export var team: Array[BattleActor]
+## Used by AnimationPlayers to add BattleActors to player's team.
+@export var add_team_member: BattleActor:
+	set(val):
+		if Engine.is_editor_hint():
+			add_team_member = val
+		else:
+			team.append(val)
 @export var model: Node3D
 @export var anim_player: AnimationPlayer
 

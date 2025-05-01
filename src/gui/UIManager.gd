@@ -22,6 +22,7 @@ var dialog_box: DialogueBox
 var hud: CanvasLayer
 var _menu_stack := []
 var _block_input := false
+var is_in_dialog := false
 
 func _ready() -> void:
 	_block_input = true
@@ -68,7 +69,8 @@ func _try_toggle_menu(input: InputEvent) -> void:
 		push_menu(player_menu)
 
 func push_menu(menu: Control) -> void:
-	overworld.process_mode = Node.PROCESS_MODE_DISABLED
+	# overworld.process_mode = Node.PROCESS_MODE_DISABLED
+	get_tree().paused = true
 	if len(_menu_stack) > 0 and menu == _menu_stack[-1]:
 		pop_menu()
 		return
@@ -81,7 +83,9 @@ func pop_menu() -> void:
 	if menu:
 		menu.hide()
 	if len(_menu_stack) == 0:
-		overworld.process_mode = Node.PROCESS_MODE_INHERIT
+		# overworld.process_mode = Node.PROCESS_MODE_INHERIT
+		# This helps if player has opened menu while talking to an NPC.
+		get_tree().paused = is_in_dialog
 		hide()
 	else:
 		_menu_stack[-1].show()

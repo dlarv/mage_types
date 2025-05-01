@@ -66,7 +66,8 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	get_tree().call_group("wild_enemies", "_end_battle_cooldown")
 
 func _on_player_dialog_started(dialogId: String, npc) -> void:
-	world.process_mode = Node.PROCESS_MODE_DISABLED
+	UIManager.is_in_dialog = true
+	get_tree().paused = true
 	_current_story_actor = npc.story_actor
 
 	dialog_box.start(dialogId)
@@ -85,22 +86,26 @@ func _on_player_dialog_started(dialogId: String, npc) -> void:
 		"play_cutscene": 
 			var id = dialog_box.variables["current_cutscene"]
 			await npc.story_actor.play_cutscene(id)
-			world.process_mode = Node.PROCESS_MODE_INHERIT
+			get_tree().paused = false
 		"battle_started":
+			get_tree().paused = false
 			_on_player_battle_started(_player.team, npc.enemy_actor)
 		"menu_opened":
 			UIManager.open_vendor_menu(npc.vendor_actor)
 			await UIManager.vendor_menu_closed
-			world.process_mode = Node.PROCESS_MODE_INHERIT
+			get_tree().paused = false
 		"dialogue_ended","pivot_declined",_: 
-			world.process_mode = Node.PROCESS_MODE_INHERIT
+			get_tree().paused = false
+	UIManager.is_in_dialog = false
 
 	_current_story_actor = null
 
 func _play_cutscene(npc) -> void:
 	var id = dialog_box.variables["current_cutscene"]
 
-	dialog_box.process_mode = PROCESS_MODE_DISABLED
+	var prevProcessMode := dialog_box.process_mode
+	# dialog_box.process_mode = PROCESS_MODE_DISABLED
+	get_tree().paused = true
 	dialog_box.hide()
 
 	await npc.story_actor.play_cutscene(id)
@@ -108,10 +113,13 @@ func _play_cutscene(npc) -> void:
 	# If cutscene is last node of branch, the last dialog spoken will be stuck on screen.
 	if dialog_box.is_running():
 		dialog_box.show()
-	dialog_box.process_mode = PROCESS_MODE_INHERIT
+	# dialog_box.process_mode = prevProcessMode
+	get_tree().paused = false
 
 func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
-	overworld.process_mode = PROCESS_MODE_DISABLED
+	# overworld.process_mode = PROCESS_MODE_DISABLED
+	get_tree().paused = true
 	player.play(id)
 	await player.animation_finished
-	overworld.process_mode = PROCESS_MODE_INHERIT
+	# overworld.process_mode = PROCESS_MODE_INHERIT
+	get_tree().paused = false
