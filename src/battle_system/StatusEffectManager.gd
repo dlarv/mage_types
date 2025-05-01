@@ -62,7 +62,10 @@ func get_status(status: StatusEffect) -> StatusEffect:
 func remove(effects: Array) -> void: 
 	for effect in effects: 
 		if effect.id == StatusEffects.PHOBIC:
-			phobias.erase(effect.element)
+			if effect.element.is_blank():
+				phobias = {}
+			else:
+				phobias.erase(effect.element)
 		else:
 			statuses.erase(effect.id)
 
