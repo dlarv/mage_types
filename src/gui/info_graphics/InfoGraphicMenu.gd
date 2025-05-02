@@ -3,8 +3,6 @@ extends Menu
 
 signal info_graphic_closed()
 
-var _video_player: VideoStreamPlayer
-
 #virtual
 func next_screen() -> void: 
 	var index := current_tab + 1
@@ -30,11 +28,3 @@ func _on_hidden() -> void:
 
 func _draw() -> void:
 	_check_for_video_player()
-
-func _check_for_video_player() -> void:
-	if _video_player:
-		_video_player.stop()
-		_video_player = null
-	_video_player = get_children()[current_tab].find_child("VideoStreamPlayer")
-	if _video_player:
-		_video_player.play()
