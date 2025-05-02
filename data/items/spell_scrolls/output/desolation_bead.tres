@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://beh80ngejtetg"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_fg1ux"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_o0w0m"]
+[ext_resource type="Resource" uid="uid://b3nggi4ftlucw" path="res://data/battle_system/battle_actions/attacks/elementals/red/desolation.tres" id="3_1ut4k"]
+
+[resource]
+script = ExtResource("2_o0w0m")
+spell = ExtResource("3_1ut4k")
+name = "Desolation Bead"
+requirements = Array[ExtResource("1_fg1ux")]([])
+details = ""
+tags = []

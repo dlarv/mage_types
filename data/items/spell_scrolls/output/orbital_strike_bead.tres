@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://crwjsgrunnxf0"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_3hg2c"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_en2fs"]
+[ext_resource type="Resource" uid="uid://g8xbj66ldn2v" path="res://data/battle_system/battle_actions/attacks/elementals/green/orbital_strike.tres" id="3_p4034"]
+
+[resource]
+script = ExtResource("2_en2fs")
+spell = ExtResource("3_p4034")
+name = "Orbital Strike Bead"
+requirements = Array[ExtResource("1_3hg2c")]([])
+details = ""
+tags = []

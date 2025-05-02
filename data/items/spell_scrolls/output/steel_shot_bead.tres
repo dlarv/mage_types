@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://dh0d2ck60rn4x"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_pstvp"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_lf613"]
+[ext_resource type="Resource" uid="uid://drcu827fevmfu" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/steel_shot.tres" id="3_8tjt5"]
+
+[resource]
+script = ExtResource("2_lf613")
+spell = ExtResource("3_8tjt5")
+name = "Steel Shot Bead"
+requirements = Array[ExtResource("1_pstvp")]([])
+details = ""
+tags = []

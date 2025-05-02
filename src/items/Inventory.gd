@@ -74,6 +74,15 @@ var _battle_items: Array
 	set(path):
 		_add_items_from_dir(path)
 		_add_item_dir = ""
+
+@export var create_spell: Attack:
+	set(val):
+		var scroll := SpellScroll.new()
+		scroll.spell = val
+		scroll.name = "%s Bead" % val.name 
+		ResourceSaver.save(scroll, "res://data/items/spell_scrolls/output/%s.tres" \
+				% scroll.name.replace(" ", "_").to_lower())
+		_add_item = scroll
 func _try_add_battle_item(item: RegularItem)  -> void:
 	if item.battle_item == null: 
 		return

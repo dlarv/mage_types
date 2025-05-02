@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://1s70pp15emt4"]
+
+[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_thi0e"]
+[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_ekafb"]
+[ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="3_uowrw"]
+
+[resource]
+script = ExtResource("2_ekafb")
+spell = ExtResource("3_uowrw")
+name = "Cleave Bead"
+requirements = Array[ExtResource("1_thi0e")]([])
+details = ""
+tags = []
