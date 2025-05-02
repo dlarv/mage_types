@@ -52,7 +52,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [[ExtResource("16_h6urt")]]
+"values": [[ExtResource("11_qfng2")]]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -5, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -73,10 +73,10 @@ tracks/2/path = NodePath("Blue/Preset2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -5, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -88,7 +88,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("16_ly1l8")]
+"values": [ExtResource("18_p65bs")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -336,8 +336,7 @@ libraries = {
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -2.4, -96)
-battle_actor = ExtResource("16_ly1l8")
-team = [ExtResource("16_h6urt")]
+team = [ExtResource("11_qfng2")]
 run_speed = 900.0
 drag_speed = 400.0
 
@@ -386,27 +385,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0499992, -1, 0)
 shape = SubResource("BoxShape3D_3vjxc")
 
 [node name="Preset1" type="Node3D" parent="Overworld/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="Boss1" parent="Overworld/Blue/Preset1" instance=ExtResource("11_tyily")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1.80295, -101)
 
 [node name="Boss2" parent="Overworld/Blue/Preset1" instance=ExtResource("18_3lqrh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.50295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.803, -101)
 
 [node name="Boss3" parent="Overworld/Blue/Preset1" instance=ExtResource("8_bwct4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.50295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.803, -101)
 
 [node name="Preset2" type="Node3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="Boss4" parent="Overworld/Blue/Preset2" instance=ExtResource("27_yi4cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1.80295, -101)
 
 [node name="Boss5" parent="Overworld/Blue/Preset2" instance=ExtResource("29_dyyk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.50295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.80295, -101)
 
 [node name="Boss6" parent="Overworld/Blue/Preset2" instance=ExtResource("30_0kir7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.50295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.80295, -101)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

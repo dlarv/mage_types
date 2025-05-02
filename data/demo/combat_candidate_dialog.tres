@@ -54,7 +54,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": -1
+"speaker": ""
 },
 "1_10": {
 "dialogue": "Finally, using a ranged attack will only transmute your opponent. Melee attacks will affect both you and your opponent.",
@@ -219,7 +219,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": -1
+"speaker": ""
 },
 "1_20": {
 "dialogue": "Preset 3 will prevent [b]combatants[/b] from being [el]Yellow[/el], [el]Green[/el], or [el]Cyan[/el]. ",
@@ -882,8 +882,8 @@ cont...",
 "speaker": 0
 },
 "1_61": {
-"dialogue": "There are also three different versions of each fight. If you'd like to know more, I can tell you about the different presets?",
-"offset": Vector2(-200, -640),
+"dialogue": "There are also 2 different versions of each fight. If you'd like to know more, I can tell you about the different presets?",
+"offset": Vector2(-200, -700),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -914,11 +914,6 @@ cont...",
 "text": "Preset 2"
 },
 2: {
-"condition": Array[Dictionary]([]),
-"link": &"1_20",
-"text": "Preset 3"
-},
-3: {
 "condition": Array[Dictionary]([]),
 "link": "END",
 "text": "Goodbye"
@@ -1035,13 +1030,13 @@ cont...",
 "variable": "current_cutscene"
 },
 "9_4": {
-"cur_variable": 1,
+"cur_variable": 0,
 "link": "END",
 "offset": Vector2(-1100, 940),
 "signalValue": "preset_updated",
 "type": 0,
-"value": "0",
-"variable": "learned_elements"
+"value": "RESET",
+"variable": "current_cutscene"
 }
 }
 variables = {
@@ -1054,5 +1049,5 @@ variables = {
 "value": false
 }
 }
-strays = Array[String](["8_1", "8_2", "1_25", "2_1", "2_3", "1_24"])
+strays = Array[String](["8_2", "8_1", "1_20", "1_22", "9_3", "1_25", "2_1", "2_3", "1_24"])
 characters = "res://data/demo/character_files/character_list.tres"
