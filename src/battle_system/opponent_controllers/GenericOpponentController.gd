@@ -252,7 +252,6 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER \
 				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE
 
-
 		# ConditionalEffect, where effect will fail.
 		if not slot:
 			continue

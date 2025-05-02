@@ -209,7 +209,7 @@ func get_defense_stat(action: _BattleAction) -> float:
 ## Returns actual amount of damage applied, after accounting for status conditions.
 func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 	if _func_overrides.has(apply_damage.get_method()):
-		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking)
+		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking, self)
 
 	var blocking = null
 	if dmg > 0 and allowBlocking:
