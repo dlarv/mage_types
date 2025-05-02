@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://d3e6yue1cf473"]
 
-[ext_resource type="Script" path="res://world/subareas_1/eastern_caves/room_templates/EasternCaveRoomFight.gd" id="1_0bx8t"]
+[ext_resource type="Script" path="res://world/subareas_old/eastern_caves/room_templates/EasternCaveRoomFight.gd" id="1_0bx8t"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_t5hd7"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_fjlj6"]
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="4_udggu"]

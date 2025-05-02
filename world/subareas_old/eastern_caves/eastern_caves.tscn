@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2nokkpwhj5nq"]
 
-[ext_resource type="Script" path="res://world/subareas_1/eastern_caves/EasternCaves.gd" id="1_kxg6y"]
-[ext_resource type="PackedScene" uid="uid://d3e6yue1cf473" path="res://world/subareas_1/eastern_caves/room_templates/small_square.tscn" id="2_58v11"]
-[ext_resource type="PackedScene" uid="uid://bqn3fdhxmh1vh" path="res://world/subareas_1/eastern_caves/room_templates/large_square.tscn" id="2_r6f8r"]
-[ext_resource type="PackedScene" uid="uid://b7otrw71fg2lc" path="res://world/subareas_1/eastern_caves/room_templates/puzzle_rect.tscn" id="3_6mt33"]
+[ext_resource type="Script" path="res://world/subareas_old/eastern_caves/EasternCaves.gd" id="1_kxg6y"]
+[ext_resource type="PackedScene" uid="uid://d3e6yue1cf473" path="res://world/subareas_old/eastern_caves/room_templates/small_square.tscn" id="2_58v11"]
+[ext_resource type="PackedScene" uid="uid://bqn3fdhxmh1vh" path="res://world/subareas_old/eastern_caves/room_templates/large_square.tscn" id="2_r6f8r"]
+[ext_resource type="PackedScene" uid="uid://b7otrw71fg2lc" path="res://world/subareas_old/eastern_caves/room_templates/puzzle_rect.tscn" id="3_6mt33"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6pgw"]
 
