@@ -9,15 +9,17 @@
 [node name="HUD_Layer" type="CanvasLayer"]
 script = ExtResource("1_ifgal")
 
-[node name="DebugInfo" type="Label" parent="."]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
 
-[node name="VersionInfo" type="Label" parent="."]
+[node name="VersionInfo" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 2
+
+[node name="DebugInfo" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="OverworldSpellIcons" type="HFlowContainer" parent="."]
 anchors_preset = 1
