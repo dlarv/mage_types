@@ -18,6 +18,17 @@ The demo should have a main track the player will follow, which will feature mul
 >It might be helpful for the player to have 8 little sections to help reinforce what each element can transmute into. Maybe I can add a couple rooms inside of the cave.
 
 [[demo_content]]
+# Tutorial Dialog
+To view the tutorials, the player can talk to Alice. Important info will be put inside its own little pause menu tab, such that the player can quickly reference it.
+
+Battle Dialog:
+- In battle, all combatants have 2 elements.
+- Primary type = type of your core.
+	- Primary type has a lot of inertia, will not change during battle.
+- Secondary type = type of your extremities.
+	- This is very reactive.
+	- Melee attacks and your primary type will affect it.
+- Side effects.
 # Story
 The demo will take place in the actual first area of the game, instead of some fake secondary location.
 # Demo: Combat Candidate
@@ -70,28 +81,92 @@ PMOC  *`C & O islands`*
 BPMR + !{ Y, G }
 - This restricted graph centers around Magenta, which would make it work well with a phobia or Magenta Strike strat.
 - This restricted graph has a Red-Magenta tail. This means you can oscillate between Red and Magenta.
-### Boss 1
-- Boss will be Magenta-aligned.
-	- Inflict Blue-phobia.
-	- Turn Boss 1 Purple.
-	- Boss's Primary + Secondary => Blue
-- Boss will use Orange/Melee moves, as these will apply a Red-wards pressure.
-	- This is complimented to the player's benefit as 
-### Boss 2
+
+Player (Magenta/Magenta)
+- Magenta Hit
+- Orange Hit
+- Shield
+- Magenta Strike
+
+Alice (Purple/Purple)
+- Purple Throw
+- Cyan Throw
+- Hydrophobia
+- Cleave
+### Boss 1 (Red/Magenta)
+- Magenta Hit
+- Red Hit
+- Reinforce
+### Boss 2 (Red/Red)
 - Boss will hold a Sunset Orb, which buffs its attack when it transmutes into Red (and Orange, but that's not available).
 - Since Red is the tail, its harder for this boss to activate it.
-- Boss will use Orange/Melee moves, as these will apply a Red-wards pressure.
+- ~~Boss will use Orange/Melee moves, as these will apply a Red-wards pressure.
 - Boss will be Red-aligned. This synergizes well with its orb and Orange/Melee spam, as it further applies Red-ward pressure.
 - Boss has 2 healing moves: Drain and Consume. The latter harshly drops the user's melee stats.
 
+- Orange Hit
+- Red Throw
+- Drain
+- Consume
+
 >[!note]
->Shield is op as hell.
-### Boss 3
-- This will be essentially the same as Boss 2, but will be Orange-aligned. This will make it impossible for the player to make it Magenta, debuffing the Magenta Strike strat.
+>Shield is op as hell, so I switched it from Alice -> Player, so they had to decide between that and Magenta Strike.
+### Boss 3 (Blue/Magenta)
+- This will be essentially the same as Boss 2, but will be Blue-aligned. This will make it impossible for the player to make it Magenta, debuffing the Magenta Strike strat.
+- It also makes the Blue-phobia strat harder to activate.
+- I gave the boss a low intelligence stat, so that it will more or less act randomly. This was to balance the fact that I gave it Desolation, a really powerful low accuracy move. The boss would spam this move and not use anything else.
+
+Attacks:
+- Orange Hit
+- Red Hit
+- Desolation
+- Shield
+
+>[!note]
+>Sunset orb doesn't seem to activate very often. I won't change this, but it does make the fights essentially itemless.
 ## Preset 2
 ROYG + !{ B, P }
-- This restricted graph centers around Yellow, which would make it work well with a phobia or Yellow Strike strat.
+- This restricted graph centers around Yellow, which would make it work well with a phobia or ~~Yellow Strike~~ strat.
+	- Strike strats are not possible, Purple isn't allowed.
+	- 
 - This restricted graph has a Green-Yellow tail.
+- The Sunset Orb might be more useful in this preset, as both Orange and Red are preset.
+- This is a very Offensive heavy subset, so speed side effects should be fairly common.
+	- Yellow is at the center, which might balance this out though.
+
+Player (Red/Orange)
+- Red Hit
+- Photophobia
+- Steel Shot
+- Alchemy Beam
+
+Alice (Orange/Red)
+- Sting
+- Reinforce
+- Rush
+- Total Meltdown
+
+>[!idea]
+>Green attack with negative priority. 
+>If user is Green, targets enemy.
+>Otherwise, targets user.
+### Boss 1 (Yellow/Red)
+- Orange Hit
+- Rush
+- Reinforce
+- Alchemy Beam
+### Boss 2 (Yellow/Green)
+- Red Hit
+- Reinforce
+- Rush
+- Bite
+### Boss 3
+- Yellow-aligned with a Yellow melee attack could make for some crazy Sunset Orb activations.
+- Yellow Hit
+- Bite
+- Reactor Breach
+- Ruszh
+
 ## Preset 3
 BPMC + ! { O, Y } 
 # From Previous Version

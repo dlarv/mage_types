@@ -43,29 +43,41 @@
 ## v0.3.x
 Combat test candidate. Players can fight a series of 9 simple bosses. Player will be confined to Rec Room in Blue, but can essentially go out of bounds to see the rest of the map.
 
-**Final Stretch**
-- [ ] Select player's attack. Selector advances to partner. Click prev button and select attack again. Turn will auto end and partner's turn will be skipped.
-- [ ] Chunk disappears when player talks to NPC.
-- [ ] Phobias are not expiring or displaying in Character tab of BattleGUI.
-- [ ] Block not expiring?
-- [ ] Preset options do not currently do anything.
-- [ ] Fix transmutation hints to no longer show primary type transmutations.
-- [ ] Transmutation hints for allies hidden by PlayerControls.
-- [ ] BattleActor displays in battle show unused 'Elemental Affinities' section.
-- [ ] BattleActor displays in battle do not show equipment.
-- [ ] BattleActor displays in battle not properly formating floats (%.1f shown instead of percentage.)
-- [ ] BattleActor Bias and Primary elements are shown separately in various displays.
-- [ ] Clear status effects after battle.
+**Final Stretch v0.3.x**
+- [ ] Maybe have a little tab player's can open to quickly reference info about the battle interface (distill what Alice says in her tutorial).
+- [ ] ~~Player can select themselves or their partner as the target for an attack. Doing so crashes the game.
+	- Wontfix
+- [ ] ~~Boss 2 was defeated, but battle did not end. 
+	- idk how to replicate?
+- [x] ~~Changing presets does not change transmutation graph.
+	- Once pause menus are working again, I'll just have the testers do it manually.
+- [x] Closing opened pause menu won't unpause world.
+- [x] Chunk disappears when player talks to NPC.
+- [x] Opening a menu while talking to an NPC will halt the dialog.
+- [x] Preset options do not currently do anything.
+- [x] Selecting a multitarget move requires pressing the button twice.
+- [x] Select player's attack. Selector advances to partner. Click prev button and select attack again. Turn will auto end and partner's turn will be skipped.
+- [x] Transmutation hints for allies hidden by PlayerControls.
+- [x] Fix transmutation hints to no longer show primary type transmutations.
+- [x] Block not expiring?
+- [x] Phobias are not expiring or displaying in Character tab of BattleGUI.
+- [x] BattleActor displays in battle show unused 'Elemental Affinities' section.
+- [x] BattleActor displays in battle do not show equipment.
+- [x] BattleActor displays in battle not properly formating floats (%.1f shown instead of percentage.)
+- [x] BattleActor Bias and Primary elements are shown separately in various displays.
+- [x] Clear status effects after battle.
 
 **Preset 1**
 - [x] Boss 1 
 - [x] Boss 2
-- [ ] Boss 3
+- [x] Boss 3
+- [x] Final testing
 
 **Preset 2**
-- [ ] Boss 1 
-- [ ] Boss 2
+- [x] Boss 1 
+- [x] Boss 2
 - [ ] Boss 3
+- [ ] Final testing
 
 **Preset 3**
 - [ ] Boss 1 
@@ -98,6 +110,7 @@ Demo playtest candidate. Game should be visually and auditorially presentable.
 - [ ] Achievements.
 # The List
 ## Battle (BATT)
+- If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
 ### Actor Info (ainf)
 **Show information about each actor:**
 - [x] Name, Hp.
