@@ -41,10 +41,11 @@
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.3.x
-Combat test candidate. Players can fight a series of 9 simple bosses. Player will be confined to Rec Room in Blue, but can essentially go out of bounds to see the rest of the map.
+Combat test candidate. Players can fight a series of ~~9~~ 6 simple bosses. Player will be confined to Rec Room in Blue, but can essentially go out of bounds to see the rest of the map.
 
 **Final Stretch v0.3.x**
-- [ ] Maybe have a little tab player's can open to quickly reference info about the battle interface (distill what Alice says in her tutorial).
+- [x] Maybe have a little tab player's can open to quickly reference info about the battle interface (distill what Alice says in her tutorial).
+	- Inside of Transmutation Menu. Rn its just a bullet proof list.
 - [ ] ~~Player can select themselves or their partner as the target for an attack. Doing so crashes the game.
 	- Wontfix
 - [ ] ~~Boss 2 was defeated, but battle did not end. 
@@ -78,20 +79,9 @@ Combat test candidate. Players can fight a series of 9 simple bosses. Player wil
 - [x] Boss 2
 - [ ] Boss 3
 - [ ] Final testing
-
-**Preset 3**
-- [ ] Boss 1 
-- [ ] Boss 2
-- [ ] Boss 3
-
 ## v0.4.x
-Demo MVP. Player can visit every area of the demo and experience the major features.
+Demo MVP. Player can visit every area Blue and experience all major features.
 
-**STRY.x**
-- [ ] Purposes for Forest, Tidepools, and Riverfront determined.
-- [ ] Whiteboxed mockup of map. Unimplemented areas can be blocked off.
-- [ ] Deep caves puzzle implemented and tested.
-- [ ] Destroy time trial designed, implemented, and tested.
 **OVER.chco**
 - [x] Player can open chests and obtain items.
 **OVER.plco**

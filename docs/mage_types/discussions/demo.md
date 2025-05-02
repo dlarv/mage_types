@@ -165,7 +165,7 @@ Alice (Orange/Red)
 - Yellow Hit
 - Bite
 - Reactor Breach
-- Ruszh
+- Rush
 
 ## Preset 3
 BPMC + ! { O, Y } 
