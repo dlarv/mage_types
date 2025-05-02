@@ -1,6 +1,10 @@
 extends CanvasLayer
 
 
+func _ready() -> void:
+	%VersionInfo.text = "v" + ProjectSettings.get_setting("application/config/version")
+
+
 func _process(delta: float) -> void:
 	%DebugInfo.text = "FPS: %d" % int(Engine.get_frames_per_second())
 
