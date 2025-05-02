@@ -1,13 +1,24 @@
 extends CharacterBody3D
 class_name Player 
 
+signal actor_changed(actor: BattleActor)
+signal team_changed(team: Array)
 signal battle_started(allies, enemies)
 signal dialog_started(dialog_id, npc)
 signal cutscene_started(player: AnimationPlayer, id: String)
 
 @export_category("Scene Nodes")
-@export var battle_actor: BattleActor
-@export var team: Array[BattleActor]
+@export var battle_actor: BattleActor:
+	set(val):
+		battle_actor = val
+		# When BattleActor is changed via AnimationPlayer, the player screen will not update.
+		if not Engine.is_editor_hint():
+			actor_changed.emit(val)
+@export var team: Array[BattleActor]:
+	set(val):
+		team = val
+		if not Engine.is_editor_hint():
+			team_changed.emit(team)
 ## Used by AnimationPlayers to add BattleActors to player's team.
 @export var add_team_member: BattleActor:
 	set(val):
@@ -15,6 +26,8 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 			add_team_member = val
 		else:
 			team.append(val)
+			team_changed.emit(team)
+
 @export var model: Node3D
 @export var anim_player: AnimationPlayer
 
