@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://0wwb5blbl37u"]
+
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Rails.gd" id="1_qrsw7"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_3cqjf"]
+
+[node name="Rails" type="Node3D" node_paths=PackedStringArray("point_a", "point_b")]
+script = ExtResource("1_qrsw7")
+point_a = NodePath("PointA")
+point_b = NodePath("PointB")
+speed = 10.0
+
+[node name="PointA" type="Marker3D" parent="."]
+
+[node name="Interactable" parent="PointA" instance=ExtResource("2_3cqjf")]
+scaling_factor = 2.0
+
+[node name="PointB" type="Marker3D" parent="."]
+
+[node name="Interactable" parent="PointB" instance=ExtResource("2_3cqjf")]
+scaling_factor = 2.0
+
+[connection signal="interacted" from="PointA/Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="interacted" from="PointB/Interactable" to="." method="_on_interactable_interacted"]
