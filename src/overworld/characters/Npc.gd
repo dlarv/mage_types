@@ -1,6 +1,8 @@
 @tool
 extends MagiClay
 
+signal battle_ended(state: Battle.EndState)
+
 @export var auto_trigger := false
 @export var disabled := false:
 	set(val):
@@ -26,6 +28,7 @@ func _enter_tree():
 			story_actor = child
 		elif child is EnemyActor:
 			enemy_actor = child
+			enemy_actor.battle_ended.connect(func(state): battle_ended.emit(state))
 		elif child is AnimationActor:
 			animation_actor = child
 
@@ -56,12 +59,15 @@ func _on_body_entered(body:Node3D) -> void:
 func _end_battle_cooldown() -> void:
 	_on_cooldown = false 
 
+
 func _start_battle_cooldown() -> void:
 	_on_cooldown = true
+
 
 func get_next_dialog_id() -> String:
 	if not story_actor: return ""
 	return story_actor.get_next_dialog_id()
+
 
 func serialize() -> Dictionary:
 	return {
@@ -71,11 +77,13 @@ func serialize() -> Dictionary:
 		"position": global_position,
 	}
 
+
 func deserialize(data: Dictionary) -> void:
 	self.monitoring = data["monitoring"]
 	if data["dialog_id"] != -2:
 		story_actor.current_id = data["dialog_id"]
 	global_position = data["position"]
+
 
 func _on_interactable_interacted(obj:Node3D) -> void:
 	if not _player: return
@@ -83,3 +91,4 @@ func _on_interactable_interacted(obj:Node3D) -> void:
 		_player.call_deferred("start_dialog", self)
 	else:
 		_player.call_deferred("open_shop", self)
+

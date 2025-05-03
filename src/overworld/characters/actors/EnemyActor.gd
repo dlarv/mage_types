@@ -1,6 +1,8 @@
 extends Node3D 
 class_name EnemyActor 
 
+signal battle_ended(endState: Battle.EndState)
+
 @export var ai: OpponentController 
 @export var _team: Array[BattleActor]:
 	set(value):
@@ -15,3 +17,5 @@ func _enter_tree() -> void:
 func _on_battle_ended(endState: Battle.EndState) -> void: 
 	if not Engine.is_editor_hint() and endState == Battle.EndState.WON and disappear_on_defeat:
 		get_parent().queue_free()
+
+	battle_ended.emit(endState)
