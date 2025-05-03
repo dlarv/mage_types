@@ -1,7 +1,6 @@
 extends PuzzleBlock
 
 @export var locks: Array[PuzzleBlock]
-
 var _opened_locks := {}
 
 func _ready() -> void:
