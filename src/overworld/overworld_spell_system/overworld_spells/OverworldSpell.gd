@@ -11,7 +11,8 @@ var is_active := false
 var _terrain_exclusions: Array
 
 var _magiclay_terrain: MagiClay
-var _current_mouse_pos: Vector3
+var _mouse_pos: Vector3
+var _is_mouse_pos_valid := false
 
 func _ready() -> void:
 	_terrain_exclusions = get_tree().get_nodes_in_group("player")
@@ -41,13 +42,13 @@ func _find_mouse_position() -> void:
 
 	var origin := cam.project_ray_origin(mousePos)
 	var end := origin + cam.project_ray_normal(mousePos) * 1000
-	end.y = global_position.y
+	var query := PhysicsRayQueryParameters3D.create(origin, end)
+	var pos = get_world_3d().direct_space_state.intersect_ray(query).get("position")
 
-	if end != null:
-		_current_mouse_pos = end - global_position
-		_current_mouse_pos.y = position.y
-	else:
-		_current_mouse_pos = position
+	_is_mouse_pos_valid = pos != null
+	if _is_mouse_pos_valid:
+		_mouse_pos = pos - global_position
+		_mouse_pos.y = position.y
 
 func deactivate() -> void:
 	is_active = false
@@ -64,12 +65,14 @@ func _channel_element() -> ElementalType:
 	return ElementManager.Blank
 
 func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, element: ElementalType) -> void:
+	if not _is_mouse_pos_valid: return
 	var projectile := Projectile.instantiate()
+	print(_mouse_pos.normalized())
 	var target: Vector3
 	if not Settings.use_mouse_targeting:
 		target = global_basis.z
 	else:
-		target = _current_mouse_pos.normalized()
+		target = _mouse_pos.normalized()
 
 	projectile.setup(collision_test, action_to_perform, element, target)
 	get_tree().get_root().add_child(projectile)
