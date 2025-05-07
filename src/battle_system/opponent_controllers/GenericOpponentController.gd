@@ -1,3 +1,4 @@
+@tool
 extends OpponentController
 class_name GenericOpponentController
 
