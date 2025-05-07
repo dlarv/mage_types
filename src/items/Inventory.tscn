@@ -252,7 +252,7 @@ resource_name = "Rush Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_0wn4d")
 id = 17
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -359,7 +359,7 @@ resource_name = "Bite Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_1wuss")
 id = 28
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -376,7 +376,7 @@ resource_name = "Consume Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_l5xe0")
 id = 29
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -393,7 +393,7 @@ resource_name = "Cleave Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_k5shw")
 id = 30
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -428,7 +428,7 @@ resource_name = "Fortress Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_a46ng")
 id = 33
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -445,7 +445,7 @@ resource_name = "Freezing Gale Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_e0sre")
 id = 34
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -534,7 +534,7 @@ resource_name = "Brave the Dark Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_kx47f")
 id = 43
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -560,7 +560,7 @@ resource_name = "Steel Shot Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_68132")
 id = 45
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -577,7 +577,7 @@ resource_name = "Disarmament Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_d8mft")
 id = 46
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -594,7 +594,7 @@ resource_name = "Orbital Strike Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_d2r8e")
 id = 47
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -611,7 +611,7 @@ resource_name = "Desolation Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_sx6yy")
 id = 48
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -628,7 +628,7 @@ resource_name = "Reactor Breach Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_6gyui")
 id = 49
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -645,7 +645,7 @@ resource_name = "Alchemy Beam Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_vwn4r")
 id = 50
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -662,7 +662,7 @@ resource_name = "Reinforce Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_rfaas")
 id = 51
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -679,7 +679,7 @@ resource_name = "Snipe Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_d55tx")
 id = 52
-quantity = 0
+quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
@@ -764,3 +764,4 @@ key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubRes
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
 add_all_items = true
 secondary_override = 2
+use_override = true
