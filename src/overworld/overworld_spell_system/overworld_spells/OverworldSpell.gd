@@ -67,7 +67,6 @@ func _channel_element() -> ElementalType:
 func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, element: ElementalType) -> void:
 	if not _is_mouse_pos_valid: return
 	var projectile := Projectile.instantiate()
-	print(_mouse_pos.normalized())
 	var target: Vector3
 	if not Settings.use_mouse_targeting:
 		target = global_basis.z
