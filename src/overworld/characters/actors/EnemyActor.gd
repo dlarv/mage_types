@@ -12,7 +12,7 @@ signal battle_ended(endState: Battle.EndState)
 var team := []
 @export var disappear_on_defeat := true
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	ai.battle_ended.connect(_on_battle_ended)
 
 func _on_battle_ended(endState: Battle.EndState) -> void: 
