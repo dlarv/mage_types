@@ -23,6 +23,5 @@ hp = 100
 reset_hp_after_battle = true
 _element1 = "orange"
 _element2 = "blank"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("2_qnp4c")]([ExtResource("2_l8pfp")])
