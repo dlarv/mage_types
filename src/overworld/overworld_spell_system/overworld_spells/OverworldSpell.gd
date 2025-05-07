@@ -41,11 +41,10 @@ func _find_mouse_position() -> void:
 
 	var origin := cam.project_ray_origin(mousePos)
 	var end := origin + cam.project_ray_normal(mousePos) * 1000
-	var query := PhysicsRayQueryParameters3D.create(origin, end, 2)
-	var pos = get_world_3d().direct_space_state.intersect_ray(query).get("position")
+	end.y = global_position.y
 
-	if pos != null:
-		_current_mouse_pos = pos - global_position
+	if end != null:
+		_current_mouse_pos = end - global_position
 		_current_mouse_pos.y = position.y
 	else:
 		_current_mouse_pos = position
