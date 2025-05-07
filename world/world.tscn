@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=53 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -25,8 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="18_3lqrh"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="18_p65bs"]
 [ext_resource type="PackedScene" uid="uid://b5vei7g5idme8" path="res://data/demo/bosses/boss_4.tscn" id="27_yi4cx"]
+[ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="28_83uud"]
 [ext_resource type="PackedScene" uid="uid://ppa46ytf2itt" path="res://data/demo/bosses/boss_5.tscn" id="29_dyyk6"]
+[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="29_m1310"]
 [ext_resource type="PackedScene" uid="uid://o4rkr1o8fo2u" path="res://data/demo/bosses/boss_6.tscn" id="30_0kir7"]
+[ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="30_0y7aa"]
+[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="31_lppqk"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="32_0pnra"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -101,6 +106,46 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [null]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blue/Chamber2Gate:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-69, -14, -358)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Blue/Chamber2StoryTrigger:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-69, 0.6, -365)]
+}
+
+[sub_resource type="Animation" id="Animation_kmcq3"]
+resource_name = "chamber_2_trigger"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blue/Chamber2Gate:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-69, -14, -358), Vector3(-69, 3, -358)]
 }
 
 [sub_resource type="Animation" id="Animation_50av1"]
@@ -231,11 +276,29 @@ tracks/4/keys = {
 "values": [ExtResource("16_h6urt")]
 }
 
+[sub_resource type="Animation" id="Animation_ns3pi"]
+resource_name = "set_chamber_2_trigger"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blue/Chamber2StoryTrigger:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-69, 0.6, -365), Vector3(-69, 3.6, -365)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1n5t0"]
 _data = {
 "RESET": SubResource("Animation_pj603"),
+"chamber_2_trigger": SubResource("Animation_kmcq3"),
 "preset_1": SubResource("Animation_50av1"),
-"preset_2": SubResource("Animation_ul1hv")
+"preset_2": SubResource("Animation_ul1hv"),
+"set_chamber_2_trigger": SubResource("Animation_ns3pi")
 }
 
 [sub_resource type="Resource" id="Resource_4xgon"]
@@ -287,6 +350,21 @@ height = 6.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3vjxc"]
 size = Vector3(9.9, 1, 1)
+
+[sub_resource type="Resource" id="Resource_6c3vh"]
+resource_name = "Stasis Spell"
+script = ExtResource("29_m1310")
+item = ExtResource("30_0y7aa")
+id = 0
+quantity = 1
+max_quantity = 9999
+allow_stacking = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jgrk"]
+size = Vector3(7, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw2bq"]
+size = Vector3(12, 2, 10)
 
 [node name="World" type="Node3D"]
 
@@ -411,6 +489,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.80295, -101)
 
 [node name="Boss6" parent="Overworld/Blue/Preset2" instance=ExtResource("30_0kir7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.80295, -101)
+
+[node name="StasisSpellStoryTrigger" parent="Overworld/Blue" instance=ExtResource("28_83uud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 3.6, -398)
+items = Array[ExtResource("29_m1310")]([SubResource("Resource_6c3vh")])
+info_graphic_key = "stasis"
+
+[node name="AnimationActor" parent="Overworld/Blue/StasisSpellStoryTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("31_lppqk")]
+animation_name = "set_chamber_2_trigger"
+animation_player = NodePath("../../../AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/StasisSpellStoryTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+shape = SubResource("BoxShape3D_8jgrk")
+
+[node name="Chamber2StoryTrigger" parent="Overworld/Blue" instance=ExtResource("28_83uud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 0.6, -365)
+
+[node name="AnimationActor" parent="Overworld/Blue/Chamber2StoryTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("31_lppqk")]
+animation_name = "chamber_2_trigger"
+animation_player = NodePath("../../../AnimationPlayer")
+is_blocking = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Chamber2StoryTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+shape = SubResource("BoxShape3D_sw2bq")
+
+[node name="Chamber2Gate" parent="Overworld/Blue" node_paths=PackedStringArray("locks") instance=ExtResource("32_0pnra")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -69, -14, -358)
+locks = [NodePath("../DungeonChunk/Chamber2/Relay3")]
+permanent = true
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
