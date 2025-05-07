@@ -9,12 +9,15 @@ signal slide_ended()
 @export var speed := 300.0
 @export var _buffer_offset := 0.1
 
+var puzzle_name: String
+
 var _puzzle_block: PuzzleBlock
 var _in_motion := false
 var _farther_point: Vector3
 
 
 func _ready() -> void:
+	puzzle_name = "%s.%s" % [ get_parent().name, name ]
 	for child in get_children():
 		if child is PuzzleBlock:
 			_puzzle_block = child

@@ -9,6 +9,7 @@ var _opened_locks := {}
 var _is_opened := false
 
 func _ready() -> void:
+	super._ready()
 	$AnimationPlayer.speed_scale = 60 / open_delay
 	_is_opened = false
 	for lock in locks:

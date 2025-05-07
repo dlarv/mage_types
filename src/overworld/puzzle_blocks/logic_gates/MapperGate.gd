@@ -11,6 +11,7 @@ var map_off_to := "off"
 var map_invalid_off_to := "invalid"
 
 func _ready() -> void:
+	super._ready()
 	if lock == null: return
 	lock.on.connect(_on_lock_on)
 	lock.off.connect(_on_lock_off)

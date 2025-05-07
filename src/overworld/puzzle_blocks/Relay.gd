@@ -5,6 +5,7 @@ extends PuzzleBlock
 var _depressed := false
 
 func _ready() -> void:
+	super._ready()
 	if lock == null: return
 	lock.on.connect(_on_lock_opened)
 	lock.invalid_off.connect(_on_lock_closed)

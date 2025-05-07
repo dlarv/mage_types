@@ -7,6 +7,7 @@ var _is_locked := true
 var _opened_locks := {}
 
 func _ready() -> void:
+	super._ready()
 	for lock in locks:
 		_opened_locks[lock] = false
 		lock.on.connect(_on_lock_opened)

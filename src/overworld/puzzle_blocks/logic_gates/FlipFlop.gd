@@ -6,6 +6,7 @@ extends PuzzleBlock
 @export var offset := 0.0
 
 func _ready() -> void:
+	super._ready()
 	$On.wait_time = on_length
 	$Off.wait_time = off_length
 	await get_tree().create_timer(offset).timeout
