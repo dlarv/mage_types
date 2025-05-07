@@ -11,7 +11,7 @@ signal slide_ended()
 
 var puzzle_name: String
 
-var _puzzle_block: PuzzleBlock
+var _puzzle_block: Node3D
 var _in_motion := false
 var _farther_point: Vector3
 
@@ -19,7 +19,7 @@ var _farther_point: Vector3
 func _ready() -> void:
 	puzzle_name = "%s.%s" % [ get_parent().name, name ]
 	for child in get_children():
-		if child is PuzzleBlock:
+		if not child is Marker3D:
 			_puzzle_block = child
 
 
