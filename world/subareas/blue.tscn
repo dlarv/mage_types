@@ -1952,15 +1952,15 @@ _element = "blue"
 
 [node name="AndGate1" parent="DungeonChunk/Chamber2" node_paths=PackedStringArray("locks") instance=ExtResource("17_7vsee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-locks = [NodePath("../SE/Rails1/MapperGate"), NodePath("../SW/Rails1/MapperGate"), NodePath("../NW/Rails1/MapperGate"), NodePath("../NE/Rails1/MapperGate")]
+locks = [NodePath("../SE/Rails1/MapperGate_SE"), NodePath("../SW/Rails1/MapperGate_SW"), NodePath("../NW/Rails1/MapperGate_NW"), NodePath("../NE/Rails1/MapperGate_NE")]
 
 [node name="AndGate2" parent="DungeonChunk/Chamber2" node_paths=PackedStringArray("locks") instance=ExtResource("17_7vsee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-locks = [NodePath("../SE/Rails2/MapperGate"), NodePath("../SW/Rails2/MapperGate"), NodePath("../NW/Rails2/MapperGate"), NodePath("../NE/Rails2/MapperGate")]
+locks = [NodePath("../SE/Rails2/MapperGate_SE"), NodePath("../SW/Rails2/MapperGate_SW"), NodePath("../NW/Rails2/MapperGate_NW"), NodePath("../NE/Rails2/MapperGate_NE")]
 
 [node name="AndGate3" parent="DungeonChunk/Chamber2" node_paths=PackedStringArray("locks") instance=ExtResource("17_7vsee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-locks = [NodePath("../SE/Rails3/MapperGate"), NodePath("../SW/Rails3/MapperGate"), NodePath("../NW/Rails3/MapperGate"), NodePath("../NE/Rails3/MapperGate")]
+locks = [NodePath("../SE/Rails3/MapperGate_SE"), NodePath("../SW/Rails3/MapperGate_SW"), NodePath("../NW/Rails3/MapperGate_NW"), NodePath("../NE/Rails3/MapperGate_NE")]
 
 [node name="Relay1" parent="DungeonChunk/Chamber2" node_paths=PackedStringArray("lock") instance=ExtResource("18_5iry2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, -16)
@@ -1969,6 +1969,10 @@ lock = NodePath("../AndGate1")
 [node name="Relay2" parent="DungeonChunk/Chamber2" node_paths=PackedStringArray("lock") instance=ExtResource("18_5iry2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -16)
 lock = NodePath("../AndGate2")
+
+[node name="Relay3" parent="DungeonChunk/Chamber2" node_paths=PackedStringArray("lock") instance=ExtResource("18_5iry2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, -16)
+lock = NodePath("../AndGate3")
 
 [node name="SE" type="Node3D" parent="DungeonChunk/Chamber2"]
 
@@ -1988,8 +1992,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/SE/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_SE" parent="DungeonChunk/Chamber2/SE/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_SE")
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_SE" parent="DungeonChunk/Chamber2/SE/Rails1" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
@@ -2011,10 +2016,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/SE/Rails2/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/SE/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_SE" parent="DungeonChunk/Chamber2/SE/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_SE")
-map_on_to = "invalid"
+map_on_to = "off"
 map_off_to = "on"
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_SE" parent="DungeonChunk/Chamber2/SE/Rails2" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2036,8 +2042,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/SE/Rails3/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/SE/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_SE" parent="DungeonChunk/Chamber2/SE/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_SE")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_SE" parent="DungeonChunk/Chamber2/SE/Rails3" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2062,8 +2071,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/SW/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_SW" parent="DungeonChunk/Chamber2/SW/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_SW")
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_SW" parent="DungeonChunk/Chamber2/SW/Rails1" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
@@ -2084,8 +2094,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/SW/Rails2/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/SW/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_SW" parent="DungeonChunk/Chamber2/SW/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_SW")
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_SW" parent="DungeonChunk/Chamber2/SW/Rails2" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2106,8 +2117,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/SW/Rails3/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/SW/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_SW" parent="DungeonChunk/Chamber2/SW/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_SW")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_SW" parent="DungeonChunk/Chamber2/SW/Rails3" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2132,8 +2146,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/NW/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_NW" parent="DungeonChunk/Chamber2/NW/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_NW")
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_NW" parent="DungeonChunk/Chamber2/NW/Rails1" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
@@ -2154,8 +2169,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/NW/Rails2/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/NW/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_NW" parent="DungeonChunk/Chamber2/NW/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_NW")
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_NW" parent="DungeonChunk/Chamber2/NW/Rails2" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2176,8 +2192,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/NW/Rails3/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/NW/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_NW" parent="DungeonChunk/Chamber2/NW/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_NW")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_NW" parent="DungeonChunk/Chamber2/NW/Rails3" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2202,15 +2221,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 scaling_factor = 0.0
 
+[node name="MapperGate_NE" parent="DungeonChunk/Chamber2/NE/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+lock = NodePath("../LaserReceiver_NE")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
 [node name="LaserReceiver_NE" parent="DungeonChunk/Chamber2/NE/Rails1" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
 collision_layer = 5
 _element = "yellow"
-
-[node name="MapperGate" parent="DungeonChunk/Chamber2/NE/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
-lock = NodePath("../LaserReceiver_NE")
-map_on_to = "invalid"
-map_off_to = "on"
 
 [node name="Rails2" parent="DungeonChunk/Chamber2/NE" instance=ExtResource("11_bmr1f")]
 
@@ -2226,10 +2246,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/NE/Rails2/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/NE/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_NE" parent="DungeonChunk/Chamber2/NE/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_NE")
-map_on_to = "invalid"
+map_on_to = "off"
 map_off_to = "on"
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_NE" parent="DungeonChunk/Chamber2/NE/Rails2" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2250,8 +2271,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 [node name="Interactable" parent="DungeonChunk/Chamber2/NE/Rails3/PointB" index="0"]
 scaling_factor = 0.0
 
-[node name="MapperGate" parent="DungeonChunk/Chamber2/NE/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
+[node name="MapperGate_NE" parent="DungeonChunk/Chamber2/NE/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("19_x5a2c")]
 lock = NodePath("../LaserReceiver_NE")
+map_invalid_off_to = "off"
 
 [node name="LaserReceiver_NE" parent="DungeonChunk/Chamber2/NE/Rails3" instance=ExtResource("13_wmj0o")]
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, 0.5)
@@ -2277,6 +2299,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.1, 0.6, -72)
 [connection signal="on" from="DungeonChunk/Chamber2/Relay2" to="DungeonChunk/Chamber2/NW/Rails3" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay2" to="DungeonChunk/Chamber2/NE/Rails2" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay2" to="DungeonChunk/Chamber2/NE/Rails3" method="slide"]
+[connection signal="on" from="DungeonChunk/Chamber2/Relay3" to="DungeonChunk/Chamber2/SE/Rails3" method="slide"]
+[connection signal="on" from="DungeonChunk/Chamber2/Relay3" to="DungeonChunk/Chamber2/SW/Rails3" method="slide"]
+[connection signal="on" from="DungeonChunk/Chamber2/Relay3" to="DungeonChunk/Chamber2/NW/Rails3" method="slide"]
+[connection signal="on" from="DungeonChunk/Chamber2/Relay3" to="DungeonChunk/Chamber2/NE/Rails3" method="slide"]
 
 [editable path="blue"]
 [editable path="DungeonChunk/Chamber1/Chunk/Mirror_Rails"]
