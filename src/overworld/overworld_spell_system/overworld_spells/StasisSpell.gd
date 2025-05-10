@@ -40,4 +40,3 @@ func deserialize(data: Dictionary) -> void:
 	_stasis_queue = []
 	for obj in data["queue"]:
 		_stasis_queue.append(get_node(obj))
-
