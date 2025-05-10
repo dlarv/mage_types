@@ -14,16 +14,15 @@ radius = 0.994533
 [sub_resource type="BoxShape3D" id="BoxShape3D_3422r"]
 size = Vector3(2, 0.4, 2)
 
-[node name="DraggableMirror" type="StaticBody3D"]
+[node name="DraggableMirror" type="RigidBody3D"]
 collision_layer = 23
-collision_mask = 3
-axis_lock_linear_x = true
+collision_mask = 7
 axis_lock_linear_y = true
-axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_lav1w")
+is_transmutable = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -35,9 +34,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_pqgmg")
 
 [node name="Mirror" parent="." instance=ExtResource("3_b1r0o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503335, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 
 [node name="Draggable" parent="." instance=ExtResource("3_ityay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 scaling_factor = 2.0
 restrict_axis = true
 

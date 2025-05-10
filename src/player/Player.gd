@@ -153,8 +153,12 @@ func _move_drag_mode(delta: float) -> void:
 
 	# Snap to grid.
 	if velocity.length() < 0.1:
+		var yPos := global_position.y
 		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
-		draggable.parent.global_position = draggable.parent.global_position.snapped(Vector3(0.5, 0.5, 0.5))
+		global_position.y = yPos
+		# global_position.y = draggable.parent.global_position.y
+		# draggable.parent.global_position = draggable.parent.global_position.snapped(Vector3(0.5, 0.5, 0.5))
+		# draggable.parent.global_position.y = yPos
 	else:
 		move_and_slide()
 
