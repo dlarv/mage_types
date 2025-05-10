@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8862iat02o7"]
+[gd_scene load_steps=15 format=3 uid="uid://b8862iat02o7"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/DraggableMirror.gd" id="1_lav1w"]
-[ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_b1r0o"]
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Mirror.gd" id="1_i7v82"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="3_ityay"]
+[ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_jn2h4"]
+[ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="4_u0nan"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4tnhy"]
 size = Vector3(2, 0.5, 2)
@@ -14,6 +15,27 @@ radius = 0.994533
 [sub_resource type="BoxShape3D" id="BoxShape3D_3422r"]
 size = Vector3(2, 0.4, 2)
 
+[sub_resource type="PrismMesh" id="PrismMesh_0occk"]
+left_to_right = 1.0
+size = Vector3(1, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp0kv"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n8wmk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_stuax"]
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1rmwu"]
+size = Vector3(1, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udp2s"]
+size = Vector3(0.15, 2.06174, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xkiah"]
+size = Vector3(1.29272, 2.62781, 1.26697)
+
 [node name="DraggableMirror" type="RigidBody3D"]
 collision_layer = 23
 collision_mask = 7
@@ -24,26 +46,17 @@ axis_lock_angular_z = true
 mass = 100.0
 linear_damp_mode = 1
 linear_damp = 100.0
-script = ExtResource("1_lav1w")
+script = ExtResource("1_i7v82")
 is_transmutable = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("BoxMesh_4tnhy")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="BaseCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_pqgmg")
-
-[node name="Mirror" parent="." instance=ExtResource("3_b1r0o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503335, 0)
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 
 [node name="Draggable" parent="." instance=ExtResource("3_ityay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -65,3 +78,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="Marker3D_West" type="Marker3D" parent="Draggable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 0)
+mesh = SubResource("PrismMesh_0occk")
+surface_material_override/0 = SubResource("StandardMaterial3D_lp0kv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 2.18557e-08)
+shape = SubResource("BoxShape3D_n8wmk")
+
+[node name="SubEmitterX" parent="." instance=ExtResource("3_jn2h4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.919238, 1, 0)
+
+[node name="SubReceiverX" parent="." instance=ExtResource("4_u0nan")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.00771, 0)
+shape = SubResource("BoxShape3D_stuax")
+
+[node name="SubEmitterZ" parent="." instance=ExtResource("3_jn2h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.00729)
+
+[node name="SubReceiverZ" parent="." instance=ExtResource("4_u0nan")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00771, 0.55)
+shape = SubResource("BoxShape3D_1rmwu")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55056, 0.980872, 0.55056)
+shape = SubResource("BoxShape3D_udp2s")
+
+[node name="Blocker" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0394287, 1.0232, 0.0504761)
+shape = SubResource("BoxShape3D_xkiah")
+
+[connection signal="laser_dropped" from="SubReceiverX" to="." method="_on_laser_dropped"]
+[connection signal="laser_received" from="SubReceiverX" to="." method="_on_sub_receiver_x_laser_received"]
+[connection signal="laser_dropped" from="SubReceiverZ" to="." method="_on_laser_dropped"]
+[connection signal="laser_received" from="SubReceiverZ" to="." method="_on_sub_receiver_z_laser_received"]
