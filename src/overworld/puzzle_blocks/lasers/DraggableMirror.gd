@@ -3,6 +3,10 @@ extends PuzzleBlock
 
 var _prev_parent: Node3D = null
 
+func _ready() -> void:
+	super._ready()
+	$Mirror.set_element(element, -2, true)
+
 
 func _get_mesh() -> MeshInstance3D:
 	return $Mirror/MeshInstance3D
@@ -19,8 +23,8 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 # Override
 func set_stasis(val=null) -> void:
 	super.set_stasis(val)
-	$Mirror.in_stasis = in_stasis
-	$Mirror._flicker_collider()
+	# $Mirror.in_stasis = in_stasis
+	# $Mirror._flicker_collider()
 
 func drop() -> void:
 	reparent(_prev_parent)

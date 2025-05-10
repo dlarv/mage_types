@@ -72,10 +72,12 @@ func _try_set_color(color=null) -> bool:
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if e == null or e.is_blank(): return false
 	if in_stasis and not force:
-		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." % [puzzle_name, e.name])
+		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." 
+				% [puzzle_name, e.name])
 		return false
 	elif not is_transmutable and not force: 
-		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in not transmutable." % [puzzle_name, e.name])
+		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in not transmutable." 
+				% [puzzle_name, e.name])
 		return false
 	elif randVal != -2 and _rand_val == randVal and not force: 
 		return false

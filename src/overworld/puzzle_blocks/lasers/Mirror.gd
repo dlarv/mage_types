@@ -42,7 +42,7 @@ func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> voi
 
 	if laser.rand_val != _prev_val: 
 		_prev_val = laser.rand_val
-		create_log(self, e)
+		create_log(self, e, laser)
 
 	if in_stasis or e == null or e.is_blank():
 		e = laser.element
@@ -51,16 +51,16 @@ func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> voi
 	subEmitter.set_element(e)
 	subEmitter.start()
 	
-func create_log(body: MagiClay, e: ElementalType) -> void:
+func create_log(body: MagiClay, newElement: ElementalType, laser: Laser) -> void:
 	if in_stasis:
 		Logger.append_puzzle_log("Mirror(%s) in stasis collided with laser of Element(%s)."
-			% [puzzle_name, body.element])
-	elif e == null or e.is_blank():
+			% [puzzle_name, laser.element])
+	elif newElement == null or newElement.is_blank():
 		Logger.append_puzzle_log("Mirror(%s) of Element(%s) collided with laser of Element(%s)."
-			% [puzzle_name, element, body.element])
+			% [puzzle_name, element, laser.element])
 	else:
 		Logger.append_puzzle_log("Mirror(%s) of Element(%s) transmuted laser of Element(%s) into Element(%s)." 
-			% [puzzle_name, element, body.element, e])
+			% [puzzle_name, element, laser.element, newElement])
 
 func _on_laser_dropped() -> void:
 	_is_emitting = false
