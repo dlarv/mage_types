@@ -17,6 +17,8 @@ Each of these sections will weave through each other.
 ## Beach
 - Player will spawn on lighthouse pier.
 - Player will enter beach house, where they will meet Alice and the Caretaker.
+## Rec Room
+## Hotel Enclave
 ## The Ziggurat 
 - Inside the Grand Enclave Ziggurat, there are 8 giant pillars the player can use to ascend to the surface. However, the first one has collapsed, revealing a hidden side path. The player must venture down this side route and loop back in order to ascend.
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
