@@ -77,27 +77,37 @@ Combat test candidate. Players can fight a series of ~~9~~ 6 simple bosses. Play
 **Preset 2**
 - [x] Boss 1 
 - [x] Boss 2
-- [ ] Boss 3
-- [ ] Final testing
+- [x] Boss 3
+- [x] Final testing
 ## v0.4.x
-Demo MVP. Player can visit every area Blue and experience all major features.
-
-**OVER.chco**
-- [x] Player can open chests and obtain items.
-**OVER.plco**
-- [ ] Player companions follow player.
-**OVER.wild**
-- [ ] Simple wild enemy behavior.
-	- [x] Aggressive
-	- [ ] Passive
-	- [ ] Scared
-**OVER.spel**
-- [x] Destroy spell implemented.
-## v0.5.x+
-Demo playtest candidate. Game should be visually and auditorially presentable.
-
-**POLI.achi**
-- [ ] Achievements.
+Demo MVP. Player can visit every major area of Blue and experience all major features.
+- [ ] Write intro for Alice
+- [ ] Add dialog/character to beach house
+- [ ] Rec room
+	- [ ] Combat tutorial from Test Candidate -> Actual
+- [ ] Texture and decorate env
+	- [ ] Beach
+		- [ ] Lighthouse
+		- [ ] Piers
+		- [ ] Large door
+		- [ ] Water
+	- [ ] Beach house
+	- [ ] Hotel halls
+		- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools.
+	- [ ] Caves
+- [ ] Expand battle animations
+- [ ] Stasis dungeon
+	- [ ] Test boss
+	- [ ] Chamber 2 mural
+	- [ ] Chamber 3 puzzle
+	- [ ] Texturing and decor
+- [ ] Hotel side room?
+	- [ ] Purpose
+	- [ ] Puzzle
+	- [ ] Texture
+- [ ] Add Great Enclave (models and dialog)
+- [ ] Add content to Ziggurat (central area and on top of pillars)
+- [ ] Add decor and content to upper waterfall room
 # The List
 ## Battle (BATT)
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.

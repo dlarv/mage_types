@@ -140,16 +140,12 @@ The plan went something like this:
 - The *Sixth* built upon the now stable environment, creating many of the structures that can be found on the island to this day. These include the community center and Research Campus. Many of the most dangerous locations were tucked or sealed away, such that newbies could not accidentally stumble upon them. Their ultimate fate is unknown, though it is likely they were eventually mercy killed.
 	- Accomplished through a combination of Pink and Magenta magic.
 	- Many structures were pulled in from superspace (not by *6*, through 'natural' means).
-- The *Seventh*, utilizing the campus recently built by *6*, used their brilliant intellect to unravel the mysteries of the island. They are credited with illuminating an unclear part of *1*'s plan, for the *First* did not realize the other elements had to be reduced. The foundations of most non-combat knowledge originated from them, with help from *6* and *8*. Their immortal form is rumored to still be somewhere in the depths of their campus.
+- The *Seventh*, utilizing the campus recently built by *6*, used their brilliant intellect to unravel the mysteries of the island. The foundations of most non-combat knowledge originated from them, with help from *6* and *8*. Their immortal form is rumored to still be somewhere in the depths of their campus.
 	- A combination of Blue, Pink, and Orange magic was used here.
 	- Pink was safe enough that *7* is not a high priority for the *Last*.
 - The act of reducing the elements was taken on by the *Eighth*, once all the rest had finished their work. Channeling and sealing that much power turn *8* into a chromatic beast, still capable of channeling the vestiges of those forgotten powers.
 	- Accomplished by a combination of all elements, as well as multiple devil deals.
 	- This was not entirely successful, as Orange and Purple could not be removed.
-- Several Old Ones remained on the island, some of which continued to cause problems for the Old Guard and their fledgling civilization. Unable to remove these entities through force alone, the diplomatic skills of *3* were needed once again.
-	- Accomplished through diplomacy, devil deals.
-	- Some entities had to be removed by force, a task carried out by RED, who was sympathetic to the cause.
-	- A few Old Ones remain, including the Clerk, Cook, and RED.
 - The *Last* of the Old Guard joined them late, shortly before *8* finished their task. Largely untouched by the most corruptive of forces. Their task was to put the Old Guard to rest, including their dear friends *3* and *8*.
 	- This task requires a lot of research, which is not the hunter's strong suit.
 	- The "hitlist" was organized based on danger and pain, which is why *3* and *7* are not being actively pursued. 
@@ -158,11 +154,24 @@ The plan went something like this:
 
 **A general idea of what some of the forgotten powers were like**
 <span style="color:#ff007f">Pink (f08)</span>: Psychic
-<span style="color:#00ff7f">Seafoam (0f8)</span>: Could be used to sustain the body.
+<span style="color:#00ff7f">Seafoam/Spring (0f8)</span>: Could be used to sustain the body.
 <span style="color:#7fff00">Chartreuse (8f0)</span>: Has unspecified combat capabilities.
 <span style="color:#007fff">Azure(08f)</span>: Used to manipulate time.
+#### Amendment to Old Guard Lore
+The elements are the remanents of 1st gen Old Ones who got trapped out in the void. The island of Forlorn coalesced around them, formed from the rotting remanents of their physical forms. This cruel fate left them scattered and confused, grasping for a return of even a portion of their former glory. As the Elements did not retain the power to intentionally create life from scratch, they were forced to find new forms from beyond. Thus began the abduction of mortals.
 
-*The Old Guard must die, so the new may live.*
+However, the environment of Forlorn proved too hostile for mere mortals to survive, causing many of the vessels to fail, either to death or monstrous mutation. Eventually, a plan was devised by Azure through their first and only vessel. This is the plan detailed above. The distinction between Elder God and the Guardians are not super clear, the humans believed it was their plan, even as their minds began to merge with alien forces. It should also be noted that the most successful guardians were not true vessels, instead being formed from the collaboration of several powers.
+
+Despite their best efforts, only 4 Old Ones were able to regain some shadow of their previous glory. The 8 main elements used in the magic system had become too diluted due to overuse of vessels, ultimately dooming them to eternal silence. The alignment process is a forgotten echo of the vessel forging process. 
+
+Pink, Seafoam, Chartreuse, and Azure retreated to the depths of the world after the conclusion of the plan. Azure has long since slipped into silence, succumbing to psychic exhaustion. Pink has retreated to the psychic plane; their slumbering body can be found deep in the catacombs. When both were alive, Pink and Red had a deep connection, from which the hivemind was born. Chartruese and Seafoam are the only entities who have persisted in any form of coherent state. Seafoam sits at the center of the Primordial Garden. Chartreuse is a tempermental, destructive entity *Idk where they will be holed up*.
+
+The Last of the Old Guard is not a vessel, instead being more of a collaboration between several of the Old Ones. They're still technically mortal, though their life has been artificially extended. Insetead of killing off the other guardians, their mission is more focused on killing the old corrupted vessels and monsters that remain from the old times. I like the idea of them previously having a good relationship with Pink, Chartreuse, and Seafoam, which has long since lapsed.
+
+>[!note] Seafoam vs Spring
+>So google says that the proper name for this color is Spring Green, but I prefer the name Seafoam.
+##### Pantheon
+I like the idea of old vessels forming something akin to a pantheon of gods. The personality changes that happen to aligned individuals mirror the personalities of these ancient vessels.
 ### Blue Enclaves
 As many of the older Blue-aligned have limited to no mobility, their locations are somewhat haphazard. As such, they lack the greater coordination of the other factions. When 2+ Blue-aligned are rooted within talking distance, they form what is known as an enclave. There are several of these enclaves, usually with 2-6 members. Deep in the caverns of Blue, however, there is the *Great Enclave*, once consisting of dozens of members. Once a hub of enlightenment, many of the foundational members have long since lost their minds, fracturing the Enclave. Several remanant groups along the outside of the whole, consisting of younger members, have kept the tradition alive, each claiming to be the original. 
 ### Purple
