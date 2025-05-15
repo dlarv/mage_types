@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=45 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="13_wmj0o"]
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="16_dmw61"]
 [ext_resource type="PackedScene" uid="uid://de1dw2r8mhg2i" path="res://src/overworld/puzzle_blocks/logic_gates/and_gate.tscn" id="17_7vsee"]
+[ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="17_s7vy1"]
 [ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="18_5iry2"]
+[ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="18_jg23q"]
 [ext_resource type="PackedScene" uid="uid://eqenv56ihr4q" path="res://src/overworld/puzzle_blocks/logic_gates/mapper_gate.tscn" id="19_x5a2c"]
 [ext_resource type="PackedScene" uid="uid://d3odmmlqvwyfn" path="res://data/bosses/stasis_boss.tscn" id="20_jsnn2"]
 
@@ -319,7 +321,7 @@ shape = SubResource("BoxShape3D_mwy17")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ZigguratToDungeon2"]
-transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -96.5, 7.2, -118.6)
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -96.5, 7.2, -116.6)
 shape = SubResource("BoxShape3D_wm0wg")
 
 [node name="Marker3D" type="Marker3D" parent="ZigguratToDungeon2/CollisionShape3D2"]
@@ -367,6 +369,9 @@ chunk = NodePath("../BlueEnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRoomChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7.5, 6.5)
 shape = SubResource("BoxShape3D_m7kj6")
+
+[node name="Gate" parent="HotelRoomChunk" instance=ExtResource("4_5og7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0.6, 6)
 
 [node name="HallChunk3" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -119)
@@ -440,6 +445,7 @@ _element = "red"
 
 [node name="Emitter_E" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 27.2, 3.3, -17)
+is_on = false
 _element = "green"
 
 [node name="Mirror" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("12_55e1h")]
@@ -465,6 +471,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="Emitter_S" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10, 4, 18.4)
+is_on = false
 _element = "orange"
 
 [node name="Lens2_Rails" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_bmr1f")]
@@ -504,18 +511,22 @@ shape = SubResource("BoxShape3D_pfh1f")
 
 [node name="Emitter_SE" parent="DungeonChunk/Chamber2" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 19, 4, 10)
+is_on = false
 _element = "red"
 
 [node name="Emitter_SW" parent="DungeonChunk/Chamber2" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -17, 4, 12.7)
+is_on = false
 _element = "green"
 
 [node name="Emitter_NW" parent="DungeonChunk/Chamber2" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -20.8, 4, -13)
+is_on = false
 _element = "yellow"
 
 [node name="Emitter_NE" parent="DungeonChunk/Chamber2" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(-5.73206e-15, -1.31134e-07, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, 1.31134e-07, 13, 4, -16.9)
+is_on = false
 _element = "blue"
 
 [node name="AndGate1" parent="DungeonChunk/Chamber2" node_paths=PackedStringArray("locks") instance=ExtResource("17_7vsee")]
@@ -873,8 +884,40 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34.8, 7, 18.8)
 [node name="Gate_N" parent="DungeonChunk/Chamber3" instance=ExtResource("4_5og7y")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -31.8, 7, -28.2)
 
-[node name="Gate" parent="." instance=ExtResource("4_5og7y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.1, 0.6, -72)
+[node name="Emitter" parent="DungeonChunk" instance=ExtResource("11_yj7ox")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -101.4, 8, 4)
+_element = "blue"
+
+[node name="DraggableMirror" parent="DungeonChunk" instance=ExtResource("17_s7vy1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -69, 6.8, 13)
+_element = "orange"
+
+[node name="DraggableMirror2" parent="DungeonChunk" instance=ExtResource("17_s7vy1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29, 6.8, 13)
+_element = "green"
+
+[node name="LaserReceiver" parent="DungeonChunk" instance=ExtResource("13_wmj0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 8.1, -22.6)
+collision_layer = 5
+
+[node name="RotatableMirror" parent="DungeonChunk" instance=ExtResource("18_jg23q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 7, 4)
+_element = "red"
+
+[node name="RotatableMirror2" parent="DungeonChunk" instance=ExtResource("18_jg23q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 7, -2)
+_element = "magenta"
+
+[node name="LaserReceiver2" parent="DungeonChunk" instance=ExtResource("13_wmj0o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -101.1, 8, -2)
+collision_layer = 5
+_element = "blue"
+
+[node name="Mirror" parent="DungeonChunk" instance=ExtResource("12_55e1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 7, -8)
+
+[node name="Mirror2" parent="DungeonChunk" instance=ExtResource("12_55e1h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -94, 7, -17)
 
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SE/Rails1" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SE/Rails2" method="slide"]
