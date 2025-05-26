@@ -142,6 +142,3 @@ vec3 o501487770734_0_1_rgb = nm_o501487770734((uv), p_o501487770734_amount, 4096
 	NORMAL = o501487770734_0_1_rgb;
 	EMISSION = vec3(0.0)*p_o500833459319_emission_energy;
 }
-
-
-

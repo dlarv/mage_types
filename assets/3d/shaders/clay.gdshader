@@ -31,7 +31,7 @@ vec3 cracks(vec3 noise_coord) {
 }
 void vertex() {
 	// Called for every vertex the material is visible on.
-	NORMAL += NORMAL 
+	NORMAL += NORMAL
 			* texture(IMPRESSIONS, UV).xyz
 			* texture(PRINTS, UV).xyz
 			* finger_scale;
@@ -42,9 +42,6 @@ void fragment() {
 	ALBEDO = vec3(.5, .6, .5);
 	vec3 finger = texture(PRINTS, UV).xyz;
 	ALBEDO = finger;
-	
+
 	//ALBEDO = cracks(texture(NOISE, UV).xyz);
 }
-
-
-
