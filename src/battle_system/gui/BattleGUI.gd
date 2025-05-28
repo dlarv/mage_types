@@ -122,7 +122,7 @@ func select_targets(user: BattleActor, action:_BattleAction):
 
 
 func show_enemy_intentions(val: bool) -> void:
-	team_display.show_intentions(val)
+	team_display.show_enemy_intentions(val)
 
 
 func _on_active_actor_changed(index: int) -> void:
@@ -131,7 +131,6 @@ func _on_active_actor_changed(index: int) -> void:
 	# If player was selecting a target, but then hits prev/next, cancel selection.
 	team_display.cancel_target_selection()
 	
-
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
