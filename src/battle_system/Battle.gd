@@ -263,30 +263,8 @@ func _prep_next_turn() -> void:
 	gui.display_turn_order(speedRank)
 
 
+# To be DEPRECATED
 func _play_animation(action: ActorAction) -> void:
-		var userPosition := gui.get_actor_display_position(action.team_index, action.actor)
-		var targetTeamIndex: int
-		var teamDisplay: TeamDisplay
-
-		match action.action.target:
-			# Target same team as user.
-			_BattleAction.TargetType.SELF,_BattleAction.TargetType.ALLY,_BattleAction.TargetType.ALLIES:
-				targetTeamIndex = action.team_index
-				teamDisplay = gui.ally_display_parent if action.team_index == 0 else gui.enemy_display_parent
-			# Target opposite team from user.
-			_BattleAction.TargetType.ENEMY,_BattleAction.TargetType.ENEMIES:
-				targetTeamIndex = (action.team_index + 1) % 2
-				teamDisplay = gui.ally_display_parent if action.team_index == 1 else gui.enemy_display_parent
-			_:
-				var isTargetEnemy := gui.enemy_display_parent.has_actor(action.targets[0])
-				if isTargetEnemy:
-					targetTeamIndex = (action.team_index + 1) % 2
-					teamDisplay = gui.enemy_display_parent
-				else:
-					targetTeamIndex = action.team_index
-					teamDisplay = gui.ally_display_parent
-
-
-		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
-
+		var userPosition := gui.get_actor_display_position(action.actor)
+		var targetPosition := gui.get_actor_display_position(action.targets[0])
 		action.action.play_animation(userPosition, targetPosition, self)

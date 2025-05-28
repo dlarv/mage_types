@@ -12,12 +12,11 @@ albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
 material = SubResource("StandardMaterial3D_u5iq7")
 size = Vector2(50, 50)
 
-[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("message_box", "ally_display_parent", "enemy_display_parent", "player_controls", "turn_counter_display", "turn_order_display")]
+[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("message_box", "team_display", "player_controls", "turn_counter_display", "turn_order_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 script = ExtResource("1_ik08k")
 message_box = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
-ally_display_parent = NodePath("Ally_TeamDisplay")
-enemy_display_parent = NodePath("Opponent_TeamDisplay")
+team_display = NodePath("TeamDisplay")
 player_controls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 turn_counter_display = NodePath("CanvasLayer/TurnCounter")
 turn_order_display = NodePath("CanvasLayer/TurnOrder/VBoxContainer")
@@ -87,17 +86,12 @@ mesh = SubResource("PlaneMesh_633xf")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 5, 10)
 
-[node name="Opponent_TeamDisplay" parent="." instance=ExtResource("2_ov218")]
-transform = Transform3D(0.962398, 0, -0.271642, 0, 1, 0, 0.271642, 0, 0.962398, -3.523, 2, 0.853577)
-shift_right = true
-
-[node name="Ally_TeamDisplay" parent="." instance=ExtResource("2_ov218")]
-transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -9.2825, 1, 4.141)
+[node name="TeamDisplay" parent="." instance=ExtResource("2_ov218")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]
 [connection signal="active_actor_changed" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]
 [connection signal="end_turn" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_turn_ended"]
 [connection signal="show_info" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_show_info"]
-[connection signal="status_effect_icon_pressed" from="Opponent_TeamDisplay" to="." method="display_message_non_blocking"]
-[connection signal="status_effect_icon_pressed" from="Ally_TeamDisplay" to="." method="display_message_non_blocking"]
+[connection signal="status_effect_icon_pressed" from="TeamDisplay" to="." method="display_message_non_blocking"]

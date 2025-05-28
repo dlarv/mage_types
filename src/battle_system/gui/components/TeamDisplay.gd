@@ -7,16 +7,6 @@ signal status_effect_icon_pressed(effect)
 
 @export var BattleSprite: PackedScene
 @export var display_prefab: PackedScene 
-@export var display_parent: VBoxContainer 
-@export
-var shift_right: bool = false: 
-	set(value):
-		shift_right = value
-		if (display_parent == null): return
-		if value:
-			$CanvasLayer/MarginContainer.anchors_preset = Control.PRESET_TOP_RIGHT
-		else:
-			$CanvasLayer/MarginContainer.anchors_preset = Control.PRESET_TOP_LEFT
 
 var length: int: 
 	get: return len(displays)
@@ -26,11 +16,13 @@ var displays := []
 # BattleSprite[]
 var sprites := []
 
+var actors := {}
+
 var highlightedActorIndex: int = 0
 
-func add_display(actor: BattleActor) -> BattleActorDisplay:
+func add_display(actor: BattleActor, isAlly: bool) -> BattleActorDisplay:
 	var sprite = BattleSprite.instantiate()
-	sprite.setup(actor, shift_right)
+	sprite.setup(actor, not isAlly)
 	sprites.append(sprite)
 
 	actor.element_changed.connect(sprite.set_element)
@@ -41,7 +33,6 @@ func add_display(actor: BattleActor) -> BattleActorDisplay:
 			d.disable_selection()
 			if not Settings.enable_transmutation_hints: continue
 			d.disable_transmutation_hint())
-	add_child(sprite)
 	sprite.position.x += len(sprites) * 3
 	# sprite.position.z += len(sprites) * 1.5
 
@@ -49,41 +40,51 @@ func add_display(actor: BattleActor) -> BattleActorDisplay:
 	display.setup(actor)
 	displays.append(display)
 	
-	display_parent.add_child(display)
+	if isAlly:
+		%AllyVBox.add_child(display)
+		$AllyParent.add_child(sprite)
+		sprite.position.x += $AllyParent.get_child_count() * 1.5
+	else:
+		%OpponentVBox.add_child(display)
+		$OpponentParent.add_child(sprite)
+		sprite.position.x += $OpponentParent.get_child_count() * 1.5
 
-	# display.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
-
+	actors[actor] = TeamDisplayActor.new(sprite, display, isAlly)
 	return display
 
-func get_display_from_index(index: int) -> BattleActorDisplay:
-	if index < len(displays):
-		return displays[index]
-	return null
-
 func get_display(actor: Variant) -> BattleActorDisplay:
-	if(actor is int): return get_display_from_index(actor)
-	for display in displays:
-		if display.actor == actor:
-			return display
-	return null
-
-func get_sprite_from_index(index: int) -> Node3D:
-	if index < len(sprites):
-		return sprites[index]
-	return null
+	return actors[actor].display
 
 func get_sprite(actor: Variant) -> Node3D:
-	if(actor is int): return get_sprite_from_index(actor)
-	for sprite in sprites:
-		if sprite.actor == actor:
-			return sprite
-	return null
+	return actors[actor].sprite
 
 ## Allow the player to highlight and select one of the contained BattleActorDisplays.
-func select_target(isAttack: bool, action: _BattleAction) -> void:
-	var highlight =  Color.RED if isAttack else Color.GREEN
+func select_target(user: BattleActor, action: _BattleAction) -> void:
+	var targets: Array
+
+	match action.target:
+		_BattleAction.TargetType.SELF:
+			targets = [ user ]
+			select_specific_target(false, action, user)
+			
+		_BattleAction.TargetType.ALLY:
+			_enable_target_selection(Color.GREEN, action)
+			
+		_BattleAction.TargetType.ENEMY:
+			_enable_target_selection(Color.RED, action)
+
+		_BattleAction.TargetType.ANY:
+			_enable_target_selection(Color.BLUE, action)
+
+		# These cases are handled by caller.
+		# _BattleAction.TargetType.ALLIES:
+		# _BattleAction.TargetType.ENEMIES:
+		# _BattleAction.TargetType.ALL:
+		# _BattleAction.TargetType.RANDOM:
+
+func _enable_target_selection(highlightColor: Color, action: _BattleAction):
 	for sprite in sprites:
-		sprite.enable_selection(highlight)
+		sprite.enable_selection(highlightColor)
 
 		if Settings.enable_transmutation_hints:
 			sprite.enable_transmutation_hint(action)
@@ -97,10 +98,7 @@ func select_specific_target(isAttack: bool, action: _BattleAction, actor: Battle
 		sprite.enable_transmutation_hint(action)
 
 func has_actor(actor: BattleActor) -> bool:
-	for display in displays:
-		if actor == display.actor:
-			return true
-	return false
+	return actor in actors.keys()
 
 
 func select_all_as_target(isAttack: bool, action: _BattleAction) -> void:
@@ -132,5 +130,16 @@ func highlight(index: int) -> void:
 
 ## Show intentions particle effect.
 func show_intentions(val: bool) -> void:
-	for sprite in sprites:
-		sprite.show_intentions(val)
+	for actor in actors.values():
+		if not actor.is_ally:
+			actor.sprite.show_intentions(val)
+
+class TeamDisplayActor:
+	var sprite: Node
+	var display: Node
+	var is_ally: bool
+
+	func _init(sprite, display, isAlly):
+		self.sprite = sprite
+		self.display = display
+		self.is_ally = isAlly

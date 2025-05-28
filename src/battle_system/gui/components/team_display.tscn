@@ -4,24 +4,42 @@
 [ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/components/battle_sprite.tscn" id="2_0k6nb"]
 [ext_resource type="PackedScene" uid="uid://deg4ffl4kkgel" path="res://src/battle_system/gui/components/battle_actor_display.tscn" id="2_mktld"]
 
-[node name="TeamDisplay" type="Node3D" node_paths=PackedStringArray("display_parent")]
+[node name="TeamDisplay" type="Node3D"]
 script = ExtResource("1_48wpk")
 BattleSprite = ExtResource("2_0k6nb")
 display_prefab = ExtResource("2_mktld")
-display_parent = NodePath("CanvasLayer/MarginContainer/VBoxContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_right = 310.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="AllyVBox" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 size_flags_vertical = 0
+
+[node name="OpponentVBox" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+
+[node name="AllyParent" type="Node3D" parent="."]
+transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -9.283, 1, 2.996)
+
+[node name="OpponentParent" type="Node3D" parent="."]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -6.573, 2, -4.736)

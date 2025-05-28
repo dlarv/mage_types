@@ -8,8 +8,7 @@ signal actions_selected(actions: Array)
 signal target_selected(actor: BattleActor)
 
 @export var message_box: RichTextLabel 
-@export var ally_display_parent: TeamDisplay 
-@export var enemy_display_parent: TeamDisplay 
+@export var team_display: TeamDisplay
 @export var player_controls: Control
 @export var turn_counter_display: Label
 @export var turn_order_display: VBoxContainer
@@ -37,16 +36,15 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 	_selected_actions.resize(len(allies))
 
 	for actor in allies:
-		var display = ally_display_parent.add_display(actor)
+		var display = team_display.add_display(actor, true)
 	
-	ally_display_parent.highlight(0)
-	ally_display_parent.selected.connect(_on_target_selected)
+	team_display.highlight(0)
+	team_display.selected.connect(_on_target_selected)
 
 	# Init enemies
 	self.enemies = enemies
 	for actor in enemies:
-		var display = enemy_display_parent.add_display(actor)
-	enemy_display_parent.selected.connect(_on_target_selected)
+		var display = team_display.add_display(actor, false)
 
 	# Finish setup
 	player_controls.setup(allies, items, enemies)
@@ -84,8 +82,7 @@ func enable_player_controls(enable: bool) -> void:
 
 
 func _on_action_target_selection_cancelled() -> void:
-	ally_display_parent.cancel_target_selection()
-	enemy_display_parent.cancel_target_selection()
+	team_display.cancel_target_selection()
 
 
 func _on_action_selected(index: int, action: _BattleAction) -> void:
@@ -99,41 +96,11 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 
 
 func select_targets(user: BattleActor, action:_BattleAction):
-	var targets = null
-	var target
+	var targets: Array
 
 	match action.target:
-		_BattleAction.TargetType.SELF:
-			targets = [ user ]
-			# This pause is needed, otherwise the End turn button won't enable.
-			ally_display_parent.select_specific_target(false, action, user)
-			# await ally_display_parent.selected
-			await target_selected
-			
-		_BattleAction.TargetType.ALLY:
-			ally_display_parent.select_target(false, action)
-			# target = await ally_display_parent.selected
-			# target = await target_selected
-			target = await target_selected
-			targets = [ target ]
-			
 		_BattleAction.TargetType.ALLIES:
 			targets = allies
-			
-		_BattleAction.TargetType.ENEMY:
-			# if enemy_display_parent.length == 1 and not Settings.enable_transmutation_hints:
-			# 	targets = [ enemy_display_parent.get_display(0).actor ]
-			# 	# This pause is needed, otherwise the End turn button won't enable.
-			# 	await get_tree().create_timer(.05).timeout
-			# else:
-				if action.attack_range == Attack.AttackRange.MELEE:
-					# Checking if transmutation hints are enabled is the responsibility of TeamDisplay.
-					ally_display_parent.enable_transmutation_hint(user, action)
-
-				enemy_display_parent.select_target(true, action)
-				# target = await enemy_display_parent.selected
-				target = await target_selected
-				targets = [ target ]
 
 		_BattleAction.TargetType.ENEMIES:
 			targets = enemies
@@ -141,14 +108,13 @@ func select_targets(user: BattleActor, action:_BattleAction):
 		_BattleAction.TargetType.ALL:
 			targets = allies + enemies
 
-		_BattleAction.TargetType.ANY:
-			enemy_display_parent.select_target(true, action)
-			ally_display_parent.select_target(false, action)
-			target = await target_selected
-			targets = [ target ]
-
 		_BattleAction.TargetType.RANDOM:
 			targets = [ (allies + enemies).pick_random() ]
+
+		_:
+			team_display.select_target(user, action)
+			targets = [ await target_selected ]
+
 	
 	if len(targets) == 1 and targets[0] == null:
 		return null
@@ -156,15 +122,14 @@ func select_targets(user: BattleActor, action:_BattleAction):
 
 
 func show_enemy_intentions(val: bool) -> void:
-	enemy_display_parent.show_intentions(val)
+	team_display.show_intentions(val)
 
 
 func _on_active_actor_changed(index: int) -> void:
-	ally_display_parent.highlight(index)
+	team_display.highlight(index)
 
 	# If player was selecting a target, but then hits prev/next, cancel selection.
-	ally_display_parent.cancel_target_selection()
-	enemy_display_parent.cancel_target_selection()
+	team_display.cancel_target_selection()
 	
 
 
@@ -177,8 +142,7 @@ func _on_turn_ended(tryRunningAway: bool) -> void:
 		_selected_actions.resize(len(allies))
 
 		# If player was selecting a target, but then hits prev/next, cancel selection.
-		ally_display_parent.cancel_target_selection()
-		enemy_display_parent.cancel_target_selection()
+		team_display.cancel_target_selection()
 	
 
 func _on_show_info(action: Variant, limitInfo:=false) -> void:
@@ -213,15 +177,9 @@ func _on_target_selected(actor: BattleActor) -> void:
 
 
 ## TO BE DEPRECATED.
-func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
-	var teamDisplay
-	if teamIndex == 0:
-		teamDisplay = ally_display_parent
-	else:
-		teamDisplay = enemy_display_parent
-	
+func get_actor_display_position(actor: BattleActor) -> Vector2:
 	if actor == null:
-		return Vector2(teamDisplay.global_position.x, teamDisplay.global_position.y)
+		return Vector2(team_display.global_position.x, team_display.global_position.y)
 	
-	var sprite = teamDisplay.get_sprite(actor)
+	var sprite = team_display.get_sprite(actor)
 	return sprite.get_target_position()
