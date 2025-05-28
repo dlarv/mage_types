@@ -78,7 +78,6 @@ func gather_objs() -> void:
 			if has_point(shape[1].shape, shape[1].global_position, child.global_position):
 				shape[0].objs.append(child)
 				taken = true
-				print("Added %s to detached chunk" % child.name)
 				break
 
 		if not taken and child.get_child_count() > 0:
@@ -101,7 +100,6 @@ func has_point(shape: Shape3D, center: Vector3, pos: Vector3) -> bool:
 
 func load(player: Node3D) -> void:
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
-	print("Player loaded Chunk(%s)" % name)
 	for obj in objs:
 		obj.process_mode = Node.PROCESS_MODE_INHERIT
 		obj.show()
@@ -109,7 +107,6 @@ func load(player: Node3D) -> void:
 func unload(player: Node3D) -> void:
 	# if not player.is_in_group("player"): return
 	Logger.append_world_log("Player unloaded Chunk(%s)" % name) 
-	print("Player unloaded Chunk(%s)" % name)
 	for obj in objs:
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		obj.hide()
