@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0u0yls8gquxd"]
+
+[ext_resource type="Script" path="res://src/battle_system/gui/components/stat_display/StatChangeDisplay.gd" id="1_lghwg"]
+[ext_resource type="PackedScene" uid="uid://25ni3ubfbldc" path="res://src/battle_system/gui/components/stat_display/single_stat_display.tscn" id="6_4bxjt"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ke0bx"]
+viewport_path = NodePath("SubViewport1")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m2k0l"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aup66"]
+viewport_path = NodePath("SubViewport3")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a7cxn"]
+viewport_path = NodePath("SubViewport4")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_44qt0"]
+viewport_path = NodePath("SubViewport5")
+
+[node name="StatChangeDisplay" type="HBoxContainer" node_paths=PackedStringArray("melee_attack", "ranged_attack", "melee_defense", "ranged_defense", "speed")]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 5
+script = ExtResource("1_lghwg")
+melee_attack = NodePath("SubViewport1/MeleeAttackDisplay")
+ranged_attack = NodePath("SubViewport2/RangedAttackDisplay")
+melee_defense = NodePath("SubViewport3/MeleeDefenseDisplay")
+ranged_defense = NodePath("SubViewport4/RangedDefenseDisplay")
+speed = NodePath("SubViewport5/SpeedDisplay")
+
+[node name="MeleeAttack" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Melee Attack:"
+texture = SubResource("ViewportTexture_ke0bx")
+expand_mode = 1
+
+[node name="RangedAttack" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Ranged Attack:"
+texture = SubResource("ViewportTexture_m2k0l")
+expand_mode = 1
+
+[node name="MeleeDefense" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Melee Defense:"
+texture = SubResource("ViewportTexture_aup66")
+expand_mode = 1
+
+[node name="RangedDefense" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Ranged Defense:"
+texture = SubResource("ViewportTexture_a7cxn")
+expand_mode = 1
+
+[node name="Speed" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Speed:"
+texture = SubResource("ViewportTexture_44qt0")
+expand_mode = 1
+
+[node name="SubViewport1" type="SubViewport" parent="."]
+own_world_3d = true
+
+[node name="MeleeAttackDisplay" parent="SubViewport1" instance=ExtResource("6_4bxjt")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+own_world_3d = true
+
+[node name="RangedAttackDisplay" parent="SubViewport2" instance=ExtResource("6_4bxjt")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 1.5, 0, 0)
+
+[node name="SubViewport3" type="SubViewport" parent="."]
+own_world_3d = true
+
+[node name="MeleeDefenseDisplay" parent="SubViewport3" instance=ExtResource("6_4bxjt")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 3, 0, 0)
+
+[node name="SubViewport4" type="SubViewport" parent="."]
+own_world_3d = true
+
+[node name="RangedDefenseDisplay" parent="SubViewport4" instance=ExtResource("6_4bxjt")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 4.5, 0, 0)
+
+[node name="SubViewport5" type="SubViewport" parent="."]
+own_world_3d = true
+
+[node name="SpeedDisplay" parent="SubViewport5" instance=ExtResource("6_4bxjt")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 6, 0, 0)
