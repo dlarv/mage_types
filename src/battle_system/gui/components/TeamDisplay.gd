@@ -120,7 +120,7 @@ func highlight(index: int) -> void:
 func show_enemy_intentions(val: bool) -> void:
 	for actor in actors.values():
 		if not actor.is_ally:
-			actor.sprite.show_enemy_intentions(val)
+			actor.sprite.show_intentions(val)
 
 
 class TeamDisplayActor:
