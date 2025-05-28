@@ -97,40 +97,15 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			continue
 
 		Logger.append_battle_log("\nActors turn: %s" % action.actor.name)
-
-		# Play animation.
-		var userPosition = gui.get_actor_display_position(action.team_index, action.actor)
-		var targetTeamIndex: int
-		var teamDisplay: TeamDisplay
-
-		match action.action.target:
-			# Target same team as user.
-			_BattleAction.TargetType.SELF,_BattleAction.TargetType.ALLY,_BattleAction.TargetType.ALLIES:
-				targetTeamIndex = action.team_index
-				teamDisplay = gui.ally_display_parent if action.team_index == 0 else gui.enemy_display_parent
-			# Target opposite team from user.
-			_BattleAction.TargetType.ENEMY,_BattleAction.TargetType.ENEMIES:
-				targetTeamIndex = (action.team_index + 1) % 2
-				teamDisplay = gui.ally_display_parent if action.team_index == 1 else gui.enemy_display_parent
-			_:
-				var isTargetEnemy := gui.enemy_display_parent.has_actor(action.targets[0])
-				if isTargetEnemy:
-					targetTeamIndex = (action.team_index + 1) % 2
-					teamDisplay = gui.enemy_display_parent
-				else:
-					targetTeamIndex = action.team_index
-					teamDisplay = gui.ally_display_parent
-
-
-		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
 		
 		# Apply action effects.
 		var res: Dictionary = action.action.apply_effects(action.actor, action.targets)
 		var msg = res.msg
 		var missed: bool = res.get("missed", false)
 
+		# Play animation.
 		if not missed:
-			action.action.play_animation(userPosition, targetPosition, self)
+			_play_animation(action)
 
 		# Display message and await input.
 		await gui.display_message(msg)
@@ -286,3 +261,32 @@ func _prep_next_turn() -> void:
 	speedRank.map(func(a): return a.name)
 
 	gui.display_turn_order(speedRank)
+
+
+func _play_animation(action: ActorAction) -> void:
+		var userPosition := gui.get_actor_display_position(action.team_index, action.actor)
+		var targetTeamIndex: int
+		var teamDisplay: TeamDisplay
+
+		match action.action.target:
+			# Target same team as user.
+			_BattleAction.TargetType.SELF,_BattleAction.TargetType.ALLY,_BattleAction.TargetType.ALLIES:
+				targetTeamIndex = action.team_index
+				teamDisplay = gui.ally_display_parent if action.team_index == 0 else gui.enemy_display_parent
+			# Target opposite team from user.
+			_BattleAction.TargetType.ENEMY,_BattleAction.TargetType.ENEMIES:
+				targetTeamIndex = (action.team_index + 1) % 2
+				teamDisplay = gui.ally_display_parent if action.team_index == 1 else gui.enemy_display_parent
+			_:
+				var isTargetEnemy := gui.enemy_display_parent.has_actor(action.targets[0])
+				if isTargetEnemy:
+					targetTeamIndex = (action.team_index + 1) % 2
+					teamDisplay = gui.enemy_display_parent
+				else:
+					targetTeamIndex = action.team_index
+					teamDisplay = gui.ally_display_parent
+
+
+		var targetPosition = gui.get_actor_display_position(targetTeamIndex, action.targets[0] if len(action.targets) == 1 else null)
+
+		action.action.play_animation(userPosition, targetPosition, self)

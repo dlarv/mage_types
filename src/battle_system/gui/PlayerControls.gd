@@ -29,10 +29,12 @@ var _skip_indices := []
 # BattleActor[]
 var _allies := []
 var _selected_actions := []
+var _force_manual_end_turn := false
 
 func _ready() -> void:
 	_final_index = attacks_panel.get_child_count() - 1
 	calc_character_selector_state(attacks_panel.current_tab)
+
 
 func setup(allies: Array, items: Array, enemies: Array) -> void:
 	_skip_indices = []
@@ -104,6 +106,7 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 		# Connect signals.
 		end_turn.connect(func(a): button.reset())
 
+
 func populate_items_menu(items) -> void:
 	var group = ButtonGroup.new()
 
@@ -159,7 +162,9 @@ func prev_character() -> void:
 	attacks_panel.current_tab = index
 
 	active_actor_changed.emit(index)
+	_force_manual_end_turn = true
 	calc_character_selector_state(index)
+
 
 func next_character() -> void:
 	control_panel.current_tab = 0
@@ -195,6 +200,7 @@ func _on_end_turn_button_pressed() -> void:
 	end_button.release_focus()
 	control_panel.current_tab = 0
 	_allow_end_turn = false
+	_force_manual_end_turn = false
 	end_turn.emit(false)
 
 func calc_character_selector_state(index: int) -> void:
@@ -202,7 +208,7 @@ func calc_character_selector_state(index: int) -> void:
 	next_button.disabled = index == _edge_index
 	end_button.disabled = !_allow_end_turn
 
-	if _allow_end_turn and Settings.auto_end_turn:
+	if _allow_end_turn and Settings.auto_end_turn and not _force_manual_end_turn:
 		_on_end_turn_button_pressed()
 
 func _on_attacks_button_pressed() -> void:
@@ -219,6 +225,7 @@ func _on_run_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	control_panel.current_tab = 0
+	action_target_selection_cancelled.emit()
 
 func on_action_selected(state: int, index: int, action: _BattleAction) -> void:
 	# Press 1: Show info & select target
@@ -230,7 +237,6 @@ func on_action_selected(state: int, index: int, action: _BattleAction) -> void:
 		_selected_actions[index] = 1
 		_allow_end_turn = _selected_actions.min() == 1
 		action_selected.emit(index, action)
-
 
 func _reset_selected() -> void:
 	for i in len(_allies):

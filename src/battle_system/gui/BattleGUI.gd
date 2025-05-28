@@ -1,5 +1,8 @@
 extends Node3D
 class_name BattleGUI
+## Facilitate action and target selection.
+## Display messages.
+## Play animations.
 
 signal actions_selected(actions: Array)
 signal target_selected(actor: BattleActor)
@@ -28,13 +31,7 @@ var _finished_setup := false
 var _accept_messages := true
 
 func setup(allies: Array, items: Array, enemies: Array) -> void:
-	init_allies(allies)
-	init_enemies(enemies)
-	player_controls.setup(allies, items, enemies)
-	_finished_setup = true
-	$Camera3D.make_current()
-
-func init_allies(allies: Array) -> void:
+	# Init allies.
 	self.allies = allies
 	_selected_actions = []
 	_selected_actions.resize(len(allies))
@@ -45,11 +42,17 @@ func init_allies(allies: Array) -> void:
 	ally_display_parent.highlight(0)
 	ally_display_parent.selected.connect(_on_target_selected)
 
-func init_enemies(enemies: Array) -> void:
+	# Init enemies
 	self.enemies = enemies
 	for actor in enemies:
 		var display = enemy_display_parent.add_display(actor)
 	enemy_display_parent.selected.connect(_on_target_selected)
+
+	# Finish setup
+	player_controls.setup(allies, items, enemies)
+	_finished_setup = true
+	$Camera3D.make_current()
+
 
 func display_message(msg: Variant) -> void:
 	if len(msg) == 0: return
@@ -60,6 +63,7 @@ func display_message(msg: Variant) -> void:
 	Logger.append_battle_log(msg)
 	await message_box.display_message_blocking(msg)
 	_accept_messages = true
+
 
 func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	if not _accept_messages: return
@@ -75,25 +79,14 @@ func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	message_box.display_message_non_blocking(msg, limitInfo)
 
 
-func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
-	var teamDisplay
-	if teamIndex == 0:
-		teamDisplay = ally_display_parent
-	else:
-		teamDisplay = enemy_display_parent
-	
-	if actor == null:
-		return Vector2(teamDisplay.global_position.x, teamDisplay.global_position.y)
-	
-	var sprite = teamDisplay.get_sprite(actor)
-	return sprite.get_target_position()
-
 func enable_player_controls(enable: bool) -> void:
 	player_controls.set_enabled(enable)
+
 
 func _on_action_target_selection_cancelled() -> void:
 	ally_display_parent.cancel_target_selection()
 	enemy_display_parent.cancel_target_selection()
+
 
 func _on_action_selected(index: int, action: _BattleAction) -> void:
 	var targets = await select_targets(allies[index], action)
@@ -103,6 +96,7 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 	_selected_actions[index] = actorAction
 	message_box.clear_message()
 	player_controls.next_character()
+
 
 func select_targets(user: BattleActor, action:_BattleAction):
 	var targets = null
@@ -168,6 +162,11 @@ func show_enemy_intentions(val: bool) -> void:
 func _on_active_actor_changed(index: int) -> void:
 	ally_display_parent.highlight(index)
 
+	# If player was selecting a target, but then hits prev/next, cancel selection.
+	ally_display_parent.cancel_target_selection()
+	enemy_display_parent.cancel_target_selection()
+	
+
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
@@ -176,6 +175,10 @@ func _on_turn_ended(tryRunningAway: bool) -> void:
 		actions_selected.emit(_selected_actions)
 		_selected_actions = []
 		_selected_actions.resize(len(allies))
+
+		# If player was selecting a target, but then hits prev/next, cancel selection.
+		ally_display_parent.cancel_target_selection()
+		enemy_display_parent.cancel_target_selection()
 	
 
 func _on_show_info(action: Variant, limitInfo:=false) -> void:
@@ -187,6 +190,7 @@ func _on_show_info(action: Variant, limitInfo:=false) -> void:
 	print(msg)
 	
 	display_message_non_blocking(action, limitInfo)
+
 
 func display_turn_order(actors: Array) -> void:
 	if not Settings.show_battle_turn_order:
@@ -206,3 +210,18 @@ func display_turn_order(actors: Array) -> void:
 		
 func _on_target_selected(actor: BattleActor) -> void:
 	target_selected.emit(actor)
+
+
+## TO BE DEPRECATED.
+func get_actor_display_position(teamIndex: int, actor=null) -> Vector2:
+	var teamDisplay
+	if teamIndex == 0:
+		teamDisplay = ally_display_parent
+	else:
+		teamDisplay = enemy_display_parent
+	
+	if actor == null:
+		return Vector2(teamDisplay.global_position.x, teamDisplay.global_position.y)
+	
+	var sprite = teamDisplay.get_sprite(actor)
+	return sprite.get_target_position()

@@ -27,6 +27,7 @@ func setup(actor: BattleActor):
 	actor.stat_manager.stat_changed.connect(display_stat_change)
 
 
+
 func set_health(hp: int) -> void:
 	health_bar.value = (float(hp) / total_hp) * 100.0
 	hp_label.text = "%d/%d" % [ hp, total_hp ]
