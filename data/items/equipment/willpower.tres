@@ -13,5 +13,5 @@ script = ExtResource("3_tsc7p")
 effects = Array[ExtResource("1_gj31e")]([SubResource("Resource_tkq77")])
 name = "Willpower"
 requirements = Array[ExtResource("2_ks20p")]([])
-details = ""
+details = "Prevents the first time the holder would be defeated, leaving them at 1 hp."
 tags = []

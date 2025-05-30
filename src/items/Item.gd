@@ -5,7 +5,7 @@ class_name Item
 var id := -1
 @export var name: String: set = _set_name
 @export var requirements: Array[ItemRequirement]: set = _set_requirement
-@export
+@export_multiline
 var details: String: set = _set_details
 @export var tags = []
 

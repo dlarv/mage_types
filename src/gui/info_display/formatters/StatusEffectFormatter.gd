@@ -13,4 +13,7 @@ func display(effect: Variant, limitInfo:=false) -> void:
 	name_label.clear()
 	name_label.append_text(effect.name)
 
+	if effect is PhobiaEffect:
+		details_label.append_text("Deals 10%% damage every time this combatant becomes [el]%s[/el]." 
+				% effect.element)
 	details_label.append_text(effect.description)
