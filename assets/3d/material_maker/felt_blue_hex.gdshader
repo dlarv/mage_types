@@ -438,9 +438,9 @@ float fbm_2d_cellular6(vec2 coord, vec2 size, int folds, int octaves, float pers
 float voronoise_noise_2d( vec2 coord, vec2 size, float offset, float seed) {
 	vec2 i = floor(coord) + rand2(vec2(seed, 1.0-seed)) + size;
 	vec2 f = fract(coord);
-	
+
 	vec2 a = vec2(0.0);
-	
+
 	for( int y=-2; y<=2; y++ ) {
 		for( int x=-2; x<=2; x++ ) {
 			vec2  g = vec2( float(x), float(y) );
@@ -451,7 +451,7 @@ float voronoise_noise_2d( vec2 coord, vec2 size, float offset, float seed) {
 			a += vec2(o.z*w,w);
 		}
 	}
-	
+
 	return a.x/a.y;
 }
 float fbm_2d_voronoise(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
@@ -572,6 +572,3 @@ vec3 o118530913605867_0_1_rgb = o118530913605867_0_clamp_false;
 	NORMAL = vec3(o6323886361663_0_1_f);
 	EMISSION = vec3(0.0)*p_o362723417290_emission_energy;
 }
-
-
-

@@ -51,7 +51,7 @@
 	],
 	"label": "Graph",
 	"longdesc": "",
-	"name": "@Node@491",
+	"name": "_Node_491",
 	"node_position": {
 		"x": 0.0,
 		"y": 0.0
@@ -95,7 +95,7 @@
 			"parameters": {
 				"folds": 0.0,
 				"iterations": 6.0,
-				"noise": 1,
+				"noise": 1.0,
 				"offset": 0.07,
 				"persistence": 1.0,
 				"scale_x": 35.0,
@@ -138,19 +138,6 @@
 			"type": "sdngon"
 		},
 		{
-			"generic_size": 2,
-			"name": "mwf_mix",
-			"node_position": {
-				"x": -773.105651855469,
-				"y": 348.99560546875
-			},
-			"parameters": {
-
-			},
-			"seed_int": 0,
-			"type": "mwf_mix"
-		},
-		{
 			"name": "uniform",
 			"node_position": {
 				"x": 391.340301513672,
@@ -178,7 +165,7 @@
 				"clamp": false,
 				"default_in1": 0.0,
 				"default_in2": 0.0,
-				"op": 0
+				"op": 0.0
 			},
 			"seed_int": 0,
 			"type": "math"
@@ -193,7 +180,7 @@
 				"clamp": false,
 				"default_in1": 0.0,
 				"default_in2": 2.32,
-				"op": 3
+				"op": 3.0
 			},
 			"seed_int": 0,
 			"type": "math"
@@ -212,7 +199,7 @@
 				"d_in2_x": 0.0,
 				"d_in2_y": 0.0,
 				"d_in2_z": 0.0,
-				"op": 2
+				"op": 2.0
 			},
 			"seed_int": 0,
 			"type": "math_v3"
