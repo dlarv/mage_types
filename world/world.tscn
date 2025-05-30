@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=52 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -348,9 +348,6 @@ blend_shape_mode = 0
 radius = 1.0
 height = 6.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3vjxc"]
-size = Vector3(9.9, 1, 1)
-
 [sub_resource type="Resource" id="Resource_6c3vh"]
 resource_name = "Stasis Spell"
 script = ExtResource("29_m1310")
@@ -459,13 +456,6 @@ mesh = SubResource("ArrayMesh_nrfl8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Alice/player/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_i1awl")
-
-[node name="DoorBlocker" type="StaticBody3D" parent="Overworld/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1, 0, -90.4)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DoorBlocker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0499992, -1, 0)
-shape = SubResource("BoxShape3D_3vjxc")
 
 [node name="Preset1" type="Node3D" parent="Overworld/Blue"]
 
