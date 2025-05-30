@@ -55,6 +55,7 @@ disabled = true
 
 [node name="Details" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+fit_content = true
 
 [node name="Requirements" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

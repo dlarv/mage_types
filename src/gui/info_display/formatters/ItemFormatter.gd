@@ -65,6 +65,7 @@ func display_spell_scroll(item: SpellScroll) -> void:
 
 func display_equipment(item: Equipment) -> void:
 	id_label.show()
+	details_label.show()
 	is_consumable_hbox.hide()
 
 	id_label.text = "#%d" % item.id
