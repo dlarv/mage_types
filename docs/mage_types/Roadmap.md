@@ -32,7 +32,7 @@
 	- [x] If laser doubles back on itself, mirrors immediately glitch out.
 - [ ] Bugs in Fortress attack
 	- [x] Message reads "Attack was used on opposing team, but effects are applied to player's team."
-	- [ ] Animation plays in top-right corner.
+	- [x] Animation plays in top-right corner.
 	- [x] Claims player & partner are in stasis.
 		- [x] Blocking appears to have gotten confused with stasis, as no damage is being prevented either.
 	- [x] Blocking immediately wears off when applied to user.

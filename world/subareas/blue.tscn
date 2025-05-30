@@ -445,7 +445,6 @@ _element = "red"
 
 [node name="Emitter_E" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 27.2, 3.3, -17)
-is_on = false
 _element = "green"
 
 [node name="Mirror" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("12_55e1h")]
@@ -471,7 +470,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="Emitter_S" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10, 4, 18.4)
-is_on = false
 _element = "orange"
 
 [node name="Lens2_Rails" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_bmr1f")]

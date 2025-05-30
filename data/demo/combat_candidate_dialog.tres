@@ -54,7 +54,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": -1
 },
 "1_10": {
 "dialogue": "Finally, using a ranged attack will only transmute your opponent. Melee attacks will affect both you and your opponent.",
@@ -219,20 +219,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
-},
-"1_20": {
-"dialogue": "Preset 3 will prevent [b]combatants[/b] from being [el]Yellow[/el], [el]Green[/el], or [el]Cyan[/el]. ",
-"offset": Vector2(-880, 640),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_22",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
+"speaker": -1
 },
 "1_21": {
 "dialogue": "When combatants transmute, there are side effects that alter our stats.",
@@ -246,30 +233,6 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": -1
-},
-"1_22": {
-"dialogue": "Preset 3 will remove [el]Green[/el] [b]spells[/b].
-",
-"offset": Vector2(-540, 680),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"9_3",
-"text": "Yes"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "No"
-},
-2: {
-"condition": Array[Dictionary]([]),
-"link": &"1_20",
-"text": "Repeat that last part?"
-}
-},
-"size": Vector2(300, 323),
-"speaker": 0
 },
 "1_23": {
 "dialogue": "When you go from:
@@ -1020,15 +983,6 @@ cont...",
 "value": "preset_2",
 "variable": "current_cutscene"
 },
-"9_3": {
-"cur_variable": 0,
-"link": &"1_14",
-"offset": Vector2(-220, 680),
-"signalValue": "play_cutscene",
-"type": 0,
-"value": "preset_3",
-"variable": "current_cutscene"
-},
 "9_4": {
 "cur_variable": 0,
 "link": "END",
@@ -1049,5 +1003,5 @@ variables = {
 "value": false
 }
 }
-strays = Array[String](["8_2", "8_1", "1_20", "1_22", "9_3", "1_25", "2_1", "2_3", "1_24"])
+strays = Array[String](["8_2", "8_1", "1_25", "2_1", "2_3", "1_24"])
 characters = "res://data/demo/character_files/character_list.tres"
