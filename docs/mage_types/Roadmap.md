@@ -1,113 +1,38 @@
-***Current Version***: 0.3.23
-# Todo
-- [x] Change battle gui to support 3D models instead of sprites.
-- [x] Refactor menu screen management.
-- [ ] Add demo content.
-	- [ ] Demo Item list created.
-	- [ ] Demo attack list created.
-	- [ ] Demo beastiary created.
-- [ ] Add textures and animations to demo.
-- [x] Save/load system.
-- [ ] Color blind accessibility.
-	- [x] Backend architecture.
-	- [ ] Preset options. 
-- [ ] Input remapping.
-- [x] Grabbable dynamics.
-- Geyser dynamics.
-	- [x] Geyser not lifting player.
-	- [x] When two geysers are in opposition and one is turned off, the other will not push on objects inside of it.
-- [ ] Achievements.
-- [x] Cutscenes
-- [x] Have draggables snap player to grid.
-- [ ] Upon defeat, player should be transported to edge of Chunk.
-## Known Bugs
-- [x] Actor formatter is broken (if attack is null, it fails).
-- [ ] Message displayed when actor is inflicted with phobia just says "Blank".
-	- Cannot replicate?
-- [ ] Player normal map is inverted.
-	- Cannot replicate?
-- [x] Shadow on blob texture.
-	- Try known workaround (Worked!).
-- [x] Laser bugs:
-	- [x] If laser doubles back on itself, mirrors immediately glitch out.
-- [ ] Bugs in Fortress attack
-	- [x] Message reads "Attack was used on opposing team, but effects are applied to player's team."
-	- [x] Animation plays in top-right corner.
-	- [x] Claims player & partner are in stasis.
-		- [x] Blocking appears to have gotten confused with stasis, as no damage is being prevented either.
-	- [x] Blocking immediately wears off when applied to user.
-	- [x] Blocking is applied to player, then immediately removed when player hits itself with recoil.
-	- [ ] Recoil is applied for every ally, instead of just once.
+# Known Bugs
 # Upcoming Versions
 [[version_naming_scheme]]
-## v0.3.x
-Combat test candidate. Players can fight a series of ~~9~~ 6 simple bosses. Player will be confined to Rec Room in Blue, but can essentially go out of bounds to see the rest of the map.
-
-**Final Stretch v0.3.x**
-- [x] Maybe have a little tab player's can open to quickly reference info about the battle interface (distill what Alice says in her tutorial).
-	- Inside of Transmutation Menu. Rn its just a bullet proof list.
-- [ ] ~~Player can select themselves or their partner as the target for an attack. Doing so crashes the game.
-	- Wontfix
-- [ ] ~~Boss 2 was defeated, but battle did not end. 
-	- idk how to replicate?
-- [x] ~~Changing presets does not change transmutation graph.
-	- Once pause menus are working again, I'll just have the testers do it manually.
-- [x] Closing opened pause menu won't unpause world.
-- [x] Chunk disappears when player talks to NPC.
-- [x] Opening a menu while talking to an NPC will halt the dialog.
-- [x] Preset options do not currently do anything.
-- [x] Selecting a multitarget move requires pressing the button twice.
-- [x] Select player's attack. Selector advances to partner. Click prev button and select attack again. Turn will auto end and partner's turn will be skipped.
-- [x] Transmutation hints for allies hidden by PlayerControls.
-- [x] Fix transmutation hints to no longer show primary type transmutations.
-- [x] Block not expiring?
-- [x] Phobias are not expiring or displaying in Character tab of BattleGUI.
-- [x] BattleActor displays in battle show unused 'Elemental Affinities' section.
-- [x] BattleActor displays in battle do not show equipment.
-- [x] BattleActor displays in battle not properly formating floats (%.1f shown instead of percentage.)
-- [x] BattleActor Bias and Primary elements are shown separately in various displays.
-- [x] Clear status effects after battle.
-
-**Preset 1**
-- [x] Boss 1 
-- [x] Boss 2
-- [x] Boss 3
-- [x] Final testing
-
-**Preset 2**
-- [x] Boss 1 
-- [x] Boss 2
-- [x] Boss 3
-- [x] Final testing
 ## v0.4.x
+Puzzle playtest candidate. All puzzles that will be included in final demo are implemented, but positioned in a manner easy for play testers to play through.
+- [ ] Stasis Dungeon
+	- [ ] Mural in Chamber 2
+	- [ ] Add puzzles to Chamber 3
+- [ ] Hotel side rooms
+- [ ] See if any puzzles can be ported from previous versions
+## v0.5.x
 Demo MVP. Player can visit every major area of Blue and experience all major features.
-- [ ] Write intro for Alice
-- [ ] Add dialog/character to beach house
-- [ ] Rec room
-	- [ ] Combat tutorial from Test Candidate -> Actual
-- [ ] Texture and decorate env
-	- [ ] Beach
-		- [ ] Lighthouse
-		- [ ] Piers
-		- [ ] Large door
-		- [ ] Water
-	- [ ] Beach house
-	- [ ] Hotel halls
-		- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools.
-	- [ ] Caves
-- [ ] Expand battle animations
-- [ ] Stasis dungeon
-	- [ ] Test boss
-	- [ ] Chamber 2 mural
-	- [ ] Chamber 3 puzzle
-	- [ ] Texturing and decor
-- [ ] Hotel side room?
-	- [ ] Purpose
-	- [ ] Puzzle
-	- [ ] Texture
-- [ ] Add Great Enclave (models and dialog)
-- [ ] Add content to Ziggurat (central area and on top of pillars)
-- [ ] Add decor and content to upper waterfall room
+- [ ] Basic texturing and decor
+- [ ] Content
+	- [ ] Rec room battle tutorial
+	- [ ] Add backtrack obstacles to beach/etc
+- [ ] Character designs
+	- [ ] Blue-aligned
+	- [ ] Denim
+- [ ] Battle Animation refactor
+	- [ ] Animations handled by BattleGUI
+	- [ ] Animations should already be children of gui, just hidden
+	- [ ] Attacks access animations using an Id (probably an enum)
+- [ ] Wild enemies
+- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools.
+- [ ] When player falls in water, return them to previous stable position
+## v0.6.x
+Add story and QOL features.
+- [ ] Story
+	- [ ] Add beach house sequence
+- [ ] Accessibility
+	- [ ] Colorblind support
+	- [ ] Input remapping
+- [ ] Achievements
+- [ ] Start screen
 # The List
 ## Battle (BATT)
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.

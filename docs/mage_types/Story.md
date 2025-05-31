@@ -14,14 +14,9 @@ The player character finds their mind transfixed on the diner, although whether 
 
 Before Alice and the player leaves, the man asks them to keep an eye out for a boy named *Alex*. Evidently, he came through here about a week ago, but seemed a little air-headed, so the man worries he has gotten lost. As the player and Alice ascend through the Blue Caverns, they do happen to stumble into Alex. Alice/Alyss asks them if they're okay, have they really been lost down here for an entire week! To which Alex replies, "no, I was only lost down here for 3 days. I finally made it to the surface, found the community center, and was chilling out around there. Then, an hour ago I walked into what I thought was a maintenance closet and found myself back here."
 # Main Character Motivations
-Alice wants to avoid alignment, but finds one of the elements alluring. She wants to talk to Mr. Beau to ask him for advice on avoiding this fate. She is best characterized by her fear of change, wanting to freeze everything in time even at the cost of stagnation. She has anxiety and a tendency to catastrophize. Alice is very smart and technical, studying to be an engineer in college.
-
-Alex loves this new place he found, but is conflicted with a sense of loss for his previous life. He wants to explore, but would like Alyss & Alice's help as to not get lost (again). His disappearance to Forlorn marks the second time his efforts to set his life in order have failed, leaving him with a deep sense of fatalism. While he does his best to suppress these dark emotions, this proves difficult as the tension ramps up. Alex is searching for his purpose in the world, feeling unmoored and lost. When he learns about the Hunters, it excites him unlike anything before. But the dark hopelessness ever lingers.
+The player's main partner will now be a character named Denim. Before being trapped on Forlorn, they felt listless, unsure of where their life was going. They have anxiety and a bad habit of catastrophizing. Once finding themselves on Forlorn, they are plagued with mixed emotions. On one hand, they've been presented with mystery, adventure and the option to learn magic. But on the other, this world and its magic is not without serious consequences.
 
 The player is tasked with finding the Diner, which Alyss is obsessing over. Whether this is a whimsical adventure to taste those amazing pancakes again or a desperate attempt to get home is up to the player, via dialog options and their personal roleplaying. Alyss represents a sort of optimistic nihilism, experiencing the game as though one step removed. "This might as well be happening/What else is there to do" personified. An absurdist champion.
-
-Alex and Alice's arcs will be about helping each other live in the moment and learning how to better cope. This will be accentuated by Alyss' calm nature.
-# Major Actors
 ## Blue Enclaves
 The Enclaves are small groups of 2-6 Blue-aligned who are rooted in place within talking distance of each other. These enclaves could give the player small quests, like finding items for them or passing messages from one enclave to the other.
 ## The Great Enclave(s)
