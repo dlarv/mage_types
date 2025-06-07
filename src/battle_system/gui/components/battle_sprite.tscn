@@ -46,14 +46,8 @@ mesh = SubResource("BoxMesh_5ocyf")
 
 [node name="TransmutationHint" parent="." instance=ExtResource("2_n1qvi")]
 visible = false
-custom_minimum_size = Vector2(150, 150)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_right = 228.0
 offset_bottom = 227.0
-grow_horizontal = 1
-grow_vertical = 1
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
