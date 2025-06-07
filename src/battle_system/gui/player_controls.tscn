@@ -65,16 +65,19 @@ text = "Attacks"
 [node name="Items_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 text = "Items"
 
 [node name="Characters_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 text = "Characters"
 
 [node name="Run_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 text = "Run
 "
 

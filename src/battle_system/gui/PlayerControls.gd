@@ -36,6 +36,37 @@ func _ready() -> void:
 	calc_character_selector_state(attacks_panel.current_tab)
 
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if blocking_panel.is_visible_in_tree(): return 
+	if control_panel.current_tab == 0: 
+		if event.is_action_pressed("open_battle_attack_menu"):
+			control_panel.current_tab = 1
+			get_window().set_input_as_handled()
+		elif event.is_action_pressed("open_battle_item_menu"):
+			control_panel.current_tab = 2
+			get_window().set_input_as_handled()
+		elif event.is_action_pressed("open_battle_character_menu"):
+			control_panel.current_tab = 3
+			get_window().set_input_as_handled()
+		return
+
+	if event.is_action_pressed("battle_menu_back"):
+		get_window().set_input_as_handled()
+		_on_back_button_pressed()
+	elif event.is_action_pressed("battle_next_character") and not next_button.disabled:
+		get_window().set_input_as_handled()
+		next_character()
+	elif event.is_action_pressed("battle_prev_character") and not prev_button.disabled:
+		get_window().set_input_as_handled()
+		prev_character()
+	elif event.is_action_pressed("battle_end_turn") and not end_button.disabled:
+		get_window().set_input_as_handled()
+		_on_end_turn_button_pressed()
+		
+
+
+
+
 func setup(allies: Array, items: Array, enemies: Array) -> void:
 	_skip_indices = []
 	self._allies = allies
@@ -90,12 +121,16 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	scroller.add_child(grid)
 	attacks_panel.add_child(scroller)
 
+	var i := -1
 	for attack in actor.attacks:
 		if attack == null: continue
+		i += 1
+
 		# Init.
 		var button = three_state_button.instantiate()
 		button.button_group = group
 		button.text = attack.name
+		button.shortcut_keycode = "attack_shortcut_%s" % str(i + 1)
 		button.state_changed.connect(func(state):
 			on_action_selected(state, index, attack)) 
 		grid.add_child(button)

@@ -53,6 +53,7 @@ layout_mode = 2
 [node name="InfoDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("4_k2fdd")]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 2
 
 [node name="TurnCounter" type="Label" parent="CanvasLayer"]
 offset_right = 40.0

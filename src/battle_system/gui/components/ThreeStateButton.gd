@@ -24,14 +24,23 @@ var is_locked: bool = false:
 		is_locked = value
 		state = false
 		modulate = locked_modulate_color if value else unselected_modulate_color
-
 var state: bool = false
+
+var shortcut_keycode := ""
 
 func setup(element: ElementalType) -> void:
 	_element = element
 
 	var style_box := get_theme_stylebox(element.name.to_lower(), "Control")
 	button.add_theme_stylebox_override("normal", style_box)
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not is_visible_in_tree() or len(shortcut_keycode) == 0: return
+	
+	if event.is_action_pressed(shortcut_keycode):
+		get_window().set_input_as_handled()
+		button.button_pressed = true
 
 func _on_pressed(toggled: bool) -> void:
 	if not toggled:
@@ -45,6 +54,7 @@ func _on_pressed(toggled: bool) -> void:
 		modulate = unselected_modulate_color
 
 	state_changed.emit(state)
+
 
 func reset() -> void:
 	modulate = unselected_modulate_color

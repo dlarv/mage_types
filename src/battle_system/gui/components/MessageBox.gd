@@ -11,6 +11,7 @@ func _ready() -> void:
 func display_message_blocking(msg: String) -> void:
 	clear_message()
 	append_text(msg)
+	button.grab_focus()
 	await button.pressed
 
 func display_message_non_blocking(obj: Variant, limitInfo:=false) -> void:
