@@ -17,10 +17,10 @@ Each of these sections will weave through each other.
 ## Beach
 - Player will spawn on lighthouse pier.
 - Player will enter beach house, where they will meet Alice and the Caretaker.
-### Meeting Alice and the Caretaker
-- Intro Alice.
-- Determine Alice's fated bias.
-	- Alice asks the player several questions. These will allow the player to roleplay, but serve the hidden purpose of determining her fate.
+### Meeting Partner and the Caretaker
+- Intro Denim.
+- Determine Denim's fated bias.
+	- Denim asks the player several questions. These will allow the player to roleplay, but serve the hidden purpose of determining her fate.
 - Intro world.
 - Give player their first goal (reaching the community center).
 	- Player given option to choose their true motivation (why are they searching for the diner?)
@@ -66,3 +66,4 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 	- Opens hidden door inside treasure room.
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
+****
