@@ -39,6 +39,9 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 	$Primary.set_surface_override_material(0, _mat1)
 	$Secondary.set_surface_override_material(0, _mat2)
 	$Indicator.set_surface_override_material(0, _indicator_mat)
+
+	$GPUParticles3D.draw_pass_1 = BoxMesh.new()
+	$GPUParticles3D.draw_pass_1.size = Vector3(0.1, 0.1, 0.1)
 	$GPUParticles3D.draw_pass_1.material = _particle_mat
 
 	_mat1.albedo_color = actor.element1.main_color
@@ -55,12 +58,7 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 		_mat1.albedo_color = _mat1.albedo_color.darkened(0.5)
 		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
 		_is_defeated = true)
-	actor.action_selected.connect(func(action: _BattleAction):
-		if not Settings.show_opponent_intentions or action.element.is_blank():
-			$GPUParticles3D.emitting = false
-			return
-		$GPUParticles3D.emitting = true
-		_particle_mat.albedo_color = action.element.main_color)
+	actor.action_selected.connect(_on_action_selected)
 
 
 func set_element(id: int, element: ElementalType) -> void:
@@ -115,6 +113,15 @@ func _on_mouse_exited() -> void:
 		hover(false)
 
 
+func _on_action_selected(action: _BattleAction) -> void:
+	if not Settings.show_opponent_intentions or action.element.is_blank():
+		$GPUParticles3D.emitting = false
+		return
+	var g = $GPUParticles3D
+	$GPUParticles3D.emitting = true
+	_particle_mat.albedo_color = action.element.main_color
+
+
 func hover_no_signal(highlight: bool) -> void:
 	set_highlight(highlight)
 	transmutation_hint.set_active(highlight)
@@ -143,4 +150,3 @@ func remove_status_effects(effects) -> void:
 
 func _on_pin_selected(effect: StatusEffect) -> void:
 	status_effect_icon_pressed.emit(effect)
-
