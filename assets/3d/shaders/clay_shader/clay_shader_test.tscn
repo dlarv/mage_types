@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7ufn0uppvqfk"]
+
+[ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/3d/shaders/clay_shader/clay.tres" id="1_l5n25"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74u1h"]
+render_priority = 0
+shader = ExtResource("1_l5n25")
+shader_parameter/BaseColor = Color(0, 0, 1, 1)
+shader_parameter/Roughness = 0.4
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(1, 1)
+shader_parameter/FingertprintScale = 1.0
+shader_parameter/CrackOffset = 0.6
+shader_parameter/CrackScale = 0.5
+shader_parameter/CrackDetail = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a8hh1"]
+material = SubResource("ShaderMaterial_74u1h")
+size = Vector2(20, 20)
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxk2m"]
+size = Vector3(20, 1, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("PlaneMesh_a8hh1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_oxk2m")

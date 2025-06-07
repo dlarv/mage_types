@@ -27,7 +27,7 @@
 	],
 	"label": "Graph",
 	"longdesc": "",
-	"name": "@Node@491",
+	"name": "_Node_491",
 	"node_position": {
 		"x": 0.0,
 		"y": 0.0
@@ -61,7 +61,7 @@
 				"metallic": 0.0,
 				"normal": 1.0,
 				"roughness": 1.0,
-				"size": 11,
+				"size": 11.0,
 				"sss": 1.0
 			},
 			"seed_int": 0,
@@ -155,8 +155,8 @@
 				"y": -93.7429428100586
 			},
 			"parameters": {
-				"buffer": 1,
-				"param2": 0,
+				"buffer": 1.0,
+				"param2": 0.0,
 				"size": 10.0,
 				"strength": 8.0
 			},
@@ -177,7 +177,7 @@
 				"d_in2_x": 0.6,
 				"d_in2_y": 0.7,
 				"d_in2_z": 0.6,
-				"op": 2
+				"op": 2.0
 			},
 			"seed_int": 0,
 			"type": "math_v3"

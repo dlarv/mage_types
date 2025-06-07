@@ -190,7 +190,7 @@
 			"from": "normal_map2",
 			"from_port": 0,
 			"to": "Material",
-			"to_port": 4
+			"to_port": 0
 		}
 	],
 	"label": "Graph",
@@ -224,7 +224,7 @@
 				"emission_energy": 1.0,
 				"flags_transparent": true,
 				"metallic": 0.0,
-				"normal": 1.0,
+				"normal": 10.0,
 				"roughness": 1.0
 			},
 			"seed_int": 0,
@@ -284,9 +284,9 @@
 				"y": -192.497360229492
 			},
 			"parameters": {
-				"buffer": 0,
+				"buffer": 0.0,
 				"param2": 0.0,
-				"size": 12,
+				"size": 12.0,
 				"strength": 1.0
 			},
 			"seed_int": 0,
@@ -610,7 +610,7 @@
 				"y": 84.6613082885742
 			},
 			"parameters": {
-				"color": 0.43
+				"color": 1.77
 			},
 			"seed_int": 0,
 			"type": "uniform_greyscale"
