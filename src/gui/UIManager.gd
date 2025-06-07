@@ -17,12 +17,15 @@ signal catalyst_menu_closed(element: ElementalType)
 	"catalyst": $PanelContainer/MarginContainer/TabContainer/CatalystTutorial,
 }
 
+## In battle, player can only open the matchup menu
+var in_battle_mode := false
+
 var overworld: Node
 var dialog_box: DialogueBox
 var hud: CanvasLayer
 var _menu_stack := []
-var _block_input := false
 var is_in_dialog := false
+var _block_input := false
 
 func _ready() -> void:
 	_block_input = true
@@ -47,6 +50,9 @@ func _unhandled_input(input: InputEvent) -> void:
 		if input.is_action_pressed("ui_cancel"):
 			inventory.spell_scroll_selected.emit(null)
 			inventory.equipment_selected.emit(null)
+	elif in_battle_mode:
+		if input.is_action_pressed("open_transmutation_menu"):
+			push_menu(matchup_chart)
 	elif visible and (input.is_action_pressed("close_menu") or input.is_action_pressed("pause_game")):
 		if len(_menu_stack) > 0 and _menu_stack[-1] == vendor_menu:
 			vendor_menu_closed.emit()

@@ -48,7 +48,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		elif event.is_action_pressed("open_battle_character_menu"):
 			control_panel.current_tab = 3
 			get_window().set_input_as_handled()
-		return
 
 	if event.is_action_pressed("battle_menu_back"):
 		get_window().set_input_as_handled()
@@ -63,9 +62,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		get_window().set_input_as_handled()
 		_on_end_turn_button_pressed()
 		
-
-
-
 
 func setup(allies: Array, items: Array, enemies: Array) -> void:
 	_skip_indices = []

@@ -30,18 +30,21 @@ layout_mode = 2
 [node name="Prev_Button" type="Button" parent="VBoxContainer/CharacterSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 disabled = true
 text = "Prev"
 
 [node name="EndTurn_Button" type="Button" parent="VBoxContainer/CharacterSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 disabled = true
 text = "End Turn"
 
 [node name="Next_Button" type="Button" parent="VBoxContainer/CharacterSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 disabled = true
 text = "Next"
 
