@@ -35,11 +35,15 @@ func deactivate():
 	hide()
 
 
+func set_active(val: bool) -> void:
+	is_active = val
+	visible = val
+
+
 func _process(delta: float) -> void:
 	if not is_active: return
 	# Adjust position of label to be floating above character's head.
 	var cam := get_viewport().get_camera_3d()
-	# var pos2D := cam.unproject_position(_pos3D)
-	var pos2D := get_viewport().get_mouse_position() - Vector2(0, size.y)
+	var pos2D := cam.unproject_position(_pos3D) - Vector2(0, size.y)
 
 	global_position = pos2D

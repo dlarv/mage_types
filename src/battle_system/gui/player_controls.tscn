@@ -59,6 +59,7 @@ metadata/_tab_index = 0
 [node name="Attacks_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 text = "Attacks"
 
 [node name="Items_Button" type="Button" parent="VBoxContainer/TabContainer/Home_VBox"]

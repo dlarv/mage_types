@@ -1,5 +1,6 @@
 extends Node3D
 
+signal hovered(actor: BattleActor)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect)
 
@@ -25,6 +26,7 @@ var _mat2: StandardMaterial3D
 var _indicator_mat: StandardMaterial3D
 var _particle_mat: StandardMaterial3D
 var _is_defeated := false
+
 
 func setup(actor: BattleActor, shiftRight: bool) -> void:
 	self.actor = actor
@@ -106,20 +108,32 @@ func show_intentions(val: bool) -> void:
 
 func _on_mouse_entered() -> void:
 	if is_selectable:
-		set_highlight(true)
-		transmutation_hint.activate()
+		hover(true)
 
 func _on_mouse_exited() -> void:
 	if is_selectable:
-		set_highlight(false)
-		transmutation_hint.deactivate()
+		hover(false)
+
+
+func hover_no_signal(highlight: bool) -> void:
+	set_highlight(highlight)
+	transmutation_hint.set_active(highlight)
+
+
+# listener calls hover_no_signal(), which is where logic is kept.
+func hover(highlight: bool) -> void:
+	hovered.emit(actor)
 
 
 func _on_input_event(camera:Node, event:InputEvent, event_position:Vector3, normal:Vector3, shape_idx:int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed:
-			selected.emit(actor)
-			transmutation_hint.deactivate()
+			select()
+
+func select() -> void:
+	selected.emit(actor)
+	transmutation_hint.deactivate()
+
 
 func add_status_effect(effect: StatusEffect) -> void:
 	$PinManager.insert_pin(effect)

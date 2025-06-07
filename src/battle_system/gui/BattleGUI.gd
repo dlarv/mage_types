@@ -32,19 +32,13 @@ var _accept_messages := true
 func setup(allies: Array, items: Array, enemies: Array) -> void:
 	# Init allies.
 	self.allies = allies
+	self.enemies = enemies
 	_selected_actions = []
 	_selected_actions.resize(len(allies))
 
-	for actor in allies:
-		var display = team_display.add_display(actor, true)
-	
+	team_display.setup(allies, enemies)
 	team_display.highlight(0)
 	team_display.selected.connect(_on_target_selected)
-
-	# Init enemies
-	self.enemies = enemies
-	for actor in enemies:
-		var display = team_display.add_display(actor, false)
 
 	# Finish setup
 	player_controls.setup(allies, items, enemies)
