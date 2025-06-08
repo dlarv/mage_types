@@ -1,7 +1,7 @@
-[gd_resource type="VisualShader" load_steps=24 format=3 uid="uid://bg5ai0eocyekw"]
+[gd_resource type="VisualShader" load_steps=25 format=3 uid="uid://bg5ai0eocyekw"]
 
 [ext_resource type="Texture2D" uid="uid://g8xe88rd5x3f" path="res://assets/3d/shaders/clay_shader/textures/base_clay_print_normal.png" id="1_c60ch"]
-[ext_resource type="Texture2D" uid="uid://bgjjfrthamaph" path="res://assets/3d/shaders/clay_shader/textures/base_clay_crack_normal.png" id="2_jj7kg"]
+[ext_resource type="Texture2D" uid="uid://bgjjfrthamaph" path="res://assets/3d/shaders/clay_shader/textures/base_clay_crack_normal.png" id="2_ub7s1"]
 [ext_resource type="Texture2D" uid="uid://tqx4dh0dy1hy" path="res://assets/3d/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="3_jk170"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ut5nx"]
@@ -24,7 +24,7 @@ default_value_enabled = true
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_70qxe"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qa3iy"]
-texture = ExtResource("2_jj7kg")
+texture = ExtResource("2_ub7s1")
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_8uj8g"]
 operator = 2
@@ -85,6 +85,9 @@ default_value = Vector2(1, 1)
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_e008u"]
 operator = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_s2on3"]
+texture = ExtResource("2_ub7s1")
 
 [resource]
 code = "shader_type spatial;
@@ -230,7 +233,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(398.691, 182.552)
 varyings/cracks = "0,5"
 varyings/fingers = "0,5"
 nodes/vertex/0/position = Vector2(2560, 860)
@@ -275,4 +277,6 @@ nodes/fragment/81/node = SubResource("VisualShaderNodeVec2Parameter_5s183")
 nodes/fragment/81/position = Vector2(780, 1540)
 nodes/fragment/82/node = SubResource("VisualShaderNodeVectorOp_e008u")
 nodes/fragment/82/position = Vector2(1120, 1680)
+nodes/fragment/83/node = SubResource("VisualShaderNodeTexture_s2on3")
+nodes/fragment/83/position = Vector2(1640, 2080)
 nodes/fragment/connections = PackedInt32Array(46, 0, 47, 0, 51, 0, 36, 0, 36, 0, 46, 0, 70, 0, 68, 0, 68, 0, 53, 0, 71, 0, 70, 1, 68, 0, 72, 0, 76, 0, 68, 1, 72, 0, 73, 0, 74, 0, 73, 1, 53, 0, 77, 0, 73, 0, 77, 1, 77, 0, 47, 1, 47, 0, 0, 8, 80, 0, 0, 3, 48, 0, 0, 0, 79, 0, 36, 1, 81, 0, 82, 0, 35, 0, 82, 1, 82, 0, 70, 0, 78, 0, 51, 0, 82, 0, 51, 1)
