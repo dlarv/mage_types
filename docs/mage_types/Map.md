@@ -31,21 +31,24 @@ Script: [[Beach House Intro]]
 ## Hotel
 - Battle Tutorial: Inside Rec Room.
 - First boss inside hall1, forcing player to backtrack to Rec Room if they don't understand how to fight.
-- There should be some items hidden inside of simple rooms they can hide inside.
-- I'll take the hidden cave puzzle and put it inside of a middle section of the hotel.
+- There should be some items hidden inside of simple hotel rooms.
+	- Some rooms should look normal, but some should be bizarre.
+- I'll take the hidden cave puzzle (Lavender's puzzle) and put it inside of a middle section of the hotel.
+- World geometry will get weirder the further the player is from the main path.
+	- I.e. infinite hallway, path to Lavender's puzzle.
 ### Rec Room
-#todo
-## Hotel Enclave
-#todo
-## Ziggurat 
+- Battle Tutorial
+### Hotel Enclave
+- Player will be expected to backtrack here once they get Stasis.
+## Caves
+### Ziggurat 
 - Inside the Grand Enclave Ziggurat, there are 8 giant pillars the player can use to ascend to the surface. However, the first one has collapsed, revealing a hidden side path. The player must venture down this side route and loop back in order to ascend.
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
-- The player should get Stasis inside this side path.
-- Alex has been here before.
-- I want this to be formatted sort of like a Zelda dungeon. Player will adventure halfway through the dungeon, battle a miniboss, obtain the Catalyst spell, then loop back unlocking new paths in sections they've already been.
-## Side Path (aka Stasis Dungeon)
+### Side Path (aka Stasis Dungeon)
 - Player navigates a simple 3 room dungeon.
 - Once they get Stasis, they'll backtrack, using their new power to unlock the way out.
+- The player should get Stasis inside this side path.
+- I want this to be formatted sort of like a Zelda dungeon. Player will adventure halfway through the dungeon, battle a miniboss, obtain the Catalyst spell, then loop back unlocking new paths in sections they've already been.
 ### Chamber 1
 - The purpose of this room is simply to introduce the player to the lasers.
 - 3 Red Geysers will connect Chambers 1 and 3.

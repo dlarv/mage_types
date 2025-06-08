@@ -1,21 +1,37 @@
 # Misc Notes
 - I can't help but feeling that it would be thematically right to give the player some method of permanently altering the environment.
 - [x] I really want to find a way to translate the blender clay shader to gdshader code.
+- If I add jumping, I can have platforming challenges.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
-Puzzle playtest candidate. All puzzles that will be included in final demo are implemented, but positioned in a manner easy for play testers to play through.
+Puzzle playtest candidate. Players will be able to play through all major puzzles.
+- [ ] Write logs to user's system
 - [ ] Stasis Dungeon
 	- [ ] Mural in Chamber 2
 	- [ ] Add puzzles to Chamber 3
-- [ ] Hotel side rooms
+- [ ] Enclave stasis backtrack puzzle
+- [ ] Plan out beach house sequence and update model
 - [ ] See if any puzzles can be ported from previous versions
 	- [ ] Lost-forest-style caves => Supply closet
 	- [ ] Hidden caves logic puzzle
-	- [ ] Catalyst mirror puzzle?
+	- [ ] Original Stasis obstacle
 ## v0.5.x
-Demo MVP. Player can visit every major area of Blue and experience all major features.
-- [ ] Basic texturing and decor
+Exploration playtest candidate. Player will be able to explore decorated map.
+- [ ] Make exploring the map interesting.
+	- [ ] Items
+	- [ ] Decor
+	- [ ] Small puzzles
+	- [ ] Add endless stairway to infinite hall
+- [ ] Add walls, wall decor, & scene lighting
+- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
+- [ ] When player falls in water, return them to previous stable position
+- [ ] Hotel rooms 
+	- [ ] Items/mini obstacles
+	- [ ] Create door models and animations
+	- [ ] On doors player cannot enter, add "Do not disturb" signage
+## v0.6.x
+Demo MVP prep. Polish features added during previous versions.
 - [ ] Content
 	- [ ] Rec room battle tutorial
 	- [ ] Add backtrack obstacles to beach/etc
@@ -24,22 +40,26 @@ Demo MVP. Player can visit every major area of Blue and experience all major fea
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
 - [ ] Wild enemies
-- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools.
-- [ ] When player falls in water, return them to previous stable position
-## v0.6.x
-Add story and QOL features.
+- [ ] Opening chests should show player list of contents and allow them to individually select them
+## v0.7.x
+MVP Demo candidate. Add story and QOL features.
 - [ ] Character designs
 	- [ ] Blue-aligned
 	- [ ] Denim
+	- [ ] Player
+	- [ ] Lavender
 - [ ] Story
 	- [ ] Add beach house sequence
+	- [ ] Apartment sequence?
 - [ ] Accessibility
 	- [ ] Colorblind support
 	- [ ] Input remapping
 	- [ ] Audio/video controls
 - [ ] Achievements
 - [ ] Start screen
-- [ ] Allow user to use keyboard to select targets in battle
+- [x] Allow user to use keyboard to select targets in battle
+- [ ] Create conference hall room
+- [ ] Create steam page assets
 # The List
 ## Battle (BATT)
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
