@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=57 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -369,6 +369,15 @@ size = Vector3(1, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tyyi7"]
 size = Vector3(1, 3, 11)
 
+[sub_resource type="BoxMesh" id="BoxMesh_jjjym"]
+size = Vector3(1, 1, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f80hr"]
+size = Vector3(1, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d0ue"]
+size = Vector3(1, 3, 11)
+
 [node name="World" type="Node3D"]
 
 [node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_lyukn")]
@@ -447,11 +456,13 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 [node name="Skeleton3D" parent="Overworld/Blue/Alice/player/Armature" index="0"]
 bones/1/rotation = Quaternion(-2.93176e-08, -3.26299e-08, -0.69775, 0.716341)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-2.83839e-09, 6.05779e-09, -0.0131459, 0.999914)
+bones/2/rotation = Quaternion(-5.94409e-08, 5.82422e-09, -0.275297, 0.961359)
 bones/2/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(-2.66925e-08, 2.66925e-08, 0.707107, 0.707107)
+bones/5/rotation = Quaternion(-5.75703e-08, -9.23613e-16, 0.274332, 0.961635)
 bones/7/rotation = Quaternion(-0.494287, -0.505649, -0.494287, 0.505648)
 bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.715095, -7.77969e-10, 5.53573e-08, 0.699027)
 bones/11/rotation = Quaternion(-0.712137, 8.5248e-08, -8.64739e-08, 0.702041)
 bones/12/rotation = Quaternion(0.00713899, -2.40746e-08, 1.56189e-09, 0.999974)
 
@@ -478,13 +489,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.803, -101)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [node name="Boss4" parent="Overworld/Blue/Preset2" instance=ExtResource("27_yi4cx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1.80295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0.19705, -101)
 
 [node name="Boss5" parent="Overworld/Blue/Preset2" instance=ExtResource("29_dyyk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, -1.80295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.19705, -101)
 
 [node name="Boss6" parent="Overworld/Blue/Preset2" instance=ExtResource("30_0kir7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, -1.80295, -101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0.19705, -101)
 
 [node name="StasisSpellStoryTrigger" parent="Overworld/Blue" instance=ExtResource("28_83uud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 3.6, -398)
@@ -517,7 +528,7 @@ locks = [NodePath("../DungeonChunk/Chamber2/Relay3")]
 permanent = true
 
 [node name="DoorBlocker_1" type="MeshInstance3D" parent="Overworld/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -82.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -82.7)
 mesh = SubResource("BoxMesh_8kqe2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DoorBlocker_1"]
@@ -535,6 +546,26 @@ mesh = SubResource("BoxMesh_8kqe2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DoorBlocker_2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_tyyi7")
+
+[node name="DoorBlocker_3" type="MeshInstance3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 1, -133.3)
+mesh = SubResource("BoxMesh_jjjym")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DoorBlocker_3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DoorBlocker_3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_tyyi7")
+
+[node name="DoorBlocker_4" type="MeshInstance3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.3, 1, -210.7)
+mesh = SubResource("BoxMesh_f80hr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DoorBlocker_4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DoorBlocker_4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_4d0ue")
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

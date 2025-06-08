@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=4 uid="uid://cmtatsdth8psr"]
+[gd_scene load_steps=218 format=4 uid="uid://cmtatsdth8psr"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_uvna4"]
 [ext_resource type="Shader" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
@@ -527,6 +527,18 @@ data = PackedVector3Array(-0.4701, -1, 1, -0.4701, 1, -1, -0.4701, 1, 1, -0.4701
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7m8kw"]
 data = PackedVector3Array(-0.4701, -1, 1, -0.4701, 1, -1, -0.4701, 1, 1, -0.4701, -1, 1, -0.4701, -1, -1, -0.4701, 1, -1, 0.4701, -1, 1, -0.4701, 1, 1, 0.4701, 1, 1, 0.4701, -1, 1, -0.4701, -1, 1, -0.4701, 1, 1, 0.4701, 1, -1, -0.4701, 1, 1, -0.4701, 1, -1, 0.4701, 1, -1, 0.4701, 1, 1, -0.4701, 1, 1, -0.4701, -1, -1, 0.4701, -1, 1, 0.4701, -1, -1, -0.4701, -1, -1, -0.4701, -1, 1, 0.4701, -1, 1, -0.4701, -1, -1, 0.4701, 1, -1, -0.4701, 1, -1, -0.4701, -1, -1, 0.4701, -1, -1, 0.4701, 1, -1, 0.4701, 1, 1, 0.4701, -1, -1, 0.4701, -1, 1, 0.4701, 1, 1, 0.4701, 1, -1, 0.4701, -1, -1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itd01"]
+render_priority = 0
+shader = ExtResource("3_yqbif")
+shader_parameter/BaseColor = Color(0.273873, 0.273873, 0.273873, 1)
+shader_parameter/Roughness = 0.852
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(10, 1)
+shader_parameter/FingertprintScale = 0.98
+shader_parameter/CrackOffset = 1.0
+shader_parameter/CrackScale = 0.19
+shader_parameter/CrackDetail = 1.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3r084"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
@@ -1471,6 +1483,10 @@ shape = SubResource("ConcavePolygonShape3D_4sfk1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Border_053/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_7m8kw")
+
+[node name="Bridge" parent="." index="130"]
+transform = Transform3D(20, 0, 0, 0, -0.25, -1.74846e-07, 0, 2.18557e-08, -2, -189.086, 1.29496, -210.019)
+material_override = SubResource("ShaderMaterial_itd01")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Bridge" index="0"]
 
