@@ -28,7 +28,12 @@ Each of these sections will weave through each other.
 		- Pancakes real good.
 		
 Script: [[Beach House Intro]]
-## Rec Room
+## Hotel
+- Battle Tutorial: Inside Rec Room.
+- First boss inside hall1, forcing player to backtrack to Rec Room if they don't understand how to fight.
+- There should be some items hidden inside of simple rooms they can hide inside.
+- I'll take the hidden cave puzzle and put it inside of a middle section of the hotel.
+### Rec Room
 #todo
 ## Hotel Enclave
 #todo

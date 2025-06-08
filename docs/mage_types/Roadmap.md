@@ -8,6 +8,9 @@ Puzzle playtest candidate. All puzzles that will be included in final demo are i
 	- [ ] Add puzzles to Chamber 3
 - [ ] Hotel side rooms
 - [ ] See if any puzzles can be ported from previous versions
+	- [ ] Lost-forest-style caves => Supply closet
+	- [ ] Hidden caves logic puzzle
+	- [ ] Catalyst mirror puzzle?
 ## v0.5.x
 Demo MVP. Player can visit every major area of Blue and experience all major features.
 - [ ] Basic texturing and decor
