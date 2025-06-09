@@ -8,8 +8,9 @@ size = Vector3(1.08936, 2.9, 1.09277)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yscrx"]
 size = Vector3(4.01251, 0.3, 4.01288)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2vit5"]
-size = Vector3(0.9, 0.5, 0.9)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s52jd"]
+height = 0.5
+radius = 0.4
 
 [node name="Pillar" type="StaticBody3D"]
 collision_layer = 5
@@ -25,19 +26,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00656128, 3.05, 0.00271606)
 shape = SubResource("BoxShape3D_yscrx")
 
 [node name="Border_NE" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56282, 3.45, -1.55372)
-shape = SubResource("BoxShape3D_2vit5")
+transform = Transform3D(0.999715, -1.04356e-09, -0.0238738, 1.04356e-09, 1, -1.2459e-11, 0.0238738, -1.2459e-11, 0.999715, 1.56282, 3.45, -1.55372)
+shape = SubResource("CylinderShape3D_s52jd")
 
 [node name="Border_SE" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56282, 3.45, 1.54628)
-shape = SubResource("BoxShape3D_2vit5")
+shape = SubResource("CylinderShape3D_s52jd")
 
 [node name="Border_SW" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5518, 3.45, 1.54628)
-shape = SubResource("BoxShape3D_2vit5")
+shape = SubResource("CylinderShape3D_s52jd")
 
 [node name="Border_NW" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5518, 3.45, -1.55372)
-shape = SubResource("BoxShape3D_2vit5")
+shape = SubResource("CylinderShape3D_s52jd")
 
 [editable path="Model"]

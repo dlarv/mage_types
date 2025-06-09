@@ -1,6 +1,8 @@
 @tool
 extends Node3D
 
+signal laser_broken()
+
 var laser: Laser
 var mesh: MeshInstance3D:
 	get:
@@ -39,6 +41,7 @@ func _physics_process(delta: float) -> void:
 				body.set_laser(laser, $RayCast3D.get_collision_point())
 		elif not body.get_collision_layer_value(5) and body.get_collision_layer_value(3) and body is MagiClay:
 			body.react(laser.element, laser.rand_val)
+			laser_broken.emit()
 			_prev_clay = body
 	else:
 		distance = $RayCast3D.target_position.z
