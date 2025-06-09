@@ -164,6 +164,7 @@ func _get_mesh() -> MeshInstance3D:
 	if find_child("MeshInstance3D") == null: return null
 	return $MeshInstance3D
 
+
 func _set_material(val: BaseMaterial3D) -> void:
 		_material = val
 		if _mesh_instance == null:
