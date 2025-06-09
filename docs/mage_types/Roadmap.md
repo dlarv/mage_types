@@ -2,12 +2,14 @@
 - I can't help but feeling that it would be thematically right to give the player some method of permanently altering the environment.
 - [x] I really want to find a way to translate the blender clay shader to gdshader code.
 - If I add jumping, I can have platforming challenges.
+- v0.6 will be the next version I release to my playtesters.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
 - [ ] Write logs to user's system
 - [ ] Stasis Dungeon
+	- [ ] Chamber 1 bridge puzzle
 	- [ ] Mural in Chamber 2
 	- [ ] Add puzzles to Chamber 3
 - [ ] Enclave stasis backtrack puzzle
