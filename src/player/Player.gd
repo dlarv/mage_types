@@ -62,8 +62,6 @@ func _ready() -> void:
 	Settings.player_name_changed.connect(func(name):
 		player_name = name)
 
-	# model.get_active_material(0).albedo_color = battle_actor.element1.main_color.lightened(0.2)
-	# model.get_active_material(1).albedo_color = battle_actor.element2.main_color.lightened(0.2)
 	battle_actor.element_changed.connect(_on_battle_actor_element_changed)
 
 
@@ -90,12 +88,17 @@ func _physics_process(delta: float) -> void:
 	if is_dragging():
 		_move_drag_mode(delta)
 		return
-	var vel = velocity
-	var speed = walk_speed if not _is_running else run_speed
 
-	# Add the gravity.
-	if !self.is_on_floor() and outside_forces.y == 0:
-		vel.y -= gravity
+	var vel := velocity
+	var speed := walk_speed if not _is_running else run_speed
+
+	if self.is_on_floor():
+		if Input.is_action_pressed("jump"):
+			vel.y += 15000
+	else:
+		# Add the gravity.
+		if outside_forces.y == 0:
+			vel.y -= gravity
 		
 
 	# Get the input direction and handle the movement/deceleration.
