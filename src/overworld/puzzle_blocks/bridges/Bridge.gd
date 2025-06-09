@@ -10,9 +10,7 @@ func _enter_tree() -> void:
 	$SubEmitter.stop()
 
 	if not $SubEmitter.laser_broken.is_connected(_on_laser_broken):
-		print("HERE")
 		$SubEmitter.laser_broken.connect(_on_laser_broken)
-
 
 
 func _on_laser_received(laser:Laser, point:Vector3) -> void:
@@ -49,6 +47,11 @@ func create_log(body: MagiClay, newElement: ElementalType, laser: Laser) -> void
 	# 	Logger.append_puzzle_log("Mirror(%s) of Element(%s) transmuted laser of Element(%s) into Element(%s)." 
 	# 		% [puzzle_name, element, laser.element, newElement])
 
+func reset() -> void:
+	super.reset()
+	if _is_emitting:
+		$SubEmitter.start()
+
 
 func _get_mesh() -> MeshInstance3D:
 	return $Model/Bridge
@@ -57,3 +60,5 @@ func _get_mesh() -> MeshInstance3D:
 func _on_laser_broken() -> void:
 	if shutoff_upon_trigger: 
 		$SubEmitter.stop()
+
+
