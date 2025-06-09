@@ -4,7 +4,7 @@ var _prev_val := -1
 var _is_emitting := false
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	$SubEmitter.stop()
 
 

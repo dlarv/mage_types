@@ -30,7 +30,7 @@ func _on_body_entered(body: Node3D) -> void:
 		bodyElement = "n/a"
 	else:
 		bodyName = body.puzzle_name
-		bodyElement = body.element
+		bodyElement = str(body.element)
 
 	if can_player_trigger and _test_for_player(body):
 		_try_emit_on()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6mrnjq3cdmkd"]
+[gd_scene load_steps=3 format=3 uid="uid://ci63qi5oga08n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_b5ddw"]
 size = Vector3(2.21, 1, 0.41)
@@ -7,6 +7,7 @@ size = Vector3(2.21, 1, 0.41)
 size = Vector3(2.21, 1, 0.41)
 
 [node name="BridgeCap" type="StaticBody3D"]
+collision_layer = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.10909, 0)

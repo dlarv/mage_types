@@ -425,7 +425,7 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -2.2, -96)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 5.8, -367)
 team = [ExtResource("11_qfng2")]
 run_speed = 900.0
 drag_speed = 400.0
