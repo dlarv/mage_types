@@ -20,6 +20,7 @@ var _opened_locks := {}
 
 func _ready() -> void:
 	for lock in locks:
+		if not lock: continue
 		_opened_locks[lock] = false
 		lock.on.connect(_on_lock_opened)
 		lock.off.connect(_on_lock_closed)
