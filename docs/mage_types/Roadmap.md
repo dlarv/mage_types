@@ -1,4 +1,6 @@
-# Known Bugs
+# Misc Notes
+- I can't help but feeling that it would be thematically right to give the player some method of permanently altering the environment.
+- [x] I really want to find a way to translate the blender clay shader to gdshader code.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
@@ -17,9 +19,6 @@ Demo MVP. Player can visit every major area of Blue and experience all major fea
 - [ ] Content
 	- [ ] Rec room battle tutorial
 	- [ ] Add backtrack obstacles to beach/etc
-- [ ] Character designs
-	- [ ] Blue-aligned
-	- [ ] Denim
 - [ ] Battle Animation refactor
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
@@ -29,13 +28,18 @@ Demo MVP. Player can visit every major area of Blue and experience all major fea
 - [ ] When player falls in water, return them to previous stable position
 ## v0.6.x
 Add story and QOL features.
+- [ ] Character designs
+	- [ ] Blue-aligned
+	- [ ] Denim
 - [ ] Story
 	- [ ] Add beach house sequence
 - [ ] Accessibility
 	- [ ] Colorblind support
 	- [ ] Input remapping
+	- [ ] Audio/video controls
 - [ ] Achievements
 - [ ] Start screen
+- [ ] Allow user to use keyboard to select targets in battle
 # The List
 ## Battle (BATT)
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
