@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck6cq5qaxuf80"]
+
+[ext_resource type="PackedScene" uid="uid://dwg76hht6dumf" path="res://assets/3d/models/objects/puzzle_blocks/bridges/Pillar.glb" id="1_gksrj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bu375"]
+size = Vector3(1.08936, 2.9, 1.09277)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yscrx"]
+size = Vector3(4.01251, 0.3, 4.01288)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vit5"]
+size = Vector3(0.9, 0.5, 0.9)
+
+[node name="Pillar" type="StaticBody3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_gksrj")]
+
+[node name="Pillar" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0065918, 1.45, 0.00146484)
+shape = SubResource("BoxShape3D_bu375")
+
+[node name="Base" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00656128, 3.05, 0.00271606)
+shape = SubResource("BoxShape3D_yscrx")
+
+[node name="Border_NE" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56282, 3.45, -1.55372)
+shape = SubResource("BoxShape3D_2vit5")
+
+[node name="Border_SE" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56282, 3.45, 1.54628)
+shape = SubResource("BoxShape3D_2vit5")
+
+[node name="Border_SW" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5518, 3.45, 1.54628)
+shape = SubResource("BoxShape3D_2vit5")
+
+[node name="Border_NW" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5518, 3.45, -1.55372)
+shape = SubResource("BoxShape3D_2vit5")
+
+[editable path="Model"]

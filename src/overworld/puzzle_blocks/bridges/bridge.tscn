@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfpuqf3hfg6by"]
+
+[ext_resource type="PackedScene" uid="uid://c71emwl08sli0" path="res://assets/3d/models/objects/puzzle_blocks/bridges/Bridge.glb" id="1_gg26p"]
+[ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_22ue0"]
+[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/bridges/Bridge.gd" id="2_pq00e"]
+[ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_amepe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0r7y"]
+size = Vector3(3, 0.1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3usjq"]
+size = Vector3(2.2, 0.6, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmsp8"]
+size = Vector3(0.4, 1.5, 4)
+
+[node name="Bridge" type="StaticBody3D"]
+collision_layer = 5
+script = ExtResource("2_pq00e")
+is_transmutable = true
+
+[node name="Model" parent="." instance=ExtResource("1_gg26p")]
+
+[node name="SubReceiver" parent="." instance=ExtResource("2_22ue0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, 0)
+shape = SubResource("BoxShape3D_x0r7y")
+
+[node name="SubEmitter" parent="." instance=ExtResource("3_amepe")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 2.9, 0)
+shape = SubResource("BoxShape3D_3usjq")
+
+[node name="Border_W" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 3.35, 0)
+shape = SubResource("BoxShape3D_nmsp8")
+
+[node name="Border_E" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 3.35, 0)
+shape = SubResource("BoxShape3D_nmsp8")
+
+[connection signal="laser_dropped" from="SubReceiver" to="." method="_on_laser_dropped"]
+[connection signal="laser_received" from="SubReceiver" to="." method="_on_laser_received"]
+
+[editable path="Model"]
