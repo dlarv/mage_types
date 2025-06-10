@@ -428,8 +428,8 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 5.8, -367)
 run_speed = 900.0
 drag_speed = 400.0
-battle_actor = ExtResource("18_p65bs")
 team = [ExtResource("11_qfng2")]
+battle_actor = ExtResource("18_p65bs")
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)

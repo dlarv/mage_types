@@ -11,7 +11,7 @@ extends PuzzleBlock
 	set(val):
 		base_strength = val
 		# dot ~= 1, when geyser is pointing upward.
-		_mod = Vector3.UP.dot(transform.basis.y)
+		_dot = Vector3.UP.dot(transform.basis.y)
 
 var _size_mod: float:
 	get:
@@ -26,10 +26,10 @@ var _size_mod: float:
 				return 2.0
 			ElementManager.Red,ElementManager.Yellow,ElementManager.Cyan,_: 
 				return 1.0
-var _mod := 1.0
+var _dot := 1.0
 var strength: float:
 	get:
-		return base_strength - 10.0 * _mod
+		return (base_strength + 10) * _dot * 2
 
 var top_hitbox: CollisionShape3D:
 	get:
@@ -74,9 +74,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _player != null:
-		_player.outside_forces += transform.basis.y * strength * 100
-		# if _in_top_hitbox:
-		# 	_player.outside_forces.y -= _player.gravity
+		_player.add_force(transform.basis.y * strength)
+
 
 func _on_stream_hit_box_entered(body: Node3D) -> void:
 	if body is RigidBody3D:
@@ -85,7 +84,10 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 			body.linear_velocity /= 2
 		body.add_constant_force(transform.basis.y * strength)
 	elif body is CharacterBody3D:
-		body.outside_forces += transform.basis.y * strength * 100
+		if body.velocity.y < 0:
+			body.velocity.y /= body._get_gravity()
+
+		body.add_force(transform.basis.y * strength)
 		_player = body
 
 	
@@ -97,13 +99,15 @@ func _on_stream_top_hit_box_entered(body: Node3D) -> void:
 		body.add_constant_force(transform.basis.y * strength)
 	elif body is CharacterBody3D:
 		_in_top_hitbox = true
+		if body.velocity.y < 0:
+			body.velocity.y /= 2
+		body.add_force(transform.basis.y * strength)
 
 
 func _on_stream_hit_box_exited(body: Node3D) -> void:
 	if body is RigidBody3D:
 		body.constant_force = Vector3.ZERO
 	elif body is CharacterBody3D:
-		# _player.outside_forces += transform.basis.y * strength * 3000
 		_player = null
 		_in_top_hitbox = false
 
