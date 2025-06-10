@@ -35,18 +35,6 @@ func _on_laser_dropped() -> void:
 	$SubEmitter.stop()
 
 
-func create_log(body: MagiClay, newElement: ElementalType, laser: Laser) -> void:
-	pass
-	# if in_stasis:
-	# 	Logger.append_puzzle_log("Bridge(%s) in stasis collided with laser of Element(%s)."
-	# 		% [puzzle_name, laser.element])
-	# elif newElement == null or newElement.is_blank():
-	# 	Logger.append_puzzle_log("Bridge(%s) of Element(%s) collided with laser of Element(%s)."
-	# 		% [puzzle_name, element, laser.element])
-	# else:
-	# 	Logger.append_puzzle_log("Mirror(%s) of Element(%s) transmuted laser of Element(%s) into Element(%s)." 
-	# 		% [puzzle_name, element, laser.element, newElement])
-
 func reset() -> void:
 	super.reset()
 	if _is_emitting:
@@ -59,6 +47,7 @@ func _get_mesh() -> MeshInstance3D:
 
 func _on_laser_broken() -> void:
 	if shutoff_upon_trigger: 
+		Logger.append_puzzle_log("Bridge(%s)'s laser was triggered and shutoff." % [puzzle_name])
 		$SubEmitter.stop()
 
 
