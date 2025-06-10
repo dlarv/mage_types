@@ -29,7 +29,7 @@ var _size_mod: float:
 var _dot := 1.0
 var strength: float:
 	get:
-		return (base_strength + 10) * _dot * 2
+		return (base_strength + 12) * _dot * 2
 
 var top_hitbox: CollisionShape3D:
 	get:
