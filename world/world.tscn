@@ -117,7 +117,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-69, -14, -358)]
+"values": [Vector3(-185, -14, -419)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -129,7 +129,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-69, 0.6, -365)]
+"values": [Vector3(-185, 0.6, -424)]
 }
 
 [sub_resource type="Animation" id="Animation_kmcq3"]
@@ -145,7 +145,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-69, -14, -358), Vector3(-69, 3, -358)]
+"values": [Vector3(-185, -14, -419), Vector3(-185, 3, -419)]
 }
 
 [sub_resource type="Animation" id="Animation_50av1"]
@@ -289,7 +289,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-69, 0.6, -365), Vector3(-69, 3.6, -365)]
+"values": [Vector3(-185, 0.6, -424), Vector3(-185, 10.6, -424)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1n5t0"]
@@ -457,11 +457,13 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 [node name="Skeleton3D" parent="Overworld/Blue/Alice/player/Armature" index="0"]
 bones/1/rotation = Quaternion(-2.93176e-08, -3.26299e-08, -0.69775, 0.716341)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-2.83839e-09, 6.05779e-09, -0.0131459, 0.999914)
+bones/2/rotation = Quaternion(-5.94409e-08, 5.82422e-09, -0.275297, 0.961359)
 bones/2/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(-2.66925e-08, 2.66925e-08, 0.707107, 0.707107)
+bones/5/rotation = Quaternion(-5.75703e-08, -9.23613e-16, 0.274332, 0.961635)
 bones/7/rotation = Quaternion(-0.494287, -0.505649, -0.494287, 0.505648)
 bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.715095, -7.77969e-10, 5.53573e-08, 0.699027)
 bones/11/rotation = Quaternion(-0.712137, 8.5248e-08, -8.64739e-08, 0.702041)
 bones/12/rotation = Quaternion(0.00713899, -2.40746e-08, 1.56189e-09, 0.999974)
 
@@ -497,7 +499,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0.19705, -101)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0.19705, -101)
 
 [node name="StasisSpellStoryTrigger" parent="Overworld/Blue" instance=ExtResource("28_83uud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 3.6, -398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 3.6, -459)
 items = Array[ExtResource("29_m1310")]([SubResource("Resource_6c3vh")])
 info_graphic_key = "stasis"
 
@@ -510,7 +512,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 shape = SubResource("BoxShape3D_8jgrk")
 
 [node name="Chamber2StoryTrigger" parent="Overworld/Blue" instance=ExtResource("28_83uud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, 0.6, -365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 0.6, -424)
 
 [node name="AnimationActor" parent="Overworld/Blue/Chamber2StoryTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("31_lppqk")]
 animation_name = "chamber_2_trigger"
@@ -518,11 +520,11 @@ animation_player = NodePath("../../../AnimationPlayer")
 is_blocking = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Chamber2StoryTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -7, -0.5)
 shape = SubResource("BoxShape3D_sw2bq")
 
 [node name="Chamber2Gate" parent="Overworld/Blue" node_paths=PackedStringArray("locks") instance=ExtResource("32_0pnra")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -69, -14, -358)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -185, -14, -419)
 locks = [NodePath("../DungeonChunk/Chamber2/Relay3")]
 permanent = true
 

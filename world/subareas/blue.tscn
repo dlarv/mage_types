@@ -683,7 +683,7 @@ shape = SubResource("BoxShape3D_bbpf0")
 
 [node name="Gate" parent="DungeonChunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 22, 3, -26)
-locks = [null, null]
+locks = [NodePath("../Chamber1/Chunk/PressurePlate")]
 
 [node name="Chamber1" type="Area3D" parent="DungeonChunk" node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -696,6 +696,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 7.5, -0.5)
 shape = SubResource("BoxShape3D_letbw")
 
 [node name="Chunk" type="Node3D" parent="DungeonChunk/Chamber1"]
+
+[node name="PressurePlate" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("16_61fdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6.3, -17)
+_element = "magenta"
 
 [node name="Reset" parent="DungeonChunk/Chamber1/Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("13_cr8wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3.51784, 17)
@@ -855,10 +859,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 3, 
 
 [node name="BridgeCap17" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("15_f7s2o")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 3, -11)
-
-[node name="PressurePlate" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("16_61fdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6.3, -17)
-_element = "magenta"
 
 [node name="Emitter" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 7)
