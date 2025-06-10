@@ -9,7 +9,7 @@ extends Node3D
 # Amount of time to wait between a battle ending and a new one starting.
 @export var battle_delay: float
 
-@export var _player: Player
+@export var _player: Node3D
 var _current_story_actor: StoryActor = null
 
 @export_category("Demo")
@@ -20,10 +20,17 @@ var _current_story_actor: StoryActor = null
 			UIManager.matchup_chart.current_graphic = val
 
 func _ready() -> void:
-	#await get_tree().create_timer(5).timeout
 	var p = get_tree().get_nodes_in_group("player") 
 	if len(p) > 0:
 		_player = p[0]
+
+	if not _player.battle_started.is_connected(_on_player_battle_started):
+		_player.battle_started.connect(_on_player_battle_started)
+	if not _player.cutscene_started.is_connected(_on_player_cutscene_started):
+		_player.cutscene_started.connect(_on_player_cutscene_started)
+	if not _player.dialog_started.is_connected(_on_player_dialog_started):
+		_player.dialog_started.connect(_on_player_dialog_started)
+
 
 	UIManager.setup()
 
