@@ -80,5 +80,3 @@ func set_element(e: ElementalType) -> void:
 	mesh.set_surface_override_material(0, _mat)
 
 
-func _on_scalar_visibility_changed() -> void:
-	print_stack()

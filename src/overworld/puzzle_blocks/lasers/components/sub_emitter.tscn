@@ -22,5 +22,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 mesh = SubResource("BoxMesh_a3k3g")
 skeleton = NodePath("../../RayCast3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_gw3ra")
-
-[connection signal="visibility_changed" from="Scalar" to="." method="_on_scalar_visibility_changed"]
