@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=11 format=4 uid="uid://c4p3jn0diyrja"]
 
-[ext_resource type="Script" path="res://src/player/Player.gd" id="1_jd6jo"]
-[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_2jxe0"]
+[ext_resource type="Script" path="res://src/player/PlayerController.gd" id="1_eca83"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="3_e1u62"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="3_xfaiw"]
@@ -44,10 +43,9 @@ collision_layer = 49
 collision_mask = 49
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-script = ExtResource("1_jd6jo")
-battle_actor = ExtResource("2_2jxe0")
+script = ExtResource("1_eca83")
 team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
-model = NodePath("player/Armature/Skeleton3D/Cylinder")
+model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
