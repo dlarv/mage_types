@@ -884,6 +884,19 @@ _element = "blue"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 3)
 _element = "red"
 
+[node name="Geyser" parent="DungeonChunk/Chamber1" instance=ExtResource("9_mipr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 11)
+base_strength = 2.0
+is_on = false
+
+[node name="PressurePlate" parent="DungeonChunk/Chamber1" instance=ExtResource("16_61fdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, 11)
+_element = "blue"
+
+[node name="MagiclayRock" parent="DungeonChunk/Chamber1" instance=ExtResource("26_iaggr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, 11)
+_element = "blue"
+
 [node name="Chamber2" type="Area3D" parent="DungeonChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -54.7)
 
@@ -1309,6 +1322,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, -8)
 [node name="Mirror2" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("12_55e1h")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38, 7, -17)
 
+[connection signal="invalid_off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="stop"]
+[connection signal="off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="stop"]
+[connection signal="on" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="start"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SE/Rails1" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SE/Rails2" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SW/Rails1" method="slide"]

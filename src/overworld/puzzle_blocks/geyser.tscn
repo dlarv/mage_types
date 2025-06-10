@@ -37,7 +37,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3r47e")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gce8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ky5ld"]
 albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ryjpd"]
@@ -59,10 +59,10 @@ linear_accel_max = -2.23517e-06
 [sub_resource type="BoxMesh" id="BoxMesh_4qchg"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lin8l"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yadah"]
 size = Vector3(1, 5, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_58bba"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6ei2"]
 
 [sub_resource type="Animation" id="Animation_bfj0g"]
 resource_name = "RESET"
@@ -189,13 +189,14 @@ _data = {
 "starting": SubResource("Animation_u5vr8")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_andou"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8587"]
 size = Vector3(1.5, 0.5, 1.5)
 
 [node name="Geyser" type="StaticBody3D"]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_r55e5")
+base_strength = 6.0
 _element = "yellow"
 is_transmutable = true
 base_size = Vector3(1, 0.5, 1)
@@ -203,7 +204,7 @@ base_size = Vector3(1, 0.5, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_mrav5")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_8gce8")
+surface_material_override/0 = SubResource("StandardMaterial3D_ky5ld")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_ryjpd")
@@ -217,13 +218,13 @@ draw_pass_1 = SubResource("BoxMesh_4qchg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StreamBodyHitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-shape = SubResource("BoxShape3D_lin8l")
+shape = SubResource("BoxShape3D_yadah")
 
 [node name="StreamTopHitBox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StreamTopHitBox"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 5, 0)
-shape = SubResource("BoxShape3D_58bba")
+shape = SubResource("BoxShape3D_y6ei2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -236,7 +237,7 @@ collision_mask = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBlocker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.750221, 0)
-shape = SubResource("BoxShape3D_andou")
+shape = SubResource("BoxShape3D_f8587")
 
 [node name="geyser" parent="." instance=ExtResource("2_657dn")]
 visible = false
