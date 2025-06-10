@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not is_on or Engine.is_editor_hint(): return
+	$RayCast3D.force_raycast_update()
 	var body = $RayCast3D.get_collider()
 
 	if _prev_body != null and _prev_body != body:
@@ -48,11 +49,13 @@ func _physics_process(delta: float) -> void:
 
 	$Scalar.scale.z = distance
 
+
 func start() -> void:
 	is_on = true 
 	laser.rand_val = Time.get_ticks_usec()
 	$RayCast3D.enabled = true
 	$Scalar.show()
+
 
 func stop() -> void:
 	if not is_on: return
@@ -75,3 +78,7 @@ func set_element(e: ElementalType) -> void:
 	laser.element = e
 	_mat.albedo_color = e.main_color
 	mesh.set_surface_override_material(0, _mat)
+
+
+func _on_scalar_visibility_changed() -> void:
+	print_stack()
