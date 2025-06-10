@@ -5,7 +5,7 @@ extends Player
 @export var drag_speed := 500.0
 
 @export var jump_height := 10.0
-@export var jump_time_to_peak := 2.5
+@export var jump_time_to_peak := 2.0
 @export var jump_time_to_descent := 0.1
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
@@ -23,6 +23,12 @@ var outside_forces := Vector3.ZERO
 var _god_mode := false
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
+
+func _ready() -> void:
+	jump_velocity = 2.0 * jump_height / jump_time_to_peak
+	jump_gravity = (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
+	fall_gravity = (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
@@ -52,9 +58,10 @@ func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	velocity.y += _get_gravity() * delta
+	print(_get_gravity())
 
 	if self.is_on_floor()and Input.is_action_pressed("jump"):
-		_jump()
+		velocity.y = jump_velocity
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -84,10 +91,6 @@ func _get_gravity() -> float:
 	return jump_gravity if velocity.y > 0.0 else fall_gravity
 
 
-func _jump() -> void:
-	velocity.y = jump_velocity
-
-
 func _move_god_mode(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
@@ -108,14 +111,15 @@ func _move_god_mode(delta: float) -> void:
 
 func _move_drag_mode(delta: float) -> void:
 	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
-		velocity.z -= drag_speed * draggable.weight
+		velocity.z -= drag_speed / draggable.weight
 	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
-		velocity.z += drag_speed * draggable.weight
+		velocity.z += drag_speed / draggable.weight
 	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
-		velocity.x -= drag_speed * draggable.weight
+		velocity.x -= drag_speed / draggable.weight
 	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
-		velocity.x += drag_speed * draggable.weight
+		velocity.x += drag_speed / draggable.weight
 	
+	velocity.y += _get_gravity() * 5
 	velocity *= delta
 
 	# Snap to grid.
@@ -123,12 +127,16 @@ func _move_drag_mode(delta: float) -> void:
 		var yPos := global_position.y
 		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
 		global_position.y = yPos
-		# global_position.y = draggable.parent.global_position.y
-		# draggable.parent.global_position = draggable.parent.global_position.snapped(Vector3(0.5, 0.5, 0.5))
-		# draggable.parent.global_position.y = yPos
 	else:
 		move_and_slide()
 
 
 func add_force(force: Vector3) -> void:
 	outside_forces += force
+
+
+func try_set_draggable(obj: Node3D) -> bool:
+	if draggable != null: return false
+	elif not is_on_floor(): return false
+	draggable = obj
+	return true

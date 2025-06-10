@@ -56,15 +56,15 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_interactable_interacted(interactable: Node3D) -> void:
+	if _player:
+		drop()
+		return
 	# This means player tried to pick up two objects at once, which isn't allowed.
-	if not _player and interactable._player.is_dragging(): 
-		interactable.ignore()
+	elif not interactable.player.try_set_draggable(self):
 		return
 
-	if not _player:
-		pickup(interactable._player)
-	else:
-		drop()
+	pickup(interactable.player)
+
 
 func pickup(player: Node3D) -> void:
 	_player = player

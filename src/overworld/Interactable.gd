@@ -15,8 +15,8 @@ signal interacted(obj: Node3D)
 
 var disabled := false
 var force := false
+var player: Node3D
 var _label: Label
-var _player: Node3D
 
 func _enter_tree():
 	# Interaction prompt
@@ -28,11 +28,11 @@ func _enter_tree():
 
 
 func _input(event: InputEvent) -> void:
-	if disabled or not _label.visible or _player == null: return
+	if disabled or not _label.visible or player == null: return
 
 	if event.is_action_released("interact"):
 		interacted.emit(self)
-		get_viewport().set_input_as_handled()
+		# get_viewport().set_input_as_handled()
 		var n = name
 		if "puzzle_name" in get_parent():
 			n = get_parent().puzzle_name
@@ -53,7 +53,7 @@ func _on_body_entered(body:Node3D) -> void:
 	if disabled: return
 	if not body.is_in_group("player") and body.draggable != self: return
 
-	_player = body
+	player = body
 	_label.show()
 
 
@@ -61,20 +61,20 @@ func _on_body_exited(body:Node3D) -> void:
 	if disabled or force: return
 	if not body.is_in_group("player"): return
 	_label.hide()
-	_player = null
+	player = null
 
 
 func set_disabled(val: bool) -> void:
 	disabled = val
 	if disabled:
 		_label.hide()
-		_player = null
+		player = null
 
 ## Used when player tries to pick up two objects at once.
 ## Without this, they'll get teleported to the second object after dropping the first.
 func ignore() -> void:
 	_label.hide()
-	_player = null
+	player = null
 
 
 func toggle_force_show(val: bool) -> void:
