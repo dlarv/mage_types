@@ -9,9 +9,9 @@ extends Player
 @export var jump_time_to_descent := 0.1
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
-@onready var jump_gravity := -2.0 * jump_height / jump_time_to_peak * jump_time_to_peak
-@onready var fall_gravity := -2.0 * jump_height / jump_time_to_descent * jump_time_to_descent
-
+@onready var jump_gravity := (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)      
+@onready var fall_gravity := (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)
+ 
 var _is_running := false
 var draggable = null
 
@@ -23,12 +23,6 @@ var outside_forces := Vector3.ZERO
 var _god_mode := false
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
-
-func _ready() -> void:
-	jump_velocity = 2.0 * jump_height / jump_time_to_peak
-	jump_gravity = (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
-	fall_gravity = (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
@@ -58,7 +52,6 @@ func _physics_process(delta: float) -> void:
 
 	# Add the gravity.
 	velocity.y += _get_gravity() * delta
-	print(_get_gravity())
 
 	if self.is_on_floor()and Input.is_action_pressed("jump"):
 		velocity.y = jump_velocity
