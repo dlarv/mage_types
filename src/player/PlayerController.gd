@@ -3,11 +3,20 @@ extends Player
 @export var walk_speed := 600.0
 @export var run_speed := 800.0
 @export var drag_speed := 500.0
+
+@export var jump_height := 10.0
+@export var jump_time_to_peak := 2.5
+@export var jump_time_to_descent := 0.1
+
+@onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
+@onready var jump_gravity := -2.0 * jump_height / jump_time_to_peak * jump_time_to_peak
+@onready var fall_gravity := -2.0 * jump_height / jump_time_to_descent * jump_time_to_descent
+
 var _is_running := false
 var draggable = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
+var gravity = -980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
 var outside_forces := Vector3.ZERO
 
@@ -35,20 +44,17 @@ func _physics_process(delta: float) -> void:
 	if _god_mode: 
 		_move_god_mode(delta)
 		return
-	if is_dragging():
+	if draggable != null:
 		_move_drag_mode(delta)
 		return
 
-	var vel := velocity
 	var speed := walk_speed if not _is_running else run_speed
 
-	if self.is_on_floor():
-		if Input.is_action_pressed("jump"):
-			vel.y += 15000
-	else:
-		# Add the gravity.
-		if outside_forces.y == 0:
-			vel.y -= gravity
+	# Add the gravity.
+	velocity.y += _get_gravity() * delta
+
+	if self.is_on_floor()and Input.is_action_pressed("jump"):
+		_jump()
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -57,21 +63,29 @@ func _physics_process(delta: float) -> void:
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
 	if direction != Vector3.ZERO:
-		vel.x = direction.x * speed
-		vel.z = direction.z * speed
+		velocity.x = direction.x * speed * delta
+		velocity.z = direction.z * speed * delta
 		# Rotate model in direction of movement.
-		model.rotation.y = atan2(vel.x, vel.z)
+		model.rotation.y = atan2(velocity.x, velocity.z)
 	else:
-		vel.x = move_toward(velocity.x, 0, speed)
-		vel.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, speed * delta)
+		velocity.z = move_toward(velocity.z, 0, speed * delta)
 
-	velocity = (vel + outside_forces) * delta
+	velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
-	if vel == Vector3.ZERO:
+	if velocity.x == 0 and velocity.z == 0: 
 		anim_player.play("idle")
 	else:
 		anim_player.play("walk")
 	move_and_slide()
+
+
+func _get_gravity() -> float:
+	return jump_gravity if velocity.y > 0.0 else fall_gravity
+
+
+func _jump() -> void:
+	velocity.y = jump_velocity
 
 
 func _move_god_mode(delta: float) -> void:
@@ -116,11 +130,5 @@ func _move_drag_mode(delta: float) -> void:
 		move_and_slide()
 
 
-func is_dragging() -> bool:
-	return draggable != null
-
-
-func set_draggable(obj: Node3D) -> void:
-	draggable = obj
-
-
+func add_force(force: Vector3) -> void:
+	outside_forces += force

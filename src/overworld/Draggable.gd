@@ -85,13 +85,13 @@ func pickup(player: Node3D) -> void:
 
 	_prev_parent = parent.get_parent()
 	parent.reparent(_player)
-	_player.set_draggable(self)
+	_player.draggable = self
 
 	$Interactable.toggle_force_show(true)
 
 
 func drop() -> void:
-	_player.set_draggable(null)
+	_player.draggable = null
 	_player = null
 	parent.reparent(_prev_parent)
 	if parent is RigidBody3D:
