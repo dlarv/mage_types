@@ -51,6 +51,9 @@ func load(player: Node3D) -> void:
 	print("Player loaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
 
+	for child in find_children("", "MagiClay"):
+		child.flicker_collider()
+
 func unload(player: Node3D) -> void:
 	# if not player.is_in_group("player"): return
 	Logger.append_world_log("Player unloaded Chunk(%s)" % name) 

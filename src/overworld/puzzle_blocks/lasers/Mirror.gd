@@ -73,7 +73,7 @@ func _on_laser_dropped() -> void:
 		_active_receiver = null
 
 # Override
-func _flicker_collider() -> void:
+func flicker_collider() -> void:
 	block(true)
 	await get_tree().create_timer(0.01).timeout
 	block(false)

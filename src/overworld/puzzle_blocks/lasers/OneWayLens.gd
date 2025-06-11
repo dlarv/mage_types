@@ -34,7 +34,7 @@ func set_stasis(val=null) -> void:
 	
 	$SubEmitter.pause(in_stasis)
 
-func _flicker_collider() -> void:
+func flicker_collider() -> void:
 	var val := collision_layer
 	set_collision_layer_value(3, false)
 	await get_tree().create_timer(0.01).timeout

@@ -50,7 +50,7 @@ var _rand_val: int
 func _enter_tree():
 	if _original_element == null:
 		_original_element = element
-	_flicker_collider()
+	flicker_collider()
 
 
 func _ready():
@@ -90,7 +90,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	# The Catalyst overworld spell does not provide a randVal, so this can be used to test if this transmutation
 	# was because of a laser or Catalyst.
 	if randVal == -2:
-		_flicker_collider()
+		flicker_collider()
 	return true
 
 
@@ -113,7 +113,7 @@ func set_stasis(val=null) -> void:
 		_try_set_color()
 		Logger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
 		stasis_ended.emit()
-	_flicker_collider()
+	flicker_collider()
 
 func reset() -> void:
 	Logger.append_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
@@ -173,7 +173,8 @@ func _set_material(val: BaseMaterial3D) -> void:
 		_mesh_instance.set_surface_override_material(0, _material)
 		_try_set_color()
 
-func _flicker_collider() -> void:
+
+func flicker_collider() -> void:
 	# Use case example:
 	# 1. Object is Blue and is sitting on a Purple pressure plate.
 	# 2. Object is transmuted into Purple.

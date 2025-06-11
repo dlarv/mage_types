@@ -27,7 +27,7 @@ func _on_body_entered(body:Node3D) -> void:
 
 # Effects of _flicker_collider are done manually during set_element.
 # Otherwise, _on_body_exited clears the stored _clay and nothing happens.
-func _flicker_collider() -> void:
+func flicker_collider() -> void:
 	return
 
 # Override
