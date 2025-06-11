@@ -115,7 +115,6 @@ func set_difficulty(level: int) -> void:
 		puzzle.process_mode = PROCESS_MODE_INHERIT
 		puzzle.show()
 	else:
-		Logger.append_log(Logger.LogType.WORLD, "No Element(%s) puzzle found in %s." % [ element.name, name ])
 		push_warning("No Element(%s) puzzle found in %s." % [ element.name, name ])
 
 

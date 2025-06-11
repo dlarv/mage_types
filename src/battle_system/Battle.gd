@@ -21,7 +21,7 @@ var tie_breaker := false
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("create_log"):
-		Logger.save_log(Logger.LogType.BATTLE)
+		Logger.save_log()
 	
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:

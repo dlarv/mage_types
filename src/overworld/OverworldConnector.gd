@@ -36,8 +36,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
-		Logger.save_log(Logger.LogType.WORLD)
-		Logger.save_log(Logger.LogType.PUZZLE)
+		Logger.save_log()
 	if event.is_action_pressed("skip_dialog"):
 		if _current_story_actor:
 			_current_story_actor.skip_dialog()

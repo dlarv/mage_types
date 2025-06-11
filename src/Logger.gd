@@ -1,8 +1,7 @@
 @tool
 extends Node
 
-enum LogType { BATTLE, PUZZLE, WORLD }
-
+@export var save_threshold_secs := 100
 @export var print_logs := true
 @export var print_logs_on_save := true
 @export var clear_on_save := true
@@ -10,73 +9,90 @@ enum LogType { BATTLE, PUZZLE, WORLD }
 var battle_logs := []
 var puzzle_logs := []
 var world_logs := []
+var logs := []
 
-func save_log(type: LogType) -> void:
+var _root_path: String
+var _file_name: String
+var _time_til_save := 0.0
+
+func _enter_tree() -> void:
+	# Check if debug or standalone
+	if OS.has_feature("standalone"):
+		_root_path = "user://logs/"
+		DirAccess.open("user://").make_dir_recursive("logs")
+	else:
+		_root_path = "res://logs"
+	
+	var baseName := Time.get_date_string_from_system().replace(":", "_")
+
+	var root := DirAccess.open(_root_path)
+	if not root:
+		push_error("Could not open log dir %s" % _root_path)
+		return
+
+	# Get game session id
+	var files := root.get_files() 
+	# 1 indexed bc users might have to find these.
+	var id := 1
+	while true:
+		if "%s__%d.log" % [baseName, id] in files:
+			id += 1
+		else:
+			break
+	_file_name = "%s__%d.log" % [baseName, id] 
+	FileAccess.open("%s/%s" % [_root_path, _file_name], FileAccess.WRITE)
+
+
+func _exit_tree() -> void:
+	save_log()
+
+
+func _process(delta: float) -> void:
+	_time_til_save += delta
+	if _time_til_save > save_threshold_secs:
+		save_log()
+		_time_til_save = 0
+
+
+func save_log() -> void:
 	var prefix := "res"
 	if OS.has_feature("standalone"):
 		prefix = "user"
+		#print_logs = false
 
-	var path: String
-	var output: String
-	var logName := Time.get_datetime_string_from_system().replace(":", "_")
-	var logs: Array
+	var header :="[[WROTE LOG]]@%s" % Time.get_time_string_from_system()
+	var path := "%s/%s" % [_root_path, _file_name]
+	var output := header + "\n" + "\n".join(logs)
+	logs = []
 
-	match type:
-		LogType.BATTLE:
-			path = "%s://logs/battles/%s.txt" % [prefix, logName]
-			output = "\n".join(battle_logs)
-			logs = battle_logs
-			if clear_on_save:
-				battle_logs = []
-		LogType.PUZZLE:
-			path = "%s://logs/puzzles/%s.txt" % [prefix, logName]
-			output = "\n".join(puzzle_logs)
-			logs = puzzle_logs
-			if clear_on_save:
-				puzzle_logs = []
-		LogType.WORLD:
-			path = "%s://logs/world/%s.txt" % [prefix, logName]
-			output = "\n".join(world_logs)
-			logs = world_logs
-			if clear_on_save:
-				world_logs = []
-
-	var file := FileAccess.open(path, FileAccess.WRITE)
+	var file := FileAccess.open(path, FileAccess.READ_WRITE)
+	file.seek_end()
 	file.store_string(output)
 
+	print(header)
 	if print_logs_on_save:
 		print(output)
 		
 
-func append_log(type: LogType, msg: Variant) -> void:
+# First arg is deprecated.
+func append_log(msg: Variant) -> void:
 	if Engine.is_editor_hint(): return
-	var logs: Array
-	match type:
-		LogType.BATTLE:
-			logs = battle_logs
-		LogType.PUZZLE:
-			logs = puzzle_logs
-		LogType.WORLD:
-			logs = world_logs
-	
-	if msg is String:
-		logs.append(msg)
-	elif msg is Array:
-		logs.append_array(msg)
-	else:
-		logs.append(str(msg))
-	
+	logs.append(msg)
 	if print_logs:
 		print(msg)
 	
 
 func append_battle_log(msg: Variant) -> void:
-	append_log(LogType.BATTLE, msg)
+	append_log("[BATTLE]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
+
+
+func append_battle_ai_log(msg: Variant) -> void:
+	append_log("[BATTLE AI]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
 
 
 func append_puzzle_log(msg: Variant) -> void:
-	append_log(LogType.PUZZLE, msg)
+	append_log("[PUZZLE]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
 
 
 func append_world_log(msg: Variant) -> void:
-	append_log(LogType.WORLD, msg)
+	append_log("[WORLD]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
