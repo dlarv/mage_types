@@ -10,11 +10,10 @@ func perform_action() -> void:
 
 func action_to_perform(body: Node3D, element: ElementalType) -> void:
 	body.set_stasis()
+	body.stasis_ended.connect(_remove_from_queue.bind(body))
 
 	if not body.in_stasis:
-		var index := _stasis_queue.find(body)
-		if index != -1:
-			_stasis_queue.remove_at(index)
+		_remove_from_queue(body)
 		return
 
 	if len(_stasis_queue) == max_stasis_objects:
@@ -40,3 +39,9 @@ func deserialize(data: Dictionary) -> void:
 	_stasis_queue = []
 	for obj in data["queue"]:
 		_stasis_queue.append(get_node(obj))
+
+func _remove_from_queue(body) -> void:
+	body.stasis_ended.disconnect(_remove_from_queue)
+	var index := _stasis_queue.find(body)
+	if index != -1:
+		_stasis_queue.remove_at(index)
