@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=68 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -10,15 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="11_bmr1f"]
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="11_xaq2c"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="11_yj7ox"]
-[ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="12_55e1h"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="13_cr8wd"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="13_wmj0o"]
 [ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="15_f7s2o"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://de1dw2r8mhg2i" path="res://src/overworld/puzzle_blocks/logic_gates/and_gate.tscn" id="17_7vsee"]
-[ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="17_s7vy1"]
 [ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="18_5iry2"]
-[ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="18_jg23q"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://eqenv56ihr4q" path="res://src/overworld/puzzle_blocks/logic_gates/mapper_gate.tscn" id="19_x5a2c"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
@@ -90,6 +87,9 @@ size = Vector3(1, 1, 10)
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6u4r"]
+size = Vector3(1, 1, 11.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_th7j2"]
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwy17"]
@@ -132,13 +132,13 @@ size = Vector3(15, 25, 30)
 size = Vector3(62, 25, 33)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kvsv4"]
-size = Vector3(50, 29, 58)
+size = Vector3(83, 29, 128)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41131"]
 size = Vector3(293, 161, 301)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbpf0"]
-size = Vector3(164, 29, 211)
+size = Vector3(164, 29, 119)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_letbw"]
 size = Vector3(71, 16, 74)
@@ -147,7 +147,10 @@ size = Vector3(71, 16, 74)
 size = Vector3(43, 14, 56)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_un0p4"]
-size = Vector3(84, 20, 75)
+size = Vector3(84, 20, 43)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqf3b"]
+size = Vector3(75, 20, 46)
 
 [node name="BluePurple" type="Node3D"]
 
@@ -459,46 +462,67 @@ shape = SubResource("BoxShape3D_7iwwk")
 [node name="Marker3D" type="Marker3D" parent="DungeonToCave1/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="ZigguratToDungeon" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+[node name="ZigguratToCave2" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -277, 0, -304)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ZigguratToDungeon"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZigguratToCave2"]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -30.3, 3.8, 70.9)
 shape = SubResource("BoxShape3D_v0v3q")
 
-[node name="Marker3D" type="Marker3D" parent="ZigguratToDungeon/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="ZigguratToCave2/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="ZigguratToDungeon"]
-transform = Transform3D(1, 0, 1.63425e-13, 0, 1, 0, -1.63425e-13, 0, 1, 31.3, 3.5, -27.6)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ZigguratToCave2"]
+transform = Transform3D(1, 0, 1.63425e-13, 0, 1, 0, -1.63425e-13, 0, 1, 31.3, 3.5, 11.4)
 shape = SubResource("BoxShape3D_x6u4r")
 
-[node name="Marker3D" type="Marker3D" parent="ZigguratToDungeon/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="ZigguratToCave2/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="ZigguratToDungeon2" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+[node name="Cave2ToDungeon" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -277, 0, -304)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cave2ToDungeon"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 92, 3.8, -16.1)
+shape = SubResource("BoxShape3D_th7j2")
+
+[node name="Marker3D" type="Marker3D" parent="Cave2ToDungeon/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cave2ToDungeon"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 91.6, 3.5, -55.9)
+shape = SubResource("BoxShape3D_x6u4r")
+
+[node name="Marker3D" type="Marker3D" parent="Cave2ToDungeon/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="DungeonToZiggurat" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 0, -261)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ZigguratToDungeon2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonToZiggurat"]
 transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 2.70001, 3.8, -9.10001)
 shape = SubResource("BoxShape3D_mwy17")
 
-[node name="Marker3D" type="Marker3D" parent="ZigguratToDungeon2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="DungeonToZiggurat/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="ZigguratToDungeon2"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DungeonToZiggurat"]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 73.2, 7.2, -94.2)
 shape = SubResource("BoxShape3D_wm0wg")
 
-[node name="Marker3D" type="Marker3D" parent="ZigguratToDungeon2/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="DungeonToZiggurat/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="HouseChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
@@ -653,7 +677,7 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("../BlueEnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CaveChunk1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 9.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9.5, -34.5)
 shape = SubResource("BoxShape3D_kvsv4")
 
 [node name="Chest" parent="CaveChunk1" instance=ExtResource("8_flv43")]
@@ -679,7 +703,7 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("../BlueEnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 9.5, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 9.5, -35)
 shape = SubResource("BoxShape3D_bbpf0")
 
 [node name="Gate" parent="DungeonChunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
@@ -1277,52 +1301,21 @@ script = ExtResource("11_xaq2c")
 chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonChunk/Chamber3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 9, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 9, -1)
 shape = SubResource("BoxShape3D_un0p4")
 
 [node name="Chunk" type="Node3D" parent="DungeonChunk/Chamber3"]
 
-[node name="Gate_S" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("4_5og7y")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -34.8, 7, 18.8)
+[node name="Chamber4" type="Area3D" parent="DungeonChunk" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, 0)
+script = ExtResource("11_xaq2c")
+chunk = NodePath("Chunk")
 
-[node name="Gate_N" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("4_5og7y")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -31.8, 7, -28.2)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonChunk/Chamber4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 9, -43.5)
+shape = SubResource("BoxShape3D_rqf3b")
 
-[node name="Emitter" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("11_yj7ox")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -45.4, 8, 4)
-is_on = false
-_element = "blue"
-
-[node name="DraggableMirror" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("17_s7vy1")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -13, 6.8, 13)
-_element = "orange"
-
-[node name="DraggableMirror2" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("17_s7vy1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27, 6.8, 13)
-_element = "green"
-
-[node name="LaserReceiver" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("13_wmj0o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 8.1, -22.6)
-collision_layer = 5
-
-[node name="RotatableMirror" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("18_jg23q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, 4)
-_element = "red"
-
-[node name="RotatableMirror2" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("18_jg23q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 7, -2)
-_element = "magenta"
-
-[node name="LaserReceiver2" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("13_wmj0o")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45.1, 8, -2)
-collision_layer = 5
-_element = "blue"
-
-[node name="Mirror" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("12_55e1h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 7, -8)
-
-[node name="Mirror2" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("12_55e1h")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38, 7, -17)
+[node name="Chunk" type="Node3D" parent="DungeonChunk/Chamber4"]
 
 [connection signal="invalid_off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="stop"]
 [connection signal="off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="stop"]
