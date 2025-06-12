@@ -16,6 +16,8 @@ var _file_name: String
 var _time_til_save := 0.0
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
+
 	# Check if debug or standalone
 	if OS.has_feature("standalone"):
 		_root_path = "user://logs/"
@@ -44,10 +46,12 @@ func _enter_tree() -> void:
 
 
 func _exit_tree() -> void:
+	if Engine.is_editor_hint(): return
 	save_log()
 
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	_time_til_save += delta
 	if _time_til_save > save_threshold_secs:
 		save_log()
