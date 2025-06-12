@@ -16,24 +16,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rjr63")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 current_tab = 0
 
-[node name="Laser Sequence Calc" parent="TabContainer" instance=ExtResource("2_xj8da")]
+[node name="Laser Sequence Calc" parent="ScrollContainer/TabContainer" instance=ExtResource("2_xj8da")]
 layout_mode = 2
 
-[node name="Mirror Laser Calc" parent="TabContainer" instance=ExtResource("3_13nkq")]
+[node name="Mirror Laser Calc" parent="ScrollContainer/TabContainer" instance=ExtResource("3_13nkq")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Flow Chart" parent="TabContainer" instance=ExtResource("4_p4qjo")]
+[node name="Flow Chart" parent="ScrollContainer/TabContainer" instance=ExtResource("4_p4qjo")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
