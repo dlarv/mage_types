@@ -720,7 +720,7 @@ is_on = false
 
 [node name="Chamber1Geyser4" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 12)
-is_on = false
+is_blooming = true
 
 [node name="Chamber3Geyser" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8, 7, -11.4)
