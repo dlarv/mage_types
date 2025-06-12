@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=69 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://ck6cq5qaxuf80" path="res://src/overworld/puzzle_blocks/bridges/pillar.tscn" id="24_vuo70"]
 [ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="25_ey1m4"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="26_iaggr"]
-[ext_resource type="PackedScene" uid="uid://c8x2e1fn77n3a" path="res://src/overworld/puzzle_blocks/stasis_target.tscn" id="26_yplap"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="27_uvxhd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
@@ -143,13 +142,13 @@ size = Vector3(293, 161, 301)
 size = Vector3(164, 29, 119)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_letbw"]
-size = Vector3(71, 16, 74)
+size = Vector3(134, 16, 74)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfh1f"]
 size = Vector3(43, 14, 56)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_un0p4"]
-size = Vector3(84, 20, 43)
+size = Vector3(140, 20, 52)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqf3b"]
 size = Vector3(75, 20, 56)
@@ -706,9 +705,41 @@ chunk = NodePath("../BlueEnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 9.5, -35)
 shape = SubResource("BoxShape3D_bbpf0")
 
+[node name="Chamber1Geyser" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, -1)
+is_on = false
+
+[node name="Chamber1Geyser2" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 2)
+is_on = false
+
+[node name="Chamber1Geyser3" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, -4)
+is_on = false
+
+[node name="Chamber1Geyser4" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 12)
+is_on = false
+
+[node name="Chamber3Geyser" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8, 7, -11.4)
+is_on = false
+
+[node name="Chamber3PressurePlate" parent="DungeonChunk" instance=ExtResource("16_61fdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 9.94163, 3.60001)
+_element = "red"
+
+[node name="Chamber3MagiclayDisk" parent="DungeonChunk" instance=ExtResource("27_uvxhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 10.5, -4)
+_element = "blue"
+
+[node name="Chamber4Geyser" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.8, 6.8, -23.0671)
+is_on = false
+
 [node name="Gate" parent="DungeonChunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 22, 3, -26)
-locks = [NodePath("../Chamber1/Chunk/PressurePlate")]
+locks = [NodePath("../Chamber3PressurePlate")]
 
 [node name="Chamber1" type="Area3D" parent="DungeonChunk" node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -717,7 +748,7 @@ chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonChunk/Chamber1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 7.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 7.5, -0.5)
 shape = SubResource("BoxShape3D_letbw")
 
 [node name="Chunk" type="Node3D" parent="DungeonChunk/Chamber1"]
@@ -733,18 +764,6 @@ _element = "magenta"
 [node name="Reset" parent="DungeonChunk/Chamber1/Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("13_cr8wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3.51784, 17)
 reset_positions_of = [NodePath("../MagiclayDisk")]
-
-[node name="Geyser" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, -2)
-_element = "red"
-
-[node name="Geyser2" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 1)
-_element = "red"
-
-[node name="Geyser3" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, -5)
-_element = "red"
 
 [node name="Pillar" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("24_vuo70")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 3, -9)
@@ -901,10 +920,6 @@ _element = "blue"
 [node name="Emitter6" parent="DungeonChunk/Chamber1/Chunk" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 3)
 _element = "red"
-
-[node name="Geyser" parent="DungeonChunk/Chamber1" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 11)
-is_on = false
 
 [node name="PressurePlate" parent="DungeonChunk/Chamber1" instance=ExtResource("16_61fdq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, 11)
@@ -1294,25 +1309,17 @@ chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonChunk/Chamber3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 9, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 9, -5.5)
 shape = SubResource("BoxShape3D_un0p4")
 
 [node name="Chunk" type="Node3D" parent="DungeonChunk/Chamber3"]
 
+[node name="GeyserPressurePlate" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("16_61fdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 10, -12)
+
 [node name="Reset" parent="DungeonChunk/Chamber3/Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("13_cr8wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 7.31784, 0)
-reset_positions_of = [NodePath("../MagiclayDisk")]
-
-[node name="StasisTarget" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("26_yplap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 10.1, -11)
-
-[node name="Geyser" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 7, -11.4)
-is_on = false
-
-[node name="MagiclayDisk" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("27_uvxhd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 10.5, -4)
-_element = "blue"
+reset_positions_of = [NodePath("../../../Chamber3MagiclayDisk")]
 
 [node name="Pillar" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("24_vuo70")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 6.7, -4.39999)
@@ -1475,10 +1482,6 @@ transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, -32, 7
 [node name="BridgeCap13" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("15_f7s2o")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -34, 7, 3.60001)
 
-[node name="PressurePlate" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("16_61fdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 10, 3.60001)
-_element = "red"
-
 [node name="Chamber4" type="Area3D" parent="DungeonChunk" node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -53.4)
 script = ExtResource("11_xaq2c")
@@ -1492,7 +1495,15 @@ shape = SubResource("BoxShape3D_rqf3b")
 [node name="Chunk" type="Node3D" parent="DungeonChunk/Chamber4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.1329)
 
+[node name="AndGate" parent="DungeonChunk/Chamber4/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("17_7vsee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 7, -14.7329)
+locks = [NodePath("../Path_N/PressurePlate"), NodePath("../Path_S/PressurePlate")]
+
 [node name="Path_N" type="Node3D" parent="DungeonChunk/Chamber4/Chunk"]
+
+[node name="PressurePlate" parent="DungeonChunk/Chamber4/Chunk/Path_N" instance=ExtResource("16_61fdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 6.8, -52.0329)
+_element = "blue"
 
 [node name="Reset" parent="DungeonChunk/Chamber4/Chunk/Path_N" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("13_cr8wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 7.31784, -52)
@@ -1501,10 +1512,6 @@ reset_positions_of = [NodePath("../MagiclayDisk")]
 [node name="MagiclayDisk" parent="DungeonChunk/Chamber4/Chunk/Path_N" instance=ExtResource("27_uvxhd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 7, -52)
 _element = "red"
-
-[node name="Geyser" parent="DungeonChunk/Chamber4/Chunk/Path_N" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8, 7, -11.8)
-is_on = false
 
 [node name="Emitter4" parent="DungeonChunk/Chamber4/Chunk/Path_N" instance=ExtResource("11_yj7ox")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -34.8, 7.5, -51.6)
@@ -1532,6 +1539,10 @@ _element = "magenta"
 
 [node name="Path_S" type="Node3D" parent="DungeonChunk/Chamber4/Chunk"]
 
+[node name="PressurePlate" parent="DungeonChunk/Chamber4/Chunk/Path_S" instance=ExtResource("16_61fdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 6.8, -31.7329)
+_element = "red"
+
 [node name="Reset" parent="DungeonChunk/Chamber4/Chunk/Path_S" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("13_cr8wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 7.31784, -31.8)
 reset_positions_of = [NodePath("../MagiclayDisk")]
@@ -1541,7 +1552,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 7, -31.8)
 _element = "blue"
 
 [node name="Emitter" parent="DungeonChunk/Chamber4/Chunk/Path_S" instance=ExtResource("11_yj7ox")]
-transform = Transform3D(1, -1.98419e-09, -1.15684e-15, 0, -4.37114e-08, -1, 1.98419e-09, 1, -4.37114e-08, -34.8, 7.5, -31.3)
+transform = Transform3D(-1, -8.54386e-08, 4.97821e-15, 0, -4.37114e-08, -1, 8.54386e-08, -1, 4.37114e-08, -34.8, 7.5, -32.3)
 _element = "purple"
 
 [node name="Emitter2" parent="DungeonChunk/Chamber4/Chunk/Path_S" instance=ExtResource("11_yj7ox")]
@@ -1561,20 +1572,15 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 _element = "cyan"
 
 [node name="Emitter12" parent="DungeonChunk/Chamber4/Chunk/Path_S" instance=ExtResource("11_yj7ox")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -34.8, 7.5, -32.3)
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 3.10588e-22, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -34.8, 7.5, -31.3)
 _element = "yellow"
 
-[node name="PressurePlate" parent="DungeonChunk" instance=ExtResource("16_61fdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 6.8, -43)
-_element = "red"
-
-[node name="PressurePlate2" parent="DungeonChunk" instance=ExtResource("16_61fdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 6.8, -63.3)
-_element = "blue"
-
-[connection signal="invalid_off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="stop"]
-[connection signal="off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="stop"]
-[connection signal="on" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1/Geyser" method="start"]
+[connection signal="on" from="DungeonChunk/Chamber1/Chunk/PressurePlate" to="DungeonChunk/Chamber1Geyser" method="start"]
+[connection signal="on" from="DungeonChunk/Chamber1/Chunk/PressurePlate" to="DungeonChunk/Chamber1Geyser2" method="start"]
+[connection signal="on" from="DungeonChunk/Chamber1/Chunk/PressurePlate" to="DungeonChunk/Chamber1Geyser3" method="start"]
+[connection signal="invalid_off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1Geyser4" method="stop"]
+[connection signal="off" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1Geyser4" method="stop"]
+[connection signal="on" from="DungeonChunk/Chamber1/PressurePlate" to="DungeonChunk/Chamber1Geyser4" method="start"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SE/Rails1" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SE/Rails2" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay1" to="DungeonChunk/Chamber2/SW/Rails1" method="slide"]
@@ -1595,7 +1601,8 @@ _element = "blue"
 [connection signal="on" from="DungeonChunk/Chamber2/Relay3" to="DungeonChunk/Chamber2/SW/Rails3" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay3" to="DungeonChunk/Chamber2/NW/Rails3" method="slide"]
 [connection signal="on" from="DungeonChunk/Chamber2/Relay3" to="DungeonChunk/Chamber2/NE/Rails3" method="slide"]
-[connection signal="on" from="DungeonChunk/Chamber3/Chunk/StasisTarget" to="DungeonChunk/Chamber3/Chunk/Geyser" method="start"]
+[connection signal="on" from="DungeonChunk/Chamber3/Chunk/GeyserPressurePlate" to="DungeonChunk/Chamber3Geyser" method="start"]
+[connection signal="on" from="DungeonChunk/Chamber4/Chunk/AndGate" to="DungeonChunk/Chamber4Geyser" method="start"]
 
 [editable path="DungeonChunk/Chamber2/SE/Rails1"]
 [editable path="DungeonChunk/Chamber2/SE/Rails2"]
