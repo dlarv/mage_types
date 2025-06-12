@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=67 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -78,17 +78,11 @@ size = Vector3(1, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cd8a"]
 size = Vector3(1, 1, 2.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x0xj6"]
-size = Vector3(1, 1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7iwwk"]
-size = Vector3(1, 1, 10)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0v3q"]
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6u4r"]
-size = Vector3(1, 1, 11.2)
+size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_th7j2"]
 size = Vector3(1, 1, 10)
@@ -303,11 +297,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="."]
+[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 0.8, 158.1)
@@ -441,27 +436,6 @@ shape = SubResource("BoxShape3D_2cd8a")
 [node name="Marker3D" type="Marker3D" parent="Hall6ToHotelRooms2/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
 
-[node name="DungeonToCave1" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195, 0, -253)
-collision_layer = 32
-collision_mask = 32
-script = ExtResource("2_bteo7")
-point_2 = NodePath("CollisionShape3D2/Marker3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonToCave1"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.900009, 3.8, 7.89999)
-shape = SubResource("BoxShape3D_x0xj6")
-
-[node name="Marker3D" type="Marker3D" parent="DungeonToCave1/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="DungeonToCave1"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.199997, 3.5, -9.60001)
-shape = SubResource("BoxShape3D_7iwwk")
-
-[node name="Marker3D" type="Marker3D" parent="DungeonToCave1/CollisionShape3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
-
 [node name="ZigguratToCave2" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -277, 0, -304)
 collision_layer = 32
@@ -502,6 +476,27 @@ transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 91.6, 
 shape = SubResource("BoxShape3D_x6u4r")
 
 [node name="Marker3D" type="Marker3D" parent="Cave2ToDungeon/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="Cave2ToCave1" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -193, 0, -255)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cave2ToCave1"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.10001, 3.8, 9.89999)
+shape = SubResource("BoxShape3D_th7j2")
+
+[node name="Marker3D" type="Marker3D" parent="Cave2ToCave1/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cave2ToCave1"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -2, 3.5, -6.69998)
+shape = SubResource("BoxShape3D_x6u4r")
+
+[node name="Marker3D" type="Marker3D" parent="Cave2ToCave1/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="DungeonToZiggurat" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
