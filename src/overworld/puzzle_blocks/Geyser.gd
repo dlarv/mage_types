@@ -63,6 +63,10 @@ func _enter_tree():
 	blocker_hitbox.shape = BoxShape3D.new()
 	blocker_hitbox.shape.size = Vector3(1.5, 0.5, 1.5)
 
+	if not Engine.is_editor_hint() and is_on:
+		$GPUParticles3D.emitting = true
+
+
 func _ready() -> void:
 	super._ready()
 	if is_blocking:
