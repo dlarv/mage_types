@@ -51,8 +51,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body:Node3D) -> void:
 	if disabled: return
-	if not body.is_in_group("player") and body.draggable != self: return
-
+	if not body.is_in_group("player"): return
+	# If playerr is already dragging another object, ignore.
+	if body.draggable != null and body.draggable != get_parent(): return
 	player = body
 	_label.show()
 
