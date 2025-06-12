@@ -28,6 +28,8 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		bodyName = "Player"
 		bodyElement = "n/a"
+	elif not body is MagiClay:
+		return
 	else:
 		bodyName = body.puzzle_name
 		bodyElement = str(body.element)
