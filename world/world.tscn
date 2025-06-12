@@ -117,7 +117,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-185, -14, -419)]
+"values": [Vector3(-185, -19, -419)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -130,6 +130,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-185, 0.6, -424)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Blue/Chamber2Gate:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_kmcq3"]
@@ -145,7 +157,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-185, -14, -419), Vector3(-185, 3, -419)]
+"values": [Vector3(-185, -19, -419), Vector3(-185, 3, -419)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blue/Chamber2Gate:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_50av1"]
@@ -525,7 +549,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -7, -0.5)
 shape = SubResource("BoxShape3D_sw2bq")
 
 [node name="Chamber2Gate" parent="Overworld/Blue" node_paths=PackedStringArray("locks") instance=ExtResource("32_0pnra")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -185, -14, -419)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -185, -19, -419)
+visible = false
 locks = [NodePath("../DungeonChunk/Chamber2/Relay3")]
 permanent = true
 
