@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=68 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -127,7 +127,10 @@ size = Vector3(15, 25, 30)
 size = Vector3(62, 25, 33)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kvsv4"]
-size = Vector3(83, 29, 128)
+size = Vector3(83, 29, 54)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42ppw"]
+size = Vector3(74, 29, 63)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41131"]
 size = Vector3(293, 161, 301)
@@ -672,11 +675,20 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("../BlueEnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CaveChunk1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9.5, -34.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9.5, 2.5)
 shape = SubResource("BoxShape3D_kvsv4")
 
 [node name="Chest" parent="CaveChunk1" instance=ExtResource("8_flv43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3, -1)
+
+[node name="CaveChunk2" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190, 0, -224)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("../BlueEnv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CaveChunk2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 9.5, -67)
+shape = SubResource("BoxShape3D_42ppw")
 
 [node name="ZigguratChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -409, 0, -129)
