@@ -94,7 +94,7 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 		body.add_force(transform.basis.y * strength)
 		_player = body
 
-	
+
 func _on_stream_top_hit_box_entered(body: Node3D) -> void:
 	if body is RigidBody3D:
 		# If body is falling back down from the height of the geyser, slow it down faster.
@@ -115,6 +115,7 @@ func _on_stream_hit_box_exited(body: Node3D) -> void:
 		_player = null
 		_in_top_hitbox = false
 
+
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if not super.set_element(e, randVal, force): return false
 
@@ -122,7 +123,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 		_set_blocking(true)
 	else:
 		_set_blocking(false)
-	
+
 	_animate_spout_size(size * _size_mod)
 
 	return true
@@ -138,17 +139,21 @@ func set_stasis(val=null) -> void:
 		$AnimationPlayer.play("starting")
 		start()
 
+
 #Override
 func stop(val: Variant=null) -> void:
 	if in_stasis: return
+	if Engine.is_editor_hint(): return
 	super.stop()
 	$AnimationPlayer.play("pausing")
 	_set_blocking(false)
+
 
 #Override
 func start(val: Variant=null) -> void:
 	if in_stasis: return
 	super.start()
+	if Engine.is_editor_hint(): return
 	$AnimationPlayer.play("starting")
 	if is_blocking:
 		await get_tree().create_timer(0.1).timeout
@@ -156,8 +161,10 @@ func start(val: Variant=null) -> void:
 	else:
 		_set_blocking(false)
 
+
 func _set_blocking(val: bool) -> void:
 	$PlayerBlocker.set_collision_layer_value(6, val)
+
 
 func _set_spout_size(val: float) -> void:
 	top_hitbox.position.y = val
@@ -167,6 +174,7 @@ func _set_spout_size(val: float) -> void:
 	if horizontal:
 		blocker_hitbox.shape.size.y = val
 		blocker_hitbox.position.y = val / 2
+
 
 func _animate_spout_size(val: float) -> void:
 	top_hitbox.position.y = val
