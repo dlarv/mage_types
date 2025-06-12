@@ -1305,6 +1305,9 @@ shape = SubResource("BoxShape3D_un0p4")
 
 [node name="Chunk" type="Node3D" parent="DungeonChunk/Chamber3"]
 
+[node name="Pillar" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("24_vuo70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.7, -8)
+
 [node name="Chamber4" type="Area3D" parent="DungeonChunk" node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, 0)
 script = ExtResource("11_xaq2c")
