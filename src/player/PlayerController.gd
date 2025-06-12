@@ -21,6 +21,7 @@ var in_control := true
 var outside_forces := Vector3.ZERO
 
 var _god_mode := false
+var _god_mode_speed_mod := 3.0
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
 
@@ -88,7 +89,7 @@ func _move_god_mode(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
-	var speedMod := 2.0
+	var speedMod := _god_mode_speed_mod
 	if Input.is_key_pressed(KEY_CTRL):
 		speedMod *= 3
 
@@ -97,7 +98,7 @@ func _move_god_mode(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SPACE):
 		velocity.y += walk_speed / 2 * speedMod * delta
 	elif Input.is_key_pressed(KEY_SHIFT):
-		velocity.y -= walk_speed * delta
+		velocity.y -= walk_speed * delta * speedMod
 
 	move_and_slide()
 
