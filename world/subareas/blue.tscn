@@ -1317,6 +1317,7 @@ shape = SubResource("BoxShape3D_un0p4")
 
 [node name="GeyserPressurePlate" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("16_61fdq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 10, -12)
+_element = "blue"
 
 [node name="Reset" parent="DungeonChunk/Chamber3/Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("13_cr8wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 7.31784, 0)
@@ -1482,6 +1483,10 @@ transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, -32, 7
 
 [node name="BridgeCap13" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("15_f7s2o")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -34, 7, 3.60001)
+
+[node name="MagiclayRock" parent="DungeonChunk/Chamber3/Chunk" instance=ExtResource("26_iaggr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 10, -12)
+_element = "blue"
 
 [node name="Chamber4" type="Area3D" parent="DungeonChunk" node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -53.4)
