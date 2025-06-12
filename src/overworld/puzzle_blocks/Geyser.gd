@@ -132,6 +132,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 # Override
 func set_stasis(val=null) -> void:
 	super.set_stasis(val)
+	if not is_on: return
 	if in_stasis:
 		$AnimationPlayer.play("pausing")
 		_set_blocking(false)
