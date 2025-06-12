@@ -7,6 +7,7 @@ var _positions := []
 
 func _ready() -> void:
 	for obj in reset_positions_of:
+		if not obj: continue
 		_positions.append(obj.global_position)
 
 
