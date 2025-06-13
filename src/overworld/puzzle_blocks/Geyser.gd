@@ -11,7 +11,7 @@ extends PuzzleBlock
 	set(val):
 		base_strength = val
 		# dot ~= 1, when geyser is pointing upward.
-		_dot = Vector3.UP.dot(transform.basis.y)
+		_dot = 1.0#Vector3.UP.dot(transform.basis.y)
 
 var _size_mod: float:
 	get:
@@ -29,7 +29,7 @@ var _size_mod: float:
 var _dot := 1.0
 var strength: float:
 	get:
-		return (base_strength + 12) * _dot * 2
+		return (base_strength + 12.0) * _dot * 2.0
 
 var top_hitbox: CollisionShape3D:
 	get:
@@ -86,13 +86,17 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 		# If body is falling back down from the height of the geyser, slow it down faster.
 		if body.linear_velocity.y < 0:
 			body.linear_velocity /= 2
-		body.add_constant_force(transform.basis.y * strength)
+		var s := transform.basis.y * strength
+		body.add_constant_force(s)
+		Logger.append_puzzle_log("Geyser(%s) spout is pushing PuzzleBlock(%s) with Strength(%.2f, %.2f, %.2f)" 
+				% [puzzle_name, body.puzzle_name, s.x, s.y, s.z])
 	elif body is CharacterBody3D:
 		if body.velocity.y < 0:
 			body.velocity.y /= body._get_gravity()
 
 		body.add_force(transform.basis.y * strength)
 		_player = body
+		Logger.append_puzzle_log("Geyser(%s) spout was entered by Player" % puzzle_name)
 
 
 func _on_stream_top_hit_box_entered(body: Node3D) -> void:
@@ -111,9 +115,13 @@ func _on_stream_top_hit_box_entered(body: Node3D) -> void:
 func _on_stream_hit_box_exited(body: Node3D) -> void:
 	if body is RigidBody3D:
 		body.constant_force = Vector3.ZERO
+		Logger.append_puzzle_log("Geyser(%s) spout was exited by PuzzleBlock(%s)" 
+				% [puzzle_name, body.puzzle_name])
+		pass
 	elif body is CharacterBody3D:
 		_player = null
 		_in_top_hitbox = false
+		Logger.append_puzzle_log("Geyser(%s) spout was exited by Player" % puzzle_name)
 
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:

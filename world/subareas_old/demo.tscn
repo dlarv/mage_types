@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bswtxi8kjn7h0"]
+[gd_scene load_steps=60 format=3 uid="uid://bswtxi8kjn7h0"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_x5fo8"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_5sixp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_oalpa"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_ox27g"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="9_qicvs"]
+[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="10_6jaao"]
 [ext_resource type="PackedScene" uid="uid://4ft3p5xs6uk5" path="res://world/subareas_old/beach.tscn" id="10_bysgw"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="10_wgmfh"]
 [ext_resource type="PackedScene" uid="uid://cy8e0cndhkub5" path="res://world/subareas_old/tidepools.tscn" id="12_hj0aa"]
@@ -319,6 +320,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, 0)
 run_speed = 900.0
 drag_speed = 400.0
+battle_actor = ExtResource("10_6jaao")
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 4)
