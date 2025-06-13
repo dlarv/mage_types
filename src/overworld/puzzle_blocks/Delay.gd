@@ -21,6 +21,7 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 	if not _opened_locks.get(block):
 		_opened_locks[block] = true
 		Logger.append_puzzle_log("Delay(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
+
 	for lock in _opened_locks.values():
 		if not lock:
 			return
@@ -34,6 +35,7 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 		on.emit(self)
 	else:
 		Logger.append_puzzle_log("Delay(%s) could not open." % [puzzle_name])
+		off.emit(self)
 
 
 func _on_lock_closed(block: PuzzleBlock) -> void:

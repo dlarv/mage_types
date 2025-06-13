@@ -19,8 +19,8 @@ func _ready() -> void:
 func _on_interactable_interacted(obj: Node3D) -> void:
 	is_on = not is_on
 	if is_on:
-		on.emit(self)
 		_mat.albedo_color = Color.GREEN
+		on.emit(self)
 	else:
 		_mat.albedo_color = Color.RED
 		off.emit(self)
