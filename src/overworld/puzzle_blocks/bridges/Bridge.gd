@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 
 @export var shutoff_upon_trigger := true
