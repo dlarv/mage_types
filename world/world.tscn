@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
 [ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/demo/bosses/boss_3.tscn" id="8_bwct4"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
-[ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue.tscn" id="10_5iu1q"]
+[ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
 [ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="11_lpih5"]
 [ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="11_qfng2"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="11_tyily"]
@@ -551,7 +551,7 @@ shape = SubResource("BoxShape3D_sw2bq")
 [node name="Chamber2Gate" parent="Overworld/Blue" node_paths=PackedStringArray("locks") instance=ExtResource("32_0pnra")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -185, -19, -419)
 visible = false
-locks = [NodePath("../DungeonChunk/Chamber2/Relay3")]
+locks = [null]
 permanent = true
 
 [node name="DoorBlocker_1" type="MeshInstance3D" parent="Overworld/Blue"]

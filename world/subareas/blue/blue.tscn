@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=62 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -107,7 +107,7 @@ size = Vector3(96, 25, 58)
 size = Vector3(18, 25, 42)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7kj6"]
-size = Vector3(24, 25, 50)
+size = Vector3(139, 25, 138)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_maxj3"]
 size = Vector3(19, 25, 39)
@@ -124,6 +124,12 @@ size = Vector3(46, 25, 33)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dpk1r"]
 size = Vector3(15, 25, 30)
 
+[sub_resource type="BoxMesh" id="BoxMesh_41gmd"]
+size = Vector3(10, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d08kw"]
+size = Vector3(10, 5, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_npiad"]
 size = Vector3(62, 25, 33)
 
@@ -134,7 +140,7 @@ size = Vector3(83, 29, 54)
 size = Vector3(74, 29, 63)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41131"]
-size = Vector3(293, 161, 301)
+size = Vector3(307, 161, 301)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbpf0"]
 size = Vector3(164, 29, 119)
@@ -202,7 +208,7 @@ shape = SubResource("BoxShape3D_5gdi0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cave1ToZiggurat"]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -31.2, 1.8, 81.15)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -112.2, 1.8, -82.85)
 shape = SubResource("BoxShape3D_gpxof")
 
 [node name="Marker3D" type="Marker3D" parent="Cave1ToZiggurat/CollisionShape3D2"]
@@ -830,6 +836,44 @@ shape = SubResource("BoxShape3D_2cd8a")
 [node name="Marker3D" type="Marker3D" parent="Hall6ToHotelRooms2/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
 
+[node name="HotelRoomToDungeon_N" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.9, 0, -170.1)
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRoomToDungeon_N"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.4, -0.0500031)
+shape = SubResource("BoxShape3D_2cd8a")
+
+[node name="Marker3D" type="Marker3D" parent="HotelRoomToDungeon_N/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HotelRoomToDungeon_N"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15.4, 7.2, -3.35001)
+shape = SubResource("BoxShape3D_2cd8a")
+
+[node name="Marker3D" type="Marker3D" parent="HotelRoomToDungeon_N/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
+
+[node name="HotelRoomToDungeon_S" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.9, 0, -148.1)
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRoomToDungeon_S"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.4, -0.0500031)
+shape = SubResource("BoxShape3D_2cd8a")
+
+[node name="Marker3D" type="Marker3D" parent="HotelRoomToDungeon_S/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HotelRoomToDungeon_S"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15.4, 3.5, 91.05)
+shape = SubResource("BoxShape3D_2cd8a")
+
+[node name="Marker3D" type="Marker3D" parent="HotelRoomToDungeon_S/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
+
 [node name="ZigguratToCave2" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -277, 0, -304)
 collision_layer = 32
@@ -838,7 +882,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZigguratToCave2"]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -30.3, 3.8, 70.9)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -112.3, 3.8, -92.1)
 shape = SubResource("BoxShape3D_v0v3q")
 
 [node name="Marker3D" type="Marker3D" parent="ZigguratToCave2/CollisionShape3D"]
@@ -901,7 +945,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonToZiggurat"]
-transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 2.70001, 3.8, -9.10001)
+transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, -81.3, 3.8, -172.1)
 shape = SubResource("BoxShape3D_mwy17")
 
 [node name="Marker3D" type="Marker3D" parent="DungeonToZiggurat/CollisionShape3D"]
@@ -964,11 +1008,185 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("../BlueEnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRoomChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7.5, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 7.5, 35.5)
 shape = SubResource("BoxShape3D_m7kj6")
+
+[node name="Chamber1Geyser" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -50.1834, 3, 57.7166)
+is_on = false
+
+[node name="Chamber1Geyser2" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -53.1834, 3, 57.7166)
+is_on = false
+
+[node name="Chamber1Geyser3" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -47.1834, 3, 57.7166)
+is_on = false
+
+[node name="Chamber1Geyser4" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.8834, 3, 92.0166)
+is_on = false
+
+[node name="Chamber3Geyser" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.7834, 7, 29.9166)
+is_on = false
+
+[node name="Chamber3PressurePlate" parent="HotelRoomChunk" instance=ExtResource("16_61fdq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -44.6834, 9.94163, -22.6834)
+_element = "red"
+
+[node name="Chamber3MagiclayDisk" parent="HotelRoomChunk" instance=ExtResource("27_uvxhd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -52.7834, 10.5, 1.41661)
+_element = "blue"
+
+[node name="Chamber4Geyser" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.1163, 6.8, -23.0834)
+is_on = false
 
 [node name="Gate" parent="HotelRoomChunk" instance=ExtResource("4_5og7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.900009, 0.6, -0.5)
+permanent = true
+
+[node name="Gate2" parent="HotelRoomChunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.3573, 6.8, -15.5)
+locks = [NodePath("../Chamber3PressurePlate")]
+permanent = true
+
+[node name="Chamber1" parent="HotelRoomChunk" instance=ExtResource("14_srry2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48, 0, 87)
+
+[node name="MagiclayDisk" parent="HotelRoomChunk/Chamber1/Chunk" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.8, 11)
+
+[node name="Reset" parent="HotelRoomChunk/Chamber1/Chunk" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.51784, 17)
+
+[node name="Bridge6" parent="HotelRoomChunk/Chamber1/Chunk" index="17"]
+_element = "blank"
+
+[node name="Bridge8" parent="HotelRoomChunk/Chamber1/Chunk" index="18"]
+_element = "orange"
+
+[node name="Bridge7" parent="HotelRoomChunk/Chamber1/Chunk" index="26"]
+_element = "cyan"
+
+[node name="Emitter" parent="HotelRoomChunk/Chamber1/Chunk" index="47"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 7)
+_element = "orange"
+
+[node name="Emitter2" parent="HotelRoomChunk/Chamber1/Chunk" index="48"]
+_element = "cyan"
+
+[node name="PressurePlate" parent="HotelRoomChunk/Chamber1" index="2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, 3, 8)
+
+[node name="MagiclayRock" parent="HotelRoomChunk/Chamber1" index="3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, 3, 8)
+
+[node name="Chamber2" parent="HotelRoomChunk" instance=ExtResource("15_6yind")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48.3, 0, 10)
+
+[node name="GeyserPressurePlate" parent="HotelRoomChunk/Chamber2/Chunk" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 10, -12)
+
+[node name="MagiclayRock" parent="HotelRoomChunk/Chamber2/Chunk" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 10.3, -12)
+
+[node name="Reset" parent="HotelRoomChunk/Chamber2/Chunk" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 7.31784, -9)
+
+[node name="Pillar" parent="HotelRoomChunk/Chamber2/Chunk" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.55418, 6.7, -4.39999)
+
+[node name="BridgeCap5" parent="HotelRoomChunk/Chamber2/Chunk/Pillar" index="8"]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 0, 0.3, 2)
+
+[node name="Pillar2" parent="HotelRoomChunk/Chamber2/Chunk" index="4"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0.600006, 6.7, -4.39999)
+
+[node name="BridgeCap6" parent="HotelRoomChunk/Chamber2/Chunk/Pillar2" index="7"]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 0, 0.3, -2)
+
+[node name="Pillar3" parent="HotelRoomChunk/Chamber2/Chunk" index="5"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.65419, 6.7, 3.60001)
+
+[node name="Pillar11" parent="HotelRoomChunk/Chamber2/Chunk" index="6"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 32.6667, 6.7, 3.60002)
+
+[node name="Pillar5" parent="HotelRoomChunk/Chamber2/Chunk" index="7"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.65419, 6.7, 11.6)
+
+[node name="Pillar9" parent="HotelRoomChunk/Chamber2/Chunk" index="8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.600006, 6.7, 11.6)
+
+[node name="BridgeCap9" parent="HotelRoomChunk/Chamber2/Chunk/Pillar9" index="7"]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 2, 0.3, 0)
+
+[node name="Pillar8" parent="HotelRoomChunk/Chamber2/Chunk" index="9"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -7.39999, 6.7, -4.39996)
+
+[node name="BridgeCap" parent="HotelRoomChunk/Chamber2/Chunk/Pillar8" index="7"]
+transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 0, 0.3, -2)
+
+[node name="Pillar7" parent="HotelRoomChunk/Chamber2/Chunk" index="10"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.39999, 6.7, 3.60004)
+
+[node name="Pillar4" parent="HotelRoomChunk/Chamber2/Chunk" index="11"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.600006, 6.7, 3.60001)
+
+[node name="Bridge" parent="HotelRoomChunk/Chamber2/Chunk" index="12"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.60001, 6.7, -8.39999)
+
+[node name="Bridge2" parent="HotelRoomChunk/Chamber2/Chunk" index="13"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.634, 6.7, -4.4)
+
+[node name="Bridge11" parent="HotelRoomChunk/Chamber2/Chunk" index="14"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4.63367, 6.7, 3.60001)
+
+[node name="Bridge20" parent="HotelRoomChunk/Chamber2/Chunk" index="15"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6667, 6.7, 3.59998)
+
+[node name="Bridge21" parent="HotelRoomChunk/Chamber2/Chunk" index="16"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.6667, 6.7, 3.59998)
+
+[node name="Bridge22" parent="HotelRoomChunk/Chamber2/Chunk" index="17"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.6667, 6.7, 3.59999)
+
+[node name="Bridge23" parent="HotelRoomChunk/Chamber2/Chunk" index="18"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.6667, 6.7, 3.59999)
+
+[node name="Bridge24" parent="HotelRoomChunk/Chamber2/Chunk" index="19"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.6667, 6.7, 3.60002)
+
+[node name="Bridge4" parent="HotelRoomChunk/Chamber2/Chunk" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60001, 6.7, -0.399994)
+
+[node name="Bridge16" parent="HotelRoomChunk/Chamber2/Chunk" index="21"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.39999, 6.7, -0.399963)
+
+[node name="Bridge12" parent="HotelRoomChunk/Chamber2/Chunk" index="22"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.600006, 6.7, -0.399994)
+
+[node name="Bridge5" parent="HotelRoomChunk/Chamber2/Chunk" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 6.7, 7.60001)
+
+[node name="Bridge10" parent="HotelRoomChunk/Chamber2/Chunk" index="24"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.600006, 6.7, 7.60001)
+
+[node name="Bridge7" parent="HotelRoomChunk/Chamber2/Chunk" index="25"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4.634, 6.7, 11.6)
+
+[node name="Bridge25" parent="HotelRoomChunk/Chamber2/Chunk" index="26"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3.39999, 6.7, 3.60001)
+
+[node name="Bridge14" parent="HotelRoomChunk/Chamber2/Chunk" index="27"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.39999, 6.7, -4.39999)
+
+[node name="Chamber3" parent="HotelRoomChunk" instance=ExtResource("16_cjdov")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -101.3, 0, 19.6)
+
+[node name="AndGate" parent="HotelRoomChunk/Chamber3/Chunk" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 7, -40.7329)
 
 [node name="HallChunk3" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, -119)
@@ -1051,6 +1269,15 @@ chunk = NodePath("../BlueEnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7.5, -0.5)
 shape = SubResource("BoxShape3D_dpk1r")
 
+[node name="Obstacle" type="MeshInstance3D" parent="HallChunk6"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.699997, 0.4, 1)
+mesh = SubResource("BoxMesh_41gmd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HallChunk6/Obstacle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk6/Obstacle/StaticBody3D"]
+shape = SubResource("BoxShape3D_d08kw")
+
 [node name="HallChunk7" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 0, -201)
 script = ExtResource("3_4g4u6")
@@ -1087,7 +1314,7 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("../BlueEnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZigguratChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 75.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 75.5, -162)
 shape = SubResource("BoxShape3D_41131")
 
 [node name="Geyser" parent="ZigguratChunk" instance=ExtResource("9_mipr7")]
@@ -1095,7 +1322,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7, 3.8, -111.7)
 size = 48.0
 
 [node name="DungeonChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -379)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -380)
 script = ExtResource("3_4g4u6")
 chunk = NodePath("../BlueEnv")
 
@@ -1103,52 +1330,12 @@ chunk = NodePath("../BlueEnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 9.5, -35)
 shape = SubResource("BoxShape3D_bbpf0")
 
-[node name="Chamber1Geyser" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, -1)
-is_on = false
-
-[node name="Chamber1Geyser2" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 2)
-is_on = false
-
-[node name="Chamber1Geyser3" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, -4)
-is_on = false
-
-[node name="Chamber1Geyser4" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 12)
-is_on = false
-
-[node name="Chamber3Geyser" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8, 7, -11.4)
-is_on = false
-
-[node name="Chamber3PressurePlate" parent="DungeonChunk" instance=ExtResource("16_61fdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 9.94163, 3.60001)
-_element = "red"
-
-[node name="Chamber3MagiclayDisk" parent="DungeonChunk" instance=ExtResource("27_uvxhd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 10.5, -4)
-_element = "blue"
-
-[node name="Chamber4Geyser" parent="DungeonChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.8, 6.8, -23.0671)
-is_on = false
-
 [node name="Gate" parent="DungeonChunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22, 3, -26)
-locks = [NodePath("../Chamber3PressurePlate")]
-
-[node name="Chamber1" parent="DungeonChunk" instance=ExtResource("14_srry2")]
+locks = [NodePath("../../HotelRoomChunk/Chamber3PressurePlate")]
 
 [node name="Chamber2" parent="DungeonChunk" instance=ExtResource("15_n6q7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 6, -54.7)
-
-[node name="Chamber3" parent="DungeonChunk" instance=ExtResource("15_6yind")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, 0)
-
-[node name="Chamber4" parent="DungeonChunk" instance=ExtResource("16_cjdov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -53.4)
 
 [node name="SupplyClosetChunk" parent="." instance=ExtResource("18_sh3xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)
@@ -1224,3 +1411,13 @@ chunk = NodePath("../BlueEnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackroomChunk8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
+
+[connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser" method="start"]
+[connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser2" method="start"]
+[connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser3" method="start"]
+[connection signal="on" from="HotelRoomChunk/Chamber1/PressurePlate" to="HotelRoomChunk/Chamber1Geyser4" method="start"]
+[connection signal="on" from="HotelRoomChunk/Chamber3/Chunk/AndGate" to="HotelRoomChunk/Chamber4Geyser" method="start"]
+
+[editable path="HotelRoomChunk/Chamber1"]
+[editable path="HotelRoomChunk/Chamber2"]
+[editable path="HotelRoomChunk/Chamber3"]
