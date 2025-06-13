@@ -168,8 +168,10 @@ func _set_blocking(val: bool) -> void:
 
 
 func _set_spout_size(val: float) -> void:
+	$GPUParticles3D.lifetime = val / 5.0
+	$GPUParticles3D.amount = size * 20.0
 	top_hitbox.position.y = val
-	body_hitbox.position.y = val / 2
+	body_hitbox.position.y = val / 2.0
 	body_hitbox.shape.size.y = val
 
 	if horizontal:
