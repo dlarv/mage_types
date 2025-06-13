@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjefkboasfs2f"]
+
+[ext_resource type="Script" path="res://src/debugging_tools/Speedometer.gd" id="1_bm3v0"]
+
+[node name="Speedometer" type="Node3D"]
+script = ExtResource("1_bm3v0")
