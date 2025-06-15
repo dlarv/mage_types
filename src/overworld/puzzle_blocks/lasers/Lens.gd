@@ -44,13 +44,15 @@ func _on_sub_receiver_1_laser_received(laser:Laser, point:Vector3) -> void:
 
 
 func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> void:
-	if in_stasis: return
+	# if in_stasis: return
 	_is_emitting = true
 	subEmitter.global_position.y = point.y
 	_active_emitter = subEmitter
 
 	var e := ElementManager.get_matchup(element, laser.element)
-	if e:
+	if in_stasis or not e:
+		e = laser.element
+	elif e:
 		_active_material.albedo_color = e.main_color.darkened(0.5)
 	else:
 		_try_set_color()
@@ -59,28 +61,32 @@ func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> voi
 		_prev_val = laser.rand_val
 		create_log(self, e)
 
-	if in_stasis or e == null or e.is_blank():
-		e = laser.element
 
 	subEmitter.laser.rand_val = laser.rand_val
 	subEmitter.set_element(e)
 	subEmitter.start()
 
 
-func set_stasis(val=null) -> void:
-	super.set_stasis(val)
-	if not _active_emitter: return
-	
-	_active_emitter.pause(in_stasis)
-	if not in_stasis:
-		_active_material.albedo_color = _active_emitter.laser.element.main_color.darkened(0.5)
+# func set_stasis(val=null) -> void:
+# 	super.set_stasis(val)
+# 	flicker_collider()
+# 	if not _active_emitter: return
+#
+# 	_active_emitter.pause(in_stasis)
+# 	if not in_stasis:
+# 		_active_material.albedo_color = _active_emitter.laser.element.main_color.darkened(0.5)
 
 
+# Override
 func flicker_collider() -> void:
-	var val := collision_layer
-	set_collision_layer_value(3, false)
+	block(true)
 	await get_tree().create_timer(0.01).timeout
-	set_collision_layer_value(3, true)
+	block(false)
+
+
+func block(val: bool) -> void:
+	$Blocker.set_collision_layer_value(5, val)
+	$Blocker.set_collision_layer_value(3, val)
 
 
 func _on_laser_dropped() -> void:
@@ -93,7 +99,6 @@ func _on_laser_dropped() -> void:
 		_active_emitter = null
 		_active_receiver = null
 		_active_material = null
-		_try_set_color()
 
 
 func create_log(body: MagiClay, e: ElementalType) -> void:
@@ -122,5 +127,6 @@ func _set_material(mat: BaseMaterial3D) -> void:
 
 func _try_set_color(color=null) -> bool:
 	if not super._try_set_color(color): return false
+	#if in_stasis: _material_2.albedo_color = Color.BLACK
 	_material_2.albedo_color = _material.albedo_color
 	return true

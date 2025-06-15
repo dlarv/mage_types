@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6ap4wdy8tsnd"]
+[gd_scene load_steps=6 format=3 uid="uid://c6ap4wdy8tsnd"]
 
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_xbdi3"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_jgyy0"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_dq2i3"]
+[ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="4_7svuq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83nc7"]
 size = Vector3(150, 32, 168)
@@ -53,6 +54,7 @@ scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror5" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 1.5)
+_element = "red"
 
 [node name="Mirror6" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, -1.5)
@@ -96,3 +98,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20, 0
 
 [node name="Mirror6" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, 1.5)
+
+[node name="Lens" parent="Chunk/WestSection" instance=ExtResource("4_7svuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -16)
+_element = "red"

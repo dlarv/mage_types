@@ -11,6 +11,7 @@ func _ready() -> void:
 	$SubEmitterX.stop()
 	$SubEmitterZ.stop()
 
+
 func _on_sub_receiver_z_laser_received(laser:Laser, point: Vector3) -> void:
 	if _is_emitting:
 		Logger.append_puzzle_log("Mirror(%s) emitting laser of Element(%s), but was hit with a laser of Element(%s)."
@@ -21,6 +22,7 @@ func _on_sub_receiver_z_laser_received(laser:Laser, point: Vector3) -> void:
 	$SubEmitterZ.stop()
 	_active_receiver = $SubReceiverZ
 	_on_laser_received($SubEmitterX, laser, point)
+
 
 func _on_sub_receiver_x_laser_received(laser:Laser, point: Vector3) -> void:
 	if _is_emitting: 
@@ -33,6 +35,7 @@ func _on_sub_receiver_x_laser_received(laser:Laser, point: Vector3) -> void:
 	_active_receiver = $SubReceiverX
 
 	_on_laser_received($SubEmitterZ, laser, point)
+
 
 func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> void:
 	_is_emitting = true
@@ -51,6 +54,7 @@ func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> voi
 	subEmitter.set_element(e)
 	subEmitter.start()
 	
+
 func create_log(body: MagiClay, newElement: ElementalType, laser: Laser) -> void:
 	if in_stasis:
 		Logger.append_puzzle_log("Mirror(%s) in stasis collided with laser of Element(%s)."
@@ -61,6 +65,7 @@ func create_log(body: MagiClay, newElement: ElementalType, laser: Laser) -> void
 	else:
 		Logger.append_puzzle_log("Mirror(%s) of Element(%s) transmuted laser of Element(%s) into Element(%s)." 
 			% [puzzle_name, element, laser.element, newElement])
+
 
 func _on_laser_dropped() -> void:
 	_is_emitting = false
