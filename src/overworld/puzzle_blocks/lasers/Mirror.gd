@@ -72,11 +72,45 @@ func _on_laser_dropped() -> void:
 		_active_emitter = null
 		_active_receiver = null
 
+
 # Override
 func flicker_collider() -> void:
 	block(true)
 	await get_tree().create_timer(0.01).timeout
 	block(false)
 
+
 func block(val: bool) -> void:
 	$Blocker.set_collision_layer_value(5, val)
+
+
+func _set_size() -> void:
+	var scaling := base_size * scaling_factor
+
+	var mesh = $MeshInstance3D.mesh
+	mesh.size.z = scaling.y
+	$MeshInstance3D.position.y = scaling.y / 2.0
+
+	# Adjust size of main collider.
+	var shape = $CollisionShape3D.shape
+	for i in len(shape.points):
+		if i < 3:
+			shape.points[i].y = 0
+		else:
+			shape.points[i].y = scaling.y
+	
+
+	# Adjust size of size of extra blockers.
+	$Blocker/CollisionShape3D.shape.size.y = scaling.y * 1.5
+	$Blocker.position.y = scaling.y * 1.5 / 2.0
+
+	$SubReceiverX/CollisionShape3D.shape.size.y = scaling.y
+	$SubReceiverX.position.y = scaling.y / 2.0
+
+	$SubReceiverZ/CollisionShape3D.shape.size.y = scaling.y
+	$SubReceiverZ.position.y = scaling.y / 2.0
+
+	$Area3D/CollisionShape3D.shape.size.y = scaling.y
+	$Area3D.position.y = scaling.y / 2.0
+
+
