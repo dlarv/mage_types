@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=64 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_puzzle_3.tscn" id="16_cjdov"]
 [ext_resource type="PackedScene" uid="uid://c6ap4wdy8tsnd" path="res://world/subareas/blue/stasis_dungeon/central_chamber.tscn" id="17_g1hr5"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="19_of3tu"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
@@ -299,11 +300,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="."]
+[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 0.8, 158.1)
@@ -1334,11 +1336,46 @@ shape = SubResource("BoxShape3D_bbpf0")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22, 3, -137.7)
 locks = [NodePath("../../HotelRoomChunk/Chamber3PressurePlate")]
 
-[node name="CentralChamber" parent="DungeonChunk" instance=ExtResource("17_g1hr5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6374, 1.4, -62.473)
-
 [node name="MuralRoom" parent="DungeonChunk" instance=ExtResource("15_n6q7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 0, -173.8)
+
+[node name="CentralRoom" type="Node3D" parent="DungeonChunk"]
+
+[node name="MainPuzzle" parent="DungeonChunk/CentralRoom" instance=ExtResource("17_g1hr5")]
+transform = Transform3D(1, 0, -8.35187e-23, 0, 1, 0, -8.35187e-23, 0, 1, 21.6374, 1.4, -62.473)
+visible = false
+
+[node name="OrangeEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 5, 0, -3.5)
+_element = "orange"
+
+[node name="GreenEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.7, 1, 1.5)
+_element = "green"
+
+[node name="PurpleEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.7, 1, -1.5)
+_element = "purple"
+
+[node name="RedEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(-2.8213e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -2.8213e-07, 1.23323e-14, 5, 0, 3.5)
+_element = "red"
+
+[node name="CyanEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -3.7, 1, 1.5)
+_element = "cyan"
+
+[node name="YellowEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -5, 0, -3.5)
+_element = "yellow"
+
+[node name="BlueEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3.7, 1, -1.5)
+_element = "blue"
+
+[node name="MagentaEmitter" parent="DungeonChunk/CentralRoom" instance=ExtResource("19_of3tu")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -5, 0, 3.5)
+_element = "magenta"
 
 [node name="SupplyClosetChunk" parent="." instance=ExtResource("18_sh3xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)

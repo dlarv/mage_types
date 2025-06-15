@@ -1,16 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6ap4wdy8tsnd"]
+[gd_scene load_steps=8 format=3 uid="uid://c6ap4wdy8tsnd"]
 
 [ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_xbdi3"]
-[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_jgyy0"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_dq2i3"]
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="4_7svuq"]
+[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="5_mjnat"]
+[ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="6_u1py6"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="7_4dov5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83nc7"]
 size = Vector3(150, 32, 168)
 
-[node name="CentralChamber" type="Area3D" node_paths=PackedStringArray("chunk")]
+[node name="CentralChamber" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_xbdi3")
 chunk = NodePath("Chunk")
+resets = [NodePath("Chunk/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 15.5, -8.5)
@@ -18,87 +21,210 @@ shape = SubResource("BoxShape3D_83nc7")
 
 [node name="Chunk" type="Node3D" parent="."]
 
+[node name="Reset" parent="Chunk" instance=ExtResource("6_u1py6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91784, 0)
+
 [node name="EastSection" type="Node3D" parent="Chunk"]
 
-[node name="OrangeEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 5, 0, -3.5)
-_element = "orange"
+[node name="LaserReceiver" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.8, 0.5, 12.5)
+collision_layer = 5
+_element = "cyan"
 
-[node name="GreenEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.7, 1, 1.5)
-_element = "green"
+[node name="LaserReceiver4" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.8, 0.5, -12.5)
+collision_layer = 5
+_element = "yellow"
 
-[node name="PurpleEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.7, 1, -1.5)
-_element = "purple"
-
-[node name="RedEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-2.8213e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -2.8213e-07, 1.23323e-14, 5, 0, 3.5)
+[node name="LaserReceiver2" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.8, 1, 42.6)
+collision_layer = 5
 _element = "red"
 
+[node name="LaserReceiver3" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8, 1, -42.7)
+collision_layer = 5
+_element = "blue"
+
 [node name="Mirror" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0, -3.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, -0.5, -3.5)
+_element = "blue"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror2" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, -12.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, -0.5, -12.5)
+_element = "green"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror3" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 12.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, -0.5, 12.5)
+_element = "blue"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror4" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.5, 3.5)
+_element = "yellow"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror5" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.5, 1.5)
 _element = "red"
 
 [node name="Mirror6" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, -1.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, -0.5, -1.5)
+_element = "red"
+
+[node name="Lens" parent="Chunk/EastSection" instance=ExtResource("4_7svuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -16)
+_element = "cyan"
+
+[node name="Lens2" parent="Chunk/EastSection" instance=ExtResource("4_7svuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 16)
+_element = "orange"
+
+[node name="Rails" parent="Chunk/EastSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 12.5)
+
+[node name="Lens" parent="Chunk/EastSection/Rails" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "green"
+
+[node name="PointB" parent="Chunk/EastSection/Rails" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Rails2" parent="Chunk/EastSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 1, 24.5)
+
+[node name="Lens" parent="Chunk/EastSection/Rails2" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "purple"
+
+[node name="PointB" parent="Chunk/EastSection/Rails2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Rails3" parent="Chunk/EastSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 20, 1, -24.5)
+
+[node name="Lens" parent="Chunk/EastSection/Rails3" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "green"
+
+[node name="PointB" parent="Chunk/EastSection/Rails3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Rails4" parent="Chunk/EastSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 32, 0, -12.5)
+
+[node name="Lens" parent="Chunk/EastSection/Rails4" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "yellow"
+
+[node name="PointB" parent="Chunk/EastSection/Rails4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
 [node name="WestSection" type="Node3D" parent="Chunk"]
 
-[node name="CyanEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -3.7, 1, 1.5)
-_element = "cyan"
-
-[node name="YellowEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -5, 0, -3.5)
-_element = "yellow"
-
-[node name="BlueEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3.7, 1, -1.5)
-_element = "blue"
-
-[node name="MagentaEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -5, 0, 3.5)
-_element = "magenta"
-
 [node name="Mirror" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, 3.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, -0.5, 3.5)
+_element = "blue"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror2" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -11, 0, 12.5)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -11, -0.5, 12.5)
+_element = "green"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror3" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -12.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, -12.5)
+_element = "purple"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror4" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, -3.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, -0.5, -3.5)
+_element = "magenta"
 scaling_factor = Vector3(1, 0.5, 1)
 
 [node name="Mirror5" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20, 0, -1.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20, -0.5, -1.5)
+_element = "red"
 
 [node name="Mirror6" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, 1.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, -0.5, 1.5)
+_element = "purple"
 
 [node name="Lens" parent="Chunk/WestSection" instance=ExtResource("4_7svuq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -16)
+_element = "orange"
+
+[node name="Lens2" parent="Chunk/WestSection" instance=ExtResource("4_7svuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 16)
 _element = "red"
+
+[node name="Rails" parent="Chunk/WestSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -30, 0, 12.5)
+
+[node name="Lens" parent="Chunk/WestSection/Rails" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "yellow"
+
+[node name="PointB" parent="Chunk/WestSection/Rails" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Rails2" parent="Chunk/WestSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -20, 1, 25.5)
+
+[node name="Lens" parent="Chunk/WestSection/Rails2" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "yellow"
+
+[node name="PointB" parent="Chunk/WestSection/Rails2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Rails3" parent="Chunk/WestSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -20, 1, -24)
+
+[node name="Lens" parent="Chunk/WestSection/Rails3" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "green"
+
+[node name="PointB" parent="Chunk/WestSection/Rails3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Rails4" parent="Chunk/WestSection" instance=ExtResource("5_mjnat")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -38, 0, -12.5)
+
+[node name="Lens" parent="Chunk/WestSection/Rails4" instance=ExtResource("4_7svuq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+_element = "cyan"
+
+[node name="PointB" parent="Chunk/WestSection/Rails4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="LaserReceiver" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -42.8, 0.5, 12.5)
+collision_layer = 5
+_element = "magenta"
+
+[node name="LaserReceiver4" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.8, 0.5, -12.5)
+collision_layer = 5
+_element = "magenta"
+
+[node name="LaserReceiver2" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.8, 1, 42.6)
+collision_layer = 5
+_element = "blue"
+
+[node name="LaserReceiver3" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -42.7)
+collision_layer = 5
+_element = "yellow"
+
+[editable path="Chunk/EastSection/Rails"]
+[editable path="Chunk/EastSection/Rails2"]
+[editable path="Chunk/EastSection/Rails3"]
+[editable path="Chunk/EastSection/Rails4"]
+[editable path="Chunk/WestSection/Rails"]
+[editable path="Chunk/WestSection/Rails2"]
+[editable path="Chunk/WestSection/Rails3"]
+[editable path="Chunk/WestSection/Rails4"]
