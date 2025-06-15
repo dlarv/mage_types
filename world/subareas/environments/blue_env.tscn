@@ -1,4 +1,4 @@
-[gd_scene load_steps=321 format=4 uid="uid://cmtatsdth8psr"]
+[gd_scene load_steps=322 format=4 uid="uid://cmtatsdth8psr"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_uvna4"]
 [ext_resource type="Shader" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
@@ -736,8 +736,11 @@ data = PackedVector3Array(-0.3619, -1, 1, -0.3619, 1, -1, -0.3619, 1, 1, -0.3619
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_njcxk"]
 data = PackedVector3Array(-0.3619, -1, 1, -0.3619, 1, -1, -0.3619, 1, 1, -0.3619, -1, 1, -0.3619, -1, -1, -0.3619, 1, -1, 0.219, -1, 1, -0.3619, 1, 1, 0.219, 1, 1, 0.219, -1, 1, -0.3619, -1, 1, -0.3619, 1, 1, 0.219, 1, -1, -0.3619, 1, 1, -0.3619, 1, -1, 0.219, 1, -1, 0.219, 1, 1, -0.3619, 1, 1, -0.3619, -1, -1, 0.219, -1, 1, 0.219, -1, -1, -0.3619, -1, -1, -0.3619, -1, 1, 0.219, -1, 1, -0.3619, -1, -1, 0.219, 1, -1, -0.3619, 1, -1, -0.3619, -1, -1, 0.219, -1, -1, 0.219, 1, -1, 0.219, 1, 1, 0.219, -1, -1, 0.219, -1, 1, 0.219, 1, 1, 0.219, 1, -1, 0.219, -1, -1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ukpt"]
-data = PackedVector3Array(-5, -0.5, 5, -5, 0.5, -5, -5, 0.5, 5, -5, -0.5, 5, -5, -0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, 0.5, -5, -5, 0.5, -5, -5, -0.5, -5, 5, -0.5, -5, 5, 0.5, -5, 5, -0.5, -5, 5, 0.5, 5, 5, 0.5, -5, 5, -0.5, -5, 5, -0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, 0.5, 5, 5, 0.5, 5, 5, -0.5, 5, -5, -0.5, 5, -5, 0.5, 5, -5, -0.5, -5, 5, -0.5, 5, 5, -0.5, -5, -5, -0.5, -5, -5, -0.5, 5, 5, -0.5, 5, 5, 0.5, 5, 5, 0.5, -5, 5, 0.5, -5, 5, 0.5, 5, 5, 0.5, 5, 5, 0.5, -5, -5, 0.5, -5, -5, 0.5, 5, -5, 0.5, 5, -5, 0.5, -5, -5, 0.5, -5, -5, 0.5, 5, 5, 0.5, -5, -5, 0.5, -5, -5, 0.5, -5, 5, 0.5, -5, 5, 0.5, -5, -5, 0.5, -5, -5, 0.5, 5, 5, 0.5, 5, 5, 0.5, 5, -5, 0.5, 5, -5, 0.5, 5, 5, 0.5, 5, -5, 0.5, -5, -3.7127, 0.5, 3.7127, -5, 0.5, 5, -5, 0.5, -5, -3.7127, 0.5, -3.7127, -3.7127, 0.5, 3.7127, 3.7127, 0.5, -3.7127, -3.7127, 1.5, -3.7127, -3.7127, 0.5, -3.7127, 3.7127, 0.5, -3.7127, 3.7127, 1.5, -3.7127, -3.7127, 1.5, -3.7127, 5, 0.5, 5, 3.7127, 0.5, -3.7127, 5, 0.5, -5, 5, 0.5, 5, 3.7127, 0.5, 3.7127, 3.7127, 0.5, -3.7127, 5, 0.5, -5, -3.7127, 0.5, -3.7127, -5, 0.5, -5, 5, 0.5, -5, 3.7127, 0.5, -3.7127, -3.7127, 0.5, -3.7127, -5, 0.5, 5, 3.7127, 0.5, 3.7127, 5, 0.5, 5, -5, 0.5, 5, -3.7127, 0.5, 3.7127, 3.7127, 0.5, 3.7127, 3.7127, 1.5, -3.7127, -3.7127, 1.5, 3.7127, -3.7127, 1.5, -3.7127, 3.7127, 1.5, -3.7127, 3.7127, 1.5, 3.7127, -3.7127, 1.5, 3.7127, -3.7127, 0.5, 3.7127, 3.7127, 1.5, 3.7127, 3.7127, 0.5, 3.7127, -3.7127, 0.5, 3.7127, -3.7127, 1.5, 3.7127, 3.7127, 1.5, 3.7127, -3.7127, 0.5, -3.7127, -3.7127, 1.5, 3.7127, -3.7127, 0.5, 3.7127, -3.7127, 0.5, -3.7127, -3.7127, 1.5, -3.7127, -3.7127, 1.5, 3.7127, 3.7127, 0.5, 3.7127, 3.7127, 1.5, -3.7127, 3.7127, 0.5, -3.7127, 3.7127, 0.5, 3.7127, 3.7127, 1.5, 3.7127, 3.7127, 1.5, -3.7127)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ta1rt"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w25wc"]
+size = Vector3(7.4, 1, 7.4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mklml"]
 render_priority = 0
@@ -2188,7 +2191,11 @@ shape = SubResource("ConcavePolygonShape3D_njcxk")
 [node name="StaticBody3D" type="StaticBody3D" parent="Dais" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dais/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_1ukpt")
+shape = SubResource("BoxShape3D_ta1rt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Dais/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_w25wc")
 
 [node name="Ground_007" parent="." index="171"]
 material_override = SubResource("ShaderMaterial_mklml")
