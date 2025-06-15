@@ -87,12 +87,14 @@ func block(val: bool) -> void:
 func _set_size() -> void:
 	var scaling := base_size * scaling_factor
 
-	var mesh = $MeshInstance3D.mesh
+	var mesh = $MeshInstance3D.mesh.duplicate(true)
+	$MeshInstance3D.mesh = mesh
 	mesh.size.z = scaling.y
 	$MeshInstance3D.position.y = scaling.y / 2.0
 
 	# Adjust size of main collider.
-	var shape = $CollisionShape3D.shape
+	var shape = $CollisionShape3D.shape.duplicate(true)
+	$CollisionShape3D.shape = shape
 	for i in len(shape.points):
 		if i < 3:
 			shape.points[i].y = 0
@@ -101,15 +103,23 @@ func _set_size() -> void:
 	
 
 	# Adjust size of size of extra blockers.
+	shape = $Blocker/CollisionShape3D.shape.duplicate(true)
+	$Blocker/CollisionShape3D.shape = shape
 	$Blocker/CollisionShape3D.shape.size.y = scaling.y * 1.5
 	$Blocker.position.y = scaling.y * 1.5 / 2.0
 
+	shape = $SubReceiverX/CollisionShape3D.shape.duplicate(true)
+	$SubReceiverX/CollisionShape3D.shape = shape
 	$SubReceiverX/CollisionShape3D.shape.size.y = scaling.y
 	$SubReceiverX.position.y = scaling.y / 2.0
 
+	shape = $SubReceiverZ/CollisionShape3D.shape.duplicate(true)
+	$SubReceiverZ/CollisionShape3D.shape = shape
 	$SubReceiverZ/CollisionShape3D.shape.size.y = scaling.y
 	$SubReceiverZ.position.y = scaling.y / 2.0
 
+	shape = $Area3D/CollisionShape3D.shape.duplicate(true)
+	$Area3D/CollisionShape3D.shape = shape
 	$Area3D/CollisionShape3D.shape.size.y = scaling.y
 	$Area3D.position.y = scaling.y / 2.0
 

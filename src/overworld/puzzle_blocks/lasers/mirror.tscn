@@ -4,26 +4,26 @@
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_pewdx"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_u2i3p"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_2qfrq"]
+[sub_resource type="PrismMesh" id="PrismMesh_m5cxb"]
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii58h"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tgjl"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dpq5l"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bw1q"]
 points = PackedVector3Array(0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 2, 0.5, 0.5, 2, -0.5, -0.5, 2, -0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m3gi7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ebtlo"]
 size = Vector3(0.1, 2, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7al7x"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1062e"]
 size = Vector3(1, 2, 0.1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cxymf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wesb8"]
 size = Vector3(0.15, 2, 0.15)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ckdic"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ike7k"]
 size = Vector3(1.3, 3, 1.3)
 
 [node name="Mirror" type="StaticBody3D"]
@@ -34,11 +34,11 @@ base_size = Vector3(1, 2, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
-mesh = SubResource("PrismMesh_2qfrq")
-surface_material_override/0 = SubResource("StandardMaterial3D_ii58h")
+mesh = SubResource("PrismMesh_m5cxb")
+surface_material_override/0 = SubResource("StandardMaterial3D_0tgjl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_dpq5l")
+shape = SubResource("ConvexPolygonShape3D_2bw1q")
 
 [node name="SubEmitterX" parent="." instance=ExtResource("3_u2i3p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.919238, 1, 0)
@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, 0)
-shape = SubResource("BoxShape3D_m3gi7")
+shape = SubResource("BoxShape3D_ebtlo")
 
 [node name="SubEmitterZ" parent="." instance=ExtResource("3_u2i3p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.00729)
@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverZ"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.55)
-shape = SubResource("BoxShape3D_7al7x")
+shape = SubResource("BoxShape3D_1062e")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -67,7 +67,7 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.551, 0, 0.551)
-shape = SubResource("BoxShape3D_cxymf")
+shape = SubResource("BoxShape3D_wesb8")
 
 [node name="Blocker" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -78,7 +78,7 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612168, 0, 0.0643433)
-shape = SubResource("BoxShape3D_ckdic")
+shape = SubResource("BoxShape3D_ike7k")
 
 [connection signal="laser_dropped" from="SubReceiverX" to="." method="_on_laser_dropped"]
 [connection signal="laser_received" from="SubReceiverX" to="." method="_on_sub_receiver_x_laser_received"]
