@@ -10,6 +10,7 @@ class_name Chunk
 var _persistent_objs := {}
 
 func _ready() -> void:
+	if not chunk: return
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
 	body_entered.connect(load)
 	body_exited.connect(unload)
@@ -25,7 +26,7 @@ func _ready() -> void:
 			for child in reset.get_parent().find_children("", "MagiClay", true):
 				reset.magiclay_reset.connect(child.reset)
 
-	var children := chunk.get_children()
+	var children = chunk.get_children()
 	while len(children) > 0:
 		var child = children.pop_back()
 
@@ -46,7 +47,7 @@ func _ready() -> void:
 		children.append_array(child.get_children())
 
 func load(player: Node3D) -> void:
-	# if not player.is_in_group("player"): return
+	if not visible: return
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
 	print("Player loaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
