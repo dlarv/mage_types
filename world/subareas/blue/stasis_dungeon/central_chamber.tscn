@@ -17,51 +17,82 @@ shape = SubResource("BoxShape3D_83nc7")
 
 [node name="Chunk" type="Node3D" parent="."]
 
-[node name="Quad_N" type="Node3D" parent="Chunk"]
+[node name="EastSection" type="Node3D" parent="Chunk"]
 
-[node name="Emitter_Top" parent="Chunk/Quad_N" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.0400848, 2.45084, -3.14151)
-_element = "yellow"
-
-[node name="Emitter_Bottom" parent="Chunk/Quad_N" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.0400848, 1.44812, -6.39999)
+[node name="OrangeEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 5, 0, -3.5)
 _element = "orange"
 
-[node name="Mirror3" parent="Chunk/Quad_N" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -36)
-
-[node name="Mirror4" parent="Chunk/Quad_N" instance=ExtResource("3_dq2i3")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -17, 0.5, -36)
-
-[node name="Quad_E" type="Node3D" parent="Chunk"]
-
-[node name="Emitter_Top" parent="Chunk/Quad_E" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.31087, 2.45084, 0.0292358)
-_element = "cyan"
-
-[node name="Emitter_Bottom" parent="Chunk/Quad_E" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 6.56932, 1.44812, 0.0292358)
+[node name="GreenEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.7, 1, 1.5)
 _element = "green"
 
-[node name="Quad_S" type="Node3D" parent="Chunk"]
-
-[node name="Emitter_Top" parent="Chunk/Quad_S" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0401154, 2.45084, 3.29999)
+[node name="PurpleEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.7, 1, -1.5)
 _element = "purple"
 
-[node name="Emitter_Bottom" parent="Chunk/Quad_S" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0401154, 1.44812, 6.55844)
-_element = "blue"
-
-[node name="Quad_W" type="Node3D" parent="Chunk"]
-
-[node name="Emitter_Top" parent="Chunk/Quad_W" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -3.23068, 2.45084, 0.0292358)
+[node name="RedEmitter" parent="Chunk/EastSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-2.8213e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -2.8213e-07, 1.23323e-14, 5, 0, 3.5)
 _element = "red"
 
-[node name="Emitter_Bottom" parent="Chunk/Quad_W" instance=ExtResource("2_jgyy0")]
-transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -6.48914, 1.44812, 0.0292358)
+[node name="Mirror" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0, -3.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror2" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, -12.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror3" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 12.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror4" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror5" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 1.5)
+
+[node name="Mirror6" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, 0, -1.5)
+
+[node name="WestSection" type="Node3D" parent="Chunk"]
+
+[node name="CyanEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -3.7, 1, 1.5)
+_element = "cyan"
+
+[node name="YellowEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -5, 0, -3.5)
+_element = "yellow"
+
+[node name="BlueEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3.7, 1, -1.5)
+_element = "blue"
+
+[node name="MagentaEmitter" parent="Chunk/WestSection" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -5, 0, 3.5)
 _element = "magenta"
 
-[node name="Mirror" parent="." instance=ExtResource("3_dq2i3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -27)
+[node name="Mirror" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, 3.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror2" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -11, 0, 12.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror3" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -12.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror4" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, -3.5)
+scaling_factor = Vector3(1, 0.5, 1)
+
+[node name="Mirror5" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20, 0, -1.5)
+
+[node name="Mirror6" parent="Chunk/WestSection" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, 1.5)

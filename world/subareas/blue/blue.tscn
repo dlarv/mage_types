@@ -1336,7 +1336,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22, 3, -137.7)
 locks = [NodePath("../../HotelRoomChunk/Chamber3PressurePlate")]
 
 [node name="CentralChamber" parent="DungeonChunk" instance=ExtResource("17_g1hr5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6, 0, -62.5725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6374, 1.4, -62.473)
 
 [node name="MuralRoom" parent="DungeonChunk" instance=ExtResource("15_n6q7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 0, -173.8)
