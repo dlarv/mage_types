@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ap4wdy8tsnd"]
+
+[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_xbdi3"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_jgyy0"]
+[ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_dq2i3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83nc7"]
+size = Vector3(150, 32, 168)
+
+[node name="CentralChamber" type="Area3D" node_paths=PackedStringArray("chunk")]
+script = ExtResource("1_xbdi3")
+chunk = NodePath("Chunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 15.5, -8.5)
+shape = SubResource("BoxShape3D_83nc7")
+
+[node name="Chunk" type="Node3D" parent="."]
+
+[node name="Quad_N" type="Node3D" parent="Chunk"]
+
+[node name="Emitter_Top" parent="Chunk/Quad_N" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.0400848, 2.45084, -3.14151)
+_element = "yellow"
+
+[node name="Emitter_Bottom" parent="Chunk/Quad_N" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.0400848, 1.44812, -6.39999)
+_element = "orange"
+
+[node name="Mirror3" parent="Chunk/Quad_N" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -36)
+
+[node name="Mirror4" parent="Chunk/Quad_N" instance=ExtResource("3_dq2i3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -17, 0.5, -36)
+
+[node name="Quad_E" type="Node3D" parent="Chunk"]
+
+[node name="Emitter_Top" parent="Chunk/Quad_E" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3.31087, 2.45084, 0.0292358)
+_element = "cyan"
+
+[node name="Emitter_Bottom" parent="Chunk/Quad_E" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 6.56932, 1.44812, 0.0292358)
+_element = "green"
+
+[node name="Quad_S" type="Node3D" parent="Chunk"]
+
+[node name="Emitter_Top" parent="Chunk/Quad_S" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0401154, 2.45084, 3.29999)
+_element = "purple"
+
+[node name="Emitter_Bottom" parent="Chunk/Quad_S" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0401154, 1.44812, 6.55844)
+_element = "blue"
+
+[node name="Quad_W" type="Node3D" parent="Chunk"]
+
+[node name="Emitter_Top" parent="Chunk/Quad_W" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -3.23068, 2.45084, 0.0292358)
+_element = "red"
+
+[node name="Emitter_Bottom" parent="Chunk/Quad_W" instance=ExtResource("2_jgyy0")]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, -6.48914, 1.44812, 0.0292358)
+_element = "magenta"
+
+[node name="Mirror" parent="." instance=ExtResource("3_dq2i3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -27)

@@ -1,0 +1,417 @@
+[gd_scene load_steps=9 format=3 uid="uid://2ee6w0ag61vd"]
+
+[ext_resource type="PackedScene" uid="uid://d3odmmlqvwyfn" path="res://data/bosses/stasis_boss.tscn" id="1_k51av"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_3sbrl"]
+[ext_resource type="PackedScene" uid="uid://de1dw2r8mhg2i" path="res://src/overworld/puzzle_blocks/logic_gates/and_gate.tscn" id="3_a3xex"]
+[ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="4_gj1yw"]
+[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="5_s3rhu"]
+[ext_resource type="PackedScene" uid="uid://eqenv56ihr4q" path="res://src/overworld/puzzle_blocks/logic_gates/mapper_gate.tscn" id="6_np1e1"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="7_8lq01"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfh1f"]
+size = Vector3(43, 14, 56)
+
+[node name="Chamber2" type="Area3D"]
+
+[node name="StasisBoss" parent="." instance=ExtResource("1_k51av")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.0999985, 4.29705, -20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.5, -9.5)
+shape = SubResource("BoxShape3D_pfh1f")
+
+[node name="Emitter_SE" parent="." instance=ExtResource("2_3sbrl")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 19, 4, 10)
+is_on = false
+_element = "red"
+
+[node name="Emitter_SW" parent="." instance=ExtResource("2_3sbrl")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -17, 4, 12.7)
+is_on = false
+_element = "green"
+
+[node name="Emitter_NW" parent="." instance=ExtResource("2_3sbrl")]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -20.8, 4, -13)
+is_on = false
+_element = "yellow"
+
+[node name="Emitter_NE" parent="." instance=ExtResource("2_3sbrl")]
+transform = Transform3D(-5.73206e-15, -1.31134e-07, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, 1.31134e-07, 13, 4, -16.9)
+is_on = false
+_element = "blue"
+
+[node name="AndGate1" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("3_a3xex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
+locks = [NodePath("../SE/Rails1/MapperGate_SE"), NodePath("../SW/Rails1/MapperGate_SW"), NodePath("../NW/Rails1/MapperGate_NW"), NodePath("../NE/Rails1/MapperGate_NE")]
+
+[node name="AndGate2" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("3_a3xex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
+locks = [NodePath("../SE/Rails2/MapperGate_SE"), NodePath("../SW/Rails2/MapperGate_SW"), NodePath("../NW/Rails2/MapperGate_NW"), NodePath("../NE/Rails2/MapperGate_NE")]
+
+[node name="AndGate3" parent="." node_paths=PackedStringArray("locks") instance=ExtResource("3_a3xex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
+locks = [NodePath("../SE/Rails3/MapperGate_SE"), NodePath("../SW/Rails3/MapperGate_SW"), NodePath("../NW/Rails3/MapperGate_NW"), NodePath("../NE/Rails3/MapperGate_NE")]
+
+[node name="Relay1" parent="." node_paths=PackedStringArray("lock") instance=ExtResource("4_gj1yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, -16)
+lock = NodePath("../AndGate1")
+
+[node name="Relay2" parent="." node_paths=PackedStringArray("lock") instance=ExtResource("4_gj1yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -16)
+lock = NodePath("../AndGate2")
+
+[node name="Relay3" parent="." node_paths=PackedStringArray("lock") instance=ExtResource("4_gj1yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, -16)
+lock = NodePath("../AndGate3")
+
+[node name="SE" type="Node3D" parent="."]
+
+[node name="Rails1" parent="SE" instance=ExtResource("5_s3rhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 12)
+
+[node name="PointA" parent="SE/Rails1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="SE/Rails1/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="SE/Rails1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="SE/Rails1/PointB" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+scaling_factor = 0.0
+
+[node name="MapperGate_SE" parent="SE/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_SE")
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_SE" parent="SE/Rails1" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
+collision_layer = 5
+_element = "blue"
+
+[node name="Rails2" parent="SE" instance=ExtResource("5_s3rhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 12)
+
+[node name="PointA" parent="SE/Rails2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="SE/Rails2/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="SE/Rails2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="SE/Rails2/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_SE" parent="SE/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_SE")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_SE" parent="SE/Rails2" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "blue"
+
+[node name="Rails3" parent="SE" instance=ExtResource("5_s3rhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 12)
+
+[node name="PointA" parent="SE/Rails3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="SE/Rails3/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="SE/Rails3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="SE/Rails3/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_SE" parent="SE/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_SE")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_SE" parent="SE/Rails3" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "blue"
+
+[node name="SW" type="Node3D" parent="."]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -20, 0, 10)
+
+[node name="Rails1" parent="SW" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="SW/Rails1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="SW/Rails1/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="SW/Rails1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="SW/Rails1/PointB" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+scaling_factor = 0.0
+
+[node name="MapperGate_SW" parent="SW/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_SW")
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_SW" parent="SW/Rails1" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
+collision_layer = 5
+_element = "red"
+
+[node name="Rails2" parent="SW" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="SW/Rails2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="SW/Rails2/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="SW/Rails2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="SW/Rails2/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_SW" parent="SW/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_SW")
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_SW" parent="SW/Rails2" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "red"
+
+[node name="Rails3" parent="SW" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="SW/Rails3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="SW/Rails3/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="SW/Rails3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="SW/Rails3/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_SW" parent="SW/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_SW")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_SW" parent="SW/Rails3" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "red"
+
+[node name="NW" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 1.39091e-08, 0, 1, 0, -1.39091e-08, 0, -1, -17, 0, -16.2)
+
+[node name="Rails1" parent="NW" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="NW/Rails1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="NW/Rails1/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="NW/Rails1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="NW/Rails1/PointB" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+scaling_factor = 0.0
+
+[node name="MapperGate_NW" parent="NW/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_NW")
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_NW" parent="NW/Rails1" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
+collision_layer = 5
+_element = "green"
+
+[node name="Rails2" parent="NW" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="NW/Rails2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="NW/Rails2/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="NW/Rails2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="NW/Rails2/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_NW" parent="NW/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_NW")
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_NW" parent="NW/Rails2" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "green"
+
+[node name="Rails3" parent="NW" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="NW/Rails3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="NW/Rails3/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="NW/Rails3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="NW/Rails3/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_NW" parent="NW/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_NW")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_NW" parent="NW/Rails3" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "green"
+
+[node name="NE" type="Node3D" parent="."]
+transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, 18.2321, 0, -13)
+
+[node name="Rails1" parent="NE" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="NE/Rails1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="NE/Rails1/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="NE/Rails1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="NE/Rails1/PointB" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+scaling_factor = 0.0
+
+[node name="MapperGate_NE" parent="NE/Rails1" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_NE")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_NE" parent="NE/Rails1" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 4, 0.5)
+collision_layer = 5
+_element = "yellow"
+
+[node name="Rails2" parent="NE" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="NE/Rails2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="NE/Rails2/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="NE/Rails2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="NE/Rails2/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_NE" parent="NE/Rails2" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_NE")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_NE" parent="NE/Rails2" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "yellow"
+
+[node name="Rails3" parent="NE" instance=ExtResource("5_s3rhu")]
+
+[node name="PointA" parent="NE/Rails3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.5)
+
+[node name="Interactable" parent="NE/Rails3/PointA" index="0"]
+scaling_factor = 0.0
+
+[node name="PointB" parent="NE/Rails3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
+
+[node name="Interactable" parent="NE/Rails3/PointB" index="0"]
+scaling_factor = 0.0
+
+[node name="MapperGate_NE" parent="NE/Rails3" node_paths=PackedStringArray("lock") instance=ExtResource("6_np1e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+lock = NodePath("../LaserReceiver_NE")
+map_invalid_off_to = "off"
+
+[node name="LaserReceiver_NE" parent="NE/Rails3" instance=ExtResource("7_8lq01")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
+collision_layer = 5
+_element = "yellow"
+
+[connection signal="on" from="Relay1" to="SE/Rails1" method="slide"]
+[connection signal="on" from="Relay1" to="SE/Rails2" method="slide"]
+[connection signal="on" from="Relay1" to="SW/Rails1" method="slide"]
+[connection signal="on" from="Relay1" to="SW/Rails2" method="slide"]
+[connection signal="on" from="Relay1" to="NW/Rails1" method="slide"]
+[connection signal="on" from="Relay1" to="NW/Rails2" method="slide"]
+[connection signal="on" from="Relay1" to="NE/Rails1" method="slide"]
+[connection signal="on" from="Relay1" to="NE/Rails2" method="slide"]
+[connection signal="on" from="Relay2" to="SE/Rails2" method="slide"]
+[connection signal="on" from="Relay2" to="SE/Rails3" method="slide"]
+[connection signal="on" from="Relay2" to="SW/Rails2" method="slide"]
+[connection signal="on" from="Relay2" to="SW/Rails3" method="slide"]
+[connection signal="on" from="Relay2" to="NW/Rails2" method="slide"]
+[connection signal="on" from="Relay2" to="NW/Rails3" method="slide"]
+[connection signal="on" from="Relay2" to="NE/Rails2" method="slide"]
+[connection signal="on" from="Relay2" to="NE/Rails3" method="slide"]
+[connection signal="on" from="Relay3" to="SE/Rails3" method="slide"]
+[connection signal="on" from="Relay3" to="SW/Rails3" method="slide"]
+[connection signal="on" from="Relay3" to="NW/Rails3" method="slide"]
+[connection signal="on" from="Relay3" to="NE/Rails3" method="slide"]
+
+[editable path="SE/Rails1"]
+[editable path="SE/Rails2"]
+[editable path="SE/Rails3"]
+[editable path="SW/Rails1"]
+[editable path="SW/Rails2"]
+[editable path="SW/Rails3"]
+[editable path="NW/Rails1"]
+[editable path="NW/Rails2"]
+[editable path="NW/Rails3"]
+[editable path="NE/Rails1"]
+[editable path="NE/Rails2"]
+[editable path="NE/Rails3"]

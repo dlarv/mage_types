@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=63 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
 [ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_puzzle_1.tscn" id="14_srry2"]
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_puzzle_2.tscn" id="15_6yind"]
-[ext_resource type="PackedScene" uid="uid://2ee6w0ag61vd" path="res://world/subareas/blue/mural_room.tscn" id="15_n6q7r"]
+[ext_resource type="PackedScene" uid="uid://2ee6w0ag61vd" path="res://world/subareas/blue/stasis_dungeon/mural_room.tscn" id="15_n6q7r"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_puzzle_3.tscn" id="16_cjdov"]
+[ext_resource type="PackedScene" uid="uid://c6ap4wdy8tsnd" path="res://world/subareas/blue/stasis_dungeon/central_chamber.tscn" id="17_g1hr5"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
@@ -92,7 +93,7 @@ size = Vector3(1, 1, 10)
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wm0wg"]
-size = Vector3(1, 1, 4)
+size = Vector3(1, 1, 21)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5rhi"]
 size = Vector3(22, 11, 18)
@@ -143,7 +144,7 @@ size = Vector3(74, 29, 63)
 size = Vector3(307, 161, 301)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbpf0"]
-size = Vector3(164, 29, 119)
+size = Vector3(162, 29, 226)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmhgq"]
 size = Vector3(25, 29, 25)
@@ -910,7 +911,7 @@ shape = SubResource("BoxShape3D_th7j2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cave2ToDungeon"]
-transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 91.6, 3.5, -55.9)
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 91.6, 3.5, -64.9)
 shape = SubResource("BoxShape3D_x6u4r")
 
 [node name="Marker3D" type="Marker3D" parent="Cave2ToDungeon/CollisionShape3D2"]
@@ -952,7 +953,7 @@ shape = SubResource("BoxShape3D_mwy17")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DungeonToZiggurat"]
-transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 73.2, 7.2, -94.2)
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 112.2, 4.2, -181.7)
 shape = SubResource("BoxShape3D_wm0wg")
 
 [node name="Marker3D" type="Marker3D" parent="DungeonToZiggurat/CollisionShape3D2"]
@@ -1327,15 +1328,18 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("../BlueEnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 9.5, -35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 9.5, -99.5)
 shape = SubResource("BoxShape3D_bbpf0")
 
 [node name="Gate" parent="DungeonChunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22, 3, -26)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22, 3, -137.7)
 locks = [NodePath("../../HotelRoomChunk/Chamber3PressurePlate")]
 
-[node name="Chamber2" parent="DungeonChunk" instance=ExtResource("15_n6q7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 6, -54.7)
+[node name="CentralChamber" parent="DungeonChunk" instance=ExtResource("17_g1hr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6, 0, -62.5725)
+
+[node name="MuralRoom" parent="DungeonChunk" instance=ExtResource("15_n6q7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 0, -173.8)
 
 [node name="SupplyClosetChunk" parent="." instance=ExtResource("18_sh3xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)
