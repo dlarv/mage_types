@@ -3,6 +3,7 @@ extends CollisionObject3D
 class_name MagiClay
 
 signal stasis_ended()
+signal element_changed(element: ElementalType)
 
 @export_category("Elemental Traits")
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
@@ -18,6 +19,7 @@ var element: ElementalType = ElementManager.Blank:
 		if value == null:
 			value = ElementManager.Blank
 		element = value 
+		element_changed.emit(value)
 		if Engine.is_editor_hint():
 			_material = StandardMaterial3D.new()
 @export var is_blooming: bool
