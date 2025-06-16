@@ -57,7 +57,7 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 	await battle.battle_ended
 	battle.queue_free()
 	hud.show()
-	UIManager.in_battle_mode = true
+	UIManager.in_battle_mode = false
 	
 	for actor in allies:
 		actor.current_hp = actor.hp
