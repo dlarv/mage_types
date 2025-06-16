@@ -947,7 +947,7 @@ shape = SubResource("BoxShape3D_mwy17")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DungeonToZiggurat"]
-transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 112.2, 4.2, -181.7)
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 81.3, 4.2, -181.7)
 shape = SubResource("BoxShape3D_wm0wg")
 
 [node name="Marker3D" type="Marker3D" parent="DungeonToZiggurat/CollisionShape3D2"]

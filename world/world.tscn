@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=64 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -171,6 +171,126 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Blue/DungeonChunk/Gate2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-31, 17.5, -115)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Blue/DungeonChunk/Gate2:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Blue/DungeonChunk/Gate3:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(74, 17.5, -115)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Blue/DungeonChunk/Gate3:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Blue/DungeonChunk/Gate4:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Blue/DungeonChunk/Gate4:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(95.7, 17.5, -62.4)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Blue/DungeonChunk/Gate5:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(74.8, 17.5, -9.29999)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Blue/DungeonChunk/Gate5:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Blue/DungeonChunk/Gate6:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-30.9, 17.5, -10.1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Blue/DungeonChunk/Gate6:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kmcq3"]
 resource_name = "chamber_2_trigger"
@@ -222,6 +342,126 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Blue/DungeonChunk/Gate2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-31, 17.5, -115), Vector3(-31, -14.5, -115)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blue/DungeonChunk/Gate2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Blue/DungeonChunk/Gate3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(74, 17.5, -115), Vector3(74, -14, -115)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Blue/DungeonChunk/Gate3:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Blue/DungeonChunk/Gate4:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Blue/DungeonChunk/Gate4:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(95.7, 17.5, -62.4), Vector3(95.7, -14.5, -62.4)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Blue/DungeonChunk/Gate5:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(74.8, 17.5, -9.29999), Vector3(74.8, -14.5, -9.3)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Blue/DungeonChunk/Gate5:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Blue/DungeonChunk/Gate6:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-30.9, 17.5, -10.1), Vector3(-30.9, -14.5, -10.1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Blue/DungeonChunk/Gate6:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_50av1"]
@@ -457,6 +697,12 @@ size = Vector3(1, 3, 11)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ek4v5"]
 size = Vector3(162, 29, 226)
 
+[sub_resource type="BoxMesh" id="BoxMesh_mndpf"]
+size = Vector3(20, 30, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22t23"]
+size = Vector3(20, 30, 3)
+
 [node name="World" type="Node3D"]
 
 [node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_lyukn")]
@@ -654,9 +900,50 @@ script = ExtResource("33_p3bt8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 9.5, -99.5)
 shape = SubResource("BoxShape3D_ek4v5")
 
-[node name="Gate" parent="Overworld/Blue/DungeonChunk" node_paths=PackedStringArray("locks") instance=ExtResource("32_0pnra")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22, 3, -137.7)
-locks = [null]
+[node name="Gate2" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -31, 17.5, -115)
+mesh = SubResource("BoxMesh_mndpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Gate2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Gate2/StaticBody3D"]
+shape = SubResource("BoxShape3D_22t23")
+
+[node name="Gate3" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 74, 17.5, -115)
+mesh = SubResource("BoxMesh_mndpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Gate3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Gate3/StaticBody3D"]
+shape = SubResource("BoxShape3D_22t23")
+
+[node name="Gate4" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 95.7, 17.5, -62.4)
+mesh = SubResource("BoxMesh_mndpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Gate4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Gate4/StaticBody3D"]
+shape = SubResource("BoxShape3D_22t23")
+
+[node name="Gate5" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 74.8, 17.5, -9.29999)
+mesh = SubResource("BoxMesh_mndpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Gate5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Gate5/StaticBody3D"]
+shape = SubResource("BoxShape3D_22t23")
+
+[node name="Gate6" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -30.9, 17.5, -10.1)
+mesh = SubResource("BoxMesh_mndpf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Gate6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Gate6/StaticBody3D"]
+shape = SubResource("BoxShape3D_22t23")
 
 [node name="MuralRoom" parent="Overworld/Blue/DungeonChunk" instance=ExtResource("34_5hmya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 0, -173.8)
