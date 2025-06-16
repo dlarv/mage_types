@@ -76,7 +76,6 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Impl jump buffering
 - [ ] Portals should reorient player model so that they are facing correct direction
 - [ ] Plan out beach house sequence and update model
-- [ ] Improve animations in stasis dungeon
 ## v0.6.x
 Demo MVP prep. Polish features added during previous versions.
 - [ ] Content
@@ -90,6 +89,8 @@ Demo MVP prep. Polish features added during previous versions.
 - [ ] Opening chests should show player list of contents and allow them to individually select them
 - [ ] Change transmutation graph advanced options from gdscript to gdshader
 - [ ] Add transmutation graph stencils to streamline advanced options usage
+- [ ] Ensure environment borders/models are aligned properly
+- [ ] Improve animations in stasis dungeon
 ## v0.7.x
 MVP Demo candidate. Add story and QOL features.
 - [ ] Character designs
