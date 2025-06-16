@@ -126,6 +126,7 @@ func _on_stream_hit_box_exited(body: Node3D) -> void:
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if not super.set_element(e, randVal, force): return false
+	if Engine.is_editor_hint() or not is_inside_tree(): return true
 
 	if is_blocking:
 		_set_blocking(true)
@@ -162,7 +163,7 @@ func stop(val: Variant=null) -> void:
 func start(val: Variant=null) -> void:
 	if in_stasis: return
 	super.start()
-	if Engine.is_editor_hint(): return
+	if Engine.is_editor_hint() or not is_inside_tree(): return
 	$AnimationPlayer.play("starting")
 	if is_blocking:
 		await get_tree().create_timer(0.1).timeout

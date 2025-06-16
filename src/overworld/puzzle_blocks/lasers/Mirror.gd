@@ -80,6 +80,7 @@ func _on_laser_dropped() -> void:
 
 # Override
 func flicker_collider() -> void:
+	if Engine.is_editor_hint() or not is_inside_tree(): return
 	block(true)
 	await get_tree().create_timer(0.01).timeout
 	block(false)
@@ -127,5 +128,3 @@ func _set_size() -> void:
 	$Area3D/CollisionShape3D.shape = shape
 	$Area3D/CollisionShape3D.shape.size.y = scaling.y
 	$Area3D.position.y = scaling.y / 2.0
-
-

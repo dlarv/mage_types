@@ -272,6 +272,8 @@ func force_load()-> void:
 func get_element_from_name(name: String) -> ElementalType:
 	# Ensure basic typos won't interfere.
 	name = name.to_lower().strip_edges()
+	if name == "blank":
+		return Blank
 	for el in elements:
 		if el.name.to_lower() == name:
 			return el

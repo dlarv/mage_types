@@ -11,7 +11,7 @@ var _element: String = "blank":
 		return _element
 	set(value):
 		_element = value
-		element = ElementManager.get_element_from_name(value)
+		set_element(ElementManager.get_element_from_name(value), -2, true)
 
 var element: ElementalType = ElementManager.Blank:
 	set(value): 
@@ -70,7 +70,7 @@ func _try_set_color(color=null) -> bool:
 
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
-	if e == null or e.is_blank(): return false
+	if e == null: return false
 	if in_stasis and not force:
 		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." 
 				% [puzzle_name, e.name])
@@ -175,6 +175,7 @@ func _set_material(val: BaseMaterial3D) -> void:
 
 
 func flicker_collider() -> void:
+	if Engine.is_editor_hint() or not is_inside_tree(): return
 	# Use case example:
 	# 1. Object is Blue and is sitting on a Purple pressure plate.
 	# 2. Object is transmuted into Purple.

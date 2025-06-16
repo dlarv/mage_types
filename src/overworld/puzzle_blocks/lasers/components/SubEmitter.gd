@@ -75,6 +75,7 @@ func pause(val: bool) -> void:
 
 
 func set_element(e: ElementalType) -> void:
+	if Engine.is_editor_hint() or not is_inside_tree(): return
 	laser.element = e
 	_mat.albedo_color = e.main_color
 	mesh.set_surface_override_material(0, _mat)

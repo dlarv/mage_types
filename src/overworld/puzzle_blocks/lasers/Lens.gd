@@ -79,6 +79,7 @@ func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> voi
 
 # Override
 func flicker_collider() -> void:
+	if Engine.is_editor_hint() or not is_inside_tree(): return
 	block(true)
 	await get_tree().create_timer(0.01).timeout
 	block(false)
