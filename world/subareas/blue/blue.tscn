@@ -953,9 +953,6 @@ shape = SubResource("BoxShape3D_wm0wg")
 [node name="Marker3D" type="Marker3D" parent="DungeonToZiggurat/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="SupplyClosetChunk" parent="." instance=ExtResource("18_sh3xv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)
-
 [node name="HouseChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, -6)
 script = ExtResource("3_4g4u6")
@@ -1342,8 +1339,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 75.5, -162)
 shape = SubResource("BoxShape3D_41131")
 
 [node name="Geyser" parent="ZigguratChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7, 3.8, -274.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7, 3.8, -111.7)
 size = 48.0
+
+[node name="SupplyClosetChunk" parent="." instance=ExtResource("18_sh3xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)
 
 [node name="BackroomChunk1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, -291)
