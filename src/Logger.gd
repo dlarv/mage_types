@@ -59,6 +59,8 @@ func _process(delta: float) -> void:
 
 
 func save_log() -> void:
+	if len(logs) == 0: return
+
 	var prefix := "res"
 	if OS.has_feature("standalone"):
 		prefix = "user"
