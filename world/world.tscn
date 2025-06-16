@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=62 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -32,6 +32,10 @@
 [ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="30_0y7aa"]
 [ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="31_lppqk"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="32_0pnra"]
+[ext_resource type="Script" path="res://src/overworld/DetachedChunk.gd" id="33_p3bt8"]
+[ext_resource type="PackedScene" uid="uid://2ee6w0ag61vd" path="res://world/subareas/blue/stasis_dungeon/mural_room.tscn" id="34_5hmya"]
+[ext_resource type="PackedScene" uid="uid://c6ap4wdy8tsnd" path="res://world/subareas/blue/stasis_dungeon/central_chamber.tscn" id="35_g5cey"]
+[ext_resource type="PackedScene" uid="uid://3ygr57mrvdra" path="res://world/subareas/blue/stasis_dungeon/starting_puzzle.tscn" id="36_c2bcd"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -143,6 +147,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Blue/DungeonChunk/CentralRoom/MainPuzzle:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Blue/DungeonChunk/CentralRoom/StartingPuzzle:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kmcq3"]
 resource_name = "chamber_2_trigger"
@@ -170,6 +198,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blue/DungeonChunk/CentralRoom/MainPuzzle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blue/DungeonChunk/CentralRoom/StartingPuzzle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_50av1"]
@@ -402,6 +454,9 @@ size = Vector3(1, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d0ue"]
 size = Vector3(1, 3, 11)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ek4v5"]
+size = Vector3(162, 29, 226)
+
 [node name="World" type="Node3D"]
 
 [node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_lyukn")]
@@ -590,6 +645,29 @@ mesh = SubResource("BoxMesh_f80hr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DoorBlocker_4/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_4d0ue")
+
+[node name="DungeonChunk" type="Area3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -380)
+script = ExtResource("33_p3bt8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 9.5, -99.5)
+shape = SubResource("BoxShape3D_ek4v5")
+
+[node name="Gate" parent="Overworld/Blue/DungeonChunk" node_paths=PackedStringArray("locks") instance=ExtResource("32_0pnra")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22, 3, -137.7)
+locks = [null]
+
+[node name="MuralRoom" parent="Overworld/Blue/DungeonChunk" instance=ExtResource("34_5hmya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 0, -173.8)
+
+[node name="CentralRoom" type="Node3D" parent="Overworld/Blue/DungeonChunk"]
+
+[node name="MainPuzzle" parent="Overworld/Blue/DungeonChunk/CentralRoom" instance=ExtResource("35_g5cey")]
+transform = Transform3D(1, 0, -8.35187e-23, 0, 1, 0, -8.35187e-23, 0, 1, 21.6374, 1.4, -62.473)
+visible = false
+
+[node name="StartingPuzzle" parent="Overworld/Blue/DungeonChunk/CentralRoom" instance=ExtResource("36_c2bcd")]
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
