@@ -114,7 +114,7 @@ func _on_stream_top_hit_box_entered(body: Node3D) -> void:
 
 func _on_stream_hit_box_exited(body: Node3D) -> void:
 	if body is RigidBody3D:
-		body.constant_force = Vector3.ZERO
+		body.constant_force -= transform.basis.y * body.constant_force
 		Logger.append_puzzle_log("Geyser(%s) spout was exited by PuzzleBlock(%s)" 
 				% [puzzle_name, body.puzzle_name])
 		pass
