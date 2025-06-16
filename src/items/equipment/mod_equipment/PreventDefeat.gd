@@ -7,7 +7,8 @@ var _death_averted := {}
 
 #override
 func equip(actor: BattleActor) -> void:
-	actor.battle_setup_completed.connect(setup)
+	if not actor.battle_setup_completed.is_connected(setup):
+		actor.battle_setup_completed.connect(setup)
 	Logger.append_battle_log("PreventDefeat equipment altered %s.apply_damage(...)" % actor.name)
 	_death_averted[actor] = false
 	actor.add_func_override(actor.apply_damage, apply_damage)
