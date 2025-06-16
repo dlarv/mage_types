@@ -42,4 +42,4 @@ func _close():
 	self.collision_layer = 1
 	$AnimationPlayer.play_backwards("opening")
 	show()
-	Logger.append_puzzle_log("Gate(%s)was closed." % [puzzle_name])
+	Logger.append_puzzle_log("Gate(%s) was closed." % [puzzle_name])

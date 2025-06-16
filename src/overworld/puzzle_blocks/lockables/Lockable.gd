@@ -44,7 +44,7 @@ func _on_lock_opened(lock: PuzzleBlock) -> bool:
 
 	if _opened_locks.has(lock):
 		_opened_locks[lock] = true
-		Logger.append_puzzle_log("Gate(%s)'s Lock(%s) was opened." % [puzzle_name, lock.puzzle_name])
+		Logger.append_puzzle_log("Lockable(%s)'s Lock(%s) was opened." % [puzzle_name, lock.puzzle_name])
 	else:
 		return false
 
