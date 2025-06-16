@@ -11,9 +11,9 @@ func _enter_tree() -> void:
 		mat.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
 	$MeshInstance3D.set_surface_override_material(0, mat)
 
-	$LaserReceiver.on.connect(func(obj: PuzzleBlock): on.emit(obj))
-	$LaserReceiver.off.connect(func(obj: PuzzleBlock): off.emit(obj))
-	$LaserReceiver.invalid_off.connect(func(obj: PuzzleBlock): invalid_off.emit(obj))
+	$LaserReceiver.on.connect(func(obj: PuzzleBlock): on.emit(self))
+	$LaserReceiver.off.connect(func(obj: PuzzleBlock): off.emit(self))
+	$LaserReceiver.invalid_off.connect(func(obj: PuzzleBlock): invalid_off.emit(self))
 
 
 func set_element(e: ElementalType, r:=-2, f:=false) -> bool:

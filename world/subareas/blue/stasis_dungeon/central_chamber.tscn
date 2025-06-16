@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="4_7svuq"]
 [ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="5_mjnat"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="6_u1py6"]
-[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="7_4dov5"]
+[ext_resource type="PackedScene" uid="uid://xss5he7h36fs" path="res://src/overworld/puzzle_blocks/lasers/hidden_receiver.tscn" id="7_3t43h"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="8_4jwju"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83nc7"]
-size = Vector3(150, 32, 168)
+size = Vector3(163, 51, 168)
 
 [node name="CentralChamber" type="Area3D" node_paths=PackedStringArray("chunk", "resets") groups=["persist"]]
 script = ExtResource("1_xbdi3")
@@ -18,7 +18,7 @@ chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 15.5, -8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 25, -8.5)
 shape = SubResource("BoxShape3D_83nc7")
 
 [node name="Chunk" type="Node3D" parent="."]
@@ -28,25 +28,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91784, 0)
 
 [node name="EastSection" type="Node3D" parent="Chunk"]
 
-[node name="LaserReceiver" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.8, 0.5, 12.5)
-collision_layer = 5
-_element = "cyan"
-
-[node name="LaserReceiver4" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.8, 0.5, -12.5)
-collision_layer = 5
-_element = "yellow"
-
-[node name="LaserReceiver2" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.8, 1, 42.6)
-collision_layer = 5
+[node name="HiddenReceiver" parent="Chunk/EastSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.8, 1, 42.6)
 _element = "red"
 
-[node name="LaserReceiver3" parent="Chunk/EastSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8, 1, -42.7)
-collision_layer = 5
+[node name="HiddenReceiver4" parent="Chunk/EastSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 19.8, 1, -42.7)
 _element = "blue"
+
+[node name="HiddenReceiver2" parent="Chunk/EastSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.8, 0.4, 12.5)
+_element = "cyan"
+
+[node name="HiddenReceiver3" parent="Chunk/EastSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.8, 0.4, -12.5)
+_element = "yellow"
 
 [node name="Mirror" parent="Chunk/EastSection" instance=ExtResource("3_dq2i3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, -0.5, -3.5)
@@ -202,24 +198,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 _element = "cyan"
 
-[node name="LaserReceiver" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -42.8, 0.5, 12.5)
-collision_layer = 5
+[node name="HiddenReceiver" parent="Chunk/WestSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.8, 0.4, 12.5)
 _element = "magenta"
 
-[node name="LaserReceiver4" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.8, 0.5, -12.5)
-collision_layer = 5
+[node name="HiddenReceiver2" parent="Chunk/WestSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3, 0.4, -12)
 _element = "magenta"
 
-[node name="LaserReceiver2" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.8, 1, 42.6)
-collision_layer = 5
+[node name="HiddenReceiver3" parent="Chunk/WestSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.8, 1, 42.6)
 _element = "blue"
 
-[node name="LaserReceiver3" parent="Chunk/WestSection" instance=ExtResource("7_4dov5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -42.7)
-collision_layer = 5
+[node name="HiddenReceiver4" parent="Chunk/WestSection" instance=ExtResource("7_3t43h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 1, -42.7)
 _element = "yellow"
 
 [node name="OrangeEmitter" parent="Chunk" instance=ExtResource("2_jgyy0")]
@@ -256,7 +248,8 @@ _element = "magenta"
 
 [node name="Gate" parent="Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("8_4jwju")]
 transform = Transform3D(9.53674e-07, 0, 18, 0, 18, 0, -18, 0, 9.53674e-07, -77.6436, 0.5, 0.886639)
-locks = [NodePath("../WestSection/LaserReceiver"), NodePath("../WestSection/LaserReceiver4"), NodePath("../WestSection/LaserReceiver2"), NodePath("../WestSection/LaserReceiver3"), NodePath("../EastSection/LaserReceiver"), NodePath("../EastSection/LaserReceiver4"), NodePath("../EastSection/LaserReceiver2"), NodePath("../EastSection/LaserReceiver3")]
+locks = [NodePath("../EastSection/HiddenReceiver"), NodePath("../EastSection/HiddenReceiver2"), NodePath("../EastSection/HiddenReceiver3"), NodePath("../EastSection/HiddenReceiver4"), NodePath("../WestSection/HiddenReceiver"), NodePath("../WestSection/HiddenReceiver2"), NodePath("../WestSection/HiddenReceiver3"), NodePath("../WestSection/HiddenReceiver4")]
+permanent = true
 
 [editable path="Chunk/EastSection/Rails"]
 [editable path="Chunk/EastSection/Rails2"]
