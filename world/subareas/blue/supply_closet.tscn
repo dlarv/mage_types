@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://h8buyp6ewnv8"]
+[gd_scene load_steps=17 format=3 uid="uid://h8buyp6ewnv8"]
 
 [ext_resource type="Script" path="res://src/overworld/DetachedChunk.gd" id="1_6yy2f"]
 [ext_resource type="PackedScene" uid="uid://do43qejpr6n5i" path="res://src/overworld/puzzle_blocks/delay.tscn" id="2_jk5ic"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cxjdlm0ubsvy6" path="res://src/overworld/magiclay/catalyst_device.tscn" id="12_n5qqj"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="13_0axfp"]
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="13_m7ws3"]
+[ext_resource type="PackedScene" uid="uid://bdm2iqu5gdils" path="res://src/overworld/magiclay/catalyst_platform.tscn" id="15_rfm8t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_caqob"]
 size = Vector3(111, 29, 49)
@@ -79,7 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.4, -11)
 _element = "blue"
 
 [node name="MagiclayRock" parent="Chunk" instance=ExtResource("6_1kab2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.9, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1.9, -11)
 
 [node name="Relay" parent="Chunk" instance=ExtResource("7_vuo6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.4, -11)
@@ -141,7 +142,16 @@ lock = NodePath("../LaserReceiver2")
 [node name="CatalystDevice2" parent="Chunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.4, -5.85)
 
+[node name="CatalystPlatform" parent="Chunk" instance=ExtResource("15_rfm8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.458283, -11)
+trigger_on_contact = true
+is_transmutable = true
+
+[node name="CatalystDevice5" parent="Chunk" instance=ExtResource("12_n5qqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.458283, -9)
+
 [connection signal="element_selected" from="Chunk/CatalystDevice" to="Chunk/Emitter" method="set_element"]
 [connection signal="element_selected" from="Chunk/CatalystDevice3" to="Chunk/Emitter3" method="set_element"]
 [connection signal="element_selected" from="Chunk/CatalystDevice4" to="Chunk/Lens" method="set_element"]
 [connection signal="element_selected" from="Chunk/CatalystDevice2" to="Chunk/Emitter2" method="set_element"]
+[connection signal="element_selected" from="Chunk/CatalystDevice5" to="Chunk/CatalystPlatform" method="set_element"]
