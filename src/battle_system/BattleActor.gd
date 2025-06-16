@@ -330,9 +330,9 @@ func serialize() -> Dictionary:
 	if equipment:
 		equipmentData = equipment.resource_path
 	
-	var alignmentData := ""
+	var alignmentData := {}
 	if alignment_manager:
-		alignment_manager.serialize()
+		alignmentData = alignment_manager.serialize()
 
 	return {
 		"name": name,

@@ -64,6 +64,7 @@ func unload(player: Node3D) -> void:
 func serialize() -> Dictionary:
 	var data := {
 		"path": get_path(),
+		"visible": visible,
 	}
 
 	for key in _persistent_objs.keys():
@@ -74,6 +75,7 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> void:
 	if not is_node_ready():
 		await ready
+	visible = data.visible
 	for key in data.keys():
-		if key is String and key == "path": continue
+		if key is String and (key == "path" or key == "visible"): continue
 		_persistent_objs[key].deserialize(data[key])

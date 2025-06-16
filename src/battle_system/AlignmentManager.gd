@@ -86,8 +86,9 @@ func update_current_alignment() -> bool:
 
 
 func deserialize(data: Dictionary) -> void:
-	alignment_locked = data.alignment_locked
-	setup_from_string(data.values)
+	if not data.is_empty(): 
+		alignment_locked = data.alignment_locked
+		setup_from_string(data.values)
 
 
 func serialize() -> Dictionary:
