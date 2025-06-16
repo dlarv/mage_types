@@ -14,11 +14,12 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] Add puzzles to Chamber 4
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
-	- [ ] Central chamber intro puzzle
+	- [x] Central chamber intro puzzle (x3)
 	- [ ] Main puzzle hints created
 	- [ ] Spoke puzzles created
 		- Player solves spoke puzzles to get hints for main puzzle
 	- [ ] Mural in Chamber 2
+		- [x] Add HiddenReceivers
 		- [ ] Text describing what player is seeing
 		- [ ] Assets reflecting what text describes
 	- [ ] Give StasisTarget a model
@@ -33,18 +34,24 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] Original version works in new physics paradigm
 		- [ ] Decide if/where/how it should be used
 - [ ] Puzzle block demo:
-	- [x] Geyser demo
 	- [x] Pressure plate demo
 		- [ ] Bug: Player activated pressure plate not working
 	- [x] Delay demo
-		- [ ] Change how delay works. It should emit off signal when timer expires.
+		- [ ] Change how delay works. It should emit off signal when timer expires
 		- [ ] Current delay funcitonality should be moved to new block: delayed relay
-	- [ ] Relay demo
+	- [x] Relay demo
+		- [ ] Create indicator block, which differentiates between off/on/invalid_off
 	- [ ] Stasis target demo
 	- [ ] Rails demo
 	- [ ] Logic gate demos
-	- [ ] Laser blocks demos
+	- [x] Laser blocks demos
+		- [ ] DraggableMirror?
+		- [ ] RotatableMIrror?
+		- [ ] DraggableEmitter?
+		- [ ] OneWayLens?
+		- [ ] Laser collisions?
 	- [x] Reset demo
+	- [x] Geyser demo
 - [x] BugFix: When geysers are meant to be controlled via an external puzzle block (e.g. turned on/off by a pressure plate), this can be bypassed using the stasis spell
 - [x] Give player ability to jump
 	- [x] Expand geyser blocker to prevent player from jumping on top of it
@@ -69,6 +76,7 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Impl jump buffering
 - [ ] Portals should reorient player model so that they are facing correct direction
 - [ ] Plan out beach house sequence and update model
+- [ ] Improve animations in stasis dungeon
 ## v0.6.x
 Demo MVP prep. Polish features added during previous versions.
 - [ ] Content
