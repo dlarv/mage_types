@@ -17,6 +17,8 @@ func _ready() -> void:
 
 	if is_on:
 		start()
+	else:
+		stop()
 
 func start(val: Variant=null) -> void: 
 	if Engine.is_editor_hint(): return

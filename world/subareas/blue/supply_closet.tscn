@@ -21,137 +21,137 @@ size = Vector3(111, 29, 49)
 
 [node name="SupplyClosetChunk" type="Area3D" node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_6yy2f")
-chunk = NodePath("Chunk")
+chunk = NodePath("SupplyClosetChunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -7)
 shape = SubResource("BoxShape3D_caqob")
 
-[node name="Chunk" type="Node3D" parent="."]
+[node name="SupplyClosetChunk" type="Node3D" parent="."]
 
-[node name="Delay" parent="Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("2_jk5ic")]
+[node name="Delay" parent="SupplyClosetChunk" node_paths=PackedStringArray("locks") instance=ExtResource("2_jk5ic")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, -2)
 locks = [NodePath("../Button")]
 
-[node name="Button" parent="Chunk" node_paths=PackedStringArray("lock") instance=ExtResource("3_ybmg7")]
+[node name="Button" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.9, -2)
 lock = NodePath("../Delay")
 
-[node name="Geyser" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.4, -16)
 _element = "blue"
 
-[node name="Geyser2" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser2" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.4, -16)
 _element = "purple"
 
-[node name="Geyser3" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser3" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.4, -16)
 _element = "magenta"
 
-[node name="Geyser4" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser4" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.4, -16)
 _element = "red"
 
-[node name="Geyser5" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser5" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, -16)
 _element = "orange"
 
-[node name="Geyser6" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser6" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, -16)
 
-[node name="Geyser7" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser7" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.4, -16)
 _element = "green"
 
-[node name="Geyser8" parent="Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser8" parent="SupplyClosetChunk" instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.4, -16)
 _element = "cyan"
 
-[node name="PressurePlate" parent="Chunk" instance=ExtResource("5_ib2ey")]
+[node name="PressurePlate" parent="SupplyClosetChunk" instance=ExtResource("5_ib2ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.4, -11)
 can_player_trigger = true
 
-[node name="PressurePlate2" parent="Chunk" instance=ExtResource("5_ib2ey")]
+[node name="PressurePlate2" parent="SupplyClosetChunk" instance=ExtResource("5_ib2ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.4, -11)
 
-[node name="PressurePlate3" parent="Chunk" instance=ExtResource("5_ib2ey")]
+[node name="PressurePlate3" parent="SupplyClosetChunk" instance=ExtResource("5_ib2ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.4, -11)
 _element = "blue"
 
-[node name="MagiclayRock" parent="Chunk" instance=ExtResource("6_1kab2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1.9, -11)
+[node name="MagiclayRock" parent="SupplyClosetChunk" instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1.9, -11)
 
-[node name="Relay" parent="Chunk" instance=ExtResource("7_vuo6s")]
+[node name="Relay" parent="SupplyClosetChunk" instance=ExtResource("7_vuo6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.4, -11)
 
-[node name="Reset" parent="Chunk" instance=ExtResource("8_3n6eg")]
+[node name="Reset" parent="SupplyClosetChunk" instance=ExtResource("8_3n6eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91784, -11)
 
-[node name="StasisTarget" parent="Chunk" instance=ExtResource("9_dh4o4")]
+[node name="StasisTarget" parent="SupplyClosetChunk" instance=ExtResource("9_dh4o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.9, -11)
 
-[node name="HiddenReceiver" parent="Chunk" instance=ExtResource("10_3ghts")]
+[node name="HiddenReceiver" parent="SupplyClosetChunk" instance=ExtResource("10_3ghts")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.75, 1.4, -16.45)
 _element = "cyan"
 
-[node name="Emitter" parent="Chunk" instance=ExtResource("11_13twe")]
+[node name="Emitter" parent="SupplyClosetChunk" instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 20.75, 1.4, -5.45)
 _element = "blue"
 
-[node name="Relay2" parent="Chunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
+[node name="Relay2" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.75, 0.4, -16.45)
 lock = NodePath("../HiddenReceiver")
 
-[node name="CatalystDevice" parent="Chunk" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.75, 0.4, -5.85)
 
-[node name="Emitter3" parent="Chunk" instance=ExtResource("11_13twe")]
+[node name="Emitter3" parent="SupplyClosetChunk" instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 25.05, 1.4, -5.45)
 _element = "blue"
 
-[node name="Lens" parent="Chunk" instance=ExtResource("13_m7ws3")]
+[node name="Lens" parent="SupplyClosetChunk" instance=ExtResource("13_m7ws3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 25.0541, 1.4, -12.4)
 
-[node name="CatalystDevice3" parent="Chunk" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice3" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.05, 0.4, -5.85)
 
-[node name="CatalystDevice4" parent="Chunk" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice4" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.05, 0.4, -12.85)
 
-[node name="LaserReceiver" parent="Chunk" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver" parent="SupplyClosetChunk" instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.1, -16.5)
 _element = "cyan"
 
-[node name="Emitter2" parent="Chunk" instance=ExtResource("11_13twe")]
+[node name="Emitter2" parent="SupplyClosetChunk" instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 15.75, 1.4, -5.45)
 _element = "blue"
 
-[node name="Relay3" parent="Chunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
+[node name="Relay3" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.75, 0.4, -16.45)
 lock = NodePath("../LaserReceiver")
 
-[node name="LaserReceiver2" parent="Chunk" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver2" parent="SupplyClosetChunk" instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.1, -16.5)
 _element = "cyan"
 
-[node name="Relay4" parent="Chunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
+[node name="Relay4" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.75, 0.4, -16.45)
 lock = NodePath("../LaserReceiver2")
 
-[node name="CatalystDevice2" parent="Chunk" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice2" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.4, -5.85)
 
-[node name="CatalystPlatform" parent="Chunk" instance=ExtResource("15_rfm8t")]
+[node name="CatalystPlatform" parent="SupplyClosetChunk" instance=ExtResource("15_rfm8t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.458283, -11)
 trigger_on_contact = true
 is_transmutable = true
 
-[node name="CatalystDevice5" parent="Chunk" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice5" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.458283, -9)
 
-[connection signal="element_selected" from="Chunk/CatalystDevice" to="Chunk/Emitter" method="set_element"]
-[connection signal="element_selected" from="Chunk/CatalystDevice3" to="Chunk/Emitter3" method="set_element"]
-[connection signal="element_selected" from="Chunk/CatalystDevice4" to="Chunk/Lens" method="set_element"]
-[connection signal="element_selected" from="Chunk/CatalystDevice2" to="Chunk/Emitter2" method="set_element"]
-[connection signal="element_selected" from="Chunk/CatalystDevice5" to="Chunk/CatalystPlatform" method="set_element"]
+[connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice" to="SupplyClosetChunk/Emitter" method="set_element"]
+[connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice3" to="SupplyClosetChunk/Emitter3" method="set_element"]
+[connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice4" to="SupplyClosetChunk/Lens" method="set_element"]
+[connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice2" to="SupplyClosetChunk/Emitter2" method="set_element"]
+[connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice5" to="SupplyClosetChunk/CatalystPlatform" method="set_element"]

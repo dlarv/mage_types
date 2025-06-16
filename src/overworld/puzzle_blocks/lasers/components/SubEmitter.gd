@@ -80,6 +80,7 @@ func set_element(e: ElementalType) -> void:
 	_mat.albedo_color = e.main_color
 	mesh.set_surface_override_material(0, _mat)
 	laser.rand_val = Time.get_ticks_usec()
+
 	pause(true)
 	await get_tree().create_timer(0.01).timeout
-	pause(false)
+	pause(not is_on)
