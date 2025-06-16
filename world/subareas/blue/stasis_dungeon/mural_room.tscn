@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2ee6w0ag61vd"]
+[gd_scene load_steps=11 format=3 uid="uid://2ee6w0ag61vd"]
 
 [ext_resource type="PackedScene" uid="uid://d3odmmlqvwyfn" path="res://data/bosses/stasis_boss.tscn" id="1_k51av"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_3sbrl"]
@@ -10,6 +10,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfh1f"]
 size = Vector3(43, 14, 56)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aq7f4"]
+radius = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_gx5k3"]
+radius = 1.5
+height = 3.0
 
 [node name="Chamber2" type="Area3D"]
 
@@ -381,6 +388,50 @@ map_invalid_off_to = "off"
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 2, 0.5)
 collision_layer = 5
 _element = "yellow"
+
+[node name="Statue_NE" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, -13)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Statue_NE"]
+shape = SubResource("SphereShape3D_aq7f4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_NE"]
+mesh = SubResource("SphereMesh_gx5k3")
+
+[node name="Statue_SE" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4, 12)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Statue_SE"]
+shape = SubResource("SphereShape3D_aq7f4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_SE"]
+mesh = SubResource("SphereMesh_gx5k3")
+
+[node name="Statue_SW" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 4, 10)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Statue_SW"]
+shape = SubResource("SphereShape3D_aq7f4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_SW"]
+mesh = SubResource("SphereMesh_gx5k3")
+
+[node name="Statue_NW" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 4, -16)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Statue_NW"]
+shape = SubResource("SphereShape3D_aq7f4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_NW"]
+mesh = SubResource("SphereMesh_gx5k3")
 
 [connection signal="on" from="Relay1" to="SE/Rails1" method="slide"]
 [connection signal="on" from="Relay1" to="SE/Rails2" method="slide"]
