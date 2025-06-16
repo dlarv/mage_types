@@ -1,23 +1,55 @@
 # Misc Notes
 - I can't help but feeling that it would be thematically right to give the player some method of permanently altering the environment.
 - [x] I really want to find a way to translate the blender clay shader to gdshader code.
-- If I add jumping, I can have platforming challenges.
+- [x] If I add jumping, I can have platforming challenges.
 - v0.6 will be the next version I release to my playtesters.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
-- [ ] Write logs to user's system
+- [x] Hotel Room mini-dungeon
+	- [x] Chamber 1 bridge puzzles
+	- [x] Add simple demonstration obstacle to base floor of chamber 1 to show how pressure plates work
+	- [x] Add puzzles to Chamber 3
+	- [x] Add puzzles to Chamber 4
 - [ ] Stasis Dungeon
-	- [ ] Chamber 1 bridge puzzle
+	- [x] Central chamber main puzzle solution programmed
+	- [ ] Central chamber intro puzzle
+	- [ ] Main puzzle hints created
+	- [ ] Spoke puzzles created
+		- Player solves spoke puzzles to get hints for main puzzle
 	- [ ] Mural in Chamber 2
-	- [ ] Add puzzles to Chamber 3
-- [ ] Enclave stasis backtrack puzzle
-- [ ] Plan out beach house sequence and update model
-- [ ] See if any puzzles can be ported from previous versions
-	- [ ] Lost-forest-style caves => Supply closet
-	- [ ] Hidden caves logic puzzle
-	- [ ] Original Stasis obstacle
+		- [ ] Text describing what player is seeing
+		- [ ] Assets reflecting what text describes
+	- [ ] Give StasisTarget a model
+		- [ ] Stasis target will be used to access a secret room in Chamber 3
+		- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
+- See if any puzzles can be ported from previous versions
+	- [x] Lost-forest-style caves => Supply closet
+		- [x] Create room that contains demos for all puzzle blocks. This room will be in front of the lost forest part.
+		- [ ] Last room of supply closet should be a lore dump library (since its Orange)
+	- [ ] Hidden caves logic puzzle (Lavender puzzle)
+	- [ ] Original Stasis obstacle?
+		- [x] Original version works in new physics paradigm
+		- [ ] Decide if/where/how it should be used
+- [ ] Puzzle block demo:
+	- [x] Geyser demo
+	- [x] Pressure plate demo
+		- [ ] Bug: Player activated pressure plate not working
+	- [x] Delay demo
+		- [ ] Change how delay works. It should emit off signal when timer expires.
+		- [ ] Current delay funcitonality should be moved to new block: delayed relay
+	- [ ] Relay demo
+	- [ ] Stasis target demo
+	- [ ] Rails demo
+	- [ ] Logic gate demos
+	- [ ] Laser blocks demos
+	- [x] Reset demo
+- [x] BugFix: When geysers are meant to be controlled via an external puzzle block (e.g. turned on/off by a pressure plate), this can be bypassed using the stasis spell
+- [x] Give player ability to jump
+	- [x] Expand geyser blocker to prevent player from jumping on top of it
+- [x] Force pressure plates/etc to \_flicker_collider when chunk is loaded
+- [x] Write logs to user's system
 ## v0.5.x
 Exploration playtest candidate. Player will be able to explore decorated map.
 - [ ] Make exploring the map interesting.
@@ -32,6 +64,11 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Items/mini obstacles
 	- [ ] Create door models and animations
 	- [ ] On doors player cannot enter, add "Do not disturb" signage
+- [ ] Improve jump mechanics
+	- [ ] Impl coyote time
+	- [ ] Impl jump buffering
+- [ ] Portals should reorient player model so that they are facing correct direction
+- [ ] Plan out beach house sequence and update model
 ## v0.6.x
 Demo MVP prep. Polish features added during previous versions.
 - [ ] Content
@@ -43,6 +80,8 @@ Demo MVP prep. Polish features added during previous versions.
 	- [ ] Attacks access animations using an Id (probably an enum)
 - [ ] Wild enemies
 - [ ] Opening chests should show player list of contents and allow them to individually select them
+- [ ] Change transmutation graph advanced options from gdscript to gdshader
+- [ ] Add transmutation graph stencils to streamline advanced options usage
 ## v0.7.x
 MVP Demo candidate. Add story and QOL features.
 - [ ] Character designs
