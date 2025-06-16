@@ -13,3 +13,8 @@ func play_animation(player: Node3D) -> void:
 		player.call_deferred("play_cutscene", animation_player, animation_name)
 	else:
 		animation_player.play(animation_name)
+
+func play_animation_find_player(obj: Node) -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		play_animation(player)
