@@ -18,7 +18,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] Central chamber intro puzzle (x3)
 	- [ ] Main puzzle hints created
 	- [ ] Spoke puzzles created
-		- Player solves spoke puzzles to get hints for main puzzle
+		- Player solves spoke puzzles to get hints for main puzzle and keys for the East room.
 	- [ ] Mural in Chamber 2
 		- [x] Add HiddenReceivers
 		- [ ] Text describing what player is seeing
