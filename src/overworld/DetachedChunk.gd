@@ -47,7 +47,6 @@ func _ready() -> void:
 		obj.hide()
 	
 
-
 func gather_objs() -> void:
 	var detachedChunks = get_parent().find_children("", "DetachedChunk")
 	# Array[ [DetachedChunk, CollisionShape3D] ]

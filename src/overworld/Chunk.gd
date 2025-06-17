@@ -12,6 +12,7 @@ var _persistent_objs := {}
 func _ready() -> void:
 	if not chunk: return
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
+	chunk.hide()
 	body_entered.connect(load)
 	body_exited.connect(unload)
 	collision_mask = 32
@@ -51,6 +52,7 @@ func load(player: Node3D) -> void:
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
 	print("Player loaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
+	chunk.show()
 
 	for child in find_children("", "MagiClay"):
 		child.flicker_collider()
@@ -60,6 +62,7 @@ func unload(player: Node3D) -> void:
 	Logger.append_world_log("Player unloaded Chunk(%s)" % name) 
 	print("Player unloaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
+	chunk.hide()
 
 func serialize() -> Dictionary:
 	var data := {
