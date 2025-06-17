@@ -248,8 +248,8 @@ _data = {
 "barrier_3_down": SubResource("Animation_5v00k")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qjfii"]
-size = Vector3(150, 32, 168)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dhuyc"]
+size = Vector3(222, 51, 172)
 
 [sub_resource type="BoxMesh" id="BoxMesh_174ud"]
 size = Vector3(1, 20, 80)
@@ -304,8 +304,8 @@ animation_name = "barrier_3_down"
 animation_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
-shape = SubResource("BoxShape3D_qjfii")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 19, 17.5)
+shape = SubResource("BoxShape3D_dhuyc")
 
 [node name="Chunk" type="Node3D" parent="."]
 
