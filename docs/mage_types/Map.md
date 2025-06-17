@@ -44,17 +44,15 @@ Script: [[Beach House Intro]]
 ### Ziggurat 
 - Inside the Grand Enclave Ziggurat, there are 8 giant pillars the player can use to ascend to the surface. However, the first one has collapsed, revealing a hidden side path. The player must venture down this side route and loop back in order to ascend.
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
-### Side Path (aka Stasis Dungeon)
-- Player navigates a simple 3 room dungeon.
-- Once they get Stasis, they'll backtrack, using their new power to unlock the way out.
-- The player should get Stasis inside this side path.
+### Stasis Dungeon
 - I want this to be formatted sort of like a Zelda dungeon. Player will adventure halfway through the dungeon, battle a miniboss, obtain the Catalyst spell, then loop back unlocking new paths in sections they've already been.
-### Chamber 1
-- The purpose of this room is simply to introduce the player to the lasers.
-- 3 Red Geysers will connect Chambers 1 and 3.
-	- A mirror on rails will allow all 3 geysers to be hit with a Yellow beam, oscillating them between Red and Orange.
-	- After the player obtains Stasis, they can use it on a previous mirror, turning the Red/Orange geysers to Yellow.
-### Chamber 2
+### Central Chamber (Starting Config)
+- When the player first enters dungeon, it will be in a limited version, with three layers separated by three concentric walls.
+- The player will be presented with three simple obstacles in sequence. These will mostly be to introduce the player to the lasers, mirrors, rails, and lenses, as well as the hidden receivers.
+	- As the player solves these obstacles, the walls will come down, slowly opening up more of the room.
+- Once all walls have been dropped, player will be presented with 7 doors (8 including the one they entered from). 6 of these doors will be locked.
+- Heading down the other unlocked path will take them into the Mural Room.
+### Mural Room
 The player will be able to enter this section without too much trouble. At the end, they will find the boss and Stasis. Upon picking up the spell, a trap will trigger, locking the player inside. The player will be presented with 3 riddles to solve.
 - 4 Lasers will be arrayed aroudn the edges of the room. Each one hits a hidden receiver.
 	- These will be Red, Green, Blue, and Yellow.
@@ -66,12 +64,57 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 - RGB, !Y
 - RG, !BY
 - Y !RGB
-### Chamber 3
-- Needs to involve stasis.
-- Should have 3 solutions:
-	- Opens way out.
-	- Opens door to treasure room.
-	- Opens hidden door inside treasure room.
+### Central Chamber (Main Config)
+- Once the player finished up inside the mural room, they will reenter the Central Chamber.
+- Triggering the trap will also cause the Central Chamber to switch to the main configuration.
+- All doors, except for the West one, will be unlocked.
+- There will be a large puzzle, featuring: 8 emitters, 8 hidden receivers, and 24 mirrors/lenses.
+	- To solve this puzzle, the player must use stasis on the correct *3* mirrors/lenses. There are also *3* lenses connected to rails which must be moved out of the way.
+	- Solving this central puzzle will unlock the West door, allowing the player to escape the puzzle.
+	- This puzzle will be impossible to solve without using brute force. To solve it, the player must venture down the side paths to find hints telling them what colors the hidden receivers will be.
+- Heading down the NW, NE, SW, & SE doors will take the player to side puzzles.
+	- Each side path should have a theme:
+		- **Geyser puzzles**: Player must use stasis on specific geysers such that a block ends up in the correct location.
+		- **Laser/Mirror puzzles**: Player must use stasis on mirrors to correctly transmute lasers.
+		- **Battle**: Player must fight various enemies, many of which will utilize the Stasis status condition.
+		- **Platforming**: Player must finish parkour/platforming challenges. It should use stasis to pass certain obstacles, but its use of the spell will be lighter here than other areas.
+- At the end of each side path will be a chest containing some cool items. Each chest will also contain a key, which can be used in the East room.
+	- Unlike the other doors, the East door will take the player into a single room. Inside this room will be a small door with 4 keyholes.
+	- Using the keys the player has found throughout the side paths will grant them access to the vault.
+	- Ideas for vaults content: 
+		- Merchant who sells all items
+		- Powerful equipment (PreventDefeat, Reactor Shard)
+### NW Chambers (Laser Puzzles)
+- I think a limited version of the old catalyst puzzle would be fitting. This would then allow me to use the trick with the crack in the wall.
+- The player already knows how the laser system works, so I don't really need to explain it here. Instead, I can immediately start building towards the catalyst-style puzzle.
+#### Chamber 1 (Lens Puzzle)
+- 3 emitters with a sequence of 3 lenses each.
+- Player must use stasis on bottom-right, middle-left, and top-right
+#### Chamber 2 (Lens Puzzle w/ Movable Emitters)
+- 3 emitters with 1, 2, and 3 lenses respectively.
+- Emitters are draggable, so player must figure out which order to put them in.
+- Emitter order (bottom to top): Purple, Magenta, Blue
+- Stasis first lens in Magenta row.
+- Stasis only lens in Blue row.
+#### Chamber 3 (Fork)
+- Player encounters a fork in the road.
+- Player must clear left and right path before continuing, but can choose which order.
+#### Chamber 4 (Left path/Battle)
+- Player stands at one end of long hallway.
+- Spawner stands at other side.
+- Player must defeat a certain number of enemies (within a time limit?).
+- Player has Magenta-Strike and has lasers they can use to change the enemies into Magenta, allowing them to win turn 1.
+#### Chamber 5 (Right path/Final Lens Puzzle)
+- This will be the most complicated lens puzzle, combining elements from Chambers 1 & 2.
+- Chamber 5' (aka 8) can be found on the other side of this section. This will be an optional section that contains hints for Chamber 5 and extra hints for the Central Chamber puzzle?
+#### Chamber 6 (Mirror Puzzles)
+- Separated into top and bottom chambers, similar to old catalyst puzzle.
+- Features draggable mirrors?
+- Player must determine correct mirror placement.
+- Player must also use stasis on select mirrors.
+- Player can use mirror from top section to solve puzzle in lower section, revealing a secret reward.
+#### Chamber 7 (Vault)
+- Player receives rewards, including central chamber hint and key.
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
 ****

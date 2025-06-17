@@ -2,7 +2,8 @@
 - I can't help but feeling that it would be thematically right to give the player some method of permanently altering the environment.
 - [x] I really want to find a way to translate the blender clay shader to gdshader code.
 - [x] If I add jumping, I can have platforming challenges.
-- v0.6 will be the next version I release to my playtesters.
+- ~~v0.6 will be the next version I release to my playtesters.~~
+	- v0.5 should likely be playtested before I get too far designing assets.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
@@ -50,6 +51,8 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [ ] DraggableEmitter?
 		- [ ] OneWayLens?
 		- [ ] Laser collisions?
+	- [x] Catalyst Device demo
+	- [x] Catalyst Platform demo
 	- [x] Reset demo
 	- [x] Geyser demo
 - [x] BugFix: When geysers are meant to be controlled via an external puzzle block (e.g. turned on/off by a pressure plate), this can be bypassed using the stasis spell
