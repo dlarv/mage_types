@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=86 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -11,9 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_puzzle_2.tscn" id="15_6yind"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_puzzle_3.tscn" id="16_cjdov"]
+[ext_resource type="PackedScene" uid="uid://cspipog36hcdh" path="res://src/overworld/puzzle_blocks/lasers/draggable_emitter.tscn" id="18_h3ywu"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="19_rlv5g"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
+[ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="20_sj0sy"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="21_hrs52"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
 [ext_resource type="PackedScene" path="res://assets/3d/models/objects/blue/vase_red.tscn" id="23_3yaw4"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="27_uvxhd"]
@@ -85,7 +89,37 @@ size = Vector3(1, 1, 10)
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_th7j2"]
+size = Vector3(1, 1, 21.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c2hfv"]
 size = Vector3(1, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilg5d"]
+size = Vector3(1, 1, 11.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13i84"]
+size = Vector3(1, 1, 2.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7chsr"]
+size = Vector3(1, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_svhmk"]
+size = Vector3(1, 1, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bh4vl"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6xjd"]
+size = Vector3(1, 1, 4.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpv17"]
+size = Vector3(1, 1, 11.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kr0i1"]
+size = Vector3(1, 1, 8.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rg1xp"]
+size = Vector3(1, 1, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwy17"]
 size = Vector3(1, 1, 10)
@@ -143,6 +177,42 @@ size = Vector3(307, 161, 301)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmhgq"]
 size = Vector3(25, 29, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pphlc"]
+size = Vector3(194, 100, 226)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78q6j"]
+size = Vector3(65, 18, 52)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxo2j"]
+size = Vector3(9, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxfk6"]
+size = Vector3(17, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x54lq"]
+size = Vector3(9, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ehwo1"]
+size = Vector3(17, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vycml"]
+size = Vector3(105, 18, 31)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rb7jr"]
+size = Vector3(61, 18, 31)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3g2j"]
+size = Vector3(34, 18, 62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qtpak"]
+size = Vector3(34, 18, 31)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2fhm"]
+size = Vector3(40, 18, 91)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nx1wg"]
+size = Vector3(47, 18, 42)
 
 [node name="Blue" type="Node3D"]
 
@@ -294,11 +364,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="."]
+[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 0.8, 158.1)
@@ -919,8 +990,8 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cave2ToCave1"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.10001, 3.8, 9.89999)
-shape = SubResource("BoxShape3D_th7j2")
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.10002, 3.8, 9.89999)
+shape = SubResource("BoxShape3D_c2hfv")
 
 [node name="Marker3D" type="Marker3D" parent="Cave2ToCave1/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
@@ -930,6 +1001,174 @@ transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -2, 3.
 shape = SubResource("BoxShape3D_x6u4r")
 
 [node name="Marker3D" type="Marker3D" parent="Cave2ToCave1/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CentralChamberToNW" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -287, 0, -531)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralChamberToNW"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 38.4657, 3.8, 25.3343)
+shape = SubResource("BoxShape3D_th7j2")
+
+[node name="Marker3D" type="Marker3D" parent="CentralChamberToNW/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CentralChamberToNW"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -53.2, 2.5, -26.1)
+shape = SubResource("BoxShape3D_ilg5d")
+
+[node name="Marker3D" type="Marker3D" parent="CentralChamberToNW/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="NWChamber1ToChamber2" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -379, 0, -608)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber1ToChamber2"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 38.6657, 2.8, 23.6342)
+shape = SubResource("BoxShape3D_13i84")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber1ToChamber2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber1ToChamber2"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 38.9, 2.5, 6.70001)
+shape = SubResource("BoxShape3D_7chsr")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber1ToChamber2/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="NWChamber2ToChamber3" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -340, 0, -642)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber2ToChamber3"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.33432, 2.8, -1.96576)
+shape = SubResource("BoxShape3D_13i84")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber2ToChamber3/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber2ToChamber3"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -0.0999756, 2.5, -12.3)
+shape = SubResource("BoxShape3D_svhmk")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber2ToChamber3/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="NWChamber3ToChamber4" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -375, 0, -689)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber3ToChamber4"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 6.56567, 2.5, 7.23425)
+shape = SubResource("BoxShape3D_13i84")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber3ToChamber4/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber3ToChamber4"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -2.59998, 2.1, -4.79999)
+shape = SubResource("BoxShape3D_bh4vl")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber3ToChamber4/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="NWChamber4ToChamber5" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -298, 0, -689)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber4ToChamber5"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 5.91565, 2.8, 7.43427)
+shape = SubResource("BoxShape3D_l6xjd")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber4ToChamber5/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber4ToChamber5"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.99997, 2.5, 2.70007)
+shape = SubResource("BoxShape3D_bh4vl")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber4ToChamber5/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="NWChamber5ToChamber6" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -346, 0, -689)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber5ToChamber6"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 5.91565, 2.1, 7.43427)
+shape = SubResource("BoxShape3D_l6xjd")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber5ToChamber6/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber5ToChamber6"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 5.70004, 2.5, -2.49994)
+shape = SubResource("BoxShape3D_bh4vl")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber5ToChamber6/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.9, 0)
+
+[node name="NWChamber6ToChamber7" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -346, 0, -787)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber6ToChamber7"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 5.71564, 2.8, 7.63428)
+shape = SubResource("BoxShape3D_l6xjd")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber6ToChamber7/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber6ToChamber7"]
+transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, 5.85004, 2.5, -3.39996)
+shape = SubResource("BoxShape3D_mpv17")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber6ToChamber7/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="NWChamber5ToChamber8" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278, 0, -703)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber5ToChamber8"]
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, 2.8, 3.48425)
+shape = SubResource("BoxShape3D_kr0i1")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber5ToChamber8/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber5ToChamber8"]
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 5.15002, 2.5, 3.15002)
+shape = SubResource("BoxShape3D_rg1xp")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber5ToChamber8/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="DungeonToZiggurat" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
@@ -1416,6 +1655,259 @@ chunk = NodePath("../BlueEnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackroomChunk8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
+
+[node name="StasisDungeonChunk" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.5, 0, -440)
+script = ExtResource("3_4g4u6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StasisDungeonChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -41)
+shape = SubResource("BoxShape3D_pphlc")
+
+[node name="NWPuzzles" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -342.4, 0, -565)
+
+[node name="NWChamber1" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, 7)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 2)
+shape = SubResource("BoxShape3D_78q6j")
+
+[node name="Chunk" type="Node3D" parent="NWPuzzles/NWChamber1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Gate" parent="NWPuzzles/NWChamber1/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
+transform = Transform3D(2, 0, 3.49691e-07, 0, 2, 0, -3.49691e-07, 0, 2, 1.14291, -1, -11.9)
+locks = [NodePath("../LaserReceiver"), NodePath("../LaserReceiver2"), NodePath("../LaserReceiver3")]
+
+[node name="Emitter" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("21_hrs52")]
+transform = Transform3D(-4.37114e-08, 1, 1.74846e-07, -1, -4.37114e-08, 0, 5.37316e-16, -1.74846e-07, 1, -13.2, 0, -5.99969)
+_element = "orange"
+
+[node name="Emitter2" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("21_hrs52")]
+transform = Transform3D(-4.37114e-08, 1, 1.74846e-07, -1, -4.37114e-08, 0, 5.37316e-16, -1.74846e-07, 1, -13.2, 0, -0.999695)
+_element = "magenta"
+
+[node name="Emitter3" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("21_hrs52")]
+transform = Transform3D(-4.37114e-08, 1, 1.74846e-07, -1, -4.37114e-08, 0, 5.37316e-16, -1.74846e-07, 1, -13.2, 0, 4.00031)
+_element = "red"
+
+[node name="LaserReceiver" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("19_rlv5g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 15.6467, 0, 4)
+_element = "magenta"
+
+[node name="LaserReceiver2" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("19_rlv5g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 15.6467, 0, -1)
+_element = "magenta"
+
+[node name="LaserReceiver3" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("19_rlv5g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 15.6467, 0, -6)
+_element = "magenta"
+
+[node name="Lens" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5.60001, 0, 4)
+_element = "yellow"
+
+[node name="Lens2" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.39999, 0, 4)
+_element = "purple"
+
+[node name="Lens3" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8.39999, 0, 4)
+_element = "blue"
+
+[node name="Lens4" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5.60001, 0, -1)
+_element = "orange"
+
+[node name="Lens5" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.39999, 0, -1)
+_element = "yellow"
+
+[node name="Lens6" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8.39999, 0, -1)
+_element = "blue"
+
+[node name="Lens7" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5.60001, 0, -6)
+_element = "blue"
+
+[node name="Lens8" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.39999, 0, -6)
+_element = "orange"
+
+[node name="Lens9" parent="NWPuzzles/NWChamber1/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8.39999, 0, -6)
+_element = "yellow"
+
+[node name="NWChamber2" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, 66)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 6.5)
+shape = SubResource("BoxShape3D_78q6j")
+
+[node name="Chunk" type="Node3D" parent="NWPuzzles/NWChamber2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Gate" parent="NWPuzzles/NWChamber2/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
+transform = Transform3D(2, 0, 3.49691e-07, 0, 2, 0, -3.49691e-07, 0, 2, 1.14291, -1, -11.983)
+locks = [NodePath("../LaserReceiver1"), NodePath("../LaserReceiver2"), NodePath("../LaserReceiver3")]
+
+[node name="DraggableEmitter1" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("18_h3ywu")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.29999, -0.5, 4)
+axis_lock_linear_y = true
+_element = "purple"
+
+[node name="DraggableEmitter2" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("18_h3ywu")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -12.3, -0.5, 9)
+axis_lock_linear_y = true
+_element = "magenta"
+
+[node name="DraggableEmitter3" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("18_h3ywu")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.29999, -0.5, 14)
+axis_lock_linear_y = true
+_element = "blue"
+
+[node name="LaserReceiver1" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("19_rlv5g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 15.6429, -0.3, 14)
+_element = "blue"
+
+[node name="LaserReceiver2" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("19_rlv5g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 15.6429, -0.3, 9)
+_element = "blue"
+
+[node name="LaserReceiver3" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("19_rlv5g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 15.6429, -0.3, 4)
+_element = "blue"
+
+[node name="Lens" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 14.2, -0.5, 14)
+_element = "magenta"
+
+[node name="Lens2" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 6.5, -0.5, 14)
+_element = "magenta"
+
+[node name="Lens3" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.20001, -0.5, 14)
+_element = "magenta"
+
+[node name="Lens4" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 6.49997, -0.5, 9)
+_element = "purple"
+
+[node name="Lens5" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.20001, -0.5, 9)
+_element = "orange"
+
+[node name="Lens6" parent="NWPuzzles/NWChamber2/Chunk" instance=ExtResource("20_sj0sy")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.2, -0.5, 4)
+_element = "red"
+
+[node name="Border" type="StaticBody3D" parent="NWPuzzles/NWChamber2/Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.6, 1)
+collision_layer = 5
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber2/Chunk/Border"]
+shape = SubResource("BoxShape3D_oxo2j")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWPuzzles/NWChamber2/Chunk/Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+shape = SubResource("BoxShape3D_oxo2j")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NWPuzzles/NWChamber2/Chunk/Border"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, -0.2, 8)
+shape = SubResource("BoxShape3D_qxfk6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NWPuzzles/NWChamber2/Chunk/Border"]
+mesh = SubResource("BoxMesh_x54lq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NWPuzzles/NWChamber2/Chunk/Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+mesh = SubResource("BoxMesh_x54lq")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NWPuzzles/NWChamber2/Chunk/Border"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, -0.2, 8)
+mesh = SubResource("BoxMesh_ehwo1")
+
+[node name="NWChamber3" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.0002, 0, 109.5)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("NWChunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 8.5, 6)
+shape = SubResource("BoxShape3D_vycml")
+
+[node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber3"]
+
+[node name="Gate" parent="NWPuzzles/NWChamber3/NWChunk" instance=ExtResource("4_5og7y")]
+transform = Transform3D(2, 0, 3.49691e-07, 0, 2, 0, -3.49691e-07, 0, 2, -8.85709, 2, -6.38306)
+
+[node name="NWChamber4" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 60.9998, 0, 148.5)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("NWChunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 8.5, 6)
+shape = SubResource("BoxShape3D_rb7jr")
+
+[node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber4"]
+
+[node name="NWChamber8" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -88.0002, 0, 148.5)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("NWChunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00002, 8.5, -0.5)
+shape = SubResource("BoxShape3D_f3g2j")
+
+[node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber8"]
+
+[node name="NWChamber5" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -41.0002, 0, 141.5)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("NWChunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 8.5, 6)
+shape = SubResource("BoxShape3D_qtpak")
+
+[node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber5"]
+
+[node name="NWChamber6" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11, 0, 168)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 8.5, -3)
+shape = SubResource("BoxShape3D_g2fhm")
+
+[node name="Chunk" type="Node3D" parent="NWPuzzles/NWChamber6"]
+
+[node name="Gate" parent="NWPuzzles/NWChamber6/Chunk" instance=ExtResource("4_5og7y")]
+transform = Transform3D(2, 0, 3.49691e-07, 0, 2, 0, -3.49691e-07, 0, 2, -8.85709, 2, -45.3)
+
+[node name="NWChamber7" type="Area3D" parent="NWPuzzles" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.0002, 0, 255.5)
+script = ExtResource("3_4g4u6")
+chunk = NodePath("NWChunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 8.5, 11.5)
+shape = SubResource("BoxShape3D_nx1wg")
+
+[node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber7"]
 
 [connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser" method="start"]
 [connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser2" method="start"]

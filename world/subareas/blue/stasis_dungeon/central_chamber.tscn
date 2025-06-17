@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://xss5he7h36fs" path="res://src/overworld/puzzle_blocks/lasers/hidden_receiver.tscn" id="7_3t43h"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="8_4jwju"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_83nc7"]
-size = Vector3(163, 51, 168)
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5ihn"]
+size = Vector3(222, 51, 172)
 
 [node name="CentralChamber" type="Area3D" node_paths=PackedStringArray("chunk", "resets") groups=["persist"]]
 script = ExtResource("1_xbdi3")
@@ -18,8 +18,8 @@ chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 25, -8.5)
-shape = SubResource("BoxShape3D_83nc7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 25, 11)
+shape = SubResource("BoxShape3D_i5ihn")
 
 [node name="Chunk" type="Node3D" parent="."]
 
