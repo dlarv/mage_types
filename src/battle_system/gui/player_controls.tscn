@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chxhvxvxw2ffu"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/PlayerControls.gd" id="1_5ol5c"]
+[ext_resource type="Script" uid="uid://b40bjnw2b1x44" path="res://src/battle_system/gui/PlayerControls.gd" id="1_5ol5c"]
 [ext_resource type="PackedScene" uid="uid://b0ctqpfxrh7c3" path="res://src/battle_system/gui/components/three_state_button.tscn" id="2_vspmx"]
 
 [node name="PlayerControls" type="PanelContainer" node_paths=PackedStringArray("control_panel", "attacks_panel", "items_scroller", "character_scroller", "next_button", "prev_button", "end_button", "blocking_panel")]

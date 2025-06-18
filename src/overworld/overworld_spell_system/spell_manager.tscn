@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://co5233wd41d3g"]
 
-[ext_resource type="Script" path="res://src/overworld/overworld_spell_system/SpellManager.gd" id="1_3vrjo"]
+[ext_resource type="Script" uid="uid://dw21tio8ljv3" path="res://src/overworld/overworld_spell_system/SpellManager.gd" id="1_3vrjo"]
 [ext_resource type="PackedScene" uid="uid://duai8gqdgu21m" path="res://src/overworld/overworld_spell_system/overworld_spells/stasis_spell.tscn" id="2_6ebf8"]
 [ext_resource type="PackedScene" uid="uid://gl6jomsw8726" path="res://src/overworld/overworld_spell_system/projectile.tscn" id="2_k4ax5"]
 [ext_resource type="PackedScene" uid="uid://c33hy4b2qxuto" path="res://src/overworld/overworld_spell_system/overworld_spells/destroy_spell.tscn" id="3_cfami"]

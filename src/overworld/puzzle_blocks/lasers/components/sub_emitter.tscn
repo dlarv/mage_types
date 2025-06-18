@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://djyd1nordbavf"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/SubEmitter.gd" id="1_3jvxr"]
+[ext_resource type="Script" uid="uid://dh478ac1ti43" path="res://src/overworld/puzzle_blocks/lasers/components/SubEmitter.gd" id="1_3jvxr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a3k3g"]
 size = Vector3(0.1, 0.1, 1)

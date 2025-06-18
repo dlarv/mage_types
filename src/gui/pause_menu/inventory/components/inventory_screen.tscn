@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsbkifgbbg75f"]
 
-[ext_resource type="Script" path="res://src/gui/pause_menu/inventory/components/InventoryScreen.gd" id="1_stblg"]
+[ext_resource type="Script" uid="uid://5iujervb6bsy" path="res://src/gui/pause_menu/inventory/components/InventoryScreen.gd" id="1_stblg"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="2_js2lc"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_id3j4"]

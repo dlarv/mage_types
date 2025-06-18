@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdm5psyfqxoe1"]
 
-[ext_resource type="Script" path="res://src/gui/pause_menu/vendor_menu/components/VendorItemSelector.gd" id="1_uj11f"]
+[ext_resource type="Script" uid="uid://cun208rya6wt8" path="res://src/gui/pause_menu/vendor_menu/components/VendorItemSelector.gd" id="1_uj11f"]
 
 [node name="VendorItemSelector" type="Control" node_paths=PackedStringArray("cost_label", "button")]
 custom_minimum_size = Vector2(0, 50)

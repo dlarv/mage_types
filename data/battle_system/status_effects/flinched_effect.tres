@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://dhghgo0ungrbg"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="1_d8bt7"]
+[ext_resource type="Script" uid="uid://dyxf7gws8qu4p" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="1_d8bt7"]
 [ext_resource type="PackedScene" uid="uid://c3kpt65ai6xoj" path="res://data/battle_system/status_effects/icons/flinched_icon.tscn" id="1_pbt1f"]
 
 [resource]

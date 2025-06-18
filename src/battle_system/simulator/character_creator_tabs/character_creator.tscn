@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhbc51ehpk5id"]
 
 [ext_resource type="PackedScene" uid="uid://crhlk7hcdainp" path="res://src/battle_system/simulator/components/element_option_button.tscn" id="1_6vu1l"]
-[ext_resource type="Script" path="res://src/battle_system/simulator/character_creator_tabs/character_creator.gd" id="1_y0bc5"]
+[ext_resource type="Script" uid="uid://du0godwshb03i" path="res://src/battle_system/simulator/character_creator_tabs/character_creator.gd" id="1_y0bc5"]
 [ext_resource type="PackedScene" uid="uid://b187ua827ssjm" path="res://src/battle_system/simulator/components/character_list_item.tscn" id="2_76ocq"]
 [ext_resource type="PackedScene" uid="uid://dtj13rv3gydaa" path="res://src/battle_system/simulator/character_creator_tabs/attack_creator.tscn" id="3_333mp"]
 

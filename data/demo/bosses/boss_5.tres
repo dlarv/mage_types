@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://dxuewc6tukepc"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_v07ui"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_v07ui"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="2_k1frh"]
 [ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="2_sjfl8"]
 [ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="3_e745c"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_hjcvx"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_hjcvx"]
 [ext_resource type="Resource" uid="uid://vhtwa50btn1" path="res://data/battle_system/battle_actions/attacks/elementals/yellow/rush.tres" id="4_fm2b6"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_qdnfr"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_qdnfr"]
 [ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="5_kf0x7"]
 
 [sub_resource type="Resource" id="Resource_w6ghj"]

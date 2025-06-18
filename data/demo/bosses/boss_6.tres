@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://c58tb3xrod70g"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_i5fw2"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_i5fw2"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="2_atyb7"]
 [ext_resource type="Resource" uid="uid://bgcfvlaa71k81" path="res://data/battle_system/battle_actions/attacks/basic/hit_y.tres" id="2_ih4tw"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_80gql"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_80gql"]
 [ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="3_yqycs"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_fhsaf"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_fhsaf"]
 [ext_resource type="Resource" uid="uid://c4lyg4rq0tpt2" path="res://data/battle_system/battle_actions/attacks/elementals/green/reactor_breach.tres" id="4_i0akp"]
 [ext_resource type="Resource" uid="uid://vhtwa50btn1" path="res://data/battle_system/battle_actions/attacks/elementals/yellow/rush.tres" id="5_q3tc5"]
 

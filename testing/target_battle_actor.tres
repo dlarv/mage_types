@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=5 format=3 uid="uid://hdviwkcti8ic"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_2s8cw"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_42laf"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="3_guhv2"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_2s8cw"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_42laf"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="3_guhv2"]
 
 [sub_resource type="Resource" id="Resource_5vvfd"]
 script = ExtResource("3_guhv2")

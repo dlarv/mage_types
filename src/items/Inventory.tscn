@@ -1,7 +1,7 @@
 [gd_scene load_steps=146 format=3 uid="uid://naddq5rv0dbw"]
 
-[ext_resource type="Script" path="res://src/items/Inventory.gd" id="1_jis06"]
-[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="2_xejte"]
+[ext_resource type="Script" uid="uid://dwcdmph2053xh" path="res://src/items/Inventory.gd" id="1_jis06"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="2_xejte"]
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="3_3atr7"]
 [ext_resource type="Resource" uid="uid://dwfg404xs0toh" path="res://data/items/regular_items/poison_heal.tres" id="4_klwlq"]
 [ext_resource type="Resource" uid="uid://cdjv85cqd8f7i" path="res://data/items/spell_scrolls/basic/hit_b.tres" id="5_ufsgb"]
@@ -55,8 +55,8 @@
 [ext_resource type="Resource" uid="uid://coelvvbcbe8hl" path="res://data/items/spell_scrolls/phobias/phobia_g.tres" id="42_u1qav"]
 [ext_resource type="Resource" uid="uid://ckl16fwx0wyvy" path="res://data/items/spell_scrolls/total_meltdown.tres" id="43_1b81x"]
 [ext_resource type="Resource" uid="uid://ixmwadvjexrp" path="res://data/items/spell_scrolls/phobias/phobia_c.tres" id="43_74f1i"]
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="43_oxpkv"]
-[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="44_ggk3a"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="43_oxpkv"]
+[ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="44_ggk3a"]
 [ext_resource type="Resource" uid="uid://d1gb0w3k2ys3f" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/freezing_gale.tres" id="45_cmtqc"]
 [ext_resource type="Resource" uid="uid://dsprshhqctptw" path="res://data/battle_system/battle_actions/attacks/elementals/orange/brave_the_dark.tres" id="50_bemve"]
 [ext_resource type="Resource" uid="uid://drcu827fevmfu" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/steel_shot.tres" id="52_oax4k"]
@@ -251,7 +251,7 @@ tags = []
 resource_name = "Rush Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_0wn4d")
-id = 17
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -358,7 +358,7 @@ tags = []
 resource_name = "Bite Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_1wuss")
-id = 28
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -375,7 +375,7 @@ tags = []
 resource_name = "Consume Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_l5xe0")
-id = 29
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -392,7 +392,7 @@ tags = []
 resource_name = "Cleave Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_k5shw")
-id = 30
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -427,7 +427,7 @@ tags = []
 resource_name = "Fortress Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_a46ng")
-id = 33
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -444,7 +444,7 @@ tags = []
 resource_name = "Freezing Gale Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_e0sre")
-id = 34
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -533,7 +533,7 @@ tags = []
 resource_name = "Brave the Dark Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_kx47f")
-id = 43
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -559,7 +559,7 @@ tags = []
 resource_name = "Steel Shot Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_68132")
-id = 45
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -576,7 +576,7 @@ tags = []
 resource_name = "Disarmament Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_d8mft")
-id = 46
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -593,7 +593,7 @@ tags = []
 resource_name = "Orbital Strike Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_d2r8e")
-id = 47
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -610,7 +610,7 @@ tags = []
 resource_name = "Desolation Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_sx6yy")
-id = 48
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -627,7 +627,7 @@ tags = []
 resource_name = "Reactor Breach Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_6gyui")
-id = 49
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -644,7 +644,7 @@ tags = []
 resource_name = "Alchemy Beam Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_vwn4r")
-id = 50
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -661,7 +661,7 @@ tags = []
 resource_name = "Reinforce Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_rfaas")
-id = 51
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true
@@ -678,7 +678,7 @@ tags = []
 resource_name = "Snipe Bead"
 script = ExtResource("2_xejte")
 item = SubResource("Resource_d55tx")
-id = 52
+id = -1
 quantity = 99
 max_quantity = 9999
 allow_stacking = true

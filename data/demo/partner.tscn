@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d2cifsivdxxbt"]
 
-[ext_resource type="Script" path="res://src/overworld/characters/Npc.gd" id="1_dlikj"]
+[ext_resource type="Script" uid="uid://cj8hf072ohnm7" path="res://src/overworld/characters/Npc.gd" id="1_dlikj"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="2_gvig4"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_pxk60"]
 

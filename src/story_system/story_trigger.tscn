@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rstqcovkkcaa"]
 
-[ext_resource type="Script" path="res://src/story_system/StoryTrigger.gd" id="1_ijrib"]
+[ext_resource type="Script" uid="uid://hsl77n33tp7o" path="res://src/story_system/StoryTrigger.gd" id="1_ijrib"]
 
 [node name="StoryTrigger" type="Area3D"]
 collision_layer = 0

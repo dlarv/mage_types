@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://kknk1uiljhxn"]
 
 [ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="1_mpit3"]
-[ext_resource type="Script" path="res://addons/matchupmanager/sequence_calc/LaserSequenceCalc.gd" id="1_ymx5o"]
+[ext_resource type="Script" uid="uid://c7y6v1xxm0rd5" path="res://addons/matchupmanager/sequence_calc/LaserSequenceCalc.gd" id="1_ymx5o"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_jq5jr"]
 
 [node name="Laser Sequence Calc" type="MarginContainer" node_paths=PackedStringArray("result_icons", "result_labels")]

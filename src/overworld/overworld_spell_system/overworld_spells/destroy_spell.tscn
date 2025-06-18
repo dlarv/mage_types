@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c33hy4b2qxuto"]
 
-[ext_resource type="Script" path="res://src/overworld/overworld_spell_system/overworld_spells/DestroySpell.gd" id="1_rfe07"]
+[ext_resource type="Script" uid="uid://bf7vbls71lmkf" path="res://src/overworld/overworld_spell_system/overworld_spells/DestroySpell.gd" id="1_rfe07"]
 
 [node name="DestroySpell" type="Node3D"]
 script = ExtResource("1_rfe07")

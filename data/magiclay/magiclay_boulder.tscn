@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://nanxbk8qtx3"]
 
-[ext_resource type="Script" path="res://src/overworld/magiclay/MagiClay.gd" id="1_blpm0"]
+[ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_blpm0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_slv4x"]
 size = Vector3(3, 3, 3)

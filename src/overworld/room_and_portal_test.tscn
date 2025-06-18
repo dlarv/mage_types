@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cd7t8arvdnqv5"]
 
-[ext_resource type="Script" path="res://src/overworld/room_and_portal_test.gd" id="1_2p4jp"]
+[ext_resource type="Script" uid="uid://dxrhn8hn667k7" path="res://src/overworld/room_and_portal_test.gd" id="1_2p4jp"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_jo2nv"]
-[ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_ogmmp"]
+[ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_ogmmp"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="3_1kwqv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v07to"]

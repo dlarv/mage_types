@@ -2,21 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_pewre"]
+[ext_resource type="Script" uid="uid://cgt73gvf8xvv6" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_pewre"]
 [ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/combat_candidate_dialog.tres" id="3_dned5"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_5bktp"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
-[ext_resource type="Script" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
+[ext_resource type="Script" uid="uid://dm6ugtdpreoy7" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_5bktp"]
+[ext_resource type="Script" uid="uid://dyxwuxn04gout" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
+[ext_resource type="Script" uid="uid://ctwpmg6gbk4fr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
+[ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
 [ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/demo/bosses/boss_3.tscn" id="8_bwct4"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="11_lpih5"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="11_lpih5"]
 [ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="11_qfng2"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="11_tyily"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="12_xtgjc"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="13_b6sci"]
-[ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="14_kx2pq"]
+[ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="14_kx2pq"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="14_p05cy"]
 [ext_resource type="Texture2D" uid="uid://b0kj6udppi815" path="res://assets/3d/textures/player/player_diffuse.png" id="15_0b8p6"]
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="16_gm161"]
@@ -27,12 +27,12 @@
 [ext_resource type="PackedScene" uid="uid://b5vei7g5idme8" path="res://data/demo/bosses/boss_4.tscn" id="27_yi4cx"]
 [ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="28_83uud"]
 [ext_resource type="PackedScene" uid="uid://ppa46ytf2itt" path="res://data/demo/bosses/boss_5.tscn" id="29_dyyk6"]
-[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="29_m1310"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="29_m1310"]
 [ext_resource type="PackedScene" uid="uid://o4rkr1o8fo2u" path="res://data/demo/bosses/boss_6.tscn" id="30_0kir7"]
 [ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="30_0y7aa"]
 [ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="31_lppqk"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="32_0pnra"]
-[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="33_xa4lq"]
+[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="33_xa4lq"]
 [ext_resource type="PackedScene" uid="uid://2ee6w0ag61vd" path="res://world/subareas/blue/stasis_dungeon/mural_room.tscn" id="34_5hmya"]
 [ext_resource type="PackedScene" uid="uid://c6ap4wdy8tsnd" path="res://world/subareas/blue/stasis_dungeon/central_chamber.tscn" id="35_g5cey"]
 [ext_resource type="PackedScene" uid="uid://3ygr57mrvdra" path="res://world/subareas/blue/stasis_dungeon/starting_puzzle.tscn" id="36_c2bcd"]
@@ -610,11 +610,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1n5t0"]
 _data = {
-"RESET": SubResource("Animation_pj603"),
-"chamber_2_trigger": SubResource("Animation_kmcq3"),
-"preset_1": SubResource("Animation_50av1"),
-"preset_2": SubResource("Animation_ul1hv"),
-"set_chamber_2_trigger": SubResource("Animation_ns3pi")
+&"RESET": SubResource("Animation_pj603"),
+&"chamber_2_trigger": SubResource("Animation_kmcq3"),
+&"preset_1": SubResource("Animation_50av1"),
+&"preset_2": SubResource("Animation_ul1hv"),
+&"set_chamber_2_trigger": SubResource("Animation_ns3pi")
 }
 
 [sub_resource type="Resource" id="Resource_4xgon"]

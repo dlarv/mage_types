@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1d7new22f1kk"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/PinManager.gd" id="1_gn02h"]
+[ext_resource type="Script" uid="uid://dl4tto6qxysr1" path="res://src/battle_system/gui/components/PinManager.gd" id="1_gn02h"]
 [ext_resource type="PackedScene" uid="uid://bihss5o636fyv" path="res://src/battle_system/gui/components/status_effect_pin.tscn" id="2_n265t"]
 
 [node name="PinManager" type="Node3D"]

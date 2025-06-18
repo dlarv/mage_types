@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://brs3ov2whut2i"]
 
-[ext_resource type="Script" path="res://world/subareas_old/CatalystPuzzles.gd" id="1_n5073"]
+[ext_resource type="Script" uid="uid://cn4vyx2ygks72" path="res://world/subareas_old/CatalystPuzzles.gd" id="1_n5073"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_mwdp0"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_o81tf"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="3_30a4y"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="10_ju77r"]
 [ext_resource type="PackedScene" uid="uid://c48iivqbcp8bi" path="res://src/overworld/puzzle_blocks/lasers/one_way_lens.tscn" id="12_86we7"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="13_uklwk"]
-[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="15_ndxfa"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="15_ndxfa"]
 [ext_resource type="Resource" uid="uid://cjis241a7rywd" path="res://data/items/spell_scrolls/blood_shock_scroll.tres" id="16_egvb8"]
 [ext_resource type="Resource" uid="uid://bpgkg6f5qnd42" path="res://data/items/spell_scrolls/drain_scroll.tres" id="17_imtmn"]
 [ext_resource type="Resource" uid="uid://ckl16fwx0wyvy" path="res://data/items/spell_scrolls/total_meltdown.tres" id="18_8rdxk"]
@@ -52,7 +52,7 @@ size = Vector3(2, 1, 41)
 resource_name = "Blood Shock Bead"
 script = ExtResource("15_ndxfa")
 item = ExtResource("16_egvb8")
-id = 27
+id = 31
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -61,7 +61,7 @@ allow_stacking = true
 resource_name = "Drain Bead"
 script = ExtResource("15_ndxfa")
 item = ExtResource("17_imtmn")
-id = 26
+id = 27
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -70,7 +70,7 @@ allow_stacking = true
 resource_name = "Total Meltdown Bead"
 script = ExtResource("15_ndxfa")
 item = ExtResource("18_8rdxk")
-id = 38
+id = 44
 quantity = 1
 max_quantity = 9999
 allow_stacking = true

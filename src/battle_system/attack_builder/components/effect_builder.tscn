@@ -1,21 +1,21 @@
 [gd_scene load_steps=25 format=3 uid="uid://c0yk4b0ig5108"]
 
-[ext_resource type="Script" path="res://src/battle_system/attack_builder/components/EffectBuilder.gd" id="1_p5hak"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/AttackEffect.gd" id="2_y33t8"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_bf03p"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="4_0v6wl"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="5_4weft"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="5_n7kb6"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="6_xjxuf"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/RandomPhobia.gd" id="6_yyxxg"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="7_hrkhj"]
+[ext_resource type="Script" uid="uid://d1od52ned6jmx" path="res://src/battle_system/attack_builder/components/EffectBuilder.gd" id="1_p5hak"]
+[ext_resource type="Script" uid="uid://qtt3mnr2io1g" path="res://src/battle_system/battle_actions/effects/AttackEffect.gd" id="2_y33t8"]
+[ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_bf03p"]
+[ext_resource type="Script" uid="uid://dukyjdwpqolw4" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="4_0v6wl"]
+[ext_resource type="Script" uid="uid://cfaw0d7s57qqh" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="5_4weft"]
+[ext_resource type="Script" uid="uid://nh2nt72jmw33" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="5_n7kb6"]
+[ext_resource type="Script" uid="uid://cqnlttwghf2pc" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="6_xjxuf"]
+[ext_resource type="Script" uid="uid://bhh3ro2cetlnh" path="res://src/battle_system/battle_actions/effects/specific_effects/RandomPhobia.gd" id="6_yyxxg"]
+[ext_resource type="Script" uid="uid://dyqtsmtfqgpdp" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="7_hrkhj"]
 [ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="8_2irqn"]
 [ext_resource type="Resource" uid="uid://dhghgo0ungrbg" path="res://data/battle_system/status_effects/flinched_effect.tres" id="9_2crn3"]
 [ext_resource type="Resource" uid="uid://homntfrobese" path="res://data/battle_system/status_effects/healing_effect.tres" id="10_vgwbk"]
 [ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="11_60n4n"]
 [ext_resource type="Resource" uid="uid://bu3fmlsaalf2s" path="res://data/battle_system/status_effects/stasis_effect.tres" id="12_5r2fc"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="13_jw53u"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="16_6cyos"]
+[ext_resource type="Script" uid="uid://b7le2eumt6kqa" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="13_jw53u"]
+[ext_resource type="Script" uid="uid://dyxf7gws8qu4p" path="res://src/battle_system/battle_actions/effects/StatusEffect.gd" id="16_6cyos"]
 
 [sub_resource type="Resource" id="Resource_2lxjd"]
 resource_name = "Damage"
@@ -28,6 +28,7 @@ message = ""
 resource_name = "Stat Change"
 script = ExtResource("7_hrkhj")
 stat = 0
+clear_first = false
 id = 6
 duration = 0
 description = ""
@@ -56,18 +57,18 @@ message = ""
 resource_name = "Instant Health Change"
 script = ExtResource("5_n7kb6")
 allow_overflow = false
-name = "Instant Health Change"
+name = "InstantHealthChange"
 strength = 0.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_4uoqg"]
-resource_name = "Blank-Phobic"
+resource_name = "Phobic"
 script = ExtResource("13_jw53u")
 _element = "blank"
 id = 3
 duration = 0
 description = ""
-name = "Blank-Phobic"
+name = "Phobic"
 strength = 0.0
 message = "{target} is feeling adverse to [el]{element}[/el]!"
 

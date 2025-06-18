@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://bkhryrwbn73l3"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_b2eha"]
-[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
+[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="1_l1j24"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="2_0r40v"]
 [ext_resource type="Material" uid="uid://ceo6m3wglwsxq" path="res://assets/3d/textures/placeholder_grid_texture/wip.tres" id="5_kgaij"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_ds18g"]
-[ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="8_5xiv5"]
+[ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="8_5xiv5"]
 [ext_resource type="PackedScene" uid="uid://b2nokkpwhj5nq" path="res://world/subareas_old/eastern_caves/eastern_caves.tscn" id="8_r105b"]
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="8_wl0ax"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_8ivut"]

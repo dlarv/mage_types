@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://bo4oib5wr8f3r"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_0kd5o"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_0kd5o"]
 [ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="2_efm1r"]
 [ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="2_xl34v"]
 [ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="3_o36u7"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_w7ijy"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="4_oy67b"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_w7ijy"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_oy67b"]
 
 [sub_resource type="Resource" id="Resource_advf4"]
 script = ExtResource("4_oy67b")

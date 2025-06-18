@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://25ni3ubfbldc"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/stat_display/SingleStatDisplay.gd" id="2_i6yn1"]
+[ext_resource type="Script" uid="uid://c4h67h7gwy85x" path="res://src/battle_system/gui/components/stat_display/SingleStatDisplay.gd" id="2_i6yn1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf8ib"]
 resource_name = "Base"

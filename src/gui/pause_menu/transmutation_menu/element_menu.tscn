@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxssuq50oieby"]
 
-[ext_resource type="Script" path="res://src/gui/Menu.gd" id="1_5vsek"]
+[ext_resource type="Script" uid="uid://dy33wvipm7vbl" path="res://src/gui/Menu.gd" id="1_5vsek"]
 [ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/gui/pause_menu/transmutation_menu/matchup_chart.tscn" id="1_x58qa"]
 [ext_resource type="PackedScene" uid="uid://dfm2gywqc5rvp" path="res://addons/matchupmanager/flow_chart.tscn" id="2_5re3p"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="5_81x5c"]

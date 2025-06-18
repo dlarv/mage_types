@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://ienicwu4kilx"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_0bq8a"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_ucfxf"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_4vifu"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_1oq5t"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_t7xpq"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_ucfxf"]
+[ext_resource type="Script" uid="uid://cqnlttwghf2pc" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_4vifu"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_1oq5t"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="5_t7xpq"]
 
 [sub_resource type="Resource" id="Resource_crw6m"]
 script = ExtResource("3_4vifu")

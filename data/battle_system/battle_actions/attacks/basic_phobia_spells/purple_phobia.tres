@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://dy7x06nfhr1r7"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_2rwhi"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_5jowh"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_5jowh"]
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="3_bxyds"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_4b86v"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="4_6cur6"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="5_fve2l"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="4_4b86v"]
+[ext_resource type="Script" uid="uid://b7le2eumt6kqa" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="4_6cur6"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="5_fve2l"]
 
 [sub_resource type="Resource" id="Resource_42lny"]
 resource_name = "Purple-Phobic"

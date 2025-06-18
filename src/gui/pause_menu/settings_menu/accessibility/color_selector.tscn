@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bg2x7kkp5udcq"]
 
-[ext_resource type="Script" path="res://src/gui/pause_menu/settings_menu/accessibility/ColorSelector.gd" id="1_y6sga"]
+[ext_resource type="Script" uid="uid://d1cdxd6ca6lhv" path="res://src/gui/pause_menu/settings_menu/accessibility/ColorSelector.gd" id="1_y6sga"]
 
 [node name="ColorSelector" type="MarginContainer"]
 anchors_preset = 15

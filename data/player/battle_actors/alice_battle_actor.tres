@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://cj7rk23vvyppe"]
 
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="1_wyvu6"]
 [ext_resource type="Resource" uid="uid://8qnf8bbhl6hh" path="res://data/battle_system/battle_actions/attacks/basic/throw_p.tres" id="2_mngg3"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_t6yc2"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_t6yc2"]
 [ext_resource type="Resource" uid="uid://bkg6ove3jbkgg" path="res://data/battle_system/battle_actions/attacks/basic/throw_c.tres" id="3_r85kq"]
 [ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="4_ae1kp"]
 [ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="5_7nw6m"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
 
 [sub_resource type="Resource" id="Resource_my6ko"]
 script = ExtResource("7_mftjw")

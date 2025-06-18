@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=3 uid="uid://d3e6yue1cf473"]
 
-[ext_resource type="Script" path="res://world/subareas_old/eastern_caves/room_templates/EasternCaveRoomFight.gd" id="1_0bx8t"]
+[ext_resource type="Script" uid="uid://b46rmrfif3od0" path="res://world/subareas_old/eastern_caves/room_templates/EasternCaveRoomFight.gd" id="1_0bx8t"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_t5hd7"]
-[ext_resource type="Script" path="res://addons/room_and_portals/RoomPortal.gd" id="2_fjlj6"]
+[ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_fjlj6"]
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="4_udggu"]
-[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="5_btrw6"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="7_otd4f"]
+[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="5_btrw6"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="7_otd4f"]
 [ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="8_57omm"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="8_y3fkf"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="8_y3fkf"]
 [ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="9_78rr6"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="9_vuxc6"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="10_vrkw6"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="10_vrkw6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d62wh"]
 size = Vector3(3, 2, 4.1)
@@ -36,8 +36,7 @@ hp = 100
 reset_hp_after_battle = true
 _element1 = "purple"
 _element2 = "blank"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("8_y3fkf")]([ExtResource("9_78rr6")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jxtsn"]

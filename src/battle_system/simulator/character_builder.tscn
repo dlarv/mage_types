@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dapesoo2g5t40"]
 
-[ext_resource type="Script" path="res://src/battle_system/simulator/character_builder.gd" id="1_of8lm"]
+[ext_resource type="Script" uid="uid://c8xl4ahhajpse" path="res://src/battle_system/simulator/character_builder.gd" id="1_of8lm"]
 [ext_resource type="PackedScene" uid="uid://b187ua827ssjm" path="res://src/battle_system/simulator/components/character_list_item.tscn" id="3_yqwsv"]
 [ext_resource type="PackedScene" uid="uid://dhbc51ehpk5id" path="res://src/battle_system/simulator/character_creator_tabs/character_creator.tscn" id="4_7ld46"]
 [ext_resource type="PackedScene" uid="uid://rcw2b2sorp8m" path="res://src/battle_system/simulator/components/battle_actor_display.tscn" id="5_mwtm5"]

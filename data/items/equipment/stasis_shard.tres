@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=13 format=3 uid="uid://xxonecselnvh"]
 
-[ext_resource type="Script" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="1_b5vdq"]
-[ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_qswf4"]
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="2_e1kcg"]
-[ext_resource type="Script" path="res://src/items/equipment/add_equipment/bonuses/StatusEffectBonus.gd" id="2_ti05m"]
+[ext_resource type="Script" uid="uid://cgxabe6034h8d" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="1_b5vdq"]
+[ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_qswf4"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_e1kcg"]
+[ext_resource type="Script" uid="uid://bd6m74mm33gb8" path="res://src/items/equipment/add_equipment/bonuses/StatusEffectBonus.gd" id="2_ti05m"]
 [ext_resource type="Resource" uid="uid://bu3fmlsaalf2s" path="res://data/battle_system/status_effects/stasis_effect.tres" id="3_ksmfp"]
-[ext_resource type="Script" path="res://src/items/equipment/Equipment.gd" id="3_tdd76"]
-[ext_resource type="Script" path="res://src/items/equipment/add_equipment/bonuses/ChanceWrapper.gd" id="4_7ffmf"]
-[ext_resource type="Script" path="res://src/items/equipment/add_equipment/triggers/EndOfTurnTrigger.gd" id="5_lq6gs"]
+[ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="3_tdd76"]
+[ext_resource type="Script" uid="uid://3w5csx1y0fvh" path="res://src/items/equipment/add_equipment/bonuses/ChanceWrapper.gd" id="4_7ffmf"]
+[ext_resource type="Script" uid="uid://b7v4661vln0d0" path="res://src/items/equipment/add_equipment/triggers/EndOfTurnTrigger.gd" id="5_lq6gs"]
 
 [sub_resource type="Resource" id="Resource_8isia"]
 script = ExtResource("2_ti05m")

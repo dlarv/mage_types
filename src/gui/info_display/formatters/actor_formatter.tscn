@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://lqq2l2jdv6et"]
 
-[ext_resource type="Script" path="res://src/gui/info_display/formatters/ActorFormatter.gd" id="1_bro5u"]
+[ext_resource type="Script" uid="uid://bf3y6ssnabw6a" path="res://src/gui/info_display/formatters/ActorFormatter.gd" id="1_bro5u"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_qmtte"]
 
 [node name="ActorFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "element1_icon", "element2_icon", "bias_icon", "hp_label", "status_effect_vbox", "effects_label", "melee_attack_label", "ranged_attack_label", "melee_defense_label", "ranged_defense_label", "speed_label", "evasion_label", "equipment_hbox", "attacks_label")]

@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="SpellScroll" load_steps=10 format=3 uid="uid://biujho1cv84is"]
 
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_gijj2"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_j237j"]
-[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_uqypi"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_gijj2"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_j237j"]
+[ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_uqypi"]
 [ext_resource type="Resource" uid="uid://b5rkqbayc06h6" path="res://data/battle_system/battle_actions/attacks/strikes/red_strike.tres" id="3_feaux"]
 [ext_resource type="Resource" uid="uid://bfjk3jf15fgeh" path="res://data/battle_system/battle_actions/attacks/strikes/green_strike.tres" id="5_etqho"]
 [ext_resource type="Resource" uid="uid://bxhigobikymm" path="res://data/battle_system/battle_actions/attacks/strikes/orange_strike.tres" id="7_drl5x"]
 [ext_resource type="Resource" uid="uid://idlpjrj0qtgr" path="res://data/battle_system/battle_actions/attacks/strikes/purple_strike.tres" id="8_a5so4"]
-[ext_resource type="Script" path="res://src/items/requirements/AttackRequirement.gd" id="11_sunft"]
+[ext_resource type="Script" uid="uid://c1vw3xuhbrdqw" path="res://src/items/requirements/AttackRequirement.gd" id="11_sunft"]
 
 [sub_resource type="Resource" id="Resource_khnqx"]
 script = ExtResource("11_sunft")

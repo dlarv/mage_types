@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://iqgiudb0sfsq"]
 
-[ext_resource type="Script" path="res://src/gui/info_graphics/InfoGraphicMenu.gd" id="1_uevk4"]
+[ext_resource type="Script" uid="uid://reqhq7o8apne" path="res://src/gui/info_graphics/InfoGraphicMenu.gd" id="1_uevk4"]
 [ext_resource type="Texture2D" uid="uid://bgd1bwk2x8x6s" path="res://assets/graphics/info_graphics/stasis_tutorial/slide_5.png" id="2_7ivhy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_glfyl"]

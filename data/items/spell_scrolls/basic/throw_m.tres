@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://b2qk5bljx7w84"]
 
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_n016g"]
-[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_afkie"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_n016g"]
+[ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_afkie"]
 [ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="3_uto8c"]
 
 [resource]

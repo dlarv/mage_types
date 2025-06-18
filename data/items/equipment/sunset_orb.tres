@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=16 format=3 uid="uid://cwk4v4cvwgmus"]
 
-[ext_resource type="Script" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="1_dd61b"]
-[ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_twp2o"]
-[ext_resource type="Script" path="res://src/items/equipment/add_equipment/bonuses/StatBonus.gd" id="2_pciia"]
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="2_whcob"]
-[ext_resource type="Script" path="res://src/items/equipment/Equipment.gd" id="3_bo7o4"]
-[ext_resource type="Script" path="res://src/items/equipment/add_equipment/triggers/ElementTrigger.gd" id="4_1nkck"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="6_ex0f4"]
+[ext_resource type="Script" uid="uid://cgxabe6034h8d" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="1_dd61b"]
+[ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_twp2o"]
+[ext_resource type="Script" uid="uid://b5hkx6ay1hmqp" path="res://src/items/equipment/add_equipment/bonuses/StatBonus.gd" id="2_pciia"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_whcob"]
+[ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="3_bo7o4"]
+[ext_resource type="Script" uid="uid://cylxi1tdlti2e" path="res://src/items/equipment/add_equipment/triggers/ElementTrigger.gd" id="4_1nkck"]
+[ext_resource type="Script" uid="uid://dyqtsmtfqgpdp" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="6_ex0f4"]
 
 [sub_resource type="Resource" id="Resource_kty0t"]
 resource_name = "Attack Boost"

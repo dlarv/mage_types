@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dtnvdlbt7x1aw"]
 
-[ext_resource type="Script" path="res://src/gui/pause_menu/settings_menu/accessibility/ColorblindnessMenu.gd" id="1_qiaev"]
+[ext_resource type="Script" uid="uid://b8lvm3lbg3741" path="res://src/gui/pause_menu/settings_menu/accessibility/ColorblindnessMenu.gd" id="1_qiaev"]
 [ext_resource type="PackedScene" uid="uid://bg2x7kkp5udcq" path="res://src/gui/pause_menu/settings_menu/accessibility/color_selector.tscn" id="2_sdg3j"]
 [ext_resource type="Resource" uid="uid://cnufgq16ivvnf" path="res://data/elemental_types/blue.tres" id="3_qy4do"]
 [ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="4_ixbjd"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhhecfwq3jkw6"]
 
-[ext_resource type="Script" path="res://src/elements/gui/ElementButton.gd" id="1_sj8e5"]
+[ext_resource type="Script" uid="uid://bhai5mpuv1m3x" path="res://src/elements/gui/ElementButton.gd" id="1_sj8e5"]
 
 [node name="ElementButton" type="Control"]
 layout_mode = 3

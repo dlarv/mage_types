@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpr8pgu3aektj"]
 
-[ext_resource type="Script" path="res://src/gui/pause_menu/settings_menu/SettingsMenu.gd" id="1_tx88d"]
+[ext_resource type="Script" uid="uid://cw5gmlwefwhdq" path="res://src/gui/pause_menu/settings_menu/SettingsMenu.gd" id="1_tx88d"]
 [ext_resource type="PackedScene" uid="uid://dtnvdlbt7x1aw" path="res://src/gui/pause_menu/settings_menu/accessibility/colorblindness_menu.tscn" id="2_sdn2o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ew87g"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgv8y6nmgxrl2"]
 
-[ext_resource type="Script" path="res://src/overworld/OverworldConnector.gd" id="1_iftmm"]
+[ext_resource type="Script" uid="uid://dighgb7phnxgr" path="res://src/overworld/OverworldConnector.gd" id="1_iftmm"]
 [ext_resource type="PackedScene" uid="uid://rdeiqoc7uc0n" path="res://src/battle_system/battle.tscn" id="2_l64iy"]
 
 [node name="OverworldConnector" type="Node3D"]

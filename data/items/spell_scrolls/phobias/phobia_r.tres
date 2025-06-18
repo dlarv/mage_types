@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://crnal5pig1ahg"]
 
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_qy4w5"]
-[ext_resource type="Script" path="res://src/items/SpellScroll.gd" id="2_a3x15"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_qy4w5"]
+[ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_a3x15"]
 [ext_resource type="Resource" uid="uid://de2o1rjags06x" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/red_phobia.tres" id="3_jx76k"]
 
 [resource]

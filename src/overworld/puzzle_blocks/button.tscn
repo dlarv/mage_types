@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://btpmu7dnqhtcg"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Button.gd" id="1_rysui"]
+[ext_resource type="Script" uid="uid://mgdjoajhl88i" path="res://src/overworld/puzzle_blocks/Button.gd" id="1_rysui"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_a17w7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1q4ab"]

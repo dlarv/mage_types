@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgskhp8lbdjsd"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/LaserReceiver.gd" id="1_hbigv"]
+[ext_resource type="Script" uid="uid://b3o8i5d71jl8e" path="res://src/overworld/puzzle_blocks/lasers/LaserReceiver.gd" id="1_hbigv"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_widym"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kwb7f"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://clb2vaehgxwl5"]
 
-[ext_resource type="Script" path="res://src/battle_system/attack_builder/components/EffectSlot.gd" id="1_1fwoh"]
+[ext_resource type="Script" uid="uid://cihlpi8un7pp6" path="res://src/battle_system/attack_builder/components/EffectSlot.gd" id="1_1fwoh"]
 [ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="2_0qcwn"]
 
 [sub_resource type="Gradient" id="Gradient_7mpxj"]

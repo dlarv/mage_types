@@ -1,9 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://6ahbmwjju175"]
 
-[ext_resource type="Script" path="res://addons/matchupmanager/softlock_calc/SoftlockCalc.gd" id="1_4sxv6"]
+[ext_resource type="Script" uid="uid://ctydppdtnuys1" path="res://addons/matchupmanager/softlock_calc/SoftlockCalc.gd" id="1_4sxv6"]
 [ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="1_d7psa"]
 [ext_resource type="Texture2D" uid="uid://b1pnbjkbnix5i" path="res://assets/graphics/matchup_graphs/matchup_graph_v3.png" id="3_cpmwa"]
-[ext_resource type="PackedScene" path="res://assets/graphics/layered_matchup_graph.tscn" id="4_lq2jc"]
 
 [sub_resource type="Gradient" id="Gradient_bj7mu"]
 offsets = PackedFloat32Array(1)
@@ -60,6 +59,9 @@ colors = PackedColorArray(0, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3twbj"]
 gradient = SubResource("Gradient_ukhtn")
+
+[sub_resource type="Resource" id="Resource_7ow4w"]
+metadata/__load_path__ = "res://assets/graphics/layered_matchup_graph.tscn"
 
 [node name="SoftlockCalc" type="MarginContainer" node_paths=PackedStringArray("result_rect_1", "_magiclay_parent", "_catalyst_parent")]
 anchors_preset = 15
@@ -167,7 +169,7 @@ metadata/_tab_index = 0
 [node name="Label" type="Label" parent="HBoxContainer/ResultsContainer/Result1"]
 layout_mode = 2
 
-[node name="MatchupGraph" parent="HBoxContainer/ResultsContainer/Result1" instance=ExtResource("4_lq2jc")]
+[node name="MatchupGraph" parent="HBoxContainer/ResultsContainer/Result1"]
 layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Calculate_Button" to="." method="_on_calculate_button_pressed"]

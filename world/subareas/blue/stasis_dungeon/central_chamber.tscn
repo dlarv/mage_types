@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c6ap4wdy8tsnd"]
 
-[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_xbdi3"]
+[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="1_xbdi3"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_jgyy0"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_dq2i3"]
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="4_7svuq"]

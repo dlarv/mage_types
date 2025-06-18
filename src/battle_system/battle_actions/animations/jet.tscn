@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://34tfl08ue8kl"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/animations/JetAnimation.gd" id="1_q8cwd"]
+[ext_resource type="Script" uid="uid://c3duywk5u5ujn" path="res://src/battle_system/battle_actions/animations/JetAnimation.gd" id="1_q8cwd"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppq6a"]
 particle_flag_disable_z = true

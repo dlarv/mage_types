@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2bjj71mm57fa"]
 
 [ext_resource type="PackedScene" uid="uid://dhhecfwq3jkw6" path="res://src/elements/gui/element_button.tscn" id="1_hyigp"]
-[ext_resource type="Script" path="res://src/gui/pause_menu/CatalystDeviceMenu.gd" id="1_o6clk"]
+[ext_resource type="Script" uid="uid://msx71mjs3h40" path="res://src/gui/pause_menu/CatalystDeviceMenu.gd" id="1_o6clk"]
 
 [node name="CatalystDeviceMenu" type="TabContainer"]
 anchors_preset = 15

@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://bq45s4if56xdi"]
 
-[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="1_4qfi8"]
+[ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="1_4qfi8"]
 
 [resource]
 script = ExtResource("1_4qfi8")
 name = "Red"
 main_color = Color(1, 0, 0, 1)
+is_defensive_type = false
 text_color = Color(1, 1, 1, 1)
 color_palette = Array[Color]([])

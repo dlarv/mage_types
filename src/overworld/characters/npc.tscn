@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cslj0rb0d4weo"]
 
-[ext_resource type="Script" path="res://src/overworld/characters/Npc.gd" id="1_lo024"]
+[ext_resource type="Script" uid="uid://cj8hf072ohnm7" path="res://src/overworld/characters/Npc.gd" id="1_lo024"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_kks6f"]
 
 [node name="NPC" type="Area3D"]

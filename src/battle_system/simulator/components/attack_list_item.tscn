@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://lru2hepw8pt5"]
 
-[ext_resource type="Script" path="res://src/battle_system/simulator/components/attack_list_item.gd" id="1_xogwy"]
+[ext_resource type="Script" uid="uid://bqtpee3m0qrnu" path="res://src/battle_system/simulator/components/attack_list_item.gd" id="1_xogwy"]
 
 [node name="AttackListItem" type="Control" node_paths=PackedStringArray("type_display", "name_display", "range_display", "power_display", "button")]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rcw2b2sorp8m"]
 
-[ext_resource type="Script" path="res://src/battle_system/simulator/components/battle_actor_display.gd" id="1_hns40"]
+[ext_resource type="Script" uid="uid://dkv06f58r2hkm" path="res://src/battle_system/simulator/components/battle_actor_display.gd" id="1_hns40"]
 [ext_resource type="PackedScene" uid="uid://lru2hepw8pt5" path="res://src/battle_system/simulator/components/attack_list_item.tscn" id="2_4gkqo"]
 
 [node name="BattleActorDisplay" type="Control" node_paths=PackedStringArray("name_display", "element1_display", "element2_display", "stats_vbox", "attacks_scroller")]

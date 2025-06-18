@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2c6cvf2k0bf4"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_1e8qi"]
+[ext_resource type="Script" uid="uid://drbpmc25edr7x" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_1e8qi"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_l2c7w"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nfnt1"]

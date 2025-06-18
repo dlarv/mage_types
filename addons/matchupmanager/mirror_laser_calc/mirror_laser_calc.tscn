@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://csb5ufkhml233"]
 
-[ext_resource type="Script" path="res://addons/matchupmanager/mirror_laser_calc/MirrorLaserCalc.gd" id="1_i8e5i"]
+[ext_resource type="Script" uid="uid://cn6pdjfael1y7" path="res://addons/matchupmanager/mirror_laser_calc/MirrorLaserCalc.gd" id="1_i8e5i"]
 [ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="1_l2gk6"]
 
 [node name="MirrorLaserCalc" type="TabContainer"]

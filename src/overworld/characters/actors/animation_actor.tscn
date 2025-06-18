@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8oluuihnxxkw"]
 
-[ext_resource type="Script" path="res://src/overworld/characters/actors/AnimationActor.gd" id="1_lhxcf"]
+[ext_resource type="Script" uid="uid://ci3dptq14p2mq" path="res://src/overworld/characters/actors/AnimationActor.gd" id="1_lhxcf"]
 
 [node name="AnimationActor" type="Node3D"]
 script = ExtResource("1_lhxcf")

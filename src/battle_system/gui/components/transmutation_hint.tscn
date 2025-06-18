@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bm5d4v64vlqg7"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/TransmutationHint.gd" id="1_2qos5"]
+[ext_resource type="Script" uid="uid://cyaq6ipngmlun" path="res://src/battle_system/gui/components/TransmutationHint.gd" id="1_2qos5"]
 [ext_resource type="PackedScene" uid="uid://30dbgu5k66cc" path="res://src/battle_system/gui/components/transmutation_hint_icon.tscn" id="2_3h48n"]
 
 [node name="TransmutationHint" type="PanelContainer" node_paths=PackedStringArray("attack_element_1", "attack_element_2", "attack_element_3", "internal_element_1", "internal_element_2", "internal_element_3")]

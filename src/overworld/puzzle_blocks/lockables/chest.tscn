@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dh6ti3acb6qa"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/Chest.gd" id="1_rdalo"]
+[ext_resource type="Script" uid="uid://bgslukiv3n0dg" path="res://src/overworld/puzzle_blocks/lockables/Chest.gd" id="1_rdalo"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_vc6ax"]
 [ext_resource type="PackedScene" uid="uid://cl40tuv2svhh8" path="res://assets/3d/models/objects/chest.blend" id="3_b3rsj"]
 

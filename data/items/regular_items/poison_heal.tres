@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="RegularItem" load_steps=13 format=3 uid="uid://dwfg404xs0toh"]
 
-[ext_resource type="Script" path="res://src/items/RegularItem.gd" id="1_5llkq"]
+[ext_resource type="Script" uid="uid://cqtmj04buupx0" path="res://src/items/RegularItem.gd" id="1_5llkq"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_q4mom"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="2_eaqiy"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="2_eaqiy"]
 [ext_resource type="Resource" uid="uid://da16f5kfirrs1" path="res://data/battle_system/status_effects/poison_effect.tres" id="3_j3o8v"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="4_w55iu"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleItem.gd" id="5_gbxks"]
-[ext_resource type="Script" path="res://src/items/requirements/StatusEffectRequirement.gd" id="6_4u1fn"]
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="6_f4wql"]
+[ext_resource type="Script" uid="uid://cfaw0d7s57qqh" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="4_w55iu"]
+[ext_resource type="Script" uid="uid://bjtttndl1n74u" path="res://src/battle_system/battle_actions/BattleItem.gd" id="5_gbxks"]
+[ext_resource type="Script" uid="uid://d3jotaadcx0iy" path="res://src/items/requirements/StatusEffectRequirement.gd" id="6_4u1fn"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="6_f4wql"]
 
 [sub_resource type="Resource" id="Resource_in8pl"]
 resource_name = "Poison Heal"

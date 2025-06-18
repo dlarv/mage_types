@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterList" load_steps=5 format=3 uid="uid://wloq1v68qevk"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_pgyye"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/CharacterList.gd" id="2_5ryfu"]
+[ext_resource type="Script" uid="uid://cdyrwu1h1an11" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_pgyye"]
+[ext_resource type="Script" uid="uid://5231x5j3e8ev" path="res://addons/dialogue_nodes/objects/CharacterList.gd" id="2_5ryfu"]
 [ext_resource type="Resource" uid="uid://nkt3ddqnpyrd" path="res://data/demo/character_files/partner_character.tres" id="2_psvi2"]
 [ext_resource type="Resource" uid="uid://wkxnw2pf28jp" path="res://data/demo/character_files/alice_character.tres" id="3_kfjq1"]
 

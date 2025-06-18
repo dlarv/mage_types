@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://8av0pai6ayun"]
 
-[ext_resource type="Script" path="res://src/items/requirements/ItemRequirement.gd" id="1_fai67"]
-[ext_resource type="Script" path="res://src/items/equipment/EquipmentEffect.gd" id="1_so7im"]
-[ext_resource type="Script" path="res://src/items/equipment/Equipment.gd" id="2_ypaho"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_fai67"]
+[ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_so7im"]
+[ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="2_ypaho"]
 
 [resource]
 script = ExtResource("2_ypaho")

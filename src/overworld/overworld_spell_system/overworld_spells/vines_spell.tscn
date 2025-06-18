@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cupyaa6ci73ea"]
 
-[ext_resource type="Script" path="res://src/overworld/overworld_spell_system/overworld_spells/VinesSpell.gd" id="1_vqh6q"]
+[ext_resource type="Script" uid="uid://dxs3qu31m72h4" path="res://src/overworld/overworld_spell_system/overworld_spells/VinesSpell.gd" id="1_vqh6q"]
 
 [node name="VinesSpell" type="Node3D"]
 script = ExtResource("1_vqh6q")

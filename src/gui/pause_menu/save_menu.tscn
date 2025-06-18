@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0e2avc6gqayk"]
 
-[ext_resource type="Script" path="res://src/gui/pause_menu/SaveMenu.gd" id="1_mkl2i"]
+[ext_resource type="Script" uid="uid://dyxa2356hgp7w" path="res://src/gui/pause_menu/SaveMenu.gd" id="1_mkl2i"]
 
 [node name="SaveMenu" type="TabContainer"]
 anchors_preset = 15

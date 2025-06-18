@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dms3rf01rcur2"]
 
-[ext_resource type="Script" path="res://src/overworld/overworld_spell_system/overworld_spells/CatalystSpell.gd" id="1_rraly"]
+[ext_resource type="Script" uid="uid://ci2revi4a67dr" path="res://src/overworld/overworld_spell_system/overworld_spells/CatalystSpell.gd" id="1_rraly"]
 
 [node name="CatalystSpell" type="Node3D"]
 script = ExtResource("1_rraly")

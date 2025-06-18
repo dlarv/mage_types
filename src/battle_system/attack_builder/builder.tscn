@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5wj2e5kqbrtl"]
 
-[ext_resource type="Script" path="res://src/battle_system/attack_builder/Builder.gd" id="1_c5f80"]
+[ext_resource type="Script" uid="uid://7ybyk44gtwqn" path="res://src/battle_system/attack_builder/Builder.gd" id="1_c5f80"]
 [ext_resource type="PackedScene" uid="uid://c0yk4b0ig5108" path="res://src/battle_system/attack_builder/components/effect_builder.tscn" id="1_v13pd"]
 [ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="1_y6gep"]
 

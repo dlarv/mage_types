@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://clejre8fraaxc"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/LaserDisruption.gd" id="1_3gqt0"]
+[ext_resource type="Script" uid="uid://cbcyd2d0bgk7" path="res://src/overworld/puzzle_blocks/lasers/LaserDisruption.gd" id="1_3gqt0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b56ib"]
 radius = 0.75

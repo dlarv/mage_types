@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://yhrncuvcuqjc"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/Gate.gd" id="1_dbpd8"]
+[ext_resource type="Script" uid="uid://6qqiw70fksx6" path="res://src/overworld/puzzle_blocks/lockables/Gate.gd" id="1_dbpd8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8txmk"]
 size = Vector3(1, 2, 0.5)
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvxh5"]
 _data = {
-"RESET": SubResource("Animation_1pp1a"),
-"opening": SubResource("Animation_wu4hk")
+&"RESET": SubResource("Animation_1pp1a"),
+&"opening": SubResource("Animation_wu4hk")
 }
 
 [node name="Gate" type="StaticBody3D" groups=["persist"]]

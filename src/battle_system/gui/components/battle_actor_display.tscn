@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://deg4ffl4kkgel"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/BattleActorDisplay.gd" id="1_5ryt8"]
+[ext_resource type="Script" uid="uid://bijf3xh2wqaqi" path="res://src/battle_system/gui/components/BattleActorDisplay.gd" id="1_5ryt8"]
 [ext_resource type="PackedScene" uid="uid://d0u0yls8gquxd" path="res://src/battle_system/gui/components/stat_display/stat_change_display.tscn" id="2_mxncc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tdbtg"]

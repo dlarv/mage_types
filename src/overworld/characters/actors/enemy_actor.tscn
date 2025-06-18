@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c150qdsgbvtp"]
 
-[ext_resource type="Script" path="res://src/overworld/characters/actors/EnemyActor.gd" id="1_3dtq3"]
+[ext_resource type="Script" uid="uid://dju2fwll4kxii" path="res://src/overworld/characters/actors/EnemyActor.gd" id="1_3dtq3"]
 
 [node name="EnemyActor" type="Node3D"]
 script = ExtResource("1_3dtq3")

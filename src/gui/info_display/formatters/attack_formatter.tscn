@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pejvhd3qb6b0"]
 
-[ext_resource type="Script" path="res://src/gui/info_display/formatters/AttackFormatter.gd" id="1_xauya"]
+[ext_resource type="Script" uid="uid://ci4paps2r0uy2" path="res://src/gui/info_display/formatters/AttackFormatter.gd" id="1_xauya"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_o1esy"]
 
 [node name="AttackFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "range_label", "target_label", "power_hbox", "power_label", "accuracy_label", "priority_label", "details", "effects_label", "element_icon")]

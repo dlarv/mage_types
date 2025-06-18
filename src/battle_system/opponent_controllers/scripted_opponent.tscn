@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://df78txj1jxdu7"]
 
-[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="1_ptogf"]
+[ext_resource type="Script" uid="uid://n8ulld1m40ie" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="1_ptogf"]
 
 [node name="ScriptedOpponent" type="Node"]
 script = ExtResource("1_ptogf")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0wwb5blbl37u"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Rails.gd" id="1_qrsw7"]
+[ext_resource type="Script" uid="uid://t8ee2jo7621t" path="res://src/overworld/puzzle_blocks/Rails.gd" id="1_qrsw7"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_3cqjf"]
 
 [node name="Rails" type="Node3D" node_paths=PackedStringArray("point_a", "point_b")]

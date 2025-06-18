@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://d1s1g7x527myg"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_moss4"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_moss4"]
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_thjmm"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_7kfyv"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/CompareStatCondition.gd" id="3_mr6cx"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/OverrideDamage.gd" id="4_e5d4m"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="4_tts8l"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_j1jyt"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_7kfyv"]
+[ext_resource type="Script" uid="uid://68vvlv60he6c" path="res://src/battle_system/battle_actions/conditions/CompareStatCondition.gd" id="3_mr6cx"]
+[ext_resource type="Script" uid="uid://qf7d0pqdcanx" path="res://src/battle_system/battle_actions/effects/specific_effects/OverrideDamage.gd" id="4_e5d4m"]
+[ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="4_tts8l"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_j1jyt"]
 
 [sub_resource type="Resource" id="Resource_06per"]
 script = ExtResource("3_mr6cx")

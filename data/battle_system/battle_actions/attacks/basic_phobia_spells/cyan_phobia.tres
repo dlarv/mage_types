@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://dfw4ok6p0v3ei"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_8rd4o"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_8so8y"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="2_upu2q"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="2_8so8y"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="2_upu2q"]
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="3_spfjl"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="4_ls4qf"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pej2m"]
+[ext_resource type="Script" uid="uid://b7le2eumt6kqa" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="4_ls4qf"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="6_pej2m"]
 
 [sub_resource type="Resource" id="Resource_qfnlr"]
 resource_name = "Cyan-Phobic"

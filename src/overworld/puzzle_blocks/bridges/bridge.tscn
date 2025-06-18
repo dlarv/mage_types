@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cfpuqf3hfg6by"]
 
-[ext_resource type="PackedScene" uid="uid://c71emwl08sli0" path="res://assets/3d/models/objects/puzzle_blocks/bridges/Bridge.glb" id="1_gg26p"]
+[ext_resource type="PackedScene" uid="uid://dquaontxb80f5" path="res://assets/3d/models/objects/puzzle_blocks/bridges/Bridge.glb" id="1_gg26p"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_22ue0"]
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/bridges/Bridge.gd" id="2_pq00e"]
+[ext_resource type="Script" uid="uid://bdtjoisv7kyfc" path="res://src/overworld/puzzle_blocks/bridges/Bridge.gd" id="2_pq00e"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_amepe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0r7y"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dm864gf38ms1c"]
 
-[ext_resource type="Script" path="res://src/gui/info_display/formatters/StatusEffectFormatter.gd" id="1_1atow"]
+[ext_resource type="Script" uid="uid://b6tbl2i836h4d" path="res://src/gui/info_display/formatters/StatusEffectFormatter.gd" id="1_1atow"]
 
 [node name="StatusEffectFormatter" type="PanelContainer" node_paths=PackedStringArray("name_label", "details_label", "icon_parent")]
 anchors_preset = 15

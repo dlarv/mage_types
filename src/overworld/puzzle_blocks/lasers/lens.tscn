@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://84cyfc8t4t04"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/Lens.gd" id="1_o784s"]
+[ext_resource type="Script" uid="uid://c8u80ydrf3muh" path="res://src/overworld/puzzle_blocks/lasers/Lens.gd" id="1_o784s"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="1_v6um2"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="2_estkt"]
 

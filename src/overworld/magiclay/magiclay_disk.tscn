@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4x37iu3x3ttk"]
 
-[ext_resource type="Script" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_3jqdt"]
+[ext_resource type="Script" uid="uid://8kuun6qlgqwa" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_3jqdt"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="1_jy6gi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfreq"]

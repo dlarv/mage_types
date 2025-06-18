@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://db77srkl7kagj"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/Reset.gd" id="1_ditw8"]
+[ext_resource type="Script" uid="uid://diqtbsrhg8hns" path="res://src/overworld/puzzle_blocks/Reset.gd" id="1_ditw8"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_j8q3r"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_fge2y"]

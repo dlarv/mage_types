@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dm1f1o20pmtbn"]
 
-[ext_resource type="Script" path="res://src/gui/info_display/InfoDisplay.gd" id="1_7hwcu"]
-[ext_resource type="Script" path="res://src/gui/RichTextElement.gd" id="1_r25dg"]
+[ext_resource type="Script" uid="uid://c6jk7xn044snr" path="res://src/gui/info_display/InfoDisplay.gd" id="1_7hwcu"]
+[ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="1_r25dg"]
 [ext_resource type="PackedScene" uid="uid://pejvhd3qb6b0" path="res://src/gui/info_display/formatters/attack_formatter.tscn" id="2_fefpe"]
 [ext_resource type="PackedScene" uid="uid://dpfs4g2v7ybgs" path="res://src/gui/info_display/formatters/item_formatter.tscn" id="3_kpihw"]
 [ext_resource type="PackedScene" uid="uid://lqq2l2jdv6et" path="res://src/gui/info_display/formatters/actor_formatter.tscn" id="4_npyyy"]

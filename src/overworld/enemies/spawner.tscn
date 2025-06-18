@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://cjkcvlvidp24x"]
 
-[ext_resource type="Script" path="res://src/overworld/enemies/Spawner.gd" id="1_gtanb"]
+[ext_resource type="Script" uid="uid://c0gcu5o4w8gsy" path="res://src/overworld/enemies/Spawner.gd" id="1_gtanb"]
 [ext_resource type="PackedScene" uid="uid://bdv06avwh4v6g" path="res://src/overworld/enemies/wild_enemy_actor.tscn" id="2_b57t8"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_ty1x5"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="5_h0ssj"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="6_lsjr5"]
-[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="7_851q1"]
-[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="8_0ir3c"]
-[ext_resource type="Script" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="9_rm4jm"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_ty1x5"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="5_h0ssj"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="6_lsjr5"]
+[ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="7_851q1"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="8_0ir3c"]
+[ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="9_rm4jm"]
 
 [sub_resource type="Resource" id="Resource_1xkno"]
 script = ExtResource("6_lsjr5")
@@ -27,8 +27,7 @@ hp = 100
 reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("5_h0ssj")]([])
 
 [sub_resource type="Resource" id="Resource_3k74b"]
@@ -49,8 +48,7 @@ hp = 100
 reset_hp_after_battle = true
 _element1 = "red"
 _element2 = "orange"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("5_h0ssj")]([])
 
 [sub_resource type="Resource" id="Resource_wux6n"]
@@ -71,8 +69,7 @@ hp = 100
 reset_hp_after_battle = true
 _element1 = "green"
 _element2 = "blank"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("5_h0ssj")]([])
 
 [sub_resource type="Resource" id="Resource_6vu4l"]
@@ -80,6 +77,7 @@ script = ExtResource("9_rm4jm")
 aggression = 0.0
 intelligence = 0.0
 transmutation_bias = 0.0
+_transmutation_pref = "blank"
 dialog_ids = Array[ExtResource("8_0ir3c")]([])
 
 [node name="Spawner" type="Area3D"]

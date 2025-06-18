@@ -1,7 +1,7 @@
 [gd_scene load_steps=408 format=4 uid="uid://cmtatsdth8psr"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_uvna4"]
-[ext_resource type="Shader" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
+[ext_resource type="Shader" uid="uid://b8ankfagnoil7" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
 [ext_resource type="Shader" uid="uid://d2sidylou0g1r" path="res://assets/3d/shaders/clay_shader/clay_water.tres" id="3_jlv2r"]
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/3d/shaders/clay_shader/clay.tres" id="3_yqbif"]
 [ext_resource type="Material" uid="uid://cixix4a1e3l5p" path="res://assets/3d/material_maker/felt_blue_hex.tres" id="5_v00nr"]

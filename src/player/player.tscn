@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://c4p3jn0diyrja"]
 
-[ext_resource type="Script" path="res://src/player/PlayerController.gd" id="1_eca83"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
+[ext_resource type="Script" uid="uid://de6h1lv6q0qbt" path="res://src/player/PlayerController.gd" id="1_eca83"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="3_e1u62"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="3_xfaiw"]
 [ext_resource type="Resource" uid="uid://dkgwtmxs7v2mq" path="res://data/demo/character_files/battle_actors/partner_battle_actor.tres" id="4_ljayj"]

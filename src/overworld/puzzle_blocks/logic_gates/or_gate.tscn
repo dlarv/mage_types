@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr82ihfer1ek6"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/logic_gates/OrGate.gd" id="1_g3hoo"]
+[ext_resource type="Script" uid="uid://cxebjqymfdcip" path="res://src/overworld/puzzle_blocks/logic_gates/OrGate.gd" id="1_g3hoo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s65pg"]
 size = Vector3(0, 0, 0)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=92 format=3 uid="uid://4ft3p5xs6uk5"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
-[ext_resource type="Script" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
+[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_bw7a8"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="3_h0s0g"]
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="3_pvsap"]
+[ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="3_pvsap"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_wmol4"]
 [ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="5_bxt50"]
 [ext_resource type="Resource" uid="uid://bm7p4gie7rf0y" path="res://data/items/spell_scrolls/phobias/phobia_b.tres" id="10_17ek5"]
@@ -20,25 +20,25 @@
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="16_1unvm"]
 [ext_resource type="Resource" uid="uid://dgyavaq3o5dot" path="res://data/items/spell_scrolls/sting_scroll.tres" id="16_c81wx"]
 [ext_resource type="Resource" uid="uid://bwldq3pk8rvsh" path="res://data/items/regular_items/healing_potion.tres" id="16_dsupm"]
-[ext_resource type="Script" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="16_m6hrw"]
 [ext_resource type="Resource" uid="uid://crnal5pig1ahg" path="res://data/items/spell_scrolls/phobias/phobia_r.tres" id="16_xi36j"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="17_6sjel"]
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="17_g7uef"]
 [ext_resource type="Resource" uid="uid://cwjiv3e1abevd" path="res://data/items/spell_scrolls/phobias/phobia_y.tres" id="17_rcww2"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="19_3xoh5"]
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="19_b8v62"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="20_dejeb"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="20_dejeb"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="20_wwne6"]
 [ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="21_ag3af"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="21_k36mp"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="21_kghrr"]
-[ext_resource type="Script" path="res://src/overworld/characters/Dialog.gd" id="21_waht2"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="21_kghrr"]
+[ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="21_waht2"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="21_wyiua"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="21_y7w8y"]
 [ext_resource type="Resource" uid="uid://4cqj7vqfwjdv" path="res://data/items/spell_scrolls/strikes/c_strike_scroll.tres" id="22_60tdk"]
 [ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="22_gga4f"]
 [ext_resource type="Resource" uid="uid://6xeq4kt74iij" path="res://data/items/spell_scrolls/strikes/g_strike_scroll.tres" id="23_k4th4"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="23_nxqmg"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="23_nxqmg"]
 [ext_resource type="Resource" uid="uid://bqv0v7l6vqeeu" path="res://data/items/spell_scrolls/strikes/m_strike_scroll.tres" id="24_o4qvi"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="25_caj5v"]
 [ext_resource type="Resource" uid="uid://de8dpi4u0pici" path="res://data/items/spell_scrolls/strikes/o_strike_scroll.tres" id="25_exhuc"]
@@ -65,7 +65,7 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 resource_name = "Terrify Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("10_oif81")
-id = 37
+id = -1
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -74,7 +74,7 @@ allow_stacking = true
 resource_name = "Hydrophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("10_17ek5")
-id = 29
+id = 35
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -83,7 +83,7 @@ allow_stacking = true
 resource_name = "Glaukophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("11_aggqn")
-id = 36
+id = 42
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -92,7 +92,7 @@ allow_stacking = true
 resource_name = "Prasinophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("12_66puj")
-id = 35
+id = 41
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -101,7 +101,7 @@ allow_stacking = true
 resource_name = "Porphyrophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("13_2iuu0")
-id = 31
+id = 37
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -110,7 +110,7 @@ allow_stacking = true
 resource_name = "Xanthophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("14_xlak8")
-id = 33
+id = 39
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -119,7 +119,7 @@ allow_stacking = true
 resource_name = "Nyctophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("15_gyh0j")
-id = 30
+id = 36
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -128,7 +128,7 @@ allow_stacking = true
 resource_name = "Hemophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("16_xi36j")
-id = 32
+id = 38
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -137,7 +137,7 @@ allow_stacking = true
 resource_name = "Photophobia Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("17_rcww2")
-id = 34
+id = 40
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -191,7 +191,7 @@ allow_stacking = true
 resource_name = "Shield Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("17_g7uef")
-id = 28
+id = 32
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -224,7 +224,7 @@ end_state = ""
 resource_name = "Blue Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("21_ag3af")
-id = 17
+id = 18
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -233,7 +233,7 @@ allow_stacking = true
 resource_name = "Cyan Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("22_60tdk")
-id = 24
+id = 25
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -242,7 +242,7 @@ allow_stacking = true
 resource_name = "Green Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("23_k4th4")
-id = 23
+id = 24
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -251,7 +251,7 @@ allow_stacking = true
 resource_name = "Magenta Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("24_o4qvi")
-id = 19
+id = 20
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -260,7 +260,7 @@ allow_stacking = true
 resource_name = "Orange Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("25_exhuc")
-id = 21
+id = 22
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -269,7 +269,7 @@ allow_stacking = true
 resource_name = "Purple Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("26_q248r")
-id = 18
+id = 19
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -278,7 +278,7 @@ allow_stacking = true
 resource_name = "Red Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("27_npiqw")
-id = 20
+id = 21
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -287,7 +287,7 @@ allow_stacking = true
 resource_name = "Yellow Strike Bead"
 script = ExtResource("16_m6hrw")
 item = ExtResource("28_ofiwo")
-id = 22
+id = 23
 quantity = 1
 max_quantity = 9999
 allow_stacking = true
@@ -310,8 +310,7 @@ hp = 200
 reset_hp_after_battle = true
 _element1 = "orange"
 _element2 = "orange"
-_elemental_bias = "blank"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("21_kghrr")]([ExtResource("22_gga4f")])
 
 [sub_resource type="Resource" id="Resource_fkgfx"]
@@ -332,8 +331,7 @@ hp = 100
 reset_hp_after_battle = true
 _element1 = "green"
 _element2 = "blank"
-_elemental_bias = "green"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("21_kghrr")]([ExtResource("35_nbiip"), ExtResource("36_lvoq8"), ExtResource("37_5b4jx")])
 
 [sub_resource type="Resource" id="Resource_6ro7p"]
@@ -354,8 +352,7 @@ hp = 100
 reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "blank"
-_elemental_bias = "blue"
-bias_reversion_threshold = 0.4
+_alignment = "blank"
 attacks = Array[ExtResource("21_kghrr")]([ExtResource("35_63ow1"), ExtResource("36_8pp8m"), ExtResource("37_51rth")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qr7x"]

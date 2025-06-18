@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://dbiug7n7hhukx"]
 
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_2t8l8"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_2t8l8"]
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_d8px1"]
 [ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/elementals/green/sting.tres" id="3_78654"]
 [ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="4_ewjlb"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="5_i6ufj"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="6_qusea"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="7_n4jme"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="6_qusea"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="7_n4jme"]
 
 [sub_resource type="Resource" id="Resource_rgvqw"]
 script = ExtResource("7_n4jme")

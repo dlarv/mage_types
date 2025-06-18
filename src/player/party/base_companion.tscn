@@ -1,32 +1,30 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfpnrqolejh7g"]
 
-[ext_resource type="Script" path="res://src/player/party/BaseCompanion.gd" id="1_8lqxn"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_o4cem"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="2_srmh1"]
-[ext_resource type="Script" path="res://src/elements/ElementalType.gd" id="3_2i1sk"]
+[ext_resource type="Script" uid="uid://tdkakghg7vnx" path="res://src/player/party/BaseCompanion.gd" id="1_8lqxn"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_haxku"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_srmh1"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_85mrx"]
 
-[sub_resource type="Resource" id="Resource_5ne4w"]
-script = ExtResource("3_2i1sk")
-name = "Blank"
-main_color = Color(0.5, 0.5, 0.5, 1)
-text_color = Color(0, 0, 0, 1)
-color_palette = []
+[sub_resource type="Resource" id="Resource_q4wqr"]
+script = ExtResource("4_85mrx")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
 
 [sub_resource type="Resource" id="Resource_p7f3b"]
 script = ExtResource("2_srmh1")
 name = "Guy"
+level = 1
+stat_manager = SubResource("Resource_q4wqr")
 hp = 100
-melee_attack = 100
-ranged_attack = 100
-melee_defense = 100
-ranged_defense = 100
-speed = 100
-evasion = 100
-mana = 100
-element1 = SubResource("Resource_5ne4w")
-element2 = SubResource("Resource_5ne4w")
-elemental_bias = SubResource("Resource_5ne4w")
-attacks = Array[ExtResource("2_o4cem")]([])
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "blank"
+_alignment = "blank"
+attacks = Array[ExtResource("2_haxku")]([])
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kdhlv"]
 

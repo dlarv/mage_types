@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=15 format=3 uid="uid://dt1qqsm85wdxi"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_3a8hg"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_462cl"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/Attack.gd" id="2_cugkt"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_8uqbc"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="3_jetnt"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_vwjnm"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_0ckde"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="7_7uox3"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_462cl"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_cugkt"]
+[ext_resource type="Script" uid="uid://4aisqs8ctusa" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_8uqbc"]
+[ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="3_jetnt"]
+[ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_vwjnm"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_0ckde"]
+[ext_resource type="Script" uid="uid://dukyjdwpqolw4" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="7_7uox3"]
 
 [sub_resource type="Resource" id="Resource_fwjrb"]
 script = ExtResource("3_8uqbc")

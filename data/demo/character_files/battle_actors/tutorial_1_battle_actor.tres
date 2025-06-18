@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=6 format=3 uid="uid://cm4wr6tvgqw55"]
 
 [ext_resource type="Resource" uid="uid://bkg6ove3jbkgg" path="res://data/battle_system/battle_actions/attacks/basic/throw_c.tres" id="2_l8pfp"]
-[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_qnp4c"]
-[ext_resource type="Script" path="res://src/battle_system/BattleActor.gd" id="4_5ngg0"]
-[ext_resource type="Script" path="res://src/battle_system/StatManager.gd" id="5_tkpf5"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_qnp4c"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="4_5ngg0"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_tkpf5"]
 
 [sub_resource type="Resource" id="Resource_h1bhc"]
 script = ExtResource("5_tkpf5")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cf5nklwcjoux1"]
 
-[ext_resource type="Script" path="res://src/overworld/puzzle_blocks/lasers/components/SubReceiver.gd" id="1_qsq3v"]
+[ext_resource type="Script" uid="uid://vd28323na1yt" path="res://src/overworld/puzzle_blocks/lasers/components/SubReceiver.gd" id="1_qsq3v"]
 
 [node name="SubReceiver" type="Area3D"]
 collision_layer = 8

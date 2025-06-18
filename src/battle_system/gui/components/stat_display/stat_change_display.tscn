@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d0u0yls8gquxd"]
 
-[ext_resource type="Script" path="res://src/battle_system/gui/components/stat_display/StatChangeDisplay.gd" id="1_lghwg"]
+[ext_resource type="Script" uid="uid://ctcu4kueuaxkl" path="res://src/battle_system/gui/components/stat_display/StatChangeDisplay.gd" id="1_lghwg"]
 [ext_resource type="PackedScene" uid="uid://25ni3ubfbldc" path="res://src/battle_system/gui/components/stat_display/single_stat_display.tscn" id="6_4bxjt"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ke0bx"]

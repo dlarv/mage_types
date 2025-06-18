@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bcp041c8p7lm4"]
 
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_3ilgs"]
-[ext_resource type="Script" path="res://src/player/party/player_party.gd" id="1_a50nr"]
+[ext_resource type="Script" uid="uid://3xg0gned2tuh" path="res://src/player/party/player_party.gd" id="1_a50nr"]
 [ext_resource type="PackedScene" uid="uid://2qmk37nb8emu" path="res://data/player/companions/alice_companion.tscn" id="2_xp5nw"]
 [ext_resource type="PackedScene" uid="uid://dthnhw8o26nkm" path="res://data/player/companions/alex_companion.tscn" id="3_lrh5x"]
 [ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="5_up0s1"]

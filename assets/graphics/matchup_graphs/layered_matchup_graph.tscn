@@ -1,6 +1,7 @@
 [gd_scene load_steps=94 format=4 uid="uid://c64wgmltumtyl"]
 
-[ext_resource type="Script" path="res://assets/graphics/LayeredMatchupGraph.gd" id="1_rghyx"]
+[sub_resource type="Resource" id="Resource_rdm7p"]
+metadata/__load_path__ = "res://assets/graphics/LayeredMatchupGraph.gd"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sx3ak"]
 resource_name = "Green"
@@ -1403,7 +1404,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hnxce")
 
 [node name="MatchupGraph" type="SubViewportContainer"]
-script = ExtResource("1_rghyx")
+script = SubResource("Resource_rdm7p")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
