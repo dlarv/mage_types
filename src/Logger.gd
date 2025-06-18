@@ -24,6 +24,7 @@ func _enter_tree() -> void:
 		DirAccess.open("user://").make_dir_recursive("logs")
 	else:
 		_root_path = "res://logs"
+		DirAccess.open("res://").make_dir_recursive("logs")
 	
 	var baseName := Time.get_date_string_from_system().replace(":", "_")
 
@@ -72,6 +73,7 @@ func save_log() -> void:
 	logs = []
 
 	var file := FileAccess.open(path, FileAccess.READ_WRITE)
+	if not file: return
 	file.seek_end()
 	file.store_string(output)
 
