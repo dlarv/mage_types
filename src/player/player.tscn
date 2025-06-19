@@ -44,11 +44,13 @@ collision_mask = 49
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_eca83")
-jump_height = 2.0
-jump_time_to_peak = 0.5
-jump_time_to_descent = 0.4
+jump_height = 1.0
+jump_time_to_peak = 0.4
+jump_time_to_descent = 0.3
 coyote_time_length = 0.5
 keep_jump_buffer_length = 0.1
+variable_jump_height_modifier = 15.0
+variable_jump_time_window = 0.3
 team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
@@ -59,17 +61,6 @@ shape = SubResource("CapsuleShape3D_f637b")
 
 [node name="player" parent="." instance=ExtResource("3_xfaiw")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0)
-
-[node name="Skeleton3D" parent="player/Armature" index="0"]
-bones/1/rotation = Quaternion(-2.93176e-08, -3.26299e-08, -0.69775, 0.716341)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-2.83839e-09, 6.05779e-09, -0.0131459, 0.999914)
-bones/2/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-2.66925e-08, 2.66925e-08, 0.707107, 0.707107)
-bones/7/rotation = Quaternion(-0.494287, -0.505649, -0.494287, 0.505648)
-bones/7/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.712137, 8.5248e-08, -8.64739e-08, 0.702041)
-bones/12/rotation = Quaternion(0.00713899, -2.40746e-08, 1.56189e-09, 0.999974)
 
 [node name="Cylinder" parent="player/Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_dlc7b")

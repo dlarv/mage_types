@@ -4,13 +4,13 @@ extends Player
 @export var run_speed := 800.0
 @export var drag_speed := 500.0
 
-@export var jump_height := 10.0
-@export var jump_time_to_peak := 2.0
-@export var jump_time_to_descent := 0.1
-@export var coyote_time_length: float
-@export var keep_jump_buffer_length: float
-@export var variable_jump_height_modifier := 4.0
-@export var variable_jump_time_window := 0.5 
+@export var jump_height := 1.0
+@export var jump_time_to_peak := 0.4
+@export var jump_time_to_descent := 0.3
+@export var coyote_time_length := 0.5
+@export var keep_jump_buffer_length := 0.1
+@export var variable_jump_height_modifier := 15.0
+@export var variable_jump_time_window := 0.3 
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
 @onready var jump_gravity := (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)      
