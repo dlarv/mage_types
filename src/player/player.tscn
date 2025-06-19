@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=13 format=4 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" uid="uid://de6h1lv6q0qbt" path="res://src/player/PlayerController.gd" id="1_eca83"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
@@ -38,6 +38,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="Gradient" id="Gradient_o822w"]
+offsets = PackedFloat32Array(0.535613, 0.549858)
+colors = PackedColorArray(0.165656, 0.165656, 0.165656, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x42xx"]
+gradient = SubResource("Gradient_o822w")
+fill = 1
+fill_from = Vector2(0.525641, 0.508547)
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("model", "anim_player") groups=["persist", "player"]]
 collision_layer = 49
 collision_mask = 49
@@ -60,6 +69,7 @@ shape = SubResource("CapsuleShape3D_f637b")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0)
 
 [node name="Cylinder" parent="player/Armature/Skeleton3D" index="0"]
+layers = 2
 mesh = SubResource("ArrayMesh_dlc7b")
 
 [node name="SpellManager" parent="player" instance=ExtResource("3_e1u62")]
@@ -70,6 +80,13 @@ one_shot = true
 
 [node name="FlushJumpBufferTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Shadow" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+size = Vector3(1, 4, 1)
+texture_albedo = SubResource("GradientTexture2D_x42xx")
+upper_fade = 0.00010358
+lower_fade = 0.000162534
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FlushJumpBufferTimer" to="." method="_on_flush_jump_buffer_timer_timeout"]
