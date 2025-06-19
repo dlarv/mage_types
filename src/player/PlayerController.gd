@@ -9,6 +9,8 @@ extends Player
 @export var jump_time_to_descent := 0.1
 @export var coyote_time_length: float
 @export var keep_jump_buffer_length: float
+@export var variable_jump_height_modifier := 4.0
+@export var variable_jump_time_window := 0.5 
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
 @onready var jump_gravity := (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)      
@@ -16,7 +18,9 @@ extends Player
  
 var _is_running := false
 var _can_jump := true
-var _jump_buffer
+var _jump_buffer := false
+var _jump_timer := 0.0
+var _jump_strength := 0.0
 var draggable = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -47,9 +51,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			collision_layer = _prev_collision_layer
 			collision_mask = _prev_collision_mask
-	elif not _god_mode and not draggable and Input.is_action_pressed("jump"):
-		_jump_buffer = true
-		$FlushJumpBufferTimer.start()
+	elif not _god_mode and not draggable:
+		if event.is_action_pressed("jump"):
+			_jump_buffer = true
+			$FlushJumpBufferTimer.start()
 
 
 func _physics_process(delta: float) -> void:
@@ -62,11 +67,25 @@ func _physics_process(delta: float) -> void:
 
 	if not _can_jump and is_on_floor():
 		_can_jump = true
+	
+	
 
 	var speed := walk_speed if not _is_running else run_speed
 
 	# Add the gravity.
 	velocity.y += _get_gravity() * delta
+
+	# Variable jump height
+	if Input.is_action_just_pressed("jump"):
+		_jump_strength = variable_jump_height_modifier
+	if not Input.is_action_pressed("jump"):
+		_jump_strength = 0
+		_jump_timer = 0
+	else:
+		_jump_timer += delta
+	if _jump_timer < variable_jump_time_window:
+		velocity.y += _jump_strength * delta
+	
 
 	# Jumping, while accounting for coyote time.
 	if _can_jump:
@@ -161,4 +180,3 @@ func _on_coyote_timer_timeout() -> void:
 
 func _on_flush_jump_buffer_timer_timeout() -> void:
 	_jump_buffer = false
-
