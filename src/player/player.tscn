@@ -48,6 +48,7 @@ jump_height = 2.0
 jump_time_to_peak = 0.5
 jump_time_to_descent = 0.4
 coyote_time_length = 0.5
+keep_jump_buffer_length = 0.1
 team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
@@ -79,6 +80,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.420767, 0)
 [node name="CoyoteTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="FlushJumpBufferTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="FlushJumpBufferTimer" to="." method="_on_flush_jump_buffer_timer_timeout"]
 
 [editable path="player"]
