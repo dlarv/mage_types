@@ -8,11 +8,6 @@
 [[version_naming_scheme]]
 ## v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
-- [x] Hotel Room mini-dungeon
-	- [x] Chamber 1 bridge puzzles
-	- [x] Add simple demonstration obstacle to base floor of chamber 1 to show how pressure plates work
-	- [x] Add puzzles to Chamber 3
-	- [x] Add puzzles to Chamber 4
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
 	- [x] Central chamber intro puzzle (x3)
@@ -27,10 +22,10 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [ ] Stasis target will be used to access a secret room in Chamber 3
 		- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
 - [ ] Improve player movement mechanics
-	- [ ] Impl coyote time
-	- [ ] Impl jump buffering
-	- [ ] Variable height jumps
-	- [ ] Replace sprint toggle with dash
+	- [x] Impl coyote time
+	- [x] Impl jump buffering
+	- [x] Variable height jumps
+	- [x] Replace sprint toggle with dash
 	- [ ] Increase player speed the longer they are running for
 	- [ ] Allow player and enemies to be staggered
 		- [ ] Being staggered right before a battle starts should inflict flinching on turn 1
@@ -63,6 +58,11 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] Catalyst Platform demo
 	- [x] Reset demo
 	- [x] Geyser demo
+- [x] Hotel Room mini-dungeon
+	- [x] Chamber 1 bridge puzzles
+	- [x] Add simple demonstration obstacle to base floor of chamber 1 to show how pressure plates work
+	- [x] Add puzzles to Chamber 3
+	- [x] Add puzzles to Chamber 4
 - [x] BugFix: When geysers are meant to be controlled via an external puzzle block (e.g. turned on/off by a pressure plate), this can be bypassed using the stasis spell
 - [x] Give player ability to jump
 	- [x] Expand geyser blocker to prevent player from jumping on top of it

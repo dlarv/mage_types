@@ -111,7 +111,6 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 #### Chamber 3 (Fork)
 - Player encounters a fork in the road.
 - Player must clear left and right path before continuing, but can choose which order.
-- 
 #### Chamber 4 (Left path)
 - Player stands at one end of long hallway.
 - Spawner stands at other side.
@@ -129,6 +128,9 @@ This battle-based concept should be moved to the battle wing of this dungeon. Al
 - Player can use mirror from top section to solve puzzle in lower section, revealing a secret reward.
 #### Chamber 7 (Vault)
 - Player receives rewards, including central chamber hint and key.
+### SW Chambers ()
+- 
+
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
 ****

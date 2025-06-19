@@ -295,7 +295,7 @@ When deciding color combinations, I used the following guidelines:
 4. If a color channel is maxed out, then the result should be that color (Yellow + Cyan = Green, b/c green channel is FF).
 ### Explanations
 x17 total
-**Definitional (x8)**
+**Definitional (x9)**
 <span style="color:Red">Red</span> + <span style="color:Blue">Blue</span> => <span style="color:Magenta">Magenta</span>
 <span style="color:Orange">Orange</span> + <span style="color:Blue">Blue</span> => <span style="color:Magenta">Magenta</span>
 <span style="color:Red">Red</span> + <span style="color:Purple">Purple</span> => <span style="color:Magenta">Magenta</span> Purple is essentially Blue
@@ -304,6 +304,7 @@ x17 total
 <span style="color:Orange">Orange</span> + <span style="color:Green">Green</span> => <span style="color:Yellow">Yellow</span> Orange is essentially Red
 <span style="color:Blue">Blue</span> + <span style="color:Green">Green</span> => <span style="color:Cyan">Cyan</span>
 <span style="color:Purple">Purple</span> + <span style="color:Green">Green</span> => <span style="color:Cyan">Cyan</span> Purple is essentially Blue
+<span style="color:Red">Red</span> + <span style="color:Yellow">Yellow</span> => <span style="color:Orange">Orange</span>
 
 **Overlap (x7)**
 <span style="color:Yellow">Yellow</span> + <span style="color:Cyan">Cyan</span> => <span style="color:Green">Green</span> 
@@ -320,7 +321,6 @@ x17 total
 **Other (x2)**
 <span style="color:Blue">Blue</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Purple">Purple</span>
 <span style="color:Blue">Blue</span> + <span style="color:Orange">Orange</span> => <span style="color:Purple">Purple</span>
-<span style="color:Red">Red</span> + <span style="color:Yellow">Yellow</span> => <span style="color:Orange">Orange</span>
 ## Side Effect Info
 The elements are divided into two groups: offensive and defensive:
 
