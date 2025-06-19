@@ -1,4 +1,4 @@
-# Lore
+	# Lore
 >[!note] Lattice World
 >Forlorn is now a Lattice world. 
 >It is an ephemeral subspace, which unlike the 4 main subspaces is (relatively) temporary. By temporary, this just means it'll likely only last a few centuries.
@@ -293,6 +293,34 @@ When deciding color combinations, I used the following guidelines:
 2. If the result is a valid element, then its result is straightforward (Blue + Magenta = Purple).
 3. If the result is just a darker version of an element (Red + Green = Dark Yellow = Yellow).
 4. If a color channel is maxed out, then the result should be that color (Yellow + Cyan = Green, b/c green channel is FF).
+### Explanations
+x17 total
+**Definitional (x8)**
+<span style="color:Red">Red</span> + <span style="color:Blue">Blue</span> => <span style="color:Magenta">Magenta</span>
+<span style="color:Orange">Orange</span> + <span style="color:Blue">Blue</span> => <span style="color:Magenta">Magenta</span>
+<span style="color:Red">Red</span> + <span style="color:Purple">Purple</span> => <span style="color:Magenta">Magenta</span> Purple is essentially Blue
+<span style="color:Orange">Orange</span> + <span style="color:Purple">Purple</span> => <span style="color:Magenta">Magenta</span> Purple is essentially Blue and Orange is essentially Red
+<span style="color:Red">Red</span> + <span style="color:Green">Green</span> => <span style="color:Yellow">Yellow</span>
+<span style="color:Orange">Orange</span> + <span style="color:Green">Green</span> => <span style="color:Yellow">Yellow</span> Orange is essentially Red
+<span style="color:Blue">Blue</span> + <span style="color:Green">Green</span> => <span style="color:Cyan">Cyan</span>
+<span style="color:Purple">Purple</span> + <span style="color:Green">Green</span> => <span style="color:Cyan">Cyan</span> Purple is essentially Blue
+
+**Overlap (x7)**
+<span style="color:Yellow">Yellow</span> + <span style="color:Cyan">Cyan</span> => <span style="color:Green">Green</span> 
+<span style="color:Yellow">Yellow</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Red">Red</span> 
+<span style="color:Yellow">Yellow</span> + <span style="color:Orange">Orange</span> => <span style="color:Red">Red</span> 
+<span style="color:Purple">Purple</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Blue">Blue</span>
+<span style="color:Purple">Purple</span> + <span style="color:Cyan">Cyan</span> => <span style="color:Blue">Blue</span>
+<span style="color:Orange">Orange</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Red">Red</span>
+<span style="color:Cyan">Cyan</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Blue">Blue</span>
+
+<strike><span style="color:Yellow">Yellow</span> + <span style="color:Purple">Purple</span> => <span style="color:Red">Red</span></strike> Purple is essentially Blue
+<strike><span style="color:Orange">Orange</span> + <span style="color:Cyan">Cyan</span> => <span style="color:Green">Green</span></strikethrough> Orange is essentially Red
+
+**Other (x2)**
+<span style="color:Blue">Blue</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Purple">Purple</span>
+<span style="color:Blue">Blue</span> + <span style="color:Orange">Orange</span> => <span style="color:Purple">Purple</span>
+<span style="color:Red">Red</span> + <span style="color:Yellow">Yellow</span> => <span style="color:Orange">Orange</span>
 ## Side Effect Info
 The elements are divided into two groups: offensive and defensive:
 

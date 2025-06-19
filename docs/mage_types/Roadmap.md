@@ -26,6 +26,14 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [ ] Give StasisTarget a model
 		- [ ] Stasis target will be used to access a secret room in Chamber 3
 		- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
+- [ ] Improve player movement mechanics
+	- [ ] Impl coyote time
+	- [ ] Impl jump buffering
+	- [ ] Variable height jumps
+	- [ ] Replace sprint toggle with dash
+	- [ ] Increase player speed the longer they are running for
+	- [ ] Allow player and enemies to be staggered
+		- [ ] Being staggered right before a battle starts should inflict flinching on turn 1
 - See if any puzzles can be ported from previous versions
 	- [x] Lost-forest-style caves => Supply closet
 		- [x] Create room that contains demos for all puzzle blocks. This room will be in front of the lost forest part.
@@ -74,9 +82,6 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Items/mini obstacles
 	- [ ] Create door models and animations
 	- [ ] On doors player cannot enter, add "Do not disturb" signage
-- [ ] Improve jump mechanics
-	- [ ] Impl coyote time
-	- [ ] Impl jump buffering
 - [ ] Portals should reorient player model so that they are facing correct direction
 - [ ] Plan out beach house sequence and update model
 ## v0.6.x

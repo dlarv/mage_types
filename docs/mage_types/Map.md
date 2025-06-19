@@ -87,6 +87,18 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 ### NW Chambers (Laser Puzzles)
 - I think a limited version of the old catalyst puzzle would be fitting. This would then allow me to use the trick with the crack in the wall.
 - The player already knows how the laser system works, so I don't really need to explain it here. Instead, I can immediately start building towards the catalyst-style puzzle.
+
+>[!error] Puzzles 
+> I'm not vibing with my ability to design interesting puzzles. I feel like I'm likely just designing busy work for the player.
+> 
+> Maybe I should focus on making the puzzles teach specific concepts first and be puzzles second.
+	
+- Maybe this section should focus on helping the player memorize the type chart. 
+- It should still incorporate the Stasis spell.
+- I could do a sort of pattern matching puzzles:
+	- Red + Blue => Magenta, Red + Green => Cyan, Blue + (Green) + (Magenta) => ???
+		- Player has to use Stasis on the Magenta lens, noticing its only the primary colors involved.
+	- Force player to draw parallels that will make understanding the system better.
 #### Chamber 1 (Lens Puzzle)
 - 3 emitters with a sequence of 3 lenses each.
 - Player must use stasis on bottom-right, middle-left, and top-right
@@ -99,11 +111,13 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 #### Chamber 3 (Fork)
 - Player encounters a fork in the road.
 - Player must clear left and right path before continuing, but can choose which order.
-#### Chamber 4 (Left path/Battle)
+- 
+#### Chamber 4 (Left path)
 - Player stands at one end of long hallway.
 - Spawner stands at other side.
-- Player must defeat a certain number of enemies (within a time limit?).
+- ~~Player must defeat a certain number of enemies (within a time limit?).~~
 - Player has Magenta-Strike and has lasers they can use to change the enemies into Magenta, allowing them to win turn 1.
+This battle-based concept should be moved to the battle wing of this dungeon. All puzzles in this wing should focus on laser puzzles.
 #### Chamber 5 (Right path/Final Lens Puzzle)
 - This will be the most complicated lens puzzle, combining elements from Chambers 1 & 2.
 - Chamber 5' (aka 8) can be found on the other side of this section. This will be an optional section that contains hints for Chamber 5 and extra hints for the Central Chamber puzzle?
