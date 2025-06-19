@@ -1,8 +1,8 @@
 extends Player
 
-@export var walk_speed := 600.0
-@export var run_speed := 800.0
-@export var drag_speed := 500.0
+@export var walk_speed := 700.0
+@export var draggable_speed := 500.0
+@export var friction := 0.9
 
 @export var jump_height := 1.0
 @export var jump_time_to_peak := 0.4
@@ -11,12 +11,16 @@ extends Player
 @export var keep_jump_buffer_length := 0.1
 @export var variable_jump_height_modifier := 15.0
 @export var variable_jump_time_window := 0.3 
+@export var dash_speed := 1200.0
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
 @onready var jump_gravity := (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)      
 @onready var fall_gravity := (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)
+
+var dash_tween: Tween
+var dash_velocity: float
+var _can_air_dash := true
  
-var _is_running := false
 var draggable = null
 
 var _can_jump := true
@@ -40,8 +44,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
-	if event.is_action_pressed("player_run"):
-		_is_running = not _is_running
+	if event.is_action_pressed("dash"):
+		# _is_running = not _is_running
+		pass
 	elif event.is_action_pressed("toggle_god_mode"):
 		_god_mode = not _god_mode
 		if _god_mode:
@@ -66,23 +71,23 @@ func _physics_process(delta: float) -> void:
 		_move_drag_mode(delta)
 		return
 
-	if not _can_jump and is_on_floor():
+	if is_on_floor():
 		_can_jump = true
-
-	var speed := walk_speed if not _is_running else run_speed
+		_jump_strength = 0
+		_jump_timer = 0
+		_can_air_dash = true
 
 	# Add the gravity.
 	velocity.y += _get_gravity() * delta
+	velocity.x *= friction
+	velocity.z *= friction
 
 	# Variable jump height
 	if Input.is_action_just_pressed("jump"):
 		_jump_strength = variable_jump_height_modifier
-	# Prevent player from jumping, releasing button, then pressing it again (feels off)
+	# Prevent player from jumping, releasing button, then pressing it again (feels off).
 	if Input.is_action_just_released("jump"):
 		_jump_timer = variable_jump_time_window
-	if not Input.is_action_pressed("jump"):
-		_jump_strength = 0
-		_jump_timer = 0
 	else:
 		_jump_timer += delta
 	if _jump_timer < variable_jump_time_window:
@@ -103,14 +108,38 @@ func _physics_process(delta: float) -> void:
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
+	if _can_dash() and Input.is_action_just_pressed("dash"):
+		if not is_on_floor() and _can_air_dash:
+			_can_air_dash = false
+			velocity.y = 0
+		dash_velocity = dash_speed
+		dash_tween = create_tween()
+		dash_tween.tween_property(self, "dash_velocity", 0, 0.3).set_ease(Tween.EASE_OUT)
+
 	if direction != Vector3.ZERO:
-		velocity.x = direction.x * speed * delta
-		velocity.z = direction.z * speed * delta
+		velocity.x = direction.x * (walk_speed + dash_velocity) * delta
+		velocity.z = direction.z * (walk_speed + dash_velocity) * delta
 		# Rotate model in direction of movement.
 		model.rotation.y = atan2(velocity.x, velocity.z)
+
+	elif dash_velocity > 0:
+		velocity.x = move_toward(
+			velocity.x, 
+			model.basis.z.normalized().x * (walk_speed + dash_velocity) * delta, 
+			walk_speed * delta)
+		velocity.z = move_toward(
+			velocity.z, 
+			model.basis.z.normalized().z * (walk_speed + dash_velocity) * delta, 
+			walk_speed * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed * delta)
-		velocity.z = move_toward(velocity.z, 0, speed * delta)
+		velocity.x = move_toward(
+			velocity.x, 
+			model.basis.z.normalized().x * dash_velocity * delta, 
+			walk_speed * delta)
+		velocity.z = move_toward(
+			velocity.z, 
+			model.basis.z.normalized().z * dash_velocity * delta, 
+			walk_speed * delta)
 
 	velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
@@ -122,7 +151,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _get_gravity() -> float:
+	# Don't fall while dashing.
+	if dash_tween and dash_tween.is_valid(): return 0.0 #and dash_tween.is_running(): return 0.0
 	return jump_gravity if velocity.y > 0.0 else fall_gravity
+
+func _can_dash() -> bool:
+	return (not dash_tween or not dash_tween.is_valid()) and (is_on_floor() or _can_air_dash)
 
 
 func _move_god_mode(delta: float) -> void:
@@ -133,7 +167,7 @@ func _move_god_mode(delta: float) -> void:
 	if Input.is_key_pressed(KEY_CTRL):
 		speedMod *= 3
 
-	velocity = direction * run_speed * speedMod * delta
+	velocity = direction * walk_speed * speedMod * delta
 
 	if Input.is_key_pressed(KEY_SPACE):
 		velocity.y += walk_speed / 2 * speedMod * delta
@@ -145,13 +179,13 @@ func _move_god_mode(delta: float) -> void:
 
 func _move_drag_mode(delta: float) -> void:
 	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
-		velocity.z -= drag_speed / draggable.weight
+		velocity.z -= draggable_speed / draggable.weight
 	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
-		velocity.z += drag_speed / draggable.weight
+		velocity.z += draggable_speed / draggable.weight
 	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
-		velocity.x -= drag_speed / draggable.weight
+		velocity.x -= draggable_speed / draggable.weight
 	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
-		velocity.x += drag_speed / draggable.weight
+		velocity.x += draggable_speed / draggable.weight
 	
 	velocity.y += _get_gravity() * 5
 	velocity *= delta

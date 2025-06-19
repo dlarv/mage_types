@@ -751,8 +751,6 @@ libraries = {
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -340, 1.8, -563)
-run_speed = 900.0
-drag_speed = 400.0
 battle_actor = ExtResource("18_p65bs")
 team = [ExtResource("11_qfng2")]
 
@@ -779,17 +777,6 @@ shape = SubResource("SphereShape3D_xnssd")
 
 [node name="player" parent="Overworld/Blue/Alice" instance=ExtResource("14_p05cy")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-
-[node name="Skeleton3D" parent="Overworld/Blue/Alice/player/Armature" index="0"]
-bones/1/rotation = Quaternion(-2.93176e-08, -3.26299e-08, -0.69775, 0.716341)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-2.83839e-09, 6.05779e-09, -0.0131459, 0.999914)
-bones/2/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-2.66925e-08, 2.66925e-08, 0.707107, 0.707107)
-bones/7/rotation = Quaternion(-0.494287, -0.505649, -0.494287, 0.505648)
-bones/7/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.712137, 8.5248e-08, -8.64739e-08, 0.702041)
-bones/12/rotation = Quaternion(0.00713899, -2.40746e-08, 1.56189e-09, 0.999974)
 
 [node name="Cylinder" parent="Overworld/Blue/Alice/player/Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_nrfl8")
