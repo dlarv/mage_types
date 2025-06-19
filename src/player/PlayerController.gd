@@ -17,11 +17,12 @@ extends Player
 @onready var fall_gravity := (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)
  
 var _is_running := false
+var draggable = null
+
 var _can_jump := true
 var _jump_buffer := false
 var _jump_timer := 0.0
 var _jump_strength := 0.0
-var draggable = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = -980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
@@ -67,8 +68,6 @@ func _physics_process(delta: float) -> void:
 
 	if not _can_jump and is_on_floor():
 		_can_jump = true
-	
-	
 
 	var speed := walk_speed if not _is_running else run_speed
 
@@ -78,6 +77,9 @@ func _physics_process(delta: float) -> void:
 	# Variable jump height
 	if Input.is_action_just_pressed("jump"):
 		_jump_strength = variable_jump_height_modifier
+	# Prevent player from jumping, releasing button, then pressing it again (feels off)
+	if Input.is_action_just_released("jump"):
+		_jump_timer = variable_jump_time_window
 	if not Input.is_action_pressed("jump"):
 		_jump_strength = 0
 		_jump_timer = 0
