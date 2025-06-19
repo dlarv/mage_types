@@ -7,12 +7,14 @@ extends Player
 @export var jump_height := 10.0
 @export var jump_time_to_peak := 2.0
 @export var jump_time_to_descent := 0.1
+@export var coyote_time_length: float
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
 @onready var jump_gravity := (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)      
 @onready var fall_gravity := (-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)
  
 var _is_running := false
+var _can_jump := true
 var draggable = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -24,6 +26,9 @@ var _god_mode := false
 var _god_mode_speed_mod := 3.0
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
+
+func _ready() -> void:
+	$CoyoteTimer.wait_time = coyote_time_length
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
@@ -49,14 +54,21 @@ func _physics_process(delta: float) -> void:
 		_move_drag_mode(delta)
 		return
 
+	if not _can_jump and is_on_floor():
+		_can_jump = true
+
 	var speed := walk_speed if not _is_running else run_speed
 
 	# Add the gravity.
 	velocity.y += _get_gravity() * delta
 
-	if self.is_on_floor()and Input.is_action_pressed("jump"):
-		velocity.y = jump_velocity
-		
+	# Jumping, while accounting for coyote time.
+	if _can_jump:
+		if Input.is_action_pressed("jump"):
+			velocity.y = jump_velocity
+			_can_jump = false
+		if not is_on_floor() and $CoyoteTimer.is_stopped():
+			$CoyoteTimer.start()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -134,3 +146,7 @@ func try_set_draggable(obj: Node3D) -> bool:
 	elif not is_on_floor(): return false
 	draggable = obj
 	return true
+
+
+func _on_coyote_timer_timeout() -> void:
+	_can_jump = false

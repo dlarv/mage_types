@@ -47,6 +47,7 @@ script = ExtResource("1_eca83")
 jump_height = 2.0
 jump_time_to_peak = 0.5
 jump_time_to_descent = 0.4
+coyote_time_length = 0.5
 team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
@@ -74,5 +75,10 @@ mesh = SubResource("ArrayMesh_dlc7b")
 
 [node name="SpellManager" parent="player" instance=ExtResource("3_e1u62")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.420767, 0)
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 
 [editable path="player"]
