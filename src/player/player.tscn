@@ -82,8 +82,8 @@ one_shot = true
 one_shot = true
 
 [node name="Shadow" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
-size = Vector3(1, 4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 0)
+size = Vector3(1, 6, 1)
 texture_albedo = SubResource("GradientTexture2D_x42xx")
 upper_fade = 0.00010358
 lower_fade = 0.000162534
