@@ -32,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 10.3, -12)
 _element = "blue"
 
 [node name="Reset" parent="Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("3_bvqc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 7.31784, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 7.31784, 8)
 reset_positions_of = [null]
 
 [node name="Pillar" parent="Chunk" instance=ExtResource("4_xb823")]

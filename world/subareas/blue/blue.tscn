@@ -1257,7 +1257,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -47.18
 is_on = false
 
 [node name="Chamber1Geyser4" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.8834, 3, 92.0166)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.8834, 3, 95.0166)
 is_on = false
 
 [node name="Chamber3Geyser" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
@@ -1286,7 +1286,7 @@ locks = [NodePath("../Chamber3PressurePlate")]
 permanent = true
 
 [node name="Chamber1" parent="HotelRoomChunk" instance=ExtResource("14_srry2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48, 0, 87)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48, 0, 90)
 
 [node name="MagiclayDisk" parent="HotelRoomChunk/Chamber1/Chunk" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.8, 11)
@@ -1341,7 +1341,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 10, -12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 10.3, -12)
 
 [node name="Reset" parent="HotelRoomChunk/Chamber2/Chunk" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 7.31784, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 10.3178, -12)
 
 [node name="Pillar" parent="HotelRoomChunk/Chamber2/Chunk" index="3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.55418, 6.7, -4.39999)

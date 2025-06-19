@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6qqiw70fksx6" path="res://src/overworld/puzzle_blocks/lockables/Gate.gd" id="1_dbpd8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8txmk"]
-size = Vector3(1, 2, 0.5)
+size = Vector3(3, 4, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wlxve"]
 size = Vector3(1, 2, 0.5)
@@ -49,7 +49,7 @@ collision_layer = 17
 script = ExtResource("1_dbpd8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_8txmk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -58,5 +58,5 @@ mesh = SubResource("BoxMesh_wlxve")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_uvxh5")
+&"": SubResource("AnimationLibrary_uvxh5")
 }
