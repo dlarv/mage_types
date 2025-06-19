@@ -132,14 +132,8 @@ func _physics_process(delta: float) -> void:
 			model.basis.z.normalized().z * (walk_speed + dash_velocity) * delta, 
 			walk_speed * delta)
 	else:
-		velocity.x = move_toward(
-			velocity.x, 
-			model.basis.z.normalized().x * dash_velocity * delta, 
-			walk_speed * delta)
-		velocity.z = move_toward(
-			velocity.z, 
-			model.basis.z.normalized().z * dash_velocity * delta, 
-			walk_speed * delta)
+		velocity.x = move_toward(velocity.x, 0, walk_speed * delta)
+		velocity.z = move_toward(velocity.z, 0, walk_speed * delta)
 
 	velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
