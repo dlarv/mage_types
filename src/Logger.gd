@@ -3,7 +3,7 @@ extends Node
 
 @export var save_threshold_secs := 100
 @export var print_logs := true
-@export var print_logs_on_save := true
+@export var print_logs_on_save := false
 @export var clear_on_save := true
 
 var battle_logs := []
