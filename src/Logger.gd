@@ -82,7 +82,6 @@ func save_log() -> void:
 		print(output)
 		
 
-# First arg is deprecated.
 func append_log(msg: Variant) -> void:
 	if Engine.is_editor_hint(): return
 	logs.append(msg)
