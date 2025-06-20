@@ -364,11 +364,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="."]
+[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 0.8, 158.1)
@@ -1261,7 +1262,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.88
 is_on = false
 
 [node name="Chamber3Geyser" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.7834, 7, 29.9166)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.7834, 6.7, 29.9166)
 is_on = false
 
 [node name="Chamber3PressurePlate" parent="HotelRoomChunk" instance=ExtResource("16_61fdq")]
@@ -1577,7 +1578,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 75.5, -162)
 shape = SubResource("BoxShape3D_41131")
 
 [node name="Geyser" parent="ZigguratChunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7, 3.8, -111.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3, 3.8, -274.7)
 size = 48.0
 
 [node name="SupplyClosetChunk" parent="." instance=ExtResource("18_sh3xv")]
@@ -1867,7 +1868,7 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("NWChunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00002, 8.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00003, 8.5, -0.5)
 shape = SubResource("BoxShape3D_f3g2j")
 
 [node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber8"]
@@ -1912,6 +1913,7 @@ shape = SubResource("BoxShape3D_nx1wg")
 [connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser2" method="start"]
 [connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser3" method="start"]
 [connection signal="on" from="HotelRoomChunk/Chamber1/PressurePlate" to="HotelRoomChunk/Chamber1Geyser4" method="start"]
+[connection signal="on" from="HotelRoomChunk/Chamber2/Chunk/GeyserPressurePlate" to="HotelRoomChunk/Chamber3Geyser" method="start"]
 [connection signal="on" from="HotelRoomChunk/Chamber3/Chunk/AndGate" to="HotelRoomChunk/Chamber4Geyser" method="start"]
 
 [editable path="HotelRoomChunk/Chamber1"]

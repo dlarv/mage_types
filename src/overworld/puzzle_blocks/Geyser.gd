@@ -29,7 +29,7 @@ var _size_mod: float:
 var _dot := 1.0
 var strength: float:
 	get:
-		return (base_strength + 12.0) * _dot * 2.0
+		return (base_strength + 37.0) * _dot * 2.0
 
 var top_hitbox: CollisionShape3D:
 	get:
@@ -196,3 +196,4 @@ func _animate_spout_size(val: float) -> void:
 	if horizontal:
 		blocker_hitbox.shape.size.y = val
 		blocker_hitbox.position.y = val / 2
+
