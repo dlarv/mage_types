@@ -21,6 +21,8 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [ ] Give StasisTarget a model
 		- [ ] Stasis target will be used to access a secret room in Chamber 3
 		- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
+	- [ ] Give Rail puzzleblock a model
+- [ ] Add some method for the player to know which doorways are empty
 - [ ] Improve player movement mechanics
 	- [x] Impl coyote time
 	- [x] Impl jump buffering

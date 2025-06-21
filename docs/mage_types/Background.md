@@ -1,4 +1,4 @@
-	# Lore
+# Lore
 >[!note] Lattice World
 >Forlorn is now a Lattice world. 
 >It is an ephemeral subspace, which unlike the 4 main subspaces is (relatively) temporary. By temporary, this just means it'll likely only last a few centuries.
@@ -90,6 +90,55 @@ Prolonged exposure to the elements of Forlorn and its magic causes heavy strain 
 However, there is a dark elephant in the room. Many of the monsters infesting Forlorn bear striking similarities to late-stage alignment. It is unknown the exact conditions that lead to this transformation, whether it is inevitable or not, but this reality is only denied by the most delusional: many of the most powerful monsters on the island were once the most powerful mages.
 
 Monsters that spawn from non-mage origins are referred to as *natural*.
+
+Naming Schemes: In general, people on Forlorn choose names related to their bias (shades of that color or things typically that color).
+- Blue tends to have somewhat pretentious names. This works because a lot of shades of blue have pretentious names.
+- Purple, Magenta, and Cyan have the most basic names (shades or objects). 
+- Green tends to be names after plants.
+- Yellow tends to have long name that are shortened as nickname.
+- Orange use alphanumeric ids. When talking to non-Orange-aligned people, they use O-xxx, where xxx are the first three digits of their id. They are capable of looking up the id of their fellows using their Database.
+- Red reuse the same few names. Internally, they don't really need names as their sort-of hivemind makes them somewhat unnecessary.
+## History
+- Who/what were the Old Guard?
+- What happened to all the other elements/colors?
+
+There used to be Elder Gods, first generation old ones created almost as if an experiment by unfathomable forces. There was a flaw in their design, however, one that was realized too late. Unable to cope with the crushing weight of reality, they fled to an pocket of ephemeral space: the island of Forlorn. These old ones wielded great power, allowing them to bend the malleable fabric of the island. From this power, the forests and mountains of Forlorn were born. In fact, most of the structural elements of the island were created by this method.
+
+With time and use, the old ones power begun to dilute. Whether this fate was known by them or one final cruel trick is unknown. This is source of the elemental powers of the island (when using magic, you are channeling the souls of dead gods. This is likely where the corruptive nature of magic comes from). 
+
+As they were created by unfathomable powers, so too did they create. Before they fell into their eternal slumber, the old ones created life. But the act of creating life takes more trial and error than one might initally assume. Their first creations were little more than beasts, tortured by their very existance (author's note: one might wonder why the old ones didn't mercy kill their creations, since they could likely empathize with their plight. Could you recognize the suffering of an ant?). Their second batch of children were far more successful, intelligent, god-like beings who went on to form a long forgotten civilization.
+
+But what is having god-like powers stuck in an empty void? The first civilization dreamed of bridging the gap back to reality. To this end, they created the Stasis dungeon, a complex machine intended to open a portal between worlds. This goal was a success and a devastating failure. Like water rushing into a ship's breached hull, reality rushed in, bringing chunks with it. This is where the parking lot and powerplant came from. Heartbroken, the civ destroyed their machine, but quite a lot of damage had already been done. Little tears between worlds remained, dragging unknowing victims inside. 
+
+The fate of the first civilization is unknown. Perhaps they couldn't cope with the new pressure of reality. Perhaps there was a flaw hidden deep in their design. This was a chaotic era. The world was hostile to mortal life, reality warping power flowed freely. Most met an untimely end. But those that had the strength to survive slowly learned to harness magic. It was from these individuals that the Old Guard was formed. 
+
+Their purpose was simple. Stop the slaughter of lesser beings. And they were united in this goal, though they knew the end result. They brought food, built shelter. Through expert use of magic they stabilized reality. Wild monsters were slain or contained. And once their work was done, they sealed the most dangerous energies (chartreuse, azure, pink, etc) away. To survive the old world, they had twisted their very being. Without access to those sealed powers, and with the rise in humes due to a stable reality, the Old Guard died. They died that the new might live. All except for Last, for they were not around during the old times. Alive to this day, Last carries out his final task: granting rest to those guardians who could not sleep, ensuring in their madness they would not hurt those they sacrificed so much for.
+
+>[!note] First Civilization: Godlings
+>I think instead of a civilization, it was more of a pantheon of gods. They had no cities or similar infrastructure.
+
+>[!warning] 
+>Not only is this lore dollar tree Bloodborne, but temu Aurora as well. Though the background is highly similar, I feel I emphasize different aspects of it than either of those two.
+
+Created by old ones:
+- Forest
+- Mountain
+- Hotel section 
+- Catacombs
+
+Created by first civilization:
+- Orange campus
+- Stasis dungeon
+- Yellow Tower
+- Various ruins
+
+Pulled in by first civilization
+- Parking lot
+- Powerplant
+
+The community center was built by the current civilization.
+The maintenance hall ways manifested themselves.
+Idk about the Diner, maybe the Clerk manifested it.
 # Map
 ![[map_v2.png]]
 - Lighthouse (Bottom): Cutaway showing entry point to island. Through the large door on the far side of pier leads to Blue Caverns.
@@ -316,7 +365,9 @@ x17 total
 <span style="color:Cyan">Cyan</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Blue">Blue</span>
 
 <strike><span style="color:Yellow">Yellow</span> + <span style="color:Purple">Purple</span> => <span style="color:Red">Red</span></strike> Purple is essentially Blue
-<strike><span style="color:Orange">Orange</span> + <span style="color:Cyan">Cyan</span> => <span style="color:Green">Green</span></strikethrough> Orange is essentially Red
+
+<span style="color:Orange">Orange</span> + <span style="color:Cyan">Cyan</span> => <span style="color:Green">Green</span> Orange is essentially Red
+^ I think this relationship not existing is probably the weakest link in this system. In hindsight, I should have included it. However, adding it now would require remaking a lot of assets. I've already modeled this new graph in blender, and I don't really like how it looks geometrically. Maybe this is cope to save myself time, but I'm just gonna go with it. I'll contrive some lore about how Cyan's inertness prevents it.
 
 **Other (x2)**
 <span style="color:Blue">Blue</span> + <span style="color:Magenta">Magenta</span> => <span style="color:Purple">Purple</span>

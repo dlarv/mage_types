@@ -31,7 +31,7 @@ Magenta makes a lot of sense as a Fairy type. The aesthetics of CB's Glitter typ
 | ------- | ---------------------------- | --------- | ------- | -------------------------------- |
 | Blue    | Astral, Psychic, Water       | Mental    | Defense | Ocean of consciousness, cerebral |
 | Purple  | Astral, Psychic, Ghost, Dark | Mental    | Offense | Darkness                         |
-| Magenta | Fairy, Glitter               | Emotional | Defense | Whimsy                           |
+| Magenta | Fairy, Glitter               | Emotional | Defense | Whimsy, surrealism, dreamy       |
 | Red     | Blood, Ground, Plant         | Physical  | Offense |                                  |
 | Orange  | Plastic, Fire                | Physical  | Offense | Artificial                       |
 | Yellow  | Light, Air, Sand             | Physical  | Defense | Dry                              |
@@ -40,7 +40,7 @@ Magenta makes a lot of sense as a Fairy type. The aesthetics of CB's Glitter typ
 # Visual Identities
 **Blue**: Water, tide pool.
 **Purple**: Deep ocean, deep caves.
-**Magenta**: Deep woods, carnival.
+**Magenta**: Deep woods, carnivals, dreamscapes.
 **Red**: Gardens, marshes.
 **Orange**: Artifical, plastic, laboratory.
 **Yellow**: Sand/desert, mist/fog.
