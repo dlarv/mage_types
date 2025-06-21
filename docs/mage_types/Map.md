@@ -46,14 +46,13 @@ Script: [[Beach House Intro]]
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
 ### Stasis Dungeon
 - I want this to be formatted sort of like a Zelda dungeon. Player will adventure halfway through the dungeon, battle a miniboss, obtain the Catalyst spell, then loop back unlocking new paths in sections they've already been.
-- **What was the purpose of this building?**
-### Central Chamber (Starting Config)
+#### Central Chamber (Starting Config)
 - When the player first enters dungeon, it will be in a limited version, with three layers separated by three concentric walls.
 - The player will be presented with three simple obstacles in sequence. These will mostly be to introduce the player to the lasers, mirrors, rails, and lenses, as well as the hidden receivers.
 	- As the player solves these obstacles, the walls will come down, slowly opening up more of the room.
 - Once all walls have been dropped, player will be presented with 7 doors (8 including the one they entered from). 6 of these doors will be locked.
 - Heading down the other unlocked path will take them into the Mural Room.
-### Mural Room
+#### Mural Room
 The player will be able to enter this section without too much trouble. At the end, they will find the boss and Stasis. Upon picking up the spell, a trap will trigger, locking the player inside. The player will be presented with 3 riddles to solve.
 - 4 Lasers will be arrayed aroudn the edges of the room. Each one hits a hidden receiver.
 	- These will be Red, Green, Blue, and Yellow.
@@ -65,7 +64,7 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 - RGB, !Y
 - RG, !BY
 - Y !RGB
-### Central Chamber (Main Config)
+#### Central Chamber (Main Config)
 - Once the player finished up inside the mural room, they will reenter the Central Chamber.
 - Triggering the trap will also cause the Central Chamber to switch to the main configuration.
 - All doors, except for the West one, will be unlocked.
@@ -74,11 +73,7 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 	- Solving this central puzzle will unlock the West door, allowing the player to escape the puzzle.
 	- This puzzle will be impossible to solve without using brute force. To solve it, the player must venture down the side paths to find hints telling them what colors the hidden receivers will be.
 - Heading down the NW, NE, SW, & SE doors will take the player to side puzzles.
-	- Each side path should have a theme:
-		- **Geyser puzzles**: Player must use stasis on specific geysers such that a block ends up in the correct location.
-		- **Laser/Mirror puzzles**: Player must use stasis on mirrors to correctly transmute lasers.
-		- **Battle**: Player must fight various enemies, many of which will utilize the Stasis status condition.
-		- **Platforming**: Player must finish parkour/platforming challenges. It should use stasis to pass certain obstacles, but its use of the spell will be lighter here than other areas.
+	- Each side path should have an elemental theme
 - At the end of each side path will be a chest containing some cool items. Each chest will also contain a key, which can be used in the East room.
 	- Unlike the other doors, the East door will take the player into a single room. Inside this room will be a small door with 4 keyholes.
 	- Using the keys the player has found throughout the side paths will grant them access to the vault.
@@ -97,21 +92,17 @@ Each of the four hallways will have an elemental theme based on 4 of the 5 eleme
 - Challenges should be a mix of puzzles, combat, and platforming.
 
 [[demo_script]]
-### NE Chambers (Blue)
+#### NE Chambers (Blue)
 - This section should focus mostly on puzzles.
 	- It could focus on some intersection between Stasis and water. 
 	- Use of geysers?
-### SE Chambers (Orange)
-- I think a limited version of the old catalyst puzzle would be fitting. This would then allow me to use the trick with the crack in the wall.
-- Should have lots of offshoots. Only the main path is required.
-- Should have lots of puzzles focusing on transmutations.
-	- Lens puzzles?
-### SW Chambers (Red)
-- Should be styled like a greenhouse.
-- Should have an emphasis on combat.
-### NW Chambers (Magenta)
-- Opens up into a forest?
-
+This section was the coolant for the machine and is located mostly underneath the other wings. It features a few puzzles where the player has to manipulate geysers using stasis and a few platforming challenges to get around water obstacles.
+#### SE Chambers (Magenta)
+This section takes place on the control panel, which is built on the scale of massive beings. The control panel mentioned in the earlier chatlogs is actually a non-functional replica created by beings trying to manipulate the machine before realizing it to be impossible.
+#### SW Chambers (Red)
+This section grew around the main power conduit. Due to the abundance of water and energy, this area has flourished, being home to multiple different species of flora and fauna.
+#### NW Chambers (Orange)
+This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
 ****
