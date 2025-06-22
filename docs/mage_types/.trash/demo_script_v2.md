@@ -9,15 +9,6 @@
 - Tang/Tangerine (Orange): Practical chemist. Has trouble connecting with others who are not connected to the Orange-consciousness.
 - Low (Yellow): Distractable communicator. Handles communication with the mainland, organizing shipments.
 
-Naming Schemes: In general, people on Forlorn choose names related to their bias (shades of that color or things typically that color).
-- Blue tends to have somewhat pretentious names. This works because a lot of shades of blue have pretentious names.
-- Purple, Magenta, and Cyan have the most basic names (shades or objects). 
-- Green tends to be names after plants.
-- Orange and Yellow tends to have long name that are shortened as nickname.
-	- Orange and Yellow have a lot of overlapping culture (see the Sunset Temple).
-	- Orange and Cyan share a sort of practicality, however Orange are typically more academic.
-	- Yellow is very free spirited, but, all things considered, handle their business well.
-- Red reuse the same few names. Internally, they don't really need names as their sort-of hivemind makes them somewhat unnecessary.
 
 The rest of the crew is somewhat condescending to Basil, seeing him as a dumb brute. While they are a himbo, this is mostly due to their prejudice against Green. I want the plot to be lighthearted, so this should be more of an undercurrent.
 # Scene 0 (Intro Puzzle Hint Stones)

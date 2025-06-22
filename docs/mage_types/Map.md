@@ -46,6 +46,7 @@ Script: [[Beach House Intro]]
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
 ### Stasis Dungeon
 - I want this to be formatted sort of like a Zelda dungeon. Player will adventure halfway through the dungeon, battle a miniboss, obtain the Catalyst spell, then loop back unlocking new paths in sections they've already been.
+- **What was the purpose of this building?**
 ### Central Chamber (Starting Config)
 - When the player first enters dungeon, it will be in a limited version, with three layers separated by three concentric walls.
 - The player will be presented with three simple obstacles in sequence. These will mostly be to introduce the player to the lasers, mirrors, rails, and lenses, as well as the hidden receivers.
@@ -84,52 +85,32 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 	- Ideas for vaults content: 
 		- Merchant who sells all items
 		- Powerful equipment (PreventDefeat, Reactor Shard)
-### NW Chambers (Laser Puzzles)
-- I think a limited version of the old catalyst puzzle would be fitting. This would then allow me to use the trick with the crack in the wall.
-- The player already knows how the laser system works, so I don't really need to explain it here. Instead, I can immediately start building towards the catalyst-style puzzle.
 
 >[!error] Puzzles 
 > I'm not vibing with my ability to design interesting puzzles. I feel like I'm likely just designing busy work for the player.
 > 
 > Maybe I should focus on making the puzzles teach specific concepts first and be puzzles second.
-	
-- Maybe this section should focus on helping the player memorize the type chart. 
-- It should still incorporate the Stasis spell.
-- I could do a sort of pattern matching puzzles:
-	- Red + Blue => Magenta, Red + Green => Cyan, Blue + (Green) + (Magenta) => ???
-		- Player has to use Stasis on the Magenta lens, noticing its only the primary colors involved.
-	- Force player to draw parallels that will make understanding the system better.
-#### Chamber 1 (Lens Puzzle)
-- 3 emitters with a sequence of 3 lenses each.
-- Player must use stasis on bottom-right, middle-left, and top-right
-#### Chamber 2 (Lens Puzzle w/ Movable Emitters)
-- 3 emitters with 1, 2, and 3 lenses respectively.
-- Emitters are draggable, so player must figure out which order to put them in.
-- Emitter order (bottom to top): Purple, Magenta, Blue
-- Stasis first lens in Magenta row.
-- Stasis only lens in Blue row.
-#### Chamber 3 (Fork)
-- Player encounters a fork in the road.
-- Player must clear left and right path before continuing, but can choose which order.
-#### Chamber 4 (Left path)
-- Player stands at one end of long hallway.
-- Spawner stands at other side.
-- ~~Player must defeat a certain number of enemies (within a time limit?).~~
-- Player has Magenta-Strike and has lasers they can use to change the enemies into Magenta, allowing them to win turn 1.
-This battle-based concept should be moved to the battle wing of this dungeon. All puzzles in this wing should focus on laser puzzles.
-#### Chamber 5 (Right path/Final Lens Puzzle)
-- This will be the most complicated lens puzzle, combining elements from Chambers 1 & 2.
-- Chamber 5' (aka 8) can be found on the other side of this section. This will be an optional section that contains hints for Chamber 5 and extra hints for the Central Chamber puzzle?
-#### Chamber 6 (Mirror Puzzles)
-- Separated into top and bottom chambers, similar to old catalyst puzzle.
-- Features draggable mirrors?
-- Player must determine correct mirror placement.
-- Player must also use stasis on select mirrors.
-- Player can use mirror from top section to solve puzzle in lower section, revealing a secret reward.
-#### Chamber 7 (Vault)
-- Player receives rewards, including central chamber hint and key.
-### SW Chambers ()
-- 
+
+Each of the four hallways will have an elemental theme based on 4 of the 5 elements included in the limited version of the matchup menu (Blue, Magenta, Red, Orange). The East wing will be based off of Purple, but this won't be explicitly stated (b/c Purple is sneaky). The East wing will contain the final boss.
+- Challenges should still incorporate the Stasis spell.
+	- Each wing should have its own mechanic that interfaces with the spell.
+- Challenges should be a mix of puzzles, combat, and platforming.
+
+[[demo_script]]
+### NE Chambers (Blue)
+- This section should focus mostly on puzzles.
+	- It could focus on some intersection between Stasis and water. 
+	- Use of geysers?
+### SE Chambers (Orange)
+- I think a limited version of the old catalyst puzzle would be fitting. This would then allow me to use the trick with the crack in the wall.
+- Should have lots of offshoots. Only the main path is required.
+- Should have lots of puzzles focusing on transmutations.
+	- Lens puzzles?
+### SW Chambers (Red)
+- Should be styled like a greenhouse.
+- Should have an emphasis on combat.
+### NW Chambers (Magenta)
+- Opens up into a forest?
 
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
