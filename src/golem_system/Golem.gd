@@ -7,7 +7,7 @@ class_name Golem
 @export var base_turn_speed := 0.5
 
 var battle_actor: BattleActor
-var instructions := {}
+var instructions := []
 
 var golem_name: String: 
 	get:
@@ -23,9 +23,9 @@ func setup(actor: BattleActor, ins: Array) -> void:
 	battle_actor = actor
 	set_element(actor.element1)
 
-	instructions = {}
+	instructions = []
 	for instruction in ins:
-		instructions[instruction.instruction] = instruction.value
+		instructions.append([instruction.instruction, instruction.value])
 
 
 func start() -> void:
@@ -37,18 +37,18 @@ func _physics_process(delta: float) -> void:
 	if not _active: return
 	_timer += delta
 	if _timer < delay_between_actions: return
-	if _curr_index >= len(instructions.keys()):
+	if _curr_index >= len(instructions):
 		await get_tree().create_timer(1.0).timeout
 		kill()
 		return
 		
-	match instructions.keys()[_curr_index]:
+	match instructions[_curr_index][0]:
 		"WALK": step(delta)
 		"TURN": turn(delta)
 		"WAIT",_: 
 			_accumulator += delta
 
-	if _accumulator > instructions.values()[_curr_index]:
+	if _accumulator > instructions[_curr_index][1]:
 		_curr_index += 1
 		_accumulator = 0
 		_timer = 0
@@ -57,7 +57,8 @@ func _physics_process(delta: float) -> void:
 func step(delta: float) -> void:
 	if _accumulator == 0:
 		Logger.append_golem_log("Golem(%s) executing instruction: WALK %d steps." 
-				% [golem_name, instructions.values()[_curr_index]])
+				% [golem_name, instructions[_curr_index][1]])
+		self.velocity = Vector3.ZERO
 
 	if self.velocity.x > 0.0 or self.velocity.z > 0.0:
 		var s = self
@@ -72,9 +73,9 @@ func step(delta: float) -> void:
 func turn(delta: float) -> void:
 	if _accumulator == 0:
 		Logger.append_golem_log("Golem(%s) executed instruction: TURN %.2f degrees." 
-				% [golem_name, instructions.values()[_curr_index]])
+				% [golem_name, instructions[_curr_index][1]])
 
-	var degrees: float = instructions.values()[_curr_index] * delta * base_turn_speed
+	var degrees: float = instructions[_curr_index][1] * delta * base_turn_speed
 	rotation_degrees.y += degrees
 	_accumulator += degrees
 
@@ -92,7 +93,7 @@ func kill() -> void:
 func instructions_to_string() -> String:
 	var output := []
 	for instr in instructions:
-		output.append("%s:%.2f" % [instr, instructions[instr]])
+		output.append("%s:%.2f" % [instr[0], instr[1]])
 	return ",".join(output)
 
 
