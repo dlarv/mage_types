@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=88 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -115,6 +115,12 @@ size = Vector3(1, 1, 4.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mpv17"]
 size = Vector3(1, 1, 11.9)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_egugs"]
+size = Vector3(1, 1, 13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yncb8"]
+size = Vector3(1, 1, 15)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_kr0i1"]
 size = Vector3(1, 1, 8.6)
 
@@ -203,7 +209,7 @@ size = Vector3(105, 18, 31)
 size = Vector3(61, 18, 31)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f3g2j"]
-size = Vector3(34, 18, 62)
+size = Vector3(114, 63, 161)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qtpak"]
 size = Vector3(34, 18, 31)
@@ -364,12 +370,11 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+[node name="InfHallToInfHall" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
-point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 0.8, 158.1)
@@ -1150,6 +1155,27 @@ shape = SubResource("BoxShape3D_mpv17")
 [node name="Marker3D" type="Marker3D" parent="NWChamber6ToChamber7/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
+[node name="NWChamber7ToBridge" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -311, 0, -811)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NWChamber7ToBridge"]
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -7.28436, 2.8, 1.08429)
+shape = SubResource("BoxShape3D_egugs")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber7ToBridge/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber7ToBridge"]
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 19.85, -29.5, 1.15002)
+shape = SubResource("BoxShape3D_yncb8")
+
+[node name="Marker3D" type="Marker3D" parent="NWChamber7ToBridge/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
 [node name="NWChamber5ToChamber8" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278, 0, -703)
 collision_layer = 32
@@ -1165,7 +1191,7 @@ shape = SubResource("BoxShape3D_kr0i1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="NWChamber5ToChamber8"]
-transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 5.15002, 2.5, 3.15002)
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, -2.84998, 2.5, 3.15002)
 shape = SubResource("BoxShape3D_rg1xp")
 
 [node name="Marker3D" type="Marker3D" parent="NWChamber5ToChamber8/CollisionShape3D2"]
@@ -1868,7 +1894,7 @@ script = ExtResource("3_4g4u6")
 chunk = NodePath("NWChunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NWPuzzles/NWChamber8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00003, 8.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -14, -50)
 shape = SubResource("BoxShape3D_f3g2j")
 
 [node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber8"]
