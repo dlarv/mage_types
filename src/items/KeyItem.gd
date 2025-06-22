@@ -2,6 +2,6 @@
 extends Item 
 class_name KeyItem 
 
-enum UniqueId { STASIS, CATALYST, DESTROY, VINES, TUNNEL, GOLEM }
+enum UniqueId { STASIS, CATALYST, DESTROY, GOLEM, VINES, TUNNEL,}
 
 @export var unique_id: UniqueId

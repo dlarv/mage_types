@@ -689,8 +689,8 @@ resource_name = "Stasis Spell"
 script = ExtResource("2_xejte")
 item = ExtResource("37_o6yus")
 id = 0
-quantity = 0
-max_quantity = 9999
+quantity = 1
+max_quantity = 1
 allow_stacking = false
 
 [sub_resource type="Resource" id="Resource_4cuyk"]
@@ -699,7 +699,7 @@ script = ExtResource("2_xejte")
 item = ExtResource("35_ex8ue")
 id = 1
 quantity = 0
-max_quantity = 9999
+max_quantity = 1
 allow_stacking = false
 
 [sub_resource type="Resource" id="Resource_3eq6m"]
@@ -708,15 +708,15 @@ script = ExtResource("2_xejte")
 item = ExtResource("36_0aymk")
 id = 2
 quantity = 0
-max_quantity = 9999
+max_quantity = 1
 allow_stacking = false
 
-[sub_resource type="Resource" id="Resource_l68tt"]
+[sub_resource type="Resource" id="Resource_2ju5g"]
 resource_name = "Golem Spell"
 script = ExtResource("2_xejte")
 item = ExtResource("63_2ju5g")
-id = 5
-quantity = 0
+id = -1
+quantity = 1
 max_quantity = 9999
 allow_stacking = false
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
@@ -771,7 +771,7 @@ script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
 spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_mx8e1"), SubResource("Resource_co12a"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_rfpfb"), SubResource("Resource_lmrxr"), SubResource("Resource_hiu3a"), SubResource("Resource_6agee"), SubResource("Resource_l4gd1"), SubResource("Resource_w80v7"), SubResource("Resource_w7uci"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_pvmjq"), SubResource("Resource_p5ki7"), SubResource("Resource_5y80x"), SubResource("Resource_v2gl1"), SubResource("Resource_pv81j"), SubResource("Resource_ea3e4"), SubResource("Resource_kxc0f"), SubResource("Resource_meq2n"), SubResource("Resource_tlh78"), SubResource("Resource_7svcm")])
-key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m"), SubResource("Resource_l68tt")])
+key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m"), SubResource("Resource_2ju5g")])
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
 add_all_items = true
 secondary_override = 5

@@ -40,11 +40,9 @@ var _battle_items: Array
 			a.item.id = a.item.unique_id
 			b.item.id = b.item.unique_id
 			return a.item.unique_id < b.item.unique_id)
-		# _reorder_item_array(key_items)
 @export var recalc_ids_k: bool:
 	set(val):
 		key_items.sort_custom(func(a, b): return a.item.unique_id < b.item.unique_id)
-		# _reorder_item_array(key_items)
 @export var equipment: Array[ItemSlot]:
 	set(vals):
 		equipment = vals
@@ -92,11 +90,6 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 @export var add_all_items := false
 
 @export_category("Overworld Spells")
-# @export var stasis_spell_enabled: bool
-# @export var destroy_spell_enabled: bool
-# @export var vines_spell_enabled: bool
-# @export var catalyst_spell_enabled: bool
-# @export var tunnel_spell_enabled: bool
 @export var primary_override: OverworldSpell.Spells
 @export var secondary_override: OverworldSpell.Spells
 @export var use_override: bool
@@ -112,6 +105,23 @@ func _enter_tree() -> void:
 			item.quantity = 99
 		for item in equipment:
 			item.quantity = 99
+	match primary_override:
+		OverworldSpell.Spells.STASIS:
+			add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
+		OverworldSpell.Spells.GOLEM:
+			add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
+		OverworldSpell.Spells.CATALYST:
+			add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
+		OverworldSpell.Spells.NONE: pass 
+
+	match secondary_override:
+		OverworldSpell.Spells.STASIS:
+			add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
+		OverworldSpell.Spells.GOLEM:
+			add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
+		OverworldSpell.Spells.CATALYST:
+			add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
+		OverworldSpell.Spells.NONE: return
 
 
 ## Returns list of **RegularItems** that contain BattleItems.
@@ -135,8 +145,8 @@ func add(item: Item, amount:=1) -> void:
 	elif item is Equipment:
 		list = equipment
 	else:
-		add_key_item(item)
-		list = key_items
+		add_key_item(item, amount)
+		return
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
 	var slot: ItemSlot = list[item.id]
@@ -158,7 +168,7 @@ func add_spell(spell: Attack) -> void:
 			return
 
 
-func add_key_item(item: KeyItem) -> void:
+func add_key_item(item: KeyItem, amount:=1) -> void:
 	var overworldSpell = -1
 	match item.unique_id:
 		KeyItem.UniqueId.STASIS:
@@ -179,6 +189,17 @@ func add_key_item(item: KeyItem) -> void:
 			select_overworld_spell(overworldSpell, true)
 		elif spell2 == OverworldSpell.Spells.NONE:
 			select_overworld_spell(overworldSpell, false)
+	# If this throws an index out of bounds error, something has gone wrong and it should crash.
+	var slot: ItemSlot = key_items[item.id]
+
+	if slot.allow_stacking:
+		slot.quantity += amount
+		quantity_changed.emit(slot)
+
+	elif slot.quantity == 0:
+		slot.quantity = 1
+		quantity_changed.emit(slot)
+
 
 func remove(item: Item, amount:=1) -> ItemSlot:
 	if amount < 0:

@@ -42,10 +42,10 @@ func _ready() -> void:
 
 			if Inventory.use_override and Inventory.primary_override == id and isPrimary:
 				child.set_pressed_no_signal(true)
-				#_activate_spell(true, id, true)
+				_activate_spell(true, id, true)
 			if Inventory.use_override and Inventory.secondary_override == id and not isPrimary:
 				child.set_pressed_no_signal(true)
-				#_activate_spell(true, id, false)
+				_activate_spell(true, id, false)
 	
 	_on_overworld_spell_enabled(OverworldSpell.Spells.STASIS, Inventory.has_key_item(KeyItem.UniqueId.STASIS))
 	_on_overworld_spell_enabled(OverworldSpell.Spells.GOLEM, Inventory.has_key_item(KeyItem.UniqueId.GOLEM))
@@ -57,8 +57,8 @@ func _ready() -> void:
 
 func setup() -> void:
 	if not Inventory.use_override: return
-	_activate_spell(true, Inventory.primary_override, true)
-	_activate_spell(true, Inventory.secondary_override, false)
+	# _activate_spell(true, Inventory.primary_override, true)
+	# _activate_spell(true, Inventory.secondary_override, false)
 
 	
 func _on_overworld_spell_enabled(spell: OverworldSpell.Spells, val: bool) -> void:

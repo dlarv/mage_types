@@ -55,7 +55,7 @@ func _on_finish_button_pressed() -> void:
 		# Reopen creator menu
 		remove_child(golem)
 		get_tree().paused = false
-		UIManager._on_golem_creator_button_pressed()
+		UIManager.open_golem_menu()
 	UIManager.block_input = false
 	_golem = null
 
