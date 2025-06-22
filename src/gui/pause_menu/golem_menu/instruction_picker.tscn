@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4k1afc6nj5u3"]
+
+[ext_resource type="Script" uid="uid://r1o25ahs2um0" path="res://src/gui/pause_menu/golem_menu/InstructionPicker.gd" id="1_bgxcd"]
+[ext_resource type="Script" uid="uid://vx3i7shy4d2d" path="res://src/gui/pause_menu/golem_menu/components/GolemInstruction.gd" id="2_y0nkk"]
+
+[sub_resource type="Resource" id="Resource_y0nkk"]
+resource_name = "WALK"
+script = ExtResource("2_y0nkk")
+instruction = "WALK"
+value = 1.0
+min_value = 1.0
+max_value = 99.0
+step = 1.0
+suffix = "steps"
+metadata/_custom_type_script = "uid://vx3i7shy4d2d"
+
+[sub_resource type="Resource" id="Resource_bljjv"]
+resource_name = "TURN"
+script = ExtResource("2_y0nkk")
+instruction = "TURN"
+value = 0.0
+min_value = 1.0
+max_value = 360.0
+step = 1.0
+suffix = "degrees"
+metadata/_custom_type_script = "uid://vx3i7shy4d2d"
+
+[sub_resource type="Resource" id="Resource_xlwwj"]
+resource_name = "WAIT"
+script = ExtResource("2_y0nkk")
+instruction = "WAIT"
+value = 0.0
+min_value = 1.0
+max_value = 99.0
+step = 0.1
+suffix = "seconds"
+metadata/_custom_type_script = "uid://vx3i7shy4d2d"
+
+[node name="InstructionPicker" type="PopupPanel"]
+size = Vector2i(300, 300)
+visible = true
+script = ExtResource("1_bgxcd")
+instructions = Array[ExtResource("2_y0nkk")]([SubResource("Resource_y0nkk"), SubResource("Resource_bljjv"), SubResource("Resource_xlwwj")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 296.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Scroller" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]

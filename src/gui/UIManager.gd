@@ -10,6 +10,7 @@ signal catalyst_menu_closed(element: ElementalType)
 @export var settings_menu: Menu
 @export var vendor_menu: Menu
 @export var save_menu: Menu
+@export var golem_menu: Menu
 @export var catalyst_menu: Menu
 
 @onready var info_graphics := {
@@ -25,10 +26,10 @@ var dialog_box: DialogueBox
 var hud: CanvasLayer
 var _menu_stack := []
 var is_in_dialog := false
-var _block_input := false
+var block_input := false
 
 func _ready() -> void:
-	_block_input = true
+	block_input = true
 	hide()
 
 func setup() -> void:
@@ -36,7 +37,7 @@ func setup() -> void:
 	overworld = root.get_node("%Overworld")
 	dialog_box = root.get_node("%DialogueBox")
 	hud = root.get_node("%HUD_Layer")
-	_block_input = false
+	block_input = false
 
 	save_menu.setup()
 	var p = get_tree().get_nodes_in_group("player") 
@@ -45,7 +46,7 @@ func setup() -> void:
 	inventory.setup()
 
 func _unhandled_input(input: InputEvent) -> void:
-	if _block_input: 
+	if block_input: 
 		if not inventory.visible: return
 		if input.is_action_pressed("ui_cancel"):
 			inventory.spell_scroll_selected.emit(null)
@@ -95,6 +96,13 @@ func pop_menu() -> void:
 		hide()
 	else:
 		_menu_stack[-1].show()
+
+func clear_all() -> void:
+	for menu in _menu_stack:
+		menu.hide()
+	hide()
+	_menu_stack = []
+	get_tree().paused = is_in_dialog
 
 func show_dialog(msg: String) -> void:
 	# Gets empty dialog box attached to MISC start node.
@@ -157,6 +165,9 @@ func _on_open_settings_button_pressed() -> void:
 func _on_save_game_button_pressed() -> void:
 	push_menu(save_menu)
 
+func _on_golem_creator_button_pressed() -> void:
+	push_menu(golem_menu)
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
@@ -166,22 +177,22 @@ func _on_vendor_menu_menu_closed() -> void:
 	vendor_menu.hide()
 
 func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
-	_block_input = true
+	block_input = true
 	inventory.show()
 	var selection = await inventory.open_spell_scroll_menu()
 	_menu_stack[-1].show()
-	_block_input = false
+	block_input = false
 
 	if selection != null:
 		Inventory.remove(selection, 1)
 		actor.learn_spell(selection, index)
 
 func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
-	_block_input = true
+	block_input = true
 	inventory.show()
 	var selection = await inventory.open_equipment_menu()
 	_menu_stack[-1].show()
-	_block_input = false
+	block_input = false
 
 	if selection != null:
 		Inventory.remove(selection, 1)
@@ -196,3 +207,5 @@ func _on_catalyst_menu_closed(element:ElementalType) -> void:
 	catalyst_menu.hide()
 	catalyst_menu_closed.emit(element)
 	hide()
+
+

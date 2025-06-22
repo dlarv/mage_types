@@ -61,6 +61,10 @@ func start_dialog(npc: Variant) -> void:
 	dialog_started.emit(id, npc)
 
 
+func create_golem(golem: Golem) -> void:
+	add_child(golem)
+
+
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
 	cutscene_started.emit(player, id)
 

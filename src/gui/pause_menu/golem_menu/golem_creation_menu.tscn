@@ -1,0 +1,180 @@
+[gd_scene load_steps=20 format=3 uid="uid://bhsx6lc3clma4"]
+
+[ext_resource type="Script" uid="uid://cwlmjw1xm5jm8" path="res://src/gui/pause_menu/golem_menu/GolemCreationMenu.gd" id="1_i2itt"]
+[ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="2_d4drp"]
+[ext_resource type="PackedScene" uid="uid://bqi8spl0jubpv" path="res://src/gui/pause_menu/golem_menu/golem_instruction_manager.tscn" id="3_wll4w"]
+
+[sub_resource type="Gradient" id="Gradient_bj7mu"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e1jn2"]
+gradient = SubResource("Gradient_bj7mu")
+
+[sub_resource type="Gradient" id="Gradient_xxqbb"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.498039, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a1522"]
+gradient = SubResource("Gradient_xxqbb")
+
+[sub_resource type="Gradient" id="Gradient_su3q5"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a4u57"]
+gradient = SubResource("Gradient_su3q5")
+
+[sub_resource type="Gradient" id="Gradient_de2il"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7l5u6"]
+gradient = SubResource("Gradient_de2il")
+
+[sub_resource type="Gradient" id="Gradient_f0p0f"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.501961, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xpomd"]
+gradient = SubResource("Gradient_f0p0f")
+
+[sub_resource type="Gradient" id="Gradient_nqpwx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_te1hc"]
+gradient = SubResource("Gradient_nqpwx")
+
+[sub_resource type="Gradient" id="Gradient_u5mmx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5eg6d"]
+gradient = SubResource("Gradient_u5mmx")
+
+[sub_resource type="Gradient" id="Gradient_ukhtn"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3twbj"]
+gradient = SubResource("Gradient_ukhtn")
+
+[node name="GolemCreationMenu" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_i2itt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Properties" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties"]
+layout_mode = 2
+text = "Golem Properties"
+horizontal_alignment = 1
+
+[node name="Element1HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/Element1HBox"]
+layout_mode = 2
+text = "Element 1:"
+
+[node name="Element1Dropdown" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/Element1HBox" instance=ExtResource("2_d4drp")]
+layout_mode = 2
+item_count = 8
+popup/item_0/text = "Blue"
+popup/item_0/icon = SubResource("GradientTexture2D_e1jn2")
+popup/item_0/id = 1
+popup/item_1/text = "Purple"
+popup/item_1/icon = SubResource("GradientTexture2D_a1522")
+popup/item_1/id = 2
+popup/item_2/text = "Magenta"
+popup/item_2/icon = SubResource("GradientTexture2D_a4u57")
+popup/item_2/id = 3
+popup/item_3/text = "Red"
+popup/item_3/icon = SubResource("GradientTexture2D_7l5u6")
+popup/item_3/id = 4
+popup/item_4/text = "Orange"
+popup/item_4/icon = SubResource("GradientTexture2D_xpomd")
+popup/item_4/id = 5
+popup/item_5/text = "Yellow"
+popup/item_5/icon = SubResource("GradientTexture2D_te1hc")
+popup/item_5/id = 6
+popup/item_6/text = "Green"
+popup/item_6/icon = SubResource("GradientTexture2D_5eg6d")
+popup/item_6/id = 7
+popup/item_7/text = "Cyan"
+popup/item_7/icon = SubResource("GradientTexture2D_3twbj")
+popup/item_7/id = 8
+
+[node name="Element2HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/Element2HBox"]
+layout_mode = 2
+text = "Element 2:"
+
+[node name="Element2Dropdown" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/Element2HBox" instance=ExtResource("2_d4drp")]
+layout_mode = 2
+item_count = 8
+popup/item_0/text = "Blue"
+popup/item_0/icon = SubResource("GradientTexture2D_e1jn2")
+popup/item_0/id = 1
+popup/item_1/text = "Purple"
+popup/item_1/icon = SubResource("GradientTexture2D_a1522")
+popup/item_1/id = 2
+popup/item_2/text = "Magenta"
+popup/item_2/icon = SubResource("GradientTexture2D_a4u57")
+popup/item_2/id = 3
+popup/item_3/text = "Red"
+popup/item_3/icon = SubResource("GradientTexture2D_7l5u6")
+popup/item_3/id = 4
+popup/item_4/text = "Orange"
+popup/item_4/icon = SubResource("GradientTexture2D_xpomd")
+popup/item_4/id = 5
+popup/item_5/text = "Yellow"
+popup/item_5/icon = SubResource("GradientTexture2D_te1hc")
+popup/item_5/id = 6
+popup/item_6/text = "Green"
+popup/item_6/icon = SubResource("GradientTexture2D_5eg6d")
+popup/item_6/id = 7
+popup/item_7/text = "Cyan"
+popup/item_7/icon = SubResource("GradientTexture2D_3twbj")
+popup/item_7/id = 8
+
+[node name="Instructions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Instructions"]
+layout_mode = 2
+text = "Instructions"
+horizontal_alignment = 1
+
+[node name="GolemInstructionManager" parent="MarginContainer/VBoxContainer/HBoxContainer/Instructions" instance=ExtResource("3_wll4w")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FinishButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Finish"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/FinishButton" to="." method="_on_finish_button_pressed"]
