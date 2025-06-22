@@ -5,6 +5,8 @@ class_name Golem
 var battle_actor: BattleActor
 var instructions := {}
 
+var _active := false
+
 func setup(actor: BattleActor, ins: Array) -> void:
 	battle_actor = actor
 
@@ -12,6 +14,8 @@ func setup(actor: BattleActor, ins: Array) -> void:
 	for instruction in ins:
 		instructions[instruction.instruction] = instruction.value
 
+func start() -> void:
+	_active = true
 
 func execute() -> void:
 	for key in instructions:
@@ -31,19 +35,12 @@ func turn(degrees: float) -> void:
 
 
 func _speed_to_delay() -> float:
-	return battle_actor.speed
+	return 5.0#battle_actor.speed
+
 
 func kill() -> void:
 	rotation_degrees.x = 90
 
-	# var scene := get_tree().current_scene
-	# get_parent().remove_child(self)
-	# if not scene: return
-	# var conn := scene.get_child(0)
-	# if not conn: return
-	# if conn.active_chunk:
-	# 	conn.active_chunk.add_golem(self)
-		
 
 func deserialize(data: Dictionary) -> void:
 	pass

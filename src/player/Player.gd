@@ -68,6 +68,8 @@ func create_golem(golem: Golem) -> void:
 		_golem.kill()
 	_golem = golem
 	active_chunk.add_golem(golem)
+	await golem.execute()
+	golem.kill()
 
 
 func play_cutscene(player: AnimationPlayer, id: String) -> void:

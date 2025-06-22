@@ -42,6 +42,7 @@ func _ready() -> void:
 	$CoyoteTimer.wait_time = coyote_time_length
 	$FlushJumpBufferTimer.wait_time = keep_jump_buffer_length
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not in_control: return
 	if event.is_action_pressed("dash"):
