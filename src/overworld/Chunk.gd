@@ -48,7 +48,9 @@ func _ready() -> void:
 		children.append_array(child.get_children())
 
 func load(player: Node3D) -> void:
+	if not player.is_in_group("player"): return
 	if not visible: return
+	player.active_chunk = self
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
 	print("Player loaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
@@ -58,7 +60,7 @@ func load(player: Node3D) -> void:
 		child.flicker_collider()
 
 func unload(player: Node3D) -> void:
-	# if not player.is_in_group("player"): return
+	if not player.is_in_group("player"): return
 	Logger.append_world_log("Player unloaded Chunk(%s)" % name) 
 	print("Player unloaded Chunk(%s)" % name)
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
@@ -82,3 +84,8 @@ func deserialize(data: Dictionary) -> void:
 	for key in data.keys():
 		if key is String and (key == "path" or key == "visible"): continue
 		_persistent_objs[key].deserialize(data[key])
+
+
+func add_golem(node: Golem) -> void:
+	chunk.add_child(node)
+	_persistent_objs[node.get_path()] = node

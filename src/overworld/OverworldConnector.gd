@@ -19,6 +19,8 @@ var _current_story_actor: StoryActor = null
 		if Settings.use_graph_stencils:
 			UIManager.matchup_chart.current_graphic = val
 
+var active_chunk: Chunk
+
 func _ready() -> void:
 	var p = get_tree().get_nodes_in_group("player") 
 	if len(p) > 0:
@@ -30,7 +32,6 @@ func _ready() -> void:
 		_player.cutscene_started.connect(_on_player_cutscene_started)
 	if not _player.dialog_started.is_connected(_on_player_dialog_started):
 		_player.dialog_started.connect(_on_player_dialog_started)
-
 
 	UIManager.setup()
 

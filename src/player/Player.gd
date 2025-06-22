@@ -37,6 +37,8 @@ var player_name:
 	set(val):
 		battle_actor.name = player_name
 
+var active_chunk: Chunk = null
+var _golem: Golem = null
 
 func _ready() -> void:
 	if not battle_actor in team:
@@ -62,7 +64,10 @@ func start_dialog(npc: Variant) -> void:
 
 
 func create_golem(golem: Golem) -> void:
-	add_child(golem)
+	if _golem:
+		_golem.kill()
+	_golem = golem
+	active_chunk.add_golem(golem)
 
 
 func play_cutscene(player: AnimationPlayer, id: String) -> void:

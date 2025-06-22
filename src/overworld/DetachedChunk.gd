@@ -98,6 +98,9 @@ func has_point(shape: Shape3D, center: Vector3, pos: Vector3) -> bool:
 	return false 
 
 func load(player: Node3D) -> void:
+	if not player.is_in_group("player"): return
+	if not visible: return
+	player.active_chunk = self
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
 	for obj in objs:
 		obj.process_mode = Node.PROCESS_MODE_INHERIT
@@ -109,3 +112,7 @@ func unload(player: Node3D) -> void:
 	for obj in objs:
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		obj.hide()
+
+func add_golem(node: Golem) -> void:
+	super.add_golem(node)
+	objs.append(node)

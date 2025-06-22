@@ -32,3 +32,22 @@ func turn(degrees: float) -> void:
 
 func _speed_to_delay() -> float:
 	return battle_actor.speed
+
+func kill() -> void:
+	rotation_degrees.x = 90
+
+	# var scene := get_tree().current_scene
+	# get_parent().remove_child(self)
+	# if not scene: return
+	# var conn := scene.get_child(0)
+	# if not conn: return
+	# if conn.active_chunk:
+	# 	conn.active_chunk.add_golem(self)
+		
+
+func deserialize(data: Dictionary) -> void:
+	pass
+
+
+func serialize() -> Dictionary:
+	return {}
