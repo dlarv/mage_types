@@ -35,7 +35,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [ ] Increase player speed the longer they are running for
 	- [ ] Allow player and enemies to be staggered
 		- [ ] Being staggered right before a battle starts should inflict flinching on turn 1
-- [ ] Change environment walls to be part of the floor geometry
+- [x] Change environment walls to be part of the floor geometry
 - [ ] Puzzle block demo:
 	- [x] Pressure plate demo
 		- [ ] Bug: Player activated pressure plate not working
