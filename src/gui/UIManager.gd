@@ -74,6 +74,8 @@ func _try_toggle_menu(input: InputEvent) -> void:
 		push_menu(inventory)
 	elif input.is_action_pressed("open_player_menu"):
 		push_menu(player_menu)
+	elif input.is_action_pressed("open_golem_menu"):
+		push_menu(golem_menu)
 
 func push_menu(menu: Control) -> void:
 	# overworld.process_mode = Node.PROCESS_MODE_DISABLED
