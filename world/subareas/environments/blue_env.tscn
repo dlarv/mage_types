@@ -413,7 +413,7 @@ nodes/fragment/connections = PackedInt32Array(46, 0, 47, 0, 51, 0, 36, 0, 36, 0,
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ghi6j"]
 render_priority = 0
 shader = SubResource("VisualShader_63mxy")
-shader_parameter/BaseColor = Color(0.267647, 0.311197, 0.127714, 1)
+shader_parameter/BaseColor = Color(0.698039, 0.580392, 0.494118, 1)
 shader_parameter/Roughness = 1.0
 shader_parameter/FingertprintOffset = 0.0
 shader_parameter/UVScale = Vector2(3.155, 0.56)
