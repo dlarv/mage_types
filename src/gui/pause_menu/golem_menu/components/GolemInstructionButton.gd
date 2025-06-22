@@ -1,6 +1,7 @@
 extends HBoxContainer
 
 signal selected()
+signal removed()
 
 var _instruction: GolemInstruction
 
@@ -23,3 +24,8 @@ func _on_gui_input(event:InputEvent) -> void:
 func get_instruction() -> GolemInstruction:
 	_instruction.value = $SpinBox.value
 	return _instruction
+
+
+func _on_remove_button_pressed() -> void:
+	removed.emit()
+

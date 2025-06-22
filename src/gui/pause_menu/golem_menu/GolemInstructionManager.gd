@@ -14,6 +14,9 @@ func _on_instruction_picker_popup_hide() -> void:
 
 	var button := GolemInstructionButton.instantiate()
 	button.setup(instruction)
+	button.removed.connect(func():
+		var b = button
+		%Scroller.remove_child(b))
 	%Scroller.add_child(button)
 
 
