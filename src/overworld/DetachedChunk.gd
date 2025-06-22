@@ -45,7 +45,6 @@ func _ready() -> void:
 	for obj in objs:
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		obj.hide()
-	
 
 func gather_objs() -> void:
 	var detachedChunks = get_parent().find_children("", "DetachedChunk")

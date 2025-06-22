@@ -83,6 +83,10 @@ func deserialize(data: Dictionary) -> void:
 	visible = data.visible
 	for key in data.keys():
 		if key is String and (key == "path" or key == "visible"): continue
+		if "is_golem" in data[key] and not key in _persistent_objs:
+			add_golem(Golem.create())
+			
+
 		_persistent_objs[key].deserialize(data[key])
 
 

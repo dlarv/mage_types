@@ -35,7 +35,7 @@ func turn(degrees: float) -> void:
 
 
 func _speed_to_delay() -> float:
-	return 5.0#battle_actor.speed
+	return 1.0#battle_actor.speed
 
 
 func kill() -> void:
@@ -43,8 +43,17 @@ func kill() -> void:
 
 
 func deserialize(data: Dictionary) -> void:
-	pass
+	global_position = data.position
+	global_rotation = data.rotation
 
 
 func serialize() -> Dictionary:
-	return {}
+	return {
+		"is_golem": true,
+		"position": global_position,
+		"rotation": global_rotation,
+	}
+
+static func create() -> Golem:
+	var output: Golem = load("res://src/golem_system/golem.tscn").instantiate()
+	return output
