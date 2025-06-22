@@ -1311,7 +1311,7 @@ shape = SubResource("ConcavePolygonShape3D_l8gxw")
 shape = SubResource("ConcavePolygonShape3D_fc5v6")
 
 [node name="Ground_005" parent="." index="55"]
-material_override = SubResource("ShaderMaterial_eqv1w")
+surface_material_override/0 = SubResource("ShaderMaterial_eqv1w")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_005" index="0"]
 
@@ -1589,7 +1589,7 @@ shape = SubResource("ConcavePolygonShape3D_pheay")
 shape = SubResource("ConcavePolygonShape3D_gqqsl")
 
 [node name="Ground_007" parent="." index="112"]
-material_override = SubResource("ShaderMaterial_mklml")
+surface_material_override/0 = SubResource("ShaderMaterial_mklml")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_007" index="0"]
 
