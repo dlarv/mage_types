@@ -20,5 +20,5 @@ func _on_about_to_popup() -> void:
 
 
 func _on_button_pressed(instruction: GolemInstruction) -> void:
-	selected_instruction = instruction
+	selected_instruction = instruction.duplicate(true)
 	hide()
