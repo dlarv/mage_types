@@ -6,9 +6,6 @@ extends Node
 @export var print_logs_on_save := false
 @export var clear_on_save := true
 
-var battle_logs := []
-var puzzle_logs := []
-var world_logs := []
 var logs := []
 
 var _root_path: String

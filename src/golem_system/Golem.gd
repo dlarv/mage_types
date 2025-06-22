@@ -5,7 +5,6 @@ class_name Golem
 var battle_actor: BattleActor
 var instructions := {}
 
-var _active := false
 
 func setup(actor: BattleActor, ins: Array) -> void:
 	battle_actor = actor
@@ -15,8 +14,6 @@ func setup(actor: BattleActor, ins: Array) -> void:
 	for instruction in ins:
 		instructions[instruction.instruction] = instruction.value
 
-func start() -> void:
-	_active = true
 
 func execute() -> void:
 	for key in instructions:
