@@ -58,6 +58,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			collision_layer = _prev_collision_layer
 			collision_mask = _prev_collision_mask
+		get_viewport().set_input_as_handled()
 	elif not _god_mode and not draggable:
 		if event.is_action_pressed("jump"):
 			_jump_buffer = true
