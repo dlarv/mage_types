@@ -73,10 +73,6 @@ text = "Inventory"
 layout_mode = 2
 text = "Transmutation Chart"
 
-[node name="GolemCreatorButton" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Golem Creator"
-
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -149,7 +145,6 @@ metadata/_tab_index = 10
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Player_Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Inventory_Button" to="." method="_on_inventory_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Transmutation_Button" to="." method="_on_transmutation_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/GolemCreatorButton" to="." method="_on_golem_creator_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/OpenSettings_Button" to="." method="_on_open_settings_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/SaveGame_Button" to="." method="_on_save_game_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/MainMenu_Button" to="." method="_on_main_menu_button_pressed"]
