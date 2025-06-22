@@ -9,6 +9,7 @@ func setup(instruction: GolemInstruction) -> void:
 	$SpinBox.suffix = instruction.suffix
 	$SpinBox.max_value = instruction.max_value
 	$SpinBox.step = instruction.step
+	$SpinBox.value = instruction.value
 	_instruction = instruction
 
 
