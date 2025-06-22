@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mage-Types"
-config/version="0.4.15"
+config/version="0.4.16"
 run/main_scene="res://world/world.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/flush_stdout_on_print.debug=false
@@ -45,6 +45,7 @@ project/assembly_name="Mage-Types"
 
 movie_writer/movie_file="/home/hyrum/coding/gamedev/mage_types/assets/graphics/info_graphics/output/output.avi"
 movie_writer/disable_vsync=true
+run/main_run_args="--verbose"
 
 [editor_plugins]
 
