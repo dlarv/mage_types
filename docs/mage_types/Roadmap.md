@@ -8,6 +8,22 @@
 [[version_naming_scheme]]
 ## v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
+- [ ] Golem system prototype
+	- Golems will be MagiClay constructs which can be given basic instructions by the player
+	- At some point, the player should have the ability to create battle golems
+	- [ ] Golems can execute basic instructions
+	- [ ] Golems can be transmuted by lasers
+	- [ ] Golems can be spawned in by player
+	- [ ] Golem debug editor
+		- [ ] Allow player to set stats via slider
+		- [ ] Allow player to set primary and secondary types
+		- [ ] Allow player to assign spells
+	- [ ] Allow player to given golems a set of instructions (max instruction amount can be updated)
+	- [ ] Golems will get 2 ability slots (stasis, lifting objects, etc). These will be assigned in the creation menu and accessed via the instruction editor.
+	- [ ] Different golem types should have different abilities
+	- [ ] Golems should have a health bar
+	- [ ] Upon dying, golems should leave a permanent pile of clay
+		- [ ] Player should be able to collect any spell beads/items/etc they equipped onto the golem
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
 	- [x] Central chamber intro puzzle (x3)
@@ -49,31 +65,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] Impl jump buffering
 	- [x] Variable height jumps
 	- [x] Replace sprint toggle with dash
-	- [ ] Increase player speed the longer they are running for
-	- [ ] Allow player and enemies to be staggered
-		- [ ] Being staggered right before a battle starts should inflict flinching on turn 1
 - [x] Change environment walls to be part of the floor geometry
-- [ ] Puzzle block demo:
-	- [x] Pressure plate demo
-		- [ ] Bug: Player activated pressure plate not working
-	- [x] Delay demo
-		- [ ] Change how delay works. It should emit off signal when timer expires
-		- [ ] Current delay funcitonality should be moved to new block: delayed relay
-	- [x] Relay demo
-		- [ ] Create indicator block, which differentiates between off/on/invalid_off
-	- [ ] Stasis target demo
-	- [ ] Rails demo
-	- [ ] Logic gate demos
-	- [x] Laser blocks demos
-		- [ ] DraggableMirror?
-		- [ ] RotatableMIrror?
-		- [ ] DraggableEmitter?
-		- [ ] OneWayLens?
-		- [ ] Laser collisions?
-	- [x] Catalyst Device demo
-	- [x] Catalyst Platform demo
-	- [x] Reset demo
-	- [x] Geyser demo
 - [x] Hotel Room mini-dungeon
 	- [x] Chamber 1 bridge puzzles
 	- [x] Add simple demonstration obstacle to base floor of chamber 1 to show how pressure plates work
@@ -108,7 +100,42 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Original Stasis obstacle?
 		- [x] Original version works in new physics paradigm
 		- [ ] Decide if/where/how it should be used
+- [ ] Puzzle block demo:
+	- [x] Pressure plate demo
+		- [ ] Bug: Player activated pressure plate not working
+	- [x] Delay demo
+		- [ ] Change how delay works. It should emit off signal when timer expires
+		- [ ] Current delay funcitonality should be moved to new block: delayed relay
+	- [x] Relay demo
+		- [ ] Create indicator block, which differentiates between off/on/invalid_off
+	- [ ] Stasis target demo
+	- [ ] Rails demo
+	- [ ] Logic gate demos
+	- [x] Laser blocks demos
+		- [ ] DraggableMirror?
+		- [ ] RotatableMIrror?
+		- [ ] DraggableEmitter?
+		- [ ] OneWayLens?
+		- [ ] Laser collisions?
+	- [x] Catalyst Device demo
+	- [x] Catalyst Platform demo
+	- [x] Reset demo
+	- [x] Geyser demo
 ## v0.6.x
+Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
+- [ ] Player hp stat should be accessible outside of battle
+	- [ ] Hp bar in overworld
+	- [ ] Wild enemies and obstacles should be able to damage player
+- [ ] Wild enemies should have varying behaviors
+	- [ ] Running away
+	- [ ] Fighting
+	- [ ] Ambushing
+- [ ] Allow player and enemies to be staggered
+	- [ ] Being staggered right before a battle starts should inflict flinching on turn 1
+	- [ ] Player/enemy cannot move for a duration of time
+- [ ] Determine mechanic that prevents player from starting battles with certain enemies before different requirements are fulfilled
+- [ ] Add final boss to stasis dungeon
+## v0.7.x
 Demo MVP prep. Polish features added during previous versions.
 - [ ] Content
 	- [ ] Rec room battle tutorial
@@ -123,7 +150,7 @@ Demo MVP prep. Polish features added during previous versions.
 - [ ] Add transmutation graph stencils to streamline advanced options usage
 - [ ] Ensure environment borders/models are aligned properly
 - [ ] Improve animations in stasis dungeon
-## v0.7.x
+## v0.8.x
 MVP Demo candidate. Add story and QOL features.
 - [ ] Character designs
 	- [ ] Blue-aligned
