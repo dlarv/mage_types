@@ -9,6 +9,7 @@ var _active := false
 
 func setup(actor: BattleActor, ins: Array) -> void:
 	battle_actor = actor
+	set_element(actor.element1)
 
 	instructions = {}
 	for instruction in ins:
@@ -45,6 +46,8 @@ func kill() -> void:
 func deserialize(data: Dictionary) -> void:
 	global_position = data.position
 	global_rotation = data.rotation
+	battle_actor.deserialize(data.battle_actor)
+	set_element(battle_actor.element1)
 
 
 func serialize() -> Dictionary:
@@ -52,8 +55,10 @@ func serialize() -> Dictionary:
 		"is_golem": true,
 		"position": global_position,
 		"rotation": global_rotation,
+		"battle_actor": battle_actor.serialize(),
 	}
 
 static func create() -> Golem:
 	var output: Golem = load("res://src/golem_system/golem.tscn").instantiate()
+	output.battle_actor = BattleActor.new()
 	return output

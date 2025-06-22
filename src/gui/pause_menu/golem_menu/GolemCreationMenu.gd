@@ -4,9 +4,7 @@ signal golem_placed(wasPlaced: bool)
 
 const GolemPrefab := preload("res://src/golem_system/golem.tscn")
 
-var element_1 := ElementManager.Blue
-var element_2 := ElementManager.Blue
-
+@onready var element := ElementManager.Blue
 var _golem: Golem = null
 
 
@@ -36,14 +34,14 @@ func _process(delta: float) -> void:
 func _on_finish_button_pressed() -> void:
 	var instructions = %GolemInstructionManager.get_instructions()
 	var battleActor := BattleActor.new()
-	battleActor.set_element(0, element_1)
-	battleActor.set_element(1, element_2)
+	battleActor.set_element(0, element)
+	battleActor.set_element(1, element)
 
 	var golem = GolemPrefab.instantiate()
+	add_child(golem)
 	golem.setup(battleActor, instructions)
 
 	_golem = golem
-	add_child(golem)
 	UIManager.clear_all()
 	UIManager.block_input = true
 	get_tree().paused = true
@@ -62,14 +60,5 @@ func _on_finish_button_pressed() -> void:
 	_golem = null
 
 
-func _on_element_dropdown_item_selected(index:int, id:int) -> void:
-	var element: ElementalType
-	if index == 0:
-		element = ElementManager.Blank
-	else:
-		element = ElementManager.elements[index - 1]
-
-	if id == 0:
-		element_1 = element
-	else:
-		element_2 = element 
+func _on_element_dropdown_item_selected(index:int) -> void:
+	element = ElementManager.elements[index]
