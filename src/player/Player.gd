@@ -75,10 +75,10 @@ func create_golem(golem: Golem) -> void:
 	Logger.append_golem_log("Golem(%s) of Element(%s) with Instructions(%s) created." 
 			% [golem.golem_name, golem.element, golem.instructions_to_string()])
 
-	await golem.execute()
-	golem.kill()
-	Logger.append_golem_log("Golem(%s) expired." 
-			% [golem.golem_name])
+	golem.start()
+	#await golem.execute()
+	#golem.kill()
+	#Logger.append_golem_log("Golem(%s) expired." % golem.golem_name)
 
 
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
@@ -120,5 +120,3 @@ func deserialize(data: Dictionary):
 	# 	team = []
 	# 	for t in data["team"]:
 	# 		team.append(BattleActor.new())
-
-
