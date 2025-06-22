@@ -100,3 +100,7 @@ func append_puzzle_log(msg: Variant) -> void:
 
 func append_world_log(msg: Variant) -> void:
 	append_log("[WORLD]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
+
+
+func append_golem_log(msg: Variant) -> void:
+	append_log("[GOLEM]@%s --> %s" % [Time.get_time_string_from_system(false), msg])

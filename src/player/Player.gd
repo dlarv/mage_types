@@ -64,12 +64,21 @@ func start_dialog(npc: Variant) -> void:
 
 
 func create_golem(golem: Golem) -> void:
-	if _golem:
-		_golem.kill()
-	_golem = golem
 	active_chunk.add_golem(golem)
+	if _golem:
+		Logger.append_golem_log("Previous Golem(%s) killed b/c new Golem(%s) created." 
+				% [_golem.golem_name, golem.golem_name])
+		_golem.kill()
+
+	_golem = golem
+
+	Logger.append_golem_log("Golem(%s) of Element(%s) with Instructions(%s) created." 
+			% [golem.golem_name, golem.element, golem.instructions_to_string()])
+
 	await golem.execute()
 	golem.kill()
+	Logger.append_golem_log("Golem(%s) expired." 
+			% [golem.golem_name])
 
 
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
