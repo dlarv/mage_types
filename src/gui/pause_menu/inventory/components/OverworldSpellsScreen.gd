@@ -6,6 +6,7 @@ var rows := {
 	OverworldSpell.Spells.DESTROY: [],
 	OverworldSpell.Spells.VINES: [],
 	OverworldSpell.Spells.TUNNEL: [],
+	OverworldSpell.Spells.GOLEM: [],
 }
 
 func _ready() -> void:
@@ -29,6 +30,8 @@ func _ready() -> void:
 			id = OverworldSpell.Spells.DESTROY
 		elif child.name.contains("Vines"):
 			id = OverworldSpell.Spells.VINES
+		elif child.name.contains("Golem"):
+			id = OverworldSpell.Spells.GOLEM
 		else:
 			id = OverworldSpell.Spells.TUNNEL
 
@@ -45,6 +48,7 @@ func _ready() -> void:
 				#_activate_spell(true, id, false)
 	
 	_on_overworld_spell_enabled(OverworldSpell.Spells.STASIS, Inventory.has_key_item(KeyItem.UniqueId.STASIS))
+	_on_overworld_spell_enabled(OverworldSpell.Spells.GOLEM, Inventory.has_key_item(KeyItem.UniqueId.GOLEM))
 	_on_overworld_spell_enabled(OverworldSpell.Spells.CATALYST, Inventory.has_key_item(KeyItem.UniqueId.CATALYST))
 	_on_overworld_spell_enabled(OverworldSpell.Spells.DESTROY, Inventory.has_key_item(KeyItem.UniqueId.DESTROY))
 	_on_overworld_spell_enabled(OverworldSpell.Spells.VINES, Inventory.has_key_item(KeyItem.UniqueId.VINES))

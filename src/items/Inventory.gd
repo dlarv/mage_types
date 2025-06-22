@@ -170,6 +170,9 @@ func add_key_item(item: KeyItem) -> void:
 		KeyItem.UniqueId.DESTROY:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.DESTROY, true)
 			overworldSpell = OverworldSpell.Spells.DESTROY
+		KeyItem.UniqueId.GOLEM:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.GOLEM, true)
+			overworldSpell = OverworldSpell.Spells.GOLEM
 
 	if overworldSpell != -1:
 		if spell1 == OverworldSpell.Spells.NONE:
@@ -211,6 +214,8 @@ func remove_key_item(item: KeyItem) -> void:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.CATALYST, false)
 		KeyItem.UniqueId.DESTROY:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.DESTROY, false)
+		KeyItem.UniqueId.GOLEM:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.GOLEM, false)
 
 
 func has_key_item(id: KeyItem.UniqueId) -> bool:

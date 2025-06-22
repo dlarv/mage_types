@@ -9,6 +9,7 @@ signal spell_selected(is_primary: bool, spell: OverworldSpell)
 @export var catalyst_spell: OverworldSpell
 @export var vines_spell: OverworldSpell
 @export var tunnel_spell: OverworldSpell
+@export var golem_spell: OverworldSpell
 
 var active_spell_1: OverworldSpell
 var active_spell_2: OverworldSpell
@@ -39,6 +40,8 @@ func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
 			spell = destroy_spell
 		OverworldSpell.Spells.VINES: 
 			spell = vines_spell
+		OverworldSpell.Spells.GOLEM: 
+			spell = golem_spell
 		_: 
 			spell = tunnel_spell
 	if isPrimary:

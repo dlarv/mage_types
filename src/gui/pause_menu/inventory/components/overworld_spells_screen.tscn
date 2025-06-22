@@ -113,3 +113,18 @@ button_group = SubResource("ButtonGroup_ky5hl")
 [node name="Tunnel_CheckBox2" type="CheckBox" parent="GridContainer"]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_1be3m")
+
+[node name="Golem_Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Golem"
+label_settings = SubResource("LabelSettings_pry3t")
+
+[node name="Golem_CheckBox1" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_ky5hl")
+
+[node name="Golem_CheckBox2" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_1be3m")

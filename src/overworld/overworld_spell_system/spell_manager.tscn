@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://co5233wd41d3g"]
+[gd_scene load_steps=15 format=3 uid="uid://co5233wd41d3g"]
 
 [ext_resource type="Script" uid="uid://dw21tio8ljv3" path="res://src/overworld/overworld_spell_system/SpellManager.gd" id="1_3vrjo"]
 [ext_resource type="PackedScene" uid="uid://duai8gqdgu21m" path="res://src/overworld/overworld_spell_system/overworld_spells/stasis_spell.tscn" id="2_6ebf8"]
@@ -12,8 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://6y6g5e2ho3w7" path="res://assets/graphics/overworld_spells/catalyst.png" id="7_uhxye"]
 [ext_resource type="Texture2D" uid="uid://q782ie6pd8hq" path="res://assets/graphics/overworld_spells/vines.png" id="10_dgh6m"]
 [ext_resource type="Texture2D" uid="uid://hm50sdkl2q0b" path="res://assets/graphics/overworld_spells/tunnel.png" id="12_7xqxd"]
+[ext_resource type="PackedScene" uid="uid://ehrketntfiw7" path="res://src/overworld/overworld_spell_system/overworld_spells/golem_spell.tscn" id="13_jchun"]
 
-[node name="SpellManager" type="Node3D" node_paths=PackedStringArray("stasis_spell", "destroy_spell", "catalyst_spell", "vines_spell", "tunnel_spell")]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1wysh"]
+
+[node name="SpellManager" type="Node3D" node_paths=PackedStringArray("stasis_spell", "destroy_spell", "catalyst_spell", "vines_spell", "tunnel_spell", "golem_spell")]
 script = ExtResource("1_3vrjo")
 Projectile = ExtResource("2_k4ax5")
 stasis_spell = NodePath("StasisSpell")
@@ -21,6 +24,7 @@ destroy_spell = NodePath("DestroySpell")
 catalyst_spell = NodePath("CatalystSpell")
 vines_spell = NodePath("VinesSpell")
 tunnel_spell = NodePath("TunnelSpell")
+golem_spell = NodePath("GolemSpell")
 
 [node name="StasisSpell" parent="." groups=["persist"] instance=ExtResource("2_6ebf8")]
 icon = ExtResource("4_knxsu")
@@ -36,3 +40,6 @@ icon = ExtResource("10_dgh6m")
 
 [node name="TunnelSpell" parent="." instance=ExtResource("6_6prfi")]
 icon = ExtResource("12_7xqxd")
+
+[node name="GolemSpell" parent="." instance=ExtResource("13_jchun")]
+icon = SubResource("CompressedTexture2D_1wysh")

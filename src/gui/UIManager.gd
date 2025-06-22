@@ -74,7 +74,7 @@ func _try_toggle_menu(input: InputEvent) -> void:
 		push_menu(inventory)
 	elif input.is_action_pressed("open_player_menu"):
 		push_menu(player_menu)
-	elif input.is_action_pressed("open_golem_menu"):
+	elif input.is_action_pressed("open_golem_menu") and Inventory.has_key_item(KeyItem.UniqueId.GOLEM):
 		push_menu(golem_menu)
 
 func push_menu(menu: Control) -> void:
@@ -167,7 +167,7 @@ func _on_open_settings_button_pressed() -> void:
 func _on_save_game_button_pressed() -> void:
 	push_menu(save_menu)
 
-func _on_golem_creator_button_pressed() -> void:
+func open_golem_menu() -> void:
 	push_menu(golem_menu)
 
 func _on_quit_pressed() -> void:

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ehrketntfiw7"]
+
+[ext_resource type="Script" uid="uid://bjinpgibqcxbx" path="res://src/overworld/overworld_spell_system/overworld_spells/GolemSpell.gd" id="1_gxrcs"]
+
+[node name="GolemSpell" type="Node3D"]
+script = ExtResource("1_gxrcs")

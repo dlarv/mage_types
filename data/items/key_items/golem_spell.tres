@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="KeyItem" load_steps=3 format=3 uid="uid://5l78hk1jadb6"]
+
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_d4jiq"]
+[ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="2_lfwe2"]
+
+[resource]
+script = ExtResource("2_lfwe2")
+unique_id = 5
+name = "Golem Spell"
+requirements = Array[ExtResource("1_d4jiq")]([])
+details = ""
+tags = []
