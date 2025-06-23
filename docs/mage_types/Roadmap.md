@@ -8,22 +8,27 @@
 [[version_naming_scheme]]
 ## v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
-- [ ] Golem system prototype
+- Golem system prototype
 	- Golems will be MagiClay constructs which can be given basic instructions by the player
 	- At some point, the player should have the ability to create battle golems
-	- [ ] Golems can execute basic instructions
-	- [ ] Golems can be transmuted by lasers
-	- [ ] Golems can be spawned in by player
-	- [ ] Golem debug editor
-		- [ ] Allow player to set stats via slider
-		- [ ] Allow player to set primary and secondary types
-		- [ ] Allow player to assign spells
-	- [ ] Allow player to given golems a set of instructions (max instruction amount can be updated)
+	- [x] Golems can execute basic instructions
+		- [x] Walk
+		- [x] Turn
+		- [x] Wait
+		- [ ] Grab draggable 
+		- [ ] Drop draggable
+		- [ ] Use interactable?
+	- [x] Golems can be transmuted by lasers
+	- [x] Golems can be spawned in by player
+	- [x] Golem debug editor
+		- [x] Allow player to set primary and secondary types
+	- [x] Allow player to given golems a set of instructions (max instruction amount can be updated)
+		- [ ] Add maximum number of instructions
+		- [x] Add ability to remove instructions 
 	- [ ] Golems will get 2 ability slots (stasis, lifting objects, etc). These will be assigned in the creation menu and accessed via the instruction editor.
-	- [ ] Different golem types should have different abilities
+	- [ ] Different golem types should have different properties
 	- [ ] Golems should have a health bar
-	- [ ] Upon dying, golems should leave a permanent pile of clay
-		- [ ] Player should be able to collect any spell beads/items/etc they equipped onto the golem
+	- [x] Upon dying, golems should leave a permanent pile of clay
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
 	- [x] Central chamber intro puzzle (x3)
@@ -59,7 +64,11 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [ ] Stasis target will be used to access a secret room in Chamber 3
 		- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
 	- [ ] Give Rail puzzleblock a model
-- [ ] Add some method for the player to know which doorways are empty
+- [x] Add some method for the player to know which doorways are empty
+	- Currently, empty doorways are obviously obstructed by walls
+- Water mechanics
+	- [ ] When player falls on water, return them to previous stable position
+	- [ ] When non-blue golem hits water, they should die
 - [ ] Improve player movement mechanics
 	- [x] Impl coyote time
 	- [x] Impl jump buffering
@@ -259,7 +268,37 @@ StatChanges (v0.3.43)
 	- [ ]  Chance.
 	- [ ]  Target.
 	- [ ]  AttackEffect.
+## Golem System (GOLM)
+- Golems will be MagiClay constructs which can be given basic instructions by the player
+- At some point, the player should have the ability to create battle golems
+-  Golems can execute basic instructions
+-  Golems can be transmuted by lasers
+-  Golems can be spawned in by player
+-  Golem debug editor
+	-  Allow player to set stats via slider
+	-  Allow player to set primary and secondary types
+	-  Allow player to assign spells
+-  Allow player to given golems a set of instructions (max instruction amount can be updated)
+-  Golems will get 2 ability slots (stasis, lifting objects, etc). These will be assigned in the creation menu and accessed via the instruction editor.
+-  Different golem types should have different abilities
+-  Golems should have a health bar
+-  Upon dying, golems should leave a permanent pile of clay
+	-  Player should be able to collect any spell beads/items/etc they equipped onto the golem
+### Golem Instructions
+- Walk: num steps
+- Turn: degrees
+- Wait: seconds
 
+1. Player selects options from `InstructionPicker`.
+2. `InstructionPicker` passes String to `GolemInstructionManager`.
+3. `GolemInstructionManager` appends button to scroller.
+4. Player selects value inside of button.
+5. Player presses "Finish" button.
+6. Instructions compiled into dictionary form.
+7. Golem is passed to player.
+8. Player is allowed to set golem down in their immediate vicinity.
+### Golem Elemental Properties
+Blue golems should be immune to water.
 ## Overworld (OVER)
 ### Character Controller (chco)
 **Player should be able to perform simple actions:**
