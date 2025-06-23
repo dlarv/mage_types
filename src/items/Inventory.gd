@@ -105,6 +105,8 @@ func _enter_tree() -> void:
 			item.quantity = 99
 		for item in equipment:
 			item.quantity = 99
+
+	if not use_override: return
 	match primary_override:
 		OverworldSpell.Spells.STASIS:
 			add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
