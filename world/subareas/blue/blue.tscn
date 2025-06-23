@@ -44,7 +44,7 @@ size = Vector3(2.5, 1, 1)
 size = Vector3(1, 10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rayr4"]
-size = Vector3(1, 1, 10.1)
+size = Vector3(1, 10, 10.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mk87"]
 size = Vector3(1, 7, 1.7)
@@ -355,7 +355,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.300
 shape = SubResource("BoxShape3D_2yg5f")
 
 [node name="Marker3D" type="Marker3D" parent="Hall2ToHall3/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.5, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Hall2ToHall3"]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -5.4, 0.5, -10.6)
@@ -372,11 +372,11 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall4ToInfHall"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.200012, 0.8, -2.10001)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.200012, 5.3, -2.10001)
 shape = SubResource("BoxShape3D_rayr4")
 
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Hall4ToInfHall"]
 transform = Transform3D(-4.37112e-08, 0, -1, 0, 1, 0, 1, 0, -4.37112e-08, 0.599998, 0.5, 2.6)
@@ -385,12 +385,11 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+[node name="InfHallToInfHall" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
-point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -414,14 +413,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.6999
 shape = SubResource("BoxShape3D_tx5wn")
 
 [node name="Marker3D" type="Marker3D" parent="Hall3ToHall4/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Hall3ToHall4"]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 16.6, 3.5, -14.3)
 shape = SubResource("BoxShape3D_2rxvb")
 
 [node name="Marker3D" type="Marker3D" parent="Hall3ToHall4/CollisionShape3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.5, 0)
 
 [node name="Hall4ToHall5" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -73, 0, -135.5)
@@ -477,7 +476,7 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 3.39998,
 shape = SubResource("BoxShape3D_cniof")
 
 [node name="Marker3D" type="Marker3D" parent="Hall6ToHall7/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -5.5, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Hall6ToHall7"]
 transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -4.00002, 0.5, 0.899994)
