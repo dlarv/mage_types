@@ -30,7 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 10.5, -4.5)
 _element = "blue"
 
 [node name="GeyserPressurePlate" parent="Chunk" instance=ExtResource("2_la56k")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 10, -12)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 9.84609, -12)
 _element = "blue"
 
 [node name="MagiclayRock" parent="Chunk" instance=ExtResource("8_js524")]
