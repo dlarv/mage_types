@@ -9,9 +9,12 @@ var _is_emitting := false
 
 func _enter_tree() -> void:
 	$SubEmitter.stop()
+	$SubEmitter2.stop()
 
 	if not $SubEmitter.laser_broken.is_connected(_on_laser_broken):
 		$SubEmitter.laser_broken.connect(_on_laser_broken)
+	if not $SubEmitter2.laser_broken.is_connected(_on_laser_broken):
+		$SubEmitter2.laser_broken.connect(_on_laser_broken)
 
 
 func _on_laser_received(laser:Laser, point:Vector3) -> void:
@@ -27,6 +30,9 @@ func _on_laser_received(laser:Laser, point:Vector3) -> void:
 	$SubEmitter.laser.rand_val = laser.rand_val
 	$SubEmitter.set_element(laser.element)
 	$SubEmitter.start()
+	$SubEmitter2.laser.rand_val = laser.rand_val
+	$SubEmitter2.set_element(laser.element)
+	$SubEmitter2.start()
 
 
 func _on_laser_dropped() -> void:
@@ -34,12 +40,14 @@ func _on_laser_dropped() -> void:
 	element = ElementManager.Blank
 	_try_set_color()
 	$SubEmitter.stop()
+	$SubEmitter2.stop()
 
 
 func reset() -> void:
 	super.reset()
 	if _is_emitting:
 		$SubEmitter.start()
+		$SubEmitter2.start()
 
 
 func _get_mesh() -> MeshInstance3D:
@@ -50,5 +58,6 @@ func _on_laser_broken() -> void:
 	if shutoff_upon_trigger: 
 		Logger.append_puzzle_log("Bridge(%s)'s laser was triggered and shutoff." % [puzzle_name])
 		$SubEmitter.stop()
+		$SubEmitter2.stop()
 
 
