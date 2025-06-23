@@ -81,7 +81,7 @@ func step(delta: float) -> void:
 				% [golem_name, instructions[_curr_index][1]])
 		self.velocity = Vector3.ZERO
 
-	if self.velocity.x > 0.0 or self.velocity.z > 0.0:
+	if self.velocity.x != 0.0 or self.velocity.z != 0.0:
 		pass
 	else:
 		_accumulator += 1
