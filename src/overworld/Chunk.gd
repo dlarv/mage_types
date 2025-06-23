@@ -89,9 +89,10 @@ func deserialize(data: Dictionary) -> void:
 		_persistent_objs[key].deserialize(data[key])
 
 
-func add_golem(node: Golem) -> void:
+func add_golem(node: Golem, persist:=true) -> void:
 	chunk.add_child(node)
-	_persistent_objs[node.get_path()] = node
+	if persist:
+		_persistent_objs[node.get_path()] = node
 
 
 func remove_golem(node: Golem) -> void:
