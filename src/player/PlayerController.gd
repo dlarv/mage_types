@@ -96,8 +96,15 @@ func _physics_process(delta: float) -> void:
 		velocity.y += _jump_strength * delta
 	
 
+	if _can_dash() and Input.is_action_just_pressed("dash"):
+		if not is_on_floor() and _can_air_dash:
+			_can_air_dash = false
+			velocity.y = 0
+		dash_velocity = dash_speed
+		dash_tween = create_tween()
+		dash_tween.tween_property(self, "dash_velocity", 0, 0.3).set_ease(Tween.EASE_OUT)
 	# Jumping, while accounting for coyote time.
-	if _can_jump:
+	elif _can_jump and dash_velocity <= dash_speed / 3:
 		if _jump_buffer:
 			velocity.y = jump_velocity
 			_can_jump = false
@@ -109,14 +116,6 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
-
-	if _can_dash() and Input.is_action_just_pressed("dash"):
-		if not is_on_floor() and _can_air_dash:
-			_can_air_dash = false
-			velocity.y = 0
-		dash_velocity = dash_speed
-		dash_tween = create_tween()
-		dash_tween.tween_property(self, "dash_velocity", 0, 0.3).set_ease(Tween.EASE_OUT)
 
 	if direction != Vector3.ZERO:
 		velocity.x = direction.x * (walk_speed + dash_velocity) * delta
