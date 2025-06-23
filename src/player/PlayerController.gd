@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		_can_air_dash = true
 
 	# Add the gravity.
-	velocity.y += _get_gravity() * delta
+	velocity.y += get_local_gravity() * delta
 	velocity.x *= friction
 	velocity.z *= friction
 
@@ -146,7 +146,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _get_gravity() -> float:
+func get_local_gravity() -> float:
 	# Don't fall while dashing.
 	if dash_tween and dash_tween.is_valid(): return 0.0 #and dash_tween.is_running(): return 0.0
 	return jump_gravity if velocity.y > 0.0 else fall_gravity
@@ -183,7 +183,7 @@ func _move_drag_mode(delta: float) -> void:
 	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
 		velocity.x += draggable_speed / draggable.weight
 	
-	velocity.y += _get_gravity() * 5
+	velocity.y += get_local_gravity() * 5
 	velocity *= delta
 
 	# Snap to grid.

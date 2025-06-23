@@ -92,7 +92,7 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 		# 		% [puzzle_name, body.puzzle_name, s.x, s.y, s.z])
 	elif body is CharacterBody3D:
 		if body.velocity.y < 0:
-			body.velocity.y /= body._get_gravity()
+			body.velocity.y /= body.get_local_gravity()
 
 		body.add_force(transform.basis.y * strength)
 		_player = body

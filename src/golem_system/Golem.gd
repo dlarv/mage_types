@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		_timer = 0
 
 func move(delta: float, onlyGravity:=false) -> void:
-	self.velocity.y += _get_gravity() * delta
+	self.velocity.y += get_local_gravity() * delta
 	var s = self
 	if onlyGravity: 
 		s.move_and_slide()
@@ -121,7 +121,7 @@ func add_force(force: Vector3) -> void:
 	outside_forces += force
 
 
-func _get_gravity() -> float:
+func get_local_gravity() -> float:
 	return -70
 
 
