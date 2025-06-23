@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -34.8,
 _element = "red"
 
 [node name="Emitter5" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -16.2, 7.5, -51.6)
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -16.2, 7.5, -52.6)
 _element = "yellow"
 
 [node name="Emitter6" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
@@ -57,7 +57,7 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 _element = "yellow"
 
 [node name="Emitter8" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -16.2, 7.5, -52.6)
+transform = Transform3D(1, 2.13163e-14, 1.69407e-21, 0, -4.37114e-08, -1, -2.13163e-14, 1, -4.37114e-08, -16.2, 7.5, -51.6)
 _element = "blue"
 
 [node name="Emitter9" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
@@ -83,7 +83,7 @@ transform = Transform3D(-1, -8.54386e-08, 4.97821e-15, 0, -4.37114e-08, -1, 8.54
 _element = "purple"
 
 [node name="Emitter2" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -16.2, 7.5, -31.3)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -16.2, 7.5, -32.3)
 _element = "red"
 
 [node name="Emitter3" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
@@ -95,7 +95,7 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 _element = "magenta"
 
 [node name="Emitter11" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -16.2, 7.5, -32.3)
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -16.2, 7.5, -31.3)
 _element = "cyan"
 
 [node name="Emitter12" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
