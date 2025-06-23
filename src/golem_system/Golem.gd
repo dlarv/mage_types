@@ -5,6 +5,7 @@ class_name Golem
 @export var delay_between_actions := 0.5
 @export var base_walk_speed := 2.0
 @export var base_turn_speed := 0.5
+@export var chance_to_persist := 0.4
 
 var battle_actor: BattleActor
 var instructions := []
