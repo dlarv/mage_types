@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=93 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="20_sj0sy"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="21_egugs"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="21_hrs52"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/models/objects/blue/vase_red.tscn" id="23_3yaw4"]
@@ -384,12 +385,11 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+[node name="InfHallToInfHall" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
-point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -539,7 +539,7 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -7.62939
 shape = SubResource("BoxShape3D_vhyju")
 
 [node name="Marker3D" type="Marker3D" parent="BackroomToSupplyCloset1/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 1)
 
 [node name="BackroomToSupplyCloset2" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.2, 0, -289.5)
@@ -717,7 +717,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("../SupplyClosetToBackroom1/CollisionShape3D/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackroomToSupplyCloset13"]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -7.62939e-06, 0.8, 0.399933)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -0.300007, 0.8, 0.999939)
 shape = SubResource("BoxShape3D_vhyju")
 
 [node name="Marker3D" type="Marker3D" parent="BackroomToSupplyCloset13/CollisionShape3D"]
@@ -1568,6 +1568,38 @@ chunk = NodePath("../BlueEnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("BoxShape3D_pmhgq")
 
+[node name="Chunk" type="Node3D" parent="BackroomChunk1"]
+
+[node name="MagiclayBoulder" parent="BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "magenta"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "magenta"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder3" parent="BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder4" parent="BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder5" parent="BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
+_element = "red"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder6" parent="BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
+_element = "red"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
 [node name="BackroomChunk2" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 0, -291)
 script = ExtResource("3_4g4u6")
@@ -1576,6 +1608,49 @@ chunk = NodePath("../BlueEnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackroomChunk2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
+
+[node name="Chunk" type="Node3D" parent="BackroomChunk2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -0.0148621)
+
+[node name="MagiclayBoulder" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder3" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder4" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder5" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
+_element = "magenta"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder6" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
+_element = "magenta"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder7" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder8" parent="BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="BackroomChunk3" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0, -291)
@@ -1586,6 +1661,49 @@ chunk = NodePath("../BlueEnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
 
+[node name="Chunk" type="Node3D" parent="BackroomChunk3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0, -0.0148621)
+
+[node name="MagiclayBoulder" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "green"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "green"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder3" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
+_element = "red"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder4" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
+_element = "red"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder5" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder6" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder7" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder8" parent="BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
 [node name="BackroomChunk4" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -291)
 script = ExtResource("3_4g4u6")
@@ -1594,6 +1712,49 @@ chunk = NodePath("../BlueEnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackroomChunk4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
+
+[node name="Chunk" type="Node3D" parent="BackroomChunk4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 0, -0.0148621)
+
+[node name="MagiclayBoulder" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder3" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder4" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder5" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder6" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder7" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
+_element = "magenta"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder8" parent="BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
+_element = "magenta"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="BackroomChunk5" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, -317)
@@ -1604,6 +1765,49 @@ chunk = NodePath("../BlueEnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
 
+[node name="Chunk" type="Node3D" parent="BackroomChunk5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0175018, 0, 0.167664)
+
+[node name="MagiclayBoulder" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder3" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
+_element = "yellow"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder4" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
+_element = "yellow"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder5" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
+_element = "green"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder6" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
+_element = "green"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder7" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder8" parent="BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
 [node name="BackroomChunk6" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 0, -317)
 script = ExtResource("3_4g4u6")
@@ -1612,6 +1816,49 @@ chunk = NodePath("../BlueEnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackroomChunk6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
+
+[node name="Chunk" type="Node3D" parent="BackroomChunk6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5175, 0, 0.167664)
+
+[node name="MagiclayBoulder" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder3" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
+_element = "yellow"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder4" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
+_element = "yellow"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder5" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder6" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder7" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
+_element = "green"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder8" parent="BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
+_element = "green"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="BackroomChunk7" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0, -317)
@@ -1622,6 +1869,49 @@ chunk = NodePath("../BlueEnv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
 
+[node name="Chunk" type="Node3D" parent="BackroomChunk7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7175, 0, 0.167664)
+
+[node name="MagiclayBoulder" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "blue"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder3" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder4" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
+_element = "cyan"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder5" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder6" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
+_element = "purple"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder7" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder8" parent="BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
+_element = "orange"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
 [node name="BackroomChunk8" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -317)
 script = ExtResource("3_4g4u6")
@@ -1630,6 +1920,19 @@ chunk = NodePath("../BlueEnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackroomChunk8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
 shape = SubResource("BoxShape3D_pmhgq")
+
+[node name="Chunk" type="Node3D" parent="BackroomChunk8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3175, 0, 0.167664)
+
+[node name="MagiclayBoulder" parent="BackroomChunk8/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
+_element = "yellow"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
+
+[node name="MagiclayBoulder2" parent="BackroomChunk8/Chunk" instance=ExtResource("21_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
+_element = "yellow"
+scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="StasisDungeonChunk" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.5, 0, -440)
