@@ -115,3 +115,8 @@ func unload(player: Node3D) -> void:
 func add_golem(node: Golem) -> void:
 	super.add_golem(node)
 	objs.append(node)
+
+
+func remove_golem(node: Golem) -> void:
+	super.remove_golem(node)
+	objs.remove_at(objs.find(node))

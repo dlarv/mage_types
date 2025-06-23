@@ -196,4 +196,3 @@ func _animate_spout_size(val: float) -> void:
 	if horizontal:
 		blocker_hitbox.shape.size.y = val
 		blocker_hitbox.position.y = val / 2
-
