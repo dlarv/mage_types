@@ -10,9 +10,7 @@ var battle_actor: BattleActor
 var instructions := []
 var outside_forces := Vector3.ZERO
 
-var golem_name: String: 
-	get:
-		return "%s.%s" % [get_parent().get_parent().name, name]
+var golem_name: String
 
 var _active := false
 var _curr_index := 0
@@ -124,7 +122,7 @@ func add_force(force: Vector3) -> void:
 
 
 func _get_gravity() -> float:
-	return -20
+	return -70
 
 
 func deserialize(data: Dictionary) -> void:

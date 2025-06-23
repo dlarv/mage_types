@@ -65,6 +65,8 @@ func start_dialog(npc: Variant) -> void:
 
 func create_golem(golem: Golem) -> void:
 	active_chunk.add_golem(golem)
+	golem.golem_name = "%s.%s" % [active_chunk.name, name]
+
 	if _golem:
 		Logger.append_golem_log("Previous Golem(%s) killed b/c new Golem(%s) created." 
 				% [_golem.golem_name, golem.golem_name])

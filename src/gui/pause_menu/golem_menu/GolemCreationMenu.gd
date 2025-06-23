@@ -39,8 +39,8 @@ func _on_finish_button_pressed() -> void:
 
 	var golem = GolemPrefab.instantiate()
 	_golem = golem
-	golem.setup(battleActor, instructions)
 	add_child(golem)
+	golem.setup(battleActor, instructions)
 
 	UIManager.clear_all()
 	UIManager.block_input = true
