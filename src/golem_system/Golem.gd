@@ -34,7 +34,7 @@ func start() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not _active: return
+	if not _active or in_stasis: return
 	_timer += delta
 	if _timer < delay_between_actions: return
 	if _curr_index >= len(instructions):
