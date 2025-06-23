@@ -69,21 +69,8 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": -1
 },
-&"1_11": {
-"dialogue": "I'll also note that you have access to all the spells currently in the game. You can access them using the player menu by pressing 'P.'",
-"offset": Vector2(-1500, 540),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"9_4",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
 &"1_12": {
-"dialogue": "The presets limit the amount of transmutations possible in a battle, by controlling the typing and movesets of all combatants.",
+"dialogue": "The preset limits the amount of transmutations possible in a battle, by controlling the typing and movesets of all combatants.",
 "offset": Vector2(-980, -320),
 "options": {
 0: {
@@ -101,107 +88,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_15",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_14": {
-"dialogue": "Sure thing,{{current_cutscene}} is now active.",
-"offset": Vector2(280, 300),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_15": {
-"dialogue": "Each preset also has a dfferent set of bosses.",
-"offset": Vector2(-300, -320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
 "link": &"1_5",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_16": {
-"dialogue": "Preset 1 will prevent [b]combatants[/b] from being [el]Orange[/el], [el]Yellow[/el], [el]Green[/el], or [el]Cyan[/el]. ",
-"offset": Vector2(-880, -20),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_17",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_17": {
-"dialogue": "Preset 1 will remove [el]Yellow[/el] and [el]Green[/el] [b]spells[/b].
-",
-"offset": Vector2(-540, -20),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"9_1",
-"text": "Yes"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "No"
-},
-2: {
-"condition": Array[Dictionary]([]),
-"link": &"1_16",
-"text": "Repeat that last part?"
-}
-},
-"size": Vector2(300, 343),
-"speaker": 0
-},
-&"1_18": {
-"dialogue": "Preset 2 will remove [el]Blue[/el] and [el]Purple[/el] [b]spells[/b].
-",
-"offset": Vector2(-540, 320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"9_2",
-"text": "Yes"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "No"
-},
-2: {
-"condition": Array[Dictionary]([]),
-"link": &"1_19",
-"text": "Repeat that last part?"
-}
-},
-"size": Vector2(300, 343),
-"speaker": 0
-},
-&"1_19": {
-"dialogue": "Preset 2 will prevent [b]combatants[/b] from being [el]Blue[/el], [el]Purple[/el], [el]Magenta[/el], or [el]Cyan[/el]. ",
-"offset": Vector2(-880, 280),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_18",
 "text": ""
 }
 },
@@ -348,8 +235,8 @@ nodes = {
 },
 1: {
 "condition": Array[Dictionary]([]),
-"link": &"1_4",
-"text": "Manage presets"
+"link": &"1_6",
+"text": "Preset?"
 },
 2: {
 "condition": Array[Dictionary]([]),
@@ -512,34 +399,6 @@ cont...",
 "size": Vector2(300, 240),
 "speaker": 0
 },
-&"1_4": {
-"dialogue": "Sure, what's up?",
-"offset": Vector2(-1760, -320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_6",
-"text": "What are the presets?"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_7",
-"text": "Select preset"
-},
-2: {
-"condition": Array[Dictionary]([]),
-"link": &"1_9",
-"text": "Clear presets"
-},
-3: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "Goodbye"
-}
-},
-"size": Vector2(300, 343),
-"speaker": 0
-},
 &"1_40": {
 "dialogue": "If you hover your mouse over the opponent, you'll be shown the Transmutation Hint.",
 "offset": Vector2(-660, 1340),
@@ -677,11 +536,11 @@ cont...",
 },
 &"1_5": {
 "dialogue": "During the actual game, this will be done slowly and subtly. However, since this demo has been simplified down, I've decided to make this a little more blatant. ",
-"offset": Vector2(20, -300),
+"offset": Vector2(-300, -320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_4",
+"link": "END",
 "text": ""
 }
 },
@@ -837,52 +696,11 @@ cont...",
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_61",
+"link": &"1_33",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_61": {
-"dialogue": "There are also 2 different versions of each fight. If you'd like to know more, I can tell you about the different presets?",
-"offset": Vector2(-200, -700),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_33",
-"text": "I'm good"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_6",
-"text": "What are the presets?"
-}
-},
-"size": Vector2(300, 308),
-"speaker": 0
-},
-&"1_7": {
-"dialogue": "Sure which preset would you like?",
-"offset": Vector2(-1300, 140),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_16",
-"text": "Preset 1"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_19",
-"text": "Preset 2"
-},
-2: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "Goodbye"
-}
-},
-"size": Vector2(320, 343),
 "speaker": 0
 },
 &"1_8": {
@@ -897,19 +715,6 @@ cont...",
 },
 "size": Vector2(300, 240),
 "speaker": -1
-},
-&"1_9": {
-"dialogue": "Sure thing!",
-"offset": Vector2(-1840, 540),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_11",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
 },
 &"2_1": {
 "comment": "Objectives:
@@ -964,33 +769,6 @@ cont...",
 "offset": Vector2(-2360, 1279),
 "tint_color": Color(0.133333, 0.133333, 0.87451, 0.203922),
 "title": "Tutorial Battle"
-},
-&"9_1": {
-"cur_variable": 0,
-"link": &"1_14",
-"offset": Vector2(-220, 0),
-"signalValue": "play_cutscene",
-"type": 0,
-"value": "preset_1",
-"variable": "current_cutscene"
-},
-&"9_2": {
-"cur_variable": 0,
-"link": &"1_14",
-"offset": Vector2(-180, 320),
-"signalValue": "play_cutscene",
-"type": 0,
-"value": "preset_2",
-"variable": "current_cutscene"
-},
-&"9_4": {
-"cur_variable": 0,
-"link": "END",
-"offset": Vector2(-1100, 940),
-"signalValue": "preset_updated",
-"type": 0,
-"value": "RESET",
-"variable": "current_cutscene"
 }
 }
 variables = {
