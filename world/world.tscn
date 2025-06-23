@@ -813,14 +813,15 @@ mesh = SubResource("BoxMesh_f80hr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_4d0ue")
 
-[node name="CentralRoom" type="Node3D" parent="Overworld/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -380)
+[node name="DoorBlocker_5" type="MeshInstance3D" parent="Overworld/Blue"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -43, 1, -62.5)
+mesh = SubResource("BoxMesh_8kqe2")
 
-[node name="MainPuzzle" parent="Overworld/Blue/CentralRoom" instance=ExtResource("35_g5cey")]
-transform = Transform3D(1, 0, -8.35187e-23, 0, 1, 0, -8.35187e-23, 0, 1, 21.6374, 1.4, -62.473)
-visible = false
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DoorBlocker_5"]
 
-[node name="StartingPuzzle" parent="Overworld/Blue/CentralRoom" instance=ExtResource("36_c2bcd")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DoorBlocker_5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_tyyi7")
 
 [node name="DungeonChunk" type="Area3D" parent="Overworld/Blue" node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -380)
@@ -885,6 +886,15 @@ shape = SubResource("BoxShape3D_22t23")
 
 [node name="MuralRoom" parent="Overworld/Blue/DungeonChunk/Chunk" instance=ExtResource("34_5hmya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 0, -173.8)
+
+[node name="CentralRoom" type="Node3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -380)
+
+[node name="MainPuzzle" parent="Overworld/Blue/CentralRoom" instance=ExtResource("35_g5cey")]
+transform = Transform3D(1, 0, -8.35187e-23, 0, 1, 0, -8.35187e-23, 0, 1, 21.6374, 1.4, -62.473)
+visible = false
+
+[node name="StartingPuzzle" parent="Overworld/Blue/CentralRoom" instance=ExtResource("36_c2bcd")]
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

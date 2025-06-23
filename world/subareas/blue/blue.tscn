@@ -309,7 +309,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HouseToHall1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.15, 7, 7.6)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.15, 7, -13.9)
 shape = SubResource("BoxShape3D_b7ooe")
 
 [node name="Marker3D" type="Marker3D" parent="HouseToHall1/CollisionShape3D"]
