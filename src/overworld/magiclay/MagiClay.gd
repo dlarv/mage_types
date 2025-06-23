@@ -120,8 +120,8 @@ func set_stasis(val=null) -> void:
 func reset() -> void:
 	Logger.append_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
 			% [puzzle_name, element, _original_element])
-	set_stasis(false)
 	set_element(_original_element, _rand_val, true)
+	set_stasis(false)
 
 func bloom(val: bool, e: ElementalType) -> void:
 	if not is_blooming: return
