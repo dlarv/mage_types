@@ -75,7 +75,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_13",
+"link": "END",
 "text": ""
 }
 },
@@ -83,7 +83,7 @@ nodes = {
 "speaker": 0
 },
 &"1_13": {
-"dialogue": "This will also modify the transmutation menu, hiding the irrelevant parts. ",
+"dialogue": "This will also modify the transmutation map, hiding the irrelevant parts. ",
 "offset": Vector2(-640, -320),
 "options": {
 0: {
@@ -426,7 +426,7 @@ cont...",
 "speaker": 0
 },
 &"1_42": {
-"dialogue": "Pressing 'T' will open your [i]Transmutation Menu[/i]. It shows these relationships.",
+"dialogue": "Pressing 'T' will open your [i]Transmutation Map[/i]. It shows these relationships.",
 "offset": Vector2(-20, -1580),
 "options": {
 0: {
@@ -781,5 +781,5 @@ variables = {
 "value": false
 }
 }
-strays = Array[String](["8_2", "8_1", "1_25", "2_1", "2_3", "1_24"])
+strays = Array[String](["8_2", "8_1", "1_13", "1_5", "1_25", "2_1", "2_3", "1_24"])
 characters = "res://data/demo/character_files/character_list.tres"
