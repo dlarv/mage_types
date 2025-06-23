@@ -1713,6 +1713,7 @@ shape = SubResource("ConcavePolygonShape3D_1kbdv")
 shape = SubResource("ConcavePolygonShape3D_7u75o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Border_091" index="0"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Border_091/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_dyear")
@@ -1733,6 +1734,7 @@ shape = SubResource("ConcavePolygonShape3D_hfslu")
 shape = SubResource("ConcavePolygonShape3D_tuead")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane_005" index="0"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_005/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_gbw6b")
