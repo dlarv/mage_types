@@ -308,7 +308,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HouseToHall1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.15, 7, -14.4)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.15, 7, 7.6)
 shape = SubResource("BoxShape3D_b7ooe")
 
 [node name="Marker3D" type="Marker3D" parent="HouseToHall1/CollisionShape3D"]
@@ -384,11 +384,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="."]
+[node name="InfHallToInfHall" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1413,110 +1414,8 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, 3,
 [node name="Chamber2" parent="HotelRoomChunk" instance=ExtResource("15_6yind")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3, 0, 18)
 
-[node name="Chunk" parent="HotelRoomChunk/Chamber2" index="1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="MagiclayDisk" parent="HotelRoomChunk/Chamber2/Chunk" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 10.5, -4.5)
-
-[node name="GeyserPressurePlate" parent="HotelRoomChunk/Chamber2/Chunk" index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 10, -12)
-
-[node name="MagiclayRock" parent="HotelRoomChunk/Chamber2/Chunk" index="2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 10.3, -12)
-
-[node name="Reset" parent="HotelRoomChunk/Chamber2/Chunk" index="3"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.999999, 10.3178, -12)
-
-[node name="Pillar" parent="HotelRoomChunk/Chamber2/Chunk" index="4"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 6.7, -4.39999)
-
-[node name="BridgeCap5" parent="HotelRoomChunk/Chamber2/Chunk/Pillar" index="8"]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 0, 0.3, 2)
-
-[node name="Pillar2" parent="HotelRoomChunk/Chamber2/Chunk" index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 6.7, -4.39999)
-
-[node name="Pillar3" parent="HotelRoomChunk/Chamber2/Chunk" index="6"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 6.7, 3.60001)
-
-[node name="Pillar11" parent="HotelRoomChunk/Chamber2/Chunk" index="7"]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 33, 6.7, 3.60001)
-
-[node name="Pillar5" parent="HotelRoomChunk/Chamber2/Chunk" index="8"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 6.7, 11.6)
-
-[node name="BridgeCap4" parent="HotelRoomChunk/Chamber2/Chunk/Pillar5" index="7"]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 0, 0.3, 2)
-
-[node name="Pillar9" parent="HotelRoomChunk/Chamber2/Chunk" index="9"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.999999, 6.7, 11.6)
-
-[node name="BridgeCap3" parent="HotelRoomChunk/Chamber2/Chunk/Pillar9" index="8"]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 9.53674e-07, 0.3, -2)
-
-[node name="Pillar8" parent="HotelRoomChunk/Chamber2/Chunk" index="10"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 6.7, 3.60001)
-
-[node name="BridgeCap" parent="HotelRoomChunk/Chamber2/Chunk/Pillar8" index="7"]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 2.38419e-07, 0.3, -2)
-
-[node name="BridgeCap8" parent="HotelRoomChunk/Chamber2/Chunk/Pillar8" index="8"]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 2, 0.3, 0)
-
-[node name="Pillar7" parent="HotelRoomChunk/Chamber2/Chunk" index="11"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 6.7, -4.39999)
-
-[node name="BridgeCap2" parent="HotelRoomChunk/Chamber2/Chunk/Pillar7" index="7"]
-transform = Transform3D(1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, 1, 0, 0.3, -2)
-
-[node name="Pillar4" parent="HotelRoomChunk/Chamber2/Chunk" index="12"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 6.7, 3.60001)
-
-[node name="Emitter2" parent="HotelRoomChunk/Chamber2/Chunk/Bridge2" index="6"]
+[node name="Emitter5" parent="HotelRoomChunk/Chamber2/Chunk/Bridge11" index="7"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0999999, 0)
-
-[node name="Bridge11" parent="HotelRoomChunk/Chamber2/Chunk" index="15"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 6.7, 3.60001)
-
-[node name="Emitter5" parent="HotelRoomChunk/Chamber2/Chunk/Bridge11" index="6"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0999999, 0)
-
-[node name="Bridge20" parent="HotelRoomChunk/Chamber2/Chunk" index="16"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 6.7, 3.60001)
-
-[node name="Bridge21" parent="HotelRoomChunk/Chamber2/Chunk" index="17"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 6.7, 3.60001)
-
-[node name="Bridge22" parent="HotelRoomChunk/Chamber2/Chunk" index="18"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21, 6.7, 3.60001)
-
-[node name="Bridge23" parent="HotelRoomChunk/Chamber2/Chunk" index="19"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 6.7, 3.60001)
-
-[node name="Bridge24" parent="HotelRoomChunk/Chamber2/Chunk" index="20"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29, 6.7, 3.60001)
-
-[node name="Bridge4" parent="HotelRoomChunk/Chamber2/Chunk" index="21"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6.7, -0.399993)
-
-[node name="Bridge16" parent="HotelRoomChunk/Chamber2/Chunk" index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 6.7, -0.399995)
-
-[node name="Bridge12" parent="HotelRoomChunk/Chamber2/Chunk" index="23"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6.7, -0.399994)
-
-[node name="Bridge5" parent="HotelRoomChunk/Chamber2/Chunk" index="24"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6.7, 7.60001)
-
-[node name="Bridge10" parent="HotelRoomChunk/Chamber2/Chunk" index="25"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6.7, 7.60001)
-
-[node name="Bridge25" parent="HotelRoomChunk/Chamber2/Chunk" index="27"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3, 6.7, 3.60001)
-
-[node name="Bridge14" parent="HotelRoomChunk/Chamber2/Chunk" index="28"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 6.7, -4.39999)
 
 [node name="Chamber3" parent="HotelRoomChunk" instance=ExtResource("16_cjdov")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -101.3, 0, 19.6)
