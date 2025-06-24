@@ -11,5 +11,5 @@ func _enter_tree() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Water: return
-	if body.has_method("jump_to_last_stable_position"):
-		body.jump_to_last_stable_position()
+	if body.has_method("fall_in_water"):
+		body.fall_in_water()

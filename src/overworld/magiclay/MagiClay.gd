@@ -214,5 +214,5 @@ func _set_size() -> void:
 		shape.size = base_size * scaling_factor
 
 
-func jump_to_last_stable_position() -> void:
+func fall_in_water() -> void:
 	global_position = spawn_position

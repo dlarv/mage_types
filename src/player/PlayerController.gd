@@ -215,5 +215,5 @@ func _on_flush_jump_buffer_timer_timeout() -> void:
 	_jump_buffer = false
 
 
-func jump_to_last_stable_position() -> void:
+func fall_in_water() -> void:
 	global_position = last_grounded_position
