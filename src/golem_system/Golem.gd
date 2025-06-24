@@ -49,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	match instructions[_curr_index][0]:
 		"WALK": step(delta)
 		"TURN": turn(delta)
+		"GOTO": goto()
 		"WAIT",_: 
 			_accumulator += delta
 	
@@ -58,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		_curr_index += 1
 		_accumulator = 0
 		_timer = 0
+
 
 func move(delta: float, onlyGravity:=false) -> void:
 	self.velocity.y += get_local_gravity() * delta
@@ -89,12 +91,27 @@ func step(delta: float) -> void:
 
 func turn(delta: float) -> void:
 	if _accumulator == 0:
-		Logger.append_golem_log("Golem(%s) executed instruction: TURN %.2f degrees." 
+		Logger.append_golem_log("Golem(%s) executed instruction: TURN(%.2f)." 
 				% [golem_name, instructions[_curr_index][1]])
 
 	var degrees: float = instructions[_curr_index][1] * delta * base_turn_speed
 	rotation_degrees.y += degrees
 	_accumulator += degrees
+
+
+func goto() -> void:
+	if instructions[_curr_index][1] >= len(instructions):
+		_curr_index = len(instructions) - 1
+		Logger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)(out of bounds) => GOTO(%d)(actual)." 
+				% [golem_name, len(instructions) - 1, int(instructions[_curr_index][1])])
+	else:
+		_curr_index = instructions[_curr_index][1]
+		Logger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)." 
+				% [golem_name, int(instructions[_curr_index][1])])
+
+	# Reset values
+	_accumulator = 0
+	_timer = 0
 
 
 func _speed_to_delay() -> float:

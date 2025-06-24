@@ -1,7 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqi8spl0jubpv"]
+[gd_scene load_steps=8 format=3 uid="uid://bqi8spl0jubpv"]
 
 [ext_resource type="Script" uid="uid://cswkjm67wjbmw" path="res://src/gui/pause_menu/golem_menu/GolemInstructionManager.gd" id="1_12xwi"]
 [ext_resource type="PackedScene" uid="uid://b4k1afc6nj5u3" path="res://src/gui/pause_menu/golem_menu/instruction_picker.tscn" id="2_fx8se"]
+[ext_resource type="Script" uid="uid://vx3i7shy4d2d" path="res://src/gui/pause_menu/golem_menu/components/GolemInstruction.gd" id="3_dh8jm"]
+
+[sub_resource type="Resource" id="Resource_y0nkk"]
+resource_name = "WALK"
+script = ExtResource("3_dh8jm")
+instruction = "WALK"
+value = 1.0
+min_value = 1.0
+max_value = 99.0
+step = 1.0
+suffix = "steps"
+metadata/_custom_type_script = "uid://vx3i7shy4d2d"
+
+[sub_resource type="Resource" id="Resource_bljjv"]
+resource_name = "TURN"
+script = ExtResource("3_dh8jm")
+instruction = "TURN"
+value = 90.0
+min_value = -360.0
+max_value = 360.0
+step = 30.0
+suffix = "degrees"
+metadata/_custom_type_script = "uid://vx3i7shy4d2d"
+
+[sub_resource type="Resource" id="Resource_xlwwj"]
+resource_name = "WAIT"
+script = ExtResource("3_dh8jm")
+instruction = "WAIT"
+value = 1.0
+min_value = 1.0
+max_value = 99.0
+step = 0.1
+suffix = "seconds"
+metadata/_custom_type_script = "uid://vx3i7shy4d2d"
+
+[sub_resource type="Resource" id="Resource_k3hit"]
+resource_name = "GOTO"
+script = ExtResource("3_dh8jm")
+instruction = "GOTO"
+value = 0.0
+min_value = 1.0
+max_value = 99.0
+step = 1.0
+suffix = "line"
+metadata/_custom_type_script = "uid://vx3i7shy4d2d"
 
 [node name="GolemInstructionManager" type="VBoxContainer"]
 anchors_preset = 15
@@ -29,6 +74,7 @@ size_flags_vertical = 3
 [node name="InstructionPicker" parent="." instance=ExtResource("2_fx8se")]
 position = Vector2i(426, 174)
 visible = false
+instructions = Array[ExtResource("3_dh8jm")]([SubResource("Resource_y0nkk"), SubResource("Resource_bljjv"), SubResource("Resource_xlwwj"), SubResource("Resource_k3hit")])
 
 [connection signal="pressed" from="InstructionPickerButton" to="." method="_on_instruction_picker_button_pressed"]
 [connection signal="popup_hide" from="InstructionPicker" to="." method="_on_instruction_picker_popup_hide"]
