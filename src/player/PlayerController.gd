@@ -22,6 +22,7 @@ var dash_velocity: float
 var _can_air_dash := true
  
 var draggable = null
+var last_grounded_position: Vector3
 
 var _can_jump := true
 var _jump_buffer := false
@@ -78,6 +79,7 @@ func _physics_process(delta: float) -> void:
 		_jump_strength = 0
 		_jump_timer = 0
 		_can_air_dash = true
+		last_grounded_position = global_position
 
 	# Add the gravity.
 	velocity.y += get_local_gravity() * delta
@@ -211,3 +213,7 @@ func _on_coyote_timer_timeout() -> void:
 
 func _on_flush_jump_buffer_timer_timeout() -> void:
 	_jump_buffer = false
+
+
+func jump_to_last_stable_position() -> void:
+	global_position = last_grounded_position

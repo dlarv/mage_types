@@ -1,8 +1,9 @@
-[gd_scene load_steps=204 format=4 uid="uid://cmtatsdth8psr"]
+[gd_scene load_steps=205 format=4 uid="uid://cmtatsdth8psr"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_uvna4"]
 [ext_resource type="Shader" uid="uid://b8ankfagnoil7" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
 [ext_resource type="Shader" uid="uid://d2sidylou0g1r" path="res://assets/3d/shaders/clay_shader/clay_water.tres" id="3_jlv2r"]
+[ext_resource type="Script" uid="uid://lp1v5cimlv0" path="res://src/overworld/Water.gd" id="3_mpgmr"]
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/3d/shaders/clay_shader/clay.tres" id="3_yqbif"]
 [ext_resource type="Texture2D" uid="uid://g8xe88rd5x3f" path="res://assets/3d/shaders/clay_shader/textures/base_clay_print_normal.png" id="4_sogwj"]
 [ext_resource type="Texture2D" uid="uid://bgjjfrthamaph" path="res://assets/3d/shaders/clay_shader/textures/base_clay_crack_normal.png" id="5_mpgmr"]
@@ -1095,9 +1096,12 @@ shape = SubResource("ConcavePolygonShape3D_1j4w4")
 transform = Transform3D(0.93555, 0, 0, 0, 1, 0, 0, 0, 1, -18, -1.30824, -3)
 material_override = SubResource("ShaderMaterial_7x0k5")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Water_001" index="0"]
+[node name="Area3D" type="Area3D" parent="Water_001" index="0"]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("3_mpgmr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Water_001/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water_001/Area3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_3ecq1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane" index="0"]
@@ -1364,9 +1368,12 @@ shape = SubResource("ConcavePolygonShape3D_afu2c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entry_009/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_wxgjy")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground_004" index="0"]
+[node name="Water" type="Area3D" parent="Ground_004" index="0"]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("3_mpgmr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_004/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_004/Water" index="0"]
 shape = SubResource("ConcavePolygonShape3D_yyw6x")
 
 [node name="Bridge" parent="." index="53"]
