@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 
 @export var open_delay := 0.5:

@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 
 @export var lock: PuzzleBlock
@@ -7,6 +8,7 @@ var _mat: BaseMaterial3D
 
 
 func _ready() -> void:
+	super._ready()
 	_mat = StandardMaterial3D.new()
 	_mat.albedo_color = Color.RED
 	$MeshInstance3D.set_surface_override_material(0, _mat)

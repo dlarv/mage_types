@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 
 func set_stasis(val=null) -> void:
