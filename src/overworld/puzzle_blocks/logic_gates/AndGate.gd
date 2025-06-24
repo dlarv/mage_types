@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 
 ## The number of PuzzleBlocks that must emit the on signal for this gate to open.
