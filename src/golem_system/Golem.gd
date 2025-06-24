@@ -62,7 +62,8 @@ func _physics_process(delta: float) -> void:
 
 
 func move(delta: float, onlyGravity:=false) -> void:
-	self.velocity.y += get_local_gravity() * delta
+	if not element == ElementManager.Yellow:
+		self.velocity.y += get_local_gravity() * delta
 	var s = self
 	if onlyGravity: 
 		s.move_and_slide()
