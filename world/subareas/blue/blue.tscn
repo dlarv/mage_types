@@ -1351,7 +1351,8 @@ is_on = false
 
 [node name="Chamber2PressurePlate" parent="HotelRoomChunk" instance=ExtResource("16_61fdq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -44.6834, 9.94163, -14.6834)
-script = null
+is_on = true
+_element = "red"
 
 [node name="Chamber3Geyser" parent="HotelRoomChunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.1163, 6.8, -23.0834)
@@ -1428,15 +1429,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0
 [node name="Chamber3" parent="HotelRoomChunk" instance=ExtResource("16_cjdov")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -101.3, 0, 19.6)
 
-[node name="AndGate" parent="HotelRoomChunk/Chamber3/Chunk" index="0" node_paths=PackedStringArray("locks")]
+[node name="AndGate" parent="HotelRoomChunk/Chamber3/Chunk" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 7, -40.7329)
-locks = []
 
 [node name="PressurePlate" parent="HotelRoomChunk/Chamber3/Chunk/Path_N" index="0"]
-script = null
+is_on = true
 
 [node name="PressurePlate" parent="HotelRoomChunk/Chamber3/Chunk/Path_S" index="0"]
-script = null
+is_on = true
 
 [node name="HallChunk3" type="Area3D" parent="." node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, -119)
