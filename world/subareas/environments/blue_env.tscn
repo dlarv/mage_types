@@ -1393,7 +1393,6 @@ shape = SubResource("ConcavePolygonShape3D_yyw6x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_004/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_mpgmr")
 
 [node name="Bridge" parent="." index="53"]

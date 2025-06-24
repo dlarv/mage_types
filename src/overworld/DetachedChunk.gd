@@ -112,10 +112,9 @@ func unload(player: Node3D) -> void:
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		obj.hide()
 
-func add_golem(node: Golem, persist:=true) -> void:
-	super.add_golem(node, persist)
+func add_golem(node: Golem) -> void:
+	super.add_golem(node)
 	objs.append(node)
-
 
 func remove_golem(node: Golem) -> void:
 	super.remove_golem(node)

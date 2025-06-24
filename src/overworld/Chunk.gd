@@ -73,6 +73,8 @@ func serialize() -> Dictionary:
 	}
 
 	for key in _persistent_objs.keys():
+		if _persistent_objs[key] is Golem:
+			pass
 		data[key] = _persistent_objs[key].serialize()
 
 	return data
@@ -89,10 +91,9 @@ func deserialize(data: Dictionary) -> void:
 		_persistent_objs[key].deserialize(data[key])
 
 
-func add_golem(node: Golem, persist:=true) -> void:
+func add_golem(node: Golem) -> void:
 	chunk.add_child(node)
-	if persist:
-		_persistent_objs[node.get_path()] = node
+	_persistent_objs[node.get_path()] = node
 
 
 func remove_golem(node: Golem) -> void:

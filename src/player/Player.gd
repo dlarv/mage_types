@@ -64,7 +64,7 @@ func start_dialog(npc: Variant) -> void:
 
 
 func create_golem(golem: Golem) -> void:
-	active_chunk.add_golem(golem, randf() < golem.chance_to_persist)
+	active_chunk.add_golem(golem)
 	golem.golem_name = "%s.%s" % [active_chunk.name, name]
 	golem.parent_chunk = active_chunk
 

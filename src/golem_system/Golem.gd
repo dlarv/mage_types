@@ -5,7 +5,6 @@ class_name Golem
 @export var delay_between_actions := 0.5
 @export var base_walk_speed := 2.0
 @export var base_turn_speed := 0.5
-@export var chance_to_persist := 0.4
 
 var battle_actor: BattleActor
 var instructions := []
@@ -17,6 +16,8 @@ var _active := false
 var _curr_index := 0
 var _timer := 0.0
 var _accumulator := 0.0
+# How many loads until corpse disappears.
+var _decomposition_counter := 3
 
 
 func setup(actor: BattleActor, ins: Array) -> void:
@@ -151,7 +152,11 @@ func deserialize(data: Dictionary) -> void:
 	global_rotation = data.rotation
 	battle_actor.deserialize(data.battle_actor)
 	set_element(battle_actor.element1)
-	kill()
+	_decomposition_counter = data.decomposition_counter - 1
+	if _decomposition_counter > 0:
+		kill()
+	else:
+		kill_and_remove()
 
 
 func serialize() -> Dictionary:
@@ -160,6 +165,7 @@ func serialize() -> Dictionary:
 		"position": global_position,
 		"rotation": global_rotation,
 		"battle_actor": battle_actor.serialize(),
+		"decomposition_counter": _decomposition_counter,
 	}
 
 
