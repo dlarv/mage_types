@@ -10,8 +10,8 @@ class_name Golem
 var battle_actor: BattleActor
 var instructions := []
 var outside_forces := Vector3.ZERO
-
 var golem_name: String
+var parent_chunk: Chunk
 
 var _active := false
 var _curr_index := 0
@@ -125,8 +125,10 @@ func kill() -> void:
 	if self.velocity.length() == 0:
 		process_mode = Node.PROCESS_MODE_DISABLED
 
+
 func kill_and_remove() -> void:
-	get_parent().get_parent().remove_golem(self)
+	parent_chunk.remove_golem(self)
+
 
 func instructions_to_string() -> String:
 	var output := []
@@ -164,3 +166,14 @@ static func create() -> Golem:
 	var output: Golem = load("res://src/golem_system/golem.tscn").instantiate()
 	output.battle_actor = BattleActor.new()
 	return output
+
+
+func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
+	if not super.set_element(e, randVal, force): return false
+	match element:
+		ElementManager.Blue: set_collision_layer_value(7, false)
+	return true
+
+
+func fall_in_water() -> void:
+	kill_and_remove()
