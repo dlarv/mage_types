@@ -39,6 +39,7 @@ var element: ElementalType = ElementManager.Blank:
 @export var base_size := Vector3(1, 1, 1)
 
 var puzzle_name: String
+var spawn_position: Vector3
 
 var _mesh_instance: MeshInstance3D: get = _get_mesh
 var _material: BaseMaterial3D: set = _set_material
@@ -58,6 +59,7 @@ func _enter_tree():
 func _ready():
 	_material = StandardMaterial3D.new()
 	puzzle_name = "%s.%s" % [get_parent().name, name]
+	spawn_position = global_position
 
 
 # color: Color | null
@@ -210,3 +212,7 @@ func _set_size() -> void:
 		shape.height = base_size.z * scaling_factor.z
 	elif "size" in shape:
 		shape.size = base_size * scaling_factor
+
+
+func jump_to_last_stable_position() -> void:
+	global_position = spawn_position
