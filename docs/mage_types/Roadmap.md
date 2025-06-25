@@ -13,21 +13,37 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- At some point, the player should have the ability to create battle golems
 	- [x] Golems can execute basic instructions
 		- [x] Walk
+			- [ ] Ensure golem is moving set amount of space with each step
+			- [ ] Areas with golem puzzles should have checkered floors
 		- [x] Turn
 		- [x] Wait
 		- [ ] Grab draggable 
-		- [ ] Drop draggable
-		- [ ] Use interactable?
+			- [ ] Maybe golem will grab any draggable that comes across its path? Maybe limit this based on golem's weight vs draggable's.
+		- [ ] Drop draggable (upon death?) Mb if golem isn't holding anything it'll work like a no-op.
+		- [x] Goto
+		- [ ] Channel MagiClayTerrain (changes composition of golem)
+			- Lasers transmute, channeling straight up changes
 	- [x] Golems can be transmuted by lasers
-	- [x] Golems can be spawned in by player
+	- [x] Golem can be hit with stasis to pause it
+- [x] Golems can be spawned in by player
 	- [x] Golem debug editor
 		- [x] Allow player to set primary and secondary types
 	- [x] Allow player to given golems a set of instructions (max instruction amount can be updated)
 		- [ ] Add maximum number of instructions
+		- [ ] Add instruction budget to limit use of strong commands
 		- [x] Add ability to remove instructions 
-	- [ ] Golems will get 2 ability slots (stasis, lifting objects, etc). These will be assigned in the creation menu and accessed via the instruction editor.
-	- [ ] Different golem types should have different properties
+	- [ ] Golem player editor
+		- [ ] Golem's type is determined via same means as Catalyst spell
+		- [ ] Player will have golem sets (arms, legs, torso, head) that they can mix and match
+			- [ ] These will be used to determine stats/etc
+	- [ ] Different golem elements should have different properties
+		- [x] Blue can wade through water
+		- [x] Yellow floats above obstacles
+		- [ ] Magenta will bounce player?
+		- [ ] Purple can walk up walls?
+		- [ ] Orange can transmute itself?
 	- [ ] Golems should have a health bar
+	- [ ] Upon falling in water, all but Blue golems should die
 	- [x] Upon dying, golems should leave a permanent pile of clay
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
@@ -300,6 +316,20 @@ StatChanges (v0.3.43)
 ### Golem Elemental Properties
 Blue golems should be immune to water.
 ## Overworld (OVER)
+>[!important] 
+> Players collision layer is 1.
+> Projectile collision layer is 2.
+> MagiClay collision layer is 3.
+> Laser collision layer is 4.
+>- Things that block lasers are on layer 5.
+> - Layer 6 is for things that only affect the player.
+> Water collision mask is 7.
+> - Anything that interacts with water be on layer 7.
+
+### Water
+- Player will return to last stable position
+- MagiClay will return to its spawn position
+- Water that Blue golems can walk through should have a static body slightly underneath
 ### Character Controller (chco)
 **Player should be able to perform simple actions:**
 - [x] Walking/running.
