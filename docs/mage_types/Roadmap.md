@@ -17,12 +17,8 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 			- [ ] Areas with golem puzzles should have checkered floors
 		- [x] Turn
 		- [x] Wait
-		- [ ] Grab draggable 
-			- [ ] Maybe golem will grab any draggable that comes across its path? Maybe limit this based on golem's weight vs draggable's.
-		- [ ] Drop draggable (upon death?) Mb if golem isn't holding anything it'll work like a no-op.
 		- [x] Goto
-		- [ ] Channel MagiClayTerrain (changes composition of golem)
-			- Lasers transmute, channeling straight up changes
+			- [ ] Goback
 	- [x] Golems can be transmuted by lasers
 	- [x] Golem can be hit with stasis to pause it
 - [x] Golems can be spawned in by player
@@ -39,11 +35,9 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [ ] Different golem elements should have different properties
 		- [x] Blue can wade through water
 		- [x] Yellow floats above obstacles
-		- [ ] Magenta will bounce player?
-		- [ ] Purple can walk up walls?
-		- [ ] Orange can transmute itself?
-	- [ ] Golems should have a health bar
-	- [ ] Upon falling in water, all but Blue golems should die
+		- [ ] Orange can move thru fire obstacle
+		- [ ] Purple can move thru shadow obstacle
+	- [x] Upon falling in water, all but Blue golems should die
 	- [x] Upon dying, golems should leave a permanent pile of clay
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
@@ -300,10 +294,23 @@ StatChanges (v0.3.43)
 -  Golems should have a health bar
 -  Upon dying, golems should leave a permanent pile of clay
 	-  Player should be able to collect any spell beads/items/etc they equipped onto the golem
+
+Future Additions
+- [ ] Golems should have a health bar
+- [ ] Complex properties
+	- [ ] Magenta will bounce player?
+	- [ ] Purple can walk up walls?
+	- [ ] Orange can transmute itself?
+- [ ] Grab draggable 
+	- [ ] Maybe golem will grab any draggable that comes across its path? Maybe limit this based on golem's weight vs draggable's.
+- [ ] Drop draggable (upon death?) Mb if golem isn't holding anything it'll work like a no-op.
+- [ ] Channel MagiClayTerrain (changes composition of golem)
+	- Lasers transmute, channeling straight up changes
 ### Golem Instructions
 - Walk: num steps
 - Turn: degrees
 - Wait: seconds
+- Goto: line
 
 1. Player selects options from `InstructionPicker`.
 2. `InstructionPicker` passes String to `GolemInstructionManager`.
