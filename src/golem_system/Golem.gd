@@ -71,7 +71,8 @@ func move(delta: float, onlyGravity:=false) -> void:
 		self.velocity.y += get_local_gravity() * delta
 	var s = self
 	if onlyGravity: 
-		s.move_and_slide()
+		if s.move_and_slide():
+			_push_objects()
 		return
 
 	self.velocity += outside_forces * delta
@@ -79,7 +80,24 @@ func move(delta: float, onlyGravity:=false) -> void:
 
 	self.velocity.x = move_toward(self.velocity.x, 0, delta)
 	self.velocity.z = move_toward(self.velocity.z, 0, delta)
-	s.move_and_slide()
+
+	if s.move_and_slide():
+		_push_objects()
+
+
+func _push_objects() -> void:
+	var s = self
+	for i in s.get_slide_collision_count():
+		var collision: KinematicCollision3D = s.get_slide_collision(i)
+		var collider := collision.get_collider()
+		if not collider.get_collision_layer_value(3) and not collider.get_collision_layer_value(6): continue
+		if collider is RigidBody3D:
+			collider.apply_force(collision.get_normal() * -500)
+			self.velocity = basis.z.normalized() * base_walk_speed
+		elif collider is CharacterBody3D:
+			self.velocity = basis.z.normalized() * base_walk_speed
+			collider.add_force(collision.get_normal() * -500)
+
 
 
 func step(delta: float) -> void:

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://g8s0dqlwqnvb"]
+[gd_scene load_steps=7 format=3 uid="uid://g8s0dqlwqnvb"]
 
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_w30lo"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_sy7e0"]
+[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="3_3vrjo"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="4_ic2nu"]
+[ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="5_yirsw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy7e0"]
-size = Vector3(57, 25, 39)
+size = Vector3(34, 25, 34)
 
 [node name="GolemTestingFacility" type="Area3D" node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_w30lo")
@@ -11,6 +15,30 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
 shape = SubResource("BoxShape3D_sy7e0")
 
 [node name="Chunk" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Chunk"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -10.5)
+size = Vector3(10, 4, 6)
+material = ExtResource("2_sy7e0")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -10.5)
+size = Vector3(10, 2, 6)
+material = ExtResource("2_sy7e0")
+
+[node name="Geyser" parent="." instance=ExtResource("3_3vrjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -6)
+
+[node name="PressurePlate" parent="." instance=ExtResource("4_ic2nu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1, 7)
+_element = "blue"
+
+[node name="MagiclayRock" parent="." instance=ExtResource("5_yirsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, -10)
