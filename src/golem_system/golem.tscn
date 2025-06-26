@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuf0s3l1id1y2"]
+[gd_scene load_steps=6 format=3 uid="uid://cuf0s3l1id1y2"]
 
 [ext_resource type="Script" uid="uid://dpbihd6t0hkbk" path="res://src/golem_system/Golem.gd" id="1_315ng"]
 
@@ -8,6 +8,9 @@
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qrgtv"]
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_315ng"]
 
 [node name="Golem" type="CharacterBody3D"]
 top_level = true
@@ -22,5 +25,9 @@ mesh = SubResource("CylinderMesh_fbuoq")
 surface_material_override/0 = SubResource("StandardMaterial3D_315ng")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("CylinderShape3D_qrgtv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_315ng")
