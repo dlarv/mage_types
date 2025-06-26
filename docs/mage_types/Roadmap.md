@@ -18,7 +18,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] Turn
 		- [x] Wait
 		- [x] Goto
-			- [ ] Goback
+		- [x] ~~Goback~~ Again 
 	- [x] Golems can be transmuted by lasers
 	- [x] Golem can be hit with stasis to pause it
 - [x] Golems can be spawned in by player

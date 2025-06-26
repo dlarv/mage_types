@@ -12,6 +12,7 @@ var outside_forces := Vector3.ZERO
 var golem_name: String
 var parent_chunk: Chunk
 
+var _initial_position: Vector3
 var _active := false
 var _curr_index := 0
 var _timer := 0.0
@@ -30,6 +31,7 @@ func setup(actor: BattleActor, ins: Array) -> void:
 
 
 func start() -> void:
+	_initial_position = global_position
 	_timer = delay_between_actions
 	_active = true
 
@@ -51,6 +53,8 @@ func _physics_process(delta: float) -> void:
 		"WALK": step(delta)
 		"TURN": turn(delta)
 		"GOTO": goto()
+		"AGAIN":
+			again()
 		"WAIT",_: 
 			_accumulator += delta
 	
@@ -114,6 +118,16 @@ func goto() -> void:
 	# Reset values
 	_accumulator = 0
 	_timer = 0
+
+
+func again() -> void:
+	# Reset values
+	_curr_index = 0
+	_accumulator = 0
+	_timer = 0
+
+	global_position = _initial_position
+	Logger.append_golem_log("Golem(%s) executed instruction: AGAIN." % golem_name) 
 
 
 func _speed_to_delay() -> float:
