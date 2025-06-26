@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://g8s0dqlwqnvb"]
+
+[ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_w30lo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sy7e0"]
+size = Vector3(57, 25, 39)
+
+[node name="GolemTestingFacility" type="Area3D" node_paths=PackedStringArray("chunk")]
+script = ExtResource("1_w30lo")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_sy7e0")
+
+[node name="Chunk" type="Node3D" parent="."]

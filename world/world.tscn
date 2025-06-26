@@ -683,7 +683,7 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -1.9, -95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.1, -244)
 battle_actor = ExtResource("18_p65bs")
 team = [ExtResource("11_qfng2")]
 
