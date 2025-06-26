@@ -1,4 +1,4 @@
-[gd_scene load_steps=210 format=4 uid="uid://cmtatsdth8psr"]
+[gd_scene load_steps=211 format=4 uid="uid://cmtatsdth8psr"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_uvna4"]
 [ext_resource type="Shader" uid="uid://b8ankfagnoil7" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://uumle4odlj75" path="res://assets/3d/textures/levels/ziggurat_pillar_diffuse.png" id="5_y11tr"]
 [ext_resource type="Texture2D" uid="uid://cj3lv0pecv1v1" path="res://assets/3d/textures/levels/ziggurat_pillar_normal.png" id="6_1ip8s"]
 [ext_resource type="Texture2D" uid="uid://tqx4dh0dy1hy" path="res://assets/3d/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="6_gpri5"]
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="12_gpri5"]
+[ext_resource type="Texture2D" uid="uid://c6s3thxg66y8x" path="res://assets/3d/textures/placeholder_grid_texture/PNG/Dark/texture_01.png" id="12_gkvpg"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="13_gkvpg"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sogwj"]
@@ -1010,6 +1010,11 @@ shader_parameter/CrackDetail = 1.0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3vaf7"]
 data = PackedVector3Array(0.1238, 0, -0.1232, 1, 0, -1, 1, 0, -0.1232, 0.1238, 0, -0.1232, 0.1238, 0, -1, 1, 0, -1, 0.1238, 0, 0.1236, 0.1238, 0, -0.1232, 1, 0, -0.1232, 0.1238, 0, 0.1236, 1, 0, -0.1232, 1, 0, 0.1236, 0.1238, 0, 1, 0.1238, 0, 0.1236, 1, 0, 0.1236, 0.1238, 0, 1, 1, 0, 0.1236, 1, 0, 1, -0.1236, 0, 1, 0.1238, 0, 0.1236, 0.1238, 0, 1, -0.1236, 0, 1, -0.1236, 0, 0.1236, 0.1238, 0, 0.1236, -0.1236, 0, 0.1236, 0.1238, 0, -0.1232, 0.1238, 0, 0.1236, -1, 0, 1, -0.1236, 0, 0.1236, -0.1236, 0, 1, -1, 0, 1, -1, 0, 0.1236, -0.1236, 0, 0.1236, -0.1236, 0, 0.1236, -0.1236, 0, -0.1232, 0.1238, 0, -0.1232, -1, 0, 0.1236, -0.1236, 0, -0.1232, -0.1236, 0, 0.1236, -0.1236, 0, -0.1232, 0.1238, 0, -1, 0.1238, 0, -0.1232, -1, 0, 0.1236, -1, 0, -0.1232, -0.1236, 0, -0.1232, -0.1236, 0, -0.1232, -0.1236, 0, -1, 0.1238, 0, -1, -1, 0, -0.1232, -0.1236, 0, -1, -0.1236, 0, -0.1232, -1, 0, -0.1232, -1, 0, -1, -0.1236, 0, -1, -0.1236, 0, -1, 0.1238, 0, -1.1, 0.1238, 0, -1, -0.1236, 0, -1, -0.1236, 0, -1.1, 0.1238, 0, -1.1, -1, 0, -1, -0.1236, 7, -1, -0.1236, 0, -1, -1, 0, -1, -1, 7, -1, -0.1236, 7, -1, 1, 0, 1, 0.1238, 7, 1, 0.1238, 0, 1, 1, 0, 1, 1, 7, 1, 0.1238, 7, 1, 1, 0, 0.1236, 1, 7, 1, 1, 0, 1, 1, 0, 0.1236, 1, 7, 0.1236, 1, 7, 1, 1, 0, -0.1232, 1, 7, 0.1236, 1, 0, 0.1236, 1, 0, -0.1232, 1, 7, -0.1232, 1, 7, 0.1236, 1, 0, -1, 1, 7, -0.1232, 1, 0, -0.1232, 1, 0, -1, 1, 7, -1, 1, 7, -0.1232, -1, 0, -0.1232, -1, 7, -1, -1, 0, -1, -1, 0, -0.1232, -1, 7, -0.1232, -1, 7, -1, -1, 0, 0.1236, -1, 7, -0.1232, -1, 0, -0.1232, -1, 0, 0.1236, -1, 7, 0.1236, -1, 7, -0.1232, -1, 0, 1, -1, 7, 0.1236, -1, 0, 0.1236, -1, 0, 1, -1, 7, 1, -1, 7, 0.1236, 0.1238, 0, -1, 1, 7, -1, 1, 0, -1, 0.1238, 0, -1, 0.1238, 7, -1, 1, 7, -1, -0.1236, 0, 1, -1, 7, 1, -1, 0, 1, -0.1236, 0, 1, -0.1236, 7, 1, -1, 7, 1, 0.1238, 0, 1, -0.1236, 0, 1.1, -0.1236, 0, 1, 0.1238, 0, 1, 0.1238, 0, 1.1, -0.1236, 0, 1.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebwbs"]
+albedo_texture = ExtResource("12_gkvpg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvk77"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3cq0p"]
@@ -1788,7 +1793,7 @@ shape = SubResource("ConcavePolygonShape3D_3vaf7")
 
 [node name="Ground_006" parent="." index="123"]
 transform = Transform3D(31.1029, 0, 0, 0, 1, 0, 0, 0, 15.4839, 21.0326, 2.766, -237.947)
-surface_material_override/0 = ExtResource("12_gpri5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ebwbs")
 surface_material_override/1 = SubResource("StandardMaterial3D_lvk77")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_006" index="0"]
@@ -1848,4 +1853,4 @@ shape = SubResource("ConcavePolygonShape3D_gbw6b")
 shape = SubResource("ConcavePolygonShape3D_v0rkh")
 
 [node name="MagiclayRock" parent="." index="132" instance=ExtResource("13_gkvpg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -237.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -237.504)
