@@ -13,6 +13,7 @@ var golem_name: String
 var parent_chunk: Chunk
 
 var _initial_position: Vector3
+var _target_position: Vector3
 var _active := false
 var _curr_index := 0
 var _timer := 0.0
@@ -27,6 +28,11 @@ func setup(actor: BattleActor, ins: Array) -> void:
 
 	instructions = []
 	for instruction in ins:
+		if instruction.instruction == "WALK":
+			for i in instruction.value:
+				instructions.append(["WALK", 1])
+			continue
+
 		instructions.append([instruction.instruction, instruction.value])
 
 
@@ -78,26 +84,13 @@ func move(delta: float, onlyGravity:=false) -> void:
 	self.velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
 
-	self.velocity.x = move_toward(self.velocity.x, 0, delta)
-	self.velocity.z = move_toward(self.velocity.z, 0, delta)
-
+	#self.velocity.x = move_toward(self.velocity.x, 0, delta)
+	#self.velocity.z = move_toward(self.velocity.z, 0, delta)
+	if global_position.distance_to(_target_position) <= 0.1:
+		self.velocity = Vector3.ZERO
+		global_position = _target_position
 	if s.move_and_slide():
 		_push_objects()
-
-
-func _push_objects() -> void:
-	var s = self
-	for i in s.get_slide_collision_count():
-		var collision: KinematicCollision3D = s.get_slide_collision(i)
-		var collider := collision.get_collider()
-		if not collider.get_collision_layer_value(3) and not collider.get_collision_layer_value(6): continue
-		if collider is RigidBody3D:
-			collider.apply_force(collision.get_normal() * -500)
-			self.velocity = basis.z.normalized() * base_walk_speed
-		elif collider is CharacterBody3D:
-			self.velocity = basis.z.normalized() * base_walk_speed
-			collider.add_force(collision.get_normal() * -500)
-
 
 
 func step(delta: float) -> void:
@@ -110,7 +103,10 @@ func step(delta: float) -> void:
 		pass
 	else:
 		_accumulator += 1
-		self.velocity = basis.z.normalized() * base_walk_speed
+		var speed := basis.z.normalized()
+		_target_position = global_position + speed
+		speed *= base_walk_speed
+		self.velocity = speed
 
 
 func turn(delta: float) -> void:
@@ -216,3 +212,17 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 
 func fall_in_water() -> void:
 	kill_and_remove()
+
+
+func _push_objects() -> void:
+	var s = self
+	for i in s.get_slide_collision_count():
+		var collision: KinematicCollision3D = s.get_slide_collision(i)
+		var collider := collision.get_collider()
+		if not collider.get_collision_layer_value(3) and not collider.get_collision_layer_value(6): continue
+		if collider is RigidBody3D:
+			collider.apply_force(collision.get_normal() * -300)
+			self.velocity = basis.z.normalized() * base_walk_speed
+		elif collider is CharacterBody3D:
+			self.velocity = basis.z.normalized() * base_walk_speed
+			collider.add_force(collision.get_normal() * -300)
