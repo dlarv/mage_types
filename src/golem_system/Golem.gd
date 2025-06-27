@@ -14,6 +14,7 @@ var parent_chunk: Chunk
 
 var _initial_position: Vector3
 var _target_position: Vector3
+var _step_start_position: Vector3
 var _active := false
 var _curr_index := 0
 var _timer := 0.0
@@ -37,6 +38,7 @@ func setup(actor: BattleActor, ins: Array) -> void:
 
 
 func start() -> void:
+	global_position = global_position.snapped(Vector3(0.5, 0, 0.5))
 	_initial_position = global_position
 	_timer = delay_between_actions
 	_active = true
@@ -86,9 +88,12 @@ func move(delta: float, onlyGravity:=false) -> void:
 
 	#self.velocity.x = move_toward(self.velocity.x, 0, delta)
 	#self.velocity.z = move_toward(self.velocity.z, 0, delta)
-	if global_position.distance_to(_target_position) <= 0.1:
+	if _reached_target_pos():
 		self.velocity = Vector3.ZERO
+		var yPos := global_position.y
 		global_position = _target_position
+		global_position.y = yPos
+
 	if s.move_and_slide():
 		_push_objects()
 
@@ -100,10 +105,12 @@ func step(delta: float) -> void:
 		self.velocity = Vector3.ZERO
 
 	if self.velocity.x != 0.0 or self.velocity.z != 0.0:
+	# if _reached_target_pos():
 		pass
 	else:
 		_accumulator += 1
 		var speed := basis.z.normalized()
+		_step_start_position = global_position
 		_target_position = global_position + speed
 		speed *= base_walk_speed
 		self.velocity = speed
@@ -221,8 +228,19 @@ func _push_objects() -> void:
 		var collider := collision.get_collider()
 		if not collider.get_collision_layer_value(3) and not collider.get_collision_layer_value(6): continue
 		if collider is RigidBody3D:
-			collider.apply_force(collision.get_normal() * -300)
+			collider.apply_force(collision.get_normal() * -500)
 			self.velocity = basis.z.normalized() * base_walk_speed
 		elif collider is CharacterBody3D:
 			self.velocity = basis.z.normalized() * base_walk_speed
-			collider.add_force(collision.get_normal() * -300)
+			collider.add_force(collision.get_normal() * -500)
+
+
+func _reached_target_pos() -> bool:
+	var pos := global_position
+	pos.y = _target_position.y
+	var dist1 := pos.distance_to(_target_position)
+	pos.y = _step_start_position.y
+	var dist2 := pos.distance_to(_step_start_position)
+
+	return dist1 <= 0.0 or dist2 > 1.0
+
