@@ -249,8 +249,8 @@ func _push_objects() -> void:
 		var collision: KinematicCollision3D = s.get_slide_collision(i)
 		var collider := collision.get_collider()
 		if not collider.get_collision_layer_value(3) and not collider.get_collision_layer_value(6): continue
-		var dot := collision.get_normal().normalized().dot(self.velocity.normalized()) 
-		if dot < 0.5: continue 
+		var dot := collision.get_normal().normalized().dot(global_position.direction_to(_target_position).normalized()) 
+		if dot > 0: continue 
 
 		if collider is RigidBody3D:
 			collider.apply_force(collision.get_normal() * -500)
