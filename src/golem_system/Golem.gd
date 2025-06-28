@@ -2,6 +2,8 @@
 extends MagiClay
 class_name Golem
 
+const SNAP_VALUE := Vector3(0.5, 0, 0.5)
+
 @export var delay_between_actions := 0.5
 @export var base_walk_speed := 2.0
 @export var base_turn_speed := 0.5
@@ -40,7 +42,7 @@ func setup(actor: BattleActor, ins: Array) -> void:
 
 
 func start() -> void:
-	global_position = global_position.snapped(Vector3(0.5, 0, 0.5))
+	global_position = global_position.snapped(SNAP_VALUE)
 	_initial_position = global_position
 	_timer = delay_between_actions
 	_active = true
@@ -117,7 +119,7 @@ func step(delta: float) -> void:
 		pause_gravity = false
 		if outside_forces == Vector3.ZERO:
 			var yPos := global_position.y
-			global_position = _target_position.snapped(Vector3.ONE)
+			global_position = _target_position.snapped(SNAP_VALUE)
 			global_position.y = yPos
 	else:
 		speed *= base_walk_speed
@@ -153,7 +155,7 @@ func goto() -> void:
 func again() -> void:
 	# Reset values
 	_curr_index = 0
-	_accumulator = 0
+	_accumulator = -1
 	_timer = 0
 
 	global_position = _initial_position
