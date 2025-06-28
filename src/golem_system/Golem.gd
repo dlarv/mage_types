@@ -44,7 +44,7 @@ func setup(actor: BattleActor, ins: Array) -> void:
 func start() -> void:
 	global_position = global_position.snapped(SNAP_VALUE)
 	_initial_position = global_position
-	_timer = delay_between_actions
+	_timer = 0
 	_active = true
 
 
