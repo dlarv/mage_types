@@ -16,13 +16,16 @@ var outside_forces := Vector3.ZERO
 var golem_name: String
 var parent_chunk: Chunk
 
+var active := false
+var curr_index := 0
+var timer := 0.0
+var accumulator := -1.0
+
 var _initial_position: Vector3
 var _target_position: Vector3
 var _step_start_position: Vector3
-var _active := false
-var _curr_index := 0
-var _timer := 0.0
-var _accumulator := -1.0
+var _start_rotation: float
+
 # How many loads until corpse disappears.
 var _decomposition_counter := 3
 # If golem is floating at top of geyser, move on to next instruction.
@@ -46,16 +49,16 @@ func setup(actor: BattleActor, ins: Array) -> void:
 func start() -> void:
 	global_position = global_position.snapped(SNAP_VALUE)
 	_initial_position = global_position
-	_timer = 0
-	_active = true
+	timer = 0
+	active = true
 
 
 func _physics_process(delta: float) -> void:
-	if not _active or in_stasis: return
-	_timer += delta
-	if _timer < delay_between_actions: return
+	if not active or in_stasis: return
+	timer += delta
+	if timer < delay_between_actions: return
 	var s = self
-	if _curr_index >= len(instructions):
+	if curr_index >= len(instructions):
 		if not s.is_on_floor():
 			kill_and_remove()
 		else:
@@ -63,23 +66,23 @@ func _physics_process(delta: float) -> void:
 			kill()
 		return
 		
-	match instructions[_curr_index][0]:
+	match instructions[curr_index][0]:
 		"WALK": step(delta)
 		"TURN": turn(delta)
 		"GOTO": goto()
 		"AGAIN":
 			again()
 		"WAIT",_: 
-			if _accumulator == -1:
-				_accumulator = 0
-			_accumulator += delta
+			if accumulator == -1:
+				accumulator = 0
+			accumulator += delta
 	
 	move(delta)
 
 	if _evaluate():
-		_curr_index += 1
-		_accumulator = -1
-		_timer = 0
+		curr_index += 1
+		accumulator = -1
+		timer = 0
 
 
 func move(delta: float, onlyGravity:=false) -> void:
@@ -99,22 +102,22 @@ func move(delta: float, onlyGravity:=false) -> void:
 
 
 func step(delta: float) -> void:
-	if _accumulator > instructions[_curr_index][1]:
+	if accumulator > instructions[curr_index][1]:
 		return
 
 	var speed := basis.z.normalized()
-	if _accumulator == -1:
+	if accumulator == -1:
 		Logger.append_golem_log("Golem(%s) executing instruction: WALK %d steps." 
-				% [golem_name, instructions[_curr_index][1]])
+				% [golem_name, instructions[curr_index][1]])
 		self.velocity = Vector3.ZERO
 		_step_start_position = global_position
 		_target_position = global_position + speed
 
 	var dist := _step_start_position - global_position
 	dist.y = 0
-	_accumulator = dist.length()
+	accumulator = dist.length()
 
-	if _accumulator > instructions[_curr_index][1]:
+	if accumulator > instructions[curr_index][1]:
 		self.velocity = Vector3.ZERO
 		pause_gravity = false
 		if outside_forces == Vector3.ZERO:
@@ -127,36 +130,36 @@ func step(delta: float) -> void:
 
 
 func turn(delta: float) -> void:
-	if _accumulator == -1:
+	if accumulator == -1:
 		Logger.append_golem_log("Golem(%s) executed instruction: TURN(%.2f)." 
-				% [golem_name, instructions[_curr_index][1]])
-		_accumulator = 0
+				% [golem_name, instructions[curr_index][1]])
+		accumulator = 0
 
-	var degrees: float = instructions[_curr_index][1] * delta * base_turn_speed
-	rotation_degrees.y += degrees
-	_accumulator += degrees
+	var degrees: float = instructions[curr_index][1] * delta * base_turn_speed
+	rotation_degrees.y = min(degrees + rotation_degrees.y, instructions[curr_index][1])
+	accumulator += degrees
 
 
 func goto() -> void:
-	if instructions[_curr_index][1] >= len(instructions):
-		_curr_index = len(instructions) - 1
+	if instructions[curr_index][1] >= len(instructions):
+		curr_index = len(instructions) - 1
 		Logger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)(out of bounds) => GOTO(%d)(actual)." 
-				% [golem_name, len(instructions) - 1, int(instructions[_curr_index][1])])
+				% [golem_name, len(instructions) - 1, int(instructions[curr_index][1])])
 	else:
-		_curr_index = instructions[_curr_index][1]
+		curr_index = instructions[curr_index][1]
 		Logger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)." 
-				% [golem_name, int(instructions[_curr_index][1])])
+				% [golem_name, int(instructions[curr_index][1])])
 
 	# Reset values
-	_accumulator = 0
-	_timer = 0
+	accumulator = 0
+	timer = 0
 
 
 func again() -> void:
 	# Reset values
-	_curr_index = 0
-	_accumulator = -1
-	_timer = 0
+	curr_index = 0
+	accumulator = -1
+	timer = 0
 
 	global_position = _initial_position
 	Logger.append_golem_log("Golem(%s) executed instruction: AGAIN." % golem_name) 
@@ -168,7 +171,7 @@ func _speed_to_delay() -> float:
 
 func kill() -> void:
 	rotation_degrees.x = 90
-	_active = false
+	active = false
 	$CollisionShape3D.disabled = true
 	$CollisionShape3D2.disabled = true
 
@@ -251,7 +254,7 @@ func _push_objects() -> void:
 
 func _evaluate() -> bool:
 	var s = self
-	var instruction: String = instructions[_curr_index][0] 
-	var threshold: int = instructions[_curr_index][1] 
-	return (_accumulator > threshold or (instruction == "WALK" and _timer > WALK_THRESHOLD)) \
+	var instruction: String = instructions[curr_index][0] 
+	var threshold: int = instructions[curr_index][1] 
+	return (accumulator > threshold or (instruction == "WALK" and timer > WALK_THRESHOLD)) \
 			and ((s.is_on_floor() and self.velocity.length() == 0) or pause_gravity)
