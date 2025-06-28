@@ -134,9 +134,10 @@ func turn(delta: float) -> void:
 		Logger.append_golem_log("Golem(%s) executed instruction: TURN(%.2f)." 
 				% [golem_name, instructions[curr_index][1]])
 		accumulator = 0
+		_start_rotation = rotation_degrees.y
 
 	var degrees: float = instructions[curr_index][1] * delta * base_turn_speed
-	rotation_degrees.y = min(degrees + rotation_degrees.y, instructions[curr_index][1])
+	rotation_degrees.y = min(degrees + rotation_degrees.y, instructions[curr_index][1] + _start_rotation)
 	accumulator += degrees
 
 
