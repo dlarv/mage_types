@@ -212,4 +212,3 @@ func _on_stream_top_hit_box_body_exited(body:Node3D) -> void:
 	if body is Golem:
 		pass
 		# body.pause_gravity = true
-
