@@ -51,7 +51,7 @@ var is_blocking: bool:
 	get:
 		return element != ElementManager.Yellow
 
-var _player: Node3D
+var _players: Array[Node3D]
 var _in_top_hitbox := false
 
 func _enter_tree():
@@ -77,8 +77,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if _player != null:
-		_player.add_force(transform.basis.y * strength)
+	for player in _players:
+		player.add_force(transform.basis.y * strength)
 
 
 func _on_stream_hit_box_entered(body: Node3D) -> void:
@@ -100,7 +100,7 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 			body.velocity.y /= body.get_local_gravity()
 
 		body.add_force(transform.basis.y * strength)
-		_player = body
+		_players.append(body)
 		# Logger.append_puzzle_log("Geyser(%s) spout was entered by CharacterBody(%s)" % [puzzle_name, body.name])
 
 
@@ -124,7 +124,9 @@ func _on_stream_hit_box_exited(body: Node3D) -> void:
 		# 		% [puzzle_name, body.puzzle_name])
 		pass
 	elif body is CharacterBody3D:
-		_player = null
+		var index := _players.find(body)
+		if index != -1:
+			_players.remove_at(index)
 		_in_top_hitbox = false
 		# Logger.append_puzzle_log("Geyser(%s) spout was exited by Player" % puzzle_name)
 
