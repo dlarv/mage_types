@@ -3,6 +3,8 @@ extends MagiClay
 class_name Golem
 
 const SNAP_VALUE := Vector3(0.5, 0, 0.5)
+## If golem is walking into a wall for this many seconds, move onto next instruction.
+const WALK_THRESHOLD := 2.0
 
 @export var delay_between_actions := 0.5
 @export var base_walk_speed := 2.0
@@ -74,9 +76,7 @@ func _physics_process(delta: float) -> void:
 	
 	move(delta)
 
-	if _accumulator > instructions[_curr_index][1] \
-			and ((s.is_on_floor() and self.velocity.length() == 0) \
-			or pause_gravity):
+	if _evaluate():
 		_curr_index += 1
 		_accumulator = -1
 		_timer = 0
@@ -249,11 +249,9 @@ func _push_objects() -> void:
 			collider.add_force(collision.get_normal() * -500)
 
 
-func _reached_target_pos() -> bool:
-	var pos := global_position
-	pos.y = _target_position.y
-	var dist1 := pos.distance_to(_target_position)
-	pos.y = _step_start_position.y
-	var dist2 := pos.distance_to(_step_start_position)
-
-	return dist1 <= 0.0 or dist2 > 1.0
+func _evaluate() -> bool:
+	var s = self
+	var instruction: String = instructions[_curr_index][0] 
+	var threshold: int = instructions[_curr_index][1] 
+	return (_accumulator > threshold or (instruction == "WALK" and _timer > WALK_THRESHOLD)) \
+			and ((s.is_on_floor() and self.velocity.length() == 0) or pause_gravity)
