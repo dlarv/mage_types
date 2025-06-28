@@ -94,10 +94,13 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 		if body is Golem:
 			body.global_position.x = global_position.x
 			body.global_position.z = global_position.z
-			body.pause_gravity = false
+			# body.pause_gravity = false
 
 		if body.velocity.y < 0:
 			body.velocity.y /= body.get_local_gravity()
+			if body is Golem:
+				body.reached_top_of_geyser()
+
 
 		body.add_force(transform.basis.y * strength)
 		_players.append(body)
@@ -207,5 +210,6 @@ func _animate_spout_size(val: float) -> void:
 
 func _on_stream_top_hit_box_body_exited(body:Node3D) -> void:
 	if body is Golem:
-		body.pause_gravity = true
+		pass
+		# body.pause_gravity = true
 

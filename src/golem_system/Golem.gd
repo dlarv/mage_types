@@ -28,8 +28,7 @@ var _start_rotation: float
 
 # How many loads until corpse disappears.
 var _decomposition_counter := 3
-# If golem is floating at top of geyser, move on to next instruction.
-var pause_gravity := false
+var _reached_top_of_geyser := false
 
 
 func setup(actor: BattleActor, ins: Array) -> void:
@@ -79,6 +78,9 @@ func _physics_process(delta: float) -> void:
 	
 	move(delta)
 
+	if s.is_on_floor():
+		_reached_top_of_geyser = false
+
 	if _evaluate():
 		curr_index += 1
 		accumulator = -1
@@ -86,7 +88,7 @@ func _physics_process(delta: float) -> void:
 
 
 func move(delta: float, onlyGravity:=false) -> void:
-	if not element == ElementManager.Yellow and not pause_gravity:
+	if not element == ElementManager.Yellow:
 		self.velocity.y += get_local_gravity() * delta
 	var s = self
 	if onlyGravity: 
@@ -111,7 +113,9 @@ func step(delta: float) -> void:
 				% [golem_name, instructions[curr_index][1]])
 		self.velocity = Vector3.ZERO
 		_step_start_position = global_position
+		_step_start_position.y = 0
 		_target_position = global_position + speed
+		_target_position.y = 0
 
 	var dist := _step_start_position - global_position
 	dist.y = 0
@@ -119,7 +123,7 @@ func step(delta: float) -> void:
 
 	if accumulator > instructions[curr_index][1]:
 		self.velocity = Vector3.ZERO
-		pause_gravity = false
+		# pause_gravity = false
 		if outside_forces == Vector3.ZERO:
 			var yPos := global_position.y
 			global_position = _target_position.snapped(SNAP_VALUE)
@@ -260,5 +264,10 @@ func _evaluate() -> bool:
 	var s = self
 	var instruction: String = instructions[curr_index][0] 
 	var threshold: int = instructions[curr_index][1] 
+	var reachedTop := _reached_top_of_geyser
+	_reached_top_of_geyser = false
 	return (accumulator > threshold or (instruction == "WALK" and timer > WALK_THRESHOLD)) \
-			and ((s.is_on_floor() and self.velocity.length() == 0) or pause_gravity)
+			and ((s.is_on_floor() and self.velocity.length() == 0) or reachedTop)
+
+func reached_top_of_geyser() -> void:
+	_reached_top_of_geyser = true
