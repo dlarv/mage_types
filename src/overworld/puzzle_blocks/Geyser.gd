@@ -57,7 +57,7 @@ var _in_top_hitbox := false
 func _enter_tree():
 	super._enter_tree()
 	body_hitbox.shape = BoxShape3D.new()
-	body_hitbox.shape.size = Vector3(1, size, 1)
+	body_hitbox.shape.size = Vector3(.8, size, .8)
 	top_hitbox.shape = BoxShape3D.new()
 	top_hitbox.shape.size = Vector3(1, 1, 1)
 	blocker_hitbox.shape = BoxShape3D.new()
@@ -91,6 +91,11 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 		# Logger.append_puzzle_log("Geyser(%s) spout is pushing PuzzleBlock(%s) with Strength(%.2f, %.2f, %.2f)" 
 		# 		% [puzzle_name, body.puzzle_name, s.x, s.y, s.z])
 	elif body is CharacterBody3D:
+		if body is Golem:
+			body.global_position.x = global_position.x
+			body.global_position.z = global_position.z
+			body.pause_gravity = false
+
 		if body.velocity.y < 0:
 			body.velocity.y /= body.get_local_gravity()
 
@@ -196,3 +201,9 @@ func _animate_spout_size(val: float) -> void:
 	if horizontal:
 		blocker_hitbox.shape.size.y = val
 		blocker_hitbox.position.y = val / 2
+
+
+func _on_stream_top_hit_box_body_exited(body:Node3D) -> void:
+	if body is Golem:
+		body.pause_gravity = true
+

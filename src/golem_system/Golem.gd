@@ -18,9 +18,11 @@ var _step_start_position: Vector3
 var _active := false
 var _curr_index := 0
 var _timer := 0.0
-var _accumulator := 0.0
+var _accumulator := -1.0
 # How many loads until corpse disappears.
 var _decomposition_counter := 3
+# If golem is floating at top of geyser, move on to next instruction.
+var pause_gravity := false
 
 
 func setup(actor: BattleActor, ins: Array) -> void:
@@ -48,8 +50,8 @@ func _physics_process(delta: float) -> void:
 	if not _active or in_stasis: return
 	_timer += delta
 	if _timer < delay_between_actions: return
+	var s = self
 	if _curr_index >= len(instructions):
-		var s = self
 		if not s.is_on_floor():
 			kill_and_remove()
 		else:
@@ -64,18 +66,22 @@ func _physics_process(delta: float) -> void:
 		"AGAIN":
 			again()
 		"WAIT",_: 
+			if _accumulator == -1:
+				_accumulator = 0
 			_accumulator += delta
 	
 	move(delta)
 
-	if _accumulator > instructions[_curr_index][1]:
+	if _accumulator > instructions[_curr_index][1] \
+			and ((s.is_on_floor() and self.velocity.length() == 0) \
+			or pause_gravity):
 		_curr_index += 1
-		_accumulator = 0
+		_accumulator = -1
 		_timer = 0
 
 
 func move(delta: float, onlyGravity:=false) -> void:
-	if not element == ElementManager.Yellow:
+	if not element == ElementManager.Yellow and not pause_gravity:
 		self.velocity.y += get_local_gravity() * delta
 	var s = self
 	if onlyGravity: 
@@ -86,40 +92,43 @@ func move(delta: float, onlyGravity:=false) -> void:
 	self.velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
 
-	#self.velocity.x = move_toward(self.velocity.x, 0, delta)
-	#self.velocity.z = move_toward(self.velocity.z, 0, delta)
-	if _reached_target_pos():
-		self.velocity = Vector3.ZERO
-		var yPos := global_position.y
-		global_position = _target_position
-		global_position.y = yPos
-
 	if s.move_and_slide():
 		_push_objects()
 
 
 func step(delta: float) -> void:
-	if _accumulator == 0:
+	if _accumulator > instructions[_curr_index][1]:
+		return
+
+	var speed := basis.z.normalized()
+	if _accumulator == -1:
 		Logger.append_golem_log("Golem(%s) executing instruction: WALK %d steps." 
 				% [golem_name, instructions[_curr_index][1]])
 		self.velocity = Vector3.ZERO
-
-	if self.velocity.x != 0.0 or self.velocity.z != 0.0:
-	# if _reached_target_pos():
-		pass
-	else:
-		_accumulator += 1
-		var speed := basis.z.normalized()
 		_step_start_position = global_position
 		_target_position = global_position + speed
+
+	var dist := _step_start_position - global_position
+	dist.y = 0
+	_accumulator = dist.length()
+
+	if _accumulator > instructions[_curr_index][1]:
+		self.velocity = Vector3.ZERO
+		pause_gravity = false
+		if outside_forces == Vector3.ZERO:
+			var yPos := global_position.y
+			global_position = _target_position.snapped(Vector3.ONE)
+			global_position.y = yPos
+	else:
 		speed *= base_walk_speed
 		self.velocity = speed
 
 
 func turn(delta: float) -> void:
-	if _accumulator == 0:
+	if _accumulator == -1:
 		Logger.append_golem_log("Golem(%s) executed instruction: TURN(%.2f)." 
 				% [golem_name, instructions[_curr_index][1]])
+		_accumulator = 0
 
 	var degrees: float = instructions[_curr_index][1] * delta * base_turn_speed
 	rotation_degrees.y += degrees
@@ -158,6 +167,8 @@ func _speed_to_delay() -> float:
 func kill() -> void:
 	rotation_degrees.x = 90
 	_active = false
+	$CollisionShape3D.disabled = true
+	$CollisionShape3D2.disabled = true
 
 	if self.velocity.length() == 0:
 		process_mode = Node.PROCESS_MODE_DISABLED
@@ -176,6 +187,7 @@ func instructions_to_string() -> String:
 
 func add_force(force: Vector3) -> void:
 	outside_forces += force
+
 
 
 func get_local_gravity() -> float:
@@ -243,4 +255,3 @@ func _reached_target_pos() -> bool:
 	var dist2 := pos.distance_to(_step_start_position)
 
 	return dist1 <= 0.0 or dist2 > 1.0
-

@@ -34,7 +34,7 @@ size = Vector3(10, 2, 6)
 material = ExtResource("2_sy7e0")
 
 [node name="Geyser" parent="." instance=ExtResource("3_3vrjo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -6.9)
 
 [node name="PressurePlate" parent="." instance=ExtResource("4_ic2nu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1, 7)

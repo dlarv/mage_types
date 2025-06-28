@@ -37,7 +37,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fnc8n")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ons6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwwiu"]
 albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ryjpd"]
@@ -59,10 +59,10 @@ linear_accel_max = -2.23517e-06
 [sub_resource type="BoxMesh" id="BoxMesh_4qchg"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_opckw"]
-size = Vector3(1, 48, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwwiu"]
+size = Vector3(0.8, 5, 0.8)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v2e2w"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bfetd"]
 
 [sub_resource type="Animation" id="Animation_bfj0g"]
 resource_name = "RESET"
@@ -189,7 +189,7 @@ _data = {
 &"starting": SubResource("Animation_u5vr8")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7cvrh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rrcs6"]
 size = Vector3(1.5, 2.5, 1.5)
 
 [node name="Geyser" type="StaticBody3D"]
@@ -204,7 +204,7 @@ base_size = Vector3(1, 0.5, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_mrav5")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_5ons6")
+surface_material_override/0 = SubResource("StandardMaterial3D_dwwiu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_ryjpd")
@@ -219,17 +219,17 @@ draw_pass_1 = SubResource("BoxMesh_4qchg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StreamBodyHitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-shape = SubResource("BoxShape3D_opckw")
+shape = SubResource("BoxShape3D_dwwiu")
 
 [node name="StreamTopHitBox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StreamTopHitBox"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 5, 0)
-shape = SubResource("BoxShape3D_v2e2w")
+shape = SubResource("BoxShape3D_bfetd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_p5nas")
+&"": SubResource("AnimationLibrary_p5nas")
 }
 
 [node name="PlayerBlocker" type="StaticBody3D" parent="."]
@@ -238,7 +238,7 @@ collision_mask = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBlocker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70145, 0)
-shape = SubResource("BoxShape3D_7cvrh")
+shape = SubResource("BoxShape3D_rrcs6")
 
 [node name="geyser" parent="." instance=ExtResource("2_657dn")]
 visible = false
@@ -246,3 +246,4 @@ visible = false
 [connection signal="body_entered" from="StreamBodyHitBox" to="." method="_on_stream_hit_box_entered"]
 [connection signal="body_exited" from="StreamBodyHitBox" to="." method="_on_stream_hit_box_exited"]
 [connection signal="body_entered" from="StreamTopHitBox" to="." method="_on_stream_top_hit_box_entered"]
+[connection signal="body_exited" from="StreamTopHitBox" to="." method="_on_stream_top_hit_box_body_exited"]

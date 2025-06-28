@@ -21,6 +21,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] ~~Goback~~ Again 
 	- [x] Golems can be transmuted by lasers
 	- [x] Golem can be hit with stasis to pause it
+- [ ] When placing golem, snap to grid
 - [x] Golems can be spawned in by player
 	- [x] Golem debug editor
 		- [x] Allow player to set primary and secondary types
