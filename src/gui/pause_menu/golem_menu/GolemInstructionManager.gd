@@ -1,23 +1,8 @@
-extends VBoxContainer
+extends Control
 
 const GolemInstructionButton := preload("components/golem_instruction_button.tscn")
 
-
-func _on_instruction_picker_button_pressed() -> void:
-	$InstructionPicker.show()
-
-
-
-func _on_instruction_picker_popup_hide() -> void:
-	var instruction: GolemInstruction = $InstructionPicker.selected_instruction
-	if not instruction: return
-
-	var button := GolemInstructionButton.instantiate()
-	button.setup(instruction)
-	button.removed.connect(func():
-		var b = button
-		%Scroller.remove_child(b))
-	%Scroller.add_child(button)
+@export var instructions: Array[GolemInstruction]
 
 
 func get_instructions() -> Array:
@@ -27,3 +12,12 @@ func get_instructions() -> Array:
 		output.append(child.get_instruction())
 
 	return output
+
+
+func _select_instruction(index: int) -> void:
+	var button := GolemInstructionButton.instantiate()
+	button.setup(instructions[index])
+	button.removed.connect(func():
+		var b = button
+		%Scroller.remove_child(b))
+	%Scroller.add_child(button)

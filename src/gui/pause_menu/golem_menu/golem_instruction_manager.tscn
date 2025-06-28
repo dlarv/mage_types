@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqi8spl0jubpv"]
+[gd_scene load_steps=7 format=3 uid="uid://bqi8spl0jubpv"]
 
 [ext_resource type="Script" uid="uid://cswkjm67wjbmw" path="res://src/gui/pause_menu/golem_menu/GolemInstructionManager.gd" id="1_12xwi"]
-[ext_resource type="PackedScene" uid="uid://b4k1afc6nj5u3" path="res://src/gui/pause_menu/golem_menu/instruction_picker.tscn" id="2_fx8se"]
 [ext_resource type="Script" uid="uid://vx3i7shy4d2d" path="res://src/gui/pause_menu/golem_menu/components/GolemInstruction.gd" id="3_dh8jm"]
 
 [sub_resource type="Resource" id="Resource_y0nkk"]
@@ -48,7 +47,7 @@ step = 0.0
 suffix = ""
 metadata/_custom_type_script = "uid://vx3i7shy4d2d"
 
-[node name="GolemInstructionManager" type="VBoxContainer"]
+[node name="GolemInstructionManager" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -56,25 +55,43 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_12xwi")
+instructions = Array[ExtResource("3_dh8jm")]([SubResource("Resource_y0nkk"), SubResource("Resource_bljjv"), SubResource("Resource_xlwwj"), SubResource("Resource_dh8jm")])
 
-[node name="InstructionPickerButton" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-text = "+"
+size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Scroller" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Scroller" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InstructionPicker" parent="." instance=ExtResource("2_fx8se")]
-position = Vector2i(426, 174)
-visible = false
-instructions = Array[ExtResource("3_dh8jm")]([SubResource("Resource_y0nkk"), SubResource("Resource_bljjv"), SubResource("Resource_xlwwj"), SubResource("Resource_dh8jm")])
+[node name="Instructions" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[connection signal="pressed" from="InstructionPickerButton" to="." method="_on_instruction_picker_button_pressed"]
-[connection signal="popup_hide" from="InstructionPicker" to="." method="_on_instruction_picker_popup_hide"]
+[node name="WalkButton" type="Button" parent="Instructions"]
+layout_mode = 2
+text = "Walk"
+
+[node name="TurnButton" type="Button" parent="Instructions"]
+layout_mode = 2
+text = "Turn"
+
+[node name="WaitButton" type="Button" parent="Instructions"]
+layout_mode = 2
+text = "Wait"
+
+[node name="AgainButton" type="Button" parent="Instructions"]
+layout_mode = 2
+text = "Again"
+
+[connection signal="pressed" from="Instructions/WalkButton" to="." method="_select_instruction" binds= [0]]
+[connection signal="pressed" from="Instructions/TurnButton" to="." method="_select_instruction" binds= [1]]
+[connection signal="pressed" from="Instructions/WaitButton" to="." method="_select_instruction" binds= [2]]
+[connection signal="pressed" from="Instructions/AgainButton" to="." method="_select_instruction" binds= [3]]
