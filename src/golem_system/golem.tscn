@@ -24,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_fbuoq")
 surface_material_override/0 = SubResource("StandardMaterial3D_315ng")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="HeadCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("CylinderShape3D_qrgtv")
 
