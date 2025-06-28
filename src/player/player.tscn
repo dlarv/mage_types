@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="8_r804x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
+height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf7wo"]
 resource_name = "player"
@@ -57,6 +58,7 @@ jump_height = 1.5
 jump_time_to_peak = 0.2
 jump_time_to_descent = 0.25
 variable_jump_height_modifier = 20.0
+dash_speed = 500.0
 team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
@@ -66,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_f637b")
 
 [node name="player" parent="." instance=ExtResource("3_xfaiw")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0)
 
 [node name="Cylinder" parent="player/Armature/Skeleton3D" index="0"]
 layers = 2

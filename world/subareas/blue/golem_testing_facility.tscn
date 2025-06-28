@@ -43,3 +43,8 @@ _element = "blue"
 
 [node name="MagiclayRock" parent="." instance=ExtResource("5_yirsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, -10)
+
+[node name="MagiclayRock2" parent="." instance=ExtResource("5_yirsw")]
+
+[node name="MagiclayRock3" parent="." instance=ExtResource("5_yirsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
