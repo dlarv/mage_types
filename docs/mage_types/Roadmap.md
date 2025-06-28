@@ -22,24 +22,32 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] Golems can be transmuted by lasers
 	- [x] Golem can be hit with stasis to pause it
 - [ ] When placing golem, snap to grid
+- [ ] When placing golem, allow player to rotate
 - [x] Golems can be spawned in by player
 	- [x] Golem debug editor
 		- [x] Allow player to set primary and secondary types
 	- [x] Allow player to given golems a set of instructions (max instruction amount can be updated)
-		- [ ] Add maximum number of instructions
-		- [ ] Add instruction budget to limit use of strong commands
 		- [x] Add ability to remove instructions 
+		- [ ] Ability to reorder instructions
 	- [ ] Golem player editor
 		- [ ] Golem's type is determined via same means as Catalyst spell
 		- [ ] Player will have golem sets (arms, legs, torso, head) that they can mix and match
 			- [ ] These will be used to determine stats/etc
-	- [ ] Different golem elements should have different properties
+		- [ ] Add maximum number of instructions
+		- [ ] Add instruction budget to limit use of strong commands
+	- [ ] Different golem elements should have differesnt properties
 		- [x] Blue can wade through water
 		- [x] Yellow floats above obstacles
 		- [ ] Orange can move thru fire obstacle
-		- [ ] Purple can move thru shadow obstacle
+		- [ ] Purple can move thru shadow obstacle (haze?)
 	- [x] Upon falling in water, all but Blue golems should die
 	- [x] Upon dying, golems should leave a permanent pile of clay
+- [ ] Create fire obstacle
+	- [ ] Illuminate surrounding area
+	- [ ] Prevent player from crossing
+	- [ ] Emit fire from puzzle block source
+- [ ] Create haze obstacle
+	- [ ] Damage player upon contact
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
 	- [x] Central chamber intro puzzle (x3)
