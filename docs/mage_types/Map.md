@@ -91,12 +91,19 @@ Each of the four hallways will have an elemental theme based on 4 of the 5 eleme
 	- Each wing should have its own mechanic that interfaces with the spell.
 - Challenges should be a mix of puzzles, combat, and platforming.
 
+**Overview**
+- Player begins in West section of the Red Wing. This is a winding, overgrown section filled with monsters.
+- Reaching the end gives the player the *Blue Key*.
+- From the Red treasure room the player can drop down into the first section of the Blue Wing.
+- Player descends through 3 rooms, using the stasis spell to unlock a series of gates.
+- At the end of this section, the player obtains the Golem spell.
+	- Without this spell, the player can't ascend 
+
 [[demo_script]]
 #### NE Chambers (Blue)
-- This section should focus mostly on puzzles.
-	- It could focus on some intersection between Stasis and water. 
-	- Use of geysers?
-This section was the coolant for the machine and is located mostly underneath the other wings. It features a few puzzles where the player has to manipulate geysers using stasis and a few platforming challenges to get around water obstacles.
+This section was the coolant for the machine and is located mostly underneath the other wings. 
+
+
 #### SE Chambers (Magenta)
 This section takes place on the control panel, which is built on the scale of massive beings. The control panel mentioned in the earlier chatlogs is actually a non-functional replica created by beings trying to manipulate the machine before realizing it to be impossible.
 #### SW Chambers (Red)

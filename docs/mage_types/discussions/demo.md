@@ -1,5 +1,5 @@
 # Intro Playtesting Questions
-- Will players resort to brute forcing the puzzles.
+- Will players resort to brute forcing the puzzles?
 	- What's the best way to introduce and teach them about the graph?
 # Objectives
 - Battle UI and combat:
