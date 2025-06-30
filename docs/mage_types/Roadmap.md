@@ -57,7 +57,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- Player solves spoke puzzles to get hints for main puzzle and keys for the East room.
 		- [x] General blocking
 		- [ ] Western Red Wing
-			- [ ] Layout
+			- [x] Layout
 			- [ ] Environment modeled
 			- [ ] Platforming challenge designed
 			- [ ] Wild enemies created
