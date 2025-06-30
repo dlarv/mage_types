@@ -13,8 +13,9 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- At some point, the player should have the ability to create battle golems
 	- [x] Golems can execute basic instructions
 		- [x] Walk
-			- [ ] Ensure golem is moving set amount of space with each step
-			- [ ] Areas with golem puzzles should have checkered floors
+			- [x] Ensure golem is moving set amount of space with each step
+			- Areas with golem puzzles should have checkered floors
+				- [ ] Checkered clay shader created
 		- [x] Turn
 		- [x] Wait
 		- [x] Goto
@@ -52,22 +53,29 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] Central chamber main puzzle solution programmed
 	- [x] Central chamber intro puzzle (x3)
 	- [ ] Main puzzle hints created
-	- [ ] Spoke puzzles created
+	- Spoke puzzles created
 		- Player solves spoke puzzles to get hints for main puzzle and keys for the East room.
 		- [x] General blocking
-		- [ ] NW Wing
+		- [ ] Western Red Wing
+			- [ ] Layout
+			- [ ] Environment modeled
+			- [ ] Platforming challenge designed
+			- [ ] Wild enemies created
+			- [ ] Treasure room created
+		- [ ] Blue Wing
+			- [x] Layout 
+			- [ ] Environment modeled
+			- [ ] Puzzles created
+			- [ ] Golem room created
+		- [ ] Orange Wing
 			- [x] Layout 
 			- [ ] Modeled
 			- [ ] Puzzles created
-		- [ ] NE Wing
+		- [ ] Eastern Red Wing
 			- [ ] Layout 
 			- [ ] Modeled
 			- [ ] Puzzles created
-		- [ ] SW Wing
-			- [ ] Layout 
-			- [ ] Modeled
-			- [ ] Puzzles created
-		- [ ] SE Wing
+		- [ ] Magenta Wing
 			- [ ] Layout 
 			- [ ] Modeled
 			- [ ] Puzzles created
@@ -79,16 +87,19 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] Write text describing what player is seeing (translations)
 		- [ ] Assets reflecting what text describes
 		- [ ] Place murals inside dungeon
-	- [ ] Give StasisTarget a model
-		- [ ] Stasis target will be used to access a secret room in Chamber 3
-		- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
-	- [ ] Give Rail puzzleblock a model
+- [ ] Give StasisTarget a model
+	- [ ] Stasis target will be used to access a secret room in Chamber 3
+	- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
+- [ ] Give Rail puzzleblock a model
+- [ ] Doorways should keep player's relative position
+- [ ] Wild enemy mechanics
+	- [ ] Behaviors
 - [x] Add some method for the player to know which doorways are empty
 	- Currently, empty doorways are obviously obstructed by walls
 - Water mechanics
-	- [ ] When player falls on water, return them to previous stable position
-	- [ ] When non-blue golem hits water, they should die
-- [ ] Improve player movement mechanics
+	- [x] When player falls on water, return them to previous stable position
+	- [x] When non-blue golem hits water, they should die
+- [x] Improve player movement mechanics
 	- [x] Impl coyote time
 	- [x] Impl jump buffering
 	- [x] Variable height jumps

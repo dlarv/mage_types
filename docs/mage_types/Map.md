@@ -97,17 +97,24 @@ Each of the four hallways will have an elemental theme based on 4 of the 5 eleme
 - From the Red treasure room the player can drop down into the first section of the Blue Wing.
 - Player descends through 3 rooms, using the stasis spell to unlock a series of gates.
 - At the end of this section, the player obtains the Golem spell.
-	- Without this spell, the player can't ascend 
+	- Without this spell, the player can't ascend.
 
 [[demo_script]]
 #### NE Chambers (Blue)
 This section was the coolant for the machine and is located mostly underneath the other wings. 
-
-
 #### SE Chambers (Magenta)
 This section takes place on the control panel, which is built on the scale of massive beings. The control panel mentioned in the earlier chatlogs is actually a non-functional replica created by beings trying to manipulate the machine before realizing it to be impossible.
 #### SW Chambers (Red)
 This section grew around the main power conduit. Due to the abundance of water and energy, this area has flourished, being home to multiple different species of flora and fauna.
+
+Red has been split in half by the Orange conduit. The player will enter the Western section first. The Eastern section will be accessed after the player completes the Orange Wing.
+
+The Western Red Wing will be on a 3x4 grid. It'll mostly be a platforming/navigational and combat challenge. I like the idea of the platforming challenges being like the ones in CrossCode. The rooms will loop back around on themselves, forcing the player to find the correct entry point.
+
+**Objectives**:
+- Practice making platforming challenges
+- Wild enemy mechanics
+- Doors should keep player's relative position when they go thru
 #### NW Chambers (Orange)
 This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
 ## The Ascent
