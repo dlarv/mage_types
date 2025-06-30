@@ -4,9 +4,9 @@ var rows := {
 	OverworldSpell.Spells.STASIS: [],
 	OverworldSpell.Spells.CATALYST: [],
 	OverworldSpell.Spells.DESTROY: [],
-	OverworldSpell.Spells.VINES: [],
-	OverworldSpell.Spells.TUNNEL: [],
 	OverworldSpell.Spells.GOLEM: [],
+	OverworldSpell.Spells.SET_PORTAL: [],
+	OverworldSpell.Spells.USE_PORTAL: [],
 }
 
 func _ready() -> void:
@@ -28,12 +28,12 @@ func _ready() -> void:
 			id = OverworldSpell.Spells.CATALYST
 		elif child.name.contains("Destroy"):
 			id = OverworldSpell.Spells.DESTROY
-		elif child.name.contains("Vines"):
-			id = OverworldSpell.Spells.VINES
+		elif child.name.contains("SetPortal"):
+			id = OverworldSpell.Spells.SET_PORTAL
 		elif child.name.contains("Golem"):
 			id = OverworldSpell.Spells.GOLEM
 		else:
-			id = OverworldSpell.Spells.TUNNEL
+			id = OverworldSpell.Spells.USE_PORTAL
 
 		rows[id].append(child)
 		if child is CheckBox:
@@ -51,8 +51,8 @@ func _ready() -> void:
 	_on_overworld_spell_enabled(OverworldSpell.Spells.GOLEM, Inventory.has_key_item(KeyItem.UniqueId.GOLEM))
 	_on_overworld_spell_enabled(OverworldSpell.Spells.CATALYST, Inventory.has_key_item(KeyItem.UniqueId.CATALYST))
 	_on_overworld_spell_enabled(OverworldSpell.Spells.DESTROY, Inventory.has_key_item(KeyItem.UniqueId.DESTROY))
-	_on_overworld_spell_enabled(OverworldSpell.Spells.VINES, Inventory.has_key_item(KeyItem.UniqueId.VINES))
-	_on_overworld_spell_enabled(OverworldSpell.Spells.TUNNEL, Inventory.has_key_item(KeyItem.UniqueId.TUNNEL))
+	_on_overworld_spell_enabled(OverworldSpell.Spells.SET_PORTAL, Inventory.has_key_item(KeyItem.UniqueId.SET_PORTAL))
+	_on_overworld_spell_enabled(OverworldSpell.Spells.USE_PORTAL, Inventory.has_key_item(KeyItem.UniqueId.USE_PORTAL))
 
 
 func setup() -> void:

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu8d32kqv1uxl"]
-
-[ext_resource type="Script" uid="uid://c3hqf1n5lic4k" path="res://src/overworld/overworld_spell_system/overworld_spells/TunnelSpell.gd" id="1_ahpj2"]
-
-[node name="TunnelSpell" type="Node3D"]
-script = ExtResource("1_ahpj2")

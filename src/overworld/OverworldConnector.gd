@@ -33,7 +33,7 @@ func _ready() -> void:
 	if not _player.dialog_started.is_connected(_on_player_dialog_started):
 		_player.dialog_started.connect(_on_player_dialog_started)
 
-	UIManager.setup()
+	# UIManager.setup()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):

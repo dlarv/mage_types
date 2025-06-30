@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq2bkifv8swvb"]
+
+[ext_resource type="Script" uid="uid://br35q782uqoet" path="res://src/overworld/overworld_spell_system/overworld_spells/SetPortalSpell.gd" id="1_lhum4"]
+
+[node name="SetPortalSpell" type="Node3D"]
+script = ExtResource("1_lhum4")

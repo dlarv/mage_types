@@ -7,8 +7,8 @@ signal spell_selected(is_primary: bool, spell: OverworldSpell)
 @export var stasis_spell: OverworldSpell
 @export var destroy_spell: OverworldSpell
 @export var catalyst_spell: OverworldSpell
-@export var vines_spell: OverworldSpell
-@export var tunnel_spell: OverworldSpell
+@export var use_portal_spell: OverworldSpell
+@export var set_portal_spell: OverworldSpell
 @export var golem_spell: OverworldSpell
 
 var active_spell_1: OverworldSpell
@@ -20,8 +20,6 @@ func _enter_tree():
 	stasis_spell.Projectile = Projectile
 	destroy_spell.Projectile = Projectile
 	catalyst_spell.Projectile = Projectile
-	vines_spell.Projectile = Projectile
-	tunnel_spell.Projectile = Projectile
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("cast_spell_1") and active_spell_1:
@@ -38,12 +36,12 @@ func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
 			spell = catalyst_spell
 		OverworldSpell.Spells.DESTROY: 
 			spell = destroy_spell
-		OverworldSpell.Spells.VINES: 
-			spell = vines_spell
-		OverworldSpell.Spells.GOLEM: 
+		OverworldSpell.Spells.SET_PORTAL: 
+			spell = set_portal_spell
+		OverworldSpell.Spells.USE_PORTAL: 
+			spell = use_portal_spell
+		OverworldSpell.Spells.GOLEM,_: 
 			spell = golem_spell
-		_: 
-			spell = tunnel_spell
 	if isPrimary:
 		if active_spell_1 != null: active_spell_1.deactivate()
 		active_spell_1 = spell

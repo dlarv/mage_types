@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c51362yiro4j6"]
+[gd_scene load_steps=5 format=3 uid="uid://c51362yiro4j6"]
 
 [ext_resource type="Script" uid="uid://c2t51sidp8mac" path="res://src/gui/HudLayer.gd" id="1_ifgal"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_785qo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwvsk"]
+font_size = 64
 
 [sub_resource type="ImageTexture" id="ImageTexture_w26hi"]
 
@@ -34,16 +37,49 @@ offset_bottom = 40.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="PrimarySpell_Rect" type="TextureRect" parent="OverworldSpellIcons"]
+[node name="PrimarySpellRect" type="TextureRect" parent="OverworldSpellIcons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = SubResource("ImageTexture_785qo")
 expand_mode = 3
 
-[node name="SecondarySpell_Rect" type="TextureRect" parent="OverworldSpellIcons"]
+[node name="PrimarySpellRect2" type="ColorRect" parent="OverworldSpellIcons"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="OverworldSpellIcons/PrimarySpellRect2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_pwvsk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondarySpellRect" type="TextureRect" parent="OverworldSpellIcons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("ImageTexture_w26hi")
 expand_mode = 3
+
+[node name="SecondarySpellRect2" type="ColorRect" parent="OverworldSpellIcons"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="OverworldSpellIcons/SecondarySpellRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_pwvsk")
+horizontal_alignment = 1
+vertical_alignment = 1

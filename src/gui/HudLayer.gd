@@ -17,7 +17,20 @@ func _process(delta: float) -> void:
 
 func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
 	if isPrimary:
-		%PrimarySpell_Rect.texture = spell.icon
+		if spell.icon:
+			%PrimarySpellRect.texture = spell.icon
+			%PrimarySpellRect.show()
+			%PrimarySpellRect2.hide()
+		else:
+			%PrimarySpellRect2.get_child(0).text = "%s" % spell.name.substr(0, 1)
+			%PrimarySpellRect.hide()
+			%PrimarySpellRect2.show()
 	else:
-		%SecondarySpell_Rect.texture = spell.icon
-
+		if spell.icon:
+			%SecondarySpellRect.texture = spell.icon
+			%SecondarySpellRect.show()
+			%SecondarySpellRect2.hide()
+		else:
+			%SecondarySpellRect2.get_child(0).text = "%s" % spell.name.substr(0, 1)
+			%SecondarySpellRect.hide()
+			%SecondarySpellRect2.show()

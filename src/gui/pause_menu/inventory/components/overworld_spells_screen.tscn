@@ -84,33 +84,33 @@ button_group = SubResource("ButtonGroup_ky5hl")
 layout_mode = 2
 button_group = SubResource("ButtonGroup_1be3m")
 
-[node name="Vines_Label" type="Label" parent="GridContainer"]
+[node name="SetPortal_Label" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-text = "Vines"
+text = "Set Portal"
 label_settings = SubResource("LabelSettings_pry3t")
 
-[node name="Vines_CheckBox1" type="CheckBox" parent="GridContainer"]
+[node name="SetPortal_CheckBox1" type="CheckBox" parent="GridContainer"]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_ky5hl")
 
-[node name="Vines_CheckBox2" type="CheckBox" parent="GridContainer"]
+[node name="SetPortal_CheckBox2" type="CheckBox" parent="GridContainer"]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_1be3m")
 
-[node name="Tunnel_Label" type="Label" parent="GridContainer"]
+[node name="UsePortal_Label" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-text = "Tunnel"
+text = "Use Portal"
 label_settings = SubResource("LabelSettings_pry3t")
 
-[node name="Tunnel_CheckBox1" type="CheckBox" parent="GridContainer"]
+[node name="UsePortal_CheckBox1" type="CheckBox" parent="GridContainer"]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_ky5hl")
 
-[node name="Tunnel_CheckBox2" type="CheckBox" parent="GridContainer"]
+[node name="UsePortal_CheckBox2" type="CheckBox" parent="GridContainer"]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_1be3m")
 

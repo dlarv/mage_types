@@ -28,9 +28,11 @@ var _menu_stack := []
 var is_in_dialog := false
 var block_input := false
 
+
 func _ready() -> void:
 	block_input = true
 	hide()
+
 
 func setup() -> void:
 	var root := get_tree().get_current_scene()
@@ -127,8 +129,11 @@ func open_catalyst_menu(validElements: Dictionary) -> void:
 	show()
 
 func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
-	if hud:
-		hud.show_overworld_spell(isPrimary, spell)
+	# Without this block, overworld spells cannot show their icon upon startup.
+	if not hud:
+		var root := get_tree().get_current_scene()
+		hud = root.get_node("%HUD_Layer")
+	hud.show_overworld_spell(isPrimary, spell)
 
 func show_info_graphic(key: String) -> void:
 	if info_graphics.has(key):
@@ -209,5 +214,3 @@ func _on_catalyst_menu_closed(element:ElementalType) -> void:
 	catalyst_menu.hide()
 	catalyst_menu_closed.emit(element)
 	hide()
-
-
