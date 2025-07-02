@@ -58,9 +58,10 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] General blocking
 		- [ ] Western Red Wing
 			- [x] Layout
-			- [ ] Environment modeled
-			- [ ] Platforming challenge designed
+			- [x] Platforming challenge designed
+			- [ ] Combat challenge designed
 			- [ ] Wild enemies created
+			- [ ] Environment modeled
 			- [ ] Treasure room created
 		- [ ] Blue Wing
 			- [x] Layout 
