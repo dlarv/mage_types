@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_ow3c5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtnu5"]
-size = Vector3(103, 78, 180)
+size = Vector3(115, 78, 180)
 
 [node name="WesternRedWing" type="Area3D" node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_20to4")
@@ -12,8 +12,9 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 10, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 7.5)
 shape = SubResource("BoxShape3D_xtnu5")
+metadata/_edit_group_ = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -227,8 +228,8 @@ material = ExtResource("2_ow3c5")
 metadata/_edit_group_ = true
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -13, 15)
-size = Vector3(30, 4, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -11, 15)
+size = Vector3(30, 7, 30)
 material = ExtResource("2_ow3c5")
 
 [node name="SubtractorCSG" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D15"]
@@ -264,8 +265,8 @@ material = ExtResource("2_ow3c5")
 metadata/_edit_group_ = true
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -13, -15)
-size = Vector3(30, 4, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -11, -15)
+size = Vector3(30, 7.03796, 30)
 material = ExtResource("2_ow3c5")
 
 [node name="SubtractorCSG" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D16"]
@@ -324,8 +325,8 @@ material = ExtResource("2_ow3c5")
 metadata/_edit_group_ = true
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -13, 45)
-size = Vector3(30, 4, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -11, 45)
+size = Vector3(30, 7, 30)
 material = ExtResource("2_ow3c5")
 
 [node name="SubtractorCSG" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D14"]
@@ -558,3 +559,63 @@ size = Vector3(3, 15, 2)
 material = ExtResource("2_ow3c5")
 
 [node name="Chunk" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4, -6.7, -9.4)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, -6.7, -16.4)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, -6.7, -27.4)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -7.3, -1.5)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, -7.3, 7.5)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -6, 16)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -7, 35)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -7, 24.5)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -7, 40.5)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -7, 57.5)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 8.0
