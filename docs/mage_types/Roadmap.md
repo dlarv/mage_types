@@ -63,7 +63,11 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 			- [ ] Combat challenge designed
 			- [ ] Wild enemies created
 			- [ ] Environment modeled
-			- [ ] Treasure room created
+			- [ ] Mural added
+			- [ ] Orange chatlogs added
+			- [x] Treasure room created
+				- [ ] Add chest & items
+				- [ ] Connect hole to Blue Wing
 		- [ ] Blue Wing
 			- [x] Layout 
 			- [ ] Environment modeled
