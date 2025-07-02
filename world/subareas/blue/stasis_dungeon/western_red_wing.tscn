@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_ow3c5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtnu5"]
-size = Vector3(150, 51.9, 180)
+size = Vector3(103, 78, 180)
 
 [node name="WesternRedWing" type="Area3D" node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_20to4")
@@ -12,7 +12,7 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 23.05, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 10, 7.5)
 shape = SubResource("BoxShape3D_xtnu5")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -227,7 +227,7 @@ material = ExtResource("2_ow3c5")
 metadata/_edit_group_ = true
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 2, 51)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -13, 15)
 size = Vector3(30, 4, 30)
 material = ExtResource("2_ow3c5")
 
@@ -264,7 +264,7 @@ material = ExtResource("2_ow3c5")
 metadata/_edit_group_ = true
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 2, 21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -13, -15)
 size = Vector3(30, 4, 30)
 material = ExtResource("2_ow3c5")
 
@@ -324,7 +324,7 @@ material = ExtResource("2_ow3c5")
 metadata/_edit_group_ = true
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 2, 81)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -13, 45)
 size = Vector3(30, 4, 30)
 material = ExtResource("2_ow3c5")
 
