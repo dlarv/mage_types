@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="8_r804x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
+radius = 0.25
 height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf7wo"]
