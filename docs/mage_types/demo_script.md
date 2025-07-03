@@ -3,9 +3,9 @@
  **RE: Communication**
  *O-123*: Blue keep pestering me about getting them our research notes. Normally, I couldn't be bothered, but since they're the ones sponsoring this project, I figured I'd care just this once. However, I do not care enough to curate our notes, so I'm just going to print everything related to this project. Hope you guys didn't say anything too unhinged...
 *O-C4T*: I make only the most hinged texts, tyvm
-*O-RA7*: Its not like they're actually going to read these. That would require them getting off their asses
-*O-8AT*: That's insensitive
-*O-8AT*: Are we delivering them directly to the enclave?
+*O-0WL*: Its not like they're actually going to read these. That would require them getting off their asses
+*O-DO9*: That's insensitive
+*O-DO9*: Are we delivering them directly to the enclave?
 *O-123*: Replying to O-123: `However, I do not care enough`
 *O-123*: If you want to scrap them off the walls, be my guest. Just do it on your own time.
 
@@ -14,9 +14,9 @@ What: Excavating Subterranean Sector Superstructure
 Why: Determine superstructure's origin and purpose.
 Supervisor: *O-123-RQ0-CI3*
 Researchers: 
-- *O-8AT-BW1-N9Q*: Junior Translator 
+- *O-DO9-BW1-N9Q*: Junior Translator 
 - *O-C4T-CVA-T93*: Archaeologist and Excavation Expert 
-- *O-RA7-4JF-IXB*: Non-Elemental Technology Expert
+- *O-0WL-4JF-IXB*: Non-Elemental Technology Expert
 Supplies: ...
 
 **Printing Spell**
@@ -26,44 +26,51 @@ Notes: Can only be used by those with access to Database (i.e. Orange-aligned).
 Procedure: ...
 
 **Notes on Ancient Script**
-*O-RA7*: You're taking a very long time with these translations O-8AT.
-*O-8AT*: Yeah sorry. Its difficult to determine which order the sentences are meant to go in.
-*O-C4T*: Replying to O-RA7: How's that control panel coming along?
-*O-8AT*: Every sentence is written on random parts of the mural. Its hard enough finding all of them, let alone putting them in order
-*O-8AT*: Not to mention the exact meaning of each sentence depends on those before and after it.
+*O-0WL*: You're taking a very long time with these translations O-DO9.
+*O-DO9*: Yeah sorry. Its difficult to determine which order the sentences are meant to go in.
+*O-C4T*: Replying to O-0WL: How's that control panel coming along?
+*O-DO9*: Every sentence is written on random parts of the mural. Its hard enough finding all of them, let alone putting them in order
+*O-DO9*: Not to mention the exact meaning of each sentence depends on those before and after it.
 *O-C4T*: Just chuck them all into a bag, shake em up, and chunk em out. Repeat procedure until sentences make sense.
-*O-C4T*: And O-RA7, just start pressing random buttons on the control panel and we'll let you know if we see any lights turn on, things explode, etc
-*O-8AT*: And O-C4T will start throwing dynamite around until they see a mural ;)
+*O-C4T*: And O-0WL, just start pressing random buttons on the control panel and we'll let you know if we see any lights turn on, things explode, etc
+*O-DO9*: And O-C4T will start throwing dynamite around until they see a mural ;)
 *O-C4T*: See! This guy gets it!
-*O-RA7*: How am I meant to differentiate between something blowing up due to my button pressing vs your dynamiting?
+*O-0WL*: How am I meant to differentiate between something blowing up due to my button pressing vs your dynamiting?
 *O-C4T*: Oh, good question... 
 *O-C4T*: I know, let's alternate days. You press a button the first day, we'll wait to see if anything changes. Then the next day I'll excavate!
-*O-8AT*: What if the button's purpose is to trigger an explosion in two days?
+*O-DO9*: What if the button's purpose is to trigger an explosion in two days?
 *O-C4T*: Good point. We'll stick with the plan, but alternate every two weeks. The likelihood of a button having a delay longer than two weeks is low.
 
 **RE: Using the Device**
 *O-C4T*: Wow... lucky we read to the end before activating this thing, huh
-*O-8AT*: We should at least consider it....
+*O-DO9*: We should at least consider it....
 *O-C4T*: Huh???
-*O-8AT*: Think about it. This could be our one chance to go home...
+*O-DO9*: Think about it. This could be our one chance to go home...
 *O-C4T*: You read the murals. We'd die.
-*O-8AT*: What if they lied. I mean, the builders of this machine disappeared without a trace. Maybe they used the device to go home
-*O-RA7*: What's more likely. A) The builders lied about their machine to keep us from using it for *some* reason. Or B) The machine designed to punch a whole in reality 
-*O-RA7*: \*hole
+*O-DO9*: What if they lied. I mean, the builders of this machine disappeared without a trace. Maybe they used the device to go home
+*O-0WL*: What's more likely. A) The builders lied about their machine to keep us from using it for *some* reason. Or B) The machine designed to punch a whole in reality will punch a hole in reality with disastrous consequences
+*O-0WL*: \*hole
 *O-C4T*: Me when the punch-a-hole-in-reality machine punches a hole in reality
 *O-C4T*: Sorry \*punch-a-whole-in-reality machine
-*O-RA7*: ...
+*O-0WL*: ...
 *O-123*: O-XCZ-F2I-MKQ, 78521. "Traversal of Organic Tissues across Hume Differentials: Effects and theories."
-*O-123*: As O-C4T and O-RA7 so succinctly explained, use of the machine would destroy reality. Even if this were not the case, O-XCZ's paper explains why this would lead to death.
-*O-8AT*: Sorry...
+*O-123*: As O-C4T and O-0WL so succinctly explained, use of the machine would destroy reality. Even if this were not the case, O-XCZ's paper explains why this would lead to death.
+*O-DO9*: Sorry...
 *O-C4T*: Listen man, we all get homesick.
 *O-C4T*: Its hard for all of us being, you know, wholed up on this island ;D
 *O-123*: Make that joke again and I will realign you to Purple.
 *O-C4T*: Yes sir. Sorry sir :(
 
+**Lavender** (Western Red Wing)
+*O-0WL*: The flora and fauna in this area is really dense.
+*O-0WL*: What are the chances that creepy Purple biologist is down here
+*O-C4T*: I think they're in the western section of the hotel. I can definitely get them down here to study this, if you want 
+*O-0WL*: There is nothing on this island that I want less...
+*O-DO9*: Yeah, I think we should wait to tell them after we're finished here
+
 **Final Mural Translation**
-*O-8AT*: Interestingly, this final mural was significantly easier to decipher.
-*O-8AT*: Their use of language too seems to suggest this one was written for a non-Godling audience.
+*O-DO9*: Interestingly, this final mural was significantly easier to decipher.
+*O-DO9*: Their use of language too seems to suggest this one was written for a non-Godling audience.
 
 MISC
 - Guys, please stop referring to the SSSS as the "Stasis Dungeon" in official documentation. I get the joke, but please try to be a little professional.
