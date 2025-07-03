@@ -77,14 +77,10 @@ MISC
 - Puzzles and doors seem to be the result of some sort of security protocol. I will not turn these off.  A) I don't know how. B) Its funnier to make newbies run the gauntlet.
 
 ## Murals and Notes
-The murals will describe the process of making the Portal Complex. These will start out hopeful, but this energy will quickly die off as they realize the destructive consequences of their actions.
-
-The researchers (mostly Bat) will try their best to decipher these murals. Snarky notes talking about the project will also be scattered around.
-
-I think I'll have 1 mural per wing. I'll also force the player to complete the wings in a particular order.
-
-The following three murals describe the background, before the birth of the Portal Complex idea.
-
+- The murals will describe the process of making the Portal Complex. These will start out hopeful, but this energy will quickly die off as they realize the destructive consequences of their actions.
+- The researchers (mostly DO9) will try their best to decipher these murals. Snarky notes talking about the project will also be scattered around.
+- I think I'll have 1 mural per wing. I'll also force the player to complete the wings in a particular order.
+- I think the murals should actually be giant, impossible to actually view. The murals the player is viewing are replicas made by one of the Old Guard.
 ## Mural Story
 The murals follow the story of 4 Godlings: Redchild, Bluechild, Greenchild, and Yellowchild. The act of creating their children was an iterative process for the Old Ones. Because of this, there was an emphasis on being the youngest for the Godlings. For the longest time, Red, Blue, and Green were the youngest, in which they took much pride. This pride was shattered, however, with the creation of Yellowchild. Unable to cope with their jealousy, Redchild and Greenchild killed them. Though not directly involved in the murder, Bluechild was sympathetic to their jealousy and ultimately sided with them.
 
