@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=95 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/models/objects/blue/vase_red.tscn" id="23_3yaw4"]
 [ext_resource type="PackedScene" uid="uid://cbmlyysi0hhkk" path="res://world/subareas/blue/stasis_dungeon/western_red_wing.tscn" id="23_mwtcr"]
+[ext_resource type="PackedScene" uid="uid://cirl3we5riu76" path="res://world/subareas/blue/stasis_dungeon/blue_chamber.tscn" id="24_j64is"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(1.4, 1, 1)
@@ -125,12 +126,6 @@ size = Vector3(1, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l6xjd"]
 size = Vector3(1, 1, 4.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j64is"]
-size = Vector3(1, 1, 4.9)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ljs8d"]
-size = Vector3(1, 1, 6.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mpv17"]
 size = Vector3(1, 1, 11.9)
@@ -239,12 +234,6 @@ size = Vector3(40, 18, 91)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nx1wg"]
 size = Vector3(47, 18, 42)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7gnmi"]
-size = Vector3(43, 26, 61)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_psjbi"]
-size = Vector3(25, 26, 24)
 
 [node name="Blue" type="Node3D"]
 
@@ -1112,7 +1101,7 @@ shape = SubResource("BoxShape3D_th7j2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CentralChamberToNE"]
-transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 160.6, 1.1, -292.4)
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 158.6, 0.1, -288)
 shape = SubResource("BoxShape3D_mwtcr")
 
 [node name="Marker3D" type="Marker3D" parent="CentralChamberToNE/CollisionShape3D2"]
@@ -1223,26 +1212,11 @@ shape = SubResource("BoxShape3D_bh4vl")
 [node name="Marker3D" type="Marker3D" parent="NWChamber5ToChamber6/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.9, 0)
 
-[node name="NEHiddenChamberToChamber1" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
+[node name="NEHiddenChamberToChamber1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 6, -867)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
-point_2 = NodePath("CollisionShape3D2/Marker3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NEHiddenChamberToChamber1"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.884352, 2.1, 3.13428)
-shape = SubResource("BoxShape3D_j64is")
-
-[node name="Marker3D" type="Marker3D" parent="NEHiddenChamberToChamber1/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="NEHiddenChamberToChamber1"]
-transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -0.899961, 2.5, -3.19995)
-shape = SubResource("BoxShape3D_ljs8d")
-
-[node name="Marker3D" type="Marker3D" parent="NEHiddenChamberToChamber1/CollisionShape3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="NWChamber6ToChamber7" type="Area3D" parent="." node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -346, 0, -787)
@@ -2263,28 +2237,11 @@ shape = SubResource("BoxShape3D_nx1wg")
 
 [node name="NWChunk" type="Node3D" parent="NWPuzzles/NWChamber7"]
 
-[node name="NEPuzzles" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -824)
-
-[node name="NEChamber1" type="Area3D" parent="NEPuzzles"]
-script = ExtResource("3_4g4u6")
-metadata/_custom_type_script = "uid://cjk323awkifki"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NEPuzzles/NEChamber1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -10)
-shape = SubResource("BoxShape3D_7gnmi")
-
-[node name="NEHiddenChamber" type="Area3D" parent="NEPuzzles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -65)
-script = ExtResource("3_4g4u6")
-metadata/_custom_type_script = "uid://cjk323awkifki"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NEPuzzles/NEHiddenChamber"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, 8.5)
-shape = SubResource("BoxShape3D_psjbi")
-
 [node name="WesternRedWing" parent="." instance=ExtResource("23_mwtcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -477, 0, -594)
+
+[node name="BlueChamber" parent="." instance=ExtResource("24_j64is")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -819)
 
 [connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser" method="start"]
 [connection signal="on" from="HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRoomChunk/Chamber1Geyser2" method="start"]

@@ -12,3 +12,4 @@ func _ready() -> void:
 func perform_action() -> void: 
 	portal_position_set.emit(_player.global_position)
 	$GPUParticles3D.global_position = _player.global_position
+
