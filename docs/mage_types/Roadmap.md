@@ -55,6 +55,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 			- [x] Platforming challenge designed
 			- [ ] NE-most square final stretch (player has reached top-left most corner of map and must now reach secret room to the right)
 			- [ ] Combat challenge designed
+			- [ ] Simple stasis puzzle created
 			- [ ] Wild enemies created
 			- [ ] Environment modeled
 			- [ ] Mural added

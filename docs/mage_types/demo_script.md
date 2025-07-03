@@ -75,7 +75,6 @@ Procedure: ...
 MISC
 - Guys, please stop referring to the SSSS as the "Stasis Dungeon" in official documentation. I get the joke, but please try to be a little professional.
 - Puzzles and doors seem to be the result of some sort of security protocol. I will not turn these off.  A) I don't know how. B) Its funnier to make newbies run the gauntlet.
-
 ## Murals and Notes
 - The murals will describe the process of making the Portal Complex. These will start out hopeful, but this energy will quickly die off as they realize the destructive consequences of their actions.
 - The researchers (mostly DO9) will try their best to decipher these murals. Snarky notes talking about the project will also be scattered around.
