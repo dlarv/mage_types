@@ -11,17 +11,8 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 - Golem system prototype
 	- Golems will be MagiClay constructs which can be given basic instructions by the player
 	- At some point, the player should have the ability to create battle golems
-	- [x] Golems can execute basic instructions
-		- [x] Walk
-			- [x] Ensure golem is moving set amount of space with each step
-			- Areas with golem puzzles should have checkered floors
-				- [ ] Checkered clay shader created
-		- [x] Turn
-		- [x] Wait
-		- [x] Goto
-		- [x] ~~Goback~~ Again 
-	- [x] Golems can be transmuted by lasers
-	- [x] Golem can be hit with stasis to pause it
+	- Areas with golem puzzles should have checkered floors
+		- [ ] Checkered clay shader created
 - [ ] When placing golem, snap to grid
 - [ ] When placing golem, allow player to rotate
 - [x] Golems can be spawned in by player
@@ -30,17 +21,20 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] Allow player to given golems a set of instructions (max instruction amount can be updated)
 		- [x] Add ability to remove instructions 
 		- [ ] Ability to reorder instructions
+		- [ ] Allow player to define golem's path by drawing on the map
 	- [ ] Golem player editor
 		- [ ] Golem's type is determined via same means as Catalyst spell
+			- [ ] If player is not standing on MagiClay, they cannot spawn golem
 		- [ ] Player will have golem sets (arms, legs, torso, head) that they can mix and match
 			- [ ] These will be used to determine stats/etc
 		- [ ] Add maximum number of instructions
 		- [ ] Add instruction budget to limit use of strong commands
-	- [ ] Different golem elements should have differesnt properties
+	- [ ] Different golem elements should have different properties
 		- [x] Blue can wade through water
 		- [x] Yellow floats above obstacles
-		- [ ] Orange can move thru fire obstacle
 		- [ ] Purple can move thru shadow obstacle (haze?)
+		- [ ] Only Red golems can be ridden
+		- [ ] Orange can move thru fire obstacle
 	- [x] Upon falling in water, all but Blue golems should die
 	- [x] Upon dying, golems should leave a permanent pile of clay
 - [ ] Create fire obstacle
@@ -69,22 +63,30 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 				- [ ] Add chest & items
 				- [ ] Connect hole to Blue Wing
 		- [ ] Blue Wing
-			- [x] Layout 
-			- [ ] Environment modeled
+			- [ ] Layout 
 			- [ ] Puzzles created
+			- [ ] Environment modeled
+			- [ ] Mural added
+			- [ ] Orange chatlogs added
 			- [ ] Golem room created
 		- [ ] Orange Wing
 			- [x] Layout 
-			- [ ] Modeled
 			- [ ] Puzzles created
+			- [ ] Environment modeled
+			- [ ] Mural added
+			- [ ] Orange chatlogs added
 		- [ ] Eastern Red Wing
 			- [ ] Layout 
-			- [ ] Modeled
 			- [ ] Puzzles created
+			- [ ] Environment modeled
+			- [ ] Mural added
+			- [ ] Orange chatlogs added
 		- [ ] Magenta Wing
 			- [ ] Layout 
-			- [ ] Modeled
 			- [ ] Puzzles created
+			- [ ] Environment modeled
+			- [ ] Mural added
+			- [ ] Orange chatlogs added
 	- [ ] Mural in Northern Chamber
 		- [x] Add HiddenReceivers
 		- [x] Text describing what player is seeing
@@ -100,6 +102,15 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 - [ ] Doorways should keep player's relative position
 - [ ] Wild enemy mechanics
 	- [ ] Behaviors
+- [x] Golems can execute basic instructions
+	- [x] Walk
+		- [x] Ensure golem is moving set amount of space with each step
+	- [x] Turn
+	- [x] Wait
+	- [x] Goto
+	- [x] ~~Goback~~ Again 
+- [x] Golems can be transmuted by lasers
+- [x] Golem can be hit with stasis to pause it
 - [x] Add some method for the player to know which doorways are empty
 	- Currently, empty doorways are obviously obstructed by walls
 - Water mechanics
@@ -348,6 +359,13 @@ Future Additions
 8. Player is allowed to set golem down in their immediate vicinity.
 ### Golem Elemental Properties
 Blue golems should be immune to water.
+Purple golems can move thru shadow obstacle? (Haze?)
+Magenta ...
+Red golems can be ridden by the player
+Orange golem can move thru fire obstacles
+Yellow golems aren't affected by gravity
+Green ...
+Cyan ...
 ## Overworld (OVER)
 >[!important] 
 > Players collision layer is 1.
