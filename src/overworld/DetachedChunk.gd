@@ -47,20 +47,24 @@ func _ready() -> void:
 		obj.hide()
 
 func gather_objs() -> void:
-	var detachedChunks = get_parent().find_children("", "DetachedChunk")
+	var detachedChunks = get_tree().current_scene.find_children("", "DetachedChunk")
 	# Array[ [DetachedChunk, CollisionShape3D] ]
 	var shapes := []
-	for chunk in detachedChunks: 
+	for chunk in detachedChunks:
 		chunk.was_initialized = true
 		chunk.objs = []
-		for child in chunk.get_children():
-			if child is CollisionShape3D:
-				shapes.append([chunk, child])
-			else:
-				chunk.objs.append(child)
+		var collider := chunk.find_child("CollisionShape3D")
+		if collider:
+			shapes.append([chunk, collider])
+		if not chunk.chunk: continue
+		for child in chunk.chunk.get_children():
+			chunk.objs.append(child)
 
 	# This assumes that all DetachedChunks on this layer will have the same `chunk` value.
-	var children := chunk.get_children()
+	var children := []
+	for env in get_tree().get_nodes_in_group("detached_env"):
+		children.append_array(env.get_children())
+
 	while len(children) > 0:
 		var child = children.pop_back()
 		

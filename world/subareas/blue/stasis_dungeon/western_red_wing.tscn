@@ -16,7 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 7.5)
 shape = SubResource("BoxShape3D_xtnu5")
 metadata/_edit_group_ = true
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env"]]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]

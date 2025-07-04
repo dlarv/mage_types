@@ -11,7 +11,7 @@ size = Vector3(31, 11, 21)
 
 [node name="BlueChamber" type="Node3D"]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env"]]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
