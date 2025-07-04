@@ -3,39 +3,24 @@
 - [x] I really want to find a way to translate the blender clay shader to gdshader code.
 - [x] If I add jumping, I can have platforming challenges.
 - ~~v0.6 will be the next version I release to my playtesters.~~
-	- v0.5 should likely be playtested before I get too far designing assets.
+	- v0.5/0.6 should likely be playtested before I get too far designing assets.
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
 - Golem system prototype
-	- Golems will be MagiClay constructs which can be given basic instructions by the player
-	- At some point, the player should have the ability to create battle golems
-	- Areas with golem puzzles should have checkered floors
-		- [ ] Checkered clay shader created
-- [ ] When placing golem, snap to grid
-- [ ] When placing golem, allow player to rotate
-- [x] Golems can be spawned in by player
-	- [x] Golem debug editor
-		- [x] Allow player to set primary and secondary types
-	- [x] Allow player to given golems a set of instructions (max instruction amount can be updated)
-		- [x] Add ability to remove instructions 
-		- [ ] Ability to reorder instructions
-		- [ ] Allow player to define golem's path by drawing on the map
+	- [ ] When placing golem, snap to grid
+	- [ ] When placing golem, allow player to rotate
 	- [ ] Golem player editor
 		- [ ] Golem's type is determined via same means as Catalyst spell
 			- [ ] If player is not standing on MagiClay, they cannot spawn golem
-		- [ ] Player will have golem sets (arms, legs, torso, head) that they can mix and match
-			- [ ] These will be used to determine stats/etc
 		- [ ] Add maximum number of instructions
-		- [ ] Add instruction budget to limit use of strong commands
 	- [ ] Different golem elements should have different properties
-		- [x] Blue can wade through water
+		- [x] Only Blue can wade thru water
 		- [x] Yellow floats above obstacles
-		- [ ] Purple can move thru shadow obstacle (haze?)
+		- [ ] Only Purple golems can move thru shadow obstacle (haze?)
 		- [ ] Only Red golems can be ridden
-		- [ ] Orange can move thru fire obstacle
-	- [x] Upon falling in water, all but Blue golems should die
+		- [ ] Only Orange golems can move thru fire obstacle
 	- [x] Upon dying, golems should leave a permanent pile of clay
 - [ ] Create fire obstacle
 	- [ ] Illuminate surrounding area
@@ -53,10 +38,12 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [ ] Western Red Wing
 			- [x] Layout
 			- [x] Platforming challenge designed
-			- [ ] NE-most square final stretch (player has reached top-left most corner of map and must now reach secret room to the right)
 			- [ ] Combat challenge designed
-			- [ ] Simple stasis puzzle created
-			- [ ] Wild enemies created
+			- [ ] Simple puzzles created
+				- [ ] Stasis puzzles added, esp to Eastern half (before top-rightmost square)
+				- [ ] Timer trial added to bottom-right section
+				- [ ] top-leftmost square final stretch (player has reached top-left most corner of map and must now reach secret room to the right)
+			- [ ] Wild enemy challenge created
 			- [ ] Environment modeled
 			- [ ] Mural added
 			- [ ] Orange chatlogs added
@@ -65,10 +52,14 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 				- [x] Connect hole to Blue Wing
 		- [ ] Southern Blue Wing
 			- [x] Layout 
-			- [ ] Puzzles created
+			- [ ] Stasis puzzles created
+			- [ ] Simple golem puzzles created
+			- [ ] Stasis miniboss designed
 			- [ ] Environment modeled
 			- [ ] Orange chatlogs added
 			- [ ] Golem room created
+				- [x] Miniboss added
+				- [ ] Golem pickup added
 		- [ ] Northern Blue Wing
 			- [ ] Layout 
 			- [ ] Puzzles created
@@ -93,6 +84,12 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 			- [ ] Environment modeled
 			- [ ] Mural added
 			- [ ] Orange chatlogs added
+		- [ ] Final boss room
+			- [ ] Add boss fakeout
+			- [ ] Environment modeled
+			- [ ] Orange chatlogs added
+		- [ ] Eastern room added
+			- This may double as the final boss room, idk yet
 	- [ ] Mural in Northern Chamber
 		- [x] Add HiddenReceivers
 		- [x] Text describing what player is seeing
@@ -101,13 +98,10 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] Write text describing what player is seeing (translations)
 		- [ ] Assets reflecting what text describes
 		- [ ] Place murals inside dungeon
-- [ ] Give StasisTarget a model
-	- [ ] Stasis target will be used to access a secret room in Chamber 3
-	- [ ] There should be a stasis target which unlocks a visible chest in Chamber 2, so that the player can learn how it works
-- [ ] Give Rail puzzleblock a model
-- [ ] Doorways should keep player's relative position
 - [ ] Wild enemy mechanics
-	- [ ] Behaviors
+	- [ ] Aggressive behavior
+	- [ ] Cowardly behavior
+	- [ ] Passive behavior
 - [x] Golems can execute basic instructions
 	- [x] Walk
 		- [x] Ensure golem is moving set amount of space with each step
@@ -117,11 +111,15 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 	- [x] ~~Goback~~ Again 
 - [x] Golems can be transmuted by lasers
 - [x] Golem can be hit with stasis to pause it
+- [x] Golems can be spawned in by player
+	- [x] Golem debug editor
+		- [x] Allow player to set primary and secondary types
+	- [x] Allow player to given golems a set of instructions (max instruction amount can be updated)
+		- [x] Add ability to remove instructions 
 - [x] Add some method for the player to know which doorways are empty
 	- Currently, empty doorways are obviously obstructed by walls
-- Water mechanics
+- [x] Water mechanics
 	- [x] When player falls on water, return them to previous stable position
-	- [x] When non-blue golem hits water, they should die
 - [x] Improve player movement mechanics
 	- [x] Impl coyote time
 	- [x] Impl jump buffering
@@ -139,6 +137,15 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 - [x] Force pressure plates/etc to \_flicker_collider when chunk is loaded
 - [x] Write logs to user's system
 ## v0.5.x
+Puzzle playtest QOL and essential polish
+- [ ] Golem QOL
+	- Areas with golem puzzles should have checkered floors
+		- [ ] Checkered clay shader created
+	- [ ] Ability to reorder instructions
+	- [ ] Allow player to define golem's path by drawing on the map
+- [ ] Give StasisTarget a model
+- [ ] Give Rail puzzleblock a model
+## v0.6.x
 Exploration playtest candidate. Player will be able to explore decorated map.
 - [ ] Make exploring the map interesting.
 	- [ ] Items
@@ -147,12 +154,15 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Add endless stairway to infinite hall
 - [ ] Add walls, wall decor, & scene lighting
 - [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
-- [ ] When player falls in water, return them to previous stable position
+- [x] When player falls in water, return them to previous stable position
+	- [ ] Add water colliders to Ziggurat water
+	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in
+- [ ] Portals should keep player's relative position
+- [ ] Portals should reorient player model so that they are facing correct direction
 - [ ] Hotel rooms 
 	- [ ] Items/mini obstacles
 	- [ ] Create door models and animations
 	- [ ] On doors player cannot enter, add "Do not disturb" signage
-- [ ] Portals should reorient player model so that they are facing correct direction
 - [ ] Plan out beach house sequence and update model
 - See if any puzzles can be ported from previous versions
 	- [x] Lost-forest-style caves => Supply closet
@@ -183,7 +193,7 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [x] Catalyst Platform demo
 	- [x] Reset demo
 	- [x] Geyser demo
-## v0.6.x
+## v0.7.x
 Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
 - [ ] Player hp stat should be accessible outside of battle
 	- [ ] Hp bar in overworld
@@ -197,7 +207,7 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [ ] Player/enemy cannot move for a duration of time
 - [ ] Determine mechanic that prevents player from starting battles with certain enemies before different requirements are fulfilled
 - [ ] Add final boss to stasis dungeon
-## v0.7.x
+## v0.8.x
 Demo MVP prep. Polish features added during previous versions.
 - [ ] Content
 	- [ ] Rec room battle tutorial
@@ -206,13 +216,18 @@ Demo MVP prep. Polish features added during previous versions.
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
+- [ ] BattleAction refactor
+	- [ ] Battle should be a singleton that is only accessible when battle is ongoing
+	- [ ] AttackEffects with more complex effects should be able to query Battle object directly for battlefield state
+		- e.g. Red attack that does double damage if partner uses same move. AttackEffect should be able to query the Battle for a list of selected actions and determine from there
+		- Ensure this doesn't break future multiplayer potential?
 - [ ] Wild enemies
 - [ ] Opening chests should show player list of contents and allow them to individually select them
 - [ ] Change transmutation graph advanced options from gdscript to gdshader
-- [ ] Add transmutation graph stencils to streamline advanced options usage
+- [ ] Add transmutation graph stencils to streamline canonical advanced options usage
 - [ ] Ensure environment borders/models are aligned properly
 - [ ] Improve animations in stasis dungeon
-## v0.8.x
+## v0.9.x
 MVP Demo candidate. Add story and QOL features.
 - [ ] Character designs
 	- [ ] Blue-aligned
@@ -339,6 +354,7 @@ StatChanges (v0.3.43)
 	-  Player should be able to collect any spell beads/items/etc they equipped onto the golem
 
 Future Additions
+- [ ] Give player ability to create battle golems
 - [ ] Golems should have a health bar
 - [ ] Complex properties
 	- [ ] Magenta will bounce player?
@@ -349,6 +365,9 @@ Future Additions
 - [ ] Drop draggable (upon death?) Mb if golem isn't holding anything it'll work like a no-op.
 - [ ] Channel MagiClayTerrain (changes composition of golem)
 	- Lasers transmute, channeling straight up changes
+- [ ] Player will have golem sets (arms, legs, torso, head) that they can mix and match
+	- [ ] These will be used to determine stats/etc
+- [ ] Add instruction budget to limit use of strong commands
 ### Golem Instructions
 - Walk: num steps
 - Turn: degrees
