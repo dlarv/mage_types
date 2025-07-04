@@ -62,9 +62,11 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 			- [ ] Orange chatlogs added
 			- [x] Treasure room created
 				- [ ] Add chest & items
-				- [ ] Connect hole to Blue Wing
+				- [x] Connect hole to Blue Wing
 		- [ ] Blue Wing
 			- [ ] Layout 
+				- [x] Southern Layout
+				- [ ] Northern Layout
 			- [ ] Puzzles created
 			- [ ] Environment modeled
 			- [ ] Mural added

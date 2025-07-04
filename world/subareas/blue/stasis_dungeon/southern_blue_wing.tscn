@@ -1,0 +1,373 @@
+[gd_scene load_steps=11 format=3 uid="uid://cirl3we5riu76"]
+
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
+[ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="2_xk5hi"]
+[ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="3_xk5hi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xk5hi"]
+size = Vector3(1, 4, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vp7l"]
+size = Vector3(1, 16, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kqjv8"]
+size = Vector3(26, 11, 21)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c171"]
+size = Vector3(17, 11, 21)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_opth2"]
+size = Vector3(31, 24, 44)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2oxx"]
+size = Vector3(31, 24, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ohbpi"]
+size = Vector3(31, 18, 26)
+
+[node name="southern_blue_wing" type="Node3D"]
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Chamber1ToChamber2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("3_xk5hi")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber1ToChamber2"]
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, 0.9, 3.98425)
+shape = SubResource("BoxShape3D_xk5hi")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber1ToChamber2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber1ToChamber2"]
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 1.55002, 0.5, 3.95002)
+shape = SubResource("BoxShape3D_xk5hi")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber1ToChamber2/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+
+[node name="Chamber2ToChamber3" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -4)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("3_xk5hi")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber2ToChamber3"]
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, 0.4, 3.98425)
+shape = SubResource("BoxShape3D_xk5hi")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber2ToChamber3/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.5, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber2ToChamber3"]
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, -1.44998, 0.5, 3.95002)
+shape = SubResource("BoxShape3D_xk5hi")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber2ToChamber3/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+
+[node name="Chamber3ToChamber4" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, 0, -4)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("3_xk5hi")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber3ToChamber4"]
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, -7.6, 3.98425)
+shape = SubResource("BoxShape3D_2vp7l")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber3ToChamber4/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber3ToChamber4"]
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 0.550018, 0.5, 3.95002)
+shape = SubResource("BoxShape3D_xk5hi")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber3ToChamber4/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+
+[node name="Chamber4ToChamber5" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, -4)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("3_xk5hi")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber4ToChamber5"]
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, -2.6, 3.98425)
+shape = SubResource("BoxShape3D_2vp7l")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber5/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -5.5, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber4ToChamber5"]
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 0.550018, 0.5, 3.95002)
+shape = SubResource("BoxShape3D_xk5hi")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber5/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+
+[node name="Chamber4ToChamber6" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159, 0, -4)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("3_xk5hi")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber4ToChamber6"]
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, -3.2, 3.98425)
+shape = SubResource("BoxShape3D_2vp7l")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber6/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -5, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber4ToChamber6"]
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, -1.44998, -0.5, 3.95002)
+shape = SubResource("BoxShape3D_xk5hi")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber6/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env"]]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, 0)
+size = Vector3(25, 4, 20)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 0)
+operation = 2
+size = Vector3(24, 4, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7, 1, 0)
+operation = 2
+size = Vector3(3, 4, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+size = Vector3(13, 4, 13)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+operation = 2
+size = Vector3(12, 4, 12)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3, 1, 0)
+operation = 2
+size = Vector3(3, 4, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 0)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+size = Vector3(30, 4, 20)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 7.5, -18.5)
+size = Vector3(9, 9, 18)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 7.5, -18.5)
+operation = 2
+size = Vector3(7, 7, 20)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+operation = 2
+size = Vector3(29, 4, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6, 1, 0)
+operation = 2
+size = Vector3(3, 4, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4, 1, 0)
+operation = 2
+size = Vector3(3, 4, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 0, 0)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -6.5, 2)
+size = Vector3(30, 18, 24)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 0)
+operation = 2
+size = Vector3(29, 4, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -6, 0)
+operation = 2
+size = Vector3(21, 18, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 1, 0)
+operation = 2
+size = Vector3(3, 4, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4, -6, 0)
+operation = 2
+size = Vector3(3, 18, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 0)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -3, 2)
+size = Vector3(30, 11, 24)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 0)
+operation = 2
+size = Vector3(29, 4, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -2.5, 0)
+operation = 2
+size = Vector3(21, 11, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 1, 0)
+operation = 2
+size = Vector3(3, 4, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4, -2.5, 0)
+operation = 2
+size = Vector3(3, 11, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 0, 0)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -3, 2)
+size = Vector3(30, 11, 24)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 0)
+operation = 2
+size = Vector3(29, 4, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -2.5, 0)
+operation = 2
+size = Vector3(21, 11, 19)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 1, 0)
+operation = 2
+size = Vector3(3, 4, 3)
+material = ExtResource("1_7c171")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4, -2.5, 0)
+operation = 2
+size = Vector3(3, 11, 3)
+material = ExtResource("1_7c171")
+
+[node name="BlueChamber1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+script = ExtResource("2_xk5hi")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 0)
+shape = SubResource("BoxShape3D_kqjv8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BlueChamber1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164, 3, 0)
+shape = SubResource("BoxShape3D_7c171")
+
+[node name="Chunk" type="Node3D" parent="BlueChamber1"]
+
+[node name="BlueChamber2" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 0)
+script = ExtResource("2_xk5hi")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, -9)
+shape = SubResource("BoxShape3D_opth2")
+
+[node name="Chunk" type="Node3D" parent="BlueChamber2"]
+
+[node name="BlueChamber3" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 0, 0)
+script = ExtResource("2_xk5hi")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -3.5, 2.5)
+shape = SubResource("BoxShape3D_r2oxx")
+
+[node name="Chunk" type="Node3D" parent="BlueChamber3"]
+
+[node name="BlueChamber4" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107, 0, 0)
+script = ExtResource("2_xk5hi")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 2.5)
+shape = SubResource("BoxShape3D_ohbpi")
+
+[node name="Chunk" type="Node3D" parent="BlueChamber4"]
+
+[node name="BlueChamber5" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 0, 0)
+script = ExtResource("2_xk5hi")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 2.5)
+shape = SubResource("BoxShape3D_ohbpi")
+
+[node name="Chunk" type="Node3D" parent="BlueChamber5"]
