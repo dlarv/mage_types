@@ -30,7 +30,7 @@ var block_input := false
 
 
 func _ready() -> void:
-	block_input = true
+	# block_input = true
 	hide()
 
 
