@@ -1,9 +1,8 @@
 # Misc Notes
-- I can't help but feeling that it would be thematically right to give the player some method of permanently altering the environment.
-- [x] I really want to find a way to translate the blender clay shader to gdshader code.
-- [x] If I add jumping, I can have platforming challenges.
-- ~~v0.6 will be the next version I release to my playtesters.~~
-	- v0.5/0.6 should likely be playtested before I get too far designing assets.
+- v0.6.0 will be the big version I'll release to my playtesters.
+	- Get essential feedback before creating too many assets
+	- Get feedback on puzzle design
+	- I might need to bribe some people to actually play it... Pizza lan party?
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
@@ -143,6 +142,7 @@ Puzzle playtest QOL and essential polish
 		- [ ] Checkered clay shader created
 	- [ ] Ability to reorder instructions
 	- [ ] Allow player to define golem's path by drawing on the map
+	- [ ] When placing golem, make model transparent
 - [ ] Give StasisTarget a model
 - [ ] Give Rail puzzleblock a model
 ## v0.6.x
@@ -157,6 +157,7 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 - [x] When player falls in water, return them to previous stable position
 	- [ ] Add water colliders to Ziggurat water
 	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in
+- [ ] Add out-of-order elevator to final pillar in ziggurat room
 - [ ] Portals should keep player's relative position
 - [ ] Portals should reorient player model so that they are facing correct direction
 - [ ] Hotel rooms 
@@ -227,6 +228,7 @@ Demo MVP prep. Polish features added during previous versions.
 - [ ] Add transmutation graph stencils to streamline canonical advanced options usage
 - [ ] Ensure environment borders/models are aligned properly
 - [ ] Improve animations in stasis dungeon
+- [ ] Audio
 ## v0.9.x
 MVP Demo candidate. Add story and QOL features.
 - [ ] Character designs
