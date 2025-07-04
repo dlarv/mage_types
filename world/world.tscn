@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=62 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="33_xa4lq"]
 [ext_resource type="PackedScene" uid="uid://2ee6w0ag61vd" path="res://world/subareas/blue/stasis_dungeon/mural_room.tscn" id="34_5hmya"]
 [ext_resource type="PackedScene" uid="uid://c6ap4wdy8tsnd" path="res://world/subareas/blue/stasis_dungeon/central_chamber.tscn" id="35_g5cey"]
+[ext_resource type="PackedScene" uid="uid://d3odmmlqvwyfn" path="res://data/bosses/stasis_boss.tscn" id="35_ll3gq"]
 [ext_resource type="PackedScene" uid="uid://3ygr57mrvdra" path="res://world/subareas/blue/stasis_dungeon/starting_puzzle.tscn" id="36_c2bcd"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
@@ -895,6 +896,9 @@ transform = Transform3D(1, 0, -8.35187e-23, 0, 1, 0, -8.35187e-23, 0, 1, 21.6374
 visible = false
 
 [node name="StartingPuzzle" parent="Overworld/Blue/CentralRoom" instance=ExtResource("36_c2bcd")]
+
+[node name="StasisBoss" parent="Overworld/Blue/CentralRoom" instance=ExtResource("35_ll3gq")]
+transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 206.1, 0.29705, -279)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
