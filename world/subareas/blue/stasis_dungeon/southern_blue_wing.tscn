@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cirl3we5riu76"]
+[gd_scene load_steps=12 format=3 uid="uid://cirl3we5riu76"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="2_xk5hi"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="3_xk5hi"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_2vp7l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk5hi"]
 size = Vector3(1, 4, 3)
@@ -13,17 +14,17 @@ size = Vector3(1, 16, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kqjv8"]
 size = Vector3(26, 11, 21)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7c171"]
-size = Vector3(17, 11, 21)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_opth2"]
 size = Vector3(31, 24, 44)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r2oxx"]
-size = Vector3(31, 24, 26)
+size = Vector3(32, 24, 26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ohbpi"]
-size = Vector3(31, 18, 26)
+size = Vector3(32, 18, 26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iirc7"]
+size = Vector3(16, 18, 17)
 
 [node name="southern_blue_wing" type="Node3D"]
 
@@ -79,7 +80,7 @@ script = ExtResource("3_xk5hi")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber3ToChamber4"]
-transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, -7.6, 3.98425)
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98435, -7.6, 3.98425)
 shape = SubResource("BoxShape3D_2vp7l")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber3ToChamber4/CollisionShape3D"]
@@ -100,7 +101,7 @@ script = ExtResource("3_xk5hi")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber4ToChamber5"]
-transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, -2.6, 3.98425)
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98435, -2.6, 3.98425)
 shape = SubResource("BoxShape3D_2vp7l")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber5/CollisionShape3D"]
@@ -121,7 +122,7 @@ script = ExtResource("3_xk5hi")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber4ToChamber6"]
-transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -6.58435, -3.2, 3.98425)
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98434, -3.2, 3.98425)
 shape = SubResource("BoxShape3D_2vp7l")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber6/CollisionShape3D"]
@@ -217,8 +218,8 @@ material = ExtResource("1_7c171")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 0, 0)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -6.5, 2)
-size = Vector3(30, 18, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -6.5, 2)
+size = Vector3(31, 18, 24)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
@@ -240,17 +241,17 @@ size = Vector3(3, 4, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4, -6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -6, 0)
 operation = 2
-size = Vector3(3, 18, 3)
+size = Vector3(4, 18, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 0)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -3, 2)
-size = Vector3(30, 11, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -3, 2)
+size = Vector3(31, 11, 24)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
@@ -272,17 +273,17 @@ size = Vector3(3, 4, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -2.5, 0)
 operation = 2
-size = Vector3(3, 11, 3)
+size = Vector3(4, 11, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 0, 0)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -3, 2)
-size = Vector3(30, 11, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -3, 2)
+size = Vector3(31, 11, 24)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
@@ -304,9 +305,9 @@ size = Vector3(3, 4, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -2.5, 0)
 operation = 2
-size = Vector3(3, 11, 3)
+size = Vector3(4, 11, 3)
 material = ExtResource("1_7c171")
 
 [node name="BlueChamber1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
@@ -317,10 +318,6 @@ metadata/_custom_type_script = "uid://cjk323awkifki"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 0)
 shape = SubResource("BoxShape3D_kqjv8")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="BlueChamber1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164, 3, 0)
-shape = SubResource("BoxShape3D_7c171")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber1"]
 
@@ -343,10 +340,13 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -3.5, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -3.5, 2.5)
 shape = SubResource("BoxShape3D_r2oxx")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber3"]
+
+[node name="Gate" parent="BlueChamber3/Chunk" instance=ExtResource("4_2vp7l")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -15, 0)
 
 [node name="BlueChamber4" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107, 0, 0)
@@ -355,10 +355,13 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -0.5, 2.5)
 shape = SubResource("BoxShape3D_ohbpi")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber4"]
+
+[node name="Gate" parent="BlueChamber4/Chunk" instance=ExtResource("4_2vp7l")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -8, 0)
 
 [node name="BlueChamber5" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 0, 0)
@@ -371,3 +374,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 2.5)
 shape = SubResource("BoxShape3D_ohbpi")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber5"]
+
+[node name="Gate" parent="BlueChamber5/Chunk" instance=ExtResource("4_2vp7l")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -8, 0)
+
+[node name="BlueChamber6" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 0, 0)
+script = ExtResource("2_xk5hi")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0)
+shape = SubResource("BoxShape3D_iirc7")
+
+[node name="Chunk" type="Node3D" parent="BlueChamber6"]
