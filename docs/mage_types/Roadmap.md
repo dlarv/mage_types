@@ -23,7 +23,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] Only Blue can wade thru water
 		- [x] Yellow floats above obstacles
 		- [ ] Only Purple golems can move thru shadow obstacle (haze?)
-		- [ ] Only Red golems can be ridden
+		- [x] Only Red golems can be ridden
 		- [ ] Only Orange golems can move thru fire obstacle
 	- [x] Upon dying, golems should leave a permanent pile of clay
 - [ ] Create fire obstacle
@@ -56,7 +56,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [ ] Southern Blue Wing
 			- [x] Layout 
 			- [ ] Stasis puzzles created
-			- [ ] Simple golem puzzles created
+			- [x] Simple golem puzzles created
 			- [ ] Stasis miniboss designed
 			- [ ] Environment modeled
 			- [ ] Orange chatlogs added
@@ -181,11 +181,10 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [x] Pressure plate demo
 		- [ ] Bug: Player activated pressure plate not working
 	- [x] Delay demo
-		- [ ] Change how delay works. It should emit off signal when timer expires
-		- [ ] Current delay funcitonality should be moved to new block: delayed relay
+	- [x] Timer demo
 	- [x] Relay demo
 		- [ ] Create indicator block, which differentiates between off/on/invalid_off
-	- [ ] Stasis target demo
+	- [x] Stasis target demo
 	- [ ] Rails demo
 	- [ ] Logic gate demos
 	- [x] Laser blocks demos

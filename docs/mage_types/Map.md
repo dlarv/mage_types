@@ -112,7 +112,12 @@ Area is built on a 3x4 structure. It will consist of mostly platforming and comb
 
 Area is built on a 6x1 structure. The puzzle challenges are contained in rooms c, d, & e. The first time the player traverses these rooms (West-East), they solve Stasis puzzles to open gates. Upon reaching room f, they will fight a miniboss and receive the Golem spell. The player then backtracks thru c, d, & e, using the Golem spell to ascend otherwise impassible cliffs.
 
-Golem Puzzles:
+**Stasis Puzzles**:
+- *Room (c)*: 
+- *Room (d)*:
+- *Room (e)*:
+
+**Golem Puzzles**:
 - *Room (e)*: will require the player to channel a Red pressure plate to create a golem, which they will stand on to jump onto the ledge.
 - *Room (d)*: The player will be presented with 3 pressure plates which move ledges connected to rails. The player will use a golem to press these pressure plates while they parkour up the cliff.
 - *Room (c)*: I want this puzzle to use the interaction between the player, geysers, and golems. I'm tempted to make Magenta golems bounce the player up really high, but if not I'll simply have the player jump off of the Golem's head.
