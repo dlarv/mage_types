@@ -262,12 +262,13 @@ func _push_objects() -> void:
 
 		if dot < 0.5: continue 
 
+		var amount := -500 if element == ElementManager.Magenta else -100
 		if collider is RigidBody3D:
 			self.velocity = _prev_velocity
-			collider.apply_force(collision.get_normal() * -100)
+			collider.apply_force(collision.get_normal() * amount)
 		elif collider is CharacterBody3D:
 			self.velocity = _prev_velocity
-			collider.add_force(collision.get_normal() * -100)
+			collider.add_force(collision.get_normal() * amount)
 
 
 func _evaluate() -> bool:
