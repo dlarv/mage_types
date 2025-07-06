@@ -22,11 +22,9 @@ var element: ElementalType = ElementManager.Blank:
 		element_changed.emit(value)
 		if Engine.is_editor_hint():
 			_material = StandardMaterial3D.new()
-@export var is_blooming: bool
 @export var is_breakable: bool
 @export var is_transmutable: bool
 @export var in_stasis: bool
-@export var tunnel_override: MagiClay
 
 @export_category("Sizing")
 @export var scaling_factor := Vector3(1, 1, 1):
@@ -119,21 +117,17 @@ func set_stasis(val=null) -> void:
 		stasis_ended.emit()
 	await flicker_collider()
 
+
 func reset() -> void:
 	Logger.append_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
 			% [puzzle_name, element, _original_element])
 	set_element(_original_element, _rand_val, true)
 	set_stasis(false)
 
-func bloom(val: bool, e: ElementalType) -> void:
-	if not is_blooming: return
 
 func destroy() -> void:
 	if not is_breakable: return
 	queue_free()
-
-func try_tunnel() -> void:
-	if tunnel_override == null: return
 
 
 func serialize() -> Dictionary: return {
