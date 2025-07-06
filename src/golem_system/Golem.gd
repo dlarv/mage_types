@@ -21,7 +21,6 @@ var curr_index := 0
 var timer := 0.0
 var accumulator := -1.0
 
-var _initial_position: Vector3
 var _target_position: Vector3
 var _step_start_position: Vector3
 var _start_rotation: float
@@ -49,7 +48,8 @@ func setup(actor: BattleActor, ins: Array) -> void:
 
 func start() -> void:
 	global_position = global_position.snapped(SNAP_VALUE)
-	_initial_position = global_position
+	spawn_position = global_position
+	_original_element = element
 	timer = 0
 	active = true
 
@@ -170,7 +170,7 @@ func again() -> void:
 	accumulator = -1
 	timer = 0
 
-	global_position = _initial_position
+	global_position = spawn_position
 	Logger.append_golem_log("Golem(%s) executed instruction: AGAIN." % golem_name) 
 
 
@@ -178,13 +178,13 @@ func _speed_to_delay() -> float:
 	return 1.0#battle_actor.speed
 
 
-func kill() -> void:
+func kill(force:=false) -> void:
 	rotation_degrees.x = 90
 	active = false
 	$HeadCollisionShape.disabled = true
 	$CollisionShape3D2.disabled = true
 
-	if self.velocity.length() == 0:
+	if force or self.velocity.length() == 0:
 		process_mode = Node.PROCESS_MODE_DISABLED
 
 
@@ -201,7 +201,6 @@ func instructions_to_string() -> String:
 
 func add_force(force: Vector3) -> void:
 	outside_forces += force
-
 
 
 func get_local_gravity() -> float:
@@ -254,6 +253,12 @@ func _push_objects() -> void:
 		var collider := collision.get_collider()
 		if not collider.get_collision_layer_value(3) and not collider.get_collision_layer_value(6): continue
 
+		if element != ElementManager.Red \
+				and element != ElementManager.Magenta \
+				and collision.get_local_shape() == $HeadCollisionShape:
+			kill(true)
+			return
+
 		var norm := collision.get_normal().normalized()
 		var dir := global_position.direction_to(_target_position)
 		dir.y = outside_forces.y
@@ -262,7 +267,7 @@ func _push_objects() -> void:
 
 		if dot < 0.5: continue 
 
-		var amount := -500 if element == ElementManager.Magenta else -100
+		var amount := -500 if element == ElementManager.Magenta else -300
 		if collider is RigidBody3D:
 			self.velocity = _prev_velocity
 			collider.apply_force(collision.get_normal() * amount)
@@ -279,6 +284,7 @@ func _evaluate() -> bool:
 	_reached_top_of_geyser = false
 	return (accumulator > threshold or (instruction == "WALK" and timer > WALK_THRESHOLD)) \
 			and ((s.is_on_floor() and self.velocity.length() == 0) or reachedTop)
+
 
 func reached_top_of_geyser() -> void:
 	_reached_top_of_geyser = true

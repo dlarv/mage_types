@@ -80,4 +80,3 @@ func _on_element_dropdown_item_selected(index:int) -> void:
 func _draw() -> void:
 	%DebugElementHBox.visible = Settings.debug_mode
 	%ElementIcon.visible = not Settings.debug_mode
-
