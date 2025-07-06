@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://h8buyp6ewnv8"]
+[gd_scene load_steps=18 format=3 uid="uid://h8buyp6ewnv8"]
 
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_6yy2f"]
 [ext_resource type="PackedScene" uid="uid://do43qejpr6n5i" path="res://src/overworld/puzzle_blocks/delay.tscn" id="2_jk5ic"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="13_0axfp"]
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="13_m7ws3"]
 [ext_resource type="PackedScene" uid="uid://bdm2iqu5gdils" path="res://src/overworld/magiclay/catalyst_platform.tscn" id="15_rfm8t"]
+[ext_resource type="PackedScene" uid="uid://d3ygm6nayhv7c" path="res://src/overworld/puzzle_blocks/indicator.tscn" id="16_mhvap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_caqob"]
 size = Vector3(111, 29, 49)
@@ -99,10 +100,6 @@ _element = "cyan"
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 20.75, 1.4, -5.45)
 _element = "blue"
 
-[node name="Relay2" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.75, 0.4, -16.45)
-lock = NodePath("../HiddenReceiver")
-
 [node name="CatalystDevice" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.75, 0.4, -5.85)
 
@@ -127,17 +124,9 @@ _element = "cyan"
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 15.75, 1.4, -5.45)
 _element = "blue"
 
-[node name="Relay3" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.75, 0.4, -16.45)
-lock = NodePath("../LaserReceiver")
-
 [node name="LaserReceiver2" parent="SupplyClosetChunk" instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1.1, -16.5)
 _element = "cyan"
-
-[node name="Relay4" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("7_vuo6s")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.75, 0.4, -16.45)
-lock = NodePath("../LaserReceiver2")
 
 [node name="CatalystDevice2" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 0.4, -5.85)
@@ -149,6 +138,22 @@ is_transmutable = true
 
 [node name="CatalystDevice5" parent="SupplyClosetChunk" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.458283, -9)
+
+[node name="Indicator" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 1, -16.5)
+block = NodePath("../LaserReceiver")
+
+[node name="Indicator2" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7, 1, -16.5)
+block = NodePath("../HiddenReceiver")
+
+[node name="Indicator3" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5, 1, -16.5)
+block = NodePath("../LaserReceiver2")
+
+[node name="Indicator4" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -2)
+block = NodePath("../Delay")
 
 [connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice" to="SupplyClosetChunk/Emitter" method="set_element"]
 [connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice3" to="SupplyClosetChunk/Emitter3" method="set_element"]
