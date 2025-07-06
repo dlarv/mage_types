@@ -107,23 +107,27 @@ func _enter_tree() -> void:
 			item.quantity = 99
 
 	if not use_override: return
-	match primary_override:
-		OverworldSpell.Spells.STASIS:
-			add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
-		OverworldSpell.Spells.GOLEM:
-			add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
-		OverworldSpell.Spells.CATALYST:
-			add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
-		OverworldSpell.Spells.NONE: pass 
+	if not primary_override == OverworldSpell.Spells.NONE:
+		add_key_item(key_items[primary_override].item)
+	# match primary_override:
+	# 	OverworldSpell.Spells.STASIS:
+	# 		add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
+	# 	OverworldSpell.Spells.GOLEM:
+	# 		add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
+	# 	OverworldSpell.Spells.CATALYST:
+	# 		add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
+	# 	OverworldSpell.Spells.NONE: pass 
 
-	match secondary_override:
-		OverworldSpell.Spells.STASIS:
-			add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
-		OverworldSpell.Spells.GOLEM:
-			add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
-		OverworldSpell.Spells.CATALYST:
-			add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
-		OverworldSpell.Spells.NONE: return
+	if not secondary_override == OverworldSpell.Spells.NONE:
+		add_key_item(key_items[secondary_override].item)
+	# match secondary_override:
+	# 	OverworldSpell.Spells.STASIS:
+	# 		add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
+	# 	OverworldSpell.Spells.GOLEM:
+	# 		add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
+	# 	OverworldSpell.Spells.CATALYST:
+	# 		add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
+	# 	OverworldSpell.Spells.NONE: return
 
 
 ## Returns list of **RegularItems** that contain BattleItems.
@@ -185,6 +189,12 @@ func add_key_item(item: KeyItem, amount:=1) -> void:
 		KeyItem.UniqueId.GOLEM:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.GOLEM, true)
 			overworldSpell = OverworldSpell.Spells.GOLEM
+		KeyItem.UniqueId.USE_PORTAL:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.USE_PORTAL, true)
+			overworldSpell = OverworldSpell.Spells.USE_PORTAL
+		KeyItem.UniqueId.SET_PORTAL:
+			overworld_spell_enabled.emit(OverworldSpell.Spells.SET_PORTAL, true)
+			overworldSpell = OverworldSpell.Spells.SET_PORTAL
 
 	if overworldSpell != -1:
 		if spell1 == OverworldSpell.Spells.NONE:
