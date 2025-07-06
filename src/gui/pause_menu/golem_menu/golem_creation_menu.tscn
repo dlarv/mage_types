@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhsx6lc3clma4"]
+[gd_scene load_steps=21 format=3 uid="uid://bhsx6lc3clma4"]
 
 [ext_resource type="Script" uid="uid://cwlmjw1xm5jm8" path="res://src/gui/pause_menu/golem_menu/GolemCreationMenu.gd" id="1_i2itt"]
 [ext_resource type="PackedScene" uid="uid://bwedv008fwyuu" path="res://src/elements/gui/element_dropdown.tscn" id="2_d4drp"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="3_716rj"]
 [ext_resource type="PackedScene" uid="uid://bqi8spl0jubpv" path="res://src/gui/pause_menu/golem_menu/golem_instruction_manager.tscn" id="3_wll4w"]
 
 [sub_resource type="Gradient" id="Gradient_bj7mu"]
@@ -90,14 +91,15 @@ layout_mode = 2
 text = "Golem Properties"
 horizontal_alignment = 1
 
-[node name="ElementHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties"]
+[node name="DebugElementHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/ElementHBox"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/DebugElementHBox"]
 layout_mode = 2
 text = "Element 1:"
 
-[node name="ElementDropdown" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/ElementHBox" instance=ExtResource("2_d4drp")]
+[node name="ElementDropdown" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/DebugElementHBox" instance=ExtResource("2_d4drp")]
 unique_name_in_owner = true
 layout_mode = 2
 item_count = 8
@@ -126,6 +128,11 @@ popup/item_7/text = "Cyan"
 popup/item_7/icon = SubResource("GradientTexture2D_3twbj")
 popup/item_7/id = 8
 
+[node name="ElementIcon" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties" instance=ExtResource("3_716rj")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
 [node name="Instructions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -143,5 +150,5 @@ layout_mode = 2
 layout_mode = 2
 text = "Finish"
 
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/Properties/ElementHBox/ElementDropdown" to="." method="_on_element_dropdown_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/Properties/DebugElementHBox/ElementDropdown" to="." method="_on_element_dropdown_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FinishButton" to="." method="_on_finish_button_pressed"]

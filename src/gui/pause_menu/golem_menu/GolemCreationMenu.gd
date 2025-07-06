@@ -10,6 +10,7 @@ const GolemPrefab := preload("res://src/golem_system/golem.tscn")
 			return
 		else:
 			%ElementDropdown.select(ElementManager.get_index_from_name(val.name))
+			%ElementIcon.element = val
 			element = val
 var _golem: Golem = null
 
@@ -74,3 +75,9 @@ func _on_finish_button_pressed() -> void:
 
 func _on_element_dropdown_item_selected(index:int) -> void:
 	element = ElementManager.elements[index]
+
+
+func _draw() -> void:
+	%DebugElementHBox.visible = Settings.debug_mode
+	%ElementIcon.visible = not Settings.debug_mode
+
