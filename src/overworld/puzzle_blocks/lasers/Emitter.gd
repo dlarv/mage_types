@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func start(val: Variant=null) -> void: 
 	if Engine.is_editor_hint(): return
+	print("start")
 	super.start(val)
 	_is_on = true
 	$SubEmitter.start()
@@ -37,11 +38,11 @@ func stop(val: Variant=null) -> void:
 # Override
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if not super.set_element(e, randVal, force): return false
-	$SubEmitter.set_element(e)
+	await $SubEmitter.set_element(e)
 	return true
 
 func set_stasis(val=null) -> void:
-	super.set_stasis(val)
+	await super.set_stasis(val)
 	if in_stasis:
 		stop()
 	else:

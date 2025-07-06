@@ -66,6 +66,7 @@ func stop() -> void:
 		_prev_body.clear_laser()
 		_prev_body = null
 
+
 ## Acts like start/stop, but preserves laser data.
 func pause(val: bool) -> void:
 	if val:
@@ -81,6 +82,8 @@ func set_element(e: ElementalType) -> void:
 	mesh.set_surface_override_material(0, _mat)
 	laser.rand_val = Time.get_ticks_usec()
 
+	if not is_on:
+		return
 	pause(true)
-	await get_tree().create_timer(0.01).timeout
-	pause(not is_on)
+	await get_tree().create_timer(0.001).timeout
+	pause(false)

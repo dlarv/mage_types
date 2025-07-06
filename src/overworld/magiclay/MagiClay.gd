@@ -117,7 +117,7 @@ func set_stasis(val=null) -> void:
 		_try_set_color()
 		Logger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
 		stasis_ended.emit()
-	flicker_collider()
+	await flicker_collider()
 
 func reset() -> void:
 	Logger.append_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
