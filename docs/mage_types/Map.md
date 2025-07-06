@@ -44,15 +44,15 @@ Script: [[Beach House Intro]]
 ### Ziggurat 
 - Inside the Grand Enclave Ziggurat, there are 8 giant pillars the player can use to ascend to the surface. However, the first one has collapsed, revealing a hidden side path. The player must venture down this side route and loop back in order to ascend.
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
-### Stasis Dungeon
+## Stasis Dungeon
 - I want this to be formatted sort of like a Zelda dungeon. Player will adventure halfway through the dungeon, battle a miniboss, obtain the Catalyst spell, then loop back unlocking new paths in sections they've already been.
-#### Central Chamber (Starting Config)
+### Central Chamber (Starting Config)
 - When the player first enters dungeon, it will be in a limited version, with three layers separated by three concentric walls.
 - The player will be presented with three simple obstacles in sequence. These will mostly be to introduce the player to the lasers, mirrors, rails, and lenses, as well as the hidden receivers.
 	- As the player solves these obstacles, the walls will come down, slowly opening up more of the room.
 - Once all walls have been dropped, player will be presented with 7 doors (8 including the one they entered from). 6 of these doors will be locked.
 - Heading down the other unlocked path will take them into the Mural Room.
-#### Mural Room
+### Mural Room
 The player will be able to enter this section without too much trouble. At the end, they will find the boss and Stasis. Upon picking up the spell, a trap will trigger, locking the player inside. The player will be presented with 3 riddles to solve.
 - 4 Lasers will be arrayed aroudn the edges of the room. Each one hits a hidden receiver.
 	- These will be Red, Green, Blue, and Yellow.
@@ -64,7 +64,7 @@ I'd like the riddles to have a deeper connection to the lore, possibly to the Ol
 - RGB, !Y
 - RG, !BY
 - Y !RGB
-#### Central Chamber (Main Config)
+### Central Chamber (Main Config)
 - Once the player finished up inside the mural room, they will reenter the Central Chamber.
 - Triggering the trap will also cause the Central Chamber to switch to the main configuration.
 - All doors, except for the West one, will be unlocked.
@@ -100,23 +100,27 @@ Each of the four hallways will have an elemental theme based on 4 of the 5 eleme
 	- Without this spell, the player can't ascend.
 
 [[demo_script]]
-#### NE Chambers (Blue)
-This section was the coolant for the machine and is located mostly underneath the other wings. 
-#### SE Chambers (Magenta)
-This section takes place on the control panel, which is built on the scale of massive beings. The control panel mentioned in the earlier chatlogs is actually a non-functional replica created by beings trying to manipulate the machine before realizing it to be impossible.
-#### SW Chambers (Red)
-This section grew around the main power conduit. Due to the abundance of water and energy, this area has flourished, being home to multiple different species of flora and fauna.
+### Western Red Wing
+**This section grew around the main power conduit. Due to the abundance of water and energy, this area has flourished, being home to multiple different species of flora and fauna. The Red Wing is split in half by the Orange Wing.**
 
-Red has been split in half by the Orange conduit. The player will enter the Western section first. The Eastern section will be accessed after the player completes the Orange Wing.
+Area is built on a 3x4 structure. It will consist of mostly platforming and combat challenges, but should have at least 1 stasis challenge.
 
-The Western Red Wing will be on a 3x4 grid. It'll mostly be a platforming/navigational and combat challenge. I like the idea of the platforming challenges being like the ones in CrossCode. The rooms will loop back around on themselves, forcing the player to find the correct entry point.
+*v0.4.23*: Main platforming challenges created.
+*Todo*: Combat and stasis puzzles [[Roadmap#v0.4.x|see here]].
+### Southern Blue Wing
+**This section was the coolant for the machine and is located mostly underneath the other wings. It is split in two, similar to the Red Wing.  Unlike the Red Wing, however, these two sections are contiguous.**
 
-**Objectives**:
-- Practice making platforming challenges
-- Wild enemy mechanics
-- Doors should keep player's relative position when they go thru
-#### NW Chambers (Orange)
+Area is built on a 6x1 structure. The puzzle challenges are contained in rooms c, d, & e. The first time the player traverses these rooms (West-East), they solve Stasis puzzles to open gates. Upon reaching room f, they will fight a miniboss and receive the Golem spell. The player then backtracks thru c, d, & e, using the Golem spell to ascend otherwise impassible cliffs.
+
+- Golems can activate pressure plates
+- Red Golems can be stood on, but others cannot
+- 
+### Northern Blue Wing
+This section will be accessible from Southern Blue Wing room b by using a Golem to parkour into a pipe. This section should be primarily puzzle based, focusing on the Golem and Stasis spells the player now has access to.
+### Orange Wing
 This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
+### Eastern Red Wing
+
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
 ****

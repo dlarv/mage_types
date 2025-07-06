@@ -3,6 +3,11 @@
 	- Get essential feedback before creating too many assets
 	- Get feedback on puzzle design
 	- I might need to bribe some people to actually play it... Pizza lan party?
+# Objectives
+- Refine design processes
+- Practice making platforming challenges
+- Wild enemy mechanics
+- Doors should keep player's relative position when they go thru
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
@@ -37,14 +42,13 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [ ] Western Red Wing
 			- [x] Layout
 			- [x] Platforming challenge designed
-			- [ ] Combat challenge designed
-			- [ ] Simple puzzles created
-				- [ ] Stasis puzzles added, esp to Eastern half (before top-rightmost square)
-				- [ ] Timer trial added to bottom-right section
-				- [ ] top-leftmost square final stretch (player has reached top-left most corner of map and must now reach secret room to the right)
-			- [ ] Wild enemy challenge created
+			- [ ] Time trial challenge added to (c1) 
+		    - [ ] Stasis challenge added to one of the middle sections (b2/c3)
+		    - [ ] Final stretch added to (a4)
+		    - [ ] Combat challenges added to (c4, b4)
+		    - [ ] Rewards added to hidden rooms in (c1, b3, a4)
+		    - [ ] Mural added to (c4)
 			- [ ] Environment modeled
-			- [ ] Mural added
 			- [ ] Orange chatlogs added
 			- [x] Treasure room created
 				- [ ] Add chest & items
