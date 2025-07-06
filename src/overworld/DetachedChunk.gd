@@ -56,9 +56,8 @@ func gather_objs() -> void:
 		var collider := chunk.find_child("CollisionShape3D")
 		if collider:
 			shapes.append([chunk, collider])
-		if not chunk.chunk: continue
-		for child in chunk.chunk.get_children():
-			chunk.objs.append(child)
+		if chunk.chunk: 
+			chunk.objs.append(chunk.chunk)
 
 	# This assumes that all DetachedChunks on this layer will have the same `chunk` value.
 	var children := []
