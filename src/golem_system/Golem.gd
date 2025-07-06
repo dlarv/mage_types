@@ -29,6 +29,8 @@ var _start_rotation: float
 # How many loads until corpse disappears.
 var _decomposition_counter := 3
 var _reached_top_of_geyser := false
+# Used to preserve velocity after a collision steals momentum.
+var _prev_velocity: Vector3
 
 
 func setup(actor: BattleActor, ins: Array) -> void:
@@ -97,10 +99,12 @@ func move(delta: float, onlyGravity:=false) -> void:
 		return
 
 	self.velocity += outside_forces * delta
-	outside_forces = Vector3.ZERO
+	_prev_velocity = self.velocity
 
 	if s.move_and_slide():
 		_push_objects()
+	outside_forces = Vector3.ZERO
+	_prev_velocity = Vector3.ZERO
 
 
 func step(delta: float) -> void:
@@ -249,15 +253,21 @@ func _push_objects() -> void:
 		var collision: KinematicCollision3D = s.get_slide_collision(i)
 		var collider := collision.get_collider()
 		if not collider.get_collision_layer_value(3) and not collider.get_collision_layer_value(6): continue
-		var dot := collision.get_normal().normalized().dot(global_position.direction_to(_target_position).normalized()) 
-		if dot > 0: continue 
+
+		var norm := collision.get_normal().normalized()
+		var dir := global_position.direction_to(_target_position)
+		dir.y = outside_forces.y
+		dir = dir.normalized()
+		var dot: float = abs(norm.dot(dir))
+
+		if dot < 0.5: continue 
 
 		if collider is RigidBody3D:
-			collider.apply_force(collision.get_normal() * -500)
-			self.velocity = basis.z.normalized() * base_walk_speed
+			self.velocity = _prev_velocity
+			collider.apply_force(collision.get_normal() * -100)
 		elif collider is CharacterBody3D:
-			self.velocity = basis.z.normalized() * base_walk_speed
-			collider.add_force(collision.get_normal() * -500)
+			self.velocity = _prev_velocity
+			collider.add_force(collision.get_normal() * -100)
 
 
 func _evaluate() -> bool:

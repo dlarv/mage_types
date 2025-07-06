@@ -364,6 +364,7 @@ Future Additions
 - [ ] Golems should have a health bar
 - [ ] Complex properties
 	- [ ] Magenta will bounce player?
+		- This can be done by modifying a value in `Golem._push_object()`
 	- [ ] Purple can walk up walls?
 	- [ ] Orange can transmute itself?
 - [ ] Grab draggable 
