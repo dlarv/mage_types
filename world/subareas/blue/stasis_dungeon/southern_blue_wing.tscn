@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cirl3we5riu76"]
+[gd_scene load_steps=19 format=3 uid="uid://cirl3we5riu76"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="2_xk5hi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="5_6q6hn"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="5_iirc7"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="6_6q6hn"]
+[ext_resource type="PackedScene" uid="uid://sbh0qf0ppd8m" path="res://src/overworld/puzzle_blocks/timer.tscn" id="6_d1ury"]
 [ext_resource type="PackedScene" uid="uid://d3odmmlqvwyfn" path="res://data/bosses/stasis_boss.tscn" id="8_t4i8l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk5hi"]
@@ -355,12 +356,17 @@ shape = SubResource("BoxShape3D_r2oxx")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber3"]
 
-[node name="Geyser" parent="BlueChamber3/Chunk" instance=ExtResource("5_iirc7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -15, -8.5)
-size = 10.0
-
 [node name="Gate" parent="BlueChamber3/Chunk" instance=ExtResource("4_2vp7l")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -15, 0)
+
+[node name="StasisPuzzle" type="Node3D" parent="BlueChamber3/Chunk"]
+
+[node name="GolemPuzzle" type="Node3D" parent="BlueChamber3/Chunk"]
+visible = false
+
+[node name="Geyser" parent="BlueChamber3/Chunk/GolemPuzzle" instance=ExtResource("5_iirc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -15, -8.5)
+size = 10.0
 
 [node name="BlueChamber4" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107, 0, 0)
@@ -401,6 +407,14 @@ mesh = SubResource("BoxMesh_iirc7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4/Chunk/Rails1/Ledge"]
 shape = SubResource("BoxShape3D_6q6hn")
 
+[node name="PressurePlate1" parent="BlueChamber4/Chunk" instance=ExtResource("6_6q6hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -8, -6)
+_element = "blue"
+
+[node name="Timer1" parent="BlueChamber4/Chunk" instance=ExtResource("6_d1ury")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -7, -8)
+delay = 5.0
+
 [node name="Rails2" parent="BlueChamber4/Chunk" instance=ExtResource("5_6q6hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -2.5)
 
@@ -424,6 +438,14 @@ mesh = SubResource("BoxMesh_iirc7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4/Chunk/Rails2/Ledge"]
 shape = SubResource("BoxShape3D_6q6hn")
+
+[node name="PressurePlate2" parent="BlueChamber4/Chunk" instance=ExtResource("6_6q6hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -8, 0)
+_element = "blue"
+
+[node name="Timer2" parent="BlueChamber4/Chunk" instance=ExtResource("6_d1ury")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -7, -8)
+delay = 5.0
 
 [node name="Rails3" parent="BlueChamber4/Chunk" instance=ExtResource("5_6q6hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -2.3, 3.5)
@@ -449,9 +471,13 @@ mesh = SubResource("BoxMesh_iirc7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4/Chunk/Rails3/Ledge"]
 shape = SubResource("BoxShape3D_6q6hn")
 
-[node name="PressurePlate" parent="BlueChamber4/Chunk" instance=ExtResource("6_6q6hn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -8, -6)
+[node name="PressurePlate3" parent="BlueChamber4/Chunk" instance=ExtResource("6_6q6hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -8, 6)
 _element = "blue"
+
+[node name="Timer3" parent="BlueChamber4/Chunk" instance=ExtResource("6_d1ury")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -7, -8)
+delay = 5.0
 
 [node name="BlueChamber5" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 0, 0)
@@ -491,8 +517,15 @@ transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 1)
 _element = "red"
 
-[connection signal="off" from="BlueChamber4/Chunk/PressurePlate" to="BlueChamber4/Chunk/Rails1" method="slide"]
-[connection signal="on" from="BlueChamber4/Chunk/PressurePlate" to="BlueChamber4/Chunk/Rails1" method="slide"]
+[connection signal="off" from="BlueChamber4/Chunk/PressurePlate1" to="BlueChamber4/Chunk/Timer1" method="_on_lock_opened"]
+[connection signal="on" from="BlueChamber4/Chunk/PressurePlate1" to="BlueChamber4/Chunk/Rails1" method="slide"]
+[connection signal="off" from="BlueChamber4/Chunk/Timer1" to="BlueChamber4/Chunk/Rails1" method="slide"]
+[connection signal="off" from="BlueChamber4/Chunk/PressurePlate2" to="BlueChamber4/Chunk/Timer2" method="_on_lock_opened"]
+[connection signal="on" from="BlueChamber4/Chunk/PressurePlate2" to="BlueChamber4/Chunk/Rails2" method="slide"]
+[connection signal="off" from="BlueChamber4/Chunk/Timer2" to="BlueChamber4/Chunk/Rails2" method="slide"]
+[connection signal="off" from="BlueChamber4/Chunk/PressurePlate3" to="BlueChamber4/Chunk/Timer3" method="_on_lock_opened"]
+[connection signal="on" from="BlueChamber4/Chunk/PressurePlate3" to="BlueChamber4/Chunk/Rails3" method="slide"]
+[connection signal="off" from="BlueChamber4/Chunk/Timer3" to="BlueChamber4/Chunk/Rails3" method="slide"]
 
 [editable path="BlueChamber4/Chunk/Rails1"]
 [editable path="BlueChamber4/Chunk/Rails2"]
