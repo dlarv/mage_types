@@ -98,6 +98,7 @@ layout_mode = 2
 text = "Element 1:"
 
 [node name="ElementDropdown" parent="MarginContainer/VBoxContainer/HBoxContainer/Properties/ElementHBox" instance=ExtResource("2_d4drp")]
+unique_name_in_owner = true
 layout_mode = 2
 item_count = 8
 popup/item_0/text = "Blue"

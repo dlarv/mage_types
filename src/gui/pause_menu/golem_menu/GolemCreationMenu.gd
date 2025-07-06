@@ -4,13 +4,24 @@ signal golem_placed(wasPlaced: bool)
 
 const GolemPrefab := preload("res://src/golem_system/golem.tscn")
 
-@onready var element := ElementManager.Blue
+@onready var element := ElementManager.Blue:
+	set(val):
+		if not val or val.is_blank():
+			return
+		else:
+			%ElementDropdown.select(ElementManager.get_index_from_name(val.name))
+			element = val
 var _golem: Golem = null
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_visible_in_tree() and event.is_action_pressed("open_golem_menu"):
+		UIManager.toggle_golem_menu(null)
+		return
+
 	if not _golem: return
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") \
+			or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT):
 		get_viewport().set_input_as_handled()
 		golem_placed.emit(false)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -30,6 +41,7 @@ func _process(delta: float) -> void:
 
 	if "position" in result:
 		_golem.global_position = result.position
+
 
 func _on_finish_button_pressed() -> void:
 	var instructions = %GolemInstructionManager.get_instructions()
@@ -55,7 +67,7 @@ func _on_finish_button_pressed() -> void:
 		# Reopen creator menu
 		remove_child(golem)
 		get_tree().paused = false
-		UIManager.open_golem_menu()
+		UIManager.toggle_golem_menu()
 	UIManager.block_input = false
 	_golem = null
 
