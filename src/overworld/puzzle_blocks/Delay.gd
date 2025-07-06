@@ -18,6 +18,7 @@ func _ready() -> void:
 		lock.on.connect(_on_lock_opened)
 		lock.off.connect(_on_lock_closed)
 
+
 func _on_lock_opened(block: PuzzleBlock) -> void:
 	if not _opened_locks.get(block):
 		_opened_locks[block] = true

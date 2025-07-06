@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://h8buyp6ewnv8"]
+[gd_scene load_steps=19 format=3 uid="uid://h8buyp6ewnv8"]
 
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_6yy2f"]
 [ext_resource type="PackedScene" uid="uid://do43qejpr6n5i" path="res://src/overworld/puzzle_blocks/delay.tscn" id="2_jk5ic"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://84cyfc8t4t04" path="res://src/overworld/puzzle_blocks/lasers/lens.tscn" id="13_m7ws3"]
 [ext_resource type="PackedScene" uid="uid://bdm2iqu5gdils" path="res://src/overworld/magiclay/catalyst_platform.tscn" id="15_rfm8t"]
 [ext_resource type="PackedScene" uid="uid://d3ygm6nayhv7c" path="res://src/overworld/puzzle_blocks/indicator.tscn" id="16_mhvap"]
+[ext_resource type="PackedScene" uid="uid://sbh0qf0ppd8m" path="res://src/overworld/puzzle_blocks/timer.tscn" id="17_wb5h5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_caqob"]
 size = Vector3(111, 29, 49)
@@ -154,6 +155,23 @@ block = NodePath("../LaserReceiver2")
 [node name="Indicator4" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -2)
 block = NodePath("../Delay")
+
+[node name="Indicator5" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -2)
+block = NodePath("../Timer")
+
+[node name="Timer" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("17_wb5h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 1, -2)
+lock = NodePath("../Button2")
+delay = 5.0
+
+[node name="Button2" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("3_ybmg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, -2)
+lock = NodePath("../Timer")
+
+[node name="Indicator6" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11)
+block = NodePath("../StasisTarget")
 
 [connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice" to="SupplyClosetChunk/Emitter" method="set_element"]
 [connection signal="element_selected" from="SupplyClosetChunk/CatalystDevice3" to="SupplyClosetChunk/Emitter3" method="set_element"]
