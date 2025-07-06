@@ -708,7 +708,7 @@ resource_name = "Destroy Spell"
 script = ExtResource("2_xejte")
 item = ExtResource("36_0aymk")
 id = 2
-quantity = 0
+quantity = 1
 max_quantity = 1
 allow_stacking = false
 
@@ -813,6 +813,5 @@ spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), Su
 key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m"), SubResource("Resource_2ju5g"), SubResource("Resource_musac"), SubResource("Resource_qonbv")])
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
 add_all_items = true
-primary_override = 3
-secondary_override = 5
+secondary_override = 3
 use_override = true
