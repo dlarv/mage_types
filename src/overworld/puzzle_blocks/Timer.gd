@@ -6,6 +6,7 @@ extends PuzzleBlock
 
 func _ready() -> void:
 	$AnimationPlayer.speed_scale = 60 / delay
+	if not lock: return
 	lock.on.connect(_on_lock_opened)
 	lock.off.connect(_on_lock_closed)
 
