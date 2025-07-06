@@ -1,16 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://cirl3we5riu76"]
+[gd_scene load_steps=17 format=3 uid="uid://cirl3we5riu76"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="2_xk5hi"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="3_xk5hi"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_2vp7l"]
+[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="5_6q6hn"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="5_iirc7"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="6_6q6hn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk5hi"]
 size = Vector3(1, 4, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2vp7l"]
-size = Vector3(1, 16, 3)
+size = Vector3(1, 7, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kqjv8"]
 size = Vector3(26, 11, 21)
@@ -23,6 +25,12 @@ size = Vector3(32, 24, 26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ohbpi"]
 size = Vector3(32, 18, 26)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iirc7"]
+size = Vector3(2, 0.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6q6hn"]
+size = Vector3(2, 0.5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iirc7"]
 size = Vector3(16, 18, 17)
@@ -123,11 +131,11 @@ script = ExtResource("3_xk5hi")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber4ToChamber6"]
-transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98434, -3.2, 3.98425)
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98434, -1.7, 3.98425)
 shape = SubResource("BoxShape3D_2vp7l")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber6/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.5, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber4ToChamber6"]
 transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, -1.44998, -0.5, 3.95002)
@@ -294,9 +302,9 @@ size = Vector3(29, 4, 19)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.5, 0)
 operation = 2
-size = Vector3(21, 11, 19)
+size = Vector3(21, 7, 19)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
@@ -306,9 +314,9 @@ size = Vector3(3, 4, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -1, 0)
 operation = 2
-size = Vector3(4, 11, 3)
+size = Vector3(4, 6, 3)
 material = ExtResource("1_7c171")
 
 [node name="BlueChamber1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
@@ -364,6 +372,78 @@ shape = SubResource("BoxShape3D_ohbpi")
 [node name="Gate" parent="BlueChamber4/Chunk" instance=ExtResource("4_2vp7l")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -8, 0)
 
+[node name="Rails1" parent="BlueChamber4/Chunk" instance=ExtResource("5_6q6hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -6, -8)
+
+[node name="PointA" parent="BlueChamber4/Chunk/Rails1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400002, -0.5, 0)
+
+[node name="Interactable" parent="BlueChamber4/Chunk/Rails1/PointA" index="0"]
+visible = false
+
+[node name="PointB" parent="BlueChamber4/Chunk/Rails1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
+
+[node name="Interactable" parent="BlueChamber4/Chunk/Rails1/PointB" index="0"]
+visible = false
+
+[node name="Ledge" type="StaticBody3D" parent="BlueChamber4/Chunk/Rails1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber4/Chunk/Rails1/Ledge"]
+mesh = SubResource("BoxMesh_iirc7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4/Chunk/Rails1/Ledge"]
+shape = SubResource("BoxShape3D_6q6hn")
+
+[node name="Rails2" parent="BlueChamber4/Chunk" instance=ExtResource("5_6q6hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -2.5)
+
+[node name="PointA" parent="BlueChamber4/Chunk/Rails2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400002, -0.5, 0)
+
+[node name="Interactable" parent="BlueChamber4/Chunk/Rails2/PointA" index="0"]
+visible = false
+
+[node name="PointB" parent="BlueChamber4/Chunk/Rails2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
+
+[node name="Interactable" parent="BlueChamber4/Chunk/Rails2/PointB" index="0"]
+visible = false
+
+[node name="Ledge" type="StaticBody3D" parent="BlueChamber4/Chunk/Rails2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber4/Chunk/Rails2/Ledge"]
+mesh = SubResource("BoxMesh_iirc7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4/Chunk/Rails2/Ledge"]
+shape = SubResource("BoxShape3D_6q6hn")
+
+[node name="Rails3" parent="BlueChamber4/Chunk" instance=ExtResource("5_6q6hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -2.3, 3.5)
+
+[node name="PointA" parent="BlueChamber4/Chunk/Rails3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400002, -0.5, 0)
+
+[node name="Interactable" parent="BlueChamber4/Chunk/Rails3/PointA" index="0"]
+visible = false
+
+[node name="PointB" parent="BlueChamber4/Chunk/Rails3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, 0)
+
+[node name="Interactable" parent="BlueChamber4/Chunk/Rails3/PointB" index="0"]
+visible = false
+
+[node name="Ledge" type="StaticBody3D" parent="BlueChamber4/Chunk/Rails3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber4/Chunk/Rails3/Ledge"]
+mesh = SubResource("BoxMesh_iirc7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber4/Chunk/Rails3/Ledge"]
+shape = SubResource("BoxShape3D_6q6hn")
+
 [node name="BlueChamber5" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 0, 0)
 script = ExtResource("2_xk5hi")
@@ -377,7 +457,7 @@ shape = SubResource("BoxShape3D_ohbpi")
 [node name="Chunk" type="Node3D" parent="BlueChamber5"]
 
 [node name="Gate" parent="BlueChamber5/Chunk" instance=ExtResource("4_2vp7l")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -8, 0)
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -4, 0)
 
 [node name="BlueChamber6" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 0, 0)
@@ -391,5 +471,14 @@ shape = SubResource("BoxShape3D_iirc7")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber6"]
 
+[node name="PressurePlate" parent="BlueChamber6/Chunk" instance=ExtResource("6_6q6hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -4, -6)
+_element = "red"
+
 [node name="Geyser" parent="." instance=ExtResource("5_iirc7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, -15, -9)
+size = 10.0
+
+[editable path="BlueChamber4/Chunk/Rails1"]
+[editable path="BlueChamber4/Chunk/Rails2"]
+[editable path="BlueChamber4/Chunk/Rails3"]

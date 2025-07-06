@@ -40,7 +40,7 @@ func _on_interactable_interacted(obj:Node3D) -> void:
 	slide()
 
 
-func slide(_v :Variant=null) -> void:
+func slide(_v: Variant=null) -> void:
 	_in_motion = true
 	var d1 := _puzzle_block.global_position.distance_squared_to(point_a.global_position)
 	var d2 := _puzzle_block.global_position.distance_squared_to(point_b.global_position)

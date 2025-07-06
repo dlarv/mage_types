@@ -19,6 +19,7 @@ var player: Node3D
 var _label: Label
 
 func _enter_tree():
+	disabled = not visible
 	# Interaction prompt
 	_label = get_node("Label")
 	if not Engine.is_editor_hint():
@@ -81,3 +82,8 @@ func ignore() -> void:
 func toggle_force_show(val: bool) -> void:
 	force = val
 	_label.visible = val
+
+
+func _on_visibility_changed() -> void:
+	disabled = not visible
+
