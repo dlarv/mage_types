@@ -482,6 +482,8 @@ The issues arise between the player controller, Draggables, and the interaction 
 **Puzzles should be designed using simple building blocks.**
 - [x] Light up wire should show how different puzzle blocks are connected and whether they are active.
 
+>[!important] Delays and Pressure plates
+>Delays and pressure plates do not work together well. When the player drops a block on the pressure plate, it temporarily exits the tree. When it reenters, it does not reactivate the delay.
 ### Puzzle Archetype (puar)
 **Puzzles should follow different archetypes that expand on each other.**
 
