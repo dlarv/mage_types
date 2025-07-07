@@ -746,12 +746,7 @@ shape = SubResource("BoxShape3D_iirc7")
 [node name="Chunk" type="Node3D" parent="BlueChamber6"]
 
 [node name="StasisBoss" parent="BlueChamber6/Chunk" instance=ExtResource("8_t4i8l")]
-transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 0, 0.497048, 0)
-
-[node name="PressurePlate" parent="." instance=ExtResource("6_6q6hn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 1)
-_element = "red"
-base_size = Vector3(-9, -1, 1)
+transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 0, -1.40295, 0)
 
 [connection signal="off" from="BlueChamber4/Chunk/GolemPuzzle/PressurePlate1" to="BlueChamber4/Chunk/GolemPuzzle/Timer1" method="_on_lock_opened"]
 [connection signal="on" from="BlueChamber4/Chunk/GolemPuzzle/PressurePlate1" to="BlueChamber4/Chunk/GolemPuzzle/Rails1" method="slide"]

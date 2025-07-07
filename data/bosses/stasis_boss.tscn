@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d3odmmlqvwyfn"]
+[gd_scene load_steps=18 format=4 uid="uid://d3odmmlqvwyfn"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_o2drr"]
 [ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_ob5kh"]
@@ -54,11 +54,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v71ip")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_4gwb2"]
-radius = 1.41572
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_ucadb"]
-radius = 1.56864
+radius = 1.0
 
 [sub_resource type="Resource" id="Resource_teu4u"]
 script = ExtResource("6_wfdj4")
@@ -75,20 +72,16 @@ _transmutation_pref = "blank"
 dialog_ids = Array[ExtResource("8_egm4k")]([])
 
 [node name="StasisBoss" instance=ExtResource("1_o2drr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
 collision_layer = 5
 
 [node name="blob2" parent="." index="1" instance=ExtResource("2_ob5kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="blob" parent="blob2" index="0"]
 mesh = SubResource("ArrayMesh_ebg5x")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="blob2/blob" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="blob2/blob/StaticBody3D" index="0"]
-shape = SubResource("SphereShape3D_4gwb2")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_ucadb")
 
 [node name="StoryActor" parent="." index="3" instance=ExtResource("5_kx5lj")]
