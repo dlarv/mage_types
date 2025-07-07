@@ -123,6 +123,12 @@ Area is built on a 6x1 structure. The puzzle challenges are contained in rooms c
 - *Room (c)*: I want this puzzle to use the interaction between the player, geysers, and golems. I'm tempted to make Magenta golems bounce the player up really high, but if not I'll simply have the player jump off of the Golem's head.
 ### Northern Blue Wing
 This section will be accessible from Southern Blue Wing room b by using a Golem to parkour into a pipe. This section should be primarily puzzle based, focusing on the Golem and Stasis spells the player now has access to.
+
+>[!note] Ramping up of scope
+>I think this would be a good place to start increasing the puzzle scope. So far (v0.4.25), all puzzles have only had 1 layer to them.
+
+- I want this section to work as a giant puzzle box, where solving puzzles move giant mechanisms the player can watch.
+- These will primarily be stasis and golem puzzles.
 ### Orange Wing
 This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
 ### Eastern Red Wing
