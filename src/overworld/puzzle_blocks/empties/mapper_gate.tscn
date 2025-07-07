@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://eqenv56ihr4q"]
 
-[ext_resource type="Script" uid="uid://6hfulfycmr3j" path="res://src/overworld/puzzle_blocks/logic_gates/MapperGate.gd" id="1_whq1t"]
+[ext_resource type="Script" uid="uid://6hfulfycmr3j" path="res://src/overworld/puzzle_blocks/empties/MapperGate.gd" id="1_whq1t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_238bf"]
 size = Vector3(0, 0, 0)

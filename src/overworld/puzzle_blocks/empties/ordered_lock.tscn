@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbl7f7rwr5b0v"]
+
+[ext_resource type="Script" uid="uid://ijo0t5mi7rw5" path="res://src/overworld/puzzle_blocks/empties/OrderedLock.gd" id="1_cjqlm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjqlm"]
+
+[node name="OrderedLock" type="Area3D"]
+script = ExtResource("1_cjqlm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cjqlm")
