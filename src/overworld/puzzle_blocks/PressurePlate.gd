@@ -37,9 +37,13 @@ func _on_body_entered(body: Node3D) -> void:
 	if can_player_trigger and _test_for_player(body):
 		_try_emit_on()
 		Logger.append_puzzle_log("PressurePlate(%s) was activated by player." % [puzzle_name])
-	elif body is MagiClay and body.element == element:
-		Logger.append_puzzle_log("PressurePlate(%s) was activated by MagiClay(%s)." % [puzzle_name, body.puzzle_name])
-
+	elif body.in_stasis:
+		Logger.append_puzzle_log("PressurePlate(%s) could not be activated by MagiClay(%s), b/c its in stasis." 
+				% [puzzle_name, body.puzzle_name])
+		off.emit(self)
+	elif body.element == element:
+		Logger.append_puzzle_log("PressurePlate(%s) was activated by MagiClay(%s)." 
+				% [puzzle_name, body.puzzle_name])
 		_try_emit_on()
 	else:
 		Logger.append_puzzle_log("PressurePlate(%s) was stepped on, but not activated, by Object(%s). Object is Element(%s), but plate requires Element(%s)." 
