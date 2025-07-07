@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://btpmu7dnqhtcg"]
+[gd_scene load_steps=6 format=3 uid="uid://btpmu7dnqhtcg"]
 
 [ext_resource type="Script" uid="uid://mgdjoajhl88i" path="res://src/overworld/puzzle_blocks/Button.gd" id="1_rysui"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_a17w7"]
@@ -7,8 +7,12 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_pvkp6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0f4t"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
 [node name="Button" type="StaticBody3D"]
 script = ExtResource("1_rysui")
+toggle_mode = null
 is_on = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -16,6 +20,7 @@ shape = SubResource("BoxShape3D_1q4ab")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_pvkp6")
+surface_material_override/0 = SubResource("StandardMaterial3D_b0f4t")
 
 [node name="Interactable" parent="." instance=ExtResource("2_a17w7")]
 
