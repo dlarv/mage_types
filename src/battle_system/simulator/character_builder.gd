@@ -25,7 +25,6 @@ var _items := []
 var ai: OpponentController
 
 func _ready():
-	print("start")
 	_button_group = ButtonGroup.new()
 	_button_group.pressed.connect(_on_character_selected)
 

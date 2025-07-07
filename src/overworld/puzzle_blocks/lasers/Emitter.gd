@@ -22,7 +22,6 @@ func _ready() -> void:
 
 func start(val: Variant=null) -> void: 
 	if Engine.is_editor_hint(): return
-	print("start")
 	super.start(val)
 	_is_on = true
 	$SubEmitter.start()
