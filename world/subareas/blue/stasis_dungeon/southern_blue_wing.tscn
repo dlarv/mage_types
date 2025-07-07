@@ -624,6 +624,10 @@ shape = SubResource("BoxShape3D_opth2")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber2"]
 
+[node name="MagiClayTerrain" parent="BlueChamber2/Chunk" instance=ExtResource("2_tmi81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1, -6)
+_element = "red"
+
 [node name="BlueChamber3" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 0, 0)
 script = ExtResource("2_xk5hi")
