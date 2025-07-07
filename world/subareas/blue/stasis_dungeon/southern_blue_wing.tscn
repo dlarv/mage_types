@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://cirl3we5riu76"]
+[gd_scene load_steps=39 format=3 uid="uid://cirl3we5riu76"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
+[ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="2_u5ech"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="2_xk5hi"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="3_xk5hi"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_2vp7l"]
@@ -8,8 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="5_iirc7"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="6_6q6hn"]
 [ext_resource type="PackedScene" uid="uid://sbh0qf0ppd8m" path="res://src/overworld/puzzle_blocks/timer.tscn" id="6_d1ury"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="6_eo5jp"]
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="6_r2mbl"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_j8t8l"]
+[ext_resource type="PackedScene" uid="uid://eqenv56ihr4q" path="res://src/overworld/puzzle_blocks/empties/mapper_gate.tscn" id="7_u5ech"]
 [ext_resource type="PackedScene" uid="uid://d3odmmlqvwyfn" path="res://data/bosses/stasis_boss.tscn" id="8_t4i8l"]
+[ext_resource type="PackedScene" uid="uid://bbl7f7rwr5b0v" path="res://src/overworld/puzzle_blocks/empties/ordered_lock.tscn" id="13_l4yk4"]
+[ext_resource type="PackedScene" uid="uid://xss5he7h36fs" path="res://src/overworld/puzzle_blocks/lasers/hidden_receiver.tscn" id="14_3g3od"]
+[ext_resource type="PackedScene" uid="uid://btpmu7dnqhtcg" path="res://src/overworld/puzzle_blocks/button.tscn" id="15_2hx8x"]
+[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="18_vx8gm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk5hi"]
 size = Vector3(1, 4, 3)
@@ -29,23 +37,56 @@ size = Vector3(32, 24, 26)
 [sub_resource type="BoxMesh" id="BoxMesh_iirc7"]
 size = Vector3(2, 0.5, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8t8l"]
-albedo_color = Color(0.501961, 0, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx8gm"]
+albedo_color = Color(0.321569, 0.0941176, 0.980392, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6q6hn"]
 size = Vector3(2, 0.5, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2mbl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3fo2"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r2mbl"]
 size = Vector3(4, 0.5, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooq3y"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r2mbl"]
 size = Vector3(4, 0.5, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ohbpi"]
 size = Vector3(32, 18, 26)
+
+[sub_resource type="Curve3D" id="Curve3D_w3fo2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.200001, 0, 0, 0, 0, 0, 0, -0.119995, -2.964, -0.1, 0, 0, 0, 0, 0, 0, 0.000457764, -2.96399, 11.3738),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0ace"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_vx8gm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.200001, 0, 0, 0, 0, 0, 0, -0.119995, -2.964, -0.1, 0, 0, 0, 0, 0, 0, 0.000457764, -2.96399, 11.3738, 0, 0, 0, 0, 0, 0, 2.69339, -2.96399, 11.3717, 0, 0, 0, 0, 0, 0, 2.51042, -2.96399, 18.7528, 0, 0, 0, 0, 0, 0, -13.4579, -2.91616, 18.7405),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b35vk"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_ooq3y"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1, 0, -0.200001, 0, 0, 0, 0, 0, 0, -1.12, -2.964, -0.1, 0, 0, 0, 0, 0, 0, -0.999542, -2.96399, 2.67381, 0, 0, 0, 0, 0, 0, -1.96678, -2.96399, 2.63927, 0, 0, 0, 0, 0, 0, -2.17542, -2.83643, 2.57271, 0, 0, 0, 0, 0, 0, -2.31906, -2.80957, 2.58345, 0, 0, 0, 0, 0, 0, -2.47791, -3.02102, 2.6728, 0, 0, 0, 0, 0, 0, -2.99303, -3.02563, 2.75122, 0, 0, 0, 0, 0, 0, -3.13217, -2.8866, 2.65767, 0, 0, 0, 0, 0, 0, -3.25244, -2.84973, 2.66316, 0, 0, 0, 0, 0, 0, -3.56392, -2.90076, 2.75679, 0, 0, 0, 0, 0, 0, -3.62871, -2.95618, 2.70134, 0, 0, 0, 0, 0, 0, -4.9201, -2.95642, 2.67303),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmi81"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iirc7"]
 size = Vector3(16, 18, 17)
@@ -104,18 +145,18 @@ script = ExtResource("3_xk5hi")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber3ToChamber4"]
-transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98435, -7.6, 3.98425)
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98435, -10.6, 3.98425)
 shape = SubResource("BoxShape3D_2vp7l")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber3ToChamber4/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber3ToChamber4"]
 transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 0.550018, 0.5, 3.95002)
 shape = SubResource("BoxShape3D_xk5hi")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber3ToChamber4/CollisionShape3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 
 [node name="Chamber4ToChamber5" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, -4)
@@ -125,7 +166,7 @@ script = ExtResource("3_xk5hi")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber4ToChamber5"]
-transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98435, -2.6, 3.98425)
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98435, -4.6, 3.98425)
 shape = SubResource("BoxShape3D_2vp7l")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber5/CollisionShape3D"]
@@ -146,11 +187,11 @@ script = ExtResource("3_xk5hi")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Chamber4ToChamber6"]
-transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98434, -1.7, 3.98425)
+transform = Transform3D(-1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, -1, -4.98434, -0.7, 3.98425)
 shape = SubResource("BoxShape3D_2vp7l")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber6/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.1, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Chamber4ToChamber6"]
 transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, -1.44998, -0.5, 3.95002)
@@ -265,7 +306,7 @@ size = Vector3(3, 4, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -5, 0)
 operation = 2
 size = Vector3(4, 18, 3)
 material = ExtResource("1_7c171")
@@ -329,7 +370,7 @@ size = Vector3(3, 4, 3)
 material = ExtResource("1_7c171")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9, 0, 0)
 operation = 2
 size = Vector3(4, 6, 3)
 material = ExtResource("1_7c171")
@@ -369,17 +410,50 @@ shape = SubResource("BoxShape3D_r2oxx")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber3"]
 
-[node name="Gate" parent="BlueChamber3/Chunk" instance=ExtResource("4_2vp7l")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -15, 0)
-
 [node name="StasisPuzzle" type="Node3D" parent="BlueChamber3/Chunk"]
-visible = false
+
+[node name="Gate" parent="BlueChamber3/Chunk/StasisPuzzle" node_paths=PackedStringArray("locks") instance=ExtResource("4_2vp7l")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -14, 0)
+locks = [NodePath("../MapperGate1"), NodePath("../HiddenReceiver2"), NodePath("../HiddenReceiver3")]
+
+[node name="Emitter1" parent="BlueChamber3/Chunk/StasisPuzzle" instance=ExtResource("7_j8t8l")]
+transform = Transform3D(1.37337e-15, 1.31135e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 1.31135e-07, -7, -14, -9.49969)
+_element = "orange"
+
+[node name="HiddenReceiver1" parent="BlueChamber3/Chunk/StasisPuzzle" instance=ExtResource("14_3g3od")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -14, 9.3)
+_element = "orange"
+
+[node name="MapperGate1" parent="BlueChamber3/Chunk/StasisPuzzle" node_paths=PackedStringArray("lock") instance=ExtResource("7_u5ech")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -13, 9)
+lock = NodePath("../HiddenReceiver1")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="HiddenReceiver2" parent="BlueChamber3/Chunk/StasisPuzzle" instance=ExtResource("14_3g3od")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, -14, 9.3)
+_element = "blue"
+
+[node name="Emitter3" parent="BlueChamber3/Chunk/StasisPuzzle" instance=ExtResource("7_j8t8l")]
+transform = Transform3D(1.37337e-15, 1.31135e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 1.31135e-07, -1, -14, -9.49969)
+_element = "blue"
+
+[node name="Emitter4" parent="BlueChamber3/Chunk/StasisPuzzle" instance=ExtResource("7_j8t8l")]
+transform = Transform3D(1.37337e-15, 1.31135e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 1.31135e-07, 5, -14, -9.49969)
+_element = "magenta"
+
+[node name="HiddenReceiver3" parent="BlueChamber3/Chunk/StasisPuzzle" instance=ExtResource("14_3g3od")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, -14, 9.3)
+_element = "magenta"
 
 [node name="GolemPuzzle" type="Node3D" parent="BlueChamber3/Chunk"]
+visible = false
 
 [node name="Geyser" parent="BlueChamber3/Chunk/GolemPuzzle" instance=ExtResource("5_iirc7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -9.2, 2.5)
 size = 6.0
+base_size = Vector3(60.5, -9.2, 2.5)
 
 [node name="Ledge1" type="StaticBody3D" parent="BlueChamber3/Chunk/GolemPuzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -13.5, 6)
@@ -388,7 +462,7 @@ _element = "purple"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber3/Chunk/GolemPuzzle/Ledge1"]
 mesh = SubResource("BoxMesh_iirc7")
-surface_material_override/0 = SubResource("StandardMaterial3D_j8t8l")
+surface_material_override/0 = SubResource("StandardMaterial3D_vx8gm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3/Chunk/GolemPuzzle/Ledge1"]
 shape = SubResource("BoxShape3D_6q6hn")
@@ -400,7 +474,7 @@ _element = "red"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber3/Chunk/GolemPuzzle/Ledge2"]
 mesh = SubResource("BoxMesh_iirc7")
-surface_material_override/0 = SubResource("StandardMaterial3D_r2mbl")
+surface_material_override/0 = SubResource("StandardMaterial3D_w3fo2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3/Chunk/GolemPuzzle/Ledge2"]
 shape = SubResource("BoxShape3D_6q6hn")
@@ -412,7 +486,7 @@ _element = "red"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber3/Chunk/GolemPuzzle/Ledge3"]
 mesh = SubResource("BoxMesh_r2mbl")
-surface_material_override/0 = SubResource("StandardMaterial3D_r2mbl")
+surface_material_override/0 = SubResource("StandardMaterial3D_ooq3y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3/Chunk/GolemPuzzle/Ledge3"]
 shape = SubResource("BoxShape3D_r2mbl")
@@ -428,9 +502,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -0.5, 2.5)
 shape = SubResource("BoxShape3D_ohbpi")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber4"]
-
-[node name="Gate" parent="BlueChamber4/Chunk" instance=ExtResource("4_2vp7l")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -8, 0)
 
 [node name="GolemPuzzle" type="Node3D" parent="BlueChamber4/Chunk"]
 visible = false
@@ -462,6 +533,7 @@ shape = SubResource("BoxShape3D_6q6hn")
 [node name="PressurePlate1" parent="BlueChamber4/Chunk/GolemPuzzle" instance=ExtResource("6_6q6hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -8, -6)
 _element = "blue"
+base_size = Vector3(113, -8, -6)
 
 [node name="Timer1" parent="BlueChamber4/Chunk/GolemPuzzle" instance=ExtResource("6_d1ury")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -7, -8)
@@ -494,6 +566,7 @@ shape = SubResource("BoxShape3D_6q6hn")
 [node name="PressurePlate2" parent="BlueChamber4/Chunk/GolemPuzzle" instance=ExtResource("6_6q6hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -8, 0)
 _element = "blue"
+base_size = Vector3(113, -8, 0)
 
 [node name="Timer2" parent="BlueChamber4/Chunk/GolemPuzzle" instance=ExtResource("6_d1ury")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -7, -8)
@@ -526,10 +599,48 @@ shape = SubResource("BoxShape3D_6q6hn")
 [node name="PressurePlate3" parent="BlueChamber4/Chunk/GolemPuzzle" instance=ExtResource("6_6q6hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -8, 6)
 _element = "blue"
+base_size = Vector3(113, -8, 6)
 
 [node name="Timer3" parent="BlueChamber4/Chunk/GolemPuzzle" instance=ExtResource("6_d1ury")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -7, -8)
 delay = 5.0
+
+[node name="StasisPuzzle" type="Node3D" parent="BlueChamber4/Chunk"]
+
+[node name="Gate" parent="BlueChamber4/Chunk/StasisPuzzle" node_paths=PackedStringArray("locks") instance=ExtResource("4_2vp7l")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -8, 0)
+locks = [NodePath("../HiddenReceiver1"), NodePath("../MapperGate2"), NodePath("../HiddenReceiver3")]
+
+[node name="Emitter1" parent="BlueChamber4/Chunk/StasisPuzzle" instance=ExtResource("7_j8t8l")]
+transform = Transform3D(1.37337e-15, 1.31135e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 1.31135e-07, -7, -7, -9.49969)
+_element = "red"
+
+[node name="HiddenReceiver1" parent="BlueChamber4/Chunk/StasisPuzzle" instance=ExtResource("14_3g3od")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -7, 9.3)
+_element = "red"
+
+[node name="Emitter2" parent="BlueChamber4/Chunk/StasisPuzzle" instance=ExtResource("7_j8t8l")]
+transform = Transform3D(1.37337e-15, 1.31135e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 1.31135e-07, -1, -7, -9.49969)
+_element = "blue"
+
+[node name="HiddenReceiver2" parent="BlueChamber4/Chunk/StasisPuzzle" instance=ExtResource("14_3g3od")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, -7, 9.3)
+_element = "blue"
+
+[node name="MapperGate2" parent="BlueChamber4/Chunk/StasisPuzzle" node_paths=PackedStringArray("lock") instance=ExtResource("7_u5ech")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -6, 9)
+lock = NodePath("../HiddenReceiver2")
+map_on_to = "off"
+map_off_to = "on"
+map_invalid_off_to = "off"
+
+[node name="Emitter3" parent="BlueChamber4/Chunk/StasisPuzzle" instance=ExtResource("7_j8t8l")]
+transform = Transform3D(1.37337e-15, 1.31135e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 1.31135e-07, 5, -7, -9.49969)
+_element = "purple"
+
+[node name="HiddenReceiver3" parent="BlueChamber4/Chunk/StasisPuzzle" instance=ExtResource("14_3g3od")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, -7, 9.3)
+_element = "purple"
 
 [node name="BlueChamber5" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143, 0, 0)
@@ -543,12 +654,83 @@ shape = SubResource("BoxShape3D_ohbpi")
 
 [node name="Chunk" type="Node3D" parent="BlueChamber5"]
 
-[node name="Gate" parent="BlueChamber5/Chunk" instance=ExtResource("4_2vp7l")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -4, 0)
+[node name="Gate" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_2vp7l")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10, -3, 0)
+locks = [NodePath("../OrderedLock")]
+permanent = true
+
+[node name="OrderedLock" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("13_l4yk4")]
+locks = [NodePath("../Timer"), NodePath("../LaserReceiver"), NodePath("../PressurePlate")]
 
 [node name="PressurePlate" parent="BlueChamber5/Chunk" instance=ExtResource("6_6q6hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -4, -6)
 _element = "red"
+base_size = Vector3(146, -4, -6)
+
+[node name="MagiclayRock" parent="BlueChamber5/Chunk" instance=ExtResource("2_u5ech")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -3.5, -6)
+_element = "red"
+
+[node name="Timer" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("lock") instance=ExtResource("6_d1ury")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3.5, 3)
+lock = NodePath("../Button")
+delay = 2.0
+
+[node name="Button" parent="BlueChamber5/Chunk" instance=ExtResource("15_2hx8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -3.5, 3)
+
+[node name="Emitter" parent="BlueChamber5/Chunk" instance=ExtResource("7_j8t8l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -8, -3.6, -9.5)
+_element = "orange"
+
+[node name="LaserReceiver" parent="BlueChamber5/Chunk" instance=ExtResource("6_eo5jp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, -3.6, 9.3)
+_element = "orange"
+
+[node name="Wire" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -9.3)
+target = NodePath("../Timer")
+
+[node name="Path" parent="BlueChamber5/Chunk/Wire" index="0"]
+curve = SubResource("Curve3D_w3fo2")
+
+[node name="Body" parent="BlueChamber5/Chunk/Wire/Path" index="0"]
+path_rotation_accurate = false
+material = SubResource("StandardMaterial3D_y0ace")
+
+[node name="Head" parent="BlueChamber5/Chunk/Wire" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100006, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_y0ace")
+
+[node name="Wire2" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, -9.3)
+target = NodePath("../LaserReceiver")
+
+[node name="Path" parent="BlueChamber5/Chunk/Wire2" index="0"]
+curve = SubResource("Curve3D_vx8gm")
+
+[node name="Body" parent="BlueChamber5/Chunk/Wire2/Path" index="0"]
+path_rotation_accurate = false
+material = SubResource("StandardMaterial3D_b35vk")
+
+[node name="Head" parent="BlueChamber5/Chunk/Wire2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100006, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_b35vk")
+
+[node name="Wire3" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, -9.3)
+target = NodePath("../PressurePlate")
+
+[node name="Path" parent="BlueChamber5/Chunk/Wire3" index="0"]
+curve = SubResource("Curve3D_ooq3y")
+
+[node name="Body" parent="BlueChamber5/Chunk/Wire3/Path" index="0"]
+path_rotation_accurate = false
+material = SubResource("StandardMaterial3D_tmi81")
+
+[node name="Head" parent="BlueChamber5/Chunk/Wire3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10001, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_tmi81")
 
 [node name="BlueChamber6" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 0, 0)
@@ -568,6 +750,7 @@ transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 
 [node name="PressurePlate" parent="." instance=ExtResource("6_6q6hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 1)
 _element = "red"
+base_size = Vector3(-9, -1, 1)
 
 [connection signal="off" from="BlueChamber4/Chunk/GolemPuzzle/PressurePlate1" to="BlueChamber4/Chunk/GolemPuzzle/Timer1" method="_on_lock_opened"]
 [connection signal="on" from="BlueChamber4/Chunk/GolemPuzzle/PressurePlate1" to="BlueChamber4/Chunk/GolemPuzzle/Rails1" method="slide"]
@@ -582,3 +765,6 @@ _element = "red"
 [editable path="BlueChamber4/Chunk/GolemPuzzle/Rails1"]
 [editable path="BlueChamber4/Chunk/GolemPuzzle/Rails2"]
 [editable path="BlueChamber4/Chunk/GolemPuzzle/Rails3"]
+[editable path="BlueChamber5/Chunk/Wire"]
+[editable path="BlueChamber5/Chunk/Wire2"]
+[editable path="BlueChamber5/Chunk/Wire3"]
