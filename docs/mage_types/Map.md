@@ -113,9 +113,9 @@ Area is built on a 3x4 structure. It will consist of mostly platforming and comb
 Area is built on a 6x1 structure. The puzzle challenges are contained in rooms c, d, & e. The first time the player traverses these rooms (West-East), they solve Stasis puzzles to open gates. Upon reaching room f, they will fight a miniboss and receive the Golem spell. The player then backtracks thru c, d, & e, using the Golem spell to ascend otherwise impassible cliffs.
 
 **Stasis Puzzles**:
-- *Room (c)*: 
-- *Room (d)*:
-- *Room (e)*:
+- *Room (c)*: Odd-one-out. Turn off offensive/Orange laser.
+- *Room (d)*: Odd-one-out. Turn off defensive/Blue laser.
+- *Room (e)*: Player must activate 3 puzzle blocks in a specific order. Once they activate the first, they'll have a time limit to do the other 2. One piece is a block that must be put on a pressure plate, so the player must use stasis to ensure it activates at the right time.
 
 **Golem Puzzles**:
 - *Room (e)*: will require the player to channel a Red pressure plate to create a golem, which they will stand on to jump onto the ledge.

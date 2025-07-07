@@ -55,9 +55,9 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 				- [x] Connect hole to Blue Wing
 		- [ ] Southern Blue Wing
 			- [x] Layout 
-			- [ ] Stasis puzzles created
+			- [x] Stasis puzzles created
 			- [x] Simple golem puzzles created
-			- [ ] Stasis miniboss designed
+			- [ ] Stasis miniboss tested
 			- [ ] Environment modeled
 			- [ ] Orange chatlogs added
 			- [ ] Golem room created
