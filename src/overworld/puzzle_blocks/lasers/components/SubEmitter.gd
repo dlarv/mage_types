@@ -17,6 +17,8 @@ var is_on := true
 
 func _ready() -> void:
 	_mat = StandardMaterial3D.new()
+	_mat.emission_enabled = true
+	_mat.emission = Color.WHITE
 	mesh.set_surface_override_material(0, _mat)
 	laser = Laser.new()
 
@@ -79,6 +81,7 @@ func set_element(e: ElementalType) -> void:
 	if Engine.is_editor_hint() or not is_inside_tree(): return
 	laser.element = e
 	_mat.albedo_color = e.main_color
+	_mat.emission = e.main_color
 	mesh.set_surface_override_material(0, _mat)
 	laser.rand_val = Time.get_ticks_usec()
 
