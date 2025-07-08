@@ -24,105 +24,6 @@
 [ext_resource type="Resource" uid="uid://5l78hk1jadb6" path="res://data/items/key_items/golem_spell.tres" id="21_tmi81"]
 [ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="22_rqrum"]
 
-[sub_resource type="Animation" id="Animation_b35vk"]
-resource_name = "setup_golem_puzzles"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlueChamber3/Chunk/GolemPuzzle1:process_mode")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlueChamber3/Chunk/GolemPuzzle1:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BlueChamber4/Chunk/GolemPuzzle2:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BlueChamber4/Chunk/GolemPuzzle2:process_mode")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BlueChamber4/Chunk/StasisPuzzle2:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BlueChamber4/Chunk/StasisPuzzle2:process_mode")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BlueChamber3/Chunk/StasisPuzzle1:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BlueChamber3/Chunk/StasisPuzzle1:process_mode")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-
 [sub_resource type="Animation" id="Animation_tmi81"]
 length = 0.001
 tracks/0/type = "value"
@@ -222,6 +123,105 @@ tracks/7/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_b35vk"]
+resource_name = "setup_golem_puzzles"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueChamber3/Chunk/GolemPuzzle1:process_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueChamber3/Chunk/GolemPuzzle1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlueChamber4/Chunk/GolemPuzzle2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlueChamber4/Chunk/GolemPuzzle2:process_mode")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlueChamber4/Chunk/StasisPuzzle2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BlueChamber4/Chunk/StasisPuzzle2:process_mode")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlueChamber3/Chunk/StasisPuzzle1:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlueChamber3/Chunk/StasisPuzzle1:process_mode")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmi81"]
 _data = {
 &"RESET": SubResource("Animation_tmi81"),
@@ -246,19 +246,19 @@ size = Vector3(32, 24, 26)
 [sub_resource type="BoxMesh" id="BoxMesh_iirc7"]
 size = Vector3(2, 0.5, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cld1e"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmi81"]
 albedo_color = Color(0.321569, 0.0941176, 0.980392, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6q6hn"]
 size = Vector3(2, 0.5, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfxe6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqrum"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r2mbl"]
 size = Vector3(4, 0.5, 4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpvwr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cld1e"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r2mbl"]
@@ -274,7 +274,7 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2qbw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfxe6"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_vx8gm"]
@@ -284,7 +284,7 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r47dw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpvwr"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_ooq3y"]
@@ -294,7 +294,7 @@ _data = {
 }
 point_count = 13
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwr14"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2qbw"]
 albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iirc7"]
@@ -693,7 +693,7 @@ _element = "purple"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber3/Chunk/GolemPuzzle1/Ledge1"]
 mesh = SubResource("BoxMesh_iirc7")
-surface_material_override/0 = SubResource("StandardMaterial3D_cld1e")
+surface_material_override/0 = SubResource("StandardMaterial3D_tmi81")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3/Chunk/GolemPuzzle1/Ledge1"]
 shape = SubResource("BoxShape3D_6q6hn")
@@ -705,7 +705,7 @@ _element = "red"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber3/Chunk/GolemPuzzle1/Ledge2"]
 mesh = SubResource("BoxMesh_iirc7")
-surface_material_override/0 = SubResource("StandardMaterial3D_pfxe6")
+surface_material_override/0 = SubResource("StandardMaterial3D_rqrum")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3/Chunk/GolemPuzzle1/Ledge2"]
 shape = SubResource("BoxShape3D_6q6hn")
@@ -717,7 +717,7 @@ _element = "red"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BlueChamber3/Chunk/GolemPuzzle1/Ledge3"]
 mesh = SubResource("BoxMesh_r2mbl")
-surface_material_override/0 = SubResource("StandardMaterial3D_hpvwr")
+surface_material_override/0 = SubResource("StandardMaterial3D_cld1e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueChamber3/Chunk/GolemPuzzle1/Ledge3"]
 shape = SubResource("BoxShape3D_r2mbl")
@@ -933,11 +933,11 @@ curve = SubResource("Curve3D_w3fo2")
 
 [node name="Body" parent="BlueChamber5/Chunk/Wire/Path" index="0"]
 path_rotation_accurate = false
-material = SubResource("StandardMaterial3D_t2qbw")
+material = SubResource("StandardMaterial3D_pfxe6")
 
 [node name="Head" parent="BlueChamber5/Chunk/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100006, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_t2qbw")
+surface_material_override/0 = SubResource("StandardMaterial3D_pfxe6")
 
 [node name="Wire2" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, -9.3)
@@ -948,11 +948,11 @@ curve = SubResource("Curve3D_vx8gm")
 
 [node name="Body" parent="BlueChamber5/Chunk/Wire2/Path" index="0"]
 path_rotation_accurate = false
-material = SubResource("StandardMaterial3D_r47dw")
+material = SubResource("StandardMaterial3D_hpvwr")
 
 [node name="Head" parent="BlueChamber5/Chunk/Wire2" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100006, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_r47dw")
+surface_material_override/0 = SubResource("StandardMaterial3D_hpvwr")
 
 [node name="Wire3" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, -9.3)
@@ -963,11 +963,11 @@ curve = SubResource("Curve3D_ooq3y")
 
 [node name="Body" parent="BlueChamber5/Chunk/Wire3/Path" index="0"]
 path_rotation_accurate = false
-material = SubResource("StandardMaterial3D_mwr14")
+material = SubResource("StandardMaterial3D_t2qbw")
 
 [node name="Head" parent="BlueChamber5/Chunk/Wire3" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10001, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_mwr14")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2qbw")
 
 [node name="BlueChamber6" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 0, 0)
