@@ -7,7 +7,7 @@
 friction = 0.0
 bounce = 0.3
 
-[node name="GeyserEngine" type="Node3D" groups=["detached_env"]]
+[node name="GeyserEngine" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
