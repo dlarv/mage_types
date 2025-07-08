@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=14 format=4 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" uid="uid://de6h1lv6q0qbt" path="res://src/player/PlayerController.gd" id="1_eca83"]
+[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_x42xx"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="3_e1u62"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="3_xfaiw"]
@@ -60,6 +61,7 @@ jump_time_to_peak = 0.2
 jump_time_to_descent = 0.25
 variable_jump_height_modifier = 20.0
 dash_speed = 500.0
+battle_actor = ExtResource("2_x42xx")
 team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
