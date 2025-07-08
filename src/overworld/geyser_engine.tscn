@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0s565uqigw5b"]
+[gd_scene load_steps=5 format=3 uid="uid://d0s565uqigw5b"]
 
-[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="1_s4kc4"]
-[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="2_jq8np"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_267ni"]
+[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="2_k00d7"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="3_pny70"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wcnjy"]
 friction = 0.0
@@ -16,65 +17,71 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 size = Vector3(30, 4, 30)
+material = ExtResource("1_267ni")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 operation = 2
 size = Vector3(29, 4, 29)
+material = ExtResource("1_267ni")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.5, 0)
 size = Vector3(1, 0.5, 20)
+material = ExtResource("1_267ni")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.5, 0)
 size = Vector3(1, 0.5, 20)
+material = ExtResource("1_267ni")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10.5)
 size = Vector3(20, 0.5, 1)
+material = ExtResource("1_267ni")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9.5)
 size = Vector3(20, 0.5, 1)
+material = ExtResource("1_267ni")
 
-[node name="Geyser_SW" parent="." instance=ExtResource("2_jq8np")]
+[node name="Geyser_SW" parent="." instance=ExtResource("2_k00d7")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.2, 2, 14.7)
 collision_layer = 0
 collision_mask = 0
 horizontal = true
 size = 25.0
-base_strength = 30.0
+base_strength = 20.0
 _element = "red"
 
-[node name="Geyser_NW" parent="." instance=ExtResource("2_jq8np")]
+[node name="Geyser_NW" parent="." instance=ExtResource("2_k00d7")]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -14.8, 2, -12.5)
 collision_layer = 0
 collision_mask = 0
 horizontal = true
 size = 25.0
-base_strength = 30.0
+base_strength = 20.0
 _element = "red"
 
-[node name="Geyser_NE" parent="." instance=ExtResource("2_jq8np")]
+[node name="Geyser_NE" parent="." instance=ExtResource("2_k00d7")]
 transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 12.7, 2, -14.8)
 collision_layer = 0
 collision_mask = 0
 horizontal = true
 size = 25.0
-base_strength = 30.0
+base_strength = 20.0
 _element = "red"
 
-[node name="Geyser_SE" parent="." instance=ExtResource("2_jq8np")]
+[node name="Geyser_SE" parent="." instance=ExtResource("2_k00d7")]
 transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 14.9, 2, 12.2)
 collision_layer = 0
 collision_mask = 0
 horizontal = true
 size = 25.0
-base_strength = 30.0
+base_strength = 20.0
 _element = "red"
 
-[node name="MagiclayBoulder" parent="." instance=ExtResource("1_s4kc4")]
+[node name="MagiclayBoulder" parent="." instance=ExtResource("3_pny70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.9, 11)
 axis_lock_linear_y = false
 physics_material_override = SubResource("PhysicsMaterial_wcnjy")
