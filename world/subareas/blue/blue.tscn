@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=99 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_puzzle_2.tscn" id="15_6yind"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_puzzle_3.tscn" id="16_cjdov"]
+[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="17_psjbi"]
 [ext_resource type="PackedScene" uid="uid://g8s0dqlwqnvb" path="res://world/subareas/blue/golem_testing_facility.tscn" id="17_yncb8"]
 [ext_resource type="PackedScene" uid="uid://cspipog36hcdh" path="res://src/overworld/puzzle_blocks/lasers/draggable_emitter.tscn" id="18_h3ywu"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
@@ -25,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cbmlyysi0hhkk" path="res://world/subareas/blue/stasis_dungeon/western_red_wing.tscn" id="23_mwtcr"]
 [ext_resource type="PackedScene" uid="uid://cirl3we5riu76" path="res://world/subareas/blue/stasis_dungeon/southern_blue_wing.tscn" id="24_j64is"]
 [ext_resource type="PackedScene" uid="uid://oibhckiyltxv" path="res://world/subareas/blue/stasis_dungeon/northern_blue_wing.tscn" id="25_ljs8d"]
+[ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://world/geyser_engine.tscn" id="26_7gnmi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(1.4, 1, 1)
@@ -187,6 +189,9 @@ size = Vector3(10, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_npiad"]
 size = Vector3(62, 25, 33)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1nkb5"]
+size = Vector3(31, 31, 31)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmhgq"]
 size = Vector3(25, 29, 25)
@@ -388,11 +393,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1089,11 +1095,12 @@ shape = SubResource("BoxShape3D_ilg5d")
 [node name="Marker3D" type="Marker3D" parent="Doors/CentralChamberToNW/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors"]
+[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 0, -531)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/WestRedWingToSouthBlueWing"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -310.5, -2.2, -133)
@@ -1636,6 +1643,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="MagiclayRock3" parent="HotelRooms/GolemTestingFacility" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+
+[node name="GeyserEngineChunk" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, -242)
+script = ExtResource("17_psjbi")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/GeyserEngineChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+shape = SubResource("BoxShape3D_1nkb5")
+
+[node name="Chunk" type="Node3D" parent="HotelRooms/GeyserEngineChunk"]
+
+[node name="GeyserEngine" parent="HotelRooms/GeyserEngineChunk/Chunk" instance=ExtResource("26_7gnmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 
 [node name="BackroomChunk1" type="Area3D" parent="HotelRooms" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, -291)

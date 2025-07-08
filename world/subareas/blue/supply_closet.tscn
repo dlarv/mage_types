@@ -167,7 +167,7 @@ delay = 5.0
 
 [node name="Button2" parent="SupplyClosetChunk" instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1, -2)
-toggle_mode = null
+toggle_mode = false
 
 [node name="Indicator6" parent="SupplyClosetChunk" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11)

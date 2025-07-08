@@ -1,27 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://oibhckiyltxv"]
+[gd_scene load_steps=2 format=3 uid="uid://oibhckiyltxv"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
-[ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://world/geyser_engine.tscn" id="2_tohrr"]
-[ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_uiwi1"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_uiwi1"]
-size = Vector3(32, 30, 32)
 
 [node name="NorthernBlueWing" type="Node3D"]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env"]]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 material = ExtResource("1_y0eai")
-
-[node name="GeyserEngine" parent="." instance=ExtResource("2_tohrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-
-[node name="DetachedChunk" type="Area3D" parent="."]
-script = ExtResource("3_uiwi1")
-metadata/_custom_type_script = "uid://cjk323awkifki"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DetachedChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-shape = SubResource("BoxShape3D_uiwi1")
