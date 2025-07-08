@@ -58,6 +58,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 			- [x] Stasis puzzles created
 			- [x] Simple golem puzzles created
 			- [ ] Stasis miniboss tested
+				- [ ] I need to create some stasis related attack
 			- [ ] Environment modeled
 			- [ ] Orange chatlogs added
 			- [ ] Golem room created
@@ -66,6 +67,7 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [ ] Northern Blue Wing
 			- [ ] Layout 
 			- [ ] Puzzles created
+				- [x] Geyser Engine prefab created
 			- [ ] Environment modeled
 			- [ ] Mural added
 			- [ ] Orange chatlogs added
