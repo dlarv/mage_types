@@ -122,11 +122,9 @@ func _on_stream_top_hit_box_entered(body: Node3D) -> void:
 
 func _on_stream_hit_box_exited(body: Node3D) -> void:
 	if body is RigidBody3D:
-		# Force is added twice, once when body enters main collider and again when it enters the top.
-		body.add_constant_force(-transform.basis.y * strength * 2)
+		body.add_constant_force(-transform.basis.y * strength)
 		# Logger.append_puzzle_log("Geyser(%s) spout was exited by PuzzleBlock(%s)" 
 		# 		% [puzzle_name, body.puzzle_name])
-		pass
 	elif body is CharacterBody3D:
 		var index := _players.find(body)
 		if index != -1:
@@ -210,6 +208,5 @@ func _animate_spout_size(val: float) -> void:
 
 
 func _on_stream_top_hit_box_body_exited(body:Node3D) -> void:
-	if body is Golem:
-		pass
-		# body.pause_gravity = true
+	if body is RigidBody3D:
+		body.add_constant_force(-transform.basis.y * strength)
