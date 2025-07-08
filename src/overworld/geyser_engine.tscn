@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0s565uqigw5b"]
+[gd_scene load_steps=6 format=3 uid="uid://d0s565uqigw5b"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_267ni"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="2_k00d7"]
 [ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="3_pny70"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="4_k00d7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wcnjy"]
 friction = 0.0
@@ -46,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9.5)
 size = Vector3(20, 0.5, 1)
 material = ExtResource("1_267ni")
 
-[node name="Geyser_SW" parent="." instance=ExtResource("2_k00d7")]
+[node name="GeyserSW" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.2, 2, 14.7)
 collision_layer = 0
@@ -56,7 +57,7 @@ size = 25.0
 base_strength = 20.0
 _element = "red"
 
-[node name="Geyser_NW" parent="." instance=ExtResource("2_k00d7")]
+[node name="GeyserNW" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -14.8, 2, -12.5)
 collision_layer = 0
@@ -66,7 +67,7 @@ size = 25.0
 base_strength = 20.0
 _element = "red"
 
-[node name="Geyser_NE" parent="." instance=ExtResource("2_k00d7")]
+[node name="GeyserNE" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
 transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 12.7, 2, -14.8)
 collision_layer = 0
@@ -76,7 +77,7 @@ size = 25.0
 base_strength = 20.0
 _element = "red"
 
-[node name="Geyser_SE" parent="." instance=ExtResource("2_k00d7")]
+[node name="GeyserSE" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
 transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 14.9, 2, 12.2)
 collision_layer = 0
@@ -85,6 +86,22 @@ horizontal = true
 size = 25.0
 base_strength = 20.0
 _element = "red"
+
+[node name="EmitterSW" parent="." instance=ExtResource("4_k00d7")]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, -3.89999, 1.5, 3.9)
+_element = "magenta"
+
+[node name="EmitterNW" parent="." instance=ExtResource("4_k00d7")]
+transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, -2.11758e-22, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, -3.89999, 1.5, -4.1)
+_element = "magenta"
+
+[node name="EmitterNE" parent="." instance=ExtResource("4_k00d7")]
+transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, 4.10001, 1.5, -4.1)
+_element = "magenta"
+
+[node name="EmitterSE" parent="." instance=ExtResource("4_k00d7")]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 4.10001, 1.5, 4.1)
+_element = "magenta"
 
 [node name="MagiclayBoulder" parent="." instance=ExtResource("3_pny70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.9, 11)
