@@ -130,6 +130,8 @@ func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
 	if not hud:
 		var root := get_tree().get_current_scene()
 		hud = root.get_node("%HUD_Layer")
+		# Needed when playing non-main scene
+		if not hud: return
 	hud.show_overworld_spell(isPrimary, spell)
 
 func show_info_graphic(key: String) -> void:
