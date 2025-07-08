@@ -13,6 +13,7 @@ bounce = 0.3
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
+collision_layer = 17
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -46,6 +47,7 @@ size = Vector3(20, 0.5, 1)
 material = ExtResource("1_267ni")
 
 [node name="Geyser_SW" parent="." instance=ExtResource("2_k00d7")]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.2, 2, 14.7)
 collision_layer = 0
 collision_mask = 0
@@ -55,6 +57,7 @@ base_strength = 20.0
 _element = "red"
 
 [node name="Geyser_NW" parent="." instance=ExtResource("2_k00d7")]
+process_mode = 1
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -14.8, 2, -12.5)
 collision_layer = 0
 collision_mask = 0
@@ -64,6 +67,7 @@ base_strength = 20.0
 _element = "red"
 
 [node name="Geyser_NE" parent="." instance=ExtResource("2_k00d7")]
+process_mode = 1
 transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 12.7, 2, -14.8)
 collision_layer = 0
 collision_mask = 0
@@ -73,6 +77,7 @@ base_strength = 20.0
 _element = "red"
 
 [node name="Geyser_SE" parent="." instance=ExtResource("2_k00d7")]
+process_mode = 1
 transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 14.9, 2, 12.2)
 collision_layer = 0
 collision_mask = 0
