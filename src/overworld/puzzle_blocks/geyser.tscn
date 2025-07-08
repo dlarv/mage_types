@@ -60,7 +60,7 @@ linear_accel_max = -2.23517e-06
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwwiu"]
-size = Vector3(0.8, 5, 0.8)
+size = Vector3(0.8, 23, 0.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bfetd"]
 
@@ -190,7 +190,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrcs6"]
-size = Vector3(1.5, 2.5, 1.5)
+size = Vector3(1.5, 23, 1.5)
 
 [node name="Geyser" type="StaticBody3D"]
 collision_layer = 7
