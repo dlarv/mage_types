@@ -50,7 +50,7 @@ material = ExtResource("1_267ni")
 [node name="GeyserSW" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.2, 2, 14.7)
-collision_layer = 0
+collision_layer = 2
 collision_mask = 0
 horizontal = true
 size = 25.0
@@ -59,8 +59,8 @@ _element = "red"
 
 [node name="GeyserNW" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -14.8, 2, -12.5)
-collision_layer = 0
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -14.6, 2, -12.5)
+collision_layer = 2
 collision_mask = 0
 horizontal = true
 size = 25.0
@@ -69,8 +69,8 @@ _element = "red"
 
 [node name="GeyserNE" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 12.7, 2, -14.8)
-collision_layer = 0
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 12.7, 2, -14.7)
+collision_layer = 2
 collision_mask = 0
 horizontal = true
 size = 25.0
@@ -79,8 +79,8 @@ _element = "red"
 
 [node name="GeyserSE" parent="." instance=ExtResource("2_k00d7")]
 process_mode = 1
-transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 14.9, 2, 12.2)
-collision_layer = 0
+transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 14.7, 2, 12.2)
+collision_layer = 2
 collision_mask = 0
 horizontal = true
 size = 25.0
