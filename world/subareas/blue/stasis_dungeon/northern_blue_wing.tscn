@@ -1,11 +1,139 @@
-[gd_scene load_steps=2 format=3 uid="uid://oibhckiyltxv"]
+[gd_scene load_steps=9 format=3 uid="uid://oibhckiyltxv"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
+[ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://src/overworld/geyser_engine.tscn" id="2_tohrr"]
+[ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_uiwi1"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="4_cn4mc"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="4_qaw7m"]
+[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="6_qaw7m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tohrr"]
+size = Vector3(301, 30, 51)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uiwi1"]
+size = Vector3(81, 30, 64)
 
 [node name="NorthernBlueWing" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env"]]
 use_collision = true
+collision_layer = 17
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="MainChamber" type="CSGBox3D" parent="CSGCombiner3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/MainChamber"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+size = Vector3(300, 4, 50)
 material = ExtResource("1_y0eai")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/MainChamber"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+size = Vector3(299, 4, 49)
+material = ExtResource("1_y0eai")
+
+[node name="Chamber1" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, -3, -65)
+material = ExtResource("1_y0eai")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/Chamber1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 2)
+size = Vector3(60, 10, 34)
+material = ExtResource("1_y0eai")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Chamber1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+operation = 2
+size = Vector3(59, 10, 29)
+material = ExtResource("1_y0eai")
+
+[node name="MainChamber" type="Area3D" parent="."]
+script = ExtResource("3_uiwi1")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainChamber"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+shape = SubResource("BoxShape3D_tohrr")
+
+[node name="Chamber1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 0, -65)
+script = ExtResource("3_uiwi1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chamber1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 11, -17)
+shape = SubResource("BoxShape3D_uiwi1")
+
+[node name="Chunk" type="Node3D" parent="Chamber1"]
+
+[node name="GeyserEngine" parent="Chamber1/Chunk" instance=ExtResource("2_tohrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -30)
+
+[node name="EmitterSW" parent="Chamber1/Chunk/GeyserEngine" index="5"]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, -3.89999, 1.5, 3.9)
+
+[node name="EmitterNW" parent="Chamber1/Chunk/GeyserEngine" index="6"]
+transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, -2.11758e-22, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, -3.89999, 1.5, -4.1)
+
+[node name="EmitterNE" parent="Chamber1/Chunk/GeyserEngine" index="7"]
+transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, 4.10001, 1.5, -4.1)
+
+[node name="EmitterSE" parent="Chamber1/Chunk/GeyserEngine" index="8"]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 4.10001, 1.5, 4.1)
+
+[node name="MagiclayBoulder" parent="Chamber1/Chunk/GeyserEngine" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.9, 6)
+_element = "blue"
+
+[node name="PressurePlateW1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 2)
+_element = "blue"
+
+[node name="PressurePlateW2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -1)
+_element = "purple"
+
+[node name="PressurePlateN1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, -12.5)
+_element = "blue"
+
+[node name="PressurePlateN2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 1, -12.5)
+_element = "purple"
+
+[node name="PressurePlateE1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -1)
+_element = "purple"
+
+[node name="PressurePlateE2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 2)
+_element = "blue"
+
+[node name="PressurePlateS1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 11.5)
+_element = "blue"
+
+[node name="PressurePlateS2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 1, 11.5)
+_element = "purple"
+
+[node name="Rails" parent="Chamber1/Chunk" instance=ExtResource("6_qaw7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -2, -6)
+
+[node name="PointB" parent="Chamber1/Chunk/Rails" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="MagiclayBoulder" parent="Chamber1/Chunk/Rails" instance=ExtResource("4_qaw7m")]
+
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateW1" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateW2" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateN1" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateN2" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateE1" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateE2" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateS1" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PressurePlateS2" to="Chamber1/Chunk/Rails" method="slide"]
+
+[editable path="Chamber1/Chunk/GeyserEngine"]
+[editable path="Chamber1/Chunk/Rails"]

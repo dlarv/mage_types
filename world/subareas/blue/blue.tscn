@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cbmlyysi0hhkk" path="res://world/subareas/blue/stasis_dungeon/western_red_wing.tscn" id="23_mwtcr"]
 [ext_resource type="PackedScene" uid="uid://cirl3we5riu76" path="res://world/subareas/blue/stasis_dungeon/southern_blue_wing.tscn" id="24_j64is"]
 [ext_resource type="PackedScene" uid="uid://oibhckiyltxv" path="res://world/subareas/blue/stasis_dungeon/northern_blue_wing.tscn" id="25_ljs8d"]
-[ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://world/geyser_engine.tscn" id="26_7gnmi"]
+[ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://src/overworld/geyser_engine.tscn" id="26_7gnmi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(1.4, 1, 1)
@@ -393,12 +393,11 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
-point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1095,12 +1094,11 @@ shape = SubResource("BoxShape3D_ilg5d")
 [node name="Marker3D" type="Marker3D" parent="Doors/CentralChamberToNW/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 0, -531)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
-point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/WestRedWingToSouthBlueWing"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -310.5, -2.2, -133)
@@ -2074,6 +2072,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -291.5, 0, -154)
 [node name="SouthernBlueWing" parent="StasisDungeonChunk" instance=ExtResource("24_j64is")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 0, -219)
 
+[node name="NorthernBlueWing" parent="StasisDungeonChunk" instance=ExtResource("25_ljs8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.5, 0, -279)
+
 [node name="OrangeWing" type="Node3D" parent="StasisDungeonChunk"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -156.9, 0, -125)
 
@@ -2318,9 +2319,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 8.5, 11.5)
 shape = SubResource("BoxShape3D_nx1wg")
 
 [node name="NWChunk" type="Node3D" parent="StasisDungeonChunk/OrangeWing/NWChamber7"]
-
-[node name="NorthernBlueWing" parent="." instance=ExtResource("25_ljs8d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123, -5, -708)
 
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chamber1Geyser" method="start"]
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chamber1Geyser2" method="start"]
