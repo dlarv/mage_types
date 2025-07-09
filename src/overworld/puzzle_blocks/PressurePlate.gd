@@ -22,6 +22,7 @@ func _ready() -> void:
 
 	$Base_MeshInstance3D.set_surface_override_material(0, _off_mat)
 
+
 func _on_body_entered(body: Node3D) -> void:
 	var bodyName: String
 	var bodyElement: String
@@ -34,14 +35,15 @@ func _on_body_entered(body: Node3D) -> void:
 		bodyName = body.puzzle_name
 		bodyElement = str(body.element)
 
-	if can_player_trigger and _test_for_player(body):
+	if _test_for_player(body):
 		_try_emit_on()
 		Logger.append_puzzle_log("PressurePlate(%s) was activated by player." % [puzzle_name])
+	elif body.is_in_group("player"): return
 	elif body.in_stasis:
 		Logger.append_puzzle_log("PressurePlate(%s) could not be activated by MagiClay(%s), b/c its in stasis." 
 				% [puzzle_name, body.puzzle_name])
 		off.emit(self)
-	elif body.element == element:
+	elif element.is_blank() or body.element == element:
 		Logger.append_puzzle_log("PressurePlate(%s) was activated by MagiClay(%s)." 
 				% [puzzle_name, body.puzzle_name])
 		_try_emit_on()
@@ -54,8 +56,13 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _on_body_exited(body: Node3D) -> void:
-	if (can_player_trigger and _test_for_player(body)) or body is MagiClay:
-		Logger.append_puzzle_log("PressurePlate(%s) was deactivated by MagiClay(%s)." % [puzzle_name, body.puzzle_name])
+	if not is_on: return
+	elif _test_for_player(body): 
+		Logger.append_puzzle_log("PressurePlate(%s) was deactivated by player." % puzzle_name)
+		_try_emit_off()
+	elif body is MagiClay:
+		Logger.append_puzzle_log("PressurePlate(%s) was deactivated by MagiClay(%s)." 
+				% [puzzle_name, body.puzzle_name])
 		_try_emit_off()
 
 
@@ -78,4 +85,4 @@ func _try_emit_on() -> bool:
 
 
 func _test_for_player(body: Node3D) -> bool:
-	return element == ElementManager.Blank and body.is_in_group("player")
+	return can_player_trigger and element == ElementManager.Blank and body.is_in_group("player")
