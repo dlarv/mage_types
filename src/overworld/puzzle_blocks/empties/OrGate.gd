@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 
 @export var locks: Array[PuzzleBlock]
@@ -23,9 +24,4 @@ func _on_lock_closed(lock: PuzzleBlock) -> void:
 
 func _on_lock_opened(lock: PuzzleBlock) -> void:
 	_opened_locks[lock] = true
-
-	for opened in _opened_locks.values():
-		if opened:
-			_try_emit_on()
-			return
-	_try_emit_off()
+	_try_emit_on()
