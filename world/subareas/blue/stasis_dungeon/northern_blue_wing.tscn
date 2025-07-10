@@ -211,9 +211,11 @@ _element = "purple"
 
 [node name="BlueOrGate" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
 locks = [NodePath("../PressurePlateW1"), NodePath("../PressurePlateE1")]
+is_on = false
 
 [node name="PurpleOrGate" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
 locks = [NodePath("../PressurePlateN1"), NodePath("../PressurePlateS1")]
+is_on = false
 
 [node name="PurpleTimer" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("lock") instance=ExtResource("8_l45oy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
