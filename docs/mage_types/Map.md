@@ -129,6 +129,22 @@ This section will be accessible from Southern Blue Wing room b by using a Golem 
 
 - I want this section to work as a giant puzzle box, where solving puzzles move giant mechanisms the player can watch.
 - These will primarily be stasis and golem puzzles.
+
+- *Think of the chambers as part of the mechanism moving the setpiece mechanisms. Hydraulics, pipes, wires.*
+	- Chamber 1 will lower the first barrier
+	- Chamber 2 lowers the water level
+	- Chamber 3 raises the second barrier
+	- Player must manipulate water level and barriers to escape final obstacle in room?
+		- Player would unlock passageways that would let them get around the barriers even when they're up.
+		- Chamber 2 is technically 3 chambers which control the water level (none, low tide, high tide). These 3 subchambers depend on mechanism in central room which ensures only one is active at a time.
+#### Chamber 1
+- Player enters Front Room and sees a bunch of moving parts. The source of this movement is currently hidden.
+- Player sees a passageway they can platform to, using the moving parts.
+- Thru this passageway the player discovers the Geyser Engine powering the moving parts.
+- The player is able to manipulate the Geyser Engine, indirectly manipulating the Front Room puzzle blocks.
+- There should be 4 outputs from the engines.
+	- If a single output controls multiple blocks, they should all be the same color.
+
 ### Orange Wing
 This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
 ### Eastern Red Wing

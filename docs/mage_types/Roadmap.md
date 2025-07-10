@@ -10,15 +10,9 @@
 - Doors should keep player's relative position when they go thru
 # Upcoming Versions
 [[version_naming_scheme]]
-## v0.4.x
+# v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
 - Golem system prototype
-	- [ ] When placing golem, snap to grid
-	- [ ] When placing golem, allow player to rotate
-	- [ ] Golem player editor
-		- [ ] Golem's type is determined via same means as Catalyst spell
-			- [ ] If player is not standing on MagiClay, they cannot spawn golem
-		- [ ] Add maximum number of instructions
 	- [ ] Different golem elements should have different properties
 		- [x] Only Blue can wade thru water
 		- [x] Yellow floats above obstacles
@@ -65,9 +59,17 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 				- [x] Miniboss added
 				- [ ] Golem pickup added
 		- [ ] Northern Blue Wing
-			- [ ] Layout 
+			- [ ] Layout
+				- [ ] Main chamber setpiece mechanism created
+				- [ ] Main chamber
+				- [ ] Chamber 1
+				- [ ] Chamber 2
+				- [ ] Chamber 3
 			- [ ] Puzzles created
 				- [x] Geyser Engine prefab created
+				- [ ] Chamber 1
+				- [ ] Chamber 2
+				- [ ] Chamber 3
 			- [ ] Environment modeled
 			- [ ] Mural added
 			- [ ] Orange chatlogs added
@@ -149,6 +151,12 @@ Puzzle playtest QOL and essential polish
 	- [ ] Ability to reorder instructions
 	- [ ] Allow player to define golem's path by drawing on the map
 	- [ ] When placing golem, make model transparent
+	- [ ] When placing golem, snap to grid
+	- [ ] When placing golem, allow player to rotate
+	- [ ] Golem player editor
+		- [ ] Golem's type is determined via same means as Catalyst spell
+			- [ ] If player is not standing on MagiClay, they cannot spawn golem
+		- [ ] Add maximum number of instructions
 - [ ] Give StasisTarget a model
 - [ ] Give Rail puzzleblock a model
 ## v0.6.x
