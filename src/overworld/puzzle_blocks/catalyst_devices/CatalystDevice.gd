@@ -24,11 +24,13 @@ var element: ElementalType = ElementManager.Blue:
 			value = ElementManager.Blank
 		element = value 
 
+
 func _ready() -> void:
 	# This script randomly started throwing an error where this value was
 	# not initialized. I'm not sure why.
 	element = ElementManager.get_element_from_name(_element)
 	_rotate_wheel(element)
+
 
 func _rotate_wheel(element: ElementalType) -> void:
 	var tween = get_tree().create_tween()

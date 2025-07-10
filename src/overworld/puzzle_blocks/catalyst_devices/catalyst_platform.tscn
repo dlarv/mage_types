@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdm2iqu5gdils"]
 
-[ext_resource type="Script" uid="uid://dkgfdi0cwp3j" path="res://src/overworld/magiclay/CatalystPlatform.gd" id="1_5kuer"]
+[ext_resource type="Script" uid="uid://dkgfdi0cwp3j" path="res://src/overworld/puzzle_blocks/catalyst_devices/CatalystPlatform.gd" id="1_5kuer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xdfa5"]
 size = Vector3(2, 0.1, 2)
