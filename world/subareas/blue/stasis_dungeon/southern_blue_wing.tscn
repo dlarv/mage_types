@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cirl3we5riu76"]
+[gd_scene load_steps=48 format=3 uid="uid://cirl3we5riu76"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="2_tmi81"]
@@ -267,15 +267,21 @@ size = Vector3(4, 0.5, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ohbpi"]
 size = Vector3(32, 18, 26)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r47dw"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwr14"]
+albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
+
 [sub_resource type="Curve3D" id="Curve3D_w3fo2"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.200001, 0, 0, 0, 0, 0, 0, -0.119995, -2.964, -0.1, 0, 0, 0, 0, 0, 0, 0.000457764, -2.96399, 13.3738),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfxe6"]
-albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_vx8gm"]
 _data = {
@@ -284,18 +290,12 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpvwr"]
-albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
-
 [sub_resource type="Curve3D" id="Curve3D_ooq3y"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1, 0, -0.200001, 0, 0, 0, 0, 0, 0, -1.12, -2.964, -0.1, 0, 0, 0, 0, 0, 0, -0.999542, -2.96399, 2.67381, 0, 0, 0, 0, 0, 0, -1.96678, -2.96399, 2.63927, 0, 0, 0, 0, 0, 0, -2.17542, -2.83643, 2.57271, 0, 0, 0, 0, 0, 0, -2.31906, -2.80957, 2.58345, 0, 0, 0, 0, 0, 0, -2.47791, -3.02102, 2.6728, 0, 0, 0, 0, 0, 0, -2.99303, -3.02563, 2.75122, 0, 0, 0, 0, 0, 0, -3.13217, -2.8866, 2.65767, 0, 0, 0, 0, 0, 0, -3.25244, -2.84973, 2.66316, 0, 0, 0, 0, 0, 0, -3.56392, -2.90076, 2.75679, 0, 0, 0, 0, 0, 0, -3.62871, -2.95618, 2.70134, 0, 0, 0, 0, 0, 0, -4.9201, -2.95642, 2.67303),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 13
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2qbw"]
-albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iirc7"]
 size = Vector3(16, 18, 17)
@@ -927,47 +927,53 @@ _element = "orange"
 [node name="Wire" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -9.3)
 target = NodePath("../Timer")
+on_material = SubResource("StandardMaterial3D_r47dw")
+off_material = SubResource("StandardMaterial3D_mwr14")
+invalid_material = null
 
 [node name="Path" parent="BlueChamber5/Chunk/Wire" index="0"]
 curve = SubResource("Curve3D_w3fo2")
 
 [node name="Body" parent="BlueChamber5/Chunk/Wire/Path" index="0"]
-path_rotation_accurate = false
-material = SubResource("StandardMaterial3D_pfxe6")
+material = SubResource("StandardMaterial3D_mwr14")
 
 [node name="Head" parent="BlueChamber5/Chunk/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100006, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_pfxe6")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwr14")
 
 [node name="Wire2" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1, -9.3)
 target = NodePath("../LaserReceiver")
+on_material = SubResource("StandardMaterial3D_r47dw")
+off_material = SubResource("StandardMaterial3D_mwr14")
+invalid_material = null
 
 [node name="Path" parent="BlueChamber5/Chunk/Wire2" index="0"]
 curve = SubResource("Curve3D_vx8gm")
 
 [node name="Body" parent="BlueChamber5/Chunk/Wire2/Path" index="0"]
-path_rotation_accurate = false
-material = SubResource("StandardMaterial3D_hpvwr")
+material = SubResource("StandardMaterial3D_mwr14")
 
 [node name="Head" parent="BlueChamber5/Chunk/Wire2" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100006, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_hpvwr")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwr14")
 
 [node name="Wire3" parent="BlueChamber5/Chunk" node_paths=PackedStringArray("target") instance=ExtResource("18_vx8gm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, -9.3)
 target = NodePath("../PressurePlate")
+on_material = SubResource("StandardMaterial3D_r47dw")
+off_material = SubResource("StandardMaterial3D_mwr14")
+invalid_material = null
 
 [node name="Path" parent="BlueChamber5/Chunk/Wire3" index="0"]
 curve = SubResource("Curve3D_ooq3y")
 
 [node name="Body" parent="BlueChamber5/Chunk/Wire3/Path" index="0"]
-path_rotation_accurate = false
-material = SubResource("StandardMaterial3D_t2qbw")
+material = SubResource("StandardMaterial3D_mwr14")
 
 [node name="Head" parent="BlueChamber5/Chunk/Wire3" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10001, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_t2qbw")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwr14")
 
 [node name="BlueChamber6" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 0, 0)

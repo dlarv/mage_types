@@ -1,15 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://oibhckiyltxv"]
+[gd_scene load_steps=19 format=3 uid="uid://oibhckiyltxv"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
+[ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="2_r4pl6"]
 [ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://src/overworld/geyser_engine.tscn" id="2_tohrr"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_uiwi1"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="4_cn4mc"]
+[ext_resource type="PackedScene" uid="uid://col3pgw3g73df" path="res://src/overworld/puzzle_blocks/catalyst_devices/laser_activated_catalyst.tscn" id="5_tvp60"]
+[ext_resource type="PackedScene" uid="uid://dr82ihfer1ek6" path="res://src/overworld/puzzle_blocks/empties/or_gate.tscn" id="6_tgj6p"]
+[ext_resource type="PackedScene" uid="uid://cspipog36hcdh" path="res://src/overworld/puzzle_blocks/lasers/draggable_emitter.tscn" id="7_5ed57"]
+[ext_resource type="PackedScene" uid="uid://d3ygm6nayhv7c" path="res://src/overworld/puzzle_blocks/indicator.tscn" id="7_vveuj"]
+[ext_resource type="PackedScene" uid="uid://sbh0qf0ppd8m" path="res://src/overworld/puzzle_blocks/timer.tscn" id="8_l45oy"]
+[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="9_d31bn"]
+[ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="10_vveuj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tohrr"]
 size = Vector3(301, 30, 58)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uiwi1"]
 size = Vector3(81, 30, 78)
+
+[sub_resource type="Curve3D" id="Curve3D_d31bn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.356705, 0.198535, 8.37112, 0, 0, 0, 0, 0, 0, 0.247681, 0.141064, 0.498268, 0, 0, 0, 0, 0, 0, -0.698097, 0.141016, 0.553337, 0, 0, 0, 0, 0, 0, -0.6502, 0.359521, 0.398743, 0, 0, 0, 0, 0, 0, -0.763725, 0.377649, -0.670403, 0, 0, 0, 0, 0, 0, -0.845268, 0.153528, -0.658478, 0, 0, 0, 0, 0, 0, -0.859352, 0.0918822, -1.46072),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_gn8cr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.6433, 0.198535, 9.37112, 0, 0, 0, 0, 0, 0, -1.75232, 0.141064, 0.498268, 0, 0, 0, 0, 0, 0, -0.698097, 0.141016, 0.553337, 0, 0, 0, 0, 0, 0, -0.6502, 0.359521, 0.398743, 0, 0, 0, 0, 0, 0, -0.763725, 0.377649, -0.670403, 0, 0, 0, 0, 0, 0, -0.845268, 0.153528, -0.658478, 0, 0, 0, 0, 0, 0, -0.859352, 0.0918822, -1.46072),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_scybb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.128838, -0.0519285, 0.194626, 0, 0, 0, 0, 0, 0, -1.51108, -0.0518799, 0.197533, 0, 0, 0, 0, 0, 0, -1.5556, 0.16449, 0.177444, 0, 0, 0, 0, 0, 0, -2.4389, 0.350708, 0.163696, 0, 0, 0, 0, 0, 0, -2.6684, 0.158203, 0.199097, 0, 0, 0, 0, 0, 0, -9.62744, -0.0326052, 0.208328),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_6yhma"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.60199, -0.123291, 0.088089, 0, 0, 0, 0, 0, 0, -6.93761, -0.123291, 0.127724, 0, 0, 0, 0, 0, 0, -6.97685, 0.219873, 0.162766, 0, 0, 0, 0, 0, 0, -7.95082, 0.219873, 0.125923, 0, 0, 0, 0, 0, 0, -8.05803, -0.0460207, 0.119675, 0, 0, 0, 0, 0, 0, -8.0334, -0.0289066, -3.00508, 0, 0, 0, 0, 0, 0, -15.8099, -0.0289309, -3.02756, 0, 0, 0, 0, 0, 0, -15.7826, 0.196899, -2.97534, 0, 0, 0, 0, 0, 0, -16.0477, 0.182617, -2.93687, 0, 0, 0, 0, 0, 0, -16.0695, -0.0238283, -3.02573, 0, 0, 0, 0, 0, 0, -16.7495, -0.0238039, -3.00208, 0, 0, 0, 0, 0, 0, -17.9906, -0.0248415, -2.98608, 0, 0, 0, 0, 0, 0, -18.0261, 0.0075438, -0.801125),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
 
 [node name="NorthernBlueWing" type="Node3D"]
 
@@ -79,6 +115,15 @@ operation = 2
 size = Vector3(2, 4, 8)
 material = ExtResource("1_y0eai")
 
+[node name="EnvRamp" type="CSGPolygon3D" parent="CSGCombiner3D/Chamber1" node_paths=PackedStringArray("locks")]
+transform = Transform3D(4.37114e-08, 1, -3.82137e-15, 1, -4.37114e-08, -8.74228e-08, -8.74228e-08, 0, -1, -15.5, 0.5, -14.5)
+polygon = PackedVector2Array(0, 0, 0, 10, 6, 2, 6, 0)
+depth = 2.0
+material = ExtResource("1_y0eai")
+script = ExtResource("2_r4pl6")
+locks = [NodePath("../../../Chamber1/Chunk/EnvRampPressurePlate")]
+permanent = true
+
 [node name="MainChamber" type="Area3D" parent="."]
 script = ExtResource("3_uiwi1")
 metadata/_custom_type_script = "uid://cjk323awkifki"
@@ -108,40 +153,127 @@ operation = 2
 size = Vector3(2, 4, 2)
 material = ExtResource("1_y0eai")
 
+[node name="GeyserSW" parent="Chamber1/Chunk/GeyserEngine" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.5, 2, 14.7)
+_element = "yellow"
+
+[node name="GeyserNW" parent="Chamber1/Chunk/GeyserEngine" index="2"]
+_element = "yellow"
+
+[node name="GeyserNE" parent="Chamber1/Chunk/GeyserEngine" index="3"]
+_element = "yellow"
+
+[node name="GeyserSE" parent="Chamber1/Chunk/GeyserEngine" index="4"]
+_element = "yellow"
+
 [node name="MagiclayBoulder" parent="Chamber1/Chunk/GeyserEngine" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.9, 6)
 _element = "blue"
 
 [node name="PressurePlateW1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 0)
 _element = "blue"
-
-[node name="PressurePlateW2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -1)
-_element = "purple"
 
 [node name="PressurePlateN1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, -12.5)
-_element = "blue"
-
-[node name="PressurePlateN2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 1, -12.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, -12.5)
 _element = "purple"
 
 [node name="PressurePlateE1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -1)
-_element = "purple"
-
-[node name="PressurePlateE2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
 _element = "blue"
 
 [node name="PressurePlateS1" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 11.5)
-_element = "blue"
-
-[node name="PressurePlateS2" parent="Chamber1/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 1, 11.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0999985, 1, 11.5)
 _element = "purple"
 
+[node name="BlueOrGate" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
+locks = [NodePath("../PressurePlateW1"), NodePath("../PressurePlateE1")]
+
+[node name="PurpleOrGate" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
+locks = [NodePath("../PressurePlateN1"), NodePath("../PressurePlateS1")]
+
+[node name="PurpleIndicator" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 0)
+block = NodePath("../PurpleTimer")
+
+[node name="BlueIndicator" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 0)
+block = NodePath("../BlueTimer")
+
+[node name="PurpleTimer" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("lock") instance=ExtResource("8_l45oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+lock = NodePath("../PurpleOrGate")
+delay = 2.5
+allow_early_close = null
+
+[node name="BlueTimer" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("lock") instance=ExtResource("8_l45oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+lock = NodePath("../BlueOrGate")
+delay = 2.5
+allow_early_close = null
+
+[node name="WireS" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("target") instance=ExtResource("9_d31bn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.700005, 1, 9.39999)
+target = NodePath("../PressurePlateS1")
+
+[node name="Path" parent="Chamber1/Chunk/GeyserEngine/WireS" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+curve = SubResource("Curve3D_d31bn")
+
+[node name="Head" parent="Chamber1/Chunk/GeyserEngine/WireS" index="1"]
+visible = false
+
+[node name="WireN" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("target") instance=ExtResource("9_d31bn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.699997, 1, -10.4)
+target = NodePath("../PressurePlateN1")
+
+[node name="Path" parent="Chamber1/Chunk/GeyserEngine/WireN" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+curve = SubResource("Curve3D_gn8cr")
+
+[node name="Head" parent="Chamber1/Chunk/GeyserEngine/WireN" index="1"]
+visible = false
+
+[node name="WireE" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("target") instance=ExtResource("9_d31bn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1, 0)
+target = NodePath("../PressurePlateE1")
+
+[node name="Path" parent="Chamber1/Chunk/GeyserEngine/WireE" index="0"]
+curve = SubResource("Curve3D_scybb")
+
+[node name="Head" parent="Chamber1/Chunk/GeyserEngine/WireE" index="1"]
+visible = false
+
+[node name="WireW" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("target") instance=ExtResource("9_d31bn")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -17, 1, 0)
+target = NodePath("../PressurePlateW1")
+
+[node name="Path" parent="Chamber1/Chunk/GeyserEngine/WireW" index="0"]
+curve = SubResource("Curve3D_6yhma")
+
+[node name="Head" parent="Chamber1/Chunk/GeyserEngine/WireW" index="1"]
+visible = false
+
+[node name="LaserActivatedCatalyst" parent="Chamber1/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("5_tvp60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -2.5, -1)
+collision_mask = 7
+puzzle_block = NodePath("Mirror")
+_element = "magenta"
+
+[node name="Mirror" parent="Chamber1/Chunk/LaserActivatedCatalyst" instance=ExtResource("10_vveuj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.7, 0)
+_element = "magenta"
+
+[node name="DraggableEmitter" parent="Chamber1/Chunk" instance=ExtResource("7_5ed57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 5)
+_element = "blue"
+
+[node name="EnvRampPressurePlate" parent="Chamber1/Chunk" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, -15.2)
+can_player_trigger = true
+
 [editable path="Chamber1/Chunk/GeyserEngine"]
+[editable path="Chamber1/Chunk/GeyserEngine/WireS"]
+[editable path="Chamber1/Chunk/GeyserEngine/WireN"]
+[editable path="Chamber1/Chunk/GeyserEngine/WireE"]
+[editable path="Chamber1/Chunk/GeyserEngine/WireW"]
