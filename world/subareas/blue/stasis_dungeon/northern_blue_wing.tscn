@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://oibhckiyltxv"]
+[gd_scene load_steps=24 format=3 uid="uid://oibhckiyltxv"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
 [ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="2_r4pl6"]
@@ -46,6 +46,29 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d31bn"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l45oy"]
+albedo_color = Color(1.54018e-06, 0, 0.550048, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_31cei"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.09655, -0.259204, -0.0378036, 0, 0, 0, 0, 0, 0, 6.07468, 0.940796, 14.7146),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gn8cr"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.868879, 0.429628, 9.62615e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yhma"]
+albedo_color = Color(0.546593, 0.261121, 0, 1)
 
 [node name="NorthernBlueWing" type="Node3D"]
 
@@ -192,25 +215,15 @@ locks = [NodePath("../PressurePlateW1"), NodePath("../PressurePlateE1")]
 [node name="PurpleOrGate" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
 locks = [NodePath("../PressurePlateN1"), NodePath("../PressurePlateS1")]
 
-[node name="PurpleIndicator" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 0)
-block = NodePath("../PurpleTimer")
-
-[node name="BlueIndicator" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 0)
-block = NodePath("../BlueTimer")
-
 [node name="PurpleTimer" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("lock") instance=ExtResource("8_l45oy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
 lock = NodePath("../PurpleOrGate")
 delay = 2.5
-allow_early_close = null
 
 [node name="BlueTimer" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("lock") instance=ExtResource("8_l45oy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 lock = NodePath("../BlueOrGate")
 delay = 2.5
-allow_early_close = null
 
 [node name="WireS" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("target") instance=ExtResource("9_d31bn")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.700005, 1, 9.39999)
@@ -254,6 +267,38 @@ curve = SubResource("Curve3D_6yhma")
 [node name="Head" parent="Chamber1/Chunk/GeyserEngine/WireW" index="1"]
 visible = false
 
+[node name="OutputWire1" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("target") instance=ExtResource("9_d31bn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 0)
+target = NodePath("../PurpleTimer")
+on_material = SubResource("StandardMaterial3D_d31bn")
+off_material = SubResource("StandardMaterial3D_l45oy")
+invalid_material = null
+
+[node name="Path" parent="Chamber1/Chunk/GeyserEngine/OutputWire1" index="0"]
+curve = SubResource("Curve3D_31cei")
+
+[node name="Body" parent="Chamber1/Chunk/GeyserEngine/OutputWire1/Path" index="0"]
+material = SubResource("StandardMaterial3D_l45oy")
+
+[node name="Head" parent="Chamber1/Chunk/GeyserEngine/OutputWire1" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_l45oy")
+
+[node name="OutputWire2" parent="Chamber1/Chunk/GeyserEngine" node_paths=PackedStringArray("target") instance=ExtResource("9_d31bn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 0)
+target = NodePath("../BlueTimer")
+on_material = SubResource("StandardMaterial3D_gn8cr")
+off_material = SubResource("StandardMaterial3D_6yhma")
+invalid_material = null
+
+[node name="Path" parent="Chamber1/Chunk/GeyserEngine/OutputWire2" index="0"]
+curve = SubResource("Curve3D_31cei")
+
+[node name="Body" parent="Chamber1/Chunk/GeyserEngine/OutputWire2/Path" index="0"]
+material = SubResource("StandardMaterial3D_6yhma")
+
+[node name="Head" parent="Chamber1/Chunk/GeyserEngine/OutputWire2" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6yhma")
+
 [node name="LaserActivatedCatalyst" parent="Chamber1/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("5_tvp60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -2.5, -1)
 collision_mask = 7
@@ -272,8 +317,24 @@ _element = "blue"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, -15.2)
 can_player_trigger = true
 
+[node name="Indicator1" parent="Chamber1/Chunk" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -2.6, -14)
+block = NodePath("../GeyserEngine/PurpleTimer")
+on_material = SubResource("StandardMaterial3D_d31bn")
+off_material = SubResource("StandardMaterial3D_l45oy")
+invalid_material = null
+
+[node name="Indicator2" parent="Chamber1/Chunk" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -2.6, -14)
+block = NodePath("../GeyserEngine/BlueTimer")
+on_material = SubResource("StandardMaterial3D_gn8cr")
+off_material = SubResource("StandardMaterial3D_6yhma")
+invalid_material = null
+
 [editable path="Chamber1/Chunk/GeyserEngine"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireS"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireN"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireE"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireW"]
+[editable path="Chamber1/Chunk/GeyserEngine/OutputWire1"]
+[editable path="Chamber1/Chunk/GeyserEngine/OutputWire2"]
