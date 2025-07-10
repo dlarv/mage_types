@@ -3,6 +3,7 @@ extends PuzzleBlock
 
 @export var lock: PuzzleBlock
 @export var delay: float
+@export var allow_early_close := false
 
 func _ready() -> void:
 	$AnimationPlayer.speed_scale = 60 / delay
@@ -21,7 +22,8 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 
 
 func _on_lock_closed(block: PuzzleBlock) -> void:
-	off.emit(self)
+	if allow_early_close:
+		off.emit(self)
 		
 
 func _get_mesh() -> MeshInstance3D:
