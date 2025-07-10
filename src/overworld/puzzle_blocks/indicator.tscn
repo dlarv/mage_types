@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3ygm6nayhv7c"]
+[gd_scene load_steps=6 format=3 uid="uid://d3ygm6nayhv7c"]
 
 [ext_resource type="Script" uid="uid://djmbjvuo4ufxt" path="res://src/overworld/puzzle_blocks/Indicator.gd" id="1_vhopl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbsl1"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tug8"]
+albedo_color = Color(0.493545, 0.493546, 0.493546, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1riv"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_vhopl"]
 
 [node name="Indicator" type="Node3D"]
 script = ExtResource("1_vhopl")
+on_material = SubResource("StandardMaterial3D_vbsl1")
+off_material = SubResource("StandardMaterial3D_8tug8")
+invalid_material = SubResource("StandardMaterial3D_t1riv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
