@@ -2,8 +2,9 @@
 extends Node3D
 
 @export var target: PuzzleBlock
-@export var on_color := Color.RED
-@export var off_color := Color.DIM_GRAY
+@export var on_material: StandardMaterial3D
+@export var off_material: StandardMaterial3D
+@export var invalid_material: StandardMaterial3D
 @export var wire_thickness := 0.15:
 	set(val):
 		wire_thickness = val
@@ -15,28 +16,32 @@ extends Node3D
 				$Path/Body.polygon[i].y = val
 			i += 1
 
-var _mat: StandardMaterial3D
 
 func _ready() -> void:
-	if not Engine.is_editor_hint() and target != null:
+	if Engine.is_editor_hint() or target == null: return
+	if on_material:
 		target.on.connect(_on_block_on)
+	if off_material:
 		target.off.connect(_on_block_off)
-
+	if invalid_material:
+		target.invalid_off.connect(_on_block_invalid)
 	
 
 func _enter_tree() -> void:
-	_mat = StandardMaterial3D.new()
-	_mat.albedo_color = off_color
-	$Head.set_surface_override_material(0, _mat)
-	$Path/Body.material = _mat
+	$Head.set_surface_override_material(0, off_material)
+	$Path/Body.material = off_material
 
 
 func _on_block_on(block: PuzzleBlock) -> void:
-	_mat.albedo_color = on_color
+	$Head.set_surface_override_material(0, on_material)
+	$Path/Body.material = on_material
 
 
 func _on_block_off(block: PuzzleBlock) -> void:
-	_mat.albedo_color = off_color
+	$Head.set_surface_override_material(0, off_material)
+	$Path/Body.material = off_material
 
 
-
+func _on_block_invalid(block: PuzzleBlock) -> void:
+	$Head.set_surface_override_material(0, invalid_material)
+	$Path/Body.material = invalid_material
