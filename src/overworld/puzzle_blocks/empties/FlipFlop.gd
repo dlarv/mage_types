@@ -1,32 +1,21 @@
+@tool
 extends PuzzleBlock
 
-@export var on_length := 2.0
-@export var off_length := 2.0
-@export var start_state := true
-@export var offset := 0.0
+@export var lock: PuzzleBlock
+
 
 func _ready() -> void:
 	super._ready()
-	$On.wait_time = on_length
-	$Off.wait_time = off_length
-	await get_tree().create_timer(offset).timeout
-	if start_state:
-		_on_on_timeout()
+	lock.on.connect(_on_lock_opened)
+
+
+func _on_lock_opened(lock: PuzzleBlock) -> void:
+	is_on = not is_on
+	if is_on:
+		on.emit(self)
 	else:
-		_on_off_timeout()
+		off.emit(self)
 
-
-func _on_on_timeout() -> void:
-	on.emit(self)
-	Logger.append_puzzle_log("FlipFlop(%s) turned on." % [puzzle_name])
-	if is_on:
-		$Off.start()
-
-func _on_off_timeout() -> void:
-	off.emit(self)
-	Logger.append_puzzle_log("FlipFlop(%s) turned off." % [puzzle_name])
-	if is_on:
-		$On.start()
 
 func _get_mesh() -> MeshInstance3D:
 	return null
