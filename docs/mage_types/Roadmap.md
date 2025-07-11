@@ -57,7 +57,10 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 			- [ ] Orange chatlogs added
 			- [ ] Golem room created
 				- [x] Miniboss added
-				- [ ] Golem pickup added
+				- [x] Golem pickup added
+				- [ ] Golem infographic created
+			- [ ] Bug: Chamber 3 golem puzzle can be bypassed with block from stasis puzzle
+			- [ ] Bug: Chamber 1 & 2 stasis puzzle solutions are spoiled when player walks thru beams
 		- [ ] Northern Blue Wing
 			- [ ] Layout
 				- [ ] Main chamber setpiece mechanism created

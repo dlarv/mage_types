@@ -142,11 +142,9 @@ This section will be accessible from Southern Blue Wing room b by using a Golem 
 - Player sees a passageway they can platform to, using the moving parts.
 - Thru this passageway the player discovers the Geyser Engine powering the moving parts.
 - The player is able to manipulate the Geyser Engine, indirectly manipulating the Front Room puzzle blocks.
-- There should be 4 outputs from the engines.
-	- If a single output controls multiple blocks, they should all be the same color.
-
+- 
 ### Orange Wing
-This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
+his section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
 ### Eastern Red Wing
 
 ## The Ascent
