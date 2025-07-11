@@ -98,6 +98,7 @@ var spell1 := OverworldSpell.Spells.NONE
 var spell2 := OverworldSpell.Spells.NONE
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
 	if add_all_items:
 		for item in regular_items:
 			item.quantity = 99
@@ -106,7 +107,15 @@ func _enter_tree() -> void:
 		for item in equipment:
 			item.quantity = 99
 
-	if not use_override or Settings.play_test_mode: return
+	if Settings.play_test_mode: 
+		use_override = false
+		for item in key_items:
+			item.quantity = 0
+	elif add_all_items:
+		for item in key_items:
+			item.quantity = 1
+
+	if not use_override: return
 	if not primary_override == OverworldSpell.Spells.NONE:
 		add_key_item(key_items[primary_override].item)
 	if not secondary_override == OverworldSpell.Spells.NONE:
