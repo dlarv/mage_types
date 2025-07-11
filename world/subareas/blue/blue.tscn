@@ -1682,18 +1682,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)
 [node name="GolemTestingFacility" parent="HotelRooms" instance=ExtResource("17_yncb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.34, -243)
 
-[node name="Geyser" parent="HotelRooms/GolemTestingFacility" index="2"]
-base_size = Vector3(37, 0.34, -249.9)
-
-[node name="PressurePlate" parent="HotelRooms/GolemTestingFacility" index="3"]
-base_size = Vector3(37, 0.44, -236)
-
-[node name="MagiclayRock2" parent="HotelRooms/GolemTestingFacility" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="MagiclayRock3" parent="HotelRooms/GolemTestingFacility" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
-
 [node name="GeyserEngineChunk" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, -242)
 script = ExtResource("17_psjbi")
