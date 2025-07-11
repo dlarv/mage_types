@@ -33,18 +33,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -10.5)
 size = Vector3(10, 2, 6)
 material = ExtResource("2_sy7e0")
 
-[node name="Geyser" parent="." instance=ExtResource("3_3vrjo")]
+[node name="Geyser" parent="Chunk" instance=ExtResource("3_3vrjo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -6.9)
 base_strength = 5.0
 
-[node name="PressurePlate" parent="." instance=ExtResource("4_ic2nu")]
+[node name="PressurePlate" parent="Chunk" instance=ExtResource("4_ic2nu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1, 7)
 _element = "blue"
 
-[node name="MagiclayRock" parent="." instance=ExtResource("5_yirsw")]
+[node name="MagiclayRock" parent="Chunk" instance=ExtResource("5_yirsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, -10)
 
-[node name="MagiclayRock2" parent="." instance=ExtResource("5_yirsw")]
+[node name="MagiclayRock2" parent="Chunk" instance=ExtResource("5_yirsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="MagiclayRock3" parent="." instance=ExtResource("5_yirsw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+[node name="MagiclayRock3" parent="Chunk" instance=ExtResource("5_yirsw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
