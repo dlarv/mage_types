@@ -405,11 +405,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1106,11 +1107,12 @@ shape = SubResource("BoxShape3D_ilg5d")
 [node name="Marker3D" type="Marker3D" parent="Doors/CentralChamberToNW/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors"]
+[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 0, -531)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/WestRedWingToSouthBlueWing"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -310.5, -2.2, -133)
@@ -1393,48 +1395,57 @@ script = ExtResource("3_4g4u6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7.5, -3.5)
 shape = SubResource("BoxShape3D_uke47")
 
-[node name="HotelRoomChunk" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="HotelRoomChunk" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158, 0, -158)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HotelRoomChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 7.5, 35.5)
 shape = SubResource("BoxShape3D_m7kj6")
 
-[node name="Chamber1Geyser" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("9_mipr7")]
+[node name="Chunk" type="Node3D" parent="HotelRooms/HotelRoomChunk"]
+
+[node name="Chamber1Geyser" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -50.1834, 3, 57.7166)
+is_on = false
 base_size = Vector3(-208.183, 3, -100.283)
 
-[node name="Chamber1Geyser2" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("9_mipr7")]
+[node name="Chamber1Geyser2" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -53.1834, 3, 57.7166)
+is_on = false
 base_size = Vector3(-211.183, 3, -100.283)
 
-[node name="Chamber1Geyser3" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("9_mipr7")]
+[node name="Chamber1Geyser3" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -47.1834, 3, 57.7166)
+is_on = false
 base_size = Vector3(-205.183, 3, -100.283)
 
-[node name="Chamber1Geyser4" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("9_mipr7")]
+[node name="Chamber1Geyser4" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.8834, 3, 95.0166)
+is_on = false
 base_size = Vector3(-194.883, 3, -62.9834)
 
-[node name="Chamber2Geyser" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("9_mipr7")]
+[node name="Chamber2Geyser" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.7834, 6.7, 29.9166)
+is_on = false
 base_size = Vector3(-220.783, 6.7, -128.083)
 
-[node name="Chamber2PressurePlate" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("16_61fdq")]
+[node name="Chamber2PressurePlate" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("16_61fdq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -44.6834, 9.94163, -14.6834)
 _element = "red"
 base_size = Vector3(-202.683, 9.94163, -172.683)
 
-[node name="Chamber3Geyser" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("9_mipr7")]
+[node name="Chamber3Geyser" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.1163, 6.8, -23.0834)
+is_on = false
 base_size = Vector3(-230.116, 6.8, -181.083)
 
-[node name="Gate" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("4_5og7y")]
+[node name="Gate" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("4_5og7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.900009, 0.6, -0.5)
 permanent = true
 
-[node name="Gate2" parent="HotelRooms/HotelRoomChunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
+[node name="Gate2" parent="HotelRooms/HotelRoomChunk/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.3573, 6.8, -15.5)
 locks = [NodePath("../Chamber2PressurePlate")]
 permanent = true
@@ -1507,12 +1518,11 @@ _element = "orange"
 [node name="Emitter2" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="48"]
 _element = "cyan"
 
-[node name="PressurePlate" parent="HotelRooms/HotelRoomChunk/Chamber1" index="2"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, 3, 8)
-base_size = Vector3(-198, 3, -63)
+[node name="PressurePlate2" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="53"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 3, 7)
 
-[node name="MagiclayRock" parent="HotelRooms/HotelRoomChunk/Chamber1" index="3"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7, 3, 8)
+[node name="MagiclayRock" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="54"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 4, 7)
 
 [node name="Chamber2" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("15_6yind")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3, 0, 18)
@@ -2360,12 +2370,13 @@ shape = SubResource("BoxShape3D_nx1wg")
 
 [node name="NWChunk" type="Node3D" parent="StasisDungeonChunk/OrangeWing/NWChamber7"]
 
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chamber1Geyser" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chamber1Geyser2" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chamber1Geyser3" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/PressurePlate" to="HotelRooms/HotelRoomChunk/Chamber1Geyser4" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber2/Chunk/GeyserPressurePlate" to="HotelRooms/HotelRoomChunk/Chamber2Geyser" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber3/Chunk/AndGate" to="HotelRooms/HotelRoomChunk/Chamber3Geyser" method="start"]
+[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser" method="start"]
+[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser2" method="start"]
+[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser3" method="start"]
+[connection signal="off" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate2" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser4" method="stop"]
+[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate2" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser4" method="start"]
+[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber2/Chunk/GeyserPressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber2Geyser" method="start"]
+[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber3/Chunk/AndGate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber3Geyser" method="start"]
 
 [editable path="HotelRooms/HotelRoomChunk/Chamber1"]
 [editable path="HotelRooms/HotelRoomChunk/Chamber2"]
