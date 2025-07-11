@@ -78,5 +78,5 @@ func _on_element_dropdown_item_selected(index:int) -> void:
 
 
 func _draw() -> void:
-	%DebugElementHBox.visible = Settings.debug_mode
-	%ElementIcon.visible = not Settings.debug_mode
+	%DebugElementHBox.visible = Settings.debug_mode and not Settings.play_test_mode
+	%ElementIcon.visible = not Settings.debug_mode or Settings.play_test_mode
