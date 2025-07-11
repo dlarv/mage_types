@@ -197,7 +197,6 @@ toggle_mode = true
 [node name="FlipFlop" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("19_ufdma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.8, -2)
 lock = NodePath("../FlipFlopButton")
-is_on = false
 
 [node name="FlipFlopButton" parent="SupplyClosetChunk" instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.8, -2)
@@ -210,7 +209,6 @@ block = NodePath("../FlipFlop")
 [node name="FlipFlop2" parent="SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("19_ufdma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.8, -2)
 lock = NodePath("../FlipFlopLever")
-is_on = false
 
 [node name="FlipFlopLever" parent="SupplyClosetChunk" instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0.8, -2)

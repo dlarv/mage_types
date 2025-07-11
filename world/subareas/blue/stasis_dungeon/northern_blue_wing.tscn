@@ -178,15 +178,19 @@ material = ExtResource("1_y0eai")
 
 [node name="GeyserSW" parent="Chamber1/Chunk/GeyserEngine" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.5, 2, 14.7)
+base_strength = 30.0
 _element = "yellow"
 
 [node name="GeyserNW" parent="Chamber1/Chunk/GeyserEngine" index="2"]
+base_strength = 30.0
 _element = "yellow"
 
 [node name="GeyserNE" parent="Chamber1/Chunk/GeyserEngine" index="3"]
+base_strength = 30.0
 _element = "yellow"
 
 [node name="GeyserSE" parent="Chamber1/Chunk/GeyserEngine" index="4"]
+base_strength = 30.0
 _element = "yellow"
 
 [node name="MagiclayBoulder" parent="Chamber1/Chunk/GeyserEngine" index="9"]
