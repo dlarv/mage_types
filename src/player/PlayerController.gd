@@ -51,6 +51,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		pass
 	elif event.is_action_pressed("toggle_god_mode"):
 		_god_mode = not _god_mode
+		_toggle_3d_collision_shape_visibility()
 		if _god_mode:
 			_prev_collision_layer = collision_layer
 			_prev_collision_mask = collision_mask
@@ -217,3 +218,34 @@ func _on_flush_jump_buffer_timer_timeout() -> void:
 
 func fall_in_water() -> void:
 	global_position = last_grounded_position
+
+
+# Currently godot can't toggle visibility of 3D collision shapes at runtime, this is a workaround.
+# See https://github.com/godotengine/godot-proposals/issues/2072
+func _toggle_3d_collision_shape_visibility() -> void:
+	var tree: SceneTree = get_tree()
+	# https://github.com/godotengine/godot-proposals/issues/2072
+	tree.debug_collisions_hint = not tree.debug_collisions_hint
+	print("Set show_debug_collisions_hint: ", tree.debug_collisions_hint)
+
+	# Traverse tree to call toggle collision visibility
+	var node_stack: Array[Node] = [tree.get_root()]
+	while not node_stack.is_empty():
+		var node: Node = node_stack.pop_back()
+		if is_instance_valid(node):
+			if node is RayCast3D \
+				or node is CollisionShape3D \
+				or node is CollisionPolygon3D \
+				#or node is CollisionObject3D \
+				or node is GPUParticlesCollision3D \
+				or node is GPUParticlesCollisionBox3D \
+				or node is GPUParticlesCollisionHeightField3D \
+				or node is GPUParticlesCollisionSDF3D \
+				or node is GPUParticlesCollisionSphere3D:
+				# remove and re-add the node to the tree to force a redraw
+				# https://github.com/godotengine/godot/blob/26b1fd0d842fa3c2f090ead47e8ea7cd2d6515e1/scene/3d/collision_object_3d.cpp#L39
+				var parent: Node = node.get_parent()
+				if parent:
+					parent.remove_child(node)
+					parent.add_child(node)
+			node_stack.append_array(node.get_children())
