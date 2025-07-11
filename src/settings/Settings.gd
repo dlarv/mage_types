@@ -6,12 +6,11 @@ signal player_name_changed(name)
 
 const SAVE_ROOT_DIR := "user://games"
 
-@export 
-var debug_mode: bool: 
+@export var debug_mode: bool: 
 	set(value):
 		debug_mode = value
 		debug_mode_toggled.emit(value)
-
+@export var play_test_mode := false
 @export var enable_transmutation_hints := true
 @export var use_mouse_targeting := true
 @export var show_battle_turn_order := true

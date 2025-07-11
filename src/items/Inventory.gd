@@ -106,28 +106,11 @@ func _enter_tree() -> void:
 		for item in equipment:
 			item.quantity = 99
 
-	if not use_override: return
+	if not use_override or Settings.play_test_mode: return
 	if not primary_override == OverworldSpell.Spells.NONE:
 		add_key_item(key_items[primary_override].item)
-	# match primary_override:
-	# 	OverworldSpell.Spells.STASIS:
-	# 		add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
-	# 	OverworldSpell.Spells.GOLEM:
-	# 		add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
-	# 	OverworldSpell.Spells.CATALYST:
-	# 		add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
-	# 	OverworldSpell.Spells.NONE: pass 
-
 	if not secondary_override == OverworldSpell.Spells.NONE:
 		add_key_item(key_items[secondary_override].item)
-	# match secondary_override:
-	# 	OverworldSpell.Spells.STASIS:
-	# 		add_key_item(key_items[KeyItem.UniqueId.STASIS].item)
-	# 	OverworldSpell.Spells.GOLEM:
-	# 		add_key_item(key_items[KeyItem.UniqueId.GOLEM].item)
-	# 	OverworldSpell.Spells.CATALYST:
-	# 		add_key_item(key_items[KeyItem.UniqueId.CATALYST].item)
-	# 	OverworldSpell.Spells.NONE: return
 
 
 ## Returns list of **RegularItems** that contain BattleItems.
