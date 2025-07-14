@@ -1,6 +1,6 @@
 extends Node3D
 
-signal element_selected(element: ElementalType)
+signal element_selected(element: ElementalType, v: int, force: bool)
 
 @export var elements := {
 	# "Blank": false,
@@ -54,5 +54,5 @@ func _on_interactable_interacted(obj:Node3D) -> void:
 	if e:
 		element = e
 		_rotate_wheel(element)
-		element_selected.emit(element)
+		element_selected.emit(element, -2, true)
 
