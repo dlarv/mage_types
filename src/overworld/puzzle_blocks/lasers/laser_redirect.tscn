@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://db2dlgilhfyau"]
+
+[ext_resource type="Script" uid="uid://cuf0y6guijisw" path="res://src/overworld/puzzle_blocks/lasers/LaserRedirect.gd" id="1_2jm0n"]
+[ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_jw3hg"]
+[ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_dy00b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kprrn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2jm0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dy00b"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dy00b"]
+top_radius = 0.0
+height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jw3hg"]
+size = Vector3(0.5, 1, 1)
+
+[node name="LaserRedirect" type="StaticBody3D"]
+script = ExtResource("1_2jm0n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_kprrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2jm0n")
+surface_material_override/0 = SubResource("StandardMaterial3D_dy00b")
+
+[node name="OutputMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.75)
+mesh = SubResource("CylinderMesh_dy00b")
+
+[node name="InputMeshW" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.5, 0, 0)
+mesh = SubResource("CylinderMesh_dy00b")
+
+[node name="InputMeshE" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31134e-07, -5.73206e-15, 0.5, 0, 0)
+mesh = SubResource("CylinderMesh_dy00b")
+
+[node name="SubReceiverW" parent="." instance=ExtResource("2_jw3hg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverW"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)
+shape = SubResource("BoxShape3D_jw3hg")
+
+[node name="SubReceiverE" parent="." instance=ExtResource("2_jw3hg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0)
+shape = SubResource("BoxShape3D_jw3hg")
+
+[node name="SubEmitter" parent="." instance=ExtResource("3_dy00b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9)
+
+[connection signal="laser_dropped" from="SubReceiverW" to="." method="_on_sub_receiver_w_laser_dropped"]
+[connection signal="laser_received" from="SubReceiverW" to="." method="_on_sub_receiver_w_laser_received"]
+[connection signal="laser_dropped" from="SubReceiverE" to="." method="_on_sub_receiver_e_laser_dropped"]
+[connection signal="laser_received" from="SubReceiverE" to="." method="_on_sub_receiver_e_laser_received"]
