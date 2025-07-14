@@ -38,13 +38,15 @@ _data = {
 [node name="Delay" type="StaticBody3D"]
 script = ExtResource("1_xhgfr")
 open_delay = 5.0
+permanent = null
+is_on = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 1, 0)
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
 mesh = SubResource("TorusMesh_gdomg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.994499, 0.01875)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.00550097, 0.01875)
 shape = SubResource("CylinderShape3D_ksn4w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

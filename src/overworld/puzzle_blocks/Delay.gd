@@ -5,6 +5,7 @@ extends PuzzleBlock
 	set(val):
 		open_delay = val
 @export var locks: Array[PuzzleBlock]
+@export var permanent := false
 
 var _opened_locks := {}
 var _is_opened := false
@@ -33,6 +34,7 @@ func _physics_process(delta: float) -> void:
 
 	if _timer >= open_delay:
 		on.emit(self)
+		is_on = true
 
 
 func _on_lock_opened(block: PuzzleBlock) -> void:
@@ -59,10 +61,12 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 	#
 
 func _on_lock_closed(block: PuzzleBlock) -> void:
+	if permanent and is_on: return
 	if _opened_locks.has(block):
 		_opened_locks[block] = false
 		Logger.append_puzzle_log("Delay(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
 	off.emit(self)
+	is_on = false
 	_is_opened = false
 	_tween = create_tween()
 	var percentFull: float = max(1.0 - _timer / open_delay, 0.01)
