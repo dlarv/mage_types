@@ -1,17 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://oibhckiyltxv"]
+[gd_scene load_steps=26 format=3 uid="uid://oibhckiyltxv"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
 [ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="2_r4pl6"]
 [ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://src/overworld/geyser_engine.tscn" id="2_tohrr"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_uiwi1"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="4_cn4mc"]
-[ext_resource type="PackedScene" uid="uid://col3pgw3g73df" path="res://src/overworld/puzzle_blocks/catalyst_devices/laser_activated_catalyst.tscn" id="5_tvp60"]
 [ext_resource type="PackedScene" uid="uid://dr82ihfer1ek6" path="res://src/overworld/puzzle_blocks/empties/or_gate.tscn" id="6_tgj6p"]
-[ext_resource type="PackedScene" uid="uid://cspipog36hcdh" path="res://src/overworld/puzzle_blocks/lasers/draggable_emitter.tscn" id="7_5ed57"]
 [ext_resource type="PackedScene" uid="uid://d3ygm6nayhv7c" path="res://src/overworld/puzzle_blocks/indicator.tscn" id="7_vveuj"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="9_d31bn"]
+[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="10_6yhma"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="10_l45oy"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="10_vveuj"]
+[ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="11_d31bn"]
 [ext_resource type="PackedScene" uid="uid://ujn580ouc14d" path="res://src/overworld/puzzle_blocks/empties/flip_flop.tscn" id="13_6yhma"]
+[ext_resource type="PackedScene" uid="uid://do43qejpr6n5i" path="res://src/overworld/puzzle_blocks/delay.tscn" id="14_gn8cr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tohrr"]
 size = Vector3(301, 30, 58)
@@ -301,20 +303,6 @@ material = SubResource("StandardMaterial3D_6yhma")
 [node name="Head" parent="Chamber1/Chunk/GeyserEngine/OutputWire2" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_6yhma")
 
-[node name="LaserActivatedCatalyst" parent="Chamber1/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("5_tvp60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -2.5, -11)
-collision_mask = 7
-puzzle_block = NodePath("Mirror")
-_element = "magenta"
-
-[node name="Mirror" parent="Chamber1/Chunk/LaserActivatedCatalyst" instance=ExtResource("10_vveuj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.7, 0)
-_element = "magenta"
-
-[node name="DraggableEmitter" parent="Chamber1/Chunk" instance=ExtResource("7_5ed57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -8)
-_element = "blue"
-
 [node name="EnvRampPressurePlate" parent="Chamber1/Chunk" instance=ExtResource("4_cn4mc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, -15.2)
 can_player_trigger = true
@@ -333,6 +321,45 @@ on_material = SubResource("StandardMaterial3D_gn8cr")
 off_material = SubResource("StandardMaterial3D_6yhma")
 invalid_material = null
 
+[node name="Emitter" parent="Chamber1/Chunk" instance=ExtResource("10_l45oy")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, -0.8, 1)
+
+[node name="LaserReceiver" parent="Chamber1/Chunk" instance=ExtResource("11_d31bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.3, -0.8, 1)
+
+[node name="Mirror3" parent="Chamber1/Chunk" instance=ExtResource("10_vveuj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, -2.4, 9)
+
+[node name="Mirror4" parent="Chamber1/Chunk" instance=ExtResource("10_vveuj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, -2.4, 9)
+
+[node name="Mirror2" parent="Chamber1/Chunk" instance=ExtResource("10_vveuj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35, -2.4, 1)
+
+[node name="Delay" parent="Chamber1/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("14_gn8cr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44, -1.4, 3)
+locks = [NodePath("../LaserReceiver")]
+permanent = true
+
+[node name="Rails" parent="Chamber1/Chunk" instance=ExtResource("10_6yhma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 1)
+
+[node name="PointA" parent="Chamber1/Chunk/Rails" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
+visible = false
+
+[node name="PointB" parent="Chamber1/Chunk/Rails" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+visible = false
+
+[node name="Mirror" parent="Chamber1/Chunk/Rails" instance=ExtResource("10_vveuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
+
+[connection signal="off" from="Chamber1/Chunk/GeyserEngine/PurpleFlipFlop" to="Chamber1/Chunk/Emitter" method="stop"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/PurpleFlipFlop" to="Chamber1/Chunk/Emitter" method="start"]
+[connection signal="off" from="Chamber1/Chunk/GeyserEngine/BlueFlipFlop" to="Chamber1/Chunk/Rails" method="slide"]
+[connection signal="on" from="Chamber1/Chunk/GeyserEngine/BlueFlipFlop" to="Chamber1/Chunk/Rails" method="slide"]
+
 [editable path="Chamber1/Chunk/GeyserEngine"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireS"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireN"]
@@ -340,3 +367,4 @@ invalid_material = null
 [editable path="Chamber1/Chunk/GeyserEngine/WireW"]
 [editable path="Chamber1/Chunk/GeyserEngine/OutputWire1"]
 [editable path="Chamber1/Chunk/GeyserEngine/OutputWire2"]
+[editable path="Chamber1/Chunk/Rails"]
