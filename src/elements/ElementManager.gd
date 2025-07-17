@@ -332,6 +332,15 @@ func modify_color(element: Variant, newColor: Color) -> void:
 	stylebox.bg_color = newColor
 
 
+func get_elemental_stylebox(element: Variant) -> StyleBox:
+	if element is String:
+		element = elements[get_index_from_name(element)]
+	elif element is int:
+		element = elements[element]
+
+	return theme.get_stylebox(element.name.to_lower(), "Control")
+
+
 class ElementalNode:
 	var element : ElementalType = ElementManager.Blank
 	# Dict<ElementalType, Edge>

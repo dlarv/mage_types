@@ -17,3 +17,53 @@ grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 expand_mode = 5
 script = ExtResource("1_prf6q")
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+size = Vector2i(180, 119)
+
+[node name="PopupVBox" type="VBoxContainer" parent="PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 176.0
+offset_bottom = 115.0
+
+[node name="GridContainer" type="GridContainer" parent="PopupPanel/PopupVBox"]
+layout_mode = 2
+columns = 4
+
+[node name="Button" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button6" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PopupPanel/PopupVBox"]
+layout_mode = 2
+
+[connection signal="popup_hide" from="PopupPanel" to="." method="_on_popup_panel_popup_hide"]

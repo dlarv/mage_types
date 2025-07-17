@@ -9,6 +9,7 @@ var _locked_maps := {}
 
 func _ready() -> void:
 	for child in get_children():
+		if child is PopupPanel: continue
 		if not is_map_unlocked.has(child.name): continue
 
 		if not is_map_unlocked[child.name]:
@@ -31,7 +32,10 @@ func unlock_map(mapName: String) -> void:
 
 func serialize() -> Dictionary:
 	var data := {}
-	for child in get_children():
+	
+	# Skip legend panel.
+	for child in get_children().slice(1):
+		if child is PopupPanel: continue
 		# All maps are first/only grandchildren of this node.
 		data[child.name] = child.get_child(0).serialize()
 
