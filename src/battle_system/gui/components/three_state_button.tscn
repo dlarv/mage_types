@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0ctqpfxrh7c3"]
 
 [ext_resource type="Script" uid="uid://dg5afv3xuvqe0" path="res://src/battle_system/gui/components/ThreeStateButton.gd" id="1_qafsp"]
-[ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme.tres" id="2_puxxf"]
+[ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme/theme.tres" id="2_puxxf"]
 
 [node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("button")]
 custom_minimum_size = Vector2(0, 50)

@@ -614,10 +614,15 @@ Player selects new spell or equipment from inside Inventory:
 - [x] Allow RGB values for each Element to be changed.
 - [ ] Provide RGB presets for colorblind players.
 
+*The next system was created as a naive solution. Godot has a theming system which can likely do this better and should be used where possible.*
+- This works for things like Buttons, but not ColorRects.
+- This will also not work for MagiClay.
+*The Naive Solution*
 - All text that changes its color based on its element should be styled using the `[el]` bbcode tag.
 - The following `Control` nodes can use the `elemental_gui` tag directly to update their value. If it does, it should be given a piece of metadata of type with name="ELEMENT" and value: char = first letter of element name in uppercase.
 	- ColorRect
 	- Button
+
 
 ### Localizations (locl)
 **Allow for localizations of text and dialog.**

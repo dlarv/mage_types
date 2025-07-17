@@ -355,8 +355,10 @@ func modify_color(element: Variant, newColor: Color) -> void:
 	element.main_color = newColor
 
 	theme.set_color(element.name.to_lower(), "Control", newColor)
-	var stylebox = theme.get_stylebox(element.name.to_lower(), "Control")
+	var stylebox := theme.get_stylebox(element.name.to_lower(), "Control")
 	stylebox.bg_color = newColor
+
+	update_elemental_gui()
 
 
 func get_elemental_stylebox(element: Variant) -> StyleBox:

@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bfk63x8qgtxhe"]
+
+[ext_resource type="StyleBox" uid="uid://dannym5d3m1p8" path="res://assets/theme/style_boxes/blank_style_box_flat.tres" id="1_r3pl3"]
+[ext_resource type="StyleBox" uid="uid://b5ptqjrr1hbx5" path="res://assets/theme/style_boxes/blue_style_box_flat.tres" id="2_enqth"]
+[ext_resource type="StyleBox" uid="uid://cuxcq6qi8rtw5" path="res://assets/theme/style_boxes/cyan_style_box_flat.tres" id="3_10c53"]
+[ext_resource type="StyleBox" uid="uid://1m67yyeq547m" path="res://assets/theme/style_boxes/green_style_box_flat.tres" id="4_10c53"]
+[ext_resource type="StyleBox" uid="uid://bia23trceqj74" path="res://assets/theme/style_boxes/magenta_style_box_flat.tres" id="5_r3vf3"]
+[ext_resource type="StyleBox" uid="uid://qnm0yyq3ay6b" path="res://assets/theme/style_boxes/orange_style_box_flat.tres" id="6_hfrb8"]
+[ext_resource type="StyleBox" uid="uid://bnm7m3kjrltup" path="res://assets/theme/style_boxes/purple_style_box_flat.tres" id="7_8hjjn"]
+[ext_resource type="StyleBox" uid="uid://bs5c1fi530wu0" path="res://assets/theme/style_boxes/red_style_box_flat.tres" id="8_2fit0"]
+[ext_resource type="StyleBox" uid="uid://crnhxeotyqgyq" path="res://assets/theme/style_boxes/yellow_style_box_flat.tres" id="9_d8n4f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk8e1"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1n5p"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[resource]
+Control/colors/Blank = Color(0.498039, 0.498039, 0.498039, 1)
+Control/colors/Blue = Color(0, 0, 1, 1)
+Control/colors/Cyan = Color(0, 1, 1, 1)
+Control/colors/Green = Color(0, 1, 0, 1)
+Control/colors/Magenta = Color(1, 0, 1, 1)
+Control/colors/Orange = Color(1, 0.498039, 0, 1)
+Control/colors/Purple = Color(0.321569, 0.0941176, 0.980392, 1)
+Control/colors/Red = Color(1, 0, 0, 1)
+Control/colors/Yellow = Color(1, 1, 0, 1)
+Control/styles/blank = ExtResource("1_r3pl3")
+Control/styles/blue = ExtResource("2_enqth")
+Control/styles/cyan = ExtResource("3_10c53")
+Control/styles/green = ExtResource("4_10c53")
+Control/styles/magenta = ExtResource("5_r3vf3")
+Control/styles/orange = ExtResource("6_hfrb8")
+Control/styles/purple = ExtResource("7_8hjjn")
+Control/styles/red = ExtResource("8_2fit0")
+Control/styles/yellow = ExtResource("9_d8n4f")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_rk8e1")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_y1n5p")

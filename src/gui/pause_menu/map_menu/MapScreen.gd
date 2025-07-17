@@ -20,7 +20,6 @@ func _ready() -> void:
 	var i := -1
 	for button: Button in popupVBox.get_child(0).get_children():
 		i += 1
-		# button.add_theme_stylebox_override("normal", ElementManager.get_elemental_stylebox(i))
 		button.pressed.connect(func():
 			var index := i
 			popup_item_selected.emit(ElementManager.elements[index])
@@ -61,7 +60,7 @@ func _select_icon_to_place(pos: Vector2) -> void:
 	$PopupPanel.show()
 	var element: ElementalType = await popup_item_selected
 	if element == null: return
-	var icon := MapIcon.new(MapIcon.MapIconShape.SQUARE, element.main_color, MAP_UNIT) 
+	var icon := MapIcon.new(MapIcon.MapIconShape.SQUARE, element, MAP_UNIT) 
 	icon.set_deferred("position", Vector2(pos.x - MAP_UNIT / 2,  pos.y - MAP_UNIT / 2))
 	_place_icon(icon)
 

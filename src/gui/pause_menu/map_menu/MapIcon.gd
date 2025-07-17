@@ -8,10 +8,12 @@ enum MapIconShape { SQUARE }
 var shape: MapIconShape
 
 
-func _init(shape: MapIconShape, color: Color, unitSize: float):
+func _init(shape: MapIconShape, element: ElementalType, unitSize: float):
 	set_deferred("size", Vector2(unitSize, unitSize))
-	self.color = color
 	self.shape = shape
+	self.color = element.main_color
+	add_to_group("elemental_gui")
+	set_meta("ELEMENT", element.name.substr(0, 1).to_upper())
 
 
 func _gui_input(event: InputEvent) -> void:

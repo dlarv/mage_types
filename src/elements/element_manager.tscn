@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="9_xevhv"]
 [ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="10_rnxsd"]
 [ext_resource type="Script" uid="uid://dyqtsmtfqgpdp" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="11_lkgg0"]
-[ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme.tres" id="14_q5nao"]
+[ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme/theme.tres" id="14_q5nao"]
 
 [sub_resource type="Resource" id="Resource_ckjnr"]
 resource_name = "Attack Boost"

@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdwbhycb1oik2"]
+[gd_scene load_steps=11 format=3 uid="uid://cdwbhycb1oik2"]
 
 [ext_resource type="Script" uid="uid://csy070xft1wb5" path="res://src/gui/pause_menu/map_menu/MapScreen.gd" id="1_prf6q"]
+[ext_resource type="StyleBox" uid="uid://b5ptqjrr1hbx5" path="res://assets/theme/style_boxes/blue_style_box_flat.tres" id="2_m2qjg"]
+[ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme/theme.tres" id="2_prf6q"]
+[ext_resource type="StyleBox" uid="uid://bnm7m3kjrltup" path="res://assets/theme/style_boxes/purple_style_box_flat.tres" id="4_l6oub"]
+[ext_resource type="StyleBox" uid="uid://crnhxeotyqgyq" path="res://assets/theme/style_boxes/yellow_style_box_flat.tres" id="4_wrhaa"]
+[ext_resource type="StyleBox" uid="uid://bia23trceqj74" path="res://assets/theme/style_boxes/magenta_style_box_flat.tres" id="5_l6oub"]
+[ext_resource type="StyleBox" uid="uid://bs5c1fi530wu0" path="res://assets/theme/style_boxes/red_style_box_flat.tres" id="6_3vfr4"]
+[ext_resource type="StyleBox" uid="uid://qnm0yyq3ay6b" path="res://assets/theme/style_boxes/orange_style_box_flat.tres" id="7_imdko"]
+[ext_resource type="StyleBox" uid="uid://1m67yyeq547m" path="res://assets/theme/style_boxes/green_style_box_flat.tres" id="8_qd0eb"]
+[ext_resource type="StyleBox" uid="uid://cuxcq6qi8rtw5" path="res://assets/theme/style_boxes/cyan_style_box_flat.tres" id="9_5tuww"]
 
 [node name="TextureRect" type="TextureRect"]
 top_level = true
@@ -31,45 +40,52 @@ offset_bottom = 115.0
 layout_mode = 2
 columns = 4
 
-[node name="Button" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "B"
+theme_override_styles/normal = ExtResource("2_m2qjg")
 
-[node name="Button2" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button2" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "P"
+theme = ExtResource("2_prf6q")
+theme_override_styles/normal = ExtResource("4_l6oub")
 
-[node name="Button3" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button3" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "M"
+theme = ExtResource("2_prf6q")
+theme_override_styles/normal = ExtResource("5_l6oub")
 
-[node name="Button4" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button4" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "R"
+theme = ExtResource("2_prf6q")
+theme_override_styles/normal = ExtResource("6_3vfr4")
 
-[node name="Button5" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button5" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "O"
+theme = ExtResource("2_prf6q")
+theme_override_styles/normal = ExtResource("7_imdko")
 
-[node name="Button6" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button6" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "Y"
+theme = ExtResource("2_prf6q")
+theme_override_styles/normal = ExtResource("4_wrhaa")
 
-[node name="Button7" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button7" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "G"
+theme = ExtResource("2_prf6q")
+theme_override_styles/normal = ExtResource("8_qd0eb")
 
-[node name="Button8" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
+[node name="Button8" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-metadata/ELEMENT = "C"
+theme = ExtResource("2_prf6q")
+theme_override_styles/normal = ExtResource("9_5tuww")
 
 [node name="Label" type="Label" parent="PopupPanel/PopupVBox"]
 layout_mode = 2
