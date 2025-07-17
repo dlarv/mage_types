@@ -93,6 +93,7 @@ text = "Save/Load"
 
 [node name="MainMenu_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
