@@ -69,6 +69,9 @@ func serialize() -> Dictionary:
 
 
 func deserialize(data: Dictionary) -> void:
+	for icon in _icons:
+		_remove_icon(icon)
+
 	for icon in data.icons:
 		_place_icon(icon)
 

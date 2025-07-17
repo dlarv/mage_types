@@ -23,3 +23,7 @@ func _check_for_video_player() -> void:
 	_video_player = get_children()[current_tab].find_child("VideoStreamPlayer")
 	if _video_player:
 		_video_player.play()
+
+
+# Virtual
+func reload() -> void: pass
