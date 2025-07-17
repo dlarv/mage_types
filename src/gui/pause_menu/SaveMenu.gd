@@ -79,6 +79,7 @@ func save() -> void:
 	print("Saved game")
 	file.close()
 
+
 func load() -> void:
 	if front_end_only:
 		load_button_pressed.emit(%LineEdit.text)
@@ -98,6 +99,7 @@ func load() -> void:
 	read_file(file)
 	print("Loaded game from %s" % path)
 	file.close()
+
 
 func read_file(file: FileAccess) -> void:
 	while file.get_position() < file.get_length():
@@ -119,6 +121,7 @@ func read_file(file: FileAccess) -> void:
 func _on_visibility_changed() -> void:
 	if not visible or not _player: return
 	%LineEdit.text = _player.player_name
+
 
 func _on_delete_button_pressed() -> void:
 	var fileName = %LineEdit.text

@@ -41,6 +41,9 @@ func _pan(delta: Vector2) -> void:
 
 
 func _place_icon(pos: Vector2) -> void:
+	if not is_node_ready():
+		await ready
+
 	var icon := MapIcon.instantiate() 
 	add_child(icon)
 	icon.size = Vector2(MAP_UNIT, MAP_UNIT)
@@ -53,6 +56,21 @@ func _remove_icon(icon: Button) -> void:
 	_icons.remove_at(_icons.find(icon))
 	remove_child(icon)
 	icon.pressed.disconnect(_remove_icon)
+
+
+func serialize() -> Dictionary:
+	var icons := []
+	for icon in _icons:
+		icons.append(icon.position)
+
+	return {
+		"icons": icons
+	}
+
+
+func deserialize(data: Dictionary) -> void:
+	for icon in data.icons:
+		_place_icon(icon)
 
 
 # Doesn't work in wayland
