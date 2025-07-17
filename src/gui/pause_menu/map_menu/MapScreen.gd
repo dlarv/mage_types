@@ -41,16 +41,13 @@ func _pan(delta: Vector2) -> void:
 
 
 func _place_icon(pos: Vector2) -> void:
-	if not is_node_ready():
-		await ready
-
 	var icon := MapIcon.instantiate() 
-	add_child(icon)
-	icon.size = Vector2(MAP_UNIT, MAP_UNIT)
-	icon.position = Vector2(pos.x - MAP_UNIT / 2,  pos.y - MAP_UNIT / 2)
 	_icons.append(icon)
 	icon.pressed.connect(_remove_icon.bind(icon))
 
+	icon.set_deferred("size", Vector2(MAP_UNIT, MAP_UNIT))
+	icon.set_deferred("position", Vector2(pos.x - MAP_UNIT / 2,  pos.y - MAP_UNIT / 2))
+	add_child(icon)
 
 func _remove_icon(icon: Button) -> void:
 	_icons.remove_at(_icons.find(icon))
@@ -69,9 +66,10 @@ func serialize() -> Dictionary:
 
 
 func deserialize(data: Dictionary) -> void:
-	for icon in _icons:
+	for icon in get_children():
 		_remove_icon(icon)
 
+	_icons = []
 	for icon in data.icons:
 		_place_icon(icon)
 
