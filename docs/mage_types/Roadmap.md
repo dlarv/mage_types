@@ -12,6 +12,12 @@
 [[version_naming_scheme]]
 # v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
+- [ ] Map menu added
+	- [ ] Scroll/zoom
+	- [ ] Icon showing which room player is in (use Player.active_chunk)
+	- [ ] Ability to place icons along with 16 char messages
+	- [ ] First page of map should be legend where player can explain what each of their icons mean
+	- [ ] Ability to write on map?
 - Golem system prototype
 	- [ ] Different golem elements should have different properties
 		- [x] Only Blue can wade thru water
