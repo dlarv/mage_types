@@ -25,6 +25,8 @@ func _ready() -> void:
 			popup_item_selected.emit(ElementManager.elements[index])
 			$PopupPanel.hide())
 		
+	position.x = size.x / 2
+	position.y = size.y / 2
 
 func _gui_input(event: InputEvent) -> void:
 	# When zooming 
