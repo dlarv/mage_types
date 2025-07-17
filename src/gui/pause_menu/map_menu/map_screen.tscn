@@ -31,37 +31,45 @@ offset_bottom = 115.0
 layout_mode = 2
 columns = 4
 
-[node name="Button" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "B"
 
-[node name="Button2" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button2" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "P"
 
-[node name="Button3" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button3" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "M"
 
-[node name="Button4" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button4" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "R"
 
-[node name="Button5" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button5" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "O"
 
-[node name="Button6" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button6" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "Y"
 
-[node name="Button7" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button7" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "G"
 
-[node name="Button8" type="Button" parent="PopupPanel/PopupVBox/GridContainer"]
+[node name="Button8" type="Button" parent="PopupPanel/PopupVBox/GridContainer" groups=["elemental_gui"]]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+metadata/ELEMENT = "C"
 
 [node name="Label" type="Label" parent="PopupPanel/PopupVBox"]
 layout_mode = 2

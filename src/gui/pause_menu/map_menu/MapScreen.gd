@@ -20,7 +20,7 @@ func _ready() -> void:
 	var i := -1
 	for button: Button in popupVBox.get_child(0).get_children():
 		i += 1
-		button.add_theme_stylebox_override("normal", ElementManager.get_elemental_stylebox(i))
+		# button.add_theme_stylebox_override("normal", ElementManager.get_elemental_stylebox(i))
 		button.pressed.connect(func():
 			var index := i
 			popup_item_selected.emit(ElementManager.elements[index])

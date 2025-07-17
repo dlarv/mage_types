@@ -613,6 +613,12 @@ Player selects new spell or equipment from inside Inventory:
 ### Colorblindness (colb)
 - [x] Allow RGB values for each Element to be changed.
 - [ ] Provide RGB presets for colorblind players.
+
+- All text that changes its color based on its element should be styled using the `[el]` bbcode tag.
+- The following `Control` nodes can use the `elemental_gui` tag directly to update their value. If it does, it should be given a piece of metadata of type with name="ELEMENT" and value: char = first letter of element name in uppercase.
+	- ColorRect
+	- Button
+
 ### Localizations (locl)
 **Allow for localizations of text and dialog.**
 ## Story and Content (STRY)

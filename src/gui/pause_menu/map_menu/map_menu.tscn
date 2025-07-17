@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dos802eriaax3"]
+[gd_scene load_steps=5 format=3 uid="uid://dos802eriaax3"]
 
 [ext_resource type="Script" uid="uid://chikwdjow5ge8" path="res://src/gui/pause_menu/map_menu/MapMenu.gd" id="1_y8pvq"]
 [ext_resource type="PackedScene" uid="uid://cdwbhycb1oik2" path="res://src/gui/pause_menu/map_menu/map_screen.tscn" id="2_l7pld"]
+[ext_resource type="PackedScene" uid="uid://hyj3xwdba08r" path="res://src/gui/pause_menu/map_menu/map_legend.tscn" id="2_ld5vb"]
 [ext_resource type="Texture2D" uid="uid://cpwmhwbpsq36a" path="res://assets/graphics/map_drawing.png" id="2_y8pvq"]
 
 [node name="Map" type="TabContainer" groups=["persist"]]
@@ -13,10 +14,9 @@ grow_vertical = 2
 current_tab = 1
 script = ExtResource("1_y8pvq")
 
-[node name="Legend" type="MarginContainer" parent="."]
+[node name="Legend" parent="." instance=ExtResource("2_ld5vb")]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 0
 
 [node name="Hotel" type="MarginContainer" parent="."]
 layout_mode = 2

@@ -182,6 +182,9 @@ func _enter_tree() -> void:
 	# test_transmutations()
 	# test_side_effects()
 	# test_traversals()
+
+func _ready() -> void:
+	update_elemental_gui()
 	
 func build()-> void:
 	if len(matchups.keys()) > 0: return
@@ -268,6 +271,30 @@ func build()-> void:
 	cyan.add_connection(Purple, blue, speed_buff)
 	cyan.add_connection(Magenta, blue, speed_buff)
 	cyan.add_connection(Yellow, green, attack_buff)
+
+func update_elemental_gui() -> void:
+	for node in get_tree().get_nodes_in_group("elemental_gui"):
+		var element: ElementalType
+		match node.get_meta("ELEMENT"):
+			"B": element = Blue
+			"P": element = Purple
+			"M": element = Magenta
+			"R": element = Red
+			"O": element = Orange
+			"Y": element = Yellow
+			"G": element = Green
+			"C": element = Cyan
+			_: 
+				push_warning("Tried to set ElementalGUI(%s), but found invalid Meta(%s)." 
+						% [node.name, node.get_meta("ELEMENT")])
+				Logger.append_world_log("Tried to set ElementalGUI(%s), but found invalid Meta(%s)." 
+						% [node.name, node.get_meta("ELEMENT")])
+				continue
+
+		if node is ColorRect:
+			node.color = element.main_color
+		elif node is Button:
+			node.add_theme_stylebox_override("normal", ElementManager.get_elemental_stylebox(element))
 
 func get_element_from_name(name: String) -> ElementalType:
 	# Ensure basic typos won't interfere.
