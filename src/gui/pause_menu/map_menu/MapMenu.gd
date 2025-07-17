@@ -5,6 +5,8 @@ extends Menu
 	"Hotel": true,
 	"Purple": false,
 }
+var tooltips := {}
+
 var _locked_maps := {}
 
 func _ready() -> void:
@@ -40,17 +42,20 @@ func serialize() -> Dictionary:
 		# All maps are first/only grandchildren of this node.
 		data[child.name] = child.get_child(0).serialize()
 
+
 	return {
 		"path": get_path(),
 		"legend": legendData,
 		"active_maps": is_map_unlocked,
-		"data": data
+		"data": data,
+		"tooltips": tooltips,
 	}
 
 
 func deserialize(data: Dictionary) -> void:
 	is_map_unlocked = data.active_maps
-	get_child(0).deserialize(data.legend)
+	get_child(0).deserialize(data.legend, data.tooltips)
+	tooltips = data.tooltips
 
 	# Deserialize maps.
 	for child in get_children().slice(1):

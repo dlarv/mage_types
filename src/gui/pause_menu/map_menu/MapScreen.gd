@@ -69,7 +69,10 @@ func _place_icon(icon: MapIcon) -> void:
 	_icons.append(icon)
 	icon.removed.connect(_remove_icon)
 	add_child(icon)
-
+	icon.tooltip_text = get_parent().get_parent().tooltips.get(["%s_map_icon" 
+			% MapIcon.MapIconShape.keys()[icon.shape].to_lower(),
+			icon.element.name], "")
+		 
 
 func _remove_icon(icon: MapIcon) -> void:
 	_icons.remove_at(_icons.find(icon))
@@ -93,7 +96,7 @@ func deserialize(data: Dictionary) -> void:
 
 	_icons = []
 	for d in data.icons:
-		var output: MapIcon = MapIcon.new(d.shape, d.color, d.size)
+		var output: MapIcon = MapIcon.new(d.shape, ElementManager.elements[d.element], d.size)
 		output.set_deferred("position", d.position)
 		_place_icon(output)
 
