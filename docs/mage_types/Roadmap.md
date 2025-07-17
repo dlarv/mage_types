@@ -12,12 +12,10 @@
 [[version_naming_scheme]]
 # v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
-- [ ] Map menu added
-	- [ ] Scroll/zoom
-	- [ ] Icon showing which room player is in (use Player.active_chunk)
-	- [ ] Ability to place icons along with 16 char messages
-	- [ ] First page of map should be legend where player can explain what each of their icons mean
-	- [ ] Ability to write on map?
+- [x] Basic map menu added
+	- [x] Scroll/zoom
+	- [x] Ability to place icons along with 16 char messages
+	- [x] First page of map should be legend where player can explain what each of their icons mean
 - Golem system prototype
 	- [ ] Different golem elements should have different properties
 		- [x] Only Blue can wade thru water
@@ -177,6 +175,9 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Add endless stairway to infinite hall
 - [ ] Add walls, wall decor, & scene lighting
 - [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
+- [ ] Map menu improvements
+	- [ ] Icon showing which room player is in (use Player.active_chunk)
+	- [ ] Ability to write on map?
 - [x] When player falls in water, return them to previous stable position
 	- [ ] Add water colliders to Ziggurat water
 	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in
