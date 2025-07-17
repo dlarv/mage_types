@@ -1,6 +1,6 @@
 extends Control
 
-const MapIcon := preload("res://src/gui/pause_menu/map_menu/map_icon.tscn")
+const MapIcon := preload("res://src/gui/pause_menu/map_menu/MapIcon.gd")
 const MAP_UNIT := 40.0
 const PAN_INCREMENT := 0.8
 const ZOOM_INCREMENT := 0.08
@@ -41,18 +41,17 @@ func _pan(delta: Vector2) -> void:
 
 
 func _place_icon(pos: Vector2) -> void:
-	var icon := MapIcon.instantiate() 
+	var icon := MapIcon.new(MapIcon.MapIconShape.SQUARE, Color.RED, MAP_UNIT) 
 	_icons.append(icon)
-	icon.pressed.connect(_remove_icon.bind(icon))
+	icon.removed.connect(_remove_icon)
 
-	icon.set_deferred("size", Vector2(MAP_UNIT, MAP_UNIT))
 	icon.set_deferred("position", Vector2(pos.x - MAP_UNIT / 2,  pos.y - MAP_UNIT / 2))
 	add_child(icon)
 
-func _remove_icon(icon: Button) -> void:
+
+func _remove_icon(icon: MapIcon) -> void:
 	_icons.remove_at(_icons.find(icon))
 	remove_child(icon)
-	icon.pressed.disconnect(_remove_icon)
 
 
 func serialize() -> Dictionary:
@@ -67,7 +66,8 @@ func serialize() -> Dictionary:
 
 func deserialize(data: Dictionary) -> void:
 	for icon in get_children():
-		_remove_icon(icon)
+		if icon is MapIcon:
+			_remove_icon(icon)
 
 	_icons = []
 	for icon in data.icons:
@@ -99,3 +99,4 @@ func deserialize(data: Dictionary) -> void:
 # 		new_position.y -= window.size.y - (margin * 2)
 # 	if warp:
 # 		DisplayServer.warp_mouse(new_position - window.position)
+
