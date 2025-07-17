@@ -12,6 +12,7 @@ signal catalyst_menu_closed(element: ElementalType)
 @export var save_menu: Menu
 @export var golem_menu: Menu
 @export var catalyst_menu: Menu
+@export var map_menu: Menu
 
 @onready var info_graphics := {
 	"stasis": $PanelContainer/MarginContainer/TabContainer/StasisOverworldSpell,
@@ -47,6 +48,7 @@ func setup() -> void:
 		player_menu.setup(p[0])
 	inventory.setup()
 
+
 func _unhandled_input(input: InputEvent) -> void:
 	if block_input: 
 		if not inventory.visible: return
@@ -67,6 +69,7 @@ func _unhandled_input(input: InputEvent) -> void:
 	else:
 		_try_toggle_menu(input)
 
+
 func _try_toggle_menu(input: InputEvent) -> void:
 	if input.is_action_pressed("pause_game"):
 		push_menu(main_menu)
@@ -76,6 +79,9 @@ func _try_toggle_menu(input: InputEvent) -> void:
 		push_menu(inventory)
 	elif input.is_action_pressed("open_player_menu"):
 		push_menu(player_menu)
+	elif input.is_action_pressed("open_map_menu"):
+		push_menu(map_menu)
+
 
 func push_menu(menu: Control) -> void:
 	get_tree().paused = true
@@ -85,6 +91,7 @@ func push_menu(menu: Control) -> void:
 	menu.show()
 	_menu_stack.append(menu)
 	show()
+
 
 func pop_menu() -> void:
 	var menu = _menu_stack.pop_back()
@@ -98,12 +105,14 @@ func pop_menu() -> void:
 	else:
 		_menu_stack[-1].show()
 
+
 func clear_all() -> void:
 	for menu in _menu_stack:
 		menu.hide()
 	hide()
 	_menu_stack = []
 	get_tree().paused = is_in_dialog
+
 
 func show_dialog(msg: String) -> void:
 	# Gets empty dialog box attached to MISC start node.
@@ -113,17 +122,20 @@ func show_dialog(msg: String) -> void:
 	await dialog_box.dialogue_ended
 	overworld.process_mode = Node.PROCESS_MODE_INHERIT
 
+
 func open_vendor_menu(vendor: VendorActor) -> void:
 	_menu_stack.append(vendor_menu)
 	vendor_menu.open_menu(vendor)
 	vendor_menu.show()
 	show()
 
+
 func open_catalyst_menu(validElements: Dictionary) -> void:
 	_menu_stack.append(catalyst_menu)
 	catalyst_menu.open_menu(validElements)
 	catalyst_menu.show()
 	show()
+
 
 func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
 	# Without this block, overworld spells cannot show their icon upon startup.
@@ -134,6 +146,7 @@ func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
 		if not hud: return
 	hud.show_overworld_spell(isPrimary, spell)
 
+
 func show_info_graphic(key: String) -> void:
 	if info_graphics.has(key):
 		var graphic: Menu = info_graphics[key]
@@ -142,6 +155,7 @@ func show_info_graphic(key: String) -> void:
 		pop_menu()
 	else:
 		push_warning("No info graphic with Key(%s) found." % key)
+
 
 func toggle_transmutation_menu() -> void:
 	if len(_menu_stack) > 0 and _menu_stack[-1] == matchup_chart:
@@ -153,35 +167,49 @@ func toggle_transmutation_menu() -> void:
 		matchup_chart.show()
 		show()
 
+
 func restrict_transmutation_menu(elements: Array) -> void:
 	matchup_chart.restrict_graph(elements)
+
 
 func _on_player_button_pressed() -> void:
 	push_menu(player_menu)
 
+
 func _on_inventory_button_pressed() -> void:
 	push_menu(inventory)
+
 
 func _on_transmutation_button_pressed() -> void:
 	push_menu(matchup_chart)
 
+
 func _on_open_settings_button_pressed() -> void:
 	push_menu(settings_menu)
 
+
 func _on_save_game_button_pressed() -> void:
 	push_menu(save_menu)
+
+
+func _on_map_button_pressed() -> void:
+	push_menu(map_menu)
+
 
 func toggle_golem_menu(element: ElementalType=null) -> void:
 	golem_menu.element = element
 	push_menu(golem_menu)
 
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
 
 func _on_vendor_menu_menu_closed() -> void:
 	_menu_stack.pop_back()
 	vendor_menu_closed.emit()
 	vendor_menu.hide()
+
 
 func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 	block_input = true
@@ -194,6 +222,7 @@ func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 		Inventory.remove(selection, 1)
 		actor.learn_spell(selection, index)
 
+
 func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 	block_input = true
 	inventory.show()
@@ -205,12 +234,16 @@ func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 		Inventory.remove(selection, 1)
 		actor.equipment = selection
 
+
 func _on_main_menu_button_pressed() -> void:
 	hide()
 	get_tree().change_scene_to_file("res://src/gui/main_menu/main_menu.tscn")
+
 
 func _on_catalyst_menu_closed(element:ElementalType) -> void:
 	_menu_stack.pop_back()
 	catalyst_menu.hide()
 	catalyst_menu_closed.emit(element)
 	hide()
+
+

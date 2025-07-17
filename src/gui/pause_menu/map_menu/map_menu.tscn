@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dos802eriaax3"]
+
+[ext_resource type="Script" uid="uid://dy33wvipm7vbl" path="res://src/gui/Menu.gd" id="1_k5bi6"]
+[ext_resource type="PackedScene" uid="uid://cdwbhycb1oik2" path="res://src/gui/pause_menu/map_menu/map_screen.tscn" id="2_l7pld"]
+[ext_resource type="Texture2D" uid="uid://cpwmhwbpsq36a" path="res://assets/graphics/map_drawing.png" id="2_y8pvq"]
+
+[node name="Map" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_k5bi6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" parent="MarginContainer" instance=ExtResource("2_l7pld")]
+layout_mode = 2
+texture = ExtResource("2_y8pvq")
