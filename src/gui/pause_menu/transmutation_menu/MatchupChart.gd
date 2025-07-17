@@ -17,7 +17,7 @@ var do_highlighting := true
 func _ready():
 	if grid == null: return
 
-	ElementManager.force_load()
+	ElementManager.build()
 	_elements = ElementManager.elements
 
 	create_grid()
@@ -108,4 +108,3 @@ func _on_highlight_checkbox_toggled(toggledOn:bool) -> void:
 
 	for child in grid.get_children():
 		child.focus(true)
-

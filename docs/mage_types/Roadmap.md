@@ -544,8 +544,8 @@ The `SaveMenu` keeps track of which `persist` items are deleted using `queue_fre
 
 `Chunk`s can be added to the `persist` group. If they are, they will automatically handle all of their serializable children. To avoid double saving, `Chunk`s will remove all their children from this group.
 
-
-### Settings Menu (sett)
+When loading a saved game, the current game state should be reset. This is done by calling `get_tree().reload_current_scene(); await get_tree().create_timer(1.0).timeout`. This will not reload any singletons! All singletons that are part of the `persist` group will have this reloading handled by their deserialize functions.
+# ## Settings Menu (sett)
 **Player should have access to settings menu.**
 - [x] Status
 See [[#Settings and Accessibility (ACCS)]] for more details.

@@ -43,3 +43,8 @@ func set_player_name(name: String) -> void:
 
 	player_name = name
 	random_seed = name.hash()
+
+
+func reload() -> void:
+	# TODO
+	pass

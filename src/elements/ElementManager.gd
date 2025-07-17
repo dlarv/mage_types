@@ -178,12 +178,12 @@ func test_traversals() -> void:
 		file.store_line(output)
 
 func _enter_tree() -> void:
-	force_load()
+	build()
 	# test_transmutations()
 	# test_side_effects()
 	# test_traversals()
 	
-func force_load()-> void:
+func build()-> void:
 	if len(matchups.keys()) > 0: return
 
 	for element in elements:

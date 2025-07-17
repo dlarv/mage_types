@@ -247,3 +247,5 @@ func _on_catalyst_menu_closed(element:ElementalType) -> void:
 	hide()
 
 
+func reload() -> void:
+	pass

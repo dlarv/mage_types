@@ -84,6 +84,18 @@ func load() -> void:
 	if front_end_only:
 		load_button_pressed.emit(%LineEdit.text)
 		return
+
+	# Reset non-singleton nodes.
+	get_tree().reload_current_scene()
+	# Await is necessary to ensure all nodes finish initializing.
+	await get_tree().create_timer(1.0).timeout
+
+	# Reset non-serializable singleton nodes.
+	for name in Engine.get_singleton_list():
+		var singleton := Engine.get_singleton(name)
+		if singleton.has_method("reload"):
+			singleton.reload()
+
 	var fileName = %LineEdit.text
 	var path := "%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ]
 	var file := FileAccess.open(path, FileAccess.READ)
