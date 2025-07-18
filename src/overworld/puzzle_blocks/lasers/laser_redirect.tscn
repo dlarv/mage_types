@@ -20,6 +20,7 @@ size = Vector3(0.5, 1, 1)
 
 [node name="LaserRedirect" type="StaticBody3D"]
 script = ExtResource("1_2jm0n")
+is_on = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kprrn")

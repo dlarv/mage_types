@@ -10,6 +10,11 @@ var _laser_e: Laser
 var _element_w := ElementManager.Blank
 # var _is_emitting := false
 
+
+func _enter_tree() -> void:
+	$SubEmitter.stop()
+
+
 func _on_sub_receiver_e_laser_received(laser:Laser, point:Vector3) -> void:
 	if in_stasis: return
 	_laser_e = laser
