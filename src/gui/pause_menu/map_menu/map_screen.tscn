@@ -22,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 expand_mode = 5
+stretch_mode = 2
 script = ExtResource("1_prf6q")
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
