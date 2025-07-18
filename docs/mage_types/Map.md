@@ -143,7 +143,7 @@ This section will be accessible from Southern Blue Wing room b by using a Golem 
 - Thru this passageway the player discovers the Geyser Engine powering the moving parts.
 - The player is able to manipulate the Geyser Engine, indirectly manipulating the Front Room puzzle blocks.
 
-This puzzle will be divided into two parts. The first requires the Golem and consists of hitting a few pressure plates in a specific order. There will also be a Stasis target, which the player must lock. Doing so will engage the airlock.
+~~This puzzle will be divided into two parts. The first requires the Golem and consists of hitting a few pressure plates in a specific order. There will also be a Stasis target, which the player must lock. Doing so will engage the airlock.~~
 
 The second part first requires the player to platform over to the Geyser Engine using the pistons. Once inside this room, the player will use Stasis to lock the system into a desirable state. This will allow the 
 

@@ -10,26 +10,13 @@
 - Doors should keep player's relative position when they go thru
 # Upcoming Versions
 [[version_naming_scheme]]
-# v0.4.x
+## v0.4.x
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
 - [x] Basic map menu added
 	- [x] Scroll/zoom
 	- [x] Ability to place icons along with 16 char messages
 	- [x] First page of map should be legend where player can explain what each of their icons mean
-- Golem system prototype
-	- [ ] Different golem elements should have different properties
-		- [x] Only Blue can wade thru water
-		- [x] Yellow floats above obstacles
-		- [ ] Only Purple golems can move thru shadow obstacle (haze?)
-		- [x] Only Red golems can be ridden
-		- [ ] Only Orange golems can move thru fire obstacle
 	- [x] Upon dying, golems should leave a permanent pile of clay
-- [ ] Create fire obstacle
-	- [ ] Illuminate surrounding area
-	- [ ] Prevent player from crossing
-	- [ ] Emit fire from puzzle block source
-- [ ] Create haze obstacle
-	- [ ] Damage player upon contact
 - [ ] Stasis Dungeon
 	- [x] Central chamber main puzzle solution programmed
 	- [x] Central chamber intro puzzle (x3)
@@ -112,24 +99,6 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 		- [x] Write text describing what player is seeing (translations)
 		- [ ] Assets reflecting what text describes
 		- [ ] Place murals inside dungeon
-- [ ] Wild enemy mechanics
-	- [ ] Aggressive behavior
-	- [ ] Cowardly behavior
-	- [ ] Passive behavior
-- [x] Golems can execute basic instructions
-	- [x] Walk
-		- [x] Ensure golem is moving set amount of space with each step
-	- [x] Turn
-	- [x] Wait
-	- [x] Goto
-	- [x] ~~Goback~~ Again 
-- [x] Golems can be transmuted by lasers
-- [x] Golem can be hit with stasis to pause it
-- [x] Golems can be spawned in by player
-	- [x] Golem debug editor
-		- [x] Allow player to set primary and secondary types
-	- [x] Allow player to given golems a set of instructions (max instruction amount can be updated)
-		- [x] Add ability to remove instructions 
 - [x] Add some method for the player to know which doorways are empty
 	- Currently, empty doorways are obviously obstructed by walls
 - [x] Water mechanics
@@ -152,20 +121,14 @@ Puzzle playtest candidate. Players will be able to play through all major puzzle
 - [x] Write logs to user's system
 ## v0.5.x
 Puzzle playtest QOL and essential polish
-- [ ] Golem QOL
-	- Areas with golem puzzles should have checkered floors
-		- [ ] Checkered clay shader created
-	- [ ] Ability to reorder instructions
-	- [ ] Allow player to define golem's path by drawing on the map
-	- [ ] When placing golem, make model transparent
-	- [ ] When placing golem, snap to grid
-	- [ ] When placing golem, allow player to rotate
-	- [ ] Golem player editor
-		- [ ] Golem's type is determined via same means as Catalyst spell
-			- [ ] If player is not standing on MagiClay, they cannot spawn golem
-		- [ ] Add maximum number of instructions
 - [ ] Give StasisTarget a model
 - [ ] Give Rail puzzleblock a model
+- [ ] Create and add models for murals
+- [ ] Wild enemy mechanics
+	- [ ] Aggressive behavior
+	- [ ] Cowardly behavior
+	- [ ] Passive behavior
+
 ## v0.6.x
 Exploration playtest candidate. Player will be able to explore decorated map.
 - [ ] Make exploring the map interesting.
@@ -194,16 +157,16 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 		- [x] Create room that contains demos for all puzzle blocks. This room will be in front of the lost forest part.
 		- [ ] Last room of supply closet should be a lore dump library (since its Orange)
 	- [ ] Hidden caves logic puzzle (Lavender puzzle)
-	- [ ] Original Stasis obstacle?
+	- [x] Original Stasis obstacle?
 		- [x] Original version works in new physics paradigm
-		- [ ] Decide if/where/how it should be used
+		- [x] Decide if/where/how it should be used
 - [ ] Puzzle block demo:
 	- [x] Pressure plate demo
-		- [ ] Bug: Player activated pressure plate not working
+		- [x] Bug: Player activated pressure plate not working
 	- [x] Delay demo
 	- [x] Timer demo
 	- [x] Relay demo
-		- [ ] Create indicator block, which differentiates between off/on/invalid_off
+		- [x] Create indicator block, which differentiates between off/on/invalid_off
 	- [x] Stasis target demo
 	- [ ] Rails demo
 	- [ ] Logic gate demos
@@ -361,62 +324,6 @@ StatChanges (v0.3.43)
 	- [ ]  Chance.
 	- [ ]  Target.
 	- [ ]  AttackEffect.
-## Golem System (GOLM)
-- Golems will be MagiClay constructs which can be given basic instructions by the player
-- At some point, the player should have the ability to create battle golems
--  Golems can execute basic instructions
--  Golems can be transmuted by lasers
--  Golems can be spawned in by player
--  Golem debug editor
-	-  Allow player to set stats via slider
-	-  Allow player to set primary and secondary types
-	-  Allow player to assign spells
--  Allow player to given golems a set of instructions (max instruction amount can be updated)
--  Golems will get 2 ability slots (stasis, lifting objects, etc). These will be assigned in the creation menu and accessed via the instruction editor.
--  Different golem types should have different abilities
--  Golems should have a health bar
--  Upon dying, golems should leave a permanent pile of clay
-	-  Player should be able to collect any spell beads/items/etc they equipped onto the golem
-
-Future Additions
-- [ ] Give player ability to create battle golems
-- [ ] Golems should have a health bar
-- [ ] Complex properties
-	- [ ] Magenta will bounce player?
-		- This can be done by modifying a value in `Golem._push_object()`
-	- [ ] Purple can walk up walls?
-	- [ ] Orange can transmute itself?
-- [ ] Grab draggable 
-	- [ ] Maybe golem will grab any draggable that comes across its path? Maybe limit this based on golem's weight vs draggable's.
-- [ ] Drop draggable (upon death?) Mb if golem isn't holding anything it'll work like a no-op.
-- [ ] Channel MagiClayTerrain (changes composition of golem)
-	- Lasers transmute, channeling straight up changes
-- [ ] Player will have golem sets (arms, legs, torso, head) that they can mix and match
-	- [ ] These will be used to determine stats/etc
-- [ ] Add instruction budget to limit use of strong commands
-### Golem Instructions
-- Walk: num steps
-- Turn: degrees
-- Wait: seconds
-- Goto: line
-
-1. Player selects options from `InstructionPicker`.
-2. `InstructionPicker` passes String to `GolemInstructionManager`.
-3. `GolemInstructionManager` appends button to scroller.
-4. Player selects value inside of button.
-5. Player presses "Finish" button.
-6. Instructions compiled into dictionary form.
-7. Golem is passed to player.
-8. Player is allowed to set golem down in their immediate vicinity.
-### Golem Elemental Properties
-Blue golems should be immune to water.
-Purple golems can move thru shadow obstacle? (Haze?)
-Magenta ...
-Red golems can be ridden by the player
-Orange golem can move thru fire obstacles
-Yellow golems aren't affected by gravity
-Green ...
-Cyan ...
 ## Overworld (OVER)
 >[!important] 
 > Players collision layer is 1.
