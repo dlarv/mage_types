@@ -170,6 +170,10 @@ shape = SubResource("BoxShape3D_uiwi1")
 [node name="Emitter" parent="Chamber1/Chunk/FrontRoom" index="0"]
 is_on = false
 
+[node name="Delay" parent="Chamber1/Chunk/FrontRoom" index="2" node_paths=PackedStringArray("locks")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.4, 2.98023e-08, -1)
+locks = [NodePath("../LaserReceiver")]
+
 [node name="MapperGateW" parent="Chamber1/Chunk/FrontRoom" index="3" node_paths=PackedStringArray("lock")]
 lock = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
@@ -180,6 +184,7 @@ open_delay = 0.2
 puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
 [node name="PistonS" parent="Chamber1/Chunk/FrontRoom" index="8" node_paths=PackedStringArray("puzzle_block")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19, -2.5, 2)
 puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
 [node name="PistonNW" parent="Chamber1/Chunk/FrontRoom" index="9" node_paths=PackedStringArray("puzzle_block")]
