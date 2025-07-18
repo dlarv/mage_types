@@ -608,8 +608,8 @@ mesh = SubResource("CylinderMesh_31cei")
 transform = Transform3D(0.999994, 7.11377e-16, -5.68434e-14, -1.77636e-14, 0.96592, -0.258819, 6.39488e-14, 0.258818, 0.965926, -0.0264206, -0.16488, 0.0965843)
 shape = SubResource("CylinderShape3D_31cei")
 
-[node name="LaserRedirect" parent="." instance=ExtResource("15_scybb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -90, -0.2, -68)
+[node name="LaserRedirect" parent="Chamber1/Chunk" instance=ExtResource("15_scybb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35, -0.2, -3)
 
 [connection signal="off" from="Chamber1/Chunk/GeyserEngine/EmitterFlipFlop" to="Chamber1/Chunk/Emitter" method="stop"]
 [connection signal="on" from="Chamber1/Chunk/GeyserEngine/EmitterFlipFlop" to="Chamber1/Chunk/Emitter" method="start"]
