@@ -4,6 +4,7 @@ extends Node3D
 signal slide_started()
 signal slide_ended()
 
+@export var puzzle_block: PuzzleBlock = null
 @export var point_a: Marker3D
 @export var point_b: Marker3D
 @export var speed := 300.0
@@ -17,6 +18,10 @@ var _farther_point: Vector3
 
 
 func _ready() -> void:
+	if puzzle_block:
+		puzzle_block.on.connect(slide)
+		puzzle_block.off.connect(slide)
+
 	puzzle_name = "%s.%s" % [ get_parent().name, name ]
 	for child in get_children():
 		if not child is Marker3D:
