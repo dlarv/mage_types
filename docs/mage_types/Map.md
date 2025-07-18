@@ -142,7 +142,12 @@ This section will be accessible from Southern Blue Wing room b by using a Golem 
 - Player sees a passageway they can platform to, using the moving parts.
 - Thru this passageway the player discovers the Geyser Engine powering the moving parts.
 - The player is able to manipulate the Geyser Engine, indirectly manipulating the Front Room puzzle blocks.
-- 
+
+This puzzle will be divided into two parts. The first requires the Golem and consists of hitting a few pressure plates in a specific order. There will also be two Stasis targets, which the player must lock. Doing so will engage the airlock.
+
+The second part first requires the player to platform over to the Geyser Engine using the pistons. Once inside this room, the player will use Stasis to lock the system into a desirable state. This will allow the 
+
+Once the player solves the puzzle, an animation will play. The pistons will start speeding up. Cut to the central NBW chamber, where the large gate is being lowered. A rush of water pours over the top, crashing into the airlock
 ### Orange Wing
 his section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
 ### Eastern Red Wing
