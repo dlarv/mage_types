@@ -1,15 +1,29 @@
 @tool
 extends PuzzleBlock
 
+## If false, this mirror might move vertically and therefore might need to dynamically reposition its subemitters. 
+@export var is_vertically_static := true
 var _prev_val := -1
 var _active_emitter: Node3D = null
 var _active_receiver: Node3D = null
 var _is_emitting := false
+@onready var _prev_y_position := global_position.y
 
 func _ready() -> void:
 	super._ready()
 	$SubEmitterX.stop()
 	$SubEmitterZ.stop()
+
+
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint() or is_vertically_static: return
+	elif _active_emitter == null: return
+	elif _active_emitter.global_position.y == _prev_y_position: return
+
+	var dist := _active_emitter.global_position.y - _prev_y_position
+	_active_emitter.global_position.y -= dist
+	
+	_prev_y_position = _active_emitter.global_position.y
 
 
 func _on_sub_receiver_z_laser_received(laser:Laser, point: Vector3) -> void:
@@ -40,6 +54,7 @@ func _on_sub_receiver_x_laser_received(laser:Laser, point: Vector3) -> void:
 func _on_laser_received(subEmitter: Node3D, laser: Laser, point: Vector3) -> void:
 	_is_emitting = true
 	subEmitter.global_position.y = point.y
+	_prev_y_position = point.y
 	_active_emitter = subEmitter
 	var e := ElementManager.get_matchup(element, laser.element)
 
