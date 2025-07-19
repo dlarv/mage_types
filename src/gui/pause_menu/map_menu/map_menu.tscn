@@ -26,3 +26,36 @@ metadata/_tab_index = 1
 layout_mode = 2
 texture = ExtResource("2_y8pvq")
 expand_mode = 0
+
+[node name="CombatMarker" type="ColorRect" parent="Hotel/TextureRect"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 1470.0
+offset_top = 2571.28
+offset_right = 1510.0
+offset_bottom = 2611.28
+rotation = 0.785398
+tooltip_text = "Combat challenge"
+color = Color(1, 0, 0, 1)
+
+[node name="PuzzleMarker" type="ColorRect" parent="Hotel/TextureRect"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 516.667
+offset_top = 1494.62
+offset_right = 556.667
+offset_bottom = 1534.62
+rotation = 0.785398
+tooltip_text = "Puzzle challenge"
+color = Color(0, 0, 1, 1)
+
+[node name="SpawnMarker" type="ColorRect" parent="Hotel/TextureRect"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 2657.95
+offset_right = 1340.0
+offset_bottom = 2697.95
+rotation = 0.785398
+tooltip_text = "Player spawn"
+color = Color(0, 1, 0, 1)
