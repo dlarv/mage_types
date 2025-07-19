@@ -14,6 +14,13 @@ var _element_w := ElementManager.Blank
 func _enter_tree() -> void:
 	$SubEmitter.stop()
 
+func set_stasis(val=null) -> void:
+	await super.set_stasis(val)
+	if in_stasis:
+		$SubEmitter.stop()
+	else:
+		$SubEmitter.start()
+
 
 func _on_sub_receiver_e_laser_received(laser:Laser, point:Vector3) -> void:
 	if in_stasis: return
