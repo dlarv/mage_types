@@ -52,10 +52,10 @@ color = Color(0, 0, 1, 1)
 [node name="SpawnMarker" type="ColorRect" parent="Hotel/TextureRect"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_left = 1300.0
-offset_top = 2657.95
-offset_right = 1340.0
-offset_bottom = 2697.95
+offset_left = 1296.67
+offset_top = 2927.95
+offset_right = 1336.67
+offset_bottom = 2967.95
 rotation = 0.785398
 tooltip_text = "Player spawn"
 color = Color(0, 1, 0, 1)
