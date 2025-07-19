@@ -38,32 +38,26 @@ Script: [[Beach House Intro]]
 	- I.e. infinite hallway, path to Lavender's puzzle.
 ### Rec Room
 - Battle Tutorial
-### Hotel Enclave
-- Player will be expected to backtrack here once they get Stasis.
+### Supply Closet
+This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.
 ## Caves
 ### Ziggurat 
 - Inside the Grand Enclave Ziggurat, there are 8 giant pillars the player can use to ascend to the surface. However, the first one has collapsed, revealing a hidden side path. The player must venture down this side route and loop back in order to ascend.
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
 ## Stasis Dungeon
 - I want this to be formatted sort of like a Zelda dungeon. Player will adventure halfway through the dungeon, battle a miniboss, obtain the Catalyst spell, then loop back unlocking new paths in sections they've already been.
+- This area was once the Godling Portal Complex. In the actual game it will have been taken offline, to prevent destroying the world. But I think it could be funny if in the demo the machine is operable, with the player slowly turning it on.
+	- At the apex the player will have the option to activate the machine, destroying the world.
+	- A little further down the track will be the Orange chatlogs discussing why turning on the machine is a bad idea.
+- As the player activates the various components, giant mechanisms will begin moving in the central chamber.
+	- These could reveal the components to the central puzzle.
 ### Central Chamber (Starting Config)
 - When the player first enters dungeon, it will be in a limited version, with three layers separated by three concentric walls.
-- The player will be presented with three simple obstacles in sequence. These will mostly be to introduce the player to the lasers, mirrors, rails, and lenses, as well as the hidden receivers.
-	- As the player solves these obstacles, the walls will come down, slowly opening up more of the room.
-- Once all walls have been dropped, player will be presented with 7 doors (8 including the one they entered from). 6 of these doors will be locked.
-- Heading down the other unlocked path will take them into the Mural Room.
-### Mural Room
-The player will be able to enter this section without too much trouble. At the end, they will find the boss and Stasis. Upon picking up the spell, a trap will trigger, locking the player inside. The player will be presented with 3 riddles to solve.
-- 4 Lasers will be arrayed aroudn the edges of the room. Each one hits a hidden receiver.
-	- These will be Red, Green, Blue, and Yellow.
-- The player must decipher the riddles to determine which lasers to turn off.
-- Correctly solving one configuration will activate receivers on rails, automatically advancing the puzzle.
-- Solving all 3 configs will open the gate, allowing the player to return to chamber 1.
-
-I'd like the riddles to have a deeper connection to the lore, possibly to the Old Guard. It'd be cool if they told a story. The characters should be named after colors or share the first letter of their names with colors. Each of the visible 3 walls will have a 'mural' on it. The player must use stasis on the lasers whose characters are not included in the mural.
-- RGB, !Y
-- RG, !BY
-- Y !RGB
+- The player will be presented with three simple obstacles in sequence. This is primarily to teach the player how the following blocks work:
+	- Rails
+	- Mirrors
+- As the player solves these obstacles, the walls will come down, slowly opening up more of the room.
+- After completing these starting obstacles, the player will have access to the Red Wing.
 ### Central Chamber (Main Config)
 - Once the player finished up inside the mural room, they will reenter the Central Chamber.
 - Triggering the trap will also cause the Central Chamber to switch to the main configuration.
@@ -96,8 +90,10 @@ Each of the four hallways will have an elemental theme based on 4 of the 5 eleme
 - Reaching the end gives the player the *Blue Key*.
 - From the Red treasure room the player can drop down into the first section of the Blue Wing.
 - Player descends through 3 rooms, using the stasis spell to unlock a series of gates.
-- At the end of this section, the player obtains the Golem spell.
-	- Without this spell, the player can't ascend.
+- Upon reaching the end of this hallway, the player fights a miniboss.
+- Defeating the miniboss allows the player to unlock the *Stasis* spell.
+- Player uses *Stasis* to ascend back the way they came.
+- Player enters Northern Blue Wing.
 
 [[demo_script]]
 ### Western Red Wing
@@ -110,25 +106,33 @@ Area is built on a 3x4 structure. It will consist of mostly platforming and comb
 ### Southern Blue Wing
 **This section was the coolant for the machine and is located mostly underneath the other wings. It is split in two, similar to the Red Wing.  Unlike the Red Wing, however, these two sections are contiguous.**
 
-Area is built on a 6x1 structure. The puzzle challenges are contained in rooms c, d, & e. The first time the player traverses these rooms (West-East), they solve Stasis puzzles to open gates. Upon reaching room f, they will fight a miniboss and receive the Golem spell. The player then backtracks thru c, d, & e, using the Golem spell to ascend otherwise impassible cliffs.
+Area is built on a 6x1 structure. The puzzle challenges are contained in rooms c, d, & e. The first time the player traverses these rooms (West-East), they solve transmutation puzzles to open gates. At the end of the hallway, the player will fight a miniboss and obtain the Stasis spell.
+
+**Starting Puzzles**:
+These could likely be similar to Stasis puzzles, but use buttons instead.
 
 **Stasis Puzzles**:
-- *Room (c)*: Odd-one-out. Turn off offensive/Orange laser.
-- *Room (d)*: Odd-one-out. Turn off defensive/Blue laser.
-- *Room (e)*: Player must activate 3 puzzle blocks in a specific order. Once they activate the first, they'll have a time limit to do the other 2. One piece is a block that must be put on a pressure plate, so the player must use stasis to ensure it activates at the right time.
+Instead of an infographic, these puzzles could communicate the concepts behind the Stasis spell.
+#### Mural Room
+The player will be able to enter this section without too much trouble. At the end, they will find the boss and Stasis. Upon picking up the spell, a trap will trigger, locking the player inside. The player will be presented with 3 riddles to solve.
+- 4 Lasers will be arrayed aroudn the edges of the room. Each one hits a hidden receiver.
+	- These will be Red, Green, Blue, and Yellow.
+- The player must decipher the riddles to determine which lasers to turn off.
+- Correctly solving one configuration will activate receivers on rails, automatically advancing the puzzle.
+- Solving all 3 configs will open the gate, allowing the player to return to chamber 1.
 
-**Golem Puzzles**:
-- *Room (e)*: will require the player to channel a Red pressure plate to create a golem, which they will stand on to jump onto the ledge.
-- *Room (d)*: The player will be presented with 3 pressure plates which move ledges connected to rails. The player will use a golem to press these pressure plates while they parkour up the cliff.
-- *Room (c)*: I want this puzzle to use the interaction between the player, geysers, and golems. I'm tempted to make Magenta golems bounce the player up really high, but if not I'll simply have the player jump off of the Golem's head.
+I'd like the riddles to have a deeper connection to the lore, possibly to the Old Guard. It'd be cool if they told a story. The characters should be named after colors or share the first letter of their names with colors. Each of the visible 3 walls will have a 'mural' on it. The player must use stasis on the lasers whose characters are not included in the mural.
+- RGB, !Y
+- RG, !BY
+- Y !RGB
 ### Northern Blue Wing
-This section will be accessible from Southern Blue Wing room b by using a Golem to parkour into a pipe. This section should be primarily puzzle based, focusing on the Golem and Stasis spells the player now has access to.
+This section will be accessible from Southern Blue Wing room b by ~~using a Golem to parkour into a pipe~~. It will be primarily puzzle based, focusing on the Stasis spell the player now has access to.
 
 >[!note] Ramping up of scope
 >I think this would be a good place to start increasing the puzzle scope. So far (v0.4.25), all puzzles have only had 1 layer to them.
 
 - I want this section to work as a giant puzzle box, where solving puzzles move giant mechanisms the player can watch.
-- These will primarily be stasis and golem puzzles.
+- The player is turning on the coolant system.
 
 - *Think of the chambers as part of the mechanism moving the setpiece mechanisms. Hydraulics, pipes, wires.*
 	- Chamber 1 will lower the first barrier
@@ -143,15 +147,22 @@ This section will be accessible from Southern Blue Wing room b by using a Golem 
 - Thru this passageway the player discovers the Geyser Engine powering the moving parts.
 - The player is able to manipulate the Geyser Engine, indirectly manipulating the Front Room puzzle blocks.
 
-~~This puzzle will be divided into two parts. The first requires the Golem and consists of hitting a few pressure plates in a specific order. There will also be a Stasis target, which the player must lock. Doing so will engage the airlock.~~
+This puzzle will be divided into two parts. The first section will require the player to input a security code, engaging the airlock safety feature. This will prevent them from being destroyed by the coming tidal wave.
 
 The second part first requires the player to platform over to the Geyser Engine using the pistons. Once inside this room, the player will use Stasis to lock the system into a desirable state. This will allow the 
 
 Once the player solves the puzzle, an animation will play. The pistons will start speeding up. Cut to the central NBW chamber, where the large gate is being lowered. A rush of water pours over the top, crashing into the airlock
 ### Orange Wing
-his section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red).
-### Eastern Red Wing
+This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red.
 
+Here the player will be turning on the power.
+### Eastern Red Wing
+### Magenta Wing
+**This is the control panel.**
+The player will ascend up the true control panel. At the apex, they'll have the ability to turn on the machine. If they choose to do so, the game will end. The game should save right before they do so, however, so that they can reload the game and finish the final bits of the demo.
+### Purple Wing
+Dropping down from the Magenta Wing, the player will find themselves in a large, foreboding room. It is here that they'll fight the final boss of the dungeon.
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
-****
+
+On the top-most pillar there will be an out-of-order elevator. In the actual game, this is what the player will use to reach the surface.
