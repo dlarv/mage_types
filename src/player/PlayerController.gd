@@ -40,6 +40,7 @@ var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
 
 func _ready() -> void:
+	super._ready()
 	$CoyoteTimer.wait_time = coyote_time_length
 	$FlushJumpBufferTimer.wait_time = keep_jump_buffer_length
 

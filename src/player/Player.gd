@@ -48,6 +48,11 @@ func _ready() -> void:
 	Settings.player_name_changed.connect(func(name):
 		player_name = name)
 
+	if Settings.play_test_mode:
+		var spawnPoint: Node3D = get_tree().get_current_scene().get_node("%PlayTestModeSpawnPoint")
+		if spawnPoint:
+			global_position = spawnPoint.global_position
+
 
 func start_battle(npc: Variant) -> void:
 	battle_started.emit(team, npc.enemy_actor)
