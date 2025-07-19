@@ -853,7 +853,7 @@ visible = false
 
 [node name="PlayTestModeSpawnPoint" type="Node3D" parent="Overworld/Blue"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, -1, -95.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 4, -65.6667)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
