@@ -393,11 +393,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1073,11 +1074,12 @@ shape = SubResource("BoxShape3D_ilg5d")
 [node name="Marker3D" type="Marker3D" parent="Doors/CentralChamberToNW/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors"]
+[node name="WestRedWingToSouthBlueWing" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 0, -531)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/WestRedWingToSouthBlueWing"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -310.5, -2.2, -133)
@@ -1335,21 +1337,24 @@ script = ExtResource("3_4g4u6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 7.5, -22)
 shape = SubResource("BoxShape3D_2l62m")
 
-[node name="HallChunk1" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="HallChunk1" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -78)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 7.5, -7.5)
 shape = SubResource("BoxShape3D_gumrr")
 
-[node name="SideTable" parent="HotelRooms/HallChunk1" instance=ExtResource("19_ts5q1")]
+[node name="Chunk" type="Node3D" parent="HotelRooms/HallChunk1"]
+
+[node name="SideTable" parent="HotelRooms/HallChunk1/Chunk" instance=ExtResource("19_ts5q1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37, 0, 11)
 
-[node name="IceMachine" parent="HotelRooms/HallChunk1" instance=ExtResource("20_iqqkl")]
+[node name="IceMachine" parent="HotelRooms/HallChunk1/Chunk" instance=ExtResource("20_iqqkl")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37, 0, 13)
 
-[node name="VaseBlue" parent="HotelRooms/HallChunk1" instance=ExtResource("21_yq576")]
+[node name="VaseBlue" parent="HotelRooms/HallChunk1/Chunk" instance=ExtResource("21_yq576")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, 11)
 
 [node name="HallChunk2" type="Area3D" parent="HotelRooms" groups=["persist"]]
@@ -1574,48 +1579,51 @@ script = ExtResource("3_4g4u6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.5, -5.5)
 shape = SubResource("BoxShape3D_fkveg")
 
-[node name="InfHallChunk" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="InfHallChunk" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, -78)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/InfHallChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.5, 79)
 shape = SubResource("BoxShape3D_fnsom")
 
-[node name="SideTable" parent="HotelRooms/InfHallChunk" instance=ExtResource("19_ts5q1")]
+[node name="Chunk" type="Node3D" parent="HotelRooms/InfHallChunk"]
+
+[node name="SideTable" parent="HotelRooms/InfHallChunk/Chunk" instance=ExtResource("19_ts5q1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 6)
 
-[node name="VaseGreen" parent="HotelRooms/InfHallChunk/SideTable" instance=ExtResource("8_6yj8m")]
+[node name="VaseGreen" parent="HotelRooms/InfHallChunk/Chunk/SideTable" instance=ExtResource("8_6yj8m")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.2, 0)
 
-[node name="SideTable2" parent="HotelRooms/InfHallChunk" instance=ExtResource("19_ts5q1")]
+[node name="SideTable2" parent="HotelRooms/InfHallChunk/Chunk" instance=ExtResource("19_ts5q1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 122)
 
-[node name="VaseGreen" parent="HotelRooms/InfHallChunk/SideTable2" instance=ExtResource("8_6yj8m")]
+[node name="VaseGreen" parent="HotelRooms/InfHallChunk/Chunk/SideTable2" instance=ExtResource("8_6yj8m")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.2, 0)
 
-[node name="SideTable3" parent="HotelRooms/InfHallChunk" instance=ExtResource("19_ts5q1")]
+[node name="SideTable3" parent="HotelRooms/InfHallChunk/Chunk" instance=ExtResource("19_ts5q1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.3, 0, 6)
 
-[node name="VaseRed" parent="HotelRooms/InfHallChunk/SideTable3" instance=ExtResource("23_3yaw4")]
+[node name="VaseRed" parent="HotelRooms/InfHallChunk/Chunk/SideTable3" instance=ExtResource("23_3yaw4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.2, 0)
 
-[node name="SideTable4" parent="HotelRooms/InfHallChunk" instance=ExtResource("19_ts5q1")]
+[node name="SideTable4" parent="HotelRooms/InfHallChunk/Chunk" instance=ExtResource("19_ts5q1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.3, 0, 122)
 
-[node name="VaseRed" parent="HotelRooms/InfHallChunk/SideTable4" instance=ExtResource("23_3yaw4")]
+[node name="VaseRed" parent="HotelRooms/InfHallChunk/Chunk/SideTable4" instance=ExtResource("23_3yaw4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.2, 0)
 
-[node name="SideTable5" parent="HotelRooms/InfHallChunk" instance=ExtResource("19_ts5q1")]
+[node name="SideTable5" parent="HotelRooms/InfHallChunk/Chunk" instance=ExtResource("19_ts5q1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.3, 0, 64)
 
-[node name="VaseGreen" parent="HotelRooms/InfHallChunk/SideTable5" instance=ExtResource("8_6yj8m")]
+[node name="VaseGreen" parent="HotelRooms/InfHallChunk/Chunk/SideTable5" instance=ExtResource("8_6yj8m")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.2, 0)
 
-[node name="SideTable6" parent="HotelRooms/InfHallChunk" instance=ExtResource("19_ts5q1")]
+[node name="SideTable6" parent="HotelRooms/InfHallChunk/Chunk" instance=ExtResource("19_ts5q1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 64)
 
-[node name="VaseRed" parent="HotelRooms/InfHallChunk/SideTable6" instance=ExtResource("23_3yaw4")]
+[node name="VaseRed" parent="HotelRooms/InfHallChunk/Chunk/SideTable6" instance=ExtResource("23_3yaw4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.2, 0)
 
 [node name="HallChunk5" type="Area3D" parent="HotelRooms" groups=["persist"]]
@@ -1654,9 +1662,10 @@ shape = SubResource("BoxShape3D_npiad")
 [node name="SupplyClosetChunk" parent="HotelRooms" instance=ExtResource("18_sh3xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)
 
-[node name="BackroomChunk1" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk1" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, -291)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -1694,9 +1703,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.5000
 _element = "red"
 scaling_factor = Vector3(0.5, 0.5, 0.5)
 
-[node name="BackroomChunk2" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk2" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 0, -291)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
@@ -1745,9 +1755,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
 _element = "purple"
 scaling_factor = Vector3(0.5, 0.5, 0.5)
 
-[node name="BackroomChunk3" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk3" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0, -291)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
@@ -1796,9 +1807,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
 _element = "blue"
 scaling_factor = Vector3(0.5, 0.5, 0.5)
 
-[node name="BackroomChunk4" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk4" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -291)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
@@ -1847,9 +1859,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
 _element = "magenta"
 scaling_factor = Vector3(0.5, 0.5, 0.5)
 
-[node name="BackroomChunk5" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk5" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, -317)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
@@ -1898,9 +1911,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
 _element = "purple"
 scaling_factor = Vector3(0.5, 0.5, 0.5)
 
-[node name="BackroomChunk6" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk6" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 0, -317)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
@@ -1949,9 +1963,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
 _element = "green"
 scaling_factor = Vector3(0.5, 0.5, 0.5)
 
-[node name="BackroomChunk7" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk7" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0, -317)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
@@ -2000,9 +2015,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
 _element = "orange"
 scaling_factor = Vector3(0.5, 0.5, 0.5)
 
-[node name="BackroomChunk8" type="Area3D" parent="HotelRooms" groups=["persist"]]
+[node name="BackroomChunk8" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -317)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BackroomChunk8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
@@ -2023,15 +2039,18 @@ scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="Caves" type="Node3D" parent="."]
 
-[node name="CaveChunk1" type="Area3D" parent="Caves" groups=["persist"]]
+[node name="CaveChunk1" type="Area3D" parent="Caves" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190, 0, -224)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Caves/CaveChunk1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9.5, 2.5)
 shape = SubResource("BoxShape3D_kvsv4")
 
-[node name="Chest" parent="Caves/CaveChunk1" instance=ExtResource("8_flv43")]
+[node name="Chunk" type="Node3D" parent="Caves/CaveChunk1"]
+
+[node name="Chest" parent="Caves/CaveChunk1/Chunk" instance=ExtResource("8_flv43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3, -1)
 
 [node name="CaveChunk2" type="Area3D" parent="Caves" groups=["persist"]]
@@ -2042,15 +2061,18 @@ script = ExtResource("3_4g4u6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 9.5, -67)
 shape = SubResource("BoxShape3D_42ppw")
 
-[node name="ZigguratChunk" type="Area3D" parent="Caves" groups=["persist"]]
+[node name="ZigguratChunk" type="Area3D" parent="Caves" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -409, 0, -129)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Caves/ZigguratChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 75.5, -162)
 shape = SubResource("BoxShape3D_41131")
 
-[node name="Geyser" parent="Caves/ZigguratChunk" instance=ExtResource("9_mipr7")]
+[node name="Chunk" type="Node3D" parent="Caves/ZigguratChunk"]
+
+[node name="Geyser" parent="Caves/ZigguratChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3, 3.8, -274.7)
 size = 48.0
 base_size = Vector3(-452.3, 3.8, -403.7)
