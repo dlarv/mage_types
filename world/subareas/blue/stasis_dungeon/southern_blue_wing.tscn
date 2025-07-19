@@ -426,7 +426,7 @@ shape = SubResource("BoxShape3D_xk5hi")
 [node name="Marker3D" type="Marker3D" parent="Doors/Chamber4ToChamber6/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env"]]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env_parent"]]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]

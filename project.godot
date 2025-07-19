@@ -56,8 +56,9 @@ enabled=PackedStringArray("res://addons/attackbuilder/plugin.cfg", "res://addons
 persist=""
 wild_enemies=""
 player=""
-detached_env="When game is loaded, DetachedChunks will look thru the children of these objects for intersecting bodies."
+detached_env="When game is loaded, DetachedChunks will look thru these objects for intersecting bodies."
 elemental_gui=""
+detached_env_parent="When game is loaded, DetachedChunks will look thru the children of these objects for intersecting bodies."
 
 [gui]
 

@@ -70,7 +70,7 @@ albedo_color = Color(0.546593, 0.261121, 0, 1)
 
 [node name="NorthernBlueWing" type="Node3D"]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env"]]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." groups=["detached_env_parent"]]
 use_collision = true
 collision_layer = 17
 

@@ -61,10 +61,10 @@ func gather_objs() -> void:
 
 	var children := []
 	for env in get_tree().get_nodes_in_group("detached_env"):
-		if env is CSGCombiner3D:
-			children.append_array(env.get_children())
-		else:
-			children.append(env)
+		children.append(env)
+	for env in get_tree().get_nodes_in_group("detached_env_parent"):
+		children.append_array(env.get_children())
+		
 
 	while len(children) > 0:
 		var child = children.pop_back()
