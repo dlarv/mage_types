@@ -19,6 +19,7 @@ height = 0.5
 size = Vector3(0.5, 1, 1)
 
 [node name="LaserRedirect" type="StaticBody3D"]
+collision_layer = 7
 script = ExtResource("1_2jm0n")
 is_on = false
 
