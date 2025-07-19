@@ -59,10 +59,12 @@ func gather_objs() -> void:
 		if chunk.chunk: 
 			chunk.objs.append(chunk.chunk)
 
-	# This assumes that all DetachedChunks on this layer will have the same `chunk` value.
 	var children := []
 	for env in get_tree().get_nodes_in_group("detached_env"):
-		children.append_array(env.get_children())
+		if env is CSGCombiner3D:
+			children.append_array(env.get_children())
+		else:
+			children.append(env)
 
 	while len(children) > 0:
 		var child = children.pop_back()

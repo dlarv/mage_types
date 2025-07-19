@@ -1642,7 +1642,7 @@ script = ExtResource("3_4g4u6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7.5, -0.5)
 shape = SubResource("BoxShape3D_dpk1r")
 
-[node name="Obstacle" type="MeshInstance3D" parent="HotelRooms/HallChunk6"]
+[node name="Obstacle" type="MeshInstance3D" parent="HotelRooms/HallChunk6" groups=["detached_env"]]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.699997, 0.4, 1)
 mesh = SubResource("BoxMesh_41gmd")
 
