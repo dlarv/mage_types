@@ -68,7 +68,8 @@ func gather_objs() -> void:
 
 	while len(children) > 0:
 		var child = children.pop_back()
-		
+		if child.name == "Preset1": 
+			pass
 		# If child does not exist in 3d space, it doesn't make sense to check whether it exists within a shape.
 		if not child is Node3D: 
 			if child.get_child_count() > 0:
@@ -78,6 +79,7 @@ func gather_objs() -> void:
 		# If child is inside of shape, do not add its children to search array.
 		var taken := false
 		for shape in shapes:
+			var n = shape[0].name
 			if has_point(shape[1].shape, shape[1].global_position, child.global_position):
 				shape[0].objs.append(child)
 				taken = true
