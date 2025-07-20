@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://oibhckiyltxv"]
+[gd_scene load_steps=30 format=3 uid="uid://oibhckiyltxv"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
 [ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="2_r4pl6"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dr82ihfer1ek6" path="res://src/overworld/puzzle_blocks/empties/or_gate.tscn" id="6_tgj6p"]
 [ext_resource type="PackedScene" uid="uid://d3ygm6nayhv7c" path="res://src/overworld/puzzle_blocks/indicator.tscn" id="7_vveuj"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="9_d31bn"]
+[ext_resource type="PackedScene" uid="uid://1bwxdih7d0mp" path="res://src/overworld/puzzle_blocks/pistons/path_piston.tscn" id="11_l45oy"]
+[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="12_d31bn"]
 [ext_resource type="PackedScene" uid="uid://ujn580ouc14d" path="res://src/overworld/puzzle_blocks/empties/flip_flop.tscn" id="13_6yhma"]
+[ext_resource type="PackedScene" uid="uid://btpmu7dnqhtcg" path="res://src/overworld/puzzle_blocks/button.tscn" id="13_gn8cr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tohrr"]
 size = Vector3(301, 30, 58)
@@ -70,6 +73,18 @@ albedo_color = Color(0.546593, 0.261121, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vveuj"]
 size = Vector3(65, 20, 68)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yhma"]
+size = Vector3(1, 6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gn8cr"]
+size = Vector3(1, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d31bn"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6yhma"]
+size = Vector3(1, 3, 1)
 
 [node name="NorthernBlueWing" type="Node3D"]
 
@@ -175,7 +190,7 @@ size = Vector3(2, 4, 3)
 material = ExtResource("1_y0eai")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/PumpChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, -17)
 operation = 2
 size = Vector3(2, 4, 2)
 material = ExtResource("1_y0eai")
@@ -398,7 +413,7 @@ shape = SubResource("BoxShape3D_vveuj")
 [node name="Chunk" type="Node3D" parent="PumpChunk"]
 
 [node name="GeyserEngine" parent="PumpChunk/Chunk" instance=ExtResource("2_tohrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -30)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="PumpChunk/Chunk/GeyserEngine/CSGCombiner3D" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 15)
@@ -407,19 +422,180 @@ size = Vector3(2, 4, 2)
 material = ExtResource("1_y0eai")
 
 [node name="GeyserSW" parent="PumpChunk/Chunk/GeyserEngine" index="1"]
+base_strength = 50.0
 _element = "yellow"
 
 [node name="GeyserNW" parent="PumpChunk/Chunk/GeyserEngine" index="2"]
+base_strength = 50.0
 _element = "yellow"
 
 [node name="GeyserNE" parent="PumpChunk/Chunk/GeyserEngine" index="3"]
+base_strength = 50.0
 _element = "yellow"
 
 [node name="GeyserSE" parent="PumpChunk/Chunk/GeyserEngine" index="4"]
+transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 14.7, 2, 12.2)
+base_strength = 50.0
 _element = "yellow"
+
+[node name="EmitterSW" parent="PumpChunk/Chunk/GeyserEngine" index="5"]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, -3.89999, 1.5, 3.9)
+
+[node name="EmitterNW" parent="PumpChunk/Chunk/GeyserEngine" index="6"]
+transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, -2.11758e-22, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, -3.89999, 1.5, -4.1)
+is_on = false
+
+[node name="EmitterNE" parent="PumpChunk/Chunk/GeyserEngine" index="7"]
+transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, 4.10001, 1.5, -4.1)
+is_on = false
+
+[node name="EmitterSE" parent="PumpChunk/Chunk/GeyserEngine" index="8"]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 4.10001, 1.5, 4.1)
+is_on = false
 
 [node name="MagiclayBoulder" parent="PumpChunk/Chunk/GeyserEngine" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.9, 8)
+
+[node name="PressurePlateW" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3, 1, -10)
+_element = "blue"
+
+[node name="PressurePlateE" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 1, -10)
+_element = "blue"
+
+[node name="PressurePlateW2" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3, 1, -5)
+_element = "blue"
+
+[node name="PressurePlateE2" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 1, -3)
+_element = "blue"
+
+[node name="PressurePlateW3" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3, 1, 3)
+_element = "blue"
+
+[node name="PressurePlateE3" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 1, 4)
+_element = "blue"
+
+[node name="PressurePlateW4" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3, 1, 9)
+_element = "blue"
+
+[node name="PressurePlateE4" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3, 1, 9)
+_element = "blue"
+
+[node name="PressurePlateS" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 12.2597)
+_element = "purple"
+
+[node name="PressurePlateN" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -12.2403)
+_element = "purple"
+
+[node name="PressurePlateS2" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 12.2597)
+_element = "purple"
+
+[node name="PressurePlateN2" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -12.2403)
+_element = "purple"
+
+[node name="PressurePlateS3" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 12.2597)
+_element = "purple"
+
+[node name="PressurePlateN3" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -12.2403)
+_element = "purple"
+
+[node name="PressurePlateS4" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 12.2597)
+_element = "purple"
+
+[node name="PressurePlateN4" parent="PumpChunk/Chunk/GeyserEngine" instance=ExtResource("4_cn4mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -12.2403)
+_element = "purple"
+
+[node name="BlueOrGate" parent="PumpChunk/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+locks = [NodePath("../PressurePlateW"), NodePath("../PressurePlateE"), NodePath("../PressurePlateW2"), NodePath("../PressurePlateE2"), NodePath("../PressurePlateW3"), NodePath("../PressurePlateE3"), NodePath("../PressurePlateW4"), NodePath("../PressurePlateE4")]
+
+[node name="PurpleOrGate" parent="PumpChunk/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+locks = [NodePath("../PressurePlateN"), NodePath("../PressurePlateS"), NodePath("../PressurePlateS2"), NodePath("../PressurePlateN2"), NodePath("../PressurePlateS3"), NodePath("../PressurePlateN3"), NodePath("../PressurePlateS4"), NodePath("../PressurePlateN4")]
+
+[node name="ComboOrGate" parent="PumpChunk/Chunk/GeyserEngine" node_paths=PackedStringArray("locks") instance=ExtResource("6_tgj6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+locks = [NodePath("../BlueOrGate"), NodePath("../PurpleOrGate")]
+
+[node name="BlueFlipFlop" parent="PumpChunk/Chunk/GeyserEngine" node_paths=PackedStringArray("lock") instance=ExtResource("13_6yhma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+lock = NodePath("../BlueOrGate")
+
+[node name="PurpleFlipFlop" parent="PumpChunk/Chunk/GeyserEngine" node_paths=PackedStringArray("lock") instance=ExtResource("13_6yhma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+lock = NodePath("../PurpleOrGate")
+
+[node name="BlueIndicator" parent="PumpChunk/Chunk" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -14.5)
+block = NodePath("../GeyserEngine/BlueFlipFlop")
+
+[node name="PurpleIndicator" parent="PumpChunk/Chunk" node_paths=PackedStringArray("block") instance=ExtResource("7_vveuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -14.5)
+block = NodePath("../GeyserEngine/PurpleFlipFlop")
+
+[node name="PathPistonN" parent="PumpChunk/Chunk" node_paths=PackedStringArray("puzzle_block", "base_instance") instance=ExtResource("11_l45oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.8, -7)
+puzzle_block = NodePath("../GeyserEngine/ComboOrGate")
+base_instance = NodePath("Rails")
+instance_count = 50
+instance_offset = Vector3(-1, 0, 0)
+
+[node name="Rails" parent="PumpChunk/Chunk/PathPistonN" instance=ExtResource("12_d31bn")]
+speed = 5.0
+
+[node name="PointB" parent="PumpChunk/Chunk/PathPistonN/Rails" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PumpChunk/Chunk/PathPistonN/Rails"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PumpChunk/Chunk/PathPistonN/Rails/StaticBody3D"]
+shape = SubResource("BoxShape3D_6yhma")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PumpChunk/Chunk/PathPistonN/Rails/StaticBody3D"]
+mesh = SubResource("BoxMesh_gn8cr")
+
+[node name="PathPistonS" parent="PumpChunk/Chunk" node_paths=PackedStringArray("puzzle_block", "base_instance") instance=ExtResource("11_l45oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -1, 7)
+puzzle_block = NodePath("../GeyserEngine/ComboOrGate")
+base_instance = NodePath("Rails")
+instance_count = 50
+instance_offset = Vector3(1, 0, 0)
+
+[node name="Rails" parent="PumpChunk/Chunk/PathPistonS" instance=ExtResource("12_d31bn")]
+speed = 5.0
+
+[node name="PointA" parent="PumpChunk/Chunk/PathPistonS/Rails" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+
+[node name="PointB" parent="PumpChunk/Chunk/PathPistonS/Rails" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PumpChunk/Chunk/PathPistonS/Rails"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PumpChunk/Chunk/PathPistonS/Rails/StaticBody3D"]
+shape = SubResource("BoxShape3D_d31bn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PumpChunk/Chunk/PathPistonS/Rails/StaticBody3D"]
+mesh = SubResource("BoxMesh_6yhma")
+
+[node name="Button" parent="PumpChunk/Chunk" instance=ExtResource("13_gn8cr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 1)
+toggle_mode = false
 
 [connection signal="off" from="Chamber1/Chunk/GeyserEngine/EmitterFlipFlop" to="Chamber1/Chunk/FrontRoom/Emitter" method="stop"]
 [connection signal="on" from="Chamber1/Chunk/GeyserEngine/EmitterFlipFlop" to="Chamber1/Chunk/FrontRoom/Emitter" method="start"]
@@ -437,3 +613,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.9, 8)
 [editable path="Chamber1/Chunk/GeyserEngine/OutputWire1"]
 [editable path="Chamber1/Chunk/GeyserEngine/OutputWire2"]
 [editable path="PumpChunk/Chunk/GeyserEngine"]
+[editable path="PumpChunk/Chunk/PathPistonN/Rails"]
+[editable path="PumpChunk/Chunk/PathPistonS/Rails"]
