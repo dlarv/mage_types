@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 ## Maps received signal (on, off, invalid) to output signal.
 
