@@ -87,7 +87,6 @@ Each of the four hallways will have an elemental theme based on 4 of the 5 eleme
 
 **Overview**
 - Player begins in West section of the Red Wing. This is a winding, overgrown section filled with monsters.
-- Reaching the end gives the player the *Blue Key*.
 - From the Red treasure room the player can drop down into the first section of the Blue Wing.
 - Player descends through 3 rooms, using the stasis spell to unlock a series of gates.
 - Upon reaching the end of this hallway, the player fights a miniboss.
@@ -115,7 +114,7 @@ These could likely be similar to Stasis puzzles, but use buttons instead.
 Instead of an infographic, these puzzles could communicate the concepts behind the Stasis spell.
 #### Mural Room
 The player will be able to enter this section without too much trouble. At the end, they will find the boss and Stasis. Upon picking up the spell, a trap will trigger, locking the player inside. The player will be presented with 3 riddles to solve.
-- 4 Lasers will be arrayed aroudn the edges of the room. Each one hits a hidden receiver.
+- 4 Lasers will be arrayed around the edges of the room. Each one hits a hidden receiver.
 	- These will be Red, Green, Blue, and Yellow.
 - The player must decipher the riddles to determine which lasers to turn off.
 - Correctly solving one configuration will activate receivers on rails, automatically advancing the puzzle.
@@ -133,25 +132,38 @@ This section will be accessible from Southern Blue Wing room b by ~~using a Gole
 
 - I want this section to work as a giant puzzle box, where solving puzzles move giant mechanisms the player can watch.
 - The player is turning on the coolant system.
-
-- *Think of the chambers as part of the mechanism moving the setpiece mechanisms. Hydraulics, pipes, wires.*
-	- Chamber 1 will lower the first barrier
-	- Chamber 2 lowers the water level
-	- Chamber 3 raises the second barrier
-	- Player must manipulate water level and barriers to escape final obstacle in room?
-		- Player would unlock passageways that would let them get around the barriers even when they're up.
-		- Chamber 2 is technically 3 chambers which control the water level (none, low tide, high tide). These 3 subchambers depend on mechanism in central room which ensures only one is active at a time.
+- Chamber 1 will lower the first barrier.
+- Once the first barrier is lowered, the main chamber will be partially flooded.
+- Past the first barrier, the player will be tasked to turn on the cooler's pump.
+- Five valves must be opened in a specific order, but one is missing its wheel.
+	- The player could be given 3 hints, each describing a distance away from a particular feature in the main room. Player can use these hints to triangulate the hidden wheel's location.
+- The actual pump will be a 3-gear Vortex Engine.
+- Once the area has been totally solved, the Western side of the main chamber will lower, allowing the player to re-enter the central chamber of the Stasis Dungeon.
+	- The doorway will be raised slightly, relative to the main chamber, creating a waterfall. Channels cut into the floor of the main chamber will flood.
 #### Chamber 1
 - Player enters Front Room and sees a bunch of moving parts. The source of this movement is currently hidden.
 - Player sees a passageway they can platform to, using the moving parts.
-- Thru this passageway the player discovers the Geyser Engine powering the moving parts.
-- The player is able to manipulate the Geyser Engine, indirectly manipulating the Front Room puzzle blocks.
+- Thru this passageway the player discovers the Vortex Engine powering the moving parts.
+- The player is able to manipulate the Vortex Engine, indirectly manipulating the Front Room puzzle blocks.
 
 This puzzle will be divided into two parts. The first section will require the player to input a security code, engaging the airlock safety feature. This will prevent them from being destroyed by the coming tidal wave.
 
-The second part first requires the player to platform over to the Geyser Engine using the pistons. Once inside this room, the player will use Stasis to lock the system into a desirable state. This will allow the 
+The second part first requires the player to platform over to the Vortex Engine using the pistons. Once inside this room, the player will use Stasis to lock the system into a desirable state. 
 
 Once the player solves the puzzle, an animation will play. The pistons will start speeding up. Cut to the central NBW chamber, where the large gate is being lowered. A rush of water pours over the top, crashing into the airlock
+
+1. Security code puzzle one #todo.
+2. Use pistons to platform to the Vortex Engine.
+3. Use Stasis on one of the emitters.
+4. Return to the front room.
+5. Use Stasis on the NW piston mirror.
+
+>[!note]
+>The player should have to use several StasisTargets. This way, if they've already solved the front room, they'll have to redo their Stasis lock. This will prevent the puzzle from being solved when the player isn't present to see it.
+#### Valve Puzzle
+#### Pump Room
+- Similar to the chamber 1, the player is presented with a busy room full of moving mechanisms. They will now likely know that there is a Vortex Engine neaby powering this movement.
+- Unlike in chamber 1, however, the Vortex engine will have gears. Upon reaching the far end of the track, the boulder will have 3 potential tracks it can take, which are controlled using Environmental Doors.
 ### Orange Wing
 This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red.
 
@@ -165,4 +177,4 @@ Dropping down from the Magenta Wing, the player will find themselves in a large,
 ## The Ascent
 After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
 
-On the top-most pillar there will be an out-of-order elevator. In the actual game, this is what the player will use to reach the surface.
+On the top-most pillar there will be an out-of-order elevator. In the actual game, this is what the player will use to reach the surface.**

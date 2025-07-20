@@ -128,7 +128,12 @@ Puzzle playtest QOL and essential polish
 	- [ ] Aggressive behavior
 	- [ ] Cowardly behavior
 	- [ ] Passive behavior
-
+- [ ] Scrapbook containing hints and whatnot the player has found.
+	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
+	- [ ] Notes can be obtained from overworld
+	- [ ] Notes can be reorganized
+	- [ ] Notes can be deleted
+	- [ ] Player can create notes and drawings on notebook pages
 ## v0.6.x
 Exploration playtest candidate. Player will be able to explore decorated map.
 - [ ] Make exploring the map interesting.
@@ -209,6 +214,7 @@ Demo MVP prep. Polish features added during previous versions.
 		- e.g. Red attack that does double damage if partner uses same move. AttackEffect should be able to query the Battle for a list of selected actions and determine from there
 		- Ensure this doesn't break future multiplayer potential?
 - [ ] Wild enemies
+- [ ] Beastiary describing monsters
 - [ ] Opening chests should show player list of contents and allow them to individually select them
 - [ ] Change transmutation graph advanced options from gdscript to gdshader
 - [ ] Add transmutation graph stencils to streamline canonical advanced options usage
