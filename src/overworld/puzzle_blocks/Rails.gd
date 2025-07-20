@@ -15,6 +15,8 @@ var puzzle_name: String
 var _puzzle_block: Node3D
 var _in_motion := false
 var _farther_point: Vector3
+var _slide_buffer := false
+var _slide_buffer_delay := 0.8
 
 
 func _ready() -> void:
@@ -35,6 +37,11 @@ func _process(delta: float) -> void:
 		_in_motion = false
 		_puzzle_block.global_position = _farther_point
 		slide_ended.emit()
+
+		if _slide_buffer:
+			await get_tree().create_timer(_slide_buffer_delay).timeout
+			_slide_buffer = false
+			slide()
 		return
 
 	var dir := _puzzle_block.global_position.direction_to(_farther_point).normalized()
@@ -46,6 +53,9 @@ func _on_interactable_interacted(obj:Node3D) -> void:
 
 
 func slide(_v: Variant=null) -> void:
+	if _in_motion: 
+		_slide_buffer = true
+		return
 	_in_motion = true
 	var d1 := _puzzle_block.global_position.distance_squared_to(point_a.global_position)
 	var d2 := _puzzle_block.global_position.distance_squared_to(point_b.global_position)
