@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://h8buyp6ewnv8"]
+[gd_scene load_steps=36 format=3 uid="uid://h8buyp6ewnv8"]
 
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_6yy2f"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_yjrln"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="23_n72vc"]
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="24_reta6"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="24_te4ju"]
+[ext_resource type="PackedScene" uid="uid://1bwxdih7d0mp" path="res://src/overworld/puzzle_blocks/pistons/path_piston.tscn" id="25_81dig"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1qq4"]
 size = Vector3(1, 7, 5.6)
@@ -36,6 +37,12 @@ size = Vector3(0.6, 8, 6.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_caqob"]
 size = Vector3(111, 29, 49)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_81dig"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_81dig"]
+size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy7e0"]
 size = Vector3(35, 25, 34)
@@ -311,6 +318,38 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -9, 1,
 [node name="Emitter5" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("11_13twe")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, 1, 7)
 
+[node name="Button4" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("3_ybmg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 0)
+toggle_mode = false
+
+[node name="PathPiston" parent="MainCloset/SupplyClosetChunk" node_paths=PackedStringArray("puzzle_block", "base_instance") instance=ExtResource("25_81dig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -2.1, -1)
+puzzle_block = NodePath("../Button4")
+base_instance = NodePath("Rails")
+instance_count = 5
+instance_offset = Vector3(1, 0, 0)
+
+[node name="Rails" parent="MainCloset/SupplyClosetChunk/PathPiston" instance=ExtResource("23_n72vc")]
+
+[node name="Interactable" parent="MainCloset/SupplyClosetChunk/PathPiston/Rails/PointA" index="0"]
+visible = false
+
+[node name="PointB" parent="MainCloset/SupplyClosetChunk/PathPiston/Rails" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Interactable" parent="MainCloset/SupplyClosetChunk/PathPiston/Rails/PointB" index="0"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MainCloset/SupplyClosetChunk/PathPiston/Rails"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCloset/SupplyClosetChunk/PathPiston/Rails/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_81dig")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainCloset/SupplyClosetChunk/PathPiston/Rails/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_81dig")
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="MainCloset" groups=["detached_env_parent"]]
 use_collision = true
 collision_layer = 17
@@ -436,7 +475,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.86102e-06)
 [connection signal="element_selected" from="MainCloset/SupplyClosetChunk/CatalystDevice6" to="MainCloset/SupplyClosetChunk/DraggableEmitter" method="set_element"]
 [connection signal="element_selected" from="MainCloset/SupplyClosetChunk/CatalystDevice7" to="MainCloset/SupplyClosetChunk/DraggableEmitter2" method="set_element"]
 [connection signal="element_selected" from="MainCloset/SupplyClosetChunk/CatalystDevice8" to="MainCloset/SupplyClosetChunk/LaserRedirect" method="set_element"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268/PointA/Interactable" method="_on_visibility_changed"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48268/PointB/Interactable" method="_on_visibility_changed"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269/PointA/Interactable" method="_on_visibility_changed"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48269/PointB/Interactable" method="_on_visibility_changed"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270/PointA/Interactable" method="_on_visibility_changed"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48270/PointB/Interactable" method="_on_visibility_changed"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271/PointA/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271/PointA/Interactable" method="_on_visibility_changed"]
+[connection signal="interacted" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271" method="_on_interactable_interacted"]
+[connection signal="visibility_changed" from="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271/PointB/Interactable" to="MainCloset/SupplyClosetChunk/PathPiston/@Node3D@48271/PointB/Interactable" method="_on_visibility_changed"]
 
 [editable path="MainCloset/SupplyClosetChunk/Rails"]
 [editable path="MainCloset/SupplyClosetChunk/Rails2"]
+[editable path="MainCloset/SupplyClosetChunk/PathPiston"]
+[editable path="MainCloset/SupplyClosetChunk/PathPiston/Rails"]
 [editable path="VortexEngineChunk/Chunk/GeyserEngine"]
