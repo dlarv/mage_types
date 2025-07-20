@@ -152,7 +152,7 @@ size = Vector3(2, 4, 1)
 size = Vector3(3, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6veki"]
-size = Vector3(3, 4, 1)
+size = Vector3(3, 6, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5rhi"]
 size = Vector3(22, 11, 18)
@@ -1317,6 +1317,26 @@ shape = SubResource("BoxShape3D_6veki")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/NorthBlueWingToChamber1/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -1.5)
+
+[node name="NorthBlueWingToChamber2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 0, -751)
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/NorthBlueWingToChamber2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 7.09998)
+shape = SubResource("BoxShape3D_4icov")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/NorthBlueWingToChamber2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/NorthBlueWingToChamber2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, -14.5)
+shape = SubResource("BoxShape3D_6veki")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/NorthBlueWingToChamber2/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9, -1.5)
 
 [node name="HotelRooms" type="Node3D" parent="."]
 
