@@ -222,16 +222,16 @@ puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19, -2.5, 2)
 puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
-[node name="PistonNW" parent="Chamber1/Chunk/FrontRoom" index="9" node_paths=PackedStringArray("puzzle_block")]
+[node name="PistonSW" parent="Chamber1/Chunk/FrontRoom" index="9" node_paths=PackedStringArray("puzzle_block")]
 puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
-[node name="PistonNE" parent="Chamber1/Chunk/FrontRoom" index="10" node_paths=PackedStringArray("puzzle_block")]
+[node name="PistonSE" parent="Chamber1/Chunk/FrontRoom" index="10" node_paths=PackedStringArray("puzzle_block")]
 puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
-[node name="PistonSW" parent="Chamber1/Chunk/FrontRoom" index="11" node_paths=PackedStringArray("puzzle_block")]
+[node name="PistonNE" parent="Chamber1/Chunk/FrontRoom" index="11" node_paths=PackedStringArray("puzzle_block")]
 puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
-[node name="PistonSE" parent="Chamber1/Chunk/FrontRoom" index="12" node_paths=PackedStringArray("puzzle_block")]
+[node name="PistonNW" parent="Chamber1/Chunk/FrontRoom" index="12" node_paths=PackedStringArray("puzzle_block")]
 puzzle_block = NodePath("../../GeyserEngine/MirrorFlipFlop")
 
 [node name="GeyserEngine" parent="Chamber1/Chunk" instance=ExtResource("2_tohrr")]
@@ -429,10 +429,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.9, 8)
 [editable path="Chamber1/Chunk/FrontRoom/NorthBoundRails"]
 [editable path="Chamber1/Chunk/FrontRoom/PistonN"]
 [editable path="Chamber1/Chunk/FrontRoom/PistonS"]
-[editable path="Chamber1/Chunk/FrontRoom/PistonNW"]
-[editable path="Chamber1/Chunk/FrontRoom/PistonNE"]
-[editable path="Chamber1/Chunk/FrontRoom/PistonSW"]
-[editable path="Chamber1/Chunk/FrontRoom/PistonSE"]
 [editable path="Chamber1/Chunk/GeyserEngine"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireS"]
 [editable path="Chamber1/Chunk/GeyserEngine/WireN"]
