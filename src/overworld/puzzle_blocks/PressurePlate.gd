@@ -53,6 +53,7 @@ func _on_body_entered(body: Node3D) -> void:
 		_try_emit_off()
 		$Base_MeshInstance3D.set_surface_override_material(0, _invalid_mat)
 		invalid_off.emit(self)
+		is_on = true
 
 
 func _on_body_exited(body: Node3D) -> void:
