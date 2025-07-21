@@ -1,3 +1,4 @@
+@tool
 extends Damage
 class_name OverrideDamage
 ## Overrides damage calculator to use given stat instead of target's defenses or user's offenses.

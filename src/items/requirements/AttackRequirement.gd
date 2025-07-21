@@ -1,3 +1,4 @@
+@tool
 extends ItemRequirement
 class_name AttackRequirement
 

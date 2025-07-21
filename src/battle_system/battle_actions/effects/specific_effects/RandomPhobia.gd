@@ -1,3 +1,4 @@
+@tool
 extends _AttackEffect 
 class_name RandomPhobia
 

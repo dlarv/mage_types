@@ -98,6 +98,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 
 func react(e: ElementalType, randVal:=-2) -> bool:
 	var res := ElementManager.get_matchup(element, e)
+	@warning_ignore("redundant_await")
 	return await set_element(res, randVal)
 
 	
@@ -165,9 +166,7 @@ func _get_mesh() -> MeshInstance3D:
 
 func _set_material(val: BaseMaterial3D) -> void:
 		_material = val
-		if _mesh_instance == null:
-			push_warning("%s has no mesh!" % puzzle_name)
-			return
+		if _mesh_instance == null: return
 		_mesh_instance.set_surface_override_material(0, _material)
 		_try_set_color()
 

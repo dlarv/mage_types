@@ -1,8 +1,6 @@
 extends Lockable
 
 @export var items: Array[ItemSlot]
-@export var _locked_color := Color.RED
-@export var _unlocked_color := Color.WHITE
 @export var _opened_color := Color.BLACK
 var _is_opened := false
 var _mat: StandardMaterial3D

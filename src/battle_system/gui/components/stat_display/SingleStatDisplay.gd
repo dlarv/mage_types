@@ -20,7 +20,6 @@ var decr: bool:
 		_curr_index = 0
 		_active_material = _positive_material
 
-var _curr_amount := 100
 var _curr_index := 0
 var _unlit_material: BaseMaterial3D
 var _positive_material: BaseMaterial3D

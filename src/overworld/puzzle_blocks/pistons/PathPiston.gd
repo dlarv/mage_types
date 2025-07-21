@@ -18,7 +18,6 @@ var _index := -1
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	if get_child_count() == 0: return
 	
 	_update()
 	_instances.insert(0, %Rails)

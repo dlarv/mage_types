@@ -44,7 +44,7 @@ _data = {
 &"opening": SubResource("Animation_wu4hk")
 }
 
-[node name="Gate" type="StaticBody3D" groups=["persist"]]
+[node name="Gate" type="StaticBody3D"]
 collision_layer = 17
 script = ExtResource("1_dbpd8")
 
