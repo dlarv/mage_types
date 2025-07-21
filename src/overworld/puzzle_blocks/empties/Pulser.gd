@@ -5,6 +5,7 @@ extends PuzzleBlock
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	$Timer.wait_time = wait_time
 	$Timer.start()
 

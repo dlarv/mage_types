@@ -695,7 +695,7 @@ speed = 20.0
 
 [node name="MirrorPiston3" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -6, 0, 16)
-mirror_rotation = 180.0
+mirror_rotation = -180.0
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 

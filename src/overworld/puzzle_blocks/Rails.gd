@@ -20,14 +20,15 @@ var _slide_buffer_delay := 0.8
 
 
 func _ready() -> void:
-	if puzzle_block:
-		puzzle_block.on.connect(slide)
-		puzzle_block.off.connect(slide)
-
 	puzzle_name = "%s.%s" % [ get_parent().name, name ]
 	for child in get_children():
 		if not child is Marker3D:
 			_puzzle_block = child
+	
+	if Engine.is_editor_hint(): return
+	if puzzle_block:
+		puzzle_block.on.connect(slide)
+		puzzle_block.off.connect(slide)
 
 
 func _process(delta: float) -> void:
