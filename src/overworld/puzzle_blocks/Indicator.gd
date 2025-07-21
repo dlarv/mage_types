@@ -6,6 +6,7 @@ extends Node3D
 @export var invalid_material: StandardMaterial3D
 
 func _ready() -> void:
+	if not block: return
 	if on_material:
 		block.on.connect(_on_block_on)
 	if off_material:
