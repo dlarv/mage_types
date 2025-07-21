@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgyk6bj716o20"]
+[gd_scene load_steps=5 format=3 uid="uid://bgyk6bj716o20"]
 
 [ext_resource type="Script" uid="uid://dwe60n5tx4se0" path="res://src/overworld/puzzle_blocks/pistons/MirrorPiston.gd" id="1_x5ba5"]
-[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_d0le0"]
 [ext_resource type="PackedScene" uid="uid://c035hnsf22h3r" path="res://src/overworld/puzzle_blocks/lasers/mirror.tscn" id="3_xsjhv"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_31cei"]
@@ -21,17 +20,8 @@ speed = 10.0
 
 [node name="PointA" type="Marker3D" parent="."]
 
-[node name="Interactable" parent="PointA" instance=ExtResource("2_d0le0")]
-visible = false
-scaling_factor = 2.0
-
 [node name="PointB" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.86, 0)
-
-[node name="Interactable" parent="PointB" instance=ExtResource("2_d0le0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-visible = false
-scaling_factor = 2.0
 
 [node name="Mirror" parent="." instance=ExtResource("3_xsjhv")]
 is_vertically_static = false
@@ -48,6 +38,3 @@ mesh = SubResource("CylinderMesh_31cei")
 unique_name_in_owner = true
 transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_31cei")
-
-[connection signal="interacted" from="PointA/Interactable" to="." method="_on_interactable_interacted"]
-[connection signal="interacted" from="PointB/Interactable" to="." method="_on_interactable_interacted"]
