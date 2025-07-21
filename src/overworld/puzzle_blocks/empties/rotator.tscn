@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq38lumylqd8s"]
+
+[ext_resource type="Script" uid="uid://dubpl0j4mcdgi" path="res://src/overworld/puzzle_blocks/empties/Rotator.gd" id="1_ixo4r"]
+
+[node name="Rotator" type="Node3D"]
+script = ExtResource("1_ixo4r")
