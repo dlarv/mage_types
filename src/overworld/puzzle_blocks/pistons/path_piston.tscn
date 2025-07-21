@@ -7,6 +7,7 @@
 script = ExtResource("1_qvdq5")
 
 [node name="Rails" type="Node3D" parent="." node_paths=PackedStringArray("point_a", "point_b")]
+unique_name_in_owner = true
 script = ExtResource("2_85sb7")
 point_a = NodePath("PointA")
 point_b = NodePath("PointB")

@@ -24,8 +24,8 @@ var mirror_element: String:
 			$Mirror.position = point_b.position
 
 
-func _ready() -> void:
-	super._ready()
+func _enter_tree() -> void:
+	super._enter_tree()
 	if Engine.is_editor_hint(): return
 
 	# Removing Cap's parent (Mirror) rotation works better than using global_rotation.
