@@ -12,7 +12,7 @@ var obj: Node3D
 var _in_motion := false
 var _rotation_buffer := false
 var _target := 0.0
-var _snap_degrees := 0.0
+var _snap_degrees := Vector3.ZERO
 
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if not _in_motion: return
 	if _target <= buffer_offset:
 		_in_motion = false
-		rotation_degrees.z = _snap_degrees
+		rotation_degrees = _snap_degrees
 
 		if _rotation_buffer:
 			await get_tree().create_timer(_rotation_buffer_delay).timeout
@@ -43,5 +43,6 @@ func turn(_v: Variant=null) -> void:
 		return
 	_in_motion = true
 	_target = deg_to_rad(amount_degrees)
-	_snap_degrees = amount_degrees + rotation_degrees.z
-
+	rotate(axis, _target)
+	_snap_degrees = rotation_degrees
+	rotate(axis, -_target)
