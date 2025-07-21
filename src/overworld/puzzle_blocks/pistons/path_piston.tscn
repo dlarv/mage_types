@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://1bwxdih7d0mp"]
+[gd_scene load_steps=3 format=3 uid="uid://1bwxdih7d0mp"]
 
 [ext_resource type="Script" uid="uid://c41g17qcrsgmt" path="res://src/overworld/puzzle_blocks/pistons/PathPiston.gd" id="1_qvdq5"]
+[ext_resource type="Script" uid="uid://t8ee2jo7621t" path="res://src/overworld/puzzle_blocks/Rails.gd" id="2_85sb7"]
 
 [node name="PathPiston" type="Node3D"]
 script = ExtResource("1_qvdq5")
+
+[node name="Rails" type="Node3D" parent="." node_paths=PackedStringArray("point_a", "point_b")]
+script = ExtResource("2_85sb7")
+point_a = NodePath("PointA")
+point_b = NodePath("PointB")
+speed = 10.0
+
+[node name="PointA" type="Marker3D" parent="Rails"]
+
+[node name="PointB" type="Marker3D" parent="Rails"]
+
+[connection signal="child_entered_tree" from="Rails" to="." method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="Rails" to="." method="_on_rails_child_exiting_tree"]

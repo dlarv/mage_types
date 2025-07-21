@@ -644,7 +644,7 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 0.7, -783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0.7, -781)
 team = [ExtResource("11_qfng2")]
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]

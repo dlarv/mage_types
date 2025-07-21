@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://oibhckiyltxv"]
+[gd_scene load_steps=28 format=3 uid="uid://oibhckiyltxv"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
 [ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="2_r4pl6"]
@@ -10,9 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ygm6nayhv7c" path="res://src/overworld/puzzle_blocks/indicator.tscn" id="7_vveuj"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="9_d31bn"]
 [ext_resource type="PackedScene" uid="uid://1bwxdih7d0mp" path="res://src/overworld/puzzle_blocks/pistons/path_piston.tscn" id="11_l45oy"]
-[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="12_d31bn"]
 [ext_resource type="PackedScene" uid="uid://ujn580ouc14d" path="res://src/overworld/puzzle_blocks/empties/flip_flop.tscn" id="13_6yhma"]
-[ext_resource type="PackedScene" uid="uid://btpmu7dnqhtcg" path="res://src/overworld/puzzle_blocks/button.tscn" id="13_gn8cr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tohrr"]
 size = Vector3(301, 30, 58)
@@ -434,23 +432,16 @@ base_strength = 50.0
 _element = "yellow"
 
 [node name="GeyserSE" parent="PumpChunk/Chunk/GeyserEngine" index="4"]
-transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 14.7, 2, 12.2)
 base_strength = 50.0
 _element = "yellow"
 
-[node name="EmitterSW" parent="PumpChunk/Chunk/GeyserEngine" index="5"]
-transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, -3.89999, 1.5, 3.9)
-
 [node name="EmitterNW" parent="PumpChunk/Chunk/GeyserEngine" index="6"]
-transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, -2.11758e-22, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, -3.89999, 1.5, -4.1)
 is_on = false
 
 [node name="EmitterNE" parent="PumpChunk/Chunk/GeyserEngine" index="7"]
-transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, 4.10001, 1.5, -4.1)
 is_on = false
 
 [node name="EmitterSE" parent="PumpChunk/Chunk/GeyserEngine" index="8"]
-transform = Transform3D(0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 4.10001, 1.5, 4.1)
 is_on = false
 
 [node name="MagiclayBoulder" parent="PumpChunk/Chunk/GeyserEngine" index="9"]
@@ -548,20 +539,13 @@ block = NodePath("../GeyserEngine/BlueFlipFlop")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -14.5)
 block = NodePath("../GeyserEngine/PurpleFlipFlop")
 
-[node name="PathPistonN" parent="PumpChunk/Chunk" node_paths=PackedStringArray("puzzle_block", "base_instance") instance=ExtResource("11_l45oy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.8, -7)
+[node name="PathPistonN" parent="PumpChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("11_l45oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.8, -7)
 puzzle_block = NodePath("../GeyserEngine/ComboOrGate")
-base_instance = NodePath("Rails")
-instance_count = 50
+instance_count = 10
 instance_offset = Vector3(-1, 0, 0)
 
-[node name="Rails" parent="PumpChunk/Chunk/PathPistonN" instance=ExtResource("12_d31bn")]
-speed = 5.0
-
-[node name="PointB" parent="PumpChunk/Chunk/PathPistonN/Rails" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="PumpChunk/Chunk/PathPistonN/Rails"]
+[node name="StaticBody3D" type="StaticBody3D" parent="PumpChunk/Chunk/PathPistonN/Rails" index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PumpChunk/Chunk/PathPistonN/Rails/StaticBody3D"]
 shape = SubResource("BoxShape3D_6yhma")
@@ -569,23 +553,13 @@ shape = SubResource("BoxShape3D_6yhma")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PumpChunk/Chunk/PathPistonN/Rails/StaticBody3D"]
 mesh = SubResource("BoxMesh_gn8cr")
 
-[node name="PathPistonS" parent="PumpChunk/Chunk" node_paths=PackedStringArray("puzzle_block", "base_instance") instance=ExtResource("11_l45oy")]
+[node name="PathPistonS" parent="PumpChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("11_l45oy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -1, 7)
 puzzle_block = NodePath("../GeyserEngine/ComboOrGate")
-base_instance = NodePath("Rails")
 instance_count = 50
 instance_offset = Vector3(1, 0, 0)
 
-[node name="Rails" parent="PumpChunk/Chunk/PathPistonS" instance=ExtResource("12_d31bn")]
-speed = 5.0
-
-[node name="PointA" parent="PumpChunk/Chunk/PathPistonS/Rails" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
-
-[node name="PointB" parent="PumpChunk/Chunk/PathPistonS/Rails" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="PumpChunk/Chunk/PathPistonS/Rails"]
+[node name="StaticBody3D" type="StaticBody3D" parent="PumpChunk/Chunk/PathPistonS/Rails" index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PumpChunk/Chunk/PathPistonS/Rails/StaticBody3D"]
 shape = SubResource("BoxShape3D_d31bn")
@@ -593,12 +567,124 @@ shape = SubResource("BoxShape3D_d31bn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PumpChunk/Chunk/PathPistonS/Rails/StaticBody3D"]
 mesh = SubResource("BoxMesh_6yhma")
 
-[node name="Button" parent="PumpChunk/Chunk" instance=ExtResource("13_gn8cr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 1)
-toggle_mode = false
-
 [connection signal="off" from="Chamber1/Chunk/GeyserEngine/EmitterFlipFlop" to="Chamber1/Chunk/FrontRoom/Emitter" method="stop"]
 [connection signal="on" from="Chamber1/Chunk/GeyserEngine/EmitterFlipFlop" to="Chamber1/Chunk/FrontRoom/Emitter" method="start"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32198" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32198" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32199" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32199" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32200" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32200" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32201" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32201" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32202" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32202" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32203" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32203" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32204" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32204" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32205" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32205" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32206" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonN/@Node3D@32206" to="PumpChunk/Chunk/PathPistonN" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32433" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32433" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32434" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32434" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32435" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32435" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32436" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32436" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32437" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32437" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32438" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32438" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32439" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32439" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32440" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32440" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32441" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32441" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32442" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32442" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32443" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32443" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32444" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32444" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32445" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32445" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32446" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32446" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32447" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32447" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32448" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32448" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32449" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32449" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32450" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32450" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32451" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32451" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32452" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32452" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32453" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32453" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32454" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32454" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32455" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32455" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32456" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32456" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32457" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32457" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32458" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32458" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32459" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32459" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32460" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32460" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32461" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32461" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32462" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32462" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32463" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32463" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32464" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32464" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32465" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32465" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32466" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32466" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32467" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32467" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32468" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32468" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32469" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32469" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32470" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32470" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32471" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32471" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32472" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32472" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32473" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32473" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32474" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32474" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32475" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32475" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32476" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32476" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32477" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32477" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32478" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32478" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32479" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32479" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32480" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32480" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32481" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="PumpChunk/Chunk/PathPistonS/@Node3D@32481" to="PumpChunk/Chunk/PathPistonS" method="_on_rails_child_exiting_tree"]
 
 [editable path="Chamber1/Chunk/FrontRoom"]
 [editable path="Chamber1/Chunk/FrontRoom/SouthBoundRails"]
@@ -613,5 +699,5 @@ toggle_mode = false
 [editable path="Chamber1/Chunk/GeyserEngine/OutputWire1"]
 [editable path="Chamber1/Chunk/GeyserEngine/OutputWire2"]
 [editable path="PumpChunk/Chunk/GeyserEngine"]
-[editable path="PumpChunk/Chunk/PathPistonN/Rails"]
-[editable path="PumpChunk/Chunk/PathPistonS/Rails"]
+[editable path="PumpChunk/Chunk/PathPistonN"]
+[editable path="PumpChunk/Chunk/PathPistonS"]
