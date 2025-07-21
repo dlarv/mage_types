@@ -99,8 +99,8 @@ func test_side_effects() -> void:
 
 func test_traversals() -> void:
 	var length := 5
-	var seq := [-1, 0, 0, 0, 0]
-	var file := FileAccess.open("res://logs/sequences.csv", FileAccess.WRITE)
+	var seq := [-1, 0, 0, 0]
+	var file := FileAccess.open("res://logs/sequences_no_convergence.csv", FileAccess.WRITE)
 
 	var incrementSeq = func() -> void:
 		for i in range(len(seq)):
@@ -131,8 +131,8 @@ func test_traversals() -> void:
 
 	for i in range(pow(8, 5) - 1):
 		incrementSeq.call()
-		if not filterSeq.call(): 
-			continue
+		# if not filterSeq.call(): 
+		# 	continue
 
 		# Iterating through every combination of 5 lasers, where order matters.
 		var lasers := [
@@ -140,7 +140,6 @@ func test_traversals() -> void:
 			elements[seq[1]],
 			elements[seq[2]],
 			elements[seq[3]],
-			elements[seq[4]],
 		]
 		# Each row will be identified by "%s", where %s is the first letter of each laser's element's name.
 		var header := "".join(lasers.map(func(x): return x.name[0]))
@@ -159,6 +158,8 @@ func test_traversals() -> void:
 
 		# Iterate over each element.
 		# This will be what element the block starts out as.
+		var converges := false
+		var convergenceValues := {}
 		for startingElement in elements:
 			var element := startingElement
 			for laser in lasers:
@@ -166,16 +167,30 @@ func test_traversals() -> void:
 				if e:
 					element = e
 
+			convergenceValues[startingElement] = element
+			if element == startingElement:
+				converges = true
+				break
 			# Update the average
 			averages[element] += 1.0/8.0
 			body.append(element.name)
+
+		for key in convergenceValues:
+			var value = convergenceValues.get(key)
+			if convergenceValues.get(value) == key:
+				converges = true
+				break
 		
+		if converges:
+			continue
+
 		# Print output in csv format.
 		var output := "%s,%s,%s,%s" \
 				% [ header, ",".join(body), ",".join(averages.values()), 
 						str(averages.values().reduce(countNonZero, 0))] 
 		print(output)
 		file.store_line(output)
+
 
 func _enter_tree() -> void:
 	build()
