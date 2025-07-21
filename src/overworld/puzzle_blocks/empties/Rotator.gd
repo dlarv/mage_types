@@ -4,13 +4,14 @@ extends Node3D
 @export var amount_degrees := 15.0
 @export var buffer_offset := 0.01
 @export var speed := 5.0
-var obj: Node3D
+@export var _rotation_buffer_delay := 0.8
+
 @onready var axis := transform.basis.z.normalized()
 
+var obj: Node3D
 var _in_motion := false
 var _rotation_buffer := false
 var _target := 0.0
-var _rotation_buffer_delay := 0.8
 var _snap_degrees := 0.0
 
 
