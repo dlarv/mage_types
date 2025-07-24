@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=59 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_puzzle_3.tscn" id="16_cjdov"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
+[ext_resource type="PackedScene" uid="uid://d24svew3u3qcb" path="res://world/subareas/blue/caves/caves_n.tscn" id="19_6h34i"]
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="21_egugs"]
@@ -1663,6 +1664,9 @@ shape = SubResource("BoxShape3D_41131")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3, 3.8, -274.7)
 size = 48.0
 base_size = Vector3(-452.3, 3.8, -403.7)
+
+[node name="CavesN" parent="." instance=ExtResource("19_6h34i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0, -352)
 
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser" method="start"]
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser2" method="start"]

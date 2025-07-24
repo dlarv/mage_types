@@ -41,6 +41,7 @@ Script: [[Beach House Intro]]
 ### Supply Closet
 This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.
 ## Caves
+This website can be used to create procedurally generated cave maps: https://watabou.itch.io/cave-generator.
 ### Ziggurat 
 - Inside the Grand Enclave Ziggurat, there are 8 giant pillars the player can use to ascend to the surface. However, the first one has collapsed, revealing a hidden side path. The player must venture down this side route and loop back in order to ascend.
 	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
