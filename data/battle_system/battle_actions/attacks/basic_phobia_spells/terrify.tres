@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bhh3ro2cetlnh" path="res://src/battle_system/battle_actions/effects/specific_effects/RandomPhobia.gd" id="4_ur5pd"]
 
 [sub_resource type="Resource" id="Resource_2ns66"]
+resource_name = "Random Phobia"
 script = ExtResource("4_ur5pd")
 min_count = 3
 max_count = 3
@@ -15,6 +16,7 @@ strength = 0.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_0rhwa"]
+resource_name = "Random Phobia"
 script = ExtResource("1_b7plu")
 attack_effect = SubResource("Resource_2ns66")
 effect_target = 1

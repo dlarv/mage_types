@@ -7,14 +7,16 @@
 [ext_resource type="Script" uid="uid://dukyjdwpqolw4" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="3_mv66e"]
 
 [sub_resource type="Resource" id="Resource_0hgvx"]
+resource_name = "Draining Damage"
 script = ExtResource("3_mv66e")
 heal_percent = 0.4
 allow_overflow = false
-name = ""
+name = "Draining Damage"
 strength = 50.0
 message = ""
 
 [sub_resource type="Resource" id="Resource_cogv3"]
+resource_name = "Draining Damage"
 script = ExtResource("1_05kai")
 attack_effect = SubResource("Resource_0hgvx")
 effect_target = 1
