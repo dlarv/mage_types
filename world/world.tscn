@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=43 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -22,15 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="16_gm161"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="18_3lqrh"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="18_p65bs"]
-[ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="28_83uud"]
-[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="29_m1310"]
-[ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="30_0y7aa"]
-[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="31_lppqk"]
-[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="32_0pnra"]
-[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="33_xa4lq"]
-[ext_resource type="PackedScene" uid="uid://2ee6w0ag61vd" path="res://world/subareas/blue/stasis_dungeon/mural_room.tscn" id="34_5hmya"]
-[ext_resource type="PackedScene" uid="uid://c6ap4wdy8tsnd" path="res://world/subareas/blue/stasis_dungeon/central_chamber.tscn" id="35_g5cey"]
-[ext_resource type="PackedScene" uid="uid://3ygr57mrvdra" path="res://world/subareas/blue/stasis_dungeon/starting_puzzle.tscn" id="36_c2bcd"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -82,358 +73,10 @@ tracks/2/keys = {
 "update": 1,
 "values": [null]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Blue/Chamber2Gate:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-185, -19, -537)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Blue/Chamber2StoryTrigger:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-185, -4, -546)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Blue/Chamber2Gate:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Blue/CentralRoom/MainPuzzle:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Blue/CentralRoom/StartingPuzzle:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Blue/DungeonChunk/Chunk/Gate2:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-31, 17.5, -115)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Blue/DungeonChunk/Chunk/Gate2:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Blue/DungeonChunk/Chunk/Gate3:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(74, 17.5, -115)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Blue/DungeonChunk/Chunk/Gate3:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Blue/DungeonChunk/Chunk/Gate4:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Blue/DungeonChunk/Chunk/Gate4:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(95.7, 17.5, -62.4)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Blue/DungeonChunk/Chunk/Gate5:position")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(74.8, 17.5, -9.29999)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Blue/DungeonChunk/Chunk/Gate5:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Blue/DungeonChunk/Chunk/Gate6:position")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-30.9, 17.5, -10.1)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Blue/DungeonChunk/Chunk/Gate6:visible")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_kmcq3"]
 resource_name = "chamber_2_trigger"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Blue/Chamber2Gate:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-185, -19, -537), Vector3(-185, 3, -537)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Blue/Chamber2Gate:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Blue/CentralRoom/MainPuzzle:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Blue/CentralRoom/StartingPuzzle:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Blue/DungeonChunk/Chunk/Gate2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-31, 17.5, -115), Vector3(-31, -14.5, -115)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Blue/DungeonChunk/Chunk/Gate2:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Blue/DungeonChunk/Chunk/Gate3:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(74, 17.5, -115), Vector3(74, -14, -115)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Blue/DungeonChunk/Chunk/Gate3:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Blue/DungeonChunk/Chunk/Gate4:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Blue/DungeonChunk/Chunk/Gate4:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(95.7, 17.5, -62.4), Vector3(95.7, -14.5, -62.4)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Blue/DungeonChunk/Chunk/Gate5:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(74.8, 17.5, -9.29999), Vector3(74.8, -14.5, -9.3)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Blue/DungeonChunk/Chunk/Gate5:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Blue/DungeonChunk/Chunk/Gate6:position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-30.9, 17.5, -10.1), Vector3(-30.9, -14.5, -10.1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Blue/DungeonChunk/Chunk/Gate6:visible")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_50av1"]
 resource_name = "preset_1"
@@ -490,18 +133,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_ns3pi"]
 resource_name = "set_chamber_2_trigger"
 length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Blue/Chamber2StoryTrigger:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-185, -4, -546), Vector3(-185, 3, -546)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1n5t0"]
 _data = {
@@ -558,21 +189,6 @@ blend_shape_mode = 0
 radius = 1.0
 height = 6.0
 
-[sub_resource type="Resource" id="Resource_6c3vh"]
-resource_name = "Stasis Spell"
-script = ExtResource("29_m1310")
-item = ExtResource("30_0y7aa")
-id = 0
-quantity = 1
-max_quantity = 9999
-allow_stacking = false
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8jgrk"]
-size = Vector3(7, 2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sw2bq"]
-size = Vector3(12, 2, 10)
-
 [sub_resource type="BoxMesh" id="BoxMesh_8kqe2"]
 size = Vector3(1, 1, 10)
 
@@ -587,15 +203,6 @@ size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d0ue"]
 size = Vector3(1, 3, 11)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5xtsv"]
-size = Vector3(222, 51, 207)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mndpf"]
-size = Vector3(20, 30, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_22t23"]
-size = Vector3(20, 30, 3)
 
 [node name="World" type="Node3D"]
 
@@ -644,7 +251,7 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73, 0.7, -781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 0.7, -242)
 team = [ExtResource("11_qfng2")]
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
@@ -699,35 +306,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1.803, 0)
 [node name="Boss3" parent="Overworld/Blue/Preset1" instance=ExtResource("8_bwct4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1.803, 0)
 
-[node name="StasisSpellStoryTrigger" parent="Overworld/Blue" instance=ExtResource("28_83uud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, 3.6, -577.6)
-items = Array[ExtResource("29_m1310")]([SubResource("Resource_6c3vh")])
-info_graphic_key = "stasis"
-
-[node name="AnimationActor" parent="Overworld/Blue/StasisSpellStoryTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("31_lppqk")]
-animation_name = "set_chamber_2_trigger"
-animation_player = NodePath("../../../AnimationPlayer")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/StasisSpellStoryTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
-shape = SubResource("BoxShape3D_8jgrk")
-
-[node name="Chamber2StoryTrigger" parent="Overworld/Blue" instance=ExtResource("28_83uud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185, -4, -546)
-
-[node name="AnimationActor" parent="Overworld/Blue/Chamber2StoryTrigger" node_paths=PackedStringArray("animation_player") instance=ExtResource("31_lppqk")]
-animation_name = "chamber_2_trigger"
-animation_player = NodePath("../../../AnimationPlayer")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Chamber2StoryTrigger"]
-shape = SubResource("BoxShape3D_sw2bq")
-
-[node name="Chamber2Gate" parent="Overworld/Blue" node_paths=PackedStringArray("locks") instance=ExtResource("32_0pnra")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -185, -19, -537)
-visible = false
-locks = [null]
-permanent = true
-
 [node name="DoorBlocker_1" type="MeshInstance3D" parent="Overworld/Blue" groups=["detached_env"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -82.7)
 mesh = SubResource("BoxMesh_8kqe2")
@@ -777,79 +355,6 @@ mesh = SubResource("BoxMesh_8kqe2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DoorBlocker_5/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_tyyi7")
-
-[node name="DungeonChunk" type="Area3D" parent="Overworld/Blue" node_paths=PackedStringArray("chunk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -380)
-script = ExtResource("33_xa4lq")
-chunk = NodePath("Chunk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 16.5, -101)
-shape = SubResource("BoxShape3D_5xtsv")
-
-[node name="Chunk" type="Node3D" parent="Overworld/Blue/DungeonChunk"]
-
-[node name="Gate2" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk/Chunk"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -31, 17.5, -115)
-mesh = SubResource("BoxMesh_mndpf")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate2/StaticBody3D"]
-shape = SubResource("BoxShape3D_22t23")
-
-[node name="Gate3" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk/Chunk"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 74, 17.5, -115)
-mesh = SubResource("BoxMesh_mndpf")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate3/StaticBody3D"]
-shape = SubResource("BoxShape3D_22t23")
-
-[node name="Gate4" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk/Chunk"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 95.7, 17.5, -62.4)
-mesh = SubResource("BoxMesh_mndpf")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate4/StaticBody3D"]
-shape = SubResource("BoxShape3D_22t23")
-
-[node name="Gate5" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk/Chunk"]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 74.8, 17.5, -9.29999)
-mesh = SubResource("BoxMesh_mndpf")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate5"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate5/StaticBody3D"]
-shape = SubResource("BoxShape3D_22t23")
-
-[node name="Gate6" type="MeshInstance3D" parent="Overworld/Blue/DungeonChunk/Chunk"]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -30.9, 17.5, -10.1)
-mesh = SubResource("BoxMesh_mndpf")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate6"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/DungeonChunk/Chunk/Gate6/StaticBody3D"]
-shape = SubResource("BoxShape3D_22t23")
-
-[node name="MuralRoom" parent="Overworld/Blue/DungeonChunk/Chunk" instance=ExtResource("34_5hmya")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8, 0, -173.8)
-
-[node name="CentralRoom" type="Node3D" parent="Overworld/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207, 0, -380)
-
-[node name="MainPuzzle" parent="Overworld/Blue/CentralRoom" instance=ExtResource("35_g5cey")]
-transform = Transform3D(1, 0, -8.35187e-23, 0, 1, 0, -8.35187e-23, 0, 1, 21.6374, 1.4, -62.473)
-visible = false
-
-[node name="StartingPuzzle" parent="Overworld/Blue/CentralRoom" instance=ExtResource("36_c2bcd")]
 
 [node name="PlayTestModeSpawnPoint" type="Node3D" parent="Overworld/Blue"]
 unique_name_in_owner = true
