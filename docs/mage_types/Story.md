@@ -13,10 +13,7 @@ Upon asking the man about his condition, he will explain the concept of *alignme
 The player character finds their mind transfixed on the diner, although whether this is due to them connecting it to their current situation or because the food was really good is up to the player. They can ask the man about either the diner or the Cyan Interstate. He says it sounds familiar, but confesses he has not been on the surface in years and his memory is foggy.
 
 Before Alice and the player leaves, the man asks them to keep an eye out for a boy named *Alex*. Evidently, he came through here about a week ago, but seemed a little air-headed, so the man worries he has gotten lost. As the player and Alice ascend through the Blue Caverns, they do happen to stumble into Alex. Alice/Alyss asks them if they're okay, have they really been lost down here for an entire week! To which Alex replies, "no, I was only lost down here for 3 days. I finally made it to the surface, found the community center, and was chilling out around there. Then, an hour ago I walked into what I thought was a maintenance closet and found myself back here."
-# Main Character Motivations
-The player's main partner will now be a character named Denim. Before being trapped on Forlorn, they felt listless, unsure of where their life was going. They have anxiety and a bad habit of catastrophizing. Once finding themselves on Forlorn, they are plagued with mixed emotions. On one hand, they've been presented with mystery, adventure and the option to learn magic. But on the other, this world and its magic is not without serious consequences.
-
-The player is tasked with finding the Diner, which Alyss is obsessing over. Whether this is a whimsical adventure to taste those amazing pancakes again or a desperate attempt to get home is up to the player, via dialog options and their personal roleplaying. Alyss represents a sort of optimistic nihilism, experiencing the game as though one step removed. "This might as well be happening/What else is there to do" personified. An absurdist champion.
+# Main Character and Faction Motivations
 ## Blue Enclaves
 The Enclaves are small groups of 2-6 Blue-aligned who are rooted in place within talking distance of each other. These enclaves could give the player small quests, like finding items for them or passing messages from one enclave to the other.
 ## The Great Enclave(s)
@@ -24,7 +21,11 @@ The shattered remanants of the once ~50 strong Great Enclave conflict with one a
 ## Parking Garage
 The player can venture into the parking garage early into the game, although all but the first level is more of a late-game area. Here they'll have to fight off Purple-aligned, wraiths (Purple-aligned that have lost themselves), and various monsters.
 
-On the first level, the player can enter the convenience store, meeting the Clerk and some Purple mages. The Purple mages offer the player some advice and gives them a quest concerning a generator on the second level. On this level will be a powerful monster that the player cannot tackle directly, even at a higher level, and must therefore sneak around. The mages don't actually expect you to be able to accomplish this and are impressed if you do.
+On the first level, the player can enter the convenience store, meeting the *Clerk* and some Purple mages. The Purple mages offer the player some advice and gives them a quest concerning a generator on the second level. On this level will be a powerful monster that the player cannot tackle directly, even at a higher level, and must therefore sneak around. The mages don't actually expect you to be able to accomplish this and are impressed if you do.
+### Convenience Store and Clerk
+The Convenience Store can be found on the main floor of the parking lot. It is ran by on Old One called The *Clerk*. She is largely disinterested in the lives of the mortals around her. Running the convenience store is a means toward wealth for her, not out of any benevolence. She will be tall, dressed in dark clothing with a choker. Her eldritch nature is only really visible when she moves (I think I'll have a smearing kind of effect).
+
+Due to the store being the domain of a eldritch capitalist, theft is ontologically impossible. If the player tries to exit the store without paying for their stuff, they'll be teleported to the checkout. The clerk may make a indirect/sarcastic remark about it.
 ## The Community Center
 The main conflict in the community center has to do with the boarded up rooms, used to contain rogue monsters. These restricted areas have grown to consume half of the center's area, allowing many of these once isolated containment zones to connect, leading to a rapidly growing threat. The core leadership seems to be in denial of this fact, though their opposition (the peacekeepers) are quickly gaining support.
 ## The Peacekeepers

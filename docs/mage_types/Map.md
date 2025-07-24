@@ -163,7 +163,8 @@ Once the player solves the puzzle, an animation will play. The pistons will star
 #### Valve Puzzle
 #### Pump Room
 - Similar to the chamber 1, the player is presented with a busy room full of moving mechanisms. They will now likely know that there is a Vortex Engine neaby powering this movement.
-- Unlike in chamber 1, however, the Vortex engine will have gears. Upon reaching the far end of the track, the boulder will have 3 potential tracks it can take, which are controlled using Environmental Doors.
+- Require use of transmutations and Stasis.
+- Moving parts driven by Vortex Engine.
 ### Orange Wing
 This section is actually inside of the power conduit found in the Red section. The two side chambers sticking out from Room3 will take the player outside of the inner sheath. They'll still be in the conduit, but it'll be a bit more obvious (mb there will be a section with a large tear that can be seen from Red.
 

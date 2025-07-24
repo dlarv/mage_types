@@ -3,14 +3,28 @@
 	- Get essential feedback before creating too many assets
 	- Get feedback on puzzle design
 	- I might need to bribe some people to actually play it... Pizza lan party?
+- Doors should keep player's relative position when they go thru
 # Objectives
 - Refine design processes
 - Practice making platforming challenges
 - Wild enemy mechanics
-- Doors should keep player's relative position when they go thru
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.4.x
+>[!summary] Realignment
+> I feel like I'm adding puzzles for the sake of adding them and furthermore I dislike the process. This isn't helped by the fact that this game isn't really meant to be a puzzle game. 
+> 
+> The parts I do enjoy are making are coming up with quirky little lore and worldbuilding ideas. I think this game will primarily be an exploration and narrative experience, with minor puzzle elements. With this in mind, it might be best to focus on fleshing out the hotel and caves areas of the map. 
+- Portal Complex becomes a series of excavation sites.
+	- I like the Orange chatlogs and murals.
+- Western section of hotel expanded.
+	- Lavender's logic puzzle.
+- Hotel rooms added.
+	- This can contain small challenges/puzzles/etc.
+	- Ideas can be drawn from SCP-7819.
+	- I want there to be a second floor.
+This will result in v0.4.x being essentially done.
+
 Puzzle playtest candidate. Players will be able to play through all major puzzles.
 - [x] Basic map menu added
 	- [x] Scroll/zoom
