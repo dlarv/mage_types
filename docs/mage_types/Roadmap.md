@@ -1,16 +1,7 @@
 # Misc Notes
-- v0.6.0 will be the big version I'll release to my playtesters.
-	- Get essential feedback before creating too many assets
-	- Get feedback on puzzle design
-	- I might need to bribe some people to actually play it... Pizza lan party?
+- v0.6.0 will be the big version I'll release to my playtesters?
 - Doors should keep player's relative position when they go thru
-# Objectives
-- Refine design processes
-- Practice making platforming challenges
-- Wild enemy mechanics
-# Upcoming Versions
-[[version_naming_scheme]]
-## v0.4.x
+
 >[!summary] Realignment
 > I feel like I'm adding puzzles for the sake of adding them and furthermore I dislike the process. This isn't helped by the fact that this game isn't really meant to be a puzzle game. 
 > 
@@ -23,133 +14,37 @@
 	- This can contain small challenges/puzzles/etc.
 	- Ideas can be drawn from SCP-7819.
 	- I want there to be a second floor.
-This will result in v0.4.x being essentially done.
-
-Puzzle playtest candidate. Players will be able to play through all major puzzles.
-- [x] Basic map menu added
-	- [x] Scroll/zoom
-	- [x] Ability to place icons along with 16 char messages
-	- [x] First page of map should be legend where player can explain what each of their icons mean
-	- [x] Upon dying, golems should leave a permanent pile of clay
-- [ ] Stasis Dungeon
-	- [x] Central chamber main puzzle solution programmed
-	- [x] Central chamber intro puzzle (x3)
-	- [ ] Main puzzle hints created
-	- Spoke puzzles created
-		- Player solves spoke puzzles to get hints for main puzzle and keys for the East room.
-		- [x] General blocking
-		- [ ] Western Red Wing
-			- [x] Layout
-			- [x] Platforming challenge designed
-			- [ ] Time trial challenge added to (c1) 
-		    - [ ] Stasis challenge added to one of the middle sections (b2/c3)
-		    - [ ] Final stretch added to (a4)
-		    - [ ] Combat challenges added to (c4, b4)
-		    - [ ] Rewards added to hidden rooms in (c1, b3, a4)
-		    - [ ] Mural added to (c4)
-			- [ ] Environment modeled
-			- [ ] Orange chatlogs added
-			- [x] Treasure room created
-				- [ ] Add chest & items
-				- [x] Connect hole to Blue Wing
-		- [ ] Southern Blue Wing
-			- [x] Layout 
-			- [x] Stasis puzzles created
-			- [x] Simple golem puzzles created
-			- [ ] Stasis miniboss tested
-				- [ ] I need to create some stasis related attack
-			- [ ] Environment modeled
-			- [ ] Orange chatlogs added
-			- [ ] Golem room created
-				- [x] Miniboss added
-				- [x] Golem pickup added
-				- [ ] Golem infographic created
-			- [ ] Bug: Chamber 3 golem puzzle can be bypassed with block from stasis puzzle
-			- [ ] Bug: Chamber 1 & 2 stasis puzzle solutions are spoiled when player walks thru beams
-		- [ ] Northern Blue Wing
-			- [ ] Layout
-				- [ ] Main chamber setpiece mechanism created
-				- [ ] Main chamber
-				- [ ] Chamber 1
-				- [ ] Chamber 2
-				- [ ] Chamber 3
-			- [ ] Puzzles created
-				- [x] Geyser Engine prefab created
-				- [ ] Chamber 1
-				- [ ] Chamber 2
-				- [ ] Chamber 3
-			- [ ] Environment modeled
-			- [ ] Mural added
-			- [ ] Orange chatlogs added
-		- [ ] Orange Wing
-			- [x] Layout 
-			- [ ] Puzzles created
-			- [ ] Environment modeled
-			- [ ] Mural added
-			- [ ] Orange chatlogs added
-		- [ ] Eastern Red Wing
-			- [ ] Layout 
-			- [ ] Puzzles created
-			- [ ] Environment modeled
-			- [ ] Mural added
-			- [ ] Orange chatlogs added
-		- [ ] Magenta Wing
-			- [ ] Layout 
-			- [ ] Puzzles created
-			- [ ] Environment modeled
-			- [ ] Mural added
-			- [ ] Orange chatlogs added
-		- [ ] Final boss room
-			- [ ] Add boss fakeout
-			- [ ] Environment modeled
-			- [ ] Orange chatlogs added
-		- [ ] Eastern room added
-			- This may double as the final boss room, idk yet
-	- [ ] Mural in Northern Chamber
-		- [x] Add HiddenReceivers
-		- [x] Text describing what player is seeing
-		- [ ] Assets reflecting what text describes
-	- [ ] Other murals
-		- [x] Write text describing what player is seeing (translations)
-		- [ ] Assets reflecting what text describes
-		- [ ] Place murals inside dungeon
-- [x] Add some method for the player to know which doorways are empty
-	- Currently, empty doorways are obviously obstructed by walls
-- [x] Water mechanics
-	- [x] When player falls on water, return them to previous stable position
-- [x] Improve player movement mechanics
-	- [x] Impl coyote time
-	- [x] Impl jump buffering
-	- [x] Variable height jumps
-	- [x] Replace sprint toggle with dash
-- [x] Change environment walls to be part of the floor geometry
-- [x] Hotel Room mini-dungeon
-	- [x] Chamber 1 bridge puzzles
-	- [x] Add simple demonstration obstacle to base floor of chamber 1 to show how pressure plates work
-	- [x] Add puzzles to Chamber 3
-	- [x] Add puzzles to Chamber 4
-- [x] BugFix: When geysers are meant to be controlled via an external puzzle block (e.g. turned on/off by a pressure plate), this can be bypassed using the stasis spell
-- [x] Give player ability to jump
-	- [x] Expand geyser blocker to prevent player from jumping on top of it
-- [x] Force pressure plates/etc to \_flicker_collider when chunk is loaded
-- [x] Write logs to user's system
+# Objectives
+- Refine design processes
+- Practice making platforming challenges
+- Wild enemy mechanics
+# Upcoming Versions
+[[version_naming_scheme]]
 ## v0.5.x
-Puzzle playtest QOL and essential polish
+Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Give StasisTarget a model
 - [ ] Give Rail puzzleblock a model
-- [ ] Create and add models for murals
 - [ ] Wild enemy mechanics
 	- [ ] Aggressive behavior
 	- [ ] Cowardly behavior
 	- [ ] Passive behavior
-- [ ] Scrapbook containing hints and whatnot the player has found.
-	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
-	- [ ] Notes can be obtained from overworld
-	- [ ] Notes can be reorganized
-	- [ ] Notes can be deleted
-	- [ ] Player can create notes and drawings on notebook pages
+- [ ] Add ability to level up
+	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty.
+- [ ] Attacks can define their own scaling factors (match/affinity/no match)
+	- [ ] Battle GUI should show these actual power values
+	- [ ] Strong attacks should have cooldowns (warmups too?)
+- [ ] Battle Animation refactor
+	- [ ] Animations handled by BattleGUI
+	- [ ] Animations should already be children of gui, just hidden
+	- [ ] Attacks access animations using an Id (probably an enum)
+- [ ] BattleAction refactor
+	- [ ] Battle should be a singleton that is only accessible when battle is ongoing
+	- [ ] AttackEffects with more complex effects should be able to query Battle object directly for battlefield state
+		- e.g. Red attack that does double damage if partner uses same move. AttackEffect should be able to query the Battle for a list of selected actions and determine from there
+		- Ensure this doesn't break future multiplayer potential?
+	- [ ] Allow AttackEffects to share data between themselves
 ## v0.6.x
-Exploration playtest candidate. Player will be able to explore decorated map.
+Exploration playtest candidate. Player will be rewarded for exploring the map.
 - [ ] Make exploring the map interesting.
 	- [ ] Items
 	- [ ] Decor
@@ -170,7 +65,9 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [ ] Items/mini obstacles
 	- [ ] Create door models and animations
 	- [ ] On doors player cannot enter, add "Do not disturb" signage
-- [ ] Plan out beach house sequence and update model
+- [ ] Portal Complex ruins created
+	- [ ] Create and add models for murals
+	- [ ] Orange chatlog object created and placed
 - See if any puzzles can be ported from previous versions
 	- [x] Lost-forest-style caves => Supply closet
 		- [x] Create room that contains demos for all puzzle blocks. This room will be in front of the lost forest part.
@@ -179,7 +76,7 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [x] Original Stasis obstacle?
 		- [x] Original version works in new physics paradigm
 		- [x] Decide if/where/how it should be used
-- [ ] Puzzle block demo:
+- [ ] Puzzle block demos:
 	- [x] Pressure plate demo
 		- [x] Bug: Player activated pressure plate not working
 	- [x] Delay demo
@@ -187,14 +84,14 @@ Exploration playtest candidate. Player will be able to explore decorated map.
 	- [x] Relay demo
 		- [x] Create indicator block, which differentiates between off/on/invalid_off
 	- [x] Stasis target demo
-	- [ ] Rails demo
+	- [x] Rails demo
 	- [ ] Logic gate demos
-	- [x] Laser blocks demos
+		- [ ] Add models for empty puzzle blocks?
+	- [ ] Laser blocks demos
 		- [ ] DraggableMirror?
-		- [ ] RotatableMIrror?
+		- [ ] RotatableMirror?
 		- [ ] DraggableEmitter?
 		- [ ] OneWayLens?
-		- [ ] Laser collisions?
 	- [x] Catalyst Device demo
 	- [x] Catalyst Platform demo
 	- [x] Reset demo
@@ -212,29 +109,22 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [ ] Being staggered right before a battle starts should inflict flinching on turn 1
 	- [ ] Player/enemy cannot move for a duration of time
 - [ ] Determine mechanic that prevents player from starting battles with certain enemies before different requirements are fulfilled
-- [ ] Add final boss to stasis dungeon
+- [ ] Add final boss to ~~stasis dungeon~~
 ## v0.8.x
 Demo MVP prep. Polish features added during previous versions.
 - [ ] Content
 	- [ ] Rec room battle tutorial
 	- [ ] Add backtrack obstacles to beach/etc
-- [ ] Battle Animation refactor
-	- [ ] Animations handled by BattleGUI
-	- [ ] Animations should already be children of gui, just hidden
-	- [ ] Attacks access animations using an Id (probably an enum)
-- [ ] BattleAction refactor
-	- [ ] Battle should be a singleton that is only accessible when battle is ongoing
-	- [ ] AttackEffects with more complex effects should be able to query Battle object directly for battlefield state
-		- e.g. Red attack that does double damage if partner uses same move. AttackEffect should be able to query the Battle for a list of selected actions and determine from there
-		- Ensure this doesn't break future multiplayer potential?
-- [ ] Wild enemies
 - [ ] Beastiary describing monsters
 - [ ] Opening chests should show player list of contents and allow them to individually select them
 - [ ] Change transmutation graph advanced options from gdscript to gdshader
 - [ ] Add transmutation graph stencils to streamline canonical advanced options usage
-- [ ] Ensure environment borders/models are aligned properly
-- [ ] Improve animations in stasis dungeon
-- [ ] Audio
+- [ ] Scrapbook containing hints and notes the player has found
+	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
+	- [ ] Notes can be obtained from overworld
+	- [ ] Notes can be reorganized
+	- [ ] Notes can be deleted
+	- [ ] Player can create notes and drawings on notebook pages
 ## v0.9.x
 MVP Demo candidate. Add story and QOL features.
 - [ ] Character designs
@@ -242,6 +132,7 @@ MVP Demo candidate. Add story and QOL features.
 	- [ ] Denim
 	- [ ] Player
 	- [ ] Lavender
+- [ ] Plan out beach house sequence and update model
 - [ ] Story
 	- [ ] Add beach house sequence
 	- [ ] Apartment sequence?
@@ -251,9 +142,9 @@ MVP Demo candidate. Add story and QOL features.
 	- [ ] Audio/video controls
 - [ ] Achievements
 - [ ] Start screen
-- [x] Allow user to use keyboard to select targets in battle
-- [ ] Create conference hall room
+- [ ] Audio
 - [ ] Create steam page assets
+- [x] Allow user to use keyboard to select targets in battle
 # The List
 ## Battle (BATT)
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
