@@ -8,7 +8,7 @@ class_name ElementalType
 @export var text_color: Color 
 @export var color_palette: Array[Color]
 
-func _init():
+func _init() -> void:
 	name = "Blank" 
 	main_color = Color(.5, .5, .5)
 	color_palette = []

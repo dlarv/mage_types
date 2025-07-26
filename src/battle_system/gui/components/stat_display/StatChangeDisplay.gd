@@ -35,8 +35,8 @@ func add(stat: StatManager.Stats, amount: float) -> void:
 			update_nibs(ranged_defense, $RangedDefense, amount)
 
 func update_nibs(display: StatDisplay, rect: TextureRect, mod: float=1) -> void:
-	var text = rect.tooltip_text
-	var index = text.rfind(":")
+	var text := rect.tooltip_text
+	var index := text.rfind(":")
 	rect.tooltip_text = text.substr(0, index) + ": " + str(mod * 100) + "%"
 
 	display.update(mod)

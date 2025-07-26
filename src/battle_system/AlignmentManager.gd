@@ -17,7 +17,7 @@ var current_alignment: ElementalType
 ## Once an alignment forms, it cannot be overwritten.
 @export var alignment_locked := false
 
-var _unnormalized_values := [0, 0, 0, 0, 0, 0, 0, 0 ]
+var _unnormalized_values: Array[float] = [0, 0, 0, 0, 0, 0, 0, 0 ]
 
 
 ## val = ########, where # is a hex value between 0 and F.

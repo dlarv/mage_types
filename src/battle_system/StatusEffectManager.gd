@@ -5,14 +5,14 @@ enum StatusEffects { STASIS, BLOCK, POISON, PHOBIC, HEALING, FLINCH, STAT_CHANGE
 
 var poison: float:
 	get:
-		var effect = statuses.get(StatusEffects.POISON)
+		var effect: StatusEffect = statuses.get(StatusEffects.POISON)
 		if effect != null:
 			return effect.strength
 		return 0
 
 var healing: float:
 	get:
-		var effect = statuses.get(StatusEffects.HEALING)
+		var effect: StatusEffect = statuses.get(StatusEffects.HEALING)
 		if effect != null:
 			return effect.strength
 		return 0
@@ -84,12 +84,12 @@ func has(effect: StatusEffect) -> bool:
 
 
 func calculate_expirations() -> Array[StatusEffect]:
-	for effect in statuses.values():
+	for effect: StatusEffect in statuses.values():
 		effect.duration -= 1
 		if effect.is_expired():
 			_effects_to_remove.append(effect)
 
-	for phobia in phobias.values():
+	for phobia: PhobiaEffect in phobias.values():
 		phobia.duration -= 1
 		if phobia.is_expired():
 			_effects_to_remove.append(phobia)
@@ -106,7 +106,7 @@ func calculate_expirations() -> Array[StatusEffect]:
 		else:
 			statuses.erase(effect.id)
 	
-	var output = _effects_to_remove
+	var output := _effects_to_remove
 	_effects_to_remove = []
 	return output
 
@@ -129,14 +129,14 @@ func check_stasis() -> StatusEffect:
 
 
 func check_phobic(element:ElementalType) -> PhobiaEffect:
-	var effect = phobias.get(element)
+	var effect: StatusEffect = phobias.get(element)
 	if effect != null:
 		return effect
 	return null
 
 
 func list() -> Array[StatusEffect]:
-	var output = []
+	var output: Array[StatusEffect] = []
 	if blocking != null:
 		output.append(blocking)
 	

@@ -1,3 +1,4 @@
+@tool
 extends MagiClay
 
 var _objects_in_influence := []

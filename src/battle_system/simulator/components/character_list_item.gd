@@ -1,4 +1,5 @@
 extends Control
+@warning_ignore_start("untyped_declaration")
 
 @export var name_display: Label
 @export var element1_display: ColorRect

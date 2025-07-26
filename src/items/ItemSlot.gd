@@ -2,7 +2,7 @@
 extends Resource
 class_name ItemSlot 
 
-@export var item: Item:
+@export var item: _Item:
 	set(value):
 		item = value
 		if value != null:
@@ -26,7 +26,7 @@ class_name ItemSlot
 		return item and (not item is KeyItem)
 
 
-func _init(item: Item = null):
+func _init(item: _Item = null) -> void:
 	if item == null: return
 	self.item = item
 	quantity = 0

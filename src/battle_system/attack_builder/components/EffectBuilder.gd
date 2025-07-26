@@ -14,7 +14,7 @@ signal effect_created(effect: EffectSlot)
 
 var _effect: EffectSlot
 
-func _enter_tree():
+func _enter_tree() -> void:
 	_effect = EffectSlot.new()
 	_effect.attack_effect = attack_effects[0]
 

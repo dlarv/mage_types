@@ -16,7 +16,7 @@ var _label_settings: LabelSettings = null:
 			_label_settings.font_color = Color.BLACK
 		return _label_settings
 
-func _init(color:= Color.DARK_GRAY, isHidden:=false):
+func _init(color:= Color.DARK_GRAY, isHidden:=false) -> void:
 	is_hidden = isHidden
 	if is_hidden:
 		# Cell has nothing to hide:

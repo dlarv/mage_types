@@ -5,7 +5,7 @@ const MapIcon := preload("res://src/gui/pause_menu/map_menu/MapIcon.gd")
 func _ready() -> void:
 	var elementIndex := 0
 	for child in %SquareGridContainer.get_children():
-		child.get_child(1).text_changed.connect(func(msg: String):
+		child.get_child(1).text_changed.connect(func(msg: String) -> void:
 			var el := ElementManager.elements[elementIndex]
 			get_parent().tooltips[["square_map_icon", el.name]] = msg
 			var icons := get_tree().get_nodes_in_group("square_map_icon")

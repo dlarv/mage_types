@@ -1,6 +1,7 @@
 @tool
 extends Node3D
 
+const _Rails = preload("../Rails.gd")
 const Rails = preload("../rails.tscn")
 
 @export var puzzle_block: PuzzleBlock
@@ -12,7 +13,7 @@ const Rails = preload("../rails.tscn")
 	set(val):
 		instance_offset = val
 		_update()
-var _instances := []
+var _instances: Array[_Rails] = []
 var _index := -1
 
 
@@ -28,12 +29,12 @@ func _ready() -> void:
 
 
 func _update() -> void:
-	for instance in _instances:
+	for instance: _Rails in _instances:
 		remove_child(instance)
 	_instances = []
 	
 	for i in instance_count - 1:
-		var instance = %Rails.duplicate()
+		var instance: _Rails = %Rails.duplicate()
 		_instances.append(instance)
 		instance.position = instance_offset * (i + 1)
 		add_child(instance)

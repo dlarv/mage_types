@@ -32,7 +32,7 @@ func _get_magiclay() -> void:
 	var result := space.intersect_ray(query)
 	if result.get("collider") == null: return
 
-	var clay = result["collider"]
+	var clay: CollisionObject3D = result["collider"]
 	if clay is MagiClay:
 		_magiclay_terrain = clay
 
@@ -43,7 +43,7 @@ func _find_mouse_position() -> void:
 	var origin := cam.project_ray_origin(mousePos)
 	var end := origin + cam.project_ray_normal(mousePos) * 1000
 	var query := PhysicsRayQueryParameters3D.create(origin, end)
-	var pos = get_world_3d().direct_space_state.intersect_ray(query).get("position")
+	var pos: Variant = get_world_3d().direct_space_state.intersect_ray(query).get("position")
 
 	_is_mouse_pos_valid = pos != null
 	if _is_mouse_pos_valid:

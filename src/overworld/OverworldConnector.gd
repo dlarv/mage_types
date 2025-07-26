@@ -53,7 +53,7 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> 
 		actor.current_hp = actor.hp
 
 	if is_instance_valid(enemy):
-		for actor in enemy.team:
+		for actor: BattleActor in enemy.team:
 			actor.current_hp = actor.hp
 	
 	world.process_mode = Node.PROCESS_MODE_INHERIT
@@ -63,7 +63,7 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> 
 	await get_tree().create_timer(battle_delay).timeout
 	get_tree().call_group("wild_enemies", "_end_battle_cooldown")
 
-func _on_player_dialog_started(dialogId: String, npc) -> void:
+func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 	UIManager.is_in_dialog = true
 	get_tree().paused = true
 	_current_story_actor = npc.story_actor
@@ -72,7 +72,7 @@ func _on_player_dialog_started(dialogId: String, npc) -> void:
 
 	var sigName: String
 	while dialog_box.is_running():
-		var val = await dialog_box.dialogue_signal
+		var val: String = await dialog_box.dialogue_signal
 		if val == "play_cutscene": 
 			await _play_cutscene(npc)
 		elif val == "update_story":
@@ -82,7 +82,7 @@ func _on_player_dialog_started(dialogId: String, npc) -> void:
 
 	match sigName:
 		"play_cutscene": 
-			var id = dialog_box.variables["current_cutscene"]
+			var id: String = dialog_box.variables["current_cutscene"]
 			await npc.story_actor.play_cutscene(id)
 			get_tree().paused = false
 		"battle_started":
@@ -98,8 +98,8 @@ func _on_player_dialog_started(dialogId: String, npc) -> void:
 
 	_current_story_actor = null
 
-func _play_cutscene(npc) -> void:
-	var id = dialog_box.variables["current_cutscene"]
+func _play_cutscene(npc: Variant) -> void:
+	var id: String = dialog_box.variables["current_cutscene"]
 
 	var prevProcessMode := dialog_box.process_mode
 	# dialog_box.process_mode = PROCESS_MODE_DISABLED

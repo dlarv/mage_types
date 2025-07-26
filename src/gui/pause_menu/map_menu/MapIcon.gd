@@ -9,7 +9,7 @@ var shape: MapIconShape
 var element: ElementalType
 
 
-func _init(shape: MapIconShape, element: ElementalType, unitSize: float):
+func _init(shape: MapIconShape, element: ElementalType, unitSize: float) -> void:
 	set_deferred("size", Vector2(unitSize, unitSize))
 	self.shape = shape
 	self.color = element.main_color

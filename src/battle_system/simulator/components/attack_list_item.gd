@@ -6,7 +6,7 @@ extends Control
 @export var power_display: Label
 @export var button: Button
 
-func create(attack):
+func create(attack: _BattleAction) -> Button:
 	# If the parameter is given a type (i.e. attack: Attack),
 	# then the following line throws the "Native class ElementalType not found" error.
 	type_display.color = attack.element.main_color

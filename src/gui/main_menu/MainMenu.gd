@@ -12,7 +12,7 @@ func open(fileName: String) -> void:
 
 	# Information that must be accessed by home page before main scene is instantiated is saved at the beginning
 	# of the file inside a dictionary.
-	var data = file.get_var()
+	var data: Variant = file.get_var()
 	if data.has("player_name"):
 		Settings.set_player_name(data["player_name"])
 
@@ -35,7 +35,7 @@ func _on_continue_button_pressed() -> void:
 
 	var maxTime := -1
 	var maxPath: String
-	for game in %SaveMenu.saved_games:
+	for game: String in %SaveMenu.saved_games:
 		var time := FileAccess.get_modified_time("%s/%s" % [Settings.SAVE_ROOT_DIR, game])
 		if time > maxTime:
 			maxPath = game

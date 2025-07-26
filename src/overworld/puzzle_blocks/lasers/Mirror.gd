@@ -86,7 +86,7 @@ func _on_laser_dropped() -> void:
 	_is_emitting = false
 	if _active_emitter:
 		_active_emitter.stop()
-		var e = _active_emitter.laser.element.name if _active_emitter != null else "null"
+		var e: String = _active_emitter.laser.element.name if _active_emitter != null else "null"
 		Logger.append_puzzle_log("Mirror(%s) stopped emitting laser of Element(%s)."
 				% [puzzle_name, e])
 		_active_emitter = null
@@ -108,13 +108,13 @@ func block(val: bool) -> void:
 func _set_size() -> void:
 	var scaling := base_size * scaling_factor
 
-	var mesh = $MeshInstance3D.mesh.duplicate(true)
+	var mesh: Mesh = $MeshInstance3D.mesh.duplicate(true)
 	$MeshInstance3D.mesh = mesh
 	mesh.size.z = scaling.y
 	$MeshInstance3D.position.y = scaling.y / 2.0
 
 	# Adjust size of main collider.
-	var shape = $CollisionShape3D.shape.duplicate(true)
+	var shape: Shape3D = $CollisionShape3D.shape.duplicate(true)
 	$CollisionShape3D.shape = shape
 	for i in len(shape.points):
 		if i < 3:

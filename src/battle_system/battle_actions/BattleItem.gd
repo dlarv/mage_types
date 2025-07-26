@@ -12,7 +12,7 @@ var requirements: Array[ItemRequirement] = []
 
 
 static func create(name: String, details: String="") -> BattleItem:
-	var item = BattleItem.new()
+	var item := BattleItem.new()
 	item.name = name
 	item.details = details
 	return item
@@ -25,7 +25,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 		var target: BattleActor = targets[i]
 
 		for effect in effects:
-			var rand = randf()
+			var rand := randf()
 
 			if rand <= effect.chance:
 				msg += "\n%s" % effect.attack_effect.apply_effect(user, target, self)
@@ -36,7 +36,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 						msg += "........%s was defeated." % target.ActorName
 						continue
 			else:
-				Logger.append_battle_log("Item(%s) failed. Chance(%f) >= Rand(%f)" 
+				Logger.append_battle_log("_Item(%s) failed. Chance(%f) >= Rand(%f)" 
 						% [name, effect.chance, rand])
 	return { "msg": msg }
 

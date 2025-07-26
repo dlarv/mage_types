@@ -2,7 +2,7 @@ extends Node3D
 
 signal pin_selected(effect: StatusEffect)
 
-var pins := {}
+var pins: Dictionary[String, Node]= {}
 
 func _ready() -> void:
 	pins = {
@@ -26,7 +26,7 @@ func insert_pin(effect: StatusEffect) -> void:
 	if effect.id == StatusEffectManager.StatusEffects.PHOBIC:
 		key = "%sPhobic" % effect.element
 	
-	var pin = pins.get(key)
+	var pin: Node = pins.get(key)
 	if pin:
 		pin.insert(effect)
 		pin.show()
@@ -34,11 +34,11 @@ func insert_pin(effect: StatusEffect) -> void:
 
 func remove_pins(effects: Array[StatusEffect]) -> void:
 	for effect in effects:
-		var key = effect.name
+		var key := effect.name
 		if effect.id == StatusEffectManager.StatusEffects.PHOBIC:
 			key = "%sPhobic" % effect.element
 
-		var pin = pins.get(key)
+		var pin: Node = pins.get(key)
 		if pin != null:
 			pin.remove()
 			pin.hide()

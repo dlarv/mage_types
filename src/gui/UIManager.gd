@@ -25,7 +25,7 @@ var in_battle_mode := false
 var overworld: Node
 var dialog_box: DialogueBox
 var hud: CanvasLayer
-var _menu_stack := []
+var _menu_stack: Array[Control] = []
 var is_in_dialog := false
 var block_input := false
 
@@ -43,9 +43,8 @@ func setup() -> void:
 	block_input = false
 
 	save_menu.setup()
-	var p = get_tree().get_nodes_in_group("player") 
-	if len(p) > 0:
-		player_menu.setup(p[0])
+	var p := get_tree().get_first_node_in_group("player") 
+	player_menu.setup(p)
 	inventory.setup()
 
 
@@ -94,7 +93,7 @@ func push_menu(menu: Control) -> void:
 
 
 func pop_menu() -> void:
-	var menu = _menu_stack.pop_back()
+	var menu: Control = _menu_stack.pop_back()
 	if menu:
 		menu.hide()
 	if len(_menu_stack) == 0:
@@ -107,7 +106,7 @@ func pop_menu() -> void:
 
 
 func clear_all() -> void:
-	for menu in _menu_stack:
+	for menu: Menu in _menu_stack:
 		menu.hide()
 	hide()
 	_menu_stack = []
@@ -214,7 +213,7 @@ func _on_vendor_menu_menu_closed() -> void:
 func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 	block_input = true
 	inventory.show()
-	var selection = await inventory.open_spell_scroll_menu()
+	var selection: _Item = await inventory.open_spell_scroll_menu()
 	_menu_stack[-1].show()
 	block_input = false
 
@@ -226,7 +225,7 @@ func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
 	block_input = true
 	inventory.show()
-	var selection = await inventory.open_equipment_menu()
+	var selection: _Item = await inventory.open_equipment_menu()
 	_menu_stack[-1].show()
 	block_input = false
 

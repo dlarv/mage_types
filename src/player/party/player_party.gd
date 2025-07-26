@@ -7,7 +7,7 @@ extends Node3D
 @export var inventory: Node
 
 func _ready() -> void:
-	var actors = [player.battle_actor]
+	var actors: Array[BattleActor] = [player.battle_actor]
 
 	for companion in companions:
 		actors.append(companion.battle_actor)

@@ -2,7 +2,7 @@ extends Node3D
 
 signal hovered(actor: BattleActor)
 signal selected(actor: BattleActor)
-signal status_effect_icon_pressed(effect)
+signal status_effect_icon_pressed(effect: StatusEffect)
 
 @export var transmutation_hint: Control
 @export var use_gradient := true:
@@ -53,7 +53,7 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 
 	actor.status_effect_added.connect(add_status_effect)
 	actor.status_effects_removed.connect(remove_status_effects)
-	actor.was_just_defeated.connect(func(): 
+	actor.was_just_defeated.connect(func() -> void: 
 		_indicator_mat.albedo_color = Color.BLACK
 		_mat1.albedo_color = _mat1.albedo_color.darkened(0.5)
 		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
@@ -117,7 +117,6 @@ func _on_action_selected(action: _BattleAction) -> void:
 	if not Settings.show_opponent_intentions or action.element.is_blank():
 		$GPUParticles3D.emitting = false
 		return
-	var g = $GPUParticles3D
 	$GPUParticles3D.emitting = true
 	_particle_mat.albedo_color = action.element.main_color
 
@@ -145,7 +144,7 @@ func select() -> void:
 func add_status_effect(effect: StatusEffect) -> void:
 	$PinManager.insert_pin(effect)
 
-func remove_status_effects(effects) -> void:
+func remove_status_effects(effects: Array[StatusEffect]) -> void:
 	$PinManager.remove_pins(effects)
 
 func _on_pin_selected(effect: StatusEffect) -> void:

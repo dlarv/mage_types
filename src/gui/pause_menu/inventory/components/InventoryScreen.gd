@@ -1,9 +1,9 @@
 extends MarginContainer
 
-signal item_selected(item: Item)
+signal item_selected(item: _Item)
 
 var _buttons := []
-var _current_selected_item: Item = null
+var _current_selected_item: _Item = null
 
 func setup(items: Array[ItemSlot]) -> void:
 	for item: ItemSlot in items:

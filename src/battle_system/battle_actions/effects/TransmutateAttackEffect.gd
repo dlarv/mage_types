@@ -18,13 +18,13 @@ var element: ElementalType:
 @export_range(0, 1) var element_id: int 
 
 #override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
 	if target.get_element(element_id) == element:
 		return "But %s is already %s!" % [ user.name, element ]
 	elif target.stasis:
 		return "%s is in stasis! Transmutations were blocked!" % target.name
 	target.set_element(element_id, element)
-	return target.get_and_flush_msgs()
+	return "\n".join(target.get_and_flush_msgs())
 
 
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:

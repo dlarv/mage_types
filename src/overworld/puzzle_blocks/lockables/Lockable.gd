@@ -9,14 +9,14 @@ signal off(node: PuzzleBlock)
 ## Once this gate has been opened, can it close again?
 @export var permanent: bool
 
-var puzzle_name:
+var puzzle_name: String:
 	get():
 		if get_parent() == null:
 			return "%s" % name
 		return "%s.%s" % [get_parent().name, name]
 
 var _is_locked := true
-var _opened_locks := {}
+var _opened_locks: Dictionary[PuzzleBlock, bool] = {}
 
 func _ready() -> void:
 	for lock in locks:
@@ -48,7 +48,7 @@ func _on_lock_opened(lock: PuzzleBlock) -> bool:
 	else:
 		return false
 
-	for val in _opened_locks.values():
+	for val: bool in _opened_locks.values():
 		if not val: return false
 	_is_locked = false
 	on.emit(self)

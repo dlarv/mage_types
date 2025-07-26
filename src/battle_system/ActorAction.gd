@@ -20,9 +20,9 @@ func _init(actor: BattleActor, action: _BattleAction, targets: Array[BattleActor
 	self.targets = targets
 	self.team_index = teamIndex
 
-static func flee():
+static func flee() -> ActorAction:
 	return ActorAction.new(null, null, [], -1)
 
-func is_flee():
+func is_flee() -> bool:
 	return actor == null
 

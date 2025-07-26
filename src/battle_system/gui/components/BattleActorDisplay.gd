@@ -1,5 +1,4 @@
 extends Control
-class_name BattleActorDisplay 
 
 @export var name_label: Label 
 @export var health_bar: HSlider 
@@ -14,7 +13,7 @@ var total_hp: float
 # Dict<String, Node>
 var icons := {}
 
-func setup(actor: BattleActor):
+func setup(actor: BattleActor) -> void:
 	name_label.text = actor.name
 	health_bar.value = (float(actor.current_hp) / actor.hp) * 100
 	hp_label.text = "%d/%d" % [actor.current_hp, actor.hp ]
@@ -33,7 +32,7 @@ func set_health(hp: int) -> void:
 
 
 func get_target_position() -> Vector2:
-	var position = global_position
+	var position := global_position
 	position.x += size.x / 2
 	position.y += size.y / 2
 	return position
@@ -45,7 +44,7 @@ func display_stat_change(stat: StatManager.Stats, value: float) -> void:
 
 func set_defeated() -> void:
 	modulate = Color(1, 1, 1, .5)
-	for key in icons.keys():
-		var icon = icons[key]
+	for key: String in icons.keys():
+		var icon: Node = icons[key]
 		status_effect_icons.remove_child(icon)
 	icons.clear()

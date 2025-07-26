@@ -1,10 +1,10 @@
 extends PanelContainer
 
-signal action_selected(index, action)
+signal action_selected(index: int, action: _BattleAction)
 signal action_target_selection_cancelled()
-signal end_turn(tryRunAway)
-signal show_info(action, limitInfo)
-signal active_actor_changed(index)
+signal end_turn(tryRunAway: bool)
+signal show_info(action: _BattleAction, limitInfo: bool)
+signal active_actor_changed(index: int)
 signal start_turn()
 
 @export var three_state_button: PackedScene 
@@ -68,32 +68,32 @@ func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array
 	self._allies = allies
 	_selected_actions = []
 
-	for i: int in len(allies):
-		var ally = allies[i]
+	for i in len(allies):
+		var ally := allies[i]
 		_selected_actions.append(0)
 		populate_new_attack_menu(ally, i)
 		_skip_indices.append(false)
 		# Variable has to be set out here, otherwise it'll be passed by reference.
-		var index = i
-		ally.was_just_defeated.connect(func():
+		var index := i
+		ally.was_just_defeated.connect(func() -> void:
 			_skip_indices[index] = true
 			# Recalc _begin_index and _final_index.
 			_final_index = _skip_indices.rfind(false)
 			_begin_index = _skip_indices.find(false))
 
-		attacks_panel.tab_selected.connect(func(tabIndex):
+		attacks_panel.tab_selected.connect(func(tabIndex: int) -> void:
 			if(tabIndex != index): return
 			# Disable/Enable attacks based on mana.
 			for j: int in len(ally.attacks):
 				if ally.attacks[j] == null: continue
-				var attack = ally.attacks[j]
-				var button = (attacks_panel.get_child(index).get_child(0).get_child(j))
+				var attack := ally.attacks[j]
+				var button := (attacks_panel.get_child(index).get_child(0).get_child(j))
 				button.is_locked = !attack.is_action_available(ally)
 
 			# Disable/Enable items based on reqs.
 			for j: int in len(items):
-				var item = items[j].battle_item
-				var button = (items_scroller.get_child(j))
+				var item := items[j].battle_item
+				var button := (items_scroller.get_child(j))
 				button.is_locked = !item.is_action_available(ally)
 			)
 
@@ -123,11 +123,11 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 		i += 1
 
 		# Init.
-		var button = three_state_button.instantiate()
+		var button := three_state_button.instantiate()
 		button.button_group = group
 		button.text = attack.name
 		button.shortcut_keycode = "attack_shortcut_%s" % str(i + 1)
-		button.state_changed.connect(func(state):
+		button.state_changed.connect(func(state: int) -> void:
 			on_action_selected(state, index, attack)) 
 		grid.add_child(button)
 
@@ -135,20 +135,22 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 		button.setup(attack.element)
 
 		# Connect signals.
-		end_turn.connect(func(a): button.reset())
+		end_turn.connect(func(_a: Variant) -> void: button.reset())
 
 
 func populate_items_menu(items: Array[RegularItem]) -> void:
-	var group = ButtonGroup.new()
+	var group := ButtonGroup.new()
 
 	for item: RegularItem in items:
-		var button = three_state_button.instantiate()
+		var button := three_state_button.instantiate()
 		button.button_group = group
 		button.text = item.name
 
-		button.state_changed.connect(func(state): on_action_selected(state, attacks_panel.current_tab, item.battle_item))
+		button.state_changed.connect(func(state: int) -> void: 
+			on_action_selected(state, attacks_panel.current_tab, item.battle_item)
+		)
 
-		end_turn.connect(func(val): button.reset())
+		end_turn.connect(func(_v: Variant) -> void: button.reset())
 		items_scroller.add_child(button)
 
 
@@ -165,7 +167,7 @@ func populate_characters_menu(allies: Array[BattleActor], enemies: Array[BattleA
 		button.size_flags_horizontal = Button.SIZE_EXPAND_FILL
 		button.size_flags_vertical = Button.SIZE_EXPAND_FILL
 		button.text = ally.name
-		button.pressed.connect(func(): show_info.emit(ally, false))
+		button.pressed.connect(func() -> void: show_info.emit(ally, false))
 
 		character_scroller.add_child(button)
 
@@ -178,15 +180,17 @@ func populate_characters_menu(allies: Array[BattleActor], enemies: Array[BattleA
 		button.size_flags_horizontal = Button.SIZE_EXPAND_FILL
 		button.size_flags_vertical = Button.SIZE_EXPAND_FILL
 		button.text = enemy.name
-		button.pressed.connect(func(): show_info.emit(enemy, not Settings.debug_mode))
+		button.pressed.connect(func() -> void: 
+			show_info.emit(enemy, not Settings.debug_mode)
+		)
 		character_scroller.add_child(button)
 
 
 func prev_character() -> void:
 	control_panel.current_tab = 0
-	var index = attacks_panel.current_tab
+	var index := attacks_panel.current_tab
 
-	for i: int in range(index - 1, _begin_index - 1, -1):
+	for i in range(index - 1, _begin_index - 1, -1):
 		index = max(i, _begin_index)
 		if(not _skip_indices[index]): break
 
@@ -200,9 +204,8 @@ func prev_character() -> void:
 func next_character() -> void:
 	control_panel.current_tab = 0
 
-	var index = attacks_panel.current_tab
-	# for(int i = 1 index + i <= _final_index + 1 i++) {
-	for i: int in range(index + 1, _final_index + 1):
+	var index := attacks_panel.current_tab
+	for i in range(index + 1, _final_index + 1):
 		index = min(i, _final_index)
 		if(not _skip_indices[index]): break
 

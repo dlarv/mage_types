@@ -2,7 +2,7 @@
 extends ModEquipmentEffect
 class_name PreventDefeat
 
-var _death_averted := {}
+var _death_averted: Dictionary[BattleActor, bool] = {}
 
 
 #override
@@ -19,16 +19,16 @@ func unequip(actor: BattleActor) -> void:
 	actor.remove_func_override(actor.apply_damage.bind(actor))
 
 func setup() -> void:
-	for key in _death_averted.keys():
+	for key: BattleActor in _death_averted.keys():
 		_death_averted[key] = false
 
 func apply_damage(dmg: int, allowBlocking: bool=true, actor: BattleActor=null) -> int:
-	var blocking = null
+	var blocking: StatusEffect = null
 	if dmg > 0 and allowBlocking:
 		blocking = actor.statuses.blocking
 
 	if blocking != null:
-		dmg *= 1 - blocking.strength
+		dmg = int(float(dmg) * 1 - blocking.strength)
 		actor.statuses.remove_blocking()
 		actor.status_effects_removed.emit([blocking])
 

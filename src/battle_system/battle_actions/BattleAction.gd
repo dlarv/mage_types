@@ -39,7 +39,7 @@ var element: ElementalType = ElementManager.Blank:
 # virtual
 func play_animation(start: Vector2, end: Vector2, parent: Node) -> Node:
 	if not animation: return null
-	var obj = animation.instantiate()
+	var obj := animation.instantiate()
 	obj._play(start, end, parent, element)
 	return obj
 
@@ -55,7 +55,7 @@ func get_attack_potential(user: BattleActor, target: BattleActor) -> Dictionary:
 # Main logic for action.
 # Returns message stating what happened to the targets. This is displayed for player.
 func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
-	var end = ""
+	var end := ""
 	match target:
 		TargetType.SELF:
 			end = "itself"

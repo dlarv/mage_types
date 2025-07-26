@@ -9,12 +9,12 @@ class_name StatusEffect
 @export_multiline var description: String 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0):
+func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
 	# if target == null or action == null: return name
 	if target == null:
 		target = user
 
-	var dupe = duplicate()
+	var dupe := duplicate()
 	target.add_status_effect(dupe)
 	return super.apply_effect(user, target, action)
 

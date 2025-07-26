@@ -1,6 +1,6 @@
 extends MarginContainer
 
-var rows := {
+var rows: Dictionary[OverworldSpell.Spells, Array] = {
 	OverworldSpell.Spells.STASIS: [],
 	OverworldSpell.Spells.CATALYST: [],
 	OverworldSpell.Spells.DESTROY: [],
@@ -20,7 +20,7 @@ func _ready() -> void:
 	for child in $GridContainer.get_children():
 		if child.name.contains("Header"): continue
 
-		var id 
+		var id: OverworldSpell.Spells 
 		if child.name.contains("Stasis"):
 			id = OverworldSpell.Spells.STASIS
 		elif child.name.contains("Catalyst"):
@@ -61,7 +61,7 @@ func setup() -> void:
 
 	
 func _on_overworld_spell_enabled(spell: OverworldSpell.Spells, val: bool) -> void:
-	for child in rows[spell]:
+	for child: Node in rows[spell]:
 		child.visible = val
 
 func _activate_spell(toggledOn: bool, spell: OverworldSpell.Spells, isPrimary: bool) -> void:
@@ -69,9 +69,11 @@ func _activate_spell(toggledOn: bool, spell: OverworldSpell.Spells, isPrimary: b
 		Inventory.select_overworld_spell(spell, isPrimary)
 
 func set_primary(id: OverworldSpell.Spells) -> void:
+	if len(rows) >= id: return
 	rows[id][1].set_pressed_no_signal(true)
 	_activate_spell(true, id, true)
 
 func set_secondary(id: OverworldSpell.Spells) -> void:
+	if len(rows) >= id: return
 	rows[id][2].set_pressed_no_signal(true)
 	_activate_spell(true, id, false)

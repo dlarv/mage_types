@@ -11,7 +11,7 @@ const MIN_ZOOM_LEVEL := -5.0
 
 var _current_zoom_level := 0.0
 var _in_pan_mode := false
-var _icons := []
+var _icons: Array[MapIcon] = []
 
 
 func _ready() -> void:
@@ -20,7 +20,7 @@ func _ready() -> void:
 	var i := -1
 	for button: Button in popupVBox.get_child(0).get_children():
 		i += 1
-		button.pressed.connect(func():
+		button.pressed.connect(func() -> void:
 			var index := i
 			popup_item_selected.emit(ElementManager.elements[index])
 			$PopupPanel.hide())
@@ -97,7 +97,7 @@ func deserialize(data: Dictionary) -> void:
 			_remove_icon(icon)
 
 	_icons = []
-	for d in data.icons:
+	for d: Dictionary in data.icons:
 		var output: MapIcon = MapIcon.new(d.shape, ElementManager.elements[d.element], d.size)
 		output.set_deferred("position", d.position)
 		_place_icon(output)

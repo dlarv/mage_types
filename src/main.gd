@@ -1,6 +1,6 @@
 extends Node
 
-func main():
+func main() -> void:
 	# ElementManager
-	var e = ElementManager.elements
+	var e := ElementManager.elements
 	print(e)

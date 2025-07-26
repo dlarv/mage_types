@@ -9,7 +9,7 @@ extends Node3D
 	set(val):
 		wire_thickness = val
 		var i := 0
-		for vertex in $Path/Body.polygon:
+		for vertex: Vector3 in $Path/Body.polygon:
 			if vertex.x != 0:
 				$Path/Body.polygon[i].x = val
 			if vertex.y != 0:

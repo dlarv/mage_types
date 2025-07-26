@@ -14,23 +14,23 @@ func setup(target: BattleActor, attack: _BattleAction, pos3D: Vector3) -> void:
 	var attackElement := attack.element
 	_pos3D = pos3D
 
-	var result1 = ElementManager.get_matchup(target.element2, attackElement)
+	var result1 := ElementManager.get_matchup(target.element2, attackElement)
 	attack_element_1.set_element(target.element2)
 	attack_element_2.set_element(attackElement)
 	attack_element_3.set_element(result1)
 
-	var result2 = ElementManager.get_matchup(target.element1, result1)
+	var result2 := ElementManager.get_matchup(target.element1, result1)
 	internal_element_1.set_element(target.element1)
 	internal_element_2.set_element(result1)
 	internal_element_3.set_element(result2)
 
 
-func activate():
+func activate() -> void:
 	is_active = true
 	show()
 
 
-func deactivate():
+func deactivate() -> void:
 	is_active = false
 	hide()
 

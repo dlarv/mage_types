@@ -39,7 +39,7 @@ var evasion: float:
 	get: return _get_value(_base_evasion, _evasion_mod)
 
 func _get_value(base: float, mod1: float) -> float:
-	var output = base * clampf(mod1, MIN_MOD, MAX_MOD)
+	var output := base * clampf(mod1, MIN_MOD, MAX_MOD)
 	# Output==0. its not a direct comparison b/c of float nonsense.
 	if 1 / output == INF:
 		output = 0.1
@@ -55,7 +55,7 @@ func get_stat(stat: Stats) -> float:
 		Stats.EVASION: return evasion
 		_: return -1
 
-func set_base_stat(stat: Stats, val: float):
+func set_base_stat(stat: Stats, val: float) -> void:
 	match stat:
 		Stats.MELEE_ATTACK: 
 			_base_melee_attack = val

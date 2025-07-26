@@ -1,4 +1,5 @@
 extends Control
+@warning_ignore_start("untyped_declaration")
 
 const GolemInstructionButton := preload("components/golem_instruction_button.tscn")
 

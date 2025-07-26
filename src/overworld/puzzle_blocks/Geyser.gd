@@ -54,7 +54,7 @@ var is_blocking: bool:
 var _players: Array[Node3D]
 var _in_top_hitbox := false
 
-func _enter_tree():
+func _enter_tree() -> void:
 	super._enter_tree()
 	body_hitbox.shape = BoxShape3D.new()
 	body_hitbox.shape.size = Vector3(.8, size, .8)
@@ -148,7 +148,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 
 
 # Override
-func set_stasis(val=null) -> void:
+func set_stasis(val: Variant=null) -> void:
 	super.set_stasis(val)
 	if not is_on: return
 	if in_stasis:

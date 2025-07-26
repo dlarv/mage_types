@@ -34,7 +34,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	else:
 		display_battle_item(item)
 
-func display_regular_item(item: Item, quantity: int) -> void:
+func display_regular_item(item: _Item, quantity: int) -> void:
 	id_label.show()
 	id_label.text = "#%d" % item.id
 	name_label.text = "%s (x%d)" % [ item.name, quantity ]
@@ -82,7 +82,7 @@ func display_battle_item(item: BattleItem) -> void:
 
 	details_label.append_text(item.details)
 	details_label.newline()
-	_format_attack_effects(item.effects, details_label)
+	_format_attack_effects(item.effects as Array[_BaseEffectSlot], details_label)
 
 	_format_requirement(item.requirements)
 
@@ -128,7 +128,7 @@ func _format_requirement(reqs: Array[ItemRequirement]) -> void:
 			else:
 				req_label.append_text("User must know all of the following spells:")
 
-			for attack in req.attacks:
+			for attack: Attack in req.attacks:
 				req_label.push_list(1, RichTextLabel.ListType.LIST_DOTS, true)
 				req_label.push_meta(attack)
 				req_label.append_text(attack.name)

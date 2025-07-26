@@ -14,7 +14,8 @@ var _element_w := ElementManager.Blank
 func _enter_tree() -> void:
 	$SubEmitter.stop()
 
-func set_stasis(val=null) -> void:
+#override
+func set_stasis(val:Variant=null) -> void:
 	await super.set_stasis(val)
 	if in_stasis:
 		$SubEmitter.stop()

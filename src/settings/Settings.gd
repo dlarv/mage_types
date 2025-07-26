@@ -1,8 +1,8 @@
 extends Node
 
-signal debug_mode_toggled(debugOn)
-signal random_seed_changed(seedValue)
-signal player_name_changed(name)
+signal debug_mode_toggled(debugOn: bool)
+signal random_seed_changed(seedValue: float)
+signal player_name_changed(name: String)
 
 const SAVE_ROOT_DIR := "user://games"
 

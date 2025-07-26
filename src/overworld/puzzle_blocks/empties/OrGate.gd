@@ -2,7 +2,7 @@
 extends PuzzleBlock
 
 @export var locks: Array[PuzzleBlock]
-var _opened_locks := {}
+var _opened_locks: Dictionary[PuzzleBlock, bool] = {}
 
 func _ready() -> void:
 	for lock in locks:
@@ -15,7 +15,7 @@ func _ready() -> void:
 func _on_lock_closed(lock: PuzzleBlock) -> void:
 	_opened_locks[lock] = false
 
-	for opened in _opened_locks.values():
+	for opened: bool in _opened_locks.values():
 		if opened:
 			_try_emit_on()
 			return

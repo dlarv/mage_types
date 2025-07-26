@@ -1,3 +1,4 @@
+@tool
 extends "res://src/overworld/characters/Npc.gd"
 
 @export var ball: PackedScene
@@ -33,13 +34,13 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		return
 	if $NavigationAgent3D.is_target_reachable():
 		$NavigationAgent3D.set_target_position(_player.global_position)
-		var nextPosition = $NavigationAgent3D.get_next_path_position()
+		var nextPosition: Vector3 = $NavigationAgent3D.get_next_path_position()
 		state.linear_velocity = global_position.direction_to(nextPosition) * speed
 
 
 func _add_new_gradient_sprite(actor: BattleActor) -> void:
 	_spheres += 1
-	var mesh = ball.instantiate()
+	var mesh := ball.instantiate()
 	mesh.setup(actor)
 
 	mesh.position.y = 1 * _spheres
@@ -51,12 +52,12 @@ func react(e: ElementalType, randVal:=-2) -> bool:
 	if randVal == _rand_val: return false
 	_rand_val = randVal
 
-	for actor in $EnemyActor.team:
-		var e1 = ElementManager.get_matchup(actor.element1, e)
+	for actor: BattleActor in $EnemyActor.team:
+		var e1 := ElementManager.get_matchup(actor.element1, e)
 		if e1:
 			actor.set_element(0, e1)
 
-		var e2 = ElementManager.get_matchup(actor.element2, e)
+		var e2 := ElementManager.get_matchup(actor.element2, e)
 		if e2:
 			actor.set_element(1, e2)
 

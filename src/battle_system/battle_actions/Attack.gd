@@ -30,7 +30,7 @@ class_name Attack
 
 # override
 func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
-	var msg := [super.apply_effects(user, targets).msg]
+	var msg: Array[String] = [super.apply_effects(user, targets).msg]
 	if user.alignment_manager:
 		user.alignment_manager.append_unnormalized(element, 1, AlignmentManager.Type.ATTACK)
 
@@ -54,8 +54,8 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
 	var delayedEffects := []
-	for i in range(len(targets)):
-		var target = targets[i]
+	for i in len(targets):
+		var target := targets[i]
 		var didDmg := false
 
 		for effect in effects:
@@ -67,10 +67,10 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 				continue
 
 			didDmg = true
-			var msg2 = effect.apply_effect(user, target, self, affinity)
+			var msg2 := effect.apply_effect(user, target, self, affinity)
 
 			# Get equipment effect logs, etc.
-			var msg3 = target.get_and_flush_msgs()
+			var msg3 := target.get_and_flush_msgs()
 			if len(msg3) > 0:
 				msg.append_array(msg3)
 
@@ -84,12 +84,12 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 					msg.append("........%s was defeated." % target.name)
 					continue
 		
-	for effect in delayedEffects:
+	for effect: StatusEffect in delayedEffects:
 		var didDmg := true
-		var msg2 = effect.apply_effect(user, user, self, affinity)
+		var msg2 := effect.apply_effect(user, user, self, affinity)
 
 		# Get equipment effect logs, etc.
-		var msg3 = user.get_and_flush_msgs()
+		var msg3 := user.get_and_flush_msgs()
 		if len(msg3) > 0:
 			msg.append_array(msg3)
 
@@ -103,7 +103,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 		msg.append("%s" % msg2)
 
 
-	return { "msg": "\n".join(msg) }
+	return { "msg": msg }
 
 
 # override

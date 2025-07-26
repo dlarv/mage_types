@@ -17,7 +17,7 @@ var _attack: Attack = Attack.new()
 var _row: Row = null
 var _output_path := ""
 
-func _enter_tree():
+func _enter_tree() -> void:
 	_animation_option_button.clear()
 	animations = []
 
@@ -34,7 +34,7 @@ func _enter_tree():
 	default_attack()
 
 
-func _exit_tree():
+func _exit_tree() -> void:
 	_animation_option_button.clear()
 
 
@@ -93,11 +93,11 @@ func _on_name_submitted(newText:String) -> void:
 
 
 func _on_effect_builder_effect_created(effect:EffectSlot) -> void:
-	var effectButton = EffectSlotButton.instantiate()
+	var effectButton := EffectSlotButton.instantiate()
 	effectButton.create(effect)
 	effects_scroller.add_child(effectButton)
 
-	effectButton.delete_button_pressed.connect(func(): 
+	effectButton.delete_button_pressed.connect(func() -> void: 
 		effectButton.queue_free())
 
 

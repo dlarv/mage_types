@@ -5,7 +5,7 @@ extends PuzzleBlock
 @export var locks: Array[PuzzleBlock]
 
 var _is_locked := true
-var _opened_locks := {}
+var _opened_locks: Dictionary[PuzzleBlock, bool] = {}
 
 func _ready() -> void:
 	super._ready()
@@ -33,7 +33,7 @@ func _on_lock_opened(lock: PuzzleBlock) -> bool:
 	else:
 		return false
 
-	for val in _opened_locks.values():
+	for val: bool in _opened_locks.values():
 		if not val: return false
 	_is_locked = false
 	on.emit(self)

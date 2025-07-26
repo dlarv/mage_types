@@ -56,8 +56,8 @@ func _get_action(user: BattleActor, targets: Array[BattleActor]) -> ActorAction:
 		Logger.append_battle_ai_log("\n\nEVALUATING ACTION(%s)" % action.name)
 
 		# If attack is melee, calculate user's transmutations.
-		var e0 = ElementManager.get_matchup(user.element2, action.element)
-		var e1 = ElementManager.get_matchup(user.element1, e0)
+		var e0 := ElementManager.get_matchup(user.element2, action.element)
+		var e1 := ElementManager.get_matchup(user.element1, e0)
 		_pref = int(e0 == transmutation_pref) + int(e1 == transmutation_pref)
 		_user_transmutation_count = int(e0 != null) + int(e1 != null)
 
@@ -134,7 +134,7 @@ func _evaluate_target(user: BattleActor, target: BattleActor, action: _BattleAct
 	Logger.append_battle_ai_log("TotalTransmutations(%.2f) = Target(%d) + User(%d) + Pref(%.2f)." 
 			% [currTransCount + _user_transmutation_count + _pref, currTransCount, _user_transmutation_count, _pref])
 	currTransCount += _user_transmutation_count + _pref
-	var tCount = currTransCount * transmutation_bias
+	var tCount := currTransCount * transmutation_bias
 	Logger.append_battle_ai_log("TransmutationCount(%.2f) = Count(%.2f) * T_Bias(%.2f)" 
 			% [tCount, currTransCount, transmutation_bias])
 
@@ -144,7 +144,7 @@ func _evaluate_target(user: BattleActor, target: BattleActor, action: _BattleAct
 	var currDmg: int = potential[0]
 
 	# Check potential phobia damage.
-	var phobiaDmg = int(target.has_phobia(e2))
+	var phobiaDmg := int(target.has_phobia(e2))
 	phobiaDmg += int(target.has_phobia(e3))
 
 	Logger.append_battle_ai_log("TotalDmg(%.2f) = BaseDmg(%.2f) + PhobiaDmg(%.2f)" 
@@ -219,7 +219,7 @@ func _evaluate_all(user: BattleActor, enemies: Array[BattleActor], action: _Batt
 	var maxVal := 0.0
 	var maxTarget: BattleActor = enemies[0]
 
-	for target in enemies + team:
+	for target: BattleActor in enemies + team:
 		if target.is_defeated: continue
 
 		maxVal += _evaluate_target(user, target, action, target in team)
@@ -233,7 +233,7 @@ func _evaluate_random(user: BattleActor, enemies: Array[BattleActor], action: _B
 	var maxVal := 0.0
 	var maxTarget: BattleActor = enemies[0]
 
-	for target in enemies + team:
+	for target: BattleActor in enemies + team:
 		if target.is_defeated: continue
 
 		maxVal += _evaluate_target(user, target, action, target in team)
@@ -245,7 +245,7 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 	var setupPotential := 0.0
 	var dmg := 0
 
-	for effect in action.effects:
+	for effect: _BaseEffectSlot in action.effects:
 		var slot: EffectSlot = effect.get_effect_slot(user, target, action, 1.0)
 		var isFriendly: bool = action.target == _BattleAction.TargetType.SELF \
 				or action.target == _BattleAction.TargetType.ALLY \

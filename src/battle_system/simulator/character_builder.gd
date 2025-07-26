@@ -1,4 +1,5 @@
 extends Control
+@warning_ignore_start("untyped_declaration")
 
 signal setup_finished(team1: Array[BattleActor], items: Array[RegularItem], team2: Array[BattleActor], ai: OpponentController)
 
@@ -24,15 +25,15 @@ var _characters := []
 var _items := []
 var ai: OpponentController
 
-func _ready():
+func _ready() -> void:
 	_button_group = ButtonGroup.new()
 	_button_group.pressed.connect(_on_character_selected)
 
-	character_creator.alert.connect(func(msg):
+	character_creator.alert.connect(func(msg: String) -> void:
 		alert_popup.get_label().text = msg
 		alert_popup.show())
 
-	character_creator.open_file.connect(func(path):
+	character_creator.open_file.connect(func(path: String) -> void:
 		file_popup.set_current_dir(path)
 		file_popup.popup())
 
@@ -40,8 +41,8 @@ func _ready():
 	load_default_teams()
 	print("teams loaded")
 
-func load_default_teams():
-	var actor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tres")
+func load_default_teams() -> void:
+	var actor: BattleActor = ResourceLoader.load("res://data/battle_system/battle_actors/basic_battle_actor.tres")
 	_on_character_created(actor)
 	character_scroller.get_child(0).set_team_index(1)
 
@@ -52,29 +53,29 @@ func load_default_teams():
 	actor = ResourceLoader.load("res://data/battle_system/battle_actors/clown.tres")
 	_on_character_created(actor)
 
-func _unhandled_input(input):
+func _unhandled_input(input: InputEvent) -> void:
 	if visible && input.is_action_pressed("ui_accept"):
 		_on_start_battle_button_pressed()
 
 
-func _on_remove_character_button_pressed(child: Control, index: int):
+func _on_remove_character_button_pressed(child: Control, index: int) -> void:
 	character_scroller.remove_child(child)
 	_characters.remove_at(index)
 	
 	if _displayed_character == child:
 		character_display.clear()
 
-func _on_create_item_button_pressed():
-	var item_name = item_name_input.text
+func _on_create_item_button_pressed() -> void:
+	var item_name := item_name_input.text
 	if item_name.is_empty(): 
-		alert_popup.get_label().text = "Item must be given a name."
+		alert_popup.get_label().text = "_Item must be given a name."
 		alert_popup.show()
 		return
 
-	var item = BattleItem.create(item_name, _item_description)
+	var item := BattleItem.create(item_name, _item_description)
 	_items.append(item)
 
-func _on_character_selected(button: Button):
+func _on_character_selected(button: Button) -> void:
 	var control = button.get_parent().get_parent()
 	var character = control.character
 	character_display.display(character)

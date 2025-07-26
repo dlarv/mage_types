@@ -1,7 +1,7 @@
 extends VBoxContainer
+@warning_ignore_start("untyped_declaration")
 
 signal attack_created(attack)
-signal alert(msg: String)
 signal open_file(path: String)
 
 @export var AttackListItem: PackedScene

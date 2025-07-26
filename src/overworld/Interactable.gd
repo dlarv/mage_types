@@ -18,7 +18,7 @@ var force := false
 var player: Node3D
 var _label: Label
 
-func _enter_tree():
+func _enter_tree() -> void:
 	disabled = not visible
 	# Interaction prompt
 	_label = get_node("Label")
@@ -33,8 +33,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_released("interact"):
 		interacted.emit(self)
-		# get_viewport().set_input_as_handled()
-		var n = name
+		var n: String = name
 		if "puzzle_name" in get_parent():
 			n = get_parent().puzzle_name
 		Logger.append_puzzle_log("Player used Interactable(%s)." % n)

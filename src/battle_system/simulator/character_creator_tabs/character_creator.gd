@@ -1,8 +1,9 @@
 extends MarginContainer
+@warning_ignore_start("untyped_declaration")
 
 signal open_file(path: String)
 signal alert(msg: String)
-signal character_created(actor)
+signal character_created(actor: BattleActor)
 
 @export var CharacterListItem: PackedScene
 

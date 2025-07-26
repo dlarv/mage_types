@@ -17,7 +17,7 @@ var element: ElementalType = ElementManager.Blank:
 			value = ElementManager.Blank
 		element = value 
 
-var disabled:
+var disabled: bool:
 	set(val):
 		$Button.disabled = val
 	get:

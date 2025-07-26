@@ -40,7 +40,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	await $SubEmitter.set_element(e)
 	return true
 
-func set_stasis(val=null) -> void:
+func set_stasis(val:Variant=null) -> void:
 	await super.set_stasis(val)
 	if in_stasis:
 		stop()

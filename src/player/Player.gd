@@ -3,8 +3,8 @@ class_name Player
 
 signal actor_changed(actor: BattleActor)
 signal team_changed(team: Array[BattleActor])
-signal battle_started(allies, enemies)
-signal dialog_started(dialog_id, npc)
+signal battle_started(allies: Array[BattleActor], enemies: Array[BattleActor])
+signal dialog_started(dialog_id: String, npc: Variant)
 signal cutscene_started(player: AnimationPlayer, id: String)
 
 @export var battle_actor: BattleActor:
@@ -31,7 +31,7 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export var anim_player: AnimationPlayer
 
 
-var player_name: 
+var player_name: String: 
 	get:
 		return battle_actor.name
 	set(val):
@@ -45,7 +45,7 @@ func _ready() -> void:
 		team.insert(0, battle_actor)
 	
 	player_name = Settings.player_name
-	Settings.player_name_changed.connect(func(name):
+	Settings.player_name_changed.connect(func(name: String) -> void:
 		player_name = name)
 
 	if Settings.play_test_mode:
@@ -63,7 +63,7 @@ func open_shop(npc: Variant) -> void:
 
 
 func start_dialog(npc: Variant) -> void:
-	var id = npc.get_next_dialog_id()
+	var id: String = npc.get_next_dialog_id()
 	if len(id) == 0: return
 	dialog_started.emit(id, npc)
 
@@ -115,7 +115,7 @@ func serialize() -> Dictionary:
 	}
 
 
-func deserialize(data: Dictionary):
+func deserialize(data: Dictionary) -> void:
 	if "position" in data:
 		global_position = data["position"]
 	if "rotation" in data:

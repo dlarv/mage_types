@@ -10,7 +10,7 @@ func next_screen() -> void:
 
 #virtual
 func prev_screen() -> void: 
-	var index = (current_tab - 1)
+	var index := (current_tab - 1)
 	if index < 0:
 		index = get_tab_count() - 1
 	current_tab = index

@@ -48,20 +48,20 @@ var _original_element: ElementalType = null
 # This will prevent the object from strobing when hit by a laser.
 var _rand_val: int
 
-func _enter_tree():
+func _enter_tree() -> void:
 	if _original_element == null:
 		_original_element = element
 	flicker_collider()
 
 
-func _ready():
+func _ready() -> void:
 	_material = StandardMaterial3D.new()
 	puzzle_name = "%s.%s" % [get_parent().name, name]
 	spawn_position = global_position
 
 
-# color: Color | null
-func _try_set_color(color=null) -> bool:
+## color: Color | null
+func _try_set_color(color:Variant=null) -> bool:
 	if not _material: return false
 	if not element: return false
 	if color == null:
@@ -102,7 +102,8 @@ func react(e: ElementalType, randVal:=-2) -> bool:
 	return await set_element(res, randVal)
 
 	
-func set_stasis(val=null) -> void:
+## val: bool | null
+func set_stasis(val:Variant=null) -> void:
 	if val == null:
 		in_stasis = not in_stasis
 	else:
@@ -184,10 +185,10 @@ func flicker_collider() -> void:
 
 
 func _set_size() -> void:
-	var mesh = $MeshInstance3D.mesh
-	var shape = $CollisionShape3D.shape
+	var mesh: Mesh = $MeshInstance3D.mesh
+	var shape: Shape3D = $CollisionShape3D.shape
 
-	if shape is CylinderMesh:
+	if mesh is CylinderMesh:
 		mesh.top_radius = base_size.x * scaling_factor.x
 		mesh.bottom_radius = base_size.x * scaling_factor.x
 		mesh.height = base_size.z * scaling_factor.z

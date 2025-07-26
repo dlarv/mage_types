@@ -37,7 +37,7 @@ func serialize() -> Dictionary:
 	
 	# Skip legend panel as it was already serialized.
 	var data := {}
-	for child in get_children().slice(1):
+	for child: Node in get_children().slice(1):
 		if child is PopupPanel: continue
 		# All maps are first/only grandchildren of this node.
 		data[child.name] = child.get_child(0).serialize()
@@ -58,7 +58,7 @@ func deserialize(data: Dictionary) -> void:
 	tooltips = data.tooltips
 
 	# Deserialize maps.
-	for child in get_children().slice(1):
+	for child: Node in get_children().slice(1):
 		if child.name in data.data:
 			child.get_child(0).deserialize(data.data[child.name])
 		else:

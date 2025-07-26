@@ -3,7 +3,7 @@ class_name ScriptedOpponent
 ## Cycles through each of its actors movesets.
 ## Targets are randomly selected.
 
-var indices := []
+var indices: Array[int] = []
 
 func setup(team: Array[BattleActor]) -> void:
 	super.setup(team)
@@ -14,15 +14,15 @@ func setup(team: Array[BattleActor]) -> void:
 
 func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 	var actions := []
-	var i = -1
+	var i := -1
 	for actor in team:
 		i += 1
 
 		indices[i] += 1
 		indices[i] %= len(actor.attacks)
-		var index = indices[i]
+		var index := indices[i]
 
-		var attack = actor.attacks[index]
+		var attack := actor.attacks[index]
 		actions.append(ActorAction.new(actor, attack, [ otherTeam.pick_random() ], TEAM_INDEX))
 		actor.action_selected.emit(attack)
 	

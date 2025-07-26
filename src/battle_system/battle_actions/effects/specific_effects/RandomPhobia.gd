@@ -7,17 +7,17 @@ class_name RandomPhobia
 
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
 	var msg := []
-	var count = randi_range(min_count, max_count)
-	var indices := range(0, 8)
+	var count := randi_range(min_count, max_count)
+	var indices: Array[int] = range(0, 8)
 	indices.shuffle()
 
 	# Ensure no repeat effects.
-	for i in range(count):
-		var index = indices.pop_back()
+	for i in count:
+		var index: int = indices.pop_back()
 
 		# Create effect.
-		var e = ElementManager.elements[index]
-		var phobia = PhobiaEffect.new()
+		var e := ElementManager.elements[index]
+		var phobia := PhobiaEffect.new()
 		phobia.element = e
 
 		# Apply effect.
@@ -29,9 +29,9 @@ func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAc
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	var output := 0.0
 
-	var count = randi_range(min_count, max_count)
+	var count := randi_range(min_count, max_count)
 	for i in range(count):
-		var phobia = PhobiaEffect.new()
+		var phobia := PhobiaEffect.new()
 		output += phobia.get_setup_potential(user, target, isFriendly, 0)
 
 	return output

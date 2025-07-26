@@ -3,7 +3,7 @@ extends Menu
 @export var _debug_mode_toggle: CheckBox
 @export var _transmutation_hint_toggle: CheckBox
 
-func _ready():
+func _ready() -> void:
 	_debug_mode_toggle.set_pressed_no_signal(Settings.debug_mode)
 	_transmutation_hint_toggle.set_pressed_no_signal(Settings.enable_transmutation_hints)
 

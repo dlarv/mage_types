@@ -27,9 +27,9 @@ func _ready() -> void:
 			for child in reset.get_parent().find_children("", "MagiClay", true):
 				reset.magiclay_reset.connect(child.reset)
 
-	var children = chunk.get_children()
+	var children := chunk.get_children()
 	while len(children) > 0:
-		var child = children.pop_back()
+		var child: Node = children.pop_back()
 
 		if is_in_group("persist"): 
 			if child.has_method("serialize"):
@@ -72,7 +72,7 @@ func serialize() -> Dictionary:
 		"visible": visible,
 	}
 
-	for key in _persistent_objs.keys():
+	for key: String in _persistent_objs.keys():
 		if _persistent_objs[key] is Golem:
 			pass
 		data[key] = _persistent_objs[key].serialize()
@@ -83,7 +83,7 @@ func deserialize(data: Dictionary) -> void:
 	if not is_node_ready():
 		await ready
 	visible = data.visible
-	for key in data.keys():
+	for key: String in data.keys():
 		if key is String and (key == "path" or key == "visible"): continue
 		if "is_golem" in data[key] and not key in _persistent_objs:
 			add_golem(Golem.create())

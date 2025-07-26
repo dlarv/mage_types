@@ -1,8 +1,6 @@
 extends RichTextLabel 
 class_name MessageBox 
 
-signal message_cleared()
-
 @export var button: Button 
 
 func _ready() -> void:

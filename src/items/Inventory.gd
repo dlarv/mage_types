@@ -10,7 +10,7 @@ signal overworld_spell_enabled(id: OverworldSpell.Spells, isEnabled: bool)
 
 @export var money: int = 0
 
-@export_category("Item Arrays")
+@export_category("_Item Arrays")
 var _battle_items: Array[RegularItem]
 @export var regular_items: Array[ItemSlot]:
 	set(vals):
@@ -19,7 +19,7 @@ var _battle_items: Array[RegularItem]
 		for item in vals:
 			if "battle_item" in item.item and item.item.battle_item != null:
 				_battle_items.append(item.item)
-				item.item.battle_item.item_consumed.connect(func():
+				item.item.battle_item.item_consumed.connect(func() -> void:
 					item.quantity -= 1
 					quantity_changed.emit(item))
 		_reorder_item_array(regular_items)
@@ -36,13 +36,16 @@ var _battle_items: Array[RegularItem]
 @export var key_items: Array[ItemSlot]:
 	set(vals):
 		key_items = vals
-		key_items.sort_custom(func(a, b): 
+		key_items.sort_custom(func(a: ItemSlot, b: ItemSlot) -> bool:
 			a.item.id = a.item.unique_id
 			b.item.id = b.item.unique_id
-			return a.item.unique_id < b.item.unique_id)
+			return a.item.unique_id < b.item.unique_id
+		)
 @export var recalc_ids_k: bool:
 	set(val):
-		key_items.sort_custom(func(a, b): return a.item.unique_id < b.item.unique_id)
+		key_items.sort_custom(func(a: ItemSlot, b: ItemSlot) -> bool: 
+			return a.item.unique_id < b.item.unique_id
+		)
 @export var equipment: Array[ItemSlot]:
 	set(vals):
 		equipment = vals
@@ -50,7 +53,7 @@ var _battle_items: Array[RegularItem]
 @export var recalc_ids_e: bool:
 	set(val):
 		_reorder_item_array(equipment)
-@export var _add_item: Item:
+@export var _add_item: _Item:
 	set(item):
 		var list: Array
 		if item is RegularItem:
@@ -127,7 +130,7 @@ func get_battle_items() -> Array[RegularItem]:
 	return _battle_items
 
 
-func add(item: Item, amount:=1) -> void:
+func add(item: _Item, amount:=1) -> void:
 	if amount < 0:
 		remove(item, -amount)
 		return
@@ -167,7 +170,7 @@ func add_spell(spell: Attack) -> void:
 
 
 func add_key_item(item: KeyItem, amount:=1) -> void:
-	var overworldSpell = -1
+	var overworldSpell := -1
 	match item.unique_id:
 		KeyItem.UniqueId.STASIS:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.STASIS, true)
@@ -205,13 +208,13 @@ func add_key_item(item: KeyItem, amount:=1) -> void:
 		quantity_changed.emit(slot)
 
 
-func remove(item: Item, amount:=1) -> ItemSlot:
+func remove(item: _Item, amount:=1) -> ItemSlot:
 	if amount < 0:
 		remove(item, -amount)
 		return
 	if item.id == -1: return null
 
-	var list := []
+	var list: Array[ItemSlot] = []
 	if item is SpellScroll:
 		list = spell_scrolls
 	elif item is RegularItem:
@@ -224,7 +227,7 @@ func remove(item: Item, amount:=1) -> ItemSlot:
 
 	if item.id >= len(list): return null
 
-	var slot = list[item.id]
+	var slot := list[item.id]
 	if slot.quantity == 0: return null
 	slot.quantity -= amount
 	quantity_changed.emit(slot)
@@ -248,7 +251,7 @@ func has_key_item(id: KeyItem.UniqueId) -> bool:
 	return key_items[id].quantity > 0
 
 
-func get_item(item: Item) -> ItemSlot:
+func get_item(item: _Item) -> ItemSlot:
 	if item.id == -1: return null
 
 	var list := []
@@ -297,7 +300,7 @@ func _add_items_from_dir(path: String) -> void:
 		while len(file) > 0 and root != null:
 			if root.file_exists(file) and file.ends_with(".tres"):
 				var item := load(path + file)
-				if item is Item: 
+				if item is _Item: 
 					_add_item = item
 
 			elif root.dir_exists(file):
@@ -306,7 +309,7 @@ func _add_items_from_dir(path: String) -> void:
 			file = root.get_next()
 
 
-func _reorder_item_array(list: Array) -> void:
+func _reorder_item_array(list: Array[ItemSlot]) -> void:
 	var i := 0
 	for item in list:
 		item.item.id = i
@@ -347,7 +350,7 @@ func serialize() -> Dictionary:
 
 func deserialize(data: Dictionary) -> void:
 	var top := 0
-	var list = data["regular_items"]
+	var list: Array = data["regular_items"]
 	for item in regular_items:
 		if len(list) > top and item.id == list[top].x:
 			item.quantity = list[top].y
@@ -369,7 +372,7 @@ func deserialize(data: Dictionary) -> void:
 	top = 0
 	list = data["equipment"]
 	for item in equipment:
-		var id = item.id
+		var id := item.id
 		if len(list) > top and item.id == list[top].x:
 			item.quantity = list[top].y
 			top += 1

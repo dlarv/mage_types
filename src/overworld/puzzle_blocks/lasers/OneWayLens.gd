@@ -1,3 +1,4 @@
+@tool
 extends PuzzleBlock
 
 var _prev_val := -1
@@ -29,10 +30,11 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 	$SubEmitter.start()
 
 
-func set_stasis(val=null) -> void:
+#override
+func set_stasis(val:Variant=null) -> void:
 	super.set_stasis(val)
-	
 	$SubEmitter.pause(in_stasis)
+
 
 func flicker_collider() -> void:
 	var val := collision_layer
@@ -57,7 +59,7 @@ func create_log(body: MagiClay, e: ElementalType) -> void:
 func _on_laser_dropped() -> void:
 	_is_emitting = false
 	$SubEmitter.stop()
-	var e = $SubEmitter.laser.element.name if $SubEmitter != null else "null"
+	var e: String = $SubEmitter.laser.element.name if $SubEmitter != null else "null"
 	Logger.append_puzzle_log("OneWayLens(%s) stopped emitting laser of Element(%s)."
 			% [puzzle_name, e])
 

@@ -2,7 +2,7 @@ extends PanelContainer
 
 const BASE_MAX_QUANTITY: int = 9999
 
-signal item_bought(item: Item, quantity: int)
+signal item_bought(item: _Item, quantity: int)
 
 @export var quantity_display: LineEdit
 @export var info_display: InfoDisplay
@@ -10,7 +10,7 @@ signal item_bought(item: Item, quantity: int)
 var _available_funds := 0
 var _max_quantity := BASE_MAX_QUANTITY
 var _current_quantity := 0
-var _current_item: Item = null
+var _current_item: _Item = null
 
 
 func display(item: VendorItem) -> void:
@@ -20,7 +20,7 @@ func display(item: VendorItem) -> void:
 	quantity_display.text = ""
 
 	var quantityLimit: int
-	var slot = Inventory.get_item(item.item)
+	var slot := Inventory.get_item(item.item)
 	if item.item is RegularItem:
 		quantityLimit = min(BASE_MAX_QUANTITY, slot.max_quantity - slot.quantity)
 	else:

@@ -6,12 +6,12 @@ signal battle_setup_completed
 @warning_ignore("unused_signal")
 signal turn_ended()
 signal was_just_defeated()
-signal status_effect_added(effect)
-signal status_effects_removed(effect)
-signal damage_applied(current_hp)
-signal element_changed(id, element)
-signal spell_learned(spell, index)
-signal equipment_equipped(equipment)
+signal status_effect_added(effect: StatusEffect)
+signal status_effects_removed(effect: StatusEffect)
+signal damage_applied(current_hp: float)
+signal element_changed(id: int, element: ElementalType)
+signal spell_learned(spell: _BattleAction, index: int)
+signal equipment_equipped(equipment: Equipment)
 ## Called when opponents choose their action during battle.
 @warning_ignore("unused_signal")
 signal action_selected(action: _BattleAction)
@@ -122,15 +122,15 @@ func set_element(id: int, element: ElementalType) -> void:
 	if alignment_manager:
 		alignment_manager.append_unnormalized(element, 1, AlignmentManager.Type.TRANSMUTATION)
 
-	var mod
-	var dmg = 0
-	var effect = statuses.check_phobic(element)
+	var mod: float
+	var dmg := 0.0
+	var effect := statuses.check_phobic(element)
 	if effect != null:
 		dmg = hp * effect.strength
 		_msgs.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 	if dmg != 0:
-		apply_damage(dmg, false)
+		apply_damage(int(dmg), false)
 
 func get_element(id: int) -> ElementalType:
 	if id == 0:
@@ -144,7 +144,7 @@ func is_element(element: ElementalType) -> bool:
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
 func learn_spell(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
 	if scroll == null:
-		var attack = attacks[index]
+		var attack := attacks[index]
 		if attack:
 			Inventory.add_spell(attack)
 		attacks.remove_at(index)
@@ -211,12 +211,12 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 	if _func_overrides.has(apply_damage.get_method()):
 		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking, self)
 
-	var blocking = null
+	var blocking: StatusEffect = null
 	if dmg > 0 and allowBlocking:
 		blocking = statuses.blocking
 
 	if blocking:
-		dmg *= 1 - blocking.strength
+		dmg = int(float(dmg) * (1.0 - blocking.strength))
 		if statuses.remove_blocking():
 			status_effects_removed.emit([blocking])
 
@@ -272,9 +272,9 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 		_func_overrides.get(resolve_end_of_turn.get_method()).call(allies, opponents)
 		return 
 	# Calc poison and healing.
-	var mod = 0
-	var poison = statuses.poison
-	var healing = statuses.healing
+	var mod := 0.0
+	var poison := statuses.poison
+	var healing := statuses.healing
 
 	if poison > 0:
 		mod += poison
@@ -282,11 +282,13 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 	if healing > 0:
 		mod -= healing
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
-	apply_damage(hp * mod, false)
+	apply_damage(int(hp * mod), false)
 
-	var effects = statuses.calculate_expirations()
+	var effects := statuses.calculate_expirations()
 	if len(effects) > 0:
-		_msgs.append("Status effects wore off! (%s)" % effects.map(func(x): return x.name))
+		_msgs.append("Status effects wore off! (%s)" % effects.map(func(x: StatusEffect) -> String: 
+			return x.name)
+		)
 	status_effects_removed.emit(effects)
 
 
@@ -369,10 +371,10 @@ func deserialize(data: Dictionary) -> void:
 		_element2 = data["element2"]
 	if "attacks" in data:
 		attacks = []
-		for d in data["attacks"]:
+		for d: String in data["attacks"]:
 			attacks.append(ResourceLoader.load(d))
 	if "equipment" in data:
-		var d = data["equipment"]
+		var d: String = data["equipment"]
 		if not d.is_empty():
 			equipment = ResourceLoader.load(d)
 		else:

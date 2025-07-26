@@ -1,5 +1,6 @@
 extends RigidBody3D
 class_name PhysicsPlayer
+@warning_ignore_start("untyped_declaration")
 
 signal battle_started(allies, enemies)
 signal dialog_started(dialog_id, npc)

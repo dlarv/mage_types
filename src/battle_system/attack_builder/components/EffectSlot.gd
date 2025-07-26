@@ -20,7 +20,7 @@ signal delete_button_pressed()
 
 var _effect: EffectSlot
 
-func create(effect: _BaseEffectSlot):
+func create(effect: _BaseEffectSlot) -> void:
 	if not effect is EffectSlot: return
 
 	_effect = effect
@@ -64,7 +64,7 @@ func get_effect() -> EffectSlot:
 	return _effect
 
 
-func _on_delete_button_pressed():
+func _on_delete_button_pressed() -> void:
 	delete_button_pressed.emit()
 
 

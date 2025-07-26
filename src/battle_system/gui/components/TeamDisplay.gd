@@ -2,17 +2,17 @@
 extends Node3D
 class_name TeamDisplay 
 
-signal selected(actor)
-signal status_effect_icon_pressed(effect)
+signal selected(actor: BattleActor)
+signal status_effect_icon_pressed(effect: StatusEffect)
 
-@export var BattleSprite: PackedScene
-@export var display_prefab: PackedScene 
+const _BattleSprite := preload("res://src/battle_system/gui/components/BattleSprite.gd")
+const BattleSprite := preload("res://src/battle_system/gui/components/battle_sprite.tscn")
+const _BattleActorDisplay := preload("res://src/battle_system/gui/components/BattleActorDisplay.gd")
+const BattleActorDisplay := preload("res://src/battle_system/gui/components/battle_actor_display.tscn")
 
-# BattleActorDisplay[]
-var displays := []
-# BattleSprite[]
-var sprites := []
-var actors := {}
+var displays: Array[_BattleActorDisplay] = []
+var sprites: Array[_BattleSprite] = []
+var actors: Dictionary[BattleActor, TeamDisplayActor] = {}
 
 var _highlighted_actor_index: int = 0
 var _allow_selecting_targets := false
@@ -48,7 +48,7 @@ func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
 	headEnemy.set_opposite(headAlly)
 
 	var prev := headAlly
-	for ally in allies.slice(1):
+	for ally: BattleActor in allies.slice(1):
 		var disp := add_display(ally, true)
 		disp.set_opposite(headEnemy)
 		disp.set_prev(prev)
@@ -59,7 +59,7 @@ func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
 	headAlly.set_prev(prev.next)
 
 	prev = headEnemy
-	for enemy in enemies.slice(1):
+	for enemy: BattleActor in enemies.slice(1):
 		var disp := add_display(enemy, false)
 		disp.set_opposite(headEnemy)
 		prev.set_next(disp)
@@ -70,15 +70,17 @@ func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
 
 
 func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
-	var sprite = BattleSprite.instantiate()
+	var sprite := BattleSprite.instantiate()
 	sprite.setup(actor, not isAlly)
 	sprites.append(sprite)
 
 	actor.element_changed.connect(sprite.set_element)
-	sprite.status_effect_icon_pressed.connect(func(effect): status_effect_icon_pressed.emit(effect))
-	sprite.selected.connect(func(a):
-		selected.emit(a)
-		for d in sprites:
+	sprite.status_effect_icon_pressed.connect(func(effect: StatusEffect) -> void: 
+		status_effect_icon_pressed.emit(effect)
+	)
+	sprite.selected.connect(func(selectedActor: BattleActor) -> void:
+		selected.emit(selectedActor)
+		for d: Node in sprites:
 			_allow_selecting_targets = false
 			_selected_target = null 
 			d.disable_selection()
@@ -86,7 +88,7 @@ func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
 			d.disable_transmutation_hint())
 	sprite.position.x += len(sprites) * 3
 
-	var display = display_prefab.instantiate()
+	var display := BattleActorDisplay.instantiate()
 	display.setup(actor)
 	displays.append(display)
 	
@@ -105,7 +107,7 @@ func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
 	return disp 
 
 
-func get_display(actor: Variant) -> BattleActorDisplay:
+func get_display(actor: Variant) -> _BattleActorDisplay:
 	return actors[actor].display
 
 
@@ -148,16 +150,16 @@ func select_target(user: BattleActor, action: _BattleAction) -> void:
 	_selected_target.hover(true)
 
 
-func _enable_target_selection(highlightColor: Color, action: _BattleAction):
+func _enable_target_selection(highlightColor: Color, action: _BattleAction) -> void:
 	_allow_selecting_targets = true
-	for sprite in sprites:
+	for sprite: Node in sprites:
 		sprite.enable_selection(highlightColor)
 
 		if Settings.enable_transmutation_hints:
 			sprite.enable_transmutation_hint(action)
 
 
-func cancel_target_selection():
+func cancel_target_selection() -> void:
 	_allow_selecting_targets = false 
 	_selected_target = null
 
@@ -169,7 +171,7 @@ func cancel_target_selection():
 			d.disable_transmutation_hint()
 
 
-func enable_transmutation_hint(target: BattleActor, action: _BattleAction):
+func enable_transmutation_hint(target: BattleActor, action: _BattleAction) -> void:
 	if not Settings.enable_transmutation_hints: return
 	get_sprite(target).enable_transmutation_hint(action)
 
@@ -183,7 +185,7 @@ func highlight(index: int) -> void:
 
 ## Show intentions particle effect.
 func show_enemy_intentions(val: bool) -> void:
-	for actor in actors.values():
+	for actor: TeamDisplayActor in actors.values():
 		if not actor.is_ally:
 			actor.sprite.show_intentions(val)
 
@@ -198,12 +200,12 @@ class TeamDisplayActor:
 	var next: TeamDisplayActor = null
 	var prev:  TeamDisplayActor = null
 
-	func _init(sprite: Node, display: Node, isAlly: bool):
+	func _init(sprite: Node, display: Node, isAlly: bool) -> void:
 		self.sprite = sprite
 		self.display = display
 		self.is_ally = isAlly
 
-		sprite.hovered.connect(func(actor): hovered.emit(self))
+		sprite.hovered.connect(func(actor: BattleActor) -> void: hovered.emit(self))
 
 
 	func set_opposite(disp: TeamDisplayActor) -> void:

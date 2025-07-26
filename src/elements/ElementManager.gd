@@ -24,7 +24,7 @@ var Cyan: ElementalType
 var matchups := {}
 
 func test_transmutations()-> void:
-	var actualResults = [
+	var actualResults := [
 		# Red
 		[ null, Yellow, Magenta, Orange, null, null, null, Magenta ],
 		# Green 
@@ -42,11 +42,11 @@ func test_transmutations()-> void:
 		# Purple
 		[ Magenta, Cyan, null, null, Blue, Blue, Magenta, null ]
 	]
-	var headers = [ Red, Green, Blue, Yellow, Cyan, Magenta, Orange, Purple ]
-	var total = true
+	var headers := [ Red, Green, Blue, Yellow, Cyan, Magenta, Orange, Purple ]
+	var total := true
 	for i in range(8):
 		for j in range(8):
-			var res = get_matchup(headers[i], headers[j])
+			var res := get_matchup(headers[i], headers[j])
 			if(res != actualResults[i][j]): 
 				push_warning("%s + %s != %s, == %s" % [
 						headers[i].name, 
@@ -61,9 +61,9 @@ func test_side_effects() -> void:
 	var a := attack_buff
 	var d := defense_buff
 	var s := speed_buff
-	var n = null
+	var n: Variant = null
 
-	var actualResults = [
+	var actualResults := [
 		# R
 		[ n, d, d, s, n, n, n, d ],
 		# G
@@ -82,11 +82,11 @@ func test_side_effects() -> void:
 		[ d, d, n, n, d, d, d, n ],
 	]
 
-	var total = true
-	var headers = [ Red, Green, Blue, Yellow, Cyan, Magenta, Orange, Purple ]
-	for i in range(8):
-		for j in range(8):
-			var res = get_side_effect(headers[i], headers[j])
+	var total := true
+	var headers := [ Red, Green, Blue, Yellow, Cyan, Magenta, Orange, Purple ]
+	for i in 8:
+		for j in 8:
+			var res := get_side_effect(headers[i], headers[j])
 			if res != actualResults[i][j]:
 				push_warning("%s + %s != %s, == %s" % [
 						headers[i].name, 
@@ -102,23 +102,23 @@ func test_traversals() -> void:
 	var seq := [-1, 0, 0, 0]
 	var file := FileAccess.open("res://logs/sequences_no_convergence.csv", FileAccess.WRITE)
 
-	var incrementSeq = func() -> void:
-		for i in range(len(seq)):
+	var incrementSeq := func() -> void:
+		for i in len(seq):
 			seq[i] += 1
 			# Overflow?
 			if seq[i] == 8:
 				seq[i] = 0
 				continue
 			break
-	var countNonZero = func(acc, num):
+	var countNonZero := func(acc: int, num: int) -> int:
 		if num > 0:
 			acc += 1
 		return acc
 	# Returns false if seq should be discarded.
 	# Sequences should have at most 2 repeating elements.
-	var filterSeq = func() -> bool:
+	var filterSeq := func() -> bool:
 		var reachedMax := false
-		for num in seq:
+		for num: int in seq:
 			var count := seq.count(num)
 			if count > 2:
 				return false
@@ -129,20 +129,20 @@ func test_traversals() -> void:
 
 		return true
 
-	for i in range(pow(8, 5) - 1):
+	for i in pow(8, 5) - 1:
 		incrementSeq.call()
 		# if not filterSeq.call(): 
 		# 	continue
 
 		# Iterating through every combination of 5 lasers, where order matters.
-		var lasers := [
+		var lasers: Array[ElementalType] = [
 			elements[seq[0]],
 			elements[seq[1]],
 			elements[seq[2]],
 			elements[seq[3]],
 		]
 		# Each row will be identified by "%s", where %s is the first letter of each laser's element's name.
-		var header := "".join(lasers.map(func(x): return x.name[0]))
+		var header := "".join(lasers.map(func(x: ElementalType) -> String: return x.name[0]))
 		var body := []
 		# Get the average result for sequence.
 		var averages := {
@@ -163,7 +163,7 @@ func test_traversals() -> void:
 		for startingElement in elements:
 			var element := startingElement
 			for laser in lasers:
-				var e = get_matchup(element, laser)
+				var e := get_matchup(element, laser)
 				if e:
 					element = e
 
@@ -175,8 +175,8 @@ func test_traversals() -> void:
 			averages[element] += 1.0/8.0
 			body.append(element.name)
 
-		for key in convergenceValues:
-			var value = convergenceValues.get(key)
+		for key: ElementalType in convergenceValues:
+			var value: ElementalType = convergenceValues.get(key)
 			if convergenceValues.get(value) == key:
 				converges = true
 				break
@@ -224,21 +224,21 @@ func build()-> void:
 				Cyan = element
 				
 	matchups = {}
-	var blue = ElementalNode.new(Blue)
+	var blue := ElementalNode.new(Blue)
 	matchups[Blue.name] = blue
-	var purple = ElementalNode.new(Purple)
+	var purple := ElementalNode.new(Purple)
 	matchups[Purple.name] = purple
-	var magenta = ElementalNode.new(Magenta)
+	var magenta := ElementalNode.new(Magenta)
 	matchups[Magenta.name] = magenta
-	var red = ElementalNode.new(Red)
+	var red := ElementalNode.new(Red)
 	matchups[Red.name] = red
-	var orange = ElementalNode.new(Orange)
+	var orange := ElementalNode.new(Orange)
 	matchups[Orange.name] = orange
-	var yellow= ElementalNode.new(Yellow)
+	var yellow := ElementalNode.new(Yellow)
 	matchups[Yellow.name] = yellow
-	var green = ElementalNode.new(Green)
+	var green := ElementalNode.new(Green)
 	matchups[Green.name] = green
-	var cyan = ElementalNode.new(Cyan)
+	var cyan := ElementalNode.new(Cyan)
 	matchups[Cyan.name] = cyan
 
 	# B
@@ -323,15 +323,16 @@ func get_element_from_name(name: String) -> ElementalType:
 
 func get_index_from_name(name: String) -> int:
 	name = name.to_lower().strip_edges()
-	for i in range(len(elements)):
+	for i in len(elements):
 		if elements[i].name.to_lower() == name:
 			return i
 	return -1
 
 func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalType:
-	if not element1 or not element2 or element1.name == "Blank" || element2.name == "Blank": return null
-
-	var node = matchups[element1.name]
+	if not element1 or not element2: return null
+	elif element1.name == "Blank" || element2.name == "Blank": return null
+	
+	var node: ElementalNode = matchups[element1.name]
 	return node.get_result(element2)
 
 func get_side_effect(a: ElementalType, b: ElementalType) -> _AttackEffect:
@@ -340,11 +341,11 @@ func get_side_effect(a: ElementalType, b: ElementalType) -> _AttackEffect:
 	return matchups[a.name].get_effect(b)
 
 func get_all_matchups() -> Array:
-	var output = []
-	for node in matchups.values():
-		for el in node.edges.keys():
-			var edge = node.edges[el]
-			var item = []
+	var output := []
+	for node: ElementalNode in matchups.values():
+		for el: ElementalType in node.edges.keys():
+			var edge: Edge = node.edges[el]
+			var item := []
 			item.append(node.element)
 			item.append(el)
 			item.append(edge.result.element)
@@ -398,20 +399,20 @@ class ElementalNode:
 	
 
 	func get_result(other: ElementalType) -> ElementalType:
-		var edge = edges.get(other, null)
+		var edge: Edge = edges.get(other, null)
 		if edge == null or edge.result == null: 
 			return null
 		return edge.result.element
 	
 	func get_effect(other: ElementalType) -> _AttackEffect:
-		var edge = edges.get(other, null)
+		var edge: Edge = edges.get(other, null)
 		if edge == null: 
 			return null
 		return edge.buff_effect
 
 	## Find the edge connecting this and end, then return its effect.
 	func find_effect_for(end: ElementalType) -> _AttackEffect:
-		for edge in edges.values():
+		for edge: Edge in edges.values():
 			if(edge.result.element == end): return edge.buff_effect
 		return null
 

@@ -5,7 +5,7 @@ extends BattleActionAnimation
 @export var time_delay: float
 var _counter: int
 
-func _ready():
+func _ready() -> void:
 	animation.emitting = true
 	_counter = 0
 

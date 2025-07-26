@@ -1,5 +1,5 @@
 @tool
-extends Item
+extends _Item
 class_name Equipment
 
 @export var effects: Array[EquipmentEffect]:

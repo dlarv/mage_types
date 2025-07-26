@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjkcvlvidp24x"]
+[gd_scene load_steps=15 format=3 uid="uid://cjkcvlvidp24x"]
 
 [ext_resource type="Script" uid="uid://c0gcu5o4w8gsy" path="res://src/overworld/enemies/Spawner.gd" id="1_gtanb"]
-[ext_resource type="PackedScene" uid="uid://bdv06avwh4v6g" path="res://src/overworld/enemies/wild_enemy_actor.tscn" id="2_b57t8"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_ty1x5"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="5_h0ssj"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="6_lsjr5"]
@@ -82,7 +81,6 @@ dialog_ids = Array[ExtResource("8_0ir3c")]([])
 
 [node name="Spawner" type="Area3D"]
 script = ExtResource("1_gtanb")
-BaseEnemyActor = ExtResource("2_b57t8")
 battle_actors = Array[ExtResource("3_ty1x5")]([SubResource("Resource_2jow8"), SubResource("Resource_vwc2b"), SubResource("Resource_h3nlw")])
 controllers = Array[ExtResource("7_851q1")]([SubResource("Resource_6vu4l")])
 

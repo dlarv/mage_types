@@ -11,7 +11,7 @@ signal menu_closed()
 
 var current_vendor: VendorActor = null
 
-func _ready():
+func _ready() -> void:
 	info_display.item_bought.connect(Inventory.add)
 
 func open_menu(vendor: VendorActor) -> void:
@@ -25,7 +25,7 @@ func open_menu(vendor: VendorActor) -> void:
 
 	for item in vendor.items:
 		if item == null: continue
-		var selector = VendorItemSelector.instantiate()
+		var selector := VendorItemSelector.instantiate()
 		selector.setup(item)
 		selector.item_selected.connect(_on_item_selected)
 
@@ -33,7 +33,7 @@ func open_menu(vendor: VendorActor) -> void:
 
 	for item in vendor.spells:
 		if item == null: continue
-		var selector = VendorItemSelector.instantiate()
+		var selector := VendorItemSelector.instantiate()
 		selector.setup(item)
 		selector.item_selected.connect(_on_item_selected)
 

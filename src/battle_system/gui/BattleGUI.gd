@@ -12,12 +12,10 @@ signal target_selected(actor: BattleActor)
 @export var turn_counter_display: Label
 @export var turn_order_display: VBoxContainer
 
-# BattleActor[]
-var allies := []
-var enemies := []
-# String[]
-var messages := []
-var turn_counter: 
+var allies: Array[BattleActor] = []
+var enemies: Array[BattleActor] = []
+var messages: Array[String] = []
+var turn_counter: int: 
 	set(value):
 		turn_counter = value
 		if turn_counter_display == null: return
@@ -58,7 +56,7 @@ func display_message(msg: Variant) -> void:
 
 func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	if not _accept_messages: return
-	var msgLog = msg
+	var msgLog: Variant = msg
 
 	if msg is Array:
 		msg = "\n".join(msg)
@@ -82,7 +80,7 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 	var targets: Array[BattleActor] = await select_targets(allies[index], action)
 	if len(targets) == 0: return
 
-	var actorAction = ActorAction.new(allies[index], action, targets, 0)
+	var actorAction := ActorAction.new(allies[index], action, targets, 0)
 	_selected_actions[index] = actorAction
 	message_box.clear_message()
 	player_controls.next_character()
@@ -138,7 +136,7 @@ func _on_turn_ended(tryRunningAway: bool) -> void:
 	
 
 func _on_show_info(action: Variant, limitInfo:=false) -> void:
-	var msg = "Empty"
+	var msg := "Empty"
 	if action is _BattleAction:
 		msg = action.name
 	elif (action is BattleActor):
@@ -173,5 +171,5 @@ func get_actor_display_position(actor: BattleActor) -> Vector2:
 	if actor == null:
 		return Vector2(team_display.global_position.x, team_display.global_position.y)
 	
-	var sprite = team_display.get_sprite(actor)
+	var sprite := team_display.get_sprite(actor)
 	return sprite.get_target_position()

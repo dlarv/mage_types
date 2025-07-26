@@ -9,13 +9,16 @@ const MODIFIER := 0.3
 		stat = val
 		var dir := "Drop" if strength < 0 else "Boost"
 		name = "%s %s" % [
-				" ".join(Array(StatManager.Stats.keys()[stat].split("_")).map(func(x): return x.capitalize())),
-				dir]
+			" ".join(Array(StatManager.Stats.keys()[stat].split("_"))
+			.map(func(x: String) -> String: 
+				return x.capitalize())),
+			dir
+		]
 
 ## If true, set target's stat to 0 before apply buff/debuff.
 @export var clear_first := false
 
-func _init():
+func _init() -> void:
 	id = StatusEffectManager.StatusEffects.STAT_CHANGE
 
 

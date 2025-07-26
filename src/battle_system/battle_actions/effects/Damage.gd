@@ -2,7 +2,7 @@
 extends _AttackEffect 
 class_name Damage 
 
-func _init():
+func _init() -> void:
 	# Force call of _set_name()
 	name = "Damage"
 
@@ -14,7 +14,7 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
-	var dmg = calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, effectiveness)
+	var dmg := calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, effectiveness)
 	return "%s" % [ _apply_to(target, dmg, user) ]
 
 
@@ -28,7 +28,7 @@ func calculate_damage(attack: float, defense: float, level: int, effectiveness: 
 
 
 func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
-	var actualDmg = target.apply_damage(dmg)
+	var actualDmg := target.apply_damage(dmg)
 	if actualDmg == dmg:
 		return "Dealt %d damage to %s." % [dmg, target.name]
 

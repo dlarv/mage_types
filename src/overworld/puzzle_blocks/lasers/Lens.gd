@@ -94,7 +94,7 @@ func _on_laser_dropped() -> void:
 	_is_emitting = false
 	if _active_emitter:
 		_active_emitter.stop()
-		var e = _active_emitter.laser.element.name if _active_emitter != null else "null"
+		var e: String = _active_emitter.laser.element.name if _active_emitter != null else "null"
 		Logger.append_puzzle_log("Lens(%s) stopped emitting laser of Element(%s)."
 				% [puzzle_name, e])
 		_active_emitter = null
@@ -126,7 +126,8 @@ func _set_material(mat: BaseMaterial3D) -> void:
 	_try_set_color()
 
 
-func _try_set_color(color=null) -> bool:
+#override
+func _try_set_color(color:Variant=null) -> bool:
 	if not super._try_set_color(color): return false
 	#if in_stasis: _material_2.albedo_color = Color.BLACK
 	_material_2.albedo_color = _material.albedo_color

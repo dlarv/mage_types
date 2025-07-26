@@ -12,8 +12,8 @@ const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 @export var _dialog_box: DialogueBox
 
 # BattleActor[]
-var enemies := []
-var allies := []
+var enemies: Array[BattleActor] = []
+var allies: Array[BattleActor] = []
 
 var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
@@ -21,7 +21,7 @@ var _turn_counter: int = 0
 var _actions: Array[ActorAction] = []
 var tie_breaker := false
 
-func _unhandled_input(event) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log()
 	
@@ -37,10 +37,10 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 
 	for ally: BattleActor in allies:
 		ally.setup()
-		ally.was_just_defeated.connect(func(): _defeated_allies += 1)
+		ally.was_just_defeated.connect(func() -> void: _defeated_allies += 1)
 	for enemy: BattleActor in enemies:
 		enemy.setup()
-		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
+		enemy.was_just_defeated.connect(func() -> void: _defeated_enemies += 1)
 
 	ai.setup(enemies)
 
@@ -88,7 +88,7 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 	_actions.append_array(allyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	_actions.sort_custom(func(a, b):
+	_actions.sort_custom(func(a: ActorAction, b: ActorAction) -> bool:
 		if a == null: return false
 		elif b == null: return true
 		# Higher priority goes first.
@@ -106,7 +106,7 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 		if action == null or action.actor.is_defeated:
 			continue
 			
-		var flinch = action.actor.flinching
+		var flinch := action.actor.flinching
 		if flinch != null:
 			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
 			action.actor.turn_ended.emit()
@@ -116,7 +116,7 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 		
 		# Apply action effects.
 		var res: Dictionary = action.action.apply_effects(action.actor, action.targets)
-		var msg = res.msg
+		var msg: Array[String] = res.msg
 		var missed: bool = res.get("missed", false)
 
 		# Play animation.
@@ -153,8 +153,8 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 		if await _check_if_battle_ended(): return
 
 		# Resolve user's status effects.
-		var a = allies if action.team_index == 0 else enemies
-		var o = enemies if action.team_index == 0 else allies
+		var a := allies if action.team_index == 0 else enemies
+		var o := enemies if action.team_index == 0 else allies
 		action.actor.resolve_end_of_turn(a, o)
 		action.actor.turn_ended.emit()
 		msg = action.actor.get_and_flush_msgs()
@@ -186,7 +186,7 @@ func _calculate_transmutations(target: BattleActor, action: _BattleAction) -> vo
 
 
 func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false) -> bool:
-	var newType = ElementManager.get_matchup(e1, e2)
+	var newType := ElementManager.get_matchup(e1, e2)
 	if newType == null: return false
 
 	var e1Name := e1.get_bb_code_name()
@@ -200,7 +200,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 		msg.append("The target %s's %s reacted with the attack's %s type to make %s." 
 				% [ target.name, e1Name, e2Name, newType.get_bb_code_name()])
 
-	var buff = ElementManager.get_side_effect(e1, e2)
+	var buff := ElementManager.get_side_effect(e1, e2)
 
 	# if buff != null:
 	buff.apply_effect(target)
@@ -217,7 +217,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 
 
 func _dialog(isAfterTurn: bool) -> void:
-	var dialogId = ai.get_next_dialog_id(_turn_counter, isAfterTurn)
+	var dialogId := ai.get_next_dialog_id(_turn_counter, isAfterTurn)
 
 	if len(dialogId) > 0:
 		_dialog_box.start(dialogId)
@@ -258,11 +258,11 @@ func _prep_next_turn() -> void:
 
 	var speedRank := allies.duplicate()
 	speedRank.append_array(enemies)
-	speedRank.sort_custom(func(a, b):
+	speedRank.sort_custom(func(a: BattleActor, b: BattleActor) -> bool:
 		if a.speed != b.speed:
 			return a.speed > b.speed
 		return tie_breaker)
-	speedRank.map(func(a): return a.name)
+	speedRank.map(func(a: BattleActor) -> String: return a.name)
 
 	gui.display_turn_order(speedRank)
 

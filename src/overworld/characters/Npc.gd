@@ -18,7 +18,7 @@ var _player: Variant
 
 var _on_cooldown := false
 
-func _enter_tree():
+func _enter_tree() -> void:
 	super._enter_tree()
 
 	for child in get_children():
@@ -28,14 +28,14 @@ func _enter_tree():
 			story_actor = child
 		elif child is EnemyActor:
 			enemy_actor = child
-			enemy_actor.battle_ended.connect(func(state): battle_ended.emit(state))
+			enemy_actor.battle_ended.connect(func(state: Battle.EndState) -> void: battle_ended.emit(state))
 		elif child is AnimationActor:
 			animation_actor = child
 
+
 func _ready() -> void:
-	_player = get_tree().get_nodes_in_group("player")
-	if len(_player) > 0:
-		_player = _player[0]
+	_player = get_tree().get_first_node_in_group("player")
+
 
 func _on_body_entered(body:Node3D) -> void:
 	if not body.is_in_group("player"): return

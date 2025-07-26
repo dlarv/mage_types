@@ -29,7 +29,7 @@ func _on_lock_closed(block: PuzzleBlock) -> bool:
 	return true
 
 
-func _open(force:=false):
+func _open(force:=false) -> void:
 	if _already_opened: return
 	self.collision_layer = 0
 	$AnimationPlayer.play("opening")
@@ -37,7 +37,7 @@ func _open(force:=false):
 	hide()
 	Logger.append_puzzle_log("Gate(%s) was opened." % [puzzle_name])
 
-func _close():
+func _close() -> void:
 	if not _already_opened: return
 	self.collision_layer = 1
 	$AnimationPlayer.play_backwards("opening")

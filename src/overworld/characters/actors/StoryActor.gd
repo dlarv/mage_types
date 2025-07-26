@@ -3,7 +3,7 @@ extends Node3D
 class_name StoryActor
 ## Allows a character to participate in the game's story, mostly through dialog.
 
-signal dialog_started(dialog_id, data)
+signal dialog_started(dialog_id: String, data: Variant)
 
 @export var dialog_ids: Array[Dialog]
 @export var current_id: int = 0
@@ -15,18 +15,19 @@ func _ready() -> void:
 	if not animation_player:
 		animation_player = find_child("AnimationPlayer")
 
-# Virtual
-func start_dialog():
+
+func start_dialog() -> void:
 	dialog_started.emit(dialog_ids[current_id], null)
 
-func skip_dialog():
+
+func skip_dialog() -> void:
 	var dialog := dialog_ids[_prev_id]
 	if len(dialog.end_state) > 0:
-		var animation = animation_player.get_animation(dialog.end_state)
+		var animation := animation_player.get_animation(dialog.end_state)
 		animation_player.play(dialog.end_state)
 		animation_player.advance(animation.length)
 	elif animation_player and animation_player.is_playing():
-		var animation = animation_player.get_animation(animation_player.current_animation)
+		var animation := animation_player.get_animation(animation_player.current_animation)
 		animation_player.advance(animation.length)
 
 

@@ -25,7 +25,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on or Engine.is_editor_hint(): return
 	$RayCast3D.force_raycast_update()
-	var body = $RayCast3D.get_collider()
+	var body: Object = $RayCast3D.get_collider()
 
 	if _prev_body != null and _prev_body != body:
 		_prev_body.clear_laser()

@@ -14,7 +14,7 @@ class_name EffectSlot
 # override
 func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
 	var msg := ""
-	var rand = randf()
+	var rand := randf()
 	if rand <= chance:
 		if chance != 1.0:
 			Logger.append_battle_log("Action(%s) Succeeded. Chance(%f) >= Rand(%f)" 

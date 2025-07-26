@@ -54,9 +54,9 @@ func deserialize(data: Dictionary) -> void:
 			$Interactable.set_disabled(_is_opened)
 
 
-func _lock(val) -> void:
-	$Interactable.set_disabled(val)
-	if val:
+func _lock(isLocked: bool) -> void:
+	$Interactable.set_disabled(isLocked)
+	if isLocked:
 		$chest/Ribbon.show()
 	else:
 		$chest/Ribbon.hide()

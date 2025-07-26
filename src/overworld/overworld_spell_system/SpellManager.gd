@@ -14,7 +14,7 @@ signal spell_selected(is_primary: bool, spell: OverworldSpell)
 var active_spell_1: OverworldSpell
 var active_spell_2: OverworldSpell
 
-func _enter_tree():
+func _enter_tree() -> void:
 	if not Inventory.overworld_spell_selected.is_connected(activate_spell):
 		Inventory.overworld_spell_selected.connect(activate_spell)
 	stasis_spell.Projectile = Projectile
@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		active_spell_2.perform_action()
 
 func activate_spell(id: OverworldSpell.Spells, isPrimary: bool) -> void:
-	var spell
+	var spell: OverworldSpell
 	match id:
 		OverworldSpell.Spells.STASIS: 
 			spell = stasis_spell

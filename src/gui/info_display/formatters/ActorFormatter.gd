@@ -40,7 +40,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	display_stats(obj)
 
 	# Status effects.
-	var effects = obj.list_status_effects()
+	var effects: Array[StatusEffect] = obj.list_status_effects()
 	if len(effects) == 0:
 		status_effect_vbox.hide()
 	else:
@@ -60,7 +60,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	else:
 		equipment_hbox.hide()
 	
-	for attack in obj.attacks:
+	for attack: Attack in obj.attacks:
 		if attack == null: continue
 		attacks_label.push_meta(attack)
 		attacks_label.append_text(attack.name)

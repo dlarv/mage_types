@@ -63,7 +63,7 @@ var _double_value := true:
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		Settings.debug_mode_toggled.connect(func(val): debug_mode = val)
+		Settings.debug_mode_toggled.connect(func(val: bool) -> void: debug_mode = val)
 		debug_mode = Settings.debug_mode
 
 func _increment_stat(direction: int) -> void:

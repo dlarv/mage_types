@@ -2,9 +2,9 @@
 extends RichTextEffect
 class_name RichTextElement
 
-var bbcode = 'el'
+var bbcode := 'el'
 
-func _process_custom_fx(charFx):
+func _process_custom_fx(charFx: CharFXTransform) -> bool:
 	if charFx.env.get("name"):
 		charFx.env["color"] = _get_color(charFx.env["name"][0])
 		charFx.env["name"] = null
@@ -15,7 +15,7 @@ func _process_custom_fx(charFx):
 	charFx.color = charFx.env["color"]
 	return true
 
-func _get_color(key) -> Color:
+func _get_color(key: String) -> Color:
 	match key:
 		"B": return ElementManager.Blue.main_color
 		"P": return ElementManager.Purple.main_color

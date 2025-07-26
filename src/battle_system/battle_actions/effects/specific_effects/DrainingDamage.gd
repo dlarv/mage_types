@@ -6,7 +6,7 @@ class_name DrainingDamage
 @export var allow_overflow := false
 
 func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
-	var actualDmg = target.apply_damage(dmg)
+	var actualDmg := target.apply_damage(dmg)
 	var msg := "Tried to deal %d damage to %s.\n" % [ dmg, target.name ]
 
 	if actualDmg == dmg:
@@ -18,7 +18,7 @@ func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 	else:
 		msg += "But %s deflected some of the damage!\nDealt %d damage to %s." % [ target.name, actualDmg, target.name ]
 	
-	actualDmg *= heal_percent
+	actualDmg = int(float(actualDmg) * heal_percent)
 	if actualDmg > 0:
 		user.heal(actualDmg, allow_overflow)
 		msg += "\n%s drained %d hp from the target!" % [ user.name, actualDmg ]

@@ -81,7 +81,10 @@ func save_log() -> void:
 
 func append_log(msg: Variant) -> void:
 	if Engine.is_editor_hint(): return
-	logs.append(msg)
+	if msg is Array:
+		logs.append_array(msg)
+	else:
+		logs.append(msg)
 	if print_logs:
 		print(msg)
 	

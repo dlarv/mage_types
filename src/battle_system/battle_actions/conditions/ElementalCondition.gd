@@ -32,8 +32,12 @@ func check(user: BattleActor, target: BattleActor, action: _BattleAction, effect
 		t.append("Target(%s, %s, %s)" % [user.name, user.element1.name, user.element2.name])
 		output = output and f.call(target)
 	
-	var msg := "ElementalCondition: %s %s {%s} => %s." \
-			% ["&".join(t), op, ",".join(elements.map(func(x): return x.name)), output]
+	var msg := "ElementalCondition: %s %s {%s} => %s." % [
+		"&".join(t), 
+		op, 
+		",".join(elements.map(func(x: ElementalType) -> String: return x.name)), 
+		output
+	]
 	Logger.append_battle_log(msg)
 	return output
 
@@ -70,7 +74,7 @@ func _to_string() -> String:
 	
 	output += "[color=%s]%s[/color]" % [ elements[0], elements[0] ]
 	
-	for element in elements.slice(1):
+	for element: ElementalType in elements.slice(1):
 		output += ", [color=%s]%s[/color]" % [ element, element ]
 	
 	output += " }"

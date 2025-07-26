@@ -27,14 +27,12 @@ func _on_body_entered(body:Node3D) -> void:
 	set_deferred("monitoring", false)
 	trigger(body)
 
-func trigger(body) -> void:
+func trigger(body: Node3D) -> void:
 	print("StoryTrigger(%s) was activated." % puzzle_name)
 
 	if not body.is_in_group("player"):
-		body = get_tree().get_nodes_in_group("player")
-		if len(body) > 0:
-			body = body[0]
-		else:
+		body = get_tree().get_first_node_in_group("player")
+		if not body:
 			push_warning("StoryTrigger(%s) could not find player." % puzzle_name)
 
 	if animation_actor:

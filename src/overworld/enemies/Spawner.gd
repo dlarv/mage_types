@@ -4,7 +4,8 @@ signal player_defeated_enemy()
 signal enemy_defeated_player()
 signal player_ran()
 
-@export var BaseEnemyActor: PackedScene
+const BaseEnemyActor := preload("res://src/overworld/enemies/wild_enemy_actor.tscn")
+
 @export var battle_actors: Array[BattleActor]
 @export var controllers: Array[OpponentController]
 
@@ -23,18 +24,19 @@ func _process(delta: float) -> void:
 
 func _get_rand_point() -> Vector3:
 	if not $CollisionShape3D: return Vector3(0, 0, 0)
-	var spawnArea = $CollisionShape3D.shape.extents 
-	var a = $CollisionShape3D.position - spawnArea
-	var b = $CollisionShape3D.position + spawnArea
+	var spawnArea: Vector3 = $CollisionShape3D.shape.extents 
+	var a: Vector3 = $CollisionShape3D.position - spawnArea
+	var b: Vector3 = $CollisionShape3D.position + spawnArea
 	return Vector3(
-			randf_range(a.x, b.x),
-			a.y,
-			randf_range(a.z, b.z))
+		randf_range(a.x, b.x),
+		a.y,
+		randf_range(a.z, b.z)
+	)
 
 func _get_rand_enemy() -> Node3D:
-	var actor = BaseEnemyActor.instantiate()
+	var actor := BaseEnemyActor.instantiate()
 
-	var team = []
+	var team: Array[BattleActor] = []
 	var count := randi_range(team_count_range.x, team_count_range.y)
 	for i in range(count):
 		var battleActor: BattleActor = battle_actors.pick_random().duplicate(true)
@@ -61,7 +63,7 @@ func spawn() -> void:
 
 	_enemies.append(enemy)
 
-	enemy.tree_exited.connect(func():
+	enemy.tree_exited.connect(func() -> void:
 		var index := _enemies.find(enemy)
 		_enemies.remove_at(index)
 		_restart_timer())

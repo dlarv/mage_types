@@ -1,5 +1,5 @@
 @tool
-extends Item
+extends _Item
 class_name RegularItem
 
 @export var battle_item: BattleItem 
@@ -15,7 +15,7 @@ var is_consumable: bool:
 
 @export var max_quantity : int 
 
-# func try_combine(other: Item, amount: int) -> bool:
+# func try_combine(other: _Item, amount: int) -> bool:
 # 	if _quantity == max_quantity: return false
 # 	if max_quantity == -1:
 # 		quantity += other._quantity
@@ -25,7 +25,7 @@ var is_consumable: bool:
 # 	_quantity = min(total, max_quantity)
 # 	return true
 #
-# func try_remove(other: Item, amount: int) -> bool:
+# func try_remove(other: _Item, amount: int) -> bool:
 # 	if _quantity == 0: return false
 # 	if amount == -1: amount = _quantity
 #
@@ -39,12 +39,12 @@ func _set_name(value: String) -> void:
 	if battle_item != null:
 		battle_item.name = value
 
-func _set_details(value) -> void:
+func _set_details(value: String) -> void:
 	super._set_details(value)
 	if battle_item != null:
 		battle_item.details = value
 
-func _set_requirement(value) -> void:
+func _set_requirement(value: Array[ItemRequirement]) -> void:
 	super._set_requirement(value)
 	if battle_item == null: return
 

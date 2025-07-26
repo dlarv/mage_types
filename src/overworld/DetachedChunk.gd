@@ -24,7 +24,7 @@ func _ready() -> void:
 
 	var children := objs.duplicate(false)
 	while len(children) > 0:
-		var child = children.pop_back()
+		var child: Node = children.pop_back()
 
 		if is_in_group("persist"): 
 			if child.has_method("serialize"):
@@ -42,12 +42,12 @@ func _ready() -> void:
 
 		children.append_array(child.get_children())
 
-	for obj in objs:
+	for obj: Variant in objs:
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		obj.hide()
 
 func gather_objs() -> void:
-	var detachedChunks = get_tree().current_scene.find_children("", "DetachedChunk")
+	var detachedChunks := get_tree().current_scene.find_children("", "DetachedChunk")
 	# Array[ [DetachedChunk, CollisionShape3D] ]
 	var shapes := []
 	for chunk in detachedChunks:
@@ -67,7 +67,7 @@ func gather_objs() -> void:
 		
 
 	while len(children) > 0:
-		var child = children.pop_back()
+		var child: Node = children.pop_back()
 		if child.name == "Preset1": 
 			pass
 		# If child does not exist in 3d space, it doesn't make sense to check whether it exists within a shape.
@@ -78,8 +78,7 @@ func gather_objs() -> void:
 
 		# If child is inside of shape, do not add its children to search array.
 		var taken := false
-		for shape in shapes:
-			var n = shape[0].name
+		for shape: Variant in shapes:
 			if has_point(shape[1].shape, shape[1].global_position, child.global_position):
 				shape[0].objs.append(child)
 				taken = true
@@ -108,14 +107,14 @@ func load(player: Node3D) -> void:
 	if not visible: return
 	player.active_chunk = self
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
-	for obj in objs:
+	for obj: Node in objs:
 		obj.process_mode = Node.PROCESS_MODE_INHERIT
 		obj.show()
 
 func unload(player: Node3D) -> void:
 	# if not player.is_in_group("player"): return
 	Logger.append_world_log("Player unloaded Chunk(%s)" % name) 
-	for obj in objs:
+	for obj: Node in objs:
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		obj.hide()
 

@@ -1,6 +1,7 @@
 @tool
 extends Resource
 
+@warning_ignore_start("untyped_declaration")
 signal selected(row)
 
 var select: CheckBox
@@ -13,7 +14,6 @@ var power: SpinBox
 var accuracy: SpinBox
 var description: TextEdit
 var attack: Attack
-
 
 func _init(select=null, name=null, elements=null, attackRange=null, targets=null, priority=null, power=null, accuracy=null, description=null, attack=null):
 	self.select = select

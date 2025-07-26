@@ -1,6 +1,7 @@
 @tool
 extends MagiClay
 class_name Golem
+@warning_ignore_start("untyped_declaration")
 
 const SNAP_VALUE := Vector3(0.5, 0, 0.5)
 ## If golem is walking into a wall for this many seconds, move onto next instruction.

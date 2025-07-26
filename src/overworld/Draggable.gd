@@ -13,11 +13,10 @@ var puzzle_name := ""
 var element := ElementManager.Blank
 var parent: Node3D
 
-# Array[Vector3]: Player is placed on the nearest one when they pick up this object.
-var _handles := []
+var _handles: Array[Marker3D] = []
 var _prev_parent: Node3D = null
 var _prev_damp: float
-var _prev_axis_lock := [false, false, false]
+var _prev_axis_lock: Array[bool] = [false, false, false]
 var _player: Node3D = null
 
 var current_axis := Vector3.ONE
@@ -39,7 +38,7 @@ func _input(event: InputEvent) -> void:
 	if not in_control: return
 
 	if event.is_action_released("interact"):
-		var n = name
+		var n := name
 		if "puzzle_name" in get_parent():
 			n = get_parent().puzzle_name
 		Logger.append_puzzle_log("Player dropped Draggable(%s)." % n)
@@ -114,18 +113,18 @@ func _snap_player_to_handle(pos: Vector3) -> Vector3:
 	var minHandle: Marker3D
 
 	for handle in _handles:
-		var dist = handle.global_position.distance_to(pos)
+		var dist := handle.global_position.distance_to(pos)
 		if dist < minDist:
 			minDist = dist
 			minHandle = handle
 	
-	var output = minHandle.global_position
+	var output := minHandle.global_position
 	current_handle = minHandle
 	output.y = pos.y
 
 	# Calculate restricted axis, if applicable.
-	var xPos = abs(global_position.x - minHandle.global_position.x)
-	var zPos = abs(global_position.z - minHandle.global_position.z)
+	var xPos: float = abs(global_position.x - minHandle.global_position.x)
+	var zPos: float = abs(global_position.z - minHandle.global_position.z)
 	if restrict_axis and xPos > zPos:
 		current_axis = Vector3(1, 0, 0)
 	elif restrict_axis:

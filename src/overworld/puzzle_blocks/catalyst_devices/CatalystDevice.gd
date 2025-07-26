@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func _rotate_wheel(element: ElementalType) -> void:
-	var tween = get_tree().create_tween()
+	var tween := get_tree().create_tween()
 	var degrees: float
 	match element.name:
 		"Blue": degrees = 0
@@ -50,7 +50,7 @@ func _rotate_wheel(element: ElementalType) -> void:
 
 func _on_interactable_interacted(obj:Node3D) -> void:
 	UIManager.open_catalyst_menu(elements)
-	var e = await UIManager.catalyst_menu_closed
+	var e: ElementalType = await UIManager.catalyst_menu_closed
 	if e:
 		element = e
 		_rotate_wheel(element)

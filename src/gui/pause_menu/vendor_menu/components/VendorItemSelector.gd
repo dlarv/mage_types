@@ -1,6 +1,6 @@
 extends Control
 
-signal item_selected(item)
+signal item_selected(item: VendorItem)
 
 @export var cost_label: Label
 @export var button: Button
@@ -8,5 +8,5 @@ signal item_selected(item)
 func setup(item: VendorItem) -> void:
 	cost_label.text = str(item.cost)
 	button.text = item.item.name
-	button.pressed.connect(func():
+	button.pressed.connect(func() -> void:
 		item_selected.emit(item))

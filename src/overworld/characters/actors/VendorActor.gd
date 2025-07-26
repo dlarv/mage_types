@@ -5,7 +5,7 @@ class_name VendorActor
 @export var items: Array[VendorItem]
 @export var spells: Array[VendorItem]
 
-@export var add_item: Item:
+@export var add_item: _Item:
 	set(item):
 		if item is RegularItem:
 			items.append(VendorItem.new(item))

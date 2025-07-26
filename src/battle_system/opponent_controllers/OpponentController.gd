@@ -8,14 +8,14 @@ const TEAM_INDEX = 1
 @export var dialog_resource: DialogueData
 @export var dialog_ids: Array[BattleTalk]
 
-var team := []
+var team: Array[BattleActor] = []
 
 var _next_dialog_index := 0
 
 func setup(team: Array[BattleActor]) -> void:
 	_next_dialog_index = 0
 	self.team = team
-	dialog_ids.sort_custom(func(a, b): 
+	dialog_ids.sort_custom(func(a: BattleTalk, b: BattleTalk) -> bool: 
 		if a.turn == b.turn:
 			return not a.displayAfterTurn
 		return a.turn < b.turn)
@@ -38,7 +38,7 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 ## Return the id of which dialog option to display.
 func get_next_dialog_id(turnCounter: int, isAfterTurn: bool) -> String:
 	if dialog_resource == null or len(dialog_ids) == 0: return ""
-	var dialog = dialog_ids[_next_dialog_index]
+	var dialog := dialog_ids[_next_dialog_index]
 
 	if dialog.turn != turnCounter or dialog.displayAfterTurn != isAfterTurn: return ""
 	if dialog.repeat:

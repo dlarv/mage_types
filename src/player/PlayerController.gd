@@ -21,7 +21,7 @@ var dash_tween: Tween
 var dash_velocity: float
 var _can_air_dash := true
  
-var draggable = null
+var draggable: Node3D = null
 var last_grounded_position: Vector3
 
 var _can_jump := true
@@ -30,7 +30,7 @@ var _jump_timer := 0.0
 var _jump_strength := 0.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = -980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
+var gravity := -980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
 var outside_forces := Vector3.ZERO
 
@@ -118,8 +118,8 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
+	var inputDir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction := (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
 	if direction != Vector3.ZERO:
 		velocity.x = direction.x * (walk_speed + dash_velocity) * delta
@@ -159,8 +159,8 @@ func _can_dash() -> bool:
 
 
 func _move_god_mode(delta: float) -> void:
-	var inputDir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
+	var inputDir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction := (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
 	var speedMod := _god_mode_speed_mod
 	if Input.is_key_pressed(KEY_CTRL):

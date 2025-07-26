@@ -7,7 +7,7 @@ extends PuzzleBlock
 @export var locks: Array[PuzzleBlock]
 @export var permanent := false
 
-var _opened_locks := {}
+var _opened_locks: Dictionary[PuzzleBlock, bool] = {}
 var _is_opened := false
 var _gradient: Gradient
 var _timer := 0.0
@@ -43,9 +43,8 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 		_opened_locks[block] = true
 		Logger.append_puzzle_log("Delay(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
 
-	for lock in _opened_locks.values():
-		if not lock:
-			return
+	for lock: bool in _opened_locks.values():
+		if not lock: return
 
 	if _tween and _tween.is_valid():
 		_tween.kill()
@@ -70,7 +69,7 @@ func _on_lock_closed(block: PuzzleBlock) -> void:
 	_is_opened = false
 	_tween = create_tween()
 	var percentFull: float = max(1.0 - _timer / open_delay, 0.01)
-	_tween.tween_method(func(p):
+	_tween.tween_method(func(p: float) -> void:
 		_gradient.set_offset(1, p),
 		percentFull, 1.0, 0.5)
 		

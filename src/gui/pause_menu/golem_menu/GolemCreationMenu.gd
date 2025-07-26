@@ -1,4 +1,5 @@
 extends Menu
+@warning_ignore_start("untyped_declaration")
 
 signal golem_placed(wasPlaced: bool)
 

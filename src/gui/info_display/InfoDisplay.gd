@@ -32,7 +32,7 @@ func format_msg(obj: Variant, limitInfo: bool) -> void:
 	if obj is Attack:
 		attack_formatter.display(obj)
 
-	elif obj is ItemSlot or obj is Item or obj is BattleItem:
+	elif obj is ItemSlot or obj is _Item or obj is BattleItem:
 		item_formatter.display(obj)
 
 	elif obj is StatusEffect:
@@ -63,7 +63,7 @@ func append_elemental_type(element: ElementalType, msg: String="Element") -> voi
 	append_elemental_color(element)
 	newline()
 
-func append_elemental_color(element: ElementalType):
+func append_elemental_color(element: ElementalType) -> void:
 	push_color(element.main_color)
 	append_text(element.name)
 	pop() # End color
@@ -75,7 +75,7 @@ func clear_message()-> void:
 	clear()
 
 
-func format_item(item: Item) -> void:
+func format_item(item: _Item) -> void:
 	pass
 
 func format_battle_item(item: BattleItem) -> void:
