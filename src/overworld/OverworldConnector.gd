@@ -12,15 +12,6 @@ extends Node3D
 @export var _player: Node3D
 var _current_story_actor: StoryActor = null
 
-@export_category("Demo")
-@export_range(0, 3) var stencil_index := 0:
-	set(val):
-		stencil_index = val
-		if Settings.use_graph_stencils:
-			UIManager.matchup_chart.current_graphic = val
-
-var active_chunk: Chunk
-
 func _ready() -> void:
 	var p = get_tree().get_nodes_in_group("player") 
 	if len(p) > 0:
