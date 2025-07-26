@@ -1,5 +1,7 @@
 extends "Player.gd"
 
+const MAX_FREEFALL_DIST := -40.0
+
 @export var walk_speed := 700.0
 @export var draggable_speed := 500.0
 @export var friction := 0.9
@@ -72,6 +74,9 @@ func _physics_process(delta: float) -> void:
 	if _god_mode: 
 		_move_god_mode(delta)
 		return
+	if global_position.y <= MAX_FREEFALL_DIST and not is_on_floor():
+		velocity.y = 0
+		fall_in_water()
 	if draggable != null:
 		_move_drag_mode(delta)
 		return
