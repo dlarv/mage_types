@@ -38,7 +38,7 @@ size = Vector3(2.4, 1, 1.7)
 size = Vector3(2.5, 14, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2yg5f"]
-size = Vector3(1, 10, 10)
+size = Vector3(1, 10, 13)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rayr4"]
 size = Vector3(1, 10, 10.1)
@@ -68,7 +68,7 @@ size = Vector3(1, 12, 10)
 size = Vector3(1, 10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6euxw"]
-size = Vector3(1, 1, 2.9)
+size = Vector3(1, 7, 2.9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5ixg"]
 size = Vector3(1, 8, 3)
@@ -162,7 +162,7 @@ shape = SubResource("BoxShape3D_0d6dj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BeachToHouse"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.35, -37.2, 48.9)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.35, -10.2, 48.9)
 shape = SubResource("BoxShape3D_jhb31")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/BeachToHouse/CollisionShape3D2"]
@@ -225,7 +225,7 @@ shape = SubResource("BoxShape3D_b7ooe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 1.4)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HouseToHall1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149998, -37.2, 35.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149998, -10.2, 35.3)
 shape = SubResource("BoxShape3D_jhb31")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HouseToHall1/CollisionShape3D2"]
@@ -288,17 +288,18 @@ shape = SubResource("BoxShape3D_rayr4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall4ToInfHall"]
-transform = Transform3D(-4.37112e-08, 0, -1, 0, 1, 0, 1, 0, -4.37112e-08, 0.599998, 0.5, 2.6)
+transform = Transform3D(-4.37112e-08, 0, -1, 0, 1, 0, 1, 0, -4.37112e-08, 0.0999985, 0.5, 2.6)
 shape = SubResource("BoxShape3D_2yg5f")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -423,11 +424,11 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/SupplyClosetToBackroom1"]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 6.09998, 0.8, 2.34992)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 6.09998, 3.8, 2.34991)
 shape = SubResource("BoxShape3D_6euxw")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/SupplyClosetToBackroom1/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/SupplyClosetToBackroom1"]
 transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -14.4, 4, 1.19999)
@@ -960,7 +961,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, -6)
 script = ExtResource("3_4g4u6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HouseChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -35, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -10, 0.5)
 shape = SubResource("BoxShape3D_t5rhi")
 
 [node name="BeachChunk" type="Area3D" parent="HotelRooms" groups=["persist"]]

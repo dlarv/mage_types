@@ -1452,7 +1452,10 @@ shape = SubResource("ConcavePolygonShape3D_e6sux")
 transform = Transform3D(0.885766, 0, 0, 0, 0.885766, 0, 0, 0, 0.885766, -488.989, -1.98476, -289.574)
 material_override = SubResource("ShaderMaterial_8d2a2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Water" index="0"]
+[node name="StaticBody3D" type="Area3D" parent="Water" index="0"]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("3_mpgmr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_2vlmm")
