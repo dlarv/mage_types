@@ -1,5 +1,4 @@
 extends Node
-class_name ActorAction 
 
 ## Datatype for actions selected by BattleActors.
 ## These are basically like an instance of a _BattleAction.
@@ -20,9 +19,8 @@ func _init(actor: BattleActor, action: _BattleAction, targets: Array[BattleActor
 	self.targets = targets
 	self.team_index = teamIndex
 
-static func flee() -> ActorAction:
-	return ActorAction.new(null, null, [], -1)
+static func flee() -> Battle.ActorAction:
+	return new(null, null, [], -1)
 
 func is_flee() -> bool:
 	return actor == null
-

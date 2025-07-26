@@ -1,5 +1,7 @@
 extends Control
 
+const StatChangeDisplay := preload("res://src/battle_system/gui/components/stat_display/StatChangeDisplay.gd")
+
 @export var name_label: Label 
 @export var health_bar: HSlider 
 @export var hp_label: Label 

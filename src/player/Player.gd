@@ -1,5 +1,4 @@
 extends CharacterBody3D
-class_name Player 
 
 signal actor_changed(actor: BattleActor)
 signal team_changed(team: Array[BattleActor])

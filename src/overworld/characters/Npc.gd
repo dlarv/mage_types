@@ -13,8 +13,8 @@ var story_actor: StoryActor = null
 var vendor_actor: VendorActor = null
 var enemy_actor: EnemyActor = null
 var animation_actor: AnimationActor = null
-# Player or PhysicsPlayer
-var _player: Variant
+## type: Player | PhysicsPlayer
+var _player: Node3D 
 
 var _on_cooldown := false
 

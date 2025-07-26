@@ -2,6 +2,8 @@
 extends _BattleAction 
 class_name Attack 
 
+const AttackType := AlignmentManager.Type
+
 @export var effects: Array[_BaseEffectSlot]
 @export_range(0, 1) var accuracy := 1.0
 
@@ -30,9 +32,9 @@ class_name Attack
 
 # override
 func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
-	var msg: Array[String] = [super.apply_effects(user, targets).msg]
+	var msg: Array[String] = super.apply_effects(user, targets).msg
 	if user.alignment_manager:
-		user.alignment_manager.append_unnormalized(element, 1, AlignmentManager.Type.ATTACK)
+		user.alignment_manager.append_unnormalized(element, 1, AttackType.ATTACK)
 
 	# Calculate accuracy.
 	var rand := randf()
@@ -53,7 +55,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
-	var delayedEffects := []
+	var delayedEffects: Array[_BaseEffectSlot]= []
 	for i in len(targets):
 		var target := targets[i]
 		var didDmg := false
@@ -84,7 +86,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 					msg.append("........%s was defeated." % target.name)
 					continue
 		
-	for effect: StatusEffect in delayedEffects:
+	for effect: _BaseEffectSlot in delayedEffects:
 		var didDmg := true
 		var msg2 := effect.apply_effect(user, user, self, affinity)
 

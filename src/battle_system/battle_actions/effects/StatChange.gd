@@ -19,7 +19,7 @@ const MODIFIER := 0.3
 @export var clear_first := false
 
 func _init() -> void:
-	id = StatusEffectManager.StatusEffects.STAT_CHANGE
+	id = Effects.STAT_CHANGE
 
 
 func get_strength() -> float:
@@ -90,5 +90,5 @@ func _get_message() -> String:
 
 
 # override
-func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:
-	id = StatusEffectManager.StatusEffects.STAT_CHANGE
+func _set_status_effect(val: Effects) -> void:
+	id = Effects.STAT_CHANGE

@@ -3,6 +3,7 @@ extends Resource
 class_name AlignmentManager
 
 enum Type { ATTACK, TRANSMUTATION, OTHER }
+
 const ATTACK_MOD := 1.0
 const TRANSMUTATION_MOD := 3.0
 

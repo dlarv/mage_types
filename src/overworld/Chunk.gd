@@ -7,7 +7,7 @@ class_name Chunk
 ## This value is passed to any animation_actors in scene that do not have their own.
 @export var animation_player: AnimationPlayer
 
-var _persistent_objs := {}
+var _persistent_objs: Dictionary[NodePath, Node]= {}
 
 func _ready() -> void:
 	if not chunk: return
@@ -72,7 +72,7 @@ func serialize() -> Dictionary:
 		"visible": visible,
 	}
 
-	for key: String in _persistent_objs.keys():
+	for key: NodePath in _persistent_objs.keys():
 		if _persistent_objs[key] is Golem:
 			pass
 		data[key] = _persistent_objs[key].serialize()
@@ -83,7 +83,7 @@ func deserialize(data: Dictionary) -> void:
 	if not is_node_ready():
 		await ready
 	visible = data.visible
-	for key: String in data.keys():
+	for key: Variant in data.keys():
 		if key is String and (key == "path" or key == "visible"): continue
 		if "is_golem" in data[key] and not key in _persistent_objs:
 			add_golem(Golem.create())

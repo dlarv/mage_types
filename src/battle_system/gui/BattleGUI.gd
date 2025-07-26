@@ -6,6 +6,9 @@ extends Node3D
 signal actions_selected(actions: Array[ActorAction])
 signal target_selected(actor: BattleActor)
 
+const ActorAction := preload("res://src/battle_system/ActorAction.gd")
+const TeamDisplay := preload("res://src/battle_system/gui/components/TeamDisplay.gd")
+
 @export var message_box: RichTextLabel 
 @export var team_display: TeamDisplay
 @export var player_controls: Control

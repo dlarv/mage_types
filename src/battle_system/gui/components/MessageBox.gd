@@ -1,5 +1,4 @@
 extends RichTextLabel 
-class_name MessageBox 
 
 @export var button: Button 
 

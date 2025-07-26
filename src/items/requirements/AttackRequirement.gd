@@ -9,13 +9,8 @@ class_name AttackRequirement
 
 # override
 func check(actor: Variant) -> bool:
-	if(actor is BaseCompanion):
-		actor = actor.battle_actor
-	if(actor is Player or actor is PhysicsPlayer):
-		actor = actor.battle_actor
-
-	if incompatible:
-		return _has_any(actor.attacks)
+	actor = _get_battle_actor(actor)
+	if incompatible: return _has_any(actor.attacks)
 	return _has_all(actor.attacks)
 
 func _has_any(actorAttacks: Array[Attack]) -> bool:

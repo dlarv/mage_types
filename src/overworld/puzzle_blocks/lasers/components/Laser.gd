@@ -1,5 +1,4 @@
 extends Resource
-class_name Laser
 
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":

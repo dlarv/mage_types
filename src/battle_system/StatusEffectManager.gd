@@ -1,5 +1,4 @@
 extends Node 
-class_name StatusEffectManager 
 
 enum StatusEffects { STASIS, BLOCK, POISON, PHOBIC, HEALING, FLINCH, STAT_CHANGE }
 

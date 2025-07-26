@@ -3,6 +3,8 @@ extends Node3D
 
 signal laser_broken()
 
+const Laser := preload("res://src/overworld/puzzle_blocks/lasers/components/Laser.gd")
+
 var laser: Laser
 var mesh: MeshInstance3D:
 	get:

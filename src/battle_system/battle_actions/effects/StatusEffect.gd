@@ -2,7 +2,10 @@
 extends _AttackEffect 
 class_name StatusEffect 
 
-@export var id: StatusEffectManager.StatusEffects: set = _set_status_effect
+const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
+const Effects := StatusEffectManager.StatusEffects
+
+@export var id: Effects: set = _set_status_effect
 @export var duration: int 
 @export var icon: PackedScene 
 ## The text displayed inside the MessageBox, etc.
@@ -39,28 +42,28 @@ func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: boo
 	var doesNotHave := 0 if target.has_status_effect(self) else 1
 	var bias: int
 	match id:
-		StatusEffectManager.StatusEffects.STASIS:
+		Effects.STASIS:
 			positiveEffect = 1 if isFriendly else -1
 			bias = 2 if target.has_phobia() else 0
 
-		StatusEffectManager.StatusEffects.BLOCK: 
+		Effects.BLOCK: 
 			positiveEffect = 1 if isFriendly else -1
 			if float(target.current_hp) / float(target.hp) <= 0.5: bias = 2
 			else: bias = 1
 			# Don't worry about stacking.
 			doesNotHave = 1
 
-		StatusEffectManager.StatusEffects.POISON: 
+		Effects.POISON: 
 			positiveEffect = -1 if isFriendly else 1
 			if float(target.current_hp) / float(target.hp) > 0.5: bias = 2
 			else: bias = 1
 
-		StatusEffectManager.StatusEffects.HEALING: 
+		Effects.HEALING: 
 			positiveEffect = 1 if isFriendly else -1
 			if float(target.current_hp) / float(target.hp) <= 0.5: bias = 2
 			else: bias = 1
 
-		StatusEffectManager.StatusEffects.FLINCH: 
+		Effects.FLINCH: 
 			positiveEffect = -1 if isFriendly else 1
 
 	return float(bias * positiveEffect * doesNotHave) / 2.0
@@ -72,5 +75,5 @@ func _get_message() -> String:
 	return message
 
 
-func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:
+func _set_status_effect(val: Effects) -> void:
 	id = val

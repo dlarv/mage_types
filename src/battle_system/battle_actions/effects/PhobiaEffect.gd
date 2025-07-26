@@ -2,6 +2,7 @@
 extends StatusEffect 
 class_name PhobiaEffect 
 
+
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":
 	get:
@@ -17,7 +18,7 @@ var element: ElementalType:
 		_set_name("")
 
 func _init() -> void:
-	id = StatusEffectManager.StatusEffects.PHOBIC
+	id = Effects.PHOBIC
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
@@ -48,5 +49,5 @@ func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: boo
 	return 1.0
 
 # override
-func _set_status_effect(val: StatusEffectManager.StatusEffects) -> void:
-	id = StatusEffectManager.StatusEffects.PHOBIC
+func _set_status_effect(val: Effects) -> void:
+	id = Effects.PHOBIC

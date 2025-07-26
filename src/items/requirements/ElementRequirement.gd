@@ -6,10 +6,7 @@ class_name ElementRequirement
 
 # override
 func check(actor: Variant) -> bool:
-	if(actor is BaseCompanion):
-		actor = actor.battle_actor
-	if(actor is Player or actor is PhysicsPlayer):
-		actor = actor.battle_actor
+	actor = _get_battle_actor(actor)
 	return actor != null and (actor.element1 == element or actor.element2 == element)
 
 func get_requirement_message() -> String:

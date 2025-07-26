@@ -1,5 +1,4 @@
 extends Node
-class_name StatChangeDisplay 
 
 const StatDisplay := preload("res://src/battle_system/gui/components/stat_display/SingleStatDisplay.gd")
 

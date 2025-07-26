@@ -7,7 +7,8 @@ signal show_info(action: _BattleAction, limitInfo: bool)
 signal active_actor_changed(index: int)
 signal start_turn()
 
-@export var three_state_button: PackedScene 
+const ThreeStateButton := preload("res://src/battle_system/gui/components/three_state_button.tscn")
+
 @export var control_panel: TabContainer 
 @export var attacks_panel: TabContainer 
 @export var items_scroller: GridContainer
@@ -123,7 +124,7 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 		i += 1
 
 		# Init.
-		var button := three_state_button.instantiate()
+		var button := ThreeStateButton.instantiate()
 		button.button_group = group
 		button.text = attack.name
 		button.shortcut_keycode = "attack_shortcut_%s" % str(i + 1)
@@ -142,7 +143,7 @@ func populate_items_menu(items: Array[RegularItem]) -> void:
 	var group := ButtonGroup.new()
 
 	for item: RegularItem in items:
-		var button := three_state_button.instantiate()
+		var button := ThreeStateButton.instantiate()
 		button.button_group = group
 		button.text = item.name
 

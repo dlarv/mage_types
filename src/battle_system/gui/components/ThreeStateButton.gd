@@ -1,5 +1,4 @@
 extends Control
-class_name ThreeStateButton 
 
 signal state_changed(state: bool)
 

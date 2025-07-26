@@ -6,6 +6,7 @@ enum EndState { WON, DEFEATED, FLED }
 enum BattlefieldStateParams {  }
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
+const ActorAction := preload("res://src/battle_system/ActorAction.gd")
 
 @export var gui: Node3D
 @export var ai: OpponentController 

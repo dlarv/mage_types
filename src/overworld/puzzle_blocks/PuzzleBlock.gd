@@ -2,6 +2,8 @@
 extends MagiClay
 class_name PuzzleBlock
 
+const Laser := preload("res://src/overworld/puzzle_blocks/lasers/components/Laser.gd")
+
 signal on(node: PuzzleBlock)
 signal off(node: PuzzleBlock)
 @warning_ignore("UNUSED_SIGNAL")

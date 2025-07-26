@@ -1,4 +1,4 @@
-extends Player
+extends "Player.gd"
 
 @export var walk_speed := 700.0
 @export var draggable_speed := 500.0

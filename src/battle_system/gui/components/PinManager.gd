@@ -2,6 +2,9 @@ extends Node3D
 
 signal pin_selected(effect: StatusEffect)
 
+const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
+const Effects := StatusEffectManager.StatusEffects
+
 var pins: Dictionary[String, Node]= {}
 
 func _ready() -> void:
@@ -23,7 +26,7 @@ func _ready() -> void:
 
 func insert_pin(effect: StatusEffect) -> void:
 	var key := effect.name
-	if effect.id == StatusEffectManager.StatusEffects.PHOBIC:
+	if effect.id == Effects.PHOBIC:
 		key = "%sPhobic" % effect.element
 	
 	var pin: Node = pins.get(key)
@@ -35,7 +38,7 @@ func insert_pin(effect: StatusEffect) -> void:
 func remove_pins(effects: Array[StatusEffect]) -> void:
 	for effect in effects:
 		var key := effect.name
-		if effect.id == StatusEffectManager.StatusEffects.PHOBIC:
+		if effect.id == Effects.PHOBIC:
 			key = "%sPhobic" % effect.element
 
 		var pin: Node = pins.get(key)

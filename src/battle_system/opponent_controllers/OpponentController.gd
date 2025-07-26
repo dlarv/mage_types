@@ -3,6 +3,7 @@ class_name OpponentController
 
 signal battle_ended(endState: Battle.EndState)
 
+const ActorAction := preload("res://src/battle_system/ActorAction.gd")
 const TEAM_INDEX = 1
 
 @export var dialog_resource: DialogueData

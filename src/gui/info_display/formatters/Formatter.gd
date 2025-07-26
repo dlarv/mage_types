@@ -2,7 +2,12 @@ extends Control
 class_name Formatter
 
 signal meta_clicked(obj: Variant)
+
 const ElementEffect := preload("res://src/gui/RichTextElement.gd")
+const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
+const AttackASDF := preload("res://src/gui/info_display/formatters/AttackFormatter.gd")
+
+@export var val: AttackASDF
 
 func _enter_tree() -> void:
 	var effect := ElementEffect.new()

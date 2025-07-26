@@ -16,6 +16,8 @@ signal equipment_equipped(equipment: Equipment)
 @warning_ignore("unused_signal")
 signal action_selected(action: _BattleAction)
 
+const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
+
 @export var name: String = "Guy" 
 @export var level: int = 1
 var xp: float = 0

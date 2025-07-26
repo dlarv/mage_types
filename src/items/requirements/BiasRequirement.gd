@@ -17,10 +17,7 @@ var element: ElementalType = ElementManager.Blank:
 
 # override
 func check(actor: Variant) -> bool:
-	if(actor is BaseCompanion):
-		actor = actor.battle_actor
-	if(actor is Player or actor is PhysicsPlayer):
-		actor = actor.battle_actor
+	actor = _get_battle_actor(actor)
 	# If the bias is Blank, this acts like a wildcard.
 	if element.is_blank():
 		return actor != null and not actor.elemental_bias.is_blank()

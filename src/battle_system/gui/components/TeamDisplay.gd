@@ -1,6 +1,5 @@
 @tool
 extends Node3D
-class_name TeamDisplay 
 
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)

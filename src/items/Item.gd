@@ -11,7 +11,7 @@ var details: String: set = _set_details
 # Checks whether the actor matches all of the requirements.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
 func check_requirements(actor: BattleActor) -> Array[ItemRequirement]:
-	var output := []
+	var output: Array[ItemRequirement] = []
 	for req in requirements:
 		if not req.check(actor):
 			output.append(req)
