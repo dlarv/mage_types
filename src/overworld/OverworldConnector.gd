@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var battle_scene: PackedScene 
+# @export var battle_scene: PackedScene 
 @export var world: Node3D
 @export var overworld: Node3D
 @export var dialog_box: DialogueBox
@@ -13,9 +13,7 @@ extends Node3D
 var _current_story_actor: StoryActor = null
 
 func _ready() -> void:
-	var p = get_tree().get_nodes_in_group("player") 
-	if len(p) > 0:
-		_player = p[0]
+	_player = get_tree().get_first_node_in_group("player")
 
 	if not _player.battle_started.is_connected(_on_player_battle_started):
 		_player.battle_started.connect(_on_player_battle_started)
@@ -35,7 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		dialog_box.stop()
 
 func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
-	var battle := battle_scene.instantiate()
+	# var battle := battle_scene.instantiate()
 
 	# If an animation player messes with the player's team, they'll be removed from it.
 	if not _player.battle_actor in allies:
@@ -43,11 +41,11 @@ func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	hud.hide()
-	add_child(battle)
-	battle.start(allies, Inventory.get_battle_items(), enemy.team, enemy.ai)
+	# add_child(battle)
+	Battle.start(allies, Inventory.get_battle_items(), enemy.team, enemy.ai)
 	UIManager.in_battle_mode = true
-	await battle.battle_ended
-	battle.queue_free()
+	await Battle.battle_ended
+	# battle.queue_free()
 	hud.show()
 	UIManager.in_battle_mode = false
 	

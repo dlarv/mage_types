@@ -1,5 +1,4 @@
 extends Node3D
-class_name BattleGUI
 ## Facilitate action and target selection.
 ## Display messages.
 ## Play animations.

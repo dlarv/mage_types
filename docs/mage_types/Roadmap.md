@@ -38,7 +38,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
 - [ ] BattleAction refactor
-	- [ ] Battle should be a singleton that is only accessible when battle is ongoing
+	- [x] Battle should be a singleton that is only accessible when battle is ongoing
 	- [ ] AttackEffects with more complex effects should be able to query Battle object directly for battlefield state
 		- e.g. Red attack that does double damage if partner uses same move. AttackEffect should be able to query the Battle for a list of selected actions and determine from there
 		- Ensure this doesn't break future multiplayer potential?

@@ -25,6 +25,7 @@ Settings="*res://src/settings/settings.tscn"
 Inventory="*res://src/items/Inventory.tscn"
 UIManager="*res://src/gui/ui_manager.tscn"
 StoryManager="*res://src/story_system/story_manager.tscn"
+Battle="*res://src/battle_system/battle.tscn"
 
 [debug]
 

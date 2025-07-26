@@ -1,17 +1,18 @@
 extends Node
-class_name Battle 
 
 signal battle_ended(endState: EndState)
 
 enum EndState { WON, DEFEATED, FLED }
 
+const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
+
+@export var gui: Node3D
+@export var ai: OpponentController 
+@export var _dialog_box: DialogueBox
+
 # BattleActor[]
 var enemies := []
 var allies := []
-
-@export var gui: BattleGUI
-@export var ai: OpponentController 
-@export var _dialog_box: DialogueBox
 
 var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
@@ -25,8 +26,13 @@ func _unhandled_input(event) -> void:
 	
 
 func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
+	_defeated_allies = 0
+	_defeated_enemies = 0
+	_turn_counter = 0
+
 	self.allies = allies
 	self.enemies = enemies
+	self.ai = ai	
 
 	for ally in allies:
 		ally.setup()
@@ -36,13 +42,17 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
 
 	ai.setup(enemies)
-	battle_ended.connect(ai._on_battle_ended)
 
-	self.ai = ai	
+	if not battle_ended.is_connected(ai._on_battle_ended):
+		battle_ended.connect(ai._on_battle_ended)
+
 	if ai.dialog_resource != null:
 		_dialog_box.data = ai.dialog_resource
 
 
+	gui = BattleGUI.instantiate()
+	add_child(gui)
+	gui.actions_selected.connect(on_player_actions_selected)
 	gui.setup(allies, allyItems, enemies)
 	_prep_next_turn()
 	await dialog(false)
@@ -64,6 +74,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 	if len(allyActions) == 1 and allyActions[0].is_flee():
 		await gui.display_message("You ran away.")
 		battle_ended.emit(EndState.FLED)
+		_resolve_end_of_battle()
 		return
 
 	# Get actions for opponent's team.
@@ -243,6 +254,8 @@ func _resolve_end_of_battle() -> void:
 	
 	for enemy in enemies:
 		enemy.resolve_end_of_battle()
+	
+	remove_child(gui)
 
 
 func _prep_next_turn() -> void:
@@ -265,6 +278,6 @@ func _prep_next_turn() -> void:
 
 # To be DEPRECATED
 func _play_animation(action: ActorAction) -> void:
-		var userPosition := gui.get_actor_display_position(action.actor)
-		var targetPosition := gui.get_actor_display_position(action.targets[0])
+		var userPosition: Vector2 = gui.get_actor_display_position(action.actor)
+		var targetPosition: Vector2 = gui.get_actor_display_position(action.targets[0])
 		action.action.play_animation(userPosition, targetPosition, self)
