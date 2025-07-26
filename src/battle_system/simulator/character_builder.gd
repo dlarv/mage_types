@@ -1,6 +1,6 @@
 extends Control
 
-signal setup_finished(team1: Array, items: Array, team2: Array, ai)
+signal setup_finished(team1: Array[BattleActor], items: Array[RegularItem], team2: Array[BattleActor], ai: OpponentController)
 
 @export var CharacterListItem: PackedScene
 @export var alert_popup: AcceptDialog

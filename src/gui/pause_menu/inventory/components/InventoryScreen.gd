@@ -5,8 +5,8 @@ signal item_selected(item: Item)
 var _buttons := []
 var _current_selected_item: Item = null
 
-func setup(items: Array) -> void:
-	for item in items:
+func setup(items: Array[ItemSlot]) -> void:
+	for item: ItemSlot in items:
 		var button := Button.new()
 		button.text = _format_name(item)
 		button.visible = item.quantity > 0

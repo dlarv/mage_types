@@ -11,7 +11,7 @@ class_name Equipment
 				effect.activated.connect(_on_activated)
 
 var _actors := []
-var _msgs := []
+var _msgs: Array[String] = []
 
 
 # virtual
@@ -38,7 +38,7 @@ func _on_activated(actor: BattleActor, msg: String) -> void:
 		_msgs.append(msg)
 
 
-func get_and_flush_msgs() -> Array:
+func get_and_flush_msgs() -> Array[String]:
 	var output := _msgs
 	_msgs = []
 	return output

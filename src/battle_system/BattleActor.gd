@@ -91,7 +91,7 @@ var is_defeated: bool:
 
 var aleady_defeated: bool = false
 
-var _msgs := []
+var _msgs: Array[String] = []
 # Dict<StringName, Callable> 
 var _func_overrides := {}
 
@@ -100,8 +100,8 @@ func setup() -> void:
 	battle_setup_completed.emit()
 
 
-func get_and_flush_msgs() -> Array:
-	var output = _msgs
+func get_and_flush_msgs() -> Array[String]:
+	var output := _msgs
 	_msgs = []
 
 	if equipment != null:
@@ -142,7 +142,7 @@ func is_element(element: ElementalType) -> bool:
 
 # Teaches actor spell contained within scroll.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
-func learn_spell(scroll: SpellScroll, index:=-1) -> Array:
+func learn_spell(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
 	if scroll == null:
 		var attack = attacks[index]
 		if attack:
@@ -263,7 +263,7 @@ func has_status_effect(effect: StatusEffect) -> bool:
 	return statuses.has(effect)
 
 
-func list_status_effects() -> Array:
+func list_status_effects() -> Array[StatusEffect]:
 	return statuses.list()
 
 

@@ -63,12 +63,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_on_end_turn_button_pressed()
 		
 
-func setup(allies: Array, items: Array, enemies: Array) -> void:
+func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array[BattleActor]) -> void:
 	_skip_indices = []
 	self._allies = allies
 	_selected_actions = []
 
-	for i in range(len(allies)):
+	for i: int in len(allies):
 		var ally = allies[i]
 		_selected_actions.append(0)
 		populate_new_attack_menu(ally, i)
@@ -84,15 +84,15 @@ func setup(allies: Array, items: Array, enemies: Array) -> void:
 		attacks_panel.tab_selected.connect(func(tabIndex):
 			if(tabIndex != index): return
 			# Disable/Enable attacks based on mana.
-			for j in range(len(ally.attacks)):
+			for j: int in len(ally.attacks):
 				if ally.attacks[j] == null: continue
 				var attack = ally.attacks[j]
 				var button = (attacks_panel.get_child(index).get_child(0).get_child(j))
 				button.is_locked = !attack.is_action_available(ally)
 
 			# Disable/Enable items based on reqs.
-			for j in range(len(items)):
-				var item = items[j]
+			for j: int in len(items):
+				var item = items[j].battle_item
 				var button = (items_scroller.get_child(j))
 				button.is_locked = !item.is_action_available(ally)
 			)
@@ -118,7 +118,7 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 	attacks_panel.add_child(scroller)
 
 	var i := -1
-	for attack in actor.attacks:
+	for attack: _BattleAction in actor.attacks:
 		if attack == null: continue
 		i += 1
 
@@ -138,29 +138,29 @@ func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
 		end_turn.connect(func(a): button.reset())
 
 
-func populate_items_menu(items) -> void:
+func populate_items_menu(items: Array[RegularItem]) -> void:
 	var group = ButtonGroup.new()
 
-	for item in items:
+	for item: RegularItem in items:
 		var button = three_state_button.instantiate()
 		button.button_group = group
 		button.text = item.name
 
-		button.state_changed.connect(func(state): on_action_selected(state, attacks_panel.current_tab, item))
+		button.state_changed.connect(func(state): on_action_selected(state, attacks_panel.current_tab, item.battle_item))
 
 		end_turn.connect(func(val): button.reset())
 		items_scroller.add_child(button)
 
 
-func populate_characters_menu(allies, enemies) -> void:
-	var group = ButtonGroup.new()
+func populate_characters_menu(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
+	var group := ButtonGroup.new()
 
-	var label = Label.new()
+	var label := Label.new()
 	label.text = "Allies"
 	character_scroller.add_child(label)
 
-	for ally in allies:
-		var button = Button.new()
+	for ally: BattleActor in allies:
+		var button := Button.new()
 		button.button_group = group
 		button.size_flags_horizontal = Button.SIZE_EXPAND_FILL
 		button.size_flags_vertical = Button.SIZE_EXPAND_FILL
@@ -172,8 +172,8 @@ func populate_characters_menu(allies, enemies) -> void:
 	label = Label.new()
 	label.text = "Enemies"
 	character_scroller.add_child(label)
-	for enemy in enemies:
-		var button = Button.new()
+	for enemy: BattleActor in enemies:
+		var button := Button.new()
 		button.button_group = group
 		button.size_flags_horizontal = Button.SIZE_EXPAND_FILL
 		button.size_flags_vertical = Button.SIZE_EXPAND_FILL
@@ -186,7 +186,7 @@ func prev_character() -> void:
 	control_panel.current_tab = 0
 	var index = attacks_panel.current_tab
 
-	for i in range(index - 1, _begin_index - 1, -1):
+	for i: int in range(index - 1, _begin_index - 1, -1):
 		index = max(i, _begin_index)
 		if(not _skip_indices[index]): break
 
@@ -202,7 +202,7 @@ func next_character() -> void:
 
 	var index = attacks_panel.current_tab
 	# for(int i = 1 index + i <= _final_index + 1 i++) {
-	for i in range(index + 1, _final_index + 1):
+	for i: int in range(index + 1, _final_index + 1):
 		index = min(i, _final_index)
 		if(not _skip_indices[index]): break
 
@@ -270,6 +270,6 @@ func on_action_selected(state: int, index: int, action: _BattleAction) -> void:
 		action_selected.emit(index, action)
 
 func _reset_selected() -> void:
-	for i in len(_allies):
+	for i: int in len(_allies):
 		_selected_actions[i] = int(_allies[i].is_defeated)
 		

@@ -3,7 +3,7 @@ extends Node3D
 ## Display messages.
 ## Play animations.
 
-signal actions_selected(actions: Array)
+signal actions_selected(actions: Array[ActorAction])
 signal target_selected(actor: BattleActor)
 
 @export var message_box: RichTextLabel 
@@ -24,11 +24,11 @@ var turn_counter:
 		turn_counter_display.text = "Turn %d" % value
 
 # ActorAction[]
-var _selected_actions := []
+var _selected_actions: Array[ActorAction] = []
 var _finished_setup := false
 var _accept_messages := true
 
-func setup(allies: Array, items: Array, enemies: Array) -> void:
+func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array[BattleActor]) -> void:
 	# Init allies.
 	self.allies = allies
 	self.enemies = enemies
@@ -79,8 +79,8 @@ func _on_action_target_selection_cancelled() -> void:
 
 
 func _on_action_selected(index: int, action: _BattleAction) -> void:
-	var targets = await select_targets(allies[index], action)
-	if targets == null: return
+	var targets: Array[BattleActor] = await select_targets(allies[index], action)
+	if len(targets) == 0: return
 
 	var actorAction = ActorAction.new(allies[index], action, targets, 0)
 	_selected_actions[index] = actorAction
@@ -88,8 +88,8 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 	player_controls.next_character()
 
 
-func select_targets(user: BattleActor, action:_BattleAction):
-	var targets: Array
+func select_targets(user: BattleActor, action:_BattleAction) -> Array[BattleActor]:
+	var targets: Array[BattleActor] = []
 
 	match action.target:
 		_BattleAction.TargetType.ALLIES:
@@ -110,7 +110,7 @@ func select_targets(user: BattleActor, action:_BattleAction):
 
 	
 	if len(targets) == 1 and targets[0] == null:
-		return null
+		return []
 	return targets
 
 
@@ -127,7 +127,7 @@ func _on_active_actor_changed(index: int) -> void:
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
-		actions_selected.emit([ActorAction.flee()])
+		actions_selected.emit([ActorAction.flee()] as Array[ActorAction])
 	else:
 		actions_selected.emit(_selected_actions)
 		_selected_actions = []
@@ -148,7 +148,7 @@ func _on_show_info(action: Variant, limitInfo:=false) -> void:
 	display_message_non_blocking(action, limitInfo)
 
 
-func display_turn_order(actors: Array) -> void:
+func display_turn_order(actors: Array[BattleActor]) -> void:
 	if not Settings.show_battle_turn_order:
 		turn_order_display.get_parent().hide()
 		return
@@ -158,7 +158,7 @@ func display_turn_order(actors: Array) -> void:
 	for child in turn_order_display.get_children():
 		turn_order_display.remove_child(child)
 	
-	for actor in actors:
+	for actor: BattleActor in actors:
 		var label := Label.new()
 		label.text = actor.name
 		turn_order_display.add_child(label)

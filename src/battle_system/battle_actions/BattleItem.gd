@@ -17,7 +17,7 @@ static func create(name: String, details: String="") -> BattleItem:
 	item.details = details
 	return item
 
-func apply_effects(user: BattleActor, targets: Array) -> Dictionary:
+func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
 	var msg: String = super.apply_effects(user, targets).msg
 	apply_cost(user)
 

@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player 
 
 signal actor_changed(actor: BattleActor)
-signal team_changed(team: Array)
+signal team_changed(team: Array[BattleActor])
 signal battle_started(allies, enemies)
 signal dialog_started(dialog_id, npc)
 signal cutscene_started(player: AnimationPlayer, id: String)

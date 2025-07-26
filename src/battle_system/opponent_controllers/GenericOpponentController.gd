@@ -29,23 +29,23 @@ var setup_bias: float
 var _user_transmutation_count := -1
 var _pref := -1
 
-func setup(team: Array) -> void:
+func setup(team: Array[BattleActor]) -> void:
 	super.setup(team)
 	aggression_bias = aggression
 	setup_bias = 1 - aggression
 
 
-func get_actions(otherTeam: Array) -> Array:
-	var actions := []
+func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
+	var actions: Array[ActorAction] = []
 
-	for user in team:
+	for user: BattleActor in team:
 		var action := _get_action(user, otherTeam)
 		actions.append(action)
 		user.action_selected.emit(action.action)
 	return actions;
 
 
-func _get_action(user: BattleActor, targets: Array) -> ActorAction:
+func _get_action(user: BattleActor, targets: Array[BattleActor]) -> ActorAction:
 	var maxVal := 0.0
 	var maxTarget: BattleActor = targets[0]
 	var maxAction: _BattleAction = user.attacks[0]
@@ -184,7 +184,7 @@ func _evaluate_target(user: BattleActor, target: BattleActor, action: _BattleAct
 
 	return val
 
-func _evaluate_single_target(user: BattleActor, targets: Array, action: _BattleAction) -> Array:
+func _evaluate_single_target(user: BattleActor, targets: Array[BattleActor], action: _BattleAction) -> Array:
 	var maxVal := 0.0
 	var maxTarget: BattleActor = targets[0]
 
@@ -198,7 +198,7 @@ func _evaluate_single_target(user: BattleActor, targets: Array, action: _BattleA
 
 	return [maxVal, maxTarget]
 
-func _evaluate_team_target(user: BattleActor, targets: Array, action: _BattleAction) -> Array:
+func _evaluate_team_target(user: BattleActor, targets: Array[BattleActor], action: _BattleAction) -> Array:
 	var ACTOR := BattleActor.new()
 	ACTOR.name = "TEAM"
 
@@ -212,7 +212,7 @@ func _evaluate_team_target(user: BattleActor, targets: Array, action: _BattleAct
 
 	return [maxVal, ACTOR]
 
-func _evaluate_all(user: BattleActor, enemies: Array, action: _BattleAction) -> Array:
+func _evaluate_all(user: BattleActor, enemies: Array[BattleActor], action: _BattleAction) -> Array:
 	var ACTOR := BattleActor.new()
 	ACTOR.name = "ALL"
 
@@ -226,7 +226,7 @@ func _evaluate_all(user: BattleActor, enemies: Array, action: _BattleAction) -> 
 
 	return [maxVal, ACTOR]
 
-func _evaluate_random(user: BattleActor, enemies: Array, action: _BattleAction) -> Array:
+func _evaluate_random(user: BattleActor, enemies: Array[BattleActor], action: _BattleAction) -> Array:
 	var ACTOR := BattleActor.new()
 	ACTOR.name = "RANDOM"
 

@@ -41,7 +41,7 @@ func _on_actor_hovered(actor: TeamDisplayActor) -> void:
 	_selected_target = actor
 
 
-func setup(allies: Array, enemies: Array) -> void:
+func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
 	var headAlly: TeamDisplayActor = add_display(allies[0], true)
 	var headEnemy: TeamDisplayActor = add_display(enemies[0], false)
 	headAlly.set_opposite(headEnemy)

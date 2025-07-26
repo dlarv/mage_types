@@ -25,7 +25,7 @@ func setup(player: Node3D) -> void:
 	_setup_team(_player.team)
 
 
-func _setup_team(team: Array) -> void:
+func _setup_team(team: Array[BattleActor]) -> void:
 	for screen in get_children():
 		if screen == $Player: continue
 		remove_child(screen)

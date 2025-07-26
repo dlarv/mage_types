@@ -94,7 +94,7 @@ func display_key_item(item: KeyItem) -> void:
 	name_label.text = item.name
 	details_label.append_text(item.details)
 
-func _format_requirement(reqs: Array) -> void:
+func _format_requirement(reqs: Array[ItemRequirement]) -> void:
 	req_vbox.visible = len(reqs) > 0
 	if len(reqs) == 0: return
 

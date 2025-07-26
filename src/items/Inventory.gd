@@ -11,14 +11,14 @@ signal overworld_spell_enabled(id: OverworldSpell.Spells, isEnabled: bool)
 @export var money: int = 0
 
 @export_category("Item Arrays")
-var _battle_items: Array
+var _battle_items: Array[RegularItem]
 @export var regular_items: Array[ItemSlot]:
 	set(vals):
 		regular_items = vals
 		_battle_items = []
 		for item in vals:
 			if "battle_item" in item.item and item.item.battle_item != null:
-				_battle_items.append(item.item.battle_item)
+				_battle_items.append(item.item)
 				item.item.battle_item.item_consumed.connect(func():
 					item.quantity -= 1
 					quantity_changed.emit(item))
@@ -123,7 +123,7 @@ func _enter_tree() -> void:
 
 
 ## Returns list of **RegularItems** that contain BattleItems.
-func get_battle_items() -> Array:
+func get_battle_items() -> Array[RegularItem]:
 	return _battle_items
 
 

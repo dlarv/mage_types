@@ -32,7 +32,7 @@ func insert_pin(effect: StatusEffect) -> void:
 		pin.show()
 
 
-func remove_pins(effects: Array) -> void:
+func remove_pins(effects: Array[StatusEffect]) -> void:
 	for effect in effects:
 		var key = effect.name
 		if effect.id == StatusEffectManager.StatusEffects.PHOBIC:

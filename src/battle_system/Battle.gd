@@ -3,6 +3,7 @@ extends Node
 signal battle_ended(endState: EndState)
 
 enum EndState { WON, DEFEATED, FLED }
+enum BattlefieldStateParams {  }
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 
@@ -17,7 +18,7 @@ var allies := []
 var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
 var _turn_counter: int = 0
-var _actions := []
+var _actions: Array[ActorAction] = []
 var tie_breaker := false
 
 func _unhandled_input(event) -> void:
@@ -25,7 +26,7 @@ func _unhandled_input(event) -> void:
 		Logger.save_log()
 	
 
-func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentController) -> void:
+func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: Array[BattleActor], ai: OpponentController) -> void:
 	_defeated_allies = 0
 	_defeated_enemies = 0
 	_turn_counter = 0
@@ -34,10 +35,10 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 	self.enemies = enemies
 	self.ai = ai	
 
-	for ally in allies:
+	for ally: BattleActor in allies:
 		ally.setup()
 		ally.was_just_defeated.connect(func(): _defeated_allies += 1)
-	for enemy in enemies:
+	for enemy: BattleActor in enemies:
 		enemy.setup()
 		enemy.was_just_defeated.connect(func(): _defeated_enemies += 1)
 
@@ -52,14 +53,18 @@ func start(allies: Array, allyItems: Array, enemies: Array, ai: OpponentControll
 
 	gui = BattleGUI.instantiate()
 	add_child(gui)
-	gui.actions_selected.connect(on_player_actions_selected)
+	gui.actions_selected.connect(_on_player_actions_selected)
 	gui.setup(allies, allyItems, enemies)
 	_prep_next_turn()
-	await dialog(false)
+	await _dialog(false)
 	_dialog_box.skip_input_action = "interact"
 
 
-func on_player_actions_selected(allyActions: Array) -> void:
+func query_battlefield_state(asker: BattleActor, param: BattlefieldStateParams) -> Variant:
+	return null
+
+
+func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 	_dialog_box.stop()
 	gui.enable_player_controls(false)
 	gui.show_enemy_intentions(false)
@@ -94,7 +99,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 			return a.actor.speed > b.actor.speed
 		return tie_breaker)
 
-	await dialog(false)
+	await _dialog(false)
 
 	for action in _actions:
 		# This means a character is defeated.
@@ -128,7 +133,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if not missed:
 			for target in action.targets:
 				if target.is_defeated: continue
-				await calculate_transmutations_2(target, action.action)
+				await _calculate_transmutations(target, action.action)
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -141,7 +146,7 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		if not missed and action.targets.find(action.actor) == -1 \
 				and action.action is Attack \
 				and (action.action).attack_range == Attack.AttackRange.MELEE:
-			await calculate_transmutations_2(action.actor, action.action) 
+			await _calculate_transmutations(action.actor, action.action) 
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -162,26 +167,12 @@ func on_player_actions_selected(allyActions: Array) -> void:
 		await get_tree().create_timer(0.5).timeout
 
 	Logger.append_battle_log("\n\nPlayer is selecting _actions...")
-	await dialog(true)
+	await _dialog(true)
 	_prep_next_turn()
 	gui.enable_player_controls(true)
 
 
-func calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
-	if target.stasis:
-		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)
-		return
-
- 	# Calculate primary + attack 
-	await _calculate_transmutation(target.element1, action.element, target, 0)
- 	# Calculate secondary + attack 
-	await _calculate_transmutation(target.element2, action.element, target, 1)
-	# Calculate internal transmutation.
-	if await _calculate_transmutation(target.element1, target.element2, target, 0, true):
-		target.set_element(1, ElementManager.Blank)
-
-
-func calculate_transmutations_2(target: BattleActor, action: _BattleAction) -> void:
+func _calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
 	if target.stasis:
 		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)
 		return
@@ -225,7 +216,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 	return true
 
 
-func dialog(isAfterTurn: bool) -> void:
+func _dialog(isAfterTurn: bool) -> void:
 	var dialogId = ai.get_next_dialog_id(_turn_counter, isAfterTurn)
 
 	if len(dialogId) > 0:
@@ -260,7 +251,7 @@ func _resolve_end_of_battle() -> void:
 
 func _prep_next_turn() -> void:
 	Logger.append_battle_log("\n********************************AI********************************")
-	_actions = ai.get_actions(allies)
+	_actions.assign(ai.get_actions(allies))
 	Logger.append_battle_log("\n********************************END AI********************************")
 	gui.show_enemy_intentions(true)
 	tie_breaker = randf() < 0.5

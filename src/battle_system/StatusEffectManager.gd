@@ -23,7 +23,7 @@ var blocking: StatusEffect = null
 var phobias := {}
 
 # StatusEffect[]
-var _effects_to_remove := []
+var _effects_to_remove: Array[StatusEffect] = []
 # Dict<string, StatusEffect>
 var statuses := {}
 
@@ -59,7 +59,7 @@ func get_status(status: StatusEffect) -> StatusEffect:
 			return statuses.get(status.id)
 
 
-func remove(effects: Array) -> void: 
+func remove(effects: Array[StatusEffect]) -> void: 
 	for effect in effects: 
 		if effect.id == StatusEffects.PHOBIC:
 			if effect.element.is_blank():
@@ -83,7 +83,7 @@ func has(effect: StatusEffect) -> bool:
 		return statuses.has(effect.id)
 
 
-func calculate_expirations() -> Array:
+func calculate_expirations() -> Array[StatusEffect]:
 	for effect in statuses.values():
 		effect.duration -= 1
 		if effect.is_expired():
@@ -135,7 +135,7 @@ func check_phobic(element:ElementalType) -> PhobiaEffect:
 	return null
 
 
-func list() -> Array:
+func list() -> Array[StatusEffect]:
 	var output = []
 	if blocking != null:
 		output.append(blocking)

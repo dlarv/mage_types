@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_current_story_actor.skip_dialog()
 		dialog_box.stop()
 
-func _on_player_battle_started(allies: Array, enemy:EnemyActor) -> void:
+func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> void:
 	# var battle := battle_scene.instantiate()
 
 	# If an animation player messes with the player's team, they'll be removed from it.

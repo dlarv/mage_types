@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 	_spawn_position = global_position
 
 
-func setup(team: Array, controller: OpponentController) -> void:
+func setup(team: Array[BattleActor], controller: OpponentController) -> void:
 	for actor in team:
 		_add_new_gradient_sprite(actor)
 	

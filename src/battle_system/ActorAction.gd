@@ -9,10 +9,10 @@ var actor: BattleActor
 var priority: int 
 var action: _BattleAction 
 # BattleActor[]
-var targets := []
+var targets: Array[BattleActor] = []
 var team_index: int
 
-func _init(actor: BattleActor, action: _BattleAction, targets: Array, teamIndex: int) -> void:
+func _init(actor: BattleActor, action: _BattleAction, targets: Array[BattleActor], teamIndex: int) -> void:
 	if actor == null: return
 	self.actor = actor
 	self.action = action

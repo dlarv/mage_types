@@ -5,14 +5,14 @@ class_name ScriptedOpponent
 
 var indices := []
 
-func setup(team: Array) -> void:
+func setup(team: Array[BattleActor]) -> void:
 	super.setup(team)
 	
 	indices = []
 	for i in team:
 		indices.append(-1)
 
-func get_actions(otherTeam: Array) -> Array:
+func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 	var actions := []
 	var i = -1
 	for actor in team:

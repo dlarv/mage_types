@@ -168,7 +168,7 @@ func toggle_transmutation_menu() -> void:
 		show()
 
 
-func restrict_transmutation_menu(elements: Array) -> void:
+func restrict_transmutation_menu(elements: Array[ElementalType]) -> void:
 	matchup_chart.restrict_graph(elements)
 
 

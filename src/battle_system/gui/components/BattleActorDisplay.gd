@@ -11,7 +11,7 @@ class_name BattleActorDisplay
 var actor: BattleActor 
 
 var total_hp: float 
-# Dict<string, Node>
+# Dict<String, Node>
 var icons := {}
 
 func setup(actor: BattleActor):
@@ -27,10 +27,10 @@ func setup(actor: BattleActor):
 	actor.stat_manager.stat_changed.connect(display_stat_change)
 
 
-
 func set_health(hp: int) -> void:
 	health_bar.value = (float(hp) / total_hp) * 100.0
 	hp_label.text = "%d/%d" % [ hp, total_hp ]
+
 
 func get_target_position() -> Vector2:
 	var position = global_position
@@ -38,8 +38,10 @@ func get_target_position() -> Vector2:
 	position.y += size.y / 2
 	return position
 
+
 func display_stat_change(stat: StatManager.Stats, value: float) -> void:
 	stat_change_display.add(stat, value)
+
 
 func set_defeated() -> void:
 	modulate = Color(1, 1, 1, .5)

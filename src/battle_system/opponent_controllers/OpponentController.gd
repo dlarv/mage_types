@@ -12,7 +12,7 @@ var team := []
 
 var _next_dialog_index := 0
 
-func setup(team: Array) -> void:
+func setup(team: Array[BattleActor]) -> void:
 	_next_dialog_index = 0
 	self.team = team
 	dialog_ids.sort_custom(func(a, b): 
@@ -23,7 +23,7 @@ func setup(team: Array) -> void:
 func _on_battle_ended(endState: Battle.EndState) -> void:
 	battle_ended.emit(endState)
 
-func get_actions(otherTeam: Array) -> Array:
+func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 	var actions := []
 	actions.resize(len(team))
 
