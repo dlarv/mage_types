@@ -28,7 +28,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 			var rand := randf()
 
 			if rand <= effect.chance:
-				msg.append("\n%s" % effect.attack_effect.apply_effect(user, target, self))
+				msg.append("\n%s" % effect.attack_effect.apply_effect(user, target, DataBuffer.new(self)))
 				# Add status effect icon.
 				if effect.attack_effect is Damage:
 					# Check if character was defeated.

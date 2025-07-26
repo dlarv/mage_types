@@ -12,7 +12,7 @@ class_name EffectSlot
 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, effectiveness:=1.0) -> String:
 	var msg := ""
 	var rand := randf()
 	if rand <= chance:
@@ -20,8 +20,8 @@ func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction,
 			Logger.append_battle_log("Action(%s) Succeeded. Chance(%f) >= Rand(%f)" 
 					% [attack_effect.name, chance, rand])
 		if effect_target == EffectTarget.TARGET or effect_target == EffectTarget.NOT_USER:
-			return attack_effect.apply_effect(user, target, action, effectiveness)
-		return attack_effect.apply_effect(user, user, action, effectiveness)
+			return attack_effect.apply_effect(user, target, buffer, effectiveness)
+		return attack_effect.apply_effect(user, user, buffer, effectiveness)
 
 	Logger.append_battle_log("Action(%s) failed. Chance(%f) >= Rand(%f)" 
 			% [attack_effect.name, chance, rand])

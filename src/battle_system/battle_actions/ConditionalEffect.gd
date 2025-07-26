@@ -21,18 +21,18 @@ var failure_msg := "FAILED"
 var _last_activated_effect: _BaseEffectSlot = null
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, effectiveness:=1.0) -> String:
 	# Godot doesn't have a XOR operator for bools, so I made do.
-	if (condition.check(user, target, action, effectiveness) or invert) \
-			and not (condition.check(user, target, action, effectiveness) and invert):
+	if (condition.check(user, target, buffer.action, effectiveness) or invert) \
+			and not (condition.check(user, target, buffer.action, effectiveness) and invert):
 		_last_activated_effect = success_effect
-		return success_effect.apply_effect(user, target, action, effectiveness)
+		return success_effect.apply_effect(user, target, buffer, effectiveness)
 	elif failed_effect != null:
 		_last_activated_effect = failed_effect
 
 		var msg := []
 
-		msg.append(failed_effect.apply_effect(user, target, action, effectiveness))
+		msg.append(failed_effect.apply_effect(user, target, buffer, effectiveness))
 
 		if print_failed_status == "FAILURE":
 			msg.insert(0, _get_failure_msg())

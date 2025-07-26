@@ -69,7 +69,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 				continue
 
 			didDmg = true
-			var msg2 := effect.apply_effect(user, target, self, affinity)
+			var msg2 := effect.apply_effect(user, target, DataBuffer.new(self), affinity)
 
 			# Get equipment effect logs, etc.
 			var msg3 := target.get_and_flush_msgs()
@@ -88,7 +88,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 		
 	for effect: _BaseEffectSlot in delayedEffects:
 		var didDmg := true
-		var msg2 := effect.apply_effect(user, user, self, affinity)
+		var msg2 := effect.apply_effect(user, user, DataBuffer.new(self), affinity)
 
 		# Get equipment effect logs, etc.
 		var msg3 := user.get_and_flush_msgs()
@@ -111,3 +111,5 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 # override
 func is_action_available(actor: BattleActor) -> bool:
 	return true
+
+

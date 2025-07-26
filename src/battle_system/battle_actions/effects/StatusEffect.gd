@@ -12,14 +12,14 @@ const Effects := StatusEffectManager.StatusEffects
 @export_multiline var description: String 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer=null, effectiveness:=1.0) -> String:
 	# if target == null or action == null: return name
 	if target == null:
 		target = user
 
 	var dupe := duplicate()
 	target.add_status_effect(dupe)
-	return super.apply_effect(user, target, action)
+	return super.apply_effect(user, target, buffer)
 
 
 func is_expired() -> bool:

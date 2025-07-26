@@ -204,7 +204,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 	var buff := ElementManager.get_side_effect(e1, e2)
 
 	# if buff != null:
-	buff.apply_effect(target)
+	buff.apply_effect(target, target)
 	msg.append("This reaction had side effects!")
 	msg.append_array(target.get_and_flush_msgs())
 

@@ -1,13 +1,15 @@
 extends Resource
 class_name _BaseEffectSlot
 
+const DataBuffer := Attack.DataBuffer
+
 enum EffectTarget { USER, TARGET, NOT_USER, USER_ONCE }
 
 @export var effect_target: EffectTarget = EffectTarget.TARGET: set = _set_effect_target
 @export_range(0, 1) var chance: float = 1
 
 #virtual
-func apply_effect(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, effectiveness:=1.0) -> String:
 	return ""
 
 ## If object is of type EffectSlot, returns itself.

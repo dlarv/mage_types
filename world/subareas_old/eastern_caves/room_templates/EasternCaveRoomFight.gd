@@ -1,4 +1,5 @@
 extends "EasternCaveRoom.gd"
+@warning_ignore_start("untyped_declaration")
 
 const Spawner := preload("res://src/overworld/enemies/Spawner.gd")
 

@@ -7,7 +7,7 @@ extends SubViewportContainer
 		if not is_inside_tree(): return
 		$SubViewport/Node3D.global_position = val
 
-var camera: 
+var camera: Camera3D: 
 	get:
 		return $SubViewport/Node3D/Camera3D
 
@@ -18,10 +18,10 @@ func hide_edge(startNode: ElementalType, endNode: ElementalType, edgeColor: Elem
 func show_edge(startNode: ElementalType, endNode: ElementalType, edgeColor: ElementalType=null) -> void:
 	_find_component(startNode, endNode, edgeColor).visible = true
 
-func hide_node(node: ElementalType):
+func hide_node(node: ElementalType) -> void:
 	_find_component(node).hide()
 	
-func show_node(node: ElementalType):
+func show_node(node: ElementalType) -> void:
 	_find_component(node).show()
 
 func hide_all() -> void:

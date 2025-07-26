@@ -75,3 +75,12 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 
 func apply_cost(user: BattleActor) -> float: 
 	return 0
+class DataBuffer:
+	var action: _BattleAction
+	var damage :=  0
+	var damage_total :=  0
+	var success := true
+	var buffer: Variant
+
+	func _init(action: _BattleAction) -> void:
+		self.action = action

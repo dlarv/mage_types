@@ -18,7 +18,7 @@ var element: ElementalType:
 @export_range(0, 1) var element_id: int 
 
 #override
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer=null, effectiveness:=1.0) -> String:
 	if target.get_element(element_id) == element:
 		return "But %s is already %s!" % [ user.name, element ]
 	elif target.stasis:

@@ -8,15 +8,15 @@ var actor_to_override := "target"
 @export var override_stat: StatManager.Stats
 
 
-func apply_effect(user: BattleActor, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer=null, effectiveness:=1.0) -> String:
 	var attack: float
 	var defense: float
 	match actor_to_override:
 		"user":
 			attack = user.get_stat(override_stat)
-			defense = target.get_defense_stat(action)
+			defense = target.get_defense_stat(buffer.action)
 		"target":
-			attack = user.get_attack_stat(action)
+			attack = user.get_attack_stat(buffer.action)
 			defense = target.get_stat(override_stat)
 		_:
 			attack = user.get_stat(override_stat)

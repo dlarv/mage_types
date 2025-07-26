@@ -1,4 +1,5 @@
 extends Chunk
+@warning_ignore_start("untyped_declaration")
 
 const Room := preload("room_templates/EasternCaveRoom.gd")
 const RoomPortal := preload("res://addons/room_and_portals/RoomPortal.gd")

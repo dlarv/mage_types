@@ -1,4 +1,5 @@
 extends Node3D
+@warning_ignore_start("untyped_declaration")
 
 enum Direction { N, E, S, W }
 
@@ -19,7 +20,6 @@ var correct_door: Direction
 var element: ElementalType
 var doors := {}
 
-@onready var _decor_parent: Node3D = $Decor
 var _puzzle_parent: Node3D
 
 func _ready() -> void:

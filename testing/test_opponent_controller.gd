@@ -1,5 +1,7 @@
 extends GutTest
 
+const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
+
 class TestSetupPotential extends GutTest:
 	var user: BattleActor
 	var target: BattleActor
