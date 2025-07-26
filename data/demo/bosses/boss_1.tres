@@ -13,7 +13,7 @@ _base_melee_attack = 80.0
 _base_ranged_attack = 80.0
 _base_melee_defense = 120.0
 _base_ranged_defense = 120.0
-_base_speed = 50.0
+_base_speed = 110.0
 _base_evasion = 100.0
 
 [resource]
@@ -25,5 +25,5 @@ hp = 200
 reset_hp_after_battle = true
 _element1 = "red"
 _element2 = "magenta"
-_alignment = "magenta"
+_alignment = "red"
 attacks = Array[ExtResource("2_0kd5o")]([ExtResource("2_xl34v"), ExtResource("2_efm1r"), ExtResource("3_o36u7")])

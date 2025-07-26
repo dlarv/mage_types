@@ -72,7 +72,7 @@ script = ExtResource("2_ri4al")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Caves1ToCaves2"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -8.45002, 4.3, 7.4)
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 1.54998, 4.3, -9.6)
 shape = SubResource("BoxShape3D_ri4al")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Caves1ToCaves2/CollisionShape3D"]
