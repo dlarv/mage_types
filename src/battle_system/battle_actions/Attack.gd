@@ -32,6 +32,9 @@ const AttackType := AlignmentManager.Type
 
 # override
 func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
+	var buffer := DataBuffer.new(self)
+	_AttackEffect.current_buffer = buffer
+
 	var msg: Array[String] = super.apply_effects(user, targets).msg
 	if user.alignment_manager:
 		user.alignment_manager.append_unnormalized(element, 1, AttackType.ATTACK)
@@ -69,7 +72,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 				continue
 
 			didDmg = true
-			var msg2 := effect.apply_effect(user, target, DataBuffer.new(self), affinity)
+			var msg2 := effect.apply_effect(user, target, buffer, affinity)
 
 			# Get equipment effect logs, etc.
 			var msg3 := target.get_and_flush_msgs()

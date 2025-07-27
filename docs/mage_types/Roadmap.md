@@ -228,20 +228,20 @@ Advanced Syntax
 TOKENS =  ADD, MUL, SUB, DIV, FLOAT, VARIABLE, PIPE, BUFFER_OP 
 
 <value>   => <expression> [<pipe> <expression>]* <output>?
-<output> => '>'<buffer_op>?
-<buffer_op> => '+'|'-'|'*'|'/'|'0'
+*<output> => '>'<buffer_op>?
+*<buffer_op> => '+'|'-'|'*'|'/'|'0'
 <pipe>    => <simple>|<ternary> 
 <simple>  => '|'
 *<ternary> => <logical> '?' <expression> ':' <expression>
 
 *<logical>    => <expression> <logical_op> <expression>
-<expression> => <cmd> <variable> <float> | <cmd> <float> <float> | <cmd> <float>
+<expression> => *<cmd> <variable> <float> | <cmd> <float>
+		This first version is really only intended for the first expression and will not be 
+		included in v1.0 syntax.
 <cmd> => 'add' | 'mul' | 'sub' | 'div'
 
-<variable>   => '$' |'$-' | '$'<number>
-	'$': Read direcly from buffer
-	'$-': Read from previous pipe
-	'$'<number>: Read from <numbered> pipe
+<variable>   => '$'
+	'$': Read direcly from previous pipe. If used in first expression, reads from buffer.
 <number> => [0-9]+
 <float>  => [0-9]*(\.[0-9]*)
 ```
@@ -261,7 +261,16 @@ class AttackEffect:
 	var buffer_map: Dictionary[String, Callable]
 	
 	func modded_get_strength():
-			
+		return buffer_map("strength").call(current_buffer)
+
+
+EXAMPLE OUTPUT
+div $ 10
+	func cmd(buffer: DataBuffer) -> float:
+		return div.bind(10.0).bind(buffer.buffer) # returns buffer.buffer / 10
+mul $ 10 | sub 1
+	func cmd(buffer: DataBuffer) -> float:
+		return sub.bind(1).bind()
 ```
 
 

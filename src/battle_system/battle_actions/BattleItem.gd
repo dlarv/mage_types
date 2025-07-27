@@ -18,6 +18,8 @@ static func create(name: String, details: String="") -> BattleItem:
 	return item
 
 func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
+	var buffer := DataBuffer.new(self)
+	_AttackEffect.current_buffer = buffer
 	var msg: Array[String] = super.apply_effects(user, targets).msg
 	apply_cost(user)
 
@@ -28,7 +30,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 			var rand := randf()
 
 			if rand <= effect.chance:
-				msg.append("\n%s" % effect.attack_effect.apply_effect(user, target, DataBuffer.new(self)))
+				msg.append("\n%s" % effect.attack_effect.apply_effect(user, target))
 				# Add status effect icon.
 				if effect.attack_effect is Damage:
 					# Check if character was defeated.

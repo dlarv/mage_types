@@ -13,10 +13,10 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
 	var dmg := calculate_damage(
-			user.get_attack_stat(buffer.action), 
-			target.get_defense_stat(buffer.action), 
+			user.get_attack_stat(current_buffer.action), 
+			target.get_defense_stat(current_buffer.action), 
 			user.level, 
 			effectiveness
 		)

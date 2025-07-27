@@ -20,8 +20,8 @@ func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, ef
 			Logger.append_battle_log("Action(%s) Succeeded. Chance(%f) >= Rand(%f)" 
 					% [attack_effect.name, chance, rand])
 		if effect_target == EffectTarget.TARGET or effect_target == EffectTarget.NOT_USER:
-			return attack_effect.apply_effect(user, target, buffer, effectiveness)
-		return attack_effect.apply_effect(user, user, buffer, effectiveness)
+			return attack_effect.apply_effect(user, target, effectiveness)
+		return attack_effect.apply_effect(user, user, effectiveness)
 
 	Logger.append_battle_log("Action(%s) failed. Chance(%f) >= Rand(%f)" 
 			% [attack_effect.name, chance, rand])

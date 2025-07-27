@@ -5,7 +5,7 @@ class_name InstantHealthChange
 @export var allow_overflow := false
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
 	var health := int(target.hp * strength * effectiveness) 
 	var verb: String
 

@@ -3,16 +3,25 @@ extends Resource
 class_name _AttackEffect 
 
 const DataBuffer := Attack.DataBuffer
+# This value is written by Attack before any effects are applied.
+static var current_buffer: DataBuffer
 
 @export var name: String: set = _set_name
 ## Effectiveness of this effect, usually as a percentage of health.
-@export var strength: float
+@export var strength: float:
+	get:
+		if read_from_buffer and buffer_map.has("strength"):
+			return buffer_map["strength"].call(current_buffer)
+		return strength
+
+
 @export_multiline var message: String = "": get = _get_message
 
 var read_from_buffer: bool
+var buffer_map: Dictionary[String, Callable]
 
 # virtual
-func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
 	return message.replace("{user}", user.name).replace("{target}", target.name)
 
 # virtual

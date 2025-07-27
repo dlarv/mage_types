@@ -8,7 +8,7 @@ class_name StatusHeal
 		_set_name("")
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer=null, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
 	target.remove_status_effect(effect)
 	return "%s's %s was removed!" % [ target.name, effect.name ]
 
