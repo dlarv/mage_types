@@ -105,10 +105,12 @@ func reset() -> void:
 
 func get_stat_mod(stat: Stats) -> float:
 	match stat:
-		# Stats.ATTACK: return _attack_mod
+		Stats.ATTACK: return (_melee_attack_mod + _ranged_attack_mod) / 2.0
+		Stats.DEFENSE: return (_melee_defense_mod + _ranged_defense_mod) / 2.0
+		Stats.MELEE:  return (_melee_defense_mod + _melee_attack_mod) / 2.0
+		Stats.RANGED:  return (_ranged_defense_mod + _ranged_attack_mod) / 2.0
 		Stats.MELEE_ATTACK: return _melee_attack_mod
 		Stats.RANGED_ATTACK: return _ranged_attack_mod
-		# Stats.DEFENSE: return _defense_mod
 		Stats.MELEE_DEFENSE: return _melee_defense_mod
 		Stats.RANGED_DEFENSE: return _ranged_defense_mod
 		Stats.SPEED: return _speed_mod
