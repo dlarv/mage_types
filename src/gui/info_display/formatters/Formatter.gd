@@ -112,7 +112,7 @@ func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLab
 	var success_power := 0
 	var fail_power := 0
 
-	var elements: Array[String] = e.condition.elements.map(func(x: ElementalType) -> String: 
+	var elements: Array = e.condition.elements.map(func(x: ElementalType) -> String: 
 		return x.get_bb_code_name()
 	)
 	var op: String
