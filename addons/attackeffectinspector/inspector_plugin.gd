@@ -8,12 +8,10 @@ func _can_handle(object: Object):
 
 
 func _parse_property(object: Object, type: int, name: String, hint_type: int, hint_string: String, usage_flags: int, wide: bool):
-	# We handle properties of type integer.
 	if object is _BaseEffectSlot and name == "chance":
-		add_property_editor(name, InputField.new(object.get(name) as String))
+		add_property_editor(name, InputField.new(str(object.get(name))))
 		return true
-	elif object is _AttackEffect and name == "strength":
-		add_property_editor(name, InputField.new(object.get(name) as String))
+	elif object is _AttackEffect and type == TYPE_FLOAT:
+		add_property_editor(name, InputField.new(str(object.get(name))))
 		return true
-	else:
-		return false
+	return false

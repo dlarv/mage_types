@@ -1,5 +1,10 @@
+@tool
 extends EditorProperty
 
+const Parser := preload("res://addons/attackeffectinspector/parser.gd")
+
+var line_edit: LineEdit
+var display_value := ""
 var new_value := 0.0
 # An internal value of the property.
 var current_value := 0.0
@@ -7,12 +12,13 @@ var current_value := 0.0
 var updating := false
 
 func _init(value: String) -> void:
-	var lineEdit := LineEdit.new()
-	lineEdit.text = value
-	add_child(lineEdit)
-	add_focusable(lineEdit)
+	line_edit = LineEdit.new()
+	line_edit.text = value
+	display_value = value
+	add_child(line_edit)
+	add_focusable(line_edit)
 
-	lineEdit.text_changed.connect(_on_text_changed)
+	line_edit.text_changed.connect(_on_text_changed)
 
 
 func _update_property():
@@ -24,7 +30,11 @@ func _update_property():
 	# Update the control with the new value.
 	updating = true
 	current_value = new_value
-	# refresh_control_text()
+	if not display_value.is_empty():
+		line_edit.text = display_value
+	else:
+		line_edit.text = str(current_value)
+
 	updating = false
 
 
@@ -34,4 +44,5 @@ func _on_text_changed(text: String) -> void:
 		new_value =  float(value)
 	else:
 		new_value = 0.0
+		display_value = text
 	emit_changed(get_edited_property(), new_value)

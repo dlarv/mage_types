@@ -4,7 +4,7 @@ extends EditorPlugin
 var plugin
 
 func _enter_tree():
-	plugin = preload("res://addons/attackeffectinspector/attack_effect_parser.gd").new()
+	plugin = preload("res://addons/attackeffectinspector/inspector_plugin.gd").new()
 	add_inspector_plugin(plugin)
 
 

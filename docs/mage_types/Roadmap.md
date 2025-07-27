@@ -215,6 +215,57 @@ StatChanges (v0.3.43)
 	 - `Data` is instantiated by the `Attack`. Most changes should be handled by the `EffectSlot`, except for damage (handled by `Damage`).
 - This buffer can be read by any `AttackEffect` or `BaseEffectSlot`.
 	- `BaseEffectSlot.chance` can read from this buffer.
+- Syntax design requirements
+	- Read from buffer.
+	- Perform arithmetic operations on buffer data.
+		- Buffer will be only variable, everything else will be literals.
+	- Perform simple branching logic.
+	- Write to buffer.
+		- Simple output.
+		- Overwrite buffer.
+Advanced Syntax
+``` 
+TOKENS =  ADD, MUL, SUB, DIV, FLOAT, VARIABLE, PIPE, BUFFER_OP 
+
+<value>   => <expression> [<pipe> <expression>]* <output>?
+<output> => '>'<buffer_op>?
+<buffer_op> => '+'|'-'|'*'|'/'|'0'
+<pipe>    => <simple>|<ternary> 
+<simple>  => '|'
+*<ternary> => <logical> '?' <expression> ':' <expression>
+
+*<logical>    => <expression> <logical_op> <expression>
+<expression> => <cmd> <variable> <float> | <cmd> <float> <float> | <cmd> <float>
+<cmd> => 'add' | 'mul' | 'sub' | 'div'
+
+<variable>   => '$' |'$-' | '$'<number>
+	'$': Read direcly from buffer
+	'$-': Read from previous pipe
+	'$'<number>: Read from <numbered> pipe
+<number> => [0-9]+
+<float>  => [0-9]*(\.[0-9]*)
+```
+
+```
+EXAMPLE DrainingDamage
+BUFFER = $ = 100     # Damage done by previous effect
+strength = div $ 10  # Strength is equiv to 10% of damage done previously
+				|
+				V
+strength: get = func calc_strength(damageDonePrev: float) -> float:
+	return damageDonePrev / 10.0
+
+class AttackEffect:
+	var read_from_buffer: bool
+	var current_buffer: DataBuffer
+	var buffer_map: Dictionary[String, Callable]
+	
+	func modded_get_strength():
+			
+```
+
+
+
 ### Transmutations (tran)
 **Apply transmutations and related effects when necessary.**
 - [x] (Primary | Secondary) + Attack

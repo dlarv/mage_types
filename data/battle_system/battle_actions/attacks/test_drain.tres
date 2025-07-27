@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://d1syyeuihpkbr"]
+
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_7svhc"]
+[ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_17rpm"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_svd08"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="3_fb6am"]
+[ext_resource type="Script" uid="uid://nh2nt72jmw33" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="4_qvxnl"]
+
+[sub_resource type="Resource" id="Resource_dkr2w"]
+resource_name = "Damage"
+script = ExtResource("2_17rpm")
+name = "Damage"
+strength = 50.0
+message = ""
+metadata/_custom_type_script = "uid://dn43soynbu2kq"
+
+[sub_resource type="Resource" id="Resource_p7fa7"]
+resource_name = "Damage"
+script = ExtResource("3_fb6am")
+attack_effect = SubResource("Resource_dkr2w")
+effect_target = 1
+chance = 1.0
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
+
+[sub_resource type="Resource" id="Resource_dtsth"]
+script = ExtResource("4_qvxnl")
+allow_overflow = false
+name = "InstantHealthChange"
+strength = 0.0
+message = ""
+metadata/_custom_type_script = "uid://nh2nt72jmw33"
+
+[sub_resource type="Resource" id="Resource_u5jp0"]
+script = ExtResource("3_fb6am")
+attack_effect = SubResource("Resource_dtsth")
+effect_target = 0
+chance = 1.0
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
+
+[resource]
+resource_name = "Hit"
+script = ExtResource("2_svd08")
+effects = Array[ExtResource("1_7svhc")]([SubResource("Resource_p7fa7"), SubResource("Resource_u5jp0")])
+accuracy = 1.0
+power = 50
+name = "Hit"
+_element = "blank"
+priority = 0
+attack_range = 0
+target = 3
+details = ""
+metadata/_custom_type_script = "uid://c140c4j4qwln7"
