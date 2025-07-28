@@ -32,6 +32,7 @@ script = ExtResource("5_fve2l")
 effects = Array[ExtResource("2_5jowh")]([SubResource("Resource_rp18c")])
 accuracy = 1.0
 power = 0
+scaling_factor = null
 name = "Nyctophobia"
 animation = ExtResource("2_2rwhi")
 _element = "purple"

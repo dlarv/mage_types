@@ -58,6 +58,7 @@ script = ExtResource("2_8wafb")
 effects = Array[ExtResource("2_ngfcu")]([SubResource("Resource_wnqis")])
 accuracy = 1.0
 power = 50
+scaling_factor = null
 name = "Blue Strike"
 animation = ExtResource("1_op2ym")
 _element = "purple"

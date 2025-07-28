@@ -60,6 +60,7 @@ script = ExtResource("2_ebunw")
 effects = Array[ExtResource("1_peqn3")]([SubResource("Resource_p6yoh")])
 accuracy = 1.0
 power = 100
+scaling_factor = null
 name = "Reactor Breach"
 animation = ExtResource("1_p0nfe")
 _element = "green"

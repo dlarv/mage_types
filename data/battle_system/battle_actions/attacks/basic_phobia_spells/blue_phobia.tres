@@ -32,6 +32,7 @@ script = ExtResource("1_q23s8")
 effects = Array[ExtResource("2_tkr0o")]([SubResource("Resource_0f64n")])
 accuracy = 1.0
 power = 0
+scaling_factor = null
 name = "Hydrophobia"
 animation = ExtResource("1_7lok4")
 _element = "blue"

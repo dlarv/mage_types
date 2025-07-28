@@ -47,6 +47,7 @@ script = ExtResource("6_poe4l")
 effects = Array[ExtResource("2_k7nd4")]([SubResource("Resource_2yxjm"), SubResource("Resource_bh22a")])
 accuracy = 1.0
 power = 90
+scaling_factor = null
 name = "Total Meltdown"
 animation = ExtResource("1_jsude")
 _element = "green"

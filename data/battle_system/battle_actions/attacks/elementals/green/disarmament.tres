@@ -50,6 +50,7 @@ script = ExtResource("2_pyw4s")
 effects = Array[ExtResource("1_1cm6d")]([SubResource("Resource_137st"), SubResource("Resource_h0evf")])
 accuracy = 1.0
 power = 0
+scaling_factor = null
 name = "Disarmament"
 animation = ExtResource("1_8nmuq")
 _element = "green"

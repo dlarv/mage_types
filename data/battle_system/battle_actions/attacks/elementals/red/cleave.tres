@@ -47,6 +47,7 @@ script = ExtResource("2_uti1r")
 effects = Array[ExtResource("1_y0jkl")]([SubResource("Resource_8hixt"), SubResource("Resource_5mfrq")])
 accuracy = 1.0
 power = 90
+scaling_factor = null
 name = "Cleave"
 animation = ExtResource("1_02hkd")
 _element = "red"

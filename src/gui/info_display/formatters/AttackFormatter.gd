@@ -34,7 +34,62 @@ func display(attack: Variant, limitInfo:=false) -> void:
 		_format_attack_effects(attack.effects, effects_label)
 	
 	var power: float = attack.power
-
 	if power > 0:
 		power_hbox.show()
 		power_label.text = str(power)
+	
+	if attack.scaling_factor.x != -1:
+		_format_scaling_factor(
+				%VBoxContainer/ScalingFactorHBox/XLabel,
+				null,
+				attack.scaling_factor.x,
+				"If the user is neither [el]%s[/el] nor has %s affinity, this attack will be at %d%% power." \
+					% [attack.element, attack.element.get_affinity_bb_code_name(false), attack.scaling_factor.x]
+			)
+	else:
+		%VBoxContainer/ScalingFactorHBox/XLabel.hide()
+
+	if attack.scaling_factor.y != -1:
+		_format_scaling_factor(
+				%VBoxContainer/ScalingFactorHBox/YLabel,
+				%VBoxContainer/ScalingFactorHBox/Label1,
+				attack.scaling_factor.y,
+				"If the user has %s affinity, this attack will be at %d%% power." \
+					% [attack.element.get_affinity_bb_code_name(false), attack.scaling_factor.y]
+			)
+	else:
+		%VBoxContainer/ScalingFactorHBox/YLabel.hide()
+		%VBoxContainer/ScalingFactorHBox/Label1.hide()
+
+	if attack.scaling_factor.z != -1:
+		_format_scaling_factor(
+				%VBoxContainer/ScalingFactorHBox/ZLabel,
+				%VBoxContainer/ScalingFactorHBox/Label2,
+				attack.scaling_factor.z,
+				"If the user is [el]%s[/el], this attack will be at %d%% power." \
+					% [attack.element, attack.scaling_factor.y]
+			)
+	else:
+		%VBoxContainer/ScalingFactorHBox/ZLabel.hide()
+		%VBoxContainer/ScalingFactorHBox/Label2.hide()
+
+	if attack.scaling_factor.w != -1:
+		_format_scaling_factor(
+				%VBoxContainer/ScalingFactorHBox/WLabel,
+				%VBoxContainer/ScalingFactorHBox/Label3,
+				attack.scaling_factor.w,
+				"If both of the user's types are [el]%s[/el], this attack will be at %d%% power." \
+					% [attack.element, attack.scaling_factor.y]
+			)
+	else:
+		%VBoxContainer/ScalingFactorHBox/WLabel.hide()
+		%VBoxContainer/ScalingFactorHBox/Label3.hide()
+
+
+func _format_scaling_factor(textLabel: Label, divider: Label, value: int, msg: String) -> void:
+	if divider:
+		divider.show()
+	textLabel.show()
+	textLabel.text = str(value)
+	textLabel.tooltip_text = msg
+

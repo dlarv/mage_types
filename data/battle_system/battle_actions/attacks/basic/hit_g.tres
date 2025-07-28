@@ -58,6 +58,7 @@ script = ExtResource("5_my4fl")
 effects = Array[ExtResource("2_m5gj6")]([SubResource("Resource_wq1fg")])
 accuracy = 1.0
 power = 15
+scaling_factor = null
 name = "Green Hit"
 animation = ExtResource("1_rqc1g")
 _element = "green"

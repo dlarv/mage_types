@@ -45,6 +45,7 @@ script = ExtResource("2_svd08")
 effects = Array[ExtResource("1_7svhc")]([SubResource("Resource_p7fa7"), SubResource("Resource_u5jp0")])
 accuracy = 1.0
 power = 50
+scaling_factor = null
 name = "Hit"
 _element = "blank"
 priority = 0

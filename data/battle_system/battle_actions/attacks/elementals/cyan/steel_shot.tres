@@ -98,6 +98,7 @@ script = ExtResource("2_qj3pp")
 effects = Array[ExtResource("1_csok2")]([SubResource("Resource_redgd"), SubResource("Resource_vrige")])
 accuracy = 1.0
 power = 30
+scaling_factor = null
 name = "Steel Shot"
 animation = ExtResource("1_atqa7")
 _element = "cyan"

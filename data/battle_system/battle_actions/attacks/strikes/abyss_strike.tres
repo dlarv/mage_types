@@ -58,6 +58,7 @@ script = ExtResource("2_r5wf5")
 effects = Array[ExtResource("2_cinsk")]([SubResource("Resource_txnwn")])
 accuracy = 1.0
 power = 50
+scaling_factor = null
 name = "Abyss Strike"
 animation = ExtResource("1_4wpqw")
 _element = "purple"

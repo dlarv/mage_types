@@ -29,6 +29,13 @@ const AttackType := AlignmentManager.Type
 					count += 1
 		return int(float(total) / float(count))
 
+## No Match/Affinity/Match/Double Match
+## No Match: %power when user.element1 NOR user.element2 == action.element
+## Affinity: %power when either user.element1 OR user.element2 == action.element.affinity
+## Match: %power when either user.element1 OR user.element2 == action.element
+## Double Match: %power when user.element1 AND user.element2 == action.element
+## If value == -1, then value will be hidden in the UI.
+@export var scaling_factor := Vector4i(100, 100, 100, -1)
 
 # override
 func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
@@ -46,16 +53,20 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 		msg.append("But it missed!")
 		return { "msg": "\n".join(msg), "missed": true }
 
-	var affinity := 0.8 
-	if not user.element1.is_blank() and user.element1.is_defensive_type == element.is_defensive_type:
-		Logger.append_battle_log("User(%s)'s primary Element(%s) has affinity for Attack.Element(%s)"
-				% [user.name, user.element1, element])
-		affinity += 0.2
-	if not user.element2.is_blank() and user.element2.is_defensive_type == element.is_defensive_type: 
-		Logger.append_battle_log("User(%s) secondary Element(%s) has affinity for Attack.Element(%s)"
-				% [user.name, user.element2, element])
-		affinity += 0.2
-
+	var affinity: float = scaling_factor.x
+	if scaling_factor.w > -1 and user.element1 == element and user.element2 == element:
+		Logger.append_battle_log("User(%s) elements both match Attack.Element(%s)" 
+			% [user.name, user.element2, element])
+		affinity = scaling_factor.w
+	elif user.element1 == element or user.element2 == element:
+		Logger.append_battle_log("User(%s) typing matches Attack.Element(%s)" 
+			% [user.name, user.element2, element])
+		affinity = scaling_factor.z
+	elif user.element1.in_same_affinity_group(element) or user.element2.in_same_affinity_group(element):
+		Logger.append_battle_log("User(%s)'s typing has affinity for Attack.Element(%s)"
+				% [user.name, element])
+		affinity = scaling_factor.y
+	affinity /= 100
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
 	var delayedEffects: Array[_BaseEffectSlot] = []

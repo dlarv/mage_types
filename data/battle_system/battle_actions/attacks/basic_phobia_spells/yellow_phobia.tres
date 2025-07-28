@@ -32,6 +32,7 @@ script = ExtResource("6_4nk7s")
 effects = Array[ExtResource("2_nc6ap")]([SubResource("Resource_ox82x")])
 accuracy = 1.0
 power = 0
+scaling_factor = null
 name = "Photophobia"
 animation = ExtResource("2_tssf3")
 _element = "yellow"

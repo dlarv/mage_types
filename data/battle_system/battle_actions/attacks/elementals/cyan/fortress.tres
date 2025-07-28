@@ -34,6 +34,7 @@ script = ExtResource("2_cxp1q")
 effects = Array[ExtResource("1_suq6r")]([SubResource("Resource_1ri3s"), SubResource("Resource_h1l5r")])
 accuracy = 1.0
 power = 0
+scaling_factor = null
 name = "Fortress"
 animation = ExtResource("1_kauj7")
 _element = "cyan"

@@ -52,6 +52,7 @@ script = ExtResource("2_as74h")
 effects = Array[ExtResource("1_lk3ld")]([SubResource("Resource_cinfe")])
 accuracy = 1.0
 power = 80
+scaling_factor = null
 name = "Freezing Gale"
 animation = ExtResource("1_ftqir")
 _element = "cyan"

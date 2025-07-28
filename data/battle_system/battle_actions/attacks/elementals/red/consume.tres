@@ -50,6 +50,7 @@ script = ExtResource("2_iqdov")
 effects = Array[ExtResource("1_3dgnf")]([SubResource("Resource_onwey"), SubResource("Resource_7d562")])
 accuracy = 1.0
 power = 0
+scaling_factor = null
 name = "Consume"
 animation = ExtResource("1_aj6lg")
 _element = "red"

@@ -26,6 +26,7 @@ script = ExtResource("5_vnoky")
 effects = Array[ExtResource("2_3tig6")]([SubResource("Resource_pw4hn")])
 accuracy = 1.0
 power = 0
+scaling_factor = null
 name = "Conduct Red"
 animation = ExtResource("2_8kvgt")
 _element = "red"

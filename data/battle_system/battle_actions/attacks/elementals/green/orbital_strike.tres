@@ -58,6 +58,7 @@ script = ExtResource("2_ieb1n")
 effects = Array[ExtResource("1_5pmv6")]([SubResource("Resource_iosgp")])
 accuracy = 1.0
 power = 90
+scaling_factor = null
 name = "Orbital Strike"
 animation = ExtResource("1_f4la3")
 _element = "green"

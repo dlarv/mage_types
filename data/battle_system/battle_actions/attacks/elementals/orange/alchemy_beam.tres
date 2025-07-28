@@ -57,6 +57,7 @@ script = ExtResource("2_jxaip")
 effects = Array[ExtResource("1_7xxnd")]([SubResource("Resource_tsrfc")])
 accuracy = 1.0
 power = 30
+scaling_factor = null
 name = "Alchemy Beam"
 animation = ExtResource("1_nt310")
 _element = "orange"

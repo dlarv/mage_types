@@ -58,6 +58,7 @@ script = ExtResource("4_bi3cu")
 effects = Array[ExtResource("2_fnktd")]([SubResource("Resource_1ye6w")])
 accuracy = 1.0
 power = 50
+scaling_factor = null
 name = "Purple Strike"
 animation = ExtResource("1_xcf8p")
 _element = "purple"

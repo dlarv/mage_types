@@ -26,6 +26,7 @@ script = ExtResource("2_dtei8")
 effects = Array[ExtResource("1_lpeax")]([SubResource("Resource_fh018")])
 accuracy = 0.5
 power = 100
+scaling_factor = null
 name = "Desolation"
 animation = ExtResource("1_01xj0")
 _element = "red"
