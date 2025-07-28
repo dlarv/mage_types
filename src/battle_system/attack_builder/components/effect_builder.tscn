@@ -1,9 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://c0yk4b0ig5108"]
+[gd_scene load_steps=23 format=3 uid="uid://c0yk4b0ig5108"]
 
 [ext_resource type="Script" uid="uid://d1od52ned6jmx" path="res://src/battle_system/attack_builder/components/EffectBuilder.gd" id="1_p5hak"]
 [ext_resource type="Script" uid="uid://qtt3mnr2io1g" path="res://src/battle_system/battle_actions/effects/AttackEffect.gd" id="2_y33t8"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_bf03p"]
-[ext_resource type="Script" uid="uid://dukyjdwpqolw4" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="4_0v6wl"]
 [ext_resource type="Script" uid="uid://cfaw0d7s57qqh" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="5_4weft"]
 [ext_resource type="Script" uid="uid://nh2nt72jmw33" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="5_n7kb6"]
 [ext_resource type="Script" uid="uid://cqnlttwghf2pc" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="6_xjxuf"]
@@ -21,7 +20,7 @@
 resource_name = "Damage"
 script = ExtResource("3_bf03p")
 name = "Damage"
-strength = 0.0
+_strength = "0.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_kpa5w"]
@@ -33,7 +32,7 @@ id = 6
 duration = 0
 description = ""
 name = "Stat Change"
-strength = 0.0
+_strength = "0.0"
 message = "{target}'s melee attack was boosted!
 {target}'s ranged attack was boosted!"
 
@@ -41,7 +40,7 @@ message = "{target}'s melee attack was boosted!
 resource_name = "Status Heal"
 script = ExtResource("5_4weft")
 name = "Status Heal"
-strength = 0.0
+_strength = "0.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_05pvi"]
@@ -50,15 +49,17 @@ script = ExtResource("6_xjxuf")
 _element = "blank"
 element_id = 0
 name = "Transmutate"
-strength = 0.0
+_strength = "0.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_2plwf"]
 resource_name = "Instant Health Change"
 script = ExtResource("5_n7kb6")
 allow_overflow = false
+strength_is_percent_hp = true
+use_effectiveness = true
 name = "InstantHealthChange"
-strength = 0.0
+_strength = "0.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_4uoqg"]
@@ -69,23 +70,16 @@ id = 3
 duration = 0
 description = ""
 name = "Phobic"
-strength = 0.0
+_strength = "0.0"
 message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_kiwne"]
+resource_name = "Random Phobia"
 script = ExtResource("6_yyxxg")
 min_count = 1
 max_count = 1
 name = "Random Phobia"
-strength = 0.0
-message = ""
-
-[sub_resource type="Resource" id="Resource_wqgbk"]
-script = ExtResource("4_0v6wl")
-heal_percent = 0.5
-allow_overflow = false
-name = "Draining Damage"
-strength = 0.0
+_strength = "0.0"
 message = ""
 
 [node name="EffectBuilder" type="VBoxContainer" node_paths=PackedStringArray("effect_option_button", "stat_option_button", "stat_hbox", "status_heal_hbox", "status_heal_option_button")]
@@ -95,7 +89,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p5hak")
-attack_effects = Array[ExtResource("2_y33t8")]([SubResource("Resource_2lxjd"), SubResource("Resource_kpa5w"), SubResource("Resource_uqccw"), SubResource("Resource_05pvi"), SubResource("Resource_2plwf"), ExtResource("8_2irqn"), ExtResource("9_2crn3"), ExtResource("10_vgwbk"), ExtResource("11_60n4n"), ExtResource("12_5r2fc"), SubResource("Resource_4uoqg"), SubResource("Resource_kiwne"), SubResource("Resource_wqgbk")])
+attack_effects = Array[ExtResource("2_y33t8")]([SubResource("Resource_2lxjd"), SubResource("Resource_kpa5w"), SubResource("Resource_uqccw"), SubResource("Resource_05pvi"), SubResource("Resource_2plwf"), ExtResource("8_2irqn"), ExtResource("9_2crn3"), ExtResource("10_vgwbk"), ExtResource("11_60n4n"), ExtResource("12_5r2fc"), SubResource("Resource_4uoqg"), SubResource("Resource_kiwne")])
 stats = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 status_effects = Array[ExtResource("16_6cyos")]([ExtResource("8_2irqn"), ExtResource("9_2crn3"), ExtResource("10_vgwbk"), ExtResource("11_60n4n"), ExtResource("12_5r2fc")])
 effect_option_button = NodePath("EffectSelector/OptionButton")
@@ -118,13 +112,14 @@ size_flags_horizontal = 3
 selected = 0
 item_count = 13
 popup/item_0/text = "Damage"
+popup/item_0/id = 0
 popup/item_1/text = "Stat Change"
 popup/item_1/id = 1
 popup/item_2/text = "Status Heal"
 popup/item_2/id = 2
 popup/item_3/text = "Transmutate"
 popup/item_3/id = 3
-popup/item_4/text = "Instant Health Change"
+popup/item_4/text = "InstantHealthChange"
 popup/item_4/id = 4
 popup/item_5/text = "Blocking"
 popup/item_5/id = 5
@@ -136,7 +131,7 @@ popup/item_8/text = "Poison"
 popup/item_8/id = 8
 popup/item_9/text = "Stasis"
 popup/item_9/id = 9
-popup/item_10/text = "Blank-Phobic"
+popup/item_10/text = "Phobic"
 popup/item_10/id = 10
 popup/item_11/text = "Random Phobia"
 popup/item_11/id = 11
@@ -158,6 +153,7 @@ size_flags_horizontal = 3
 selected = 0
 item_count = 10
 popup/item_0/text = "ATTACK"
+popup/item_0/id = 0
 popup/item_1/text = "MELEE_ATTACK"
 popup/item_1/id = 1
 popup/item_2/text = "RANGED_ATTACK"
@@ -193,6 +189,7 @@ flat = true
 selected = 0
 item_count = 5
 popup/item_0/text = "Blocking"
+popup/item_0/id = 0
 popup/item_1/text = "Flinched"
 popup/item_1/id = 1
 popup/item_2/text = "Healing"

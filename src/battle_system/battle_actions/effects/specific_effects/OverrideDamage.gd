@@ -25,6 +25,7 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 	var dmg := calculate_damage(attack, defense, user.level, effectiveness)
 	return "%s" % [ _apply_to(target, dmg, user) ]
 
+
 func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
 	if target.statuses.blocking: return 0
 	var attack: float
@@ -40,6 +41,7 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 			attack = user.get_stat(override_stat)
 			defense = target.get_stat(override_stat)
 	return calculate_damage(attack, defense, user.level, 1.0)
+
 
 func _set_name(_val: String) -> void:
 	name = "Damage (%s)" % StatManager.Stats.keys()[override_stat]

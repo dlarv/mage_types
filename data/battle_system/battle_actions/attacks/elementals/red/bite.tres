@@ -7,58 +7,61 @@
 [ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="3_jetnt"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_vwjnm"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="5_0ckde"]
-[ext_resource type="Script" uid="uid://dukyjdwpqolw4" path="res://src/battle_system/battle_actions/effects/specific_effects/DrainingDamage.gd" id="7_7uox3"]
+[ext_resource type="Script" uid="uid://nh2nt72jmw33" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="7_i1mhq"]
 
-[sub_resource type="Resource" id="Resource_fwjrb"]
+[sub_resource type="Resource" id="Resource_5nha5"]
+resource_name = "Damage"
+script = ExtResource("4_vwjnm")
+name = "Damage"
+_strength = "50"
+message = ""
+metadata/_custom_type_script = "uid://dn43soynbu2kq"
+
+[sub_resource type="Resource" id="Resource_ef8ag"]
+resource_name = "Damage"
+script = ExtResource("5_0ckde")
+attack_effect = SubResource("Resource_5nha5")
+effect_target = 1
+chance = 1.0
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
+
+[sub_resource type="Resource" id="Resource_t031d"]
 script = ExtResource("3_8uqbc")
 _element = "red"
 apply_to = "user"
 
-[sub_resource type="Resource" id="Resource_fx1ui"]
-resource_name = "Damage"
-script = ExtResource("4_vwjnm")
-name = "Damage"
-_strength = "50.0"
-message = ""
-
-[sub_resource type="Resource" id="Resource_bg3b6"]
-resource_name = "Damage"
-script = ExtResource("5_0ckde")
-attack_effect = SubResource("Resource_fx1ui")
-effect_target = 1
-chance = 1.0
-
-[sub_resource type="Resource" id="Resource_0bs6b"]
-resource_name = "Draining Damage"
-script = ExtResource("7_7uox3")
-heal_percent = 0.8
+[sub_resource type="Resource" id="Resource_r0mqk"]
+script = ExtResource("7_i1mhq")
 allow_overflow = false
-name = "Draining Damage"
-_strength = "50.0"
+strength_is_percent_hp = false
+use_effectiveness = true
+name = ""
+_strength = "mul $d 0.8"
 message = ""
+metadata/_custom_type_script = "uid://nh2nt72jmw33"
 
-[sub_resource type="Resource" id="Resource_jej1t"]
-resource_name = "Draining Damage"
+[sub_resource type="Resource" id="Resource_k048j"]
 script = ExtResource("5_0ckde")
-attack_effect = SubResource("Resource_0bs6b")
+attack_effect = SubResource("Resource_r0mqk")
 effect_target = 1
 chance = 1.0
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
-[sub_resource type="Resource" id="Resource_3v5hg"]
+[sub_resource type="Resource" id="Resource_i0o28"]
 script = ExtResource("3_jetnt")
-condition = SubResource("Resource_fwjrb")
-success_effect = SubResource("Resource_jej1t")
-failed_effect = SubResource("Resource_bg3b6")
+condition = SubResource("Resource_t031d")
+success_effect = SubResource("Resource_k048j")
 invert = false
 print_failed_status = "SILENT"
 failure_msg = "FAILED"
 effect_target = 1
 chance = 1.0
+metadata/_custom_type_script = "uid://cxsoib03ectl0"
 
 [resource]
 resource_name = "Bite"
 script = ExtResource("2_cugkt")
-effects = Array[ExtResource("1_462cl")]([SubResource("Resource_3v5hg")])
+effects = Array[ExtResource("1_462cl")]([SubResource("Resource_ef8ag"), SubResource("Resource_i0o28")])
 accuracy = 1.0
 power = 50
 name = "Bite"
