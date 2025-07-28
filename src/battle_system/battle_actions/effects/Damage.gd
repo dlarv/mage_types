@@ -34,6 +34,9 @@ func calculate_damage(attack: float, defense: float, level: int, effectiveness: 
 
 func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
 	var actualDmg := target.apply_damage(dmg)
+	_AttackEffect.current_buffer.damage = actualDmg
+	_AttackEffect.current_buffer.total_damage += actualDmg
+
 	if actualDmg == dmg:
 		return "Dealt %d damage to %s." % [dmg, target.name]
 

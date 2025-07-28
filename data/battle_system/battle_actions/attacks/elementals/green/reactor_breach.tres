@@ -31,6 +31,8 @@ chance = 1.0
 [sub_resource type="Resource" id="Resource_hmoyi"]
 script = ExtResource("7_5vclh")
 allow_overflow = false
+strength_is_percent_hp = true
+use_effectiveness = true
 name = "InstantHealthChange"
 _strength = "0.1"
 message = ""

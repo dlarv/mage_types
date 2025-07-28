@@ -10,7 +10,7 @@
 resource_name = "Damage"
 script = ExtResource("2_17rpm")
 name = "Damage"
-_strength = "0.0"
+_strength = "50"
 message = ""
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
@@ -25,8 +25,10 @@ metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 [sub_resource type="Resource" id="Resource_dtsth"]
 script = ExtResource("4_qvxnl")
 allow_overflow = false
+strength_is_percent_hp = false
+use_effectiveness = true
 name = "InstantHealthChange"
-_strength = "0.0"
+_strength = "mul $d 0.5"
 message = ""
 metadata/_custom_type_script = "uid://nh2nt72jmw33"
 

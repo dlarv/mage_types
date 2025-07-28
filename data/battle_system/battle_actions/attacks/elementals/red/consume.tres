@@ -11,6 +11,8 @@
 resource_name = "Instant Health Change"
 script = ExtResource("3_qhxvf")
 allow_overflow = false
+strength_is_percent_hp = true
+use_effectiveness = true
 name = "InstantHealthChange"
 _strength = "0.4"
 message = ""

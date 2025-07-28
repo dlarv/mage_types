@@ -3,8 +3,10 @@ extends Resource
 class_name _AttackEffect 
 
 const DataBuffer := Attack.DataBuffer
+const Parser := preload("res://addons/attackeffectinspector/parser.gd")
+
 # This value is written by Attack before any effects are applied.
-static var current_buffer: DataBuffer
+static var current_buffer: DataBuffer = DataBuffer.new()
 
 @export var name: String: set = _set_name
 ## Effectiveness of this effect, usually as a percentage of health.
@@ -13,16 +15,19 @@ static var current_buffer: DataBuffer
 		_strength = val
 		if val.is_valid_float():
 			strength = float(val)
+		else:
+			strength = INF
 	get:
 		if _strength.is_empty():
 			return str(strength)
 		return _strength
 var strength: float:
 	get:
-		if read_from_buffer and buffer_map.has("strength"):
-			return buffer_map["strength"].call(current_buffer)
-		return strength
-
+		if strength != INF:
+			return strength
+		if not buffer_map.has("strength"):
+			buffer_map["strength"] = Parser.parse(_strength)
+		return buffer_map["strength"].call()
 
 @export_multiline var message: String = "": get = _get_message
 

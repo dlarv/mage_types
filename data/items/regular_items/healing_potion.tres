@@ -10,6 +10,8 @@
 [sub_resource type="Resource" id="Resource_4qdn6"]
 script = ExtResource("3_kskua")
 allow_overflow = true
+strength_is_percent_hp = true
+use_effectiveness = true
 name = "InstantHealthChange"
 _strength = "0.5"
 message = ""

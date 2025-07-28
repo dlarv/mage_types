@@ -235,7 +235,7 @@ TOKENS =  ADD, MUL, SUB, DIV, FLOAT, VARIABLE, PIPE, BUFFER_OP
 <expression> => <op> <value> <value> | <op> <value>
 <op> => 'add' | 'mul' | 'sub' | 'div'
 <value> => <variable> | <float>
-<variable>   => '$' | '$d' | '$D'
+<variable>   => '$' | '$d' | '$t'
  	'$': Read direcly from previous pipe. If used in first expression, reads from buffer.
  	'$d': Read from amount of damage dealt by last attack.
  	'$t': Read from total amount of damage dealt by attack so far.
