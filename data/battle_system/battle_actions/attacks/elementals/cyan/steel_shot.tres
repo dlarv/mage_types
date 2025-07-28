@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=21 format=3 uid="uid://drcu827fevmfu"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_atqa7"]
-[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/BaseEffectSlot.gd" id="1_csok2"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_csok2"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_qj3pp"]
-[ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/ConditionalEffect.gd" id="3_4m2fq"]
+[ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/effect_slots/ConditionalEffect.gd" id="3_4m2fq"]
 [ext_resource type="Resource" uid="uid://bvuxf0slrbb1m" path="res://data/battle_system/status_effects/blocking_effect.tres" id="3_dyyhn"]
 [ext_resource type="Script" uid="uid://e22j55q662p" path="res://src/battle_system/battle_actions/conditions/StatusEffectCondition.gd" id="4_jvgg1"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="5_mcwoq"]
-[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/EffectSlot.gd" id="6_jalum"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="6_jalum"]
 [ext_resource type="Script" uid="uid://cfaw0d7s57qqh" path="res://src/battle_system/battle_actions/effects/StatusHeal.gd" id="8_l1i3r"]
 
 [sub_resource type="Resource" id="Resource_wt46x"]
