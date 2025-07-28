@@ -8,7 +8,7 @@ var apply_to := "target"
 @export var effect: StatusEffect
 
 #override
-func check(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> bool:
+func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
 	match apply_to:
 		"user":
 			return user.has_status_effect(effect)

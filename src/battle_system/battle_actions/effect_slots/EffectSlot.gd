@@ -12,7 +12,7 @@ class_name EffectSlot
 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
 	var msg := ""
 	var rand := randf()
 	if rand <= chance:

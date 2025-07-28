@@ -9,7 +9,7 @@ enum EffectTarget { USER, TARGET, NOT_USER, USER_ONCE }
 @export_range(0, 1) var chance: float = 1
 
 #virtual
-func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
 	return ""
 
 ## If object is of type EffectSlot, returns itself.

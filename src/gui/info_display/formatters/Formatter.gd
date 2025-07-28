@@ -97,10 +97,6 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 			#append_elemental_color(effectsLabel, effect.element)
 			#effectsLabel.append_text(". Otherwise, deals x%.1f damage." % effect.negative_factor)
 	#
-	elif effect is DrainingDamage:
-		power += effect.strength
-		effectsLabel.append_text("Heals the user for x%.1f the damage dealt." % effect.heal_percent)
-
 	elif effect is Damage:
 		if e.effect_target == EffectSlot.EffectTarget.TARGET:
 			power += effect.strength

@@ -21,18 +21,18 @@ var failure_msg := "FAILED"
 var _last_activated_effect: _BaseEffectSlot = null
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, effectiveness:=1.0) -> String:
+func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
 	# Godot doesn't have a XOR operator for bools, so I made do.
-	if (condition.check(user, target, buffer.action, effectiveness) or invert) \
-			and not (condition.check(user, target, buffer.action, effectiveness) and invert):
+	if (condition.check(user, target, effectiveness) or invert) \
+			and not (condition.check(user, target,effectiveness) and invert):
 		_last_activated_effect = success_effect
-		return success_effect.apply_effect(user, target, buffer, effectiveness)
+		return success_effect.apply_effect(user, target, effectiveness)
 	elif failed_effect != null:
 		_last_activated_effect = failed_effect
 
 		var msg := []
 
-		msg.append(failed_effect.apply_effect(user, target, buffer, effectiveness))
+		msg.append(failed_effect.apply_effect(user, target, effectiveness))
 
 		if print_failed_status == "FAILURE":
 			msg.insert(0, _get_failure_msg())
@@ -49,7 +49,7 @@ func apply_effect(user: BattleActor, target: BattleActor, buffer: DataBuffer, ef
 func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
 	if user == null:
 		return success_effect
-	elif condition.check(user, target, action, effectiveness):
+	elif condition.check(user, target, effectiveness):
 		return success_effect
 	elif failed_effect:
 		return failed_effect
@@ -60,7 +60,7 @@ func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _
 func get_attack_effect(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> _AttackEffect:
 	if user == null:
 		return success_effect.attack_effect
-	elif condition.check(user, target, action, effectiveness):
+	elif condition.check(user, target, effectiveness):
 		return success_effect.attack_effect
 	elif failed_effect:
 		return failed_effect.attack_effect

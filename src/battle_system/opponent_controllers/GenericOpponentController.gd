@@ -242,6 +242,7 @@ func _evaluate_random(user: BattleActor, enemies: Array[BattleActor], action: _B
 
 
 func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _BattleAction) -> Array:
+	_AttackEffect.current_buffer.action = action
 	var setupPotential := 0.0
 	var dmg := 0
 
@@ -279,11 +280,6 @@ func _weighted_setup_potential(user: BattleActor, target: BattleActor, slot: Eff
 		var base := (float(user.hp) - float(user.current_hp)) * slot.chance
 
 		if target == user and effect is InstantHealthChange :
-			Logger.append_battle_ai_log("BattleActor(%s) is low on health. Boosting Effect(%s) by %.2f" 
-				% [user.name, effect.name, base])
-			return base
-		# Account for fact that target could block, etc.
-		elif effect is DrainingDamage:
 			Logger.append_battle_ai_log("BattleActor(%s) is low on health. Boosting Effect(%s) by %.2f" 
 				% [user.name, effect.name, base])
 			return base

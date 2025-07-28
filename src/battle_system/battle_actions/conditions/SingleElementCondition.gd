@@ -17,7 +17,7 @@ var apply_to := "target"
 
 
 #override
-func check(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> bool:
+func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
 	match apply_to:
 		"user":
 			return user.is_element(element)

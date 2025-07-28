@@ -11,7 +11,7 @@ var apply_to := "user"
 var slot := "secondary"
 
 #override
-func check(user: BattleActor, target: BattleActor, action: _BattleAction, effectiveness:=1.0) -> bool:
+func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
 	match apply_to:
 		"user": return _check_actor(user)
 		"target": return _check_actor(target)
