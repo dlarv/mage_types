@@ -227,22 +227,18 @@ Advanced Syntax
 ``` 
 TOKENS =  ADD, MUL, SUB, DIV, FLOAT, VARIABLE, PIPE, BUFFER_OP 
 
-<value>   => <expression> [<pipe> <expression>]* <output>?
-*<output> => '>'<buffer_op>?
-*<buffer_op> => '+'|'-'|'*'|'/'|'0'
-<pipe>    => <simple>|<ternary> 
-<simple>  => '|'
-*<ternary> => <logical> '?' <expression> ':' <expression>
+<cmd>   => <expression> [<pipe> <expression>]* <output>? | <value> <output>?
+<output> => '>'<buffer_op>?
+<buffer_op> => '+'|'-'|'*'|'/'|'0'
+<pipe>  => '|'
 
-*<logical>    => <expression> <logical_op> <expression>
-<expression> => *<cmd> <variable> <float> | <cmd> <float>
-		This first version is really only intended for the first expression and will not be 
-		included in v1.0 syntax.
-<cmd> => 'add' | 'mul' | 'sub' | 'div'
-
-<variable>   => '$'
-	'$': Read direcly from previous pipe. If used in first expression, reads from buffer.
-<number> => [0-9]+
+<expression> => <op> <value> <value> | <op> <value>
+<op> => 'add' | 'mul' | 'sub' | 'div'
+<value> => <variable> | <float>
+<variable>   => '$' | '$d' | '$D'
+ 	'$': Read direcly from previous pipe. If used in first expression, reads from buffer.
+ 	'$d': Read from amount of damage dealt by last attack.
+ 	'$t': Read from total amount of damage dealt by attack so far.
 <float>  => [0-9]*(\.[0-9]*)
 ```
 

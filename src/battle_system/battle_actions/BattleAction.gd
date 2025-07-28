@@ -80,9 +80,8 @@ func apply_cost(user: BattleActor) -> float:
 
 class DataBuffer:
 	var action: _BattleAction
-	# var damage :=  0
-	# var damage_total :=  0
-	# var success := true
+	var damage :=  0
+	var total_damage :=  0
 	var buffer: float
 
 	func _init(action: _BattleAction) -> void:

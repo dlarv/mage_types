@@ -4,6 +4,8 @@ extends Object
 const Type := Token.Type
 const DataBuffer := _BattleAction.DataBuffer
 
+var error_func: Callable = func(_a:Variant=null,_b:Variant=null,_c:Variant=null)->float: return INF
+
 var whitespace_regex: RegEx:
 	get:
 		if whitespace_regex == null:
@@ -16,6 +18,12 @@ var buffer_op_regex: RegEx:
 			buffer_op_regex = RegEx.new()
 			buffer_op_regex.compile(r">[+\-*/0]?")
 		return buffer_op_regex
+var variable_regex: RegEx:
+	get:
+		if variable_regex == null:
+			variable_regex = RegEx.new()
+			variable_regex.compile(r"\$[dt]?")
+		return variable_regex
 
 
 ## output: Callable | null
@@ -24,28 +32,30 @@ func parse(input: String) -> Variant:
 	tokens.reverse()
 
 	var cmds: Array[Callable] = []
-	var bufferOp := func(data: DataBuffer, result: float) -> void: pass
+	var bufferOp := func(a: Callable) -> float: return a.call()
+	var prevCmd = func() -> float: return _AttackEffect.current_buffer.buffer
 	while len(tokens) > 0:
-		var cmd := _parse_next_cmd(tokens)
-		if cmd == null: return null
-		cmds.append(cmd)
-	
-		if len(tokens) == 0: 
-			break
-		elif tokens[-1].type == Type.PIPE: 
-			tokens.pop_back()
-		elif tokens[-1].type == Type.BUFFER_OP:
-			bufferOp = _parse_buffer_op(tokens.pop_back())
+		var cmd: Callable
+		match tokens[-1].type:
+			Type.CMD: 
+				cmd = _parse_expression(tokens, prevCmd)
+			Type.FLOAT:
+				cmd = func(result: float) -> float: return result
+				cmd.bind(prevCmd)
+			Type.VARIABLE:
+				cmd = func(result: float) -> float: return result
+				cmd.bind(prevCmd)
+			Type.PIPE:
+				tokens.pop_back()
+				continue
+			Type.BUFFER_OP:
+				bufferOp = _parse_buffer_op(tokens.pop_back())
+				break
 
-	var wrapper := func(data: DataBuffer, bufferOp: Callable, cmds: Array[Callable]) -> float:
-		var result := data.buffer
-		for cmd in cmds:
-			result = cmd.call(result)
-		bufferOp.call(data, result)
-		return result
+		if cmd == error_func: return null
+		prevCmd = cmd
 
-	wrapper = wrapper.bind(cmds).bind(bufferOp.call)
-	return wrapper
+	return bufferOp.bind(prevCmd)
 
 
 func tokenize(input: String) -> Array[Token]:
@@ -71,43 +81,81 @@ func _parse_next_token(lex: String) -> Token:
 		return Token.new(Type.FLOAT, float(lex))
 	elif buffer_op_regex.search(lex):
 		return Token.new(Type.BUFFER_OP, lex.substr(1))
+	elif variable_regex.search(lex):
+		return Token.new(Type.VARIABLE, lex.substr(1))
 
 	match lex.to_lower():
 		"|": return Token.new(Type.PIPE)
-		"$": return Token.new(Type.VARIABLE)
-		"mul": return Token.new(Type.CMD, func(a: float, b: float) -> float: return a * b)
-		"add": return Token.new(Type.CMD, func(a: float, b: float) -> float: return a + b)
-		"sub": return Token.new(Type.CMD, func(a: float, b: float) -> float: return a - b)
-		"div": return Token.new(Type.CMD, func(a: float, b: float) -> float: return a / b)
-
+		"mul": return Token.new(Type.CMD, func(a: Callable, b: Callable) -> float: return a.call() * b.call())
+		"add": return Token.new(Type.CMD, func(a: Callable, b: Callable) -> float: return a.call() + b.call())
+		"sub": return Token.new(Type.CMD, func(a: Callable, b: Callable) -> float: return a.call() - b.call())
+		"div": return Token.new(Type.CMD, func(a: Callable, b: Callable) -> float: return a.call() / b.call())
 	return null
 
 
-func _parse_next_cmd(tokens: Array[Token]) -> Variant:
+func _parse_expression(tokens: Array[Token], prevExpression: Callable) -> Callable:
 	var token := tokens.pop_back()
 	if not token or token.type != Type.CMD:
 		push_error("Expected a cmd but found '%s(%s).'" % [token.type, token.value])
-		return null
+		return error_func
 	var fn: Callable = token.value
-	var value: float = tokens.pop_back().value
-	return fn.bind(value)
+
+	# Parse value(s) 
+	var value: Token = tokens.pop_back()
+	fn = fn.bind(_parse_value(value, prevExpression))
+
+	if len(tokens) > 0 and _is_value(tokens[-1]):
+		fn = fn.bind(_parse_value(tokens.pop_back(), prevExpression))
+	else:
+		fn = fn.bind(prevExpression)
+	return fn
+
+
+func _parse_value(token: Token, prevExpression: Callable) -> Callable:
+	if token.type == Type.FLOAT:
+		return func() -> float: return token.value
+	elif token.type != Type.VARIABLE:
+		push_error("Invalid token. Expected VARIABLE or FLOAT, found '%s'." % token.type)
+		return error_func
+
+	match token.value.to_lower():
+		"d": return func() -> float: return _AttackEffect.current_buffer.damage
+		"t": return func() -> float: return _AttackEffect.current_buffer.total_damage
+		"": return func() -> float: return prevExpression.call()
+
+	return error_func
 
 
 func _parse_buffer_op(token: Token) -> Callable:
 	match token.value:
-		"*": return func(data: DataBuffer, result: float) -> void:
-				data.buffer *= result
-		"/": return func(data: DataBuffer, result: float) -> void:
-				data.buffer /= result
-		"+": return func(data: DataBuffer, result: float) -> void:
-				data.buffer += result
-		"-": return func(data: DataBuffer, result: float) -> void:
-				data.buffer -= result
-		"0": return func(data: DataBuffer, result: float) -> void:
-				data.buffer = 0
+		"*": return func(result: Callable) -> float:
+			var res := result.call()
+			_AttackEffect.current_buffer.buffer *= res
+			return res
+		"/": return func(result: Callable) -> float:
+			var res := result.call()
+			_AttackEffect.current_buffer.buffer /= res
+			return res
+		"+": return func(result: Callable) -> float:
+			var res := result.call()
+			_AttackEffect.current_buffer.buffer += res
+			return res
+		"-": return func(result: Callable) -> float:
+			var res := result.call()
+			_AttackEffect.current_buffer.buffer -= res
+			return res
+		"0": return func(result: Callable) -> float:
+				_AttackEffect.current_buffer.buffer = 0
+				return result.call()
 
-	return func(data: DataBuffer, result: float) -> void: 
-		data.buffer = result
+	return func(result: Callable) -> float: 
+		var res := result.call()
+		_AttackEffect.current_buffer.buffer = res
+		return res
+
+
+func _is_value(token: Token) -> bool:
+	return token.type in [Type.VARIABLE, Type.FLOAT]
 
 
 class Token:
