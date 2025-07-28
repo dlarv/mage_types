@@ -268,9 +268,6 @@ mul $ 10 | sub 1
 	func cmd(buffer: DataBuffer) -> float:
 		return sub.bind(1).bind()
 ```
-
-
-
 ### Transmutations (tran)
 **Apply transmutations and related effects when necessary.**
 - [x] (Primary | Secondary) + Attack
