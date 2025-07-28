@@ -22,7 +22,7 @@ script = ExtResource("4_e5d4m")
 actor_to_override = "target"
 override_stat = 4
 name = "Damage (MELEE_DEFENSE)"
-strength = 40.0
+_strength = "40.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_x3kj8"]
@@ -38,7 +38,7 @@ script = ExtResource("4_e5d4m")
 actor_to_override = "target"
 override_stat = 5
 name = "Damage (RANGED_DEFENSE)"
-strength = 40.0
+_strength = "40.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_83yyr"]

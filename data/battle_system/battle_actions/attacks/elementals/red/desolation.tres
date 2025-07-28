@@ -10,7 +10,7 @@
 resource_name = "Damage"
 script = ExtResource("4_twwtw")
 name = "Damage"
-strength = 100.0
+_strength = "100.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_fh018"]

@@ -8,7 +8,16 @@ static var current_buffer: DataBuffer
 
 @export var name: String: set = _set_name
 ## Effectiveness of this effect, usually as a percentage of health.
-@export var strength: float:
+@export var _strength: String:
+	set(val):
+		_strength = val
+		if val.is_valid_float():
+			strength = float(val)
+	get:
+		if _strength.is_empty():
+			return str(strength)
+		return _strength
+var strength: float:
 	get:
 		if read_from_buffer and buffer_map.has("strength"):
 			return buffer_map["strength"].call(current_buffer)

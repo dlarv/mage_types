@@ -18,7 +18,7 @@ apply_to = "target"
 resource_name = "Damage"
 script = ExtResource("4_44j6p")
 name = "Damage"
-strength = 100.0
+_strength = "100.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_ki5nu"]
@@ -32,7 +32,7 @@ chance = 1.0
 script = ExtResource("7_5vclh")
 allow_overflow = false
 name = "InstantHealthChange"
-strength = 0.1
+_strength = "0.1"
 message = ""
 
 [sub_resource type="Resource" id="Resource_76u0o"]

@@ -14,7 +14,7 @@ id = 6
 duration = 0
 description = ""
 name = ""
-strength = -10.0
+_strength = "-10.0"
 message = "{target}'s melee attack was lowered!
 {target}'s ranged attack was lowered!"
 
@@ -33,7 +33,7 @@ id = 6
 duration = 0
 description = ""
 name = "Defense Boost"
-strength = 10.0
+_strength = "10.0"
 message = "{target}'s melee defense was boosted!
 {target}'s ranged defense was boosted!"
 

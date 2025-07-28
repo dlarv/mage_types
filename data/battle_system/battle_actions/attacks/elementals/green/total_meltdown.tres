@@ -11,7 +11,7 @@
 resource_name = "Damage"
 script = ExtResource("3_qkigx")
 name = "Damage"
-strength = 90.0
+_strength = "90.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_2yxjm"]
@@ -30,7 +30,7 @@ id = 6
 duration = 0
 description = ""
 name = "Ranged Drop"
-strength = -3.5
+_strength = "-3.5"
 message = "{target}'s ranged attack was lowered!
 {target}'s ranged defense was lowered!"
 

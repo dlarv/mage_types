@@ -19,7 +19,7 @@ effect = ExtResource("3_dyyhn")
 resource_name = "Damage"
 script = ExtResource("5_mcwoq")
 name = "Damage"
-strength = 30.0
+_strength = "30.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_6jaqi"]
@@ -33,7 +33,7 @@ chance = 1.0
 resource_name = "Damage"
 script = ExtResource("5_mcwoq")
 name = "Damage"
-strength = 60.0
+_strength = "60.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_65ba3"]
@@ -71,7 +71,7 @@ resource_name = "Blocking Heal"
 script = ExtResource("8_l1i3r")
 effect = ExtResource("3_dyyhn")
 name = "Blocking Heal"
-strength = 0.0
+_strength = "0.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_r65er"]

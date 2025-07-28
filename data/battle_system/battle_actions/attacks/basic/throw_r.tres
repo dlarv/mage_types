@@ -17,7 +17,7 @@ apply_to = "user"
 resource_name = "Damage"
 script = ExtResource("3_wnfy6")
 name = "Damage"
-strength = 15.0
+_strength = "15.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_tep4t"]
@@ -31,7 +31,7 @@ chance = 1.0
 resource_name = "Damage"
 script = ExtResource("3_wnfy6")
 name = "Damage"
-strength = 30.0
+_strength = "30.0"
 message = ""
 
 [sub_resource type="Resource" id="Resource_apnsr"]
