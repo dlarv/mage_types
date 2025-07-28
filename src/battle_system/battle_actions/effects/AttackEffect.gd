@@ -31,7 +31,6 @@ var strength: float:
 
 @export_multiline var message: String = "": get = _get_message
 
-var read_from_buffer: bool
 var buffer_map: Dictionary[String, Callable]
 
 # virtual

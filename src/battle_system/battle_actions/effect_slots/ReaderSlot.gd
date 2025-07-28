@@ -1,7 +1,7 @@
 @tool
 extends _BaseEffectSlot
 class_name ReaderSlot
-## Slot that reads from battefield state and writes to DataBuffer.
+## Slot that reads from battefield state and writes to DataBuffer.buffer.
 ## Does not actually apply any effects to the BattleActors.
 
 #override

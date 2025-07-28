@@ -58,7 +58,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
-	var delayedEffects: Array[_BaseEffectSlot]= []
+	var delayedEffects: Array[_BaseEffectSlot] = []
 	for i in len(targets):
 		var target := targets[i]
 		var didDmg := false

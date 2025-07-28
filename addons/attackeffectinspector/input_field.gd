@@ -9,7 +9,6 @@ var new_value := ""
 var current_value := ""
 # A guard against internal changes when the property is updated.
 var updating := false
-var parser: Parser
 
 func _init(value: String) -> void:
 	line_edit = LineEdit.new()
@@ -18,12 +17,12 @@ func _init(value: String) -> void:
 	add_focusable(line_edit)
 
 	line_edit.text_submitted.connect(_on_text_submitted)
-	parser = Parser.new()
 
 
 func _update_property():
-	# Read the current value from the property.
-	var new_value = get_edited_object()[get_edited_property()]
+	var obj := get_edited_object()
+	var prop := get_edited_property()
+	var new_value = obj[prop]
 
 	# Update the control with the new value.
 	updating = true
@@ -31,9 +30,11 @@ func _update_property():
 
 	var text := line_edit.text
 	var use_advanced_syntax := not text.is_valid_float()
-	get_edited_object().read_from_buffer = use_advanced_syntax
-	if use_advanced_syntax:
-		get_edited_object().buffer_map[get_edited_property()] = parser.parse(text)
+	if obj is _BaseEffectSlot:
+		obj.get_chance = Parser.parse(text)
+	else:
+		if use_advanced_syntax:
+			obj.buffer_map[prop] = Parser.parse(text)
 
 	updating = false
 

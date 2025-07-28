@@ -207,9 +207,8 @@ StatChanges (v0.3.43)
 - Instead of having a directory full of resources, StatChange effects are dynamically created by the attacks/etc that define them.
 - The actual strength of a StatChange is calculated using `strength * MODIFIER` 
 	- where MODIFIER is a constant currently set to 0.3.
-
- AttackEffect Internal Communication
- - `func apply_effect(BattleActor, BattleActor, BattleAction, float)` -> `func apply_effect(BattleActor, BattleActor, Data, float)`
+#### AttackEffect Internal Communication
+- New `BattleAction.DataBuffer` class created. 
 	 - `Data` will contain the BattleAction data, as well as a buffer `AttackEffects` can read/write to.
 	 - `Data` can tell the current `AttackEffect` whether the previous effect was successful and how much damage it did, as well as the total damage done by the attack so far.
 	 - `Data` is instantiated by the `Attack`. Most changes should be handled by the `EffectSlot`, except for damage (handled by `Damage`).
@@ -268,6 +267,10 @@ mul $ 10 | sub 1
 	func cmd(buffer: DataBuffer) -> float:
 		return sub.bind(1).bind()
 ```
+#### AttackEffect External Communication
+To get info about the battlefield state, objects will reference the `Battle` singleton. Specifically, the `ReaderSlot` will read the state and write to the `DataBuffer` mentioned above. This object will be of type `BaseEffectSlot`, but will not apply any effects to any combatants.
+
+Unlike the previous section, these will use a more traditional inheritance structure.
 ### Transmutations (tran)
 **Apply transmutations and related effects when necessary.**
 - [x] (Primary | Secondary) + Attack
