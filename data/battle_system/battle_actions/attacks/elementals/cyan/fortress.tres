@@ -19,14 +19,14 @@ resource_name = "Recoil Damage"
 script = ExtResource("4_0tkgy")
 attack_effect = SubResource("Resource_avrho")
 effect_target = 0
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_h1l5r"]
 resource_name = "Blocking"
 script = ExtResource("4_0tkgy")
 attack_effect = ExtResource("5_3iqxs")
 effect_target = 2
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Fortress"

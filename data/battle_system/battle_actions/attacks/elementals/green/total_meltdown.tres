@@ -19,7 +19,7 @@ resource_name = "Damage"
 script = ExtResource("4_7tme4")
 attack_effect = SubResource("Resource_2dip1")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_70lv3"]
 resource_name = "Ranged Drop"
@@ -27,7 +27,7 @@ script = ExtResource("5_4se75")
 stat = 7
 clear_first = false
 id = 6
-duration = 0
+_duration = "0"
 description = ""
 name = "Ranged Drop"
 _strength = "-3.5"
@@ -39,7 +39,7 @@ resource_name = "Ranged Drop"
 script = ExtResource("4_7tme4")
 attack_effect = SubResource("Resource_70lv3")
 effect_target = 0
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Total Meltdown"

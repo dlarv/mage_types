@@ -12,7 +12,7 @@ resource_name = "Purple-Phobic"
 script = ExtResource("4_6cur6")
 _element = "purple"
 id = 3
-duration = 3
+_duration = "3"
 icon = ExtResource("3_bxyds")
 description = ""
 name = "Purple-Phobic"
@@ -24,7 +24,7 @@ resource_name = "Purple-Phobic"
 script = ExtResource("4_4b86v")
 attack_effect = SubResource("Resource_42lny")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Nyctophobia"

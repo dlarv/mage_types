@@ -48,11 +48,6 @@ func create(effect: _BaseEffectSlot) -> void:
 		max_int.show()
 		min_int.value = e.min_count
 		max_int.value = e.max_count
-	elif e is DrainingDamage:
-		strength_int.show()
-		heal_percent.show()
-		strength_int.value = e.strength
-		heal_percent.value = e.heal_percent
 	elif e is InstantHealthChange:
 		strength_int.show()
 		allow_overflow.show()

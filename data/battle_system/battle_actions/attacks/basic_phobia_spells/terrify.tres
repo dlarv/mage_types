@@ -20,7 +20,7 @@ resource_name = "Random Phobia"
 script = ExtResource("1_b7plu")
 attack_effect = SubResource("Resource_2ns66")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Terrify"

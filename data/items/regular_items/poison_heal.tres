@@ -22,7 +22,7 @@ resource_name = "Poison Heal"
 script = ExtResource("2_eaqiy")
 attack_effect = SubResource("Resource_in8pl")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_ltitp"]
 resource_name = "Poison Heal"

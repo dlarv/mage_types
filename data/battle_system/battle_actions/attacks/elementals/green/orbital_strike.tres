@@ -25,7 +25,7 @@ resource_name = "Recoil Damage"
 script = ExtResource("5_heba5")
 attack_effect = SubResource("Resource_34db7")
 effect_target = 0
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_aistk"]
 resource_name = "Damage"
@@ -39,7 +39,7 @@ resource_name = "Damage"
 script = ExtResource("5_heba5")
 attack_effect = SubResource("Resource_aistk")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_iosgp"]
 script = ExtResource("6_cric7")
@@ -50,7 +50,7 @@ invert = false
 print_failed_status = "FAILURE"
 failure_msg = "FAILED"
 effect_target = 1
-chance = 1.0
+_chance = ""
 
 [resource]
 resource_name = "Orbital Strike"

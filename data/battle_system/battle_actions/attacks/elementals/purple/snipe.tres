@@ -30,7 +30,7 @@ resource_name = "Damage (MELEE_DEFENSE)"
 script = ExtResource("5_j1jyt")
 attack_effect = SubResource("Resource_ygvhx")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_j35d4"]
 resource_name = "Damage (RANGED_DEFENSE)"
@@ -46,7 +46,7 @@ resource_name = "Damage (RANGED_DEFENSE)"
 script = ExtResource("5_j1jyt")
 attack_effect = SubResource("Resource_j35d4")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_qlo2a"]
 script = ExtResource("4_tts8l")
@@ -57,7 +57,7 @@ invert = false
 print_failed_status = "SILENT"
 failure_msg = "FAILED"
 effect_target = 1
-chance = 1.0
+_chance = ""
 
 [resource]
 resource_name = "Snipe"

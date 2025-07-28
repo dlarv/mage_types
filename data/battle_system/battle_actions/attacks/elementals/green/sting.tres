@@ -19,14 +19,14 @@ resource_name = "Damage"
 script = ExtResource("4_y3gk5")
 attack_effect = SubResource("Resource_o30l2")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_dq5hx"]
 resource_name = "Poison"
 script = ExtResource("4_y3gk5")
 attack_effect = ExtResource("5_arj8y")
 effect_target = 1
-chance = 0.5
+_chance = "0.5"
 
 [resource]
 resource_name = "Sting"

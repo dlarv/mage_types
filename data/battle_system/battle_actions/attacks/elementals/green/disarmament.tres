@@ -11,7 +11,7 @@ script = ExtResource("3_e8jau")
 stat = 0
 clear_first = true
 id = 6
-duration = 0
+_duration = "0"
 description = ""
 name = ""
 _strength = "-10.0"
@@ -22,7 +22,7 @@ message = "{target}'s melee attack was lowered!
 script = ExtResource("4_c2f85")
 attack_effect = SubResource("Resource_fvnsn")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_g4eaf"]
 resource_name = "Defense Boost"
@@ -30,7 +30,7 @@ script = ExtResource("3_e8jau")
 stat = 3
 clear_first = true
 id = 6
-duration = 0
+_duration = "0"
 description = ""
 name = "Defense Boost"
 _strength = "10.0"
@@ -42,7 +42,7 @@ resource_name = "Defense Boost"
 script = ExtResource("4_c2f85")
 attack_effect = SubResource("Resource_g4eaf")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Disarmament"

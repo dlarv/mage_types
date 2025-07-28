@@ -6,7 +6,24 @@ const StatusEffectManager := preload("res://src/battle_system/StatusEffectManage
 const Effects := StatusEffectManager.StatusEffects
 
 @export var id: Effects: set = _set_status_effect
-@export var duration: int 
+@export var _duration: String:
+	set(val):
+		_duration = val
+		if val.is_valid_float():
+			duration = int(val)
+		else:
+			duration = int(-INF)
+	get:
+		if _duration.is_empty():
+			return str(duration)
+		return _duration
+var duration: int:
+	get:
+		if duration != int(-INF):
+			return duration
+		if not buffer_map.has("duration"):
+			buffer_map["duration"] = Parser.parse(_strength)
+		return buffer_map["duration"].call()
 @export var icon: PackedScene 
 ## The text displayed inside the MessageBox, etc.
 @export_multiline var description: String 

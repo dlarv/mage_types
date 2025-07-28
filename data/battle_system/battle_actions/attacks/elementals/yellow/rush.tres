@@ -25,7 +25,7 @@ resource_name = "Damage"
 script = ExtResource("3_6kg6t")
 attack_effect = SubResource("Resource_0qt60")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_5mwqi"]
 script = ExtResource("3_3hlwd")
@@ -35,7 +35,7 @@ invert = false
 print_failed_status = "FAILURE"
 failure_msg = "FAILED"
 effect_target = 1
-chance = 1.0
+_chance = ""
 
 [resource]
 resource_name = "Rush"

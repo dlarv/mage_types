@@ -18,7 +18,7 @@ message = ""
 script = ExtResource("4_h8btn")
 attack_effect = SubResource("Resource_5bvas")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Conduct Orange"

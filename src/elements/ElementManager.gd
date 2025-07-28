@@ -194,8 +194,6 @@ func test_traversals() -> void:
 
 func _enter_tree() -> void:
 	build()
-
-	
 	# test_transmutations()
 	# test_side_effects()
 	# test_traversals()

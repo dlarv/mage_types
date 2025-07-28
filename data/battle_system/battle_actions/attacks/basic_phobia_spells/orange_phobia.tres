@@ -12,7 +12,7 @@ resource_name = "Orange-Phobic"
 script = ExtResource("4_i3pwb")
 _element = "orange"
 id = 3
-duration = 3
+_duration = "3"
 icon = ExtResource("3_rcssw")
 description = ""
 name = "Orange-Phobic"
@@ -24,7 +24,7 @@ resource_name = "Orange-Phobic"
 script = ExtResource("5_m23vy")
 attack_effect = SubResource("Resource_fdoj7")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Xanthophobia"

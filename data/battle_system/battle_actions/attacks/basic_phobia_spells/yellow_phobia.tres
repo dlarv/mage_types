@@ -12,7 +12,7 @@ resource_name = "Yellow-Phobic"
 script = ExtResource("4_ju3qt")
 _element = "yellow"
 id = 3
-duration = 3
+_duration = "3"
 icon = ExtResource("3_x507q")
 description = ""
 name = "Yellow-Phobic"
@@ -24,7 +24,7 @@ resource_name = "Yellow-Phobic"
 script = ExtResource("5_ao63o")
 attack_effect = SubResource("Resource_wbhh4")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Photophobia"

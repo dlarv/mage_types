@@ -25,7 +25,7 @@ resource_name = "Damage"
 script = ExtResource("4_v182g")
 attack_effect = SubResource("Resource_fe3uk")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_owp58"]
 resource_name = "Damage"
@@ -39,7 +39,7 @@ resource_name = "Damage"
 script = ExtResource("4_v182g")
 attack_effect = SubResource("Resource_owp58")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [sub_resource type="Resource" id="Resource_cokas"]
 script = ExtResource("7_q8h1f")
@@ -50,7 +50,7 @@ invert = false
 print_failed_status = "FAILURE"
 failure_msg = "INEFFECTIVE"
 effect_target = 1
-chance = 1.0
+_chance = ""
 
 [resource]
 resource_name = "Magenta Strike"

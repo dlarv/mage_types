@@ -12,7 +12,7 @@ resource_name = "Phobic"
 script = ExtResource("3_pmt0t")
 _element = "blank"
 id = 3
-duration = 0
+_duration = "0"
 description = ""
 name = "Phobic"
 _strength = "0.0"
@@ -31,7 +31,7 @@ resource_name = "Phobic Heal"
 script = ExtResource("4_lu4xl")
 attack_effect = SubResource("Resource_38qny")
 effect_target = 1
-chance = 1.0
+_chance = "1.0"
 
 [resource]
 resource_name = "Brave the Dark"
