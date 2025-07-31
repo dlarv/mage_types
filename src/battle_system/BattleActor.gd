@@ -10,6 +10,7 @@ signal status_effect_added(effect: StatusEffect)
 signal status_effects_removed(effect: StatusEffect)
 signal damage_applied(current_hp: float)
 signal element_changed(id: int, element: ElementalType)
+signal leveled_up()
 signal spell_learned(spell: _BattleAction, index: int)
 signal equipment_equipped(equipment: Equipment)
 ## Called when opponents choose their action during battle.
@@ -18,9 +19,10 @@ signal action_selected(action: _BattleAction)
 
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
 
-@export var name: String = "Guy" 
-@export var level: int = 1
-var xp: float = 0
+@export var name := "Guy" 
+@export var level := 1
+var total_xp := 0.0
+var next_level_xp := 10.0
 
 @export_category("Stats")
 var statuses := StatusEffectManager.new()
@@ -183,14 +185,21 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
 			attacks[index] = prevAttack
 	return output
 
+
 func get_stat(stat: StatManager.Stats) -> float:
+	match stat:
+		StatManager.Stats.HP:
+			return hp
+		StatManager.Stats.CURRENT_HP:
+			return current_hp
 	return stat_manager.get_stat(stat)
 
+
 func set_stat(stat: Variant, amount: float) -> void:
-	if stat == "HP":
+	if (stat is int and stat == StatManager.Stats.HP) or (stat is String and stat.to_upper() == "HP"):
 		hp = int(amount)
 		current_hp = int(amount)
-	elif stat == "CURRENT_HP":
+	elif (stat is int and stat == StatManager.Stats.CURRENT_HP) or (stat is String and stat.to_upper() == "CURRENT_HP"):
 		current_hp = int(amount)
 	else:
 		if stat is String:
@@ -203,10 +212,12 @@ func get_attack_stat(action: _BattleAction) -> float:
 		return stat_manager.melee_attack
 	return stat_manager.ranged_attack
 
+
 func get_defense_stat(action: _BattleAction) -> float:
 	if action.attack_range == _BattleAction.AttackRange.MELEE:
 		return stat_manager.melee_defense
 	return stat_manager.ranged_defense
+
 
 ## Returns actual amount of damage applied, after accounting for status conditions.
 func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
@@ -229,6 +240,7 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 			aleady_defeated = true
 			was_just_defeated.emit()
 	return dmg
+
 
 func heal(dmg: int, allowOverflow: bool=false) -> int:
 	current_hp += dmg
@@ -301,30 +313,58 @@ func resolve_end_of_battle() -> String:
 		current_hp = hp
 	
 	# Update alignment.
+	var output := ""
 	if alignment_manager and not alignment_manager.alignment_locked:
 		Logger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
 		var prevAlign := alignment_manager.current_alignment
-		var alignmentLocked := alignment_manager.normalize_and_add()
-		if alignmentLocked:
+		var unnormalizedValues := alignment_manager.normalize_and_add()
+
+		if alignment_manager.update_current_alignment():
 			set_element(0, alignment_manager.current_alignment)
-			return "!!!!!!!!!!!!!!\n%s has become aligned to %s!" \
+			output = "!!!!!!!!!!!!!!\n%s has become aligned to %s!" \
 					% [name, alignment_manager.current_alignment.name]
 		elif prevAlign != alignment_manager.current_alignment:
 			set_element(0, alignment_manager.current_alignment)
-			return "!!!\n%s's core changed to %s!" \
+			output = "!!!\n%s's core changed to %s!" \
 					% [name, alignment_manager.current_alignment.name]
-	return ""
+
+		if stat_manager is PlayerStatManager:
+			stat_manager.resolve_end_of_turn(unnormalizedValues)
+	return output
+
 
 func has_phobia(element: ElementalType=null) -> bool:
 	# If value is null, return true if they have any phobias.
 	if not element: return len(statuses.phobias) > 0
 	return statuses.check_phobic(element) != null
 
+
 func add_func_override(old: Callable, new: Callable) -> void:
 	_func_overrides[old.get_method()] = new
 
+
 func remove_func_override(old: Callable) -> void:
 	_func_overrides.erase(old.get_method())
+
+
+func add_xp(xp: float) -> int:
+	total_xp += xp
+	var levels := 0
+	while total_xp >= next_level_xp:
+		total_xp = total_xp - next_level_xp
+		next_level_xp = next_level_xp * 2
+		levels += 1
+	
+	level += levels
+	return levels
+
+
+func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:
+	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)
+	hp += int(output[StatManager.Stats.HP])
+	leveled_up.emit()
+	return output
+
 
 func serialize() -> Dictionary:
 	var attackData := []

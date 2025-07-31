@@ -7,6 +7,7 @@ enum BattlefieldStateParams {  }
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const ActorAction := preload("res://src/battle_system/ActorAction.gd")
+const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
 
 @export var gui: Node3D
 @export var ai: OpponentController 
@@ -80,7 +81,7 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 	if len(allyActions) == 1 and allyActions[0].is_flee():
 		await gui.display_message("You ran away.")
 		battle_ended.emit(EndState.FLED)
-		_resolve_end_of_battle()
+		_resolve_end_of_battle(false)
 		return
 
 	# Get actions for opponent's team.
@@ -167,7 +168,9 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
 
-	Logger.append_battle_log("\n\nPlayer is selecting _actions...")
+	# if await _check_if_battle_ended(): return
+	
+	Logger.append_battle_log("\n\nPlayer is selecting actions...")
 	await _dialog(true)
 	_prep_next_turn()
 	gui.enable_player_controls(true)
@@ -239,7 +242,7 @@ func _check_if_battle_ended() -> bool:
 	return false
 
 
-func _resolve_end_of_battle() -> void:
+func _resolve_end_of_battle(pause:=true) -> void:
 	for ally in allies:
 		var msg: String = ally.resolve_end_of_battle()
 		await gui.display_message(msg)
@@ -248,6 +251,16 @@ func _resolve_end_of_battle() -> void:
 		enemy.resolve_end_of_battle()
 	
 	remove_child(gui)
+
+	if pause:
+		var rewardScreen := RewardScreen.instantiate()
+		$CanvasLayer.add_child(rewardScreen)
+		$CanvasLayer.show()
+		rewardScreen.show_results(allies, 100)
+		await rewardScreen.pressed
+		$CanvasLayer.remove_child(rewardScreen)
+		$CanvasLayer.hide()
+
 
 
 func _prep_next_turn() -> void:

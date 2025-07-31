@@ -1,0 +1,153 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1qxemloldp3p"]
+
+[ext_resource type="Script" uid="uid://heyv8wk7r8tq" path="res://src/battle_system/gui/battle_rewards/ActorDisplay.gd" id="1_qhghx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w83bd"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w83bd"]
+bg_color = Color(0, 0.624535, 0.999897, 1)
+
+[node name="ActorDisplay" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qhghx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="XpBarHBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Level" type="Label" parent="VBoxContainer/XpBarHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LVL"
+
+[node name="XpSlider" type="HSlider" parent="VBoxContainer/XpBarHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_w83bd")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_w83bd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_w83bd")
+editable = false
+scrollable = false
+
+[node name="Stats" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 50
+columns = 2
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Stats/HBoxContainer1"]
+layout_mode = 2
+text = "Hp"
+
+[node name="Hp" type="Label" parent="VBoxContainer/Stats/HBoxContainer1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Stats/HBoxContainer2"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="Label" parent="VBoxContainer/Stats/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Stats/HBoxContainer3"]
+layout_mode = 2
+text = "Melee Attack"
+
+[node name="MeleeAttack" type="Label" parent="VBoxContainer/Stats/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Stats/HBoxContainer4"]
+layout_mode = 2
+text = "Ranged Attack"
+
+[node name="RangedAttack" type="Label" parent="VBoxContainer/Stats/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Stats/HBoxContainer5"]
+layout_mode = 2
+text = "Melee Defense"
+
+[node name="MeleeDefense" type="Label" parent="VBoxContainer/Stats/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Stats/HBoxContainer6"]
+layout_mode = 2
+text = "Ranged Defense"
+
+[node name="RangedDefense" type="Label" parent="VBoxContainer/Stats/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2

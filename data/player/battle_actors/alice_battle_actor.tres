@@ -6,22 +6,23 @@
 [ext_resource type="Resource" uid="uid://bkg6ove3jbkgg" path="res://data/battle_system/battle_actions/attacks/basic/throw_c.tres" id="3_r85kq"]
 [ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="4_ae1kp"]
 [ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="5_7nw6m"]
-[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="7_mftjw"]
+[ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="7_1b60q"]
 
-[sub_resource type="Resource" id="Resource_my6ko"]
-script = ExtResource("7_mftjw")
+[sub_resource type="Resource" id="Resource_dwrcv"]
+script = ExtResource("7_1b60q")
 _base_melee_attack = 120.0
 _base_ranged_attack = 120.0
 _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
 _base_speed = 100.0
 _base_evasion = 100.0
+metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
 script = ExtResource("1_wyvu6")
 name = "Alice"
 level = 1
-stat_manager = SubResource("Resource_my6ko")
+stat_manager = SubResource("Resource_dwrcv")
 hp = 200
 reset_hp_after_battle = true
 _element1 = "purple"

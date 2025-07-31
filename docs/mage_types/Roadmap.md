@@ -349,6 +349,24 @@ Player characters will have their own unique `StatManager` class, which include 
 | Green   |     | x            |               | x             |                | x?    |
 | Cyan    |     |              | x             |               | x              |       |
 \?Element has 3 stats it influences.
+
+**Implementation Notes**
+- SideEffect.strength is totalled up until level up. The integer portion of this value is added to each stat upon level up.
+- Every transmutation is added to running totals as well, using the rules shown in the option 2 table above.
+
+**Right before battle ends**
+1. At end of battle, `BattleActor.resolve_end_of_turn(...)` is called.
+2. `AlignmentManager` normalizes values and calculates alignment.
+3. `AlignmentManager` informs `PlayerStatManager` of how many times each transmutation occurred.
+
+**After battle ends**
+1. `Battle` instantiates `RewardScreen`.
+2. `Battle` calls `RewardScreen.show_results(BattleActor[], xp, ItemSlot[])`
+3. `RewardScreen` displays `BattleActor` info.
+4. `RewardScreen` calls `BattleActor.add_xp(...)` and `BattleActor.level_up(...)`.
+5. If necessary, update `RewardScreen`.
+6. Force PlayerScreens to refresh.
+
 ### Attack Creator (atcr)
 **Have means to quickly create new attacks both in-game and in-engine.**
 - [x] Select required attributes: Name, Element, Priority, Range, Target, Cost. 

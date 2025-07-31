@@ -18,6 +18,8 @@ const MODIFIER := 0.3
 ## If true, set target's stat to 0 before apply buff/debuff.
 @export var clear_first := false
 
+var is_side_effect := false
+
 func _init() -> void:
 	id = Effects.STAT_CHANGE
 

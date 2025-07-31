@@ -34,6 +34,9 @@ func setup(actor: BattleActor) -> void:
 	if not actor.spell_learned.is_connected(_set_attack):
 		actor.spell_learned.connect(_set_attack)
 
+	if not actor.leveled_up.is_connected(_init_stats.bind(actor)):
+		actor.leveled_up.connect(_init_stats.bind(actor))
+
 	for child in %SpellScroller.get_children(): %SpellScroller.remove_child(child)
 	for i in range(max_spell_slots):
 		var button := Button.new()

@@ -2,7 +2,7 @@
 extends Resource
 class_name StatManager
 
-enum Stats { ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, MELEE, RANGED, SPEED, EVASION }
+enum Stats {ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, MELEE, RANGED, SPEED, EVASION, HP, CURRENT_HP  }
 
 signal stat_changed(stat: StatusEffect, mod: float)
 const BASE_MIN_MOD := 0.1

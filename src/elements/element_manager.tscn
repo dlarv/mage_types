@@ -19,10 +19,10 @@ script = ExtResource("11_lkgg0")
 stat = 0
 clear_first = false
 id = 6
-duration = 0
+_duration = "0"
 description = ""
 name = "Attack Boost"
-strength = 1.0
+_strength = "1.0"
 message = "{target}'s melee attack was boosted!
 {target}'s ranged attack was boosted!"
 
@@ -32,10 +32,10 @@ script = ExtResource("11_lkgg0")
 stat = 3
 clear_first = false
 id = 6
-duration = 0
+_duration = "0"
 description = ""
 name = "Defense Boost"
-strength = 1.0
+_strength = "1.0"
 message = "{target}'s melee defense was boosted!
 {target}'s ranged defense was boosted!"
 
@@ -45,10 +45,10 @@ script = ExtResource("11_lkgg0")
 stat = 8
 clear_first = false
 id = 6
-duration = 0
+_duration = "0"
 description = ""
 name = "Speed Boost"
-strength = 1.0
+_strength = "1.0"
 message = "{target}'s speed was boosted!"
 
 [node name="ElementalManager" type="Node"]

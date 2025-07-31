@@ -4,6 +4,7 @@ class_name AlignmentManager
 
 enum Type { ATTACK, TRANSMUTATION, OTHER }
 
+const ALIGNMENT_THRESHOLD := 0xF
 const ATTACK_MOD := 1.0
 const TRANSMUTATION_MOD := 3.0
 
@@ -21,11 +22,11 @@ var current_alignment: ElementalType
 var _unnormalized_values: Array[float] = [0, 0, 0, 0, 0, 0, 0, 0 ]
 
 
-## val = ########, where # is a hex value between 0 and F.
+## val = ########, where # is a hex value between 0 and FF.
 func setup_from_string(val: String) -> void:
 	alignment_values = []
-	for i in len(val):
-		alignment_values.append(max(min(val[i].hex_to_int(), 0xF), 0))
+	for i in len(val) - 1:
+		alignment_values.append(max(min(val.substr(i, 2).hex_to_int(), 0xFF), 0))
 	update_current_alignment()
 
 
@@ -49,7 +50,7 @@ func append_unnormalized(key: ElementalType, amount:=1.0, type:=Type.OTHER) -> v
 
 ## Find average of all unnormalized values, then +1 for all elements above this value.
 ## Returns true if a 
-func normalize_and_add() -> bool:
+func normalize_and_add() -> Array[float]:
 	var average := 0.0
 
 	for val in _unnormalized_values:
@@ -61,8 +62,9 @@ func normalize_and_add() -> bool:
 			add(element)
 			Logger.append_battle_log("%s: +1 = %d" % [element, alignment_values[i]])
 
+	var output := _unnormalized_values.duplicate()
 	_unnormalized_values = [0, 0, 0, 0, 0, 0, 0, 0 ]
-	return update_current_alignment()
+	return output
 
 
 ## Returns true if alignment was locked during this call.
@@ -81,7 +83,7 @@ func update_current_alignment() -> bool:
 	# Otherwise, tie breaker is determined above.
 	if maxVal > 0 and alignment_values[ElementManager.get_index_from_name(current_alignment.name)] < maxVal:
 		current_alignment = ElementManager.elements[maxIndex]
-	if maxVal == 0xF:
+	if maxVal == ALIGNMENT_THRESHOLD:
 		alignment_locked = true
 	return alignment_locked
 
@@ -95,5 +97,5 @@ func deserialize(data: Dictionary) -> void:
 func serialize() -> Dictionary:
 	var output := ""
 	for val in alignment_values:
-		output += "%x" % val
+		output += "%02x" % val
 	return { "values": output, "alignment_locked": alignment_locked }

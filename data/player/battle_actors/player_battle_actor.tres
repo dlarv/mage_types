@@ -1,32 +1,41 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=12 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
-[ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="2_1u0x0"]
+[ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_u5qgi"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
+[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="3_1u0x0"]
 [ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="3_2wteg"]
 [ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="3_gr7au"]
 [ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="6_88cs6"]
-[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="7_b7k3c"]
+[ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="8_1u0x0"]
 [ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="8_kxgh3"]
 
-[sub_resource type="Resource" id="Resource_ii6l6"]
-script = ExtResource("7_b7k3c")
+[sub_resource type="Resource" id="Resource_c2eox"]
+script = ExtResource("1_u5qgi")
+_alignment = "blank"
+alignment_locked = false
+metadata/_custom_type_script = "uid://ccl64vcc20maa"
+
+[sub_resource type="Resource" id="Resource_u5qgi"]
+script = ExtResource("8_1u0x0")
 _base_melee_attack = 100.0
 _base_ranged_attack = 100.0
 _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
 _base_speed = 140.0
 _base_evasion = 100.0
+metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
 script = ExtResource("1_ay17s")
 name = "Player"
 level = 1
-stat_manager = SubResource("Resource_ii6l6")
+stat_manager = SubResource("Resource_u5qgi")
 hp = 200
 reset_hp_after_battle = true
 _element1 = "magenta"
 _element2 = "magenta"
+alignment_manager = SubResource("Resource_c2eox")
 _alignment = "blank"
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("2_1u0x0"), ExtResource("6_88cs6"), ExtResource("3_gr7au"), ExtResource("3_2wteg")])
+attacks = Array[ExtResource("2_ynay7")]([ExtResource("6_88cs6"), ExtResource("3_1u0x0"), ExtResource("3_gr7au"), ExtResource("3_2wteg")])
 equipment = ExtResource("8_kxgh3")

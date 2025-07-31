@@ -200,6 +200,9 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	update_elemental_gui()
+	attack_buff.is_side_effect = true
+	defense_buff.is_side_effect = true
+	speed_buff.is_side_effect = true
 	
 func build()-> void:
 	if len(matchups.keys()) > 0: return
