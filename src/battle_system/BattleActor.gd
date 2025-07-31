@@ -22,7 +22,7 @@ const StatusEffectManager := preload("res://src/battle_system/StatusEffectManage
 @export var name := "Guy" 
 @export var level := 1
 var total_xp := 0.0
-var next_level_xp := 10.0
+var next_level_xp := 100.0
 
 @export_category("Stats")
 var statuses := StatusEffectManager.new()
@@ -362,13 +362,12 @@ func add_xp(xp: float) -> int:
 		next_level_xp = next_level_xp * 2
 		levels += 1
 	
-	level += levels
+	# level += levels
 	return levels
 
 
 func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:
-	# Called previously by caller.
-	# level += levels
+	level += levels
 	Logger.append_battle_log("BattleActor(%s) is now level(%d)!" % [name, level])
 
 	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)

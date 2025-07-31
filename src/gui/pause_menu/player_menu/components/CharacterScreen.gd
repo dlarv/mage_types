@@ -13,6 +13,7 @@ func setup(actor: BattleActor) -> void:
 	_actor = actor
 
 	%Name_Label.text = actor.name
+
 	_init_stats(actor)
 
 	if not actor.alignment:
@@ -60,6 +61,10 @@ func setup(actor: BattleActor) -> void:
 
 
 func _init_stats(actor: BattleActor) -> void:
+	%Level.text = "Lv%d" % actor.level
+	%XpSlider.value = int(actor.total_xp / actor.next_level_xp * 100)
+	%XpTotals.text = "%d/%d" % [int(actor.total_xp), int(actor.next_level_xp)]
+
 	for child in %Stats_HBox.get_children():
 		child.set_value(actor)
 
