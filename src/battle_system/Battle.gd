@@ -244,11 +244,11 @@ func _check_if_battle_ended() -> bool:
 
 func _resolve_end_of_battle(pause:=true) -> void:
 	for ally in allies:
-		var msg: String = ally.resolve_end_of_battle()
+		var msg: String = ally.resolve_end_of_battle(_turn_counter)
 		await gui.display_message(msg)
 	
 	for enemy in enemies:
-		enemy.resolve_end_of_battle()
+		enemy.resolve_end_of_battle(_turn_counter)
 	
 	remove_child(gui)
 

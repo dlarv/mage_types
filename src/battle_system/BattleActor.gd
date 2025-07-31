@@ -312,7 +312,7 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 	status_effects_removed.emit(effects)
 
 
-func resolve_end_of_battle() -> String:
+func resolve_end_of_battle(turnCounter: int) -> String:
 	stat_manager.reset()
 	statuses.clear()
 	if reset_hp_after_battle: 
@@ -335,7 +335,8 @@ func resolve_end_of_battle() -> String:
 					% [name, alignment_manager.current_alignment.name]
 
 		if stat_manager is PlayerStatManager:
-			stat_manager.resolve_end_of_turn(unnormalizedValues)
+			stat_manager.boost_elemental_stats([element1, element2] as Array[ElementalType])
+			stat_manager.resolve_end_of_turn(unnormalizedValues, turnCounter)
 	return output
 
 
@@ -369,6 +370,12 @@ func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:
 	# level was already updated by caller.
 	Logger.append_battle_log("BattleActor(%s) is now level(%d)!" % [name, level])
 	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)
+
+	# if output.values().all(func(x: float) -> bool: return x == 0):
+	# 	Logger.append_battle_log("BattleActor(%s): No stats boosted, init pity system.")
+	# 	stat_manager.boost_elemental_stats([element1, element2] as Array[ElementalType])
+	# 	output = stat_manager.level_up(levels * 1.5)
+
 	leveled_up.emit()
 	return output
 
