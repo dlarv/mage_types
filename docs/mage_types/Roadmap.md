@@ -29,8 +29,15 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Cowardly behavior
 	- [ ] Passive behavior
 - [ ] Add ability to level up
-	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty.
-- [ ] Attacks can define their own scaling factors (match/affinity/no match)
+	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty
+	- [ ] At end of battle show level up screen
+		- [ ] Display how much exp the player has received
+		- [ ] How much exp needed until next level
+		- [ ] Allow certain enemies to drop items
+	- [ ] Leveling up should give stat boosts.
+		- [ ] Based of character's side effect distribution (lots of attack buffs => a couple points of attack upon level up)?
+		- [ ] Transmuting into specific types gives certain stat points
+- [x] Attacks can define their own scaling factors (match/affinity/no match)
 	- [ ] Battle GUI should show these actual power values
 	- [ ] Strong attacks should have cooldowns (warmups too?)
 - [ ] Battle Animation refactor
@@ -287,8 +294,61 @@ Unlike the previous section, these will use a more traditional inheritance struc
 
 ### End Battle (enba)
 **End battle when player runs away or a team is defeated.**
-- [x] Status
+- [x] Reset stat boosts and status effects
+- [ ] Give exp to player
+- [ ] Optionally give loot to player
+- [ ] Display player's battle rewards
+	- [ ] Loot
+	- [ ] Exp and exp until next level
+	- [ ] On levelup, show stat changes
+- [ ] Give player stat boosts upon level up
 
+Each stat has the following components:
+- Base total
+- Mod total: Stat buffs/debuffs, reset after battle
+- Xp: This value will be added to the stats upon level up
+
+Player characters will have their own unique `StatManager` class, which include this last value (xp). Stat changes will be calculated based on the side effects a character accrues before level up. The `PlayerStatManager` will store how much each stat has been boosted.
+- Should debuffs affect these values?
+- How should the StatManager tell the difference between transmutation side effects and regular stat buffs?
+	- Instead of using a regular `StatChange`, a new child class could be created specifically to handle side effects.
+- Should anything else factor into these calculations? This current concept would ensure both attacks and defenses would rise together.
+	- The player's affinity values (which are also calculated at the end of battle) could contribute to the xp values.
+	
+*During battle*: StatManager keeps track of cumulative side effects. 
+*After battle*: AffinityManager informs StatManager of how many times each transmutation occurred.
+*Upon level up*: StatManager adds each xp value to its associated stat. Decimal values roll over to next level.
+
+>[!note] 
+>The AlignmentManager (AffinityManager) is only given to player characters. It might make sense to have it take care of level up logic, especially since its already running calculations at the end of every battle.
+	
+**Option 1**
+
+| Element  | Hp  | Melee Attack | Melee Defense | Ranged Attack | Ranged Defense | Speed |
+| -------- | --- | ------------ | ------------- | ------------- | -------------- | ----- |
+| Blue     | x*  |              | x             |               |                |       |
+| Purple   |     |              |               | x             | x              |       |
+| Magental | x   |              | x             |               |                |       |
+| Red      | x   | x            |               |               |                |       |
+| Orange   |     |              |               | x             |                | x*    |
+| Yellow   |     |              |               |               | x              | x     |
+| Green    |     | x            |               | x             |                |       |
+| Cyan     |     |              | x             |               | x              |       |
+\*Stat selected for balancing reasons more than lore.
+
+**Option 2**
+
+| Element | Hp  | Melee Attack | Melee Defense | Ranged Attack | Ranged Defense | Speed |
+| ------- | --- | ------------ | ------------- | ------------- | -------------- | ----- |
+| Blue    | x*  |              | x             |               |                |       |
+| Purple  |     | x            |               | x?            | x              |       |
+| Magenta | x   |              | x             |               |                |       |
+| Red     | x   | x            |               |               |                |       |
+| Orange  |     |              |               | x             |                | x*    |
+| Yellow  |     |              |               |               | x              | x     |
+| Green   |     | x            |               | x             |                | x?    |
+| Cyan    |     |              | x             |               | x              |       |
+\?Element has 3 stats it influences.
 ### Attack Creator (atcr)
 **Have means to quickly create new attacks both in-game and in-engine.**
 - [x] Select required attributes: Name, Element, Priority, Range, Target, Cost. 
