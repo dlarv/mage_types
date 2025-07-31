@@ -31,8 +31,8 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Add ability to level up
 	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty
 	- [x] At end of battle show level up screen
-		- [ ] Display how much exp the player has received
-		- [ ] How much exp needed until next level
+		- [x] Display how much exp the player has received
+		- [x] How much exp needed until next level
 		- [ ] Allow certain enemies to drop items
 	- [x] Leveling up should give stat boosts.
 		- [x] Based of character's side effect distribution (lots of attack buffs => a couple points of attack upon level up)?

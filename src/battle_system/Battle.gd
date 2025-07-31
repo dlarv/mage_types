@@ -256,7 +256,7 @@ func _resolve_end_of_battle(pause:=true) -> void:
 		var rewardScreen := RewardScreen.instantiate()
 		$CanvasLayer.add_child(rewardScreen)
 		$CanvasLayer.show()
-		rewardScreen.show_results(allies, 100)
+		rewardScreen.show_results(allies, ai.reward_xp, ai.reward_items)
 		await rewardScreen.pressed
 		$CanvasLayer.remove_child(rewardScreen)
 		$CanvasLayer.hide()

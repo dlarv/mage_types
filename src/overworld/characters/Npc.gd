@@ -12,6 +12,10 @@ signal battle_ended(state: Battle.EndState)
 	get:
 		if not enemy_actor: return []
 		return enemy_actor.team
+@export var ai: OpponentController:
+	get:
+		if not enemy_actor: return null
+		return enemy_actor.ai
 
 var story_actor: StoryActor = null
 var vendor_actor: VendorActor = null
