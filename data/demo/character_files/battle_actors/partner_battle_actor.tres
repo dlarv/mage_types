@@ -15,13 +15,13 @@ _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
 _base_speed = 50.0
 _base_evasion = 100.0
+hp = 200.0
 
 [resource]
 script = ExtResource("3_2eocn")
 name = "Crimson"
 level = 1
 stat_manager = SubResource("Resource_pvhim")
-hp = 200
 reset_hp_after_battle = true
 _element1 = "red"
 _element2 = "cyan"

@@ -37,6 +37,7 @@ var speed: float:
 	get: return _get_value(_base_speed, _speed_mod)
 var evasion: float:
 	get: return _get_value(_base_evasion, _evasion_mod)
+@export var hp := 200.0
 
 func _get_value(base: float, mod1: float) -> float:
 	var output := base * clampf(mod1, MIN_MOD, MAX_MOD)
@@ -53,6 +54,7 @@ func get_stat(stat: Stats) -> float:
 		Stats.RANGED_DEFENSE: return ranged_defense
 		Stats.SPEED: return speed
 		Stats.EVASION: return evasion
+		Stats.HP: return hp
 		_: return -1
 
 func set_base_stat(stat: Stats, val: float) -> void:
@@ -69,6 +71,8 @@ func set_base_stat(stat: Stats, val: float) -> void:
 			_base_speed = val
 		Stats.EVASION: 
 			_base_evasion = val
+		Stats.HP: 
+			hp = val
 
 func get_base_stat(stat: Stats) -> float:
 	match stat:
@@ -78,6 +82,7 @@ func get_base_stat(stat: Stats) -> float:
 		Stats.RANGED_DEFENSE: return _base_ranged_defense
 		Stats.SPEED: return _base_speed
 		Stats.EVASION: return _base_evasion
+		Stats.HP: return hp 
 		_: return -1
 
 func mod_base_stat(stat: Stats, amount: float, minAmount:=0.0) -> void:

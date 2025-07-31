@@ -27,10 +27,12 @@ var next_level_xp := 10.0
 @export_category("Stats")
 var statuses := StatusEffectManager.new()
 @export var stat_manager := StatManager.new()
-@export var hp: int = 100:
+var hp: int = 100:
 	set(value):
-		hp = value
+		stat_manager.set_base_stat(StatManager.Stats.HP, value)
 		current_hp = value
+	get:
+		return int(stat_manager.get_base_stat(StatManager.Stats.HP))
 var current_hp: int = 100
 @export var reset_hp_after_battle := true
 
@@ -361,7 +363,6 @@ func add_xp(xp: float) -> int:
 
 func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:
 	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)
-	hp += int(output[StatManager.Stats.HP])
 	leveled_up.emit()
 	return output
 

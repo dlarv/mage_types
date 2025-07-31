@@ -16,6 +16,7 @@ _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
 _base_speed = 100.0
 _base_evasion = 100.0
+hp = 200.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
@@ -23,7 +24,6 @@ script = ExtResource("1_wyvu6")
 name = "Alice"
 level = 1
 stat_manager = SubResource("Resource_dwrcv")
-hp = 200
 reset_hp_after_battle = true
 _element1 = "purple"
 _element2 = "purple"
