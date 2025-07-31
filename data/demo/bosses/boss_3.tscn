@@ -4,11 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_1yfde"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_1f7ua"]
 [ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="4_foaeo"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="4_lo8sh"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="5_rr0bc"]
-[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_nhmxp"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="7_dqtvd"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="8_q6jgd"]
 [ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/demo/bosses/boss_3.tres" id="9_uog1j"]
+
+[sub_resource type="Resource" id="Resource_c7d3c"]
+script = ExtResource("7_dqtvd")
+aggression = 0.5
+intelligence = 0.4
+transmutation_bias = 1.0
+_transmutation_pref = "blank"
+reward_xp = 100
+reward_items = Array[ExtResource("4_lo8sh")]([])
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0mcoh"]
 radius = 1.3856
@@ -22,17 +31,11 @@ id = "BOSS1"
 next = -1
 end_state = ""
 
-[sub_resource type="Resource" id="Resource_c7d3c"]
-script = ExtResource("7_dqtvd")
-aggression = 0.5
-intelligence = 0.4
-transmutation_bias = 1.0
-_transmutation_pref = "blank"
-dialog_ids = Array[ExtResource("6_nhmxp")]([])
-
 [node name="Boss3" instance=ExtResource("1_7pwyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
 collision_layer = 5
+team = Array[ExtResource("8_q6jgd")]([ExtResource("9_uog1j")])
+ai = SubResource("Resource_c7d3c")
 
 [node name="blob2" parent="." index="1" instance=ExtResource("2_1yfde")]
 

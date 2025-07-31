@@ -49,8 +49,8 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	if not battle_ended.is_connected(ai._on_battle_ended):
 		battle_ended.connect(ai._on_battle_ended)
 
-	if ai.dialog_resource != null:
-		_dialog_box.data = ai.dialog_resource
+	#if ai.dialog_resource != null:
+		#_dialog_box.data = ai.dialog_resource
 
 
 	gui = BattleGUI.instantiate()
@@ -256,6 +256,7 @@ func _resolve_end_of_battle(pause:=true) -> void:
 		var rewardScreen := RewardScreen.instantiate()
 		$CanvasLayer.add_child(rewardScreen)
 		$CanvasLayer.show()
+		Inventory.add_items(ai.reward_items)
 		rewardScreen.show_results(allies, ai.reward_xp, ai.reward_items)
 		await rewardScreen.pressed
 		$CanvasLayer.remove_child(rewardScreen)

@@ -3,12 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_gljf2"]
 [ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_vqxvv"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_bqnv6"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="4_15mns"]
 [ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="4_bqxmt"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="4_htvo1"]
-[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="5_hphma"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="6_a3ylm"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="8_qtm81"]
 [ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/demo/bosses/boss_2.tres" id="9_4r0bf"]
+
+[sub_resource type="Resource" id="Resource_5do5k"]
+script = ExtResource("6_a3ylm")
+aggression = 0.3
+intelligence = 0.8
+transmutation_bias = 0.5
+_transmutation_pref = "red"
+reward_xp = 100
+reward_items = Array[ExtResource("4_15mns")]([])
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0mcoh"]
 radius = 1.3856
@@ -22,17 +31,11 @@ id = "BOSS1"
 next = -1
 end_state = ""
 
-[sub_resource type="Resource" id="Resource_5do5k"]
-script = ExtResource("6_a3ylm")
-aggression = 0.3
-intelligence = 0.8
-transmutation_bias = 0.5
-_transmutation_pref = "red"
-dialog_ids = Array[ExtResource("5_hphma")]([])
-
 [node name="Boss2" instance=ExtResource("1_gljf2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
 collision_layer = 5
+team = Array[ExtResource("8_qtm81")]([ExtResource("9_4r0bf")])
+ai = SubResource("Resource_5do5k")
 
 [node name="blob2" parent="." index="1" instance=ExtResource("2_vqxvv")]
 

@@ -130,6 +130,11 @@ func get_battle_items() -> Array[RegularItem]:
 	return _battle_items
 
 
+func add_items(items: Array[ItemSlot]) -> void:
+	for slot in items:
+		add(slot.item, slot.quantity)
+
+
 func add(item: _Item, amount:=1) -> void:
 	if amount < 0:
 		remove(item, -amount)

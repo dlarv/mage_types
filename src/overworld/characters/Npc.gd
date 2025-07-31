@@ -16,6 +16,10 @@ signal battle_ended(state: Battle.EndState)
 	get:
 		if not enemy_actor: return null
 		return enemy_actor.ai
+	set(value):
+		if not enemy_actor: return 
+		enemy_actor.ai = value
+
 
 var story_actor: StoryActor = null
 var vendor_actor: VendorActor = null

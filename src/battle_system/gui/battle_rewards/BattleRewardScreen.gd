@@ -19,6 +19,24 @@ func show_results(actors: Array[BattleActor], xp: float, otherRewards: Array[Ite
 		display.set_actor(actor)
 		displays.append(display)
 
+	%ItemHeader.visible = len(otherRewards)
+	for slot in otherRewards:
+		var hbox := HBoxContainer.new()
+		hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+		var label := Label.new()
+		label.text = slot.item.name
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+		var label2 := Label.new()
+		label2.text = "x%d" % slot.quantity
+		label2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		label2.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+
+		hbox.add_child(label)
+		hbox.add_child(label2)
+		%ItemScroller.add_child(hbox)
+
 	for display: Control in displays:
 		display.add_xp(xp)
 
