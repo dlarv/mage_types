@@ -8,6 +8,10 @@ signal battle_ended(state: Battle.EndState)
 	set(val):
 		disabled = val
 		$Interactable.disabled = val
+@export var team: Array[BattleActor]:
+	get:
+		if not enemy_actor: return []
+		return enemy_actor.team
 
 var story_actor: StoryActor = null
 var vendor_actor: VendorActor = null
