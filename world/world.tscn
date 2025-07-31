@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=52 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="21_llyeo"]
 [ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/demo/bosses/boss_1.tres" id="24_2tavo"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="25_bwxdu"]
+[ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/demo/bosses/boss_2.tres" id="26_2tavo"]
+[ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/demo/bosses/boss_3.tres" id="28_k8wd0"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -193,12 +195,30 @@ blend_shape_mode = 0
 radius = 1.0
 height = 6.0
 
-[sub_resource type="Resource" id="Resource_k8wd0"]
+[sub_resource type="Resource" id="Resource_inp7a"]
 resource_local_to_scene = true
 script = ExtResource("25_bwxdu")
 aggression = 1.0
 intelligence = 0.5
 transmutation_bias = 0.5
+_transmutation_pref = "blank"
+reward_xp = 100
+reward_items = Array[ExtResource("21_2tavo")]([])
+
+[sub_resource type="Resource" id="Resource_j7vgi"]
+script = ExtResource("25_bwxdu")
+aggression = 0.3
+intelligence = 0.8
+transmutation_bias = 0.5
+_transmutation_pref = "red"
+reward_xp = 100
+reward_items = Array[ExtResource("21_2tavo")]([])
+
+[sub_resource type="Resource" id="Resource_bwxdu"]
+script = ExtResource("25_bwxdu")
+aggression = 0.5
+intelligence = 0.4
+transmutation_bias = 1.0
 _transmutation_pref = "blank"
 reward_xp = 100
 reward_items = Array[ExtResource("21_2tavo")]([])
@@ -313,19 +333,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -103)
 
 [node name="Boss1" parent="Overworld/Blue/Preset1" instance=ExtResource("11_tyily")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.80295, 0)
-team = Array[ExtResource("11_lpih5")]([])
-ai = null
+ai = SubResource("Resource_inp7a")
 
 [node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss1" groups=["persist"] instance=ExtResource("21_llyeo")]
-ai = SubResource("Resource_k8wd0")
+ai = SubResource("Resource_inp7a")
 _team = Array[ExtResource("11_lpih5")]([ExtResource("24_2tavo")])
 disappear_on_defeat = false
 
 [node name="Boss2" parent="Overworld/Blue/Preset1" instance=ExtResource("18_3lqrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1.803, 0)
+ai = SubResource("Resource_j7vgi")
+
+[node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss2" instance=ExtResource("21_llyeo")]
+ai = SubResource("Resource_j7vgi")
+_team = Array[ExtResource("11_lpih5")]([ExtResource("26_2tavo")])
+disappear_on_defeat = false
 
 [node name="Boss3" parent="Overworld/Blue/Preset1" instance=ExtResource("8_bwct4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1.803, 0)
+team = Array[ExtResource("11_lpih5")]([])
+ai = null
+
+[node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss3" instance=ExtResource("21_llyeo")]
+ai = SubResource("Resource_bwxdu")
+_team = Array[ExtResource("11_lpih5")]([ExtResource("28_k8wd0")])
+disappear_on_defeat = false
 
 [node name="DoorBlocker_1" type="MeshInstance3D" parent="Overworld/Blue" groups=["detached_env"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -82.7)
