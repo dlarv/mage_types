@@ -353,6 +353,7 @@ Player characters will have their own unique `StatManager` class, which include 
 **Implementation Notes**
 - SideEffect.strength is totalled up until level up. The integer portion of this value is added to each stat upon level up.
 - Every transmutation is added to running totals as well, using the rules shown in the option 2 table above.
+- When leveling up, stat boosts cannot exceed 10% of their current base stats. If this cap is reached, half of the unused stat boosts will roll over to the next level. This way if the player has a lot of stat boosts over the course of their level up, they won't get game breaking changes.
 
 **Right before battle ends**
 1. At end of battle, `BattleActor.resolve_end_of_turn(...)` is called.

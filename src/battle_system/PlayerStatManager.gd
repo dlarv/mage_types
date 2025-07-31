@@ -3,6 +3,8 @@ extends StatManager
 class_name PlayerStatManager
 
 const TRANSMUTATION_XP_UNIT := 0.3
+## Percentage of current base stat. Upon level up, the stat boost will not be able to exceed this amount.
+const LEVEL_UP_BOOST_MAX := 0.1
 # Since side effects don't boost HP, this value will let HP keep pace.
 const HP_XP_BOOST := 0.3
 
@@ -98,10 +100,20 @@ func level_up(levels:=1) -> Dictionary[Stats, float]:
 
 
 func _calc_boost(stat: Stats, xp: float, levels: int) -> float:
-	var amount := int(xp) * levels
-	set_base_stat(stat, get_base_stat(stat) + amount)
-	set_xp_stat(stat, max(0, xp - int(xp)))
+	var base := get_base_stat(stat) 
+	var amount := int(min(xp, base * LEVEL_UP_BOOST_MAX)) * levels
 
+	set_base_stat(stat, base + amount)
+
+	var decimal := xp - int(xp)
+	# Only half of whole number rolls over.
+	var whole := int(xp) / 2.0
+	Logger.append_battle_log(
+			"StatBoost(%s): Amount(%0.2f) = min[Xp(%0.2f), 10%%of(%0.2f)] * Levels(%d)... Rollover(%0.2f) = Xp(%0.2f) / 2" 
+			% [Stats.keys()[stat], amount, xp, base, levels, whole + decimal, xp]
+		)
+
+	set_xp_stat(stat, max(0, whole + decimal))
 	return amount
 
 

@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://ccl64vcc20maa"
 [sub_resource type="Resource" id="Resource_u5qgi"]
 script = ExtResource("8_1u0x0")
 _base_melee_attack = 100.0
-_base_ranged_attack = 100.0
+_base_ranged_attack = 30.0
 _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
 _base_speed = 140.0

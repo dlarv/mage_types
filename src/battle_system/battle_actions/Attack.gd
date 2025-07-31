@@ -56,11 +56,11 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 	var affinity: float = scaling_factor.x
 	if scaling_factor.w > -1 and user.element1 == element and user.element2 == element:
 		Logger.append_battle_log("User(%s) elements both match Attack.Element(%s)" 
-			% [user.name, user.element2, element])
+			% [user.name, element])
 		affinity = scaling_factor.w
 	elif user.element1 == element or user.element2 == element:
 		Logger.append_battle_log("User(%s) typing matches Attack.Element(%s)" 
-			% [user.name, user.element2, element])
+			% [user.name, element])
 		affinity = scaling_factor.z
 	elif user.element1.in_same_affinity_group(element) or user.element2.in_same_affinity_group(element):
 		Logger.append_battle_log("User(%s)'s typing has affinity for Attack.Element(%s)"

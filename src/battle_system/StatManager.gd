@@ -17,6 +17,11 @@ var MAX_MOD := 3.0
 @export var _base_ranged_defense: float = 100
 @export var _base_speed: float = 100
 @export var _base_evasion: float = 100
+@export var hp := 200.0:
+	set(value):
+		hp = value
+		current_hp = value
+var current_hp: float
 
 var _melee_attack_mod: float = 1
 var _ranged_attack_mod: float = 1
@@ -37,7 +42,6 @@ var speed: float:
 	get: return _get_value(_base_speed, _speed_mod)
 var evasion: float:
 	get: return _get_value(_base_evasion, _evasion_mod)
-@export var hp := 200.0
 
 func _get_value(base: float, mod1: float) -> float:
 	var output := base * clampf(mod1, MIN_MOD, MAX_MOD)
