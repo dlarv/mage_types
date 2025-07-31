@@ -37,7 +37,7 @@ theme_override_constants/separation = 10
 [node name="Level" type="Label" parent="VBoxContainer/XpBarHBox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "LVL"
+text = "Lv"
 
 [node name="XpSlider" type="HSlider" parent="VBoxContainer/XpBarHBox"]
 unique_name_in_owner = true

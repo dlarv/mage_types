@@ -22,7 +22,7 @@ const StatusEffectManager := preload("res://src/battle_system/StatusEffectManage
 @export var name := "Guy" 
 @export var level := 1
 var total_xp := 0.0
-var next_level_xp := 100.0
+var next_level_xp := 10.0
 
 @export_category("Stats")
 var statuses := StatusEffectManager.new()
@@ -367,14 +367,11 @@ func add_xp(xp: float) -> int:
 
 
 func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:
-	# level was already updated by caller.
+	# Called previously by caller.
+	# level += levels
 	Logger.append_battle_log("BattleActor(%s) is now level(%d)!" % [name, level])
-	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)
 
-	# if output.values().all(func(x: float) -> bool: return x == 0):
-	# 	Logger.append_battle_log("BattleActor(%s): No stats boosted, init pity system.")
-	# 	stat_manager.boost_elemental_stats([element1, element2] as Array[ElementalType])
-	# 	output = stat_manager.level_up(levels * 1.5)
+	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)
 
 	leveled_up.emit()
 	return output

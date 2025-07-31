@@ -30,13 +30,13 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Passive behavior
 - [ ] Add ability to level up
 	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty
-	- [ ] At end of battle show level up screen
+	- [x] At end of battle show level up screen
 		- [ ] Display how much exp the player has received
 		- [ ] How much exp needed until next level
 		- [ ] Allow certain enemies to drop items
-	- [ ] Leveling up should give stat boosts.
-		- [ ] Based of character's side effect distribution (lots of attack buffs => a couple points of attack upon level up)?
-		- [ ] Transmuting into specific types gives certain stat points
+	- [x] Leveling up should give stat boosts.
+		- [x] Based of character's side effect distribution (lots of attack buffs => a couple points of attack upon level up)?
+		- [x] Transmuting into specific types gives certain stat points
 - [x] Attacks can define their own scaling factors (match/affinity/no match)
 	- [ ] Battle GUI should show these actual power values
 	- [ ] Strong attacks should have cooldowns (warmups too?)
