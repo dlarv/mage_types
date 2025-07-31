@@ -109,8 +109,11 @@ func _calc_boost(stat: Stats, xp: float, levels: int) -> float:
 	# Only half of whole number rolls over.
 	var whole := int(xp) / 2.0
 	Logger.append_battle_log(
-			"StatBoost(%s): Amount(%0.2f) = min[Xp(%0.2f), 10%%of(%0.2f)] * Levels(%d)... Rollover(%0.2f) = Xp(%0.2f) / 2" 
-			% [Stats.keys()[stat], amount, xp, base, levels, whole + decimal, xp]
+			"StatBoost(%s): Amount(%0.2f) = min[Xp(%0.2f), 10%%of(%0.2f)] * Levels(%d)" 
+			% [Stats.keys()[stat], amount, xp, base, levels]
+		)
+	Logger.append_battle_log("StatBoost(%s): Rollover(%0.2f) = Xp(%0.2f) / 2" 
+			% [Stats.keys()[stat], whole + decimal, xp]
 		)
 
 	set_xp_stat(stat, max(0, whole + decimal))
