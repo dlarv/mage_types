@@ -13,7 +13,6 @@ const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle
 @export var ai: OpponentController 
 @export var _dialog_box: DialogueBox
 
-# BattleActor[]
 var enemies: Array[BattleActor] = []
 var allies: Array[BattleActor] = []
 
@@ -39,10 +38,11 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 
 	for ally: BattleActor in allies:
 		ally.setup()
-		ally.was_just_defeated.connect(func() -> void: _defeated_allies += 1)
+		ally.was_just_defeated.connect(_increment_defeat_counter.bind(true))
+
 	for enemy: BattleActor in enemies:
 		enemy.setup()
-		enemy.was_just_defeated.connect(func() -> void: _defeated_enemies += 1)
+		enemy.was_just_defeated.connect(_increment_defeat_counter.bind(false))
 
 	ai.setup(enemies)
 
@@ -245,10 +245,12 @@ func _check_if_battle_ended() -> bool:
 func _resolve_end_of_battle(pause:=true) -> void:
 	for ally in allies:
 		var msg: String = ally.resolve_end_of_battle(_turn_counter)
+		ally.was_just_defeated.disconnect(_increment_defeat_counter)
 		await gui.display_message(msg)
 	
 	for enemy in enemies:
 		enemy.resolve_end_of_battle(_turn_counter)
+		enemy.was_just_defeated.disconnect(_increment_defeat_counter)
 	
 	remove_child(gui)
 
@@ -282,8 +284,17 @@ func _prep_next_turn() -> void:
 	gui.display_turn_order(speedRank)
 
 
+func _increment_defeat_counter(isAlly: bool) -> void:
+	if isAlly:
+		_defeated_allies += 1
+	else:
+		_defeated_enemies += 1
+
+
 # To be DEPRECATED
 func _play_animation(action: ActorAction) -> void:
 		var userPosition: Vector2 = gui.get_actor_display_position(action.actor)
 		var targetPosition: Vector2 = gui.get_actor_display_position(action.targets[0])
 		action.action.play_animation(userPosition, targetPosition, self)
+
+

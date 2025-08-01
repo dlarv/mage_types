@@ -122,6 +122,7 @@ func get_and_flush_msgs() -> Array[String]:
 	
 	return output
 
+
 func set_element(id: int, element: ElementalType) -> void:
 	if id == 0:
 		element1 = element
@@ -313,6 +314,8 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 
 
 func resolve_end_of_battle(turnCounter: int) -> String:
+	is_defeated = false
+	aleady_defeated = false
 	stat_manager.reset()
 	statuses.clear()
 	if reset_hp_after_battle: 
