@@ -25,4 +25,4 @@ func _get_color(key: String) -> Color:
 		"Y": return ElementManager.Yellow.main_color
 		"G": return ElementManager.Green.main_color
 		"C": return ElementManager.Cyan.main_color
-		"b",_: return ElementManager.Blank.main_color
+		" ",_: return ElementManager.Blank.main_color
