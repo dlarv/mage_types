@@ -3,24 +3,26 @@ class_name Formatter
 
 signal meta_clicked(obj: Variant)
 
-const ElementEffect := preload("res://src/gui/RichTextElement.gd")
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
-const AttackASDF := preload("res://src/gui/info_display/formatters/AttackFormatter.gd")
+const AttackFormatter := preload("res://src/gui/info_display/formatters/AttackFormatter.gd")
 
-@export var val: AttackASDF
+@export var val: AttackFormatter
 
 func _enter_tree() -> void:
-	var effect := ElementEffect.new()
+	var effect1 := RichTextElement.new()
 	for child in find_children("", "RichTextLabel", true):
-		child.install_effect(effect)
+		child.install_effect(effect1)
+
 
 func append_elemental_color(label: RichTextLabel, element: ElementalType) -> void:
 	label.push_color(element.main_color)
 	label.append_text(element.name)
 	label.pop() # End color
 
+
 func display(obj: Variant, limitInfo:=false) -> void:
 	show()
+
 
 func _format_attack_effects(effects: Array[Variant], effectsLabel: RichTextLabel) -> int:
 	var power := 0
@@ -34,6 +36,7 @@ func _format_attack_effects(effects: Array[Variant], effectsLabel: RichTextLabel
 			pass
 
 	return power
+
 
 func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 	var chance := int(e.chance * 100)
@@ -104,6 +107,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 			effectsLabel.append_text("Does recoil damage on user.")
 	return int(power)
 
+
 func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLabel) -> int:
 	var success_power := 0
 	var fail_power := 0
@@ -150,6 +154,7 @@ func _format_elemental_condition(e: ConditionalEffect, effectsLabel: RichTextLab
 		fail_power += _format_attack_effect(e.failed_effect, effectsLabel)
 
 	return int((success_power + fail_power) / 2.0)
+
 
 func _on_meta_clicked(meta: Variant) -> void:
 	if meta is String:
