@@ -40,7 +40,7 @@ invert = false
 print_failed_status = "TOTAL_FAILURE"
 failure_msg = "FAILED"
 effect_target = 1
-_chance = ""
+_chance = "1.0"
 
 [resource]
 resource_name = "Shield"
@@ -55,4 +55,5 @@ _element = "cyan"
 priority = 1
 attack_range = 2
 target = 1
-details = ""
+details = "If user is [el]Cyan[/el] or [el]Blue[/el], 100% chance of applying block [url]Block[/url].
+Otherwise, 40% chance."

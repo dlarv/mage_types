@@ -29,11 +29,11 @@ const AttackType := AlignmentManager.Type
 					count += 1
 		return int(float(total) / float(count))
 
-## No Match/Affinity/Match/Double Match
-## No Match: %power when user.element1 NOR user.element2 == action.element
-## Affinity: %power when either user.element1 OR user.element2 == action.element.affinity
-## Match: %power when either user.element1 OR user.element2 == action.element
-## Double Match: %power when user.element1 AND user.element2 == action.element
+## No Match/Affinity/Match/Double Match[br]
+## No Match: %power when user.element1 NOR user.element2 == action.element[br]
+## Affinity: %power when either user.element1 OR user.element2 == action.element.affinity[br]
+## Match: %power when either user.element1 OR user.element2 == action.element[br]
+## Double Match: %power when user.element1 AND user.element2 == action.element[br]
 ## If value == -1, then value will be hidden in the UI.
 @export var scaling_factor := Vector4i(100, 100, 100, -1)
 

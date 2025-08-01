@@ -28,7 +28,6 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Aggressive behavior
 	- [ ] Cowardly behavior
 	- [ ] Passive behavior
-- [ ] Reduce amount of text shown when viewing an attack
 - [ ] Force tooltips to use RichTextLabels
 - [x] Attacks can define their own scaling factors (match/affinity/no match)
 	- [ ] Battle GUI should show these actual power values
@@ -46,6 +45,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [x] Leveling up should give stat boosts.
 		- [x] Based of character's side effect distribution (lots of attack buffs => a couple points of attack upon level up)?
 		- [x] Transmuting into specific types gives certain stat points
+- [x] Reduce amount of text shown when viewing an attack
 - [x] BattleAction refactor
 	- [x] Battle should be a singleton that is only accessible when battle is ongoing
 	- [x] AttackEffects with more complex effects should be able to query Battle object directly for battlefield state
@@ -157,6 +157,9 @@ MVP Demo candidate. Add story and QOL features.
 # The List
 ## Battle (BATT)
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
+	- Use `[url]` tag.
+- `RichTextElement` can be used to set the color of elemental names.
+	- To set the color of blank text, first character will need to be a " ".
 ### Actor Info (ainf)
 **Show information about each actor:**
 - [x] Name, Hp.

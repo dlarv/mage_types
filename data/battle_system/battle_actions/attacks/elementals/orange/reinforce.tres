@@ -136,4 +136,5 @@ _element = "orange"
 priority = 0
 attack_range = 2
 target = 1
-details = "If targets's Secondary type is Defensive, applies a defense boost. Otherwise, applies an attack boost. If the target's Primary and Secondary types are in the same affinity group, apply an additional speed buff."
+details = "If targets's Secondary type is Defensive, applies a defense boost. Otherwise, applies an attack boost. 
+If the target's Primary and Secondary types are in the same affinity group, apply an additional speed buff."
