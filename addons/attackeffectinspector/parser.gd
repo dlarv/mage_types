@@ -28,6 +28,7 @@ static var variable_regex: RegEx:
 
 ## output: Callable | null
 static func parse(input: String) -> Variant:
+	# if Engine.is_editor_hint(): return null
 	var tokens := tokenize(input)
 	tokens.reverse()
 

@@ -30,10 +30,10 @@ func _update_property():
 
 	var text := line_edit.text
 	var use_advanced_syntax := not text.is_valid_float()
-	if obj is _BaseEffectSlot:
-		obj.get_chance = Parser.parse(text)
-	else:
-		if use_advanced_syntax:
+	if use_advanced_syntax:
+		if obj is _BaseEffectSlot:
+			obj.get_chance = Parser.parse(text)
+		else:
 			obj.buffer_map[prop] = Parser.parse(text)
 
 	updating = false
