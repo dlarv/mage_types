@@ -26,14 +26,14 @@ func display(attack: Variant, limitInfo:=false) -> void:
 	if power > 0:
 		%Power.text = str(int(power))
 	else:
-		%Power.text = "n/a"
+		%Power.text = "N/A"
 	
 	if attack.scaling_factor.x != -1:
 		_format_scaling_factor(
 				%ScalingFactorHBox/XLabel,
 				null,
 				attack.scaling_factor.x,
-				"If the user is neither [el]%s[/el] nor has %s affinity, this attack will be at %d%% power." \
+				"If the user is neither [el]%s[/el] nor has %s affinity, this attack will be at [i]%d%%[/i] power." \
 					% [attack.element, attack.element.get_affinity_bb_code_name(false), attack.scaling_factor.x]
 			)
 	else:
@@ -44,7 +44,7 @@ func display(attack: Variant, limitInfo:=false) -> void:
 				%ScalingFactorHBox/YLabel,
 				%ScalingFactorHBox/Label1,
 				attack.scaling_factor.y,
-				"If the user has %s affinity, this attack will be at %d%% power." \
+				"If the user has %s affinity, this attack will be at [i]%d%%[/i] power." \
 					% [attack.element.get_affinity_bb_code_name(false), attack.scaling_factor.y]
 			)
 	else:
@@ -56,8 +56,8 @@ func display(attack: Variant, limitInfo:=false) -> void:
 				%ScalingFactorHBox/ZLabel,
 				%ScalingFactorHBox/Label2,
 				attack.scaling_factor.z,
-				"If the user is [el]%s[/el], this attack will be at %d%% power." \
-					% [attack.element, attack.scaling_factor.y]
+				"If the user is [el]%s[/el], this attack will be at [i]%d%%[/i] power." \
+					% [attack.element, attack.scaling_factor.z]
 			)
 	else:
 		%ScalingFactorHBox/ZLabel.hide()
@@ -68,17 +68,17 @@ func display(attack: Variant, limitInfo:=false) -> void:
 				%ScalingFactorHBox/WLabel,
 				%ScalingFactorHBox/Label3,
 				attack.scaling_factor.w,
-				"If both of the user's types are [el]%s[/el], this attack will be at %d%% power." \
-					% [attack.element, attack.scaling_factor.y]
+				"If both of the user's types are [el]%s[/el], this attack will be at [i]%d%%[/i] power." \
+					% [attack.element, attack.scaling_factor.w]
 			)
 	else:
 		%ScalingFactorHBox/WLabel.hide()
 		%ScalingFactorHBox/Label3.hide()
 
 
-func _format_scaling_factor(textLabel: Label, divider: Label, value: int, msg: String) -> void:
+func _format_scaling_factor(textLabel: TooltipTrigger, divider: Label, value: int, msg: String) -> void:
 	if divider:
 		divider.show()
 	textLabel.show()
 	textLabel.text = str(value)
-	textLabel.tooltip_text = msg
+	textLabel.tooltip_strings = [msg]

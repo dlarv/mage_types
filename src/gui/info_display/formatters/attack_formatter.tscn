@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://pejvhd3qb6b0"]
+[gd_scene load_steps=6 format=3 uid="uid://pejvhd3qb6b0"]
 
 [ext_resource type="Script" uid="uid://ci4paps2r0uy2" path="res://src/gui/info_display/formatters/AttackFormatter.gd" id="1_xauya"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_o1esy"]
+[ext_resource type="Script" uid="uid://coqwnstoj346c" path="res://addons/tooltips_pro/scripts/tooltip_trigger.gd" id="3_tankp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dknpi"]
 font_size = 10
@@ -134,9 +135,12 @@ size_flags_vertical = 8
 
 [node name="XLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 layout_mode = 2
-tooltip_text = "[b]value[/b]"
 mouse_filter = 0
 text = "100"
+script = ExtResource("3_tankp")
+tooltip_alignment = 1
+origin = 3
+offset = Vector2(0, 10)
 
 [node name="Label1" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 layout_mode = 2
@@ -146,6 +150,10 @@ text = "/"
 layout_mode = 2
 mouse_filter = 0
 text = "100"
+script = ExtResource("3_tankp")
+tooltip_alignment = 1
+origin = 3
+offset = Vector2(0, 10)
 
 [node name="Label2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 layout_mode = 2
@@ -155,6 +163,10 @@ text = "/"
 layout_mode = 2
 mouse_filter = 0
 text = "100"
+script = ExtResource("3_tankp")
+tooltip_alignment = 1
+origin = 3
+offset = Vector2(0, 10)
 
 [node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 visible = false
@@ -166,6 +178,10 @@ visible = false
 layout_mode = 2
 mouse_filter = 0
 text = "100"
+script = ExtResource("3_tankp")
+tooltip_alignment = 1
+origin = 3
+offset = Vector2(0, 10)
 
 [node name="PriorityHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 layout_mode = 2

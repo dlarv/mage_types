@@ -36,8 +36,8 @@ func get_off_def_color() -> Color:
 
 func get_affinity_bb_code_name(capitalize: bool) -> String:
 	if is_defensive_type:
-		return "[color=blue]%s[/color]" % "Defensive" if capitalize else "defensive"
-	return "[color=red]%s[/color]" % "Offensive" if capitalize else "offensive"
+		return "[color=blue]%s[/color]" % ("Defensive" if capitalize else "defensive")
+	return "[color=red]%s[/color]" % ("Offensive" if capitalize else "offensive")
 
 
 func in_same_affinity_group(el: ElementalType) -> bool:
