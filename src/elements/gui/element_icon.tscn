@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bytpfk06xs7ht" path="res://src/elements/gui/ElementIcon.gd" id="1_2nvp8"]
 
-[node name="ElementIcon" type="ColorRect" node_paths=PackedStringArray("label")]
+[node name="ElementIcon" type="ColorRect"]
 custom_minimum_size = Vector2(0, 25)
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 color = Color(0.5, 0.5, 0.5, 1)
 script = ExtResource("1_2nvp8")
-label = NodePath("Label")
 
 [node name="Label" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(0, 25)

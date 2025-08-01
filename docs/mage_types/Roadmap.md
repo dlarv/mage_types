@@ -28,15 +28,8 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Aggressive behavior
 	- [ ] Cowardly behavior
 	- [ ] Passive behavior
-- [ ] Add ability to level up
-	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty
-	- [x] At end of battle show level up screen
-		- [x] Display how much exp the player has received
-		- [x] How much exp needed until next level
-		- [ ] Allow certain enemies to drop items
-	- [x] Leveling up should give stat boosts.
-		- [x] Based of character's side effect distribution (lots of attack buffs => a couple points of attack upon level up)?
-		- [x] Transmuting into specific types gives certain stat points
+- [ ] Reduce amount of text shown when viewing an attack
+- [ ] Force tooltips to use RichTextLabels
 - [x] Attacks can define their own scaling factors (match/affinity/no match)
 	- [ ] Battle GUI should show these actual power values
 	- [ ] Strong attacks should have cooldowns (warmups too?)
@@ -44,6 +37,15 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
+- [x] Add ability to level up
+	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty
+	- [x] At end of battle show level up screen
+		- [x] Display how much exp the player has received
+		- [x] How much exp needed until next level
+		- [x] Allow certain enemies to drop items
+	- [x] Leveling up should give stat boosts.
+		- [x] Based of character's side effect distribution (lots of attack buffs => a couple points of attack upon level up)?
+		- [x] Transmuting into specific types gives certain stat points
 - [x] BattleAction refactor
 	- [x] Battle should be a singleton that is only accessible when battle is ongoing
 	- [x] AttackEffects with more complex effects should be able to query Battle object directly for battlefield state
