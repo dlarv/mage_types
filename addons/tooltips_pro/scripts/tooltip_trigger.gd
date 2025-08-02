@@ -40,7 +40,7 @@ extends Node
 
 @export_group("Tooltip Settings")
 ## Override the global settings as defined by the resource set on the [TooltipManager].
-@export var tooltip_settings_override: Resource
+@export var tooltip_settings_override: TooltipSettings
 
 @export_group("Content")
 ## The text to apply to the [Label]s or [RichTextLabel]s defined on the [Tooltip] Template.

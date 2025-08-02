@@ -1,14 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://pejvhd3qb6b0"]
+[gd_scene load_steps=8 format=3 uid="uid://pejvhd3qb6b0"]
 
 [ext_resource type="Script" uid="uid://ci4paps2r0uy2" path="res://src/gui/info_display/formatters/AttackFormatter.gd" id="1_xauya"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_o1esy"]
 [ext_resource type="Script" uid="uid://coqwnstoj346c" path="res://addons/tooltips_pro/scripts/tooltip_trigger.gd" id="3_tankp"]
+[ext_resource type="Script" uid="uid://lcf8uedn57am" path="res://addons/tooltips_pro/scripts/tooltip_settings.gd" id="4_8pvqq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dknpi"]
 font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_avtiv"]
 font_size = 10
+
+[sub_resource type="Resource" id="Resource_yx5qe"]
+script = ExtResource("4_8pvqq")
+tooltip_template_dir_path = "res://addons/tooltips_pro/examples/tooltip_templates/"
+lock_mode = 3
+open_delay = 0.1
+timer_lock_delay = 1.5
+unlock_delay = 0.25
+darken_step_count = 3
+darken_step_value = 0.25
+step_limit_color = Color(0, 0, 0, 0.156863)
+metadata/_custom_type_script = "uid://lcf8uedn57am"
 
 [node name="AttackFormatter" type="PanelContainer"]
 anchors_preset = 15
@@ -92,6 +105,7 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
+text = "100"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -107,6 +121,7 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
+text = "100%"
 
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -141,6 +156,7 @@ script = ExtResource("3_tankp")
 tooltip_alignment = 1
 origin = 3
 offset = Vector2(0, 10)
+tooltip_settings_override = SubResource("Resource_yx5qe")
 
 [node name="Label1" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 layout_mode = 2
@@ -154,6 +170,7 @@ script = ExtResource("3_tankp")
 tooltip_alignment = 1
 origin = 3
 offset = Vector2(0, 10)
+tooltip_settings_override = SubResource("Resource_yx5qe")
 
 [node name="Label2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 layout_mode = 2
@@ -167,6 +184,7 @@ script = ExtResource("3_tankp")
 tooltip_alignment = 1
 origin = 3
 offset = Vector2(0, 10)
+tooltip_settings_override = SubResource("Resource_yx5qe")
 
 [node name="Label3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 visible = false
@@ -182,6 +200,7 @@ script = ExtResource("3_tankp")
 tooltip_alignment = 1
 origin = 3
 offset = Vector2(0, 10)
+tooltip_settings_override = SubResource("Resource_yx5qe")
 
 [node name="PriorityHBox" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/ScalingFactorHBox"]
 layout_mode = 2

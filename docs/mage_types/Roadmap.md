@@ -1,6 +1,7 @@
 # Misc Notes
 - v0.6.0 will be the big version I'll release to my playtesters?
 - Doors should keep player's relative position when they go thru
+- [ ] Strong attacks should have cooldowns (warmups too?)
 
 >[!summary] Realignment
 > I feel like I'm adding puzzles for the sake of adding them and furthermore I dislike the process. This isn't helped by the fact that this game isn't really meant to be a puzzle game. 
@@ -28,16 +29,13 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Aggressive behavior
 	- [ ] Cowardly behavior
 	- [ ] Passive behavior
-- [ ] Force tooltips to use RichTextLabels
+- [x] Force tooltips to use RichTextLabels
 - [x] Attacks can define their own scaling factors (match/affinity/no match)
-	- [ ] Battle GUI should show these actual power values
-	- [ ] Strong attacks should have cooldowns (warmups too?)
 - [ ] Battle Animation refactor
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
 - [x] Add ability to level up
-	- [ ] Enemies should have the option to either give fixed exp or scale it based on difficulty
 	- [x] At end of battle show level up screen
 		- [x] Display how much exp the player has received
 		- [x] How much exp needed until next level

@@ -1,4 +1,5 @@
 extends Resource
+class_name TooltipSettings
 
 @export_group("Templates")
 ## Directory path for loading all the [Tooltip] Templates
