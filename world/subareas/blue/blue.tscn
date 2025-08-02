@@ -1,9 +1,10 @@
-[gd_scene load_steps=68 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=70 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_4g4u6"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_5og7y"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="7_6h34i"]
 [ext_resource type="PackedScene" uid="uid://xk0p3cselyvu" path="res://assets/3d/models/objects/blue/vase_green.tscn" id="8_6yj8m"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
@@ -123,6 +124,9 @@ size = Vector3(51, 25, 37)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gumrr"]
 size = Vector3(96, 25, 58)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w3r7y"]
+size = Vector3(9, 1, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uke47"]
 size = Vector3(18, 25, 42)
@@ -1093,6 +1097,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37, 0,
 
 [node name="VaseBlue" parent="HotelRooms/HallChunk1/Chunk" instance=ExtResource("21_yq576")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, 11)
+
+[node name="Spawner" parent="HotelRooms/HallChunk1/Chunk" instance=ExtResource("7_6h34i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -5)
+max_spawn_count = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk1/Chunk/Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1.5)
+shape = SubResource("BoxShape3D_w3r7y")
 
 [node name="HallChunk2" type="Area3D" parent="HotelRooms" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108, 0, -78)
