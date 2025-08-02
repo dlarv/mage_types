@@ -31,6 +31,7 @@ metadata/_custom_type_script = "uid://3val1kw3ysgx"
 script = ExtResource("1_ay17s")
 name = "Player"
 level = 1
+next_level_xp = 50.0
 stat_manager = SubResource("Resource_u5qgi")
 reset_hp_after_battle = true
 _element1 = "magenta"

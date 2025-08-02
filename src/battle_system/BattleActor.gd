@@ -21,8 +21,8 @@ const StatusEffectManager := preload("res://src/battle_system/StatusEffectManage
 
 @export var name := "Guy" 
 @export var level := 1
+@export var next_level_xp := 100.0
 var total_xp := 0.0
-var next_level_xp := 100.0
 
 @export_category("Stats")
 var statuses := StatusEffectManager.new()
