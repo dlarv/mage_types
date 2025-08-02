@@ -4,6 +4,7 @@ signal player_defeated_enemy()
 signal enemy_defeated_player()
 signal player_ran()
 
+const _BaseEnemyActor := preload("res://src/overworld/enemies/WildEnemyActor.gd")
 const BaseEnemyActor := preload("res://src/overworld/enemies/wild_enemy_actor.tscn")
 
 @export var battle_actors: Array[BattleActor]
@@ -14,13 +15,30 @@ const BaseEnemyActor := preload("res://src/overworld/enemies/wild_enemy_actor.ts
 @export var spawn_frequency_range := Vector2(1.0, 5.0)
 @export var max_spawn_count := 10
 
+var _templates: Array[Node3D]
 var _enemies := []
+
+
+func _ready() -> void:
+	for child in get_children():
+		if child is _BaseEnemyActor:
+			_templates.append(child)
+			child.hide()
+			child.process_mode = Node.PROCESS_MODE_DISABLED
+	if len(_templates) == 0:
+		var child := BaseEnemyActor.instantiate()
+		_templates.append(child)
+		add_child(child)
+		child.hide()
+		child.process_mode = Node.PROCESS_MODE_DISABLED
+
 
 func _process(delta: float) -> void:
 	if not visible or len(_enemies) >= max_spawn_count: return
 	if $Timer.is_stopped(): 
 		spawn()
 		_restart_timer()
+
 
 func _get_rand_point() -> Vector3:
 	if not $CollisionShape3D: return Vector3(0, 0, 0)
@@ -33,8 +51,10 @@ func _get_rand_point() -> Vector3:
 		randf_range(a.z, b.z)
 	)
 
+
 func _get_rand_enemy() -> Node3D:
 	var actor := BaseEnemyActor.instantiate()
+	# actor.behavior = _BaseEnemyActor.Behavior.FLEE
 
 	var team: Array[BattleActor] = []
 	var count := randi_range(team_count_range.x, team_count_range.y)
@@ -50,10 +70,12 @@ func _get_rand_enemy() -> Node3D:
 	actor.setup(team, controller)
 	return actor
 
+
 func _restart_timer() -> void:
 	var freq := randf_range(spawn_frequency_range.x, spawn_frequency_range.y)
 	if $Timer.is_inside_tree():
 		$Timer.start(freq)
+
 
 func spawn() -> void:
 	var enemy := _get_rand_enemy()
@@ -67,6 +89,7 @@ func spawn() -> void:
 		var index := _enemies.find(enemy)
 		_enemies.remove_at(index)
 		_restart_timer())
+
 
 func _on_battle_ended(endState: Battle.EndState) -> void:
 	match endState:

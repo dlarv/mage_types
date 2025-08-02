@@ -1,12 +1,13 @@
 @tool
 extends "res://src/overworld/characters/Npc.gd"
 
+enum Behavior { AGGRO, FLEE, PASSIVE }
+
 @export var ball: PackedScene
 @export var sense_range := 10.0
 
 @export var speed := 2.0
-@export_enum("AGGRO", "FLEE", "PASSIVE")
-var behavior := "AGGRO"
+@export var behavior := Behavior.AGGRO
 
 var _spheres := 0
 var _can_see_player := false
@@ -32,8 +33,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not _can_see_player: 
 		state.linear_velocity = Vector3.ZERO
 		return
+
 	if $NavigationAgent3D.is_target_reachable():
-		$NavigationAgent3D.set_target_position(_player.global_position)
 		var nextPosition: Vector3 = $NavigationAgent3D.get_next_path_position()
 		state.linear_velocity = global_position.direction_to(nextPosition) * speed
 
@@ -71,6 +72,7 @@ func _on_player_sensor_body_exited(body:Node3D) -> void:
 
 func _on_player_sensor_body_entered(body:Node3D) -> void:
 	_can_see_player = true
+	_on_nav_recalc_timer_timeout()
 	_player = body
 
 
@@ -80,3 +82,21 @@ func _on_body_entered(body:Node3D) -> void:
 		get_tree().call_group("wild_enemies", "_start_battle_cooldown")
 		body.call_deferred("start_battle", self)
 		queue_free()
+
+
+func _on_nav_recalc_timer_timeout() -> void:
+	if not _can_see_player: return
+
+	match behavior:
+		Behavior.AGGRO:
+			$NavigationAgent3D.set_target_position(_player.global_position)
+		Behavior.FLEE:
+			var target := global_position - _player.global_position
+			$NavigationAgent3D.set_target_position(target.normalized() + global_position)
+			
+		Behavior.PASSIVE,_:
+			pass
+
+	$NavRecalcTimer.start()
+
+	

@@ -9,11 +9,12 @@ signal battle_ended(endState: Battle.EndState)
 	set(value):
 		_team = value
 		team = value
-var team := []
+var team: Array[BattleActor] = []
 @export var disappear_on_defeat := true
 
 func _ready() -> void:
-	ai.battle_ended.connect(_on_battle_ended)
+	if ai:
+		ai.battle_ended.connect(_on_battle_ended)
 
 func _on_battle_ended(endState: Battle.EndState) -> void: 
 	if not Engine.is_editor_hint() and endState == Battle.EndState.WON and disappear_on_defeat:

@@ -7,11 +7,12 @@ signal battle_ended(state: Battle.EndState)
 @export var disabled := false:
 	set(val):
 		disabled = val
-		$Interactable.disabled = val
+		if $Interactable:
+			$Interactable.disabled = val
 @export var team: Array[BattleActor]:
 	get:
 		if not enemy_actor: return []
-		return enemy_actor.team
+		return enemy_actor.team as Array[BattleActor]
 @export var ai: OpponentController:
 	get:
 		if not enemy_actor: return null
@@ -103,4 +104,3 @@ func _on_interactable_interacted(obj:Node3D) -> void:
 		_player.call_deferred("start_dialog", self)
 	else:
 		_player.call_deferred("open_shop", self)
-

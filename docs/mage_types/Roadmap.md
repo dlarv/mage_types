@@ -25,16 +25,16 @@
 Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Give StasisTarget a model
 - [ ] Give Rail puzzleblock a model
-- [ ] Wild enemy mechanics
-	- [ ] Aggressive behavior
-	- [ ] Cowardly behavior
-	- [ ] Passive behavior
-- [x] Force tooltips to use RichTextLabels
-- [x] Attacks can define their own scaling factors (match/affinity/no match)
 - [ ] Battle Animation refactor
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
+- [x] Wild enemy mechanics
+	- [x] Aggressive behavior
+	- [x] Cowardly behavior
+	- [x] Passive behavior
+- [x] Force tooltips to use RichTextLabels
+- [x] Attacks can define their own scaling factors (match/affinity/no match)
 - [x] Add ability to level up
 	- [x] At end of battle show level up screen
 		- [x] Display how much exp the player has received
