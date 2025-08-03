@@ -128,7 +128,7 @@ size = Vector3(96, 25, 87)
 size = Vector3(51, 25, 37)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vcupr"]
-size = Vector3(11, 25, 4)
+size = Vector3(15, 25, 5.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gumrr"]
 size = Vector3(96, 25, 53)
@@ -385,7 +385,7 @@ shape = SubResource("BoxShape3D_1nkb5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.5, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/LobbyToBreakroom"]
-transform = Transform3D(-1, 0, 8.74226e-08, 0, 1, 0, -8.74226e-08, 0, -1, -8.6, 1.5, -5.7)
+transform = Transform3D(-1, 0, 8.74226e-08, 0, 1, 0, -8.74226e-08, 0, -1, -7.5, 1.5, -4.6)
 shape = SubResource("BoxShape3D_wbgmf")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/LobbyToBreakroom/CollisionShape3D2"]
@@ -412,12 +412,11 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
-point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1110,7 +1109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -59)
 script = ExtResource("3_4g4u6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/LobbyChunk2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 7.5, -0.299999)
 shape = SubResource("BoxShape3D_vcupr")
 
 [node name="HallChunk1" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
