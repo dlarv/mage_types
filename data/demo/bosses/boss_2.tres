@@ -88,6 +88,7 @@ hp = 250.0
 script = ExtResource("3_ris70")
 name = "Boss 2"
 level = 1
+next_level_xp = 100.0
 stat_manager = SubResource("Resource_6u7d0")
 reset_hp_after_battle = true
 _element1 = "red"

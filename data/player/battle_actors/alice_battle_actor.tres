@@ -30,6 +30,7 @@ metadata/_custom_type_script = "uid://3val1kw3ysgx"
 script = ExtResource("1_wyvu6")
 name = "Alice"
 level = 1
+next_level_xp = 100.0
 stat_manager = SubResource("Resource_dwrcv")
 reset_hp_after_battle = true
 _element1 = "purple"
