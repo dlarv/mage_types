@@ -23,12 +23,11 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
-- [ ] Give StasisTarget a model
-- [ ] Give Rail puzzleblock a model
 - [ ] Battle Animation refactor
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
+- [x] Give StasisTarget a model
 - [x] Wild enemy mechanics
 	- [x] Aggressive behavior
 	- [x] Cowardly behavior
@@ -63,7 +62,7 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [ ] Icon showing which room player is in (use Player.active_chunk)
 	- [ ] Ability to write on map?
 - [x] When player falls in water, return them to previous stable position
-	- [ ] Add water colliders to Ziggurat water
+	- [x] Add water colliders to Ziggurat water
 	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in
 - [ ] Add out-of-order elevator to final pillar in ziggurat room
 - [ ] Portals should keep player's relative position
@@ -84,14 +83,8 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 		- [x] Original version works in new physics paradigm
 		- [x] Decide if/where/how it should be used
 - [ ] Puzzle block demos:
-	- [x] Pressure plate demo
-		- [x] Bug: Player activated pressure plate not working
-	- [x] Delay demo
-	- [x] Timer demo
-	- [x] Relay demo
-		- [x] Create indicator block, which differentiates between off/on/invalid_off
-	- [x] Stasis target demo
 	- [x] Rails demo
+		- [ ] Give Rail puzzleblock a model
 	- [ ] Logic gate demos
 		- [ ] Add models for empty puzzle blocks?
 	- [ ] Laser blocks demos
@@ -99,6 +92,13 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 		- [ ] RotatableMirror?
 		- [ ] DraggableEmitter?
 		- [ ] OneWayLens?
+	- [x] Pressure plate demo
+		- [x] Bug: Player activated pressure plate not working
+	- [x] Delay demo
+	- [x] Timer demo
+	- [x] Relay demo
+		- [x] Create indicator block, which differentiates between off/on/invalid_off
+	- [x] Stasis target demo
 	- [x] Catalyst Device demo
 	- [x] Catalyst Platform demo
 	- [x] Reset demo
