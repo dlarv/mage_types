@@ -202,6 +202,7 @@ aggression = 1.0
 intelligence = 0.5
 transmutation_bias = 0.5
 _transmutation_pref = "blank"
+dialog_ids = null
 reward_xp = 50
 reward_items = Array[ExtResource("21_2tavo")]([])
 
@@ -211,6 +212,7 @@ aggression = 0.3
 intelligence = 0.8
 transmutation_bias = 0.5
 _transmutation_pref = "red"
+dialog_ids = null
 reward_xp = 50
 reward_items = Array[ExtResource("21_2tavo")]([])
 
@@ -220,6 +222,7 @@ aggression = 0.5
 intelligence = 0.4
 transmutation_bias = 1.0
 _transmutation_pref = "blank"
+dialog_ids = null
 reward_xp = 50
 reward_items = Array[ExtResource("21_2tavo")]([])
 
