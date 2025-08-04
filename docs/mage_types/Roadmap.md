@@ -27,6 +27,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
+- [ ] Redesign intro bosses
 - [x] Give StasisTarget a model
 - [x] Wild enemy mechanics
 	- [x] Aggressive behavior
@@ -56,14 +57,12 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [ ] Decor
 	- [ ] Small puzzles
 	- [ ] Add endless stairway to infinite hall
-- [ ] Add walls, wall decor, & scene lighting
+- [ ] Add wall paper
+- [ ] Add local lighting
 - [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
 - [ ] Map menu improvements
 	- [ ] Icon showing which room player is in (use Player.active_chunk)
 	- [ ] Ability to write on map?
-- [x] When player falls in water, return them to previous stable position
-	- [x] Add water colliders to Ziggurat water
-	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in
 - [ ] Add out-of-order elevator to final pillar in ziggurat room
 - [ ] Portals should keep player's relative position
 - [ ] Portals should reorient player model so that they are facing correct direction
@@ -103,6 +102,9 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [x] Catalyst Platform demo
 	- [x] Reset demo
 	- [x] Geyser demo
+- [x] When player falls in water, return them to previous stable position
+	- [x] Add water colliders to Ziggurat water
+	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in
 ## v0.7.x
 Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
 - [ ] Player hp stat should be accessible outside of battle

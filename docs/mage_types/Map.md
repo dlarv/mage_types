@@ -14,6 +14,13 @@ Each of these sections will weave through each other.
 
 >[!idea] Hotel Amenities
 >The could be an enclave inside of the workout room. This could be a good place to have some kind of battle tutorial.
+
+>[!idea] Employee Breakroom
+>Next to the front desk will be Employee Breakroom \#1, which is little more than a closet. It contains a chair and a microwave. Entering a specific code into the microwave will open a portal to Magenta Classic, which is a large fairground.
+>
+>There should be another breakroom labelled on the map, which will be \#3, hinting at the existance of the fairground. It could also be an interesting red herring impying that something tragic happened to breakroom \#2.
+>
+> A hint for the proper code should be hidden somewhere on the map (all microwaves outside of the breakrooms are locked on a specific time).
 ## Beach
 - Player will spawn on lighthouse pier.
 - Player will enter beach house, where they will meet Alice and the Caretaker.
@@ -38,6 +45,20 @@ Script: [[Beach House Intro]]
 	- I.e. infinite hallway, path to Lavender's puzzle.
 ### Rec Room
 - Battle Tutorial
+- High level boss is camped out in hall 2. Player will likely be defeated and forced to backtrack to rec room.
+- An enclave is camped out in the Rec Room. This enclave is very focused on fitness and combat, and thus is more than happy to give the player a hand. 
+- Player will receive 150 exp from this fight, allowing them to level up twice.
+- Player will also receive several spell beads, ultimately a Strike attack.
+
+1. Introduce concept of transmutations.
+	1. Primary and secondary types.
+	2. Alignment.
+2. Mention how melee attacks also transmute the player.
+3. Side effects.
+4. Attack scaling factor.
+- Inform player about how alignment can ultimately end with insanity (when they explain why the hall2 monster is aggressive but they are not).
+- Clarify that no super-effective damage exists.
+
 ### Supply Closet
 This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.
 ## Caves
