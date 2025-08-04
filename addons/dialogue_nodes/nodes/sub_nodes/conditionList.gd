@@ -11,7 +11,6 @@ const ConditionItemScene := preload('res://addons/dialogue_nodes/nodes/sub_nodes
 var undo_redo: EditorUndoRedoManager
 var last_variable_list: Array[String]
 
-
 func _to_dict() -> Array[Dictionary]:
 	var dict: Array[Dictionary] = []
 	
@@ -20,7 +19,7 @@ func _to_dict() -> Array[Dictionary]:
 		var child_dict = child._to_dict()
 		# child_dict.value1 = last_variable_list[child_dict.cur_variable]
 
-		if child_dict.cur_variable != -1:
+		if child_dict["cur_variable"] != -1:
 			child_dict["value1"] = last_variable_list[child_dict.cur_variable]
 		else:
 			child_dict["value1"] = ""

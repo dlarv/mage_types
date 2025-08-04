@@ -1,7 +1,6 @@
 @tool
 extends BoxContainer
 
-
 signal modified
 signal delete_requested
 
@@ -113,13 +112,18 @@ func _on_modified() -> void:
 
 
 func _on_variables_updated(variable_list: Array) -> void:
+	var prevValue := value1.get_item_text(value1.selected)
 	value1.clear()
 		
 	for variable_name in variable_list:
 		value1.add_item(variable_name)
 	
 	if variable_list.size() > 0:
-		if cur_variable > variable_list.size():
+		# Try to find old value first
+		var index := variable_list.find(prevValue)
+		if index != -1:
+			cur_variable = index
+		elif cur_variable > variable_list.size():
 			cur_variable = 0
 		value1.select(cur_variable)
 	else:
