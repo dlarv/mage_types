@@ -21,6 +21,9 @@
 - Wild enemy mechanics
 # Upcoming Versions
 [[version_naming_scheme]]
+- Damage calculation takes attacker's level into account, but not the defender's, biasing the result towards the attacker.
+	- I could compensate by making the defense values generally higher than offense.
+	- I could include the defender's level as well.
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Battle Animation refactor
