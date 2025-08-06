@@ -5,10 +5,11 @@ signal variables_updated()
 
 @export var variables: Dictionary[String, Variant] = {}
 
-func update_variable(varName: String, value: Variant) -> void:
+func update_variable(varName: String, value: Variant, quiet:=false) -> void:
 	print("StoryManager added var '%s'." % varName)
 	variables[varName] = value
-	variables_updated.emit()
+	if not quiet:
+		variables_updated.emit()
 
 
 func remove_variable(varName: String) -> void:
@@ -20,7 +21,13 @@ func remove_variable(varName: String) -> void:
 
 
 func rename_variable(oldName: String, newName: String) -> void:
-	pass
+	var value: Variant = variables.get(oldName, null)
+	if variables.erase(oldName):
+		print("StoryManager renamed var '%s' to '%s'." % [oldName, newName])
+	else:
+		print("StoryManager tried to rename var '%s' to '%s', but original var was not found." 
+				% [oldName, newName])
+	variables[newName] = value
 
 
 func serialize() -> Dictionary:

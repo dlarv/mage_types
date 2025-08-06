@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ky2bmxsdtk4p"]
+
+[ext_resource type="Script" uid="uid://djleqxwwlprfe" path="res://src/story_system/StoryManager.gd" id="1_ln4oa"]
+
+[node name="StoryManager" type="Node"]
+script = ExtResource("1_ln4oa")
