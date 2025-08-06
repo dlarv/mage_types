@@ -4,6 +4,9 @@ extends Node
 signal variables_updated()
 
 @export var variables: Dictionary[String, Variant] = {}
+@export_tool_button("Press", "Callable")
+var press := func() -> void: print(variables)
+
 
 func update_variable(varName: String, value: Variant, quiet:=false) -> void:
 	print("StoryManager added var '%s'." % varName)
@@ -35,4 +38,7 @@ func serialize() -> Dictionary:
 
 
 func deserialize(data: Dictionary) -> void:
+	pass
+
+func _press() -> void:
 	pass

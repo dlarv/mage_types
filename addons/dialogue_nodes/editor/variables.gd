@@ -35,6 +35,8 @@ func load_data(dict: Dictionary) -> void:
 
 ## add new variable item to the list
 func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, to_idx:= -1) -> HBoxContainer:
+	StoryManager.update_variable(new_name, data)
+
 	var new_variable := variable_item_scene.instantiate()
 	var_container.add_child(new_variable, true)
 	
@@ -56,6 +58,7 @@ func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, to_i
 ## remove the variable with at the given index (idx)
 func remove_variable(idx: int) -> void:
 	var variable = var_container.get_child(idx)
+	StoryManager.remove_variable(variable.var_name.text)
 	variable.queue_free()
 	
 	variable_list.remove_at(idx)
@@ -85,6 +88,7 @@ func get_value(var_name: String):
 
 
 func set_value(var_name: String, value) -> void:
+	print("SETVAL")
 	if var_name == '':
 		return
 	var variable = get_variable(var_name)
@@ -134,3 +138,8 @@ func _on_variable_name_updated(new_name: String, old_name: String) -> void:
 
 func _on_modified(_a= 0, _b= 0) -> void:
 	modified.emit()
+
+
+func _on_reload_button_pressed() -> void:
+	load_data(StoryManager.variables)
+

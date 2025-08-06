@@ -20,6 +20,10 @@ tooltip_text = "Add a new variable."
 icon = ExtResource("2_vukkj")
 icon_alignment = 1
 
+[node name="ReloadButton" type="Button" parent="."]
+layout_mode = 2
+text = "Reload"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
@@ -31,3 +35,4 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [connection signal="pressed" from="AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="ReloadButton" to="." method="_on_reload_button_pressed"]

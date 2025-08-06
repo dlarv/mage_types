@@ -42,7 +42,6 @@ func set_var_name(new_name: String) -> void:
 	last_set_name = var_name.text
 
 
-
 func get_value():
 	match types[type.selected]:
 		TYPE_STRING:
@@ -111,6 +110,8 @@ func load_data(new_name: String, data: Dictionary) -> void:
 
 
 func _on_name_changed(new_text: String) -> void:
+	StoryManager.rename_variable(last_set_name, new_text)
+
 	if not undo_redo:
 		set_var_name(new_text)
 		return
@@ -121,7 +122,6 @@ func _on_name_changed(new_text: String) -> void:
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_var_name', last_set_name)
 	undo_redo.commit_action()
-	
 
 
 func _on_type_changed(new_idx: int) -> void:
@@ -140,6 +140,8 @@ func _on_type_changed(new_idx: int) -> void:
 
 
 func _on_value_changed(new_value) -> void:
+	StoryManager.update_variable(var_name.text, new_value, true)
+
 	if not undo_redo:
 		return
 	
