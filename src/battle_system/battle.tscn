@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://rdeiqoc7uc0n"]
+[gd_scene load_steps=16 format=3 uid="uid://rdeiqoc7uc0n"]
 
 [ext_resource type="Script" uid="uid://w603018r14m5" path="res://src/battle_system/Battle.gd" id="1_7277n"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="2_yx8au"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="3_p7an0"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="3_rjdi1"]
 [ext_resource type="Script" uid="uid://cgt73gvf8xvv6" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="5_ari74"]
+[ext_resource type="Resource" uid="uid://bblx7lycrgk8e" path="res://data/demo/battle_dialog.tres" id="6_domvp"]
 [ext_resource type="Script" uid="uid://dm6ugtdpreoy7" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_w22k8"]
 [ext_resource type="Script" uid="uid://dyxwuxn04gout" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_lufxd"]
 [ext_resource type="Script" uid="uid://ctwpmg6gbk4fr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="8_67cow"]
@@ -12,6 +14,8 @@
 [sub_resource type="Resource" id="Resource_4h2rc"]
 script = ExtResource("3_p7an0")
 dialog_ids = Array[ExtResource("2_yx8au")]([])
+reward_xp = 0.0
+reward_items = Array[ExtResource("3_rjdi1")]([])
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_j0fqi"]
 script = ExtResource("6_w22k8")
@@ -59,5 +63,6 @@ grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("5_ari74")
+data = ExtResource("6_domvp")
 skip_input_action = "interact"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_j0fqi"), SubResource("RichTextEffect_ec65t"), SubResource("RichTextEffect_4x15a"), SubResource("RichTextEffect_ipreh")])

@@ -1,9 +1,9 @@
-[gd_scene load_steps=54 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=55 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
 [ext_resource type="Script" uid="uid://cgt73gvf8xvv6" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_pewre"]
-[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/combat_candidate_dialog.tres" id="3_dned5"]
+[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/blue_dialog.tres" id="3_dned5"]
 [ext_resource type="Script" uid="uid://dm6ugtdpreoy7" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_5bktp"]
 [ext_resource type="Script" uid="uid://dyxwuxn04gout" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
 [ext_resource type="Script" uid="uid://ctwpmg6gbk4fr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="18_3lqrh"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="18_p65bs"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="21_2tavo"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="21_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="21_llyeo"]
 [ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/demo/bosses/boss_1.tres" id="24_2tavo"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="25_bwxdu"]
@@ -195,15 +196,15 @@ blend_shape_mode = 0
 radius = 1.0
 height = 6.0
 
-[sub_resource type="Resource" id="Resource_k8wd0"]
+[sub_resource type="Resource" id="Resource_inp7a"]
 resource_local_to_scene = true
 script = ExtResource("25_bwxdu")
 aggression = 1.0
 intelligence = 0.5
 transmutation_bias = 0.5
 _transmutation_pref = "blank"
-dialog_ids = null
-reward_xp = 50
+dialog_ids = Array[ExtResource("21_j7vgi")]([])
+reward_xp = 50.0
 reward_items = Array[ExtResource("21_2tavo")]([])
 
 [sub_resource type="Resource" id="Resource_j7vgi"]
@@ -212,8 +213,8 @@ aggression = 0.3
 intelligence = 0.8
 transmutation_bias = 0.5
 _transmutation_pref = "red"
-dialog_ids = null
-reward_xp = 50
+dialog_ids = Array[ExtResource("21_j7vgi")]([])
+reward_xp = 50.0
 reward_items = Array[ExtResource("21_2tavo")]([])
 
 [sub_resource type="Resource" id="Resource_bwxdu"]
@@ -222,8 +223,8 @@ aggression = 0.5
 intelligence = 0.4
 transmutation_bias = 1.0
 _transmutation_pref = "blank"
-dialog_ids = null
-reward_xp = 50
+dialog_ids = Array[ExtResource("21_j7vgi")]([])
+reward_xp = 50.0
 reward_items = Array[ExtResource("21_2tavo")]([])
 
 [sub_resource type="BoxMesh" id="BoxMesh_8kqe2"]
@@ -342,10 +343,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -103)
 
 [node name="Boss1" parent="Overworld/Blue/Preset1" instance=ExtResource("11_tyily")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.80295, 0)
-ai = SubResource("Resource_k8wd0")
+ai = SubResource("Resource_inp7a")
 
 [node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss1" groups=["persist"] instance=ExtResource("21_llyeo")]
-ai = SubResource("Resource_k8wd0")
+ai = SubResource("Resource_inp7a")
 _team = Array[ExtResource("11_lpih5")]([ExtResource("24_2tavo")])
 disappear_on_defeat = false
 

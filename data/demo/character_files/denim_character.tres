@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://nkt3ddqnpyrd"]
+
+[ext_resource type="Script" uid="uid://cdyrwu1h1an11" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_x818c"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7gu2v"]
+
+[resource]
+script = ExtResource("1_x818c")
+name = "Denim"
+image = SubResource("PlaceholderTexture2D_7gu2v")
+color = Color(1, 1, 1, 1)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djleqxwwlprfe" path="res://src/story_system/StoryManager.gd" id="1_ykrkn"]
 [ext_resource type="Script" uid="uid://bovrq36le4gew" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="2_wh4ow"]
-[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/combat_candidate_dialog.tres" id="3_sudhc"]
+[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/demo/blue_dialog.tres" id="3_sudhc"]
 
 [node name="StoryManager" type="Node"]
 script = ExtResource("1_ykrkn")

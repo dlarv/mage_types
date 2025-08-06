@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bblx7lycrgk8e"]
+
+[ext_resource type="Script" uid="uid://bovrq36le4gew" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_dm3d2"]
+
+[resource]
+script = ExtResource("1_dm3d2")
+starts = {
+"TUTORIAL_1": &"0_1",
+"TUTORIAL_2": &"0_2",
+"TUTORIAL_3": &"0_3"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-38.2499, -116.413),
+"start_id": "TUTORIAL_1"
+},
+&"0_2": {
+"link": &"1_2",
+"offset": Vector2(-80, 160),
+"start_id": "TUTORIAL_2"
+},
+&"0_3": {
+"link": &"1_3",
+"offset": Vector2(-80, 440),
+"start_id": "TUTORIAL_3"
+},
+&"1_1": {
+"dialogue": "TODO",
+"offset": Vector2(160, -120),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_2": {
+"dialogue": "TODO",
+"offset": Vector2(160, 160),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Dallas"
+},
+&"1_3": {
+"dialogue": "TODO",
+"offset": Vector2(160, 440),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""
