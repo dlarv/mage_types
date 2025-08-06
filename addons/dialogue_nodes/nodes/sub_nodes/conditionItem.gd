@@ -27,6 +27,13 @@ var undo_redo: EditorUndoRedoManager
 var cur_condition := {}
 var cur_variable := -1
 
+
+func _ready() -> void:
+	if not StoryManager.variables_updated.is_connected(_on_variables_updated_2):
+		StoryManager.variables_updated.connect(_on_variables_updated_2)
+	_on_variables_updated_2()
+
+
 func _to_dict() -> Dictionary:
 	if is_empty():
 		print_rich('[color=yellow]Condition is empty![/color]')
@@ -112,6 +119,27 @@ func _on_modified() -> void:
 
 
 func _on_variables_updated(variable_list: Array) -> void:
+	return
+	var prevValue := value1.get_item_text(value1.selected)
+	value1.clear()
+
+	for variable_name in variable_list:
+		value1.add_item(variable_name)
+
+	if variable_list.size() > 0:
+		# Try to find old value first
+		var index := variable_list.find(prevValue)
+		if index != -1:
+			cur_variable = index
+		elif cur_variable > variable_list.size():
+			cur_variable = 0
+		value1.select(cur_variable)
+	else:
+		value1.select(-1)
+
+
+func _on_variables_updated_2() -> void:
+	var variable_list: Array[String] = StoryManager.variables.keys()
 	var prevValue := value1.get_item_text(value1.selected)
 	value1.clear()
 		
