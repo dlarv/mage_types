@@ -98,6 +98,7 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	if dict['speaker'] is String:
 		custom_speaker.text = dict['speaker']
 		last_custom_speaker = custom_speaker.text
+		toggle_speaker_input(false)
 	elif dict['speaker'] is int:
 		cur_speaker = dict['speaker']
 		character_toggle.set_pressed_no_signal(true)
