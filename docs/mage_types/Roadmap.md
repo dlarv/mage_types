@@ -30,7 +30,14 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
-- [ ] Redesign intro bosses
+- [ ] Rewrite narrative setup
+- [ ] Redesign tutorial bosses
+	- [ ] Write dialog
+	- [ ] Decide player load out
+	- [ ] Add rewards
+	- [ ] Training wheel equipment?
+- [ ] Add 'dark souls' boss
+	- [ ] Decide on player reward
 - [x] Give StasisTarget a model
 - [x] Wild enemy mechanics
 	- [x] Aggressive behavior

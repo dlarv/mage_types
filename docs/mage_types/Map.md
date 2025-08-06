@@ -58,6 +58,7 @@ Script: [[Beach House Intro]]
 4. Attack scaling factor.
 - Inform player about how alignment can ultimately end with insanity (when they explain why the hall2 monster is aggressive but they are not).
 - Clarify that no super-effective damage exists.
+- Teach player how to equip new spells.
 ### Supply Closet
 This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.
 ## Caves
