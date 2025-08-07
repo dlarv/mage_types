@@ -70,29 +70,28 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 
 	dialog_box.start(dialogId)
 
-	var sigName: String
+	const DialogSignal := StoryManager.DialogSignal
+	var sigName := DialogSignal.DIALOG_ENDED
 	while dialog_box.is_running():
-		var val: String = await dialog_box.dialogue_signal
-		if val == "play_cutscene": 
+		var val: DialogSignal = await dialog_box.dialogue_signal
+		if val == DialogSignal.PLAY_CUTSCENE: 
 			await _play_cutscene(npc)
-		elif val == "update_story":
-			StoryManager.trigger_story_event(dialog_box.variables.get("story_event", ""))
-		elif val != "dialogue_ended":
+		elif val != DialogSignal.DIALOG_ENDED:
 			sigName = val
 
 	match sigName:
-		"play_cutscene": 
+		DialogSignal.PLAY_CUTSCENE: 
 			var id: String = dialog_box.variables["current_cutscene"]
 			await npc.story_actor.play_cutscene(id)
 			get_tree().paused = false
-		"battle_started":
+		DialogSignal.BATTLE_STARTED: 
 			get_tree().paused = false
 			_on_player_battle_started(_player.team, npc.enemy_actor)
-		"menu_opened":
+		DialogSignal.MENU_OPENED: 
 			UIManager.open_vendor_menu(npc.vendor_actor)
 			await UIManager.vendor_menu_closed
 			get_tree().paused = false
-		"dialogue_ended","pivot_declined",_: 
+		_: 
 			get_tree().paused = false
 	UIManager.is_in_dialog = false
 

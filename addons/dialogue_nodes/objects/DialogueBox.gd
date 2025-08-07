@@ -14,7 +14,7 @@ signal dialogue_processed(speaker: Variant, dialogue: String, options: Array[Str
 signal option_selected(idx: int)
 ## Triggered when a SignalNode is encountered while processing the dialogue.
 ## Passes a [param value] of type [String] that is defined in the SignalNode in the dialogue tree.
-signal dialogue_signal(value: String)
+signal dialogue_signal(value: int)
 ## Triggered when a variable value is changed.
 ## Passes the [param variable_name] along with it's [param value]
 signal variable_changed(variable_name: String, value)
@@ -340,7 +340,7 @@ func _on_dialogue_ended() -> void:
 	if hide_on_dialogue_end: hide()
 	dialogue_ended.emit()
 	# Dlarv
-	dialogue_signal.emit("dialogue_ended")
+	dialogue_signal.emit(StoryManager.DialogSignal.DIALOG_ENDED)
 
 
 func _on_wait_finished() -> void:
