@@ -1,14 +1,14 @@
 @tool
 extends Node
 
+# This is used in the editor, not during gameplay.
 signal variables_updated()
 
-@onready var state: StoryState = preload("res://data/story/story_state.tres")
+var state: StoryState = preload("res://data/story/story_state.tres")
 
 var variables: Dictionary[String, Variant]:
 	get:
 		return state.variables
-		
 
 
 func add_variable(varName: String, value: Variant, quiet:=false) -> void:
@@ -55,22 +55,25 @@ func rename_variable(oldName: String, newName: String) -> void:
 
 
 func get_variable(varName: String) -> Variant:
-	if variables.has(varName) and variables[varName].has("value"):
-		return variables[varName].value
+	var output: Variant = state.get_variable(varName)
+	if output != null:
+		return output
 	push_warning("Could not find StoryVariable %s" % varName)
 	return null
 
 
 func set_variable(varName: String, value: Variant) -> void:
-	if variables.has(varName) and variables[varName].has("value"):
-		variables[varName].value = value
-	push_warning("Could not find StoryVariable %s." % varName)
+	if not state.set_variable(varName, value):
+		push_warning("Could not find StoryVariable %s." % varName)
 
 
 func serialize() -> Dictionary:
-	return {}
+	return {
+		"path": get_path(),
+		"vars": state.variables
+	}
 
 
 func deserialize(data: Dictionary) -> void:
-	pass
-
+	state.variables = data.vars
+	

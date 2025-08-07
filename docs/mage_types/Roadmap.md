@@ -39,6 +39,8 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Add 'dark souls' boss
 	- [ ] Decide on player reward
 - [ ] Alter dialogue nodes to use StoryManager.variables
+	- [ ] Remove unused code
+	- [x] When game is saved, ensure variables are serialized/deserialized
 	- [x] DialogueNode::Editor acts as interface between designer and StoryManager
 		- [x] Add var
 		- [x] Remove var 
@@ -46,16 +48,13 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 		- [x] Change var name
 	- [x] Variables are synced across dialog trees
 		- [x] Added reload button to variables tab
-		- [ ] Ensure StoryManager serializes variables when editor reloads
-			- ~~DialogueNodes::Editor serializes variables.~~ When DialogTree is opened, it adds all its variables to StoryManager. Then "Reload" button can be pressed to sync these across trees.
-				- This only works in editor mode.
+		- [x] Ensure StoryManager serializes variables when editor reloads
+			- ~~DialogueNodes::Editor serializes variables. When DialogTree is opened, it adds all its variables to StoryManager. Then "Reload" button can be pressed to sync these across trees.~~  This only works in editor mode.
 		- [x] Update ui
-	- [ ] DialogueNode::ConditionItem reads from StoryManager
-		- [ ] Watch for StoryManager values to update
-		- [ ] When dialog option filter is created, show updated list to begin
-	- [ ] Have DialogueParser read from StoryManager.variables, not DialogueData.variables
-	- [ ] When game is saved, ensure variables are serialized/deserialized
-	- [ ] Remove unused code
+	- [x] DialogueNode::ConditionItem reads from StoryManager
+		- [x] Watch for StoryManager values to update
+		- [x] When dialog option filter is created, show updated list to begin
+	- [x] Have DialogueParser read from StoryManager.variables, not DialogueData.variables
 - [x] Give StasisTarget a model
 - [x] Wild enemy mechanics
 	- [x] Aggressive behavior

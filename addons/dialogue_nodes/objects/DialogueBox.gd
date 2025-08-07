@@ -212,7 +212,7 @@ func _enter_tree() -> void:
 	add_child(_dialogue_parser)
 	# _dialogue_parser.data = data
 	_dialogue_parser.set_data(data)
-	variables = _dialogue_parser.variables
+	#variables = _dialogue_parser.variables
 	characters = _dialogue_parser.characters
 	skip_options_condition_checks = skip_options_condition_checks
 	

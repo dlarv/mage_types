@@ -31,8 +31,8 @@ nodes = {
 "start_id": "_INTRO"
 },
 &"0_4": {
-"link": &"1_3",
-"offset": Vector2(-2500, -320),
+"link": &"4_11",
+"offset": Vector2(-2860, -700),
 "start_id": "INTRO"
 },
 &"0_5": {
@@ -1079,6 +1079,19 @@ cont...",
 "size": Vector2(300, 308),
 "speaker": 2
 },
+&"1_76": {
+"dialogue": "C: {{counter}}",
+"offset": Vector2(-2220, -700),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
 &"1_77": {
 "dialogue": "Right, so unlike your [i]Secondary[/i] type, your [i]Primary[/i] type changes rather infrequently.",
 "offset": Vector2(-420, 1280),
@@ -1339,6 +1352,13 @@ cont...",
 "type": 0,
 "value": "finished",
 "variable": "swole_enclave_quest"
+},
+&"4_11": {
+"link": &"1_76",
+"offset": Vector2(-2640, -680),
+"type": 1,
+"value": "1",
+"variable": "counter"
 },
 &"4_2": {
 "link": &"1_10",
@@ -1605,6 +1625,10 @@ cont...",
 }
 }
 variables = {
+"counter": {
+"type": 2,
+"value": 0
+},
 "current_cutscene": {
 "type": 4,
 "value": ""
@@ -1630,5 +1654,5 @@ variables = {
 "value": "no"
 }
 }
-strays = Array[String](["8_1", "1_13", "1_5"])
+strays = Array[String](["8_1", "1_3", "1_33", "1_36", "1_38", "1_39", "1_41", "1_42", "4_1", "5_1", "1_34", "1_35", "1_44", "1_45", "1_51", "1_46", "1_47", "1_48", "1_49", "1_50", "1_52", "1_53", "1_54", "1_56", "1_57", "1_58", "1_55", "1_43", "1_37", "1_59", "1_60", "1_6", "1_12", "1_13", "1_5"])
 characters = "res://data/demo/character_files/character_list.tres"

@@ -30,7 +30,7 @@ signal dialogue_ended
 
 ## Contains the variable data from the [param DialogueData] parsed in an easy to access dictionary.[br]
 ## Example: [code]{ "COINS": 10, "NAME": "Obama", "ALIVE": true }[/code]
-var variables: Dictionary
+# var variables: Dictionary
 ## Contains all the [param Character] resources loaded from the path in the [member data].
 var characters: Array[Character]
 
@@ -57,9 +57,9 @@ func set_data(new_data: DialogueData) -> void:
 	_characters.clear()
 	_nest_links.clear()
 	
-	variables.clear()
-	for var_name in data.variables:
-		variables[var_name] = data.variables[var_name].value
+	# variables.clear()
+	# for var_name in data.variables:
+	# 	variables[var_name] = data.variables[var_name].value
 	
 	characters.clear()
 	if not data.characters.ends_with('.tres'): return
@@ -175,14 +175,17 @@ func _process_signal(dict: Dictionary) -> void:
 
 # Processes the set node data (dict).
 func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
-	if not variables.has(dict.variable):
+	# if not variables.has(dict.variable):
+	var variable := StoryManager.get_variable(dict.variable)
+	if variable == null:
 		printerr('Variable ', dict.variable, ' not found in variables list')
 		# Dlarv: Done this way so that SetSignal can call this method too.
 		if auto_proceed:
 			_proceed(dict.link)
 		return
 	
-	var type = typeof(variables[dict.variable])
+	# var type = typeof(variables[dict.variable])
+	var type = typeof(variable)
 	var value = dict.value
 	if value.count("{{"):
 		value = _parse_variables(value)
@@ -190,7 +193,8 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 	var operator = dict.type
 	
 	# set datatype of value
-	match typeof(variables[dict.variable]):
+	# match typeof(variables[dict.variable]):
+	match typeof(variable):
 		TYPE_STRING:
 			value = str(value)
 
@@ -215,17 +219,24 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 	# perform operation
 	match operator:
 		0:
-			variables[dict.variable] = value
+			# variables[dict.variable] = value
+			variable = value
 		1:
-			variables[dict.variable] += value
+			# variables[dict.variable] += value
+			variable += value
 		2:
-			variables[dict.variable] -= value
+			# variables[dict.variable] -= value
+			variable -= value
 		3:
-			variables[dict.variable] *= value
+			# variables[dict.variable] *= value
+			variable *= value
 		4:
-			variables[dict.variable] /= value
-	
-	variable_changed.emit(dict.variable, variables[dict.variable])
+			# variables[dict.variable] /= value
+			variable /= value
+	StoryManager.set_variable(dict.variable, variable)
+
+	# variable_changed.emit(dict.variable, variables[dict.variable])
+	variable_changed.emit(dict.variable, variable)
 	# Dlarv: Done this way so that SetSignal can call this method too.
 	if auto_proceed:
 		_proceed(dict.link)
@@ -267,7 +278,7 @@ func _check_condition(conditions: Array) -> bool:
 		var value2 = dict.value2
 		
 		# get variables if needed
-		value1 = str(variables[value1])
+		value1 = str(StoryManager.get_variable(value1))
 		if value2.count('{{') > 0:
 			value2 = _parse_variables(value2)
 		
@@ -325,9 +336,9 @@ func _process_nest(dict: Dictionary) -> void:
 	_nest_links.push_back(dict.link)
 	data = new_data
 	
-	for var_name in data.variables:
-		if variables.has(var_name): continue
-		variables[var_name] = data.variables[var_name].value
+	# for var_name in data.variables:
+	# 	if variables.has(var_name): continue
+	# 	variables[var_name] = data.variables[var_name].value
 	
 	characters.clear()
 	if data.characters.ends_with('.tres'):
@@ -348,15 +359,18 @@ func _parse_variables(value: String) -> String:
 	
 	# format floats to display properly
 	var formatted_variables := {}
-	for key in variables.keys():
-		if variables[key] is float:
-			formatted_variables[key] = '%0.2f' % variables[key]
+	for key in StoryManager.variables.keys():
+		var variable := StoryManager.get_variable(key)
+		if variable is int:
+			formatted_variables[key] = '%d' % variable
+		elif variable is float:
+			formatted_variables[key] = '%0.2f' % variable
 		else:
-			formatted_variables[key] = variables[key]
+			formatted_variables[key] = variable
 	
 	# add invalid variables as '' in formatted_variables
 	for key in _parse_variable_names(value):
-		if not variables.has(key):
+		if not StoryManager.variables.has(key):
 			printerr('Unknown variable ', key, ' in string.')
 			formatted_variables[key] = ''
 	
