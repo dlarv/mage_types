@@ -328,7 +328,7 @@ func _on_option_selected(idx: int) -> void:
 	option_selected.emit(idx)
 
 
-func _on_dialogue_signal(value: String) -> void:
+func _on_dialogue_signal(value: int) -> void:
 	dialogue_signal.emit(value)
 
 
