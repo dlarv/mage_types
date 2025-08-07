@@ -4,4 +4,30 @@
 
 [resource]
 script = ExtResource("1_c8dqn")
+variables = Dictionary[String, Variant]({
+"current_cutscene": {
+"type": 4,
+"value": ""
+},
+"finding_denim_quest": {
+"type": 4,
+"value": "null"
+},
+"knows_bartender_is_rooted": {
+"type": 1,
+"value": false
+},
+"met_mini_boss": {
+"type": 4,
+"value": "no"
+},
+"player_name": {
+"type": 4,
+"value": "Player"
+},
+"swole_enclave_quest": {
+"type": 4,
+"value": "no"
+}
+})
 metadata/_custom_type_script = "uid://c34b050k6onw6"
