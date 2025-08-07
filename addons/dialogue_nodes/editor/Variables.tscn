@@ -34,5 +34,11 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Reload"
 
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 2
+tooltip_text = "Writes variables to csv file which StoryManager reads upon startup."
+text = "Save"
+
 [connection signal="pressed" from="AddButton" to="." method="_on_add_button_pressed"]
 [connection signal="pressed" from="ReloadButton" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]

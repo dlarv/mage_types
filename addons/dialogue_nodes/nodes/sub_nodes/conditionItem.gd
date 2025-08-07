@@ -26,7 +26,7 @@ signal delete_requested
 var undo_redo: EditorUndoRedoManager
 var cur_condition := {}
 var cur_variable := -1
-
+var prev_value: String
 
 func _ready() -> void:
 	if not StoryManager.variables_updated.is_connected(_on_variables_updated_2):
@@ -40,7 +40,7 @@ func _to_dict() -> Dictionary:
 		return {}
 	
 	var dict:= {
-		'cur_variable': value1.selected,
+		'value1': prev_value,
 		'operator': operator.selected,
 		'value2': value2.text
 	}
@@ -64,9 +64,10 @@ func _from_dict(dict: Dictionary) -> void:
 	else:
 		reset_button.show()
 	
-	if cur_variable != int(dict['cur_variable']):
-		cur_variable = dict['cur_variable']
-		value1.selected = cur_variable
+	cur_variable = StoryManager.variables.keys().find(dict['value1'])
+	prev_value = dict['value1']
+	value1.select(cur_variable)
+
 	if operator.selected != dict['operator']:
 		operator.selected = dict['operator']
 	if value2.text != dict['value2']:
@@ -85,6 +86,7 @@ func _on_condition_changing(_a=0) -> void:
 
 
 func _on_condition_changed() -> void:
+	prev_value = value1.get_item_text(value1.selected)
 	if not undo_redo: return
 	
 	var new_condition: Dictionary = _to_dict()
@@ -118,31 +120,15 @@ func _on_modified() -> void:
 	modified.emit()
 
 
-func _on_variables_updated(variable_list: Array) -> void:
-	return
-	var prevValue := value1.get_item_text(value1.selected)
-	value1.clear()
+# DEPRECATED
+func _on_variables_updated(variable_list: Array) -> void: return
 
-	for variable_name in variable_list:
-		value1.add_item(variable_name)
-
-	if variable_list.size() > 0:
-		# Try to find old value first
-		var index := variable_list.find(prevValue)
-		if index != -1:
-			cur_variable = index
-		elif cur_variable > variable_list.size():
-			cur_variable = 0
-		value1.select(cur_variable)
-	else:
-		value1.select(-1)
-
-
+# WILL REPLACE _on_variables_updated()
 func _on_variables_updated_2() -> void:
 	var variable_list: Array[String] = StoryManager.variables.keys()
 	var prevValue := value1.get_item_text(value1.selected)
-	value1.clear()
 		
+	value1.clear()
 	for variable_name in variable_list:
 		value1.add_item(variable_name)
 	
@@ -151,7 +137,7 @@ func _on_variables_updated_2() -> void:
 		var index := variable_list.find(prevValue)
 		if index != -1:
 			cur_variable = index
-		elif cur_variable > variable_list.size():
+		elif cur_variable > variable_list.size() or cur_variable < 0:
 			cur_variable = 0
 		value1.select(cur_variable)
 	else:

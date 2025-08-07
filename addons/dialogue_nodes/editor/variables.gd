@@ -88,7 +88,6 @@ func get_value(var_name: String):
 
 
 func set_value(var_name: String, value) -> void:
-	print("SETVAL")
 	if var_name == '':
 		return
 	var variable = get_variable(var_name)
@@ -142,4 +141,8 @@ func _on_modified(_a= 0, _b= 0) -> void:
 
 func _on_reload_button_pressed() -> void:
 	load_data(StoryManager.variables)
+
+
+func _on_save_button_pressed() -> void:
+	pass # Replace with function body.
 

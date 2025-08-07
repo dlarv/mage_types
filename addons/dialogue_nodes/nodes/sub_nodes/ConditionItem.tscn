@@ -20,6 +20,22 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "The property to set the value of."
+selected = 0
+item_count = 7
+popup/item_0/text = "current_cutscene"
+popup/item_0/id = 0
+popup/item_1/text = "finding_denim_quest"
+popup/item_1/id = 1
+popup/item_2/text = "knows_bartender_is_rooted"
+popup/item_2/id = 2
+popup/item_3/text = "met_mini_boss"
+popup/item_3/id = 3
+popup/item_4/text = "player_name"
+popup/item_4/id = 4
+popup/item_5/text = "swole_enclave_quest"
+popup/item_5/id = 5
+popup/item_6/text = "Counter"
+popup/item_6/id = 6
 metadata/last_value = ""
 
 [node name="Operator" type="OptionButton" parent="MainContainer"]
@@ -29,6 +45,7 @@ size_flags_horizontal = 4
 selected = 0
 item_count = 6
 popup/item_0/text = "=="
+popup/item_0/id = 0
 popup/item_1/text = "!="
 popup/item_1/id = 1
 popup/item_2/text = ">"
@@ -58,6 +75,7 @@ size_flags_horizontal = 2
 selected = 0
 item_count = 2
 popup/item_0/text = "OR"
+popup/item_0/id = 0
 popup/item_1/text = "AND"
 popup/item_1/id = 1
 
