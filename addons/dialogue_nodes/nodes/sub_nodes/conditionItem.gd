@@ -29,9 +29,9 @@ var cur_variable := -1
 var prev_value: String
 
 func _ready() -> void:
-	if not StoryManager.variables_updated.is_connected(_on_variables_updated_2):
-		StoryManager.variables_updated.connect(_on_variables_updated_2)
-	_on_variables_updated_2()
+	if not StoryManager.variables_updated.is_connected(_on_variables_updated):
+		StoryManager.variables_updated.connect(_on_variables_updated)
+	_on_variables_updated()
 
 
 func _to_dict() -> Dictionary:
@@ -119,12 +119,8 @@ func _on_delete_button_pressed() -> void:
 func _on_modified() -> void:
 	modified.emit()
 
-
-# DEPRECATED
-func _on_variables_updated(variable_list: Array) -> void: return
-
 # WILL REPLACE _on_variables_updated()
-func _on_variables_updated_2() -> void:
+func _on_variables_updated() -> void:
 	var variable_list: Array[String] = StoryManager.variables.keys()
 	var prevValue := value1.get_item_text(value1.selected)
 		
