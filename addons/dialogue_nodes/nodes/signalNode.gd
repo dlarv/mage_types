@@ -31,8 +31,8 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 		dict['curr_index'] = -1
 
 	dict['signalValue'] = last_value
+
 	dict['link'] = connections[0]['to_node'] if connections.size() > 0 else 'END'
-	
 	return dict
 
 

@@ -13,11 +13,15 @@ signal modified
 var undo_redo: EditorUndoRedoManager
 var last_variable: String
 var last_type: int
-var last_value: String
+var last_signal: String
 var cur_variable := -1
+var use_dropdown := true
+var curr_signal: int
 
 # SignalNode variables
-@onready var signal_value := $SignalValue
+@onready var signal_value := $SignalHBox/SignalValue
+@onready var dropdown := $SignalHBox/Dropdown
+@onready var check_box := $SignalHBox/CheckBox
 @onready var timer := $Timer
 
 var last_signal_value := ''
@@ -28,6 +32,10 @@ func _ready() -> void:
 		StoryManager.variables_updated.connect(_on_variables_updated)
 	_on_variables_updated()
 
+	dropdown.clear()
+	for key in StoryManager.DialogSignal.keys():
+		dropdown.add_item(key)
+
 
 func _to_dict(graph: GraphEdit) -> Dictionary:
 	var dict := {}
@@ -37,7 +45,13 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 	dict['type'] = type.selected
 	dict['value'] = value.text
 
-	dict['signalValue'] = signal_value.text
+	if use_dropdown:
+		dict['curr_signal'] = curr_signal
+	else:
+		dict['curr_signal'] = -1
+
+	dict['signalValue'] = last_signal
+
 	dict['link'] = connections[0]['to_node'] if connections.size() > 0 else 'END'
 	return dict
 
@@ -49,12 +63,25 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 
 	type.selected = dict['type']
 	value.text = dict['value']
-	
 	last_type = type.selected
-	last_value = value.text
+	
+	last_signal = dict['signalValue']
+	curr_signal = dict['curr_signal']
 
-	signal_value.text = dict['signalValue']
-	last_signal_value = signal_value.text
+	if curr_signal >= 0:
+		check_box.button_pressed = true
+		# Signal list has changed
+		if last_signal != StoryManager.DialogSignal.keys()[curr_signal]:
+			var index := StoryManager.DialogSignal.keys().find(last_signal)
+			if index != -1:
+				curr_signal = index
+			else:
+				curr_signal = 0
+		dropdown.select(curr_signal)
+
+	else:
+		signal_value.text = dict['signalValue']
+		check_box.button_pressed = false
 	
 	return [dict['link']]
 
@@ -68,7 +95,7 @@ func set_variable(new_variable: String) -> void:
 func set_value(new_value: String) -> void:
 	if value.text != new_value:
 		value.text = new_value
-	last_value = new_value
+	last_signal = new_value
 
 
 func _on_variable_changed(_new_text) -> void:
@@ -112,7 +139,7 @@ func _on_value_timer_timeout() -> void:
 	undo_redo.add_do_method(self, 'set_value', value.text)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
-	undo_redo.add_undo_method(self, 'set_value', last_value)
+	undo_redo.add_undo_method(self, 'set_value', last_signal)
 	undo_redo.commit_action()
 
 
@@ -137,9 +164,10 @@ func _on_variable_selected(idx: int) -> void:
 	undo_redo.commit_action()
 
 func set_signal_value(new_value: String) -> void:
-	if value.text != new_value:
-		value.text = new_value
-	last_value = new_value
+	if signal_value.text != new_value:
+		signal_value.text = new_value
+	print("Signal Set %s" % new_value)
+	last_signal = new_value
 
 
 func _on_signal_value_changed(_new_text) -> void:
@@ -149,12 +177,17 @@ func _on_signal_value_changed(_new_text) -> void:
 
 func _on_timer_timeout() -> void:
 	if not undo_redo: return
+	var v: String
+	if use_dropdown:
+		v = (dropdown as OptionButton).get_item_text(curr_signal)
+	else:
+		v = value.text
 	
 	undo_redo.create_action('Set signal value')
-	undo_redo.add_do_method(self, 'set_signal_value', value.text)
+	undo_redo.add_do_method(self, 'set_signal_value', v)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
-	undo_redo.add_undo_method(self, 'set_signal_value', last_value)
+	undo_redo.add_undo_method(self, 'set_signal_value', last_signal)
 	undo_redo.commit_action()
 
 
@@ -176,3 +209,16 @@ func _on_variables_updated() -> void:
 		variable.select(cur_variable)
 	else:
 		variable.select(-1)
+
+
+func _on_check_box_toggled(toggledOn:bool) -> void:
+	dropdown.visible = toggledOn
+	signal_value.visible = not toggledOn
+	use_dropdown = toggledOn
+
+
+func _on_option_button_item_selected(index:int) -> void:
+	curr_signal = index
+	timer.stop()
+	timer.start()
+
