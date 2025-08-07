@@ -274,7 +274,6 @@ nodes = {
 },
 1: {
 "condition": Array[Dictionary]([{
-"cur_variable": 2,
 "operator": 0,
 "value1": "knows_bartender_is_rooted",
 "value2": "false"
@@ -986,7 +985,6 @@ cont...",
 },
 1: {
 "condition": Array[Dictionary]([{
-"cur_variable": 3,
 "operator": 0,
 "value1": "met_mini_boss",
 "value2": "true"
@@ -1175,7 +1173,6 @@ cont...",
 },
 2: {
 "condition": Array[Dictionary]([{
-"cur_variable": 3,
 "operator": 0,
 "value1": "met_mini_boss",
 "value2": "yes"
@@ -1411,7 +1408,6 @@ cont...",
 },
 &"5_1": {
 "condition": Array[Dictionary]([{
-"cur_variable": 0,
 "operator": 0,
 "value1": "current_cutscene",
 "value2": "true"
@@ -1422,7 +1418,6 @@ cont...",
 },
 &"5_2": {
 "condition": Array[Dictionary]([{
-"cur_variable": 1,
 "operator": 0,
 "value1": "finding_denim_quest",
 "value2": "null"
@@ -1433,7 +1428,6 @@ cont...",
 },
 &"5_3": {
 "condition": Array[Dictionary]([{
-"cur_variable": 3,
 "operator": 0,
 "value1": "met_mini_boss",
 "value2": " no"
@@ -1444,7 +1438,6 @@ cont...",
 },
 &"5_4": {
 "condition": Array[Dictionary]([{
-"cur_variable": 3,
 "operator": 1,
 "value1": "met_mini_boss",
 "value2": "no"
@@ -1459,7 +1452,6 @@ cont...",
 "forks": {
 0: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "no"
@@ -1468,7 +1460,6 @@ cont...",
 },
 1: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "given"
@@ -1477,7 +1468,6 @@ cont...",
 },
 2: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "2"
@@ -1486,7 +1476,6 @@ cont...",
 },
 3: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "3"
@@ -1502,7 +1491,6 @@ cont...",
 "forks": {
 0: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "no"
@@ -1511,7 +1499,6 @@ cont...",
 },
 1: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "given"
@@ -1520,7 +1507,6 @@ cont...",
 },
 2: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "2"
@@ -1529,7 +1515,6 @@ cont...",
 },
 3: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "3"
@@ -1545,7 +1530,6 @@ cont...",
 "forks": {
 0: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "no"
@@ -1554,7 +1538,6 @@ cont...",
 },
 1: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "given"
@@ -1563,7 +1546,6 @@ cont...",
 },
 2: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "2"
@@ -1572,7 +1554,6 @@ cont...",
 },
 3: {
 "condition": Array[Dictionary]([{
-"cur_variable": 5,
 "operator": 0,
 "value1": "swole_enclave_quest",
 "value2": "3"
@@ -1589,12 +1570,10 @@ cont...",
 0: {
 "condition": Array[Dictionary]([{
 "combiner": 1,
-"cur_variable": 5,
 "operator": 1,
 "value1": "swole_enclave_quest",
 "value2": "finished"
 }, {
-"cur_variable": 5,
 "operator": 1,
 "value1": "swole_enclave_quest",
 "value2": "no"
@@ -1603,7 +1582,6 @@ cont...",
 },
 1: {
 "condition": Array[Dictionary]([{
-"cur_variable": 1,
 "operator": 0,
 "value1": "finding_denim_quest",
 "value2": "given"
@@ -1612,7 +1590,6 @@ cont...",
 },
 2: {
 "condition": Array[Dictionary]([{
-"cur_variable": 1,
 "operator": 0,
 "value1": "finding_denim_quest",
 "value2": "finished"
@@ -1621,7 +1598,6 @@ cont...",
 },
 3: {
 "condition": Array[Dictionary]([{
-"cur_variable": 3,
 "operator": 0,
 "value1": "met_mini_boss",
 "value2": "yes"
