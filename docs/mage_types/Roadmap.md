@@ -23,11 +23,12 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
-- [ ] Battle Animation refactor
-	- [ ] Animations handled by BattleGUI
-	- [ ] Animations should already be children of gui, just hidden
-	- [ ] Attacks access animations using an Id (probably an enum)
 - [ ] Rewrite narrative setup
+	- [ ] "Where am I" thread
+	- [ ] "Player doesn't know about Primary and Secondary types" thread
+	- [ ] Add poker player and Denim dialog
+	- [ ] Make Swole Enclave dialog less cringe
+- [ ] Remodel rec room
 - [ ] Redesign tutorial bosses
 	- [ ] Write dialog
 	- [ ] Decide player load out
@@ -177,6 +178,10 @@ MVP Demo candidate. Add story and QOL features.
 - [ ] Start screen
 - [ ] Audio
 - [ ] Create steam page assets
+- [ ] Battle Animation refactor
+	- [ ] Animations handled by BattleGUI
+	- [ ] Animations should already be children of gui, just hidden
+	- [ ] Attacks access animations using an Id (probably an enum)
 - [x] Allow user to use keyboard to select targets in battle
 # The List
 ## Battle (BATT)
