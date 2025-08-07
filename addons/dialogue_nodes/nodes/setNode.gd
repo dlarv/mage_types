@@ -27,7 +27,6 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 	var dict := {}
 	var connections: Array = graph.get_connections(name)
 	
-	dict['cur_variable'] = cur_variable
 	dict['variable'] = last_variable
 	dict['type'] = type.selected
 	dict['value'] = value.text
@@ -41,11 +40,9 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	last_variable = dict['variable']
 	variable.select(cur_variable)
 
-	# cur_variable = dict['cur_variable']
 	type.selected = dict['type']
 	value.text = dict['value']
 	
-	# last_variable = variable.text
 	last_type = type.selected
 	last_value = value.text
 	
