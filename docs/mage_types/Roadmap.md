@@ -38,8 +38,8 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Training wheel equipment?
 - [ ] Add 'dark souls' boss
 	- [ ] Decide on player reward
-- [ ] Alter dialogue nodes to use StoryManager.variables
-	- [ ] Remove unused code
+- [x] Alter dialogue nodes to use StoryManager.variables
+	- [x] Remove unused code
 	- [x] When game is saved, ensure variables are serialized/deserialized
 	- [x] DialogueNode::Editor acts as interface between designer and StoryManager
 		- [x] Add var

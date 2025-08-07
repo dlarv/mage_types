@@ -1624,35 +1624,5 @@ cont...",
 "title": "Misc"
 }
 }
-variables = {
-"counter": {
-"type": 2,
-"value": 0
-},
-"current_cutscene": {
-"type": 4,
-"value": ""
-},
-"finding_denim_quest": {
-"type": 4,
-"value": "null"
-},
-"knows_bartender_is_rooted": {
-"type": 1,
-"value": false
-},
-"met_mini_boss": {
-"type": 4,
-"value": "no"
-},
-"player_name": {
-"type": 4,
-"value": "Player"
-},
-"swole_enclave_quest": {
-"type": 4,
-"value": "no"
-}
-}
 strays = Array[String](["8_1", "1_3", "1_33", "1_36", "1_38", "1_39", "1_41", "1_42", "4_1", "5_1", "1_34", "1_35", "1_44", "1_45", "1_51", "1_46", "1_47", "1_48", "1_49", "1_50", "1_52", "1_53", "1_54", "1_56", "1_57", "1_58", "1_55", "1_43", "1_37", "1_59", "1_60", "1_6", "1_12", "1_13", "1_5"])
 characters = "res://data/demo/character_files/character_list.tres"

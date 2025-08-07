@@ -66,7 +66,8 @@ func create_entry(file_name: String, path: String, data: DialogueData) -> void:
 		add_child(variables)
 		variables.undo_redo = editor.undo_redo
 		variables.modified.connect(_on_data_modified)
-		variables.load_data(data.variables)
+		#DEPR: variables.load_data(data.variables)
+		variables.load_data(StoryManager.variables)
 		remove_child(variables)
 		metadata['variables'] = variables
 	
@@ -137,7 +138,7 @@ func save_file(idx := cur_idx) -> void:
 		data.characters = data_container.get_node('Characters').get_data()
 	else:
 		data.characters = metadata['characters']
-	data.variables = metadata['variables'].get_data()
+	#DEPR: data.variables = metadata['variables'].get_data()
 	
 	# save to file
 	ResourceSaver.save(data, metadata['path'])
@@ -159,7 +160,7 @@ func save_as(path: String) -> void:
 	
 	var data: DialogueData = metadata['graph'].get_data()
 	data.characters = data_container.get_node('Characters').get_data()
-	data.variables = metadata['variables'].get_data()
+	#DEPR: data.variables = metadata['variables'].get_data()
 	
 	# create entry for file
 	create_entry(file_name, path, data)

@@ -45,7 +45,7 @@ func run_tree(start_node_idx: int) -> void:
 	var data := DialogueData.new()
 	data = start_node.tree_to_data(graph, data)
 	data.characters = characters.get_data()
-	data.variables = variables.get_data()
+	#DEPR: data.variables = variables.get_data()
 	
 	dialogue_box.data = data
 	dialogue_box.start(start_node.start_id)
