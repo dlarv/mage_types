@@ -21,9 +21,6 @@
 - Wild enemy mechanics
 # Upcoming Versions
 [[version_naming_scheme]]
-- Damage calculation takes attacker's level into account, but not the defender's, biasing the result towards the attacker.
-	- I could compensate by making the defense values generally higher than offense.
-	- I could include the defender's level as well.
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Battle Animation refactor
@@ -246,6 +243,16 @@ StatChanges (v0.3.43)
 - Instead of having a directory full of resources, StatChange effects are dynamically created by the attacks/etc that define them.
 - The actual strength of a StatChange is calculated using `strength * MODIFIER` 
 	- where MODIFIER is a constant currently set to 0.3.
+#### Damage Calculation
+- Damage calculation takes attacker's level into account, but not the defender's, biasing the result towards the attacker.
+	- I could compensate by making the defense values generally higher than offense.
+	- I could include the defender's level as well.
+$$
+Damage =  \left({strength +\frac{strength}{10}}\right) \times \frac{attack}{defense} \times affinity \times rand
+$$
+Where: 
+- affinity = `Attack.scaling_factor`
+- rand = $[0.8, 1]$
 #### AttackEffect Internal Communication
 - New `BattleAction.DataBuffer` class created. 
 	 - `Data` will contain the BattleAction data, as well as a buffer `AttackEffects` can read/write to.
