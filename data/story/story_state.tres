@@ -5,6 +5,10 @@
 [resource]
 script = ExtResource("1_c8dqn")
 variables = Dictionary[String, Variant]({
+"counter": {
+"type": 2,
+"value": 0.0
+},
 "current_cutscene": {
 "type": 4,
 "value": ""

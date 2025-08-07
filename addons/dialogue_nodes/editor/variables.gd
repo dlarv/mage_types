@@ -35,7 +35,7 @@ func load_data(dict: Dictionary) -> void:
 
 ## add new variable item to the list
 func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, to_idx:= -1) -> HBoxContainer:
-	StoryManager.update_variable(new_name, data)
+	StoryManager.add_variable(new_name, data)
 
 	var new_variable := variable_item_scene.instantiate()
 	var_container.add_child(new_variable, true)

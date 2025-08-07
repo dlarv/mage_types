@@ -8,13 +8,32 @@ signal variables_updated()
 var variables: Dictionary[String, Variant]:
 	get:
 		return state.variables
+		
 
 
-func update_variable(varName: String, value: Variant, quiet:=false) -> void:
+func add_variable(varName: String, value: Variant, quiet:=false) -> void:
 	print("StoryManager added var '%s'." % varName)
 	state.update_variable(varName, value)
 	if not quiet:
 		variables_updated.emit()
+
+
+func update_value(varName: String, value: Variant) -> void:
+	if not variables.has(varName):
+		print("StoryManager tried to change value of var '%s' with value '%s', but no such var was found."
+				%[varName, str(value)])
+		return
+	print("StoryManager changed value of var '%s' with value '%s'." % [varName, str(value)])
+	state.update_variable(varName, {"value": value, "type": variables[varName].type})
+
+
+func update_type(varName: String, type: int) -> void:
+	if not variables.has(varName):
+		print("StoryManager tried to change type of var '%s' to type '%d', but no such var was found."
+				%[varName, type])
+		return
+	print("StoryManager changed type of var '%s' to type '%d'." % [varName, type])
+	state.update_variable(varName, {"value": variables[varName].value, "type": type})
 
 
 func remove_variable(varName: String) -> void:
@@ -33,6 +52,19 @@ func rename_variable(oldName: String, newName: String) -> void:
 	else:
 		print("StoryManager tried to rename var '%s' to '%s', but original var was not found." 
 				% [oldName, newName])
+
+
+func get_variable(varName: String) -> Variant:
+	if variables.has(varName) and variables[varName].has("value"):
+		return variables[varName].value
+	push_warning("Could not find StoryVariable %s" % varName)
+	return null
+
+
+func set_variable(varName: String, value: Variant) -> void:
+	if variables.has(varName) and variables[varName].has("value"):
+		variables[varName].value = value
+	push_warning("Could not find StoryVariable %s." % varName)
 
 
 func serialize() -> Dictionary:

@@ -4,8 +4,9 @@ class_name StoryState
 
 @export var variables: Dictionary[String, Variant] = { }
 
+
 func update_variable(varName: String, value: Variant) -> void:
-	variables[varName] = value
+	variables.set(varName, value)
 
 
 func remove_variable(varName: String) -> bool:

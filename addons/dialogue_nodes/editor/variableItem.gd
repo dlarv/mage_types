@@ -125,6 +125,8 @@ func _on_name_changed(new_text: String) -> void:
 
 
 func _on_type_changed(new_idx: int) -> void:
+	StoryManager.update_type(var_name.text, types[new_idx])
+
 	if not undo_redo:
 		set_type(new_idx)
 		return
@@ -140,7 +142,7 @@ func _on_type_changed(new_idx: int) -> void:
 
 
 func _on_value_changed(new_value) -> void:
-	StoryManager.update_variable(var_name.text, new_value, true)
+	StoryManager.update_value(var_name.text, new_value)
 
 	if not undo_redo:
 		return
