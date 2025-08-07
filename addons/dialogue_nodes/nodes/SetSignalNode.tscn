@@ -107,21 +107,7 @@ one_shot = true
 layout_mode = 2
 text = "Signal"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="SignalHBox" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="SignalValue" type="LineEdit" parent="SignalHBox"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "The String value passed in the signal parameter."
-placeholder_text = "Value"
-
-[node name="Dropdown" type="OptionButton" parent="SignalHBox"]
+[node name="SignalDropdown" type="OptionButton" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -135,17 +121,14 @@ popup/item_2/id = 2
 popup/item_3/text = "DIALOG_ENDED"
 popup/item_3/id = 3
 
-[node name="CheckBox" type="CheckBox" parent="SignalHBox"]
-layout_mode = 2
-button_pressed = true
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="item_selected" from="BoxContainer/Variable" to="." method="_on_variable_selected"]
 [connection signal="item_selected" from="BoxContainer/Type" to="." method="_on_type_selected"]
 [connection signal="text_changed" from="BoxContainer/Value" to="." method="_on_value_changed"]
 [connection signal="timeout" from="VariableTimer" to="." method="_on_variable_timer_timeout"]
 [connection signal="timeout" from="ValueTimer" to="." method="_on_value_timer_timeout"]
+[connection signal="item_selected" from="SignalDropdown" to="." method="_on_option_button_item_selected"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="text_changed" from="SignalHBox/SignalValue" to="." method="_on_signal_value_changed"]
-[connection signal="text_changed" from="SignalHBox/SignalValue" to="." method="_on_node_modified"]
-[connection signal="item_selected" from="SignalHBox/Dropdown" to="." method="_on_option_button_item_selected"]
-[connection signal="toggled" from="SignalHBox/CheckBox" to="." method="_on_check_box_toggled"]
