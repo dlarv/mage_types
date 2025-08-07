@@ -248,15 +248,15 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 
 	for effect: _BaseEffectSlot in action.effects:
 		var slot: EffectSlot = effect.get_effect_slot(user, target, action, 1.0)
+		# ConditionalEffect, where effect will fail.
+		if not slot:
+			continue
+			
 		var isFriendly: bool = action.target == _BattleAction.TargetType.SELF \
 				or action.target == _BattleAction.TargetType.ALLY \
 				or action.target == _BattleAction.TargetType.ALLIES \
 				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER \
 				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE
-
-		# ConditionalEffect, where effect will fail.
-		if not slot:
-			continue
 
 		dmg += slot.attack_effect.get_dmg_potential(user, target, isFriendly, action)
 
