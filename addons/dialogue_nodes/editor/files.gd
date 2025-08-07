@@ -290,9 +290,13 @@ func get_current_metadata() -> Dictionary:
 
 func _on_empty_clicked(at_pos: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == MOUSE_BUTTON_RIGHT:
-		# Dlarv
-		var pop_pos := at_pos + global_position# + Vector2(get_window().position)
-		popup_menu.popup(Rect2(pop_pos, popup_menu.size))
+		# Dlarv: Using a tiled window manager causes the position of the popup to break.
+		var pop_pos
+		if EditorInterface.is_multi_window_enabled():
+			pop_pos = at_pos + global_position + Vector2(get_window().position)
+		else:
+			pop_pos = at_pos + global_position
+		popup_menu.popup(Rect2(pop_pos.x, pop_pos.y, popup_menu.size.x, popup_menu.size.y))
 
 
 func _on_item_clicked(_idx, at_pos: Vector2, mouse_button_index: int) -> void:
