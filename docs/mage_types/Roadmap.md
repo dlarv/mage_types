@@ -46,8 +46,9 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 		- [x] Change var name
 	- [x] Variables are synced across dialog trees
 		- [x] Added reload button to variables tab
-		- [x] Ensure StoryManager serializes variables when editor reloads
-			- DialogueNodes::Editor serializes variables. When DialogTree is opened, it adds all its variables to StoryManager. Then "Reload" button can be pressed to sync these across trees.
+		- [ ] Ensure StoryManager serializes variables when editor reloads
+			- ~~DialogueNodes::Editor serializes variables.~~ When DialogTree is opened, it adds all its variables to StoryManager. Then "Reload" button can be pressed to sync these across trees.
+				- This only works in editor mode.
 		- [x] Update ui
 	- [ ] DialogueNode::ConditionItem reads from StoryManager
 		- [ ] Watch for StoryManager values to update
