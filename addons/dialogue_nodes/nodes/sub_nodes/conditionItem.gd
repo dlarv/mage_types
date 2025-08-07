@@ -119,7 +119,7 @@ func _on_delete_button_pressed() -> void:
 func _on_modified() -> void:
 	modified.emit()
 
-# WILL REPLACE _on_variables_updated()
+
 func _on_variables_updated() -> void:
 	var variable_list: Array[String] = StoryManager.variables.keys()
 	var prevValue := value1.get_item_text(value1.selected)

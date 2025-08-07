@@ -4,8 +4,9 @@ extends Node
 # This is used in the editor, not during gameplay.
 signal variables_updated()
 
-var state: StoryState = preload("res://data/story/story_state.tres")
+enum DialogSignal { BATTLE_STARTED, PLAY_CUTSCENE, MENU_OPENED, DIALOG_ENDED, }
 
+var state: StoryState = preload("res://data/story/story_state.tres")
 var variables: Dictionary[String, Variant]:
 	get:
 		return state.variables

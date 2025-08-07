@@ -6,13 +6,13 @@
 script = ExtResource("1_7sxr6")
 starts = {
 "BOSS1": &"0_1",
-"INTRO": &"0_4",
+"INTRO": &"0_3",
 "MINI_BOSS_!": &"0_5",
 "MISC": &"0_2",
 "SWOLE_1": &"0_6",
 "SWOLE_2": &"0_7",
 "SWOLE_3": &"0_8",
-"_INTRO": &"0_3"
+"_INTRO": &"0_4"
 }
 nodes = {
 &"0_1": {
@@ -27,13 +27,13 @@ nodes = {
 },
 &"0_3": {
 "link": &"7_5",
-"offset": Vector2(-2500, 60),
-"start_id": "_INTRO"
+"offset": Vector2(-2280, 100),
+"start_id": "INTRO"
 },
 &"0_4": {
 "link": &"4_11",
 "offset": Vector2(-2860, -700),
-"start_id": "INTRO"
+"start_id": "_INTRO"
 },
 &"0_5": {
 "link": &"1_8",
@@ -357,7 +357,7 @@ nodes = {
 },
 &"1_3": {
 "dialogue": "Hi, welcome to test candidate 1! This is a simplified version of the game intended to test the combat mechanics.",
-"offset": Vector2(-2240, -400),
+"offset": Vector2(-1720, -560),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -963,7 +963,7 @@ cont...",
 },
 &"1_69": {
 "dialogue": "Its been forever since we've gotten to mentor someone new!",
-"offset": Vector2(-1260, 2260),
+"offset": Vector2(-1240, 2260),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1072,7 +1072,7 @@ cont...",
 },
 1: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_91",
 "text": "No"
 }
 },
@@ -1081,7 +1081,7 @@ cont...",
 },
 &"1_76": {
 "dialogue": "C: {{counter}}",
-"offset": Vector2(-2220, -700),
+"offset": Vector2(-2300, -700),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1142,7 +1142,7 @@ cont...",
 }
 },
 "size": Vector2(300, 240),
-"speaker": -1
+"speaker": ""
 },
 &"1_80": {
 "dialogue": "Until one day, probably a year or two from now, when the changes fully reach your center. This is called [i]alignment[/i] (or bias by old timers).",
@@ -1290,11 +1290,11 @@ cont...",
 },
 &"1_9": {
 "dialogue": "Yeah, you're probably pretty disoriented.",
-"offset": Vector2(-1160, 400),
+"offset": Vector2(-1160, 380),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_92",
 "text": ""
 }
 },
@@ -1314,30 +1314,61 @@ cont...",
 "size": Vector2(300, 240),
 "speaker": 2
 },
+&"1_91": {
+"dialogue": "TODO",
+"offset": Vector2(-420, 1560),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2
+},
+&"1_92": {
+"dialogue": "TODO",
+"offset": Vector2(-820, 380),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2
+},
 &"3_1": {
+"curr_index": -1,
 "link": "END",
 "offset": Vector2(-2800, 160),
-"signalValue": "battle_started"
+"signalValue": ""
 },
 &"3_2": {
+"curr_index": 0,
 "link": "END",
 "offset": Vector2(-2300, 540),
-"signalValue": "battle_started"
+"signalValue": "BATTLE_STARTED"
 },
 &"3_3": {
+"curr_index": 0,
 "link": "END",
 "offset": Vector2(-1500, 1780),
-"signalValue": "battle"
+"signalValue": "BATTLE_STARTED"
 },
 &"3_4": {
+"curr_index": 0,
 "link": "END",
 "offset": Vector2(-540, 2520),
-"signalValue": "battle"
+"signalValue": "BATTLE_STARTED"
 },
 &"3_5": {
+"curr_index": 0,
 "link": "END",
 "offset": Vector2(-1560, 2520),
-"signalValue": "battle"
+"signalValue": "BATTLE_STARTED"
 },
 &"4_1": {
 "link": &"1_33",
@@ -1355,7 +1386,7 @@ cont...",
 },
 &"4_11": {
 "link": &"1_76",
-"offset": Vector2(-2640, -680),
+"offset": Vector2(-2660, -700),
 "type": 1,
 "value": "1",
 "variable": "counter"
@@ -1433,7 +1464,7 @@ cont...",
 "value2": "null"
 }]),
 "false": "END",
-"offset": Vector2(340, 240),
+"offset": Vector2(380, 160),
 "true": &"1_15"
 },
 &"5_3": {
@@ -1457,7 +1488,7 @@ cont...",
 "true": &"1_29"
 },
 &"7_2": {
-"default": "END",
+"default": &"1_68",
 "fork_title": "Combat Tutorial",
 "forks": {
 0: {
@@ -1496,7 +1527,7 @@ cont...",
 "offset": Vector2(-1640, 2080)
 },
 &"7_3": {
-"default": "END",
+"default": &"1_68",
 "fork_title": "Combat Tutorial",
 "forks": {
 0: {
@@ -1535,7 +1566,7 @@ cont...",
 "offset": Vector2(-2620, 1860)
 },
 &"7_4": {
-"default": "END",
+"default": &"1_68",
 "fork_title": "Combat Tutorial",
 "forks": {
 0: {
@@ -1624,5 +1655,5 @@ cont...",
 "title": "Misc"
 }
 }
-strays = Array[String](["8_1", "1_3", "1_33", "1_36", "1_38", "1_39", "1_41", "1_42", "4_1", "5_1", "1_34", "1_35", "1_44", "1_45", "1_51", "1_46", "1_47", "1_48", "1_49", "1_50", "1_52", "1_53", "1_54", "1_56", "1_57", "1_58", "1_55", "1_43", "1_37", "1_59", "1_60", "1_6", "1_12", "1_13", "1_5"])
+strays = Array[String](["8_1", "1_33", "1_36", "1_38", "1_39", "1_41", "1_42", "4_1", "5_1", "1_34", "1_35", "1_44", "1_45", "1_51", "1_46", "1_47", "1_48", "1_49", "1_50", "1_52", "1_53", "1_54", "1_56", "1_57", "1_58", "1_55", "1_43", "1_37", "1_59", "1_60", "1_6", "1_12", "1_13", "1_5", "1_3"])
 characters = "res://data/demo/character_files/character_list.tres"
