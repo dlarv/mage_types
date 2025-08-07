@@ -143,6 +143,3 @@ func _on_reload_button_pressed() -> void:
 	load_data(StoryManager.variables)
 
 
-func _on_save_button_pressed() -> void:
-	pass # Replace with function body.
-
