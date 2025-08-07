@@ -65,8 +65,8 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
-"speaker": -1
+"size": Vector2(300, 243),
+"speaker": "   "
 },
 &"1_10": {
 "dialogue": "Haha, to be honest, I don't know. I can't leave this area, see.",
@@ -959,7 +959,7 @@ cont...",
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": "    "
 },
 &"1_69": {
 "dialogue": "Its been forever since we've gotten to mentor someone new!",
@@ -1132,7 +1132,7 @@ cont...",
 "speaker": 2
 },
 &"1_8": {
-"dialogue": "",
+"dialogue": ".....",
 "offset": Vector2(-3400, 520),
 "options": {
 0: {
@@ -1142,7 +1142,7 @@ cont...",
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": "Monster"
 },
 &"1_80": {
 "dialogue": "Until one day, probably a year or two from now, when the changes fully reach your center. This is called [i]alignment[/i] (or bias by old timers).",
@@ -1349,7 +1349,7 @@ cont...",
 &"3_2": {
 "curr_signal": 0,
 "link": "END",
-"offset": Vector2(-2300, 540),
+"offset": Vector2(-2280, 540),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_3": {
