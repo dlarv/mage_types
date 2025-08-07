@@ -3,20 +3,22 @@ extends Node
 
 signal variables_updated()
 
-@export var variables: Dictionary[String, Variant] = {}
-@export_tool_button("Press", "Callable")
-var press := func() -> void: print(variables)
+@onready var state: StoryState = preload("res://data/story/story_state.tres")
+
+var variables: Dictionary[String, Variant]:
+	get:
+		return state.variables
 
 
 func update_variable(varName: String, value: Variant, quiet:=false) -> void:
 	print("StoryManager added var '%s'." % varName)
-	variables[varName] = value
+	state.update_variable(varName, value)
 	if not quiet:
 		variables_updated.emit()
 
 
 func remove_variable(varName: String) -> void:
-	if variables.erase(varName):
+	if state.remove_variable(varName):
 		print("StoryManager removed var '%s'." % varName)
 		variables_updated.emit()
 	else:
@@ -25,12 +27,12 @@ func remove_variable(varName: String) -> void:
 
 func rename_variable(oldName: String, newName: String) -> void:
 	var value: Variant = variables.get(oldName, null)
-	if variables.erase(oldName):
+	if state.rename_variable(oldName, newName):
 		print("StoryManager renamed var '%s' to '%s'." % [oldName, newName])
+		variables_updated.emit()
 	else:
 		print("StoryManager tried to rename var '%s' to '%s', but original var was not found." 
 				% [oldName, newName])
-	variables[newName] = value
 
 
 func serialize() -> Dictionary:
@@ -40,5 +42,3 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> void:
 	pass
 
-func _press() -> void:
-	pass
