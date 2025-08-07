@@ -22,12 +22,18 @@ var cur_variable := -1
 
 var last_signal_value := ''
 
+
+func _ready() -> void:
+	if not StoryManager.variables_updated.is_connected(_on_variables_updated):
+		StoryManager.variables_updated.connect(_on_variables_updated)
+	_on_variables_updated()
+
+
 func _to_dict(graph: GraphEdit) -> Dictionary:
 	var dict := {}
 	var connections: Array = graph.get_connections(name)
 	
-	dict['cur_variable'] = cur_variable
-	dict['variable'] = graph.last_variable_list[cur_variable]
+	dict['variable'] = last_variable
 	dict['type'] = type.selected
 	dict['value'] = value.text
 
@@ -37,12 +43,13 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 
 
 func _from_dict(dict: Dictionary) -> Array[String]:
-	cur_variable = dict['cur_variable']
+	cur_variable = StoryManager.variables.keys().find(dict['variable'])
+	last_variable = dict['variable']
+	variable.select(cur_variable)
 
 	type.selected = dict['type']
 	value.text = dict['value']
 	
-	last_variable = variable.text
 	last_type = type.selected
 	last_value = value.text
 
@@ -112,20 +119,8 @@ func _on_value_timer_timeout() -> void:
 func _on_modified() -> void:
 	modified.emit()
 
-func _on_variables_updated(variables_list: Array[String]) -> void:
-	variable.clear()
-	
-	for variable_name in variables_list:
-		variable.add_item(variable_name)
-	
-	if variables_list.size() > 0:
-		if cur_variable > variables_list.size():
-			cur_variable = 0
-		variable.select(cur_variable)
-	else:
-		variable.select(-1)
-
 func _on_variable_selected(idx: int) -> void:
+	last_variable = variable.get_item_text(idx)
 	if not undo_redo: 
 		cur_variable = idx
 		variable.select(idx)
@@ -163,3 +158,21 @@ func _on_timer_timeout() -> void:
 	undo_redo.commit_action()
 
 
+func _on_variables_updated() -> void:
+	var variable_list: Array[String] = StoryManager.variables.keys()
+	var prevValue: String = variable.get_item_text(variable.selected)
+		
+	variable.clear()
+	for variable_name in variable_list:
+		variable.add_item(variable_name)
+	
+	if variable_list.size() > 0:
+		# Try to find old value first
+		var index := variable_list.find(prevValue)
+		if index != -1:
+			cur_variable = index
+		elif cur_variable > variable_list.size() or cur_variable < 0:
+			cur_variable = 0
+		variable.select(cur_variable)
+	else:
+		variable.select(-1)
