@@ -35,6 +35,7 @@ func set_actor(actor: BattleActor) -> void:
 
 func add_xp(amount: float) -> void:
 	var levels := _actor.add_xp(amount)
+	if levels == 0: return
 	var stats: Dictionary[Stats, float] = _actor.level_up(levels)
 
 	tween.tween_property(%XpSlider, "value", int(_actor.total_xp / _actor.next_level_xp * 100), DELAY)
