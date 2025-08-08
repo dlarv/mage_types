@@ -13,7 +13,7 @@ func setup(team: Array[BattleActor]) -> void:
 		indices.append(-1)
 
 func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
-	var actions := []
+	var actions: Array[ActorAction]= []
 	var i := -1
 	for actor in team:
 		i += 1
