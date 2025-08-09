@@ -117,7 +117,7 @@ func _calc_boost(stat: Stats, xp: float, levels: int, average: float) -> float:
 	var actualXp := (xp / average) * MAX_STAT_POINTS
 
 	var base := get_base_stat(stat) 
-	var amount := int(actualXp) * levels
+	var amount := int(round(actualXp)) * levels
 
 	set_base_stat(stat, base + amount)
 
