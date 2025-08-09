@@ -14,6 +14,6 @@ func get_requirement_message() -> String: return ""
 func _get_battle_actor(obj: Variant) -> BattleActor:
 	if obj is BattleActor: 
 		return obj
-	elif obj is BaseCompanion or obj.is_in_group("player"): 
+	elif obj.is_in_group("player"): 
 		return obj.battle_actor
 	return null

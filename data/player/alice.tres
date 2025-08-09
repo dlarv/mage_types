@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Actor" load_steps=3 format=3 uid="uid://b7fjqfcs4lfae"]
-
-[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/alice_battle_actor.tres" id="1_4bfjk"]
-[ext_resource type="Script" uid="uid://dfg78kdok5m4l" path="res://src/actor.gd" id="1_11kj8"]
-
-[resource]
-script = ExtResource("1_11kj8")
-name = "Alice"
-battle_actor = ExtResource("1_4bfjk")
