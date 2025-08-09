@@ -25,7 +25,7 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
 func calculate_damage(attack: float, defense: float, level: int, effectiveness: float) -> int:
-	var power := strength + strength * float(level) / 10.0
+	var power := strength + (strength * float(level) / 10.0)
 	var dmg := power * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
 	Logger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
