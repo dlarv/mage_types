@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://cj7rk23vvyppe"]
+
+[ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_ewtdd"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_2e72e"]
+[ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_rwk0y"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="4_7co6j"]
+[ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="5_2d5f2"]
+
+[sub_resource type="Resource" id="Resource_obgwk"]
+script = ExtResource("1_ewtdd")
+_alignment = "blank"
+alignment_locked = false
+metadata/_custom_type_script = "uid://ccl64vcc20maa"
+
+[sub_resource type="Resource" id="Resource_dwrcv"]
+script = ExtResource("5_2d5f2")
+_base_melee_attack = 14.0
+_base_ranged_attack = 14.0
+_base_melee_defense = 11.0
+_base_ranged_defense = 11.0
+_base_speed = 14.0
+_base_evasion = 100.0
+hp = 60.0
+metadata/_custom_type_script = "uid://3val1kw3ysgx"
+
+[resource]
+script = ExtResource("4_7co6j")
+name = "Denim"
+level = 3
+next_level_xp = 200.0
+stat_manager = SubResource("Resource_dwrcv")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "blue"
+alignment_manager = SubResource("Resource_obgwk")
+_alignment = "blank"
+attacks = Array[ExtResource("2_2e72e")]([ExtResource("3_rwk0y")])
