@@ -33,17 +33,11 @@ var player_name: String = "Player":
 
 
 func _ready() -> void:
-	# random_seed = "Player".hash()
-	pass
+	random_seed = randi()
 
 
 func set_player_name(name: String) -> void:
-	# var player = get_tree().get_nodes_in_group("player")
-	# if len(player) > 0:
-	# 	player = player[0]
-
 	player_name = name
-	# random_seed = name.hash()
 
 
 func reload() -> void:
