@@ -138,6 +138,7 @@ workspace = NodePath("../..")
 data_container = NodePath("../Data")
 
 [node name="PopupMenu" type="PopupMenu" parent="Main/Workspace/SidePanel/Files"]
+size = Vector2i(100, 116)
 item_count = 4
 item_0/text = "Save"
 item_0/id = 0
@@ -152,6 +153,7 @@ item_3/id = 3
 title = "Create a file"
 size = Vector2i(600, 400)
 mode_overrides_title = false
+root_subfolder = "res://data/story/dialog_trees/"
 filters = PackedStringArray("*.tres; Dialogue File")
 
 [node name="OpenDialog" type="FileDialog" parent="Main/Workspace/SidePanel/Files"]
@@ -160,12 +162,14 @@ size = Vector2i(600, 400)
 ok_button_text = "Open"
 mode_overrides_title = false
 file_mode = 0
+root_subfolder = "res://data/story/dialog_trees/"
 filters = PackedStringArray("*.tres; Dialogue File")
 
 [node name="SaveDialog" type="FileDialog" parent="Main/Workspace/SidePanel/Files"]
 title = "Save a file"
 size = Vector2i(600, 400)
 mode_overrides_title = false
+root_subfolder = "res://data/story/dialog_trees/"
 filters = PackedStringArray("*.tres; Dialogue File")
 
 [node name="ConfirmationDialog" type="AcceptDialog" parent="Main/Workspace/SidePanel/Files"]
