@@ -33,7 +33,8 @@ var player_name: String = "Player":
 
 
 func _ready() -> void:
-	random_seed = "Player".hash()
+	# random_seed = "Player".hash()
+	pass
 
 
 func set_player_name(name: String) -> void:
@@ -42,7 +43,7 @@ func set_player_name(name: String) -> void:
 	# 	player = player[0]
 
 	player_name = name
-	random_seed = name.hash()
+	# random_seed = name.hash()
 
 
 func reload() -> void:
