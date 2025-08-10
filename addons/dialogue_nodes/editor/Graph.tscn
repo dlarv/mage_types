@@ -18,6 +18,7 @@ script = ExtResource("1_7isyk")
 [node name="PopupMenu" type="PopupMenu" parent="."]
 item_count = 10
 item_0/text = "StartNode"
+item_0/id = 0
 item_1/text = "DialogueNode"
 item_1/id = 1
 item_2/text = "CommentNode"
