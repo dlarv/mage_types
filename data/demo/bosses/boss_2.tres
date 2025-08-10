@@ -76,13 +76,13 @@ details = "Has x2 power if user is [el]Orange[/el]."
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("4_s70gu")
-_base_melee_attack = 120.0
-_base_ranged_attack = 50.0
-_base_melee_defense = 120.0
-_base_ranged_defense = 120.0
-_base_speed = 80.0
+_base_melee_attack = 10.0
+_base_ranged_attack = 10.0
+_base_melee_defense = 10.0
+_base_ranged_defense = 10.0
+_base_speed = 10.0
 _base_evasion = 100.0
-hp = 250.0
+hp = 50.0
 
 [resource]
 script = ExtResource("3_ris70")

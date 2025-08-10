@@ -1,0 +1,56 @@
+[gd_scene load_steps=14 format=3 uid="uid://ba32jlx8ovpoi"]
+
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_e06jj"]
+[ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/models/characters/blob.blend" id="2_3jjdb"]
+[ext_resource type="Resource" uid="uid://d1h5t72gjjjcv" path="res://data/demo/bosses/mini_boss_1.tres" id="3_e06jj"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_ul8vp"]
+[ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="4_kuhn7"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_diuw4"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_xc35g"]
+[ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="8_j340a"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="9_87n6j"]
+
+[sub_resource type="Resource" id="Resource_hfqgq"]
+script = ExtResource("8_j340a")
+aggression = 1.0
+intelligence = 1.0
+transmutation_bias = 1.0
+_transmutation_pref = "blank"
+dialog_ids = Array[ExtResource("6_diuw4")]([])
+reward_xp = 0.0
+reward_items = Array[ExtResource("7_xc35g")]([])
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0mcoh"]
+radius = 1.3856
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ucadb"]
+radius = 1.56864
+
+[sub_resource type="Resource" id="Resource_xpu74"]
+script = ExtResource("4_kuhn7")
+id = "BOSS1"
+next = -1
+end_state = ""
+
+[node name="MiniBoss1" instance=ExtResource("1_e06jj")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+collision_layer = 5
+team = Array[ExtResource("9_87n6j")]([ExtResource("3_e06jj")])
+ai = SubResource("Resource_hfqgq")
+
+[node name="blob2" parent="." index="1" instance=ExtResource("2_3jjdb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="blob2/blob" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blob2/blob/StaticBody3D" index="0"]
+shape = SubResource("SphereShape3D_0mcoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.662438, 0)
+shape = SubResource("SphereShape3D_ucadb")
+
+[node name="StoryActor" parent="." index="3" groups=["persist"] instance=ExtResource("3_ul8vp")]
+dialog_ids = Array[ExtResource("4_kuhn7")]([SubResource("Resource_xpu74")])
+
+[editable path="blob2"]

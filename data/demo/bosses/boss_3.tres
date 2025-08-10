@@ -11,13 +11,13 @@
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("7_md84n")
-_base_melee_attack = 120.0
-_base_ranged_attack = 120.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
-_base_speed = 100.0
+_base_melee_attack = 12.0
+_base_ranged_attack = 12.0
+_base_melee_defense = 10.0
+_base_ranged_defense = 10.0
+_base_speed = 10.0
 _base_evasion = 100.0
-hp = 300.0
+hp = 60.0
 
 [resource]
 script = ExtResource("6_jwvs8")

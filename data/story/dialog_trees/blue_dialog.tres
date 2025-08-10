@@ -42,17 +42,17 @@ nodes = {
 },
 &"0_6": {
 "link": &"7_3",
-"offset": Vector2(-2820, 1940),
+"offset": Vector2(-3080, 1280),
 "start_id": "SWOLE_1"
 },
 &"0_7": {
 "link": &"7_2",
-"offset": Vector2(-1880, 2040),
+"offset": Vector2(-2140, 1380),
 "start_id": "SWOLE_2"
 },
 &"0_8": {
 "link": &"7_4",
-"offset": Vector2(-2860, 2280),
+"offset": Vector2(-3120, 1620),
 "start_id": "SWOLE_3"
 },
 &"1_1": {
@@ -93,32 +93,6 @@ nodes = {
 },
 "size": Vector2(300, 273),
 "speaker": 2
-},
-&"1_12": {
-"dialogue": "The preset limits the amount of transmutations possible in a battle, by controlling the typing and movesets of all combatants.",
-"offset": Vector2(-980, -320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_13": {
-"dialogue": "This will also modify the transmutation map, hiding the irrelevant parts. ",
-"offset": Vector2(-640, -320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_5",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
 },
 &"1_14": {
 "dialogue": "Its a long story. Remind me to tell you about it later.",
@@ -355,29 +329,6 @@ nodes = {
 "size": Vector2(300, 308),
 "speaker": 2
 },
-&"1_3": {
-"dialogue": "Hi, welcome to test candidate 1! This is a simplified version of the game intended to test the combat mechanics.",
-"offset": Vector2(-1720, -560),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_33",
-"text": "How does this work?"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_6",
-"text": "Preset?"
-},
-2: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "Goodbye"
-}
-},
-"size": Vector2(300, 343),
-"speaker": 0
-},
 &"1_30": {
 "dialogue": "Actually {{player_name}}, have you had the pleasure of meeting Denim and I's little friend out there.",
 "offset": Vector2(2060, 1000),
@@ -422,119 +373,6 @@ nodes = {
 "size": Vector2(300, 308),
 "speaker": 2
 },
-&"1_33": {
-"dialogue": "Sure, what's up?",
-"offset": Vector2(-1740, -1200),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_36",
-"text": "The Elements?"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"5_1",
-"text": "Combat?"
-},
-2: {
-"condition": Array[Dictionary]([]),
-"link": &"1_37",
-"text": "Bosses?"
-},
-3: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": "Goodbye"
-}
-},
-"size": Vector2(300, 343),
-"speaker": 0
-},
-&"1_34": {
-"dialogue": "The [i]Transmutation System[/i] is the central mechanic of this game.",
-"offset": Vector2(-880, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_35",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_35": {
-"dialogue": "In battle, all combatants have 2 elements.",
-"offset": Vector2(-540, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_44",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_36": {
-"dialogue": "This world is composed of 8 elements, each styled after a color.",
-"offset": Vector2(-1360, -1580),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_38",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_37": {
-"dialogue": "Thre three blob monsters in front of us are the bosses. Fighting them is the purpose of this demo.",
-"offset": Vector2(-1260, -620),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_59",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_38": {
-"dialogue": "[ul][el]Blue[/el][/ul]
-[ul][el]Purple[/el][/ul]
-[ul][el]Magenta[/el][/ul]
-[ul][el]Red[/el][/ul]
-cont...",
-"offset": Vector2(-1020, -1580),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_39",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_39": {
-"dialogue": "[ul][el]Orange[/el][/ul]
-[ul][el]Yellow[/el][/ul]
-[ul][el]Green[/el][/ul]
-[ul][el]Cyan[/el][/ul]",
-"offset": Vector2(-680, -1580),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_41",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
 &"1_4": {
 "dialogue": "Hey stranger, I see you've met our little friend.",
 "offset": Vector2(-1580, 60),
@@ -565,297 +403,6 @@ cont...",
 },
 "size": Vector2(300, 240),
 "speaker": 2
-},
-&"1_41": {
-"dialogue": "Sometimes, when two elements come into contact, they [i]transmute[/i] into a new form. ",
-"offset": Vector2(-360, -1580),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_42",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_42": {
-"dialogue": "Pressing 'T' will open your [i]Transmutation Map[/i]. It shows these relationships.",
-"offset": Vector2(-20, -1580),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"4_1",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_43": {
-"dialogue": "The [i]Transmutation System[/i] is the central mechanic of this game. (To learn more about this, ask me about \"The Elements\").",
-"offset": Vector2(-880, -960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_35",
-"text": "Please continue"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_36",
-"text": "The Elements?"
-}
-},
-"size": Vector2(300, 308),
-"speaker": 0
-},
-&"1_44": {
-"dialogue": "As you come into contact with the elements in this world, they begin to permeate through your body. Your [i]Primary type[/i] shows what element your core is, i.e. your insides.",
-"offset": Vector2(-203.221, -1259.42),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_45",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_45": {
-"dialogue": "Your [i]Primary type[/i] has a lot of inertia and does not change easily.",
-"offset": Vector2(140, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_51",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_46": {
-"dialogue": "All you need to remember is that the type of your first slot will not change in battle.",
-"offset": Vector2(820, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_47",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_47": {
-"dialogue": "Your [i]Secondary type[/i] shows the element of your surface, your skin essentially.",
-"offset": Vector2(1160, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_48",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_48": {
-"dialogue": "This thin crust is very reactive, reacting to any element it comes into contact with.",
-"offset": Vector2(1500, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_49",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_49": {
-"dialogue": "This largely applies to your opponent's spells. However, your [i]Secondary type[/i] will also react to your own [i]melee[/i] attacks, since you're channeling that energy in close quarters.",
-"offset": Vector2(1840, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_50",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_5": {
-"dialogue": "During the actual game, this will be done slowly and subtly. However, since this demo has been simplified down, I've decided to make this a little more blatant. ",
-"offset": Vector2(-300, -320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_50": {
-"dialogue": "Additionally, your [i]Secondary type[/i] will react with your [i]Primary type[/i]. Only the [i]Secondary[/i] will change, of course.",
-"offset": Vector2(2180, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_52",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_51": {
-"dialogue": " For those of us that have spent a year or more in this place, this is permanent. If you see the terms [i]alignment[/i] or [i]bias[/i], those are referring to this phenomena.",
-"offset": Vector2(480, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_46",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_52": {
-"dialogue": "So for every attack, there can be up to 2 transmutations. First, your [i]Secondary type[/i] can react with the attack's type. Then, your [i]Secondary type[/i] can react with with your [i]Primary[/i].",
-"offset": Vector2(2520, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_53",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_53": {
-"dialogue": "One last thing, I promise. Every transmutation comes with side effects: stat buffs that depend on your initial and resulting typing.",
-"offset": Vector2(2860, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_54",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_54": {
-"dialogue": "The elements are divided into two \"[i]Affinity[/i]\" groups: [color=blue]Defensive[/color] and [color=red]Offensive[/color].",
-"offset": Vector2(3200, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_56",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_55": {
-"dialogue": "This information, as well as which elements are in which groups, can be found in the [i]Affinity[/i] tab in your [i]Transmutation menu[/i].",
-"offset": Vector2(4560, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_33",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_56": {
-"dialogue": "Transmuting from a [color=blue]Defensive[/color] to an [color=red]Offensive[/color] one will give you an [color=red]attack[/color]buff.",
-"offset": Vector2(3538.35, -1259.01),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_57",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_57": {
-"dialogue": "Likewise, going from an [color=red]Offensive[/color] to a [color=blue]Defensive[/color] one will give you an [color=blue]defense[/color] buff.",
-"offset": Vector2(3880, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_58",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_58": {
-"dialogue": "Finally, staying in the same [i]Affinity[/i] group will give you a [color=green]speed[/color] buff.",
-"offset": Vector2(4220, -1260),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_55",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_59": {
-"dialogue": "If you wouldn't mind giving me a hand in fighting them, I'd really appreciate it.",
-"offset": Vector2(-920.565, -617.038),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_60",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_6": {
-"dialogue": "Admittedly, the [i]Transmutation system[/i] can take a little bit of getting used to.",
-"offset": Vector2(-1320, -320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_12",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
-},
-&"1_60": {
-"dialogue": "I'll let you decide when we start each battle, as well as the order we fight them in. However, I will note they should escalate in difficulty from left to right, so I'd suggest fighting the leftmost one first.",
-"offset": Vector2(-580, -620),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_33",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
 },
 &"1_61": {
 "dialogue": "Safer than you'd think, actually.",
@@ -924,7 +471,7 @@ cont...",
 },
 &"1_66": {
 "dialogue": "Nice! Talk to my buddies Dallas and Duke, they'll walk you through the next steps. ",
-"offset": Vector2(-2240, 1980),
+"offset": Vector2(-2500, 1320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -937,7 +484,7 @@ cont...",
 },
 &"1_67": {
 "dialogue": "Say less bro, we gotchu!",
-"offset": Vector2(-2220, 1660),
+"offset": Vector2(-2480, 1000),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -950,7 +497,7 @@ cont...",
 },
 &"1_68": {
 "dialogue": "They seem engrossed in their workout...",
-"offset": Vector2(-1240, 2000),
+"offset": Vector2(-1500, 1340),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -963,7 +510,7 @@ cont...",
 },
 &"1_69": {
 "dialogue": "Its been forever since we've gotten to mentor someone new!",
-"offset": Vector2(-1240, 2260),
+"offset": Vector2(-1500, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -998,7 +545,7 @@ cont...",
 },
 &"1_70": {
 "dialogue": "Once you've finished talking to Aegean, I'll teach you about side effects!",
-"offset": Vector2(-920, 2260),
+"offset": Vector2(-1180, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1011,7 +558,7 @@ cont...",
 },
 &"1_71": {
 "dialogue": "Heck yeah!",
-"offset": Vector2(-1240, 2520),
+"offset": Vector2(-1500, 1860),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1024,7 +571,7 @@ cont...",
 },
 &"1_72": {
 "dialogue": "That was fun! Duke'll help you bring it home!",
-"offset": Vector2(-1240, 2780),
+"offset": Vector2(-1500, 2120),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1037,7 +584,7 @@ cont...",
 },
 &"1_73": {
 "dialogue": "Get pumped bro!",
-"offset": Vector2(-2260, 2260),
+"offset": Vector2(-2520, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1050,7 +597,7 @@ cont...",
 },
 &"1_74": {
 "dialogue": "You're doing great! You're almost there!",
-"offset": Vector2(-2260, 2520),
+"offset": Vector2(-2520, 1860),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1081,7 +628,7 @@ cont...",
 },
 &"1_76": {
 "dialogue": "C: {{counter}}",
-"offset": Vector2(-2300, -700),
+"offset": Vector2(-2240, -700),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1355,38 +902,31 @@ cont...",
 &"3_3": {
 "curr_signal": 0,
 "link": "END",
-"offset": Vector2(-1500, 1780),
+"offset": Vector2(-1760, 1120),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_4": {
 "curr_signal": 0,
 "link": "END",
-"offset": Vector2(-540, 2520),
+"offset": Vector2(-800, 1860),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_5": {
 "curr_signal": 0,
 "link": "END",
-"offset": Vector2(-1560, 2520),
+"offset": Vector2(-1820, 1860),
 "signal_value": "BATTLE_STARTED"
-},
-&"4_1": {
-"link": &"1_33",
-"offset": Vector2(320, -1580),
-"type": 0,
-"value": "true",
-"variable": "finding_denim_quest"
 },
 &"4_10": {
 "link": &"3_5",
-"offset": Vector2(-1940, 2520),
+"offset": Vector2(-2200, 1860),
 "type": 0,
 "value": "finished",
 "variable": "swole_enclave_quest"
 },
 &"4_11": {
 "link": &"1_76",
-"offset": Vector2(-2660, -700),
+"offset": Vector2(-2640, -700),
 "type": 1,
 "value": "1",
 "variable": "counter"
@@ -1435,27 +975,17 @@ cont...",
 },
 &"4_8": {
 "link": &"3_3",
-"offset": Vector2(-1880, 1780),
+"offset": Vector2(-2140, 1120),
 "type": 0,
 "value": "2",
 "variable": "swole_enclave_quest"
 },
 &"4_9": {
 "link": &"3_4",
-"offset": Vector2(-920, 2520),
+"offset": Vector2(-1180, 1860),
 "type": 0,
 "value": "3",
 "variable": "swole_enclave_quest"
-},
-&"5_1": {
-"condition": Array[Dictionary]([{
-"operator": 0,
-"value1": "current_cutscene",
-"value2": "true"
-}]),
-"false": &"1_43",
-"offset": Vector2(-1280, -1220),
-"true": &"1_34"
 },
 &"5_2": {
 "condition": Array[Dictionary]([{
@@ -1524,7 +1054,7 @@ cont...",
 "link": &"1_72"
 }
 },
-"offset": Vector2(-1640, 2080)
+"offset": Vector2(-1900, 1420)
 },
 &"7_3": {
 "default": &"1_68",
@@ -1563,7 +1093,7 @@ cont...",
 "link": &"1_66"
 }
 },
-"offset": Vector2(-2620, 1860)
+"offset": Vector2(-2880, 1200)
 },
 &"7_4": {
 "default": &"1_68",
@@ -1602,7 +1132,7 @@ cont...",
 "link": &"1_74"
 }
 },
-"offset": Vector2(-2660, 2280)
+"offset": Vector2(-2920, 1620)
 },
 &"7_5": {
 "default": &"1_7",
@@ -1655,5 +1185,5 @@ cont...",
 "title": "Misc"
 }
 }
-strays = Array[String](["8_1", "1_33", "1_36", "1_38", "1_39", "1_41", "1_42", "4_1", "5_1", "1_34", "1_35", "1_44", "1_45", "1_51", "1_46", "1_47", "1_48", "1_49", "1_50", "1_52", "1_53", "1_54", "1_56", "1_57", "1_58", "1_55", "1_43", "1_37", "1_59", "1_60", "1_6", "1_12", "1_13", "1_5", "1_3"])
+strays = Array[String](["8_1"])
 characters = "res://data/demo/character_files/character_list.tres"

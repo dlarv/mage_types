@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=7 format=3 uid="uid://d1h5t72gjjjcv"]
+
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_eruv0"]
+[ext_resource type="Resource" uid="uid://ctlauvjcfmpog" path="res://data/battle_system/battle_actions/attacks/strikes/blue_strike.tres" id="2_dabr5"]
+[ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="3_opoh8"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="7_00pxc"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="8_nx5sy"]
+
+[sub_resource type="Resource" id="Resource_6u7d0"]
+script = ExtResource("8_nx5sy")
+_base_melee_attack = 20.0
+_base_ranged_attack = 20.0
+_base_melee_defense = 10.0
+_base_ranged_defense = 10.0
+_base_speed = 11.0
+_base_evasion = 100.0
+hp = 75.0
+
+[resource]
+script = ExtResource("7_00pxc")
+name = "Boss 6"
+level = 2
+next_level_xp = 100.0
+stat_manager = SubResource("Resource_6u7d0")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "purple"
+_alignment = "blue"
+attacks = Array[ExtResource("1_eruv0")]([ExtResource("2_dabr5"), ExtResource("3_opoh8")])
