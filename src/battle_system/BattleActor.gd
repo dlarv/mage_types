@@ -259,9 +259,9 @@ func heal(dmg: int, allowOverflow: bool=false) -> int:
 	return dmg
 
 
-func add_status_effect(effect: StatusEffect) -> void:
+func add_status_effect(effect: StatusEffect) -> bool:
 	if _func_overrides.has(add_status_effect.get_method()):
-		_func_overrides.get(add_status_effect.get_method()).call(effect)
+		return _func_overrides.get(add_status_effect.get_method()).call(effect)
 	else:
 		Logger.append_battle_log("%s was applied to %s." % [ effect.name, name ])
 		if effect is StatChange:
@@ -272,6 +272,8 @@ func add_status_effect(effect: StatusEffect) -> void:
 
 	if alignment_manager and effect.id == StatusEffectManager.StatusEffects.PHOBIC:
 		alignment_manager.add(effect.element, -1)
+
+	return true
 
 
 func remove_status_effect(effect: StatusEffect) -> void:

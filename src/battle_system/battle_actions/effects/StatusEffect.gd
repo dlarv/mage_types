@@ -35,7 +35,7 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 		target = user
 
 	var dupe := duplicate()
-	target.add_status_effect(dupe)
+	if not target.add_status_effect(dupe): return ""
 	return super.apply_effect(user, target)
 
 
