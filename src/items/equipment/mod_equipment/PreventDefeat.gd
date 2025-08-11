@@ -18,9 +18,12 @@ func unequip(actor: BattleActor) -> void:
 	actor.battle_setup_completed.disconnect(setup)
 	actor.remove_func_override(actor.apply_damage.bind(actor))
 
+
 func setup() -> void:
-	for key: BattleActor in _death_averted.keys():
-		_death_averted[key] = false
+	for actor: BattleActor in Battle.query_battlefield_state(null, Battle.BattlefieldStateParams.COMBATANTS):
+		if _death_averted.has(actor):
+			_death_averted[actor] = false
+
 
 func apply_damage(dmg: int, allowBlocking: bool=true, actor: BattleActor=null) -> int:
 	var blocking: StatusEffect = null
