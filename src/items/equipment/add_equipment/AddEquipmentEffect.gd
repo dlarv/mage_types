@@ -1,5 +1,5 @@
 @tool
-extends EquipmentEffect
+extends _EquipmentEffect
 class_name AddEquipmentEffect
 
 @export var trigger: EquipmentTrigger:

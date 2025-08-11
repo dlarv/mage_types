@@ -1,5 +1,5 @@
 extends Resource
-class_name EquipmentEffect
+class_name _EquipmentEffect
 
 @warning_ignore("unused_signal")
 signal activated(actor: BattleActor, msg: String)

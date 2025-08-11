@@ -1,5 +1,5 @@
 @tool
-extends ModEquipmentEffect
+extends _ModEquipmentEffect
 class_name PreventDefeat
 
 var _death_averted: Dictionary[BattleActor, bool] = {}

@@ -1,6 +1,6 @@
 @tool
-extends EquipmentEffect
-class_name ModEquipmentEffect
+extends _EquipmentEffect
+class_name _ModEquipmentEffect
 
 
 #virtual

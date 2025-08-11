@@ -2,7 +2,7 @@
 extends _Item
 class_name Equipment
 
-@export var effects: Array[EquipmentEffect]:
+@export var effects: Array[_EquipmentEffect]:
 	set(value):
 		effects = value
 		for effect in effects:

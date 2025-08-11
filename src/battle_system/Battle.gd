@@ -312,5 +312,3 @@ func _play_animation(action: ActorAction) -> void:
 		var userPosition: Vector2 = gui.get_actor_display_position(action.actor)
 		var targetPosition: Vector2 = gui.get_actor_display_position(action.targets[0])
 		action.action.play_animation(userPosition, targetPosition, self)
-
-
