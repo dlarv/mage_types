@@ -11,12 +11,12 @@ func equip(actor: BattleActor) -> void:
 		actor.battle_setup_completed.connect(setup)
 	Logger.append_battle_log("PreventDefeat equipment altered %s.apply_damage(...)" % actor.name)
 	_death_averted[actor] = false
-	actor.add_func_override(actor.apply_damage, apply_damage)
+	actor.add_func_override(actor.apply_damage, apply_damage.bind(actor))
 
 #override
 func unequip(actor: BattleActor) -> void:
 	actor.battle_setup_completed.disconnect(setup)
-	actor.remove_func_override(actor.apply_damage.bind(actor))
+	actor.remove_func_override(actor.apply_damage)
 
 
 func setup() -> void:

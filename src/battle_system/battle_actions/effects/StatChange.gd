@@ -18,7 +18,9 @@ const MODIFIER := 0.3
 ## If true, set target's stat to 0 before apply buff/debuff.
 @export var clear_first := false
 
-var is_side_effect := false
+## DO NOT CHANGE IN INSPECTOR!
+## ElementManager handles this value, it is only exposed for duplication purposes!
+@export var is_side_effect := false
 
 func _init() -> void:
 	id = Effects.STAT_CHANGE
@@ -94,3 +96,5 @@ func _get_message() -> String:
 # override
 func _set_status_effect(val: Effects) -> void:
 	id = Effects.STAT_CHANGE
+
+

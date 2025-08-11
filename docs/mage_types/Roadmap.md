@@ -38,6 +38,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Training wheel equipment?
 - [ ] Add 'dark souls' boss
 	- [ ] Decide on player reward
+- [ ] Refactor AttackEffect input fields to use Godot::Expression?
 - [x] Alter dialogue nodes to use StoryManager.variables
 	- [x] Remove unused code
 	- [x] When game is saved, ensure variables are serialized/deserialized

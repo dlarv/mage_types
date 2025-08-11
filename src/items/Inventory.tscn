@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=155 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" uid="uid://dwcdmph2053xh" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="2_xejte"]
@@ -69,6 +69,7 @@
 [ext_resource type="Resource" uid="uid://d1s1g7x527myg" path="res://data/battle_system/battle_actions/attacks/elementals/purple/snipe.tres" id="59_hbv5v"]
 [ext_resource type="Resource" uid="uid://5l78hk1jadb6" path="res://data/items/key_items/golem_spell.tres" id="63_2ju5g"]
 [ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="64_soan2"]
+[ext_resource type="Resource" uid="uid://dd7wk01w5ccs6" path="res://data/items/equipment/training_wheels.tres" id="70_nstv8"]
 
 [sub_resource type="Resource" id="Resource_q8puk"]
 resource_name = "Healing Potion"
@@ -247,7 +248,6 @@ spell = ExtResource("24_sfleh")
 name = "Rush Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_co12a"]
 resource_name = "Rush Bead"
@@ -354,7 +354,6 @@ spell = ExtResource("35_xcgnd")
 name = "Bite Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_rfpfb"]
 resource_name = "Bite Bead"
@@ -371,7 +370,6 @@ spell = ExtResource("36_1gh0c")
 name = "Consume Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_lmrxr"]
 resource_name = "Consume Bead"
@@ -388,7 +386,6 @@ spell = ExtResource("37_fc2p2")
 name = "Cleave Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_hiu3a"]
 resource_name = "Cleave Bead"
@@ -423,7 +420,6 @@ spell = ExtResource("40_fcb28")
 name = "Fortress Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_w80v7"]
 resource_name = "Fortress Bead"
@@ -440,7 +436,6 @@ spell = ExtResource("45_cmtqc")
 name = "Freezing Gale Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_w7uci"]
 resource_name = "Freezing Gale Bead"
@@ -529,7 +524,6 @@ spell = ExtResource("50_bemve")
 name = "Brave the Dark Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_pvmjq"]
 resource_name = "Brave the Dark Bead"
@@ -555,7 +549,6 @@ spell = ExtResource("52_oax4k")
 name = "Steel Shot Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_5y80x"]
 resource_name = "Steel Shot Bead"
@@ -572,7 +565,6 @@ spell = ExtResource("53_wxrwp")
 name = "Disarmament Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_v2gl1"]
 resource_name = "Disarmament Bead"
@@ -589,7 +581,6 @@ spell = ExtResource("54_q0n5q")
 name = "Orbital Strike Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_pv81j"]
 resource_name = "Orbital Strike Bead"
@@ -606,7 +597,6 @@ spell = ExtResource("55_q7joq")
 name = "Desolation Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_ea3e4"]
 resource_name = "Desolation Bead"
@@ -623,7 +613,6 @@ spell = ExtResource("56_1havk")
 name = "Reactor Breach Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_kxc0f"]
 resource_name = "Reactor Breach Bead"
@@ -640,7 +629,6 @@ spell = ExtResource("57_es4hi")
 name = "Alchemy Beam Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_meq2n"]
 resource_name = "Alchemy Beam Bead"
@@ -657,7 +645,6 @@ spell = ExtResource("58_frhma")
 name = "Reinforce Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_tlh78"]
 resource_name = "Reinforce Bead"
@@ -674,7 +661,6 @@ spell = ExtResource("59_hbv5v")
 name = "Snipe Bead"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 
 [sub_resource type="Resource" id="Resource_7svcm"]
 resource_name = "Snipe Bead"
@@ -728,7 +714,6 @@ unique_id = 4
 name = "Set Portal Spell"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 metadata/_custom_type_script = "uid://bga7b8k778yar"
 
 [sub_resource type="Resource" id="Resource_musac"]
@@ -747,7 +732,6 @@ unique_id = 5
 name = "Use Portal Spell"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
-tags = []
 metadata/_custom_type_script = "uid://bga7b8k778yar"
 
 [sub_resource type="Resource" id="Resource_qonbv"]
@@ -805,13 +789,22 @@ quantity = 99
 max_quantity = 9999
 allow_stacking = true
 
+[sub_resource type="Resource" id="Resource_p18s4"]
+resource_name = "Training Wheels"
+script = ExtResource("2_xejte")
+item = ExtResource("70_nstv8")
+id = 5
+quantity = 0
+max_quantity = 9999
+allow_stacking = true
+
 [node name="Inventory" type="Node" groups=["persist"]]
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
 spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_mx8e1"), SubResource("Resource_co12a"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_rfpfb"), SubResource("Resource_lmrxr"), SubResource("Resource_hiu3a"), SubResource("Resource_6agee"), SubResource("Resource_l4gd1"), SubResource("Resource_w80v7"), SubResource("Resource_w7uci"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_pvmjq"), SubResource("Resource_p5ki7"), SubResource("Resource_5y80x"), SubResource("Resource_v2gl1"), SubResource("Resource_pv81j"), SubResource("Resource_ea3e4"), SubResource("Resource_kxc0f"), SubResource("Resource_meq2n"), SubResource("Resource_tlh78"), SubResource("Resource_7svcm")])
 key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m"), SubResource("Resource_2ju5g"), SubResource("Resource_musac"), SubResource("Resource_qonbv")])
-equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
+equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x"), SubResource("Resource_p18s4")])
 add_all_items = true
 secondary_override = 6
 use_override = true

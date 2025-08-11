@@ -94,3 +94,5 @@ func _get_message() -> String:
 
 func _set_status_effect(val: Effects) -> void:
 	id = val
+
+
