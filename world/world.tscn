@@ -283,6 +283,7 @@ size = Vector3(1, 7.21399, 4.92822)
 [node name="World" type="Node3D"]
 
 [node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_lyukn")]
+process_mode = 3
 world = NodePath("../Overworld")
 overworld = NodePath("../Overworld")
 dialog_box = NodePath("../DialogueBox_Layer/DialogueBox")

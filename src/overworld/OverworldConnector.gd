@@ -24,6 +24,7 @@ func _ready() -> void:
 
 	UIManager.setup()
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log()
@@ -31,6 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if _current_story_actor:
 			_current_story_actor.skip_dialog()
 		dialog_box.stop()
+
 
 func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> void:
 	# var battle := battle_scene.instantiate()
@@ -62,6 +64,7 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> 
 	# Wild enemies (those that do not need a cooldown) will wait until this is called.
 	await get_tree().create_timer(battle_delay).timeout
 	get_tree().call_group("wild_enemies", "_end_battle_cooldown")
+
 
 func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 	UIManager.is_in_dialog = true
@@ -97,6 +100,7 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 
 	_current_story_actor = null
 
+
 func _play_cutscene(npc: Variant) -> void:
 	var id: String = dialog_box.variables["current_cutscene"]
 
@@ -112,6 +116,7 @@ func _play_cutscene(npc: Variant) -> void:
 		dialog_box.show()
 	# dialog_box.process_mode = prevProcessMode
 	get_tree().paused = false
+
 
 func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
 	# overworld.process_mode = PROCESS_MODE_DISABLED
