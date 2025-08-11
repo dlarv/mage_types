@@ -136,6 +136,7 @@ func _on_input_event(camera:Node, event:InputEvent, event_position:Vector3, norm
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed:
 			select()
 
+
 func select() -> void:
 	selected.emit(actor)
 	transmutation_hint.deactivate()
@@ -144,8 +145,10 @@ func select() -> void:
 func add_status_effect(effect: StatusEffect) -> void:
 	$PinManager.insert_pin(effect)
 
+
 func remove_status_effects(effects: Array[StatusEffect]) -> void:
 	$PinManager.remove_pins(effects)
+
 
 func _on_pin_selected(effect: StatusEffect) -> void:
 	status_effect_icon_pressed.emit(effect)
