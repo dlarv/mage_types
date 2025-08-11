@@ -3,7 +3,7 @@ extends Node
 signal battle_ended(endState: EndState)
 
 enum EndState { WON, DEFEATED, FLED }
-enum BattlefieldStateParams {  }
+enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES }
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const ActorAction := preload("res://src/battle_system/ActorAction.gd")
@@ -65,6 +65,21 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 
 
 func query_battlefield_state(asker: BattleActor, param: BattlefieldStateParams) -> Variant:
+	match param:
+		BattlefieldStateParams.COMBATANTS:
+			return allies + enemies
+		BattlefieldStateParams.ALLIES:
+			if allies.has(asker):
+				return allies
+			else:
+				return enemies
+		BattlefieldStateParams.ENEMIES:
+			if enemies.has(asker):
+				return allies
+			else:
+				return enemies
+
+
 	return null
 
 
