@@ -23,18 +23,9 @@ Each of these sections will weave through each other.
 > A hint for the proper code should be hidden somewhere on the map (all microwaves outside of the breakrooms are locked on a specific time).
 ## Beach
 - Player will spawn on lighthouse pier.
-- Player will enter beach house, where they will meet Alice and the Caretaker.
-### Meeting Partner and the Caretaker
-- Intro Denim.
-- Determine Denim's fated bias.
-	- Denim asks the player several questions. These will allow the player to roleplay, but serve the hidden purpose of determining her fate.
-- Intro world.
-- Give player their first goal (reaching the community center).
-	- Player given option to choose their true motivation (why are they searching for the diner?)
-		- Seeking answers.
-		- Pancakes real good.
-		
-Script: [[Beach House Intro]]
+- They'll find themselves on a lonely nighttime beach. In the distance is an old, abandoned house.
+- Inside the house should be an introduction to the transmutation system.
+![[stencil_bpm.png]]
 ## Hotel
 - Battle Tutorial: Inside Rec Room.
 - First boss inside hall1, forcing player to backtrack to Rec Room if they don't understand how to fight.
@@ -44,7 +35,7 @@ Script: [[Beach House Intro]]
 - World geometry will get weirder the further the player is from the main path.
 	- I.e. infinite hallway, path to Lavender's puzzle.
 ### Rec Room
-- Battle Tutorial
+-  [[discussions/old_battle_tutorial|Original Battle Tutorial]]
 - High level boss is camped out in hall 2. Player will likely be defeated and forced to backtrack to rec room.
 - An enclave is camped out in the Rec Room. This enclave is very focused on fitness and combat, and thus is more than happy to give the player a hand. 
 - Player will receive 150 exp from this fight, allowing them to level up twice.
@@ -52,13 +43,106 @@ Script: [[Beach House Intro]]
 
 1. Introduce concept of transmutations.
 	1. Primary and secondary types.
-	2. Alignment.
 2. Mention how melee attacks also transmute the player.
 3. Side effects.
 4. Attack scaling factor.
 - Inform player about how alignment can ultimately end with insanity (when they explain why the hall2 monster is aggressive but they are not).
 - Clarify that no super-effective damage exists.
 - Teach player how to equip new spells.
+
+>[!note]
+>I think it would be helpful to introduce the player to the transmutation system before the battle tutorial. Maybe use the laser puzzle concepts from the first demo.
+>
+>I could place a transmutation puzzle inside of the beach house. I was thinking about getting rid of the original caretaker, so I could instead make it rundown and abandoned, to add to the ambiance.
+#### Tutorial 1
+**Objectives**
+- Introduce Primary and Secondary type.
+- Explains transmutation hint.
+- Melee attacks also transmute user.
+- Side effects might be mentioned, but I don't really want to focus on them here.
+	- I'm considering adding an equipment that will turn off side effects.
+	
+**Starting Config**
+- Player (Blue/Blue)
+	- Magenta Throw (*Attack*)
+	- Training Wheels? (*Equipment*): turns off side effects
+- Boss (Blue/Blue)
+	- Blue Hit (*Attack*)
+	- Red Hit (*Attack*)
+	- Training Wheels? (*Equipment*): turns off side effects
+	
+**Dialog**	
+>**Turn 0**
+> To start, select an attack from the menu below. You likely only have one currently.
+> Then click on me to select your target. 
+> You'll notice a strange popup when you do. This is called the [i]Transmutation Hint[/i]. 
+> Right now, just remember to color of the top-right square.
+>*Player is given control to select attacks*
+
+>**Turn 1a**
+> Unlike most other things in this world, combatants actually have two types.
+> Your [i]primary[/i] type is the composition of your inner core. It has a lot of inertia and will not change during battle.
+> Your [i]secondary[/i] type is the composition of your outer crust. This thin crust is highly reactive, frequently changing multiple times per turn.
+> Pay attention to my left (your right) side when you attack.
+> *Boss uses Blue Hit*
+> *Player uses Magenta Throw*
+
+>**Turn 1b**
+> Notice how my [el]Blue[/el]  [i]secondary[/i] type reacted with your [el]Magenta[/el] attack to form [el]Purple[/el].
+> As I mentioned, your [i]secondary[/i] type is highly reactive, reacting to any element it comes into contact with.
+> This largely applies to your opponent's attacks. However, your [i]secondary[/i] type will also react to your own [i]melee[/i] attacks, since you're channeling that energy in close quarters.
+>Additionally, your [i]secondary[/i] type will react with your [i]primary[/i] type (Only your [i]secondary[/i] will change, of course).
+>My next attack will be a [el]Red[/el] melee attack, which will demonstrate these effects.
+>*Control is returned to player*
+
+>**Turn 2a**
+>*Boss uses Red Hit*
+>*Player uses Magenta Throw*
+
+>**Turn 2b**
+>You'll also notice that your transmutations had side effects, which are just stat buffs.
+>Dallas will teach you a bit more about these in the next lesson.
+>If you're wondering why I haven't had any side effects during this battle, its because I have an item which turns them off. It makes describing the battle mechanics much simpler, don't you think!
+>Well, that everything I have to teach you. Why don't you finish up this fight and Dallas will pick it up where I left off.
+>*Control is returned to player*
+>*Player's next attack will be guaranteed to defeat Aegean* 
+
+**Rewards**
+- Enough xp to level up
+-  Purple Hit (*Attack*)
+- Willpower (*Equipment*)
+#### Tutorial 1.5 (Equipping Spells and Equipment)
+#### Tutorial 2
+**Objectives**
+- Affinity groups
+- Side effects
+
+**Dialog**	
+
+**Starting Config**
+- Blue Throw (*Attack*)
+- Purple Hit (*Attack*)
+- Willpower (*Equipment*)
+
+**Rewards**
+- Half of the xp needed to level up
+- Hydrophobia (*Attack*)
+#### Tutorial 3
+**Objectives**
+- Touches on side effects
+- Acts as a final lesson before the player fights the miniboss. Unlike the previous two fights, the player can lose this fight
+
+**Dialog**	
+
+**Starting Config**
+- Blue Hit (*Attack*)
+- Purple Hit (*Attack*)
+- Hydrophobia (*Attack*)
+- Willpower (*Equipment*)
+
+**Rewards**
+- Rest of xp needed to level up
+- Denim joins your party
 ### Supply Closet
 This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.
 ## Caves

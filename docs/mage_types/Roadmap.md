@@ -23,11 +23,13 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
+- [ ] Bug: Xp slider not animating
 - [ ] Rewrite narrative setup
 	- [ ] "Where am I" thread
 	- [ ] "Player doesn't know about Primary and Secondary types" thread
 	- [ ] Add poker player and Denim dialog
 	- [ ] Make Swole Enclave dialog less cringe
+		- [ ] Their name should be changed to something old-timey (Brawny Enclave?)
 - [ ] Remodel rec room
 - [ ] Redesign tutorial bosses
 	- [ ] Write dialog
