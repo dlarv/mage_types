@@ -26,6 +26,7 @@ resource_name = "Melee Drop"
 script = ExtResource("4_cjny5")
 stat = 6
 clear_first = false
+is_side_effect = false
 id = 6
 _duration = "0"
 description = ""

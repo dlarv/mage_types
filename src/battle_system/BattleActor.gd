@@ -229,7 +229,7 @@ func get_defense_stat(action: _BattleAction) -> float:
 ## Returns actual amount of damage applied, after accounting for status conditions.
 func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 	if _func_overrides.has(apply_damage.get_method()):
-		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking, self)
+		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking)
 
 	var blocking: StatusEffect = null
 	if dmg > 0 and allowBlocking:
@@ -351,12 +351,12 @@ func has_phobia(element: ElementalType=null) -> bool:
 	return statuses.check_phobic(element) != null
 
 
-func add_func_override(old: Callable, new: Callable) -> void:
-	_func_overrides[old.get_method()] = new
+func add_func_override(key: StringName, new: Callable) -> void:
+	_func_overrides[key] = new
 
 
-func remove_func_override(old: Callable) -> void:
-	_func_overrides.erase(old.get_method())
+func remove_func_override(key: StringName) -> void:
+	_func_overrides.erase(key)
 
 
 func add_xp(xp: float) -> int:

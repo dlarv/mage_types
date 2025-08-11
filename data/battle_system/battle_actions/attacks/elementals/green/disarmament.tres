@@ -10,6 +10,7 @@
 script = ExtResource("3_e8jau")
 stat = 0
 clear_first = true
+is_side_effect = false
 id = 6
 _duration = "0"
 description = ""
@@ -29,6 +30,7 @@ resource_name = "Defense Boost"
 script = ExtResource("3_e8jau")
 stat = 3
 clear_first = true
+is_side_effect = false
 id = 6
 _duration = "0"
 description = ""

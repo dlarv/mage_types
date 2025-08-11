@@ -26,6 +26,7 @@ resource_name = "Ranged Drop"
 script = ExtResource("5_4se75")
 stat = 7
 clear_first = false
+is_side_effect = false
 id = 6
 _duration = "0"
 description = ""

@@ -29,6 +29,7 @@ resource_name = "Melee Drop"
 script = ExtResource("5_r4umc")
 stat = 6
 clear_first = true
+is_side_effect = false
 id = 6
 _duration = "0"
 description = ""

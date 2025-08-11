@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=15 format=3 uid="uid://bo4oib5wr8f3r"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://bo4oib5wr8f3r"]
 
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_0kd5o"]
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_f77mh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="6_lc27v"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="7_xn2us"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="8_5u12k"]
+[ext_resource type="Resource" uid="uid://dd7wk01w5ccs6" path="res://data/items/equipment/training_wheels.tres" id="9_djiaw"]
 
 [sub_resource type="Resource" id="Resource_bvuqs"]
 resource_name = "Damage"
@@ -63,3 +64,4 @@ _element1 = "blue"
 _element2 = "blue"
 _alignment = "red"
 attacks = Array[ExtResource("2_0kd5o")]([ExtResource("2_f77mh"), ExtResource("3_qh7aw"), SubResource("Resource_y6l1e")])
+equipment = ExtResource("9_djiaw")
