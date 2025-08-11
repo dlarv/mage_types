@@ -47,22 +47,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="DialogBox_Layer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="DialogueBox" type="Panel" parent="DialogBox_Layer"]
-visible = false
 custom_minimum_size = Vector2(500, 300)
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -571.0
-offset_top = -300.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("5_ari74")
 data = ExtResource("6_domvp")
-skip_input_action = "interact"
+skip_input_action = "skip_text"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_j0fqi"), SubResource("RichTextEffect_ec65t"), SubResource("RichTextEffect_4x15a"), SubResource("RichTextEffect_ipreh")])

@@ -32,7 +32,7 @@ signal dialogue_ended
 		data = value
 		if _dialogue_parser:
 			_dialogue_parser.set_data(data)
-			variables = _dialogue_parser.variables
+			#variables = _dialogue_parser.variables
 			characters = _dialogue_parser.characters
 ## The default start ID to begin dialogue from. This is the value you set in the Dialogue Nodes editor.
 @export var start_id: String
@@ -139,7 +139,7 @@ signal dialogue_ended
 
 ## Contains the variable data from the [param DialogueData] parsed in an easy to access dictionary.[br]
 ## Example: [code]{ "COINS": 10, "NAME": "Obama", "ALIVE": true }[/code]
-var variables: Dictionary
+#var variables: Dictionary
 ## Contains all the [param Character] resources loaded from the path in the [member data].
 var characters: Array[Character]
 ## Displays the portrait image of the speaker in the [DialogueBox]. Access the speaker's texture by [member DialogueBox.portrait.texture]. This value is automatically set while running a dialogue tree.

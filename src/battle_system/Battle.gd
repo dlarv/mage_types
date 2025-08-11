@@ -25,6 +25,8 @@ var tie_breaker := false
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log()
+	elif event.is_action_pressed("skip_dialog"):
+		_dialog_box.stop()
 	
 
 func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: Array[BattleActor], ai: OpponentController) -> void:

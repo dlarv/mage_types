@@ -1,9 +1,7 @@
 The [i]Transmutation System[/i] is the central mechanic of this game.
 
 In battle, all combatants have 2 elements.
-
 As you come into contact with the elements in this world, they begin to permeate through your body. Your [i]Primary type[/i] shows what element your core is, i.e. your insides.
-
 Your [i]Primary type[/i] has a lot of inertia and does not change easily.
 
  For those of us that have spent a year or more in this place, this is permanent. If you see the terms [i]alignment[/i] or [i]bias[/i], those are referring to this phenomena.
@@ -12,6 +10,7 @@ Your [i]Secondary type[/i] shows the element of your surface, your skin essentia
 This thin crust is very reactive, reacting to any element it comes into contact with.
 This largely applies to your opponent's spells. However, your [i]Secondary type[/i] will also react to your own [i]melee[/i] attacks, since you're channeling that energy in close quarters.
 Additionally, your [i]Secondary type[/i] will react with your [i]Primary type[/i]. Only the [i]Secondary[/i] will change, of course.
+
 So for every attack, there can be up to 2 transmutations. First, your [i]Secondary type[/i] can react with the attack's type. Then, your [i]Secondary type[/i] can react with with your [i]Primary[/i].
 One last thing, I promise. Every transmutation comes with side effects: stat buffs that depend on your initial and resulting typing.
 The elements are divided into two "[i]Affinity[/i]" groups: [color=blue]Defensive[/color] and [color=red]Offensive[/color].

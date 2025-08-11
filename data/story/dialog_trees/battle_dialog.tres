@@ -5,29 +5,177 @@
 [resource]
 script = ExtResource("1_dm3d2")
 starts = {
-"TUTORIAL_1": &"0_1",
+"1_0": &"0_1",
+"1_1a": &"0_4",
+"1_1b": &"0_5",
+"1_2b": &"0_6",
 "TUTORIAL_2": &"0_2",
 "TUTORIAL_3": &"0_3"
 }
 nodes = {
 &"0_1": {
 "link": &"1_1",
-"offset": Vector2(-38.2499, -116.413),
-"start_id": "TUTORIAL_1"
+"offset": Vector2(-80, -120),
+"start_id": "1_0"
 },
 &"0_2": {
 "link": &"1_2",
-"offset": Vector2(-80, 160),
+"offset": Vector2(-820, 460),
 "start_id": "TUTORIAL_2"
 },
 &"0_3": {
 "link": &"1_3",
-"offset": Vector2(-80, 440),
+"offset": Vector2(-820, 740),
 "start_id": "TUTORIAL_3"
 },
+&"0_4": {
+"link": &"1_8",
+"offset": Vector2(-80, 140),
+"start_id": "1_1a"
+},
+&"0_5": {
+"link": &"1_6",
+"offset": Vector2(-80, 400),
+"start_id": "1_1b"
+},
+&"0_6": {
+"link": &"1_16",
+"offset": Vector2(-60, 680),
+"start_id": "1_2b"
+},
 &"1_1": {
-"dialogue": "TODO",
+"dialogue": "To start, select an attack from the menu below. You likely only have one.",
 "offset": Vector2(160, -120),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_10": {
+"dialogue": "Your [i]secondary[/i] type is the composition of your outer crust. This thin crust is highly reactive, frequently changing multiple times per turn.",
+"offset": Vector2(800, 140),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_11": {
+"dialogue": "Pay attention to my left (your right) side when I attack.",
+"offset": Vector2(1120, 140),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_12": {
+"dialogue": "As I mentioned, your [i]secondary[/i] type is highly reactive, reacting to any element it comes into contact with.",
+"offset": Vector2(480, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_13": {
+"dialogue": "This largely applies to your opponent's attacks. However, your [i]secondary[/i] type will also react to your own [i]melee[/i] attacks, since you're channeling that energy in close quarters.",
+"offset": Vector2(800, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_14": {
+"dialogue": "Additionally, your [i]secondary[/i] type will react with your [i]primary[/i] type (Only your [i]secondary[/i] will change, of course).",
+"offset": Vector2(1120, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_15",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_15": {
+"dialogue": "My next attack will be a [el]Red[/el] melee attack, which will demonstrate these effects.",
+"offset": Vector2(1440, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_16": {
+"dialogue": ">You'll also notice that your transmutations had side effects, which are just stat buffs.",
+"offset": Vector2(160, 680),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_17",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_17": {
+"dialogue": "Dallas will teach you a bit more about these in the next lesson.",
+"offset": Vector2(480, 680),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_18",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_18": {
+"dialogue": "If you're wondering why I haven't had any side effects during this battle, its because I have an item which turns them off. It makes describing the battle mechanics much simpler, don't you think!",
+"offset": Vector2(800, 680),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_19",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_19": {
+"dialogue": "Well, that everything I have to teach you. Why don't you finish up this fight and Dallas will pick it up where I left off.",
+"offset": Vector2(1120, 680),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -40,7 +188,7 @@ nodes = {
 },
 &"1_2": {
 "dialogue": "TODO",
-"offset": Vector2(160, 160),
+"offset": Vector2(-580, 460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -53,7 +201,7 @@ nodes = {
 },
 &"1_3": {
 "dialogue": "TODO",
-"offset": Vector2(160, 440),
+"offset": Vector2(-580, 740),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -63,6 +211,84 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "Duke"
+},
+&"1_4": {
+"dialogue": "Then, click on me to select your target.",
+"offset": Vector2(480, -120),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_5": {
+"dialogue": "You'll notice a strange popup when you do. This is called the [i]Transmutation Hint[/i].",
+"offset": Vector2(800, -120),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_6": {
+"dialogue": "Notice how my [el]Blue[/el]  [i]secondary[/i] type reacted with your [el]Magenta[/el] attack to form [el]Purple[/el].",
+"offset": Vector2(160, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_12",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_7": {
+"dialogue": "Right now, just remember to color of the top-right square.",
+"offset": Vector2(1120, -120),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_8": {
+"dialogue": "Unlike most other things in this world, combatants actually have two types.",
+"offset": Vector2(160, 140),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_9",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
+&"1_9": {
+"dialogue": "Your [i]primary[/i] type is the composition of your inner core. It has a lot of inertia and will not change during battle.",
+"offset": Vector2(480, 140),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_10",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
 }
 }
 strays = Array[String]([])
