@@ -7,7 +7,7 @@ signal battle_setup_completed
 signal turn_ended()
 signal was_just_defeated()
 signal status_effect_added(effect: StatusEffect)
-signal status_effects_removed(effect: StatusEffect)
+signal status_effects_removed(effects: Array[StatusEffect])
 signal damage_applied(current_hp: float)
 signal element_changed(id: int, element: ElementalType)
 signal leveled_up()
