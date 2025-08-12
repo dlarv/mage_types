@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0ctqpfxrh7c3"]
+[gd_scene load_steps=5 format=3 uid="uid://b0ctqpfxrh7c3"]
 
 [ext_resource type="Script" uid="uid://dg5afv3xuvqe0" path="res://src/battle_system/gui/components/ThreeStateButton.gd" id="1_qafsp"]
 [ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme/theme.tres" id="2_puxxf"]
+[ext_resource type="Texture2D" uid="uid://dvd0n3xr8cf6g" path="res://assets/icons/sword.png" id="3_aj0is"]
+[ext_resource type="Texture2D" uid="uid://d2gbrwtslnehi" path="res://assets/icons/shield.png" id="4_a6va7"]
 
-[node name="ThreeStateButton" type="Control" node_paths=PackedStringArray("button")]
+[node name="ThreeStateButton" type="Control"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 3
 anchors_preset = 15
@@ -16,16 +18,23 @@ size_flags_vertical = 3
 script = ExtResource("1_qafsp")
 unselected_modulate_color = Color(1, 1, 1, 1)
 locked_modulate_color = Color(0.259294, 0.259294, 0.259294, 1)
-button = NodePath("Button")
 
-[node name="Button" type="Button" parent="."]
-show_behind_parent = true
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Button" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
@@ -33,4 +42,27 @@ theme = ExtResource("2_puxxf")
 toggle_mode = true
 text = "Text"
 
-[connection signal="toggled" from="Button" to="." method="_on_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="SwordIcon" type="TextureRect" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3_aj0is")
+
+[node name="ShieldIcon" type="TextureRect" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_a6va7")
+
+[connection signal="toggled" from="MarginContainer/Button" to="." method="_on_pressed"]

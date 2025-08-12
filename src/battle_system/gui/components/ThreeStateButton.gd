@@ -6,17 +6,16 @@ signal state_changed(state: bool)
 @export var selected_modulate_color: Color 
 @export var locked_modulate_color: Color 
 
-@export var button: Button 
 var _element: ElementalType
 var text: String:
-	get: return button.text
-	set(value):  button.text = value
+	get: return %Button.text
+	set(value):  %Button.text = value
 
 var button_group: ButtonGroup:
-	get: return button.button_group
-	set(value): button.button_group = value
+	get: return %Button.button_group
+	set(value): %Button.button_group = value
 
-# Prevents button from entering 3rd state.
+# Prevents %Button from entering 3rd state.
 var is_locked: bool = false: 
 	get: return is_locked 
 	set(value):
@@ -30,8 +29,11 @@ var shortcut_keycode := ""
 func setup(element: ElementalType) -> void:
 	_element = element
 
+	%ShieldIcon.visible = element.is_defensive_type
+	%SwordIcon.visible = not element.is_defensive_type
+
 	var style_box := get_theme_stylebox(element.name.to_lower(), "Control")
-	button.add_theme_stylebox_override("normal", style_box)
+	%Button.add_theme_stylebox_override("normal", style_box)
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -39,7 +41,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed(shortcut_keycode):
 		get_window().set_input_as_handled()
-		button.button_pressed = true
+		%Button.button_pressed = true
+
 
 func _on_pressed(toggled: bool) -> void:
 	if not toggled:
@@ -58,4 +61,4 @@ func _on_pressed(toggled: bool) -> void:
 func reset() -> void:
 	modulate = unselected_modulate_color
 	state = false
-	button.set_pressed_no_signal(false)
+	%Button.set_pressed_no_signal(false)
