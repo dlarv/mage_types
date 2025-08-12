@@ -2,14 +2,15 @@
 extends Resource
 class_name AlignmentManager
 
-enum Type { ATTACK, TRANSMUTATION, OTHER }
+enum Type { ATTACK, TRANSMUTATION, CHANNELING, OTHER }
 
 const ALIGNMENT_THRESHOLD := 0xF
 const ATTACK_MOD := 1.0
+const CHANNELING_MOD := 1.5
 const TRANSMUTATION_MOD := 3.0
 
-## Each value ranges from 0-F
-var alignment_values: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0 ]
+## Each value ranges from 0-255
+var alignment_values: Array[int] = [ 0, 0, 0, 0, 0, 0, 0, 0 ]
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _alignment: String = "blank":
 	set(val):
@@ -30,7 +31,6 @@ func setup_from_string(val: String) -> void:
 	update_current_alignment()
 
 
-# index: ElementalType|int
 func add(key: ElementalType, amount:=1) -> void:
 	if alignment_locked: return
 	var index: int = ElementManager.get_index_from_name(key.name)
@@ -38,23 +38,24 @@ func add(key: ElementalType, amount:=1) -> void:
 	alignment_values[index] = max(min(alignment_values[index], 0xF), 0)
 
 
-func append_unnormalized(key: ElementalType, amount:=1.0, type:=Type.OTHER) -> void:
+func append_unnormalized(key: ElementalType, type:=Type.OTHER, amount:=1.0) -> void:
 	var mod := 1.0
 	match type:
 		Type.ATTACK: mod = ATTACK_MOD
 		Type.TRANSMUTATION: mod = TRANSMUTATION_MOD
+		Type.CHANNELING: mod = CHANNELING_MOD
 		
 	var index: int = ElementManager.get_index_from_name(key.name)
 	_unnormalized_values[index] += amount * mod
 
 
 ## Find average of all unnormalized values, then +1 for all elements above this value.
-## Returns true if a 
 func normalize_and_add() -> Array[float]:
 	var average := 0.0
 
 	for val in _unnormalized_values:
 		average += val / 8.0
+
 	for i in len(_unnormalized_values):
 		var val: float = _unnormalized_values[i]
 		if val > average:

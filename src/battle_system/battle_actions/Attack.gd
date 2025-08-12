@@ -43,8 +43,14 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 	_AttackEffect.current_buffer = buffer
 
 	var msg: Array[String] = super.apply_effects(user, targets).msg
+
+	# Calculate alignments, if necessary.
 	if user.alignment_manager:
-		user.alignment_manager.append_unnormalized(element, 1, AttackType.ATTACK)
+		user.alignment_manager.append_unnormalized(element, AttackType.CHANNELING)
+
+	for actor: BattleActor in targets:
+		if actor.alignment_manager:
+			actor.alignment_manager.append_unnormalized(element, AttackType.ATTACK)
 
 	# Calculate accuracy.
 	var rand := randf()

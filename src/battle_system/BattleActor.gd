@@ -135,7 +135,7 @@ func set_element(id: int, element: ElementalType) -> void:
 
 	element_changed.emit(id, element)
 	if alignment_manager:
-		alignment_manager.append_unnormalized(element, 1, AlignmentManager.Type.TRANSMUTATION)
+		alignment_manager.append_unnormalized(element, AlignmentManager.Type.TRANSMUTATION)
 
 	var mod: float
 	var dmg := 0.0
