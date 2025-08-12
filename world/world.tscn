@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=66 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="21_llyeo"]
 [ext_resource type="Resource" uid="uid://bblx7lycrgk8e" path="res://data/story/dialog_trees/battle_dialog.tres" id="23_ftqqi"]
 [ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/demo/bosses/boss_1.tres" id="24_2tavo"]
+[ext_resource type="Resource" uid="uid://cttohg0e1an0u" path="res://data/items/spell_scrolls/basic/hit_p.tres" id="25_avd5l"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="25_bwxdu"]
 [ext_resource type="Resource" uid="uid://d1h5t72gjjjcv" path="res://data/demo/bosses/mini_boss_1.tres" id="25_lwhbe"]
 [ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/demo/bosses/boss_2.tres" id="26_2tavo"]
@@ -220,13 +221,23 @@ displayAfterTurn = true
 repeat = false
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
+[sub_resource type="Resource" id="Resource_hm5b2"]
+resource_name = "Purple Hit Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("25_avd5l")
+id = 1
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
 [sub_resource type="Resource" id="Resource_avd5l"]
 script = ExtResource("28_lwhbe")
 set_seed = "BOSS1"
 dialog_resource = ExtResource("23_ftqqi")
 dialog_ids = Array[ExtResource("21_j7vgi")]([SubResource("Resource_ll3gq"), SubResource("Resource_jgi7c"), SubResource("Resource_cqwbg"), SubResource("Resource_q3kex")])
 reward_xp = 50.0
-reward_items = Array[ExtResource("21_2tavo")]([])
+reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_hm5b2")])
 metadata/_custom_type_script = "uid://n8ulld1m40ie"
 
 [sub_resource type="Resource" id="Resource_j7vgi"]
@@ -234,7 +245,7 @@ script = ExtResource("25_bwxdu")
 aggression = 0.3
 intelligence = 0.8
 transmutation_bias = 0.5
-_transmutation_pref = "red"
+_transmutation_pref = "blank"
 dialog_ids = Array[ExtResource("21_j7vgi")]([])
 reward_xp = 50.0
 reward_items = Array[ExtResource("21_2tavo")]([])
