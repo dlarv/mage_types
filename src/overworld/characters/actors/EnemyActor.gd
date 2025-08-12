@@ -13,7 +13,7 @@ var team: Array[BattleActor] = []
 @export var disappear_on_defeat := true
 
 func _ready() -> void:
-	if ai:
+	if not Engine.is_editor_hint() and ai:
 		ai.battle_ended.connect(_on_battle_ended)
 
 func _on_battle_ended(endState: Battle.EndState) -> void: 
