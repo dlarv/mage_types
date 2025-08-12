@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=70 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -34,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/demo/bosses/boss_2.tres" id="26_2tavo"]
 [ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/demo/bosses/boss_3.tres" id="28_k8wd0"]
 [ext_resource type="Script" uid="uid://n8ulld1m40ie" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="28_lwhbe"]
+[ext_resource type="Resource" uid="uid://bm7p4gie7rf0y" path="res://data/items/spell_scrolls/phobias/phobia_b.tres" id="30_ll3gq"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -240,15 +241,40 @@ reward_xp = 50.0
 reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_hm5b2")])
 metadata/_custom_type_script = "uid://n8ulld1m40ie"
 
-[sub_resource type="Resource" id="Resource_j7vgi"]
-script = ExtResource("25_bwxdu")
-aggression = 0.3
-intelligence = 0.8
-transmutation_bias = 0.5
-_transmutation_pref = "blank"
-dialog_ids = Array[ExtResource("21_j7vgi")]([])
+[sub_resource type="Resource" id="Resource_hnpqp"]
+script = ExtResource("21_j7vgi")
+turn = 0
+id = "2_0"
+displayAfterTurn = false
+repeat = false
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_33qpb"]
+script = ExtResource("21_j7vgi")
+turn = 1
+id = "2_1"
+displayAfterTurn = false
+repeat = false
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_ifjjt"]
+resource_name = "Hydrophobia Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("30_ll3gq")
+id = 35
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_behgl"]
+script = ExtResource("28_lwhbe")
+set_seed = ""
+dialog_resource = ExtResource("23_ftqqi")
+dialog_ids = Array[ExtResource("21_j7vgi")]([SubResource("Resource_hnpqp"), SubResource("Resource_33qpb")])
 reward_xp = 50.0
-reward_items = Array[ExtResource("21_2tavo")]([])
+reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_ifjjt")])
+metadata/_custom_type_script = "uid://n8ulld1m40ie"
 
 [sub_resource type="Resource" id="Resource_bwxdu"]
 script = ExtResource("25_bwxdu")
@@ -398,10 +424,10 @@ disappear_on_defeat = false
 [node name="Boss2" parent="Overworld/Blue/Preset1" instance=ExtResource("18_3lqrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1.803, 0)
 team = Array[ExtResource("12_lwhbe")]([ExtResource("26_2tavo")])
-ai = SubResource("Resource_j7vgi")
+ai = SubResource("Resource_behgl")
 
 [node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss2" instance=ExtResource("21_llyeo")]
-ai = SubResource("Resource_j7vgi")
+ai = SubResource("Resource_behgl")
 _team = Array[ExtResource("12_lwhbe")]([ExtResource("26_2tavo")])
 disappear_on_defeat = false
 
