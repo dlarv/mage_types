@@ -65,7 +65,6 @@ Each of these sections will weave through each other.
 **Starting Config**
 - Player (Blue/Blue)
 	- Magenta Throw (*Attack*)
-	- Training Wheels? (*Equipment*): turns off side effects
 - Boss (Blue/Blue)
 	- Blue Hit (*Attack*)
 	- Red Hit (*Attack*)
@@ -84,8 +83,8 @@ Each of these sections will weave through each other.
 > Your [i]primary[/i] type is the composition of your inner core. It has a lot of inertia and will not change during battle.
 > Your [i]secondary[/i] type is the composition of your outer crust. This thin crust is highly reactive, frequently changing multiple times per turn.
 > Pay attention to my left (your right) side when you attack.
-> *Boss uses Blue Hit*
-> *Player uses Magenta Throw*
+> *Boss uses Blue Hit (12dmg)*
+> *Player uses Magenta Throw (15dmg)*
 
 >**Turn 1b**
 > Notice how my [el]Blue[/el]  [i]secondary[/i] type reacted with your [el]Magenta[/el] attack to form [el]Purple[/el].
@@ -96,8 +95,8 @@ Each of these sections will weave through each other.
 >*Control is returned to player*
 
 >**Turn 2a**
->*Boss uses Red Hit*
->*Player uses Magenta Throw*
+>*Boss uses Red Hit (6dmg)*
+>*Player uses Magenta Throw (21dmg)*
 
 >**Turn 2b**
 >You'll also notice that your transmutations had side effects, which are just stat buffs.
@@ -105,12 +104,18 @@ Each of these sections will weave through each other.
 >If you're wondering why I haven't had any side effects during this battle, its because I have an item which turns them off. It makes describing the battle mechanics much simpler, don't you think!
 >Well, that everything I have to teach you. Why don't you finish up this fight and Dallas will pick it up where I left off.
 >*Control is returned to player*
->*Player's next attack will be guaranteed to defeat Aegean* 
+>*Player's next attack will be guaranteed to defeat Aegean (20dmg)* 
 
 **Rewards**
+- Core realigns to Purple.
 - Enough xp to level up
--  Purple Hit (*Attack*)
-- Willpower (*Equipment*)
+	- Hp: 50 -> 54
+	- MAttack: 8 -> 12
+	- RAttack: 8 -> 12
+	- MDefense: 10 -> 12
+	- RDefense: 10 -> 13
+	- Speed: 10 -> 11
+- Purple Hit (*Attack*)
 #### Tutorial 1.5 (Equipping Spells and Equipment)
 #### Tutorial 2
 **Objectives**
@@ -118,12 +123,50 @@ Each of these sections will weave through each other.
 - Side effects
 
 **Dialog**	
+>**Turn 0**
+> Suuup. So right, affinities!
+> So the elements of this world are split into 2 [i]affinity[/i] groups: [color=red]offensive[/color] and [color=blue]defensive[/color].
+> You've noticed the sword and shield icons next to your attacks, right? Those will tell you which [i]affinity[/i] group that attack's element belongs to.
+> Its a bit confusing, but these [i]affinity[/i] groups don't actually have anything to do with whether an attack does damage.
+> Like, [el]Blue[/el] is a [color=blue]defensive[/color] type, a lot of its moves will be support or defense focused, but there are [el]Blue[/el] attacks.
+> You can find the full list inside your [i]Transmutation Menu[/i].
+> *Control is returned the player*
+
+>**Turn 1a**
+> Every time you transmute, there will be side effects, which are, like, stat buffs.
+> If you go from [color=red]offensive[/color] -> [color=blue]defensive[/color], you'll get a [color=blue]defense[/color] buff.
+> If you go from [color=blue]defensive[/color]-> [color=red]offensive[/color], you'll get an [color=red]attack[/color] buff.
+> And if you stay within the same [i]affinity[/i] group, you'll get a [color=green]speed[/color] buff.
+> This info can also be found inside your [i]Transmutation Menu[/i].
+> *Player can use either Purple Hit (32 dmg) or Magenta Throw (16 dmg).*
+> *Boss 2 uses Magenta Throw (20 dmg).*
+
+>**Turn 1b**
+> So my [el]Magenta[/el] attack only caused one transmutation, so only one side effect, right?
+> You went from [el]Purple[/el] to [el]Blue[/el], which are [color=red]offensive[/color] and [color=blue]defensive[/color] types, respectively.
+> Right, so your end result was a [color=blue]defensive[/color], so you got a [color=blue]defense[/color] buff.
+> If you hover your mouse over the 3rd and 4th dials under your health bar, they will tell you you've a received a 30% buff to both your defense stats!
+>>*Player used Magenta Throw*: And since the attack you used was [el]Magenta[/el], I also received a [color=blue]defense[/color] buff!
+>>*Player used Purple Hit*: And since the attack you used didn't react at all with me, I didn't receive any side effects. Bummer dude ;)
+>*Control is returned to player.*
+
+>**Turn 2a**
+> *Boss 2 uses Red Hit, w/+1 priority (15 dmg).*
+> *Player can use either of their attacks (26 dmg).*
+
+>**Turn 2b**
+> That was a lot of side effects just then, but I hope you were able to follow all of that.
+> Every action a combatant can have like, up to 4 transmutation and therefore 4 side effects!
+> And if one side transmutes more often than the other, battles can become pretty one sided.
 
 **Starting Config**
-- Blue Throw (*Attack*)
-- Purple Hit (*Attack*)
-- Willpower (*Equipment*)
-
+- Player (Purple/Purple)
+	- Magenta Throw (*Attack*)
+	- Purple Hit (*Attack*)
+- Boss 2 (Blue/Purple)
+	- Magenta Throw (*Attack*)
+	- Red Hit (*Attack*)
+	
 **Rewards**
 - Half of the xp needed to level up
 - Hydrophobia (*Attack*)
@@ -135,13 +178,16 @@ Each of these sections will weave through each other.
 **Dialog**	
 
 **Starting Config**
-- Blue Hit (*Attack*)
-- Purple Hit (*Attack*)
-- Hydrophobia (*Attack*)
-- Willpower (*Equipment*)
+- Player (Purple/Purple)
+	- Magenta Throw (*Attack*)
+	- Purple Hit (*Attack*)
+	- Hydrophobia (*Attack*)
+- Boss 2 (Blue/Purple)
+	- Magenta Throw (*Attack*)
 
 **Rewards**
 - Rest of xp needed to level up
+- Willpower (*Equipment*)
 - Denim joins your party
 ### Supply Closet
 This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.

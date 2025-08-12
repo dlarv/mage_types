@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://0vpn7c3pvu1d"]
 
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
 [ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_u5qgi"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
 [ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="3_i3ogw"]
+[ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="4_8yxg4"]
 [ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="4_mqy8c"]
 [ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="8_1u0x0"]
 
@@ -15,13 +16,13 @@ metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
 [sub_resource type="Resource" id="Resource_u5qgi"]
 script = ExtResource("8_1u0x0")
-_base_melee_attack = 8.0
-_base_ranged_attack = 8.0
-_base_melee_defense = 10.0
-_base_ranged_defense = 10.0
-_base_speed = 10.0
+_base_melee_attack = 12.0
+_base_ranged_attack = 12.0
+_base_melee_defense = 12.0
+_base_ranged_defense = 13.0
+_base_speed = 11.0
 _base_evasion = 100.0
-hp = 50.0
+hp = 54.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
@@ -32,9 +33,9 @@ level = 1
 next_level_xp = 50.0
 stat_manager = SubResource("Resource_u5qgi")
 reset_hp_after_battle = true
-_element1 = "blue"
-_element2 = "blue"
+_element1 = "purple"
+_element2 = "purple"
 alignment_manager = SubResource("Resource_c2eox")
 _alignment = "blank"
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_i3ogw")])
+attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_i3ogw"), ExtResource("4_8yxg4")])
 equipment = ExtResource("4_mqy8c")

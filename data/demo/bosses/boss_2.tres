@@ -1,99 +1,66 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=23 format=3 uid="uid://bfcmgeugkgdc4"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=15 format=3 uid="uid://bfcmgeugkgdc4"]
 
+[ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="2_50rph"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_uqmjw"]
-[ext_resource type="Resource" uid="uid://b4d7tphii0oh6" path="res://data/battle_system/battle_actions/attacks/basic/throw_r.tres" id="3_8nplf"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_ris70"]
-[ext_resource type="Resource" uid="uid://biyyeewaek1sj" path="res://data/battle_system/battle_actions/attacks/elementals/red/drain.tres" id="4_ivo2m"]
-[ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="4_jwv5r"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_s70gu"]
-[ext_resource type="Resource" uid="uid://34n0lh5ijyi3" path="res://data/battle_system/battle_actions/attacks/elementals/red/consume.tres" id="5_cdw4o"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="5_y2k0y"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="6_3uitp"]
-[ext_resource type="Script" uid="uid://4aisqs8ctusa" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="7_v5y7a"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="8_2ciej"]
+[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="8_u6itc"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="9_hflrh"]
-[ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/effect_slots/ConditionalEffect.gd" id="10_pe6j7"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="11_6b2sc"]
 
-[sub_resource type="Resource" id="Resource_uwk0x"]
-script = ExtResource("7_v5y7a")
-_element = "orange"
-apply_to = "user"
-
-[sub_resource type="Resource" id="Resource_0jqm0"]
+[sub_resource type="Resource" id="Resource_fgpji"]
 resource_name = "Damage"
 script = ExtResource("8_2ciej")
 name = "Damage"
-_strength = "0.0"
+_strength = "30"
 message = ""
+metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
-[sub_resource type="Resource" id="Resource_tep4t"]
+[sub_resource type="Resource" id="Resource_xmuru"]
 resource_name = "Damage"
 script = ExtResource("9_hflrh")
-attack_effect = SubResource("Resource_0jqm0")
+attack_effect = SubResource("Resource_fgpji")
 effect_target = 1
 _chance = "1.0"
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
-[sub_resource type="Resource" id="Resource_hc33j"]
-resource_name = "Damage"
-script = ExtResource("8_2ciej")
-name = "Damage"
-_strength = "0.0"
-message = ""
-
-[sub_resource type="Resource" id="Resource_apnsr"]
-resource_name = "Damage"
-script = ExtResource("9_hflrh")
-attack_effect = SubResource("Resource_hc33j")
-effect_target = 1
-_chance = "1.0"
-
-[sub_resource type="Resource" id="Resource_h3rc4"]
-script = ExtResource("10_pe6j7")
-condition = SubResource("Resource_uwk0x")
-success_effect = SubResource("Resource_apnsr")
-failed_effect = SubResource("Resource_tep4t")
-invert = false
-print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-_chance = ""
-
-[sub_resource type="Resource" id="Resource_a742r"]
-resource_name = "Orange Hit"
+[sub_resource type="Resource" id="Resource_2vvil"]
+resource_name = "Red Rush"
 script = ExtResource("11_6b2sc")
-effects = Array[ExtResource("6_3uitp")]([SubResource("Resource_h3rc4")])
+effects = Array[ExtResource("6_3uitp")]([SubResource("Resource_xmuru")])
 accuracy = 1.0
-power = 15
-scaling_factor = Vector4i(100, 100, 100, -1)
-name = "Orange Hit"
+power = 0
+scaling_factor = Vector4i(100, 100, 200, -1)
+name = "Red Rush"
 animation = ExtResource("5_y2k0y")
-_element = "orange"
-priority = 0
+_element = "red"
+priority = 1
 attack_range = 0
 target = 3
-details = "Has x2 power if user is [el]Orange[/el]."
+details = "Has x2 power if user is [el]Red[/el]."
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("4_s70gu")
-_base_melee_attack = 10.0
-_base_ranged_attack = 10.0
-_base_melee_defense = 10.0
-_base_ranged_defense = 10.0
+_base_melee_attack = 8.0
+_base_ranged_attack = 8.0
+_base_melee_defense = 20.0
+_base_ranged_defense = 20.0
 _base_speed = 10.0
 _base_evasion = 100.0
-hp = 50.0
+hp = 60.0
 
 [resource]
 script = ExtResource("3_ris70")
 name = "Boss 2"
 id = -2
-level = 1
+level = 2
 next_level_xp = 100.0
 stat_manager = SubResource("Resource_6u7d0")
 reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
 _alignment = "red"
-attacks = Array[ExtResource("2_uqmjw")]([ExtResource("3_8nplf"), ExtResource("4_ivo2m"), ExtResource("5_cdw4o"), SubResource("Resource_a742r")])
-equipment = ExtResource("4_jwv5r")
+attacks = Array[ExtResource("2_uqmjw")]([ExtResource("2_50rph"), SubResource("Resource_2vvil"), ExtResource("8_u6itc"), ExtResource("8_u6itc"), ExtResource("8_u6itc")])

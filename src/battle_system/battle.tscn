@@ -50,6 +50,7 @@ size_flags_vertical = 3
 layer = 2
 
 [node name="DialogueBox" type="Panel" parent="DialogBox_Layer"]
+visible = false
 custom_minimum_size = Vector2(500, 300)
 anchors_preset = 12
 anchor_top = 1.0
