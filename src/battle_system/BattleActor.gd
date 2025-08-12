@@ -20,6 +20,8 @@ signal action_selected(action: _BattleAction)
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
 
 @export var name := "Guy" 
+## Positive for allies/pcs, negative for enemies, 0 for randomly generated.
+@export var id := 0
 @export var level := 1
 @export var next_level_xp := 100.0
 var total_xp := 0.0

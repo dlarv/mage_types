@@ -87,12 +87,13 @@ hp = 50.0
 [resource]
 script = ExtResource("3_ris70")
 name = "Boss 2"
+id = -2
 level = 1
 next_level_xp = 100.0
 stat_manager = SubResource("Resource_6u7d0")
 reset_hp_after_battle = true
-_element1 = "red"
-_element2 = "red"
+_element1 = "blue"
+_element2 = "purple"
 _alignment = "red"
 attacks = Array[ExtResource("2_uqmjw")]([ExtResource("3_8nplf"), ExtResource("4_ivo2m"), ExtResource("5_cdw4o"), SubResource("Resource_a742r")])
 equipment = ExtResource("4_jwv5r")

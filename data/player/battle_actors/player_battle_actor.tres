@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://3val1kw3ysgx"
 [resource]
 script = ExtResource("1_ay17s")
 name = "Player"
+id = 1
 level = 1
 next_level_xp = 50.0
 stat_manager = SubResource("Resource_u5qgi")
