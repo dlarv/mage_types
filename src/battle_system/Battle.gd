@@ -3,7 +3,7 @@ extends Node
 signal battle_ended(endState: EndState)
 
 enum EndState { WON, DEFEATED, FLED }
-enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES }
+enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES, TEAM_0, TEAM_1, ATTACKS }
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const ActorAction := preload("res://src/battle_system/ActorAction.gd")
@@ -54,7 +54,6 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	if ai.dialog_resource != null:
 		_dialog_box.data = ai.dialog_resource
 
-
 	gui = BattleGUI.instantiate()
 	add_child(gui)
 	gui.actions_selected.connect(_on_player_actions_selected)
@@ -78,7 +77,12 @@ func query_battlefield_state(asker: BattleActor, param: BattlefieldStateParams) 
 				return allies
 			else:
 				return enemies
-
+		BattlefieldStateParams.ATTACKS:
+			return _actions
+		BattlefieldStateParams.TEAM_0:
+			return allies
+		BattlefieldStateParams.TEAM_1:
+			return enemies
 
 	return null
 
@@ -135,6 +139,7 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 		
 		# Apply action effects.
 		var res: Dictionary = action.action.apply_effects(action.actor, action.targets)
+		action.actor.action_used.emit(action.action)
 		var msg: Array[String] = res.msg
 		var missed: bool = res.get("missed", false)
 

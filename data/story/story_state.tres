@@ -25,6 +25,10 @@ variables = Dictionary[String, Variant]({
 "type": 4,
 "value": "no"
 },
+"misc_battle_data": {
+"type": 4,
+"value": ""
+},
 "player_name": {
 "type": 4,
 "value": "Player"

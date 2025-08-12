@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=72 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -196,6 +196,7 @@ turn = 0
 id = "1_0"
 displayAfterTurn = false
 repeat = false
+battle_story_interface = null
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_jgi7c"]
@@ -204,6 +205,7 @@ turn = 1
 id = "1_1a"
 displayAfterTurn = false
 repeat = false
+battle_story_interface = null
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_cqwbg"]
@@ -212,6 +214,7 @@ turn = 1
 id = "1_1b"
 displayAfterTurn = true
 repeat = false
+battle_story_interface = null
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_q3kex"]
@@ -220,6 +223,7 @@ turn = 2
 id = "1_2b"
 displayAfterTurn = true
 repeat = false
+battle_story_interface = null
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_hm5b2"]
@@ -247,14 +251,34 @@ turn = 0
 id = "2_0"
 displayAfterTurn = false
 repeat = false
+battle_story_interface = "none"
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_33qpb"]
 script = ExtResource("21_j7vgi")
 turn = 1
-id = "2_1"
+id = "2_1a"
 displayAfterTurn = false
 repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_k83x5"]
+script = ExtResource("21_j7vgi")
+turn = 1
+id = "2_1b"
+displayAfterTurn = true
+repeat = false
+battle_story_interface = "player_spell_element"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_b8tmp"]
+script = ExtResource("21_j7vgi")
+turn = 2
+id = "2_2b"
+displayAfterTurn = true
+repeat = false
+battle_story_interface = "none"
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_ifjjt"]
@@ -269,9 +293,9 @@ metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="Resource" id="Resource_behgl"]
 script = ExtResource("28_lwhbe")
-set_seed = ""
+set_seed = "BOSS2"
 dialog_resource = ExtResource("23_ftqqi")
-dialog_ids = Array[ExtResource("21_j7vgi")]([SubResource("Resource_hnpqp"), SubResource("Resource_33qpb")])
+dialog_ids = Array[ExtResource("21_j7vgi")]([SubResource("Resource_hnpqp"), SubResource("Resource_33qpb"), SubResource("Resource_k83x5"), SubResource("Resource_b8tmp")])
 reward_xp = 50.0
 reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_ifjjt")])
 metadata/_custom_type_script = "uid://n8ulld1m40ie"

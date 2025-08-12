@@ -16,6 +16,8 @@ signal equipment_equipped(equipment: Equipment)
 ## Called when opponents choose their action during battle.
 @warning_ignore("unused_signal")
 signal action_selected(action: _BattleAction)
+@warning_ignore("unused_signal")
+signal action_used(action: _BattleAction)
 
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
 
@@ -145,13 +147,16 @@ func set_element(id: int, element: ElementalType) -> void:
 	if dmg != 0:
 		apply_damage(int(dmg), false)
 
+
 func get_element(id: int) -> ElementalType:
 	if id == 0:
 		return element1
 	return element2
 
+
 func is_element(element: ElementalType) -> bool:
 	return element1 == element or element2 == element
+
 
 # Teaches actor spell contained within scroll.
 # If the actor does not meet the requirements, return an array containing the unmet requirements.
