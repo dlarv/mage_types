@@ -109,9 +109,9 @@ Each of these sections will weave through each other.
 **Rewards**
 - Core realigns to Purple.
 - Enough xp to level up
-	- Hp: 50 -> 54
+	- Hp: 50 -> 55
 	- MAttack: 8 -> 12
-	- RAttack: 8 -> 12
+	- RAttack: 8 -> 11
 	- MDefense: 10 -> 12
 	- RDefense: 10 -> 13
 	- Speed: 10 -> 11
@@ -175,7 +175,8 @@ Each of these sections will weave through each other.
 - Touches on side effects
 - Acts as a final lesson before the player fights the miniboss. Unlike the previous two fights, the player can lose this fight
 
-**Dialog**	
+**Dialog**
+
 
 **Starting Config**
 - Player (Purple/Purple)

@@ -28,8 +28,8 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] "Where am I" thread
 	- [ ] "Player doesn't know about Primary and Secondary types" thread
 	- [ ] Add poker player and Denim dialog
-	- [ ] Make Swole Enclave dialog less cringe
-		- [ ] Their name should be changed to something old-timey (Brawny Enclave?)
+	- [ ] Make Adonis Enclave dialog less cringe
+		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
 - [ ] Remodel rec room
 - [ ] Redesign tutorial bosses
 	- [ ] Write dialog
@@ -39,6 +39,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Add 'dark souls' boss
 	- [ ] Decide on player reward
 - [ ] Refactor AttackEffect input fields to use Godot::Expression?
+- [ ] Add temporary info screen describing transmutation system overview
 - [x] Alter dialogue nodes to use StoryManager.variables
 	- [x] Remove unused code
 	- [x] When game is saved, ensure variables are serialized/deserialized
