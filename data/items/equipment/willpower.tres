@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://bbec0n6bcglhb"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=7 format=3 uid="uid://bbec0n6bcglhb"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_gj31e"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_4dc40"]
 [ext_resource type="Script" uid="uid://cvxp8g3bj6t6y" path="res://src/items/equipment/ModEquipmentEffect.gd" id="2_4omxa"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_ks20p"]
 [ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="3_tsc7p"]
@@ -8,6 +9,7 @@
 [sub_resource type="Resource" id="Resource_4dc40"]
 script = ExtResource("2_4omxa")
 type = 0
+metadata/prevent_defeat = Dictionary[ExtResource("2_4dc40"), bool]({})
 metadata/_custom_type_script = "uid://cvxp8g3bj6t6y"
 
 [resource]

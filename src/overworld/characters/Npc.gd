@@ -3,6 +3,8 @@ extends MagiClay
 
 signal battle_ended(state: Battle.EndState)
 
+const BATTLE_DELAY := 0.5
+
 @export var auto_trigger := false
 @export var disabled := false:
 	set(val):
@@ -70,6 +72,7 @@ func _on_body_entered(body:Node3D) -> void:
 
 ## Called by OverworldConnector is this character is part of the "wild_enemies" group.
 func _end_battle_cooldown() -> void:
+	await get_tree().create_timer(BATTLE_DELAY).timeout
 	_on_cooldown = false 
 
 

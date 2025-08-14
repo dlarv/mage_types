@@ -9,9 +9,9 @@ const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const ActorAction := preload("res://src/battle_system/ActorAction.gd")
 const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
 
-@export var gui: Node3D
 @export var ai: OpponentController 
 @export var _dialog_box: DialogueBox
+var gui: Node3D
 
 var enemies: Array[BattleActor] = []
 var allies: Array[BattleActor] = []
