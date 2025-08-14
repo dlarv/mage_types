@@ -249,6 +249,8 @@ func _process(delta) -> void:
 
 
 func _input(event) -> void:
+	# Dlarv: Hiding DialogueBox works like pausing dialog
+	if not visible: return
 	if is_running() and Input.is_action_just_pressed(skip_input_action):
 		if _wait_effect and not _wait_effect.skip:
 			_wait_effect.skip = true

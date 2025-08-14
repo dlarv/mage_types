@@ -196,7 +196,7 @@ turn = 0
 id = "1_0"
 displayAfterTurn = false
 repeat = false
-battle_story_interface = null
+battle_story_interface = "none"
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_jgi7c"]
@@ -205,7 +205,7 @@ turn = 1
 id = "1_1a"
 displayAfterTurn = false
 repeat = false
-battle_story_interface = null
+battle_story_interface = "none"
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_cqwbg"]
@@ -214,7 +214,7 @@ turn = 1
 id = "1_1b"
 displayAfterTurn = true
 repeat = false
-battle_story_interface = null
+battle_story_interface = "none"
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_q3kex"]
@@ -223,7 +223,7 @@ turn = 2
 id = "1_2b"
 displayAfterTurn = true
 repeat = false
-battle_story_interface = null
+battle_story_interface = "none"
 metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
 
 [sub_resource type="Resource" id="Resource_hm5b2"]
@@ -349,7 +349,6 @@ world = NodePath("../Overworld")
 overworld = NodePath("../Overworld")
 dialog_box = NodePath("../DialogueBox_Layer/DialogueBox")
 hud = NodePath("../HUD_Layer")
-battle_delay = 2.0
 _player = NodePath("../Overworld/Player")
 
 [node name="DialogueBox_Layer" type="CanvasLayer" parent="."]

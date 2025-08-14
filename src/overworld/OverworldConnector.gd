@@ -6,11 +6,10 @@ extends Node3D
 @export var dialog_box: DialogueBox
 @export var hud: CanvasLayer
 
-# Amount of time to wait between a battle ending and a new one starting.
-@export var battle_delay: float
-
 @export var _player: Node3D
+
 var _current_story_actor: StoryActor = null
+var _paused_dialog := false
 
 func _ready() -> void:
 	_player = get_tree().get_first_node_in_group("player")
@@ -28,7 +27,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
 		Logger.save_log()
-	if event.is_action_pressed("skip_dialog"):
+	if event.is_action_pressed("skip_dialog") and not _paused_dialog:
 		if _current_story_actor:
 			_current_story_actor.skip_dialog()
 		dialog_box.stop()
@@ -43,11 +42,9 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> 
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	hud.hide()
-	# add_child(battle)
 	Battle.start(allies, Inventory.get_battle_items(), enemy.team, enemy.ai)
 	UIManager.in_battle_mode = true
 	await Battle.battle_ended
-	# battle.queue_free()
 	hud.show()
 	UIManager.in_battle_mode = false
 	
@@ -61,8 +58,6 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> 
 	world.process_mode = Node.PROCESS_MODE_INHERIT
 
 	# Prevent player from getting mobbed by enemies.
-	# Wild enemies (those that do not need a cooldown) will wait until this is called.
-	await get_tree().create_timer(battle_delay).timeout
 	get_tree().call_group("wild_enemies", "_end_battle_cooldown")
 
 
@@ -79,6 +74,15 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 		var val: DialogSignal = await dialog_box.dialogue_signal
 		if val == DialogSignal.PLAY_CUTSCENE: 
 			await _play_cutscene(npc)
+		elif val == DialogSignal.BATTLE_STARTED:
+			dialog_box.hide()
+			get_tree().paused = false
+			_paused_dialog = true
+			await _on_player_battle_started(_player.team, npc.enemy_actor)
+			dialog_box.show()
+			_paused_dialog = false
+			await get_tree().create_timer(0.1).timeout
+			get_tree().paused = true
 		elif val != DialogSignal.DIALOG_ENDED:
 			sigName = val
 

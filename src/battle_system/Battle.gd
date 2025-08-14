@@ -60,7 +60,6 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	gui.setup(allies, allyItems, enemies)
 	_prep_next_turn()
 	await _dialog(false)
-	_dialog_box.skip_input_action = "interact"
 
 
 func query_battlefield_state(asker: BattleActor, param: BattlefieldStateParams) -> Variant:
