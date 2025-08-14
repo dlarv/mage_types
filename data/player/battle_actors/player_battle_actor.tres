@@ -10,19 +10,20 @@
 
 [sub_resource type="Resource" id="Resource_c2eox"]
 script = ExtResource("1_u5qgi")
+alignment_values = Array[int]([0, 3, 0, 0, 0, 0, 0, 0])
 _alignment = "blank"
 alignment_locked = false
 metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
 [sub_resource type="Resource" id="Resource_u5qgi"]
 script = ExtResource("8_1u0x0")
-_base_melee_attack = 12.0
-_base_ranged_attack = 12.0
-_base_melee_defense = 12.0
-_base_ranged_defense = 13.0
-_base_speed = 11.0
+_base_melee_attack = 8.0
+_base_ranged_attack = 8.0
+_base_melee_defense = 10.0
+_base_ranged_defense = 10.0
+_base_speed = 10.0
 _base_evasion = 100.0
-hp = 54.0
+hp = 50.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
@@ -33,8 +34,8 @@ level = 1
 next_level_xp = 50.0
 stat_manager = SubResource("Resource_u5qgi")
 reset_hp_after_battle = true
-_element1 = "purple"
-_element2 = "purple"
+_element1 = "blue"
+_element2 = "blue"
 alignment_manager = SubResource("Resource_c2eox")
 _alignment = "blank"
 attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_i3ogw"), ExtResource("4_8yxg4")])
