@@ -106,7 +106,7 @@ func look_towards(point: Vector3, yOnly := true) -> void:
 
 
 func add_ally(allyName: String) -> void:
-	var id := PartyMember.keys().find(allyName)
+	var id := PartyMember.keys().find(allyName.to_upper())
 	if id == -1:
 		push_warning("Could not find partymember with name '%s'" % allyName)
 		return
@@ -122,7 +122,7 @@ func add_ally(allyName: String) -> void:
 
 
 func remove_ally(allyName: String) -> void:
-	var id := PartyMember.keys().find(allyName)
+	var id := PartyMember.keys().find(allyName.to_upper())
 	if id == -1:
 		push_warning("Could not find partymember with name '%s'" % allyName)
 		return

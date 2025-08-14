@@ -40,6 +40,8 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Decide on player reward
 - [ ] Refactor AttackEffect input fields to use Godot::Expression?
 - [ ] Add temporary info screen describing transmutation system overview
+- [x] New party members can be added to player's team using dialog
+	- SetSignal node cannot happed directly after a battle signal node. Put some dialog in between first.
 - [x] Alter dialogue nodes to use StoryManager.variables
 	- [x] Remove unused code
 	- [x] When game is saved, ensure variables are serialized/deserialized

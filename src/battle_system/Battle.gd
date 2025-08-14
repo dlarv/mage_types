@@ -99,6 +99,7 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
+		StoryManager.set_variable("battle_result", "fled")
 		await gui.display_message("You ran away.")
 		battle_ended.emit(EndState.FLED)
 		_resolve_end_of_battle(false)
@@ -250,11 +251,13 @@ func _dialog(isAfterTurn: bool) -> void:
 
 func _check_if_battle_ended() -> bool:
 	if _defeated_allies == len(allies):
+		StoryManager.set_variable("battle_result", "defeated")
 		await gui.display_message("You were defeated...")
 		await _resolve_end_of_battle()
-		battle_ended.emit(EndState.WON)
+		battle_ended.emit(EndState.DEFEATED)
 		return true
 	elif _defeated_enemies == len(enemies):
+		StoryManager.set_variable("battle_result", "won")
 		await gui.display_message("You won!")
 		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.WON)
@@ -283,7 +286,6 @@ func _resolve_end_of_battle(pause:=true) -> void:
 		await rewardScreen.pressed
 		$CanvasLayer.remove_child(rewardScreen)
 		$CanvasLayer.hide()
-
 
 
 func _prep_next_turn() -> void:

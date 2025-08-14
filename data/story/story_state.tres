@@ -5,6 +5,10 @@
 [resource]
 script = ExtResource("1_c8dqn")
 variables = Dictionary[String, Variant]({
+"battle_result": {
+"type": 4,
+"value": ""
+},
 "counter": {
 "type": 2,
 "value": 0

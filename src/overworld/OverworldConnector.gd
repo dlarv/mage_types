@@ -79,10 +79,11 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 			get_tree().paused = false
 			_paused_dialog = true
 			await _on_player_battle_started(_player.team, npc.enemy_actor)
-			dialog_box.show()
-			_paused_dialog = false
+			if dialog_box.is_running():
+				dialog_box.show()
 			await get_tree().create_timer(0.1).timeout
 			get_tree().paused = true
+			_paused_dialog = false
 		elif val == DialogSignal.ADD_ALLY:
 			var ally: String = StoryManager.get_variable("target_ally")
 			_player.add_ally(ally)

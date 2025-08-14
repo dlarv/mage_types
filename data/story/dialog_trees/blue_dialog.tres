@@ -47,12 +47,12 @@ nodes = {
 },
 &"0_7": {
 "link": &"7_2",
-"offset": Vector2(-2140, 1380),
+"offset": Vector2(-3100, 1680),
 "start_id": "ADONIS_2"
 },
 &"0_8": {
 "link": &"7_4",
-"offset": Vector2(-3120, 1620),
+"offset": Vector2(-3080, 2420),
 "start_id": "ADONIS_3"
 },
 &"1_1": {
@@ -404,6 +404,19 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": 2
 },
+&"1_5": {
+"dialogue": "Result: {{battle_result}}",
+"offset": Vector2(-2020, 720),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"5_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "asdf"
+},
 &"1_61": {
 "dialogue": "Safer than you'd think, actually.",
 "offset": Vector2(3060, 1060),
@@ -497,7 +510,7 @@ nodes = {
 },
 &"1_68": {
 "dialogue": "They seem engrossed in their workout...",
-"offset": Vector2(-1500, 1340),
+"offset": Vector2(-1740, 1220),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -510,7 +523,7 @@ nodes = {
 },
 &"1_69": {
 "dialogue": "Its been forever since we've gotten to mentor someone new!",
-"offset": Vector2(-1500, 1600),
+"offset": Vector2(-2440, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -545,7 +558,7 @@ nodes = {
 },
 &"1_70": {
 "dialogue": "Once you've finished talking to Aegean, I'll teach you about side effects!",
-"offset": Vector2(-1180, 1600),
+"offset": Vector2(-2120, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -558,7 +571,7 @@ nodes = {
 },
 &"1_71": {
 "dialogue": "Heck yeah!",
-"offset": Vector2(-1500, 1860),
+"offset": Vector2(-2440, 1880),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -571,7 +584,7 @@ nodes = {
 },
 &"1_72": {
 "dialogue": "That was fun! Duke'll help you bring it home!",
-"offset": Vector2(-1500, 2120),
+"offset": Vector2(-2440, 2140),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -584,7 +597,7 @@ nodes = {
 },
 &"1_73": {
 "dialogue": "Get pumped bro!",
-"offset": Vector2(-2520, 1600),
+"offset": Vector2(-2460, 2400),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -597,7 +610,7 @@ nodes = {
 },
 &"1_74": {
 "dialogue": "You're doing great! You're almost there!",
-"offset": Vector2(-2520, 1860),
+"offset": Vector2(-2460, 2660),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -901,25 +914,25 @@ nodes = {
 },
 &"3_3": {
 "curr_signal": 0,
-"link": "END",
+"link": &"1_5",
 "offset": Vector2(-1760, 1120),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_4": {
 "curr_signal": 0,
 "link": "END",
-"offset": Vector2(-800, 1860),
+"offset": Vector2(-1740, 1880),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_5": {
 "curr_signal": 0,
 "link": "END",
-"offset": Vector2(-1820, 1860),
+"offset": Vector2(-1760, 2660),
 "signal_value": "BATTLE_STARTED"
 },
 &"4_10": {
 "link": &"3_5",
-"offset": Vector2(-2200, 1860),
+"offset": Vector2(-2140, 2660),
 "type": 0,
 "value": "finished",
 "variable": "swole_enclave_quest"
@@ -982,10 +995,20 @@ nodes = {
 },
 &"4_9": {
 "link": &"3_4",
-"offset": Vector2(-1180, 1860),
+"offset": Vector2(-2120, 1880),
 "type": 0,
 "value": "3",
 "variable": "swole_enclave_quest"
+},
+&"5_1": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "battle_result",
+"value2": "won"
+}]),
+"false": "END",
+"offset": Vector2(-1440, 1020),
+"true": &"9_1"
 },
 &"5_2": {
 "condition": Array[Dictionary]([{
@@ -1054,7 +1077,7 @@ nodes = {
 "link": &"1_72"
 }
 },
-"offset": Vector2(-1900, 1420)
+"offset": Vector2(-2880, 1660)
 },
 &"7_3": {
 "default": &"1_66",
@@ -1132,7 +1155,7 @@ nodes = {
 "link": &"1_74"
 }
 },
-"offset": Vector2(-2920, 1620)
+"offset": Vector2(-2860, 2420)
 },
 &"7_5": {
 "default": &"1_7",
@@ -1183,6 +1206,15 @@ nodes = {
 "offset": Vector2(-3420, -201),
 "tint_color": Color(0.133333, 0.133333, 0.133333, 0.294118),
 "title": "Misc"
+},
+&"9_1": {
+"curr_signal": 4,
+"link": "END",
+"offset": Vector2(-1040, 1080),
+"signal_value": "ADD_ALLY",
+"type": 0,
+"value": "DENIM",
+"variable": "target_ally"
 }
 }
 strays = Array[String](["8_1", "7_3", "1_66"])
