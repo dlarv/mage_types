@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="3_e1u62"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="3_xfaiw"]
-[ext_resource type="Resource" uid="uid://dkgwtmxs7v2mq" path="res://data/demo/character_files/battle_actors/partner_battle_actor.tres" id="4_ljayj"]
+[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/denim_battle_actor.tres" id="4_x42xx"]
 [ext_resource type="Texture2D" uid="uid://b0kj6udppi815" path="res://assets/3d/textures/player/player_diffuse.png" id="6_omm5f"]
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="8_r804x"]
 
@@ -61,10 +61,12 @@ jump_time_to_peak = 0.2
 jump_time_to_descent = 0.25
 variable_jump_height_modifier = 20.0
 dash_speed = 500.0
-battle_actor = ExtResource("2_x42xx")
-team = Array[ExtResource("3_3kubr")]([ExtResource("4_ljayj")])
 model = NodePath("player")
 anim_player = NodePath("player/AnimationPlayer")
+battle_actor = ExtResource("2_x42xx")
+_playable_characters = Dictionary[int, ExtResource("3_3kubr")]({
+0: ExtResource("4_x42xx")
+})
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

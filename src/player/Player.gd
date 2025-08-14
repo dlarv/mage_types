@@ -1,22 +1,23 @@
 extends CharacterBody3D
 
+enum PartyMember { DENIM }
+
 signal actor_changed(actor: BattleActor)
 signal team_changed(team: Array[BattleActor])
 signal battle_started(allies: Array[BattleActor], enemies: Array[BattleActor])
 signal dialog_started(dialog_id: String, npc: Variant)
 signal cutscene_started(player: AnimationPlayer, id: String)
 
+@export var model: Node3D
+@export var anim_player: AnimationPlayer
+
+@export_category("Party")
 @export var battle_actor: BattleActor:
 	set(val):
 		battle_actor = val
 		# When BattleActor is changed via AnimationPlayer, the player screen will not update.
 		if not Engine.is_editor_hint():
 			actor_changed.emit(val)
-@export var team: Array[BattleActor]:
-	set(val):
-		team = val
-		if not Engine.is_editor_hint():
-			team_changed.emit(team)
 ## Used by AnimationPlayers to add BattleActors to player's team.
 @export var add_team_member: BattleActor:
 	set(val):
@@ -26,9 +27,16 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 			team.append(val)
 			team_changed.emit(team)
 
-@export var model: Node3D
-@export var anim_player: AnimationPlayer
+@export var _playable_characters: Dictionary[PartyMember, BattleActor] = {}
+@export var _active_party: Array[PartyMember]:
+	set(val):
+		_active_party = val
 
+		if Engine.is_editor_hint(): return
+
+
+		team_changed.emit(team)
+var team: Array[BattleActor] = []
 
 var player_name: String: 
 	get:
@@ -40,9 +48,6 @@ var active_chunk: Chunk = null
 var _golem: Golem = null
 
 func _ready() -> void:
-	if not battle_actor in team:
-		team.insert(0, battle_actor)
-	
 	player_name = Settings.player_name
 	Settings.player_name_changed.connect(func(name: String) -> void:
 		player_name = name)
@@ -100,17 +105,56 @@ func look_towards(point: Vector3, yOnly := true) -> void:
 	model.global_rotation_degrees.y += 180
 
 
+func add_ally(allyName: String) -> void:
+	var id := PartyMember.keys().find(allyName)
+	if id == -1:
+		push_warning("Could not find partymember with name '%s'" % allyName)
+		return
+
+	Logger.append_story_log("%s joined the player's party!" % allyName)
+	_active_party.append(id as PartyMember)
+
+	team = [ battle_actor ]
+	for actor in _active_party:
+		team.append(_playable_characters[actor])
+
+	team_changed.emit(team)
+
+
+func remove_ally(allyName: String) -> void:
+	var id := PartyMember.keys().find(allyName)
+	if id == -1:
+		push_warning("Could not find partymember with name '%s'" % allyName)
+		return
+
+	var index := _active_party.find(id as PartyMember)
+	if id == -1:
+		push_warning("Tried to remove partymember '%s' from active party, but they are not active." % allyName)
+		return
+
+	Logger.append_story_log("%s left the player's party!" % allyName)
+	_active_party.remove_at(index)
+
+	team = [ battle_actor ]
+	for actor in _active_party:
+		team.append(_playable_characters[actor])
+
+	team_changed.emit(team)
+
+
 func serialize() -> Dictionary:
-	var teamData := []
-	for t in team:
-		teamData.append(t.serialize())
+	var teamData := {}
+	for key in _playable_characters:
+		teamData[key] = _playable_characters[key].serialize()
+
 	return {
 		"path": get_path(),
 		"battle_actor": battle_actor.serialize(),
-		"team": teamData,
+		"pcs": teamData,
 		"position": global_position,
 		"rotation": global_rotation,
 		"model_rotation": model.global_rotation,
+		"active_team": _active_party,
 	}
 
 
@@ -123,7 +167,10 @@ func deserialize(data: Dictionary) -> void:
 		model.global_rotation = data["model_rotation"]
 	if "battle_actor" in data:
 		battle_actor.deserialize(data["battle_actor"])
-	# if "team" in data:
-	# 	team = []
-	# 	for t in data["team"]:
-	# 		team.append(BattleActor.new())
+
+	if not "pcs" in data: return
+	for key: PartyMember in data["pcs"]:
+		_playable_characters[key].deserialize(data["pcs"][key])
+	
+	if "active_team" in data:
+		_active_party = data["active_team"]

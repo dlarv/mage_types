@@ -83,12 +83,18 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 			_paused_dialog = false
 			await get_tree().create_timer(0.1).timeout
 			get_tree().paused = true
+		elif val == DialogSignal.ADD_ALLY:
+			var ally: String = StoryManager.get_variable("target_ally")
+			_player.add_ally(ally)
+		elif val == DialogSignal.REMOVE_ALLY:
+			var ally: String = StoryManager.get_variable("target_ally")
+			_player.remove_ally(ally)
 		elif val != DialogSignal.DIALOG_ENDED:
 			sigName = val
 
 	match sigName:
 		DialogSignal.PLAY_CUTSCENE: 
-			var id: String = dialog_box.variables["current_cutscene"]
+			var id: String = StoryManager.get_variable("current_cutscene")
 			await npc.story_actor.play_cutscene(id)
 			get_tree().paused = false
 		DialogSignal.BATTLE_STARTED: 
@@ -98,6 +104,12 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 			UIManager.open_vendor_menu(npc.vendor_actor)
 			await UIManager.vendor_menu_closed
 			get_tree().paused = false
+		DialogSignal.ADD_ALLY:
+			var ally: String = StoryManager.get_variable("target_ally")
+			_player.add_ally(ally)
+		DialogSignal.REMOVE_ALLY:
+			var ally: String = StoryManager.get_variable("target_ally")
+			_player.remove_ally(ally)
 		_: 
 			get_tree().paused = false
 	UIManager.is_in_dialog = false
@@ -109,7 +121,6 @@ func _play_cutscene(npc: Variant) -> void:
 	var id: String = dialog_box.variables["current_cutscene"]
 
 	var prevProcessMode := dialog_box.process_mode
-	# dialog_box.process_mode = PROCESS_MODE_DISABLED
 	get_tree().paused = true
 	dialog_box.hide()
 
@@ -118,14 +129,11 @@ func _play_cutscene(npc: Variant) -> void:
 	# If cutscene is last node of branch, the last dialog spoken will be stuck on screen.
 	if dialog_box.is_running():
 		dialog_box.show()
-	# dialog_box.process_mode = prevProcessMode
 	get_tree().paused = false
 
 
 func _on_player_cutscene_started(player:AnimationPlayer, id:String) -> void:
-	# overworld.process_mode = PROCESS_MODE_DISABLED
 	get_tree().paused = true
 	player.play(id)
 	await player.animation_finished
-	# overworld.process_mode = PROCESS_MODE_INHERIT
 	get_tree().paused = false

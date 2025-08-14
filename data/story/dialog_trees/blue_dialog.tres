@@ -329,19 +329,6 @@ nodes = {
 "size": Vector2(300, 308),
 "speaker": 2
 },
-&"1_3": {
-"dialogue": "1",
-"offset": Vector2(-1540, 1040),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_5",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Aegean"
-},
 &"1_30": {
 "dialogue": "Actually {{player_name}}, have you had the pleasure of meeting Denim and I's little friend out there.",
 "offset": Vector2(2060, 1000),
@@ -416,19 +403,6 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": 2
-},
-&"1_5": {
-"dialogue": "2",
-"offset": Vector2(-1197.81, 1064.43),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Aegean"
 },
 &"1_61": {
 "dialogue": "Safer than you'd think, actually.",
@@ -927,7 +901,7 @@ nodes = {
 },
 &"3_3": {
 "curr_signal": 0,
-"link": &"1_3",
+"link": "END",
 "offset": Vector2(-1760, 1120),
 "signal_value": "BATTLE_STARTED"
 },
@@ -1083,7 +1057,7 @@ nodes = {
 "offset": Vector2(-1900, 1420)
 },
 &"7_3": {
-"default": &"1_68",
+"default": &"1_66",
 "fork_title": "Combat Tutorial",
 "forks": {
 0: {

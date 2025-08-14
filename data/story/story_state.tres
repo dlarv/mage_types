@@ -36,6 +36,10 @@ variables = Dictionary[String, Variant]({
 "swole_enclave_quest": {
 "type": 4,
 "value": "no"
+},
+"target_ally": {
+"type": 4,
+"value": ""
 }
 })
 metadata/_custom_type_script = "uid://c34b050k6onw6"
