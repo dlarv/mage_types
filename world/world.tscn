@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=71 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -33,6 +33,7 @@
 [ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/demo/bosses/boss_3.tres" id="28_k8wd0"]
 [ext_resource type="Script" uid="uid://n8ulld1m40ie" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="28_lwhbe"]
 [ext_resource type="Resource" uid="uid://bm7p4gie7rf0y" path="res://data/items/spell_scrolls/phobias/phobia_b.tres" id="30_ll3gq"]
+[ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="31_avd5l"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -221,15 +222,27 @@ reward_xp = 50.0
 reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_ifjjt")])
 metadata/_custom_type_script = "uid://n8ulld1m40ie"
 
-[sub_resource type="Resource" id="Resource_bwxdu"]
+[sub_resource type="Resource" id="Resource_en1oy"]
+resource_name = "Willpower"
+script = ExtResource("21_2tavo")
+item = ExtResource("31_avd5l")
+id = 1
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_pfbnl"]
 script = ExtResource("25_bwxdu")
 aggression = 0.5
-intelligence = 0.4
+intelligence = 1.0
 transmutation_bias = 1.0
 _transmutation_pref = "blank"
+dialog_resource = ExtResource("23_ftqqi")
 dialog_ids = Array[ExtResource("21_j7vgi")]([])
 reward_xp = 50.0
-reward_items = Array[ExtResource("21_2tavo")]([])
+reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_en1oy")])
+metadata/_custom_type_script = "uid://bt4qggtg1nnwn"
 
 [sub_resource type="Resource" id="Resource_ftqqi"]
 script = ExtResource("25_bwxdu")
@@ -377,10 +390,10 @@ disappear_on_defeat = false
 [node name="Boss3" parent="Overworld/Blue/Preset1" instance=ExtResource("8_bwct4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1.803, 0)
 team = Array[ExtResource("12_lwhbe")]([ExtResource("28_k8wd0")])
-ai = SubResource("Resource_bwxdu")
+ai = SubResource("Resource_pfbnl")
 
 [node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss3" instance=ExtResource("21_llyeo")]
-ai = SubResource("Resource_bwxdu")
+ai = SubResource("Resource_pfbnl")
 _team = Array[ExtResource("12_lwhbe")]([ExtResource("28_k8wd0")])
 disappear_on_defeat = false
 
