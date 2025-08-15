@@ -57,7 +57,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 	if rand > accuracy:
 		Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
 		msg.append("But it missed!")
-		return { "msg": "\n".join(msg), "missed": true }
+		return { "msg": msg, "missed": true }
 
 	var affinity: float = scaling_factor.x
 	if scaling_factor.w > -1 and user.element1 == element and user.element2 == element:
@@ -131,5 +131,3 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 # override
 func is_action_available(actor: BattleActor) -> bool:
 	return true
-
-
