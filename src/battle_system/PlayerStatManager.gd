@@ -148,3 +148,28 @@ func add_xp(xp: float) -> int:
 		levels += 1
 	
 	return levels
+
+
+func serialize() -> Dictionary: 
+	var output := super.serialize()
+	output["hp_xp"] = _hp_xp
+	output["melee_attack_xp"] = _melee_attack_xp
+	output["melee_defense_xp"] = _melee_defense_xp
+	output["ranged_attack_xp"] = _ranged_attack_xp
+	output["ranged_defense_xp"] = _ranged_defense_xp
+	output["speed_xp"] = _speed_xp
+	output["total_xp"] = total_xp
+	output["xp_threshold"] = next_level_xp
+	return output
+
+
+func deserialize(data: Dictionary) -> void: 
+	super.deserialize(data)
+	_hp_xp = data["hp_xp"]
+	_melee_attack_xp = data["melee_attack_xp"]
+	_melee_defense_xp = data["melee_defense_xp"]
+	_ranged_attack_xp = data["ranged_attack_xp"]
+	_ranged_defense_xp = data["ranged_defense_xp"]
+	_speed_xp = data["speed_xp"]
+	total_xp  = data["total_xp"]
+	next_level_xp  = data["xp_threshold"]
