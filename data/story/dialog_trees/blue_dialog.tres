@@ -41,8 +41,8 @@ nodes = {
 "start_id": "MINI_BOSS_!"
 },
 &"0_6": {
-"link": &"1_67",
-"offset": Vector2(-3040, 1060),
+"link": &"7_3",
+"offset": Vector2(-3100, 1200),
 "start_id": "ADONIS_1"
 },
 &"0_7": {
@@ -93,6 +93,32 @@ nodes = {
 },
 "size": Vector2(300, 273),
 "speaker": 2
+},
+&"1_12": {
+"dialogue": "Excellent work. You two are surely be ready to rid us of that fiend!",
+"offset": Vector2(-400, 2800),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
+},
+&"1_13": {
+"dialogue": "An admirable try! Come back when thou art ready to try again.",
+"offset": Vector2(-780, 2940),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
 },
 &"1_14": {
 "dialogue": "Its a long story. Remind me to tell you about it later.",
@@ -329,6 +355,19 @@ nodes = {
 "size": Vector2(300, 308),
 "speaker": 2
 },
+&"1_3": {
+"dialogue": "Nicely done!",
+"offset": Vector2(-1940, 960),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"4_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
 &"1_30": {
 "dialogue": "Actually {{player_name}}, have you had the pleasure of meeting Denim and I's little friend out there.",
 "offset": Vector2(2060, 1000),
@@ -373,6 +412,58 @@ nodes = {
 "size": Vector2(300, 308),
 "speaker": 2
 },
+&"1_33": {
+"dialogue": "Come now, my children. Show me what thou hast learnt!",
+"offset": Vector2(-2060, 2800),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"3_5",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
+},
+&"1_34": {
+"dialogue": "Actually, now that you both know what's up, why don't you and Denim both take on Duke?",
+"offset": Vector2(-1160, 1860),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"9_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Dallas"
+},
+&"1_35": {
+"dialogue": "That works for me.",
+"offset": Vector2(-460, 1860),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_36": {
+"dialogue": "I shall be thy final challenge. Return once Aegean and Dallas have taught you their ways.",
+"offset": Vector2(-2060, 2540),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
+},
 &"1_4": {
 "dialogue": "Hey stranger, I see you've met our little friend.",
 "offset": Vector2(-1580, 60),
@@ -405,17 +496,30 @@ nodes = {
 "speaker": 2
 },
 &"1_5": {
-"dialogue": "Result: {{battle_result}}",
-"offset": Vector2(-2020, 720),
+"dialogue": "Sick dude!",
+"offset": Vector2(-1880, 1880),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"5_1",
+"link": &"4_9",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "asdf"
+"speaker": "Dallas"
+},
+&"1_6": {
+"dialogue": "Ha!",
+"offset": Vector2(-1480, 2780),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"5_6",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
 },
 &"1_61": {
 "dialogue": "Safer than you'd think, actually.",
@@ -483,7 +587,7 @@ nodes = {
 "speaker": 2
 },
 &"1_66": {
-"dialogue": "Nice! Talk to my buddies Dallas and Duke, they'll walk you through the next steps. ",
+"dialogue": "Nice! Talk to my buddies Dallas and Duke. They'll walk you through the next steps. ",
 "offset": Vector2(-2500, 1320),
 "options": {
 0: {
@@ -496,12 +600,12 @@ nodes = {
 "speaker": "Aegean"
 },
 &"1_67": {
-"dialogue": "Say less bro, we gotchu!",
+"dialogue": "Combat training, eh? Don't worry, we'll be sure to pull our punches.",
 "offset": Vector2(-2480, 1000),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_8",
+"link": &"3_3",
 "text": ""
 }
 },
@@ -510,7 +614,7 @@ nodes = {
 },
 &"1_68": {
 "dialogue": "They seem engrossed in their workout...",
-"offset": Vector2(-1740, 1220),
+"offset": Vector2(-1940, 1220),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -522,7 +626,7 @@ nodes = {
 "speaker": "    "
 },
 &"1_69": {
-"dialogue": "Its been forever since we've gotten to mentor someone new!",
+"dialogue": "It's been forever since we've gotten to mentor someone new!",
 "offset": Vector2(-2440, 1620),
 "options": {
 0: {
@@ -570,12 +674,12 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_71": {
-"dialogue": "Heck yeah!",
+"dialogue": "Let's go!",
 "offset": Vector2(-2440, 1880),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_9",
+"link": &"3_4",
 "text": ""
 }
 },
@@ -583,7 +687,7 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_72": {
-"dialogue": "That was fun! Duke'll help you bring it home!",
+"dialogue": "That was fun! The Duke'll help you bring it home!",
 "offset": Vector2(-2440, 2140),
 "options": {
 0: {
@@ -596,12 +700,12 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_73": {
-"dialogue": "Get pumped bro!",
-"offset": Vector2(-2460, 2400),
+"dialogue": "Tis been an age since we last did train another anew!",
+"offset": Vector2(-2400, 2540),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_36",
 "text": ""
 }
 },
@@ -609,12 +713,12 @@ nodes = {
 "speaker": "Duke"
 },
 &"1_74": {
-"dialogue": "You're doing great! You're almost there!",
-"offset": Vector2(-2460, 2660),
+"dialogue": "Hark! An excellent job indeed!",
+"offset": Vector2(-2400, 2800),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_10",
+"link": &"1_33",
 "text": ""
 }
 },
@@ -914,25 +1018,25 @@ nodes = {
 },
 &"3_3": {
 "curr_signal": 0,
-"link": &"1_5",
-"offset": Vector2(-1760, 1120),
+"link": &"1_3",
+"offset": Vector2(-2160, 1000),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_4": {
 "curr_signal": 0,
-"link": "END",
-"offset": Vector2(-1740, 1880),
+"link": &"1_5",
+"offset": Vector2(-2120, 1880),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_5": {
 "curr_signal": 0,
-"link": "END",
-"offset": Vector2(-1760, 2660),
+"link": &"1_6",
+"offset": Vector2(-1720, 2800),
 "signal_value": "BATTLE_STARTED"
 },
 &"4_10": {
-"link": &"3_5",
-"offset": Vector2(-2140, 2660),
+"link": &"1_12",
+"offset": Vector2(-780, 2800),
 "type": 0,
 "value": "finished",
 "variable": "swole_enclave_quest"
@@ -987,28 +1091,18 @@ nodes = {
 "variable": "swole_enclave_quest"
 },
 &"4_8": {
-"link": &"3_3",
-"offset": Vector2(-2140, 1120),
+"link": "END",
+"offset": Vector2(-1620, 980),
 "type": 0,
 "value": "2",
 "variable": "swole_enclave_quest"
 },
 &"4_9": {
-"link": &"3_4",
-"offset": Vector2(-2120, 1880),
+"link": &"1_34",
+"offset": Vector2(-1560, 1880),
 "type": 0,
 "value": "3",
 "variable": "swole_enclave_quest"
-},
-&"5_1": {
-"condition": Array[Dictionary]([{
-"operator": 0,
-"value1": "battle_result",
-"value2": "won"
-}]),
-"false": "END",
-"offset": Vector2(-1440, 1020),
-"true": &"9_1"
 },
 &"5_2": {
 "condition": Array[Dictionary]([{
@@ -1039,6 +1133,16 @@ nodes = {
 "false": &"1_30",
 "offset": Vector2(1640, 680),
 "true": &"1_29"
+},
+&"5_6": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "battle_result",
+"value2": "won"
+}]),
+"false": &"1_13",
+"offset": Vector2(-1160, 2780),
+"true": &"4_10"
 },
 &"7_2": {
 "default": &"1_68",
@@ -1209,13 +1313,13 @@ nodes = {
 },
 &"9_1": {
 "curr_signal": 4,
-"link": "END",
-"offset": Vector2(-1040, 1080),
+"link": &"1_35",
+"offset": Vector2(-840, 1860),
 "signal_value": "ADD_ALLY",
 "type": 0,
 "value": "DENIM",
 "variable": "target_ally"
 }
 }
-strays = Array[String](["8_1", "7_3", "1_66"])
+strays = Array[String](["8_1"])
 characters = "res://data/demo/character_files/character_list.tres"

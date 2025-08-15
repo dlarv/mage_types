@@ -170,19 +170,25 @@ Each of these sections will weave through each other.
 **Rewards**
 - Half of the xp needed to level up
 - Hydrophobia (*Attack*)
+- Denim joins your party
 #### Tutorial 3
 **Objectives**
 - Touches on side effects
 - Acts as a final lesson before the player fights the miniboss. Unlike the previous two fights, the player can lose this fight
+- Player will have Denim in their party, allowing them to get a feel for the team aspect of the combat system
 
 **Dialog**
-
+> 
 
 **Starting Config**
 - Player (Purple/Purple)
 	- Magenta Throw (*Attack*)
 	- Purple Hit (*Attack*)
 	- Hydrophobia (*Attack*)
+- Denim (Purple/Blue)
+	- Blue Throw (*Attack*)
+	- Magenta Hit (*Attack*)
+	- Shield (*Attack*)
 - Boss 2 (Blue/Purple)
 	- Magenta Throw (*Attack*)
 

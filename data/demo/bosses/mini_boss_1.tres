@@ -21,7 +21,6 @@ script = ExtResource("7_00pxc")
 name = "Boss 6"
 id = 0
 level = 2
-next_level_xp = 100.0
 stat_manager = SubResource("Resource_6u7d0")
 reset_hp_after_battle = true
 _element1 = "blue"
