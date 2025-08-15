@@ -99,7 +99,7 @@ func pop_menu() -> void:
 	if len(_menu_stack) == 0:
 		# overworld.process_mode = Node.PROCESS_MODE_INHERIT
 		# This helps if player has opened menu while talking to an NPC.
-		get_tree().paused = is_in_dialog
+		get_tree().paused = is_in_dialog and not in_battle_mode
 		hide()
 	else:
 		_menu_stack[-1].show()
