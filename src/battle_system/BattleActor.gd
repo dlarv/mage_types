@@ -25,8 +25,6 @@ const StatusEffectManager := preload("res://src/battle_system/StatusEffectManage
 ## Positive for allies/pcs, negative for enemies, 0 for randomly generated.
 @export var id := 0
 @export var level := 1
-@export var next_level_xp := 100.0
-var total_xp := 0.0
 
 @export_category("Stats")
 var statuses := StatusEffectManager.new()
@@ -367,15 +365,7 @@ func remove_func_override(key: StringName) -> void:
 
 
 func add_xp(xp: float) -> int:
-	total_xp += xp
-	var levels := 0
-	while total_xp >= next_level_xp:
-		total_xp = total_xp - next_level_xp
-		next_level_xp = next_level_xp * 2
-		levels += 1
-	
-	# level += levels
-	return levels
+	return stat_manager.add_xp(xp)
 
 
 func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:

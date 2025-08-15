@@ -29,7 +29,7 @@ func set_actor(actor: BattleActor) -> void:
 	%RangedAttack.text = str(actor.get_stat(Stats.RANGED_ATTACK))
 	%RangedDefense.text = str(actor.get_stat(Stats.RANGED_DEFENSE))
 	%Speed.text = str(actor.get_stat(Stats.SPEED))
-	%XpSlider.value = int(actor.total_xp / actor.next_level_xp)
+	%XpSlider.value = int(actor.stat_manager.total_xp / actor.stat_manager.next_level_xp)
 	%Level.text = "Lv%d" % actor.level
 
 
@@ -38,11 +38,11 @@ func add_xp(amount: float) -> void:
 	if levels == 0: return
 	var stats: Dictionary[Stats, float] = _actor.level_up(levels)
 
-	tween.tween_property(%XpSlider, "value", int(_actor.total_xp / _actor.next_level_xp * 100), DELAY)
+	tween.tween_property(%XpSlider, "value", int(_actor.stat_manager.total_xp / _actor.stat_manager.next_level_xp * 100), DELAY)
 	tween.play()
 	await next
 
-	%XpSlider.value = int(_actor.total_xp / _actor.next_level_xp * 100)
+	%XpSlider.value = int(_actor.stat_manager.total_xp / _actor.stat_manager.next_level_xp * 100)
 	if levels == 0: return
 
 	%Level.text = "Lv%d +%d" % [_actor.level, levels]

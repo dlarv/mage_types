@@ -8,6 +8,10 @@ const HP_XP_BOOST := 0.3
 # This value x6 is the approx maximum number of stat points a character can receive upon level up.
 const MAX_STAT_POINTS := 3
 
+@export_category("Experience")
+@export var next_level_xp := 100.0
+@export var total_xp := 0.0
+
 var _hp_xp := 0.0
 var _melee_attack_xp := 0.0
 var _ranged_attack_xp := 0.0
@@ -132,3 +136,15 @@ func _calc_boost(stat: Stats, xp: float, levels: int, average: float) -> float:
 
 	set_xp_stat(stat, decimal)
 	return amount
+
+
+func add_xp(xp: float) -> int:
+	var levels := 0
+	total_xp += xp
+
+	while total_xp >= next_level_xp:
+		total_xp -= next_level_xp
+		next_level_xp *= 2
+		levels += 1
+	
+	return levels

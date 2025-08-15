@@ -62,8 +62,8 @@ func setup(actor: BattleActor) -> void:
 
 func _init_stats(actor: BattleActor) -> void:
 	%Level.text = "Lv%d" % actor.level
-	%XpSlider.value = int(actor.total_xp / actor.next_level_xp * 100)
-	%XpTotals.text = "%d/%d" % [int(actor.total_xp), int(actor.next_level_xp)]
+	%XpSlider.value = int(actor.stat_manager.total_xp / actor.stat_manager.next_level_xp * 100)
+	%XpTotals.text = "%d/%d" % [int(actor.stat_manager.total_xp), int(actor.stat_manager.next_level_xp)]
 
 	for child in %Stats_HBox.get_children():
 		child.set_value(actor)
