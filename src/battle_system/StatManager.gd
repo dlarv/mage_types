@@ -11,6 +11,7 @@ const BASE_MAX_MOD := 3.0
 var MIN_MOD := 0.1
 var MAX_MOD := 3.0
 
+@export_category("Base Stats")
 @export var _base_melee_attack: float = 100
 @export var _base_ranged_attack: float = 100
 @export var _base_melee_defense: float = 100

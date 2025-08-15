@@ -31,10 +31,7 @@ signal cutscene_started(player: AnimationPlayer, id: String)
 @export var _active_party: Array[PartyMember]:
 	set(val):
 		_active_party = val
-
 		if Engine.is_editor_hint(): return
-
-
 		team_changed.emit(team)
 var team: Array[BattleActor] = []
 
@@ -168,9 +165,17 @@ func deserialize(data: Dictionary) -> void:
 	if "battle_actor" in data:
 		battle_actor.deserialize(data["battle_actor"])
 
+	# team_changed signal will send, but team array will be empty.
+	# we'll do it manually at end of func.
+	if "active_team" in data: 
+		_active_party = data["active_team"]
+	team.resize(len(_active_party))
+
 	if not "pcs" in data: return
 	for key: PartyMember in data["pcs"]:
 		_playable_characters[key].deserialize(data["pcs"][key])
-	
-	if "active_team" in data:
-		_active_party = data["active_team"]
+
+		var index := _active_party.find(key)
+		if index != -1:
+			team[index] = _playable_characters[key]
+	team_changed.emit(team)
