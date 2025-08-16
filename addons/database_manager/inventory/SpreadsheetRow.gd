@@ -32,7 +32,7 @@ func _init(s=null, n=null, q=null, m=null, d=null, i=null, inventory=null) -> vo
 	max_quantity.value_changed.connect(func(val): item_slot.max_quantity = val)
 
 	description = d
-	description.text_changed.connect(func(val): item_slot.item.details = description.text)
+	description.text_changed.connect(func(): item_slot.item.details = description.text)
 
 
 func delete() -> void:

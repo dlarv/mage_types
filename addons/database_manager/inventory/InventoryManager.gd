@@ -27,11 +27,14 @@ func add_row(itemSlot: ItemSlot) -> void:
 
 	var quantity := SpinBox.new()
 	quantity.value = 0
+	quantity.max_value = 9999
 
 	var maxQuantity := SpinBox.new()
-	quantity.value = 9999
+	maxQuantity.value = 9999
+	maxQuantity.max_value = 9999
 
 	var description := TextEdit.new()
+	description.custom_minimum_size.y = 50
 
 	var row: Row = Row.new(select, name, quantity, maxQuantity, description, itemSlot, inventory)
 	row.selected.connect(_on_row_selected)
