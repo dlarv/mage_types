@@ -25,4 +25,4 @@ func _make_visible(visible):
 		editor.visible = visible
 
 func _get_plugin_name():
-	return 'Attack Manager'
+	return 'DBMS'

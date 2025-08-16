@@ -3,7 +3,7 @@ extends PanelContainer
 
 signal row_selected(row: Row)
 
-const Row := preload("components/SpreadsheetRow.gd")
+const Row := preload("SpreadsheetRow.gd")
 const ElementDropDown := preload("res://src/elements/gui/element_dropdown.tscn")
 const ATTACK_PATH := "res://data/battle_system/battle_actions/attacks/"
 
@@ -11,6 +11,7 @@ var rows: Array[Row]
 
 var _button_group := ButtonGroup.new()
 var _selected_row: Row = null
+
 
 func _enter_tree() -> void:
 	_on_load_button_pressed()

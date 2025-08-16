@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://me5vx756pnd4"]
+
+[ext_resource type="Script" uid="uid://b7l1wrrwlin87" path="res://addons/database_manager/Main.gd" id="1_v26lo"]
+[ext_resource type="PackedScene" uid="uid://ypnjiritppyp" path="res://addons/database_manager/attack_manager/attack_manager.tscn" id="2_ibs53"]
+[ext_resource type="PackedScene" uid="uid://bs5eo3jdq2x6c" path="res://addons/database_manager/inventory/inventory_manager.tscn" id="3_55wg6"]
+
+[node name="DBMS" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+script = ExtResource("1_v26lo")
+
+[node name="AttackManager" parent="." instance=ExtResource("2_ibs53")]
+layout_mode = 2
+
+[node name="InventoryManager" parent="." instance=ExtResource("3_55wg6")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

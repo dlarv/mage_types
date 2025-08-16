@@ -18,7 +18,10 @@ var attack: Attack
 
 func _init(select=null, name=null, elements=null, attackRange=null, targets=null, priority=null, power=null, accuracy=null, description=null, scaling=null, attack=null):
 	self.select = select
-	self.select.pressed.connect(func(): EditorInterface.edit_resource(attack))
+	self.select.pressed.connect(func(): 
+		EditorInterface.edit_resource(attack)
+		selected.emit(self)
+	)
 	self.name = name
 	self.name.text_submitted.connect(func(text: String): self.attack.name = text)
 	self.elements = elements
@@ -56,7 +59,6 @@ func _init(select=null, name=null, elements=null, attackRange=null, targets=null
 	else:
 		self.attack = Attack.new()
 
-	select.pressed.connect(func(): selected.emit(self))
 
 
 func delete() -> void:
@@ -69,6 +71,7 @@ func delete() -> void:
 	power.queue_free()
 	accuracy.queue_free()
 	description.queue_free()
+	scaling_factors.queue_free()
 
 
 func update() -> void:

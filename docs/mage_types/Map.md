@@ -195,7 +195,6 @@ Each of these sections will weave through each other.
 **Rewards**
 - Rest of xp needed to level up
 - Willpower (*Equipment*)
-- Denim joins your party
 ### Supply Closet
 This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.
 ## Caves

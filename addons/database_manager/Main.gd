@@ -1,7 +1,7 @@
 @tool
 extends TabContainer
 
-const Row := preload("components/SpreadsheetRow.gd")
+const Row := preload("attack_manager/SpreadsheetRow.gd")
 
 
 func _on_attack_manager_row_selected(row: Row) -> void:
@@ -11,4 +11,3 @@ func _on_attack_manager_row_selected(row: Row) -> void:
 
 func _on_builder_back_button_pressed() -> void:
 	current_tab = 0
-

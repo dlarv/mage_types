@@ -1,20 +1,20 @@
 [gd_resource type="Resource" script_class="BattleActor" load_steps=9 format=3 uid="uid://dymkgn52hgj3n"]
 
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_skfmv"]
-[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="2_tv53x"]
-[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="3_74bn2"]
-[ext_resource type="Resource" uid="uid://b3nggi4ftlucw" path="res://data/battle_system/battle_actions/attacks/elementals/red/desolation.tres" id="4_i2r1h"]
+[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_ealhk"]
+[ext_resource type="Resource" uid="uid://blo35ub8xw8yg" path="res://data/battle_system/battle_actions/attacks/basic/hit_c.tres" id="3_x5w7d"]
+[ext_resource type="Resource" uid="uid://biyyeewaek1sj" path="res://data/battle_system/battle_actions/attacks/elementals/red/drain.tres" id="5_ealhk"]
 [ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="5_l5xr3"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="6_jwvs8"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="7_md84n"]
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("7_md84n")
-_base_melee_attack = 8.0
+_base_melee_attack = 10.0
 _base_ranged_attack = 8.0
-_base_melee_defense = 20.0
-_base_ranged_defense = 20.0
-_base_speed = 10.0
+_base_melee_defense = 30.0
+_base_ranged_defense = 30.0
+_base_speed = 9.0
 _base_evasion = 100.0
 hp = 90.0
 
@@ -28,4 +28,4 @@ reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
 _alignment = "blue"
-attacks = Array[ExtResource("1_skfmv")]([ExtResource("2_tv53x"), ExtResource("3_74bn2"), ExtResource("4_i2r1h"), ExtResource("5_l5xr3")])
+attacks = Array[ExtResource("1_skfmv")]([ExtResource("2_ealhk"), ExtResource("3_x5w7d"), ExtResource("5_l5xr3"), ExtResource("5_ealhk")])
