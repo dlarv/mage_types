@@ -91,3 +91,6 @@ func _on_load_button_pressed() -> void:
 		add_row(item)
 	for item in inventory.key_items:
 		add_row(item)
+
+func _on_open_button_pressed() -> void:
+	EditorInterface.open_scene_from_path("res://src/items/Inventory.tscn")

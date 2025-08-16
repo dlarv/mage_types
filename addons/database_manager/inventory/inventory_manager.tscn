@@ -190,22 +190,16 @@ text = "Description"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="AddRowButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Add Row
-"
-
-[node name="RemoveRowButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Remove Row
-"
-
 [node name="LoadButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Load"
 
+[node name="OpenButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Open 
+Inventory"
+
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddRowButton" to="." method="add_row"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/RemoveRowButton" to="." method="remove_row"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/OpenButton" to="." method="_on_open_button_pressed"]
