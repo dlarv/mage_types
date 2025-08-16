@@ -4,7 +4,7 @@ extends EditorPlugin
 var editor
 
 func _enter_tree():
-	editor = preload("res://src/battle_system/attack_builder/attack_builder.tscn").instantiate()
+	editor = preload("res://src/battle_system/attack_builder/main.tscn").instantiate()
 	# add editor to main viewport
 	get_editor_interface().get_editor_main_screen().add_child(editor)
 	editor.hide()
@@ -25,4 +25,4 @@ func _make_visible(visible):
 		editor.visible = visible
 
 func _get_plugin_name():
-	return 'Attack Builder'
+	return 'Attack Manager'

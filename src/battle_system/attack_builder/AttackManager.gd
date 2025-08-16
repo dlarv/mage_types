@@ -19,23 +19,19 @@ func _enter_tree() -> void:
 func add_row(attack: Attack=null) -> void:
 	var select := CheckBox.new()
 	select.button_group = _button_group
+
 	var name := LineEdit.new()
 	name.text = "Hit"
 	var elements := ElementDropDown.instantiate()
 
 	var attackRange := OptionButton.new()
-	attackRange.add_item("Melee") 
-	attackRange.add_item("Ranged") 
-	attackRange.add_item("Status")
+	for key: String in _BattleAction.AttackRange.keys():
+		attackRange.add_item(key)
+
 
 	var targets := OptionButton.new()
-	targets.add_item("Self")
-	targets.add_item("Ally")
-	targets.add_item("Allies")
-	targets.add_item("Enemy")
-	targets.add_item("Enemies")
-	targets.add_item("All")
-	targets.add_item("Random")
+	for key: String in _BattleAction.TargetType.keys():
+		targets.add_item(key)
 
 	var priority := SpinBox.new()
 	priority.value = 0
@@ -49,10 +45,45 @@ func add_row(attack: Attack=null) -> void:
 	accuracy.max_value = 1.0
 	accuracy.step = 0.05
 
+	var scalingContainer := GridContainer.new()
+	scalingContainer.columns = 2
+
+	var noMatch := SpinBox.new()
+	noMatch.tooltip_text = "No Match"
+	noMatch.value = 100
+	noMatch.step = 1.0
+	noMatch.min_value = -500
+	noMatch.max_value = 500
+	scalingContainer.add_child(noMatch)
+
+	var affinityMatch := SpinBox.new()
+	affinityMatch.tooltip_text = "Affinity Match"
+	affinityMatch.value = 100
+	affinityMatch.step = 1.0
+	affinityMatch.min_value = -500
+	affinityMatch.max_value = 500
+	scalingContainer.add_child(affinityMatch)
+
+	var yesMatch := SpinBox.new()
+	yesMatch.tooltip_text = "Match"
+	yesMatch.value = 100
+	yesMatch.step = 1.0
+	yesMatch.min_value = -500
+	yesMatch.max_value = 500
+	scalingContainer.add_child(yesMatch)
+
+	var doubleMatch := SpinBox.new()
+	doubleMatch.tooltip_text = "Double Match"
+	doubleMatch.value = -1
+	doubleMatch.step = 1.0
+	doubleMatch.min_value = -500
+	doubleMatch.max_value = 500
+	scalingContainer.add_child(doubleMatch)
+
 	var description := TextEdit.new()
 	description.placeholder_text = "Description"
 
-	var row: Row = Row.new(select, name, elements, attackRange, targets, priority, power, accuracy, description, attack)
+	var row: Row = Row.new(select, name, elements, attackRange, targets, priority, power, accuracy, description, scalingContainer, attack)
 	row.selected.connect(_on_row_selected)
 	rows.append(row)
 
@@ -64,6 +95,7 @@ func add_row(attack: Attack=null) -> void:
 	%GridContainer.add_child(priority)
 	%GridContainer.add_child(power)
 	%GridContainer.add_child(accuracy)
+	%GridContainer.add_child(scalingContainer)
 	%GridContainer.add_child(description)
 
 	if attack:
@@ -76,6 +108,10 @@ func add_row(attack: Attack=null) -> void:
 		power.value = attack.power
 		accuracy.value = attack.accuracy
 		description.text = attack.details
+		noMatch.value = attack.scaling_factor.x
+		affinityMatch.value = attack.scaling_factor.y
+		yesMatch.value = attack.scaling_factor.z
+		doubleMatch.value = attack.scaling_factor.w
 
 
 func remove_row() -> void:

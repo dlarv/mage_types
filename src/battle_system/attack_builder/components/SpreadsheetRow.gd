@@ -13,10 +13,12 @@ var priority: SpinBox
 var power: SpinBox
 var accuracy: SpinBox
 var description: TextEdit
+var scaling_factors: GridContainer
 var attack: Attack
 
-func _init(select=null, name=null, elements=null, attackRange=null, targets=null, priority=null, power=null, accuracy=null, description=null, attack=null):
+func _init(select=null, name=null, elements=null, attackRange=null, targets=null, priority=null, power=null, accuracy=null, description=null, scaling=null, attack=null):
 	self.select = select
+	self.select.pressed.connect(func(): EditorInterface.edit_resource(attack))
 	self.name = name
 	self.name.text_submitted.connect(func(text: String): self.attack.name = text)
 	self.elements = elements
@@ -40,6 +42,15 @@ func _init(select=null, name=null, elements=null, attackRange=null, targets=null
 	self.accuracy.value_changed.connect(func(val: float): self.attack.accuracy = val)
 	self.description = description
 	self.description.text_changed.connect(func(): self.attack.details = self.description.text)
+	self.scaling_factors = scaling
+	self.scaling_factors.get_child(0).value_changed.connect(func(val: float): 
+			self.attack.scaling_factor.x = int(val))
+	self.scaling_factors.get_child(1).value_changed.connect(func(val: float): 
+			self.attack.scaling_factor.y = int(val))
+	self.scaling_factors.get_child(2).value_changed.connect(func(val: float): 
+			self.attack.scaling_factor.z = int(val))
+	self.scaling_factors.get_child(3).value_changed.connect(func(val: float): 
+			self.attack.scaling_factor.w = int(val))
 	if attack:
 		self.attack = attack
 	else:
@@ -73,3 +84,8 @@ func update() -> void:
 		power.value = attack.power
 		accuracy.value = attack.accuracy
 		description.text = attack.details
+
+		scaling_factors.get_child(0).value = attack.scaling_factor.x
+		scaling_factors.get_child(1).value = attack.scaling_factor.y
+		scaling_factors.get_child(2).value = attack.scaling_factor.z
+		scaling_factors.get_child(3).value = attack.scaling_factor.w

@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3 uid="uid://me5vx756pnd4"]
+
+[ext_resource type="Script" uid="uid://b7l1wrrwlin87" path="res://src/battle_system/attack_builder/Main.gd" id="1_v26lo"]
+[ext_resource type="Script" uid="uid://c2qopybiuqcl3" path="res://src/battle_system/attack_builder/AttackManager.gd" id="2_s2uwy"]
+
+[node name="AttackBuilder" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_v26lo")
+
+[node name="AttackManager" type="PanelContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_s2uwy")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="AttackManager"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AttackManager/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AttackManager/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 10
+
+[node name="SelectHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Select"
+
+[node name="NameHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="ElementHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Element"
+
+[node name="RangeHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Range"
+
+[node name="TargetsHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Targets"
+
+[node name="PriorityHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Priority"
+
+[node name="PowerHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Power"
+
+[node name="AccuracyHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Accuracy"
+
+[node name="ScalingHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Scaling"
+
+[node name="DescriptionHeader" type="Label" parent="AttackManager/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Description"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AttackManager/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddRowButton" type="Button" parent="AttackManager/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add Row
+"
+
+[node name="RemoveRowButton" type="Button" parent="AttackManager/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Remove Row
+"
+
+[node name="EditButton" type="Button" parent="AttackManager/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Edit"
+
+[node name="LoadButton" type="Button" parent="AttackManager/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[connection signal="row_selected" from="AttackManager" to="." method="_on_attack_manager_row_selected"]
+[connection signal="pressed" from="AttackManager/MarginContainer/VBoxContainer/HBoxContainer/AddRowButton" to="AttackManager" method="add_row"]
+[connection signal="pressed" from="AttackManager/MarginContainer/VBoxContainer/HBoxContainer/RemoveRowButton" to="AttackManager" method="remove_row"]
+[connection signal="pressed" from="AttackManager/MarginContainer/VBoxContainer/HBoxContainer/EditButton" to="AttackManager" method="edit_row"]
+[connection signal="pressed" from="AttackManager/MarginContainer/VBoxContainer/HBoxContainer/LoadButton" to="AttackManager" method="_on_load_button_pressed"]
