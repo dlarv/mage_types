@@ -60,8 +60,7 @@ func _init(select=null, name=null, elements=null, attackRange=null, targets=null
 		self.attack = Attack.new()
 
 
-
-func delete() -> void:
+func delete(deleteFile:=false) -> void:
 	select.queue_free()
 	name.queue_free()
 	elements.queue_free()
@@ -72,6 +71,10 @@ func delete() -> void:
 	accuracy.queue_free()
 	description.queue_free()
 	scaling_factors.queue_free()
+
+	if deleteFile:
+		var err := DirAccess.remove_absolute(attack.resource_path)
+		error_string(err)
 
 
 func update() -> void:

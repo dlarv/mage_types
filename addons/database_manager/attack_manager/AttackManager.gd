@@ -2,27 +2,51 @@
 extends PanelContainer
 
 signal row_selected(row: Row)
+signal file_selected(file_name: String)
+signal removal_confirmed(val: bool)
 
 const Row := preload("SpreadsheetRow.gd")
 const ElementDropDown := preload("res://src/elements/gui/element_dropdown.tscn")
 const ATTACK_PATH := "res://data/battle_system/battle_actions/attacks/"
 
 var rows: Array[Row]
+var file_dialog: EditorFileDialog
 
 var _button_group := ButtonGroup.new()
 var _selected_row: Row = null
 
 
 func _enter_tree() -> void:
+	$ConfirmationDialog.canceled.connect(func():
+		removal_confirmed.emit(false)
+	)
+	$ConfirmationDialog.confirmed.connect(func():
+		removal_confirmed.emit(true)
+	)
 	_on_load_button_pressed()
+	if not file_dialog and Engine.is_editor_hint():
+		file_dialog = EditorFileDialog.new()
+		file_dialog.file_selected.connect(func(path: String) -> void:
+			file_selected.emit(path)
+		)
+		file_dialog.get_cancel_button().pressed.connect(func() -> void:
+			file_selected.emit("")
+		)
+
+		add_child(file_dialog)
 
 
 func add_row(attack: Attack=null) -> void:
+	var attackName := "Hit"
+	if attack == null and file_dialog:
+		attack = await _get_attack_from_fs()
+		attackName = attack.name
+
 	var select := CheckBox.new()
 	select.button_group = _button_group
 
 	var name := LineEdit.new()
-	name.text = "Hit"
+	name.text = attackName
 	var elements := ElementDropDown.instantiate()
 
 	var attackRange := OptionButton.new()
@@ -117,18 +141,13 @@ func add_row(attack: Attack=null) -> void:
 
 func remove_row() -> void:
 	if not _selected_row: return
-	_selected_row.delete()
+	$ConfirmationDialog.dialog_text = "Would you like to also remove the file at '%s'?" \
+			% _selected_row.attack.resource_path
+	$ConfirmationDialog.show()
+
+	var val: bool = await removal_confirmed
+	_selected_row.delete(val)
 	rows.remove_at(rows.find(_selected_row))
-
-
-func edit_row() -> void:
-	if not _selected_row: return
-	row_selected.emit(_selected_row)
-	
-	var button :=_button_group.get_pressed_button()
-	if button:
-		button.set_pressed_no_signal(false)
-	_selected_row = null
 
 
 func _on_row_selected(row: Row) -> void:
@@ -142,6 +161,7 @@ func _on_load_button_pressed() -> void:
 
 	traverse(ATTACK_PATH)
 
+
 func traverse(root: String) -> void:
 	var dir := DirAccess.open(root)
 	dir.list_dir_begin()
@@ -154,3 +174,24 @@ func traverse(root: String) -> void:
 			traverse(root + "/" + fileName)
 
 		fileName = dir.get_next()
+
+
+func _get_attack_from_fs() -> Attack:
+	file_dialog.popup_file_dialog()
+
+	var path: String = await file_selected
+
+	var attackName := path.split("/")[-1].split(".")[0]
+	if attackName.is_empty():
+		print("Attack creation cancelled.")
+		return
+
+	var attack := Attack.new()
+	attack.name = attackName
+	var err := ResourceSaver.save(attack, path + ".tres")
+	if err != Error.OK:
+		print("Error creating new attack %s at %s." % [attackName, path])
+		error_string(err)
+	else:
+		print("New attack created at %s." % path)
+	return attack

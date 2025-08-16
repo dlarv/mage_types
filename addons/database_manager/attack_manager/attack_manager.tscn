@@ -84,15 +84,12 @@ layout_mode = 2
 text = "Remove Row
 "
 
-[node name="EditButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Edit"
-
 [node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Load"
 
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AddRowButton" to="." method="add_row"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RemoveRowButton" to="." method="remove_row"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/EditButton" to="." method="edit_row"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
