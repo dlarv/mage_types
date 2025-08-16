@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://me5vx756pnd4"]
 
-[ext_resource type="Script" uid="uid://b7l1wrrwlin87" path="res://src/battle_system/attack_builder/Main.gd" id="1_v26lo"]
-[ext_resource type="Script" uid="uid://c2qopybiuqcl3" path="res://src/battle_system/attack_builder/AttackManager.gd" id="2_s2uwy"]
+[ext_resource type="Script" uid="uid://b7l1wrrwlin87" path="res://addons/attackbuilder/Main.gd" id="1_v26lo"]
+[ext_resource type="Script" uid="uid://c2qopybiuqcl3" path="res://addons/attackbuilder/AttackManager.gd" id="2_s2uwy"]
 
 [node name="AttackBuilder" type="TabContainer"]
 anchors_preset = 15
