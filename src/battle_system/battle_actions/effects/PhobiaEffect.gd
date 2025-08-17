@@ -2,7 +2,6 @@
 extends StatusEffect 
 class_name PhobiaEffect 
 
-
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element: String = "blank":
 	get:

@@ -7,9 +7,9 @@
 resource_name = "Stasis"
 script = ExtResource("1_rugnf")
 id = 0
-duration = 1
+_duration = "1"
 icon = ExtResource("1_2jes6")
-description = "Prevents all transmutations from occuring."
+description = ""
 name = "Stasis"
-strength = 0.0
+_strength = "0.0"
 message = "{target} has entered stasis!"

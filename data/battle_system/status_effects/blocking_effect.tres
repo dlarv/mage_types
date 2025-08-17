@@ -7,9 +7,9 @@
 resource_name = "Blocking"
 script = ExtResource("1_ll5eu")
 id = 1
-duration = 2
+_duration = "2"
 icon = ExtResource("1_174ot")
-description = "Prevents the next attack from doing any damage."
+description = ""
 name = "Blocking"
-strength = 1.0
+_strength = "1.0"
 message = "{target} is blocking!"
