@@ -24,7 +24,6 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
-- [ ] Bug: Xp slider not animating
 - [ ] Rewrite narrative setup
 	- [ ] "Where am I" thread
 	- [ ] "Player doesn't know about Primary and Secondary types" thread
@@ -37,6 +36,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Decide on player reward
 - [ ] Add temporary info screen describing transmutation system overview
 - [ ] Refactor AttackEffect input fields to use Godot::Expression?
+- [x] Bug: Xp slider not animating
 - [x] Redesign tutorial bosses
 	- [x] Write dialog
 	- [x] Decide player load out

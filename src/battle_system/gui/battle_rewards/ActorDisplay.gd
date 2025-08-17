@@ -9,8 +9,7 @@ var tween: Tween
 var _actor: BattleActor
 
 func _ready() -> void:
-	tween = create_tween()
-	if not tween.finished.is_connected(_next):
+	if tween and not tween.finished.is_connected(_next):
 		tween.finished.connect(_next)
 
 
@@ -29,16 +28,18 @@ func set_actor(actor: BattleActor) -> void:
 	%RangedAttack.text = str(actor.get_stat(Stats.RANGED_ATTACK))
 	%RangedDefense.text = str(actor.get_stat(Stats.RANGED_DEFENSE))
 	%Speed.text = str(actor.get_stat(Stats.SPEED))
-	%XpSlider.value = int(actor.stat_manager.total_xp / actor.stat_manager.next_level_xp)
+	%XpSlider.value = int(actor.stat_manager.total_xp / actor.stat_manager.next_level_xp * 100)
 	%Level.text = "Lv%d" % actor.level
 
 
 func add_xp(amount: float) -> void:
 	var levels := _actor.add_xp(amount)
-	if levels == 0: return
 	var stats: Dictionary[Stats, float] = _actor.level_up(levels)
 
-	tween.tween_property(%XpSlider, "value", int(_actor.stat_manager.total_xp / _actor.stat_manager.next_level_xp * 100), DELAY)
+	tween = create_tween()
+	var sliderValue := int(_actor.stat_manager.total_xp / _actor.stat_manager.next_level_xp * 100)
+	if levels > 0 and sliderValue == 0: sliderValue = 100
+	tween.tween_property(%XpSlider, "value", sliderValue, DELAY)
 	tween.play()
 	await next
 
@@ -55,5 +56,6 @@ func add_xp(amount: float) -> void:
 
 
 func _next(skip:=false) -> void:
-	tween.stop()
+	if tween:
+		tween.stop()
 	next.emit(skip)
