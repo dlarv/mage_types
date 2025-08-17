@@ -35,7 +35,7 @@ Each of these sections will weave through each other.
 - World geometry will get weirder the further the player is from the main path.
 	- I.e. infinite hallway, path to Lavender's puzzle.
 ### Rec Room
--  [[discussions/old_battle_tutorial|Original Battle Tutorial]]
+-  [[old_battle_tutorial|Original Battle Tutorial]]
 - High level boss is camped out in hall 2. Player will likely be defeated and forced to backtrack to rec room.
 - An enclave is camped out in the Rec Room. This enclave is very focused on fitness and combat, and thus is more than happy to give the player a hand. 
 - Player will receive 150 exp from this fight, allowing them to level up twice.

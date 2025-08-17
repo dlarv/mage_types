@@ -1,5 +1,5 @@
 ### Element Theming
-Tentative mapping of Elements onto other elements. If this goes somewhere, add it into [[#The Elements and their Regions]] and save this section as a #discussion.
+Tentative mapping of Elements onto other elements. If this goes somewhere, add it into [[Background#Lore|The Elements]] and save this section as a #discussion.
 
 I think it would make sense for Red, Green, and Blue to receive themes as sections of the color wheel, as well as their own identities.
  >[!note]
@@ -23,7 +23,7 @@ Green would make a lot of sense as an Earth/Poison type.
 - Radioactivity.
 - Crystal caves and jungle.
 
-Magenta makes a lot of sense as a Fairy type. The aesthetics of CB's Glitter type (tho not its mechanic) are also suitable. Its a very whimsical, artsy type.
+Magenta makes a lot of sense as a Fairy type. The aesthetics of CB's Glitter type (tho not its mechanic) are also suitable. Its a very whimsical, dreamy type. Its very surreal.
 
 # Theming Summarized
 

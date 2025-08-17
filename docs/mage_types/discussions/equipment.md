@@ -39,11 +39,5 @@ It could be cool to support the following conditions as well:
 - Change side effect dynamics?
 - Boost specific attacks.
 
-Using `BattleActor._func_overrides`, the following methods can be replaced with new ones:
- - apply_damage()
- - add_status_effect()
- - add_affinity()
- - lose_affinity()
- - try_revert_to_bias()
- - resolve_end_of_turn()
-Any items that modify these will likely need their own class (inheriting from `ModEquipmentEffect`).
+Using `BattleActor._func_overrides`, methods inside battle actor can be replaced.
+~~Any items that modify these will likely need their own class (inheriting from `ModEquipmentEffect`).~~ All methods are defined inside the `ModEquipmentEffect` class.

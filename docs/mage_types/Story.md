@@ -1,3 +1,4 @@
+***I'm gonna revisit all of this at some point.***
 # Intro
 Note: the player character's canonical name will be Alyss. The player can change this, of course, but that'll be the default name for now. 
 

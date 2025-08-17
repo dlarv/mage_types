@@ -1,4 +1,4 @@
-The UI would have to allow the user to select the following fields: 
+he UI would have to allow the user to select the following fields: 
 - Battle Action
 	- Name: string
 	- \*Animation: PackedScene

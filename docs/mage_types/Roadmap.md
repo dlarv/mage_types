@@ -28,18 +28,19 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] "Where am I" thread
 	- [ ] "Player doesn't know about Primary and Secondary types" thread
 	- [ ] Add poker player and Denim dialog
-	- [ ] Make Adonis Enclave dialog less cringe
+	- [x] Make Adonis Enclave dialog less cringe
 		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
 - [ ] Remodel rec room
-- [ ] Redesign tutorial bosses
-	- [ ] Write dialog
-	- [ ] Decide player load out
-	- [ ] Add rewards
-	- [ ] Training wheel equipment?
+- [ ] Ensure tutorial bosses are balanced
 - [ ] Add 'dark souls' boss
 	- [ ] Decide on player reward
-- [ ] Refactor AttackEffect input fields to use Godot::Expression?
 - [ ] Add temporary info screen describing transmutation system overview
+- [ ] Refactor AttackEffect input fields to use Godot::Expression?
+- [x] Redesign tutorial bosses
+	- [x] Write dialog
+	- [x] Decide player load out
+	- [x] Add rewards
+	- [x] Training wheel equipment?
 - [x] New party members can be added to player's team using dialog
 	- SetSignal node cannot happed directly after a battle signal node. Put some dialog in between first.
 - [x] Alter dialogue nodes to use StoryManager.variables
