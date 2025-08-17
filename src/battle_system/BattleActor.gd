@@ -392,7 +392,6 @@ func serialize() -> Dictionary:
 
 	return {
 		"name": name,
-		# "statuses": statuses.serialize(),
 		"level": level,
 		"stats": stat_manager.serialize(),
 		"hp": hp,

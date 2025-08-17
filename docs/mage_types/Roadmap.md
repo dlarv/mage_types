@@ -2,6 +2,7 @@
 - v0.6.0 will be the big version I'll release to my playtesters?
 - Doors should keep player's relative position when they go thru
 - [ ] Strong attacks should have cooldowns (warmups too?)
+- [ ] Revisit [[Story]], [[Background#The Factions]], and [[Background#Elemental System]]
 
 >[!summary] Realignment
 > I feel like I'm adding puzzles for the sake of adding them and furthermore I dislike the process. This isn't helped by the fact that this game isn't really meant to be a puzzle game. 

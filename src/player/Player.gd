@@ -178,4 +178,6 @@ func deserialize(data: Dictionary) -> void:
 		var index := _active_party.find(key)
 		if index != -1:
 			team[index] = _playable_characters[key]
+
 	team_changed.emit(team)
+	actor_changed.emit(battle_actor)
