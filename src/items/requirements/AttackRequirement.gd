@@ -13,14 +13,14 @@ func check(actor: Variant) -> bool:
 	if incompatible: return _has_any(actor.attacks)
 	return _has_all(actor.attacks)
 
-func _has_any(actorAttacks: Array[Attack]) -> bool:
-	for attack: Attack in attacks:
+func _has_any(actorAttacks: Array[_BattleAction]) -> bool:
+	for attack: _BattleAction in attacks:
 		if attack in actorAttacks:
 			return false
 	return true
 
-func _has_all(actorAttacks: Array[Attack]) -> bool:
-	for attack: Attack in attacks:
+func _has_all(actorAttacks: Array[_BattleAction]) -> bool:
+	for attack: _BattleAction in attacks:
 		if not attack in actorAttacks:
 			return false
 	return true 
