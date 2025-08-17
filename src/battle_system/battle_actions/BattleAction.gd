@@ -71,7 +71,7 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 			else:
 				end = targets[0].name
 
-	return { "msg": ["%s used %s on %s.\n" % [ user.name, name, end ]] as Array[String] }
+	return { "msg": ["%s used %s on %s." % [ user.name, name, end ]] as Array[String] }
 
 
 func apply_cost(user: BattleActor) -> float: 
