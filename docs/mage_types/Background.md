@@ -1,83 +1,280 @@
 # Lore
+## The Island and its History
 >[!note] Lattice World
->Forlorn is now a Lattice world. 
->It is an ephemeral subspace, which unlike the 4 main subspaces is (relatively) temporary. By temporary, this just means it'll likely only last a few centuries.
+>Forlorn is now a Lattice world.
 >
->The greater concepts of the Lattice will not be explained or necessary to understand to play the game; moreso present in the form of easter eggs.
+>The greater concepts of the Lattice will not be explained or necessary to understand to play the game; moreso present in the form of easter eggs. Unfortunately, I worry the idea of a multiverse is probably cliche at this point, but I plan to use it more as a background device (like Sanderson's cosmere).
 
-Forlorn was conceived as a Backrooms style otherworld, where people get trapped and lost. It has themes of mutation, adaptation, and survival. The previous version felt a little too 'light,' perse, with the inhabitants being systemically helpful. While I like the idea of pockets of cooperation, I think as a whole the place should be... well, Forlorn. Not grimdark, but a gloomy little place full of gloomy people.
+>[!important] Return to Form
+>Forlorn was conceived as a Backrooms style otherworld, where people get trapped and lost. It has themes of mutation, adaptation, and survival. The previous version felt a little too 'light,' perse, with the inhabitants being systemically helpful. While I like the idea of pockets of cooperation, I think as a whole the place should be... well, Forlorn. Not grimdark, but a gloomy little place full of gloomy people.
+>
+>Instead of regions, each element will have various factions. These factions are largely divided based on alignment/bias or shared interests.
 
-Instead of regions, each element will have various factions. These factions are largely divided based on alignment/bias or shared interests.
+**The Island**
+> As the foundation of reality shifted under its unmanagable weight, gaps began to form between worlds. In the subject of this phenomena, few concepts capture the imagination like *ephemeral subspaces*. Unfortunately, the pop culture understanding of them is largely based in misconceptions. An ephemeral subspace just means that the pocket is unstable and is more likely to collapse than the capital 's' *Subspaces*. The dreams of power and wealth to be found are mostly works of Woolyhood fiction. Having said that, Forlorn does have magic, which you can learn. However, this is not quite the power fantasy you may have in mind. 
 
-The island itself is a somewhat surreal landscape of natural and manmade environments. The entry point begins deep in the ground in a subterranean cave network. But with one wrong turn, you might find yourself in a parking garage controlled by Purple.
+**The Old Ones**
+>Long ago incomprehensible beings slipped into this pocket, wounded and broken. Like gravity bending spacetime, the mere presence of such beings is enough to force the Hume level above the *Genesis Threshold*, with this instance resulting in the creation of the island of Forlorn. Cursed with a flaw in their very designs, these beings were not long for this world, eventually unraveling into incoherency. With this decomposition, the *Elements* devolved, slipping from their eldritch pedestals into the realm of mortal comprehension.
+
+**The Elements**
+> These energies can be harnessed by mortals, though not without great cost. As the wielder uses these powers to bend reality around them, so too will their bodies and minds be bent in turn. As time progresses, the body is transmuted into an unrecognizable form, at least from a *superspace* perspective. This process in inevitable, an ontological result of existing in such a space. While seems that channeling this magic to cast spells can accelerate this process, testing is as of yet inconclusive. Some subjects who have never touched a spell undergo egregious mutations, while prolific mages can go for over a decade without *alignment*. Whatever the case may be, alignment is an inevitable fact of life here.
+
+**The Godlings**
+> Before succumbing to incoherency, the Elements too created life of their own. Though long since extinct, these entities (known as the *Godlings*) are responsible for much of the features on the island. Some, like the *Yellow Tower*, were built by their hands. Others are the results of their (hubristic)\[\[Redacted: Editorializing]] experiments. It seems that the Godlings, though borne entirely of this world, dreamed of reaching superspace. How they were able to learn of its \*existence remains a question of heavy debate (correction: There is one researcher interested in this topic. (I'd hardly call that a debate)\[\[Redacted: Editorializing]]).
+> Regardless, the Portal Complex project undertaken by the Godlings in a (vain)\[\[Redacted: Editorializing]] to reach superspace is the cause of many features of this world. These include, but are not limited to, the Parking Garage, Power Plant, the spatial tears by which people get trapped in this world, and the extinction of their (Godling) kind. Recent evidence uncovered by the Portal Complex Excavation Team (PCET) ...
+>>\*I think this is the area of expertise of the Orange researcher writing this, hence its somewhat odd inclusion in this document. Like, these were god-like beings, them being able to discover superspace isn't that strange.
+
+**Old Guard Intro**
+>Unable to cope with the sudden hume influx, all traces of the Godlings were expunged from reality. Despite this, the general hume leve was still far below any known *Stability Point*, leading to a chaotic and deadly landscape. No consistent laws of space or time existed, leading to a near impossible survival situation for anyone with the misfortune to be stranded on the island. But luckily for us here today, there was a glimmer of hope. Though capable of impressive feats of reality bending, the magic of today paled in comparison to the broken spells of the time. It was through this power that the *Old Guard* was able to stabilize reality, giving all of us a space to exist.
+
+
+**Old Guard Accomplishments**
+> - Stabilized reality: Increased hume level using sealed magic (likely Azure).
+> - Agriculture: Introduced plants and animals, reducing reliance on Seafoam.
+> - Reduced psychic pressure: In the past, an unbearable psychic pressure would drive people crazy.
+> - Killed dangerous monsters.
+> - Sealed dangerous magic: Pink, Azure, Seafoam, and Chartreuse were deemed too dangerous and were therfore sealed away.
+
+**Sealed Magic?**
+> "Sealed profane powers." This easily remains the most cryptic of the Old Guard's legacy. Despite many attempts to interview him on the subject, Last has proven frustratingly silent on the matter. There are a few things this could refer to, but without any new sources of info it will remain a mystery.
+
+**Sealed Magic**
+> There were four elements determined by the Old Guard to be too dangerous for mortals to handle. The methods used to accomplish are largely unknown; Guardians were told about it on a need to know basis. While confident in their success, the Old Guard leaders were concerned that their efforts could be undone, which was the reasoning behind their secrecy. 
+> A quick note: Sealed will be the term used in any literature on the subject, but I think dissipated is a better description of what this process entails. There may be traces of the power remaining, like in the *Primordial Garden* or used by Last, but most of these energies were drained out of the world.
+
+**Seafoam**
+>
 ## Blue
-Those aligned with Blue find themselves beset by apathy and stagnation. As the condition progresses, they find themselves rooted in spot, their new forms resembling that of coral or sea anemones. Similar to other elements like Red and Purple, Blue-aligned find themselves developing psychic powers, connecting them to the island. However, unlike the other psychic elements, Blue's connection is very individual, coming with no telepathic capabilities.
+- Blue is a defensive element
+- Closely associated with the *stasis* status condition
+- Hidden stats are hp and melee defense
 
-Blue-aligned pull nutrients from the ground, like a plant. With time, they sight will begin to lessen, forcing them to rely more heavily on their psychic senses.
+**Theming**
+- Deep ocean/Water elementals
+- Water
+- Stagnation/stasis
 
+**Alignment**
+- Paralysis of lower body
+- Transformation of lower body into roots
+- Growth of additional appendages
+- Physical fatigue, but extreme mental clarity
+- Apathy
+- Deepened connection with fabric of reality
+
+**Magic**
+- Defensive and buffing self
+- Blue is a very self centered element, it mostly focuses on itself and doesn't synergize super well.
+	- Blue attacks should have multiple attacks that use the double match.
+- Poor synergy with other defensive types
+- Bad synergy with offensive types
+
+**Area**
 Long ago when the island was still young, it is theorized that half of it was submerged. Though the waters have long since receded, the consequences of this can be found deep within the caves of Blue. These include large fossils of ancient sea life as well as disparate tidepools.
 
-**Magic**: Insight, stasis
-
->[!note] The Poolrooms
->The poolrooms are a definite a good inspiration for these locations, but I don't want to rip them directly, as there is already a lot of art that feature them directly.
-
+The poolrooms are a definite a good inspiration for these locations, but I don't want to rip them directly, as there is already a lot of art that feature them directly.
 ## Purple
-While the Green-biased have a reputation for being aggressive and isolationist, this would be better attributed towards Purple. This is likely because people are too afraid of bad-talking Purple. Purple inherits their psychic abilities from both Red and Blue, being both telepathically linked to each other and fairly individualistic. They also share Blue's connection to the island itself, using the clairvoyant understanding gained from this to uncover weaknesses in their prey.
+- Purple is a hyper offense element (one of two)
+- Its hidden stats are both melee and ranged attack, as well as ranged defense
 
+**Theming**
+- Shadows & darkness
+- Know your enemy
+- Deceit, ruthless tactics
+
+**Alignment**
+- Elongation of limbs and torso
+- Semi-corporality
+- Minor photophobia
+- Paranoia
+- Aggression
+
+**Magic**
+- Targeted attacks (e.g. strikes)
+- Debuffing enemies
+- Poor synergy with other types
+
+**Area**
 The area controlled by Purple is a large parking garage. There are no working cars on the island nor have there ever been. It is unknown where this location originated from, as it predates the invention of cars or concrete. This location is known for hosting many dangerous monsters, including several bosses, and for a strange convenience store. This shop is run by an odd character who is certainly not human and definitely not altruistic.
-
-**Magic**: Foresight, targeting
-
->[!important] Red + Blue != Magenta
->In the mechanics of the elemental system, the secondary colors (Cyan, Magenta, Yellow) are not related to the primary ones. So for Magenta any overlap between Blue or Red are purely coincedence. 
->
->However, this is not the case for Orange and Purple. These elements are largely the children of Red and Blue respectively, but inherit traits from both.
 ## Magenta
->[!note] L2 
->L2 of Forlorn is itself divided into 3 sections:
->- The lower subterranean sections form the first subsection.
->- The Central Disk forms a relatively flat, open area. This is where Magenta, Red, Orange, and Green's territories can be found.
->- Sandwiching the Central Disk are the Yellow Spire and Cyan Mountains, marking a steep increase in elevation.
+- Magenta is a strong support/defensive element, with a focus on healing
+- Hidden stats are hp and melee defense
 
-Upon leaving the subterranean depths of Blue, one will stumble upon the Central Disk and Magenta controlled territory. Dominating the flat landscape is a large community center, though Magenta also controls much of the surrounding area. This location is bigger on the inside and seems to shift and change with time.
+**Theming**
+- Dreams, surreal whimsy
+- Glitter/fairy typing
+- Circus, clowns, carnivals
 
-Those aligned with Magenta are by far the most productive and amiable of the elements. The stated goal of the faction in control of the community center is to make the island more amenable. The group consists of artists, designers, etc who are free to create and expand the community center, using the powers afforded to them by Magenta magic.
+**Alignment**
+- Enhanced sense of whimsy
+- Hallucinations
+- Delusions of grandeur
+- Transformation into your "true self"
+	- For some reason, this seems to take the form of a clown or carnival barker, with frightening frequency. Are the majority of people clowns in denial, or are clowns more likely to align to Magenta?
 
-Several sections of the center have been boarded off, citing monster infestations.
+**Magic**
+- Magenta magic is the purest form of reality bending
+- Channeling Magenta energy can make anything the user envisions
+	- This doesn't pair well with intrusive thoughts and anxiety
+- Synergizes well with all other elements
+- Focuses on support and healing
 
-**Magic**: Creation, manifestation
+**Area**
+The Magenta-aligned council maintains and expands the Community Center, which can be found immediately after entering the Central Disk. The inner halls and rooms of this building are constantly expanding, bending under the immense pressure of the numerous reality benders contained therein.
 ## Red
-Exiting through a greenhouse located in the back of the Magenta community center, one will find themselves in a blood red forest. Those aligned with Red are best known for their "hivemind" and cult-like devotion to a mysterious higher power. 
+- Red is an offensive element, with strong tank influences
+- Hidden stats are hp and melee attack
 
-Everything you need to know about the Red-aligned is that their HQ can be found next to a graveyard, inside of an old gothic chapel. There are, of course, catacombs located underneath the forest floor, the entrance of which can be found inside the graveyard.
+**Theming**
+- Blood, sacrifice
+- Cults
+- Vampirism, gothic architecture, catacombs
+- Plant-life, agriculture
 
-**Magic**: Healing, strength
+**Alignment**
+- Inclusion in the Grand Hivemind
+- Increase in physical mass
+- Growth of fangs
+- Alexithymia/muted emotions
+
+Through deep meditation, Red can venture into the hivemind as if it were a physical space. However, doing so leaves one susceptible to the *Vermillion Grief*, a condition where one spirals into themselves as their mind collapse with the weight of unfathomable loss. Luckily, this can only happen in the unconcious portion of the hivemind, limiting the amount of damage done to the rest of the group.
+
+**Magic**
+- High number of attacks with double match scaling
+- Synergizes decently with other elements, but especially offensive types
+- Vampiric attacks, heals from damage dealt to enemies
+
+**Area**
+Buried deep in the forest, there is a graveyard. This area is the dominion of Red. Here, the entrance to the *catacombs* can be found. In its depths, it is said a physical manifestation of RED rests in a death-like slumber.
 ## Orange
-Hidden away in the depths of the forest is an inconspicuous building, inside of which Orange conduct their research. Those aligned with Orange share a telepathic link, allowing them to share knowledge of their discoveries with each other.
+- Orange is a offensive utility type.
+- It focuses on transmutations.
+	- This is primarily an artifact from an error I made when writing down the different relationships. I accidentally counted (Purple + Magenta) as an Orange transmutation, leading to Orange being in 1st place with 6 transmutations and 2nd place only having 4. I've kept it in the element's lore because I think it provides an interesting contrast to Blue.
+- Hidden stats are ranged attack and speed
+- Orange-aligned have names that resemble serial numbers: e.g. 
 
-While slime monsters exist throughout the island, in all different colors, Orange matter turns gelatinous more frequently. Senior researchers begin to melt, sprouting extra eyes and arms, with the oldest researchers being more amorphous.
+**Theming**
+- Fire
+- Plastic/Synthetic/Artificial
+- Research and academia 
 
-**Magic**: Transmutation
+**Alignment**
+- Inclusion into the Database (Orange hivemind)
+- Growing extra eyes
+- Body turning into gelatin-like substance
+	- This is drawing inspiration from those Bloodborne slug scholar guys.
+- Bones dissolving
+- Heightened curiousity
+- Increased tendency to start passionate arguments
+- Development of hyperfixations and scatterbrain
+
+While slime monsters exist throughout the island, in all different colors, Orange matter turns gelatinous more frequently. As the condition progresses, Orange researchers become more amorphous, with some ancient scholars living inside walking test tubes.
+
+**Magic**
+- Synergizes well with other types
+- Complicated side effects
+- Odd naming conventions, usually prioritizing mentioning who discovered it over any real description (808's Arcane Force) or using very latinized/taxonomical names.
+
+**Area**
+Hidden away in the depths of the forest is an inconspicuous building, inside of which Orange conduct their research. This area is very vertical, almost acting like an inverted version of the Yellow Tower.
+
 ## Yellow
-Those aligned with Yellow are energetic and non-chalant. As their condition progresses, they begin to evaporate. However, this slow transformation does come with the ability to fly, which many of the Yellow-aligned seem to consider a fair trade. Not that much can phase these optimistic sprites.
+- Yellow is a defensive, utility type
+	- It might seem like they should be frail, but their gaseous nature makes them harder to hurt
+- Hidden stats are ranged defense and speed
+- They are a very evasive type
 
-**Magic**: Flight, utility
+**Theming**
+- Air, wind
+- Light
+
+**Alignment**
+- Evaporation
+- Semi-corporality
+- Reduced stress response
+- Difficulty concentrating
+- Floaty-ness/flight
+- Fondness of heights/reduced acrophobia
+
+**Magic**
+- Neutral synergy
+- Lots of utility moves
+- Speed control
+
+**Area**
+One of the most enigmatic places in Forlorn is the *Yellow Tower*. Built by the Godlings as a nightmarish power source, the Great Mishap has purged most traces of its former purpose. Now it acts as the home of Yellow, with its upper heights shrouded in yellow clouds.
 ## Green
-The Green-aligned have a reputation for being aggressive and violent. As previously mentioned, this reputation could be better attributed to Purple, or even Red. The likely reason for this misplacement is that Purple and Red are both far scarier than those in Green. Those biased towards Green have access to powerful combat magic, which also lends itself towards this reputation as well. Those biased towards Green tend to be glass cannons, free spirits, and passionate idealists.
+- Green is a hyper-offense type, with a lot of glass cannon moves
+- Hidden stats are both melee and ranged attack, as well as speed
 
-Fittingly, Green's main haunt is an abandoned nuclear powerplant in the northern areas of the forest
+**Theming**
+- Nuclear/Radiation
+- Poisons
+- Rocks/crystals
+- Punk aesthetic
 
-**Magic**: Combat
+**Alignment**
+- Explosive anger
+- Development of crystalline or scaly skin
+- Potential for emitting minor radiation
+- Immunity to poison
+
+**Magic**
+- MAD attacks: Attacks that deal less damage if other Greens are on the field
+- Glass cannon attacks
+- Poor synergy with other types
+
+**Area**
+The Green-aligned haunt an abandoned factory/power plant. Though the outer/upper layers are fairly safe, a lot of deeper chambers are filled with deadly poison and radiation rendering them impassible to all but Green.
 ## Cyan
-Rugged and practical, the Cyan-aligned live in the Northern snowy mountains.
+- Cyan is the archetypal defensive type
+- Hidden stats are both melee and ranged defense
 
-**Magic**: Defense
-## Theming
-![[element_theming#Theming Summarized]]
+**Theming**
+- Ice 
+- Steel
+- Mountaineers and survivalists
 
->[!idea]
->Cyan has asked both Orange and Blue to conduct research on various materials. Both say they will get around to it eventually.
+**Alignment**
+- Skin begins to take on metallic quality
+- Susceptible to heat exhaustion
+- Robotic affect, stiff movements
+- Analytical, step-by-step mind
+
+**Magic**
+- Primarily defensive, heavily features the *block* status condition.
+- Good synergy with defensive types
+- Poor synergy with offensive types
+
+**Area**
+Rugged and practical, the Cyan-aligned live in the Northern snowy mountains. There are random buildings here and there, but Cyans don't tend to mind the cold.
+## Lost Elements
+### Azure
+Gave the user the ability to bend time and space. Most people who heavily used Azure magic never got the chance to align, as it was trivially easy to enact any/all of the following effects:
+- Heightened chance of noclipping into the void
+- Heightened likelyhood of triggering a *Retrograde Erasure* event, where reality tries to fix a paradox by erasing everything involved from the timeline
+- Ability to accidentally turn oneself inside out
+- Apotheosis
+
+>This parallels a lot with Magenta, so let me justify my thinking. Blue fosters a greater understanding of reality, giving its users a glimpse into the inner workings of the world. So Azure is tapping into that understanding and then manipulating it.
+### Seafoam
+>Google says that "Spring Green" is the proper name for this color, but I prefer "Seafoam."
+
+Seafoam was a means to provide nourishment and energy before there was a consistent form of food. Due to this, many early Forlorners became Seafoam-aligned, the remnants of which make up the *Primordial Garden*. This condition resembles Blue-aligned, but in a more terrestrial plant/fungus form.
+
+Channeling Seafoam was highly addictive, which caused many people to never stop. Because of this, Seafoam holds the record for time-til-alignment, with some people becoming aligned within days. And since alignment heightens one's ability to channel that element, Seafoam-aligned people faced the chance of causing a cascade event. Essentially, someone would align, letting them channel progressively more and more energy. Eventually, they would be drawing in so much energy they simply being near them was enough to align unbiased individuals, leading to a chain reaction. The people at the center of this cascade would eventually die, leaving behind great gnarled trees.
+
+The following factors played a part in whether this cascade would happen:
+- Personality
+- Strength of will
+- How quickly one aligned
+### Chartreuse
+Not much is known about Chartreuse, only that it provided its wielders with powerful offensive magic. Much of its spells were deemed excessive, especially after the most dangerous monsters were slain. Becoming aligned to it tended to make one unpredictable and violent. For these reasons it was sealed.
+### Pink
+Pink was a very cerebral color, granting the wielder psychic powers and eldritch knowledge. PINK still has traces of its former consciousness, embedded deep within the core of the island. It keeps RED from fully unraveling, on the brink of life and death. Those that venture too deep into the psychic plane find themselves overwhelmed with incomprehensible grief, which is a danger of Red-alignment.
+
+Channeling Pink ran the risk of running into PINK, which mortal minds could not comprehend.
+
 ## Elemental Bias and Transmutation
 >[!note] Bias vs Alignment
 > Bias and alignment are used interchangably, but if you want to be technically correct: "If someone is Blue-aligned, they have a bias for Blue." 
@@ -97,48 +294,7 @@ Naming Schemes: In general, people on Forlorn choose names related to their bias
 - Green tends to be names after plants.
 - Yellow tends to have long name that are shortened as nickname.
 - Orange use alphanumeric ids. When talking to non-Orange-aligned people, they use O-xxx, where xxx are the first three digits of their id. They are capable of looking up the id of their fellows using their Database.
-- Red reuse the same few names. Internally, they don't really need names as their sort-of hivemind makes them somewhat unnecessary.
-## History
-- Who/what were the Old Guard?
-- What happened to all the other elements/colors?
-
-There used to be Elder Gods, first generation old ones created almost as if an experiment by unfathomable forces. There was a flaw in their design, however, one that was realized too late. Unable to cope with the crushing weight of reality, they fled to an pocket of ephemeral space: the island of Forlorn. These old ones wielded great power, allowing them to bend the malleable fabric of the island. From this power, the forests and mountains of Forlorn were born. In fact, most of the structural elements of the island were created by this method.
-
-With time and use, the old ones power begun to dilute. Whether this fate was known by them or one final cruel trick is unknown. This is source of the elemental powers of the island (when using magic, you are channeling the souls of dead gods. This is likely where the corruptive nature of magic comes from). 
-
-As they were created by unfathomable powers, so too did they create. Before they fell into their eternal slumber, the old ones created life. But the act of creating life takes more trial and error than one might initally assume. Their first creations were little more than beasts, tortured by their very existance (author's note: one might wonder why the old ones didn't mercy kill their creations, since they could likely empathize with their plight. Could you recognize the suffering of an ant?). Their second batch of children were far more successful, intelligent, god-like beings who went on to form a long forgotten civilization.
-
-But what is having god-like powers stuck in an empty void? The first civilization dreamed of bridging the gap back to reality. To this end, they created the Stasis dungeon, a complex machine intended to open a portal between worlds. This goal was a success and a devastating failure. Like water rushing into a ship's breached hull, reality rushed in, bringing chunks with it. This is where the parking lot and powerplant came from. Heartbroken, the civ destroyed their machine, but quite a lot of damage had already been done. Little tears between worlds remained, dragging unknowing victims inside. 
-
-The fate of the first civilization is unknown. Perhaps they couldn't cope with the new pressure of reality. Perhaps there was a flaw hidden deep in their design. This was a chaotic era. The world was hostile to mortal life, reality warping power flowed freely. Most met an untimely end. But those that had the strength to survive slowly learned to harness magic. It was from these individuals that the Old Guard was formed. 
-
-Their purpose was simple. Stop the slaughter of lesser beings. And they were united in this goal, though they knew the end result. They brought food, built shelter. Through expert use of magic they stabilized reality. Wild monsters were slain or contained. And once their work was done, they sealed the most dangerous energies (chartreuse, azure, pink, etc) away. To survive the old world, they had twisted their very being. Without access to those sealed powers, and with the rise in humes due to a stable reality, the Old Guard died. They died that the new might live. All except for Last, for they were not around during the old times. Alive to this day, Last carries out his final task: granting rest to those guardians who could not sleep, ensuring in their madness they would not hurt those they sacrificed so much for.
-
->[!note] First Civilization: Godlings
->I think instead of a civilization, it was more of a pantheon of gods. They had no cities or similar infrastructure.
-
->[!warning] 
->Not only is this lore dollar tree Bloodborne, but temu Aurora as well. Though the background is highly similar, I feel I emphasize different aspects of it than either of those two.
-
-Created by old ones:
-- Forest
-- Mountain
-- Hotel section 
-- Catacombs
-
-Created by first civilization:
-- Orange campus
-- Stasis dungeon
-- Yellow Tower
-- Various ruins
-
-Pulled in by first civilization
-- Parking lot
-- Powerplant
-
-The community center was built by the current civilization.
-The maintenance hall ways manifested themselves.
-Idk about the Diner, maybe the Clerk manifested it.
+- Red reuse the same few names. Internally, they don't really need names as their hivemind makes them somewhat unnecessary.
 # Map
 ![[map_v2.png]]
 - Lighthouse (Bottom): Cutaway showing entry point to island. Through the large door on the far side of pier leads to Blue Caverns.
@@ -161,80 +317,15 @@ Idk about the Diner, maybe the Clerk manifested it.
 ## The Factions
 The different alignments tend to stick to themselves, but this is not strictly the case. Essentially, there are 8 main factions, with multiple satellite organizations, created to fulfill certain needs around the island.
 ### The Old Guard
-Ancient survivors, scattered around the island, united in purpose (not location). These idealist did what they could to create a civilization on Forlorn, sacrificing everything to grant the survivors the means to persist. Though their vision never truly manifested, without their contributions everyone on the island would have long since starved, froze, or otherwise perished.
-- Made the magic safer to use by restricting it to 6 types (they originally wanted to remove Orange and Purple, but were unsuccessful).
-	- Lessened the massively corruptive effects of magic into greatly corruptive effects. It used to be that people became god-like monsters of immense power.
-	- It was predicted that the pressure exerted from all the energy and power would collapse the space in on itself, with unpredictable, devastating consequences.
-- Stabilized time and space.
-- Obtained food source, creating the primordial garden. This location was the origin of both the greenhouse and the powerplant gardens.
-- Killed the previously created god-like monsters.
-- Convinced dangerous Old Ones to leave.
-To accomplish these reality bending feats, the Old Guard both enlisted the help of powerful Old Ones as well as harnessed an old form of magic which had tremendous power and greater costs.
-
-The powers they harnessed have made them too dangerous, too radioactive and destructive, to exist around what they have built. Today, only one remains active. The youngest of the Old Guard, their exposure to these corrupting powers were minimal. Instead of warping reality, their job is to hunt the last of the Old Guard, putting them out of their misery. This is no easy feat, as many of their fallen comrades are nigh immortal, requiring them to utilize their knowledge of their compatriots to determine what their weaknesses might be.
-
-Though all but one are inactive, a few are still alive, some of them lucid enough to hold conversations. These (relatively) less dangerous members can be found in the darkest recesses of the island.
-
-The plan went something like this:
-- It started with the *First*, who harnessed the power of foresight. They laid the plan the other's executed. They succumbed to the madness that power brought and took their own life.
-	- The vision was granted to them using Azure.
-- Next reality had to be stabilized. This task was taken by the *Second*. Through their efforts space was twisted into a mostly eucildean form. Their soul too was twisted into the fabric of reality. The psychically inclined Old Guards could hear their gentle weeping.
-	- Used a combination of Blue, Cyan, and Azure.
-- The power found in Seafoam could be used to sustain the body, but came with grave consequences. The *Third* took on the task of obtaining a reliable source of food and water.
-	- This was accomplished through a deal with a higher power.
-	- Many of the subsequent 'devil deals' were overseen by *3*, as they possessed shrewd bargaining and diplomatic skills.
-	- They've since taken on a tree-like form and are confined to their original garden. They are lucid and friendly (due in no small part to their disdain of magic), but tire easily from visitors.
-- Many of the previous inhabitants of the world were violent and dangerous, almost all were in tremendous pain. The *Fourth* and *Fifth* were tasked with studying and removing these threats. Through their efforts much was learned about the practical art of using Forlorn's colorful magic. For their efforts, both Guardians were turned into powerful monsters, at least one of which is still around today.
-	- Accomplished through a combination of the Offensive colors, Chartreuse, powerful artifacts, and devil deals.
-- The *Sixth* built upon the now stable environment, creating many of the structures that can be found on the island to this day. These include the community center and Research Campus. Many of the most dangerous locations were tucked or sealed away, such that newbies could not accidentally stumble upon them. Their ultimate fate is unknown, though it is likely they were eventually mercy killed.
-	- Accomplished through a combination of Pink and Magenta magic.
-	- Many structures were pulled in from superspace (not by *6*, through 'natural' means).
-- The *Seventh*, utilizing the campus recently built by *6*, used their brilliant intellect to unravel the mysteries of the island. The foundations of most non-combat knowledge originated from them, with help from *6* and *8*. Their immortal form is rumored to still be somewhere in the depths of their campus.
-	- A combination of Blue, Pink, and Orange magic was used here.
-	- Pink was safe enough that *7* is not a high priority for the *Last*.
-- The act of reducing the elements was taken on by the *Eighth*, once all the rest had finished their work. Channeling and sealing that much power turn *8* into a chromatic beast, still capable of channeling the vestiges of those forgotten powers.
-	- Accomplished by a combination of all elements, as well as multiple devil deals.
-	- This was not entirely successful, as Orange and Purple could not be removed.
-- The *Last* of the Old Guard joined them late, shortly before *8* finished their task. Largely untouched by the most corruptive of forces. Their task was to put the Old Guard to rest, including their dear friends *3* and *8*.
-	- This task requires a lot of research, which is not the hunter's strong suit.
-	- The "hitlist" was organized based on danger and pain, which is why *3* and *7* are not being actively pursued. 
-	- The hunter is currently pursuing *8* and either 4/5 (one or both; TBD).
-	- The hunter main exposure the the forgotten powers was Azure and Seafoam, which was used to prolong their life. **Their body was also fortified to resist alignment, though the means have since been lost.**
-
-**A general idea of what some of the forgotten powers were like**
-<span style="color:#ff007f">Pink (f08)</span>: Psychic
-<span style="color:#00ff7f">Seafoam/Spring (0f8)</span>: Could be used to sustain the body.
-<span style="color:#7fff00">Chartreuse (8f0)</span>: Has unspecified combat capabilities.
-<span style="color:#007fff">Azure(08f)</span>: Used to manipulate time.
-#### Amendment to Old Guard Lore
-The elements are the remanents of 1st gen Old Ones who got trapped out in the void. The island of Forlorn coalesced around them, formed from the rotting remanents of their physical forms. This cruel fate left them scattered and confused, grasping for a return of even a portion of their former glory. As the Elements did not retain the power to intentionally create life from scratch, they were forced to find new forms from beyond. Thus began the abduction of mortals.
-
-However, the environment of Forlorn proved too hostile for mere mortals to survive, causing many of the vessels to fail, either to death or monstrous mutation. Eventually, a plan was devised by Azure through their first and only vessel. This is the plan detailed above. The distinction between Elder God and the Guardians are not super clear, the humans believed it was their plan, even as their minds began to merge with alien forces. It should also be noted that the most successful guardians were not true vessels, instead being formed from the collaboration of several powers.
-
-Despite their best efforts, only 4 Old Ones were able to regain some shadow of their previous glory. The 8 main elements used in the magic system had become too diluted due to overuse of vessels, ultimately dooming them to eternal silence. The alignment process is a forgotten echo of the vessel forging process. 
-
-Pink, Seafoam, Chartreuse, and Azure retreated to the depths of the world after the conclusion of the plan. Azure has long since slipped into silence, succumbing to psychic exhaustion. Pink has retreated to the psychic plane; their slumbering body can be found deep in the catacombs. When both were alive, Pink and Red had a deep connection, from which the hivemind was born. Chartruese and Seafoam are the only entities who have persisted in any form of coherent state. Seafoam sits at the center of the Primordial Garden. Chartreuse is a tempermental, destructive entity *Idk where they will be holed up*.
-
-The Last of the Old Guard is not a vessel, instead being more of a collaboration between several of the Old Ones. They're still technically mortal, though their life has been artificially extended. Insetead of killing off the other guardians, their mission is more focused on killing the old corrupted vessels and monsters that remain from the old times. I like the idea of them previously having a good relationship with Pink, Chartreuse, and Seafoam, which has long since lapsed.
-
->[!note] Seafoam vs Spring
->So google says that the proper name for this color is Spring Green, but I prefer the name Seafoam.
-##### Pantheon
-I like the idea of old vessels forming something akin to a pantheon of gods. The personality changes that happen to aligned individuals mirror the personalities of these ancient vessels.
+All but one are dead or horrifically mutated. The Last of the Old Guard (aka Last) leads the [[#Hunters]].
 ### Blue Enclaves
 As many of the older Blue-aligned have limited to no mobility, their locations are somewhat haphazard. As such, they lack the greater coordination of the other factions. When 2+ Blue-aligned are rooted within talking distance, they form what is known as an enclave. There are several of these enclaves, usually with 2-6 members. Deep in the caverns of Blue, however, there is the *Great Enclave*, once consisting of dozens of members. Once a hub of enlightenment, many of the foundational members have long since lost their minds, fracturing the Enclave. Several remanant groups along the outside of the whole, consisting of younger members, have kept the tradition alive, each claiming to be the original. 
 ### Purple
-The Purple-aligned prefer to fight in small groups of 4-6 members, as this size is most efficient for their telepathy. They fight for resources and territory in the parking garage.
+The Purple-aligned prefer to fight in small groups of 3-6 members, as this size is most efficient for their telepathy. They fight for resources and territory in the parking garage.
 ### The Convenience Store
 Inside the parking lot is a strange convenience store run by an eldritch entity called the *Clerk*. A cold, ruthless figure they are willing to use their unlimited access to material goods in exchange for a fee. The location of the store is technically on the first level of the garage, but entrances can be found throughout the levels.
 ### The Community Center
-Though all elements are allowed into the center, the leadership is largely comprised on Magenta-aligned. Furthermore, due to tensions between Magenta and Green, there is currently only one Green mage who resides inside the center, though no formal ban has been instituted.
-
-Community Center Rules:
-- No combat magic of any kind.
-- No entering barricaded rooms.
-### The Magenta Peacekeepers
-Magenta mages that take issue with the first rule of the community center, believing violence may be necessary to claw back the boarded up sections of the center.
+#todo
 ### Gardeners
 A coalition of Magenta and Red aligned, which produces the majority of food for the island. The gardening process has a tendency to produce plant-like monsters, hence the need for help from the offensive capable Red-aligned.
 ### Rangers
@@ -249,7 +340,7 @@ Two Red subfactions. Though largely in lockstep, there are slight disagreements 
 **Orange Researchers**
 # Story
 [[Story]]
-# 1. Elemental System
+# Elemental System
 The elemental system has 4 components:
 - [[#Transmutation Info|Transmutations]]
 - [[#Side Effect Info|Side-effects]]
@@ -265,7 +356,7 @@ Since a mage can have both a primary and secondary type, the transmutation proce
 
 Notably, if the attack used is a melee attack, will also apply the applicable transmutations and side effects to the user.
 
-Finally, affinity is the resource spent to use an attack. ~~It acts as 3 separate mana pools (Red, Green, and Blue). Attacks with secondary elemental typing pull from both applicable pools. So a Blue attack might cost 2 Blue affinity, while a Magenta attack might cost 1 Blue and 1 Red.~~
+~~Finally, affinity is the resource spent to use an attack. It acts as 3 separate mana pools (Red, Green, and Blue). Attacks with secondary elemental typing pull from both applicable pools. So a Blue attack might cost 2 Blue affinity, while a Magenta attack might cost 1 Blue and 1 Red.~~
 ## Transmutation Info
 ![[comprehensive_type_chart.png]]
 *Fig 1.1: Comprehensive Matchup Chart*
@@ -393,102 +484,3 @@ Offensive -> Offensive = Speed buff
 > Version 2 was splitting the elements into offensive/defensive based on warm/cold colors. However, I wanted Green to be an offensive element, which didn't really work.
 >
 >So ultimately, this version is a compromise between 1 & 2.
-
-## Resistances
->[!important] 
->I think the resistance system ultimately muddies this game's identity too much; It feels a little too contrived.
->Therefore, I think it might be best to shelve it.
-## Affinity Info
-Affinity is essentially the mana system in this game. In v0.1.0, the player had 8 pools of affinity, which was a little much. In this version, the player will have 3 (R, G, B). Attacks will have the ability to cost any combination of affinity.
-
-Player's affinity will go up everytime they interact with an element.
-- Hit by an attack.
-- Use an attack.
-- Transmute into an attack.
-- Consequetive turns as an element.
-There will also be ways to gather affinity in the overworld.
-
-One feature of the affinity system is that player's can use attacks even if they don't have enough. If an attack costs 10 affinity, but the player only has 5, the attack will be used at 50% power. Trying to use an attack with 0 affinity will instead give the player some amount of affinity.
-# 2. Battle System
-## Basic Requirements
-- Turn based.
-- The player will have 1-3 actor under their control, but could have more at different times.
-- The opponents will have 1+ actor under their control.
-- Every turn, each actor has 1 action.
-	- An action can be either an attack or an item.
-	- The player also has the option to run away.
-- Each actor can have a list of status effects and stat changes effecting them.
-- After all actors have selected their move, their moves are resolved in priority-speed-random order.
-- When an attack is used, resolve any applicable transmutations.
-- At the end of turn, resolve any status conditions and decrement any related counters.
-## 2D vs 3D
-In v0.1.0, the battle UI was completed implemented in 2D. However, it might make more sense to use 3D, so that I can resuse assets.
-## Stats
-Each combatant will have the following basic stats:
-- Melee Attack
-- Ranged Attack
-- Melee Defense
-- Ranged Defense
-- Speed
-
-There's also 2 stats, typically hidden in other similar styles of game:
-- Accuracy
-- Evasion
-If present, I would like the ability to view these stats, at least in debug mode.
-## Status Effects
-![[status_effects#Proposal v2]]
-# 3. Overworld System
-## Transmutation Puzzles
-In v0.1.0, the player had the ability to transmute certain objects at any time. This system will be removed, with the possibility of a more limited version being introduced in the future.
-## Overworld Spells/Temple Mechanics
-For discussion of temples, see [[Design#Dungeons|here]].
-For discussion of how these should be implemented, see [[Technical#Overworld Spells|here]].
-Discussion of lock and key philosophy: .
-
-In this [[overworld_spells|document]], I discuss a simpler version of the Overworld spells, treating it more like a straightforward lock-and-key system.
-Each spell should only be design to remove a specific type of obstacle, with more complex synergies being more of a stretch goal.
-
-It would be best if the spells also tied into the preexisting systems:
-1. Resistances & Weaknesses
-2. Affinity (Offensive/Defensive)
-3. Transmutations
-### General Mechanics
-Each spell a player has will be accessed thru a hotkey. Targeting should generally work based on the direction the player is facing or on the spot the player is standing on.
-### List of Overworld Spells
-- **Stasis**([[Design#Blue Temple|Blue Temple]]): Prevents an object from transmuting or moving.
-- **Destroy**\*(Purple Temple?): Breaks an object, based on the resistance system(1).
-- **Catalyst**([[Design#Sunset Temple|Sunset Temple]]): Forces a transmutation to happen.
-- **Vines**([[Design#Red Temple|Red Temple]]): Grows vines out of a patch of clay.
-- **Tunnel**\*:([[Design#Abandoned Temple|Abandoned (Green) Temple]]) Fast travel between two points.
-\*WIP name.
-#### Stasis
-Player selects an adjacent object. This object cannot be transmuted. If object is moving (e.g. an automated platform or enemy sprite), it stops until effect wears out. 
-#### Destroy
-Player channels element found at their feet. A projectile of this type is launched in a straight line. Upon collision with a _Cracked Clay Obstacle_: 
-- If `object.element` is weak to `projectile.element` both projectile and object are destroyed.
-- If `object.element` resists `projectile.element`, projectile is destroyed.
-- If `object.element` is neutral to `projectile.element`, projectile bounces.
-#### Vines
-Player channels energy, encouraging the growth of nearby flora. When used on _Clay Terrain_, grow one of the following formations:
-- Bridge: Creates a horizontal platform.
-- Wall: Grows climbable section on nearby wall.
-- Shoot: Grows a climbable, vertical platform.
-#### Catalyst
-Similar to destroy, player channels element found at their feet. A projectile of this type is launched in a straight line. Upon collision with a _Clay Obstacle_:
-- If a transmutation exists, transmute object and destroy projectile.
-- Otherwise, projectile bounces.
-#### Tunnel
-When used on _Clay Terrain_:
-- Some _Clay Terrain_ contains the entrance to a secret room/area. If this is one such instance, open a doorway to area.
-- Otherwise, creates a tunnel between nearest `terrain.element`.
-### Other Ideas
-Other than claymation, these artforms could serve as inspiration for overworld spells.
-- Origami
-- Sewing
-	- Needle and thread
-	- Knitting
-- Paint
-
-To avoid making this game more convoluted, only one of these mechanics should be implemented as overworld spells, if any. 
-
-Particularly, I like the origami idea best. I think it could make an interesting late-game addition.
