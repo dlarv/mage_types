@@ -40,7 +40,11 @@ func _init(select=null, name=null, elements=null, attackRange=null, targets=null
 	self.priority = priority
 	self.priority.value_changed.connect(func(val: float): self.attack.priority = int(val))
 	self.power = power
-	self.power.value_changed.connect(func(val: float): self.attack.power = int(val))
+	self.power.value_changed.connect(func(val: float): 
+		self.attack.power = int(val)
+		for child in self.scaling_factors.get_children(): 
+			child.visible = val > 0
+	)
 	self.accuracy = accuracy
 	self.accuracy.value_changed.connect(func(val: float): self.attack.accuracy = val)
 	self.description = description

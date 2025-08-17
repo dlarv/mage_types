@@ -138,6 +138,9 @@ func add_row(attack: Attack=null) -> void:
 		yesMatch.value = attack.scaling_factor.z
 		doubleMatch.value = attack.scaling_factor.w
 
+		for child in scalingContainer.get_children():
+			child.visible = power.value > 0
+
 
 func remove_row() -> void:
 	if not _selected_row: return
