@@ -41,9 +41,6 @@
 **Sealed Magic**
 > There were four elements determined by the Old Guard to be too dangerous for mortals to handle. The methods used to accomplish are largely unknown; Guardians were told about it on a need to know basis. While confident in their success, the Old Guard leaders were concerned that their efforts could be undone, which was the reasoning behind their secrecy. 
 > A quick note: Sealed will be the term used in any literature on the subject, but I think dissipated is a better description of what this process entails. There may be traces of the power remaining, like in the *Primordial Garden* or used by Last, but most of these energies were drained out of the world.
-
-**Seafoam**
->
 ## Blue
 - Blue is a defensive element
 - Closely associated with the *stasis* status condition
@@ -66,8 +63,8 @@
 - Defensive and buffing self
 - Blue is a very self centered element, it mostly focuses on itself and doesn't synergize super well.
 	- Blue attacks should have multiple attacks that use the double match.
-- Poor synergy with other defensive types
-- Bad synergy with offensive types
+- Weak synergy with other defensive types
+- Poor synergy with offensive types
 
 **Area**
 Long ago when the island was still young, it is theorized that half of it was submerged. Though the waters have long since receded, the consequences of this can be found deep within the caves of Blue. These include large fossils of ancient sea life as well as disparate tidepools.
@@ -341,18 +338,19 @@ Two Red subfactions. Though largely in lockstep, there are slight disagreements 
 # Story
 [[Story]]
 # Elemental System
-The elemental system has 4 components:
+The elemental system has ~~4~~ 3 components:
 - [[#Transmutation Info|Transmutations]]
 - [[#Side Effect Info|Side-effects]]
-- ~~[[#P1 x S1 (Resistant)|Resistances]]
 - [[#Affinity Info|Affinity]]
+- ~~[[#P1 x S1 (Resistant)|Resistances]]~~
 
-When a mage is hit with an elemental attack, the effectiveness of the attack is determined by their initial element’s weaknesses/resistances. Then, if applicable, the mage is transmuted into a new element and receives a stat buff (aka, a side effect).
+When a combatant is hit with an attack, they have  
 
-Since a mage can have both a primary and secondary type, the transmutation process is applied 3 times:
-1. Attack + Primary
-2. Attack + Secondary
-3. Primary + Secondary
+~~Since a mage can have both a primary and secondary type, the transmutation process is applied 3 times:~~
+~~1. Attack + Primary~~
+~~1. Attack + Secondary~~
+~~1. Primary + Secondary~~
+
 
 Notably, if the attack used is a melee attack, will also apply the applicable transmutations and side effects to the user.
 
@@ -484,3 +482,32 @@ Offensive -> Offensive = Speed buff
 > Version 2 was splitting the elements into offensive/defensive based on warm/cold colors. However, I wanted Green to be an offensive element, which didn't really work.
 >
 >So ultimately, this version is a compromise between 1 & 2.
+## Scaling Factor
+An attack's scaling factors work a little like Pokemon's STAB, where using an attack whose type matches yours will give a bonus. However, in this system this is a little more flexible (read: complicated). An attack has 4 factors, with each being a percentage of its power.
+
+- **No match**: %power if neither of user's types match the attack.
+- **Affinity match**: %power if user is in the same affinity group as attack (offensive/defensive), but neither match.
+- **Match**: %power when either of user's types match the attack.
+- **Double Match**: %power when both of user's types match the attack. This is more of a secret bonus, I plan to use it rarely. The value is hidden from the interface when it doesn't apply.
+
+So to mimic Pokemon's stab system, an attack would have the following scaling factors: (100, 100, 150, 100).
+
+Poor synergy will be 50%
+Weak synergy will be 80%
+Good synergy will be 100%
+Great synergy will be 120%
+
+This info was compiled using each element's section above. Attacks of each element will use this info as a guide, not a rule. The basic pattern will be (Poor, Weak, Good), with an element's personality determining the deviation.
+
+| Element | No Match   | Affinity Match | Match       |
+| ------- | ---------- | -------------- | ----------- |
+| Blue    | Poor       | Weak           | Good        |
+| Purple  | Poor       | ***Poor***     | Good        |
+| Magenta | ***Weak*** | Weak           | Good        |
+| Red     | Poor       | Weak           | ***Great*** |
+| Orange  | ***Weak*** | ***Good***     | Good        |
+| Yellow  | Poor       | Weak           | Good        |
+| Green   | Poor       | ***Poor***     | Good        |
+| Cyan    | Poor       | Weak           | Good        |
+
+I should note that the purpose of this system is to keep the player from spamming their strongest attack.

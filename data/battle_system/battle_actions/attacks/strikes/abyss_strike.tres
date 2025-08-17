@@ -1,64 +1,34 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://olgnrmvw2spc"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://olgnrmvw2spc"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_4wpqw"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_cinsk"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_r5wf5"]
-[ext_resource type="Script" uid="uid://4aisqs8ctusa" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_rd673"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_ajged"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="4_ur77m"]
-[ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/effect_slots/ConditionalEffect.gd" id="6_g43s2"]
 
-[sub_resource type="Resource" id="Resource_ff042"]
-script = ExtResource("3_rd673")
-_element = "purple"
-apply_to = "user"
-
-[sub_resource type="Resource" id="Resource_fe3uk"]
+[sub_resource type="Resource" id="Resource_vnkll"]
 resource_name = "Damage"
 script = ExtResource("4_ur77m")
 name = "Damage"
-_strength = "10.0"
+_strength = "50"
 message = ""
+metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
-[sub_resource type="Resource" id="Resource_cs80b"]
+[sub_resource type="Resource" id="Resource_5dqno"]
 resource_name = "Damage"
 script = ExtResource("4_ajged")
-attack_effect = SubResource("Resource_fe3uk")
+attack_effect = SubResource("Resource_vnkll")
 effect_target = 1
 _chance = "1.0"
-
-[sub_resource type="Resource" id="Resource_owp58"]
-resource_name = "Damage"
-script = ExtResource("4_ur77m")
-name = "Damage"
-_strength = "125.0"
-message = ""
-
-[sub_resource type="Resource" id="Resource_vdgsf"]
-resource_name = "Damage"
-script = ExtResource("4_ajged")
-attack_effect = SubResource("Resource_owp58")
-effect_target = 1
-_chance = "1.0"
-
-[sub_resource type="Resource" id="Resource_txnwn"]
-script = ExtResource("6_g43s2")
-condition = SubResource("Resource_ff042")
-success_effect = SubResource("Resource_vdgsf")
-failed_effect = SubResource("Resource_cs80b")
-invert = false
-print_failed_status = "FAILURE"
-failure_msg = "INEFFECTIVE"
-effect_target = 1
-_chance = ""
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [resource]
 resource_name = "Abyss Strike"
 script = ExtResource("2_r5wf5")
-effects = Array[ExtResource("2_cinsk")]([SubResource("Resource_txnwn")])
+effects = Array[ExtResource("2_cinsk")]([SubResource("Resource_5dqno")])
 accuracy = 1.0
 power = 50
-scaling_factor = Vector4i(100, 100, 100, -1)
+scaling_factor = Vector4i(20, 20, 200, -1)
 name = "Abyss Strike"
 animation = ExtResource("1_4wpqw")
 _element = "purple"

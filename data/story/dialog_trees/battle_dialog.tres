@@ -348,12 +348,12 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_3": {
-"dialogue": "TODO",
+"dialogue": "Thou hast learned much.",
 "offset": Vector2(160, 2000),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_38",
 "text": ""
 }
 },
@@ -375,7 +375,7 @@ nodes = {
 },
 &"1_31": {
 "dialogue": "Right, so because your end result was a [color=blue]defensive[/color], so you got a [color=blue]defense[/color] buff.",
-"offset": Vector2(500, 1480),
+"offset": Vector2(480, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -388,7 +388,7 @@ nodes = {
 },
 &"1_32": {
 "dialogue": "If you hover your mouse over the 3rd and 4th dials under your health bar, they will tell you you've a received a 30% buff to both your defense stats!",
-"offset": Vector2(820, 1480),
+"offset": Vector2(800, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -401,7 +401,7 @@ nodes = {
 },
 &"1_33": {
 "dialogue": "And since the attack you used was [el]Magenta[/el], I also received a [color=blue]defense[/color] buff!",
-"offset": Vector2(1520, 1480),
+"offset": Vector2(1500, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -414,7 +414,7 @@ nodes = {
 },
 &"1_34": {
 "dialogue": "And since the attack you used didn't react at all with me, I didn't receive any side effects. Bummer dude ;)",
-"offset": Vector2(1520, 1740),
+"offset": Vector2(1500, 1740),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -463,6 +463,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "Dallas"
+},
+&"1_38": {
+"dialogue": "Come now, show me what thou canst do together!",
+"offset": Vector2(480, 2000),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
 },
 &"1_4": {
 "dialogue": "Then, click on me to select your target.",
@@ -549,7 +562,7 @@ nodes = {
 "value2": "magenta"
 }]),
 "false": &"1_34",
-"offset": Vector2(1140, 1480),
+"offset": Vector2(1120, 1480),
 "true": &"1_33"
 }
 }
