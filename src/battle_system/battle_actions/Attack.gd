@@ -74,6 +74,17 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 		affinity = scaling_factor.y
 	affinity /= 100
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
+
+	# This message communicates to the player the strength of their attack.
+	# I used to say "not very effective," but I think this confuses player into thinking there are type matchups
+	if affinity <= 0.5:
+		msg.append("%s gave out a few [el]%s[/el] sparks..." % [user.name, element])
+	elif affinity < 1.0:
+		msg.append("%s was wreathed in faint [el]%s[/el] energy!" % [user.name, element])
+	elif affinity > 1.0:
+		msg.append("%s was wreathed in bright [el]%s[/el] energy!" % [user.name, element])
+	else:
+		msg.append("%s was wreathed in [el]%s[/el] energy!" % [user.name, element])
 	
 	var delayedEffects: Array[_BaseEffectSlot] = []
 	for i in len(targets):

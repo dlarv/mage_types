@@ -22,18 +22,8 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 			effectiveness,
 			user
 		)
-
-	var msg: String 
-	if effectiveness <= 0.5:
-		msg = "%s gave out a few [el]%s[/el] sparks..." % [user.name, current_buffer.action.element]
-	elif effectiveness < 1.0:
-		msg = "%s was wreathed in faint [el]%s[/el] energy!" % [user.name, current_buffer.action.element]
-	elif effectiveness > 1.0:
-		msg = "%s was wreathed in bright [el]%s[/el] energy!" % [user.name, current_buffer.action.element]
-	else:
-		msg = "%s was wreathed in [el]%s[/el] energy!" % [user.name, current_buffer.action.element]
 	
-	return "%s\n%s" % [ msg, _apply_to(target, dmg, user) ]
+	return _apply_to(target, dmg, user)
 
 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
