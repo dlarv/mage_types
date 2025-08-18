@@ -28,21 +28,7 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 
 
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
-	if target.stasis or not isFriendly:
-		return 1
-
-	var enemies: Array[BattleActor]= Battle.query_battlefield_state(user, Battle.BattlefieldStateParams.ENEMIES)
-
-	for enemy in enemies:
-		for attack in enemy.attacks:
-			var n := attack.name.to_lower()
-			if n.contains("strike") \
-					and (n.contains(user.element1.name.to_lower())
-					or n.contains(user.element2.name.to_lower())):
-				return attack.power
-
-	return 0
-
+	return float(target.stasis != null)
 
 
 func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
