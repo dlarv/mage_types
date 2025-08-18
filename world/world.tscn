@@ -290,9 +290,9 @@ metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="Resource" id="Resource_en1oy"]
 script = ExtResource("25_bwxdu")
-aggression = 0.5
-intelligence = 1.0
-transmutation_bias = 1.0
+aggression = 1.0
+intelligence = 0.5
+transmutation_bias = 0.5
 _transmutation_pref = "blank"
 dialog_ids = Array[ExtResource("21_j7vgi")]([])
 reward_xp = 50.0
