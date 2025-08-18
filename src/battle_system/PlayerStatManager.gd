@@ -35,9 +35,10 @@ func add(effect: StatChange, name: String) -> void:
 				_speed_xp += effect.strength
 
 
+## Values drawn from design doc Roadmap#The List#Battle (BATT)#End Battle#Option 2
+## This is a gross way of doing this, but these values would need to be hardcoded somewhere.
 func resolve_end_of_turn(unnormalizedValues: Array[float], turns:=1) -> void:
-	# Values drawn from design doc Roadmap#The List#Battle (BATT)#End Battle#Option 2
-	# This is a gross way of doing this, but these values would need to be hardcoded somewhere.
+	if len(unnormalizedValues) < 8: return
 
 	# Blue
 	_hp_xp += unnormalizedValues[0] * TRANSMUTATION_XP_UNIT + HP_XP_BOOST

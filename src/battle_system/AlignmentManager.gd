@@ -4,7 +4,7 @@ class_name AlignmentManager
 
 enum Type { ATTACK, TRANSMUTATION, CHANNELING, OTHER }
 
-const ALIGNMENT_THRESHOLD := 0xF
+const ALIGNMENT_THRESHOLD := 0xFF
 const ATTACK_MOD := 3.0
 const CHANNELING_MOD := 1.0
 const TRANSMUTATION_MOD := 3.0
@@ -16,9 +16,11 @@ var _alignment: String = "blank":
 	set(val):
 		_alignment = val
 		current_alignment = ElementManager.get_element_from_name(val)
-var current_alignment: ElementalType
+var current_alignment: ElementalType 
 ## Once an alignment forms, it cannot be overwritten.
-@export var alignment_locked := false
+var alignment_locked: bool:
+	get:
+		return not current_alignment.is_blank()
 
 var _unnormalized_values: Array[float] = [ 0, 0, 0, 0, 0, 0, 0, 0 ]
 
@@ -26,8 +28,9 @@ var _unnormalized_values: Array[float] = [ 0, 0, 0, 0, 0, 0, 0, 0 ]
 ## val = ########, where # is a hex value between 0 and FF.
 func setup_from_string(val: String) -> void:
 	alignment_values = []
-	for i in len(val) - 1:
-		alignment_values.append(max(min(val.substr(i, 2).hex_to_int(), ALIGNMENT_THRESHOLD), 0))
+	for i in range(0, len(val) - 1, 2):
+		var hex := val.substr(i, 2).hex_to_int()
+		alignment_values.append(max(min(hex, ALIGNMENT_THRESHOLD), 0))
 	update_current_alignment()
 
 
@@ -78,25 +81,25 @@ func normalize_and_add() -> Array[float]:
 	return output
 
 
-## Returns true if alignment was locked during this call.
-func update_current_alignment() -> bool:
-	if alignment_locked: return false
+## Returns an array containing whichever element(s) now has the highest value.
+func update_current_alignment() -> Array[ElementalType]:
+	if alignment_locked: return []
 
-	var maxIndex := -1
-	var maxVal := -1
+	var maxVal: int = alignment_values.max()
 
+	var output: Array[ElementalType] = []
 	for i in len(alignment_values):
-		if maxVal < alignment_values[i] or maxVal == alignment_values[i] and randf() <= 0.5:
-			maxVal = alignment_values[i]
-			maxIndex = i
+		if alignment_values[i] == maxVal:
+			output.append(ElementManager.elements[i])
 	
-	# If there is a tie, the current alignment will always win.
-	# Otherwise, tie breaker is determined above.
-	if maxVal > 0 and alignment_values[ElementManager.get_index_from_name(current_alignment.name)] < maxVal:
-		current_alignment = ElementManager.elements[maxIndex]
+	# If player's current primary type is in output, their core will not change.
+	# However, if their alignment gets locked, this value is randomly selected.
 	if maxVal == ALIGNMENT_THRESHOLD:
 		alignment_locked = true
-	return alignment_locked
+		current_alignment = output.pick_random()
+		return [current_alignment]
+
+	return output
 
 
 func deserialize(data: Dictionary) -> void:

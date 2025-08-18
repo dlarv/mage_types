@@ -299,6 +299,7 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 	if useOverride and _func_overrides.has(resolve_end_of_turn.get_method()):
 		_func_overrides.get(resolve_end_of_turn.get_method()).call(allies, opponents)
 		return 
+
 	# Calc poison and healing.
 	var mod := 0.0
 	var poison := statuses.poison
@@ -330,23 +331,32 @@ func resolve_end_of_battle(turnCounter: int) -> String:
 	
 	# Update alignment.
 	var output := ""
+	var unnormalizedValues := []
 	if alignment_manager and not alignment_manager.alignment_locked:
 		Logger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
-		var prevAlign := alignment_manager.current_alignment
-		var unnormalizedValues := alignment_manager.normalize_and_add()
+		unnormalizedValues = alignment_manager.normalize_and_add()
 
-		if alignment_manager.update_current_alignment():
-			set_element(0, alignment_manager.current_alignment)
+		# This will return null if actor was already aligned.
+		# But this condition was checked for earlier.
+		var maxElements := alignment_manager.update_current_alignment()
+		var newCore: ElementalType
+		if element1 in maxElements:
+			newCore = element1
+		else:
+			newCore = maxElements.pick_random()
+
+		if alignment_manager.alignment_locked:
+			set_element(0, newCore)
 			output = "!!!!!!!!!!!!!!\n%s has become aligned to %s!" \
-					% [name, alignment_manager.current_alignment.name]
-		elif prevAlign != alignment_manager.current_alignment:
-			set_element(0, alignment_manager.current_alignment)
+					% [name, newCore]
+		elif element1 != newCore:
+			set_element(0, newCore)
 			output = "!!!\n%s's core changed to %s!" \
-					% [name, alignment_manager.current_alignment.name]
+					% [name, newCore]
 
-		if stat_manager is PlayerStatManager:
-			stat_manager.boost_elemental_stats([element1, element2] as Array[ElementalType])
-			stat_manager.resolve_end_of_turn(unnormalizedValues, turnCounter)
+	if stat_manager is PlayerStatManager:
+		stat_manager.boost_elemental_stats([element1, element2] as Array[ElementalType])
+		stat_manager.resolve_end_of_turn(unnormalizedValues, turnCounter)
 	return output
 
 
@@ -407,9 +417,6 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> void:
 	if "name" in data:
 		name = data["name"]
-	# if "statuses" in data:
-	# 	# statuses.deserialize(data["statuses"])
-	# 	statuses
 	if "level" in data:
 		level = data["level"]
 	if "stats" in data:
