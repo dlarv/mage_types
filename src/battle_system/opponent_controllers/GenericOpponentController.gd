@@ -258,7 +258,7 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER \
 				or slot.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE
 
-		dmg += slot.attack_effect.get_dmg_potential(user, target, isFriendly, action)
+		dmg += int(slot.attack_effect.get_dmg_potential(user, target, isFriendly, action) * slot.chance)
 
 		var pot: float = slot.attack_effect.get_setup_potential(user, target, isFriendly, dmg)
 		var weight := _weighted_setup_potential(user, target, slot, isFriendly)
