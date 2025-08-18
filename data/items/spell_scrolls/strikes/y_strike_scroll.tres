@@ -18,6 +18,7 @@ battle_relevant = false
 [resource]
 script = ExtResource("2_4coyk")
 spell = ExtResource("3_xrg4x")
+id = 22
 name = "Yellow Strike Bead"
 requirements = Array[ExtResource("1_1bswr")]([SubResource("Resource_kf5no")])
 details = ""

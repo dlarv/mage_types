@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://cvxp8g3bj6t6y"
 [resource]
 script = ExtResource("3_f2uut")
 effects = Array[ExtResource("1_fp43l")]([SubResource("Resource_m7ktk")])
+id = 0
 name = "Training Wheels"
 requirements = Array[ExtResource("2_m6sn2")]([])
 details = "Prevents side effects from being applied."

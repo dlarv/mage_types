@@ -81,9 +81,10 @@ var _battle_items: Array[RegularItem]
 		var scroll := SpellScroll.new()
 		scroll.spell = val
 		scroll.name = "%s Bead" % val.name 
+		scroll.id = len(spell_scrolls)
 		ResourceSaver.save(scroll, "res://data/items/spell_scrolls/output/%s.tres" \
 				% scroll.name.replace(" ", "_").to_lower())
-		_add_item = scroll
+		_add_item = ResourceLoader.load("res://data/items/spell_scrolls/output/%s.tres") as SpellScroll
 func _try_add_battle_item(item: RegularItem)  -> void:
 	if item.battle_item == null: 
 		return
@@ -319,6 +320,10 @@ func _reorder_item_array(list: Array[ItemSlot]) -> void:
 	for item in list:
 		item.item.id = i
 		i += 1
+
+		if Engine.is_editor_hint():
+			var err := ResourceSaver.save(item.item, item.item.resource_path)
+			print("Overwriting %s.......%s" % [item.item.resource_path, error_string(err)])
 
 
 func serialize() -> Dictionary:

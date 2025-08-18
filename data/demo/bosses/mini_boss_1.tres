@@ -20,7 +20,7 @@ hp = 100.0
 [resource]
 script = ExtResource("7_00pxc")
 name = "Boss 6"
-id = -1
+id = -4
 level = 2
 stat_manager = SubResource("Resource_6u7d0")
 reset_hp_after_battle = true

@@ -29,6 +29,7 @@ bonus = SubResource("Resource_t0bgh")
 [resource]
 script = ExtResource("3_tdd76")
 effects = Array[ExtResource("1_qswf4")]([SubResource("Resource_8po8l")])
+id = 4
 name = "Stasis Shard"
 requirements = Array[ExtResource("2_e1kcg")]([])
 details = "Has a 10% chance of applying Stasis to the holder at the end of their turn."

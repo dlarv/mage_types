@@ -39,6 +39,7 @@ script = ExtResource("1_ut3pp")
 battle_item = SubResource("Resource_b15sa")
 is_consumable = true
 max_quantity = 9999
+id = 0
 name = "Healing Potion"
 requirements = Array[ExtResource("5_cr37d")]([])
 details = ""

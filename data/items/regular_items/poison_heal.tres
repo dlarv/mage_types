@@ -46,6 +46,7 @@ script = ExtResource("1_5llkq")
 battle_item = SubResource("Resource_ltitp")
 is_consumable = true
 max_quantity = 9999
+id = 1
 name = "Poison Heal"
 requirements = Array[ExtResource("6_f4wql")]([SubResource("Resource_ug1b0")])
 details = ""

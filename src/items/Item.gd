@@ -2,7 +2,7 @@
 extends Resource
 class_name _Item 
 
-var id := -1
+@export var id := -1
 @export var name: String: set = _set_name
 @export var requirements: Array[ItemRequirement]: set = _set_requirement
 @export_multiline

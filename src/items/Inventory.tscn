@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=145 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" uid="uid://dwcdmph2053xh" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="2_xejte"]
@@ -24,7 +24,6 @@
 [ext_resource type="Resource" uid="uid://ppeiq7xgotnb" path="res://data/items/spell_scrolls/basic/hit_o.tres" id="23_dq1ou"]
 [ext_resource type="Resource" uid="uid://tj8xadbwbfjr" path="res://data/items/spell_scrolls/basic/throw_o.tres" id="24_ieyon"]
 [ext_resource type="Resource" uid="uid://cwk4v4cvwgmus" path="res://data/items/equipment/sunset_orb.tres" id="24_rw6d2"]
-[ext_resource type="Resource" uid="uid://vhtwa50btn1" path="res://data/battle_system/battle_actions/attacks/elementals/yellow/rush.tres" id="24_sfleh"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="25_aqy3a"]
 [ext_resource type="Resource" uid="uid://c8pisi3aoespi" path="res://data/items/spell_scrolls/basic/throw_g.tres" id="25_tpatv"]
 [ext_resource type="Resource" uid="uid://gbh13s2b3fi" path="res://data/items/spell_scrolls/basic/throw_r.tres" id="26_e3cwp"]
@@ -40,37 +39,37 @@
 [ext_resource type="Resource" uid="uid://fs0y578r1jan" path="res://data/items/key_items/catalyst_spell.tres" id="35_ex8ue"]
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="35_glgke"]
 [ext_resource type="Resource" uid="uid://b2qk5bljx7w84" path="res://data/items/spell_scrolls/basic/throw_m.tres" id="35_pnyuv"]
-[ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="35_xcgnd"]
 [ext_resource type="Resource" uid="uid://d2uymuumb873y" path="res://data/items/key_items/destroy_spell.tres" id="36_0aymk"]
-[ext_resource type="Resource" uid="uid://34n0lh5ijyi3" path="res://data/battle_system/battle_actions/attacks/elementals/red/consume.tres" id="36_1gh0c"]
 [ext_resource type="Resource" uid="uid://bm7p4gie7rf0y" path="res://data/items/spell_scrolls/phobias/phobia_b.tres" id="36_a6i7l"]
 [ext_resource type="Resource" uid="uid://bmw0g3a6ir15u" path="res://data/items/spell_scrolls/phobias/phobia_p.tres" id="37_crr7r"]
-[ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="37_fc2p2"]
 [ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="37_o6yus"]
 [ext_resource type="Resource" uid="uid://cm7f6hye8cnv8" path="res://data/items/spell_scrolls/phobias/phobia_m.tres" id="38_1kiw8"]
 [ext_resource type="Resource" uid="uid://crnal5pig1ahg" path="res://data/items/spell_scrolls/phobias/phobia_r.tres" id="39_oh7cu"]
-[ext_resource type="Resource" uid="uid://bx48nu4cu54b6" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/fortress.tres" id="40_fcb28"]
 [ext_resource type="Resource" uid="uid://b0wddlydt8k14" path="res://data/items/spell_scrolls/phobias/phobia_o.tres" id="40_shlil"]
 [ext_resource type="Resource" uid="uid://cwjiv3e1abevd" path="res://data/items/spell_scrolls/phobias/phobia_y.tres" id="41_quj10"]
 [ext_resource type="Resource" uid="uid://coelvvbcbe8hl" path="res://data/items/spell_scrolls/phobias/phobia_g.tres" id="42_u1qav"]
 [ext_resource type="Resource" uid="uid://ckl16fwx0wyvy" path="res://data/items/spell_scrolls/total_meltdown.tres" id="43_1b81x"]
 [ext_resource type="Resource" uid="uid://ixmwadvjexrp" path="res://data/items/spell_scrolls/phobias/phobia_c.tres" id="43_74f1i"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="43_oxpkv"]
-[ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="44_ggk3a"]
-[ext_resource type="Resource" uid="uid://d1gb0w3k2ys3f" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/freezing_gale.tres" id="45_cmtqc"]
-[ext_resource type="Resource" uid="uid://dsprshhqctptw" path="res://data/battle_system/battle_actions/attacks/elementals/orange/brave_the_dark.tres" id="50_bemve"]
-[ext_resource type="Resource" uid="uid://drcu827fevmfu" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/steel_shot.tres" id="52_oax4k"]
-[ext_resource type="Resource" uid="uid://bbmfv6c5wfps" path="res://data/battle_system/battle_actions/attacks/elementals/green/disarmament.tres" id="53_wxrwp"]
-[ext_resource type="Resource" uid="uid://g8xbj66ldn2v" path="res://data/battle_system/battle_actions/attacks/elementals/green/orbital_strike.tres" id="54_q0n5q"]
-[ext_resource type="Resource" uid="uid://b3nggi4ftlucw" path="res://data/battle_system/battle_actions/attacks/elementals/red/desolation.tres" id="55_q7joq"]
-[ext_resource type="Resource" uid="uid://c4lyg4rq0tpt2" path="res://data/battle_system/battle_actions/attacks/elementals/green/reactor_breach.tres" id="56_1havk"]
-[ext_resource type="Resource" uid="uid://ctbnp06ti551l" path="res://data/battle_system/battle_actions/attacks/elementals/orange/alchemy_beam.tres" id="57_es4hi"]
-[ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="58_frhma"]
-[ext_resource type="Resource" uid="uid://d1s1g7x527myg" path="res://data/battle_system/battle_actions/attacks/elementals/purple/snipe.tres" id="59_hbv5v"]
-[ext_resource type="Resource" uid="uid://by8gsmj622ykf" path="res://data/battle_system/battle_actions/attacks/elementals/orange/unbalanced_assault.tres" id="60_p18s4"]
-[ext_resource type="Resource" uid="uid://hrssxbjy6fys" path="res://data/battle_system/battle_actions/attacks/elementals/red/leech.tres" id="61_53iyw"]
-[ext_resource type="Resource" uid="uid://cvg7imt703rjl" path="res://data/battle_system/battle_actions/attacks/elementals/red/satiate.tres" id="62_cjsp4"]
+[ext_resource type="Resource" uid="uid://b0lofq8m6w3pf" path="res://data/items/spell_scrolls/output/brave_the_dark_bead.tres" id="45_53iyw"]
+[ext_resource type="Resource" uid="uid://crwjsgrunnxf0" path="res://data/items/spell_scrolls/output/orbital_strike_bead.tres" id="47_cjsp4"]
+[ext_resource type="Resource" uid="uid://bsvq8isykqb3s" path="res://data/items/spell_scrolls/output/freezing_gale_bead.tres" id="48_5bsgw"]
+[ext_resource type="Resource" uid="uid://c7j26ldhhj4mg" path="res://data/items/spell_scrolls/output/snipe_bead.tres" id="49_qvfu8"]
+[ext_resource type="Resource" uid="uid://o6q546xw4kah" path="res://data/items/spell_scrolls/output/consume_bead.tres" id="50_r6fov"]
+[ext_resource type="Resource" uid="uid://crmcwg5beq4ns" path="res://data/items/spell_scrolls/output/bite_bead.tres" id="51_awnmn"]
+[ext_resource type="Resource" uid="uid://ddudnc67sla5a" path="res://data/items/spell_scrolls/output/rush_bead.tres" id="52_3ukn5"]
+[ext_resource type="Resource" uid="uid://1s70pp15emt4" path="res://data/items/spell_scrolls/output/cleave_bead.tres" id="53_ogqlw"]
+[ext_resource type="Resource" uid="uid://dh0d2ck60rn4x" path="res://data/items/spell_scrolls/output/steel_shot_bead.tres" id="54_76118"]
+[ext_resource type="Resource" uid="uid://dg1mkjcd4555j" path="res://data/items/spell_scrolls/output/satiate_bead.tres" id="55_mgbm1"]
+[ext_resource type="Resource" uid="uid://dov5owfgisen0" path="res://data/items/spell_scrolls/output/disarmament_bead.tres" id="56_cklti"]
+[ext_resource type="Resource" uid="uid://de5rstyi64dbs" path="res://data/items/spell_scrolls/output/alchemy_beam_bead.tres" id="57_gf1qu"]
+[ext_resource type="Resource" uid="uid://dl8sdwm7jxdv" path="res://data/items/spell_scrolls/output/fortress_bead.tres" id="59_eeayk"]
+[ext_resource type="Resource" uid="uid://cifglr2uu7quy" path="res://data/items/spell_scrolls/output/leech_bead.tres" id="60_oexaa"]
+[ext_resource type="Resource" uid="uid://beh80ngejtetg" path="res://data/items/spell_scrolls/output/desolation_bead.tres" id="61_xthwq"]
+[ext_resource type="Resource" uid="uid://dn31opoi8yrki" path="res://data/items/spell_scrolls/output/reinforce_bead.tres" id="62_hwjkr"]
+[ext_resource type="Resource" uid="uid://dxxk0f8sn5ell" path="res://data/items/spell_scrolls/output/unbalanced_assault_bead.tres" id="62_p18s4"]
 [ext_resource type="Resource" uid="uid://5l78hk1jadb6" path="res://data/items/key_items/golem_spell.tres" id="63_2ju5g"]
+[ext_resource type="Resource" uid="uid://txe1ghpacyra" path="res://data/items/spell_scrolls/output/reactor_breach_bead.tres" id="63_6mntc"]
 [ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="64_soan2"]
 [ext_resource type="Resource" uid="uid://dd7wk01w5ccs6" path="res://data/items/equipment/training_wheels.tres" id="70_nstv8"]
 
@@ -245,27 +244,11 @@ quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_0wn4d"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("24_sfleh")
-name = "Rush Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_co12a"]
-resource_name = "Rush Bead"
-script = ExtResource("2_xejte")
-item = SubResource("Resource_0wn4d")
-id = 17
-quantity = 0
-max_quantity = 9999
-allow_stacking = true
-
 [sub_resource type="Resource" id="Resource_04pk6"]
 resource_name = "Blue Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("17_pe1tn")
-id = 18
+id = 17
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -274,7 +257,7 @@ allow_stacking = true
 resource_name = "Purple Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("13_l1x6d")
-id = 19
+id = 18
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -283,7 +266,7 @@ allow_stacking = true
 resource_name = "Magenta Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("14_cys5c")
-id = 20
+id = 19
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -292,7 +275,7 @@ allow_stacking = true
 resource_name = "Red Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("15_crq3u")
-id = 21
+id = 20
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -301,7 +284,7 @@ allow_stacking = true
 resource_name = "Orange Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("18_v86o4")
-id = 22
+id = 21
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -310,7 +293,7 @@ allow_stacking = true
 resource_name = "Yellow Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("21_1lo4t")
-id = 23
+id = 22
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -319,7 +302,7 @@ allow_stacking = true
 resource_name = "Green Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("20_ouyko")
-id = 24
+id = 23
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -328,7 +311,7 @@ allow_stacking = true
 resource_name = "Cyan Strike Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("19_ngs3k")
-id = 25
+id = 24
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -337,6 +320,15 @@ allow_stacking = true
 resource_name = "Abyss Strike"
 script = ExtResource("2_xejte")
 item = ExtResource("16_pu3bs")
+id = 25
+quantity = 0
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_frq0a"]
+resource_name = "Satiate Bead"
+script = ExtResource("2_xejte")
+item = ExtResource("55_mgbm1")
 id = 26
 quantity = 0
 max_quantity = 9999
@@ -351,49 +343,28 @@ quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_1wuss"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("35_xcgnd")
-name = "Bite Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_rfpfb"]
-resource_name = "Bite Bead"
+[sub_resource type="Resource" id="Resource_mdqp4"]
+resource_name = "Leech Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_1wuss")
+item = ExtResource("60_oexaa")
 id = 28
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_l5xe0"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("36_1gh0c")
-name = "Consume Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_lmrxr"]
-resource_name = "Consume Bead"
+[sub_resource type="Resource" id="Resource_0kn2x"]
+resource_name = "Bite Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_l5xe0")
+item = ExtResource("51_awnmn")
 id = 29
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_k5shw"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("37_fc2p2")
-name = "Cleave Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_hiu3a"]
-resource_name = "Cleave Bead"
+[sub_resource type="Resource" id="Resource_ea1gc"]
+resource_name = "Consume Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_k5shw")
+item = ExtResource("50_r6fov")
 id = 30
 quantity = 0
 max_quantity = 9999
@@ -417,34 +388,29 @@ quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_a46ng"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("40_fcb28")
-name = "Fortress Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_w80v7"]
-resource_name = "Fortress Bead"
+[sub_resource type="Resource" id="Resource_dhtb3"]
+resource_name = "Freezing Gale Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_a46ng")
+item = ExtResource("48_5bsgw")
 id = 33
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_e0sre"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("45_cmtqc")
-name = "Freezing Gale Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_w7uci"]
-resource_name = "Freezing Gale Bead"
+[sub_resource type="Resource" id="Resource_2x45q"]
+resource_name = "Fortress Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_e0sre")
+item = ExtResource("59_eeayk")
 id = 34
+quantity = 0
+max_quantity = 9999
+allow_stacking = true
+
+[sub_resource type="Resource" id="Resource_m5efq"]
+resource_name = "Steel Shot Bead"
+script = ExtResource("2_xejte")
+item = ExtResource("54_76118")
+id = 35
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -453,7 +419,7 @@ allow_stacking = true
 resource_name = "Hydrophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("36_a6i7l")
-id = 35
+id = 36
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -462,7 +428,7 @@ allow_stacking = true
 resource_name = "Nyctophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("37_crr7r")
-id = 36
+id = 37
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -471,7 +437,7 @@ allow_stacking = true
 resource_name = "Porphyrophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("38_1kiw8")
-id = 37
+id = 38
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -480,7 +446,7 @@ allow_stacking = true
 resource_name = "Hemophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("39_oh7cu")
-id = 38
+id = 39
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -489,7 +455,7 @@ allow_stacking = true
 resource_name = "Xanthophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("40_shlil")
-id = 39
+id = 40
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -498,7 +464,7 @@ allow_stacking = true
 resource_name = "Photophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("41_quj10")
-id = 40
+id = 41
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -507,7 +473,7 @@ allow_stacking = true
 resource_name = "Prasinophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("42_u1qav")
-id = 41
+id = 42
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -516,23 +482,16 @@ allow_stacking = true
 resource_name = "Glaukophobia Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("43_74f1i")
-id = 42
+id = 43
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_kx47f"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("50_bemve")
-name = "Brave the Dark Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_pvmjq"]
+[sub_resource type="Resource" id="Resource_k6ebp"]
 resource_name = "Brave the Dark Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_kx47f")
-id = 43
+item = ExtResource("45_53iyw")
+id = 44
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
@@ -541,182 +500,96 @@ allow_stacking = true
 resource_name = "Total Meltdown Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("43_1b81x")
-id = 44
-quantity = 0
-max_quantity = 9999
-allow_stacking = true
-
-[sub_resource type="Resource" id="Resource_68132"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("52_oax4k")
-name = "Steel Shot Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_5y80x"]
-resource_name = "Steel Shot Bead"
-script = ExtResource("2_xejte")
-item = SubResource("Resource_68132")
 id = 45
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_d8mft"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("53_wxrwp")
-name = "Disarmament Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_v2gl1"]
-resource_name = "Disarmament Bead"
+[sub_resource type="Resource" id="Resource_ntiwd"]
+resource_name = "Orbital Strike Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_d8mft")
+item = ExtResource("47_cjsp4")
 id = 46
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_d2r8e"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("54_q0n5q")
-name = "Orbital Strike Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_pv81j"]
-resource_name = "Orbital Strike Bead"
+[sub_resource type="Resource" id="Resource_8vdr2"]
+resource_name = "Reactor Breach Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_d2r8e")
+item = ExtResource("63_6mntc")
 id = 47
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_sx6yy"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("55_q7joq")
-name = "Desolation Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_ea3e4"]
-resource_name = "Desolation Bead"
+[sub_resource type="Resource" id="Resource_1jgfg"]
+resource_name = "Cleave Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_sx6yy")
+item = ExtResource("53_ogqlw")
 id = 48
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_6gyui"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("56_1havk")
-name = "Reactor Breach Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_kxc0f"]
-resource_name = "Reactor Breach Bead"
+[sub_resource type="Resource" id="Resource_oqx13"]
+resource_name = "Desolation Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_6gyui")
+item = ExtResource("61_xthwq")
 id = 49
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_vwn4r"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("57_es4hi")
-name = "Alchemy Beam Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_meq2n"]
-resource_name = "Alchemy Beam Bead"
+[sub_resource type="Resource" id="Resource_mcmto"]
+resource_name = "Snipe Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_vwn4r")
+item = ExtResource("49_qvfu8")
 id = 50
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_rfaas"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("58_frhma")
-name = "Reinforce Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_tlh78"]
-resource_name = "Reinforce Bead"
+[sub_resource type="Resource" id="Resource_3tnb1"]
+resource_name = "Rush Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_rfaas")
+item = ExtResource("52_3ukn5")
 id = 51
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_d55tx"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("59_hbv5v")
-name = "Snipe Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_7svcm"]
-resource_name = "Snipe Bead"
+[sub_resource type="Resource" id="Resource_cw3ei"]
+resource_name = "Disarmament Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_d55tx")
+item = ExtResource("56_cklti")
 id = 52
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_5bsgw"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("60_p18s4")
-name = "Unbalanced Assault Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_qvfu8"]
-resource_name = "Unbalanced Assault Bead"
+[sub_resource type="Resource" id="Resource_r4jer"]
+resource_name = "Alchemy Beam Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_5bsgw")
+item = ExtResource("57_gf1qu")
 id = 53
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_r6fov"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("61_53iyw")
-name = "Leech Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_awnmn"]
-resource_name = "Leech Bead"
+[sub_resource type="Resource" id="Resource_2kx4u"]
+resource_name = "Unbalanced Assault Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_r6fov")
+item = ExtResource("62_p18s4")
 id = 54
 quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_3ukn5"]
-script = ExtResource("44_ggk3a")
-spell = ExtResource("62_cjsp4")
-name = "Satiate Bead"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-
-[sub_resource type="Resource" id="Resource_ogqlw"]
-resource_name = "Satiate Bead"
+[sub_resource type="Resource" id="Resource_bi3kr"]
+resource_name = "Reinforce Bead"
 script = ExtResource("2_xejte")
-item = SubResource("Resource_3ukn5")
+item = ExtResource("62_hwjkr")
 id = 55
 quantity = 0
 max_quantity = 9999
@@ -762,6 +635,7 @@ metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 [sub_resource type="Resource" id="Resource_nstv8"]
 script = ExtResource("64_soan2")
 unique_id = 4
+id = 4
 name = "Set Portal Spell"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
@@ -780,6 +654,7 @@ metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 [sub_resource type="Resource" id="Resource_soan2"]
 script = ExtResource("64_soan2")
 unique_id = 5
+id = 5
 name = "Use Portal Spell"
 requirements = Array[ExtResource("43_oxpkv")]([])
 details = ""
@@ -853,7 +728,7 @@ allow_stacking = true
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
-spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_mx8e1"), SubResource("Resource_co12a"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_mo4e2"), SubResource("Resource_rfpfb"), SubResource("Resource_lmrxr"), SubResource("Resource_hiu3a"), SubResource("Resource_6agee"), SubResource("Resource_l4gd1"), SubResource("Resource_w80v7"), SubResource("Resource_w7uci"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_pvmjq"), SubResource("Resource_p5ki7"), SubResource("Resource_5y80x"), SubResource("Resource_v2gl1"), SubResource("Resource_pv81j"), SubResource("Resource_ea3e4"), SubResource("Resource_kxc0f"), SubResource("Resource_meq2n"), SubResource("Resource_tlh78"), SubResource("Resource_7svcm"), SubResource("Resource_qvfu8"), SubResource("Resource_awnmn"), SubResource("Resource_ogqlw")])
+spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_frq0a"), SubResource("Resource_mo4e2"), SubResource("Resource_mdqp4"), SubResource("Resource_0kn2x"), SubResource("Resource_ea1gc"), SubResource("Resource_6agee"), SubResource("Resource_l4gd1"), SubResource("Resource_dhtb3"), SubResource("Resource_2x45q"), SubResource("Resource_m5efq"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_k6ebp"), SubResource("Resource_p5ki7"), SubResource("Resource_ntiwd"), SubResource("Resource_8vdr2"), SubResource("Resource_1jgfg"), SubResource("Resource_oqx13"), SubResource("Resource_mcmto"), SubResource("Resource_3tnb1"), SubResource("Resource_cw3ei"), SubResource("Resource_r4jer"), SubResource("Resource_2kx4u"), SubResource("Resource_bi3kr")])
 key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m"), SubResource("Resource_2ju5g"), SubResource("Resource_musac"), SubResource("Resource_qonbv")])
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_p18s4"), SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x")])
 secondary_override = 6

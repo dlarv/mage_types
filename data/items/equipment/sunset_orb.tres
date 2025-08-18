@@ -69,6 +69,7 @@ bonus = SubResource("Resource_f8mby")
 [resource]
 script = ExtResource("3_bo7o4")
 effects = Array[ExtResource("1_twp2o")]([SubResource("Resource_mcfi2"), SubResource("Resource_b6iix")])
+id = 3
 name = "Sunset Orb"
 requirements = Array[ExtResource("2_whcob")]([])
 details = "Gives the holder an attack boost everytime they transmute into either [el]Orange[/el] or [el]Red[/el]."
