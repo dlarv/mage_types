@@ -11,19 +11,16 @@ func _init() -> void:
 
 func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
 	if target.statuses.blocking: return 0
-	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), user.level, 1.0)
+	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), 1.0, user)
 
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
-	if not user.alignment.is_blank() and current_buffer.action.element == user.alignment:
-		effectiveness += ALIGNMENT_BONUS
-
 	var dmg := calculate_damage(
 			user.get_attack_stat(current_buffer.action), 
 			target.get_defense_stat(current_buffer.action), 
-			user.level, 
-			effectiveness
+			effectiveness,
+			user
 		)
 
 	var msg: String 
@@ -40,8 +37,11 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 
 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
-func calculate_damage(attack: float, defense: float, level: int, effectiveness: float) -> int:
-	var power := strength + (strength * float(level) / 10.0)
+func calculate_damage(attack: float, defense: float, effectiveness: float, user: BattleActor) -> int:
+	if not user.alignment.is_blank() and current_buffer.action.element == user.alignment:
+		effectiveness += ALIGNMENT_BONUS
+
+	var power := strength + (strength * float(user.level) / 10.0)
 	var dmg := power * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
 	Logger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 

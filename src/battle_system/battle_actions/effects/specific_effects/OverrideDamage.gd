@@ -22,7 +22,7 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 			attack = user.get_stat(override_stat)
 			defense = target.get_stat(override_stat)
 
-	var dmg := calculate_damage(attack, defense, user.level, effectiveness)
+	var dmg := calculate_damage(attack, defense, effectiveness, user)
 	return "%s" % [ _apply_to(target, dmg, user) ]
 
 
@@ -40,7 +40,7 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 		_:
 			attack = user.get_stat(override_stat)
 			defense = target.get_stat(override_stat)
-	return calculate_damage(attack, defense, user.level, 1.0)
+	return calculate_damage(attack, defense, 1.0, user)
 
 
 func _set_name(_val: String) -> void:
