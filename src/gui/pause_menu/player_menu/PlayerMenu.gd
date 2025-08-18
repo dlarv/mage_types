@@ -39,8 +39,10 @@ func _setup_team(team: Array[BattleActor]) -> void:
 		screen.open_spell_menu.connect(_on_open_spell_menu.bind(actor))
 		add_child(screen)
 
+
 func _on_open_spell_menu(index: int, actor: BattleActor) -> void:
 	open_spell_menu.emit(index, actor)
+
 
 func _on_open_equipment_menu(actor: BattleActor) -> void:
 	open_equipment_menu.emit(actor)

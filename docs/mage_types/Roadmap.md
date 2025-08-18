@@ -24,9 +24,6 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
-- [ ] Can't remove spells, only replace them
-- [ ] Allow player to attach spells from inventory
-- [ ] Player's will realign after fighting the miniboss and losing
 - [ ] Remodel rec room
 - [ ] Rewrite narrative setup
 	- [ ] "Where am I" thread
@@ -35,6 +32,9 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [x] Make Adonis Enclave dialog less cringe
 		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
 - [ ] Add temporary info screen describing transmutation system overview
+- [ ] Allow player to attach spells from inventory
+- [x] Can't remove spells, only replace them
+- [x] Player's will realign after fighting the miniboss and losing
 - [x] Player levels up even if they lose
 - [x] Ensure tutorial bosses are balanced
 - [x] Add 'dark souls' boss

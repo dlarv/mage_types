@@ -6,7 +6,7 @@ signal open_spell_menu(index: int)
 @export var max_spell_slots := 4
 var _actor: BattleActor
 var _attacks: Array
-var _open_mode := 0
+var _curr_index := 0
 
 
 func setup(actor: BattleActor) -> void:
@@ -76,7 +76,10 @@ func _set_attack(attack: Attack, index: int) -> void:
 	if index >= max_spell_slots:
 		push_warning("CharacterScreen gui not set up for more than %d attacks. Tried to set attack #%d." 
 				% [max_spell_slots, index])
-	%SpellScroller.get_children()[index].text = attack.name
+	if attack:
+		%SpellScroller.get_children()[index].text = attack.name
+	else:
+		%SpellScroller.get_children()[index].text = " "
 	_attacks[index] = attack
 
 
@@ -96,7 +99,7 @@ func _on_element_changed(id: int, element: ElementalType) -> void:
 
 func _on_item_selected(item: Variant) -> void:
 	%InfoDisplay.clear_message()
-	_open_mode = item
+	_curr_index = item
 	if item >= 0:
 		if _attacks[item] == null:
 			_on_replace_button_pressed()
@@ -113,8 +116,16 @@ func _on_item_selected(item: Variant) -> void:
 func _on_cancel_button_pressed() -> void:
 	%InfoDisplay.clear_message()
 
+
 func _on_replace_button_pressed() -> void:
-	if _open_mode < 0:
+	if _curr_index < 0:
 		open_equipment_menu.emit()
 	else:
-		open_spell_menu.emit(_open_mode)
+		open_spell_menu.emit(_curr_index)
+
+
+func _on_remove_button_pressed() -> void:
+	if _curr_index < 0:
+		_actor.replace_equipment(null)
+	else:
+		_actor.replace_attack(null, _curr_index)

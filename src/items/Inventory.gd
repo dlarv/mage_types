@@ -167,7 +167,7 @@ func add(item: _Item, amount:=1) -> void:
 		quantity_changed.emit(slot)
 
 
-func add_spell(spell: Attack) -> void:
+func find_and_add_spell(spell: Attack) -> void:
 	for slot in spell_scrolls:
 		if slot.item.spell == spell:
 			slot.quantity += 1
@@ -402,3 +402,4 @@ func deserialize(data: Dictionary) -> void:
 
 	UIManager.inventory.overworld_spells_menu.set_primary(data["spell1"])
 	UIManager.inventory.overworld_spells_menu.set_secondary(data["spell2"])
+

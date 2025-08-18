@@ -219,7 +219,7 @@ func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 
 	if selection != null:
 		Inventory.remove(selection, 1)
-		actor.learn_spell(selection, index)
+		actor.replace_attack(selection, index)
 
 
 func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:

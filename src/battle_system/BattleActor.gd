@@ -156,13 +156,17 @@ func is_element(element: ElementalType) -> bool:
 	return element1 == element or element2 == element
 
 
-# Teaches actor spell contained within scroll.
-# If the actor does not meet the requirements, return an array containing the unmet requirements.
-func learn_spell(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
+## Teaches actor spell contained within scroll.
+## If spell already exists at index, places old spell into inventory.
+## If the actor does not meet the requirements, return an array containing the unmet requirements.
+func replace_attack(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
 	if scroll == null:
+		# Prevent player from removing their last attack.
+		if attacks.count(null) == len(attacks) - 1: return []
+
 		var attack := attacks[index]
 		if attack:
-			Inventory.add_spell(attack)
+			Inventory.find_and_add_spell(attack)
 		attacks.remove_at(index)
 		attacks.append(null)
 
@@ -186,8 +190,8 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
 		
 	var output := scroll.check_requirements(self)
 	if len(output) == 0:
-		if attacks[index]:
-			Inventory.add_spell(attacks[index])
+		if prevAttack:
+			Inventory.find_and_add_spell(prevAttack)
 		attacks[index] = scroll.spell
 		spell_learned.emit(scroll.spell, index)
 	else:
@@ -196,6 +200,12 @@ func learn_spell(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
 		if prevAttack:
 			attacks[index] = prevAttack
 	return output
+
+
+func replace_equipment(item: Equipment) -> void:
+	if equipment != null:
+		Inventory.add(equipment)
+	equipment = item
 
 
 func get_stat(stat: StatManager.Stats) -> float:
