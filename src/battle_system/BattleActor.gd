@@ -322,8 +322,6 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 
 
 func resolve_end_of_battle(turnCounter: int) -> String:
-	is_defeated = false
-	aleady_defeated = false
 	stat_manager.reset()
 	statuses.clear()
 	if reset_hp_after_battle: 
@@ -336,27 +334,12 @@ func resolve_end_of_battle(turnCounter: int) -> String:
 		Logger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
 		unnormalizedValues = alignment_manager.normalize_and_add()
 
-		# This will return null if actor was already aligned.
-		# But this condition was checked for earlier.
-		var maxElements := alignment_manager.update_current_alignment()
-		var newCore: ElementalType
-		if element1 in maxElements:
-			newCore = element1
-		else:
-			newCore = maxElements.pick_random()
-
-		if alignment_manager.alignment_locked:
-			set_element(0, newCore)
-			output = "!!!!!!!!!!!!!!\n%s has become aligned to %s!" \
-					% [name, newCore]
-		elif element1 != newCore:
-			set_element(0, newCore)
-			output = "!!!\n%s's core changed to %s!" \
-					% [name, newCore]
-
 	if stat_manager is PlayerStatManager:
 		stat_manager.boost_elemental_stats([element1, element2] as Array[ElementalType])
 		stat_manager.resolve_end_of_turn(unnormalizedValues, turnCounter)
+
+	is_defeated = false
+	aleady_defeated = false
 	return output
 
 
@@ -385,6 +368,29 @@ func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:
 	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)
 
 	leveled_up.emit()
+	return output
+
+
+func update_alignment() ->  Dictionary:
+	var output := {}
+	var maxElements := alignment_manager.update_current_alignment()
+	var newCore: ElementalType
+	if element1 in maxElements:
+		newCore = element1
+	else:
+		newCore = maxElements.pick_random()
+
+	if alignment_manager.alignment_locked:
+		output["aligned"] = true
+		output["element"] = newCore
+		set_element(0, newCore)
+	elif element1 != newCore:
+		output["aligned"] = false
+		output["element"] = newCore
+		set_element(0, newCore)
+	else:
+		output["element"] = null
+
 	return output
 
 

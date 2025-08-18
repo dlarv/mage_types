@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq1ea1jyfi3ft"]
+[gd_scene load_steps=3 format=3 uid="uid://dq1ea1jyfi3ft"]
 
 [ext_resource type="Script" uid="uid://cqy5rq3jtb86q" path="res://src/battle_system/gui/battle_rewards/BattleRewardScreen.gd" id="1_c3dpa"]
+[ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="2_myyjb"]
 
 [node name="BattleRewardScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -24,11 +25,14 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
 [node name="ItemHeader" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "
-Items"
+text = "Items"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
@@ -40,10 +44,22 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 3
+theme_override_constants/h_separation = 20
+columns = 2
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Finish"
+
+[node name="RealignmentDisplayParent" type="PanelContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="RealignmentDisplay" parent="MarginContainer/RealignmentDisplayParent" instance=ExtResource("2_myyjb")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_finish_button_pressed"]
