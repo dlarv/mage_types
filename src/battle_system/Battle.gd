@@ -277,7 +277,7 @@ func _resolve_end_of_battle(pause:=true) -> void:
 	
 	remove_child(gui)
 
-	if pause:
+	if pause and len(allies) > _defeated_allies:
 		var rewardScreen := RewardScreen.instantiate()
 		$CanvasLayer.add_child(rewardScreen)
 		$CanvasLayer.show()
