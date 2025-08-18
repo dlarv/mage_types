@@ -32,5 +32,6 @@ func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: boo
 
 
 func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
-	var phobia: PhobiaEffect = target.status_manager.check_phobia(element)
+	var phobia: PhobiaEffect = target.statuses.check_phobic(element)
+	if not phobia: return 0
 	return phobia.get_dmg_potential(user, target, isFriendly, action)
