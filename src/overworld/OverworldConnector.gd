@@ -34,11 +34,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> void:
-	# var battle := battle_scene.instantiate()
-
 	# If an animation player messes with the player's team, they'll be removed from it.
 	if not _player.battle_actor in allies:
 		allies.insert(0, _player.battle_actor)
+
+	var healPlayer := enemy.heal_player_after_battle
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	hud.hide()
@@ -48,8 +48,10 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> 
 	hud.show()
 	UIManager.in_battle_mode = false
 	
-	for actor in allies:
-		actor.current_hp = actor.hp
+	# Overridden for now bc there is no mechanism to heal player if they are defeated.
+	if healPlayer or true:
+		for actor in allies:
+			actor.current_hp = actor.hp
 
 	if is_instance_valid(enemy):
 		for actor: BattleActor in enemy.team:

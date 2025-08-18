@@ -11,6 +11,7 @@ signal battle_ended(endState: Battle.EndState)
 		team = value
 var team: Array[BattleActor] = []
 @export var disappear_on_defeat := true
+@export var heal_player_after_battle := false
 
 func _ready() -> void:
 	if not Engine.is_editor_hint() and ai:
