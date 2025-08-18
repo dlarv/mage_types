@@ -62,6 +62,6 @@ stat_manager = SubResource("Resource_advf4")
 reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "blue"
-_alignment = "red"
+_alignment = "blank"
 attacks = Array[ExtResource("2_0kd5o")]([ExtResource("2_f77mh"), ExtResource("3_qh7aw"), SubResource("Resource_y6l1e")])
 equipment = ExtResource("9_djiaw")

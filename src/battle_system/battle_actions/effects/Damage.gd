@@ -2,6 +2,8 @@
 extends _AttackEffect 
 class_name Damage 
 
+const ALIGNMENT_BONUS := 0.3
+
 func _init() -> void:
 	# Force call of _set_name()
 	name = "Damage"
@@ -14,6 +16,9 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 
 # override
 func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
+	if not user.alignment.is_blank() and current_buffer.action.element == user.alignment:
+		effectiveness += ALIGNMENT_BONUS
+
 	var dmg := calculate_damage(
 			user.get_attack_stat(current_buffer.action), 
 			target.get_defense_stat(current_buffer.action), 
