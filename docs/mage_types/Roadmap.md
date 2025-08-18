@@ -24,18 +24,19 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
+- [ ] Can't remove spells, only replace them
+- [ ] Allow player to attach spells from inventory
+- [ ] Remodel rec room
 - [ ] Rewrite narrative setup
 	- [ ] "Where am I" thread
 	- [ ] "Player doesn't know about Primary and Secondary types" thread
-	- [ ] Add poker player and Denim dialog
+	- [ ] Add poker players and Denim dialog
 	- [x] Make Adonis Enclave dialog less cringe
 		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
-- [ ] Remodel rec room
-- [ ] Ensure tutorial bosses are balanced
-- [ ] Add 'dark souls' boss
-	- [ ] Decide on player reward
 - [ ] Add temporary info screen describing transmutation system overview
-- [ ] Refactor AttackEffect input fields to use Godot::Expression?
+- [x] Ensure tutorial bosses are balanced
+- [x] Add 'dark souls' boss
+	- [x] Decide on player reward
 - [x] Bug: Xp slider not animating
 - [x] Redesign tutorial bosses
 	- [x] Write dialog
@@ -190,6 +191,7 @@ MVP Demo candidate. Add story and QOL features.
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
+- [ ] Refactor AttackEffect input fields to use Godot::Expression?
 - [x] Allow user to use keyboard to select targets in battle
 # The List
 ## Battle (BATT)
@@ -265,6 +267,7 @@ Damage =  \left({strength +\frac{strength}{10}}\right) \times \frac{attack}{defe
 $$
 Where: 
 - affinity = `Attack.scaling_factor`
+	- This receives a 30% buff if the attack matches the user's alignment
 - rand = $[0.8, 1]$
 #### AttackEffect Internal Communication
 - New `BattleAction.DataBuffer` class created. 

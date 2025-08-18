@@ -169,7 +169,10 @@ Each of these sections will weave through each other.
 	
 **Rewards**
 - Half of the xp needed to level up
-- Hydrophobia (*Attack*)
+- Shield (*Attack*)
+- Magenta Hit (*Attack*)
+- Unbalanced Assault (*Attack*)
+- Satiate (*Attack*)
 - Denim joins your party
 #### Tutorial 3
 **Objectives**
@@ -189,11 +192,31 @@ Each of these sections will weave through each other.
 	- Blue Throw (*Attack*)
 	- Magenta Hit (*Attack*)
 	- Shield (*Attack*)
-- Boss 2 (Blue/Purple)
-	- Magenta Throw (*Attack*)
+- Boss 3 (Blue/Purple)
+	- Blue Hit (*Attack*)
+	- Red Hit (*Attack*)
+	- Shield (*Attack*)
+	- Satiate (*Attack*)
 
 **Rewards**
 - Rest of xp needed to level up
+	- Hp: 55 -> ~61
+	- MAttack: 12 -> ~14
+	- RAttack: 11 -> ~17
+	- MDefense: 12 -> ~14
+	- RDefense: 13 -> ~15
+	- Speed: 11 -> ~12
+- Purple Strike (*Attack*)
+#### Miniboss
+- This boss works as a roadblock, forcing the player to backtrack to the rec room (where the battle tutorial is)
+
+**Loadout**
+- Miniboss (Blue/Purple) with ScriptedOpponent
+	- Blue Throw
+	- Conduct Red
+	- Drain
+
+**Rewards**
 - Willpower (*Equipment*)
 ### Supply Closet
 This is where I test and demo all puzzle blocks. In the back of this section there will be a door to the Backrooms, which are a Lost Forest style puzzle where the player must use their knowledge of Offensive/Defensive elements to navigate it.
