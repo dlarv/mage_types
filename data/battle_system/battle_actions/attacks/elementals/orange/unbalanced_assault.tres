@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://by8gsmj622ykf"]
+
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_8k2jc"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_bhiyu"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_mdcs0"]
+[ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_8k2jc"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_t6a82"]
+
+[sub_resource type="Resource" id="Resource_skh0b"]
+resource_name = "Damage"
+script = ExtResource("3_8k2jc")
+name = "Damage"
+_strength = "20"
+message = ""
+metadata/_custom_type_script = "uid://dn43soynbu2kq"
+
+[sub_resource type="Resource" id="Resource_h0tgr"]
+resource_name = "Damage"
+script = ExtResource("4_t6a82")
+attack_effect = SubResource("Resource_skh0b")
+effect_target = 1
+_chance = "1.0"
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
+
+[resource]
+resource_name = "Unbalanced Assault"
+script = ExtResource("2_mdcs0")
+effects = Array[ExtResource("1_bhiyu")]([SubResource("Resource_h0tgr")])
+accuracy = 1.0
+power = 20
+scaling_factor = Vector4i(200, 100, 100, -1)
+name = "Unbalanced Assault"
+animation = ExtResource("1_8k2jc")
+_element = "orange"
+priority = 0
+attack_range = 0
+target = 3
+details = "Deals double damage if user's primary and secondary types do NOT share the same affinity group."
+metadata/_custom_type_script = "uid://c140c4j4qwln7"
