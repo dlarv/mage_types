@@ -24,7 +24,6 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
-- [ ] Remodel rec room
 - [ ] Rewrite narrative setup
 	- [ ] "Where am I" thread
 	- [ ] "Player doesn't know about Primary and Secondary types" thread
@@ -33,6 +32,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
 - [ ] Add temporary info screen describing transmutation system overview
 - [ ] Allow player to attach spells from inventory
+- [x] Remodel rec room
 - [x] Can't remove spells, only replace them
 - [x] Player's will realign after fighting the miniboss and losing
 - [x] Player levels up even if they lose
@@ -94,6 +94,7 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [ ] Small puzzles
 	- [ ] Add endless stairway to infinite hall
 - [ ] Add wall paper
+- [ ] Clay shader cracks are inverted?
 - [ ] Add local lighting
 - [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
 - [ ] Map menu improvements

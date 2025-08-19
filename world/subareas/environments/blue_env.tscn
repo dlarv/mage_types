@@ -1,4 +1,4 @@
-[gd_scene load_steps=264 format=4 uid="uid://cmtatsdth8psr"]
+[gd_scene load_steps=272 format=4 uid="uid://cmtatsdth8psr"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_uvna4"]
 [ext_resource type="Shader" uid="uid://b8ankfagnoil7" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
@@ -497,11 +497,588 @@ shader_parameter/variation = 0.0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b55o6"]
 data = PackedVector3Array(-0.2711, 0, 0.414, 1.0469, 0, -0.414, 1.0469, 0, 0.414, -0.2711, 0, 0.414, -0.1878, 0, -0.414, 1.0469, 0, -0.414, -0.3757, 0, 0.414, -0.1878, 0, -0.414, -0.2711, 0, 0.414, -0.3757, 0, 0.414, -0.4992, 0, -0.414, -0.1878, 0, -0.414, -0.2711, 0, 0.414, -0.3757, 0, 0.4968, -0.3757, 0, 0.414, -0.2711, 0, 0.414, -0.2711, 0, 0.4968, -0.3757, 0, 0.4968, -1.0469, 0, 0.414, -0.4992, 0, -0.414, -0.3757, 0, 0.414, -1.0469, 0, 0.414, -1.0469, 0, -0.414, -0.4992, 0, -0.414, 1.0469, 0, -0.414, 1.0469, 7, 0.414, 1.0469, 0, 0.414, 1.0469, 0, 0.414, 1.0469, 7, 0.414, -0.2711, 7, 0.414, 1.0469, 0, 0.414, -0.2711, 7, 0.414, -0.2711, 0, 0.414, 1.0469, 0, -0.414, 1.0469, 7, -0.414, 1.0469, 7, 0.414, -0.1877, 0, -0.414, 1.0469, 7, -0.414, 1.0469, 0, -0.414, -0.1877, 0, -0.414, -0.1877, 7, -0.414, 1.0469, 7, -0.414, -1.0469, 0, -0.414, -0.4992, 7, -0.414, -0.4992, 0, -0.414, -1.0469, 0, -0.414, -1.0469, 7, -0.414, -0.4992, 7, -0.414, -0.3757, 0, 0.414, -1.0469, 7, 0.414, -1.0469, 0, 0.414, -0.3757, 0, 0.414, -0.3757, 7, 0.414, -1.0469, 7, 0.414)
 
+[sub_resource type="Shader" id="Shader_1tyg1"]
+code = "shader_type spatial;
+render_mode blend_mix,cull_back,diffuse_burley,specular_schlick_ggx
+;
+uniform vec3 uv1_offset = vec3(0.0, 0.0, 0.0);
+uniform vec3 uv1_scale = vec3(1.0, 1.0, 1.0);
+uniform int depth_min_layers = 8;
+uniform int depth_max_layers = 16;
+uniform vec2 depth_flip = vec2(1.0);
+uniform float variation = 0.0;
+varying float elapsed_time;
+void vertex() {
+	elapsed_time = TIME;
+	UV = UV*uv1_scale.xy+uv1_offset.xy;
+}
+float dot2(vec2 x) {
+	return dot(x, x);
+}
+float rand(vec2 x) {
+    return fract(cos(mod(dot(x, vec2(13.9898, 8.141)), 3.14)) * 43758.5);
+}
+vec2 rand2(vec2 x) {
+    return fract(cos(mod(vec2(dot(x, vec2(13.9898, 8.141)),
+						      dot(x, vec2(3.4562, 17.398))), vec2(3.14))) * 43758.5);
+}
+vec3 rand3(vec2 x) {
+    return fract(cos(mod(vec3(dot(x, vec2(13.9898, 8.141)),
+							  dot(x, vec2(3.4562, 17.398)),
+                              dot(x, vec2(13.254, 5.867))), vec3(3.14))) * 43758.5);
+}
+float param_rnd(float minimum, float maximum, float seed) {
+	return minimum+(maximum-minimum)*rand(vec2(seed));
+}
+float param_rndi(float minimum, float maximum, float seed) {
+	return floor(param_rnd(minimum, maximum + 1.0, seed));
+}
+vec3 rgb2hsv(vec3 c) {
+	vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+	vec4 p = c.g < c.b ? vec4(c.bg, K.wz) : vec4(c.gb, K.xy);
+	vec4 q = c.r < p.x ? vec4(p.xyw, c.r) : vec4(c.r, p.yzx);
+	float d = q.x - min(q.w, q.y);
+	float e = 1.0e-10;
+	return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+vec3 hsv2rgb(vec3 c) {
+	vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+	vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+	return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+const vec4 p_o362723417290_albedo_color = vec4(1.000000000, 1.000000000, 1.000000000, 1.000000000);
+const float p_o362723417290_metallic = 0.000000000;
+const float p_o362723417290_roughness = 1.000000000;
+const float p_o362723417290_emission_energy = 1.000000000;
+const float p_o362723417290_normal = 1.000000000;
+const float p_o362723417290_ao = 1.000000000;
+const float p_o362723417290_depth_scale = 0.500000000;
+const float seed_o6323886361663 = 0.000000000;
+const float p_o6323886361663_scale_x = 35.000000000;
+const float p_o6323886361663_scale_y = 35.000000000;
+const float p_o6323886361663_folds = 0.000000000;
+const float p_o6323886361663_iterations = 6.000000000;
+const float p_o6323886361663_persistence = 1.000000000;
+const float p_o6323886361663_offset = 0.070000000;
+const float p_o118530913605867_d_in1_x = 0.000000000;
+const float p_o118530913605867_d_in1_y = 0.000000000;
+const float p_o118530913605867_d_in1_z = 0.000000000;
+const float p_o118530913605867_d_in2_x = 0.000000000;
+const float p_o118530913605867_d_in2_y = 0.000000000;
+const float p_o118530913605867_d_in2_z = 0.000000000;
+const vec4 p_o65669395652318_color = vec4(0.000000000, 0.415686011, 1.000000000, 1.000000000);
+const float p_o85276206571690_default_in1 = 0.000000000;
+const float p_o85276206571690_default_in2 = 0.000000000;
+const float p_o90580726058080_default_in1 = 0.000000000;
+const float p_o90580726058080_default_in2 = 2.320000000;
+const float p_o45821412253260_rows = 4.000000000;
+const float p_o45821412253260_columns = 3.000000000;
+const float p_o45821412253260_row_offset = 0.500000000;
+const float p_o45821412253260_mortar = -0.030000000;
+const float p_o45821412253260_bevel = 0.000000000;
+const float p_o47050292993691_n = 6.000000000;
+const float p_o47050292993691_r = 0.400000000;
+const float p_o47050292993691_rot = 0.000000000;
+const float p_o47050292993691_cx = 0.000000000;
+const float p_o47050292993691_cy = 0.000000000;
+// #globals: fbm2 (o6323886361663)
+float value_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float p00 = rand(mod(o, size));
+	float p01 = rand(mod(o + vec2(0.0, 1.0), size));
+	float p10 = rand(mod(o + vec2(1.0, 0.0), size));
+	float p11 = rand(mod(o + vec2(1.0, 1.0), size));
+	p00 = sin(p00 * 6.28318530718 + offset * 6.28318530718) / 2.0 + 0.5;
+	p01 = sin(p01 * 6.28318530718 + offset * 6.28318530718) / 2.0 + 0.5;
+	p10 = sin(p10 * 6.28318530718 + offset * 6.28318530718) / 2.0 + 0.5;
+	p11 = sin(p11 * 6.28318530718 + offset * 6.28318530718) / 2.0 + 0.5;
+	vec2 t =  f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+	return mix(mix(p00, p10, t.x), mix(p01, p11, t.x), t.y);
+}
+float fbm_2d_value(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = value_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float perlin_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float a00 = rand(mod(o, size)) * 6.28318530718 + offset * 6.28318530718;
+	float a01 = rand(mod(o + vec2(0.0, 1.0), size)) * 6.28318530718 + offset * 6.28318530718;
+	float a10 = rand(mod(o + vec2(1.0, 0.0), size)) * 6.28318530718 + offset * 6.28318530718;
+	float a11 = rand(mod(o + vec2(1.0, 1.0), size)) * 6.28318530718 + offset * 6.28318530718;
+	vec2 v00 = vec2(cos(a00), sin(a00));
+	vec2 v01 = vec2(cos(a01), sin(a01));
+	vec2 v10 = vec2(cos(a10), sin(a10));
+	vec2 v11 = vec2(cos(a11), sin(a11));
+	float p00 = dot(v00, f);
+	float p01 = dot(v01, f - vec2(0.0, 1.0));
+	float p10 = dot(v10, f - vec2(1.0, 0.0));
+	float p11 = dot(v11, f - vec2(1.0, 1.0));
+	vec2 t =  f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+	return 0.5 + mix(mix(p00, p10, t.x), mix(p01, p11, t.x), t.y);
+}
+float fbm_2d_perlin(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = perlin_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float perlinabs_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	return abs(2.0*perlin_noise_2d(coord, size, offset, seed)-1.0);
+}
+float fbm_2d_perlinabs(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = perlinabs_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float fbm_2d_mod289(float x) {
+	return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+float fbm_2d_permute(float x) {
+	return fbm_2d_mod289(((x * 34.0) + 1.0) * x);
+}
+vec2 fbm_2d_rgrad2(vec2 p, float rot, float seed) {
+	float u = fbm_2d_permute(fbm_2d_permute(p.x) + p.y) * 0.0243902439 + rot; // Rotate by shift
+	u = fract(u) * 6.28318530718; // 2*pi
+	return vec2(cos(u), sin(u));
+}
+float simplex_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	coord *= 2.0; // needed for it to tile
+	coord += rand2(vec2(seed, 1.0-seed)) + size;
+	size *= 2.0; // needed for it to tile
+	coord.y += 0.001;
+	vec2 uv = vec2(coord.x + coord.y*0.5, coord.y);
+	vec2 i0 = floor(uv);
+	vec2 f0 = fract(uv);
+	vec2 i1 = (f0.x > f0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+	vec2 p0 = vec2(i0.x - i0.y * 0.5, i0.y);
+	vec2 p1 = vec2(p0.x + i1.x - i1.y * 0.5, p0.y + i1.y);
+	vec2 p2 = vec2(p0.x + 0.5, p0.y + 1.0);
+	i1 = i0 + i1;
+	vec2 i2 = i0 + vec2(1.0, 1.0);
+	vec2 d0 = coord - p0;
+	vec2 d1 = coord - p1;
+	vec2 d2 = coord - p2;
+	vec3 xw = mod(vec3(p0.x, p1.x, p2.x), size.x);
+	vec3 yw = mod(vec3(p0.y, p1.y, p2.y), size.y);
+	vec3 iuw = xw + 0.5 * yw;
+	vec3 ivw = yw;
+	vec2 g0 = fbm_2d_rgrad2(vec2(iuw.x, ivw.x), offset, seed);
+	vec2 g1 = fbm_2d_rgrad2(vec2(iuw.y, ivw.y), offset, seed);
+	vec2 g2 = fbm_2d_rgrad2(vec2(iuw.z, ivw.z), offset, seed);
+	vec3 w = vec3(dot(g0, d0), dot(g1, d1), dot(g2, d2));
+	vec3 t = 0.8 - vec3(dot(d0, d0), dot(d1, d1), dot(d2, d2));
+	t = max(t, vec3(0.0));
+	vec3 t2 = t * t;
+	vec3 t4 = t2 * t2;
+	float n = dot(t4, w);
+	return 0.5 + 5.5 * n;
+}
+float fbm_2d_simplex(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = simplex_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float cellular_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float min_dist = 2.0;
+	for(float x = -1.0; x <= 1.0; x++) {
+		for(float y = -1.0; y <= 1.0; y++) {
+			vec2 neighbor = vec2(float(x),float(y));
+			vec2 node = rand2(mod(o + vec2(x, y), size)) + vec2(x, y);
+			node =  0.5 + 0.25 * sin(offset * 6.28318530718 + 6.28318530718 * node);
+			vec2 diff = neighbor + node - f;
+			float dist = length(diff);
+			min_dist = min(min_dist, dist);
+		}
+	}
+	return min_dist;
+}
+float fbm_2d_cellular(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = cellular_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float cellular2_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float min_dist1 = 2.0;
+	float min_dist2 = 2.0;
+	for(float x = -1.0; x <= 1.0; x++) {
+		for(float y = -1.0; y <= 1.0; y++) {
+			vec2 neighbor = vec2(float(x),float(y));
+			vec2 node = rand2(mod(o + vec2(x, y), size)) + vec2(x, y);
+			node = 0.5 + 0.25 * sin(offset * 6.28318530718 + 6.28318530718*node);
+			vec2 diff = neighbor + node - f;
+			float dist = length(diff);
+			if (min_dist1 > dist) {
+				min_dist2 = min_dist1;
+				min_dist1 = dist;
+			} else if (min_dist2 > dist) {
+				min_dist2 = dist;
+			}
+		}
+	}
+	return min_dist2-min_dist1;
+}
+float fbm_2d_cellular2(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = cellular2_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float cellular3_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float min_dist = 2.0;
+	for(float x = -1.0; x <= 1.0; x++) {
+		for(float y = -1.0; y <= 1.0; y++) {
+			vec2 neighbor = vec2(float(x),float(y));
+			vec2 node = rand2(mod(o + vec2(x, y), size)) + vec2(x, y);
+			node = 0.5 + 0.25 * sin(offset * 6.28318530718 + 6.28318530718*node);
+			vec2 diff = neighbor + node - f;
+			float dist = abs((diff).x) + abs((diff).y);
+			min_dist = min(min_dist, dist);
+		}
+	}
+	return min_dist;
+}
+float fbm_2d_cellular3(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = cellular3_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float cellular4_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float min_dist1 = 2.0;
+	float min_dist2 = 2.0;
+	for(float x = -1.0; x <= 1.0; x++) {
+		for(float y = -1.0; y <= 1.0; y++) {
+			vec2 neighbor = vec2(float(x),float(y));
+			vec2 node = rand2(mod(o + vec2(x, y), size)) + vec2(x, y);
+			node = 0.5 + 0.25 * sin(offset * 6.28318530718 + 6.28318530718*node);
+			vec2 diff = neighbor + node - f;
+			float dist = abs((diff).x) + abs((diff).y);
+			if (min_dist1 > dist) {
+				min_dist2 = min_dist1;
+				min_dist1 = dist;
+			} else if (min_dist2 > dist) {
+				min_dist2 = dist;
+			}
+		}
+	}
+	return min_dist2-min_dist1;
+}
+float fbm_2d_cellular4(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = cellular4_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float cellular5_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float min_dist = 2.0;
+	for(float x = -1.0; x <= 1.0; x++) {
+		for(float y = -1.0; y <= 1.0; y++) {
+			vec2 neighbor = vec2(float(x),float(y));
+			vec2 node = rand2(mod(o + vec2(x, y), size)) + vec2(x, y);
+			node = 0.5 + 0.5 * sin(offset * 6.28318530718 + 6.28318530718*node);
+			vec2 diff = neighbor + node - f;
+			float dist = max(abs((diff).x), abs((diff).y));
+			min_dist = min(min_dist, dist);
+		}
+	}
+	return min_dist;
+}
+float fbm_2d_cellular5(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = cellular5_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+float cellular6_noise_2d(vec2 coord, vec2 size, float offset, float seed) {
+	vec2 o = floor(coord)+rand2(vec2(seed, 1.0-seed))+size;
+	vec2 f = fract(coord);
+	float min_dist1 = 2.0;
+	float min_dist2 = 2.0;
+	for(float x = -1.0; x <= 1.0; x++) {
+		for(float y = -1.0; y <= 1.0; y++) {
+			vec2 neighbor = vec2(float(x),float(y));
+			vec2 node = rand2(mod(o + vec2(x, y), size)) + vec2(x, y);
+			node = 0.5 + 0.25 * sin(offset * 6.28318530718 + 6.28318530718*node);
+			vec2 diff = neighbor + node - f;
+			float dist = max(abs((diff).x), abs((diff).y));
+			if (min_dist1 > dist) {
+				min_dist2 = min_dist1;
+				min_dist1 = dist;
+			} else if (min_dist2 > dist) {
+				min_dist2 = dist;
+			}
+		}
+	}
+	return min_dist2-min_dist1;
+}
+float fbm_2d_cellular6(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = cellular6_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+// MIT License Inigo Quilez - https://www.shadertoy.com/view/Xd23Dh
+float voronoise_noise_2d( vec2 coord, vec2 size, float offset, float seed) {
+	vec2 i = floor(coord) + rand2(vec2(seed, 1.0-seed)) + size;
+	vec2 f = fract(coord);
+
+	vec2 a = vec2(0.0);
+
+	for( int y=-2; y<=2; y++ ) {
+		for( int x=-2; x<=2; x++ ) {
+			vec2  g = vec2( float(x), float(y) );
+			vec3  o = rand3( mod(i + g, size) + vec2(seed) );
+			o.xy += 0.25 * sin(offset * 6.28318530718 + 6.28318530718*o.xy);
+			vec2  d = g - f + o.xy;
+			float w = pow( 1.0-smoothstep(0.0, 1.414, length(d)), 1.0 );
+			a += vec2(o.z*w,w);
+		}
+	}
+
+	return a.x/a.y;
+}
+float fbm_2d_voronoise(vec2 coord, vec2 size, int folds, int octaves, float persistence, float offset, float seed) {
+	float normalize_factor = 0.0;
+	float value = 0.0;
+	float scale = 1.0;
+	for (int i = 0; i < octaves; i++) {
+		float noise = voronoise_noise_2d(coord*size, size, offset, seed);
+		for (int f = 0; f < folds; ++f) {
+			noise = abs(2.0*noise-1.0);
+		}
+		value += noise * scale;
+		normalize_factor += scale;
+		size *= 2.0;
+		scale *= persistence;
+	}
+	return value / normalize_factor;
+}
+// #globals: math_v3 (o118530913605867)
+// #globals: math_2 (o85276206571690)
+float pingpong(float a, float b)
+{
+  return (b != 0.0) ? abs(fract((a - b) / (b * 2.0)) * b * 2.0 - b) : 0.0;
+}
+// #globals: sdrotate
+vec2 sdf2d_rotate(vec2 uv, float a) {
+	vec2 rv;
+	float c = cos(a);
+	float s = sin(a);
+	uv -= vec2(0.5);
+	rv.x = uv.x*c+uv.y*s;
+	rv.y = -uv.x*s+uv.y*c;
+	return rv+vec2(0.5);
+}
+// #globals: sdcirclerepeat
+vec2 circle_repeat_transform_2d(vec2 p, float count) {
+	float r = 6.28318530718/count;
+	float pa = atan(p.x, p.y);
+	float a = mod(pa+0.5*r, r)-0.5*r;
+	vec2 rv;
+	float c = cos(a-pa);
+	float s = sin(a-pa);
+	rv.x = p.x*c+p.y*s;
+	rv.y = -p.x*s+p.y*c;
+	return rv;
+}
+// #globals: sdngon_2 (o47050292993691)
+float sdNgon(vec2 p, float r, float n) {
+	p = circle_repeat_transform_2d(p, n);
+	vec2 d = abs(p)-vec2(r*tan(3.14159265359/n), r);
+	return p.y < r ? p.y-r : length(max(d,vec2(0)))+min(max(d.x,d.y),0.0);
+}
+float o45821412253260_input_shape(vec2 uv, float _seed_variation_) {
+// #output0: sdngon_2 (o47050292993691)
+float o47050292993691_0_1_sdf2d = sdNgon(sdf2d_rotate(uv-vec2(p_o47050292993691_cx, p_o47050292993691_cy), p_o47050292993691_rot*0.01745329251-1.57079632679)-vec2(0.5), p_o47050292993691_r, p_o47050292993691_n);
+return o47050292993691_0_1_sdf2d;
+}
+// #instance: custom_tiles (o45821412253260)
+vec3 tile_o45821412253260(vec2 p, vec2 size, float offset, float _seed_variation_) {
+	float best_d = -10.0;
+	vec2 best_corner;
+	for (float x = -1.0; x <= 1.0; x += 1.0) {
+		for (float y = -1.0; y <= 1.0; y += 1.0) {
+			vec2 corner = floor(p*size+vec2(x, y));
+			corner.x -= fract(offset*corner.y);
+			vec2 uv = p*size-corner;
+			if (false && (int(corner.y) & 1) == 1) {
+				uv.x = 1.0-uv.x;
+				uv.y = 1.0-uv.y;
+			}
+			float d = -o45821412253260_input_shape((uv), _seed_variation_);
+			if (d > best_d) {
+				best_d = d;
+				best_corner = fract(round(corner/size*4096.0)/4096.0);
+			}
+		}
+	}
+	return vec3(clamp((best_d-p_o45821412253260_mortar)/p_o45821412253260_bevel, 0.0, 1.0), best_corner);
+}
+void fragment() {
+	float _seed_variation_ = variation;
+	vec2 uv = fract(UV);
+
+// #output0: fbm2 (o6323886361663)
+float o6323886361663_0_1_f = fbm_2d_perlin((uv), vec2(p_o6323886361663_scale_x, p_o6323886361663_scale_y), int(p_o6323886361663_folds), int(p_o6323886361663_iterations), p_o6323886361663_persistence, p_o6323886361663_offset, (seed_o6323886361663+fract(_seed_variation_)));
+
+// #output0: uniform (o65669395652318)
+vec4 o65669395652318_0_1_rgba = p_o65669395652318_color;
+
+// #code: custom_tiles (o45821412253260)
+vec3 o45821412253260_0_tile = tile_o45821412253260((uv), vec2(p_o45821412253260_columns, p_o45821412253260_rows), p_o45821412253260_row_offset, _seed_variation_);
+// #output0: custom_tiles (o45821412253260)
+float o45821412253260_0_1_f = o45821412253260_0_tile.x;
+
+// #code: math_3 (o90580726058080)
+float o90580726058080_0_clamp_false = o45821412253260_0_1_f/p_o90580726058080_default_in2;
+float o90580726058080_0_clamp_true = clamp(o90580726058080_0_clamp_false, 0.0, 1.0);
+// #output0: math_3 (o90580726058080)
+float o90580726058080_0_1_f = o90580726058080_0_clamp_false;
+
+// #code: math_2 (o85276206571690)
+float o85276206571690_0_clamp_false = o6323886361663_0_1_f+o90580726058080_0_1_f;
+float o85276206571690_0_clamp_true = clamp(o85276206571690_0_clamp_false, 0.0, 1.0);
+// #output0: math_2 (o85276206571690)
+float o85276206571690_0_1_f = o85276206571690_0_clamp_false;
+
+// #code: math_v3 (o118530913605867)
+vec3 o118530913605867_0_clamp_false = vec3(o85276206571690_0_1_f)*((o65669395652318_0_1_rgba).rgb);
+vec3 o118530913605867_0_clamp_true = clamp(o118530913605867_0_clamp_false, vec3(0.0), vec3(1.0));
+// #output0: math_v3 (o118530913605867)
+vec3 o118530913605867_0_1_rgb = o118530913605867_0_clamp_false;
+
+	vec3 albedo_tex = o118530913605867_0_1_rgb.rgb;
+	albedo_tex = mix(pow((albedo_tex + vec3(0.055)) * (1.0 / (1.0 + 0.055)),vec3(2.4)),albedo_tex * (1.0 / 12.92),lessThan(albedo_tex,vec3(0.04045)));
+	ALBEDO = albedo_tex*p_o362723417290_albedo_color.rgb;
+	METALLIC = 1.0*p_o362723417290_metallic;
+	ROUGHNESS = 1.0*p_o362723417290_roughness;
+	NORMAL = vec3(o6323886361663_0_1_f);
+	EMISSION = vec3(0.0)*p_o362723417290_emission_energy;
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mr7ad"]
 render_priority = 0
-shader = ExtResource("2_vsmlh")
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv1_scale = Vector3(3, 1.7, 1)
+shader = SubResource("Shader_1tyg1")
+shader_parameter/uv1_offset = Vector3(0.204, 0.11, 0)
+shader_parameter/uv1_scale = Vector3(11.63, 9.545, 1)
 shader_parameter/depth_min_layers = 8
 shader_parameter/depth_max_layers = 16
 shader_parameter/depth_flip = Vector2(1, 1)
@@ -509,8 +1086,8 @@ shader_parameter/variation = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4br4"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qekg3"]
-data = PackedVector3Array(-0.5642, 0.2128, 0.414, 0.6318, 0.2128, -0.414, 0.6318, 0.2128, 0.414, -0.5642, 0.2128, 0.414, -0.5642, 0.2038, 0.4185, -0.8142, 0.2038, 0.4185, -0.5642, 0.2128, 0.414, -0.8142, 0.2038, 0.4185, -0.8142, 0.2128, 0.414, -0.5642, 0.2128, 0.414, -0.5642, 0.2128, -0.414, 0.6318, 0.2128, -0.414, -0.8142, 0.2128, 0.414, -0.5642, 0.2128, -0.414, -0.5642, 0.2128, 0.414, -0.8142, 0.2128, 0.414, -0.8142, 0.2128, -0.414, -0.5642, 0.2128, -0.414, -1.3751, 0.2128, 0.414, -0.8142, 0.2128, -0.414, -0.8142, 0.2128, 0.414, -1.3751, 0.2128, 0.414, -1.3751, 0.2128, -0.414, -0.8142, 0.2128, -0.414, 0.6318, 0.2128, -0.414, 0.7434, 0.2128, 0.414, 0.6318, 0.2128, 0.414, 0.7434, 0.2128, 0.414, 0.6318, 7.1935, 0.414, 0.6318, 0.2128, 0.414, 0.6318, 0.2128, -0.414, 0.7434, 0.2128, -0.414, 0.7434, 0.2128, 0.414, 0.7434, 0.2128, 0.414, 0.7434, 7.1935, 0.414, 0.6318, 7.1935, 0.414, 0.7434, 7.1935, 0.414, 0.6318, 7.1935, 0.424, 0.6318, 7.1935, 0.414, 0.7434, 0.2128, -0.414, 0.7434, 0.2057, 0.4211, 0.7434, 0.2128, 0.414, 0.7434, 0.2128, -0.414, 0.7434, 0.2057, -0.4211, 0.7434, 0.2057, 0.4211, 0.7434, 0.2128, 0.414, 0.7434, 0.2057, 0.4211, 0.7434, 7.1935, 0.424, 0.7434, 0.2128, 0.414, 0.7434, 7.1935, 0.424, 0.7434, 7.1935, 0.414, 0.7434, 7.1935, 0.414, 0.7434, 7.1935, 0.424, 0.6318, 7.1935, 0.424, 0.7434, 0.2057, 0.4211, 0.6318, 7.1935, 0.424, 0.7434, 7.1935, 0.424, 0.7434, 0.2057, 0.4211, 0.6318, 0.2057, 0.4211, 0.6318, 7.1935, 0.424, 0.6318, 0.2057, -0.4211, 0.6318, 0.2057, 0.4211, 0.7434, 0.2057, 0.4211, 0.6318, 0.2057, -0.4211, 0.7434, 0.2057, 0.4211, 0.7434, 0.2057, -0.4211, -0.5642, 0.2038, 0.4185, 0.6318, 0.2057, 0.4211, 0.6318, 0.2057, -0.4211, -0.5642, 0.2038, 0.4185, 0.6318, 0.2057, -0.4211, -0.5612, 0.2037, -0.417, -0.8142, 0.2038, 0.4185, -0.5642, 0.2038, 0.4185, -0.5612, 0.2037, -0.417, -0.8142, 0.2038, 0.4185, -0.5612, 0.2037, -0.417, -0.8172, 0.2037, -0.417, -1.3809, 0.207, 0.4198, -0.8142, 0.2038, 0.4185, -0.8172, 0.2037, -0.417, -1.3809, 0.207, 0.4198, -0.8172, 0.2037, -0.417, -1.3809, 0.207, -0.4198, -0.5647, 0.2128, -0.8545, -0.0039, 0.2128, -2.2646, -0.0039, 0.2128, -0.8545, -0.5647, 0.2128, -0.8545, -0.5647, 0.2128, -2.2646, -0.0039, 0.2128, -2.2646, -0.8141, 0.2128, -0.8545, -0.5647, 0.2128, -2.2646, -0.5647, 0.2128, -0.8545, -0.8141, 0.2128, -0.8545, -0.8141, 0.2128, -2.2646, -0.5647, 0.2128, -2.2646, -1.1367, 0.2128, -0.8545, -0.8141, 0.2128, -2.2646, -0.8141, 0.2128, -0.8545, -1.1367, 0.2128, -0.8545, -1.1367, 0.2128, -2.2646, -0.8141, 0.2128, -2.2646, -0.8142, 0.2128, -0.414, -0.5647, 0.2128, -0.8545, -0.5642, 0.2128, -0.414, -0.8142, 0.2128, -0.414, -0.8141, 0.2128, -0.8545, -0.5647, 0.2128, -0.8545, -0.5617, 0.2037, -0.8515, 0.0019, 0.207, -2.2704, -0.5647, 0.2057, -2.2717, -0.5617, 0.2037, -0.8515, 0.0019, 0.207, -0.8487, 0.0019, 0.207, -2.2704, -0.8171, 0.2037, -0.8515, -0.5617, 0.2037, -0.8515, -0.5647, 0.2057, -2.2717, -0.8171, 0.2037, -0.8515, -0.5647, 0.2057, -2.2717, -0.8141, 0.2057, -2.2717, -1.1425, 0.207, -0.8487, -0.8171, 0.2037, -0.8515, -0.8141, 0.2057, -2.2717, -1.1425, 0.207, -0.8487, -0.8141, 0.2057, -2.2717, -1.1425, 0.207, -2.2704, -0.8172, 0.2037, -0.417, -0.5617, 0.2037, -0.8515, -0.8171, 0.2037, -0.8515, -0.8172, 0.2037, -0.417, -0.5612, 0.2037, -0.417, -0.5617, 0.2037, -0.8515, -0.8141, 0.2128, -2.2646, -0.5647, 7.2128, -2.2646, -0.5647, 0.2128, -2.2646, -0.5647, 0.2128, -2.2646, -0.5647, 7.2128, -2.2646, -0.0039, 7.2128, -2.2646, -0.5647, 0.2128, -2.2646, -0.0039, 7.2128, -2.2646, -0.0039, 0.2128, -2.2646, -0.8141, 0.2128, -2.2646, -0.8141, 7.2128, -2.2646, -0.5647, 7.2128, -2.2646, -1.1367, 0.2128, -2.2646, -0.8141, 7.2128, -2.2646, -0.8141, 0.2128, -2.2646, -0.0039, 0.2128, -2.2646, -0.0039, 7.2128, -2.2646, -0.0039, 7.2128, -0.8545, -0.0039, 0.2128, -2.2646, -0.0039, 7.2128, -0.8545, -0.0039, 0.2128, -0.8545, -1.1367, 0.2128, -2.2646, -1.1367, 7.2128, -2.2646, -0.8141, 7.2128, -2.2646, -1.1367, 0.2128, -0.8545, -1.1367, 7.2128, -2.2646, -1.1367, 0.2128, -2.2646, -0.8141, 7.2128, -2.2646, -0.5647, 7.2128, -2.2746, -0.5647, 7.2128, -2.2646, -1.1367, 0.2128, -0.8545, -1.1367, 7.2128, -0.8545, -1.1367, 7.2128, -2.2646, -0.8141, 0.2128, -0.8545, -1.1367, 7.2128, -0.8545, -1.1367, 0.2128, -0.8545, -1.1367, 7.2128, -2.2646, -0.8141, 7.2128, -2.2746, -0.8141, 7.2128, -2.2646, -0.8141, 7.2128, -2.2646, -0.8141, 7.2128, -2.2746, -0.5647, 7.2128, -2.2746, -1.1367, 7.2128, -0.8545, -1.1438, 7.2128, -2.2717, -1.1367, 7.2128, -2.2646, -1.1367, 7.2128, -2.2646, -1.1438, 7.2128, -2.2717, -0.8141, 7.2128, -2.2746, -0.8141, 0.2128, -0.8545, -0.8141, 7.2128, -0.8545, -1.1367, 7.2128, -0.8545, -0.8142, 0.2128, -0.414, -0.8141, 7.2128, -0.8545, -0.8141, 0.2128, -0.8545, -0.8141, 0.2057, -2.2717, -0.5647, 7.2128, -2.2746, -0.8141, 7.2128, -2.2746, -1.1425, 0.207, -2.2704, -0.8141, 0.2057, -2.2717, -0.8141, 7.2128, -2.2746, -1.1425, 0.207, -2.2704, -0.8141, 7.2128, -2.2746, -1.1438, 7.2128, -2.2717, -0.8141, 0.2057, -2.2717, -0.5647, 0.2057, -2.2717, -0.5647, 7.2128, -2.2746, -1.1425, 0.207, -0.8487, -1.1425, 0.207, -2.2704, -1.1438, 7.2128, -2.2717, -0.5647, 0.2057, -2.2717, 0.0032, 7.2128, -2.2717, -0.5647, 7.2128, -2.2746, -0.5647, 7.2128, -2.2646, -0.5647, 7.2128, -2.2746, 0.0032, 7.2128, -2.2717, -0.5647, 0.2057, -2.2717, 0.0019, 0.207, -2.2704, 0.0032, 7.2128, -2.2717, -0.5647, 7.2128, -2.2646, 0.0032, 7.2128, -2.2717, -0.0039, 7.2128, -2.2646, -1.1425, 0.207, -0.8487, -1.1438, 7.2128, -2.2717, -1.1438, 7.2128, -0.8474, -1.1367, 7.2128, -0.8545, -1.1438, 7.2128, -0.8474, -1.1438, 7.2128, -2.2717, -0.8141, 7.2128, -0.8545, -1.1438, 7.2128, -0.8474, -1.1367, 7.2128, -0.8545, -0.8171, 0.2037, -0.8515, -1.1425, 0.207, -0.8487, -1.1438, 7.2128, -0.8474, -0.0039, 7.2128, -2.2646, 0.0032, 7.2128, -2.2717, 0.0032, 7.2128, -0.8474, 0.0019, 0.207, -2.2704, 0.0032, 7.2128, -0.8474, 0.0032, 7.2128, -2.2717, -0.0039, 7.2128, -2.2646, 0.0032, 7.2128, -0.8474, -0.0039, 7.2128, -0.8545, 0.0019, 0.207, -2.2704, 0.0019, 0.207, -0.8487, 0.0032, 7.2128, -0.8474, -0.8171, 0.2037, -0.8515, -1.1438, 7.2128, -0.8474, -0.8211, 7.2128, -0.8473, -0.8141, 7.2128, -0.8545, -0.8211, 7.2128, -0.8473, -1.1438, 7.2128, -0.8474, -0.8172, 0.2037, -0.417, -0.8171, 0.2037, -0.8515, -0.8211, 7.2128, -0.8473, 0.0019, 0.207, -0.8487, -0.5577, 7.2128, -0.8473, 0.0032, 7.2128, -0.8474, -0.0039, 7.2128, -0.8545, 0.0032, 7.2128, -0.8474, -0.5577, 7.2128, -0.8473, 0.0019, 0.207, -0.8487, -0.5617, 0.2037, -0.8515, -0.5577, 7.2128, -0.8473, -0.0039, 7.2128, -0.8545, -0.5577, 7.2128, -0.8473, -0.5647, 7.2128, -0.8545, -0.0039, 0.2128, -0.8545, -0.0039, 7.2128, -0.8545, -0.5647, 7.2128, -0.8545, -0.0039, 0.2128, -0.8545, -0.5647, 7.2128, -0.8545, -0.5647, 0.2128, -0.8545, -0.5617, 0.2037, -0.8515, -0.557, 7.1935, -0.421, -0.5577, 7.2128, -0.8473, -0.5647, 7.2128, -0.8545, -0.5577, 7.2128, -0.8473, -0.557, 7.1935, -0.421, -0.5617, 0.2037, -0.8515, -0.5612, 0.2037, -0.417, -0.557, 7.1935, -0.421, -0.5647, 0.2128, -0.8545, -0.5647, 7.2128, -0.8545, -0.5642, 7.1935, -0.414, -0.5647, 7.2128, -0.8545, -0.557, 7.1935, -0.421, -0.5642, 7.1935, -0.414, -0.5647, 0.2128, -0.8545, -0.5642, 7.1935, -0.414, -0.5642, 0.2128, -0.414, -0.5612, 0.2037, -0.417, 0.6318, 7.1935, -0.424, -0.557, 7.1935, -0.421, -0.5642, 7.1935, -0.414, -0.557, 7.1935, -0.421, 0.6318, 7.1935, -0.424, -0.5612, 0.2037, -0.417, 0.6318, 0.2057, -0.4211, 0.6318, 7.1935, -0.424, -0.5642, 0.2128, -0.414, -0.5642, 7.1935, -0.414, 0.6318, 7.1935, -0.414, -0.5642, 7.1935, -0.414, 0.6318, 7.1935, -0.424, 0.6318, 7.1935, -0.414, -0.5642, 0.2128, -0.414, 0.6318, 7.1935, -0.414, 0.6318, 0.2128, -0.414, 0.6318, 0.2057, -0.4211, 0.7434, 7.1935, -0.424, 0.6318, 7.1935, -0.424, 0.6318, 7.1935, -0.414, 0.6318, 7.1935, -0.424, 0.7434, 7.1935, -0.424, 0.6318, 0.2057, -0.4211, 0.7434, 0.2057, -0.4211, 0.7434, 7.1935, -0.424, 0.6318, 0.2128, -0.414, 0.6318, 7.1935, -0.414, 0.7434, 7.1935, -0.414, 0.6318, 7.1935, -0.414, 0.7434, 7.1935, -0.424, 0.7434, 7.1935, -0.414, 0.6318, 0.2128, -0.414, 0.7434, 7.1935, -0.414, 0.7434, 0.2128, -0.414, 0.7434, 7.1935, -0.414, 0.7434, 7.1935, -0.424, 0.7434, 0.2057, -0.4211, 0.7434, 7.1935, -0.414, 0.7434, 0.2057, -0.4211, 0.7434, 0.2128, -0.414, -0.8142, 0.2128, 0.414, -1.3751, 7.1935, 0.414, -1.3751, 0.2128, 0.414, -0.8142, 0.2128, 0.414, -0.8142, 0.2038, 0.4185, -0.8142, 7.1935, 0.424, -0.8142, 0.2128, 0.414, -0.8142, 7.1935, 0.424, -0.8142, 7.1935, 0.414, -0.8142, 0.2128, 0.414, -0.8142, 7.1935, 0.414, -1.3751, 7.1935, 0.414, -0.8142, 7.1935, 0.414, -0.8142, 7.1935, 0.424, -1.3822, 7.1935, 0.4211, -0.8142, 7.1935, 0.414, -1.3822, 7.1935, 0.4211, -1.3751, 7.1935, 0.414, -0.8142, 0.2038, 0.4185, -1.3822, 7.1935, 0.4211, -0.8142, 7.1935, 0.424, -0.8142, 0.2038, 0.4185, -1.3809, 0.207, 0.4198, -1.3822, 7.1935, 0.4211, -1.3809, 0.207, 0.4198, -1.3822, 7.1935, -0.4211, -1.3822, 7.1935, 0.4211, -1.3751, 7.1935, 0.414, -1.3822, 7.1935, 0.4211, -1.3822, 7.1935, -0.4211, -1.3809, 0.207, 0.4198, -1.3809, 0.207, -0.4198, -1.3822, 7.1935, -0.4211, -1.3751, 0.2128, 0.414, -1.3751, 7.1935, 0.414, -1.3751, 7.1935, -0.414, -1.3751, 7.1935, 0.414, -1.3822, 7.1935, -0.4211, -1.3751, 7.1935, -0.414, -1.3751, 0.2128, 0.414, -1.3751, 7.1935, -0.414, -1.3751, 0.2128, -0.414, -1.3809, 0.207, -0.4198, -0.8213, 7.1935, -0.421, -1.3822, 7.1935, -0.4211, -1.3751, 7.1935, -0.414, -1.3822, 7.1935, -0.4211, -0.8213, 7.1935, -0.421, -1.3809, 0.207, -0.4198, -0.8172, 0.2037, -0.417, -0.8213, 7.1935, -0.421, -0.8172, 0.2037, -0.417, -0.8211, 7.2128, -0.8473, -0.8213, 7.1935, -0.421, -1.3751, 7.1935, -0.414, -0.8213, 7.1935, -0.421, -0.8142, 7.1935, -0.414, -1.3751, 0.2128, -0.414, -1.3751, 7.1935, -0.414, -0.8142, 7.1935, -0.414, -0.8142, 7.1935, -0.414, -0.8213, 7.1935, -0.421, -0.8211, 7.2128, -0.8473, -1.3751, 0.2128, -0.414, -0.8142, 7.1935, -0.414, -0.8142, 0.2128, -0.414, -0.8142, 7.1935, -0.414, -0.8211, 7.2128, -0.8473, -0.8141, 7.2128, -0.8545, -0.8142, 0.2128, -0.414, -0.8142, 7.1935, -0.414, -0.8141, 7.2128, -0.8545, 0.6318, 0.2128, 0.414, -0.5642, 7.1935, 0.414, -0.5642, 0.2128, 0.414, -0.5642, 7.1935, 0.414, -0.5642, 0.2038, 0.4185, -0.5642, 0.2128, 0.414, 0.6318, 0.2128, 0.414, 0.6318, 7.1935, 0.414, -0.5642, 7.1935, 0.414, -0.5642, 7.1935, 0.414, -0.5642, 7.1935, 0.424, -0.5642, 0.2038, 0.4185, 0.6318, 7.1935, 0.414, -0.5642, 7.1935, 0.424, -0.5642, 7.1935, 0.414, 0.6318, 7.1935, 0.414, 0.6318, 7.1935, 0.424, -0.5642, 7.1935, 0.424, 0.6318, 0.2057, 0.4211, -0.5642, 7.1935, 0.424, 0.6318, 7.1935, 0.424, 0.6318, 0.2057, 0.4211, -0.5642, 0.2038, 0.4185, -0.5642, 7.1935, 0.424)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qkrbm"]
+data = PackedVector3Array(-0.5642, 0.2128, 0.414, 0.6318, 0.2128, -0.414, 0.6318, 0.2128, 0.414, 0.6318, 0.2128, -0.414, 0.7434, 0.2128, 0.414, 0.6318, 0.2128, 0.414, 0.6318, 0.2128, -0.414, 0.7434, 0.2128, -0.414, 0.7434, 0.2128, 0.414, -0.5642, 0.2128, 0.414, -0.5642, 0.2128, -0.414, 0.6318, 0.2128, -0.414, -0.8142, 0.2128, 0.414, -0.5642, 0.2128, -0.414, -0.5642, 0.2128, 0.414, -0.8142, 0.2128, 0.414, -0.8142, 0.2128, -0.414, -0.5642, 0.2128, -0.414, -1.3752, 0.2128, 0.414, -0.8142, 0.2128, -0.414, -0.8142, 0.2128, 0.414, -1.3752, 0.2128, 0.414, -1.3752, 0.2128, -0.414, -0.8142, 0.2128, -0.414, -0.8142, 0.2128, -0.414, -0.5647, 0.2128, -0.8545, -0.5642, 0.2128, -0.414, -0.8142, 0.2128, -0.414, -0.8141, 0.2128, -0.8545, -0.5647, 0.2128, -0.8545, -0.8141, 0.2128, -0.8545, -0.5647, 0.2128, -1.8843, -0.5647, 0.2128, -0.8545, -0.8141, 0.2128, -0.8545, -0.8141, 0.2128, -1.8843, -0.5647, 0.2128, -1.8843, -0.9884, 0.2128, -0.8545, -0.8141, 0.2128, -1.8843, -0.8141, 0.2128, -0.8545, -0.5647, 0.2128, -0.8545, -0.5647, 0.2128, -1.8843, -0.3682, 0.2128, -1.8843, -0.9884, 0.2128, -0.8545, -0.9884, 0.2128, -1.8843, -0.8141, 0.2128, -1.8843, -1.3768, 0.2128, -0.8545, -0.9884, 0.2128, -1.8843, -0.9884, 0.2128, -0.8545, -1.3768, 0.2128, -0.8545, -1.3768, 0.2128, -1.8843, -0.9884, 0.2128, -1.8843, -1.3768, 0.2128, -1.8843, -0.9884, 0.2128, -3.3749, -0.9884, 0.2128, -1.8843, -1.3768, 0.2128, -1.8843, -1.3768, 0.2128, -3.3749, -0.9884, 0.2128, -3.3749, -0.5647, 0.2128, -0.8545, -0.3682, 0.2128, -1.8843, -0.3682, 0.2128, -0.8545, -0.3682, 0.2128, -0.8545, -0.3682, 0.2128, -1.8843, 0.0294, 0.2128, -1.8843, -0.3682, 0.2128, -0.8545, 0.0294, 0.2128, -1.8843, 0.0294, 0.2128, -0.8545, -0.3682, 0.2128, -1.8843, 0.0294, 0.2128, -3.4008, 0.0294, 0.2128, -1.8843, -0.3682, 0.2128, -1.8843, -0.3682, 0.2128, -3.4008, 0.0294, 0.2128, -3.4008, 0.7434, 2, 0.414, 0.6318, 7.1935, 0.414, 0.6318, 2, 0.414, 0.7434, 2, 0.414, 0.7434, 7.1935, 0.414, 0.6318, 7.1935, 0.414, 0.6318, 2, 0.414, 0.6318, 7.1935, 0.414, -0.5642, 7.1935, 0.414, 0.7434, 0.2128, 0.414, 0.7434, 2, 0.414, 0.6318, 2, 0.414, 0.6318, 2, 0.414, -0.5642, 7.1935, 0.414, -0.5642, 2, 0.414, 0.7434, 0.2128, 0.414, 0.6318, 2, 0.414, 0.6318, 0.2128, 0.414, 0.6318, 0.2128, 0.414, 0.6318, 2, 0.414, -0.5642, 2, 0.414, 0.6318, 0.2128, 0.414, -0.5642, 2, 0.414, -0.5642, 0.2128, 0.414, 0.0295, 0.2128, -1.8842, 0.0295, 7.2128, -0.8545, 0.0295, 0.2128, -0.8545, 0.0295, 0.2128, -0.8545, 0.0295, 7.2128, -0.8545, -0.3682, 7.2128, -0.8545, 0.0295, 0.2128, -1.8842, 0.0295, 7.2128, -1.8842, 0.0295, 7.2128, -0.8545, 0.0295, 0.2128, -0.8545, -0.3682, 7.2128, -0.8545, -0.3682, 0.2128, -0.8545, 0.0295, 0.2128, -3.4008, 0.0295, 7.2128, -1.8842, 0.0295, 0.2128, -1.8842, -0.3682, 0.2128, -0.8545, -0.3682, 7.2128, -0.8545, -0.5647, 7.2128, -0.8545, 0.0295, 0.2128, -3.4008, 0.0295, 7.2128, -3.4008, 0.0295, 7.2128, -1.8842, -0.3682, 0.2128, -0.8545, -0.5647, 7.2128, -0.8545, -0.5647, 0.2128, -0.8545, -0.3682, 0.2128, -3.4008, 0.0295, 7.2128, -3.4008, 0.0295, 0.2128, -3.4008, -0.5647, 0.2128, -0.8545, -0.5647, 7.2128, -0.8545, -0.5642, 7.2128, -0.414, -0.3682, 0.2128, -3.4008, -0.3682, 7.2128, -3.4008, 0.0295, 7.2128, -3.4008, -0.5647, 0.2128, -0.8545, -0.5642, 7.2128, -0.414, -0.5642, 0.2128, -0.414, -0.3682, 0.2128, -1.8842, -0.3682, 7.2128, -3.4008, -0.3682, 0.2128, -3.4008, -0.5642, 0.2128, -0.414, -0.5642, 7.2128, -0.414, 0.6318, 7.2128, -0.414, -0.3682, 0.2128, -1.8842, -0.3682, 7.2128, -1.8842, -0.3682, 7.2128, -3.4008, -0.5642, 0.2128, -0.414, 0.6318, 7.2128, -0.414, 0.6318, 0.2128, -0.414, 0.6318, 0.2128, -0.414, 0.6318, 7.2128, -0.414, 0.7434, 7.2128, -0.414, 0.6318, 0.2128, -0.414, 0.7434, 7.2128, -0.414, 0.7434, 0.2128, -0.414, -0.5647, 0.2128, -1.8842, -0.3682, 7.2128, -1.8842, -0.3682, 0.2128, -1.8842, -0.5647, 0.2128, -1.8842, -0.5647, 7.2128, -1.8842, -0.3682, 7.2128, -1.8842, -0.8141, 0.2128, -1.8842, -0.5647, 7.2128, -1.8842, -0.5647, 0.2128, -1.8842, -0.8141, 0.2128, -1.8842, -0.8141, 7.2128, -1.8842, -0.5647, 7.2128, -1.8842, -0.9884, 0.2128, -1.8842, -0.8141, 7.2128, -1.8842, -0.8141, 0.2128, -1.8842, -0.9884, 0.2128, -1.8842, -0.9884, 7.2128, -1.8842, -0.8141, 7.2128, -1.8842, -0.9884, 0.2128, -3.3749, -0.9884, 7.2128, -1.8842, -0.9884, 0.2128, -1.8842, -0.9884, 0.2128, -3.3749, -0.9884, 7.2128, -3.3749, -0.9884, 7.2128, -1.8842, -1.3768, 0.2128, -3.3749, -0.9884, 7.2128, -3.3749, -0.9884, 0.2128, -3.3749, -1.3768, 0.2128, -3.3749, -1.3768, 7.2128, -3.3749, -0.9884, 7.2128, -3.3749, -1.3768, 0.2128, -1.8842, -1.3768, 7.2128, -3.3749, -1.3768, 0.2128, -3.3749, -1.3768, 0.2128, -1.8842, -1.3768, 7.2128, -1.8842, -1.3768, 7.2128, -3.3749, -1.3768, 0.2128, -0.8545, -1.3768, 7.2128, -1.8842, -1.3768, 0.2128, -1.8842, -1.3768, 0.2128, -0.8545, -1.3768, 7.2128, -0.8545, -1.3768, 7.2128, -1.8842, -0.9884, 0.2128, -0.8545, -1.3768, 7.2128, -0.8545, -1.3768, 0.2128, -0.8545, -0.9884, 0.2128, -0.8545, -0.9884, 7.2128, -0.8545, -1.3768, 7.2128, -0.8545, -0.8141, 0.2128, -0.8545, -0.9884, 7.2128, -0.8545, -0.9884, 0.2128, -0.8545, -0.8141, 0.2128, -0.8545, -0.8141, 7.2128, -0.8545, -0.9884, 7.2128, -0.8545, -0.8142, 0.2128, -0.414, -0.8141, 7.2128, -0.8545, -0.8141, 0.2128, -0.8545, -0.8142, 0.2128, -0.414, -0.8142, 7.2128, -0.414, -0.8141, 7.2128, -0.8545, -1.3751, 0.2128, -0.414, -0.8142, 7.2128, -0.414, -0.8142, 0.2128, -0.414, -1.3751, 0.2128, -0.414, -1.3751, 7.2128, -0.414, -0.8142, 7.2128, -0.414, -1.3751, 0.2128, 0.414, -1.3751, 7.2128, -0.414, -1.3751, 0.2128, -0.414, -1.3751, 0.2128, 0.414, -1.3751, 7.2128, 0.414, -1.3751, 7.2128, -0.414, -0.8142, 0.2128, 0.414, -1.3751, 7.2128, 0.414, -1.3751, 0.2128, 0.414, -0.8142, 0.2128, 0.414, -0.8142, 7.2128, 0.414, -1.3751, 7.2128, 0.414)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jpkj"]
 render_priority = 0
@@ -569,6 +1146,54 @@ size = Vector3(0.1, 0.1, 2.00283)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aslq7"]
 size = Vector3(2, 0.1, 0.0478638)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mv54n"]
+data = PackedVector3Array(0.8798, -1.8847, 0.1962, 0.8798, 0.2293, 0.5835, 0.8798, 0.2293, 0.1962, 0.8798, -1.8847, 0.1962, 0.8798, -1.8847, 0.5835, 0.8798, 0.2293, 0.5835, 0.7364, -1.8847, 0.1962, 0.8798, -1.8847, 0.5835, 0.8798, -1.8847, 0.1962, 0.7364, -1.8847, 0.1962, 0.7372, -1.8847, 0.5835, 0.8798, -1.8847, 0.5835, -0.1318, -1.8847, 0.1962, 0.7372, -1.8847, 0.5835, 0.7364, -1.8847, 0.1962, -0.1318, -1.8847, 0.1962, -0.1314, -1.8847, 0.5835, 0.7372, -1.8847, 0.5835, 0.7364, 0.2293, 0.1962, 0.8798, 0.4143, 0.1962, 0.8798, 0.2293, 0.1962, 0.7364, 0.2293, 0.1962, 0.7364, 0.4143, 0.1962, 0.8798, 0.4143, 0.1962, 0.8798, -1.8847, 0.1962, 0.7364, 0.2293, 0.1962, 0.8798, 0.2293, 0.1962, 0.8798, -1.8847, 0.1962, 0.7364, -1.8847, 0.1962, 0.7364, 0.2293, 0.1962, 0.7364, -1.8847, -3.3129, 0.8798, -1.8847, 0.1962, 0.8796, -1.8847, -3.3129, 0.7364, -1.8847, -3.3129, 0.7364, -1.8847, 0.1962, 0.8798, -1.8847, 0.1962, 0.8796, -1.8847, -3.3129, 0.8798, 0.2293, 0.1962, 0.8796, 0.2293, -3.3129, 0.8796, -1.8847, -3.3129, 0.8798, -1.8847, 0.1962, 0.8798, 0.2293, 0.1962, 0.8798, 0.2293, 0.5835, 0.9397, 0.2182, 0.2657, 0.8798, 0.2293, 0.1962, 0.8798, 0.2293, 0.5835, 0.9397, 0.2182, 1.1731, 0.9397, 0.2182, 0.2657, 0.7372, 0.2293, 0.5835, 0.9397, 0.2182, 1.1731, 0.8798, 0.2293, 0.5835, 0.7372, 0.2293, 0.5835, 0.7891, 0.2182, 1.1731, 0.9397, 0.2182, 1.1731, -0.1314, 0.2293, 0.5835, 0.7891, 0.2182, 1.1731, 0.7372, 0.2293, 0.5835, -0.1314, 0.2293, 0.5835, -0.132, 0.2182, 1.1731, 0.7891, 0.2182, 1.1731, 0.8798, -1.8847, 0.5835, 0.7372, 0.2293, 0.5835, 0.8798, 0.2293, 0.5835, 0.8798, -1.8847, 0.5835, 0.7372, -1.8847, 0.5835, 0.7372, 0.2293, 0.5835, 0.7372, -1.8847, 0.5835, -0.1314, 0.2293, 0.5835, 0.7372, 0.2293, 0.5835, 0.7372, -1.8847, 0.5835, -0.1314, -1.8847, 0.5835, -0.1314, 0.2293, 0.5835, -0.1318, -1.8847, 0.1962, 0.7364, 0.2293, 0.1962, -0.1318, 0.2293, 0.1962, -0.1318, -1.8847, 0.1962, 0.7364, -1.8847, 0.1962, 0.7364, 0.2293, 0.1962, 0.7364, 0.2293, -3.3129, 0.7364, 0.2293, -3.3129, 0.7364, 0.2293, 0.1962, 0.7364, 0.2293, -3.3129, 0.7185, 0.2293, 0.1962, 0.7364, 0.2293, 0.1962, 0.7364, 0.2293, -3.3129, 0.7185, 0.2293, -3.3129, 0.7185, 0.2293, 0.1962, 0.8798, 0.2293, 0.1962, 0.9395, 0.2182, -3.2794, 0.8796, 0.2293, -3.3129, 0.8798, 0.2293, 0.1962, 0.9397, 0.2182, 0.2657, 0.9395, 0.2182, -3.2794, 0.7364, -1.8847, 0.1962, 0.7364, 0.2293, -3.3129, 0.7364, 0.2293, 0.1962, 0.7364, -1.8847, 0.1962, 0.7364, -1.8847, -3.3129, 0.7364, 0.2293, -3.3129, 0.7364, 0.2293, 0.1962, -0.1318, 0.2293, 0.119, -0.1318, 0.2293, 0.1962, 0.7364, 0.2293, 0.1962, 0.7364, 0.2293, 0.119, -0.1318, 0.2293, 0.119, -0.8798, -1.8847, 0.1962, -0.8798, 0.2293, 0.5835, -0.8798, -1.8847, 0.5835, -0.8798, -1.8847, 0.1962, -0.8798, 0.2293, 0.1962, -0.8798, 0.2293, 0.5835, -0.7364, -1.8847, 0.1962, -0.8798, -1.8847, 0.5835, -0.7372, -1.8847, 0.5835, -0.7364, -1.8847, 0.1962, -0.8798, -1.8847, 0.1962, -0.8798, -1.8847, 0.5835, 0.1318, -1.8847, 0.1962, -0.7364, -1.8847, 0.1962, -0.7372, -1.8847, 0.5835, 0.1318, -1.8847, 0.1962, -0.7372, -1.8847, 0.5835, 0.1314, -1.8847, 0.5835, -0.7364, 0.2293, 0.1962, -0.8798, 0.4143, 0.1962, -0.7364, 0.4143, 0.1962, -0.7364, 0.2293, 0.1962, -0.8798, 0.2293, 0.1962, -0.8798, 0.4143, 0.1962, -0.8798, -1.8847, 0.1962, -0.8798, 0.2293, 0.1962, -0.7364, 0.2293, 0.1962, -0.8798, -1.8847, 0.1962, -0.7364, 0.2293, 0.1962, -0.7364, -1.8847, 0.1962, -0.7364, -1.8847, -3.3129, -0.8798, -1.8847, 0.1962, -0.7364, -1.8847, 0.1962, -0.7364, -1.8847, -3.3129, -0.8796, -1.8847, -3.3129, -0.8798, -1.8847, 0.1962, -0.8796, -1.8847, -3.3129, -0.8798, 0.2293, 0.1962, -0.8798, -1.8847, 0.1962, -0.8796, -1.8847, -3.3129, -0.8796, 0.2293, -3.3129, -0.8798, 0.2293, 0.1962, -0.8798, 0.2293, 0.5835, -0.9397, 0.2182, 0.2657, -0.9397, 0.2182, 1.1731, -0.8798, 0.2293, 0.5835, -0.8798, 0.2293, 0.1962, -0.9397, 0.2182, 0.2657, -0.7372, 0.2293, 0.5835, -0.9397, 0.2182, 1.1731, -0.7892, 0.2182, 1.1731, -0.7372, 0.2293, 0.5835, -0.8798, 0.2293, 0.5835, -0.9397, 0.2182, 1.1731, 0.1314, 0.2293, 0.5835, -0.7892, 0.2182, 1.1731, 0.132, 0.2182, 1.1731, 0.1314, 0.2293, 0.5835, -0.7372, 0.2293, 0.5835, -0.7892, 0.2182, 1.1731, -0.8798, -1.8847, 0.5835, -0.7372, 0.2293, 0.5835, -0.7372, -1.8847, 0.5835, -0.8798, -1.8847, 0.5835, -0.8798, 0.2293, 0.5835, -0.7372, 0.2293, 0.5835, -0.7372, -1.8847, 0.5835, -0.7372, 0.2293, 0.5835, 0.1314, 0.2293, 0.5835, -0.7372, -1.8847, 0.5835, 0.1314, 0.2293, 0.5835, 0.1314, -1.8847, 0.5835, 0.1318, -1.8847, 0.1962, -0.7364, 0.2293, 0.1962, -0.7364, -1.8847, 0.1962, 0.1318, -1.8847, 0.1962, 0.1318, 0.2293, 0.1962, -0.7364, 0.2293, 0.1962, -0.7364, 0.2293, -3.3129, -0.7364, 0.2293, 0.1962, -0.7364, 0.2293, -3.3129, -0.7364, 0.2293, -3.3129, -0.7186, 0.2293, 0.1962, -0.7186, 0.2293, -3.3129, -0.7364, 0.2293, -3.3129, -0.7364, 0.2293, 0.1962, -0.7186, 0.2293, 0.1962, -0.8798, 0.2293, 0.1962, -0.9395, 0.2182, -3.2794, -0.9397, 0.2182, 0.2657, -0.8798, 0.2293, 0.1962, -0.8796, 0.2293, -3.3129, -0.9395, 0.2182, -3.2794, -0.7364, -1.8847, 0.1962, -0.7364, 0.2293, -3.3129, -0.7364, -1.8847, -3.3129, -0.7364, -1.8847, 0.1962, -0.7364, 0.2293, 0.1962, -0.7364, 0.2293, -3.3129, -0.7364, 0.2293, 0.1962, 0.1318, 0.2293, 0.119, -0.7364, 0.2293, 0.119, -0.7364, 0.2293, 0.1962, 0.1318, 0.2293, 0.1962, 0.1318, 0.2293, 0.119, -0.1318, 0.4143, 0.1962, 0.7364, 0.4143, 0.119, 0.7364, 0.4143, 0.1962, -0.1318, 0.4143, 0.1962, -0.1318, 0.4143, 0.119, 0.7364, 0.4143, 0.119, 0.7364, 0.4143, 0.1962, -0.1314, 0.4143, 0.5835, -0.1318, 0.4143, 0.1962, 0.7364, 0.4143, 0.1962, 0.7372, 0.4143, 0.5835, -0.1314, 0.4143, 0.5835, 0.8798, 0.4143, 0.1962, 0.7372, 0.4143, 0.5835, 0.7364, 0.4143, 0.1962, 0.8798, 0.4143, 0.1962, 0.8798, 0.4143, 0.5835, 0.7372, 0.4143, 0.5835, 0.8796, 0.4143, -3.3129, 0.7364, 0.4143, 0.1962, 0.7364, 0.4143, -3.3129, 0.8796, 0.4143, -3.3129, 0.8798, 0.4143, 0.1962, 0.7364, 0.4143, 0.1962, 0.7364, 0.4143, 0.1962, 0.7364, 0.4143, -3.3129, 0.7364, 0.4143, -3.3129, 0.7364, 0.4143, 0.1962, 0.7185, 0.4143, -3.3129, 0.7364, 0.4143, -3.3129, 0.7364, 0.4143, 0.1962, 0.7185, 0.4143, 0.1962, 0.7185, 0.4143, -3.3129, 0.8796, 0.4143, -3.3129, 0.9397, 0.4253, 0.2657, 0.8798, 0.4143, 0.1962, 0.8796, 0.4143, -3.3129, 0.9395, 0.4253, -3.2793, 0.9397, 0.4253, 0.2657, 0.9397, 0.2182, 1.1731, 0.9397, 0.4253, 0.2657, 0.9397, 0.2182, 0.2657, 0.9397, 0.2182, 1.1731, 0.9397, 0.4253, 1.1731, 0.9397, 0.4253, 0.2657, 0.7891, 0.2182, 1.1731, 0.9397, 0.4253, 1.1731, 0.9397, 0.2182, 1.1731, 0.7891, 0.2182, 1.1731, 0.7891, 0.4253, 1.1731, 0.9397, 0.4253, 1.1731, -0.132, 0.2182, 1.1731, 0.7891, 0.4253, 1.1731, 0.7891, 0.2182, 1.1731, -0.132, 0.2182, 1.1731, -0.132, 0.4253, 1.1731, 0.7891, 0.4253, 1.1731, 0.8798, 0.4143, 0.1962, 0.9397, 0.4253, 1.1731, 0.8798, 0.4143, 0.5835, 0.8798, 0.4143, 0.1962, 0.9397, 0.4253, 0.2657, 0.9397, 0.4253, 1.1731, 0.8798, 0.4143, 0.5835, 0.7891, 0.4253, 1.1731, 0.7372, 0.4143, 0.5835, 0.8798, 0.4143, 0.5835, 0.9397, 0.4253, 1.1731, 0.7891, 0.4253, 1.1731, 0.7185, 0.2293, -3.3129, 0.7185, 0.4143, 0.1962, 0.7185, 0.2293, 0.1962, 0.7185, 0.2293, -3.3129, 0.7185, 0.4143, -3.3129, 0.7185, 0.4143, 0.1962, 0.7364, 0.2293, 0.1962, 0.7185, 0.4143, 0.1962, 0.7364, 0.4143, 0.1962, 0.7364, 0.2293, 0.1962, 0.7185, 0.2293, 0.1962, 0.7185, 0.4143, 0.1962, 0.7364, 0.4143, 0.1962, 0.7364, 0.2293, 0.119, 0.7364, 0.2293, 0.1962, 0.7364, 0.4143, 0.1962, 0.7364, 0.4143, 0.119, 0.7364, 0.2293, 0.119, 0.9397, 0.2182, 0.2657, 0.9395, 0.4253, -3.2793, 0.9395, 0.2182, -3.2793, 0.9397, 0.2182, 0.2657, 0.9397, 0.4253, 0.2657, 0.9395, 0.4253, -3.2793, 0.7364, 0.2293, 0.119, -0.1318, 0.4143, 0.119, -0.1318, 0.2293, 0.119, 0.7364, 0.2293, 0.119, 0.7364, 0.4143, 0.119, -0.1318, 0.4143, 0.119, 0.7372, 0.4143, 0.5835, -0.132, 0.4253, 1.1731, -0.1314, 0.4143, 0.5835, 0.7372, 0.4143, 0.5835, 0.7891, 0.4253, 1.1731, -0.132, 0.4253, 1.1731, 0.1318, 0.4143, 0.1962, -0.7364, 0.4143, 0.119, 0.1318, 0.4143, 0.119, 0.1318, 0.4143, 0.1962, -0.7364, 0.4143, 0.1962, -0.7364, 0.4143, 0.119, -0.7364, 0.4143, 0.1962, 0.1318, 0.4143, 0.1962, 0.1314, 0.4143, 0.5835, -0.7364, 0.4143, 0.1962, 0.1314, 0.4143, 0.5835, -0.7372, 0.4143, 0.5835, -0.8798, 0.4143, 0.1962, -0.7364, 0.4143, 0.1962, -0.7372, 0.4143, 0.5835, -0.8798, 0.4143, 0.1962, -0.7372, 0.4143, 0.5835, -0.8798, 0.4143, 0.5835, -0.8796, 0.4143, -3.3129, -0.7364, 0.4143, 0.1962, -0.8798, 0.4143, 0.1962, -0.8796, 0.4143, -3.3129, -0.7364, 0.4143, -3.3129, -0.7364, 0.4143, 0.1962, -0.7364, 0.4143, 0.1962, -0.7364, 0.4143, -3.3129, -0.7364, 0.4143, -3.3129, -0.7364, 0.4143, 0.1962, -0.7364, 0.4143, -3.3129, -0.7185, 0.4143, -3.3129, -0.7364, 0.4143, 0.1962, -0.7185, 0.4143, -3.3129, -0.7185, 0.4143, 0.1962, -0.8796, 0.4143, -3.3129, -0.9397, 0.4253, 0.2657, -0.9395, 0.4253, -3.2793, -0.8796, 0.4143, -3.3129, -0.8798, 0.4143, 0.1962, -0.9397, 0.4253, 0.2657, -0.9397, 0.2182, 1.1731, -0.9397, 0.4253, 0.2657, -0.9397, 0.4253, 1.1731, -0.9397, 0.2182, 1.1731, -0.9397, 0.2182, 0.2657, -0.9397, 0.4253, 0.2657, -0.7891, 0.2182, 1.1731, -0.9397, 0.4253, 1.1731, -0.7891, 0.4253, 1.1731, -0.7891, 0.2182, 1.1731, -0.9397, 0.2182, 1.1731, -0.9397, 0.4253, 1.1731, 0.132, 0.2182, 1.1731, -0.7891, 0.2182, 1.1731, -0.7891, 0.4253, 1.1731, 0.132, 0.2182, 1.1731, -0.7891, 0.4253, 1.1731, 0.132, 0.4253, 1.1731, -0.8798, 0.4143, 0.1962, -0.9397, 0.4253, 1.1731, -0.9397, 0.4253, 0.2657, -0.8798, 0.4143, 0.1962, -0.8798, 0.4143, 0.5835, -0.9397, 0.4253, 1.1731, -0.8798, 0.4143, 0.5835, -0.7891, 0.4253, 1.1731, -0.9397, 0.4253, 1.1731, -0.8798, 0.4143, 0.5835, -0.7372, 0.4143, 0.5835, -0.7891, 0.4253, 1.1731, -0.7185, 0.2293, -3.3129, -0.7185, 0.4143, 0.1962, -0.7185, 0.4143, -3.3129, -0.7185, 0.2293, -3.3129, -0.7185, 0.2293, 0.1962, -0.7185, 0.4143, 0.1962, -0.7364, 0.2293, 0.1962, -0.7185, 0.4143, 0.1962, -0.7185, 0.2293, 0.1962, -0.7364, 0.2293, 0.1962, -0.7364, 0.4143, 0.1962, -0.7185, 0.4143, 0.1962, -0.7364, 0.4143, 0.1962, -0.7364, 0.2293, 0.119, -0.7364, 0.4143, 0.119, -0.7364, 0.4143, 0.1962, -0.7364, 0.2293, 0.1962, -0.7364, 0.2293, 0.119, -0.9397, 0.2182, 0.2657, -0.9395, 0.4253, -3.2793, -0.9397, 0.4253, 0.2657, -0.9397, 0.2182, 0.2657, -0.9395, 0.2182, -3.2793, -0.9395, 0.4253, -3.2793, -0.7364, 0.2293, 0.119, 0.1318, 0.4143, 0.119, -0.7364, 0.4143, 0.119, -0.7364, 0.2293, 0.119, 0.1318, 0.2293, 0.119, 0.1318, 0.4143, 0.119, -0.7372, 0.4143, 0.5835, 0.132, 0.4253, 1.1731, -0.7891, 0.4253, 1.1731, -0.7372, 0.4143, 0.5835, 0.1314, 0.4143, 0.5835, 0.132, 0.4253, 1.1731)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1tyg1"]
+size = Vector3(1.6, 3, 1.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stxmy"]
+render_priority = 0
+shader = ExtResource("3_yqbif")
+shader_parameter/BaseColor = Color(0.305882, 0.113725, 0.0313726, 1)
+shader_parameter/Roughness = 1.0
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(2.67, 5.64)
+shader_parameter/FingertprintScale = 1.0
+shader_parameter/CrackOffset = 1.0
+shader_parameter/CrackScale = 0.155
+shader_parameter/CrackDetail = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b55o6"]
+size = Vector3(2, 2, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sogwj"]
+size = Vector3(0.842462, 74.1, 2.3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpri5"]
+render_priority = 0
+shader = ExtResource("3_yqbif")
+shader_parameter/BaseColor = Color(0.304464, 0.114245, 0.0306501, 1)
+shader_parameter/Roughness = 1.0
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(1, 1)
+shader_parameter/FingertprintScale = 1.0
+shader_parameter/CrackOffset = 1.0
+shader_parameter/CrackScale = 0.5
+shader_parameter/CrackDetail = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uurfa"]
+render_priority = 0
+shader = ExtResource("3_yqbif")
+shader_parameter/BaseColor = Color(0.366595, 0.366595, 0.366595, 1)
+shader_parameter/Roughness = 0.0
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(2.28, 4.5)
+shader_parameter/FingertprintScale = 0.005
+shader_parameter/CrackOffset = 1.0
+shader_parameter/CrackScale = 0.5
+shader_parameter/CrackDetail = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j4w4"]
 
@@ -1524,7 +2149,7 @@ shader_parameter/CrackDetail = 1.0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jyuu7"]
 data = PackedVector3Array(0.1238, 0, -0.1232, 1, 0, -1, 1, 0, -0.1232, 0.1238, 0, -0.1232, 0.1238, 0, -1, 1, 0, -1, 0.1238, 0, 0.1236, 0.1238, 0, -0.1232, 1, 0, -0.1232, 0.1238, 0, 0.1236, 1, 0, -0.1232, 1, 0, 0.1236, 0.1238, 0, 1, 0.1238, 0, 0.1236, 1, 0, 0.1236, 0.1238, 0, 1, 1, 0, 0.1236, 1, 0, 1, -0.1236, 0, 1, 0.1238, 0, 0.1236, 0.1238, 0, 1, -0.1236, 0, 1, -0.1236, 0, 0.1236, 0.1238, 0, 0.1236, -0.1236, 0, 0.1236, 0.1238, 0, -0.1232, 0.1238, 0, 0.1236, -1, 0, 1, -0.1236, 0, 0.1236, -0.1236, 0, 1, -1, 0, 1, -1, 0, 0.1236, -0.1236, 0, 0.1236, -0.1236, 0, 0.1236, -0.1236, 0, -0.1232, 0.1238, 0, -0.1232, -1, 0, 0.1236, -0.1236, 0, -0.1232, -0.1236, 0, 0.1236, -0.1236, 0, -0.1232, 0.1238, 0, -1, 0.1238, 0, -0.1232, -1, 0, 0.1236, -1.1, 0, 0.1236, -1.1, 0, -0.1232, -1, 0, 0.1236, -1.1, 0, -0.1232, -1, 0, -0.1232, -1, 0, 0.1236, -1, 0, -0.1232, -0.1236, 0, -0.1232, -1, 0, -0.1232, -0.1236, 0, -1, -0.1236, 0, -0.1232, -0.1236, 0, -0.1232, -0.1236, 0, -1, 0.1238, 0, -1, -1, 0, -0.1232, -1, 0, -1, -0.1236, 0, -1, -0.1236, 0, -1, 0.1238, 0, -1.1, 0.1238, 0, -1, -0.1236, 0, -1, -0.1236, 0, -1.1, 0.1238, 0, -1.1, -1, 0, -1, -0.1236, 7, -1, -0.1236, 0, -1, -1, 0, -1, -1, 7, -1, -0.1236, 7, -1, 1, 0, 1, 0.1238, 7, 1, 0.1238, 0, 1, 1, 0, 1, 1, 7, 1, 0.1238, 7, 1, 1, 0, 0.1236, 1, 7, 1, 1, 0, 1, 1, 0, 0.1236, 1, 7, 0.1236, 1, 7, 1, -1, 0, -0.1232, -1, 7, -1, -1, 0, -1, -1, 0, -0.1232, -1, 7, -0.1232, -1, 7, -1, 1, 0, -1, 1, 7, -0.1232, 1, 0, -0.1232, 1, 0, -1, 1, 7, -1, 1, 7, -0.1232, 0.1238, 0, -1, 1, 7, -1, 1, 0, -1, 0.1238, 0, -1, 0.1238, 7, -1, 1, 7, -1, -1, 0, 1, -1, 7, 0.1236, -1, 0, 0.1236, -1, 0, 1, -1, 7, 1, -1, 7, 0.1236, -0.1236, 0, 1, -1, 7, 1, -1, 0, 1, -0.1236, 0, 1, -0.1236, 7, 1, -1, 7, 1, 1, 0, -0.1232, 1.1, 0, 0.1236, 1, 0, 0.1236, 1, 0, -0.1232, 1.1, 0, -0.1232, 1.1, 0, 0.1236, 0.1238, 0, 1, -0.1236, 0, 1.1, -0.1236, 0, 1, 0.1238, 0, 1, 0.1238, 0, 1.1, -0.1236, 0, 1.1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpri5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qekg3"]
 render_priority = 0
 shader = ExtResource("3_yqbif")
 shader_parameter/BaseColor = Color(1, 0, 1, 1)
@@ -1948,6 +2573,9 @@ data = PackedVector3Array(2.8282, -1.3996, 3.2265, 2.8282, 1.3996, -2.6469, 2.82
 
 [node name="BlueEnv" groups=["detached_env_parent"] instance=ExtResource("1_uvna4")]
 
+[node name="HumanForScale" parent="." index="0"]
+visible = false
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Lighthouse" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lighthouse/StaticBody3D" index="0"]
@@ -2147,7 +2775,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_r4br4")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_001" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_001/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_qekg3")
+shape = SubResource("ConcavePolygonShape3D_qkrbm")
 
 [node name="Ramp" parent="." index="32"]
 surface_material_override/0 = SubResource("ShaderMaterial_5jpkj")
@@ -2313,7 +2941,63 @@ shape = SubResource("BoxShape3D_aslq7")
 transform = Transform3D(1, 2.36571e-11, 0.000591516, -2.36633e-11, 1, 1.02607e-11, -0.000593364, -1.02749e-11, 1, 0.00350952, 0.0368188, -0.331284)
 shape = SubResource("BoxShape3D_aslq7")
 
-[node name="Ground_008" parent="." index="40"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WeightBench_003" index="0"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WeightBench_003/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15527e-05, -0.2, -0.35)
+shape = SubResource("BoxShape3D_qkrbm")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WeightBench_003/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207, -0.95, 0.1)
+shape = SubResource("BoxShape3D_mv54n")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WeightBench_003/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207, -1.15, 1.2)
+shape = SubResource("BoxShape3D_gim1r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_013" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_013/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_mv54n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barstool_002" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barstool_002/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.100006)
+shape = SubResource("BoxShape3D_1tyg1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barstool" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barstool/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.100006)
+shape = SubResource("BoxShape3D_1tyg1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barstool_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barstool_001/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.100006)
+shape = SubResource("BoxShape3D_1tyg1")
+
+[node name="Barshelves" parent="." index="45"]
+surface_material_override/0 = SubResource("ShaderMaterial_stxmy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barshelves/Cube_018" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barshelves/Cube_018/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.90735e-06, 0.149994)
+shape = SubResource("BoxShape3D_b55o6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barshelves" index="56"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barshelves/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.00118828, 38.499, -0.0499725)
+shape = SubResource("BoxShape3D_sogwj")
+
+[node name="Sink" parent="." index="46"]
+surface_material_override/0 = SubResource("ShaderMaterial_gpri5")
+surface_material_override/1 = SubResource("ShaderMaterial_uurfa")
+
+[node name="Ground_008" parent="." index="47"]
 surface_material_override/0 = ExtResource("5_v00nr")
 surface_material_override/1 = SubResource("StandardMaterial3D_1j4w4")
 
@@ -2322,7 +3006,61 @@ surface_material_override/1 = SubResource("StandardMaterial3D_1j4w4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_008/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_jh8x7")
 
-[node name="Ground_009" parent="." index="41"]
+[node name="Spot1" type="SpotLight3D" parent="." index="48"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, -44.5813, 0.743371, -104.812)
+light_color = Color(1, 0.754452, 0.579975, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 1.779
+spot_angle = 73.2689
+spot_angle_attenuation = 1.23333
+
+[node name="Spot2" type="SpotLight3D" parent="." index="49"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, -43.0813, 0.743371, -104.812)
+light_color = Color(1, 0.754452, 0.579975, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 1.779
+spot_angle = 81.42
+spot_angle_attenuation = 1.23333
+
+[node name="Spot3" type="SpotLight3D" parent="." index="50"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, -44.5813, 2.15294, -104.699)
+light_color = Color(1, 0.754452, 0.579975, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 1.779
+spot_angle = 66.6542
+spot_angle_attenuation = 1.23333
+
+[node name="Spot4" type="SpotLight3D" parent="." index="51"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, -43.0813, 2.15294, -104.699)
+light_color = Color(1, 0.754452, 0.579975, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 1.779
+spot_angle = 81.42
+spot_angle_attenuation = 1.23333
+
+[node name="Spot5" type="SpotLight3D" parent="." index="52"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, -44.5813, 3.28057, -104.688)
+light_color = Color(1, 0.754452, 0.579975, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 1.779
+spot_angle = 81.42
+spot_angle_attenuation = 1.23333
+
+[node name="Spot6" type="SpotLight3D" parent="." index="53"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, -43.0813, 3.28057, -104.688)
+light_color = Color(1, 0.754452, 0.579975, 1)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 1.779
+spot_angle = 81.42
+spot_angle_attenuation = 1.23333
+
+[node name="Ground_009" parent="." index="54"]
 surface_material_override/0 = SubResource("ShaderMaterial_pqchx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_009" index="0"]
@@ -2350,7 +3088,7 @@ shape = SubResource("ConcavePolygonShape3D_26scl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entry_013/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_u7xvx")
 
-[node name="Ground_011" parent="." index="46"]
+[node name="Ground_011" parent="." index="59"]
 surface_material_override/0 = SubResource("ShaderMaterial_8jhyc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_011" index="0"]
@@ -2383,7 +3121,7 @@ shape = SubResource("ConcavePolygonShape3D_8geto")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entry_018/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ixiyh")
 
-[node name="InfFloor" parent="." index="52"]
+[node name="InfFloor" parent="." index="65"]
 surface_material_override/0 = SubResource("ShaderMaterial_wkhyi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InfFloor" index="0"]
@@ -2391,7 +3129,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_wkhyi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfFloor/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_bdon3")
 
-[node name="Ground_010" parent="." index="53"]
+[node name="Ground_010" parent="." index="66"]
 surface_material_override/0 = SubResource("ShaderMaterial_yjtme")
 surface_material_override/1 = SubResource("StandardMaterial3D_3ecq1")
 
@@ -2400,7 +3138,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_3ecq1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_010/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_brobl")
 
-[node name="Ground_002" parent="." index="54"]
+[node name="Ground_002" parent="." index="67"]
 surface_material_override/0 = SubResource("ShaderMaterial_grc11")
 surface_material_override/1 = SubResource("StandardMaterial3D_t6a8g")
 
@@ -2419,7 +3157,7 @@ shape = SubResource("ConcavePolygonShape3D_560gy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entry_003/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_aug61")
 
-[node name="Plane_001" parent="." index="57"]
+[node name="Plane_001" parent="." index="70"]
 surface_material_override/0 = SubResource("ShaderMaterial_n73st")
 surface_material_override/1 = SubResource("StandardMaterial3D_qkrbm")
 
@@ -2448,7 +3186,7 @@ shape = SubResource("ConcavePolygonShape3D_bfq26")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entry_053/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_bdwky")
 
-[node name="Ground_003" parent="." index="62"]
+[node name="Ground_003" parent="." index="75"]
 surface_material_override/0 = SubResource("ShaderMaterial_br0ia")
 surface_material_override/1 = SubResource("StandardMaterial3D_gpri5")
 
@@ -2462,7 +3200,7 @@ shape = SubResource("ConcavePolygonShape3D_afu2c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entry_009/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_wxgjy")
 
-[node name="Ground_004" parent="." index="64"]
+[node name="Ground_004" parent="." index="77"]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, -189.086, -0.0392684, -212.565)
 surface_material_override/0 = SubResource("ShaderMaterial_8d2a2")
 
@@ -2480,7 +3218,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_004/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_mpgmr")
 
-[node name="Bridge" parent="." index="65"]
+[node name="Bridge" parent="." index="78"]
 transform = Transform3D(20, 0, 0, 0, -0.25, -1.74846e-07, 0, 2.18557e-08, -2, -189.086, 1.29496, -211.019)
 material_override = SubResource("ShaderMaterial_itd01")
 
@@ -2494,7 +3232,7 @@ shape = SubResource("ConcavePolygonShape3D_l8gxw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Waterfall/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_fc5v6")
 
-[node name="Ground_005" parent="." index="67"]
+[node name="Ground_005" parent="." index="80"]
 surface_material_override/0 = SubResource("ShaderMaterial_eqv1w")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_005" index="0"]
@@ -2502,8 +3240,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_eqv1w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_005/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_msip8")
 
-[node name="Ziggurat" parent="." index="68"]
-transform = Transform3D(40, 0, 0, 0, 29.7561, 0, 0, 0, 40, -491.826, 19.1649, -289.574)
+[node name="Ziggurat" parent="." index="81"]
+transform = Transform3D(40, 0, 0, 0, 29.7561, 0, 0, 0, 40, -491.826, 19.1649, -282.574)
 material_override = SubResource("ShaderMaterial_eds7p")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ziggurat" index="0"]
@@ -2511,7 +3249,7 @@ material_override = SubResource("ShaderMaterial_eds7p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ziggurat/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_e6sux")
 
-[node name="Water" parent="." index="69"]
+[node name="Water" parent="." index="82"]
 transform = Transform3D(0.885766, 0, 0, 0, 0.885766, 0, 0, 0, 0.885766, -488.989, -1.98476, -289.574)
 material_override = SubResource("ShaderMaterial_8d2a2")
 
@@ -2548,7 +3286,7 @@ shape = SubResource("ConcavePolygonShape3D_uk6pb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entry_006/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_u63hu")
 
-[node name="Pillar_007" parent="." index="76"]
+[node name="Pillar_007" parent="." index="89"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_007" index="0"]
@@ -2556,7 +3294,7 @@ material_override = SubResource("ShaderMaterial_1tyg1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_007/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_kotkn")
 
-[node name="HiddenShelf" parent="." index="77"]
+[node name="HiddenShelf" parent="." index="90"]
 material_override = SubResource("ShaderMaterial_0aiuc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="HiddenShelf" index="0"]
@@ -2564,7 +3302,7 @@ material_override = SubResource("ShaderMaterial_0aiuc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HiddenShelf/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_l7cml")
 
-[node name="Path" parent="." index="78"]
+[node name="Path" parent="." index="91"]
 material_override = SubResource("ShaderMaterial_fcmwb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Path" index="0"]
@@ -2577,7 +3315,7 @@ shape = SubResource("ConcavePolygonShape3D_nug2r")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_bxmlx")
 
-[node name="HiddenShelf_001" parent="." index="80"]
+[node name="HiddenShelf_001" parent="." index="93"]
 material_override = SubResource("ShaderMaterial_0aiuc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="HiddenShelf_001" index="0"]
@@ -2585,7 +3323,7 @@ material_override = SubResource("ShaderMaterial_0aiuc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HiddenShelf_001/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ix6r0")
 
-[node name="Pillar_012" parent="." index="81"]
+[node name="Pillar_012" parent="." index="94"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 mesh = SubResource("ArrayMesh_lmadh")
 
@@ -2594,7 +3332,7 @@ mesh = SubResource("ArrayMesh_lmadh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_012/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_0rpme")
 
-[node name="Pillar_004" parent="." index="82"]
+[node name="Pillar_004" parent="." index="95"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_004" index="0"]
@@ -2602,7 +3340,7 @@ material_override = SubResource("ShaderMaterial_1tyg1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_004/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_05q40")
 
-[node name="Pillar_003" parent="." index="83"]
+[node name="Pillar_003" parent="." index="96"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_003" index="0"]
@@ -2610,7 +3348,7 @@ material_override = SubResource("ShaderMaterial_1tyg1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_003/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_yr1kw")
 
-[node name="Pillar_013" parent="." index="84"]
+[node name="Pillar_013" parent="." index="97"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_013" index="0"]
@@ -2618,7 +3356,7 @@ material_override = SubResource("ShaderMaterial_1tyg1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_013/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_n3mus")
 
-[node name="Pillar_009" parent="." index="85"]
+[node name="Pillar_009" parent="." index="98"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_009" index="0"]
@@ -2626,7 +3364,7 @@ material_override = SubResource("ShaderMaterial_1tyg1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_009/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ye1ic")
 
-[node name="Pillar_014" parent="." index="86"]
+[node name="Pillar_014" parent="." index="99"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_014" index="0"]
@@ -2634,7 +3372,7 @@ material_override = SubResource("ShaderMaterial_1tyg1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_014/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_2ilxp")
 
-[node name="Pillar_015" parent="." index="87"]
+[node name="Pillar_015" parent="." index="100"]
 material_override = SubResource("ShaderMaterial_1tyg1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_015" index="0"]
@@ -2642,7 +3380,7 @@ material_override = SubResource("ShaderMaterial_1tyg1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_015/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_q0tcn")
 
-[node name="Ground_007" parent="." index="88"]
+[node name="Ground_007" parent="." index="101"]
 surface_material_override/0 = SubResource("ShaderMaterial_mklml")
 surface_material_override/1 = SubResource("StandardMaterial3D_sogwj")
 
@@ -2651,7 +3389,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_sogwj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_007/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_pn2l5")
 
-[node name="Backroom_001" parent="." index="89"]
+[node name="Backroom_001" parent="." index="102"]
 surface_material_override/0 = SubResource("ShaderMaterial_sogwj")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
@@ -2660,7 +3398,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_001/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_lnv08")
 
-[node name="Backroom_002" parent="." index="90"]
+[node name="Backroom_002" parent="." index="103"]
 surface_material_override/0 = SubResource("ShaderMaterial_mpgmr")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
@@ -2669,8 +3407,8 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_002/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_jyuu7")
 
-[node name="Backroom_003" parent="." index="91"]
-surface_material_override/0 = SubResource("ShaderMaterial_gpri5")
+[node name="Backroom_003" parent="." index="104"]
+surface_material_override/0 = SubResource("ShaderMaterial_qekg3")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Backroom_003" index="0"]
@@ -2678,7 +3416,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_003/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_tti5o")
 
-[node name="Backroom_004" parent="." index="92"]
+[node name="Backroom_004" parent="." index="105"]
 surface_material_override/0 = SubResource("ShaderMaterial_gkvpg")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
@@ -2687,7 +3425,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_004/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_qffmn")
 
-[node name="Backroom_005" parent="." index="93"]
+[node name="Backroom_005" parent="." index="106"]
 surface_material_override/0 = SubResource("ShaderMaterial_r4br4")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
@@ -2696,7 +3434,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_005/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_jncwd")
 
-[node name="Backroom_006" parent="." index="94"]
+[node name="Backroom_006" parent="." index="107"]
 surface_material_override/0 = SubResource("ShaderMaterial_1j4w4")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
@@ -2705,7 +3443,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_006/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ljoy7")
 
-[node name="Backroom_007" parent="." index="95"]
+[node name="Backroom_007" parent="." index="108"]
 surface_material_override/0 = SubResource("ShaderMaterial_3ecq1")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
@@ -2714,7 +3452,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_007/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_kdanf")
 
-[node name="Backroom_008" parent="." index="96"]
+[node name="Backroom_008" parent="." index="109"]
 surface_material_override/0 = SubResource("ShaderMaterial_t6a8g")
 surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 
@@ -2723,7 +3461,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_n73st")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Backroom_008/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_3vaf7")
 
-[node name="Plane_007" parent="." index="97"]
+[node name="Plane_007" parent="." index="110"]
 surface_material_override/0 = SubResource("ShaderMaterial_qkrbm")
 surface_material_override/1 = SubResource("StandardMaterial3D_mv54n")
 surface_material_override/2 = SubResource("StandardMaterial3D_gim1r")
@@ -2759,7 +3497,7 @@ shape = SubResource("ConcavePolygonShape3D_hfslu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Divider_001/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_tuead")
 
-[node name="Plane_005" parent="." index="103"]
+[node name="Plane_005" parent="." index="116"]
 surface_material_override/0 = SubResource("ShaderMaterial_gim1r")
 surface_material_override/1 = SubResource("StandardMaterial3D_ujwby")
 
