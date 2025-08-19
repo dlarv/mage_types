@@ -31,7 +31,6 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [x] Make Adonis Enclave dialog less cringe
 		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
 - [ ] Add temporary info screen describing transmutation system overview
-- [ ] Allow player to attach spells from inventory
 - [x] Remodel rec room
 - [x] Can't remove spells, only replace them
 - [x] Player's will realign after fighting the miniboss and losing
@@ -118,6 +117,7 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [x] Original Stasis obstacle?
 		- [x] Original version works in new physics paradigm
 		- [x] Decide if/where/how it should be used
+- [ ] Allow player to attach spells from inventory
 - [ ] Puzzle block demos:
 	- [x] Rails demo
 		- [ ] Give Rail puzzleblock a model
