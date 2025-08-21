@@ -336,7 +336,7 @@ Two Red subfactions. Though largely in lockstep, there are slight disagreements 
 
 **Orange Researchers**
 # Story
-[[Story]]
+[[Old_Story]]
 # Elemental System
 The elemental system has ~~4~~ 3 components:
 - [[#Transmutation Info|Transmutations]]
