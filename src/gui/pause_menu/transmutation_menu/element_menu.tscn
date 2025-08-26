@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxssuq50oieby"]
+[gd_scene load_steps=7 format=3 uid="uid://bxssuq50oieby"]
 
 [ext_resource type="Script" uid="uid://dy33wvipm7vbl" path="res://src/gui/Menu.gd" id="1_5vsek"]
 [ext_resource type="PackedScene" uid="uid://bmbnu4mhl3wxv" path="res://src/gui/pause_menu/transmutation_menu/matchup_chart.tscn" id="1_x58qa"]
@@ -10,9 +10,6 @@ font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrdbm"]
 bg_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
-
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_84iyw"]
-file = "res://assets/graphics/info_graphics/output/transmutation_graph.ogv"
 
 [node name="ElementMenu" type="TabContainer"]
 anchors_preset = 15
@@ -117,7 +114,7 @@ horizontal_alignment = 1
 
 [node name="Purple" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(0.501961, 0, 1, 1)
+color = Color(0.321569, 0.0941176, 0.980392, 1)
 _element = "purple"
 
 [node name="Purple_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox"]
@@ -233,15 +230,3 @@ text = "
 
 [ul] Your type is affected by your own melee attacks."
 fit_content = true
-
-[node name="How to use advanced options" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 4
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="How to use advanced options"]
-layout_mode = 2
-stream = SubResource("VideoStreamTheora_84iyw")
-autoplay = true
-expand = true
-loop = true

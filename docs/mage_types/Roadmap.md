@@ -30,11 +30,18 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [x] Rewrite bartender dialog
 	- [x] Write meeting Denim scene
 	- [x] Make Adonis Enclave dialog less cringe
-		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
+		- [x] Their name should be changed to something old-timey
+- [ ] Add tutorial explaining how to equip spells
 - [ ] Add temporary info screen 
 	- [ ] Describe transmutation system overview
+	- [ ] Tell player about stencils
 	- [ ] Tell player about basic controls
-- [ ] Remove "Advanced options tutorial tab" from Transmutation Map
+		- [ ] WASD to move
+		- [ ] Space to jump, Shift to dash
+		- [ ] Ctrl to interact
+		- [ ] Esc to open pause menu
+		- [ ] M to open map
+- [x] Remove "Advanced options tutorial tab" from Transmutation Map
 - [x] Change transmutation graph advanced options from gdscript to gdshader
 - [x] Added stencils to allow player easier interface with transmutation map advanced options
 - [x] Remodel rec room
