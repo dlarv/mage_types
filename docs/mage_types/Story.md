@@ -1,7 +1,31 @@
 # Prologue
 # Act 1
 ## Scene 1 (The Rec Room)
-- Unsure of what else to do, you enter the hotel. You find yourself in the lobby, where, desperate to find someone... anyone... you ring the bell. Nothing. You decide to wait a few minutes; maybe the receptionist is using the bathroom? A foolish hope.
-- Eventually, you make your way down the hall. Out of nowhere, you are hit with an unbearable force. A gangly monster, stares down at you with murderous intent. You jump as a bright blue projectile smashes into the wall just above your head. Pure instinct takes over you and a stab of euphoria strikes you as a few bright pink sparks burst against the monster. But any triumph you might have felt quickly fades away as the monster charges up its next attack. You turn tail and run.
-- It quickly becomes apparent you took a wrong turn. It turns out the one corridor you didn't turn down held friendly life. A rec room, filled with a handful of dour looking souls. You notice some of them hold a startling resemblance to the monster, but they don't attack you on sight, which is nice.
-- Talking to the bartender, you start to feel less alone. Not only is there many people, equally as lost and confused as you, but there's actually another recent strandee. Their name is Denim, their about your age, and 
+Without any other options, I enter the hotel. It smells of mildew. The blue, hexagonal carpet strikes a strange, melancholic chord, like a memory you've regretfully forgotten. At least its made of felt... 
+
+The receptionist bell cuts thru the oppressive silence, sending a jolt down my spine. I regret ringing it, I knew there would be no response and the loud sound feels totally unnatural in this place. Glancing up at the sign on the wall, I take note of the rec room. It's been circled, maybe that means its worth going to?
+
+>[!note]
+>I'm writing what I consider to be the canonical conversation here. I find its easier to think more linearly here and add branches as needed inside of the actual dialog editor.
+
+*Walking up to the bar, you are greeted by the bartender and a patron.*
+- Bartender should have a self-assured service worker persona. He is friendly, but will not take crap (what are you gonna do, call his manager).
+- All Denim can do is laugh. What else is there to do when their weirdness meter has been maxed out for days now?
+>**Bartender**: Hey there stranger.
+>>**Player**: Where am I?
+>**Denim**: A hotel bar room.
+>**Bartender**: Don't mind them, they're having a bit of cabin fever...
+>**Denim**: I've been stuck in this bar for 3 days now.
+>>**Player**: Because of the monster?
+>**Denim**: Yep.
+>**Bartender**: For some of us, there's other factors.
+>**Denim**: ... Sorry, I didn't mean...
+>**Bartender**: You're alright, I'm just messing with you.
+>>**Player**: Long shift?
+>**Bartender**: Something like that. Ask me about it again later and I'll tell you. But first, let's solve this monster problem.
+>**Bartender**: You see those 3 gentlemen over there? That's the Adonis Enclave, or what's left of them at least. They'll teach you what you need to know about combat. 
+>**Bartender**: Its actually not that dangerous, if you can believe such a thing.
+
+
+>>**Player**: Long shift?
+>>**Player**: No really, where am I?
