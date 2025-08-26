@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_0i66p"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="7_o78ei"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="8_nhfvj"]
-[ext_resource type="Resource" uid="uid://duw316wovswh" path="res://data/demo/bosses/preset_2/boss_4.tres" id="9_ihyfn"]
+[ext_resource type="Resource" uid="uid://duw316wovswh" path="res://data/story/bosses/tutorial_bosses/preset_2/boss_4.tres" id="9_ihyfn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0mcoh"]
 radius = 1.3856

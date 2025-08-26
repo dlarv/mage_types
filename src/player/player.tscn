@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=4 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" uid="uid://de6h1lv6q0qbt" path="res://src/player/PlayerController.gd" id="1_eca83"]
-[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/player/battle_actors/player_battle_actor.tres" id="2_x42xx"]
+[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_x42xx"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="3_e1u62"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="3_xfaiw"]
-[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/player/battle_actors/denim_battle_actor.tres" id="4_x42xx"]
+[ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/story/battle_actors/player_characters/denim_battle_actor.tres" id="4_x42xx"]
 [ext_resource type="Texture2D" uid="uid://b0kj6udppi815" path="res://assets/3d/textures/player/player_diffuse.png" id="6_omm5f"]
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="8_r804x"]
 

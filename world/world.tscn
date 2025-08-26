@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://dyxwuxn04gout" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
 [ext_resource type="Script" uid="uid://ctwpmg6gbk4fr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
 [ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
-[ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/demo/bosses/boss_3.tscn" id="8_bwct4"]
+[ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/story/bosses/tutorial_bosses/boss_3.tscn" id="8_bwct4"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
-[ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/demo/bosses/boss_1.tscn" id="11_tyily"]
+[ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/story/bosses/tutorial_bosses/boss_1.tscn" id="11_tyily"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="12_lwhbe"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="12_xtgjc"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="13_b6sci"]
@@ -19,18 +19,18 @@
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="14_p05cy"]
 [ext_resource type="Texture2D" uid="uid://b0kj6udppi815" path="res://assets/3d/textures/player/player_diffuse.png" id="15_0b8p6"]
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="16_gm161"]
-[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/demo/bosses/boss_2.tscn" id="18_3lqrh"]
-[ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/demo/bosses/mini_boss_1.tscn" id="20_bwxdu"]
+[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="18_3lqrh"]
+[ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="20_bwxdu"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="21_2tavo"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="21_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="21_llyeo"]
 [ext_resource type="Resource" uid="uid://bblx7lycrgk8e" path="res://data/story/dialog_trees/battle_dialog.tres" id="23_ftqqi"]
-[ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/demo/bosses/boss_1.tres" id="24_2tavo"]
+[ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/story/bosses/tutorial_bosses/boss_1.tres" id="24_2tavo"]
 [ext_resource type="Resource" uid="uid://cttohg0e1an0u" path="res://data/items/spell_scrolls/basic/hit_p.tres" id="25_avd5l"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="25_bwxdu"]
-[ext_resource type="Resource" uid="uid://d1h5t72gjjjcv" path="res://data/demo/bosses/mini_boss_1.tres" id="25_lwhbe"]
-[ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/demo/bosses/boss_2.tres" id="26_2tavo"]
-[ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/demo/bosses/boss_3.tres" id="28_k8wd0"]
+[ext_resource type="Resource" uid="uid://d1h5t72gjjjcv" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tres" id="25_lwhbe"]
+[ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/story/bosses/tutorial_bosses/boss_2.tres" id="26_2tavo"]
+[ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/story/bosses/tutorial_bosses/boss_3.tres" id="28_k8wd0"]
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="28_ll3gq"]
 [ext_resource type="Script" uid="uid://n8ulld1m40ie" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="28_lwhbe"]
 [ext_resource type="Resource" uid="uid://cr76i3ewvm3up" path="res://data/items/spell_scrolls/basic/hit_m.tres" id="29_jgi7c"]
@@ -390,27 +390,27 @@ shadow_caster_mask = 4294967293
 
 [node name="Blue" parent="Overworld" instance=ExtResource("10_5iu1q")]
 
-[node name="Alice" parent="Overworld/Blue" groups=["detached_env"] instance=ExtResource("12_xtgjc")]
+[node name="Bartender" parent="Overworld/Blue" groups=["detached_env"] instance=ExtResource("12_xtgjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1534, -1.2, -102.871)
 collision_layer = 5
 
-[node name="StoryActor" parent="Overworld/Blue/Alice" node_paths=PackedStringArray("animation_player") instance=ExtResource("13_b6sci")]
+[node name="StoryActor" parent="Overworld/Blue/Bartender" node_paths=PackedStringArray("animation_player") instance=ExtResource("13_b6sci")]
 process_mode = 3
 dialog_ids = Array[ExtResource("14_kx2pq")]([SubResource("Resource_4xgon")])
 animation_player = NodePath("../../../AnimationPlayer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Alice"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Bartender"]
 shape = SubResource("SphereShape3D_xnssd")
 
-[node name="player" parent="Overworld/Blue/Alice" instance=ExtResource("14_p05cy")]
+[node name="player" parent="Overworld/Blue/Bartender" instance=ExtResource("14_p05cy")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Cylinder" parent="Overworld/Blue/Alice/player/Armature/Skeleton3D" index="0"]
+[node name="Cylinder" parent="Overworld/Blue/Bartender/player/Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_nrfl8")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/Alice/player"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld/Blue/Bartender/player"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Alice/player/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Bartender/player/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_i1awl")
 
 [node name="Preset1" type="Node3D" parent="Overworld/Blue" groups=["detached_env"]]
@@ -515,4 +515,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 4, -65.6667)
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
 [connection signal="dialog_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_dialog_started"]
 
-[editable path="Overworld/Blue/Alice/player"]
+[editable path="Overworld/Blue/Bartender/player"]
