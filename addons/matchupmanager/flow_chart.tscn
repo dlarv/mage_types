@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfm2gywqc5rvp"]
+[gd_scene load_steps=7 format=3 uid="uid://dfm2gywqc5rvp"]
 
 [ext_resource type="Script" uid="uid://dqpk42g68jc4p" path="res://addons/matchupmanager/ElementFlowChart.gd" id="1_oarhx"]
 [ext_resource type="Texture2D" uid="uid://cxxtn4egbgve" path="res://assets/graphics/matchup_graphs/matchup_graph_v4.png" id="1_y7u1g"]
@@ -24,6 +24,9 @@ shader_parameter/HIDE_Y_EDGE = false
 shader_parameter/HIDE_G_EDGE = false
 shader_parameter/HIDE_C_EDGE = false
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_wra6w"]
+allow_unpress = true
+
 [node name="Flow Chart" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,10 +36,10 @@ grow_vertical = 2
 script = ExtResource("1_oarhx")
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_r1feh")
 layout_mode = 2
@@ -45,119 +48,151 @@ texture = ExtResource("1_y7u1g")
 expand_mode = 2
 metadata/_edit_lock_ = true
 
-[node name="AdvancedOptionsPane" type="VBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AdvancedOptionsPane" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/AdvancedOptionsPane"]
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane"]
 layout_mode = 2
 text = "Advanced 
 Options"
 icon = ExtResource("2_kvcg0")
 
-[node name="AdvancedOptionsVBox" type="VBoxContainer" parent="VBoxContainer/AdvancedOptionsPane"]
+[node name="AdvancedOptionsVBox" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
 layout_mode = 2
 
-[node name="NodesEdges_VBox" type="HBoxContainer" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
+[node name="NodesEdges_VBox" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
 layout_mode = 2
 
-[node name="NodesVBox" type="VBoxContainer" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox"]
+[node name="NodesVBox" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Hide Nodes"
 
-[node name="Blue" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Blue" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Blue"
 
-[node name="Purple" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Purple" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Purple"
 
-[node name="Magenta" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Magenta" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Magenta"
 
-[node name="Red" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Red" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Red"
 
-[node name="Orange" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Orange" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Orange"
 
-[node name="Yellow" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Yellow" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Yellow"
 
-[node name="Green" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Green" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Green"
 
-[node name="Cyan" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
+[node name="Cyan" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox"]
 layout_mode = 2
 text = "Cyan"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox"]
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox"]
 layout_mode = 2
 
-[node name="EdgesVBox" type="VBoxContainer" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox"]
+[node name="EdgesVBox" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Label" type="Label" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Hide Edges"
 
-[node name="Blue" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Blue" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Blue"
 
-[node name="Purple" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Purple" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Purple"
 
-[node name="Magenta" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Magenta" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Magenta"
 
-[node name="Red" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Red" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Red"
 
-[node name="Orange" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Orange" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Orange"
 
-[node name="Yellow" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Yellow" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Yellow"
 
-[node name="Green" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Green" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Green"
 
-[node name="Cyan" type="CheckBox" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
+[node name="Cyan" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox"]
 layout_mode = 2
 text = "Cyan"
 
-[node name="Hide_Button" type="Button" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
+[node name="Hide_Button" type="Button" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
 layout_mode = 2
 text = "Hide"
 
-[node name="Clear_Button" type="Button" parent="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
+[node name="Clear_Button" type="Button" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox"]
 layout_mode = 2
 text = "Clear"
 
-[connection signal="pressed" from="VBoxContainer/AdvancedOptionsPane/Button" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/Hide_Button" to="." method="_on_hide_elements_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/Clear_Button" to="." method="_on_clear_button_pressed"]
+[node name="StencilVBox" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StencilButton1" type="Button" parent="HBoxContainer/VBoxContainer/StencilVBox"]
+visible = false
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wra6w")
+text = "Stencil 1"
+
+[node name="StencilButton2" type="Button" parent="HBoxContainer/VBoxContainer/StencilVBox"]
+visible = false
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wra6w")
+text = "Stencil 2"
+
+[node name="StencilButton3" type="Button" parent="HBoxContainer/VBoxContainer/StencilVBox"]
+visible = false
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_wra6w")
+text = "Stencil 3"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/AdvancedOptionsPane/Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/Hide_Button" to="." method="_on_hide_elements_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/Clear_Button" to="." method="_on_clear_button_pressed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/StencilVBox/StencilButton1" to="." method="_on_stencil_button_toggled" binds= [0]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/StencilVBox/StencilButton2" to="." method="_on_stencil_button_toggled" binds= [1]]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/StencilVBox/StencilButton3" to="." method="_on_stencil_button_toggled" binds= [2]]

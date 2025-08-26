@@ -7,6 +7,8 @@ enum Category { REGULAR_ITEM, EQUIPMENT, SPELL_SCROLL, KEY_ITEM }
 signal quantity_changed(item: ItemSlot)
 signal overworld_spell_selected(id: OverworldSpell.Spells, isPrimary: bool)
 signal overworld_spell_enabled(id: OverworldSpell.Spells, isEnabled: bool)
+signal stencil_enabled(index: int)
+signal stencil_disabled(index: int)
 
 @export var money: int = 0
 
@@ -177,6 +179,7 @@ func find_and_add_spell(spell: Attack) -> void:
 
 func add_key_item(item: KeyItem, amount:=1) -> void:
 	var overworldSpell := -1
+
 	match item.unique_id:
 		KeyItem.UniqueId.STASIS:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.STASIS, true)
@@ -196,12 +199,19 @@ func add_key_item(item: KeyItem, amount:=1) -> void:
 		KeyItem.UniqueId.SET_PORTAL:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.SET_PORTAL, true)
 			overworldSpell = OverworldSpell.Spells.SET_PORTAL
+		KeyItem.UniqueId.STENCIL_1:
+			stencil_enabled.emit(1)
+		KeyItem.UniqueId.STENCIL_2:
+			stencil_enabled.emit(2)
+		KeyItem.UniqueId.STENCIL_3:
+			stencil_enabled.emit(3)
 
 	if overworldSpell != -1:
 		if spell1 == OverworldSpell.Spells.NONE:
 			select_overworld_spell(overworldSpell, true)
 		elif spell2 == OverworldSpell.Spells.NONE:
 			select_overworld_spell(overworldSpell, false)
+
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
 	var slot: ItemSlot = key_items[item.id]
 
@@ -250,6 +260,12 @@ func remove_key_item(item: KeyItem) -> void:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.DESTROY, false)
 		KeyItem.UniqueId.GOLEM:
 			overworld_spell_enabled.emit(OverworldSpell.Spells.GOLEM, false)
+		KeyItem.UniqueId.STENCIL_1:
+			stencil_disabled.emit(1)
+		KeyItem.UniqueId.STENCIL_2:
+			stencil_disabled.emit(2)
+		KeyItem.UniqueId.STENCIL_3:
+			stencil_disabled.emit(3)
 
 
 func has_key_item(id: KeyItem.UniqueId) -> bool:

@@ -1,6 +1,15 @@
 @tool
 extends Control
 
+@onready var BLUE := ElementManager.Blue
+@onready var PURPLE := ElementManager.Purple
+@onready var MAGENTA := ElementManager.Magenta
+@onready var RED := ElementManager.Red
+@onready var ORANGE := ElementManager.Orange
+@onready var YELLOW := ElementManager.Yellow
+@onready var GREEN := ElementManager.Green
+@onready var CYAN := ElementManager.Cyan
+
 var stencil_shader: ShaderMaterial
 var _original_image: Image
 
@@ -9,15 +18,39 @@ func _ready() -> void:
 	%AdvancedOptionsPane.visible = Settings.debug_mode
 
 	if Settings.play_test_mode:
-		restrict_graph([ElementManager.Yellow, ElementManager.Green, ElementManager.Cyan],
-				[ElementManager.Green])
-
+		_on_stencil_button_toggled(true, 0)
+	
+	if not Inventory.stencil_enabled.is_connected(activate_stencil):
+		Inventory.stencil_enabled.connect(activate_stencil)
+	if not Inventory.stencil_disabled.is_connected(deactivate_stencil):
+		Inventory.stencil_disabled.connect(deactivate_stencil)
+	
+	%StencilVBox.get_child(0).visible = Inventory.has_key_item(KeyItem.UniqueId.STENCIL_1)
+	%StencilVBox.get_child(1).visible = Inventory.has_key_item(KeyItem.UniqueId.STENCIL_2)
+	%StencilVBox.get_child(2).visible = Inventory.has_key_item(KeyItem.UniqueId.STENCIL_3)
+	
 
 func restrict_graph(nodes: Array, edges:=[]) -> void:
 	for element in ElementManager.elements:
 		var prefix := "HIDE_%s" % element.name[0].to_upper()
 		stencil_shader.set_shader_parameter("%s_NODE" % prefix, element in nodes)
 		stencil_shader.set_shader_parameter("%s_EDGE" % prefix, element in edges)
+
+
+func activate_stencil(index: int) -> void:
+	index -= 1
+	if index < 0 or index >= %StencilVBox.get_child_count():
+		push_warning("Tried to activate Stencil(%d), but it does not exist" % index)
+		return
+	%StencilVBox.get_child(index).visible = true
+
+
+func deactivate_stencil(index: int) -> void:
+	index -= 1
+	if index < 0 or index >= %StencilVBox.get_child_count():
+		push_warning("Tried to deactivate Stencil(%d), but it does not exist" % index)
+		return
+	%StencilVBox.get_child(index).visible = false
 
 
 func _on_options_button_pressed() -> void:
@@ -51,3 +84,33 @@ func _on_clear_button_pressed() -> void:
 		box.button_pressed = false
 
 	restrict_graph([])
+
+
+func _on_stencil_button_toggled(toggledOn: bool, index: int) -> void:
+	if not toggledOn:
+		_on_clear_button_pressed()
+		return
+
+	var nodes: Array[ElementalType]
+	var edges: Array[ElementalType]
+	match index:
+		0: 
+			nodes = [RED, ORANGE, YELLOW, GREEN, CYAN]
+			edges = [ORANGE, YELLOW, GREEN]
+		1:
+			nodes = [ORANGE, YELLOW, GREEN, CYAN]
+			edges = [YELLOW, GREEN]
+		2:
+			nodes = [YELLOW, GREEN, CYAN]
+			edges = [GREEN]
+	restrict_graph(nodes, edges)
+
+	if not %AdvancedOptionsPane.is_visible_in_tree(): return
+
+	var checkBoxes := %NodesVBox.find_children("", "CheckBox")
+	for node in nodes:
+		checkBoxes[ElementManager.get_index_from_name(node.name)].set_pressed_no_signal(true)
+
+	checkBoxes = %EdgesVBox.find_children("", "CheckBox")
+	for edge in edges:
+		checkBoxes[ElementManager.get_index_from_name(edge.name)].set_pressed_no_signal(true)

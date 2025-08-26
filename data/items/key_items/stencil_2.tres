@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="KeyItem" load_steps=3 format=3 uid="uid://c7xrixk4w025s"]
+
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_uy0nd"]
+[ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="2_6ax3x"]
+
+[resource]
+script = ExtResource("2_6ax3x")
+unique_id = 7
+id = 7
+name = "Stencil 2"
+requirements = Array[ExtResource("1_uy0nd")]([])
+details = "Many newcomers to the island find the [i]Transmutation Map[/i] somewhat... overwhelming. Stencils are used to during training to hide irrelevant sections of the map.
+
+This stencil shows only [el]Blue[/el], [el]Purple[/el], and [el]Magenta[/el], and [el]Red[/el]."
+metadata/_custom_type_script = "uid://bga7b8k778yar"
