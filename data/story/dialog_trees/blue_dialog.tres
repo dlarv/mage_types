@@ -11,8 +11,7 @@ starts = {
 "BOSS1": &"0_1",
 "INTRO": &"0_3",
 "MINI_BOSS_!": &"0_5",
-"MISC": &"0_2",
-"_INTRO": &"0_4"
+"MISC": &"0_2"
 }
 nodes = {
 &"0_1": {
@@ -26,14 +25,9 @@ nodes = {
 "start_id": "MISC"
 },
 &"0_3": {
-"link": &"7_5",
-"offset": Vector2(-2280, 100),
+"link": &"1_37",
+"offset": Vector2(-2360, -460),
 "start_id": "INTRO"
-},
-&"0_4": {
-"link": &"4_11",
-"offset": Vector2(-2860, -700),
-"start_id": "_INTRO"
 },
 &"0_5": {
 "link": &"1_8",
@@ -464,6 +458,32 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "Duke"
 },
+&"1_37": {
+"dialogue": "Hey there stranger.",
+"offset": Vector2(-2140, -480),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_38",
+"text": "Where am I?"
+}
+},
+"size": Vector2(300, 273),
+"speaker": 1
+},
+&"1_38": {
+"dialogue": "",
+"offset": Vector2(-1800, -480),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
 &"1_4": {
 "dialogue": "Hey stranger, I see you've met our little friend.",
 "offset": Vector2(-1580, 60),
@@ -561,7 +581,7 @@ nodes = {
 "speaker": 2
 },
 &"1_64": {
-"dialogue": "Up and to the right you'll find the Swole Enclave. Don't look at me like that, they chose that name not me",
+"dialogue": "Up and to the right you'll find the Adonis Enclave.",
 "offset": Vector2(3380, 800),
 "options": {
 0: {
@@ -742,19 +762,6 @@ nodes = {
 },
 "size": Vector2(300, 308),
 "speaker": 2
-},
-&"1_76": {
-"dialogue": "C: {{counter}}",
-"offset": Vector2(-2240, -700),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 0
 },
 &"1_77": {
 "dialogue": "Right, so unlike your [i]Secondary[/i] type, your [i]Primary[/i] type changes rather infrequently.",
@@ -1041,13 +1048,6 @@ nodes = {
 "value": "finished",
 "variable": "swole_enclave_quest"
 },
-&"4_11": {
-"link": &"1_76",
-"offset": Vector2(-2640, -700),
-"type": 1,
-"value": "1",
-"variable": "counter"
-},
 &"4_2": {
 "link": &"1_10",
 "offset": Vector2(-1240, 60),
@@ -1321,5 +1321,5 @@ nodes = {
 "variable": "target_ally"
 }
 }
-strays = Array[String](["8_1"])
-characters = "res://data/demo/character_files/character_list.tres"
+strays = Array[String](["8_1", "7_5", "1_64", "1_65", "4_7", "1_18", "1_19", "4_5", "1_20", "1_21", "1_22", "1_23", "1_24", "1_25", "1_26", "1_28", "1_27", "1_40", "5_4", "1_29", "1_32", "1_62", "1_61", "1_31", "1_30", "1_63", "4_6", "1_4", "4_2", "1_10", "1_11", "1_14", "4_4", "5_2", "1_15", "1_16", "1_17", "1_9", "1_92", "1_7", "1_75", "1_77", "1_78", "1_79", "1_80", "1_81", "1_82", "1_83", "1_84", "1_85", "1_86", "1_87", "1_88", "1_89", "1_90", "1_91"])
+characters = "res://data/story/blue_character_list.tres"
