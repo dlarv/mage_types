@@ -2,7 +2,7 @@
 - v0.6.0 will be the big version I'll release to my playtesters?
 - Doors should keep player's relative position when they go thru
 - [ ] Strong attacks should have cooldowns (warmups too?)
-- [ ] Revisit [[Old_Story]], [[Background#The Factions]], and [[Background#Elemental System]]
+- [ ] Revisit [[Story]], [[Background#The Factions]], and [[Background#Elemental System]]
 
 >[!summary] Realignment
 > I feel like I'm adding puzzles for the sake of adding them and furthermore I dislike the process. This isn't helped by the fact that this game isn't really meant to be a puzzle game. 
@@ -25,12 +25,15 @@
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
 - [ ] Rewrite narrative setup
-	- [ ] "Where am I" thread
-	- [ ] "Player doesn't know about Primary and Secondary types" thread
-	- [ ] Add poker players and Denim dialog
+	- [ ] Rewrite bartender dialog
+	- [ ] Write meeting Denim scene
 	- [x] Make Adonis Enclave dialog less cringe
 		- [x] Their name should be changed to something old-timey (Brawny Enclave?)
-- [ ] Add temporary info screen describing transmutation system overview
+- [ ] Add temporary info screen 
+	- [ ] Describe transmutation system overview
+	- [ ] Tell player about basic controls
+- [x] Change transmutation graph advanced options from gdscript to gdshader
+- [x] Added stencils to allow player easier interface with transmutation map advanced options
 - [x] Remodel rec room
 - [x] Can't remove spells, only replace them
 - [x] Player's will realign after fighting the miniboss and losing
@@ -163,8 +166,6 @@ Demo MVP prep. Polish features added during previous versions.
 	- [ ] Add backtrack obstacles to beach/etc
 - [ ] Beastiary describing monsters
 - [ ] Opening chests should show player list of contents and allow them to individually select them
-- [ ] Change transmutation graph advanced options from gdscript to gdshader
-- [ ] Add transmutation graph stencils to streamline canonical advanced options usage
 - [ ] Scrapbook containing hints and notes the player has found
 	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
 	- [ ] Notes can be obtained from overworld
