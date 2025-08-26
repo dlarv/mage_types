@@ -304,5 +304,6 @@ skip_text={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.0338533, 0.0338533, 0.0338533, 1)
 occlusion_culling/use_occlusion_culling=true
