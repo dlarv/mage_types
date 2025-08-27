@@ -73,7 +73,7 @@ signal event_finished()
 
 @export_group('Options')
 ## The maximum number of options to show in the dialogue box.
-@export var max_options_count := 4 :
+@export var max_options_count := 4:
 	get:
 		return max_options_count
 	set(value):
