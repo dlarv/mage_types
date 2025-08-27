@@ -21,6 +21,8 @@ signal variable_changed(variable_name: String, value)
 ## Triggered when a dialogue tree has ended processing and reached the end of the dialogue.
 ## The [DialogueBox] may hide based on the [member hide_on_dialogue_end] property.
 signal dialogue_ended
+## Dlarv: Triggered when cutscene or battle has finished.
+signal event_finished()
 
 
 @export_group('Data')
@@ -150,6 +152,8 @@ var speaker_label: Label
 var dialogue_label: RichTextLabel
 ## Contains all the option buttons. The currently displayed options are visible while the rest are hidden. This value is automatically set while running a dialogue tree.
 var options_container: BoxContainer
+## Determines whether non-dialog nodes automatically move to the next node.
+var auto_proceed := true
 
 # [param DialogueParser] used for parsing the dialogue [member data].[br]
 # NOTE: Using [param DialogueParser] as a child instead of extending from it, because [DialogueBox] needs to extend from [Panel].
@@ -249,7 +253,7 @@ func _process(delta) -> void:
 
 
 func _input(event) -> void:
-	# Dlarv: Hiding DialogueBox works like pausing dialog
+	# Dlarv: Hiding DialogueBox should prevent user input.
 	if not visible: return
 	if is_running() and Input.is_action_just_pressed(skip_input_action):
 		if _wait_effect and not _wait_effect.skip:
@@ -330,8 +334,12 @@ func _on_option_selected(idx: int) -> void:
 	option_selected.emit(idx)
 
 
-func _on_dialogue_signal(value: int) -> void:
+func _on_dialogue_signal(value: int, next_node: String) -> void:
 	dialogue_signal.emit(value)
+	# Dlarv: Wait for event to finish, if necessary.
+	if not auto_proceed:
+		await event_finished
+	_dialogue_parser.proceed(next_node)
 
 
 func _on_variable_changed(variable_name: String, value) -> void:
@@ -349,3 +357,7 @@ func _on_wait_finished() -> void:
 	options_container.show()
 	if Engine.is_editor_hint(): return
 	options_container.get_child(0).grab_focus()
+
+
+func _on_event_finished() -> void:
+	event_finished.emit()

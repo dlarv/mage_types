@@ -36,12 +36,12 @@ nodes = {
 },
 &"0_6": {
 "link": &"7_3",
-"offset": Vector2(-3100, 1200),
+"offset": Vector2(-3820, 1160),
 "start_id": "ADONIS_1"
 },
 &"0_7": {
 "link": &"7_2",
-"offset": Vector2(-3100, 1680),
+"offset": Vector2(-3560, 1580),
 "start_id": "ADONIS_2"
 },
 &"0_8": {
@@ -90,7 +90,7 @@ nodes = {
 },
 &"1_12": {
 "dialogue": "Excellent work. You two are surely be ready to rid us of that fiend!",
-"offset": Vector2(-400, 2800),
+"offset": Vector2(-720, 2780),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -103,7 +103,7 @@ nodes = {
 },
 &"1_13": {
 "dialogue": "An admirable try! Come back when thou art ready to try again.",
-"offset": Vector2(-780, 2940),
+"offset": Vector2(-1100, 2920),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -350,12 +350,12 @@ nodes = {
 "speaker": 2
 },
 &"1_3": {
-"dialogue": "Nicely done!",
-"offset": Vector2(-1940, 960),
+"dialogue": "Nicely done! Talk to Dallas, he'll show you the next steps.",
+"offset": Vector2(-1900, 960),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_8",
+"link": "END",
 "text": ""
 }
 },
@@ -421,7 +421,7 @@ nodes = {
 },
 &"1_34": {
 "dialogue": "Actually, now that you both know what's up, why don't you and Denim both take on Duke?",
-"offset": Vector2(-1160, 1860),
+"offset": Vector2(-740, 1840),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -434,7 +434,7 @@ nodes = {
 },
 &"1_35": {
 "dialogue": "That works for me.",
-"offset": Vector2(-460, 1860),
+"offset": Vector2(-40, 1840),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -482,7 +482,20 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 1
+"speaker": 2
+},
+&"1_39": {
+"dialogue": "No worries bro, there's no rush.",
+"offset": Vector2(-1476.05, 2138.47),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Dallas"
 },
 &"1_4": {
 "dialogue": "Hey stranger, I see you've met our little friend.",
@@ -517,7 +530,7 @@ nodes = {
 },
 &"1_5": {
 "dialogue": "Sick dude!",
-"offset": Vector2(-1880, 1880),
+"offset": Vector2(-1460, 1860),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -529,17 +542,17 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_6": {
-"dialogue": "Ha!",
-"offset": Vector2(-1480, 2780),
+"dialogue": "Need a break? Worry not, I'll be here when you need me.",
+"offset": Vector2(-2280, 1060),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"5_6",
+"link": "END",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Duke"
+"speaker": "Aegean"
 },
 &"1_61": {
 "dialogue": "Safer than you'd think, actually.",
@@ -608,7 +621,7 @@ nodes = {
 },
 &"1_66": {
 "dialogue": "Nice! Talk to my buddies Dallas and Duke. They'll walk you through the next steps. ",
-"offset": Vector2(-2500, 1320),
+"offset": Vector2(-3220, 1280),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -621,7 +634,7 @@ nodes = {
 },
 &"1_67": {
 "dialogue": "Combat training, eh? Don't worry, we'll be sure to pull our punches.",
-"offset": Vector2(-2480, 1000),
+"offset": Vector2(-3200, 960),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -634,7 +647,7 @@ nodes = {
 },
 &"1_68": {
 "dialogue": "They seem engrossed in their workout...",
-"offset": Vector2(-1940, 1220),
+"offset": Vector2(-4400, 1340),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1025,25 +1038,25 @@ nodes = {
 },
 &"3_3": {
 "curr_signal": 0,
-"link": &"1_3",
-"offset": Vector2(-2160, 1000),
+"link": &"5_1",
+"offset": Vector2(-2880, 960),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_4": {
 "curr_signal": 0,
-"link": &"1_5",
+"link": &"5_5",
 "offset": Vector2(-2120, 1880),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_5": {
 "curr_signal": 0,
-"link": &"1_6",
+"link": &"5_6",
 "offset": Vector2(-1720, 2800),
 "signal_value": "BATTLE_STARTED"
 },
 &"4_10": {
 "link": &"1_12",
-"offset": Vector2(-780, 2800),
+"offset": Vector2(-1100, 2780),
 "type": 0,
 "value": "finished",
 "variable": "swole_enclave_quest"
@@ -1091,18 +1104,28 @@ nodes = {
 "variable": "swole_enclave_quest"
 },
 &"4_8": {
-"link": "END",
-"offset": Vector2(-1620, 980),
+"link": &"1_3",
+"offset": Vector2(-2280, 920),
 "type": 0,
 "value": "2",
 "variable": "swole_enclave_quest"
 },
 &"4_9": {
 "link": &"1_34",
-"offset": Vector2(-1560, 1880),
+"offset": Vector2(-1140, 1860),
 "type": 0,
 "value": "3",
 "variable": "swole_enclave_quest"
+},
+&"5_1": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "battle_result",
+"value2": "won"
+}]),
+"false": &"1_6",
+"offset": Vector2(-2660, 920),
+"true": &"4_8"
 },
 &"5_2": {
 "condition": Array[Dictionary]([{
@@ -1134,6 +1157,16 @@ nodes = {
 "offset": Vector2(1640, 680),
 "true": &"1_29"
 },
+&"5_5": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "battle_result",
+"value2": "won"
+}]),
+"false": &"1_39",
+"offset": Vector2(-1880, 1880),
+"true": &"1_5"
+},
 &"5_6": {
 "condition": Array[Dictionary]([{
 "operator": 0,
@@ -1141,11 +1174,11 @@ nodes = {
 "value2": "won"
 }]),
 "false": &"1_13",
-"offset": Vector2(-1160, 2780),
+"offset": Vector2(-1480, 2760),
 "true": &"4_10"
 },
 &"7_2": {
-"default": &"1_68",
+"default": &"1_72",
 "fork_title": "Combat Tutorial",
 "forks": {
 0: {
@@ -1181,7 +1214,7 @@ nodes = {
 "link": &"1_72"
 }
 },
-"offset": Vector2(-2880, 1660)
+"offset": Vector2(-3340, 1560)
 },
 &"7_3": {
 "default": &"1_66",
@@ -1220,10 +1253,10 @@ nodes = {
 "link": &"1_66"
 }
 },
-"offset": Vector2(-2880, 1200)
+"offset": Vector2(-3600, 1160)
 },
 &"7_4": {
-"default": &"1_68",
+"default": &"1_12",
 "fork_title": "Combat Tutorial",
 "forks": {
 0: {
@@ -1314,7 +1347,7 @@ nodes = {
 &"9_1": {
 "curr_signal": 4,
 "link": &"1_35",
-"offset": Vector2(-840, 1860),
+"offset": Vector2(-420, 1840),
 "signal_value": "ADD_ALLY",
 "type": 0,
 "value": "DENIM",

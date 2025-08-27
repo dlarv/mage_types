@@ -1,5 +1,8 @@
 extends Node3D
 
+## Used to tell DialogueBox when battle/cutscene has finished
+signal event_finished()
+
 # @export var battle_scene: PackedScene 
 @export var world: Node3D
 @export var overworld: Node3D
@@ -22,6 +25,9 @@ func _ready() -> void:
 		_player.dialog_started.connect(_on_player_dialog_started)
 
 	UIManager.setup()
+
+	event_finished.connect(dialog_box._on_event_finished)
+	dialog_box.auto_proceed = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -94,6 +100,7 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 			_player.remove_ally(ally)
 		elif val != DialogSignal.DIALOG_ENDED:
 			sigName = val
+		event_finished.emit()
 
 	match sigName:
 		DialogSignal.PLAY_CUTSCENE: 

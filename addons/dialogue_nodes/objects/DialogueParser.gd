@@ -15,7 +15,9 @@ signal dialogue_processed(speaker: Variant, dialogue: String, options: Array[Str
 signal option_selected(idx: int)
 ## Triggered when a SignalNode is encountered while processing the dialogue.
 ## Passes a [param value] defined in the SignalNode in the tree.
-signal dialogue_signal(value: int)
+## Since Signals are used to trigger blocking cutscenes or combat, they do not auto proceed. 
+## [param next_node] tells DialogBox which node to proceed with.
+signal dialogue_signal(value: int, next_node: String)
 ## Triggered when a variable value is changed.
 ## Passes the [param variable_name] along with it's [param value]
 signal variable_changed(variable_name: String, value)
@@ -80,7 +82,7 @@ func start(start_id: String) -> void:
 	_running = true
 	if _nest_links.size() == 0:
 		dialogue_started.emit(start_id)
-	_proceed(data.starts[start_id])
+	proceed(data.starts[start_id])
 
 
 ## Stops processing the dialogue tree.
@@ -98,7 +100,7 @@ func select_option(idx: int) -> void:
 		return
 	
 	option_selected.emit(idx)
-	_proceed(_option_links[idx])
+	proceed(_option_links[idx])
 
 
 ## Returns [code]true[/code] if the [DialogueParser] is processing a dialogue tree.
@@ -106,14 +108,14 @@ func is_running() -> bool: return _running
 
 
 # Proceeds the parser to the next node and runs its corresponding _process_* function.
-func _proceed(node_name: String) -> void:
+func proceed(node_name: String) -> void:
 	if not _running: return
 	if node_name == 'END':
 		if _nest_links.size() > 0:
 			# resume from previous data
 			data = _data.pop_back()
 			characters = _characters.pop_back()
-			_proceed(_nest_links.pop_back())
+			proceed(_nest_links.pop_back())
 		else:
 			stop()
 		return
@@ -139,7 +141,7 @@ func _proceed(node_name: String) -> void:
 
 # Processes the start node data (dict).
 func _process_start(dict: Dictionary) -> void:
-	_proceed(dict.link)
+	proceed(dict.link)
 
 
 # Processes the dialogue node data (dict).
@@ -169,8 +171,8 @@ func _process_dialogue(dict: Dictionary) -> void:
 
 # Processes the signal node data (dict).
 func _process_signal(dict: Dictionary) -> void:
-	dialogue_signal.emit(dict.curr_signal)
-	_proceed(dict.link)
+	dialogue_signal.emit(dict.curr_signal, dict.link)
+	# proceed(dict.link)
 
 
 # Processes the set node data (dict).
@@ -181,7 +183,7 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 		printerr('Variable ', dict.variable, ' not found in variables list')
 		# Dlarv: Done this way so that SetSignal can call this method too.
 		if auto_proceed:
-			_proceed(dict.link)
+			proceed(dict.link)
 		return
 	
 	# var type = typeof(variables[dict.variable])
@@ -201,7 +203,7 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 			# check for invalid operators
 			if operator > 2:
 				printerr('Invalid operator for type: String')
-				_proceed(dict.link)
+				proceed(dict.link)
 				return
 		TYPE_INT:
 			value = int(value)
@@ -213,7 +215,7 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 			# check for invalid operators
 			if operator > 0:
 				printerr('Invalid operator for type: Boolean')
-				_proceed(dict.link)
+				proceed(dict.link)
 				return
 
 	# perform operation
@@ -239,19 +241,19 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 	variable_changed.emit(dict.variable, variable)
 	# Dlarv: Done this way so that SetSignal can call this method too.
 	if auto_proceed:
-		_proceed(dict.link)
+		proceed(dict.link)
 
 # Dlarv: Processes the setsignal node data (dict). 
 func _process_set_signal(dict: Dictionary) -> void:
 	_process_set(dict, false)
-	dialogue_signal.emit(dict.curr_signal)
-	_proceed(dict.link)
+	dialogue_signal.emit(dict.curr_signal, dict.link)
+	# proceed(dict.link)
 
 
 # Processes the condition node data (dict).
 func _process_condition(dict: Dictionary) -> void:
 	var result = _check_condition(dict['condition'])
-	_proceed(dict[str(result).to_lower()])
+	proceed(dict[str(result).to_lower()])
 
 
 # Processes the fork node data (dict).
@@ -263,7 +265,7 @@ func _process_fork(dict : Dictionary) -> void:
 		if _check_condition(forks[i].condition):
 			result = forks[i].link
 			break
-	_proceed(result)
+	proceed(result)
 
 
 # Checks the condition based on dict.value1, dict.value2 and dict.operator
@@ -323,13 +325,13 @@ func _check_condition(conditions: Array) -> bool:
 func _process_nest(dict: Dictionary) -> void:
 	if not dict.file_path.ends_with('.tres'):
 		printerr('Invalid file: ', dict.file_path)
-		_proceed(dict.link)
+		proceed(dict.link)
 		return
 	
 	var new_data := ResourceLoader.load(dict.file_path, '', ResourceLoader.CACHE_MODE_IGNORE)
 	if not new_data is DialogueData:
 		printerr('Invalid resource type: resource must be DialogueData')
-		_proceed(dict.link)
+		proceed(dict.link)
 		return
 	_data.push_back(data)
 	_characters.push_back(characters.duplicate())

@@ -58,7 +58,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [x] Add rewards
 	- [x] Training wheel equipment?
 - [x] New party members can be added to player's team using dialog
-	- SetSignal node cannot happed directly after a battle signal node. Put some dialog in between first.
+	- ~~SetSignal node cannot happed directly after a battle signal node. Put some dialog in between first.~~ Code was altered, now dialog waits for events like battles and cutscenes to finish.
 - [x] Alter dialogue nodes to use StoryManager.variables
 	- [x] Remove unused code
 	- [x] When game is saved, ensure variables are serialized/deserialized
