@@ -4,7 +4,6 @@
 | battle_result             | enum | fled, won, defeated       | defeated      |
 | counter                   | int  |                           |               |
 | current_cutscene          | str  |                           |               |
-| finding_denim_quest       | enum | null, given, finished     | null          |
 | knows_bartender_is_rooted | bool |                           | false         |
 | met_mini_boss             | enum | no, yes, null             | no            |
 | misc_battle_data          | str  |                           |               |
