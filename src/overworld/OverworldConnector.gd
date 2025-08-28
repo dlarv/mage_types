@@ -80,26 +80,28 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 	var sigName := DialogSignal.DIALOG_ENDED
 	while dialog_box.is_running():
 		var val: DialogSignal = await dialog_box.dialogue_signal
-		if val == DialogSignal.PLAY_CUTSCENE: 
-			await _play_cutscene(npc)
-		elif val == DialogSignal.BATTLE_STARTED:
-			dialog_box.hide()
-			get_tree().paused = false
-			_paused_dialog = true
-			await _on_player_battle_started(_player.team, npc.enemy_actor)
-			if dialog_box.is_running():
-				dialog_box.show()
-			await get_tree().create_timer(0.1).timeout
-			get_tree().paused = true
-			_paused_dialog = false
-		elif val == DialogSignal.ADD_ALLY:
-			var ally: String = StoryManager.get_variable("target_ally")
-			_player.add_ally(ally)
-		elif val == DialogSignal.REMOVE_ALLY:
-			var ally: String = StoryManager.get_variable("target_ally")
-			_player.remove_ally(ally)
-		elif val != DialogSignal.DIALOG_ENDED:
-			sigName = val
+		match val:
+			DialogSignal.PLAY_CUTSCENE: 
+				await _play_cutscene(npc)
+			DialogSignal.BATTLE_STARTED:
+				dialog_box.hide()
+				get_tree().paused = false
+				_paused_dialog = true
+				await _on_player_battle_started(_player.team, npc.enemy_actor)
+				if dialog_box.is_running():
+					dialog_box.show()
+				await get_tree().create_timer(0.1).timeout
+				get_tree().paused = true
+				_paused_dialog = false
+			DialogSignal.ADD_ALLY:
+				var ally: String = StoryManager.get_variable("target_ally")
+				_player.add_ally(ally)
+			DialogSignal.REMOVE_ALLY:
+				var ally: String = StoryManager.get_variable("target_ally")
+				_player.remove_ally(ally)
+			_:
+				if val != DialogSignal.DIALOG_ENDED:
+					sigName = val
 		event_finished.emit()
 
 	match sigName:
@@ -132,7 +134,7 @@ func _play_cutscene(npc: Variant) -> void:
 
 	var prevProcessMode := dialog_box.process_mode
 	get_tree().paused = true
-	dialog_box.hide()
+	# dialog_box.hide()
 
 	await npc.story_actor.play_cutscene(id)
 
