@@ -24,9 +24,9 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
-- [ ] Rewrite narrative setup
-	- [ ] Implement intro dialog
-	- [ ] Implement bartender q&a
+- [x] Rewrite narrative setup
+	- [x] Implement intro dialog
+	- [x] Implement bartender q&a
 	- [x] Rewrite bartender dialog
 	- [x] Write meeting Denim scene
 	- [x] Make Adonis Enclave dialog less cringe

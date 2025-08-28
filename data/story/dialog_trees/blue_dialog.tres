@@ -25,28 +25,28 @@ nodes = {
 "start_id": "MISC"
 },
 &"0_3": {
-"link": &"1_37",
-"offset": Vector2(-2360, -460),
+"link": &"5_7",
+"offset": Vector2(-1360, -260),
 "start_id": "INTRO"
 },
 &"0_5": {
 "link": &"1_8",
-"offset": Vector2(-3600, 540),
+"offset": Vector2(-3380, 580),
 "start_id": "MINI_BOSS_!"
 },
 &"0_6": {
 "link": &"7_3",
-"offset": Vector2(-3820, 1160),
+"offset": Vector2(-4440, 1820),
 "start_id": "ADONIS_1"
 },
 &"0_7": {
 "link": &"7_2",
-"offset": Vector2(-3560, 1580),
+"offset": Vector2(-4180, 2240),
 "start_id": "ADONIS_2"
 },
 &"0_8": {
 "link": &"7_4",
-"offset": Vector2(-3080, 2420),
+"offset": Vector2(-3740, 3020),
 "start_id": "ADONIS_3"
 },
 &"1_1": {
@@ -63,34 +63,138 @@ nodes = {
 "speaker": "   "
 },
 &"1_10": {
-"dialogue": "Haha, to be honest, I don't know. I can't leave this area, see.",
-"offset": Vector2(-860, 40),
+"dialogue": "You two are stuck because of the monster. The rest of us are stuck for... other reasons.",
+"offset": Vector2(1160, -760),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_11",
-"text": "Do you not get a break?"
+"link": &"1_15",
+"text": ""
 }
 },
-"size": Vector2(300, 273),
-"speaker": 2
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_100": {
+"dialogue": "That's besides the point...",
+"offset": Vector2(1160, 2220),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_101",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_101": {
+"dialogue": "Anyways, the [color=blue]defensive[/color]/[color=red]offensive naming scheme is a little confusing at first. But they're called that primarily because of the [i]side effects[/i].",
+"offset": Vector2(1560, 2220),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"5_4",
+"text": ""
+}
+},
+"size": Vector2(300, 243),
+"speaker": 1
+},
+&"1_102": {
+"dialogue": "[i]Side effects[/i] are stat buffs that accumulate each time you transmute.",
+"offset": Vector2(2300, 2220),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_105",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_103": {
+"dialogue": "But I believe Dallas from the Adonis Enclave is planning on teaching you about that, so don't worry about it right now.",
+"offset": Vector2(2300, 2480),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_104",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_104": {
+"dialogue": "After he introduces the topic I would be happy to give you a refresher.",
+"offset": Vector2(2620, 2480),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_105": {
+"dialogue": "The exact stat buff you receive depends on your start and end states.",
+"offset": Vector2(2620, 2220),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_106",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_106": {
+"dialogue": "Transmuting from a [color=blue]defensive[/color] Element to a [color=red]offensive[/color] one will grant you an [color=red]attack[/color] boost. The opposite will grant you a [color=blue]defense[/color] buff.",
+"offset": Vector2(2940, 2220),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_107",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_107": {
+"dialogue": "Finally, staying within your affinity group will grant you a [color=green]speed[/color] buff.",
+"offset": Vector2(3260, 2220),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
 },
 &"1_11": {
-"dialogue": "You misunderstand. I physically cannot move. I'm rooted in place.",
-"offset": Vector2(-540, 40),
+"dialogue": "Huh?",
+"offset": Vector2(80, 1680),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_14",
-"text": "Why?"
+"text": ""
 }
 },
-"size": Vector2(300, 273),
-"speaker": 2
+"size": Vector2(320, 240),
+"speaker": 1
 },
 &"1_12": {
 "dialogue": "Excellent work. You two are surely be ready to rid us of that fiend!",
-"offset": Vector2(-720, 2780),
+"offset": Vector2(-1380, 3380),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -103,7 +207,7 @@ nodes = {
 },
 &"1_13": {
 "dialogue": "An admirable try! Come back when thou art ready to try again.",
-"offset": Vector2(-1100, 2920),
+"offset": Vector2(-1760, 3520),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -115,47 +219,47 @@ nodes = {
 "speaker": "Duke"
 },
 &"1_14": {
-"dialogue": "Its a long story. Remind me to tell you about it later.",
-"offset": Vector2(-220, 40),
+"dialogue": "Ohh, you're asking why I'm stuck here?",
+"offset": Vector2(420, 1680),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_4",
+"link": &"1_46",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_15": {
-"dialogue": "But super quick, before I forget, could I ask you for a quick favor?",
-"offset": Vector2(780, 40),
+"dialogue": "I'm sorry! I didn't mean...",
+"offset": Vector2(1480, -760),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_16",
-"text": "Sure"
-}
-},
-"size": Vector2(300, 273),
-"speaker": 2
-},
-&"1_16": {
-"dialogue": "Up to the left, you'll find a few people playing poker, amongst whom will be my friend. Would you mind grabbing them and bringing them back over here.",
-"offset": Vector2(1100, 40),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_17",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
 "speaker": 2
 },
+&"1_16": {
+"dialogue": "You're fine, I'm just messing with you ;).",
+"offset": Vector2(1800, -760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"4_4",
+"text": "Long shift?"
+}
+},
+"size": Vector2(300, 243),
+"speaker": 1
+},
 &"1_17": {
-"dialogue": "The other players might object to you pulling them away. If they do just tell them that I offer to cover their tab.",
-"offset": Vector2(1420, 40),
+"dialogue": "Something like that. Ask me about it again sometime and we'll talk.",
+"offset": Vector2(2480, -460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -164,11 +268,11 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_18": {
-"dialogue": "You'll know them when you see them. ",
-"offset": Vector2(1740, 40),
+"dialogue": "But first, let's solve our little monster problem.",
+"offset": Vector2(2780, -460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -177,20 +281,20 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_19": {
-"dialogue": "Just bring them back here.",
-"offset": Vector2(2060, 40),
+"dialogue": "You see those 3 gentlemen over there?",
+"offset": Vector2(3120, -460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_5",
+"link": &"9_2",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_2": {
 "dialogue": "",
@@ -206,8 +310,8 @@ nodes = {
 "speaker": -1
 },
 &"1_20": {
-"dialogue": "I appreciate you covering my tab... I'll pay you back as soon as I can.",
-"offset": Vector2(-1580, 680),
+"dialogue": "That's the Adonis Enclave, or what's left of them at least. They'll teach you what you need to know about combat.",
+"offset": Vector2(3820, -460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -219,21 +323,26 @@ nodes = {
 "speaker": 1
 },
 &"1_21": {
-"dialogue": "Nah, don't worry about it.",
-"offset": Vector2(-1260, 680),
+"dialogue": "I know that sounds dangerous, but you'll be fine.",
+"offset": Vector2(4160, -460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_22",
-"text": ""
+"text": "Did they already teach you?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": "That's good to hear!"
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 278),
 "speaker": 2
 },
 &"1_22": {
-"dialogue": "Are you sure? It was a lot of money...",
-"offset": Vector2(-940, 680),
+"dialogue": "Yeah, I've been training with them a bit. But they told me to wait for you before challenging the thing.",
+"offset": Vector2(4500, -460),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -242,46 +351,42 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 1
+"speaker": 2
 },
 &"1_23": {
-"dialogue": "Yeah, but I'm not actually gonna pay them anything.",
-"offset": Vector2(-620, 680),
+"dialogue": "Newcomers tend to come in batches of 3, so I told Denim to wait the next one to show up.",
+"offset": Vector2(4780, -500),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_24",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 2
-},
-&"1_24": {
-"dialogue": "First, what are they gonna do? Walk over here and complain? You two are the only ones here that can still walk.",
-"offset": Vector2(-300, 680),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_25",
-"text": "..."
+"link": &"4_1",
+"text": "Fair enough"
 },
 1: {
-"condition": Array[Dictionary]([{
-"operator": 0,
-"value1": "knows_bartender_is_rooted",
-"value2": "false"
-}]),
-"link": &"1_63",
-"text": "What does that mean?"
+"condition": Array[Dictionary]([]),
+"link": &"1_24",
+"text": "Am I the second or third?"
 }
 },
-"size": Vector2(300, 308),
-"speaker": 2
+"size": Vector2(300, 278),
+"speaker": 1
+},
+&"1_24": {
+"dialogue": "Third, but the first ran off by himself. [b]I would strongly recommend you two stick together[/b].",
+"offset": Vector2(5120, -340),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"4_1",
+"text": "Fair enough"
+}
+},
+"size": Vector2(300, 243),
+"speaker": 1
 },
 &"1_25": {
-"dialogue": "Second, I can take any of those degenerates in a fight.",
-"offset": Vector2(20, 680),
+"dialogue": "Check in with the Adonis Enclave up and to your right. ",
+"offset": Vector2(280, 740),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -290,68 +395,63 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_26": {
-"dialogue": "Finally, they owe me so much more money for drinks, so I don't even want to hear it from them.",
-"offset": Vector2(340, 680),
+"dialogue": "They'll teach you what you need to know.",
+"offset": Vector2(600, 740),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_28",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 2
-},
-&"1_27": {
-"dialogue": "Sure thing.",
-"offset": Vector2(980, 680),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_40",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 2
-},
-&"1_28": {
-"dialogue": "Oh, well I owe you one then. Thanks!",
-"offset": Vector2(660, 680),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_27",
+"link": "END",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
 "speaker": 1
 },
-&"1_29": {
-"dialogue": "You've both met our little friend outside.",
-"offset": Vector2(2060, 720),
+&"1_27": {
+"dialogue": "Ah, I see you've met our little friend.",
+"offset": Vector2(-120, -500),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_32",
-"text": "I don't know about little..."
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_31",
-"text": "You mean the monster?"
+"link": "END",
+"text": ""
 }
 },
-"size": Vector2(300, 308),
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_28": {
+"dialogue": "You must have come straight here then.",
+"offset": Vector2(840, -500),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_29",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2
+},
+&"1_29": {
+"dialogue": "There's a giant monster blocking the hallway West of here.",
+"offset": Vector2(1180, -480),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_30",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
 "speaker": 2
 },
 &"1_3": {
 "dialogue": "Nicely done! Talk to Dallas, he'll show you the next steps.",
-"offset": Vector2(-1900, 960),
+"offset": Vector2(-2520, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -363,52 +463,51 @@ nodes = {
 "speaker": "Aegean"
 },
 &"1_30": {
-"dialogue": "Actually {{player_name}}, have you had the pleasure of meeting Denim and I's little friend out there.",
-"offset": Vector2(2060, 1000),
+"dialogue": "So we're stuck until we can convince it to leave.",
+"offset": Vector2(1500, -480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_31",
-"text": "I don't think so"
-}
-},
-"size": Vector2(300, 308),
-"speaker": 2
-},
-&"1_31": {
-"dialogue": "Yeah, our friend the homicidal crinoid.",
-"offset": Vector2(2380, 960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_32",
+"link": "END",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
 "speaker": 2
 },
+&"1_31": {
+"dialogue": "The elevator is somewhere North of here. Inside some cave I think? You'll have to explore, its been awhile since I've left the bar.",
+"offset": Vector2(920, 1260),
+"options": {
+0: {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "knows_bartender_is_rooted",
+"value2": "false"
+}]),
+"link": &"4_5",
+"text": "Long shift?"
+}
+},
+"size": Vector2(300, 243),
+"speaker": 1
+},
 &"1_32": {
-"dialogue": "You two will have to fight it to make it out. Luckily, I have some friends that would be more than happy to teach you how to fight.",
-"offset": Vector2(2700, 880),
+"dialogue": "I would suggest trying to make your way to the surface.",
+"offset": Vector2(600, 1260),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_62",
-"text": "Sounds exciting"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_61",
-"text": "Is that safe?"
+"link": &"1_31",
+"text": ""
 }
 },
-"size": Vector2(300, 308),
-"speaker": 2
+"size": Vector2(300, 240),
+"speaker": 1
 },
 &"1_33": {
 "dialogue": "Come now, my children. Show me what thou hast learnt!",
-"offset": Vector2(-2060, 2800),
+"offset": Vector2(-2720, 3400),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -421,7 +520,7 @@ nodes = {
 },
 &"1_34": {
 "dialogue": "Actually, now that you both know what's up, why don't you and Denim both take on Duke?",
-"offset": Vector2(-740, 1840),
+"offset": Vector2(-1340, 2500),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -434,7 +533,7 @@ nodes = {
 },
 &"1_35": {
 "dialogue": "That works for me.",
-"offset": Vector2(-40, 1840),
+"offset": Vector2(-640, 2500),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -447,7 +546,7 @@ nodes = {
 },
 &"1_36": {
 "dialogue": "I shall be thy final challenge. Return once Aegean and Dallas have taught you their ways.",
-"offset": Vector2(-2060, 2540),
+"offset": Vector2(-2720, 3140),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -460,24 +559,33 @@ nodes = {
 },
 &"1_37": {
 "dialogue": "Hey there stranger.",
-"offset": Vector2(-2140, -480),
+"offset": Vector2(-460, -760),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_38",
 "text": "Where am I?"
+},
+1: {
+"condition": Array[Dictionary]([{
+"operator": 1,
+"value1": "met_mini_boss",
+"value2": "no"
+}]),
+"link": &"1_27",
+"text": "What was that thing?"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 308),
 "speaker": 1
 },
 &"1_38": {
-"dialogue": "",
-"offset": Vector2(-1800, -480),
+"dialogue": "A hotel bar room.",
+"offset": Vector2(-120, -760),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_4",
 "text": ""
 }
 },
@@ -486,7 +594,7 @@ nodes = {
 },
 &"1_39": {
 "dialogue": "No worries bro, there's no rush.",
-"offset": Vector2(-1476.05, 2138.47),
+"offset": Vector2(-2100, 2800),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -498,39 +606,185 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_4": {
-"dialogue": "Hey stranger, I see you've met our little friend.",
-"offset": Vector2(-1580, 60),
+"dialogue": "Don't mind them, they've gone a little stir crazy...",
+"offset": Vector2(200, -760),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_2",
-"text": "What was that thing?"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_9",
-"text": "Where am I?"
-}
-},
-"size": Vector2(300, 308),
-"speaker": 2
-},
-&"1_40": {
-"dialogue": "So, under normal circumstances I would advice newbies to make their way up to the surface, but I've come to understand that that might be easier said then done.",
-"offset": Vector2(1300, 680),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"5_4",
+"link": &"1_7",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
+},
+&"1_40": {
+"dialogue": "Something like that. Ask me about it again sometime and we'll talk.",
+"offset": Vector2(1740, 1200),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_41": {
+"dialogue": "Hey stranger.",
+"offset": Vector2(-600, 540),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_44",
+"text": "Where am I?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"7_1",
+"text": "What am I meant to be doing?"
+},
+2: {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "knows_bartender_is_rooted",
+"value2": "hinted"
+}]),
+"link": &"1_11",
+"text": "Long shift?"
+},
+3: {
+"condition": Array[Dictionary]([]),
+"link": &"1_48",
+"text": "The Elements?"
+}
+},
+"size": Vector2(300, 343),
+"speaker": 1
+},
+&"1_42": {
+"dialogue": "You two are ready to fight that monster! ",
+"offset": Vector2(600, 1000),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_43",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_43": {
+"dialogue": "Don't worry, it should be much easier now that it's 2v1.",
+"offset": Vector2(940, 1000),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_44": {
+"dialogue": "Ah yes...",
+"offset": Vector2(-100, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_45",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_45": {
+"dialogue": "Its like 50/50 how well people react to this, so I prefer to just put it bluntly.",
+"offset": Vector2(220, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_50",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_46": {
+"dialogue": "Its a bit of a long answer, but I think its important for newcomers to understand this phenomena.",
+"offset": Vector2(740, 1680),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_47",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_47": {
+"dialogue": "Are you familiar with the difference between you [i]primary[/i] and [i]secondary[/i] types?",
+"offset": Vector2(1060, 1680),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_76",
+"text": "Yes"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_49",
+"text": "No"
+}
+},
+"size": Vector2(300, 278),
+"speaker": 1
+},
+&"1_48": {
+"dialogue": "Sure, what do you want to know?",
+"offset": Vector2(-160, 2180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_86",
+"text": "Affinity and side effects?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_94",
+"text": "Alignment?"
+},
+2: {
+"condition": Array[Dictionary]([]),
+"link": &"1_88",
+"text": "Colors?"
+}
+},
+"size": Vector2(300, 313),
+"speaker": 1
+},
+&"1_49": {
+"dialogue": "Whenever new matter is introduced to this world, it takes awhile for it to fully acclimate to the new elemental system. Living things, like people and monsters, take longer to  fully transform. ",
+"offset": Vector2(1380, 1960),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_62",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
 },
 &"1_5": {
 "dialogue": "Sick dude!",
-"offset": Vector2(-1460, 1860),
+"offset": Vector2(-2080, 2520),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -541,9 +795,149 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "Dallas"
 },
+&"1_50": {
+"dialogue": "We're stuck in a pocket dimension, a little island we call Forlorn.",
+"offset": Vector2(540, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_51",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_51": {
+"dialogue": "Unfortunately, it is not physically possible to return home.",
+"offset": Vector2(860, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_52",
+"text": "So I don't need to go to work tomorrow?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_53",
+"text": "Wow... I need a moment"
+},
+2: {
+"condition": Array[Dictionary]([]),
+"link": &"1_57",
+"text": "How can you know that?"
+}
+},
+"size": Vector2(300, 313),
+"speaker": 1
+},
+&"1_52": {
+"dialogue": "Or ever, for that matter.",
+"offset": Vector2(1200, 80),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_58",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_53": {
+"dialogue": "Of course. Its a lot, I know.",
+"offset": Vector2(3260, 100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_56",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_54": {
+"dialogue": "The reason we're so certain is due to the work of generations of researchers.",
+"offset": Vector2(1540, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_55",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_55": {
+"dialogue": "Part of being [el]Blue[/el]-aligned is having an intuitive understanding of the deeper workings of this world. ",
+"offset": Vector2(1860, 380),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_59",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_56": {
+"dialogue": "You're not alone in this! We're here for you.",
+"offset": Vector2(3640, 60),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_57": {
+"dialogue": "I know that's not what you wanted to hear.",
+"offset": Vector2(1220, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_54",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_58": {
+"dialogue": "I'm glad you're taking this well. To be honest, I'm still processing it all.",
+"offset": Vector2(1520, 80),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2
+},
+&"1_59": {
+"dialogue": "And the other Elements help too. [el]Orange[/el], in particular are good at the math and science part.",
+"offset": Vector2(2180, 400),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_60",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
 &"1_6": {
 "dialogue": "Need a break? Worry not, I'll be here when you need me.",
-"offset": Vector2(-2280, 1060),
+"offset": Vector2(-2900, 1720),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -554,22 +948,53 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "Aegean"
 },
-&"1_61": {
-"dialogue": "Safer than you'd think, actually.",
-"offset": Vector2(3060, 1060),
+&"1_60": {
+"dialogue": "But unfortunately, yes. Its all but mathmatically impossible. I'm sorry.",
+"offset": Vector2(2500, 360),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_64",
+"link": &"1_61",
+"text": "I have to try!"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_53",
+"text": "I need a moment."
+}
+},
+"size": Vector2(300, 278),
+"speaker": 1
+},
+&"1_61": {
+"dialogue": "I hope you discover something we didn't. Truly.",
+"offset": Vector2(2820, 360),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_62": {
-"dialogue": "I'm glad you think so. In my younger decades I would have been the same.",
-"offset": Vector2(3060, 800),
+"dialogue": "The process starts from the outside working in.",
+"offset": Vector2(1700, 1960),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_63",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_63": {
+"dialogue": "Your [i]secondary[/i] type is a thin shell that forms on top of your skin. It's highly reactive, which is why it changes so often during battle.",
+"offset": Vector2(2020, 1960),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -578,24 +1003,11 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
-},
-&"1_63": {
-"dialogue": "Its a long story. Remind me to tell you about it later.",
-"offset": Vector2(80, 1000),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"4_6",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_64": {
-"dialogue": "Up and to the right you'll find the Adonis Enclave.",
-"offset": Vector2(3380, 800),
+"dialogue": "Your [i]primary[/i] type, on the other hand, is the matter inside that shell that has already changed. It has much more inertia, so it really only changes when you level up.",
+"offset": Vector2(2340, 1960),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -604,24 +1016,24 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_65": {
-"dialogue": "They'll give you some pointers and items, which should be more than enough to take care of this problem.",
-"offset": Vector2(3700, 800),
+"dialogue": "Eventually, your [i]primary[/i] type will fully reach your core. When this happens, your primary type becomes locked to a specific Element and is no longer transmutable. This is called [i]alignment[/i].",
+"offset": Vector2(2680, 1720),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"4_7",
+"link": &"1_75",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_66": {
 "dialogue": "Nice! Talk to my buddies Dallas and Duke. They'll walk you through the next steps. ",
-"offset": Vector2(-3220, 1280),
+"offset": Vector2(-3840, 1940),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -634,7 +1046,7 @@ nodes = {
 },
 &"1_67": {
 "dialogue": "Combat training, eh? Don't worry, we'll be sure to pull our punches.",
-"offset": Vector2(-3200, 960),
+"offset": Vector2(-3820, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -647,7 +1059,7 @@ nodes = {
 },
 &"1_68": {
 "dialogue": "They seem engrossed in their workout...",
-"offset": Vector2(-4400, 1340),
+"offset": Vector2(-5020, 2000),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -660,7 +1072,7 @@ nodes = {
 },
 &"1_69": {
 "dialogue": "It's been forever since we've gotten to mentor someone new!",
-"offset": Vector2(-2440, 1620),
+"offset": Vector2(-3060, 2280),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -672,30 +1084,34 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_7": {
-"dialogue": "Hey stranger.",
-"offset": Vector2(-1580, 360),
+"dialogue": "I've been stuck in this bar for 3 days now...",
+"offset": Vector2(520, -760),
 "options": {
 0: {
-"condition": Array[Dictionary]([]),
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "met_mini_boss",
+"value2": "yes"
+}]),
 "link": &"1_9",
-"text": "Where am I?"
+"text": "Because of the monster?"
 },
 1: {
 "condition": Array[Dictionary]([{
 "operator": 0,
 "value1": "met_mini_boss",
-"value2": "true"
+"value2": "no"
 }]),
-"link": &"1_75",
-"text": "So why can't you move?"
+"link": &"1_28",
+"text": "Why's that?"
 }
 },
-"size": Vector2(300, 308),
+"size": Vector2(300, 278),
 "speaker": 2
 },
 &"1_70": {
 "dialogue": "Once you've finished talking to Aegean, I'll teach you about side effects!",
-"offset": Vector2(-2120, 1620),
+"offset": Vector2(-2740, 2280),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -708,7 +1124,7 @@ nodes = {
 },
 &"1_71": {
 "dialogue": "Let's go!",
-"offset": Vector2(-2440, 1880),
+"offset": Vector2(-3060, 2540),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -721,7 +1137,7 @@ nodes = {
 },
 &"1_72": {
 "dialogue": "That was fun! The Duke'll help you bring it home!",
-"offset": Vector2(-2440, 2140),
+"offset": Vector2(-3060, 2800),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -734,7 +1150,7 @@ nodes = {
 },
 &"1_73": {
 "dialogue": "Tis been an age since we last did train another anew!",
-"offset": Vector2(-2400, 2540),
+"offset": Vector2(-3060, 3140),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -747,7 +1163,7 @@ nodes = {
 },
 &"1_74": {
 "dialogue": "Hark! An excellent job indeed!",
-"offset": Vector2(-2400, 2800),
+"offset": Vector2(-3060, 3400),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -759,52 +1175,8 @@ nodes = {
 "speaker": "Duke"
 },
 &"1_75": {
-"dialogue": "Do you know what the difference between your [i]Primary[/i] and [i]Secondary[/i] types?",
-"offset": Vector2(-740, 1280),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_77",
-"text": "Yes"
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_91",
-"text": "No"
-}
-},
-"size": Vector2(300, 308),
-"speaker": 2
-},
-&"1_77": {
-"dialogue": "Right, so unlike your [i]Secondary[/i] type, your [i]Primary[/i] type changes rather infrequently.",
-"offset": Vector2(-420, 1280),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_78",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 2
-},
-&"1_78": {
-"dialogue": "Its usually after a battle has ended. I think it probably has something to do with your adrenaline... anyway, that's not important.",
-"offset": Vector2(-100, 1280),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_79",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 2
-},
-&"1_79": {
-"dialogue": "Every time this happens the elemental changes will permeate deeper into your core.",
-"offset": Vector2(220, 1280),
+"dialogue": "Everyone in this rec room, with the exception of you two, are [el]Blue[/el]-aligned. The monster in the hallway is also [el]Blue[/el]-aligned, but its aggressiveness is unrelated to that fact. The Poker Enclave are still fairly recent, I'm about halfway, and the Adonis Enclave has been here for ages.",
+"offset": Vector2(3000, 1720),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -813,11 +1185,73 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
+},
+&"1_76": {
+"dialogue": "So, over time your [i]primary[/i] type will permeate deeper into your body, turning \"real world\" matter into \"this world\" matter.",
+"offset": Vector2(1400, 1680),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_65",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_77": {
+"dialogue": "Every Element has its own unique alignment characteristics. Everyone in this room is [el]Blue[/el]-aligned, besides you two of course. We're a fairly good sample of the condition's progression.",
+"offset": Vector2(2440, 2820),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_78",
+"text": "Does it hurt?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_79",
+"text": "What happens if you align to the \"wrong\" element?"
+},
+2: {
+"condition": Array[Dictionary]([]),
+"link": &"1_96",
+"text": "What about the other elements?"
+}
+},
+"size": Vector2(300, 313),
+"speaker": 1
+},
+&"1_78": {
+"dialogue": "Nope. Once you become aligned, the transformations start happening slowly, over time.",
+"offset": Vector2(2840, 2780),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_79": {
+"dialogue": "I'm sure it has happened, but its unlikely. The process takes at least a year or two and by then you have a pretty good idea of which element you like best. ",
+"offset": Vector2(2840, 3040),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
 },
 &"1_8": {
 "dialogue": ".....",
-"offset": Vector2(-3400, 520),
+"offset": Vector2(-3180, 560),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -829,8 +1263,8 @@ nodes = {
 "speaker": "Monster"
 },
 &"1_80": {
-"dialogue": "Until one day, probably a year or two from now, when the changes fully reach your center. This is called [i]alignment[/i] (or bias by old timers).",
-"offset": Vector2(540, 1280),
+"dialogue": "One of the side effects of [el]Blue[/el]-alignment is that you grow roots.",
+"offset": Vector2(3320, 1720),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -839,77 +1273,69 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_81": {
-"dialogue": "Once you're aligned to a particular element, your [i]Primary[/i] type will be locked and then the real changes begin...",
-"offset": Vector2(860, 1280),
+"dialogue": "So when I say I'm stuck here, I'm being quite literal.",
+"offset": Vector2(3640, 1720),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_82",
-"text": ""
+"text": "That sounds awful!"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_84",
+"text": "So you're like a tree?"
 }
 },
-"size": Vector2(300, 240),
-"speaker": 2
+"size": Vector2(300, 278),
+"speaker": 1
 },
 &"1_82": {
-"dialogue": "[el]Blue[/el] alignment is fairly simple. You've actually already seen the breadth of this condition. Everyone in this room is [el]Blue[/el]-aligned, besides you two of course. I'm still pretty early in the transformation, the poker players are about halfway through, and the fitness guys are pretty late stage. And to finally answer your question, one of the first symptoms of [el]Blue[/el]-alignment is growing roots, which really limits your mobility.",
-"offset": Vector2(1180, 1280),
+"dialogue": "Eh,its not that bad.",
+"offset": Vector2(3980, 1600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_83",
-"text": "That sounds scary..."
-},
-1: {
-"condition": Array[Dictionary]([]),
-"link": &"1_86",
-"text": "What about the other elements?"
-},
-2: {
-"condition": Array[Dictionary]([{
-"operator": 0,
-"value1": "met_mini_boss",
-"value2": "yes"
-}]),
-"link": &"1_87",
-"text": "Is the monster out there also Blue-aligned?"
+"text": ""
 }
 },
-"size": Vector2(300, 343),
-"speaker": 2
+"size": Vector2(300, 240),
+"speaker": 1
 },
 &"1_83": {
-"dialogue": "Yeah, everyone thinks so at first... Its one of those facts of life you kinda just have to accept.",
-"offset": Vector2(1500, 1280),
+"dialogue": "Its a long process, so you have plenty of time to prepare.",
+"offset": Vector2(4300, 1580),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_84",
+"link": &"4_6",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_84": {
-"dialogue": "Plus, more times than not you'll find one element you just click with and that lessens the existential horror of it.",
-"offset": Vector2(1820, 1320),
+"dialogue": "I mean, I guess... with some deep sea influences.",
+"offset": Vector2(3980, 1860),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_85",
+"link": &"4_6",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_85": {
-"dialogue": "But until then its better to just not think about it too hard.",
-"offset": Vector2(2140, 1320),
+"dialogue": "Colloquially, the color names can also be used to refer to people aligned to that Element as a whole. So you can use [el]Blue[/el] to refer to both the Element or to use [el]Blue[/el]-aligned.
+",
+"offset": Vector2(506.054, 3204.59),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -918,37 +1344,24 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_86": {
-"dialogue": "To be honest, I don't really remember or know much about them. One symptom of [el]Blue[/el]-alignment is that you trade your understanding of the other elements for a deeper connection to [el]Blue[/el].",
-"offset": Vector2(1560, 1580),
+"dialogue": "So the 8 Elements are divided into two  [i]affinity groups[/i]: [color=red]offensive[/color] and [color=blue]defensive[/color].",
+"offset": Vector2(200, 2300),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_98",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
 &"1_87": {
-"dialogue": "...",
-"offset": Vector2(1560, 1840),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_88",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": 2
-},
-&"1_88": {
-"dialogue": "Yes. That's a [el]Blue[/el]-aligned who has lost their way.",
-"offset": Vector2(1883.01, 1844.35),
+"dialogue": "Your [i]primary[/i] type, on the other hand, is the matter inside that shell that has already changed. It has much more inertia, so it really only changes when you level up.",
+"offset": Vector2(1480, 2920),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -957,11 +1370,63 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
+},
+&"1_88": {
+"dialogue": "Yeah, so the Elements on the island are each named after a color, based on the range of hues they take on.",
+"offset": Vector2(180, 3200),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_85",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
 },
 &"1_89": {
-"dialogue": "To be clear, that's not a guaranteed thing, not everyone loses their mind. And its not unique to [el]Blue[/el], [el]Purple[/el] for instance tend to be a bit more unhinged. And [el]Red[/el], well you have to be a little crazy already to become [el]Red[/el]-aligned.",
-"offset": Vector2(2200, 1840),
+"dialogue": "Eventually, your [i]primary[/i] type will fully reach your core. When this happens, your primary type becomes locked to a specific Element and is no longer transmutable. This is called [i]alignment[/i].",
+"offset": Vector2(1800, 2840),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_95",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_9": {
+"dialogue": "Yep.",
+"offset": Vector2(840, -760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_10",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2
+},
+&"1_90": {
+"dialogue": "Your [i]secondary[/i] type is a thin shell that forms on top of your skin. It's highly reactive, which is why it changes so often during battle.",
+"offset": Vector2(1160, 2920),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_87",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_91": {
+"dialogue": "The process starts from the outside working in.",
+"offset": Vector2(840, 2920),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -970,24 +1435,81 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
-&"1_9": {
-"dialogue": "Yeah, you're probably pretty disoriented.",
-"offset": Vector2(-1160, 380),
+&"1_92": {
+"dialogue": "So, over time your [i]primary[/i] type will permeate deeper into your body, turning \"real world\" matter into \"this world\" matter.",
+"offset": Vector2(540, 2600),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_89",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_93": {
+"dialogue": "Whenever new matter is introduced to this world, it takes awhile for it to fully acclimate to the new elemental system. Living things, like people and monsters, take longer to  fully transform. ",
+"offset": Vector2(520, 2880),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_91",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_94": {
+"dialogue": "Are you familiar with the difference between you [i]primary[/i] and [i]secondary[/i] types?",
+"offset": Vector2(200, 2600),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"1_92",
+"text": "Yes"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_93",
+"text": "No"
+}
+},
+"size": Vector2(300, 280),
+"speaker": 1
+},
+&"1_95": {
+"dialogue": "You've probably noticed, but this comes with certain physical characteristics. Mental ones as well, but that's less noticable.",
+"offset": Vector2(2120, 2840),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_77",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
-&"1_90": {
-"dialogue": "But yes, sometimes people go a bit feral down here. Its one of those facts of life.",
-"offset": Vector2(2520, 1840),
+&"1_96": {
+"dialogue": "You mean what does alignment to other elements look like?",
+"offset": Vector2(2840, 3300),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_97",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+&"1_97": {
+"dialogue": "I'll have to let the other Elements explain that to you. You'll meet them in time, don't worry.",
+"offset": Vector2(3160, 3300),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -996,33 +1518,38 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
-&"1_91": {
-"dialogue": "TODO",
-"offset": Vector2(-420, 1560),
+&"1_98": {
+"dialogue": "The names are a little confusing. An [color=red]offensive[/color] Element like [el]Red[/el] does have spells that don't deal damage. And vice versa.",
+"offset": Vector2(520, 2300),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_99",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": 2
+"speaker": 1
 },
-&"1_92": {
-"dialogue": "TODO",
-"offset": Vector2(-820, 380),
+&"1_99": {
+"dialogue": "But each Element has different areas of focus. [el]Blue[/el] (defensive) is a very introspective type, while [el]Red[/el] (offensive) weaken their opponents by leeching their strength. But in general, the [color=red]offensive[/color] Elements tend to be more aggressive.",
+"offset": Vector2(840, 2300),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
+"link": &"1_100",
+"text": "Isn't the monster Blue-aligned? It seems pretty aggressive..."
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_101",
+"text": "And what about the side effects?"
 }
 },
-"size": Vector2(300, 240),
-"speaker": 2
+"size": Vector2(300, 278),
+"speaker": 1
 },
 &"3_1": {
 "curr_signal": 0,
@@ -1032,87 +1559,87 @@ nodes = {
 },
 &"3_2": {
 "curr_signal": 0,
-"link": "END",
-"offset": Vector2(-2280, 540),
+"link": &"5_2",
+"offset": Vector2(-2420, 640),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_3": {
 "curr_signal": 0,
 "link": &"5_1",
-"offset": Vector2(-2880, 960),
+"offset": Vector2(-3500, 1620),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_4": {
 "curr_signal": 0,
 "link": &"5_5",
-"offset": Vector2(-2120, 1880),
+"offset": Vector2(-2740, 2540),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_5": {
 "curr_signal": 0,
 "link": &"5_6",
-"offset": Vector2(-1720, 2800),
+"offset": Vector2(-2380, 3400),
 "signal_value": "BATTLE_STARTED"
+},
+&"4_1": {
+"link": "END",
+"offset": Vector2(5160, -580),
+"type": 0,
+"value": "given",
+"variable": "swole_enclave_quest"
 },
 &"4_10": {
 "link": &"1_12",
-"offset": Vector2(-1100, 2780),
+"offset": Vector2(-1760, 3380),
 "type": 0,
 "value": "finished",
 "variable": "swole_enclave_quest"
 },
 &"4_2": {
-"link": &"1_10",
-"offset": Vector2(-1240, 60),
+"link": "END",
+"offset": Vector2(-1740, 640),
 "type": 0,
-"value": "null",
+"value": "defeated",
 "variable": "met_mini_boss"
 },
 &"4_3": {
 "link": &"3_2",
-"offset": Vector2(-2680, 480),
+"offset": Vector2(-2460, 520),
 "type": 0,
 "value": "yes",
 "variable": "met_mini_boss"
 },
 &"4_4": {
-"link": &"5_2",
-"offset": Vector2(100, 40),
+"link": &"1_17",
+"offset": Vector2(2140, -760),
 "type": 0,
-"value": "true",
+"value": "hinted",
 "variable": "knows_bartender_is_rooted"
 },
 &"4_5": {
-"link": "END",
-"offset": Vector2(2400, 40),
+"link": &"1_40",
+"offset": Vector2(1340, 1200),
 "type": 0,
-"value": "given",
-"variable": "finding_denim_quest"
+"value": "hinted",
+"variable": "knows_bartender_is_rooted"
 },
 &"4_6": {
-"link": &"1_25",
-"offset": Vector2(400, 1000),
+"link": "END",
+"offset": Vector2(4440, 1860),
 "type": 0,
 "value": "true",
 "variable": "knows_bartender_is_rooted"
 },
-&"4_7": {
-"link": "END",
-"offset": Vector2(4020, 800),
-"type": 0,
-"value": "given",
-"variable": "swole_enclave_quest"
-},
 &"4_8": {
 "link": &"1_3",
-"offset": Vector2(-2280, 920),
+"offset": Vector2(-2900, 1580),
 "type": 0,
 "value": "2",
 "variable": "swole_enclave_quest"
 },
 &"4_9": {
 "link": &"1_34",
-"offset": Vector2(-1140, 1860),
+"offset": Vector2(-1740, 2520),
 "type": 0,
 "value": "3",
 "variable": "swole_enclave_quest"
@@ -1124,18 +1651,18 @@ nodes = {
 "value2": "won"
 }]),
 "false": &"1_6",
-"offset": Vector2(-2660, 920),
+"offset": Vector2(-3280, 1580),
 "true": &"4_8"
 },
 &"5_2": {
 "condition": Array[Dictionary]([{
 "operator": 0,
-"value1": "finding_denim_quest",
-"value2": "null"
+"value1": "battle_result",
+"value2": "won"
 }]),
 "false": "END",
-"offset": Vector2(380, 160),
-"true": &"1_15"
+"offset": Vector2(-2140, 620),
+"true": &"4_2"
 },
 &"5_3": {
 "condition": Array[Dictionary]([{
@@ -1144,18 +1671,23 @@ nodes = {
 "value2": " no"
 }]),
 "false": &"3_2",
-"offset": Vector2(-3080, 520),
+"offset": Vector2(-2860, 560),
 "true": &"4_3"
 },
 &"5_4": {
 "condition": Array[Dictionary]([{
-"operator": 1,
-"value1": "met_mini_boss",
-"value2": "no"
+"combiner": 0,
+"operator": 0,
+"value1": "swole_enclave_quest",
+"value2": "3"
+}, {
+"operator": 0,
+"value1": "swole_enclave_quest",
+"value2": "finished"
 }]),
-"false": &"1_30",
-"offset": Vector2(1640, 680),
-"true": &"1_29"
+"false": &"1_103",
+"offset": Vector2(1900, 2220),
+"true": &"1_102"
 },
 &"5_5": {
 "condition": Array[Dictionary]([{
@@ -1164,7 +1696,7 @@ nodes = {
 "value2": "won"
 }]),
 "false": &"1_39",
-"offset": Vector2(-1880, 1880),
+"offset": Vector2(-2500, 2540),
 "true": &"1_5"
 },
 &"5_6": {
@@ -1174,8 +1706,41 @@ nodes = {
 "value2": "won"
 }]),
 "false": &"1_13",
-"offset": Vector2(-1480, 2760),
+"offset": Vector2(-2140, 3360),
 "true": &"4_10"
+},
+&"5_7": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "swole_enclave_quest",
+"value2": "no"
+}]),
+"false": &"1_41",
+"offset": Vector2(-1140, -260),
+"true": &"1_37"
+},
+&"7_1": {
+"default": &"1_32",
+"fork_title": "",
+"forks": {
+0: {
+"condition": Array[Dictionary]([{
+"operator": 1,
+"value1": "swole_enclave_quest",
+"value2": "finished"
+}]),
+"link": &"1_25"
+},
+1: {
+"condition": Array[Dictionary]([{
+"operator": 1,
+"value1": "met_mini_boss",
+"value2": "defeated"
+}]),
+"link": &"1_42"
+}
+},
+"offset": Vector2(-60, 860)
 },
 &"7_2": {
 "default": &"1_72",
@@ -1214,7 +1779,7 @@ nodes = {
 "link": &"1_72"
 }
 },
-"offset": Vector2(-3340, 1560)
+"offset": Vector2(-3960, 2220)
 },
 &"7_3": {
 "default": &"1_66",
@@ -1253,7 +1818,7 @@ nodes = {
 "link": &"1_66"
 }
 },
-"offset": Vector2(-3600, 1160)
+"offset": Vector2(-4220, 1820)
 },
 &"7_4": {
 "default": &"1_12",
@@ -1292,51 +1857,7 @@ nodes = {
 "link": &"1_74"
 }
 },
-"offset": Vector2(-2860, 2420)
-},
-&"7_5": {
-"default": &"1_7",
-"fork_title": "",
-"forks": {
-0: {
-"condition": Array[Dictionary]([{
-"combiner": 1,
-"operator": 1,
-"value1": "swole_enclave_quest",
-"value2": "finished"
-}, {
-"operator": 1,
-"value1": "swole_enclave_quest",
-"value2": "no"
-}]),
-"link": &"1_64"
-},
-1: {
-"condition": Array[Dictionary]([{
-"operator": 0,
-"value1": "finding_denim_quest",
-"value2": "given"
-}]),
-"link": &"1_18"
-},
-2: {
-"condition": Array[Dictionary]([{
-"operator": 0,
-"value1": "finding_denim_quest",
-"value2": "finished"
-}]),
-"link": &"1_20"
-},
-3: {
-"condition": Array[Dictionary]([{
-"operator": 0,
-"value1": "met_mini_boss",
-"value2": "yes"
-}]),
-"link": &"1_4"
-}
-},
-"offset": Vector2(-2080, 100)
+"offset": Vector2(-3520, 3020)
 },
 &"8_1": {
 "attached_nodes": Array[StringName]([&"1_2", &"0_2", &"3_1", &"1_1", &"0_1"]),
@@ -1344,15 +1865,60 @@ nodes = {
 "tint_color": Color(0.133333, 0.133333, 0.133333, 0.294118),
 "title": "Misc"
 },
+&"8_2": {
+"attached_nodes": Array[StringName]([&"1_37", &"1_38", &"1_30", &"1_29", &"1_28", &"1_27", &"1_4", &"1_16", &"1_15", &"1_10", &"1_9", &"1_7", &"1_17", &"4_4", &"1_18", &"1_23", &"1_21", &"1_22", &"1_20", &"9_2", &"1_19", &"4_1", &"1_24"]),
+"offset": Vector2(-500, -801),
+"tint_color": Color(0, 0.0313726, 0.482353, 0.513726),
+"title": "Intro"
+},
+&"8_3": {
+"attached_nodes": Array[StringName]([&"0_6", &"5_1", &"1_72", &"1_39", &"1_5", &"5_5", &"3_4", &"1_71", &"1_70", &"1_69", &"7_2", &"0_7", &"1_66", &"1_6", &"1_3", &"4_8", &"3_3", &"1_67", &"1_68", &"7_3", &"4_9", &"1_35", &"9_1", &"1_34", &"1_36", &"1_13", &"1_12", &"4_10", &"5_6", &"3_5", &"1_33", &"1_74", &"1_73", &"7_4", &"0_8"]),
+"offset": Vector2(-5060, 1539),
+"tint_color": Color(1, 0.585714, 0, 0.431373),
+"title": "Adonis Enclave"
+},
+&"8_4": {
+"attached_nodes": Array[StringName]([&"5_2", &"3_2", &"4_2", &"4_3", &"5_3", &"1_8", &"0_5"]),
+"offset": Vector2(-3420, 479),
+"tint_color": Color(0.976471, 0, 0, 0.494118),
+"title": "Miniboss Thread"
+},
+&"8_5": {
+"attached_nodes": Array[StringName]([&"1_43", &"1_32", &"1_42", &"1_31", &"7_1", &"1_26", &"1_25", &"4_5", &"1_40"]),
+"offset": Vector2(-100, 699),
+"tint_color": Color(0, 0.403922, 0.0431373, 0.529412),
+"title": "Directions"
+},
+&"8_6": {
+"attached_nodes": Array[StringName]([&"1_11", &"1_47", &"1_49", &"1_48", &"1_46", &"1_14", &"1_62", &"1_63", &"1_64", &"1_65", &"1_75", &"1_76", &"1_77", &"1_78", &"1_79", &"1_80", &"1_81", &"1_82", &"1_83", &"1_84", &"1_86", &"1_88", &"1_94", &"1_93", &"1_92", &"1_91", &"1_90", &"1_89", &"1_87", &"1_95", &"4_6", &"1_96", &"1_97", &"1_98", &"1_99", &"1_100", &"1_101", &"1_102", &"5_4", &"1_103", &"1_104", &"1_105", &"1_106", &"1_107"]),
+"offset": Vector2(-200, 1539),
+"tint_color": Color(0.396078, 0, 0.662745, 0.529412),
+"title": "Q&A"
+},
+&"8_7": {
+"attached_nodes": Array[StringName]([&"1_44", &"1_58", &"1_52", &"1_50", &"1_51", &"1_45", &"1_57", &"1_61", &"1_60", &"1_55", &"1_59", &"1_54", &"1_53", &"1_56"]),
+"offset": Vector2(-140, 19),
+"tint_color": Color(0.168811, 0, 0.372549, 0.568627),
+"title": "The Island"
+},
 &"9_1": {
 "curr_signal": 4,
 "link": &"1_35",
-"offset": Vector2(-420, 1840),
+"offset": Vector2(-1020, 2500),
 "signal_value": "ADD_ALLY",
 "type": 0,
 "value": "DENIM",
 "variable": "target_ally"
+},
+&"9_2": {
+"curr_signal": 1,
+"link": &"1_20",
+"offset": Vector2(3440, -460),
+"signal_value": "PLAY_CUTSCENE",
+"type": 0,
+"value": "pan_to_adonis",
+"variable": "current_cutscene"
 }
 }
-strays = Array[String](["8_1", "7_5", "1_64", "1_65", "4_7", "1_18", "1_19", "4_5", "1_20", "1_21", "1_22", "1_23", "1_24", "1_25", "1_26", "1_28", "1_27", "1_40", "5_4", "1_29", "1_32", "1_62", "1_61", "1_31", "1_30", "1_63", "4_6", "1_4", "4_2", "1_10", "1_11", "1_14", "4_4", "5_2", "1_15", "1_16", "1_17", "1_9", "1_92", "1_7", "1_75", "1_77", "1_78", "1_79", "1_80", "1_81", "1_82", "1_83", "1_84", "1_85", "1_86", "1_87", "1_88", "1_89", "1_90", "1_91"])
+strays = Array[String](["8_1", "8_4", "8_2", "8_7", "8_5", "8_3", "8_6"])
 characters = "res://data/story/blue_character_list.tres"
