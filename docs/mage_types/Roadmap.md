@@ -32,6 +32,7 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [x] Make Adonis Enclave dialog less cringe
 		- [x] Their name should be changed to something old-timey
 - [ ] Add tutorial explaining how to equip spells
+	- Right now, Aegean mentions that you should open your player menu and equip your new spell.
 - [ ] Add temporary info screen 
 	- [ ] Describe transmutation system overview
 	- [ ] Tell player about stencils

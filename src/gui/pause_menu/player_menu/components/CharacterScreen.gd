@@ -47,7 +47,7 @@ func setup(actor: BattleActor) -> void:
 			var attack := actor.attacks[i]
 			_set_attack(attack, i)
 		else:
-			button.text = " "
+			button.text = "empty"
 
 	if not actor.equipment_equipped.is_connected(_set_equipment):
 		actor.equipment_equipped.connect(_set_equipment)
@@ -57,7 +57,7 @@ func setup(actor: BattleActor) -> void:
 	if actor.equipment != null:
 		%Equipment_Button.text = actor.equipment.name
 	else:
-		%Equipment_Button.text = " "
+		%Equipment_Button.text = "empty"
 
 
 func _init_stats(actor: BattleActor) -> void:

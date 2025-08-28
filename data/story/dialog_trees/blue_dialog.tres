@@ -179,6 +179,19 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": 1
 },
+&"1_108": {
+"dialogue": "But first, you should equip that new spell I gave you. You can do this by pressing \"P\" to open your player menu.",
+"offset": Vector2(-2140, 1580),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
+},
 &"1_11": {
 "dialogue": "Huh?",
 "offset": Vector2(80, 1680),
@@ -451,11 +464,11 @@ nodes = {
 },
 &"1_3": {
 "dialogue": "Nicely done! Talk to Dallas, he'll show you the next steps.",
-"offset": Vector2(-2520, 1620),
+"offset": Vector2(-2480, 1580),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_108",
 "text": ""
 }
 },
@@ -1872,7 +1885,7 @@ nodes = {
 "title": "Intro"
 },
 &"8_3": {
-"attached_nodes": Array[StringName]([&"0_6", &"5_1", &"1_72", &"1_39", &"1_5", &"5_5", &"3_4", &"1_71", &"1_70", &"1_69", &"7_2", &"0_7", &"1_66", &"1_6", &"1_3", &"4_8", &"3_3", &"1_67", &"1_68", &"7_3", &"4_9", &"1_35", &"9_1", &"1_34", &"1_36", &"1_13", &"1_12", &"4_10", &"5_6", &"3_5", &"1_33", &"1_74", &"1_73", &"7_4", &"0_8"]),
+"attached_nodes": Array[StringName]([&"0_6", &"5_1", &"1_72", &"1_39", &"1_5", &"5_5", &"3_4", &"1_71", &"1_70", &"1_69", &"7_2", &"0_7", &"1_66", &"1_6", &"1_3", &"4_8", &"3_3", &"1_67", &"1_68", &"7_3", &"4_9", &"1_35", &"9_1", &"1_34", &"1_36", &"1_13", &"1_12", &"4_10", &"5_6", &"3_5", &"1_33", &"1_74", &"1_73", &"7_4", &"0_8", &"1_108"]),
 "offset": Vector2(-5060, 1539),
 "tint_color": Color(1, 0.585714, 0, 0.431373),
 "title": "Adonis Enclave"
@@ -1920,5 +1933,5 @@ nodes = {
 "variable": "current_cutscene"
 }
 }
-strays = Array[String](["8_1", "8_4", "8_2", "8_7", "8_5", "8_3", "8_6"])
+strays = Array[String](["8_1", "8_4", "8_2", "8_7", "8_5", "8_6", "8_3"])
 characters = "res://data/story/blue_character_list.tres"
