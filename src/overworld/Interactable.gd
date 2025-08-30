@@ -12,6 +12,9 @@ signal interacted(obj: Node3D)
 		$Area3D/CollisionShape3D.shape.radius = scaling_factor * base_size
 
 @export var base_size := 1.0
+## Message to show player when they approach this object.
+## Message will be formatted {button_prompt} to {message_override}
+@export var message_override := ""
 
 var disabled := false
 var force := false
@@ -25,7 +28,10 @@ func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		# Display what button the player must press to talk.
 		var actions := InputMap.action_get_events("interact")
-		_label.text = "Press %s" % actions[0].as_text().split(" ")[0]
+		var msg := ""
+		if not message_override.is_empty():
+			msg = "to %s" % message_override
+		_label.text = "Press %s %s" % [actions[0].as_text().split(" ")[0], msg]
 
 
 func _input(event: InputEvent) -> void:

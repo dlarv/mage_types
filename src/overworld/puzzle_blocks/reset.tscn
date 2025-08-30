@@ -18,5 +18,6 @@ mesh = SubResource("PrismMesh_fge2y")
 shape = SubResource("BoxShape3D_u56ta")
 
 [node name="Interactable" parent="." instance=ExtResource("2_j8q3r")]
+message_override = "Reset"
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
