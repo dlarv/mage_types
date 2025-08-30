@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://xk0p3cselyvu" path="res://assets/3d/models/objects/blue/vase_green.tscn" id="8_6yj8m"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
+[ext_resource type="Script" uid="uid://8kuun6qlgqwa" path="res://src/overworld/magiclay/MagiclayRock.gd" id="12_gn7b1"]
 [ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_puzzle_1.tscn" id="14_srry2"]
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_puzzle_2.tscn" id="15_6yind"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
@@ -16,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://d24svew3u3qcb" path="res://world/subareas/blue/caves/caves_n.tscn" id="19_6h34i"]
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
-[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://src/overworld/magiclay/instances/magiclay_boulder.tscn" id="21_egugs"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/models/objects/blue/vase_red.tscn" id="23_3yaw4"]
 
@@ -1334,12 +1334,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 3,
 
 [node name="MagiclayRock" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="54"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 4, 7)
+script = ExtResource("12_gn7b1")
 
 [node name="Chamber2" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("15_6yind")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3, 0, 18)
 
 [node name="GeyserPressurePlate" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="1"]
 base_size = Vector3(-218.3, 9.84609, -131)
+
+[node name="MagiclayRock" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="2"]
+script = ExtResource("12_gn7b1")
 
 [node name="Bridge" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="13"]
 base_size = Vector3(-214.7, 6.7, -149)
@@ -1514,36 +1518,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk1"]
 
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "magenta"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "magenta"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder3" parent="HotelRooms/BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder4" parent="HotelRooms/BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder5" parent="HotelRooms/BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
-_element = "red"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder6" parent="HotelRooms/BackroomChunk1/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
-_element = "red"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
 [node name="BackroomChunk2" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 0, -291)
 script = ExtResource("3_4g4u6")
@@ -1555,46 +1529,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -0.0148621)
-
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder3" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder4" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder5" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
-_element = "magenta"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder6" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
-_element = "magenta"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder7" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder8" parent="HotelRooms/BackroomChunk2/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="BackroomChunk3" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0, -291)
@@ -1608,46 +1542,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0, -0.0148621)
 
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "green"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "green"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder3" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
-_element = "red"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder4" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
-_element = "red"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder5" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder6" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder7" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder8" parent="HotelRooms/BackroomChunk3/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
 [node name="BackroomChunk4" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -291)
 script = ExtResource("3_4g4u6")
@@ -1659,46 +1553,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 0, -0.0148621)
-
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder3" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder4" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder5" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder6" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder7" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
-_element = "magenta"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder8" parent="HotelRooms/BackroomChunk4/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
-_element = "magenta"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="BackroomChunk5" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, -317)
@@ -1712,46 +1566,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0175018, 0, 0.167664)
 
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder3" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
-_element = "yellow"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder4" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
-_element = "yellow"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder5" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
-_element = "green"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder6" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
-_element = "green"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder7" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder8" parent="HotelRooms/BackroomChunk5/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
 [node name="BackroomChunk6" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 0, -317)
 script = ExtResource("3_4g4u6")
@@ -1763,46 +1577,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5175, 0, 0.167664)
-
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder3" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
-_element = "yellow"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder4" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
-_element = "yellow"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder5" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder6" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder7" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
-_element = "green"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder8" parent="HotelRooms/BackroomChunk6/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
-_element = "green"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="BackroomChunk7" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 0, -317)
@@ -1816,46 +1590,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7175, 0, 0.167664)
 
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "blue"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder3" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, -0.618744)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder4" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.89999, -0.9, 2.36493)
-_element = "cyan"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder5" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, -0.618744)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder6" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.50001, -0.9, 2.36493)
-_element = "purple"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder7" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29356, -0.9, 10.6)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder8" parent="HotelRooms/BackroomChunk7/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68524, -0.9, 10.6)
-_element = "orange"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
 [node name="BackroomChunk8" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -317)
 script = ExtResource("3_4g4u6")
@@ -1867,16 +1601,6 @@ shape = SubResource("BoxShape3D_pmhgq")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/BackroomChunk8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3175, 0, 0.167664)
-
-[node name="MagiclayBoulder" parent="HotelRooms/BackroomChunk8/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32109, -0.9, -8.79999)
-_element = "yellow"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
-
-[node name="MagiclayBoulder2" parent="HotelRooms/BackroomChunk8/Chunk" instance=ExtResource("21_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65771, -0.9, -8.79999)
-_element = "yellow"
-scaling_factor = Vector3(0.5, 0.5, 0.5)
 
 [node name="Caves" type="Node3D" parent="."]
 

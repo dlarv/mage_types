@@ -144,4 +144,3 @@ void fragment() {
 //		* vec3(float(!_is_orphan(COLOR.a)));
 	COLOR.a = float(!_is_restricted(COLOR)) * float(!_is_orphan(COLOR.a));
 }
-

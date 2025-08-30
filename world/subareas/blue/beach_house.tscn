@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdxxs2kdxlsxy"]
+[gd_scene load_steps=20 format=3 uid="uid://bdxxs2kdxlsxy"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_q4oqf"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_vku52"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="8_6ndtq"]
 [ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="8_w3q0q"]
 [ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="9_6bw0y"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="11_wt1fq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2tog8"]
 size = Vector3(3, 5, 1)
@@ -141,7 +142,7 @@ size = Vector3(4, 20, 2)
 material = ExtResource("2_tlwk8")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 17.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 17.5)
 operation = 2
 size = Vector3(3, 20, 3)
 material = ExtResource("2_tlwk8")
@@ -157,6 +158,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55, 13.5, 17.5)
 operation = 2
 size = Vector3(2.9, 8, 3)
 material = ExtResource("2_tlwk8")
+
+[node name="Gate" parent="CentralRoomChunk/Chunk" instance=ExtResource("11_wt1fq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.3, 1, 0)
+permanent = true
 
 [node name="SouthRoomChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39)
