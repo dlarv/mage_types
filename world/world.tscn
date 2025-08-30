@@ -375,16 +375,14 @@ fov = 85.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld"]
 transform = Transform3D(0.707107, -0.5, -0.5, -6.18173e-08, -0.707107, 0.707107, -0.707107, -0.5, -0.5, 0, 0, 0)
-visible = false
-light_energy = 0.5
+light_energy = 0.05
 shadow_enabled = true
 shadow_caster_mask = 4294967293
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Overworld"]
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 0, 0)
-visible = false
 light_color = Color(0.758192, 0.758192, 0.758192, 1)
-light_energy = 0.2
+light_energy = 0.02
 light_indirect_energy = 5.0
 shadow_caster_mask = 4294967293
 
@@ -413,43 +411,43 @@ mesh = SubResource("ArrayMesh_nrfl8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Blue/Bartender/player/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_i1awl")
 
-[node name="Preset1" type="Node3D" parent="Overworld/Blue" groups=["detached_env"]]
+[node name="TutorialBosses" type="Node3D" parent="Overworld/Blue" groups=["detached_env"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9445, -0.0107718, -104.245)
 
-[node name="Boss1" parent="Overworld/Blue/Preset1" instance=ExtResource("11_tyily")]
+[node name="Boss1" parent="Overworld/Blue/TutorialBosses" instance=ExtResource("11_tyily")]
 transform = Transform3D(-0.815936, 0, 0.578142, 0, 1, 0, -0.578142, 0, -0.815936, 10.8948, -1.80295, -13.4321)
 team = Array[ExtResource("12_lwhbe")]([ExtResource("24_2tavo")])
 ai = SubResource("Resource_avd5l")
 
-[node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss1" groups=["persist"] instance=ExtResource("21_llyeo")]
+[node name="EnemyActor" parent="Overworld/Blue/TutorialBosses/Boss1" groups=["persist"] instance=ExtResource("21_llyeo")]
 ai = SubResource("Resource_avd5l")
 _team = Array[ExtResource("12_lwhbe")]([ExtResource("24_2tavo")])
 disappear_on_defeat = false
 heal_player_after_battle = true
 
-[node name="Boss2" parent="Overworld/Blue/Preset1" instance=ExtResource("18_3lqrh")]
+[node name="Boss2" parent="Overworld/Blue/TutorialBosses" instance=ExtResource("18_3lqrh")]
 transform = Transform3D(-0.662045, 0, -0.749464, 0, 1, 0, 0.749464, 0, -0.662045, 16.4188, -1.803, -13.7742)
 team = Array[ExtResource("12_lwhbe")]([ExtResource("26_2tavo")])
 ai = SubResource("Resource_behgl")
 
-[node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss2" instance=ExtResource("21_llyeo")]
+[node name="EnemyActor" parent="Overworld/Blue/TutorialBosses/Boss2" instance=ExtResource("21_llyeo")]
 ai = SubResource("Resource_behgl")
 _team = Array[ExtResource("12_lwhbe")]([ExtResource("26_2tavo")])
 disappear_on_defeat = false
 heal_player_after_battle = true
 
-[node name="Boss3" parent="Overworld/Blue/Preset1" instance=ExtResource("8_bwct4")]
+[node name="Boss3" parent="Overworld/Blue/TutorialBosses" instance=ExtResource("8_bwct4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2698, -1.803, -18.0621)
 team = Array[ExtResource("12_lwhbe")]([ExtResource("28_k8wd0")])
 ai = SubResource("Resource_pfbnl")
 
-[node name="EnemyActor" parent="Overworld/Blue/Preset1/Boss3" instance=ExtResource("21_llyeo")]
+[node name="EnemyActor" parent="Overworld/Blue/TutorialBosses/Boss3" instance=ExtResource("21_llyeo")]
 ai = SubResource("Resource_pfbnl")
 _team = Array[ExtResource("12_lwhbe")]([ExtResource("28_k8wd0")])
 disappear_on_defeat = false
 heal_player_after_battle = true
 
-[node name="MiniBoss1" parent="Overworld/Blue" instance=ExtResource("20_bwxdu")]
+[node name="MiniBoss1" parent="Overworld/Blue" groups=["detached_env"] instance=ExtResource("20_bwxdu")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.301, 0.435947, -83.1221)
 ai = SubResource("Resource_en1oy")
 

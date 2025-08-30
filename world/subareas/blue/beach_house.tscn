@@ -1,0 +1,396 @@
+[gd_scene load_steps=19 format=3 uid="uid://bdxxs2kdxlsxy"]
+
+[ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_q4oqf"]
+[ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_vku52"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_tlwk8"]
+[ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="4_2tog8"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="5_c24o8"]
+[ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="6_kknr2"]
+[ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="7_fp2il"]
+[ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="8_6ndtq"]
+[ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="8_w3q0q"]
+[ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="9_6bw0y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tog8"]
+size = Vector3(3, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c24o8"]
+size = Vector3(3, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kknr2"]
+size = Vector3(2, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4oqf"]
+size = Vector3(22, 16, 37)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vku52"]
+size = Vector3(20, 25, 26)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fp2il"]
+size = Vector3(2, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fp2il"]
+size = Vector3(2.2, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlwk8"]
+size = Vector3(21, 12, 37)
+
+[node name="BeachHouse" type="Node3D"]
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="CentralToSouth1" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 20)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_q4oqf")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/CentralToSouth1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.500003, 3, -2)
+shape = SubResource("BoxShape3D_2tog8")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/CentralToSouth1/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/CentralToSouth1"]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, -0.6, 5.5, 2.1)
+shape = SubResource("BoxShape3D_c24o8")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/CentralToSouth1/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3)
+
+[node name="CentralToSouth2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 3.6, 20)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_q4oqf")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/CentralToSouth2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.100003, 8.3, -2)
+shape = SubResource("BoxShape3D_2tog8")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/CentralToSouth2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/CentralToSouth2"]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 2.5, 5.5, 2)
+shape = SubResource("BoxShape3D_kknr2")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/CentralToSouth2/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3)
+
+[node name="CentralToNorth" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.6, -19)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_q4oqf")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/CentralToNorth"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0.4, -1)
+shape = SubResource("BoxShape3D_2tog8")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/CentralToNorth/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/CentralToNorth"]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 4.5, 8.5, 1)
+shape = SubResource("BoxShape3D_c24o8")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/CentralToNorth/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3)
+
+[node name="CentralRoomChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+script = ExtResource("1_vku52")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CentralRoomChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 7.5, 0)
+shape = SubResource("BoxShape3D_q4oqf")
+
+[node name="Chunk" type="Node3D" parent="CentralRoomChunk"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CentralRoomChunk/Chunk"]
+use_collision = true
+collision_layer = 19
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 6.45801, 0)
+size = Vector3(21, 14, 37)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+operation = 2
+size = Vector3(18, 20, 33)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 10.5, 0)
+operation = 2
+size = Vector3(3, 20, 2)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 10.5, 0)
+operation = 2
+size = Vector3(4, 20, 2)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 17.5)
+operation = 2
+size = Vector3(3, 20, 3)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 13.5, -17.45)
+operation = 2
+size = Vector3(3, 4, 2.9)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.55, 13.5, 17.5)
+operation = 2
+size = Vector3(2.9, 8, 3)
+material = ExtResource("2_tlwk8")
+
+[node name="SouthRoomChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk", "resets")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39)
+script = ExtResource("1_vku52")
+chunk = NodePath("Chunk")
+resets = [NodePath("Chunk/Reset")]
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthRoomChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6.5, -5.5)
+shape = SubResource("BoxShape3D_vku52")
+
+[node name="Chunk" type="Node3D" parent="SouthRoomChunk"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SouthRoomChunk/Chunk"]
+use_collision = true
+collision_layer = 19
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SouthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4.45801, -5)
+size = Vector3(19, 7, 25)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SouthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 11.458, -8)
+operation = 2
+size = Vector3(17, 20, 17)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SouthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, -17)
+operation = 2
+size = Vector3(3, 18.1, 2)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SouthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 9, -17)
+operation = 2
+size = Vector3(2, 7, 2)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SouthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.50801, -15.5)
+size = Vector3(2, 4.1, 2)
+material = ExtResource("2_tlwk8")
+
+[node name="MagiclayDisk" parent="SouthRoomChunk/Chunk" instance=ExtResource("4_2tog8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -7)
+_element = "purple"
+
+[node name="PressurePlate" parent="SouthRoomChunk/Chunk" instance=ExtResource("5_c24o8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, -12.8)
+_element = "blue"
+
+[node name="Rails" parent="SouthRoomChunk/Chunk" instance=ExtResource("6_kknr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -14)
+
+[node name="PointA" parent="SouthRoomChunk/Chunk/Rails" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Interactable" parent="SouthRoomChunk/Chunk/Rails/PointA" index="0"]
+visible = false
+
+[node name="PointB" parent="SouthRoomChunk/Chunk/Rails" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Interactable" parent="SouthRoomChunk/Chunk/Rails/PointB" index="0"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SouthRoomChunk/Chunk/Rails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SouthRoomChunk/Chunk/Rails/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("BoxMesh_fp2il")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthRoomChunk/Chunk/Rails/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, -0.7, 0)
+shape = SubResource("BoxShape3D_fp2il")
+
+[node name="Reset" parent="SouthRoomChunk/Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("7_fp2il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.01784, -15)
+reset_positions_of = [NodePath("../MagiclayDisk")]
+
+[node name="Bridge" parent="SouthRoomChunk/Chunk" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -1.7, -12.1)
+_element = "red"
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "red"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, 2)
+
+[node name="Bridge" parent="SouthRoomChunk/Chunk/Bridge" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+_element = "blue"
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge/Bridge" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "blue"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge/Bridge" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, -2)
+
+[node name="Bridge2" parent="SouthRoomChunk/Chunk" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -1.7, -8.5)
+_element = "magenta"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge2" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, 2)
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge2" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "magenta"
+
+[node name="Bridge" parent="SouthRoomChunk/Chunk/Bridge2" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+_element = "red"
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge2/Bridge" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "red"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge2/Bridge" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, -2)
+
+[node name="Bridge3" parent="SouthRoomChunk/Chunk" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -1.7, -5)
+_element = "red"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge3" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, 2)
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge3" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "red"
+
+[node name="Bridge" parent="SouthRoomChunk/Chunk/Bridge3" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+_element = "purple"
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge3/Bridge" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "purple"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge3/Bridge" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, -2)
+
+[node name="Bridge4" parent="SouthRoomChunk/Chunk" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -1.7, -1.5)
+_element = "red"
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge4" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "red"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge4" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, 2)
+
+[node name="Bridge" parent="SouthRoomChunk/Chunk/Bridge4" instance=ExtResource("8_w3q0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+_element = "magenta"
+
+[node name="Emitter" parent="SouthRoomChunk/Chunk/Bridge4/Bridge" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999985, 0.7, 0)
+_element = "magenta"
+
+[node name="BridgeCap" parent="SouthRoomChunk/Chunk/Bridge4/Bridge" instance=ExtResource("9_6bw0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.390921, -2)
+
+[node name="NorthRoomChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -37)
+script = ExtResource("1_vku52")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthRoomChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+shape = SubResource("BoxShape3D_tlwk8")
+
+[node name="Chunk" type="Node3D" parent="NorthRoomChunk"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NorthRoomChunk/Chunk"]
+use_collision = true
+collision_layer = 19
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NorthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95801, -9)
+size = Vector3(20, 7, 17)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NorthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.458, -9)
+operation = 2
+size = Vector3(18, 20, 15)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NorthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27374e-13, 4.5, -17)
+operation = 2
+size = Vector3(3, 6, 2)
+material = ExtResource("2_tlwk8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NorthRoomChunk/Chunk/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82016e-07, 2.5, -8.9)
+size = Vector3(4, 4.1, 6)
+material = ExtResource("2_tlwk8")
+
+[node name="MagiclayDisk" parent="NorthRoomChunk/Chunk" instance=ExtResource("4_2tog8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -14)
+_element = "magenta"
+
+[node name="Emitter" parent="NorthRoomChunk" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-1, 8.74228e-08, 3.28406e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 1.04033e-06, 0.5, -11.9)
+_element = "purple"
+
+[node name="Emitter2" parent="NorthRoomChunk" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, -5.19474e-15, -2, 0.5, -11)
+_element = "cyan"
+
+[node name="Emitter3" parent="NorthRoomChunk" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, -5.19474e-15, -2, 0.5, -7)
+_element = "blue"
+
+[node name="Emitter4" parent="NorthRoomChunk" instance=ExtResource("8_6ndtq")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 9.01611e-15, 2, 0.5, -7)
+_element = "orange"
+
+[node name="PressurePlate" parent="NorthRoomChunk" instance=ExtResource("5_c24o8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8, 0.5, -9)
+_element = "magenta"
+
+[connection signal="on" from="SouthRoomChunk/Chunk/PressurePlate" to="SouthRoomChunk/Chunk/Rails" method="slide" flags=6]
+
+[editable path="SouthRoomChunk/Chunk/Rails"]

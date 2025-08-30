@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_4g4u6"]
+[ext_resource type="PackedScene" uid="uid://bdxxs2kdxlsxy" path="res://world/subareas/blue/beach_house.tscn" id="3_6h34i"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_5og7y"]
 [ext_resource type="PackedScene" uid="uid://xk0p3cselyvu" path="res://assets/3d/models/objects/blue/vase_green.tscn" id="8_6yj8m"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
@@ -15,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d24svew3u3qcb" path="res://world/subareas/blue/caves/caves_n.tscn" id="19_6h34i"]
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
-[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="21_egugs"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://src/overworld/magiclay/instances/magiclay_boulder.tscn" id="21_egugs"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/models/objects/blue/vase_red.tscn" id="23_3yaw4"]
 
@@ -23,7 +24,7 @@
 size = Vector3(1.4, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jhb31"]
-size = Vector3(2.5, 1, 1)
+size = Vector3(2.5, 6.78015, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7ooe"]
 size = Vector3(2.5, 3, 1)
@@ -115,11 +116,8 @@ size = Vector3(1, 8, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6h34i"]
 size = Vector3(1, 12, 10)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_t5rhi"]
-size = Vector3(22, 11, 18)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l62m"]
-size = Vector3(111, 25, 110)
+size = Vector3(111, 31.0161, 110)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n2ypl"]
 
@@ -203,7 +201,7 @@ shape = SubResource("BoxShape3D_0d6dj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BeachToHouse"]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9.15, -13.2, 40.1)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 32.9769, 42.0768, 10.0088)
 shape = SubResource("BoxShape3D_jhb31")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/BeachToHouse/CollisionShape3D2"]
@@ -224,7 +222,7 @@ shape = SubResource("BoxShape3D_b7ooe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HouseToHotelExterior"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3.95, -13.2, 46.2)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 13.0329, 42.083, 9.97898)
 shape = SubResource("BoxShape3D_jhb31")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HouseToHotelExterior/CollisionShape3D2"]
@@ -419,11 +417,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1080,20 +1079,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
 [node name="HotelRooms" type="Node3D" parent="."]
 
-[node name="HouseChunk" type="Area3D" parent="HotelRooms" groups=["persist"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, -6)
-script = ExtResource("3_4g4u6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HouseChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -10, 0.5)
-shape = SubResource("BoxShape3D_t5rhi")
+[node name="BeachHouse" parent="HotelRooms" instance=ExtResource("3_6h34i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.2233, 0)
 
 [node name="HotelExteriorChunk" type="Area3D" parent="HotelRooms" node_paths=PackedStringArray("chunk") groups=["persist"]]
 script = ExtResource("3_4g4u6")
 chunk = NodePath("Chunk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HotelExteriorChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 7.5, 36.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.49194, 36.5)
 shape = SubResource("BoxShape3D_2l62m")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/HotelExteriorChunk"]
