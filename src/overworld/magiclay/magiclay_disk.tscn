@@ -11,7 +11,7 @@ top_radius = 0.7
 bottom_radius = 0.7
 height = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y83r0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o76v0"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiclayDisk" type="RigidBody3D"]
@@ -35,7 +35,7 @@ shape = SubResource("BoxShape3D_kfreq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_4vvit")
-surface_material_override/0 = SubResource("StandardMaterial3D_y83r0")
+surface_material_override/0 = SubResource("StandardMaterial3D_o76v0")
 
 [node name="Draggable" parent="." instance=ExtResource("1_jy6gi")]
 

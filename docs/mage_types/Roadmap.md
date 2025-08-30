@@ -38,10 +38,11 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 	- [ ] Add cliff and block to beach
 	- [ ] Add pressure plate, gate, and block to beach
 	- [ ] Add button prompts in relevant locations
-- [ ] Transmutation tutorial
-	- [ ] Central chamber
-	- [ ] North chamber
+- [x] Transmutation tutorial
+	- [x] Central chamber
+	- [x] North chamber
 	- [x] South chamber
+	- [x] Parkour challenge
 - [x] Remove "Advanced options tutorial tab" from Transmutation Map
 - [x] Change transmutation graph advanced options from gdscript to gdshader
 - [x] Added stencils to allow player easier interface with transmutation map advanced options
