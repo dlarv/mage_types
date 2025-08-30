@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="17_odkw1"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="18_q5x77"]
 [ext_resource type="Resource" uid="uid://cm4wr6tvgqw55" path="res://data/story/battle_actors/player_characters/tutorial_1_battle_actor.tres" id="19_qfsqe"]
-[ext_resource type="PackedScene" uid="uid://d2cifsivdxxbt" path="res://data/demo/partner.tscn" id="21_pmbco"]
+[ext_resource type="PackedScene" uid="uid://d2cifsivdxxbt" path="res://world/subareas_old/partner.tscn" id="21_pmbco"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/story/bosses/tutorial_bosses/boss_1.tscn" id="21_vw276"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="23_60oy1"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="30_bei3i"]
