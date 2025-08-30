@@ -2,8 +2,8 @@
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_uwjnk"]
 [ext_resource type="PackedScene" uid="uid://b2pq1a3k01vk" path="res://src/overworld/magiclay/magiclay_monolith.tscn" id="2_p06f5"]
-[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="3_dpsda"]
-[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="4_yget8"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://src/overworld/magiclay/instances/magiclay_boulder.tscn" id="3_dpsda"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://src/overworld/magiclay/instances/magiclay_terrain.tscn" id="4_yget8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qb3xd"]
 size = Vector3(22, 7, 22)

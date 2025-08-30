@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cy8e0cndhkub5"]
 
 [ext_resource type="Material" uid="uid://ceo6m3wglwsxq" path="res://assets/3d/textures/placeholder_grid_texture/wip.tres" id="1_rmf2v"]
-[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="2_m3hss"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://src/overworld/magiclay/instances/magiclay_boulder.tscn" id="2_m3hss"]
 
 [node name="Tidepools" type="Node3D"]
 

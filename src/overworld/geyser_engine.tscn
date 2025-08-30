@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_267ni"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="2_k00d7"]
-[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="3_pny70"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://src/overworld/magiclay/instances/magiclay_boulder.tscn" id="3_pny70"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="4_k00d7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wcnjy"]

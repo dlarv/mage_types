@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxubvoct4ang1"]
 
-[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="1_k8tru"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://src/overworld/magiclay/instances/magiclay_terrain.tscn" id="1_k8tru"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nueyw"]
 albedo_color = Color(0, 1, 0, 1)

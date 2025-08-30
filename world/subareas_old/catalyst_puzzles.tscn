@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_o81tf"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="3_30a4y"]
 [ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_ryjpb"]
-[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="5_fnfmo"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://src/overworld/magiclay/instances/magiclay_terrain.tscn" id="5_fnfmo"]
 [ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="5_mef7p"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="7_0xjvi"]
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="7_fn5ea"]

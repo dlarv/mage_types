@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b2nokkpwhj5nq" path="res://world/subareas_old/eastern_caves/eastern_caves.tscn" id="8_r105b"]
 [ext_resource type="PackedScene" uid="uid://dv47pvyrqg7y0" path="res://src/overworld/puzzle_blocks/lasers/rotatable_mirror.tscn" id="8_wl0ax"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_8ivut"]
-[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://data/magiclay/magiclay_terrain.tscn" id="10_dqew1"]
+[ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://src/overworld/magiclay/instances/magiclay_terrain.tscn" id="10_dqew1"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="11_xejjv"]
-[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://data/magiclay/magiclay_boulder.tscn" id="12_41bv6"]
+[ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://src/overworld/magiclay/instances/magiclay_boulder.tscn" id="12_41bv6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgb7e"]
 size = Vector3(224, 2005, 82)

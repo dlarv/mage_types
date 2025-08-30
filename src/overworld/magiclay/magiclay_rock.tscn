@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://bro12iw6ll4yg"]
 
-[ext_resource type="Script" uid="uid://8kuun6qlgqwa" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_k4ig1"]
+[ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_x47xi"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="2_88vum"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gvndh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecm5f"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_1h0bu"]
+[sub_resource type="BoxMesh" id="BoxMesh_6a5d6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x47xi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5ahk"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="MagiclayRock" type="RigidBody3D"]
@@ -17,15 +17,15 @@ axis_lock_angular_y = true
 mass = 10.0
 contact_monitor = true
 max_contacts_reported = 100
-script = ExtResource("1_k4ig1")
+script = ExtResource("1_x47xi")
 is_transmutable = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_gvndh")
+shape = SubResource("BoxShape3D_ecm5f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_1h0bu")
-surface_material_override/0 = SubResource("StandardMaterial3D_x47xi")
+mesh = SubResource("BoxMesh_6a5d6")
+surface_material_override/0 = SubResource("StandardMaterial3D_y5ahk")
 
 [node name="Draggable" parent="." instance=ExtResource("2_88vum")]
 
