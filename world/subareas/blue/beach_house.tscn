@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bdxxs2kdxlsxy"]
+[gd_scene load_steps=31 format=3 uid="uid://bdxxs2kdxlsxy"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_q4oqf"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_vku52"]
@@ -42,7 +42,7 @@ size = Vector3(21, 12, 42)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cld72"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vhm6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m21l0"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m21l0"]
@@ -54,9 +54,15 @@ size = Vector3(1, 1, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_6a5d6"]
 size = Vector3(1, 1, 9)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cld72"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_m21l0"]
 size = Vector3(1, 0.1, 0.1)
 subdivide_width = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vhm6"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="BeachHouse" type="Node3D"]
 
@@ -193,8 +199,8 @@ size = Vector3(1, 0.5, 12.4)
 material = ExtResource("2_tlwk8")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 9, 15.5)
-size = Vector3(4, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 9, 15)
+size = Vector3(4, 1, 3)
 material = ExtResource("2_tlwk8")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="CentralRoomChunk/Chunk/CSGCombiner3D/CSGBox3D10"]
@@ -295,7 +301,7 @@ spot_range = 500.0
 spot_angle = 20.95
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="CentralRoomChunk/Chunk"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.8, 14, -5)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.8, 14, -7)
 spot_range = 500.0
 spot_angle = 20.95
 
@@ -353,29 +359,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 4.2)
 _element = "blue"
 
 [node name="Rails" parent="SouthRoomChunk/Chunk" instance=ExtResource("6_kknr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 3)
 
 [node name="PointA" parent="SouthRoomChunk/Chunk/Rails" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Interactable" parent="SouthRoomChunk/Chunk/Rails/PointA" index="0"]
 visible = false
 
 [node name="PointB" parent="SouthRoomChunk/Chunk/Rails" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Interactable" parent="SouthRoomChunk/Chunk/Rails/PointB" index="0"]
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SouthRoomChunk/Chunk/Rails"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SouthRoomChunk/Chunk/Rails/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = SubResource("BoxMesh_fp2il")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SouthRoomChunk/Chunk/Rails/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 shape = SubResource("BoxShape3D_fp2il")
 
 [node name="Reset" parent="SouthRoomChunk/Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("7_fp2il")]
@@ -480,6 +486,46 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8, 14
 spot_range = 500.0
 spot_angle = 20.95
 
+[node name="SpotLight3D3" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 14, 9)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2, 14, 9)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2, 14, 2)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8, 14, 8.2)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 14, 14)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8, 14, 13.2)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 14, 14)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8, 14, 13.2)
+spot_range = 500.0
+spot_angle = 20.95
+
 [node name="NorthRoomChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -37)
 script = ExtResource("1_vku52")
@@ -548,8 +594,28 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 14
 spot_range = 500.0
 spot_angle = 20.95
 
+[node name="SpotLight3D3" type="SpotLight3D" parent="NorthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 14, -7)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="NorthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 14, -5)
+spot_range = 500.0
+spot_angle = 20.95
+
 [node name="SpotLight3D2" type="SpotLight3D" parent="NorthRoomChunk/Chunk"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8, 14, -9)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="NorthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6, 14, -14)
+spot_range = 500.0
+spot_angle = 20.95
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="NorthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.70245e-07, 14, -14)
 spot_range = 500.0
 spot_angle = 20.95
 
@@ -569,7 +635,7 @@ shape = SubResource("BoxShape3D_ecm5f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NorthRoomChunk/Chunk/MagiclayRock"]
 mesh = SubResource("BoxMesh_cld72")
-surface_material_override/0 = SubResource("StandardMaterial3D_3vhm6")
+surface_material_override/0 = SubResource("StandardMaterial3D_m21l0")
 
 [node name="Draggable" parent="NorthRoomChunk/Chunk/MagiclayRock" instance=ExtResource("13_cld72")]
 restrict_axis = true
@@ -600,7 +666,7 @@ shape = SubResource("BoxShape3D_cld72")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NorthRoomChunk/Chunk/MagiclayRock2"]
 mesh = SubResource("BoxMesh_6a5d6")
-surface_material_override/0 = SubResource("StandardMaterial3D_3vhm6")
+surface_material_override/0 = SubResource("StandardMaterial3D_cld72")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NorthRoomChunk/Chunk/MagiclayRock2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)

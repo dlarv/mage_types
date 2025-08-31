@@ -33,11 +33,11 @@ Revisiting the battle system and misc cleaning up from v0.4.x.
 		- [x] Their name should be changed to something old-timey
 - [x] Add tutorial explaining how to equip spells
 	- For right now, Aegean simply mentions that you should open your player menu and equip your new spell.
-- [ ] Movement tutorial
-	- [ ] Add gap to lighthouse pier
-	- [ ] Add cliff and block to beach
-	- [ ] Add pressure plate, gate, and block to beach
-	- [ ] Add button prompts in relevant locations
+- [x] Movement tutorial
+	- [x] Add gap to lighthouse pier
+	- [x] Add cliff and block to beach
+	- [x] Add pressure plate, gate, and block to beach
+	- [x] Add button prompts in relevant locations
 - [x] Transmutation tutorial
 	- [x] Central chamber
 	- [x] North chamber
