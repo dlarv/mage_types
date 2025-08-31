@@ -1,6 +1,7 @@
-[gd_scene load_steps=254 format=4 uid="uid://cmtatsdth8psr"]
+[gd_scene load_steps=255 format=4 uid="uid://cmtatsdth8psr"]
 
 [ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/models/levels/blue.blend" id="1_uvna4"]
+[ext_resource type="Script" uid="uid://c0cfp2pqvynot" path="res://world/subareas/environments/LightHouse.gd" id="2_sogwj"]
 [ext_resource type="Shader" uid="uid://b8ankfagnoil7" path="res://assets/3d/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
 [ext_resource type="Shader" uid="uid://d2sidylou0g1r" path="res://assets/3d/shaders/clay_shader/clay_water.tres" id="3_jlv2r"]
 [ext_resource type="Script" uid="uid://lp1v5cimlv0" path="res://src/overworld/Water.gd" id="3_mpgmr"]
@@ -2305,6 +2306,14 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lighthouse/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_sogwj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighthouse" index="1"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 1, 0)
+light_energy = 100.0
+spot_range = 70.0
+spot_angle = 39.0059
+script = ExtResource("2_sogwj")
+speed = 1.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pier" index="0"]
 
