@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c51362yiro4j6"]
+[gd_scene load_steps=7 format=3 uid="uid://c51362yiro4j6"]
 
 [ext_resource type="Script" uid="uid://c2t51sidp8mac" path="res://src/gui/HudLayer.gd" id="1_ifgal"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmp7o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhis8"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_785qo"]
 
@@ -19,14 +23,17 @@ offset_bottom = 40.0
 [node name="VersionInfo" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+label_settings = SubResource("LabelSettings_wmp7o")
 
 [node name="DebugInfo" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+label_settings = SubResource("LabelSettings_lhis8")
 
 [node name="Stopwatch" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+label_settings = SubResource("LabelSettings_lhis8")
 
 [node name="OverworldSpellIcons" type="HFlowContainer" parent="."]
 anchors_preset = 1
