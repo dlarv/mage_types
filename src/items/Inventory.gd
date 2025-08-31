@@ -115,8 +115,8 @@ func _enter_tree() -> void:
 
 	if Settings.play_test_mode: 
 		use_override = false
-		for item in key_items:
-			item.quantity = 0
+		# for item in key_items:
+		# 	item.quantity = 0
 	elif add_all_items:
 		for item in key_items:
 			item.quantity = 1

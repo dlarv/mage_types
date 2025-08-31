@@ -15,10 +15,10 @@ var _original_image: Image
 
 func _ready() -> void:
 	stencil_shader = %TextureRect.material
-	%AdvancedOptionsPane.visible = Settings.debug_mode
+	%AdvancedOptionsPane.visible = Settings.debug_mode and not Settings.play_test_mode
 
 	if Settings.play_test_mode:
-		_on_stencil_button_toggled(true, 0)
+		_on_stencil_button_toggled(true, 1)
 	
 	if not Inventory.stencil_enabled.is_connected(activate_stencil):
 		Inventory.stencil_enabled.connect(activate_stencil)
