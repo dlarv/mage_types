@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=80 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -53,10 +53,62 @@ script = ExtResource("7_jdm3g")
 
 [sub_resource type="Animation" id="Animation_pj603"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blue/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-43.4569, 3.35266, -96.3783)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blue/Camera3D:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_kmcq3"]
 resource_name = "chamber_2_trigger"
 length = 0.5
+
+[sub_resource type="Animation" id="Animation_q3kex"]
+resource_name = "pan_to_adonis"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blue/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.18, 2, 3.01),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-43.4569, 3.35266, -94.3044), Vector3(-30.5645, 3.35266, -105.088), Vector3(-26.1247, 3.35266, -112.582), Vector3(-26.1247, 3.35266, -112.582)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blue/Camera3D:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_ns3pi"]
 resource_name = "set_chamber_2_trigger"
@@ -66,6 +118,7 @@ length = 0.2
 _data = {
 &"RESET": SubResource("Animation_pj603"),
 &"chamber_2_trigger": SubResource("Animation_kmcq3"),
+&"pan_to_adonis": SubResource("Animation_q3kex"),
 &"set_chamber_2_trigger": SubResource("Animation_ns3pi")
 }
 
@@ -376,18 +429,21 @@ fov = 85.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld"]
 transform = Transform3D(0.707107, -0.5, -0.5, -6.18173e-08, -0.707107, 0.707107, -0.707107, -0.5, -0.5, 0, 0, 0)
 visible = false
-light_energy = 0.05
+light_energy = 0.1
 shadow_enabled = true
 shadow_caster_mask = 4294967293
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Overworld"]
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 0, 0)
 light_color = Color(0.758192, 0.758192, 0.758192, 1)
-light_energy = 0.02
+light_energy = 0.01
 light_indirect_energy = 5.0
 shadow_caster_mask = 4294967293
 
 [node name="Blue" parent="Overworld" instance=ExtResource("10_5iu1q")]
+
+[node name="Camera3D" type="Camera3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -43.4569, 3.35266, -96.3783)
 
 [node name="Denim" parent="Overworld/Blue" groups=["detached_env"] instance=ExtResource("14_p05cy")]
 transform = Transform3D(-0.24577, 0, -0.172039, 0, 0.3, 0, 0.172039, 0, -0.24577, -40.5975, -1.07059, -100.146)
@@ -461,6 +517,7 @@ heal_player_after_battle = true
 
 [node name="MiniBoss1" parent="Overworld/Blue" groups=["detached_env"] instance=ExtResource("20_bwxdu")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.301, 0.435947, -83.1221)
+team = Array[ExtResource("12_lwhbe")]([ExtResource("25_lwhbe")])
 ai = SubResource("Resource_en1oy")
 
 [node name="EnemyActor" parent="Overworld/Blue/MiniBoss1" instance=ExtResource("21_llyeo")]

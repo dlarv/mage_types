@@ -296,7 +296,7 @@ spot_range = 500.0
 spot_angle = 20.95
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="CentralRoomChunk/Chunk"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.2, 14, 1)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.2, 14, 0)
 spot_range = 500.0
 spot_angle = 20.95
 
@@ -304,6 +304,30 @@ spot_angle = 20.95
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.8, 14, -7)
 spot_range = 500.0
 spot_angle = 20.95
+
+[node name="Label3D" type="Label3D" parent="CentralRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -7)
+text = "This world is made up of 8 Elements, each named after a color."
+autowrap_mode = 2
+
+[node name="Label3D2" type="Label3D" parent="CentralRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, -7)
+text = "When certain Elements come into contact, they transmute into a new form."
+autowrap_mode = 2
+
+[node name="Label3D4" type="Label3D" parent="CentralRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -7)
+text = "Press T to open your Transmutation Map. This will show you about these reactions."
+autowrap_mode = 2
+
+[node name="Label3D3" type="Label3D" parent="CentralRoomChunk/Chunk"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 7, 4, 7)
+text = "Notice how these MagiClay™ disks resemble the circles on your Transmutation Map?
+
+And these laser bridges are kinda like the arrows, if you squint.
+
+(Drawing this parallel is one of the main methods I plan to use to teach the player how to use the map)"
+autowrap_mode = 2
 
 [node name="SouthRoomChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39)
@@ -525,6 +549,16 @@ spot_angle = 20.95
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8, 14, 13.2)
 spot_range = 500.0
 spot_angle = 20.95
+
+[node name="Label3D" type="Label3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 1)
+text = "Your Transmutation Map currently has a \"stencil\" active. This hides Elements and reactions that aren't currently relevant."
+autowrap_mode = 2
+
+[node name="Label3D2" type="Label3D" parent="SouthRoomChunk/Chunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 1)
+text = "Everything in this demo uses stencil 2, except for a much later bit."
+autowrap_mode = 2
 
 [node name="NorthRoomChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -37)

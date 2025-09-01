@@ -67,7 +67,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_4",
+"link": "END",
 "text": ""
 }
 },
@@ -88,7 +88,7 @@ nodes = {
 "speaker": "Aegean"
 },
 &"1_11": {
-"dialogue": "Pay attention to my left (your right) side when I attack.",
+"dialogue": "Pay attention to my left (your right) side when you attack.",
 "offset": Vector2(1120, 140),
 "options": {
 0: {
@@ -106,7 +106,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_13",
+"link": "END",
 "text": ""
 }
 },
@@ -205,7 +205,7 @@ nodes = {
 "speaker": "Aegean"
 },
 &"1_2": {
-"dialogue": "Suuup. So right, affinities!",
+"dialogue": "Sup. So right, affinities!",
 "offset": Vector2(160, 960),
 "options": {
 0: {
@@ -218,7 +218,7 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_20": {
-"dialogue": " So the elements of this world are split into 2 [i]affinity[/i] groups: [color=red]offensive[/color] and [color=blue]defensive[/color].",
+"dialogue": "So the elements of this world are split into 2 [i]affinity[/i] groups: [color=red]offensive[/color] and [color=blue]defensive[/color].",
 "offset": Vector2(480, 960),
 "options": {
 0: {
@@ -257,7 +257,7 @@ nodes = {
 "speaker": "Dallas"
 },
 &"1_23": {
-"dialogue": "Like, [el]Blue[/el] is a [color=blue]defensive[/color] type, a lot of its moves will be support or defense focused, but there are [el]Blue[/el] attacks that deal damage, like your [el]Blue[/el] Hit.",
+"dialogue": "Like, [el]Blue[/el] is a [color=blue]defensive[/color] type, a lot of its moves will be support or defense focused, but there are [el]Blue[/el] attacks that deal damage.",
 "offset": Vector2(1440, 960),
 "options": {
 0: {
@@ -504,7 +504,7 @@ nodes = {
 "speaker": "Aegean"
 },
 &"1_6": {
-"dialogue": "Notice how my [el]Blue[/el] [i]secondary[/i] type reacted with your [el]Magenta[/el] attack to form [el]Purple[/el].",
+"dialogue": "Notice how my [el]Blue[/el] [i]secondary[/i] type reacted with your [el]Magenta[/el] attack to form [el]Purple[/el]?",
 "offset": Vector2(160, 400),
 "options": {
 0: {
@@ -517,7 +517,7 @@ nodes = {
 "speaker": "Aegean"
 },
 &"1_7": {
-"dialogue": "Right now, just remember to color of the top-right square.",
+"dialogue": "Right now, just remember the color of the top-right square.",
 "offset": Vector2(1120, -120),
 "options": {
 0: {
@@ -535,7 +535,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_9",
+"link": "END",
 "text": ""
 }
 },
@@ -566,5 +566,5 @@ nodes = {
 "true": &"1_33"
 }
 }
-strays = Array[String]([])
+strays = Array[String](["1_4", "1_5", "1_7", "1_9", "1_10", "1_11", "1_13", "1_14", "1_15"])
 characters = ""

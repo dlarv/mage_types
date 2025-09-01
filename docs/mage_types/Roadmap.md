@@ -24,6 +24,7 @@
 [[version_naming_scheme]]
 ## v0.5.x
 Revisiting the battle system and misc cleaning up from v0.4.x.
+- [x] Rewrite Adonis Enclave quest giving dialog
 - [x] Rewrite narrative setup
 	- [x] Implement intro dialog
 	- [x] Implement bartender q&a
