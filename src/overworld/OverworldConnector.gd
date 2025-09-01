@@ -96,9 +96,13 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 			DialogSignal.ADD_ALLY:
 				var ally: String = StoryManager.get_variable("target_ally")
 				_player.add_ally(ally)
+				# Since no awaits happen in this block, this code can finish
+				# before DialogueBox begins awaiting
+				await get_tree().create_timer(0.1).timeout
 			DialogSignal.REMOVE_ALLY:
 				var ally: String = StoryManager.get_variable("target_ally")
 				_player.remove_ally(ally)
+				await get_tree().create_timer(0.1).timeout
 			_:
 				if val != DialogSignal.DIALOG_ENDED:
 					sigName = val
@@ -130,7 +134,7 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 
 
 func _play_cutscene(npc: Variant) -> void:
-	var id: String = dialog_box.variables["current_cutscene"]
+	var id: String = StoryManager.get_variable("current_cutscene")
 
 	var prevProcessMode := dialog_box.process_mode
 	get_tree().paused = true
