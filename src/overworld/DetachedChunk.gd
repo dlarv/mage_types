@@ -46,6 +46,8 @@ func _ready() -> void:
 		obj.process_mode = Node.PROCESS_MODE_DISABLED
 		obj.hide()
 
+		obj.tree_exiting.connect(func() -> void: objs.remove_at(objs.find(obj)))
+
 func gather_objs() -> void:
 	var detachedChunks := get_tree().current_scene.find_children("", "DetachedChunk")
 	# Array[ [DetachedChunk, CollisionShape3D] ]
@@ -108,15 +110,18 @@ func load(player: Node3D) -> void:
 	player.active_chunk = self
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
 	for obj: Node in objs:
-		obj.process_mode = Node.PROCESS_MODE_INHERIT
-		obj.show()
+		
+		if is_instance_valid(obj):
+			obj.process_mode = Node.PROCESS_MODE_INHERIT
+			obj.show()
 
 func unload(player: Node3D) -> void:
 	# if not player.is_in_group("player"): return
 	Logger.append_world_log("Player unloaded Chunk(%s)" % name) 
 	for obj: Node in objs:
-		obj.process_mode = Node.PROCESS_MODE_DISABLED
-		obj.hide()
+		if is_instance_valid(obj):
+			obj.process_mode = Node.PROCESS_MODE_DISABLED
+			obj.hide()
 
 func add_golem(node: Golem) -> void:
 	super.add_golem(node)
