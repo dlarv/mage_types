@@ -1205,8 +1205,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, 11)
 
 [node name="Spot1" type="SpotLight3D" parent="HotelRooms/HallChunk1/Chunk"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -7.19461, 4.76319, -21.4044)
-visible = false
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 3, -23)
 light_color = Color(1, 0.754452, 0.579975, 1)
 light_energy = 16.0
 shadow_enabled = true
