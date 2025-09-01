@@ -219,16 +219,16 @@ nodes = {
 "speaker": "Duke"
 },
 &"1_13": {
-"dialogue": "An admirable try! Come back when thou art ready to try again.",
+"dialogue": "An admirable try!",
 "offset": Vector2(-1900, 2960),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_16",
 "text": ""
 }
 },
-"size": Vector2(300, 243),
+"size": Vector2(300, 240),
 "speaker": "Duke"
 },
 &"1_14": {
@@ -256,6 +256,32 @@ nodes = {
 },
 "size": Vector2(300, 243),
 "speaker": 1
+},
+&"1_16": {
+"dialogue": "Might I suggest making good use of young Denim's Hydrophobia spell?",
+"offset": Vector2(-1580, 3080),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_17",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
+},
+&"1_17": {
+"dialogue": "And perhaps more melee attack for some self inflicted side effects.",
+"offset": Vector2(-1260, 3100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Duke"
 },
 &"1_19": {
 "dialogue": "You see those 3 gentlemen up and to your right?",
@@ -1821,7 +1847,7 @@ nodes = {
 "title": "Intro"
 },
 &"8_3": {
-"attached_nodes": Array[StringName]([&"0_6", &"5_1", &"1_72", &"1_39", &"1_5", &"5_5", &"3_4", &"1_71", &"1_70", &"1_69", &"7_2", &"0_7", &"1_66", &"1_6", &"1_3", &"4_8", &"3_3", &"1_67", &"1_68", &"7_3", &"4_9", &"1_35", &"9_1", &"1_34", &"1_36", &"1_13", &"1_12", &"4_10", &"5_6", &"3_5", &"1_33", &"1_74", &"1_73", &"7_4", &"0_8", &"1_108"]),
+"attached_nodes": Array[StringName]([&"0_6", &"5_1", &"1_72", &"1_39", &"1_5", &"5_5", &"3_4", &"1_71", &"1_70", &"1_69", &"7_2", &"0_7", &"1_66", &"1_6", &"1_3", &"4_8", &"3_3", &"1_67", &"1_68", &"7_3", &"4_9", &"1_35", &"9_1", &"1_34", &"1_36", &"1_13", &"1_12", &"4_10", &"5_6", &"3_5", &"1_33", &"1_74", &"1_73", &"7_4", &"0_8", &"1_108", &"1_16", &"1_17"]),
 "offset": Vector2(-5200, 979),
 "tint_color": Color(1, 0.585714, 0, 0.431373),
 "title": "Adonis Enclave"
@@ -1869,5 +1895,5 @@ nodes = {
 "variable": "current_cutscene"
 }
 }
-strays = Array[String](["8_1", "8_4", "8_5", "8_7", "8_3", "8_2", "8_6", "4_5", "1_40", "1_11", "1_14", "1_46", "1_47", "1_76", "1_65", "1_75", "1_80", "1_81", "1_82", "1_83", "4_6", "1_84", "1_49", "1_62", "1_63", "1_64", "1_27", "1_15", "9_2"])
+strays = Array[String](["8_1", "8_4", "8_5", "8_7", "8_2", "8_6", "8_3", "4_5", "1_40", "1_11", "1_14", "1_46", "1_47", "1_76", "1_65", "1_75", "1_80", "1_81", "1_82", "1_83", "4_6", "1_84", "1_49", "1_62", "1_63", "1_64", "1_27", "1_15", "9_2"])
 characters = "res://data/story/blue_character_list.tres"
