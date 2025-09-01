@@ -1300,7 +1300,7 @@ nodes = {
 &"1_85": {
 "dialogue": "Colloquially, the color names can also be used to refer to people aligned to that Element as a whole. So you can use [el]Blue[/el] to refer to both the Element or to use [el]Blue[/el]-aligned.
 ",
-"offset": Vector2(506.054, 3204.59),
+"offset": Vector2(480, 3480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1417,7 +1417,7 @@ nodes = {
 },
 &"1_93": {
 "dialogue": "Whenever new matter is introduced to this world, it takes awhile for it to fully acclimate to the new elemental system. Living things, like people and monsters, take longer to  fully transform. ",
-"offset": Vector2(500, 3160),
+"offset": Vector2(500, 3180),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -1838,7 +1838,7 @@ nodes = {
 "title": "Directions"
 },
 &"8_6": {
-"attached_nodes": Array[StringName]([&"1_11", &"1_47", &"1_49", &"1_48", &"1_46", &"1_14", &"1_62", &"1_63", &"1_64", &"1_65", &"1_75", &"1_76", &"1_77", &"1_78", &"1_79", &"1_80", &"1_81", &"1_82", &"1_83", &"1_84", &"1_86", &"1_88", &"1_94", &"1_93", &"1_92", &"1_91", &"1_90", &"1_89", &"1_87", &"1_95", &"4_6", &"1_96", &"1_97", &"1_98", &"1_99", &"1_100", &"1_101", &"1_102", &"5_4", &"1_103", &"1_104", &"1_105", &"1_106", &"1_107"]),
+"attached_nodes": Array[StringName]([&"1_11", &"1_47", &"1_49", &"1_48", &"1_46", &"1_14", &"1_62", &"1_63", &"1_64", &"1_65", &"1_75", &"1_76", &"1_77", &"1_78", &"1_79", &"1_80", &"1_81", &"1_82", &"1_83", &"1_84", &"1_86", &"1_88", &"1_94", &"1_93", &"1_92", &"1_91", &"1_90", &"1_89", &"1_87", &"1_95", &"4_6", &"1_96", &"1_97", &"1_98", &"1_99", &"1_100", &"1_101", &"1_102", &"5_4", &"1_103", &"1_104", &"1_105", &"1_106", &"1_107", &"1_85"]),
 "offset": Vector2(-220, 1819),
 "tint_color": Color(0.396078, 0, 0.662745, 0.529412),
 "title": "Q&A"
@@ -1868,5 +1868,5 @@ nodes = {
 "variable": "current_cutscene"
 }
 }
-strays = Array[String](["8_1", "8_4", "8_6", "8_5", "8_7", "8_3", "8_2", "9_2", "1_27", "1_15"])
+strays = Array[String](["8_1", "8_4", "8_5", "8_7", "8_3", "8_2", "8_6", "9_2", "1_27", "1_15"])
 characters = "res://data/story/blue_character_list.tres"
