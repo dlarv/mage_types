@@ -25,7 +25,3 @@ The receptionist bell cuts thru the oppressive silence, sending a jolt down my s
 >**Bartender**: Something like that. Ask me about it again later and I'll tell you. But first, let's solve this monster problem.
 >**Bartender**: You see those 3 gentlemen over there? That's the Adonis Enclave, or what's left of them at least. They'll teach you what you need to know about combat. 
 >**Bartender**: Its actually not that dangerous, if you can believe such a thing.
-
-
->>**Player**: Long shift?
->>**Player**: No really, where am I?

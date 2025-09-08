@@ -1,10 +1,7 @@
 # Lore
+>[!note]
+>All humans trapped on Forlorn came from somewhere else. However, while the player character is from Earth, none of the other people are. The world they come from is made of clay, so this fact is only weird to the player character.
 ## The Island and its History
->[!note] Lattice World
->Forlorn is now a Lattice world.
->
->The greater concepts of the Lattice will not be explained or necessary to understand to play the game; moreso present in the form of easter eggs. Unfortunately, I worry the idea of a multiverse is probably cliche at this point, but I plan to use it more as a background device (like Sanderson's cosmere).
-
 >[!important] Return to Form
 >Forlorn was conceived as a Backrooms style otherworld, where people get trapped and lost. It has themes of mutation, adaptation, and survival. The previous version felt a little too 'light,' perse, with the inhabitants being systemically helpful. While I like the idea of pockets of cooperation, I think as a whole the place should be... well, Forlorn. Not grimdark, but a gloomy little place full of gloomy people.
 >
@@ -62,7 +59,7 @@
 **Magic**
 - Defensive and buffing self
 - Blue is a very self centered element, it mostly focuses on itself and doesn't synergize super well.
-	- Blue attacks should have multiple attacks that use the double match.
+	- Blue attacks should have multiple attacks that use the [[#Scaling Factor|double match]].
 - Weak synergy with other defensive types
 - Poor synergy with offensive types
 
@@ -71,7 +68,7 @@ Long ago when the island was still young, it is theorized that half of it was su
 
 The poolrooms are a definite a good inspiration for these locations, but I don't want to rip them directly, as there is already a lot of art that feature them directly.
 ## Purple
-- Purple is a hyper offense element (one of two)
+- Purple is a hyper-offense element (one of two)
 - Its hidden stats are both melee and ranged attack, as well as ranged defense
 
 **Theming**
@@ -107,7 +104,7 @@ The area controlled by Purple is a large parking garage. There are no working ca
 - Hallucinations
 - Delusions of grandeur
 - Transformation into your "true self"
-	- For some reason, this seems to take the form of a clown or carnival barker, with frightening frequency. Are the majority of people clowns in denial, or are clowns more likely to align to Magenta?
+	- For some reason, this seems to take the form of a clown or carnival barker, with frightening frequency. Are the majority of people clowns in denial, or is it that clowns are more likely to align to Magenta? The jury is still out.
 
 **Magic**
 - Magenta magic is the purest form of reality bending
@@ -270,8 +267,7 @@ Not much is known about Chartreuse, only that it provided its wielders with powe
 ### Pink
 Pink was a very cerebral color, granting the wielder psychic powers and eldritch knowledge. PINK still has traces of its former consciousness, embedded deep within the core of the island. It keeps RED from fully unraveling, on the brink of life and death. Those that venture too deep into the psychic plane find themselves overwhelmed with incomprehensible grief, which is a danger of Red-alignment.
 
-Channeling Pink ran the risk of running into PINK, which mortal minds could not comprehend.
-
+Channeling Pink ran the risk of running into PINK (the eldritch entity behind this power), which mortal minds could not comprehend.
 ## Elemental Bias and Transmutation
 >[!note] Bias vs Alignment
 > Bias and alignment are used interchangably, but if you want to be technically correct: "If someone is Blue-aligned, they have a bias for Blue." 
@@ -312,6 +308,9 @@ Naming Schemes: In general, people on Forlorn choose names related to their bias
 - The Diner (East of the Cyan Interstate): This location, like the convenience store, is ran by an Eldritch Old One known only as the Cook. Like the Clerk, the Cook is not hostile, preferring to help the hungry. But don't get too comfortable, they are not too fond of free-loaders.
 - The Cyan Backroads (not shown): Hidden among the icy mountains, the Cyan Backroads are a very liminal location. The various tribes of Cyan-aligned make their homes in the abandoned buildings which can be found here.
 ## The Factions
+>[!warning] 
+>This section needs to be revisited. Some of this info will likely be changed soon!
+
 The different alignments tend to stick to themselves, but this is not strictly the case. Essentially, there are 8 main factions, with multiple satellite organizations, created to fulfill certain needs around the island.
 ### The Old Guard
 All but one are dead or horrifically mutated. The Last of the Old Guard (aka Last) leads the [[#Hunters]].
@@ -336,7 +335,7 @@ Two Red subfactions. Though largely in lockstep, there are slight disagreements 
 
 **Orange Researchers**
 # Story
-[[Old_Story]]
+[[Story]]
 # Elemental System
 The elemental system has ~~4~~ 3 components:
 - [[#Transmutation Info|Transmutations]]
