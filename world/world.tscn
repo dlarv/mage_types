@@ -592,6 +592,11 @@ shape = SubResource("BoxShape3D_j7vgi")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.09, 1.17168, 43.1684)
 
+[node name="EndOfContentLabel3D" type="Label3D" parent="Overworld/Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.47, 5.8645, -170.609)
+text = "This point marks the end of the demo. 
+There's a bit of stuff passed this point, but not much."
+
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
 [connection signal="dialog_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_dialog_started"]
