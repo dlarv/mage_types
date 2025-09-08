@@ -47,6 +47,7 @@
 - Deep ocean/Water elementals
 - Water
 - Stagnation/stasis
+- *Analogs*: Astral, Water, Psychic (*Types from Pokemon/Cassette Beasts which are similar in nature*)
 
 **Alignment**
 - Paralysis of lower body
@@ -69,12 +70,14 @@ Long ago when the island was still young, it is theorized that half of it was su
 The poolrooms are a definite a good inspiration for these locations, but I don't want to rip them directly, as there is already a lot of art that feature them directly.
 ## Purple
 - Purple is a hyper-offense element (one of two)
+- DPS+Support archetype
 - Its hidden stats are both melee and ranged attack, as well as ranged defense
 
 **Theming**
 - Shadows & darkness
 - Know your enemy
 - Deceit, ruthless tactics
+- *Analogs*: Astral, Psychic, Dark, Ghost
 
 **Alignment**
 - Elongation of limbs and torso
@@ -93,11 +96,13 @@ The area controlled by Purple is a large parking garage. There are no working ca
 ## Magenta
 - Magenta is a strong support/defensive element, with a focus on healing
 - Hidden stats are hp and melee defense
+- Tank+Support
 
 **Theming**
 - Dreams, surreal whimsy
 - Glitter/fairy typing
 - Circus, clowns, carnivals
+- *Analogs*: Glitter, Fairy, Beast
 
 **Alignment**
 - Enhanced sense of whimsy
@@ -118,12 +123,14 @@ The Magenta-aligned council maintains and expands the Community Center, which ca
 ## Red
 - Red is an offensive element, with strong tank influences
 - Hidden stats are hp and melee attack
+- DPS+Tank archetype
 
 **Theming**
 - Blood, sacrifice
 - Cults
 - Vampirism, gothic architecture, catacombs
 - Plant-life, agriculture
+- *Analogs*: Ground, Plant, Beast
 
 **Alignment**
 - Inclusion in the Grand Hivemind
@@ -145,12 +152,13 @@ Buried deep in the forest, there is a graveyard. This area is the dominion of Re
 - It focuses on transmutations.
 	- This is primarily an artifact from an error I made when writing down the different relationships. I accidentally counted (Purple + Magenta) as an Orange transmutation, leading to Orange being in 1st place with 6 transmutations and 2nd place only having 4. I've kept it in the element's lore because I think it provides an interesting contrast to Blue.
 - Hidden stats are ranged attack and speed
-- Orange-aligned have names that resemble serial numbers: e.g. 
+- Orange-aligned have names that resemble serial numbers.
 
 **Theming**
 - Fire
-- Plastic/Synthetic/Artificial
-- Research and academia 
+- Synthetic/Artificial
+- Research and academia
+- *Analogs*: Fire, Plastic
 
 **Alignment**
 - Inclusion into the Database (Orange hivemind)
@@ -174,13 +182,15 @@ Hidden away in the depths of the forest is an inconspicuous building, inside of 
 
 ## Yellow
 - Yellow is a defensive, utility type
-	- It might seem like they should be frail, but their gaseous nature makes them harder to hurt
+	- It might seem like they should be frail, but their gaseous nature makes them harder to hit
 - Hidden stats are ranged defense and speed
 - They are a very evasive type
+- Support archetype
 
 **Theming**
-- Air, wind
 - Light
+- Wind, lightning
+- *Analogs*: Air
 
 **Alignment**
 - Evaporation
@@ -194,11 +204,13 @@ Hidden away in the depths of the forest is an inconspicuous building, inside of 
 - Neutral synergy
 - Lots of utility moves
 - Speed control
+- Priority moves
 
 **Area**
 One of the most enigmatic places in Forlorn is the *Yellow Tower*. Built by the Godlings as a nightmarish power source, the Great Mishap has purged most traces of its former purpose. Now it acts as the home of Yellow, with its upper heights shrouded in yellow clouds.
 ## Green
 - Green is a hyper-offense type, with a lot of glass cannon moves
+- DPS archetype
 - Hidden stats are both melee and ranged attack, as well as speed
 
 **Theming**
@@ -206,6 +218,7 @@ One of the most enigmatic places in Forlorn is the *Yellow Tower*. Built by the 
 - Poisons
 - Rocks/crystals
 - Punk aesthetic
+- *Analogs*: Poison, Dragon, Rock
 
 **Alignment**
 - Explosive anger
@@ -221,13 +234,12 @@ One of the most enigmatic places in Forlorn is the *Yellow Tower*. Built by the 
 **Area**
 The Green-aligned haunt an abandoned factory/power plant. Though the outer/upper layers are fairly safe, a lot of deeper chambers are filled with deadly poison and radiation rendering them impassible to all but Green.
 ## Cyan
-- Cyan is the archetypal defensive type
+- Cyan is the archetypal tank type
 - Hidden stats are both melee and ranged defense
 
 **Theming**
-- Ice 
-- Steel
 - Mountaineers and survivalists
+- *Analogs*: Steel, Ice
 
 **Alignment**
 - Skin begins to take on metallic quality

@@ -1,7 +1,4 @@
 # Misc Notes
-- v0.6.0 will be the big version I'll release to my playtesters?
-- Doors should keep player's relative position when they go thru
-- [ ] Strong attacks should have cooldowns (warmups too?)
 - [ ] Revisit [[Story]], [[Background#The Factions]], and [[Background#Elemental System]]
 
 >[!summary] Realignment
@@ -116,8 +113,8 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [ ] Icon showing which room player is in (use Player.active_chunk)
 	- [ ] Ability to write on map?
 - [ ] Add out-of-order elevator to final pillar in ziggurat room
-- [ ] Portals should keep player's relative position
-- [ ] Portals should reorient player model so that they are facing correct direction
+- [ ] Doors should keep player's relative position when they go thru
+	- [ ] Doors should reorient player model so that they are facing correct direction
 - [ ] Hotel rooms 
 	- [ ] Items/mini obstacles
 	- [ ] Create door models and animations
