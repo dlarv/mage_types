@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://chuyluogsxeer"]
+[gd_scene load_steps=32 format=3 uid="uid://chuyluogsxeer"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
@@ -62,16 +62,26 @@ size = Vector3(8, 13, 82)
 size = Vector3(19, 13, 35)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkww3"]
-size = Vector3(12, 13, 22)
+size = Vector3(12, 14.3, 22)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfce1"]
+albedo_color = Color(0.860617, 0.000590083, 0.860611, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sd1l2"]
+material = SubResource("StandardMaterial3D_lfce1")
+size = Vector3(1, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4p4oe"]
+size = Vector3(1, 3, 11)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pijpb"]
-size = Vector3(17, 13, 17)
+size = Vector3(16.4, 14.5, 17)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cjwri"]
-size = Vector3(17, 13, 18)
+size = Vector3(16.6, 13, 18)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u0ak"]
-size = Vector3(17, 13, 32)
+size = Vector3(17, 13, 31.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuft6"]
 size = Vector3(42, 13, 33)
@@ -81,7 +91,7 @@ size = Vector3(44, 22, 44)
 
 [node name="WestHotel" type="Node3D"]
 
-[node name="west_blue_env" parent="." groups=["detached_env_parent"] instance=ExtResource("2_atr3l")]
+[node name="west_blue_env" parent="." instance=ExtResource("2_atr3l")]
 
 [node name="Doors" type="Node3D" parent="."]
 
@@ -287,11 +297,21 @@ script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5.35, -0.5)
+shape = SubResource("BoxShape3D_rkww3")
+
 [node name="Chunk" type="Node3D" parent="HallChunk2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 6, -0.5)
-shape = SubResource("BoxShape3D_rkww3")
+[node name="DoorBlocker" type="MeshInstance3D" parent="HallChunk2/Chunk" groups=["detached_env"]]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -0.1, 0.6, -10.4)
+mesh = SubResource("BoxMesh_sd1l2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HallChunk2/Chunk/DoorBlocker"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2/Chunk/DoorBlocker/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_4p4oe")
 
 [node name="PantryChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
@@ -301,8 +321,18 @@ metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="Chunk" type="Node3D" parent="PantryChunk"]
 
+[node name="DoorBlocker" type="MeshInstance3D" parent="PantryChunk/Chunk" groups=["detached_env"]]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -0.1, 0.6, 6.9)
+mesh = SubResource("BoxMesh_sd1l2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PantryChunk/Chunk/DoorBlocker"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PantryChunk/Chunk/DoorBlocker/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_4p4oe")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PantryChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299999, 5.25, 0)
 shape = SubResource("BoxShape3D_pijpb")
 
 [node name="KitchenChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
@@ -310,11 +340,11 @@ script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="KitchenChunk"]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6, -0.5)
 shape = SubResource("BoxShape3D_cjwri")
+
+[node name="Chunk" type="Node3D" parent="KitchenChunk"]
 
 [node name="BreakfastChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
@@ -325,7 +355,7 @@ metadata/_custom_type_script = "uid://cjk323awkifki"
 [node name="Chunk" type="Node3D" parent="BreakfastChunk"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -1.35)
 shape = SubResource("BoxShape3D_7u0ak")
 
 [node name="THallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]

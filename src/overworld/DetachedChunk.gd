@@ -55,7 +55,7 @@ func gather_objs() -> void:
 	for chunk in detachedChunks:
 		chunk.was_initialized = true
 		chunk.objs = []
-		var collider := chunk.find_child("CollisionShape3D")
+		var collider := chunk.find_child("CollisionShape3D", false)
 		if collider:
 			shapes.append([chunk, collider])
 		if chunk.chunk: 
@@ -70,8 +70,7 @@ func gather_objs() -> void:
 
 	while len(children) > 0:
 		var child: Node = children.pop_back()
-		if child.name == "Preset1": 
-			pass
+
 		# If child does not exist in 3d space, it doesn't make sense to check whether it exists within a shape.
 		if not child is Node3D: 
 			if child.get_child_count() > 0:
@@ -110,7 +109,6 @@ func load(player: Node3D) -> void:
 	player.active_chunk = self
 	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
 	for obj: Node in objs:
-		
 		if is_instance_valid(obj):
 			obj.process_mode = Node.PROCESS_MODE_INHERIT
 			obj.show()
