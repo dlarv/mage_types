@@ -155,8 +155,6 @@ func _physics_process(delta: float) -> void:
 	velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
 
-	print(velocity)
-
 	if velocity.x == 0 and velocity.z == 0: 
 		anim_player.play("idle")
 	else:
