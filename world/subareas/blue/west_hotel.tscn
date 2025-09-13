@@ -1,0 +1,353 @@
+[gd_scene load_steps=29 format=3 uid="uid://chuyluogsxeer"]
+
+[ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
+[ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
+[ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_lfce1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uq05v"]
+size = Vector3(5.7, 7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_khxla"]
+size = Vector3(10, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvcax"]
+size = Vector3(4.9, 7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nn0ty"]
+size = Vector3(4.9, 7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmy4x"]
+size = Vector3(9.9, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hv7p8"]
+size = Vector3(6, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddnwv"]
+size = Vector3(0.5, 7, 5.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_epvgx"]
+size = Vector3(1, 7, 5.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lo7yg"]
+size = Vector3(5, 7, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_to6kl"]
+size = Vector3(4.9, 7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t83ks"]
+size = Vector3(0.5, 7, 5.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kadtq"]
+size = Vector3(0.5, 7, 5.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cyyki"]
+size = Vector3(0.5, 7, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ys02u"]
+size = Vector3(0.5, 7, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0lkbv"]
+size = Vector3(5, 7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbhcu"]
+size = Vector3(4.9, 7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lfce1"]
+size = Vector3(70, 13, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sd1l2"]
+size = Vector3(8, 13, 82)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_at4yk"]
+size = Vector3(19, 13, 35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkww3"]
+size = Vector3(12, 13, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pijpb"]
+size = Vector3(17, 13, 17)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjwri"]
+size = Vector3(17, 13, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u0ak"]
+size = Vector3(17, 13, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uuft6"]
+size = Vector3(42, 13, 33)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_id6k5"]
+size = Vector3(44, 22, 44)
+
+[node name="WestHotel" type="Node3D"]
+
+[node name="west_blue_env" parent="." groups=["detached_env_parent"] instance=ExtResource("2_atr3l")]
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="MainHallToHall2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -10)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToHall2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.450001, 3.5, -5.55)
+shape = SubResource("BoxShape3D_uq05v")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToHall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 3.5, 7)
+shape = SubResource("BoxShape3D_khxla")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall2/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="MainHallToLongHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, -14)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToLongHall"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.549999, 3.5, -1.55)
+shape = SubResource("BoxShape3D_gvcax")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToLongHall/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToLongHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350002, 3.5, 0.75)
+shape = SubResource("BoxShape3D_nn0ty")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToLongHall/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="MainHallToTHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -44)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToTHall"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.950001, 3.5, -14.4)
+shape = SubResource("BoxShape3D_jmy4x")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToTHall/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToTHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, 18)
+shape = SubResource("BoxShape3D_hv7p8")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToTHall/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="Hall1ToHall2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 27)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToHall2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.85, 3.5, 0.550001)
+shape = SubResource("BoxShape3D_ddnwv")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToHall2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToHall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9, 3.5, -11.05)
+shape = SubResource("BoxShape3D_epvgx")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToHall2/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="Hall1ToPantry" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 9)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToPantry"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.400002, 3.5, -1.3)
+shape = SubResource("BoxShape3D_lo7yg")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToPantry/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToPantry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.549999, 3.4, 0.85)
+shape = SubResource("BoxShape3D_to6kl")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToPantry/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="Hall1ToBreakfast" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 26)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToBreakfast"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.85, 3.5, 1.55)
+shape = SubResource("BoxShape3D_t83ks")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToBreakfast/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToBreakfast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 3.5, 0.200001)
+shape = SubResource("BoxShape3D_kadtq")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToBreakfast/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="KitchenToPantry" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/KitchenToPantry"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.650001, 3.5, -8.04663e-07)
+shape = SubResource("BoxShape3D_cyyki")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/KitchenToPantry/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/KitchenToPantry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 3.5, 7.15256e-07)
+shape = SubResource("BoxShape3D_ys02u")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/KitchenToPantry/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="BreakfastToKitchen" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+script = ExtResource("1_r5uk5")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/BreakfastToKitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, 0.45)
+shape = SubResource("BoxShape3D_0lkbv")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BreakfastToKitchen"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.05, 3.5, -1.25)
+shape = SubResource("BoxShape3D_wbhcu")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+
+[node name="MainHallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, -21)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="MainHallChunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainHallChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 6, 0.5)
+shape = SubResource("BoxShape3D_lfce1")
+
+[node name="LongHallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, 22)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="LongHallChunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LongHallChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 6, 5.5)
+shape = SubResource("BoxShape3D_sd1l2")
+
+[node name="HallChunk1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 12)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="HallChunk1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, 1)
+shape = SubResource("BoxShape3D_at4yk")
+
+[node name="HallChunk2" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 21)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="HallChunk2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 6, -0.5)
+shape = SubResource("BoxShape3D_rkww3")
+
+[node name="PantryChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="PantryChunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PantryChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+shape = SubResource("BoxShape3D_pijpb")
+
+[node name="KitchenChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="KitchenChunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -0.5)
+shape = SubResource("BoxShape3D_cjwri")
+
+[node name="BreakfastChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="BreakfastChunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -1.5)
+shape = SubResource("BoxShape3D_7u0ak")
+
+[node name="THallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -80)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="THallChunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="THallChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, 6)
+shape = SubResource("BoxShape3D_uuft6")
+
+[node name="MotelExteriorChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, -53)
+script = ExtResource("3_lfce1")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://cjk323awkifki"
+
+[node name="Chunk" type="Node3D" parent="MotelExteriorChunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MotelExteriorChunk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10.5, -4.5)
+shape = SubResource("BoxShape3D_id6k5")

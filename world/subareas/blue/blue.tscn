@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=82 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://dmet1d2f3kx1r" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
+[ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/models/objects/blue/vase_red.tscn" id="23_3yaw4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
@@ -120,6 +121,18 @@ size = Vector3(1, 8, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6h34i"]
 size = Vector3(1, 7, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lmeiv"]
+size = Vector3(1, 10, 4.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm6m6"]
+size = Vector3(0.5, 10, 4.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6veki"]
+size = Vector3(1, 7, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7jbtl"]
+size = Vector3(1, 7, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2l62m"]
 size = Vector3(111, 31.0161, 110)
@@ -1095,6 +1108,47 @@ shape = SubResource("BoxShape3D_6h34i")
 [node name="Marker3D" type="Marker3D" parent="Doors/CavesNToZiggurat/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.7, 0)
 
+[node name="LobbyToBreakfast" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -41)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/LobbyToBreakfast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3, 5.5, -0.850002)
+shape = SubResource("BoxShape3D_lmeiv")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/LobbyToBreakfast/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -3.5, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/LobbyToBreakfast"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -47.25, 5.5, 122)
+shape = SubResource("BoxShape3D_vm6m6")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/LobbyToBreakfast/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -2.5, 0)
+
+[node name="Hall3ToWestHotelMain" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134, 0, -84)
+script = ExtResource("2_bteo7")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall3ToWestHotelMain"]
+transform = Transform3D(1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 18.2205, 3.4, -49.35)
+shape = SubResource("BoxShape3D_6veki")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall3ToWestHotelMain/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall3ToWestHotelMain"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.5, 3.5, 125.7)
+shape = SubResource("BoxShape3D_7jbtl")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall3ToWestHotelMain/CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
 [node name="Beach" type="Node3D" parent="."]
 
 [node name="BeachHouse" parent="Beach" instance=ExtResource("3_6h34i")]
@@ -1734,6 +1788,9 @@ base_size = Vector3(-452.3, 3.8, -403.7)
 
 [node name="CavesN" parent="." instance=ExtResource("19_6h34i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0, -352)
+
+[node name="WestHotel" parent="." instance=ExtResource("22_yncb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
 
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser" method="start"]
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser2" method="start"]
