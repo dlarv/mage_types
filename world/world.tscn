@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=81 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="31_avd5l"]
 [ext_resource type="Resource" uid="uid://dg1mkjcd4555j" path="res://data/items/spell_scrolls/output/satiate_bead.tres" id="31_q3kex"]
 [ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="32_ll3gq"]
+[ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="39_hm5b2"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -596,6 +597,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.09, 1.17168, 43.1684)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.47, 5.8645, -170.609)
 text = "This point marks the end of the demo. 
 There's a bit of stuff passed this point, but not much."
+
+[node name="west_blue" parent="." instance=ExtResource("39_hm5b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

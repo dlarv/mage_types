@@ -28,8 +28,7 @@ func _enter_tree() -> void:
 		child_entered_tree.connect(_on_child_entering_tree)
 	if not child_exiting_tree.is_connected(_on_child_exiting_tree):
 		child_exiting_tree.connect(_on_child_exiting_tree)
-
-
+	
 func _ready() -> void:
 	if door_1 and not point_1:
 		point_1 = door_1.get_child(0)
@@ -92,12 +91,10 @@ func _on_body_shape_entered(bodyRid:RID, body:Node3D, bodyShapeIndex:int, localS
 	if shapeNode == door_1:
 		var diff := point_1.global_position.direction_to(_player.global_position)
 		diff *= point_1.global_position.distance_to(_player.global_position)
-		diff *= Vector3.ONE - point_1.basis.x
 		_player.global_position = point_2.global_position + diff
 	else:
 		var diff := point_2.global_position.direction_to(_player.global_position)
 		diff *= point_2.global_position.distance_to(_player.global_position)
-		diff *= Vector3.ONE - point_2.basis.x
 		_player.global_position = point_1.global_position + diff
 
 
