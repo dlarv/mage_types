@@ -14,6 +14,7 @@ const MAX_FREEFALL_DIST := -40.0
 @export var variable_jump_height_modifier := 15.0
 @export var variable_jump_time_window := 0.3 
 @export var dash_speed := 1200.0
+@export var sprint_speed := 1000.0
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
 @onready var jump_gravity := (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)      
@@ -30,6 +31,8 @@ var _can_jump := true
 var _jump_buffer := false
 var _jump_timer := 0.0
 var _jump_strength := 0.0
+
+var _is_sprinting := false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity := -980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
@@ -104,6 +107,9 @@ func _physics_process(delta: float) -> void:
 	if _jump_timer < variable_jump_time_window:
 		velocity.y += _jump_strength * delta
 	
+	var speed := walk_speed
+	if Input.is_action_pressed("dash"):
+		speed = sprint_speed
 
 	if _can_dash() and Input.is_action_just_pressed("dash"):
 		if not is_on_floor() and _can_air_dash:
@@ -111,7 +117,9 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 0
 		dash_velocity = dash_speed
 		dash_tween = create_tween()
-		dash_tween.tween_property(self, "dash_velocity", 0, 0.3).set_ease(Tween.EASE_OUT)
+		dash_tween.tween_interval(0.2)
+		dash_tween.tween_property(self, "dash_velocity", 0, 0.1).set_ease(Tween.EASE_OUT)
+
 	# Jumping, while accounting for coyote time.
 	elif _can_jump and dash_velocity <= dash_speed / 3:
 		if _jump_buffer:
@@ -127,11 +135,10 @@ func _physics_process(delta: float) -> void:
 	var direction := (transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 
 	if direction != Vector3.ZERO:
-		velocity.x = direction.x * (walk_speed + dash_velocity) * delta
-		velocity.z = direction.z * (walk_speed + dash_velocity) * delta
+		velocity.x = direction.x * (speed + dash_velocity) * delta
+		velocity.z = direction.z * (speed + dash_velocity) * delta
 		# Rotate model in direction of movement.
 		model.rotation.y = atan2(velocity.x, velocity.z)
-
 	elif dash_velocity > 0:
 		velocity.x = move_toward(
 			velocity.x, 
@@ -142,11 +149,14 @@ func _physics_process(delta: float) -> void:
 			model.basis.z.normalized().z * (walk_speed + dash_velocity) * delta, 
 			walk_speed * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, walk_speed * delta)
-		velocity.z = move_toward(velocity.z, 0, walk_speed * delta)
+		velocity.x = move_toward(velocity.x, 0, speed * delta)
+		velocity.z = move_toward(velocity.z, 0, speed * delta)
 
 	velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
+
+	print(velocity)
+
 	if velocity.x == 0 and velocity.z == 0: 
 		anim_player.play("idle")
 	else:
