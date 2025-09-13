@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=77 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://cmtatsdth8psr" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -11,15 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
 [ext_resource type="Script" uid="uid://8kuun6qlgqwa" path="res://src/overworld/magiclay/MagiclayRock.gd" id="12_gn7b1"]
-[ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_puzzle_1.tscn" id="14_srry2"]
-[ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_puzzle_2.tscn" id="15_6yind"]
+[ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_1.tscn" id="14_srry2"]
+[ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_2.tscn" id="15_6yind"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
-[ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_puzzle_3.tscn" id="16_cjdov"]
+[ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_3.tscn" id="16_cjdov"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
 [ext_resource type="PackedScene" uid="uid://d24svew3u3qcb" path="res://world/subareas/blue/caves/caves_n.tscn" id="19_6h34i"]
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/models/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/models/objects/blue/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/models/objects/blue/vase_blue.tscn" id="21_yq576"]
+[ext_resource type="PackedScene" uid="uid://xg3hret6ejti" path="res://world/subareas/environments/western_hotel_env.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/models/objects/blue/vase_red.tscn" id="23_3yaw4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
@@ -426,11 +427,12 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall4ToInfHall/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.7, 0)
 
-[node name="InfHallToInfHall" type="Area3D" parent="Doors"]
+[node name="InfHallToInfHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("2_bteo7")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/InfHallToInfHall"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.149994, 3.8, 158.1)
@@ -1724,6 +1726,9 @@ base_size = Vector3(-452.3, 3.8, -403.7)
 
 [node name="CavesN" parent="." instance=ExtResource("19_6h34i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0, -352)
+
+[node name="west_blue" parent="." instance=ExtResource("22_yncb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137, 0, 53)
 
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser" method="start"]
 [connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser2" method="start"]
