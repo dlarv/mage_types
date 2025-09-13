@@ -113,8 +113,9 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [ ] Icon showing which room player is in (use Player.active_chunk)
 	- [ ] Ability to write on map?
 - [ ] Add out-of-order elevator to final pillar in ziggurat room
-- [ ] Doors should keep player's relative position when they go thru
+- [x] Doors should keep player's relative position when they go thru
 	- [ ] Doors should reorient player model so that they are facing correct direction
+	- [ ] Angled doors are unintuitive to use
 - [ ] Hotel rooms 
 	- [ ] Items/mini obstacles
 	- [ ] Create door models and animations
