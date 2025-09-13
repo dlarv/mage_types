@@ -36,6 +36,9 @@ func _ready() -> void:
 	if door_2 and not point_2:
 		point_2 = door_2.get_child(0)
 
+	if not Engine.is_editor_hint() and door_2:
+		point_1.position = point_2.position
+
 
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint(): return
@@ -78,6 +81,7 @@ func _on_child_exiting_tree(child: Node3D) -> void:
 
 
 func _on_body_shape_entered(bodyRid:RID, body:Node3D, bodyShapeIndex:int, localShapeIndex:int) -> void:
+	if not body.is_in_group("player"): return
 	if not is_complete():
 		push_warning("Portal is not complete!")
 		return
@@ -86,9 +90,15 @@ func _on_body_shape_entered(bodyRid:RID, body:Node3D, bodyShapeIndex:int, localS
 	var shapeOwner := shape_find_owner(localShapeIndex)
 	var shapeNode := shape_owner_get_owner(shapeOwner)
 	if shapeNode == door_1:
-		_player.global_position = point_2.global_position
+		var diff := point_1.global_position.direction_to(_player.global_position)
+		diff *= point_1.global_position.distance_to(_player.global_position)
+		diff *= Vector3.ONE - point_1.basis.x
+		_player.global_position = point_2.global_position + diff
 	else:
-		_player.global_position = point_1.global_position
+		var diff := point_2.global_position.direction_to(_player.global_position)
+		diff *= point_2.global_position.distance_to(_player.global_position)
+		diff *= Vector3.ONE - point_2.basis.x
+		_player.global_position = point_1.global_position + diff
 
 
 func _on_body_shape_exited(bodyRid:RID, body:Node3D, bodyShapeIndex:int, localShapeIndex:int) -> void:
