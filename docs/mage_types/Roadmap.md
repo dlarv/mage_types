@@ -21,6 +21,10 @@
 [[version_naming_scheme]]
 ## v0.6.x
 Exploration playtest candidate. Player will be rewarded for exploring the map.
+- [ ] Create helper methods to generate maintenance hallways
+	- [ ] BugFix: Place next room indicators next to correct doorways
+	- [ ] BugFix: Room color not persisting
+	- [ ] Make doorways more reasonable size
 - [ ] Make exploring the map interesting.
 	- [ ] Items
 	- [ ] Decor
@@ -47,7 +51,6 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 - See if any puzzles can be ported from previous versions
 	- [x] Lost-forest-style caves => Supply closet
 		- [x] Create room that contains demos for all puzzle blocks. This room will be in front of the lost forest part.
-		- [ ] Last room of supply closet should be a lore dump library (since its Orange)
 	- [ ] Hidden caves logic puzzle (Lavender puzzle)
 	- [x] Original Stasis obstacle?
 		- [x] Original version works in new physics paradigm
@@ -76,7 +79,7 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [x] Geyser demo
 - [x] When player falls in water, return them to previous stable position
 	- [x] Add water colliders to Ziggurat water
-	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in
+	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in. *I think this can be fixed by updating player's grounded position less frequently*
 ## v0.7.x
 Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
 - [ ] Player hp stat should be accessible outside of battle
