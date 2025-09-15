@@ -32,8 +32,6 @@ var _jump_buffer := false
 var _jump_timer := 0.0
 var _jump_strength := 0.0
 
-var _is_sprinting := false
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity := -980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle()
 var in_control := true
@@ -117,7 +115,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 0
 		dash_velocity = dash_speed
 		dash_tween = create_tween()
-		dash_tween.tween_interval(0.2)
+		dash_tween.tween_interval(0.1)
 		dash_tween.tween_property(self, "dash_velocity", 0, 0.1).set_ease(Tween.EASE_OUT)
 
 	# Jumping, while accounting for coyote time.
