@@ -114,11 +114,13 @@ func get_incorrect_colors(element: ElementalType) -> Array:
 		SolverMode.AFFINITY:
 			if element in OFF:
 				output = OFF
-			output = DEF
+			else:
+				output = DEF
 		SolverMode.TEMP:
 			if element in COLD:
 				output = COLD
-			output = WARM
+			else:
+				output = WARM
 	output.remove_at(output.find(element))
 	return output
 
