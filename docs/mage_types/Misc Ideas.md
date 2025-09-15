@@ -45,4 +45,4 @@
 - Purple attack that ignores opponent's buffs.
 - Blue attack whose drawback inflicts phobia on user.
 # Items
-- Inertia (mod equipment): Tranmutations across affinity group have 50% change of being prevented.
+- Inertia (mod equipment): Tranmutations across affinity group have 50% change of being prevented. Side effects are still applied.
