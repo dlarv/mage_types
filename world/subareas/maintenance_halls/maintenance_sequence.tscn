@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu1rkwx4wepl8"]
+
+[ext_resource type="Script" uid="uid://c8djpupleyww1" path="res://world/subareas/maintenance_halls/MaintenanceSequence.gd" id="1_jp00o"]
+
+[node name="MaintenanceSequence" type="Node3D"]
+script = ExtResource("1_jp00o")
+room_offset = 25.0
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Chunks" type="Node3D" parent="."]

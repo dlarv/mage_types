@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpdgg0dpuuuak"]
+
+[ext_resource type="Script" uid="uid://tabcntu8b1um" path="res://world/subareas/maintenance_halls/MaintenanceRoom.gd" id="1_mulxc"]
+[ext_resource type="PackedScene" uid="uid://mslco5yvny4i" path="res://assets/3d/models/levels/maintenance_room.blend" id="2_q7135"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mulxc"]
+size = Vector3(25, 29, 25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mulxc"]
+data = PackedVector3Array(0.1238, 0, -0.1233, 1, 0, -1, 1, 0, -0.1233, 0.1238, 0, -0.1233, 0.1238, 0, -1, 1, 0, -1, 1, 0, -0.1233, 1.1, 0, -0.1233, 1.1, 0, 0.1236, 1, 0, -0.1233, 1.1, 0, 0.1236, 1, 0, 0.1236, 0.1238, 0, 0.1236, 0.1238, 0, -0.1233, 1, 0, -0.1233, 0.1238, 0, 0.1236, 1, 0, -0.1233, 1, 0, 0.1236, 0.1238, 0, 1, 0.1238, 0, 0.1236, 1, 0, 0.1236, 0.1238, 0, 1, 1, 0, 0.1236, 1, 0, 1, -0.1236, 0, 1, 0.1238, 0, 0.1236, 0.1238, 0, 1, 0.1238, 0, 1, -0.1236, 0, 1.1, -0.1236, 0, 1, 0.1238, 0, 1, 0.1238, 0, 1.1, -0.1236, 0, 1.1, -0.1236, 0, 1, -0.1236, 0, 0.1236, 0.1238, 0, 0.1236, -0.1236, 0, 0.1236, 0.1238, 0, -0.1233, 0.1238, 0, 0.1236, -1, 0, 1, -0.1236, 0, 0.1236, -0.1236, 0, 1, -1, 0, 1, -1, 0, 0.1236, -0.1236, 0, 0.1236, -0.1236, 0, 0.1236, -0.1236, 0, -0.1233, 0.1238, 0, -0.1233, -1, 0, 0.1236, -0.1236, 0, -0.1233, -0.1236, 0, 0.1236, -0.1236, 0, -0.1233, 0.1238, 0, -1, 0.1238, 0, -0.1233, -1, 0, 0.1236, -1.1, 0, 0.1236, -1.1, 0, -0.1233, -1, 0, 0.1236, -1.1, 0, -0.1233, -1, 0, -0.1233, -1, 0, 0.1236, -1, 0, -0.1233, -0.1236, 0, -0.1233, -1, 0, -0.1233, -0.1236, 0, -1, -0.1236, 0, -0.1233, -0.1236, 0, -0.1233, -0.1236, 0, -1, 0.1238, 0, -1, -1, 0, -0.1233, -1, 0, -1, -0.1236, 0, -1, -0.1236, 0, -1, 0.1238, 0, -1.1, 0.1238, 0, -1, -0.1236, 0, -1, -0.1236, 0, -1.1, 0.1238, 0, -1.1, -0.1236, 0, 1, -1, 2, 1, -1, 0, 1, -0.1236, 0, 1, -0.1236, 2, 1, -1, 2, 1, 1, 0, 1, 0.1238, 2, 1, 0.1238, 0, 1, 1, 0, 1, 1, 2, 1, 0.1238, 2, 1, -1, 0, -1, -0.1236, 7, -1, -0.1236, 0, -1, -1, 0, -1, -1, 7, -1, -0.1236, 7, -1, 1, 2, 1, 0.1238, 7, 1, 0.1238, 2, 1, 1, 2, 1, 1, 7, 1, 0.1238, 7, 1, 1, 2, 0.1236, 1, 7, 1, 1, 2, 1, 1, 2, 0.1236, 1, 7, 0.1236, 1, 7, 1, 1, 0, 0.1236, 1, 2, 0.1236, 1, 2, 1, 1, 0, 0.1236, 1, 2, 1, 1, 0, 1, -1, 0, -0.1232, -1, 7, -1, -1, 0, -1, -1, 0, -0.1232, -1, 7, -0.1232, -1, 7, -1, 1, 0, -1, 1, 7, -0.1232, 1, 0, -0.1232, 1, 0, -1, 1, 7, -1, 1, 7, -0.1232, 0.1238, 0, -1, 1, 7, -1, 1, 0, -1, 0.1238, 0, -1, 0.1238, 7, -1, 1, 7, -1, -1, 2, 1, -1, 7, 0.1236, -1, 2, 0.1236, -1, 2, 1, -1, 7, 1, -1, 7, 0.1236, -1, 0, 1, -1, 2, 1, -1, 2, 0.1236, -1, 0, 1, -1, 2, 0.1236, -1, 0, 0.1236, -0.1236, 2, 1, -1, 7, 1, -1, 2, 1, -0.1236, 2, 1, -0.1236, 7, 1, -1, 7, 1)
+
+[node name="MaintenanceRoom" type="Area3D" node_paths=PackedStringArray("chunk")]
+collision_mask = 32
+script = ExtResource("1_mulxc")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mulxc")
+
+[node name="Chunk" type="Node3D" parent="."]
+
+[node name="maintenance_room" parent="Chunk" instance=ExtResource("2_q7135")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chunk/maintenance_room/Backroom" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chunk/maintenance_room/Backroom/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mulxc")
+
+[editable path="Chunk/maintenance_room"]

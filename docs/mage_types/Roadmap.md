@@ -22,7 +22,7 @@
 ## v0.6.x
 Exploration playtest candidate. Player will be rewarded for exploring the map.
 - [ ] Create helper methods to generate maintenance hallways
-	- [ ] BugFix: Place next room indicators next to correct doorways
+	- [x] BugFix: Place next room indicators next to correct doorways
 	- [ ] BugFix: Room color not persisting
 	- [ ] Make doorways more reasonable size
 - [ ] Make exploring the map interesting.

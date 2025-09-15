@@ -2,6 +2,8 @@
 extends Resource
 class_name ElementalType 
 
+enum ElementalEnum { BLUE, PURPLE, MAGENTA, RED, ORANGE, YELLOW, GREEN, CYAN }
+
 @export var name: String 
 @export var main_color: Color 
 @export var is_defensive_type: bool

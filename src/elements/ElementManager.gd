@@ -3,6 +3,7 @@ extends Node
 
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
 const SIMPLE_SIDE_EFFECTS_PATH: String = "res://data/elemental_types/matchup_files/simple.csv"
+const ElementalEnum := ElementalType.ElementalEnum
 
 var Blank := ElementalType.new()
 var Blue: ElementalType
@@ -330,6 +331,9 @@ func get_index_from_name(name: String) -> int:
 		if elements[i].name.to_lower() == name:
 			return i
 	return -1
+
+func get_element_from_enum(element: ElementalEnum) -> ElementalType:
+	return elements[int(element)]
 
 func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalType:
 	if not element1 or not element2: return null

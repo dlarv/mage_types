@@ -130,3 +130,51 @@ func get_door_position(doorIndex:=0) -> Vector3:
 	push_warning("Portal(%s) is not complete!" % name)
 	return Vector3.ZERO
 		
+
+static func create_door(pos1: Vector3, pos2: Vector3, size: Vector3) -> Node3D:
+	var output: Node3D = preload("RoomPortal.gd").new()
+
+	var collider := CollisionShape3D.new()
+	output.add_child(collider, true, INTERNAL_MODE_DISABLED)
+	collider.shape = BoxShape3D.new()
+	collider.shape.size = size
+	collider.global_position = pos1
+	collider.position.y = size.y / 2
+
+	var marker1 := Marker3D.new()
+	collider.add_child(marker1, true, INTERNAL_MODE_DISABLED)
+	marker1.position.x = 0.8
+	marker1.position.y = size.y / 2
+
+	# Instantiate second door
+	var collider2 := CollisionShape3D.new()
+	output.add_child(collider2, true, INTERNAL_MODE_DISABLED)
+	collider2.shape = BoxShape3D.new()
+	collider2.shape.size = size
+
+	var marker2 := Marker3D.new()
+	collider2.add_child(marker2, true, INTERNAL_MODE_DISABLED)
+	marker2.position.x = 0.8
+	marker2.position.y = size.y / 2
+
+	return output
+
+
+static func create_half_door(pos: Vector3, marker: Marker3D, size: Vector3) -> Node3D:
+	var output: Node3D = preload("RoomPortal.gd").new()
+
+	var collider := CollisionShape3D.new()
+	output.add_child(collider, true, INTERNAL_MODE_DISABLED)
+	collider.shape = BoxShape3D.new()
+	collider.shape.size = size
+	collider.position = pos
+	collider.position.y = size.y / 2
+
+	var marker1 := Marker3D.new()
+	collider.add_child(marker1, true, INTERNAL_MODE_DISABLED)
+	marker1.position.x = 0.8
+
+	output.point_2 = marker
+
+	return output
+
