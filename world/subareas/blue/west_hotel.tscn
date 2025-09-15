@@ -459,10 +459,9 @@ shape = SubResource("BoxShape3D_wbhcu")
 [node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToBackrooms" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="MainHallToBackrooms" type="Area3D" parent="Doors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9, 0, -29)
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToBackrooms"]
@@ -607,9 +606,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202, 0, -51)
 start_point = NodePath("START")
 sequence = Array[int]([0, 1, 2, 6])
 
-[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0" node_paths=PackedStringArray("point_2")]
+[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0"]
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("@Marker3D@42365")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/0To1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.5, 10.5)
@@ -654,9 +652,8 @@ shape = SubResource("BoxShape3D_sd1w6")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4" node_paths=PackedStringArray("point_2")]
+[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4"]
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("@Marker3D@42366")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/1To2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 3.5, 10.5)
@@ -701,9 +698,8 @@ shape = SubResource("BoxShape3D_uwkjm")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8" node_paths=PackedStringArray("point_2")]
+[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8"]
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("@Marker3D@42367")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/2To3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3.5, 0)
