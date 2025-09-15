@@ -42,8 +42,8 @@ data = PackedVector3Array(1, 0, -0.7149, 1, 0.4667, -1, 1, 0.4667, -0.7149, 1, 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g5oxv"]
 render_priority = 0
 shader = ExtResource("2_g5oxv")
-shader_parameter/uv1_offset = Vector3(0.31, -1.105, 0)
-shader_parameter/uv1_scale = Vector3(2.725, 0.32, 1)
+shader_parameter/uv1_offset = Vector3(0.31, -0.995, 0)
+shader_parameter/uv1_scale = Vector3(12.84, 1.645, 1)
 shader_parameter/depth_min_layers = 8
 shader_parameter/depth_max_layers = 16
 shader_parameter/depth_flip = Vector2(1, 1)
