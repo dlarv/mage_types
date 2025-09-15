@@ -1404,6 +1404,9 @@ permanent = true
 [node name="Chamber1" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("14_srry2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48, 0, 90)
 
+[node name="CollisionShape3D" parent="HotelRooms/HotelRoomChunk/Chamber1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 7.5, -0.5)
+
 [node name="MagiclayDisk" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.8, 11)
 
