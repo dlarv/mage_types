@@ -97,6 +97,8 @@ func play_cutscene(player: AnimationPlayer, id: String) -> void:
 func look_towards(point: Vector3, yOnly := true) -> void:
 	if yOnly:
 		point.y = model.global_position.y
+	if point == model.global_position:
+		return
 	model.look_at(point)
 	# Model is facing the opposite way, so correct.
 	model.global_rotation_degrees.y += 180
