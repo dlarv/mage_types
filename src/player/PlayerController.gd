@@ -87,7 +87,10 @@ func _physics_process(delta: float) -> void:
 		_jump_strength = 0
 		_jump_timer = 0
 		_can_air_dash = true
-		last_grounded_position = global_position
+		
+		if $GroundedTimer.is_stopped():
+			last_grounded_position = global_position
+			$GroundedTimer.start()
 
 	# Add the gravity.
 	velocity.y += get_local_gravity() * delta

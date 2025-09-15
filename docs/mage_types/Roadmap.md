@@ -21,10 +21,6 @@
 [[version_naming_scheme]]
 ## v0.6.x
 Exploration playtest candidate. Player will be rewarded for exploring the map.
-- [ ] Create helper methods to generate maintenance hallways
-	- [x] BugFix: Place next room indicators next to correct doorways
-	- [ ] BugFix: Room color not persisting
-	- [ ] Make doorways more reasonable size
 - [ ] Make exploring the map interesting.
 	- [ ] Items
 	- [ ] Decor
@@ -77,9 +73,13 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 	- [x] Catalyst Platform demo
 	- [x] Reset demo
 	- [x] Geyser demo
+- [x] Create helper methods to generate maintenance hallways
+	- [x] BugFix: Place next room indicators next to correct doorways
+	- [x] BugFix: Room color not persisting
+	- [x] Make doorways more reasonable size
 - [x] When player falls in water, return them to previous stable position
 	- [x] Add water colliders to Ziggurat water
-	- [ ] When player falls into water, sometimes their prev position was so close to the edge they keep falling in. *I think this can be fixed by updating player's grounded position less frequently*
+	- [x] When player falls into water, sometimes their prev position was so close to the edge they keep falling in. *I think this can be fixed by updating player's grounded position less frequently*
 ## v0.7.x
 Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
 - [ ] Player hp stat should be accessible outside of battle
