@@ -81,3 +81,13 @@ The **roadmap** will expand on these requirements, subdividing them into atomize
 
 The **specifications** and **roadmap** should be updated as the project progresses, while the core **requirements** should ideally not be touched.
 
+## My Design Doc Evolution
+Initially, I broke my design doc into 3 parts *Background*, *Technical*, and *Design*. I didn't have a clear concept of what the lattermost part would entail, something about communicating how utilize the systems built up in *Technical*. *Technical* was broken into two subparts: requirements and specifications, where specifications would describe the implementation details (think UML diagrams). This section later morphed into *Roadmap*, which added chronological structure to the requirements list.
+
+In the future, I plan to use *Background*, *Requirements*, and *Roadmap*. *Background* is for lore, similar high level artistic details, and brief introductions for the game's main mechanics. *Requirements* is a braindump document, comprehensively detailing every Todo list item necessary for the MVP. Once this document is completed, it should be organized into the *Roadmap*, which will provide loose chronological structure.
+
+At this stage, the *Roadmap* will become the main portion of the design doc. The top of this document organizes all remaining requirements into a *version list*. Each version list should have a focus/goal, as well as a [[version_naming_scheme|name]]. As these lists get further from the current version, they'll be less accurate. I typically try to take a moment to refactor these lists every time I finish the current one.
+
+I've typically just deleted the previous list whenever its completed, but I think it could be worth saving these into a *Changelog* document, just detailing what specifically was included in that version and what was moved to later lists.
+
+Finally, I regret not keeping some form of *Devlog*, detailing what I did every day. The main utility of such a document would be in formulating my reasoning for certain decisions. I've frequently found myself returning to specific mechanics, trying to implement them and realizing why I gave up previously. It'd be helpful to have a devlog I could return to that would save me that work. This would also be a good space for describing how different systems and mechanics work.

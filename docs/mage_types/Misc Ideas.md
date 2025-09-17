@@ -1,18 +1,20 @@
 # Mechanics
--  Strong attacks should have cooldowns (warmups too?)
+- Strong attacks should have cooldowns (warmups too?)
 - Ability to draw on menu interfaces (Map, catalyst devices)
 - Unique type battle mechanics:
 	- Green shouldn't take poison damage
 	- Blue should heal from stasis
 	- Purple can't flinch
 - Ranged attacks should have higher base power, to make up for lack of side effects. This would effectively make them better at the beginning of battle, but taper off.
+- Geyser spouts should be able to mix
 # Unassigned Points of Interest
 ## People
 - Lavender: Purple-aligned zoologist. Studying monsters inside of motel.
 - Unnamed: Magenta-aligned cook. Runs the hotel's continental breakfast.
 - Unnamed: Cyan-aligned mechanic. Studying puzzle mechanisms?
 - [[demo_script#Orange Chatlogs]] 
-
+- Sole remainder of the Pool Enclave (lost their mind)
+- Transmutation Dungeon Enclave (mean girls)
 ## Challenges
 - Enemy rush, where player can use lasers to transmute monsters into preferable starting state.
 - [[demo#Catalyst Puzzles (Z2)]]

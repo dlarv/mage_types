@@ -98,6 +98,10 @@ World aesthetic update.
 	- [ ] Notes can be reorganized
 	- [ ] Notes can be deleted
 	- [ ] Player can create notes and drawings on notebook pages
+- [ ] Materials and textures
+	- [ ] Revisit clay shader. GDShader version should ideally be indistinguishable from the blender one
+	- [ ] Animated water
+	- [ ] PrincipledBSDF should have a plasticky look
 - [ ] Character designs
 	- [ ] Blue-aligned
 	- [ ] Denim
@@ -135,6 +139,7 @@ Demo candidate. Misc todos that must be completed before uploading to Steam.
 - [ ] Audio
 - [ ] Create steam page assets
 - [ ] Refactor AttackEffect input fields to use Godot::Expression?
+- [ ] Ensure future changes don't break save files (better error handling)
 - [x] Allow user to use keyboard to select targets in battle
 # The List
 ## Battle (BATT)
