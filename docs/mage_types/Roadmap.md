@@ -15,43 +15,28 @@
 	- I want there to be a second floor.
 # Objectives
 - Refine design processes
-- Practice making platforming challenges
-- Wild enemy mechanics
+	- 3 types of updates
+		- Mechanic
+		- Content
+		- Aesthetic
+- Practice making challenges
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.6.x
-Exploration playtest candidate. Player will be rewarded for exploring the map.
-- [ ] Make exploring the map interesting.
-	- [ ] Items
-	- [ ] Decor
-	- [ ] Small puzzles
-	- [ ] Add endless stairway to infinite hall
-- [ ] Add wall paper
-- [ ] Clay shader cracks are inverted?
-- [ ] Add local lighting
-- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
-- [ ] Map menu improvements
-	- [ ] Icon showing which room player is in (use Player.active_chunk)
-	- [ ] Ability to write on map?
-- [ ] Add out-of-order elevator to final pillar in ziggurat room
-- [x] Doors should keep player's relative position when they go thru
-	- [ ] Doors should reorient player model so that they are facing correct direction
-	- [ ] Angled doors are unintuitive to use
-- [ ] Hotel rooms 
-	- [ ] Items/mini obstacles
-	- [ ] Create door models and animations
-	- [ ] On doors player cannot enter, add "Do not disturb" signage
-- [ ] Portal Complex ruins created
-	- [ ] Create and add models for murals
-	- [ ] Orange chatlog object created and placed
-- See if any puzzles can be ported from previous versions
-	- [x] Lost-forest-style caves => Supply closet
-		- [x] Create room that contains demos for all puzzle blocks. This room will be in front of the lost forest part.
+West and Central Hotel content update. Add puzzles and combat challenges to hotel, along with necessary mechanics to support these features.
+- [ ] Motel
 	- [ ] Hidden caves logic puzzle (Lavender puzzle)
-	- [x] Original Stasis obstacle?
-		- [x] Original version works in new physics paradigm
-		- [x] Decide if/where/how it should be used
-- [ ] Allow player to attach spells from inventory
+	- [ ] Motel/Backroom guardian monster
+	- [ ] Monster encounters
+	- [ ] Priority spell hidden in motel
+	- [ ] Lavender fight
+	- [ ] Destroy++ spell added at end of Lavender puzzle
+- [ ] Add Magenta kitchen and breakfast
+- [ ] Stasis and Destroy spells added to map
+	- [ ] Backtrack obstacles
+	- [ ] Puzzles to obtain
+- [ ] Lock and key system
+- [ ] Allow player to attach spells/equipment from inventory
 - [ ] Puzzle block demos:
 	- [x] Rails demo
 		- [ ] Give Rail puzzleblock a model
@@ -80,7 +65,52 @@ Exploration playtest candidate. Player will be rewarded for exploring the map.
 - [x] When player falls in water, return them to previous stable position
 	- [x] Add water colliders to Ziggurat water
 	- [x] When player falls into water, sometimes their prev position was so close to the edge they keep falling in. *I think this can be fixed by updating player's grounded position less frequently*
+- [x] Doors should keep player's relative position when they go thru
 ## v0.7.x
+Battles and monster aesthetic update. Make combat more engaging by adding audio, animations, and better models.
+- [ ] Transmutation animation showing target reacting with an attack's element
+- [ ] Beastiary describing monsters
+- [ ] Battle Animation refactor
+	- [ ] Animations handled by BattleGUI
+	- [ ] Animations should already be children of gui, just hidden
+	- [ ] Attacks access animations using an Id (probably an enum)
+- [ ] Battle character models (replace the Cubes)
+	- [ ] Casting animations
+	- [ ] Getting hit animations
+## v0.8.x
+World aesthetic update.
+- [ ] Add wall paper
+- [ ] Clay shader cracks are inverted?
+- [ ] Add local lighting
+- [ ] Map menu improvements
+	- [ ] Icon showing which room player is in (use Player.active_chunk)
+	- [ ] Ability to write on map?
+- [ ] Replace placeholder door blockers/etc with models and diagetic explanations.
+	- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
+	- [ ] Add out-of-order elevator to final pillar in ziggurat room
+	- [ ] On doors player cannot enter, add "Do not disturb" signage
+- [ ] Create door models and animations
+	- [ ] Delay/animation before returning control to player? This would be necessary if rotating player model to face away from door
+- [ ] Opening chests should show player list of contents and allow them to individually select them
+- [ ] Scrapbook containing hints and notes the player has found
+	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
+	- [ ] Notes can be obtained from overworld
+	- [ ] Notes can be reorganized
+	- [ ] Notes can be deleted
+	- [ ] Player can create notes and drawings on notebook pages
+- [ ] Character designs
+	- [ ] Blue-aligned
+	- [ ] Denim
+	- [ ] Player
+	- [ ] Lavender
+>[!note] Snapshot
+> The end result of this version should act as a thin vertical slice of the demo, giving playtesters a better idea of what the game will look/feel like.
+## v0.9.x
+North caves and hotel content update.
+- [ ] Portal Complex ruins created
+	- [ ] Create and add models for murals
+	- [ ] Orange chatlog object created and placed
+## v0.?.x
 Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
 - [ ] Player hp stat should be accessible outside of battle
 	- [ ] Hp bar in overworld
@@ -94,30 +124,8 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [ ] Player/enemy cannot move for a duration of time
 - [ ] Determine mechanic that prevents player from starting battles with certain enemies before different requirements are fulfilled
 - [ ] Add final boss to ~~stasis dungeon~~
-## v0.8.x
-Demo MVP prep. Polish features added during previous versions.
-- [ ] Content
-	- [ ] Rec room battle tutorial
-	- [ ] Add backtrack obstacles to beach/etc
-- [ ] Beastiary describing monsters
-- [ ] Opening chests should show player list of contents and allow them to individually select them
-- [ ] Scrapbook containing hints and notes the player has found
-	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
-	- [ ] Notes can be obtained from overworld
-	- [ ] Notes can be reorganized
-	- [ ] Notes can be deleted
-	- [ ] Player can create notes and drawings on notebook pages
-## v0.9.x
-MVP Demo candidate. Add story and QOL features.
-- [ ] Character designs
-	- [ ] Blue-aligned
-	- [ ] Denim
-	- [ ] Player
-	- [ ] Lavender
-- [ ] Plan out beach house sequence and update model
-- [ ] Story
-	- [ ] Add beach house sequence
-	- [ ] Apartment sequence?
+## v0.10.x
+Demo candidate. Misc todos that must be completed before uploading to Steam.
 - [ ] Accessibility
 	- [ ] Colorblind support
 	- [ ] Input remapping
@@ -126,10 +134,6 @@ MVP Demo candidate. Add story and QOL features.
 - [ ] Start screen
 - [ ] Audio
 - [ ] Create steam page assets
-- [ ] Battle Animation refactor
-	- [ ] Animations handled by BattleGUI
-	- [ ] Animations should already be children of gui, just hidden
-	- [ ] Attacks access animations using an Id (probably an enum)
 - [ ] Refactor AttackEffect input fields to use Godot::Expression?
 - [x] Allow user to use keyboard to select targets in battle
 # The List
