@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="9_hwif6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_letbw"]
-size = Vector3(134, 16, 74)
+size = Vector3(129, 16, 57)
 
 [node name="Chamber1" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_h51ho")
@@ -19,7 +19,7 @@ chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 7.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5, 7.5, -9)
 shape = SubResource("BoxShape3D_letbw")
 
 [node name="Chunk" type="Node3D" parent="."]

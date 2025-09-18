@@ -225,7 +225,9 @@ Some areas will only be accessible thru the halls.
 ### Western Hotel
 #### Continental Breakfast
 - Magenta-aligned runs the breakfast.
-- They altered the existing kitchen structures to be usable, leading to the map being somewhat out of sync.
+- They altered the existing kitchen structures to be usable, leading to the map being somewhat out of sync. They've altered the version the player grabs.
+	- They've blown a hole in the wall between the kitchen and pantry.
+	- They've blocked off guest access to the pantry.
 #### Motel
 - Player can see Motel through a window, which will resemble this liminal picture:
 ![[liminal_space_interior_park.jpg]]
@@ -235,6 +237,14 @@ Some areas will only be accessible thru the halls.
 	- Vicious glass cannon monsters. They'll die in one hit, but should deal 80-90% of player hp before they do. The player should avoid these monsters.
 		- Monster AI should target weakest (least hp) character. This will be the same strat employed by Lavender. This info will be written on the walls somewhere.
 - Inner motel will contain the [[demo#Hidden Area: Deep Caves|Deep Caves]] puzzle.
+#### L Hallway
+- The marks the Northernmost section of the Western hotel.
+- All the rooms and dividing walls have been smashed down, making this section much bigger and more chaotic than the rest of the hotel.
+	- This was done by someone losing their mind, distressed by how the rooms seemed to overlap in physical space.
+	- After being broken down, the rooms seemed much smaller than they remembered.
+- The broken walls would be a good place to insert the old Catalyst puzzle trick (player can direct laser thru crack in wall, hitting an unobtrusive receiver).
+	- I added a large, open space to the western half of this room. I should have enough room to make a simple laser puzzle.
+- The eastern half of this room will have multiple mob spawners. It'll be a good place for the player to grind a few levels.
 ## Caves
 This website can be used to create procedurally generated cave maps: https://watabou.itch.io/cave-generator.
 ### Ziggurat 
