@@ -28,10 +28,9 @@ Each of these sections will weave through each other.
 ![[stencil_bpm.png]]
 ## Hotel
 - Battle Tutorial: Inside Rec Room.
-- First boss inside hall1, forcing player to backtrack to Rec Room if they don't understand how to fight.
-- World geometry will get weirder the further the player is from the main path.
-	- I.e. infinite hallway, path to Lavender's puzzle.
-
+- First boss inside hall1, forcing player to backtrack to Rec Room.
+- Objective 2: Completing the Transmutation Dungeon, tho the player can theoretically enter the West Hotel.
+	- Player receives Stasis? In chest right outside Transmutation Dungeon exit?
 ### Rec Room
 -  [[old_battle_tutorial|Original Battle Tutorial]]
 - High level boss is camped out in hall 2. Player will likely be defeated and forced to backtrack to rec room.

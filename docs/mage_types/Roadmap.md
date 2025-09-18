@@ -53,18 +53,7 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 	- [x] Timer demo
 	- [x] Relay demo
 		- [x] Create indicator block, which differentiates between off/on/invalid_off
-	- [x] Stasis target demo
-	- [x] Catalyst Device demo
-	- [x] Catalyst Platform demo
-	- [x] Reset demo
-	- [x] Geyser demo
-- [x] Create helper methods to generate maintenance hallways
-	- [x] BugFix: Place next room indicators next to correct doorways
-	- [x] BugFix: Room color not persisting
-	- [x] Make doorways more reasonable size
-- [x] When player falls in water, return them to previous stable position
-	- [x] Add water colliders to Ziggurat water
-	- [x] When player falls into water, sometimes their prev position was so close to the edge they keep falling in. *I think this can be fixed by updating player's grounded position less frequently*
+
 - [x] Doors should keep player's relative position when they go thru
 ## v0.7.x
 Battles and monster aesthetic update. Make combat more engaging by adding audio, animations, and better models.
@@ -74,7 +63,11 @@ Battles and monster aesthetic update. Make combat more engaging by adding audio,
 	- [ ] Animations handled by BattleGUI
 	- [ ] Animations should already be children of gui, just hidden
 	- [ ] Attacks access animations using an Id (probably an enum)
-- [ ] Battle character models (replace the Cubes)
+- [ ] Make info displayed inside of MessageBox more dynamic?
+	- [ ] Display info on battle field (damage numbers)
+	- [ ] Use animations to communicate info (melee/ranged, scaling factor)
+	- [ ] Transmutations?
+- [ ] Battle character models (replace the cubes)
 	- [ ] Casting animations
 	- [ ] Getting hit animations
 ## v0.8.x
