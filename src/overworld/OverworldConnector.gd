@@ -39,7 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		dialog_box.stop()
 
 
-func _on_player_battle_started(allies: Array[BattleActor], enemy:EnemyActor) -> void:
+func _on_player_battle_started(allies: Array[BattleActor], enemy:BossEnemyActor) -> void:
 	# If an animation player messes with the player's team, they'll be removed from it.
 	if not _player.battle_actor in allies:
 		allies.insert(0, _player.battle_actor)

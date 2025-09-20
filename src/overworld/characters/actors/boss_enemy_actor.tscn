@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgpic6wax8m37"]
+
+[ext_resource type="Script" uid="uid://dju2fwll4kxii" path="res://src/overworld/characters/actors/BossEnemyActor.gd" id="1_3dtq3"]
+
+[node name="BossEnemyActor" type="Node3D"]
+script = ExtResource("1_3dtq3")
