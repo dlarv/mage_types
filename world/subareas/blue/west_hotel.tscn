@@ -1,12 +1,13 @@
-[gd_scene load_steps=108 format=3 uid="uid://chuyluogsxeer"]
+[gd_scene load_steps=110 format=3 uid="uid://chuyluogsxeer"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_lfce1"]
-[ext_resource type="PackedScene" uid="uid://vi1k3rnrjb8x" path="res://data/beastiary/test_enemy.tscn" id="4_cjwri"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="4_cjwri"]
 [ext_resource type="PackedScene" uid="uid://cu1rkwx4wepl8" path="res://world/subareas/maintenance_halls/maintenance_sequence.tscn" id="4_pijpb"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="5_7u0ak"]
 [ext_resource type="PackedScene" uid="uid://dpdgg0dpuuuak" path="res://world/subareas/maintenance_halls/maintenance_room.tscn" id="5_cjwri"]
+[ext_resource type="PackedScene" uid="uid://vi1k3rnrjb8x" path="res://data/beastiary/test_enemy.tscn" id="6_7u0ak"]
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/3d/shaders/clay_shader/clay.tres" id="7_pijpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uq05v"]
@@ -112,6 +113,9 @@ size = Vector3(17, 13, 31.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuft6"]
 size = Vector3(42, 13, 33)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixt3p"]
+size = Vector3(9, 1, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xjkm"]
 size = Vector3(72, 13, 41)
@@ -710,12 +714,17 @@ metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="Chunk" type="Node3D" parent="LHallChunk"]
 
-[node name="TestEnemy" parent="LHallChunk/Chunk" instance=ExtResource("4_cjwri")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 0, 0)
-
 [node name="Emitter" parent="LHallChunk/Chunk" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -46, 0.5, -1.8)
 _element = "magenta"
+
+[node name="Spawner" parent="LHallChunk/Chunk" instance=ExtResource("4_cjwri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.5, 0)
+enemy_pool = Array[PackedScene]([ExtResource("6_7u0ak")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LHallChunk/Chunk/Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.5)
+shape = SubResource("BoxShape3D_ixt3p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LHallChunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.5, 6, -11)

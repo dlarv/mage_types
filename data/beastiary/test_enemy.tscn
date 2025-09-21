@@ -12,15 +12,16 @@
 
 [sub_resource type="Resource" id="Resource_fpmdk"]
 script = ExtResource("5_4c3fb")
-_base_melee_attack = 100.0
-_base_ranged_attack = 100.0
-_base_melee_defense = 100.0
-_base_ranged_defense = 100.0
-_base_speed = 100.0
+_base_melee_attack = 5.0
+_base_ranged_attack = 5.0
+_base_melee_defense = 20.0
+_base_ranged_defense = 20.0
+_base_speed = 5.0
 _base_evasion = 100.0
-hp = 200.0
+hp = 30.0
 
 [sub_resource type="Resource" id="Resource_wf7uo"]
+resource_local_to_scene = true
 script = ExtResource("2_2y36f")
 name = "Guy"
 id = 0

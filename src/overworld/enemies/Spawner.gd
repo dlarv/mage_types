@@ -4,37 +4,21 @@ signal player_defeated_enemy()
 signal enemy_defeated_player()
 signal player_ran()
 
-const _BaseEnemyActor := preload("res://src/overworld/enemies/WildEnemyActor.gd")
-const BaseEnemyActor := preload("res://src/overworld/enemies/wild_enemy_actor.tscn")
-
-@export var battle_actors: Array[BattleActor]
-@export var controllers: Array[OpponentController]
+@export var enemy_pool: Array[PackedScene] = []
 
 @export var level_range := Vector2i(1, 1)
 @export var team_count_range := Vector2i(1, 3)
 @export var spawn_frequency_range := Vector2(1.0, 5.0)
 @export var max_spawn_count := 10
 
-var _templates: Array[Node3D]
-var _enemies := []
-
+var _enemy_count := 0
 
 func _ready() -> void:
-	for child in get_children():
-		if child is _BaseEnemyActor:
-			_templates.append(child)
-			child.hide()
-			child.process_mode = Node.PROCESS_MODE_DISABLED
-	if len(_templates) == 0:
-		var child := BaseEnemyActor.instantiate()
-		_templates.append(child)
-		add_child(child)
-		child.hide()
-		child.process_mode = Node.PROCESS_MODE_DISABLED
+	pass
 
 
 func _process(delta: float) -> void:
-	if not visible or len(_enemies) >= max_spawn_count: return
+	if not visible or _enemy_count >= max_spawn_count: return
 	if $Timer.is_stopped(): 
 		spawn()
 		_restart_timer()
@@ -52,23 +36,17 @@ func _get_rand_point() -> Vector3:
 	)
 
 
-func _get_rand_enemy() -> Node3D:
-	var actor := BaseEnemyActor.instantiate()
-	# actor.behavior = _BaseEnemyActor.Behavior.FLEE
+func _get_rand_enemy() -> WildEnemyActor:
+	var enemyLeader: WildEnemyActor = enemy_pool.pick_random().instantiate().duplicate()
+	var teamCount := randi_range(team_count_range.x, team_count_range.y)
 
-	var team: Array[BattleActor] = []
-	var count := randi_range(team_count_range.x, team_count_range.y)
-	for i in range(count):
-		var battleActor: BattleActor = battle_actors.pick_random().duplicate(true)
-		battleActor.level = randi_range(level_range.x, level_range.y)
-		team.append(battleActor)
-	
-	var controller: OpponentController = controllers.pick_random()
-	if not controller.battle_ended.is_connected(_on_battle_ended):
-		controller.battle_ended.connect(_on_battle_ended)
+	for i in teamCount - 1:
+		enemyLeader.add_ally(enemy_pool.pick_random().instantiate())
 
-	actor.setup(team, controller)
-	return actor
+	for i in len(enemyLeader.team):
+		enemyLeader.team[i].level = randi_range(level_range.x, level_range.y)
+
+	return enemyLeader
 
 
 func _restart_timer() -> void:
@@ -83,11 +61,10 @@ func spawn() -> void:
 	add_child(enemy)
 	enemy.position = pos 
 
-	_enemies.append(enemy)
+	_enemy_count += 1
 
 	enemy.tree_exited.connect(func() -> void:
-		var index := _enemies.find(enemy)
-		_enemies.remove_at(index)
+		_enemy_count -= 1
 		_restart_timer())
 
 
