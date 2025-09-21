@@ -24,6 +24,11 @@ func _ready() -> void:
 		_set_mesh_color(0, team[0].element1)
 		_set_mesh_color(1, team[0].element2)
 
+	# Prevent different enemies from sharing resources
+	for actor in team:
+		actor.resource_local_to_scene = true
+		actor.stat_manager.resource_local_to_scene = true
+
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
