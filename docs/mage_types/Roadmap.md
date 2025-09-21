@@ -31,10 +31,18 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 	- [ ] Priority spell hidden in motel
 	- [ ] Lavender fight
 	- [ ] Destroy++ spell added at end of Lavender puzzle
+- [ ] Upper West Hotel challenges
+	- [ ] Add puzzle
+	- [ ] Reward for solving puzzle
+	- [ ] Add enemy encounters
 - [ ] Add Magenta kitchen and breakfast
 - [ ] Stasis and Destroy spells added to map
 	- [ ] Backtrack obstacles
 	- [ ] Puzzles to obtain
+- [ ] Finish blocking out the beach
+	- [ ] Add backtrack puzzle to beach 1
+	- [ ] Remodel beach 2 to look more organic
+	- [ ] Add beach 3
 - [ ] Lock and key system
 - [ ] Allow player to attach spells/equipment from inventory
 - [ ] Refactor wild enemy spawners
@@ -43,23 +51,18 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 		- `EnemyActor: Node3D` is for bosses & other static encounters
 	- [ ] Set custom spawn% for each enemy
 	- [ ] Allow spawner to adjust stats/etc of instantiated enemies
-- [ ] Puzzle block demos:
-	- [x] Rails demo
-		- [ ] Give Rail puzzleblock a model
-	- [ ] Logic gate demos
-		- [ ] Add models for empty puzzle blocks?
-	- [ ] Laser blocks demos
-		- [ ] DraggableMirror?
-		- [ ] RotatableMirror?
-		- [ ] DraggableEmitter?
-		- [ ] OneWayLens?
+- [x] Puzzle block demos:
+	- [x] Laser blocks demos
+		- [x] DraggableMirror?
+		- [x] RotatableMirror?
+		- [x] DraggableEmitter?
+		- [x] OneWayLens?
 	- [x] Pressure plate demo
 		- [x] Bug: Player activated pressure plate not working
 	- [x] Delay demo
 	- [x] Timer demo
 	- [x] Relay demo
 		- [x] Create indicator block, which differentiates between off/on/invalid_off
-
 - [x] Doors should keep player's relative position when they go thru
 ## v0.7.x
 Battles and monster aesthetic update. Make combat more engaging by adding audio, animations, and better models.
@@ -76,6 +79,7 @@ Battles and monster aesthetic update. Make combat more engaging by adding audio,
 - [ ] Battle character models (replace the cubes)
 	- [ ] Casting animations
 	- [ ] Getting hit animations
+- [ ] Show combatant's levels on name card and in Characters menu
 ## v0.8.x
 World aesthetic update.
 - [ ] Add wall paper
@@ -106,6 +110,10 @@ World aesthetic update.
 	- [ ] Denim
 	- [ ] Player
 	- [ ] Lavender
+- [x] Rails demo
+	- [ ] Give Rail puzzleblock a model
+- [ ] Logic gate demos
+	- [ ] Add models for empty puzzle blocks?
 >[!note] Snapshot
 > The end result of this version should act as a thin vertical slice of the demo, giving playtesters a better idea of what the game will look/feel like.
 ## v0.9.x
@@ -127,6 +135,11 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [ ] Player/enemy cannot move for a duration of time
 - [ ] Determine mechanic that prevents player from starting battles with certain enemies before different requirements are fulfilled
 - [ ] Add final boss to ~~stasis dungeon~~
+## v0.?.x
+Elemental system refactor
+- [ ] Use proper enum instead of `@export_enum`
+- [ ] Associate symbols with each element to help with differentiation
+- [ ] Adjust `ElementalType.main_color` values
 ## v0.10.x
 Demo candidate. Misc todos that must be completed before uploading to Steam.
 - [ ] Accessibility

@@ -564,7 +564,7 @@ shape = SubResource("BoxShape3D_6euxw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.7, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall7ToSupplyCloset"]
-transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -5.70001, 4.9, 2.49998)
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -13.7, 4.9, 2.49998)
 shape = SubResource("BoxShape3D_r5ixg")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall7ToSupplyCloset/CollisionShape3D2"]
