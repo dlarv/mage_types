@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="20_bwxdu"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="21_2tavo"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="21_j7vgi"]
-[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="21_llyeo"]
+[ext_resource type="PackedScene" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="21_llyeo"]
 [ext_resource type="Resource" uid="uid://bblx7lycrgk8e" path="res://data/story/dialog_trees/battle_dialog.tres" id="23_ftqqi"]
 [ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/story/bosses/tutorial_bosses/boss_1.tres" id="24_2tavo"]
 [ext_resource type="Resource" uid="uid://cttohg0e1an0u" path="res://data/items/spell_scrolls/basic/hit_p.tres" id="25_avd5l"]
