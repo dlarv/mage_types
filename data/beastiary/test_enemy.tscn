@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddpjrt1rrcoxv"]
+
+[ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_opqt0"]
+[ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/overworld/enemies/components/behaviors/aggressive_behavior.tscn" id="2_p0ich"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_32reb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_32reb"]
+
+[node name="WildEnemyActor" type="CharacterBody3D" groups=["wild_enemies"]]
+collision_layer = 7
+collision_mask = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_opqt0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_32reb")
+
+[node name="AggressiveBehavior" parent="." instance=ExtResource("2_p0ich")]
+sensor_size = 20.0
+navigation_recalc_delay = 0.5
+base_speed = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_32reb")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bre16bu52hltu"]
+
+[ext_resource type="Script" uid="uid://dmq1eutoi4hu8" path="res://src/overworld/enemies/components/behaviors/sensors/SphereSensor.gd" id="1_oydx5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oydx5"]
+
+[node name="SphereSensor" type="Area3D"]
+script = ExtResource("1_oydx5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oydx5")
