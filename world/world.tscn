@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=78 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/story/bosses/tutorial_bosses/boss_1.tscn" id="11_tyily"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="12_lwhbe"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="12_xtgjc"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="13_b6sci"]
 [ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="14_kx2pq"]
@@ -20,6 +21,23 @@
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="16_gm161"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="18_3lqrh"]
 [ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="20_bwxdu"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="21_2tavo"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="21_j7vgi"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="21_llyeo"]
+[ext_resource type="Resource" uid="uid://bblx7lycrgk8e" path="res://data/story/dialog_trees/battle_dialog.tres" id="23_ftqqi"]
+[ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/story/bosses/tutorial_bosses/boss_1.tres" id="24_2tavo"]
+[ext_resource type="Resource" uid="uid://cttohg0e1an0u" path="res://data/items/spell_scrolls/basic/hit_p.tres" id="25_avd5l"]
+[ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="25_bwxdu"]
+[ext_resource type="Resource" uid="uid://d1h5t72gjjjcv" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tres" id="25_lwhbe"]
+[ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/story/bosses/tutorial_bosses/boss_2.tres" id="26_2tavo"]
+[ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/story/bosses/tutorial_bosses/boss_3.tres" id="28_k8wd0"]
+[ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="28_ll3gq"]
+[ext_resource type="Script" uid="uid://n8ulld1m40ie" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="28_lwhbe"]
+[ext_resource type="Resource" uid="uid://cr76i3ewvm3up" path="res://data/items/spell_scrolls/basic/hit_m.tres" id="29_jgi7c"]
+[ext_resource type="Resource" uid="uid://dxxk0f8sn5ell" path="res://data/items/spell_scrolls/output/unbalanced_assault_bead.tres" id="30_cqwbg"]
+[ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="31_avd5l"]
+[ext_resource type="Resource" uid="uid://dg1mkjcd4555j" path="res://data/items/spell_scrolls/output/satiate_bead.tres" id="31_q3kex"]
+[ext_resource type="Resource" uid="uid://fiifovcljr50" path="res://data/items/spell_scrolls/strikes/p_strike_scroll.tres" id="32_ll3gq"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -150,6 +168,189 @@ end_state = ""
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q3kex"]
 radius = 4.58249
+
+[sub_resource type="Resource" id="Resource_ll3gq"]
+script = ExtResource("21_j7vgi")
+turn = 0
+id = "1_0"
+displayAfterTurn = false
+repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_jgi7c"]
+script = ExtResource("21_j7vgi")
+turn = 1
+id = "1_1a"
+displayAfterTurn = false
+repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_cqwbg"]
+script = ExtResource("21_j7vgi")
+turn = 1
+id = "1_1b"
+displayAfterTurn = true
+repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_q3kex"]
+script = ExtResource("21_j7vgi")
+turn = 2
+id = "1_2b"
+displayAfterTurn = true
+repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_hm5b2"]
+resource_name = "Purple Hit Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("25_avd5l")
+id = 1
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_avd5l"]
+script = ExtResource("28_lwhbe")
+set_seed = "BOSS1"
+dialog_resource = ExtResource("23_ftqqi")
+dialog_ids = Array[ExtResource("21_j7vgi")]([SubResource("Resource_ll3gq"), SubResource("Resource_jgi7c"), SubResource("Resource_cqwbg"), SubResource("Resource_q3kex")])
+reward_xp = 50.0
+reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_hm5b2")])
+metadata/_custom_type_script = "uid://n8ulld1m40ie"
+
+[sub_resource type="Resource" id="Resource_hnpqp"]
+script = ExtResource("21_j7vgi")
+turn = 0
+id = "2_0"
+displayAfterTurn = false
+repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_33qpb"]
+script = ExtResource("21_j7vgi")
+turn = 1
+id = "2_1a"
+displayAfterTurn = false
+repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_k83x5"]
+script = ExtResource("21_j7vgi")
+turn = 1
+id = "2_1b"
+displayAfterTurn = true
+repeat = false
+battle_story_interface = "player_spell_element"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_b8tmp"]
+script = ExtResource("21_j7vgi")
+turn = 2
+id = "2_2b"
+displayAfterTurn = true
+repeat = false
+battle_story_interface = "none"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_ifjjt"]
+resource_name = "Shield Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("28_ll3gq")
+id = 32
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_kvuv0"]
+resource_name = "Magenta Hit Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("29_jgi7c")
+id = 2
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_sg5c8"]
+resource_name = "Unbalanced Assault Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("30_cqwbg")
+id = 54
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_vu62d"]
+resource_name = "Satiate Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("31_q3kex")
+id = 26
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_behgl"]
+script = ExtResource("28_lwhbe")
+set_seed = "BOSS2"
+dialog_resource = ExtResource("23_ftqqi")
+dialog_ids = Array[ExtResource("21_j7vgi")]([SubResource("Resource_hnpqp"), SubResource("Resource_33qpb"), SubResource("Resource_k83x5"), SubResource("Resource_b8tmp")])
+reward_xp = 50.0
+reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_ifjjt"), SubResource("Resource_kvuv0"), SubResource("Resource_sg5c8"), SubResource("Resource_vu62d")])
+metadata/_custom_type_script = "uid://n8ulld1m40ie"
+
+[sub_resource type="Resource" id="Resource_gwdna"]
+resource_name = "Purple Strike Bead"
+script = ExtResource("21_2tavo")
+item = ExtResource("32_ll3gq")
+id = 18
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_pfbnl"]
+script = ExtResource("25_bwxdu")
+aggression = 0.7
+intelligence = 0.5
+transmutation_bias = 0.5
+_transmutation_pref = "blank"
+dialog_resource = ExtResource("23_ftqqi")
+dialog_ids = Array[ExtResource("21_j7vgi")]([])
+reward_xp = 50.0
+reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_gwdna")])
+metadata/_custom_type_script = "uid://bt4qggtg1nnwn"
+
+[sub_resource type="Resource" id="Resource_h4vgh"]
+resource_name = "Willpower"
+script = ExtResource("21_2tavo")
+item = ExtResource("31_avd5l")
+id = 2
+quantity = 1
+max_quantity = 9999
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_en1oy"]
+script = ExtResource("25_bwxdu")
+aggression = 1.0
+intelligence = 0.5
+transmutation_bias = 0.5
+_transmutation_pref = "blank"
+dialog_ids = Array[ExtResource("21_j7vgi")]([])
+reward_xp = 50.0
+reward_items = Array[ExtResource("21_2tavo")]([SubResource("Resource_h4vgh")])
+metadata/_custom_type_script = "uid://bt4qggtg1nnwn"
 
 [sub_resource type="BoxMesh" id="BoxMesh_8kqe2"]
 size = Vector3(1, 1, 10)
@@ -292,15 +493,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9445, -0.0107718, -104.24
 
 [node name="Boss1" parent="Overworld/Blue/TutorialBosses" instance=ExtResource("11_tyily")]
 transform = Transform3D(-0.815936, 0, 0.578142, 0, 1, 0, -0.578142, 0, -0.815936, 10.8948, -1.80295, -13.4321)
+team = Array[ExtResource("12_lwhbe")]([ExtResource("24_2tavo")])
+ai = SubResource("Resource_avd5l")
+
+[node name="EnemyActor" parent="Overworld/Blue/TutorialBosses/Boss1" groups=["persist"] instance=ExtResource("21_llyeo")]
+ai = SubResource("Resource_avd5l")
+_team = Array[ExtResource("12_lwhbe")]([ExtResource("24_2tavo")])
+disappear_on_defeat = false
+heal_player_after_battle = true
 
 [node name="Boss2" parent="Overworld/Blue/TutorialBosses" instance=ExtResource("18_3lqrh")]
 transform = Transform3D(-0.662045, 0, -0.749464, 0, 1, 0, 0.749464, 0, -0.662045, 16.4188, -1.803, -13.7742)
+team = Array[ExtResource("12_lwhbe")]([ExtResource("26_2tavo")])
+ai = SubResource("Resource_behgl")
+
+[node name="EnemyActor" parent="Overworld/Blue/TutorialBosses/Boss2" instance=ExtResource("21_llyeo")]
+ai = SubResource("Resource_behgl")
+_team = Array[ExtResource("12_lwhbe")]([ExtResource("26_2tavo")])
+disappear_on_defeat = false
+heal_player_after_battle = true
 
 [node name="Boss3" parent="Overworld/Blue/TutorialBosses" instance=ExtResource("8_bwct4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2698, -1.803, -18.0621)
+team = Array[ExtResource("12_lwhbe")]([ExtResource("28_k8wd0")])
+ai = SubResource("Resource_pfbnl")
+
+[node name="EnemyActor" parent="Overworld/Blue/TutorialBosses/Boss3" instance=ExtResource("21_llyeo")]
+ai = SubResource("Resource_pfbnl")
+_team = Array[ExtResource("12_lwhbe")]([ExtResource("28_k8wd0")])
+disappear_on_defeat = false
+heal_player_after_battle = true
 
 [node name="MiniBoss1" parent="Overworld/Blue" groups=["detached_env"] instance=ExtResource("20_bwxdu")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.301, 0.435947, -83.1221)
+team = Array[ExtResource("12_lwhbe")]([ExtResource("25_lwhbe")])
+ai = SubResource("Resource_en1oy")
+
+[node name="EnemyActor" parent="Overworld/Blue/MiniBoss1" instance=ExtResource("21_llyeo")]
+ai = SubResource("Resource_en1oy")
+_team = Array[ExtResource("12_lwhbe")]([ExtResource("25_lwhbe")])
 
 [node name="DoorBlocker_1" type="MeshInstance3D" parent="Overworld/Blue" groups=["detached_env"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -82.7)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://chuyluogsxeer"]
+[gd_scene load_steps=113 format=3 uid="uid://chuyluogsxeer"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
@@ -6,7 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://cu1rkwx4wepl8" path="res://world/subareas/maintenance_halls/maintenance_sequence.tscn" id="4_pijpb"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="5_7u0ak"]
 [ext_resource type="PackedScene" uid="uid://dpdgg0dpuuuak" path="res://world/subareas/maintenance_halls/maintenance_room.tscn" id="5_cjwri"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://ddpjrt1rrcoxv" path="res://data/beastiary/test_enemy.tscn" id="6_7u0ak"]
+=======
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="6_uuft6"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="7_id6k5"]
+>>>>>>> parent of b7cd23cf (Modified level geometry)
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/3d/shaders/clay_shader/clay.tres" id="7_pijpb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uq05v"]
@@ -113,6 +118,35 @@ size = Vector3(17, 13, 31.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuft6"]
 size = Vector3(42, 13, 33)
 
+<<<<<<< HEAD
+=======
+[sub_resource type="Resource" id="Resource_uq05v"]
+script = ExtResource("7_id6k5")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+hp = 200.0
+
+[sub_resource type="Resource" id="Resource_khxla"]
+script = ExtResource("5_7u0ak")
+name = "Guy"
+id = 0
+level = 2
+stat_manager = SubResource("Resource_uq05v")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "blank"
+_alignment = "blank"
+attacks = Array[ExtResource("6_uuft6")]([])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixt3p"]
+size = Vector3(7.7, 3, 5)
+
+>>>>>>> parent of b7cd23cf (Modified level geometry)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xjkm"]
 size = Vector3(72, 13, 41)
 
@@ -540,9 +574,10 @@ shape = SubResource("BoxShape3D_wbhcu")
 [node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToBackrooms" type="Area3D" parent="Doors"]
+[node name="MainHallToBackrooms" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9, 0, -29)
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToBackrooms"]
@@ -710,8 +745,17 @@ metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="Chunk" type="Node3D" parent="LHallChunk"]
 
+<<<<<<< HEAD
 [node name="WildEnemyActor" parent="LHallChunk/Chunk" instance=ExtResource("6_7u0ak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, 0)
+=======
+[node name="Spawner" parent="LHallChunk/Chunk" instance=ExtResource("4_cjwri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0, -17)
+battle_actors = Array[ExtResource("5_7u0ak")]([SubResource("Resource_khxla")])
+level_range = Vector2i(2, 2)
+team_count_range = Vector2i(1, 2)
+max_spawn_count = 3
+>>>>>>> parent of b7cd23cf (Modified level geometry)
 
 [node name="Emitter" parent="LHallChunk/Chunk" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -59, 1, -1.8)
@@ -726,8 +770,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202, 0, -51)
 start_point = NodePath("START")
 sequence = Array[int]([0, 1, 2, 6])
 
-[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0"]
+[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0" node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48764")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/0To1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.5, -10.5)
@@ -772,8 +817,9 @@ shape = SubResource("BoxShape3D_gdoww")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4"]
+[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4" node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48765")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/1To2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 3.5, 10.5)
@@ -818,8 +864,9 @@ shape = SubResource("BoxShape3D_qrtyx")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8"]
+[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8" node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48766")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/2To3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 60.5, 3.5, 0)
