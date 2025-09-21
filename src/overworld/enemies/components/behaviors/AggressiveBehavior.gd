@@ -50,5 +50,3 @@ func get_next_animation() -> String: return ""
 func _on_body_entered(node: Node3D) -> void:
 	super._on_body_entered(node)
 	_on_timer_timeout()
-
-

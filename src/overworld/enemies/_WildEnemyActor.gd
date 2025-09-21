@@ -51,7 +51,6 @@ func _add_new_gradient_sprite(actor: BattleActor) -> void:
 
 # Override
 func react(e: ElementalType, randVal:=-2) -> bool:
-
 	for actor: BattleActor in $EnemyActor.team:
 		var e1 := ElementManager.get_matchup(actor.element1, e)
 		if e1:

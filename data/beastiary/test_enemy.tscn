@@ -1,11 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddpjrt1rrcoxv"]
+[gd_scene load_steps=13 format=3 uid="uid://ddpjrt1rrcoxv"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_opqt0"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_7evn6"]
 [ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/overworld/enemies/components/behaviors/aggressive_behavior.tscn" id="2_p0ich"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_feso3"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_ay61t"]
+
+[sub_resource type="Resource" id="Resource_6us37"]
+script = ExtResource("4_ay61t")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+hp = 200.0
+
+[sub_resource type="Resource" id="Resource_2y36f"]
+script = ExtResource("2_7evn6")
+name = "Guy"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_6us37")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "purple"
+_alignment = "blank"
+attacks = Array[ExtResource("3_feso3")]([])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_32reb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_32reb"]
+
+[sub_resource type="Gradient" id="Gradient_opqt0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p0ich"]
+gradient = SubResource("Gradient_opqt0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frjms"]
+albedo_texture = SubResource("GradientTexture1D_p0ich")
 
 [node name="WildEnemyActor" type="CharacterBody3D" groups=["wild_enemies"]]
 collision_layer = 7
@@ -14,6 +51,8 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_opqt0")
+team = Array[ExtResource("2_7evn6")]([SubResource("Resource_2y36f")])
+is_transmutable = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -22,8 +61,8 @@ shape = SubResource("CapsuleShape3D_32reb")
 [node name="AggressiveBehavior" parent="." instance=ExtResource("2_p0ich")]
 sensor_size = 20.0
 navigation_recalc_delay = 0.5
-base_speed = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_32reb")
+surface_material_override/0 = SubResource("StandardMaterial3D_frjms")
