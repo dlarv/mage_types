@@ -39,12 +39,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		dialog_box.stop()
 
 
-func _on_player_battle_started(allies: Array[BattleActor], enemy:BossEnemyActor) -> void:
+func _on_player_battle_started(allies: Array[BattleActor], enemy:Variant) -> void:
 	# If an animation player messes with the player's team, they'll be removed from it.
 	if not _player.battle_actor in allies:
 		allies.insert(0, _player.battle_actor)
 
-	var healPlayer := enemy.heal_player_after_battle
+	var healPlayer := false
+	if enemy is BossEnemyActor:
+		healPlayer = enemy.heal_player_after_battle
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	hud.hide()
@@ -59,7 +61,7 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:BossEnemyActor)
 		for actor in allies:
 			actor.current_hp = actor.hp
 
-	if is_instance_valid(enemy):
+	if is_instance_valid(enemy) and enemy is BossEnemyActor:
 		for actor: BattleActor in enemy.team:
 			actor.current_hp = actor.hp
 	

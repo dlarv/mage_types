@@ -4,13 +4,15 @@ class_name WildEnemyActor
 
 @export var use_placeholder_mesh := true
 @export var team: Array[BattleActor]
+@export var ai: OpponentController
 
 var state_machine: _EnemyBehavior
 var mesh: MeshInstance3D
 
+var _on_cooldown := false
+
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-
 	for child in get_children():
 		if child is _EnemyBehavior:
 			state_machine = child
@@ -65,3 +67,11 @@ func _set_mesh_color(id: int, color: ElementalType) -> void:
 
 func _get_mesh() -> MeshInstance3D: return null
 func _set_material(val: BaseMaterial3D) -> void: pass 
+
+
+func _on_battle_trigger_body_entered(body:Node3D) -> void:
+	if not _on_cooldown:
+		get_tree().call_group("wild_enemies", "_start_battle_cooldown")
+		body.call_deferred("start_battle", self)
+		queue_free()
+

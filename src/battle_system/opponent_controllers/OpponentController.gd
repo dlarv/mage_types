@@ -41,7 +41,7 @@ func _on_battle_ended(endState: Battle.EndState) -> void:
 
 
 func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
-	var actions := []
+	var actions: Array[ActorAction] = []
 	actions.resize(len(team))
 
 	for i in range(len(team)):
@@ -50,7 +50,7 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 		else:
 			actions[i] = ActorAction.new(team[i], team[i].attacks[0],[ otherTeam[0] ], TEAM_INDEX)
 			team[i].action_selected.emit(team[i].attacks[0])
-	return actions;
+	return actions
 
 
 ## Return the id of which dialog option to display.

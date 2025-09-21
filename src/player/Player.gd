@@ -4,7 +4,7 @@ enum PartyMember { DENIM }
 
 signal actor_changed(actor: BattleActor)
 signal team_changed(team: Array[BattleActor])
-signal battle_started(allies: Array[BattleActor], enemies: Array[BattleActor])
+signal battle_started(allies: Array[BattleActor], enemies: Variant)
 signal dialog_started(dialog_id: String, npc: Variant)
 signal cutscene_started(player: AnimationPlayer, id: String)
 
@@ -56,7 +56,7 @@ func _ready() -> void:
 
 
 func start_battle(npc: Variant) -> void:
-	battle_started.emit(team, npc.enemy_actor)
+	battle_started.emit(team, npc)
 
 
 func open_shop(npc: Variant) -> void:

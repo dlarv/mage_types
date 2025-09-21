@@ -1,13 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddpjrt1rrcoxv"]
+[gd_scene load_steps=19 format=3 uid="uid://vi1k3rnrjb8x"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_opqt0"]
-[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_7evn6"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_2y36f"]
 [ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/overworld/enemies/components/behaviors/aggressive_behavior.tscn" id="2_p0ich"]
-[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_feso3"]
-[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_ay61t"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_ka2df"]
+[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="4_qp5wj"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_4c3fb"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_e8c8v"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_ostbw"]
+[ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_3ag47"]
 
-[sub_resource type="Resource" id="Resource_6us37"]
-script = ExtResource("4_ay61t")
+[sub_resource type="Resource" id="Resource_fpmdk"]
+script = ExtResource("5_4c3fb")
 _base_melee_attack = 100.0
 _base_ranged_attack = 100.0
 _base_melee_defense = 100.0
@@ -16,27 +20,31 @@ _base_speed = 100.0
 _base_evasion = 100.0
 hp = 200.0
 
-[sub_resource type="Resource" id="Resource_2y36f"]
-script = ExtResource("2_7evn6")
+[sub_resource type="Resource" id="Resource_wf7uo"]
+script = ExtResource("2_2y36f")
 name = "Guy"
 id = 0
 level = 1
-stat_manager = SubResource("Resource_6us37")
+stat_manager = SubResource("Resource_fpmdk")
 reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
 _alignment = "blank"
-attacks = Array[ExtResource("3_feso3")]([])
+attacks = Array[ExtResource("3_ka2df")]([ExtResource("4_qp5wj")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_32reb"]
+[sub_resource type="Resource" id="Resource_x8pnq"]
+script = ExtResource("8_3ag47")
+dialog_ids = Array[ExtResource("6_e8c8v")]([])
+reward_xp = 0.0
+reward_items = Array[ExtResource("7_ostbw")]([])
+metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_32reb"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ogieg"]
 
 [sub_resource type="Gradient" id="Gradient_opqt0"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.474684)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_p0ich"]
 gradient = SubResource("Gradient_opqt0")
@@ -44,25 +52,34 @@ gradient = SubResource("Gradient_opqt0")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frjms"]
 albedo_texture = SubResource("GradientTexture1D_p0ich")
 
-[node name="WildEnemyActor" type="CharacterBody3D" groups=["wild_enemies"]]
-collision_layer = 7
-collision_mask = 3
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ogieg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_opqt0"]
+radius = 0.6
+
+[node name="TestEnemy" type="CharacterBody3D"]
 script = ExtResource("1_opqt0")
-team = Array[ExtResource("2_7evn6")]([SubResource("Resource_2y36f")])
+team = Array[ExtResource("2_2y36f")]([SubResource("Resource_wf7uo")])
+ai = SubResource("Resource_x8pnq")
 is_transmutable = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_32reb")
-
-[node name="AggressiveBehavior" parent="." instance=ExtResource("2_p0ich")]
-sensor_size = 20.0
-navigation_recalc_delay = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_32reb")
+mesh = SubResource("CapsuleMesh_ogieg")
 surface_material_override/0 = SubResource("StandardMaterial3D_frjms")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ogieg")
+
+[node name="AggressiveBehavior" parent="." instance=ExtResource("2_p0ich")]
+
+[node name="BattleTrigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_opqt0")
+
+[connection signal="body_entered" from="BattleTrigger" to="." method="_on_battle_trigger_body_entered"]
