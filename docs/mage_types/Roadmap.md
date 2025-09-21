@@ -24,13 +24,12 @@
 [[version_naming_scheme]]
 ## v0.6.x
 West and Central Hotel content update. Add puzzles and combat challenges to hotel, along with necessary mechanics to support these features.
-- [ ] Motel
-	- [ ] Hidden caves logic puzzle (Lavender puzzle)
-	- [ ] Motel/Backroom guardian monster
-	- [ ] Monster encounters
-	- [ ] Priority spell hidden in motel
-	- [ ] Lavender fight
-	- [ ] Destroy++ spell added at end of Lavender puzzle
+- [ ] Refactor wild enemy spawners
+	- [x] Give spawner enemy base templates 
+		- `WildEnemyActor: Node3D` is for spawners/random enemies.
+		- `EnemyActor: Node3D` is for bosses & other static encounters
+	- [ ] Set custom spawn% for each enemy
+	- [ ] Allow spawner to adjust stats/etc of instantiated enemies
 - [ ] Upper West Hotel challenges
 	- [ ] Add puzzle
 	- [ ] Reward for solving puzzle
@@ -44,13 +43,13 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 	- [ ] Remodel beach 2 to look more organic
 	- [ ] Add beach 3
 - [ ] Lock and key system
-- [ ] Allow player to attach spells/equipment from inventory
-- [ ] Refactor wild enemy spawners
-	- [x] Give spawner enemy base templates 
-		- `WildEnemyActor: Node3D` is for spawners/random enemies.
-		- `EnemyActor: Node3D` is for bosses & other static encounters
-	- [ ] Set custom spawn% for each enemy
-	- [ ] Allow spawner to adjust stats/etc of instantiated enemies
+- [ ] Motel
+	- [ ] Hidden caves logic puzzle (Lavender puzzle)
+	- [ ] Motel/Backroom guardian monster
+	- [ ] Monster encounters
+	- [ ] Priority spell hidden in motel
+	- [ ] Lavender fight
+	- [ ] Destroy++ spell added at end of Lavender puzzle
 - [x] Puzzle block demos:
 	- [x] Laser blocks demos
 		- [x] DraggableMirror?
@@ -152,6 +151,7 @@ Demo candidate. Misc todos that must be completed before uploading to Steam.
 - [ ] Create steam page assets
 - [ ] Refactor AttackEffect input fields to use Godot::Expression?
 - [ ] Ensure future changes don't break save files (better error handling)
+- [ ] Allow player to attach spells/equipment from inventory
 - [x] Allow user to use keyboard to select targets in battle
 # The List
 ## Battle (BATT)
