@@ -1181,6 +1181,12 @@ transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 
 mesh = SubResource("PlaneMesh_n2ypl")
 surface_material_override/0 = SubResource("StandardMaterial3D_6h34i")
 
+[node name="FlyPrompt" type="Label3D" parent="Beach/HotelExteriorChunk/Chunk"]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 20, 3, -10)
+text = "If you get stuck, use Ctrl+f to enter fly mode.
+(This is a debug tool, not a part of the actual game)"
+font_size = 64
+
 [node name="BeachChunk" type="Area3D" parent="Beach" node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116, 0, 0)
 script = ExtResource("3_4g4u6")
@@ -1211,12 +1217,6 @@ font_size = 64
 [node name="WalkPrompt" type="Label3D" parent="Beach/BeachChunk/Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 42)
 text = "Use WASD to move"
-font_size = 64
-
-[node name="FlyPrompt" type="Label3D" parent="Beach/BeachChunk/Chunk"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 11, 3, 27)
-text = "If you get stuck, use Ctrl+f to enter fly mode.
-(This is a debug tool, not a part of the actual game)"
 font_size = 64
 
 [node name="InteractPrompt" type="Label3D" parent="Beach/BeachChunk/Chunk"]

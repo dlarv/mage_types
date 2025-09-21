@@ -84,7 +84,7 @@ shape = SubResource("BoxShape3D_h1qq4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/SupplyClosetToHallway"]
-transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 3.4, 4, -31.3)
+transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 3.4, 4, 6.7)
 shape = SubResource("BoxShape3D_reta6")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/SupplyClosetToHallway/CollisionShape3D2"]
@@ -98,14 +98,14 @@ script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToGolemFacility"]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 3.49997, 3.8, -18.2)
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 3.49997, 3.8, 19.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToGolemFacility/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToGolemFacility"]
-transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 23.9, 4, -26.3)
+transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 23.9, 4, 11.7)
 shape = SubResource("BoxShape3D_reta6")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToGolemFacility/CollisionShape3D2"]
@@ -119,14 +119,14 @@ script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToVortexEngine"]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 4.49997, 3.8, -18.2)
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 4.49997, 3.8, 19.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToVortexEngine/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToVortexEngine"]
-transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 4.5, 4, -27)
+transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 4.5, 5, 11)
 shape = SubResource("BoxShape3D_reta6")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToVortexEngine/CollisionShape3D2"]
@@ -140,14 +140,14 @@ script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToRails"]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 3.49997, 3.8, -18.2)
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 3.49997, 3.8, 19.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToRails/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToRails"]
-transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 6.5, 4, -26)
+transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 6.5, 4, 12)
 shape = SubResource("BoxShape3D_reta6")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToRails/CollisionShape3D2"]
@@ -161,14 +161,14 @@ script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToLaserLab"]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 18.5, 5.5, 5.8)
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 18.5, 5.5, 43.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToLaserLab/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToLaserLab"]
-transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, -5.5, 4, -4)
+transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, -5.5, 4, 34)
 shape = SubResource("BoxShape3D_reta6")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HallwayToLaserLab/CollisionShape3D2"]
@@ -364,7 +364,7 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GolemTestingFacility"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.5, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 3)
 shape = SubResource("BoxShape3D_sy7e0")
 
 [node name="Chunk" type="Node3D" parent="GolemTestingFacility"]
@@ -373,48 +373,48 @@ shape = SubResource("BoxShape3D_sy7e0")
 use_collision = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6, 3, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6, 3, 3)
 size = Vector3(34.5, 8, 34)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 4, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 4, 3)
 operation = 2
 size = Vector3(33, 8, 33)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.25, 2, -10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.25, 2, -10.5)
 size = Vector3(10.5, 4, 6)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 1, -10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1, -10.5)
 size = Vector3(10, 2, 6)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 6, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6, 2.5)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
 [node name="Geyser" parent="GolemTestingFacility/Chunk" instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0, -6.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -6.9)
 base_strength = 5.0
 
 [node name="PressurePlate" parent="GolemTestingFacility/Chunk" instance=ExtResource("5_ib2ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 0.1, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0.1, 7)
 _element = "blue"
 
 [node name="MagiclayRock" parent="GolemTestingFacility/Chunk" instance=ExtResource("6_1kab2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 5, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 5, -10)
 
 [node name="MagiclayRock2" parent="GolemTestingFacility/Chunk" instance=ExtResource("6_1kab2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 0)
 
 [node name="MagiclayRock3" parent="GolemTestingFacility/Chunk" instance=ExtResource("6_1kab2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 2, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 5)
 
 [node name="VortexEngineChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0, -17)
@@ -423,7 +423,7 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VortexEngineChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4.5, 0)
 shape = SubResource("BoxShape3D_n72vc")
 
 [node name="Chunk" type="Node3D" parent="VortexEngineChunk"]
@@ -432,59 +432,59 @@ shape = SubResource("BoxShape3D_n72vc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.86102e-06)
 
 [node name="CSGBox3D" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.5, 0)
 
 [node name="CSGBox3D2" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.5, 0)
 
 [node name="CSGBox3D3" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, 0)
 
 [node name="CSGBox3D6" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0.5, 0)
 
 [node name="CSGBox3D4" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0.5, -10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.5, -10.5)
 
 [node name="CSGBox3D5" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0.5, 9.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.5, 9.5)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 6, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 6, 1)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
 [node name="GeyserSW" parent="VortexEngineChunk/Chunk/VortexEngine" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 43.8, 2, 14.7)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.8, 2, 14.7)
 _element = "yellow"
 
 [node name="GeyserNW" parent="VortexEngineChunk/Chunk/VortexEngine" index="2"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 41.4, 2, -12.5)
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3.4, 2, -12.5)
 _element = "yellow"
 
 [node name="GeyserNE" parent="VortexEngineChunk/Chunk/VortexEngine" index="3"]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 68.7, 2, -14.7)
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 30.7, 2, -14.7)
 _element = "yellow"
 
 [node name="GeyserSE" parent="VortexEngineChunk/Chunk/VortexEngine" index="4"]
-transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 70.7, 2, 12.2)
+transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 32.7, 2, 12.2)
 _element = "yellow"
 
 [node name="EmitterSW" parent="VortexEngineChunk/Chunk/VortexEngine" index="5"]
-transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 52.1, 1.5, 3.9)
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 14.1, 1.5, 3.9)
 
 [node name="EmitterNW" parent="VortexEngineChunk/Chunk/VortexEngine" index="6"]
-transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, -2.11758e-22, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, 52.1, 1.5, -4.1)
+transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, -2.11758e-22, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, 14.1, 1.5, -4.1)
 
 [node name="EmitterNE" parent="VortexEngineChunk/Chunk/VortexEngine" index="7"]
-transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, 60.1, 1.5, -4.1)
+transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, 22.1, 1.5, -4.1)
 
 [node name="EmitterSE" parent="VortexEngineChunk/Chunk/VortexEngine" index="8"]
-transform = Transform3D(0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 60.1, 1.5, 4.1)
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, -2.11758e-22, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 22.1, 1.5, 4.1)
 
 [node name="MagiclayBoulder" parent="VortexEngineChunk/Chunk/VortexEngine" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5, 0.9, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.9, 11)
 
 [node name="Hallway" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 0, -13)
@@ -493,7 +493,7 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hallway"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6.5, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 6.5, -1.5)
 shape = SubResource("BoxShape3D_08btr")
 
 [node name="Chunk" type="Node3D" parent="Hallway"]
@@ -502,42 +502,42 @@ shape = SubResource("BoxShape3D_08btr")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -1.5)
 size = Vector3(10, 4, 36)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, -1.5)
 operation = 2
 size = Vector3(9, 4, 35)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 5.5, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, 13)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 5.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, 2)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 5.5, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5.5, 13)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 5.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5.5, -3)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 5.5, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, -12)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
@@ -549,7 +549,7 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LaserLab"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 6.5, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 6.5, -1.5)
 shape = SubResource("BoxShape3D_qkwyv")
 
 [node name="Chunk" type="Node3D" parent="LaserLab"]
@@ -559,24 +559,24 @@ use_collision = true
 collision_layer = 17
 
 [node name="CSGBox3D" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 1, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1, -1.5)
 size = Vector3(31, 4, 36)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 2, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -1.5)
 operation = 2
 size = Vector3(29, 4, 35)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5, 7, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 7, -3)
 operation = 2
 size = Vector3(2, 10, 6)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, -3)
 size = Vector3(30, 3, 6)
 material = ExtResource("22_a42or")
 
@@ -584,131 +584,131 @@ material = ExtResource("22_a42or")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -13)
 
 [node name="HiddenReceiver" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("10_3ghts")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28.05, 1.4, -5.45)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -66.05, 1.4, -5.45)
 _element = "cyan"
 
 [node name="Emitter" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("11_13twe")]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -28.05, 1.4, 5.55)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -66.05, 1.4, 5.55)
 _element = "blue"
 
 [node name="CatalystDevice" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.05, 0.4, 5.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.05, 0.4, 5.15)
 
 [node name="Emitter3" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("11_13twe")]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -23.75, 1.4, 5.55)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -61.75, 1.4, 5.55)
 _element = "blue"
 
 [node name="Lens" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("13_m7ws3")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -23.7459, 1.4, -1.4)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -61.7459, 1.4, -1.4)
 
 [node name="CatalystDevice3" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.75, 0.4, 5.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.75, 0.4, 5.15)
 
 [node name="CatalystDevice4" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.75, 0.4, -1.85)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.75, 0.4, -1.85)
 
 [node name="LaserReceiver" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("13_0axfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.8, 1.1, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.8, 1.1, -5.5)
 _element = "cyan"
 
 [node name="Emitter2" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("11_13twe")]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -33.05, 1.4, 5.55)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -71.05, 1.4, 5.55)
 _element = "blue"
 
 [node name="LaserReceiver2" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("13_0axfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8, 1.1, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8, 1.1, -5.5)
 _element = "cyan"
 
 [node name="CatalystDevice2" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.05, 0.4, 5.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.05, 0.4, 5.15)
 
 [node name="Indicator" parent="LaserLab/Chunk/LaserAndReceiverDemo" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3, 1, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.3, 1, -5.5)
 block = NodePath("../LaserReceiver")
 
 [node name="Indicator2" parent="LaserLab/Chunk/LaserAndReceiverDemo" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1, 1, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1, 1, -5.5)
 block = NodePath("../HiddenReceiver")
 
 [node name="Indicator3" parent="LaserLab/Chunk/LaserAndReceiverDemo" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3, 1, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.3, 1, -5.5)
 block = NodePath("../LaserReceiver2")
 
 [node name="RedirectDemo" type="Node3D" parent="LaserLab/Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 6)
 
 [node name="LaserRedirect" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("20_wqd4m")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.8, 0.9, -15)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -57.8, 0.9, -15)
 
 [node name="DraggableEmitter" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("21_a42or")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.8, 0.9, -15)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.8, 0.9, -15)
 
 [node name="DraggableEmitter2" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("21_a42or")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8, 0.9, -15)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -52.8, 0.9, -15)
 
 [node name="CatalystDevice6" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8, 0.4, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.8, 0.4, -14)
 
 [node name="CatalystDevice7" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8, 0.4, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.8, 0.4, -14)
 
 [node name="CatalystDevice8" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 0.4, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8, 0.4, -14)
 
 [node name="Mirror" parent="LaserLab/Chunk" instance=ExtResource("24_te4ju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 9)
 _element = "magenta"
 
 [node name="Emitter" parent="LaserLab/Chunk" instance=ExtResource("11_13twe")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20, 1.4, 16)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18, 1.4, 16)
 _element = "blue"
 
 [node name="LaserReceiver" parent="LaserLab/Chunk" instance=ExtResource("13_0axfp")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.7, 1, 9)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.3, 1, 9)
 _element = "blue"
 
 [node name="OneWayLensDemo" type="Node3D" parent="LaserLab/Chunk"]
 
 [node name="DraggableEmitter" parent="LaserLab/Chunk/OneWayLensDemo" instance=ExtResource("21_a42or")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.2, 0.9, 1)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.8, 0.9, 1)
 _element = "magenta"
 
 [node name="DraggableEmitter2" parent="LaserLab/Chunk/OneWayLensDemo" instance=ExtResource("21_a42or")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.2, 0.9, 3)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.8, 0.9, 3)
 _element = "magenta"
 
 [node name="OneWayLens" parent="LaserLab/Chunk/OneWayLensDemo" instance=ExtResource("26_h5ji8")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, 1, 3)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 1, 3)
 
 [node name="RotatingMirrorDemo" type="Node3D" parent="LaserLab/Chunk"]
 
 [node name="Emitter2" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("11_13twe")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 20.5, 1, 9)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -17.5, 1, 9)
 _element = "red"
 
 [node name="RotatableMirror" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("27_lojfm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31, 0, 9)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0, 9)
 _element = "yellow"
 
 [node name="LaserReceiver" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("13_0axfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7, 1, 0.299999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 1, 0.299999)
 _element = "blue"
 
 [node name="LaserReceiver2" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("13_0axfp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.7, 1, 15.8)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.3, 1, 15.8)
 _element = "orange"
 
 [node name="DraggableMirrorDemo" type="Node3D" parent="LaserLab/Chunk"]
 
 [node name="DraggableMirror" parent="LaserLab/Chunk/DraggableMirrorDemo" instance=ExtResource("29_f27vr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37, 0, 8)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 8)
 
 [node name="Emitter2" parent="LaserLab/Chunk/DraggableMirrorDemo" instance=ExtResource("11_13twe")]
-transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 42.5, 1.6, 5)
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 4.5, 1.6, 5)
 _element = "red"
 
 [node name="LaserReceiver" parent="LaserLab/Chunk/DraggableMirrorDemo" instance=ExtResource("13_0axfp")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 41.7, 0, 15.8)
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 3.7, 0, 15.8)
 _element = "red"
 
 [node name="RailwayDemoChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
@@ -718,7 +718,7 @@ chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RailwayDemoChunk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 5, 5)
 shape = SubResource("BoxShape3D_ji4qd")
 
 [node name="Chunk" type="Node3D" parent="RailwayDemoChunk"]
@@ -728,50 +728,56 @@ use_collision = true
 collision_layer = 17
 
 [node name="CSGBox3D" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1.5, 5)
 size = Vector3(20, 4, 30)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.5, 5)
 operation = 2
 size = Vector3(19, 4, 29)
 material = ExtResource("22_a42or")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 6, 0)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
 [node name="LaserReceiver3" parent="RailwayDemoChunk/Chunk" instance=ExtResource("13_0axfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -9.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 1, -9.3)
 
 [node name="Rails" parent="RailwayDemoChunk/Chunk" instance=ExtResource("23_n72vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4.3)
 
+[node name="PointA" parent="RailwayDemoChunk/Chunk/Rails" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 0)
+
 [node name="PointB" parent="RailwayDemoChunk/Chunk/Rails" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, 0)
 
 [node name="Mirror" parent="RailwayDemoChunk/Chunk/Rails" instance=ExtResource("24_te4ju")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38, 0, 0)
 
 [node name="Rails2" parent="RailwayDemoChunk/Chunk" instance=ExtResource("23_n72vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4.3)
 
+[node name="PointA" parent="RailwayDemoChunk/Chunk/Rails2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 0)
+
 [node name="PointB" parent="RailwayDemoChunk/Chunk/Rails2" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, -4, 0)
 
 [node name="Mirror" parent="RailwayDemoChunk/Chunk/Rails2" instance=ExtResource("24_te4ju")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38, -4, 0)
 is_vertically_static = false
 scaling_factor = Vector3(1, 4, 1)
 
 [node name="Emitter1" parent="RailwayDemoChunk/Chunk" instance=ExtResource("11_13twe")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -9, 1, -4.3)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -47, 1, -4.3)
 
 [node name="Emitter2" parent="RailwayDemoChunk/Chunk" instance=ExtResource("11_13twe")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, 1, -4.3)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -37, 1, -4.3)
 
 [node name="PathPiston" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("25_81dig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.1, 3)
@@ -779,59 +785,62 @@ puzzle_block = NodePath("../Button")
 instance_count = 5
 instance_offset = Vector3(0, 0, 1)
 
+[node name="PointA" parent="RailwayDemoChunk/Chunk/PathPiston/Rails" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 0)
+
 [node name="PointB" parent="RailwayDemoChunk/Chunk/PathPiston/Rails" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails" index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1.5, 0)
 shape = SubResource("BoxShape3D_81dig")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1.5, 0)
 mesh = SubResource("BoxMesh_81dig")
 
 [node name="Button" parent="RailwayDemoChunk/Chunk" instance=ExtResource("3_ybmg7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, 3)
 toggle_mode = false
 
 [node name="Pulser" parent="RailwayDemoChunk/Chunk" instance=ExtResource("30_ji4qd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 1, 13)
 wait_time = 0.1
 
 [node name="MirrorPiston" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -1, 0, 11)
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -39, 0, 11)
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
 [node name="MirrorPiston2" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -6, 0, 11)
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -44, 0, 11)
 mirror_rotation = 90.0
 start_position = "down"
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
 [node name="MirrorPiston3" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -6, 0, 16)
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -44, 0, 16)
 mirror_rotation = -180.0
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
 [node name="MirrorPiston4" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -1, 0, 16)
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -39, 0, 16)
 mirror_rotation = -90.0
 start_position = "down"
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
 [node name="Gear" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("31_qkwyv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.5, 4, 5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.5, 4, 5)
 puzzle_block = NodePath("../Pulser2")
 amount_degrees = 45.0
 
 [node name="Pulser2" parent="RailwayDemoChunk/Chunk" instance=ExtResource("30_ji4qd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 1, 4)
 wait_time = 1.0
 
 [connection signal="element_selected" from="MainCloset/SupplyClosetChunk/PressurePlateDemo/CatalystDevice" to="MainCloset/SupplyClosetChunk/PressurePlateDemo/CatalystPlatform" method="set_element"]
