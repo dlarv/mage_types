@@ -56,6 +56,9 @@
 - Physical fatigue, but extreme mental clarity
 - Apathy
 - Deepened connection with fabric of reality
+- Extreme vanity
+- Turning inward (mentally)
+- Sudden interest in philosophy
 
 **Magic**
 - Defensive and buffing self
