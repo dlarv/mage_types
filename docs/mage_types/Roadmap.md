@@ -37,6 +37,10 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 	- [ ] Puzzles to obtain
 - [ ] Lock and key system
 - [ ] Allow player to attach spells/equipment from inventory
+- [ ] Refactor wild enemy spawners
+	- [ ] Give spawner enemy base templates 
+		- `WildEnemyActor: Node3D` is for spawners/random enemies.
+		- `EnemyActor: Node3D` is for bosses & other static encounters
 - [ ] Puzzle block demos:
 	- [x] Rails demo
 		- [ ] Give Rail puzzleblock a model
