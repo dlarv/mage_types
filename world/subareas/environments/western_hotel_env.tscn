@@ -235,11 +235,13 @@ surface_material_override/1 = ExtResource("3_7mqsg")
 navigation_mesh = SubResource("NavigationMesh_7mqsg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="LHallway" index="1"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LHallway/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_76y0d")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="LHallway_001" index="0"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LHallway_001/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_oxmv5")
