@@ -208,24 +208,24 @@ speed, 90
 ## BST
 These are all hypothetical numbers, really only useful for comparing a monster's stats to itself. Still, I think its interesting to see which monsters I gave high totals to.
 ```tinychart
-coral, 490
-mold, 470
 wraith, 580
-spectre, 440
-jester, 540
-barker, 510
-crypt, 490
-chapel, 540
-vessel, 500
 researcher, 580
-spaz, 550
 songbird, 580
-crystal, 530
+jester, 540
+chapel, 540
+spaz, 550
 wyrm, 550
 sapphire, 540
+crystal, 530
+barker, 510
+vessel, 500
+coral, 490
+crypt, 490
 diamond, 480
+mold, 470
+spectre, 440
 ```
-# Blue Area Monsters
+# Blue Areas Monsters
 These are monsters found in the Hotel, Beach, Caves, and Poolroom areas.
 ## Crinoid
 Blue, Blue
@@ -241,4 +241,7 @@ Cyan, Green
 These strange creatures live on and around the ice machines found throughout the hotel.
 ## Imp
 Purple, Purple
-Wispy and fast. Mostly seen as a blur of blades and teeth.
+Wispy and fast.
+## Purple Scorpion
+Purple, any
+Large, carnivorous monsters.
