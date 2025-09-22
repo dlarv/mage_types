@@ -19,7 +19,7 @@ size = Vector3(2, 0.4, 2)
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp0kv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf55b"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8wmk"]
@@ -68,21 +68,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226855, 0)
 shape = SubResource("BoxShape3D_3422r")
 
 [node name="Marker3D_South" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 2)
 
 [node name="Marker3D_North" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -2)
 
 [node name="Marker3D_East" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.3, 0)
 
 [node name="Marker3D_West" type="Marker3D" parent="Draggable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.3, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 0)
 mesh = SubResource("PrismMesh_0occk")
-surface_material_override/0 = SubResource("StandardMaterial3D_lp0kv")
+surface_material_override/0 = SubResource("StandardMaterial3D_uf55b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 2.18557e-08)
@@ -92,6 +92,7 @@ shape = SubResource("BoxShape3D_n8wmk")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.919238, 1, 0)
 
 [node name="SubReceiverX" parent="." instance=ExtResource("4_u0nan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.00771, 0)
@@ -101,12 +102,14 @@ shape = SubResource("BoxShape3D_stuax")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.00729)
 
 [node name="SubReceiverZ" parent="." instance=ExtResource("4_u0nan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverZ"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00771, 0.55)
 shape = SubResource("BoxShape3D_1rmwu")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 16
 collision_mask = 0
 
@@ -115,6 +118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55056, 0.980872, 0.55056)
 shape = SubResource("BoxShape3D_udp2s")
 
 [node name="Blocker" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 collision_layer = 0
 collision_mask = 0
 monitoring = false
