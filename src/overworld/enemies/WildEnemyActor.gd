@@ -115,4 +115,3 @@ func _on_battle_trigger_body_entered(body:Node3D) -> void:
 		get_tree().call_group("wild_enemies", "_start_battle_cooldown")
 		body.call_deferred("start_battle", self)
 		queue_free()
-
