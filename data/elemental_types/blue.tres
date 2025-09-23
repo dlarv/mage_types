@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_0ymbd")
 name = "Blue"
-main_color = Color(0, 0, 1, 1)
+main_color = Color(0, 0, 0.862745, 1)
 is_defensive_type = true
 text_color = Color(1, 1, 1, 1)
 color_palette = Array[Color]([])
