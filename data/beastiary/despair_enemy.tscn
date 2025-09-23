@@ -1,0 +1,78 @@
+[gd_scene load_steps=18 format=3 uid="uid://b8drm0dljf2wc"]
+
+[ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_00ir8"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_fugro"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_dhfvo"]
+[ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="4_dhfvo"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="4_olt0l"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="5_shrlj"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="6_u31sm"]
+[ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_dhfvo"]
+
+[sub_resource type="Resource" id="Resource_s6b3u"]
+script = ExtResource("4_olt0l")
+_base_melee_attack = 100.0
+_base_ranged_attack = 100.0
+_base_melee_defense = 100.0
+_base_ranged_defense = 100.0
+_base_speed = 100.0
+_base_evasion = 100.0
+hp = 200.0
+
+[sub_resource type="Resource" id="Resource_rovan"]
+script = ExtResource("2_fugro")
+name = "Despair"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_s6b3u")
+reset_hp_after_battle = false
+_element1 = "purple"
+_element2 = "purple"
+_alignment = "purple"
+attacks = Array[ExtResource("3_dhfvo")]([ExtResource("4_dhfvo")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_x8pnq"]
+script = ExtResource("8_dhfvo")
+dialog_ids = Array[ExtResource("5_shrlj")]([])
+reward_xp = 0.0
+reward_items = Array[ExtResource("6_u31sm")]([])
+metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fugro"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dhfvo"]
+
+[sub_resource type="Gradient" id="Gradient_olt0l"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_shrlj"]
+gradient = SubResource("Gradient_olt0l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u31sm"]
+albedo_texture = SubResource("GradientTexture1D_shrlj")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrer7"]
+
+[node name="DespairEnemy" type="CharacterBody3D"]
+script = ExtResource("1_00ir8")
+team = Array[ExtResource("2_fugro")]([SubResource("Resource_rovan")])
+ai = SubResource("Resource_x8pnq")
+is_transmutable = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fugro")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_dhfvo")
+surface_material_override/0 = SubResource("StandardMaterial3D_u31sm")
+
+[node name="BattleTrigger" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_yrer7")

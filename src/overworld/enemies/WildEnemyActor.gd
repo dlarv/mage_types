@@ -2,6 +2,42 @@
 extends MagiClay
 class_name WildEnemyActor
 
+@export_tool_button("Create Skeleton") 
+var create_skeleton := func() -> void:
+	var collider1 := CollisionShape3D.new()
+	add_child(collider1, true)
+	collider1.owner = get_tree().edited_scene_root
+	collider1.shape = CapsuleShape3D.new()
+	collider1.position.y = 1
+
+	var mesh := MeshInstance3D.new()
+	mesh.mesh = CapsuleMesh.new()
+	mesh.position.y = 1
+	add_child(mesh, true)
+	mesh.owner = get_tree().edited_scene_root
+
+	var mat := StandardMaterial3D.new()
+	var tex := GradientTexture1D.new()
+	tex.gradient = Gradient.new()
+	tex.gradient.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CONSTANT
+	tex.gradient.set_offset(0, 0.5)
+	tex.gradient.set_offset(1, 0.0)
+	mat.albedo_texture = tex
+	mesh.set_surface_override_material(0, mat)
+
+	var area := Area3D.new()
+	area.name = "BattleTrigger"
+	add_child(area, true)
+	area.owner = get_tree().edited_scene_root
+	area.body_entered.connect(_on_battle_trigger_body_entered)
+
+	var collider2 := CollisionShape3D.new()
+	area.add_child(collider2, true)
+	collider2.owner = get_tree().edited_scene_root
+	collider2.shape = CapsuleShape3D.new()
+	collider2.position.y = 1
+
+
 @export var use_placeholder_mesh := true
 @export var team: Array[BattleActor]
 @export var ai: OpponentController
