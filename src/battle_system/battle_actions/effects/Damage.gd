@@ -31,7 +31,7 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, user:
 	if not user.alignment.is_blank() and current_buffer.action.element == user.alignment:
 		effectiveness += ALIGNMENT_BONUS
 
-	var power := strength + max(strength * float(user.level - current_buffer.target.level) / 10.0, 0)
+	var power: float = strength / 4.0 + (strength * float(user.level) / 10.0)
 	var dmg := power * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
 	Logger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
