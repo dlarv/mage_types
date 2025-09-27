@@ -55,7 +55,7 @@ func _create_wild_enemy_actor() -> WildEnemyActor:
 	var teamCount := randi_range(team_count_range.x, team_count_range.y)
 
 	for i in teamCount - 1:
-		enemyLeader.add_ally(_get_rand_enemy)
+		enemyLeader.add_ally(_get_rand_enemy())
 
 	for i in len(enemyLeader.team):
 		var lvl := randi_range(level_range.x, level_range.y)
