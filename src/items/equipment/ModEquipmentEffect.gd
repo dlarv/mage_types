@@ -2,7 +2,7 @@
 extends _EquipmentEffect
 class_name ModEquipmentEffect
 
-enum Type { PREVENT_DEFEAT, TRAINING_WHEELS, NONE }
+enum Type { PREVENT_DEFEAT, TRAINING_WHEELS, HAMMER, NONE }
 
 @export var type := Type.NONE: set = _set_type
 var method_name: StringName
@@ -30,6 +30,8 @@ func equip(actor: BattleActor) -> void:
 			print("DEBUG: " + str(get_meta("prevent_defeat")))
 		Type.TRAINING_WHEELS:
 			actor.add_func_override(method_name, _training_wheels.bind(actor))
+		Type.HAMMER:
+			actor.add_func_override(method_name, _hammer_init.bind(actor))
 
 	Logger.append_battle_log("%s equipment altered %s.%s(...)" % [str(type), actor.name, method_name])
 
@@ -90,6 +92,28 @@ func _training_wheels(effect: StatusEffect, actor: BattleActor) -> bool:
 	return true
 
 
+func _hammer_init(actor: BattleActor) -> void:
+	var slot := EffectSlot.new()
+	slot.chance = 0.3
+	slot.attack_effect = StatusEffect.new()
+	slot.attack_effect.id = StatusEffect.Effects.FLINCH
+	slot.effect_target = EffectSlot.EffectTarget.TARGET
+
+	for attack in actor.attacks:
+		if attack.attack_range != Attack.AttackRange.MELEE: continue
+
+		attack.resource_local_to_scene = true
+		attack.effects.append(slot)
+		Logger.append_battle_log("Added flinch to %s" % attack.name)
+
+	actor.battle_resolution_completed.connect(func() -> void:
+		for attack in actor.attacks:
+			attack.effects.remove_at(len(attack.effects) - 1)
+			Logger.append_battle_log("Remove flinch from %s" % attack.name)
+	)
+	actor.battle_setup_completed.emit()
+
+
 func _set_type(val: Type) -> void:
 	var actor := BattleActor.new()
 	type = val
@@ -99,3 +123,5 @@ func _set_type(val: Type) -> void:
 			set_meta("prevent_defeat", {} as Dictionary[BattleActor, bool])
 		Type.TRAINING_WHEELS:
 			method_name = actor.add_status_effect.get_method()
+		Type.HAMMER:
+			method_name = actor.setup.get_method()

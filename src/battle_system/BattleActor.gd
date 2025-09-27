@@ -3,6 +3,7 @@ extends Resource
 class_name BattleActor 
 
 signal battle_setup_completed
+signal battle_resolution_completed
 @warning_ignore("unused_signal")
 signal turn_ended()
 signal was_just_defeated()
@@ -106,11 +107,12 @@ var is_defeated: bool:
 var aleady_defeated: bool = false
 
 var _msgs: Array[String] = []
-# Dict<StringName, Callable> 
-var _func_overrides := {}
-
+var _func_overrides: Dictionary[StringName, Callable] = {}
 
 func setup() -> void:
+	if _func_overrides.has(setup.get_method()):
+		_func_overrides.get(setup.get_method()).call()
+		return
 	battle_setup_completed.emit()
 
 
@@ -352,6 +354,8 @@ func resolve_end_of_battle(turnCounter: int) -> String:
 
 	is_defeated = false
 	aleady_defeated = false
+
+	battle_resolution_completed.emit()
 	return output
 
 
