@@ -50,13 +50,19 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 			actions[i] = null
 		else:
 			var attack: Attack = team[i].attacks.pick_random()
+			var target := _get_random_targets(attack, team[i], otherTeam)
 			actions[i] = ActorAction.new(
 				team[i], 
 				attack,
-				_get_random_targets(attack, team[i], otherTeam),  
+				target,  
 				TEAM_INDEX
 			)
 			team[i].action_selected.emit(attack)
+
+			var targetName := ",".join(target.map(func(t: BattleActor) -> String: return t.name))
+
+			Logger.append_battle_ai_log("%s is using %s against %s.\n"
+					% [team[i].name, attack.name, targetName])
 	return actions
 
 

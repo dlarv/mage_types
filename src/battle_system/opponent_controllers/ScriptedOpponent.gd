@@ -35,6 +35,10 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 
 		actions.append(ActorAction.new(actor, attack, target, TEAM_INDEX))
 		actor.action_selected.emit(attack)
+
+		var targetName := ",".join(target.map(func(t: BattleActor) -> String: return t.name))
+		Logger.append_battle_ai_log("%s is using %s against %s.\n"
+				% [actor.name, attack.name, targetName])
 	
 	return actions
 
