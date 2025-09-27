@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://chuyluogsxeer"]
+[gd_scene load_steps=116 format=4 uid="uid://chuyluogsxeer"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cu1rkwx4wepl8" path="res://world/subareas/maintenance_halls/maintenance_sequence.tscn" id="4_pijpb"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="5_7u0ak"]
 [ext_resource type="PackedScene" uid="uid://dpdgg0dpuuuak" path="res://world/subareas/maintenance_halls/maintenance_room.tscn" id="5_cjwri"]
-[ext_resource type="PackedScene" uid="uid://b8drm0dljf2wc" path="res://data/beastiary/despair_enemy.tscn" id="6_uq05v"]
+[ext_resource type="PackedScene" uid="uid://cy856wmp85b2e" path="res://data/beastiary/tests/p_default.tscn" id="7_gvcax"]
+[ext_resource type="PackedScene" uid="uid://1j4ube5clyn" path="res://data/beastiary/tests/b_default.tscn" id="7_khxla"]
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/3d/shaders/clay_shader/clay.tres" id="7_pijpb"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="7_uuft6"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_uq05v"]
@@ -562,10 +563,9 @@ shape = SubResource("BoxShape3D_wbhcu")
 [node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToBackrooms" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="MainHallToBackrooms" type="Area3D" parent="Doors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9, 0, -29)
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToBackrooms"]
@@ -739,7 +739,10 @@ _element = "purple"
 
 [node name="Spawner" parent="LHallChunk/Chunk" instance=ExtResource("4_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.5, 0)
-enemy_pool = Array[PackedScene]([ExtResource("6_uq05v")])
+weighted_enemy_pool = Dictionary[PackedScene, float]({
+ExtResource("7_khxla"): 100.0,
+ExtResource("7_gvcax"): 100.0
+})
 max_spawn_count = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LHallChunk/Chunk/Spawner"]
@@ -921,9 +924,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202, 0, -51)
 start_point = NodePath("START")
 sequence = Array[int]([0, 1, 2, 6])
 
-[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0" node_paths=PackedStringArray("point_2")]
+[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0"]
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("@Marker3D@48764")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/0To1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.5, -10.5)
@@ -968,9 +970,8 @@ shape = SubResource("BoxShape3D_gdoww")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4" node_paths=PackedStringArray("point_2")]
+[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4"]
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("@Marker3D@48765")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/1To2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 3.5, 10.5)
@@ -1015,9 +1016,8 @@ shape = SubResource("BoxShape3D_qrtyx")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8" node_paths=PackedStringArray("point_2")]
+[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8"]
 script = ExtResource("1_r5uk5")
-point_2 = NodePath("@Marker3D@48766")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/2To3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 60.5, 3.5, 0)

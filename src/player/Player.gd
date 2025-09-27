@@ -53,6 +53,12 @@ func _ready() -> void:
 		var spawnPoint: Node3D = get_tree().get_current_scene().get_node("%PlayTestModeSpawnPoint")
 		if spawnPoint:
 			global_position = spawnPoint.global_position
+	
+	team = [ battle_actor ]
+	for ally in _active_party:
+		for actor in _active_party:
+			team.append(_playable_characters[actor])
+	team_changed.emit(team)
 
 
 func start_battle(npc: Variant) -> void:
