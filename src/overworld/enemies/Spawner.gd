@@ -61,7 +61,7 @@ func _create_wild_enemy_actor() -> WildEnemyActor:
 		var lvl := randi_range(level_range.x, level_range.y)
 		enemyLeader.set_level(lvl, i)
 
-	enemyLeader.select_reward_items()
+	enemyLeader.select_rewards()
 	return enemyLeader
 
 func _get_rand_enemy() -> WildEnemyActor:

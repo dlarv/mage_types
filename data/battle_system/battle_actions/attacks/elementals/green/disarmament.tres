@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_fvnsn"]
 script = ExtResource("3_e8jau")
 stat = 0
-clear_first = true
+op = null
 is_side_effect = false
 id = 6
 _duration = "0"
@@ -29,7 +29,7 @@ _chance = "1.0"
 resource_name = "Defense Boost"
 script = ExtResource("3_e8jau")
 stat = 3
-clear_first = true
+op = 0
 is_side_effect = false
 id = 6
 _duration = "0"
