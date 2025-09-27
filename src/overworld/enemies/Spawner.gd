@@ -44,7 +44,8 @@ func _get_rand_enemy() -> WildEnemyActor:
 		enemyLeader.add_ally(enemy_pool.pick_random().instantiate())
 
 	for i in len(enemyLeader.team):
-		enemyLeader.team[i].level = randi_range(level_range.x, level_range.y)
+		var lvl := randi_range(level_range.x, level_range.y)
+		enemyLeader.set_level(lvl, i)
 
 	return enemyLeader
 

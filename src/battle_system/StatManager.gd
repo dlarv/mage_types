@@ -90,6 +90,23 @@ func get_base_stat(stat: Stats) -> float:
 		Stats.HP: return hp 
 		_: return -1
 
+func raise_base_stat(stat: Stats, val: float) -> void:
+	match stat:
+		Stats.MELEE_ATTACK: 
+			_base_melee_attack += val
+		Stats.RANGED_ATTACK: 
+			_base_ranged_attack += val
+		Stats.MELEE_DEFENSE: 
+			_base_melee_defense += val
+		Stats.RANGED_DEFENSE: 
+			_base_ranged_defense += val
+		Stats.SPEED: 
+			_base_speed += val
+		Stats.EVASION: 
+			_base_evasion += val
+		Stats.HP: 
+			hp += val
+
 func mod_base_stat(stat: Stats, amount: float, minAmount:=0.0) -> void:
 	match stat:
 		Stats.MELEE_ATTACK: 

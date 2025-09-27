@@ -100,6 +100,19 @@ func add_ally(other: Variant) -> void:
 		team.append_array(other.team)
 
 
+func set_level(level: int, id:=0) -> void:
+	var diff := level - team[id].level
+	if diff == 0: return
+	team[id].level = level
+
+	const S := StatManager.Stats
+	for stat: S in [S.MELEE_ATTACK, S.RANGED_ATTACK, S.MELEE_DEFENSE, S.RANGED_DEFENSE, S.SPEED, S.HP]:
+		# Everytime player levels up, they receive +12 BST.
+		# This attempts to mimic that somewhat.
+		var base := randf_range(0, 3)
+		team[id].stat_manager.raise_base_stat(stat, base * diff)
+
+
 func _set_mesh_color(id: int, color: ElementalType) -> void:
 	if use_placeholder_mesh:
 		var texture: GradientTexture1D = mesh.get_surface_override_material(0).albedo_texture
