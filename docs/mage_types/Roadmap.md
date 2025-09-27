@@ -24,14 +24,21 @@
 [[version_naming_scheme]]
 ## v0.6.x
 West and Central Hotel content update. Add puzzles and combat challenges to hotel, along with necessary mechanics to support these features.
-- [ ] Refactor wild enemy spawners
+- [ ] Make playtesting enemies easier
+	- [ ] Show levels in UI
+	- [ ] Set player's level in debug mode
+	- [ ] Create testing room to playtest different enemies
+	- [ ] Create debug spawner to make instantiating specific enemies easier
+		- [ ] Set level and starting config
+		- [ ] Summon monsters directly from the beastiary?
+	- [ ] Lay groundwork for gauntlet style challenge later
+		- [ ] Battle queue
+- [x] Refactor wild enemy spawners
 	- [x] Give spawner enemy base templates 
-		- `WildEnemyActor: Node3D` is for spawners/random enemies.
-		- `EnemyActor: Node3D` is for bosses & other static encounters
-	- [ ] Set custom spawn% for each enemy
-	- [ ] Allow spawner to adjust stats/etc of instantiated enemies
+	- [x] Set custom spawn% for each enemy
+	- [x] Allow spawner to adjust stats/etc of instantiated enemies
 - [ ] Upper West Hotel challenges
-	- [ ] Add puzzle
+	- [x] Add puzzle
 	- [ ] Reward for solving puzzle
 	- [ ] Add enemy encounters
 - [ ] Add Magenta kitchen and breakfast

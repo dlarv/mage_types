@@ -244,6 +244,7 @@ Some areas will only be accessible thru the halls.
 	- After being broken down, the rooms seemed much smaller than they remembered.
 - The broken walls would be a good place to insert the old Catalyst puzzle trick (player can direct laser thru crack in wall, hitting an unobtrusive receiver).
 	- I added a large, open space to the western half of this room. I should have enough room to make a simple laser puzzle.
+	- This western half will be sitting on a pile of rubbl
 - The eastern half of this room will have multiple mob spawners. It'll be a good place for the player to grind a few levels.
 ## Caves
 This website can be used to create procedurally generated cave maps: https://watabou.itch.io/cave-generator.
