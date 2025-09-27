@@ -12,13 +12,13 @@ var MIN_MOD := 0.1
 var MAX_MOD := 3.0
 
 @export_category("Base Stats")
-@export var _base_melee_attack: float = 100
-@export var _base_ranged_attack: float = 100
-@export var _base_melee_defense: float = 100
-@export var _base_ranged_defense: float = 100
-@export var _base_speed: float = 100
+@export var _base_melee_attack: float = 10.0
+@export var _base_ranged_attack: float = 10.0
+@export var _base_melee_defense: float = 10.0
+@export var _base_ranged_defense: float = 10.0
+@export var _base_speed: float = 10.0
 @export var _base_evasion: float = 100
-@export var hp := 200.0:
+@export var hp := 50.0:
 	set(value):
 		hp = value
 		current_hp = value
