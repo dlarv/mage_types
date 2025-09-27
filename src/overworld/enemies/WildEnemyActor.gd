@@ -28,8 +28,12 @@ var create_skeleton := func() -> void:
 	var area := Area3D.new()
 	area.name = "BattleTrigger"
 	add_child(area, true)
+	area.collision_mask = 32
+	area.collision_layer = 0
 	area.owner = get_tree().edited_scene_root
-	area.body_entered.connect(_on_battle_trigger_body_entered)
+	
+	# This must be done manually.
+	# area.body_entered.connect(_on_battle_trigger_body_entered)
 
 	var collider2 := CollisionShape3D.new()
 	area.add_child(collider2, true)
@@ -97,7 +101,7 @@ func add_ally(other: Variant) -> void:
 	if other is BattleActor:
 		team.append(other)
 	elif other is WildEnemyActor:
-		team.append_array(other.team)
+		team.append_array(other.team.map(func(x: BattleActor) -> BattleActor: return x.duplicate()))
 
 		for item: _Item in other.reward_items:
 			if reward_items.has(item):
@@ -121,9 +125,9 @@ func set_level(level: int, id:=0) -> void:
 
 	const S := StatManager.Stats
 	for stat: S in [S.MELEE_ATTACK, S.RANGED_ATTACK, S.MELEE_DEFENSE, S.RANGED_DEFENSE, S.SPEED, S.HP]:
-		# Everytime player levels up, they receive +12 BST.
+		# Everytime player levels up, they receive +18 BST.
 		# This attempts to mimic that somewhat.
-		var base := randf_range(0, 3)
+		var base := randf_range(0, PlayerStatManager.MAX_STAT_POINTS + 1)
 		team[id].stat_manager.raise_base_stat(stat, base * diff)
 
 
