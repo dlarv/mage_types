@@ -64,6 +64,7 @@
 - Defensive and buffing self
 - Blue is a very self centered element, it mostly focuses on itself and doesn't synergize super well.
 	- Blue attacks should have multiple attacks that use the [[#Scaling Factor|double match]].
+- Speed control
 - Weak synergy with other defensive types
 - Poor synergy with offensive types
 
