@@ -10,12 +10,13 @@ const MODIFIER := 0.3
 		var dir := "Drop" if strength < 0 else "Boost"
 		name = "%s %s" % [
 			" ".join(Array(StatManager.Stats.keys()[stat].split("_"))
-			.map(func(x: String) -> String: 
-				return x.capitalize())),
+					.map(func(x: String) -> String: 
+						return x.capitalize())
+				),
 			dir
 		]
 
-## If true, set target's stat to 0 before apply buff/debuff.
+## If true, set target's stat to 1 before apply buff/debuff.
 @export var clear_first := false
 
 ## DO NOT CHANGE IN INSPECTOR!
