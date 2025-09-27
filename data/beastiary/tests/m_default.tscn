@@ -1,0 +1,86 @@
+[gd_scene load_steps=19 format=3 uid="uid://bmgb3mnlfansq"]
+
+[ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_jmypm"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_mev05"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_isrsk"]
+[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="4_jmypm"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_mp868"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_hd40v"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_5o4mo"]
+[ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_v104q"]
+[ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/overworld/enemies/components/behaviors/aggressive_behavior.tscn" id="9_ky2ok"]
+
+[sub_resource type="Resource" id="Resource_jjxj6"]
+script = ExtResource("5_mp868")
+_base_melee_attack = 3.0
+_base_ranged_attack = 3.0
+_base_melee_defense = 18.0
+_base_ranged_defense = 15.0
+_base_speed = 7.0
+_base_evasion = 100.0
+hp = 65.0
+
+[sub_resource type="Resource" id="Resource_7jftm"]
+script = ExtResource("2_mev05")
+name = "Default Magenta"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_jjxj6")
+reset_hp_after_battle = true
+_element1 = "magenta"
+_element2 = "magenta"
+_alignment = "magenta"
+attacks = Array[ExtResource("3_isrsk")]([ExtResource("4_jmypm")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_x8pnq"]
+script = ExtResource("8_v104q")
+dialog_ids = Array[ExtResource("6_hd40v")]([])
+reward_xp = 0.0
+reward_items = Array[ExtResource("7_5o4mo")]([])
+metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_etfuu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_46v11"]
+
+[sub_resource type="Gradient" id="Gradient_f82m6"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(1, 0.12549, 1, 1, 1, 0.12549, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_odypl"]
+gradient = SubResource("Gradient_f82m6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81u14"]
+albedo_texture = SubResource("GradientTexture1D_odypl")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wvewt"]
+radius = 0.6
+
+[node name="DefaultMagenta" type="CharacterBody3D"]
+script = ExtResource("1_jmypm")
+team = Array[ExtResource("2_mev05")]([SubResource("Resource_7jftm")])
+ai = SubResource("Resource_x8pnq")
+is_transmutable = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_etfuu")
+
+[node name="AggressiveBehavior" parent="." instance=ExtResource("9_ky2ok")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_46v11")
+surface_material_override/0 = SubResource("StandardMaterial3D_81u14")
+
+[node name="BattleTrigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wvewt")
+
+[connection signal="body_entered" from="BattleTrigger" to="." method="_on_battle_trigger_body_entered"]

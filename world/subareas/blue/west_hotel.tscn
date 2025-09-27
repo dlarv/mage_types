@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://chuyluogsxeer"]
+[gd_scene load_steps=115 format=4 uid="uid://chuyluogsxeer"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cu1rkwx4wepl8" path="res://world/subareas/maintenance_halls/maintenance_sequence.tscn" id="4_pijpb"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="5_7u0ak"]
 [ext_resource type="PackedScene" uid="uid://dpdgg0dpuuuak" path="res://world/subareas/maintenance_halls/maintenance_room.tscn" id="5_cjwri"]
-[ext_resource type="PackedScene" uid="uid://cy856wmp85b2e" path="res://data/beastiary/tests/p_default.tscn" id="7_gvcax"]
-[ext_resource type="PackedScene" uid="uid://1j4ube5clyn" path="res://data/beastiary/tests/b_default.tscn" id="7_khxla"]
+[ext_resource type="PackedScene" uid="uid://b8drm0dljf2wc" path="res://data/beastiary/despair_enemy.tscn" id="6_uq05v"]
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/3d/shaders/clay_shader/clay.tres" id="7_pijpb"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="7_uuft6"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_uq05v"]
@@ -740,9 +739,9 @@ _element = "purple"
 [node name="Spawner" parent="LHallChunk/Chunk" instance=ExtResource("4_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.5, 0)
 weighted_enemy_pool = Dictionary[PackedScene, float]({
-ExtResource("7_khxla"): 100.0,
-ExtResource("7_gvcax"): 100.0
+ExtResource("6_uq05v"): 100.0
 })
+level_range = Vector2i(2, 3)
 max_spawn_count = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LHallChunk/Chunk/Spawner"]
