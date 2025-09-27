@@ -16,7 +16,7 @@ var total_hp: float
 var icons := {}
 
 func setup(actor: BattleActor) -> void:
-	name_label.text = actor.name
+	name_label.text = "%s (lvl%d)" % [actor.name, actor.level]
 	health_bar.value = (float(actor.current_hp) / actor.hp) * 100
 	hp_label.text = "%d/%d" % [actor.current_hp, actor.hp ]
 	total_hp = actor.hp

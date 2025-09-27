@@ -25,7 +25,7 @@ func display(obj: Variant, limitInfo:=false) -> void:
 	equipment_hbox.get_child(1).clear()
 
 	# Basic info.
-	name_label.text = obj.name
+	name_label.text = "%s (lvl%d)" % [obj.name, obj.level]
 	element1_icon.element = obj.element1
 	element2_icon.element = obj.element2
 

@@ -2,7 +2,7 @@
 extends Resource
 class_name StatManager
 
-enum Stats {ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, MELEE, RANGED, SPEED, EVASION, HP, CURRENT_HP  }
+enum Stats { ATTACK, MELEE_ATTACK, RANGED_ATTACK, DEFENSE, MELEE_DEFENSE, RANGED_DEFENSE, MELEE, RANGED, SPEED, EVASION, HP, CURRENT_HP  }
 
 signal stat_changed(stat: StatusEffect, mod: float)
 const BASE_MIN_MOD := 0.1
@@ -122,13 +122,28 @@ func mod_base_stat(stat: Stats, amount: float, minAmount:=0.0) -> void:
 		Stats.EVASION: 
 			_base_evasion = max(_base_evasion + amount, minAmount)
 
-func reset() -> void:
+func reset_all() -> void:
 	_melee_attack_mod = 1
 	_ranged_attack_mod = 1
 	_melee_defense_mod = 1
 	_ranged_defense_mod = 1
 	_speed_mod = 1
 	_evasion_mod = 1
+
+func reset(stat: Stats) -> void:
+	match stat:
+		Stats.MELEE_ATTACK:
+			_melee_attack_mod = 1
+		Stats.RANGED_ATTACK:
+			_ranged_attack_mod = 1
+		Stats.MELEE_DEFENSE:
+			_melee_defense_mod = 1
+		Stats.RANGED_DEFENSE:
+			_ranged_defense_mod = 1
+		Stats.SPEED:
+			_speed_mod = 1
+		Stats.EVASION:
+			_evasion_mod = 1
 
 func get_stat_mod(stat: Stats) -> float:
 	match stat:
@@ -146,27 +161,34 @@ func get_stat_mod(stat: Stats) -> float:
 
 func add(effect: StatChange, name: String) -> void:
 	var mod: float = effect.get_strength()
-	var keep: bool = not effect.clear_first
+	if effect.clear_first:
+		reset(effect.stat)
 
 	match effect.stat:
+		Stats.MELEE_ATTACK: 
+			_melee_attack_mod += mod
+		Stats.RANGED_ATTACK: 
+			_ranged_attack_mod += mod
+		Stats.MELEE_DEFENSE: 
+			_melee_defense_mod += mod
+		Stats.RANGED_DEFENSE: 
+			_ranged_defense_mod += mod
+		Stats.SPEED: 
+			_speed_mod += mod
+		Stats.EVASION: 
+			_evasion_mod += mod
 		Stats.ATTACK: 
-			_melee_attack_mod = _melee_attack_mod * int(keep) + mod
-			_ranged_attack_mod = _ranged_attack_mod * int(keep) + mod
-		Stats.MELEE_ATTACK: _melee_attack_mod = _melee_attack_mod * int(keep) + mod
-		Stats.RANGED_ATTACK: _ranged_attack_mod = _ranged_attack_mod * int(keep) + mod
+			_melee_attack_mod += mod
+			_ranged_attack_mod += mod
 		Stats.DEFENSE: 
-			_melee_defense_mod = _melee_defense_mod * int(keep) + mod
-			_ranged_defense_mod = _ranged_defense_mod * int(keep) + mod
-		Stats.MELEE_DEFENSE: _melee_defense_mod = _melee_defense_mod * int(keep) + mod
-		Stats.RANGED_DEFENSE: _ranged_defense_mod = _ranged_defense_mod * int(keep) + mod
-		Stats.SPEED: _speed_mod = _speed_mod * int(keep) + mod
-		Stats.EVASION: _evasion_mod = _evasion_mod * int(keep) + mod
+			_melee_defense_mod += mod
+			_ranged_defense_mod += mod
 		Stats.MELEE: 
-			_melee_attack_mod = _melee_attack_mod * int(keep) + mod
-			_melee_defense_mod = _melee_defense_mod * int(keep) + mod
+			_melee_attack_mod += mod
+			_melee_defense_mod += mod
 		Stats.RANGED: 
-			_ranged_attack_mod = _ranged_attack_mod * int(keep) + mod
-			_ranged_defense_mod = _ranged_defense_mod * int(keep) + mod
+			_ranged_attack_mod += mod
+			_ranged_defense_mod += mod
 
 	var msg := "%s for %s. Base(%f) * Mod(%f) = %f%s"
 	match effect.stat:

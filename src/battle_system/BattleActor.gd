@@ -373,11 +373,11 @@ func add_xp(xp: float) -> int:
 	return stat_manager.add_xp(xp)
 
 
-func level_up(levels:=1) -> Dictionary[StatManager.Stats, float]:
+func level_up(levels:=1, forceReset:=false) -> Dictionary[StatManager.Stats, float]:
 	level += levels
 	Logger.append_battle_log("BattleActor(%s) is now level(%d)!" % [name, level])
 
-	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels)
+	var output: Dictionary[StatManager.Stats, float] = stat_manager.level_up(levels, forceReset)
 
 	leveled_up.emit()
 	return output

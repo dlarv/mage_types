@@ -13,6 +13,9 @@ func setup(actor: BattleActor) -> void:
 	_actor = actor
 
 	%Name_Label.text = actor.name
+	%LevelSpinBox.value = actor.level
+	%LevelSpinBox.value_changed.connect(func(val: float) -> void: 
+		actor.level_up(int(val) - actor.level, true))
 
 	_init_stats(actor)
 

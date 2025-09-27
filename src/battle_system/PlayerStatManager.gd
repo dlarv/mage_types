@@ -103,8 +103,12 @@ func set_xp_stat(stat: Stats, val: float) -> void:
 			_hp_xp = val
 
 
-func level_up(levels:=1) -> Dictionary[Stats, float]:
+## forceReset: Used when xp values are 0, like when leveling up using debug menu.
+func level_up(levels:=1, forceReset:=false) -> Dictionary[Stats, float]:
 	var output: Dictionary[Stats, float] = {}
+	if forceReset:
+		for stat in 11:
+			set_xp_stat(stat as Stats, 1.0)
 	var average := (_hp_xp+_speed_xp+_melee_attack_xp+_melee_defense_xp+_ranged_attack_xp+_ranged_defense_xp) \
 			/ 6.0
 
