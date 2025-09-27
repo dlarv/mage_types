@@ -4,7 +4,8 @@ class_name OpponentController
 signal battle_ended(endState: Battle.EndState)
 
 const ActorAction := preload("res://src/battle_system/ActorAction.gd")
-const TEAM_INDEX = 1
+const TargetType := _BattleAction.TargetType
+const TEAM_INDEX := 1
 
 @export_category("Dialog")
 @export var dialog_resource: DialogueData
@@ -48,8 +49,14 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 		if(len(team[i].attacks) == 0):
 			actions[i] = null
 		else:
-			actions[i] = ActorAction.new(team[i], team[i].attacks[0],[ otherTeam[0] ], TEAM_INDEX)
-			team[i].action_selected.emit(team[i].attacks[0])
+			var attack: Attack = team[i].attacks.pick_random()
+			actions[i] = ActorAction.new(
+				team[i], 
+				attack,
+				_get_random_targets(attack, team[i], otherTeam),  
+				TEAM_INDEX
+			)
+			team[i].action_selected.emit(attack)
 	return actions
 
 
@@ -67,3 +74,17 @@ func get_next_dialog_id(turnCounter: int, isAfterTurn: bool) -> String:
 		if len(dialog_ids) > 0:
 			_next_dialog_index %= len(dialog_ids)
 	return dialog.id
+
+func _get_random_targets(attack: Attack, user: BattleActor, otherTeam: Array[BattleActor]) -> Array[BattleActor]:
+	match attack.target:
+		TargetType.ENEMY, TargetType.ENEMIES:
+			return [otherTeam.pick_random()]
+		TargetType.ALLY, TargetType.ALLIES:
+			return [team.pick_random()]
+		TargetType.SELF:
+			return [user]
+		TargetType.ALL:
+			return team + otherTeam
+		TargetType.ANY, TargetType.RANDOM,_:
+			return [(team + otherTeam).pick_random()]
+

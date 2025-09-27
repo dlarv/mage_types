@@ -3,7 +3,6 @@ class_name ScriptedOpponent
 ## Cycles through each of its actors movesets.
 ## Targets are randomly selected.
 
-const TargetType := _BattleAction.TargetType
 
 @export var set_seed := ""
 
@@ -32,18 +31,7 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 		var index := indices[i]
 
 		var attack := actor.attacks[index]
-		var target: Array[BattleActor]
-		match attack.target:
-			TargetType.ENEMY, TargetType.ENEMIES:
-				target = [otherTeam.pick_random()]
-			TargetType.ALLY, TargetType.ALLIES:
-				target = [team.pick_random()]
-			TargetType.SELF:
-				target = [actor]
-			TargetType.ALL:
-				target = team + otherTeam
-			TargetType.ANY, TargetType.RANDOM:
-				target = [(team + otherTeam).pick_random()]
+		var target := _get_random_targets(attack, actor, otherTeam)
 
 		actions.append(ActorAction.new(actor, attack, target, TEAM_INDEX))
 		actor.action_selected.emit(attack)
