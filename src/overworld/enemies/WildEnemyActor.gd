@@ -52,18 +52,18 @@ var mesh: MeshInstance3D
 var _on_cooldown := false
 
 func _ready() -> void:
-	if Engine.is_editor_hint(): return
-	for child in get_children():
-		if child is _EnemyBehavior:
-			state_machine = child
-		elif child is MeshInstance3D:
-			mesh = child
-	
 	if len(team) > 0 and not team[0].element_changed.is_connected(_set_mesh_color):
 		team[0].element_changed.connect(_set_mesh_color)
 		_set_mesh_color(0, team[0].element1)
 		_set_mesh_color(1, team[0].element2)
 
+	for child in get_children():
+		if child is _EnemyBehavior:
+			state_machine = child
+		elif child is MeshInstance3D:
+			mesh = child
+
+	if Engine.is_editor_hint(): return
 	# Prevent different enemies from sharing resources
 	for actor in team:
 		actor.resource_local_to_scene = true
@@ -132,6 +132,12 @@ func set_level(level: int, id:=0) -> void:
 
 
 func _set_mesh_color(id: int, color: ElementalType) -> void:
+	if not mesh:
+		var instances := find_children("", "MeshInstance3D", true)
+		if len(instances) == 0:
+			return
+		mesh = instances[0]
+
 	if use_placeholder_mesh:
 		var texture: GradientTexture1D = mesh.get_surface_override_material(0).albedo_texture
 		texture.gradient.set_color(id, color.main_color)

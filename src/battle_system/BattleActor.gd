@@ -58,6 +58,7 @@ var element1 : ElementalType = ElementManager.Blank:
 		if value == null:
 			value = ElementManager.Blank
 		element1 = value 
+		element_changed.emit(0, element1)
 
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _element2: String = "blank":
@@ -69,6 +70,7 @@ var element2: ElementalType = ElementManager.Blank:
 		if value == null:
 			value = ElementManager.Blank
 		element2 = value 
+		element_changed.emit(1, element2)
 @export var alignment_manager: AlignmentManager = null
 @export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
 var _alignment: String = "blank":
@@ -332,7 +334,7 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 
 
 func resolve_end_of_battle(turnCounter: int) -> String:
-	stat_manager.reset()
+	stat_manager.reset_all()
 	statuses.clear()
 	if reset_hp_after_battle: 
 		current_hp = hp
