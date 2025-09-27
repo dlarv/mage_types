@@ -110,7 +110,7 @@ func add_ally(other: Variant) -> void:
 
 
 func select_rewards() -> void:
-	ai.reward_xp *= team[0].level
+	ai.reward_xp *= pow(2, team[0].level - 1)
 	ai.reward_items = []
 	for item in reward_items:
 		var rand := randf()
