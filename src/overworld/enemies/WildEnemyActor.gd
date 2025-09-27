@@ -37,10 +37,10 @@ var create_skeleton := func() -> void:
 	collider2.shape = CapsuleShape3D.new()
 	collider2.position.y = 1
 
-
 @export var use_placeholder_mesh := true
 @export var team: Array[BattleActor]
 @export var ai: OpponentController
+@export var reward_items: Dictionary[_Item, float] = {}
 
 var state_machine: _EnemyBehavior
 var mesh: MeshInstance3D
@@ -98,6 +98,20 @@ func add_ally(other: Variant) -> void:
 		team.append(other)
 	elif other is WildEnemyActor:
 		team.append_array(other.team)
+
+		for item: _Item in other.reward_items:
+			if reward_items.has(item):
+				reward_items[item] += other.reward_items[item]
+
+
+func select_reward_items() -> void:
+	ai.reward_items = []
+	for item in reward_items:
+		var rand := randf()
+		if rand <= reward_items[item]:
+			var slot := ItemSlot.new(item)
+			ai.reward_items.append(slot)
+
 
 
 func set_level(level: int, id:=0) -> void:
