@@ -130,20 +130,20 @@ func reset_all() -> void:
 	_speed_mod = 1
 	_evasion_mod = 1
 
-func reset(stat: Stats) -> void:
+func reset(stat: Stats, val:=1.0) -> void:
 	match stat:
 		Stats.MELEE_ATTACK:
-			_melee_attack_mod = 1
+			_melee_attack_mod = val
 		Stats.RANGED_ATTACK:
-			_ranged_attack_mod = 1
+			_ranged_attack_mod = val
 		Stats.MELEE_DEFENSE:
-			_melee_defense_mod = 1
+			_melee_defense_mod = val
 		Stats.RANGED_DEFENSE:
-			_ranged_defense_mod = 1
+			_ranged_defense_mod = val
 		Stats.SPEED:
-			_speed_mod = 1
+			_speed_mod = val
 		Stats.EVASION:
-			_evasion_mod = 1
+			_evasion_mod = val
 
 func get_stat_mod(stat: Stats) -> float:
 	match stat:
@@ -161,34 +161,42 @@ func get_stat_mod(stat: Stats) -> float:
 
 func add(effect: StatChange, name: String) -> void:
 	var mod: float = effect.get_strength()
-	if effect.clear_first:
+
+	var op := func(a: float, b: float) -> float:
+		return a + b
+	if effect.op == StatChange.Operator.ZERO:
+		reset(effect.stat, 0)
+	elif effect.op == StatChange.Operator.RESET:
 		reset(effect.stat)
+	elif effect.op == StatChange.Operator.MUL:
+		op = func(a: float, b: float) -> float:
+			return a * b
 
 	match effect.stat:
 		Stats.MELEE_ATTACK: 
-			_melee_attack_mod += mod
+			_melee_attack_mod += op.call(_melee_attack_mod, mod)
 		Stats.RANGED_ATTACK: 
-			_ranged_attack_mod += mod
+			_ranged_attack_mod = op.call(_ranged_attack_mod, mod)
 		Stats.MELEE_DEFENSE: 
-			_melee_defense_mod += mod
+			_melee_defense_mod = op.call(_melee_defense_mod, mod)
 		Stats.RANGED_DEFENSE: 
-			_ranged_defense_mod += mod
+			_ranged_defense_mod = op.call(_ranged_defense_mod, mod)
 		Stats.SPEED: 
-			_speed_mod += mod
+			_speed_mod = op.call(_speed_mod, mod)
 		Stats.EVASION: 
-			_evasion_mod += mod
+			_evasion_mod = op.call(_evasion_mod, mod)
 		Stats.ATTACK: 
-			_melee_attack_mod += mod
-			_ranged_attack_mod += mod
+			_melee_attack_mod = op.call(_melee_attack_mod, mod)
+			_ranged_attack_mod = op.call(_ranged_attack_mod, mod)
 		Stats.DEFENSE: 
-			_melee_defense_mod += mod
-			_ranged_defense_mod += mod
+			_melee_defense_mod = op.call(_melee_defense_mod, mod)
+			_ranged_defense_mod = op.call(_ranged_defense_mod, mod)
 		Stats.MELEE: 
-			_melee_attack_mod += mod
-			_melee_defense_mod += mod
+			_melee_attack_mod = op.call(_melee_attack_mod, mod)
+			_melee_defense_mod = op.call(_melee_defense_mod, mod)
 		Stats.RANGED: 
-			_ranged_attack_mod += mod
-			_ranged_defense_mod += mod
+			_ranged_attack_mod = op.call(_ranged_attack_mod, mod)
+			_ranged_defense_mod = op.call(_ranged_defense_mod, mod)
 
 	var msg := "%s for %s. Base(%f) * Mod(%f) = %f%s"
 	match effect.stat:

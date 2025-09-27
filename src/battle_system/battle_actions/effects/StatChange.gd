@@ -4,6 +4,13 @@ class_name StatChange
 
 const MODIFIER := 0.3
 
+
+## ADD: +=
+## MUL *=
+## RESET: Set value to 1.0, then ADD
+## ZERO: Set value to 0.0, then ADD
+enum Operator { ADD, RESET, ZERO, MUL }
+
 @export var stat: StatManager.Stats:
 	set(val):
 		stat = val
@@ -17,7 +24,7 @@ const MODIFIER := 0.3
 		]
 
 ## If true, set target's stat to 1 before apply buff/debuff.
-@export var clear_first := false
+@export var op := Operator.ADD
 
 ## DO NOT CHANGE IN INSPECTOR!
 ## ElementManager handles this value, it is only exposed for duplication purposes!
@@ -52,6 +59,7 @@ func _get_setup_potential_ally(target: BattleActor) -> float:
 	if mod <= minMod * 0.66 or mod >= maxMod * 0.66: 
 		return 0.0
 	return -1.0
+
 
 func _get_setup_potential_enemy(target: BattleActor) -> float:
 	var mod := target.stat_manager.get_stat_mod(stat) 
