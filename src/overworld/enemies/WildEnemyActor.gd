@@ -102,20 +102,21 @@ func add_ally(other: Variant) -> void:
 		team.append(other)
 	elif other is WildEnemyActor:
 		team.append_array(other.team.map(func(x: BattleActor) -> BattleActor: return x.duplicate()))
+		ai.reward_xp += other.ai.reward_xp
 
 		for item: _Item in other.reward_items:
 			if reward_items.has(item):
 				reward_items[item] += other.reward_items[item]
 
 
-func select_reward_items() -> void:
+func select_rewards() -> void:
+	ai.reward_xp *= team[0].level
 	ai.reward_items = []
 	for item in reward_items:
 		var rand := randf()
 		if rand <= reward_items[item]:
 			var slot := ItemSlot.new(item)
 			ai.reward_items.append(slot)
-
 
 
 func set_level(level: int, id:=0) -> void:
