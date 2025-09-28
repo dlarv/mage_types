@@ -8,6 +8,50 @@
 - Variants
 	- Are there any unique variations on the basic enemy?
 	- Do differently aligned monsters have different characteristics, or are they just a palette swap.
+# Base Stat Totals
+## Player Starting BST
+Player lvl1 (BST: 96)
++18 BST/level
+```tinychart 
+hp, 50
+melee attack, 8
+melee defense, 10
+ranged attack, 8
+ranged defense, 10
+speed, 10
+```
+## Blue Average
+BST: 106
+```tinychart 
+hp, 60
+melee attack, 5
+melee defense, 18
+ranged attack, 5
+ranged defense, 13
+speed, 5
+```
+
+## Purple Average
+BST: 98
+```tinychart 
+hp, 35
+melee attack, 18
+melee defense, 8
+ranged attack, 18
+ranged defense, 11
+speed, 8
+```
+## Magenta Average
+BST: 111
+```tinychart 
+hp, 65
+melee attack, 3
+melee defense, 18
+ranged attack, 3 
+ranged defense, 15
+speed, 7
+```
+
 # General Monsters
 ## Slimes
 These will be very basic monsters, just oozing around the overworld. Small slimes will only have one type (*I think this can be done by making BattleActor.element1 = Blank. I can then make some small code alterations so the model doesn't show gray*). 
@@ -37,6 +81,7 @@ speed, 100
 Other humans which have lost their minds before fully mutating. These will mostly be bosses, but the entry is here for completeness.
 # Bias Beasts
 Name needs work. These are former humans which have fully mutated to their aligned element.
+Stat distributions are intended to be highly approximate.
 ## Blue Coralized Mage
 As a Blue-aligned sits unmoving, lost in their own mind, their body begins to encrust with coral. They don't seem to mind, some even take pride in the size and vibrancy of their new shell.
 ```tinychart
@@ -239,9 +284,17 @@ Very large enemy, I'm picturing it taking up almost an entire room. They'll have
 ## Ice Wyrm
 Cyan, Green 
 These strange creatures live on and around the ice machines found throughout the hotel.
-## Imp
+## Despair
 Purple, Purple
-Wispy and fast.
+Manifestations of despair, amalgamated into a vicious form. They drag themselves across the ground using their front arms.
+```tinychart 
+hp, 35
+melee attack, 18
+melee defense, 8
+ranged attack, 10
+ranged defense, 11
+speed, 16
+```
 ## Purple Scorpion
 Purple, any
 Large, carnivorous monsters.
