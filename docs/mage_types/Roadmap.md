@@ -24,23 +24,13 @@
 [[version_naming_scheme]]
 ## v0.6.x
 West and Central Hotel content update. Add puzzles and combat challenges to hotel, along with necessary mechanics to support these features.
-- [ ] Make playtesting enemies easier
-	- [ ] Show levels in UI
-	- [ ] Set player's level in debug mode
-	- [ ] Create testing room to playtest different enemies
-	- [ ] Create debug spawner to make instantiating specific enemies easier
-		- [ ] Set level and starting config
-		- [ ] Summon monsters directly from the beastiary?
-	- [ ] Lay groundwork for gauntlet style challenge later
-		- [ ] Battle queue
-- [x] Refactor wild enemy spawners
-	- [x] Give spawner enemy base templates 
-	- [x] Set custom spawn% for each enemy
-	- [x] Allow spawner to adjust stats/etc of instantiated enemies
 - [ ] Upper West Hotel challenges
 	- [x] Add puzzle
-	- [ ] Reward for solving puzzle
-	- [ ] Add enemy encounters
+	- [x] Reward for solving main puzzle
+		- [x] Hammer (Equipment): Melee attacks have +30% chance to flinch
+	- [ ] Reward for solving alt puzzle
+		- [ ] Access to hidden area? Alcove with additional chest?
+	- [x] Add enemy encounters
 - [ ] Add Magenta kitchen and breakfast
 - [ ] Stasis and Destroy spells added to map
 	- [ ] Backtrack obstacles
@@ -57,6 +47,10 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 	- [ ] Priority spell hidden in motel
 	- [ ] Lavender fight
 	- [ ] Destroy++ spell added at end of Lavender puzzle
+- [x] Refactor wild enemy spawners
+	- [x] Give spawner enemy base templates 
+	- [x] Set custom spawn% for each enemy
+	- [x] Allow spawner to adjust stats/etc of instantiated enemies
 - [x] Puzzle block demos:
 	- [x] Laser blocks demos
 		- [x] DraggableMirror?
@@ -72,6 +66,16 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 - [x] Doors should keep player's relative position when they go thru
 ## v0.7.x
 Battles and monster aesthetic update. Make combat more engaging by adding audio, animations, and better models.
+- [ ] Implement flinch condition properly
+- [ ] Make playtesting enemies easier
+	- [x] Show levels in UI
+	- [x] Set player's level in debug mode
+	- [ ] Create testing room to playtest different enemies
+	- [ ] Create debug spawner to make instantiating specific enemies easier
+		- [ ] Set level and starting config
+		- [ ] Summon monsters directly from the beastiary?
+	- [ ] Lay groundwork for gauntlet style challenge later
+		- [ ] Battle queue
 - [ ] Transmutation animation showing target reacting with an attack's element
 - [ ] Beastiary describing monsters
 - [ ] Battle Animation refactor

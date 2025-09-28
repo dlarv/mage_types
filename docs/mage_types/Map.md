@@ -215,13 +215,13 @@ Each of these sections will weave through each other.
 
 **Rewards**
 - Willpower (*Equipment*)
-### Maintenance Halls
-This area will act as the fast travel system around the island. It'll operate under lost forest logic, where the player must choose the correct sequence of directions, being sent back to the beginning if they make a mistake.
-
-Some areas will only be accessible thru the halls.
-- [[#Motel]]
-- Supply Closet: Currently, the player must travel thru this room to reach the halls, but this will be reversed later
-- Library: Room containing a lot of lore documents
+### Central Hotel
+#### Transmutation Dungeon
+#### Supply Closet
+#### Misc Hotel Rooms
+- These will act as contained challenge rooms
+- Challenges can be puzzles, parkour, or combat related
+	- Combat levels should be 1-3 or scale based on player level
 ### Western Hotel
 #### Continental Breakfast
 - Magenta-aligned runs the breakfast.
@@ -237,6 +237,19 @@ Some areas will only be accessible thru the halls.
 	- Vicious glass cannon monsters. They'll die in one hit, but should deal 80-90% of player hp before they do. The player should avoid these monsters.
 		- Monster AI should target weakest (least hp) character. This will be the same strat employed by Lavender. This info will be written on the walls somewhere.
 - Inner motel will contain the [[demo#Hidden Area: Deep Caves|Deep Caves]] puzzle.
+
+**Spawner Info 1 (Before MHalls)**
+- Level Range: 8
+- Base Xp Range: 10-50
+- Max Spawn Count: 1
+- Monster:
+	- [[Beastiary#Purple Scorpion]]
+**Spawner Info 2 (Inside Motel)**
+- Level Range: 6-8
+- Base Xp Range: 10-50
+- Max Spawn Count: 10
+- Monster:
+	- Glass Cannon Purple?
 #### L Hallway
 - The marks the Northernmost section of the Western hotel.
 - All the rooms and dividing walls have been smashed down, making this section much bigger and more chaotic than the rest of the hotel.
@@ -246,6 +259,20 @@ Some areas will only be accessible thru the halls.
 	- I added a large, open space to the western half of this room. I should have enough room to make a simple laser puzzle.
 	- This western half will be sitting on a pile of rubbl
 - The eastern half of this room will have multiple mob spawners. It'll be a good place for the player to grind a few levels.
+
+**Spawner Info**
+- Level Range: 1-3
+- Base Xp Range: 10-30
+- Max Spawn Count: 5
+- Monters:
+	- [[Beastiary#Despair]]
+## Maintenance Halls
+This area will act as the fast travel system around the island. It'll operate under lost forest logic, where the player must choose the correct sequence of directions, being sent back to the beginning if they make a mistake.
+
+Some areas will only be accessible thru the halls.
+- [[#Motel]]
+- [[#Supply Closet]]: Currently, the player must travel thru this room to reach the halls, but this will be reversed later
+- Library: Room containing a lot of lore documents
 ## Caves
 This website can be used to create procedurally generated cave maps: https://watabou.itch.io/cave-generator.
 ### Ziggurat 
