@@ -284,9 +284,10 @@ Very large enemy, I'm picturing it taking up almost an entire room. They'll have
 ## Ice Wyrm
 Cyan, Green 
 These strange creatures live on and around the ice machines found throughout the hotel.
-## Despair
+## Despair (Hammer Form)
 Purple, Purple
-Manifestations of despair, amalgamated into a vicious form. They drag themselves across the ground using their front arms.
+Manifestations of despair, amalgamated into a vicious form. The ones located here seem to be armed with hammers, for some reason (They're mimicking the person from L-Hallway).
+
 ```tinychart 
 hp, 35
 melee attack, 18
@@ -295,6 +296,10 @@ ranged attack, 10
 ranged defense, 11
 speed, 16
 ```
+
+- Purple Hit 
+- Crush (Red/Melee/Enemy): Strong attack, lowers user's defenses (weaker version of Cleave).
+- Wail (Purple/Status/All): Resets all defense stats.
 ## Purple Scorpion
 Purple, any
 Large, carnivorous monsters.

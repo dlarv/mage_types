@@ -265,7 +265,7 @@ Each of these sections will weave through each other.
 - Base Xp Range: 10-30
 - Max Spawn Count: 5
 - Monters:
-	- [[Beastiary#Despair]]
+	- [[Beastiary#Despair (Hammer Form)]]
 ## Maintenance Halls
 This area will act as the fast travel system around the island. It'll operate under lost forest logic, where the player must choose the correct sequence of directions, being sent back to the beginning if they make a mistake.
 
