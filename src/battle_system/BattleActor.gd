@@ -465,3 +465,5 @@ func deserialize(data: Dictionary) -> void:
 		if not alignment_manager:
 			alignment_manager = AlignmentManager.new()
 		alignment_manager.deserialize(data["alignment"])
+
+

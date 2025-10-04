@@ -64,8 +64,10 @@ func _create_wild_enemy_actor() -> WildEnemyActor:
 	enemyLeader.select_rewards()
 	return enemyLeader
 
+
 func _get_rand_enemy() -> WildEnemyActor:
 	return _enemy_pool[rng.rand_weighted(_enemy_weights)].instantiate().duplicate()
+
 
 func _restart_timer() -> void:
 	var freq := randf_range(spawn_frequency_range.x, spawn_frequency_range.y)
