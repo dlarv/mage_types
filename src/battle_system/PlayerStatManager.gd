@@ -9,8 +9,8 @@ const HP_XP_BOOST := 0.3
 const MAX_STAT_POINTS := 3
 
 @export_category("Experience")
-@export var next_level_xp := 100.0
-@export var total_xp := 0.0
+@export var next_level_xp := 100
+@export var total_xp := 0
 
 var _hp_xp := 0.0
 var _melee_attack_xp := 0.0
@@ -145,12 +145,12 @@ func _calc_boost(stat: Stats, xp: float, levels: int, average: float) -> float:
 
 func add_xp(xp: float) -> int:
 	var levels := 0
-	total_xp += xp
+	total_xp = int(total_xp + xp)
 
 	while total_xp >= next_level_xp:
 		total_xp -= next_level_xp
-		next_level_xp *= 2
 		levels += 1
+		next_level_xp = 50 * levels
 	
 	return levels
 
@@ -178,3 +178,7 @@ func deserialize(data: Dictionary) -> void:
 	_speed_xp = data["speed_xp"]
 	total_xp  = data["total_xp"]
 	next_level_xp  = data["xp_threshold"]
+
+
+static func get_next_xp_threshold(level: int) -> int:
+	return 50 * level
