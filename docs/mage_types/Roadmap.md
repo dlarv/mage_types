@@ -23,7 +23,49 @@
 # Upcoming Versions
 [[version_naming_scheme]]
 ## v0.6.x
-West and Central Hotel content update. Add puzzles and combat challenges to hotel, along with necessary mechanics to support these features.
+Battle aesthetic update: [[more_dynamic_battles]]
+- [ ] Implement flinch condition properly
+- [ ] Make playtesting enemies easier
+	- [x] Show levels in UI
+	- [x] Set player's level in debug mode
+	- [ ] Create testing room to playtest different enemies
+	- [ ] Create debug spawner to make instantiating specific enemies easier
+		- [ ] Set level and starting config
+		- [ ] Summon monsters directly from the beastiary?
+	- [ ] Lay groundwork for gauntlet style challenge later
+		- [ ] Battle queue
+- [ ] Communicate important information using animations and graphics
+	- [ ] Damage numbers: How much dmg did the attack deal?
+	- [ ] Effectiveness: e.g. {actor} was wreathed in bright Blue light
+	- [ ] Transmutations: up to 6 transmutations
+	- [ ] Status effects: poison, phobia, flinched
+	- [ ] Melee/ranged
+	- [ ] Whether attack dealt a status condition/extra effects
+- [ ] BattleActor models animation support
+	- [ ] Add animation states defined in supporting discussion
+	- [ ] Allow Settings to control animation speed
+	- [ ] Animation overlap and lengths should be controlled via variables
+	- [ ] Allow animation states to be skipped
+- [ ] Attack Animation refactor
+	- [ ] Renamed class and references
+	- [ ] Animation should be selected via enum
+	- [ ] Animation should be integrated with BattleActor animations
+- [ ] Keep text based message log for accessibility
+	- [ ] `MessageBox` visible can be toggled using `Settings` and in battle.
+	- [ ] Player should be able to scroll thru all logs that happened in battle
+- [ ] Make controls less obtrusive
+	- [ ] Attack, Item, and Run buttons should be small and off to the side
+	- [ ] Player can click on a BattleActor model to learn more info about them
+		- [ ] Hovering should highlight which name card is theirs.
+	- [ ] Hovering over status pin should tell you what it is and how many turns remaining it has
+- [ ] Mess around with placement of name cards and character models?
+- [x] Show combatant's levels on name card and in Characters menu
+- [x] Refactor wild enemy spawners
+	- [x] Give spawner enemy base templates 
+	- [x] Set custom spawn% for each enemy
+	- [x] Allow spawner to adjust stats/etc of instantiated enemies
+## v0.7.x
+West and Central Hotel content update. Add puzzles and combat challenges to hotel.
 - [ ] Upper West Hotel challenges
 	- [x] Add puzzle
 	- [x] Reward for solving main puzzle
@@ -32,14 +74,6 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 		- [ ] Access to hidden area? Alcove with additional chest?
 	- [x] Add enemy encounters
 - [ ] Add Magenta kitchen and breakfast
-- [ ] Stasis and Destroy spells added to map
-	- [ ] Backtrack obstacles
-	- [ ] Puzzles to obtain
-- [ ] Finish blocking out the beach
-	- [ ] Add backtrack puzzle to beach 1
-	- [ ] Remodel beach 2 to look more organic
-	- [ ] Add beach 3
-- [ ] Lock and key system
 - [ ] Motel
 	- [ ] Hidden caves logic puzzle (Lavender puzzle)
 	- [ ] Motel/Backroom guardian monster
@@ -47,10 +81,6 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 	- [ ] Priority spell hidden in motel
 	- [ ] Lavender fight
 	- [ ] Destroy++ spell added at end of Lavender puzzle
-- [x] Refactor wild enemy spawners
-	- [x] Give spawner enemy base templates 
-	- [x] Set custom spawn% for each enemy
-	- [x] Allow spawner to adjust stats/etc of instantiated enemies
 - [x] Puzzle block demos:
 	- [x] Laser blocks demos
 		- [x] DraggableMirror?
@@ -63,35 +93,9 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 	- [x] Timer demo
 	- [x] Relay demo
 		- [x] Create indicator block, which differentiates between off/on/invalid_off
-- [x] Doors should keep player's relative position when they go thru
-## v0.7.x
-Battles and monster aesthetic update. Make combat more engaging by adding audio, animations, and better models.
-- [ ] Implement flinch condition properly
-- [ ] Make playtesting enemies easier
-	- [x] Show levels in UI
-	- [x] Set player's level in debug mode
-	- [ ] Create testing room to playtest different enemies
-	- [ ] Create debug spawner to make instantiating specific enemies easier
-		- [ ] Set level and starting config
-		- [ ] Summon monsters directly from the beastiary?
-	- [ ] Lay groundwork for gauntlet style challenge later
-		- [ ] Battle queue
-- [ ] Transmutation animation showing target reacting with an attack's element
-- [ ] Beastiary describing monsters
-- [ ] Battle Animation refactor
-	- [ ] Animations handled by BattleGUI
-	- [ ] Animations should already be children of gui, just hidden
-	- [ ] Attacks access animations using an Id (probably an enum)
-- [ ] Make info displayed inside of MessageBox more dynamic?
-	- [ ] Display info on battle field (damage numbers)
-	- [ ] Use animations to communicate info (melee/ranged, scaling factor)
-	- [ ] Transmutations?
-- [ ] Battle character models (replace the cubes)
-	- [ ] Casting animations
-	- [ ] Getting hit animations
-- [ ] Show combatant's levels on name card and in Characters menu
 ## v0.8.x
 World aesthetic update.
+- [ ] Beastiary describing monsters
 - [ ] Add wall paper
 - [ ] Clay shader cracks are inverted?
 - [ ] Add local lighting
@@ -124,13 +128,22 @@ World aesthetic update.
 	- [ ] Give Rail puzzleblock a model
 - [ ] Logic gate demos
 	- [ ] Add models for empty puzzle blocks?
+- [x] Doors should keep player's relative position when they go thru
 >[!note] Snapshot
 > The end result of this version should act as a thin vertical slice of the demo, giving playtesters a better idea of what the game will look/feel like.
 ## v0.9.x
-North caves and hotel content update.
+North caves, East hotel, and Beach content update.
 - [ ] Portal Complex ruins created
 	- [ ] Create and add models for murals
 	- [ ] Orange chatlog object created and placed
+- [ ] Finish blocking out the beach
+	- [ ] Add backtrack puzzle to beach 1
+	- [ ] Remodel beach 2 to look more organic
+	- [ ] Add beach 3
+- [ ] Lock and key system
+- [ ] Stasis and Destroy spells added to map
+	- [ ] Backtrack obstacles
+	- [ ] Puzzles to obtain
 ## v0.?.x
 Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
 - [ ] Player hp stat should be accessible outside of battle
