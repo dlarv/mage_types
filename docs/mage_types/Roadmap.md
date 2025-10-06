@@ -24,6 +24,19 @@
 [[version_naming_scheme]]
 ## v0.6.x
 Battle aesthetic update: [[more_dynamic_battles]]
+- [ ] Improved player model
+	- [ ] Modeled
+		- [x] Body
+		- [ ] Hair
+		- [ ] Face
+	- [ ] Textured
+		- [ ] Compare NextPassTransparency with Swapping diffuse maps
+	- [ ] Animation
+		- [ ] Walk
+		- [ ] Channel power
+		- [ ] Melee attack
+		- [ ] Ranged attack
+		- [ ] Getting hit
 - [ ] Implement flinch condition properly
 - [ ] Make playtesting enemies easier
 	- [x] Show levels in UI
