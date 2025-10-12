@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c4p3jn0diyrja"]
+[gd_scene load_steps=15 format=4 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" uid="uid://de6h1lv6q0qbt" path="res://src/player/PlayerController.gd" id="1_eca83"]
 [ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_x42xx"]
@@ -8,10 +8,10 @@
 [ext_resource type="Resource" uid="uid://cj7rk23vvyppe" path="res://data/story/battle_actors/player_characters/denim_battle_actor.tres" id="4_x42xx"]
 [ext_resource type="Texture2D" uid="uid://b0kj6udppi815" path="res://assets/3d/textures/player/player_diffuse.png" id="6_omm5f"]
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="8_r804x"]
+[ext_resource type="PackedScene" uid="uid://dru1guxf1wg7w" path="res://assets/3d/models/characters/player_v2.blend" id="9_l271a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
-radius = 0.25
-height = 1.5
+radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf7wo"]
 resource_name = "player"
@@ -61,8 +61,8 @@ jump_time_to_peak = 0.2
 jump_time_to_descent = 0.25
 variable_jump_height_modifier = 20.0
 dash_speed = 500.0
-model = NodePath("player")
-anim_player = NodePath("player/AnimationPlayer")
+model = NodePath("player_v2")
+anim_player = NodePath("player_v2/AnimationPlayer")
 battle_actor = ExtResource("2_x42xx")
 _playable_characters = Dictionary[int, ExtResource("3_3kubr")]({
 0: ExtResource("4_x42xx")
@@ -74,6 +74,7 @@ shape = SubResource("CapsuleShape3D_f637b")
 
 [node name="player" parent="." instance=ExtResource("3_xfaiw")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0)
+visible = false
 
 [node name="Cylinder" parent="player/Armature/Skeleton3D" index="0"]
 layers = 2
@@ -94,13 +95,39 @@ one_shot = true
 autostart = true
 
 [node name="Shadow" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 0)
-size = Vector3(1, 6, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.85, 0)
+size = Vector3(1, 5.7, 1)
 texture_albedo = SubResource("GradientTexture2D_x42xx")
 upper_fade = 0.00010358
 lower_fade = 0.000162534
+
+[node name="player_v2" parent="." instance=ExtResource("9_l271a")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Skeleton3D" parent="player_v2/Armature" index="0"]
+bones/0/position = Vector3(0, -0.681904, 0)
+bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -2.52435e-29, 1)
+bones/2/rotation = Quaternion(-7.70544e-10, 1.0593e-07, -0.627926, 0.778273)
+bones/6/rotation = Quaternion(1.98238e-08, 4.81322e-08, 0.661646, 0.749817)
+bones/11/rotation = Quaternion(0.815229, 0.390162, 0.386054, -0.184762)
+bones/12/rotation = Quaternion(-0.399757, 0.30443, 0.142916, 0.852697)
+bones/15/rotation = Quaternion(0.400156, -0.304731, 0.143059, 0.852378)
+bones/16/rotation = Quaternion(0.0173508, 1.56738e-07, 4.3086e-08, 0.999849)
+
+[node name="Hands" parent="player_v2/Armature/Skeleton3D" index="0"]
+layers = 2
+
+[node name="Head" parent="player_v2/Armature/Skeleton3D" index="1"]
+layers = 2
+
+[node name="HoodieBody" parent="player_v2/Armature/Skeleton3D" index="2"]
+layers = 2
+
+[node name="Legs" parent="player_v2/Armature/Skeleton3D" index="3"]
+layers = 2
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FlushJumpBufferTimer" to="." method="_on_flush_jump_buffer_timer_timeout"]
 
 [editable path="player"]
+[editable path="player_v2"]
