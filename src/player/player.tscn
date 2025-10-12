@@ -104,16 +104,6 @@ lower_fade = 0.000162534
 [node name="player_v2" parent="." instance=ExtResource("9_l271a")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Skeleton3D" parent="player_v2/Armature" index="0"]
-bones/0/position = Vector3(0, -0.681904, 0)
-bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -2.52435e-29, 1)
-bones/2/rotation = Quaternion(-7.70544e-10, 1.0593e-07, -0.627926, 0.778273)
-bones/6/rotation = Quaternion(1.98238e-08, 4.81322e-08, 0.661646, 0.749817)
-bones/11/rotation = Quaternion(0.815229, 0.390162, 0.386054, -0.184762)
-bones/12/rotation = Quaternion(-0.399757, 0.30443, 0.142916, 0.852697)
-bones/15/rotation = Quaternion(0.400156, -0.304731, 0.143059, 0.852378)
-bones/16/rotation = Quaternion(0.0173508, 1.56738e-07, 4.3086e-08, 0.999849)
-
 [node name="Hands" parent="player_v2/Armature/Skeleton3D" index="0"]
 layers = 2
 
