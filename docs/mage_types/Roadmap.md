@@ -29,10 +29,11 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [x] Body
 		- [ ] Hair
 		- [ ] Face
-	- [ ] Textured
-		- [ ] Compare NextPassTransparency with Swapping diffuse maps
+	- [x] Textured
+		- [x] Compare NextPassTransparency with Swapping diffuse maps
+			- Swapping diffuse maps looks far better than the next pass method
 	- [ ] Animation
-		- [ ] Walk
+		- [x] Walk
 		- [ ] Channel power
 		- [ ] Melee attack
 		- [ ] Ranged attack
