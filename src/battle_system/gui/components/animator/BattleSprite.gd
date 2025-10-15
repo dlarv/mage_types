@@ -4,6 +4,8 @@ signal hovered(actor: BattleActor)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
 
+const DEFAULT_PARTICLE_AMOUNT := 20.0
+
 @export var transmutation_hint: Control
 @export var use_gradient := true:
 	set(val):
@@ -11,11 +13,10 @@ signal status_effect_icon_pressed(effect: StatusEffect)
 		if val:
 			$Primary.show()
 			$Secondary.show()
-			$Mesh.hide()
 		else:
 			$Primary.hide()
 			$Secondary.hide()
-			$Mesh.show()
+@export var mesh: MeshInstance3D
 
 var tint: Color = Color.WHITE
 var is_selectable := false
@@ -36,8 +37,12 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 	_indicator_mat = StandardMaterial3D.new()
 	_particle_mat = StandardMaterial3D.new()
 
-	$Primary.set_surface_override_material(0, _mat1)
-	$Secondary.set_surface_override_material(0, _mat2)
+	if use_gradient:
+		$Primary.set_surface_override_material(0, _mat1)
+		$Secondary.set_surface_override_material(0, _mat2)
+	else:
+		_mat1 = mesh.get_active_material(0)
+		_mat2 = mesh.get_active_material(1)
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 
 	$GPUParticles3D.draw_pass_1 = BoxMesh.new()
@@ -67,6 +72,7 @@ func set_element(id: int, element: ElementalType) -> void:
 	else:
 		_mat2.albedo_color = element.main_color
 
+
 func disable_selection() -> void:
 	is_selectable = false
 	# If this is white, then its the indicator showing which character is currently active.
@@ -75,10 +81,12 @@ func disable_selection() -> void:
 		tint = Color.WHITE
 		set_highlight(false)
 
+
 func enable_selection(color: Color) -> void:
 	if _is_defeated: return
 	is_selectable = true
 	tint = color
+
 
 func disable_transmutation_hint() -> void:
 	transmutation_hint.deactivate()
@@ -87,11 +95,13 @@ func disable_transmutation_hint() -> void:
 func enable_transmutation_hint(action: _BattleAction) -> void:
 	transmutation_hint.setup(actor, action, self.global_position)
 
+
 func set_highlight(isHighlighted: bool) -> void:
 	if not isHighlighted:
 		_indicator_mat.albedo_color = Color.DARK_GRAY
 	else:
 		_indicator_mat.albedo_color =  Color(tint.r, tint.g, tint.b, 1 if isHighlighted else 0)
+
 
 func get_target_position() -> Vector2:
 	var cam := get_viewport().get_camera_3d()
@@ -100,13 +110,22 @@ func get_target_position() -> Vector2:
 	pos2D.y += scale.y / 2
 	return pos2D
 
+
 func show_intentions(val: bool) -> void:
 	$GPUParticles3D.emitting = val
 	$GPUParticles3D.visible = val
 
+
+func show_elemental_particles(el: ElementalType, strength:=DEFAULT_PARTICLE_AMOUNT) -> void:
+	$GPUParticles3D.amount = strength
+	$GPUParticles3D.emitting = true
+	_particle_mat.albedo_color = el.main_color
+
+
 func _on_mouse_entered() -> void:
 	if is_selectable:
 		hover(true)
+
 
 func _on_mouse_exited() -> void:
 	if is_selectable:

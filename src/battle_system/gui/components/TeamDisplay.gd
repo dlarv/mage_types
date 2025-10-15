@@ -4,8 +4,8 @@ extends Node3D
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
 
-const _BattleSprite := preload("res://src/battle_system/gui/components/BattleSprite.gd")
-const BattleSprite := preload("res://src/battle_system/gui/components/battle_sprite.tscn")
+const _BattleSprite := preload("res://src/battle_system/gui/components/animator/BattleSprite.gd")
+const DefaultBattleSprite := preload("res://src/battle_system/gui/components/animator/battle_sprite.tscn")
 const _BattleActorDisplay := preload("res://src/battle_system/gui/components/BattleActorDisplay.gd")
 const BattleActorDisplay := preload("res://src/battle_system/gui/components/battle_actor_display.tscn")
 
@@ -69,7 +69,12 @@ func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
 
 
 func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
-	var sprite := BattleSprite.instantiate()
+	var sprite: _BattleSprite 
+	if actor.sprite_path == null:
+		sprite = DefaultBattleSprite.instantiate()
+	else:
+		sprite = actor.sprite_path.instantiate()
+
 	sprite.setup(actor, not isAlly)
 	sprites.append(sprite)
 

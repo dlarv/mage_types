@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c4a31odwnedry"]
 
-[ext_resource type="Script" uid="uid://cmcakb8l8y1ao" path="res://src/battle_system/gui/components/BattleSprite.gd" id="1_dntod"]
+[ext_resource type="Script" uid="uid://cmcakb8l8y1ao" path="res://src/battle_system/gui/components/animator/BattleSprite.gd" id="1_dntod"]
 [ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_n1qvi"]
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/components/pin_manager.tscn" id="3_ya2xk"]
 
@@ -31,9 +31,6 @@ mesh = SubResource("BoxMesh_ivek1")
 [node name="Secondary" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0)
 mesh = SubResource("BoxMesh_ivek1")
-
-[node name="Mesh" type="MeshInstance3D" parent="."]
-visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
 

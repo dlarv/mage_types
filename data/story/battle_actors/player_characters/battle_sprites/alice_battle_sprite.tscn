@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgrfhd0s3my0y"]
+
+[ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/components/animator/battle_sprite.tscn" id="1_yahwx"]
+[ext_resource type="PackedScene" uid="uid://dru1guxf1wg7w" path="res://assets/3d/models/characters/player_v2.blend" id="2_auqao"]
+
+[node name="AliceBattleSprite" node_paths=PackedStringArray("mesh") instance=ExtResource("1_yahwx")]
+use_gradient = false
+mesh = NodePath("player_v2/Armature/Skeleton3D/Head")
+
+[node name="Primary" parent="." index="0"]
+visible = false
+
+[node name="Secondary" parent="." index="1"]
+visible = false
+
+[node name="player_v2" parent="." index="7" instance=ExtResource("2_auqao")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0, 0.0881301, 0)
+
+[node name="Skeleton3D" parent="player_v2/Armature" index="0"]
+bones/0/position = Vector3(0, -0.780256, 0)
+bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -2.52435e-29, 1)
+bones/2/rotation = Quaternion(6.3628e-08, 1.14073e-07, -0.536134, 0.844133)
+bones/3/rotation = Quaternion(0.488297, 0.295907, -0.43616, 0.695535)
+bones/6/rotation = Quaternion(-0.00510134, 0.00939161, 0.0233648, 0.99967)
+bones/7/rotation = Quaternion(-0.0117216, -0.712535, -0.00384162, 0.701528)
+bones/8/rotation = Quaternion(-0.255724, -2.6772e-08, -5.51804e-08, 0.96675)
+bones/10/rotation = Quaternion(-1.27389e-08, -0.438293, -2.61243e-08, 0.898832)
+bones/11/rotation = Quaternion(0.815229, 0.390162, 0.386054, -0.184762)
+bones/12/rotation = Quaternion(-0.313102, 0.25959, 0.0119473, 0.913475)
+bones/13/rotation = Quaternion(-0.0176348, 0.00295362, 0.176799, 0.984085)
+bones/15/rotation = Quaternion(0.333665, -0.150333, 0.07036, 0.927964)
+bones/16/rotation = Quaternion(0.0171378, -0.00271036, 0.156196, 0.987574)
+
+[editable path="PinManager"]
+[editable path="player_v2"]
