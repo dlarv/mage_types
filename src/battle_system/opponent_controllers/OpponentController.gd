@@ -3,7 +3,7 @@ class_name OpponentController
 
 signal battle_ended(endState: Battle.EndState)
 
-const ActorAction := preload("res://src/battle_system/ActorAction.gd")
+const ActorTurnData := preload("res://src/battle_system/ActorTurnData.gd")
 const TargetType := _BattleAction.TargetType
 const TEAM_INDEX := 1
 
@@ -41,8 +41,8 @@ func _on_battle_ended(endState: Battle.EndState) -> void:
 	battle_ended.emit(endState)
 
 
-func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
-	var actions: Array[ActorAction] = []
+func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorTurnData]:
+	var actions: Array[ActorTurnData] = []
 	actions.resize(len(team))
 
 	for i in range(len(team)):
@@ -51,7 +51,7 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 		else:
 			var attack: Attack = team[i].attacks.pick_random()
 			var target := _get_random_targets(attack, team[i], otherTeam)
-			actions[i] = ActorAction.new(
+			actions[i] = ActorTurnData.new(
 				team[i], 
 				attack,
 				target,  

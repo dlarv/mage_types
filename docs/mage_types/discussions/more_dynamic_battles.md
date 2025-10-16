@@ -45,7 +45,10 @@ Any model used as a `BattleSprite` must have two material slots!
 - Gets called by `Battle`
 - Plays user.channeling -> user.attack -> targets.getting_hit
 - Play channeling particle effect alongside user.channeling
-- Play transmutation particle effect
+- Play attack animation
+- ~~Play transmutation particle effect~~
+	- Transmutation will be handled via `BattleSprite` outside of this.
 - Emit `finished` signal
 
 When `TeamDisplay` instantiates `BattleSprite`, it will need to notify `BattleAnimator`.
+	`TeamDisplay` will define a signal which `BattleAnimator` will listen to.

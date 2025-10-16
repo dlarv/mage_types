@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://de2o1rjags06x"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_7gb7r"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="2_ofj1d"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="2_ofj1d"]
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="3_4m5og"]
 [ext_resource type="Script" uid="uid://b7le2eumt6kqa" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="4_el2fm"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="5_ihfmu"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=74 format=4 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="13_b6sci"]
 [ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="14_kx2pq"]
 [ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="14_p05cy"]
-[ext_resource type="Texture2D" uid="uid://b0kj6udppi815" path="res://assets/3d/textures/player/player_diffuse.png" id="15_0b8p6"]
 [ext_resource type="Texture2D" uid="uid://c667s2n46bgqp" path="res://assets/3d/textures/player/blob_normal.png" id="16_gm161"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="18_3lqrh"]
 [ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="20_bwxdu"]
@@ -68,7 +67,6 @@ albedo_color = Color(0, 1, 1, 1)
 resource_name = "player"
 next_pass = SubResource("StandardMaterial3D_n32nn")
 cull_mode = 2
-albedo_texture = ExtResource("15_0b8p6")
 normal_enabled = true
 normal_scale = 1.5
 normal_texture = ExtResource("16_gm161")

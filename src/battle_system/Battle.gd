@@ -6,7 +6,7 @@ enum EndState { WON, DEFEATED, FLED }
 enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES, TEAM_0, TEAM_1, ATTACKS }
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
-const ActorAction := preload("res://src/battle_system/ActorAction.gd")
+const ActorTurnData := preload("res://src/battle_system/ActorTurnData.gd")
 const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
 
 @export var ai: OpponentController 
@@ -19,7 +19,7 @@ var allies: Array[BattleActor] = []
 var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
 var _turn_counter: int = 0
-var _actions: Array[ActorAction] = []
+var _actions: Array[ActorTurnData] = []
 var tie_breaker := false
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,7 +86,7 @@ func query_battlefield_state(asker: BattleActor, param: BattlefieldStateParams) 
 	return null
 
 
-func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
+func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 	_dialog_box.stop()
 	gui.enable_player_controls(false)
 	gui.show_enemy_intentions(false)
@@ -111,7 +111,7 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 	_actions.append_array(allyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	_actions.sort_custom(func(a: ActorAction, b: ActorAction) -> bool:
+	_actions.sort_custom(func(a: ActorTurnData, b: ActorTurnData) -> bool:
 		if a == null: return false
 		elif b == null: return true
 		# Higher priority goes first.
@@ -124,28 +124,26 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 
 	await _dialog(false)
 
-	for action in _actions:
+	for turnData in _actions:
 		# This means a character is defeated.
-		if action == null or action.actor.is_defeated:
+		if turnData == null or turnData.actor.is_defeated:
 			continue
 			
-		var flinch := action.actor.flinching
+		var flinch := turnData.actor.flinching
 		if flinch != null:
-			await gui.display_message("%s flinched! They were unable to move." % action.actor.name)
-			action.actor.turn_ended.emit()
+			await gui.display_message("%s flinched! They were unable to move." % turnData.actor.name)
+			turnData.actor.turn_ended.emit()
 			continue
 
-		Logger.append_battle_log("\nActors turn: %s" % action.actor.name)
+		Logger.append_battle_log("\nActors turn: %s" % turnData.actor.name)
 		
 		# Apply action effects.
-		var res: Dictionary = action.action.apply_effects(action.actor, action.targets)
-		action.actor.action_used.emit(action.action)
+		var res: Dictionary = turnData.action.apply_effects(turnData.actor, turnData.targets)
+		turnData.actor.action_used.emit(turnData.action)
 		var msg: Array[String] = res.msg
 		var missed: bool = res.get("missed", false)
 
-		# Play animation.
-		if not missed:
-			_play_animation(action)
+		gui.animate_action(turnData, missed)
 
 		# Display message and await input.
 		await gui.display_message(msg)
@@ -155,9 +153,9 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 
 		# Calculate target transmutations.
 		if not missed:
-			for target in action.targets:
+			for target in turnData.targets:
 				if target.is_defeated: continue
-				await _calculate_transmutations(target, action.action)
+				await _calculate_transmutations(target, turnData.action)
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -167,21 +165,21 @@ func _on_player_actions_selected(allyActions: Array[ActorAction]) -> void:
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
 		# This only applies to melee attacks.
-		if not missed and action.targets.find(action.actor) == -1 \
-				and action.action is Attack \
-				and (action.action).attack_range == Attack.AttackRange.MELEE:
-			await _calculate_transmutations(action.actor, action.action) 
+		if not missed and turnData.targets.find(turnData.actor) == -1 \
+				and turnData.action is Attack \
+				and (turnData.action).attack_range == Attack.AttackRange.MELEE:
+			await _calculate_transmutations(turnData.actor, turnData.action) 
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
 		if await _check_if_battle_ended(): return
 
 		# Resolve user's status effects.
-		var a := allies if action.team_index == 0 else enemies
-		var o := enemies if action.team_index == 0 else allies
-		action.actor.resolve_end_of_turn(a, o)
-		action.actor.turn_ended.emit()
-		msg = action.actor.get_and_flush_msgs()
+		var a := allies if turnData.team_index == 0 else enemies
+		var o := enemies if turnData.team_index == 0 else allies
+		turnData.actor.resolve_end_of_turn(a, o)
+		turnData.actor.turn_ended.emit()
+		msg = turnData.actor.get_and_flush_msgs()
 		await gui.display_message(msg)
 		# Check if battle should end.
 		# e.g. if an actor was defeated by poison.
@@ -314,7 +312,7 @@ func _increment_defeat_counter(isAlly: bool) -> void:
 
 
 # To be DEPRECATED
-func _play_animation(action: ActorAction) -> void:
-		var userPosition: Vector2 = gui.get_actor_display_position(action.actor)
-		var targetPosition: Vector2 = gui.get_actor_display_position(action.targets[0])
-		action.action.play_animation(userPosition, targetPosition, self)
+func _play_animation(data: ActorTurnData) -> void:
+	var userPosition: Vector2 = gui.get_actor_display_position(data.actor)
+	var targetPosition: Vector2 = gui.get_actor_display_position(data.targets[0])
+	data.action.play_animation(userPosition, targetPosition, self)

@@ -3,10 +3,10 @@ extends Node3D
 ## Display messages.
 ## Play animations.
 
-signal actions_selected(actions: Array[ActorAction])
+signal actions_selected(actions: Array[ActorTurnData])
 signal target_selected(actor: BattleActor)
 
-const ActorAction := preload("res://src/battle_system/ActorAction.gd")
+const ActorTurnData := preload("res://src/battle_system/ActorTurnData.gd")
 const TeamDisplay := preload("res://src/battle_system/gui/components/TeamDisplay.gd")
 
 @export var message_box: RichTextLabel 
@@ -24,8 +24,8 @@ var turn_counter: int:
 		if turn_counter_display == null: return
 		turn_counter_display.text = "Turn %d" % value
 
-# ActorAction[]
-var _selected_actions: Array[ActorAction] = []
+# ActorTurnData[]
+var _selected_actions: Array[ActorTurnData] = []
 var _finished_setup := false
 var _accept_messages := true
 
@@ -83,7 +83,7 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 	var targets: Array[BattleActor] = await select_targets(allies[index], action)
 	if len(targets) == 0: return
 
-	var actorAction := ActorAction.new(allies[index], action, targets, 0)
+	var actorAction := ActorTurnData.new(allies[index], action, targets, 0)
 	_selected_actions[index] = actorAction
 	message_box.clear_message()
 	player_controls.next_character()
@@ -128,7 +128,7 @@ func _on_active_actor_changed(index: int) -> void:
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
-		actions_selected.emit([ActorAction.flee()] as Array[ActorAction])
+		actions_selected.emit([ActorTurnData.flee()] as Array[ActorTurnData])
 	else:
 		actions_selected.emit(_selected_actions)
 		_selected_actions = []
@@ -167,6 +167,10 @@ func display_turn_order(actors: Array[BattleActor]) -> void:
 		
 func _on_target_selected(actor: BattleActor) -> void:
 	target_selected.emit(actor)
+
+
+func animate_action(data: ActorTurnData, missed: bool) -> void:
+	$BattleAnimator.animate(data, missed)
 
 
 ## TO BE DEPRECATED.

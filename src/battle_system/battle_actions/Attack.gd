@@ -3,6 +3,10 @@ extends _BattleAction
 class_name Attack 
 
 const AttackType := AlignmentManager.Type
+const POOR_AFFINITY_THRESHOLD := 0.5
+const WEAK_AFFINITY_THRESHOLD := 0.8
+const GOOD_AFFINITY_THRESHOLD := 1.0
+const GREAT_AFFINITY_THRESHOLD := 1.2
 
 @export var effects: Array[_BaseEffectSlot]
 @export_range(0, 1) var accuracy := 1.0
@@ -59,32 +63,19 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 		msg.append("But it missed!")
 		return { "msg": msg, "missed": true }
 
-	var affinity: float = scaling_factor.x
-	if scaling_factor.w > -1 and user.element1 == element and user.element2 == element:
-		Logger.append_battle_log("User(%s) elements both match Attack.Element(%s)" 
-			% [user.name, element])
-		affinity = scaling_factor.w
-	elif user.element1 == element or user.element2 == element:
-		Logger.append_battle_log("User(%s) typing matches Attack.Element(%s)" 
-			% [user.name, element])
-		affinity = scaling_factor.z
-	elif user.element1.in_same_affinity_group(element) or user.element2.in_same_affinity_group(element):
-		Logger.append_battle_log("User(%s)'s typing has affinity for Attack.Element(%s)"
-				% [user.name, element])
-		affinity = scaling_factor.y
-	affinity /= 100
+	var affinity := calculate_affinity(user)
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 
 	# This message communicates to the player the strength of their attack.
 	# I used to say "not very effective," but I think this confuses player into thinking there are type matchups
-	if affinity <= 0.5:
+	if affinity <= POOR_AFFINITY_THRESHOLD:
 		msg.append("%s gave out a few [el]%s[/el] sparks..." % [user.name, element])
-	elif affinity < 1.0:
+	elif affinity <= WEAK_AFFINITY_THRESHOLD:
 		msg.append("%s was wreathed in faint [el]%s[/el] energy!" % [user.name, element])
-	elif affinity > 1.0:
-		msg.append("%s was wreathed in bright [el]%s[/el] energy!" % [user.name, element])
-	else:
+	elif affinity <= GOOD_AFFINITY_THRESHOLD:
 		msg.append("%s was wreathed in [el]%s[/el] energy!" % [user.name, element])
+	else:
+		msg.append("%s was wreathed in bright [el]%s[/el] energy!" % [user.name, element])
 	
 	var delayedEffects: Array[_BaseEffectSlot] = []
 	for i in len(targets):
@@ -137,6 +128,24 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 
 
 	return { "msg": msg }
+
+
+func calculate_affinity(user: BattleActor) -> float:
+	var affinity: float = scaling_factor.x
+	if scaling_factor.w > -1 and user.element1 == element and user.element2 == element:
+		Logger.append_battle_log("User(%s) elements both match Attack.Element(%s)" 
+			% [user.name, element])
+		affinity = scaling_factor.w
+	elif user.element1 == element or user.element2 == element:
+		Logger.append_battle_log("User(%s) typing matches Attack.Element(%s)" 
+			% [user.name, element])
+		affinity = scaling_factor.z
+	elif user.element1.in_same_affinity_group(element) or user.element2.in_same_affinity_group(element):
+		Logger.append_battle_log("User(%s)'s typing has affinity for Attack.Element(%s)"
+				% [user.name, element])
+		affinity = scaling_factor.y
+	affinity /= 100
+	return affinity
 
 
 # override

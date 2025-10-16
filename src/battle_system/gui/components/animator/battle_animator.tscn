@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://col1jalr638u0"]
 
-[ext_resource type="Script" uid="uid://di7bx3biuk7df" path="res://src/battle_system/gui/components/animator/BattleAnimator.gd" id="1_jg3gd"]
+[ext_resource type="Script" path="res://src/battle_system/battle_actions/BattleAnimator.gd" id="1_jg3gd"]
 
 [node name="BattleAnimator" type="Node3D"]
 script = ExtResource("1_jg3gd")

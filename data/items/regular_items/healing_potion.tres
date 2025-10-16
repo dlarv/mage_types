@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RegularItem" load_steps=10 format=3 uid="uid://bwldq3pk8rvsh"]
 
 [ext_resource type="Script" uid="uid://bjtttndl1n74u" path="res://src/battle_system/battle_actions/BattleItem.gd" id="1_ar45h"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/battle_actions/animations/burst.tscn" id="1_qwm21"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="1_qwm21"]
 [ext_resource type="Script" uid="uid://cqtmj04buupx0" path="res://src/items/RegularItem.gd" id="1_ut3pp"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="2_mux5s"]
 [ext_resource type="Script" uid="uid://nh2nt72jmw33" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="3_kskua"]

@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		animation_finished.emit()
 		queue_free()
 
-func _play(start: Vector2i, end: Vector2i, parent: Node2D, element: ElementalType=null) -> BattleActionAnimation:
+func _play(start: Vector2i, end: Vector2i, parent: Node, element: ElementalType=null) -> BattleActionAnimation:
 	set_elemental_tint(element)
 	position = end 
 	self.start = start

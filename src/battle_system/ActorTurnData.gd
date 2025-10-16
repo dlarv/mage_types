@@ -1,4 +1,4 @@
-extends Node
+extends Object
 
 ## Datatype for actions selected by BattleActors.
 ## These are basically like an instance of a _BattleAction.
@@ -7,7 +7,6 @@ extends Node
 var actor: BattleActor 
 var priority: int 
 var action: _BattleAction 
-# BattleActor[]
 var targets: Array[BattleActor] = []
 var team_index: int
 
@@ -19,7 +18,7 @@ func _init(actor: BattleActor, action: _BattleAction, targets: Array[BattleActor
 	self.targets = targets
 	self.team_index = teamIndex
 
-static func flee() -> Battle.ActorAction:
+static func flee() -> Battle.ActorTurnData:
 	return new(null, null, [], -1)
 
 func is_flee() -> bool:

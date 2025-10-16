@@ -27,6 +27,7 @@ var _mat2: StandardMaterial3D
 var _indicator_mat: StandardMaterial3D
 var _particle_mat: StandardMaterial3D
 var _is_defeated := false
+var _animation_player: AnimationPlayer
 
 
 func setup(actor: BattleActor, shiftRight: bool) -> void:
@@ -43,6 +44,15 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 	else:
 		_mat1 = mesh.get_active_material(0)
 		_mat2 = mesh.get_active_material(1)
+
+		var animationPlayerParent: Node = mesh
+		while animationPlayerParent.get_parent() != self:
+			animationPlayerParent = animationPlayerParent.get_parent()
+
+		_animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
+		if _animation_player and _animation_player.has_animation("battle_stance"):
+			_animation_player.play_animation("battle_stance")
+
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 
 	$GPUParticles3D.draw_pass_1 = BoxMesh.new()
@@ -116,10 +126,29 @@ func show_intentions(val: bool) -> void:
 	$GPUParticles3D.visible = val
 
 
-func show_elemental_particles(el: ElementalType, strength:=DEFAULT_PARTICLE_AMOUNT) -> void:
+func play_animation(name: String) -> void:
+	if not _animation_player: return
+	if not _animation_player.has_animation(name):
+		push_error("BattleSprite(%s) is missing Animation(%s)!" % [actor.name, name])
+		return
+
+	_animation_player.play(name)
+	await _animation_player.animation_finished
+
+
+func get_animation_duration(name: String) -> float:
+	if not _animation_player or not _animation_player.has_animation(name): return 0.0
+	return _animation_player.get_animation(name).length
+
+
+
+func show_elemental_particles(el: ElementalType, duration: float, strength:=DEFAULT_PARTICLE_AMOUNT) -> void:
 	$GPUParticles3D.amount = strength
 	$GPUParticles3D.emitting = true
 	_particle_mat.albedo_color = el.main_color
+	await get_tree().create_timer(duration).timeout
+	$GPUParticles3D.amount = DEFAULT_PARTICLE_AMOUNT
+	$GPUParticles3D.emitting = false
 
 
 func _on_mouse_entered() -> void:

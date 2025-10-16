@@ -35,8 +35,8 @@ func setup(team: Array[BattleActor]) -> void:
 	setup_bias = 1 - aggression
 
 
-func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
-	var actions: Array[ActorAction] = []
+func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorTurnData]:
+	var actions: Array[ActorTurnData] = []
 
 	for user: BattleActor in team:
 		var action := _get_action(user, otherTeam)
@@ -45,7 +45,7 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 	return actions;
 
 
-func _get_action(user: BattleActor, targets: Array[BattleActor]) -> ActorAction:
+func _get_action(user: BattleActor, targets: Array[BattleActor]) -> ActorTurnData:
 	var maxVal := 0.0
 	var maxTarget: BattleActor = targets[0]
 	var maxAction: _BattleAction = user.attacks[0]
@@ -103,24 +103,24 @@ func _get_action(user: BattleActor, targets: Array[BattleActor]) -> ActorAction:
 		_BattleAction.TargetType.ALLIES:
 			Logger.append_battle_ai_log("%s is using %s on its team.\n"
 					% [user.name, maxAction.name])
-			return ActorAction.new(user, maxAction, team, TEAM_INDEX)
+			return ActorTurnData.new(user, maxAction, team, TEAM_INDEX)
 		_BattleAction.TargetType.ENEMIES:
 			Logger.append_battle_ai_log("%s is using %s against the opposing team.\n"
 					% [user.name, maxAction.name])
-			return ActorAction.new(user, maxAction, targets, TEAM_INDEX)
+			return ActorTurnData.new(user, maxAction, targets, TEAM_INDEX)
 		_BattleAction.TargetType.ALL:
 			Logger.append_battle_ai_log("%s is using %s on everyone.\n"
 					% [user.name, maxAction.name])
-			return ActorAction.new(user, maxAction, team + targets, TEAM_INDEX)
+			return ActorTurnData.new(user, maxAction, team + targets, TEAM_INDEX)
 		_BattleAction.TargetType.RANDOM:
 			var target: BattleActor = (team + targets).pick_random()
 			Logger.append_battle_ai_log("%s is using on %s.\n"
 					% [user.name, maxAction.name, target.name])
-			return ActorAction.new(user, maxAction, [target], TEAM_INDEX)
+			return ActorTurnData.new(user, maxAction, [target], TEAM_INDEX)
 		_:
 			Logger.append_battle_ai_log("%s is using %s against %s.\n"
 					% [user.name, maxAction.name, maxTarget.name])
-			return ActorAction.new(user, maxAction, [maxTarget], TEAM_INDEX)
+			return ActorTurnData.new(user, maxAction, [maxTarget], TEAM_INDEX)
 
 
 func _evaluate_target(user: BattleActor, target: BattleActor, action: _BattleAction, isAlly: bool) -> float:

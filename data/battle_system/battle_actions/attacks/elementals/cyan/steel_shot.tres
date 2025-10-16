@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=21 format=3 uid="uid://drcu827fevmfu"]
 
-[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/battle_actions/animations/jet.tscn" id="1_atqa7"]
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/gui/components/animator/attack_animations/jet.tscn" id="1_atqa7"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_csok2"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_qj3pp"]
 [ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/effect_slots/ConditionalEffect.gd" id="3_4m2fq"]

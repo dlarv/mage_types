@@ -1,6 +1,7 @@
 @tool
 extends Node3D
 
+signal battle_sprite_added(actor: BattleActor, sprite: _BattleSprite)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
 
@@ -108,6 +109,8 @@ func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
 	var disp := TeamDisplayActor.new(sprite, display, isAlly)
 	actors[actor] = disp
 	disp.hovered.connect(_on_actor_hovered)
+
+	battle_sprite_added.emit(actor, sprite)
 	return disp 
 
 

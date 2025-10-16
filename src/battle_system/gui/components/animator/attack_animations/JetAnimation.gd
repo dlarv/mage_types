@@ -1,6 +1,6 @@
 extends BattleActionAnimation
 
-func _play(start: Vector2i, end: Vector2i, parent: Node2D, element: ElementalType=null) -> BattleActionAnimation:
+func _play(start: Vector2i, end: Vector2i, parent: Node, element: ElementalType=null) -> BattleActionAnimation:
 	set_elemental_tint(element)
 	position = start
 	look_at(end)

@@ -20,8 +20,8 @@ func setup(team: Array[BattleActor]) -> void:
 		indices.append(-1)
 
 
-func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
-	var actions: Array[ActorAction]= []
+func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorTurnData]:
+	var actions: Array[ActorTurnData]= []
 	var i := -1
 	for actor in team:
 		i += 1
@@ -33,7 +33,7 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorAction]:
 		var attack := actor.attacks[index]
 		var target := _get_random_targets(attack, actor, otherTeam)
 
-		actions.append(ActorAction.new(actor, attack, target, TEAM_INDEX))
+		actions.append(ActorTurnData.new(actor, attack, target, TEAM_INDEX))
 		actor.action_selected.emit(attack)
 
 		var targetName := ",".join(target.map(func(t: BattleActor) -> String: return t.name))

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cacekiasojwya"]
 
-[ext_resource type="Script" uid="uid://bw1pskidpkei3" path="res://src/battle_system/battle_actions/BattleActionAnimation.gd" id="1_f1j8e"]
+[ext_resource type="Script" uid="uid://bw1pskidpkei3" path="res://src/battle_system/gui/components/animator/attack_animations/BattleActionAnimation.gd" id="1_f1j8e"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppq6a"]
 particle_flag_disable_z = true
@@ -20,7 +20,7 @@ animation = NodePath("GPUParticles2D")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_ppq6a")
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ppq6a")

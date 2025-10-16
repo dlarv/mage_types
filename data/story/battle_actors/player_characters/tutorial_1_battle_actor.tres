@@ -13,13 +13,14 @@ _base_melee_defense = 100.0
 _base_ranged_defense = 100.0
 _base_speed = 10.0
 _base_evasion = 100.0
+hp = 100.0
 
 [resource]
 script = ExtResource("4_5ngg0")
 name = "Guy"
+id = 0
 level = 1
 stat_manager = SubResource("Resource_h1bhc")
-hp = 100
 reset_hp_after_battle = true
 _element1 = "orange"
 _element2 = "blank"

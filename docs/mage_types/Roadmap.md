@@ -32,12 +32,13 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Textured
 		- [x] Compare NextPassTransparency with Swapping diffuse maps
 			- Swapping diffuse maps looks far better than the next pass method
-	- [ ] Animation
+	- [x] Animation
 		- [x] Walk
-		- [ ] Channel power
-		- [ ] Melee attack
-		- [ ] Ranged attack
-		- [ ] Getting hit
+		- [x] Basic Idle
+		- [x] Battle Stance
+		- [x] Channel power
+		- [x] Attack
+		- [x] Getting hit
 - [ ] Implement flinch condition properly
 - [ ] Make playtesting enemies easier
 	- [x] Show levels in UI
@@ -109,6 +110,10 @@ West and Central Hotel content update. Add puzzles and combat challenges to hote
 		- [x] Create indicator block, which differentiates between off/on/invalid_off
 ## v0.8.x
 World aesthetic update.
+- [ ] Player animations
+	- [ ] Jump 
+	- [ ] Dash
+	- [ ] Idle animation to play when player stands still for awhile
 - [ ] Beastiary describing monsters
 - [ ] Add wall paper
 - [ ] Clay shader cracks are inverted?
@@ -276,7 +281,7 @@ Where:
 	- `BaseEffectSlot.chance` can read from this buffer.
 - Syntax design requirements
 	- Read from buffer.
-	- Perform arithmetic operations on buffer data.
+*****	- Perform arithmetic operations on buffer data.
 		- Buffer will be only variable, everything else will be literals.
 	- Perform simple branching logic.
 	- Write to buffer.
