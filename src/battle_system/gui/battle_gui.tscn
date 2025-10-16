@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://1q27rku2p2g2"]
+[gd_scene load_steps=8 format=3 uid="uid://1q27rku2p2g2"]
 
 [ext_resource type="Script" uid="uid://hggtsq73slh7" path="res://src/battle_system/gui/BattleGUI.gd" id="1_ik08k"]
 [ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
 [ext_resource type="PackedScene" uid="uid://chxhvxvxw2ffu" path="res://src/battle_system/gui/player_controls.tscn" id="2_s8f4v"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="4_k2fdd"]
 [ext_resource type="PackedScene" uid="uid://col1jalr638u0" path="res://src/battle_system/gui/components/animator/battle_animator.tscn" id="5_s7ygr"]
-[ext_resource type="Script" uid="uid://di7bx3biuk7df" path="res://src/battle_system/gui/components/animator/BattleAnimator.gd" id="6_po4wd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5iq7"]
 albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
@@ -96,7 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 light_energy = 0.5
 
 [node name="BattleAnimator" parent="." instance=ExtResource("5_s7ygr")]
-script = ExtResource("6_po4wd")
 
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]
