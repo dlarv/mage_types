@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b46rmrfif3od0" path="res://world/subareas_old/eastern_caves/room_templates/EasternCaveRoomFight.gd" id="1_0bx8t"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_t5hd7"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_fjlj6"]
-[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="4_udggu"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/beastiary/spawner.tscn" id="4_udggu"]
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="5_btrw6"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="7_otd4f"]
 [ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="8_57omm"]

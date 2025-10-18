@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d36jyhw1q6kxm"]
 
-[ext_resource type="Script" uid="uid://bvjfeqgmxg4ot" path="res://src/overworld/enemies/components/behaviors/AggressiveBehavior.gd" id="1_wcho6"]
-[ext_resource type="PackedScene" uid="uid://bre16bu52hltu" path="res://src/overworld/enemies/components/behaviors/sensors/sphere_sensor.tscn" id="2_omvm4"]
+[ext_resource type="Script" uid="uid://bvjfeqgmxg4ot" path="res://src/beastiary/components/behaviors/AggressiveBehavior.gd" id="1_wcho6"]
+[ext_resource type="PackedScene" uid="uid://bre16bu52hltu" path="res://src/beastiary/components/behaviors/sensors/sphere_sensor.tscn" id="2_omvm4"]
 
 [node name="AggressiveBehavior" type="Node3D"]
 script = ExtResource("1_wcho6")

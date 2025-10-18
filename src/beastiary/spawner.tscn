@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cjkcvlvidp24x"]
 
-[ext_resource type="Script" uid="uid://c0gcu5o4w8gsy" path="res://src/overworld/enemies/Spawner.gd" id="1_gtanb"]
+[ext_resource type="Script" uid="uid://c0gcu5o4w8gsy" path="res://src/beastiary/Spawner.gd" id="1_gtanb"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_ty1x5"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="5_h0ssj"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="6_atc5r"]

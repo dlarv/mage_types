@@ -43,21 +43,22 @@ Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Make playtesting enemies easier
 	- [x] Show levels in UI
 	- [x] Set player's level in debug mode
-	- [ ] Create testing room to playtest different enemies
-	- [ ] Create debug spawner to make instantiating specific enemies easier
-		- [ ] Set level and starting config
-		- [ ] Summon monsters directly from the beastiary?
-	- [ ] Lay groundwork for gauntlet style challenge later
-		- [ ] Battle queue
+	- [ ] Create beastiary to contain all monster data
+	- [ ] Create scene to setup battle
+	- [ ] Customize player team using unique battle actor
+		- [ ] Stats
+		- [ ] Attacks
+		- [ ] Number of team members
+	- [ ] Select monster team (interface with beastiary)
 - [ ] Communicate important information using animations and graphics
 	- [ ] Damage numbers: How much dmg did the attack deal?
-	- [ ] Effectiveness: e.g. {actor} was wreathed in bright Blue light
+	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
 	- [ ] Transmutations: up to 6 transmutations
 	- [ ] Status effects: poison, phobia, flinched
-	- [ ] Melee/ranged
+	- [ ] ~~Melee/ranged~~ I don't think this is necessary
 	- [ ] Whether attack dealt a status condition/extra effects
 - [ ] BattleActor models animation support
-	- [ ] Add animation states defined in supporting discussion
+	- [x] Add animation states defined in supporting discussion
 	- [ ] Allow Settings to control animation speed
 	- [ ] Animation overlap and lengths should be controlled via variables
 	- [ ] Allow animation states to be skipped

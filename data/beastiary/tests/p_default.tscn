@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://cy856wmp85b2e"]
 
-[ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/overworld/enemies/WildEnemyActor.gd" id="1_7jftm"]
+[ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_7jftm"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_flfs3"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_a05gl"]
 [ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="4_7jftm"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_qli4v"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_5hxg3"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_gj1i6"]
-[ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/overworld/enemies/components/behaviors/aggressive_behavior.tscn" id="9_mg3tk"]
+[ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/beastiary/components/behaviors/aggressive_behavior.tscn" id="9_mg3tk"]
 
 [sub_resource type="Resource" id="Resource_jjxj6"]
 script = ExtResource("5_lqhxw")

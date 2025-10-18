@@ -26,7 +26,7 @@
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="17_g7uef"]
 [ext_resource type="Resource" uid="uid://cwjiv3e1abevd" path="res://data/items/spell_scrolls/phobias/phobia_y.tres" id="17_rcww2"]
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="19_3xoh5"]
-[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="19_b8v62"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/beastiary/spawner.tscn" id="19_b8v62"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="20_dejeb"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="20_wwne6"]
 [ext_resource type="Resource" uid="uid://5shwmrd8mol6" path="res://data/items/spell_scrolls/strikes/b_strike_scroll.tres" id="21_ag3af"]

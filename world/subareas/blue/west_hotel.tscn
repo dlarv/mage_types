@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_lfce1"]
-[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/overworld/enemies/spawner.tscn" id="4_cjwri"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/beastiary/spawner.tscn" id="4_cjwri"]
 [ext_resource type="PackedScene" uid="uid://cu1rkwx4wepl8" path="res://world/subareas/maintenance_halls/maintenance_sequence.tscn" id="4_pijpb"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="5_7u0ak"]
 [ext_resource type="PackedScene" uid="uid://dpdgg0dpuuuak" path="res://world/subareas/maintenance_halls/maintenance_room.tscn" id="5_cjwri"]
