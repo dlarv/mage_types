@@ -32,8 +32,7 @@ var create_skeleton := func() -> void:
 	area.collision_layer = 0
 	area.owner = get_tree().edited_scene_root
 	
-	# This must be done manually.
-	# area.body_entered.connect(_on_battle_trigger_body_entered)
+	area.body_entered.connect(_on_battle_trigger_body_entered, CONNECT_PERSIST)
 
 	var collider2 := CollisionShape3D.new()
 	area.add_child(collider2, true)
