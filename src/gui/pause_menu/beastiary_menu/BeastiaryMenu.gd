@@ -7,6 +7,7 @@ const ROOT_PATH := "res://data/beastiary/"
 @export var monsters: Array[Array]
 @export_tool_button("Regenerate")
 var regenerate_button: Callable = func() -> void:
+	monsters = []
 	for child in %Scroller.get_children(): %Scroller.remove_child(child)
 	_traverse(ROOT_PATH)
 	_populate_scroller()
@@ -14,16 +15,21 @@ var regenerate_button: Callable = func() -> void:
 var curr_index := 0
 
 
+func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
+	regenerate_button.call()
+
+
 #override
 func prev_screen() -> void: 
-	# %Display.current_tab = max(%Display.current_tab - 1, 0)
-	%Display.current_tab -= 1
+	curr_index =max(curr_index - 1, 0)
+	%InfoDisplay.display_message_non_blocking(monsters[curr_index])
 
 
 #override
 func next_screen() -> void: 
-	# %Display.current_tab = max(%Display.current_tab + 1, len(monsters) - 1)
-	%Display.current_tab += 1
+	curr_index = min(curr_index + 1, len(monsters) - 1)
+	%InfoDisplay.display_message_non_blocking(monsters[curr_index])
 
 
 func _traverse(path: String) -> void:
@@ -65,3 +71,5 @@ func _populate_scroller() -> void:
 		button.text = monster[0].name
 		%Scroller.add_child(button, true)
 		button.owner = get_tree().edited_scene_root
+
+		button.pressed.connect(func() -> void: %InfoDisplay.display_message_non_blocking(monster))

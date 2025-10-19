@@ -6,8 +6,6 @@ signal meta_clicked(obj: Variant)
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
 const AttackFormatter := preload("res://src/gui/info_display/formatters/AttackFormatter.gd")
 
-@export var val: AttackFormatter
-
 func _enter_tree() -> void:
 	var effect1 := RichTextElement.new()
 	for child in find_children("", "RichTextLabel", true):

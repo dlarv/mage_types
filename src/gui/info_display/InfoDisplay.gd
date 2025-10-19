@@ -3,10 +3,6 @@ class_name InfoDisplay
 
 @export var button: Button 
 @export var tab_container: TabContainer
-@export var attack_formatter: Formatter
-@export var item_formatter: Formatter
-@export var actor_formatter: Formatter
-@export var status_effect_formatter: Formatter
 
 func _ready() -> void:
 	tab_container.hide()
@@ -30,19 +26,24 @@ func format_msg(obj: Variant, limitInfo: bool) -> void:
 	tab_container.show()
 
 	if obj is Attack:
-		attack_formatter.display(obj)
+		%AttackFormatter.display(obj)
 
 	elif obj is ItemSlot or obj is _Item or obj is BattleItem:
-		item_formatter.display(obj)
+		%ItemFormatter.display(obj)
 
 	elif obj is StatusEffect:
-		status_effect_formatter.display(obj)
+		%StatusEffectFormatter.display(obj)
 
 	elif obj is BattleActor:
-		actor_formatter.display(obj, limitInfo)
+		%ActorFormatter.display(obj, limitInfo)
+	
+	elif obj is Array and len(obj) > 0 and obj[0] is BattleActor:
+		%MonsterFormatter.display(obj)
+
 
 func _on_link_clicked(obj: Variant) -> void:
 	display_message_non_blocking(obj)
+
 
 # [underline]<title>[/underline]
 func append_title(title: String) -> void:

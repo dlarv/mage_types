@@ -13,6 +13,7 @@ signal catalyst_menu_closed(element: ElementalType)
 @export var golem_menu: Menu
 @export var catalyst_menu: Menu
 @export var map_menu: Menu
+@export var beastiary_menu: Menu
 
 @onready var info_graphics := {
 	"stasis": $PanelContainer/MarginContainer/TabContainer/StasisOverworldSpell,
@@ -193,6 +194,10 @@ func _on_save_game_button_pressed() -> void:
 
 func _on_map_button_pressed() -> void:
 	push_menu(map_menu)
+
+
+func _on_beastiary_button_pressed() -> void:
+	push_menu(beastiary_menu)
 
 
 func toggle_golem_menu(element: ElementalType=null) -> void:

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dos802eriaax3" path="res://src/gui/pause_menu/map_menu/map_menu.tscn" id="12_67sa7"]
 [ext_resource type="PackedScene" uid="uid://c0pdv12umd3wn" path="res://src/gui/pause_menu/beastiary_menu/beastiary_menu.tscn" id="13_umo3j"]
 
-[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu", "golem_menu", "catalyst_menu", "map_menu")]
+[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu", "golem_menu", "catalyst_menu", "map_menu", "beastiary_menu")]
 process_mode = 3
 layer = 5
 script = ExtResource("1_86rq7")
@@ -28,6 +28,7 @@ save_menu = NodePath("PanelContainer/MarginContainer/TabContainer/SaveMenu")
 golem_menu = NodePath("PanelContainer/MarginContainer/TabContainer/GolemCreationMenu")
 catalyst_menu = NodePath("PanelContainer/MarginContainer/TabContainer/CatalystDeviceMenu")
 map_menu = NodePath("PanelContainer/MarginContainer/TabContainer/Map")
+beastiary_menu = NodePath("PanelContainer/MarginContainer/TabContainer/BeastiaryMenu")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -80,6 +81,10 @@ text = "Transmutation Chart"
 layout_mode = 2
 text = "Map
 "
+
+[node name="BeastiaryButton" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Beastiary"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -165,6 +170,7 @@ metadata/_tab_index = 12
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Inventory_Button" to="." method="_on_inventory_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Transmutation_Button" to="." method="_on_transmutation_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/MapButton" to="." method="_on_map_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/BeastiaryButton" to="." method="_on_beastiary_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/OpenSettings_Button" to="." method="_on_open_settings_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/SaveGame_Button" to="." method="_on_save_game_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/MainMenu_Button" to="." method="_on_main_menu_button_pressed"]

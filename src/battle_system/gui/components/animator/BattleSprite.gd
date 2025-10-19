@@ -51,7 +51,7 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 
 		_animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
 		if _animation_player and _animation_player.has_animation("battle_stance"):
-			_animation_player.play_animation("battle_stance")
+			_animation_player.play("battle_stance")
 
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 

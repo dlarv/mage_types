@@ -1,6 +1,258 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0pdv12umd3wn"]
+[gd_scene load_steps=36 format=3 uid="uid://c0pdv12umd3wn"]
 
 [ext_resource type="Script" uid="uid://lckxo7vx0rrj" path="res://src/gui/pause_menu/beastiary_menu/BeastiaryMenu.gd" id="1_iwysm"]
+[ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="2_1lo00"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_qw5rn"]
+[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="3_25pbc"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="4_fusyo"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_6lgku"]
+[ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="6_gxxk7"]
+[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="7_hbt3b"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="8_gqwdd"]
+[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="9_y71b7"]
+[ext_resource type="Resource" uid="uid://bgcfvlaa71k81" path="res://data/battle_system/battle_actions/attacks/basic/hit_y.tres" id="10_8r6wr"]
+[ext_resource type="Resource" uid="uid://bv6wifpicdft6" path="res://data/battle_system/battle_actions/attacks/basic/hit_g.tres" id="11_fnd1s"]
+[ext_resource type="Resource" uid="uid://blo35ub8xw8yg" path="res://data/battle_system/battle_actions/attacks/basic/hit_c.tres" id="12_vphmt"]
+[ext_resource type="Resource" uid="uid://befd57o315qxh" path="res://data/battle_system/battle_actions/attacks/elementals/purple/wail.tres" id="13_eu864"]
+[ext_resource type="Resource" uid="uid://bs0e8xbhke4v0" path="res://data/battle_system/battle_actions/attacks/elementals/red/crush.tres" id="14_iu3lh"]
+
+[sub_resource type="Resource" id="Resource_2y36f"]
+resource_local_to_scene = true
+script = ExtResource("5_6lgku")
+_base_melee_attack = 1.0
+_base_ranged_attack = 1.0
+_base_melee_defense = 20.0
+_base_ranged_defense = 20.0
+_base_speed = 5.0
+_base_evasion = 100.0
+hp = 30.0
+
+[sub_resource type="Resource" id="Resource_ka2df"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Guy"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_2y36f")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "purple"
+_alignment = "blank"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("3_25pbc")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_jjxj6"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 5.0
+_base_ranged_attack = 5.0
+_base_melee_defense = 18.0
+_base_ranged_defense = 13.0
+_base_speed = 5.0
+_base_evasion = 100.0
+hp = 60.0
+
+[sub_resource type="Resource" id="Resource_1vmhe"]
+script = ExtResource("4_fusyo")
+name = "Default Blue"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_jjxj6")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "blue"
+_alignment = "blue"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("3_25pbc")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_25pbc"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_7jftm"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Default Purple"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_25pbc")
+reset_hp_after_battle = true
+_element1 = "purple"
+_element2 = "purple"
+_alignment = "purple"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("6_gxxk7")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_fusyo"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 3.0
+_base_ranged_attack = 3.0
+_base_melee_defense = 18.0
+_base_ranged_defense = 15.0
+_base_speed = 7.0
+_base_evasion = 100.0
+hp = 65.0
+
+[sub_resource type="Resource" id="Resource_6lgku"]
+script = ExtResource("4_fusyo")
+name = "Default Magenta"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_fusyo")
+reset_hp_after_battle = true
+_element1 = "magenta"
+_element2 = "magenta"
+_alignment = "magenta"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("7_hbt3b")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_c845e"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_e2qo8"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Default Red"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_c845e")
+reset_hp_after_battle = true
+_element1 = "red"
+_element2 = "red"
+_alignment = "red"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("8_gqwdd")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_gxxk7"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_hbt3b"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Default Orange"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_gxxk7")
+reset_hp_after_battle = true
+_element1 = "orange"
+_element2 = "orange"
+_alignment = "orange"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("9_y71b7")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_gqwdd"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_y71b7"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Default Yellow"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_gqwdd")
+reset_hp_after_battle = true
+_element1 = "yellow"
+_element2 = "yellow"
+_alignment = "yellow"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("10_8r6wr")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_8r6wr"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_fnd1s"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Default Green"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_8r6wr")
+reset_hp_after_battle = true
+_element1 = "green"
+_element2 = "green"
+_alignment = "green"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("11_fnd1s")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_vphmt"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_eu864"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Default Cyan"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_vphmt")
+reset_hp_after_battle = true
+_element1 = "cyan"
+_element2 = "cyan"
+_alignment = "cyan"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("12_vphmt")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_s6b3u"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 10.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 16.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_rovan"]
+script = ExtResource("4_fusyo")
+name = "Despair"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_s6b3u")
+reset_hp_after_battle = false
+_element1 = "purple"
+_element2 = "purple"
+_alignment = "purple"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("6_gxxk7"), ExtResource("13_eu864"), ExtResource("14_iu3lh")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [node name="BeastiaryMenu" type="TabContainer"]
 anchors_preset = 15
@@ -11,6 +263,7 @@ grow_vertical = 2
 current_tab = 0
 tabs_visible = false
 script = ExtResource("1_iwysm")
+monsters = Array[Array]([[SubResource("Resource_ka2df")], [SubResource("Resource_1vmhe")], [SubResource("Resource_7jftm")], [SubResource("Resource_6lgku")], [SubResource("Resource_e2qo8")], [SubResource("Resource_hbt3b")], [SubResource("Resource_y71b7")], [SubResource("Resource_fnd1s")], [SubResource("Resource_eu864")], [SubResource("Resource_rovan")]])
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 2
@@ -39,8 +292,47 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 3
 
-[node name="Display" type="TabContainer" parent="Control/MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Guy"
+
+[node name="Button2" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Blue"
+
+[node name="Button3" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Purple"
+
+[node name="Button4" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Magenta"
+
+[node name="Button5" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Red"
+
+[node name="Button6" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Orange"
+
+[node name="Button7" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Yellow"
+
+[node name="Button8" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Green"
+
+[node name="Button9" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Default Cyan"
+
+[node name="Button10" type="Button" parent="Control/MarginContainer/HBoxContainer/ScrollContainer/Scroller"]
+layout_mode = 2
+text = "Despair"
+
+[node name="InfoDisplay" parent="Control/MarginContainer/HBoxContainer" instance=ExtResource("2_1lo00")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tabs_visible = false

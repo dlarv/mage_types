@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm1f1o20pmtbn"]
+[gd_scene load_steps=9 format=3 uid="uid://dm1f1o20pmtbn"]
 
 [ext_resource type="Script" uid="uid://c6jk7xn044snr" path="res://src/gui/info_display/InfoDisplay.gd" id="1_7hwcu"]
 [ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="1_r25dg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpfs4g2v7ybgs" path="res://src/gui/info_display/formatters/item_formatter.tscn" id="3_kpihw"]
 [ext_resource type="PackedScene" uid="uid://lqq2l2jdv6et" path="res://src/gui/info_display/formatters/actor_formatter.tscn" id="4_npyyy"]
 [ext_resource type="PackedScene" uid="uid://dm864gf38ms1c" path="res://src/gui/info_display/formatters/status_effect_formatter.tscn" id="5_fbllb"]
+[ext_resource type="PackedScene" uid="uid://cdwqugkp06aac" path="res://src/gui/info_display/formatters/monster_formatter.tscn" id="7_0egc3"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ygesq"]
 script = ExtResource("1_r25dg")
@@ -39,23 +40,33 @@ current_tab = 0
 tabs_visible = false
 
 [node name="AttackFormatter" parent="TabContainer" instance=ExtResource("2_fefpe")]
+unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="ItemFormatter" parent="TabContainer" instance=ExtResource("3_kpihw")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="ActorFormatter" parent="TabContainer" instance=ExtResource("4_npyyy")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="StatusEffectFormatter" parent="TabContainer" instance=ExtResource("5_fbllb")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="MonsterFormatter" parent="TabContainer" instance=ExtResource("7_0egc3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
 
 [node name="Button" type="Button" parent="."]
 show_behind_parent = true
@@ -69,3 +80,4 @@ grow_vertical = 2
 [connection signal="meta_clicked" from="TabContainer/ItemFormatter" to="." method="_on_link_clicked"]
 [connection signal="meta_clicked" from="TabContainer/ActorFormatter" to="." method="_on_link_clicked"]
 [connection signal="meta_clicked" from="TabContainer/StatusEffectFormatter" to="." method="_on_link_clicked"]
+[connection signal="meta_clicked" from="TabContainer/MonsterFormatter" to="." method="_on_link_clicked"]

@@ -43,7 +43,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Make playtesting enemies easier
 	- [x] Show levels in UI
 	- [x] Set player's level in debug mode
-	- [ ] Create beastiary to contain all monster data
+	- [x] Create beastiary to contain all monster data
 	- [ ] Create scene to setup battle
 	- [ ] Customize player team using unique battle actor
 		- [ ] Stats
