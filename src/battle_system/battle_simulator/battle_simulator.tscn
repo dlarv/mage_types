@@ -1,0 +1,943 @@
+[gd_scene load_steps=92 format=3 uid="uid://bpknr2o40rp3b"]
+
+[ext_resource type="Script" uid="uid://cqu78r45p61p" path="res://src/battle_system/battle_simulator/BattleSimulator.gd" id="1_mvkuh"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_kfmod"]
+[ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="3_vmh88"]
+[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="4_qfwgk"]
+[ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_x20xe"]
+[ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="6_ajy8m"]
+[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="7_xf0x8"]
+[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="8_tnql1"]
+[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="9_rmnva"]
+[ext_resource type="Resource" uid="uid://bgcfvlaa71k81" path="res://data/battle_system/battle_actions/attacks/basic/hit_y.tres" id="10_0hvxv"]
+[ext_resource type="Resource" uid="uid://bv6wifpicdft6" path="res://data/battle_system/battle_actions/attacks/basic/hit_g.tres" id="11_u8ni3"]
+[ext_resource type="Resource" uid="uid://blo35ub8xw8yg" path="res://data/battle_system/battle_actions/attacks/basic/hit_c.tres" id="12_nsly5"]
+[ext_resource type="Resource" uid="uid://befd57o315qxh" path="res://data/battle_system/battle_actions/attacks/elementals/purple/wail.tres" id="13_aone4"]
+[ext_resource type="Resource" uid="uid://bs0e8xbhke4v0" path="res://data/battle_system/battle_actions/attacks/elementals/red/crush.tres" id="14_852gu"]
+[ext_resource type="Resource" uid="uid://8qnf8bbhl6hh" path="res://data/battle_system/battle_actions/attacks/basic/throw_p.tres" id="15_hh7yx"]
+[ext_resource type="Resource" uid="uid://di3c5k8fhu4n7" path="res://data/battle_system/battle_actions/attacks/basic/throw_o.tres" id="16_g6hfk"]
+[ext_resource type="Resource" uid="uid://docdwxk76wvo1" path="res://data/battle_system/battle_actions/attacks/basic/throw_g.tres" id="17_i6vc0"]
+[ext_resource type="Resource" uid="uid://b4d7tphii0oh6" path="res://data/battle_system/battle_actions/attacks/basic/throw_r.tres" id="18_5bpb0"]
+[ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="19_6d8gb"]
+[ext_resource type="Resource" uid="uid://bufn6dgeaaumv" path="res://data/battle_system/battle_actions/attacks/basic/throw_y.tres" id="20_t7ges"]
+[ext_resource type="Resource" uid="uid://bkg6ove3jbkgg" path="res://data/battle_system/battle_actions/attacks/basic/throw_c.tres" id="21_e7pbt"]
+[ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="22_a26uw"]
+[ext_resource type="Resource" uid="uid://hkh74buet86t" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/orange_phobia.tres" id="23_nqg7f"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="24_8vmkg"]
+[ext_resource type="Resource" uid="uid://wc6nsqhqv1mp" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/yellow_phobia.tres" id="25_vgt8m"]
+[ext_resource type="Resource" uid="uid://b3n0dro8r3h8l" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/green_phobia.tres" id="26_goq5b"]
+[ext_resource type="Resource" uid="uid://dy7x06nfhr1r7" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/purple_phobia.tres" id="27_omc7q"]
+[ext_resource type="Resource" uid="uid://de2o1rjags06x" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/red_phobia.tres" id="28_hjd7n"]
+[ext_resource type="Resource" uid="uid://b7vvsc45eveqq" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/magenta_phobia.tres" id="29_lsbdp"]
+[ext_resource type="Resource" uid="uid://dfw4ok6p0v3ei" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/cyan_phobia.tres" id="30_eb0rf"]
+[ext_resource type="Resource" uid="uid://c0drgn5hkvd2t" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/terrify.tres" id="31_gohab"]
+[ext_resource type="Resource" uid="uid://dsprshhqctptw" path="res://data/battle_system/battle_actions/attacks/elementals/orange/brave_the_dark.tres" id="32_vf0ih"]
+[ext_resource type="Resource" uid="uid://by8gsmj622ykf" path="res://data/battle_system/battle_actions/attacks/elementals/orange/unbalanced_assault.tres" id="33_0gw3k"]
+[ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="34_jh6l0"]
+[ext_resource type="Resource" uid="uid://ctbnp06ti551l" path="res://data/battle_system/battle_actions/attacks/elementals/orange/alchemy_beam.tres" id="35_fj7dx"]
+[ext_resource type="Resource" uid="uid://d1gb0w3k2ys3f" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/freezing_gale.tres" id="36_x4o48"]
+[ext_resource type="Resource" uid="uid://bx48nu4cu54b6" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/fortress.tres" id="37_ko71i"]
+[ext_resource type="Resource" uid="uid://drcu827fevmfu" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/steel_shot.tres" id="38_72svk"]
+[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="39_pstkm"]
+[ext_resource type="Resource" uid="uid://d1s1g7x527myg" path="res://data/battle_system/battle_actions/attacks/elementals/purple/snipe.tres" id="40_3oynx"]
+[ext_resource type="Resource" uid="uid://vhtwa50btn1" path="res://data/battle_system/battle_actions/attacks/elementals/yellow/rush.tres" id="41_haqfd"]
+[ext_resource type="Resource" uid="uid://b3nggi4ftlucw" path="res://data/battle_system/battle_actions/attacks/elementals/red/desolation.tres" id="42_xshpv"]
+[ext_resource type="Resource" uid="uid://34n0lh5ijyi3" path="res://data/battle_system/battle_actions/attacks/elementals/red/consume.tres" id="43_ibhc8"]
+[ext_resource type="Resource" uid="uid://biyyeewaek1sj" path="res://data/battle_system/battle_actions/attacks/elementals/red/drain.tres" id="44_c5qrc"]
+[ext_resource type="Resource" uid="uid://cvg7imt703rjl" path="res://data/battle_system/battle_actions/attacks/elementals/red/satiate.tres" id="45_yg5jn"]
+[ext_resource type="Resource" uid="uid://hrssxbjy6fys" path="res://data/battle_system/battle_actions/attacks/elementals/red/leech.tres" id="46_bqhnc"]
+[ext_resource type="Resource" uid="uid://mwxg2wlabpnk" path="res://data/battle_system/battle_actions/attacks/elementals/red/blood_shock.tres" id="47_ldsds"]
+[ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="48_n0cd3"]
+[ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="49_waajt"]
+[ext_resource type="Resource" uid="uid://c4lyg4rq0tpt2" path="res://data/battle_system/battle_actions/attacks/elementals/green/reactor_breach.tres" id="50_kargs"]
+[ext_resource type="Resource" uid="uid://bbmfv6c5wfps" path="res://data/battle_system/battle_actions/attacks/elementals/green/disarmament.tres" id="51_c13h3"]
+[ext_resource type="Resource" uid="uid://bwpyxutff85nq" path="res://data/battle_system/battle_actions/attacks/elementals/green/sting.tres" id="52_hhulw"]
+[ext_resource type="Resource" uid="uid://g8xbj66ldn2v" path="res://data/battle_system/battle_actions/attacks/elementals/green/orbital_strike.tres" id="53_asirv"]
+[ext_resource type="Resource" uid="uid://ela4jxp8bcph" path="res://data/battle_system/battle_actions/attacks/elementals/green/total_meltdown.tres" id="54_diowb"]
+[ext_resource type="Resource" uid="uid://qw30a3pahvl4" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_green.tres" id="55_iqabh"]
+[ext_resource type="Resource" uid="uid://dm2j18owvneaj" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_purple.tres" id="56_pkj1c"]
+[ext_resource type="Resource" uid="uid://53axni6101at" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_orange.tres" id="57_50esx"]
+[ext_resource type="Resource" uid="uid://b6tgqcseb5bm7" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_yellow.tres" id="58_kk37w"]
+[ext_resource type="Resource" uid="uid://dlta5xqyquu06" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_blue.tres" id="59_wq72i"]
+[ext_resource type="Resource" uid="uid://c5bqlje0ktr3l" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_cyan.tres" id="60_n1mix"]
+[ext_resource type="Resource" uid="uid://buymubyl6j61a" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_red.tres" id="61_eive4"]
+[ext_resource type="Resource" uid="uid://ienicwu4kilx" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_magenta.tres" id="62_maufk"]
+[ext_resource type="Resource" uid="uid://bxhigobikymm" path="res://data/battle_system/battle_actions/attacks/strikes/orange_strike.tres" id="63_ssl4w"]
+[ext_resource type="Resource" uid="uid://idlpjrj0qtgr" path="res://data/battle_system/battle_actions/attacks/strikes/purple_strike.tres" id="64_160ap"]
+[ext_resource type="Resource" uid="uid://bhx77misimdoa" path="res://data/battle_system/battle_actions/attacks/strikes/cyan_strike.tres" id="65_1xf7p"]
+[ext_resource type="Resource" uid="uid://olgnrmvw2spc" path="res://data/battle_system/battle_actions/attacks/strikes/abyss_strike.tres" id="66_5kclf"]
+[ext_resource type="Resource" uid="uid://bfjk3jf15fgeh" path="res://data/battle_system/battle_actions/attacks/strikes/green_strike.tres" id="67_ue4oq"]
+[ext_resource type="Resource" uid="uid://ctlauvjcfmpog" path="res://data/battle_system/battle_actions/attacks/strikes/blue_strike.tres" id="68_i4ycn"]
+[ext_resource type="Resource" uid="uid://b5rkqbayc06h6" path="res://data/battle_system/battle_actions/attacks/strikes/red_strike.tres" id="69_43ss1"]
+[ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="70_wy8p2"]
+[ext_resource type="Resource" uid="uid://d5le4hwdg070" path="res://data/battle_system/battle_actions/attacks/strikes/yellow_strike.tres" id="71_613vy"]
+
+[sub_resource type="Resource" id="Resource_2y36f"]
+resource_local_to_scene = true
+script = ExtResource("5_x20xe")
+_base_melee_attack = 1.0
+_base_ranged_attack = 1.0
+_base_melee_defense = 20.0
+_base_ranged_defense = 20.0
+_base_speed = 5.0
+_base_evasion = 100.0
+hp = 30.0
+
+[sub_resource type="Resource" id="Resource_ka2df"]
+resource_local_to_scene = true
+script = ExtResource("4_qfwgk")
+name = "Guy"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_2y36f")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "purple"
+_alignment = "blank"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("3_vmh88")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_jjxj6"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 5.0
+_base_ranged_attack = 5.0
+_base_melee_defense = 18.0
+_base_ranged_defense = 13.0
+_base_speed = 5.0
+_base_evasion = 100.0
+hp = 60.0
+
+[sub_resource type="Resource" id="Resource_1vmhe"]
+script = ExtResource("4_qfwgk")
+name = "Default Blue"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_jjxj6")
+reset_hp_after_battle = true
+_element1 = "blue"
+_element2 = "blue"
+_alignment = "blue"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("3_vmh88")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_25pbc"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_7jftm"]
+resource_local_to_scene = true
+script = ExtResource("4_qfwgk")
+name = "Default Purple"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_25pbc")
+reset_hp_after_battle = true
+_element1 = "purple"
+_element2 = "purple"
+_alignment = "purple"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("6_ajy8m")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_fusyo"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 3.0
+_base_ranged_attack = 3.0
+_base_melee_defense = 18.0
+_base_ranged_defense = 15.0
+_base_speed = 7.0
+_base_evasion = 100.0
+hp = 65.0
+
+[sub_resource type="Resource" id="Resource_6lgku"]
+script = ExtResource("4_qfwgk")
+name = "Default Magenta"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_fusyo")
+reset_hp_after_battle = true
+_element1 = "magenta"
+_element2 = "magenta"
+_alignment = "magenta"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("7_xf0x8")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_c845e"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_e2qo8"]
+resource_local_to_scene = true
+script = ExtResource("4_qfwgk")
+name = "Default Red"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_c845e")
+reset_hp_after_battle = true
+_element1 = "red"
+_element2 = "red"
+_alignment = "red"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("8_tnql1")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_gxxk7"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_hbt3b"]
+resource_local_to_scene = true
+script = ExtResource("4_qfwgk")
+name = "Default Orange"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_gxxk7")
+reset_hp_after_battle = true
+_element1 = "orange"
+_element2 = "orange"
+_alignment = "orange"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("9_rmnva")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_gqwdd"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_y71b7"]
+resource_local_to_scene = true
+script = ExtResource("4_qfwgk")
+name = "Default Yellow"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_gqwdd")
+reset_hp_after_battle = true
+_element1 = "yellow"
+_element2 = "yellow"
+_alignment = "yellow"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("10_0hvxv")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_8r6wr"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_fnd1s"]
+resource_local_to_scene = true
+script = ExtResource("4_qfwgk")
+name = "Default Green"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_8r6wr")
+reset_hp_after_battle = true
+_element1 = "green"
+_element2 = "green"
+_alignment = "green"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("11_u8ni3")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_vphmt"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_eu864"]
+resource_local_to_scene = true
+script = ExtResource("4_qfwgk")
+name = "Default Cyan"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_vphmt")
+reset_hp_after_battle = true
+_element1 = "cyan"
+_element2 = "cyan"
+_alignment = "cyan"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("12_nsly5")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_s6b3u"]
+script = ExtResource("5_x20xe")
+_base_melee_attack = 18.0
+_base_ranged_attack = 10.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 16.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_rovan"]
+script = ExtResource("4_qfwgk")
+name = "Despair"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_s6b3u")
+reset_hp_after_battle = false
+_element1 = "purple"
+_element2 = "purple"
+_alignment = "purple"
+attacks = Array[ExtResource("2_kfmod")]([ExtResource("6_ajy8m"), ExtResource("13_aone4"), ExtResource("14_852gu")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[node name="BattleSimulator" type="Node"]
+process_mode = 3
+script = ExtResource("1_mvkuh")
+
+[node name="Setup" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player Team"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Opp Team"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpponentScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="Setup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NewBattleActorButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "New Combatant"
+
+[node name="HSeparator" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Monster Templates"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MonsterScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Guy" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Guy"
+
+[node name="Default Blue" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Blue"
+
+[node name="Default Purple" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Purple"
+
+[node name="Default Magenta" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Magenta"
+
+[node name="Default Red" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Red"
+
+[node name="Default Orange" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Orange"
+
+[node name="Default Yellow" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Yellow"
+
+[node name="Default Green" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Green"
+
+[node name="Default Cyan" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Default Cyan"
+
+[node name="Despair" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+layout_mode = 2
+text = "Despair"
+
+[node name="VSeparator2" type="VSeparator" parent="Setup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="LineEdit" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Guy"
+placeholder_text = "Name"
+
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Lvl"
+
+[node name="Level" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 1.0
+
+[node name="HSeparator" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats"
+
+[node name="GridContainer" type="GridContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hp"
+
+[node name="HpSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spe"
+
+[node name="SpeedSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAtk"
+
+[node name="MASpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label4" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RAtk"
+
+[node name="RASpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label5" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MDef"
+
+[node name="MDSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label6" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RDef"
+
+[node name="RDSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Attacks"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackSelector" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Purple Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Purple Throw"
+
+[node name="Orange Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Orange Hit"
+
+[node name="Orange Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Orange Throw"
+
+[node name="Green Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Green Throw"
+
+[node name="Blue Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Blue Hit"
+
+[node name="Cyan Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Cyan Hit"
+
+[node name="Red Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Red Throw"
+
+[node name="Blue Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Blue Throw"
+
+[node name="Green Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Green Hit"
+
+[node name="Purple Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Purple Hit"
+
+[node name="Yellow Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Yellow Hit"
+
+[node name="Magenta Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Magenta Hit"
+
+[node name="Yellow Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Yellow Throw"
+
+[node name="Red Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Red Hit"
+
+[node name="Cyan Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Cyan Throw"
+
+[node name="Magenta Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Magenta Throw"
+
+[node name="Orange Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Orange Strike"
+
+[node name="Purple Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Purple Strike"
+
+[node name="Cyan Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Cyan Strike"
+
+[node name="Abyss Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Abyss Strike"
+
+[node name="Green Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Green Strike"
+
+[node name="Blue Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Blue Strike"
+
+[node name="Red Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Red Strike"
+
+[node name="Magenta Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Magenta Strike"
+
+[node name="Yellow Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Yellow Strike"
+
+[node name="Unbalanced Assault" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Unbalanced Assault"
+
+[node name="Reinforce" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Reinforce"
+
+[node name="Alchemy Beam" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Alchemy Beam"
+
+[node name="Freezing Gale" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Freezing Gale"
+
+[node name="Fortress" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Fortress"
+
+[node name="Steel Shot" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Steel Shot"
+
+[node name="Shield" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Shield"
+
+[node name="Snipe" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Snipe"
+
+[node name="Wail" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Wail"
+
+[node name="Rush" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Rush"
+
+[node name="Desolation" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Desolation"
+
+[node name="Consume" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Consume"
+
+[node name="Drain" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Drain"
+
+[node name="Satiate" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Satiate"
+
+[node name="Crush" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Crush"
+
+[node name="Leech" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Leech"
+
+[node name="Blood Shock" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Blood Shock"
+
+[node name="Cleave" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Cleave"
+
+[node name="Bite" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Bite"
+
+[node name="Reactor Breach" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Reactor Breach"
+
+[node name="Disarmament" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Disarmament"
+
+[node name="Sting" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Sting"
+
+[node name="Orbital Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Orbital Strike"
+
+[node name="Total Meltdown" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Total Meltdown"
+
+[node name="Conduct Green" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Green"
+
+[node name="Conduct Purple" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Purple"
+
+[node name="Conduct Orange" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Orange"
+
+[node name="Conduct Yellow" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Yellow"
+
+[node name="Conduct Blue" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Blue"
+
+[node name="Conduct Cyan" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Cyan"
+
+[node name="Conduct Red" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Red"
+
+[node name="Conduct Magenta" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Conduct Magenta"
+
+[node name="Xanthophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Xanthophobia"
+
+[node name="Hydrophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Hydrophobia"
+
+[node name="Photophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Photophobia"
+
+[node name="Prasinophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Prasinophobia"
+
+[node name="Nyctophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Nyctophobia"
+
+[node name="Hemophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Hemophobia"
+
+[node name="Porphyrophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Porphyrophobia"
+
+[node name="Glaukophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Glaukophobia"
+
+[node name="Terrify" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Terrify"
+
+[node name="Brave the Dark" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Brave the Dark"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddPlayerButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Add Player"
+
+[node name="AddOpponentButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Add Opponent"
+
+[node name="StartButton" type="Button" parent="Setup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Start"
+
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/NewBattleActorButton" to="." method="_on_new_battle_actor_button_pressed"]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Guy" to="." method="_add_monster" binds= [SubResource("Resource_ka2df")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Blue" to="." method="_add_monster" binds= [SubResource("Resource_1vmhe")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Purple" to="." method="_add_monster" binds= [SubResource("Resource_7jftm")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Magenta" to="." method="_add_monster" binds= [SubResource("Resource_6lgku")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Red" to="." method="_add_monster" binds= [SubResource("Resource_e2qo8")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Orange" to="." method="_add_monster" binds= [SubResource("Resource_hbt3b")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Yellow" to="." method="_add_monster" binds= [SubResource("Resource_y71b7")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Green" to="." method="_add_monster" binds= [SubResource("Resource_fnd1s")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Default Cyan" to="." method="_add_monster" binds= [SubResource("Resource_eu864")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller/Despair" to="." method="_add_monster" binds= [SubResource("Resource_rovan")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Purple Throw" to="." method="_add_attack" binds= [ExtResource("15_hh7yx")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Orange Hit" to="." method="_add_attack" binds= [ExtResource("9_rmnva")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Orange Throw" to="." method="_add_attack" binds= [ExtResource("16_g6hfk")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Green Throw" to="." method="_add_attack" binds= [ExtResource("17_i6vc0")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Blue Hit" to="." method="_add_attack" binds= [ExtResource("3_vmh88")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cyan Hit" to="." method="_add_attack" binds= [ExtResource("12_nsly5")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Red Throw" to="." method="_add_attack" binds= [ExtResource("18_5bpb0")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Blue Throw" to="." method="_add_attack" binds= [ExtResource("19_6d8gb")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Green Hit" to="." method="_add_attack" binds= [ExtResource("11_u8ni3")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Purple Hit" to="." method="_add_attack" binds= [ExtResource("6_ajy8m")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Yellow Hit" to="." method="_add_attack" binds= [ExtResource("10_0hvxv")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Magenta Hit" to="." method="_add_attack" binds= [ExtResource("7_xf0x8")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Yellow Throw" to="." method="_add_attack" binds= [ExtResource("20_t7ges")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Red Hit" to="." method="_add_attack" binds= [ExtResource("8_tnql1")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cyan Throw" to="." method="_add_attack" binds= [ExtResource("21_e7pbt")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Magenta Throw" to="." method="_add_attack" binds= [ExtResource("22_a26uw")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Orange Strike" to="." method="_add_attack" binds= [ExtResource("63_ssl4w")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Purple Strike" to="." method="_add_attack" binds= [ExtResource("64_160ap")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cyan Strike" to="." method="_add_attack" binds= [ExtResource("65_1xf7p")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Abyss Strike" to="." method="_add_attack" binds= [ExtResource("66_5kclf")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Green Strike" to="." method="_add_attack" binds= [ExtResource("67_ue4oq")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Blue Strike" to="." method="_add_attack" binds= [ExtResource("68_i4ycn")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Red Strike" to="." method="_add_attack" binds= [ExtResource("69_43ss1")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Magenta Strike" to="." method="_add_attack" binds= [ExtResource("70_wy8p2")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Yellow Strike" to="." method="_add_attack" binds= [ExtResource("71_613vy")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Unbalanced Assault" to="." method="_add_attack" binds= [ExtResource("33_0gw3k")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Reinforce" to="." method="_add_attack" binds= [ExtResource("34_jh6l0")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Alchemy Beam" to="." method="_add_attack" binds= [ExtResource("35_fj7dx")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Freezing Gale" to="." method="_add_attack" binds= [ExtResource("36_x4o48")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Fortress" to="." method="_add_attack" binds= [ExtResource("37_ko71i")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Steel Shot" to="." method="_add_attack" binds= [ExtResource("38_72svk")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Shield" to="." method="_add_attack" binds= [ExtResource("39_pstkm")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Snipe" to="." method="_add_attack" binds= [ExtResource("40_3oynx")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Wail" to="." method="_add_attack" binds= [ExtResource("13_aone4")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Rush" to="." method="_add_attack" binds= [ExtResource("41_haqfd")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Desolation" to="." method="_add_attack" binds= [ExtResource("42_xshpv")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Consume" to="." method="_add_attack" binds= [ExtResource("43_ibhc8")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Drain" to="." method="_add_attack" binds= [ExtResource("44_c5qrc")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Satiate" to="." method="_add_attack" binds= [ExtResource("45_yg5jn")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Crush" to="." method="_add_attack" binds= [ExtResource("14_852gu")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Leech" to="." method="_add_attack" binds= [ExtResource("46_bqhnc")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Blood Shock" to="." method="_add_attack" binds= [ExtResource("47_ldsds")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cleave" to="." method="_add_attack" binds= [ExtResource("48_n0cd3")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Bite" to="." method="_add_attack" binds= [ExtResource("49_waajt")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Reactor Breach" to="." method="_add_attack" binds= [ExtResource("50_kargs")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Disarmament" to="." method="_add_attack" binds= [ExtResource("51_c13h3")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Sting" to="." method="_add_attack" binds= [ExtResource("52_hhulw")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Orbital Strike" to="." method="_add_attack" binds= [ExtResource("53_asirv")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Total Meltdown" to="." method="_add_attack" binds= [ExtResource("54_diowb")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Green" to="." method="_add_attack" binds= [ExtResource("55_iqabh")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Purple" to="." method="_add_attack" binds= [ExtResource("56_pkj1c")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Orange" to="." method="_add_attack" binds= [ExtResource("57_50esx")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Yellow" to="." method="_add_attack" binds= [ExtResource("58_kk37w")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Blue" to="." method="_add_attack" binds= [ExtResource("59_wq72i")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Cyan" to="." method="_add_attack" binds= [ExtResource("60_n1mix")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Red" to="." method="_add_attack" binds= [ExtResource("61_eive4")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Magenta" to="." method="_add_attack" binds= [ExtResource("62_maufk")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Xanthophobia" to="." method="_add_attack" binds= [ExtResource("23_nqg7f")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Hydrophobia" to="." method="_add_attack" binds= [ExtResource("24_8vmkg")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Photophobia" to="." method="_add_attack" binds= [ExtResource("25_vgt8m")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Prasinophobia" to="." method="_add_attack" binds= [ExtResource("26_goq5b")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Nyctophobia" to="." method="_add_attack" binds= [ExtResource("27_omc7q")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Hemophobia" to="." method="_add_attack" binds= [ExtResource("28_hjd7n")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Porphyrophobia" to="." method="_add_attack" binds= [ExtResource("29_lsbdp")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Glaukophobia" to="." method="_add_attack" binds= [ExtResource("30_eb0rf")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Terrify" to="." method="_add_attack" binds= [ExtResource("31_gohab")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Brave the Dark" to="." method="_add_attack" binds= [ExtResource("32_vf0ih")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/AddPlayerButton" to="." method="_on_add_player_button_pressed"]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/AddOpponentButton" to="." method="_on_add_opponent_button_pressed"]
+[connection signal="pressed" from="Setup/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

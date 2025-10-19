@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0pdv12umd3wn"]
+[gd_scene load_steps=37 format=3 uid="uid://c0pdv12umd3wn"]
 
 [ext_resource type="Script" uid="uid://lckxo7vx0rrj" path="res://src/gui/pause_menu/beastiary_menu/BeastiaryMenu.gd" id="1_iwysm"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="2_1lo00"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="3_25pbc"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="4_fusyo"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_6lgku"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="5_fusyo"]
 [ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="6_gxxk7"]
 [ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="7_hbt3b"]
 [ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="8_gqwdd"]
@@ -19,13 +20,13 @@
 [sub_resource type="Resource" id="Resource_2y36f"]
 resource_local_to_scene = true
 script = ExtResource("5_6lgku")
-_base_melee_attack = 1.0
-_base_ranged_attack = 1.0
-_base_melee_defense = 20.0
-_base_ranged_defense = 20.0
-_base_speed = 5.0
+_base_melee_attack = 8.0
+_base_ranged_attack = 8.0
+_base_melee_defense = 10.0
+_base_ranged_defense = 10.0
+_base_speed = 10.0
 _base_evasion = 100.0
-hp = 30.0
+hp = 60.0
 
 [sub_resource type="Resource" id="Resource_ka2df"]
 resource_local_to_scene = true
@@ -38,7 +39,7 @@ reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
 _alignment = "blank"
-attacks = Array[ExtResource("2_qw5rn")]([ExtResource("3_25pbc")])
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("3_25pbc"), ExtResource("7_hbt3b"), ExtResource("5_fusyo")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_jjxj6"]
@@ -64,7 +65,7 @@ _alignment = "blue"
 attacks = Array[ExtResource("2_qw5rn")]([ExtResource("3_25pbc")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
-[sub_resource type="Resource" id="Resource_25pbc"]
+[sub_resource type="Resource" id="Resource_6lgku"]
 script = ExtResource("5_6lgku")
 _base_melee_attack = 18.0
 _base_ranged_attack = 18.0
@@ -80,7 +81,7 @@ script = ExtResource("4_fusyo")
 name = "Default Purple"
 id = 0
 level = 1
-stat_manager = SubResource("Resource_25pbc")
+stat_manager = SubResource("Resource_6lgku")
 reset_hp_after_battle = true
 _element1 = "purple"
 _element2 = "purple"
@@ -88,7 +89,7 @@ _alignment = "purple"
 attacks = Array[ExtResource("2_qw5rn")]([ExtResource("6_gxxk7")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
-[sub_resource type="Resource" id="Resource_fusyo"]
+[sub_resource type="Resource" id="Resource_gxxk7"]
 script = ExtResource("5_6lgku")
 _base_melee_attack = 3.0
 _base_ranged_attack = 3.0
@@ -98,12 +99,12 @@ _base_speed = 7.0
 _base_evasion = 100.0
 hp = 65.0
 
-[sub_resource type="Resource" id="Resource_6lgku"]
+[sub_resource type="Resource" id="Resource_hbt3b"]
 script = ExtResource("4_fusyo")
 name = "Default Magenta"
 id = 0
 level = 1
-stat_manager = SubResource("Resource_fusyo")
+stat_manager = SubResource("Resource_gxxk7")
 reset_hp_after_battle = true
 _element1 = "magenta"
 _element2 = "magenta"
@@ -135,30 +136,6 @@ _alignment = "red"
 attacks = Array[ExtResource("2_qw5rn")]([ExtResource("8_gqwdd")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
-[sub_resource type="Resource" id="Resource_gxxk7"]
-script = ExtResource("5_6lgku")
-_base_melee_attack = 18.0
-_base_ranged_attack = 18.0
-_base_melee_defense = 8.0
-_base_ranged_defense = 11.0
-_base_speed = 8.0
-_base_evasion = 100.0
-hp = 35.0
-
-[sub_resource type="Resource" id="Resource_hbt3b"]
-resource_local_to_scene = true
-script = ExtResource("4_fusyo")
-name = "Default Orange"
-id = 0
-level = 1
-stat_manager = SubResource("Resource_gxxk7")
-reset_hp_after_battle = true
-_element1 = "orange"
-_element2 = "orange"
-_alignment = "orange"
-attacks = Array[ExtResource("2_qw5rn")]([ExtResource("9_y71b7")])
-metadata/_custom_type_script = "uid://y8fyrqmofw4u"
-
 [sub_resource type="Resource" id="Resource_gqwdd"]
 script = ExtResource("5_6lgku")
 _base_melee_attack = 18.0
@@ -172,15 +149,15 @@ hp = 35.0
 [sub_resource type="Resource" id="Resource_y71b7"]
 resource_local_to_scene = true
 script = ExtResource("4_fusyo")
-name = "Default Yellow"
+name = "Default Orange"
 id = 0
 level = 1
 stat_manager = SubResource("Resource_gqwdd")
 reset_hp_after_battle = true
-_element1 = "yellow"
-_element2 = "yellow"
-_alignment = "yellow"
-attacks = Array[ExtResource("2_qw5rn")]([ExtResource("10_8r6wr")])
+_element1 = "orange"
+_element2 = "orange"
+_alignment = "orange"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("9_y71b7")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_8r6wr"]
@@ -196,15 +173,15 @@ hp = 35.0
 [sub_resource type="Resource" id="Resource_fnd1s"]
 resource_local_to_scene = true
 script = ExtResource("4_fusyo")
-name = "Default Green"
+name = "Default Yellow"
 id = 0
 level = 1
 stat_manager = SubResource("Resource_8r6wr")
 reset_hp_after_battle = true
-_element1 = "green"
-_element2 = "green"
-_alignment = "green"
-attacks = Array[ExtResource("2_qw5rn")]([ExtResource("11_fnd1s")])
+_element1 = "yellow"
+_element2 = "yellow"
+_alignment = "yellow"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("10_8r6wr")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_vphmt"]
@@ -220,10 +197,34 @@ hp = 35.0
 [sub_resource type="Resource" id="Resource_eu864"]
 resource_local_to_scene = true
 script = ExtResource("4_fusyo")
-name = "Default Cyan"
+name = "Default Green"
 id = 0
 level = 1
 stat_manager = SubResource("Resource_vphmt")
+reset_hp_after_battle = true
+_element1 = "green"
+_element2 = "green"
+_alignment = "green"
+attacks = Array[ExtResource("2_qw5rn")]([ExtResource("11_fnd1s")])
+metadata/_custom_type_script = "uid://y8fyrqmofw4u"
+
+[sub_resource type="Resource" id="Resource_iu3lh"]
+script = ExtResource("5_6lgku")
+_base_melee_attack = 18.0
+_base_ranged_attack = 18.0
+_base_melee_defense = 8.0
+_base_ranged_defense = 11.0
+_base_speed = 8.0
+_base_evasion = 100.0
+hp = 35.0
+
+[sub_resource type="Resource" id="Resource_7bodg"]
+resource_local_to_scene = true
+script = ExtResource("4_fusyo")
+name = "Default Cyan"
+id = 0
+level = 1
+stat_manager = SubResource("Resource_iu3lh")
 reset_hp_after_battle = true
 _element1 = "cyan"
 _element2 = "cyan"
@@ -263,7 +264,7 @@ grow_vertical = 2
 current_tab = 0
 tabs_visible = false
 script = ExtResource("1_iwysm")
-monsters = Array[Array]([[SubResource("Resource_ka2df")], [SubResource("Resource_1vmhe")], [SubResource("Resource_7jftm")], [SubResource("Resource_6lgku")], [SubResource("Resource_e2qo8")], [SubResource("Resource_hbt3b")], [SubResource("Resource_y71b7")], [SubResource("Resource_fnd1s")], [SubResource("Resource_eu864")], [SubResource("Resource_rovan")]])
+monsters = Array[Array]([[SubResource("Resource_ka2df")], [SubResource("Resource_1vmhe")], [SubResource("Resource_7jftm")], [SubResource("Resource_hbt3b")], [SubResource("Resource_e2qo8")], [SubResource("Resource_y71b7")], [SubResource("Resource_fnd1s")], [SubResource("Resource_eu864")], [SubResource("Resource_7bodg")], [SubResource("Resource_rovan")]])
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 2
