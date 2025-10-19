@@ -60,6 +60,7 @@ radius = 0.6
 
 [node name="DefaultBlue" type="CharacterBody3D"]
 script = ExtResource("1_etfuu")
+monster_id = 1
 team = Array[ExtResource("2_46v11")]([SubResource("Resource_1vmhe")])
 ai = SubResource("Resource_x8pnq")
 is_transmutable = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch52g6fw70mk4"]
+[gd_scene load_steps=14 format=3 uid="uid://ch52g6fw70mk4"]
 
 [ext_resource type="Script" uid="uid://jef6qiilbxth" path="res://src/gui/UIManager.gd" id="1_86rq7"]
 [ext_resource type="PackedScene" uid="uid://b644ydrvhju3b" path="res://src/gui/pause_menu/player_menu/player_menu.tscn" id="2_i5nhe"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://iqgiudb0sfsq" path="res://src/gui/info_graphics/stasis_overworld_spell.tscn" id="9_pssjn"]
 [ext_resource type="PackedScene" uid="uid://cjwddbcld2qul" path="res://src/gui/info_graphics/catalyst_tutorial.tscn" id="10_2thxe"]
 [ext_resource type="PackedScene" uid="uid://dos802eriaax3" path="res://src/gui/pause_menu/map_menu/map_menu.tscn" id="12_67sa7"]
+[ext_resource type="PackedScene" uid="uid://c0pdv12umd3wn" path="res://src/gui/pause_menu/beastiary_menu/beastiary_menu.tscn" id="13_umo3j"]
 
 [node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu", "golem_menu", "catalyst_menu", "map_menu")]
 process_mode = 3
@@ -154,6 +155,11 @@ metadata/_tab_index = 10
 visible = false
 layout_mode = 2
 metadata/_tab_index = 11
+
+[node name="BeastiaryMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("13_umo3j")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 12
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Player_Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer/Inventory_Button" to="." method="_on_inventory_button_pressed"]

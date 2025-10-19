@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0pdv12umd3wn"]
+
+[ext_resource type="Script" uid="uid://lckxo7vx0rrj" path="res://src/gui/pause_menu/beastiary_menu/BeastiaryMenu.gd" id="1_iwysm"]
+
+[node name="BeastiaryMenu" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+script = ExtResource("1_iwysm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Scroller" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="Display" type="TabContainer" parent="Control/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tabs_visible = false

@@ -41,6 +41,7 @@ var create_skeleton := func() -> void:
 	collider2.shape = CapsuleShape3D.new()
 	collider2.position.y = 1
 
+@export var monster_id: int
 @export var use_placeholder_mesh := true
 @export var team: Array[BattleActor]
 @export var ai: OpponentController

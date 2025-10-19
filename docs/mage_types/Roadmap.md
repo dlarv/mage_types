@@ -546,6 +546,14 @@ The issues arise between the player controller, Draggables, and the interaction 
 - [ ] Enemies should have customizable behavior in battle.
 	- [ ] A simple integer slider should be used to set their general difficulty.
 	- [ ] Opponents should have some ability to use different tactics.
+
+Wild Monster components:
+- BattleActor
+- Spawner setup
+- Overworld
+- Beastiary entry
+
+Beastiary will be a singleton. WildEnemyActors and Battle will obtain their relevant data using their monster_id.
 ## Character Management and Inventory (CHAR)
 ### Pausing Game (paus)
 **Opening a menu should pause overworld/game.**

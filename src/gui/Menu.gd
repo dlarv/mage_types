@@ -3,12 +3,10 @@ class_name Menu
 
 var _video_player: VideoStreamPlayer
 
-#virtual
 func next_screen() -> void: 
 	current_tab = (current_tab + 1) % get_tab_count()
 	_check_for_video_player()
 
-#virtual
 func prev_screen() -> void: 
 	var index := (current_tab - 1)
 	if index < 0:

@@ -63,6 +63,7 @@ radius = 0.7
 
 [node name="DespairEnemy" type="CharacterBody3D"]
 script = ExtResource("1_00ir8")
+monster_id = 9
 team = Array[ExtResource("2_fugro")]([SubResource("Resource_rovan")])
 ai = SubResource("Resource_shrlj")
 is_transmutable = true
