@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bbc7nm2vhoucl"]
+[gd_scene load_steps=21 format=3 uid="uid://bbc7nm2vhoucl"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_opqt0"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_2y36f"]
@@ -6,20 +6,22 @@
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_ka2df"]
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="4_qp5wj"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_4c3fb"]
+[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="5_rpetr"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_e8c8v"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="6_udbu4"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_ostbw"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_3ag47"]
 
 [sub_resource type="Resource" id="Resource_2y36f"]
 resource_local_to_scene = true
 script = ExtResource("5_4c3fb")
-_base_melee_attack = 1.0
-_base_ranged_attack = 1.0
-_base_melee_defense = 20.0
-_base_ranged_defense = 20.0
-_base_speed = 5.0
+_base_melee_attack = 8.0
+_base_ranged_attack = 8.0
+_base_melee_defense = 10.0
+_base_ranged_defense = 10.0
+_base_speed = 10.0
 _base_evasion = 100.0
-hp = 30.0
+hp = 60.0
 
 [sub_resource type="Resource" id="Resource_ka2df"]
 resource_local_to_scene = true
@@ -32,7 +34,7 @@ reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
 _alignment = "blank"
-attacks = Array[ExtResource("3_ka2df")]([ExtResource("4_qp5wj")])
+attacks = Array[ExtResource("3_ka2df")]([ExtResource("4_qp5wj"), ExtResource("5_rpetr"), ExtResource("6_udbu4")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_x8pnq"]

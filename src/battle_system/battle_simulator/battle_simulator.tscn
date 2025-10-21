@@ -628,41 +628,13 @@ text = "Cyan Throw"
 layout_mode = 2
 text = "Magenta Throw"
 
-[node name="Orange Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+[node name="Terrify" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
-text = "Orange Strike"
+text = "Terrify"
 
-[node name="Purple Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+[node name="Brave the Dark" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
-text = "Purple Strike"
-
-[node name="Cyan Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Cyan Strike"
-
-[node name="Abyss Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Abyss Strike"
-
-[node name="Green Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Green Strike"
-
-[node name="Blue Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Blue Strike"
-
-[node name="Red Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Red Strike"
-
-[node name="Magenta Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Magenta Strike"
-
-[node name="Yellow Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Yellow Strike"
+text = "Brave the Dark"
 
 [node name="Unbalanced Assault" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
@@ -792,6 +764,42 @@ text = "Conduct Red"
 layout_mode = 2
 text = "Conduct Magenta"
 
+[node name="Orange Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Orange Strike"
+
+[node name="Purple Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Purple Strike"
+
+[node name="Cyan Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Cyan Strike"
+
+[node name="Abyss Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Abyss Strike"
+
+[node name="Green Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Green Strike"
+
+[node name="Blue Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Blue Strike"
+
+[node name="Red Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Red Strike"
+
+[node name="Magenta Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Magenta Strike"
+
+[node name="Yellow Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Yellow Strike"
+
 [node name="Xanthophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
 text = "Xanthophobia"
@@ -823,14 +831,6 @@ text = "Porphyrophobia"
 [node name="Glaukophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
 text = "Glaukophobia"
-
-[node name="Terrify" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Terrify"
-
-[node name="Brave the Dark" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Brave the Dark"
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -887,15 +887,8 @@ text = "Start"
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Red Hit" to="." method="_add_attack" binds= [ExtResource("8_tnql1")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cyan Throw" to="." method="_add_attack" binds= [ExtResource("21_e7pbt")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Magenta Throw" to="." method="_add_attack" binds= [ExtResource("22_a26uw")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Orange Strike" to="." method="_add_attack" binds= [ExtResource("63_ssl4w")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Purple Strike" to="." method="_add_attack" binds= [ExtResource("64_160ap")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cyan Strike" to="." method="_add_attack" binds= [ExtResource("65_1xf7p")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Abyss Strike" to="." method="_add_attack" binds= [ExtResource("66_5kclf")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Green Strike" to="." method="_add_attack" binds= [ExtResource("67_ue4oq")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Blue Strike" to="." method="_add_attack" binds= [ExtResource("68_i4ycn")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Red Strike" to="." method="_add_attack" binds= [ExtResource("69_43ss1")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Magenta Strike" to="." method="_add_attack" binds= [ExtResource("70_wy8p2")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Yellow Strike" to="." method="_add_attack" binds= [ExtResource("71_613vy")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Terrify" to="." method="_add_attack" binds= [ExtResource("31_gohab")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Brave the Dark" to="." method="_add_attack" binds= [ExtResource("32_vf0ih")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Unbalanced Assault" to="." method="_add_attack" binds= [ExtResource("33_0gw3k")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Reinforce" to="." method="_add_attack" binds= [ExtResource("34_jh6l0")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Alchemy Beam" to="." method="_add_attack" binds= [ExtResource("35_fj7dx")]]
@@ -928,6 +921,15 @@ text = "Start"
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Cyan" to="." method="_add_attack" binds= [ExtResource("60_n1mix")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Red" to="." method="_add_attack" binds= [ExtResource("61_eive4")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Conduct Magenta" to="." method="_add_attack" binds= [ExtResource("62_maufk")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Orange Strike" to="." method="_add_attack" binds= [ExtResource("63_ssl4w")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Purple Strike" to="." method="_add_attack" binds= [ExtResource("64_160ap")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cyan Strike" to="." method="_add_attack" binds= [ExtResource("65_1xf7p")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Abyss Strike" to="." method="_add_attack" binds= [ExtResource("66_5kclf")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Green Strike" to="." method="_add_attack" binds= [ExtResource("67_ue4oq")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Blue Strike" to="." method="_add_attack" binds= [ExtResource("68_i4ycn")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Red Strike" to="." method="_add_attack" binds= [ExtResource("69_43ss1")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Magenta Strike" to="." method="_add_attack" binds= [ExtResource("70_wy8p2")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Yellow Strike" to="." method="_add_attack" binds= [ExtResource("71_613vy")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Xanthophobia" to="." method="_add_attack" binds= [ExtResource("23_nqg7f")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Hydrophobia" to="." method="_add_attack" binds= [ExtResource("24_8vmkg")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Photophobia" to="." method="_add_attack" binds= [ExtResource("25_vgt8m")]]
@@ -936,8 +938,6 @@ text = "Start"
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Hemophobia" to="." method="_add_attack" binds= [ExtResource("28_hjd7n")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Porphyrophobia" to="." method="_add_attack" binds= [ExtResource("29_lsbdp")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Glaukophobia" to="." method="_add_attack" binds= [ExtResource("30_eb0rf")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Terrify" to="." method="_add_attack" binds= [ExtResource("31_gohab")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Brave the Dark" to="." method="_add_attack" binds= [ExtResource("32_vf0ih")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/AddPlayerButton" to="." method="_on_add_player_button_pressed"]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/AddOpponentButton" to="." method="_on_add_opponent_button_pressed"]
 [connection signal="pressed" from="Setup/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

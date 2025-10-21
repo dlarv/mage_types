@@ -9,6 +9,10 @@
 	- Are there any unique variations on the basic enemy?
 	- Do differently aligned monsters have different characteristics, or are they just a palette swap.
 # Base Stat Totals
+Blue: Slow wall
+Purple: Mid-attacker w/ decent utility
+- Enough staying power to not be immediately deleted
+- Staying power is supplemented with utillity moves
 ## Player Starting BST
 Player lvl1 (BST: 96)
 +18 BST/level
@@ -21,37 +25,100 @@ ranged defense, 10
 speed, 10
 ```
 ## Blue Average
-BST: 106
+BST: 111
 ```tinychart 
-hp, 60
+hp, 70
 melee attack, 5
-melee defense, 18
+melee defense, 15
 ranged attack, 5
 ranged defense, 13
-speed, 5
+speed, 3
 ```
-
 ## Purple Average
-BST: 98
+BST: 107 
 ```tinychart 
 hp, 35
 melee attack, 18
-melee defense, 8
+melee defense, 11
 ranged attack, 18
-ranged defense, 11
-speed, 8
+ranged defense, 13
+speed, 7
 ```
 ## Magenta Average
-BST: 111
+BST: 109
 ```tinychart 
 hp, 65
 melee attack, 3
-melee defense, 18
+melee defense, 16
 ranged attack, 3 
 ranged defense, 15
 speed, 7
 ```
-
+## Red Average
+BST: 114
+```tinychart 
+hp, 65
+melee attack, 15
+melee defense, 10
+ranged attack, 8 
+ranged defense, 10
+speed, 6
+```
+## Orange Average
+BST: 108
+```tinychart 
+hp, 50
+melee attack, 9
+melee defense, 8
+ranged attack, 16 
+ranged defense, 10
+speed, 15
+```
+## Yellow Average
+BST: 106
+```tinychart 
+hp, 50
+melee attack, 3
+melee defense, 13
+ranged attack, 8
+ranged defense, 14
+speed, 18
+```
+## Green Average
+BST: 111
+```tinychart 
+hp, 35
+melee attack, 20
+melee defense, 8
+ranged attack, 20
+ranged defense, 8
+speed, 20
+```
+## Cyan Average
+BST: 110
+```tinychart 
+hp, 55
+melee attack, 5
+melee defense, 20
+ranged attack, 5
+ranged defense, 20
+speed, 5
+```
+## Comparisons
+![[stat_distributions.png]]
+***Average Number of 32 Power Attacks to Kill***
+Comparing all the Elementals to each other, how many hits on average does it take to defeat:
+```tinychart
+Green, 6
+Orange, 9
+Purple, 9
+Blank, 10
+Yellow, 13
+Red, 13
+Blue, 19
+Magenta, 19
+Cyan, 20
+```
 # General Monsters
 ## Slimes
 These will be very basic monsters, just oozing around the overworld. Small slimes will only have one type (*I think this can be done by making BattleActor.element1 = Blank. I can then make some small code alterations so the model doesn't show gray*). 
@@ -68,15 +135,7 @@ speed, 50
 ## Elementals
 These will be amalgams of raw elemental energy. They'll always start as E1=E2, but the out fringes have less alchemic inertia, allowing them to transmute. All Elementals will have an item equipped which has a change to revert their secondary type back to their primary. They'll have a chance to drop this when defeated.
 
-```tinychart
-hp, 120
-melee attack, 30
-melee defense, 100
-ranged attack, 100
-ranged defense, 30
-speed, 100
-```
-
+Their stat spreads will be based on the Default stats above.
 ## Mages
 Other humans which have lost their minds before fully mutating. These will mostly be bosses, but the entry is here for completeness.
 # Bias Beasts

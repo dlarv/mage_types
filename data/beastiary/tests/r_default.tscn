@@ -1,24 +1,27 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgfy60pqopcs5"]
+[gd_scene load_steps=22 format=3 uid="uid://dgfy60pqopcs5"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_c845e"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_e2qo8"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_w358x"]
-[ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="4_c845e"]
+[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="4_p7mg0"]
+[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="5_kylvs"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_pj8pv"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_kylvs"]
+[ext_resource type="Resource" uid="uid://bals1ujdb1v1d" path="res://data/battle_system/battle_actions/attacks/elementals/red/cleave.tres" id="6_n3wj8"]
+[ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="7_inylt"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_n3wj8"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_inylt"]
 [ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/beastiary/components/behaviors/aggressive_behavior.tscn" id="9_pexnd"]
 
 [sub_resource type="Resource" id="Resource_c845e"]
 script = ExtResource("5_pj8pv")
-_base_melee_attack = 18.0
-_base_ranged_attack = 18.0
-_base_melee_defense = 8.0
-_base_ranged_defense = 11.0
-_base_speed = 8.0
+_base_melee_attack = 15.0
+_base_ranged_attack = 8.0
+_base_melee_defense = 10.0
+_base_ranged_defense = 10.0
+_base_speed = 6.0
 _base_evasion = 100.0
-hp = 35.0
+hp = 65.0
 
 [sub_resource type="Resource" id="Resource_e2qo8"]
 resource_local_to_scene = true
@@ -31,7 +34,7 @@ reset_hp_after_battle = true
 _element1 = "red"
 _element2 = "red"
 _alignment = "red"
-attacks = Array[ExtResource("3_w358x")]([ExtResource("4_c845e")])
+attacks = Array[ExtResource("3_w358x")]([ExtResource("4_p7mg0"), ExtResource("5_kylvs"), ExtResource("6_n3wj8"), ExtResource("7_inylt")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_x8pnq"]

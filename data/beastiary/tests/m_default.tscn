@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmgb3mnlfansq"]
+[gd_scene load_steps=21 format=3 uid="uid://bmgb3mnlfansq"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_jmypm"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_mev05"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_isrsk"]
 [ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="4_jmypm"]
+[ext_resource type="Resource" uid="uid://cjet4plusednv" path="res://data/battle_system/battle_actions/attacks/basic/hit_o.tres" id="5_isrsk"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_mp868"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_hd40v"]
+[ext_resource type="Resource" uid="uid://dt1qqsm85wdxi" path="res://data/battle_system/battle_actions/attacks/elementals/red/bite.tres" id="6_nrktl"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_5o4mo"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_v104q"]
 [ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/beastiary/components/behaviors/aggressive_behavior.tscn" id="9_ky2ok"]
@@ -14,7 +16,7 @@
 script = ExtResource("5_mp868")
 _base_melee_attack = 3.0
 _base_ranged_attack = 3.0
-_base_melee_defense = 18.0
+_base_melee_defense = 16.0
 _base_ranged_defense = 15.0
 _base_speed = 7.0
 _base_evasion = 100.0
@@ -30,7 +32,7 @@ reset_hp_after_battle = true
 _element1 = "magenta"
 _element2 = "magenta"
 _alignment = "magenta"
-attacks = Array[ExtResource("3_isrsk")]([ExtResource("4_jmypm")])
+attacks = Array[ExtResource("3_isrsk")]([ExtResource("4_jmypm"), ExtResource("5_isrsk"), ExtResource("6_nrktl")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_x8pnq"]

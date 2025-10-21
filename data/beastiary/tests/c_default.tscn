@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://3d8cixx8tqr7"]
+[gd_scene load_steps=21 format=3 uid="uid://3d8cixx8tqr7"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_0rv7o"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_beivy"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="3_xs6jo"]
 [ext_resource type="Resource" uid="uid://blo35ub8xw8yg" path="res://data/battle_system/battle_actions/attacks/basic/hit_c.tres" id="4_0rv7o"]
+[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="5_beivy"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_c2528"]
+[ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="5_xs6jo"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_7n8hi"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_ybjam"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_p44up"]
@@ -12,13 +14,13 @@
 
 [sub_resource type="Resource" id="Resource_c845e"]
 script = ExtResource("5_c2528")
-_base_melee_attack = 18.0
-_base_ranged_attack = 18.0
-_base_melee_defense = 8.0
-_base_ranged_defense = 11.0
-_base_speed = 8.0
+_base_melee_attack = 5.0
+_base_ranged_attack = 5.0
+_base_melee_defense = 20.0
+_base_ranged_defense = 20.0
+_base_speed = 5.0
 _base_evasion = 100.0
-hp = 35.0
+hp = 50.0
 
 [sub_resource type="Resource" id="Resource_e2qo8"]
 resource_local_to_scene = true
@@ -31,7 +33,7 @@ reset_hp_after_battle = true
 _element1 = "cyan"
 _element2 = "cyan"
 _alignment = "cyan"
-attacks = Array[ExtResource("3_xs6jo")]([ExtResource("4_0rv7o")])
+attacks = Array[ExtResource("3_xs6jo")]([ExtResource("4_0rv7o"), ExtResource("5_xs6jo"), ExtResource("5_beivy")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_x8pnq"]
