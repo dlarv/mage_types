@@ -40,41 +40,41 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [x] Attack
 		- [x] Getting hit
 - [ ] Implement flinch condition properly
-- [ ] Make playtesting enemies easier
-	- [x] Show levels in UI
-	- [x] Set player's level in debug mode
-	- [x] Create beastiary to contain all monster data
-	- [ ] Create scene to setup battle
-	- [ ] Customize player team using unique battle actor
-		- [ ] Stats
-		- [ ] Attacks
-		- [ ] Number of team members
-	- [ ] Select monster team (interface with beastiary)
+- [ ] Battle messages
+	- [ ] Give player ability to toggle battle message display
+	- [ ] Show list of al messages sent during battle
+	- [ ] Have unique display formatting attacks and transmutation
+	- [ ] Only show original message box when player is selecting attack or character
+- [ ] Controlling animation
+	- [ ] Variable delays between each animation state
+	- [ ] Setting to control speed and turn off animatinos
+	- [ ] Use buttons to skip animation
 - [ ] Communicate important information using animations and graphics
 	- [ ] Damage numbers: How much dmg did the attack deal?
 	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
 	- [ ] Transmutations: up to 6 transmutations
 	- [ ] Status effects: poison, phobia, flinched
-	- [ ] ~~Melee/ranged~~ I don't think this is necessary
 	- [ ] Whether attack dealt a status condition/extra effects
-- [ ] BattleActor models animation support
-	- [x] Add animation states defined in supporting discussion
-	- [ ] Allow Settings to control animation speed
-	- [ ] Animation overlap and lengths should be controlled via variables
-	- [ ] Allow animation states to be skipped
 - [ ] Attack Animation refactor
 	- [ ] Renamed class and references
 	- [ ] Animation should be selected via enum
 	- [ ] Animation should be integrated with BattleActor animations
-- [ ] Keep text based message log for accessibility
-	- [ ] `MessageBox` visible can be toggled using `Settings` and in battle.
-	- [ ] Player should be able to scroll thru all logs that happened in battle
 - [ ] Make controls less obtrusive
 	- [ ] Attack, Item, and Run buttons should be small and off to the side
 	- [ ] Player can click on a BattleActor model to learn more info about them
 		- [ ] Hovering should highlight which name card is theirs.
 	- [ ] Hovering over status pin should tell you what it is and how many turns remaining it has
 - [ ] Mess around with placement of name cards and character models?
+- [x] Make playtesting enemies easier
+	- [x] Show levels in UI
+	- [x] Set player's level in debug mode
+	- [x] Create beastiary to contain all monster data
+	- [x] Create scene to setup battle
+	- [x] Customize player team using unique battle actor
+		- [x] Stats
+		- [x] Attacks
+		- [x] Number of team members
+	- [x] Select monster team (interface with beastiary)
 - [x] Show combatant's levels on name card and in Characters menu
 - [x] Refactor wild enemy spawners
 	- [x] Give spawner enemy base templates 
