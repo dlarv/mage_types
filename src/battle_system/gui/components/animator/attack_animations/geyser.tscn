@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chvddpwtc6d1r"]
 
-[ext_resource type="PackedScene" uid="uid://djuyvkmv08sf3" path="res://src/battle_system/battle_actions/base_particle_animation.tscn" id="1_3dnpv"]
+[ext_resource type="PackedScene" uid="uid://djuyvkmv08sf3" path="res://src/battle_system/gui/components/animator/attack_animations/base_particle_animation.tscn" id="1_3dnpv"]
 [ext_resource type="Script" uid="uid://t4du8u6jwofd" path="res://src/battle_system/gui/components/animator/attack_animations/GeyserAnimation.gd" id="2_j1ytm"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pcwt7"]

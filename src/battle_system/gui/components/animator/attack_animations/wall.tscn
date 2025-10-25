@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch3nnueyugf36"]
 
-[ext_resource type="PackedScene" uid="uid://djuyvkmv08sf3" path="res://src/battle_system/battle_actions/base_particle_animation.tscn" id="1_51lt6"]
+[ext_resource type="PackedScene" uid="uid://djuyvkmv08sf3" path="res://src/battle_system/gui/components/animator/attack_animations/base_particle_animation.tscn" id="1_51lt6"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0lmd"]
 particle_flag_disable_z = true
