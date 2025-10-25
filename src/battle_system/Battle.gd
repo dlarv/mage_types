@@ -145,6 +145,10 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		gui.animate_action(turnData, missed)
 
 		# Display message and await input.
+		await gui.display_message(_build_msg(turnData))
+
+		for actor in turnData.defeated_actors:
+			msg.append("%s was defeated...." % actor.name)
 		await gui.display_message(msg)
 		
 		# Check if battle should end.
@@ -311,6 +315,27 @@ func _increment_defeat_counter(isAlly: bool) -> void:
 
 
 # To be DEPRECATED
+func _build_msg(data: ActorTurnData) -> String:
+	var targetName: String
+	var TargetType := _BattleAction.TargetType
+	match data.action.target:
+		TargetType.ENEMY, TargetType.ALLY:
+			targetName = data.targets[0].name
+		TargetType.ENEMIES: 
+			targetName = "the enemy team"
+		TargetType.ALLIES:
+			targetName = "their team"
+		TargetType.SELF:
+			targetName = "their team"
+
+	var output := "%s used %s on %s!" % [data.user.name, data.action.name, targetName]
+	if data.total_dmg > 0:
+		output += "(%d dmg)" % data.total_dmg
+	if data.recoil_dmg > 0:
+		output += "\nThis attack had recoil (%d dmg)..." % data.recoil_dmg
+	return output
+
+
 func _play_animation(data: ActorTurnData) -> void:
 	var userPosition: Vector2 = gui.get_actor_display_position(data.user)
 	var targetPosition: Vector2 = gui.get_actor_display_position(data.targets[0])
