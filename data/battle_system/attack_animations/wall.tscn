@@ -20,6 +20,6 @@ scale_max = 10.0
 position = Vector2(0, 100)
 rotation = -1.5708
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_v0lmd")
 lifetime = 0.75
 explosiveness = 0.05
+process_material = SubResource("ParticleProcessMaterial_v0lmd")

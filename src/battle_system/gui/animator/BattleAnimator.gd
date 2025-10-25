@@ -2,7 +2,7 @@ extends Node3D
 
 signal finished()
 
-const BattleSprite := preload("res://src/battle_system/gui/components/animator/BattleSprite.gd")
+const BattleSprite := preload("BattleSprite.gd")
 
 var _sprites: Dictionary[BattleActor, BattleSprite] = {}
 
