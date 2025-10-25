@@ -296,7 +296,7 @@ func add_status_effect(effect: StatusEffect) -> bool:
 
 
 func remove_status_effect(effect: StatusEffect) -> void:
-	Logger.append_battle_log("%s's %s expired." % [ name, effect.name ])
+	Logger.append_battle_log("Actor(%s)'s StatusEffect(%s) was removed." % [ name, effect.name ])
 	statuses.remove([effect])
 	status_effects_removed.emit([ effect ])
 
