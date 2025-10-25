@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://cjet4plusednv"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://cjet4plusednv"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="1_e47jl"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_j5613"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_c1lmj"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_a64ms"]
@@ -30,7 +29,6 @@ accuracy = 1.0
 power = 30
 scaling_factor = Vector4i(100, 100, 200, -1)
 name = "Orange Hit"
-animation = ExtResource("1_e47jl")
 _element = "orange"
 priority = 0
 attack_range = 0

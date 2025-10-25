@@ -21,28 +21,29 @@ var failure_msg := "FAILED"
 var _last_activated_effect: _BaseEffectSlot = null
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
+	var user := data.user
 	# Godot doesn't have a XOR operator for bools, so I made do.
 	if (condition.check(user, target, effectiveness) or invert) \
 			and not (condition.check(user, target,effectiveness) and invert):
 		_last_activated_effect = success_effect
-		return success_effect.apply_effect(user, target, effectiveness)
+		return success_effect.apply_effect(data, target, effectiveness)
 	elif failed_effect != null:
 		_last_activated_effect = failed_effect
 
 		var msg := []
 
-		msg.append(failed_effect.apply_effect(user, target, effectiveness))
+		msg.append(failed_effect.apply_effect(data, target, effectiveness))
 
 		if print_failed_status == "FAILURE":
 			msg.insert(0, _get_failure_msg())
 		elif print_failed_status == "TOTAL_FAILURE" and (len(msg) == 0 or msg[0].is_empty()):
 			msg.insert(0, _get_failure_msg())
 
-		return "\n".join(msg)
+		return data
 	elif print_failed_status != "SILENT":
-		return _get_failure_msg()
-	return ""
+		return data #_get_failure_msg()
+	return data
 
 ## Used to check the type of the last _AttackEffect.
 ## e.g. if it was Damage, StatusEffect, etc.

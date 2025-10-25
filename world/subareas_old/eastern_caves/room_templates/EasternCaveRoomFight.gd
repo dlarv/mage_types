@@ -1,7 +1,6 @@
 extends "EasternCaveRoom.gd"
 @warning_ignore_start("untyped_declaration")
 
-const Spawner := preload("res://src/overworld/enemies/Spawner.gd")
 
 @export var base_level: int
 @export var team_count_range: Vector2i
@@ -27,7 +26,7 @@ func set_difficulty(level: int) -> void:
 	_level = base_level + level - 1
 
 	for child in _puzzle_parent.get_children():
-		if not child is Spawner: continue
+		# if not child is Spawner: continue
 		var spawner = child
 		spawner.team_count_range = team_count_range
 		spawner.max_spawn_count = max_spawn_count

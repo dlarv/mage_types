@@ -98,7 +98,7 @@ func format_battle_item(item: BattleItem) -> void:
 func format_status_effect(effect: StatusEffect) -> void:
 	append_title(effect.name)
 	append_header("Strength")
-	append_text(str(effect.strength * 100.0) + "%")
+	append_text(str(effect.get_strength() * 100.0) + "%")
 	newline()
 	append_header("Duration")
 	append_text(str(effect.duration))

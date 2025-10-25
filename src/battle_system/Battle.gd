@@ -6,7 +6,6 @@ enum EndState { WON, DEFEATED, FLED }
 enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES, TEAM_0, TEAM_1, ATTACKS }
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
-const ActorTurnData := preload("res://src/battle_system/ActorTurnData.gd")
 const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
 
 @export var ai: OpponentController 
@@ -118,30 +117,30 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if a.priority != b.priority:
 			return a.priority > b.priority
 		# Then higher speed goes first.
-		if a.actor.speed != b.actor.speed:
-			return a.actor.speed > b.actor.speed
+		if a.user.speed != b.user.speed:
+			return a.user.speed > b.user.speed
 		return tie_breaker)
 
 	await _dialog(false)
 
 	for turnData in _actions:
 		# This means a character is defeated.
-		if turnData == null or turnData.actor.is_defeated:
+		if turnData == null or turnData.user.is_defeated:
 			continue
 			
-		var flinch := turnData.actor.flinching
+		var flinch := turnData.user.flinching
 		if flinch != null:
-			await gui.display_message("%s flinched! They were unable to move." % turnData.actor.name)
-			turnData.actor.turn_ended.emit()
+			await gui.display_message("%s flinched! They were unable to move." % turnData.user.name)
+			turnData.user.turn_ended.emit()
 			continue
 
-		Logger.append_battle_log("\nActors turn: %s" % turnData.actor.name)
+		Logger.append_battle_log("\nActors turn: %s" % turnData.user.name)
 		
 		# Apply action effects.
-		var res: Dictionary = turnData.action.apply_effects(turnData.actor, turnData.targets)
-		turnData.actor.action_used.emit(turnData.action)
-		var msg: Array[String] = res.msg
-		var missed: bool = res.get("missed", false)
+		# var res: Dictionary = turnData.action.apply_effects(turnData.actor, turnData.targets)
+		var res := turnData.execute()
+		var msg: Array[String] = []#res.msg
+		var missed: bool = res.missed
 
 		gui.animate_action(turnData, missed)
 
@@ -165,10 +164,10 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		# If the user targeted themselves 
 		# (e.g. Target = Allies || Self || Ally).
 		# This only applies to melee attacks.
-		if not missed and turnData.targets.find(turnData.actor) == -1 \
+		if not missed and turnData.targets.find(turnData.user) == -1 \
 				and turnData.action is Attack \
 				and (turnData.action).attack_range == Attack.AttackRange.MELEE:
-			await _calculate_transmutations(turnData.actor, turnData.action) 
+			await _calculate_transmutations(turnData.user, turnData.action) 
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -177,9 +176,9 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		# Resolve user's status effects.
 		var a := allies if turnData.team_index == 0 else enemies
 		var o := enemies if turnData.team_index == 0 else allies
-		turnData.actor.resolve_end_of_turn(a, o)
-		turnData.actor.turn_ended.emit()
-		msg = turnData.actor.get_and_flush_msgs()
+		turnData.user.resolve_end_of_turn(a, o)
+		turnData.user.turn_ended.emit()
+		msg = turnData.user.get_and_flush_msgs()
 		await gui.display_message(msg)
 		# Check if battle should end.
 		# e.g. if an actor was defeated by poison.
@@ -226,7 +225,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 
 	var buff := ElementManager.get_side_effect(e1, e2)
 
-	if not buff.apply_effect(target, target).is_empty():
+	if not buff.apply_effect(ActorTurnData.empty(target), target).is_empty():
 		msg.append("This reaction had side effects!")
 		msg.append_array(target.get_and_flush_msgs())
 
@@ -313,6 +312,6 @@ func _increment_defeat_counter(isAlly: bool) -> void:
 
 # To be DEPRECATED
 func _play_animation(data: ActorTurnData) -> void:
-	var userPosition: Vector2 = gui.get_actor_display_position(data.actor)
+	var userPosition: Vector2 = gui.get_actor_display_position(data.user)
 	var targetPosition: Vector2 = gui.get_actor_display_position(data.targets[0])
 	data.action.play_animation(userPosition, targetPosition, self)

@@ -61,8 +61,8 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		effectsLabel.append_text(".")
 
 	elif effect is InstantHealthChange:
-		var label := "heals" if effect.strength > 0 else "loses"
-		effectsLabel.append_text("Instantly %s %d%% health." % [label, effect.strength * 100])
+		var label := "heals" if effect.get_strength() > 0 else "loses"
+		effectsLabel.append_text("Instantly %s %d%% health." % [label, effect.get_strength() * 100])
 
 	elif effect is StatusEffect:
 		effectsLabel.append_text("%d%% chance to cause " % chance)
@@ -71,7 +71,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 		effectsLabel.pop() # Close meta tag
 
 	elif effect is StatChange:
-		var label := "raise" if effect.strength > 0 else "lowers"
+		var label := "raise" if effect.get_strength() > 0 else "lowers"
 		effectsLabel.append_text("%d%% chance to %s %s." % [chance, label, effect.name])
 
 	elif effect is InstantHealthChange:
@@ -100,7 +100,7 @@ func _format_attack_effect(e: EffectSlot, effectsLabel: RichTextLabel) -> int:
 	#
 	elif effect is Damage:
 		if e.effect_target == EffectSlot.EffectTarget.TARGET:
-			power += effect.strength
+			power += effect.get_strength()
 		else:
 			effectsLabel.append_text("Does recoil damage on user.")
 	return int(power)

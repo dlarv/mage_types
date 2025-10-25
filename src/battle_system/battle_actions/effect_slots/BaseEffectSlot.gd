@@ -27,19 +27,24 @@ var chance: float = 1:
 			get_chance = Parser.parse(_chance)
 		return get_chance.call()
 
+
 ## Callable | null
 var get_chance: Variant
 
+
 #virtual
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
-	return ""
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
+	return data
+
 
 ## If object is of type EffectSlot, returns itself.
 ## Otherwise, if object is of type ConditionalEffectSlot, return whichever Slot will activate.
 func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
 	return null
 
+
 func get_attack_effect(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> _AttackEffect: return null
+
 
 func _set_effect_target(val: EffectTarget) -> void:
 	effect_target = val

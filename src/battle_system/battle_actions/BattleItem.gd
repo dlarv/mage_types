@@ -17,30 +17,30 @@ static func create(name: String, details: String="") -> BattleItem:
 	item.details = details
 	return item
 
-func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
+func apply_effects(data: ActorTurnData) -> ActorTurnData:
 	var buffer := DataBuffer.new(self)
 	_AttackEffect.current_buffer = buffer
-	var msg: Array[String] = super.apply_effects(user, targets).msg
-	apply_cost(user)
+	super.apply_effects(data)
+	apply_cost(data.user)
 
-	for i in range(len(targets)):
-		var target: BattleActor = targets[i]
+	for i in range(len(data.targets)):
+		var target: BattleActor = data.targets[i]
 
 		for effect in effects:
 			var rand := randf()
 
 			if rand <= effect.chance:
-				msg.append("\n%s" % effect.attack_effect.apply_effect(user, target))
-				# Add status effect icon.
+				effect.apply_effect(data, data.target, 1.0)
+
 				if effect.attack_effect is Damage:
-					# Check if character was defeated.
 					if target.is_defeated:
-						msg.append("........%s was defeated." % target.name)
+						data.defeated_actors.append(target)
 						continue
 			else:
+				data.failed_effects.append(effect)
 				Logger.append_battle_log("_Item(%s) failed. Chance(%f) >= Rand(%f)" 
 						% [name, effect.chance, rand])
-	return { "msg": msg }
+	return data
 
 # Override
 func is_action_available(actor: BattleActor) -> bool:

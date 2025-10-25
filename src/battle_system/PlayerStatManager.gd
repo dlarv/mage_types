@@ -26,13 +26,13 @@ func add(effect: StatChange, name: String) -> void:
 	if effect.is_side_effect:
 		match effect.stat:
 			Stats.ATTACK:
-				_melee_attack_xp += effect.strength
-				_ranged_attack_xp += effect.strength
+				_melee_attack_xp += effect.get_get_strength()
+				_ranged_attack_xp += effect.get_get_strength()
 			Stats.DEFENSE:
-				_melee_defense_xp += effect.strength
-				_ranged_defense_xp += effect.strength
+				_melee_defense_xp += effect.get_get_strength()
+				_ranged_defense_xp += effect.get_get_strength()
 			Stats.SPEED:
-				_speed_xp += effect.strength
+				_speed_xp += effect.get_get_strength()
 
 
 ## Values drawn from design doc Roadmap#The List#Battle (BATT)#End Battle#Option 2

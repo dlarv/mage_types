@@ -16,9 +16,9 @@ var Green: ElementalType
 var Cyan: ElementalType 
 
 @export var elements: Array[ElementalType] = []
-@export var attack_buff: _AttackEffect
-@export var defense_buff: _AttackEffect
-@export var speed_buff: _AttackEffect
+@export var attack_buff: StatusEffect
+@export var defense_buff: StatusEffect
+@export var speed_buff: StatusEffect
 @export var theme: Theme
 
 # Dict<string, Node>

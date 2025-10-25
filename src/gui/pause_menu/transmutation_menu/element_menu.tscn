@@ -52,7 +52,7 @@ horizontal_alignment = 1
 
 [node name="Blue" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0, 0, 0.862745, 1)
 _element = "blue"
 
 [node name="Blue_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox"]
@@ -65,7 +65,7 @@ theme_override_constants/separation = 20
 
 [node name="Magenta" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(1, 0, 1, 1)
+color = Color(1, 0.12549, 1, 1)
 _element = "magenta"
 
 [node name="Magenta_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox"]
@@ -78,7 +78,7 @@ theme_override_constants/separation = 20
 
 [node name="Yellow" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(1, 1, 0, 1)
+color = Color(1, 1, 0.298039, 1)
 _element = "yellow"
 
 [node name="Yellow_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox"]
@@ -91,7 +91,7 @@ theme_override_constants/separation = 20
 
 [node name="Cyan" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(0, 1, 1, 1)
+color = Color(0.12549, 0.901961, 0.901961, 1)
 _element = "cyan"
 
 [node name="Cyan_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Defensive_VBox"]
@@ -114,7 +114,7 @@ horizontal_alignment = 1
 
 [node name="Purple" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(0.321569, 0.0941176, 0.980392, 1)
+color = Color(0.478431, 0, 0.772549, 1)
 _element = "purple"
 
 [node name="Purple_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox"]
@@ -127,7 +127,7 @@ theme_override_constants/separation = 20
 
 [node name="Red" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(1, 0, 0, 1)
+color = Color(0.670588, 0, 0, 1)
 _element = "red"
 
 [node name="Red_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox"]
@@ -140,7 +140,7 @@ theme_override_constants/separation = 20
 
 [node name="Orange" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(1, 0.501961, 0, 1)
+color = Color(1, 0.266667, 0, 1)
 _element = "orange"
 
 [node name="Orange_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox"]
@@ -153,7 +153,7 @@ theme_override_constants/separation = 20
 
 [node name="Green" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox" instance=ExtResource("5_81x5c")]
 layout_mode = 2
-color = Color(0, 1, 0, 1)
+color = Color(0.145098, 1, 0.188235, 1)
 _element = "green"
 
 [node name="Green_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox"]

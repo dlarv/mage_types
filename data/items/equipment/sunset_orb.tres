@@ -1,74 +1,12 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=16 format=3 uid="uid://cwk4v4cvwgmus"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://cwk4v4cvwgmus"]
 
-[ext_resource type="Script" uid="uid://cgxabe6034h8d" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="1_dd61b"]
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_twp2o"]
-[ext_resource type="Script" uid="uid://b5hkx6ay1hmqp" path="res://src/items/equipment/add_equipment/bonuses/StatBonus.gd" id="2_pciia"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_whcob"]
 [ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="3_bo7o4"]
-[ext_resource type="Script" uid="uid://cylxi1tdlti2e" path="res://src/items/equipment/add_equipment/triggers/ElementTrigger.gd" id="4_1nkck"]
-[ext_resource type="Script" uid="uid://dyqtsmtfqgpdp" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="6_ex0f4"]
-
-[sub_resource type="Resource" id="Resource_kty0t"]
-resource_name = "Attack Boost"
-script = ExtResource("6_ex0f4")
-stat = 0
-op = 0
-is_side_effect = false
-id = 6
-_duration = "0"
-description = ""
-name = "Attack Boost"
-_strength = "1.0"
-message = "{target}'s melee attack was boosted!
-{target}'s ranged attack was boosted!"
-
-[sub_resource type="Resource" id="Resource_hghoq"]
-script = ExtResource("2_pciia")
-stat = SubResource("Resource_kty0t")
-
-[sub_resource type="Resource" id="Resource_nr40x"]
-resource_name = "Orange Trigger"
-script = ExtResource("4_1nkck")
-_element = "orange"
-index = "either"
-
-[sub_resource type="Resource" id="Resource_mcfi2"]
-script = ExtResource("1_dd61b")
-trigger = SubResource("Resource_nr40x")
-bonus = SubResource("Resource_hghoq")
-
-[sub_resource type="Resource" id="Resource_ggigm"]
-resource_name = "Attack Boost"
-script = ExtResource("6_ex0f4")
-stat = 0
-op = 0
-is_side_effect = false
-id = 6
-_duration = "3"
-description = ""
-name = "Attack Boost"
-_strength = "1.0"
-message = "{target}'s melee attack was boosted!
-{target}'s ranged attack was boosted!"
-
-[sub_resource type="Resource" id="Resource_f8mby"]
-script = ExtResource("2_pciia")
-stat = SubResource("Resource_ggigm")
-
-[sub_resource type="Resource" id="Resource_3pyk5"]
-resource_name = "Red Trigger"
-script = ExtResource("4_1nkck")
-_element = "red"
-index = "either"
-
-[sub_resource type="Resource" id="Resource_b6iix"]
-script = ExtResource("1_dd61b")
-trigger = SubResource("Resource_3pyk5")
-bonus = SubResource("Resource_f8mby")
 
 [resource]
 script = ExtResource("3_bo7o4")
-effects = Array[ExtResource("1_twp2o")]([SubResource("Resource_mcfi2"), SubResource("Resource_b6iix")])
+effects = Array[ExtResource("1_twp2o")]([])
 id = 3
 name = "Sunset Orb"
 requirements = Array[ExtResource("2_whcob")]([])

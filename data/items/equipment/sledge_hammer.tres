@@ -1,18 +1,12 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://bsjfeyutvwl8i"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://bsjfeyutvwl8i"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_r6swq"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_dm705"]
-[ext_resource type="Script" uid="uid://cvxp8g3bj6t6y" path="res://src/items/equipment/ModEquipmentEffect.gd" id="2_orsh1"]
 [ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="3_orsh1"]
-
-[sub_resource type="Resource" id="Resource_hdl6d"]
-script = ExtResource("2_orsh1")
-type = 2
-metadata/_custom_type_script = "uid://cvxp8g3bj6t6y"
 
 [resource]
 script = ExtResource("3_orsh1")
-effects = Array[ExtResource("1_r6swq")]([SubResource("Resource_hdl6d")])
+effects = Array[ExtResource("1_r6swq")]([])
 id = 6
 name = "Sledge Hammer"
 requirements = Array[ExtResource("2_dm705")]([])

@@ -3,7 +3,6 @@ extends Node3D
 signal finished()
 
 const BattleSprite := preload("res://src/battle_system/gui/components/animator/BattleSprite.gd")
-const ActorTurnData := preload("res://src/battle_system/ActorTurnData.gd")
 
 var _sprites: Dictionary[BattleActor, BattleSprite] = {}
 
@@ -11,8 +10,8 @@ var _sprites: Dictionary[BattleActor, BattleSprite] = {}
 func animate(turnData: ActorTurnData, missed: bool) -> void:
 	# Play user.channeling & channeling particle effect
 	const DURATION := 3.0
-	var userSprite := _sprites[turnData.actor]
-	var affinity: float = turnData.action.calculate_affinity(turnData.actor)
+	var userSprite := _sprites[turnData.user]
+	var affinity: float = turnData.action.calculate_affinity(turnData.user)
 	if affinity <= Attack.POOR_AFFINITY_THRESHOLD:
 		userSprite.show_elemental_particles(turnData.action.element, DURATION, 5)
 	elif affinity <= Attack.WEAK_AFFINITY_THRESHOLD:

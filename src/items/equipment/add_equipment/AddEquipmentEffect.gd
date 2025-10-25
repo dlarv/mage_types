@@ -26,6 +26,6 @@ func _on_trigger(actor: BattleActor, msg: String) -> void:
 	Logger.append_battle_log(
 			"BattleActor(%s) equipment activated. Trigger(%s)." 
 			% [actor.name, trigger.get_class()])
-	msg += bonus.apply_to(actor)
+	bonus.apply_to(actor)
 	Logger.append_battle_log("Final Msg(%s)." % msg) 
 	activated.emit(actor, msg)

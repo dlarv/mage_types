@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://c0drgn5hkvd2t"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://c0drgn5hkvd2t"]
 
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="1_b7plu"]
-[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/gui/components/animator/attack_animations/jet.tscn" id="1_svmts"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_47wdh"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_riqhc"]
 [ext_resource type="Script" uid="uid://bhh3ro2cetlnh" path="res://src/battle_system/battle_actions/effects/specific_effects/RandomPhobia.gd" id="4_ur5pd"]
@@ -30,7 +29,6 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Terrify"
-animation = ExtResource("1_svmts")
 _element = "purple"
 priority = 1
 attack_range = 2

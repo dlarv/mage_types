@@ -5,7 +5,7 @@ class_name RandomPhobia
 @export_range(1, 8) var min_count := 1
 @export_range(1, 8) var max_count := 1
 
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
 	var msg := []
 	var count := randi_range(min_count, max_count)
 	var indices: Array[int] = range(0, 8)
@@ -22,9 +22,10 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 
 		# Apply effect.
 		target.add_status_effect(phobia)
-		msg.append(phobia.apply_effect(user, target))
+		phobia.apply_effect(data, target)
 
-	return "\n".join(msg)
+	return data
+
 
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
 	var output := 0.0

@@ -8,7 +8,8 @@ var actor_to_override := "target"
 @export var override_stat: StatManager.Stats
 
 
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
+	var user := data.user
 	var attack: float
 	var defense: float
 	match actor_to_override:
@@ -22,11 +23,14 @@ func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) ->
 			attack = user.get_stat(override_stat)
 			defense = target.get_stat(override_stat)
 
-	var dmg := calculate_damage(attack, defense, effectiveness, user)
-	return "%s" % [ _apply_to(target, dmg, user) ]
+	var dmg := calculate_damage(attack, defense, effectiveness, data)
+	_apply_to(data, target, dmg) 
+	return data
 
 
-func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
+func get_dmg_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> int:
+	var user := data.user
+	var action := data.action
 	if target.statuses.blocking: return 0
 	var attack: float
 	var defense: float
@@ -40,7 +44,7 @@ func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,
 		_:
 			attack = user.get_stat(override_stat)
 			defense = target.get_stat(override_stat)
-	return calculate_damage(attack, defense, 1.0, user)
+	return calculate_damage(attack, defense, 1.0, null)
 
 
 func _set_name(_val: String) -> void:

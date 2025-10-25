@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=15 format=3 uid="uid://dt1qqsm85wdxi"]
+[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://dt1qqsm85wdxi"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="1_3a8hg"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_462cl"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_cugkt"]
 [ext_resource type="Script" uid="uid://4aisqs8ctusa" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_8uqbc"]
@@ -36,7 +35,7 @@ allow_overflow = false
 strength_is_percent_hp = false
 use_effectiveness = true
 name = "InstantHealthChange"
-_strength = "mul $d 0.8"
+_strength = "prev_dmg * 0.8"
 message = ""
 metadata/_custom_type_script = "uid://nh2nt72jmw33"
 
@@ -66,7 +65,6 @@ accuracy = 1.0
 power = 50
 scaling_factor = Vector4i(80, 80, 100, -1)
 name = "Bite"
-animation = ExtResource("1_3a8hg")
 _element = "red"
 priority = 0
 attack_range = 0

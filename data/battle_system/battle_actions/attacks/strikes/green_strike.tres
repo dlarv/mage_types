@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://bfjk3jf15fgeh"]
+[gd_resource type="Resource" script_class="Attack" load_steps=13 format=3 uid="uid://bfjk3jf15fgeh"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="1_rm1nk"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_tgwkw"]
 [ext_resource type="Script" uid="uid://4aisqs8ctusa" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_e8pdo"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="4_816ed"]
@@ -60,7 +59,6 @@ accuracy = 1.0
 power = 50
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Green Strike"
-animation = ExtResource("1_rm1nk")
 _element = "purple"
 priority = 0
 attack_range = 0

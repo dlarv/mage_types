@@ -9,34 +9,30 @@ const Effects := StatusEffectManager.StatusEffects
 @export var _duration: String:
 	set(val):
 		_duration = val
+		initial_duration = Expression.new()
 		if val.is_valid_float():
-			duration = int(val)
+			initial_duration.parse(val)
 		else:
-			duration = int(-INF)
-	get:
-		if _duration.is_empty():
-			return str(duration)
-		return _duration
-var duration: int:
-	get:
-		if duration != int(-INF):
-			return duration
-		if not buffer_map.has("duration"):
-			buffer_map["duration"] = Parser.parse(_strength)
-		return buffer_map["duration"].call()
+			var err := initial_duration.parse(val, EXPRESSION_VARS)
+
+			if err != OK:
+				push_error(error_string(err))
+var initial_duration: Expression
+var duration: int 
 @export var icon: PackedScene 
 ## The text displayed inside the MessageBox, etc.
 @export_multiline var description: String 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
-	# if target == null or action == null: return name
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
+	var user := data.user
 	if target == null:
 		target = user
 
 	var dupe := duplicate()
-	if not target.add_status_effect(dupe): return ""
-	return super.apply_effect(user, target)
+	dupe.duration = get_duration(data.get_vars())
+	if not target.add_status_effect(dupe): return data
+	return super.apply_effect(data, target)
 
 
 func is_expired() -> bool:
@@ -96,3 +92,5 @@ func _set_status_effect(val: Effects) -> void:
 	id = val
 
 
+func get_duration(vars: Array=[]) -> int:
+	return int(initial_duration.execute(vars))

@@ -4,6 +4,7 @@ class_name _AttackEffect
 
 const DataBuffer := Attack.DataBuffer
 const Parser := preload("res://addons/attackeffectinspector/parser.gd")
+const EXPRESSION_VARS := ActorTurnData.EXPRESSION_VARS
 
 # This value is written by Attack before any effects are applied.
 static var current_buffer: DataBuffer = DataBuffer.new()
@@ -13,32 +14,23 @@ static var current_buffer: DataBuffer = DataBuffer.new()
 @export var _strength: String:
 	set(val):
 		_strength = val
-		if val.is_valid_float():
-			strength = float(val)
-		else:
-			strength = INF
-	get:
-		if _strength.is_empty():
-			return str(strength)
-		return _strength
-var strength: float:
-	get:
-		if strength != INF:
-			return strength
-		if not buffer_map.has("strength"):
-			buffer_map["strength"] = Parser.parse(_strength)
-		return buffer_map["strength"].call()
+		strength = Expression.new()
+		var err := strength.parse(val, EXPRESSION_VARS)
+
+		if err != OK:
+			push_error(error_string(err))
+var strength: Expression
 
 @export_multiline var message: String = "": get = _get_message
 
-var buffer_map: Dictionary[String, Callable]
+var buffer_map: Dictionary[String, Expression]
 
 # virtual
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
-	return message.replace("{user}", user.name).replace("{target}", target.name)
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
+	return data
 
 # virtual
-func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool, action: _BattleAction) -> int:
+func get_dmg_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> int:
 	return 0
 
 
@@ -54,3 +46,7 @@ func _get_message() -> String:
 func _set_name(val: String) -> void:
 	name = val
 	resource_name = val
+
+
+func get_strength(vars: Array=[]) -> float:
+	return strength.execute(vars)

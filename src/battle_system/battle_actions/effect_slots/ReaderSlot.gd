@@ -5,5 +5,5 @@ class_name ReaderSlot
 ## Does not actually apply any effects to the BattleActors.
 
 #override
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
-	return ""
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
+	return data

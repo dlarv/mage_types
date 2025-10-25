@@ -129,7 +129,8 @@ func get_and_flush_msgs() -> Array[String]:
 	return output
 
 
-func set_element(id: int, element: ElementalType) -> void:
+## Returns amount of damage dealt, if actor has phobia
+func set_element(id: int, element: ElementalType) -> float:
 	if id == 0:
 		element1 = element
 	else:
@@ -139,15 +140,14 @@ func set_element(id: int, element: ElementalType) -> void:
 	if alignment_manager:
 		alignment_manager.append_unnormalized(element, AlignmentManager.Type.TRANSMUTATION)
 
-	var mod: float
-	var dmg := 0.0
 	var effect := statuses.check_phobic(element)
 	if effect != null:
-		dmg = hp * effect.strength
-		_msgs.append("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
+		var dmg := hp * effect.get_strength()
+		Logger.append_battle_log("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
-	if dmg != 0:
-		apply_damage(int(dmg), false)
+		if dmg != 0:
+			return apply_damage(int(dmg), false)
+	return 0
 
 
 func get_element(id: int) -> ElementalType:
@@ -255,7 +255,7 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 		blocking = statuses.blocking
 
 	if blocking:
-		dmg = int(float(dmg) * (1.0 - blocking.strength))
+		dmg = int(float(dmg) * (1.0 - blocking.get_strength()))
 		if statuses.remove_blocking():
 			status_effects_removed.emit([blocking] as Array[StatusEffect])
 

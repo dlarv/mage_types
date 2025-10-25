@@ -9,29 +9,37 @@ func _init() -> void:
 	name = "Damage"
 
 
-func get_dmg_potential(user: BattleActor, target: BattleActor, isFriendly: bool,  action: _BattleAction) -> int:
+func get_dmg_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> int:
 	if target.statuses.blocking: return 0
-	return calculate_damage(user.get_attack_stat(action), target.get_defense_stat(action), 1.0, user)
+	return calculate_damage(
+		data.user.get_attack_stat(data.action), 
+		target.get_defense_stat(data.action), 
+		1.0, 
+		data
+	)
 
 
 # override
-func apply_effect(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> String:
+func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
+	var user := data.user
 	var dmg := calculate_damage(
 			user.get_attack_stat(current_buffer.action), 
 			target.get_defense_stat(current_buffer.action), 
 			effectiveness,
-			user
+			data
 		)
 	
-	return _apply_to(target, dmg, user)
+	_apply_to(data, target, dmg)
+	return data
 
 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
-func calculate_damage(attack: float, defense: float, effectiveness: float, user: BattleActor) -> int:
+func calculate_damage(attack: float, defense: float, effectiveness: float, data: ActorTurnData) -> int:
+	var user := data.user
 	if not user.alignment.is_blank() and current_buffer.action.element == user.alignment:
 		effectiveness += ALIGNMENT_BONUS
 
-	var power: float = strength / 4.0# + (strength * float(user.level) / 10.0)
+	var power: float = get_strength(data.get_vars()) / 4.0# + (strength * float(user.level) / 10.0)
 	var dmg := power * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
 	Logger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
@@ -39,22 +47,27 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, user:
 	return int(dmg * rand)
 
 
-func _apply_to(target: BattleActor, dmg: int, user: BattleActor=null) -> String:
+func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 	var actualDmg := target.apply_damage(dmg)
 	_AttackEffect.current_buffer.damage = actualDmg
 	_AttackEffect.current_buffer.total_damage += actualDmg
+	data.prev_dmg = actualDmg
+	data.total_dmg += actualDmg
+	if data.user == target:
+		data.recoil_dmg += actualDmg
 
 	if actualDmg == dmg:
-		return "Dealt %d damage to %s." % [dmg, target.name]
+		Logger.append_battle_log("Dealt %d damage to %s." % [dmg, target.name])
+	data.blocking_actors.append(target)
 
-	var msg := "Tried to deal %d damage to %s.\n" % [dmg, target.name]
+	var msg := "Tried to deal %d damage to %s." % [dmg, target.name]
 	if actualDmg == 0:
 		msg += "But %s blocked the attack!" % target.name
 	else:
-		msg += "But %s deflected some of the damage!\nDealt %d damage to %s." \
+		msg += " But %s deflected some of the damage! Dealt %d damage to %s." \
 				% [target.name, actualDmg, target.name]
 	
-	return msg
+	Logger.append_battle_log(msg)
 
 
 func _set_name(_val: String) -> void:

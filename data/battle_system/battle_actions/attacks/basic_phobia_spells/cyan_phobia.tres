@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://dfw4ok6p0v3ei"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://dfw4ok6p0v3ei"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="2_8rd4o"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_8so8y"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="2_upu2q"]
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="3_spfjl"]
@@ -34,7 +33,6 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Glaukophobia"
-animation = ExtResource("2_8rd4o")
 _element = "cyan"
 priority = 0
 attack_range = 2

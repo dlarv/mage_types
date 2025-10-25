@@ -42,11 +42,13 @@ const GREAT_AFFINITY_THRESHOLD := 1.2
 @export var scaling_factor := Vector4i(100, 100, 100, -1)
 
 # override
-func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary:
-	var buffer := DataBuffer.new(self)
-	_AttackEffect.current_buffer = buffer
+func apply_effects(data: ActorTurnData) -> ActorTurnData:
+	# var buffer := DataBuffer.new(self)
+	# _AttackEffect.current_buffer = buffer
+	var user := data.user
+	var targets := data.targets
 
-	var msg: Array[String] = super.apply_effects(user, targets).msg
+	super.apply_effects(data)
 
 	# Calculate alignments, if necessary.
 	if user.alignment_manager:
@@ -59,75 +61,32 @@ func apply_effects(user: BattleActor, targets: Array[BattleActor]) -> Dictionary
 	# Calculate accuracy.
 	var rand := randf()
 	if rand > accuracy:
+		data.missed = true
 		Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
-		msg.append("But it missed!")
-		return { "msg": msg, "missed": true }
+		return data
 
 	var affinity := calculate_affinity(user)
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
-
-	# This message communicates to the player the strength of their attack.
-	# I used to say "not very effective," but I think this confuses player into thinking there are type matchups
-	if affinity <= POOR_AFFINITY_THRESHOLD:
-		msg.append("%s gave out a few [el]%s[/el] sparks..." % [user.name, element])
-	elif affinity <= WEAK_AFFINITY_THRESHOLD:
-		msg.append("%s was wreathed in faint [el]%s[/el] energy!" % [user.name, element])
-	elif affinity <= GOOD_AFFINITY_THRESHOLD:
-		msg.append("%s was wreathed in [el]%s[/el] energy!" % [user.name, element])
-	else:
-		msg.append("%s was wreathed in bright [el]%s[/el] energy!" % [user.name, element])
 	
 	var delayedEffects: Array[_BaseEffectSlot] = []
 	for i in len(targets):
 		var target := targets[i]
-		var didDmg := false
 
-		for effect in effects:
-			if effect.effect_target == _BaseEffectSlot.EffectTarget.NOT_USER and target == user: 
+		for slot in effects:
+			if slot.effect_target == _BaseEffectSlot.EffectTarget.NOT_USER and target == user: 
 				continue
-			elif effect.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE:
-				if not effect in delayedEffects:
-					delayedEffects.append(effect)
+			elif slot.effect_target == _BaseEffectSlot.EffectTarget.USER_ONCE:
+				if not slot in delayedEffects:
+					delayedEffects.append(slot)
 				continue
 
-			didDmg = true
-			var msg2 := effect.apply_effect(user, target, affinity)
+			slot.apply_effect(data, target, affinity)
 
-			# Get equipment effect logs, etc.
-			var msg3 := target.get_and_flush_msgs()
-			if len(msg3) > 0:
-				msg.append_array(msg3)
-
-			if len(msg2) > 0:
-				if effect.get_attack_effect(user, target, self) is Damage \
-						and effect.effect_target == EffectSlot.EffectTarget.USER:
-					msg.append("This attack has recoil!")
-				msg.append("%s" % msg2)
-
-				if effect.get_attack_effect() is Damage and target.is_defeated:
-					msg.append("........%s was defeated." % target.name)
-					continue
 		
 	for effect: _BaseEffectSlot in delayedEffects:
-		var didDmg := true
-		var msg2 := effect.apply_effect(user, user, affinity)
+		data = effect.apply_effect(data, user, affinity)
 
-		# Get equipment effect logs, etc.
-		var msg3 := user.get_and_flush_msgs()
-		if len(msg3) > 0:
-			msg.append_array(msg3)
-
-		if len(msg2) > 0:
-			if effect.get_attack_effect() is Damage:
-				msg.append("This attack has recoil!")
-
-				if user.is_defeated:
-					msg.append("........%s was defeated." % effect.target.name)
-					continue
-		msg.append("%s" % msg2)
-
-
-	return { "msg": msg }
+	return data
 
 
 func calculate_affinity(user: BattleActor) -> float:

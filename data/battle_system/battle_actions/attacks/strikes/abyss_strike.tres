@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://olgnrmvw2spc"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://olgnrmvw2spc"]
 
-[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://src/battle_system/gui/components/animator/attack_animations/jet.tscn" id="1_4wpqw"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_cinsk"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_r5wf5"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_ajged"]
@@ -30,7 +29,6 @@ accuracy = 1.0
 power = 50
 scaling_factor = Vector4i(20, 20, 200, -1)
 name = "Abyss Strike"
-animation = ExtResource("1_4wpqw")
 _element = "purple"
 priority = 0
 attack_range = 1

@@ -3,7 +3,6 @@ class_name OpponentController
 
 signal battle_ended(endState: Battle.EndState)
 
-const ActorTurnData := preload("res://src/battle_system/ActorTurnData.gd")
 const TargetType := _BattleAction.TargetType
 const TEAM_INDEX := 1
 

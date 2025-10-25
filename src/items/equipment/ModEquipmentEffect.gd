@@ -57,7 +57,7 @@ func _prevent_defeat(dmg: int, allowBlocking: bool=true, actor: BattleActor=null
 		blocking = actor.statuses.blocking
 
 	if blocking != null:
-		dmg = int(float(dmg) * (1 - blocking.strength))
+		dmg = int(float(dmg) * (1 - blocking.get_strength()))
 		actor.statuses.remove_blocking()
 		actor.status_effects_removed.emit([blocking] as Array[StatusEffect])
 

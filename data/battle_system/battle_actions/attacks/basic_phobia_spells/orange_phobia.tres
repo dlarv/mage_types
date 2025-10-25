@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://hkh74buet86t"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://hkh74buet86t"]
 
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="2_aw513"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_k76ns"]
 [ext_resource type="PackedScene" uid="uid://cafow3ayf0uqw" path="res://data/battle_system/status_effects/icons/phobia_base_icon.tscn" id="3_rcssw"]
 [ext_resource type="Script" uid="uid://b7le2eumt6kqa" path="res://src/battle_system/battle_actions/effects/PhobiaEffect.gd" id="4_i3pwb"]
@@ -34,7 +33,6 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Xanthophobia"
-animation = ExtResource("2_aw513")
 _element = "orange"
 priority = 0
 attack_range = 2

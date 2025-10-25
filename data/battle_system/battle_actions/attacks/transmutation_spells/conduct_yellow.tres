@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b6tgqcseb5bm7"]
+[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://b6tgqcseb5bm7"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_6a1eq"]
-[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://src/battle_system/gui/components/animator/attack_animations/burst.tscn" id="2_bj77c"]
 [ext_resource type="Script" uid="uid://cqnlttwghf2pc" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_4mkka"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_y36oa"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="5_y1vt6"]
@@ -28,7 +27,6 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Conduct Yellow"
-animation = ExtResource("2_bj77c")
 _element = "yellow"
 priority = 0
 attack_range = 2

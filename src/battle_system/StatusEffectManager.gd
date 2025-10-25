@@ -6,14 +6,14 @@ var poison: float:
 	get:
 		var effect: StatusEffect = statuses.get(StatusEffects.POISON)
 		if effect != null:
-			return effect.strength
+			return effect.get_strength()
 		return 0
 
 var healing: float:
 	get:
 		var effect: StatusEffect = statuses.get(StatusEffects.HEALING)
 		if effect != null:
-			return effect.strength
+			return effect.get_strength()
 		return 0
 
 var blocking: StatusEffect = null

@@ -14,14 +14,14 @@ enum Operator { ADD, RESET, ZERO, MUL }
 @export var stat: StatManager.Stats:
 	set(val):
 		stat = val
-		var dir := "Drop" if strength < 0 else "Boost"
-		name = "%s %s" % [
-			" ".join(Array(StatManager.Stats.keys()[stat].split("_"))
-					.map(func(x: String) -> String: 
-						return x.capitalize())
-				),
-			dir
-		]
+		# var dir := "Drop" if get_strength() < 0 else "Boost"
+		# name = "%s %s" % [
+		# 	" ".join(Array(StatManager.Stats.keys()[stat].split("_"))
+		# 			.map(func(x: String) -> String: 
+		# 				return x.capitalize())
+		# 		),
+		# 	dir
+		# ]
 
 ## If true, set target's stat to 1 before apply buff/debuff.
 @export var op := Operator.ADD
@@ -34,8 +34,8 @@ func _init() -> void:
 	id = Effects.STAT_CHANGE
 
 
-func get_strength() -> float:
-	return strength * MODIFIER
+func get_strength(vars: Array[Variant]=[]) -> float:
+	return super.get_strength(vars) * MODIFIER
 
 
 func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
@@ -50,7 +50,7 @@ func _get_setup_potential_ally(target: BattleActor) -> float:
 	var maxMod := target.stat_manager.MAX_MOD 
 	var minMod := target.stat_manager.MIN_MOD 
 
-	if strength > 0:
+	if get_strength() > 0:
 		if mod <= 0: 
 			return 1.0
 		return (maxMod - mod) / maxMod
@@ -66,7 +66,7 @@ func _get_setup_potential_enemy(target: BattleActor) -> float:
 	var maxMod := target.stat_manager.MAX_MOD 
 	var minMod := target.stat_manager.MIN_MOD 
 
-	if strength < 0:
+	if get_strength() < 0:
 		if mod >= 0:
 			return 1.0
 		return (minMod - mod) / minMod
@@ -79,7 +79,7 @@ func _get_setup_potential_enemy(target: BattleActor) -> float:
 # override
 func _get_message() -> String:
 	var output := ""
-	var dir := "lowered" if strength < 0 else "boosted"
+	var dir := "lowered" if get_strength() < 0 else "boosted"
 
 	match stat:
 		StatManager.Stats.ATTACK:
@@ -105,5 +105,3 @@ func _get_message() -> String:
 # override
 func _set_status_effect(val: Effects) -> void:
 	id = Effects.STAT_CHANGE
-
-
