@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://cvg7imt703rjl"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://cvg7imt703rjl"]
 
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_iiabu"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_mjpbi"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_8l88i"]
 [ext_resource type="Script" uid="uid://nh2nt72jmw33" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="3_6rxdf"]
@@ -30,6 +31,7 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(50, 50, 100, -1)
 name = "Satiate"
+animation = ExtResource("1_iiabu")
 _element = "red"
 priority = 0
 attack_range = 2

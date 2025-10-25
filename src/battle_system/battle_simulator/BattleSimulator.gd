@@ -71,8 +71,9 @@ func _collect_monsters() -> void:
 			button.owner = get_tree().edited_scene_root
 
 
-func _add_attack(attack: Attack) -> void:
-	active_actor.attacks.append(attack)
+func _add_attack(attack: Attack, uiOnly:=false) -> void:
+	if not uiOnly:
+		active_actor.attacks.append(attack)
 
 	var item := ListItem.new(attack.name)
 	%AttackScroller.add_child(item)
@@ -87,6 +88,9 @@ func _add_monster(actor: BattleActor) -> void:
 	for child in %AttackScroller.get_children(): %AttackScroller.remove_child(child)
 
 	active_actor = actor.duplicate(true)
+
+	for attack: Attack in actor.attacks:
+		_add_attack(attack, true)
 
 	%Name.text = actor.name
 	%Level.value = actor.level

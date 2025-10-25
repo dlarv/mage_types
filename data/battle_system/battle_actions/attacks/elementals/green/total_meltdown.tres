@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://ela4jxp8bcph"]
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://ela4jxp8bcph"]
 
+[ext_resource type="PackedScene" uid="uid://chvddpwtc6d1r" path="res://data/battle_system/attack_animations/geyser.tscn" id="1_tdmh0"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_k7nd4"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_qkigx"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_7tme4"]
@@ -49,6 +50,7 @@ accuracy = 1.0
 power = 90
 scaling_factor = Vector4i(50, 50, 100, -1)
 name = "Total Meltdown"
+animation = ExtResource("1_tdmh0")
 _element = "green"
 priority = 0
 attack_range = 1

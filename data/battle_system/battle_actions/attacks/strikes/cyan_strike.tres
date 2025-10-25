@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=13 format=3 uid="uid://bhx77misimdoa"]
+[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://bhx77misimdoa"]
 
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_8rlda"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_xyw4n"]
 [ext_resource type="Script" uid="uid://4aisqs8ctusa" path="res://src/battle_system/battle_actions/conditions/SingleElementCondition.gd" id="3_oced1"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_1nl27"]
@@ -59,6 +60,7 @@ accuracy = 1.0
 power = 50
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Cyan Strike"
+animation = ExtResource("1_8rlda")
 _element = "purple"
 priority = 0
 attack_range = 0

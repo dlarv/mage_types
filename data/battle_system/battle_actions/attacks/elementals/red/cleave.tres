@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bals1ujdb1v1d"]
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://bals1ujdb1v1d"]
 
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_qlxan"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_y0jkl"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="2_f0m64"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_uti1r"]
@@ -49,6 +50,7 @@ accuracy = 1.0
 power = 90
 scaling_factor = Vector4i(50, 80, 100, -1)
 name = "Cleave"
+animation = ExtResource("1_qlxan")
 _element = "red"
 priority = 0
 attack_range = 0

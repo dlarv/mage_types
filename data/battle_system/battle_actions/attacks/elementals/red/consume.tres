@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://34n0lh5ijyi3"]
+[gd_resource type="Resource" script_class="Attack" load_steps=11 format=3 uid="uid://34n0lh5ijyi3"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_3dgnf"]
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_ykhv0"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_iqdov"]
 [ext_resource type="Script" uid="uid://nh2nt72jmw33" path="res://src/battle_system/battle_actions/effects/InstantHealthChange.gd" id="3_qhxvf"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_bbow0"]
@@ -52,6 +53,7 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Consume"
+animation = ExtResource("1_ykhv0")
 _element = "red"
 priority = 0
 attack_range = 2

@@ -1,25 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://djuyvkmv08sf3"]
+[gd_scene load_steps=3 format=3 uid="uid://34tfl08ue8kl"]
 
-[ext_resource type="Script" uid="uid://bw1pskidpkei3" path="res://src/battle_system/battle_actions/BattleActionAnimation.gd" id="1_f6tbt"]
+[ext_resource type="Script" uid="uid://c3duywk5u5ujn" path="res://src/battle_system/gui/animator/attack_animations/JetAnimation.gd" id="1_q8cwd"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppq6a"]
 particle_flag_disable_z = true
-spread = 180.0
-radial_velocity_min = 100.0
-radial_velocity_max = 200.0
+spread = 10.0
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
 gravity = Vector3(0, 0, 0)
 scale_min = 8.0
 scale_max = 10.0
 
-[node name="Burst" type="Node2D" node_paths=PackedStringArray("animation")]
+[node name="Jet" type="Node2D" node_paths=PackedStringArray("animation")]
 z_index = 5
 z_as_relative = false
-script = ExtResource("1_f6tbt")
+script = ExtResource("1_q8cwd")
 animation = NodePath("GPUParticles2D")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(2, 4)
 emitting = false
-amount = 30
+amount = 60
 process_material = SubResource("ParticleProcessMaterial_ppq6a")
 one_shot = true
 explosiveness = 1.0

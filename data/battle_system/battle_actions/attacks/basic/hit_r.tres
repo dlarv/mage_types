@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://b5lv3isotgsxh"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b5lv3isotgsxh"]
 
+[ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_fgpji"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_sss6h"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_6rvr0"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_c83qg"]
@@ -29,6 +30,7 @@ accuracy = 1.0
 power = 30
 scaling_factor = Vector4i(100, 100, 200, -1)
 name = "Red Hit"
+animation = ExtResource("1_fgpji")
 _element = "red"
 priority = 0
 attack_range = 0

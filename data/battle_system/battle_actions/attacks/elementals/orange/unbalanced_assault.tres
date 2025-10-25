@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=13 format=3 uid="uid://by8gsmj622ykf"]
+[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://by8gsmj622ykf"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_bhiyu"]
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_skh0b"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_mdcs0"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_8k2jc"]
 [ext_resource type="Script" uid="uid://bixhfjqqui5ig" path="res://src/battle_system/battle_actions/conditions/AffinityCondition.gd" id="3_skh0b"]
@@ -66,6 +67,7 @@ accuracy = 1.0
 power = 25
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Unbalanced Assault"
+animation = ExtResource("1_skh0b")
 _element = "orange"
 priority = 0
 attack_range = 0

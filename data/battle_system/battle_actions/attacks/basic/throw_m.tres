@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://bf6tcu40uv266"]
+[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://bf6tcu40uv266"]
 
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_nf06k"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_0ilmx"]
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_krf84"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_doxbg"]
@@ -29,6 +30,7 @@ accuracy = 1.0
 power = 30
 scaling_factor = Vector4i(100, 100, 200, -1)
 name = "Magenta Throw"
+animation = ExtResource("1_nf06k")
 _element = "magenta"
 priority = 0
 attack_range = 1

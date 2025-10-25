@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=13 format=3 uid="uid://ctbnp06ti551l"]
+[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://ctbnp06ti551l"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_7xxnd"]
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_m7s7x"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_jxaip"]
 [ext_resource type="Script" uid="uid://bd0lsb4fs3a73" path="res://src/battle_system/battle_actions/conditions/TransmutationCondition.gd" id="3_bxo2j"]
 [ext_resource type="Script" uid="uid://cxsoib03ectl0" path="res://src/battle_system/battle_actions/effect_slots/ConditionalEffect.gd" id="4_ehodv"]
@@ -58,6 +59,7 @@ accuracy = 1.0
 power = 30
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Alchemy Beam"
+animation = ExtResource("1_m7s7x")
 _element = "orange"
 priority = 0
 attack_range = 1

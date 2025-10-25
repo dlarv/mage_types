@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgrfhd0s3my0y"]
 
-[ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/components/animator/battle_sprite.tscn" id="1_yahwx"]
+[ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/animator/battle_sprite.tscn" id="1_yahwx"]
 [ext_resource type="PackedScene" uid="uid://dru1guxf1wg7w" path="res://assets/3d/models/characters/player_v2.blend" id="2_auqao"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahwx"]
