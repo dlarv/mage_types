@@ -44,7 +44,7 @@ func get_dmg_potential(data: ActorTurnData, target: BattleActor, isFriendly: boo
 		_:
 			attack = user.get_stat(override_stat)
 			defense = target.get_stat(override_stat)
-	return calculate_damage(attack, defense, 1.0, null)
+	return calculate_damage(attack, defense, 1.0, data)
 
 
 func _set_name(_val: String) -> void:

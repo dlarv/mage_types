@@ -88,9 +88,6 @@ func _add_monster(actor: BattleActor) -> void:
 
 	active_actor = actor.duplicate(true)
 
-	for attack: Attack in actor.attacks:
-		_add_attack(attack)
-
 	%Name.text = actor.name
 	%Level.value = actor.level
 
