@@ -45,6 +45,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Show list of al messages sent during battle
 	- [ ] Have unique display formatting attacks and transmutation
 	- [ ] Only show original message box when player is selecting attack or character
+	- [ ] Refactor InfoDisplay to remove blocking message display
 - [ ] Controlling animation
 	- [ ] Variable delays between each animation state
 	- [ ] Setting to control speed and turn off animatinos

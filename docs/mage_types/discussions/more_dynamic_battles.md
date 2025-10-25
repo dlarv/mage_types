@@ -2,12 +2,14 @@
 The battles are a major part of the gameplay loop. Right now, they feel very static, which doesn't mesh well with the chaotic energy I'm looking for. I hope to make the `MessageBox` component optional, with everything communicated thru animations and in-battle graphics.
 
 This new system will have to communicate several things to the player:
-- Damage numbers: How much dmg did the attack deal?
+- Attack name
+- User/target
 - Effectiveness: e.g. {actor} was wreathed in bright Blue light
 - Transmutations: up to 6 transmutations
 - Status effects: poison, phobia, flinched
-- Melee/ranged
 - Whether attack dealt a status condition/extra effects
+- Damage numbers: How much dmg did the attack deal?
+- ~~Melee/ranged~~
 # Animation States
 Battle models can have the following animation states
 - channeling: This will be paired with a particle effect to convey *effectiveness*.
