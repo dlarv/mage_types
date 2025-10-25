@@ -13,7 +13,7 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 	return data
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
+func get_setup_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> float:
 	return float(target.has_status_effect(effect))
 
 

@@ -52,9 +52,11 @@ func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 	_AttackEffect.current_buffer.damage = actualDmg
 	_AttackEffect.current_buffer.total_damage += actualDmg
 	data.prev_dmg = actualDmg
-	data.total_dmg += actualDmg
+
 	if data.user == target:
 		data.recoil_dmg += actualDmg
+	else:
+		data.total_dmg += actualDmg
 
 	if actualDmg == dmg:
 		Logger.append_battle_log("Dealt %d damage to %s." % [dmg, target.name])

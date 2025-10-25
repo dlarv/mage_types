@@ -27,12 +27,12 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 	return data
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
+func get_setup_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> float:
 	var output := 0.0
 
 	var count := randi_range(min_count, max_count)
 	for i in range(count):
 		var phobia := PhobiaEffect.new()
-		output += phobia.get_setup_potential(user, target, isFriendly, 0)
+		output += phobia.get_setup_potential(data, target, isFriendly)
 
 	return output

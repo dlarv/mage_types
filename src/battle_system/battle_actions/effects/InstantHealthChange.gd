@@ -30,15 +30,15 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 
 func get_dmg_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> int:
 	if isFriendly: return 0
-	return -int(target.hp * get_strength()) 
+	return -int(target.hp * get_strength(data.get_vars())) 
 
 # override
 ## Return what % of hp will be healed.
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
+func get_setup_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> float:
 	var mod := 1 if isFriendly else -1
 	if allow_overflow: 
 		return mod * get_strength()
-	return mod * float(min(target.hp * get_strength(), target.hp - target.current_hp)) / float(target.hp)
+	return mod * float(min(target.hp * get_strength(data.get_vars()), target.hp - target.current_hp)) / float(target.hp)
 
 func _set_name(val: String) -> void:
 	name = "InstantHealthChange"

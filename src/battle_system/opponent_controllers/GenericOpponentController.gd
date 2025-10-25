@@ -260,8 +260,9 @@ func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _
 		
 		var data := ActorTurnData.new(user, action, [target], 1)
 		dmg += int(slot.attack_effect.get_dmg_potential(data, target, isFriendly) * slot.chance)
+		data.total_dmg = dmg
 
-		var pot: float = slot.attack_effect.get_setup_potential(user, target, isFriendly, dmg)
+		var pot: float = slot.attack_effect.get_setup_potential(data, target, isFriendly)
 		var weight := _weighted_setup_potential(user, target, slot, isFriendly)
 		var val: float =  pot * weight * effect.chance
 		Logger.append_battle_ai_log("AttackEffect(%s) SetupPotential(%s) = Base(%.2f) * Weight(%.2f) * Chance(%.2f)" 

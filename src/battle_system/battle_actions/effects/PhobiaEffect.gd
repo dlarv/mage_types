@@ -41,7 +41,7 @@ func _set_name(val: String) -> void:
 	resource_name = name
 
 # override
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
+func get_setup_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> float:
 	return 1.0
 
 # override

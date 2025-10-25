@@ -38,7 +38,7 @@ func get_strength(vars: Array[Variant]=[]) -> float:
 	return super.get_strength(vars) * MODIFIER
 
 
-func get_setup_potential(user: BattleActor, target: BattleActor, isFriendly: bool, dmg: float) -> float:
+func get_setup_potential(data: ActorTurnData, target: BattleActor, isFriendly: bool) -> float:
 	# Output should scale inversely with current stat buffs.
 	if isFriendly:
 		return _get_setup_potential_ally(target)
