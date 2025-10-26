@@ -105,6 +105,7 @@ func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
 		%OpponentVBox.add_child(display)
 		$OpponentParent.add_child(sprite)
 		sprite.position.x += $OpponentParent.get_child_count() * 1.5
+		sprite.rotation_degrees.y = 180
 
 	var disp := TeamDisplayActor.new(sprite, display, isAlly)
 	actors[actor] = disp
