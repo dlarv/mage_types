@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi7ohp1wme55a"]
+
+[ext_resource type="Script" uid="uid://dwk4mjcfsvo6x" path="res://src/battle_system/gui/message_feed/components/TransmutationBubble.gd" id="1_xi2lo"]
+[ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_fqmre"]
+
+[node name="TransmutationBubble" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+script = ExtResource("1_xi2lo")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ElementIcon" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_fqmre")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="ElementIcon2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_fqmre")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "=>"
+
+[node name="ElementIcon3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_fqmre")]
+unique_name_in_owner = true
+layout_mode = 2

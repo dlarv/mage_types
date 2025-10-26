@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://qvmj5omyiv41"]
+
+[ext_resource type="Script" uid="uid://bfbsnluldaq58" path="res://src/battle_system/gui/message_feed/components/_Bubble.gd" id="1_47qqf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pi303"]
+font_size = 32
+
+[node name="TurnHeaderBubble" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+script = ExtResource("1_47qqf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_pi303")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -66,6 +66,7 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 		return data
 
 	var affinity := calculate_affinity(user)
+	data.effectiveness = affinity
 	Logger.append_battle_log("Affinity(%.2f)" % affinity)
 	
 	var delayedEffects: Array[_BaseEffectSlot] = []

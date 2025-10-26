@@ -172,10 +172,3 @@ func animate_action(data: ActorTurnData, missed: bool) -> void:
 	$BattleAnimator.animate(data, missed)
 
 
-## TO BE DEPRECATED.
-func get_actor_display_position(actor: BattleActor) -> Vector2:
-	if actor == null:
-		return Vector2(team_display.global_position.x, team_display.global_position.y)
-	
-	var sprite := team_display.get_sprite(actor)
-	return sprite.get_target_position()

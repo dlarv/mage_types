@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://1q27rku2p2g2"]
+[gd_scene load_steps=9 format=3 uid="uid://1q27rku2p2g2"]
 
 [ext_resource type="Script" uid="uid://hggtsq73slh7" path="res://src/battle_system/gui/BattleGUI.gd" id="1_ik08k"]
 [ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
 [ext_resource type="PackedScene" uid="uid://chxhvxvxw2ffu" path="res://src/battle_system/gui/player_controls.tscn" id="2_s8f4v"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="4_k2fdd"]
+[ext_resource type="PackedScene" uid="uid://dfi0hsn01hn8c" path="res://src/battle_system/gui/message_feed/message_feed.tscn" id="4_po4wd"]
 [ext_resource type="PackedScene" uid="uid://col1jalr638u0" path="res://src/battle_system/gui/animator/battle_animator.tscn" id="5_s7ygr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5iq7"]
@@ -95,6 +96,16 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 light_energy = 0.5
 
 [node name="BattleAnimator" parent="." instance=ExtResource("5_s7ygr")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="MessageFeed" parent="CanvasLayer2" instance=ExtResource("4_po4wd")]
+unique_name_in_owner = true
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -133.0
+offset_bottom = 42.0
+grow_horizontal = 0
 
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]

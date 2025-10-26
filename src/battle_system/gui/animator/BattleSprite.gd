@@ -141,7 +141,6 @@ func get_animation_duration(name: String) -> float:
 	return _animation_player.get_animation(name).length
 
 
-
 func show_elemental_particles(el: ElementalType, duration: float, strength:=DEFAULT_PARTICLE_AMOUNT) -> void:
 	$GPUParticles3D.amount = strength
 	$GPUParticles3D.emitting = true

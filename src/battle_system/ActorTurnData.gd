@@ -12,6 +12,7 @@ var priority: int
 var action: _BattleAction 
 var targets: Array[BattleActor] = []
 var team_index: int
+var effectiveness: float
 var defeated_actors: Array[BattleActor]
 var failed_effects: Array[EffectSlot]
 var blocking_actors: Array[BattleActor]

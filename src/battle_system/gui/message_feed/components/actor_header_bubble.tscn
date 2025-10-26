@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://babk6587q6ey0"]
+
+[ext_resource type="Script" uid="uid://bfbsnluldaq58" path="res://src/battle_system/gui/message_feed/components/_Bubble.gd" id="1_f2jbr"]
+
+[node name="ActorHeaderBubble" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+script = ExtResource("1_f2jbr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "GUY's Turn"
+horizontal_alignment = 1
+vertical_alignment = 1

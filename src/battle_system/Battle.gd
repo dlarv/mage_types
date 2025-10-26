@@ -7,9 +7,14 @@ enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES, TEAM_0, TEAM_1, ATTAC
 
 const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
+const MessageFeed := preload("res://src/battle_system/gui/message_feed/MessageFeed.gd")
 
 @export var ai: OpponentController 
 @export var _dialog_box: DialogueBox
+var message_feed: MessageFeed:
+	get:
+		if not gui: return null
+		return gui.get_node("%MessageFeed")
 var gui: Node3D
 
 var enemies: Array[BattleActor] = []
@@ -57,6 +62,7 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	add_child(gui)
 	gui.actions_selected.connect(_on_player_actions_selected)
 	gui.setup(allies, allyItems, enemies)
+
 	_prep_next_turn()
 	await _dialog(false)
 
@@ -92,6 +98,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 
 	_turn_counter += 1
 	gui.turn_counter = _turn_counter
+	message_feed.append_turn_header(_turn_counter)
 
 	Logger.append_battle_log("\n********************************Turn %d********************************" 
 			% _turn_counter)
@@ -135,13 +142,14 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			continue
 
 		Logger.append_battle_log("\nActors turn: %s" % turnData.user.name)
+		message_feed.append_actor_header(turnData.user)
 		
 		# Apply action effects.
-		# var res: Dictionary = turnData.action.apply_effects(turnData.actor, turnData.targets)
 		var res := turnData.execute()
 		var msg: Array[String] = []#res.msg
 		var missed: bool = res.missed
 
+		message_feed.append_action_message(turnData)
 		gui.animate_action(turnData, missed)
 
 		# Display message and await input.
@@ -226,6 +234,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 	else:
 		msg.append("The target %s's %s reacted with the attack's %s type to make %s." 
 				% [ target.name, e1Name, e2Name, newType.get_bb_code_name()])
+	message_feed.append_transmutation_message(target, e1, newType, e2) 
 
 	var buff := ElementManager.get_side_effect(e1, e2)
 
@@ -336,7 +345,3 @@ func _build_msg(data: ActorTurnData) -> String:
 	return output
 
 
-func _play_animation(data: ActorTurnData) -> void:
-	var userPosition: Vector2 = gui.get_actor_display_position(data.user)
-	var targetPosition: Vector2 = gui.get_actor_display_position(data.targets[0])
-	data.action.play_animation(userPosition, targetPosition, self)

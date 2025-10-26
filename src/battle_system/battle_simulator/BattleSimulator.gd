@@ -35,6 +35,10 @@ func _ready() -> void:
 		%MDSpinBox.value = active_actor.stat_manager._base_melee_defense * level
 		%RDSpinBox.value = active_actor.stat_manager._base_ranged_defense * level
 	)
+	_add_monster(UIManager.beastiary_menu.monsters[0][0])
+	_on_add_player_button_pressed()
+	_add_monster(UIManager.beastiary_menu.monsters[1][0])
+	_on_add_opponent_button_pressed()
 
 
 func _traverse_attacks(root: String) -> void:

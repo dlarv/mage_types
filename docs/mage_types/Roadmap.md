@@ -41,9 +41,9 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [x] Getting hit
 - [ ] Implement flinch condition properly
 - [ ] Battle messages
-	- [ ] Give player ability to toggle battle message display
-	- [ ] Show list of al messages sent during battle
-	- [ ] Have unique display formatting attacks and transmutation
+	- [x] Give player ability to toggle battle message display
+	- [x] Show list of all messages sent during battle
+	- [x] Have unique display formatting attacks and transmutation and misc effects
 	- [ ] Only show original message box when player is selecting attack or character
 	- [ ] Refactor InfoDisplay to remove blocking message display
 - [ ] Controlling animation
