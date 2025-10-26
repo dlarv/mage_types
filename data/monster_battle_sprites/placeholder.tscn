@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfyi5k10xx1k4"]
+
+[ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/animator/battle_sprite.tscn" id="1_ov2ft"]
+[ext_resource type="PackedScene" uid="uid://cc5fre3gh28ul" path="res://assets/3d/models/characters/placeholder_battle_sprite.blend" id="2_cvgtf"]
+
+[node name="BattleSprite" node_paths=PackedStringArray("mesh") instance=ExtResource("1_ov2ft")]
+mesh = NodePath("placeholder_battle_sprite/Cube")
+
+[node name="placeholder_battle_sprite" parent="." index="5" instance=ExtResource("2_cvgtf")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[editable path="PinManager"]
+[editable path="placeholder_battle_sprite"]

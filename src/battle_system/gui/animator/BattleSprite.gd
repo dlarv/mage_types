@@ -7,15 +7,6 @@ signal status_effect_icon_pressed(effect: StatusEffect)
 const DEFAULT_PARTICLE_AMOUNT := 20.0
 
 @export var transmutation_hint: Control
-@export var use_gradient := true:
-	set(val):
-		use_gradient = val
-		if val:
-			$Primary.show()
-			$Secondary.show()
-		else:
-			$Primary.hide()
-			$Secondary.hide()
 @export var mesh: MeshInstance3D
 
 var tint: Color = Color.WHITE
@@ -38,20 +29,16 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 	_indicator_mat = StandardMaterial3D.new()
 	_particle_mat = StandardMaterial3D.new()
 
-	if use_gradient:
-		$Primary.set_surface_override_material(0, _mat1)
-		$Secondary.set_surface_override_material(0, _mat2)
-	else:
-		_mat1 = mesh.get_active_material(0)
-		_mat2 = mesh.get_active_material(1)
+	_mat1 = mesh.get_active_material(0)
+	_mat2 = mesh.get_active_material(1)
 
-		var animationPlayerParent: Node = mesh
-		while animationPlayerParent.get_parent() != self:
-			animationPlayerParent = animationPlayerParent.get_parent()
+	var animationPlayerParent: Node = mesh
+	while animationPlayerParent.get_parent() != self:
+		animationPlayerParent = animationPlayerParent.get_parent()
 
-		_animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
-		if _animation_player and _animation_player.has_animation("battle_stance"):
-			_animation_player.play("battle_stance")
+	_animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
+	if _animation_player and _animation_player.has_animation("battle_stance"):
+		_animation_player.play("battle_stance")
 
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 
