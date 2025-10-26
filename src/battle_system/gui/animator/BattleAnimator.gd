@@ -27,6 +27,7 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 	var userPosition: Vector2 = userSprite.get_target_position()
 	var targetPosition: Vector2 = _sprites[turnData.targets[0]].get_target_position()
 	var attackDuration := userSprite.get_animation_duration("attack")
+
 	userSprite.play_animation("attack")
 
 	if missed:
@@ -34,9 +35,7 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 		return
 
 	# Play attack animation in the latter half of the user's animation
-	await get_tree().create_timer(attackDuration / 2).timeout
 	turnData.action.play_animation(userPosition, targetPosition, self)
-	await get_tree().create_timer(max(attackDuration / 2, 1.5)).timeout
 
 	# Play animation for each target getting hit
 	for actor in turnData.targets:
