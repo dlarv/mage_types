@@ -40,22 +40,34 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [x] Attack
 		- [x] Getting hit
 - [ ] Implement flinch condition properly
+	- [ ] Prevent player from selecting actions for flinched characters
+	- [ ] Create flinch pin
 - [ ] Battle messages
 	- [x] Give player ability to toggle battle message display
 	- [x] Show list of all messages sent during battle
 	- [x] Have unique display formatting attacks and transmutation and misc effects
-	- [ ] Only show original message box when player is selecting attack or character
-	- [ ] Refactor InfoDisplay to remove blocking message display
+	- [ ] Only show InfoDisplay when player is selecting attack or character
+		- [ ] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
+	- [ ] Refactor InfoDisplay to remove blocking message logic
+	- [x] Implement status effect bubbles
+	- [ ] Implement equipment bubble
+	- [x] Implement defeat bubble 
 - [ ] Controlling animation
-	- [ ] Variable delays between each animation state
-	- [ ] Setting to control speed and turn off animatinos
+	- [ ] Setting to control speed and turn off animations
 	- [ ] Use buttons to skip animation
+	- [ ] ~~Variable delays between each animation state~~
 - [ ] Communicate important information using animations and graphics
+	- [ ] Attack name
 	- [ ] Damage numbers: How much dmg did the attack deal?
+	- [ ] Transmutations
+		- [ ] Interesting effect to show transmutation happening
+		- [ ] Icon on combatant name plate showing their current composition
+	- [ ] Status effects activating: poison, phobia, flinched
+	- [ ] Equipment activations
+	- [x] User and targets
+	- [x] Whether attack dealt a status condition/extra effects
 	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
-	- [ ] Transmutations: up to 6 transmutations
-	- [ ] Status effects: poison, phobia, flinched
-	- [ ] Whether attack dealt a status condition/extra effects
+		- [ ] Bugfix: Since intention and affinity is communicated using the same particle emitter, if the player skips thru the animations, the call to turn off the particle effect will be called late, shutting off the intention effect instead
 - [ ] Attack Animation refactor
 	- [ ] Renamed class and references
 	- [ ] Animation should be selected via enum

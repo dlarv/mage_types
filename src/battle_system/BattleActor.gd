@@ -309,7 +309,7 @@ func list_status_effects() -> Array[StatusEffect]:
 	return statuses.list()
 
 
-func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
+func resolve_end_of_turn(allies:=[], opponents:=[], data: ActorTurnData=null, useOverride:=true)-> void:
 	if useOverride and _func_overrides.has(resolve_end_of_turn.get_method()):
 		_func_overrides.get(resolve_end_of_turn.get_method()).call(allies, opponents)
 		return 
@@ -328,10 +328,11 @@ func resolve_end_of_turn(allies:=[], opponents:=[], useOverride:=true)-> void:
 	apply_damage(int(hp * mod), false)
 
 	var effects := statuses.calculate_expirations()
-	if len(effects) > 0:
-		_msgs.append("Status effects wore off! (%s)" % effects.map(func(x: StatusEffect) -> String: 
-			return x.name)
-		)
+	data.removed_status_effects = []
+	for effect in effects:
+		data.removed_status_effects.append([self, effect])
+		_msgs.append("Status effects wore off! (%s)" % StatusEffectManager.StatusEffects.keys()[effect.id])
+
 	status_effects_removed.emit(effects)
 
 
@@ -465,5 +466,3 @@ func deserialize(data: Dictionary) -> void:
 		if not alignment_manager:
 			alignment_manager = AlignmentManager.new()
 		alignment_manager.deserialize(data["alignment"])
-
-

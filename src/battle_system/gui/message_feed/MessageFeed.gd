@@ -6,6 +6,9 @@ const ActionBubble := preload("components/action_bubble.tscn")
 const ActorHeaderBubble := preload("components/actor_header_bubble.tscn")
 const TurnHeaderBubble := preload("components/turn_header_bubble.tscn")
 const TransmutationBubble := preload("components/transmutation_bubble.tscn")
+const DefeatBubble := preload("components/defeat_bubble.tscn")
+const NewStatusEffectBubble := preload("components/new_status_effect_bubble.tscn")
+const OldStatusEffectBubble := preload("components/old_status_effect_bubble.tscn")
 
 var bubble_container: Control
 var scroll_container: ScrollContainer
@@ -46,7 +49,24 @@ func append_action_message(data: ActorTurnData) -> void:
 	affinityBubble.setup(data)
 	bubble_container.add_bubble(affinityBubble)
 
+	for actorEffectPair: Array in data.new_status_effects:
+		var statusBubble := NewStatusEffectBubble.instantiate()
+		statusBubble.setup(actorEffectPair)
+		bubble_container.add_bubble(statusBubble)
+
+	for actorEffectPair: Array in data.removed_status_effects:
+		var statusBubble := OldStatusEffectBubble.instantiate()
+		statusBubble.setup(actorEffectPair)
+		bubble_container.add_bubble(statusBubble)
+
 	scroll_container.set_deferred("scroll_vertical", scroll_bar.max_value)
+
+
+func append_defeated_message(data: ActorTurnData) -> void:
+	for actor in data.defeated_actors:
+		var defeatBubble := DefeatBubble.instantiate()
+		defeatBubble.setup(actor.name)
+		bubble_container.add_bubble(defeatBubble)
 
 
 func append_transmutation_message(actor: BattleActor, e1: ElementalType, e2: ElementalType, att: ElementalType) -> void:
@@ -55,6 +75,12 @@ func append_transmutation_message(actor: BattleActor, e1: ElementalType, e2: Ele
 	bubble_container.add_bubble(transBubble)
 
 	scroll_container.set_deferred("scroll_vertical", scroll_bar.max_value)
+
+
+func append_removed_status_effect_message(actor: BattleActor, effect: StatusEffect) -> void:
+		var statusBubble := OldStatusEffectBubble.instantiate()
+		statusBubble.setup([actor, effect])
+		bubble_container.add_bubble(statusBubble)
 
 
 func _get_panel(text: String) -> Control:

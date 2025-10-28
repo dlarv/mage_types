@@ -10,6 +10,7 @@ This new system will have to communicate several things to the player:
 - Whether attack dealt a status condition/extra effects
 - Damage numbers: How much dmg did the attack deal?
 - ~~Melee/ranged~~
+	- This might be important to communicate, but idk yet
 # Animation States
 Battle models can have the following animation states
 - channeling: This will be paired with a particle effect to convey *effectiveness*.
@@ -54,3 +55,17 @@ Any model used as a `BattleSprite` must have two material slots!
 
 When `TeamDisplay` instantiates `BattleSprite`, it will need to notify `BattleAnimator`.
 	`TeamDisplay` will define a signal which `BattleAnimator` will listen to.
+# Message Feed
+For accessibility and convienence, I still want to have a text/graphical recap of what happened during the battle. This will take the form of a message feed which can be toggled. Everythign that happens has a bubble which is appended to this feed.
+
+Bubble Types:
+- Turn Header:  Displays turn counter
+- Actor Header: Shows which combatant's turn the succeeding bubbles took place in
+- Action Bubble: Shows which attack was used against who
+- Transmutation: Shows all transmutations that happened in this turn
+- Affinity: Shows which scaling factor was used
+- Status1: Shows any status effects inflicted by the attack
+- Status2: Shows any preexisting status effects that activated on this turn
+- Status3: Shows any status effects that expired on this turn
+- Defeat: Shows which(if any) combatants were defeated on this turn
+- Equipment: Shows any(if any) equipment effects that activated on this turn

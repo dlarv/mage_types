@@ -5,6 +5,7 @@ class_name ActorTurnData
 ## These are basically like an instance of a _BattleAction.
 # public static ActorAction[] Flee = new ActorAction[0]
 
+const Effects := BattleActor.StatusEffectManager.StatusEffects
 const EXPRESSION_VARS: PackedStringArray = ["total_dmg", "prev_dmg", "recoil_dmg", "missed", "phobia_dmg"]
 
 var user: BattleActor 
@@ -22,6 +23,12 @@ var recoil_dmg: int
 var phobia_dmg: int
 var missed: bool
 var element: ElementalType
+var new_status_effects: Array[Variant]
+# This is first set when attack is applying effects. 
+# Effects added during this phase are considered "healed"
+# After this, array is set w/ new values. 
+# These effects are considered "expired".
+var removed_status_effects: Array[Variant]
 
 
 func _init(actor: BattleActor, action: _BattleAction, targets: Array[BattleActor], teamIndex: int) -> void:
@@ -40,12 +47,18 @@ func _init(actor: BattleActor, action: _BattleAction, targets: Array[BattleActor
 	recoil_dmg = 0
 	phobia_dmg = 0
 	element = ElementManager.Blank
+	new_status_effects = []
+	removed_status_effects = []
 
 
 func execute() -> ActorTurnData:
 	action.apply_effects(self)
 	user.action_used.emit(action)
 	return self
+
+
+func resolve_end_of_turn(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
+	user.resolve_end_of_turn(allies, enemies, self)
 
 
 static func flee() -> ActorTurnData:

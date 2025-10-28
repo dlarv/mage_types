@@ -10,6 +10,7 @@ class_name StatusHeal
 # override
 func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
 	target.remove_status_effect(effect)
+	data.removed_status_effects.append([target, effect])
 	return data
 
 

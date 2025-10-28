@@ -28,7 +28,8 @@ func set_actor(actor: BattleActor) -> void:
 	%RangedAttack.text = str(actor.get_stat(Stats.RANGED_ATTACK))
 	%RangedDefense.text = str(actor.get_stat(Stats.RANGED_DEFENSE))
 	%Speed.text = str(actor.get_stat(Stats.SPEED))
-	%XpSlider.value = int(actor.stat_manager.total_xp / actor.stat_manager.next_level_xp * 100)
+	if actor.stat_manager is PlayerStatManager:
+		%XpSlider.value = int(actor.stat_manager.total_xp / actor.stat_manager.next_level_xp * 100)
 	%Level.text = "Lv%d" % actor.level
 
 

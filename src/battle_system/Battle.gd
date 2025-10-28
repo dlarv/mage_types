@@ -150,14 +150,15 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		var missed: bool = res.missed
 
 		message_feed.append_action_message(turnData)
-		gui.animate_action(turnData, missed)
+		await gui.animate_action(turnData, missed)
 
 		# Display message and await input.
 		await gui.display_message(_build_msg(turnData))
 
+		message_feed.append_defeated_message(turnData)
 		for actor in turnData.defeated_actors:
-			msg.append("%s was defeated...." % actor.name)
-		await gui.display_message(msg)
+			Logger.append_battle_log("%s was defeated...." % actor.name)
+		# await gui.display_message(msg)
 		
 		# Check if battle should end.
 		if await _check_if_battle_ended(): return
@@ -188,7 +189,12 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		# Resolve user's status effects.
 		var a := allies if turnData.team_index == 0 else enemies
 		var o := enemies if turnData.team_index == 0 else allies
-		turnData.user.resolve_end_of_turn(a, o)
+		turnData.resolve_end_of_turn(a, o)
+
+		# Add expired status conditions
+		for actorEffectPair: Array in turnData.removed_status_effects:
+			message_feed.append_removed_status_effect_message(actorEffectPair[0], actorEffectPair[1])
+
 		turnData.user.turn_ended.emit()
 		msg = turnData.user.get_and_flush_msgs()
 		await gui.display_message(msg)

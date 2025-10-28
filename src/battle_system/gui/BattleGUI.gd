@@ -169,6 +169,6 @@ func _on_target_selected(actor: BattleActor) -> void:
 
 
 func animate_action(data: ActorTurnData, missed: bool) -> void:
-	$BattleAnimator.animate(data, missed)
+	await $BattleAnimator.animate(data, missed)
 
 

@@ -165,5 +165,6 @@ skeleton = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_y7i3l")
 }
+speed_scale = 2.0
 
 [editable path="PinManager"]
