@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://1q27rku2p2g2"]
+[gd_scene load_steps=10 format=3 uid="uid://1q27rku2p2g2"]
 
 [ext_resource type="Script" uid="uid://hggtsq73slh7" path="res://src/battle_system/gui/BattleGUI.gd" id="1_ik08k"]
 [ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="4_k2fdd"]
 [ext_resource type="PackedScene" uid="uid://dfi0hsn01hn8c" path="res://src/battle_system/gui/message_feed/message_feed.tscn" id="4_po4wd"]
 [ext_resource type="PackedScene" uid="uid://col1jalr638u0" path="res://src/battle_system/gui/animator/battle_animator.tscn" id="5_s7ygr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_po4wd"]
+font_size = 18
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5iq7"]
 albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
@@ -76,8 +79,8 @@ tooltip_text = "The order in which the combatants will move. This does not accou
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/TurnOrder"]
 layout_mode = 2
-text = "Turn Order
-"
+text = "Speed Ranking"
+label_settings = SubResource("LabelSettings_po4wd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/TurnOrder"]
 layout_mode = 2
