@@ -32,21 +32,13 @@ script = ExtResource("1_vqfle")
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.6, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_1gyes")
 
-[node name="BlockingHead" parent="status_pin/Cube" index="0"]
-visible = false
-
-[node name="HealingHead" parent="status_pin/Cube" index="1"]
-visible = false
-
-[node name="PoisonHead" parent="status_pin/Cube" index="2"]
-visible = false
-
-[node name="StasisHead" parent="status_pin/Cube" index="3"]
+[node name="PhobiaHead" parent="status_pin/Cube" index="0"]
 visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("3_c0yfk")
 tooltip_settings_override = SubResource("Resource_65bbx")
+tooltip_strings = Array[String](["[color=808080ff]Blank[/color]-Phobic"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0.65496, 0)

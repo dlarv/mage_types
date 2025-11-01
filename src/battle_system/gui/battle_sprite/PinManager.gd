@@ -17,6 +17,7 @@ func _ready() -> void:
 		"Healing": $HealingPin,
 		"Stasis": $StasisPin,
 		"Blocking": $BlockingPin,
+		"Flinch": $FlinchPin,
 		"BluePhobic": $PhobiaCrown/BluePhobiaPin,
 		"PurplePhobic": $PhobiaCrown/PurplePhobiaPin,
 		"MagentaPhobic": $PhobiaCrown/MagentaPhobiaPin,

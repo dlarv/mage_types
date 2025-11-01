@@ -12,7 +12,10 @@ const Effect := StatusEffectManager.StatusEffects
 @export var status_effect: Effect = Effect.PHOBIC:
 	set(val):
 		status_effect = val
-		_effect_name = str(Effect.keys()[status_effect]).capitalize()
+		if val == Effect.PHOBIC:
+			_effect_name = "%s-Phobic" % element.name
+		else:
+			_effect_name = str(Effect.keys()[status_effect]).capitalize()
 
 		_show_head(val)
 
@@ -27,14 +30,15 @@ var element: ElementalType = ElementManager.Blank:
 		if value == null:
 			value = ElementManager.Blank
 		element = value 
-		_effect_name = "%s-Phobic" % element.name
 
-		if _phobic_mat != null:
-			_phobic_mat.albedo_color = element.main_color
+		if _mat != null:
+			_mat.albedo_color = element.main_color
+
+		_show_head(status_effect)
 
 var effect: StatusEffect
 
-var _phobic_mat: StandardMaterial3D
+var _mat: StandardMaterial3D
 var _effect_name: String:
 	set(val):
 		_effect_name = val
@@ -44,9 +48,10 @@ var _effect_name: String:
 
 
 func _enter_tree() -> void:
-	_phobic_mat = StandardMaterial3D.new()
-	_phobic_mat.albedo_color = element.main_color
-	$status_pin/Cube.set_surface_override_material(1, _phobic_mat)
+	_mat = StandardMaterial3D.new()
+	_mat.albedo_color = element.main_color
+	$status_pin/Cube.set_surface_override_material(1, _mat)
+	$status_pin/Cube/PhobiaHead.set_surface_override_material(0, _mat)
 
 
 	$Area3D.tooltip_strings = [""] as Array[String]
@@ -57,11 +62,11 @@ func _enter_tree() -> void:
 
 
 func _show_head(e: Effect) -> void:
-	for head in $status_pin/Cube.get_children():
-		if head.name == "%sHead" % _effect_name:
-			head.show()
-		else:
-			head.hide()
+	if e == Effect.PHOBIC: 
+		$status_pin/Cube/PhobiaHead.show()
+	else:
+		$status_pin/Cube/PhobiaHead.hide()
+
 
 
 func _on_input_event(camera:Node, event:InputEvent, event_position:Vector3, normal:Vector3, shape_idx:int) -> void:

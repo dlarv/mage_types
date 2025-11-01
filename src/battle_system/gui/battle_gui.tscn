@@ -107,13 +107,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="MessageFeed" parent="CanvasLayer2" instance=ExtResource("4_po4wd")]
 unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -300.0
-offset_top = -42.0
-grow_horizontal = 0
-grow_vertical = 0
+visible = false
+offset_left = -155.0
+offset_top = -31.0
+offset_right = 155.0
+offset_bottom = 31.0
 
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]
