@@ -11,7 +11,7 @@
 [sub_resource type="RichTextEffect" id="RichTextEffect_ygesq"]
 script = ExtResource("1_r25dg")
 
-[node name="InfoDisplay" type="RichTextLabel" node_paths=PackedStringArray("button", "tab_container")]
+[node name="InfoDisplay" type="RichTextLabel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,8 +21,6 @@ bbcode_enabled = true
 fit_content = true
 custom_effects = [SubResource("RichTextEffect_ygesq")]
 script = ExtResource("1_7hwcu")
-button = NodePath("")
-tab_container = NodePath("TabContainer")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 unique_name_in_owner = true
