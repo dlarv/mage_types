@@ -60,14 +60,16 @@ func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 
 	if actualDmg == dmg:
 		Logger.append_battle_log("Dealt %d damage to %s." % [dmg, target.name])
-	data.blocking_actors.append(target)
+		return
 
 	var msg := "Tried to deal %d damage to %s." % [dmg, target.name]
 	if actualDmg == 0:
 		msg += "But %s blocked the attack!" % target.name
+		data.add_activated_effect(target, ActorTurnData.Effects.BLOCK, dmg)
 	else:
 		msg += " But %s deflected some of the damage! Dealt %d damage to %s." \
 				% [target.name, actualDmg, target.name]
+		data.add_activated_effect(target, ActorTurnData.Effects.BLOCK, dmg - actualDmg)
 	
 	Logger.append_battle_log(msg)
 

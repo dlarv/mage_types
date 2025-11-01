@@ -49,21 +49,21 @@ func append_action_message(data: ActorTurnData) -> void:
 	affinityBubble.setup(data)
 	bubble_container.add_bubble(affinityBubble)
 
-	for actorEffectPair: Array in data.new_status_effects:
-		var statusBubble := NewStatusEffectBubble.instantiate()
-		statusBubble.setup(actorEffectPair)
-		bubble_container.add_bubble(statusBubble)
-
-	for actorEffectPair: Array in data.removed_status_effects:
-		var statusBubble := OldStatusEffectBubble.instantiate()
-		statusBubble.setup(actorEffectPair)
-		bubble_container.add_bubble(statusBubble)
+	# for actorEffectPair: Array in data.get_new_status_effects():
+	# 	var statusBubble := NewStatusEffectBubble.instantiate()
+	# 	statusBubble.setup(actorEffectPair)
+	# 	bubble_container.add_bubble(statusBubble)
+	#
+	# for actorEffectPair: Array in data.get_removed_status_effects():
+	# 	var statusBubble := OldStatusEffectBubble.instantiate()
+	# 	statusBubble.setup(actorEffectPair)
+	# 	bubble_container.add_bubble(statusBubble)
 
 	scroll_container.set_deferred("scroll_vertical", scroll_bar.max_value)
 
 
-func append_defeated_message(data: ActorTurnData) -> void:
-	for actor in data.defeated_actors:
+func append_defeated_message(actors: Array[BattleActor]) -> void:
+	for actor in actors:
 		var defeatBubble := DefeatBubble.instantiate()
 		defeatBubble.setup(actor.name)
 		bubble_container.add_bubble(defeatBubble)
@@ -77,7 +77,7 @@ func append_transmutation_message(actor: BattleActor, e1: ElementalType, e2: Ele
 	scroll_container.set_deferred("scroll_vertical", scroll_bar.max_value)
 
 
-func append_removed_status_effect_message(actor: BattleActor, effect: StatusEffect) -> void:
+func append_removed_status_effect_message(actor: BattleActor, effect: ActorTurnData.Effects) -> void:
 		var statusBubble := OldStatusEffectBubble.instantiate()
 		statusBubble.setup([actor, effect])
 		bubble_container.add_bubble(statusBubble)
@@ -89,5 +89,3 @@ func _get_panel(text: String) -> Control:
 	label.text = text
 	container.add_child(label)
 	return container
-
-

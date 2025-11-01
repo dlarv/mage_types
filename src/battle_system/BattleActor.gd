@@ -321,16 +321,17 @@ func resolve_end_of_turn(allies:=[], opponents:=[], data: ActorTurnData=null, us
 
 	if poison > 0:
 		mod += poison
+		data.activated_status_effects.append(StatusEffectManager.StatusEffects.POISON)
 		_msgs.append("%s was hurt by poison (%d dmg)!" % [ name, poison * hp])
 	if healing > 0:
 		mod -= healing
+		data.activated_status_effects.append(StatusEffectManager.StatusEffects.HEALING)
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
 	apply_damage(int(hp * mod), false)
 
 	var effects := statuses.calculate_expirations()
-	data.removed_status_effects = []
 	for effect in effects:
-		data.removed_status_effects.append([self, effect])
+		data.expired_status_effects.append(effect.id)
 		_msgs.append("Status effects wore off! (%s)" % StatusEffectManager.StatusEffects.keys()[effect.id])
 
 	status_effects_removed.emit(effects)

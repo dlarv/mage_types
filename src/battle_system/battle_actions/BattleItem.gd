@@ -34,7 +34,7 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 
 				if effect.attack_effect is Damage:
 					if target.is_defeated:
-						data.defeated_actors.append(target)
+						data.set_defeated(target)
 						continue
 			else:
 				data.failed_effects.append(effect)

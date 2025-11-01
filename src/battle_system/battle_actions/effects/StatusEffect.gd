@@ -33,7 +33,7 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 	dupe.duration = get_duration(data.get_vars())
 	if not target.add_status_effect(dupe): return data
 	if id != Effects.STAT_CHANGE:
-		data.new_status_effects.append([target, dupe])
+		data.add_inflicted_effect(target, dupe.id)
 	return super.apply_effect(data, target)
 
 

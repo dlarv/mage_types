@@ -158,8 +158,9 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		# Display message and await input.
 		Logger.append_battle_log(_build_msg(turnData))
 
-		message_feed.append_defeated_message(turnData)
-		for actor in turnData.defeated_actors:
+		var defeatedActors := turnData.get_defeated()
+		message_feed.append_defeated_message(defeatedActors)
+		for actor in defeatedActors:
 			Logger.append_battle_log("%s was defeated...." % actor.name)
 		
 		# Check if battle should end.
@@ -193,16 +194,12 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		var o := enemies if turnData.team_index == 0 else allies
 		turnData.resolve_end_of_turn(a, o)
 
-		# Add expired status conditions
-		for actorEffectPair: Array in turnData.removed_status_effects:
-			message_feed.append_removed_status_effect_message(actorEffectPair[0], actorEffectPair[1])
+		for effect: int in turnData.expired_status_effects:
+			message_feed.append_removed_status_effect_message(turnData.user, effect)
 
 		turnData.user.turn_ended.emit()
-		# TO BE DEPRECATED
-		msg = turnData.user.get_and_flush_msgs()
 
-		# Check if battle should end.
-		# e.g. if an actor was defeated by poison.
+		# Check if battle should end due to poison/etc.
 		if await _check_if_battle_ended(): return
 
 		# Pause before processing next turn.
@@ -352,5 +349,3 @@ func _build_msg(data: ActorTurnData) -> String:
 	if data.recoil_dmg > 0:
 		output += "\nThis attack had recoil (%d dmg)..." % data.recoil_dmg
 	return output
-
-

@@ -29,11 +29,12 @@ script = ExtResource("1_vqfle")
 [node name="status_pin" parent="." instance=ExtResource("1_7dhbf")]
 
 [node name="Cube" parent="status_pin" index="0"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.6, 0)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1.5, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_1gyes")
 
 [node name="PhobiaHead" parent="status_pin/Cube" index="0"]
 visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_1gyes")
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("3_c0yfk")

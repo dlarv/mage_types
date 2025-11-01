@@ -72,6 +72,7 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 	var delayedEffects: Array[_BaseEffectSlot] = []
 	for i in len(targets):
 		var target := targets[i]
+		data.add_actor(target)
 
 		for slot in effects:
 			if slot.effect_target == _BaseEffectSlot.EffectTarget.NOT_USER and target == user: 
@@ -85,7 +86,7 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 
 		
 	for effect: _BaseEffectSlot in delayedEffects:
-		data = effect.apply_effect(data, user, affinity)
+		effect.apply_effect(data, user, affinity)
 
 	return data
 

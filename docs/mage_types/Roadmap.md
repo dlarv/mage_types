@@ -45,6 +45,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Create flinch pin
 - [ ] Battle messages
 	- [ ] Implement equipment bubble
+	- [ ] Reimplement status effect bubbles to use new ActorTurnEffect
 	- [x] Only show InfoDisplay when player is selecting attack or character
 		- [x] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
 	- [x] Refactor InfoDisplay to remove blocking message logic
@@ -52,7 +53,6 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Give player ability to toggle battle message display
 	- [x] Show list of all messages sent during battle
 	- [x] Have unique display formatting attacks and transmutation and misc effects
-	- [x] Implement status effect bubbles
 	- [x] Implement defeat bubble 
 - [ ] Controlling animation
 	- [ ] Setting to control speed and turn off animations
