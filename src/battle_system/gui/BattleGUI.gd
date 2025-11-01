@@ -11,17 +11,12 @@ const TeamDisplay := preload("res://src/battle_system/gui/components/TeamDisplay
 @export var message_box: RichTextLabel 
 @export var team_display: TeamDisplay
 @export var player_controls: Control
-@export var turn_counter_display: Label
 @export var turn_order_display: VBoxContainer
 
 var allies: Array[BattleActor] = []
 var enemies: Array[BattleActor] = []
 var messages: Array[String] = []
-var turn_counter: int: 
-	set(value):
-		turn_counter = value
-		if turn_counter_display == null: return
-		turn_counter_display.text = "Turn %d" % value
+var turn_counter: int
 
 # ActorTurnData[]
 var _selected_actions: Array[ActorTurnData] = []
@@ -170,5 +165,3 @@ func _on_target_selected(actor: BattleActor) -> void:
 
 func animate_action(data: ActorTurnData, missed: bool) -> void:
 	await $BattleAnimator.animate(data, missed)
-
-

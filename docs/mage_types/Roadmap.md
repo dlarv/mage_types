@@ -87,10 +87,9 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Combatant badges
 	- [ ] Player control buttons
 		- [ ] Remove character button (player will click on battle sprite)
-	- [ ] Speed rankings
-		- [ ] Change name from "Turn Order" to "Speed Ranking"
+	- [x] Speed rankings
+		- [x] Change name from "Turn Order" to "Speed Ranking"
 		- [ ] Account for priority?
-	- [ ] 
 - [x] Make playtesting enemies easier
 	- [x] Show levels in UI
 	- [x] Set player's level in debug mode
