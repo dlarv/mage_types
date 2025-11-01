@@ -39,7 +39,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1gyes")
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("3_c0yfk")
 tooltip_settings_override = SubResource("Resource_65bbx")
-tooltip_strings = Array[String](["[color=808080ff]Blank[/color]-Phobic"])
+tooltip_strings = Array[String](["Block"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0.65496, 0)

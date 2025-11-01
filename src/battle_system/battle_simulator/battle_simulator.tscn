@@ -1,8 +1,11 @@
-[gd_scene load_steps=92 format=3 uid="uid://bpknr2o40rp3b"]
+[gd_scene load_steps=96 format=3 uid="uid://bpknr2o40rp3b"]
 
 [ext_resource type="Script" uid="uid://cqu78r45p61p" path="res://src/battle_system/battle_simulator/BattleSimulator.gd" id="1_mvkuh"]
+[ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="2_5bpb0"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_kfmod"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="3_6d8gb"]
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="3_vmh88"]
+[ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="4_5bpb0"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="4_qfwgk"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="5_x20xe"]
 [ext_resource type="Resource" uid="uid://cigphlcniwsjx" path="res://data/battle_system/battle_actions/attacks/basic/hit_p.tres" id="6_ajy8m"]
@@ -71,6 +74,13 @@
 [ext_resource type="Resource" uid="uid://b5rkqbayc06h6" path="res://data/battle_system/battle_actions/attacks/strikes/red_strike.tres" id="69_43ss1"]
 [ext_resource type="Resource" uid="uid://hkrnwogog5bu" path="res://data/battle_system/battle_actions/attacks/strikes/magenta_strike.tres" id="70_wy8p2"]
 [ext_resource type="Resource" uid="uid://d5le4hwdg070" path="res://data/battle_system/battle_actions/attacks/strikes/yellow_strike.tres" id="71_613vy"]
+
+[sub_resource type="Resource" id="Resource_6d8gb"]
+script = ExtResource("4_5bpb0")
+dialog_ids = Array[ExtResource("2_5bpb0")]([])
+reward_xp = 0.0
+reward_items = Array[ExtResource("3_6d8gb")]([])
+metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
 
 [sub_resource type="Resource" id="Resource_2y36f"]
 resource_local_to_scene = true
@@ -313,6 +323,7 @@ metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 [node name="BattleSimulator" type="Node"]
 process_mode = 3
 script = ExtResource("1_mvkuh")
+ai = SubResource("Resource_6d8gb")
 
 [node name="Setup" type="PanelContainer" parent="."]
 anchors_preset = 15

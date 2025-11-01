@@ -23,8 +23,8 @@ func get_dmg_potential(data: ActorTurnData, target: BattleActor, isFriendly: boo
 func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
 	var user := data.user
 	var dmg := calculate_damage(
-			user.get_attack_stat(current_buffer.action), 
-			target.get_defense_stat(current_buffer.action), 
+			user.get_attack_stat(data.action), 
+			target.get_defense_stat(data.action), 
 			effectiveness,
 			data
 		)
@@ -36,7 +36,7 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 ## The most basic damage calculation. Only accounts for attack, defense, and power.
 func calculate_damage(attack: float, defense: float, effectiveness: float, data: ActorTurnData) -> int:
 	var user := data.user
-	if not user.alignment.is_blank() and current_buffer.action.element == user.alignment:
+	if not user.alignment.is_blank() and data.action.element == user.alignment:
 		effectiveness += ALIGNMENT_BONUS
 
 	var power: float = get_strength(data.get_vars()) / 4.0# + (strength * float(user.level) / 10.0)
@@ -49,8 +49,7 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, data:
 
 func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 	var actualDmg := target.apply_damage(dmg)
-	_AttackEffect.current_buffer.damage = actualDmg
-	_AttackEffect.current_buffer.total_damage += actualDmg
+	data.total_dmg += actualDmg
 	data.prev_dmg = actualDmg
 
 	if data.user == target:

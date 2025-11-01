@@ -160,3 +160,5 @@ func animate_action(data: ActorTurnData, missed: bool) -> void:
 	await $BattleAnimator.animate(data, missed)
 
 
+func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void:
+	team_display.animate_status_activation(actor, effect)

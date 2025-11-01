@@ -3,6 +3,7 @@ extends Node
 
 const ListItem := preload("ListItem.gd")
 
+@export var ai: OpponentController
 @export_tool_button("Collect Attacks")
 var collect_attacks_button := func() -> void:
 	for child in %AttackSelector.get_children(): %AttackSelector.remove_child(child)
@@ -154,6 +155,6 @@ func _on_start_button_pressed() -> void:
 		print("Either Players and/or Opponents are empty")
 		return
 	$Setup.hide()
-	Battle.start(players, [], opponents, GenericOpponentController.new())
+	Battle.start(players, [], opponents, ai)
 	await Battle.battle_ended
 	$Setup.show()

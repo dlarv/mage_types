@@ -206,6 +206,11 @@ func show_enemy_intentions(val: bool) -> void:
 			actor.sprite.show_intentions(val)
 
 
+func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void:
+	var sprite := actors[actor].sprite
+	sprite.animate_status_activation(effect)
+
+
 class TeamDisplayActor:
 	signal hovered(disp: TeamDisplayActor)
 

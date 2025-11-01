@@ -9,6 +9,9 @@ const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
 const MessageFeed := preload("res://src/battle_system/gui/message_feed/MessageFeed.gd")
 
+@export var post_attack_delay := 0.5
+@export var post_transmutation_delay := 0.5
+@export var post_turn_delay := 1.0
 @export var ai: OpponentController 
 @export var _dialog_box: DialogueBox
 var message_feed: MessageFeed:
@@ -142,6 +145,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			# TODO: Play flinch animation
 			Logger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
 			turnData.user.turn_ended.emit()
+			gui.animate_status_activation(turnData.user, flinch)
 			continue
 
 		Logger.append_battle_log("\nActors turn: %s" % turnData.user.name)
@@ -153,10 +157,11 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		var missed: bool = res.missed
 
 		message_feed.append_action_message(turnData)
-		await gui.animate_action(turnData, missed)
-
 		# Display message and await input.
 		Logger.append_battle_log(_build_msg(turnData))
+
+		await gui.animate_action(turnData, missed)
+		await get_tree().create_timer(post_attack_delay).timeout
 
 		var defeatedActors := turnData.get_defeated()
 		message_feed.append_defeated_message(defeatedActors)
@@ -171,6 +176,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			for target in turnData.targets:
 				if target.is_defeated: continue
 				_calculate_transmutations(target, turnData.action)
+				await get_tree().create_timer(post_transmutation_delay).timeout
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -184,6 +190,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 				and turnData.action is Attack \
 				and (turnData.action).attack_range == Attack.AttackRange.MELEE:
 			_calculate_transmutations(turnData.user, turnData.action) 
+		await get_tree().create_timer(post_transmutation_delay).timeout
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -203,7 +210,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if await _check_if_battle_ended(): return
 
 		# Pause before processing next turn.
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(post_turn_delay).timeout
 
 	Logger.append_battle_log("\n\nPlayer is selecting actions...")
 	await _dialog(true)
@@ -214,7 +221,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 func _calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
 	if target.stasis:
 		Logger.append_battle_log("%s is in stasis! Transmutations were blocked!" % target.name)
-		# TODO: Create and play stasis animation
+		gui.animate_status_activation(target, target.stasis)
 		return
 
  	# Calculate secondary + attack 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbc7nm2vhoucl"]
+[gd_scene load_steps=22 format=3 uid="uid://bbc7nm2vhoucl"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_opqt0"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_2y36f"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_e8c8v"]
 [ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="6_udbu4"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_ostbw"]
+[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="7_udbu4"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_3ag47"]
 
 [sub_resource type="Resource" id="Resource_2y36f"]
@@ -34,7 +35,7 @@ reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
 _alignment = "blank"
-attacks = Array[ExtResource("3_ka2df")]([ExtResource("4_qp5wj"), ExtResource("5_rpetr"), ExtResource("6_udbu4")])
+attacks = Array[ExtResource("3_ka2df")]([ExtResource("4_qp5wj"), ExtResource("5_rpetr"), ExtResource("6_udbu4"), ExtResource("7_udbu4")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_x8pnq"]

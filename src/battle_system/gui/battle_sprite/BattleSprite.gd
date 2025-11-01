@@ -63,6 +63,7 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
 		_is_defeated = true)
 	actor.action_selected.connect(_on_action_selected)
+	actor.status_activated.connect(animate_status_activation)
 
 
 func set_element(id: int, element: ElementalType) -> void:
@@ -190,3 +191,6 @@ func _on_pin_selected(effect: StatusEffect) -> void:
 	status_effect_icon_pressed.emit(effect)
 
 
+func animate_status_activation(effect: StatusEffect
+) -> void:
+	$PinManager.activate_pin(effect)

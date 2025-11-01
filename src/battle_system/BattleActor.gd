@@ -14,6 +14,7 @@ signal element_changed(id: int, element: ElementalType)
 signal leveled_up()
 signal spell_learned(spell: _BattleAction, index: int)
 signal equipment_equipped(equipment: Equipment)
+signal status_activated(effect: StatusEffect)
 ## Called when opponents choose their action during battle.
 @warning_ignore("unused_signal")
 signal action_selected(action: _BattleAction)
@@ -144,6 +145,7 @@ func set_element(id: int, element: ElementalType) -> float:
 	if effect != null:
 		var dmg := hp * effect.get_strength()
 		Logger.append_battle_log("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
+		status_activated.emit(effect)
 
 		if dmg != 0:
 			return apply_damage(int(dmg), false)
@@ -256,6 +258,8 @@ func apply_damage(dmg: int, allowBlocking: bool=true) -> int:
 
 	if blocking:
 		dmg = int(float(dmg) * (1.0 - blocking.get_strength()))
+		status_activated.emit(blocking)
+
 		if statuses.remove_blocking():
 			status_effects_removed.emit([blocking] as Array[StatusEffect])
 
@@ -322,11 +326,13 @@ func resolve_end_of_turn(allies:=[], opponents:=[], data: ActorTurnData=null, us
 	if poison > 0:
 		mod += poison
 		data.activated_status_effects.append(StatusEffectManager.StatusEffects.POISON)
+		status_activated.emit(poison)
 		_msgs.append("%s was hurt by poison (%d dmg)!" % [ name, poison * hp])
 	if healing > 0:
 		mod -= healing
 		data.activated_status_effects.append(StatusEffectManager.StatusEffects.HEALING)
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
+		status_activated.emit(healing)
 	apply_damage(int(hp * mod), false)
 
 	var effects := statuses.calculate_expirations()

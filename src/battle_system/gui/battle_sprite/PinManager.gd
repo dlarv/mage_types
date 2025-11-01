@@ -10,6 +10,7 @@ var pins: Dictionary[String, Node]= {}
 var status_manager: StatusEffectManager
 
 var _active_pin: Node3D
+var _wiggling := false
 
 func _ready() -> void:
 	pins = {
@@ -49,7 +50,6 @@ func remove_pins(effects: Array[StatusEffect]) -> void:
 		var pin: Node = pins.get(key)
 		if pin != null:
 			pin.remove()
-			pin.hide()
 
 
 func _on_pin_selected(effect:StatusEffect) -> void:
@@ -64,3 +64,13 @@ func _on_pin_hovered(pin: Node3D) -> void:
 
 func _on_pin_unhovered(pin: Node3D) -> void:
 	_active_pin = null
+
+
+func activate_pin(effect: StatusEffect) -> void:
+	var key := effect.name
+	if effect.id == Effects.PHOBIC:
+		key = "%sPhobic" % effect.element
+	
+	var pin: Node = pins.get(key)
+	if pin:
+		pin.activate()
