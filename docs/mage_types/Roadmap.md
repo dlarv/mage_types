@@ -80,7 +80,6 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [ ] Player can click on a BattleActor model to display info about them
 		- [ ] Hovering should highlight which name card is theirs
 		- [ ] Hovering over status pin should tell you what it is and how many turns remaining it has
-- [ ] Fix bug where selecting status pins appends message instead of replacing
 - [ ] Experiment with layout
 	- [ ] Message feed
 		- [ ] Make translucent
@@ -92,6 +91,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Speed rankings
 		- [x] Change name from "Turn Order" to "Speed Ranking"
 		- [ ] Account for priority?
+- [x] Fix bug where selecting status pins appends message instead of replacing
 - [x] Make playtesting enemies easier
 	- [x] Show levels in UI
 	- [x] Set player's level in debug mode
