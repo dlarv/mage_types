@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://biqiuai6gr2tr"]
+[gd_scene load_steps=3 format=3 uid="uid://biqiuai6gr2tr"]
 
 [ext_resource type="Script" uid="uid://bytpfk06xs7ht" path="res://src/elements/gui/ElementIcon.gd" id="1_2nvp8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2wv7q"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="ElementIcon" type="ColorRect"]
 custom_minimum_size = Vector2(0, 25)
@@ -13,14 +16,14 @@ size_flags_horizontal = 3
 color = Color(0.5, 0.5, 0.5, 1)
 script = ExtResource("1_2nvp8")
 
-[node name="Label" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(0, 25)
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-bbcode_enabled = true
-text = "[bgcolor=00000000][center][color=000000ff]Blank[/color][/center][/bgcolor]"
-scroll_active = false
-autowrap_mode = 0
+grow_vertical = 2
+text = "Blank"
+label_settings = SubResource("LabelSettings_2wv7q")
+horizontal_alignment = 1
+vertical_alignment = 1

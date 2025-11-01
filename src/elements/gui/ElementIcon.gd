@@ -15,5 +15,10 @@ var element: ElementalType:
 
 		if(value == null):  element = ElementManager.Blank 
 		else: element = value 
-		$Label.text = "[center]%s[/center]" % element.get_bb_code_name(true)
+		$Label.text = element.name
 		color = element.main_color
+
+		if color.get_luminance() < 0.5:
+			$Label.label_settings.font_color = Color.WHITE
+		else:
+			$Label.label_settings.font_color = Color.BLACK
