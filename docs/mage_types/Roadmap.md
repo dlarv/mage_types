@@ -44,11 +44,11 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [ ] Design such that this can be extended to support attack cooldowns
 	- [ ] Create flinch pin
 - [ ] Battle messages
-	- [x] Only show InfoDisplay when player is selecting attack or character
-		- [ ] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
-	- [ ] Refactor InfoDisplay to remove blocking message logic
-		- [ ] Remove calls to blocking messages from Battle
 	- [ ] Implement equipment bubble
+	- [x] Only show InfoDisplay when player is selecting attack or character
+		- [x] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
+	- [x] Refactor InfoDisplay to remove blocking message logic
+		- [x] Remove calls to blocking messages from Battle
 	- [x] Give player ability to toggle battle message display
 	- [x] Show list of all messages sent during battle
 	- [x] Have unique display formatting attacks and transmutation and misc effects

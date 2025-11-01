@@ -21,10 +21,11 @@ bbcode_enabled = true
 fit_content = true
 custom_effects = [SubResource("RichTextEffect_ygesq")]
 script = ExtResource("1_7hwcu")
-button = NodePath("Button")
+button = NodePath("")
 tab_container = NodePath("TabContainer")
 
 [node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -63,14 +64,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
-
-[node name="Button" type="Button" parent="."]
-show_behind_parent = true
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="meta_clicked" from="TabContainer/AttackFormatter" to="." method="_on_link_clicked"]
 [connection signal="meta_clicked" from="TabContainer/ItemFormatter" to="." method="_on_link_clicked"]

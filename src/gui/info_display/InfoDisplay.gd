@@ -1,29 +1,20 @@
 extends RichTextLabel
 class_name InfoDisplay
 
-@export var button: Button 
-@export var tab_container: TabContainer
-
 func _ready() -> void:
-	tab_container.hide()
-	button.pressed.connect(clear_message)
+	%TabContainer.hide()
 
-func display_message_blocking(msg: String) -> void:
-	clear_message()
-	append_text(msg)
-	button.grab_focus()
-	await button.pressed
 
 func display_message_non_blocking(obj: Variant, limitInfo:=false) -> void:
 	clear_message()
-	button.hide()
 	if obj is String:
 		append_text(obj)
 	else:
 		format_msg(obj, limitInfo)
 
+
 func format_msg(obj: Variant, limitInfo: bool) -> void:
-	tab_container.show()
+	%TabContainer.show()
 
 	if obj is Attack:
 		%AttackFormatter.display(obj)
@@ -58,26 +49,28 @@ func append_header(val: String) -> void:
 	pop() # End bold 
 	append_text(": ")
 
+
 # [color]<element.Name>[/color]\n
 func append_elemental_type(element: ElementalType, msg: String="Element") -> void:
 	append_header(msg)
 	append_elemental_color(element)
 	newline()
 
+
 func append_elemental_color(element: ElementalType) -> void:
 	push_color(element.main_color)
 	append_text(element.name)
 	pop() # End color
 
+
 func clear_message()-> void:
-	tab_container.hide()
-	button.show()
+	%TabContainer.hide()
 	text = ""
 	clear()
 
 
-func format_item(item: _Item) -> void:
-	pass
+func format_item(item: _Item) -> void: pass
+
 
 func format_battle_item(item: BattleItem) -> void:
 	append_title(item.name)
@@ -95,6 +88,7 @@ func format_battle_item(item: BattleItem) -> void:
 		newline()
 		append_text(item.details)
 
+
 func format_status_effect(effect: StatusEffect) -> void:
 	append_title(effect.name)
 	append_header("Strength")
@@ -103,6 +97,7 @@ func format_status_effect(effect: StatusEffect) -> void:
 	append_header("Duration")
 	append_text(str(effect.duration))
 	newline()
+
 
 func format_battle_actor(actor: BattleActor, limitInfo: bool) -> void:
 	append_title(actor.name)
@@ -114,7 +109,6 @@ func format_battle_actor(actor: BattleActor, limitInfo: bool) -> void:
 	newline()
 	for effect in actor.list_status_effects():
 		format_status_effect(effect)
-
 
 	newline()
 	if limitInfo: return
@@ -151,5 +145,3 @@ func format_battle_actor(actor: BattleActor, limitInfo: bool) -> void:
 	newline()
 	append_header("Attacks")
 	newline()
-	# for attack in actor.attacks:
-	# 	format_attack(attack)
