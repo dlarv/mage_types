@@ -16,11 +16,10 @@ func display(attack: Variant, limitInfo:=false) -> void:
 	%Accuracy.text = "%d%%" % [ int(attack.accuracy * 100.0) ]
 
 	%Details.clear()
-	%Effects.clear()
 	if attack.details != null and len(attack.details) > 0:
 		%Details.append_text(attack.details)
 	else:
-		_format_attack_effects(attack.effects, %Effects)
+		_format_attack_effects(attack.effects, %Details)
 	
 	var power: float = attack.power
 	if power > 0:
