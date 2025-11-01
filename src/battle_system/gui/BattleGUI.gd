@@ -24,7 +24,6 @@ var _finished_setup := false
 var _accept_messages := true
 
 func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array[BattleActor]) -> void:
-	# Init allies.
 	self.allies = allies
 	self.enemies = enemies
 	_selected_actions = []
@@ -40,21 +39,10 @@ func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array
 	$Camera3D.make_current()
 
 
-func display_message(msg: Variant) -> void:
-	if len(msg) == 0: return
-	_accept_messages = false
-	if msg is Array:
-		msg = "\n".join(msg)
-
-	Logger.append_battle_log(msg)
-	_accept_messages = true
-	return
-	await message_box.display_message_blocking(msg)
-
-
 func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	if not _accept_messages: return
 	var msgLog: Variant = msg
+	%DisplayContainer.current_tab = 0
 
 	if msg is Array:
 		msg = "\n".join(msg)
@@ -170,3 +158,5 @@ func _on_target_selected(actor: BattleActor) -> void:
 
 func animate_action(data: ActorTurnData, missed: bool) -> void:
 	await $BattleAnimator.animate(data, missed)
+
+

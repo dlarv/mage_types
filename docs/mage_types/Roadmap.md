@@ -64,7 +64,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Transmutations
 		- [ ] Interesting effect to show transmutation happening
 		- [ ] Icon on combatant name plate showing their current composition
-	- [ ] Status effects activating: poison, phobia, flinched
+	- [ ] Status effects activating: poison, phobia, flinched, stasis
 	- [ ] Equipment activations
 	- [x] User and targets
 	- [x] Whether attack dealt a status condition/extra effects
@@ -80,6 +80,9 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [ ] Player can click on a BattleActor model to display info about them
 		- [ ] Hovering should highlight which name card is theirs
 		- [ ] Hovering over status pin should tell you what it is and how many turns remaining it has
+- [ ] Dead code
+	- [ ] Remove String returned value from `resolve_end_of_battle()` 
+	- [ ] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
 - [ ] Experiment with layout
 	- [ ] Message feed
 		- [ ] Make translucent

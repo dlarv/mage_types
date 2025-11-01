@@ -106,7 +106,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
 		StoryManager.set_variable("battle_result", "fled")
-		await gui.display_message("You ran away.")
+		Logger.append_battle_log("You ran away.")
 		battle_ended.emit(EndState.FLED)
 		_resolve_end_of_battle(false)
 		return
@@ -137,7 +137,8 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			
 		var flinch := turnData.user.flinching
 		if flinch != null:
-			await gui.display_message("%s flinched! They were unable to move." % turnData.user.name)
+			# TODO: Play flinch animation
+			Logger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
 			turnData.user.turn_ended.emit()
 			continue
 
@@ -153,12 +154,11 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		await gui.animate_action(turnData, missed)
 
 		# Display message and await input.
-		await gui.display_message(_build_msg(turnData))
+		Logger.append_battle_log(_build_msg(turnData))
 
 		message_feed.append_defeated_message(turnData)
 		for actor in turnData.defeated_actors:
 			Logger.append_battle_log("%s was defeated...." % actor.name)
-		# await gui.display_message(msg)
 		
 		# Check if battle should end.
 		if await _check_if_battle_ended(): return
@@ -167,7 +167,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if not missed:
 			for target in turnData.targets:
 				if target.is_defeated: continue
-				await _calculate_transmutations(target, turnData.action)
+				_calculate_transmutations(target, turnData.action)
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -180,7 +180,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if not missed and turnData.targets.find(turnData.user) == -1 \
 				and turnData.action is Attack \
 				and (turnData.action).attack_range == Attack.AttackRange.MELEE:
-			await _calculate_transmutations(turnData.user, turnData.action) 
+			_calculate_transmutations(turnData.user, turnData.action) 
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -196,8 +196,9 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			message_feed.append_removed_status_effect_message(actorEffectPair[0], actorEffectPair[1])
 
 		turnData.user.turn_ended.emit()
+		# TO BE DEPRECATED
 		msg = turnData.user.get_and_flush_msgs()
-		await gui.display_message(msg)
+
 		# Check if battle should end.
 		# e.g. if an actor was defeated by poison.
 		if await _check_if_battle_ended(): return
@@ -205,8 +206,6 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		# Pause before processing next turn.
 		await get_tree().create_timer(0.5).timeout
 
-	# if await _check_if_battle_ended(): return
-	
 	Logger.append_battle_log("\n\nPlayer is selecting actions...")
 	await _dialog(true)
 	_prep_next_turn()
@@ -215,15 +214,16 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 
 func _calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
 	if target.stasis:
-		await gui.display_message("%s is in stasis! Transmutations were blocked!" % target.name)
+		Logger.append_battle_log("%s is in stasis! Transmutations were blocked!" % target.name)
+		# TODO: Create and play stasis animation
 		return
 
  	# Calculate secondary + attack 
-	await _calculate_transmutation(target.element2, action.element, target, 1)
+	_calculate_transmutation(target.element2, action.element, target, 1)
 	# Return early if target died due to phobia.
 	if target.is_defeated: return
 	# Calculate internal transmutation.
-	await _calculate_transmutation(target.element1, target.element2, target, 1, true)
+	_calculate_transmutation(target.element1, target.element2, target, 1, true)
 
 
 func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false) -> bool:
@@ -253,7 +253,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 	if len(msg2) > 0:
 		msg.append_array(msg2)
 
-	await gui.display_message(msg)
+	Logger.append_battle_log(msg)
 	return true
 
 
@@ -268,13 +268,13 @@ func _dialog(isAfterTurn: bool) -> void:
 func _check_if_battle_ended() -> bool:
 	if _defeated_allies == len(allies):
 		StoryManager.set_variable("battle_result", "defeated")
-		await gui.display_message("You were defeated...")
+		Logger.append_battle_log("You were defeated...")
 		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.DEFEATED)
 		return true
 	elif _defeated_enemies == len(enemies):
 		StoryManager.set_variable("battle_result", "won")
-		await gui.display_message("You won!")
+		Logger.append_battle_log("You won!")
 		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.WON)
 		return true
@@ -283,9 +283,10 @@ func _check_if_battle_ended() -> bool:
 
 func _resolve_end_of_battle(pause:=true) -> void:
 	for ally in allies:
+		# TO BE DEPRECATED
 		var msg: String = ally.resolve_end_of_battle(_turn_counter)
 		ally.was_just_defeated.disconnect(_increment_defeat_counter)
-		await gui.display_message(msg)
+		# await gui.display_message(msg)
 	
 	for enemy in enemies:
 		enemy.resolve_end_of_battle(_turn_counter)
