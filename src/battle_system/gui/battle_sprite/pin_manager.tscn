@@ -8,26 +8,31 @@ script = ExtResource("1_gn02h")
 
 [node name="PoisonPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(0.546935, 0.837175, 0, -0.837175, 0.546935, 0, 0, 0, 1, -0.00529325, 0.37836, -0.18231)
+visible = false
 status_effect = 2
 _element = "green"
 
 [node name="FlinchPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(0.546935, 0.837175, 0, -0.837175, 0.546935, 0, 0, 0, 1, -0.00529325, 1.37836, -0.38231)
+visible = false
 status_effect = 5
 _element = "purple"
 
 [node name="StasisPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(-2.39073e-08, -3.65941e-08, -1, -0.837175, 0.546935, 0, 0.546935, 0.837175, -4.37114e-08, -0.00529325, 0.339985, 0.00863197)
+visible = false
 status_effect = 0
 _element = "blue"
 
 [node name="HealingPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(-2.39073e-08, -3.65941e-08, -1, -0.837175, 0.546935, 0, 0.546935, 0.837175, -4.37114e-08, 0.194707, 0.897492, 0.0409875)
+visible = false
 status_effect = 4
 _element = "magenta"
 
 [node name="BlockingPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(-2.39073e-08, -3.65941e-08, -1, -0.837175, 0.546935, 0, 0.546935, 0.837175, -4.37114e-08, -0.105293, 1.31633, 0.0409875)
+visible = false
 status_effect = 1
 _element = "cyan"
 

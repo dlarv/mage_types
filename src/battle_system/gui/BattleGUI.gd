@@ -31,7 +31,7 @@ func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array
 
 	team_display.setup(allies, enemies)
 	team_display.highlight(0)
-	team_display.selected.connect(_on_target_selected)
+	team_display.target_selected.connect(_on_target_selected)
 
 	# Finish setup
 	player_controls.setup(allies, items, enemies)

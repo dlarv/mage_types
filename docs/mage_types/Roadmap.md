@@ -77,10 +77,10 @@ Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Make controls less obtrusive
 	- [x] Attack, Item, and Run buttons should be small and off to the side
 	- [ ] InfoDisplay
-		- [ ] Player can click on a BattleActor model to display info about them
 		- [ ] Hovering should highlight which name card is theirs
+		- [x] Player can click on a BattleActor model to display info about them
 		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
-			- [ ] Hovering status pin should highlight that pin
+			- [ ] Hovering status pin should outline that pin
 - [ ] Dead code
 	- [ ] Remove String returned value from `resolve_end_of_battle()` 
 	- [ ] Remove `get_and_flush_msgs()` from BattleActor and related equipment info

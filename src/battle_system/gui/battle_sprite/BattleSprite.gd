@@ -169,7 +169,7 @@ func hover(highlight: bool) -> void:
 
 func _on_input_event(camera:Node, event:InputEvent, event_position:Vector3, normal:Vector3, shape_idx:int) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 			select()
 
 
@@ -190,9 +190,3 @@ func _on_pin_selected(effect: StatusEffect) -> void:
 	status_effect_icon_pressed.emit(effect)
 
 
-func _on_pin_hovered(pin: Node3D) -> void:
-	pass
-
-
-func _on_pin_unhovered(pin: Node3D) -> void:
-	pass

@@ -2,8 +2,9 @@
 extends Node3D
 
 signal battle_sprite_added(actor: BattleActor, sprite: _BattleSprite)
-signal selected(actor: BattleActor)
+signal target_selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
+signal actor_selected(actor: BattleActor)
 
 const _BattleSprite := preload("res://src/battle_system/gui/battle_sprite/BattleSprite.gd")
 const DefaultBattleSprite := preload("res://data/monster_battle_sprites/placeholder.tscn")
@@ -87,7 +88,11 @@ func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
 		status_effect_icon_pressed.emit(effect)
 	)
 	sprite.selected.connect(func(selectedActor: BattleActor) -> void:
-		selected.emit(selectedActor)
+		if not _allow_selecting_targets:
+			actor_selected.emit(selectedActor)
+			return
+
+		target_selected.emit(selectedActor)
 		for d: Node in sprites:
 			_allow_selecting_targets = false
 			_selected_target = null 
@@ -174,7 +179,7 @@ func cancel_target_selection() -> void:
 	_allow_selecting_targets = false 
 	_selected_target = null
 
-	selected.emit(null)
+	target_selected.emit(null)
 	for d in sprites:
 		d.disable_selection()
 

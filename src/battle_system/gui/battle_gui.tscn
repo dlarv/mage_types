@@ -118,5 +118,6 @@ offset_bottom = 31.0
 [connection signal="active_actor_changed" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_active_actor_changed"]
 [connection signal="end_turn" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_turn_ended"]
 [connection signal="show_info" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_show_info"]
+[connection signal="actor_selected" from="TeamDisplay" to="." method="display_message_non_blocking"]
 [connection signal="battle_sprite_added" from="TeamDisplay" to="BattleAnimator" method="_on_battle_sprite_added"]
 [connection signal="status_effect_icon_pressed" from="TeamDisplay" to="." method="display_message_non_blocking"]
