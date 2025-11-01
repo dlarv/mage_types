@@ -47,8 +47,9 @@ func display_message(msg: Variant) -> void:
 		msg = "\n".join(msg)
 
 	Logger.append_battle_log(msg)
-	await message_box.display_message_blocking(msg)
 	_accept_messages = true
+	return
+	await message_box.display_message_blocking(msg)
 
 
 func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
@@ -67,11 +68,13 @@ func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 
 func enable_player_controls(enable: bool) -> void:
 	player_controls.set_enabled(enable)
-	%DisplayContainer.current_tab = int(not enable)
+	if not enable:
+		%DisplayContainer.current_tab = 1
 
 
 func _on_action_target_selection_cancelled() -> void:
 	team_display.cancel_target_selection()
+	%DisplayContainer.current_tab = 1
 
 
 func _on_action_selected(index: int, action: _BattleAction) -> void:
