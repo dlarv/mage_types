@@ -44,9 +44,10 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [ ] Design such that this can be extended to support attack cooldowns
 	- [ ] Create flinch pin
 - [ ] Battle messages
-	- [ ] Only show InfoDisplay when player is selecting attack or character
+	- [x] Only show InfoDisplay when player is selecting attack or character
 		- [ ] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
 	- [ ] Refactor InfoDisplay to remove blocking message logic
+		- [ ] Remove calls to blocking messages from Battle
 	- [ ] Implement equipment bubble
 	- [x] Give player ability to toggle battle message display
 	- [x] Show list of all messages sent during battle
@@ -74,19 +75,20 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Animation should be selected via enum
 	- [ ] Animation should be integrated with BattleActor animations
 - [ ] Make controls less obtrusive
-	- [ ] Attack, Item, and Run buttons should be small and off to the side
+	- [x] Attack, Item, and Run buttons should be small and off to the side
 	- [ ] InfoDisplay
 		- [ ] Player can click on a BattleActor model to display info about them
 		- [ ] Hovering should highlight which name card is theirs
 		- [ ] Hovering over status pin should tell you what it is and how many turns remaining it has
+- [ ] Fix bug where selecting status pins appends message instead of replacing
 - [ ] Experiment with layout
 	- [ ] Message feed
 		- [ ] Make translucent
 		- [ ] Bind to hotkey
 		- [ ] Focus current turn info
-	- [ ] Combatant badges
-	- [ ] Player control buttons
-		- [ ] Remove character button (player will click on battle sprite)
+	- [x] Combatant badges
+	- [x] Player control buttons
+		- [x] Remove character button (player will click on battle sprite)
 	- [x] Speed rankings
 		- [x] Change name from "Turn Order" to "Speed Ranking"
 		- [ ] Account for priority?
