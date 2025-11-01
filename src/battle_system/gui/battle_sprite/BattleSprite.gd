@@ -53,6 +53,8 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 	if shiftRight:
 		$PinManager/PhobiaCrown.rotation_degrees.y += 180
 
+	$PinManager.status_manager = actor.statuses
+
 	actor.status_effect_added.connect(add_status_effect)
 	actor.status_effects_removed.connect(remove_status_effects)
 	actor.was_just_defeated.connect(func() -> void: 
