@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1d7new22f1kk"]
 
-[ext_resource type="Script" uid="uid://dl4tto6qxysr1" path="res://src/battle_system/gui/components/PinManager.gd" id="1_gn02h"]
-[ext_resource type="PackedScene" uid="uid://bihss5o636fyv" path="res://src/battle_system/gui/components/status_effect_pin.tscn" id="2_n265t"]
+[ext_resource type="Script" uid="uid://dl4tto6qxysr1" path="res://src/battle_system/gui/battle_sprite/PinManager.gd" id="1_gn02h"]
+[ext_resource type="PackedScene" uid="uid://bihss5o636fyv" path="res://src/battle_system/gui/battle_sprite/status_effect_pin.tscn" id="2_n265t"]
 
 [node name="PinManager" type="Node3D"]
 script = ExtResource("1_gn02h")
@@ -9,22 +9,22 @@ script = ExtResource("1_gn02h")
 [node name="PoisonPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(0.546935, 0.837175, 0, -0.837175, 0.546935, 0, 0, 0, 1, -0.00529325, 1.37836, -0.38231)
 visible = false
-status_effect = "Poison"
+status_effect = 2
 
 [node name="StasisPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(0.546935, 0.837175, 0, -0.837175, 0.546935, 0, 0, 0, 1, -0.00529325, 0.339985, 0.308632)
 visible = false
-status_effect = "Stasis"
+status_effect = 0
 
 [node name="HealingPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(0.546935, 0.837175, 0, -0.837175, 0.546935, 0, 0, 0, 1, -0.00529325, 0.897492, -0.0590125)
 visible = false
-status_effect = "Healing"
+status_effect = 4
 
 [node name="BlockingPin" parent="." instance=ExtResource("2_n265t")]
 transform = Transform3D(0.546935, 0.837175, 0, -0.837175, 0.546935, 0, 0, 0, 1, -0.00529325, 1.31633, -0.0590125)
 visible = false
-status_effect = "Blocking"
+status_effect = 1
 
 [node name="PhobiaCrown" type="Node3D" parent="."]
 
@@ -68,15 +68,39 @@ transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939692, 0.34202, -0.
 visible = false
 _element = "cyan"
 
+[connection signal="pin_hovered" from="PoisonPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PoisonPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PoisonPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="StasisPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="StasisPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="StasisPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="HealingPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="HealingPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="HealingPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="BlockingPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="BlockingPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="BlockingPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/BluePhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/BluePhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/BluePhobiaPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/PurplePhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/PurplePhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/PurplePhobiaPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/MagentaPhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/MagentaPhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/MagentaPhobiaPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/RedPhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/RedPhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/RedPhobiaPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/OrangePhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/OrangePhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/OrangePhobiaPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/YellowPhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/YellowPhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/YellowPhobiaPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/GreenPhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/GreenPhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/GreenPhobiaPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="PhobiaCrown/CyanPhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/CyanPhobiaPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="PhobiaCrown/CyanPhobiaPin" to="." method="_on_pin_unhovered"]

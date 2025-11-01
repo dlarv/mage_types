@@ -5,7 +5,7 @@ signal battle_sprite_added(actor: BattleActor, sprite: _BattleSprite)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
 
-const _BattleSprite := preload("res://src/battle_system/gui/BattleSprite.gd")
+const _BattleSprite := preload("res://src/battle_system/gui/battle_sprite/BattleSprite.gd")
 const DefaultBattleSprite := preload("res://data/monster_battle_sprites/placeholder.tscn")
 const _BattleActorDisplay := preload("res://src/battle_system/gui/components/BattleActorDisplay.gd")
 const BattleActorDisplay := preload("res://src/battle_system/gui/components/battle_actor_display.tscn")

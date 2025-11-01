@@ -186,3 +186,11 @@ func remove_status_effects(effects: Array[StatusEffect]) -> void:
 
 func _on_pin_selected(effect: StatusEffect) -> void:
 	status_effect_icon_pressed.emit(effect)
+
+
+func _on_pin_hovered(pin: Node3D) -> void:
+	pass
+
+
+func _on_pin_unhovered(pin: Node3D) -> void:
+	pass

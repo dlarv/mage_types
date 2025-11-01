@@ -1,13 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://bihss5o636fyv"]
+[gd_scene load_steps=8 format=3 uid="uid://bihss5o636fyv"]
 
 [ext_resource type="PackedScene" uid="uid://diveahhxe7xsh" path="res://assets/3d/models/objects/status_pin.blend" id="1_7dhbf"]
-[ext_resource type="Script" uid="uid://cvh014ij6lugl" path="res://src/battle_system/gui/components/StatusEffectPin.gd" id="1_vqfle"]
+[ext_resource type="Script" uid="uid://cvh014ij6lugl" path="res://src/battle_system/gui/battle_sprite/StatusEffectPin.gd" id="1_vqfle"]
+[ext_resource type="Script" uid="uid://coqwnstoj346c" path="res://addons/tooltips_pro/scripts/tooltip_trigger.gd" id="3_c0yfk"]
+[ext_resource type="Script" uid="uid://lcf8uedn57am" path="res://addons/tooltips_pro/scripts/tooltip_settings.gd" id="4_1gyes"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70vim"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gyes"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
+[sub_resource type="Resource" id="Resource_65bbx"]
+script = ExtResource("4_1gyes")
+tooltip_template_dir_path = "res://addons/tooltips_pro/examples/tooltip_templates/"
+lock_mode = 3
+open_delay = 0.2
+timer_lock_delay = 1.075
+unlock_delay = 0.25
+darken_step_count = 3
+darken_step_value = 0.25
+step_limit_color = Color(0, 0, 0, 0.156863)
+metadata/_custom_type_script = "uid://lcf8uedn57am"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_34x07"]
-size = Vector3(0.3, 1.4, 0.3)
+size = Vector3(0.5, 1.4, 0.5)
 
 [node name="StatusEffectPin" type="Node3D"]
 script = ExtResource("1_vqfle")
@@ -16,7 +30,7 @@ script = ExtResource("1_vqfle")
 
 [node name="Cube" parent="status_pin" index="0"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.6, 0)
-surface_material_override/1 = SubResource("StandardMaterial3D_70vim")
+surface_material_override/1 = SubResource("StandardMaterial3D_1gyes")
 
 [node name="BlockingHead" parent="status_pin/Cube" index="0"]
 visible = false
@@ -31,6 +45,8 @@ visible = false
 visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_c0yfk")
+tooltip_settings_override = SubResource("Resource_65bbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0.65496, 0)
