@@ -4,7 +4,7 @@
 
 [node name="TeamDisplay" type="Node3D" node_paths=PackedStringArray("opponent_container")]
 script = ExtResource("1_48wpk")
-opponent_container = NodePath("CanvasLayer/MarginContainer/HBoxContainer/OpponentVBox")
+opponent_container = NodePath("CanvasLayer/MarginContainer/OpponentHBox")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -18,22 +18,9 @@ size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="OpponentHBox" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
-
-[node name="AllyVBox" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-
-[node name="OpponentVBox" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
+alignment = 2
 
 [node name="AllyParent" type="Node3D" parent="."]
 transform = Transform3D(0.990268, 0, -0.139173, 0, 1, 0, 0.139173, 0, 0.990268, -9.283, 1, 2.996)
