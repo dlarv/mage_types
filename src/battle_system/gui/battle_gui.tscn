@@ -15,7 +15,6 @@ material = SubResource("StandardMaterial3D_u5iq7")
 size = Vector2(50, 50)
 
 [node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("message_box", "team_display", "player_controls", "turn_order_display")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 script = ExtResource("1_ik08k")
 message_box = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/DisplayContainer/InfoDisplay")
 team_display = NodePath("TeamDisplay")
@@ -84,20 +83,22 @@ text = "Turn Order
 layout_mode = 2
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101, 0)
 mesh = SubResource("PlaneMesh_633xf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 5, 10)
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 105, 10)
 
 [node name="TeamDisplay" parent="." node_paths=PackedStringArray("ally_container") instance=ExtResource("2_ov218")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 ally_container = NodePath("../CanvasLayer/VBoxContainer/HBoxContainer/DisplayContainer/GridContainer")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 100, 0)
 light_energy = 0.5
 
 [node name="BattleAnimator" parent="." instance=ExtResource("5_s7ygr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
