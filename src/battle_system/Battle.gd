@@ -31,6 +31,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		Logger.save_log()
 	elif event.is_action_pressed("skip_dialog"):
 		_dialog_box.stop()
+	elif event.is_action_pressed("toggle_battle_feed"):
+		message_feed.visible = not message_feed.visible
 	
 
 func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: Array[BattleActor], ai: OpponentController) -> void:

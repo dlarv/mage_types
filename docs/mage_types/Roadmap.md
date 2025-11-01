@@ -42,7 +42,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Implement flinch condition properly
 	- [ ] Prevent player from selecting actions for flinched characters
 		- [ ] Design such that this can be extended to support attack cooldowns
-	- [ ] Create flinch pin
+	- [x] Create flinch pin
 - [ ] Battle messages
 	- [ ] Implement equipment bubble
 	- [x] Only show InfoDisplay when player is selecting attack or character
@@ -79,21 +79,22 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] InfoDisplay
 		- [ ] Player can click on a BattleActor model to display info about them
 		- [ ] Hovering should highlight which name card is theirs
-		- [ ] Hovering over status pin should tell you what it is and how many turns remaining it has
+		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
+			- [ ] Hovering status pin should highlight that pin
 - [ ] Dead code
 	- [ ] Remove String returned value from `resolve_end_of_battle()` 
 	- [ ] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
 - [ ] Experiment with layout
 	- [ ] Message feed
 		- [ ] Make translucent
-		- [ ] Bind to hotkey
 		- [ ] Focus current turn info
+		- [x] Bind to hotkey
 	- [x] Combatant badges
 	- [x] Player control buttons
 		- [x] Remove character button (player will click on battle sprite)
 	- [x] Speed rankings
-		- [x] Change name from "Turn Order" to "Speed Ranking"
 		- [ ] Account for priority?
+		- [x] Change name from "Turn Order" to "Speed Ranking"
 - [x] Fix bug where selecting status pins appends message instead of replacing
 - [x] Make playtesting enemies easier
 	- [x] Show levels in UI

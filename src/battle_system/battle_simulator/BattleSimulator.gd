@@ -15,6 +15,7 @@ var opponents: Array[BattleActor] = []
 var players: Array[BattleActor] = []
 
 func _ready() -> void:
+	UIManager.in_battle_mode = true
 	_collect_monsters()
 	%HpSpinBox.value_changed.connect(_on_stat_changed.bind(0))
 	%SpeedSpinBox.value_changed.connect(_on_stat_changed.bind(1))

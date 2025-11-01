@@ -91,10 +91,3 @@ func _get_panel(text: String) -> Control:
 	return container
 
 
-func _on_button_pressed() -> void:
-	%Content.visible = not %Content.visible
-	if %Content.visible:
-		%Button.text = "Hide Feed"
-	else:
-		%Button.text = "Show Feed"
-
