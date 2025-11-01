@@ -17,7 +17,7 @@ size = Vector2(50, 50)
 [node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("message_box", "team_display", "player_controls", "turn_order_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 script = ExtResource("1_ik08k")
-message_box = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/InfoDisplay")
+message_box = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/DisplayContainer/InfoDisplay")
 team_display = NodePath("TeamDisplay")
 player_controls = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls")
 turn_order_display = NodePath("CanvasLayer/VBoxContainer/HBoxContainer/TurnOrder/VBoxContainer")
@@ -52,10 +52,24 @@ size_flags_vertical = 8
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="InfoDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("4_k2fdd")]
+[node name="DisplayContainer" type="TabContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 1
+tabs_visible = false
+
+[node name="InfoDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer/DisplayContainer" instance=ExtResource("4_k2fdd")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/DisplayContainer"]
+layout_mode = 2
+columns = 4
+metadata/_tab_index = 1
 
 [node name="TurnOrder" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -63,9 +77,7 @@ tooltip_text = "The order in which the combatants will move. This does not accou
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/TurnOrder"]
 layout_mode = 2
-text = "Speed 
-Ranking      
-
+text = "Turn Order
 "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/TurnOrder"]
@@ -78,7 +90,8 @@ mesh = SubResource("PlaneMesh_633xf")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 5, 10)
 
-[node name="TeamDisplay" parent="." instance=ExtResource("2_ov218")]
+[node name="TeamDisplay" parent="." node_paths=PackedStringArray("ally_container") instance=ExtResource("2_ov218")]
+ally_container = NodePath("../CanvasLayer/VBoxContainer/HBoxContainer/DisplayContainer/GridContainer")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)

@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dlcuwr7qkft8l" path="res://src/battle_system/gui/components/TeamDisplay.gd" id="1_48wpk"]
 
-[node name="TeamDisplay" type="Node3D"]
+[node name="TeamDisplay" type="Node3D" node_paths=PackedStringArray("opponent_container")]
 script = ExtResource("1_48wpk")
+opponent_container = NodePath("CanvasLayer/MarginContainer/HBoxContainer/OpponentVBox")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

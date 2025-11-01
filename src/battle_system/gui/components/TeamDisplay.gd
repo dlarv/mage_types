@@ -10,6 +10,9 @@ const DefaultBattleSprite := preload("res://data/monster_battle_sprites/placehol
 const _BattleActorDisplay := preload("res://src/battle_system/gui/components/BattleActorDisplay.gd")
 const BattleActorDisplay := preload("res://src/battle_system/gui/components/battle_actor_display.tscn")
 
+@export var ally_container: Container
+@export var opponent_container: Container
+
 var displays: Array[_BattleActorDisplay] = []
 var sprites: Array[_BattleSprite] = []
 var actors: Dictionary[BattleActor, TeamDisplayActor] = {}
@@ -98,11 +101,11 @@ func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
 	displays.append(display)
 	
 	if isAlly:
-		%AllyVBox.add_child(display)
+		ally_container.add_child(display)
 		$AllyParent.add_child(sprite)
 		sprite.position.x += $AllyParent.get_child_count() * 1.5
 	else:
-		%OpponentVBox.add_child(display)
+		opponent_container.add_child(display)
 		$OpponentParent.add_child(sprite)
 		sprite.position.x += $OpponentParent.get_child_count() * 1.5
 		sprite.rotation_degrees.y = 180

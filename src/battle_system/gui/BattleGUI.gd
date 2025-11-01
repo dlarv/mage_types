@@ -67,6 +67,7 @@ func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 
 func enable_player_controls(enable: bool) -> void:
 	player_controls.set_enabled(enable)
+	%DisplayContainer.current_tab = int(not enable)
 
 
 func _on_action_target_selection_cancelled() -> void:
@@ -140,6 +141,7 @@ func _on_show_info(action: Variant, limitInfo:=false) -> void:
 		msg = action.name
 	print(msg)
 	
+	%DisplayContainer.current_tab = 0
 	display_message_non_blocking(action, limitInfo)
 
 

@@ -11,7 +11,7 @@
 [sub_resource type="RichTextEffect" id="RichTextEffect_ygesq"]
 script = ExtResource("1_r25dg")
 
-[node name="InfoDisplay" type="RichTextLabel" node_paths=PackedStringArray("button", "tab_container", "attack_formatter", "item_formatter", "actor_formatter", "status_effect_formatter")]
+[node name="InfoDisplay" type="RichTextLabel" node_paths=PackedStringArray("button", "tab_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,10 +23,6 @@ custom_effects = [SubResource("RichTextEffect_ygesq")]
 script = ExtResource("1_7hwcu")
 button = NodePath("Button")
 tab_container = NodePath("TabContainer")
-attack_formatter = NodePath("TabContainer/AttackFormatter")
-item_formatter = NodePath("TabContainer/ItemFormatter")
-actor_formatter = NodePath("TabContainer/ActorFormatter")
-status_effect_formatter = NodePath("TabContainer/StatusEffectFormatter")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 visible = false
