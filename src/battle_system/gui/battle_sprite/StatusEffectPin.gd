@@ -83,9 +83,9 @@ func _on_mouse_entered() -> void:
 
 
 func insert(effect: StatusEffect) -> void:
+	show()
 	self.effect = effect
 	$status_pin/AnimationPlayer.play("insert")
-
 
 func set_duration(duration: int) -> void:
 	$Area3D.tooltip_strings[0] = "%s (%d turns)" % [ _effect_name, duration ]
@@ -100,6 +100,6 @@ func activate() -> void:
 
 func remove() -> void: 
 	while _wiggling:
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.01).timeout
 	
 	hide()

@@ -42,7 +42,11 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 	for actor in turnData.targets:
 		_sprites[actor].play_animation("getting_hit")
 		if turnData.did_actor_block(actor):
+
 			actor.status_activated.emit(BLOCK)
+			# Block was removed
+			if not actor.has_status_effect(BLOCK):
+				actor.status_effects_removed.emit([BLOCK] as Array[StatusEffect])
 
 
 	finished.emit()

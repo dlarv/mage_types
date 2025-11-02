@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 signal pin_selected(effect: StatusEffect)
@@ -6,11 +7,29 @@ signal pin_hovered(effect: Effects, element: ElementalType)
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
 const Effects := StatusEffectManager.StatusEffects
 
+@export_tool_button("Show Pins")
+var show_pins := func() -> void:
+	for child in get_children():
+		if child.name == "PhobiaCrown":
+			for child2 in child.get_children():
+				child2.show()
+		else:
+			child.show()
+
+@export_tool_button("Hide Pins")
+var hide_pins := func() -> void:
+	for child in get_children():
+		if child.name == "PhobiaCrown":
+			for child2 in child.get_children():
+				child2.hide()
+		else:
+			child.hide()
+
+
 var pins: Dictionary[String, Node]= {}
 var status_manager: StatusEffectManager
 
 var _active_pin: Node3D
-var _wiggling := false
 
 func _ready() -> void:
 	pins = {
@@ -27,7 +46,7 @@ func _ready() -> void:
 		"YellowPhobic": $PhobiaCrown/YellowPhobiaPin,
 		"GreenPhobic": $PhobiaCrown/GreenPhobiaPin,
 		"CyanPhobic": $PhobiaCrown/CyanPhobiaPin,
-	}
+	} 
 
 
 func insert_pin(effect: StatusEffect) -> void:
@@ -38,7 +57,6 @@ func insert_pin(effect: StatusEffect) -> void:
 	var pin: Node = pins.get(key)
 	if pin:
 		pin.insert(effect)
-		pin.show()
 
 
 func remove_pins(effects: Array[StatusEffect]) -> void:

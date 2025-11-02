@@ -52,6 +52,7 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 
 	if shiftRight:
 		$PinManager.rotation_degrees.y += 180
+		$PinManager/PhobiaCrown.rotation_degrees.y += 180
 
 	$PinManager.status_manager = actor.statuses
 

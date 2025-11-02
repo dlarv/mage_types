@@ -14,7 +14,7 @@ signal element_changed(id: int, element: ElementalType)
 signal leveled_up()
 signal spell_learned(spell: _BattleAction, index: int)
 signal equipment_equipped(equipment: Equipment)
-signal status_activated(effect: Variant)
+signal status_activated(effect: StatusEffect)
 ## Called when opponents choose their action during battle.
 @warning_ignore("unused_signal")
 signal action_selected(action: _BattleAction)
@@ -248,9 +248,9 @@ func get_defense_stat(action: _BattleAction) -> float:
 
 
 ## Returns actual amount of damage applied, after accounting for status conditions.
-func apply_damage(dmg: int, allowBlocking:=true) -> int:
+func apply_damage(dmg: int, allowBlocking:=true, data: ActorTurnData=null) -> int:
 	if _func_overrides.has(apply_damage.get_method()):
-		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking)
+		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking, data)
 
 	var blocking: StatusEffect = null
 	if dmg > 0 and allowBlocking:
@@ -259,8 +259,9 @@ func apply_damage(dmg: int, allowBlocking:=true) -> int:
 	if blocking:
 		dmg = int(float(dmg) * (1.0 - blocking.get_strength()))
 
-		if statuses.remove_blocking():
-			status_effects_removed.emit([blocking] as Array[StatusEffect])
+		statuses.remove_blocking()
+		if data != null:
+			data.add_activated_effect(self, blocking.id)
 
 	if dmg != 0:
 		current_hp -= dmg

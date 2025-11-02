@@ -50,7 +50,7 @@ func unequip(actor: BattleActor) -> void:
 			actor.remove_func_override(method_name)
 
 
-func _prevent_defeat(dmg: int, allowBlocking: bool=true, actor: BattleActor=null) -> int:
+func _prevent_defeat(dmg: int, allowBlocking: bool=true, data: ActorTurnData=null, actor: BattleActor=null) -> int:
 	var _death_averted: Dictionary[BattleActor, bool] = get_meta("prevent_defeat")
 	var blocking: StatusEffect = null
 	if dmg > 0 and allowBlocking:
@@ -59,7 +59,9 @@ func _prevent_defeat(dmg: int, allowBlocking: bool=true, actor: BattleActor=null
 	if blocking != null:
 		dmg = int(float(dmg) * (1 - blocking.get_strength()))
 		actor.statuses.remove_blocking()
-		actor.status_effects_removed.emit([blocking] as Array[StatusEffect])
+
+		if data != null:
+			data.add_activated_effect(actor, blocking.id)
 
 	if dmg != 0:
 		actor.current_hp -= dmg
