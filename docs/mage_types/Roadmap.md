@@ -65,8 +65,8 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Transmutations
 		- [ ] Interesting effect to show transmutation happening
 		- [ ] Icon on combatant name plate showing their current composition
-	- [ ] Status effects activating: poison, phobia, flinched, stasis
 	- [ ] Equipment activations
+	- [x] Status effects activating: poison, phobia, flinched, stasis
 	- [x] User and targets
 	- [x] Whether attack dealt a status condition/extra effects
 	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
