@@ -145,6 +145,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			Logger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
 			gui.animate_status_activation(turnData.user, flinch)
 			resolve_end_of_turn(turnData)
+			await get_tree().create_timer(post_turn_delay).timeout
 			continue
 
 		Logger.append_battle_log("\nActors turn: %s" % turnData.user.name)
