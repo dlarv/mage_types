@@ -22,6 +22,7 @@ var phobia_dmg: int
 var missed: bool
 var element: ElementalType
 var user_was_defeated := false
+var blocked_dmg := 0
 
 var new_status_effects: Array[Effects] = []
 var activated_status_effects: Array[Effects] = []
@@ -70,8 +71,9 @@ func add_inflicted_effect(actor: BattleActor, effect: Effects) -> void:
 func add_activated_effect(actor: BattleActor, effect: Effects, data: Variant=null) -> void:
 	if actor == user:
 		activated_status_effects.append(effect)
-	else:
-		effects[actor].activated_status_effects.append(effect)
+		return
+
+	effects[actor].activated_status_effects.append(effect)
 
 
 func set_defeated(actor: BattleActor) -> void:
@@ -87,6 +89,7 @@ func get_vars() -> Array[Variant]:
 		output.append(get(key))
 	return output
 
+
 func get_defeated() -> Array[BattleActor]:
 	var output: Array[BattleActor] = []
 	if user_was_defeated:
@@ -98,6 +101,11 @@ func get_defeated() -> Array[BattleActor]:
 	return output
 
 
+func did_actor_block(actor: BattleActor) -> bool:
+	if actor == user: return StatusEffect.Effects.BLOCK in activated_status_effects
+	return StatusEffect.Effects.BLOCK in effects[actor].activated_status_effects
+
+
 static func flee() -> ActorTurnData: return ActorTurnData.new(null, null, [], -1)
 static func empty(user: BattleActor=null) -> ActorTurnData: return ActorTurnData.new(user, null, [], -1)
 func is_flee() -> bool: return team_index == -1
@@ -107,5 +115,5 @@ func is_empty() -> bool: return team_index == -2
 class ActorTurnEffect:
 	var was_defeated := false
 	var blocked_dmg := 0
-	var new_status_effects: Array[Effects]
-	var activated_status_effects: Array[Effects]
+	var new_status_effects: Array[Effects] = []
+	var activated_status_effects: Array[Effects] = []

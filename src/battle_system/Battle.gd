@@ -9,8 +9,8 @@ const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
 const MessageFeed := preload("res://src/battle_system/gui/message_feed/MessageFeed.gd")
 
-@export var post_attack_delay := 0.5
-@export var post_transmutation_delay := 0.5
+@export var post_attack_delay := 0.1
+@export var post_transmutation_delay := 0.2
 @export var post_turn_delay := 1.0
 @export var ai: OpponentController 
 @export var _dialog_box: DialogueBox

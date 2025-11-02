@@ -57,6 +57,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Controlling animation
 	- [ ] Setting to control speed and turn off animations
 	- [ ] Use buttons to skip animation
+	- [x] Move status pin animations into BattleAnimator to ensure animations happen at correct timings (block mostly)
 	- [ ] ~~Variable delays between each animation state~~
 - [ ] Communicate important information using animations and graphics
 	- [ ] Attack name

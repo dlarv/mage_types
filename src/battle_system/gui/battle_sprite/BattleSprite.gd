@@ -51,7 +51,7 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 	_indicator_mat.albedo_color = Color.DARK_GRAY
 
 	if shiftRight:
-		$PinManager/PhobiaCrown.rotation_degrees.y += 180
+		$PinManager.rotation_degrees.y += 180
 
 	$PinManager.status_manager = actor.statuses
 

@@ -3,6 +3,7 @@ extends Node3D
 signal finished()
 
 const BattleSprite := preload("res://src/battle_system/gui/battle_sprite/BattleSprite.gd")
+const BLOCK := preload("res://data/battle_system/status_effects/blocking_effect.tres")
 
 var _sprites: Dictionary[BattleActor, BattleSprite] = {}
 
@@ -40,6 +41,9 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 	# Play animation for each target getting hit
 	for actor in turnData.targets:
 		_sprites[actor].play_animation("getting_hit")
+		if turnData.did_actor_block(actor):
+			actor.status_activated.emit(BLOCK)
+
 
 	finished.emit()
 
