@@ -39,11 +39,9 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [x] Channel power
 		- [x] Attack
 		- [x] Getting hit
-- [ ] Implement flinch condition properly
-	- [ ] Prevent player from selecting actions for flinched characters
-		- [ ] Design such that this can be extended to support attack cooldowns
-	- [x] Create flinch pin
 - [ ] Battle messages
+	- [ ] Message Feed should resemble twitch chat
+		- [ ] Lines should be simple Strings
 	- [ ] Implement equipment bubble
 	- [ ] Reimplement status effect bubbles to use new ActorTurnEffect
 	- [x] Only show InfoDisplay when player is selecting attack or character
@@ -58,7 +56,6 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Setting to control speed and turn off animations
 	- [ ] Use buttons to skip animation
 	- [x] Move status pin animations into BattleAnimator to ensure animations happen at correct timings (block mostly)
-	- [ ] ~~Variable delays between each animation state~~
 - [ ] Communicate important information using animations and graphics
 	- [ ] Attack name
 	- [ ] Damage numbers: How much dmg did the attack deal?
@@ -85,6 +82,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Dead code
 	- [ ] Remove String returned value from `resolve_end_of_battle()` 
 	- [ ] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
+- [ ] Bugfix: Incorrect BattleSprite is highlighted when player is selecting an action
 - [ ] Experiment with layout
 	- [ ] Message feed
 		- [ ] Make translucent
@@ -96,6 +94,9 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Speed rankings
 		- [ ] Account for priority?
 		- [x] Change name from "Turn Order" to "Speed Ranking"
+- [x] Implement flinch condition properly
+	- [x] Prevent player from selecting actions for flinched characters
+	- [x] Create flinch pin
 - [x] Fix bug where selecting status pins appends message instead of replacing
 - [x] Make playtesting enemies easier
 	- [x] Show levels in UI
