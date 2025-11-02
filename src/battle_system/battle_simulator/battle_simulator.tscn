@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://bpknr2o40rp3b"]
+[gd_scene load_steps=97 format=3 uid="uid://bpknr2o40rp3b"]
 
 [ext_resource type="Script" uid="uid://cqu78r45p61p" path="res://src/battle_system/battle_simulator/BattleSimulator.gd" id="1_mvkuh"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="2_5bpb0"]
@@ -37,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://dsprshhqctptw" path="res://data/battle_system/battle_actions/attacks/elementals/orange/brave_the_dark.tres" id="32_vf0ih"]
 [ext_resource type="Resource" uid="uid://by8gsmj622ykf" path="res://data/battle_system/battle_actions/attacks/elementals/orange/unbalanced_assault.tres" id="33_0gw3k"]
 [ext_resource type="Resource" uid="uid://bxsi6867hrnte" path="res://data/battle_system/battle_actions/attacks/elementals/orange/reinforce.tres" id="34_jh6l0"]
+[ext_resource type="Resource" uid="uid://4e7bsqv36sxa" path="res://data/battle_system/battle_actions/attacks/elementals/purple/terror.tres" id="35_6d8gb"]
 [ext_resource type="Resource" uid="uid://ctbnp06ti551l" path="res://data/battle_system/battle_actions/attacks/elementals/orange/alchemy_beam.tres" id="35_fj7dx"]
 [ext_resource type="Resource" uid="uid://d1gb0w3k2ys3f" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/freezing_gale.tres" id="36_x4o48"]
 [ext_resource type="Resource" uid="uid://bx48nu4cu54b6" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/fortress.tres" id="37_ko71i"]
@@ -645,14 +646,6 @@ text = "Cyan Throw"
 layout_mode = 2
 text = "Magenta Throw"
 
-[node name="Terrify" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Terrify"
-
-[node name="Brave the Dark" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
-layout_mode = 2
-text = "Brave the Dark"
-
 [node name="Unbalanced Assault" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
 text = "Unbalanced Assault"
@@ -684,6 +677,10 @@ text = "Shield"
 [node name="Snipe" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
 text = "Snipe"
+
+[node name="Terror" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Terror"
 
 [node name="Wail" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
 layout_mode = 2
@@ -849,6 +846,14 @@ text = "Porphyrophobia"
 layout_mode = 2
 text = "Glaukophobia"
 
+[node name="Terrify" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Terrify"
+
+[node name="Brave the Dark" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector"]
+layout_mode = 2
+text = "Brave the Dark"
+
 [node name="ScrollContainer2" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -904,8 +909,6 @@ text = "Start"
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Red Hit" to="." method="_add_attack" binds= [ExtResource("8_tnql1")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Cyan Throw" to="." method="_add_attack" binds= [ExtResource("21_e7pbt")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Magenta Throw" to="." method="_add_attack" binds= [ExtResource("22_a26uw")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Terrify" to="." method="_add_attack" binds= [ExtResource("31_gohab")]]
-[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Brave the Dark" to="." method="_add_attack" binds= [ExtResource("32_vf0ih")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Unbalanced Assault" to="." method="_add_attack" binds= [ExtResource("33_0gw3k")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Reinforce" to="." method="_add_attack" binds= [ExtResource("34_jh6l0")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Alchemy Beam" to="." method="_add_attack" binds= [ExtResource("35_fj7dx")]]
@@ -914,6 +917,7 @@ text = "Start"
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Steel Shot" to="." method="_add_attack" binds= [ExtResource("38_72svk")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Shield" to="." method="_add_attack" binds= [ExtResource("39_pstkm")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Snipe" to="." method="_add_attack" binds= [ExtResource("40_3oynx")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Terror" to="." method="_add_attack" binds= [ExtResource("35_6d8gb")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Wail" to="." method="_add_attack" binds= [ExtResource("13_aone4")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Rush" to="." method="_add_attack" binds= [ExtResource("41_haqfd")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Desolation" to="." method="_add_attack" binds= [ExtResource("42_xshpv")]]
@@ -955,6 +959,8 @@ text = "Start"
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Hemophobia" to="." method="_add_attack" binds= [ExtResource("28_hjd7n")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Porphyrophobia" to="." method="_add_attack" binds= [ExtResource("29_lsbdp")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Glaukophobia" to="." method="_add_attack" binds= [ExtResource("30_eb0rf")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Terrify" to="." method="_add_attack" binds= [ExtResource("31_gohab")]]
+[connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/AttackSelector/Brave the Dark" to="." method="_add_attack" binds= [ExtResource("32_vf0ih")]]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/AddPlayerButton" to="." method="_on_add_player_button_pressed"]
 [connection signal="pressed" from="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/AddOpponentButton" to="." method="_on_add_opponent_button_pressed"]
 [connection signal="pressed" from="Setup/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

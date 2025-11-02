@@ -382,6 +382,7 @@ func remove_func_override(key: StringName) -> void:
 
 
 func add_xp(xp: float) -> int:
+	if not stat_manager is PlayerStatManager: return 0
 	return stat_manager.add_xp(xp)
 
 
@@ -396,6 +397,7 @@ func level_up(levels:=1, forceReset:=false) -> Dictionary[StatManager.Stats, flo
 
 
 func update_alignment() ->  Dictionary:
+	if not alignment_manager: return {}
 	var output := {}
 	var maxElements := alignment_manager.update_current_alignment()
 	var newCore: ElementalType

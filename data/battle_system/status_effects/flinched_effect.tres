@@ -7,9 +7,9 @@
 resource_name = "Flinched"
 script = ExtResource("1_d8bt7")
 id = 5
-duration = 1
+_duration = "1"
 icon = ExtResource("1_pbt1f")
 description = ""
 name = "Flinched"
-strength = 0.0
+_strength = "1.0"
 message = "{target} flinched!"

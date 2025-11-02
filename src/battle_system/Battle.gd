@@ -142,10 +142,9 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			
 		var flinch := turnData.user.flinching
 		if flinch != null:
-			# TODO: Play flinch animation
 			Logger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
-			turnData.user.turn_ended.emit()
 			gui.animate_status_activation(turnData.user, flinch)
+			resolve_end_of_turn(turnData)
 			continue
 
 		Logger.append_battle_log("\nActors turn: %s" % turnData.user.name)
@@ -197,14 +196,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if await _check_if_battle_ended(): return
 
 		# Resolve user's status effects.
-		var a := allies if turnData.team_index == 0 else enemies
-		var o := enemies if turnData.team_index == 0 else allies
-		turnData.resolve_end_of_turn(a, o)
-
-		for effect: int in turnData.expired_status_effects:
-			message_feed.append_removed_status_effect_message(turnData.user, effect)
-
-		turnData.user.turn_ended.emit()
+		resolve_end_of_turn(turnData)
 
 		# Check if battle should end due to poison/etc.
 		if await _check_if_battle_ended(): return
@@ -285,6 +277,17 @@ func _check_if_battle_ended() -> bool:
 		battle_ended.emit(EndState.WON)
 		return true
 	return false
+
+
+func resolve_end_of_turn(turnData: ActorTurnData) -> void:
+	var a := allies if turnData.team_index == 0 else enemies
+	var o := enemies if turnData.team_index == 0 else allies
+	turnData.resolve_end_of_turn(a, o)
+
+	for effect: int in turnData.expired_status_effects:
+		message_feed.append_removed_status_effect_message(turnData.user, effect)
+
+	turnData.user.turn_ended.emit()
 
 
 func _resolve_end_of_battle(pause:=true) -> void:

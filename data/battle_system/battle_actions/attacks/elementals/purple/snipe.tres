@@ -57,7 +57,7 @@ invert = false
 print_failed_status = "SILENT"
 failure_msg = "FAILED"
 effect_target = 1
-_chance = ""
+_chance = "1"
 
 [resource]
 resource_name = "Snipe"

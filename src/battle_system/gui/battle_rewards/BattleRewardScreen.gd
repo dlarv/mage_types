@@ -24,7 +24,7 @@ func show_results(actors: Array[BattleActor], xp: float, otherRewards: Array[Ite
 		displays.append(display)
 
 		var dict := actor.update_alignment()
-		if dict.element == null: continue
+		if dict.is_empty() or dict.element == null: continue
 
 		var msg: String
 		if dict.aligned:
@@ -73,4 +73,3 @@ func _on_animation_finished(_b: bool) -> void:
 	display_count -= 1
 	if display_count <= 0:
 		_animating_xp = false
-
