@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://deg4ffl4kkgel"]
+[gd_scene load_steps=6 format=3 uid="uid://deg4ffl4kkgel"]
 
 [ext_resource type="Script" uid="uid://bijf3xh2wqaqi" path="res://src/battle_system/gui/components/BattleActorDisplay.gd" id="1_5ryt8"]
 [ext_resource type="PackedScene" uid="uid://d0u0yls8gquxd" path="res://src/battle_system/gui/components/stat_display/stat_change_display.tscn" id="2_mxncc"]
@@ -10,13 +10,10 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_81c2e"]
 size = Vector2(0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1aos"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s5tk"]
 bg_color = Color(0, 1, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omh3g"]
-bg_color = Color(0, 1, 0, 1)
-
-[node name="BattleActorDisplay" type="MarginContainer" node_paths=PackedStringArray("stat_change_display")]
+[node name="BattleActorDisplay" type="MarginContainer" node_paths=PackedStringArray("stat_change_display") groups=["hp_display"]]
 custom_minimum_size = Vector2(200, 120)
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,8 +64,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_81c2e")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_e1aos")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_omh3g")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_1s5tk")
 value = 100.0
 editable = false
 scrollable = false

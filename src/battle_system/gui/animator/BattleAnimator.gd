@@ -41,13 +41,13 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 	# Play animation for each target getting hit
 	for actor in turnData.targets:
 		_sprites[actor].play_animation("getting_hit")
-		if turnData.did_actor_block(actor):
 
+		if turnData.did_actor_block(actor):
 			actor.status_activated.emit(BLOCK)
 			# Block was removed
 			if not actor.has_status_effect(BLOCK):
 				actor.status_effects_removed.emit([BLOCK] as Array[StatusEffect])
-
+	get_tree().call_group("hp_display", "animate_hp")
 
 	finished.emit()
 

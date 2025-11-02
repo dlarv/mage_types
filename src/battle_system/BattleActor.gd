@@ -142,14 +142,14 @@ func set_element(id: int, element: ElementalType) -> float:
 		alignment_manager.append_unnormalized(element, AlignmentManager.Type.TRANSMUTATION)
 
 	var effect := statuses.check_phobic(element)
+	var output := 0
 	if effect != null:
 		var dmg := hp * effect.get_strength()
 		Logger.append_battle_log("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
-		status_activated.emit(effect)
 
-		if dmg != 0:
-			return apply_damage(int(dmg), false)
-	return 0
+		output = apply_damage(int(dmg), false)
+		status_activated.emit(effect)
+	return output
 
 
 func get_element(id: int) -> ElementalType:
@@ -319,21 +319,24 @@ func resolve_end_of_turn(allies:=[], opponents:=[], data: ActorTurnData=null, us
 		return 
 
 	# Calc poison and healing.
-	var mod := 0.0
 	var poison := statuses.poison
 	var healing := statuses.healing
 
 	if poison > 0:
-		mod += poison
 		data.activated_status_effects.append(StatusEffectManager.StatusEffects.POISON)
-		status_activated.emit(statuses.statuses[StatusEffect.Effects.POISON])
 		_msgs.append("%s was hurt by poison (%d dmg)!" % [ name, poison * hp])
+
+		# If apply_damage is after status_activated, then hp bar will not be able to react properly
+		apply_damage(int(hp * poison), false)
+		status_activated.emit(statuses.statuses[StatusEffect.Effects.POISON])
+
 	if healing > 0:
-		mod -= healing
 		data.activated_status_effects.append(StatusEffectManager.StatusEffects.HEALING)
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
+
+		# If apply_damage is after status_activated, then hp bar will not be able to react properly
+		apply_damage(int(hp * -healing), false)
 		status_activated.emit(statuses.statuses[StatusEffect.Effects.HEALING])
-	apply_damage(int(hp * mod), false)
 
 	var effects := statuses.calculate_expirations()
 	for effect in effects:

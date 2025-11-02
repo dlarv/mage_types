@@ -63,6 +63,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [ ] Interesting effect to show transmutation happening
 		- [ ] Icon on combatant name plate showing their current composition
 	- [ ] Equipment activations
+	- [ ] Animate hp rising/falling after attack animation
 	- [x] Status effects activating: poison, phobia, flinched, stasis
 	- [x] User and targets
 	- [x] Whether attack dealt a status condition/extra effects

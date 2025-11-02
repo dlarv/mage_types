@@ -6,12 +6,17 @@ const StatChangeDisplay := preload("res://src/battle_system/gui/components/stat_
 
 var actor: BattleActor 
 var total_hp: float 
+var current_hp: float
+var next_hp: float
 
 func setup(actor: BattleActor) -> void:
 	%NameLabel.text = "%s (lvl%d)" % [ actor.name, actor.level ]
+
 	%HSlider.value = (float(actor.current_hp) / actor.hp) * 100
 	%HpLabel.text = "%d/%d" % [ actor.current_hp, actor.hp ]
 	total_hp = actor.hp
+	current_hp = actor.hp
+	next_hp = -1
 
 	self.actor = actor
 	%Element1.color = actor.element1.main_color
@@ -26,11 +31,42 @@ func setup(actor: BattleActor) -> void:
 		else:
 			%Element2.color = e.main_color
 	)
+	actor.status_activated.connect(func(effect: StatusEffect) -> void:
+		match effect.id:
+			StatusEffect.Effects.POISON,StatusEffect.Effects.PHOBIC:
+				animate_hp()
+	)
+
 
 
 func set_health(hp: int) -> void:
-	%HSlider.value = (float(hp) / total_hp) * 100.0
-	%HpLabel.text = "%d/%d" % [ hp, total_hp ]
+	next_hp = hp
+
+
+func animate_hp() -> void:
+	if next_hp < 0: return
+
+	const DURATION := 0.5
+	var tween := get_tree().create_tween()
+	var endVal := (next_hp / total_hp) * 100.0
+	var startVal := (current_hp / total_hp) * 100.0
+
+	tween.tween_property(%HSlider, "value", endVal, DURATION)
+	tween.set_parallel()
+	tween.tween_method(
+		func(val: int) -> void: 
+			%HpLabel.text = "%d/%d" % [ val * total_hp / 100, total_hp ], 
+		startVal, 
+		endVal, 
+		DURATION
+	)
+
+	current_hp = next_hp
+	next_hp = -1
+	print("NEXT HP RESET")
+	await tween.finished
+	%HpLabel.text = "%d/%d" % [ current_hp, total_hp ] 
+
 
 
 func display_stat_change(stat: StatManager.Stats, value: float) -> void:
