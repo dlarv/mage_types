@@ -25,11 +25,9 @@ var _begin_index: int = 0
 var _final_index: int = 0
 var _allow_end_turn: bool = false
 # List of indices of defeated actors.
-# bool[]
-var _skip_indices := []
-# BattleActor[]
-var _allies := []
-var _selected_actions := []
+var _skip_indices: Array[bool] = []
+var _allies: Array[BattleActor] = []
+var _already_selected_action: Array[bool] = []
 var _force_manual_end_turn := false
 
 func _ready() -> void:
@@ -65,31 +63,18 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		
 
 func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array[BattleActor]) -> void:
+	_allies = allies
 	_skip_indices = []
-	self._allies = allies
-	_selected_actions = []
 
 	for i in len(allies):
 		var ally := allies[i]
-		_selected_actions.append(0)
 		populate_new_attack_menu(ally, i)
 		_skip_indices.append(false)
 		# Variable has to be set out here, otherwise it'll be passed by reference.
 		var index := i
-		ally.was_just_defeated.connect(func() -> void:
-			_skip_indices[index] = true
-			# Recalc _begin_index and _final_index.
-			_final_index = _skip_indices.rfind(false)
-			_begin_index = _skip_indices.find(false))
 
 		attacks_panel.tab_selected.connect(func(tabIndex: int) -> void:
 			if(tabIndex != index): return
-			for j: int in len(ally.attacks):
-				if ally.attacks[j] == null: continue
-				var attack := ally.attacks[j]
-				var button := (attacks_panel.get_child(index).get_child(0).get_child(j))
-				button.is_locked = !attack.is_action_available(ally)
-
 			# Disable/Enable items based on reqs.
 			for j: int in len(items):
 				var item := items[j].battle_item
@@ -104,6 +89,7 @@ func setup(allies: Array[BattleActor], items: Array[RegularItem], enemies: Array
 	# Doing this activates the "check if available" method.
 	attacks_panel.current_tab = attacks_panel.current_tab
 	calc_character_selector_state(attacks_panel.current_tab)
+	_reset_selected()
 
 
 func populate_new_attack_menu(actor: BattleActor, index: int) -> void:
@@ -192,7 +178,7 @@ func prev_character() -> void:
 
 	for i in range(index - 1, _begin_index - 1, -1):
 		index = max(i, _begin_index)
-		if(_allies[i].is_defeated or _allies[i].flinching): break
+		if not _skip_indices[index]: break
 
 	attacks_panel.current_tab = index
 
@@ -207,8 +193,7 @@ func next_character() -> void:
 	var index := attacks_panel.current_tab
 	for i in range(index + 1, _final_index + 1):
 		index = min(i, _final_index)
-		if(not _skip_indices[index]): break
-
+		if not _skip_indices[index]: break
 
 	attacks_panel.current_tab = index
 
@@ -222,6 +207,12 @@ func set_enabled(enable: bool) -> void:
 	blocking_panel.visible = !enable
 	if not enable: return
 	_reset_selected()
+
+	_skip_indices = []
+	for ally in _allies:
+		_skip_indices.append(ally.flinching or ally.is_defeated)
+	_begin_index = _skip_indices.find(false)
+	_final_index = _skip_indices.rfind(false)
 
 	# Reset to first character.
 	attacks_panel.current_tab = _begin_index
@@ -275,14 +266,22 @@ func on_action_selected(state: int, index: int, action: _BattleAction) -> void:
 	# Press 2: Goto default.
 	if not state:
 		action_target_selection_cancelled.emit()
-	else:
-		show_info.emit(action)
-		_selected_actions[index] = 1
-		_allow_end_turn = _selected_actions.min() == 1
-		action_selected.emit(index, action)
+		return
+
+	show_info.emit(action)
+	_already_selected_action[index] = true
+	action_selected.emit(index, action)
+	_allow_end_turn = _already_selected_action.min()
 
 
 func _reset_selected() -> void:
-	for i: int in len(_allies):
-		_selected_actions[i] = int(_allies[i].is_defeated)
+	_already_selected_action = []
+	var i := -1
+	for ally in _allies:
+		i += 1
+		var val := ally.is_defeated or ally.flinching
+		_already_selected_action.append(val)
+
+		if val:
+			action_selected.emit(i, null)
 		

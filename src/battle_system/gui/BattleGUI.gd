@@ -66,6 +66,11 @@ func _on_action_target_selection_cancelled() -> void:
 
 
 func _on_action_selected(index: int, action: _BattleAction) -> void:
+	# Actor flinched or was defeated
+	if action == null:
+		_selected_actions[index] = ActorTurnData.new(allies[index], null, [], 0)
+		return
+
 	var targets: Array[BattleActor] = await select_targets(allies[index], action)
 	if len(targets) == 0: return
 
