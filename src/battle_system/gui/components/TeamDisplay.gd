@@ -203,7 +203,7 @@ func highlight(index: int) -> void:
 func show_enemy_intentions(val: bool) -> void:
 	for actor: TeamDisplayActor in actors.values():
 		if not actor.is_ally:
-			actor.sprite.show_intentions(val)
+			actor.sprite.toggle_intentions(val)
 
 
 func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void:

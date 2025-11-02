@@ -1,6 +1,8 @@
 extends Node
 
 signal battle_ended(endState: EndState)
+signal selection_phase_started()
+signal action_phase_started()
 
 enum EndState { WON, DEFEATED, FLED }
 enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES, TEAM_0, TEAM_1, ATTACKS }
@@ -99,7 +101,7 @@ func query_battlefield_state(asker: BattleActor, param: BattlefieldStateParams) 
 func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 	_dialog_box.stop()
 	gui.enable_player_controls(false)
-	gui.show_enemy_intentions(false)
+	action_phase_started.emit()
 
 	_turn_counter += 1
 	gui.turn_counter = _turn_counter
@@ -118,7 +120,6 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 
 	# Get actions for opponent's team.
 	# var enemyActions = ai.get_actions(allies)
-	# var _actions = allyActions
 	_actions.append_array(allyActions)
 
 	# Calculate turn order based on priority and actor speed.
@@ -316,12 +317,13 @@ func _resolve_end_of_battle(pause:=true) -> void:
 
 
 func _prep_next_turn() -> void:
+	selection_phase_started.emit()
+
 	Logger.append_battle_log("\n********************************AI********************************")
 	_actions.assign(ai.get_actions(allies))
 	Logger.append_battle_log("\n********************************END AI********************************")
-	gui.show_enemy_intentions(true)
-	tie_breaker = randf() < 0.5
 
+	tie_breaker = randf() < 0.5
 	var speedRank := allies.duplicate()
 	speedRank.append_array(enemies)
 	speedRank.sort_custom(func(a: BattleActor, b: BattleActor) -> bool:

@@ -13,14 +13,7 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 	const DURATION := 3.0
 	var userSprite := _sprites[turnData.user]
 	var affinity: float = turnData.action.calculate_affinity(turnData.user)
-	if affinity <= Attack.POOR_AFFINITY_THRESHOLD:
-		userSprite.show_elemental_particles(turnData.action.element, DURATION, 5)
-	elif affinity <= Attack.WEAK_AFFINITY_THRESHOLD:
-		userSprite.show_elemental_particles(turnData.action.element, DURATION, 20)
-	elif affinity <= Attack.GOOD_AFFINITY_THRESHOLD:
-		userSprite.show_elemental_particles(turnData.action.element, DURATION, 50)
-	else:
-		userSprite.show_elemental_particles(turnData.action.element, DURATION, 80)
+	userSprite.start_channeling_particles(DURATION, affinity)
 
 	await userSprite.play_animation("channeling")
 

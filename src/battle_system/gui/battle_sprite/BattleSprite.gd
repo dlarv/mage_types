@@ -4,8 +4,6 @@ signal hovered(actor: BattleActor)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
 
-const DEFAULT_PARTICLE_AMOUNT := 20.0
-
 @export var transmutation_hint: Control
 @export var mesh: MeshInstance3D
 
@@ -16,18 +14,18 @@ var actor: BattleActor
 var _mat1: StandardMaterial3D
 var _mat2: StandardMaterial3D
 var _indicator_mat: StandardMaterial3D
-var _particle_mat: StandardMaterial3D
 var _is_defeated := false
 var _animation_player: AnimationPlayer
 
 
-func setup(actor: BattleActor, shiftRight: bool) -> void:
+func setup(actor: BattleActor, isEnemy: bool) -> void:
 	self.actor = actor
 	_is_defeated = false
+	%EmitterController.is_ally = not isEnemy
+
 	_mat1 = StandardMaterial3D.new()
 	_mat2 = StandardMaterial3D.new()
 	_indicator_mat = StandardMaterial3D.new()
-	_particle_mat = StandardMaterial3D.new()
 
 	_mat1 = mesh.get_active_material(0)
 	_mat2 = mesh.get_active_material(1)
@@ -42,15 +40,11 @@ func setup(actor: BattleActor, shiftRight: bool) -> void:
 
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 
-	$GPUParticles3D.draw_pass_1 = BoxMesh.new()
-	$GPUParticles3D.draw_pass_1.size = Vector3(0.1, 0.1, 0.1)
-	$GPUParticles3D.draw_pass_1.material = _particle_mat
-
 	_mat1.albedo_color = actor.element1.main_color
 	_mat2.albedo_color = actor.element2.main_color
 	_indicator_mat.albedo_color = Color.DARK_GRAY
 
-	if shiftRight:
+	if isEnemy:
 		$PinManager.rotation_degrees.y += 180
 		$PinManager/PhobiaCrown.rotation_degrees.y += 180
 
@@ -112,9 +106,7 @@ func get_target_position() -> Vector2:
 	return pos2D
 
 
-func show_intentions(val: bool) -> void:
-	$GPUParticles3D.emitting = val
-	$GPUParticles3D.visible = val
+func toggle_intentions(val: bool) -> void: %EmitterController.toggle_intentions(val)
 
 
 func play_animation(name: String) -> void:
@@ -132,13 +124,8 @@ func get_animation_duration(name: String) -> float:
 	return _animation_player.get_animation(name).length
 
 
-func show_elemental_particles(el: ElementalType, duration: float, strength:=DEFAULT_PARTICLE_AMOUNT) -> void:
-	$GPUParticles3D.amount = strength
-	$GPUParticles3D.emitting = true
-	_particle_mat.albedo_color = el.main_color
-	await get_tree().create_timer(duration).timeout
-	$GPUParticles3D.amount = DEFAULT_PARTICLE_AMOUNT
-	$GPUParticles3D.emitting = false
+func start_channeling_particles(duration: float, strength: float) -> void:
+	%EmitterController.play_channeling(duration, strength)
 
 
 func _on_mouse_entered() -> void:
@@ -152,11 +139,7 @@ func _on_mouse_exited() -> void:
 
 
 func _on_action_selected(action: _BattleAction) -> void:
-	if not Settings.show_opponent_intentions or action.element.is_blank():
-		$GPUParticles3D.emitting = false
-		return
-	$GPUParticles3D.emitting = true
-	_particle_mat.albedo_color = action.element.main_color
+	%EmitterController.set_action_element(action.element)
 
 
 func hover_no_signal(highlight: bool) -> void:

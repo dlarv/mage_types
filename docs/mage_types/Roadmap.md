@@ -63,12 +63,12 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [ ] Interesting effect to show transmutation happening
 		- [ ] Icon on combatant name plate showing their current composition
 	- [ ] Equipment activations
-	- [ ] Animate hp rising/falling after attack animation
+	- [x] Animate hp rising/falling after attack animation
 	- [x] Status effects activating: poison, phobia, flinched, stasis
 	- [x] User and targets
 	- [x] Whether attack dealt a status condition/extra effects
 	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
-		- [ ] Bugfix: Since intention and affinity is communicated using the same particle emitter, if the player skips thru the animations, the call to turn off the particle effect will be called late, shutting off the intention effect instead
+		- [x] Bugfix: Since intention and affinity is communicated using the same particle emitter, if the player skips thru the animations, the call to turn off the particle effect will be called late, shutting off the intention effect instead
 - [ ] Attack Animation refactor
 	- [ ] Renamed class and references
 	- [ ] Animation should be selected via enum

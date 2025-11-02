@@ -71,6 +71,7 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 		_selected_actions[index] = ActorTurnData.new(allies[index], null, [], 0)
 		return
 
+	allies[index].action_selected.emit(action)
 	var targets: Array[BattleActor] = await select_targets(allies[index], action)
 	if len(targets) == 0: return
 
@@ -104,10 +105,6 @@ func select_targets(user: BattleActor, action:_BattleAction) -> Array[BattleActo
 	if len(targets) == 1 and targets[0] == null:
 		return []
 	return targets
-
-
-func show_enemy_intentions(val: bool) -> void:
-	team_display.show_enemy_intentions(val)
 
 
 func _on_active_actor_changed(index: int) -> void:
