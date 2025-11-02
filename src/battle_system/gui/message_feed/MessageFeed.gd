@@ -80,7 +80,7 @@ func append_transmutation_message(actor: BattleActor, e1: ElementalType, e2: Ele
 func append_removed_status_effect_message(actor: BattleActor, effect: ActorTurnData.Effects) -> void:
 		var statusBubble := OldStatusEffectBubble.instantiate()
 		statusBubble.setup([actor, effect])
-		bubble_container.add_bubble(statusBubble)
+		#bubble_container.add_bubble(statusBubble)
 
 
 func _get_panel(text: String) -> Control:
