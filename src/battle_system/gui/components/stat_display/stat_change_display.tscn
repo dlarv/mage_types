@@ -76,30 +76,50 @@ expand_mode = 1
 
 [node name="SubViewport1" type="SubViewport" parent="."]
 own_world_3d = true
+transparent_bg = true
 
 [node name="MeleeAttackDisplay" parent="SubViewport1" instance=ExtResource("6_4bxjt")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport1"]
+light_energy = 0.3
+
 [node name="SubViewport2" type="SubViewport" parent="."]
 own_world_3d = true
+transparent_bg = true
 
 [node name="RangedAttackDisplay" parent="SubViewport2" instance=ExtResource("6_4bxjt")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 1.5, 0, 0)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport2"]
+light_energy = 0.3
+
 [node name="SubViewport3" type="SubViewport" parent="."]
 own_world_3d = true
+transparent_bg = true
 
 [node name="MeleeDefenseDisplay" parent="SubViewport3" instance=ExtResource("6_4bxjt")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 3, 0, 0)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport3"]
+light_energy = 0.3
+
 [node name="SubViewport4" type="SubViewport" parent="."]
 own_world_3d = true
+transparent_bg = true
 
 [node name="RangedDefenseDisplay" parent="SubViewport4" instance=ExtResource("6_4bxjt")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 4.5, 0, 0)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport4"]
+light_energy = 0.3
+
 [node name="SubViewport5" type="SubViewport" parent="."]
 own_world_3d = true
+transparent_bg = true
 
 [node name="SpeedDisplay" parent="SubViewport5" instance=ExtResource("6_4bxjt")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 6, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport5"]
+light_energy = 0.3
