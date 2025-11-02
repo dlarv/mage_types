@@ -113,11 +113,11 @@ func _on_stat_changed(value: float, stat: int) -> void:
 	if active_actor == null: return
 	match stat:
 		0: active_actor.stat_manager.hp = value
-		1: active_actor.stat_manager.speed = value
-		2: active_actor.stat_manager.melee_attack = value
-		3: active_actor.stat_manager.melee_defense = value
-		4: active_actor.stat_manager.ranged_attack = value
-		5: active_actor.stat_manager.ranged_defense = value
+		1: active_actor.stat_manager._base_speed = value
+		2: active_actor.stat_manager._base_melee_attack = value
+		3: active_actor.stat_manager._base_melee_defense = value
+		4: active_actor.stat_manager._base_ranged_attack = value
+		5: active_actor.stat_manager._base_ranged_defense = value
 
 
 func _on_new_battle_actor_button_pressed() -> void:
