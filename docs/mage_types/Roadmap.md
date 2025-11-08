@@ -24,26 +24,12 @@
 [[version_naming_scheme]]
 ## v0.6.x
 Battle aesthetic update: [[more_dynamic_battles]]
-- [ ] Improved player model
-	- [ ] Modeled
-		- [x] Body
-		- [ ] Hair
-		- [ ] Face
-	- [x] Textured
-		- [x] Compare NextPassTransparency with Swapping diffuse maps
-			- Swapping diffuse maps looks far better than the next pass method
-	- [x] Animation
-		- [x] Walk
-		- [x] Basic Idle
-		- [x] Battle Stance
-		- [x] Channel power
-		- [x] Attack
-		- [x] Getting hit
 - [ ] Battle messages
 	- [ ] Message Feed should resemble twitch chat
 		- [ ] Lines should be simple Strings
-	- [ ] Implement equipment bubble
-	- [ ] Reimplement status effect bubbles to use new ActorTurnEffect
+		- [ ] Make translucent
+		- [ ] Focus current turn info
+		- [x] Bind to hotkey
 	- [x] Only show InfoDisplay when player is selecting attack or character
 		- [x] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
 	- [x] Refactor InfoDisplay to remove blocking message logic
@@ -54,46 +40,30 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Implement defeat bubble 
 - [ ] Controlling animation
 	- [ ] Setting to control speed and turn off animations
-	- [ ] Use buttons to skip animation
 	- [x] Move status pin animations into BattleAnimator to ensure animations happen at correct timings (block mostly)
 - [ ] Communicate important information using animations and graphics
 	- [ ] Attack name
 	- [ ] Damage numbers: How much dmg did the attack deal?
+	- [ ] Equipment activations
+	- [ ] Side effects
 	- [ ] Transmutations
 		- [ ] Interesting effect to show transmutation happening
-		- [ ] Icon on combatant name plate showing their current composition
-	- [ ] Equipment activations
+		- [ ] ~~Icon on combatant name plate showing their current composition
 	- [x] Animate hp rising/falling after attack animation
 	- [x] Status effects activating: poison, phobia, flinched, stasis
 	- [x] User and targets
 	- [x] Whether attack dealt a status condition/extra effects
 	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
 		- [x] Bugfix: Since intention and affinity is communicated using the same particle emitter, if the player skips thru the animations, the call to turn off the particle effect will be called late, shutting off the intention effect instead
-- [ ] Attack Animation refactor
-	- [ ] Renamed class and references
-	- [ ] Animation should be selected via enum
-	- [ ] Animation should be integrated with BattleActor animations
-- [ ] Make controls less obtrusive
-	- [x] Attack, Item, and Run buttons should be small and off to the side
-	- [ ] InfoDisplay
-		- [ ] Hovering should highlight which name card is theirs
-		- [x] Player can click on a BattleActor model to display info about them
-		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
-			- [ ] Hovering status pin should outline that pin
-- [ ] Dead code
-	- [ ] Remove String returned value from `resolve_end_of_battle()` 
-	- [ ] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
+- [x] Dead code
+	- [x] Remove String returned value from `resolve_end_of_battle()` 
+	- [x] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
 - [ ] Bugfix: Incorrect BattleSprite is highlighted when player is selecting an action
-- [ ] Experiment with layout
-	- [ ] Message feed
-		- [ ] Make translucent
-		- [ ] Focus current turn info
-		- [x] Bind to hotkey
+- [x] Experiment with layout
 	- [x] Combatant badges
 	- [x] Player control buttons
 		- [x] Remove character button (player will click on battle sprite)
 	- [x] Speed rankings
-		- [ ] Account for priority?
 		- [x] Change name from "Turn Order" to "Speed Ranking"
 - [x] Implement flinch condition properly
 	- [x] Prevent player from selecting actions for flinched characters
@@ -114,6 +84,36 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Give spawner enemy base templates 
 	- [x] Set custom spawn% for each enemy
 	- [x] Allow spawner to adjust stats/etc of instantiated enemies
+	
+***QOL changes that will likely not be implemented in this version.***
+- [ ] Speed ranking/turn order accounts for priority
+- [ ] Use buttons to skip battle animations
+- [ ] Attack Animation refactor
+	- [ ] Renamed class and references
+	- [ ] Animation should be selected via enum
+	- [ ] Animation should be integrated with BattleActor animations
+- [ ] Improved player model
+	- [ ] Modeled
+		- [x] Body
+		- [ ] Hair
+		- [ ] Face
+	- [x] Textured
+		- [x] Compare NextPassTransparency with Swapping diffuse maps
+			- Swapping diffuse maps looks far better than the next pass method
+	- [x] Animation
+		- [x] Walk
+		- [x] Basic Idle
+		- [x] Battle Stance
+		- [x] Channel power
+		- [x] Attack
+		- [x] Getting hit
+- [ ] Make controls less obtrusive
+	- [x] Attack, Item, and Run buttons should be small and off to the side
+	- [ ] InfoDisplay
+		- [ ] Hovering should highlight which name card is theirs
+		- [x] Player can click on a BattleActor model to display info about them
+		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
+			- [ ] Hovering status pin should outline that pin
 ## v0.7.x
 West and Central Hotel content update. Add puzzles and combat challenges to hotel.
 - [ ] Upper West Hotel challenges

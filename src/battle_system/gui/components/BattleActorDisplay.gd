@@ -31,7 +31,7 @@ func setup(actor: BattleActor) -> void:
 		else:
 			%Element2.color = e.main_color
 	)
-	actor.status_activated.connect(func(effect: StatusEffect) -> void:
+	actor.status_activated.connect(func(effect: StatusEffect, data: Variant) -> void:
 		match effect.id:
 			StatusEffect.Effects.POISON,StatusEffect.Effects.PHOBIC:
 				animate_hp()

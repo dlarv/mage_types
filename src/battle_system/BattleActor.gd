@@ -14,7 +14,7 @@ signal element_changed(id: int, element: ElementalType)
 signal leveled_up()
 signal spell_learned(spell: _BattleAction, index: int)
 signal equipment_equipped(equipment: Equipment)
-signal status_activated(effect: StatusEffect)
+signal status_activated(effect: StatusEffect, data: Variant)
 ## Called when opponents choose their action during battle.
 @warning_ignore("unused_signal")
 signal action_selected(action: _BattleAction)
@@ -135,7 +135,7 @@ func set_element(id: int, element: ElementalType) -> float:
 		Logger.append_battle_log("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 		output = apply_damage(int(dmg), false)
-		status_activated.emit(effect)
+		status_activated.emit(effect, dmg)
 	return output
 
 
@@ -314,20 +314,22 @@ func resolve_end_of_turn(allies:=[], opponents:=[], data: ActorTurnData=null, us
 		_msgs.append("%s was hurt by poison (%d dmg)!" % [ name, poison * hp])
 
 		# If apply_damage is after status_activated, then hp bar will not be able to react properly
-		apply_damage(int(hp * poison), false)
-		status_activated.emit(statuses.statuses[StatusEffect.Effects.POISON])
+		var dmg := int(hp * poison)
+		apply_damage(dmg, false)
+		status_activated.emit(statuses.statuses[StatusEffect.Effects.POISON], dmg)
 
 	if healing > 0:
 		data.activated_status_effects.append(StatusEffectManager.StatusEffects.HEALING)
 		_msgs.append("%s recovered %d health!" % [ name, hp * healing])
 
 		# If apply_damage is after status_activated, then hp bar will not be able to react properly
-		apply_damage(int(hp * -healing), false)
-		status_activated.emit(statuses.statuses[StatusEffect.Effects.HEALING])
+		var dmg := int(hp * -healing)
+		apply_damage(dmg, false)
+		status_activated.emit(statuses.statuses[StatusEffect.Effects.HEALING], dmg)
 
 	var effects := statuses.calculate_expirations()
 	for effect in effects:
-		data.expired_status_effects.append(effect.id)
+		data.expired_status_effects.append(effect)
 		_msgs.append("Status effects wore off! (%s)" % StatusEffectManager.StatusEffects.keys()[effect.id])
 
 	status_effects_removed.emit(effects)

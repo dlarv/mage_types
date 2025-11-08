@@ -175,6 +175,5 @@ func _on_pin_selected(effect: StatusEffect) -> void:
 	status_effect_icon_pressed.emit(effect)
 
 
-func animate_status_activation(effect: StatusEffect
-) -> void:
+func animate_status_activation(effect: StatusEffect, data:Variant=null) -> void:
 	$PinManager.activate_pin(effect)

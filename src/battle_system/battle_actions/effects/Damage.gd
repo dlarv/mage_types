@@ -49,26 +49,19 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, data:
 
 func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 	var actualDmg := target.apply_damage(dmg)
-	data.total_dmg += actualDmg
-	data.prev_dmg = actualDmg
-
-	if data.user == target:
-		data.recoil_dmg += actualDmg
-	else:
-		data.total_dmg += actualDmg
 
 	if actualDmg == dmg:
 		Logger.append_battle_log("Dealt %d damage to %s." % [dmg, target.name])
+		data.add_damage(target, actualDmg)
 		return
 
 	var msg := "Tried to deal %d damage to %s." % [dmg, target.name]
 	if actualDmg == 0:
 		msg += "But %s blocked the attack!" % target.name
-		data.add_activated_effect(target, ActorTurnData.Effects.BLOCK, dmg)
 	else:
 		msg += " But %s deflected some of the damage! Dealt %d damage to %s." \
 				% [target.name, actualDmg, target.name]
-		data.add_activated_effect(target, ActorTurnData.Effects.BLOCK, dmg - actualDmg)
+		data.add_damage(target, actualDmg)
 	
 	Logger.append_battle_log(msg)
 

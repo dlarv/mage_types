@@ -1,35 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfi0hsn01hn8c"]
+[gd_scene load_steps=3 format=3 uid="uid://dfi0hsn01hn8c"]
 
 [ext_resource type="Script" uid="uid://ci8nfg8h8s3we" path="res://src/battle_system/gui/message_feed/MessageFeed.gd" id="1_6m804"]
+[ext_resource type="Script" uid="uid://b1he8t2w5rm50" path="res://src/battle_system/gui/message_feed/Scroller.gd" id="2_i7ipe"]
 
-[node name="MessageFeed" type="PanelContainer"]
-custom_minimum_size = Vector2(500, 0)
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -10.0
-offset_right = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="MessageFeed" type="Window"]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(500, 600)
+unresizable = true
+transparent = true
+force_native = true
 script = ExtResource("1_6m804")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_bottom = 100
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 follow_focus = true
-horizontal_scroll_mode = 0
+script = ExtResource("2_i7ipe")
 
-[node name="Scroller" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="Scroller" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 5
+
+[connection signal="gui_input" from="PanelContainer/MarginContainer/ScrollContainer" to="PanelContainer/MarginContainer/ScrollContainer" method="_on_gui_input"]

@@ -58,12 +58,6 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 		if actor.alignment_manager:
 			actor.alignment_manager.append_unnormalized(element, AttackType.ATTACK)
 
-	# Calculate accuracy.
-	var rand := randf()
-	if rand > accuracy:
-		data.missed = true
-		Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
-		return data
 
 	var affinity := calculate_affinity(user)
 	data.effectiveness = affinity
@@ -73,6 +67,13 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 	for i in len(targets):
 		var target := targets[i]
 		data.add_actor(target)
+
+		# Check if attack should miss.
+		var rand := randf()
+		if rand > accuracy:
+			data.add_missed_target(target)
+			Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
+			continue
 
 		for slot in effects:
 			if slot.effect_target == _BaseEffectSlot.EffectTarget.NOT_USER and target == user: 

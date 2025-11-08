@@ -5,7 +5,6 @@ class_name ActorTurnData
 ## These are basically like an instance of a _BattleAction.
 # public static ActorAction[] Flee = new ActorAction[0]
 
-const Effects := BattleActor.StatusEffectManager.StatusEffects
 const EXPRESSION_VARS: PackedStringArray = ["total_dmg", "prev_dmg", "recoil_dmg", "missed", "phobia_dmg"]
 
 var user: BattleActor 
@@ -19,14 +18,16 @@ var total_dmg: int
 var prev_dmg: int
 var recoil_dmg: int
 var phobia_dmg: int
-var missed: bool
+var missed: bool:
+	get:
+		return effects.values().all(func(x: ActorTurnEffect) -> bool: return x.missed)
 var element: ElementalType
 var user_was_defeated := false
 var blocked_dmg := 0
 
-var new_status_effects: Array[Effects] = []
-var activated_status_effects: Array[Effects] = []
-var expired_status_effects: Array[Effects] = []
+var new_status_effects: Array[StatusEffect] = []
+var activated_status_effects: Array[StatusEffect.Effects] = []
+var expired_status_effects: Array[StatusEffect] = []
 
 var effects: Dictionary[BattleActor, ActorTurnEffect] = {}
 
@@ -61,19 +62,39 @@ func add_actor(actor: BattleActor) -> void:
 	effects[actor] = ActorTurnEffect.new()
 
 
-func add_inflicted_effect(actor: BattleActor, effect: Effects) -> void:
+func add_inflicted_effect(actor: BattleActor, effect: StatusEffect) -> void:
 	if actor == user:
 		new_status_effects.append(effect)
 	else:
 		effects[actor].new_status_effects.append(effect)
 
 
-func add_activated_effect(actor: BattleActor, effect: Effects, data: Variant=null) -> void:
+func add_activated_effect(actor: BattleActor, effect: StatusEffect.Effects, data: Variant=null) -> void:
 	if actor == user:
-		activated_status_effects.append(effect)
+		if effect == StatusEffect.Effects.BLOCK:
+			blocked_dmg += data
+		else:
+			activated_status_effects.append(effect)
 		return
 
-	effects[actor].activated_status_effects.append(effect)
+	if effect == StatusEffect.Effects.BLOCK:
+		effects[actor].blocked_dmg += data
+	else:
+		effects[actor].activated_status_effects.append(effect)
+
+
+func add_damage(actor: BattleActor, dmg: int) -> void:
+	prev_dmg = dmg
+	total_dmg += dmg
+	if actor == user:
+		recoil_dmg += dmg
+		return
+	effects[actor].dmg += dmg
+
+
+func add_missed_target(actor: BattleActor) -> void:
+	if actor == user: return
+	effects[actor].missed = true
 
 
 func set_defeated(actor: BattleActor) -> void:
@@ -114,6 +135,8 @@ func is_empty() -> bool: return team_index == -2
 
 class ActorTurnEffect:
 	var was_defeated := false
+	var dmg := 0
 	var blocked_dmg := 0
-	var new_status_effects: Array[Effects] = []
-	var activated_status_effects: Array[Effects] = []
+	var missed := false
+	var new_status_effects: Array[StatusEffect] = []
+	var activated_status_effects: Array[StatusEffect] = []

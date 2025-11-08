@@ -36,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Logger.save_log()
 	elif event.is_action_pressed("skip_dialog"):
 		_dialog_box.stop()
-	elif event.is_action_pressed("toggle_battle_feed"):
+	elif event.is_action_pressed("toggle_battle_feed") and message_feed:
 		message_feed.visible = not message_feed.visible
 	
 
@@ -69,6 +69,8 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	add_child(gui)
 	gui.actions_selected.connect(_on_player_actions_selected)
 	gui.setup(allies, allyItems, enemies)
+
+	message_feed.setup(allies + enemies)
 
 	_prep_next_turn()
 	await _dialog(false)
@@ -137,7 +139,6 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 	await _dialog(false)
 
 	for turnData in _actions:
-		# This means a character is defeated.
 		if turnData == null or turnData.user.is_defeated:
 			continue
 			
@@ -145,12 +146,12 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if flinch != null:
 			Logger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
 			gui.animate_status_activation(turnData.user, flinch)
+			turnData.user.status_activated.emit(flinch, null)
 			resolve_end_of_turn(turnData)
 			await get_tree().create_timer(post_turn_delay).timeout
 			continue
 
 		Logger.append_battle_log("\nActors turn: %s" % turnData.user.name)
-		message_feed.append_actor_header(turnData.user)
 		
 		# Apply action effects.
 		var res := turnData.execute()
@@ -158,16 +159,11 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		var missed: bool = res.missed
 
 		message_feed.append_action_message(turnData)
-		# Display message and await input.
-		Logger.append_battle_log(_build_msg(turnData))
 
 		await gui.animate_action(turnData, missed)
 		await get_tree().create_timer(post_attack_delay).timeout
 
 		var defeatedActors := turnData.get_defeated()
-		message_feed.append_defeated_message(defeatedActors)
-		for actor in defeatedActors:
-			Logger.append_battle_log("%s was defeated...." % actor.name)
 		
 		# Check if battle should end.
 		if await _check_if_battle_ended(): return
@@ -190,7 +186,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if not missed and turnData.targets.find(turnData.user) == -1 \
 				and turnData.action is Attack \
 				and (turnData.action).attack_range == Attack.AttackRange.MELEE:
-			_calculate_transmutations(turnData.user, turnData.action) 
+			_calculate_transmutations(turnData.user, turnData.action, true) 
 		await get_tree().create_timer(post_transmutation_delay).timeout
 
 		# Check if battle should end.
@@ -212,49 +208,36 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 	gui.enable_player_controls(true)
 
 
-func _calculate_transmutations(target: BattleActor, action: _BattleAction) -> void:
+func _calculate_transmutations(target: BattleActor, action: _BattleAction, isMelee:=false) -> void:
 	if target.stasis:
-		Logger.append_battle_log("%s is in stasis! Transmutations were blocked!" % target.name)
+		target.status_activated.emit(target.stasis, null)
 		gui.animate_status_activation(target, target.stasis)
 		return
 
  	# Calculate secondary + attack 
-	_calculate_transmutation(target.element2, action.element, target, 1)
+	_calculate_transmutation(target.element2, action.element, target, 1, false, isMelee)
 	# Return early if target died due to phobia.
 	if target.is_defeated: return
 	# Calculate internal transmutation.
-	_calculate_transmutation(target.element1, target.element2, target, 1, true)
+	_calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
 
 
-func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false) -> bool:
+func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false, isMelee:=false) -> bool:
 	var newType := ElementManager.get_matchup(e1, e2)
 	if newType == null: return false
 
-	var e1Name := e1.get_bb_code_name()
-	var e2Name := e2.get_bb_code_name()
-	var msg := []
+	if isMelee:
+		message_feed.append_info("Melee attack's also cause transmutations in their user!")
 
-	if isInternal:
-		msg.append("The target %s's %s reacted with it's %s type to make %s." 
-				% [ target.name, e1Name, e2Name, newType.get_bb_code_name()])
-	else:
-		msg.append("The target %s's %s reacted with the attack's %s type to make %s." 
-				% [ target.name, e1Name, e2Name, newType.get_bb_code_name()])
-	message_feed.append_transmutation_message(target, e1, newType, e2) 
+	message_feed.append_transmutation_message(target, e1, newType, e2, isInternal) 
 
 	var buff := ElementManager.get_side_effect(e1, e2)
 
 	if not buff.apply_effect(ActorTurnData.empty(target), target).is_empty():
-		pass
-		# msg.append("This reaction had side effects!")
-		# msg.append_array(target.get_and_flush_msgs())
+		message_feed.append_side_effect_message(target, buff)
 
 	target.set_element(id, newType)
-	# var msg2 := target.get_and_flush_msgs()
-	# if len(msg2) > 0:
-	# 	msg.append_array(msg2)
 
-	Logger.append_battle_log(msg)
 	return true
 
 
@@ -287,19 +270,16 @@ func resolve_end_of_turn(turnData: ActorTurnData) -> void:
 	var o := enemies if turnData.team_index == 0 else allies
 	turnData.resolve_end_of_turn(a, o)
 
-	for effect: int in turnData.expired_status_effects:
-		message_feed.append_removed_status_effect_message(turnData.user, effect)
+	message_feed.append_expired_status_effects_message(turnData)
+	message_feed.newline()
 
 	turnData.user.turn_ended.emit()
 
 
 func _resolve_end_of_battle(pause:=true) -> void:
 	for ally in allies:
-		# TO BE DEPRECATED
-		# var msg: String = ally.resolve_end_of_battle(_turn_counter)
 		ally.resolve_end_of_battle(_turn_counter)
 		ally.was_just_defeated.disconnect(_increment_defeat_counter)
-		# await gui.display_message(msg)
 	
 	for enemy in enemies:
 		enemy.resolve_end_of_battle(_turn_counter)
@@ -342,25 +322,3 @@ func _increment_defeat_counter(isAlly: bool) -> void:
 		_defeated_allies += 1
 	else:
 		_defeated_enemies += 1
-
-
-# To be DEPRECATED
-func _build_msg(data: ActorTurnData) -> String:
-	var targetName: String
-	var TargetType := _BattleAction.TargetType
-	match data.action.target:
-		TargetType.ENEMY, TargetType.ALLY:
-			targetName = data.targets[0].name
-		TargetType.ENEMIES: 
-			targetName = "the enemy team"
-		TargetType.ALLIES:
-			targetName = "their team"
-		TargetType.SELF:
-			targetName = "their team"
-
-	var output := "%s used %s on %s!" % [data.user.name, data.action.name, targetName]
-	if data.total_dmg > 0:
-		output += "(%d dmg)" % data.total_dmg
-	if data.recoil_dmg > 0:
-		output += "\nThis attack had recoil (%d dmg)..." % data.recoil_dmg
-	return output

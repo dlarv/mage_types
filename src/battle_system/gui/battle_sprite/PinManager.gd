@@ -77,7 +77,9 @@ func _on_pin_selected(effect:StatusEffect) -> void:
 func _on_pin_hovered(pin: Node3D) -> void:
 	pin_hovered.emit(pin.effect, pin.element)
 	_active_pin = pin
-	pin.set_duration(status_manager.get_status(pin.effect).duration)
+	var block := status_manager.get_status(pin.effect)
+	if not block: return
+	pin.set_duration(block.duration)
 
 
 func _on_pin_unhovered(pin: Node3D) -> void:
