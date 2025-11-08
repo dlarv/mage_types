@@ -117,19 +117,6 @@ func setup() -> void:
 	battle_setup_completed.emit()
 
 
-func get_and_flush_msgs() -> Array[String]:
-	var output := _msgs
-	_msgs = []
-
-	if equipment != null:
-		var equipmentMsgs := equipment.get_and_flush_msgs()
-		if len(equipmentMsgs) > 0:
-			output.append("%s's %s activated!" % [name, equipment.name])
-			output.append_array(equipmentMsgs)
-	
-	return output
-
-
 ## Returns amount of damage dealt, if actor has phobia
 func set_element(id: int, element: ElementalType) -> float:
 	if id == 0:
@@ -346,14 +333,13 @@ func resolve_end_of_turn(allies:=[], opponents:=[], data: ActorTurnData=null, us
 	status_effects_removed.emit(effects)
 
 
-func resolve_end_of_battle(turnCounter: int) -> String:
+func resolve_end_of_battle(turnCounter: int) -> void:
 	stat_manager.reset_all()
 	statuses.clear()
 	if reset_hp_after_battle: 
 		current_hp = hp
 	
 	# Update alignment.
-	var output := ""
 	var unnormalizedValues := []
 	if alignment_manager and not alignment_manager.alignment_locked:
 		Logger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
@@ -367,7 +353,6 @@ func resolve_end_of_battle(turnCounter: int) -> String:
 	aleady_defeated = false
 
 	battle_resolution_completed.emit()
-	return output
 
 
 func has_phobia(element: ElementalType=null) -> bool:

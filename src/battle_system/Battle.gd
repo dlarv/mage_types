@@ -245,13 +245,14 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 	var buff := ElementManager.get_side_effect(e1, e2)
 
 	if not buff.apply_effect(ActorTurnData.empty(target), target).is_empty():
-		msg.append("This reaction had side effects!")
-		msg.append_array(target.get_and_flush_msgs())
+		pass
+		# msg.append("This reaction had side effects!")
+		# msg.append_array(target.get_and_flush_msgs())
 
 	target.set_element(id, newType)
-	var msg2 := target.get_and_flush_msgs()
-	if len(msg2) > 0:
-		msg.append_array(msg2)
+	# var msg2 := target.get_and_flush_msgs()
+	# if len(msg2) > 0:
+	# 	msg.append_array(msg2)
 
 	Logger.append_battle_log(msg)
 	return true
@@ -295,7 +296,8 @@ func resolve_end_of_turn(turnData: ActorTurnData) -> void:
 func _resolve_end_of_battle(pause:=true) -> void:
 	for ally in allies:
 		# TO BE DEPRECATED
-		var msg: String = ally.resolve_end_of_battle(_turn_counter)
+		# var msg: String = ally.resolve_end_of_battle(_turn_counter)
+		ally.resolve_end_of_battle(_turn_counter)
 		ally.was_just_defeated.disconnect(_increment_defeat_counter)
 		# await gui.display_message(msg)
 	
