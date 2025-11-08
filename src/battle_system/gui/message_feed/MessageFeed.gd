@@ -18,7 +18,7 @@ func setup(actors: Array[BattleActor]) -> void:
 
 
 func append_turn_header(turn: int) -> void:
-	_append_text("[center][b]Turn %d[/b][/center]" % turn)
+	_append_text("[center][b]Turn %d[/b][/center]" % turn, false)
 
 
 func append_action_message(data: ActorTurnData) -> void:
@@ -114,7 +114,7 @@ func append_activated_status_effect_message(effect: StatusEffect, data: Variant,
 	_append_text(msg)
 
 
-func _append_text(msg: String) -> void:
+func _append_text(msg: String, writeLog:=true) -> void:
 	var label := RichTextLabel.new()
 	label.fit_content = true
 	label.bbcode_enabled = true
@@ -124,7 +124,8 @@ func _append_text(msg: String) -> void:
 	label.append_text(msg)
 	label.newline()
 
-	Logger.append_battle_log(msg)
+	if writeLog:
+		Logger.append_battle_log(msg)
 
 
 # Used by Battle.gd to create a space between different actors, but not between first actor and turn heading

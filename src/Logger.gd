@@ -8,12 +8,16 @@ extends Node
 
 var logs := []
 
+var _regex: RegEx
 var _root_path: String
 var _file_name: String
 var _time_til_save := 0.0
 
 func _enter_tree() -> void:
 	if Engine.is_editor_hint(): return
+
+	_regex = RegEx.new()
+	_regex.compile("\\[.*?\\]")
 
 	# Check if debug or standalone
 	if OS.has_feature("standalone"):
@@ -90,7 +94,17 @@ func append_log(msg: Variant) -> void:
 	
 
 func append_battle_log(msg: Variant) -> void:
-	append_log("[BATTLE]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
+	msg = msg.strip_edges()
+	if msg.is_empty(): return
+
+	msg = msg.replace("[lb]", "[").replace("[rb]", "]")
+	msg = _regex.sub(msg, "", true)
+
+	# Turn headings
+	if msg.begins_with("****") and msg.ends_with("****"):
+		append_log(msg)
+	else:
+		append_log("[BATTLE]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
 
 
 func append_battle_ai_log(msg: Variant) -> void:
@@ -111,4 +125,3 @@ func append_golem_log(msg: Variant) -> void:
 
 func append_story_log(msg: Variant) -> void:
 	append_log("[STORY]@%s --> %s" % [Time.get_time_string_from_system(false), msg])
-
