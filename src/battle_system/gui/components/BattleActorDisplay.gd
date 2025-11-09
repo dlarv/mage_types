@@ -63,7 +63,6 @@ func animate_hp() -> void:
 
 	current_hp = next_hp
 	next_hp = -1
-	print("NEXT HP RESET")
 	await tween.finished
 	%HpLabel.text = "%d/%d" % [ current_hp, total_hp ] 
 

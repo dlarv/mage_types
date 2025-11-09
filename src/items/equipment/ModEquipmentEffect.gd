@@ -27,7 +27,6 @@ func equip(actor: BattleActor) -> void:
 		Type.PREVENT_DEFEAT:
 			actor.add_func_override(method_name, _prevent_defeat.bind(actor))
 			get_meta("prevent_defeat", {})[actor] = false
-			print("DEBUG: " + str(get_meta("prevent_defeat")))
 		Type.TRAINING_WHEELS:
 			actor.add_func_override(method_name, _training_wheels.bind(actor))
 		Type.HAMMER:

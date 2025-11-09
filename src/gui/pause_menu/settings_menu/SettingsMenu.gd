@@ -9,22 +9,18 @@ func _ready() -> void:
 
 
 func _on_transmutation_hints_toggled(value: bool) -> void:
-	print("Transmutation hints toggled")
 	Settings.enable_transmutation_hints = value
 
 
 func _on_debug_mode_toggled(value: bool) -> void:
-	print("Debug mode toggled")
 	Settings.debug_mode = value
 
 
 func _on_show_intentions_toggled(value: bool) -> void:
-	print("Show intentions toggled")
 	Settings.show_opponent_intentions = value
 
 
 func _on_show_turn_order_toggled(value: bool) -> void:
-	print("Show turn order toggled")
 	Settings.show_battle_turn_order = value
 
 

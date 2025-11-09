@@ -24,20 +24,6 @@
 [[version_naming_scheme]]
 ## v0.6.x
 Battle aesthetic update: [[more_dynamic_battles]]
-- [ ] Battle messages
-	- [ ] Message Feed should resemble twitch chat
-		- [ ] Lines should be simple Strings
-		- [ ] Make translucent
-		- [ ] Focus current turn info
-		- [x] Bind to hotkey
-	- [x] Only show InfoDisplay when player is selecting attack or character
-		- [x] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
-	- [x] Refactor InfoDisplay to remove blocking message logic
-		- [x] Remove calls to blocking messages from Battle
-	- [x] Give player ability to toggle battle message display
-	- [x] Show list of all messages sent during battle
-	- [x] Have unique display formatting attacks and transmutation and misc effects
-	- [x] Implement defeat bubble 
 - [ ] Controlling animation
 	- [ ] Setting to control speed and turn off animations
 	- [x] Move status pin animations into BattleAnimator to ensure animations happen at correct timings (block mostly)
@@ -46,9 +32,9 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Damage numbers: How much dmg did the attack deal?
 	- [ ] Equipment activations
 	- [ ] Side effects
-	- [ ] Transmutations
-		- [ ] Interesting effect to show transmutation happening
-		- [ ] ~~Icon on combatant name plate showing their current composition
+	- [x] Transmutations
+		- [ ] ~~Interesting effect to show transmutation happening
+		- [x] Icon on combatant name plate showing their current composition
 	- [x] Animate hp rising/falling after attack animation
 	- [x] Status effects activating: poison, phobia, flinched, stasis
 	- [x] User and targets
@@ -59,6 +45,21 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Remove String returned value from `resolve_end_of_battle()` 
 	- [x] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
 - [ ] Bugfix: Incorrect BattleSprite is highlighted when player is selecting an action
+- [x] Battle messages
+	- [x] Message Feed should resemble twitch chat
+		- [x] Lines should be simple Strings
+		- [ ]~~Make translucent~~
+			- I selected the option for transparency, but this doesn't work with my WM
+		- [x] Focus current turn info
+		- [x] Bind to hotkey
+	- [x] Only show InfoDisplay when player is selecting attack or character
+		- [x] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
+	- [x] Refactor InfoDisplay to remove blocking message logic
+		- [x] Remove calls to blocking messages from Battle
+	- [x] Give player ability to toggle battle message display
+	- [x] Show list of all messages sent during battle
+	- [x] Have unique display formatting attacks and transmutation and misc effects
+	- [x] Implement defeat bubble 
 - [x] Experiment with layout
 	- [x] Combatant badges
 	- [x] Player control buttons

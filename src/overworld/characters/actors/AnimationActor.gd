@@ -7,7 +7,6 @@ class_name AnimationActor
 @export var is_blocking := false
 
 func play_animation(player: Node3D) -> void:
-	print("AnimationActor played %s cutscene." % animation_name)
 	Logger.append_puzzle_log("AnimationActor played %s cutscene." % animation_name) 
 	if is_blocking:
 		player.call_deferred("play_cutscene", animation_player, animation_name)

@@ -188,7 +188,7 @@ func replace_attack(scroll: SpellScroll, index:=-1) -> Array[ItemRequirement]:
 		attacks[index] = scroll.spell
 		spell_learned.emit(scroll.spell, index)
 	else:
-		print("Could not learn selected Spell(%s). BattleActor(%s) does not meet the following reqs: %s" 
+		push_warning("Could not learn selected Spell(%s). BattleActor(%s) does not meet the following reqs: %s" 
 				% [scroll.spell.name, name, str(output) ])
 		if prevAttack:
 			attacks[index] = prevAttack

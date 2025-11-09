@@ -241,7 +241,6 @@ func _toggle_3d_collision_shape_visibility() -> void:
 	var tree: SceneTree = get_tree()
 	# https://github.com/godotengine/godot-proposals/issues/2072
 	tree.debug_collisions_hint = not tree.debug_collisions_hint
-	print("Set show_debug_collisions_hint: ", tree.debug_collisions_hint)
 
 	# Traverse tree to call toggle collision visibility
 	var node_stack: Array[Node] = [tree.get_root()]

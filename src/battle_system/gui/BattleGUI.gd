@@ -127,13 +127,6 @@ func _on_turn_ended(tryRunningAway: bool) -> void:
 	
 
 func _on_show_info(action: Variant, limitInfo:=false) -> void:
-	var msg := "Empty"
-	if action is _BattleAction:
-		msg = action.name
-	elif (action is BattleActor):
-		msg = action.name
-	print(msg)
-	
 	%DisplayContainer.current_tab = 0
 	display_message_non_blocking(action, limitInfo)
 

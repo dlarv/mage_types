@@ -52,7 +52,6 @@ func _on_calculate_button_pressed() -> void:
 
 func traverse(element: ElementalType, validEdges: Array, graph: Node, visited:=[]) -> void:
 	if element in visited: return
-	print("Visited: %s" % element.name)
 	var elementalNode = ElementManager.matchups[element.name]
 	graph.show_node(element)
 	visited.append(element)

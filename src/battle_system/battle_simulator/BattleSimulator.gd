@@ -152,7 +152,7 @@ func _on_add_player_button_pressed() -> void:
 
 func _on_start_button_pressed() -> void:
 	if len(players) == 0 or len(opponents) == 0: 
-		print("Either Players and/or Opponents are empty")
+		push_warning("Either Players and/or Opponents are empty")
 		return
 	$Setup.hide()
 	Battle.start(players, [], opponents, ai)

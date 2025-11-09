@@ -189,7 +189,6 @@ func test_traversals() -> void:
 		var output := "%s,%s,%s,%s" \
 				% [ header, ",".join(body), ",".join(averages.values()), 
 						str(averages.values().reduce(countNonZero, 0))] 
-		print(output)
 		file.store_line(output)
 
 

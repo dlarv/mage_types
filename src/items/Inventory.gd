@@ -313,7 +313,6 @@ func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:
 
 
 func _add_items_from_dir(path: String) -> void:
-		print("Loading items from: " + path)
 		var root := DirAccess.open(path)
 
 		# Depth first search of files.

@@ -68,7 +68,6 @@ func increment() -> void:
 
 
 func decrement() -> void:
-	print(_curr_index)
 	if _get_index() == 0:
 		if _curr_index == 0:
 			_active_material = _negative_material

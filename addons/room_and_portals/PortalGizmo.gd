@@ -6,7 +6,7 @@ func _redraw():
 
 	var portal = get_node_3d()
 	if not portal.is_complete(): 
-		print("Portal is not complete")
+		push_warning("Portal is not complete")
 		return
 
 	var lines := PackedVector3Array()
