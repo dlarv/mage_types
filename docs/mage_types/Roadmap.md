@@ -32,6 +32,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Damage numbers: How much dmg did the attack deal?
 	- [ ] Equipment activations
 	- [ ] Side effects
+		- The dials might be enought to communicate this
 	- [x] Transmutations
 		- [ ] ~~Interesting effect to show transmutation happening
 		- [x] Icon on combatant name plate showing their current composition
@@ -41,10 +42,10 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Whether attack dealt a status condition/extra effects
 	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
 		- [x] Bugfix: Since intention and affinity is communicated using the same particle emitter, if the player skips thru the animations, the call to turn off the particle effect will be called late, shutting off the intention effect instead
+- [ ] Bugfix: Incorrect BattleSprite is highlighted when player is selecting an action
 - [x] Dead code
 	- [x] Remove String returned value from `resolve_end_of_battle()` 
 	- [x] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
-- [ ] Bugfix: Incorrect BattleSprite is highlighted when player is selecting an action
 - [x] Battle messages
 	- [x] Message Feed should resemble twitch chat
 		- [x] Lines should be simple Strings
