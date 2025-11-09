@@ -4,6 +4,10 @@ signal hovered(actor: BattleActor)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
 
+const ALLY_FONT_SIZE := 45
+const ENEMY_FONT_SIZE := 64
+const EQUIPMENT_TEXT_INTERVAL := 0.8
+
 @export var transmutation_hint: Control
 @export var mesh: MeshInstance3D
 
@@ -20,6 +24,9 @@ var _animation_player: AnimationPlayer
 
 func setup(actor: BattleActor, isEnemy: bool) -> void:
 	self.actor = actor
+	if not self.actor.equipment_activated.is_connected(_on_equipment_activated):
+		self.actor.equipment_activated.connect(_on_equipment_activated)
+
 	_is_defeated = false
 	%EmitterController.is_ally = not isEnemy
 
@@ -47,6 +54,10 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	if isEnemy:
 		$PinManager.rotation_degrees.y += 180
 		$PinManager/PhobiaCrown.rotation_degrees.y += 180
+
+		$Label3D.font_size = ENEMY_FONT_SIZE
+	else:
+		$Label3D.font_size = ALLY_FONT_SIZE
 
 	$PinManager.status_manager = actor.statuses
 
@@ -163,17 +174,26 @@ func select() -> void:
 	transmutation_hint.deactivate()
 
 
-func add_status_effect(effect: StatusEffect) -> void:
-	$PinManager.insert_pin(effect)
+func add_status_effect(effect: StatusEffect) -> void: $PinManager.insert_pin(effect)
 
 
-func remove_status_effects(effects: Array[StatusEffect]) -> void:
-	$PinManager.remove_pins(effects)
+func remove_status_effects(effects: Array[StatusEffect]) -> void: $PinManager.remove_pins(effects)
 
 
-func _on_pin_selected(effect: StatusEffect) -> void:
-	status_effect_icon_pressed.emit(effect)
+func _on_pin_selected(effect: StatusEffect) -> void: status_effect_icon_pressed.emit(effect)
 
 
 func animate_status_activation(effect: StatusEffect, data:Variant=null) -> void:
 	$PinManager.activate_pin(effect)
+	set_helper_text(effect.name, Settings.helper_text_interval)
+
+
+func set_helper_text(msg: String, interval: float) -> void: 
+	$Label3D.text = msg
+	await get_tree().create_timer(interval).timeout
+	$Label3D.text = ""
+
+
+func _on_equipment_activated(equipment: Equipment) -> void:
+	set_helper_text(equipment.name, EQUIPMENT_TEXT_INTERVAL)
+

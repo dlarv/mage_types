@@ -16,6 +16,7 @@ const SAVE_ROOT_DIR := "user://games"
 @export var show_battle_turn_order := true
 @export var show_opponent_intentions := true
 @export var auto_end_turn := true
+@export var helper_text_interval := 0.8
 
 var random_seed := -1:
 	set(val):

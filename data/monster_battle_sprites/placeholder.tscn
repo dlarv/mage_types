@@ -169,3 +169,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_y7i3l")
 }
 speed_scale = 2.0
+
+[node name="Label3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48119, 0)
