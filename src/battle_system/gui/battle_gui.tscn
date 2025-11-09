@@ -109,6 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 unique_name_in_owner = true
 visible = false
 unresizable = false
+force_native = false
 
 [connection signal="action_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_selected"]
 [connection signal="action_target_selection_cancelled" from="CanvasLayer/VBoxContainer/HBoxContainer/PlayerControls" to="." method="_on_action_target_selection_cancelled"]

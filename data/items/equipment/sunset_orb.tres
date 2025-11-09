@@ -1,12 +1,66 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://cwk4v4cvwgmus"]
+[gd_resource type="Resource" script_class="Equipment" load_steps=15 format=3 uid="uid://cwk4v4cvwgmus"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_twp2o"]
+[ext_resource type="Script" uid="uid://b5hkx6ay1hmqp" path="res://src/items/equipment/add_equipment/bonuses/StatBonus.gd" id="2_2opex"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_whcob"]
+[ext_resource type="Script" uid="uid://dyqtsmtfqgpdp" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="3_8nsbi"]
 [ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="3_bo7o4"]
+[ext_resource type="Script" uid="uid://cgxabe6034h8d" path="res://src/items/equipment/add_equipment/AddEquipmentEffect.gd" id="4_4kejd"]
+[ext_resource type="Script" uid="uid://cylxi1tdlti2e" path="res://src/items/equipment/add_equipment/triggers/ElementTrigger.gd" id="5_f3v5w"]
+
+[sub_resource type="Resource" id="Resource_br3fc"]
+script = ExtResource("3_8nsbi")
+stat = 0
+op = 0
+is_side_effect = false
+id = 6
+_duration = "-1"
+description = ""
+name = ""
+_strength = ".3"
+message = "{target}'s melee attack was boosted!
+{target}'s ranged attack was boosted!"
+metadata/_custom_type_script = "uid://dyqtsmtfqgpdp"
+
+[sub_resource type="Resource" id="Resource_l1nap"]
+script = ExtResource("2_2opex")
+stat = SubResource("Resource_br3fc")
+metadata/_custom_type_script = "uid://b5hkx6ay1hmqp"
+
+[sub_resource type="Resource" id="Resource_q3jll"]
+resource_name = "Red Trigger"
+script = ExtResource("5_f3v5w")
+_element = "red"
+index = "secondary"
+metadata/_custom_type_script = "uid://cylxi1tdlti2e"
+
+[sub_resource type="Resource" id="Resource_h6hdr"]
+script = ExtResource("4_4kejd")
+trigger = SubResource("Resource_q3jll")
+bonus = SubResource("Resource_l1nap")
+metadata/_custom_type_script = "uid://cgxabe6034h8d"
+
+[sub_resource type="Resource" id="Resource_h2qv8"]
+script = ExtResource("2_2opex")
+stat = SubResource("Resource_br3fc")
+metadata/_custom_type_script = "uid://b5hkx6ay1hmqp"
+
+[sub_resource type="Resource" id="Resource_5eahf"]
+resource_name = "Orange Trigger"
+script = ExtResource("5_f3v5w")
+_element = "orange"
+index = "either"
+metadata/_custom_type_script = "uid://cylxi1tdlti2e"
+
+[sub_resource type="Resource" id="Resource_4u521"]
+script = ExtResource("4_4kejd")
+trigger = SubResource("Resource_5eahf")
+bonus = SubResource("Resource_h2qv8")
+metadata/_custom_type_script = "uid://cgxabe6034h8d"
 
 [resource]
 script = ExtResource("3_bo7o4")
-effects = Array[ExtResource("1_twp2o")]([])
+effects = Array[ExtResource("1_twp2o")]([SubResource("Resource_h6hdr"), SubResource("Resource_4u521")])
 id = 3
 name = "Sunset Orb"
 requirements = Array[ExtResource("2_whcob")]([])

@@ -10,6 +10,8 @@ var collect_attacks_button := func() -> void:
 	_traverse_attacks("res://data/battle_system/battle_actions/attacks/")
 @export_tool_button("Collect Monsters")
 var collect_monsters_button := _collect_monsters
+@export_tool_button("Collect Equipment") 
+var collect_equipment_button := _collect_equipment
 var active_actor := BattleActor.new()
 
 var opponents: Array[BattleActor] = []
@@ -79,6 +81,19 @@ func _collect_monsters() -> void:
 			button.owner = get_tree().edited_scene_root
 
 
+func _collect_equipment() -> void:
+	for child in %EquipmentScroller.get_children(): %EquipmentScroller.remove_child(child)
+
+	for slot in Inventory.equipment:
+		var equipment := slot.item
+		var button := Button.new()
+		button.text = equipment.name
+		%EquipmentScroller.add_child(button)
+		button.name = equipment.name
+		button.owner = get_tree().edited_scene_root
+		button.pressed.connect(_add_equipment.bind(equipment), CONNECT_PERSIST)
+
+
 func _add_attack(attack: Attack, uiOnly:=false) -> void:
 	if not uiOnly:
 		active_actor.attacks.append(attack)
@@ -109,7 +124,14 @@ func _add_monster(actor: BattleActor) -> void:
 	%RASpinBox.value = actor.stat_manager.ranged_attack
 	%RDSpinBox.value = actor.stat_manager.ranged_defense
 	%SpeedSpinBox.value = actor.stat_manager.speed
+
+	%EquipmentLabel.text = ""
 	
+
+func _add_equipment(equipment: Equipment) -> void:
+	active_actor.equipment = equipment
+	%EquipmentLabel.text = equipment.name
+
 
 func _on_stat_changed(value: float, stat: int) -> void:
 	if active_actor == null: return
@@ -160,3 +182,8 @@ func _on_start_button_pressed() -> void:
 	Battle.start(players, [], opponents, ai)
 	await Battle.battle_ended
 	$Setup.show()
+
+
+func _on_remove_equipment_button_pressed() -> void:
+	active_actor.equipment = null
+
