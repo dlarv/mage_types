@@ -196,4 +196,3 @@ func set_helper_text(msg: String, interval: float) -> void:
 
 func _on_equipment_activated(equipment: Equipment) -> void:
 	set_helper_text(equipment.name, EQUIPMENT_TEXT_INTERVAL)
-

@@ -110,7 +110,8 @@ func _add_attack(attack: Attack, uiOnly:=false) -> void:
 func _add_monster(actor: BattleActor) -> void:
 	for child in %AttackScroller.get_children(): %AttackScroller.remove_child(child)
 
-	active_actor = actor.duplicate(true)
+	active_actor = actor.duplicate()
+	active_actor.stat_manager = active_actor.stat_manager.duplicate()
 
 	for attack: Attack in actor.attacks:
 		_add_attack(attack, true)

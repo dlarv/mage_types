@@ -9,12 +9,15 @@ const EXPIRE_EFFECT_LEADER := "[color=#000080][lb]EXPIRE[rb][/color]"
 const TRANSMUTATION_LEADER := "[color=#00ff00][lb]TRNSMT[rb][/color]"
 const SIDE_EFFECT_LEADER   := "[color=#008000][lb]SIDEFX[rb][/color]"
 const INFO_LEADER 		   := "[color=#808080][lb]*INFO*[rb][/color]"
+const EQUIPMENT_LEADER     := "[color=#ffff00][lb]EQUIPM[rb][/color]"
 
 
 func setup(actors: Array[BattleActor]) -> void:
 	for actor in actors:
 		if not actor.status_activated.is_connected(append_activated_status_effect_message):
 			actor.status_activated.connect(append_activated_status_effect_message.bind(actor))
+		if not actor.equipment_activated.is_connected(append_equipment_effect_message):
+			actor.equipment_activated.connect(append_equipment_effect_message.bind(actor))
 
 
 func append_turn_header(turn: int) -> void:
@@ -112,6 +115,10 @@ func append_activated_status_effect_message(effect: StatusEffect, data: Variant,
 
 
 	_append_text(msg)
+
+
+func append_equipment_effect_message(equip: Equipment, actor: BattleActor) -> void:
+	_append_text("%s %s's %s activated!" % [EQUIPMENT_LEADER, actor.name, equip.name])
 
 
 func _append_text(msg: String, writeLog:=true) -> void:

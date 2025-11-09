@@ -42,4 +42,3 @@ func play_channeling(duration: float, strength: float) -> void:
 	emitting = false
 	amount = DEFAULT_PARTICLE_AMOUNT
 	_is_channeling = false
-

@@ -12,12 +12,17 @@ class_name Equipment
 
 var _actors := []
 
+func _init() -> void: 
+	if name == "Sunset Orb":
+		pass
+
 
 # virtual
 func equip(actor: BattleActor) -> void: 
 	if actor in _actors:
 		unequip(actor)
-
+		
+	_actors.append(actor)
 	for effect in effects:
 		effect.equip(actor)
 
@@ -34,5 +39,3 @@ func unequip(actor: BattleActor) -> void:
 
 func _on_activated(actor: BattleActor, msg: String) -> void:
 	actor.equipment_activated.emit(self)
-
-

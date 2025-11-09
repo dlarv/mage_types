@@ -28,4 +28,3 @@ func _on_element_changed(id: int, e: ElementalType, actor: BattleActor) -> void:
 	if (index == "primary" and id != 0) or (index == "secondary" and id != 1): return
 	if not element.is_blank() and element != e: return
 	triggered.emit(actor, "")
-

@@ -17,7 +17,7 @@ id = 6
 _duration = "-1"
 description = ""
 name = ""
-_strength = ".3"
+_strength = "1"
 message = "{target}'s melee attack was boosted!
 {target}'s ranged attack was boosted!"
 metadata/_custom_type_script = "uid://dyqtsmtfqgpdp"
@@ -49,10 +49,10 @@ metadata/_custom_type_script = "uid://b5hkx6ay1hmqp"
 resource_name = "Orange Trigger"
 script = ExtResource("5_f3v5w")
 _element = "orange"
-index = "either"
+index = "secondary"
 metadata/_custom_type_script = "uid://cylxi1tdlti2e"
 
-[sub_resource type="Resource" id="Resource_4u521"]
+[sub_resource type="Resource" id="Resource_2opex"]
 script = ExtResource("4_4kejd")
 trigger = SubResource("Resource_5eahf")
 bonus = SubResource("Resource_h2qv8")
@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://cgxabe6034h8d"
 
 [resource]
 script = ExtResource("3_bo7o4")
-effects = Array[ExtResource("1_twp2o")]([SubResource("Resource_h6hdr"), SubResource("Resource_4u521")])
+effects = Array[ExtResource("1_twp2o")]([SubResource("Resource_h6hdr"), SubResource("Resource_2opex")])
 id = 3
 name = "Sunset Orb"
 requirements = Array[ExtResource("2_whcob")]([])

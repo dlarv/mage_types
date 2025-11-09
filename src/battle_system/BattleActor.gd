@@ -127,7 +127,6 @@ func set_element(id: int, element: ElementalType) -> float:
 	else:
 		element2 = element
 
-	element_changed.emit(id, element)
 	if alignment_manager:
 		alignment_manager.append_unnormalized(element, AlignmentManager.Type.TRANSMUTATION)
 
