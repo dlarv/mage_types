@@ -105,7 +105,8 @@ func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamD
 			d.disable_selection()
 			if not Settings.enable_transmutation_hints: continue
 			d.disable_transmutation_hint())
-	sprite.position.x += len(sprites) * 3
+
+	# sprite.position.x += len(sprites) * 3
 
 	var display := BattleActorDisplay.instantiate()
 	display.setup(actor)
@@ -114,11 +115,11 @@ func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamD
 	if isAlly:
 		ally_container.add_child(display)
 		$AllyParent.add_child(sprite)
-		sprite.position.x += $AllyParent.get_child_count() * 1.5
+		sprite.position.x += $AllyParent.get_child_count() * 2.5
 	else:
 		opponent_container.add_child(display)
 		$OpponentParent.add_child(sprite)
-		sprite.position.x += $OpponentParent.get_child_count() * 1.5
+		sprite.position.x += $OpponentParent.get_child_count() * 2.5
 		sprite.rotation_degrees.y = 180
 
 	var disp := TeamDisplayActor.new(sprite, display, isAlly)
