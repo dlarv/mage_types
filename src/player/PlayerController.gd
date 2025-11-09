@@ -14,7 +14,6 @@ const MAX_FREEFALL_DIST := -40.0
 @export var variable_jump_height_modifier := 15.0
 @export var variable_jump_time_window := 0.3 
 @export var dash_speed := 1200.0
-@export var sprint_speed := 1000.0
 
 @onready var jump_velocity := 2.0 * jump_height / jump_time_to_peak
 @onready var jump_gravity := (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)      
@@ -109,8 +108,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y += _jump_strength * delta
 	
 	var speed := walk_speed
-	if Input.is_action_pressed("dash"):
-		speed = sprint_speed
 
 	if _can_dash() and Input.is_action_just_pressed("dash"):
 		if not is_on_floor() and _can_air_dash:
