@@ -11,7 +11,6 @@ class_name Equipment
 				effect.activated.connect(_on_activated)
 
 var _actors := []
-var _msgs: Array[String] = []
 
 
 # virtual
@@ -34,11 +33,6 @@ func unequip(actor: BattleActor) -> void:
 
 
 func _on_activated(actor: BattleActor, msg: String) -> void:
-	if len(msg) > 0:
-		_msgs.append(msg)
+	actor.equipment_activated.emit(self)
 
 
-func get_and_flush_msgs() -> Array[String]:
-	var output := _msgs
-	_msgs = []
-	return output

@@ -14,6 +14,9 @@ signal element_changed(id: int, element: ElementalType)
 signal leveled_up()
 signal spell_learned(spell: _BattleAction, index: int)
 signal equipment_equipped(equipment: Equipment)
+@warning_ignore("unused_signal")
+## Called by the equipment directly
+signal equipment_activated(equipment: Equipment)
 signal status_activated(effect: StatusEffect, data: Variant)
 ## Called when opponents choose their action during battle.
 @warning_ignore("unused_signal")
