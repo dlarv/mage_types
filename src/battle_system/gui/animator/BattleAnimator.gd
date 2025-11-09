@@ -15,6 +15,8 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 	var affinity: float = turnData.action.calculate_affinity(turnData.user)
 	userSprite.start_channeling_particles(DURATION, affinity)
 
+	userSprite.set_action_text(turnData.action)
+
 	await userSprite.play_animation("channeling")
 
 	# Play user.attack, attack animation, then targets.getting_hit

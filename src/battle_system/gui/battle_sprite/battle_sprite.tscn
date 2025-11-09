@@ -42,6 +42,12 @@ billboard = 1
 font_size = 64
 outline_size = 16
 
+[node name="ActionLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92013, 0)
+billboard = 1
+font_size = 64
+outline_size = 16
+
 [connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]

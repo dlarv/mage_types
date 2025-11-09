@@ -6,7 +6,9 @@ signal status_effect_icon_pressed(effect: StatusEffect)
 
 const ALLY_FONT_SIZE := 45
 const ENEMY_FONT_SIZE := 64
-const EQUIPMENT_TEXT_INTERVAL := 0.8
+const ACTION_FONT_SIZE_MODIFER := 1.2
+const EQUIPMENT_TEXT_DURATION := 0.8
+const ACTION_TEXT_DURATION := 0.8
 
 @export var transmutation_hint: Control
 @export var mesh: MeshInstance3D
@@ -56,8 +58,10 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 		$PinManager/PhobiaCrown.rotation_degrees.y += 180
 
 		$Label3D.font_size = ENEMY_FONT_SIZE
+		$ActionLabel3D.font_size = ENEMY_FONT_SIZE * ACTION_FONT_SIZE_MODIFER
 	else:
 		$Label3D.font_size = ALLY_FONT_SIZE
+		$ActionLabel3D.font_size = ALLY_FONT_SIZE * ACTION_FONT_SIZE_MODIFER
 
 	$PinManager.status_manager = actor.statuses
 
@@ -70,6 +74,9 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 		_is_defeated = true)
 	actor.action_selected.connect(_on_action_selected)
 	actor.status_activated.connect(animate_status_activation)
+
+	$ActionLabel3D.position = $Label3D.position
+	$ActionLabel3D.position.y -= 0.3
 
 
 func set_element(id: int, element: ElementalType) -> void:
@@ -188,11 +195,24 @@ func animate_status_activation(effect: StatusEffect, data:Variant=null) -> void:
 	set_helper_text(effect.name, Settings.helper_text_interval)
 
 
-func set_helper_text(msg: String, interval: float) -> void: 
+func set_helper_text(msg: String, duration: float) -> void: 
 	$Label3D.text = msg
-	await get_tree().create_timer(interval).timeout
+	await get_tree().create_timer(duration).timeout
 	$Label3D.text = ""
 
 
+func set_action_text(action: _BattleAction) -> void:
+	$ActionLabel3D.text = action.name
+	var tween := get_tree().create_tween()
+	var pos: Vector3 = $ActionLabel3D.position
+	tween.tween_property($ActionLabel3D, "position", pos + Vector3(0, .3, 0), 1.0)
+
+	await tween.finished
+
+	$ActionLabel3D.text = ""
+	$ActionLabel3D.position = pos
+
+
 func _on_equipment_activated(equipment: Equipment) -> void:
-	set_helper_text(equipment.name, EQUIPMENT_TEXT_INTERVAL)
+	set_helper_text(equipment.name, EQUIPMENT_TEXT_DURATION)
+
