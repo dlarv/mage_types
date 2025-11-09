@@ -108,10 +108,10 @@ func select_targets(user: BattleActor, action:_BattleAction) -> Array[BattleActo
 
 
 func _on_active_actor_changed(index: int) -> void:
-	team_display.highlight(index)
-
 	# If player was selecting a target, but then hits prev/next, cancel selection.
 	team_display.cancel_target_selection()
+	team_display.highlight(index)
+
 	
 
 func _on_turn_ended(tryRunningAway: bool) -> void:

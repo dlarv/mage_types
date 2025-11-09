@@ -46,8 +46,11 @@ func _on_actor_hovered(actor: TeamDisplayActor) -> void:
 
 
 func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
+	sprites = []
+	sprites.resize(len(allies + enemies))
+
 	var headAlly: TeamDisplayActor = add_display(allies[0], true)
-	var headEnemy: TeamDisplayActor = add_display(enemies[0], false)
+	var headEnemy: TeamDisplayActor = add_display(enemies[0], false, len(allies))
 	headAlly.set_opposite(headEnemy)
 	headEnemy.set_opposite(headAlly)
 
@@ -73,7 +76,7 @@ func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
 	headEnemy.set_prev(prev.next)
 
 
-func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
+func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamDisplayActor:
 	var sprite: _BattleSprite 
 	if actor.sprite_path == null:
 		sprite = DefaultBattleSprite.instantiate()
@@ -81,7 +84,10 @@ func add_display(actor: BattleActor, isAlly: bool) -> TeamDisplayActor:
 		sprite = actor.sprite_path.instantiate()
 
 	sprite.setup(actor, not isAlly)
-	sprites.append(sprite)
+	if insertIndex == -1:
+		sprites[sprites.find(null)] = sprite
+	else:
+		sprites[insertIndex] = sprite
 
 	actor.element_changed.connect(sprite.set_element)
 	sprite.status_effect_icon_pressed.connect(func(effect: StatusEffect) -> void: 
