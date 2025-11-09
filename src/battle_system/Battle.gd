@@ -21,7 +21,7 @@ var message_feed: MessageFeed:
 		if not gui: return null
 		return gui.get_node("%MessageFeed")
 var gui: Node3D
-
+var simulator_mode := false
 var enemies: Array[BattleActor] = []
 var allies: Array[BattleActor] = []
 
@@ -292,7 +292,9 @@ func _resolve_end_of_battle(pause:=true) -> void:
 		$CanvasLayer.add_child(rewardScreen)
 		$CanvasLayer.show()
 		Inventory.add_items(ai.reward_items)
-		rewardScreen.show_results(allies, ai.reward_xp, ai.reward_items)
+		
+		if not simulator_mode:
+			rewardScreen.show_results(allies, ai.reward_xp, ai.reward_items)
 		await rewardScreen.pressed
 		$CanvasLayer.remove_child(rewardScreen)
 		$CanvasLayer.hide()
