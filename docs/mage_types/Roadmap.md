@@ -24,15 +24,10 @@
 [[version_naming_scheme]]
 ## v0.6.x
 Battle aesthetic update: [[more_dynamic_battles]]
-- [ ] Controlling animation
-	- [ ] Setting to control speed and turn off animations
-	- [x] Move status pin animations into BattleAnimator to ensure animations happen at correct timings (block mostly)
-- [ ] Communicate important information using animations and graphics
-	- [ ] Attack name
-	- [ ] Damage numbers: How much dmg did the attack deal?
-	- [ ] Equipment activations
-		- [ ] Particle effects
-		- [x] Text
+- [ ] Ensure tutorial works with new battle system
+- [x] Communicate important information using animations and graphics
+	- [x] Attack name
+	- [x] Equipment activations
 	- [x] Side effects
 		- The dials might be enough to communicate this
 	- [x] Transmutations
@@ -44,6 +39,8 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [x] Whether attack dealt a status condition/extra effects
 	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
 		- [x] Bugfix: Since intention and affinity is communicated using the same particle emitter, if the player skips thru the animations, the call to turn off the particle effect will be called late, shutting off the intention effect instead
+- [x] Controlling animation
+	- [x] Move status pin animations into BattleAnimator to ensure animations happen at correct timings (block mostly)
 - [x] Bugfix: Incorrect BattleSprite is highlighted when player is selecting an action
 - [x] Dead code
 	- [x] Remove String returned value from `resolve_end_of_battle()` 
@@ -96,6 +93,9 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Renamed class and references
 	- [ ] Animation should be selected via enum
 	- [ ] Animation should be integrated with BattleActor animations
+- [ ] Equipment particle effect
+- [ ] Setting to control speed and turn off animations
+- [ ] Damage numbers: How much dmg did the attack deal?
 - [ ] Improved player model
 	- [ ] Modeled
 		- [x] Body

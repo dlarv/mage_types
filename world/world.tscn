@@ -315,9 +315,8 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.917, 0.646761, -37.8811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.917, 0.646761, -64.8811)
 dash_speed = 900.0
-_active_party = Array[int]([0])
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 4)
