@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_eruv0"]
 [ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_8ngll"]
 [ext_resource type="Resource" uid="uid://biyyeewaek1sj" path="res://data/battle_system/battle_actions/attacks/elementals/red/drain.tres" id="4_8ngll"]
-[ext_resource type="Resource" uid="uid://buymubyl6j61a" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_red.tres" id="4_dabr5"]
+[ext_resource type="Resource" uid="uid://buymubyl6j61a" path="res://data/battle_system/battle_actions/attacks/transmutation_spells/conduct_red.tres" id="4_8svdj"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="7_00pxc"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="8_nx5sy"]
 
 [sub_resource type="Resource" id="Resource_6u7d0"]
 script = ExtResource("8_nx5sy")
-_base_melee_attack = 15.0
-_base_ranged_attack = 8.0
+_base_melee_attack = 30.0
+_base_ranged_attack = 16.0
 _base_melee_defense = 50.0
 _base_ranged_defense = 50.0
 _base_speed = 10.0
@@ -27,4 +27,4 @@ reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "purple"
 _alignment = "blue"
-attacks = Array[ExtResource("1_eruv0")]([ExtResource("3_8ngll"), ExtResource("4_dabr5"), ExtResource("4_8ngll")])
+attacks = Array[ExtResource("1_eruv0")]([ExtResource("3_8ngll"), ExtResource("4_8ngll"), ExtResource("4_8svdj")])

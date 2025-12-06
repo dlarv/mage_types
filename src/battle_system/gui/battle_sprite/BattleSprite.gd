@@ -79,6 +79,11 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	$ActionLabel3D.position.y -= 0.3
 
 
+func _exit_tree() -> void:
+	if self.actor.equipment_activated.is_connected(_on_equipment_activated):
+		self.actor.equipment_activated.disconnect(_on_equipment_activated)
+
+
 func set_element(id: int, element: ElementalType) -> void:
 	if id == 0:
 		_mat1.albedo_color = element.main_color
@@ -215,4 +220,3 @@ func set_action_text(action: _BattleAction) -> void:
 
 func _on_equipment_activated(equipment: Equipment) -> void:
 	set_helper_text(equipment.name, EQUIPMENT_TEXT_DURATION)
-

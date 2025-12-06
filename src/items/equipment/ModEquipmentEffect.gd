@@ -4,125 +4,75 @@ class_name ModEquipmentEffect
 
 enum Type { PREVENT_DEFEAT, TRAINING_WHEELS, HAMMER, NONE }
 
-@export var type := Type.NONE: set = _set_type
-var method_name: StringName
-var default_method: Callable
+# This will act like a const. It will be setup by whichever BattleActor is first instantiated
+static var TARGET_METHODS: Array[StringName] = []
+
+@export var target_method: StringName:
+	set(val):
+		target_method = val
+		print(val)
+@export_multiline var source_code: String
+
+var data: Dictionary[BattleActor, FuncHolder] = {}
+
+func _init() -> void:
+	if len(TARGET_METHODS) > 0: return
+
+	var actor := PlayerBattleActor.new()
+
+	TARGET_METHODS = [
+		actor._apply_dmg.get_method(),
+		actor.add_xp.get_method(),
+		actor.setup.get_method(),
+		actor.get_attack_stat.get_method(),
+		actor.get_defense_stat.get_method(),
+		actor.add_status_effect.get_method(),
+		actor._calc_blocking.get_method(),
+		actor.heal.get_method(),
+		actor.resolve_end_of_turn.get_method(),
+	]
 
 
-func setup() -> void:
-	match type:
-		Type.PREVENT_DEFEAT:
-
-			var _death_averted: Dictionary[BattleActor, bool] = get_meta("prevent_defeat", {})
-			for actor: BattleActor in Battle.query_battlefield_state(null, Battle.BattlefieldStateParams.COMBATANTS):
-				if _death_averted.has(actor):
-					_death_averted[actor] = false
+func setup(actor: BattleActor) -> void:
+	data[actor].setup(actor)
 
 
 #virtual
 func equip(actor: BattleActor) -> void: 
 	if not actor.battle_setup_completed.is_connected(setup):
-		actor.battle_setup_completed.connect(setup)
-	match type:
-		Type.PREVENT_DEFEAT:
-			actor.add_func_override(method_name, _prevent_defeat.bind(actor))
-			get_meta("prevent_defeat", {})[actor] = false
-		Type.TRAINING_WHEELS:
-			actor.add_func_override(method_name, _training_wheels.bind(actor))
-		Type.HAMMER:
-			actor.add_func_override(method_name, _hammer_init.bind(actor))
-
-	Logger.append_battle_log("%s equipment altered %s.%s(...)" % [str(type), actor.name, method_name])
+		actor.battle_setup_completed.connect(setup.bind(actor))
+	
+	data[actor] = FuncHolder.new(source_code)
+	actor.add_func_override(target_method, data[actor].replace_method.bind(actor, self))
 
 
 #virtual
 func unequip(actor: BattleActor) -> void: 
 	actor.battle_setup_completed.disconnect(setup)
-	actor.remove_func_override(method_name)
-
-	match type:
-		Type.PREVENT_DEFEAT:
-			var meta: Dictionary[BattleActor, bool] = get_meta("prevent_defeat", {})
-			meta.erase(actor)
-			set_meta("prevent_defeat", meta)
-		Type.TRAINING_WHEELS:
-			actor.remove_func_override(method_name)
+	actor.remove_func_override(target_method)
+	data.erase(actor)
 
 
-func _prevent_defeat(dmg: int, allowBlocking: bool=true, data: ActorTurnData=null, actor: BattleActor=null) -> int:
-	var _death_averted: Dictionary[BattleActor, bool] = get_meta("prevent_defeat")
-	var blocking: StatusEffect = null
-	if dmg > 0 and allowBlocking:
-		blocking = actor.statuses.blocking
+class FuncHolder:
+	var ref: RefCounted
+	var replace_method: Callable
+	var setup_method: Callable
 
-	if blocking != null:
-		dmg = int(float(dmg) * (1 - blocking.get_strength()))
-		actor.statuses.remove_blocking()
+	func _init(source_code:="") -> void:
+		var script := GDScript.new()
+		script = GDScript.new()
+		script.set_source_code(source_code)
+		assert(script.reload() == OK)
 
-		if data != null:
-			data.add_activated_effect(actor, blocking.id)
+		ref = RefCounted.new()
+		ref.set_script(script)
 
-	if dmg != 0:
-		actor.current_hp -= dmg
-		if actor.current_hp <= 0 and not actor.aleady_defeated:
-			if not _death_averted.get(actor, false):
-				self.activated.emit(actor, "They survived the attack!")
-				actor.current_hp = 1
-				_death_averted[actor] = true
-			else:
-				actor.aleady_defeated = true
-				actor.was_just_defeated.emit()
-		actor.damage_applied.emit(actor.current_hp)
-	return dmg
+		if ref.has_method("execute"):
+			replace_method = Callable(ref, "execute")
+		if ref.has_method("setup"):
+			setup_method = Callable(ref, "setup")
 
 
-func _training_wheels(effect: StatusEffect, actor: BattleActor) -> bool:
-	if effect is StatChange and effect.is_side_effect: 
-		return false
-
-	Logger.append_battle_log("%s was applied to %s." % [ effect.name, actor.name ])
-	if effect is StatChange:
-		actor.stat_manager.add(effect, actor.name)
-	else:
-		actor.statuses.add(effect)
-		actor.status_effect_added.emit(actor.statuses.get_status(effect))
-
-	if actor.alignment_manager and effect.id == BattleActor.StatusEffectManager.StatusEffects.PHOBIC:
-		actor.alignment_manager.add(effect.element, -1)
-
-	return true
-
-
-func _hammer_init(actor: BattleActor) -> void:
-	var slot := EffectSlot.new()
-	slot.chance = 0.3
-	slot.attack_effect = StatusEffect.new()
-	slot.attack_effect.id = StatusEffect.Effects.FLINCH
-	slot.effect_target = EffectSlot.EffectTarget.TARGET
-
-	for attack in actor.attacks:
-		if attack.attack_range != Attack.AttackRange.MELEE: continue
-
-		attack.resource_local_to_scene = true
-		attack.effects.append(slot)
-		Logger.append_battle_log("Added flinch to %s" % attack.name)
-
-	actor.battle_resolution_completed.connect(func() -> void:
-		for attack in actor.attacks:
-			attack.effects.remove_at(len(attack.effects) - 1)
-			Logger.append_battle_log("Remove flinch from %s" % attack.name)
-	)
-	actor.battle_setup_completed.emit()
-
-
-func _set_type(val: Type) -> void:
-	var actor := BattleActor.new()
-	type = val
-	match type:
-		Type.PREVENT_DEFEAT:
-			method_name = actor.apply_damage.get_method()
-			set_meta("prevent_defeat", {} as Dictionary[BattleActor, bool])
-		Type.TRAINING_WHEELS:
-			method_name = actor.add_status_effect.get_method()
-		Type.HAMMER:
-			method_name = actor.setup.get_method()
+	func setup(actor: BattleActor) -> void:
+		if ref.has_method("setup"):
+			setup_method.call(actor)

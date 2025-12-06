@@ -112,10 +112,11 @@ var aleady_defeated: bool = false
 
 var _msgs: Array[String] = []
 var _func_overrides: Dictionary[StringName, Callable] = {}
+var _override_output: Variant = null
+
 
 func setup() -> void:
-	if _func_overrides.has(setup.get_method()):
-		_func_overrides.get(setup.get_method()).call()
+	if _try_call_override(setup.get_method(), []): 
 		return
 	battle_setup_completed.emit()
 
@@ -225,13 +226,17 @@ func set_stat(stat: Variant, amount: float) -> void:
 
 			
 func get_attack_stat(action: _BattleAction) -> float:
-	if action.attack_range == _BattleAction.AttackRange.MELEE:
+	if _try_call_override(get_attack_stat.get_method(), [action]):
+		return _override_output
+	elif action.attack_range == _BattleAction.AttackRange.MELEE:
 		return stat_manager.melee_attack
 	return stat_manager.ranged_attack
 
 
 func get_defense_stat(action: _BattleAction) -> float:
-	if action.attack_range == _BattleAction.AttackRange.MELEE:
+	if _try_call_override(get_defense_stat.get_method(), [action]):
+		return _override_output
+	elif action.attack_range == _BattleAction.AttackRange.MELEE:
 		return stat_manager.melee_defense
 	return stat_manager.ranged_defense
 
@@ -241,6 +246,18 @@ func apply_damage(dmg: int, allowBlocking:=true, data: ActorTurnData=null) -> in
 	if _func_overrides.has(apply_damage.get_method()):
 		return _func_overrides.get(apply_damage.get_method()).call(dmg, allowBlocking, data)
 
+	if _try_call_override(_calc_blocking.get_method(), [dmg, allowBlocking, data]):
+		dmg = _override_output
+	else:
+		dmg = _calc_blocking(dmg, allowBlocking, data)
+
+	if not _try_call_override(_apply_dmg.get_method(), [dmg]):
+		_apply_dmg(dmg)
+
+	return dmg
+
+
+func _calc_blocking(dmg: int, allowBlocking: bool, data: ActorTurnData) -> int: 
 	var blocking: StatusEffect = null
 	if dmg > 0 and allowBlocking:
 		blocking = statuses.blocking
@@ -251,17 +268,22 @@ func apply_damage(dmg: int, allowBlocking:=true, data: ActorTurnData=null) -> in
 		statuses.remove_blocking()
 		if data != null:
 			data.add_activated_effect(self, blocking.id)
+	return dmg
 
+
+func _apply_dmg(dmg: int) -> void:
 	if dmg != 0:
 		current_hp -= dmg
 		damage_applied.emit(current_hp)
 		if current_hp <= 0 and not aleady_defeated:
 			aleady_defeated = true
 			was_just_defeated.emit()
-	return dmg
 
 
 func heal(dmg: int, allowOverflow: bool=false) -> int:
+	if _try_call_override(heal.get_method(), [dmg, allowOverflow]):
+		return _override_output
+
 	current_hp += dmg
 	if not allowOverflow:
 		current_hp = min(current_hp, hp)
@@ -272,8 +294,8 @@ func heal(dmg: int, allowOverflow: bool=false) -> int:
 
 
 func add_status_effect(effect: StatusEffect) -> bool:
-	if _func_overrides.has(add_status_effect.get_method()):
-		return _func_overrides.get(add_status_effect.get_method()).call(effect)
+	if _try_call_override(add_status_effect.get_method(), [effect]):
+		return _override_output
 	else:
 		Logger.append_battle_log("%s was applied to %s." % [ effect.name, name ])
 		if effect is StatChange:
@@ -303,9 +325,8 @@ func list_status_effects() -> Array[StatusEffect]:
 
 
 func resolve_end_of_turn(allies:=[], opponents:=[], data: ActorTurnData=null, useOverride:=true)-> void:
-	if useOverride and _func_overrides.has(resolve_end_of_turn.get_method()):
-		_func_overrides.get(resolve_end_of_turn.get_method()).call(allies, opponents)
-		return 
+	if useOverride and _try_call_override(resolve_end_of_turn.get_method(), [allies, opponents]):
+		return
 
 	# Calc poison and healing.
 	var poison := statuses.poison
@@ -365,16 +386,9 @@ func has_phobia(element: ElementalType=null) -> bool:
 	return statuses.check_phobic(element) != null
 
 
-func add_func_override(key: StringName, new: Callable) -> void:
-	_func_overrides[key] = new
-
-
-func remove_func_override(key: StringName) -> void:
-	_func_overrides.erase(key)
-
-
 func add_xp(xp: float) -> int:
 	if not stat_manager is PlayerStatManager: return 0
+	elif _try_call_override(add_xp.get_method(), [xp]): return _override_output
 	return stat_manager.add_xp(xp)
 
 
@@ -467,3 +481,18 @@ func deserialize(data: Dictionary) -> void:
 		if not alignment_manager:
 			alignment_manager = AlignmentManager.new()
 		alignment_manager.deserialize(data["alignment"])
+	
+## Func Override methods
+func add_func_override(key: StringName, call: Callable) -> void:
+	var i := call.get_argument_count()
+	_func_overrides[key] = call
+
+
+func remove_func_override(key: StringName) -> void:
+	_func_overrides.erase(key)
+
+
+func _try_call_override(n: StringName, args: Array[Variant]) -> bool:
+	if not _func_overrides.has(n): return false
+	_override_output = _func_overrides.get(n).callv(args)
+	return true

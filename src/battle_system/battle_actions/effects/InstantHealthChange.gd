@@ -28,7 +28,7 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 		Logger.append_battle_log("InstantHealthChange did Heal(%d) to BattleActor(%s)" 
 				% [actual, target.name])
 	data.total_dmg += actual
-	data.last_dmg = actual
+	data.prev_dmg = actual
 
 	return data
 
