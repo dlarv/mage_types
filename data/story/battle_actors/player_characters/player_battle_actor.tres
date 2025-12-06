@@ -1,21 +1,20 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://0vpn7c3pvu1d"]
+[gd_resource type="Resource" script_class="PlayerBattleActor" load_steps=9 format=3 uid="uid://cbeu7qmu1nxih"]
 
-[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="1_ay17s"]
-[ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_u5qgi"]
-[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_ynay7"]
-[ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="3_i3ogw"]
-[ext_resource type="Resource" uid="uid://bbec0n6bcglhb" path="res://data/items/equipment/willpower.tres" id="4_n25sc"]
-[ext_resource type="PackedScene" uid="uid://dgrfhd0s3my0y" path="res://data/story/battle_actors/player_characters/battle_sprites/alice_battle_sprite.tscn" id="5_tjvpd"]
-[ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="8_1u0x0"]
+[ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_60dwf"]
+[ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_ryjtr"]
+[ext_resource type="Script" uid="uid://ccfa2tjo30wje" path="res://src/battle_system/PlayerBattleActor.gd" id="2_kljnf"]
+[ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="3_yuipy"]
+[ext_resource type="PackedScene" uid="uid://dgrfhd0s3my0y" path="res://data/story/battle_actors/player_characters/battle_sprites/alice_battle_sprite.tscn" id="5_us0sb"]
+[ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="6_m5g4e"]
 
-[sub_resource type="Resource" id="Resource_c2eox"]
-script = ExtResource("1_u5qgi")
+[sub_resource type="Resource" id="Resource_cb2ej"]
+script = ExtResource("1_ryjtr")
 alignment_values = Array[int]([0, 3, 0, 0, 0, 0, 0, 0])
 _alignment = "blank"
 metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
-[sub_resource type="Resource" id="Resource_u5qgi"]
-script = ExtResource("8_1u0x0")
+[sub_resource type="Resource" id="Resource_3y0wy"]
+script = ExtResource("6_m5g4e")
 next_level_xp = 50
 total_xp = 0
 _base_melee_attack = 8.0
@@ -28,16 +27,16 @@ hp = 50.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
-script = ExtResource("1_ay17s")
+script = ExtResource("2_kljnf")
 name = "Player"
 id = 1
 level = 1
-stat_manager = SubResource("Resource_u5qgi")
+stat_manager = SubResource("Resource_3y0wy")
 reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "blue"
-alignment_manager = SubResource("Resource_c2eox")
+alignment_manager = SubResource("Resource_cb2ej")
 _alignment = "blank"
-attacks = Array[ExtResource("2_ynay7")]([ExtResource("3_i3ogw")])
-equipment = ExtResource("4_n25sc")
-sprite_path = ExtResource("5_tjvpd")
+attacks = Array[ExtResource("1_60dwf")]([ExtResource("3_yuipy")])
+sprite_path = ExtResource("5_us0sb")
+metadata/_custom_type_script = "uid://ccfa2tjo30wje"

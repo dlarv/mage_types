@@ -6,7 +6,7 @@ const Stats := StatManager.Stats
 const DELAY := 1.0
 
 var tween: Tween
-var _actor: BattleActor
+var _actor: PlayerBattleActor
 
 func _ready() -> void:
 	if tween and not tween.finished.is_connected(_next):

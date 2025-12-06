@@ -1,21 +1,21 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://cj7rk23vvyppe"]
+[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://wbbhxo5h3qcy"]
 
-[ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_ewtdd"]
+[ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_qjyvk"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_2e72e"]
-[ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_rwk0y"]
+[ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_n5sj4"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="4_7co6j"]
-[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="4_rwk0y"]
-[ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="5_2d5f2"]
-[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="5_rwk0y"]
+[ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="4_21su7"]
+[ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="5_xepwb"]
+[ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="7_c5erp"]
 
-[sub_resource type="Resource" id="Resource_2d5f2"]
-script = ExtResource("1_ewtdd")
+[sub_resource type="Resource" id="Resource_ss44v"]
+script = ExtResource("1_qjyvk")
 alignment_values = Array[int]([0, 0, 0, 0, 0, 0, 0, 0])
 _alignment = "blank"
 metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
-[sub_resource type="Resource" id="Resource_dwrcv"]
-script = ExtResource("5_2d5f2")
+[sub_resource type="Resource" id="Resource_nqvwl"]
+script = ExtResource("7_c5erp")
 next_level_xp = 100
 total_xp = 50
 _base_melee_attack = 12.0
@@ -32,10 +32,10 @@ script = ExtResource("4_7co6j")
 name = "Denim"
 id = 2
 level = 2
-stat_manager = SubResource("Resource_dwrcv")
+stat_manager = SubResource("Resource_nqvwl")
 reset_hp_after_battle = true
 _element1 = "blue"
 _element2 = "blue"
-alignment_manager = SubResource("Resource_2d5f2")
+alignment_manager = SubResource("Resource_ss44v")
 _alignment = "blank"
-attacks = Array[ExtResource("2_2e72e")]([ExtResource("3_rwk0y"), ExtResource("4_rwk0y"), ExtResource("5_rwk0y")])
+attacks = Array[ExtResource("2_2e72e")]([ExtResource("3_n5sj4"), ExtResource("4_21su7"), ExtResource("5_xepwb")])
