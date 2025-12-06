@@ -25,6 +25,7 @@
 ## v0.6.x
 Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Ensure tutorial works with new battle system
+- [ ] Rebalance boss fights (damage numbers are now too low)
 - [x] Bugfix: get_tere().crate_timer() crash
 	-  Player runs away then starts battle again, crash happens trying to show willpower text
 - [x] Ensure 2 combatants with same equipment don't interfere
