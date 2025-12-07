@@ -68,6 +68,13 @@ detached_env_parent="When game is loaded, DetachedChunks will look thru the chil
 
 theme/custom="res://assets/theme/theme.tres"
 
+[importer_defaults]
+
+animation_library={
+&"animation/remove_immutable_tracks": false,
+&"blender/nodes/active_collection_only": true
+}
+
 [input]
 
 ui_cancel={
