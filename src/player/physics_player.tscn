@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6hxgpvaoulp7"]
 
 [ext_resource type="Script" uid="uid://iepwgah52jah" path="res://src/player/PhysicsPlayer.gd" id="1_rh8eo"]
-[ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d/models/characters/player.blend" id="1_ws1pf"]
-[ext_resource type="Resource" uid="uid://0vpn7c3pvu1d" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_fefq7"]
+[ext_resource type="PackedScene" uid="uid://bxmppjbxrxsgr" path="res://assets/3d_models/characters/player.blend" id="1_ws1pf"]
+[ext_resource type="Resource" uid="uid://cbeu7qmu1nxih" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_fefq7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s13s1"]
 rough = true

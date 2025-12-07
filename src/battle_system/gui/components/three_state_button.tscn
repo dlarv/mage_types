@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dg5afv3xuvqe0" path="res://src/battle_system/gui/components/ThreeStateButton.gd" id="1_qafsp"]
 [ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme/theme.tres" id="2_puxxf"]
-[ext_resource type="Texture2D" uid="uid://dvd0n3xr8cf6g" path="res://assets/icons/sword.png" id="3_aj0is"]
-[ext_resource type="Texture2D" uid="uid://d2gbrwtslnehi" path="res://assets/icons/shield.png" id="4_a6va7"]
+[ext_resource type="Texture2D" uid="uid://dvd0n3xr8cf6g" path="res://assets/graphics/icons/sword.png" id="3_aj0is"]
+[ext_resource type="Texture2D" uid="uid://d2gbrwtslnehi" path="res://assets/graphics/icons/shield.png" id="4_a6va7"]
 
 [node name="ThreeStateButton" type="Control"]
 custom_minimum_size = Vector2(0, 50)

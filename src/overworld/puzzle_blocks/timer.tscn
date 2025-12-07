@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://sbh0qf0ppd8m"]
 
 [ext_resource type="Script" uid="uid://c2y5kmuqtbmc3" path="res://src/overworld/puzzle_blocks/Timer.gd" id="1_80gpi"]
-[ext_resource type="PackedScene" uid="uid://fyo5j6bk3nke" path="res://assets/3d/models/objects/kitchen_timer.blend" id="2_g8nll"]
+[ext_resource type="PackedScene" uid="uid://fyo5j6bk3nke" path="res://assets/3d_models/objects/kitchen_timer.blend" id="2_g8nll"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3u3cj"]
 radius = 1.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://30dbgu5k66cc"]
 
-[ext_resource type="Texture2D" uid="uid://dbmd21wiiyeol" path="res://assets/sprites/battle_gui/x_icon.png" id="1_fl6uk"]
+[ext_resource type="Texture2D" uid="uid://dbmd21wiiyeol" path="res://assets/graphics/battle_gui/x_icon.png" id="1_fl6uk"]
 [ext_resource type="Script" uid="uid://d4diojkjoh5cm" path="res://src/battle_system/gui/components/TransmutationHintIcon.gd" id="1_qoed6"]
 
 [node name="TransmutationHintIcon" type="ColorRect" node_paths=PackedStringArray("label")]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxjdlm0ubsvy6"]
 
 [ext_resource type="Script" uid="uid://cv102wpael5h" path="res://src/overworld/puzzle_blocks/catalyst_devices/CatalystDevice.gd" id="1_0y1qt"]
-[ext_resource type="PackedScene" uid="uid://tc1hr4ycv8bn" path="res://assets/3d/models/objects/catalyst_device.blend" id="3_mgr76"]
+[ext_resource type="PackedScene" uid="uid://tc1hr4ycv8bn" path="res://assets/3d_models/objects/catalyst_device.blend" id="3_mgr76"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="4_risfn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1on13"]
