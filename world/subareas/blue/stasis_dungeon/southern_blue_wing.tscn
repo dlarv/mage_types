@@ -1,6 +1,6 @@
 [gd_scene load_steps=48 format=3 uid="uid://cirl3we5riu76"]
 
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://src/overworld/magiclay/instances/magiclay_terrain.tscn" id="2_tmi81"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="2_u5ech"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="2_xk5hi"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="6_r2mbl"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_j8t8l"]
 [ext_resource type="PackedScene" uid="uid://eqenv56ihr4q" path="res://src/overworld/puzzle_blocks/empties/mapper_gate.tscn" id="7_u5ech"]
-[ext_resource type="PackedScene" uid="uid://d3odmmlqvwyfn" path="res://data/bosses/stasis_boss.tscn" id="8_t4i8l"]
+[ext_resource type="PackedScene" path="res://data/bosses/stasis_boss.tscn" id="8_t4i8l"]
 [ext_resource type="PackedScene" uid="uid://bbl7f7rwr5b0v" path="res://src/overworld/puzzle_blocks/empties/ordered_lock.tscn" id="13_l4yk4"]
 [ext_resource type="PackedScene" uid="uid://xss5he7h36fs" path="res://src/overworld/puzzle_blocks/lasers/hidden_receiver.tscn" id="14_3g3od"]
 [ext_resource type="PackedScene" uid="uid://btpmu7dnqhtcg" path="res://src/overworld/puzzle_blocks/button.tscn" id="15_2hx8x"]

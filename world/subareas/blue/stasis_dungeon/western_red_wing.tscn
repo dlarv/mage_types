@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbmlyysi0hhkk"]
 
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_20to4"]
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_ow3c5"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="2_ow3c5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtnu5"]
 size = Vector3(115, 78, 180)

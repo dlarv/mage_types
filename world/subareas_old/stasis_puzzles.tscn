@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="1_yrpp1"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="2_7srj1"]
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="2_eob6h"]
-[ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_c0a55"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="2_eob6h"]
+[ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_c0a55"]
 [ext_resource type="PackedScene" uid="uid://nanxbk8qtx3" path="res://src/overworld/magiclay/instances/magiclay_boulder.tscn" id="3_mi5ru"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="7_81bel"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="8_gkg8c"]

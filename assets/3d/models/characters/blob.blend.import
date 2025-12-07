@@ -33,6 +33,18 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Black": {
+"use_external/path": "res://assets/3d/textures/player/Black.tres"
+},
+"Plasticine": {
+"use_external/path": "res://assets/3d/textures/player/Plasticine.tres"
+},
+"image": {
+"use_external/enabled": false,
+"use_external/path": "res://assets/3d/textures/player/image.tres"
+}
+},
 "nodes": {
 "PATH:blob_bak": {
 "import/skip_import": true

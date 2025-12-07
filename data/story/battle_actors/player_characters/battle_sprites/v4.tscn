@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq14t18k8pca"]
+
+[ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/battle_sprite/battle_sprite.tscn" id="1_2jg6i"]
+[ext_resource type="PackedScene" uid="uid://dm6fu32w0xcjh" path="res://assets/3d/models/characters/base_human_model.blend" id="2_2jg6i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yahwx"]
+
+[node name="AliceBattleSprite" instance=ExtResource("1_2jg6i")]
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_yahwx")
+
+[node name="base_human_model" parent="." index="7" instance=ExtResource("2_2jg6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[editable path="PinManager"]
+[editable path="base_human_model"]

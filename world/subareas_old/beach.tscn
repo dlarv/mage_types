@@ -1,8 +1,8 @@
 [gd_scene load_steps=92 format=3 uid="uid://4ft3p5xs6uk5"]
 
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="1_kv0ly"]
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="1_sl1hi"]
-[ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_bw7a8"]
+[ext_resource type="Material" uid="uid://bqhlab02j58t1" path="res://assets/placeholder_grid_texture/placeholder_grid_alt.tres" id="3_bw7a8"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="3_h0s0g"]
 [ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="3_pvsap"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_wmol4"]

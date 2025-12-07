@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqn3fdhxmh1vh"]
 
 [ext_resource type="Script" uid="uid://djitshmh2kpda" path="res://world/subareas_old/eastern_caves/room_templates/EasternCaveRoom.gd" id="1_iguqr"]
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_ry3j8"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="1_ry3j8"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="3_r6neq"]
 [ext_resource type="PackedScene" uid="uid://dr82ihfer1ek6" path="res://src/overworld/puzzle_blocks/empties/or_gate.tscn" id="5_bdo5a"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="8_i03r6"]

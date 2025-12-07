@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://oibhckiyltxv"]
 
-[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/3d/textures/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
+[ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="1_y0eai"]
 [ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="2_r4pl6"]
 [ext_resource type="PackedScene" uid="uid://d0s565uqigw5b" path="res://src/overworld/geyser_engine.tscn" id="2_tohrr"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_uiwi1"]
