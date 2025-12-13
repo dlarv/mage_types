@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c68p6h8se2syt"]
 
 [ext_resource type="Script" uid="uid://c7na0k8hr0uli" path="res://src/overworld/puzzle_blocks/Relay.gd" id="1_vfkjx"]
-[ext_resource type="PackedScene" uid="uid://bgy1d4bsph5hy" path="res://assets/3d_models/objects/relay_pin.blend" id="2_r8jtu"]
+[ext_resource type="PackedScene" uid="uid://bgy1d4bsph5hy" path="res://assets/3d/objects/relay_pin.blend" id="2_r8jtu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xq03u"]
 

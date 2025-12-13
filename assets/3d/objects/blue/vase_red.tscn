@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtphvdq8xlphv"]
+
+[ext_resource type="PackedScene" uid="uid://be1luns7drgf1" path="res://assets/3d/models/objects/blue/raw/VaseRed.glb" id="1_3gunc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wu8o7"]
+size = Vector3(0.472217, 0.5, 0.471191)
+
+[node name="VaseRed" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000317365, 0.25, -0.00170898)
+shape = SubResource("BoxShape3D_wu8o7")
+
+[node name="VaseRed2" parent="." instance=ExtResource("1_3gunc")]
+
+[node name="VaseRed" parent="VaseRed2" index="0"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.189287, 0)
+
+[editable path="VaseRed2"]

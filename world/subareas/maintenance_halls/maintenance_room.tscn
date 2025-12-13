@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpdgg0dpuuuak"]
 
 [ext_resource type="Script" uid="uid://tabcntu8b1um" path="res://world/subareas/maintenance_halls/MaintenanceRoom.gd" id="1_mulxc"]
-[ext_resource type="PackedScene" uid="uid://mslco5yvny4i" path="res://assets/3d_models/levels/maintenance_room.blend" id="2_q7135"]
+[ext_resource type="PackedScene" uid="uid://mslco5yvny4i" path="res://assets/3d/levels/maintenance_room.blend" id="2_q7135"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mulxc"]
 size = Vector3(25, 29, 25)

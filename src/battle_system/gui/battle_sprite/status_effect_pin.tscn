@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bihss5o636fyv"]
 
-[ext_resource type="PackedScene" uid="uid://diveahhxe7xsh" path="res://assets/3d_models/objects/status_pin.blend" id="1_7dhbf"]
+[ext_resource type="PackedScene" uid="uid://diveahhxe7xsh" path="res://assets/3d/objects/status_pin.blend" id="1_7dhbf"]
 [ext_resource type="Script" uid="uid://cvh014ij6lugl" path="res://src/battle_system/gui/battle_sprite/StatusEffectPin.gd" id="1_vqfle"]
 [ext_resource type="Script" uid="uid://coqwnstoj346c" path="res://addons/tooltips_pro/scripts/tooltip_trigger.gd" id="3_c0yfk"]
 [ext_resource type="Script" uid="uid://lcf8uedn57am" path="res://addons/tooltips_pro/scripts/tooltip_settings.gd" id="4_1gyes"]

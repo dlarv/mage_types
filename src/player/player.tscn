@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://cbeu7qmu1nxih" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_x42xx"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="Resource" uid="uid://wbbhxo5h3qcy" path="res://data/story/battle_actors/player_characters/denim_battle_actor.tres" id="4_x42xx"]
-[ext_resource type="PackedScene" uid="uid://dru1guxf1wg7w" path="res://assets/3d_models/characters/player_v2.blend" id="9_l271a"]
+[ext_resource type="PackedScene" uid="uid://dru1guxf1wg7w" path="res://assets/3d/characters/player_v2.blend" id="9_l271a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 radius = 0.3

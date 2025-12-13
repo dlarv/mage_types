@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8c2q612u3dbv"]
+
+[ext_resource type="PackedScene" uid="uid://c3qr2nnrbbipg" path="res://assets/3d/models/objects/blue/raw/SideTable.glb" id="1_t8ui8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4f2j"]
+size = Vector3(2, 1.2, 1)
+
+[node name="SideTable" type="StaticBody3D"]
+
+[node name="SideTable2" parent="." instance=ExtResource("1_t8ui8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_w4f2j")
+
+[editable path="SideTable2"]

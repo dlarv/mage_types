@@ -1,9 +1,9 @@
 [gd_scene load_steps=246 format=4 uid="uid://dmet1d2f3kx1r"]
 
-[ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d_models/levels/central_blue.blend" id="1_uvna4"]
+[ext_resource type="PackedScene" uid="uid://qp7b7r6o01x" path="res://assets/3d/levels/central_blue.blend" id="1_uvna4"]
 [ext_resource type="Script" uid="uid://c0cfp2pqvynot" path="res://world/subareas/environments/LightHouse.gd" id="2_sogwj"]
 [ext_resource type="Shader" uid="uid://b8ankfagnoil7" path="res://assets/shaders/material_maker/felt_blue_hex.gdshader" id="2_vsmlh"]
-[ext_resource type="Shader" uid="uid://d2sidylou0g1r" path="res://assets/shaders/clay_shader/clay_water.tres" id="3_jlv2r"]
+[ext_resource type="Shader" path="res://assets/3d/shaders/clay_shader/clay_water.tres" id="3_jlv2r"]
 [ext_resource type="Script" uid="uid://lp1v5cimlv0" path="res://src/overworld/Water.gd" id="3_mpgmr"]
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/shaders/clay_shader/clay.tres" id="3_yqbif"]
 [ext_resource type="Texture2D" uid="uid://g8xe88rd5x3f" path="res://assets/shaders/clay_shader/textures/base_clay_print_normal.png" id="4_mpgmr"]
