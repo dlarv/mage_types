@@ -1,7 +1,7 @@
 @tool
 extends Chunk
 
-const CLAY_SHADER := preload("res://assets/3d/shaders/clay_shader/clay.tres")
+const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.tres")
 const SolverMode := preload("res://world/subareas/maintenance_halls/MaintenanceSequence.gd").SolverMode
 
 @onready var model := $Chunk/maintenance_room/Backroom
@@ -75,4 +75,3 @@ func get_door_global_position(index: int, offset:=0.5) -> Vector3:
 		3: # DOWN
 			return Vector3(0, 0, -model.scale.z - offset) + global_position
 	return Vector3.ZERO
-

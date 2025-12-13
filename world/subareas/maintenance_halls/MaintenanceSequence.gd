@@ -4,7 +4,7 @@ extends Node3D
 
 const ElementalEnum := ElementalType.ElementalEnum
 const MODEL := preload("res://world/subareas/maintenance_halls/maintenance_room.tscn")
-const CLAY_SHADER := preload("res://assets/3d/shaders/clay_shader/clay.tres")
+const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.tres")
 const RoomPortal := preload("res://addons/room_and_portals/RoomPortal.gd")
 
 enum SolverMode { AFFINITY, TEMP }
