@@ -1,4 +1,8 @@
 # Prologue
+# Intro
+Your character, after a long day at work, comes home to find a mysterious box of takeout. Bright yellow box, no branding, with only a small line of text with an address on the bottom: 0 Cyan Interstate E. Inside is a stack of pancakes. They look divine. They smell far better. Should the player have taken a bite? Probably not, but too late now.
+
+Opening their eyes, the player finds themselves on a dreary stairwell. The pancakes, and their apartment, are nowhere to be seen. Before them is a door labeled exit. 
 # Act 1
 ## Scene 1 (The Rec Room)
 Without any other options, I enter the hotel. It smells of mildew. The blue, hexagonal carpet strikes a strange, melancholic chord, like a memory you've regretfully forgotten. At least its made of felt... 

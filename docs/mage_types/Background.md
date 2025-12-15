@@ -38,7 +38,8 @@
 **Sealed Magic**
 > There were four elements determined by the Old Guard to be too dangerous for mortals to handle. The methods used to accomplish are largely unknown; Guardians were told about it on a need to know basis. While confident in their success, the Old Guard leaders were concerned that their efforts could be undone, which was the reasoning behind their secrecy. 
 > A quick note: Sealed will be the term used in any literature on the subject, but I think dissipated is a better description of what this process entails. There may be traces of the power remaining, like in the *Primordial Garden* or used by Last, but most of these energies were drained out of the world.
-## Blue - Blue is a defensive element
+## Blue 
+- Blue is a defensive element
 - Closely associated with the *stasis* status condition
 - Hidden stats are hp and melee defense
 
@@ -449,14 +450,14 @@ When deciding color combinations, I used the following guidelines:
 x17 total
 **Definitional (x9)**
 <span style="color:Red">Red</span> + <span style="color:Blue">Blue</span> => <span style="color:Magenta">Magenta</span>
+<span style="color:Red">Red</span> + <span style="color:Green">Green</span> => <span style="color:Yellow">Yellow</span>
+<span style="color:Blue">Blue</span> + <span style="color:Green">Green</span> => <span style="color:Cyan">Cyan</span>
+<span style="color:Red">Red</span> + <span style="color:Yellow">Yellow</span> => <span style="color:Orange">Orange</span>
 <span style="color:Orange">Orange</span> + <span style="color:Blue">Blue</span> => <span style="color:Magenta">Magenta</span>
 <span style="color:Red">Red</span> + <span style="color:Purple">Purple</span> => <span style="color:Magenta">Magenta</span> Purple is essentially Blue
 <span style="color:Orange">Orange</span> + <span style="color:Purple">Purple</span> => <span style="color:Magenta">Magenta</span> Purple is essentially Blue and Orange is essentially Red
-<span style="color:Red">Red</span> + <span style="color:Green">Green</span> => <span style="color:Yellow">Yellow</span>
 <span style="color:Orange">Orange</span> + <span style="color:Green">Green</span> => <span style="color:Yellow">Yellow</span> Orange is essentially Red
-<span style="color:Blue">Blue</span> + <span style="color:Green">Green</span> => <span style="color:Cyan">Cyan</span>
 <span style="color:Purple">Purple</span> + <span style="color:Green">Green</span> => <span style="color:Cyan">Cyan</span> Purple is essentially Blue
-<span style="color:Red">Red</span> + <span style="color:Yellow">Yellow</span> => <span style="color:Orange">Orange</span>
 
 **Overlap (x7)**
 <span style="color:Yellow">Yellow</span> + <span style="color:Cyan">Cyan</span> => <span style="color:Green">Green</span> 
