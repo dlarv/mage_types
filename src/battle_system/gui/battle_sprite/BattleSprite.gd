@@ -34,10 +34,14 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 
 	_mat1 = StandardMaterial3D.new()
 	_mat2 = StandardMaterial3D.new()
-	_indicator_mat = StandardMaterial3D.new()
-
 	_mat1 = mesh.get_active_material(0)
 	_mat2 = mesh.get_active_material(1)
+	_mat1.albedo_color = actor.element1.main_color
+	_mat2.albedo_color = actor.element2.main_color
+
+	_indicator_mat = StandardMaterial3D.new()
+	_indicator_mat.albedo_color = Color.DARK_GRAY
+	$Indicator.set_surface_override_material(0, _indicator_mat)
 
 	var animationPlayerParent: Node = mesh
 	while animationPlayerParent.get_parent() != self:
@@ -46,12 +50,6 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	_animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
 	if _animation_player and _animation_player.has_animation("battle_stance"):
 		_animation_player.play("battle_stance")
-
-	$Indicator.set_surface_override_material(0, _indicator_mat)
-
-	_mat1.albedo_color = actor.element1.main_color
-	_mat2.albedo_color = actor.element2.main_color
-	_indicator_mat.albedo_color = Color.DARK_GRAY
 
 	if isEnemy:
 		$PinManager.rotation_degrees.y += 180
