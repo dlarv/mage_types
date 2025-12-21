@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvgbd764goyhg"]
+
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_e57ag"]
+[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="2_fg6os"]
+[ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="3_dppyy"]
+[ext_resource type="PackedScene" uid="uid://dru1guxf1wg7w" path="res://assets/3d/characters/player_v2.blend" id="4_dppyy"]
+
+[sub_resource type="Resource" id="Resource_k8wd0"]
+script = ExtResource("3_dppyy")
+id = "INTRO"
+next = -1
+end_state = ""
+metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7qdfd"]
+radius = 3.0
+
+[node name="Bartender" groups=["detached_env"] instance=ExtResource("1_e57ag")]
+
+[node name="StoryActor" parent="." index="1" instance=ExtResource("2_fg6os")]
+dialog_ids = Array[ExtResource("3_dppyy")]([SubResource("Resource_k8wd0")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+shape = SubResource("SphereShape3D_7qdfd")
+
+[node name="player_v2" parent="." index="3" instance=ExtResource("4_dppyy")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.0760651, 0)
