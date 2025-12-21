@@ -228,7 +228,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 243),
 "speaker": "Duke"
 },
 &"1_14": {
@@ -250,7 +250,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_15",
+"link": &"9_2",
 "text": ""
 }
 },
@@ -267,7 +267,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 243),
 "speaker": "Duke"
 },
 &"1_17": {
@@ -280,7 +280,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 243),
 "speaker": "Duke"
 },
 &"1_19": {
@@ -1003,7 +1003,7 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_65",
+"link": &"1_27",
 "text": ""
 }
 },

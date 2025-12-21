@@ -414,6 +414,7 @@ func deserialize(data: Dictionary) -> void:
 			alignment_manager = AlignmentManager.new()
 		alignment_manager.deserialize(data["alignment"])
 	
+
 ## Func Override methods
 func add_func_override(key: StringName, call: Callable) -> void:
 	var i := call.get_argument_count()
