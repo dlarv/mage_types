@@ -29,8 +29,8 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Rebalance boss fights (damage numbers are now too low)
 - [ ] Readd boss models (They got removed at some point :/)
 - [ ] Fix channeling animation playing twice?
-- [ ] Bake textures for Alicev2
-- [ ] Create new walk cycle for Alicev2
+- [x] Bake textures for Alicev2
+- [x] Create new walk cycle for Alicev2
 - [x] Bugfix: get_tree().create_timer() crash
 	-  Player runs away then starts battle again, crash happens trying to show willpower text
 - [x] Ensure 2 combatants with same equipment don't interfere
