@@ -1,22 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://deg7o2or7hfh5"]
+[gd_scene load_steps=15 format=3 uid="uid://deg7o2or7hfh5"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_k87ii"]
-[ext_resource type="PackedScene" uid="uid://c6wb3masbr1lq" path="res://assets/3d/characters/blob.blend" id="2_n8kln"]
+[ext_resource type="PackedScene" uid="uid://p4hix4hg2txy" path="res://assets/3d/characters/blob.blend" id="2_n8kln"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_4bap8"]
 [ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="4_6lbrx"]
+[ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="5_l6kjg"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_l6kjg"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_d3cvv"]
 [ext_resource type="Script" uid="uid://n8ulld1m40ie" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="8_puaf6"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="9_snyt7"]
 [ext_resource type="Resource" uid="uid://bo4oib5wr8f3r" path="res://data/story/bosses/tutorial_bosses/boss_1.tres" id="10_l6kjg"]
-
-[sub_resource type="Resource" id="Resource_sjdyf"]
-script = ExtResource("8_puaf6")
-set_seed = ""
-dialog_ids = Array[ExtResource("6_l6kjg")]([])
-reward_xp = 0.0
-reward_items = Array[ExtResource("7_d3cvv")]([])
-metadata/_custom_type_script = "uid://n8ulld1m40ie"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4gwb2"]
 radius = 1.41572
@@ -30,11 +23,17 @@ id = "ADONIS_1"
 next = -1
 end_state = ""
 
+[sub_resource type="Resource" id="Resource_d3cvv"]
+script = ExtResource("8_puaf6")
+set_seed = ""
+dialog_ids = Array[ExtResource("6_l6kjg")]([])
+reward_xp = 0.0
+reward_items = Array[ExtResource("7_d3cvv")]([])
+metadata/_custom_type_script = "uid://n8ulld1m40ie"
+
 [node name="Boss1" instance=ExtResource("1_k87ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
 collision_layer = 5
-team = Array[ExtResource("9_snyt7")]([ExtResource("10_l6kjg")])
-ai = SubResource("Resource_sjdyf")
 
 [node name="blob2" parent="." index="1" instance=ExtResource("2_n8kln")]
 
@@ -48,5 +47,9 @@ shape = SubResource("SphereShape3D_ucadb")
 
 [node name="StoryActor" parent="." index="3" instance=ExtResource("3_4bap8")]
 dialog_ids = Array[ExtResource("4_6lbrx")]([SubResource("Resource_teu4u")])
+
+[node name="EnemyActor" parent="." index="4" instance=ExtResource("5_l6kjg")]
+ai = SubResource("Resource_d3cvv")
+_team = Array[ExtResource("9_snyt7")]([ExtResource("10_l6kjg")])
 
 [editable path="blob2"]
