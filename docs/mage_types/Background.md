@@ -379,13 +379,13 @@ Notably, if the attack used is a melee attack, will also apply the applicable tr
 | Element | Reactions (#other elements it can react with)(unique products) | Reactants (#of reactions that form it) |
 | ------- | -------------------------------------------------------------- | -------------------------------------- |
 | Blue    | 4 (3)                                                          | 3                                      |
-| Purple  | 5 (3)                                                          | 2                                      |
+| Purple  | 5 (3) // 6 (4)                                                 | 2                                      |
 | Magenta | 5 (3)                                                          | 3                                      |
-| Red     | 4 (3)                                                          | 3                                      |
-| Orange  | 5 (4)                                                          | 1                                      |
-| Yellow  | 4 (3)                                                          | 2                                      |
-| Green   | 4 (2)                                                          | 1                                      |
-| Cyan    | 3 (2)                                                          | 2                                      |
+| Red     | 4 (3)                                                          | 3 // 4                                 |
+| Orange  | 5 (4) // 6 (5)                                                 | 1                                      |
+| Yellow  | 4 (3) // 5 (4)                                                 | 2                                      |
+| Green   | 4 (2)                                                          | 1 // 2                                 |
+| Cyan    | 3 (2) // 4 (2)                                                 | 2                                      |
 *Fig 1.3: Table showing number of transmutations per element*
 
 | **Attacker Type**                                                                | **Defender Type**                                                             | **Attack Type**                               | **Attacker Result**                                                                    | **Defender Result**                                                                   |
