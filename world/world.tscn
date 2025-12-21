@@ -1,9 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=32 format=3 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
 [ext_resource type="Script" uid="uid://cgt73gvf8xvv6" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_pewre"]
-[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/story/dialog_trees/blue_dialog.tres" id="3_dned5"]
+[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/story/dialog/dialog_trees/blue_dialog.tres" id="3_dned5"]
 [ext_resource type="Script" uid="uid://dm6ugtdpreoy7" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_5bktp"]
 [ext_resource type="Script" uid="uid://dyxwuxn04gout" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
 [ext_resource type="Script" uid="uid://ctwpmg6gbk4fr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
@@ -22,9 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/story/bosses/tutorial_bosses/boss_3.tscn" id="20_bwxdu"]
 [ext_resource type="Script" uid="uid://bt4qggtg1nnwn" path="res://src/battle_system/opponent_controllers/GenericOpponentController.gd" id="21_lwhbe"]
 [ext_resource type="Resource" uid="uid://dymkgn52hgj3n" path="res://data/story/bosses/tutorial_bosses/boss_3.tres" id="22_ftqqi"]
-[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="23_0pnie"]
-[ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="24_llyeo"]
-[ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="25_2tavo"]
+[ext_resource type="PackedScene" uid="uid://cvgbd764goyhg" path="res://data/story/characters/bartender.tscn" id="23_3ljsx"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("4_5bktp")
@@ -64,16 +62,6 @@ dialog_ids = Array[ExtResource("14_0pnie")]([])
 reward_xp = 0.0
 reward_items = Array[ExtResource("15_llyeo")]([])
 metadata/_custom_type_script = "uid://bt4qggtg1nnwn"
-
-[sub_resource type="Resource" id="Resource_k8wd0"]
-script = ExtResource("25_2tavo")
-id = "INTRO"
-next = -1
-end_state = ""
-metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_0pnie"]
-radius = 3.0
 
 [node name="World" type="Node3D"]
 
@@ -161,8 +149,7 @@ shadow_caster_mask = 4294967293
 
 [node name="Boss1" parent="Overworld" groups=["detached_env"] instance=ExtResource("11_o1net")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -1.50295, -120)
-team = Array[ExtResource("12_3ljsx")]([])
-ai = null
+ai = SubResource("Resource_avd5l")
 
 [node name="EnemyActor" parent="Overworld/Boss1" instance=ExtResource("13_gi7ib")]
 ai = SubResource("Resource_avd5l")
@@ -188,14 +175,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
 ai = SubResource("Resource_ll3gq")
 _team = Array[ExtResource("12_3ljsx")]([ExtResource("22_ftqqi")])
 
-[node name="Bartender" parent="Overworld" instance=ExtResource("23_0pnie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -2, -105)
-
-[node name="StoryActor" parent="Overworld/Bartender" instance=ExtResource("24_llyeo")]
-dialog_ids = Array[ExtResource("25_2tavo")]([SubResource("Resource_k8wd0")])
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Bartender"]
-shape = SubResource("SphereShape3D_0pnie")
+[node name="Bartender" parent="Overworld" instance=ExtResource("23_3ljsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, -1, -102.7)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

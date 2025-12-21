@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cdyrwu1h1an11" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_pgyye"]
 [ext_resource type="Script" uid="uid://5231x5j3e8ev" path="res://addons/dialogue_nodes/objects/CharacterList.gd" id="2_5ryfu"]
-[ext_resource type="Resource" uid="uid://wkxnw2pf28jp" path="res://data/story/characters/alice_character.tres" id="3_kfjq1"]
-[ext_resource type="Resource" uid="uid://brgkkin1ck2wy" path="res://data/story/characters/blue_aligned_bartender.tres" id="4_21unr"]
-[ext_resource type="Resource" uid="uid://nkt3ddqnpyrd" path="res://data/story/characters/denim_character.tres" id="4_wayey"]
+[ext_resource type="Resource" uid="uid://wkxnw2pf28jp" path="res://data/story/dialog/characters/alice_character.tres" id="3_kfjq1"]
+[ext_resource type="Resource" uid="uid://brgkkin1ck2wy" path="res://data/story/dialog/characters/blue_aligned_bartender.tres" id="4_21unr"]
+[ext_resource type="Resource" uid="uid://nkt3ddqnpyrd" path="res://data/story/dialog/characters/partner_character.tres" id="4_wayey"]
 
 [resource]
 script = ExtResource("2_5ryfu")
