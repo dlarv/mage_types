@@ -1,8 +1,8 @@
 [gd_resource type="VisualShader" load_steps=39 format=3 uid="uid://d2sidylou0g1r"]
 
-[ext_resource type="Texture2D" uid="uid://g8xe88rd5x3f" path="res://assets/shaders/clay_shader/textures/base_clay_print_normal.png" id="1_85noe"]
-[ext_resource type="Texture2D" uid="uid://bgjjfrthamaph" path="res://assets/shaders/clay_shader/textures/base_clay_crack_normal.png" id="2_mx8kb"]
-[ext_resource type="Texture2D" uid="uid://tqx4dh0dy1hy" path="res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="3_s4sht"]
+[ext_resource type="Texture2D" uid="uid://k581garo4f02" path="res://assets/shaders/clay_shader/textures/base_clay_print_normal.png" id="1_85noe"]
+[ext_resource type="Texture2D" uid="uid://56t5knh7i81q" path="res://assets/shaders/clay_shader/textures/base_clay_crack_normal.png" id="2_mx8kb"]
+[ext_resource type="Texture2D" uid="uid://cacqty606q0rn" path="res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="3_s4sht"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_y5xbf"]
 operator = 2

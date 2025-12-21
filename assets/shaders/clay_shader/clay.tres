@@ -1,8 +1,8 @@
 [gd_resource type="VisualShader" load_steps=25 format=3 uid="uid://bg5ai0eocyekw"]
 
-[ext_resource type="Texture2D" uid="uid://g8xe88rd5x3f" path="res://assets/shaders/clay_shader/textures/base_clay_print_normal.png" id="1_gr7fx"]
-[ext_resource type="Texture2D" uid="uid://bgjjfrthamaph" path="res://assets/shaders/clay_shader/textures/base_clay_crack_normal.png" id="2_ypfvc"]
-[ext_resource type="Texture2D" uid="uid://tqx4dh0dy1hy" path="res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="3_iai5s"]
+[ext_resource type="Texture2D" uid="uid://k581garo4f02" path="res://assets/shaders/clay_shader/textures/base_clay_print_normal.png" id="1_gr7fx"]
+[ext_resource type="Texture2D" uid="uid://56t5knh7i81q" path="res://assets/shaders/clay_shader/textures/base_clay_crack_normal.png" id="2_ypfvc"]
+[ext_resource type="Texture2D" uid="uid://cacqty606q0rn" path="res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="3_iai5s"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ut5nx"]
 input_name = "uv"

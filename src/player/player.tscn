@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://cbeu7qmu1nxih" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_x42xx"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
 [ext_resource type="Resource" uid="uid://wbbhxo5h3qcy" path="res://data/story/battle_actors/player_characters/denim_battle_actor.tres" id="4_x42xx"]
-[ext_resource type="PackedScene" uid="uid://c01hagqqd2s45" path="res://assets/3d/characters/alice/alice_v2.blend" id="5_5f2sf"]
+[ext_resource type="PackedScene" uid="uid://dfuwbvx78356g" path="res://assets/3d/characters/alice/alice_v2.blend" id="5_5f2sf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 height = 3.0
@@ -161,7 +161,6 @@ bones/140/rotation = Quaternion(0.612373, 0.353553, 0.353553, 0.612372)
 bones/143/rotation = Quaternion(6.39234e-07, 0.258819, 3.79297e-08, 0.965926)
 bones/147/rotation = Quaternion(-0.619054, -0.33539, -0.362603, 0.610578)
 bones/148/rotation = Quaternion(0.391088, 0.107707, -0.586915, 0.7007)
-bones/148/scale = Vector3(1, 1, 1)
 bones/149/rotation = Quaternion(0.654393, -0.0178158, -0.207496, 0.72691)
 bones/149/scale = Vector3(1, 1, 1)
 bones/150/rotation = Quaternion(0.0313881, 0.00212353, -0.0674602, 0.997226)
@@ -178,7 +177,6 @@ bones/164/rotation = Quaternion(0.654393, -0.0178157, -0.207496, 0.72691)
 bones/164/scale = Vector3(1, 1, 1)
 bones/165/scale = Vector3(1, 1, 1)
 bones/166/rotation = Quaternion(2.98023e-08, 2.80328e-07, 2.26311e-07, 1)
-bones/166/scale = Vector3(1, 1, 1)
 bones/167/rotation = Quaternion(0.399554, 0.434018, -0.571247, 0.570667)
 bones/168/rotation = Quaternion(-0.0387034, -0.0120577, -0.000466956, 0.999178)
 bones/168/scale = Vector3(1.00019, 1.00019, 1.00019)
