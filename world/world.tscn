@@ -120,13 +120,13 @@ shadow_caster_mask = 4294967293
 [node name="Blue" parent="Overworld" instance=ExtResource("10_5iu1q")]
 
 [node name="Boss1" parent="Overworld" groups=["detached_env"] instance=ExtResource("11_o1net")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -1.50295, -120)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7224, -1.52219, -115.886)
 
 [node name="Boss2" parent="Overworld" groups=["detached_env"] instance=ExtResource("18_j7vgi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, -1.50295, -116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7576, -1.50295, -116)
 
 [node name="Boss3" parent="Overworld" groups=["detached_env"] instance=ExtResource("20_bwxdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -1.50295, -116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6451, -1.48372, -120.125)
 
 [node name="Bartender" parent="Overworld" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, -1, -102.7)
