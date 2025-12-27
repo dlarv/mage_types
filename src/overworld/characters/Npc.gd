@@ -11,11 +11,11 @@ const BATTLE_DELAY := 0.5
 		disabled = val
 		if $Interactable:
 			$Interactable.disabled = val
-@export var team: Array[BattleActor]:
+var team: Array[BattleActor]:
 	get:
 		if not enemy_actor: return []
 		return enemy_actor.team as Array[BattleActor]
-@export var ai: OpponentController:
+var ai: OpponentController:
 	get:
 		if not enemy_actor: return null
 		return enemy_actor.ai
@@ -26,7 +26,7 @@ const BATTLE_DELAY := 0.5
 
 var story_actor: StoryActor = null
 var vendor_actor: VendorActor = null
-var enemy_actor: BossEnemyActor = null
+var enemy_actor: EnemyActor = null
 var animation_actor: AnimationActor = null
 ## type: Player | PhysicsPlayer
 var _player: Node3D 
@@ -41,7 +41,7 @@ func _enter_tree() -> void:
 			vendor_actor = child
 		elif child is StoryActor:
 			story_actor = child
-		elif child is BossEnemyActor:
+		elif child is EnemyActor:
 			enemy_actor = child
 			enemy_actor.battle_ended.connect(func(state: Battle.EndState) -> void: battle_ended.emit(state))
 		elif child is AnimationActor:

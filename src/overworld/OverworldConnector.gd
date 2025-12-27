@@ -45,7 +45,7 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:Variant) -> voi
 		allies.insert(0, _player.battle_actor)
 
 	var healPlayer := false
-	if enemy is BossEnemyActor:
+	if enemy is EnemyActor:
 		healPlayer = enemy.heal_player_after_battle
 
 	world.process_mode = Node.PROCESS_MODE_DISABLED
@@ -61,7 +61,7 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:Variant) -> voi
 		for actor in allies:
 			actor.current_hp = actor.hp
 
-	if is_instance_valid(enemy) and enemy is BossEnemyActor:
+	if is_instance_valid(enemy) and enemy is EnemyActor:
 		for actor: BattleActor in enemy.team:
 			actor.current_hp = actor.hp
 	
