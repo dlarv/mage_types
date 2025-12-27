@@ -184,24 +184,6 @@ func add_key_item(item: KeyItem, amount:=1) -> void:
 	var overworldSpell := -1
 
 	match item.unique_id:
-		KeyItem.UniqueId.STASIS:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.STASIS, true)
-			overworldSpell = OverworldSpell.Spells.STASIS 
-		KeyItem.UniqueId.CATALYST:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.CATALYST, true)
-			overworldSpell = OverworldSpell.Spells.CATALYST 
-		KeyItem.UniqueId.DESTROY:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.DESTROY, true)
-			overworldSpell = OverworldSpell.Spells.DESTROY
-		KeyItem.UniqueId.GOLEM:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.GOLEM, true)
-			overworldSpell = OverworldSpell.Spells.GOLEM
-		KeyItem.UniqueId.USE_PORTAL:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.USE_PORTAL, true)
-			overworldSpell = OverworldSpell.Spells.USE_PORTAL
-		KeyItem.UniqueId.SET_PORTAL:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.SET_PORTAL, true)
-			overworldSpell = OverworldSpell.Spells.SET_PORTAL
 		KeyItem.UniqueId.STENCIL_1:
 			stencil_enabled.emit(1)
 		KeyItem.UniqueId.STENCIL_2:
