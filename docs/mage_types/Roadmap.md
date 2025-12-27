@@ -132,6 +132,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 			- [ ] Hovering status pin should outline that pin
 ## v0.7.x
 West and Central Hotel content update. Add puzzles and combat challenges to hotel.
+Refactor equipment and overworld spells
 - [ ] Upper West Hotel challenges
 	- [x] Add puzzle
 	- [x] Reward for solving main puzzle
@@ -187,8 +188,12 @@ World aesthetic update.
 	- [ ] Player can create notes and drawings on notebook pages
 - [ ] Materials and textures
 	- [ ] Revisit clay shader. GDShader version should ideally be indistinguishable from the blender one
-	- [ ] Animated water
 	- [ ] PrincipledBSDF should have a plasticky look
+- [ ] Beach Aesthetic update
+	- [ ] Animated water
+	- [ ] Make ground less blocky
+	- [ ] Add geyser stasis backtracking puzzle
+	- [ ] Replace lighthouse
 - [ ] Character designs
 	- [ ] Blue-aligned
 	- [ ] Denim
