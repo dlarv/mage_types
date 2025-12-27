@@ -25,10 +25,11 @@
 [[version_naming_scheme]]
 ## v0.6.x
 Battle aesthetic update: [[more_dynamic_battles]]
-- [ ] Ensure tutorial works with new battle system
-	- [ ] Rebalance boss fights (damage numbers are now too low)
-- [ ] Readd boss models (They got removed at some point :/)
-- [ ] Fix channeling animation playing twice?
+- [x] Fix channeling animation playing twice?
+- [x] Mention player can open battle log in tutorial
+- [x] Ensure tutorial works with new battle system
+	- [x] Rebalance boss fights (damage numbers are now too low)
+- [x] Readd boss models (They got removed at some point :/)
 - [x] Bake textures for Alicev2
 - [x] Create new walk cycle for Alicev2
 - [x] Bugfix: get_tree().create_timer() crash
@@ -110,7 +111,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 - [ ] Improved player model
 	- [ ] Modeled
 		- [x] Body
-		- [ ] Hair
+		- [x] Hair
 		- [ ] Face
 	- [x] Textured
 		- [x] Compare NextPassTransparency with Swapping diffuse maps
