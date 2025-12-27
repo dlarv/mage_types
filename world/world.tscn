@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dtmepgi2qn6wl"]
+[gd_scene load_steps=22 format=3 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/story/bosses/tutorial_bosses/boss_1.tscn" id="11_o1net"]
+[ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="15_b2suy"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="18_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/story/bosses/tutorial_bosses/boss_3.tscn" id="20_bwxdu"]
 [ext_resource type="PackedScene" uid="uid://cvgbd764goyhg" path="res://data/story/characters/bartender.tscn" id="23_3ljsx"]
@@ -82,7 +83,7 @@ libraries = {
 }
 
 [node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.917, 0.646761, -64.8811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.914, 0.646759, 44.8029)
 dash_speed = 900.0
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
@@ -130,6 +131,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6451, -1.48372, -120.125)
 
 [node name="Bartender" parent="Overworld" instance=ExtResource("23_3ljsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, -1, -102.7)
+
+[node name="MiniBoss1" parent="Overworld" instance=ExtResource("15_b2suy")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.315, -0.0609789, -82.7645)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
