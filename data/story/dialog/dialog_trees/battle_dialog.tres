@@ -17,8 +17,8 @@ starts = {
 }
 nodes = {
 &"0_1": {
-"link": &"1_1",
-"offset": Vector2(-80, -120),
+"link": &"1_39",
+"offset": Vector2(-400, -120),
 "start_id": "1_0"
 },
 &"0_2": {
@@ -476,6 +476,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "Duke"
+},
+&"1_39": {
+"dialogue": "Before we begin, press 'M' to toggle your Message Log.",
+"offset": Vector2(-180, -140),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Aegean"
 },
 &"1_4": {
 "dialogue": "Then, click on me to select your target.",
