@@ -61,6 +61,7 @@ func setup(actor: BattleActor, isPlayer:=false) -> void:
 		%EquipmentButton.text = actor.equipment.name
 	else:
 		%EquipmentButton.text = "empty"
+	%EquipmentButton.tooltip_text = "%s will use this item in battle" % actor.name
 
 	# Set Overworld Spell Slot
 	if isPlayer:
@@ -68,6 +69,8 @@ func setup(actor: BattleActor, isPlayer:=false) -> void:
 	else:
 		%OverworldEquipmentButton.hide()
 		return
+	%EquipmentButton.tooltip_text = "%s will switch to this item before entering battle" % actor.name
+	%OverworldEquipmentButton.tooltip_text = "%s will use this item in the overworld" % actor.name
 
 	if not Inventory.overworld_spell_selected.is_connected(_set_equipment):
 		Inventory.overworld_spell_selected.connect(_set_equipment.bind(1))

@@ -186,15 +186,15 @@ text = "Equipment (Button)"
 [node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads/HBoxContainer/ListVBox"]
 layout_mode = 2
 
-[node name="EquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
+[node name="OverworldEquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="OverworldEquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
+[node name="EquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
