@@ -96,9 +96,8 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 @export var add_all_items := false
 
 @export_category("Overworld Spells")
-@export var primary_override: OverworldSpell.Spells
-@export var secondary_override: OverworldSpell.Spells
-@export var use_override: bool
+@export_enum("NONE", "DESTROY")
+var use_override := "NONE"
 
 var active_spell: Equipment = null:
 	set(val):
@@ -117,18 +116,17 @@ func _enter_tree() -> void:
 			item.quantity = 99
 
 	if Settings.play_test_mode: 
-		use_override = false
+		use_override = "NONE"
 		# for item in key_items:
 		# 	item.quantity = 0
 	elif add_all_items:
 		for item in key_items:
 			item.quantity = 1
 
-	if not use_override: return
-	if not primary_override == OverworldSpell.Spells.NONE:
-		add_key_item(key_items[primary_override].item)
-	if not secondary_override == OverworldSpell.Spells.NONE:
-		add_key_item(key_items[secondary_override].item)
+	match use_override:
+		"DESTROY":
+			pass
+
 
 
 ## Returns list of **RegularItems** that contain BattleItems.
@@ -231,14 +229,6 @@ func remove(item: _Item, amount:=1) -> ItemSlot:
 
 func remove_key_item(item: KeyItem) -> void:
 	match item.unique_id:
-		KeyItem.UniqueId.STASIS:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.STASIS, false)
-		KeyItem.UniqueId.CATALYST:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.CATALYST, false)
-		KeyItem.UniqueId.DESTROY:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.DESTROY, false)
-		KeyItem.UniqueId.GOLEM:
-			overworld_spell_enabled.emit(OverworldSpell.Spells.GOLEM, false)
 		KeyItem.UniqueId.STENCIL_1:
 			stencil_disabled.emit(1)
 		KeyItem.UniqueId.STENCIL_2:

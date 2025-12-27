@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://co5233wd41d3g"]
+[gd_scene load_steps=14 format=3 uid="uid://co5233wd41d3g"]
 
 [ext_resource type="Script" uid="uid://dw21tio8ljv3" path="res://src/overworld/overworld_spell_system/SpellManager.gd" id="1_3vrjo"]
 [ext_resource type="PackedScene" uid="uid://duai8gqdgu21m" path="res://src/overworld/overworld_spell_system/overworld_spells/stasis_spell.tscn" id="2_6ebf8"]
 [ext_resource type="PackedScene" uid="uid://gl6jomsw8726" path="res://src/overworld/overworld_spell_system/projectile.tscn" id="2_k4ax5"]
 [ext_resource type="PackedScene" uid="uid://c33hy4b2qxuto" path="res://src/overworld/overworld_spell_system/overworld_spells/destroy_spell.tscn" id="3_cfami"]
 [ext_resource type="Resource" uid="uid://bsjfeyutvwl8i" path="res://data/items/equipment/sledge_hammer.tres" id="3_vbgfi"]
+[ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="4_jchun"]
 [ext_resource type="Texture2D" uid="uid://u2a83s7j0p2l" path="res://assets/graphics/overworld_spells/stasis.png" id="4_knxsu"]
 [ext_resource type="PackedScene" uid="uid://dms3rf01rcur2" path="res://src/overworld/overworld_spell_system/overworld_spells/catalyst_spell.tscn" id="4_ogvhu"]
 [ext_resource type="Texture2D" uid="uid://de3q01ohlw3e3" path="res://assets/graphics/overworld_spells/destroy.png" id="6_nvt7l"]
@@ -17,7 +18,8 @@
 script = ExtResource("1_3vrjo")
 Projectile = ExtResource("2_k4ax5")
 spell_mapper = {
-ExtResource("3_vbgfi"): NodePath("DestroySpell")
+ExtResource("3_vbgfi"): NodePath("DestroySpell"),
+ExtResource("4_jchun"): NodePath("StasisSpell")
 }
 
 [node name="StasisSpell" parent="." groups=["persist"] instance=ExtResource("2_6ebf8")]

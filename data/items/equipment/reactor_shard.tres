@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_imcfy")
 effects = Array[ExtResource("1_4hwlw")]([])
+has_overworld_use = null
 id = 5
 name = "Reactor Shard"
 requirements = Array[ExtResource("2_mgbmb")]([])

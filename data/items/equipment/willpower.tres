@@ -39,6 +39,7 @@ metadata/_custom_type_script = "uid://cvxp8g3bj6t6y"
 [resource]
 script = ExtResource("3_tsc7p")
 effects = Array[ExtResource("1_gj31e")]([SubResource("Resource_4omxa")])
+has_overworld_use = null
 id = 2
 name = "Willpower"
 requirements = Array[ExtResource("2_ks20p")]([])

@@ -229,7 +229,7 @@ func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 func _on_player_menu_open_equipment_menu(index: int, actor: BattleActor) -> void:
 	block_input = true
 	inventory.show()
-	var selection: _Item = await inventory.open_equipment_menu()
+	var selection: _Item = await inventory.open_equipment_menu(index != -1)
 	_menu_stack[-1].show()
 	block_input = false
 

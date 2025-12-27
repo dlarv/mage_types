@@ -36,11 +36,20 @@ func open_spell_scroll_menu() -> _Item:
 	tabs_visible = true
 	return item
 
-func open_equipment_menu() -> _Item:
+func open_equipment_menu(onlyOverworldSpells:=false) -> _Item:
+	if onlyOverworldSpells:
+		$Equipment.filter(func(_item: _Item) -> bool:
+			return _item.has_overworld_use
+		)
+
 	tabs_visible = false
 	current_tab = 2
 	var item: _Item = await equipment_selected
 	tabs_visible = true
+
+	if onlyOverworldSpells: 
+		$Equipment.clear_filter()
+
 	return item 
 
 func _on_item_selected(item:_Item) -> void:
