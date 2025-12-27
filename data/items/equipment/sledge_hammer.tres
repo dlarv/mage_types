@@ -8,7 +8,8 @@
 [sub_resource type="Resource" id="Resource_dm705"]
 script = ExtResource("2_orsh1")
 target_method = &"setup"
-source_code = "	var slot := EffectSlot.new()
+source_code = "func execute() -> void:
+	var slot := EffectSlot.new()
 	slot.chance = 0.3
 	slot.attack_effect = StatusEffect.new()
 	slot.attack_effect.id = StatusEffect.Effects.FLINCH
@@ -33,6 +34,7 @@ metadata/_custom_type_script = "uid://cvxp8g3bj6t6y"
 [resource]
 script = ExtResource("3_orsh1")
 effects = Array[ExtResource("1_r6swq")]([SubResource("Resource_dm705")])
+has_overworld_use = true
 id = 6
 name = "Sledge Hammer"
 requirements = Array[ExtResource("2_dm705")]([])

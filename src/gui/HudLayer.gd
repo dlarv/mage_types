@@ -15,22 +15,12 @@ func _process(delta: float) -> void:
 	%Stopwatch.text = Time.get_time_string_from_unix_time(int(elapsed))
 
 
-func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
-	if isPrimary:
-		if spell.icon:
-			%PrimarySpellRect.texture = spell.icon
-			%PrimarySpellRect.show()
-			%PrimarySpellRect2.hide()
-		else:
-			%PrimarySpellRect2.get_child(0).text = "%s" % spell.name.substr(0, 1)
-			%PrimarySpellRect.hide()
-			%PrimarySpellRect2.show()
+func show_overworld_spell(spell: OverworldSpell) -> void:
+	if spell.icon:
+		%PrimarySpellRect.texture = spell.icon
+		%PrimarySpellRect.show()
+		%PrimarySpellRect2.hide()
 	else:
-		if spell.icon:
-			%SecondarySpellRect.texture = spell.icon
-			%SecondarySpellRect.show()
-			%SecondarySpellRect2.hide()
-		else:
-			%SecondarySpellRect2.get_child(0).text = "%s" % spell.name.substr(0, 1)
-			%SecondarySpellRect.hide()
-			%SecondarySpellRect2.show()
+		%PrimarySpellRect2.get_child(0).text = "%s" % spell.name.substr(0, 1)
+		%PrimarySpellRect.hide()
+		%PrimarySpellRect2.show()

@@ -5,7 +5,7 @@ enum Category { REGULAR_ITEM, EQUIPMENT, SPELL_SCROLL, KEY_ITEM }
 
 # NOTE: This is not called when loading from filesystem.
 signal quantity_changed(item: ItemSlot)
-signal overworld_spell_selected(id: OverworldSpell.Spells, isPrimary: bool)
+signal overworld_spell_selected(item: Equipment)
 signal overworld_spell_enabled(id: OverworldSpell.Spells, isEnabled: bool)
 signal stencil_enabled(index: int)
 signal stencil_disabled(index: int)
@@ -100,8 +100,11 @@ func _try_add_battle_item(item: RegularItem)  -> void:
 @export var secondary_override: OverworldSpell.Spells
 @export var use_override: bool
 
-var spell1 := OverworldSpell.Spells.NONE
-var spell2 := OverworldSpell.Spells.NONE
+var active_spell: Equipment = null:
+	set(val):
+		active_spell = val
+		overworld_spell_selected.emit(active_spell)
+
 
 func _enter_tree() -> void:
 	if Engine.is_editor_hint(): return
@@ -204,13 +207,7 @@ func add_key_item(item: KeyItem, amount:=1) -> void:
 		KeyItem.UniqueId.STENCIL_2:
 			stencil_enabled.emit(2)
 		KeyItem.UniqueId.STENCIL_3:
-			stencil_enabled.emit(3)
-
-	if overworldSpell != -1:
-		if spell1 == OverworldSpell.Spells.NONE:
-			select_overworld_spell(overworldSpell, true)
-		elif spell2 == OverworldSpell.Spells.NONE:
-			select_overworld_spell(overworldSpell, false)
+			stencil_enabled.emit(4)
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
 	var slot: ItemSlot = key_items[item.id]
@@ -289,27 +286,8 @@ func get_item(item: _Item) -> ItemSlot:
 	return list[item.id]
 
 
-func _enable_overworld_spell(id: OverworldSpell.Spells, val:=true) -> void:
-	# match id:
-	# 	OverworldSpell.Spells.STASIS: 
-	# 		stasis_spell_enabled = val
-	# 	OverworldSpell.Spells.CATALYST: 
-	# 		catalyst_spell_enabled = val
-	# 	OverworldSpell.Spells.DESTROY: 
-	# 		destroy_spell_enabled = val
-	# 	OverworldSpell.Spells.VINES: 
-	# 		vines_spell_enabled = val
-	# 	_: 
-	# 		tunnel_spell_enabled = val
-	overworld_spell_enabled.emit(id, val)
-
-
 func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:
 	overworld_spell_selected.emit(id, isPrimary)
-	if isPrimary:
-		spell1 = id
-	else:
-		spell2 = id
 
 
 func _add_items_from_dir(path: String) -> void:
@@ -368,8 +346,7 @@ func serialize() -> Dictionary:
 		"spells": scrolls,
 		"equipment": es,
 		"key_items": ki,
-		"spell1": spell1,
-		"spell2": spell2,
+		"active_spell": active_spell,
 	}
 
 
@@ -415,6 +392,5 @@ func deserialize(data: Dictionary) -> void:
 			item.quantity = 0
 		quantity_changed.emit(item)
 
-	UIManager.inventory.overworld_spells_menu.set_primary(data["spell1"])
-	UIManager.inventory.overworld_spells_menu.set_secondary(data["spell2"])
+	Inventory.active_spell = data['active_spell']
 

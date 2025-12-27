@@ -4,23 +4,25 @@ class_name OverworldSpell
 enum Spells { STASIS, CATALYST, DESTROY, GOLEM, SET_PORTAL, USE_PORTAL, NONE }
 
 @export var icon: CompressedTexture2D = null
-var Projectile: PackedScene
+const Projectile := preload("res://src/overworld/overworld_spell_system/projectile.tscn")
 
 var is_active := false
 
 var _terrain_exclusions: Array
-
 var _magiclay_terrain: MagiClay
 var _mouse_pos: Vector3
 var _is_mouse_pos_valid := false
 
+
 func _ready() -> void:
 	_terrain_exclusions = get_tree().get_nodes_in_group("player")
+
 
 func _physics_process(delta: float) -> void:
 	if not is_active: return
 	_get_magiclay()
 	_find_mouse_position()
+
 
 func _get_magiclay() -> void:
 	_magiclay_terrain = null
@@ -36,6 +38,7 @@ func _get_magiclay() -> void:
 	if clay is MagiClay:
 		_magiclay_terrain = clay
 
+
 func _find_mouse_position() -> void:
 	var cam := get_viewport().get_camera_3d()
 	var mousePos := get_viewport().get_mouse_position()
@@ -50,19 +53,22 @@ func _find_mouse_position() -> void:
 		_mouse_pos = pos - global_position
 		_mouse_pos.y = position.y
 
-func deactivate() -> void:
-	is_active = false
 
-func set_primary(val: bool) -> void:
-	is_active = true
+func deactivate() -> void: is_active = false
+
+
+func activate() -> void: is_active = true
+
 
 # Virtual
 func perform_action() -> void: pass
+
 
 func _channel_element() -> ElementalType: 
 	if _magiclay_terrain != null:
 		return _magiclay_terrain.element
 	return ElementManager.Blank
+
 
 func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, element: ElementalType) -> void:
 	if not _is_mouse_pos_valid: return

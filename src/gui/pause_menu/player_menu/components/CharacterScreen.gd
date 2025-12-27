@@ -9,7 +9,7 @@ var _attacks: Array
 var _curr_index := 0
 
 
-func setup(actor: BattleActor) -> void:
+func setup(actor: BattleActor, isPlayer:=false) -> void:
 	_actor = actor
 
 	%Name_Label.text = actor.name
@@ -52,15 +52,31 @@ func setup(actor: BattleActor) -> void:
 		else:
 			button.text = "empty"
 
+	# Set Battle Equipment Slot
 	if not actor.equipment_equipped.is_connected(_set_equipment):
-		actor.equipment_equipped.connect(_set_equipment)
-
-	if not %Equipment_Button.pressed.is_connected(_on_item_selected.bind(-1)):
-		%Equipment_Button.pressed.connect(_on_item_selected.bind(-1))
+		actor.equipment_equipped.connect(_set_equipment.bind(0))
+	if not %EquipmentButton.pressed.is_connected(_on_item_selected):
+		%EquipmentButton.pressed.connect(_on_item_selected.bind(-1))
 	if actor.equipment != null:
-		%Equipment_Button.text = actor.equipment.name
+		%EquipmentButton.text = actor.equipment.name
 	else:
-		%Equipment_Button.text = "empty"
+		%EquipmentButton.text = "empty"
+
+	# Set Overworld Spell Slot
+	if isPlayer:
+		%OverworldEquipmentButton.show()
+	else:
+		%OverworldEquipmentButton.hide()
+		return
+
+	if not Inventory.overworld_spell_selected.is_connected(_set_equipment):
+		Inventory.overworld_spell_selected.connect(_set_equipment.bind(1))
+	if not %OverworldEquipmentButton.pressed.is_connected(_on_item_selected):
+		%OverworldEquipmentButton.pressed.connect(_on_item_selected.bind(-2))
+	if Inventory.active_spell != null:
+		%OverworldEquipmentButton.text = Inventory.active_spell.name
+	else:
+		%OverworldEquipmentButton.text = "empty"
 
 
 func _init_stats(actor: BattleActor) -> void:
@@ -86,11 +102,13 @@ func _set_attack(attack: Attack, index: int) -> void:
 	_attacks[index] = attack
 
 
-func _set_equipment(e: Equipment) -> void:
-	if e: 
-		%Equipment_Button.text = e.name
+func _set_equipment(e: Equipment, id:=0) -> void:
+	if not e:
+		%EquipmentButton.text = " "
+	elif id == 0:
+		%EquipmentButton.text = e.name
 	else:
-		%Equipment_Button.text = " "
+		%OverworldEquipmentButton.text = e.name
 
 
 func _on_element_changed(id: int, element: ElementalType) -> void:
@@ -122,7 +140,7 @@ func _on_cancel_button_pressed() -> void:
 
 func _on_replace_button_pressed() -> void:
 	if _curr_index < 0:
-		open_equipment_menu.emit()
+		open_equipment_menu.emit(_curr_index)
 	else:
 		open_spell_menu.emit(_curr_index)
 

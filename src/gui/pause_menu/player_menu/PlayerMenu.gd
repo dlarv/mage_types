@@ -1,7 +1,7 @@
 extends Menu
 
 signal open_spell_menu(index: int, actor: BattleActor)
-signal open_equipment_menu(actor: BattleActor)
+signal open_equipment_menu(index: int, actor: BattleActor)
 
 @export var CharacterScreen: PackedScene
 
@@ -14,8 +14,8 @@ func setup(player: Node3D) -> void:
 	if not Settings.player_name.is_empty():
 		_player.battle_actor.name = Settings.player_name
 
-	$Player.setup(_player.battle_actor)
-	_player.actor_changed.connect($Player.setup)
+	$Player.setup(_player.battle_actor, true)
+	_player.actor_changed.connect($Player.setup.bind(true))
 
 	if not $Player.open_equipment_menu.is_connected(_on_open_equipment_menu):
 		$Player.open_equipment_menu.connect(_on_open_equipment_menu.bind(_player.battle_actor))
@@ -44,5 +44,5 @@ func _on_open_spell_menu(index: int, actor: BattleActor) -> void:
 	open_spell_menu.emit(index, actor)
 
 
-func _on_open_equipment_menu(actor: BattleActor) -> void:
-	open_equipment_menu.emit(actor)
+func _on_open_equipment_menu(id: int, actor: BattleActor) -> void:
+	open_equipment_menu.emit(id, actor)

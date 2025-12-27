@@ -20,10 +20,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 script = ExtResource("1_pabo1")
 
 [node name="General" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -168,35 +169,45 @@ layout_mode = 2
 stat = "EVASION"
 
 [node name="Button and Beads" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads"]
 layout_mode = 2
 
-[node name="List_VBox" type="VBoxContainer" parent="Button and Beads/HBoxContainer"]
+[node name="ListVBox" type="VBoxContainer" parent="Button and Beads/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Button and Beads/HBoxContainer/List_VBox"]
+[node name="Label" type="Label" parent="Button and Beads/HBoxContainer/ListVBox"]
 layout_mode = 2
 text = "Equipment (Button)"
 
-[node name="Equipment_Button" type="Button" parent="Button and Beads/HBoxContainer/List_VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads/HBoxContainer/ListVBox"]
+layout_mode = 2
+
+[node name="EquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="Button and Beads/HBoxContainer/List_VBox"]
+[node name="OverworldEquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Button and Beads/HBoxContainer/ListVBox"]
 layout_mode = 2
 text = "Spells (Beads)"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Button and Beads/HBoxContainer/List_VBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Button and Beads/HBoxContainer/ListVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SpellScroller" type="VBoxContainer" parent="Button and Beads/HBoxContainer/List_VBox/ScrollContainer"]
+[node name="SpellScroller" type="VBoxContainer" parent="Button and Beads/HBoxContainer/ListVBox/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

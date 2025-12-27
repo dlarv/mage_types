@@ -46,7 +46,6 @@ func setup() -> void:
 	save_menu.setup()
 	var p := get_tree().get_first_node_in_group("player") 
 	player_menu.setup(p)
-	inventory.setup()
 
 
 func _unhandled_input(input: InputEvent) -> void:
@@ -137,14 +136,14 @@ func open_catalyst_menu(validElements: Dictionary) -> void:
 	show()
 
 
-func show_overworld_spell(isPrimary: bool, spell: OverworldSpell) -> void:
+func show_overworld_spell(spell: OverworldSpell) -> void:
 	# Without this block, overworld spells cannot show their icon upon startup.
 	if not hud:
 		var root := get_tree().get_current_scene()
 		hud = root.get_node("%HUD_Layer")
 		# Needed when playing non-main scene
 		if not hud: return
-	hud.show_overworld_spell(isPrimary, spell)
+	hud.show_overworld_spell(spell)
 
 
 func show_info_graphic(key: String) -> void:
@@ -227,16 +226,22 @@ func _on_player_menu_open_spell_menu(index: int, actor: BattleActor) -> void:
 		actor.replace_attack(selection, index)
 
 
-func _on_player_menu_open_equipment_menu(actor: BattleActor) -> void:
+func _on_player_menu_open_equipment_menu(index: int, actor: BattleActor) -> void:
 	block_input = true
 	inventory.show()
 	var selection: _Item = await inventory.open_equipment_menu()
 	_menu_stack[-1].show()
 	block_input = false
 
-	if selection != null:
-		Inventory.remove(selection, 1)
+	if selection == null: return
+
+	Inventory.remove(selection, 1)
+	if index == -1:
 		actor.equipment = selection
+	elif selection.has_overworld_use:
+		Inventory.active_spell = selection
+	else:
+		push_warning("%s cannot be selected as overworld spell")
 
 
 func _on_main_menu_button_pressed() -> void:

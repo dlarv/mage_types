@@ -9,13 +9,10 @@ class_name Equipment
 			if not effect: continue
 			if not effect.activated.is_connected(_on_activated):
 				effect.activated.connect(_on_activated)
-
+@export var has_overworld_use := false
 var _actors := []
 
-func _init() -> void: 
-	if name == "Sunset Orb":
-		pass
-
+func _init() -> void: pass
 
 # virtual
 func equip(actor: BattleActor) -> void: 
