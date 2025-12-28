@@ -13,6 +13,7 @@
 	- This can contain small challenges/puzzles/etc.
 	- Ideas can be drawn from SCP-7819.
 	- I want there to be a second floor.
+- v0.6.x: [[more_dynamic_battles]]
 # Objectives
 - Refine design processes
 	- 3 types of updates
@@ -20,85 +21,50 @@
 		- Content
 		- Aesthetic
 - Practice making challenges
-- toe_ik.L
 # Upcoming Versions
 [[version_naming_scheme]]
-## v0.6.x
-Battle aesthetic update: [[more_dynamic_battles]]
-- [x] Fix channeling animation playing twice?
-- [x] Mention player can open battle log in tutorial
-- [x] Ensure tutorial works with new battle system
-	- [x] Rebalance boss fights (damage numbers are now too low)
-- [x] Readd boss models (They got removed at some point :/)
-- [x] Bake textures for Alicev2
-- [x] Create new walk cycle for Alicev2
-- [x] Bugfix: get_tree().create_timer() crash
-	-  Player runs away then starts battle again, crash happens trying to show willpower text
-- [x] Ensure 2 combatants with same equipment don't interfere
-- [x] Translate rest of modequip
-- [x] Give miniboss Conduct Red attack back
-- [x] Communicate important information using animations and graphics
-	- [x] Attack name
-	- [x] Equipment activations
-	- [x] Side effects
-		- The dials might be enough to communicate this
-	- [x] Transmutations
-		- [ ] ~~Interesting effect to show transmutation happening
-		- [x] Icon on combatant name plate showing their current composition
-	- [x] Animate hp rising/falling after attack animation
-	- [x] Status effects activating: poison, phobia, flinched, stasis
-	- [x] User and targets
-	- [x] Whether attack dealt a status condition/extra effects
-	- [x] Effectiveness: e.g. {actor} was wreathed in bright Blue light
-		- [x] Bugfix: Since intention and affinity is communicated using the same particle emitter, if the player skips thru the animations, the call to turn off the particle effect will be called late, shutting off the intention effect instead
-- [x] Controlling animation
-	- [x] Move status pin animations into BattleAnimator to ensure animations happen at correct timings (block mostly)
-- [x] Bugfix: Incorrect BattleSprite is highlighted when player is selecting an action
-- [x] Dead code
-	- [x] Remove String returned value from `resolve_end_of_battle()` 
-	- [x] Remove `get_and_flush_msgs()` from BattleActor and related equipment info
-- [x] Battle messages
-	- [x] Message Feed should resemble twitch chat
-		- [x] Lines should be simple Strings
-		- [ ]~~Make translucent~~
-			- I selected the option for transparency, but this doesn't work with my WM
-		- [x] Focus current turn info
-		- [x] Bind to hotkey
-	- [x] Only show InfoDisplay when player is selecting attack or character
-		- [x] Logging: Since logs are created by the InfoDisplay, removing this will require the logs to be created elsewhere
-	- [x] Refactor InfoDisplay to remove blocking message logic
-		- [x] Remove calls to blocking messages from Battle
-	- [x] Give player ability to toggle battle message display
-	- [x] Show list of all messages sent during battle
-	- [x] Have unique display formatting attacks and transmutation and misc effects
-	- [x] Implement defeat bubble 
-- [x] Experiment with layout
-	- [x] Combatant badges
-	- [x] Player control buttons
-		- [x] Remove character button (player will click on battle sprite)
-	- [x] Speed rankings
-		- [x] Change name from "Turn Order" to "Speed Ranking"
-- [x] Implement flinch condition properly
-	- [x] Prevent player from selecting actions for flinched characters
-	- [x] Create flinch pin
-- [x] Fix bug where selecting status pins appends message instead of replacing
-- [x] Make playtesting enemies easier
-	- [x] Show levels in UI
-	- [x] Set player's level in debug mode
-	- [x] Create beastiary to contain all monster data
-	- [x] Create scene to setup battle
-	- [x] Customize player team using unique battle actor
-		- [x] Stats
-		- [x] Attacks
-		- [x] Number of team members
-	- [x] Select monster team (interface with beastiary)
-- [x] Show combatant's levels on name card and in Characters menu
-- [x] Refactor wild enemy spawners
-	- [x] Give spawner enemy base templates 
-	- [x] Set custom spawn% for each enemy
-	- [x] Allow spawner to adjust stats/etc of instantiated enemies
-	
-***QOL changes that will likely not be implemented in this version.***
+## v0.7.x
+West and Central Hotel content update. Add puzzles and combat challenges to hotel.
+Refactor equipment and overworld spells
+- [ ] Add Magenta kitchen and breakfast
+	- [ ] Write Mischa/cook character
+	- [ ] Ensure dialog system can handle quests
+	- [ ] Key/lock/door system
+- [ ] Motel
+	- [ ] Player needs key to enter
+	- [ ] Hidden caves logic puzzle (Lavender puzzle)
+	- [ ] ~~Motel/Backroom guardian monster~~
+	- [ ] Monster encounters
+	- [ ] Priority spell hidden in motel
+	- [ ] Lavender fight
+	- [ ] Destroy++ spell added at end of Lavender puzzle
+- [ ] Getting defeated resets your progress
+	- Certain areas will reset player when they are defeated (You feel a dark power emanating from all around you)
+- [ ] Rampage
+	- [ ] Design parkour
+	- [ ] Build parkour
+	- [ ] Add destroy obstacle to Rampage1
+	- [ ] Replace/alter Catalyst puzzle in Rampage1
+- [x] Equipment/Overworld spell refactor
+	- [x] Redo related UI screens
+	- [x] Player can select between Battle and Overworld equipment
+	- [x] Partners only have overworld equipment
+	- [x] OverworldSpellManager is easier to extend
+	- [x] Player can equip/unequip overworld spells
+	- [x] Add enemy encounters
+- [x] Puzzle block demos:
+	- [x] Laser blocks demos
+		- [x] DraggableMirror?
+		- [x] RotatableMirror?
+		- [x] DraggableEmitter?
+		- [x] OneWayLens?
+	- [x] Pressure plate demo
+		- [x] Bug: Player activated pressure plate not working
+	- [x] Delay demo
+	- [x] Timer demo
+	- [x] Relay demo
+		- [x] Create indicator block, which differentiates between off/on/invalid_off
+***QOL changes that will likely not be implemented in v0.6.x.***
 - [ ] Speed ranking/turn order accounts for priority
 - [ ] Use buttons to skip battle animations
 - [ ] Attack Animation refactor
@@ -112,7 +78,7 @@ Battle aesthetic update: [[more_dynamic_battles]]
 	- [ ] Modeled
 		- [x] Body
 		- [x] Hair
-		- [ ] Face
+		- [ ] Mouth
 	- [x] Textured
 		- [x] Compare NextPassTransparency with Swapping diffuse maps
 			- Swapping diffuse maps looks far better than the next pass method
@@ -130,36 +96,6 @@ Battle aesthetic update: [[more_dynamic_battles]]
 		- [x] Player can click on a BattleActor model to display info about them
 		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
 			- [ ] Hovering status pin should outline that pin
-## v0.7.x
-West and Central Hotel content update. Add puzzles and combat challenges to hotel.
-Refactor equipment and overworld spells
-- [ ] Upper West Hotel challenges
-	- [x] Add puzzle
-	- [x] Reward for solving main puzzle
-		- [x] Hammer (Equipment): Melee attacks have +30% chance to flinch
-	- [ ] Reward for solving alt puzzle
-		- [ ] Access to hidden area? Alcove with additional chest?
-	- [x] Add enemy encounters
-- [ ] Add Magenta kitchen and breakfast
-- [ ] Motel
-	- [ ] Hidden caves logic puzzle (Lavender puzzle)
-	- [ ] Motel/Backroom guardian monster
-	- [ ] Monster encounters
-	- [ ] Priority spell hidden in motel
-	- [ ] Lavender fight
-	- [ ] Destroy++ spell added at end of Lavender puzzle
-- [x] Puzzle block demos:
-	- [x] Laser blocks demos
-		- [x] DraggableMirror?
-		- [x] RotatableMirror?
-		- [x] DraggableEmitter?
-		- [x] OneWayLens?
-	- [x] Pressure plate demo
-		- [x] Bug: Player activated pressure plate not working
-	- [x] Delay demo
-	- [x] Timer demo
-	- [x] Relay demo
-		- [x] Create indicator block, which differentiates between off/on/invalid_off
 ## v0.8.x
 World aesthetic update.
 - [ ] Player animations
@@ -233,12 +169,13 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [ ] Player/enemy cannot move for a duration of time
 - [ ] Determine mechanic that prevents player from starting battles with certain enemies before different requirements are fulfilled
 - [ ] Add final boss to ~~stasis dungeon~~
-## v0.?.x
+## v0.10.x
 Elemental system refactor
 - [ ] Use proper enum instead of `@export_enum`
 - [ ] Associate symbols with each element to help with differentiation
-- [ ] Adjust `ElementalType.main_color` values
-## v0.10.x
+- [ ] Add missing reactions and recreate transmutation chart
+- [x] Adjust `ElementalType.main_color` values
+## v0.11.x
 Demo candidate. Misc todos that must be completed before uploading to Steam.
 - [ ] Accessibility
 	- [ ] Colorblind support
