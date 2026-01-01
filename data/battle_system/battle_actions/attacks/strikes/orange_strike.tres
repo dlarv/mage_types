@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_mp7r6"]
 script = ExtResource("5_wkc0g")
-_element = "orange"
+_element = 0
 apply_to = "target"
 
 [sub_resource type="Resource" id="Resource_fe3uk"]
@@ -61,7 +61,7 @@ power = 50
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Orange Strike"
 animation = ExtResource("1_02glp")
-_element = "purple"
+_element = 0
 priority = 0
 attack_range = 0
 target = 3

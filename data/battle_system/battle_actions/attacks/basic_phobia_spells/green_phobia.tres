@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_lff7j"]
 resource_name = "Green-Phobic"
 script = ExtResource("4_m3x5i")
-_element = "green"
+_element = 6
 id = 3
 _duration = "5"
 icon = ExtResource("3_m4t5d")
@@ -19,7 +19,7 @@ _strength = "0.2"
 message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_v2113"]
-resource_name = "Green-Phobic"
+resource_name = "Blue-Phobic"
 script = ExtResource("5_24nq1")
 attack_effect = SubResource("Resource_lff7j")
 effect_target = 1
@@ -33,7 +33,7 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Prasinophobia"
-_element = "green"
+_element = 6
 priority = 0
 attack_range = 2
 target = 3

@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_2ypds"]
 script = ExtResource("2_ckkkg")
-_element = "yellow"
+_element = 5
 apply_to = "user"
 
 [sub_resource type="Resource" id="Resource_0qt60"]
@@ -46,7 +46,7 @@ power = 60
 scaling_factor = Vector4i(0, 0, 100, -1)
 name = "Rush"
 animation = ExtResource("1_jxil5")
-_element = "yellow"
+_element = 5
 priority = 2
 attack_range = 0
 target = 3

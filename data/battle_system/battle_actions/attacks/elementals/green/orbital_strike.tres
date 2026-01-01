@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_nfer4"]
 script = ExtResource("3_22vgf")
-_element = "green"
+_element = 6
 apply_to = "user"
 
 [sub_resource type="Resource" id="Resource_34db7"]
@@ -61,7 +61,7 @@ power = 90
 scaling_factor = Vector4i(120, 100, 100, -1)
 name = "Orbital Strike"
 animation = ExtResource("1_g1ddc")
-_element = "green"
+_element = 6
 priority = -1
 attack_range = 1
 target = 3

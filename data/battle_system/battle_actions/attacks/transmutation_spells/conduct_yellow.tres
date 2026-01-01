@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_4tyhu"]
 script = ExtResource("3_4mkka")
-_element = "yellow"
+_element = 5
 element_id = 1
 name = ""
 _strength = "0.0"
@@ -27,7 +27,7 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Conduct Yellow"
-_element = "yellow"
+_element = 5
 priority = 0
 attack_range = 2
 target = 0

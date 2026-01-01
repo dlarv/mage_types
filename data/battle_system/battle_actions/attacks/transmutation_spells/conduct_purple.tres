@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_ehie7"]
 script = ExtResource("3_n63b3")
-_element = "purple"
+_element = 1
 element_id = 1
 name = ""
 _strength = "0.0"
@@ -27,7 +27,7 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Conduct Purple"
-_element = "purple"
+_element = 1
 priority = 0
 attack_range = 2
 target = 0

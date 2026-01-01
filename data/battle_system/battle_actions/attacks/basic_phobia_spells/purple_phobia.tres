@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_42lny"]
 resource_name = "Purple-Phobic"
 script = ExtResource("4_6cur6")
-_element = "purple"
+_element = 1
 id = 3
 _duration = "5"
 icon = ExtResource("3_bxyds")
@@ -19,7 +19,7 @@ _strength = "0.2"
 message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_rp18c"]
-resource_name = "Purple-Phobic"
+resource_name = "Blue-Phobic"
 script = ExtResource("4_4b86v")
 attack_effect = SubResource("Resource_42lny")
 effect_target = 1
@@ -33,7 +33,7 @@ accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Nyctophobia"
-_element = "purple"
+_element = 1
 priority = 0
 attack_range = 2
 target = 3
