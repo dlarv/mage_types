@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="KeyItem" load_steps=3 format=3 uid="uid://cb1vwen1fw20u"]
+
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_irgjx"]
+[ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="2_mduww"]
+
+[resource]
+script = ExtResource("2_mduww")
+unique_name = &"GRAY_KEY"
+id = 0
+name = "Gray Key"
+requirements = Array[ExtResource("1_irgjx")]([])
+details = "A simple gray key"
+metadata/_custom_type_script = "uid://bga7b8k778yar"

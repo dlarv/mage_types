@@ -162,8 +162,6 @@ func find_and_add_spell(spell: Attack) -> void:
 
 
 func add_key_item(item: KeyItem, amount:=1) -> void:
-	var overworldSpell := -1
-
 	match item.unique_name:
 		&"STENCIL_1":
 			stencil_enabled.emit(1)

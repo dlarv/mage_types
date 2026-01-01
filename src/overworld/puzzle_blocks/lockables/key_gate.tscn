@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://dicv6f74h6ixq"]
+
+[ext_resource type="Script" uid="uid://b3dugdqn0fg54" path="res://src/overworld/puzzle_blocks/lockables/KeyGate.gd" id="1_b5h3h"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_b5h3h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8txmk"]
+size = Vector3(3, 4, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wlxve"]
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="Animation" id="Animation_1pp1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wu4hk"]
+resource_name = "opening"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, -1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvxh5"]
+_data = {
+&"RESET": SubResource("Animation_1pp1a"),
+&"opening": SubResource("Animation_wu4hk")
+}
+
+[node name="KeyGate" type="StaticBody3D" groups=["persist"]]
+collision_layer = 17
+script = ExtResource("1_b5h3h")
+
+[node name="Interactable" parent="." instance=ExtResource("2_b5h3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.616041, 0.888801)
+message_override = "Unlock"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_8txmk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_wlxve")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uvxh5")
+}
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

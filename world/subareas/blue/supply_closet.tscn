@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://h8buyp6ewnv8"]
+[gd_scene load_steps=50 format=3 uid="uid://h8buyp6ewnv8"]
 
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_6yy2f"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_yjrln"]
@@ -20,9 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://d3ygm6nayhv7c" path="res://src/overworld/puzzle_blocks/indicator.tscn" id="16_mhvap"]
 [ext_resource type="PackedScene" uid="uid://sbh0qf0ppd8m" path="res://src/overworld/puzzle_blocks/timer.tscn" id="17_wb5h5"]
 [ext_resource type="Script" uid="uid://byy6kl6x0dru5" path="res://src/overworld/puzzle_blocks/lockables/EnvironmentalDoor.gd" id="18_stt5w"]
+[ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="19_f27vr"]
 [ext_resource type="PackedScene" uid="uid://ujn580ouc14d" path="res://src/overworld/puzzle_blocks/empties/flip_flop.tscn" id="19_ufdma"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="20_b0ned"]
 [ext_resource type="PackedScene" uid="uid://db2dlgilhfyau" path="res://src/overworld/puzzle_blocks/lasers/laser_redirect.tscn" id="20_wqd4m"]
 [ext_resource type="PackedScene" uid="uid://cspipog36hcdh" path="res://src/overworld/puzzle_blocks/lasers/draggable_emitter.tscn" id="21_a42or"]
+[ext_resource type="Resource" uid="uid://cb1vwen1fw20u" path="res://data/items/key_items/gray_key.tres" id="21_py2t0"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="22_a42or"]
 [ext_resource type="PackedScene" uid="uid://0wwb5blbl37u" path="res://src/overworld/puzzle_blocks/rails.tscn" id="23_n72vc"]
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="24_reta6"]
@@ -33,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://bgyk6bj716o20" path="res://src/overworld/puzzle_blocks/pistons/mirror_piston.tscn" id="29_08btr"]
 [ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="29_f27vr"]
 [ext_resource type="PackedScene" uid="uid://8safgmaxk1ft" path="res://src/overworld/puzzle_blocks/empties/pulser.tscn" id="30_ji4qd"]
+[ext_resource type="PackedScene" uid="uid://dicv6f74h6ixq" path="res://src/overworld/puzzle_blocks/lockables/key_gate.tscn" id="30_lojfm"]
 [ext_resource type="PackedScene" uid="uid://nbfa5rbb2g8p" path="res://src/overworld/puzzle_blocks/pistons/gear.tscn" id="31_qkwyv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1qq4"]
@@ -43,6 +47,16 @@ size = Vector3(0.6, 8, 6.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_caqob"]
 size = Vector3(54, 29, 49)
+
+[sub_resource type="Resource" id="Resource_uf111"]
+resource_name = "Grey Key"
+script = ExtResource("20_b0ned")
+item = ExtResource("21_py2t0")
+id = 0
+quantity = 1
+max_quantity = 9999
+allow_stacking = false
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy7e0"]
 size = Vector3(35, 25, 34)
@@ -357,6 +371,14 @@ is_transmutable = true
 
 [node name="CatalystDevice" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.458283, 11)
+
+[node name="KeyGate" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("30_lojfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5252, 0.941382, -17.2054)
+key_name = &"GRAY_KEY"
+
+[node name="Chest" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("19_f27vr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0.4, -16)
+items = Array[ExtResource("20_b0ned")]([SubResource("Resource_uf111")])
 
 [node name="GolemTestingFacility" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 18)
@@ -860,14 +882,14 @@ wait_time = 1.0
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice6" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice7" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter2" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice8" to="LaserLab/Chunk/RedirectDemo/LaserRedirect" method="set_element"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168348" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168348" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168349" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168349" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168350" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168350" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168351" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@168351" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218482" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218482" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218483" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218483" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218484" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218484" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218485" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218485" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
 
 [editable path="VortexEngineChunk/Chunk/VortexEngine"]
 [editable path="RailwayDemoChunk/Chunk/Rails"]
