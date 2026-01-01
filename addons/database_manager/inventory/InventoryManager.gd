@@ -89,7 +89,7 @@ func _on_load_button_pressed() -> void:
 		add_row(item)
 	for item in inventory.equipment:
 		add_row(item)
-	for item in inventory.key_items:
+	for item in inventory.key_items.values():
 		add_row(item)
 
 func _on_open_button_pressed() -> void:
