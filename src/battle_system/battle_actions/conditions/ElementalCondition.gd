@@ -9,10 +9,11 @@ var operator := "any"
 var apply_to := "user"
 
 #override
-func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
+func check(data: ActorTurnData, target: BattleActor) -> bool:
 	var output := true
 	var f: Callable
 	var op := ""
+	var user := data.user
 	match operator:
 		"ne": 
 			f = _ne

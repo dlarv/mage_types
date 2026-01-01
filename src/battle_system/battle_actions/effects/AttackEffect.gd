@@ -2,12 +2,7 @@
 extends Resource 
 class_name _AttackEffect 
 
-const DataBuffer := Attack.DataBuffer
-const Parser := preload("res://addons/attackeffectinspector/parser.gd")
 const EXPRESSION_VARS := ActorTurnData.EXPRESSION_VARS
-
-# This value is written by Attack before any effects are applied.
-static var current_buffer: DataBuffer = DataBuffer.new()
 
 @export var name: String: set = _set_name
 ## Effectiveness of this effect, usually as a percentage of health.

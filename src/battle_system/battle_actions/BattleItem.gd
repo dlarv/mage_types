@@ -18,8 +18,6 @@ static func create(name: String, details: String="") -> BattleItem:
 	return item
 
 func apply_effects(data: ActorTurnData) -> ActorTurnData:
-	var buffer := DataBuffer.new(self)
-	_AttackEffect.current_buffer = buffer
 	super.apply_effects(data)
 	apply_cost(data.user)
 

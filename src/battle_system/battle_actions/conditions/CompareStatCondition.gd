@@ -14,9 +14,9 @@ var actor_2 := "target"
 @export var stat_2: StatManager.Stats
 
 #override
-func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
-	var actor1 := user if actor_1 == "user" else target
-	var actor2 := user if actor_1 == "user" else target
+func check(data: ActorTurnData, target: BattleActor) -> bool:
+	var actor1: BattleActor = data.user if actor_1 == "user" else target
+	var actor2: BattleActor = data.user if actor_1 == "user" else target
 	return _compare(actor1.get_stat(stat_1), actor2.get_stat(stat_2))
 
 func _compare(stat1: float, stat2: float) -> bool:

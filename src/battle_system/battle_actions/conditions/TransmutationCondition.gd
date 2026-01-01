@@ -7,8 +7,8 @@ class_name TransmutationCondition
 var apply_to := "target"
 
 #override
-func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
-	var actionElement: ElementalType = _AttackEffect.current_buffer.action.element
+func check(data: ActorTurnData, target: BattleActor) -> bool:
+	var actionElement: ElementalType = data.action.element
 	var targetTrans := false
 	var userTrans := false
 
@@ -17,9 +17,9 @@ func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
 		var e2 := ElementManager.get_matchup(target.element1, e1)
 		targetTrans = not target.stasis and (e1 or e2)
 	if not apply_to == "target":
-		var e1 := ElementManager.get_matchup(user.element2, actionElement)
-		var e2 := ElementManager.get_matchup(user.element1, e1)
-		userTrans = not user.stasis and (e1 or e2)
+		var e1 := ElementManager.get_matchup(data.user.element2, actionElement)
+		var e2 := ElementManager.get_matchup(data.user.element1, e1)
+		userTrans = not data.user.stasis and (e1 or e2)
 
 	match apply_to:
 		"user": return userTrans

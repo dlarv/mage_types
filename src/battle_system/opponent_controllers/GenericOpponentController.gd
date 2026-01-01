@@ -241,7 +241,6 @@ func _evaluate_random(user: BattleActor, enemies: Array[BattleActor], action: _B
 
 
 func _evaluate_setup_potential(user: BattleActor, target: BattleActor, action: _BattleAction) -> Array:
-	_AttackEffect.current_buffer.action = action
 	var setupPotential := 0.0
 	var dmg := 0
 

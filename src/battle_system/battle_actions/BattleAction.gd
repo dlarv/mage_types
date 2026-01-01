@@ -61,14 +61,3 @@ func apply_cost(user: BattleActor) -> float:
 	return 0
 
 
-class DataBuffer:
-	var action: _BattleAction
-	@export var damage :=  0
-	@export var total_damage :=  0
-	@export var buffer: float
-
-	func _init(action: _BattleAction=null) -> void:
-		self.action = action
-		buffer = 0
-		damage = 0
-		total_damage = 0

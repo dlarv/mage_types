@@ -23,9 +23,10 @@ var _last_activated_effect: _BaseEffectSlot = null
 # override
 func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
 	var user := data.user
+	var cond := condition.check(data, target)
 	# Godot doesn't have a XOR operator for bools, so I made do.
-	if (condition.check(user, target, effectiveness) or invert) \
-			and not (condition.check(user, target,effectiveness) and invert):
+	if (cond or invert) \
+			and not (cond and invert):
 		_last_activated_effect = success_effect
 		return success_effect.apply_effect(data, target, effectiveness)
 	elif failed_effect != null:
@@ -48,9 +49,11 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 ## Used to check the type of the last _AttackEffect.
 ## e.g. if it was Damage, StatusEffect, etc.
 func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> EffectSlot:
+	var data := ActorTurnData.new(user, action, [], 1)
+	data.effectiveness = effectiveness
 	if user == null:
 		return success_effect
-	elif condition.check(user, target, effectiveness):
+	elif condition.check(data, target):
 		return success_effect
 	elif failed_effect:
 		return failed_effect
@@ -59,9 +62,11 @@ func get_effect_slot(user: BattleActor=null, target: BattleActor=null, action: _
 
 
 func get_attack_effect(user: BattleActor=null, target: BattleActor=null, action: _BattleAction=null, effectiveness:=1.0) -> _AttackEffect:
+	var data := ActorTurnData.new(user, action, [], 1)
+	data.effectiveness = effectiveness
 	if user == null:
 		return success_effect.attack_effect
-	elif condition.check(user, target, effectiveness):
+	elif condition.check(data, target):
 		return success_effect.attack_effect
 	elif failed_effect:
 		return failed_effect.attack_effect

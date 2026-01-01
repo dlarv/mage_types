@@ -16,16 +16,16 @@ var apply_to := "target"
 
 
 #override
-func check(user: BattleActor, target: BattleActor, effectiveness:=1.0) -> bool:
+func check(data: ActorTurnData, target: BattleActor) -> bool:
 	match apply_to:
 		"user":
-			return user.is_element(element)
+			return data.user.is_element(element)
 		"target":
 			return target.is_element(element)
 		"either":
-			return target.is_element(element) or user.is_element(element)
+			return target.is_element(element) or data.user.is_element(element)
 		_:
-			return target.is_element(element) and user.is_element(element)
+			return target.is_element(element) and data.user.is_element(element)
 
 
 func _to_string() -> String:

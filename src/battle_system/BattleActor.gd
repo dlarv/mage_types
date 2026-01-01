@@ -310,7 +310,7 @@ func resolve_end_of_battle(turnCounter: int) -> void:
 		current_hp = hp
 	
 	# Update alignment.
-	var unnormalizedValues := []
+	var unnormalizedValues: Array[float] = []
 	if alignment_manager and not alignment_manager.alignment_locked:
 		Logger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
 		unnormalizedValues = alignment_manager.normalize_and_add()

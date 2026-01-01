@@ -15,9 +15,9 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 	match actor_to_override:
 		"user":
 			attack = user.get_stat(override_stat)
-			defense = target.get_defense_stat(current_buffer.action)
+			defense = target.get_defense_stat(data.action)
 		"target":
-			attack = user.get_attack_stat(current_buffer.action)
+			attack = user.get_attack_stat(data.action)
 			defense = target.get_stat(override_stat)
 		_:
 			attack = user.get_stat(override_stat)
