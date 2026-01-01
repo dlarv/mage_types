@@ -61,7 +61,7 @@ metadata/_custom_type_script = "uid://cgxabe6034h8d"
 [resource]
 script = ExtResource("3_bo7o4")
 effects = Array[ExtResource("1_twp2o")]([SubResource("Resource_h6hdr"), SubResource("Resource_2opex")])
-has_overworld_use = null
+has_overworld_use = false
 id = 3
 name = "Sunset Orb"
 requirements = Array[ExtResource("2_whcob")]([])
