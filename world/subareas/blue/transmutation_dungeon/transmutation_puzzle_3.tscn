@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://e8cuohoyb4kr"]
+[gd_scene load_steps=9 format=3 uid="uid://e8cuohoyb4kr"]
 
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="1_oiawm"]
 [ext_resource type="PackedScene" uid="uid://de1dw2r8mhg2i" path="res://src/overworld/puzzle_blocks/empties/and_gate.tscn" id="2_dda3i"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="4_vh5ed"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="5_pp2q4"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="6_v232a"]
+[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="7_pb3s4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqf3b"]
-size = Vector3(75, 20, 56)
+size = Vector3(75, 20, 64)
 
 [node name="Chamber4" type="Area3D" node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("1_oiawm")
@@ -16,7 +17,7 @@ chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Path_S/Reset"), NodePath("Chunk/Path_N/Reset")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 9, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 9, -1.5)
 shape = SubResource("BoxShape3D_rqf3b")
 
 [node name="Chunk" type="Node3D" parent="."]
@@ -30,7 +31,7 @@ locks = [NodePath("../Path_N/PressurePlate"), NodePath("../Path_S/PressurePlate"
 
 [node name="PressurePlate" parent="Chunk/Path_N" instance=ExtResource("3_ij8st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 6.8, -52.0329)
-_element = "blue"
+_element = 0
 
 [node name="Reset" parent="Chunk/Path_N" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("4_vh5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 7.31784, -52)
@@ -38,37 +39,37 @@ reset_positions_of = [NodePath("../MagiclayDisk")]
 
 [node name="MagiclayDisk" parent="Chunk/Path_N" instance=ExtResource("5_pp2q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 7, -52)
-_element = "red"
+_element = 3
 
 [node name="Emitter4" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -34.8, 7.5, -51.6)
-_element = "red"
+_element = 3
 
 [node name="Emitter5" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
 transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -16.2, 7.5, -52.6)
-_element = "yellow"
+_element = 5
 
 [node name="Emitter6" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.50003, 7.5, -51.6)
-_element = "blue"
+_element = 0
 
 [node name="Emitter7" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 2.5, 7.5, -52.6)
-_element = "yellow"
+_element = 5
 
 [node name="Emitter8" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
 transform = Transform3D(1, 2.13163e-14, 1.69407e-21, 0, -4.37114e-08, -1, -2.13163e-14, 1, -4.37114e-08, -16.2, 7.5, -51.6)
-_element = "blue"
+_element = 0
 
 [node name="Emitter9" parent="Chunk/Path_N" instance=ExtResource("6_v232a")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -34.8, 7.5, -52.6)
-_element = "magenta"
+_element = 2
 
 [node name="Path_S" type="Node3D" parent="Chunk"]
 
 [node name="PressurePlate" parent="Chunk/Path_S" instance=ExtResource("3_ij8st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 6.8, -31.7329)
-_element = "red"
+_element = 3
 
 [node name="Reset" parent="Chunk/Path_S" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("4_vh5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 7.31784, -31.8)
@@ -76,28 +77,36 @@ reset_positions_of = [NodePath("../MagiclayDisk")]
 
 [node name="MagiclayDisk" parent="Chunk/Path_S" instance=ExtResource("5_pp2q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 7, -31.8)
-_element = "blue"
+_element = 0
 
 [node name="Emitter" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
 transform = Transform3D(-1, -8.54386e-08, 4.97821e-15, 0, -4.37114e-08, -1, 8.54386e-08, -1, 4.37114e-08, -34.8, 7.5, -32.3)
-_element = "purple"
+_element = 1
 
 [node name="Emitter2" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -16.2, 7.5, -32.3)
-_element = "red"
+_element = 3
 
 [node name="Emitter3" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.50003, 7.5, -31.3)
-_element = "red"
+_element = 3
 
 [node name="Emitter10" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 2.5, 7.5, -32.3)
-_element = "magenta"
+_element = 2
 
 [node name="Emitter11" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
 transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -16.2, 7.5, -31.3)
-_element = "cyan"
+_element = 7
 
 [node name="Emitter12" parent="Chunk/Path_S" instance=ExtResource("6_v232a")]
 transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 3.10588e-22, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -34.8, 7.5, -31.3)
-_element = "yellow"
+_element = 5
+
+[node name="Chamber3Geyser" parent="Chunk" instance=ExtResource("7_pb3s4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -42.7258, 6.8, -72.4695)
+is_on = false
+_element = 5
+base_size = Vector3(-230.116, 6.8, -181.083)
+
+[connection signal="on" from="Chunk/AndGate" to="Chunk/Chamber3Geyser" method="start"]

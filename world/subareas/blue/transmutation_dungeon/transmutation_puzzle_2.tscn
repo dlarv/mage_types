@@ -27,15 +27,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="MagiclayDisk" parent="Chunk" instance=ExtResource("9_1almi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 10.5, -4.5)
-_element = "blue"
+_element = 0
 
 [node name="GeyserPressurePlate" parent="Chunk" instance=ExtResource("2_la56k")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 9.84609, -12)
-_element = "blue"
+_element = 0
 
 [node name="MagiclayRock" parent="Chunk" instance=ExtResource("8_js524")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 10.3, -12)
-_element = "blue"
+_element = 0
 
 [node name="Reset" parent="Chunk" node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("3_bvqc0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.999999, 10.3178, -12)
@@ -115,100 +115,100 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6.7, -8.39999)
 
 [node name="Bridge2" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 6.7, -4.39999)
-_element = "magenta"
+_element = 2
 
 [node name="Emitter2" parent="Chunk/Bridge2" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0999999, 0)
-_element = "magenta"
+_element = 2
 
 [node name="Bridge11" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 6.7, 3.60001)
-_element = "blue"
+_element = 0
 
 [node name="Emitter5" parent="Chunk/Bridge11" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.14577e-06, 0.0999999, 0)
-_element = "blue"
+_element = 0
 
 [node name="Bridge20" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 6.7, 3.60001)
-_element = "cyan"
+_element = 7
 
 [node name="Emitter8" parent="Chunk/Bridge20" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1, 0)
-_element = "cyan"
+_element = 7
 
 [node name="Bridge21" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 6.7, 3.60001)
 
 [node name="Bridge22" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21, 6.7, 3.60001)
-_element = "yellow"
+_element = 5
 
 [node name="Emitter9" parent="Chunk/Bridge22" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1, 0)
-_element = "yellow"
+_element = 5
 
 [node name="Bridge23" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 6.7, 3.60001)
 
 [node name="Bridge24" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29, 6.7, 3.60001)
-_element = "magenta"
+_element = 2
 
 [node name="Emitter10" parent="Chunk/Bridge24" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1, 0)
-_element = "magenta"
+_element = 2
 
 [node name="Bridge4" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6.7, -0.399993)
-_element = "orange"
+_element = 4
 
 [node name="Emitter" parent="Chunk/Bridge4" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-_element = "orange"
+_element = 4
 
 [node name="Bridge16" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 6.7, -0.399995)
 
 [node name="Bridge12" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6.7, -0.399994)
-_element = "magenta"
+_element = 2
 
 [node name="Emitter11" parent="Chunk/Bridge12" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-_element = "magenta"
+_element = 2
 
 [node name="Bridge5" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6.7, 7.60001)
-_element = "orange"
+_element = 4
 
 [node name="Emitter6" parent="Chunk/Bridge5" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-_element = "orange"
+_element = 4
 
 [node name="Bridge10" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6.7, 7.60001)
-_element = "red"
+_element = 3
 
 [node name="Emitter7" parent="Chunk/Bridge10" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-_element = "red"
+_element = 3
 
 [node name="Bridge7" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 6.7, 11.6)
 
 [node name="Bridge25" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3, 6.7, 3.60001)
-_element = "orange"
+_element = 4
 
 [node name="Emitter4" parent="Chunk/Bridge25" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1, 0)
-_element = "orange"
+_element = 4
 
 [node name="Bridge14" parent="Chunk" instance=ExtResource("5_b44ux")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 6.7, -4.39999)
-_element = "orange"
+_element = 4
 
 [node name="Emitter3" parent="Chunk/Bridge14" instance=ExtResource("2_3sbrl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1, 0)
-_element = "orange"
+_element = 4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=82 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://dmet1d2f3kx1r" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="8_egugs"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
-[ext_resource type="Script" uid="uid://8kuun6qlgqwa" path="res://src/overworld/magiclay/MagiclayRock.gd" id="12_gn7b1"]
 [ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_1.tscn" id="14_srry2"]
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_2.tscn" id="15_6yind"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
@@ -1207,6 +1206,7 @@ shadow_enabled = true
 
 [node name="MagiclayRock" parent="Beach/BeachChunk/Chunk" instance=ExtResource("5_gn7b1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 3)
+_element = 0
 
 [node name="DashPrompt" type="Label3D" parent="Beach/BeachChunk/Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 14)
@@ -1227,15 +1227,15 @@ font_size = 64
 
 [node name="PressurePlate" parent="Beach/BeachChunk/Chunk" instance=ExtResource("16_61fdq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.6, 3.8, 2.9)
-_element = "blue"
+_element = 0
 
 [node name="MagiclayRock2" parent="Beach/BeachChunk/Chunk" instance=ExtResource("5_gn7b1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.6, 4.8, 2.9)
-_element = "red"
+_element = 3
 
 [node name="MagiclayRock3" parent="Beach/BeachChunk/Chunk" instance=ExtResource("5_gn7b1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7, 4.8, 5)
-_element = "blue"
+_element = 0
 
 [node name="Gate" parent="Beach/BeachChunk/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.7, 4, -7)
@@ -1358,40 +1358,16 @@ shape = SubResource("BoxShape3D_m7kj6")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/HotelRoomChunk"]
 
-[node name="Chamber1Geyser" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -50.1834, 3, 57.7166)
-is_on = false
-base_size = Vector3(-208.183, 3, -100.283)
-
-[node name="Chamber1Geyser2" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -53.1834, 3, 57.7166)
-is_on = false
-base_size = Vector3(-211.183, 3, -100.283)
-
-[node name="Chamber1Geyser3" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -47.1834, 3, 57.7166)
-is_on = false
-base_size = Vector3(-205.183, 3, -100.283)
-
-[node name="Chamber1Geyser4" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -36.8834, 3, 95.0166)
-is_on = false
-base_size = Vector3(-194.883, 3, -62.9834)
-
 [node name="Chamber2Geyser" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.7834, 6.7, 29.9166)
 is_on = false
+_element = 0
 base_size = Vector3(-220.783, 6.7, -128.083)
 
 [node name="Chamber2PressurePlate" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("16_61fdq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -44.6834, 9.94163, -14.6834)
-_element = "red"
+_element = 3
 base_size = Vector3(-202.683, 9.94163, -172.683)
-
-[node name="Chamber3Geyser" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("9_mipr7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -72.1163, 6.8, -23.0834)
-is_on = false
-base_size = Vector3(-230.116, 6.8, -181.083)
 
 [node name="Gate" parent="HotelRooms/HotelRoomChunk/Chunk" instance=ExtResource("4_5og7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.900009, 0.6, -0.5)
@@ -1405,156 +1381,15 @@ permanent = true
 [node name="Chamber1" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("14_srry2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48, 0, 90)
 
-[node name="CollisionShape3D" parent="HotelRooms/HotelRoomChunk/Chamber1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 7.5, -0.5)
-
-[node name="MagiclayDisk" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.8, 11)
-
-[node name="PressurePlate" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="1"]
-base_size = Vector3(-223, 6.3, -75)
-
-[node name="Reset" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.51784, 17)
-
-[node name="Bridge13" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="14"]
-collision_layer = 17
-base_size = Vector3(-219, 3, -75)
-
-[node name="Bridge3" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="15"]
-base_size = Vector3(-211, 3, -83)
-
-[node name="Bridge4" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="16"]
-base_size = Vector3(-207, 3, -83)
-
-[node name="Bridge6" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="17"]
-collision_layer = 17
-_element = "blank"
-base_size = Vector3(-199, 3, -75)
-
-[node name="Bridge8" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="18"]
-collision_layer = 17
-_element = "orange"
-base_size = Vector3(-199, 3, -67)
-
-[node name="Bridge9" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="19"]
-base_size = Vector3(-203, 3, -67)
-
-[node name="Bridge10" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="20"]
-collision_layer = 17
-base_size = Vector3(-211, 3, -63)
-
-[node name="Bridge2" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="21"]
-base_size = Vector3(-215, 3, -79)
-
-[node name="Bridge11" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="22"]
-base_size = Vector3(-215, 3, -67)
-
-[node name="Bridge12" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="23"]
-base_size = Vector3(-215, 3, -71)
-
-[node name="Bridge5" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="24"]
-collision_layer = 17
-base_size = Vector3(-203, 3, -79)
-
-[node name="Bridge14" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="25"]
-collision_layer = 17
-base_size = Vector3(-207, 3, -71)
-
-[node name="Bridge7" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="26"]
-collision_layer = 17
-_element = "cyan"
-base_size = Vector3(-195, 3, -71)
-
-[node name="Emitter" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="47"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 7)
-_element = "orange"
-
-[node name="Emitter2" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="48"]
-_element = "cyan"
-
-[node name="PressurePlate2" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="53"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 3, 7)
-
-[node name="MagiclayRock" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="54"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 4, 7)
-script = ExtResource("12_gn7b1")
-
-[node name="Label3D" type="Label3D" parent="HotelRooms/HotelRoomChunk/Chamber1/Chunk" index="55"]
+[node name="Label3D" type="Label3D" parent="HotelRooms/HotelRoomChunk/Chamber1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
 text = "This dungeon uses stencil 3. You can change this in your Transmutation Map."
 
 [node name="Chamber2" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("15_6yind")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3, 0, 18)
 
-[node name="GeyserPressurePlate" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="1"]
-base_size = Vector3(-218.3, 9.84609, -131)
-
-[node name="MagiclayRock" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="2"]
-script = ExtResource("12_gn7b1")
-
-[node name="Bridge" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="13"]
-base_size = Vector3(-214.7, 6.7, -149)
-
-[node name="Bridge2" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="14"]
-base_size = Vector3(-210.7, 6.7, -145)
-
-[node name="Bridge11" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="15"]
-base_size = Vector3(-202.7, 6.7, -145)
-
-[node name="Emitter5" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk/Bridge11" index="7"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0999999, 0)
-
-[node name="Bridge20" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="16"]
-base_size = Vector3(-202.7, 6.7, -153)
-
-[node name="Bridge21" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="17"]
-base_size = Vector3(-202.7, 6.7, -157)
-
-[node name="Bridge22" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="18"]
-base_size = Vector3(-202.7, 6.7, -161)
-
-[node name="Bridge23" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="19"]
-base_size = Vector3(-202.7, 6.7, -165)
-
-[node name="Bridge24" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="20"]
-base_size = Vector3(-202.7, 6.7, -169)
-
-[node name="Bridge4" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="21"]
-base_size = Vector3(-206.7, 6.7, -149)
-
-[node name="Bridge16" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="22"]
-base_size = Vector3(-206.7, 6.7, -133)
-
-[node name="Bridge12" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="23"]
-base_size = Vector3(-206.7, 6.7, -141)
-
-[node name="Bridge5" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="24"]
-base_size = Vector3(-198.7, 6.7, -149)
-
-[node name="Bridge10" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="25"]
-base_size = Vector3(-198.7, 6.7, -141)
-
-[node name="Bridge7" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="26"]
-base_size = Vector3(-194.7, 6.7, -145)
-
-[node name="Bridge25" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="27"]
-base_size = Vector3(-202.7, 6.7, -137)
-
-[node name="Bridge14" parent="HotelRooms/HotelRoomChunk/Chamber2/Chunk" index="28"]
-base_size = Vector3(-210.7, 6.7, -137)
-
 [node name="Chamber3" parent="HotelRooms/HotelRoomChunk" instance=ExtResource("16_cjdov")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -101.3, 0, 19.6)
-
-[node name="AndGate" parent="HotelRooms/HotelRoomChunk/Chamber3/Chunk" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 7, -40.7329)
-
-[node name="PressurePlate" parent="HotelRooms/HotelRoomChunk/Chamber3/Chunk/Path_N" index="0"]
-base_size = Vector3(-249.4, 6.8, -181.4)
-
-[node name="PressurePlate" parent="HotelRooms/HotelRoomChunk/Chamber3/Chunk/Path_S" index="0"]
-base_size = Vector3(-269.7, 6.8, -181.4)
 
 [node name="HallChunk3" type="Area3D" parent="HotelRooms" groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, -119)
@@ -1788,6 +1623,7 @@ shape = SubResource("BoxShape3D_41131")
 [node name="Geyser" parent="Caves/ZigguratChunk/Chunk" instance=ExtResource("9_mipr7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3, 3.8, -274.7)
 size = 48.0
+_element = 5
 base_size = Vector3(-452.3, 3.8, -403.7)
 
 [node name="CavesN" parent="." instance=ExtResource("19_6h34i")]
@@ -1799,15 +1635,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
 [node name="Rampage3" parent="." instance=ExtResource("23_mwtcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -326.017, 0, -63.768)
 
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser2" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser3" method="start"]
-[connection signal="off" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate2" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser4" method="stop"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber1/Chunk/PressurePlate2" to="HotelRooms/HotelRoomChunk/Chunk/Chamber1Geyser4" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber2/Chunk/GeyserPressurePlate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber2Geyser" method="start"]
-[connection signal="on" from="HotelRooms/HotelRoomChunk/Chamber3/Chunk/AndGate" to="HotelRooms/HotelRoomChunk/Chunk/Chamber3Geyser" method="start"]
-
 [editable path="Beach/BeachChunk/Chunk/Wire"]
-[editable path="HotelRooms/HotelRoomChunk/Chamber1"]
-[editable path="HotelRooms/HotelRoomChunk/Chamber2"]
-[editable path="HotelRooms/HotelRoomChunk/Chamber3"]

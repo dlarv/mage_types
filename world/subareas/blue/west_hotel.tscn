@@ -748,7 +748,7 @@ metadata/_custom_type_script = "uid://cjk323awkifki"
 
 [node name="Emitter" parent="Rampage1/Chunk" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -46, 0.5, -1.8)
-_element = "purple"
+_element = 0
 
 [node name="Spawner" parent="Rampage1/Chunk" instance=ExtResource("4_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.5, 0)
@@ -883,51 +883,51 @@ shape = SubResource("ConcavePolygonShape3D_khxla")
 
 [node name="EmitterW" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -99.7, 3, -11)
-_element = "orange"
+_element = 0
 
 [node name="LaserReceiverW" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("9_uq05v")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -99.5, 3, -9.5)
-_element = "orange"
+_element = 0
 
 [node name="EmitterE" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, -80, 3, -24)
-_element = "blue"
+_element = 0
 
 [node name="LaserReceiverE" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("9_uq05v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -80.2, 3, -25.5)
-_element = "blue"
+_element = 0
 
 [node name="DraggableMirrorS1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90.5, 1.5, -3)
-_element = "magenta"
+_element = 0
 
 [node name="DraggableMirrorS2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -86, 1.5, -11)
-_element = "yellow"
+_element = 0
 
 [node name="DraggableMirrorW1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -92, 1.5, -17)
-_element = "blue"
+_element = 0
 
 [node name="DraggableMirrorW2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-1, 0, -1.03316e-07, 0, 1, 0, 1.03316e-07, 0, -1, -89, 1.5, -15)
-_element = "red"
+_element = 0
 
 [node name="DraggableMirrorN1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(1, 0, 1.90739e-07, 0, 1, 0, -1.90739e-07, 0, 1, -86, 1.5, -20.5)
-_element = "blue"
+_element = 0
 
 [node name="DraggableMirrorN2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-2.3445e-07, 0, 1, 0, 1, 0, -1, 0, -2.3445e-07, -92, 1.5, -29.5)
-_element = "orange"
+_element = 0
 
 [node name="DraggableMirrorE1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-1, 0, -2.78162e-07, 0, 1, 0, 2.78162e-07, 0, -1, -88, 1.5, -24)
-_element = "cyan"
+_element = 0
 
 [node name="DraggableMirrorE2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(1, 0, 3.65584e-07, 0, 1, 0, -3.65584e-07, 0, 1, -82, 1.5, -15)
-_element = "yellow"
+_element = 0
 
 [node name="Chest" parent="Rampage1/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("10_nn0ty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0, -31)
