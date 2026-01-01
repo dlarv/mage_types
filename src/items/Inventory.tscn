@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene load_steps=139 format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" uid="uid://dwcdmph2053xh" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="2_xejte"]
@@ -36,13 +36,10 @@
 [ext_resource type="Resource" uid="uid://c1rk8ntq62ioo" path="res://data/items/spell_scrolls/basic/throw_y.tres" id="32_pcqn2"]
 [ext_resource type="Resource" uid="uid://b0hf1tbttw2y7" path="res://data/items/spell_scrolls/basic/hit_r.tres" id="33_x0gag"]
 [ext_resource type="Resource" uid="uid://du76fln60mnsx" path="res://data/items/spell_scrolls/basic/throw_c.tres" id="34_8ev2q"]
-[ext_resource type="Resource" uid="uid://fs0y578r1jan" path="res://data/items/key_items/catalyst_spell.tres" id="35_ex8ue"]
 [ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="35_glgke"]
 [ext_resource type="Resource" uid="uid://b2qk5bljx7w84" path="res://data/items/spell_scrolls/basic/throw_m.tres" id="35_pnyuv"]
-[ext_resource type="Resource" uid="uid://d2uymuumb873y" path="res://data/items/key_items/destroy_spell.tres" id="36_0aymk"]
 [ext_resource type="Resource" uid="uid://bm7p4gie7rf0y" path="res://data/items/spell_scrolls/phobias/phobia_b.tres" id="36_a6i7l"]
 [ext_resource type="Resource" uid="uid://bmw0g3a6ir15u" path="res://data/items/spell_scrolls/phobias/phobia_p.tres" id="37_crr7r"]
-[ext_resource type="Resource" uid="uid://bqlw6jy2hh0ef" path="res://data/items/key_items/stasis_spell.tres" id="37_o6yus"]
 [ext_resource type="Resource" uid="uid://cm7f6hye8cnv8" path="res://data/items/spell_scrolls/phobias/phobia_m.tres" id="38_1kiw8"]
 [ext_resource type="Resource" uid="uid://crnal5pig1ahg" path="res://data/items/spell_scrolls/phobias/phobia_r.tres" id="39_oh7cu"]
 [ext_resource type="Resource" uid="uid://b0wddlydt8k14" path="res://data/items/spell_scrolls/phobias/phobia_o.tres" id="40_shlil"]
@@ -50,7 +47,6 @@
 [ext_resource type="Resource" uid="uid://coelvvbcbe8hl" path="res://data/items/spell_scrolls/phobias/phobia_g.tres" id="42_u1qav"]
 [ext_resource type="Resource" uid="uid://ckl16fwx0wyvy" path="res://data/items/spell_scrolls/total_meltdown.tres" id="43_1b81x"]
 [ext_resource type="Resource" uid="uid://ixmwadvjexrp" path="res://data/items/spell_scrolls/phobias/phobia_c.tres" id="43_74f1i"]
-[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="43_oxpkv"]
 [ext_resource type="Resource" uid="uid://b0lofq8m6w3pf" path="res://data/items/spell_scrolls/output/brave_the_dark_bead.tres" id="45_53iyw"]
 [ext_resource type="Resource" uid="uid://crwjsgrunnxf0" path="res://data/items/spell_scrolls/output/orbital_strike_bead.tres" id="47_cjsp4"]
 [ext_resource type="Resource" uid="uid://bsvq8isykqb3s" path="res://data/items/spell_scrolls/output/freezing_gale_bead.tres" id="48_5bsgw"]
@@ -68,9 +64,7 @@
 [ext_resource type="Resource" uid="uid://beh80ngejtetg" path="res://data/items/spell_scrolls/output/desolation_bead.tres" id="61_xthwq"]
 [ext_resource type="Resource" uid="uid://dn31opoi8yrki" path="res://data/items/spell_scrolls/output/reinforce_bead.tres" id="62_hwjkr"]
 [ext_resource type="Resource" uid="uid://dxxk0f8sn5ell" path="res://data/items/spell_scrolls/output/unbalanced_assault_bead.tres" id="62_p18s4"]
-[ext_resource type="Resource" uid="uid://5l78hk1jadb6" path="res://data/items/key_items/golem_spell.tres" id="63_2ju5g"]
 [ext_resource type="Resource" uid="uid://txe1ghpacyra" path="res://data/items/spell_scrolls/output/reactor_breach_bead.tres" id="63_6mntc"]
-[ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="64_soan2"]
 [ext_resource type="Resource" uid="uid://d07pltrhfkhqg" path="res://data/items/key_items/stencil_1.tres" id="67_cjsp4"]
 [ext_resource type="Resource" uid="uid://c7xrixk4w025s" path="res://data/items/key_items/stencil_2.tres" id="68_5bsgw"]
 [ext_resource type="Resource" uid="uid://c32htsdkt7675" path="res://data/items/key_items/stencil_3.tres" id="69_qvfu8"]
@@ -599,108 +593,6 @@ quantity = 0
 max_quantity = 9999
 allow_stacking = true
 
-[sub_resource type="Resource" id="Resource_cewsy"]
-resource_name = "Stasis Spell"
-script = ExtResource("2_xejte")
-item = ExtResource("37_o6yus")
-id = 0
-quantity = 0
-max_quantity = 1
-allow_stacking = false
-
-[sub_resource type="Resource" id="Resource_4cuyk"]
-resource_name = "Catalyst Spell"
-script = ExtResource("2_xejte")
-item = ExtResource("35_ex8ue")
-id = 1
-quantity = 0
-max_quantity = 1
-allow_stacking = false
-
-[sub_resource type="Resource" id="Resource_3eq6m"]
-resource_name = "Destroy Spell"
-script = ExtResource("2_xejte")
-item = ExtResource("36_0aymk")
-id = 2
-quantity = 0
-max_quantity = 1
-allow_stacking = false
-
-[sub_resource type="Resource" id="Resource_2ju5g"]
-resource_name = "Golem Spell"
-script = ExtResource("2_xejte")
-item = ExtResource("63_2ju5g")
-id = 3
-quantity = 0
-max_quantity = 1
-allow_stacking = false
-metadata/_custom_type_script = "uid://2vxsmd7ib53v"
-
-[sub_resource type="Resource" id="Resource_nstv8"]
-script = ExtResource("64_soan2")
-unique_id = 4
-id = 4
-name = "Set Portal Spell"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-metadata/_custom_type_script = "uid://bga7b8k778yar"
-
-[sub_resource type="Resource" id="Resource_musac"]
-resource_name = "Set Portal Spell"
-script = ExtResource("2_xejte")
-item = SubResource("Resource_nstv8")
-id = 4
-quantity = 0
-max_quantity = 1
-allow_stacking = false
-metadata/_custom_type_script = "uid://2vxsmd7ib53v"
-
-[sub_resource type="Resource" id="Resource_soan2"]
-script = ExtResource("64_soan2")
-unique_id = 5
-id = 5
-name = "Use Portal Spell"
-requirements = Array[ExtResource("43_oxpkv")]([])
-details = ""
-metadata/_custom_type_script = "uid://bga7b8k778yar"
-
-[sub_resource type="Resource" id="Resource_qonbv"]
-resource_name = "Use Portal Spell"
-script = ExtResource("2_xejte")
-item = SubResource("Resource_soan2")
-id = 5
-quantity = 0
-max_quantity = 1
-allow_stacking = false
-metadata/_custom_type_script = "uid://2vxsmd7ib53v"
-
-[sub_resource type="Resource" id="Resource_r6fov"]
-resource_name = "Stencil 1"
-script = ExtResource("2_xejte")
-item = ExtResource("67_cjsp4")
-id = 6
-quantity = 0
-max_quantity = 1
-allow_stacking = false
-
-[sub_resource type="Resource" id="Resource_awnmn"]
-resource_name = "Stencil 2"
-script = ExtResource("2_xejte")
-item = ExtResource("68_5bsgw")
-id = 7
-quantity = 1
-max_quantity = 1
-allow_stacking = false
-
-[sub_resource type="Resource" id="Resource_3ukn5"]
-resource_name = "Stencil 3"
-script = ExtResource("2_xejte")
-item = ExtResource("69_qvfu8")
-id = 8
-quantity = 1
-max_quantity = 1
-allow_stacking = false
-
 [sub_resource type="Resource" id="Resource_p18s4"]
 resource_name = "Training Wheels"
 script = ExtResource("2_xejte")
@@ -765,11 +657,42 @@ max_quantity = 9999
 allow_stacking = true
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
+[sub_resource type="Resource" id="Resource_nstv8"]
+resource_name = "Stencil 1"
+script = ExtResource("2_xejte")
+item = ExtResource("67_cjsp4")
+id = 0
+quantity = 0
+max_quantity = 9999
+allow_stacking = false
+
+[sub_resource type="Resource" id="Resource_musac"]
+resource_name = "Stencil 2"
+script = ExtResource("2_xejte")
+item = ExtResource("68_5bsgw")
+id = 7
+quantity = 0
+max_quantity = 9999
+allow_stacking = false
+
+[sub_resource type="Resource" id="Resource_qonbv"]
+resource_name = "Stencil 3"
+script = ExtResource("2_xejte")
+item = ExtResource("69_qvfu8")
+id = 8
+quantity = 0
+max_quantity = 9999
+allow_stacking = false
+
 [node name="Inventory" type="Node" groups=["persist"]]
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
 spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_frq0a"), SubResource("Resource_mo4e2"), SubResource("Resource_mdqp4"), SubResource("Resource_0kn2x"), SubResource("Resource_ea1gc"), SubResource("Resource_6agee"), SubResource("Resource_l4gd1"), SubResource("Resource_dhtb3"), SubResource("Resource_2x45q"), SubResource("Resource_m5efq"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_k6ebp"), SubResource("Resource_p5ki7"), SubResource("Resource_ntiwd"), SubResource("Resource_8vdr2"), SubResource("Resource_1jgfg"), SubResource("Resource_oqx13"), SubResource("Resource_mcmto"), SubResource("Resource_3tnb1"), SubResource("Resource_cw3ei"), SubResource("Resource_r4jer"), SubResource("Resource_2kx4u"), SubResource("Resource_bi3kr")])
-key_items = Array[ExtResource("2_xejte")]([SubResource("Resource_cewsy"), SubResource("Resource_4cuyk"), SubResource("Resource_3eq6m"), SubResource("Resource_2ju5g"), SubResource("Resource_musac"), SubResource("Resource_qonbv"), SubResource("Resource_r6fov"), SubResource("Resource_awnmn"), SubResource("Resource_3ukn5")])
 equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_p18s4"), SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x"), SubResource("Resource_qvfu8")])
+key_items = Dictionary[StringName, ExtResource("2_xejte")]({
+&"STENCIL_1": SubResource("Resource_nstv8"),
+&"STENCIL_2": SubResource("Resource_musac"),
+&"STENCIL_3": SubResource("Resource_qonbv")
+})
 add_all_items = true

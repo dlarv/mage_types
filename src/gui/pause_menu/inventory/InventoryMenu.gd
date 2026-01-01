@@ -8,7 +8,7 @@ func _ready() -> void:
 	$Regular.setup(Inventory.regular_items)
 	$"Spell Beads".setup(Inventory.spell_scrolls)
 	$Equipment.setup(Inventory.equipment)
-	$"Key Items".setup(Inventory.key_items)
+	$"Key Items".setup(Inventory.key_items.values())
 
 	Inventory.quantity_changed.connect(_on_quantity_changed)
 

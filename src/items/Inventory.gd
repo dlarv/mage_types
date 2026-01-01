@@ -25,36 +25,18 @@ var _battle_items: Array[RegularItem]
 					item.quantity -= 1
 					quantity_changed.emit(item))
 		_reorder_item_array(regular_items)
-@export var recalc_ids_r: bool:
-	set(val):
-		_reorder_item_array(regular_items)
+@export_tool_button("Recalc Ids") var rr := _reorder_item_array.bind(regular_items)
 @export var spell_scrolls: Array[ItemSlot]:
 	set(vals):
 		spell_scrolls = vals
 		_reorder_item_array(spell_scrolls)
-@export var recalc_ids_s: bool:
-	set(val):
-		_reorder_item_array(spell_scrolls)
-@export var key_items: Array[ItemSlot]:
-	set(vals):
-		key_items = vals
-		key_items.sort_custom(func(a: ItemSlot, b: ItemSlot) -> bool:
-			a.item.id = a.item.unique_id
-			b.item.id = b.item.unique_id
-			return a.item.unique_id < b.item.unique_id
-		)
-@export var recalc_ids_k: bool:
-	set(val):
-		key_items.sort_custom(func(a: ItemSlot, b: ItemSlot) -> bool: 
-			return a.item.unique_id < b.item.unique_id
-		)
+@export_tool_button("Recalc Ids") var rs := _reorder_item_array.bind(spell_scrolls)
 @export var equipment: Array[ItemSlot]:
 	set(vals):
 		equipment = vals
 		_reorder_item_array(equipment)
-@export var recalc_ids_e: bool:
-	set(val):
-		_reorder_item_array(equipment)
+@export_tool_button("Recalc Ids") var re := _reorder_item_array.bind(equipment)
+@export var key_items: Dictionary[StringName, ItemSlot]
 @export var _add_item: _Item:
 	set(item):
 		var list: Array
@@ -64,7 +46,8 @@ var _battle_items: Array[RegularItem]
 		elif item is SpellScroll:
 			list = spell_scrolls
 		elif item is KeyItem:
-			list = key_items
+			key_items[item.unique_name] = ItemSlot.new(item)
+			return
 		else:
 			list = equipment
 
@@ -120,7 +103,7 @@ func _enter_tree() -> void:
 		# for item in key_items:
 		# 	item.quantity = 0
 	elif add_all_items:
-		for item in key_items:
+		for item in key_items.values():
 			item.quantity = 1
 
 	match use_override:
@@ -181,16 +164,16 @@ func find_and_add_spell(spell: Attack) -> void:
 func add_key_item(item: KeyItem, amount:=1) -> void:
 	var overworldSpell := -1
 
-	match item.unique_id:
-		KeyItem.UniqueId.STENCIL_1:
+	match item.unique_name:
+		&"STENCIL_1":
 			stencil_enabled.emit(1)
-		KeyItem.UniqueId.STENCIL_2:
+		&"STENCIL_2":
 			stencil_enabled.emit(2)
-		KeyItem.UniqueId.STENCIL_3:
-			stencil_enabled.emit(4)
+		&"STENCIL_3":
+			stencil_enabled.emit(3)
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
-	var slot: ItemSlot = key_items[item.id]
+	var slot: ItemSlot = key_items[item.unique_name]
 
 	if slot.allow_stacking:
 		slot.quantity += amount
@@ -215,8 +198,8 @@ func remove(item: _Item, amount:=1) -> ItemSlot:
 	elif item is Equipment:
 		list = equipment
 	else:
-		list = key_items
 		remove_key_item(item)
+		return
 
 	if item.id >= len(list): return null
 
@@ -228,18 +211,18 @@ func remove(item: _Item, amount:=1) -> ItemSlot:
 
 
 func remove_key_item(item: KeyItem) -> void:
-	match item.unique_id:
-		KeyItem.UniqueId.STENCIL_1:
+	match item.unique_name:
+		&"STENCIL_1":
 			stencil_disabled.emit(1)
-		KeyItem.UniqueId.STENCIL_2:
+		&"STENCIL_2":
 			stencil_disabled.emit(2)
-		KeyItem.UniqueId.STENCIL_3:
+		&"STENCIL_3":
 			stencil_disabled.emit(3)
 
 
-func has_key_item(id: KeyItem.UniqueId) -> bool:
-	if id >= len(key_items): return false
-	return key_items[id].quantity > 0
+func has_key_item(id: StringName) -> bool:
+	var slot: ItemSlot = key_items.get(id)
+	return slot != null and slot.quantity > 0
 
 
 func get_item(item: _Item) -> ItemSlot:
@@ -253,8 +236,7 @@ func get_item(item: _Item) -> ItemSlot:
 	elif item is SpellScroll:
 		list = spell_scrolls
 	elif item is KeyItem:
-		list = key_items
-
+		return key_items.get(item.unique_name)
 	return list[item.id]
 
 
@@ -308,7 +290,7 @@ func serialize() -> Dictionary:
 			es.append(Vector2i(item.id, item.quantity))
 
 	var ki := []
-	for item in key_items:
+	for item: ItemSlot in key_items.values():
 		if item.quantity > 0:
 			ki.append(Vector2i(item.id, item.quantity))
 
@@ -356,7 +338,7 @@ func deserialize(data: Dictionary) -> void:
 
 	top = 0
 	list = data["key_items"]
-	for item in key_items:
+	for item: ItemSlot in key_items.values():
 		if len(list) > top and item.id == list[top].x:
 			add_key_item(key_items[list[top].x].item)
 			top += 1
@@ -365,4 +347,3 @@ func deserialize(data: Dictionary) -> void:
 		quantity_changed.emit(item)
 
 	Inventory.active_spell = data['active_spell']
-

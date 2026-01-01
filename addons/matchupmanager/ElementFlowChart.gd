@@ -25,9 +25,9 @@ func _ready() -> void:
 	if not Inventory.stencil_disabled.is_connected(deactivate_stencil):
 		Inventory.stencil_disabled.connect(deactivate_stencil)
 	
-	%StencilVBox.get_child(0).visible = Inventory.has_key_item(KeyItem.UniqueId.STENCIL_1)
-	%StencilVBox.get_child(1).visible = Inventory.has_key_item(KeyItem.UniqueId.STENCIL_2)
-	%StencilVBox.get_child(2).visible = Inventory.has_key_item(KeyItem.UniqueId.STENCIL_3)
+	%StencilVBox.get_child(0).visible = Inventory.has_key_item(&"STENCIL_1")
+	%StencilVBox.get_child(1).visible = Inventory.has_key_item(&"STENCIL_2")
+	%StencilVBox.get_child(2).visible = Inventory.has_key_item(&"STENCIL_3")
 	
 
 func restrict_graph(nodes: Array, edges:=[]) -> void:
