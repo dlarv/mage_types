@@ -6,9 +6,8 @@ enum Category { REGULAR_ITEM, EQUIPMENT, SPELL_SCROLL, KEY_ITEM }
 # NOTE: This is not called when loading from filesystem.
 signal quantity_changed(item: ItemSlot)
 signal overworld_spell_selected(item: Equipment)
-signal overworld_spell_enabled(id: OverworldSpell.Spells, isEnabled: bool)
-signal stencil_enabled(index: int)
-signal stencil_disabled(index: int)
+signal key_item_obtained(item: KeyItem)
+signal key_item_lost(item: KeyItem)
 
 @export var money: int = 0
 
@@ -162,13 +161,7 @@ func find_and_add_spell(spell: Attack) -> void:
 
 
 func add_key_item(item: KeyItem, amount:=1) -> void:
-	match item.unique_name:
-		&"STENCIL_1":
-			stencil_enabled.emit(1)
-		&"STENCIL_2":
-			stencil_enabled.emit(2)
-		&"STENCIL_3":
-			stencil_enabled.emit(3)
+	key_item_obtained.emit(item)
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
 	var slot: ItemSlot = key_items[item.unique_name]
@@ -209,13 +202,8 @@ func remove(item: _Item, amount:=1) -> ItemSlot:
 
 
 func remove_key_item(item: KeyItem) -> void:
-	match item.unique_name:
-		&"STENCIL_1":
-			stencil_disabled.emit(1)
-		&"STENCIL_2":
-			stencil_disabled.emit(2)
-		&"STENCIL_3":
-			stencil_disabled.emit(3)
+	key_item_lost.emit(item)
+	key_items[item.unique_name].quantity -= 1
 
 
 func has_key_item(id: StringName) -> bool:

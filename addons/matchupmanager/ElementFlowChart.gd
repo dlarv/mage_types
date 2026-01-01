@@ -20,10 +20,10 @@ func _ready() -> void:
 	if Settings.play_test_mode:
 		_on_stencil_button_toggled(true, 1)
 	
-	if not Inventory.stencil_enabled.is_connected(activate_stencil):
-		Inventory.stencil_enabled.connect(activate_stencil)
-	if not Inventory.stencil_disabled.is_connected(deactivate_stencil):
-		Inventory.stencil_disabled.connect(deactivate_stencil)
+	if not Inventory.key_item_obtained.is_connected(activate_stencil):
+		Inventory.key_item_obtained.connect(activate_stencil)
+	if not Inventory.key_item_lost.is_connected(deactivate_stencil):
+		Inventory.key_item_lost.connect(deactivate_stencil)
 	
 	%StencilVBox.get_child(0).visible = Inventory.has_key_item(&"STENCIL_1")
 	%StencilVBox.get_child(1).visible = Inventory.has_key_item(&"STENCIL_2")
@@ -37,16 +37,18 @@ func restrict_graph(nodes: Array, edges:=[]) -> void:
 		stencil_shader.set_shader_parameter("%s_EDGE" % prefix, element in edges)
 
 
-func activate_stencil(index: int) -> void:
-	index -= 1
+func activate_stencil(item: KeyItem) -> void:
+	if item.unique_name.find("STENCIL") == -1: return
+	var index := item.id
 	if index < 0 or index >= %StencilVBox.get_child_count():
 		push_warning("Tried to activate Stencil(%d), but it does not exist" % index)
 		return
 	%StencilVBox.get_child(index).visible = true
 
 
-func deactivate_stencil(index: int) -> void:
-	index -= 1
+func deactivate_stencil(item: KeyItem) -> void:
+	if item.unique_name.find("STENCIL") == -1: return
+	var index := item.id
 	if index < 0 or index >= %StencilVBox.get_child_count():
 		push_warning("Tried to deactivate Stencil(%d), but it does not exist" % index)
 		return
