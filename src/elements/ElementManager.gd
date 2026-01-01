@@ -1,9 +1,9 @@
 @tool
 extends Node 
 
+const ElementId = ElementalType.ElementId
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
 const SIMPLE_SIDE_EFFECTS_PATH: String = "res://data/elemental_types/matchup_files/simple.csv"
-const ElementalEnum := ElementalType.ElementalEnum
 
 var Blank := ElementalType.new()
 var Blue: ElementalType
@@ -21,8 +21,7 @@ var Cyan: ElementalType
 @export var speed_buff: StatusEffect
 @export var theme: Theme
 
-# Dict<string, Node>
-var matchups := {}
+var matchups: Dictionary[ElementId, ElementalNode] = {}
 
 func test_transmutations()-> void:
 	var actualResults := [
@@ -57,6 +56,7 @@ func test_transmutations()-> void:
 						])
 
 			total = total and res == actualResults[i][j]
+
 
 func test_side_effects() -> void:
 	var a := attack_buff
@@ -97,6 +97,7 @@ func test_side_effects() -> void:
 						])
 			total = total and res == actualResults[i][j]
 	print("Side effects test: %s" % str(total)) 
+
 
 func test_traversals() -> void:
 	var length := 5
@@ -198,12 +199,14 @@ func _enter_tree() -> void:
 	# test_side_effects()
 	# test_traversals()
 
+
 func _ready() -> void:
 	update_elemental_gui()
 	attack_buff.is_side_effect = true
 	defense_buff.is_side_effect = true
 	speed_buff.is_side_effect = true
 	
+
 func build()-> void:
 	if len(matchups.keys()) > 0: return
 
@@ -228,21 +231,21 @@ func build()-> void:
 				
 	matchups = {}
 	var blue := ElementalNode.new(Blue)
-	matchups[Blue.name] = blue
+	matchups[Blue.id] = blue
 	var purple := ElementalNode.new(Purple)
-	matchups[Purple.name] = purple
+	matchups[Purple.id] = purple
 	var magenta := ElementalNode.new(Magenta)
-	matchups[Magenta.name] = magenta
+	matchups[Magenta.id] = magenta
 	var red := ElementalNode.new(Red)
-	matchups[Red.name] = red
+	matchups[Red.id] = red
 	var orange := ElementalNode.new(Orange)
-	matchups[Orange.name] = orange
+	matchups[Orange.id] = orange
 	var yellow := ElementalNode.new(Yellow)
-	matchups[Yellow.name] = yellow
+	matchups[Yellow.id] = yellow
 	var green := ElementalNode.new(Green)
-	matchups[Green.name] = green
+	matchups[Green.id] = green
 	var cyan := ElementalNode.new(Cyan)
-	matchups[Cyan.name] = cyan
+	matchups[Cyan.id] = cyan
 
 	# B
 	blue.add_connection(Magenta, purple, attack_buff)
@@ -290,6 +293,7 @@ func build()-> void:
 	cyan.add_connection(Magenta, blue, speed_buff)
 	cyan.add_connection(Yellow, green, attack_buff)
 
+
 func update_elemental_gui() -> void:
 	for node in get_tree().get_nodes_in_group("elemental_gui"):
 		var element: ElementalType
@@ -314,6 +318,8 @@ func update_elemental_gui() -> void:
 		elif node is Button:
 			node.add_theme_stylebox_override("normal", ElementManager.get_elemental_stylebox(element))
 
+
+# TO BE DEPRECATED
 func get_element_from_name(name: String) -> ElementalType:
 	# Ensure basic typos won't interfere.
 	name = name.to_lower().strip_edges()
@@ -324,6 +330,8 @@ func get_element_from_name(name: String) -> ElementalType:
 			return el
 	return null
 
+
+# TO BE DEPRECATED
 func get_index_from_name(name: String) -> int:
 	name = name.to_lower().strip_edges()
 	for i in len(elements):
@@ -331,20 +339,20 @@ func get_index_from_name(name: String) -> int:
 			return i
 	return -1
 
-func get_element_from_enum(element: ElementalEnum) -> ElementalType:
-	return elements[int(element)]
 
 func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalType:
 	if not element1 or not element2: return null
 	elif element1.name == "Blank" || element2.name == "Blank": return null
 	
-	var node: ElementalNode = matchups[element1.name]
+	var node: ElementalNode = matchups[element1.id]
 	return node.get_result(element2)
+
 
 func get_side_effect(a: ElementalType, b: ElementalType) -> _AttackEffect:
 	if a.is_blank() || b.is_blank(): 
 		return null
-	return matchups[a.name].get_effect(b)
+	return matchups[a.id].get_effect(b)
+
 
 func get_all_matchups() -> Array:
 	var output := []
@@ -361,6 +369,7 @@ func get_all_matchups() -> Array:
 			output.append(item)
 	return output
 
+
 func side_effect_to_index(effect: _AttackEffect, isBuff: bool) -> int:
 	if effect == null : 
 		return -1
@@ -370,6 +379,7 @@ func side_effect_to_index(effect: _AttackEffect, isBuff: bool) -> int:
 		return 1
 	else:
 		return 2
+
 
 func modify_color(element: Variant, newColor: Color) -> void:
 	if element is String:

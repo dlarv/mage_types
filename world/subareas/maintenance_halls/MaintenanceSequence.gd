@@ -2,7 +2,6 @@
 extends Node3D
 ## Handle instantiation of maintenance hallway
 
-const ElementalEnum := ElementalType.ElementalEnum
 const MODEL := preload("res://world/subareas/maintenance_halls/maintenance_room.tscn")
 const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.tres")
 const RoomPortal := preload("res://addons/room_and_portals/RoomPortal.gd")
@@ -16,7 +15,7 @@ enum SolverMode { AFFINITY, TEMP }
 var exit_room_direction := 0
 @export_enum("RIGHT", "UP", "LEFT", "DOWN")
 var start_room_direction := 3
-@export var sequence: Array[ElementalEnum]
+@export var sequence: Array[ElementalType.ElementId]
 
 @export_tool_button("Generate")
 var generate_action: Callable = _generate
@@ -46,7 +45,7 @@ func _generate() -> void:
 	var i := -1
 	for id in sequence:
 		i += 1
-		var element := ElementManager.get_element_from_enum(id)
+		var element := ElementManager.elements[id]
 
 		var room := create_room(i, element) 
 

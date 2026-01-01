@@ -103,7 +103,7 @@ func _enter_tree() -> void:
 		# for item in key_items:
 		# 	item.quantity = 0
 	elif add_all_items:
-		for item in key_items.values():
+		for item: ItemSlot in key_items.values():
 			item.quantity = 1
 
 	match use_override:

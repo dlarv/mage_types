@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6m3bftlgbvbk"]
+[gd_scene load_steps=17 format=3 uid="uid://6m3bftlgbvbk"]
 
 [ext_resource type="Script" uid="uid://xrhgtc8gt0iv" path="res://src/elements/ElementManager.gd" id="1_gyxhk"]
 [ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="2_ohe7e"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://7n44jif83o35" path="res://data/elemental_types/purple.tres" id="8_rraxm"]
 [ext_resource type="Resource" uid="uid://bq45s4if56xdi" path="res://data/elemental_types/red.tres" id="9_xevhv"]
 [ext_resource type="Resource" uid="uid://dv8hp2socsise" path="res://data/elemental_types/yellow.tres" id="10_rnxsd"]
+[ext_resource type="Resource" uid="uid://c01111ik0ns7g" path="res://data/elemental_types/blank.tres" id="11_4wtlx"]
 [ext_resource type="Script" uid="uid://dyqtsmtfqgpdp" path="res://src/battle_system/battle_actions/effects/StatChange.gd" id="11_lkgg0"]
 [ext_resource type="Theme" uid="uid://bfk63x8qgtxhe" path="res://assets/theme/theme.tres" id="14_q5nao"]
 
@@ -56,7 +57,7 @@ message = "{target}'s speed was boosted!"
 
 [node name="ElementalManager" type="Node"]
 script = ExtResource("1_gyxhk")
-elements = Array[ExtResource("2_ohe7e")]([ExtResource("3_72u1f"), ExtResource("8_rraxm"), ExtResource("6_djrcb"), ExtResource("9_xevhv"), ExtResource("7_wy64i"), ExtResource("10_rnxsd"), ExtResource("5_mrhmg"), ExtResource("4_jxqxw")])
+elements = Array[ExtResource("2_ohe7e")]([ExtResource("3_72u1f"), ExtResource("8_rraxm"), ExtResource("6_djrcb"), ExtResource("9_xevhv"), ExtResource("7_wy64i"), ExtResource("10_rnxsd"), ExtResource("5_mrhmg"), ExtResource("4_jxqxw"), ExtResource("11_4wtlx")])
 attack_buff = SubResource("Resource_ckjnr")
 defense_buff = SubResource("Resource_ptdwl")
 speed_buff = SubResource("Resource_j4y0a")
