@@ -2,13 +2,12 @@
 extends StatusEffect 
 class_name PhobiaEffect 
 
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _element: String = "blank":
+@export var _element := ElementalType.ElementId.BLANK:
 	get:
 		return _element
 	set(value):
 		_element = value
-		element = ElementManager.get_element_from_name(value)
+		element = ElementManager.elements[int(value)]
 var element: ElementalType:
 	set(value): 
 		if value == null:

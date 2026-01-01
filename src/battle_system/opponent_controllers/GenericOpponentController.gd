@@ -12,11 +12,10 @@ const BASE_WEIGHT_UNIT: float = 10
 @export_range(0, 1) var transmutation_bias: float
 
 ## Add extra weight to actions that will transmute an actor to this color. 
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _transmutation_pref: String = "blank":
+@export var _transmutation_pref := ElementalType.ElementId.BLANK:
 	set(value):
 		_transmutation_pref = value
-		transmutation_pref = ElementManager.get_element_from_name(value)
+		transmutation_pref = ElementManager.elements[int(value)]
 var transmutation_pref: ElementalType = ElementManager.Blank:
 	set(value): 
 		if value == null:

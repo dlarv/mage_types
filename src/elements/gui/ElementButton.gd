@@ -2,15 +2,13 @@
 extends Control
 
 signal pressed(element: ElementalType)
-
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _element: String = "blank":
+@export var _element := ElementalType.ElementId.BLANK:
 	get:
 		return _element
 	set(value):
 		_element = value
-		element = ElementManager.get_element_from_name(value)
-		$Button.text = _element.capitalize()
+		element = ElementManager.elements[int(value)]
+		$Button.text = element.name.capitalize()
 var element: ElementalType = ElementManager.Blank:
 	set(value): 
 		if value == null:

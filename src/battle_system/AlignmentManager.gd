@@ -11,11 +11,10 @@ const TRANSMUTATION_MOD := 3.0
 
 ## Each value ranges from 0-255
 @export var alignment_values: Array[int] = [ 0, 3, 0, 0, 0, 0, 0, 0 ]
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _alignment: String = "blank":
+@export var _alignment := ElementalType.ElementId.BLANK:
 	set(val):
 		_alignment = val
-		current_alignment = ElementManager.get_element_from_name(val)
+		current_alignment = ElementManager.elements[int(val)]
 var current_alignment: ElementalType 
 ## Once an alignment forms, it cannot be overwritten.
 var alignment_locked: bool:

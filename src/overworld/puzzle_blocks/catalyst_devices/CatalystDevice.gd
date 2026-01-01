@@ -13,11 +13,10 @@ signal element_selected(element: ElementalType, v: int, force: bool)
 	"Green": true,
 	"Cyan": true,
 }
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _element: String = "blue":
+@export var _element := ElementalType.ElementId.BLANK:
 	set(value):
 		_element = value
-		element = ElementManager.get_element_from_name(value)
+		element = ElementManager.elements[int(value)]
 var element: ElementalType = ElementManager.Blue:
 	set(value):
 		if value == null:
@@ -28,7 +27,7 @@ var element: ElementalType = ElementManager.Blue:
 func _ready() -> void:
 	# This script randomly started throwing an error where this value was
 	# not initialized. I'm not sure why.
-	element = ElementManager.get_element_from_name(_element)
+	element = ElementManager.elements[_element]
 	_rotate_wheel(element)
 
 

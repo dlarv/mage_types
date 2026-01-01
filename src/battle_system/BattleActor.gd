@@ -53,23 +53,21 @@ var evasion: float:
 	get: return stat_manager.evasion
 
 @export_category("General")
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _element1: String = "blue":
+@export var _element1 := ElementalType.ElementId.BLANK:
 	set(value):
 		_element1 = value
-		element1 = ElementManager.get_element_from_name(value)
-var element1 : ElementalType = ElementManager.Blank:
+		element1 = ElementManager.elements[int(value)]
+var element1: ElementalType = ElementManager.Blank:
 	set(value): 
 		if value == null:
 			value = ElementManager.Blank
 		element1 = value 
 		element_changed.emit(0, element1)
 
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _element2: String = "blank":
+@export var _element2 := ElementalType.ElementId.BLANK:
 	set(value):
 		_element2 = value
-		element2 = ElementManager.get_element_from_name(value)
+		element2 = ElementManager.elements[int(value)]
 var element2: ElementalType = ElementManager.Blank:
 	set(value): 
 		if value == null:
@@ -77,14 +75,13 @@ var element2: ElementalType = ElementManager.Blank:
 		element2 = value 
 		element_changed.emit(1, element2)
 @export var alignment_manager: AlignmentManager = null
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _alignment: String = "blank":
+@export var _alignment := ElementalType.ElementId.BLANK:
 	set(value):
 		if alignment_manager:
-			_alignment = alignment_manager.current_alignment.name.to_lower()
+			_alignment = alignment_manager.current_alignment.id
 			return
 		_alignment = value
-		alignment = ElementManager.get_element_from_name(value)
+		alignment = ElementManager.elements[int(value)]
 var alignment: ElementalType = ElementManager.Blank:
 	get:
 		if alignment_manager: return alignment_manager.current_alignment

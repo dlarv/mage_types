@@ -8,8 +8,7 @@ extends "../Rails.gd"
 		return $Mirror.rotation_degrees.y
 @export var cap_offset: Vector3
 
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var mirror_element: String:
+@export var mirror_element: ElementalType.ElementId:
 	set(val):
 		mirror_element = val
 		$Mirror._element = val

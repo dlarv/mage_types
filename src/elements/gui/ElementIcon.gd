@@ -2,11 +2,10 @@
 extends ColorRect 
 class_name ElementIcon 
 
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _element := "blank": 
+@export var _element := ElementalType.ElementId.BLANK: 
 	set(value):
 		_element = value
-		element = ElementManager.get_element_from_name(value)
+		element = ElementManager.elements[int(value)]
 
 var element: ElementalType:
 	set(value):

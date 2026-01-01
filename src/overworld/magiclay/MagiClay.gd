@@ -6,13 +6,12 @@ signal stasis_ended()
 signal element_changed(element: ElementalType)
 
 @export_category("Elemental Traits")
-@export_enum("blank", "blue", "purple", "magenta", "red", "orange", "yellow", "green", "cyan")
-var _element: String = "blank":
+@export var _element := ElementalType.ElementId.BLANK:
 	get:
 		return _element
 	set(value):
 		_element = value
-		set_element(ElementManager.get_element_from_name(value), -2, true)
+		set_element(ElementManager.elements[int(value)], -2, true)
 
 var element: ElementalType = ElementManager.Blank:
 	set(value): 
