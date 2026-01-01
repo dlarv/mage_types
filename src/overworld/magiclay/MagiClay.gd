@@ -137,7 +137,7 @@ func serialize() -> Dictionary: return {
 		"position": global_position,
 		"rotation": global_rotation,
 		"scale": scale,
-		"element": element.name,
+		"element": int(element.id),
 		"in_stasis": in_stasis,
 		"visible": visible,
 	}
@@ -151,7 +151,7 @@ func deserialize(data: Dictionary) -> void:
 	if "scale" in data:
 		scale = data["scale"]
 	if "element" in data:
-		element = ElementManager.get_element_from_name(data["element"])
+		element = ElementManager.elements[data["element"]]
 	if "in_stasis" in data:
 		in_stasis = not data["in_stasis"]
 		set_stasis()

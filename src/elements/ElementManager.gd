@@ -319,27 +319,6 @@ func update_elemental_gui() -> void:
 			node.add_theme_stylebox_override("normal", ElementManager.get_elemental_stylebox(element))
 
 
-# TO BE DEPRECATED
-func get_element_from_name(name: String) -> ElementalType:
-	# Ensure basic typos won't interfere.
-	name = name.to_lower().strip_edges()
-	if name == "blank":
-		return Blank
-	for el in elements:
-		if el.name.to_lower() == name:
-			return el
-	return null
-
-
-# TO BE DEPRECATED
-func get_index_from_name(name: String) -> int:
-	name = name.to_lower().strip_edges()
-	for i in len(elements):
-		if elements[i].name.to_lower() == name:
-			return i
-	return -1
-
-
 func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalType:
 	if not element1 or not element2: return null
 	elif element1.name == "Blank" || element2.name == "Blank": return null
@@ -381,9 +360,7 @@ func side_effect_to_index(effect: _AttackEffect, isBuff: bool) -> int:
 		return 2
 
 
-func modify_color(element: Variant, newColor: Color) -> void:
-	if element is String:
-		element = get_element_from_name(element)
+func modify_color(element: ElementalType, newColor: Color) -> void:
 	element.main_color = newColor
 
 	theme.set_color(element.name.to_lower(), "Control", newColor)
@@ -394,9 +371,7 @@ func modify_color(element: Variant, newColor: Color) -> void:
 
 
 func get_elemental_stylebox(element: Variant) -> StyleBox:
-	if element is String:
-		element = elements[get_index_from_name(element)]
-	elif element is int:
+	if element is int:
 		element = elements[element]
 
 	return theme.get_stylebox(element.name.to_lower(), "Control")

@@ -29,7 +29,7 @@ func _gui_input(event: InputEvent) -> void:
 func serialize() -> Dictionary:
 	return {
 		"shape": shape,
-		"element": ElementManager.get_index_from_name(element.name),
+		"element": int(element.id),
 		"size": size.x,
 		"position": position,
 	}

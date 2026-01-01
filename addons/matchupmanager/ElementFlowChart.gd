@@ -111,8 +111,8 @@ func _on_stencil_button_toggled(toggledOn: bool, index: int) -> void:
 
 	var checkBoxes := %NodesVBox.find_children("", "CheckBox")
 	for node in nodes:
-		checkBoxes[ElementManager.get_index_from_name(node.name)].set_pressed_no_signal(true)
+		checkBoxes[int(node.id)].set_pressed_no_signal(true)
 
 	checkBoxes = %EdgesVBox.find_children("", "CheckBox")
 	for edge in edges:
-		checkBoxes[ElementManager.get_index_from_name(edge.name)].set_pressed_no_signal(true)
+		checkBoxes[int(edge.id)].set_pressed_no_signal(true)

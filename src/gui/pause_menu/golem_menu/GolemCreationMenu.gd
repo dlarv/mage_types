@@ -10,7 +10,7 @@ const GolemPrefab := preload("res://src/golem_system/golem.tscn")
 		if not val or val.is_blank():
 			return
 		else:
-			%ElementDropdown.select(ElementManager.get_index_from_name(val.name))
+			%ElementDropdown.select(int(val.id))
 			%ElementIcon.element = val
 			element = val
 var _golem: Golem = null

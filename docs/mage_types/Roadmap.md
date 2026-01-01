@@ -29,7 +29,8 @@ Refactor equipment and overworld spells
 - [ ] Add Magenta kitchen and breakfast
 	- [ ] Write Mischa/cook character
 	- [ ] Ensure dialog system can handle quests
-	- [ ] Key/lock/door system
+	- [x] Key/lock/door system
+		- [x] Refactor KeyItems to use StringName instead of enum
 - [ ] Motel
 	- [ ] Player needs key to enter
 	- [ ] Hidden caves logic puzzle (Lavender puzzle)
@@ -171,7 +172,7 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 - [ ] Add final boss to ~~stasis dungeon~~
 ## v0.10.x
 Elemental system refactor
-- [ ] Use proper enum instead of `@export_enum`
+- [x] Use proper enum instead of `@export_enum`
 - [ ] Associate symbols with each element to help with differentiation
 - [ ] Add missing reactions and recreate transmutation chart
 - [x] Adjust `ElementalType.main_color` values

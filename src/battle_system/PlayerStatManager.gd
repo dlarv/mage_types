@@ -81,8 +81,7 @@ func boost_elemental_stats(elements: Array[ElementalType]) -> void:
 	values.fill(0)
 
 	for element in elements:
-		var index: int = ElementManager.get_index_from_name(element.name)
-		values[index] += 1.0 / TRANSMUTATION_XP_UNIT
+		values[int(element.id)] += 1.0 / TRANSMUTATION_XP_UNIT
 	
 	resolve_end_of_turn(values)
 

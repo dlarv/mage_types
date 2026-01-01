@@ -35,7 +35,7 @@ func setup_from_string(val: String) -> void:
 
 func add(key: ElementalType, amount:=1) -> void:
 	if alignment_locked: return
-	var index: int = ElementManager.get_index_from_name(key.name)
+	var index := int(key.id)
 	alignment_values[index] += amount
 	alignment_values[index] = max(min(alignment_values[index], ALIGNMENT_THRESHOLD), 0)
 
@@ -47,8 +47,7 @@ func append_unnormalized(key: ElementalType, type:=Type.OTHER, amount:=1.0) -> v
 		Type.TRANSMUTATION: mod = TRANSMUTATION_MOD
 		Type.CHANNELING: mod = CHANNELING_MOD
 		
-	var index: int = ElementManager.get_index_from_name(key.name)
-	_unnormalized_values[index] += amount * mod
+	_unnormalized_values[int(key.id)] += amount * mod
 
 
 ## Find average of all unnormalized values, then +val/average.
