@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=4 uid="uid://chuyluogsxeer"]
+[gd_scene load_steps=120 format=4 uid="uid://chuyluogsxeer"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="11_id6k5"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="11_jmy4x"]
 [ext_resource type="Resource" uid="uid://bsjfeyutvwl8i" path="res://data/items/equipment/sledge_hammer.tres" id="12_hv7p8"]
+[ext_resource type="PackedScene" uid="uid://cbmlyysi0hhkk" path="res://world/subareas/blue/stasis_dungeon/western_red_wing.tscn" id="16_jmy4x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uq05v"]
 size = Vector3(5.7, 7, 0.5)
@@ -575,9 +576,10 @@ shape = SubResource("BoxShape3D_wbhcu")
 [node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToBackrooms" type="Area3D" parent="Doors"]
+[node name="MainHallToBackrooms" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9, 0, -29)
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToBackrooms"]
@@ -737,19 +739,19 @@ metadata/_custom_type_script = "uid://cjk323awkifki"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, -18)
 shape = SubResource("BoxShape3D_uuft6")
 
-[node name="LHallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="Rampage1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -80)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="LHallChunk"]
+[node name="Chunk" type="Node3D" parent="Rampage1"]
 
-[node name="Emitter" parent="LHallChunk/Chunk" instance=ExtResource("5_7u0ak")]
+[node name="Emitter" parent="Rampage1/Chunk" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -46, 0.5, -1.8)
 _element = "purple"
 
-[node name="Spawner" parent="LHallChunk/Chunk" instance=ExtResource("4_cjwri")]
+[node name="Spawner" parent="Rampage1/Chunk" instance=ExtResource("4_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.5, 0)
 weighted_enemy_pool = Dictionary[PackedScene, float]({
 ExtResource("6_uq05v"): 100.0
@@ -758,192 +760,196 @@ level_range = Vector2i(1, 3)
 xp_range = Vector2i(10, 30)
 max_spawn_count = 5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LHallChunk/Chunk/Spawner"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage1/Chunk/Spawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.5)
 shape = SubResource("BoxShape3D_ixt3p")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LHallChunk/Chunk"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Rampage1/Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -17)
 visible = false
 use_collision = true
 collision_layer = 17
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400002, 3.5, 0.199997)
 size = Vector3(22.2, 7, 32)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 6.5, 2)
 operation = 2
 size = Vector3(20.5, 8, 34)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, 6.5, 0.199997)
 operation = 2
 size = Vector3(2, 8, 28)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 0.699997)
 size = Vector3(1, 1, 31)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90001, 3.5, -5.2)
 operation = 2
 size = Vector3(5.8, 4, 19.4)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90001, 3.5, 10.1)
 operation = 2
 size = Vector3(5.8, 4, 10.2)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500008, 3.5, 5.75)
 operation = 2
 size = Vector3(6, 4, 9.5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.5, 1.5)
 operation = 2
 size = Vector3(10, 4, 6)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 3.5, -2.25)
 operation = 2
 size = Vector3(4.5, 4, 5.5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 3.5, -3.5)
 operation = 2
 size = Vector3(8.5, 4, 3)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 3.5, -12.5)
 operation = 2
 size = Vector3(10, 4, 5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D16" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 3.5, -7.5)
 operation = 2
 size = Vector3(9.5, 4, 4)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D17" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.5, -2.25)
 operation = 2
 size = Vector3(5, 4, 13.5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.5, -9.6)
 operation = 2
 size = Vector3(4, 4, 10.8)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.5, 2.5)
 operation = 2
 size = Vector3(2, 4, 4)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24999, 3.5, 10.1)
 operation = 2
 size = Vector3(6.5, 4, 10.2)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="LHallChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-06, 3.5, 13.1)
 operation = 2
 size = Vector3(19, 4, 4.2)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="LHallChunk/Chunk"]
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Rampage1/Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -17)
 mesh = SubResource("ArrayMesh_uq05v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="LHallChunk/Chunk"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Rampage1/Chunk"]
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="LHallChunk/Chunk/StaticBody3D"]
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Rampage1/Chunk/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -17)
 shape = SubResource("ConcavePolygonShape3D_khxla")
 
-[node name="LHallPuzzle" type="Node3D" parent="LHallChunk/Chunk"]
+[node name="Rampage1" type="Node3D" parent="Rampage1/Chunk"]
 
-[node name="EmitterW" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("5_7u0ak")]
+[node name="EmitterW" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -99.7, 3, -11)
 _element = "orange"
 
-[node name="LaserReceiverW" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("9_uq05v")]
+[node name="LaserReceiverW" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("9_uq05v")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -99.5, 3, -9.5)
 _element = "orange"
 
-[node name="EmitterE" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("5_7u0ak")]
+[node name="EmitterE" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("5_7u0ak")]
 transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, -80, 3, -24)
 _element = "blue"
 
-[node name="LaserReceiverE" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("9_uq05v")]
+[node name="LaserReceiverE" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("9_uq05v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -80.2, 3, -25.5)
 _element = "blue"
 
-[node name="DraggableMirrorS1" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorS1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90.5, 1.5, -3)
 _element = "magenta"
 
-[node name="DraggableMirrorS2" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorS2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -86, 1.5, -11)
 _element = "yellow"
 
-[node name="DraggableMirrorW1" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorW1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -92, 1.5, -17)
 _element = "blue"
 
-[node name="DraggableMirrorW2" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorW2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-1, 0, -1.03316e-07, 0, 1, 0, 1.03316e-07, 0, -1, -89, 1.5, -15)
 _element = "red"
 
-[node name="DraggableMirrorN1" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorN1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(1, 0, 1.90739e-07, 0, 1, 0, -1.90739e-07, 0, 1, -86, 1.5, -20.5)
 _element = "blue"
 
-[node name="DraggableMirrorN2" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorN2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-2.3445e-07, 0, 1, 0, 1, 0, -1, 0, -2.3445e-07, -92, 1.5, -29.5)
 _element = "orange"
 
-[node name="DraggableMirrorE1" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorE1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(-1, 0, -2.78162e-07, 0, 1, 0, 2.78162e-07, 0, -1, -88, 1.5, -24)
 _element = "cyan"
 
-[node name="DraggableMirrorE2" parent="LHallChunk/Chunk/LHallPuzzle" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorE2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
 transform = Transform3D(1, 0, 3.65584e-07, 0, 1, 0, -3.65584e-07, 0, 1, -82, 1.5, -15)
 _element = "yellow"
 
-[node name="Chest" parent="LHallChunk/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("10_nn0ty")]
+[node name="Chest" parent="Rampage1/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("10_nn0ty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0, -31)
 items = Array[ExtResource("11_jmy4x")]([SubResource("Resource_ddnwv")])
-locks = [NodePath("../LHallPuzzle/LaserReceiverW"), NodePath("../LHallPuzzle/LaserReceiverE")]
+locks = [NodePath("../Rampage1/LaserReceiverW"), NodePath("../Rampage1/LaserReceiverE")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LHallChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.65, 6, -12.3)
 shape = SubResource("BoxShape3D_5xjkm")
+
+[node name="Rampage3" parent="." instance=ExtResource("16_jmy4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -262.431, 0, -99.9826)
 
 [node name="MaintenanceSequence" parent="." node_paths=PackedStringArray("start_point") instance=ExtResource("4_pijpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202, 0, -51)
 start_point = NodePath("START")
 sequence = Array[int]([0, 1, 2, 6])
 
-[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0"]
+[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0" node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48764")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/0To1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.5, -10.5)
@@ -988,8 +994,9 @@ shape = SubResource("BoxShape3D_gdoww")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4"]
+[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4" node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48765")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/1To2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 3.5, 10.5)
@@ -1034,8 +1041,9 @@ shape = SubResource("BoxShape3D_qrtyx")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8"]
+[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8" node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48766")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/2To3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 60.5, 3.5, 0)
