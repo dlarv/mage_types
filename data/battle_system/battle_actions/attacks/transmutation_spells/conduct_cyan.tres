@@ -17,7 +17,7 @@ message = ""
 script = ExtResource("4_k152n")
 attack_effect = SubResource("Resource_p8gkd")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [resource]
 resource_name = "Conduct Cyan"

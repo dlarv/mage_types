@@ -19,11 +19,11 @@ _strength = "0.2"
 message = "{target} is feeling adverse to [el]{element}[/el]!"
 
 [sub_resource type="Resource" id="Resource_iv12v"]
-resource_name = "Blue-Phobic"
+resource_name = "Orange-Phobic"
 script = ExtResource("5_m23vy")
 attack_effect = SubResource("Resource_fdoj7")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [resource]
 resource_name = "Xanthophobia"

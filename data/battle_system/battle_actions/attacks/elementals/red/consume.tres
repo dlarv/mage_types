@@ -22,7 +22,7 @@ resource_name = "Instant Health Change"
 script = ExtResource("4_bbow0")
 attack_effect = SubResource("Resource_0x7ke")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_grinx"]
 resource_name = "Melee Drop"
@@ -43,7 +43,7 @@ resource_name = "Melee Drop"
 script = ExtResource("4_bbow0")
 attack_effect = SubResource("Resource_grinx")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [resource]
 resource_name = "Consume"

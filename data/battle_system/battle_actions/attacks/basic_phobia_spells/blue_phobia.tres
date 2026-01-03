@@ -23,7 +23,7 @@ resource_name = "Blue-Phobic"
 script = ExtResource("3_fevoq")
 attack_effect = SubResource("Resource_4iq1y")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [resource]
 resource_name = "Hydrophobia"

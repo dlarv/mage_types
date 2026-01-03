@@ -30,7 +30,7 @@ resource_name = "Blue-Phobic Heal"
 script = ExtResource("4_lu4xl")
 attack_effect = SubResource("Resource_38qny")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [resource]
 resource_name = "Brave the Dark"

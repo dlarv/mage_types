@@ -33,7 +33,7 @@ resource_name = "Attack Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_fh11p")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_aqwi5"]
 resource_name = "Defense Boost"
@@ -54,7 +54,7 @@ resource_name = "Defense Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_aqwi5")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_bqxkj"]
 script = ExtResource("2_p5k0l")
@@ -65,7 +65,7 @@ invert = false
 print_failed_status = "SILENT"
 failure_msg = "FAILED"
 effect_target = 1
-_chance = ""
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_l62lw"]
 script = ExtResource("2_8dl5p")
@@ -91,7 +91,7 @@ resource_name = "Speed Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_13w7a")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_hjx8x"]
 script = ExtResource("2_p5k0l")
@@ -101,7 +101,7 @@ invert = false
 print_failed_status = "SILENT"
 failure_msg = "FAILED"
 effect_target = 1
-_chance = ""
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_uxbeq"]
 script = ExtResource("2_8dl5p")
@@ -114,7 +114,7 @@ resource_name = "Speed Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_13w7a")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 
 [sub_resource type="Resource" id="Resource_thaq2"]
 script = ExtResource("2_p5k0l")
@@ -124,7 +124,7 @@ invert = false
 print_failed_status = "SILENT"
 failure_msg = "FAILED"
 effect_target = 1
-_chance = ""
+chance = 1.0
 
 [resource]
 resource_name = "Reinforce"

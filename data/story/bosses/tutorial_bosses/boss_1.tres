@@ -25,7 +25,7 @@ resource_name = "Damage"
 script = ExtResource("7_xn2us")
 attack_effect = SubResource("Resource_bvuqs")
 effect_target = 1
-_chance = "1.0"
+chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_y6l1e"]
