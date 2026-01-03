@@ -19,7 +19,7 @@ func _ready() -> void:
 	if grid == null: return
 
 	ElementManager.build()
-	_elements = ElementManager.elements
+	_elements = ElementManager.elements.slice(0, 8)
 
 	create_grid()
 
