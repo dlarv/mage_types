@@ -31,7 +31,8 @@ func _ready() -> void:
 	
 
 func restrict_graph(nodes: Array, edges:=[]) -> void:
-	for element in ElementManager.elements:
+	# Skip last element, which is Blank.
+	for element in ElementManager.elements.slice(0, 8):
 		var prefix := "HIDE_%s" % element.name[0].to_upper()
 		stencil_shader.set_shader_parameter("%s_NODE" % prefix, element in nodes)
 		stencil_shader.set_shader_parameter("%s_EDGE" % prefix, element in edges)

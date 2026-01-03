@@ -34,11 +34,11 @@ func test_transmutations()-> void:
 		# Yellow
 		[ Orange, null, null, null, Green, Red, Red, null ],
 		# Cyan
-		[ null, null, null, Green, null, Blue, null, Blue ],
+		[ null, null, null, Green, null, Blue, Green, Blue ],
 		# Magenta
 		[ null, null, Purple, Red, Blue, null, Red, Blue ],
 		# Orange 
-		[ null, Yellow, Purple, Red, null, Red, null, Magenta ],
+		[ null, Yellow, Purple, Red, Green, Red, null, Magenta ],
 		# Purple
 		[ Magenta, Cyan, null, null, Blue, Blue, Magenta, null ]
 	]
@@ -195,7 +195,7 @@ func test_traversals() -> void:
 
 func _enter_tree() -> void:
 	build()
-	# test_transmutations()
+	test_transmutations()
 	# test_side_effects()
 	# test_traversals()
 
@@ -247,27 +247,23 @@ func build()-> void:
 	var cyan := ElementalNode.new(Cyan)
 	matchups[Cyan.id] = cyan
 
-	# B
 	blue.add_connection(Magenta, purple, attack_buff)
 	blue.add_connection(Red, magenta, speed_buff)
 	blue.add_connection(Orange, purple,	 attack_buff)
 	blue.add_connection(Green, cyan, speed_buff)
 
-	# B
 	purple.add_connection(Magenta, blue, defense_buff)
 	purple.add_connection(Red, magenta,	 defense_buff)
 	purple.add_connection(Orange, magenta, defense_buff)
 	purple.add_connection(Green, cyan, defense_buff)
 	purple.add_connection(Cyan, blue, defense_buff)
 
-	# M
 	magenta.add_connection(Blue, purple, attack_buff)
 	magenta.add_connection(Purple, blue, speed_buff)
 	magenta.add_connection(Orange, red,	 attack_buff)
 	magenta.add_connection(Yellow, red,	 attack_buff)
 	magenta.add_connection(Cyan, blue, speed_buff)
 
-	# R
 	red.add_connection(Blue, magenta, defense_buff)
 	red.add_connection(Purple, magenta,	 defense_buff)
 	red.add_connection(Yellow, orange, speed_buff)
@@ -278,6 +274,7 @@ func build()-> void:
 	orange.add_connection(Magenta, red,	 speed_buff)
 	orange.add_connection(Yellow, red, speed_buff)
 	orange.add_connection(Green, yellow, defense_buff)
+	orange.add_connection(Cyan, green, speed_buff)
 
 	yellow.add_connection(Magenta, red,	 attack_buff)
 	yellow.add_connection(Red, orange, attack_buff)
@@ -292,6 +289,7 @@ func build()-> void:
 	cyan.add_connection(Purple, blue, speed_buff)
 	cyan.add_connection(Magenta, blue, speed_buff)
 	cyan.add_connection(Yellow, green, attack_buff)
+	cyan.add_connection(Orange, green, attack_buff)
 
 
 func update_elemental_gui() -> void:

@@ -8,11 +8,12 @@ const int O_NODE = 0xb96206;
 const int Y_NODE = 0xb2ab3d;
 const int G_NODE = 0x47ae20;
 const int C_NODE = 0x5cafb0;
+
 const int B_EDGE = 0x1b48bd;
 const int P_EDGE = 0x7362bd;
 const int M_EDGE = 0xb955ba;
 const int R_EDGE = 0xc12205;
-const int O_EDGE = 0xbf670e;
+const int O_EDGE = 0xbe6913;
 const int Y_EDGE = 0xb8b042;
 const int G_EDGE = 0x4db427;
 const int C_EDGE = 0x62b4b5;
@@ -25,6 +26,7 @@ uniform bool HIDE_O_NODE = false;
 uniform bool HIDE_Y_NODE = false;
 uniform bool HIDE_G_NODE = false;
 uniform bool HIDE_C_NODE = false;
+
 uniform bool HIDE_B_EDGE = false;
 uniform bool HIDE_P_EDGE = false;
 uniform bool HIDE_M_EDGE = false;
@@ -55,7 +57,7 @@ bool _is_orphan(float alpha) {
 			return HIDE_M_NODE || HIDE_R_NODE;
 		case 0xE8:
 			return HIDE_O_NODE || HIDE_R_NODE;
-		case 0xE6:
+		case 0xE5:
 			return HIDE_O_NODE || HIDE_Y_NODE;
 		case 0xE3:
 			return HIDE_R_NODE || HIDE_Y_NODE;
@@ -63,6 +65,8 @@ bool _is_orphan(float alpha) {
 			return HIDE_G_NODE || HIDE_Y_NODE;
 		case 0xDE:
 			return HIDE_G_NODE || HIDE_C_NODE;
+		case 0xDB:
+			return HIDE_O_NODE || HIDE_G_NODE;
 		default:
 			return true;
 	}
@@ -139,8 +143,7 @@ bool _is_restricted(vec4 pixel) {
 }
 
 void fragment() {
-	//COLOR.rgb = COLOR.rgb
-//		* vec3(float(!_is_restricted(COLOR)))
-//		* vec3(float(!_is_orphan(COLOR.a)));
+	//COLOR.a = float(!_is_orphan(COLOR.a, COLOR));
+	//COLOR.a = float(!_is_restricted(COLOR));
 	COLOR.a = float(!_is_restricted(COLOR)) * float(!_is_orphan(COLOR.a));
 }

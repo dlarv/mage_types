@@ -42,10 +42,10 @@ Refactor equipment and overworld spells
 - [ ] Getting defeated resets your progress
 	- Certain areas will reset player when they are defeated (You feel a dark power emanating from all around you)
 - [ ] Rampage
-	- [ ] Design parkour
-	- [ ] Build parkour
-	- [ ] Add destroy obstacle to Rampage1
+	- [x] Design parkour
+	- [x] Build parkour
 	- [ ] Replace/alter Catalyst puzzle in Rampage1
+	- [ ] Add destroy obstacle to Rampage1
 - [x] Equipment/Overworld spell refactor
 	- [x] Redo related UI screens
 	- [x] Player can select between Battle and Overworld equipment
@@ -172,9 +172,13 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 - [ ] Add final boss to ~~stasis dungeon~~
 ## v0.10.x
 Elemental system refactor
-- [x] Use proper enum instead of `@export_enum`
 - [ ] Associate symbols with each element to help with differentiation
-- [ ] Add missing reactions and recreate transmutation chart
+- [x] Use proper enum instead of `@export_enum`
+- [x] Add missing reactions and recreate transmutation chart
+	- [x] Orange + Cyan = Green
+	- [ ] Yellow + Purple = Red
+		-  Adding this reaction would make 3 reactions involving Yellow + ??? = Red, which further clutters the transmutation map. This and the fact that it doesn't quite visually look right makes me tempted to nix it. 
+		- This would also eliminate the intersection
 - [x] Adjust `ElementalType.main_color` values
 ## v0.11.x
 Demo candidate. Misc todos that must be completed before uploading to Steam.
