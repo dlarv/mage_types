@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://d26evhvt7xff8"]
+[gd_scene load_steps=81 format=3 uid="uid://d26evhvt7xff8"]
 
 [ext_resource type="PackedScene" uid="uid://dmet1d2f3kx1r" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/objects/blue/vase_blue.tscn" id="21_yq576"]
 [ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/objects/blue/vase_red.tscn" id="23_3yaw4"]
-[ext_resource type="PackedScene" uid="uid://cbmlyysi0hhkk" path="res://world/subareas/blue/stasis_dungeon/western_red_wing.tscn" id="23_mwtcr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(2.71074, 6.0752, 1)
@@ -1631,8 +1630,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0, -352)
 
 [node name="WestHotel" parent="." instance=ExtResource("22_yncb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
-
-[node name="Rampage3" parent="." instance=ExtResource("23_mwtcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -326.017, 0, -63.768)
 
 [editable path="Beach/BeachChunk/Chunk/Wire"]

@@ -529,9 +529,9 @@ size = Vector3(3, 15, 2)
 material = ExtResource("2_ow3c5")
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 8, 60)
 operation = 2
-size = Vector3(3, 15, 2)
+size = Vector3(10, 15, 2)
 material = ExtResource("2_ow3c5")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D"]
