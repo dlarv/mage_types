@@ -49,7 +49,7 @@ size = Vector3(0.6, 8, 6.2)
 size = Vector3(54, 29, 49)
 
 [sub_resource type="Resource" id="Resource_uf111"]
-resource_name = "Grey Key"
+resource_name = "Gray Key"
 script = ExtResource("20_b0ned")
 item = ExtResource("21_py2t0")
 id = 0
@@ -882,14 +882,14 @@ wait_time = 1.0
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice6" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice7" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter2" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice8" to="LaserLab/Chunk/RedirectDemo/LaserRedirect" method="set_element"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218482" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218482" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218483" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218483" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218484" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218484" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218485" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@218485" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39759" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39759" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39760" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39760" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39761" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39761" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39762" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39762" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
 
 [editable path="VortexEngineChunk/Chunk/VortexEngine"]
 [editable path="RailwayDemoChunk/Chunk/Rails"]

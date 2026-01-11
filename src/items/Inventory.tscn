@@ -658,6 +658,15 @@ max_quantity = 9999
 allow_stacking = true
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
+[sub_resource type="Resource" id="Resource_53iyw"]
+resource_name = "Gray Key"
+script = ExtResource("2_xejte")
+item = ExtResource("71_musac")
+id = 0
+quantity = 0
+max_quantity = 9999
+allow_stacking = false
+
 [sub_resource type="Resource" id="Resource_nstv8"]
 resource_name = "Stencil 1"
 script = ExtResource("2_xejte")
@@ -682,15 +691,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("69_qvfu8")
 id = 2
 quantity = 1
-max_quantity = 9999
-allow_stacking = false
-
-[sub_resource type="Resource" id="Resource_53iyw"]
-resource_name = "Grey Key"
-script = ExtResource("2_xejte")
-item = ExtResource("71_musac")
-id = 0
-quantity = 0
 max_quantity = 9999
 allow_stacking = false
 
