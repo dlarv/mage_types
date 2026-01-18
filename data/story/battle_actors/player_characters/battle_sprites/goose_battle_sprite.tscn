@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://boqoojlep4rdu"]
+
+[ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/battle_sprite/battle_sprite.tscn" id="1_20x8s"]
+[ext_resource type="PackedScene" uid="uid://8i2yms36awml" path="res://assets/3d/characters/goose/goose_v1.blend" id="2_hjp38"]
+
+[node name="GooseBattleSprite" instance=ExtResource("1_20x8s")]
+
+[node name="goose_v1" parent="." index="7" instance=ExtResource("2_hjp38")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
