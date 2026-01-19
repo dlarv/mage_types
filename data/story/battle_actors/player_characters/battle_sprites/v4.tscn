@@ -1,17 +1,58 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq14t18k8pca"]
 
 [ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/battle_sprite/battle_sprite.tscn" id="1_2jg6i"]
-[ext_resource type="PackedScene" uid="uid://dru1guxf1wg7w" path="res://assets/3d/characters/player_v2.blend" id="2_2jg6i"]
+[ext_resource type="PackedScene" uid="uid://bencyabtfskrh" path="res://assets/3d/characters/player_v2.blend" id="2_2jg6i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahwx"]
 
-[node name="AliceBattleSprite" node_paths=PackedStringArray("mesh") instance=ExtResource("1_2jg6i")]
-mesh = NodePath("player_v2/Armature/Skeleton3D/Head")
+[node name="AliceBattleSprite" instance=ExtResource("1_2jg6i")]
 
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_yahwx")
 
-[node name="player_v2" parent="." index="7" instance=ExtResource("2_2jg6i")]
+[node name="PoisonPin" parent="PinManager" index="0"]
+_element = 0
+
+[node name="FlinchPin" parent="PinManager" index="1"]
+_element = 0
+
+[node name="StasisPin" parent="PinManager" index="2"]
+_element = 0
+
+[node name="HealingPin" parent="PinManager" index="3"]
+_element = 0
+
+[node name="BlockingPin" parent="PinManager" index="4"]
+_element = 0
+
+[node name="BluePhobiaPin" parent="PinManager/PhobiaCrown" index="0"]
+_element = 0
+
+[node name="PurplePhobiaPin" parent="PinManager/PhobiaCrown" index="1"]
+_element = 0
+
+[node name="MagentaPhobiaPin" parent="PinManager/PhobiaCrown" index="2"]
+_element = 0
+
+[node name="RedPhobiaPin" parent="PinManager/PhobiaCrown" index="3"]
+_element = 0
+
+[node name="OrangePhobiaPin" parent="PinManager/PhobiaCrown" index="4"]
+_element = 0
+
+[node name="YellowPhobiaPin" parent="PinManager/PhobiaCrown" index="5"]
+_element = 0
+
+[node name="GreenPhobiaPin" parent="PinManager/PhobiaCrown" index="6"]
+_element = 0
+
+[node name="CyanPhobiaPin" parent="PinManager/PhobiaCrown" index="7"]
+_element = 0
+
+[node name="MeshManager" parent="." index="7" node_paths=PackedStringArray("mesh")]
+mesh = NodePath("player_v2/Armature/Skeleton3D/Head")
+
+[node name="player_v2" parent="MeshManager" index="0" instance=ExtResource("2_2jg6i")]
 
 [editable path="PinManager"]
-[editable path="player_v2"]
+[editable path="MeshManager/player_v2"]

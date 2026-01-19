@@ -11,14 +11,10 @@ const EQUIPMENT_TEXT_DURATION := 0.8
 const ACTION_TEXT_DURATION := 0.8
 
 @export var transmutation_hint: Control
-@export var mesh: MeshInstance3D
 
 var tint: Color = Color.WHITE
 var is_selectable := false
 var actor: BattleActor
-
-var _mat1: StandardMaterial3D
-var _mat2: StandardMaterial3D
 var _indicator_mat: StandardMaterial3D
 var _is_defeated := false
 var _animation_player: AnimationPlayer
@@ -32,18 +28,13 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	_is_defeated = false
 	%EmitterController.is_ally = not isEnemy
 
-	_mat1 = StandardMaterial3D.new()
-	_mat2 = StandardMaterial3D.new()
-	_mat1 = mesh.get_active_material(0)
-	_mat2 = mesh.get_active_material(1)
-	_mat1.albedo_color = actor.element1.main_color
-	_mat2.albedo_color = actor.element2.main_color
+	$MeshManager.setup(actor)
 
 	_indicator_mat = StandardMaterial3D.new()
 	_indicator_mat.albedo_color = Color.DARK_GRAY
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 
-	var animationPlayerParent: Node = mesh
+	var animationPlayerParent: Node = $MeshManager.mesh
 	while animationPlayerParent.get_parent() != self:
 		animationPlayerParent = animationPlayerParent.get_parent()
 
@@ -67,8 +58,7 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	actor.status_effects_removed.connect(remove_status_effects)
 	actor.was_just_defeated.connect(func() -> void: 
 		_indicator_mat.albedo_color = Color.BLACK
-		_mat1.albedo_color = _mat1.albedo_color.darkened(0.5)
-		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
+		$MeshManager.set_defeated()
 		_is_defeated = true)
 	actor.action_selected.connect(_on_action_selected)
 	actor.status_activated.connect(animate_status_activation)
@@ -83,10 +73,7 @@ func _exit_tree() -> void:
 
 
 func set_element(id: int, element: ElementalType) -> void:
-	if id == 0:
-		_mat1.albedo_color = element.main_color
-	else:
-		_mat2.albedo_color = element.main_color
+	$MeshManager.set_element(id, element)
 
 
 func disable_selection() -> void:

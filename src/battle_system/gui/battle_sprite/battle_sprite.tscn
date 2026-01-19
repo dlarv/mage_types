@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4a31odwnedry"]
+[gd_scene load_steps=8 format=3 uid="uid://c4a31odwnedry"]
 
 [ext_resource type="Script" uid="uid://cmcakb8l8y1ao" path="res://src/battle_system/gui/battle_sprite/BattleSprite.gd" id="1_dntod"]
 [ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_n1qvi"]
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/battle_sprite/pin_manager.tscn" id="3_ya2xk"]
 [ext_resource type="PackedScene" uid="uid://bor2kywevh8c" path="res://src/battle_system/gui/battle_sprite/emitter_controller.tscn" id="4_yav0q"]
+[ext_resource type="PackedScene" uid="uid://cspilfets6fr3" path="res://src/battle_system/gui/battle_sprite/mesh_manager.tscn" id="5_4ho0o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
 
@@ -47,6 +48,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92013, 0)
 billboard = 1
 font_size = 64
 outline_size = 16
+
+[node name="MeshManager" parent="." instance=ExtResource("5_4ho0o")]
 
 [connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]

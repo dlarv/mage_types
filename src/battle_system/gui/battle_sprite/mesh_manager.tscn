@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cspilfets6fr3"]
+
+[ext_resource type="Script" uid="uid://c4l2ftt43sw4e" path="res://src/battle_system/gui/battle_sprite/MeshManager.gd" id="1_claft"]
+
+[node name="MeshManager" type="Node3D"]
+script = ExtResource("1_claft")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf14djv3ygw3c"]
+
+[ext_resource type="PackedScene" uid="uid://123i5qoj5xev" path="res://assets/shaders/battle_actor_shader/test_model.blend" id="1_av85h"]
+[ext_resource type="Shader" uid="uid://7ptnun8yfice" path="res://assets/shaders/battle_actor_shader/battle_actor_shader.gdshader" id="2_om7oo"]
+[ext_resource type="Texture2D" uid="uid://bb1kcskktwp6e" path="res://assets/shaders/battle_actor_shader/diffuse.png" id="3_t0q4a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0q4a"]
+render_priority = 0
+shader = ExtResource("2_om7oo")
+shader_parameter/diffuse_map = ExtResource("3_t0q4a")
+shader_parameter/element_id = 6
+
+[node name="TestScene" type="Node3D"]
+
+[node name="test_model" parent="." instance=ExtResource("1_av85h")]
+
+[node name="Cube" parent="test_model" index="0"]
+material_override = SubResource("ShaderMaterial_t0q4a")
+
+[editable path="test_model"]

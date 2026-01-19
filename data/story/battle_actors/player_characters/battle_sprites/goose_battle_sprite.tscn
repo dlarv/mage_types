@@ -5,5 +5,10 @@
 
 [node name="GooseBattleSprite" instance=ExtResource("1_20x8s")]
 
-[node name="goose_v1" parent="." index="7" instance=ExtResource("2_hjp38")]
+[node name="MeshManager" parent="." index="7" node_paths=PackedStringArray("mesh")]
+mesh = NodePath("goose_v1/Rig/Skeleton3D/Body_001")
+
+[node name="goose_v1" parent="MeshManager" index="0" instance=ExtResource("2_hjp38")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[editable path="MeshManager/goose_v1"]
