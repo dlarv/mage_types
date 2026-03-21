@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://c5bqlje0ktr3l"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://c5bqlje0ktr3l"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_1elu4"]
 [ext_resource type="Script" uid="uid://cqnlttwghf2pc" path="res://src/battle_system/battle_actions/effects/TransmutateAttackEffect.gd" id="3_jse3e"]
@@ -9,26 +9,19 @@
 script = ExtResource("3_jse3e")
 _element = 7
 element_id = 1
-name = ""
 _strength = "0.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_vmbhl"]
 script = ExtResource("4_k152n")
 attack_effect = SubResource("Resource_p8gkd")
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Conduct Cyan"
 script = ExtResource("5_gjg1e")
 effects = Array[ExtResource("2_1elu4")]([SubResource("Resource_vmbhl")])
-accuracy = 1.0
 power = 0
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Conduct Cyan"
 _element = 7
-priority = 0
 attack_range = 2
 target = 0
 details = "Transmutes user into [el]Cyan[/el]."

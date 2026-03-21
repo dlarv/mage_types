@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://bsjfeyutvwl8i"]
+[gd_resource type="Resource" script_class="Equipment" format=3 uid="uid://bsjfeyutvwl8i"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_r6swq"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_dm705"]
@@ -20,12 +20,12 @@ source_code = "func execute() -> void:
 
 		attack.resource_local_to_scene = true
 		attack.effects.append(slot)
-		Logger.append_battle_log(\"Added flinch to %s\" % attack.name)
+		MyLogger.append_battle_log(\"Added flinch to %s\" % attack.name)
 
 	actor.battle_resolution_completed.connect(func() -> void:
 		for attack in actor.attacks:
 			attack.effects.remove_at(len(attack.effects) - 1)
-			Logger.append_battle_log(\"Remove flinch from %s\" % attack.name)
+			MyLogger.append_battle_log(\"Remove flinch from %s\" % attack.name)
 	)
 	actor.battle_setup_completed.emit()
 "
@@ -37,6 +37,5 @@ effects = Array[ExtResource("1_r6swq")]([SubResource("Resource_dm705")])
 has_overworld_use = true
 id = 6
 name = "Sledge Hammer"
-requirements = Array[ExtResource("2_dm705")]([])
 details = "All melee attacks have a 30% chance to flinch."
 metadata/_custom_type_script = "uid://djqyy8na7gxvw"

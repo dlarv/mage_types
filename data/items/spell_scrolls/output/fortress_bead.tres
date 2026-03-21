@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://dl8sdwm7jxdv"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://dl8sdwm7jxdv"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_inugv"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_hsixu"]
@@ -9,5 +9,3 @@ script = ExtResource("2_hsixu")
 spell = ExtResource("3_1rbo0")
 id = 34
 name = "Fortress Bead"
-requirements = Array[ExtResource("1_inugv")]([])
-details = ""

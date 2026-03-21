@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://b3nggi4ftlucw"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://b3nggi4ftlucw"]
 
 [ext_resource type="PackedScene" uid="uid://chvddpwtc6d1r" path="res://data/battle_system/attack_animations/geyser.tscn" id="1_3fh57"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_lpeax"]
@@ -11,14 +11,11 @@ resource_name = "Damage"
 script = ExtResource("4_twwtw")
 name = "Damage"
 _strength = "100.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_fh018"]
 resource_name = "Damage"
 script = ExtResource("5_bt5sh")
 attack_effect = SubResource("Resource_lyhvo")
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Desolation"
@@ -30,7 +27,4 @@ scaling_factor = Vector4i(80, 80, 120, -1)
 name = "Desolation"
 animation = ExtResource("1_3fh57")
 _element = 3
-priority = 0
 attack_range = 1
-target = 3
-details = ""

@@ -50,7 +50,7 @@ func display_message_non_blocking(msg: Variant, limitInfo:=false) -> void:
 	elif msg is Resource and "name" in msg:
 		msgLog = "Player viewed %s." % msg.name
 
-	Logger.append_battle_log(msgLog)
+	MyLogger.append_battle_log(msgLog)
 	message_box.display_message_non_blocking(msg, limitInfo)
 
 

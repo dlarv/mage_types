@@ -9,7 +9,7 @@ class_name ChanceWrapper
 func apply_to(actor: BattleActor) -> ActorTurnData: 
 	var rand := randf()
 	var output := ActorTurnData.empty(actor)
-	Logger.append_battle_log("Rand(%.2f) <= Chance(%s) == %s" 
+	MyLogger.append_battle_log("Rand(%.2f) <= Chance(%s) == %s" 
 			% [rand, chance, str(rand <= chance)])
 	if rand <= chance:
 		return bonus.apply_to(actor)

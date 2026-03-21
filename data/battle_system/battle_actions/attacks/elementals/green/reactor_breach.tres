@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=15 format=3 uid="uid://c4lyg4rq0tpt2"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://c4lyg4rq0tpt2"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_peqn3"]
 [ext_resource type="PackedScene" uid="uid://chvddpwtc6d1r" path="res://data/battle_system/attack_animations/geyser.tscn" id="1_s2vyq"]
@@ -12,59 +12,42 @@
 [sub_resource type="Resource" id="Resource_k1p8r"]
 script = ExtResource("3_7av7j")
 _element = 6
-apply_to = "target"
 
 [sub_resource type="Resource" id="Resource_8q577"]
 resource_name = "Damage"
 script = ExtResource("4_44j6p")
 name = "Damage"
 _strength = "100.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_ki5nu"]
 resource_name = "Damage"
 script = ExtResource("5_re8ld")
 attack_effect = SubResource("Resource_8q577")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_hmoyi"]
 script = ExtResource("7_5vclh")
-allow_overflow = false
-strength_is_percent_hp = true
-use_effectiveness = true
 name = "InstantHealthChange"
 _strength = "0.1"
-message = ""
 
 [sub_resource type="Resource" id="Resource_76u0o"]
 script = ExtResource("5_re8ld")
 attack_effect = SubResource("Resource_hmoyi")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_p6yoh"]
 script = ExtResource("6_8smkb")
 condition = SubResource("Resource_k1p8r")
 success_effect = SubResource("Resource_76u0o")
 failed_effect = SubResource("Resource_ki5nu")
-invert = false
 print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Reactor Breach"
 script = ExtResource("2_ebunw")
 effects = Array[ExtResource("1_peqn3")]([SubResource("Resource_p6yoh")])
-accuracy = 1.0
 power = 100
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Reactor Breach"
 animation = ExtResource("1_s2vyq")
 _element = 6
-priority = 0
 attack_range = 1
 target = 5
 details = "Hits all combatants. If combatant is [el]Green[/el], heals 10% of their total hp. Otherwise does damage."

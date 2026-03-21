@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=10 format=3 uid="uid://bbmfv6c5wfps"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://bbmfv6c5wfps"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_1cm6d"]
 [ext_resource type="PackedScene" uid="uid://ch3nnueyugf36" path="res://data/battle_system/attack_animations/wall.tscn" id="1_jwg7d"]
@@ -8,13 +8,8 @@
 
 [sub_resource type="Resource" id="Resource_fvnsn"]
 script = ExtResource("3_e8jau")
-stat = 0
-op = 0
-is_side_effect = false
 id = 6
 _duration = "0"
-description = ""
-name = ""
 _strength = "-10.0"
 message = "{target}'s melee attack was lowered!
 {target}'s ranged attack was lowered!"
@@ -22,18 +17,13 @@ message = "{target}'s melee attack was lowered!
 [sub_resource type="Resource" id="Resource_137st"]
 script = ExtResource("4_c2f85")
 attack_effect = SubResource("Resource_fvnsn")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_g4eaf"]
 resource_name = "Defense Boost"
 script = ExtResource("3_e8jau")
 stat = 3
-op = 0
-is_side_effect = false
 id = 6
 _duration = "0"
-description = ""
 name = "Defense Boost"
 _strength = "10.0"
 message = "{target}'s melee defense was boosted!
@@ -43,20 +33,15 @@ message = "{target}'s melee defense was boosted!
 resource_name = "Defense Boost"
 script = ExtResource("4_c2f85")
 attack_effect = SubResource("Resource_g4eaf")
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Disarmament"
 script = ExtResource("2_pyw4s")
 effects = Array[ExtResource("1_1cm6d")]([SubResource("Resource_137st"), SubResource("Resource_h0evf")])
-accuracy = 1.0
 power = 0
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Disarmament"
 animation = ExtResource("1_jwg7d")
 _element = 6
-priority = 0
 attack_range = 2
 target = 6
 details = "Drastically lowers the target's offensive stats, but raises their defensive stats."

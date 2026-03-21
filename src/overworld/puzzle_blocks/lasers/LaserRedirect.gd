@@ -29,11 +29,11 @@ func _on_sub_receiver_e_laser_received(laser:Laser, point:Vector3) -> void:
 
 	var res := ElementManager.get_matchup(laser.element, element)
 	if not res:
-		Logger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NULL => LaserElement(%s)."
+		MyLogger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NULL => LaserElement(%s)."
 				% [puzzle_name, element.name, laser.element.name, laser.element.name])
 		_element_e = laser.element
 	else:
-		Logger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NewElement(%s)." 
+		MyLogger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NewElement(%s)." 
 				% [puzzle_name, element.name, laser.element.name, res.name])
 		_element_e = res
 	_react()
@@ -45,11 +45,11 @@ func _on_sub_receiver_w_laser_received(laser:Laser, point:Vector3) -> void:
 
 	var res := ElementManager.get_matchup(laser.element, element)
 	if not res:
-		Logger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NULL => LaserElement(%s)."
+		MyLogger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NULL => LaserElement(%s)."
 				% [puzzle_name, element.name, laser.element.name, laser.element.name])
 		_element_w = laser.element
 	else:
-		Logger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NewElement(%s)." 
+		MyLogger.append_puzzle_log("LaserRedirect(%s) of Element(%s) + Laser(%s) => NewElement(%s)." 
 				% [puzzle_name, element.name, laser.element.name, res.name])
 		_element_w = res
 	_react()
@@ -98,12 +98,12 @@ func _react() -> void:
 		laserElementOutput = ElementManager.get_matchup(_element_e, _element_w)
 
 	if not laserElementOutput:
-		Logger.append_puzzle_log("LaserRedirect(%s) output = Element(%s) + Element(%s) = NULL."
+		MyLogger.append_puzzle_log("LaserRedirect(%s) output = Element(%s) + Element(%s) = NULL."
 			% [puzzle_name, _element_e.name, _element_w.name])
 		$SubEmitter.stop()
 		return
 
-	Logger.append_puzzle_log("LaserRedirect(%s) output = Element(%s) + Element(%s) = Element(%s)." 
+	MyLogger.append_puzzle_log("LaserRedirect(%s) output = Element(%s) + Element(%s) = Element(%s)." 
 		% [puzzle_name, _element_e.name, _element_w.name, laserElementOutput.name])
 
 	$SubEmitter.set_element(laserElementOutput)

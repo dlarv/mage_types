@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://beh80ngejtetg"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://beh80ngejtetg"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_fg1ux"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_o0w0m"]
@@ -9,5 +9,3 @@ script = ExtResource("2_o0w0m")
 spell = ExtResource("3_1ut4k")
 id = 49
 name = "Desolation Bead"
-requirements = Array[ExtResource("1_fg1ux")]([])
-details = ""

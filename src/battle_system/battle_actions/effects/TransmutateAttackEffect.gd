@@ -20,15 +20,15 @@ var element: ElementalType:
 func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
 	var user := data.user
 	if target.get_element(element_id) == element:
-		Logger.append_battle_log("But %s is already %s!" % [ user.name, element ])
+		MyLogger.append_battle_log("But %s is already %s!" % [ user.name, element ])
 	elif target.stasis:
-		Logger.append_battle_log("%s is in stasis! Transmutations were blocked!" % target.name)
+		MyLogger.append_battle_log("%s is in stasis! Transmutations were blocked!" % target.name)
 	else:
 		var dmg := target.set_element(element_id, element)
 		data.element = element
 		data.total_dmg += int(dmg)
 		data.phobia_dmg += int(dmg)
-		Logger.append_battle_log("%s is in stasis! Transmutations were blocked!" % target.name)
+		MyLogger.append_battle_log("%s is in stasis! Transmutations were blocked!" % target.name)
 	return data
 
 

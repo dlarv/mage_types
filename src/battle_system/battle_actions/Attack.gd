@@ -61,7 +61,7 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 
 	var affinity := calculate_affinity(user)
 	data.effectiveness = affinity
-	Logger.append_battle_log("Affinity(%.2f)" % affinity)
+	MyLogger.append_battle_log("Affinity(%.2f)" % affinity)
 	
 	var delayedEffects: Array[_BaseEffectSlot] = []
 	for i in len(targets):
@@ -72,7 +72,7 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 		var rand := randf()
 		if rand > accuracy:
 			data.add_missed_target(target)
-			Logger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
+			MyLogger.append_battle_log("Rand(%.2f) > Accuracy(%.2f)." % [ rand, accuracy ])
 			continue
 
 		for slot in effects:
@@ -95,15 +95,15 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 func calculate_affinity(user: BattleActor) -> float:
 	var affinity: float = scaling_factor.x
 	if scaling_factor.w > -1 and user.element1 == element and user.element2 == element:
-		Logger.append_battle_log("User(%s) elements both match Attack.Element(%s)" 
+		MyLogger.append_battle_log("User(%s) elements both match Attack.Element(%s)" 
 			% [user.name, element])
 		affinity = scaling_factor.w
 	elif user.element1 == element or user.element2 == element:
-		Logger.append_battle_log("User(%s) typing matches Attack.Element(%s)" 
+		MyLogger.append_battle_log("User(%s) typing matches Attack.Element(%s)" 
 			% [user.name, element])
 		affinity = scaling_factor.z
 	elif user.element1.in_same_affinity_group(element) or user.element2.in_same_affinity_group(element):
-		Logger.append_battle_log("User(%s)'s typing has affinity for Attack.Element(%s)"
+		MyLogger.append_battle_log("User(%s)'s typing has affinity for Attack.Element(%s)"
 				% [user.name, element])
 		affinity = scaling_factor.y
 	affinity /= 100

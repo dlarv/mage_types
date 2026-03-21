@@ -39,7 +39,7 @@ func check(data: ActorTurnData, target: BattleActor) -> bool:
 		",".join(elements.map(func(x: ElementalType) -> String: return x.name)), 
 		output
 	]
-	Logger.append_battle_log(msg)
+	MyLogger.append_battle_log(msg)
 	return output
 
 func _ne(actor: BattleActor) -> bool:

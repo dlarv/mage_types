@@ -46,13 +46,13 @@ func flicker_collider() -> void:
 
 func create_log(body: MagiClay, e: ElementalType) -> void:
 	if in_stasis:
-		Logger.append_puzzle_log("OneWayLens(%s) in stasis collided with laser of Element(%s)."
+		MyLogger.append_puzzle_log("OneWayLens(%s) in stasis collided with laser of Element(%s)."
 			% [puzzle_name, body.element])
 	elif e == null or e.is_blank():
-		Logger.append_puzzle_log("OneWayLens(%s) of Element(%s) collided with laser of Element(%s)."
+		MyLogger.append_puzzle_log("OneWayLens(%s) of Element(%s) collided with laser of Element(%s)."
 			% [puzzle_name, element, body.element])
 	else:
-		Logger.append_puzzle_log("OneWayLens(%s) of Element(%s) transmuted laser of Element(%s) into Element(%s)." 
+		MyLogger.append_puzzle_log("OneWayLens(%s) of Element(%s) transmuted laser of Element(%s) into Element(%s)." 
 			% [puzzle_name, element, body.element, e])
 
 
@@ -60,6 +60,6 @@ func _on_laser_dropped() -> void:
 	_is_emitting = false
 	$SubEmitter.stop()
 	var e: String = $SubEmitter.laser.element.name if $SubEmitter != null else "null"
-	Logger.append_puzzle_log("OneWayLens(%s) stopped emitting laser of Element(%s)."
+	MyLogger.append_puzzle_log("OneWayLens(%s) stopped emitting laser of Element(%s)."
 			% [puzzle_name, e])
 

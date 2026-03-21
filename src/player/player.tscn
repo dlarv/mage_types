@@ -21,7 +21,7 @@ gradient = SubResource("Gradient_o822w")
 fill = 1
 fill_from = Vector2(0.525641, 0.508547)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("model") groups=["persist", "player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("model", "anim_player") groups=["persist", "player"]]
 collision_layer = 113
 collision_mask = 49
 axis_lock_angular_x = true
@@ -33,6 +33,7 @@ jump_time_to_descent = 0.25
 variable_jump_height_modifier = 20.0
 dash_speed = 500.0
 model = NodePath("alice_v3/rig/Skeleton3D/Alice")
+anim_player = NodePath("alice_v3/AnimationPlayer")
 battle_actor = ExtResource("2_x42xx")
 _playable_characters = Dictionary[int, ExtResource("3_3kubr")]({
 0: ExtResource("4_x42xx")

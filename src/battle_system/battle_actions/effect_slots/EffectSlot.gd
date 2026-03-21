@@ -17,13 +17,13 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 	var rand := randf()
 	if rand <= chance:
 		if chance != 1.0:
-			Logger.append_battle_log("Action(%s) Succeeded. Chance(%f) >= Rand(%f)" 
+			MyLogger.append_battle_log("Action(%s) Succeeded. Chance(%f) >= Rand(%f)" 
 					% [attack_effect.name, chance, rand])
 		if effect_target == EffectTarget.TARGET or effect_target == EffectTarget.NOT_USER:
 			return attack_effect.apply_effect(data, target, effectiveness)
 		return attack_effect.apply_effect(data, data.user, effectiveness)
 
-	Logger.append_battle_log("Action(%s) failed. Chance(%f) >= Rand(%f)" 
+	MyLogger.append_battle_log("Action(%s) failed. Chance(%f) >= Rand(%f)" 
 			% [attack_effect.name, chance, rand])
 
 	return data
@@ -41,5 +41,6 @@ func _set_effect_target(val: EffectTarget) -> void:
 	super._set_effect_target(val)
 	if attack_effect is Damage and effect_target == EffectTarget.USER:
 		resource_name = "Recoil %s" % attack_effect.resource_name
+	elif attack_effect == null: pass
 	else:
 		resource_name = attack_effect.resource_name

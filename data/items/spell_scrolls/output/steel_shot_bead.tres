@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://dh0d2ck60rn4x"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://dh0d2ck60rn4x"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_pstvp"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_lf613"]
@@ -9,5 +9,3 @@ script = ExtResource("2_lf613")
 spell = ExtResource("3_8tjt5")
 id = 35
 name = "Steel Shot Bead"
-requirements = Array[ExtResource("1_pstvp")]([])
-details = ""

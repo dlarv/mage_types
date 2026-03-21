@@ -33,7 +33,7 @@ var tie_breaker := false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
-		Logger.save_log()
+		MyLogger.save_log()
 	elif event.is_action_pressed("skip_dialog"):
 		_dialog_box.stop()
 	elif event.is_action_pressed("toggle_battle_feed") and message_feed:
@@ -109,13 +109,13 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 	gui.turn_counter = _turn_counter
 	message_feed.append_turn_header(_turn_counter)
 
-	Logger.append_battle_log("\n********************************Turn %d********************************" 
+	MyLogger.append_battle_log("\n********************************Turn %d********************************" 
 			% _turn_counter)
 
 	# If allyActions is empty, the player pressed the "Run" button.
 	if len(allyActions) == 1 and allyActions[0].is_flee():
 		StoryManager.set_variable("battle_result", "fled")
-		Logger.append_battle_log("You ran away.")
+		MyLogger.append_battle_log("You ran away.")
 		battle_ended.emit(EndState.FLED)
 		_resolve_end_of_battle(false)
 		return
@@ -144,14 +144,14 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 			
 		var flinch := turnData.user.flinching
 		if flinch != null:
-			Logger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
+			MyLogger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
 			gui.animate_status_activation(turnData.user, flinch)
 			turnData.user.status_activated.emit(flinch, null)
 			resolve_end_of_turn(turnData)
 			await get_tree().create_timer(post_turn_delay).timeout
 			continue
 
-		Logger.append_battle_log("\nActors turn: %s" % turnData.user.name)
+		MyLogger.append_battle_log("\nActors turn: %s" % turnData.user.name)
 		
 		# Apply action effects.
 		var res := turnData.execute()
@@ -202,7 +202,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		# Pause before processing next turn.
 		await get_tree().create_timer(post_turn_delay).timeout
 
-	Logger.append_battle_log("\n\nPlayer is selecting actions...")
+	MyLogger.append_battle_log("\n\nPlayer is selecting actions...")
 	await _dialog(true)
 	_prep_next_turn()
 	gui.enable_player_controls(true)
@@ -252,13 +252,13 @@ func _dialog(isAfterTurn: bool) -> void:
 func _check_if_battle_ended() -> bool:
 	if _defeated_allies == len(allies):
 		StoryManager.set_variable("battle_result", "defeated")
-		Logger.append_battle_log("You were defeated...")
+		MyLogger.append_battle_log("You were defeated...")
 		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.DEFEATED)
 		return true
 	elif _defeated_enemies == len(enemies):
 		StoryManager.set_variable("battle_result", "won")
-		Logger.append_battle_log("You won!")
+		MyLogger.append_battle_log("You won!")
 		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.WON)
 		return true
@@ -303,9 +303,9 @@ func _resolve_end_of_battle(pause:=true) -> void:
 func _prep_next_turn() -> void:
 	selection_phase_started.emit()
 
-	Logger.append_battle_log("\n********************************AI********************************")
+	MyLogger.append_battle_log("\n********************************AI********************************")
 	_actions.assign(ai.get_actions(allies))
-	Logger.append_battle_log("\n********************************END AI********************************")
+	MyLogger.append_battle_log("\n********************************END AI********************************")
 
 	tie_breaker = randf() < 0.5
 	var speedRank := allies.duplicate()

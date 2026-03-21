@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://bbec0n6bcglhb"]
+[gd_resource type="Resource" script_class="Equipment" format=3 uid="uid://bbec0n6bcglhb"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_gj31e"]
 [ext_resource type="Script" uid="uid://cvxp8g3bj6t6y" path="res://src/items/equipment/ModEquipmentEffect.gd" id="2_4omxa"]
@@ -39,8 +39,6 @@ metadata/_custom_type_script = "uid://cvxp8g3bj6t6y"
 [resource]
 script = ExtResource("3_tsc7p")
 effects = Array[ExtResource("1_gj31e")]([SubResource("Resource_4omxa")])
-has_overworld_use = false
 id = 2
 name = "Willpower"
-requirements = Array[ExtResource("2_ks20p")]([])
 details = "Prevents the first time the holder would be defeated, leaving them at 1 hp."

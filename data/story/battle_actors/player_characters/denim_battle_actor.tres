@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=10 format=3 uid="uid://wbbhxo5h3qcy"]
+[gd_resource type="Resource" script_class="BattleActor" format=3 uid="uid://wbbhxo5h3qcy"]
 
 [ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_qjyvk"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_2e72e"]
@@ -16,14 +16,12 @@ metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
 [sub_resource type="Resource" id="Resource_nqvwl"]
 script = ExtResource("7_c5erp")
-next_level_xp = 100
 total_xp = 50
 _base_melee_attack = 12.0
 _base_ranged_attack = 12.0
 _base_melee_defense = 16.0
 _base_ranged_defense = 16.0
 _base_speed = 14.0
-_base_evasion = 100.0
 hp = 55.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
@@ -33,7 +31,6 @@ name = "Denim"
 id = 2
 level = 2
 stat_manager = SubResource("Resource_nqvwl")
-reset_hp_after_battle = true
 _element1 = 0
 _element2 = 0
 alignment_manager = SubResource("Resource_ss44v")

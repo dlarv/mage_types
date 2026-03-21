@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://dxog01ajisqd2"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://dxog01ajisqd2"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_p7jyk"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_qfdmo"]
@@ -9,5 +9,3 @@ script = ExtResource("2_qfdmo")
 spell = ExtResource("3_ll6gq")
 id = 5
 name = "Yellow Hit Bead"
-requirements = Array[ExtResource("1_p7jyk")]([])
-details = ""

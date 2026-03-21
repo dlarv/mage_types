@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://naddq5rv0dbw"]
+[gd_scene format=3 uid="uid://naddq5rv0dbw"]
 
 [ext_resource type="Script" uid="uid://dwcdmph2053xh" path="res://src/items/Inventory.gd" id="1_jis06"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="2_xejte"]
@@ -694,7 +694,7 @@ quantity = 1
 max_quantity = 9999
 allow_stacking = false
 
-[node name="Inventory" type="Node" groups=["persist"]]
+[node name="Inventory" type="Node" unique_id=204631642 groups=["persist"]]
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RegularItem" load_steps=12 format=3 uid="uid://dwfg404xs0toh"]
+[gd_resource type="Resource" script_class="RegularItem" format=3 uid="uid://dwfg404xs0toh"]
 
 [ext_resource type="Script" uid="uid://cqtmj04buupx0" path="res://src/items/RegularItem.gd" id="1_5llkq"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="2_eaqiy"]
@@ -14,14 +14,11 @@ script = ExtResource("4_w55iu")
 effect = ExtResource("3_j3o8v")
 name = "Poison Heal"
 _strength = "0.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_k7e4k"]
 resource_name = "Poison Heal"
 script = ExtResource("2_eaqiy")
 attack_effect = SubResource("Resource_in8pl")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_ltitp"]
 resource_name = "Poison Heal"
@@ -32,7 +29,6 @@ _element = 0
 priority = 5
 attack_range = 2
 target = 1
-details = ""
 
 [sub_resource type="Resource" id="Resource_ug1b0"]
 script = ExtResource("6_4u1fn")
@@ -47,4 +43,3 @@ max_quantity = 9999
 id = 1
 name = "Poison Heal"
 requirements = Array[ExtResource("6_f4wql")]([SubResource("Resource_ug1b0")])
-details = ""

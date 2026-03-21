@@ -23,10 +23,10 @@ func unlock_map(mapName: String) -> void:
 	if find_child(mapName): return
 	elif not _locked_maps[mapName]: 
 		push_warning("Tried to unlock Map(%s), but it could not be found" % mapName)
-		Logger.append_world_log("Tried to unhide Map(%s), but it could not be found" % mapName)
+		MyLogger.append_world_log("Tried to unhide Map(%s), but it could not be found" % mapName)
 		return
 
-	Logger.append_world_log("Map(%s) was unlocked!" % mapName)
+	MyLogger.append_world_log("Map(%s) was unlocked!" % mapName)
 	is_map_unlocked[mapName] = true
 	add_child(_locked_maps[mapName])
 	_locked_maps.erase(mapName)

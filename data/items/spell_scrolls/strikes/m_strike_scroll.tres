@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=10 format=3 uid="uid://bqv0v7l6vqeeu"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://bqv0v7l6vqeeu"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_e5w7o"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_3rxgx"]
@@ -12,8 +12,6 @@
 [sub_resource type="Resource" id="Resource_dd5bq"]
 script = ExtResource("11_7bmj2")
 attacks = Array[ExtResource("2_px72i")]([ExtResource("3_ltivr"), ExtResource("4_5etsb"), ExtResource("10_f5dcc")])
-incompatible = false
-battle_relevant = false
 
 [resource]
 script = ExtResource("2_3rxgx")
@@ -21,4 +19,3 @@ spell = ExtResource("3_ckydo")
 id = 19
 name = "Magenta Strike Bead"
 requirements = Array[ExtResource("1_e5w7o")]([SubResource("Resource_dd5bq")])
-details = ""

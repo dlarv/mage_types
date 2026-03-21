@@ -25,14 +25,14 @@ func start(val: Variant=null) -> void:
 	super.start(val)
 	_is_on = true
 	$SubEmitter.start()
-	Logger.append_puzzle_log("Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element, laser.rand_val])
+	MyLogger.append_puzzle_log("Emitter(%s) started. Element(%s). Hash(%d)" % [puzzle_name, element, laser.rand_val])
 
 func stop(val: Variant=null) -> void: 
 	if Engine.is_editor_hint(): return
 	super.stop(val)
 	_is_on = false
 	$SubEmitter.stop()
-	Logger.append_puzzle_log("Emitter(%s) stopped." % [puzzle_name])
+	MyLogger.append_puzzle_log("Emitter(%s) stopped." % [puzzle_name])
 
 # Override
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://q1l847rlbb6i"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://q1l847rlbb6i"]
 
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="1_q23s8"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_tkr0o"]
@@ -13,7 +13,6 @@ _element = 0
 id = 3
 _duration = "5"
 icon = ExtResource("3_o1s7p")
-description = ""
 name = "Blue-Phobic"
 _strength = ".2"
 message = "{target} is feeling adverse to [el]{element}[/el]!"
@@ -22,19 +21,12 @@ message = "{target} is feeling adverse to [el]{element}[/el]!"
 resource_name = "Blue-Phobic"
 script = ExtResource("3_fevoq")
 attack_effect = SubResource("Resource_4iq1y")
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Hydrophobia"
 script = ExtResource("1_q23s8")
 effects = Array[ExtResource("2_tkr0o")]([SubResource("Resource_0f64n")])
-accuracy = 1.0
 power = 0
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Hydrophobia"
 _element = 0
-priority = 0
 attack_range = 2
-target = 3
-details = ""

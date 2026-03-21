@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://d1s1g7x527myg"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://d1s1g7x527myg"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_7e1y6"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_moss4"]
@@ -10,66 +10,49 @@
 
 [sub_resource type="Resource" id="Resource_06per"]
 script = ExtResource("3_mr6cx")
-actor_1 = "target"
 stat_1 = 4
 operator = ">"
-actor_2 = "target"
 stat_2 = 5
 
 [sub_resource type="Resource" id="Resource_ygvhx"]
 resource_name = "Damage (MELEE_DEFENSE)"
 script = ExtResource("4_e5d4m")
-actor_to_override = "target"
 override_stat = 4
 name = "Damage (MELEE_DEFENSE)"
 _strength = "40.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_x3kj8"]
 resource_name = "Damage (MELEE_DEFENSE)"
 script = ExtResource("5_j1jyt")
 attack_effect = SubResource("Resource_ygvhx")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_j35d4"]
 resource_name = "Damage (RANGED_DEFENSE)"
 script = ExtResource("4_e5d4m")
-actor_to_override = "target"
 override_stat = 5
 name = "Damage (RANGED_DEFENSE)"
 _strength = "40.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_83yyr"]
 resource_name = "Damage (RANGED_DEFENSE)"
 script = ExtResource("5_j1jyt")
 attack_effect = SubResource("Resource_j35d4")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_qlo2a"]
 script = ExtResource("4_tts8l")
 condition = SubResource("Resource_06per")
 success_effect = SubResource("Resource_83yyr")
 failed_effect = SubResource("Resource_x3kj8")
-invert = false
 print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Snipe"
 script = ExtResource("2_7kfyv")
 effects = Array[ExtResource("1_moss4")]([SubResource("Resource_qlo2a")])
-accuracy = 1.0
 power = 40
 scaling_factor = Vector4i(50, 50, 100, -1)
 name = "Snipe"
 animation = ExtResource("1_7e1y6")
 _element = 1
-priority = 0
 attack_range = 1
-target = 3
 details = "Uses the target's lower defense stat."

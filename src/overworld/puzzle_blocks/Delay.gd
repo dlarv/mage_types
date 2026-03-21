@@ -41,7 +41,7 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 	if _is_opened: return
 	if not _opened_locks.get(block):
 		_opened_locks[block] = true
-		Logger.append_puzzle_log("Delay(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
+		MyLogger.append_puzzle_log("Delay(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
 
 	for lock: bool in _opened_locks.values():
 		if not lock: return
@@ -52,10 +52,10 @@ func _on_lock_opened(block: PuzzleBlock) -> void:
 	_is_opened = true
 	_timer = 0
 	_gradient.set_offset(1, 1.0)
-	# 	Logger.append_puzzle_log("Delay(%s) was opened." % [puzzle_name])
+	# 	MyLogger.append_puzzle_log("Delay(%s) was opened." % [puzzle_name])
 	# 	on.emit(self)
 	# else:
-	# 	Logger.append_puzzle_log("Delay(%s) could not open." % [puzzle_name])
+	# 	MyLogger.append_puzzle_log("Delay(%s) could not open." % [puzzle_name])
 	# 	off.emit(self)
 	#
 
@@ -63,7 +63,7 @@ func _on_lock_closed(block: PuzzleBlock) -> void:
 	if permanent and is_on: return
 	if _opened_locks.has(block):
 		_opened_locks[block] = false
-		Logger.append_puzzle_log("Delay(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
+		MyLogger.append_puzzle_log("Delay(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
 	off.emit(self)
 	is_on = false
 	_is_opened = false

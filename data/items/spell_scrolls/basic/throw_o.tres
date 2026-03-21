@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://tj8xadbwbfjr"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://tj8xadbwbfjr"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_yoddj"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_7wgjo"]
@@ -9,5 +9,3 @@ script = ExtResource("2_7wgjo")
 spell = ExtResource("3_3x7x3")
 id = 12
 name = "Orange Throw Bead"
-requirements = Array[ExtResource("1_yoddj")]([])
-details = ""

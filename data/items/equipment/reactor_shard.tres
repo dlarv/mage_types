@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://sgingeb41cun"]
+[gd_resource type="Resource" script_class="Equipment" format=3 uid="uid://sgingeb41cun"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_4hwlw"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_mgbmb"]
@@ -6,9 +6,6 @@
 
 [resource]
 script = ExtResource("3_imcfy")
-effects = Array[ExtResource("1_4hwlw")]([])
-has_overworld_use = false
 id = 5
 name = "Reactor Shard"
-requirements = Array[ExtResource("2_mgbmb")]([])
 details = "NOT YET IMPLEMENTED"

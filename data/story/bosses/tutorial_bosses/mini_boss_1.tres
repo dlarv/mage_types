@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=8 format=3 uid="uid://d1h5t72gjjjcv"]
+[gd_resource type="Resource" script_class="BattleActor" format=3 uid="uid://d1h5t72gjjjcv"]
 
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_eruv0"]
 [ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_8ngll"]
@@ -13,8 +13,6 @@ _base_melee_attack = 30.0
 _base_ranged_attack = 16.0
 _base_melee_defense = 50.0
 _base_ranged_defense = 50.0
-_base_speed = 10.0
-_base_evasion = 100.0
 hp = 100.0
 
 [resource]
@@ -23,7 +21,6 @@ name = "Boss 6"
 id = -4
 level = 2
 stat_manager = SubResource("Resource_6u7d0")
-reset_hp_after_battle = true
 _element1 = 0
 _element2 = 1
 _alignment = 0

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://blo35ub8xw8yg"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://blo35ub8xw8yg"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_h5vut"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_w1261"]
@@ -11,28 +11,21 @@ resource_name = "Damage"
 script = ExtResource("3_27hm8")
 name = "Damage"
 _strength = "30"
-message = ""
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_w8m4b"]
 resource_name = "Damage"
 script = ExtResource("4_y1hvp")
 attack_effect = SubResource("Resource_h5vut")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [resource]
 resource_name = "Cyan Hit"
 script = ExtResource("5_ffhqx")
 effects = Array[ExtResource("2_w1261")]([SubResource("Resource_w8m4b")])
-accuracy = 1.0
 power = 30
 scaling_factor = Vector4i(100, 100, 200, -1)
 name = "Cyan Hit"
 animation = ExtResource("1_h5vut")
 _element = 7
-priority = 0
-attack_range = 0
-target = 3
 details = "Has x2 power if user is [el]Cyan[/el]."

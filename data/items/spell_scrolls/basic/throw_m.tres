@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://b2qk5bljx7w84"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://b2qk5bljx7w84"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_n016g"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_afkie"]
@@ -9,5 +9,3 @@ script = ExtResource("2_afkie")
 spell = ExtResource("3_uto8c")
 id = 10
 name = "Magenta Throw Bead"
-requirements = Array[ExtResource("1_n016g")]([])
-details = ""

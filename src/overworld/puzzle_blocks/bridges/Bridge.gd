@@ -22,7 +22,7 @@ func _on_laser_received(laser:Laser, point:Vector3) -> void:
 
 	if laser.rand_val != _prev_val: 
 		_prev_val = laser.rand_val
-		Logger.append_puzzle_log("Bridge(%s) collided with laser of Element(%s)."
+		MyLogger.append_puzzle_log("Bridge(%s) collided with laser of Element(%s)."
 			% [puzzle_name, laser.element])
 
 	if not set_element(laser.element): return
@@ -56,7 +56,7 @@ func _get_mesh() -> MeshInstance3D:
 
 func _on_laser_broken() -> void:
 	if shutoff_upon_trigger: 
-		Logger.append_puzzle_log("Bridge(%s)'s laser was triggered and shutoff." % [puzzle_name])
+		MyLogger.append_puzzle_log("Bridge(%s)'s laser was triggered and shutoff." % [puzzle_name])
 		$SubEmitter.stop()
 		$SubEmitter2.stop()
 

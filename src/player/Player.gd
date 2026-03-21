@@ -81,19 +81,19 @@ func create_golem(golem: Golem) -> void:
 	golem.parent_chunk = active_chunk
 
 	if _golem:
-		Logger.append_golem_log("Previous Golem(%s) killed b/c new Golem(%s) created." 
+		MyLogger.append_golem_log("Previous Golem(%s) killed b/c new Golem(%s) created." 
 				% [_golem.golem_name, golem.golem_name])
 		_golem.kill()
 
 	_golem = golem
 
-	Logger.append_golem_log("Golem(%s) of Element(%s) with Instructions(%s) created." 
+	MyLogger.append_golem_log("Golem(%s) of Element(%s) with Instructions(%s) created." 
 			% [golem.golem_name, golem.element, golem.instructions_to_string()])
 
 	golem.start()
 	#await golem.execute()
 	#golem.kill()
-	#Logger.append_golem_log("Golem(%s) expired." % golem.golem_name)
+	#MyLogger.append_golem_log("Golem(%s) expired." % golem.golem_name)
 
 
 func play_cutscene(player: AnimationPlayer, id: String) -> void:
@@ -116,7 +116,7 @@ func add_ally(allyName: String) -> void:
 		push_warning("Could not find partymember with name '%s'" % allyName)
 		return
 
-	Logger.append_story_log("%s joined the player's party!" % allyName)
+	MyLogger.append_story_log("%s joined the player's party!" % allyName)
 	_active_party.append(id as PartyMember)
 
 	team = [ battle_actor ]
@@ -137,7 +137,7 @@ func remove_ally(allyName: String) -> void:
 		push_warning("Tried to remove partymember '%s' from active party, but they are not active." % allyName)
 		return
 
-	Logger.append_story_log("%s left the player's party!" % allyName)
+	MyLogger.append_story_log("%s left the player's party!" % allyName)
 	_active_party.remove_at(index)
 
 	team = [ battle_actor ]

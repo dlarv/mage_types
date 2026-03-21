@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=9 format=3 uid="uid://dsprshhqctptw"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://dsprshhqctptw"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_vfblw"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="2_16shs"]
@@ -12,7 +12,6 @@ script = ExtResource("3_pmt0t")
 _element = 0
 id = 3
 _duration = "0"
-description = ""
 name = "Blue-Phobic"
 _strength = "0.0"
 message = "{target} is feeling adverse to [el]{element}[/el]!"
@@ -23,25 +22,19 @@ script = ExtResource("3_3vu1l")
 effect = SubResource("Resource_tgv8q")
 name = "Blue-Phobic Heal"
 _strength = "0.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_1r0y0"]
 resource_name = "Blue-Phobic Heal"
 script = ExtResource("4_lu4xl")
 attack_effect = SubResource("Resource_38qny")
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Brave the Dark"
 script = ExtResource("2_16shs")
 effects = Array[ExtResource("1_vfblw")]([SubResource("Resource_1r0y0")])
-accuracy = 1.0
 power = 0
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Brave the Dark"
 _element = 4
-priority = 0
 attack_range = 2
 target = 2
 details = "Heals phobia."

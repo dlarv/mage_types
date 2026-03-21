@@ -36,7 +36,7 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 						continue
 			else:
 				data.failed_effects.append(effect)
-				Logger.append_battle_log("_Item(%s) failed. Chance(%f) >= Rand(%f)" 
+				MyLogger.append_battle_log("_Item(%s) failed. Chance(%f) >= Rand(%f)" 
 						% [name, effect.chance, rand])
 	return data
 

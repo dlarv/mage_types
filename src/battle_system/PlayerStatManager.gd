@@ -130,11 +130,11 @@ func _calc_boost(stat: Stats, xp: float, levels: int, average: float) -> float:
 	set_base_stat(stat, base + amount)
 
 	var decimal: float = max(0, actualXp - float(int(actualXp)))
-	Logger.append_battle_log(
+	MyLogger.append_battle_log(
 			"StatBoost(%s): Amount(%d) = Xp(%.2f) * Scaling(%d) / Average(%.2f) * Levels(%d)" 
 			% [Stats.keys()[stat], amount, xp, MAX_STAT_POINTS, average, levels]
 		)
-	Logger.append_battle_log("StatBoost(%s): Rollover(%0.2f) = Xp(%.2f) - IntXp(%d)" 
+	MyLogger.append_battle_log("StatBoost(%s): Rollover(%0.2f) = Xp(%.2f) - IntXp(%d)" 
 			% [Stats.keys()[stat], decimal, actualXp, int(actualXp)]
 		)
 

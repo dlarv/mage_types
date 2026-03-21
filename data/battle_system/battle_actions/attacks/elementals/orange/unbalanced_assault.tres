@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://by8gsmj622ykf"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://by8gsmj622ykf"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_bhiyu"]
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_skh0b"]
@@ -10,8 +10,6 @@
 
 [sub_resource type="Resource" id="Resource_fgeas"]
 script = ExtResource("3_skh0b")
-affinity_category = "defensive"
-apply_to = "user"
 slot = "xor"
 metadata/_custom_type_script = "uid://bixhfjqqui5ig"
 
@@ -20,15 +18,12 @@ resource_name = "Damage"
 script = ExtResource("3_8k2jc")
 name = "Damage"
 _strength = "25"
-message = ""
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_6jkja"]
 resource_name = "Damage"
 script = ExtResource("4_t6a82")
 attack_effect = SubResource("Resource_nfvam")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_d71q4"]
@@ -36,15 +31,12 @@ resource_name = "Damage"
 script = ExtResource("3_8k2jc")
 name = "Damage"
 _strength = "50"
-message = ""
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_ldqsy"]
 resource_name = "Damage"
 script = ExtResource("4_t6a82")
 attack_effect = SubResource("Resource_d71q4")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_83lia"]
@@ -52,25 +44,16 @@ script = ExtResource("6_h0tgr")
 condition = SubResource("Resource_fgeas")
 success_effect = SubResource("Resource_ldqsy")
 failed_effect = SubResource("Resource_6jkja")
-invert = false
 print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxsoib03ectl0"
 
 [resource]
 resource_name = "Unbalanced Assault"
 script = ExtResource("2_mdcs0")
 effects = Array[ExtResource("1_bhiyu")]([SubResource("Resource_83lia")])
-accuracy = 1.0
 power = 25
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Unbalanced Assault"
 animation = ExtResource("1_skh0b")
 _element = 4
-priority = 0
-attack_range = 0
-target = 3
 details = "Deals double damage if user's primary and secondary types do NOT share the same affinity group."
 metadata/_custom_type_script = "uid://c140c4j4qwln7"

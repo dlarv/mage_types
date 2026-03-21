@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://8av0pai6ayun"]
+[gd_resource type="Resource" script_class="Equipment" format=3 uid="uid://8av0pai6ayun"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_fai67"]
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_so7im"]
@@ -6,9 +6,6 @@
 
 [resource]
 script = ExtResource("2_ypaho")
-effects = Array[ExtResource("1_so7im")]([])
-has_overworld_use = false
 id = 1
 name = "Thorn Band"
-requirements = Array[ExtResource("1_fai67")]([])
 details = "NOT YET IMPLEMENTED"

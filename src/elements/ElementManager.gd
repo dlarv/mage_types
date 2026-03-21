@@ -307,7 +307,7 @@ func update_elemental_gui() -> void:
 			_: 
 				push_warning("Tried to set ElementalGUI(%s), but found invalid Meta(%s)." 
 						% [node.name, node.get_meta("ELEMENT")])
-				Logger.append_world_log("Tried to set ElementalGUI(%s), but found invalid Meta(%s)." 
+				MyLogger.append_world_log("Tried to set ElementalGUI(%s), but found invalid Meta(%s)." 
 						% [node.name, node.get_meta("ELEMENT")])
 				continue
 

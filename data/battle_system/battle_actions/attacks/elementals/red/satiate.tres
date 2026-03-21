@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://cvg7imt703rjl"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://cvg7imt703rjl"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_iiabu"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_mjpbi"]
@@ -8,32 +8,25 @@
 
 [sub_resource type="Resource" id="Resource_ydemd"]
 script = ExtResource("3_6rxdf")
-allow_overflow = false
 strength_is_percent_hp = false
-use_effectiveness = true
 name = "InstantHealthChange"
 _strength = "40"
-message = ""
 metadata/_custom_type_script = "uid://nh2nt72jmw33"
 
 [sub_resource type="Resource" id="Resource_we1ag"]
 script = ExtResource("4_smaom")
 attack_effect = SubResource("Resource_ydemd")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [resource]
 resource_name = "Satiate"
 script = ExtResource("2_8l88i")
 effects = Array[ExtResource("1_mjpbi")]([SubResource("Resource_we1ag")])
-accuracy = 1.0
 power = 0
 scaling_factor = Vector4i(50, 50, 100, -1)
 name = "Satiate"
 animation = ExtResource("1_iiabu")
 _element = 3
-priority = 0
 attack_range = 2
 target = 0
 details = "If user is [el]Red[/el], heals 40 hp.

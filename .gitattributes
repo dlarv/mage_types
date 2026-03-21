@@ -1,6 +1,13 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
 assets/3d/characters/alice/alice_v2.blend* filter=lfs diff=lfs merge=lfs -text
+<<<<<<< Updated upstream
 *.blend filter=lfs diff=lfs merge=lfs -text
 .blend1 filter=lfs diff=lfs merge=lfs -text
 *.blend1 filter=lfs diff=lfs merge=lfs -text
+=======
+assets/3d/characters/goose/* filter=lfs diff=lfs merge=lfs -text
+assets/3d/characters/alice/* filter=lfs diff=lfs merge=lfs -text
+assets/3d/characters/base_human_model.blend* filter=lfs diff=lfs merge=lfs -text
+assets/3d/characters/alice/alice_v3.blend* filter=lfs diff=lfs merge=lfs -text
+>>>>>>> Stashed changes

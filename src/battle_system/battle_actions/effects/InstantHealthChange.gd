@@ -21,11 +21,11 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 		actual = target.apply_damage(int(health), allow_overflow)
 		if target == data.user:
 			data.recoil_dmg += actual
-		Logger.append_battle_log("InstantHealthChange did Dmg(%d) to BattleActor(%s)" 
+		MyLogger.append_battle_log("InstantHealthChange did Dmg(%d) to BattleActor(%s)" 
 				% [actual, target.name])
 	else:
 		actual = -target.heal(int(health), allow_overflow)
-		Logger.append_battle_log("InstantHealthChange did Heal(%d) to BattleActor(%s)" 
+		MyLogger.append_battle_log("InstantHealthChange did Heal(%d) to BattleActor(%s)" 
 				% [actual, target.name])
 	data.total_dmg += actual
 	data.prev_dmg = actual

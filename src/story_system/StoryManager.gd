@@ -13,7 +13,7 @@ var variables: Dictionary[String, Variant]:
 
 
 func add_variable(varName: String, value: Variant, quiet:=false) -> void:
-	Logger.append_story_log("StoryManager added var '%s'." % varName)
+	MyLogger.append_story_log("StoryManager added var '%s'." % varName)
 	state.update_variable(varName, value)
 	if not quiet:
 		variables_updated.emit()
@@ -24,7 +24,7 @@ func update_value(varName: String, value: Variant) -> void:
 		push_warning("StoryManager tried to change value of var '%s' with value '%s', but no such var was found."
 				%[varName, str(value)])
 		return
-	Logger.append_story_log("StoryManager changed value of var '%s' with value '%s'." % [varName, str(value)])
+	MyLogger.append_story_log("StoryManager changed value of var '%s' with value '%s'." % [varName, str(value)])
 	state.update_variable(varName, {"value": value, "type": variables[varName].type})
 
 
@@ -33,25 +33,25 @@ func update_type(varName: String, type: int) -> void:
 		push_warning("StoryManager tried to change type of var '%s' to type '%d', but no such var was found."
 				%[varName, type])
 		return
-	Logger.append_story_log("StoryManager changed type of var '%s' to type '%d'." % [varName, type])
+	MyLogger.append_story_log("StoryManager changed type of var '%s' to type '%d'." % [varName, type])
 	state.update_variable(varName, {"value": variables[varName].value, "type": type})
 
 
 func remove_variable(varName: String) -> void:
 	if state.remove_variable(varName):
-		Logger.append_story_log("StoryManager removed var '%s'." % varName)
+		MyLogger.append_story_log("StoryManager removed var '%s'." % varName)
 		variables_updated.emit()
 	else:
-		Logger.append_story_log("StoryManager tried to remove var '%s', but no such var was found." % varName)
+		MyLogger.append_story_log("StoryManager tried to remove var '%s', but no such var was found." % varName)
 
 
 func rename_variable(oldName: String, newName: String) -> void:
 	var value: Variant = variables.get(oldName, null)
 	if state.rename_variable(oldName, newName):
-		Logger.append_story_log("StoryManager renamed var '%s' to '%s'." % [oldName, newName])
+		MyLogger.append_story_log("StoryManager renamed var '%s' to '%s'." % [oldName, newName])
 		variables_updated.emit()
 	else:
-		Logger.append_story_log("StoryManager tried to rename var '%s' to '%s', but original var was not found."
+		MyLogger.append_story_log("StoryManager tried to rename var '%s' to '%s', but original var was not found."
 				% [oldName, newName])
 
 

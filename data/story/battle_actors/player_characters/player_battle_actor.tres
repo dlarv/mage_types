@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerBattleActor" load_steps=9 format=3 uid="uid://cbeu7qmu1nxih"]
+[gd_resource type="Resource" script_class="PlayerBattleActor" format=3 uid="uid://cbeu7qmu1nxih"]
 
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="1_60dwf"]
 [ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_ryjtr"]
@@ -9,30 +9,21 @@
 
 [sub_resource type="Resource" id="Resource_cb2ej"]
 script = ExtResource("1_ryjtr")
-alignment_values = Array[int]([0, 3, 0, 0, 0, 0, 0, 0])
 _alignment = 0
 metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
 [sub_resource type="Resource" id="Resource_3y0wy"]
 script = ExtResource("6_m5g4e")
 next_level_xp = 50
-total_xp = 0
 _base_melee_attack = 8.0
 _base_ranged_attack = 8.0
-_base_melee_defense = 10.0
-_base_ranged_defense = 10.0
-_base_speed = 10.0
-_base_evasion = 100.0
-hp = 50.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
 script = ExtResource("2_kljnf")
 name = "Player"
 id = 1
-level = 1
 stat_manager = SubResource("Resource_3y0wy")
-reset_hp_after_battle = true
 _element1 = 0
 _element2 = 0
 alignment_manager = SubResource("Resource_cb2ej")

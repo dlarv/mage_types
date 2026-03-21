@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://g8xbj66ldn2v"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://g8xbj66ldn2v"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_5pmv6"]
 [ext_resource type="PackedScene" uid="uid://chvddpwtc6d1r" path="res://data/battle_system/attack_animations/geyser.tscn" id="1_g1ddc"]
@@ -18,45 +18,34 @@ resource_name = "Damage"
 script = ExtResource("4_46fy4")
 name = "Damage"
 _strength = "90.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_n548g"]
 resource_name = "Recoil Damage"
 script = ExtResource("5_heba5")
 attack_effect = SubResource("Resource_34db7")
 effect_target = 0
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_aistk"]
 resource_name = "Damage"
 script = ExtResource("4_46fy4")
 name = "Damage"
 _strength = "90.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_b5vqi"]
 resource_name = "Damage"
 script = ExtResource("5_heba5")
 attack_effect = SubResource("Resource_aistk")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_iosgp"]
 script = ExtResource("6_cric7")
 condition = SubResource("Resource_nfer4")
 success_effect = SubResource("Resource_b5vqi")
 failed_effect = SubResource("Resource_n548g")
-invert = false
-print_failed_status = "FAILURE"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Orbital Strike"
 script = ExtResource("2_ieb1n")
 effects = Array[ExtResource("1_5pmv6")]([SubResource("Resource_iosgp")])
-accuracy = 1.0
 power = 90
 scaling_factor = Vector4i(120, 100, 100, -1)
 name = "Orbital Strike"
@@ -64,6 +53,5 @@ animation = ExtResource("1_g1ddc")
 _element = 6
 priority = -1
 attack_range = 1
-target = 3
 details = "If user is Green, hits target.
 Otherwise hits user."

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://ctbnp06ti551l"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://ctbnp06ti551l"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_7xxnd"]
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_m7s7x"]
@@ -10,58 +10,43 @@
 
 [sub_resource type="Resource" id="Resource_wfh6n"]
 script = ExtResource("3_bxo2j")
-apply_to = "target"
 
 [sub_resource type="Resource" id="Resource_5qy27"]
 resource_name = "Damage"
 script = ExtResource("5_v2biw")
 name = "Damage"
 _strength = "45.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_iqodu"]
 resource_name = "Damage"
 script = ExtResource("6_68njv")
 attack_effect = SubResource("Resource_5qy27")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_8xi3q"]
 resource_name = "Damage"
 script = ExtResource("5_v2biw")
 name = "Damage"
 _strength = "90.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_p0q85"]
 resource_name = "Damage"
 script = ExtResource("6_68njv")
 attack_effect = SubResource("Resource_8xi3q")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_tsrfc"]
 script = ExtResource("4_ehodv")
 condition = SubResource("Resource_wfh6n")
 success_effect = SubResource("Resource_p0q85")
 failed_effect = SubResource("Resource_iqodu")
-invert = false
 print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Alchemy Beam"
 script = ExtResource("2_jxaip")
 effects = Array[ExtResource("1_7xxnd")]([SubResource("Resource_tsrfc")])
-accuracy = 1.0
 power = 30
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Alchemy Beam"
 animation = ExtResource("1_m7s7x")
 _element = 4
-priority = 0
 attack_range = 1
-target = 3
 details = "Deals double damage if attack will cause a transmutation in target."

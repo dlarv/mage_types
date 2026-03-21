@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=21 format=3 uid="uid://bxsi6867hrnte"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://bxsi6867hrnte"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_2lnft"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_sr00j"]
@@ -10,19 +10,13 @@
 
 [sub_resource type="Resource" id="Resource_0d11p"]
 script = ExtResource("2_8dl5p")
-affinity_category = "defensive"
 apply_to = "target"
-slot = "secondary"
 
 [sub_resource type="Resource" id="Resource_fh11p"]
 resource_name = "Attack Boost"
 script = ExtResource("3_73hrh")
-stat = 0
-op = 0
-is_side_effect = false
 id = 6
 _duration = "0"
-description = ""
 name = "Attack Boost"
 _strength = "1.0"
 message = "{target}'s melee attack was boosted!
@@ -32,18 +26,13 @@ message = "{target}'s melee attack was boosted!
 resource_name = "Attack Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_fh11p")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_aqwi5"]
 resource_name = "Defense Boost"
 script = ExtResource("3_73hrh")
 stat = 3
-op = 0
-is_side_effect = false
 id = 6
 _duration = "0"
-description = ""
 name = "Defense Boost"
 _strength = "1.0"
 message = "{target}'s melee defense was boosted!
@@ -53,23 +42,16 @@ message = "{target}'s melee defense was boosted!
 resource_name = "Defense Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_aqwi5")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_bqxkj"]
 script = ExtResource("2_p5k0l")
 condition = SubResource("Resource_0d11p")
 success_effect = SubResource("Resource_qsduf")
 failed_effect = SubResource("Resource_w03i2")
-invert = false
 print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_l62lw"]
 script = ExtResource("2_8dl5p")
-affinity_category = "defensive"
 apply_to = "target"
 slot = "both"
 
@@ -77,11 +59,8 @@ slot = "both"
 resource_name = "Speed Boost"
 script = ExtResource("3_73hrh")
 stat = 8
-op = 0
-is_side_effect = false
 id = 6
 _duration = "0"
-description = ""
 name = "Speed Boost"
 _strength = "1.0"
 message = "{target}'s speed was boosted!"
@@ -90,22 +69,15 @@ message = "{target}'s speed was boosted!"
 resource_name = "Speed Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_13w7a")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_hjx8x"]
 script = ExtResource("2_p5k0l")
 condition = SubResource("Resource_l62lw")
 success_effect = SubResource("Resource_d4v2n")
-invert = false
 print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_uxbeq"]
 script = ExtResource("2_8dl5p")
-affinity_category = "defensive"
 apply_to = "target"
 slot = "both"
 
@@ -113,30 +85,21 @@ slot = "both"
 resource_name = "Speed Boost"
 script = ExtResource("4_gj0r4")
 attack_effect = SubResource("Resource_13w7a")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_thaq2"]
 script = ExtResource("2_p5k0l")
 condition = SubResource("Resource_uxbeq")
 success_effect = SubResource("Resource_tx280")
-invert = false
 print_failed_status = "SILENT"
-failure_msg = "FAILED"
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Reinforce"
 script = ExtResource("2_ybji1")
 effects = Array[ExtResource("1_sr00j")]([SubResource("Resource_bqxkj"), SubResource("Resource_hjx8x"), SubResource("Resource_thaq2")])
-accuracy = 1.0
 power = 0
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Reinforce"
 animation = ExtResource("1_2lnft")
 _element = 4
-priority = 0
 attack_range = 2
 target = 1
 details = "If targets's Secondary type is Defensive, applies a defense boost. Otherwise, applies an attack boost. 

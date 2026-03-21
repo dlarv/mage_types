@@ -32,15 +32,16 @@ Refactor equipment and overworld spells
 	- [x] Key/lock/door system
 		- [x] Refactor KeyItems to use StringName instead of enum
 - [ ] Motel
-	- [ ] Player needs key to enter
 	- [ ] Hidden caves logic puzzle (Lavender puzzle)
 	- [ ] ~~Motel/Backroom guardian monster~~
 	- [ ] Monster encounters
 	- [ ] Priority spell hidden in motel
 	- [ ] Lavender fight
-	- [ ] Destroy++ spell added at end of Lavender puzzle
+	- [ ] Destroy++ spell added at end of Lavender puzzle?
 - [ ] Getting defeated resets your progress
 	- Certain areas will reset player when they are defeated (You feel a dark power emanating from all around you)
+	- This should be a property of the Chunk
+	- I also plan to use Chunks to show which room the player is currently in, it'd be smart to see if these can overlap
 - [ ] Rampage
 	- [x] Design parkour
 	- [x] Build parkour

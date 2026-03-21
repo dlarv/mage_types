@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://1s70pp15emt4"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://1s70pp15emt4"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_thi0e"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_ekafb"]
@@ -9,5 +9,3 @@ script = ExtResource("2_ekafb")
 spell = ExtResource("3_uowrw")
 id = 48
 name = "Cleave Bead"
-requirements = Array[ExtResource("1_thi0e")]([])
-details = ""

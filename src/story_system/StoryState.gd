@@ -31,5 +31,5 @@ func get_variable(varName: String) -> Variant:
 
 func set_variable(varName: String, value: Variant) -> bool:
 	if not variables.has(varName): return false
-	Logger.append_story_log("StoryVar(%s) set to %s." % [varName, str(value)])
+	MyLogger.append_story_log("StoryVar(%s) set to %s." % [varName, str(value)])
 	return variables[varName].set("value", value)

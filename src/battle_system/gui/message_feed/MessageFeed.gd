@@ -132,7 +132,7 @@ func _append_text(msg: String, writeLog:=true) -> void:
 	label.newline()
 
 	if writeLog:
-		Logger.append_battle_log(msg)
+		MyLogger.append_battle_log(msg)
 
 
 # Used by Battle.gd to create a space between different actors, but not between first actor and turn heading

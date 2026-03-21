@@ -19,7 +19,7 @@ func _on_lock_opened(block: PuzzleBlock) -> bool:
 	if _is_opened: return false
 	if not super._on_lock_opened(block): return false
 
-	Logger.append_puzzle_log("Chest(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
+	MyLogger.append_puzzle_log("Chest(%s)'s Lock(%s) was opened." % [puzzle_name, block.puzzle_name])
 	_lock(false)
 	return true
 
@@ -29,7 +29,7 @@ func _on_lock_closed(block: PuzzleBlock) -> bool:
 	if not super._on_lock_closed(block): return false
 
 	_lock(true)
-	Logger.append_puzzle_log("Chest(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
+	MyLogger.append_puzzle_log("Chest(%s)'s Lock(%s) was closed." % [puzzle_name, block.puzzle_name])
 	return true
 
 

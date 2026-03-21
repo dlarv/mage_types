@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RegularItem" load_steps=9 format=3 uid="uid://bwldq3pk8rvsh"]
+[gd_resource type="Resource" script_class="RegularItem" format=3 uid="uid://bwldq3pk8rvsh"]
 
 [ext_resource type="Script" uid="uid://bjtttndl1n74u" path="res://src/battle_system/battle_actions/BattleItem.gd" id="1_ar45h"]
 [ext_resource type="Script" uid="uid://cqtmj04buupx0" path="res://src/items/RegularItem.gd" id="1_ut3pp"]
@@ -9,17 +9,12 @@
 [sub_resource type="Resource" id="Resource_4qdn6"]
 script = ExtResource("3_kskua")
 allow_overflow = true
-strength_is_percent_hp = true
-use_effectiveness = true
 name = "InstantHealthChange"
 _strength = "0.5"
-message = ""
 
 [sub_resource type="Resource" id="Resource_vla5h"]
 script = ExtResource("2_mux5s")
 attack_effect = SubResource("Resource_4qdn6")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_b15sa"]
 resource_name = "Healing Potion"
@@ -30,7 +25,6 @@ _element = 0
 priority = 5
 attack_range = 2
 target = 1
-details = ""
 
 [resource]
 script = ExtResource("1_ut3pp")
@@ -39,5 +33,3 @@ is_consumable = true
 max_quantity = 9999
 id = 0
 name = "Healing Potion"
-requirements = Array[ExtResource("5_cr37d")]([])
-details = ""

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=15 format=3 uid="uid://hrssxbjy6fys"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://hrssxbjy6fys"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="1_5htbs"]
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_6b53w"]
@@ -12,78 +12,60 @@ resource_name = "Damage"
 script = ExtResource("3_6b53w")
 name = "Damage"
 _strength = "20"
-message = ""
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_jo7aa"]
 resource_name = "Damage"
 script = ExtResource("4_0ab11")
 attack_effect = SubResource("Resource_sxj8t")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_11a73"]
 resource_name = "Damage"
 script = ExtResource("4_0ab11")
 attack_effect = SubResource("Resource_sxj8t")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_xbd7n"]
 resource_name = "Damage"
 script = ExtResource("4_0ab11")
 attack_effect = SubResource("Resource_sxj8t")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_6b53w"]
 resource_name = "Damage"
 script = ExtResource("4_0ab11")
 attack_effect = SubResource("Resource_sxj8t")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_0ab11"]
 resource_name = "Damage"
 script = ExtResource("4_0ab11")
 attack_effect = SubResource("Resource_sxj8t")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_80xb3"]
 script = ExtResource("5_d2s6f")
-allow_overflow = false
 strength_is_percent_hp = false
 use_effectiveness = false
 name = "InstantHealthChange"
 _strength = "total_dmg * 0.5"
-message = ""
 metadata/_custom_type_script = "uid://nh2nt72jmw33"
 
 [sub_resource type="Resource" id="Resource_wgyy2"]
 script = ExtResource("4_0ab11")
 attack_effect = SubResource("Resource_80xb3")
 effect_target = 0
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [resource]
 resource_name = "Leech"
 script = ExtResource("2_ysl0k")
 effects = Array[ExtResource("1_5htbs")]([SubResource("Resource_jo7aa"), SubResource("Resource_11a73"), SubResource("Resource_xbd7n"), SubResource("Resource_6b53w"), SubResource("Resource_0ab11"), SubResource("Resource_wgyy2")])
-accuracy = 1.0
 power = 20
 scaling_factor = Vector4i(50, 65, 100, -1)
 name = "Leech"
 animation = ExtResource("1_6b53w")
 _element = 3
-priority = 0
-attack_range = 0
-target = 3
 details = "Hits 1-5 times. Heals 50% of total damage dealt."
 metadata/_custom_type_script = "uid://c140c4j4qwln7"

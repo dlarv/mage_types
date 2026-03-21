@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://di3c5k8fhu4n7"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://di3c5k8fhu4n7"]
 
 [ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_nssuk"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_4m3lk"]
@@ -11,28 +11,22 @@ resource_name = "Damage"
 script = ExtResource("3_34x4o")
 name = "Damage"
 _strength = "30"
-message = ""
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_vmhxe"]
 resource_name = "Damage"
 script = ExtResource("4_7jm6r")
 attack_effect = SubResource("Resource_nssuk")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [resource]
 resource_name = "Orange Throw"
 script = ExtResource("5_nu67t")
 effects = Array[ExtResource("2_4m3lk")]([SubResource("Resource_vmhxe")])
-accuracy = 1.0
 power = 30
 scaling_factor = Vector4i(100, 100, 200, -1)
 name = "Orange Throw"
 animation = ExtResource("1_nssuk")
 _element = 4
-priority = 0
 attack_range = 1
-target = 3
 details = "Has x2 power if user is [el]Orange[/el]."

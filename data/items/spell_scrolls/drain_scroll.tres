@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://bpgkg6f5qnd42"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://bpgkg6f5qnd42"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_0d2e2"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_0r00a"]
@@ -9,5 +9,3 @@ script = ExtResource("2_0r00a")
 spell = ExtResource("3_3qgl7")
 id = 27
 name = "Drain Bead"
-requirements = Array[ExtResource("1_0d2e2")]([])
-details = ""

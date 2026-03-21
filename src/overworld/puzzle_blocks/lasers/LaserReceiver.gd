@@ -28,7 +28,7 @@ func _on_sub_receiver_laser_received(laser:Laser, point:Vector3) -> void:
 
 	if _prev_val != laser.rand_val:
 		_prev_val = laser.rand_val
-		Logger.append_puzzle_log( msg)
+		MyLogger.append_puzzle_log( msg)
 
 	if element.is_blank() or laser.element == element:
 		_try_emit_on()

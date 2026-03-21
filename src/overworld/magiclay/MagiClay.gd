@@ -73,11 +73,11 @@ func _try_set_color(color:Variant=null) -> bool:
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if e == null: return false
 	if in_stasis and not force:
-		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." 
+		MyLogger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in stasis." 
 				% [puzzle_name, e.name])
 		return false
 	elif not is_transmutable and not force: 
-		Logger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in not transmutable." 
+		MyLogger.append_puzzle_log("MagiClay(%s).set_element(%s) failed, b/c Clay is in not transmutable." 
 				% [puzzle_name, e.name])
 		return false
 	elif randVal != -2 and _rand_val == randVal and not force: 
@@ -86,7 +86,7 @@ func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 		_rand_val = randVal
 	element = e
 	_try_set_color()
-	Logger.append_puzzle_log("MagiClay(%s).set_element(%s) succeeded." % [puzzle_name, e.name])
+	MyLogger.append_puzzle_log("MagiClay(%s).set_element(%s) succeeded." % [puzzle_name, e.name])
 
 	# The Catalyst overworld spell does not provide a randVal, so this can be used to test if this transmutation
 	# was because of a laser or Catalyst.
@@ -111,16 +111,16 @@ func set_stasis(val:Variant=null) -> void:
 	if in_stasis:
 		set_element(_original_element, -2, true)
 		_try_set_color(Color.BLACK)
-		Logger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
+		MyLogger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is now in stasis." % [puzzle_name])
 	else:
 		_try_set_color()
-		Logger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
+		MyLogger.append_puzzle_log("MagiClay(%s).set_stasis() => Clay is no longer in stasis." % [puzzle_name])
 		stasis_ended.emit()
 	await flicker_collider()
 
 
 func reset() -> void:
-	Logger.append_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
+	MyLogger.append_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
 			% [puzzle_name, element, _original_element])
 	set_element(_original_element, _rand_val, true)
 	set_stasis(false)

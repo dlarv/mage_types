@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=4 format=3 uid="uid://cwjiv3e1abevd"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://cwjiv3e1abevd"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_m88t7"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_upxlg"]
@@ -9,5 +9,3 @@ script = ExtResource("2_upxlg")
 spell = ExtResource("3_jkqir")
 id = 41
 name = "Photophobia Bead"
-requirements = Array[ExtResource("1_m88t7")]([])
-details = ""

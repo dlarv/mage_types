@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=6 format=3 uid="uid://dd7wk01w5ccs6"]
+[gd_resource type="Resource" script_class="Equipment" format=3 uid="uid://dd7wk01w5ccs6"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_fp43l"]
 [ext_resource type="Script" uid="uid://cvxp8g3bj6t6y" path="res://src/items/equipment/ModEquipmentEffect.gd" id="2_f2uut"]
@@ -12,7 +12,7 @@ source_code = "func execute(effect: StatusEffect, actor: BattleActor) -> bool:
 	if effect is StatChange and effect.is_side_effect: 
 		return false
 
-	Logger.append_battle_log(\"%s was applied to %s.\" % [ effect.name, actor.name ])
+	MyLogger.append_battle_log(\"%s was applied to %s.\" % [ effect.name, actor.name ])
 	if effect is StatChange:
 		actor.stat_manager.add(effect, actor.name)
 	else:
@@ -29,9 +29,7 @@ metadata/_custom_type_script = "uid://cvxp8g3bj6t6y"
 [resource]
 script = ExtResource("3_f2uut")
 effects = Array[ExtResource("1_fp43l")]([SubResource("Resource_m7ktk")])
-has_overworld_use = false
 id = 0
 name = "Training Wheels"
-requirements = Array[ExtResource("2_m6sn2")]([])
 details = "Prevents side effects from being applied."
 metadata/_custom_type_script = "uid://djqyy8na7gxvw"

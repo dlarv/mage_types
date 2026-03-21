@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _on_lock_opened(block: PuzzleBlock) -> void:
-	Logger.append_puzzle_log("Timer(%s) was started." % [puzzle_name])
+	MyLogger.append_puzzle_log("Timer(%s) was started." % [puzzle_name])
 	on.emit(self)
 	$AnimationPlayer.play("turning")
 	$Timer.start(delay)

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=8 format=3 uid="uid://dfw4ok6p0v3ei"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://dfw4ok6p0v3ei"]
 
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_8so8y"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="2_upu2q"]
@@ -13,7 +13,6 @@ _element = 7
 id = 3
 _duration = "5"
 icon = ExtResource("3_spfjl")
-description = ""
 name = "Cyan-Phobic"
 _strength = ".2"
 message = "{target} is feeling adverse to [el]{element}[/el]!"
@@ -22,19 +21,12 @@ message = "{target} is feeling adverse to [el]{element}[/el]!"
 resource_name = "Cyan-Phobic"
 script = ExtResource("2_upu2q")
 attack_effect = SubResource("Resource_qfnlr")
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Glaukophobia"
 script = ExtResource("6_pej2m")
 effects = Array[ExtResource("2_8so8y")]([SubResource("Resource_r063c")])
-accuracy = 1.0
 power = 0
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Glaukophobia"
 _element = 7
-priority = 0
 attack_range = 2
-target = 3
-details = ""

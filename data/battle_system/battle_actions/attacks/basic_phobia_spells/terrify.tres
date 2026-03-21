@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=7 format=3 uid="uid://c0drgn5hkvd2t"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://c0drgn5hkvd2t"]
 
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="1_b7plu"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_47wdh"]
@@ -12,25 +12,19 @@ min_count = 3
 max_count = 3
 name = "Random Phobia"
 _strength = "0.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_0rhwa"]
 resource_name = "Random Phobia"
 script = ExtResource("1_b7plu")
 attack_effect = SubResource("Resource_2ns66")
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Terrify"
 script = ExtResource("2_riqhc")
 effects = Array[ExtResource("2_47wdh")]([SubResource("Resource_0rhwa")])
-accuracy = 1.0
 power = 0
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Terrify"
 _element = 1
 priority = 1
 attack_range = 2
 target = 4
-details = ""

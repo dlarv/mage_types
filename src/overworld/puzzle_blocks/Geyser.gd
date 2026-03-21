@@ -88,7 +88,7 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 			body.linear_velocity /= 2
 		var s := transform.basis.y * strength
 		body.add_constant_force(s)
-		# Logger.append_puzzle_log("Geyser(%s) spout is pushing PuzzleBlock(%s) with Strength(%.2f, %.2f, %.2f)" 
+		# MyLogger.append_puzzle_log("Geyser(%s) spout is pushing PuzzleBlock(%s) with Strength(%.2f, %.2f, %.2f)" 
 		# 		% [puzzle_name, body.puzzle_name, s.x, s.y, s.z])
 	elif body is CharacterBody3D:
 		if body is Golem:
@@ -104,7 +104,7 @@ func _on_stream_hit_box_entered(body: Node3D) -> void:
 
 		body.add_force(transform.basis.y * strength)
 		_players.append(body)
-		# Logger.append_puzzle_log("Geyser(%s) spout was entered by CharacterBody(%s)" % [puzzle_name, body.name])
+		# MyLogger.append_puzzle_log("Geyser(%s) spout was entered by CharacterBody(%s)" % [puzzle_name, body.name])
 
 
 func _on_stream_top_hit_box_entered(body: Node3D) -> void:
@@ -123,14 +123,14 @@ func _on_stream_top_hit_box_entered(body: Node3D) -> void:
 func _on_stream_hit_box_exited(body: Node3D) -> void:
 	if body is RigidBody3D:
 		body.add_constant_force(-transform.basis.y * strength)
-		# Logger.append_puzzle_log("Geyser(%s) spout was exited by PuzzleBlock(%s)" 
+		# MyLogger.append_puzzle_log("Geyser(%s) spout was exited by PuzzleBlock(%s)" 
 		# 		% [puzzle_name, body.puzzle_name])
 	elif body is CharacterBody3D:
 		var index := _players.find(body)
 		if index != -1:
 			_players.remove_at(index)
 		_in_top_hitbox = false
-		# Logger.append_puzzle_log("Geyser(%s) spout was exited by Player" % puzzle_name)
+		# MyLogger.append_puzzle_log("Geyser(%s) spout was exited by Player" % puzzle_name)
 
 
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:

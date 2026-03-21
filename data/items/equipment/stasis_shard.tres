@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Equipment" load_steps=4 format=3 uid="uid://xxonecselnvh"]
+[gd_resource type="Resource" script_class="Equipment" format=3 uid="uid://xxonecselnvh"]
 
 [ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_qswf4"]
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_e1kcg"]
@@ -6,9 +6,7 @@
 
 [resource]
 script = ExtResource("3_tdd76")
-effects = Array[ExtResource("1_qswf4")]([])
 has_overworld_use = true
 id = 4
 name = "Stasis Shard"
-requirements = Array[ExtResource("2_e1kcg")]([])
 details = "Has a 10% chance of applying Stasis to the holder at the end of their turn."

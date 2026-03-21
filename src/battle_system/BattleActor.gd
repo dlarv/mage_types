@@ -132,7 +132,7 @@ func set_element(id: int, element: ElementalType) -> float:
 	var output := 0
 	if effect != null:
 		var dmg := hp * effect.get_strength()
-		Logger.append_battle_log("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
+		MyLogger.append_battle_log("%s was hurt by its phobia! (%d damage)" % [ name, dmg ])
 
 		output = apply_damage(int(dmg), false)
 		status_activated.emit(effect, dmg)
@@ -242,7 +242,7 @@ func add_status_effect(effect: StatusEffect) -> bool:
 	if _try_call_override(add_status_effect.get_method(), [effect]):
 		return _override_output
 	else:
-		Logger.append_battle_log("%s was applied to %s." % [ effect.name, name ])
+		MyLogger.append_battle_log("%s was applied to %s." % [ effect.name, name ])
 		if effect is StatChange:
 			stat_manager.add(effect, name)
 		else:
@@ -256,7 +256,7 @@ func add_status_effect(effect: StatusEffect) -> bool:
 
 
 func remove_status_effect(effect: StatusEffect) -> void:
-	Logger.append_battle_log("Actor(%s)'s StatusEffect(%s) was removed." % [ name, effect.name ])
+	MyLogger.append_battle_log("Actor(%s)'s StatusEffect(%s) was removed." % [ name, effect.name ])
 	statuses.remove([effect])
 	status_effects_removed.emit([ effect ])
 
@@ -312,7 +312,7 @@ func resolve_end_of_battle(turnCounter: int) -> void:
 	# Update alignment.
 	var unnormalizedValues: Array[float] = []
 	if alignment_manager and not alignment_manager.alignment_locked:
-		Logger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
+		MyLogger.append_battle_log("Normalizing and updating alignment for BattleActor(%s):" % name)
 		unnormalizedValues = alignment_manager.normalize_and_add()
 
 	if stat_manager is PlayerStatManager:

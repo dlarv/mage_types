@@ -51,7 +51,7 @@ func load(player: Node3D) -> void:
 	if not player.is_in_group("player"): return
 	if not visible: return
 	player.active_chunk = self
-	Logger.append_world_log("Player loaded Chunk(%s)" % name) 
+	MyLogger.append_world_log("Player loaded Chunk(%s)" % name) 
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
 	chunk.show()
 
@@ -60,7 +60,7 @@ func load(player: Node3D) -> void:
 
 func unload(player: Node3D) -> void:
 	if not player.is_in_group("player"): return
-	Logger.append_world_log("Player unloaded Chunk(%s)" % name) 
+	MyLogger.append_world_log("Player unloaded Chunk(%s)" % name) 
 	chunk.process_mode = Node.PROCESS_MODE_DISABLED
 	chunk.hide()
 

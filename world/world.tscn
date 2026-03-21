@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtmepgi2qn6wl"]
+[gd_scene format=3 uid="uid://dtmepgi2qn6wl"]
 
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
@@ -36,9 +36,9 @@ _data = {
 &"RESET": SubResource("Animation_pj603")
 }
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" unique_id=987611825]
 
-[node name="OverworldConnector" parent="." node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_lyukn")]
+[node name="OverworldConnector" parent="." unique_id=11817386 node_paths=PackedStringArray("world", "overworld", "dialog_box", "hud", "_player") instance=ExtResource("1_lyukn")]
 process_mode = 3
 world = NodePath("../Overworld")
 overworld = NodePath("../Overworld")
@@ -46,11 +46,11 @@ dialog_box = NodePath("../DialogueBox_Layer/DialogueBox")
 hud = NodePath("../HUD_Layer")
 _player = NodePath("../Overworld/Player")
 
-[node name="DialogueBox_Layer" type="CanvasLayer" parent="."]
+[node name="DialogueBox_Layer" type="CanvasLayer" parent="." unique_id=860147379]
 process_mode = 3
 layer = 3
 
-[node name="DialogueBox" type="Panel" parent="DialogueBox_Layer"]
+[node name="DialogueBox" type="Panel" parent="DialogueBox_Layer" unique_id=738055624]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 400)
@@ -70,47 +70,45 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), Sub
 options_vertical = true
 options_position = 2
 
-[node name="HUD_Layer" parent="." instance=ExtResource("8_mswir")]
+[node name="HUD_Layer" parent="." unique_id=1293308544 instance=ExtResource("8_mswir")]
 unique_name_in_owner = true
 
-[node name="Overworld" type="Node3D" parent="."]
+[node name="Overworld" type="Node3D" parent="." unique_id=1536520784]
 unique_name_in_owner = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Overworld"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Overworld" unique_id=1095765507]
 process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_1n5t0")
-}
+libraries/ = SubResource("AnimationLibrary_1n5t0")
 
-[node name="Player" parent="Overworld" instance=ExtResource("1_riqc8")]
+[node name="Player" parent="Overworld" unique_id=1276607030 instance=ExtResource("1_riqc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.914, 0.646759, 44.8029)
 dash_speed = 900.0
 
-[node name="Camera3D" type="Camera3D" parent="Overworld/Player"]
+[node name="Camera3D" type="Camera3D" parent="Overworld/Player" unique_id=1009984194]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 4)
 fov = 85.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld" unique_id=899131619]
 transform = Transform3D(0.707107, -0.5, -0.5, -6.18173e-08, -0.707107, 0.707107, -0.707107, -0.5, -0.5, 0, 0, 0)
 light_energy = 0.3
 shadow_enabled = true
 shadow_caster_mask = 4294967293
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Overworld"]
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Overworld" unique_id=850707853]
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 0, 0)
 light_color = Color(0.758192, 0.758192, 0.758192, 1)
 light_energy = 0.1
 light_indirect_energy = 5.0
 shadow_caster_mask = 4294967293
 
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Overworld"]
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Overworld" unique_id=1284415984]
 transform = Transform3D(0.707107, -0.5, -0.5, -6.18173e-08, -0.707107, 0.707107, -0.707107, -0.5, -0.5, 0, 0, 0)
 visible = false
 light_energy = 0.1
 shadow_enabled = true
 shadow_caster_mask = 4294967293
 
-[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="Overworld"]
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="Overworld" unique_id=7921865]
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 0, 0)
 visible = false
 light_color = Color(0.758192, 0.758192, 0.758192, 1)
@@ -118,25 +116,25 @@ light_energy = 0.01
 light_indirect_energy = 5.0
 shadow_caster_mask = 4294967293
 
-[node name="Blue" parent="Overworld" instance=ExtResource("10_5iu1q")]
+[node name="Blue" parent="Overworld" unique_id=290875180 instance=ExtResource("10_5iu1q")]
 
-[node name="Boss1" parent="Overworld" groups=["detached_env"] instance=ExtResource("11_o1net")]
+[node name="Boss1" parent="Overworld" unique_id=298045260 groups=["detached_env"] instance=ExtResource("11_o1net")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7224, -1.52219, -115.886)
 _element = 0
 
-[node name="Boss2" parent="Overworld" groups=["detached_env"] instance=ExtResource("18_j7vgi")]
+[node name="Boss2" parent="Overworld" unique_id=1183559783 groups=["detached_env"] instance=ExtResource("18_j7vgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7576, -1.50295, -116)
 _element = 0
 
-[node name="Boss3" parent="Overworld" groups=["detached_env"] instance=ExtResource("20_bwxdu")]
+[node name="Boss3" parent="Overworld" unique_id=1426542449 groups=["detached_env"] instance=ExtResource("20_bwxdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6451, -1.48372, -120.125)
 _element = 0
 
-[node name="Bartender" parent="Overworld" instance=ExtResource("23_3ljsx")]
+[node name="Bartender" parent="Overworld" unique_id=1994014427 instance=ExtResource("23_3ljsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, -1, -102.7)
 _element = 0
 
-[node name="MiniBoss1" parent="Overworld" instance=ExtResource("15_b2suy")]
+[node name="MiniBoss1" parent="Overworld" unique_id=442518573 instance=ExtResource("15_b2suy")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.315, -0.0609789, -82.7645)
 _element = 0
 

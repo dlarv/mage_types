@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BattleActor" load_steps=16 format=3 uid="uid://bo4oib5wr8f3r"]
+[gd_resource type="Resource" script_class="BattleActor" format=3 uid="uid://bo4oib5wr8f3r"]
 
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_0kd5o"]
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_f77mh"]
@@ -17,30 +17,24 @@ resource_name = "Damage"
 script = ExtResource("6_lc27v")
 name = "Damage"
 _strength = "30"
-message = ""
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_jre5k"]
 resource_name = "Damage"
 script = ExtResource("7_xn2us")
 attack_effect = SubResource("Resource_bvuqs")
-effect_target = 1
-chance = 1.0
 metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 
 [sub_resource type="Resource" id="Resource_y6l1e"]
 resource_name = "Blue Hit"
 script = ExtResource("8_5u12k")
 effects = Array[ExtResource("5_djiaw")]([SubResource("Resource_jre5k")])
-accuracy = 1.0
 power = 30
 scaling_factor = Vector4i(100, 100, 200, -1)
 name = "Blue Hit"
 animation = ExtResource("4_ldbea")
 _element = 0
 priority = -1
-attack_range = 0
-target = 3
 details = "Has x2 power if user is [el]Blue[/el]."
 
 [sub_resource type="Resource" id="Resource_advf4"]
@@ -50,18 +44,14 @@ _base_ranged_attack = 2.0
 _base_melee_defense = 15.0
 _base_ranged_defense = 15.0
 _base_speed = 11.0
-_base_evasion = 100.0
 hp = 45.0
 
 [resource]
 script = ExtResource("3_w7ijy")
 name = "Boss 1"
 id = -1
-level = 1
 stat_manager = SubResource("Resource_advf4")
-reset_hp_after_battle = true
 _element1 = 0
 _element2 = 0
-_alignment = 8
 attacks = Array[ExtResource("2_0kd5o")]([ExtResource("2_f77mh"), ExtResource("3_qh7aw"), SubResource("Resource_y6l1e")])
 equipment = ExtResource("9_djiaw")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpellScroll" load_steps=10 format=3 uid="uid://5shwmrd8mol6"]
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://5shwmrd8mol6"]
 
 [ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_3cs6n"]
 [ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_b6aer"]
@@ -13,7 +13,6 @@
 script = ExtResource("3_hkn3v")
 attacks = Array[ExtResource("2_l2qv2")]([ExtResource("4_v7ipd"), ExtResource("6_e2x1g"), ExtResource("10_sxu88")])
 incompatible = true
-battle_relevant = false
 
 [resource]
 script = ExtResource("2_b6aer")
@@ -21,4 +20,3 @@ spell = ExtResource("3_uh1yk")
 id = 17
 name = "Blue Strike Bead"
 requirements = Array[ExtResource("1_3cs6n")]([SubResource("Resource_tv2tp")])
-details = ""

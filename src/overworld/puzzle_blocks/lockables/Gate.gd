@@ -6,7 +6,7 @@ func _ready() -> void:
 	if not _is_locked and permanent:
 		self.collision_layer = 0
 		$AnimationPlayer.play("opening")
-		Logger.append_puzzle_log("Gate(%s) is now permanently opened." % [puzzle_name])
+		MyLogger.append_puzzle_log("Gate(%s) is now permanently opened." % [puzzle_name])
 		return
 	super._ready()
 
@@ -35,11 +35,11 @@ func _open(force:=false) -> void:
 	$AnimationPlayer.play("opening")
 	await $AnimationPlayer.animation_finished
 	hide()
-	Logger.append_puzzle_log("Gate(%s) was opened." % [puzzle_name])
+	MyLogger.append_puzzle_log("Gate(%s) was opened." % [puzzle_name])
 
 func _close() -> void:
 	if not _already_opened: return
 	self.collision_layer = 1
 	$AnimationPlayer.play_backwards("opening")
 	show()
-	Logger.append_puzzle_log("Gate(%s) was closed." % [puzzle_name])
+	MyLogger.append_puzzle_log("Gate(%s) was closed." % [puzzle_name])

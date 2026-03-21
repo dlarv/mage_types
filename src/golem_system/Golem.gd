@@ -114,7 +114,7 @@ func step(delta: float) -> void:
 
 	var speed := basis.z.normalized()
 	if accumulator == -1:
-		Logger.append_golem_log("Golem(%s) executing instruction: WALK %d steps." 
+		MyLogger.append_golem_log("Golem(%s) executing instruction: WALK %d steps." 
 				% [golem_name, instructions[curr_index][1]])
 		self.velocity = Vector3.ZERO
 		_step_start_position = global_position
@@ -140,7 +140,7 @@ func step(delta: float) -> void:
 
 func turn(delta: float) -> void:
 	if accumulator == -1:
-		Logger.append_golem_log("Golem(%s) executed instruction: TURN(%.2f)." 
+		MyLogger.append_golem_log("Golem(%s) executed instruction: TURN(%.2f)." 
 				% [golem_name, instructions[curr_index][1]])
 		accumulator = 0
 		_start_rotation = rotation_degrees.y
@@ -153,11 +153,11 @@ func turn(delta: float) -> void:
 func goto() -> void:
 	if instructions[curr_index][1] >= len(instructions):
 		curr_index = len(instructions) - 1
-		Logger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)(out of bounds) => GOTO(%d)(actual)." 
+		MyLogger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)(out of bounds) => GOTO(%d)(actual)." 
 				% [golem_name, len(instructions) - 1, int(instructions[curr_index][1])])
 	else:
 		curr_index = instructions[curr_index][1]
-		Logger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)." 
+		MyLogger.append_golem_log("Golem(%s) executed instruction: GOTO(%d)." 
 				% [golem_name, int(instructions[curr_index][1])])
 
 	# Reset values
@@ -172,7 +172,7 @@ func again() -> void:
 	timer = 0
 
 	global_position = spawn_position
-	Logger.append_golem_log("Golem(%s) executed instruction: AGAIN." % golem_name) 
+	MyLogger.append_golem_log("Golem(%s) executed instruction: AGAIN." % golem_name) 
 
 
 func _speed_to_delay() -> float:

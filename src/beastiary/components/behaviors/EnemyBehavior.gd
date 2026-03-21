@@ -83,10 +83,10 @@ func _on_child_entered_tree(node:Node) -> void:
 
 
 func _on_body_entered(node: Node3D) -> void:
-	Logger.append_world_log("Monster(%s) is now tracking the player." % get_parent().name)
+	MyLogger.append_world_log("Monster(%s) is now tracking the player." % get_parent().name)
 	_player = node
 
 
 func _on_body_exited(node: Node3D) -> void:
-	Logger.append_world_log("Monster(%s) lost track of player." % get_parent().name)
+	MyLogger.append_world_log("Monster(%s) lost track of player." % get_parent().name)
 	_player = null

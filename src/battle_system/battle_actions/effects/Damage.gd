@@ -42,7 +42,7 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, data:
 	var power: float = get_strength(data.get_vars())# / 4.0# + (strength * float(user.level) / 10.0)
 	var dmg := power * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
-	Logger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
+	MyLogger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
 			% [dmg, power, attack, defense, effectiveness, rand])
 	return int(dmg * rand)
 
@@ -51,7 +51,7 @@ func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 	var actualDmg := target.apply_damage(dmg)
 
 	if actualDmg == dmg:
-		Logger.append_battle_log("Dealt %d damage to %s." % [dmg, target.name])
+		MyLogger.append_battle_log("Dealt %d damage to %s." % [dmg, target.name])
 		data.add_damage(target, actualDmg)
 		return
 
@@ -63,7 +63,7 @@ func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 				% [target.name, actualDmg, target.name]
 		data.add_damage(target, actualDmg)
 	
-	Logger.append_battle_log(msg)
+	MyLogger.append_battle_log(msg)
 
 
 func _set_name(_val: String) -> void:

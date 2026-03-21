@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=14 format=3 uid="uid://d5le4hwdg070"]
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://d5le4hwdg070"]
 
 [ext_resource type="PackedScene" uid="uid://cacekiasojwya" path="res://data/battle_system/attack_animations/burst.tscn" id="1_xmgbb"]
 [ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_4chmo"]
@@ -11,59 +11,43 @@
 [sub_resource type="Resource" id="Resource_48vfq"]
 script = ExtResource("3_n3p6j")
 _element = 0
-apply_to = "target"
 
 [sub_resource type="Resource" id="Resource_fe3uk"]
 resource_name = "Damage"
 script = ExtResource("4_6bawv")
 name = "Damage"
 _strength = "10.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_cs80b"]
 resource_name = "Damage"
 script = ExtResource("4_x5oob")
 attack_effect = SubResource("Resource_fe3uk")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_owp58"]
 resource_name = "Damage"
 script = ExtResource("4_6bawv")
 name = "Damage"
 _strength = "125.0"
-message = ""
 
 [sub_resource type="Resource" id="Resource_vdgsf"]
 resource_name = "Damage"
 script = ExtResource("4_x5oob")
 attack_effect = SubResource("Resource_owp58")
-effect_target = 1
-chance = 1.0
 
 [sub_resource type="Resource" id="Resource_64dq5"]
 script = ExtResource("6_ia8yx")
 condition = SubResource("Resource_48vfq")
 success_effect = SubResource("Resource_vdgsf")
 failed_effect = SubResource("Resource_cs80b")
-invert = false
-print_failed_status = "FAILURE"
 failure_msg = "INEFFECTIVE"
-effect_target = 1
-chance = 1.0
 
 [resource]
 resource_name = "Yellow Strike"
 script = ExtResource("4_nqau6")
 effects = Array[ExtResource("2_4chmo")]([SubResource("Resource_64dq5")])
-accuracy = 1.0
 power = 50
-scaling_factor = Vector4i(100, 100, 100, -1)
 name = "Yellow Strike"
 animation = ExtResource("1_xmgbb")
 _element = 0
-priority = 0
-attack_range = 0
-target = 3
 details = "Has x2 power if target is [el]Yellow[/el].
 Otherwise, power is x0.2."

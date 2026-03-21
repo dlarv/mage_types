@@ -60,7 +60,7 @@ func get_actions(otherTeam: Array[BattleActor]) -> Array[ActorTurnData]:
 
 			var targetName := ",".join(target.map(func(t: BattleActor) -> String: return t.name))
 
-			Logger.append_battle_ai_log("%s is using %s against %s.\n"
+			MyLogger.append_battle_ai_log("%s is using %s against %s.\n"
 					% [team[i].name, attack.name, targetName])
 	return actions
 

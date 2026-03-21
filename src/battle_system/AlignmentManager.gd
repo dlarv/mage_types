@@ -67,12 +67,12 @@ func normalize_and_add() -> Array[float]:
 		var val: int = round(_unnormalized_values[i] / average)
 		var element: ElementalType = ElementManager.elements[i]
 		add(element, val)
-		Logger.append_battle_log("%s: Unnorm(%f) / Average(%f) = +Delta(%d) => AlignmentValue(%d)" 
+		MyLogger.append_battle_log("%s: Unnorm(%f) / Average(%f) = +Delta(%d) => AlignmentValue(%d)" 
 				% [element, _unnormalized_values[i], average, val, alignment_values[i]])
 		# if val > average:
 		# 	var element: ElementalType = ElementManager.elements[i]
 		# 	add(element)
-			# Logger.append_battle_log("%s: +1 = %d" % [element, alignment_values[i]])
+			# MyLogger.append_battle_log("%s: +1 = %d" % [element, alignment_values[i]])
 
 	var output := _unnormalized_values.duplicate()
 	_unnormalized_values = [0, 0, 0, 0, 0, 0, 0, 0 ]
