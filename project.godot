@@ -8,19 +8,23 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Mage-Types"
-config/version="0.7.5"
+config/version="0.7.6"
 run/main_scene="uid://dtmepgi2qn6wl"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 run/flush_stdout_on_print.debug=false
 config/icon="uid://c510ou4fg55vi"
 
 [autoload]
 
 ElementManager="*res://src/elements/element_manager.tscn"
-Logger="*res://src/logger.tscn"
+MyLogger="*res://src/logger.tscn"
 Settings="*res://src/settings/settings.tscn"
 StoryManager="*res://src/story_system/story_manager.tscn"
 Inventory="*res://src/items/Inventory.tscn"
@@ -53,7 +57,7 @@ run/main_run_args="--verbose"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/database_manager/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/matchupmanager/plugin.cfg", "res://addons/modequipmentdropdown/plugin.cfg", "res://addons/tooltips_pro/plugin.cfg")
+enabled=PackedStringArray("res://addons/database_manager/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/matchupmanager/plugin.cfg", "res://addons/modequipmentdropdown/plugin.cfg", "res://addons/tooltips_pro/plugin.cfg")
 
 [global_group]
 
