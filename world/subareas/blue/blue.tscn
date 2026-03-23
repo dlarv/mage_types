@@ -22,13 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/objects/blue/vase_red.tscn" id="23_3yaw4"]
 
-[sub_resource type="Environment" id="Environment_egugs"]
-ambient_light_source = 3
-ambient_light_color = Color(0.8425167, 0.9312991, 1, 1)
-ambient_light_sky_contribution = 0.8
-ambient_light_energy = 0.15
-volumetric_fog_enabled = true
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(2.71074, 6.0752, 1)
 
@@ -208,9 +201,6 @@ size = Vector3(74, 29, 63)
 size = Vector3(307, 161, 301)
 
 [node name="Blue" type="Node3D" unique_id=543950842]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2120585875]
-environment = SubResource("Environment_egugs")
 
 [node name="BlueEnv" parent="." unique_id=656635014 instance=ExtResource("1_yeg0x")]
 
@@ -1141,6 +1131,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.2233, 0)
 [node name="HotelExteriorChunk" type="Area3D" parent="Beach" unique_id=320799579 node_paths=PackedStringArray("chunk") groups=["persist"]]
 script = ExtResource("3_4g4u6")
 chunk = NodePath("Chunk")
+fog_level = 0.05
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Beach/HotelExteriorChunk" unique_id=785722568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5625, 11.209017, 36.5)
@@ -1170,10 +1161,11 @@ text = "If you get stuck, use Ctrl+f to enter fly mode.
 (This is a debug tool, not a part of the actual game)"
 font_size = 64
 
-[node name="BeachChunk" type="Area3D" parent="Beach" unique_id=1712035571 node_paths=PackedStringArray("chunk") groups=["persist"]]
+[node name="BeachChunk" type="Area3D" parent="Beach" unique_id=1712035571 node_paths=PackedStringArray("chunk") groups=["chunk", "persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.39735, 0, 0)
 script = ExtResource("3_4g4u6")
 chunk = NodePath("Chunk")
+fog_level = 0.01
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Beach/BeachChunk" unique_id=234988350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, 21)

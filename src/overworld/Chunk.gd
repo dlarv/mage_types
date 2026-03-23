@@ -1,13 +1,19 @@
 extends Area3D
 class_name Chunk
 
+signal on_loaded(chunk: Chunk)
+
 @export var chunk: Node3D
 @export var resets: Array[Node3D]
 ## Should be set in parent scene. 
 ## This value is passed to any animation_actors in scene that do not have their own.
 @export var animation_player: AnimationPlayer
+@export var fog_level := 0.0
 
 var _persistent_objs: Dictionary[NodePath, Node]= {}
+
+func _enter_tree() -> void:
+	add_to_group("chunk", true)
 
 func _ready() -> void:
 	if not chunk: return
@@ -57,6 +63,8 @@ func load(player: Node3D) -> void:
 
 	for child in find_children("", "MagiClay"):
 		child.flicker_collider()
+
+	on_loaded.emit(self)
 
 func unload(player: Node3D) -> void:
 	if not player.is_in_group("player"): return

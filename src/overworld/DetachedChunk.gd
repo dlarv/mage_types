@@ -48,6 +48,7 @@ func _ready() -> void:
 
 		obj.tree_exiting.connect(func() -> void: objs.remove_at(objs.find(obj)))
 
+
 func gather_objs() -> void:
 	var detachedChunks := get_tree().current_scene.find_children("", "DetachedChunk")
 	# Array[ [DetachedChunk, CollisionShape3D] ]
@@ -112,6 +113,9 @@ func load(player: Node3D) -> void:
 		if is_instance_valid(obj):
 			obj.process_mode = Node.PROCESS_MODE_INHERIT
 			obj.show()
+
+	on_loaded.emit(self)
+
 
 func unload(player: Node3D) -> void:
 	# if not player.is_in_group("player"): return

@@ -29,6 +29,12 @@ func _ready() -> void:
 	event_finished.connect(dialog_box._on_event_finished)
 	dialog_box.auto_proceed = false
 
+	for chunk in get_tree().get_nodes_in_group("chunk"):
+		chunk.on_loaded.connect(func(c: Chunk) -> void:
+			print(c.name + " loaded")
+			%WorldEnvironment.environment.volumetric_fog_density = c.fog_level
+		)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
