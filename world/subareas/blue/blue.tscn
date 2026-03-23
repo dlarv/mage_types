@@ -22,6 +22,13 @@
 [ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/objects/blue/vase_red.tscn" id="23_3yaw4"]
 
+[sub_resource type="Environment" id="Environment_egugs"]
+ambient_light_source = 3
+ambient_light_color = Color(0.8425167, 0.9312991, 1, 1)
+ambient_light_sky_contribution = 0.8
+ambient_light_energy = 0.15
+volumetric_fog_enabled = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(2.71074, 6.0752, 1)
 
@@ -46,14 +53,8 @@ size = Vector3(2.4, 3, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2yg5f"]
 size = Vector3(1, 10, 13)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_egugs"]
-size = Vector3(1, 4, 8)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yncb8"]
-size = Vector3(1, 5, 8)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ljs8d"]
-size = Vector3(1, 10, 7.3)
+size = Vector3(1, 6.53833, 5.6316404)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j64is"]
 size = Vector3(1, 10, 7.3)
@@ -137,22 +138,14 @@ size = Vector3(1, 7, 5)
 size = Vector3(166.125, 44.450253, 110)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n2ypl"]
+size = Vector2(0.8, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h34i"]
 emission_enabled = true
 emission = Color(0.945098, 0.984314, 0.631373, 1)
-emission_energy_multiplier = 0.4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gn7b1"]
 size = Vector3(96, 25, 87)
-
-[sub_resource type="Environment" id="Environment_egugs"]
-ambient_light_source = 3
-ambient_light_color = Color(0.8425167, 0.9312991, 1, 1)
-ambient_light_sky_contribution = 0.8
-ambient_light_energy = 0.15
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
 
 [sub_resource type="Curve3D" id="Curve3D_egugs"]
 _data = {
@@ -216,7 +209,10 @@ size = Vector3(307, 161, 301)
 
 [node name="Blue" type="Node3D" unique_id=543950842]
 
-[node name="BlueEnv" parent="." unique_id=1289794665 instance=ExtResource("1_yeg0x")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2120585875]
+environment = SubResource("Environment_egugs")
+
+[node name="BlueEnv" parent="." unique_id=656635014 instance=ExtResource("1_yeg0x")]
 
 [node name="Doors" type="Node3D" parent="." unique_id=1914560580]
 
@@ -228,7 +224,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/BeachToHouse" unique_id=773043163]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 96.8444, 6.69868, 2.75603)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 108.35468, 15.705419, 17.534107)
 shape = SubResource("BoxShape3D_0d6dj")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/BeachToHouse/CollisionShape3D" unique_id=896008462]
@@ -249,7 +245,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HouseToHotelExterior" unique_id=369442051]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 67.5, 1.6, 2.3)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 159.59772, 5.1859984, 2.8595705)
 shape = SubResource("BoxShape3D_b7ooe")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HouseToHotelExterior/CollisionShape3D" unique_id=2115620582]
@@ -326,27 +322,6 @@ shape = SubResource("BoxShape3D_2yg5f")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToHall2/CollisionShape3D2" unique_id=1631921121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -2.5, 0)
 
-[node name="HotelExteriorCaves" type="Area3D" parent="Doors" unique_id=1487178320 node_paths=PackedStringArray("point_2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -31)
-collision_layer = 32
-collision_mask = 32
-script = ExtResource("2_bteo7")
-point_2 = NodePath("CollisionShape3D2/Marker3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HotelExteriorCaves" unique_id=1950288343]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15.6, 1.5, 38)
-shape = SubResource("BoxShape3D_egugs")
-
-[node name="Marker3D" type="Marker3D" parent="Doors/HotelExteriorCaves/CollisionShape3D" unique_id=330812722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.5, 0)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HotelExteriorCaves" unique_id=1709767924]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -75.6, 2, 38.8)
-shape = SubResource("BoxShape3D_yncb8")
-
-[node name="Marker3D" type="Marker3D" parent="Doors/HotelExteriorCaves/CollisionShape3D2" unique_id=1630080817]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 4.76837e-07)
-
 [node name="Hall2ToHall3" type="Area3D" parent="Doors" unique_id=996794911 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 0, -98.5)
 collision_layer = 32
@@ -376,7 +351,7 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HotelExteriorToLobby" unique_id=1062081995]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.60001, 4.3, -1.40001)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.598447, 4.671216, 16.045242)
 shape = SubResource("BoxShape3D_ljs8d")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/HotelExteriorToLobby/CollisionShape3D" unique_id=2004416012]
@@ -1180,18 +1155,17 @@ light_energy = 0.4
 shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=1573997623]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404424, 1.62994, -12.2771)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43028212, 4.594143, 6.798584)
 light_color = Color(0.943733, 0.983268, 0.631249, 1)
 omni_range = 7.87069
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=926752839]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.797577, -11.8943)
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.797577, 4.412798)
 mesh = SubResource("PlaneMesh_n2ypl")
 surface_material_override/0 = SubResource("StandardMaterial3D_6h34i")
 
 [node name="FlyPrompt" type="Label3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=1181804654]
-transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 20, 3, -10)
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 20, 3, 3.657425)
 text = "If you get stuck, use Ctrl+f to enter fly mode.
 (This is a debug tool, not a part of the actual game)"
 font_size = 64
@@ -1206,9 +1180,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, 21)
 shape = SubResource("BoxShape3D_gn7b1")
 
 [node name="Chunk" type="Node3D" parent="Beach/BeachChunk" unique_id=632786869]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Beach/BeachChunk/Chunk" unique_id=2120585875]
-environment = SubResource("Environment_egugs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Beach/BeachChunk/Chunk" unique_id=1712885861]
 transform = Transform3D(0.6060382, -0.49328655, 0.62400824, 0.35139316, 0.86981636, 0.3463272, -0.713611, 0.009384707, 0.7004795, 0, 10.689543, -0.35290527)
