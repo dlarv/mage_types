@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
 [ext_resource type="Script" uid="uid://cgt73gvf8xvv6" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_pewre"]
 [ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/story/dialog/dialog_trees/blue_dialog.tres" id="3_dned5"]
-[ext_resource type="Script" uid="uid://dm6ugtdpreoy7" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_5bktp"]
-[ext_resource type="Script" uid="uid://dyxwuxn04gout" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
-[ext_resource type="Script" uid="uid://ctwpmg6gbk4fr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
+[ext_resource type="Script" uid="uid://m31i3axecagx" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_5bktp"]
+[ext_resource type="Script" uid="uid://blmdt7v8bd0nl" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_h16lu"]
+[ext_resource type="Script" uid="uid://bsoctnc26xumr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_ndt0m"]
 [ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
@@ -81,21 +81,23 @@ process_mode = 3
 libraries/ = SubResource("AnimationLibrary_1n5t0")
 
 [node name="Player" parent="Overworld" unique_id=1276607030 instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.914, 0.646759, 44.8029)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.42485, 0.646759, 39.40883)
 dash_speed = 900.0
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player" unique_id=1009984194]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 4)
+transform = Transform3D(1, 0, 0, 0, 0.66262025, 0.7489559, 0, -0.7489559, 0.66262025, 0, 6, 4)
 fov = 85.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld" unique_id=899131619]
 transform = Transform3D(0.707107, -0.5, -0.5, -6.18173e-08, -0.707107, 0.707107, -0.707107, -0.5, -0.5, 0, 0, 0)
+visible = false
 light_energy = 0.3
 shadow_enabled = true
 shadow_caster_mask = 4294967293
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Overworld" unique_id=850707853]
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 0, 0)
+visible = false
 light_color = Color(0.758192, 0.758192, 0.758192, 1)
 light_energy = 0.1
 light_indirect_energy = 5.0
@@ -116,7 +118,7 @@ light_energy = 0.01
 light_indirect_energy = 5.0
 shadow_caster_mask = 4294967293
 
-[node name="Blue" parent="Overworld" unique_id=290875180 instance=ExtResource("10_5iu1q")]
+[node name="Blue" parent="Overworld" unique_id=543950842 instance=ExtResource("10_5iu1q")]
 
 [node name="Boss1" parent="Overworld" unique_id=298045260 groups=["detached_env"] instance=ExtResource("11_o1net")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7224, -1.52219, -115.886)
