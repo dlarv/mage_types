@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4p3jn0diyrja"]
+[gd_scene format=3 uid="uid://c4p3jn0diyrja"]
 
 [ext_resource type="Script" uid="uid://de6h1lv6q0qbt" path="res://src/player/PlayerController.gd" id="1_eca83"]
 [ext_resource type="Resource" uid="uid://cbeu7qmu1nxih" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_x42xx"]
@@ -21,7 +21,7 @@ gradient = SubResource("Gradient_o822w")
 fill = 1
 fill_from = Vector2(0.525641, 0.508547)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("model", "anim_player") groups=["persist", "player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1613643988 node_paths=PackedStringArray("model", "anim_player") groups=["persist", "player"]]
 collision_layer = 113
 collision_mask = 49
 axis_lock_angular_x = true
@@ -32,42 +32,42 @@ jump_time_to_peak = 0.2
 jump_time_to_descent = 0.25
 variable_jump_height_modifier = 20.0
 dash_speed = 500.0
-model = NodePath("alice_v3/rig/Skeleton3D/Alice")
+model = NodePath("alice_v3/rig/Skeleton3D")
 anim_player = NodePath("alice_v3/AnimationPlayer")
 battle_actor = ExtResource("2_x42xx")
 _playable_characters = Dictionary[int, ExtResource("3_3kubr")]({
 0: ExtResource("4_x42xx")
 })
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1525303761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CapsuleShape3D_f637b")
 
-[node name="CoyoteTimer" type="Timer" parent="."]
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1788994925]
 one_shot = true
 
-[node name="FlushJumpBufferTimer" type="Timer" parent="."]
+[node name="FlushJumpBufferTimer" type="Timer" parent="." unique_id=1922984944]
 one_shot = true
 
-[node name="GroundedTimer" type="Timer" parent="."]
+[node name="GroundedTimer" type="Timer" parent="." unique_id=269277920]
 wait_time = 0.3
 one_shot = true
 autostart = true
 
-[node name="Shadow" type="Decal" parent="."]
+[node name="Shadow" type="Decal" parent="." unique_id=1444024032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.85, 0)
 size = Vector3(1, 5.7, 1)
 texture_albedo = SubResource("GradientTexture2D_x42xx")
 upper_fade = 0.00010358
 lower_fade = 0.000162534
 
-[node name="SpellManager" parent="." node_paths=PackedStringArray("spell_mapper") instance=ExtResource("6_jiejy")]
+[node name="SpellManager" parent="." unique_id=983802140 node_paths=PackedStringArray("spell_mapper") instance=ExtResource("6_jiejy")]
 spell_mapper = {
 ExtResource("7_x42xx"): NodePath("DestroySpell"),
 ExtResource("8_l271a"): NodePath("StasisSpell")
 }
 
-[node name="alice_v3" parent="." instance=ExtResource("9_l271a")]
+[node name="alice_v3" parent="." unique_id=512730888 instance=ExtResource("9_l271a")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
