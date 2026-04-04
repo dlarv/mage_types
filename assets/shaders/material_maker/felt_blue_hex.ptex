@@ -7,6 +7,12 @@
 			"to_port": 0
 		},
 		{
+			"from": "uniform",
+			"from_port": 0,
+			"to": "math_v3",
+			"to_port": 1
+		},
+		{
 			"from": "fbm2",
 			"from_port": 0,
 			"to": "math_2",
@@ -29,12 +35,6 @@
 			"from_port": 0,
 			"to": "math_v3",
 			"to_port": 0
-		},
-		{
-			"from": "uniform",
-			"from_port": 0,
-			"to": "math_v3",
-			"to_port": 1
 		},
 		{
 			"from": "math_v3",
@@ -85,24 +85,6 @@
 			},
 			"seed_int": 0,
 			"type": "material_dynamic"
-		},
-		{
-			"name": "fbm2",
-			"node_position": {
-				"x": -498.303924560547,
-				"y": -167.759536743164
-			},
-			"parameters": {
-				"folds": 0.0,
-				"iterations": 6.0,
-				"noise": 1.0,
-				"offset": 0.07,
-				"persistence": 1.0,
-				"scale_x": 35.0,
-				"scale_y": 35.0
-			},
-			"seed_int": 0,
-			"type": "fbm2"
 		},
 		{
 			"name": "custom_tiles",
@@ -156,10 +138,47 @@
 			"type": "uniform"
 		},
 		{
+			"name": "math_v3",
+			"node_position": {
+				"x": 569.867065429688,
+				"y": 170.117950439453
+			},
+			"parameters": {
+				"clamp": false,
+				"d_in1_x": 0.0,
+				"d_in1_y": 0.0,
+				"d_in1_z": 0.0,
+				"d_in2_x": 0.0,
+				"d_in2_y": 0.0,
+				"d_in2_z": 0.0,
+				"op": 2.0
+			},
+			"seed_int": 0,
+			"type": "math_v3"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -498.303924560547,
+				"y": -167.759536743164
+			},
+			"parameters": {
+				"folds": 0.0,
+				"iterations": 6.0,
+				"noise": 1.0,
+				"offset": 0.07,
+				"persistence": 1.0,
+				"scale_x": 35.0,
+				"scale_y": 35.0
+			},
+			"seed_int": 0,
+			"type": "fbm2"
+		},
+		{
 			"name": "math_2",
 			"node_position": {
-				"x": 163.754409790039,
-				"y": 104.66975402832
+				"x": 180.873107910156,
+				"y": -351.829040527344
 			},
 			"parameters": {
 				"clamp": false,
@@ -184,25 +203,6 @@
 			},
 			"seed_int": 0,
 			"type": "math"
-		},
-		{
-			"name": "math_v3",
-			"node_position": {
-				"x": 569.867065429688,
-				"y": 170.117950439453
-			},
-			"parameters": {
-				"clamp": false,
-				"d_in1_x": 0.0,
-				"d_in1_y": 0.0,
-				"d_in1_z": 0.0,
-				"d_in2_x": 0.0,
-				"d_in2_y": 0.0,
-				"d_in2_z": 0.0,
-				"op": 2.0
-			},
-			"seed_int": 0,
-			"type": "math_v3"
 		}
 	],
 	"parameters": {

@@ -1,33 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7ufn0uppvqfk"]
+[gd_scene format=3 uid="uid://c7ufn0uppvqfk"]
 
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/shaders/clay_shader/clay.tres" id="1_l5n25"]
+[ext_resource type="Shader" uid="uid://bn16mt3hnf10q" path="res://assets/shaders/clay_shader/waves.gdshader" id="2_txxsr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_74u1h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a4c8"]
 render_priority = 0
 shader = ExtResource("1_l5n25")
-shader_parameter/BaseColor = Color(0, 0, 1, 1)
-shader_parameter/Roughness = 0.4
+shader_parameter/Lumpiness = 0.0
+shader_parameter/BaseColor = Color(0.46618086, 0.4661808, 0.4661808, 1)
+shader_parameter/Roughness = 1.0
 shader_parameter/FingertprintOffset = 0.0
 shader_parameter/UVScale = Vector2(1, 1)
 shader_parameter/FingertprintScale = 1.0
-shader_parameter/CrackOffset = 0.6
+shader_parameter/CrackOffset = 1.0
 shader_parameter/CrackScale = 0.5
-shader_parameter/CrackDetail = 0.0
+shader_parameter/CrackDetail = 1.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_a8hh1"]
-material = SubResource("ShaderMaterial_74u1h")
-size = Vector2(20, 20)
-subdivide_width = 10
-subdivide_depth = 10
+[sub_resource type="PlaneMesh" id="PlaneMesh_j8h0q"]
+material = SubResource("ShaderMaterial_8a4c8")
+subdivide_width = 100
+subdivide_depth = 100
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxk2m"]
 size = Vector3(20, 1, 20)
 
-[node name="MeshInstance3D" type="MeshInstance3D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dy8t"]
+render_priority = 0
+shader = ExtResource("2_txxsr")
+shader_parameter/testdirection = Vector2(50, 50)
+shader_parameter/speeed = 0.0
+shader_parameter/steeepness = 1.0
+shader_parameter/aamplitude = 1.0
+shader_parameter/waavelength = 1.135
+
+[sub_resource type="BoxMesh" id="BoxMesh_8a4c8"]
+material = SubResource("ShaderMaterial_3dy8t")
+subdivide_width = 100
+subdivide_height = 100
+
+[node name="Node3D" type="Node3D" unique_id=1192099275]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1602538288]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("PlaneMesh_a8hh1")
+mesh = SubResource("PlaneMesh_j8h0q")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=578328236]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=2059023683]
+shape = SubResource("BoxShape3D_oxk2m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1211517426]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.0332642, 3.4647827)
+mesh = SubResource("BoxMesh_8a4c8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=1727699835]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=409238399]
 shape = SubResource("BoxShape3D_oxk2m")
