@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgrfhd0s3my0y"]
+[gd_scene format=3 uid="uid://dgrfhd0s3my0y"]
 
 [ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/battle_sprite/battle_sprite.tscn" id="1_yahwx"]
 [ext_resource type="PackedScene" uid="uid://dtrbrmfxqrdth" path="res://assets/3d/characters/alice/alice_v3.blend" id="2_yahwx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahwx"]
 
-[node name="AliceBattleSprite" instance=ExtResource("1_yahwx")]
+[node name="AliceBattleSprite" unique_id=675071263 instance=ExtResource("1_yahwx")]
 
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("BoxShape3D_yahwx")
@@ -52,8 +52,8 @@ _element = 0
 [node name="MeshManager" parent="." index="7" node_paths=PackedStringArray("mesh")]
 mesh = NodePath("alice_v3/rig/Skeleton3D/Alice")
 
-[node name="alice_v3" parent="MeshManager" index="0" instance=ExtResource("2_yahwx")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+[node name="alice_v3" parent="MeshManager" index="0" unique_id=888543255 instance=ExtResource("2_yahwx")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0, 0)
 
 [editable path="PinManager"]
 [editable path="MeshManager/alice_v3"]

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_ryjtr"]
 [ext_resource type="Script" uid="uid://ccfa2tjo30wje" path="res://src/battle_system/PlayerBattleActor.gd" id="2_kljnf"]
 [ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="3_yuipy"]
-[ext_resource type="PackedScene" uid="uid://dgrfhd0s3my0y" path="res://data/story/battle_actors/player_characters/battle_sprites/alice_battle_sprite.tscn" id="5_us0sb"]
+[ext_resource type="PackedScene" uid="uid://boqoojlep4rdu" path="res://data/story/battle_actors/player_characters/battle_sprites/goose_battle_sprite.tscn" id="5_tjvpd"]
 [ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="6_m5g4e"]
 
 [sub_resource type="Resource" id="Resource_cb2ej"]
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
 script = ExtResource("2_kljnf")
-name = "Player"
+name = "Goose"
 id = 1
 stat_manager = SubResource("Resource_3y0wy")
 _element1 = 0
@@ -29,5 +29,5 @@ _element2 = 0
 alignment_manager = SubResource("Resource_cb2ej")
 _alignment = 0
 attacks = Array[ExtResource("1_60dwf")]([ExtResource("3_yuipy")])
-sprite_path = ExtResource("5_us0sb")
+sprite_path = ExtResource("5_tjvpd")
 metadata/_custom_type_script = "uid://ccfa2tjo30wje"
