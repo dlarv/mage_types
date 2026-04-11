@@ -54,4 +54,4 @@ func set_defeated() -> void:
 	if _mat2 is ShaderMaterial:
 		_mat2.set_shader_parameter("element_id", 8)
 	else:
-		_mat2.albedo_color = _mat1.albedo_color.darkened(0.5)
+		_mat2.albedo_color = _mat2.albedo_color.darkened(0.5)
