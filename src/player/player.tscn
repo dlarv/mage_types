@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://de6h1lv6q0qbt" path="res://src/player/PlayerController.gd" id="1_eca83"]
 [ext_resource type="Resource" uid="uid://cbeu7qmu1nxih" path="res://data/story/battle_actors/player_characters/player_battle_actor.tres" id="2_x42xx"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="3_3kubr"]
-[ext_resource type="Resource" uid="uid://wbbhxo5h3qcy" path="res://data/story/battle_actors/player_characters/denim_battle_actor.tres" id="4_x42xx"]
+[ext_resource type="Resource" uid="uid://wbbhxo5h3qcy" path="res://data/story/battle_actors/player_characters/partner_battle_actor.tres" id="4_x42xx"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="6_jiejy"]
 [ext_resource type="Resource" uid="uid://bsjfeyutvwl8i" path="res://data/items/equipment/sledge_hammer.tres" id="7_x42xx"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="8_l271a"]

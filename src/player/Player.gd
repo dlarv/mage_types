@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-enum PartyMember { DENIM }
+enum PartyMember { PARTNER }
 
 signal actor_changed(actor: BattleActor)
 signal team_changed(team: Array[BattleActor])
