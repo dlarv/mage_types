@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cqxos0my666jo"]
+
+[ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_ee83t"]
+[ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/shaders/clay_shader/clay.tres" id="2_xc4a4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2l62m"]
+size = Vector3(166.125, 44.450253, 110)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n2ypl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h34i"]
+emission_enabled = true
+emission = Color(0.945098, 0.984314, 0.631373, 1)
+emission_energy_multiplier = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1nom"]
+render_priority = 0
+shader = ExtResource("2_xc4a4")
+shader_parameter/Lumpiness = 0.0
+shader_parameter/BaseColor = Color(1, 1, 1, 1)
+shader_parameter/Roughness = 1.0
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(1, 1)
+shader_parameter/FingertprintScale = 1.0
+shader_parameter/CrackOffset = 1.0
+shader_parameter/CrackScale = 0.5
+shader_parameter/CrackDetail = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc4a4"]
+render_priority = 0
+shader = ExtResource("2_xc4a4")
+shader_parameter/Lumpiness = 0.0
+shader_parameter/BaseColor = Color(1, 1, 1, 1)
+shader_parameter/Roughness = 1.0
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(2, 1)
+shader_parameter/FingertprintScale = 1.0
+shader_parameter/CrackOffset = 1.0
+shader_parameter/CrackScale = 0.5
+shader_parameter/CrackDetail = 1.0
+
+[node name="HotelExteriorChunk" type="Area3D" unique_id=857368292 node_paths=PackedStringArray("chunk") groups=["persist"]]
+script = ExtResource("1_ee83t")
+chunk = NodePath("Chunk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=945336419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5625, 11.209017, 36.5)
+shape = SubResource("BoxShape3D_2l62m")
+
+[node name="Chunk" type="Node3D" parent="." unique_id=299110571]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Chunk" unique_id=725004140]
+transform = Transform3D(0.99889, 0.0465265, -0.00736907, 0, 0.156434, 0.987688, 0.0471065, -0.986592, 0.156261, 0, 11.9111, 0)
+light_color = Color(0.494773, 0.67193, 1, 1)
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Chunk" unique_id=888490456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.404424, 1.62994, -12.2771)
+visible = false
+light_color = Color(0.943733, 0.983268, 0.631249, 1)
+omni_range = 7.87069
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chunk" unique_id=797710617]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.797577, -11.8943)
+mesh = SubResource("PlaneMesh_n2ypl")
+surface_material_override/0 = SubResource("StandardMaterial3D_6h34i")
+
+[node name="FlyPrompt" type="Label3D" parent="Chunk" unique_id=1075964849]
+transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 20, 3, -10)
+text = "If you get stuck, use Ctrl+f to enter fly mode.
+(This is a debug tool, not a part of the actual game)"
+font_size = 64
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Chunk" unique_id=246508311]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Chunk/CSGCombiner3D" unique_id=218652517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.959747, 0, 16.19043)
+size = Vector3(150, 1, 70)
+material = SubResource("ShaderMaterial_c1nom")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Chunk/CSGCombiner3D" unique_id=1525694853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.45267, 7.7216187, 16.19043)
+size = Vector3(30, 15, 70)
+material = SubResource("ShaderMaterial_xc4a4")

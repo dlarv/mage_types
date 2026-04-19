@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/objects/blue/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/objects/blue/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/objects/blue/vase_blue.tscn" id="21_yq576"]
+[ext_resource type="PackedScene" uid="uid://tramh0v4ebdd" path="res://world/subareas/environments/main_beach_env.tscn" id="22_mwtcr"]
 [ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://dtphvdq8xlphv" path="res://assets/3d/objects/blue/vase_red.tscn" id="23_3yaw4"]
 
@@ -202,7 +203,9 @@ size = Vector3(307, 161, 301)
 
 [node name="Blue" type="Node3D" unique_id=543950842]
 
-[node name="BlueEnv" parent="." unique_id=224238840 instance=ExtResource("1_yeg0x")]
+[node name="BlueEnv" parent="." unique_id=851881689 instance=ExtResource("1_yeg0x")]
+
+[node name="MainBeachEnv" parent="." unique_id=1194449791 instance=ExtResource("22_mwtcr")]
 
 [node name="Doors" type="Node3D" parent="." unique_id=1914560580]
 
@@ -1165,7 +1168,7 @@ font_size = 64
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.39735, 0, 0)
 script = ExtResource("3_4g4u6")
 chunk = NodePath("Chunk")
-fog_level = 0.01
+fog_level = 0.025
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Beach/BeachChunk" unique_id=234988350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, 21)
