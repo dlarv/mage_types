@@ -1,6 +1,7 @@
 extends "Player.gd"
 
 const MAX_FREEFALL_DIST := -40.0
+const HEAVY_FALL_THRESHOLD := -21.0
 
 @export var walk_speed := 700.0
 @export var draggable_speed := 500.0
@@ -22,6 +23,10 @@ const MAX_FREEFALL_DIST := -40.0
 var dash_tween: Tween
 var dash_velocity: float
 var _can_air_dash := true
+var _is_grounded := true
+var _is_moving := false
+@export var _is_heavy_fall := false
+var idle_timed_out := false
  
 var draggable: Node3D = null
 var last_grounded_position: Vector3
@@ -45,6 +50,16 @@ func _ready() -> void:
 	super._ready()
 	$CoyoteTimer.wait_time = coyote_time_length
 	$FlushJumpBufferTimer.wait_time = keep_jump_buffer_length
+
+	$AnimationTree.active = true
+	$AnimationTree.animation_started.connect(func(n: String) -> void:
+		($IdleTimer as Timer).start()
+		idle_timed_out = false
+	)
+
+	$IdleTimer.timeout.connect(func() -> void:
+		idle_timed_out = true
+	)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -82,6 +97,9 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if is_on_floor():
+		if _is_heavy_fall:
+			$HeavyFallTimer.start()
+			_is_heavy_fall = false
 		_can_jump = true
 		_jump_strength = 0
 		_jump_timer = 0
@@ -90,11 +108,16 @@ func _physics_process(delta: float) -> void:
 		if $GroundedTimer.is_stopped():
 			last_grounded_position = global_position
 			$GroundedTimer.start()
+	else:
+		velocity.y += get_local_gravity() * delta
+		_is_grounded = false
+		_is_heavy_fall = velocity.y <= HEAVY_FALL_THRESHOLD
+		if _is_heavy_fall: print("HERE")
 
-	# Add the gravity.
-	velocity.y += get_local_gravity() * delta
 	velocity.x *= friction
 	velocity.z *= friction
+
+	if not $HeavyFallTimer.is_stopped(): return
 
 	# Variable jump height
 	if Input.is_action_just_pressed("jump"):
@@ -153,10 +176,19 @@ func _physics_process(delta: float) -> void:
 	velocity += outside_forces * delta
 	outside_forces = Vector3.ZERO
 
-	if velocity.x == 0 and velocity.z == 0: 
-		anim_player.play("idle")
-	else:
-		anim_player.play("walk")
+	# if is_on_floor() and not _is_grounded:
+	# 	anim_player.play("landing")
+	# 	_is_grounded = true
+	# elif abs(velocity.y) > 0:
+	# 	anim_player.play("falling")
+	# elif velocity.length() > 0:
+	# 	anim_player.play("walk")
+	# 	_is_moving = true
+	# elif _is_moving:
+	# 	_is_moving = false
+	# 	anim_player.play("neutral")
+	# elif $IdleTimer.is_stopped():
+	# 	anim_player.play("idle")
 	move_and_slide()
 
 
