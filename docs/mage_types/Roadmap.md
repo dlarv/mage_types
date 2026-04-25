@@ -24,16 +24,15 @@
 # Upcoming Versions
 [[version_naming_scheme]]
 
-v0.7.x: Tutorial Visual Polish
-v0.8.x: Audio polish
-v0.9.x: GUI and Settings
+#v0_7: Tutorial Visual Polish
+#v0_8: Audio polish
+#v0_9: GUI and Settings
 # The List
 ## Battle 
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
 	- Use `[url]` tag.
 - `RichTextElement` can be used to set the color of elemental names.
 	- To set the color of blank text, first character will need to be a " ".
-
 ### Communicating Info to Player
 - [ ] Show information about each actor
 	- [x] Name, Hp.
