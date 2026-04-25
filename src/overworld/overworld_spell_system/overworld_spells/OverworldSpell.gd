@@ -3,8 +3,11 @@ class_name OverworldSpell
 
 enum Spells { STASIS, CATALYST, DESTROY, GOLEM, SET_PORTAL, USE_PORTAL, NONE }
 
-@export var icon: CompressedTexture2D = null
 const Projectile := preload("res://src/overworld/overworld_spell_system/projectile.tscn")
+
+@export var icon: CompressedTexture2D = null
+@export var use_mouse_position := false
+@export var channel_magiclay := false
 
 var is_active := false
 
@@ -18,10 +21,18 @@ func _ready() -> void:
 	_terrain_exclusions = get_tree().get_nodes_in_group("player")
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not is_active: return
+	if event.is_action_pressed("cast_spell_1"):
+		perform_action()
+
+
 func _physics_process(delta: float) -> void:
 	if not is_active: return
-	_get_magiclay()
-	_find_mouse_position()
+	if channel_magiclay:
+		_get_magiclay()
+	if use_mouse_position:
+		_find_mouse_position()
 
 
 func _get_magiclay() -> void:
@@ -54,16 +65,6 @@ func _find_mouse_position() -> void:
 		_mouse_pos.y = position.y
 
 
-func deactivate() -> void: is_active = false
-
-
-func activate() -> void: is_active = true
-
-
-# Virtual
-func perform_action() -> void: pass
-
-
 func _channel_element() -> ElementalType: 
 	if _magiclay_terrain != null:
 		return _magiclay_terrain.element
@@ -82,3 +83,21 @@ func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, el
 	projectile.setup(collision_test, action_to_perform, element, target)
 	get_tree().get_root().add_child(projectile)
 	projectile.global_position = global_position
+
+
+func collision_test(body: Variant) -> bool:
+	return body is MagiClay
+
+
+func deactivate() -> void: is_active = false
+
+
+func activate() -> void: is_active = true
+
+
+# Virtual
+func perform_action() -> void: pass
+
+
+
+

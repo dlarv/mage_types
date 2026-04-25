@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgvmyv41261gx"]
-
-[ext_resource type="Script" uid="uid://dnrcoliu3qq8t" path="res://src/overworld/overworld_spell_system/overworld_spells/UsePortalSpell.gd" id="1_jss71"]
-
-[node name="UsePortalSpell" type="Node3D"]
-script = ExtResource("1_jss71")

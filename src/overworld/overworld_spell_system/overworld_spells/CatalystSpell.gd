@@ -11,5 +11,3 @@ func action_to_perform(body: Node3D, element: ElementalType) -> void:
 	body.react(element)
 
 
-func collision_test(body: Variant) -> bool:
-	return body is MagiClay

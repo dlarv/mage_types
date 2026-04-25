@@ -4,7 +4,7 @@ extends OverworldSpell
 var _stasis_queue: Array[MagiClay] = []
 
 # Override 
-func perform_action() -> void: 
+func perform_action(_idx:=0) -> void: 
 	_spawn_projectile(collision_test, action_to_perform, ElementManager.Blank)
 
 
@@ -22,8 +22,6 @@ func action_to_perform(body: Node3D, element: ElementalType) -> void:
 			obj.set_stasis()
 	_stasis_queue.append(body)
 
-func collision_test(body: Variant) -> bool:
-	return body is MagiClay
 
 func serialize() -> Dictionary:
 	var objs := []
@@ -35,10 +33,12 @@ func serialize() -> Dictionary:
 		"queue": objs,
 	}
 
+
 func deserialize(data: Dictionary) -> void:
 	_stasis_queue = []
 	for obj: NodePath in data["queue"]:
 		_stasis_queue.append(get_node(obj))
+
 
 func _remove_from_queue(body: MagiClay) -> void:
 	body.stasis_ended.disconnect(_remove_from_queue)
