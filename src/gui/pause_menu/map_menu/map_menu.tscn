@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dos802eriaax3"]
+[gd_scene format=3 uid="uid://dos802eriaax3"]
 
 [ext_resource type="Script" uid="uid://chikwdjow5ge8" path="res://src/gui/pause_menu/map_menu/MapMenu.gd" id="1_y8pvq"]
 [ext_resource type="PackedScene" uid="uid://cdwbhycb1oik2" path="res://src/gui/pause_menu/map_menu/map_screen.tscn" id="2_l7pld"]
 [ext_resource type="PackedScene" uid="uid://hyj3xwdba08r" path="res://src/gui/pause_menu/map_menu/map_legend.tscn" id="2_ld5vb"]
-[ext_resource type="Texture2D" uid="uid://cpwmhwbpsq36a" path="res://assets/graphics/map_drawing.png" id="2_y8pvq"]
+[ext_resource type="Texture2D" uid="uid://bkr1hgmkmpm8m" path="res://assets/graphics/map_drawing.png" id="2_y8pvq"]
 
-[node name="Map" type="TabContainer" groups=["persist"]]
+[node name="Map" type="TabContainer" unique_id=875768512 groups=["persist"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,20 +14,20 @@ grow_vertical = 2
 current_tab = 1
 script = ExtResource("1_y8pvq")
 
-[node name="Legend" parent="." instance=ExtResource("2_ld5vb")]
+[node name="Legend" parent="." unique_id=357486258 instance=ExtResource("2_ld5vb")]
 visible = false
 layout_mode = 2
 
-[node name="Hotel" type="MarginContainer" parent="."]
+[node name="Hotel" type="MarginContainer" parent="." unique_id=1921106802]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="TextureRect" parent="Hotel" instance=ExtResource("2_l7pld")]
+[node name="TextureRect" parent="Hotel" unique_id=1811656536 instance=ExtResource("2_l7pld")]
 layout_mode = 2
 texture = ExtResource("2_y8pvq")
 expand_mode = 0
 
-[node name="CombatMarker" type="ColorRect" parent="Hotel/TextureRect"]
+[node name="CombatMarker" type="ColorRect" parent="Hotel/TextureRect" unique_id=1094818363]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
 offset_left = 1470.0
@@ -38,7 +38,7 @@ rotation = 0.785398
 tooltip_text = "Combat challenge"
 color = Color(1, 0, 0, 1)
 
-[node name="PuzzleMarker" type="ColorRect" parent="Hotel/TextureRect"]
+[node name="PuzzleMarker" type="ColorRect" parent="Hotel/TextureRect" unique_id=55459992]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
 offset_left = 516.667
@@ -49,7 +49,7 @@ rotation = 0.785398
 tooltip_text = "Puzzle challenge"
 color = Color(0, 0, 1, 1)
 
-[node name="SpawnMarker" type="ColorRect" parent="Hotel/TextureRect"]
+[node name="SpawnMarker" type="ColorRect" parent="Hotel/TextureRect" unique_id=779945053]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
 offset_left = 1296.67
