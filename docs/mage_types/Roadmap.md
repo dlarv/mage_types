@@ -27,7 +27,6 @@
 v0.7.x: Tutorial Visual Polish
 v0.8.x: Audio polish
 v0.9.x: GUI and Settings
-GUI and Settings
 # The List
 ## Battle 
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
@@ -66,6 +65,16 @@ GUI and Settings
 >- [ ] Prevent player from double spending item. I.e. when two actors try to use the same item on the same turn.
 
 - [x] Calculate turn order based on actor's speed and action priority
+	- [x] Display speed ranking 
+	- [ ] Speed ranking/turn order accounts for priority
+	
+- [ ] Make controls less obtrusive
+	- [x] Attack, Item, and Run buttons should be small and off to the side
+	- [ ] InfoDisplay
+		- [ ] Hovering should highlight which name card is theirs
+		- [x] Player can click on a BattleActor model to display info about them
+		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
+			- [ ] Hovering status pin should outline that pin
 ### Action Effects 
  **Calculate and resolve attack/item effects.**
 - [x] Damage.
@@ -163,6 +172,7 @@ To get info about the battlefield state, objects will reference the `Battle` sin
 
 Unlike the previous section, these will use a more traditional inheritance structure.
 ### Aesthetics
+See also: [[more_dynamic_battles]]
 - [x] Allow attacks to play unique animations.
 - [x] Battle models animations backend support
 	- [x] Idle
@@ -177,8 +187,14 @@ Unlike the previous section, these will use a more traditional inheritance struc
 	- [ ] Channeling
 	- [ ] Status Effect being inflicted
 	- [ ] Status Effect proc
+- [ ] Setting to control speed and turn off animations
+- [ ] Use buttons to skip battle animations
+- [ ] Attack Animation refactor
+	- [ ] Renamed class and references
+	- [ ] Animation should be selected via enum
+	- [ ] Animation should be integrated with BattleActor animations
 ### Misc Mechanics
-- [ ] Remove expired status conditions and stat changes.
+- [x] Remove expired status conditions and stat changes.
 - [ ] Apply transmutations and related effects when necessary.
 	- [x] (Primary | Secondary) + Attack
 	- [x] Primary + Secondary
@@ -240,6 +256,7 @@ Player characters will have their own unique `StatManager` class, which include 
 | Green   |     | x            |               | x             |                | x?    |
 | Cyan    |     |              | x             |               | x              |       |
 \?Element has 3 stats it influences.
+\*Stat selected for balancing reasons more than lore.
 
 **Implementation Notes**
 - SideEffect.strength is totalled up until level up. The integer portion of this value is added to each stat upon level up.
@@ -267,9 +284,33 @@ Player characters will have their own unique `StatManager` class, which include 
 - [ ] Fill out optional details section.
 - [ ] The following attributes will need to be manually filled out or give the user access to the filesystem: Animation, AttackEffects.
 - [ ] Allow the user to create 1+ Effects.
-	- [ ]  Chance.
-	- [ ]  Target.
-	- [ ]  AttackEffect.
+	- [ ]  Chance
+	- [ ]  Target
+	- [ ]  AttackEffect
+### Dual Combat System
+Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
+- [ ] Player hp stat should be accessible outside of battle
+	- [ ] Hp bar in overworld
+	- [ ] Wild enemies and obstacles should be able to damage player
+- [ ] Wild enemies should have varying behaviors
+	- [ ] Running away
+	- [ ] Fighting
+	- [ ] Ambushing
+- [ ] Allow player and enemies to be staggered
+	- [ ] Being staggered right before a battle starts should inflict flinching on turn 1
+	- [ ] Player/enemy cannot move for a duration of time
+- [ ] Determine mechanic that prevents player from starting battles with certain enemies before different requirements are fulfilled
+- [ ] Add final boss to ~~stasis dungeon~~
+## Elemental System
+- [ ] Add tutorial for transmutation map
+- [ ] Associate symbols with each element to help with differentiation
+- [x] Use proper enum instead of `@export_enum`
+- [x] Add missing reactions and recreate transmutation chart
+	- [x] Orange + Cyan = Green
+	- [ ] Yellow + Purple = Red
+		-  Adding this reaction would make 3 reactions involving Yellow + ??? = Red, which further clutters the transmutation map. This and the fact that it doesn't quite visually look right makes me tempted to nix it. 
+		- This would also eliminate the intersection
+- [x] Adjust `ElementalType.main_color` values
 ## Player
  - [ ] Player should be able to perform simple actions:
 	- [x] Walking/running.
@@ -292,6 +333,9 @@ Player characters will have their own unique `StatManager` class, which include 
 - [ ] Player Audio FX #v0_8 
 	- [ ] Footsteps
 	- [ ] Dash and jump sounds
+- [x] Textures
+	- [x] Compare NextPassTransparency with Swapping diffuse maps
+		- Swapping diffuse maps looks far better than the next pass method
 ### Grabbables
 In v0.3.26, all interactable objects were managed thru a child (the grabbable). I find this system clunky.
 
@@ -317,7 +361,7 @@ I think idea \#2 would fit better with the currently designed systems.
 - [ ] Alice character model which follows player
 - [ ] Should match player's speed to avoid getting left behind
 - [ ] Should not block/collide with player
-## Overworld (OVER)
+## Overworld 
 >[!important] 
 > Players collision layer is 1.
 > Projectile collision layer is 2.
@@ -333,7 +377,7 @@ I think idea \#2 would fit better with the currently designed systems.
 	- [x]  MagiClay will return to its spawn position
 	- [x] Water that Blue golems can walk through should have a static body slightly underneath
 
-### Overworld Spells (spel)
+### Overworld Spells
 **Player should have overworld spells which can be used to get around obstacles.**
 **Physics system**
 - [x] Should utilize Godot's existing systems.
@@ -341,7 +385,13 @@ I think idea \#2 would fit better with the currently designed systems.
 - [x] Allow player to select up to 2 overworld spells to use at a time.
 	- [x] A graphic should be used to show which 2 overworld spells are currently selected.
 - [ ] New overworld spells should be able to be added in 1-2 steps.
-
+- [x] Equipment/Overworld spell refactor
+	- [x] Redo related UI screens
+	- [x] Player can select between Battle and Overworld equipment
+	- [x] Partners only have overworld equipment
+	- [x] OverworldSpellManager is easier to extend
+	- [x] Player can equip/unequip overworld spells
+	- [x] Add enemy encounters
 ### Chemistry System (MagiClay)
 **The transmutation mechanic should be included in the overworld, not just in battle.**
 - [x] Certain physics objects should be assigned an elemental type.
@@ -399,9 +449,18 @@ Wild Monster components:
 - Beastiary entry
 
 Beastiary will be a singleton. WildEnemyActors and Battle will obtain their relevant data using their monster_id.
+### Interactables
+- [ ] Opening chests should show player list of contents and allow them to individually select them
+- [x] Key/lock system
+### Map
+- [x] Create map menu
+- [ ] Add support for multiple maps (beach, hotel, etc)
+- [ ] Map menu improvements
+	- [ ] Icon showing which room player is in (use Player.active_chunk)
+	- [ ] Ability to write on map?
 ## Character Management and Inventory (CHAR)
 - [x] Opening a menu should pause overworld/game.
-
+### Save System
 - [ ] Player should have ability to save/load games.
 	- [x] Player can save games under unique names.
 	- [x] Player can load previously saved games.
@@ -418,19 +477,25 @@ The `SaveMenu` keeps track of which `persist` items are deleted using `queue_fre
 `Chunk`s can be added to the `persist` group. If they are, they will automatically handle all of their serializable children. To avoid double saving, `Chunk`s will remove all their children from this group.
 
 When loading a saved game, the current game state should be reset. This is done by calling `get_tree().reload_current_scene(); await get_tree().create_timer(1.0).timeout`. This will not reload any singletons! All singletons that are part of the `persist` group will have this reloading handled by their deserialize functions.
-
+### Party Management
 - [x] Player should be able to view information about their current party.
 	- [x] Name.
 	- [x] Current primary and secondary typing.
 	- [x] Bias, if any.
 	- [x] Level and experience.
-
-- [ ] Player should have a way to distribute *stat* points when they level up.
+- [x] Player should have a way to distribute *stat* points when they level up.
 	- [x] Player should gain experience from battles.
 	- [x] Upon gaining a threshold of experience, player should level up.
 	- [x] Leveling up should boost player and partner's base stats.
 	- [x] Character level should be used in damage calculations.
-
+- [ ] Alignment Management
+	- [ ] Update alignment values after every battle for all player characters.
+		- [ ] Using an attack. This value should be normalized after every battle.
+		- [ ] Transmuting into an element. This value should be normalized after every battle.
+		- [ ] Developing a phobia -1. This value is NOT normalized.
+	- [x] Prevent character from aligning with an element, if they already have an alignment.
+	- [ ] Ensure character's alignment and primary type match.
+### Inventory and Spells
 - [ ] Player should be able to view and use items in their inventory.
 	- [x] Player can view items inside their inventory.
 	- [ ] Player can sort inventory by item id or alphabetically.
@@ -465,15 +530,13 @@ Player selects new spell or equipment from inside Inventory:
 4. Player confirms which spell/equipment to replace.
 5. Modify `BattleActor`.
 6. `CharacterScreen` (which listens for changes to `BattleActor`) updates GUI.
-
-- [ ] Alignment Management
-	- [ ] Update alignment values after every battle for all player characters.
-		- [ ] Using an attack. This value should be normalized after every battle.
-		- [ ] Transmuting into an element. This value should be normalized after every battle.
-		- [ ] Developing a phobia -1. This value is NOT normalized.
-	- [x] Prevent character from aligning with an element, if they already have an alignment.
-	- [ ] Ensure character's alignment and primary type match.
-
+### Scrapbook
+- [ ] Scrapbook containing hints and notes the player has found
+	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
+	- [ ] Notes can be obtained from overworld
+	- [ ] Notes can be reorganized
+	- [ ] Notes can be deleted
+	- [ ] Player can create notes and drawings on notebook pages
 ## Settings and Accessibility 
 - [ ] Allow player to reassign keybindings.
 
@@ -521,7 +584,7 @@ To manage a character who has multiple dialog trees, there are a few options:
 
 - [x] Allow StoryActors to share AnimationPlayers.
 - [x] Allow StoryActor to trigger animations directly.
-
+### Dialog
 - [ ] Display dialog when player talks to character.
 	- [ ] Allow characters to vary dialog based on:
 	- Number of times player has talked to them.
@@ -529,12 +592,9 @@ To manage a character who has multiple dialog trees, there are a few options:
 	- Answers player has previously given them.
 	- Items in player's inventory.
 	- If the player has defeated them in battle.
-
 - [ ] Integrate my fork of DialogueNodes 
-
 - [ ] Communicate specified story vars between DialogueData objects.
-
-
+### Story Events and Quests
 - [ ] Story Events
 	- [x] Trigger story event when player steps on a specific spot in world.
 	- [x] Trigger story event when player talks to specific character.
@@ -558,30 +618,49 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
  - [ ] Achievements
 	- [ ] Allow easy addition of achievements for arbitrary game states.
 	- [ ] Have achievements sync with steam library/etc.
-### NPCs
-- [ ] Bartender #v0_7
-	- [ ] Design
-	- [ ] Model
-	- [ ] Texturing
-	- [ ] Idle Animation
-- [ ] Miniboss #v0_7
-	- [ ] Model
-	- [ ] Texturing
-	- [ ] Rigging
-	- [ ] Animation
-		- [ ] Channeling
-		- [ ] Attack
-		- [ ] Getting hit
-		- [ ] Battle idle
-### Environments
-- [ ] Beach Audio Assets #v0_8
-	- [ ] Wave ambience
+- [ ] Beastiary describing monsters
+- [ ] Materials and textures
+	- [ ] Clay shader cracks are inverted?
+		- Ensure normals are correct
+	- [ ] Revisit clay shader. GDShader version should ideally be indistinguishable from the blender one
+	- [ ] PrincipledBSDF should have a plasticky look
+### Misc Areas
+- [ ] Hallways #v0_7
+	- [ ] Wallpaper
+	- [ ] Assets made out of clay or plastic
+	- [ ] Local lighting
+	- [ ] Ambient sounds #v0_8 
+		- [ ] Ice Machine #v0_8 
+	- [ ] Ambient music #v0_8 
+- [x] Puzzle block demos:
+	- [x] Laser blocks demos
+		- [x] DraggableMirror?
+		- [x] RotatableMirror?
+		- [x] DraggableEmitter?
+		- [x] OneWayLens?
+	- [x] Pressure plate demo
+		- [x] Bug: Player activated pressure plate not working
+	- [x] Delay demo
+	- [x] Timer demo
+	- [x] Relay demo
+		- [x] Create indicator block, which differentiates between off/on/invalid_off
+	- [ ] Give Rail puzzleblock a model
+	- [ ] Add models for empty puzzle blocks?
+- [ ] Replace placeholder door blockers/etc with models and diagetic explanations.
+	- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
+	- [ ] Add out-of-order elevator to final pillar in ziggurat room
+	- [ ] On doors player cannot enter, add "Do not disturb" signage
+- [ ] Create door models and animations
+	- [ ] Delay/animation before returning control to player? This would be necessary if rotating player model to face away from door
+### Beach
+- [ ] Wave ambience #v0_8
 - [ ] Beach 1 #v0_7
 	- [x] Layout
 	- [x] Modeling
 	- [x] Texturing
 		- [ ] Adjust colors
 	- [ ] Fix holes in model exposed during waves
+- [ ] Beach 1 backtracking puzzle
 - [ ] Beach 2 #v0_7
 	- [ ] Layout
 	- [ ] Modeling
@@ -592,10 +671,69 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Texturing
 	- [ ] Assets
 	- [ ] Change from BPM -> ROY
-- [ ] Hallways #v0_7
-	- [ ] Wallpaper
-	- [ ] Assets made out of clay or plastic
-- [ ] Hallway Audio #v0_8 
-	- [ ] Ambient sounds
-		- [ ] Ice Machine
-	- [ ] Ambient music
+### Rec Room
+- [ ] Bartender #v0_7
+	- [ ] Design
+	- [ ] Model
+	- [ ] Texturing
+	- [ ] Idle Animation
+- [ ] Adonis Enclave #v0_7
+	- [ ] Design
+	- [ ] Model
+	- [ ] Texturing
+	- [ ] Idle Animation
+	- [ ] Battle Animations
+- [ ] Miniboss #v0_7
+	- [ ] Model
+	- [ ] Texturing
+	- [ ] Rigging 
+	- [ ] Animation
+		- [ ] Channeling
+		- [ ] Attack
+		- [ ] Getting hit
+		- [ ] Battle idle
+### Continential Breakfast
+- [ ] Mischa/Cook
+	- [ ] Integrate w/ [[#Story Events and Quests|Quest System]]
+	- [ ] Design
+	- [ ] Model
+	- [ ] Animations
+	- [ ] Dialog
+- [ ] Breakfast Area Environment
+	- [ ] Layout
+	- [ ] Model
+	- [ ] Texture
+	- [ ] Assets
+- [ ] Add gate blocking CB from Lobby
+### Motel
+- [ ] Motel Environment
+	- [ ] Layout
+	- [ ] Model
+	- [ ] Texture
+	- [ ] Assets
+- [ ] Hidden caves logic puzzle (Lavender puzzle)
+	- [ ] Rebalance to use motel layout
+	- [ ] Red herring notes
+	- [ ] Create notebook object which allows player to leaf thru notes
+- [ ] Design monsters and stealth puzzle
+- [ ] Priority spell hidden in motel
+- [ ] Lavender fight
+- [ ] Reward for finishing Lavender puzzle (destroy spell++?)
+- [ ] Getting defeated resets your progress
+	- Certain areas will reset player when they are defeated (You feel a dark power emanating from all around you)
+	- This should be a property of the Chunk
+	- I also plan to use Chunks to show which room the player is currently in, it'd be smart to see if these can overlap
+### Rampage
+- [ ] Rampage 3
+	- [x] Design parkour
+	- [x] Build parkour
+	- [ ] Replace/alter Catalyst puzzle in Rampage1
+	- [ ] Add destroy obstacle to Rampage1
+### TBD
+- [ ] Northern Caves/Portal Complex Excavation
+	- [ ] Create and add models for murals
+	- [ ] Orange chatlog object created and placed
+- [ ] Southern Beach
+- [ ] Central hotel
+- [ ] Employee breakroom
+- [ ] Pool rooms
