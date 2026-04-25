@@ -34,7 +34,7 @@
 - `RichTextElement` can be used to set the color of elemental names.
 	- To set the color of blank text, first character will need to be a " ".
 ### Communicating Info to Player
-- [ ] Show information about each actor
+- [x] Show information about each actor
 	- [x] Name, Hp.
 	- [x] Current Element.
 	- [x] Elemental Bias.
@@ -43,14 +43,12 @@
 	- [x] Stat changes.
 	- [x] Use 3d models instead of 2d sprites for characters.
 
-- [ ] Show information about the following, when queried by player
+- [x] Show information about the following, when queried by player
 	- [x] Attack info.
 	- [x] Item info.
 	- [x] Battle Actor info.
 	- [x] Status conditions.
 	- [x] Debug info.
-	- [ ] Have beasiary/info book player can reference.
-		- [ ] Hide info not yet discovered by player.
 	
 - [x] Create detailed battle logs for diagnostic purposes.
 
@@ -60,8 +58,7 @@
 	- [x] The player has the option to select different actions for previous actors.
 		- [x] This should not cause the game to forget any other selected actions (e.g. Alice chooses attack, then Bob chooses attack. If player goes back to change Alices action, this should not deselect Bobs action).
 	- [x] Prevent player from selecting actions they do not meet the requirements for.
->[!bug]
->- [ ] Prevent player from double spending item. I.e. when two actors try to use the same item on the same turn.
+	- [ ] **Bugfix**: Prevent player from double spending item. I.e. when two actors try to use the same item on the same turn.
 
 - [x] Calculate turn order based on actor's speed and action priority
 	- [x] Display speed ranking 
@@ -194,7 +191,7 @@ See also: [[more_dynamic_battles]]
 	- [ ] Animation should be integrated with BattleActor animations
 ### Misc Mechanics
 - [x] Remove expired status conditions and stat changes.
-- [ ] Apply transmutations and related effects when necessary.
+- [x] Apply transmutations and related effects when necessary.
 	- [x] (Primary | Secondary) + Attack
 	- [x] Primary + Secondary
 	- [x] Apply side effects.
@@ -279,13 +276,18 @@ Player characters will have their own unique `StatManager` class, which include 
 
 ### Attack Creator
 **Have means to quickly create new attacks both in-game and in-engine.**
-- [x] Select required attributes: Name, Element, Priority, Range, Target, Cost. 
-- [ ] Fill out optional details section.
-- [ ] The following attributes will need to be manually filled out or give the user access to the filesystem: Animation, AttackEffects.
-- [ ] Allow the user to create 1+ Effects.
-	- [ ]  Chance
-	- [ ]  Target
-	- [ ]  AttackEffect
+*This uses the DBMS Addon I created, which is also used to manage Inventory/items*
+AttackManager can set the following values:
+- Name
+- Element
+- Range
+- Targets
+- Priority
+- Power
+- Accuracy
+- Scaling
+- Description
+Everything else must be managed traditionally
 ### Dual Combat System
 Dual combat system. Some enemies can attack the player in the overworld. Some enemies will have steps the player must complete before the actual battle can start.
 - [ ] Player hp stat should be accessible outside of battle
@@ -383,14 +385,22 @@ I think idea \#2 would fit better with the currently designed systems.
 - [x] Should integrate with the chemistry and puzzle block systems.
 - [x] Allow player to select up to 2 overworld spells to use at a time.
 	- [x] A graphic should be used to show which 2 overworld spells are currently selected.
-- [ ] New overworld spells should be able to be added in 1-2 steps.
 - [x] Equipment/Overworld spell refactor
 	- [x] Redo related UI screens
 	- [x] Player can select between Battle and Overworld equipment
 	- [x] Partners only have overworld equipment
 	- [x] OverworldSpellManager is easier to extend
-	- [x] Player can equip/unequip overworld spells
+		- [x] Player can equip/unequip overworld spells
 	- [x] Add enemy encounters
+- [ ] Bugfix: Spells can only be targeted/cast when mouse is over collision body
+	- [ ] Raycast to plane level with player
+- [x] Refactored overworld spell logic
+	
+>[!help] Adding New Overworld Spells
+>1. Create new node/script inheriting from `OverworldSpell`
+>2. Inside script, add spell logic
+>3. Add node as child of `SpellManager`
+>4. Add entry to `SpellManager.spell_mapper` to associate spell with `Equipment`
 ### Chemistry System (MagiClay)
 **The transmutation mechanic should be included in the overworld, not just in battle.**
 - [x] Certain physics objects should be assigned an elemental type.
@@ -416,9 +426,9 @@ I think idea \#2 would fit better with the currently designed systems.
 > - Using a CharacterBody allows the Draggables to work, but makes interacting with the system difficult.
 > - Since the player cannot jump, their ability to interact with these physics effects are limited.
 ### Puzzle Blocks 
+[[PuzzleBlocks]]
 - [x] Puzzles should be designed using simple building blocks.
 	- [x] Light up wire should show how different puzzle blocks are connected and whether they are active.
-#todo add list of puzzle blocks here
 >[!important] Delays and Pressure plates
 >Delays and pressure plates do not work together well. When the player drops a block on the pressure plate, it temporarily exits the tree. When it reenters, it does not reactivate the delay.
 
@@ -448,12 +458,16 @@ Wild Monster components:
 - Beastiary entry
 
 Beastiary will be a singleton. WildEnemyActors and Battle will obtain their relevant data using their monster_id.
+- [ ] Have beasiary/info book player can reference.
+	- [ ] Hide info not yet discovered by player.
 ### Interactables
 - [ ] Opening chests should show player list of contents and allow them to individually select them
 - [x] Key/lock system
 ### Map
 - [x] Create map menu
-- [ ] Add support for multiple maps (beach, hotel, etc)
+- [x] Add support for multiple maps (beach, hotel, etc)
+	- [x] Arrows indicate how areas are connected 
+	- [ ] Clicking on arrow should automatically open that map
 - [ ] Map menu improvements
 	- [ ] Icon showing which room player is in (use Player.active_chunk)
 	- [ ] Ability to write on map?
@@ -464,6 +478,7 @@ Beastiary will be a singleton. WildEnemyActors and Battle will obtain their rele
 	- [x] Player can save games under unique names.
 	- [x] Player can load previously saved games.
 	- [x] Objects can determine whether or not they should be saved.
+	- [ ] Add better error handling to make saves backwards compatible
 
 All objects that can be saved must be added to the `persist` group.
 All nodes in this group must have the following 2 methods:
@@ -488,9 +503,9 @@ When loading a saved game, the current game state should be reset. This is done 
 	- [x] Leveling up should boost player and partner's base stats.
 	- [x] Character level should be used in damage calculations.
 - [ ] Alignment Management
-	- [ ] Update alignment values after every battle for all player characters.
-		- [ ] Using an attack. This value should be normalized after every battle.
-		- [ ] Transmuting into an element. This value should be normalized after every battle.
+	- [x] Update alignment values after every battle for all player characters.
+		- [x] Using an attack. This value should be normalized after every battle.
+		- [x] Transmuting into an element. This value should be normalized after every battle.
 		- [ ] Developing a phobia -1. This value is NOT normalized.
 	- [x] Prevent character from aligning with an element, if they already have an alignment.
 	- [ ] Ensure character's alignment and primary type match.
@@ -592,9 +607,9 @@ To manage a character who has multiple dialog trees, there are a few options:
 	- Items in player's inventory.
 	- If the player has defeated them in battle.
 - [ ] Integrate my fork of DialogueNodes 
-- [ ] Communicate specified story vars between DialogueData objects.
+- [x] Communicate specified story vars between DialogueData objects.
 ### Story Events and Quests
-- [ ] Story Events
+- [x] Story Events
 	- [x] Trigger story event when player steps on a specific spot in world.
 	- [x] Trigger story event when player talks to specific character.
 	- Set variable.
@@ -676,6 +691,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Model
 	- [ ] Texturing
 	- [ ] Idle Animation
+	- [ ] Rewrite dialogue
 - [ ] Adonis Enclave #v0_7
 	- [ ] Design
 	- [ ] Model
