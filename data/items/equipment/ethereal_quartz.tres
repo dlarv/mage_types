@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Equipment" format=3 uid="uid://bw36a1v4mhwx4"]
+
+[ext_resource type="Script" uid="uid://rypntl3l3o71" path="res://src/items/equipment/EquipmentEffect.gd" id="1_uio4d"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="2_84qhg"]
+[ext_resource type="Script" uid="uid://djqyy8na7gxvw" path="res://src/items/equipment/Equipment.gd" id="3_7ln6o"]
+
+[resource]
+script = ExtResource("3_7ln6o")
+has_overworld_use = true
+id = 7
+name = "Ethereal Quartz"
+metadata/_custom_type_script = "uid://djqyy8na7gxvw"

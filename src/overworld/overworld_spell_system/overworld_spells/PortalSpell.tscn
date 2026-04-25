@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bgvmyv41261gx"]
+
+[ext_resource type="Script" uid="uid://dnrcoliu3qq8t" path="res://src/overworld/overworld_spell_system/overworld_spells/PortalSpell.gd" id="1_qv284"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qv284"]
+emission_shape_scale = Vector3(0.5, 0.3, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 9.8, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv284"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_0ytk2"]
+material = SubResource("StandardMaterial3D_qv284")
+radius = 0.05
+height = 0.1
+
+[node name="PortalSpell" type="Node3D" unique_id=1520929352]
+script = ExtResource("1_qv284")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1461620542]
+top_level = true
+emitting = false
+amount = 30
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_qv284")
+draw_pass_1 = SubResource("SphereMesh_0ytk2")

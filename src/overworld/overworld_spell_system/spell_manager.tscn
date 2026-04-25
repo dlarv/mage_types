@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://co5233wd41d3g"]
+[gd_scene format=3 uid="uid://co5233wd41d3g"]
 
 [ext_resource type="Script" uid="uid://dw21tio8ljv3" path="res://src/overworld/overworld_spell_system/SpellManager.gd" id="1_3vrjo"]
 [ext_resource type="PackedScene" uid="uid://duai8gqdgu21m" path="res://src/overworld/overworld_spell_system/overworld_spells/stasis_spell.tscn" id="2_6ebf8"]
@@ -8,31 +8,35 @@
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="4_jchun"]
 [ext_resource type="Texture2D" uid="uid://u2a83s7j0p2l" path="res://assets/graphics/overworld_spells/stasis.png" id="4_knxsu"]
 [ext_resource type="PackedScene" uid="uid://dms3rf01rcur2" path="res://src/overworld/overworld_spell_system/overworld_spells/catalyst_spell.tscn" id="4_ogvhu"]
+[ext_resource type="Resource" uid="uid://bw36a1v4mhwx4" path="res://data/items/equipment/ethereal_quartz.tres" id="5_jchun"]
 [ext_resource type="Texture2D" uid="uid://de3q01ohlw3e3" path="res://assets/graphics/overworld_spells/destroy.png" id="6_nvt7l"]
 [ext_resource type="Texture2D" uid="uid://6y6g5e2ho3w7" path="res://assets/graphics/overworld_spells/catalyst.png" id="7_uhxye"]
-[ext_resource type="PackedScene" uid="uid://dq2bkifv8swvb" path="res://src/overworld/overworld_spell_system/overworld_spells/set_portal_spell.tscn" id="10_6iclp"]
-[ext_resource type="PackedScene" uid="uid://bgvmyv41261gx" path="res://src/overworld/overworld_spell_system/overworld_spells/use_portal_spell.tscn" id="11_vg4lk"]
+[ext_resource type="PackedScene" uid="uid://bgvmyv41261gx" path="res://src/overworld/overworld_spell_system/overworld_spells/PortalSpell.tscn" id="11_vg4lk"]
 [ext_resource type="PackedScene" uid="uid://ehrketntfiw7" path="res://src/overworld/overworld_spell_system/overworld_spells/golem_spell.tscn" id="13_jchun"]
 
-[node name="SpellManager" type="Node3D" node_paths=PackedStringArray("spell_mapper")]
+[node name="SpellManager" type="Node3D" unique_id=892606467 node_paths=PackedStringArray("spell_mapper")]
 script = ExtResource("1_3vrjo")
 Projectile = ExtResource("2_k4ax5")
 spell_mapper = {
 ExtResource("3_vbgfi"): NodePath("DestroySpell"),
-ExtResource("4_jchun"): NodePath("StasisSpell")
+ExtResource("4_jchun"): NodePath("StasisSpell"),
+ExtResource("5_jchun"): NodePath("PortalSpell")
 }
 
-[node name="StasisSpell" parent="." groups=["persist"] instance=ExtResource("2_6ebf8")]
+[node name="StasisSpell" parent="." unique_id=1826437491 groups=["persist"] instance=ExtResource("2_6ebf8")]
 icon = ExtResource("4_knxsu")
+use_mouse_position = true
+channel_magiclay = true
 
-[node name="DestroySpell" parent="." instance=ExtResource("3_cfami")]
+[node name="DestroySpell" parent="." unique_id=1140880431 instance=ExtResource("3_cfami")]
 icon = ExtResource("6_nvt7l")
+use_mouse_position = true
 
-[node name="CatalystSpell" parent="." instance=ExtResource("4_ogvhu")]
+[node name="CatalystSpell" parent="." unique_id=1914644777 instance=ExtResource("4_ogvhu")]
 icon = ExtResource("7_uhxye")
+use_mouse_position = true
+channel_magiclay = true
 
-[node name="GolemSpell" parent="." instance=ExtResource("13_jchun")]
+[node name="GolemSpell" parent="." unique_id=1796150359 instance=ExtResource("13_jchun")]
 
-[node name="SetPortalSpell" parent="." instance=ExtResource("10_6iclp")]
-
-[node name="UsePortalSpell" parent="." instance=ExtResource("11_vg4lk")]
+[node name="PortalSpell" parent="." unique_id=539520349 instance=ExtResource("11_vg4lk")]

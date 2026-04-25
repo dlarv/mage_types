@@ -67,6 +67,7 @@
 [ext_resource type="Resource" uid="uid://txe1ghpacyra" path="res://data/items/spell_scrolls/output/reactor_breach_bead.tres" id="63_6mntc"]
 [ext_resource type="Resource" uid="uid://d07pltrhfkhqg" path="res://data/items/key_items/stencil_1.tres" id="67_cjsp4"]
 [ext_resource type="Resource" uid="uid://c7xrixk4w025s" path="res://data/items/key_items/stencil_2.tres" id="68_5bsgw"]
+[ext_resource type="Resource" uid="uid://bw36a1v4mhwx4" path="res://data/items/equipment/ethereal_quartz.tres" id="68_qonbv"]
 [ext_resource type="Resource" uid="uid://c32htsdkt7675" path="res://data/items/key_items/stencil_3.tres" id="69_qvfu8"]
 [ext_resource type="Resource" uid="uid://dd7wk01w5ccs6" path="res://data/items/equipment/training_wheels.tres" id="70_nstv8"]
 [ext_resource type="Resource" uid="uid://cb1vwen1fw20u" path="res://data/items/key_items/gray_key.tres" id="71_musac"]
@@ -76,9 +77,7 @@
 resource_name = "Healing Potion"
 script = ExtResource("2_xejte")
 item = ExtResource("3_3atr7")
-id = 0
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_gu68u"]
@@ -87,16 +86,13 @@ script = ExtResource("2_xejte")
 item = ExtResource("4_klwlq")
 id = 1
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_sftxp"]
 resource_name = "Blue Hit Bead"
 script = ExtResource("2_xejte")
 item = ExtResource("5_ufsgb")
-id = 0
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_12t4b"]
@@ -105,7 +101,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("29_c0dhh")
 id = 1
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_rowg0"]
@@ -114,7 +109,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("31_w75pi")
 id = 2
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_ibagt"]
@@ -123,7 +117,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("33_x0gag")
 id = 3
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_l818j"]
@@ -132,7 +125,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("23_dq1ou")
 id = 4
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_fgelr"]
@@ -141,7 +133,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("30_u8jql")
 id = 5
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_u6mdr"]
@@ -150,7 +141,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("28_xbgpo")
 id = 6
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_r3tnb"]
@@ -159,7 +149,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("6_v0bcu")
 id = 7
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_6c7up"]
@@ -168,7 +157,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("27_tmanp")
 id = 8
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_sf24g"]
@@ -177,7 +165,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("22_sp23l")
 id = 9
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_vmywd"]
@@ -186,7 +173,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("35_pnyuv")
 id = 10
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_lon6c"]
@@ -195,7 +181,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("26_e3cwp")
 id = 11
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_mt7c8"]
@@ -204,7 +189,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("24_ieyon")
 id = 12
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_fk2j4"]
@@ -213,7 +197,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("32_pcqn2")
 id = 13
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_5g4as"]
@@ -222,7 +205,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("25_tpatv")
 id = 14
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_w7v76"]
@@ -231,7 +213,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("34_8ev2q")
 id = 15
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_mx8e1"]
@@ -240,7 +221,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("9_inlsm")
 id = 16
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_04pk6"]
@@ -249,7 +229,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("17_pe1tn")
 id = 17
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_x2xc0"]
@@ -258,7 +237,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("13_l1x6d")
 id = 18
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_rltt6"]
@@ -267,7 +245,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("14_cys5c")
 id = 19
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_4jpvb"]
@@ -276,7 +253,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("15_crq3u")
 id = 20
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_bfmrh"]
@@ -285,7 +261,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("18_v86o4")
 id = 21
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_xej2d"]
@@ -294,7 +269,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("21_1lo4t")
 id = 22
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_y8iff"]
@@ -303,7 +277,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("20_ouyko")
 id = 23
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_p8h6v"]
@@ -312,7 +285,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("19_ngs3k")
 id = 24
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_17k4u"]
@@ -321,7 +293,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("16_pu3bs")
 id = 25
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_frq0a"]
@@ -330,7 +301,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("55_mgbm1")
 id = 26
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_mo4e2"]
@@ -339,7 +309,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("10_eksn8")
 id = 27
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_mdqp4"]
@@ -348,7 +317,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("60_oexaa")
 id = 28
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_0kn2x"]
@@ -357,7 +325,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("51_awnmn")
 id = 29
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_ea1gc"]
@@ -366,7 +333,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("50_r6fov")
 id = 30
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_6agee"]
@@ -375,7 +341,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("7_ehvag")
 id = 31
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_l4gd1"]
@@ -384,7 +349,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("35_glgke")
 id = 32
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_dhtb3"]
@@ -393,7 +357,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("48_5bsgw")
 id = 33
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_2x45q"]
@@ -402,7 +365,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("59_eeayk")
 id = 34
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_m5efq"]
@@ -411,7 +373,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("54_76118")
 id = 35
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_ibknk"]
@@ -420,7 +381,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("36_a6i7l")
 id = 36
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_qhf7g"]
@@ -429,7 +389,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("37_crr7r")
 id = 37
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_7ted2"]
@@ -438,7 +397,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("38_1kiw8")
 id = 38
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_wkofy"]
@@ -447,7 +405,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("39_oh7cu")
 id = 39
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_iqi2f"]
@@ -456,7 +413,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("40_shlil")
 id = 40
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_1m8xo"]
@@ -465,7 +421,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("41_quj10")
 id = 41
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_unfu2"]
@@ -474,7 +429,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("42_u1qav")
 id = 42
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_dbsj8"]
@@ -483,7 +437,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("43_74f1i")
 id = 43
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_k6ebp"]
@@ -492,7 +445,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("45_53iyw")
 id = 44
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_p5ki7"]
@@ -501,7 +453,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("43_1b81x")
 id = 45
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_ntiwd"]
@@ -510,7 +461,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("47_cjsp4")
 id = 46
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_8vdr2"]
@@ -519,7 +469,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("63_6mntc")
 id = 47
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_1jgfg"]
@@ -528,7 +477,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("53_ogqlw")
 id = 48
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_oqx13"]
@@ -537,7 +485,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("61_xthwq")
 id = 49
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_mcmto"]
@@ -546,7 +493,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("49_qvfu8")
 id = 50
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_3tnb1"]
@@ -555,7 +501,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("52_3ukn5")
 id = 51
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_cw3ei"]
@@ -564,7 +509,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("56_cklti")
 id = 52
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_r4jer"]
@@ -573,7 +517,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("57_gf1qu")
 id = 53
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_2kx4u"]
@@ -582,7 +525,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("62_p18s4")
 id = 54
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_bi3kr"]
@@ -591,16 +533,13 @@ script = ExtResource("2_xejte")
 item = ExtResource("62_hwjkr")
 id = 55
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_p18s4"]
 resource_name = "Training Wheels"
 script = ExtResource("2_xejte")
 item = ExtResource("70_nstv8")
-id = 0
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_4mfc7"]
@@ -609,7 +548,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("22_xbbng")
 id = 1
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_53efs"]
@@ -618,7 +556,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("23_2mgyt")
 id = 2
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_oegex"]
@@ -627,7 +564,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("24_rw6d2")
 id = 3
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_iqym3"]
@@ -636,7 +572,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("25_aqy3a")
 id = 4
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_fj72x"]
@@ -645,7 +580,6 @@ script = ExtResource("2_xejte")
 item = ExtResource("26_isgka")
 id = 5
 quantity = 0
-max_quantity = 9999
 allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_qvfu8"]
@@ -653,53 +587,46 @@ resource_name = "Sledge Hammer"
 script = ExtResource("2_xejte")
 item = ExtResource("76_5bsgw")
 id = 6
-quantity = 1
-max_quantity = 9999
 allow_stacking = true
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_cjsp4"]
+resource_name = "Ethereal Quartz"
+script = ExtResource("2_xejte")
+item = ExtResource("68_qonbv")
+id = 7
+allow_stacking = true
 
 [sub_resource type="Resource" id="Resource_53iyw"]
 resource_name = "Gray Key"
 script = ExtResource("2_xejte")
 item = ExtResource("71_musac")
-id = 0
 quantity = 0
-max_quantity = 9999
-allow_stacking = false
 
 [sub_resource type="Resource" id="Resource_nstv8"]
 resource_name = "Stencil 1"
 script = ExtResource("2_xejte")
 item = ExtResource("67_cjsp4")
-id = 0
 quantity = 0
-max_quantity = 9999
-allow_stacking = false
 
 [sub_resource type="Resource" id="Resource_musac"]
 resource_name = "Stencil 2"
 script = ExtResource("2_xejte")
 item = ExtResource("68_5bsgw")
 id = 1
-quantity = 1
-max_quantity = 9999
-allow_stacking = false
 
 [sub_resource type="Resource" id="Resource_qonbv"]
 resource_name = "Stencil 3"
 script = ExtResource("2_xejte")
 item = ExtResource("69_qvfu8")
 id = 2
-quantity = 1
-max_quantity = 9999
-allow_stacking = false
 
 [node name="Inventory" type="Node" unique_id=204631642 groups=["persist"]]
 script = ExtResource("1_jis06")
 money = 9999
 regular_items = Array[ExtResource("2_xejte")]([SubResource("Resource_q8puk"), SubResource("Resource_gu68u")])
 spell_scrolls = Array[ExtResource("2_xejte")]([SubResource("Resource_sftxp"), SubResource("Resource_12t4b"), SubResource("Resource_rowg0"), SubResource("Resource_ibagt"), SubResource("Resource_l818j"), SubResource("Resource_fgelr"), SubResource("Resource_u6mdr"), SubResource("Resource_r3tnb"), SubResource("Resource_6c7up"), SubResource("Resource_sf24g"), SubResource("Resource_vmywd"), SubResource("Resource_lon6c"), SubResource("Resource_mt7c8"), SubResource("Resource_fk2j4"), SubResource("Resource_5g4as"), SubResource("Resource_w7v76"), SubResource("Resource_mx8e1"), SubResource("Resource_04pk6"), SubResource("Resource_x2xc0"), SubResource("Resource_rltt6"), SubResource("Resource_4jpvb"), SubResource("Resource_bfmrh"), SubResource("Resource_xej2d"), SubResource("Resource_y8iff"), SubResource("Resource_p8h6v"), SubResource("Resource_17k4u"), SubResource("Resource_frq0a"), SubResource("Resource_mo4e2"), SubResource("Resource_mdqp4"), SubResource("Resource_0kn2x"), SubResource("Resource_ea1gc"), SubResource("Resource_6agee"), SubResource("Resource_l4gd1"), SubResource("Resource_dhtb3"), SubResource("Resource_2x45q"), SubResource("Resource_m5efq"), SubResource("Resource_ibknk"), SubResource("Resource_qhf7g"), SubResource("Resource_7ted2"), SubResource("Resource_wkofy"), SubResource("Resource_iqi2f"), SubResource("Resource_1m8xo"), SubResource("Resource_unfu2"), SubResource("Resource_dbsj8"), SubResource("Resource_k6ebp"), SubResource("Resource_p5ki7"), SubResource("Resource_ntiwd"), SubResource("Resource_8vdr2"), SubResource("Resource_1jgfg"), SubResource("Resource_oqx13"), SubResource("Resource_mcmto"), SubResource("Resource_3tnb1"), SubResource("Resource_cw3ei"), SubResource("Resource_r4jer"), SubResource("Resource_2kx4u"), SubResource("Resource_bi3kr")])
-equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_p18s4"), SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x"), SubResource("Resource_qvfu8")])
+equipment = Array[ExtResource("2_xejte")]([SubResource("Resource_p18s4"), SubResource("Resource_4mfc7"), SubResource("Resource_53efs"), SubResource("Resource_oegex"), SubResource("Resource_iqym3"), SubResource("Resource_fj72x"), SubResource("Resource_qvfu8"), SubResource("Resource_cjsp4")])
 key_items = Dictionary[StringName, ExtResource("2_xejte")]({
 &"GRAY_KEY": SubResource("Resource_53iyw"),
 &"STENCIL_1": SubResource("Resource_nstv8"),
