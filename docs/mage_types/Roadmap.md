@@ -674,11 +674,13 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [x] Texturing
 		- [ ] Adjust colors
 	- [ ] Fix holes in model exposed during waves
+	- [ ] Fix water texture
 - [ ] Beach 1 backtracking puzzle
 - [ ] Beach 2 #v0_7
-	- [ ] Layout
-	- [ ] Modeling
+	- [x] Layout
+	- [x] Modeling
 	- [ ] Textures
+	- [ ] Decor assets
 - [ ] Beach house #v0_7
 	- [ ] Layout
 	- [ ] Model

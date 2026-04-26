@@ -91,3 +91,14 @@ At this stage, the *Roadmap* will become the main portion of the design doc. The
 I've typically just deleted the previous list whenever its completed, but I think it could be worth saving these into a *Changelog* document, just detailing what specifically was included in that version and what was moved to later lists.
 
 Finally, I regret not keeping some form of *Devlog*, detailing what I did every day. The main utility of such a document would be in formulating my reasoning for certain decisions. I've frequently found myself returning to specific mechanics, trying to implement them and realizing why I gave up previously. It'd be helpful to have a devlog I could return to that would save me that work. This would also be a good space for describing how different systems and mechanics work.
+## Design Doc 4/25/26
+Here's my current understanding of my process (i.e. how I think I will plan my next project):
+1. Requirement Generation: Getting a near exhaustive list of requirements
+	1. Imagine opening game and playing through its starting level (or some hypothetical debug room)
+	2. Take notes about what happens and what components I would need
+2. Requirement Organization: Create Roadmap.md. Organize requirements under headers. Try to keep the number of headers low and have only 2 levels of headers (e.g. # Battle and ## Action Effects).
+3. Specifications: Requirements focus on "what" needs to be done, while specs focus on "how." 
+	1. Group requirements into "systems," which can all act independently from each other
+	2. Discussions and descriptions of these systems should be included in Roadmap.md, as close to related reqs as reasonable. 
+	3. Long discussions should be extracted into their own file, with the link in the relevant section
+4. Using Obsidian tags and the Cardboard addon, group requirements into version releases
