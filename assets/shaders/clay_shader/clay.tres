@@ -84,17 +84,10 @@ default_value_enabled = true
 default_value = Vector2(1, 1)
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_e008u"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1)]
 operator = 2
 
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_gr7fx"]
-parameter_name = "Albedo_Texture"
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ypfvc"]
-source = 5
-texture = ExtResource("1_gr7fx")
-texture_type = 2
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_iai5s"]
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_gr7fx"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
 op_type = 2
 operator = 2
@@ -143,7 +136,7 @@ nodes/vertex/5/position = Vector2(1640, 880)
 nodes/vertex/6/node = SubResource("VisualShaderNodeVectorOp_lajq0")
 nodes/vertex/6/position = Vector2(2780, 920)
 nodes/vertex/7/node = SubResource("VisualShaderNodeTexture3D_nn0dq")
-nodes/vertex/7/position = Vector2(1560, 1040)
+nodes/vertex/7/position = Vector2(1460, 1000)
 nodes/vertex/10/node = SubResource("VisualShaderNodeInput_gr7fx")
 nodes/vertex/10/position = Vector2(1920, 1380)
 nodes/vertex/11/node = SubResource("VisualShaderNodeVectorOp_nn0dq")
@@ -155,13 +148,13 @@ nodes/vertex/13/position = Vector2(1379.0559, 1368.875)
 nodes/vertex/connections = PackedInt32Array(5, 0, 6, 0, 6, 0, 0, 0, 10, 0, 11, 1, 7, 0, 12, 0, 12, 0, 11, 0, 11, 0, 6, 1, 13, 0, 12, 1)
 nodes/fragment/0/position = Vector2(3760, 760)
 nodes/fragment/35/node = SubResource("VisualShaderNodeInput_ut5nx")
-nodes/fragment/35/position = Vector2(260, 1740)
+nodes/fragment/35/position = Vector2(560, 1580)
 nodes/fragment/36/node = SubResource("VisualShaderNodeVectorOp_y5xbf")
 nodes/fragment/36/position = Vector2(2400, 1320)
 nodes/fragment/46/node = SubResource("VisualShaderNodeTexture_2ml2x")
 nodes/fragment/46/position = Vector2(2780, 1300)
 nodes/fragment/47/node = SubResource("VisualShaderNodeColorOp_3gse1")
-nodes/fragment/47/position = Vector2(3200, 1480)
+nodes/fragment/47/position = Vector2(3380, 1100)
 nodes/fragment/48/node = SubResource("VisualShaderNodeColorParameter_8dlmt")
 nodes/fragment/48/position = Vector2(2700, 680)
 nodes/fragment/51/node = SubResource("VisualShaderNodeVectorOp_70qxe")
@@ -179,7 +172,7 @@ nodes/fragment/72/position = Vector2(1960, 2060)
 nodes/fragment/73/node = SubResource("VisualShaderNodeVectorOp_2587f")
 nodes/fragment/73/position = Vector2(2240, 2140)
 nodes/fragment/74/node = SubResource("VisualShaderNodeFloatParameter_ekaer")
-nodes/fragment/74/position = Vector2(1900, 2340)
+nodes/fragment/74/position = Vector2(1920, 2380)
 nodes/fragment/76/node = SubResource("VisualShaderNodeFloatParameter_vbr5h")
 nodes/fragment/76/position = Vector2(1360, 2060)
 nodes/fragment/77/node = SubResource("VisualShaderNodeVectorOp_88cgj")
@@ -191,13 +184,9 @@ nodes/fragment/79/position = Vector2(2080, 1460)
 nodes/fragment/80/node = SubResource("VisualShaderNodeFloatParameter_6rk3g")
 nodes/fragment/80/position = Vector2(2800, 940)
 nodes/fragment/81/node = SubResource("VisualShaderNodeVec2Parameter_5s183")
-nodes/fragment/81/position = Vector2(780, 1540)
+nodes/fragment/81/position = Vector2(480, 1680)
 nodes/fragment/82/node = SubResource("VisualShaderNodeVectorOp_e008u")
 nodes/fragment/82/position = Vector2(1120, 1680)
-nodes/fragment/83/node = SubResource("VisualShaderNodeTexture2DParameter_gr7fx")
-nodes/fragment/83/position = Vector2(2380, 340)
-nodes/fragment/84/node = SubResource("VisualShaderNodeTexture_ypfvc")
-nodes/fragment/84/position = Vector2(2720, 380)
-nodes/fragment/85/node = SubResource("VisualShaderNodeVectorOp_iai5s")
-nodes/fragment/85/position = Vector2(3120, 480)
-nodes/fragment/connections = PackedInt32Array(51, 0, 36, 0, 70, 0, 68, 0, 68, 0, 53, 0, 71, 0, 70, 1, 68, 0, 72, 0, 76, 0, 68, 1, 72, 0, 73, 0, 74, 0, 73, 1, 53, 0, 77, 0, 73, 0, 77, 1, 79, 0, 36, 1, 81, 0, 82, 0, 82, 0, 70, 0, 78, 0, 51, 0, 82, 0, 51, 1, 80, 0, 0, 3, 35, 0, 82, 1, 36, 0, 46, 0, 77, 0, 47, 1, 46, 0, 47, 0, 47, 0, 0, 8, 83, 0, 84, 2, 48, 0, 85, 1, 84, 0, 85, 0, 85, 0, 0, 0, 48, 0, 0, 0)
+nodes/fragment/83/node = SubResource("VisualShaderNodeVectorOp_gr7fx")
+nodes/fragment/83/position = Vector2(3380, 1280)
+nodes/fragment/connections = PackedInt32Array(51, 0, 36, 0, 70, 0, 68, 0, 68, 0, 53, 0, 71, 0, 70, 1, 68, 0, 72, 0, 76, 0, 68, 1, 72, 0, 73, 0, 74, 0, 73, 1, 53, 0, 77, 0, 73, 0, 77, 1, 79, 0, 36, 1, 82, 0, 70, 0, 78, 0, 51, 0, 82, 0, 51, 1, 80, 0, 0, 3, 36, 0, 46, 0, 35, 0, 82, 0, 48, 0, 0, 0, 81, 0, 82, 1, 77, 0, 47, 1, 46, 0, 47, 0, 46, 0, 83, 0, 77, 0, 83, 1, 83, 0, 0, 8)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7ufn0uppvqfk"]
 
 [ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/shaders/clay_shader/clay.tres" id="1_l5n25"]
-[ext_resource type="Shader" uid="uid://bn16mt3hnf10q" path="res://assets/shaders/clay_shader/waves.gdshader" id="2_txxsr"]
+[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay.gdshader" id="2_txxsr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8a4c8"]
 render_priority = 0
@@ -24,19 +24,43 @@ subdivide_depth = 100
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxk2m"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dy8t"]
-render_priority = 0
-shader = ExtResource("2_txxsr")
-shader_parameter/testdirection = Vector2(50, 50)
-shader_parameter/speeed = 0.0
-shader_parameter/steeepness = 1.0
-shader_parameter/aamplitude = 1.0
-shader_parameter/waavelength = 1.135
-
 [sub_resource type="BoxMesh" id="BoxMesh_8a4c8"]
-material = SubResource("ShaderMaterial_3dy8t")
 subdivide_width = 100
 subdivide_height = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txxsr"]
+render_priority = 0
+shader = ExtResource("2_txxsr")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_3dy8t"]
+size = Vector3(2, 2, 2)
+subdivide_width = 100
+subdivide_height = 100
+
+[sub_resource type="BoxMesh" id="BoxMesh_pevn1"]
+subdivide_width = 100
+subdivide_height = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dy8t"]
+render_priority = 0
+shader = ExtResource("1_l5n25")
+shader_parameter/Lumpiness = 0.0
+shader_parameter/BaseColor = Color(1, 1, 1, 1)
+shader_parameter/Roughness = 1.0
+shader_parameter/FingertprintOffset = 0.0
+shader_parameter/UVScale = Vector2(1, 1)
+shader_parameter/FingertprintScale = 1.0
+shader_parameter/CrackOffset = 1.0
+shader_parameter/CrackScale = 0.5
+shader_parameter/CrackDetail = 1.0
 
 [node name="Node3D" type="Node3D" unique_id=1192099275]
 
@@ -57,3 +81,23 @@ mesh = SubResource("BoxMesh_8a4c8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=409238399]
 shape = SubResource("BoxShape3D_oxk2m")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1304917326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025634766, 1.0332642, 6.4897156)
+mesh = SubResource("BoxMesh_8a4c8")
+surface_material_override/0 = SubResource("ShaderMaterial_txxsr")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=2073144066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.545166, 0.9968872, 8.166177)
+mesh = SubResource("BoxMesh_3dy8t")
+surface_material_override/0 = SubResource("ShaderMaterial_txxsr")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=567953963]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0025634766, 1.0332642, 10.603079)
+mesh = SubResource("BoxMesh_pevn1")
+surface_material_override/0 = SubResource("ShaderMaterial_txxsr")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=455616834]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0025634766, 1.0332642, 13.208341)
+mesh = SubResource("BoxMesh_pevn1")
+surface_material_override/0 = SubResource("ShaderMaterial_3dy8t")
