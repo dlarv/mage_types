@@ -324,3 +324,18 @@ toggle_battle_feed={
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.0338533, 0.0338533, 0.0338533, 1)
 occlusion_culling/use_occlusion_culling=true
+
+[shader_globals]
+
+fingerprints={
+"type": "sampler2D",
+"value": "res://assets/shaders/clay_shader/textures/base_clay_print_normal.png"
+}
+cracks={
+"type": "sampler2D",
+"value": "res://assets/shaders/clay_shader/textures/base_clay_crack_normal.png"
+}
+crack_detail={
+"type": "sampler2D",
+"value": "res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png"
+}

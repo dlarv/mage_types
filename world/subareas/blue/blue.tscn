@@ -1232,6 +1232,9 @@ curve = SubResource("Curve3D_egugs")
 transform = Transform3D(-4.371139e-06, -100, 0, 100, -4.371139e-06, 0, 0, 0, 100, 40.03589, 0.061828613, 38.31311)
 mesh = SubResource("PlaneMesh_egugs")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Beach/BeachChunk/Chunk" unique_id=1172720501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.531616, 5.7964478, -6.2181396)
+
 [node name="HotelRooms" type="Node3D" parent="." unique_id=1812581436]
 
 [node name="LobbyChunk" type="Area3D" parent="HotelRooms" unique_id=889512105 node_paths=PackedStringArray("chunk") groups=["persist"]]

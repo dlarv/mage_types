@@ -1,35 +1,49 @@
 shader_type spatial;
 
+const float GLOBAL_SCALING = 10.0;
+
 global uniform sampler2D fingerprints;
 global uniform sampler2D cracks;
 global uniform sampler2D crack_detail;
 
 uniform vec4 base_color: source_color = vec4(1, 1, 1, 1);
-uniform float roughness = 1.0;
+uniform float roughness: hint_range(0.0, 1.0, 0.1) = 1.0;
 uniform vec2 uv_scale = vec2(1, 1);
 uniform float fingerprint_offset = 0;
-uniform float fingerprint_scale = 1;
+uniform float fingerprint_scale: hint_range(0.0, 1.0, 0.1) = 1;
 uniform float crack_offset = 0;
-uniform float crack_scale = 1;
-uniform float crack_detail_level = 0.5;
+uniform float crack_scale: hint_range(0.0, 1.0, 0.1) = 1;
+uniform float crack_detail_level: hint_range(0.0, 1.0, 0.1) = 0.5;
+
+varying mat4 inv_modelview_matrix;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
+	inv_modelview_matrix = inverse(MODELVIEW_MATRIX);
+}
+
+vec3 get_triplanar(vec4 coords, sampler2D tex, vec3 weights) {
+	vec3 x = texture(tex, coords.zy).rgb;
+	vec3 y = texture(tex, coords.xz).rgb;
+	vec3 z = texture(tex, coords.xy).rgb;
+	return x * weights.x + y * weights.y + z * weights.z;
 }
 
 void fragment() {
 	ALBEDO = base_color.rgb;
 	ROUGHNESS = roughness;
 	
-	vec2 scaled_uv = uv_scale * UV;
-	vec2 crack_uv = (scaled_uv + crack_offset) * crack_scale;
-	vec2 fingerprint_uv = (scaled_uv + fingerprint_offset) * fingerprint_scale;
+	// Must be neg, otherwise normals are inverted
+	vec4 proj_coords = (inv_modelview_matrix * vec4(VERTEX, 1.0) / GLOBAL_SCALING);
+	vec3 world_normal = abs(inv_modelview_matrix * vec4(NORMAL, 0.0)).xyz;
+	vec3 normal_weights = world_normal / (world_normal.x + world_normal.y + world_normal.z);
 	
-	vec3 crack_base_normal = texture(cracks, crack_uv).xyz;
-	vec3 crack_detail_normal = texture(crack_detail, crack_uv).xyz * crack_detail_level;
-	vec3 crack_normal = crack_base_normal + crack_detail_normal;
+	vec4 crack_uv = proj_coords * crack_scale + crack_offset;
+	vec3 crack_base_normal = get_triplanar(crack_uv, cracks, normal_weights);
+	vec3 crack_detail_normal = get_triplanar(crack_uv, crack_detail, normal_weights);
+	vec3 crack_normal = crack_base_normal + crack_detail_normal * crack_detail_level;
 	
-	vec3 fingerprint_normal = texture(fingerprints, fingerprint_uv).xyz;
-	
+	vec4 fingerprint_uv = proj_coords * fingerprint_scale + fingerprint_offset;
+	vec3 fingerprint_normal = get_triplanar(fingerprint_uv, fingerprints, normal_weights);
 	NORMAL = fingerprint_normal * crack_normal;
 }
