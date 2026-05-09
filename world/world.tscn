@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="15_b2suy"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="18_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/story/bosses/tutorial_bosses/boss_3.tscn" id="20_bwxdu"]
-[ext_resource type="PackedScene" uid="uid://cvgbd764goyhg" path="res://data/story/characters/bartender.tscn" id="23_3ljsx"]
 
 [sub_resource type="Environment" id="Environment_b2suy"]
 ambient_light_source = 3
@@ -142,10 +141,6 @@ _element = 0
 
 [node name="Boss3" parent="Overworld" unique_id=1426542449 groups=["detached_env"] instance=ExtResource("20_bwxdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6451, -1.48372, -120.125)
-_element = 0
-
-[node name="Bartender" parent="Overworld" unique_id=1994014427 instance=ExtResource("23_3ljsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, -1, -102.7)
 _element = 0
 
 [node name="MiniBoss1" parent="Overworld" unique_id=442518573 instance=ExtResource("15_b2suy")]
