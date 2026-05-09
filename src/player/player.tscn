@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://wbbhxo5h3qcy" path="res://data/story/battle_actors/player_characters/partner_battle_actor.tres" id="4_x42xx"]
 [ext_resource type="PackedScene" uid="uid://co5233wd41d3g" path="res://src/overworld/overworld_spell_system/spell_manager.tscn" id="6_jiejy"]
 [ext_resource type="Resource" uid="uid://bsjfeyutvwl8i" path="res://data/items/equipment/sledge_hammer.tres" id="7_x42xx"]
+[ext_resource type="Resource" uid="uid://bw36a1v4mhwx4" path="res://data/items/equipment/ethereal_quartz.tres" id="8_cwolq"]
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="8_l271a"]
 [ext_resource type="PackedScene" uid="uid://dx4vs3amy34h2" path="res://assets/3d/characters/goose/goose_v4.blend" id="9_8ydov"]
 [ext_resource type="Shader" uid="uid://7ptnun8yfice" path="res://assets/shaders/battle_actor_shader/battle_actor_shader.gdshader" id="9_ylhto"]
@@ -248,7 +249,8 @@ lower_fade = 0.000162534
 [node name="SpellManager" parent="." unique_id=983802140 node_paths=PackedStringArray("spell_mapper") instance=ExtResource("6_jiejy")]
 spell_mapper = {
 ExtResource("7_x42xx"): NodePath("DestroySpell"),
-ExtResource("8_l271a"): NodePath("StasisSpell")
+ExtResource("8_l271a"): NodePath("StasisSpell"),
+ExtResource("8_cwolq"): NodePath("PortalSpell")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=848499741]
@@ -260,7 +262,7 @@ anim_player = NodePath("../goose_v4/AnimationPlayer")
 [node name="goose_v4" parent="." unique_id=1051473032 instance=ExtResource("9_8ydov")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Skeleton3D" parent="goose_v4/rig" parent_id_path=PackedInt32Array(1051473032, 2912845) index="0" unique_id=428674531]
+[node name="Skeleton3D" parent="goose_v4/rig" parent_id_path=PackedInt32Array(1051473032, 258281028) index="0" unique_id=412199580]
 bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
 bones/1/position = Vector3(0.023627762, 0.0870098, 4.5006638)
 bones/1/rotation = Quaternion(0.7904554, 0, 0, 0.6125196)
@@ -476,7 +478,7 @@ bones/273/rotation = Quaternion(7.5323285e-08, -6.5765892e-18, 1, -1.8558483e-15
 bones/274/position = Vector3(-0.41736737, 2.3564405, 4.730637)
 bones/274/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
 
-[node name="Torso_005" parent="goose_v4/rig/Skeleton3D" index="0" unique_id=159716745]
+[node name="Torso_005" parent="goose_v4/rig/Skeleton3D" index="0" unique_id=385105348]
 surface_material_override/0 = SubResource("ShaderMaterial_2smqc")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
