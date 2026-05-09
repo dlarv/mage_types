@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dwdvquegcvsxf"]
+
+[ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/battle_sprite/battle_sprite.tscn" id="1_hss75"]
+[ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/mesh_managers/FresnelMeshManager.gd" id="2_ykvsg"]
+
+[sub_resource type="Shader" id="Shader_ykvsg"]
+code = "shader_type spatial;
+
+// For some reason 0,0 on the gradient is white, not black.
+// This is the point where the 
+const float OFFSET = .002;
+
+uniform sampler2D gradient;
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 base_color = vec3(0.0);
+	float coord = fresnel(2.5, NORMAL, VIEW);
+	vec4 col = texture(gradient, vec2(coord + OFFSET, 0));
+	ALBEDO = base_color + col.rgb;
+	//ALBEDO = vec3(coord);
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_dsbs2"]
+offsets = PackedFloat32Array(0.03731343, 0.12109375)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_igoh3"]
+gradient = SubResource("Gradient_dsbs2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ikwg"]
+render_priority = 0
+shader = SubResource("Shader_ykvsg")
+shader_parameter/gradient = SubResource("GradientTexture1D_igoh3")
+
+[sub_resource type="SphereMesh" id="SphereMesh_hss75"]
+radius = 1.0
+height = 2.0
+
+[node name="BattleSprite" unique_id=879330883 instance=ExtResource("1_hss75")]
+
+[node name="MeshManager" parent="." index="7" node_paths=PackedStringArray("mesh")]
+script = ExtResource("2_ykvsg")
+material = SubResource("ShaderMaterial_0ikwg")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshManager" index="0" unique_id=955140378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7069092, 0)
+mesh = SubResource("SphereMesh_hss75")
+surface_material_override/0 = SubResource("ShaderMaterial_0ikwg")

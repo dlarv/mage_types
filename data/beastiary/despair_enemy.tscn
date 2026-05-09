@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b8drm0dljf2wc"]
+[gd_scene format=3 uid="uid://b8drm0dljf2wc"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_00ir8"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_fugro"]
@@ -9,38 +9,34 @@
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="5_shrlj"]
 [ext_resource type="Resource" uid="uid://bs0e8xbhke4v0" path="res://data/battle_system/battle_actions/attacks/elementals/red/crush.tres" id="6_shrlj"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="6_u31sm"]
+[ext_resource type="PackedScene" uid="uid://dwdvquegcvsxf" path="res://data/monster_battle_sprites/orb_placeholder.tscn" id="7_u31sm"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="8_dhfvo"]
 [ext_resource type="PackedScene" uid="uid://d36jyhw1q6kxm" path="res://src/beastiary/components/behaviors/aggressive_behavior.tscn" id="9_dhfvo"]
 
 [sub_resource type="Resource" id="Resource_s6b3u"]
 script = ExtResource("4_olt0l")
 _base_melee_attack = 18.0
-_base_ranged_attack = 10.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 16.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_rovan"]
 script = ExtResource("2_fugro")
 name = "Despair"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_s6b3u")
 reset_hp_after_battle = false
-_element1 = "purple"
-_element2 = "purple"
-_alignment = "purple"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("3_dhfvo")]([ExtResource("4_dhfvo"), ExtResource("5_olt0l"), ExtResource("6_shrlj")])
+sprite_path = ExtResource("7_u31sm")
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_shrlj"]
 resource_local_to_scene = true
 script = ExtResource("8_dhfvo")
-dialog_ids = Array[ExtResource("5_shrlj")]([])
 reward_xp = 10.0
-reward_items = Array[ExtResource("6_u31sm")]([])
 metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fugro"]
@@ -50,7 +46,7 @@ metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
 [sub_resource type="Gradient" id="Gradient_olt0l"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(0.478431, 0, 0.772549, 1, 0.478431, 0, 0.772549, 1)
+colors = PackedColorArray(0, 0, 0.862745, 1, 0, 0, 0.862745, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_shrlj"]
 gradient = SubResource("Gradient_olt0l")
@@ -61,29 +57,29 @@ albedo_texture = SubResource("GradientTexture1D_shrlj")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrer7"]
 radius = 0.7
 
-[node name="DespairEnemy" type="CharacterBody3D"]
+[node name="DespairEnemy" type="CharacterBody3D" unique_id=822855005]
 script = ExtResource("1_00ir8")
 monster_id = 9
 team = Array[ExtResource("2_fugro")]([SubResource("Resource_rovan")])
 ai = SubResource("Resource_shrlj")
 is_transmutable = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1242486106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_fugro")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2145822789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_dhfvo")
 surface_material_override/0 = SubResource("StandardMaterial3D_u31sm")
 
-[node name="AggressiveBehavior" parent="." instance=ExtResource("9_dhfvo")]
+[node name="AggressiveBehavior" parent="." unique_id=594355844 instance=ExtResource("9_dhfvo")]
 
-[node name="BattleTrigger" type="Area3D" parent="."]
+[node name="BattleTrigger" type="Area3D" parent="." unique_id=1835352347]
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleTrigger" unique_id=1343879315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_yrer7")
 

@@ -1,55 +1,55 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4a31odwnedry"]
+[gd_scene format=3 uid="uid://c4a31odwnedry"]
 
 [ext_resource type="Script" uid="uid://cmcakb8l8y1ao" path="res://src/battle_system/gui/battle_sprite/BattleSprite.gd" id="1_dntod"]
 [ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_n1qvi"]
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/battle_sprite/pin_manager.tscn" id="3_ya2xk"]
 [ext_resource type="PackedScene" uid="uid://bor2kywevh8c" path="res://src/battle_system/gui/battle_sprite/emitter_controller.tscn" id="4_yav0q"]
-[ext_resource type="PackedScene" uid="uid://cspilfets6fr3" path="res://src/battle_system/gui/battle_sprite/mesh_manager.tscn" id="5_4ho0o"]
+[ext_resource type="PackedScene" uid="uid://cspilfets6fr3" path="res://src/battle_system/gui/battle_sprite/mesh_managers/simple_mesh_manager.tscn" id="5_4ho0o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ocyf"]
-size = Vector3(1.5, 0.2, 1.5)
+size = Vector3(5, 0.2, 5)
 
-[node name="BattleSprite" type="Node3D" node_paths=PackedStringArray("transmutation_hint")]
+[node name="BattleSprite" type="Node3D" unique_id=1135726583 node_paths=PackedStringArray("transmutation_hint")]
 script = ExtResource("1_dntod")
 transmutation_hint = NodePath("TransmutationHint")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1798959719]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1419480897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_a1sjx")
 
-[node name="Indicator" type="MeshInstance3D" parent="."]
+[node name="Indicator" type="MeshInstance3D" parent="." unique_id=1459734834]
 mesh = SubResource("BoxMesh_5ocyf")
 
-[node name="TransmutationHint" parent="." instance=ExtResource("2_n1qvi")]
+[node name="TransmutationHint" parent="." unique_id=477558187 instance=ExtResource("2_n1qvi")]
 visible = false
 offset_right = 228.0
 offset_bottom = 227.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="PinManager" parent="." instance=ExtResource("3_ya2xk")]
+[node name="PinManager" parent="." unique_id=1721910986 instance=ExtResource("3_ya2xk")]
 
-[node name="EmitterController" parent="." instance=ExtResource("4_yav0q")]
+[node name="EmitterController" parent="." unique_id=1933626235 instance=ExtResource("4_yav0q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.433571)
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="." unique_id=412857806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92013, 0)
 billboard = 1
 font_size = 64
 outline_size = 16
 
-[node name="ActionLabel3D" type="Label3D" parent="."]
+[node name="ActionLabel3D" type="Label3D" parent="." unique_id=890925691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92013, 0)
 billboard = 1
 font_size = 64
 outline_size = 16
 
-[node name="MeshManager" parent="." instance=ExtResource("5_4ho0o")]
+[node name="MeshManager" parent="." unique_id=2002955007 instance=ExtResource("5_4ho0o")]
 
 [connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]

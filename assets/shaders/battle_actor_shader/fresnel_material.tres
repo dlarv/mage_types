@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d0ycmk0kkneuc"]
+
+[ext_resource type="Shader" uid="uid://dll6hbvtmfshr" path="res://assets/shaders/battle_actor_shader/fresnel.gdshader" id="1_suhxg"]
+
+[sub_resource type="Gradient" id="Gradient_87f5f"]
+offsets = PackedFloat32Array(0.03515625, 0.07971015)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b8sqk"]
+gradient = SubResource("Gradient_87f5f")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_suhxg")
+shader_parameter/gradient = SubResource("GradientTexture1D_b8sqk")

@@ -1,8 +1,7 @@
-extends Node3D
+extends MeshManager
 
 const BattleActorShader := preload("res://assets/shaders/battle_actor_shader/battle_actor_shader.gdshader")
 
-@export var mesh: MeshInstance3D
 @export var complex_diffuse_1: Texture2D
 @export var complex_diffuse_2: Texture2D
 
@@ -13,7 +12,6 @@ func setup(actor: BattleActor) -> void:
 	if complex_diffuse_1:
 		_mat1 = ShaderMaterial.new()
 		mesh.set_surface_override_material(0, _mat1)
-		#_mat1.shader = BattleActorShader.new()
 		_mat1.shader =BattleActorShader.duplicate()
 		_mat1.set_shader_parameter("element_id", int(actor.element1.id))
 		_mat1.set_shader_parameter("diffuse_map", complex_diffuse_1)

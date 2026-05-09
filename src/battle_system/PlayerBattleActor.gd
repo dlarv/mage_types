@@ -93,5 +93,3 @@ func update_alignment() ->  Dictionary:
 		output["element"] = null
 
 	return output
-
-
