@@ -329,14 +329,16 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [x]  Pickup objects and place in inventory.
 	- [x] Open chests.
 	- [x] Drag objects.
-- [ ] Each player action should have corresponding animations. #v0_7
+- [x] Each player action should have corresponding animations. #v0_7
 	- [x] Idle
-		- [ ] space weight shifting out more
+		- [x] space weight shifting out more
 	- [x] Walk
-		- [ ] Get feedback, I can't tell what's off
-	- [ ] Jump
-	- [ ] Dash
-- [ ] Player battle animations
+		- [x] Get feedback, I can't tell what's off
+			- I think I fixed it (broadstrokes), so it can wait until I get feedback for the rest
+	- [x] Jump
+	- [x] Dash
+		- Removed dash, as I didn't like how it looked
+- [x] Player battle animations
 	- [x] Channeling
 	- [x] Attack
 	- [x] Getting hit
@@ -344,16 +346,16 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 - [ ] Player Audio FX #v0_8 
 	- [ ] Footsteps
 	- [ ] Dash and jump sounds
-- [ ] Textures
+- [x] Textures
 	- [x] Compare NextPassTransparency with Swapping diffuse maps
 		- Swapping diffuse maps looks far better than the next pass method
-	- [ ] Retexture: Due to the new battle shader, I can now use more subtle color palettes #v0_7
+	- [x] Retexture: Due to the new battle shader, I can now use more subtle color palettes #v0_7
 		- [x] Change primary/secondary color dynamically
 			- [x] Skin is primary color
 			- [x] Hair highlights are secondary
-		- [ ] Color palette selection and assignment
-		- [ ] Bake textures
-	- [ ] BugFix: Adjust weight painting for shoulders, so they stop clipping through jacket #v0_7
+		- [x] Color palette selection and assignment
+		- [x] Bake textures
+	- [x] BugFix: Adjust weight painting for shoulders, so they stop clipping through jacket #v0_7
 ### Playable Character Shader
 - [x] Dynamically change aspects of a character's color palette to match their current typing
 `PCShaderManager: Node3D` 
