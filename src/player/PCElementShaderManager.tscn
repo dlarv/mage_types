@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://1fxri2vcuann"]
+
+[ext_resource type="Script" uid="uid://cjf33furlxs62" path="res://src/player/ElementShaderManager.gd" id="1_v2r3v"]
+
+[node name="ElementShaderManager" type="Node3D" unique_id=1974747347]
+script = ExtResource("1_v2r3v")

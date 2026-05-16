@@ -344,15 +344,32 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 - [ ] Player Audio FX #v0_8 
 	- [ ] Footsteps
 	- [ ] Dash and jump sounds
-- [x] Textures
+- [ ] Textures
 	- [x] Compare NextPassTransparency with Swapping diffuse maps
 		- Swapping diffuse maps looks far better than the next pass method
-	- [ ] Retexuture: Due to the new battle shader, I can now use more subtle color palettes #v0_7
-		- [ ] Change primary/secondary color dynamically
-			- [ ] Skin is primary color
-			- [ ] Hair highlights are secondary
+	- [ ] Retexture: Due to the new battle shader, I can now use more subtle color palettes #v0_7
+		- [x] Change primary/secondary color dynamically
+			- [x] Skin is primary color
+			- [x] Hair highlights are secondary
 		- [ ] Color palette selection and assignment
-		- [ ] Bake texture
+		- [ ] Bake textures
+	- [ ] BugFix: Adjust weight painting for shoulders, so they stop clipping through jacket #v0_7
+### Playable Character Shader
+- [x] Dynamically change aspects of a character's color palette to match their current typing
+`PCShaderManager: Node3D` 
+`PCShader: Shader`
+`ElementMap: TextureMap`
+
+`ElementMap` will use *red* channel to encode primary type influence and *green* to encode secondary. The *blue* channel will encode whether this pixel is affected by an elemental color and is used to weight the default diffuse map.
+
+>[!note] Creating ElementMap in Blender
+> 1. MixColor node selects between diffuse and element colors
+> 2. Create a float value in Materials menu called 'element_map' (or something similar)
+> 3. Paste driver onto factor field on MixColor node
+>    
+> This way, color sets can be easily swapped between when baking.
+
+To use this shader to a model in Godot, assign `character_clay.gdshader` to the mesh's `material_override` slot. Then assign all of its texture maps. Finally, add and `PCElementShaderManager` node to its scene, assigning its `BattleActor` and `Mesh`.
 ### Grabbables
 In v0.3.26, all interactable objects were managed thru a child (the grabbable). I find this system clunky.
 
