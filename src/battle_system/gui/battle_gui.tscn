@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1q27rku2p2g2"]
+[gd_scene format=3 uid="uid://1q27rku2p2g2"]
 
 [ext_resource type="Script" uid="uid://hggtsq73slh7" path="res://src/battle_system/gui/BattleGUI.gd" id="1_ik08k"]
 [ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
@@ -17,16 +17,16 @@ albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
 material = SubResource("StandardMaterial3D_u5iq7")
 size = Vector2(50, 50)
 
-[node name="BattleGUI" type="Node3D" node_paths=PackedStringArray("message_box", "team_display", "player_controls", "turn_order_display")]
+[node name="BattleGUI" type="Node3D" unique_id=2016789074 node_paths=PackedStringArray("message_box", "team_display", "player_controls", "turn_order_display")]
 script = ExtResource("1_ik08k")
 message_box = NodePath("CanvasLayer/HBoxContainer/DisplayContainer/InfoDisplay")
 team_display = NodePath("TeamDisplay")
 player_controls = NodePath("CanvasLayer/HBoxContainer/PlayerControls")
 turn_order_display = NodePath("CanvasLayer/HBoxContainer/TurnOrder/VBoxContainer")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=918362704]
 
-[node name="Bg" type="Panel" parent="CanvasLayer"]
+[node name="Bg" type="Panel" parent="CanvasLayer" unique_id=640294502]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1959922260]
 custom_minimum_size = Vector2(0, 250)
 anchors_preset = 12
 anchor_top = 1.0
@@ -45,62 +45,62 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 
-[node name="PlayerControls" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_s8f4v")]
+[node name="PlayerControls" parent="CanvasLayer/HBoxContainer" unique_id=1712772515 instance=ExtResource("2_s8f4v")]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="DisplayContainer" type="TabContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="DisplayContainer" type="TabContainer" parent="CanvasLayer/HBoxContainer" unique_id=1377953397]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 1
 tabs_visible = false
 
-[node name="InfoDisplay" parent="CanvasLayer/HBoxContainer/DisplayContainer" instance=ExtResource("4_k2fdd")]
+[node name="InfoDisplay" parent="CanvasLayer/HBoxContainer/DisplayContainer" unique_id=380913860 instance=ExtResource("4_k2fdd")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
 metadata/_tab_index = 0
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/HBoxContainer/DisplayContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/HBoxContainer/DisplayContainer" unique_id=622247145]
 layout_mode = 2
 columns = 4
 metadata/_tab_index = 1
 
-[node name="TurnOrder" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="TurnOrder" type="VBoxContainer" parent="CanvasLayer/HBoxContainer" unique_id=1061438082]
 layout_mode = 2
 tooltip_text = "The order in which the combatants will move. This does not account for priority!"
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/TurnOrder"]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/TurnOrder" unique_id=428602661]
 layout_mode = 2
 text = "Speed Ranking"
 label_settings = SubResource("LabelSettings_po4wd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/TurnOrder"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/TurnOrder" unique_id=243859800]
 layout_mode = 2
 
-[node name="Ground" type="MeshInstance3D" parent="."]
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=463859644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101, 0)
 mesh = SubResource("PlaneMesh_633xf")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1968339942]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 105, 10)
 
-[node name="TeamDisplay" parent="." node_paths=PackedStringArray("ally_container") instance=ExtResource("2_ov218")]
+[node name="TeamDisplay" parent="." unique_id=1566178055 node_paths=PackedStringArray("ally_container") instance=ExtResource("2_ov218")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 ally_container = NodePath("../CanvasLayer/HBoxContainer/DisplayContainer/GridContainer")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 100, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2108939490]
+transform = Transform3D(-0.43535665, -0.63657856, 0.63657856, 0, 0.70710677, 0.70710677, -0.9002581, 0.30784371, -0.30784371, 0, 104.859955, 0)
 light_energy = 0.5
 
-[node name="BattleAnimator" parent="." instance=ExtResource("5_s7ygr")]
+[node name="BattleAnimator" parent="." unique_id=1072972826 instance=ExtResource("5_s7ygr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=563261535]
 
-[node name="MessageFeed" parent="CanvasLayer2" instance=ExtResource("4_po4wd")]
+[node name="MessageFeed" parent="CanvasLayer2" unique_id=2064673381 instance=ExtResource("4_po4wd")]
 unique_name_in_owner = true
 visible = false
 unresizable = false
