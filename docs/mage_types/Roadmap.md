@@ -28,6 +28,9 @@
 #v0_8: Audio polish
 #v0_9: GUI and Settings
 # The List
+## Bugs
+- [ ] When player is defeated in battle, it immediately ends before playing animations, etc
+- [ ] Alignment calculations at end of battle crashing due to empty list of elements
 ## Battle 
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
 	- Use `[url]` tag.
@@ -42,6 +45,13 @@
 		- [x] Use 3d model pins instead of 2d sprites.
 	- [x] Stat changes.
 	- [x] Use 3d models instead of 2d sprites for characters.
+
+- [ ] Fresnel shader #v0_7 
+	- [x] Test to ensure shader works with more complicated models
+	- [x] Dynamically change battle sprite albedo using fresnel effect
+	- [x] Ensure each battle actor has their own instance of shader
+	- [ ] Fade between default texture and fresnel when battle starts
+	- [ ] Animation when character is defeated, burst
 
 - [x] Show information about the following, when queried by player
 	- [x] Attack info.
@@ -337,6 +347,12 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 - [x] Textures
 	- [x] Compare NextPassTransparency with Swapping diffuse maps
 		- Swapping diffuse maps looks far better than the next pass method
+	- [ ] Retexuture: Due to the new battle shader, I can now use more subtle color palettes #v0_7
+		- [ ] Change primary/secondary color dynamically
+			- [ ] Skin is primary color
+			- [ ] Hair highlights are secondary
+		- [ ] Color palette selection and assignment
+		- [ ] Bake texture
 ### Grabbables
 In v0.3.26, all interactable objects were managed thru a child (the grabbable). I find this system clunky.
 
@@ -471,7 +487,7 @@ Beastiary will be a singleton. WildEnemyActors and Battle will obtain their rele
 - [ ] Map menu improvements
 	- [ ] Icon showing which room player is in (use Player.active_chunk)
 	- [ ] Ability to write on map?
-## Character Management and Inventory (CHAR)
+## Character Management and Inventory 
 - [x] Opening a menu should pause overworld/game.
 ### Save System
 - [ ] Player should have ability to save/load games.
@@ -672,7 +688,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [x] Layout
 	- [x] Modeling
 	- [x] Texturing
-		- [ ] Adjust colors
+		- [x] Adjust colors
 	- [ ] Fix holes in model exposed during waves
 	- [ ] Fix water texture
 - [ ] Beach 1 backtracking puzzle
@@ -689,10 +705,15 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Change from BPM -> ROY
 ### Rec Room
 - [ ] Bartender #v0_7
-	- [ ] Design
-	- [ ] Model
-	- [ ] Texturing
+	- [x] Design
+	- [x] Model
+		- [x] Body
+		- [x] Head
+		- [x] Hair
+	- [x] Texturing
+	- [ ] Rigging
 	- [ ] Idle Animation
+		- [ ] Cleaning a glass, passes it to tentacle, which puts it away
 	- [ ] Rewrite dialogue
 - [ ] Adonis Enclave #v0_7
 	- [ ] Design
@@ -709,6 +730,32 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [ ] Attack
 		- [ ] Getting hit
 		- [ ] Battle idle
+
+>[!note] Blue Aligned Modeling
+>I have a base template blue-aligned character. To create a new character, all you have to do is:
+>1. Duplicate trunk.bak
+>2. Convert to mesh
+>3. Use proportional editing (random) to push and pull vertices until sufficiently lumpy
+>4. When happy with lumpiness, flatten topmost ring of vertices (s > z > 0)
+>5. Scale trunk to be more proportional with torso
+>6. Combine torso and trunk
+>7. Extrude tentacles stumps
+>8. Duplicate and scale tentacles and divide into joints
+>9. Connect tentacles to stump
+
+>[!hint] Rigging Tentacles and Feet
+>- Edit Mode > select base bone > Data pane > Rigify > Samples > Simple Tentacle
+>- Edit Mode > Bone pane > Relations menu > Set parent to spine
+>- If you cannot see rig, it might be hidden in the face menu for some reason
+>- Feet use the Stretchy Chain sample
+>- Feet and tentacles will need a lot of loop cuts unfortunately
+>- When weight painting the feet, you'll have to zero out vertices on trunk
+>	- Top of base should have a weight of 0.2-0.5
+
+>[!note] Optimizing Poly Count
+>The feet, tentacles, and trunk need to have lots of faces in order to fully function. It might be smart to consider what actually needs to be animated and what is actually shown.
+>
+>For instance, I used the bartender character to test the process, but I won't need to animate his feet and his lower body  will be obscured by the counter.
 ### Continential Breakfast
 - [ ] Mischa/Cook
 	- [ ] Integrate w/ [[#Story Events and Quests|Quest System]]

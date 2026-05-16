@@ -91,7 +91,7 @@ unique_name_in_owner = true
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_1n5t0")
 
-[node name="Player" parent="Overworld" unique_id=1276607030 instance=ExtResource("1_riqc8")]
+[node name="Player" parent="Overworld" unique_id=1613643988 instance=ExtResource("1_riqc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.42485, 0.646759, 39.40883)
 dash_speed = 900.0
 

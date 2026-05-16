@@ -1334,7 +1334,7 @@ light_energy = 0.2
 light_indirect_energy = 5.0
 shadow_caster_mask = 4294967293
 
-[node name="bartender" parent="HotelRooms/HallChunk1/Chunk" unique_id=1802233015 instance=ExtResource("23_mwtcr")]
+[node name="bartender" parent="HotelRooms/HallChunk1/Chunk" unique_id=1188625214 instance=ExtResource("23_mwtcr")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5.5002365, -2.2878432, -25.71701)
 
 [node name="HallChunk2" type="Area3D" parent="HotelRooms" unique_id=1655093668 groups=["persist"]]
