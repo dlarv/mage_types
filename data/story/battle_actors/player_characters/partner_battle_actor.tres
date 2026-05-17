@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="4_4uj5l"]
 [ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="5_0cjya"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="6_n56eq"]
+[ext_resource type="PackedScene" uid="uid://dgrfhd0s3my0y" path="res://data/story/battle_actors/player_characters/battle_sprites/alice_battle_sprite.tscn" id="7_e0366"]
 [ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="7_ppfbh"]
 
 [sub_resource type="Resource" id="Resource_ss44v"]
@@ -36,3 +37,4 @@ _element2 = 0
 alignment_manager = SubResource("Resource_ss44v")
 _alignment = 0
 attacks = Array[ExtResource("2_e0366")]([ExtResource("3_fe3if"), ExtResource("4_4uj5l"), ExtResource("5_0cjya")])
+sprite_path = ExtResource("7_e0366")

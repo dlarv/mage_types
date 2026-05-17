@@ -58,12 +58,12 @@ shader_parameter/gradient = SubResource("GradientTexture1D_00r1n")
 script = ExtResource("2_o46wl")
 material = SubResource("ShaderMaterial_4banq")
 normal_map = ExtResource("3_wav5a")
-mesh = NodePath("goose_v4/rig/Skeleton3D/Torso_005")
+mesh = NodePath("goose_v4/rig/Skeleton3D/Final")
 
 [node name="goose_v4" parent="MeshManager" index="0" unique_id=543747836 instance=ExtResource("2_hjp38")]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
 
-[node name="Skeleton3D" parent="MeshManager/goose_v4/rig" parent_id_path=PackedInt32Array(543747836, 106286512) index="0" unique_id=121511439]
+[node name="Skeleton3D" parent="MeshManager/goose_v4/rig" parent_id_path=PackedInt32Array(543747836, 1470817172) index="0" unique_id=1750818361]
 bones/0/rotation = Quaternion(-0.6211441, -0.33790532, -0.33790532, 0.6211441)
 bones/1/position = Vector3(-0.12085493, 0.38044155, 3.901639)
 bones/1/rotation = Quaternion(0.79027086, -0.017078653, -0.0132341385, 0.6123767)
@@ -298,8 +298,5 @@ bones/270/rotation = Quaternion(0.96124864, 0.000116553674, -0.0004064801, -0.27
 bones/273/rotation = Quaternion(7.5323285e-08, -3.7252892e-09, 1, 1.3969839e-08)
 bones/274/position = Vector3(-4.1235843, 1.7574159, 1.7517557)
 bones/274/rotation = Quaternion(-0.61369824, -0.351247, -0.351247, 0.61369824)
-
-[node name="Torso_005" parent="MeshManager/goose_v4/rig/Skeleton3D" index="0" unique_id=1337362522]
-material_override = SubResource("ShaderMaterial_4banq")
 
 [editable path="MeshManager/goose_v4"]
