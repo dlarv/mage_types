@@ -364,15 +364,25 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 `ElementMap: TextureMap`
 
 `ElementMap` will use *red* channel to encode primary type influence and *green* to encode secondary. The *blue* channel will encode whether this pixel is affected by an elemental color and is used to weight the default diffuse map.
+- Primary color will be *magenta* on the map
+- Secondary color will be *cyan*
+- No change will be *black*
 
 >[!note] Creating ElementMap in Blender
 > 1. MixColor node selects between diffuse and element colors
-> 2. Create a float value in Materials menu called 'element_map' (or something similar)
+> 2. Create a float value in ~~Materials~~ Data menu called 'element_map' (or something similar)
+> 	1. Putting it in Materials menu means you have to switch to that specific material to see it. It'll work either way, its just a QOL note.
 > 3. Paste driver onto factor field on MixColor node
 >    
 > This way, color sets can be easily swapped between when baking.
 
 To use this shader to a model in Godot, assign `character_clay.gdshader` to the mesh's `material_override` slot. Then assign all of its texture maps. Finally, add and `PCElementShaderManager` node to its scene, assigning its `BattleActor` and `Mesh`.
+### Partners
+**Alice**: The player's main companion and only currently partner planned.
+- [x] Design
+- [x] Modeled
+- [x] Texture maps
+- [x] Animations
 ### Grabbables
 In v0.3.26, all interactable objects were managed thru a child (the grabbable). I find this system clunky.
 
