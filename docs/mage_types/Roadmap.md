@@ -31,6 +31,7 @@
 ## Bugs
 - [ ] When player is defeated in battle, it immediately ends before playing animations, etc
 - [ ] Alignment calculations at end of battle crashing due to empty list of elements
+- [ ] Falling animation playing when going thru doorways
 ## Battle 
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
 	- Use `[url]` tag.
@@ -323,7 +324,7 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 		- This would also eliminate the intersection
 - [x] Adjust `ElementalType.main_color` values
 ## Player
- - [ ] Player should be able to perform simple actions:
+ - [x] Player should be able to perform simple actions:
 	- [x] Walking/running.
 	- [x] Jumping
 	- [x]  Pickup objects and place in inventory.
@@ -710,6 +711,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [x] Adjust colors
 	- [ ] Fix holes in model exposed during waves
 	- [ ] Fix water texture
+	- [ ] Fix pier collider and materials
 - [ ] Beach 1 backtracking puzzle
 - [ ] Beach 2 #v0_7
 	- [x] Layout
@@ -730,9 +732,9 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [x] Head
 		- [x] Hair
 	- [x] Texturing
-	- [ ] Rigging
-	- [ ] Idle Animation
-		- [ ] Cleaning a glass, passes it to tentacle, which puts it away
+	- [x] Rigging @completed(2026-05-17T13:10:45-04:00)
+	- [x] Idle Animation
+		- [x] ~~Cleaning a glass, passes it to tentacle, which puts it away~~ Lol no, tentacle will just sway
 	- [ ] Rewrite dialogue
 - [ ] Adonis Enclave #v0_7
 	- [ ] Design
