@@ -1,7 +1,7 @@
 @tool
 extends Chunk
 
-const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.tres")
+const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.gdshader")
 const SolverMode := preload("res://world/subareas/maintenance_halls/MaintenanceSequence.gd").SolverMode
 
 @onready var model := $Chunk/maintenance_room/Backroom

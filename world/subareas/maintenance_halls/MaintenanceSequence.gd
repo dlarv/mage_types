@@ -3,7 +3,7 @@ extends Node3D
 ## Handle instantiation of maintenance hallway
 
 const MODEL := preload("res://world/subareas/maintenance_halls/maintenance_room.tscn")
-const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.tres")
+const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.gdshader")
 const RoomPortal := preload("res://addons/room_and_portals/RoomPortal.gd")
 
 enum SolverMode { AFFINITY, TEMP }
