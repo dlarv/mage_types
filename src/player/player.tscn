@@ -463,8 +463,9 @@ bones/273/rotation = Quaternion(7.5323285e-08, -3.7252892e-09, 1, 1.3969839e-08)
 bones/274/position = Vector3(-4.1235843, 1.7574159, 1.7517557)
 bones/274/rotation = Quaternion(-0.61369824, -0.351247, -0.351247, 0.61369824)
 
-[node name="PCElementShaderManager" parent="." unique_id=1974747347 instance=ExtResource("10_8ydov")]
+[node name="PCElementShaderManager" parent="." unique_id=1974747347 node_paths=PackedStringArray("mesh") instance=ExtResource("10_8ydov")]
 battle_actor = ExtResource("2_x42xx")
+mesh = NodePath("../goose_v4/rig/Skeleton3D/Final")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FlushJumpBufferTimer" to="." method="_on_flush_jump_buffer_timer_timeout"]
