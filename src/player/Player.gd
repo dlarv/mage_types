@@ -55,9 +55,8 @@ func _ready() -> void:
 			global_position = spawnPoint.global_position
 	
 	team = [ battle_actor ]
-	for ally in _active_party:
-		for actor in _active_party:
-			team.append(_playable_characters[actor])
+	for actor in _active_party:
+		team.append(_playable_characters[actor])
 	team_changed.emit(team)
 
 
