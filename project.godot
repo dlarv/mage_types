@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Mage-Types"
-config/version="0.7.6"
+config/version="0.7.7"
 run/main_scene="uid://dtmepgi2qn6wl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/flush_stdout_on_print.debug=false
@@ -338,4 +338,8 @@ cracks={
 crack_detail={
 "type": "sampler2D",
 "value": "res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png"
+}
+diffuse_test={
+"type": "sampler2D",
+"value": "res://assets/_blender/claydoh/textures/uv grid.png"
 }
