@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtphvdq8xlphv"]
+[gd_scene format=3 uid="uid://dtphvdq8xlphv"]
 
-[ext_resource type="PackedScene" uid="uid://bj62iiw5py7a5" path="res://assets/3d/objects/blue/raw/VaseRed.glb" id="1_3gunc"]
+[ext_resource type="PackedScene" uid="uid://55fj5nfbwnil" path="res://assets/3d/objects/blue/hotel/raw/VaseRed.glb" id="1_3gunc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wu8o7"]
 size = Vector3(0.472217, 0.5, 0.471191)
 
-[node name="VaseRed" type="StaticBody3D"]
+[node name="VaseRed" type="StaticBody3D" unique_id=1687175119]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=815778531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000317365, 0.25, -0.00170898)
 shape = SubResource("BoxShape3D_wu8o7")
 
-[node name="VaseRed2" parent="." instance=ExtResource("1_3gunc")]
+[node name="VaseRed2" parent="." unique_id=1701830787 instance=ExtResource("1_3gunc")]
 
-[node name="VaseRed" parent="VaseRed2" index="0"]
+[node name="VaseRed" parent="VaseRed2" index="0" unique_id=28277733]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.189287, 0)
 
 [editable path="VaseRed2"]
