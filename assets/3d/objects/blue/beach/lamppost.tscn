@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c58vw11neqnxf"]
+
+[ext_resource type="PackedScene" uid="uid://dlenp5wltweqt" path="res://assets/3d/objects/blue/beach/raw/Lamppost.glb" id="1_p77c2"]
+[ext_resource type="Script" uid="uid://cun7ijhchhxxs" path="res://assets/3d/objects/blue/beach/FlickeringLamppost.gd" id="2_1n23l"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1n23l"]
+height = 1.2
+radius = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jwut2"]
+height = 7.5478516
+radius = 0.15283203
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n23l"]
+size = Vector3(4.5, 0.3, 0.2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1n23l"]
+radius = 0.4
+
+[node name="Lamppost" unique_id=913564205 instance=ExtResource("1_p77c2")]
+script = ExtResource("2_1n23l")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1" unique_id=1025481499]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.9369397, 7.240395, -0.0003881082)
+light_energy = 20.0
+spot_range = 9.0
+spot_angle = 24.074528
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1216273974]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1703637468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39999998, 0)
+shape = SubResource("CylinderShape3D_1n23l")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=526526252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9739258, 0)
+shape = SubResource("CylinderShape3D_jwut2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=45699689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3939755, 7.6239257, 2.9802322e-08)
+shape = SubResource("BoxShape3D_1n23l")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3" unique_id=1164363308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9439754, 7.6239257, 2.9802322e-08)
+shape = SubResource("SphereShape3D_1n23l")
