@@ -28,6 +28,14 @@
 #v0_8: Audio polish
 #v0_9: GUI and Settings
 # The List
+- [x] Texture bottles
+- [x] Rig bartender's fingers
+- [x] Give bartender bottle and glass
+- [x] Texture shelf
+- [x] Texture backwall (stones or bricks?)
+- [ ] Add plant to vase
+- [x] Make lighting warmer
+- [x] Make background darker
 ## Bugs
 - [ ] When player is defeated in battle, it immediately ends before playing animations, etc
 - [ ] Alignment calculations at end of battle crashing due to empty list of elements
@@ -742,13 +750,13 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [x] Head
 		- [x] Hair
 	- [x] Texturing
-	- [x] Rigging @completed(2026-05-17T13:10:45-04:00)
+	- [x] Rigging 
 	- [x] Idle Animation
 		- [x] ~~Cleaning a glass, passes it to tentacle, which puts it away~~ Lol no, tentacle will just sway
 	- [ ] Rewrite dialogue
 - [ ] Adonis Enclave #v0_7
-	- [ ] Design
-	- [ ] Model
+	- [x] Design
+	- [x] Model
 	- [ ] Texturing
 	- [ ] Idle Animation
 	- [ ] Battle Animations
@@ -778,8 +786,6 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 >- Edit Mode > select base bone > Data pane > Rigify > Samples > Simple Tentacle
 >- Edit Mode > Bone pane > Relations menu > Set parent to spine
 >- If you cannot see rig, it might be hidden in the face menu for some reason
->- Feet use the Stretchy Chain sample
->- Feet and tentacles will need a lot of loop cuts unfortunately
 >- When weight painting the feet, you'll have to zero out vertices on trunk
 >	- Top of base should have a weight of 0.2-0.5
 
