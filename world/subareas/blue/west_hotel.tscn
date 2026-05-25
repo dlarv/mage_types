@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://chuyluogsxeer"]
+[gd_scene format=3 uid="uid://chuyluogsxeer"]
 
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_r5uk5"]
 [ext_resource type="PackedScene" uid="uid://bnssb1svxo0lm" path="res://world/subareas/environments/western_hotel_env.tscn" id="2_atr3l"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="5_7u0ak"]
 [ext_resource type="PackedScene" uid="uid://dpdgg0dpuuuak" path="res://world/subareas/maintenance_halls/maintenance_room.tscn" id="5_cjwri"]
 [ext_resource type="PackedScene" uid="uid://b8drm0dljf2wc" path="res://data/beastiary/despair_enemy.tscn" id="6_uq05v"]
-[ext_resource type="Shader" uid="uid://bg5ai0eocyekw" path="res://assets/shaders/clay_shader/clay.tres" id="7_pijpb"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="7_uuft6"]
 [ext_resource type="PackedScene" uid="uid://cgskhp8lbdjsd" path="res://src/overworld/puzzle_blocks/lasers/laser_receiver.tscn" id="9_uq05v"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="10_nn0ty"]
@@ -129,8 +128,6 @@ resource_name = "Sledge Hammer"
 script = ExtResource("11_jmy4x")
 item = ExtResource("12_hv7p8")
 id = 6
-quantity = 1
-max_quantity = 9999
 allow_stacking = true
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
@@ -185,18 +182,6 @@ size = Vector3(1, 7, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_biab3"]
 size = Vector3(1, 7, 3)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxd8b"]
-render_priority = 0
-shader = ExtResource("7_pijpb")
-shader_parameter/BaseColor = Color(0, 0, 1, 1)
-shader_parameter/Roughness = 1.0
-shader_parameter/FingertprintOffset = 0.0
-shader_parameter/UVScale = Vector2(1, 1)
-shader_parameter/FingertprintScale = 1.0
-shader_parameter/CrackOffset = 1.0
-shader_parameter/CrackScale = 0.5
-shader_parameter/CrackDetail = 1.0
-
 [sub_resource type="BoxMesh" id="BoxMesh_tospa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xjkm"]
@@ -224,18 +209,6 @@ albedo_color = Color(0, 1, 1, 1)
 albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_01qlq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgraq"]
-render_priority = 0
-shader = ExtResource("7_pijpb")
-shader_parameter/BaseColor = Color(0.321569, 0.0941176, 0.980392, 1)
-shader_parameter/Roughness = 1.0
-shader_parameter/FingertprintOffset = 0.0
-shader_parameter/UVScale = Vector2(1, 1)
-shader_parameter/FingertprintScale = 1.0
-shader_parameter/CrackOffset = 1.0
-shader_parameter/CrackScale = 0.5
-shader_parameter/CrackDetail = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_qtkuy"]
 
@@ -265,18 +238,6 @@ albedo_color = Color(1, 0.501961, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_e2824"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6lfy"]
-render_priority = 0
-shader = ExtResource("7_pijpb")
-shader_parameter/BaseColor = Color(1, 0, 1, 1)
-shader_parameter/Roughness = 1.0
-shader_parameter/FingertprintOffset = 0.0
-shader_parameter/UVScale = Vector2(1, 1)
-shader_parameter/FingertprintScale = 1.0
-shader_parameter/CrackOffset = 1.0
-shader_parameter/CrackScale = 0.5
-shader_parameter/CrackDetail = 1.0
-
 [sub_resource type="BoxMesh" id="BoxMesh_exnet"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dckpx"]
@@ -305,18 +266,6 @@ albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_akp45"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rnjb"]
-render_priority = 0
-shader = ExtResource("7_pijpb")
-shader_parameter/BaseColor = Color(0, 1, 0, 1)
-shader_parameter/Roughness = 1.0
-shader_parameter/FingertprintOffset = 0.0
-shader_parameter/UVScale = Vector2(1, 1)
-shader_parameter/FingertprintScale = 1.0
-shader_parameter/CrackOffset = 1.0
-shader_parameter/CrackScale = 0.5
-shader_parameter/CrackDetail = 1.0
-
 [sub_resource type="BoxMesh" id="BoxMesh_toa7q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73pcj"]
@@ -338,447 +287,448 @@ albedo_color = Color(0.321569, 0.0941176, 0.980392, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sn0pf"]
 
-[node name="WestHotel" type="Node3D"]
+[node name="WestHotel" type="Node3D" unique_id=780795931]
 
-[node name="west_blue_env" parent="." instance=ExtResource("2_atr3l")]
+[node name="west_blue_env" parent="." unique_id=1862021623 instance=ExtResource("2_atr3l")]
 
-[node name="Doors" type="Node3D" parent="."]
+[node name="Doors" type="Node3D" parent="." unique_id=1581038835]
 
-[node name="MainHallToHall2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="MainHallToHall2" type="Area3D" parent="Doors" unique_id=942343112 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -10)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToHall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToHall2" unique_id=1656891239]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.450001, 3.5, -5.55)
 shape = SubResource("BoxShape3D_uq05v")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall2/CollisionShape3D" unique_id=1696657026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToHall2"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToHall2" unique_id=587768308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 3.5, 7)
 shape = SubResource("BoxShape3D_khxla")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall2/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall2/CollisionShape3D2" unique_id=1672108501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToLongHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="MainHallToLongHall" type="Area3D" parent="Doors" unique_id=1274738411 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, -14)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToLongHall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToLongHall" unique_id=1080715600]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.549999, 3.5, -1.55)
 shape = SubResource("BoxShape3D_gvcax")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToLongHall/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToLongHall/CollisionShape3D" unique_id=698561489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToLongHall"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToLongHall" unique_id=2113182577]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350002, 3.5, 0.75)
 shape = SubResource("BoxShape3D_nn0ty")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToLongHall/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToLongHall/CollisionShape3D2" unique_id=1325444730]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="THallToRampage1" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="THallToRampage1" type="Area3D" parent="Doors" unique_id=1493675239 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -103)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/THallToRampage1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/THallToRampage1" unique_id=1882072219]
 transform = Transform3D(-1.19209e-07, 0, 1, 0, 1, 0, -1, 0, -1.19209e-07, 5.34999, 3.5, -4.8)
 shape = SubResource("BoxShape3D_hk1la")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/THallToRampage1/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/THallToRampage1/CollisionShape3D" unique_id=1239701786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/THallToRampage1"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/THallToRampage1" unique_id=584207883]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.95, 3.5, 26.15)
 shape = SubResource("BoxShape3D_hnw2h")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/THallToRampage1/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/THallToRampage1/CollisionShape3D2" unique_id=1302132651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="Rampage1ToRampage2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="Rampage1ToRampage2" type="Area3D" parent="Doors" unique_id=936363247 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.7, 0, -92)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Rampage1ToRampage2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Rampage1ToRampage2" unique_id=229115720]
 transform = Transform3D(-1.19209e-07, 0, 1, 0, 1, 0, -1, 0, -1.19209e-07, 5.34999, 3.5, -4.8)
 shape = SubResource("BoxShape3D_hk1la")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Rampage1ToRampage2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Rampage1ToRampage2/CollisionShape3D" unique_id=1553829617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Rampage1ToRampage2"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Rampage1ToRampage2" unique_id=1144722771]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.449997, 3.5, -4.85)
 shape = SubResource("BoxShape3D_hnw2h")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Rampage1ToRampage2/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Rampage1ToRampage2/CollisionShape3D2" unique_id=224256548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="Rampage2ToRampage3" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="Rampage2ToRampage3" type="Area3D" parent="Doors" unique_id=624813778 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.9, 0, -105)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Rampage2ToRampage3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Rampage2ToRampage3" unique_id=1367371255]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -112.6, 3.5, 77.7)
 shape = SubResource("BoxShape3D_tospa")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Rampage2ToRampage3/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Rampage2ToRampage3/CollisionShape3D" unique_id=140797391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Rampage2ToRampage3"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Rampage2ToRampage3" unique_id=1630909658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100006, 3.5, 2.7)
 shape = SubResource("BoxShape3D_tospa")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Rampage2ToRampage3/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Rampage2ToRampage3/CollisionShape3D2" unique_id=340481656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToHall3" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="MainHallToHall3" type="Area3D" parent="Doors" unique_id=696550990 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 0, -26)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToHall3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToHall3" unique_id=5524357]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.45, 3.5, 16.45)
 shape = SubResource("BoxShape3D_gvcax")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall3/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall3/CollisionShape3D" unique_id=1867345452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToHall3"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToHall3" unique_id=1071634994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55, 3.5, -0.550001)
 shape = SubResource("BoxShape3D_nn0ty")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall3/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToHall3/CollisionShape3D2" unique_id=1580160872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="BackroomToMotelExterior" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="BackroomToMotelExterior" type="Area3D" parent="Doors" unique_id=607315401 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 0, -60)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/BackroomToMotelExterior"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/BackroomToMotelExterior" unique_id=234841547]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -24.25, 3.5, 9.05)
 shape = SubResource("BoxShape3D_lxd8b")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/BackroomToMotelExterior/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/BackroomToMotelExterior/CollisionShape3D" unique_id=861479204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BackroomToMotelExterior"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BackroomToMotelExterior" unique_id=907635248]
 transform = Transform3D(0.0871557, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871557, 16.85, -3.5, 0.25)
 shape = SubResource("BoxShape3D_nn0ty")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/BackroomToMotelExterior/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/BackroomToMotelExterior/CollisionShape3D2" unique_id=863817829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToTHall" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="MainHallToTHall" type="Area3D" parent="Doors" unique_id=1165019791 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -44)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToTHall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToTHall" unique_id=963915426]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.950001, 3.5, -37.4)
 shape = SubResource("BoxShape3D_jmy4x")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToTHall/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToTHall/CollisionShape3D" unique_id=1852269530]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToTHall"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/MainHallToTHall" unique_id=681248783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, 17.7)
 shape = SubResource("BoxShape3D_hv7p8")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToTHall/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToTHall/CollisionShape3D2" unique_id=797394848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="Hall1ToHall2" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="Hall1ToHall2" type="Area3D" parent="Doors" unique_id=1440059724 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 27)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToHall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToHall2" unique_id=2057377130]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.85, 3.5, 0.550001)
 shape = SubResource("BoxShape3D_ddnwv")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToHall2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToHall2/CollisionShape3D" unique_id=587847896]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToHall2"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToHall2" unique_id=867472418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9, 3.5, -11.05)
 shape = SubResource("BoxShape3D_epvgx")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToHall2/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToHall2/CollisionShape3D2" unique_id=2018529318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Hall1ToPantry" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="Hall1ToPantry" type="Area3D" parent="Doors" unique_id=792826370 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 9)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToPantry"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToPantry" unique_id=26472825]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.400002, 3.5, -1.3)
 shape = SubResource("BoxShape3D_lo7yg")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToPantry/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToPantry/CollisionShape3D" unique_id=2015045456]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToPantry"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToPantry" unique_id=510612312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.549999, 3.4, 0.85)
 shape = SubResource("BoxShape3D_to6kl")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToPantry/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToPantry/CollisionShape3D2" unique_id=1355869377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="Hall1ToBreakfast" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="Hall1ToBreakfast" type="Area3D" parent="Doors" unique_id=1857510589 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 26)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToBreakfast"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Hall1ToBreakfast" unique_id=680402262]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.85, 3.5, 1.55)
 shape = SubResource("BoxShape3D_t83ks")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToBreakfast/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToBreakfast/CollisionShape3D" unique_id=1021011152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToBreakfast"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Hall1ToBreakfast" unique_id=757151474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 3.5, 0.200001)
 shape = SubResource("BoxShape3D_kadtq")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToBreakfast/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/Hall1ToBreakfast/CollisionShape3D2" unique_id=1398723070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="KitchenToPantry" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="KitchenToPantry" type="Area3D" parent="Doors" unique_id=919547316 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/KitchenToPantry"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/KitchenToPantry" unique_id=1426286612]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.650001, 3.5, -8.04663e-07)
 shape = SubResource("BoxShape3D_cyyki")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/KitchenToPantry/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/KitchenToPantry/CollisionShape3D" unique_id=2056647271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/KitchenToPantry"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/KitchenToPantry" unique_id=230289199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 3.5, 7.15256e-07)
 shape = SubResource("BoxShape3D_ys02u")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/KitchenToPantry/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/KitchenToPantry/CollisionShape3D2" unique_id=2079662825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="BreakfastToKitchen" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="BreakfastToKitchen" type="Area3D" parent="Doors" unique_id=1359187133 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/BreakfastToKitchen"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/BreakfastToKitchen" unique_id=156019169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, 0.45)
 shape = SubResource("BoxShape3D_0lkbv")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D" unique_id=36338790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BreakfastToKitchen"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BreakfastToKitchen" unique_id=2097973765]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.05, 3.5, -1.25)
 shape = SubResource("BoxShape3D_wbhcu")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/BreakfastToKitchen/CollisionShape3D2" unique_id=1596394385]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="MainHallToBackrooms" type="Area3D" parent="Doors"]
+[node name="MainHallToBackrooms" type="Area3D" parent="Doors" unique_id=1325268653 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9, 0, -29)
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("Marker3D")
 metadata/_custom_type_script = "uid://bm8bdk7ovghsh"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToBackrooms"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/MainHallToBackrooms" unique_id=1504623075]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6, 3.5, 2.7)
 shape = SubResource("BoxShape3D_tospa")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToBackrooms/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToBackrooms/CollisionShape3D" unique_id=1402410664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 
-[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToBackrooms"]
+[node name="Marker3D" type="Marker3D" parent="Doors/MainHallToBackrooms" unique_id=993824090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119, 4, -13.2)
 
-[node name="MainHallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="MainHallChunk" type="Area3D" parent="." unique_id=1483542000 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, -21)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="MainHallChunk"]
+[node name="Chunk" type="Node3D" parent="MainHallChunk" unique_id=1904161545]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainHallChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainHallChunk" unique_id=1165670650]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.85, -21)
 shape = SubResource("BoxShape3D_lfce1")
 
-[node name="LongHallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="LongHallChunk" type="Area3D" parent="." unique_id=791477658 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58, 0, 22)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="LongHallChunk"]
+[node name="Chunk" type="Node3D" parent="LongHallChunk" unique_id=968615805]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LongHallChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LongHallChunk" unique_id=607399297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 6, 5.5)
 shape = SubResource("BoxShape3D_sd1l2")
 
-[node name="HallChunk1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="HallChunk1" type="Area3D" parent="." unique_id=599674836 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 12)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="HallChunk1"]
+[node name="Chunk" type="Node3D" parent="HallChunk1" unique_id=1618086628]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk1" unique_id=1644359763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, 1)
 shape = SubResource("BoxShape3D_at4yk")
 
-[node name="HallChunk2" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="HallChunk2" type="Area3D" parent="." unique_id=1072595964 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 21)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2" unique_id=1236640127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5.35, -0.5)
 shape = SubResource("BoxShape3D_rkww3")
 
-[node name="Chunk" type="Node3D" parent="HallChunk2"]
+[node name="Chunk" type="Node3D" parent="HallChunk2" unique_id=1263794692]
 
-[node name="DoorBlocker" type="MeshInstance3D" parent="HallChunk2/Chunk" groups=["detached_env"]]
+[node name="DoorBlocker" type="MeshInstance3D" parent="HallChunk2/Chunk" unique_id=155874780 groups=["detached_env"]]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -0.1, 0.6, -10.4)
 mesh = SubResource("BoxMesh_sd1l2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HallChunk2/Chunk/DoorBlocker"]
+[node name="StaticBody3D" type="StaticBody3D" parent="HallChunk2/Chunk/DoorBlocker" unique_id=635031249]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2/Chunk/DoorBlocker/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk2/Chunk/DoorBlocker/StaticBody3D" unique_id=1635344686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_4p4oe")
 
-[node name="HallChunk3" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="HallChunk3" type="Area3D" parent="." unique_id=1598195212 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103, 0, -17)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HallChunk3" unique_id=2008531101]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5.35, -1)
 shape = SubResource("BoxShape3D_iyxab")
 
-[node name="Chunk" type="Node3D" parent="HallChunk3"]
+[node name="Chunk" type="Node3D" parent="HallChunk3" unique_id=395777097]
 
-[node name="PantryChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="PantryChunk" type="Area3D" parent="." unique_id=1450127483 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="PantryChunk"]
+[node name="Chunk" type="Node3D" parent="PantryChunk" unique_id=2056339549]
 
-[node name="DoorBlocker" type="MeshInstance3D" parent="PantryChunk/Chunk" groups=["detached_env"]]
+[node name="DoorBlocker" type="MeshInstance3D" parent="PantryChunk/Chunk" unique_id=1297511631 groups=["detached_env"]]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -0.1, 0.6, 6.9)
 mesh = SubResource("BoxMesh_sd1l2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="PantryChunk/Chunk/DoorBlocker"]
+[node name="StaticBody3D" type="StaticBody3D" parent="PantryChunk/Chunk/DoorBlocker" unique_id=1426504487]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PantryChunk/Chunk/DoorBlocker/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PantryChunk/Chunk/DoorBlocker/StaticBody3D" unique_id=1952921355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_4p4oe")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PantryChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PantryChunk" unique_id=1007739952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.299999, 5.25, 0)
 shape = SubResource("BoxShape3D_pijpb")
 
-[node name="KitchenChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="KitchenChunk" type="Area3D" parent="." unique_id=1023949307 node_paths=PackedStringArray("chunk")]
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KitchenChunk" unique_id=151143205]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6, -0.5)
 shape = SubResource("BoxShape3D_cjwri")
 
-[node name="Chunk" type="Node3D" parent="KitchenChunk"]
+[node name="Chunk" type="Node3D" parent="KitchenChunk" unique_id=1939263500]
 
-[node name="BreakfastChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="BreakfastChunk" type="Area3D" parent="." unique_id=1717162849 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="BreakfastChunk"]
+[node name="Chunk" type="Node3D" parent="BreakfastChunk" unique_id=1809970499]
 
-[node name="DoorBlocker" type="MeshInstance3D" parent="BreakfastChunk/Chunk" groups=["detached_env"]]
+[node name="DoorBlocker" type="MeshInstance3D" parent="BreakfastChunk/Chunk" unique_id=233516217 groups=["detached_env"]]
 transform = Transform3D(-0.895743, 0, 0.444573, 0, 1, 0, -0.444573, 0, -0.895743, 6.10961, 0.6, -11.4524)
 mesh = SubResource("BoxMesh_rkww3")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BreakfastChunk/Chunk/DoorBlocker"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BreakfastChunk/Chunk/DoorBlocker" unique_id=2089986415]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk/Chunk/DoorBlocker/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk/Chunk/DoorBlocker/StaticBody3D" unique_id=1620833887]
 transform = Transform3D(1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, 1, 0, 1, 1.90735e-06)
 shape = SubResource("BoxShape3D_30pbr")
 
-[node name="DoorBlocker2" type="MeshInstance3D" parent="BreakfastChunk/Chunk" groups=["detached_env"]]
+[node name="DoorBlocker2" type="MeshInstance3D" parent="BreakfastChunk/Chunk" unique_id=800506129 groups=["detached_env"]]
 transform = Transform3D(0.916335, 0, 0.400413, 0, 1, 0, -0.400413, 0, 0.916335, 5.9904, 0.6, -7.34232)
 mesh = SubResource("BoxMesh_rkww3")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BreakfastChunk/Chunk/DoorBlocker2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BreakfastChunk/Chunk/DoorBlocker2" unique_id=1720433438]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk/Chunk/DoorBlocker2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk/Chunk/DoorBlocker2/StaticBody3D" unique_id=980685955]
 transform = Transform3D(1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, 1, 0, 1, 1.90735e-06)
 shape = SubResource("BoxShape3D_30pbr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BreakfastChunk" unique_id=1769442292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -1.35)
 shape = SubResource("BoxShape3D_7u0ak")
 
-[node name="THallChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="THallChunk" type="Area3D" parent="." unique_id=217748705 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -80)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="THallChunk"]
+[node name="Chunk" type="Node3D" parent="THallChunk" unique_id=1663508639]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="THallChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="THallChunk" unique_id=969431521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 6, -18)
 shape = SubResource("BoxShape3D_uuft6")
 
-[node name="Rampage1" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="Rampage1" type="Area3D" parent="." unique_id=219628596 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -80)
 script = ExtResource("3_lfce1")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="Chunk" type="Node3D" parent="Rampage1"]
+[node name="Chunk" type="Node3D" parent="Rampage1" unique_id=1322154451]
 
-[node name="Emitter" parent="Rampage1/Chunk" instance=ExtResource("5_7u0ak")]
+[node name="Emitter" parent="Rampage1/Chunk" unique_id=1183417431 instance=ExtResource("5_7u0ak")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -46, 0.5, -1.8)
 _element = 0
 
-[node name="Spawner" parent="Rampage1/Chunk" instance=ExtResource("4_cjwri")]
+[node name="Spawner" parent="Rampage1/Chunk" unique_id=1297220092 instance=ExtResource("4_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.5, 0)
 weighted_enemy_pool = Dictionary[PackedScene, float]({
 ExtResource("6_uq05v"): 100.0
@@ -787,537 +737,528 @@ level_range = Vector2i(1, 3)
 xp_range = Vector2i(10, 30)
 max_spawn_count = 5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage1/Chunk/Spawner"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage1/Chunk/Spawner" unique_id=550255056]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.5)
 shape = SubResource("BoxShape3D_ixt3p")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Rampage1/Chunk"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Rampage1/Chunk" unique_id=120282822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -17)
 visible = false
 collision_layer = 17
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=1057097463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400002, 3.5, 0.199997)
 size = Vector3(22.2, 7, 32)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=1315701990]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 6.5, 2)
 operation = 2
 size = Vector3(20.5, 8, 34)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=1140339848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, 6.5, 0.199997)
 operation = 2
 size = Vector3(2, 8, 28)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=574708602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 0.699997)
 size = Vector3(1, 1, 31)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=2109853755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90001, 3.5, -5.2)
 operation = 2
 size = Vector3(5.8, 4, 19.4)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=1674334002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90001, 3.5, 10.1)
 operation = 2
 size = Vector3(5.8, 4, 10.2)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=220368796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500008, 3.5, 5.75)
 operation = 2
 size = Vector3(6, 4, 9.5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=52158664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.5, 1.5)
 operation = 2
 size = Vector3(10, 4, 6)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=562156323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 3.5, -2.25)
 operation = 2
 size = Vector3(4.5, 4, 5.5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=17497557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 3.5, -3.5)
 operation = 2
 size = Vector3(8.5, 4, 3)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=1741994480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 3.5, -12.5)
 operation = 2
 size = Vector3(10, 4, 5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D16" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=141571313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 3.5, -7.5)
 operation = 2
 size = Vector3(9.5, 4, 4)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D17" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=445257463]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3.5, -2.25)
 operation = 2
 size = Vector3(5, 4, 13.5)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=1409192696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.5, -9.6)
 operation = 2
 size = Vector3(4, 4, 10.8)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=600031394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.5, 2.5)
 operation = 2
 size = Vector3(2, 4, 4)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=1962878632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24999, 3.5, 10.1)
 operation = 2
 size = Vector3(6.5, 4, 10.2)
 material = ExtResource("7_uuft6")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Rampage1/Chunk/CSGCombiner3D" unique_id=638897923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-06, 3.5, 13.1)
 operation = 2
 size = Vector3(19, 4, 4.2)
 material = ExtResource("7_uuft6")
 
-[node name="Rampage1" type="Node3D" parent="Rampage1/Chunk"]
+[node name="Rampage1" type="Node3D" parent="Rampage1/Chunk" unique_id=1522468326]
 visible = false
 
-[node name="EmitterW" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("5_7u0ak")]
+[node name="EmitterW" parent="Rampage1/Chunk/Rampage1" unique_id=727335051 instance=ExtResource("5_7u0ak")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -99.7, 3, -11)
 _element = 0
 
-[node name="LaserReceiverW" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("9_uq05v")]
+[node name="LaserReceiverW" parent="Rampage1/Chunk/Rampage1" unique_id=1087136453 instance=ExtResource("9_uq05v")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -99.5, 3, -9.5)
 _element = 0
 
-[node name="EmitterE" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("5_7u0ak")]
+[node name="EmitterE" parent="Rampage1/Chunk/Rampage1" unique_id=1590638376 instance=ExtResource("5_7u0ak")]
 transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, -80, 3, -24)
 _element = 0
 
-[node name="LaserReceiverE" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("9_uq05v")]
+[node name="LaserReceiverE" parent="Rampage1/Chunk/Rampage1" unique_id=382555345 instance=ExtResource("9_uq05v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -80.2, 3, -25.5)
 _element = 0
 
-[node name="DraggableMirrorS1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorS1" parent="Rampage1/Chunk/Rampage1" unique_id=475275078 instance=ExtResource("11_id6k5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90.5, 1.5, -3)
 _element = 0
 
-[node name="DraggableMirrorS2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorS2" parent="Rampage1/Chunk/Rampage1" unique_id=1304023064 instance=ExtResource("11_id6k5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -86, 1.5, -11)
 _element = 0
 
-[node name="DraggableMirrorW1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorW1" parent="Rampage1/Chunk/Rampage1" unique_id=1596334526 instance=ExtResource("11_id6k5")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -92, 1.5, -17)
 _element = 0
 
-[node name="DraggableMirrorW2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorW2" parent="Rampage1/Chunk/Rampage1" unique_id=215019579 instance=ExtResource("11_id6k5")]
 transform = Transform3D(-1, 0, -1.03316e-07, 0, 1, 0, 1.03316e-07, 0, -1, -89, 1.5, -15)
 _element = 0
 
-[node name="DraggableMirrorN1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorN1" parent="Rampage1/Chunk/Rampage1" unique_id=1664798206 instance=ExtResource("11_id6k5")]
 transform = Transform3D(1, 0, 1.90739e-07, 0, 1, 0, -1.90739e-07, 0, 1, -86, 1.5, -20.5)
 _element = 0
 
-[node name="DraggableMirrorN2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorN2" parent="Rampage1/Chunk/Rampage1" unique_id=1823356638 instance=ExtResource("11_id6k5")]
 transform = Transform3D(-2.3445e-07, 0, 1, 0, 1, 0, -1, 0, -2.3445e-07, -92, 1.5, -29.5)
 _element = 0
 
-[node name="DraggableMirrorE1" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorE1" parent="Rampage1/Chunk/Rampage1" unique_id=1325884838 instance=ExtResource("11_id6k5")]
 transform = Transform3D(-1, 0, -2.78162e-07, 0, 1, 0, 2.78162e-07, 0, -1, -88, 1.5, -24)
 _element = 0
 
-[node name="DraggableMirrorE2" parent="Rampage1/Chunk/Rampage1" instance=ExtResource("11_id6k5")]
+[node name="DraggableMirrorE2" parent="Rampage1/Chunk/Rampage1" unique_id=550497147 instance=ExtResource("11_id6k5")]
 transform = Transform3D(1, 0, 3.65584e-07, 0, 1, 0, -3.65584e-07, 0, 1, -82, 1.5, -15)
 _element = 0
 
-[node name="Chest" parent="Rampage1/Chunk" node_paths=PackedStringArray("locks") instance=ExtResource("10_nn0ty")]
+[node name="Chest" parent="Rampage1/Chunk" unique_id=1719464187 node_paths=PackedStringArray("locks") instance=ExtResource("10_nn0ty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 0, -36)
 items = Array[ExtResource("11_jmy4x")]([SubResource("Resource_ddnwv")])
 locks = [NodePath("../Rampage1/LaserReceiverW"), NodePath("../Rampage1/LaserReceiverE")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage1" unique_id=1352826629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.65, 6, -12.3)
 shape = SubResource("BoxShape3D_5xjkm")
 
-[node name="Rampage2" type="Area3D" parent="."]
+[node name="Rampage2" type="Area3D" parent="." unique_id=1910897738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.055, 0, -97.3598)
 script = ExtResource("3_lfce1")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampage2" unique_id=1958120959]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.484375, 4, 0)
 shape = SubResource("BoxShape3D_jvyrw")
 
-[node name="Rampage3" parent="." instance=ExtResource("16_jmy4x")]
+[node name="Rampage3" parent="." unique_id=532317193 instance=ExtResource("16_jmy4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -277.779, 0, -86.7273)
 
-[node name="MaintenanceSequence" parent="." node_paths=PackedStringArray("start_point") instance=ExtResource("4_pijpb")]
+[node name="MaintenanceSequence" parent="." unique_id=380622077 node_paths=PackedStringArray("start_point") instance=ExtResource("4_pijpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202, 0, -51)
-start_point = NodePath("START")
 sequence = Array[int]([0, 1, 2, 6])
+start_point = NodePath("START")
 
-[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0"]
+[node name="0To1" type="Area3D" parent="MaintenanceSequence/Doors" index="0" unique_id=950391639 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48764")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/0To1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/0To1" unique_id=412347628]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.5, -10.5)
 shape = SubResource("BoxShape3D_id6k5")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/0To1/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/0To1/CollisionShape3D" unique_id=1560194515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="@Marker3D@48764" type="Marker3D" parent="MaintenanceSequence/Doors/0To1"]
+[node name="@Marker3D@48764" type="Marker3D" parent="MaintenanceSequence/Doors/0To1" unique_id=2131497373]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 3.5, 9.5)
 
-[node name="Room0ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="1" node_paths=PackedStringArray("point_2")]
+[node name="Room0ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="1" unique_id=692273151 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room0ToSTART"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room0ToSTART" unique_id=216082290]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.5, 3.5, 0)
 shape = SubResource("BoxShape3D_nvkkr")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART/CollisionShape3D" unique_id=2040052838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room0ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="2" node_paths=PackedStringArray("point_2")]
+[node name="Room0ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="2" unique_id=617087051 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room0ToSTART2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room0ToSTART2" unique_id=1085188312]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.5, 10.5)
 shape = SubResource("BoxShape3D_ntn3g")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART2/CollisionShape3D" unique_id=44163697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room0ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="3" node_paths=PackedStringArray("point_2")]
+[node name="Room0ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="3" unique_id=286774171 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room0ToSTART3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room0ToSTART3" unique_id=423756904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 3.5, 0)
 shape = SubResource("BoxShape3D_gdoww")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART3/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room0ToSTART3/CollisionShape3D" unique_id=1878354089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4"]
+[node name="1To2" type="Area3D" parent="MaintenanceSequence/Doors" index="4" unique_id=663968779 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48765")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/1To2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/1To2" unique_id=962454015]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 3.5, 10.5)
 shape = SubResource("BoxShape3D_sd1w6")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/1To2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/1To2/CollisionShape3D" unique_id=2002500161]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="@Marker3D@48765" type="Marker3D" parent="MaintenanceSequence/Doors/1To2"]
+[node name="@Marker3D@48765" type="Marker3D" parent="MaintenanceSequence/Doors/1To2" unique_id=1414907039]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50, 3.5, -9.5)
 
-[node name="Room1ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="5" node_paths=PackedStringArray("point_2")]
+[node name="Room1ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="5" unique_id=1507262115 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room1ToSTART"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room1ToSTART" unique_id=1087502037]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 35.5, 3.5, 0)
 shape = SubResource("BoxShape3D_3a0ep")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART/CollisionShape3D" unique_id=1208724538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room1ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="6" node_paths=PackedStringArray("point_2")]
+[node name="Room1ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="6" unique_id=1660270255 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room1ToSTART2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room1ToSTART2" unique_id=1728862761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 3.5, 0)
 shape = SubResource("BoxShape3D_ktskh")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART2/CollisionShape3D" unique_id=1216889017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room1ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="7" node_paths=PackedStringArray("point_2")]
+[node name="Room1ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="7" unique_id=1876783186 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room1ToSTART3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room1ToSTART3" unique_id=396025269]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 3.5, -10.5)
 shape = SubResource("BoxShape3D_qrtyx")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART3/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room1ToSTART3/CollisionShape3D" unique_id=1259373869]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8"]
+[node name="2To3" type="Area3D" parent="MaintenanceSequence/Doors" index="8" unique_id=1301675668 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
+point_2 = NodePath("@Marker3D@48766")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/2To3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/2To3" unique_id=1875381540]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 60.5, 3.5, 0)
 shape = SubResource("BoxShape3D_uwkjm")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/2To3/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/2To3/CollisionShape3D" unique_id=1451309882]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="@Marker3D@48766" type="Marker3D" parent="MaintenanceSequence/Doors/2To3"]
+[node name="@Marker3D@48766" type="Marker3D" parent="MaintenanceSequence/Doors/2To3" unique_id=1866336505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 3.5, 0)
 
-[node name="Room2ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="9" node_paths=PackedStringArray("point_2")]
+[node name="Room2ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="9" unique_id=1289283360 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room2ToSTART"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room2ToSTART" unique_id=464431881]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 3.5, 10.5)
 shape = SubResource("BoxShape3D_p05qd")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room2ToSTART/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room2ToSTART/CollisionShape3D" unique_id=1455006418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room2ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="10" node_paths=PackedStringArray("point_2")]
+[node name="Room2ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="10" unique_id=1995895421 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room2ToSTART2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room2ToSTART2" unique_id=1483843733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 3.5, 0)
 shape = SubResource("BoxShape3D_eqbdh")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room2ToSTART2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room2ToSTART2/CollisionShape3D" unique_id=1478525770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room2ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="11" node_paths=PackedStringArray("point_2")]
+[node name="Room2ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="11" unique_id=1139870619 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room2ToSTART3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room2ToSTART3" unique_id=899550039]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50, 3.5, -10.5)
 shape = SubResource("BoxShape3D_xhxea")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room2ToSTART3/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room2ToSTART3/CollisionShape3D" unique_id=526441349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room3ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="12" node_paths=PackedStringArray("point_2")]
+[node name="Room3ToSTART" type="Area3D" parent="MaintenanceSequence/Doors" index="12" unique_id=682435136 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room3ToSTART"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room3ToSTART" unique_id=702132546]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 75, 3.5, 10.5)
 shape = SubResource("BoxShape3D_1rqfx")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room3ToSTART/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room3ToSTART/CollisionShape3D" unique_id=1421045082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room3ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="13" node_paths=PackedStringArray("point_2")]
+[node name="Room3ToSTART2" type="Area3D" parent="MaintenanceSequence/Doors" index="13" unique_id=1364457653 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room3ToSTART2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room3ToSTART2" unique_id=1083484565]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.5, 3.5, 0)
 shape = SubResource("BoxShape3D_mpgbc")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room3ToSTART2/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room3ToSTART2/CollisionShape3D" unique_id=268546901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room3ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="14" node_paths=PackedStringArray("point_2")]
+[node name="Room3ToSTART3" type="Area3D" parent="MaintenanceSequence/Doors" index="14" unique_id=946411488 node_paths=PackedStringArray("point_2")]
 script = ExtResource("1_r5uk5")
 point_2 = NodePath("../../START")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room3ToSTART3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaintenanceSequence/Doors/Room3ToSTART3" unique_id=1017752021]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 75, 3.5, -10.5)
 shape = SubResource("BoxShape3D_biab3")
 
-[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room3ToSTART3/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room3ToSTART3/CollisionShape3D" unique_id=246241494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room1" parent="MaintenanceSequence/Chunks" index="0" instance=ExtResource("5_cjwri")]
+[node name="Room1" parent="MaintenanceSequence/Chunks" index="0" unique_id=410731901 groups=["chunk"] instance=ExtResource("5_cjwri")]
 
-[node name="Backroom" parent="MaintenanceSequence/Chunks/Room1/Chunk/maintenance_room" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_lxd8b")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="1" unique_id=211459087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -9)
 mesh = SubResource("BoxMesh_tospa")
 surface_material_override/0 = SubResource("StandardMaterial3D_5xjkm")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="2" unique_id=742302414]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -9)
 mesh = SubResource("BoxMesh_hk1la")
 surface_material_override/0 = SubResource("StandardMaterial3D_5xjkm")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="3"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="3" unique_id=633801964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 2)
 mesh = SubResource("BoxMesh_hnw2h")
 surface_material_override/0 = SubResource("StandardMaterial3D_iyxab")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="4"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="4" unique_id=2138447154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -2)
 mesh = SubResource("BoxMesh_30pbr")
 surface_material_override/0 = SubResource("StandardMaterial3D_iyxab")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="5"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="5" unique_id=1890744561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 9)
 mesh = SubResource("BoxMesh_ixt3p")
 surface_material_override/0 = SubResource("StandardMaterial3D_jvyrw")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="6"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="6" unique_id=123562369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 9)
 mesh = SubResource("BoxMesh_q7rtt")
 surface_material_override/0 = SubResource("StandardMaterial3D_jvyrw")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="7"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="7" unique_id=2135886432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 2)
 mesh = SubResource("BoxMesh_6td54")
 surface_material_override/0 = SubResource("StandardMaterial3D_ifjyj")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="8"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room1/Chunk" index="8" unique_id=13904371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2)
 mesh = SubResource("BoxMesh_01qlq")
 surface_material_override/0 = SubResource("StandardMaterial3D_ifjyj")
 
-[node name="Room2" parent="MaintenanceSequence/Chunks" index="1" instance=ExtResource("5_cjwri")]
+[node name="Room2" parent="MaintenanceSequence/Chunks" index="1" unique_id=164184182 groups=["chunk"] instance=ExtResource("5_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
-[node name="Backroom" parent="MaintenanceSequence/Chunks/Room2/Chunk/maintenance_room" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_hgraq")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="1" unique_id=645381415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 9)
 mesh = SubResource("BoxMesh_qtkuy")
 surface_material_override/0 = SubResource("StandardMaterial3D_7wuy6")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="2" unique_id=1604276197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 9)
 mesh = SubResource("BoxMesh_a1idy")
 surface_material_override/0 = SubResource("StandardMaterial3D_7wuy6")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="3"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="3" unique_id=18848668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 2)
 mesh = SubResource("BoxMesh_0cpt6")
 surface_material_override/0 = SubResource("StandardMaterial3D_26q0g")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="4"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="4" unique_id=910766570]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -2)
 mesh = SubResource("BoxMesh_mljnr")
 surface_material_override/0 = SubResource("StandardMaterial3D_26q0g")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="5"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="5" unique_id=268085832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 2)
 mesh = SubResource("BoxMesh_ionti")
 surface_material_override/0 = SubResource("StandardMaterial3D_h18d3")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="6"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="6" unique_id=393887404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2)
 mesh = SubResource("BoxMesh_6jlr6")
 surface_material_override/0 = SubResource("StandardMaterial3D_h18d3")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="7"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="7" unique_id=1766845718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -9)
 mesh = SubResource("BoxMesh_k0yl7")
 surface_material_override/0 = SubResource("StandardMaterial3D_ymyq0")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="8"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room2/Chunk" index="8" unique_id=462257277]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -9)
 mesh = SubResource("BoxMesh_e2824")
 surface_material_override/0 = SubResource("StandardMaterial3D_ymyq0")
 
-[node name="Room3" parent="MaintenanceSequence/Chunks" index="2" instance=ExtResource("5_cjwri")]
+[node name="Room3" parent="MaintenanceSequence/Chunks" index="2" unique_id=1052590186 groups=["chunk"] instance=ExtResource("5_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 
-[node name="Backroom" parent="MaintenanceSequence/Chunks/Room3/Chunk/maintenance_room" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_o6lfy")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="1" unique_id=2145537135]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 2)
 mesh = SubResource("BoxMesh_exnet")
 surface_material_override/0 = SubResource("StandardMaterial3D_dckpx")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="2" unique_id=1739443810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, -2)
 mesh = SubResource("BoxMesh_7oevg")
 surface_material_override/0 = SubResource("StandardMaterial3D_dckpx")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="3"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="3" unique_id=1745106129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 9)
 mesh = SubResource("BoxMesh_01ok0")
 surface_material_override/0 = SubResource("StandardMaterial3D_p4aml")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="4"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="4" unique_id=1243789751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 9)
 mesh = SubResource("BoxMesh_crejw")
 surface_material_override/0 = SubResource("StandardMaterial3D_p4aml")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="5"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="5" unique_id=2073249206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 2)
 mesh = SubResource("BoxMesh_67af4")
 surface_material_override/0 = SubResource("StandardMaterial3D_5yv5e")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="6"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="6" unique_id=363354583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2)
 mesh = SubResource("BoxMesh_tdpwf")
 surface_material_override/0 = SubResource("StandardMaterial3D_5yv5e")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="7"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="7" unique_id=892252401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -9)
 mesh = SubResource("BoxMesh_nka37")
 surface_material_override/0 = SubResource("StandardMaterial3D_il65u")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="8"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room3/Chunk" index="8" unique_id=1504429552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -9)
 mesh = SubResource("BoxMesh_akp45")
 surface_material_override/0 = SubResource("StandardMaterial3D_il65u")
 
-[node name="Room4" parent="MaintenanceSequence/Chunks" index="3" instance=ExtResource("5_cjwri")]
+[node name="Room4" parent="MaintenanceSequence/Chunks" index="3" unique_id=331705338 groups=["chunk"] instance=ExtResource("5_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 0)
 
-[node name="Backroom" parent="MaintenanceSequence/Chunks/Room4/Chunk/maintenance_room" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_5rnjb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="1" unique_id=1140471167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 9)
 mesh = SubResource("BoxMesh_toa7q")
 surface_material_override/0 = SubResource("StandardMaterial3D_73pcj")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="2" unique_id=528382404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 9)
 mesh = SubResource("BoxMesh_gvhw1")
 surface_material_override/0 = SubResource("StandardMaterial3D_73pcj")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="3"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="3" unique_id=1319103535]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 2)
 mesh = SubResource("BoxMesh_jiwgp")
 surface_material_override/0 = SubResource("StandardMaterial3D_vablb")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="4"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="4" unique_id=1437734875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2)
 mesh = SubResource("BoxMesh_2dhla")
 surface_material_override/0 = SubResource("StandardMaterial3D_vablb")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="5"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="5" unique_id=906448719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -9)
 mesh = SubResource("BoxMesh_a02e4")
 surface_material_override/0 = SubResource("StandardMaterial3D_031sv")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="6"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="MaintenanceSequence/Chunks/Room4/Chunk" index="6" unique_id=739600565]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -9)
 mesh = SubResource("BoxMesh_sn0pf")
 surface_material_override/0 = SubResource("StandardMaterial3D_031sv")
 
-[node name="START" type="Marker3D" parent="MaintenanceSequence"]
+[node name="START" type="Marker3D" parent="MaintenanceSequence" unique_id=145566583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5, 3.8, 27)
 
 [editable path="MaintenanceSequence"]
