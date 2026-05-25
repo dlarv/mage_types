@@ -92,9 +92,8 @@ process_mode = 3
 libraries/ = SubResource("AnimationLibrary_1n5t0")
 
 [node name="Player" parent="Overworld" unique_id=1613643988 instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.42485, 0.646759, 39.40883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.33157, 3.1000276, 28.827415)
 dash_speed = 900.0
-_active_party = Array[int]([0])
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player" unique_id=1009984194]
 transform = Transform3D(1, 0, 0, 0, 0.66262025, 0.7489559, 0, -0.7489559, 0.66262025, 0, 6, 4)
