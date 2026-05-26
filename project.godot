@@ -343,3 +343,7 @@ diffuse_test={
 "type": "sampler2D",
 "value": "res://assets/_blender/claydoh/textures/uv grid.png"
 }
+wave_displacement={
+"type": "sampler2D",
+"value": "res://world/subareas/environments/main_beach_env.tscn::NoiseTexture2D_tbbdx"
+}

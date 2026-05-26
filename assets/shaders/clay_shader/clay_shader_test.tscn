@@ -221,6 +221,7 @@ subdivide_height = 100
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_txxsr"]
 render_priority = 0
 shader = ExtResource("2_txxsr")
+shader_parameter/show_diffuse_test = false
 shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/uv_scale = Vector2(1.38, 1.52)
@@ -240,6 +241,7 @@ subdivide_height = 100
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rpemy"]
 render_priority = 0
 shader = ExtResource("2_txxsr")
+shader_parameter/show_diffuse_test = false
 shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/uv_scale = Vector2(1, 1)
@@ -303,6 +305,7 @@ shadow_mesh = SubResource("ArrayMesh_yyi4w")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pevn1"]
 render_priority = 0
 shader = ExtResource("2_txxsr")
+shader_parameter/show_diffuse_test = true
 shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/uv_scale = Vector2(1, 1)
