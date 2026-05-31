@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="KeyItem" format=3 uid="uid://c4erte10ui5ws"]
+
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_0oh4t"]
+[ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="2_23vga"]
+
+[resource]
+script = ExtResource("2_23vga")
+unique_name = &"MAGENTA_KEY"
+name = "Magenta Key"
+details = "A bright pink key"
+metadata/_custom_type_script = "uid://bga7b8k778yar"

@@ -3,10 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dmet1d2f3kx1r" path="res://world/subareas/environments/blue_env.tscn" id="1_yeg0x"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="2_bteo7"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_4g4u6"]
-[ext_resource type="PackedScene" uid="uid://bdxxs2kdxlsxy" path="res://world/subareas/blue/beach_house.tscn" id="3_6h34i"]
+[ext_resource type="PackedScene" uid="uid://cdcd3tsc1juh" path="res://world/subareas/blue/beach/beach.tscn" id="3_n2ypl"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_5og7y"]
-[ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="5_gn7b1"]
-[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="8_egugs"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
 [ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_1.tscn" id="14_srry2"]
@@ -18,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/objects/blue/hotel/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/objects/blue/hotel/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/objects/blue/hotel/vase_blue.tscn" id="21_yq576"]
-[ext_resource type="PackedScene" uid="uid://tramh0v4ebdd" path="res://world/subareas/environments/main_beach_env.tscn" id="22_mwtcr"]
 [ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://3msomq4tjs6m" path="res://assets/3d/characters/blue_aligned/bartender.blend" id="23_mwtcr"]
 
@@ -127,31 +124,6 @@ size = Vector3(1, 7, 6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7jbtl"]
 size = Vector3(1, 7, 5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rkys2"]
-size = Vector3(204, 44.450253, 142)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_chd8a"]
-size = Vector3(54.126495, 44.450253, 177.97363)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_n2ypl"]
-size = Vector2(0.8, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h34i"]
-emission_enabled = true
-emission = Color(0.945098, 0.984314, 0.631373, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gn7b1"]
-size = Vector3(96, 25, 87)
-
-[sub_resource type="Curve3D" id="Curve3D_egugs"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.21929, -2.142, 8.41305, 0, 0, 0, 0, 0, 0, 0.129158, -2.30178, 8.31327, 0, 0, 0, 0, 0, 0, 0.0162735, -2.31502, -0.0539207, 0, 0, 0, 0, 0, 0, -0.0184708, 0.12098, -0.0799208),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_egugs"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_psjbi"]
 size = Vector3(51, 25, 37)
 
@@ -206,9 +178,6 @@ size = Vector3(307, 161, 301)
 [node name="Blue" type="Node3D" unique_id=543950842]
 
 [node name="BlueEnv" parent="." unique_id=851881689 instance=ExtResource("1_yeg0x")]
-
-[node name="MainBeachEnv" parent="." unique_id=823650402 instance=ExtResource("22_mwtcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 33.33571)
 
 [node name="Doors" type="Node3D" parent="." unique_id=1914560580]
 
@@ -1129,127 +1098,7 @@ shape = SubResource("BoxShape3D_7jbtl")
 [node name="Marker3D" type="Marker3D" parent="Doors/Hall3ToWestHotelMain/CollisionShape3D2" unique_id=1292296949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Beach" type="Node3D" parent="." unique_id=1650518042]
-
-[node name="BeachHouse" parent="Beach" unique_id=1682901359 instance=ExtResource("3_6h34i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.2233, 33.33571)
-
-[node name="HotelExteriorChunk" type="Area3D" parent="Beach" unique_id=320799579 node_paths=PackedStringArray("chunk") groups=["persist"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 0)
-script = ExtResource("3_4g4u6")
-chunk = NodePath("Chunk")
-fog_level = 0.1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beach/HotelExteriorChunk" unique_id=785722568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.46219, 11.209017, 53.83571)
-shape = SubResource("BoxShape3D_rkys2")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Beach/HotelExteriorChunk" unique_id=696360720]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.283554, 11.209017, 35.848892)
-shape = SubResource("BoxShape3D_chd8a")
-
-[node name="Chunk" type="Node3D" parent="Beach/HotelExteriorChunk" unique_id=847292987]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=1392613160]
-transform = Transform3D(0.99888986, 0.04652654, -0.007369057, 0, 0.156434, 0.9876884, 0.047106493, -0.986592, 0.15626033, 0, 11.9111, 33.33571)
-light_color = Color(0.49411765, 0.67058825, 1, 1)
-light_energy = 0.4
-shadow_enabled = true
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=1573997623]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43028212, 4.594143, 18.356339)
-light_color = Color(0.943733, 0.983268, 0.631249, 1)
-omni_range = 7.87069
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=1101944932]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.80076, 22.492947, 51.56935)
-visible = false
-light_color = Color(0.943733, 0.983268, 0.631249, 1)
-light_energy = 3.41
-omni_range = 7.87069
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=926752839]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.797577, 15.970551)
-mesh = SubResource("PlaneMesh_n2ypl")
-surface_material_override/0 = SubResource("StandardMaterial3D_6h34i")
-
-[node name="FlyPrompt" type="Label3D" parent="Beach/HotelExteriorChunk/Chunk" unique_id=1181804654]
-transform = Transform3D(1, 0, -2.08616e-07, 0, 1, 0, 2.08616e-07, 0, 1, 20, 3, 36.993134)
-text = "If you get stuck, use Ctrl+f to enter fly mode.
-(This is a debug tool, not a part of the actual game)"
-font_size = 64
-
-[node name="BeachChunk" type="Area3D" parent="Beach" unique_id=1712035571 node_paths=PackedStringArray("chunk") groups=["chunk", "persist"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.39735, 0, 0)
-script = ExtResource("3_4g4u6")
-chunk = NodePath("Chunk")
-fog_level = 0.1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beach/BeachChunk" unique_id=234988350]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, 54.33571)
-shape = SubResource("BoxShape3D_gn7b1")
-
-[node name="Chunk" type="Node3D" parent="Beach/BeachChunk" unique_id=632786869]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Beach/BeachChunk/Chunk" unique_id=1712885861]
-transform = Transform3D(0.6060382, -0.4932865, 0.6240082, 0.35139316, 0.86981624, 0.3463272, -0.713611, 0.009384705, 0.70047945, 0, 10.689543, 32.982803)
-light_color = Color(0.494773, 0.67193, 1, 1)
-light_energy = 0.4
-light_bake_mode = 1
-shadow_enabled = true
-
-[node name="MagiclayRock" parent="Beach/BeachChunk/Chunk" unique_id=780293502 instance=ExtResource("5_gn7b1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 36.33571)
-_element = 0
-
-[node name="DashPrompt" type="Label3D" parent="Beach/BeachChunk/Chunk" unique_id=1562360843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 47.33571)
-text = "Press Shift to dash
-and 
-Space to jump"
-font_size = 64
-
-[node name="WalkPrompt" type="Label3D" parent="Beach/BeachChunk/Chunk" unique_id=2038922288]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 75.33571)
-text = "Use WASD to move"
-font_size = 64
-
-[node name="InteractPrompt" type="Label3D" parent="Beach/BeachChunk/Chunk" unique_id=1740087151]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 34.33571)
-text = "Press Ctrl to drag/drop blocks"
-font_size = 64
-
-[node name="PressurePlate" parent="Beach/BeachChunk/Chunk" unique_id=1879554349 instance=ExtResource("16_61fdq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.59999, 3.8, 36.23571)
-_element = 0
-
-[node name="MagiclayRock2" parent="Beach/BeachChunk/Chunk" unique_id=847473781 instance=ExtResource("5_gn7b1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.59999, 4.8, 36.23571)
-_element = 3
-
-[node name="MagiclayRock3" parent="Beach/BeachChunk/Chunk" unique_id=329224211 instance=ExtResource("5_gn7b1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.699997, 4.8, 38.33571)
-_element = 0
-
-[node name="Gate" parent="Beach/BeachChunk/Chunk" unique_id=1445179743 node_paths=PackedStringArray("locks") instance=ExtResource("4_5og7y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.699997, 4, 26.335709)
-locks = [NodePath("../PressurePlate")]
-permanent = true
-
-[node name="Wire" parent="Beach/BeachChunk/Chunk" unique_id=787055906 node_paths=PackedStringArray("target") instance=ExtResource("8_egugs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9, 6, -6)
-target = NodePath("../PressurePlate")
-
-[node name="Path" parent="Beach/BeachChunk/Chunk/Wire" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
-curve = SubResource("Curve3D_egugs")
-
-[node name="Head" parent="Beach/BeachChunk/Chunk/Wire" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Beach/BeachChunk/Chunk" unique_id=1679028593]
-transform = Transform3D(-4.371139e-06, -100, 0, 100, -4.371139e-06, 0, 0, 0, 100, 40.03589, 0.061828613, 38.31311)
-mesh = SubResource("PlaneMesh_egugs")
+[node name="Beach" parent="." unique_id=1298904294 instance=ExtResource("3_n2ypl")]
 
 [node name="HotelRooms" type="Node3D" parent="." unique_id=1812581436]
 
@@ -1619,5 +1468,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0, -352)
 [node name="WestHotel" parent="." unique_id=2129615624 instance=ExtResource("22_yncb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
 
-[editable path="Beach/BeachChunk/Chunk/Wire"]
 [editable path="HotelRooms/HallChunk1/Chunk/bartender"]

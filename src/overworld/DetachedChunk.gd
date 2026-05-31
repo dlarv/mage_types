@@ -132,3 +132,6 @@ func add_golem(node: Golem) -> void:
 func remove_golem(node: Golem) -> void:
 	super.remove_golem(node)
 	objs.remove_at(objs.find(node))
+
+
+
