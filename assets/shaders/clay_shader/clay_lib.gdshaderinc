@@ -9,10 +9,10 @@ uniform bool show_diffuse_test = false;
 uniform vec4 base_color: source_color = vec4(1, 1, 1, 1);
 uniform float roughness: hint_range(0.0, 1.0, 0.1) = 1.0;
 uniform float fingerprint_offset = 0;
-uniform float fingerprint_scale: hint_range(0.0, 1.0, 0.1) = 1;
+uniform float fingerprint_scale = 1;
 uniform float crack_offset = 0;
 uniform float crack_scale = 1;
-uniform float crack_detail_level: hint_range(0.0, 1.0, 0.1) = 0.5;
+uniform float crack_detail_level = 0.5;
 
 varying mat4 inv_modelview_matrix;
 varying flat vec4 projected_coords;
