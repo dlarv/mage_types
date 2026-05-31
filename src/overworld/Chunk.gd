@@ -5,6 +5,8 @@ signal on_loaded(chunk: Chunk)
 
 @export var chunk: Node3D
 @export var resets: Array[Node3D]
+## Objects that will be returned to their intial state when chunk is unloaded
+@export var non_persistent: Array[Node3D]
 ## Should be set in parent scene. 
 ## This value is passed to any animation_actors in scene that do not have their own.
 @export var animation_player: AnimationPlayer
@@ -60,6 +62,9 @@ func load(player: Node3D) -> void:
 	MyLogger.append_world_log("Player loaded Chunk(%s)" % name) 
 	chunk.process_mode = Node.PROCESS_MODE_INHERIT
 	chunk.show()
+
+	for obj in non_persistent:
+		obj.reset(true)
 
 	for child in find_children("", "MagiClay"):
 		child.flicker_collider()

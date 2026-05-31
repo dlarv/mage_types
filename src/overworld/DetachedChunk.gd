@@ -7,6 +7,11 @@ var objs := []
 func _ready() -> void:
 	if not was_initialized:
 		gather_objs()
+		# Append non persistent objects to end of obj array
+		for obj in non_persistent:
+			if not obj in objs:
+				objs.append(obj)
+			
 	
 	body_entered.connect(load)
 	body_exited.connect(unload)
@@ -47,8 +52,15 @@ func _ready() -> void:
 		obj.hide()
 
 		obj.tree_exiting.connect(func() -> void: objs.remove_at(objs.find(obj)))
+		obj.tree_entered.connect(func() -> void: 
+			if not obj in objs:
+				objs.append(obj)
+		)
 
-
+func _process(delta: float) -> void:
+	if name == "BeachChunk":
+		print(len(objs))
+	
 func gather_objs() -> void:
 	var detachedChunks := get_tree().current_scene.find_children("", "DetachedChunk")
 	# Array[ [DetachedChunk, CollisionShape3D] ]
@@ -89,6 +101,7 @@ func gather_objs() -> void:
 		if not taken and child.get_child_count() > 0:
 			children.append_array(child.get_children())
 
+
 func has_point(shape: Shape3D, center: Vector3, pos: Vector3) -> bool:
 	if shape is BoxShape3D:
 		var x1: float = center.x - shape.size.x / 2
@@ -104,6 +117,7 @@ func has_point(shape: Shape3D, center: Vector3, pos: Vector3) -> bool:
 
 	return false 
 
+
 func load(player: Node3D) -> void:
 	if not player.is_in_group("player"): return
 	if not visible: return
@@ -113,6 +127,9 @@ func load(player: Node3D) -> void:
 		if is_instance_valid(obj):
 			obj.process_mode = Node.PROCESS_MODE_INHERIT
 			obj.show()
+
+		if obj in non_persistent:
+			obj.reset(true)
 
 	on_loaded.emit(self)
 
@@ -132,6 +149,3 @@ func add_golem(node: Golem) -> void:
 func remove_golem(node: Golem) -> void:
 	super.remove_golem(node)
 	objs.remove_at(objs.find(node))
-
-
-

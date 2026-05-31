@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="5_ff42j"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="6_igcug"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="7_1vpu4"]
+[ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="7_ji4u4"]
 [ext_resource type="PackedScene" uid="uid://c58vw11neqnxf" path="res://assets/3d/objects/blue/beach/lamppost.tscn" id="8_1otd5"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="8_5jrit"]
 [ext_resource type="Script" uid="uid://01qkk2h0lo8m" path="res://world/subareas/blue/beach/SunkenLampPuzzle.gd" id="9_sgeyw"]
@@ -23,8 +24,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_egugs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkys2"]
 size = Vector3(260, 44.450253, 229)
@@ -58,10 +57,11 @@ size = Vector3(1.5, 3.1000001, 2.1000001)
 [node name="MainBeachEnv" parent="." unique_id=353449956 instance=ExtResource("1_ryk2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 33.33571)
 
-[node name="BeachChunk" type="Area3D" parent="." unique_id=1239770108 node_paths=PackedStringArray("chunk") groups=["chunk", "persist"]]
+[node name="BeachChunk" type="Area3D" parent="." unique_id=1239770108 node_paths=PackedStringArray("chunk", "non_persistent") groups=["chunk", "persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.39735, 0, 0)
 script = ExtResource("3_5jrit")
 chunk = NodePath("Chunk")
+non_persistent = [NodePath("Chunk/BacktrackingPuzzle/MagiclayRock"), NodePath("Chunk/BacktrackingPuzzle/MagiclayRock2"), NodePath("Chunk/BacktrackingPuzzle/MagiclayRock3")]
 fog_level = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BeachChunk" unique_id=748606485]
@@ -78,7 +78,7 @@ light_bake_mode = 1
 shadow_enabled = true
 
 [node name="MagiclayRock" parent="BeachChunk/Chunk" unique_id=285293906 instance=ExtResource("4_sgeyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 36.33571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9999847, 1, 40.33571)
 _element = 0
 
 [node name="DashPrompt" type="Label3D" parent="BeachChunk/Chunk" unique_id=1497248392]
@@ -98,37 +98,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 34.33571)
 text = "Press Ctrl to drag/drop blocks"
 font_size = 64
 
-[node name="PressurePlate" parent="BeachChunk/Chunk" unique_id=720151678 instance=ExtResource("5_ff42j")]
+[node name="BeachHouseEntry" type="Node3D" parent="BeachChunk/Chunk" unique_id=1693618765]
+
+[node name="PressurePlate" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=720151678 instance=ExtResource("5_ff42j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.59999, 3.8, 36.23571)
 _element = 0
 
-[node name="MagiclayRock2" parent="BeachChunk/Chunk" unique_id=1331664364 instance=ExtResource("4_sgeyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.59999, 4.8, 36.23571)
-_element = 3
-
-[node name="MagiclayRock3" parent="BeachChunk/Chunk" unique_id=1997120739 instance=ExtResource("4_sgeyw")]
+[node name="MagiclayRock" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=1997120739 instance=ExtResource("4_sgeyw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.699997, 4.8, 38.33571)
 _element = 0
 
-[node name="Gate" parent="BeachChunk/Chunk" unique_id=1642533675 node_paths=PackedStringArray("locks") instance=ExtResource("6_igcug")]
+[node name="MagiclayRock2" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=1331664364 instance=ExtResource("4_sgeyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.59999, 4.8, 36.23571)
+_element = 3
+
+[node name="Wire" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=107238778 node_paths=PackedStringArray("target") instance=ExtResource("7_1vpu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.90001, 6, -6)
+target = NodePath("../PressurePlate")
+
+[node name="Path" parent="BeachChunk/Chunk/BeachHouseEntry/Wire" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
+curve = SubResource("Curve3D_egugs")
+
+[node name="Head" parent="BeachChunk/Chunk/BeachHouseEntry/Wire" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
+
+[node name="Gate" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=1642533675 node_paths=PackedStringArray("locks") instance=ExtResource("6_igcug")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.699997, 4, 26.335709)
 locks = [NodePath("../PressurePlate")]
 permanent = true
 
-[node name="Wire" parent="BeachChunk/Chunk" unique_id=107238778 node_paths=PackedStringArray("target") instance=ExtResource("7_1vpu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9, 6, -6)
-target = NodePath("../PressurePlate")
+[node name="BacktrackingPuzzle" type="Node3D" parent="BeachChunk/Chunk" unique_id=1134049435]
 
-[node name="Path" parent="BeachChunk/Chunk/Wire" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
-curve = SubResource("Curve3D_egugs")
+[node name="MagiclayRock" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=323243083 instance=ExtResource("4_sgeyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.602646, 3.4, 23)
+_element = 3
 
-[node name="Head" parent="BeachChunk/Chunk/Wire" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
+[node name="MagiclayRock2" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=976536940 instance=ExtResource("4_sgeyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.602646, 3.4, 23)
+_element = 6
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BeachChunk/Chunk" unique_id=1661320136]
-transform = Transform3D(-4.371139e-06, -100, 0, 100, -4.371139e-06, 0, 0, 0, 100, 40.03589, 0.061828613, 38.31311)
-mesh = SubResource("PlaneMesh_egugs")
+[node name="MagiclayRock3" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=981994941 instance=ExtResource("4_sgeyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.602646, 3.4, 23)
+_element = 0
+
+[node name="Geyser" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=1329560048 instance=ExtResource("7_ji4u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.602646, 3, 28)
+size = 13.0
+_element = 0
 
 [node name="BeachHouse" parent="." unique_id=1901693184 instance=ExtResource("2_1otd5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 38.2233, 33.33571)
@@ -549,7 +566,7 @@ material = ExtResource("8_5jrit")
 [connection signal="body_entered" from="HotelExteriorChunk/Chunk/SunkenLampPuzzle/Reset1" to="HotelExteriorChunk/Chunk/SunkenLampPuzzle" method="_reset"]
 [connection signal="body_entered" from="HotelExteriorChunk/Chunk/SunkenLampPuzzle/Reset2" to="HotelExteriorChunk/Chunk/SunkenLampPuzzle" method="_reset"]
 
-[editable path="BeachChunk/Chunk/Wire"]
+[editable path="BeachChunk/Chunk/BeachHouseEntry/Wire"]
 [editable path="HotelExteriorChunk/Chunk/StreetLamps/FallenLamppost"]
 [editable path="HotelExteriorChunk/Chunk/SunkenLamps/SunkenLamppost3"]
 [editable path="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar2/Lamppost"]

@@ -119,11 +119,15 @@ func set_stasis(val:Variant=null) -> void:
 	await flicker_collider()
 
 
-func reset() -> void:
+func reset(resetPosition:=false) -> void:
 	MyLogger.append_puzzle_log("%s reverted to original element. Element(%s) --> Element(%s)." 
 			% [puzzle_name, element, _original_element])
 	set_element(_original_element, _rand_val, true)
 	set_stasis(false)
+
+	if resetPosition:
+		print("%s, %s" % [global_position, spawn_position])
+		global_position = spawn_position
 
 
 func destroy() -> void:

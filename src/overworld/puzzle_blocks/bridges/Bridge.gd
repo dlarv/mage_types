@@ -43,8 +43,8 @@ func _on_laser_dropped() -> void:
 	$SubEmitter2.stop()
 
 
-func reset() -> void:
-	super.reset()
+func reset(resetPosition:=false) -> void:
+	super.reset(resetPosition)
 	if _is_emitting:
 		$SubEmitter.start()
 		$SubEmitter2.start()
@@ -59,5 +59,3 @@ func _on_laser_broken() -> void:
 		MyLogger.append_puzzle_log("Bridge(%s)'s laser was triggered and shutoff." % [puzzle_name])
 		$SubEmitter.stop()
 		$SubEmitter2.stop()
-
-
