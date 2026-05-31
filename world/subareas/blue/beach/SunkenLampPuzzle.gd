@@ -11,6 +11,7 @@ enum PuzzleStates { SEQUENCE_START, HINT_PAUSE, HINTING, SEQUENCE_END }
 
 @export_category("Hint Timing")
 @export var hint_sequence_delay := 10.0
+@export var hint_start_delay := 1.0
 ## How long should a lamp be lit during hint
 @export var hint_hold_time := 3.0
 ## How long should every lamp be turned off between hints
@@ -85,7 +86,7 @@ func _sequence_start() -> void:
 		lamp.disabled = true
 		lamp.spot_light.light_energy = 0
 	
-	$Timer.wait_time = hint_hold_time
+	$Timer.wait_time = hint_start_delay
 	_curr_state = PuzzleStates.HINT_PAUSE
 	$Timer.start()
 

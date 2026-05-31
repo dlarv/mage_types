@@ -311,6 +311,7 @@ spot_range = 18.0
 script = ExtResource("9_sgeyw")
 correct_sequence = Array[int]([3, 1, 2, 0])
 reward_node = NodePath("Chest")
+hint_start_delay = 1.5
 hint_between_time = 0.1
 
 [node name="Chest" parent="HotelExteriorChunk/Chunk/SunkenLampPuzzle" unique_id=792797500 instance=ExtResource("10_ff42j")]
