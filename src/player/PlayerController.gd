@@ -112,7 +112,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += get_local_gravity() * delta
 		_is_grounded = false
 		_is_heavy_fall = velocity.y <= HEAVY_FALL_THRESHOLD
-		if _is_heavy_fall: print("HERE")
+		if _is_heavy_fall: pass
 
 	velocity.x *= friction
 	velocity.z *= friction
