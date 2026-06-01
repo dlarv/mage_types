@@ -56,10 +56,6 @@ func _ready() -> void:
 			if not obj in objs:
 				objs.append(obj)
 		)
-
-func _process(delta: float) -> void:
-	if name == "BeachChunk":
-		print(len(objs))
 	
 func gather_objs() -> void:
 	var detachedChunks := get_tree().current_scene.find_children("", "DetachedChunk")
