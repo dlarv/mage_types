@@ -3,6 +3,7 @@ shader_type spatial;
 
 global uniform sampler2D wave_displacement;
 
+uniform vec4 base_color: source_color = vec4(1, 1, 1, 1);
 uniform float wave_intensity = 0.0;
 
 varying float x;

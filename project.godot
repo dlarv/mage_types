@@ -347,3 +347,35 @@ wave_displacement={
 "type": "sampler2D",
 "value": "res://world/subareas/environments/main_beach_env.tscn::NoiseTexture2D_tbbdx"
 }
+element_b={
+"type": "color",
+"value": Color(0, 0, 0.8627451, 1)
+}
+element_p={
+"type": "color",
+"value": Color(0.47843137, 0, 0.77254903, 1)
+}
+element_m={
+"type": "color",
+"value": Color(1, 0.1254902, 1, 1)
+}
+element_r={
+"type": "color",
+"value": Color(0.67058825, 0, 0, 1)
+}
+element_o={
+"type": "color",
+"value": Color(1, 0.26666668, 0, 1)
+}
+element_y={
+"type": "color",
+"value": Color(1, 1, 0.29803923, 1)
+}
+element_g={
+"type": "color",
+"value": Color(0.14509805, 1, 0.1882353, 1)
+}
+element_c={
+"type": "color",
+"value": Color(0.1254902, 0.9019608, 0.9019608, 1)
+}

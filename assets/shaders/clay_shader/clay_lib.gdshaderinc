@@ -6,7 +6,6 @@ global uniform sampler2D crack_detail;
 global uniform sampler2D diffuse_test;
 
 uniform bool show_diffuse_test = false;
-uniform vec4 base_color: source_color = vec4(1, 1, 1, 1);
 uniform float roughness: hint_range(0.0, 1.0, 0.1) = 1.0;
 uniform float fingerprint_offset = 0;
 uniform float fingerprint_scale = 1;

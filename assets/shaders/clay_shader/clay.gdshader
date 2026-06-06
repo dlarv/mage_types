@@ -1,6 +1,8 @@
 shader_type spatial;
 #include "clay_lib.gdshaderinc"
 
+uniform vec4 base_color: source_color = vec4(1, 1, 1, 1);
+
 void vertex() {
 	inv_modelview_matrix = inverse(MODELVIEW_MATRIX);
 }
