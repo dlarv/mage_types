@@ -31,7 +31,6 @@ func _ready() -> void:
 
 	for chunk in get_tree().get_nodes_in_group("chunk"):
 		chunk.on_loaded.connect(func(c: Chunk) -> void:
-			print(c.name + " loaded")
 			%WorldEnvironment.environment.volumetric_fog_density = c.fog_level
 		)
 
