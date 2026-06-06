@@ -43,6 +43,8 @@
 - [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
 - [ ] Ethereal Quartz overworld item can be used even when not equipped
 - [ ] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
+## Optimizations
+- [ ] When player moves thru door, for a brief second both chunks are visible. This causes a weird visual distortion
 ## Battle 
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
 	- Use `[url]` tag.
@@ -334,6 +336,24 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 		-  Adding this reaction would make 3 reactions involving Yellow + ??? = Red, which further clutters the transmutation map. This and the fact that it doesn't quite visually look right makes me tempted to nix it. 
 		- This would also eliminate the intersection
 - [x] Adjust `ElementalType.main_color` values
+### Stencils
+
+**Tutorial Stencil 1** 
+![[files/tutorial_stencil_1.png]]
+
+**Tutorial Stencil 2**
+![[files/tutorial_stencil_2.png]]
+
+**Tutorial Stencil 3**
+![[files/tutorial_stencil_3.png]]
+
+**Official Stencil 1**
+![[stencil_bpm.png]]
+
+>[!note] To add a new Stencil:
+> 1. Create new KeyItem
+>2. Set KeyItem.id to n+1, where n is id of previous stencil
+>3. Inside ElementFlowChart.gd, add new case to `match` statement in `_on_stencil_button_toggled`
 ## Player
  - [x] Player should be able to perform simple actions:
 	- [x] Walking/running.

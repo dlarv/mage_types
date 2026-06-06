@@ -25,9 +25,16 @@ func _ready() -> void:
 	if not Inventory.key_item_lost.is_connected(deactivate_stencil):
 		Inventory.key_item_lost.connect(deactivate_stencil)
 	
-	%StencilVBox.get_child(0).visible = Inventory.has_key_item(&"STENCIL_1")
-	%StencilVBox.get_child(1).visible = Inventory.has_key_item(&"STENCIL_2")
-	%StencilVBox.get_child(2).visible = Inventory.has_key_item(&"STENCIL_3")
+	else:
+		%StencilVBox.get_child(0).visible = Inventory.has_key_item(&"TUTORIAL_STENCIL_1")
+		%StencilVBox.get_child(1).visible = Inventory.has_key_item(&"TUTORIAL_STENCIL_2")
+		%StencilVBox.get_child(2).visible = Inventory.has_key_item(&"TUTORIAL_STENCIL_3")
+
+	for i in %StencilVBox.get_child_count() - 3:
+		%StencilVBox.get_child(i + 3).visible = Engine.is_editor_hint() \
+			or Inventory.has_key_item(&"STENCIL_%d" % (i + 1))
+		
+	
 	
 
 func restrict_graph(nodes: Array, edges:=[]) -> void:
@@ -98,14 +105,18 @@ func _on_stencil_button_toggled(toggledOn: bool, index: int) -> void:
 	var edges: Array[ElementalType]
 	match index:
 		0: 
-			nodes = [RED, ORANGE, YELLOW, GREEN, CYAN]
-			edges = [ORANGE, YELLOW, GREEN]
+			nodes = [ BLUE, PURPLE,MAGENTA, YELLOW, GREEN, CYAN ]
+			edges = [ MAGENTA ]
 		1:
-			nodes = [ORANGE, YELLOW, GREEN, CYAN]
-			edges = [YELLOW, GREEN]
+			nodes = [ BLUE, PURPLE, MAGENTA, GREEN, CYAN ]
+			edges = []
 		2:
-			nodes = [YELLOW, GREEN, CYAN]
-			edges = [GREEN]
+			nodes = [ BLUE, MAGENTA, GREEN, CYAN ]
+			edges = []
+		3:
+			nodes = [ RED, ORANGE, YELLOW, GREEN, CYAN ]
+			edges = [ ORANGE, YELLOW, GREEN ]
+
 	restrict_graph(nodes, edges)
 
 	if not %AdvancedOptionsPane.is_visible_in_tree(): return
