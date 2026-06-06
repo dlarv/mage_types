@@ -24,6 +24,7 @@ var clear_action: Callable = _clear
 
 var offset := Vector3.ZERO
 
+
 func _generate() -> void:
 	_clear()
 	var initialGlobalPosition := global_position
@@ -77,8 +78,8 @@ func _generate() -> void:
 			rotate_door(portal, correctDoorDir)
 			portal.name = "%dTo%d" % [i, i + 1]
 
-			var color: ElementalType = ElementManager.get_element_from_enum(sequence[i + 1])
-			incorrectColors.remove_at(incorrectColors.find(color))
+			var color: ElementalType = ElementManager.elements[sequence[i + 1]]
+			#incorrectColors.remove_at(incorrectColors.find(color))
 			room.add_indicators(color, correctDoorDir)
 
 		# Connect incorrect doors to beginning.
