@@ -40,6 +40,9 @@
 - [ ] When player is defeated in battle, it immediately ends before playing animations, etc
 - [ ] Alignment calculations at end of battle crashing due to empty list of elements
 - [ ] Falling animation playing when going thru doorways
+- [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
+- [ ] Ethereal Quartz overworld item can be used even when not equipped
+- [ ] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 ## Battle 
 - If attack inflicts a phobia or stat change and you want a hyperlink, it might be better to let the Formatters generate it for you.
 	- Use `[url]` tag.
@@ -338,15 +341,17 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [x]  Pickup objects and place in inventory.
 	- [x] Open chests.
 	- [x] Drag objects.
-- [x] Each player action should have corresponding animations. #v0_7
+- [ ] Each player action should have corresponding animations. #v0_7
 	- [x] Idle
 		- [x] space weight shifting out more
 	- [x] Walk
 		- [x] Get feedback, I can't tell what's off
 			- I think I fixed it (broadstrokes), so it can wait until I get feedback for the rest
 	- [x] Jump
-	- [x] Dash
-		- Removed dash, as I didn't like how it looked
+	- [ ] Dash
+		- ~~Removed dash, as I didn't like how it looked~~
+		- Dash should have charater's arms more tucked in
+	- [ ] Dragging animation
 - [x] Player battle animations
 	- [x] Channeling
 	- [x] Attack
@@ -365,6 +370,8 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 		- [x] Color palette selection and assignment
 		- [x] Bake textures
 	- [x] BugFix: Adjust weight painting for shoulders, so they stop clipping through jacket #v0_7
+>[!note]
+>Player can jump and dash roughly 12 units
 ### Playable Character Shader
 - [x] Dynamically change aspects of a character's color palette to match their current typing
 `PCShaderManager: Node3D` 
@@ -728,20 +735,141 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [x] Texturing
 		- [x] Adjust colors
 	- [ ] Fix holes in model exposed during waves
-	- [ ] Fix water texture
-	- [ ] Fix pier collider and materials
+	- [ ] Keep player from sliding off sand thru gap in water teleport collider, causing player to fall into the void
+	- [x] Fix water texture
+	- [x] Fix pier collider and materials
 - [ ] Beach 1 backtracking puzzle
 - [ ] Beach 2 #v0_7
 	- [x] Layout
 	- [x] Modeling
-	- [ ] Textures
+	- [x] Textures
 	- [ ] Decor assets
+		- [x] Street lights
+		- [x] Rocks/tidepools
+		- [ ] Midground decor
+		- [ ] Transformer in NE corner?
+		- [ ] Sandcastle on sand
+		- [x] Lamppost island puzzle
+			- [x] Designed
+			- [x] Implemented
+			- [x] Placed reward (hidden chest)
+	- [x] Move road further north
+	- [ ] Move House further east and on hill
+	- [ ] NW Parkour challenge
+		- [x] Designed challenge
+		- [ ] Placed reward
+			- If I give the player a attack/item and I'm not careful, I might upset the balance of my tutorial
+	- [ ] SW Parkour challenge
+		- [x] Designed Challenge
+		- [ ]  Place NPC/reward
+	- [ ] Remodel Hotel exterior
+	- [ ] Place breakable rock in front of East Cave
 - [ ] Beach house #v0_7
 	- [ ] Layout
 	- [ ] Model
 	- [ ] Texturing
 	- [ ] Assets
 	- [ ] Change from BPM -> ROY
+	
+This section serves primarily to set the atmosphere and show off the clay shader. The hotel will be constructed of a more "otherworldly" material, this will hopefully cement the clay aesthetic.
+
+**Beach 1 Backtracking Obstacle**
+- 1 geyser and 3 magiclay rocks
+1. Uses Stasis on geyser
+2. Stand on geyser
+3. Use Stasis on each MagiClay rock
+4. Stasis on geyser ends, pushing player up onto cliff
+- Reward: ???
+
+**Northwest Parkour Challenge**
+- Simple, 5 platform parkour challenge
+- Reward: ???
+
+**Southwest Parkour Challenge**
+- 9 platform partially-blind parkour challenge
+	- Southward parkour challenges are more difficult, as the player can't fully see the next platform
+	- The player can gauge where next platform is, based on the light attached to the next platform
+- This challenge give the player access to a southern island. 
+	- I imagine this will be mostly for lore
+	- There'll probably be an NPC here the player can s/w
+
+**Flickering Lamppost Puzzle**
+- 4 platforms in middle of SW Parkour Challenge, each w/ their own lamppost
+- Every 5 seconds a hint sequence begins playing
+	1. All light turns off
+	2. Lights turn on one at a time
+	3. If player jumps on platforms in that order, a chest appears
+- Reward: Magenta Key
+
+**Eastern Caves**
+- Along base of Eastern cliffs
+- Breakable rock blocks entrance
+- Player must return once they have sledgehammer
+- Reward: ???
+### Transmutation Tutorial
+- In-between Beaches 1 and 2
+- Currently, this is a beach house, tho I might change it into a cave system
+- Player's first introduction to *transmutation system*
+- Should teach player how to use *transmutation map*
+- Has a few unique stencils which can't be removed from their respective rooms
+
+Player has to think abstractly: 
+> Its useful to imagine a MagiClay object's journey around the transmutation map, even if its not actually moving.
+
+- It might help to have literal paths the player has to go down. Each room and door will have a color.
+- First few rooms will guide the player, be more handholdy
+- Final challenge will give player a point A and point B and they have to navigate to it using the map
+	
+Player will conceptualize the *Transmutation Map's* arrows as:
+1. Paths
+2. Lasers
+3. Attacks
+
+>[!aside] 
+>In-game, this area was designed by a Magenta-aligned and Cyan-aligned working together.
+
+**Section 1**
+- R + Y = O
+- Table next to entrance
+	- Stack of Transmutation Maps and a sign asking you to only take one
+	- Stencil with a note asking you not to take it out of the room, as they were not able to make more than one
+		- Stencil shows *Red* and *Orange* only
+>[!question] 
+>Maybe the transmutation map is already in your pocket. You don't remember how it got there.
+>This would make testing/speedrunning the game easier, since you could just skip the tutorial if you don't need it
+
+The room is *Red* with a *Yellow*, *Cyan* and *Blue* path.
+- If player takes *Blue* path, they'll end up at a dead end (*Magenta*). The path from where they came is now labeled Orange
+- If they take the *Cyan* path, they wind up in the same *Red* room
+- If they take the *Yellow* path, they'll end up in the next room
+
+**Section 2**
+- Stencil is ROY
+- Slightly more complicated version of previous room 
+
+The room is *Orange* with a *Yellow*, *Green*, and *Red* path. Player is tasked to getting to *Yellow* room.
+- *Green* will take player to correct room
+- *Yellow* will take player to previous room. This is separate from the path the player used to get into this room.
+- *Red* will return player to current room
+
+**Section 3**
+- No stencil, player can take section at their own pace
+- A series of branching paths
+- If player goes backwards, they'll end up at beginning
+- It'll use the same ruleset as the previous sections
+- 4 levels before player reaches next section
+
+>[!idea] Bonus Challenge?
+>Given a point A and point B, arrange some colored blocks in the order.
+
+**Section 4**
+- Final room's exit will be blocked off by a gate
+	- Player must solve simple laser puzzle 
+	- Player must defeat "training dummy"
+		- This will teach them the absolute basics of the combat system, freeing up the battle tutorial a little bit
+		- Training dummy should only have 1 element and no side effects
+		
+This section is to force the player to think about the arrows as lasers and attacks.
 ### Rec Room
 - [ ] Bartender #v0_7
 	- [x] Design
