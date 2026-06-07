@@ -44,6 +44,8 @@
 - [ ] Ethereal Quartz overworld item can be used even when not equipped
 - [ ] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 - [ ] Water in beach2 getting loaded when player is inside the caves
+- [ ] Lamppost puzzle no longer working
+	- [ ] Also stepping on same island twice shouldn't append twice
 ## Optimizations
 - [ ] When player moves thru door, for a brief second both chunks are visible. This causes a weird visual distortion
 ## Battle 
@@ -864,7 +866,7 @@ The room is *Red* with a *Yellow*, *Cyan* and *Blue* path.
 - If they take the *Cyan* path, they wind up in the same *Red* room
 - If they take the *Yellow* path, they'll end up in the next room
 
-**Section 2**
+**Section 1.5**
 - Stencil is ROY
 - Slightly more complicated version of previous room 
 
@@ -873,24 +875,33 @@ The room is *Orange* with a *Yellow*, *Green*, and *Red* path. Player is tasked 
 - *Yellow* will take player to previous room. This is separate from the path the player used to get into this room.
 - *Red* will return player to current room
 
-**Section 3**
-- No stencil, player can take section at their own pace
+**Section 2**
+- Stencil is PROY 
 - A series of branching paths
 - If player goes backwards, they'll end up at beginning
 - It'll use the same ruleset as the previous sections
 - 4 levels before player reaches next section
 
+
+**Section 3**
+- Final room's exit will be blocked off by a gate
+- Two wires lead from gate into 2 side rooms
+- Gates block both side rooms, player must solve introductory bridge puzzle to unlock them
+
+**Introductory Puzzle**
+![[beach_cave_p1.png]]	
+
+**West Room**
+![[beach_cave_p3.png]]
+
+**East Room**
+![[beach_cave_p2.png]]
+
+This section is to force the player to think about the arrows as lasers.
+
 >[!idea] Bonus Challenge?
 >Given a point A and point B, arrange some colored blocks in the order.
-
-**Section 4**
-- Final room's exit will be blocked off by a gate
-	- Player must solve simple laser puzzle 
-	- Player must defeat "training dummy"
-		- This will teach them the absolute basics of the combat system, freeing up the battle tutorial a little bit
-		- Training dummy should only have 1 element and no side effects
 		
-This section is to force the player to think about the arrows as lasers and attacks.
 ### Rec Room
 - [ ] Bartender #v0_7
 	- [x] Design
