@@ -22,7 +22,7 @@ var _enemy_weights: Array[float]
 var _enemy_count := 0
 
 func _ready() -> void:
-	# Done manually jsut in case Dict.keys() and Dict.values() ever return objs in diff order.
+	# Done manually just in case Dict.keys() and Dict.values() ever return objs in diff order.
 	_enemy_pool = []
 	_enemy_weights = []
 	for key in weighted_enemy_pool:

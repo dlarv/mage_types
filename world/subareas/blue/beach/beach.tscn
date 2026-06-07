@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bdxxs2kdxlsxy" path="res://world/subareas/blue/beach/beach_caves.tscn" id="2_1otd5"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_5jrit"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_sgeyw"]
+[ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/beastiary/spawner.tscn" id="5_ji4u4"]
+[ext_resource type="PackedScene" uid="uid://1j4ube5clyn" path="res://data/beastiary/tests/b_default.tscn" id="6_ji4u4"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="7_ji4u4"]
 [ext_resource type="PackedScene" uid="uid://c58vw11neqnxf" path="res://assets/3d/objects/blue/beach/lamppost.tscn" id="8_1otd5"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="8_5jrit"]
@@ -42,6 +44,9 @@ size = Vector3(5.6, 3.1000001, 5.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_igcug"]
 size = Vector3(1.5, 3.1000001, 2.1000001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3tiu"]
+size = Vector3(9, 1, 6)
 
 [node name="Beach" type="Node3D" unique_id=1298904294]
 
@@ -569,6 +574,19 @@ spot_range = 18.0
 transform = Transform3D(-4.3711385e-08, 0, 0.9999998, 0, 1.0000001, 0, -0.9999999, 0, -4.371138e-08, -56.899986, -10.599998, 110.73572)
 time_range = Vector2(0, 1)
 bright_light_range = Vector2(18, 20)
+
+[node name="Spawner" parent="HotelExteriorChunk/Chunk/SWIsland" unique_id=1967627511 instance=ExtResource("5_ji4u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.602646, -9.7, 142)
+weighted_enemy_pool = Dictionary[PackedScene, float]({
+ExtResource("6_ji4u4"): 100.0
+})
+team_count_range = Vector2i(1, 1)
+xp_range = Vector2i(10, 30)
+max_spawn_count = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelExteriorChunk/Chunk/SWIsland/Spawner" unique_id=6035645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, 2.5)
+shape = SubResource("BoxShape3D_m3tiu")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="HotelExteriorChunk/Chunk/SWIsland" unique_id=1726651143]
 use_collision = true

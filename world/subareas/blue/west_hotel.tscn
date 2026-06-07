@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://b8862iat02o7" path="res://src/overworld/puzzle_blocks/lasers/draggable_mirror.tscn" id="11_id6k5"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="11_jmy4x"]
 [ext_resource type="Resource" uid="uid://bsjfeyutvwl8i" path="res://data/items/equipment/sledge_hammer.tres" id="12_hv7p8"]
-[ext_resource type="Script" uid="uid://tabcntu8b1um" path="res://world/subareas/maintenance_halls/MaintenanceRoom.gd" id="16_hv7p8"]
 [ext_resource type="PackedScene" uid="uid://cbmlyysi0hhkk" path="res://world/subareas/blue/stasis_dungeon/western_red_wing.tscn" id="16_jmy4x"]
 [ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay.gdshader" id="17_ddnwv"]
 
@@ -253,13 +252,13 @@ shadow_mesh = SubResource("ArrayMesh_wl0vu")
 render_priority = 0
 shader = ExtResource("17_ddnwv")
 shader_parameter/show_diffuse_test = false
-shader_parameter/base_color = Color(0, 0, 0.862745, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(0, 0, 0.862745, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q7135"]
 data = PackedVector3Array(1.2376, 0, -1.2325, 10, 0, -10.000299, 10, 0, -1.2325, 1.2376, 0, -1.2325, 1.2376, 0, -10.000299, 10, 0, -10.000299, 10, 0, -1.2325, 11, 0, -1.2325, 11, 0, 1.2362, 10, 0, -1.2325, 11, 0, 1.2362, 10, 0, 1.2362, 1.2376, 0, 1.2362, 1.2376, 0, -1.2325, 10, 0, -1.2325, 1.2376, 0, 1.2362, 10, 0, -1.2325, 10, 0, 1.2362, 1.2376, 0, 10, 1.2376, 0, 1.2362, 10, 0, 1.2362, 1.2376, 0, 10, 10, 0, 1.2362, 10, 0, 10, -1.2362, 0, 10, 1.2376, 0, 1.2362, 1.2376, 0, 10, 1.2376, 0, 10, -1.2362, 0, 11, -1.2362, 0, 10, 1.2376, 0, 10, 1.2376, 0, 11, -1.2362, 0, 11, -1.2362, 0, 10, -1.2362, 0, 1.2362, 1.2376, 0, 1.2362, -1.2362, 0, 1.2362, 1.2376, 0, -1.2325, 1.2376, 0, 1.2362, -10.000299, 0, 10, -1.2362, 0, 1.2362, -1.2362, 0, 10, -10.000299, 0, 10, -10.000299, 0, 1.2362, -1.2362, 0, 1.2362, -1.2362, 0, 1.2362, -1.2362, 0, -1.2325, 1.2376, 0, -1.2325, -10.000299, 0, 1.2362, -1.2362, 0, -1.2325, -1.2362, 0, 1.2362, -1.2362, 0, -1.2325, 1.2376, 0, -10.000299, 1.2376, 0, -1.2325, -10.000299, 0, 1.2362, -11, 0, 1.2362, -11, 0, -1.2325, -10.000299, 0, 1.2362, -11, 0, -1.2325, -10.000299, 0, -1.2325, -10.000299, 0, 1.2362, -10.000299, 0, -1.2325, -1.2362, 0, -1.2325, -10.000299, 0, -1.2325, -1.2362, 0, -10.000299, -1.2362, 0, -1.2325, -1.2362, 0, -1.2325, -1.2362, 0, -10.000299, 1.2376, 0, -10.000299, -10.000299, 0, -1.2325, -10.000299, 0, -10.000299, -1.2362, 0, -10.000299, -1.2362, 0, -10.000299, 1.2376, 0, -11, 1.2376, 0, -10.000299, -1.2362, 0, -10.000299, -1.2362, 0, -11, 1.2376, 0, -11, 10, 0, 10, 1.2376, 7, 10, 1.2376, 0, 10, 10, 0, 10, 10, 7, 10, 1.2376, 7, 10, -1.2362, 0, 10, -10.000299, 7, 10, -10.000299, 0, 10, -1.2362, 0, 10, -1.2362, 7, 10, -10.000299, 7, 10, -10, 0, -10, -1.2362, 7, -10, -1.2362, 0, -10, -10, 0, -10, -10, 7, -10, -1.2362, 7, -10, -10, 0, -1.2322, -10, 7, -10, -10, 0, -10, -10, 0, -1.2322, -10, 7, -1.2322, -10, 7, -10, 10, 0, -10, 10, 7, -1.2322, 10, 0, -1.2322, 10, 0, -10, 10, 7, -10, 10, 7, -1.2322, 1.2377, 0, -10, 10, 7, -10, 10, 0, -10, 1.2377, 0, -10, 1.2377, 7, -10, 10, 7, -10, 10, 0, 1.2364, 10, 7, 10, 10, 0, 10, 10, 0, 1.2364, 10, 7, 1.2364, 10, 7, 10, -10, 0, 10, -10, 7, 1.2364, -10, 0, 1.2364, -10, 0, 10, -10, 7, 10, -10, 7, 1.2364)
@@ -296,13 +295,13 @@ albedo_color = Color(1, 0.12549, 1, 1)
 render_priority = 0
 shader = ExtResource("17_ddnwv")
 shader_parameter/show_diffuse_test = false
-shader_parameter/base_color = Color(0.478431, 0, 0.772549, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(0.478431, 0, 0.772549, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ymyq0"]
 
@@ -336,13 +335,13 @@ albedo_color = Color(0.145098, 1, 0.188235, 1)
 render_priority = 0
 shader = ExtResource("17_ddnwv")
 shader_parameter/show_diffuse_test = false
-shader_parameter/base_color = Color(1, 0.12549, 1, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(1, 0.12549, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_il65u"]
 
@@ -376,13 +375,13 @@ albedo_color = Color(0, 0, 0.862745, 1)
 render_priority = 0
 shader = ExtResource("17_ddnwv")
 shader_parameter/show_diffuse_test = false
-shader_parameter/base_color = Color(0.145098, 1, 0.188235, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(0.145098, 1, 0.188235, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lq17g"]
 
@@ -851,7 +850,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.5, 0)
 weighted_enemy_pool = Dictionary[PackedScene, float]({
 ExtResource("6_uq05v"): 100.0
 })
-level_range = Vector2i(1, 3)
 xp_range = Vector2i(10, 30)
 max_spawn_count = 5
 
@@ -1215,18 +1213,13 @@ shape = SubResource("BoxShape3D_q7rtt")
 [node name="Marker3D" type="Marker3D" parent="MaintenanceSequence/Doors/Room3ToSTART3/CollisionShape3D" unique_id=1074071760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
 
-[node name="Room1" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="0" unique_id=1947820045 node_paths=PackedStringArray("chunk") groups=["chunk"] instance=ExtResource("5_cjwri")]
-collision_mask = 32
-script = ExtResource("16_hv7p8")
-chunk = NodePath("Chunk")
-metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+[node name="Room1" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="0" unique_id=1947820045 instance=ExtResource("5_cjwri")]
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room1" index="0" unique_id=838995701]
 shape = SubResource("BoxShape3D_mulxc")
 
 [node name="Backroom" parent="MaintenanceSequence/Chunks/Room1/Chunk/maintenance_room" parent_id_path=PackedInt32Array(1947820045, 1462685483) index="0" unique_id=1647011519]
 mesh = SubResource("ArrayMesh_6nxqd")
-skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_6td54")
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room1/Chunk/maintenance_room/Backroom/StaticBody3D" parent_id_path=PackedInt32Array(1947820045, 2052424598) index="0" unique_id=1927173231]
@@ -1272,19 +1265,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -9.5)
 mesh = SubResource("BoxMesh_6jlr6")
 surface_material_override/0 = SubResource("StandardMaterial3D_h18d3")
 
-[node name="Room2" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="1" unique_id=960939350 node_paths=PackedStringArray("chunk") groups=["chunk"] instance=ExtResource("5_cjwri")]
+[node name="Room2" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="1" unique_id=960939350 instance=ExtResource("5_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
-collision_mask = 32
-script = ExtResource("16_hv7p8")
-chunk = NodePath("Chunk")
-metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room2" index="0" unique_id=838995701]
 shape = SubResource("BoxShape3D_mulxc")
 
 [node name="Backroom" parent="MaintenanceSequence/Chunks/Room2/Chunk/maintenance_room" parent_id_path=PackedInt32Array(960939350, 1462685483) index="0" unique_id=1647011519]
 mesh = SubResource("ArrayMesh_6nxqd")
-skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_k0yl7")
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room2/Chunk/maintenance_room/Backroom/StaticBody3D" parent_id_path=PackedInt32Array(960939350, 2052424598) index="0" unique_id=1927173231]
@@ -1330,19 +1318,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -9.5)
 mesh = SubResource("BoxMesh_tdpwf")
 surface_material_override/0 = SubResource("StandardMaterial3D_5yv5e")
 
-[node name="Room3" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="2" unique_id=746420720 node_paths=PackedStringArray("chunk") groups=["chunk"] instance=ExtResource("5_cjwri")]
+[node name="Room3" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="2" unique_id=746420720 instance=ExtResource("5_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
-collision_mask = 32
-script = ExtResource("16_hv7p8")
-chunk = NodePath("Chunk")
-metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room3" index="0" unique_id=838995701]
 shape = SubResource("BoxShape3D_mulxc")
 
 [node name="Backroom" parent="MaintenanceSequence/Chunks/Room3/Chunk/maintenance_room" parent_id_path=PackedInt32Array(746420720, 1462685483) index="0" unique_id=1647011519]
 mesh = SubResource("ArrayMesh_6nxqd")
-skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_nka37")
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room3/Chunk/maintenance_room/Backroom/StaticBody3D" parent_id_path=PackedInt32Array(746420720, 2052424598) index="0" unique_id=1927173231]
@@ -1388,19 +1371,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.5, -2)
 mesh = SubResource("BoxMesh_sn0pf")
 surface_material_override/0 = SubResource("StandardMaterial3D_031sv")
 
-[node name="Room4" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="3" unique_id=1073728965 node_paths=PackedStringArray("chunk") groups=["chunk"] instance=ExtResource("5_cjwri")]
+[node name="Room4" parent="MaintenanceSequence/Chunks" parent_id_path=PackedInt32Array(380622077, 459488878) index="3" unique_id=1073728965 instance=ExtResource("5_cjwri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 0, 0)
-collision_mask = 32
-script = ExtResource("16_hv7p8")
-chunk = NodePath("Chunk")
-metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room4" index="0" unique_id=838995701]
 shape = SubResource("BoxShape3D_mulxc")
 
 [node name="Backroom" parent="MaintenanceSequence/Chunks/Room4/Chunk/maintenance_room" parent_id_path=PackedInt32Array(1073728965, 1462685483) index="0" unique_id=1647011519]
 mesh = SubResource("ArrayMesh_6nxqd")
-skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_3vuiv")
 
 [node name="CollisionShape3D" parent="MaintenanceSequence/Chunks/Room4/Chunk/maintenance_room/Backroom/StaticBody3D" parent_id_path=PackedInt32Array(1073728965, 2052424598) index="0" unique_id=1927173231]
