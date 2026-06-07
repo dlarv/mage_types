@@ -46,8 +46,6 @@ var _god_mode_speed_mod := 3.0
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
 
-var _test := false
-
 func _ready() -> void:
 	super._ready()
 	$CoyoteTimer.wait_time = coyote_time_length
@@ -107,10 +105,6 @@ func _physics_process(delta: float) -> void:
 		_jump_timer = 0
 		_can_air_dash = true
 
-		if _test:
-			_test = false
-			print("END: %v" % global_position)
-		
 		if $GroundedTimer.is_stopped():
 			last_grounded_position = global_position
 			$GroundedTimer.start()
@@ -128,8 +122,6 @@ func _physics_process(delta: float) -> void:
 	# Variable jump height
 	if Input.is_action_just_pressed("jump"):
 		_jump_strength = variable_jump_height_modifier
-		_test = true
-		print("START: %v" % global_position)
 	# Prevent player from jumping, releasing button, then pressing it again (feels off).
 	if Input.is_action_just_released("jump"):
 		_jump_timer = variable_jump_time_window
