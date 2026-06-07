@@ -3,15 +3,21 @@
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_l4lmj"]
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="2_exmbl"]
 [ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="3_eroq7"]
+[ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="4_4pdg5"]
 [ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="4_aa6kh"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_exmbl"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="5_eroq7"]
+[ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="5_ygtki"]
+[ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="6_upves"]
 [ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="6_yng4o"]
+[ext_resource type="Resource" uid="uid://d07pltrhfkhqg" path="res://data/items/key_items/tutorial_stencil_1.tres" id="7_7mtce"]
 [ext_resource type="PackedScene" uid="uid://ck6cq5qaxuf80" path="res://src/overworld/puzzle_blocks/bridges/pillar.tscn" id="7_s01sn"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="7_vyqvy"]
+[ext_resource type="Resource" uid="uid://c7xrixk4w025s" path="res://data/items/key_items/tutorial_stencil_2.tres" id="8_7mtce"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="8_auv5o"]
 [ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="8_yt1ct"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_jbfvx"]
+[ext_resource type="Resource" uid="uid://c32htsdkt7675" path="res://data/items/key_items/tutorial_stencil_3.tres" id="18_6l8lo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7ooe"]
 size = Vector3(2, 3, 1)
@@ -103,6 +109,24 @@ shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 7
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_upves"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4pdg5"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7mtce"]
+radius = 2.0
+
+[sub_resource type="Resource" id="Resource_upves"]
+resource_name = "Stencil 1"
+script = ExtResource("6_upves")
+item = ExtResource("7_7mtce")
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mtce"]
+size = Vector3(11, 6, 8)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1e3xw"]
 render_priority = 0
 shader = ExtResource("3_eroq7")
@@ -138,6 +162,20 @@ shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 6
+
+[sub_resource type="Resource" id="Resource_6l8lo"]
+resource_name = "Stencil 1"
+script = ExtResource("6_upves")
+item = ExtResource("7_7mtce")
+quantity = -1
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_6fo2d"]
+resource_name = "Stencil 2"
+script = ExtResource("6_upves")
+item = ExtResource("8_7mtce")
+id = 1
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4g53"]
 size = Vector3(11, 20, 20)
@@ -358,6 +396,21 @@ shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 1
+
+[sub_resource type="Resource" id="Resource_7mtce"]
+resource_name = "Stencil 2"
+script = ExtResource("6_upves")
+item = ExtResource("8_7mtce")
+id = 1
+quantity = -1
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_opl4n"]
+resource_name = "Stencil 3"
+script = ExtResource("6_upves")
+item = ExtResource("18_6l8lo")
+id = 2
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aa6kh"]
 size = Vector3(27, 20, 19)
@@ -625,6 +678,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.05000007, -6)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_kvux5")
 
+[node name="Table" parent="Section1/RedRoom/Chunk" unique_id=716295297 instance=ExtResource("4_4pdg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.70000005, 2)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Section1/RedRoom/Chunk/Table" unique_id=400357401]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom/Chunk/Table/StaticBody3D" unique_id=1433568775]
+shape = SubResource("BoxShape3D_upves")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Section1/RedRoom/Chunk/Table/StaticBody3D" unique_id=1568622168]
+mesh = SubResource("BoxMesh_4pdg5")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom/Chunk/Table" unique_id=1892989476]
+shape = SubResource("SphereShape3D_7mtce")
+
+[node name="Stencil1StoryTrigger" parent="Section1/RedRoom/Chunk" unique_id=456222703 instance=ExtResource("5_ygtki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+items = Array[ExtResource("6_upves")]([SubResource("Resource_upves")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom/Chunk/Stencil1StoryTrigger" unique_id=746356164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.8000002)
+shape = SubResource("BoxShape3D_7mtce")
+
 [node name="OrangeRoom" type="Area3D" parent="Section1" unique_id=219537799 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -20)
 script = ExtResource("2_exmbl")
@@ -704,6 +780,14 @@ material = SubResource("ShaderMaterial_4i8w8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.05000007, -7)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_4i8w8")
+
+[node name="Stencil2StoryTrigger" parent="Section1/OrangeRoom/Chunk" unique_id=475183315 instance=ExtResource("5_ygtki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -3)
+items = Array[ExtResource("6_upves")]([SubResource("Resource_6l8lo"), SubResource("Resource_6fo2d")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/OrangeRoom/Chunk/Stencil2StoryTrigger" unique_id=1107611198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4.3)
+shape = SubResource("BoxShape3D_7mtce")
 
 [node name="Magenta Room" type="Area3D" parent="Section1" unique_id=846473639 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -13)
@@ -1390,6 +1474,14 @@ _element = 2
 [node name="Reset" parent="Section3/PurpleRoom/Chunk" unique_id=996469747 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.98216, -9)
 reset_positions_of = [NodePath("../MagiclayDisk")]
+
+[node name="Stencil2StoryTrigger" parent="Section3/PurpleRoom/Chunk" unique_id=32758975 instance=ExtResource("5_ygtki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3)
+items = Array[ExtResource("6_upves")]([SubResource("Resource_7mtce"), SubResource("Resource_opl4n")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/Stencil2StoryTrigger" unique_id=1730533901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4.3)
+shape = SubResource("BoxShape3D_7mtce")
 
 [node name="EastRoom" type="Area3D" parent="Section3" unique_id=35845067 node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -3)

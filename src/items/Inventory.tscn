@@ -617,23 +617,27 @@ resource_name = "Stencil (BPM)"
 script = ExtResource("2_xejte")
 item = ExtResource("74_53iyw")
 id = 3
+quantity = 0
 
 [sub_resource type="Resource" id="Resource_r6fov"]
 resource_name = "Stencil 1"
 script = ExtResource("2_xejte")
 item = ExtResource("67_cjsp4")
+quantity = 0
 
 [sub_resource type="Resource" id="Resource_awnmn"]
 resource_name = "Stencil 2"
 script = ExtResource("2_xejte")
 item = ExtResource("68_5bsgw")
 id = 1
+quantity = 0
 
 [sub_resource type="Resource" id="Resource_3ukn5"]
 resource_name = "Stencil 3"
 script = ExtResource("2_xejte")
 item = ExtResource("69_qvfu8")
 id = 2
+quantity = 0
 
 [node name="Inventory" type="Node" unique_id=204631642 groups=["persist"]]
 script = ExtResource("1_jis06")

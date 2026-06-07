@@ -369,7 +369,7 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 		- [x] space weight shifting out more
 	- [x] Walk
 		- [x] Get feedback, I can't tell what's off
-			- I think I fixed it (broadstrokes), so it can wait until I get feedback for the rest
+			- [ ] I think I fixed it (broadstrokes), so it can wait until I get feedback for the rest
 	- [x] Jump
 	- [ ] Dash
 		- ~~Removed dash, as I didn't like how it looked~~
@@ -752,16 +752,18 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Delay/animation before returning control to player? This would be necessary if rotating player model to face away from door
 ### Beach
 - [ ] Wave ambience #v0_8
-- [ ] Beach 1 #v0_7
+- [x] Beach 1 #v0_7
 	- [x] Layout
 	- [x] Modeling
 	- [x] Texturing
 		- [x] Adjust colors
-	- [ ] Fix holes in model exposed during waves
-	- [ ] Keep player from sliding off sand thru gap in water teleport collider, causing player to fall into the void
+	- [x] Fix holes in model exposed during waves 
+	- [x] Keep player from sliding off sand thru gap in water teleport collider, causing player to fall into the void 
 	- [x] Fix water texture
 	- [x] Fix pier collider and materials
 - [ ] Beach 1 backtracking puzzle
+	- [x] Placed puzzleblocks
+	- [ ] Reward: ???
 - [ ] Beach 2 #v0_7
 	- [x] Layout
 	- [x] Modeling
@@ -777,7 +779,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 			- [x] Implemented
 			- [x] Placed reward (hidden chest)
 	- [x] Move road further north
-	- [ ] Move House further east and on hill
+	- [x] Move House further east and on hill
 	- [ ] NW Parkour challenge
 		- [x] Designed challenge
 		- [ ] Placed reward
@@ -787,12 +789,6 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [ ]  Place NPC/reward
 	- [ ] Remodel Hotel exterior
 	- [ ] Place breakable rock in front of East Cave
-- [ ] Beach house #v0_7
-	- [ ] Layout
-	- [ ] Model
-	- [ ] Texturing
-	- [ ] Assets
-	- [ ] Change from BPM -> ROY
 	
 This section serves primarily to set the atmosphere and show off the clay shader. The hotel will be constructed of a more "otherworldly" material, this will hopefully cement the clay aesthetic.
 
@@ -830,6 +826,15 @@ This section serves primarily to set the atmosphere and show off the clay shader
 - Player must return once they have sledgehammer
 - Reward: ???
 ### Transmutation Tutorial
+- [ ] Transmutation tutorial #v0_7
+	- [x] Layout
+	- [x] Design puzzles
+	- [x] Created ROY stencils
+	- [ ] Write instructions/commentary
+	- [ ] Add/remove stencils from player's inventory
+	- [ ] Playtest level w/ someone who is unfamiliar w/ graph theory
+	- [ ] Add official env models
+	
 - In-between Beaches 1 and 2
 - Currently, this is a beach house, tho I might change it into a cave system
 - Player's first introduction to *transmutation system*
@@ -881,7 +886,6 @@ The room is *Orange* with a *Yellow*, *Green*, and *Red* path. Player is tasked 
 - If player goes backwards, they'll end up at beginning
 - It'll use the same ruleset as the previous sections
 - 4 levels before player reaches next section
-
 
 **Section 3**
 - Final room's exit will be blocked off by a gate

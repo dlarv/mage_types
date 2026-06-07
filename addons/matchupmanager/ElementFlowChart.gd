@@ -17,24 +17,21 @@ func _ready() -> void:
 	stencil_shader = %TextureRect.material
 	%AdvancedOptionsPane.visible = Settings.debug_mode and not Settings.play_test_mode
 
-	if Settings.play_test_mode:
-		_on_stencil_button_toggled(true, 1)
+	# if Settings.play_test_mode:
+	# 	_on_stencil_button_toggled(true, 1)
 	
 	if not Inventory.key_item_obtained.is_connected(activate_stencil):
 		Inventory.key_item_obtained.connect(activate_stencil)
 	if not Inventory.key_item_lost.is_connected(deactivate_stencil):
 		Inventory.key_item_lost.connect(deactivate_stencil)
 	
-	else:
-		%StencilVBox.get_child(0).visible = Inventory.has_key_item(&"TUTORIAL_STENCIL_1")
-		%StencilVBox.get_child(1).visible = Inventory.has_key_item(&"TUTORIAL_STENCIL_2")
-		%StencilVBox.get_child(2).visible = Inventory.has_key_item(&"TUTORIAL_STENCIL_3")
+	var _editor := Engine.is_editor_hint()
+	%StencilVBox.get_child(0).visible = _editor or Inventory.has_key_item(&"TUTORIAL_STENCIL_1")
+	%StencilVBox.get_child(1).visible = _editor or Inventory.has_key_item(&"TUTORIAL_STENCIL_2")
+	%StencilVBox.get_child(2).visible = _editor or Inventory.has_key_item(&"TUTORIAL_STENCIL_3")
 
 	for i in %StencilVBox.get_child_count() - 3:
-		%StencilVBox.get_child(i + 3).visible = Engine.is_editor_hint() \
-			or Inventory.has_key_item(&"STENCIL_%d" % (i + 1))
-		
-	
+		%StencilVBox.get_child(i + 3).visible = _editor or Inventory.has_key_item(&"STENCIL_%d" % (i + 1))
 	
 
 func restrict_graph(nodes: Array, edges:=[]) -> void:
@@ -53,6 +50,9 @@ func activate_stencil(item: KeyItem) -> void:
 		return
 	%StencilVBox.get_child(index).visible = true
 
+	_on_stencil_button_toggled(true, index)
+	%StencilVBox.get_child(index).set_pressed_no_signal(true)
+
 
 func deactivate_stencil(item: KeyItem) -> void:
 	if item.unique_name.find("STENCIL") == -1: return
@@ -61,6 +61,9 @@ func deactivate_stencil(item: KeyItem) -> void:
 		push_warning("Tried to deactivate Stencil(%d), but it does not exist" % index)
 		return
 	%StencilVBox.get_child(index).visible = false
+
+	_on_clear_button_pressed()
+	%StencilVBox.get_child(index).set_pressed_no_signal(false)
 
 
 func _on_options_button_pressed() -> void:
