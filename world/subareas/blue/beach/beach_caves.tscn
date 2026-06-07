@@ -1,0 +1,1093 @@
+[gd_scene format=3 uid="uid://bdxxs2kdxlsxy"]
+
+[ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_l4lmj"]
+[ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="2_exmbl"]
+[ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="3_eroq7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b7ooe"]
+size = Vector3(2, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4isg"]
+size = Vector3(27, 20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4g53"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ysxmr"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o46tb"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0wlb"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwucs"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68vg2"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvux5"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1e3xw"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5of7"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4i8w8"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4g53"]
+size = Vector3(11, 20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdsve"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rj6cc"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4tjp7"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3sqn"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7io46"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4cjpf"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6gb8"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwn3t"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2bm"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q104o"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lu8c"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0eff6"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ef3t0"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ec7p"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgitw"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 1
+
+[node name="BeachCaves" type="Node3D" unique_id=1901693184]
+
+[node name="Doors" type="Node3D" parent="." unique_id=915100925]
+
+[node name="Section1ToSection2" type="Area3D" parent="Doors" unique_id=1804398506 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -31)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Section1ToSection2" unique_id=1769556699]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.002283, -0.014001548, 3.0952759)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Section1ToSection2/CollisionShape3D" unique_id=1236016688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 0, -2.2000008)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Section1ToSection2" unique_id=898288465]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, 10.997719, -0.014001548, 38.995277)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Section1ToSection2/CollisionShape3D2" unique_id=1288376082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8999996)
+
+[node name="Section2ToSection3" type="Area3D" parent="Doors" unique_id=327894579 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, -30)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Section2ToSection3" unique_id=1381644191]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.002281, -0.014001548, -21.004723)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Section2ToSection3/CollisionShape3D" unique_id=372050139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2000008)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Section2ToSection3" unique_id=679481100]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, -0.002281189, -0.014001548, 37.995277)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/Section2ToSection3/CollisionShape3D2" unique_id=780805503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8999996)
+
+[node name="Section1" type="Node3D" parent="." unique_id=1502875262]
+
+[node name="Doors" type="Node3D" parent="Section1" unique_id=424607972]
+
+[node name="RedEntryMarker3D" type="Marker3D" parent="Section1/Doors" unique_id=400026573]
+transform = Transform3D(1, 0, 1.7484558e-07, 0, 1, 0, -1.7484558e-07, 0, 1, -0.0022821426, -0.014001548, 5.4952765)
+
+[node name="RToM" type="Area3D" parent="Section1/Doors" unique_id=548019346 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -10)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Doors/RToM" unique_id=220933952]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.497717, -0.014001548, 2.7952776)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/RToM/CollisionShape3D" unique_id=347115679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.0999999)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Section1/Doors/RToM" unique_id=762897643]
+transform = Transform3D(1, 0, 1.7484558e-07, 0, 1, 0, -1.7484558e-07, 0, 1, 4.497717, -0.014001548, 3.7952776)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/RToM/CollisionShape3D2" unique_id=620227262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0999999)
+
+[node name="RToR" type="Area3D" parent="Section1/Doors" unique_id=1139323268 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -10)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("../RedEntryMarker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Doors/RToR" unique_id=494275038]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.497717, -0.014001548, 2.7952776)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/RToR/CollisionShape3D" unique_id=1715235150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.0999999)
+
+[node name="OToO" type="Area3D" parent="Section1/Doors" unique_id=1396903253 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -28.1)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Doors/OToO" unique_id=226192372]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0022830963, -0.014001548, 0.09527969)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/OToO/CollisionShape3D" unique_id=1977221826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 0, -1.1000004)
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/OToO" unique_id=1034366507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.000001, 0, 11.9)
+
+[node name="OToR" type="Area3D" parent="Section1/Doors" unique_id=1210802852 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -27)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("../RedEntryMarker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Doors/OToR" unique_id=282922467]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.002281, -0.014001548, -1.0047245)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/OToR/CollisionShape3D" unique_id=1816833789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.890646e-07, 0, -1.5000019)
+
+[node name="RToO" type="Area3D" parent="Section1/Doors" unique_id=77992597 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -10)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Doors/RToO" unique_id=724277374]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.002283, -0.014001548, 2.7952776)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/RToO/CollisionShape3D" unique_id=1806299446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0496005e-06, 0, -2.1999998)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Section1/Doors/RToO" unique_id=1476340994]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, -21.002281, -0.014001548, -3.8047218)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section1/Doors/RToO/CollisionShape3D2" unique_id=310116962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.8999996)
+
+[node name="RedRoom" type="Area3D" parent="Section1" unique_id=965927499 node_paths=PackedStringArray("chunk")]
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom" unique_id=2910632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 7, 0)
+shape = SubResource("BoxShape3D_w4isg")
+
+[node name="Chunk" type="Node3D" parent="Section1/RedRoom" unique_id=1601409610]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section1/RedRoom/Chunk" unique_id=1612926312]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123724, -3.2743657e-09, 0.8660254, 0.5000002, -0.7071067, -0.35355356, 0.6123725, 0, 0, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section1/RedRoom/Chunk" unique_id=690513943]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=1296536028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(25, 4, 15)
+material = SubResource("ShaderMaterial_d4g53")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=968794700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+operation = 2
+size = Vector3(23, 11, 13)
+material = SubResource("ShaderMaterial_ysxmr")
+
+[node name="Entry" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=1077667619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 7)
+operation = 2
+size = Vector3(10, 8, 3)
+material = SubResource("ShaderMaterial_ysxmr")
+
+[node name="DoorLeft" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=1717960447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_o46tb")
+
+[node name="ColumnLeft" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=1544096716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.05000007, -6)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_o46tb")
+
+[node name="ColumnLeft2" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=122827513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.05000007, -6)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_o46tb")
+
+[node name="DoorMiddle" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=835295163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_l0wlb")
+
+[node name="ColumnMid2" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=150232643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.05000007, -6)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_gwucs")
+
+[node name="ColumnMid" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=1911494559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.05000007, -6)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_gwucs")
+
+[node name="DoorRight" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=905829669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -7)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_68vg2")
+
+[node name="ColumnRight2" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=637663396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.05000007, -6)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_kvux5")
+
+[node name="ColumnRight" type="CSGBox3D" parent="Section1/RedRoom/Chunk/CSGCombiner3D" unique_id=2020294846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.05000007, -6)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_kvux5")
+
+[node name="OrangeRoom" type="Area3D" parent="Section1" unique_id=219537799 node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -20)
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/OrangeRoom" unique_id=456068751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 7, -1)
+shape = SubResource("BoxShape3D_w4isg")
+
+[node name="Chunk" type="Node3D" parent="Section1/OrangeRoom" unique_id=868836867]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section1/OrangeRoom/Chunk" unique_id=1288685827]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, -21, 0, -1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section1/OrangeRoom/Chunk" unique_id=1950204353]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=51523109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -1, -1)
+size = Vector3(25, 3, 15)
+material = SubResource("ShaderMaterial_1e3xw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=411085399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -1)
+operation = 2
+size = Vector3(23, 3, 13)
+material = SubResource("ShaderMaterial_1e3xw")
+
+[node name="Entry" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=297828647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_1e3xw")
+
+[node name="DoorLeft" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=51962193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -8)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_f5of7")
+
+[node name="ColumnLeft" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=914914644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 0.05000007, -7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_f5of7")
+
+[node name="ColumnLeft2" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=744448143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0.05000007, -7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_f5of7")
+
+[node name="DoorMiddle" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=984046468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -8)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_l0wlb")
+
+[node name="ColumnMid2" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=937363613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0.05000007, -7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_gwucs")
+
+[node name="ColumnMid" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=78562021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.05000007, -7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_gwucs")
+
+[node name="DoorRight" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=1453199900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_4i8w8")
+
+[node name="ColumnRight2" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=777100709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0.05000007, -7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_4i8w8")
+
+[node name="ColumnRight" type="CSGBox3D" parent="Section1/OrangeRoom/Chunk/CSGCombiner3D" unique_id=498466707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.05000007, -7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_4i8w8")
+
+[node name="Magenta Room" type="Area3D" parent="Section1" unique_id=846473639 node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -13)
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Magenta Room" unique_id=1119794714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 7, 0)
+shape = SubResource("BoxShape3D_d4g53")
+
+[node name="Chunk" type="Node3D" parent="Section1/Magenta Room" unique_id=1208679996]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section1/Magenta Room/Chunk" unique_id=1360103437]
+transform = Transform3D(0.9659259, -0.12940954, 0.22414388, 0, 0.8660254, 0.50000006, -0.25881907, -0.4829629, 0.8365163, 8, 0, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section1/Magenta Room/Chunk" unique_id=1380237274]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section1/Magenta Room/Chunk/CSGCombiner3D" unique_id=1732608975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0)
+size = Vector3(6, 3, 15)
+material = SubResource("ShaderMaterial_cdsve")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section1/Magenta Room/Chunk/CSGCombiner3D" unique_id=1229332310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0.5)
+operation = 2
+size = Vector3(4, 3, 14)
+material = SubResource("ShaderMaterial_cdsve")
+
+[node name="ColumnLeft" type="CSGBox3D" parent="Section1/Magenta Room/Chunk/CSGCombiner3D" unique_id=978825313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.05000007, 7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_rj6cc")
+
+[node name="ColumnLeft2" type="CSGBox3D" parent="Section1/Magenta Room/Chunk/CSGCombiner3D" unique_id=1040763502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.05000007, 7)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_rj6cc")
+
+[node name="Section2" type="Node3D" parent="." unique_id=1447760596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42)
+
+[node name="Doors" type="Node3D" parent="Section2" unique_id=1061547047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 42)
+
+[node name="YellowEntryMarker3D" type="Marker3D" parent="Section2/Doors" unique_id=589469011]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, 0.9977188, -0.014001548, 6.0952787)
+
+[node name="YToR" type="Area3D" parent="Section2/Doors" unique_id=1773880505 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/Doors/YToR" unique_id=1725506131]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0022830963, -0.014001548, 3.9952774)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/Doors/YToR/CollisionShape3D" unique_id=61714224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0496005e-06, 0, -2.1999998)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Section2/Doors/YToR" unique_id=491306840]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, -0.002281189, -0.014001548, -4.0047216)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/Doors/YToR/CollisionShape3D2" unique_id=1382018336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.8999996)
+
+[node name="RToO" type="Area3D" parent="Section2/Doors" unique_id=1432177709 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -34)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/Doors/RToO" unique_id=391250617]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002283, -0.014001548, 5.9952774)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/Doors/RToO/CollisionShape3D" unique_id=2113761812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0496005e-06, 0, -2.1999998)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Section2/Doors/RToO" unique_id=1912677680]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, -0.002281189, -0.014001548, -3.0047226)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/Doors/RToO/CollisionShape3D2" unique_id=1813602354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.8999996)
+
+[node name="RToY" type="Area3D" parent="Section2/Doors" unique_id=970223349 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -21)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("../YellowEntryMarker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/Doors/RToY" unique_id=365809118]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0022830963, -0.014001548, -7.0047226)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/Doors/RToY/CollisionShape3D" unique_id=1825504751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2000008)
+
+[node name="OToY" type="Area3D" parent="Section2/Doors" unique_id=877211632 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -44)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("../YellowEntryMarker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/Doors/OToY" unique_id=1362665682]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002283, -0.014001548, -7.0047226)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/Doors/OToY/CollisionShape3D" unique_id=1253458521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2000008)
+
+[node name="OToR" type="Area3D" parent="Section2/Doors" unique_id=827905382 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -44)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("Marker3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/Doors/OToR" unique_id=639879345]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002283, -0.014001548, -7.0047226)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/Doors/OToR/CollisionShape3D" unique_id=1761963654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2000008)
+
+[node name="Marker3D2" type="Marker3D" parent="Section2/Doors/OToR" unique_id=28650938]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002283, -0.014001548, 28.195278)
+
+[node name="YellowRoom" type="Area3D" parent="Section2" unique_id=1495215909 node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 42)
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/YellowRoom" unique_id=244002405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7, 1)
+shape = SubResource("BoxShape3D_w4isg")
+
+[node name="Chunk" type="Node3D" parent="Section2/YellowRoom" unique_id=2136919525]
+
+[node name="YToY" type="Area3D" parent="Section2/YellowRoom/Chunk" unique_id=1142479447 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("../../../Doors/YellowEntryMarker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/YellowRoom/Chunk/YToY" unique_id=1991585918]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002283, -0.014001548, -7.0047226)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/YellowRoom/Chunk/YToY/CollisionShape3D" unique_id=988655200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0496005e-06, 0, -2.1999998)
+
+[node name="YToY2" type="Area3D" parent="Section2/YellowRoom/Chunk" unique_id=387606318 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("../../../Doors/YellowEntryMarker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/YellowRoom/Chunk/YToY2" unique_id=1779783494]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.997719, -0.014001548, -7.0047226)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/YellowRoom/Chunk/YToY2/CollisionShape3D" unique_id=1763998040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0496005e-06, 0, -2.1999998)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section2/YellowRoom/Chunk" unique_id=1144943457]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, 1, 0, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section2/YellowRoom/Chunk" unique_id=1989627966]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=1054741327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 1)
+size = Vector3(25, 4, 15)
+material = SubResource("ShaderMaterial_4tjp7")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=2014051004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 1)
+operation = 2
+size = Vector3(23, 11, 13)
+material = SubResource("ShaderMaterial_4tjp7")
+
+[node name="Entry" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=1536012149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 8)
+operation = 2
+size = Vector3(2, 8, 3)
+material = SubResource("ShaderMaterial_4tjp7")
+
+[node name="DoorLeft" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=1928205803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_l3sqn")
+
+[node name="ColumnLeft" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=1817289185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_l3sqn")
+
+[node name="ColumnLeft2" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=681217699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_l3sqn")
+
+[node name="DoorMiddle" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=891095453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_7io46")
+
+[node name="ColumnMid2" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=364842860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_7io46")
+
+[node name="ColumnMid" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=570579722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_7io46")
+
+[node name="DoorRight" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=811065137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_4cjpf")
+
+[node name="ColumnRight2" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=289081240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_4cjpf")
+
+[node name="ColumnRight" type="CSGBox3D" parent="Section2/YellowRoom/Chunk/CSGCombiner3D" unique_id=1506395940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_4cjpf")
+
+[node name="RedRoom" type="Area3D" parent="Section2" unique_id=658107862 node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 20)
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom" unique_id=1657190992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7, 1)
+shape = SubResource("BoxShape3D_w4isg")
+
+[node name="RToR" type="Area3D" parent="Section2/RedRoom" unique_id=1510772462 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("EntryMarker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom/RToR" unique_id=1096370731]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.997719, -0.014001548, -7.0047226)
+shape = SubResource("BoxShape3D_b7ooe")
+
+[node name="Marker3D" type="Marker3D" parent="Section2/RedRoom/RToR/CollisionShape3D" unique_id=204932989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0496005e-06, 0, -2.1999998)
+
+[node name="EntryMarker3D" type="Marker3D" parent="Section2/RedRoom/RToR" unique_id=883549444]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, -0.002281189, -0.014001548, 5.0952787)
+
+[node name="Chunk" type="Node3D" parent="Section2/RedRoom" unique_id=1497210411]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section2/RedRoom/Chunk" unique_id=182741295]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, 1, 0, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section2/RedRoom/Chunk" unique_id=1767779132]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=809542313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 1)
+size = Vector3(25, 4, 15)
+material = SubResource("ShaderMaterial_q6gb8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=476777111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 1)
+operation = 2
+size = Vector3(23, 11, 13)
+material = SubResource("ShaderMaterial_q6gb8")
+
+[node name="Entry" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=1599913940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 8)
+operation = 2
+size = Vector3(2, 8, 3)
+material = SubResource("ShaderMaterial_q6gb8")
+
+[node name="DoorLeft" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=1205408067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_qwn3t")
+
+[node name="ColumnLeft" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=169186517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_qwn3t")
+
+[node name="ColumnLeft2" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=1672917474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_qwn3t")
+
+[node name="DoorMiddle" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=2032255876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_4k2bm")
+
+[node name="ColumnMid2" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=759759111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_4k2bm")
+
+[node name="ColumnMid" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=783373773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_4k2bm")
+
+[node name="DoorRight" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=441452668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_q104o")
+
+[node name="ColumnRight2" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=1620286313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_q104o")
+
+[node name="ColumnRight" type="CSGBox3D" parent="Section2/RedRoom/Chunk/CSGCombiner3D" unique_id=1864748973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_q104o")
+
+[node name="OrangeRoom" type="Area3D" parent="Section2" unique_id=921858125 node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, -3)
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/OrangeRoom" unique_id=318728145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7, 1)
+shape = SubResource("BoxShape3D_w4isg")
+
+[node name="Chunk" type="Node3D" parent="Section2/OrangeRoom" unique_id=506068253]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section2/OrangeRoom/Chunk" unique_id=725176533]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, 1, 0, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section2/OrangeRoom/Chunk" unique_id=1680662813]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=729523432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 1)
+size = Vector3(25, 4, 15)
+material = SubResource("ShaderMaterial_3lu8c")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=1238773290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 1)
+operation = 2
+size = Vector3(23, 11, 13)
+material = SubResource("ShaderMaterial_3lu8c")
+
+[node name="Entry" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=605417350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 8)
+operation = 2
+size = Vector3(2, 8, 3)
+material = SubResource("ShaderMaterial_3lu8c")
+
+[node name="DoorLeft" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=487210028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_0eff6")
+
+[node name="ColumnLeft" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=846376735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_0eff6")
+
+[node name="ColumnLeft2" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=524024759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_0eff6")
+
+[node name="DoorMiddle" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=1207612182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_ef3t0")
+
+[node name="ColumnMid2" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=428791469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_ef3t0")
+
+[node name="ColumnMid" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=1403929834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_ef3t0")
+
+[node name="DoorRight" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=1632057696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+operation = 2
+size = Vector3(2, 3, 3)
+material = SubResource("ShaderMaterial_6ec7p")
+
+[node name="ColumnRight2" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=1728166461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_6ec7p")
+
+[node name="ColumnRight" type="CSGBox3D" parent="Section2/OrangeRoom/Chunk/CSGCombiner3D" unique_id=479020411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.05000007, -5)
+size = Vector3(1, 3.1000001, 1)
+material = SubResource("ShaderMaterial_6ec7p")
+
+[node name="Section3" type="Node3D" parent="." unique_id=749895819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 0)
+
+[node name="Doors" type="Node3D" parent="Section3" unique_id=1002272808]
+
+[node name="PurpleRoom" type="Area3D" parent="Section3" unique_id=2089349307 node_paths=PackedStringArray("chunk")]
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom" unique_id=143467115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7, 1)
+shape = SubResource("BoxShape3D_w4isg")
+
+[node name="Chunk" type="Node3D" parent="Section3/PurpleRoom" unique_id=866007213]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section3/PurpleRoom/Chunk" unique_id=70382205]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, 1, 0, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section3/PurpleRoom/Chunk" unique_id=1653035981]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=1185585715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 1)
+size = Vector3(25, 4, 15)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=1018861519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 1)
+operation = 2
+size = Vector3(23, 11, 13)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="Entry" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=665710422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 8)
+operation = 2
+size = Vector3(2, 8, 3)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="Exit" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=290230825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.5, 1.5)
+operation = 2
+size = Vector3(2, 8, 8.6)
+material = SubResource("ShaderMaterial_xgitw")

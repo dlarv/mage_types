@@ -43,6 +43,7 @@
 - [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
 - [ ] Ethereal Quartz overworld item can be used even when not equipped
 - [ ] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
+- [ ] Water in beach2 getting loaded when player is inside the caves
 ## Optimizations
 - [ ] When player moves thru door, for a brief second both chunks are visible. This causes a weird visual distortion
 ## Battle 

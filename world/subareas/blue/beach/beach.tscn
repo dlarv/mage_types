@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://cdcd3tsc1juh"]
 
 [ext_resource type="PackedScene" uid="uid://tramh0v4ebdd" path="res://world/subareas/environments/main_beach_env.tscn" id="1_ryk2o"]
-[ext_resource type="PackedScene" uid="uid://bdxxs2kdxlsxy" path="res://world/subareas/blue/beach/beach_house.tscn" id="2_1otd5"]
+[ext_resource type="PackedScene" uid="uid://bdxxs2kdxlsxy" path="res://world/subareas/blue/beach/beach_caves.tscn" id="2_1otd5"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_5jrit"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_sgeyw"]
-[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="5_ff42j"]
-[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="6_igcug"]
-[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="7_1vpu4"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="7_ji4u4"]
 [ext_resource type="PackedScene" uid="uid://c58vw11neqnxf" path="res://assets/3d/objects/blue/beach/lamppost.tscn" id="8_1otd5"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="8_5jrit"]
@@ -17,14 +14,7 @@
 [ext_resource type="Resource" uid="uid://c4erte10ui5ws" path="res://data/items/key_items/magenta_key.tres" id="12_ji4u4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gn7b1"]
-size = Vector3(96, 25, 103)
-
-[sub_resource type="Curve3D" id="Curve3D_egugs"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.21929, -2.142, 8.41305, 0, 0, 0, 0, 0, 0, 0.129158, -2.30178, 8.31327, 0, 0, 0, 0, 0, 0, 0.0162735, -2.31502, -0.0539207, 0, 0, 0, 0, 0, 0, -0.0184708, 0.12098, -0.0799208),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
+size = Vector3(105, 25, 103)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkys2"]
 size = Vector3(260, 44.450253, 229)
@@ -55,7 +45,7 @@ size = Vector3(1.5, 3.1000001, 2.1000001)
 
 [node name="Beach" type="Node3D" unique_id=1298904294]
 
-[node name="MainBeachEnv" parent="." unique_id=1815508158 instance=ExtResource("1_ryk2o")]
+[node name="MainBeachEnv" parent="." unique_id=2093085992 instance=ExtResource("1_ryk2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 33.33571)
 
 [node name="BeachChunk" type="Area3D" parent="." unique_id=1239770108 node_paths=PackedStringArray("chunk", "non_persistent") groups=["chunk", "persist"]]
@@ -66,7 +56,7 @@ non_persistent = [NodePath("Chunk/BacktrackingPuzzle/MagiclayRock"), NodePath("C
 fog_level = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BeachChunk" unique_id=748606485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 7.5, 62.33571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7.5, 62.33571)
 shape = SubResource("BoxShape3D_gn7b1")
 
 [node name="Chunk" type="Node3D" parent="BeachChunk" unique_id=34132015]
@@ -99,36 +89,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5, 34.33571)
 text = "Press Ctrl to drag/drop blocks"
 font_size = 64
 
-[node name="BeachHouseEntry" type="Node3D" parent="BeachChunk/Chunk" unique_id=1693618765]
-
-[node name="PressurePlate" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=720151678 instance=ExtResource("5_ff42j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.59999, 3.8, 36.23571)
-_element = 0
-
-[node name="MagiclayRock" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=1997120739 instance=ExtResource("4_sgeyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.699997, 4.8, 38.33571)
-_element = 0
-
-[node name="MagiclayRock2" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=1331664364 instance=ExtResource("4_sgeyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.59999, 4.8, 36.23571)
-_element = 3
-
-[node name="Wire" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=107238778 node_paths=PackedStringArray("target") instance=ExtResource("7_1vpu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.90001, 6, -6)
-target = NodePath("../PressurePlate")
-
-[node name="Path" parent="BeachChunk/Chunk/BeachHouseEntry/Wire" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
-curve = SubResource("Curve3D_egugs")
-
-[node name="Head" parent="BeachChunk/Chunk/BeachHouseEntry/Wire" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.33571)
-
-[node name="Gate" parent="BeachChunk/Chunk/BeachHouseEntry" unique_id=1642533675 node_paths=PackedStringArray("locks") instance=ExtResource("6_igcug")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.699997, 4, 26.335709)
-locks = [NodePath("../PressurePlate")]
-permanent = true
-
 [node name="BacktrackingPuzzle" type="Node3D" parent="BeachChunk/Chunk" unique_id=1134049435]
 
 [node name="MagiclayRock" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=323243083 instance=ExtResource("4_sgeyw")]
@@ -148,8 +108,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.602646, 3, 28)
 size = 13.0
 _element = 0
 
-[node name="BeachHouse" parent="." unique_id=1901693184 instance=ExtResource("2_1otd5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 38.2233, 33.33571)
+[node name="BeachCaves" parent="." unique_id=1901693184 instance=ExtResource("2_1otd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342, 0, 126.336)
 
 [node name="HotelExteriorChunk" type="Area3D" parent="." unique_id=1989240250 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 0)
@@ -632,7 +592,6 @@ material = ExtResource("8_5jrit")
 [connection signal="body_entered" from="HotelExteriorChunk/Chunk/SunkenLampPuzzle/Reset1" to="HotelExteriorChunk/Chunk/SunkenLampPuzzle" method="_reset"]
 [connection signal="body_entered" from="HotelExteriorChunk/Chunk/SunkenLampPuzzle/Reset2" to="HotelExteriorChunk/Chunk/SunkenLampPuzzle" method="_reset"]
 
-[editable path="BeachChunk/Chunk/BeachHouseEntry/Wire"]
 [editable path="HotelExteriorChunk/Chunk/StreetLamps/FallenLamppost"]
 [editable path="HotelExteriorChunk/Chunk/SunkenLamps/SunkenLamppost3"]
 [editable path="HotelExteriorChunk/Chunk/NWParkour/SunkenLamppostEnd"]
