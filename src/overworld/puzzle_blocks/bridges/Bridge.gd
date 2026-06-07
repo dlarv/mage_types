@@ -2,19 +2,35 @@
 extends PuzzleBlock
 
 @export var shutoff_upon_trigger := true
+@export var use_laser_input := true
 
 var _prev_val := -1
 var _is_emitting := false
 
 
-func _enter_tree() -> void:
-	$SubEmitter.stop()
-	$SubEmitter2.stop()
+func _ready() -> void:
+	super._ready()
+
+	if not use_laser_input:
+		_start_no_laser()
+	else:
+		$SubEmitter.stop()
+		$SubEmitter2.stop()
 
 	if not $SubEmitter.laser_broken.is_connected(_on_laser_broken):
 		$SubEmitter.laser_broken.connect(_on_laser_broken)
 	if not $SubEmitter2.laser_broken.is_connected(_on_laser_broken):
 		$SubEmitter2.laser_broken.connect(_on_laser_broken)
+
+
+func _start_no_laser() -> void:
+	_is_emitting = true
+	$SubEmitter.set_element(element)
+	$SubEmitter.start()
+	$SubEmitter2.set_element(element)
+	$SubEmitter2.start()
+	_prev_val = $SubEmitter.laser.rand_val
+	$SubEmitter2.laser.rand_val = _prev_val
 
 
 func _on_laser_received(laser:Laser, point:Vector3) -> void:
@@ -45,7 +61,10 @@ func _on_laser_dropped() -> void:
 
 func reset(resetPosition:=false) -> void:
 	super.reset(resetPosition)
-	if _is_emitting:
+
+	if not use_laser_input:
+		_start_no_laser()
+	elif _is_emitting:
 		$SubEmitter.start()
 		$SubEmitter2.start()
 
