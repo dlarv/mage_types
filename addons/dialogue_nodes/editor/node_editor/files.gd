@@ -1,7 +1,6 @@
 @tool
 extends ItemList
 
-
 signal file_list_changed
 signal file_switched
 
@@ -15,8 +14,8 @@ signal file_switched
 @onready var open_dialog := $OpenDialog
 @onready var confirm_dialog := $ConfirmationDialog
 
-const VariablesScene := preload('res://addons/dialogue_nodes/editor/Variables.tscn')
-const GraphScene := preload('res://addons/dialogue_nodes/editor/Graph.tscn')
+const VariablesScene := preload('res://addons/dialogue_nodes/editor/variables/Variables.tscn')
+const GraphScene := preload('res://addons/dialogue_nodes/editor/node_editor/Graph.tscn')
 
 var file_icon := preload('res://addons/dialogue_nodes/icons/Script.svg')
 var cur_idx := -1
@@ -29,7 +28,7 @@ func _ready() -> void:
 	confirm_dialog.add_button('Discard', true, 'discard_file')
 	confirm_dialog.add_cancel_button('Cancel')
 	
-	data_container.get_node('Characters').modified.connect(_on_data_modified)
+	# data_container.get_node('Characters').modified.connect(_on_data_modified)
 
 
 func create_entry(file_name: String, path: String, data: DialogueData) -> void:
@@ -46,7 +45,6 @@ func create_entry(file_name: String, path: String, data: DialogueData) -> void:
 		var metadata := {
 			'display_name': file_name,
 			'path': path,
-			'characters': data.characters,
 			'variables': null,
 			'graph': null,
 			'modified': false
@@ -66,8 +64,7 @@ func create_entry(file_name: String, path: String, data: DialogueData) -> void:
 		add_child(variables)
 		variables.undo_redo = editor.undo_redo
 		variables.modified.connect(_on_data_modified)
-		#DEPR: variables.load_data(data.variables)
-		variables.load_data(StoryManager.variables)
+		variables.load_data(data.variables)
 		remove_child(variables)
 		metadata['variables'] = variables
 	
@@ -134,11 +131,7 @@ func save_file(idx := cur_idx) -> void:
 	var metadata := get_item_metadata(idx)
 	
 	var data: DialogueData = metadata['graph'].get_data()
-	if idx == cur_idx:
-		data.characters = data_container.get_node('Characters').get_data()
-	else:
-		data.characters = metadata['characters']
-	#DEPR: data.variables = metadata['variables'].get_data()
+	data.variables = metadata['variables'].get_data()
 	
 	# save to file
 	ResourceSaver.save(data, metadata['path'])
@@ -159,8 +152,7 @@ func save_as(path: String) -> void:
 	var metadata := get_item_metadata(cur_idx)
 	
 	var data: DialogueData = metadata['graph'].get_data()
-	data.characters = data_container.get_node('Characters').get_data()
-	#DEPR: data.variables = metadata['variables'].get_data()
+	data.variables = metadata['variables'].get_data()
 	
 	# create entry for file
 	create_entry(file_name, path, data)
@@ -240,25 +232,21 @@ func switch_file(idx: int, ensure_path := '') -> void:
 	if ensure_path != '' and new_metadata['path'] != ensure_path:
 		return
 	
-	# remove previous nodes if any and update character metadata
+	# remove previous nodes if any
 	if cur_idx > -1:
 		var cur_metadata := get_item_metadata(cur_idx)
 		if workspace.has_node('Graph'):
 			editor.add_menu.get_popup().id_pressed.disconnect(cur_metadata['graph']._on_add_menu_pressed)
-			data_container.get_node('Characters').characters_updated.disconnect(cur_metadata['graph']._on_characters_updated)
 			workspace.remove_child(cur_metadata['graph'])
 		if data_container.has_node('Variables'):
-			data_container.get_node('Variables').variables_updated.disconnect(cur_metadata['graph']._on_variables_updated)
+			data_container.get_node('Variables').variable_list_updated.disconnect(cur_metadata['graph']._on_variables_updated)
 			data_container.remove_child(cur_metadata['variables'])
 
-		cur_metadata['characters'] = data_container.get_node('Characters').get_data()
 		set_item_metadata(cur_idx, cur_metadata)
 	
 	# add new nodes
-	data_container.get_node('Characters').characters_updated.connect(new_metadata['graph']._on_characters_updated)
-	new_metadata['variables'].variables_updated.connect(new_metadata['graph']._on_variables_updated)
+	new_metadata['variables'].variable_list_updated.connect(new_metadata['graph']._on_variables_updated)
 	workspace.add_child(new_metadata['graph'])
-	data_container.get_node('Characters').load_data(new_metadata['characters'])
 	
 	editor.add_menu.get_popup().id_pressed.connect(new_metadata['graph']._on_add_menu_pressed)
 	data_container.add_child(new_metadata['variables'])
@@ -290,13 +278,8 @@ func get_current_metadata() -> Dictionary:
 
 func _on_empty_clicked(at_pos: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == MOUSE_BUTTON_RIGHT:
-		# Dlarv: Using a tiled window manager causes the position of the popup to break.
-		var pop_pos
-		if EditorInterface.is_multi_window_enabled():
-			pop_pos = at_pos + global_position + Vector2(get_window().position)
-		else:
-			pop_pos = at_pos + global_position
-		popup_menu.popup(Rect2(pop_pos.x, pop_pos.y, popup_menu.size.x, popup_menu.size.y))
+		var pop_pos := at_pos + global_position + Vector2(get_window().position)
+		popup_menu.popup(Rect2(pop_pos, popup_menu.size))
 
 
 func _on_item_clicked(_idx, at_pos: Vector2, mouse_button_index: int) -> void:

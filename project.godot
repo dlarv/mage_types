@@ -26,12 +26,12 @@ config/icon="uid://c510ou4fg55vi"
 ElementManager="*res://src/elements/element_manager.tscn"
 MyLogger="*res://src/logger.tscn"
 Settings="*res://src/settings/settings.tscn"
-StoryManager="*res://src/story_system/story_manager.tscn"
 Inventory="*res://src/items/Inventory.tscn"
 UIManager="*res://src/gui/ui_manager.tscn"
 Battle="*res://src/battle_system/battle.tscn"
 TooltipManager="*res://addons/tooltips_pro/scripts/tooltip_manager.gd"
 TooltipPlaceholderVariables="*res://addons/tooltips_pro/scripts/tooltip_placeholder_variables.gd"
+StoryManager="*uid://dnlxtiohl2siv"
 
 [debug]
 

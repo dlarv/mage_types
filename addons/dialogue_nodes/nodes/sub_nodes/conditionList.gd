@@ -4,11 +4,11 @@ extends BoxContainer
 
 signal modified
 
-@onready var add_button: Button = $AddButton
-
 const ConditionItemScene := preload('res://addons/dialogue_nodes/nodes/sub_nodes/ConditionItem.tscn')
 
 var undo_redo: EditorUndoRedoManager
+var last_variable_list: Array[String]
+
 
 func _to_dict() -> Array[Dictionary]:
 	var dict: Array[Dictionary] = []
@@ -22,6 +22,8 @@ func _to_dict() -> Array[Dictionary]:
 
 
 func _from_dict(dict: Array[Dictionary]) -> void:
+	# if len(last_variable_list) == 0:
+	# 	recreate_variable_list(dict)
 	for idx in range(dict.size()):
 		var new_item = ConditionItemScene.instantiate()
 		add_item(new_item, idx)
@@ -34,6 +36,7 @@ func is_empty() -> bool:
 
 func add_item(new_item: BoxContainer, to_idx := -1) -> void:
 	if new_item.get_parent() != self: add_child(new_item, true)
+	new_item.undo_redo = undo_redo
 	move_child(new_item, to_idx)
 	
 	new_item.undo_redo = undo_redo
@@ -47,7 +50,7 @@ func add_item(new_item: BoxContainer, to_idx := -1) -> void:
 	new_item.delete_requested.connect(_on_item_deleted.bind(new_item))
 
 	# Give new conditonal statement list of variables.
-	# new_item._on_variables_updated(last_variable_list)
+	new_item._on_variables_updated(last_variable_list)
 
 
 func remove_item(item: BoxContainer) -> void:
@@ -97,4 +100,23 @@ func _on_item_deleted(item: BoxContainer) -> void:
 func _on_modified() -> void:
 	modified.emit()
 	
+	
+func update_variables(variable_list: Array[String]) -> void:
+	last_variable_list = variable_list
+	for child in get_children():
+		if child.has_method("_on_variables_updated"):
+			child._on_variables_updated(variable_list)
 
+# We are given enough information via _from_dict to recreate the last_variable_array.
+# Doing this allows ForkNodes to display their conditions as soon as the file is loaded.
+func recreate_variable_list(dict: Array[Dictionary]) -> void:
+	# Variable name is stored in value1
+	# Index is stored in cur_variable
+	last_variable_list = []
+	for cond in dict:
+		var idx = cond.cur_variable
+		if idx >= len(last_variable_list):
+			last_variable_list.resize(idx + 1)
+		last_variable_list[idx] = cond.value1
+	
+	last_variable_list += StoryManager.get_variable_list()

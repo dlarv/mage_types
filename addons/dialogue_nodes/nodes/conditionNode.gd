@@ -1,12 +1,8 @@
 @tool
-extends GraphNode
+extends BaseDialogueNode
 
-
-signal modified
 
 @onready var condition_list: BoxContainer = $ConditionList
-
-var undo_redo: EditorUndoRedoManager
 
 
 func _ready() -> void:
@@ -40,3 +36,6 @@ func _on_modified() -> void:
 	reset_size()
 	modified.emit()
 
+
+func _on_variables_updated(variables_list: Array[String]) -> void:
+	condition_list.update_variables(variables_list)

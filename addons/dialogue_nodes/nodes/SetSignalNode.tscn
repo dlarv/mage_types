@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk88778awqf1k"]
+[gd_scene format=3 uid="uid://cia86vm8cdt4m"]
 
-[ext_resource type="Script" uid="uid://ccynkxrme5b76" path="res://addons/dialogue_nodes/nodes/setSignalNode.gd" id="1_kwfna"]
+[ext_resource type="Script" uid="uid://bhhb842vgoy7w" path="res://addons/dialogue_nodes/nodes/setSignalNode.gd" id="1_3psdi"]
+[ext_resource type="PackedScene" uid="uid://choa2kbovexdq" path="res://addons/dialogue_nodes/nodes/sub_nodes/variable_dropdown.tscn" id="2_5lkjg"]
 
-[node name="SetSignalNode" type="GraphNode"]
+[node name="SetSignalNode" type="GraphNode" unique_id=1403924581]
 offset_right = 194.0
 offset_bottom = 119.0
 title = "SetSignalNode"
@@ -42,37 +43,22 @@ slot/3/right_type = 0
 slot/3/right_color = Color(1, 1, 1, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
-script = ExtResource("1_kwfna")
+script = ExtResource("1_3psdi")
 
-[node name="Label1" type="Label" parent="."]
+[node name="Label1" type="Label" parent="." unique_id=2125084336]
 layout_mode = 2
 text = "Set variable"
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1127893146]
 layout_mode = 2
 
-[node name="Variable" type="OptionButton" parent="BoxContainer"]
+[node name="Variable" parent="BoxContainer" unique_id=1965668128 instance=ExtResource("2_5lkjg")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "The property to set the value of."
-selected = 0
-item_count = 7
-popup/item_0/text = "counter"
-popup/item_0/id = 0
-popup/item_1/text = "current_cutscene"
-popup/item_1/id = 1
-popup/item_2/text = "finding_denim_quest"
-popup/item_2/id = 2
-popup/item_3/text = "knows_bartender_is_rooted"
-popup/item_3/id = 3
-popup/item_4/text = "met_mini_boss"
-popup/item_4/id = 4
-popup/item_5/text = "player_name"
-popup/item_5/id = 5
-popup/item_6/text = "swole_enclave_quest"
-popup/item_6/id = 6
 
-[node name="Type" type="OptionButton" parent="BoxContainer"]
+[node name="Type" type="OptionButton" parent="BoxContainer" unique_id=1856043182]
+unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "The type of the value to set."
 selected = 0
@@ -88,26 +74,20 @@ popup/item_3/id = 3
 popup/item_4/text = "/="
 popup/item_4/id = 4
 
-[node name="Value" type="LineEdit" parent="BoxContainer"]
+[node name="Value" type="LineEdit" parent="BoxContainer" unique_id=2016911839]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "The value to set the property to.
 Eg: Bob, 12, 0.5, false, etc."
 placeholder_text = "Value"
 
-[node name="VariableTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="ValueTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=1943393089]
 layout_mode = 2
 text = "Signal"
 
-[node name="SignalDropdown" type="OptionButton" parent="."]
+[node name="SignalDropdown" type="OptionButton" parent="." unique_id=1184029854]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -121,14 +101,5 @@ popup/item_2/id = 2
 popup/item_3/text = "DIALOG_ENDED"
 popup/item_3/id = 3
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[connection signal="item_selected" from="BoxContainer/Variable" to="." method="_on_variable_selected"]
 [connection signal="item_selected" from="BoxContainer/Type" to="." method="_on_type_selected"]
-[connection signal="text_changed" from="BoxContainer/Value" to="." method="_on_value_changed"]
-[connection signal="timeout" from="VariableTimer" to="." method="_on_variable_timer_timeout"]
-[connection signal="timeout" from="ValueTimer" to="." method="_on_value_timer_timeout"]
 [connection signal="item_selected" from="SignalDropdown" to="." method="_on_option_button_item_selected"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

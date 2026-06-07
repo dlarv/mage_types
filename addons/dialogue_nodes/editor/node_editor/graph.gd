@@ -1,11 +1,12 @@
 @tool
 extends GraphEdit
 
-
 signal modified
-signal characters_updated(character_list: Array[Character])
 signal variables_updated(variable_list: Array[String])
 signal run_requested(start_node_idx: int)
+
+## Replaces unknown custom nodes with informational box
+const ErrorNode := preload('res://addons/dialogue_nodes/nodes/ErrorNode.tscn')
 
 @export var NodeScenes: Array[PackedScene] = [
 	preload('res://addons/dialogue_nodes/nodes/StartNode.tscn'),
@@ -17,7 +18,6 @@ signal run_requested(start_node_idx: int)
 	preload('res://addons/dialogue_nodes/nodes/NestNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/ForkNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/GraphFrame.tscn'),
-	# Dlarv: Added preload.
 	preload('res://addons/dialogue_nodes/nodes/SetSignalNode.tscn'),
 ]
 @export var detach_icon: Texture2D = preload('res://addons/dialogue_nodes/icons/ExternalLink.svg')
@@ -32,7 +32,6 @@ var cursor_pos := Vector2.ZERO
 var selected_nodes := []
 var request_node := ''
 var request_port := -1
-var last_character_list: Array[Character] = []
 var last_variable_list: Array[String] = []
 
 var editor_settings: EditorSettings
@@ -44,6 +43,8 @@ func _ready() -> void:
 	if not Engine.is_editor_hint(): return
 	editor_settings = EditorInterface.get_editor_settings()
 	editor_settings.settings_changed.connect(update_slots_color)
+
+	StoryManager.variable_list_updated.connect(_on_variables_updated.bind(true))
 
 
 func _input(_event) -> void:
@@ -119,16 +120,22 @@ func add_node(id: int, node_name := '', offset := cursor_pos) -> GraphElement:
 	deselect_all_nodes()
 	
 	# create new node
-	var new_node := NodeScenes[id].instantiate()
+	var new_node
+	if id < len(NodeScenes):
+		new_node = NodeScenes[id].instantiate()
+	else:
+		new_node = ErrorNode.instantiate()
+
+	new_node.name = (str(id)+'_1') if node_name == '' else node_name
+	new_node.title += ' #' + new_node.name.split('_')[1]
+
 	new_node.position_offset = offset
 	new_node.undo_redo = undo_redo
 	new_node.selected = true
 	selected_nodes.append(new_node)
 	
 	# set nodeId and add to graph
-	new_node.name = (str(id)+'_1') if node_name == '' else node_name
 	add_child(new_node, true)
-	new_node.title += ' #' + new_node.name.split('_')[1]
 	
 	# connect signals
 	connect_node_signals(new_node)
@@ -140,12 +147,10 @@ func add_node(id: int, node_name := '', offset := cursor_pos) -> GraphElement:
 			disconnect_node(request_node, request_port, prev_connection[0]['to_node'], prev_connection[0]['to_port'])
 		connect_node(request_node, request_port, new_node.name, 0)
 	
-	match id:
-		0: # start node
-			add_to_starts(new_node.name)
-			new_node.set_ID('START' + new_node.name.split('_')[1])
-		1: # dialogue node
-			new_node._on_characters_updated(last_character_list)
+	# Start Node
+	if id == 0:
+		add_to_starts(new_node.name)
+		new_node.set_ID('START' + new_node.name.split('_')[1])
 	
 	return new_node
 
@@ -155,17 +160,22 @@ func connect_node_signals(node: GraphElement) -> void:
 	
 	node.dragged.connect(_on_node_dragged.bind(node))
 	node.modified.connect(_on_modified)
-	
-	match id:
-		0: # start node
-			node.run_requested.connect(_on_run_requested.bind(node))
-		1: # dialogue node
-			characters_updated.connect(node._on_characters_updated)
-			node.disconnection_from_request.connect(_on_disconnection_from_request)
-			node.connection_shift_request.connect(_on_connection_shift_request)
-		7: # fork node
-			node.disconnection_from_request.connect(_on_disconnection_from_request)
-			node.connection_shift_request.connect(_on_connection_shift_request)
+
+	if node is BaseDialogueNode:
+		node.disconnection_from_request.connect(_on_disconnection_from_request)
+		node.connection_shift_request.connect(_on_connection_shift_request)
+
+		if node.has_method("_on_variables_updated"):
+			variables_updated.connect(node._on_variables_updated)
+			node._on_variables_updated(last_variable_list + StoryManager.get_variable_list())
+
+		if node.has_method("_on_characters_updated"):
+			StoryManager.character_list_updated.connect(node._on_characters_updated)
+			node._on_characters_updated()
+
+	# Start node
+	if id == 0:
+		node.run_requested.connect(_on_run_requested.bind(node))
 
 
 func disconnect_node_signals(node: GraphElement) -> void:
@@ -173,32 +183,21 @@ func disconnect_node_signals(node: GraphElement) -> void:
 	
 	node.dragged.disconnect(_on_node_dragged.bind(node))
 	node.modified.disconnect(_on_modified)
-	
-	match id:
-		0: # start node
-			node.run_requested.disconnect(_on_run_requested.bind(node))
-		1: # dialogue node
-			characters_updated.disconnect(node._on_characters_updated)
-			node.disconnection_from_request.disconnect(_on_disconnection_from_request)
-			node.connection_shift_request.disconnect(_on_connection_shift_request)
-			variables_updated.disconnect(node._on_variables_updated)
-		4: # set node
-			variables_updated.disconnect(node._on_variables_updated)
-		5: # conditional node
-			variables_updated.disconnect(node._on_variables_updated)
-		7: # fork node
-			node.disconnection_from_request.disconnect(_on_disconnection_from_request)
-			node.connection_shift_request.disconnect(_on_connection_shift_request)
-			variables_updated.disconnect(node._on_variables_updated)
+	node.disconnection_from_request.disconnect(_on_disconnection_from_request)
+	node.connection_shift_request.disconnect(_on_connection_shift_request)
+
+	if node.has_method("_on_variables_updated"):
+		variables_updated.disconnect(node._on_variables_updated)
+	if node.has_method("_on_characters_updated"):
+		StoryManager.character_list_updated.disconnect(node._on_characters_updated)
+
+	# Start node
+	if id == 0:
+		node.run_requested.disconnect(_on_run_requested.bind(node))
 
 
 func show_add_menu(pos: Vector2) -> void:
-	# Dlarv: Using a tiled window manager causes the position of the popup to break.
-	var pop_pos
-	if EditorInterface.is_multi_window_enabled():
-		pop_pos = pos + global_position + Vector2(get_window().position)
-	else:
-		pop_pos = pos + global_position
+	var pop_pos := pos + global_position + Vector2(get_window().position)
 	popup_menu.popup(Rect2(pop_pos.x, pop_pos.y, popup_menu.size.x, popup_menu.size.y))
 	cursor_pos = (pos + scroll_offset) / zoom
 
@@ -367,10 +366,8 @@ func _on_duplicate_nodes_request() -> void:
 		clone_node._from_dict(node._to_dict(self))
 		clone_node.position_offset = node.position_offset + _duplicate_offset
 		if clone_id == 1:
-			clone_node._on_characters_updated(last_character_list)
 			clone_node._on_variables_updated(last_variable_list)
-		# Dlarv: Added clone_id == 9 (SetSignal)
-		elif clone_id == 4 or clone_id == 5 or clone_id == 7 or clone_id == 9:
+		elif clone_id == 4 or clone_id == 5 or clone_id == 7:
 			clone_node._on_variables_updated(last_variable_list)
 			
 		duplicated_nodes.append(clone_node)
@@ -522,17 +519,21 @@ func _on_connection_shift_request(from_node: String, old_port: int, new_port: in
 	connect_node(from_node, new_port, connections[0]['to_node'], connections[0]['to_port'])
 
 
-func _on_characters_updated(character_list: Array[Character]) -> void:
+func _on_variables_updated(variable_list: Array[String], is_globals:=false) -> void:
 	if not is_inside_tree(): return
-	
-	last_character_list = character_list
-	characters_updated.emit(character_list)
+	var globals: Array[String]
+	var locals: Array[String]
 
-func _on_variables_updated(variable_list: Array[String]) -> void:
-	if not is_inside_tree(): return
+	if is_globals:
+		locals = last_variable_list
+		globals = variable_list
+	else:
+		locals = variable_list
+		globals = StoryManager.get_variable_list()
+
+		last_variable_list = locals
 	
-	last_variable_list = variable_list
-	variables_updated.emit(variable_list)
+	variables_updated.emit(locals + globals)
 
 func _on_run_requested(node: GraphElement) -> void:
 	var idx := starts.find(node.name)

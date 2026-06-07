@@ -7,32 +7,17 @@ signal delete_requested
 @export var is_last := false :
 	set(value):
 		is_last = value
-		if is_instance_valid(combiner):
-			combiner.visible = not is_last
+		if is_instance_valid(%Combiner):
+			%Combiner.visible = not is_last
 @export var show_delete := false :
 	set(value):
 		show_delete = value
-		if is_instance_valid(delete_button):
-			delete_button.visible = show_delete
-
-@onready var value1: OptionButton = $MainContainer/Value1
-@onready var operator: OptionButton = $MainContainer/Operator
-@onready var value2: LineEdit = $MainContainer/Value2
-@onready var timer: Timer = $Timer
-@onready var combiner: OptionButton = $SideContainer/Combiner
-@onready var reset_button: Button = $SideContainer/ResetButton
-@onready var delete_button: Button = $SideContainer/DeleteButton
+		if is_instance_valid(%DeleteButton):
+			%DeleteButton.visible = show_delete
 
 var undo_redo: EditorUndoRedoManager
 var cur_condition := {}
 var cur_variable := -1
-var prev_value: String
-
-func _ready() -> void:
-	if not StoryManager.variables_updated.is_connected(_on_variables_updated):
-		StoryManager.variables_updated.connect(_on_variables_updated)
-	_on_variables_updated()
-
 
 func _to_dict() -> Dictionary:
 	if is_empty():
@@ -40,13 +25,15 @@ func _to_dict() -> Dictionary:
 		return {}
 	
 	var dict:= {
-		'value1': prev_value,
-		'operator': operator.selected,
-		'value2': value2.text
+		# 'cur_variable': %Value1.selected,
+		'value1': %Value1.curr_variable,
+		'operator': %Operator.selected,
+		'value2': %Value2.text
 	}
+
 	
 	if not is_last:
-		dict['combiner'] = combiner.selected
+		dict['combiner'] = %Combiner.selected
 	
 	return dict
 
@@ -60,33 +47,33 @@ func _from_dict(dict: Dictionary) -> void:
 			'value2': '',
 			'combiner': 0
 		}
-		reset_button.hide()
+		%ResetButton.hide()
 	else:
-		reset_button.show()
-	
-	cur_variable = StoryManager.variables.keys().find(dict['value1'])
-	prev_value = dict['value1']
-	value1.select(cur_variable)
+		%ResetButton.show()
 
-	if operator.selected != dict['operator']:
-		operator.selected = dict['operator']
-	if value2.text != dict['value2']:
-		value2.text = dict['value2']
+	%Value1.setup(dict['value1'])
+	%Value1.undo_redo = undo_redo
+
+	if %Operator.selected != dict['operator']:
+		%Operator.selected = dict['operator']
+	if %Value2.text != dict['value2']:
+		%Value2.text = dict['value2']
 	if dict.has('combiner'):
-		combiner.selected = dict['combiner']
+		%Combiner.selected = dict['combiner']
+
+	%Value1.undo_redo = undo_redo
 
 
 func is_empty() -> bool:
-	return (value1.selected == -1) and (operator.selected == 0) and (value2.text == '')
+	return (%Value1.selected == -1) and (%Operator.selected == 0) and (%Value2.text == '')
 
 
 func _on_condition_changing(_a=0) -> void:
-	timer.stop()
-	timer.start()
+	%Timer.stop()
+	%Timer.start()
 
 
 func _on_condition_changed() -> void:
-	prev_value = value1.get_item_text(value1.selected)
 	if not undo_redo: return
 	
 	var new_condition: Dictionary = _to_dict()
@@ -120,21 +107,5 @@ func _on_modified() -> void:
 	modified.emit()
 
 
-func _on_variables_updated() -> void:
-	var variable_list: Array[String] = StoryManager.variables.keys()
-	var prevValue := value1.get_item_text(value1.selected)
-		
-	value1.clear()
-	for variable_name in variable_list:
-		value1.add_item(variable_name)
-	
-	if variable_list.size() > 0:
-		# Try to find old value first
-		var index := variable_list.find(prevValue)
-		if index != -1:
-			cur_variable = index
-		elif cur_variable > variable_list.size() or cur_variable < 0:
-			cur_variable = 0
-		value1.select(cur_variable)
-	else:
-		value1.select(-1)
+func _on_variables_updated(variable_list: Array[String]) -> void:
+	%Value1.update_variables(variable_list)

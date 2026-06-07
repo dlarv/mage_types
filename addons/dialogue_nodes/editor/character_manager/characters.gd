@@ -38,7 +38,7 @@ func load_data(path: String) -> void:
 	var resource: Resource
 	var character_list: Array[Character] = []
 	if path.ends_with('.tres') and ResourceLoader.exists(path):
-		resource = ResourceLoader.load(path, '')
+		resource = ResourceLoader.load(path, '', ResourceLoader.CACHE_MODE_REPLACE)
 		if resource is CharacterList:
 			character_list = resource.characters
 	

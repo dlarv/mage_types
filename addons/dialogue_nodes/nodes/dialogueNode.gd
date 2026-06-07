@@ -1,28 +1,14 @@
 @tool
-extends GraphNode
+extends BaseDialogueNode
 
-
-signal modified
 signal character_list_requested(dialogue_node: GraphNode)
-signal disconnection_from_request(from_node: String, from_port: int)
-signal connection_shift_request(from_node: String, old_port: int, new_port: int)
 
 @export var max_options := 4
-@export var resize_timer: Timer
-@export var custom_speaker_timer: Timer
-@export var dialogue_timer: Timer
 
-@onready var speaker := %Speaker
-@onready var custom_speaker := %CustomSpeaker
-@onready var character_toggle := %CharacterToggle
-@onready var dialogue := %Dialogue
-@onready var dialogue_panel := %DialoguePanel
-@onready var dialogue_expanded := %DialogueExpanded
-
-var undo_redo: EditorUndoRedoManager
 var last_size := size
 var last_custom_speaker := ''
 var cur_speaker := -1
+var cur_sprite := -1
 var last_dialogue := ''
 var OptionScene := preload('res://addons/dialogue_nodes/nodes/sub_nodes/DialogueNodeOption.tscn')
 var options: Array = []
@@ -30,8 +16,13 @@ var empty_option: BoxContainer
 var first_option_index := -1
 var base_color: Color = Color.WHITE
 
+var _character: Character = null
+
 
 func _ready() -> void:
+	_register_timer(%Dialogue, "text_changed", _on_dialogue_text_changed)
+	_register_timer(%CustomSpeaker, "text_changed", _on_custom_speaker_changed)
+
 	options.clear()
 	for idx in range(get_child_count() - 1, -1, -1):
 		var child = get_child(idx)
@@ -42,23 +33,27 @@ func _ready() -> void:
 	update_slots()
 	reset_size()
 
+	%SpriteSelector.item_selected.connect(func(idx: int) -> void:
+		if _character == null: return
+		%SpriteTextureRect.texture = _character.get_sprite_image(idx)
+	)
+
 
 func _to_dict(graph: GraphEdit) -> Dictionary:
 	var dict := {}
 	var empty_condition: Array[Dictionary] = []
 	
-	if custom_speaker.visible:
-		custom_speaker.text = custom_speaker.text.replace('{', '').replace('}', '')
-		dict['speaker'] = custom_speaker.text
-	elif speaker.visible:
-		var speaker_idx := -1
-		if speaker.item_count > 0:
-			speaker_idx = cur_speaker
+	if %CustomSpeaker.visible:
+		%CustomSpeaker.text = %CustomSpeaker.text.replace('{', '').replace('}', '')
+		dict['speaker'] = %CustomSpeaker.text
+	elif %Speaker.visible:
+		var speaker_idx: int = %Speaker.selected
 		dict['speaker'] = speaker_idx
+		dict['sprite'] = %SpriteSelector.selected
 	
-	dict['dialogue'] = dialogue.text
+	dict['dialogue'] = %Dialogue.text
 	dict['size'] = size
-	
+
 	# get options connected to other nodes
 	var options_dict := {}
 	for connection in graph.get_connections(name):
@@ -96,16 +91,26 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	
 	# set values
 	if dict['speaker'] is String:
-		custom_speaker.text = dict['speaker']
-		last_custom_speaker = custom_speaker.text
-		toggle_speaker_input(false)
+		%CustomSpeaker.text = dict['speaker']
+		last_custom_speaker = %CustomSpeaker.text
 	elif dict['speaker'] is int:
 		cur_speaker = dict['speaker']
-		character_toggle.set_pressed_no_signal(true)
+		%Speaker.selected = cur_speaker
+		_select_speaker(cur_speaker)
+
+		if dict.has('sprite'):
+			cur_sprite = dict['sprite']
+		else:
+			cur_sprite = 0
+		%SpriteSelector.selected = cur_sprite
+		_select_sprite(cur_sprite)
+
+
+		%CharacterToggle.set_pressed_no_signal(true)
 		toggle_speaker_input(true)
-	dialogue.text = dict['dialogue']
-	dialogue_expanded.text = dialogue.text
-	last_dialogue = dialogue.text
+	%Dialogue.text = dict['dialogue']
+	%DialogueExpanded.text = %Dialogue.text
+	last_dialogue = %Dialogue.text
 	
 	# remove any existing options (if any)
 	for option in options:
@@ -138,7 +143,7 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 		var new_size: Vector2
 		if dict['size'] is Vector2:
 			new_size = dict['size']
-		else: # for dialogue files created before v1.0.2
+		else: # for Dialogue files created before v1.0.2
 			new_size = Vector2( float(dict['size']['x']), float(dict['size']['y']) )
 		size = new_size
 		last_size = size
@@ -147,22 +152,24 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 
 
 func set_custom_speaker(new_custom_speaker: String) -> void:
-	if custom_speaker.text != new_custom_speaker:
-		custom_speaker.text = new_custom_speaker
-	last_custom_speaker = custom_speaker.text
+	if %CustomSpeaker.text != new_custom_speaker:
+		%CustomSpeaker.text = new_custom_speaker
+	last_custom_speaker = %CustomSpeaker.text
 
 
 func toggle_speaker_input(use_speaker_list: bool) -> void:
-	custom_speaker.visible = not use_speaker_list
-	speaker.visible = use_speaker_list
+	%CustomSpeaker.visible = not use_speaker_list
+	%Speaker.visible = use_speaker_list
+	%SpriteSelector.visible = use_speaker_list
+	%SpriteTextureRect.visible = use_speaker_list
 
 
 func set_dialogue_text(new_text: String) -> void:
-	if dialogue.text != new_text:
-		dialogue.text = new_text
-	if dialogue_expanded.text != new_text:
-		dialogue_expanded.text = dialogue.text
-	last_dialogue = dialogue.text
+	if %Dialogue.text != new_text:
+		%Dialogue.text = new_text
+	if %DialogueExpanded.text != new_text:
+		%DialogueExpanded.text = %Dialogue.text
+	last_dialogue = %Dialogue.text
 
 
 func add_option(option: BoxContainer, to_idx := -1) -> void:
@@ -212,107 +219,126 @@ func update_slots() -> void:
 		set_slot(option.get_index(), false, 0, base_color, enabled, 0, base_color)
 
 
-func _on_resize(_new_size) -> void:
-	resize_timer.stop()
-	resize_timer.start()
-
-
-func _on_resize_timer_timeout() -> void:
-	if not undo_redo: return
+func _on_custom_speaker_changed() -> void:
+	if not undo_redo: 
+		set_custom_speaker(%CustomSpeaker.text)
+		return
 	
-	undo_redo.create_action('Set node size')
-	undo_redo.add_do_method(self, 'set_size', size)
-	undo_redo.add_do_property(self, 'last_size', size)
-	undo_redo.add_do_method(self, '_on_modified')
-	undo_redo.add_undo_method(self, '_on_modified')
-	undo_redo.add_undo_property(self, 'last_size', last_size)
-	undo_redo.add_undo_method(self, 'set_size', last_size)
-	undo_redo.commit_action()
-
-
-func _on_custom_speaker_changed(_new_text) -> void:
-	custom_speaker_timer.stop()
-	custom_speaker_timer.start()
-
-
-func _on_custom_speaker_timer_timeout() -> void:
-	if not undo_redo: return
-	
-	undo_redo.create_action('Set custom speaker')
-	undo_redo.add_do_method(self, 'set_custom_speaker', custom_speaker.text)
+	undo_redo.create_action('Set custom Speaker')
+	undo_redo.add_do_method(self, 'set_custom_speaker', %CustomSpeaker.text)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_custom_speaker', last_custom_speaker)
 	undo_redo.commit_action()
 
 
-func _on_characters_updated(character_list: Array[Character]) -> void:
-	speaker.clear()
+func _on_characters_updated() -> void:
+	%Speaker.clear()
+	var character_list := StoryManager.characters
 	
 	for character in character_list:
-		speaker.add_item(character.name)
+		%Speaker.add_item(character.name)
 	
 	if character_list.size() > 0:
 		if cur_speaker > character_list.size():
 			cur_speaker = 0
-		speaker.select(cur_speaker)
+		%Speaker.select(cur_speaker)
 	else:
-		speaker.select(-1)
+		%Speaker.select(-1)
 
 
 func _on_speaker_selected(idx: int) -> void:
-	if not undo_redo: return
+	if not undo_redo: 
+		_select_speaker(idx)
+		return
 	
-	undo_redo.create_action('Set speaker')
-	undo_redo.add_do_property(self, 'cur_speaker', idx)
-	undo_redo.add_do_method(speaker, 'select', idx)
+	undo_redo.create_action('Set Speaker')
+	undo_redo.add_do_method(self, '_select_speaker', idx)
+	undo_redo.add_do_method(%Speaker, 'select', idx)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
-	undo_redo.add_undo_property(self, 'cur_speaker', cur_speaker)
-	undo_redo.add_undo_method(speaker, 'select', cur_speaker)
+	undo_redo.add_undo_method(self, '_select_speaker', cur_speaker)
+	undo_redo.add_undo_method(%Speaker, 'select', cur_speaker)
 	undo_redo.commit_action()
+
+
+func _select_speaker(idx: int) -> void:
+	if _character != null:
+		_character.sprite_list_updated.disconnect(_on_sprite_list_updated)
+	cur_speaker = idx
+
+	_character = StoryManager.characters[idx]
+	_on_sprite_list_updated()
+
+	_character.sprite_list_updated.connect(_on_sprite_list_updated)
+
+
+func _on_sprite_list_updated() -> void:
+	%SpriteSelector.clear()
+	for i in _character.get_sprite_count():
+		%SpriteSelector.add_item(_character.get_sprite_name(i))
+	
+	if cur_sprite:
+		%SpriteSelector.selected = cur_sprite
 
 
 func _on_speaker_toggled(toggled_on: bool) -> void:
 	if not undo_redo: return
 	
 	undo_redo.create_action('Toggle character list')
-	undo_redo.add_do_method(character_toggle, 'set_pressed_no_signal', toggled_on)
+	undo_redo.add_do_method(%CharacterToggle, 'set_pressed_no_signal', toggled_on)
 	undo_redo.add_do_method(self, 'toggle_speaker_input', toggled_on)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'toggle_speaker_input', not toggled_on)
-	undo_redo.add_undo_method(character_toggle, 'set_pressed_no_signal', not toggled_on)
+	undo_redo.add_undo_method(%CharacterToggle, 'set_pressed_no_signal', not toggled_on)
 	undo_redo.commit_action()
 
 
-func _on_dialogue_text_changed() -> void:
-	dialogue_timer.stop()
-	dialogue_timer.start()
+func _on_sprite_selector_item_selected(idx: int) -> void:
+	if not undo_redo:
+		_select_sprite(idx)
+		return
 
-
-func _on_dialogue_timer_timeout() -> void:
-	if not undo_redo: return
-	
-	undo_redo.create_action('Set dialogue text')
-	if dialogue_panel.visible:
-		undo_redo.add_do_method(self, 'set_dialogue_text', dialogue_expanded.text)
-	else:
-		undo_redo.add_do_method(self, 'set_dialogue_text', dialogue.text)
+	undo_redo.create_action('Set Sprite')
+	undo_redo.add_do_method(self, '_select_sprite', idx)
+	undo_redo.add_do_method(%SpriteSelector, 'select', idx)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
-	undo_redo.add_undo_method(dialogue_expanded, 'release_focus')
+	undo_redo.add_undo_method(self, '_select_speaker', cur_sprite)
+	undo_redo.add_undo_method(%SpriteSelector, 'select', cur_sprite)
+	undo_redo.commit_action()
+	
+
+func _select_sprite(idx: int) -> void:
+	cur_sprite = idx
+	%SpriteTextureRect.texture = _character.get_sprite_image(idx)
+
+
+func _on_dialogue_text_changed() -> void:
+	if not undo_redo: 
+		set_dialogue_text(%Dialogue.text)
+		return
+
+	undo_redo.create_action('Set Dialogue text')
+	if %DialoguePanel.visible:
+		undo_redo.add_do_method(self, 'set_dialogue_text', %DialogueExpanded.text)
+	else:
+		undo_redo.add_do_method(self, 'set_dialogue_text', %Dialogue.text)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(%DialogueExpanded, 'release_focus')
 	undo_redo.add_undo_method(self, 'set_dialogue_text', last_dialogue)
 	undo_redo.commit_action()
 
 
 func _on_expand_button_pressed() -> void:
-	dialogue_panel.popup_centered()
-	dialogue_expanded.grab_focus()
+	%DialoguePanel.popup_centered()
+	%DialogueExpanded.grab_focus()
 
 
 func _on_close_button_pressed() -> void:
-	dialogue_panel.hide()
+	%DialoguePanel.hide()
 
 
 func _on_option_text_changed(new_text: String, option: BoxContainer) -> void:
@@ -400,11 +426,21 @@ func _on_option_focus_exited(option: BoxContainer) -> void:
 		empty_option = null
 
 
-func _on_modified() -> void:
-	modified.emit()
-
-
 func _on_variables_updated(variables_list: Array[String]) -> void:
 	for option in options:
 		option.update_variables(variables_list)
+
+
+func _on_resize_end(new_size: Vector2) -> void:
+	if not undo_redo: return
+	
+	undo_redo.create_action('Set node size')
+	undo_redo.add_do_method(self, 'set_size', size)
+	undo_redo.add_do_property(self, 'last_size', size)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_property(self, 'last_size', last_size)
+	undo_redo.add_undo_method(self, 'set_size', last_size)
+	undo_redo.commit_action()
+
 

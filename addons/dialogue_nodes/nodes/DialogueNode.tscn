@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b60fa8vcjuoo6"]
+[gd_scene format=3 uid="uid://b60fa8vcjuoo6"]
 
-[ext_resource type="Script" uid="uid://4ey4ngomrmyq" path="res://addons/dialogue_nodes/nodes/dialogueNode.gd" id="1"]
+[ext_resource type="Script" uid="uid://cs4f7dmkcuyqk" path="res://addons/dialogue_nodes/nodes/dialogueNode.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dla76qr5vqp1r" path="res://addons/dialogue_nodes/icons/Character.svg" id="2_n0qww"]
 [ext_resource type="Texture2D" uid="uid://dps8mwnnuc5nm" path="res://addons/dialogue_nodes/icons/DistractionFree.svg" id="4_tpc70"]
 [ext_resource type="PackedScene" uid="uid://blp6ulybtwgcj" path="res://addons/dialogue_nodes/nodes/sub_nodes/DialogueNodeOption.tscn" id="4_y6bt4"]
@@ -14,10 +14,11 @@ color_regions = {
 "[ ]": Color(0.647059, 0.937255, 0.67451, 1)
 }
 
-[node name="DialogueNode" type="GraphNode" node_paths=PackedStringArray("resize_timer", "custom_speaker_timer", "dialogue_timer")]
+[node name="DialogueNode" type="GraphNode" unique_id=710966291]
 custom_minimum_size = Vector2(300, 240)
+offset_top = -1.0
 offset_right = 300.0
-offset_bottom = 240.0
+offset_bottom = 239.0
 theme_override_constants/separation = 4
 resizable = true
 title = "Dialogue"
@@ -67,49 +68,61 @@ slot/4/right_color = Color(1, 1, 1, 1)
 slot/4/right_icon = null
 slot/4/draw_stylebox = true
 script = ExtResource("1")
-resize_timer = NodePath("DialogueContainer/ResizeTimer")
-custom_speaker_timer = NodePath("SpeakerContainer/CustomSpeakerTimer")
-dialogue_timer = NodePath("DialogueContainer/DialogueTimer")
 
-[node name="SpeakerLabel" type="Label" parent="."]
+[node name="SpeakerLabel" type="Label" parent="." unique_id=1821729645]
 layout_mode = 2
 text = "Speaker"
 
-[node name="SpeakerContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1074078207]
 layout_mode = 2
 
-[node name="CustomSpeaker" type="LineEdit" parent="SpeakerContainer"]
+[node name="SpeakerContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=920496564]
+layout_mode = 2
+
+[node name="CustomSpeaker" type="LineEdit" parent="VBoxContainer/SpeakerContainer" unique_id=1649543897]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Speaker" type="OptionButton" parent="VBoxContainer/SpeakerContainer" unique_id=373292955]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+fit_to_longest_item = false
 
-[node name="Speaker" type="OptionButton" parent="SpeakerContainer"]
+[node name="CharacterToggle" type="Button" parent="VBoxContainer/SpeakerContainer" unique_id=1131418771]
 unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("2_n0qww")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=576297596]
+layout_mode = 2
+
+[node name="SpriteTextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=47720786]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 1
+
+[node name="SpriteSelector" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1364997725]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 fit_to_longest_item = false
 
-[node name="CharacterToggle" type="Button" parent="SpeakerContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-toggle_mode = true
-button_pressed = true
-icon = ExtResource("2_n0qww")
-
-[node name="CustomSpeakerTimer" type="Timer" parent="SpeakerContainer"]
-wait_time = 0.5
-one_shot = true
-
-[node name="DialogueLabel" type="Label" parent="."]
+[node name="DialogueLabel" type="Label" parent="." unique_id=74173988]
 layout_mode = 2
 text = "Dialogue"
 
-[node name="DialogueContainer" type="HBoxContainer" parent="."]
+[node name="DialogueContainer" type="HBoxContainer" parent="." unique_id=1174499403]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Dialogue" type="TextEdit" parent="DialogueContainer"]
+[node name="Dialogue" type="TextEdit" parent="DialogueContainer" unique_id=205206571]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -118,27 +131,27 @@ wrap_mode = 1
 syntax_highlighter = SubResource("CodeHighlighter_btpy8")
 highlight_all_occurrences = true
 
-[node name="ExpandButton" type="Button" parent="DialogueContainer"]
+[node name="ExpandButton" type="Button" parent="DialogueContainer" unique_id=117288879]
 layout_mode = 2
 icon = ExtResource("4_tpc70")
 
-[node name="DialoguePanel" type="PopupPanel" parent="DialogueContainer"]
+[node name="DialoguePanel" type="PopupPanel" parent="DialogueContainer" unique_id=1789471703]
 unique_name_in_owner = true
 initial_position = 1
 size = Vector2i(800, 600)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogueContainer/DialoguePanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueContainer/DialoguePanel" unique_id=166462111]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 796.0
+offset_bottom = 596.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DialogueExpanded" type="TextEdit" parent="DialogueContainer/DialoguePanel/VBoxContainer"]
+[node name="DialogueExpanded" type="TextEdit" parent="DialogueContainer/DialoguePanel/VBoxContainer" unique_id=1119104286]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 91)
 layout_mode = 2
@@ -148,32 +161,20 @@ wrap_mode = 1
 syntax_highlighter = SubResource("CodeHighlighter_btpy8")
 highlight_all_occurrences = true
 
-[node name="CenterContainer" type="CenterContainer" parent="DialogueContainer/DialoguePanel/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="DialogueContainer/DialoguePanel/VBoxContainer" unique_id=1239968]
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="DialogueContainer/DialoguePanel/VBoxContainer/CenterContainer"]
+[node name="CloseButton" type="Button" parent="DialogueContainer/DialoguePanel/VBoxContainer/CenterContainer" unique_id=269766273]
 layout_mode = 2
 text = "Close"
 
-[node name="DialogueTimer" type="Timer" parent="DialogueContainer"]
-wait_time = 0.5
-one_shot = true
-
-[node name="ResizeTimer" type="Timer" parent="DialogueContainer"]
-wait_time = 0.5
-one_shot = true
-
-[node name="Option1" parent="." instance=ExtResource("4_y6bt4")]
+[node name="Option1" parent="." unique_id=1604330917 instance=ExtResource("4_y6bt4")]
 layout_mode = 2
 
-[connection signal="resize_request" from="." to="." method="_on_resize"]
-[connection signal="text_changed" from="SpeakerContainer/CustomSpeaker" to="." method="_on_custom_speaker_changed"]
-[connection signal="item_selected" from="SpeakerContainer/Speaker" to="." method="_on_speaker_selected"]
-[connection signal="toggled" from="SpeakerContainer/CharacterToggle" to="." method="_on_speaker_toggled"]
-[connection signal="timeout" from="SpeakerContainer/CustomSpeakerTimer" to="." method="_on_custom_speaker_timer_timeout"]
-[connection signal="text_changed" from="DialogueContainer/Dialogue" to="." method="_on_dialogue_text_changed"]
+[connection signal="resize_end" from="." to="." method="_on_resize_end"]
+[connection signal="item_selected" from="VBoxContainer/SpeakerContainer/Speaker" to="." method="_on_speaker_selected"]
+[connection signal="toggled" from="VBoxContainer/SpeakerContainer/CharacterToggle" to="." method="_on_speaker_toggled"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/SpriteSelector" to="." method="_on_sprite_selector_item_selected"]
 [connection signal="pressed" from="DialogueContainer/ExpandButton" to="." method="_on_expand_button_pressed"]
 [connection signal="text_changed" from="DialogueContainer/DialoguePanel/VBoxContainer/DialogueExpanded" to="." method="_on_dialogue_text_changed"]
 [connection signal="pressed" from="DialogueContainer/DialoguePanel/VBoxContainer/CenterContainer/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="timeout" from="DialogueContainer/DialogueTimer" to="." method="_on_dialogue_timer_timeout"]
-[connection signal="timeout" from="DialogueContainer/ResizeTimer" to="." method="_on_resize_timer_timeout"]

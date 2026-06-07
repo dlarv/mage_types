@@ -1,5 +1,5 @@
 @tool
-extends GraphNode
+extends BaseDialogueNode
 ##
 ## Fork Node
 ##
@@ -7,24 +7,17 @@ extends GraphNode
 ## bottom) to be valid is used to exit, with a default option with no conditions always last.
 
 
-signal modified
-signal disconnection_from_request(from_node: String, from_port: int)
-signal connection_shift_request(from_node: String, old_port: int, new_port: int)
-
-@onready var fork_title: LineEdit = $ForkTitle
-@onready var add_button: Button = $AddButton
-
 const ForkItemScene := preload('res://addons/dialogue_nodes/nodes/sub_nodes/ForkItem.tscn')
 
-var undo_redo: EditorUndoRedoManager
 var forks: Array[Control] = []
 var base_color: Color = Color.WHITE
+var last_variable_list: Array[String]
 
 
 func _to_dict(graph: GraphEdit) -> Dictionary:
 	var dict := {}
 	
-	dict['fork_title'] = fork_title.text
+	dict['fork_title'] = $ForkTitle.text
 	
 	# get forks connected to other nodes
 	var forks_dict := {}
@@ -58,7 +51,7 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	# The sequence of links is very important
 	var next_nodes: Array[String] = []
 	
-	fork_title.text = dict['fork_title']
+	$ForkTitle.text = dict['fork_title']
 	
 	for idx in dict['forks']:
 		var new_item := ForkItemScene.instantiate()
@@ -75,8 +68,8 @@ func update_slots() -> void:
 	for item in forks:
 		set_slot(item.get_index(), false, 0, base_color, true, 0, base_color)
 	
-	set_slot(add_button.get_index(), false, 0, base_color, false, 0, base_color)
-	set_slot(add_button.get_index() + 1, false, 0, base_color, true, 0, base_color)
+	set_slot($AddButton.get_index(), false, 0, base_color, false, 0, base_color)
+	set_slot($AddButton.get_index() + 1, false, 0, base_color, true, 0, base_color)
 
 
 func add_item(new_item: BoxContainer, to_idx := -1) -> void:
@@ -100,10 +93,13 @@ func add_item(new_item: BoxContainer, to_idx := -1) -> void:
 		connection_shift_request.emit(name, i - 1, i)
 	
 	# shift default slot connection
-	var old_default_slot := add_button.get_index()
+	var old_default_slot := $AddButton.get_index()
 	set_slot(old_default_slot + 1, false, 0, base_color, true, 0, base_color)
 	connection_shift_request.emit(name, forks.size() - 1, forks.size())
 	update_slots()
+	
+	# add variables to dropdown
+	new_item.update_variables(last_variable_list)
 
 
 func remove_item(item: BoxContainer) -> void:
@@ -113,7 +109,7 @@ func remove_item(item: BoxContainer) -> void:
 		connection_shift_request.emit(name, i + 1, i)
 	
 	# shift default slot connection
-	var new_default_slot := add_button.get_index()
+	var new_default_slot := $AddButton.get_index()
 	call_deferred('set_slot', new_default_slot, false, 0, base_color, true, 0, base_color)
 	connection_shift_request.emit(name, forks.size(), forks.size() - 1)
 	
@@ -161,3 +157,8 @@ func _on_modified() -> void:
 	reset_size()
 	modified.emit()
 
+	
+func _on_variables_updated(variables_list: Array[String]) -> void:
+	last_variable_list = variables_list
+	for fork in forks:
+		fork.update_variables(variables_list)

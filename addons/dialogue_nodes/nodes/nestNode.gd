@@ -1,18 +1,12 @@
 @tool
-extends GraphNode
+extends BaseDialogueNode
 
+@onready var file_path: String = %FilePath.text
+@onready var start_id: String = $ID.text
 
-signal modified
-
-@onready var path: LineEdit = $BoxContainer/FilePath
-@onready var file_path: String = path.text
-@onready var ID: LineEdit = $ID
-@onready var start_id: String = ID.text
-@onready var open_dialog: FileDialog = $OpenDialog
-@onready var path_timer: Timer = $PathTimer
-@onready var id_timer: Timer = $IDTimer
-
-var undo_redo: EditorUndoRedoManager
+func _ready() -> void:
+	_register_timer(%FilePath, "text_changed", _on_file_selected)
+	_register_timer($ID, "text_changed", _on_ID_changed)
 
 
 func _to_dict(graph: GraphEdit) -> Dictionary:
@@ -35,60 +29,43 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 
 func set_path(new_path: String) -> void:
 	file_path = new_path
-	if path.text != file_path:
-		path.text = file_path
+	if %FilePath.text != file_path:
+		%FilePath.text = file_path
 
 
 func set_ID(new_id: String) -> void:
 	start_id = new_id
-	if ID.text != start_id:
-		ID.text = start_id
+	if $ID.text != start_id:
+		$ID.text = start_id
 
 
 func _on_browse_button_pressed() -> void:
-	open_dialog.popup_centered()
+	$OpenDialog.popup_centered()
 
 
-func _on_file_selected(new_path: String) -> void:
-	path.text = new_path
-	_on_path_timer_timeout()
-
-
-func _on_file_path_changed(_path) -> void:
-	path_timer.stop()
-	path_timer.start()
-
-
-func _on_path_timer_timeout() -> void:
-	if not undo_redo:
-		file_path = path.text
+func _on_file_selected() -> void:
+	if not undo_redo: 
+		set_path(%FilePath.text)
 		return
-	
-	undo_redo.create_action('Set file path')
-	undo_redo.add_do_method(self, 'set_path', path.text)
+
+	undo_redo.create_action('Set file FilePath')
+	undo_redo.add_do_method(self, 'set_path', %FilePath.text)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_path', file_path)
 	undo_redo.commit_action()
 
 
-func _on_ID_changed(_id) -> void:
-	id_timer.stop()
-	id_timer.start()
-
-
-func _on_id_timer_timeout() -> void:
+func _on_ID_changed() -> void:
 	if not undo_redo:
-		start_id = ID.text
+		set_ID($ID.text)
 		return
 	
 	undo_redo.create_action('Set start ID')
-	undo_redo.add_do_method(self, 'set_ID', ID.text)
+	undo_redo.add_do_method(self, 'set_ID', $ID.text)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_ID', start_id)
 	undo_redo.commit_action()
 
 
-func _on_modified() -> void:
-	modified.emit()

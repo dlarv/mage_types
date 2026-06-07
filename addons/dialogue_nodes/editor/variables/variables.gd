@@ -1,19 +1,21 @@
 @tool
 extends Control
 
-
 signal modified
-signal variables_updated(variable_list: Array[String])
+signal variable_list_updated(variable_list: Array[String])
+signal variable_removed(name: String)
+signal variable_added(name: String, data: Dictionary)
+signal variable_name_updated(old_name: String, new_name: String)
 
-@onready var var_container := $ScrollContainer/VBoxContainer
+@export var var_container: Control
 
 var undo_redo: EditorUndoRedoManager
-var variable_item_scene := preload('res://addons/dialogue_nodes/editor/VariableItem.tscn')
+var variable_item_scene := preload('res://addons/dialogue_nodes/editor/variables/VariableItem.tscn')
 var variable_list: Array[String] = []
 
 
-func get_data() -> Dictionary:
-	var dict := {}
+func get_data() -> Dictionary[String, Dictionary]:
+	var dict: Dictionary[String, Dictionary] = {}
 	
 	for child in var_container.get_children():
 		if child is HBoxContainer:
@@ -24,24 +26,19 @@ func get_data() -> Dictionary:
 	return dict
 
 
-func load_data(dict: Dictionary) -> void:
+func load_data(dict: Dictionary, no_signal:=false) -> void:
 	# remove old variables
 	clear()
 	
 	# add values
 	for var_name in dict:
-		add_variable(var_name, dict[var_name])
+		add_variable(var_name, dict[var_name], no_signal)
 
 
 ## add new variable item to the list
-func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, to_idx:= -1) -> HBoxContainer:
-	StoryManager.add_variable(new_name, data)
-
+func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, no_signal:=false) -> HBoxContainer:
 	var new_variable := variable_item_scene.instantiate()
 	var_container.add_child(new_variable, true)
-	
-	if to_idx > -1:
-		var_container.move_child(new_variable, to_idx)
 	
 	new_variable.load_data(new_name, data)
 	new_variable.undo_redo = undo_redo
@@ -50,7 +47,11 @@ func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, to_i
 	new_variable.name_updated.connect(_on_variable_name_updated)
 	
 	variable_list.append(new_name)
-	variables_updated.emit(variable_list)
+
+	if no_signal:
+		variable_list_updated.emit(variable_list)
+		variable_added.emit(new_name, data)
+		modified.emit()
 	
 	return new_variable
 
@@ -58,11 +59,12 @@ func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, to_i
 ## remove the variable with at the given index (idx)
 func remove_variable(idx: int) -> void:
 	var variable = var_container.get_child(idx)
-	StoryManager.remove_variable(variable.var_name.text)
 	variable.queue_free()
 	
+	variable_removed.emit(variable_list[idx])
+
 	variable_list.remove_at(idx)
-	variables_updated.emit(variable_list)
+	variable_list_updated.emit(variable_list)
 	
 	_on_modified()
 
@@ -92,6 +94,7 @@ func set_value(var_name: String, value) -> void:
 		return
 	var variable = get_variable(var_name)
 	if not variable: return
+
 	variable.set_value(value)
 
 
@@ -132,14 +135,10 @@ func _on_variable_name_updated(new_name: String, old_name: String) -> void:
 	
 	if idx != -1:
 		variable_list[idx] = new_name
-		variables_updated.emit(variable_list)
+		variable_list_updated.emit(variable_list)
+
+	variable_name_updated.emit(old_name, new_name)
 
 
 func _on_modified(_a= 0, _b= 0) -> void:
 	modified.emit()
-
-
-func _on_reload_button_pressed() -> void:
-	load_data(StoryManager.variables)
-
-

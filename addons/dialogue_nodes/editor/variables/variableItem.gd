@@ -1,7 +1,6 @@
 @tool
 extends HBoxContainer
 
-
 signal modified
 signal delete_requested(node: BoxContainer)
 signal name_updated(new_name: String, old_name: String)
@@ -19,6 +18,7 @@ var last_set_name: String
 var last_set_type: int
 var last_shown_input: Control
 var last_value := ['', 0, 0.0, false]
+var new_value: Variant
 
 
 func _ready() -> void:
@@ -75,6 +75,7 @@ func set_value(new_value) -> void:
 	]
 
 
+
 func set_type(new_idx: int) -> void:
 	if last_shown_input:
 		last_shown_input.hide()
@@ -94,6 +95,7 @@ func set_type(new_idx: int) -> void:
 			last_shown_input = bool_value
 	
 	last_set_type = new_idx
+	_on_modified()
 
 
 func get_data() -> Dictionary:
@@ -110,23 +112,24 @@ func load_data(new_name: String, data: Dictionary) -> void:
 
 
 func _on_name_changed(new_text: String) -> void:
-	StoryManager.rename_variable(last_set_name, new_text)
+	$NameTimer.stop()
+	$NameTimer.start()
 
+
+func _on_name_timer_timeout() -> void:
 	if not undo_redo:
-		set_var_name(new_text)
+		set_var_name($Name.text)
 		return
 	
 	undo_redo.create_action('Set variable name')
-	undo_redo.add_do_method(self, 'set_var_name', new_text)
+	undo_redo.add_do_method(self, 'set_var_name', $Name.text)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_var_name', last_set_name)
 	undo_redo.commit_action()
-
+	pass # Replace with function body.
 
 func _on_type_changed(new_idx: int) -> void:
-	StoryManager.update_type(var_name.text, types[new_idx])
-
 	if not undo_redo:
 		set_type(new_idx)
 		return
@@ -142,9 +145,14 @@ func _on_type_changed(new_idx: int) -> void:
 
 
 func _on_value_changed(new_value) -> void:
-	StoryManager.update_value(var_name.text, new_value)
+	self.new_value = new_value
+	$ValueTimer.stop()
+	$ValueTimer.start()
 
+
+func _on_value_timer_timeout() -> void:
 	if not undo_redo:
+		_on_modified()
 		return
 	
 	undo_redo.create_action('Set variable value')
@@ -161,3 +169,4 @@ func _on_delete_pressed() -> void:
 
 func _on_modified(_a= 0, _b= 0) -> void:
 	modified.emit()
+

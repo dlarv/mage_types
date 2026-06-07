@@ -15,9 +15,7 @@ signal dialogue_processed(speaker: Variant, dialogue: String, options: Array[Str
 signal option_selected(idx: int)
 ## Triggered when a SignalNode is encountered while processing the dialogue.
 ## Passes a [param value] defined in the SignalNode in the tree.
-## Since Signals are used to trigger blocking cutscenes or combat, they do not auto proceed. 
-## [param next_node] tells DialogBox which node to proceed with.
-signal dialogue_signal(value: int, next_node: String)
+signal dialogue_signal(value: String)
 ## Triggered when a variable value is changed.
 ## Passes the [param variable_name] along with it's [param value]
 signal variable_changed(variable_name: String, value)
@@ -32,14 +30,13 @@ signal dialogue_ended
 
 ## Contains the variable data from the [param DialogueData] parsed in an easy to access dictionary.[br]
 ## Example: [code]{ "COINS": 10, "NAME": "Obama", "ALIVE": true }[/code]
-# var variables: Dictionary
+var variables: Dictionary
 ## Contains all the [param Character] resources loaded from the path in the [member data].
 var characters: Array[Character]
 
 var _running := false
 var _option_links := []
 var _data: Array[DialogueData] = []
-var _characters: Array[Array] = []
 var _nest_links: Array[String] = []
 
 
@@ -56,18 +53,15 @@ func set_data(new_data: DialogueData) -> void:
 	data = new_data
 	if not data: return
 	_data.clear()
-	_characters.clear()
 	_nest_links.clear()
 	
-	# variables.clear()
-	# for var_name in data.variables:
-	# 	variables[var_name] = data.variables[var_name].value
+	variables.clear()
+	for var_name in data.variables:
+		variables[var_name] = data.variables[var_name].value
+	for var_name in StoryManager.variables:
+		variables[var_name] = StoryManager.variables[var_name].value
 	
-	characters.clear()
-	if not data.characters.ends_with('.tres'): return
-	var character_list = ResourceLoader.load(data.characters, '', ResourceLoader.CACHE_MODE_IGNORE)
-	if not character_list is CharacterList: return
-	characters = character_list.characters
+	characters = StoryManager.characters
 
 
 ## Starts processing the dialogue data set in [member data], starting with the Start Node with its ID set to [param start_id].
@@ -82,13 +76,17 @@ func start(start_id: String) -> void:
 	_running = true
 	if _nest_links.size() == 0:
 		dialogue_started.emit(start_id)
-	proceed(data.starts[start_id])
+	_proceed(data.starts[start_id])
 
 
 ## Stops processing the dialogue tree.
 func stop() -> void:
 	_running = false
+	StoryManager.update_variables(variables)
 	dialogue_ended.emit()
+	# This way, user can do `await dialogue_box.dialogue_signal` in their code and it'll work even
+	# if there is no other signal emitted
+	dialogue_signal.emit('ended')
 
 
 ## Continues processing the dialogue tree from the node connected to the option at [param idx].
@@ -100,7 +98,7 @@ func select_option(idx: int) -> void:
 		return
 	
 	option_selected.emit(idx)
-	proceed(_option_links[idx])
+	_proceed(_option_links[idx])
 
 
 ## Returns [code]true[/code] if the [DialogueParser] is processing a dialogue tree.
@@ -108,18 +106,18 @@ func is_running() -> bool: return _running
 
 
 # Proceeds the parser to the next node and runs its corresponding _process_* function.
-func proceed(node_name: String) -> void:
+func _proceed(node_name: String) -> void:
 	if not _running: return
 	if node_name == 'END':
 		if _nest_links.size() > 0:
 			# resume from previous data
 			data = _data.pop_back()
-			characters = _characters.pop_back()
-			proceed(_nest_links.pop_back())
+			_proceed(_nest_links.pop_back())
 		else:
 			stop()
 		return
 	
+	# ADD NEW FUNCTIONS HERE
 	var process_functions := [
 		_process_start,
 		_process_dialogue,
@@ -129,8 +127,6 @@ func proceed(node_name: String) -> void:
 		_process_condition,
 		_process_nest,
 		_process_fork,
-		# Dlarv: Added these two items.
-		func(): pass,# graphframe
 		_process_set_signal,
 	]
 	
@@ -141,7 +137,7 @@ func proceed(node_name: String) -> void:
 
 # Processes the start node data (dict).
 func _process_start(dict: Dictionary) -> void:
-	proceed(dict.link)
+	_proceed(dict.link)
 
 
 # Processes the dialogue node data (dict).
@@ -152,6 +148,7 @@ func _process_dialogue(dict: Dictionary) -> void:
 		speaker = dict.speaker
 	elif dict.speaker is int and characters.size() > 0 and dict.speaker < characters.size():
 		speaker = characters[dict.speaker]
+		speaker.active_sprite = dict.sprite
 	
 	var dialogue_text = _parse_variables(dict.dialogue)
 	dialogue_text = tr(dialogue_text)
@@ -171,39 +168,33 @@ func _process_dialogue(dict: Dictionary) -> void:
 
 # Processes the signal node data (dict).
 func _process_signal(dict: Dictionary) -> void:
-	dialogue_signal.emit(dict.curr_signal, dict.link)
-	# proceed(dict.link)
+	dialogue_signal.emit(dict.signalValue)
+	_proceed(dict.link)
 
 
 # Processes the set node data (dict).
-func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
-	# if not variables.has(dict.variable):
-	var variable := StoryManager.get_variable(dict.variable)
-	if variable == null:
+func _process_set(dict: Dictionary, autoProceed:=true) -> void:
+	if not variables.has(dict.variable):
 		printerr('Variable ', dict.variable, ' not found in variables list')
-		# Dlarv: Done this way so that SetSignal can call this method too.
-		if auto_proceed:
-			proceed(dict.link)
+		_proceed(dict.link)
 		return
 	
-	# var type = typeof(variables[dict.variable])
-	var type = typeof(variable)
+	var type = typeof(variables[dict.variable])
 	var value = dict.value
 	if value.count("{{"):
 		value = _parse_variables(value)
-
+	
 	var operator = dict.type
 	
 	# set datatype of value
-	# match typeof(variables[dict.variable]):
-	match typeof(variable):
+	match typeof(variables[dict.variable]):
 		TYPE_STRING:
 			value = str(value)
 
 			# check for invalid operators
 			if operator > 2:
 				printerr('Invalid operator for type: String')
-				proceed(dict.link)
+				_proceed(dict.link)
 				return
 		TYPE_INT:
 			value = int(value)
@@ -215,45 +206,30 @@ func _process_set(dict: Dictionary, auto_proceed:=true) -> void:
 			# check for invalid operators
 			if operator > 0:
 				printerr('Invalid operator for type: Boolean')
-				proceed(dict.link)
+				_proceed(dict.link)
 				return
 
 	# perform operation
 	match operator:
 		0:
-			# variables[dict.variable] = value
-			variable = value
+			variables[dict.variable] = value
 		1:
-			# variables[dict.variable] += value
-			variable += value
+			variables[dict.variable] += value
 		2:
-			# variables[dict.variable] -= value
-			variable -= value
+			variables[dict.variable] -= value
 		3:
-			# variables[dict.variable] *= value
-			variable *= value
+			variables[dict.variable] *= value
 		4:
-			# variables[dict.variable] /= value
-			variable /= value
-	StoryManager.set_variable(dict.variable, variable)
-
-	# variable_changed.emit(dict.variable, variables[dict.variable])
-	variable_changed.emit(dict.variable, variable)
-	# Dlarv: Done this way so that SetSignal can call this method too.
-	if auto_proceed:
-		proceed(dict.link)
-
-# Dlarv: Processes the setsignal node data (dict). 
-func _process_set_signal(dict: Dictionary) -> void:
-	_process_set(dict, false)
-	dialogue_signal.emit(dict.curr_signal, dict.link)
-	# proceed(dict.link)
-
+			variables[dict.variable] /= value
+	
+	variable_changed.emit(dict.variable, variables[dict.variable])
+	if autoProceed:
+		_proceed(dict.link)
 
 # Processes the condition node data (dict).
 func _process_condition(dict: Dictionary) -> void:
 	var result = _check_condition(dict['condition'])
-	proceed(dict[str(result).to_lower()])
+	_proceed(dict[str(result).to_lower()])
 
 
 # Processes the fork node data (dict).
@@ -265,7 +241,7 @@ func _process_fork(dict : Dictionary) -> void:
 		if _check_condition(forks[i].condition):
 			result = forks[i].link
 			break
-	proceed(result)
+	_proceed(result)
 
 
 # Checks the condition based on dict.value1, dict.value2 and dict.operator
@@ -280,7 +256,7 @@ func _check_condition(conditions: Array) -> bool:
 		var value2 = dict.value2
 		
 		# get variables if needed
-		value1 = str(StoryManager.get_variable(value1))
+		value1 = str(variables[value1])
 		if value2.count('{{') > 0:
 			value2 = _parse_variables(value2)
 		
@@ -325,30 +301,30 @@ func _check_condition(conditions: Array) -> bool:
 func _process_nest(dict: Dictionary) -> void:
 	if not dict.file_path.ends_with('.tres'):
 		printerr('Invalid file: ', dict.file_path)
-		proceed(dict.link)
+		_proceed(dict.link)
 		return
 	
 	var new_data := ResourceLoader.load(dict.file_path, '', ResourceLoader.CACHE_MODE_IGNORE)
 	if not new_data is DialogueData:
 		printerr('Invalid resource type: resource must be DialogueData')
-		proceed(dict.link)
+		_proceed(dict.link)
 		return
 	_data.push_back(data)
-	_characters.push_back(characters.duplicate())
 	_nest_links.push_back(dict.link)
 	data = new_data
 	
-	# for var_name in data.variables:
-	# 	if variables.has(var_name): continue
-	# 	variables[var_name] = data.variables[var_name].value
-	
-	characters.clear()
-	if data.characters.ends_with('.tres'):
-		var character_list = ResourceLoader.load(data.characters, '', ResourceLoader.CACHE_MODE_IGNORE)
-		if character_list is CharacterList:
-			characters = character_list.characters
+	for var_name in data.variables:
+		if variables.has(var_name): continue
+		variables[var_name] = data.variables[var_name].value
 	
 	start(dict.start_id)
+
+
+# Dlarv: Processes the setsignal node data (dict). 
+func _process_set_signal(dict: Dictionary) -> void:
+	_process_set(dict, false)
+	dialogue_signal.emit(dict.curr_signal, dict.link)
+	_proceed(dict.link)
 
 
 # Replaces all {{}} variables with their corresponding values in the value string.
@@ -361,18 +337,15 @@ func _parse_variables(value: String) -> String:
 	
 	# format floats to display properly
 	var formatted_variables := {}
-	for key in StoryManager.variables.keys():
-		var variable := StoryManager.get_variable(key)
-		if variable is int:
-			formatted_variables[key] = '%d' % variable
-		elif variable is float:
-			formatted_variables[key] = '%0.2f' % variable
+	for key in variables.keys():
+		if variables[key] is float:
+			formatted_variables[key] = '%0.2f' % variables[key]
 		else:
-			formatted_variables[key] = variable
+			formatted_variables[key] = variables[key]
 	
 	# add invalid variables as '' in formatted_variables
 	for key in _parse_variable_names(value):
-		if not StoryManager.variables.has(key):
+		if not variables.has(key):
 			printerr('Unknown variable ', key, ' in string.')
 			formatted_variables[key] = ''
 	
