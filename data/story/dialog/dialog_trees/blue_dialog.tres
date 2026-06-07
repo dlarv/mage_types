@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://18q5iqow8oua"]
 
-[ext_resource type="Script" uid="uid://bovrq36le4gew" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_7sxr6"]
+[ext_resource type="Script" uid="uid://eit47g61t72a" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_7sxr6"]
 
 [resource]
 script = ExtResource("1_7sxr6")
@@ -59,7 +59,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00021),
+"size": Vector2(300, 247.00012),
 "speaker": "   "
 },
 &"1_10": {
@@ -72,8 +72,9 @@ nodes = {
 "text": "How do we do that?"
 }
 },
-"size": Vector2(300.00006, 278),
-"speaker": 2
+"size": Vector2(300, 314),
+"speaker": 2,
+"sprite": -1
 },
 &"1_100": {
 "dialogue": "That's besides the point...",
@@ -85,8 +86,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 1
+"size": Vector2(300, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_101": {
 "dialogue": "Anyways, the [color=blue]defensive[/color]/[color=red]offensive[/color] naming scheme is a little confusing at first. But they're called that primarily because of the [i]side effects[/i].",
@@ -98,8 +100,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 1
+"size": Vector2(300, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_102": {
 "dialogue": "[i]Side effects[/i] are stat buffs that accumulate each time you transmute.",
@@ -111,8 +114,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 1
+"size": Vector2(300.0005, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_103": {
 "dialogue": "But I believe Dallas from the Adonis Enclave is planning on teaching you about that, so don't worry about it right now.",
@@ -124,8 +128,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99988),
-"speaker": 1
+"size": Vector2(300.0005, 279.00037),
+"speaker": 1,
+"sprite": -1
 },
 &"1_104": {
 "dialogue": "After he introduces the topic I would be happy to give you a refresher.",
@@ -137,8 +142,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0008, 242.99988),
-"speaker": 1
+"size": Vector2(300.0005, 279.00037),
+"speaker": 1,
+"sprite": -1
 },
 &"1_105": {
 "dialogue": "The exact stat buff you receive depends on your start and end states.",
@@ -150,8 +156,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0008, 243),
-"speaker": 1
+"size": Vector2(300.0005, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_106": {
 "dialogue": "Transmuting from a [color=blue]defensive[/color] Element to a [color=red]offensive[/color] one will grant you an [color=red]attack[/color] boost. The opposite will grant you a [color=blue]defense[/color] buff.",
@@ -163,8 +170,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 243),
-"speaker": 1
+"size": Vector2(300.0005, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_107": {
 "dialogue": "Finally, staying within your affinity group will grant you a [color=green]speed[/color] buff.",
@@ -176,8 +184,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0017, 243),
-"speaker": 1
+"size": Vector2(300.00146, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_108": {
 "dialogue": "But first, you should equip that new spell I gave you. You can do this by pressing \"P\" to open your player menu.",
@@ -189,7 +198,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00024),
+"size": Vector2(300, 246.99982),
 "speaker": "Aegean"
 },
 &"1_11": {
@@ -202,8 +211,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(319.99982, 243.00024),
-"speaker": 1
+"size": Vector2(319.99963, 278.9997),
+"speaker": 1,
+"sprite": -1
 },
 &"1_12": {
 "dialogue": "Excellent work. You two are surely ready to rid us of that fiend!",
@@ -215,7 +225,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 243.00037),
+"size": Vector2(300, 247),
 "speaker": "Duke"
 },
 &"1_13": {
@@ -228,7 +238,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.99988),
+"size": Vector2(300, 247.00024),
 "speaker": "Duke"
 },
 &"1_14": {
@@ -241,8 +251,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243.00024),
-"speaker": 1
+"size": Vector2(300, 278.9997),
+"speaker": 1,
+"sprite": -1
 },
 &"1_16": {
 "dialogue": "Might I suggest making good use of young Denim's Hydrophobia spell?",
@@ -254,7 +265,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.99988),
+"size": Vector2(300, 247),
 "speaker": "Duke"
 },
 &"1_17": {
@@ -267,7 +278,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 243.00037),
+"size": Vector2(300.00098, 246.99976),
 "speaker": "Duke"
 },
 &"1_19": {
@@ -280,8 +291,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 1
+"size": Vector2(300.0005, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_2": {
 "dialogue": "",
@@ -293,8 +305,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
-"speaker": -1
+"size": Vector2(300, 274),
+"speaker": -1,
+"sprite": -1
 },
 &"1_20": {
 "dialogue": "That's the Adonis Enclave, or what's left of them at least. They'll teach you what you need to know about combat.",
@@ -306,8 +319,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243),
-"speaker": 1
+"size": Vector2(300, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_21": {
 "dialogue": "I know that sounds dangerous, but you'll be fine.",
@@ -324,8 +338,9 @@ nodes = {
 "text": "That's good to hear!"
 }
 },
-"size": Vector2(300.00073, 313),
-"speaker": 2
+"size": Vector2(300.00098, 349),
+"speaker": 2,
+"sprite": -1
 },
 &"1_22": {
 "dialogue": "Yeah, I've been training with them a bit. But they told me to wait for you before challenging the thing.",
@@ -337,8 +352,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243),
-"speaker": 2
+"size": Vector2(300, 279),
+"speaker": 2,
+"sprite": -1
 },
 &"1_23": {
 "dialogue": "Newcomers tend to come in batches of 3, so I told Denim to wait the next one to show up.",
@@ -355,8 +371,9 @@ nodes = {
 "text": "Am I the second or third?"
 }
 },
-"size": Vector2(300.00098, 313),
-"speaker": 1
+"size": Vector2(300.00146, 349),
+"speaker": 1,
+"sprite": -1
 },
 &"1_24": {
 "dialogue": "Third, but the first ran off by himself. [b]I would strongly recommend you two stick together[/b].",
@@ -368,8 +385,9 @@ nodes = {
 "text": "Fair enough"
 }
 },
-"size": Vector2(300, 278),
-"speaker": 1
+"size": Vector2(300, 314),
+"speaker": 1,
+"sprite": -1
 },
 &"1_25": {
 "dialogue": "Check in with the Adonis Enclave up and to your right. ",
@@ -381,8 +399,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 1
+"size": Vector2(300, 278.99982),
+"speaker": 1,
+"sprite": -1
 },
 &"1_26": {
 "dialogue": "They'll teach you what you need to know.",
@@ -394,8 +413,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 1
+"size": Vector2(300, 278.99982),
+"speaker": 1,
+"sprite": -1
 },
 &"1_28": {
 "dialogue": "You must have come straight here then.",
@@ -407,8 +427,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 243),
-"speaker": 2
+"size": Vector2(300.0005, 279),
+"speaker": 2,
+"sprite": -1
 },
 &"1_29": {
 "dialogue": "There's a giant monster blocking the hallway West of here.",
@@ -420,8 +441,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 2
+"size": Vector2(300, 279),
+"speaker": 2,
+"sprite": -1
 },
 &"1_3": {
 "dialogue": "Nicely done! Talk to Dallas, he'll show you the next steps.",
@@ -433,7 +455,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00024),
+"size": Vector2(300, 246.99982),
 "speaker": "Aegean"
 },
 &"1_30": {
@@ -446,8 +468,9 @@ nodes = {
 "text": "How do we do that?"
 }
 },
-"size": Vector2(300.0003, 278),
-"speaker": 2
+"size": Vector2(300, 314),
+"speaker": 2,
+"sprite": -1
 },
 &"1_31": {
 "dialogue": "The elevator is somewhere North of here. Inside some cave I think? You'll have to explore, its been awhile since I've left the bar.",
@@ -463,8 +486,9 @@ nodes = {
 "text": "Long shift?"
 }
 },
-"size": Vector2(300.0003, 277.99988),
-"speaker": 1
+"size": Vector2(300.00073, 314),
+"speaker": 1,
+"sprite": -1
 },
 &"1_32": {
 "dialogue": "I would suggest trying to make your way to the surface.",
@@ -476,8 +500,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99988),
-"speaker": 1
+"size": Vector2(300, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_33": {
 "dialogue": "Come now, my children. Show me what thou hast learnt!",
@@ -489,7 +514,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.99988),
+"size": Vector2(300, 247),
 "speaker": "Duke"
 },
 &"1_34": {
@@ -502,21 +527,8 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243),
+"size": Vector2(300, 246.99951),
 "speaker": "Dallas"
-},
-&"1_35": {
-"dialogue": "That works for me.",
-"offset": Vector2(-780, 1940),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 243),
-"speaker": 2
 },
 &"1_36": {
 "dialogue": "I shall be thy final challenge. Return once Aegean and Dallas have taught you their ways.",
@@ -528,7 +540,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.99988),
+"size": Vector2(300, 246.99927),
 "speaker": "Duke"
 },
 &"1_37": {
@@ -541,8 +553,9 @@ nodes = {
 "text": "Where am I?"
 }
 },
-"size": Vector2(300, 313),
-"speaker": 1
+"size": Vector2(300.00024, 314),
+"speaker": 1,
+"sprite": -1
 },
 &"1_38": {
 "dialogue": "A hotel bar room.",
@@ -554,8 +567,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 2
+"size": Vector2(300.00012, 279),
+"speaker": 2,
+"sprite": -1
 },
 &"1_39": {
 "dialogue": "No worries bro, there's no rush.",
@@ -567,7 +581,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00037),
+"size": Vector2(300, 246.99994),
 "speaker": "Dallas"
 },
 &"1_4": {
@@ -580,8 +594,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 243),
-"speaker": 1
+"size": Vector2(300.00073, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_40": {
 "dialogue": "Something like that. Ask me about it again sometime and we'll talk.",
@@ -593,8 +608,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0008, 243.00012),
-"speaker": 1
+"size": Vector2(300.00098, 279.00012),
+"speaker": 1,
+"sprite": -1
 },
 &"1_41": {
 "dialogue": "Hey stranger.",
@@ -621,8 +637,9 @@ nodes = {
 "text": "Goodbye"
 }
 },
-"size": Vector2(300, 342.99997),
-"speaker": 1
+"size": Vector2(300.00012, 379),
+"speaker": 1,
+"sprite": -1
 },
 &"1_42": {
 "dialogue": "You two are ready to fight that monster! ",
@@ -634,8 +651,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243),
-"speaker": 1
+"size": Vector2(300, 279.00006),
+"speaker": 1,
+"sprite": -1
 },
 &"1_43": {
 "dialogue": "Don't worry, it should be much easier now that it's 2v1.",
@@ -647,8 +665,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 243),
-"speaker": 1
+"size": Vector2(300, 279.00006),
+"speaker": 1,
+"sprite": -1
 },
 &"1_44": {
 "dialogue": "Ah yes...",
@@ -660,8 +679,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 242.99997),
-"speaker": 1
+"size": Vector2(300.0006, 278.99988),
+"speaker": 1,
+"sprite": -1
 },
 &"1_45": {
 "dialogue": "Its like 50/50 how well people react to this, so I prefer to just put it bluntly.",
@@ -673,8 +693,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 242.99997),
-"speaker": 1
+"size": Vector2(300.0005, 278.99988),
+"speaker": 1,
+"sprite": -1
 },
 &"1_46": {
 "dialogue": "Its a bit of a long answer, but I think its important for newcomers to understand this phenomena.",
@@ -686,8 +707,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00104, 243.00024),
-"speaker": 1
+"size": Vector2(300.00085, 278.9997),
+"speaker": 1,
+"sprite": -1
 },
 &"1_47": {
 "dialogue": "Are you familiar with the difference between you [i]primary[/i] and [i]secondary[/i] types?",
@@ -704,8 +726,9 @@ nodes = {
 "text": "No"
 }
 },
-"size": Vector2(300.00006, 313.00037),
-"speaker": 1
+"size": Vector2(300, 348.9997),
+"speaker": 1,
+"sprite": -1
 },
 &"1_48": {
 "dialogue": "Sure, what do you want to know?",
@@ -732,8 +755,9 @@ nodes = {
 "text": "Goodbye"
 }
 },
-"size": Vector2(300.00006, 348.00012),
-"speaker": 1
+"size": Vector2(300.00012, 383.99988),
+"speaker": 1,
+"sprite": -1
 },
 &"1_49": {
 "dialogue": "Whenever new matter is introduced to this world, it takes awhile for it to fully acclimate to the new elemental system. Living things, like people and monsters, take longer to  fully transform. ",
@@ -745,8 +769,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243.00037),
-"speaker": 1
+"size": Vector2(300, 278.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_5": {
 "dialogue": "Sick dude!",
@@ -758,7 +783,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00024),
+"size": Vector2(300, 246.99976),
 "speaker": "Dallas"
 },
 &"1_50": {
@@ -771,8 +796,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99997),
-"speaker": 1
+"size": Vector2(300, 278.99988),
+"speaker": 1,
+"sprite": -1
 },
 &"1_51": {
 "dialogue": "Unfortunately, it is not physically possible to return home.",
@@ -794,8 +820,9 @@ nodes = {
 "text": "How can you know that?"
 }
 },
-"size": Vector2(300.00055, 347.99997),
-"speaker": 1
+"size": Vector2(300.0005, 384),
+"speaker": 1,
+"sprite": -1
 },
 &"1_52": {
 "dialogue": "Or ever, for that matter.",
@@ -807,8 +834,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 243.00021),
-"speaker": 1
+"size": Vector2(300, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_53": {
 "dialogue": "Of course. Its a lot, I know.",
@@ -820,8 +848,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 243.00021),
-"speaker": 1
+"size": Vector2(300.0005, 278.99988),
+"speaker": 1,
+"sprite": -1
 },
 &"1_54": {
 "dialogue": "The reason we're so certain is due to the work of generations of researchers.",
@@ -833,8 +862,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 242.99997),
-"speaker": 1
+"size": Vector2(300.0005, 279.00012),
+"speaker": 1,
+"sprite": -1
 },
 &"1_55": {
 "dialogue": "Part of being [el]Blue[/el]-aligned is having an intuitive understanding of the deeper workings of this world. ",
@@ -846,8 +876,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99997),
-"speaker": 1
+"size": Vector2(300.00073, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_56": {
 "dialogue": "You're not alone in this! We're here for you.",
@@ -859,8 +890,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 242.99997),
-"speaker": 1
+"size": Vector2(300.0005, 278.99988),
+"speaker": 1,
+"sprite": -1
 },
 &"1_57": {
 "dialogue": "I know that's not what you wanted to hear.",
@@ -872,8 +904,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 242.99997),
-"speaker": 1
+"size": Vector2(300.0005, 279.00012),
+"speaker": 1,
+"sprite": -1
 },
 &"1_58": {
 "dialogue": "I'm glad you're taking this well. To be honest, I'm still processing it all.",
@@ -885,8 +918,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243.00021),
-"speaker": 2
+"size": Vector2(300, 279.00024),
+"speaker": 2,
+"sprite": -1
 },
 &"1_59": {
 "dialogue": "And the other Elements help too. [el]Orange[/el], in particular are good at the math and science part.",
@@ -898,8 +932,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99997),
-"speaker": 1
+"size": Vector2(300.0005, 279.00012),
+"speaker": 1,
+"sprite": -1
 },
 &"1_6": {
 "dialogue": "Need a break? Worry not, I'll be here when you need me.",
@@ -911,7 +946,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00024),
+"size": Vector2(300, 247.0003),
 "speaker": "Aegean"
 },
 &"1_60": {
@@ -929,8 +964,9 @@ nodes = {
 "text": "I need a moment."
 }
 },
-"size": Vector2(300.00055, 312.99997),
-"speaker": 1
+"size": Vector2(300.00024, 349),
+"speaker": 1,
+"sprite": -1
 },
 &"1_61": {
 "dialogue": "I hope you discover something we didn't. Truly.",
@@ -942,8 +978,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 243.00021),
-"speaker": 1
+"size": Vector2(300, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_62": {
 "dialogue": "The process starts from the outside working in.",
@@ -955,8 +992,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243.00037),
-"speaker": 1
+"size": Vector2(300.0005, 278.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_63": {
 "dialogue": "Your [i]secondary[/i] type is a thin shell that forms on top of your skin. It's highly reactive, which is why it changes so often during battle.",
@@ -968,8 +1006,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 243.00037),
-"speaker": 1
+"size": Vector2(300.0005, 278.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_64": {
 "dialogue": "Your [i]primary[/i] type, on the other hand, is the matter inside that shell that has already changed. It has much more inertia, so it really only changes when you level up.",
@@ -977,12 +1016,13 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_63",
+"link": &"1_64",
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243.00037),
-"speaker": 1
+"size": Vector2(300, 278.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_65": {
 "dialogue": "Eventually, your [i]primary[/i] type will fully reach your core. When this happens, your primary type becomes locked to a specific Element and is no longer transmutable. This is called [i]alignment[/i].",
@@ -994,8 +1034,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 243),
-"speaker": 1
+"size": Vector2(300.0005, 278.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_66": {
 "dialogue": "Nice! Talk to my buddies Dallas and Duke. They'll walk you through the next steps. ",
@@ -1007,7 +1048,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00012),
+"size": Vector2(300, 247),
 "speaker": "Aegean"
 },
 &"1_67": {
@@ -1020,7 +1061,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00037),
+"size": Vector2(300, 246.9997),
 "speaker": "Aegean"
 },
 &"1_68": {
@@ -1033,7 +1074,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00012),
+"size": Vector2(300, 247.00012),
 "speaker": "    "
 },
 &"1_69": {
@@ -1046,7 +1087,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243),
+"size": Vector2(300, 247),
 "speaker": "Dallas"
 },
 &"1_7": {
@@ -1072,8 +1113,9 @@ nodes = {
 "text": "Why's that?"
 }
 },
-"size": Vector2(300.00006, 313),
-"speaker": 2
+"size": Vector2(300, 349),
+"speaker": 2,
+"sprite": -1
 },
 &"1_70": {
 "dialogue": "Once you've finished talking to Aegean, I'll teach you about side effects!",
@@ -1085,7 +1127,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243),
+"size": Vector2(300, 247),
 "speaker": "Dallas"
 },
 &"1_71": {
@@ -1098,7 +1140,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243),
+"size": Vector2(300, 246.99976),
 "speaker": "Dallas"
 },
 &"1_72": {
@@ -1111,7 +1153,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00037),
+"size": Vector2(300, 246.99994),
 "speaker": "Dallas"
 },
 &"1_73": {
@@ -1124,7 +1166,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.99988),
+"size": Vector2(300, 246.99927),
 "speaker": "Duke"
 },
 &"1_74": {
@@ -1137,7 +1179,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.99988),
+"size": Vector2(300, 247),
 "speaker": "Duke"
 },
 &"1_75": {
@@ -1150,8 +1192,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243),
-"speaker": 1
+"size": Vector2(300, 278.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_76": {
 "dialogue": "So, over time your [i]primary[/i] type will permeate deeper into your body, turning \"real world\" matter into \"this world\" matter.",
@@ -1163,8 +1206,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 243.00024),
-"speaker": 1
+"size": Vector2(300, 278.9997),
+"speaker": 1,
+"sprite": -1
 },
 &"1_77": {
 "dialogue": "Every Element has its own unique alignment characteristics. Everyone in this room is [el]Blue[/el]-aligned, besides you two of course. We're a fairly good sample of the condition's progression.",
@@ -1186,8 +1230,9 @@ nodes = {
 "text": "What about the other elements?"
 }
 },
-"size": Vector2(300.00006, 347.99988),
-"speaker": 1
+"size": Vector2(300, 383.99976),
+"speaker": 1,
+"sprite": -1
 },
 &"1_78": {
 "dialogue": "Nope. Once you become aligned, the transformations start happening slowly, over time.",
@@ -1199,8 +1244,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0017, 242.99988),
-"speaker": 1
+"size": Vector2(300.00195, 279.00073),
+"speaker": 1,
+"sprite": -1
 },
 &"1_79": {
 "dialogue": "I'm sure it has happened, but its unlikely. The process takes at least a year or two and by then you have a pretty good idea of which element you like best. ",
@@ -1212,8 +1258,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0017, 242.99988),
-"speaker": 1
+"size": Vector2(300.00195, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_8": {
 "dialogue": ".....",
@@ -1225,7 +1272,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.99997),
+"size": Vector2(300, 247.00012),
 "speaker": "Monster"
 },
 &"1_80": {
@@ -1238,8 +1285,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 243),
-"speaker": 1
+"size": Vector2(300.0005, 278.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_81": {
 "dialogue": "So when I say I'm stuck here, I'm being quite literal.",
@@ -1256,8 +1304,9 @@ nodes = {
 "text": "So you're like a tree?"
 }
 },
-"size": Vector2(300, 313),
-"speaker": 1
+"size": Vector2(300.0005, 348.99994),
+"speaker": 1,
+"sprite": -1
 },
 &"1_82": {
 "dialogue": "Eh,its not that bad.",
@@ -1269,8 +1318,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0005, 243.00024),
-"speaker": 1
+"size": Vector2(300, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_83": {
 "dialogue": "Its a long process, so you have plenty of time to prepare.",
@@ -1282,8 +1332,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00024),
-"speaker": 1
+"size": Vector2(300, 278.99976),
+"speaker": 1,
+"sprite": -1
 },
 &"1_84": {
 "dialogue": "I mean, I guess... with some deep sea influences.",
@@ -1295,8 +1346,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0005, 243.00049),
-"speaker": 1
+"size": Vector2(300, 279.00018),
+"speaker": 1,
+"sprite": -1
 },
 &"1_85": {
 "dialogue": "Colloquially, the color names can also be used to refer to people aligned to that Element as a whole. So you can use [el]Blue[/el] to refer to both the Element or to use [el]Blue[/el]-aligned.
@@ -1309,8 +1361,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99988),
-"speaker": 1
+"size": Vector2(300, 278.99927),
+"speaker": 1,
+"sprite": -1
 },
 &"1_86": {
 "dialogue": "So the 8 Elements are divided into two  [i]affinity groups[/i]: [color=red]offensive[/color] and [color=blue]defensive[/color].",
@@ -1322,8 +1375,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 242.99988),
-"speaker": 1
+"size": Vector2(300.00073, 278.99915),
+"speaker": 1,
+"sprite": -1
 },
 &"1_87": {
 "dialogue": "Your [i]primary[/i] type, on the other hand, is the matter inside that shell that has already changed. It has much more inertia, so it really only changes when you level up.",
@@ -1335,8 +1389,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 242.99988),
-"speaker": 1
+"size": Vector2(300, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_88": {
 "dialogue": "Yeah, so the Elements on the island are each named after a color, based on the range of hues they take on.",
@@ -1348,8 +1403,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 242.99988),
-"speaker": 1
+"size": Vector2(300.0006, 278.99927),
+"speaker": 1,
+"sprite": -1
 },
 &"1_89": {
 "dialogue": "Eventually, your [i]primary[/i] type will fully reach your core. When this happens, your primary type becomes locked to a specific Element and is no longer transmutable. This is called [i]alignment[/i].",
@@ -1361,8 +1417,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 242.99988),
-"speaker": 1
+"size": Vector2(300.0005, 278.99927),
+"speaker": 1,
+"sprite": -1
 },
 &"1_9": {
 "dialogue": "Yep.",
@@ -1374,8 +1431,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 243),
-"speaker": 2
+"size": Vector2(300.0005, 279),
+"speaker": 2,
+"sprite": -1
 },
 &"1_90": {
 "dialogue": "Your [i]secondary[/i] type is a thin shell that forms on top of your skin. It's highly reactive, which is why it changes so often during battle.",
@@ -1387,8 +1445,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99988),
-"speaker": 1
+"size": Vector2(300, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_91": {
 "dialogue": "The process starts from the outside working in.",
@@ -1400,8 +1459,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 242.99988),
-"speaker": 1
+"size": Vector2(300.0005, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_92": {
 "dialogue": "So, over time your [i]primary[/i] type will permeate deeper into your body, turning \"real world\" matter into \"this world\" matter.",
@@ -1413,8 +1473,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 242.99988),
-"speaker": 1
+"size": Vector2(300.0005, 278.9995),
+"speaker": 1,
+"sprite": -1
 },
 &"1_93": {
 "dialogue": "Whenever new matter is introduced to this world, it takes awhile for it to fully acclimate to the new elemental system. Living things, like people and monsters, take longer to  fully transform. ",
@@ -1426,8 +1487,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99988),
-"speaker": 1
+"size": Vector2(300, 279),
+"speaker": 1,
+"sprite": -1
 },
 &"1_94": {
 "dialogue": "Are you familiar with the difference between you [i]primary[/i] and [i]secondary[/i] types?",
@@ -1444,8 +1506,9 @@ nodes = {
 "text": "No"
 }
 },
-"size": Vector2(300.0003, 313.00037),
-"speaker": 1
+"size": Vector2(300.00073, 348.9995),
+"speaker": 1,
+"sprite": -1
 },
 &"1_95": {
 "dialogue": "You've probably noticed, but this comes with certain physical characteristics. Mental ones as well, but that's less noticable.",
@@ -1457,8 +1520,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99988),
-"speaker": 1
+"size": Vector2(300, 278.99927),
+"speaker": 1,
+"sprite": -1
 },
 &"1_96": {
 "dialogue": "You mean what does alignment to other elements look like?",
@@ -1470,8 +1534,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0017, 243.00037),
-"speaker": 1
+"size": Vector2(300.00195, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_97": {
 "dialogue": "I'll have to let the other Elements explain that to you. You'll meet them in time, don't worry.",
@@ -1483,8 +1548,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 243.00037),
-"speaker": 1
+"size": Vector2(300, 279.00024),
+"speaker": 1,
+"sprite": -1
 },
 &"1_98": {
 "dialogue": "The names are a little confusing. An [color=red]offensive[/color] Element like [el]Red[/el] does have spells that don't deal damage. And vice versa.",
@@ -1496,8 +1562,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.99988),
-"speaker": 1
+"size": Vector2(300, 278.99915),
+"speaker": 1,
+"sprite": -1
 },
 &"1_99": {
 "dialogue": "But each Element has different areas of focus. [el]Blue[/el] (defensive) is a very introspective type, while [el]Red[/el] (offensive) weaken their opponents by leeching their strength. But in general, the [color=red]offensive[/color] Elements tend to be more aggressive.",
@@ -1514,35 +1581,31 @@ nodes = {
 "text": "And what about the side effects?"
 }
 },
-"size": Vector2(300.00055, 312.99988),
-"speaker": 1
+"size": Vector2(300.0005, 348.99915),
+"speaker": 1,
+"sprite": -1
 },
 &"3_1": {
-"curr_signal": 0,
 "link": "END",
 "offset": Vector2(-2800, 160),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_2": {
-"curr_signal": 0,
 "link": &"5_2",
 "offset": Vector2(-2420, 640),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_3": {
-"curr_signal": 0,
 "link": &"5_1",
 "offset": Vector2(-3640, 1060),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_4": {
-"curr_signal": 0,
 "link": &"5_5",
 "offset": Vector2(-2880, 1980),
 "signal_value": "BATTLE_STARTED"
 },
 &"3_5": {
-"curr_signal": 0,
 "link": &"5_6",
 "offset": Vector2(-2520, 2840),
 "signal_value": "BATTLE_STARTED"
@@ -1851,14 +1914,7 @@ nodes = {
 "title": "The Island"
 },
 &"9_1": {
-"curr_signal": 4,
-"link": &"1_35",
-"offset": Vector2(-1160, 1940),
-"signal_value": "ADD_ALLY",
-"type": 0,
-"value": "DENIM",
-"variable": "target_ally"
+"offset": Vector2(-1160, 1940)
 }
 }
 strays = Array[String](["8_1", "8_4", "8_5", "8_7", "8_2", "8_6", "8_3", "4_5", "1_40", "1_11", "1_14", "1_46", "1_47", "1_76", "1_65", "1_75", "1_80", "1_81", "1_82", "1_83", "4_6", "1_84", "1_49", "1_62", "1_63", "1_64"])
-characters = "res://data/story/dialog/blue_character_list.tres"
