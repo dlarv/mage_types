@@ -208,7 +208,7 @@ shape = SubResource("BoxShape3D_0d6dj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/CavesToHotelExterior" unique_id=56970316]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 213.49933, 1.9430187, 94.86981)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 213.49933, 1.9430187, 49.869812)
 shape = SubResource("BoxShape3D_0d6dj")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/CavesToHotelExterior/CollisionShape3D2" unique_id=266417111]

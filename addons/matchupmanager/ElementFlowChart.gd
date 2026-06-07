@@ -111,7 +111,7 @@ func _on_stencil_button_toggled(toggledOn: bool, index: int) -> void:
 			nodes = [ BLUE, PURPLE, MAGENTA, GREEN, CYAN ]
 			edges = []
 		2:
-			nodes = [ BLUE, MAGENTA, GREEN, CYAN ]
+			nodes = [ BLUE, YELLOW, GREEN, CYAN ]
 			edges = []
 		3:
 			nodes = [ RED, ORANGE, YELLOW, GREEN, CYAN ]

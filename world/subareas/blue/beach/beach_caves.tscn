@@ -3,12 +3,21 @@
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_l4lmj"]
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="2_exmbl"]
 [ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="3_eroq7"]
+[ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="4_aa6kh"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_exmbl"]
+[ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="5_eroq7"]
+[ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="6_yng4o"]
+[ext_resource type="PackedScene" uid="uid://ck6cq5qaxuf80" path="res://src/overworld/puzzle_blocks/bridges/pillar.tscn" id="7_s01sn"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="7_vyqvy"]
+[ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="8_auv5o"]
+[ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="8_yt1ct"]
+[ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_jbfvx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7ooe"]
 size = Vector3(2, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w4isg"]
-size = Vector3(27, 20, 20)
+size = Vector3(27, 20, 27)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d4g53"]
 render_priority = 0
@@ -301,6 +310,40 @@ shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbfvx"]
+size = Vector3(6, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4lmj"]
+size = Vector3(50.3, 20, 63)
+
+[sub_resource type="Curve3D" id="Curve3D_yng4o"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.099998474, -2.3000002, 0.10000038, 0, 0, 0, 0, 0, 0, -17.5, -2.4, -0.20000076, 0, 0, 0, 0, 0, 0, -17.2, -2.4, 8.599999, 0, 0, 0, 0, 0, 0, -18.399998, -2.4, 8.599999),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_eroq7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 7.6293945e-06, -0.099999964, -0.30000114, 0, 0, 0, 0, 0, 0, 7.6293945e-06, -2.5, -0.30000114, 0, 0, 0, 0, 0, 0, 13.700005, -2.5, -0.39999962, 0, 0, 0, 0, 0, 0, 13.700005, -2.5, 7, 0, 0, 0, 0, 0, 0, 13.700005, -2.5, 8.2, 0, 0, 0, 0, 0, 0, 14.710358, -2.5, 8.197873),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_jbfvx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -0.099999964, 0.099999905, 0, 0, 0, 0, 0, 0, -0.099998474, -2, 0, 0, 0, 0, 0, 0, 0, -13.799995, -2.4, 0.19999981, 0, 0, 0, 0, 0, 0, -14, -2.4, -8.3, 0, 0, 0, 0, 0, 0, -13.900002, -2, -8.1, 0, 0, 0, 0, 0, 0, -14.453491, -1.9517822, -8.146484, 0, 0, 0, 0, 0, 0, -14.425049, -2.4049804, -8.101929, 0, 0, 0, 0, 0, 0, -15.699997, -2.4, -8.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_aa6kh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2.5, 0, 0, 0, 0, 0, 0, 0, 10.600002, -2.5, -1.2000003, 0, 0, 0, 0, 0, 0, 10.400002, -2, -10, 0, 0, 0, 0, 0, 0, 12.246159, -2, -10.927694, 0, 0, 0, 0, 0, 0, 20.700005, -2.5, -10.7, 0, 0, 0, 0, 0, 0, 20.800003, -2.5, -10.2, 0, 0, 0, 0, 0, 0, 20.6167, -1.75354, -10.092407, 0, 0, 0, 0, 0, 0, 20.700005, -1.8, -9.7, 0, 0, 0, 0, 0, 0, 20.797974, -1.9763184, -9.41333, 0, 0, 0, 0, 0, 0, 20.933105, -2.2133179, -9.390747, 0, 0, 0, 0, 0, 0, 20.644775, -2.4574585, -8.733704),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgitw"]
 render_priority = 0
 shader = ExtResource("3_eroq7")
@@ -312,6 +355,35 @@ shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aa6kh"]
+size = Vector3(27, 20, 19)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbfvx"]
+render_priority = 0
+shader = ExtResource("3_eroq7")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/element_id = 0
+
+[sub_resource type="Curve3D" id="Curve3D_4pdg5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.67536926, -1.5, 1.7313108, 0, 0, 0, 0, 0, 0, 2.475708, -1.5, 1.7385674, 0, 0, 0, 0, 0, 0, 2.5, -1.2, 1.9000001, 0, 0, 0, 0, 0, 0, 3.0999985, -1, 2, 0, 0, 0, 0, 0, 0, 3.5999985, -1.1, 2.1, 0, 0, 0, 0, 0, 0, 3.5999985, -1.4, 2, 0, 0, 0, 0, 0, 0, 4.5999985, -1.6, 3.3999999),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_ygtki"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.3712997, -1.5, -0.25147367, 0, 0, 0, 0, 0, 0, 14.390457, -1.5, -0.24180269, 0, 0, 0, 0, 0, 0, 14.446632, -1.5, 8.545075, 0, 0, 0, 0, 0, 0, 15.733902, -1.5, 8.667673),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="BeachCaves" type="Node3D" unique_id=1901693184]
 
@@ -353,7 +425,7 @@ shape = SubResource("BoxShape3D_b7ooe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2000008)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Section2ToSection3" unique_id=679481100]
-transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, -0.002281189, -0.014001548, 37.995277)
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, 6.997719, -0.014001548, 34.995277)
 shape = SubResource("BoxShape3D_b7ooe")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Section2ToSection3/CollisionShape3D2" unique_id=780805503]
@@ -631,7 +703,7 @@ shape = SubResource("BoxShape3D_d4g53")
 [node name="Chunk" type="Node3D" parent="Section1/Magenta Room" unique_id=1208679996]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section1/Magenta Room/Chunk" unique_id=1360103437]
-transform = Transform3D(0.9659259, -0.12940954, 0.22414388, 0, 0.8660254, 0.50000006, -0.25881907, -0.4829629, 0.8365163, 8, 0, 0)
+transform = Transform3D(0.9659259, -0.12940954, 0.22414388, 0, 0.8660254, 0.50000006, -0.25881907, -0.4829629, 0.8365163, 8, 5, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section1/Magenta Room/Chunk" unique_id=1380237274]
 use_collision = true
@@ -1050,44 +1122,460 @@ material = SubResource("ShaderMaterial_6ec7p")
 [node name="Section3" type="Node3D" parent="." unique_id=749895819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 0)
 
+[node name="RelayEast" parent="Section3" unique_id=1935936479 node_paths=PackedStringArray("lock") instance=ExtResource("4_aa6kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -9, -17)
+visible = false
+lock = NodePath("../EastRoom/Chunk/PressurePlate")
+
+[node name="RelayWest" parent="Section3" unique_id=1885559949 node_paths=PackedStringArray("lock") instance=ExtResource("4_aa6kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -9, -17)
+visible = false
+lock = NodePath("../WestRoom/Chunk/PressurePlate")
+
 [node name="Doors" type="Node3D" parent="Section3" unique_id=1002272808]
 
-[node name="PurpleRoom" type="Area3D" parent="Section3" unique_id=2089349307 node_paths=PackedStringArray("chunk")]
+[node name="CenterToEast" type="Area3D" parent="Section3/Doors" unique_id=412573503 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -31)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/Doors/CenterToEast" unique_id=1907628609]
+transform = Transform3D(-4.371141e-08, 0, 1, 0, 1, 0, -1, 0, -4.371141e-08, 5.997719, -0.014001548, 22.195274)
+shape = SubResource("BoxShape3D_jbfvx")
+
+[node name="Marker3D" type="Marker3D" parent="Section3/Doors/CenterToEast/CollisionShape3D" unique_id=455155293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 0, -2.2000008)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Section3/Doors/CenterToEast" unique_id=1880161082]
+transform = Transform3D(-4.3711367e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711367e-08, 19.997719, -0.014001548, 11.495277)
+shape = SubResource("BoxShape3D_jbfvx")
+
+[node name="Marker3D" type="Marker3D" parent="Section3/Doors/CenterToEast/CollisionShape3D2" unique_id=746605855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8999996)
+
+[node name="CenterToEast2" type="Area3D" parent="Section3/Doors" unique_id=920238623 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -31)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_l4lmj")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/Doors/CenterToEast2" unique_id=802445625]
+transform = Transform3D(-4.3711367e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711367e-08, -33.00228, -0.014001548, 22.195274)
+shape = SubResource("BoxShape3D_jbfvx")
+
+[node name="Marker3D" type="Marker3D" parent="Section3/Doors/CenterToEast2/CollisionShape3D" unique_id=1371938602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 0, -2.2000008)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Section3/Doors/CenterToEast2" unique_id=490329614]
+transform = Transform3D(-4.371141e-08, 0, 1, 0, 1, 0, -1, 0, -4.371141e-08, 43.99772, -0.014001548, 39.495277)
+shape = SubResource("BoxShape3D_jbfvx")
+
+[node name="Marker3D" type="Marker3D" parent="Section3/Doors/CenterToEast2/CollisionShape3D2" unique_id=1719357864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8999996)
+
+[node name="PurpleRoom" type="Area3D" parent="Section3" unique_id=2089349307 node_paths=PackedStringArray("chunk", "resets")]
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+resets = [NodePath("Chunk/Reset")]
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom" unique_id=143467115]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7, 1)
-shape = SubResource("BoxShape3D_w4isg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.150002, 7, -20.5)
+shape = SubResource("BoxShape3D_l4lmj")
 
 [node name="Chunk" type="Node3D" parent="Section3/PurpleRoom" unique_id=866007213]
+
+[node name="GateNorth" parent="Section3/PurpleRoom/Chunk" unique_id=1220673197 node_paths=PackedStringArray("locks") instance=ExtResource("4_exmbl")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.599998, -2, -21)
+locks = [NodePath("../../../RelayEast"), NodePath("../../../RelayWest")]
+permanent = true
+
+[node name="GateEast" parent="Section3/PurpleRoom/Chunk" unique_id=1400159450 node_paths=PackedStringArray("locks") instance=ExtResource("4_exmbl")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 26.599998, -2, -8.5)
+locks = [NodePath("../PressurePlate")]
+permanent = true
+
+[node name="GateWest" parent="Section3/PurpleRoom/Chunk" unique_id=752464523 node_paths=PackedStringArray("locks") instance=ExtResource("4_exmbl")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -11.400002, -2, -8.5)
+locks = [NodePath("../PressurePlate")]
+permanent = true
+
+[node name="Wire" parent="Section3/PurpleRoom/Chunk" unique_id=395994832 node_paths=PackedStringArray("target") instance=ExtResource("5_eroq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -20)
+target = NodePath("../../../RelayWest")
+
+[node name="Path" parent="Section3/PurpleRoom/Chunk/Wire" index="0"]
+curve = SubResource("Curve3D_yng4o")
+
+[node name="Wire2" parent="Section3/PurpleRoom/Chunk" unique_id=2094695565 node_paths=PackedStringArray("target") instance=ExtResource("5_eroq7")]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.799995, 1, -20)
+target = NodePath("../../../RelayEast")
+
+[node name="Path" parent="Section3/PurpleRoom/Chunk/Wire2" index="0"]
+curve = SubResource("Curve3D_eroq7")
+
+[node name="Wire3" parent="Section3/PurpleRoom/Chunk" unique_id=1867273819 node_paths=PackedStringArray("target") instance=ExtResource("5_eroq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 1, -5)
+target = NodePath("../PressurePlate")
+
+[node name="Path" parent="Section3/PurpleRoom/Chunk/Wire3" index="0"]
+curve = SubResource("Curve3D_jbfvx")
+
+[node name="Wire4" parent="Section3/PurpleRoom/Chunk" unique_id=445373373 node_paths=PackedStringArray("target") instance=ExtResource("5_eroq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, -5)
+target = NodePath("../PressurePlate")
+
+[node name="Path" parent="Section3/PurpleRoom/Chunk/Wire4" index="0"]
+curve = SubResource("Curve3D_aa6kh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section3/PurpleRoom/Chunk" unique_id=70382205]
 transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, 1, 0, 1)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section3/PurpleRoom/Chunk" unique_id=1653035981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=1185585715]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, -21)
 size = Vector3(25, 4, 15)
 material = SubResource("ShaderMaterial_xgitw")
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=268731728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, -0.5, 15)
+size = Vector3(40, 4, 27)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=60632028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -0.5, -6)
+size = Vector3(8, 4, 15)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=1077101699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.5, -5.5)
+operation = 2
+size = Vector3(6, 4, 30)
+material = SubResource("ShaderMaterial_xgitw")
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=1018861519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -21)
 operation = 2
 size = Vector3(23, 11, 13)
 material = SubResource("ShaderMaterial_xgitw")
 
-[node name="Entry" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=665710422]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 8)
+[node name="CSGBox3D4" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=665710422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.5, 15.15)
+operation = 2
+size = Vector3(38, 8, 25)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="Entry" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=918011687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, 28)
 operation = 2
 size = Vector3(2, 8, 3)
 material = SubResource("ShaderMaterial_xgitw")
 
+[node name="CSGBox3D7" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=1194175316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.5, 14.5)
+operation = 2
+size = Vector3(2, 8, 6)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=888183927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 2.5, 14.1)
+operation = 2
+size = Vector3(2, 8, 5.8)
+material = SubResource("ShaderMaterial_xgitw")
+
 [node name="Exit" type="CSGBox3D" parent="Section3/PurpleRoom/Chunk/CSGCombiner3D" unique_id=290230825]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2.5, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.099998, 2.5, -20.5)
 operation = 2
 size = Vector3(2, 8, 8.6)
 material = SubResource("ShaderMaterial_xgitw")
+
+[node name="BridgeWest" parent="Section3/PurpleRoom/Chunk" unique_id=2108293971 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8287354, -4.5, -8.9210205)
+use_laser_input = false
+_element = 0
+
+[node name="BridgeEast" parent="Section3/PurpleRoom/Chunk" unique_id=813608774 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.828735, -4.5, -8.9210205)
+use_laser_input = false
+_element = 5
+
+[node name="BridgeNorth" parent="Section3/PurpleRoom/Chunk" unique_id=964203147 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.8287354, -4.5, -12.9210205)
+use_laser_input = false
+_element = 0
+
+[node name="BridgeSouth" parent="Section3/PurpleRoom/Chunk" unique_id=1640553080 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.8287354, -4.5, -4.9210205)
+use_laser_input = false
+_element = 4
+
+[node name="PillarNW" parent="Section3/PurpleRoom/Chunk" unique_id=338793250 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.5, -12.9210205)
+
+[node name="BridgeCap" parent="Section3/PurpleRoom/Chunk/PillarNW" unique_id=671888413 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 8)
+
+[node name="BridgeCap2" parent="Section3/PurpleRoom/Chunk/PillarNW" unique_id=1031169776 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.536743e-07, 0, 10)
+
+[node name="PillarSW" parent="Section3/PurpleRoom/Chunk" unique_id=701649426 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.5, -4.9210205)
+
+[node name="BridgeCap" parent="Section3/PurpleRoom/Chunk/PillarSW" unique_id=1458046534 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0000005, 0, 8)
+
+[node name="BridgeCap2" parent="Section3/PurpleRoom/Chunk/PillarSW" unique_id=1815613063 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.536743e-07, 0, 10)
+
+[node name="PillarSE" parent="Section3/PurpleRoom/Chunk" unique_id=1952507200 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.828735, -4.5, -4.9210205)
+
+[node name="BridgeCap" parent="Section3/PurpleRoom/Chunk/PillarSE" unique_id=1237958144 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.9999996, 0, -8)
+
+[node name="BridgeCap2" parent="Section3/PurpleRoom/Chunk/PillarSE" unique_id=372285416 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="PillarNE" parent="Section3/PurpleRoom/Chunk" unique_id=1635082051 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.828735, -4.5, -12.9210205)
+
+[node name="BridgeCap" parent="Section3/PurpleRoom/Chunk/PillarNE" unique_id=1455913434 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, -8)
+
+[node name="BridgeCap2" parent="Section3/PurpleRoom/Chunk/PillarNE" unique_id=1561218918 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.536743e-07, 0, -10)
+
+[node name="PressurePlate" parent="Section3/PurpleRoom/Chunk" unique_id=48093257 instance=ExtResource("7_vyqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.864281, -1.2749757, -12.937787)
+_element = 4
+
+[node name="MagiclayDisk" parent="Section3/PurpleRoom/Chunk" unique_id=1851981714 instance=ExtResource("8_auv5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -5)
+_element = 2
+
+[node name="Reset" parent="Section3/PurpleRoom/Chunk" unique_id=996469747 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.98216, -9)
+reset_positions_of = [NodePath("../MagiclayDisk")]
+
+[node name="EastRoom" type="Area3D" parent="Section3" unique_id=35845067 node_paths=PackedStringArray("chunk", "resets")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -3)
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+resets = [NodePath("Chunk/Reset")]
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/EastRoom" unique_id=1456309921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5000076, 7, -16.5)
+shape = SubResource("BoxShape3D_aa6kh")
+
+[node name="Chunk" type="Node3D" parent="Section3/EastRoom" unique_id=1280688513]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section3/EastRoom/Chunk" unique_id=517470271]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, 3, 0, -17)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section3/EastRoom/Chunk" unique_id=425456488]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section3/EastRoom/Chunk/CSGCombiner3D" unique_id=1613035704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, -17)
+size = Vector3(25, 4, 15)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section3/EastRoom/Chunk/CSGCombiner3D" unique_id=2125931937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, -17)
+operation = 2
+size = Vector3(23, 11, 13)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Section3/EastRoom/Chunk/CSGCombiner3D" unique_id=137116921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, -16.5)
+operation = 2
+size = Vector3(2, 8, 6)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="Fence" type="CSGBox3D" parent="Section3/EastRoom/Chunk/CSGCombiner3D" unique_id=353760567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1.8499999, -17)
+size = Vector3(1, 1.3000001, 15)
+material = SubResource("ShaderMaterial_jbfvx")
+
+[node name="Bridge1" parent="Section3/EastRoom/Chunk" unique_id=1376827802 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.6662474, -20.92102)
+use_laser_input = false
+_element = 4
+
+[node name="Bridge" parent="Section3/EastRoom/Chunk/Bridge1" unique_id=1793468484 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 0, 4)
+use_laser_input = false
+_element = 1
+
+[node name="Bridge2" parent="Section3/EastRoom/Chunk" unique_id=877265578 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.6662474, -16.92102)
+use_laser_input = false
+_element = 0
+
+[node name="Bridge" parent="Section3/EastRoom/Chunk/Bridge2" unique_id=1729569585 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 0, 4)
+use_laser_input = false
+_element = 0
+
+[node name="Bridge3" parent="Section3/EastRoom/Chunk" unique_id=1889093576 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.6662474, -12.9210205)
+use_laser_input = false
+_element = 1
+
+[node name="Bridge" parent="Section3/EastRoom/Chunk/Bridge3" unique_id=955626919 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 0, 4)
+use_laser_input = false
+_element = 5
+
+[node name="MagiclayDisk" parent="Section3/EastRoom/Chunk" unique_id=1771490889 instance=ExtResource("8_auv5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1, -17)
+_element = 3
+
+[node name="Wire" parent="Section3/EastRoom/Chunk" unique_id=83134754 node_paths=PackedStringArray("target") instance=ExtResource("5_eroq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.5, -3)
+target = NodePath("../PressurePlate")
+
+[node name="Path" parent="Section3/EastRoom/Chunk/Wire" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1.5, -18)
+curve = SubResource("Curve3D_4pdg5")
+
+[node name="Head" parent="Section3/EastRoom/Chunk/Wire" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1, 1.6999998)
+visible = false
+
+[node name="PressurePlate" parent="Section3/EastRoom/Chunk" unique_id=1308165685 instance=ExtResource("7_vyqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.5, -17)
+_element = 2
+
+[node name="Reset" parent="Section3/EastRoom/Chunk" unique_id=38949980 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000015, -0.98216, -22.7)
+reset_positions_of = [NodePath("../MagiclayDisk")]
+
+[node name="WestRoom" type="Area3D" parent="Section3" unique_id=1556223914 node_paths=PackedStringArray("chunk", "resets")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -24)
+script = ExtResource("2_exmbl")
+chunk = NodePath("Chunk")
+resets = [NodePath("Reset")]
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/WestRoom" unique_id=192377803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 7, 28.5)
+shape = SubResource("BoxShape3D_w4isg")
+
+[node name="Chunk" type="Node3D" parent="Section3/WestRoom" unique_id=594471127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Section3/WestRoom/Chunk" unique_id=637484258]
+transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, 3, 0, 11)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Section3/WestRoom/Chunk" unique_id=273439859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Section3/WestRoom/Chunk/CSGCombiner3D" unique_id=1901878784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, 28)
+size = Vector3(25, 4, 23)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Section3/WestRoom/Chunk/CSGCombiner3D" unique_id=1961643596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 28)
+operation = 2
+size = Vector3(23, 11, 21)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Section3/WestRoom/Chunk/CSGCombiner3D" unique_id=306138030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.5, 32.5)
+operation = 2
+size = Vector3(2, 8, 6)
+material = SubResource("ShaderMaterial_xgitw")
+
+[node name="PillarSouth" parent="Section3/WestRoom/Chunk" unique_id=638795115 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.828735, -4.5, 15.0789795)
+
+[node name="BridgeCap" parent="Section3/WestRoom/Chunk/PillarSouth" unique_id=1782727215 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0000002, 0, 0)
+
+[node name="BridgeCap2" parent="Section3/WestRoom/Chunk/PillarSouth" unique_id=663780317 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, 2)
+
+[node name="PillarSouth2" parent="Section3/WestRoom/Chunk" unique_id=1785228937 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.8287354, -4.5, 15.0789795)
+
+[node name="BridgeCap" parent="Section3/WestRoom/Chunk/PillarSouth2" unique_id=2122567611 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0000002, 0, 0)
+
+[node name="PillarMid" parent="Section3/WestRoom/Chunk" unique_id=261387135 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.828735, -4.5, 7.0789795)
+
+[node name="BridgeCap2" parent="Section3/WestRoom/Chunk/PillarMid" unique_id=1321283580 instance=ExtResource("8_yt1ct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-07, 0, 2)
+
+[node name="PillarMid2" parent="Section3/WestRoom/Chunk" unique_id=1178866927 instance=ExtResource("7_s01sn")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.8287354, -4.5, 7.0789795)
+
+[node name="BridgeSouth" parent="Section3/WestRoom/Chunk" unique_id=1461146509 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.8287354, -4.5, 15.0789795)
+use_laser_input = false
+_element = 2
+
+[node name="BridgeSouth3" parent="Section3/WestRoom/Chunk" unique_id=1014190723 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.8287354, -4.5, 7.0789795)
+use_laser_input = false
+_element = 0
+
+[node name="BridgeSouth2" parent="Section3/WestRoom/Chunk" unique_id=976714061 instance=ExtResource("6_yng4o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.1712646, -4.5, 15.0789795)
+use_laser_input = false
+_element = 5
+
+[node name="BridgeMid" parent="Section3/WestRoom/Chunk" unique_id=1050325933 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.828735, -4.5, 11.0789795)
+use_laser_input = false
+_element = 0
+
+[node name="BridgeMid3" parent="Section3/WestRoom/Chunk" unique_id=676736067 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.828735, -4.5, 3.0789795)
+use_laser_input = false
+_element = 4
+
+[node name="BridgeMid2" parent="Section3/WestRoom/Chunk" unique_id=2118860148 instance=ExtResource("6_yng4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8287354, -4.5, 11.0789795)
+use_laser_input = false
+_element = 0
+
+[node name="MagiclayDisk" parent="Section3/WestRoom/Chunk" unique_id=1583003652 instance=ExtResource("8_auv5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1, 15)
+_element = 4
+
+[node name="PressurePlate" parent="Section3/WestRoom/Chunk" unique_id=375943053 instance=ExtResource("7_vyqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.5, 0)
+_element = 1
+
+[node name="Wire" parent="Section3/WestRoom/Chunk" unique_id=1696494168 node_paths=PackedStringArray("target") instance=ExtResource("5_eroq7")]
+target = NodePath("../PressurePlate")
+
+[node name="Path" parent="Section3/WestRoom/Chunk/Wire" index="0"]
+curve = SubResource("Curve3D_ygtki")
+
+[node name="Head" parent="Section3/WestRoom/Chunk/Wire" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1, 1.6999998)
+visible = false
+
+[node name="Reset" parent="Section3/WestRoom" unique_id=354852941 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.98216, 32.1)
+reset_positions_of = [NodePath("../Chunk/MagiclayDisk")]
+
+[editable path="Section3/PurpleRoom/Chunk/Wire"]
+[editable path="Section3/PurpleRoom/Chunk/Wire2"]
+[editable path="Section3/PurpleRoom/Chunk/Wire3"]
+[editable path="Section3/PurpleRoom/Chunk/Wire4"]
+[editable path="Section3/EastRoom/Chunk/Wire"]
+[editable path="Section3/WestRoom/Chunk/Wire"]
