@@ -169,7 +169,7 @@ func _process_dialogue(dict: Dictionary) -> void:
 # Processes the signal node data (dict).
 func _process_signal(dict: Dictionary) -> void:
 	dialogue_signal.emit(dict.signalValue)
-	_proceed(dict.link)
+	# _proceed(dict.link)
 
 
 # Processes the set node data (dict).
