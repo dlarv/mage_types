@@ -26,12 +26,12 @@ func _ready() -> void:
 		Inventory.key_item_lost.connect(deactivate_stencil)
 	
 	var _editor := Engine.is_editor_hint()
-	%StencilVBox.get_child(0).visible = _editor or Inventory.has_key_item(&"TUTORIAL_STENCIL_1")
-	%StencilVBox.get_child(1).visible = _editor or Inventory.has_key_item(&"TUTORIAL_STENCIL_2")
-	%StencilVBox.get_child(2).visible = _editor or Inventory.has_key_item(&"TUTORIAL_STENCIL_3")
+	%StencilVBox.get_child(0).visible = _editor or Inventory.has_key_item(&"TUTORIAL_PACKET")
+	%StencilVBox.get_child(1).visible = _editor or Inventory.has_key_item(&"TUTORIAL_PACKET")
+	%StencilVBox.get_child(2).visible = _editor or Inventory.has_key_item(&"TUTORIAL_PACKET")
 
 	for i in %StencilVBox.get_child_count() - 3:
-		%StencilVBox.get_child(i + 3).visible = _editor or Inventory.has_key_item(&"STENCIL_%d" % (i + 1))
+		%StencilVBox.get_child(i + 3).visible = _editor or Inventory.has_key_item(&"STENCIL_%d" % i)
 	
 
 func restrict_graph(nodes: Array, edges:=[]) -> void:
@@ -43,15 +43,22 @@ func restrict_graph(nodes: Array, edges:=[]) -> void:
 
 
 func activate_stencil(item: KeyItem) -> void:
+	if item.unique_name == &"TUTORIAL_PACKET":
+		%StencilVBox.get_child(0).show()
+		%StencilVBox.get_child(1).show()
+		%StencilVBox.get_child(2).show()
+		_on_stencil_button_toggled(true, 0)
+		%StencilVBox.get_child(0).set_pressed_no_signal(true)
+		return
+
 	if item.unique_name.find("STENCIL") == -1: return
 	var index := item.id
 	if index < 0 or index >= %StencilVBox.get_child_count():
 		push_warning("Tried to activate Stencil(%d), but it does not exist" % index)
 		return
-	%StencilVBox.get_child(index).visible = true
-
-	_on_stencil_button_toggled(true, index)
-	%StencilVBox.get_child(index).set_pressed_no_signal(true)
+	%StencilVBox.get_child(index + 3).visible = true
+	_on_stencil_button_toggled(true, index + 3)
+	%StencilVBox.get_child(index + 3).set_pressed_no_signal(true)
 
 
 func deactivate_stencil(item: KeyItem) -> void:

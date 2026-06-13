@@ -10,14 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="5_ygtki"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="6_upves"]
 [ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="6_yng4o"]
-[ext_resource type="Resource" uid="uid://d07pltrhfkhqg" path="res://data/items/key_items/tutorial_stencil_1.tres" id="7_7mtce"]
+[ext_resource type="Resource" uid="uid://d07pltrhfkhqg" path="res://data/items/key_items/tutorial_packet.tres" id="7_7mtce"]
 [ext_resource type="PackedScene" uid="uid://ck6cq5qaxuf80" path="res://src/overworld/puzzle_blocks/bridges/pillar.tscn" id="7_s01sn"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="7_vyqvy"]
-[ext_resource type="Resource" uid="uid://c7xrixk4w025s" path="res://data/items/key_items/tutorial_stencil_2.tres" id="8_7mtce"]
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="8_auv5o"]
 [ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="8_yt1ct"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_jbfvx"]
-[ext_resource type="Resource" uid="uid://c32htsdkt7675" path="res://data/items/key_items/tutorial_stencil_3.tres" id="18_6l8lo"]
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="16_7mtce"]
+[ext_resource type="Script" uid="uid://bga7b8k778yar" path="res://src/items/KeyItem.gd" id="17_6l8lo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7ooe"]
 size = Vector3(2, 3, 1)
@@ -119,7 +119,7 @@ size = Vector3(1, 1, 2)
 radius = 2.0
 
 [sub_resource type="Resource" id="Resource_upves"]
-resource_name = "Stencil 1"
+resource_name = "Tutorial Packet"
 script = ExtResource("6_upves")
 item = ExtResource("7_7mtce")
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
@@ -162,20 +162,6 @@ shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 6
-
-[sub_resource type="Resource" id="Resource_6l8lo"]
-resource_name = "Stencil 1"
-script = ExtResource("6_upves")
-item = ExtResource("7_7mtce")
-quantity = -1
-metadata/_custom_type_script = "uid://2vxsmd7ib53v"
-
-[sub_resource type="Resource" id="Resource_6fo2d"]
-resource_name = "Stencil 2"
-script = ExtResource("6_upves")
-item = ExtResource("8_7mtce")
-id = 1
-metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4g53"]
 size = Vector3(11, 20, 20)
@@ -397,18 +383,38 @@ shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 1
 
+[sub_resource type="Resource" id="Resource_6fo2d"]
+script = ExtResource("17_6l8lo")
+unique_name = &"TUTORIAL_STENCIL_2"
+id = 1
+name = "Stencil 2"
+details = "Many newcomers to the island find the [i]Transmutation Map[/i] somewhat... overwhelming. Stencils are used to during training to hide irrelevant sections of the map.
+
+This stencil shows only [el]Red[/el], [el]Orange[/el], and [el]Yellow[/el]."
+metadata/_custom_type_script = "uid://bga7b8k778yar"
+
 [sub_resource type="Resource" id="Resource_7mtce"]
 resource_name = "Stencil 2"
 script = ExtResource("6_upves")
-item = ExtResource("8_7mtce")
+item = SubResource("Resource_6fo2d")
 id = 1
 quantity = -1
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
+[sub_resource type="Resource" id="Resource_dmcka"]
+script = ExtResource("17_6l8lo")
+unique_name = &"TUTORIAL_STENCIL_3"
+id = 2
+name = "Stencil 3"
+details = "Many newcomers to the island find the [i]Transmutation Map[/i] somewhat... overwhelming. Stencils are used to during training to hide irrelevant sections of the map.
+
+This stencil shows only [el]Red[/el], [el]Orange[/el], [el]Yellow[/el], and [el]Purple[/el]."
+metadata/_custom_type_script = "uid://bga7b8k778yar"
+
 [sub_resource type="Resource" id="Resource_opl4n"]
 resource_name = "Stencil 3"
 script = ExtResource("6_upves")
-item = ExtResource("18_6l8lo")
+item = SubResource("Resource_dmcka")
 id = 2
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
@@ -780,14 +786,6 @@ material = SubResource("ShaderMaterial_4i8w8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.05000007, -7)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_4i8w8")
-
-[node name="Stencil2StoryTrigger" parent="Section1/OrangeRoom/Chunk" unique_id=475183315 instance=ExtResource("5_ygtki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -3)
-items = Array[ExtResource("6_upves")]([SubResource("Resource_6l8lo"), SubResource("Resource_6fo2d")])
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/OrangeRoom/Chunk/Stencil2StoryTrigger" unique_id=1107611198]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4.3)
-shape = SubResource("BoxShape3D_7mtce")
 
 [node name="Magenta Room" type="Area3D" parent="Section1" unique_id=846473639 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -13)

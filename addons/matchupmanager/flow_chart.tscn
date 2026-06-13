@@ -98,22 +98,18 @@ text = "Red"
 
 [node name="Orange" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox" unique_id=2127998910]
 layout_mode = 2
-button_pressed = true
 text = "Orange"
 
 [node name="Yellow" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox" unique_id=1629585306]
 layout_mode = 2
-button_pressed = true
 text = "Yellow"
 
 [node name="Green" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox" unique_id=176375403]
 layout_mode = 2
-button_pressed = true
 text = "Green"
 
 [node name="Cyan" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/NodesVBox" unique_id=942726970]
 layout_mode = 2
-button_pressed = true
 text = "Cyan"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox" unique_id=1794982549]
@@ -150,12 +146,10 @@ text = "Orange"
 
 [node name="Yellow" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox" unique_id=1659046719]
 layout_mode = 2
-button_pressed = true
 text = "Yellow"
 
 [node name="Green" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox" unique_id=215139865]
 layout_mode = 2
-button_pressed = true
 text = "Green"
 
 [node name="Cyan" type="CheckBox" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane/AdvancedOptionsVBox/NodesEdges_VBox/EdgesVBox" unique_id=45771442]
@@ -183,7 +177,6 @@ text = "Stencil 1"
 [node name="StencilButton2" type="Button" parent="HBoxContainer/VBoxContainer/StencilVBox" unique_id=1093463560]
 layout_mode = 2
 toggle_mode = true
-button_pressed = true
 button_group = SubResource("ButtonGroup_wra6w")
 text = "Stencil 2"
 
