@@ -23,7 +23,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/base_color = Color(1.4920532e-06, 0, 0.5112778, 1)
 shader_parameter/wave_intensity = 5.0
 
@@ -47,7 +46,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/base_color = Color(0.11718885, 9.651419e-05, 0.1801289, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_smuyo"]
@@ -680,8 +678,7 @@ shader_parameter/roughness = 1.0
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
-shader_parameter/crack_scale = 0.1
-shader_parameter/crack_detail_level = 0.5
+shader_parameter/crack_scale = 0.0
 shader_parameter/base_color = Color(0.18431373, 0.5882353, 0.63529414, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_datgn"]
@@ -696,7 +693,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 1.0
 shader_parameter/base_color = Color(0.27503935, 0.8190049, 0.9999996, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wa7fn"]
@@ -711,7 +707,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 0.0
-shader_parameter/crack_detail_level = 0.0
 shader_parameter/base_color = Color(0.69903296, 0.91196793, 0.99999994, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ir2ed"]
@@ -735,7 +730,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/base_color = Color(0.11764706, 0, 0.18039216, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_76mdr"]
@@ -765,7 +759,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 0.1
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/base_color = Color(0.30980393, 0.56078434, 0.60784316, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k4oqj"]
@@ -780,7 +773,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.4
 shader_parameter/crack_scale = 0.1
-shader_parameter/crack_detail_level = 0.20000000298024
 shader_parameter/base_color = Color(0.43137255, 0.53333336, 0.5803922, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f4f4o"]
@@ -795,7 +787,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/base_color = Color(0.18359044, 0.18359044, 0.18359044, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fe8po"]
@@ -810,7 +801,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 0.0
-shader_parameter/crack_detail_level = 0.0
 shader_parameter/base_color = Color(0.69903296, 0.91196793, 0.99999994, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aex22"]
@@ -837,7 +827,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/base_color = Color(0.05882353, 0.14509805, 0.16078432, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tddli"]
@@ -867,7 +856,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/base_color = Color(0.05882353, 0.14509805, 0.16078432, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cft0h"]

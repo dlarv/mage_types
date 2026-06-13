@@ -34,7 +34,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ysxmr"]
@@ -46,7 +45,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o46tb"]
@@ -58,7 +56,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0wlb"]
@@ -70,7 +67,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gwucs"]
@@ -82,7 +78,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_68vg2"]
@@ -94,7 +89,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kvux5"]
@@ -106,7 +100,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_upves"]
@@ -136,7 +129,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f5of7"]
@@ -148,7 +140,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4i8w8"]
@@ -160,7 +151,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4g53"]
@@ -175,7 +165,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rj6cc"]
@@ -187,7 +176,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4tjp7"]
@@ -198,8 +186,7 @@ shader_parameter/roughness = 1.0
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
-shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
+shader_parameter/crack_scale = 1.12
 shader_parameter/element_id = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l3sqn"]
@@ -211,7 +198,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7io46"]
@@ -223,7 +209,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4cjpf"]
@@ -235,7 +220,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q6gb8"]
@@ -247,7 +231,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qwn3t"]
@@ -259,7 +242,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2bm"]
@@ -271,7 +253,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q104o"]
@@ -283,7 +264,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3lu8c"]
@@ -295,7 +275,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0eff6"]
@@ -307,7 +286,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ef3t0"]
@@ -319,7 +297,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ec7p"]
@@ -331,7 +308,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbfvx"]
@@ -380,7 +356,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 1
 
 [sub_resource type="Resource" id="Resource_6fo2d"]
@@ -430,7 +405,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 0
 
 [sub_resource type="Curve3D" id="Curve3D_4pdg5"]
@@ -459,7 +433,6 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
 shader_parameter/element_id = 7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pdg5"]
@@ -1705,7 +1678,7 @@ size = Vector3(25, 4, 15)
 material = SubResource("ShaderMaterial_aa6kh")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Section3/CyanChunk/Chunk/CSGCombiner3D" unique_id=628511414]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -1)
 operation = 2
 size = Vector3(23, 11, 13)
 material = SubResource("ShaderMaterial_aa6kh")
@@ -1725,7 +1698,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 7, -23)
 shape = SubResource("BoxShape3D_4pdg5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightChunk" unique_id=1613079688]
-transform = Transform3D(0.70710695, -0.3535534, 0.6123723, -3.2743657e-09, 0.8660254, 0.5000001, -0.7071067, -0.35355356, 0.6123725, -22, 0, 0)
+transform = Transform3D(0.6123726, 0.12682647, 0.78033, -0.35355344, 0.9267767, 0.12682663, -0.7071067, -0.3535536, 0.6123725, -22, 0, 0)
 light_energy = 0.8
 
 [editable path="Section3/PurpleRoom/Chunk/Wire"]

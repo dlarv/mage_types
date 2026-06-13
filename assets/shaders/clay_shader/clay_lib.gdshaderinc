@@ -1,8 +1,8 @@
 const float GLOBAL_SCALING = 10.0;
+const float GLOBAL_CRACK_SCALAR = .5;
 
 global uniform sampler2D fingerprints;
 global uniform sampler2D cracks;
-global uniform sampler2D crack_detail;
 global uniform sampler2D diffuse_test;
 
 uniform bool show_diffuse_test = false;
@@ -11,7 +11,6 @@ uniform float fingerprint_offset = 0;
 uniform float fingerprint_scale = 1;
 uniform float crack_offset = 0;
 uniform float crack_scale = 1;
-uniform float crack_detail_level = 0.5;
 
 varying mat4 inv_modelview_matrix;
 varying flat vec4 projected_coords;
@@ -40,10 +39,8 @@ vec3 get_adjusted_normal(sampler2D tex, float scale, float offset) {
 }
 
 vec3 calculate_normals() {
-	vec3 crack_base_normal = get_adjusted_normal(cracks, crack_scale, crack_offset);
-	vec3 crack_detail_normal = get_adjusted_normal(crack_detail, crack_scale, crack_offset);
-	vec3 crack_normal = crack_base_normal + crack_detail_normal * crack_detail_level;
-	
+	float adjusted_crack_scale = crack_scale * GLOBAL_CRACK_SCALAR;
+	vec3 crack_base_normal = get_adjusted_normal(cracks, adjusted_crack_scale, crack_offset);
 	vec3 fingerprint_normal = get_adjusted_normal(fingerprints, fingerprint_scale, fingerprint_offset);
-	return fingerprint_normal * crack_normal;
+	return fingerprint_normal * crack_base_normal;
 }

@@ -6,6 +6,63 @@
 [ext_resource type="Texture2D" uid="uid://cacqty606q0rn" path="res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="3_6omud"]
 [ext_resource type="Texture2D" uid="uid://c65hdinrtsjgs" path="res://assets/_blender/claydoh/textures/uv grid.png" id="4_rpemy"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fxju1"]
+render_priority = 0
+shader = ExtResource("2_txxsr")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 10.0
+shader_parameter/crack_offset = 0.35
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 1.0
+shader_parameter/base_color = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j8h0q"]
+material = SubResource("ShaderMaterial_fxju1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxk2m"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8a4c8"]
+subdivide_width = 100
+subdivide_height = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txxsr"]
+render_priority = 0
+shader = ExtResource("2_txxsr")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3dy8t"]
+size = Vector3(2, 2, 2)
+subdivide_width = 100
+subdivide_height = 100
+
+[sub_resource type="SphereMesh" id="SphereMesh_txxsr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rpemy"]
+render_priority = 0
+shader = ExtResource("2_txxsr")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pevn1"]
+subdivide_width = 100
+subdivide_height = 100
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ut5nx"]
 input_name = "uv"
 
@@ -193,68 +250,6 @@ nodes/fragment/83/node = SubResource("VisualShaderNodeVectorOp_gr7fx")
 nodes/fragment/83/position = Vector2(3380, 1280)
 nodes/fragment/connections = PackedInt32Array(51, 0, 36, 0, 70, 0, 68, 0, 68, 0, 53, 0, 71, 0, 70, 1, 68, 0, 72, 0, 76, 0, 68, 1, 72, 0, 73, 0, 74, 0, 73, 1, 53, 0, 77, 0, 73, 0, 77, 1, 79, 0, 36, 1, 82, 0, 70, 0, 78, 0, 51, 0, 82, 0, 51, 1, 80, 0, 0, 3, 36, 0, 46, 0, 35, 0, 82, 0, 48, 0, 0, 0, 81, 0, 82, 1, 77, 0, 47, 1, 46, 0, 47, 0, 46, 0, 83, 0, 77, 0, 83, 1, 83, 0, 0, 8)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a4c8"]
-render_priority = 0
-shader = SubResource("VisualShader_oxd7g")
-shader_parameter/Lumpiness = 0.0
-shader_parameter/BaseColor = Color(0.46618086, 0.4661808, 0.4661808, 1)
-shader_parameter/Roughness = 1.0
-shader_parameter/FingertprintOffset = 0.0
-shader_parameter/UVScale = Vector2(1, 1)
-shader_parameter/FingertprintScale = 1.0
-shader_parameter/CrackOffset = 1.0
-shader_parameter/CrackScale = 0.5
-shader_parameter/CrackDetail = 1.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_j8h0q"]
-material = SubResource("ShaderMaterial_8a4c8")
-subdivide_width = 100
-subdivide_depth = 100
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oxk2m"]
-size = Vector3(20, 1, 20)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8a4c8"]
-subdivide_width = 100
-subdivide_height = 100
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_txxsr"]
-render_priority = 0
-shader = ExtResource("2_txxsr")
-shader_parameter/show_diffuse_test = false
-shader_parameter/base_color = Color(1, 1, 1, 1)
-shader_parameter/roughness = 1.0
-shader_parameter/uv_scale = Vector2(1.38, 1.52)
-shader_parameter/fingerprint_offset = 0.0
-shader_parameter/fingerprint_scale = 1.0
-shader_parameter/crack_offset = 0.0
-shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_3dy8t"]
-size = Vector3(2, 2, 2)
-subdivide_width = 100
-subdivide_height = 100
-
-[sub_resource type="SphereMesh" id="SphereMesh_txxsr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rpemy"]
-render_priority = 0
-shader = ExtResource("2_txxsr")
-shader_parameter/show_diffuse_test = false
-shader_parameter/base_color = Color(1, 1, 1, 1)
-shader_parameter/roughness = 1.0
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/fingerprint_offset = 0.0
-shader_parameter/fingerprint_scale = 1.0
-shader_parameter/crack_offset = 0.0
-shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_pevn1"]
-subdivide_width = 100
-subdivide_height = 100
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dy8t"]
 render_priority = 0
 shader = SubResource("VisualShader_oxd7g")
@@ -306,14 +301,13 @@ shadow_mesh = SubResource("ArrayMesh_yyi4w")
 render_priority = 0
 shader = ExtResource("2_txxsr")
 shader_parameter/show_diffuse_test = true
-shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/roughness = 1.0
-shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6omud"]
 albedo_texture = ExtResource("4_rpemy")

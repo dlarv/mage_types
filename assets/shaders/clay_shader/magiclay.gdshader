@@ -43,7 +43,7 @@ void fragment() {
 	
 	ALBEDO = get_color();
 	ROUGHNESS = roughness;
-	NORMAL = calculate_normals();
+	NORMAL_MAP = calculate_normals();
 	
 	if(show_diffuse_test) {
 		ALBEDO = get_adjusted_normal(diffuse_test, fingerprint_scale, fingerprint_offset);
