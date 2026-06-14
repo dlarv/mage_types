@@ -334,12 +334,12 @@ func _on_option_selected(idx: int) -> void:
 	option_selected.emit(idx)
 
 
-func _on_dialogue_signal(value: int, next_node: String) -> void:
+func _on_dialogue_signal(value: int, next_node:="") -> void:
 	dialogue_signal.emit(value)
 	# Dlarv: Wait for event to finish, if necessary.
 	if not auto_proceed:
 		await event_finished
-	_dialogue_parser.proceed(next_node)
+	_dialogue_parser._proceed(next_node)
 
 
 func _on_variable_changed(variable_name: String, value) -> void:
