@@ -116,13 +116,13 @@ func _on_stencil_button_toggled(toggledOn: bool, index: int) -> void:
 	match index:
 		0: 
 			nodes = [ BLUE, PURPLE,MAGENTA, YELLOW, GREEN, CYAN ]
-			edges = [ MAGENTA ]
+			edges = [ MAGENTA, ORANGE ]
 		1:
 			nodes = [ BLUE, PURPLE, MAGENTA, GREEN, CYAN ]
-			edges = []
+			edges = [ MAGENTA ]
 		2:
 			nodes = [ BLUE, YELLOW, GREEN, CYAN ]
-			edges = []
+			edges = [ MAGENTA, ORANGE ]
 		3:
 			nodes = [ RED, ORANGE, YELLOW, GREEN, CYAN ]
 			edges = [ ORANGE, YELLOW, GREEN ]
