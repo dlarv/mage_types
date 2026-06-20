@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bgv8y6nmgxrl2" path="res://src/overworld/overworld_connector.tscn" id="1_lyukn"]
 [ext_resource type="PackedScene" uid="uid://c4p3jn0diyrja" path="res://src/player/player.tscn" id="1_riqc8"]
 [ext_resource type="Script" uid="uid://b1pjspi1h8amj" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="2_pewre"]
-[ext_resource type="Resource" uid="uid://18q5iqow8oua" path="res://data/story/dialog/dialog_trees/blue_dialog.tres" id="3_dned5"]
+[ext_resource type="Resource" uid="uid://diu0haqdo2136" path="res://data/story/dialog/dialog_trees/hotel_dialog.tres" id="3_dned5"]
+[ext_resource type="Script" uid="uid://m31i3axecagx" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="5_dqqhb"]
+[ext_resource type="Script" uid="uid://blmdt7v8bd0nl" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="6_b2suy"]
+[ext_resource type="Script" uid="uid://bsoctnc26xumr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="7_h8lre"]
 [ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
@@ -20,14 +23,21 @@ ambient_light_energy = 0.15
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_ysn08"]
+script = ExtResource("5_dqqhb")
+metadata/_custom_type_script = "uid://m31i3axecagx"
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_3ubor"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_m0cxt"]
+script = ExtResource("6_b2suy")
+metadata/_custom_type_script = "uid://blmdt7v8bd0nl"
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_jaqc2"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_j34ew"]
+script = ExtResource("7_h8lre")
+metadata/_custom_type_script = "uid://bsoctnc26xumr"
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_mlf2c"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_dqqhb"]
 script = ExtResource("7_jdm3g")
+metadata/_custom_type_script = "uid://dvdk5u1gpbgu0"
 
 [sub_resource type="Animation" id="Animation_pj603"]
 length = 0.001
@@ -71,7 +81,7 @@ size_flags_vertical = 3
 script = ExtResource("2_pewre")
 data = ExtResource("3_dned5")
 skip_input_action = "skip_text"
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_gp5q1"), SubResource("RichTextEffect_3ubor"), SubResource("RichTextEffect_jaqc2"), SubResource("RichTextEffect_mlf2c")])
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_ysn08"), SubResource("RichTextEffect_m0cxt"), SubResource("RichTextEffect_j34ew"), SubResource("RichTextEffect_dqqhb")])
 options_vertical = true
 options_position = 2
 
@@ -86,7 +96,7 @@ process_mode = 3
 libraries/ = SubResource("AnimationLibrary_1n5t0")
 
 [node name="Player" parent="Overworld" unique_id=1613643988 instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 332.2358, 2.1749167, 152.12657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.473614, 2.1749167, -295.8228)
 dash_speed = 900.0
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player" unique_id=1009984194]

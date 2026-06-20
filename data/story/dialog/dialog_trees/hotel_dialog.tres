@@ -1,0 +1,223 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://diu0haqdo2136"]
+
+[ext_resource type="Script" uid="uid://eit47g61t72a" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_4qbur"]
+
+[resource]
+script = ExtResource("1_4qbur")
+starts = {
+"TUTORIAL_1": &"0_1",
+"TUTORIAL_2": &"0_2",
+"TUTORIAL_3": &"0_3",
+"TUTORIAL_4": &"0_4"
+}
+nodes = {
+&"0_1": {
+"link": &"5_1",
+"offset": Vector2(-460, -80),
+"start_id": "TUTORIAL_1"
+},
+&"0_2": {
+"link": &"1_6",
+"offset": Vector2(-440, 480),
+"start_id": "TUTORIAL_2"
+},
+&"0_3": {
+"link": &"1_8",
+"offset": Vector2(-440, 760),
+"start_id": "TUTORIAL_3"
+},
+&"0_4": {
+"link": &"1_10",
+"offset": Vector2(-440, 1040),
+"start_id": "TUTORIAL_4"
+},
+&"1_1": {
+"dialogue": "The note reads:[br]
+Oof, it looks like you've stumbled into the labyrinthine [i]Cliff Side Caves[/i]. [br][br]
+People frequently get lost in here, but luckily for you we made this handy map and tutorial packet for you.
+[br][br]
+1. You find yourself in the [el]Red[/el] Room. [br]
+2. You must get to the [el]Orange[/el] Room.[br]
+3. Use 'T' to open your transmutation map. [br]
+4. Use the stencils from your tutorial packet to hide irrelevant info.[br]
+[br]
+[i]Please only take one packet, we were only able to make 3 total[/i]",
+"offset": Vector2(720, -100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 242.00012),
+"speaker": ""
+},
+&"1_10": {
+"dialogue": "Its a table with another note.",
+"offset": Vector2(-240, 1040),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300, 241.99988),
+"speaker": ""
+},
+&"1_11": {
+"dialogue": "You're almost there! The exit is just up ahead.[br]
+The next few puzzles use [i]Laser Bridges[/i]. These use highly concentrated Elemental energy to transmute any MagiClay objects dragged across them. [br]
+Use the triangular [i]Reset[/i] block to return the puzzle to its starting configuration.",
+"offset": Vector2(80, 1040),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 241.99988),
+"speaker": ""
+},
+&"1_2": {
+"dialogue": "Its a table... woww. On it is a diagram labeled [i]Transmutation Map[/i], a packet of laminated pages stapled together, and a note.",
+"offset": Vector2(380, -100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_1",
+"text": ""
+}
+},
+"size": Vector2(300.00012, 242.00012),
+"speaker": ""
+},
+&"1_3": {
+"dialogue": "You take the map and the packet of stencils. It appears you grabbed the last ones.",
+"offset": Vector2(1060, -100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.0011, 242.00012),
+"speaker": ""
+},
+&"1_4": {
+"dialogue": "Its a table. On it is a note.",
+"offset": Vector2(80, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 242.00012),
+"speaker": ""
+},
+&"1_5": {
+"dialogue": "The note reads:[br]
+Oof, it looks like you've stumbled into the labyrinthine [i]Cliff Side Caves[/i]. [br][br]
+People frequently get lost in here, but luckily for you we made this handy map and tutorial packet for you.
+[br][br]
+1. You find yourself in the [el]Red[/el] Room. [br]
+2. You must get to the [el]Orange[/el] Room.[br]
+3. Use 'T' to open your transmutation map. [br]
+4. Use the stencils from your tutorial packet to hide irrelevant info.[br]
+[br]
+[i]Please only take one packet, we were only able to make 3 total[/i]",
+"offset": Vector2(420, 180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.0006, 242.00012),
+"speaker": ""
+},
+&"1_6": {
+"dialogue": "Its a table with another note.",
+"offset": Vector2(-240, 480),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 242),
+"speaker": ""
+},
+&"1_7": {
+"dialogue": "Hey, you're getting it! Your next instructions are just passed the [el]Yellow[/el] room.[br]
+[i]Stencil 2[/i]",
+"offset": Vector2(80, 480),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 242),
+"speaker": ""
+},
+&"1_8": {
+"dialogue": "Its a table with another note.",
+"offset": Vector2(-240, 760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_9",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 241.99994),
+"speaker": ""
+},
+&"1_9": {
+"dialogue": "Now for something a little harder. The final instructions are in the [el]Purple[/el] room.
+[br][br]
+[i]Stencil 3[/i]",
+"offset": Vector2(80, 760),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00018, 241.99994),
+"speaker": ""
+},
+&"4_1": {
+"link": &"1_2",
+"offset": Vector2(60, -100),
+"type": 0,
+"value": "true",
+"variable": "took_packet"
+},
+&"5_1": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "took_packet",
+"value2": "false"
+}]),
+"false": &"1_4",
+"offset": Vector2(-260, -80),
+"true": &"4_1"
+}
+}
+variables = Dictionary[String, Dictionary]({
+"took_packet": {
+"type": 1,
+"value": false
+}
+})
