@@ -9,7 +9,7 @@ var _is_emitting := false
 
 
 func _ready() -> void:
-	super._ready()
+	_try_set_color()
 
 	if not use_laser_input:
 		_start_no_laser()

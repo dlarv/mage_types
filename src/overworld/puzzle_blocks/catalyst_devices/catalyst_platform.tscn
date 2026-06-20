@@ -1,31 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdm2iqu5gdils"]
+[gd_scene format=3 uid="uid://bdm2iqu5gdils"]
 
 [ext_resource type="Script" uid="uid://dkgfdi0cwp3j" path="res://src/overworld/puzzle_blocks/catalyst_devices/CatalystPlatform.gd" id="1_5kuer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xdfa5"]
 size = Vector3(2, 0.1, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfxdh"]
+resource_local_to_scene = true
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_vriah"]
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6w0c"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-
-[node name="CatalystPlatform" type="Area3D"]
+[node name="CatalystPlatform" type="Area3D" unique_id=796992717]
 process_mode = 1
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_5kuer")
 base_size = Vector3(2, 0.1, 2)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1753818042]
 shape = SubResource("BoxShape3D_xdfa5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=72065925]
+material_override = SubResource("StandardMaterial3D_gfxdh")
 mesh = SubResource("CylinderMesh_vriah")
-surface_material_override/0 = SubResource("StandardMaterial3D_y6w0c")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

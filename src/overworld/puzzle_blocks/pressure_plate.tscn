@@ -1,21 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg4yxe4cvdepb"]
+[gd_scene format=3 uid="uid://bg4yxe4cvdepb"]
 
 [ext_resource type="Script" uid="uid://bpncl44b4yhar" path="res://src/overworld/puzzle_blocks/PressurePlate.gd" id="1_78xe4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0p7xg"]
 size = Vector3(1, 0.1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awos8"]
+resource_local_to_scene = true
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_yjbx8"]
 size = Vector3(1, 0.1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awos8"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_et7wn"]
 size = Vector3(1.2, 0.05, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6m5yw"]
-albedo_color = Color(0.662745, 0.662745, 0.662745, 1)
+albedo_color = Color(0.6627451, 0.6627451, 0.6627451, 1)
 
 [sub_resource type="Animation" id="Animation_wmrrd"]
 length = 0.001
@@ -54,32 +55,30 @@ _data = {
 &"press": SubResource("Animation_nfwlf")
 }
 
-[node name="PressurePlate" type="Area3D"]
+[node name="PressurePlate" type="Area3D" unique_id=781312784]
 process_mode = 1
 collision_layer = 5
 collision_mask = 36
 script = ExtResource("1_78xe4")
 is_on = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=697687969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_0p7xg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1830509113]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+material_override = SubResource("StandardMaterial3D_awos8")
 mesh = SubResource("BoxMesh_yjbx8")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_awos8")
 
-[node name="Base_MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Base_MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1078981262]
 mesh = SubResource("BoxMesh_et7wn")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_6m5yw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_6p4oa")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=238380262]
+libraries/ = SubResource("AnimationLibrary_6p4oa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

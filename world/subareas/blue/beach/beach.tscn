@@ -4,8 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bdxxs2kdxlsxy" path="res://world/subareas/blue/beach/beach_caves.tscn" id="2_1otd5"]
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_5jrit"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="4_sgeyw"]
+[ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="5_0xv0c"]
 [ext_resource type="PackedScene" uid="uid://cjkcvlvidp24x" path="res://src/beastiary/spawner.tscn" id="5_ji4u4"]
 [ext_resource type="PackedScene" uid="uid://1j4ube5clyn" path="res://data/beastiary/tests/b_default.tscn" id="6_ji4u4"]
+[ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="6_m3tiu"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="7_ji4u4"]
 [ext_resource type="PackedScene" uid="uid://c58vw11neqnxf" path="res://assets/3d/objects/blue/beach/lamppost.tscn" id="8_1otd5"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="8_5jrit"]
@@ -50,7 +52,7 @@ size = Vector3(9, 1, 6)
 
 [node name="Beach" type="Node3D" unique_id=1298904294]
 
-[node name="MainBeachEnv" parent="." unique_id=2093085992 instance=ExtResource("1_ryk2o")]
+[node name="MainBeachEnv" parent="." unique_id=232499275 instance=ExtResource("1_ryk2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 33.33571)
 
 [node name="BeachChunk" type="Area3D" parent="." unique_id=1239770108 node_paths=PackedStringArray("chunk", "non_persistent") groups=["chunk", "persist"]]
@@ -97,7 +99,7 @@ font_size = 64
 [node name="BacktrackingPuzzle" type="Node3D" parent="BeachChunk/Chunk" unique_id=1134049435]
 
 [node name="MagiclayRock" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=323243083 instance=ExtResource("4_sgeyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.602646, 3.4, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.397354, 3.4, 23)
 _element = 3
 
 [node name="MagiclayRock2" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=976536940 instance=ExtResource("4_sgeyw")]
@@ -105,13 +107,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.602646, 3.4, 23)
 _element = 6
 
 [node name="MagiclayRock3" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=981994941 instance=ExtResource("4_sgeyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.602646, 3.4, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.397354, 3.4, 24)
 _element = 0
 
 [node name="Geyser" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=1329560048 instance=ExtResource("7_ji4u4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.602646, 3, 28)
 size = 13.0
-_element = 0
+
+[node name="Gate" parent="BeachChunk/Chunk" unique_id=130284175 node_paths=PackedStringArray("locks") instance=ExtResource("5_0xv0c")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -47.547356, 3, 25)
+locks = [NodePath("../PressurePlate")]
+permanent = true
+
+[node name="PressurePlate" parent="BeachChunk/Chunk" unique_id=347881199 instance=ExtResource("6_m3tiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.397354, 3, 24)
+_element = 3
 
 [node name="BeachCaves" parent="." unique_id=1901693184 instance=ExtResource("2_1otd5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342, 0, 126.336)

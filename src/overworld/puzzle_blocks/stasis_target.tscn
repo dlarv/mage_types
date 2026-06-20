@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8x2e1fn77n3a"]
+[gd_scene format=3 uid="uid://c8x2e1fn77n3a"]
 
 [ext_resource type="Script" uid="uid://c0nrt5wd3vk7p" path="res://src/overworld/puzzle_blocks/StasisTarget.gd" id="1_lyv8x"]
 
@@ -9,14 +9,14 @@
 [sub_resource type="BoxMesh" id="BoxMesh_qxp1n"]
 material = SubResource("StandardMaterial3D_qxp1n")
 
-[node name="StasisTarget" type="StaticBody3D"]
+[node name="StasisTarget" type="StaticBody3D" unique_id=158415607]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_lyv8x")
 is_on = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=190339258]
 shape = SubResource("BoxShape3D_gculk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1688651144]
 mesh = SubResource("BoxMesh_qxp1n")

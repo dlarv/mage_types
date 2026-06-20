@@ -5,6 +5,8 @@ class_name MagiClay
 signal stasis_ended()
 signal element_changed(element: ElementalType)
 
+const MagiClayShader := preload("res://assets/shaders/clay_shader/magiclay.gdshader")
+
 @export_category("Elemental Traits")
 @export var _element := ElementalType.ElementId.BLANK:
 	get:
@@ -19,8 +21,11 @@ var element: ElementalType = ElementManager.Blank:
 			value = ElementManager.Blank
 		element = value 
 		element_changed.emit(value)
-		if Engine.is_editor_hint():
-			_material = StandardMaterial3D.new()
+		_try_set_color()
+		
+		# if Engine.is_editor_hint():
+		# 	_material = ShaderMaterial.new()
+		# 	_material.shader = MagiClayShader
 @export var is_breakable: bool
 @export var is_transmutable: bool
 @export var in_stasis: bool
@@ -35,11 +40,14 @@ var element: ElementalType = ElementManager.Blank:
 
 @export var base_size := Vector3(1, 1, 1)
 
-var puzzle_name: String
-var spawn_position: Vector3
+@onready var puzzle_name := "%s.%s" % [get_parent().name, name]
+@onready var spawn_position := global_position
 
 var _mesh_instance: MeshInstance3D: get = _get_mesh
-var _material: BaseMaterial3D: set = _set_material
+var _material: Material:
+	get:
+		if _mesh_instance == null: return
+		return _mesh_instance.get_active_material(0)
 var _original_element: ElementalType = null
 
 # When this object is hit by a laser, this value is checked against the projectile's value.
@@ -54,15 +62,20 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	_material = StandardMaterial3D.new()
-	puzzle_name = "%s.%s" % [get_parent().name, name]
-	spawn_position = global_position
+	# if _mesh_instance:
+	# 	_material = _mesh_instance.get_active_material(0)
+	_try_set_color()
 
 
 ## color: Color | null
 func _try_set_color(color:Variant=null) -> bool:
 	if not _material: return false
 	if not element: return false
+
+	if _material is ShaderMaterial:
+		_material.set_shader_parameter("element_id", element.id)
+		return false
+
 	if color == null:
 		_material.albedo_color = element.main_color
 	else:
@@ -168,12 +181,12 @@ func _get_mesh() -> MeshInstance3D:
 	return $MeshInstance3D
 
 
-func _set_material(val: BaseMaterial3D) -> void:
-		_material = val
-		if _mesh_instance == null: return
-		_mesh_instance.set_surface_override_material(0, _material)
-		_try_set_color()
-
+# func _set_material(val: Material) -> void:
+# 	_material = val
+# 	if _mesh_instance == null: return
+# 	_mesh_instance.set_surface_override_material(0, _material)
+# 	_try_set_color()
+#
 
 func flicker_collider() -> void:
 	if Engine.is_editor_hint() or not is_inside_tree(): return

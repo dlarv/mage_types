@@ -10,7 +10,7 @@ global uniform vec4 element_y;
 global uniform vec4 element_g;
 global uniform vec4 element_c;
 
-uniform int element_id: hint_enum("Blue", "Purple", "Magenta", "Red", "Orange", "Yellow", "Green", "Cyan");
+uniform int element_id: hint_enum("Blue", "Purple", "Magenta", "Red", "Orange", "Yellow", "Green", "Cyan", "Blank");
 
 void vertex() {
 	inv_modelview_matrix = inverse(MODELVIEW_MATRIX);
@@ -34,6 +34,8 @@ vec3 get_color() {
 			return element_g.rgb;
 		case 7:
 			return element_c.rgb;
+		case 8:
+			return vec3(0.5);
 	}
 }
 

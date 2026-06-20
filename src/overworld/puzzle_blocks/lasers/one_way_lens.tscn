@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c48iivqbcp8bi"]
+[gd_scene format=3 uid="uid://c48iivqbcp8bi"]
 
 [ext_resource type="Script" uid="uid://cgbfpm0att0vk" path="res://src/overworld/puzzle_blocks/lasers/OneWayLens.gd" id="1_tb7mf"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_m6xfh"]
@@ -7,34 +7,34 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_32gow"]
 size = Vector3(1, 2, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmdlc"]
+resource_local_to_scene = true
+
 [sub_resource type="PrismMesh" id="PrismMesh_82wpf"]
 size = Vector3(0.75, 1, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seb6b"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0me1"]
 size = Vector3(0.8, 2, 0.1)
 
-[node name="OneWayLens" type="StaticBody3D"]
+[node name="OneWayLens" type="StaticBody3D" unique_id=774121638]
 collision_layer = 23
 script = ExtResource("1_tb7mf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=258932257]
 shape = SubResource("BoxShape3D_32gow")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=937217782]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.000661999)
+material_override = SubResource("StandardMaterial3D_qmdlc")
 mesh = SubResource("PrismMesh_82wpf")
-surface_material_override/0 = SubResource("StandardMaterial3D_seb6b")
 
-[node name="SubReceiver" parent="." instance=ExtResource("2_m6xfh")]
+[node name="SubReceiver" parent="." unique_id=345917557 instance=ExtResource("2_m6xfh")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver" unique_id=174992832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0, 0.5)
 shape = SubResource("BoxShape3D_j0me1")
 
-[node name="SubEmitter" parent="." instance=ExtResource("3_4audp")]
+[node name="SubEmitter" parent="." unique_id=1039339519 instance=ExtResource("3_4audp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.6)
 
 [connection signal="laser_dropped" from="SubReceiver" to="." method="_on_laser_dropped"]

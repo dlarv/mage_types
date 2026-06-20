@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_3.tscn" id="16_cjdov"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
-[ext_resource type="PackedScene" uid="uid://d24svew3u3qcb" path="res://world/subareas/blue/caves/caves_n.tscn" id="19_6h34i"]
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/objects/blue/hotel/side_table.tscn" id="19_ts5q1"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/objects/blue/hotel/ice_machine.tscn" id="20_iqqkl"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/objects/blue/hotel/vase_blue.tscn" id="21_yq576"]
@@ -20,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://3msomq4tjs6m" path="res://assets/3d/characters/blue_aligned/bartender.blend" id="23_mwtcr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
+size = Vector3(2, 3.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gn7b1"]
 size = Vector3(8.3, 7, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qoepi"]
@@ -180,18 +182,18 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/BeachToCaves" unique_id=773043163]
-transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, 5.299301, 6.2430186, 3.869812)
+transform = Transform3D(1, 0, 1.0658141e-14, 0, 1, 0, -1.0658141e-14, 0, 1, 0.4992981, 4.4930186, 2.7698135)
 shape = SubResource("BoxShape3D_0d6dj")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/BeachToCaves/CollisionShape3D" unique_id=896008462]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/BeachToCaves" unique_id=2112308595]
 transform = Transform3D(-1, 0, 8.742276e-08, 0, 1, 0, -8.742276e-08, 0, -1, 136.49933, 1.2430186, 112.36981)
 shape = SubResource("BoxShape3D_0d6dj")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/BeachToCaves/CollisionShape3D2" unique_id=654940019]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="CavesToHotelExterior" type="Area3D" parent="Doors" unique_id=1900296074 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.5, 0, 57)
@@ -202,14 +204,14 @@ point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/CavesToHotelExterior" unique_id=166856171]
 transform = Transform3D(-4.3711378e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711378e-08, -0.70069885, 22.74302, 0.11981201)
-shape = SubResource("BoxShape3D_0d6dj")
+shape = SubResource("BoxShape3D_gn7b1")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/CavesToHotelExterior/CollisionShape3D" unique_id=1300978196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/CavesToHotelExterior" unique_id=56970316]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 213.49933, 1.9430187, 49.869812)
-shape = SubResource("BoxShape3D_0d6dj")
+shape = SubResource("BoxShape3D_gn7b1")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/CavesToHotelExterior/CollisionShape3D2" unique_id=266417111]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 1)
@@ -1453,9 +1455,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3, 3.8, -274.7)
 size = 48.0
 _element = 5
 base_size = Vector3(-452.3, 3.8, -403.7)
-
-[node name="CavesN" parent="." unique_id=749743201 instance=ExtResource("19_6h34i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184, 0, -352)
 
 [node name="WestHotel" parent="." unique_id=2129615624 instance=ExtResource("22_yncb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)

@@ -1,16 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bro12iw6ll4yg"]
+[gd_scene format=3 uid="uid://bro12iw6ll4yg"]
 
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_x47xi"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="2_88vum"]
+[ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_ecm5f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ecm5f"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecm5f"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_ecm5f")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/element_id = 8
+
 [sub_resource type="BoxMesh" id="BoxMesh_6a5d6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5ahk"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ecm5f"]
 
-[node name="MagiclayRock" type="RigidBody3D"]
+[node name="MagiclayRock" type="RigidBody3D" unique_id=1333995149]
 collision_layer = 71
 collision_mask = 5
 axis_lock_angular_y = true
@@ -20,23 +32,26 @@ max_contacts_reported = 100
 script = ExtResource("1_x47xi")
 is_transmutable = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=909635873]
 shape = SubResource("BoxShape3D_ecm5f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=346690245]
+material_override = SubResource("ShaderMaterial_ecm5f")
 mesh = SubResource("BoxMesh_6a5d6")
-surface_material_override/0 = SubResource("StandardMaterial3D_y5ahk")
 
-[node name="Draggable" parent="." instance=ExtResource("2_88vum")]
+[node name="Draggable" parent="." unique_id=83737622 instance=ExtResource("2_88vum")]
 
-[node name="Marker3D_South" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_South" type="Marker3D" parent="Draggable" unique_id=1675872042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3)
 
-[node name="Marker3D_North" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_North" type="Marker3D" parent="Draggable" unique_id=277024954]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 
-[node name="Marker3D_East" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_East" type="Marker3D" parent="Draggable" unique_id=1679616438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
 
-[node name="Marker3D_West" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_West" type="Marker3D" parent="Draggable" unique_id=1069072770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1683994643]
+process_material = SubResource("ParticleProcessMaterial_ecm5f")

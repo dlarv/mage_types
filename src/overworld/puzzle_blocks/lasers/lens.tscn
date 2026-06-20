@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://84cyfc8t4t04"]
+[gd_scene format=3 uid="uid://84cyfc8t4t04"]
 
 [ext_resource type="Script" uid="uid://c8u80ydrf3muh" path="res://src/overworld/puzzle_blocks/lasers/Lens.gd" id="1_o784s"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="1_v6um2"]
@@ -7,21 +7,22 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_32gow"]
 size = Vector3(1.4, 2, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_br73x"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_f28pe"]
+material = SubResource("StandardMaterial3D_br73x")
 top_radius = 0.1
 bottom_radius = 0.7
 height = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyard"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm6jo"]
+resource_local_to_scene = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_b7i8g"]
 top_radius = 0.1
 bottom_radius = 0.7
 height = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y6v3"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0me1"]
 size = Vector3(1.4, 1.4, 0.1)
@@ -29,47 +30,46 @@ size = Vector3(1.4, 1.4, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qtdtg"]
 size = Vector3(1.6, 1.6, 1.4)
 
-[node name="Lens" type="StaticBody3D"]
+[node name="Lens" type="StaticBody3D" unique_id=1110487361]
 collision_layer = 23
 script = ExtResource("1_o784s")
 is_transmutable = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1031251370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0)
 shape = SubResource("BoxShape3D_32gow")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1626568170]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.300662)
 mesh = SubResource("CylinderMesh_f28pe")
-surface_material_override/0 = SubResource("StandardMaterial3D_oyard")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=774257133]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.295207)
+material_override = SubResource("StandardMaterial3D_mm6jo")
 mesh = SubResource("CylinderMesh_b7i8g")
-surface_material_override/0 = SubResource("StandardMaterial3D_8y6v3")
 
-[node name="SubReceiver1" parent="." instance=ExtResource("1_v6um2")]
+[node name="SubReceiver1" parent="." unique_id=1842763126 instance=ExtResource("1_v6um2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver1" unique_id=883631963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45058e-08, 5.96046e-08, 0.5)
 shape = SubResource("BoxShape3D_j0me1")
 
-[node name="SubReceiver2" parent="." instance=ExtResource("1_v6um2")]
+[node name="SubReceiver2" parent="." unique_id=403064018 instance=ExtResource("1_v6um2")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiver2" unique_id=1015862134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0, 0.5)
 shape = SubResource("BoxShape3D_j0me1")
 
-[node name="SubEmitter1" parent="." instance=ExtResource("2_estkt")]
+[node name="SubEmitter1" parent="." unique_id=1684312849 instance=ExtResource("2_estkt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
 
-[node name="SubEmitter2" parent="." instance=ExtResource("2_estkt")]
+[node name="SubEmitter2" parent="." unique_id=123850350 instance=ExtResource("2_estkt")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.6)
 
-[node name="Blocker" type="Area3D" parent="."]
+[node name="Blocker" type="Area3D" parent="." unique_id=170502225]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker" unique_id=1098324209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08)
 shape = SubResource("BoxShape3D_qtdtg")
 

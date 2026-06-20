@@ -1,20 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4x37iu3x3ttk"]
+[gd_scene format=3 uid="uid://b4x37iu3x3ttk"]
 
 [ext_resource type="Script" uid="uid://8kuun6qlgqwa" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_3jqdt"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="1_jy6gi"]
+[ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_417ub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfreq"]
 size = Vector3(1.4, 1, 1.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuol1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_417ub")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/element_id = 0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4vvit"]
 top_radius = 0.7
 bottom_radius = 0.7
 height = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o76v0"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-
-[node name="MagiclayDisk" type="RigidBody3D"]
+[node name="MagiclayDisk" type="RigidBody3D" unique_id=570814267]
 collision_layer = 7
 collision_mask = 5
 axis_lock_angular_x = true
@@ -29,24 +39,24 @@ script = ExtResource("1_3jqdt")
 is_transmutable = true
 base_size = Vector3(0.7, 0.7, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1566032952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08)
 shape = SubResource("BoxShape3D_kfreq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=297407677]
+material_override = SubResource("ShaderMaterial_xuol1")
 mesh = SubResource("CylinderMesh_4vvit")
-surface_material_override/0 = SubResource("StandardMaterial3D_o76v0")
 
-[node name="Draggable" parent="." instance=ExtResource("1_jy6gi")]
+[node name="Draggable" parent="." unique_id=918144192 instance=ExtResource("1_jy6gi")]
 
-[node name="Marker3D_South" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_South" type="Marker3D" parent="Draggable" unique_id=372010522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 1.3)
 
-[node name="Marker3D_North" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_North" type="Marker3D" parent="Draggable" unique_id=1353497986]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -1.3)
 
-[node name="Marker3D_East" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_East" type="Marker3D" parent="Draggable" unique_id=484296301]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, -0.2, 0)
 
-[node name="Marker3D_West" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_West" type="Marker3D" parent="Draggable" unique_id=900352696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -0.2, 0)

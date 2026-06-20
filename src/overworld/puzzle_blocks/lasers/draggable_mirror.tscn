@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8862iat02o7"]
+[gd_scene format=3 uid="uid://b8862iat02o7"]
 
 [ext_resource type="Script" uid="uid://dcbruga52ai60" path="res://src/overworld/puzzle_blocks/lasers/Mirror.gd" id="1_i7v82"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="3_ityay"]
@@ -15,12 +15,13 @@ radius = 0.994533
 [sub_resource type="BoxShape3D" id="BoxShape3D_3422r"]
 size = Vector3(2, 0.4, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf55b"]
+resource_local_to_scene = true
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_0occk"]
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf55b"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8wmk"]
 
@@ -36,7 +37,7 @@ size = Vector3(0.15, 2.06174, 0.15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xkiah"]
 size = Vector3(1.29272, 2.62781, 1.26697)
 
-[node name="DraggableMirror" type="RigidBody3D"]
+[node name="DraggableMirror" type="RigidBody3D" unique_id=1346370700]
 collision_layer = 23
 collision_mask = 7
 axis_lock_linear_y = true
@@ -49,82 +50,82 @@ linear_damp = 100.0
 script = ExtResource("1_i7v82")
 is_transmutable = true
 
-[node name="Base" type="MeshInstance3D" parent="."]
+[node name="Base" type="MeshInstance3D" parent="." unique_id=258249812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("BoxMesh_4tnhy")
 skeleton = NodePath("")
 
-[node name="BaseCollider" type="CollisionShape3D" parent="."]
+[node name="BaseCollider" type="CollisionShape3D" parent="." unique_id=1840941871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_pqgmg")
 
-[node name="Draggable" parent="." instance=ExtResource("3_ityay")]
+[node name="Draggable" parent="." unique_id=196405863 instance=ExtResource("3_ityay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 scaling_factor = 2.0
 restrict_axis = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Draggable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Draggable" unique_id=1504611024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226855, 0)
 shape = SubResource("BoxShape3D_3422r")
 
-[node name="Marker3D_South" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_South" type="Marker3D" parent="Draggable" unique_id=2067022235]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 2)
 
-[node name="Marker3D_North" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_North" type="Marker3D" parent="Draggable" unique_id=1029868316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -2)
 
-[node name="Marker3D_East" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_East" type="Marker3D" parent="Draggable" unique_id=1697070850]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.3, 0)
 
-[node name="Marker3D_West" type="Marker3D" parent="Draggable"]
+[node name="Marker3D_West" type="Marker3D" parent="Draggable" unique_id=1702334579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.3, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=483066227]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_uf55b")
 mesh = SubResource("PrismMesh_0occk")
-surface_material_override/0 = SubResource("StandardMaterial3D_uf55b")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=120351828]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 2.18557e-08)
 shape = SubResource("BoxShape3D_n8wmk")
 
-[node name="SubEmitterX" parent="." instance=ExtResource("3_jn2h4")]
+[node name="SubEmitterX" parent="." unique_id=1408004018 instance=ExtResource("3_jn2h4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.919238, 1, 0)
 
-[node name="SubReceiverX" parent="." instance=ExtResource("4_u0nan")]
+[node name="SubReceiverX" parent="." unique_id=1131616353 instance=ExtResource("4_u0nan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverX"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverX" unique_id=277596446]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.00771, 0)
 shape = SubResource("BoxShape3D_stuax")
 
-[node name="SubEmitterZ" parent="." instance=ExtResource("3_jn2h4")]
+[node name="SubEmitterZ" parent="." unique_id=2139275550 instance=ExtResource("3_jn2h4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.00729)
 
-[node name="SubReceiverZ" parent="." instance=ExtResource("4_u0nan")]
+[node name="SubReceiverZ" parent="." unique_id=1233229322 instance=ExtResource("4_u0nan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverZ"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubReceiverZ" unique_id=1423428871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00771, 0.55)
 shape = SubResource("BoxShape3D_1rmwu")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=145162395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1841754158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55056, 0.980872, 0.55056)
 shape = SubResource("BoxShape3D_udp2s")
 
-[node name="Blocker" type="Area3D" parent="."]
+[node name="Blocker" type="Area3D" parent="." unique_id=2002169948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 collision_layer = 0
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker" unique_id=1490507561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0394287, 1.0232, 0.0504761)
 shape = SubResource("BoxShape3D_xkiah")
 

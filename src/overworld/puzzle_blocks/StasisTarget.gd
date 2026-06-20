@@ -4,12 +4,14 @@ extends PuzzleBlock
 
 func _ready() -> void:
 	_material = $MeshInstance3D.get_active_material(0)
-	_material.albedo_color = Color.GRAY
+	if _material != null:
+		_material.albedo_color = Color.GRAY
 
 
 #override
 func set_stasis(val: Variant=null) -> void:
 	super.set_stasis(val)
+	if _material == null: return
 
 	if in_stasis:
 		on.emit(self)

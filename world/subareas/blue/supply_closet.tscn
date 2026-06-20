@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://h8buyp6ewnv8"]
+[gd_scene format=3 uid="uid://h8buyp6ewnv8"]
 
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="1_6yy2f"]
 [ext_resource type="Script" uid="uid://bm8bdk7ovghsh" path="res://addons/room_and_portals/RoomPortal.gd" id="1_yjrln"]
@@ -52,10 +52,6 @@ size = Vector3(54, 29, 49)
 resource_name = "Gray Key"
 script = ExtResource("20_b0ned")
 item = ExtResource("21_py2t0")
-id = 0
-quantity = 1
-max_quantity = 9999
-allow_stacking = false
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sy7e0"]
@@ -65,10 +61,14 @@ size = Vector3(35, 25, 34)
 size = Vector3(31, 10, 31)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_08btr"]
-size = Vector3(19, 14, 38)
+size = Vector3(19, 14, 52)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qkwyv"]
 size = Vector3(37, 14, 38)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py2t0"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0.862745, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ji4qd"]
 size = Vector3(21, 11, 31)
@@ -79,234 +79,257 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_81dig"]
 size = Vector3(1, 2, 1)
 
-[node name="SupplyCloset" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_py2t0"]
+size = Vector3(36, 7, 30)
 
-[node name="Doors" type="Node3D" parent="."]
+[node name="SupplyCloset" type="Node3D" unique_id=1990538531]
 
-[node name="SupplyClosetToHallway" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="Doors" type="Node3D" parent="." unique_id=1880019123]
+
+[node name="SupplyClosetToHallway" type="Area3D" parent="Doors" unique_id=1594753082 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53, 0, -3.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/SupplyClosetToHallway"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/SupplyClosetToHallway" unique_id=604036351]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 0.499972, 3.8, 58)
 shape = SubResource("BoxShape3D_h1qq4")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/SupplyClosetToHallway/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/SupplyClosetToHallway/CollisionShape3D" unique_id=756004874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/SupplyClosetToHallway"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/SupplyClosetToHallway" unique_id=680327456]
 transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 3.4, 4, 6.7)
 shape = SubResource("BoxShape3D_reta6")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/SupplyClosetToHallway/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/SupplyClosetToHallway/CollisionShape3D2" unique_id=22912794]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.8, 0)
 
-[node name="HallwayToGolemFacility" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="HallwayToGolemFacility" type="Area3D" parent="Doors" unique_id=245591094 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 75.3, 0, -3.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToGolemFacility"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToGolemFacility" unique_id=154882046]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 3.49997, 3.8, 19.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToGolemFacility/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToGolemFacility/CollisionShape3D" unique_id=446150215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToGolemFacility"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToGolemFacility" unique_id=1715835782]
 transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 23.9, 4, 11.7)
 shape = SubResource("BoxShape3D_reta6")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToGolemFacility/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToGolemFacility/CollisionShape3D2" unique_id=1497610630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.8, 0)
 
-[node name="HallwayToVortexEngine" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="HallwayToVortexEngine" type="Area3D" parent="Doors" unique_id=1609145620 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 75.3, 0, -20.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToVortexEngine"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToVortexEngine" unique_id=486160546]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 4.49997, 3.8, 19.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToVortexEngine/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToVortexEngine/CollisionShape3D" unique_id=632685203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToVortexEngine"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToVortexEngine" unique_id=1609045024]
 transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 4.5, 5, 11)
 shape = SubResource("BoxShape3D_reta6")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToVortexEngine/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToVortexEngine/CollisionShape3D2" unique_id=426638616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.8, 0)
 
-[node name="HallwayToRails" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="HallwayToRails" type="Area3D" parent="Doors" unique_id=1012633284 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 58.3, 0, -31.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToRails"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToRails" unique_id=1532699979]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 3.49997, 3.8, 19.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToRails/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToRails/CollisionShape3D" unique_id=415514103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToRails"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToRails" unique_id=1366222632]
 transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 6.5, 4, 12)
 shape = SubResource("BoxShape3D_reta6")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToRails/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToRails/CollisionShape3D2" unique_id=837112741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.8, 0)
 
-[node name="HallwayToLaserLab" type="Area3D" parent="Doors" node_paths=PackedStringArray("point_2")]
+[node name="HallwayToLaserLab" type="Area3D" parent="Doors" unique_id=1540863551 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 80.3, 0, -5.5)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_yjrln")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToLaserLab"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToLaserLab" unique_id=692737956]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 18.5, 5.5, 43.8)
 shape = SubResource("BoxShape3D_h1qq4")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToLaserLab/CollisionShape3D"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToLaserLab/CollisionShape3D" unique_id=1510358741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToLaserLab"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToLaserLab" unique_id=811371531]
 transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, -5.5, 4, 34)
 shape = SubResource("BoxShape3D_reta6")
 
-[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToLaserLab/CollisionShape3D2"]
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToLaserLab/CollisionShape3D2" unique_id=1541284925]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.8, 0)
 
-[node name="MainCloset" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="HallwayToMagiClay" type="Area3D" parent="Doors" unique_id=1809188195 node_paths=PackedStringArray("point_2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 63.300003, 0, -60.5)
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_yjrln")
+point_2 = NodePath("CollisionShape3D2/Marker3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/HallwayToMagiClay" unique_id=1969030701]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 25.5, 3.5, 7.799988)
+shape = SubResource("BoxShape3D_h1qq4")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToMagiClay/CollisionShape3D" unique_id=2123541822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.2, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/HallwayToMagiClay" unique_id=1875571814]
+transform = Transform3D(3.05979e-07, 0, 1, 0, 1, 0, -1, 0, 3.05979e-07, 0.5, 3, 0)
+shape = SubResource("BoxShape3D_reta6")
+
+[node name="Marker3D" type="Marker3D" parent="Doors/HallwayToMagiClay/CollisionShape3D2" unique_id=1635680948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3.8, 0)
+
+[node name="MainCloset" type="Area3D" parent="." unique_id=2129324565 node_paths=PackedStringArray("chunk")]
 script = ExtResource("1_6yy2f")
 chunk = NodePath("SupplyClosetChunk")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="MainCloset" groups=["detached_env_parent"]]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="MainCloset" unique_id=677719981 groups=["detached_env_parent"]]
 use_collision = true
 collision_layer = 17
 
-[node name="CSGBox3D" type="CSGBox3D" parent="MainCloset/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="MainCloset/CSGCombiner3D" unique_id=1901649500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1.5, -7)
 size = Vector3(47, 5, 25)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="MainCloset/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="MainCloset/CSGCombiner3D" unique_id=227883454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 4.7, -6.5)
 operation = 2
 size = Vector3(45, 8.6, 21)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="MainCloset/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="MainCloset/CSGCombiner3D" unique_id=2058803981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5, 4.45, 4.5)
 operation = 2
 size = Vector3(3, 7.1, 2)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="MainCloset/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="MainCloset/CSGCombiner3D" unique_id=544942027]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5, 3.45, -18.5)
 operation = 2
 size = Vector3(3, 5.1, 4)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="MainCloset/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="MainCloset/CSGCombiner3D" unique_id=1196984345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, 3.45, -3.5)
 operation = 2
 size = Vector3(3, 5.1, 4)
 material = ExtResource("22_a42or")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCloset"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCloset" unique_id=952409763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -7)
 shape = SubResource("BoxShape3D_caqob")
 
-[node name="SupplyClosetChunk" type="Node3D" parent="MainCloset"]
+[node name="SupplyClosetChunk" type="Node3D" parent="MainCloset" unique_id=1144692449]
 
-[node name="Delay" parent="MainCloset/SupplyClosetChunk" node_paths=PackedStringArray("locks") instance=ExtResource("2_jk5ic")]
+[node name="Delay" parent="MainCloset/SupplyClosetChunk" unique_id=1869233670 node_paths=PackedStringArray("locks") instance=ExtResource("2_jk5ic")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 1, -10)
 locks = [NodePath("Button")]
 permanent = false
 
-[node name="Button" parent="MainCloset/SupplyClosetChunk/Delay" instance=ExtResource("3_ybmg7")]
+[node name="Button" parent="MainCloset/SupplyClosetChunk/Delay" unique_id=1748603716 instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.1, 0)
 toggle_mode = true
 
-[node name="Indicator" parent="MainCloset/SupplyClosetChunk/Delay" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator" parent="MainCloset/SupplyClosetChunk/Delay" unique_id=1135230028 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 block = NodePath("..")
 
-[node name="Geyser" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser" parent="MainCloset/SupplyClosetChunk" unique_id=476672655 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0.4, -16)
-_element = 0
 
-[node name="Geyser2" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser2" parent="MainCloset/SupplyClosetChunk" unique_id=394280800 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.4, -16)
 _element = 1
 
-[node name="Geyser3" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser3" parent="MainCloset/SupplyClosetChunk" unique_id=1707693994 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0.4, -16)
 _element = 2
 
-[node name="Geyser4" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser4" parent="MainCloset/SupplyClosetChunk" unique_id=2066532474 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.4, -16)
 _element = 3
 
-[node name="Geyser5" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser5" parent="MainCloset/SupplyClosetChunk" unique_id=1067337592 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.4, -16)
 _element = 4
 
-[node name="Geyser6" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser6" parent="MainCloset/SupplyClosetChunk" unique_id=1201177039 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.4, -16)
 _element = 5
 
-[node name="Geyser7" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser7" parent="MainCloset/SupplyClosetChunk" unique_id=897778708 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0.4, -16)
 _element = 6
 
-[node name="Geyser8" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("4_cfair")]
+[node name="Geyser8" parent="MainCloset/SupplyClosetChunk" unique_id=988950210 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.4, -16)
 _element = 7
 
-[node name="Relay" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("7_vuo6s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.4, -2)
+[node name="Relay" parent="MainCloset/SupplyClosetChunk" unique_id=132528838 instance=ExtResource("7_vuo6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.4, -5.0693717)
 
-[node name="Reset" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("8_3n6eg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.91784, -2)
+[node name="Reset" parent="MainCloset/SupplyClosetChunk" unique_id=1476476636 instance=ExtResource("8_3n6eg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.91784, -5.0693717)
 
-[node name="StasisTarget" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("9_dh4o4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.9, -2)
+[node name="StasisTarget" parent="MainCloset/SupplyClosetChunk" unique_id=780316751 instance=ExtResource("9_dh4o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.9, -5.0693717)
 
-[node name="Indicator" parent="MainCloset/SupplyClosetChunk/StasisTarget" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator" parent="MainCloset/SupplyClosetChunk/StasisTarget" unique_id=390489635 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.9, 0)
 block = NodePath("..")
 
-[node name="Timer" parent="MainCloset/SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("17_wb5h5")]
+[node name="Timer" parent="MainCloset/SupplyClosetChunk" unique_id=544179692 node_paths=PackedStringArray("lock") instance=ExtResource("17_wb5h5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 1, -10)
 lock = NodePath("Button")
 delay = 5.0
 
-[node name="Indicator" parent="MainCloset/SupplyClosetChunk/Timer" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator" parent="MainCloset/SupplyClosetChunk/Timer" unique_id=1864462369 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 block = NodePath("..")
 
-[node name="Button" parent="MainCloset/SupplyClosetChunk/Timer" instance=ExtResource("3_ybmg7")]
+[node name="Button" parent="MainCloset/SupplyClosetChunk/Timer" unique_id=278317871 instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 toggle_mode = false
 
-[node name="EnvDoorButton" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("3_ybmg7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0.9, -2)
+[node name="EnvDoorButton" parent="MainCloset/SupplyClosetChunk" unique_id=1428415514 instance=ExtResource("3_ybmg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0.9, -5.0693717)
 toggle_mode = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="MainCloset/SupplyClosetChunk/EnvDoorButton" node_paths=PackedStringArray("locks")]
+[node name="CSGBox3D" type="CSGBox3D" parent="MainCloset/SupplyClosetChunk/EnvDoorButton" unique_id=1470954711 node_paths=PackedStringArray("locks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -1)
 use_collision = true
 size = Vector3(1, 2, 1)
@@ -314,7 +337,7 @@ material = ExtResource("22_a42or")
 script = ExtResource("18_stt5w")
 locks = [NodePath("..")]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="MainCloset/SupplyClosetChunk/EnvDoorButton" node_paths=PackedStringArray("locks")]
+[node name="CSGBox3D2" type="CSGBox3D" parent="MainCloset/SupplyClosetChunk/EnvDoorButton" unique_id=1797274244 node_paths=PackedStringArray("locks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -1)
 use_collision = true
 size = Vector3(1, 2, 1)
@@ -323,136 +346,138 @@ script = ExtResource("18_stt5w")
 visible_when_open = false
 locks = [NodePath("..")]
 
-[node name="FlipFlop" parent="MainCloset/SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("19_ufdma")]
+[node name="FlipFlop" parent="MainCloset/SupplyClosetChunk" unique_id=1125877408 node_paths=PackedStringArray("lock") instance=ExtResource("19_ufdma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.8, -10)
 lock = NodePath("FlipFlopButton")
 
-[node name="FlipFlopButton" parent="MainCloset/SupplyClosetChunk/FlipFlop" instance=ExtResource("3_ybmg7")]
+[node name="FlipFlopButton" parent="MainCloset/SupplyClosetChunk/FlipFlop" unique_id=1840166125 instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 toggle_mode = false
 
-[node name="Indicator" parent="MainCloset/SupplyClosetChunk/FlipFlop" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator" parent="MainCloset/SupplyClosetChunk/FlipFlop" unique_id=1725072735 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, -0.5, 0)
 block = NodePath("..")
 
-[node name="FlipFlop2" parent="MainCloset/SupplyClosetChunk" node_paths=PackedStringArray("lock") instance=ExtResource("19_ufdma")]
+[node name="FlipFlop2" parent="MainCloset/SupplyClosetChunk" unique_id=224935581 node_paths=PackedStringArray("lock") instance=ExtResource("19_ufdma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.8, -10)
 lock = NodePath("FlipFlopLever")
 
-[node name="FlipFlopLever" parent="MainCloset/SupplyClosetChunk/FlipFlop2" instance=ExtResource("3_ybmg7")]
+[node name="FlipFlopLever" parent="MainCloset/SupplyClosetChunk/FlipFlop2" unique_id=762568470 instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 toggle_mode = true
 
-[node name="Indicator" parent="MainCloset/SupplyClosetChunk/FlipFlop2" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator" parent="MainCloset/SupplyClosetChunk/FlipFlop2" unique_id=2135814202 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, -0.5, 0)
 block = NodePath("..")
 
-[node name="PressurePlateDemo" type="Node3D" parent="MainCloset/SupplyClosetChunk"]
+[node name="PressurePlateDemo" type="Node3D" parent="MainCloset/SupplyClosetChunk" unique_id=827636042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -11)
 
-[node name="PressurePlate" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" instance=ExtResource("5_ib2ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.4, 9)
+[node name="PressurePlate" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" unique_id=117157763 instance=ExtResource("5_ib2ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.4, 5.9306283)
 can_player_trigger = true
 
-[node name="PressurePlate2" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" instance=ExtResource("5_ib2ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.4, 9)
+[node name="PressurePlate2" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" unique_id=750777721 instance=ExtResource("5_ib2ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.4, 5.9306283)
 
-[node name="PressurePlate3" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" instance=ExtResource("5_ib2ey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.4, 9)
+[node name="PressurePlate3" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" unique_id=407313684 instance=ExtResource("5_ib2ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.4, 5.9306283)
 _element = 0
 
-[node name="MagiclayRock" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" instance=ExtResource("6_1kab2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1.9, 9)
+[node name="MagiclayRock" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" unique_id=1474651641 instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1.9, 5.9306283)
 
-[node name="CatalystPlatform" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" instance=ExtResource("15_rfm8t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.458283, 9)
+[node name="CatalystPlatform" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" unique_id=1941142657 instance=ExtResource("15_rfm8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.458283, 5.9306283)
 trigger_on_contact = true
 is_transmutable = true
 
-[node name="CatalystDevice" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" instance=ExtResource("12_n5qqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.458283, 11)
+[node name="CatalystDevice" parent="MainCloset/SupplyClosetChunk/PressurePlateDemo" unique_id=1501972700 instance=ExtResource("12_n5qqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.458283, 7.9306283)
 
-[node name="KeyGate" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("30_lojfm")]
+[node name="KeyGate" parent="MainCloset/SupplyClosetChunk" unique_id=1618151758 instance=ExtResource("30_lojfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5252, 0.941382, -17.2054)
 key_name = &"GRAY_KEY"
 
-[node name="Chest" parent="MainCloset/SupplyClosetChunk" instance=ExtResource("19_f27vr")]
+[node name="Chest" parent="MainCloset/SupplyClosetChunk" unique_id=8846510 instance=ExtResource("19_f27vr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 0.4, -16)
 items = Array[ExtResource("20_b0ned")]([SubResource("Resource_uf111")])
 
-[node name="GolemTestingFacility" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="MagiclayRock" parent="MainCloset/SupplyClosetChunk" unique_id=1341185139 instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 1, -4)
+
+[node name="GolemTestingFacility" type="Area3D" parent="." unique_id=594552067 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 18)
 script = ExtResource("1_6yy2f")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://cjk323awkifki"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GolemTestingFacility"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GolemTestingFacility" unique_id=1317558421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 3)
 shape = SubResource("BoxShape3D_sy7e0")
 
-[node name="Chunk" type="Node3D" parent="GolemTestingFacility"]
+[node name="Chunk" type="Node3D" parent="GolemTestingFacility" unique_id=1020402496]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="GolemTestingFacility/Chunk"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="GolemTestingFacility/Chunk" unique_id=807903412]
 use_collision = true
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D" unique_id=1287115481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6, 3, 3)
 size = Vector3(34.5, 8, 34)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D" unique_id=1188578198]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 4, 3)
 operation = 2
 size = Vector3(33, 8, 33)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D" unique_id=1131540411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.25, 2, -10.5)
 size = Vector3(10.5, 4, 6)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D" unique_id=215012528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1, -10.5)
 size = Vector3(10, 2, 6)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="GolemTestingFacility/Chunk/CSGCombiner3D" unique_id=1958767469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 6, 2.5)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="Geyser" parent="GolemTestingFacility/Chunk" instance=ExtResource("4_cfair")]
+[node name="Geyser" parent="GolemTestingFacility/Chunk" unique_id=1430007065 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -6.9)
 base_strength = 5.0
-_element = 0
 
-[node name="PressurePlate" parent="GolemTestingFacility/Chunk" instance=ExtResource("5_ib2ey")]
+[node name="PressurePlate" parent="GolemTestingFacility/Chunk" unique_id=613212014 instance=ExtResource("5_ib2ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0.1, 7)
 _element = 0
 
-[node name="MagiclayRock" parent="GolemTestingFacility/Chunk" instance=ExtResource("6_1kab2")]
+[node name="MagiclayRock" parent="GolemTestingFacility/Chunk" unique_id=1990410733 instance=ExtResource("6_1kab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 5, -10)
 
-[node name="MagiclayRock2" parent="GolemTestingFacility/Chunk" instance=ExtResource("6_1kab2")]
+[node name="MagiclayRock2" parent="GolemTestingFacility/Chunk" unique_id=450644822 instance=ExtResource("6_1kab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 0)
 
-[node name="MagiclayRock3" parent="GolemTestingFacility/Chunk" instance=ExtResource("6_1kab2")]
+[node name="MagiclayRock3" parent="GolemTestingFacility/Chunk" unique_id=1925654448 instance=ExtResource("6_1kab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 5)
 
-[node name="VortexEngineChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="VortexEngineChunk" type="Area3D" parent="." unique_id=345944462 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0, -17)
 script = ExtResource("24_reta6")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VortexEngineChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VortexEngineChunk" unique_id=166038020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4.5, 0)
 shape = SubResource("BoxShape3D_n72vc")
 
-[node name="Chunk" type="Node3D" parent="VortexEngineChunk"]
+[node name="Chunk" type="Node3D" parent="VortexEngineChunk" unique_id=761180006]
 
-[node name="VortexEngine" parent="VortexEngineChunk/Chunk" instance=ExtResource("2_h1qq4")]
+[node name="VortexEngine" parent="VortexEngineChunk/Chunk" unique_id=545164647 instance=ExtResource("2_h1qq4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.86102e-06)
 
 [node name="CSGBox3D" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="0"]
@@ -473,7 +498,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.5, -10.5)
 [node name="CSGBox3D5" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.5, 9.5)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="6"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="6" unique_id=1078926038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 6, 1)
 operation = 2
 size = Vector3(2, 11, 6)
@@ -515,270 +540,279 @@ _element = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.9, 11)
 _element = 0
 
-[node name="Hallway" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="Hallway" type="Area3D" parent="." unique_id=960029443 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 0, -13)
 script = ExtResource("24_reta6")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hallway"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 6.5, -1.5)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hallway" unique_id=896528915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 6.5, -8.5)
 shape = SubResource("BoxShape3D_08btr")
 
-[node name="Chunk" type="Node3D" parent="Hallway"]
+[node name="Chunk" type="Node3D" parent="Hallway" unique_id=1630958047]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Hallway/Chunk"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Hallway/Chunk" unique_id=1302064374]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -1.5)
-size = Vector3(10, 4, 36)
+[node name="CSGBox3D" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=1682636263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -5.5)
+size = Vector3(10, 4, 44)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, -1.5)
+[node name="CSGBox3D2" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=95145968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, -5.5)
 operation = 2
-size = Vector3(9, 4, 35)
+size = Vector3(9, 4, 43)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=1338050487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, 13)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=1841901981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, 2)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=2022846470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5.5, 13)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=1549122401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5.5, -3)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=411178369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, -12)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="LaserLab" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Hallway/Chunk/CSGCombiner3D" unique_id=1836651177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 5.5, -22)
+operation = 2
+size = Vector3(2, 11, 6)
+material = ExtResource("22_a42or")
+
+[node name="LaserLab" type="Area3D" parent="." unique_id=683026757 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 16)
 script = ExtResource("24_reta6")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LaserLab"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LaserLab" unique_id=1381004868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 6.5, -1.5)
 shape = SubResource("BoxShape3D_qkwyv")
 
-[node name="Chunk" type="Node3D" parent="LaserLab"]
+[node name="Chunk" type="Node3D" parent="LaserLab" unique_id=154315129]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LaserLab/Chunk"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LaserLab/Chunk" unique_id=1764370704]
 use_collision = true
 collision_layer = 17
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D" unique_id=479540272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1, -1.5)
 size = Vector3(31, 4, 36)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D" unique_id=961227673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -1.5)
 operation = 2
 size = Vector3(29, 4, 35)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D" unique_id=1260203187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 7, -3)
 operation = 2
 size = Vector3(2, 10, 6)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LaserLab/Chunk/CSGCombiner3D" unique_id=1188899018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, -3)
 size = Vector3(30, 3, 6)
 material = ExtResource("22_a42or")
 
-[node name="LaserAndReceiverDemo" type="Node3D" parent="LaserLab/Chunk"]
+[node name="LaserAndReceiverDemo" type="Node3D" parent="LaserLab/Chunk" unique_id=1829138848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -13)
 
-[node name="HiddenReceiver" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("10_3ghts")]
+[node name="HiddenReceiver" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=1620808975 instance=ExtResource("10_3ghts")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -66.05, 1.4, -5.45)
 _element = 7
 
-[node name="Emitter" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("11_13twe")]
+[node name="Emitter" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=1924363668 instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -66.05, 1.4, 5.55)
 _element = 0
 
-[node name="CatalystDevice" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=191066512 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.05, 0.4, 5.15)
 
-[node name="Emitter3" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("11_13twe")]
+[node name="Emitter3" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=462995839 instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -61.75, 1.4, 5.55)
 _element = 0
 
-[node name="Lens" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("13_m7ws3")]
+[node name="MeshInstance3D" parent="LaserLab/Chunk/LaserAndReceiverDemo/Emitter3" index="2" unique_id=86636321]
+material_override = SubResource("StandardMaterial3D_py2t0")
+
+[node name="Lens" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=441957560 instance=ExtResource("13_m7ws3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -61.7459, 1.4, -1.4)
 
-[node name="CatalystDevice3" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice3" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=549852203 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.75, 0.4, 5.15)
 
-[node name="CatalystDevice4" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice4" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=37870655 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.75, 0.4, -1.85)
 
-[node name="LaserReceiver" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=595031154 instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.8, 1.1, -5.5)
 _element = 7
 
-[node name="Emitter2" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("11_13twe")]
+[node name="Emitter2" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=2125821481 instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -71.05, 1.4, 5.55)
 _element = 0
 
-[node name="LaserReceiver2" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver2" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=967928082 instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8, 1.1, -5.5)
 _element = 7
 
-[node name="CatalystDevice2" parent="LaserLab/Chunk/LaserAndReceiverDemo" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice2" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=648260687 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.05, 0.4, 5.15)
 
-[node name="Indicator" parent="LaserLab/Chunk/LaserAndReceiverDemo" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=564384919 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.3, 1, -5.5)
 block = NodePath("../LaserReceiver")
 
-[node name="Indicator2" parent="LaserLab/Chunk/LaserAndReceiverDemo" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator2" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=2114458599 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1, 1, -5.5)
 block = NodePath("../HiddenReceiver")
 
-[node name="Indicator3" parent="LaserLab/Chunk/LaserAndReceiverDemo" node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
+[node name="Indicator3" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=1096506515 node_paths=PackedStringArray("block") instance=ExtResource("16_mhvap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.3, 1, -5.5)
 block = NodePath("../LaserReceiver2")
 
-[node name="RedirectDemo" type="Node3D" parent="LaserLab/Chunk"]
+[node name="RedirectDemo" type="Node3D" parent="LaserLab/Chunk" unique_id=1598668102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 6)
 
-[node name="LaserRedirect" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("20_wqd4m")]
+[node name="LaserRedirect" parent="LaserLab/Chunk/RedirectDemo" unique_id=1295340183 instance=ExtResource("20_wqd4m")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -57.8, 0.9, -15)
 
-[node name="DraggableEmitter" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("21_a42or")]
+[node name="DraggableEmitter" parent="LaserLab/Chunk/RedirectDemo" unique_id=1883412912 instance=ExtResource("21_a42or")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.8, 0.9, -15)
 _element = 4
 
-[node name="DraggableEmitter2" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("21_a42or")]
+[node name="DraggableEmitter2" parent="LaserLab/Chunk/RedirectDemo" unique_id=460002929 instance=ExtResource("21_a42or")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -52.8, 0.9, -15)
 _element = 5
 
-[node name="CatalystDevice6" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice6" parent="LaserLab/Chunk/RedirectDemo" unique_id=626563512 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.8, 0.4, -14)
 
-[node name="CatalystDevice7" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice7" parent="LaserLab/Chunk/RedirectDemo" unique_id=1191249622 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.8, 0.4, -14)
 
-[node name="CatalystDevice8" parent="LaserLab/Chunk/RedirectDemo" instance=ExtResource("12_n5qqj")]
+[node name="CatalystDevice8" parent="LaserLab/Chunk/RedirectDemo" unique_id=275969219 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8, 0.4, -14)
 
-[node name="Mirror" parent="LaserLab/Chunk" instance=ExtResource("24_te4ju")]
+[node name="Mirror" parent="LaserLab/Chunk" unique_id=1260059516 instance=ExtResource("24_te4ju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 9)
 _element = 2
 
-[node name="Emitter" parent="LaserLab/Chunk" instance=ExtResource("11_13twe")]
+[node name="Emitter" parent="LaserLab/Chunk" unique_id=126477032 instance=ExtResource("11_13twe")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18, 1.4, 16)
 _element = 0
 
-[node name="LaserReceiver" parent="LaserLab/Chunk" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver" parent="LaserLab/Chunk" unique_id=52398755 instance=ExtResource("13_0axfp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.3, 1, 9)
 _element = 0
 
-[node name="OneWayLensDemo" type="Node3D" parent="LaserLab/Chunk"]
+[node name="OneWayLensDemo" type="Node3D" parent="LaserLab/Chunk" unique_id=1713058611]
 
-[node name="DraggableEmitter" parent="LaserLab/Chunk/OneWayLensDemo" instance=ExtResource("21_a42or")]
+[node name="DraggableEmitter" parent="LaserLab/Chunk/OneWayLensDemo" unique_id=1704433902 instance=ExtResource("21_a42or")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.8, 0.9, 1)
 _element = 2
 
-[node name="DraggableEmitter2" parent="LaserLab/Chunk/OneWayLensDemo" instance=ExtResource("21_a42or")]
+[node name="DraggableEmitter2" parent="LaserLab/Chunk/OneWayLensDemo" unique_id=1743020750 instance=ExtResource("21_a42or")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.8, 0.9, 3)
 _element = 2
 
-[node name="OneWayLens" parent="LaserLab/Chunk/OneWayLensDemo" instance=ExtResource("26_h5ji8")]
+[node name="OneWayLens" parent="LaserLab/Chunk/OneWayLensDemo" unique_id=850299206 instance=ExtResource("26_h5ji8")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 1, 3)
 
-[node name="RotatingMirrorDemo" type="Node3D" parent="LaserLab/Chunk"]
+[node name="RotatingMirrorDemo" type="Node3D" parent="LaserLab/Chunk" unique_id=704686228]
 
-[node name="Emitter2" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("11_13twe")]
+[node name="Emitter2" parent="LaserLab/Chunk/RotatingMirrorDemo" unique_id=1540056317 instance=ExtResource("11_13twe")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -17.5, 1, 9)
 _element = 3
 
-[node name="RotatableMirror" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("27_lojfm")]
+[node name="RotatableMirror" parent="LaserLab/Chunk/RotatingMirrorDemo" unique_id=602573588 instance=ExtResource("27_lojfm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0, 9)
 _element = 5
 
-[node name="LaserReceiver" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver" parent="LaserLab/Chunk/RotatingMirrorDemo" unique_id=2067286430 instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 1, 0.299999)
 _element = 0
 
-[node name="LaserReceiver2" parent="LaserLab/Chunk/RotatingMirrorDemo" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver2" parent="LaserLab/Chunk/RotatingMirrorDemo" unique_id=396912639 instance=ExtResource("13_0axfp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.3, 1, 15.8)
 _element = 4
 
-[node name="DraggableMirrorDemo" type="Node3D" parent="LaserLab/Chunk"]
+[node name="DraggableMirrorDemo" type="Node3D" parent="LaserLab/Chunk" unique_id=1250098263]
 
-[node name="DraggableMirror" parent="LaserLab/Chunk/DraggableMirrorDemo" instance=ExtResource("29_f27vr")]
+[node name="DraggableMirror" parent="LaserLab/Chunk/DraggableMirrorDemo" unique_id=624041238 instance=ExtResource("29_f27vr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 8)
 
-[node name="Emitter2" parent="LaserLab/Chunk/DraggableMirrorDemo" instance=ExtResource("11_13twe")]
+[node name="Emitter2" parent="LaserLab/Chunk/DraggableMirrorDemo" unique_id=2114750157 instance=ExtResource("11_13twe")]
 transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 4.5, 1.6, 5)
 _element = 3
 
-[node name="LaserReceiver" parent="LaserLab/Chunk/DraggableMirrorDemo" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver" parent="LaserLab/Chunk/DraggableMirrorDemo" unique_id=1340233141 instance=ExtResource("13_0axfp")]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 3.7, 0, 15.8)
 _element = 3
 
-[node name="RailwayDemoChunk" type="Area3D" parent="." node_paths=PackedStringArray("chunk")]
+[node name="RailwayDemoChunk" type="Area3D" parent="." unique_id=1418995487 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, -28)
 script = ExtResource("24_reta6")
 chunk = NodePath("Chunk")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RailwayDemoChunk"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RailwayDemoChunk" unique_id=938284022]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 5, 5)
 shape = SubResource("BoxShape3D_ji4qd")
 
-[node name="Chunk" type="Node3D" parent="RailwayDemoChunk"]
+[node name="Chunk" type="Node3D" parent="RailwayDemoChunk" unique_id=1920291751]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="RailwayDemoChunk/Chunk"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="RailwayDemoChunk/Chunk" unique_id=45292078]
 use_collision = true
 collision_layer = 17
 
-[node name="CSGBox3D" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D" unique_id=923917334]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1.5, 5)
 size = Vector3(20, 4, 30)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D" unique_id=228179887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2.5, 5)
 operation = 2
 size = Vector3(19, 4, 29)
 material = ExtResource("22_a42or")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="RailwayDemoChunk/Chunk/CSGCombiner3D" unique_id=46039502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5, 6, 0)
 operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="LaserReceiver3" parent="RailwayDemoChunk/Chunk" instance=ExtResource("13_0axfp")]
+[node name="LaserReceiver3" parent="RailwayDemoChunk/Chunk" unique_id=848837490 instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 1, -9.3)
 
-[node name="Rails" parent="RailwayDemoChunk/Chunk" instance=ExtResource("23_n72vc")]
+[node name="Rails" parent="RailwayDemoChunk/Chunk" unique_id=1561065076 instance=ExtResource("23_n72vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4.3)
 
 [node name="PointA" parent="RailwayDemoChunk/Chunk/Rails" index="0"]
@@ -787,10 +821,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 0)
 [node name="PointB" parent="RailwayDemoChunk/Chunk/Rails" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, 0)
 
-[node name="Mirror" parent="RailwayDemoChunk/Chunk/Rails" instance=ExtResource("24_te4ju")]
+[node name="Mirror" parent="RailwayDemoChunk/Chunk/Rails" unique_id=1478691606 instance=ExtResource("24_te4ju")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38, 0, 0)
 
-[node name="Rails2" parent="RailwayDemoChunk/Chunk" instance=ExtResource("23_n72vc")]
+[node name="Rails2" parent="RailwayDemoChunk/Chunk" unique_id=1959616290 instance=ExtResource("23_n72vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4.3)
 
 [node name="PointA" parent="RailwayDemoChunk/Chunk/Rails2" index="0"]
@@ -799,18 +833,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 0)
 [node name="PointB" parent="RailwayDemoChunk/Chunk/Rails2" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, -4, 0)
 
-[node name="Mirror" parent="RailwayDemoChunk/Chunk/Rails2" instance=ExtResource("24_te4ju")]
+[node name="Mirror" parent="RailwayDemoChunk/Chunk/Rails2" unique_id=923783347 instance=ExtResource("24_te4ju")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -38, -4, 0)
 is_vertically_static = false
 scaling_factor = Vector3(1, 4, 1)
 
-[node name="Emitter1" parent="RailwayDemoChunk/Chunk" instance=ExtResource("11_13twe")]
+[node name="Emitter1" parent="RailwayDemoChunk/Chunk" unique_id=1065515148 instance=ExtResource("11_13twe")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -47, 1, -4.3)
 
-[node name="Emitter2" parent="RailwayDemoChunk/Chunk" instance=ExtResource("11_13twe")]
+[node name="Emitter2" parent="RailwayDemoChunk/Chunk" unique_id=218323922 instance=ExtResource("11_13twe")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -37, 1, -4.3)
 
-[node name="PathPiston" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("25_81dig")]
+[node name="PathPiston" parent="RailwayDemoChunk/Chunk" unique_id=785989355 node_paths=PackedStringArray("puzzle_block") instance=ExtResource("25_81dig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.1, 3)
 puzzle_block = NodePath("../Button")
 instance_count = 5
@@ -822,57 +856,129 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 0)
 [node name="PointB" parent="RailwayDemoChunk/Chunk/PathPiston/Rails" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 2, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails" index="2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails" index="2" unique_id=1719171386]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails/StaticBody3D" unique_id=787473628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1.5, 0)
 shape = SubResource("BoxShape3D_81dig")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RailwayDemoChunk/Chunk/PathPiston/Rails/StaticBody3D" unique_id=2016403409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1.5, 0)
 mesh = SubResource("BoxMesh_81dig")
 
-[node name="Button" parent="RailwayDemoChunk/Chunk" instance=ExtResource("3_ybmg7")]
+[node name="Button" parent="RailwayDemoChunk/Chunk" unique_id=1346442176 instance=ExtResource("3_ybmg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, 3)
 toggle_mode = false
 
-[node name="Pulser" parent="RailwayDemoChunk/Chunk" instance=ExtResource("30_ji4qd")]
+[node name="Pulser" parent="RailwayDemoChunk/Chunk" unique_id=736384890 instance=ExtResource("30_ji4qd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 1, 13)
 wait_time = 0.1
 
-[node name="MirrorPiston" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
+[node name="MirrorPiston" parent="RailwayDemoChunk/Chunk" unique_id=2032530808 node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -39, 0, 11)
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
-[node name="MirrorPiston2" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
+[node name="MirrorPiston2" parent="RailwayDemoChunk/Chunk" unique_id=1351525972 node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -44, 0, 11)
 mirror_rotation = 90.0
 start_position = "down"
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
-[node name="MirrorPiston3" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
+[node name="MirrorPiston3" parent="RailwayDemoChunk/Chunk" unique_id=1356997651 node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -44, 0, 16)
 mirror_rotation = -180.0
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
-[node name="MirrorPiston4" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
+[node name="MirrorPiston4" parent="RailwayDemoChunk/Chunk" unique_id=1164875893 node_paths=PackedStringArray("puzzle_block") instance=ExtResource("29_08btr")]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -39, 0, 16)
 mirror_rotation = -90.0
 start_position = "down"
 puzzle_block = NodePath("../Pulser")
 speed = 20.0
 
-[node name="Gear" parent="RailwayDemoChunk/Chunk" node_paths=PackedStringArray("puzzle_block") instance=ExtResource("31_qkwyv")]
+[node name="Gear" parent="RailwayDemoChunk/Chunk" unique_id=1184322837 node_paths=PackedStringArray("puzzle_block") instance=ExtResource("31_qkwyv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.5, 4, 5)
 puzzle_block = NodePath("../Pulser2")
 amount_degrees = 45.0
 
-[node name="Pulser2" parent="RailwayDemoChunk/Chunk" instance=ExtResource("30_ji4qd")]
+[node name="Pulser2" parent="RailwayDemoChunk/Chunk" unique_id=1131894356 instance=ExtResource("30_ji4qd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 1, 4)
 wait_time = 1.0
+
+[node name="MagiClayChunk" type="Area3D" parent="." unique_id=2140894823 node_paths=PackedStringArray("chunk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 0, -60)
+script = ExtResource("24_reta6")
+chunk = NodePath("Chunk")
+metadata/_custom_type_script = "uid://bylr8xlkovkcu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagiClayChunk" unique_id=1478503126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+shape = SubResource("BoxShape3D_py2t0")
+
+[node name="Chunk" type="Node3D" parent="MagiClayChunk" unique_id=1368624300]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="MagiClayChunk/Chunk" unique_id=1472549011]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MagiClayChunk/Chunk/CSGCombiner3D" unique_id=1596314178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+size = Vector3(34, 4, 28)
+material = ExtResource("22_a42or")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="MagiClayChunk/Chunk/CSGCombiner3D" unique_id=2103253711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+operation = 2
+size = Vector3(32, 4, 26)
+material = ExtResource("22_a42or")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="MagiClayChunk/Chunk/CSGCombiner3D" unique_id=1649133543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.5, 0)
+operation = 2
+size = Vector3(2, 11, 6)
+material = ExtResource("22_a42or")
+
+[node name="MagiclayRock" parent="MagiClayChunk/Chunk" unique_id=83830469 instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -9)
+_element = 0
+scaling_factor = Vector3(3, 3, 3)
+
+[node name="MagiclayRock2" parent="MagiClayChunk/Chunk" unique_id=1537468266 instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -9)
+_element = 1
+scaling_factor = Vector3(3, 3, 3)
+
+[node name="MagiclayRock3" parent="MagiClayChunk/Chunk" unique_id=431602594 instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 0)
+_element = 4
+scaling_factor = Vector3(3, 3, 3)
+
+[node name="MagiclayRock4" parent="MagiClayChunk/Chunk" unique_id=168787854 instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
+_element = 5
+scaling_factor = Vector3(3, 3, 3)
+
+[node name="MagiclayRock5" parent="MagiClayChunk/Chunk" unique_id=1648527641 instance=ExtResource("6_1kab2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -9)
+_element = 2
+scaling_factor = Vector3(3, 3, 3)
+
+[node name="MagiclayRock6" parent="MagiClayChunk/Chunk" unique_id=1789641597 instance=ExtResource("6_1kab2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13, 0.5, -9)
+_element = 3
+scaling_factor = Vector3(3, 3, 3)
+
+[node name="MagiclayRock7" parent="MagiClayChunk/Chunk" unique_id=1328136493 instance=ExtResource("6_1kab2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0.5, 0)
+_element = 6
+scaling_factor = Vector3(3, 3, 3)
+
+[node name="MagiclayRock8" parent="MagiClayChunk/Chunk" unique_id=1884048789 instance=ExtResource("6_1kab2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13, 0.5, 0)
+_element = 7
+scaling_factor = Vector3(3, 3, 3)
 
 [connection signal="element_selected" from="MainCloset/SupplyClosetChunk/PressurePlateDemo/CatalystDevice" to="MainCloset/SupplyClosetChunk/PressurePlateDemo/CatalystPlatform" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/LaserAndReceiverDemo/CatalystDevice" to="LaserLab/Chunk/LaserAndReceiverDemo/Emitter" method="set_element"]
@@ -882,16 +988,17 @@ wait_time = 1.0
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice6" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice7" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter2" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice8" to="LaserLab/Chunk/RedirectDemo/LaserRedirect" method="set_element"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39759" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39759" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39760" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39760" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39761" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39761" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39762" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@39762" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92387" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92387" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92388" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92388" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92389" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92389" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92390" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@92390" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
 
 [editable path="VortexEngineChunk/Chunk/VortexEngine"]
+[editable path="LaserLab/Chunk/LaserAndReceiverDemo/Emitter3"]
 [editable path="RailwayDemoChunk/Chunk/Rails"]
 [editable path="RailwayDemoChunk/Chunk/Rails2"]
 [editable path="RailwayDemoChunk/Chunk/PathPiston"]

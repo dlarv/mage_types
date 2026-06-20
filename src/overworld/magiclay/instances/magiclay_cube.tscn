@@ -1,24 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://b64p6638ydh2j"]
+[gd_scene format=3 uid="uid://b64p6638ydh2j"]
 
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_vdo2r"]
+[ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_7huyt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqgnt"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbbel"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_7huyt")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/element_id = 0
+
 [sub_resource type="BoxMesh" id="BoxMesh_xew6s"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gwqh"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-
-[node name="MagiClayCube" type="RigidBody3D"]
+[node name="MagiClayCube" type="RigidBody3D" unique_id=776548889]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_vdo2r")
 is_transmutable = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=99311443]
 shape = SubResource("BoxShape3D_lqgnt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=231952170]
+material_override = SubResource("ShaderMaterial_hbbel")
 mesh = SubResource("BoxMesh_xew6s")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_2gwqh")

@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2c6cvf2k0bf4"]
+[gd_scene format=3 uid="uid://b2c6cvf2k0bf4"]
 
 [ext_resource type="Script" uid="uid://drbpmc25edr7x" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_1e8qi"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_l2c7w"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nfnt1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uea3u"]
+resource_local_to_scene = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_s6ud6"]
 height = 0.5
@@ -11,21 +14,18 @@ radial_segments = 8
 rings = 6
 is_hemisphere = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuytn"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-
-[node name="Emitter" type="StaticBody3D"]
+[node name="Emitter" type="StaticBody3D" unique_id=1402158360]
 collision_layer = 5
 collision_mask = 3
 script = ExtResource("1_1e8qi")
 is_transmutable = true
 
-[node name="SubEmitter" parent="." instance=ExtResource("3_l2c7w")]
+[node name="SubEmitter" parent="." unique_id=1732811693 instance=ExtResource("3_l2c7w")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=265315682]
 shape = SubResource("SphereShape3D_nfnt1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=86636321]
+material_override = SubResource("StandardMaterial3D_uea3u")
 mesh = SubResource("SphereMesh_s6ud6")
-surface_material_override/0 = SubResource("StandardMaterial3D_wuytn")

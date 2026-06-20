@@ -1,17 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://nanxbk8qtx3"]
+[gd_scene format=3 uid="uid://nanxbk8qtx3"]
 
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_blpm0"]
+[ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_pcrkp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_slv4x"]
 size = Vector3(3, 3, 3)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ql488"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_pcrkp")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/element_id = 0
+
 [sub_resource type="BoxMesh" id="BoxMesh_1372a"]
 size = Vector3(3, 3, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpc8n"]
-albedo_color = Color(0.5, 0.5, 0.5, 1)
-
-[node name="MagiclayBoulder" type="RigidBody3D"]
+[node name="MagiclayBoulder" type="RigidBody3D" unique_id=751610042]
 collision_layer = 7
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -23,11 +33,11 @@ angular_damp = 10.0
 script = ExtResource("1_blpm0")
 is_transmutable = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=439601511]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_slv4x")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1900384195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = SubResource("ShaderMaterial_ql488")
 mesh = SubResource("BoxMesh_1372a")
-surface_material_override/0 = SubResource("StandardMaterial3D_kpc8n")

@@ -145,7 +145,7 @@ func _set_mesh_color(id: int, color: ElementalType) -> void:
 
 
 func _get_mesh() -> MeshInstance3D: return null
-func _set_material(val: BaseMaterial3D) -> void: pass 
+func _set_material(val: Material) -> void: pass 
 
 
 func _on_battle_trigger_body_entered(body:Node3D) -> void:

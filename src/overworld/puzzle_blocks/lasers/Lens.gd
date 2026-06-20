@@ -4,9 +4,9 @@ extends PuzzleBlock
 var _prev_val := -1
 var _active_emitter: Node3D = null
 var _active_receiver: Node3D = null
-var _active_material: BaseMaterial3D = null
+var _active_material: Material = null
 var _is_emitting := false
-var _material_2: BaseMaterial3D
+var _material_2: Material
 
 func _ready() -> void:
 	_material_2 = StandardMaterial3D.new()
@@ -114,7 +114,7 @@ func create_log(body: MagiClay, e: ElementalType) -> void:
 			% [puzzle_name, element, body.element, e])
 
 
-func _set_material(mat: BaseMaterial3D) -> void:
+func _set_material(mat: Material) -> void:
 	_material = mat 
 	_material_2 = mat.duplicate(true)
 	if _mesh_instance == null:
@@ -130,5 +130,6 @@ func _set_material(mat: BaseMaterial3D) -> void:
 func _try_set_color(color:Variant=null) -> bool:
 	if not super._try_set_color(color): return false
 	#if in_stasis: _material_2.albedo_color = Color.BLACK
-	_material_2.albedo_color = _material.albedo_color
+	#_material_2.set_shader_parameter("element_id", element.id)
+	_material.albedo_color = element.main_color
 	return true
