@@ -339,6 +339,8 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 		-  Adding this reaction would make 3 reactions involving Yellow + ??? = Red, which further clutters the transmutation map. This and the fact that it doesn't quite visually look right makes me tempted to nix it. 
 		- This would also eliminate the intersection
 - [x] Adjust `ElementalType.main_color` values
+- [ ] Magenta into an offensive type and Orange into defensive?
+- This is mostly for lore reasons, plus people are scared of clowns, right?
 ### Stencils
 
 **Tutorial Stencil 1** 
@@ -485,20 +487,14 @@ I think idea \#2 would fit better with the currently designed systems.
 >2. Inside script, add spell logic
 >3. Add node as child of `SpellManager`
 >4. Add entry to `SpellManager.spell_mapper` to associate spell with `Equipment`
-### Chemistry System (MagiClay)
+### MagiClay
 **The transmutation mechanic should be included in the overworld, not just in battle.**
 - [x] Certain physics objects should be assigned an elemental type.
 - [x] Some of these objects should be targetable by the overworld spells.
 	- [x] There should be the option to toggle whether each spell can effect an object.
 	- [ ] There should be a visual indicator of which objects can be targeted by which spells.
 	- [ ] These visual indicators shouldn't interfere with each other, if a single object can be targetable by multiple spells.
-- [ ] Different elements should have unique physical properties.
-	- Magenta: Bouncy
-	- Cyan: Frictionless
-	- Yellow: Antigrav
-	- Blue: Heavy/high inertia
-	- Red: Biological => What this means exactly is TBD.
-	- The rest have to be 'refined' in order to display their unique features, restricting them to machines/etc. 
+ - [ ] Visual indicator of what color a MagiClay object is using 
 
 >[!warning] 
 > I think the physical properties idea is excellent in theory, but has proven an absolute pain to implement. I also suspect it might have some performance issues. There are two approaches I could take to address this:
@@ -771,13 +767,14 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Decor assets
 		- [x] Street lights
 		- [x] Rocks/tidepools
-		- [ ] Midground decor
-		- [ ] Transformer in NE corner?
+		- [ ] ~~Midground decor~~
+		- [ ] ~~Transformer in NE corner?~~
 		- [ ] Sandcastle on sand
 		- [x] Lamppost island puzzle
 			- [x] Designed
 			- [x] Implemented
 			- [x] Placed reward (hidden chest)
+			- [ ] Puzzle is broken for some reason
 	- [x] Move road further north
 	- [x] Move House further east and on hill
 	- [ ] NW Parkour challenge
@@ -830,9 +827,14 @@ This section serves primarily to set the atmosphere and show off the clay shader
 	- [x] Layout
 	- [x] Design puzzles
 	- [x] Created ROY stencils
-	- [ ] Write instructions/commentary
+	- [x] Write instructions/commentary
 	- [ ] Add/remove stencils from player's inventory
 	- [ ] Playtest level w/ someone who is unfamiliar w/ graph theory
+		- Keeley had an easier time with the first 2 sections, but was confused by the bridge puzzles, due to the double arrows.
+		- [x] Double arrows are confusing w/o context. Orange and Magenta arrows can be hidden by stencil 3 w/ only minor modifications needed
+		- [x] Add explanation for how laser bridges work
+		- [ ] Add hints to the side rooms
+	- [x] Add pressure plate demo to cave entrance
 	- [ ] Add official env models
 	
 - In-between Beaches 1 and 2
@@ -871,6 +873,14 @@ The room is *Red* with a *Yellow*, *Cyan* and *Blue* path.
 - If they take the *Cyan* path, they wind up in the same *Red* room
 - If they take the *Yellow* path, they'll end up in the next room
 
+```
+- You are in the Red room.
+- You must reach the Orange Room.
+- Press 'T' to open your transmutation menu.
+- Use these stencils to hide irrelevant info.
+- Please only take one packet, we were only able to make 3 copies.
+```
+
 **Section 1.5**
 - Stencil is ROY
 - Slightly more complicated version of previous room 
@@ -880,12 +890,22 @@ The room is *Orange* with a *Yellow*, *Green*, and *Red* path. Player is tasked 
 - *Yellow* will take player to previous room. This is separate from the path the player used to get into this room.
 - *Red* will return player to current room
 
+```
+The next instructions are in the Yellow room.
+(Stencil #2)
+```
+
 **Section 2**
 - Stencil is PROY 
 - A series of branching paths
 - If player goes backwards, they'll end up at beginning
 - It'll use the same ruleset as the previous sections
 - 4 levels before player reaches next section
+
+```
+- The final instructions are in the Purple room.
+(Stencil #3)
+```
 
 **Section 3**
 - Final room's exit will be blocked off by a gate
@@ -905,9 +925,17 @@ This section is to force the player to think about the arrows as lasers.
 
 >[!idea] Bonus Challenge?
 >Given a point A and point B, arrange some colored blocks in the order.
-		
+
+```
+You're almost there! The exit is just up ahead.
+```
+
+>[!note] 
+>As the player exits the cave, they'll hit a story trigger. This will have them place their tutorial packet into a bin. 
+>Interacting with the bin will reveal only 2 packets in there, despite the note at the beginning suggesting that there should be 3.
+>This is bc Alex didn't put their's back.
 ### Rec Room
-- [ ] Bartender #v0_7
+-  [ ] Bartender #v0_7
 	- [x] Design
 	- [x] Model
 		- [x] Body
