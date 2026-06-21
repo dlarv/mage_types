@@ -620,7 +620,6 @@ quantity = 0
 resource_name = "Tutorial Packet"
 script = ExtResource("2_xejte")
 item = ExtResource("72_qonbv")
-quantity = 0
 
 [node name="Inventory" type="Node" unique_id=204631642 groups=["persist"]]
 script = ExtResource("1_jis06")
