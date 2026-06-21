@@ -6,6 +6,9 @@ signal stasis_ended()
 signal element_changed(element: ElementalType)
 
 const MagiClayShader := preload("res://assets/shaders/clay_shader/magiclay.gdshader")
+# Aura around MagiClay blocks get cut off by the ground and look weird.
+# This ensure the block hovers just above the ground.
+const GROUND_OFFSET = 0.374;
 
 @export_category("Elemental Traits")
 @export var _element := ElementalType.ElementId.BLANK:
@@ -74,6 +77,9 @@ func _try_set_color(color:Variant=null) -> bool:
 
 	if _material is ShaderMaterial:
 		_material.set_shader_parameter("element_id", element.id)
+
+		if _material.next_pass != null:
+			_material.next_pass.set_shader_parameter("element_id", element.id)
 		return false
 
 	if color == null:
@@ -220,8 +226,10 @@ func _set_size() -> void:
 	if shape is CylinderShape3D:
 		shape.radius = base_size.x * scaling_factor.x
 		shape.height = base_size.z * scaling_factor.z
+		shape.height.y += GROUND_OFFSET
 	elif "size" in shape:
 		shape.size = base_size * scaling_factor
+		shape.size.y += GROUND_OFFSET
 
 
 func fall_in_water() -> void:

@@ -494,7 +494,22 @@ I think idea \#2 would fit better with the currently designed systems.
 	- [x] There should be the option to toggle whether each spell can effect an object.
 	- [ ] There should be a visual indicator of which objects can be targeted by which spells.
 	- [ ] These visual indicators shouldn't interfere with each other, if a single object can be targetable by multiple spells.
- - [ ] Visual indicator of what color a MagiClay object is using 
+
+**MagiClay Visuals**
+ - [ ] Visual indicator that can be used to distinguish MagiClay Element (besides color)
+MagiClay has 2 associated shaders:
+- `MagiClay.gdshader`: This restricts the color to globally defined colors (see [[color_palettes]]).
+- `MagiClayEffect.gdshader`: These are special effects unique to each element. This will allow the player to distinguish between different elements w/o relying on hue.
+	- This is assigned to the `next_pass` field of the former shader
+These effects are as follows:
+- Blue: 
+- Purple: A hazy, chaotic, smoke like effect
+- Magenta: Flowery, billowy effect. It looks very similar to Orange
+- Red: Pulses slightly
+- Orange: Spiky rippling effect
+- Yellow: A shimmery rippling effect. It combines Purple and Orange
+- Green: Large, transparent aura, supposed to look like radioactive field
+- Cyan: Solid border, technically there's no actual effect
 
 >[!warning] 
 > I think the physical properties idea is excellent in theory, but has proven an absolute pain to implement. I also suspect it might have some performance issues. There are two approaches I could take to address this:
