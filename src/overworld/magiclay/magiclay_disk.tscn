@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://b4x37iu3x3ttk"]
 
-[ext_resource type="Script" uid="uid://8kuun6qlgqwa" path="res://src/overworld/magiclay/MagiclayRock.gd" id="1_3jqdt"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="1_jy6gi"]
+[ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_xuol1"]
 [ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_417ub"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_xuol1"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kfreq"]
-size = Vector3(1.4, 1, 1.4)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xuol1"]
+size = Vector3(1.5, 1.374, 1.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuol1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xat60"]
 resource_local_to_scene = true
 render_priority = 0
+next_pass = ExtResource("2_xuol1")
 shader = ExtResource("2_417ub")
 shader_parameter/show_diffuse_test = false
 shader_parameter/roughness = 1.0
@@ -19,10 +21,12 @@ shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/element_id = 0
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_4vvit"]
-top_radius = 0.7
-bottom_radius = 0.7
+[sub_resource type="CylinderMesh" id="CylinderMesh_pgsxw"]
+top_radius = 1.0
+bottom_radius = 1.0
 height = 1.0
+radial_segments = 256
+rings = 128
 
 [node name="MagiclayDisk" type="RigidBody3D" unique_id=570814267]
 collision_layer = 7
@@ -35,17 +39,17 @@ contact_monitor = true
 max_contacts_reported = 100
 linear_damp_mode = 1
 linear_damp = 5.0
-script = ExtResource("1_3jqdt")
+script = ExtResource("1_xuol1")
 is_transmutable = true
 base_size = Vector3(0.7, 0.7, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1566032952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08)
-shape = SubResource("BoxShape3D_kfreq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, -0.2, -5.96046e-08)
+shape = SubResource("BoxShape3D_xuol1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=297407677]
-material_override = SubResource("ShaderMaterial_xuol1")
-mesh = SubResource("CylinderMesh_4vvit")
+material_override = SubResource("ShaderMaterial_xat60")
+mesh = SubResource("CylinderMesh_pgsxw")
 
 [node name="Draggable" parent="." unique_id=918144192 instance=ExtResource("1_jy6gi")]
 

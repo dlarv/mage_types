@@ -6,7 +6,6 @@ render_mode cull_front, unshaded, blend_mix, depth_draw_opaque, shadows_disabled
 struct Element {
 	vec4 outline_color;
 	float thickness_mod;
-	float emission;
 };
 
 const float DEFAULT_THICKNESS = .11;
@@ -30,28 +29,25 @@ uniform sampler3D random_noise;
 uniform sampler3D orange_noise;
 uniform sampler3D purple_noise;
 uniform sampler3D magenta_noise;
-uniform sampler3D yellow_noise;
 uniform float red_pulse_amount = 0.02;
 uniform float red_pulse_speed = 2.0;
 uniform float m_speed_damp = 7.0;
 uniform float m_bright_offset = 0.2;
 uniform float o_speed_damp = 15.0;
-uniform float g_thickness_mod = 15.0;
-
+uniform float b_thickness_mod = .05;
+uniform float g_pulse_amount = .1;
+uniform float c_bright_offset = 0.6;
 // view-space z of the (expanded) outline vertex
 varying float v_view_z;   
 varying flat vec4 haze_color;
-varying flat float emission;
 
 Element get_data(float time, vec3 vertex) {
 	Element e;
 	e.thickness_mod = DEFAULT_THICKNESS;
-	e.emission = 0.0;
 	
 	switch(element_id) {
 		case 0: // blue
 			e.outline_color = element_b;
-			e.thickness_mod *= 3.0;
 			break;
 		case 1: // purple
 			e.outline_color = texture(purple_noise, vertex - time) * element_p;
@@ -62,7 +58,7 @@ Element get_data(float time, vec3 vertex) {
 			e.outline_color = m_bright_offset
 				+ element_m 
 				* texture(magenta_noise, uv);
-			e.thickness_mod *= 2.0;
+			e.thickness_mod *= 3.0;
 			break;
 		case 3: // red
 			float t = red_pulse_speed * time;
@@ -83,19 +79,19 @@ Element get_data(float time, vec3 vertex) {
 			vec4 a = texture(purple_noise, uv);
 			vec4 b = texture(orange_noise, uv);
 			e.outline_color =  element_y * (a + b);
-			
 			e.thickness_mod *= 1.0;
 			break;
 		case 6: // green
-			e.outline_color = vec4(element_g.rgb, 0.2);
-			e.thickness_mod *= g_thickness_mod;
+			e.thickness_mod = g_pulse_amount * mod(time, 3);
+			e.outline_color = element_g;
 			break;
 		case 7: // cyan
-			e.outline_color = element_c;
+			e.outline_color = vec4(element_c.rgb + c_bright_offset, 0.1);
+			e.thickness_mod *= b_thickness_mod;
 			break;
 		default: // blank
 			e.outline_color = vec4(1.0);
-			e.thickness_mod = .01 ;
+			e.thickness_mod = .01;
 			break;
 	}
 	
@@ -106,7 +102,6 @@ void vertex() {
 	float time_offset = TIME + (2.0 * texture(random_noise, VERTEX).r - 1.0);
 	Element e = get_data(time_offset, VERTEX);
 	haze_color = e.outline_color;
-	emission = e.emission;
 	
 	// radial expansion from near the BASE so bottom verts expand outward (not down)
 	// -> the outline wraps the bottom too. Continuous shell, no gaps, no normal use.
@@ -118,10 +113,6 @@ void vertex() {
 	float adjusted_thickness = haze_color.a * e.thickness_mod;
 	view_pos.xyz += view_n * adjusted_thickness;
 	v_view_z = view_pos.z;
-		
-		if(element_id == 6) {
-			view_pos.y += 0.1;
-		}
 	
 	POSITION = PROJECTION_MATRIX * view_pos * time_offset;
 	

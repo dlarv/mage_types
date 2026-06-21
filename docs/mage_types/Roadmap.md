@@ -502,14 +502,14 @@ MagiClay has 2 associated shaders:
 - `MagiClayEffect.gdshader`: These are special effects unique to each element. This will allow the player to distinguish between different elements w/o relying on hue.
 	- This is assigned to the `next_pass` field of the former shader
 These effects are as follows:
-- Blue: 
+- Blue: Solid border
 - Purple: A hazy, chaotic, smoke like effect
 - Magenta: Flowery, billowy effect. It looks very similar to Orange
 - Red: Pulses slightly
 - Orange: Spiky rippling effect
 - Yellow: A shimmery rippling effect. It combines Purple and Orange
-- Green: Large, transparent aura, supposed to look like radioactive field
-- Cyan: Solid border, technically there's no actual effect
+- Green: Slowly expands outwards before collapsing inward.
+- Cyan: Large, translucent aura, supposed to look like its radiating cold
 
 >[!warning] 
 > I think the physical properties idea is excellent in theory, but has proven an absolute pain to implement. I also suspect it might have some performance issues. There are two approaches I could take to address this:

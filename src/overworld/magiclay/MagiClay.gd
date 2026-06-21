@@ -227,9 +227,11 @@ func _set_size() -> void:
 		shape.radius = base_size.x * scaling_factor.x
 		shape.height = base_size.z * scaling_factor.z
 		shape.height.y += GROUND_OFFSET
+		$CollisionShape3D.position.y -= GROUND_OFFSET
 	elif "size" in shape:
 		shape.size = base_size * scaling_factor
 		shape.size.y += GROUND_OFFSET
+		$CollisionShape3D.position.y -= GROUND_OFFSET
 
 
 func fall_in_water() -> void:
