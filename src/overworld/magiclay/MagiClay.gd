@@ -5,6 +5,8 @@ class_name MagiClay
 signal stasis_ended()
 signal element_changed(element: ElementalType)
 
+enum MagiClayEffectMode { FANCY, SOLID, NONE }
+
 const MagiClayShader := preload("res://assets/shaders/clay_shader/magiclay.gdshader")
 # Aura around MagiClay blocks get cut off by the ground and look weird.
 # This ensure the block hovers just above the ground.
@@ -75,12 +77,12 @@ func _try_set_color(color:Variant=null) -> bool:
 	if not _material: return false
 	if not element: return false
 
+	if _material.next_pass != null:
+		_material.next_pass.set_shader_parameter("element_id", element.id)
+
 	if _material is ShaderMaterial:
 		_material.set_shader_parameter("element_id", element.id)
-
-		if _material.next_pass != null:
-			_material.next_pass.set_shader_parameter("element_id", element.id)
-		return false
+		return true
 
 	if color == null:
 		_material.albedo_color = element.main_color
@@ -236,3 +238,7 @@ func _set_size() -> void:
 
 func fall_in_water() -> void:
 	global_position = spawn_position
+
+
+static func set_magiclay_effect_mode(mode: MagiClayEffectMode) -> void:
+	RenderingServer.global_shader_parameter_set("magiclay_effect_mode", int(mode))

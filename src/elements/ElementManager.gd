@@ -367,6 +367,8 @@ func modify_color(element: ElementalType, newColor: Color) -> void:
 
 	update_elemental_gui()
 
+	RenderingServer.global_shader_parameter_set("element_%s" % element.name[0].to_lower(), newColor)
+
 
 func get_elemental_stylebox(element: Variant) -> StyleBox:
 	if element is int:

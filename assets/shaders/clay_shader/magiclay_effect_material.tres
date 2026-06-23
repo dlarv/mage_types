@@ -2,24 +2,6 @@
 
 [ext_resource type="Shader" uid="uid://dl5s3ltd2wxpm" path="res://assets/shaders/clay_shader/magiclay_effects.gdshader" id="1_ysj41"]
 
-[sub_resource type="Gradient" id="Gradient_ysj41"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_68sun"]
-noise_type = 4
-frequency = 0.0003
-fractal_octaves = 10
-fractal_lacunarity = 1.63
-fractal_gain = 1.46
-metadata/_preview_in_3d_space_ = true
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_dq6xx"]
-width = 256
-height = 256
-depth = 256
-noise = SubResource("FastNoiseLite_68sun")
-color_ramp = SubResource("Gradient_ysj41")
-
 [sub_resource type="Gradient" id="Gradient_68sun"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
@@ -80,15 +62,19 @@ render_priority = 0
 shader = ExtResource("1_ysj41")
 shader_parameter/thickness = 0.10000000475
 shader_parameter/outline_energy = 1.0
-shader_parameter/element_id = 7
+shader_parameter/element_id = 0
 shader_parameter/random_noise = SubResource("NoiseTexture3D_l44ne")
 shader_parameter/orange_noise = SubResource("NoiseTexture3D_pjopa")
 shader_parameter/purple_noise = SubResource("NoiseTexture3D_y5ahk")
+shader_parameter/p_color_mod = 0.3
 shader_parameter/magenta_noise = SubResource("NoiseTexture3D_1qy7q")
-shader_parameter/blue_noise = SubResource("NoiseTexture3D_dq6xx")
-shader_parameter/red_pulse_amount = 0.04
-shader_parameter/red_pulse_speed = 1.0
+shader_parameter/red_pulse_amount = 0.09
+shader_parameter/red_pulse_speed = 2.0
 shader_parameter/m_speed_damp = 7.0
 shader_parameter/m_bright_offset = 0.2
 shader_parameter/o_speed_damp = 15.0
-shader_parameter/b_thickness_mod = 35.0
+shader_parameter/c_thickness_mod = 35.0
+shader_parameter/g_pulse_amount = 0.3
+shader_parameter/g_fade_damp = 1.5
+shader_parameter/g_color_mod = 0.1
+shader_parameter/c_bright_offset = 0.6
