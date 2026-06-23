@@ -5,7 +5,7 @@ const ElementId = ElementalType.ElementId
 const DEFAULT_CSV_PATH: String = "res://data/elemental_types/matchup_files/default.csv"
 const SIMPLE_SIDE_EFFECTS_PATH: String = "res://data/elemental_types/matchup_files/simple.csv"
 
-var Blank := ElementalType.new()
+var Blank: ElementalType
 var Blue: ElementalType
 var Purple: ElementalType 
 var Magenta: ElementalType 
@@ -228,6 +228,8 @@ func build()-> void:
 				Green = element
 			"cyan": 
 				Cyan = element
+			"blank":
+				Blank = element
 				
 	matchups = {}
 	var blue := ElementalNode.new(Blue)

@@ -62,4 +62,3 @@ func _on_laser_dropped() -> void:
 	var e: String = $SubEmitter.laser.element.name if $SubEmitter != null else "null"
 	MyLogger.append_puzzle_log("OneWayLens(%s) stopped emitting laser of Element(%s)."
 			% [puzzle_name, e])
-

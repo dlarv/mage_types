@@ -14,8 +14,6 @@ const GROUND_OFFSET = 0.374;
 
 @export_category("Elemental Traits")
 @export var _element := ElementalType.ElementId.BLANK:
-	get:
-		return _element
 	set(value):
 		_element = value
 		set_element(ElementManager.elements[int(value)], -2, true)
@@ -27,10 +25,11 @@ var element: ElementalType = ElementManager.Blank:
 		element = value 
 		element_changed.emit(value)
 		_try_set_color()
-		
-		# if Engine.is_editor_hint():
-		# 	_material = ShaderMaterial.new()
-		# 	_material.shader = MagiClayShader
+	get:
+		if Engine.is_editor_hint() or element != null:
+			return element
+		return ElementManager.Blank
+		return element
 @export var is_breakable: bool
 @export var is_transmutable: bool
 @export var in_stasis: bool
