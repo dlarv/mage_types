@@ -497,6 +497,7 @@ I think idea \#2 would fit better with the currently designed systems.
 
 **MagiClay Visuals**
  - [ ] Visual indicator that can be used to distinguish MagiClay Element (besides color)
+ - [ ] Bugfix: Geyser doesn't seem to like the triplanar texture, so I might need to bake it
 MagiClay has 2 associated shaders:
 - `MagiClay.gdshader`: This restricts the color to globally defined colors (see [[color_palettes]]).
 - `MagiClayEffect.gdshader`: These are special effects unique to each element. This will allow the player to distinguish between different elements w/o relying on hue.
@@ -510,6 +511,14 @@ These effects are as follows:
 - Yellow: A shimmery rippling effect. It combines Purple and Orange
 - Green: Slowly expands outwards before collapsing inward.
 - Cyan: Large, translucent aura, supposed to look like its radiating cold
+
+>[!note]
+>- Pressure plates, laser receivers, and bridges will need to use an icon, as the shader doesn't work on them very well.
+
+>[!important] Changes
+>- [ ] Purple requires very high poly counts, it might need to be altered
+>- [ ] Green is too extra, it needs to be smaller
+>- [ ] I worry Yellow might epilepsy triggering
 
 >[!warning] 
 > I think the physical properties idea is excellent in theory, but has proven an absolute pain to implement. I also suspect it might have some performance issues. There are two approaches I could take to address this:
