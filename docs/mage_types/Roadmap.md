@@ -496,8 +496,16 @@ I think idea \#2 would fit better with the currently designed systems.
 	- [ ] These visual indicators shouldn't interfere with each other, if a single object can be targetable by multiple spells.
 
 **MagiClay Visuals**
- - [ ] Visual indicator that can be used to distinguish MagiClay Element (besides color)
- - [ ] Bugfix: Geyser doesn't seem to like the triplanar texture, so I might need to bake it
+- [x] MagiClay Aesthetics #v0_7
+	 - [x] Visual indicator that can be used to distinguish MagiClay Element (besides color)
+	 - [x] Bugfix: Geyser doesn't seem to like the triplanar texture, so I might need to bake it
+	 - [x] Added option to turn off fancy MagiClay Effects
+- [ ] Add icons to help differentiate elements at a glance #v0_9
+	 - [ ] Add icons to Bridge and pressure plates
+	 - [ ] Add icon mode, which adds a hovering icon above each MagiClay object 
+	 - [ ] Add icons to attacks in battle menus
+	 - [ ] Add icons to BattleActorDisplay cards
+	 
 MagiClay has 2 associated shaders:
 - `MagiClay.gdshader`: This restricts the color to globally defined colors (see [[color_palettes]]).
 - `MagiClayEffect.gdshader`: These are special effects unique to each element. This will allow the player to distinguish between different elements w/o relying on hue.
@@ -509,7 +517,7 @@ These effects are as follows:
 - Red: Pulses slightly
 - Orange: Spiky rippling effect
 - Yellow: A shimmery rippling effect. It combines Purple and Orange
-- Green: Slowly expands outwards before collapsing inward.
+- Green: Patches randomly change between light and dark green
 - Cyan: Large, translucent aura, supposed to look like its radiating cold
 
 >[!note]
@@ -520,6 +528,7 @@ These effects are as follows:
 >- [ ] Green is too extra, it needs to be smaller
 >- [ ] I worry Yellow might epilepsy triggering
 
+**Chemistry System**
 >[!warning] 
 > I think the physical properties idea is excellent in theory, but has proven an absolute pain to implement. I also suspect it might have some performance issues. There are two approaches I could take to address this:
 > - Implement a physics system in C++ from the ground up.
