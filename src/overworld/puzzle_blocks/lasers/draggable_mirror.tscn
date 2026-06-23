@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dcbruga52ai60" path="res://src/overworld/puzzle_blocks/lasers/Mirror.gd" id="1_i7v82"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="3_ityay"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_jn2h4"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="3_taep1"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="4_u0nan"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4tnhy"]
@@ -17,11 +18,15 @@ size = Vector3(2, 0.4, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf55b"]
 resource_local_to_scene = true
+next_pass = ExtResource("3_taep1")
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_0occk"]
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
+subdivide_width = 32
+subdivide_height = 32
+subdivide_depth = 32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8wmk"]
 

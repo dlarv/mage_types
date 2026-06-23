@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://11me6vvdmfxp" path="res://src/overworld/puzzle_blocks/lasers/RotatableMirror.gd" id="1_f0x3o"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_23mvk"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="3_h4bsb"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="4_16ekp"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="5_42aoc"]
 
@@ -16,10 +17,15 @@ radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psvat"]
 resource_local_to_scene = true
+next_pass = ExtResource("3_h4bsb")
+albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_qwjeo"]
 left_to_right = 1.0
 size = Vector3(1, 1, 2)
+subdivide_width = 32
+subdivide_height = 32
+subdivide_depth = 32
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ns2yc"]
 data = PackedVector3Array(0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, -1, 0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, -1)

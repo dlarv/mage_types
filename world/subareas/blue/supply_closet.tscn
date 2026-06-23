@@ -67,10 +67,6 @@ size = Vector3(19, 14, 52)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qkwyv"]
 size = Vector3(37, 14, 38)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf111"]
-resource_local_to_scene = true
-albedo_color = Color(0, 0, 0.862745, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ji4qd"]
 size = Vector3(21, 11, 31)
 
@@ -269,35 +265,36 @@ toggle_mode = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
 block = NodePath("..")
 
-[node name="Geyser" parent="MainCloset/SupplyClosetChunk" unique_id=476672655 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0.4, -16)
+[node name="Geyser" parent="MainCloset/SupplyClosetChunk" unique_id=1629437401 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0.40000004, -15.7)
+_element = 0
 
-[node name="Geyser2" parent="MainCloset/SupplyClosetChunk" unique_id=394280800 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.4, -16)
+[node name="Geyser2" parent="MainCloset/SupplyClosetChunk" unique_id=1863213883 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.40000004, -15.7)
 _element = 1
 
-[node name="Geyser3" parent="MainCloset/SupplyClosetChunk" unique_id=1707693994 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0.4, -16)
+[node name="Geyser3" parent="MainCloset/SupplyClosetChunk" unique_id=11724919 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0.40000004, -15.7)
 _element = 2
 
-[node name="Geyser4" parent="MainCloset/SupplyClosetChunk" unique_id=2066532474 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.4, -16)
+[node name="Geyser4" parent="MainCloset/SupplyClosetChunk" unique_id=288084367 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.40000004, -15.7)
 _element = 3
 
-[node name="Geyser5" parent="MainCloset/SupplyClosetChunk" unique_id=1067337592 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.4, -16)
+[node name="Geyser5" parent="MainCloset/SupplyClosetChunk" unique_id=1162529335 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.40000004, -15.7)
 _element = 4
 
-[node name="Geyser6" parent="MainCloset/SupplyClosetChunk" unique_id=1201177039 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.4, -16)
+[node name="Geyser6" parent="MainCloset/SupplyClosetChunk" unique_id=2134684837 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.40000004, -15.7)
 _element = 5
 
-[node name="Geyser7" parent="MainCloset/SupplyClosetChunk" unique_id=897778708 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0.4, -16)
+[node name="Geyser7" parent="MainCloset/SupplyClosetChunk" unique_id=1908170036 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0.40000004, -15.7)
 _element = 6
 
-[node name="Geyser8" parent="MainCloset/SupplyClosetChunk" unique_id=988950210 instance=ExtResource("4_cfair")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.4, -16)
+[node name="Geyser8" parent="MainCloset/SupplyClosetChunk" unique_id=1588129142 instance=ExtResource("4_cfair")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.40000004, -15.7)
 _element = 7
 
 [node name="Relay" parent="MainCloset/SupplyClosetChunk" unique_id=132528838 instance=ExtResource("7_vuo6s")]
@@ -449,7 +446,7 @@ operation = 2
 size = Vector3(2, 11, 6)
 material = ExtResource("22_a42or")
 
-[node name="Geyser" parent="GolemTestingFacility/Chunk" unique_id=1430007065 instance=ExtResource("4_cfair")]
+[node name="Geyser" parent="GolemTestingFacility/Chunk" unique_id=621221874 instance=ExtResource("4_cfair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -6.9)
 base_strength = 5.0
 
@@ -478,7 +475,7 @@ shape = SubResource("BoxShape3D_n72vc")
 
 [node name="Chunk" type="Node3D" parent="VortexEngineChunk" unique_id=761180006]
 
-[node name="VortexEngine" parent="VortexEngineChunk/Chunk" unique_id=545164647 instance=ExtResource("2_h1qq4")]
+[node name="VortexEngine" parent="VortexEngineChunk/Chunk" unique_id=670283248 instance=ExtResource("2_h1qq4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.86102e-06)
 
 [node name="CSGBox3D" parent="VortexEngineChunk/Chunk/VortexEngine/CSGCombiner3D" index="0"]
@@ -650,17 +647,12 @@ _element = 7
 
 [node name="Emitter" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=1924363668 instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -66.05, 1.4, 5.55)
-_element = 0
 
 [node name="CatalystDevice" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=191066512 instance=ExtResource("12_n5qqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.05, 0.4, 5.15)
 
 [node name="Emitter3" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=462995839 instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -61.75, 1.4, 5.55)
-_element = 0
-
-[node name="MeshInstance3D" parent="LaserLab/Chunk/LaserAndReceiverDemo/Emitter3" index="2" unique_id=86636321]
-material_override = SubResource("StandardMaterial3D_uf111")
 
 [node name="Lens" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=441957560 instance=ExtResource("13_m7ws3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -61.7459, 1.4, -1.4)
@@ -677,7 +669,6 @@ _element = 7
 
 [node name="Emitter2" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=2125821481 instance=ExtResource("11_13twe")]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -71.05, 1.4, 5.55)
-_element = 0
 
 [node name="LaserReceiver2" parent="LaserLab/Chunk/LaserAndReceiverDemo" unique_id=967928082 instance=ExtResource("13_0axfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8, 1.1, -5.5)
@@ -727,7 +718,6 @@ _element = 2
 
 [node name="Emitter" parent="LaserLab/Chunk" unique_id=126477032 instance=ExtResource("11_13twe")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18, 1.4, 16)
-_element = 0
 
 [node name="LaserReceiver" parent="LaserLab/Chunk" unique_id=52398755 instance=ExtResource("13_0axfp")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.3, 1, 9)
@@ -953,6 +943,7 @@ scaling_factor = Vector3(3, 3, 3)
 
 [node name="MagiclayRock3" parent="MagiClayChunk/Chunk" unique_id=431602594 instance=ExtResource("6_1kab2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 0)
+_element = 6
 scaling_factor = Vector3(3, 3, 3)
 
 [node name="MagiclayRock4" parent="MagiClayChunk/Chunk" unique_id=168787854 instance=ExtResource("6_1kab2")]
@@ -1023,17 +1014,16 @@ _element = 7
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice6" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice7" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter2" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice8" to="LaserLab/Chunk/RedirectDemo/LaserRedirect" method="set_element"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328440" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328440" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328441" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328441" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328442" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328442" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328443" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@328443" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488127" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488127" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488128" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488128" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488129" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488129" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488130" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@488130" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
 
 [editable path="VortexEngineChunk/Chunk/VortexEngine"]
-[editable path="LaserLab/Chunk/LaserAndReceiverDemo/Emitter3"]
 [editable path="RailwayDemoChunk/Chunk/Rails"]
 [editable path="RailwayDemoChunk/Chunk/Rails2"]
 [editable path="RailwayDemoChunk/Chunk/PathPiston"]

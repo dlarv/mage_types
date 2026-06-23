@@ -3,18 +3,19 @@
 [ext_resource type="Script" uid="uid://drbpmc25edr7x" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_ht7yv"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="2_hlkit"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="2_plq1v"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="3_lg1u2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ahw3"]
 size = Vector3(1, 1, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5kt6"]
 resource_local_to_scene = true
-albedo_color = Color(1, 0.12549, 1, 1)
+next_pass = ExtResource("3_lg1u2")
+albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_s6ud6"]
 height = 0.5
-radial_segments = 8
-rings = 6
+radial_segments = 32
 is_hemisphere = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_j5f5g"]

@@ -34,9 +34,9 @@ collision_layer = 21
 script = ExtResource("2_pq00e")
 is_transmutable = true
 
-[node name="Model" parent="." unique_id=918658795 instance=ExtResource("1_gg26p")]
+[node name="Model" parent="." unique_id=1096922940 instance=ExtResource("1_gg26p")]
 
-[node name="Bridge" parent="Model" index="0"]
+[node name="Bridge" parent="Model" index="0" unique_id=1273486175]
 material_override = SubResource("StandardMaterial3D_b1xax")
 surface_material_override/0 = SubResource("StandardMaterial3D_usqlx")
 

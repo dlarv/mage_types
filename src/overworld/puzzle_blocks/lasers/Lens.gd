@@ -114,16 +114,6 @@ func create_log(body: MagiClay, e: ElementalType) -> void:
 			% [puzzle_name, element, body.element, e])
 
 
-func _set_material(mat: Material) -> void:
-	_material = mat 
-	_material_2 = mat.duplicate(true)
-	if _mesh_instance == null:
-		push_warning("%s has no mesh!" % puzzle_name)
-		return
-
-	$MeshInstance3D.set_surface_override_material(0, _material)
-	$MeshInstance3D2.set_surface_override_material(0, _material_2)
-	_try_set_color()
 
 
 #override

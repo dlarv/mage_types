@@ -3,18 +3,20 @@
 [ext_resource type="Script" uid="uid://c8u80ydrf3muh" path="res://src/overworld/puzzle_blocks/lasers/Lens.gd" id="1_o784s"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="1_v6um2"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="2_estkt"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_mm6jo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32gow"]
 size = Vector3(1.4, 2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_br73x"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03lwq"]
+next_pass = ExtResource("2_mm6jo")
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_f28pe"]
-material = SubResource("StandardMaterial3D_br73x")
 top_radius = 0.1
 bottom_radius = 0.7
 height = 0.5
+rings = 64
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm6jo"]
 resource_local_to_scene = true
@@ -23,6 +25,7 @@ resource_local_to_scene = true
 top_radius = 0.1
 bottom_radius = 0.7
 height = 0.5
+rings = 32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0me1"]
 size = Vector3(1.4, 1.4, 0.1)
@@ -41,6 +44,7 @@ shape = SubResource("BoxShape3D_32gow")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1626568170]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.300662)
+material_override = SubResource("StandardMaterial3D_03lwq")
 mesh = SubResource("CylinderMesh_f28pe")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=774257133]

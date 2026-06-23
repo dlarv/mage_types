@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_blpm0"]
 [ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_pcrkp"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_ql488"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_slv4x"]
 size = Vector3(3, 3, 3)
@@ -9,6 +10,7 @@ size = Vector3(3, 3, 3)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ql488"]
 resource_local_to_scene = true
 render_priority = 0
+next_pass = ExtResource("2_ql488")
 shader = ExtResource("2_pcrkp")
 shader_parameter/show_diffuse_test = false
 shader_parameter/roughness = 1.0
@@ -16,10 +18,13 @@ shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/element_id = 0
+shader_parameter/element_id = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_1372a"]
 size = Vector3(3, 3, 3)
+subdivide_width = 16
+subdivide_height = 16
+subdivide_depth = 16
 
 [node name="MagiclayBoulder" type="RigidBody3D" unique_id=751610042]
 collision_layer = 7
@@ -31,6 +36,7 @@ inertia = Vector3(10, 10, 10)
 angular_damp_mode = 1
 angular_damp = 10.0
 script = ExtResource("1_blpm0")
+_element = 2
 is_transmutable = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=439601511]

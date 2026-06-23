@@ -37,6 +37,7 @@ func stop(val: Variant=null) -> void:
 # Override
 func set_element(e: ElementalType, randVal:=-2, force:=false) -> bool:
 	if not super.set_element(e, randVal, force): return false
+	if $SubEmitter == null: return false
 	await $SubEmitter.set_element(e)
 	return true
 

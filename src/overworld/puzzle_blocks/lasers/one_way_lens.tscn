@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgbfpm0att0vk" path="res://src/overworld/puzzle_blocks/lasers/OneWayLens.gd" id="1_tb7mf"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_m6xfh"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_wvq4j"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_4audp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32gow"]
@@ -9,9 +10,14 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmdlc"]
 resource_local_to_scene = true
+next_pass = ExtResource("2_wvq4j")
+albedo_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_82wpf"]
 size = Vector3(0.75, 1, 2)
+subdivide_width = 64
+subdivide_height = 64
+subdivide_depth = 64
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0me1"]
 size = Vector3(0.8, 2, 0.1)
