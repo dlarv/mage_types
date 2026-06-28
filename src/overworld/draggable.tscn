@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7g6etnd40veg"]
+[gd_scene format=3 uid="uid://c7g6etnd40veg"]
 
 [ext_resource type="Script" uid="uid://dqgxru2pqo7uv" path="res://src/overworld/Draggable.gd" id="1_m62it"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="2_opcrd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_73x1g"]
 
-[node name="Draggable" type="CharacterBody3D"]
+[node name="Draggable" type="CharacterBody3D" unique_id=1839886361]
 process_mode = 3
 collision_layer = 0
 script = ExtResource("1_m62it")
 
-[node name="Interactable" parent="." instance=ExtResource("2_opcrd")]
+[node name="Interactable" parent="." unique_id=663598701 instance=ExtResource("2_opcrd")]
 
-[node name="PlayerCollider" type="CollisionShape3D" parent="."]
+[node name="PlayerCollider" type="CollisionShape3D" parent="." unique_id=104508724]
 shape = SubResource("BoxShape3D_73x1g")
 disabled = true
 
