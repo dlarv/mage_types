@@ -1,5 +1,7 @@
 extends "Player.gd"
 
+enum MoveDirection { FORWARD, RIGHT, LEFT, BACKWARD }
+
 const MAX_FREEFALL_DIST := -40.0
 const HEAVY_FALL_THRESHOLD := -21.0
 
@@ -24,7 +26,6 @@ var dash_tween: Tween
 var dash_velocity: float
 var _can_air_dash := true
 var _is_grounded := true
-var _is_moving := false
 @export var _is_heavy_fall := false
 var idle_timed_out := false
  
@@ -45,6 +46,7 @@ var _god_mode := false
 var _god_mode_speed_mod := 3.0
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
+var _drag_mode_direction: MoveDirection
 
 func _ready() -> void:
 	super._ready()
@@ -220,23 +222,37 @@ func _move_god_mode(delta: float) -> void:
 
 
 func _move_drag_mode(delta: float) -> void:
-	if Input.is_action_pressed("ui_up") and draggable.current_axis.z > 0:
-		velocity.z -= draggable_speed / draggable.weight
-	elif Input.is_action_pressed("ui_down") and draggable.current_axis.z > 0:
-		velocity.z += draggable_speed / draggable.weight
-	elif Input.is_action_pressed("ui_left") and draggable.current_axis.x > 0:
-		velocity.x -= draggable_speed / draggable.weight
-	elif Input.is_action_pressed("ui_right") and draggable.current_axis.x > 0:
-		velocity.x += draggable_speed / draggable.weight
+	var dragSpeed: float = draggable_speed / draggable.weight
+
+	# How fast are they moving
+	# In what direction
+	# Relative to direction they're facing
+
+	var inputDir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var baseVelocity: Vector3 = draggable.calculate_movement(inputDir)
+	var relDir: Vector3 = draggable.get_relative_direction(baseVelocity)
+	if relDir == Vector3.BACK:
+		_drag_mode_direction = MoveDirection.FORWARD
+	elif relDir == Vector3.FORWARD:
+		_drag_mode_direction = MoveDirection.BACKWARD
+	elif relDir == Vector3.RIGHT:
+		_drag_mode_direction = MoveDirection.RIGHT
+	elif relDir == Vector3.LEFT:
+		_drag_mode_direction = MoveDirection.LEFT
 	
-	velocity.y += get_local_gravity() * 5
+	baseVelocity *= dragSpeed
+	velocity += baseVelocity
 	velocity *= delta
 
-	# Snap to grid.
+	$AnimationTree["parameters/Dragging/DragTimeScale/scale"] = min(1, velocity.length() / (dragSpeed * delta)) 
+	velocity.y += get_local_gravity() * 5 * delta
+
 	if velocity.length() < 0.1:
+		# Snap to grid.
 		var yPos := global_position.y
 		global_position = global_position.snapped(Vector3(0.5, 0.5, 0.5))
 		global_position.y = yPos
+
 	else:
 		move_and_slide()
 

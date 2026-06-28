@@ -18,6 +18,7 @@ var _prev_parent: Node3D = null
 var _prev_damp: float
 var _prev_axis_lock: Array[bool] = [false, false, false]
 var _player: Node3D = null
+var _relative_direction := Vector3(INF, INF, INF)
 
 var current_axis := Vector3.ONE
 var current_handle: Marker3D = null
@@ -98,8 +99,10 @@ func drop() -> void:
 		parent.axis_lock_angular_x = _prev_axis_lock[0]
 		parent.axis_lock_angular_y = _prev_axis_lock[1]
 		parent.axis_lock_angular_z = _prev_axis_lock[2]
+	_relative_direction = Vector3.BACK
 
 	$Interactable.toggle_force_show(false)
+
 
 func move(velocity: Vector3) -> void:
 	if parent is RigidBody3D:
@@ -123,11 +126,65 @@ func _snap_player_to_handle(pos: Vector3) -> Vector3:
 	output.y = pos.y
 
 	# Calculate restricted axis, if applicable.
-	var xPos: float = abs(global_position.x - minHandle.global_position.x)
-	var zPos: float = abs(global_position.z - minHandle.global_position.z)
-	if restrict_axis and xPos > zPos:
-		current_axis = Vector3(1, 0, 0)
-	elif restrict_axis:
-		current_axis = Vector3(0, 0, 1)
+	var xPos: float = global_position.x - minHandle.global_position.x
+	var zPos: float = global_position.z - minHandle.global_position.z
+	if abs(xPos) > abs(zPos):
+		current_axis = Vector3.RIGHT * xPos
+	else:
+		current_axis = Vector3.BACK * zPos
+	current_axis = current_axis.normalized()
+	print(current_axis)
 
 	return output
+
+
+func calculate_movement(d: Vector2) -> Vector3:
+	var dir := Vector3(d.x, 0, d.y)
+
+	if restrict_axis:
+		return _calculate_restricted_movement(dir)
+	elif d.length() == 0:
+		return Vector3.ZERO
+
+	var output: Vector3
+	if dir.x > 0 or dir.x < 0:
+		output = Vector3.RIGHT * sign(dir)
+	else:
+		output = Vector3.BACK * sign(dir)
+	
+	var dot := current_axis.dot(dir.normalized())
+	if dot > 0.5:
+		_relative_direction = Vector3.BACK
+	elif dot < -0.5:
+		_relative_direction = Vector3.FORWARD
+	else:
+		var angle := current_axis.signed_angle_to(dir, Vector3.UP)
+		var invDot := dir.normalized().length() * current_axis.length() * sin(angle)
+		if invDot > 0:
+			_relative_direction = Vector3.LEFT
+		else:
+			_relative_direction = Vector3.RIGHT
+	return output
+
+
+func _calculate_restricted_movement(dir: Vector3) -> Vector3:
+	var dot: float = current_axis.dot(dir.normalized())
+
+	if abs(dot) < 0.5:
+		_relative_direction = Vector3.ZERO
+		return Vector3.ZERO
+
+	if dot < 0: 
+		_relative_direction = Vector3.BACK
+	else:
+		_relative_direction = Vector3.FORWARD
+
+	return current_axis * sign(dir)
+
+
+func get_relative_direction(dir: Vector3) -> Vector3:
+	if not _relative_direction.is_finite(): 
+		push_warning("Draggable(%s) relative direction read before write" % puzzle_name)
+		return Vector3.ZERO
+
+	return _relative_direction
