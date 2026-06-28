@@ -126,7 +126,9 @@ func _proceed(node_name: String) -> void:
 		_process_condition,
 		_process_nest,
 		_process_fork,
+		func(): pass,
 		_process_set_signal,
+		_process_give_item,
 	]
 	
 	var id := int(node_name.split('_')[0])
@@ -323,6 +325,23 @@ func _process_nest(dict: Dictionary) -> void:
 func _process_set_signal(dict: Dictionary) -> void:
 	_process_set(dict, false)
 	dialogue_signal.emit(dict.curr_signal, dict.link)
+	_proceed(dict.link)
+
+
+func _process_give_item(dict: Dictionary) -> void:
+	var value = dict.value
+	if value.count("{{"):
+		value = _parse_variables(value)
+	
+	var operator = dict.operator
+
+	match operator:
+		0:
+			value = float(value)
+		1:
+			value = -float(value)
+	
+	Inventory.find_and_add_item(dict.item_name, dict.type, value)
 	_proceed(dict.link)
 
 

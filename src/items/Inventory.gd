@@ -142,7 +142,10 @@ func add(item: _Item, amount:=1) -> void:
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
 	var slot: ItemSlot = list[item.id]
+	_increment_quantity(slot, amount)
 
+
+func _increment_quantity(slot: ItemSlot, amount: int) -> void:
 	if slot.allow_stacking:
 		slot.quantity += amount
 		quantity_changed.emit(slot)
@@ -150,14 +153,6 @@ func add(item: _Item, amount:=1) -> void:
 	elif slot.quantity == 0:
 		slot.quantity = 1
 		quantity_changed.emit(slot)
-
-
-func find_and_add_spell(spell: Attack) -> void:
-	for slot in spell_scrolls:
-		if slot.item.spell == spell:
-			slot.quantity += 1
-			quantity_changed.emit(slot)
-			return
 
 
 func add_key_item(item: KeyItem, amount:=1) -> void:
@@ -165,14 +160,7 @@ func add_key_item(item: KeyItem, amount:=1) -> void:
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
 	var slot: ItemSlot = key_items[item.unique_name]
-
-	if slot.allow_stacking:
-		slot.quantity += amount
-		quantity_changed.emit(slot)
-
-	elif slot.quantity == 0:
-		slot.quantity = 1
-		quantity_changed.emit(slot)
+	_increment_quantity(slot, amount)
 
 
 func remove(item: _Item, amount:=1) -> ItemSlot:
@@ -224,6 +212,50 @@ func get_item(item: _Item) -> ItemSlot:
 	elif item is KeyItem:
 		return key_items.get(item.unique_name)
 	return list[item.id]
+
+
+func find_and_add_item(item: Variant, type: Category, amount:=1) -> void:
+	## String interpreted as a name
+	## Int interpreted as index
+	## Attack is passed along to legacy find_and_add_spell
+	## KeyItems can be found using StringNames
+	var list: Array
+	match type:
+		Category.REGULAR_ITEM:
+			list = regular_items
+		Category.EQUIPMENT:
+			list = equipment 
+		Category.SPELL_SCROLL:
+			list = spell_scrolls
+		_:
+			if item is StringName or item is String:
+				var key: String = item.to_upper().replace(" ", "_")
+				add_key_item(key_items[key].item, amount)
+			else:
+				push_error("KeyItems can only be found using their unique_name")
+				return
+
+	if item is int:
+		_increment_quantity(list[item], amount)
+		return
+	elif item is Attack:
+		find_and_add_spell(item, amount)
+		return
+	
+	# Find slot based on name
+	for slot: ItemSlot in list:
+		if slot.item.name == item:
+			_increment_quantity(slot, amount)
+			return
+	push_warning("Could not find Item(%s)" % String(item))
+
+
+# Kept for legacy purposes
+func find_and_add_spell(spell: Attack, amount:=1) -> void:
+	for slot in spell_scrolls:
+		if slot.item.spell == spell:
+			_increment_quantity(slot, amount)
+			return
 
 
 func select_overworld_spell(id: OverworldSpell.Spells, isPrimary:=true) -> void:

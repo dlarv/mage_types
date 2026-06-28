@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://c77r4qmw3a416"]
 
 [ext_resource type="Script" uid="uid://bq3nf71nxg68u" path="res://addons/dialogue_nodes/editor/node_editor/graph.gd" id="1_7isyk"]
+[ext_resource type="PackedScene" uid="uid://c3p0644abxxbm" path="res://addons/dialogue_nodes/nodes/StartNode.tscn" id="2_hn85p"]
+[ext_resource type="PackedScene" uid="uid://b60fa8vcjuoo6" path="res://addons/dialogue_nodes/nodes/DialogueNode.tscn" id="3_mwxc3"]
+[ext_resource type="PackedScene" uid="uid://h3hkys0mgvji" path="res://addons/dialogue_nodes/nodes/CommentNode.tscn" id="4_bo3o0"]
+[ext_resource type="PackedScene" uid="uid://v3g2kwpbw3u6" path="res://addons/dialogue_nodes/nodes/SignalNode.tscn" id="5_3sv5v"]
+[ext_resource type="PackedScene" uid="uid://dsllcvm7vi10m" path="res://addons/dialogue_nodes/nodes/SetNode.tscn" id="6_sfsxj"]
+[ext_resource type="PackedScene" uid="uid://3ofh51q0vhmg" path="res://addons/dialogue_nodes/nodes/ConditionNode.tscn" id="7_ta4nu"]
+[ext_resource type="PackedScene" uid="uid://qhs1fcypr3p8" path="res://addons/dialogue_nodes/nodes/NestNode.tscn" id="8_5qfnt"]
+[ext_resource type="PackedScene" uid="uid://bsv8k2uht3jij" path="res://addons/dialogue_nodes/nodes/ForkNode.tscn" id="9_n77dn"]
+[ext_resource type="PackedScene" uid="uid://cpwycjf6645y8" path="res://addons/dialogue_nodes/nodes/GraphFrame.tscn" id="10_qpyrr"]
+[ext_resource type="PackedScene" uid="uid://cia86vm8cdt4m" path="res://addons/dialogue_nodes/nodes/SetSignalNode.tscn" id="11_5y0y3"]
+[ext_resource type="PackedScene" uid="uid://b1e4u3b3xpq6x" path="res://addons/dialogue_nodes/nodes/GiveItemNode.tscn" id="12_itet0"]
 
 [node name="Graph" type="GraphEdit" unique_id=2061932758]
 custom_minimum_size = Vector2(400, 0)
@@ -14,9 +25,10 @@ right_disconnects = true
 zoom_min = 0.5
 zoom_max = 2.0
 script = ExtResource("1_7isyk")
+NodeScenes = Array[PackedScene]([ExtResource("2_hn85p"), ExtResource("3_mwxc3"), ExtResource("4_bo3o0"), ExtResource("5_3sv5v"), ExtResource("6_sfsxj"), ExtResource("7_ta4nu"), ExtResource("8_5qfnt"), ExtResource("9_n77dn"), ExtResource("10_qpyrr"), ExtResource("11_5y0y3"), ExtResource("12_itet0")])
 
 [node name="PopupMenu" type="PopupMenu" parent="." unique_id=1182686483]
-item_count = 10
+item_count = 11
 item_0/text = "StartNode"
 item_0/id = 0
 item_1/text = "DialogueNode"
@@ -37,6 +49,8 @@ item_8/text = "GraphFrame"
 item_8/id = 8
 item_9/text = "SetSignalNode"
 item_9/id = 9
+item_10/text = "GiveItemNode"
+item_10/id = 10
 
 [connection signal="connection_request" from="." to="." method="_on_connection_request"]
 [connection signal="connection_to_empty" from="." to="." method="_on_connection_to_empty"]

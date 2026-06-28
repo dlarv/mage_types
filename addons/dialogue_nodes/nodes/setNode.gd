@@ -43,7 +43,7 @@ func set_value(new_value: String) -> void:
 func _on_type_selected(idx: int) -> void:
 	if not undo_redo: return
 	
-	undo_redo.create_action('Set operator %Type')
+	undo_redo.create_action('Set operator Type')
 	undo_redo.add_do_method(%Type, 'select', idx)
 	undo_redo.add_do_property(self, 'last_type', idx)
 	undo_redo.add_do_method(self, '_on_modified')
@@ -58,7 +58,7 @@ func _on_value_changed() -> void:
 		set_value(%Value.text)
 		return
 
-	undo_redo.create_action('Set %Value')
+	undo_redo.create_action('Set Value')
 	undo_redo.add_do_method(self, 'set_value', %Value.text)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
