@@ -29,4 +29,3 @@ func activate_spell(item: Equipment) -> void:
 	if _spell:
 		_spell.activate()
 		UIManager.show_overworld_spell(_spell)
-

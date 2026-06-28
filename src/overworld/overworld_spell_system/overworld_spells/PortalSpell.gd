@@ -9,11 +9,13 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not is_active: return
 	if event.is_action_pressed("cast_spell_1"):
 		_position = _player.global_position
 		$GPUParticles3D.global_position = _position
 	elif event.is_action_pressed("cast_spell_2"):
 		_player.global_position = _position
+
 
 func deactivate() -> void: 
 	super.deactivate()
