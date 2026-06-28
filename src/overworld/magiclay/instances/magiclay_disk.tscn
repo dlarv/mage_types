@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b4x37iu3x3ttk"]
+
+[ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_t2vqq"]
+[ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="2_si0uy"]
+[ext_resource type="PackedScene" uid="uid://dopnbrdghtxix" path="res://assets/3d/objects/magiclay_disk.blend" id="3_d4t7o"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="4_att8u"]
+[ext_resource type="Texture2D" uid="uid://dhg0kjr7mw6xq" path="res://assets/3d/objects/textures/magiclay_disk_normal.png" id="5_eqy22"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xuol1"]
+size = Vector3(1.5, 1.374, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgsxw"]
+resource_local_to_scene = true
+next_pass = ExtResource("4_att8u")
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+normal_enabled = true
+normal_texture = ExtResource("5_eqy22")
+
+[node name="MagiclayDisk" type="RigidBody3D" unique_id=570814267 node_paths=PackedStringArray("_mesh_instance")]
+collision_layer = 7
+collision_mask = 5
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 10.0
+contact_monitor = true
+max_contacts_reported = 100
+linear_damp_mode = 1
+linear_damp = 5.0
+script = ExtResource("1_t2vqq")
+is_transmutable = true
+_mesh_instance = NodePath("magiclay_disk/MagiClayDisk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1566032952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, -0.2, -5.96046e-08)
+shape = SubResource("BoxShape3D_xuol1")
+
+[node name="Draggable" parent="." unique_id=918144192 instance=ExtResource("2_si0uy")]
+
+[node name="Marker3D_South" type="Marker3D" parent="Draggable" unique_id=372010522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 1.3)
+
+[node name="Marker3D_North" type="Marker3D" parent="Draggable" unique_id=1353497986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -1.3)
+
+[node name="Marker3D_East" type="Marker3D" parent="Draggable" unique_id=484296301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -0.2, 0)
+
+[node name="Marker3D_West" type="Marker3D" parent="Draggable" unique_id=900352696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -0.2, 0)
+
+[node name="magiclay_disk" parent="." unique_id=72750157 instance=ExtResource("3_d4t7o")]
+
+[node name="MagiClayDisk" parent="magiclay_disk" index="0" unique_id=327158548]
+material_override = SubResource("StandardMaterial3D_pgsxw")
+
+[editable path="magiclay_disk"]
