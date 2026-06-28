@@ -115,10 +115,11 @@ func clear_all() -> void:
 
 func show_dialog(msg: String) -> void:
 	# Gets empty dialog box attached to MISC start node.
-	dialog_box.data.nodes[dialog_box.data.nodes[dialog_box.data.starts["MISC"]]["link"]].dialogue = msg
+	dialog_box.show_text(msg)
+	# dialog_box.data.nodes[dialog_box.data.nodes[dialog_box.data.starts["MISC"]]["link"]].dialogue = msg
 	is_in_dialog = true
 	get_tree().paused = true
-	dialog_box.start("MISC")
+	# dialog_box.start("MISC")
 	await dialog_box.dialogue_ended
 	is_in_dialog = false
 	get_tree().paused = false

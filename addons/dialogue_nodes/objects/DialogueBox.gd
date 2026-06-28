@@ -361,3 +361,7 @@ func _on_wait_finished() -> void:
 
 func _on_event_finished() -> void:
 	event_finished.emit()
+
+
+func show_text(msg: String) -> void:
+	_dialogue_parser.show_text(msg)

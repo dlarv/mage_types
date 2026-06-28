@@ -417,3 +417,14 @@ func _update_wait_tags(node: RichTextLabel, value: String) -> String:
 		value = value.insert(start_data.at, insert_text)
 	
 	return value
+
+
+func show_text(msg: String) -> void:
+	var data := {
+		"speaker": "",
+		"dialogue": msg,
+		"options": {},
+	}
+	_running = true
+	dialogue_started.emit("MISC")
+	_process_dialogue(data)
