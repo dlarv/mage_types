@@ -350,6 +350,21 @@ shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/element_id = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mtce"]
+size = Vector3(1, 3, 13.2)
+
+[sub_resource type="Resource" id="Resource_6fo2d"]
+script = ExtResource("6_upves")
+id = "RETURN_BIN"
+metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gcly8"]
+radius = 1.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6l8lo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gcly8"]
+
 [sub_resource type="Resource" id="Resource_6l8lo"]
 script = ExtResource("6_upves")
 id = "TUTORIAL_4"
@@ -488,11 +503,12 @@ shape = SubResource("BoxShape3D_b7ooe")
 [node name="Marker3D" type="Marker3D" parent="Section1/Doors/RToR/CollisionShape3D" unique_id=1715235150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.0999999)
 
-[node name="OToO" type="Area3D" parent="Section1/Doors" unique_id=1396903253]
+[node name="OToO" type="Area3D" parent="Section1/Doors" unique_id=1396903253 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -28.1)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_l4lmj")
+point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Doors/OToO" unique_id=226192372]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0022830963, -0.014001548, 0.09527969)
@@ -849,11 +865,12 @@ shape = SubResource("BoxShape3D_b7ooe")
 [node name="Marker3D" type="Marker3D" parent="Section2/Doors/OToY/CollisionShape3D" unique_id=1253458521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2000008)
 
-[node name="OToR" type="Area3D" parent="Section2/Doors" unique_id=827905382]
+[node name="OToR" type="Area3D" parent="Section2/Doors" unique_id=827905382 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -44)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_l4lmj")
+point_2 = NodePath("Marker3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/Doors/OToR" unique_id=639879345]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002283, -0.014001548, -7.0047226)
@@ -953,11 +970,12 @@ metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7, 1)
 shape = SubResource("BoxShape3D_w4isg")
 
-[node name="RToR" type="Area3D" parent="Section2/RedRoom" unique_id=1510772462]
+[node name="RToR" type="Area3D" parent="Section2/RedRoom" unique_id=1510772462 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_l4lmj")
+point_2 = NodePath("EntryMarker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom/RToR" unique_id=1096370731]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.997719, -0.014001548, -7.0047226)
@@ -1406,6 +1424,38 @@ _element = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.98216, -9)
 reset_positions_of = [null]
 
+[node name="ReturnPacketTrigger" parent="Section3/PurpleRoom/Chunk" unique_id=224352467 instance=ExtResource("4_4pdg5")]
+auto_trigger = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/ReturnPacketTrigger" unique_id=1197701327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4706726, -0.5, -44.14945)
+shape = SubResource("BoxShape3D_7mtce")
+
+[node name="StoryActor" parent="Section3/PurpleRoom/Chunk/ReturnPacketTrigger" unique_id=1421829850 instance=ExtResource("5_gcly8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4706726, -1.5, -46.949448)
+dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_6fo2d")])
+
+[node name="ReturnBasket" parent="Section3/PurpleRoom/Chunk" unique_id=134916207 instance=ExtResource("4_4pdg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, -49.2)
+auto_trigger = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/ReturnBasket" unique_id=1644421661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029327393, -0.7, -0.049446106)
+shape = SubResource("SphereShape3D_gcly8")
+
+[node name="StoryActor" parent="Section3/PurpleRoom/Chunk/ReturnBasket" unique_id=1228964580 instance=ExtResource("5_gcly8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029327393, -1.5, -0.049446106)
+dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_6fo2d")])
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Section3/PurpleRoom/Chunk/ReturnBasket" unique_id=1712403009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099998474, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/ReturnBasket/StaticBody3D" unique_id=2118535404]
+shape = SubResource("BoxShape3D_6l8lo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Section3/PurpleRoom/Chunk/ReturnBasket/StaticBody3D" unique_id=724099639]
+mesh = SubResource("BoxMesh_gcly8")
+
 [node name="Table" parent="Section3/PurpleRoom/Chunk" unique_id=872302217 instance=ExtResource("4_4pdg5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.70000005, 1)
 
@@ -1625,7 +1675,7 @@ visible = false
 
 [node name="Reset" parent="Section3/WestRoom" unique_id=354852941 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.98216, 32.1)
-reset_positions_of = [NodePath("")]
+reset_positions_of = [null]
 
 [node name="CyanChunk" type="Area3D" parent="Section3" unique_id=214374323 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -41)

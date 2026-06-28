@@ -5,10 +5,12 @@
 [resource]
 script = ExtResource("1_4qbur")
 starts = {
+"RETURN_BIN": &"0_6",
 "TUTORIAL_1": &"0_1",
 "TUTORIAL_2": &"0_2",
 "TUTORIAL_3": &"0_3",
-"TUTORIAL_4": &"0_4"
+"TUTORIAL_4": &"0_4",
+"TUTORIAL_EXIT": &"0_5"
 }
 nodes = {
 &"0_1": {
@@ -31,6 +33,32 @@ nodes = {
 "offset": Vector2(-440, 1040),
 "start_id": "TUTORIAL_4"
 },
+&"0_5": {
+"link": &"5_2",
+"offset": Vector2(-540, 1320),
+"start_id": "TUTORIAL_EXIT"
+},
+&"0_6": {
+"link": &"5_3",
+"offset": Vector2(-625.5907, 1676.9733),
+"start_id": "RETURN_BIN"
+},
+&"10_1": {
+"item_name": "Tutorial Packet",
+"link": &"1_2",
+"offset": Vector2(400, -100),
+"operator": 0,
+"type": 3,
+"value": "1"
+},
+&"10_2": {
+"item_name": "Tutorial Packet",
+"link": &"1_12",
+"offset": Vector2(380, 1340),
+"operator": 1,
+"type": 3,
+"value": "1"
+},
 &"1_1": {
 "dialogue": "The note reads:[br]
 Oof, it looks like you've stumbled into the labyrinthine [i]Cliff Side Caves[/i]. [br][br]
@@ -42,7 +70,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 4. Use the stencils from your tutorial packet to hide irrelevant info.[br]
 [br]
 [i]Please only take one packet, we were only able to make 3 total[/i]",
-"offset": Vector2(720, -100),
+"offset": Vector2(1160, -100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -50,7 +78,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 242.00009),
+"size": Vector2(300.00024, 242),
 "speaker": ""
 },
 &"1_10": {
@@ -63,7 +91,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 242.00006),
+"size": Vector2(300.0005, 241.9997),
 "speaker": ""
 },
 &"1_11": {
@@ -78,25 +106,25 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00012, 242.00006),
+"size": Vector2(300.00018, 241.9997),
 "speaker": ""
 },
-&"1_2": {
-"dialogue": "Its a table... woww. On it is a diagram labeled [i]Transmutation Map[/i], a packet of laminated pages stapled together, and a note.",
-"offset": Vector2(380, -100),
+&"1_12": {
+"dialogue": "As you leave, you notice a bin by the door. Inside appears to be another tutorial packet.",
+"offset": Vector2(720, 1320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_1",
+"link": &"1_13",
 "text": ""
 }
 },
-"size": Vector2(300.00012, 242.00009),
+"size": Vector2(300.00024, 240.00006),
 "speaker": ""
 },
-&"1_3": {
-"dialogue": "You take the map and the packet of stencils. It appears you grabbed the last ones.",
-"offset": Vector2(1060, -100),
+&"1_13": {
+"dialogue": "You gently toss yours into the bin.",
+"offset": Vector2(1060, 1320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -104,7 +132,59 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00098, 242.00009),
+"size": Vector2(300.00012, 240.00006),
+"speaker": ""
+},
+&"1_14": {
+"dialogue": "Looking in the bin, you notice 2 somewhat identical packets.",
+"offset": Vector2(20, 1620),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00037, 240),
+"speaker": ""
+},
+&"1_15": {
+"dialogue": "Looing in the bin, you notice several laminated pages stapled together.",
+"offset": Vector2(20, 1880),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00037, 240.00012),
+"speaker": ""
+},
+&"1_2": {
+"dialogue": "Its a table... woww. On it is a diagram labeled [i]Transmutation Map[/i], a packet of laminated pages stapled together, and a note.",
+"offset": Vector2(820, -100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_1",
+"text": ""
+}
+},
+"size": Vector2(300.00012, 242),
+"speaker": ""
+},
+&"1_3": {
+"dialogue": "You take the map and the packet of stencils. It appears you grabbed the last ones.",
+"offset": Vector2(1500, -100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.0011, 242),
 "speaker": ""
 },
 &"1_4": {
@@ -117,7 +197,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00012, 242.00018),
+"size": Vector2(300.00018, 242.00024),
 "speaker": ""
 },
 &"1_5": {
@@ -139,7 +219,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00073, 242.00018),
+"size": Vector2(300.00073, 242.00024),
 "speaker": ""
 },
 &"1_6": {
@@ -152,7 +232,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 242.00003),
+"size": Vector2(300.0005, 241.99988),
 "speaker": ""
 },
 &"1_7": {
@@ -166,7 +246,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00012, 242.00003),
+"size": Vector2(300.00018, 241.99988),
 "speaker": ""
 },
 &"1_8": {
@@ -179,7 +259,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 241.99991),
+"size": Vector2(300.0005, 241.99976),
 "speaker": ""
 },
 &"1_9": {
@@ -194,15 +274,22 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00024, 241.99991),
+"size": Vector2(300.0003, 241.99976),
 "speaker": ""
 },
 &"4_1": {
-"link": &"1_2",
+"link": &"10_1",
 "offset": Vector2(60, -100),
 "type": 0,
 "value": "true",
 "variable": "took_packet"
+},
+&"4_2": {
+"link": &"10_2",
+"offset": Vector2(40, 1320),
+"type": 0,
+"value": "true",
+"variable": "returned_packet"
 },
 &"5_1": {
 "condition": Array[Dictionary]([{
@@ -213,9 +300,38 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "false": &"1_4",
 "offset": Vector2(-260, -80),
 "true": &"4_1"
+},
+&"5_2": {
+"condition": Array[Dictionary]([{
+"combiner": 1,
+"operator": 0,
+"value1": "took_packet",
+"value2": "true"
+}, {
+"operator": 0,
+"value1": "returned_packet",
+"value2": "false"
+}]),
+"false": "END",
+"offset": Vector2(-280, 1320),
+"true": &"4_2"
+},
+&"5_3": {
+"condition": Array[Dictionary]([{
+"operator": 0,
+"value1": "returned_packet",
+"value2": "true"
+}]),
+"false": &"1_15",
+"offset": Vector2(-400, 1660),
+"true": &"1_14"
 }
 }
 variables = Dictionary[String, Dictionary]({
+"returned_packet": {
+"type": 1,
+"value": false
+},
 "took_packet": {
 "type": 1,
 "value": false
