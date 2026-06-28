@@ -97,7 +97,7 @@ process_mode = 3
 libraries/ = SubResource("AnimationLibrary_1n5t0")
 
 [node name="Player" parent="Overworld" unique_id=1613643988 instance=ExtResource("1_riqc8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.473614, 2.1749167, -295.8228)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.592537, 4.885526, -291.89075)
 dash_speed = 900.0
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player" unique_id=1009984194]
@@ -152,7 +152,7 @@ _element = 0
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.315, -0.0609789, -82.7645)
 _element = 0
 
-[node name="alice_v3" parent="Overworld" unique_id=584116633 instance=ExtResource("15_h8lre")]
+[node name="alice_v3" parent="Overworld" unique_id=1434385361 instance=ExtResource("15_h8lre")]
 transform = Transform3D(30, 0, 0, 0, 28.222519, -10.172976, 0, 10.172976, 28.222519, 17.451464, -252.40411, -458.26257)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
