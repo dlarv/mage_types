@@ -3,15 +3,92 @@
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_t2vqq"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="2_si0uy"]
 [ext_resource type="PackedScene" uid="uid://dopnbrdghtxix" path="res://assets/3d/objects/magiclay_disk.blend" id="3_d4t7o"]
-[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="4_att8u"]
+[ext_resource type="Shader" uid="uid://dl5s3ltd2wxpm" path="res://assets/shaders/clay_shader/magiclay_effects.gdshader" id="4_t2vqq"]
 [ext_resource type="Texture2D" uid="uid://dhg0kjr7mw6xq" path="res://assets/3d/objects/textures/magiclay_disk_normal.png" id="5_eqy22"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xuol1"]
 size = Vector3(1.5, 1.374, 1.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgsxw"]
+[sub_resource type="Gradient" id="Gradient_68sun"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dq6xx"]
+noise_type = 3
+frequency = 0.0347
+fractal_octaves = 1
+fractal_gain = 1.285
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_1qy7q"]
+noise = SubResource("FastNoiseLite_dq6xx")
+color_ramp = SubResource("Gradient_68sun")
+
+[sub_resource type="Gradient" id="Gradient_xyh72"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r2m2b"]
+noise_type = 2
+frequency = 0.085
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_pjopa"]
+noise = SubResource("FastNoiseLite_r2m2b")
+color_ramp = SubResource("Gradient_xyh72")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_6a5d6"]
+offsets = PackedFloat32Array(0, 0.29032257, 0.6814516, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12366388, 0.13802302, 0.123665474, 1, 0.34781694, 0.34781697, 0.3478169, 0.4952317, 1, 1, 1, 0.05490196)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6a5d6"]
+frequency = 0.0056
+fractal_lacunarity = 2.275
+fractal_gain = 0.99
+fractal_weighted_strength = 0.6
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_y5ahk"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_6a5d6")
+color_ramp = SubResource("Gradient_6a5d6")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_y5ahk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1dg1q"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_l44ne"]
+noise = SubResource("FastNoiseLite_1dg1q")
+color_ramp = SubResource("Gradient_y5ahk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_si0uy"]
 resource_local_to_scene = true
-next_pass = ExtResource("4_att8u")
+render_priority = 0
+shader = ExtResource("4_t2vqq")
+shader_parameter/thickness = 0.10000000475
+shader_parameter/outline_energy = 1.0
+shader_parameter/element_id = 8
+shader_parameter/random_noise = SubResource("NoiseTexture3D_l44ne")
+shader_parameter/orange_noise = SubResource("NoiseTexture3D_pjopa")
+shader_parameter/purple_noise = SubResource("NoiseTexture3D_y5ahk")
+shader_parameter/p_color_mod = 0.3
+shader_parameter/magenta_noise = SubResource("NoiseTexture3D_1qy7q")
+shader_parameter/red_pulse_amount = 0.09
+shader_parameter/red_pulse_speed = 2.0
+shader_parameter/m_speed_damp = 7.0
+shader_parameter/m_bright_offset = 0.2
+shader_parameter/o_speed_damp = 15.0
+shader_parameter/c_thickness_mod = 35.0
+shader_parameter/g_pulse_amount = 0.3
+shader_parameter/g_fade_damp = 1.5
+shader_parameter/g_color_mod = 0.1
+shader_parameter/c_bright_offset = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4t7o"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_si0uy")
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 normal_enabled = true
 normal_texture = ExtResource("5_eqy22")
@@ -44,7 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 1.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -1.3)
 
 [node name="Marker3D_East" type="Marker3D" parent="Draggable" unique_id=484296301]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, -0.2, 0)
 
 [node name="Marker3D_West" type="Marker3D" parent="Draggable" unique_id=900352696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -0.2, 0)
@@ -52,6 +129,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, -0.2, 0)
 [node name="magiclay_disk" parent="." unique_id=72750157 instance=ExtResource("3_d4t7o")]
 
 [node name="MagiClayDisk" parent="magiclay_disk" index="0" unique_id=327158548]
-material_override = SubResource("StandardMaterial3D_pgsxw")
+material_override = SubResource("StandardMaterial3D_d4t7o")
 
 [editable path="magiclay_disk"]
