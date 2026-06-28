@@ -123,9 +123,9 @@ class Queue:
 	var _list: Array[int] = [0, 0, 0, 0]
 
 	func append(num: int) -> void:
+		if num == _list[-1]: return
 		_list.pop_front()
 		_list.append(num)
-	
 
 	func equals(other: Array[int]) -> bool:
 		return _list == other

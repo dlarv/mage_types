@@ -52,7 +52,7 @@ size = Vector3(9, 1, 6)
 
 [node name="Beach" type="Node3D" unique_id=1298904294]
 
-[node name="MainBeachEnv" parent="." unique_id=232499275 instance=ExtResource("1_ryk2o")]
+[node name="MainBeachEnv" parent="." unique_id=1257947851 instance=ExtResource("1_ryk2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 33.33571)
 
 [node name="BeachChunk" type="Area3D" parent="." unique_id=1239770108 node_paths=PackedStringArray("chunk", "non_persistent") groups=["chunk", "persist"]]
@@ -350,8 +350,7 @@ bright_light_range = Vector2(18, 20)
 transform = Transform3D(0.9999999, -7.450581e-09, 0, 1.8626451e-08, 1, 0, 0, 0, 1, -2.8917694, 1.0886478, -1.449997)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelExteriorChunk/Chunk/SunkenLampPuzzle/PuzzleLamppostNW/Area3D" unique_id=2057224249]
-transform = Transform3D(0.99999976, -1.4901163e-08, 5.9604645e-08, 7.574677e-09, 1.0000004, -9.232016e-09, 0, 1.0908412e-08, 0.99999994, -31.299995, -8.249998, 89.5357)
-top_level = true
+transform = Transform3D(-0.83651626, -0.25881916, 0.48296276, -0.22414376, 0.9659258, 0.12940942, -0.49999994, -3.1798706e-08, -0.8660254, -2.5107346, 1.967206, 1.3186722)
 shape = SubResource("BoxShape3D_sgeyw")
 
 [node name="PuzzleLamppostSW" parent="HotelExteriorChunk/Chunk/SunkenLampPuzzle" unique_id=1554952032 instance=ExtResource("8_1otd5")]
