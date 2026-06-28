@@ -41,11 +41,9 @@
 - [ ] Alignment calculations at end of battle crashing due to empty list of elements
 - [ ] Falling animation playing when going thru doorways
 - [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
-- [ ] Ethereal Quartz overworld item can be used even when not equipped
-- [ ] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
+- [x] Ethereal Quartz overworld item can be used even when not equipped
+- [x] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 - [ ] Water in beach2 getting loaded when player is inside the caves
-- [ ] Lamppost puzzle no longer working
-	- [ ] Also stepping on same island twice shouldn't append twice
 ## Optimizations
 - [ ] When player moves thru door, for a brief second both chunks are visible. This causes a weird visual distortion
 ## Battle 
@@ -376,7 +374,10 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 	- [ ] Dash
 		- ~~Removed dash, as I didn't like how it looked~~
 		- Dash should have charater's arms more tucked in
-	- [ ] Dragging animation
+	- [x] Dragging animation
+		- [x] Player should only move their legs when they're moving
+		- [x] Different animation for moving forward/backward vs sidways
+		- [x] Reposition drag animations to look like player is actually holding draggable
 - [x] Player battle animations
 	- [x] Channeling
 	- [x] Attack
@@ -803,16 +804,19 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [ ] ~~Midground decor~~
 		- [ ] ~~Transformer in NE corner?~~
 		- [ ] Sandcastle on sand
+		- [x] Replace tidepools w/ solid rock
 		- [x] Lamppost island puzzle
 			- [x] Designed
 			- [x] Implemented
 			- [x] Placed reward (hidden chest)
-			- [ ] Puzzle is broken for some reason
+			- [x] Puzzle is broken for some reason
+			- [x] Stepping on same island twice shouldn't append twice
+			- [x] Chest not actually adding magenta key to inventory
 	- [x] Move road further north
 	- [x] Move House further east and on hill
 	- [ ] NW Parkour challenge
 		- [x] Designed challenge
-		- [ ] Placed reward
+		- [ ] Placed rewards
 			- If I give the player a attack/item and I'm not careful, I might upset the balance of my tutorial
 	- [ ] SW Parkour challenge
 		- [x] Designed Challenge
@@ -861,7 +865,7 @@ This section serves primarily to set the atmosphere and show off the clay shader
 	- [x] Design puzzles
 	- [x] Created ROY stencils
 	- [x] Write instructions/commentary
-	- [ ] Add/remove stencils from player's inventory
+	- [x] Add/remove stencils from player's inventory
 	- [ ] Playtest level w/ someone who is unfamiliar w/ graph theory
 		- Keeley had an easier time with the first 2 sections, but was confused by the bridge puzzles, due to the double arrows.
 		- [x] Double arrows are confusing w/o context. Orange and Magenta arrows can be hidden by stencil 3 w/ only minor modifications needed
