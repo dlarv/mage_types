@@ -17,18 +17,8 @@ script = ExtResource("2_tfq5e")
 name = "Dlarv"
 _sprite_names = Array[String](["happy", "sad"])
 
-[node name="StoryManager" type="Control" unique_id=653787110]
+[node name="StoryManager" type="Control" unique_id=983036629]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_1ty53")
 characters = Array[ExtResource("2_tfq5e")]([SubResource("Resource_2pu75"), SubResource("Resource_tfq5e"), SubResource("Resource_arf5u")])
-variables = Dictionary[String, Dictionary]({
-"has_globals": {
-"type": 1,
-"value": true
-},
-"visited_dropdowns": {
-"type": 1,
-"value": false
-}
-})
