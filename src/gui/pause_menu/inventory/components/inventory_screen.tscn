@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsbkifgbbg75f"]
+[gd_scene format=3 uid="uid://dsbkifgbbg75f"]
 
 [ext_resource type="Script" uid="uid://5iujervb6bsy" path="res://src/gui/pause_menu/inventory/components/InventoryScreen.gd" id="1_stblg"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="2_js2lc"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_id3j4"]
 
-[node name="InventoryScreen" type="MarginContainer"]
+[node name="InventoryScreen" type="MarginContainer" unique_id=373375480]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,62 +13,62 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_stblg")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1638093405]
 layout_mode = 2
 
-[node name="List_VBox" type="VBoxContainer" parent="HBoxContainer"]
+[node name="List_VBox" type="VBoxContainer" parent="HBoxContainer" unique_id=1811293915]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/List_VBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/List_VBox" unique_id=1179324443]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SpellsScroller" type="VBoxContainer" parent="HBoxContainer/List_VBox/ScrollContainer"]
+[node name="SpellsScroller" type="VBoxContainer" parent="HBoxContainer/List_VBox/ScrollContainer" unique_id=1911697694]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/List_VBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/List_VBox" unique_id=570953655]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/List_VBox/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/List_VBox/HBoxContainer" unique_id=1410836031]
 layout_mode = 2
 text = "Sort by:"
 
-[node name="Id_CheckBox" type="CheckBox" parent="HBoxContainer/List_VBox/HBoxContainer"]
+[node name="Id_CheckBox" type="CheckBox" parent="HBoxContainer/List_VBox/HBoxContainer" unique_id=915020398]
 layout_mode = 2
 button_pressed = true
 button_group = SubResource("ButtonGroup_id3j4")
 text = "Id"
 
-[node name="Alnum_CheckBox" type="CheckBox" parent="HBoxContainer/List_VBox/HBoxContainer"]
+[node name="Alnum_CheckBox" type="CheckBox" parent="HBoxContainer/List_VBox/HBoxContainer" unique_id=905013857]
 layout_mode = 2
 button_group = SubResource("ButtonGroup_id3j4")
 text = "Alphanumeric"
 
-[node name="Display_VBox" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Display_VBox" type="VBoxContainer" parent="HBoxContainer" unique_id=2125081497]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InfoDisplay" parent="HBoxContainer/Display_VBox" instance=ExtResource("2_js2lc")]
+[node name="InfoDisplay" parent="HBoxContainer/Display_VBox" unique_id=1800465572 instance=ExtResource("2_js2lc")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Controls_HBox" type="HBoxContainer" parent="HBoxContainer/Display_VBox"]
+[node name="Controls_HBox" type="HBoxContainer" parent="HBoxContainer/Display_VBox" unique_id=1041644563]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="Select_Button" type="Button" parent="HBoxContainer/Display_VBox/Controls_HBox"]
+[node name="Select_Button" type="Button" parent="HBoxContainer/Display_VBox/Controls_HBox" unique_id=2793622]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Select"
 
-[node name="Cancel_Button" type="Button" parent="HBoxContainer/Display_VBox/Controls_HBox"]
+[node name="Cancel_Button" type="Button" parent="HBoxContainer/Display_VBox/Controls_HBox" unique_id=387333280]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"

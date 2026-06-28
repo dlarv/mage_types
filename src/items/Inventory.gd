@@ -125,7 +125,7 @@ func add(item: _Item, amount:=1) -> void:
 	if amount < 0:
 		remove(item, -amount)
 		return
-	if item.id == -1:
+	if item.id == -1 and not item is KeyItem:
 		_add_item = item
 		return
 

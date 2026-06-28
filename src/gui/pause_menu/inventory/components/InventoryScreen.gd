@@ -10,17 +10,26 @@ func setup(items: Array[ItemSlot]) -> void:
 		var button := Button.new()
 		button.text = _format_name(item)
 		button.visible = item.quantity > 0
-		if not button.pressed.is_connected(_on_item_pressed):
-			button.pressed.connect(_on_item_pressed.bind(item))
-		button.set_meta("item", item.item)
-
 		_buttons.append(button)
 		%SpellsScroller.add_child(button)
 
+		if not button.pressed.is_connected(_on_item_pressed):
+			button.pressed.connect(_on_item_pressed.bind(item))
 
-func change_quantity(item: ItemSlot) -> void:
-	_buttons[item.id].text = _format_name(item)
-	_buttons[item.id].visible = item.quantity > 0
+		button.set_meta("item", item.item)
+
+
+
+func change_quantity(slot: ItemSlot) -> void:
+	if not slot.item is KeyItem:
+		_buttons[slot.id].text = _format_name(slot)
+		_buttons[slot.id].visible = slot.quantity > 0
+		return
+	for button in _buttons:
+		if button.get_meta("item") == slot.item:
+			button.text = _format_name(slot)
+			button.visible = slot.quantity > 0
+
 
 
 ## func filter(item: _Item) -> bool
