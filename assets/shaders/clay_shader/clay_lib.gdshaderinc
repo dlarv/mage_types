@@ -38,9 +38,16 @@ vec3 get_adjusted_normal(sampler2D tex, float scale, float offset) {
 		+ z * normal_weights.z;
 }
 
-vec3 calculate_normals() {
+vec3 get_triplanar_normal_map() {
 	float adjusted_crack_scale = crack_scale * GLOBAL_CRACK_SCALAR;
 	vec3 crack_base_normal = get_adjusted_normal(cracks, adjusted_crack_scale, crack_offset);
 	vec3 fingerprint_normal = get_adjusted_normal(fingerprints, fingerprint_scale, fingerprint_offset);
+	return fingerprint_normal * crack_base_normal;
+}
+
+vec3 get_simple_normal_map(vec2 uv) {
+	float adjusted_crack_scale = crack_scale * GLOBAL_CRACK_SCALAR + crack_offset;
+	vec3 crack_base_normal = texture(cracks, uv).xyz;
+	vec3 fingerprint_normal = texture(fingerprints, uv).xyz;
 	return fingerprint_normal * crack_base_normal;
 }
