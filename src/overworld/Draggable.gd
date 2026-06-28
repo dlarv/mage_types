@@ -35,6 +35,7 @@ func _ready() -> void:
 		puzzle_name = parent.puzzle_name
 		element = parent.element
 
+
 func _input(event: InputEvent) -> void:
 	if not in_control: return
 

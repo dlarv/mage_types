@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
 [ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/story/bosses/tutorial_bosses/boss_1.tscn" id="11_o1net"]
 [ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="15_b2suy"]
+[ext_resource type="PackedScene" uid="uid://dtrbrmfxqrdth" path="res://assets/3d/characters/alice/alice_v3.blend" id="15_h8lre"]
 [ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="18_j7vgi"]
 [ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/story/bosses/tutorial_bosses/boss_3.tscn" id="20_bwxdu"]
 
@@ -150,6 +151,9 @@ _element = 0
 [node name="MiniBoss1" parent="Overworld" unique_id=442518573 instance=ExtResource("15_b2suy")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.315, -0.0609789, -82.7645)
 _element = 0
+
+[node name="alice_v3" parent="Overworld" unique_id=584116633 instance=ExtResource("15_h8lre")]
+transform = Transform3D(30, 0, 0, 0, 28.222519, -10.172976, 0, 10.172976, 28.222519, 17.451464, -252.40411, -458.26257)
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

@@ -7,11 +7,6 @@ signal element_changed(element: ElementalType)
 
 enum MagiClayEffectMode { FANCY, SOLID, NONE }
 
-const MagiClayShader := preload("res://assets/shaders/clay_shader/magiclay.gdshader")
-# Aura around MagiClay blocks get cut off by the ground and look weird.
-# This ensure the block hovers just above the ground.
-const GROUND_OFFSET = 0.374;
-
 @export_category("Elemental Traits")
 @export var _element := ElementalType.ElementId.BLANK:
 	set(value):
@@ -29,28 +24,17 @@ var element: ElementalType = ElementManager.Blank:
 		if Engine.is_editor_hint() or element != null:
 			return element
 		return ElementManager.Blank
-		return element
 @export var is_breakable: bool
 @export var is_transmutable: bool
 @export var in_stasis: bool
 
-@export_category("Sizing")
-@export var scaling_factor := Vector3(1, 1, 1):
-	set(val):
-		scaling_factor = val
-		_mesh_instance.mesh = _mesh_instance.mesh.duplicate(true)
-		$CollisionShape3D.shape = $CollisionShape3D.shape.duplicate(true)
-		_set_size()
-
-@export var base_size := Vector3(1, 1, 1)
-
 @onready var puzzle_name := "%s.%s" % [get_parent().name, name]
 @onready var spawn_position := global_position
 
-var _mesh_instance: MeshInstance3D: get = _get_mesh
+@export var _mesh_instance: MeshInstance3D
 var _material: Material:
 	get:
-		if _mesh_instance == null: return
+		if _mesh_instance == null: return null
 		return _mesh_instance.get_active_material(0)
 var _original_element: ElementalType = null
 
@@ -66,8 +50,6 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	# if _mesh_instance:
-	# 	_material = _mesh_instance.get_active_material(0)
 	_try_set_color()
 
 
@@ -183,18 +165,6 @@ func deserialize(data: Dictionary) -> void:
 		visible = data["visible"]
 
 
-func _get_mesh() -> MeshInstance3D:
-	if find_child("MeshInstance3D") == null: return null
-	return $MeshInstance3D
-
-
-# func _set_material(val: Material) -> void:
-# 	_material = val
-# 	if _mesh_instance == null: return
-# 	_mesh_instance.set_surface_override_material(0, _material)
-# 	_try_set_color()
-#
-
 func flicker_collider() -> void:
 	if Engine.is_editor_hint() or not is_inside_tree(): return
 	# Use case example:
@@ -205,34 +175,6 @@ func flicker_collider() -> void:
 	set_collision_layer_value(3, false)
 	await get_tree().create_timer(0.01).timeout
 	set_collision_layer_value(3, true)
-
-
-func _set_size() -> void:
-	var mesh: Mesh = _mesh_instance.mesh
-	var shape: Shape3D = $CollisionShape3D.shape
-
-	if mesh is CylinderMesh:
-		mesh.top_radius = base_size.x * scaling_factor.x
-		mesh.bottom_radius = base_size.x * scaling_factor.x
-		mesh.height = base_size.z * scaling_factor.z
-	elif mesh is PlaneMesh:
-		mesh.size.x = base_size.x * scaling_factor.x
-		mesh.size.y = base_size.z * scaling_factor.z
-	elif mesh is SphereMesh:
-		mesh.radius = base_size.x * scaling_factor.x
-		mesh.height = base_size.y * scaling_factor.y
-	elif "size" in mesh:
-		mesh.size = base_size * scaling_factor
-
-	if shape is CylinderShape3D:
-		shape.radius = base_size.x * scaling_factor.x
-		shape.height = base_size.z * scaling_factor.z
-		shape.height.y += GROUND_OFFSET
-		$CollisionShape3D.position.y -= GROUND_OFFSET
-	elif "size" in shape:
-		shape.size = base_size * scaling_factor
-		shape.size.y += GROUND_OFFSET
-		$CollisionShape3D.position.y -= GROUND_OFFSET
 
 
 func fall_in_water() -> void:

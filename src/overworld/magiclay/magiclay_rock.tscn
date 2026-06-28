@@ -3,30 +3,19 @@
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_x47xi"]
 [ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_6a5d6"]
 [ext_resource type="PackedScene" uid="uid://c7g6etnd40veg" path="res://src/overworld/draggable.tscn" id="2_88vum"]
-[ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_ecm5f"]
+[ext_resource type="Texture2D" uid="uid://bahswgdxj0u5" path="res://assets/3d/objects/textures/magiclay_block_normal.png" id="3_y5ahk"]
+[ext_resource type="PackedScene" uid="uid://diqouih4lfwc" path="res://assets/3d/objects/magiclay_cube.blend" id="5_y5ahk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ecm5f"]
-size = Vector3(1, 1.37, 1)
+size = Vector3(1, 1.4175439, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecm5f"]
-resource_local_to_scene = true
-render_priority = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dg1q"]
 next_pass = ExtResource("2_6a5d6")
-shader = ExtResource("2_ecm5f")
-shader_parameter/show_diffuse_test = false
-shader_parameter/roughness = 1.0
-shader_parameter/fingerprint_offset = 0.0
-shader_parameter/fingerprint_scale = 1.0
-shader_parameter/crack_offset = 0.0
-shader_parameter/crack_scale = 1.0
-shader_parameter/element_id = 8
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+normal_enabled = true
+normal_texture = ExtResource("3_y5ahk")
 
-[sub_resource type="BoxMesh" id="BoxMesh_6a5d6"]
-subdivide_width = 100
-subdivide_height = 100
-subdivide_depth = 100
-
-[node name="MagiclayRock" type="RigidBody3D" unique_id=1333995149]
+[node name="MagiclayRock" type="RigidBody3D" unique_id=1333995149 node_paths=PackedStringArray("_mesh_instance")]
 collision_layer = 71
 collision_mask = 5
 axis_lock_angular_y = true
@@ -35,14 +24,11 @@ contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_x47xi")
 is_transmutable = true
+_mesh_instance = NodePath("magiclay_cube/MagiClayBlock")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=909635873]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22999996, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20622802, 0)
 shape = SubResource("BoxShape3D_ecm5f")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=346690245]
-material_override = SubResource("ShaderMaterial_ecm5f")
-mesh = SubResource("BoxMesh_6a5d6")
 
 [node name="Draggable" parent="." unique_id=83737622 instance=ExtResource("2_88vum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
@@ -58,3 +44,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
 
 [node name="Marker3D_West" type="Marker3D" parent="Draggable" unique_id=1069072770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
+
+[node name="magiclay_cube" parent="." unique_id=181608019 instance=ExtResource("5_y5ahk")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
+
+[node name="MagiClayBlock" parent="magiclay_cube" index="0" unique_id=1855734103]
+material_override = SubResource("StandardMaterial3D_1dg1q")
+
+[editable path="magiclay_cube"]

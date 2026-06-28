@@ -14,12 +14,12 @@ top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
 
-[node name="CatalystPlatform" type="Area3D" unique_id=796992717]
+[node name="CatalystPlatform" type="Area3D" unique_id=796992717 node_paths=PackedStringArray("_mesh_instance")]
 process_mode = 1
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_5kuer")
-base_size = Vector3(2, 0.1, 2)
+_mesh_instance = NodePath("MeshInstance3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1753818042]
 shape = SubResource("BoxShape3D_xdfa5")

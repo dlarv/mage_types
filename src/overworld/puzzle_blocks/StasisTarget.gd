@@ -20,5 +20,3 @@ func set_stasis(val: Variant=null) -> void:
 		off.emit(self)
 		_material.albedo_color = Color.GRAY
 
-
-func _get_mesh() -> MeshInstance3D: return null

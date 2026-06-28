@@ -69,10 +69,6 @@ func reset(resetPosition:=false) -> void:
 		$SubEmitter2.start()
 
 
-func _get_mesh() -> MeshInstance3D:
-	return $Model/Bridge
-
-
 func _on_laser_broken() -> void:
 	if shutoff_upon_trigger: 
 		MyLogger.append_puzzle_log("Bridge(%s)'s laser was triggered and shutoff." % [puzzle_name])

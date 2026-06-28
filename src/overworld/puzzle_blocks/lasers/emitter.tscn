@@ -15,11 +15,12 @@ albedo_color = Color(0.5, 0.5, 0.5, 1)
 height = 0.5
 is_hemisphere = true
 
-[node name="Emitter" type="StaticBody3D" unique_id=1402158360]
+[node name="Emitter" type="StaticBody3D" unique_id=1402158360 node_paths=PackedStringArray("_mesh_instance")]
 collision_layer = 5
 collision_mask = 3
 script = ExtResource("1_1e8qi")
 is_transmutable = true
+_mesh_instance = NodePath("MeshInstance3D")
 
 [node name="SubEmitter" parent="." unique_id=1732811693 instance=ExtResource("3_l2c7w")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)

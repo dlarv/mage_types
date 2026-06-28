@@ -1,49 +1,122 @@
 [gd_scene format=3 uid="uid://nanxbk8qtx3"]
 
 [ext_resource type="Script" uid="uid://b45lyix6ywieb" path="res://src/overworld/magiclay/MagiClay.gd" id="1_blpm0"]
-[ext_resource type="Shader" uid="uid://c67lj3qgnoisi" path="res://assets/shaders/clay_shader/magiclay.gdshader" id="2_pcrkp"]
-[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_ql488"]
+[ext_resource type="PackedScene" uid="uid://diqouih4lfwc" path="res://assets/3d/objects/magiclay_cube.blend" id="4_grii4"]
+[ext_resource type="Shader" uid="uid://dl5s3ltd2wxpm" path="res://assets/shaders/clay_shader/magiclay_effects.gdshader" id="5_abpqm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_slv4x"]
-size = Vector3(3, 3, 3)
+size = Vector3(3, 3.5, 3)
+
+[sub_resource type="Gradient" id="Gradient_dhafm"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5w72m"]
+noise_type = 3
+frequency = 0.0347
+fractal_octaves = 1
+fractal_gain = 1.285
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_rh50v"]
+noise = SubResource("FastNoiseLite_5w72m")
+color_ramp = SubResource("Gradient_dhafm")
+
+[sub_resource type="Gradient" id="Gradient_ftsqy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kkye2"]
+noise_type = 2
+frequency = 0.085
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_vk1ny"]
+noise = SubResource("FastNoiseLite_kkye2")
+color_ramp = SubResource("Gradient_ftsqy")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_5ru3n"]
+offsets = PackedFloat32Array(0, 0.29032257, 0.6814516, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12366388, 0.13802302, 0.123665474, 1, 0.34781694, 0.34781697, 0.3478169, 0.4952317, 1, 1, 1, 0.05490196)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gg1qn"]
+frequency = 0.0056
+fractal_lacunarity = 2.275
+fractal_gain = 0.99
+fractal_weighted_strength = 0.6
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_se01x"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_gg1qn")
+color_ramp = SubResource("Gradient_5ru3n")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_wglhe"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m4fq0"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_raw6h"]
+noise = SubResource("FastNoiseLite_m4fq0")
+color_ramp = SubResource("Gradient_wglhe")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ql488"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = ExtResource("2_ql488")
-shader = ExtResource("2_pcrkp")
-shader_parameter/show_diffuse_test = false
-shader_parameter/roughness = 1.0
-shader_parameter/fingerprint_offset = 0.0
-shader_parameter/fingerprint_scale = 1.0
-shader_parameter/crack_offset = 0.0
-shader_parameter/crack_scale = 1.0
-shader_parameter/element_id = 2
+shader = ExtResource("5_abpqm")
+shader_parameter/thickness = 0.10000000475
+shader_parameter/outline_energy = 1.0
+shader_parameter/element_id = 7
+shader_parameter/random_noise = SubResource("NoiseTexture3D_raw6h")
+shader_parameter/orange_noise = SubResource("NoiseTexture3D_vk1ny")
+shader_parameter/purple_noise = SubResource("NoiseTexture3D_se01x")
+shader_parameter/p_color_mod = 0.3
+shader_parameter/magenta_noise = SubResource("NoiseTexture3D_rh50v")
+shader_parameter/red_pulse_amount = 0.09
+shader_parameter/red_pulse_speed = 2.0
+shader_parameter/m_speed_damp = 7.0
+shader_parameter/m_bright_offset = 0.2
+shader_parameter/o_speed_damp = 15.0
+shader_parameter/c_thickness_mod = 35.0
+shader_parameter/g_pulse_amount = 0.3
+shader_parameter/g_fade_damp = 1.5
+shader_parameter/g_color_mod = 0.1
+shader_parameter/c_bright_offset = 0.6
 
-[sub_resource type="BoxMesh" id="BoxMesh_1372a"]
-size = Vector3(3, 3, 3)
-subdivide_width = 16
-subdivide_height = 16
-subdivide_depth = 16
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f1gw8"]
+load_path = "res://.godot/imported/magiclay_block_normal.png-3b75d2d48fc1af11162ecd6bcb502c18.s3tc.ctex"
 
-[node name="MagiclayBoulder" type="RigidBody3D" unique_id=751610042]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsjpx"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_ql488")
+albedo_color = Color(0.12549, 0.901961, 0.901961, 1)
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_f1gw8")
+
+[node name="MagiclayBoulder" type="RigidBody3D" unique_id=751610042 node_paths=PackedStringArray("_mesh_instance")]
 collision_layer = 7
-axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 50.0
 inertia = Vector3(10, 10, 10)
 angular_damp_mode = 1
 angular_damp = 10.0
 script = ExtResource("1_blpm0")
-_element = 2
+_element = 7
 is_transmutable = true
+_mesh_instance = NodePath("magiclay_cube/MagiClayBlock")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=439601511]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_slv4x")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1900384195]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-material_override = SubResource("ShaderMaterial_ql488")
-mesh = SubResource("BoxMesh_1372a")
+[node name="magiclay_cube" parent="." unique_id=181608019 instance=ExtResource("4_grii4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="MagiClayBlock" parent="magiclay_cube" index="0" unique_id=123595577]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.3259658, 0)
+material_override = SubResource("StandardMaterial3D_hsjpx")
+
+[editable path="magiclay_cube"]

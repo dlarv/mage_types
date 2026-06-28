@@ -29,10 +29,11 @@ size = Vector3(2.2, 0.6, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nmsp8"]
 size = Vector3(0.4, 1.5, 4)
 
-[node name="Bridge" type="StaticBody3D" unique_id=1641803076]
+[node name="Bridge" type="StaticBody3D" unique_id=1641803076 node_paths=PackedStringArray("_mesh_instance")]
 collision_layer = 21
 script = ExtResource("2_pq00e")
 is_transmutable = true
+_mesh_instance = NodePath("Model/Bridge")
 
 [node name="Model" parent="." unique_id=1096922940 instance=ExtResource("1_gg26p")]
 

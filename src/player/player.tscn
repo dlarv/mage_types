@@ -333,7 +333,7 @@ parameters/Dragging/DragTimeScale/scale = 1.0
 [node name="goose_v4" parent="." unique_id=878405398 instance=ExtResource("9_8ydov")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Skeleton3D" parent="goose_v4/rig" parent_id_path=PackedInt32Array(878405398, 1445600099) index="0" unique_id=1252731445]
+[node name="Skeleton3D" parent="goose_v4/rig" parent_id_path=PackedInt32Array(878405398, 1348702621) index="0" unique_id=1655283416]
 bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
 bones/1/position = Vector3(0.023627762, 0.0870098, 4.5006638)
 bones/1/rotation = Quaternion(0.7904554, 0, 0, 0.6125196)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://hxs50733onk1"]
+[gd_scene format=3 uid="uid://hxs50733onk1"]
 
 [ext_resource type="Script" uid="uid://bylr8xlkovkcu" path="res://src/overworld/Chunk.gd" id="1_vhknp"]
 [ext_resource type="PackedScene" uid="uid://b2c6cvf2k0bf4" path="res://src/overworld/puzzle_blocks/lasers/emitter.tscn" id="2_3sbrl"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="5_b44ux"]
 [ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="7_f54qh"]
 [ext_resource type="PackedScene" uid="uid://bro12iw6ll4yg" path="res://src/overworld/magiclay/magiclay_rock.tscn" id="8_js524"]
-[ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="9_1almi"]
+[ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/instances/magiclay_disk.tscn" id="9_1almi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_un0p4"]
 size = Vector3(42, 20, 97)

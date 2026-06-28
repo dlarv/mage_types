@@ -20,11 +20,12 @@ is_hemisphere = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_j5f5g"]
 
-[node name="DraggableEmitter" type="RigidBody3D" unique_id=1522269525]
+[node name="DraggableEmitter" type="RigidBody3D" unique_id=1522269525 node_paths=PackedStringArray("_mesh_instance")]
 collision_layer = 7
 collision_mask = 5
 script = ExtResource("1_ht7yv")
 is_transmutable = true
+_mesh_instance = NodePath("MeshInstance3D")
 
 [node name="SubEmitter" parent="." unique_id=57753723 instance=ExtResource("2_plq1v")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, -1.1)

@@ -20,8 +20,5 @@ func set_element(e: ElementalType, r:=-2, f:=false) -> bool:
 	return $LaserReceiver.set_element(e, r, f)
 
 
-func _get_mesh() -> MeshInstance3D:
-	return null
-
 func flicker_collider() -> void:
 	pass

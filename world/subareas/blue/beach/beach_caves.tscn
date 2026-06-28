@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="6_yng4o"]
 [ext_resource type="PackedScene" uid="uid://ck6cq5qaxuf80" path="res://src/overworld/puzzle_blocks/bridges/pillar.tscn" id="7_s01sn"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="7_vyqvy"]
-[ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/magiclay_disk.tscn" id="8_auv5o"]
+[ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/instances/magiclay_disk.tscn" id="8_auv5o"]
 [ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="8_yt1ct"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_jbfvx"]
 
@@ -488,12 +488,11 @@ shape = SubResource("BoxShape3D_b7ooe")
 [node name="Marker3D" type="Marker3D" parent="Section1/Doors/RToR/CollisionShape3D" unique_id=1715235150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.0999999)
 
-[node name="OToO" type="Area3D" parent="Section1/Doors" unique_id=1396903253 node_paths=PackedStringArray("point_2")]
+[node name="OToO" type="Area3D" parent="Section1/Doors" unique_id=1396903253]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -28.1)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_l4lmj")
-point_2 = NodePath("Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Doors/OToO" unique_id=226192372]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0022830963, -0.014001548, 0.09527969)
@@ -850,12 +849,11 @@ shape = SubResource("BoxShape3D_b7ooe")
 [node name="Marker3D" type="Marker3D" parent="Section2/Doors/OToY/CollisionShape3D" unique_id=1253458521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2000008)
 
-[node name="OToR" type="Area3D" parent="Section2/Doors" unique_id=827905382 node_paths=PackedStringArray("point_2")]
+[node name="OToR" type="Area3D" parent="Section2/Doors" unique_id=827905382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -44)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_l4lmj")
-point_2 = NodePath("Marker3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/Doors/OToR" unique_id=639879345]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002283, -0.014001548, -7.0047226)
@@ -955,12 +953,11 @@ metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7, 1)
 shape = SubResource("BoxShape3D_w4isg")
 
-[node name="RToR" type="Area3D" parent="Section2/RedRoom" unique_id=1510772462 node_paths=PackedStringArray("point_2")]
+[node name="RToR" type="Area3D" parent="Section2/RedRoom" unique_id=1510772462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_l4lmj")
-point_2 = NodePath("EntryMarker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom/RToR" unique_id=1096370731]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.997719, -0.014001548, -7.0047226)
@@ -1401,13 +1398,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.536743e-07, 0, -10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.864281, -1.2749757, -12.937787)
 _element = 4
 
-[node name="MagiclayDisk" parent="Section3/PurpleRoom/Chunk" unique_id=1851981714 instance=ExtResource("8_auv5o")]
+[node name="MagiclayDisk" parent="Section3/PurpleRoom/Chunk" unique_id=570814267 instance=ExtResource("8_auv5o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -5)
 _element = 2
 
 [node name="Reset" parent="Section3/PurpleRoom/Chunk" unique_id=996469747 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.98216, -9)
-reset_positions_of = [NodePath("../MagiclayDisk")]
+reset_positions_of = [null]
 
 [node name="Table" parent="Section3/PurpleRoom/Chunk" unique_id=872302217 instance=ExtResource("4_4pdg5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.70000005, 1)
@@ -1495,7 +1492,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 0, 4)
 use_laser_input = false
 _element = 5
 
-[node name="MagiclayDisk" parent="Section3/EastRoom/Chunk" unique_id=1771490889 instance=ExtResource("8_auv5o")]
+[node name="MagiclayDisk" parent="Section3/EastRoom/Chunk" unique_id=233708081 instance=ExtResource("8_auv5o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1, -17)
 _element = 3
 
@@ -1517,7 +1514,7 @@ _element = 2
 
 [node name="Reset" parent="Section3/EastRoom/Chunk" unique_id=38949980 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000015, -0.98216, -22.7)
-reset_positions_of = [NodePath("../MagiclayDisk")]
+reset_positions_of = [null]
 
 [node name="WestRoom" type="Area3D" parent="Section3" unique_id=1556223914 node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -24)
@@ -1608,7 +1605,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8287354, -4.5, 11.0789795)
 use_laser_input = false
 _element = 0
 
-[node name="MagiclayDisk" parent="Section3/WestRoom/Chunk" unique_id=1583003652 instance=ExtResource("8_auv5o")]
+[node name="MagiclayDisk" parent="Section3/WestRoom/Chunk" unique_id=789739205 instance=ExtResource("8_auv5o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1, 15)
 _element = 4
 
@@ -1628,7 +1625,7 @@ visible = false
 
 [node name="Reset" parent="Section3/WestRoom" unique_id=354852941 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.98216, 32.1)
-reset_positions_of = [NodePath("../Chunk/MagiclayDisk")]
+reset_positions_of = [NodePath("")]
 
 [node name="CyanChunk" type="Area3D" parent="Section3" unique_id=214374323 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -41)

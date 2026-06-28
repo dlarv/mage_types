@@ -30,10 +30,3 @@ func _on_body_entered(body:Node3D) -> void:
 func flicker_collider() -> void:
 	return
 
-# Override
-func _set_size() -> void:
-	var val := base_size * scaling_factor
-	$MeshInstance3D.mesh.top_radius = val.x / 2
-	$MeshInstance3D.mesh.bottom_radius = val.x / 2
-	$MeshInstance3D.mesh.height = val.y
-	$CollisionShape3D.shape.size = val

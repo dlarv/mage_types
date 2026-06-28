@@ -42,7 +42,7 @@ size = Vector3(0.15, 2.06174, 0.15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xkiah"]
 size = Vector3(1.29272, 2.62781, 1.26697)
 
-[node name="DraggableMirror" type="RigidBody3D" unique_id=1346370700]
+[node name="DraggableMirror" type="RigidBody3D" unique_id=1346370700 node_paths=PackedStringArray("_mesh_instance")]
 collision_layer = 23
 collision_mask = 7
 axis_lock_linear_y = true
@@ -54,6 +54,7 @@ linear_damp_mode = 1
 linear_damp = 100.0
 script = ExtResource("1_i7v82")
 is_transmutable = true
+_mesh_instance = NodePath("MeshInstance3D")
 
 [node name="Base" type="MeshInstance3D" parent="." unique_id=258249812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
