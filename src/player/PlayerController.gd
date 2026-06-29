@@ -2,6 +2,8 @@ extends "Player.gd"
 
 enum MoveDirection { FORWARD, RIGHT, LEFT, BACKWARD }
 
+signal entered_god_mode
+
 const MAX_FREEFALL_DIST := -40.0
 const HEAVY_FALL_THRESHOLD := -21.0
 
@@ -42,7 +44,7 @@ var gravity := -980#ProjectSettings.GetSetting("physics/3d/default_gravity").AsS
 var in_control := true
 var outside_forces := Vector3.ZERO
 
-var _god_mode := false
+var god_mode := false
 var _god_mode_speed_mod := 3.0
 var _prev_collision_layer := collision_layer
 var _prev_collision_mask := collision_mask
@@ -70,9 +72,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		# _is_running = not _is_running
 		pass
 	elif event.is_action_pressed("toggle_god_mode"):
-		_god_mode = not _god_mode
+		entered_god_mode.emit()
+		god_mode = not god_mode
 		_toggle_3d_collision_shape_visibility()
-		if _god_mode:
+		if god_mode:
 			_prev_collision_layer = collision_layer
 			_prev_collision_mask = collision_mask
 			collision_layer = 32
@@ -81,14 +84,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			collision_layer = _prev_collision_layer
 			collision_mask = _prev_collision_mask
 		get_viewport().set_input_as_handled()
-	elif not _god_mode and not draggable:
+	elif not god_mode and not draggable:
 		if event.is_action_pressed("jump"):
 			_jump_buffer = true
 			$FlushJumpBufferTimer.start()
 
 
 func _physics_process(delta: float) -> void:
-	if _god_mode: 
+	if god_mode: 
 		_move_god_mode(delta)
 		return
 	if global_position.y <= MAX_FREEFALL_DIST and not is_on_floor():
