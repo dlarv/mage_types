@@ -17,8 +17,26 @@ script = ExtResource("2_tfq5e")
 name = "Dlarv"
 _sprite_names = Array[String](["happy", "sad"])
 
-[node name="StoryManager" type="Control" unique_id=983036629]
+[node name="StoryManager" type="Control" unique_id=1893045448]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_1ty53")
 characters = Array[ExtResource("2_tfq5e")]([SubResource("Resource_2pu75"), SubResource("Resource_tfq5e"), SubResource("Resource_arf5u")])
+variables = Dictionary[String, Dictionary]({
+"battle_result": {
+"type": 4,
+"value": ""
+},
+"current_cutscene": {
+"type": 4,
+"value": ""
+},
+"misc_battle_data": {
+"type": 4,
+"value": ""
+},
+"target_ally": {
+"type": 4,
+"value": ""
+}
+})

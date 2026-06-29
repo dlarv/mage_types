@@ -42,7 +42,7 @@ func trigger(body: Node3D) -> void:
 		Inventory.add(item.item, item.quantity)
 	
 	for v in story_vars:
-		StoryManager.export_variable(v.name, v.value)
+		StoryManager.set_variable(v.name, v.value)
 
 	if not info_graphic_key.is_empty():
 		UIManager.show_info_graphic(info_graphic_key)

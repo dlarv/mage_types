@@ -48,8 +48,23 @@ func rename_variable(old_name: String, new_name: String) -> void:
 
 	variable_list_updated.emit(get_variable_list())
 
+
 func get_variable_list() -> Array[String]:
 	return variables.keys()
+
+
+func set_variable(key: String, val: Variant) -> void:
+	if not variables.has(key): 
+		push_warning("StoryVar(%s) not found" % key)
+		return
+	variables[key].value = val
+
+
+func get_variable(key: String) -> Variant:
+	if not variables.has(key): 
+		push_warning("StoryVar(%s) not found" % key)
+		return null
+	return variables[key]
 
 
 ## Takes mixed local and global vars and updates global var values

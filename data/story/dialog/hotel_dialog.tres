@@ -45,7 +45,7 @@ nodes = {
 },
 &"10_1": {
 "item_name": "Tutorial Packet",
-"link": &"1_2",
+"link": "END",
 "offset": Vector2(400, -100),
 "operator": 0,
 "type": 3,
@@ -53,33 +53,11 @@ nodes = {
 },
 &"10_2": {
 "item_name": "Tutorial Packet",
-"link": &"1_12",
+"link": "END",
 "offset": Vector2(380, 1340),
 "operator": 1,
 "type": 3,
 "value": "1"
-},
-&"1_1": {
-"dialogue": "The note reads:[br]
-Oof, it looks like you've stumbled into the labyrinthine [i]Cliff Side Caves[/i]. [br][br]
-People frequently get lost in here, but luckily for you we made this handy map and tutorial packet for you.
-[br][br]
-1. You find yourself in the [el]Red[/el] Room. [br]
-2. You must get to the [el]Orange[/el] Room.[br]
-3. Use 'T' to open your transmutation map. [br]
-4. Use the stencils from your tutorial packet to hide irrelevant info.[br]
-[br]
-[i]Please only take one packet, we were only able to make 3 total[/i]",
-"offset": Vector2(1160, -100),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_3",
-"text": ""
-}
-},
-"size": Vector2(300.00024, 242),
-"speaker": ""
 },
 &"1_10": {
 "dialogue": "Its a table with another note.",
@@ -91,7 +69,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 241.9997),
+"size": Vector2(300.0005, 242),
 "speaker": ""
 },
 &"1_11": {
@@ -106,33 +84,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00018, 241.9997),
-"speaker": ""
-},
-&"1_12": {
-"dialogue": "As you leave, you notice a bin by the door. Inside appears to be another tutorial packet.",
-"offset": Vector2(720, 1320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_13",
-"text": ""
-}
-},
-"size": Vector2(300.00024, 240.00006),
-"speaker": ""
-},
-&"1_13": {
-"dialogue": "You gently toss yours into the bin.",
-"offset": Vector2(1060, 1320),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300.00012, 240.00006),
+"size": Vector2(300.00012, 242),
 "speaker": ""
 },
 &"1_14": {
@@ -145,7 +97,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00037, 240),
+"size": Vector2(300.00034, 242.00012),
 "speaker": ""
 },
 &"1_15": {
@@ -158,33 +110,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00037, 240.00012),
-"speaker": ""
-},
-&"1_2": {
-"dialogue": "Its a table... woww. On it is a diagram labeled [i]Transmutation Map[/i], a packet of laminated pages stapled together, and a note.",
-"offset": Vector2(820, -100),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_1",
-"text": ""
-}
-},
-"size": Vector2(300.00012, 242),
-"speaker": ""
-},
-&"1_3": {
-"dialogue": "You take the map and the packet of stencils. It appears you grabbed the last ones.",
-"offset": Vector2(1500, -100),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300.0011, 242),
+"size": Vector2(300.00034, 241.99963),
 "speaker": ""
 },
 &"1_4": {
@@ -197,7 +123,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242.00024),
+"size": Vector2(300.00012, 242.00018),
 "speaker": ""
 },
 &"1_5": {
@@ -219,7 +145,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00073, 242.00024),
+"size": Vector2(300.00073, 242.00018),
 "speaker": ""
 },
 &"1_6": {
@@ -232,7 +158,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 241.99988),
+"size": Vector2(300.0005, 242.00012),
 "speaker": ""
 },
 &"1_7": {
@@ -246,7 +172,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00018, 241.99988),
+"size": Vector2(300.00012, 242.00012),
 "speaker": ""
 },
 &"1_8": {
@@ -259,7 +185,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 241.99976),
+"size": Vector2(300.0005, 242),
 "speaker": ""
 },
 &"1_9": {
@@ -274,7 +200,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0003, 241.99976),
+"size": Vector2(300.00024, 242),
 "speaker": ""
 },
 &"4_1": {
