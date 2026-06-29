@@ -21,15 +21,15 @@ const GREAT_AFFINITY_THRESHOLD := 1.2
 		var count := 0
 		for slot in effects:
 			if slot is EffectSlot and slot.attack_effect is Damage:
-				total += slot.attack_effect.strength
+				total += slot.attack_effect.get_strength()
 				count += 1
 			elif slot is ConditionalEffect:
 				if slot.success_effect and slot.success_effect.attack_effect is Damage:
-					total += slot.success_effect.attack_effect.strength
+					total += slot.success_effect.attack_effect.get_strength()
 					count += 1
 
 				if slot.failed_effect and slot.failed_effect.attack_effect is Damage:
-					total += slot.failed_effect.attack_effect.strength
+					total += slot.failed_effect.attack_effect.get_strength()
 					count += 1
 		return int(float(total) / float(count))
 

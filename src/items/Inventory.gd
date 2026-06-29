@@ -66,9 +66,10 @@ var _battle_items: Array[RegularItem]
 		scroll.spell = val
 		scroll.name = "%s Bead" % val.name 
 		scroll.id = len(spell_scrolls)
-		ResourceSaver.save(scroll, "res://data/items/spell_scrolls/output/%s.tres" \
-				% scroll.name.replace(" ", "_").to_lower())
-		_add_item = ResourceLoader.load("res://data/items/spell_scrolls/output/%s.tres") as SpellScroll
+
+		var path :="res://data/items/spell_scrolls/output/%s.tres" % scroll.name.replace(" ", "_").to_lower()
+		ResourceSaver.save(scroll, path)
+		_add_item = ResourceLoader.load(path) as SpellScroll
 func _try_add_battle_item(item: RegularItem)  -> void:
 	if item.battle_item == null: 
 		return
