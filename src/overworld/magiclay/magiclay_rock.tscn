@@ -10,6 +10,7 @@
 size = Vector3(1, 1.4175439, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dg1q"]
+resource_local_to_scene = true
 next_pass = ExtResource("2_6a5d6")
 albedo_color = Color(0.5, 0.5, 0.5, 1)
 normal_enabled = true
@@ -48,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
 [node name="magiclay_cube" parent="." unique_id=181608019 instance=ExtResource("5_y5ahk")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
 
-[node name="MagiClayBlock" parent="magiclay_cube" index="0" unique_id=1855734103]
+[node name="MagiClayBlock" parent="magiclay_cube" index="0" unique_id=123595577]
 material_override = SubResource("StandardMaterial3D_1dg1q")
 
 [editable path="magiclay_cube"]
