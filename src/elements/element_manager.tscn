@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6m3bftlgbvbk"]
+[gd_scene format=3 uid="uid://6m3bftlgbvbk"]
 
 [ext_resource type="Script" uid="uid://xrhgtc8gt0iv" path="res://src/elements/ElementManager.gd" id="1_gyxhk"]
 [ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="2_ohe7e"]
@@ -17,12 +17,9 @@
 [sub_resource type="Resource" id="Resource_ckjnr"]
 resource_name = "Attack Boost"
 script = ExtResource("11_lkgg0")
-stat = 0
-op = 0
 is_side_effect = true
 id = 6
 _duration = "0"
-description = ""
 name = "Attack Boost"
 _strength = "1.0"
 message = "{target}'s melee attack was boosted!
@@ -32,11 +29,9 @@ message = "{target}'s melee attack was boosted!
 resource_name = "Defense Boost"
 script = ExtResource("11_lkgg0")
 stat = 3
-op = 0
 is_side_effect = true
 id = 6
 _duration = "0"
-description = ""
 name = "Defense Boost"
 _strength = "1.0"
 message = "{target}'s melee defense was boosted!
@@ -46,16 +41,14 @@ message = "{target}'s melee defense was boosted!
 resource_name = "Speed Boost"
 script = ExtResource("11_lkgg0")
 stat = 8
-op = 0
 is_side_effect = true
 id = 6
 _duration = "0"
-description = ""
 name = "Speed Boost"
 _strength = "1.0"
 message = "{target}'s speed was boosted!"
 
-[node name="ElementalManager" type="Node"]
+[node name="ElementalManager" type="Node" unique_id=1926216249]
 script = ExtResource("1_gyxhk")
 elements = Array[ExtResource("2_ohe7e")]([ExtResource("3_72u1f"), ExtResource("8_rraxm"), ExtResource("6_djrcb"), ExtResource("9_xevhv"), ExtResource("7_wy64i"), ExtResource("10_rnxsd"), ExtResource("5_mrhmg"), ExtResource("4_jxqxw"), ExtResource("11_4wtlx")])
 attack_buff = SubResource("Resource_ckjnr")

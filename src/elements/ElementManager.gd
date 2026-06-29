@@ -193,6 +193,55 @@ func test_traversals() -> void:
 		file.store_line(output)
 
 
+func get_stable_states() -> void:
+	var _get_side_effect := func (s: _AttackEffect, c: Array) -> String:
+		if s == null: return ""
+		match s.stat:
+			StatManager.Stats.ATTACK:
+				c[0] += 1
+				return "A"
+			StatManager.Stats.DEFENSE:
+				c[1] += 1
+				return "D"
+			_:
+				c[2] += 1
+				return "S"
+
+	var file := FileAccess.open("res://data.txt", FileAccess.WRITE)
+	var els: Array[ElementalType] = elements.slice(0, 8)
+	var counts := [ 0, 0, 0 ]
+	for primary in els:
+		for secondary in els:
+			var line := [primary.name, secondary.name]
+
+			var res := get_matchup(primary, secondary)
+
+			# if not stable combo
+			if res != null: continue
+	
+			for attack in els:
+				res = get_matchup(secondary, attack)
+				var side_effects: String = _get_side_effect.call(get_side_effect(secondary, attack), counts)
+				for i in 3:
+					var prev := get_matchup(res, primary)
+					if prev == null: break
+					var s := get_side_effect(primary, res)
+					res = prev
+					side_effects += _get_side_effect.call(s, counts)
+
+				if res == null:
+					line.append('x')
+					line.append('x')
+				else:
+					line.append(res.name.substr(0, 1).to_lower())
+					line.append(side_effects)
+			
+			file.store_csv_line(line)
+			file.flush()
+	
+	file.store_csv_line(counts)
+
+
 func _enter_tree() -> void:
 	build()
 	test_transmutations()
@@ -328,7 +377,7 @@ func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalT
 
 
 func get_side_effect(a: ElementalType, b: ElementalType) -> _AttackEffect:
-	if a.is_blank() || b.is_blank(): 
+	if a == null || b == null || a.is_blank() || b.is_blank(): 
 		return null
 	return matchups[a.id].get_effect(b)
 
