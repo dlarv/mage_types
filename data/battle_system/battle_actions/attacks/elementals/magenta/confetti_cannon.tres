@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Attack" format=3 uid="uid://b6ykq580gcql7"]
+
+[ext_resource type="PackedScene" uid="uid://34tfl08ue8kl" path="res://data/battle_system/attack_animations/jet.tscn" id="1_u4n5h"]
+[ext_resource type="Script" uid="uid://bdioupf1hypnu" path="res://src/battle_system/battle_actions/effect_slots/BaseEffectSlot.gd" id="2_a84xn"]
+[ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="3_oex8n"]
+[ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="3_ug686"]
+[ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="4_b8pso"]
+[ext_resource type="Script" uid="uid://bhh3ro2cetlnh" path="res://src/battle_system/battle_actions/effects/specific_effects/RandomPhobia.gd" id="5_22ce5"]
+
+[sub_resource type="Resource" id="Resource_awjmv"]
+resource_name = "Damage"
+script = ExtResource("3_ug686")
+name = "Damage"
+_strength = "40"
+metadata/_custom_type_script = "uid://dn43soynbu2kq"
+
+[sub_resource type="Resource" id="Resource_bl6eq"]
+resource_name = "Damage"
+script = ExtResource("4_b8pso")
+attack_effect = SubResource("Resource_awjmv")
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
+
+[sub_resource type="Resource" id="Resource_8eapw"]
+script = ExtResource("5_22ce5")
+metadata/_custom_type_script = "uid://bhh3ro2cetlnh"
+
+[sub_resource type="Resource" id="Resource_706tf"]
+script = ExtResource("4_b8pso")
+attack_effect = SubResource("Resource_8eapw")
+metadata/_custom_type_script = "uid://cxk4u03wsacm8"
+
+[resource]
+resource_name = "Confetti Cannon"
+script = ExtResource("3_oex8n")
+effects = Array[ExtResource("2_a84xn")]([SubResource("Resource_bl6eq"), SubResource("Resource_706tf")])
+power = 0
+name = "Confetti Cannon"
+animation = ExtResource("1_u4n5h")
+_element = 2
+attack_range = 1
+target = 4
+details = "Hits all enemies. Inflicts a random phobia on its targets."
+metadata/_custom_type_script = "uid://c140c4j4qwln7"

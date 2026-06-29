@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellScroll" format=3 uid="uid://b43lxfbq75vtw"]
+
+[ext_resource type="Script" uid="uid://dv3blp80bhy5u" path="res://src/items/requirements/ItemRequirement.gd" id="1_55lyu"]
+[ext_resource type="Script" uid="uid://c2ab6x2g1fo1a" path="res://src/items/SpellScroll.gd" id="2_hvle1"]
+[ext_resource type="Resource" uid="uid://b6ykq580gcql7" path="res://data/battle_system/battle_actions/attacks/elementals/magenta/confetti_cannon.tres" id="3_43jce"]
+
+[resource]
+script = ExtResource("2_hvle1")
+spell = ExtResource("3_43jce")
+id = 57
+name = "Confetti Cannon Bead"
