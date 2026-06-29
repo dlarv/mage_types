@@ -1210,12 +1210,10 @@ shape = SubResource("BoxShape3D_m7kj6")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -62.7834, 6.7, 29.9166)
 is_on = false
 _element = 0
-base_size = Vector3(-220.783, 6.7, -128.083)
 
 [node name="Chamber2PressurePlate" parent="HotelRooms/HotelRoomChunk/Chunk" unique_id=210706916 instance=ExtResource("16_61fdq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -44.6834, 9.94163, -14.6834)
 _element = 3
-base_size = Vector3(-202.683, 9.94163, -172.683)
 
 [node name="Gate" parent="HotelRooms/HotelRoomChunk/Chunk" unique_id=68559812 instance=ExtResource("4_5og7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.900009, 0.6, -0.5)
@@ -1259,6 +1257,7 @@ shape = SubResource("BoxShape3D_fkveg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, -78)
 script = ExtResource("3_4g4u6")
 chunk = NodePath("Chunk")
+fog_level = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/InfHallChunk" unique_id=1095353498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.5, 79)
@@ -1454,7 +1453,6 @@ shape = SubResource("BoxShape3D_41131")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3, 3.8, -274.7)
 size = 48.0
 _element = 5
-base_size = Vector3(-452.3, 3.8, -403.7)
 
 [node name="WestHotel" parent="." unique_id=2129615624 instance=ExtResource("22_yncb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
