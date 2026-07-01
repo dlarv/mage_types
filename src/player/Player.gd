@@ -59,6 +59,8 @@ func _ready() -> void:
 		team.append(_playable_characters[actor])
 	team_changed.emit(team)
 
+	# battle_actor.stat_manager.current_hp = battle_actor.stat_manager.hp
+
 
 func start_battle(npc: Variant) -> void:
 	battle_started.emit(team, npc)

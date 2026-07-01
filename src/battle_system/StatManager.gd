@@ -22,7 +22,7 @@ var MAX_MOD := 3.0
 	set(value):
 		hp = value
 		current_hp = value
-var current_hp: float
+var current_hp := 50.0
 
 var _melee_attack_mod: float = 1
 var _ranged_attack_mod: float = 1
