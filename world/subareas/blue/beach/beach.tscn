@@ -51,7 +51,7 @@ size = Vector3(1.5, 3.1000001, 2.1000001)
 resource_name = "Confetti Cannon Bead"
 script = ExtResource("11_1vpu4")
 item = ExtResource("15_yi3f6")
-id = 57
+id = 56
 allow_stacking = true
 metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
@@ -121,6 +121,7 @@ _element = 0
 [node name="Geyser" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=1329560048 instance=ExtResource("7_ji4u4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.602646, 3, 28)
 size = 13.0
+_element = 5
 
 [node name="Gate" parent="BeachChunk/Chunk" unique_id=130284175 node_paths=PackedStringArray("locks") instance=ExtResource("5_0xv0c")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -47.547356, 3, 25)

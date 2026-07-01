@@ -18,7 +18,7 @@ const Effects := StatusEffectManager.StatusEffects
 			if err != OK:
 				push_error(error_string(err))
 var initial_duration: Expression
-var duration: int 
+var duration := 3 
 @export var icon: PackedScene 
 ## The text displayed inside the MessageBox, etc.
 @export_multiline var description: String 
@@ -95,4 +95,5 @@ func _set_status_effect(val: Effects) -> void:
 
 
 func get_duration(vars: Array=[]) -> int:
+	if initial_duration == null: return duration
 	return int(initial_duration.execute(vars))

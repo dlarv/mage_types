@@ -8,7 +8,7 @@ class_name RandomPhobia
 func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) -> ActorTurnData:
 	var msg := []
 	var count := randi_range(min_count, max_count)
-	var indices: Array[int] = range(0, 8)
+	var indices: Array = range(0, 8)
 	indices.shuffle()
 
 	# Ensure no repeat effects.
