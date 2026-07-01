@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://30dbgu5k66cc"]
+[gd_scene format=3 uid="uid://30dbgu5k66cc"]
 
-[ext_resource type="Texture2D" uid="uid://dbmd21wiiyeol" path="res://assets/graphics/battle_gui/x_icon.png" id="1_fl6uk"]
+[ext_resource type="Texture2D" uid="uid://c7m2p8uic5m1o" path="res://assets/graphics/battle_gui/x_icon.png" id="1_fl6uk"]
 [ext_resource type="Script" uid="uid://d4diojkjoh5cm" path="res://src/battle_system/gui/components/TransmutationHintIcon.gd" id="1_qoed6"]
 
-[node name="TransmutationHintIcon" type="ColorRect" node_paths=PackedStringArray("label")]
+[node name="TransmutationHintIcon" type="ColorRect" unique_id=265767493 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(64, 64)
 script = ExtResource("1_qoed6")
 label = NodePath("TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1290208617]
 visible = false
 layout_mode = 1
 anchors_preset = 15

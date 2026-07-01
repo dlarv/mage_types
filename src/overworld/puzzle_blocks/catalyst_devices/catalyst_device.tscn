@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxjdlm0ubsvy6"]
+[gd_scene format=3 uid="uid://cxjdlm0ubsvy6"]
 
 [ext_resource type="Script" uid="uid://cv102wpael5h" path="res://src/overworld/puzzle_blocks/catalyst_devices/CatalystDevice.gd" id="1_0y1qt"]
-[ext_resource type="PackedScene" uid="uid://tc1hr4ycv8bn" path="res://assets/3d/objects/catalyst_device.blend" id="3_mgr76"]
+[ext_resource type="PackedScene" uid="uid://cgsyoif0t3b7d" path="res://assets/3d/objects/catalyst_device.blend" id="3_mgr76"]
 [ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="4_risfn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1on13"]
 size = Vector3(0.9, 1.2, 0.5)
 
-[node name="CatalystDevice" type="StaticBody3D"]
+[node name="CatalystDevice" type="StaticBody3D" unique_id=538658474]
 script = ExtResource("1_0y1qt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2060672654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0.6, 0.15)
 shape = SubResource("BoxShape3D_1on13")
 
-[node name="catalyst_device" parent="." instance=ExtResource("3_mgr76")]
+[node name="catalyst_device" parent="." unique_id=581882054 instance=ExtResource("3_mgr76")]
 
-[node name="Interactable" parent="." instance=ExtResource("4_risfn")]
+[node name="Interactable" parent="." unique_id=1473782812 instance=ExtResource("4_risfn")]
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 

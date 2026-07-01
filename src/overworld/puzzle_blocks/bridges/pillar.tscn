@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck6cq5qaxuf80"]
+[gd_scene format=3 uid="uid://ck6cq5qaxuf80"]
 
-[ext_resource type="PackedScene" uid="uid://45hlje4ddoqw" path="res://assets/3d/objects/puzzle_blocks/bridges/Pillar.glb" id="1_gksrj"]
+[ext_resource type="PackedScene" uid="uid://be56q163rtko6" path="res://assets/3d/objects/puzzle_blocks/bridges/Pillar.glb" id="1_gksrj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bu375"]
 size = Vector3(1.08936, 2.9, 1.09277)
@@ -12,33 +12,33 @@ size = Vector3(4.01251, 0.3, 4.01288)
 height = 0.5
 radius = 0.4
 
-[node name="Pillar" type="StaticBody3D"]
+[node name="Pillar" type="StaticBody3D" unique_id=1290665145]
 collision_layer = 5
 collision_mask = 5
 
-[node name="Model" parent="." instance=ExtResource("1_gksrj")]
+[node name="Model" parent="." unique_id=390027922 instance=ExtResource("1_gksrj")]
 
-[node name="Pillar" type="CollisionShape3D" parent="."]
+[node name="Pillar" type="CollisionShape3D" parent="." unique_id=1461723626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0065918, 1.45, 0.00146484)
 shape = SubResource("BoxShape3D_bu375")
 
-[node name="Base" type="CollisionShape3D" parent="."]
+[node name="Base" type="CollisionShape3D" parent="." unique_id=1604741428]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00656128, 3.05, 0.00271606)
 shape = SubResource("BoxShape3D_yscrx")
 
-[node name="Border_NE" type="CollisionShape3D" parent="."]
+[node name="Border_NE" type="CollisionShape3D" parent="." unique_id=1395777891]
 transform = Transform3D(0.999715, -1.04356e-09, -0.0238738, 1.04356e-09, 1, -1.2459e-11, 0.0238738, -1.2459e-11, 0.999715, 1.56282, 3.45, -1.55372)
 shape = SubResource("CylinderShape3D_s52jd")
 
-[node name="Border_SE" type="CollisionShape3D" parent="."]
+[node name="Border_SE" type="CollisionShape3D" parent="." unique_id=1081376813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56282, 3.45, 1.54628)
 shape = SubResource("CylinderShape3D_s52jd")
 
-[node name="Border_SW" type="CollisionShape3D" parent="."]
+[node name="Border_SW" type="CollisionShape3D" parent="." unique_id=932087509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5518, 3.45, 1.54628)
 shape = SubResource("CylinderShape3D_s52jd")
 
-[node name="Border_NW" type="CollisionShape3D" parent="."]
+[node name="Border_NW" type="CollisionShape3D" parent="." unique_id=1064740291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5518, 3.45, -1.55372)
 shape = SubResource("CylinderShape3D_s52jd")
 

@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://buroc1tpwwet5"]
+[gd_scene format=3 uid="uid://buroc1tpwwet5"]
 
 [ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="1_r23af"]
-[ext_resource type="Texture2D" uid="uid://dnvv14yt61n0p" path="res://assets/graphics/battle_gui/stat_icons/status_effect_icons/dissonance.png" id="2_7hmuw"]
+[ext_resource type="Texture2D" uid="uid://bd8pk1tk1dj7m" path="res://assets/graphics/battle_gui/stat_icons/status_effect_icons/dissonance.png" id="2_7hmuw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k1wgh"]
 
-[node name="StatusEffectIcon" instance=ExtResource("1_r23af")]
+[node name="StatusEffectIcon" unique_id=876616834 instance=ExtResource("1_r23af")]
 modulate = Color(0.419813, 0.419813, 0.419813, 1)
 texture = ExtResource("2_7hmuw")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci56oiodq6ge3"]
+[gd_scene format=3 uid="uid://ci56oiodq6ge3"]
 
 [ext_resource type="PackedScene" uid="uid://c1uh00wald8kk" path="res://data/battle_system/status_effects/icons/status_effect_icon.tscn" id="1_xkplg"]
 
@@ -8,7 +8,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dtek3"]
 gradient = SubResource("Gradient_mgbl0")
 
-[node name="StatusEffectIcon" instance=ExtResource("1_xkplg")]
+[node name="StatusEffectIcon" unique_id=1897093222 instance=ExtResource("1_xkplg")]
 modulate = Color(0, 0.651505, 0.651505, 1)
 texture = SubResource("GradientTexture2D_dtek3")
 
