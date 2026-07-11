@@ -9,7 +9,6 @@
 
 [sub_resource type="Resource" id="Resource_cb2ej"]
 script = ExtResource("1_ryjtr")
-_alignment = 0
 metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
 [sub_resource type="Resource" id="Resource_3y0wy"]
@@ -27,7 +26,6 @@ stat_manager = SubResource("Resource_3y0wy")
 _element1 = 0
 _element2 = 0
 alignment_manager = SubResource("Resource_cb2ej")
-_alignment = 0
 attacks = Array[ExtResource("1_60dwf")]([ExtResource("3_yuipy")])
 sprite_path = ExtResource("5_tjvpd")
 metadata/_custom_type_script = "uid://ccfa2tjo30wje"

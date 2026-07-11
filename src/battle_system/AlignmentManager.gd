@@ -13,9 +13,15 @@ const TRANSMUTATION_MOD := 3.0
 @export var alignment_values: Array[int] = [ 0, 3, 0, 0, 0, 0, 0, 0 ]
 @export var _alignment := ElementalType.ElementId.BLANK:
 	set(val):
+		if val == null:
+			val = ElementalType.ElementId.BLANK
 		_alignment = val
 		current_alignment = ElementManager.elements[int(val)]
-var current_alignment: ElementalType 
+var current_alignment: ElementalType:
+	get:
+		if current_alignment == null:
+			return ElementManager.Blank
+		return current_alignment
 ## Once an alignment forms, it cannot be overwritten.
 var alignment_locked: bool:
 	get:

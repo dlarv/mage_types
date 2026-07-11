@@ -85,6 +85,7 @@ var element2: ElementalType = ElementManager.Blank:
 var alignment: ElementalType = ElementManager.Blank:
 	get:
 		if alignment_manager: return alignment_manager.current_alignment
+		elif alignment == null: return ElementManager.Blank
 		return alignment
 @export var attacks: Array[_BattleAction] = []
 @export var equipment: Equipment = null:

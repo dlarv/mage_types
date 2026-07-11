@@ -12,7 +12,6 @@
 [sub_resource type="Resource" id="Resource_ss44v"]
 script = ExtResource("1_klh7n")
 alignment_values = Array[int]([0, 0, 0, 0, 0, 0, 0, 0])
-_alignment = 0
 metadata/_custom_type_script = "uid://ccl64vcc20maa"
 
 [sub_resource type="Resource" id="Resource_nqvwl"]
@@ -35,6 +34,5 @@ stat_manager = SubResource("Resource_nqvwl")
 _element1 = 0
 _element2 = 0
 alignment_manager = SubResource("Resource_ss44v")
-_alignment = 0
 attacks = Array[ExtResource("2_e0366")]([ExtResource("3_fe3if"), ExtResource("4_4uj5l"), ExtResource("5_0cjya")])
 sprite_path = ExtResource("7_e0366")
