@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://deg7o2or7hfh5"]
+[gd_scene format=3 uid="uid://deg7o2or7hfh5"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_k87ii"]
 [ext_resource type="PackedScene" uid="uid://p4hix4hg2txy" path="res://assets/3d/characters/blob.blend" id="2_n8kln"]
@@ -20,35 +20,29 @@ radius = 1.56864
 [sub_resource type="Resource" id="Resource_teu4u"]
 script = ExtResource("4_6lbrx")
 id = "ADONIS_1"
-next = -1
-end_state = ""
 
 [sub_resource type="Resource" id="Resource_d3cvv"]
 script = ExtResource("8_puaf6")
-set_seed = ""
-dialog_ids = Array[ExtResource("6_l6kjg")]([])
-reward_xp = 0.0
-reward_items = Array[ExtResource("7_d3cvv")]([])
 metadata/_custom_type_script = "uid://n8ulld1m40ie"
 
-[node name="Boss1" instance=ExtResource("1_k87ii")]
+[node name="Boss1" unique_id=2023714278 instance=ExtResource("1_k87ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
 collision_layer = 5
 
-[node name="blob2" parent="." index="1" instance=ExtResource("2_n8kln")]
+[node name="blob2" parent="." index="1" unique_id=2025422580 instance=ExtResource("2_n8kln")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="blob2/blob" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="blob2/blob" parent_id_path=PackedInt32Array(2025422580, 1991507915) index="0" unique_id=1255159171]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="blob2/blob/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blob2/blob/StaticBody3D" index="0" unique_id=328392602]
 shape = SubResource("SphereShape3D_4gwb2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1309979957]
 shape = SubResource("SphereShape3D_ucadb")
 
-[node name="StoryActor" parent="." index="3" instance=ExtResource("3_4bap8")]
+[node name="StoryActor" parent="." index="3" unique_id=152280950 instance=ExtResource("3_4bap8")]
 dialog_ids = Array[ExtResource("4_6lbrx")]([SubResource("Resource_teu4u")])
 
-[node name="EnemyActor" parent="." index="4" instance=ExtResource("5_l6kjg")]
+[node name="EnemyActor" parent="." index="4" unique_id=1879059711 instance=ExtResource("5_l6kjg")]
 ai = SubResource("Resource_d3cvv")
 _team = Array[ExtResource("9_snyt7")]([ExtResource("10_l6kjg")])
 
