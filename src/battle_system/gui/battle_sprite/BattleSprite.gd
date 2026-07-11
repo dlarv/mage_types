@@ -3,6 +3,7 @@ extends Node3D
 signal hovered(actor: BattleActor)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
+signal channeling_finished
 
 const ALLY_FONT_SIZE := 45
 const ENEMY_FONT_SIZE := 64
@@ -18,13 +19,23 @@ var is_selectable := false
 var actor: BattleActor
 var _indicator_mat: StandardMaterial3D
 var _is_defeated := false
-var _animation_player: AnimationPlayer
+var _animation_state: AnimationNodeStateMachinePlayback
 
 
 func setup(actor: BattleActor, isEnemy: bool) -> void:
 	self.actor = actor
 	if not self.actor.equipment_activated.is_connected(_on_equipment_activated):
 		self.actor.equipment_activated.connect(_on_equipment_activated)
+
+	if $MeshManager.mesh == null:
+		$MeshManager.mesh = %DefaultMesh
+		%DefaultMesh.show()
+	else:
+		%DefaultMesh.hide()
+
+
+	_animation_state = $AnimationTree["parameters/playback"]
+	_animation_state.state_finished.connect(_on_state_finished)
 
 	_is_defeated = false
 	%EmitterController.is_ally = not isEnemy
@@ -35,13 +46,13 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	_indicator_mat.albedo_color = Color.DARK_GRAY
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 
-	var animationPlayerParent: Node = $MeshManager.mesh
-	while animationPlayerParent.get_parent() != self:
-		animationPlayerParent = animationPlayerParent.get_parent()
-
-	_animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
-	if _animation_player and _animation_player.has_animation("battle_stance"):
-		_animation_player.play("battle_stance")
+	# var animationPlayerParent: Node = $MeshManager.mesh
+	# while animationPlayerParent.get_parent() != self:
+	# 	animationPlayerParent = animationPlayerParent.get_parent()
+	#
+	# _animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
+	# if _animation_player and _animation_player.has_animation("battle_stance"):
+	# 	_animation_player.play("battle_stance")
 
 	if isEnemy:
 		$PinManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
@@ -120,18 +131,12 @@ func toggle_intentions(val: bool) -> void: %EmitterController.toggle_intentions(
 
 
 func play_animation(name: String) -> void:
-	if not _animation_player: return
-	if not _animation_player.has_animation(name):
-		push_error("BattleSprite(%s) is missing Animation(%s)!" % [actor.name, name])
-		return
+	# if not _animation_tree.has_animation(name):
+	# 	push_error("BattleSprite(%s) is missing Animation(%s)!" % [actor.name, name])
+	# 	return
 
-	_animation_player.play(name)
-	await _animation_player.animation_finished
-
-
-func get_animation_duration(name: String) -> float:
-	if not _animation_player or not _animation_player.has_animation(name): return 0.0
-	return _animation_player.get_animation(name).length
+	_animation_state.travel(name)
+	await _animation_state.state_finished
 
 
 func start_channeling_particles(duration: float, strength: float) -> void:
@@ -208,3 +213,9 @@ func set_action_text(action: _BattleAction) -> void:
 
 func _on_equipment_activated(equipment: Equipment) -> void:
 	set_helper_text(equipment.name, EQUIPMENT_TEXT_DURATION)
+
+
+func _on_state_finished(stateName: String) -> void:
+	match stateName:
+		"channeling":
+			channeling_finished.emit()

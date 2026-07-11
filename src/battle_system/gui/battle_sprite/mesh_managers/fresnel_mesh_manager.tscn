@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cxjg801grl7od"]
-
-[ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/mesh_managers/FresnelMeshManager.gd" id="1_872b3"]
-
-[node name="FresnelMeshManager" type="Node3D" unique_id=1487612213]
-script = ExtResource("1_872b3")

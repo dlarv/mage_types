@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwdvquegcvsxf"]
 
 [ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/battle_sprite/battle_sprite.tscn" id="1_hss75"]
-[ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/mesh_managers/FresnelMeshManager.gd" id="2_ykvsg"]
+[ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/FresnelMeshManager.gd" id="2_ykvsg"]
 
 [sub_resource type="Shader" id="Shader_ykvsg"]
 code = "shader_type spatial;

@@ -17,14 +17,12 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 
 	userSprite.set_action_text(turnData.action)
 
-	await userSprite.play_animation("channeling")
+	userSprite.play_animation("channeling")
+	await userSprite.channeling_finished
 
 	# Play user.attack, attack animation, then targets.getting_hit
 	var userPosition: Vector2 = userSprite.get_target_position()
 	var targetPosition: Vector2 = _sprites[turnData.targets[0]].get_target_position()
-	var attackDuration := userSprite.get_animation_duration("attack")
-
-	userSprite.play_animation("attack")
 
 	if missed:
 		finished.emit()

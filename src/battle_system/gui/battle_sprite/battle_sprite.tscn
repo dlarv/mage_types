@@ -4,13 +4,204 @@
 [ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_n1qvi"]
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/battle_sprite/pin_manager.tscn" id="3_ya2xk"]
 [ext_resource type="PackedScene" uid="uid://bor2kywevh8c" path="res://src/battle_system/gui/battle_sprite/emitter_controller.tscn" id="4_yav0q"]
-[ext_resource type="PackedScene" uid="uid://cspilfets6fr3" path="res://src/battle_system/gui/battle_sprite/mesh_managers/simple_mesh_manager.tscn" id="5_4ho0o"]
+[ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/FresnelMeshManager.gd" id="5_4ho0o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
 size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ocyf"]
 size = Vector3(5, 0.2, 5)
+
+[sub_resource type="Shader" id="Shader_4ho0o"]
+code = "shader_type spatial;
+
+// For some reason 0,0 on the gradient is white, not black.
+// This is the point where the 
+const float OFFSET = .002;
+
+uniform sampler2D normal_map;
+uniform sampler2D gradient;
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 base_color = vec3(0.0);
+	float coord = fresnel(2.5, NORMAL, VIEW);
+	vec4 col = texture(gradient, vec2(coord + OFFSET, 0));
+	ALBEDO = base_color + col.rgb;
+	
+	NORMAL_MAP = texture(normal_map, UV).rgb;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_gtem4"]
+offsets = PackedFloat32Array(0.08716707, 0.14527845)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sdiku"]
+gradient = SubResource("Gradient_gtem4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugy7d"]
+render_priority = 0
+shader = SubResource("Shader_4ho0o")
+shader_parameter/gradient = SubResource("GradientTexture1D_sdiku")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prwnc"]
+render_priority = 0
+shader = SubResource("Shader_4ho0o")
+shader_parameter/gradient = SubResource("GradientTexture1D_sdiku")
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ho0o"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="Animation" id="Animation_4ho0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ugy7d"]
+resource_name = "attack"
+length = 0.8
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2, -3), Vector3(0, 2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gtem4"]
+resource_name = "battle_idle"
+length = 4.0
+loop_mode = 1
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2.5, 0), Vector3(0, 2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sdiku"]
+resource_name = "channeling"
+length = 0.7
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(-2, 2, 0), Vector3(2, 2, 0), Vector3(-2, 2, 0), Vector3(0, 2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_prwnc"]
+resource_name = "getting_hit"
+length = 0.25
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 2, 3), Vector3(0, 2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdiku"]
+_data = {
+&"RESET": SubResource("Animation_4ho0o"),
+&"attack": SubResource("Animation_ugy7d"),
+&"battle_idle": SubResource("Animation_gtem4"),
+&"channeling": SubResource("Animation_sdiku"),
+&"getting_hit": SubResource("Animation_prwnc")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ho0o"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtem4"]
+animation = &"battle_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sdiku"]
+animation = &"channeling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ugy7d"]
+animation = &"getting_hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_prwnc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wspvd"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcegq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jw31"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qcc80"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mukc0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s3frm"]
+states/Start/position = Vector2(258, 82)
+states/attack/node = SubResource("AnimationNodeAnimation_4ho0o")
+states/attack/position = Vector2(602, 10)
+states/battle_idle/node = SubResource("AnimationNodeAnimation_gtem4")
+states/battle_idle/position = Vector2(394, 104)
+states/channeling/node = SubResource("AnimationNodeAnimation_sdiku")
+states/channeling/position = Vector2(602, 100)
+states/getting_hit/node = SubResource("AnimationNodeAnimation_ugy7d")
+states/getting_hit/position = Vector2(394, 194)
+transitions = ["battle_idle", "getting_hit", SubResource("AnimationNodeStateMachineTransition_prwnc"), "getting_hit", "battle_idle", SubResource("AnimationNodeStateMachineTransition_wspvd"), "battle_idle", "channeling", SubResource("AnimationNodeStateMachineTransition_tcegq"), "channeling", "attack", SubResource("AnimationNodeStateMachineTransition_8jw31"), "attack", "battle_idle", SubResource("AnimationNodeStateMachineTransition_qcc80"), "Start", "battle_idle", SubResource("AnimationNodeStateMachineTransition_mukc0")]
+graph_offset = Vector2(53, -57)
 
 [node name="BattleSprite" type="Node3D" unique_id=1135726583 node_paths=PackedStringArray("transmutation_hint")]
 script = ExtResource("1_dntod")
@@ -50,7 +241,23 @@ billboard = 1
 font_size = 64
 outline_size = 16
 
-[node name="MeshManager" parent="." unique_id=2002955007 instance=ExtResource("5_4ho0o")]
+[node name="MeshManager" type="Node3D" parent="." unique_id=2002955007]
+script = ExtResource("5_4ho0o")
+material = SubResource("ShaderMaterial_ugy7d")
+
+[node name="DefaultMesh" type="MeshInstance3D" parent="MeshManager" unique_id=1147391923]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("ShaderMaterial_prwnc")
+mesh = SubResource("SphereMesh_4ho0o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshManager/DefaultMesh" unique_id=80588037]
+libraries/ = SubResource("AnimationLibrary_sdiku")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1992368467]
+root_node = NodePath("%DefaultMesh")
+tree_root = SubResource("AnimationNodeStateMachine_s3frm")
+anim_player = NodePath("../MeshManager/DefaultMesh/AnimationPlayer")
 
 [connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]

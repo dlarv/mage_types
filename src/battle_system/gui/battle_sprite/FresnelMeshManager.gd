@@ -1,7 +1,9 @@
 @tool
-extends MeshManager
+extends Node
 
 const FresnelShader := preload("res://assets/shaders/battle_actor_shader/fresnel.gdshader")
+
+@export var mesh: MeshInstance3D
 
 
 @export var material: ShaderMaterial
