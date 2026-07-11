@@ -15,7 +15,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		pressed.emit()
 
 
-func show_results(actors: Array[BattleActor], xp: float, otherRewards: Array[ItemSlot]=[]) -> void:
+func show_results(actors: Array[BattleActor], xp: float, dialogBox: DialogueBox, otherRewards: Array[ItemSlot]=[]) -> void:
 	var displays := []
 	for actor in actors:
 		var display := Display.instantiate()
@@ -32,9 +32,8 @@ func show_results(actors: Array[BattleActor], xp: float, otherRewards: Array[Ite
 		else:
 			msg = "[center]!!\n%s core changed to [el]%s[/el]![/center]" % [actor.name, dict.element.name]
 
-		%RealignmentDisplayParent.show()
-		await %RealignmentDisplay.display_message_blocking(msg)
-		%RealignmentDisplayParent.hide()
+		dialogBox.show_text(msg)
+		await dialogBox.dialogue_ended
 
 	%ItemHeader.visible = len(otherRewards)
 	for slot in otherRewards:

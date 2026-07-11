@@ -15,7 +15,7 @@ signal dialogue_processed(speaker: Variant, dialogue: String, options: Array[Str
 signal option_selected(idx: int)
 ## Triggered when a SignalNode is encountered while processing the dialogue.
 ## Passes a [param value] defined in the SignalNode in the tree.
-signal dialogue_signal(value: String)
+signal dialogue_signal(value: String, dict: String)
 ## Triggered when a variable value is changed.
 ## Passes the [param variable_name] along with it's [param value]
 signal variable_changed(variable_name: String, value)
@@ -169,7 +169,7 @@ func _process_dialogue(dict: Dictionary) -> void:
 
 # Processes the signal node data (dict).
 func _process_signal(dict: Dictionary) -> void:
-	dialogue_signal.emit(dict.signal_value)
+	dialogue_signal.emit(dict.signal_value, dict.link)
 	# _proceed(dict.link)
 
 
