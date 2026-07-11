@@ -1,10 +1,19 @@
 [gd_scene format=3 uid="uid://col3pgw3g73df"]
 
 [ext_resource type="Script" uid="uid://0imfj8hmgpsq" path="res://src/overworld/puzzle_blocks/catalyst_devices/LaserActivatedCatalyst.gd" id="1_1n2w4"]
+[ext_resource type="Shader" uid="uid://barei2j1ds8p7" path="res://assets/shaders/clay_shader/magiclay_simple.gdshader" id="2_i8e33"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1n2w4"]
-resource_local_to_scene = true
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dxy3"]
+render_priority = 0
+shader = ExtResource("2_i8e33")
+shader_parameter/element_id = 8
+shader_parameter/roughness = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bul3s"]
 top_radius = 0.75
@@ -24,7 +33,7 @@ _mesh_instance = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2065667426]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.373825, 0)
-material_override = SubResource("StandardMaterial3D_1n2w4")
+material_override = SubResource("ShaderMaterial_3dxy3")
 mesh = SubResource("CylinderMesh_bul3s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=286794317]

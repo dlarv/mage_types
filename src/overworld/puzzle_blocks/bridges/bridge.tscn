@@ -4,10 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_22ue0"]
 [ext_resource type="Script" uid="uid://bdtjoisv7kyfc" path="res://src/overworld/puzzle_blocks/bridges/Bridge.gd" id="2_pq00e"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_amepe"]
+[ext_resource type="Shader" uid="uid://barei2j1ds8p7" path="res://assets/shaders/clay_shader/magiclay_simple.gdshader" id="3_b1xax"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1xax"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1xax"]
 resource_local_to_scene = true
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+render_priority = 0
+shader = ExtResource("3_b1xax")
+shader_parameter/element_id = 8
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usqlx"]
 albedo_color = Color(0.5, 0.5, 0.5, 1)
@@ -38,7 +48,7 @@ _mesh_instance = NodePath("Model/Bridge")
 [node name="Model" parent="." unique_id=1096922940 instance=ExtResource("1_gg26p")]
 
 [node name="Bridge" parent="Model" index="0" unique_id=1273486175]
-material_override = SubResource("StandardMaterial3D_b1xax")
+material_override = SubResource("ShaderMaterial_b1xax")
 surface_material_override/0 = SubResource("StandardMaterial3D_usqlx")
 
 [node name="SubReceiver" parent="." unique_id=1067619102 instance=ExtResource("2_22ue0")]

@@ -6,15 +6,15 @@
 
 [sub_resource type="Shader" id="Shader_c0qm0"]
 code = "shader_type spatial;
+render_mode unshaded;
 // For some reason 0,0 on the gradient is white, not black.
 // This is the point where the 
 const float OFFSET = .002;
 
 uniform sampler2D normal_map;
-uniform sampler2D gradient;
+uniform sampler2D gradient: source_color;
 
-float fresnel(float amount, vec3 normal, vec3 view)
-{
+float fresnel(float amount, vec3 normal, vec3 view) {
 	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
 }
 
@@ -23,12 +23,11 @@ void vertex() {
 }
 
 void fragment() {
-	vec3 base_color = vec3(0.0);
 	float coord = fresnel(2.5, NORMAL, VIEW);
 	vec4 col = texture(gradient, vec2(coord + OFFSET, 0));
-	ALBEDO = base_color + col.rgb;
+	ALBEDO = col.rgb;
 	
-	NORMAL_MAP = texture(normal_map, UV).rgb;
+	NORMAL_MAP = texture(normal_map, UV).xyz;
 }
 
 //void light() {
@@ -38,7 +37,8 @@ void fragment() {
 "
 
 [sub_resource type="Gradient" id="Gradient_g76d3"]
-offsets = PackedFloat32Array(0.0074812965, 0.03241895)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.03990025)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ohs8b"]
 gradient = SubResource("Gradient_g76d3")

@@ -748,7 +748,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0,
 _element = 5
 
 [node name="LaserReceiver" parent="LaserLab/Chunk/RotatingMirrorDemo" unique_id=2067286430 instance=ExtResource("13_0axfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 1, 0.299999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.299999, 1, 0.29999924)
 _element = 0
 
 [node name="LaserReceiver2" parent="LaserLab/Chunk/RotatingMirrorDemo" unique_id=396912639 instance=ExtResource("13_0axfp")]
@@ -1002,14 +1002,14 @@ _element = 7
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice6" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice7" to="LaserLab/Chunk/RedirectDemo/DraggableEmitter2" method="set_element"]
 [connection signal="element_selected" from="LaserLab/Chunk/RedirectDemo/CatalystDevice8" to="LaserLab/Chunk/RedirectDemo/LaserRedirect" method="set_element"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74726" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74726" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74727" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74727" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74728" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74728" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
-[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74729" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
-[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@74729" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37022" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37022" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37023" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37023" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37024" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37024" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
+[connection signal="child_entered_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37025" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_entered_tree"]
+[connection signal="child_exiting_tree" from="RailwayDemoChunk/Chunk/PathPiston/@Node3D@37025" to="RailwayDemoChunk/Chunk/PathPiston" method="_on_rails_child_exiting_tree"]
 
 [editable path="VortexEngineChunk/Chunk/VortexEngine"]
 [editable path="RailwayDemoChunk/Chunk/Rails"]

@@ -1,7 +1,7 @@
 @tool
 extends Chunk
 
-const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay.gdshader")
+const CLAY_SHADER := preload("res://assets/shaders/clay_shader/clay_simple.gdshader")
 const SolverMode := preload("res://world/subareas/maintenance_halls/MaintenanceSequence.gd").SolverMode
 const INDICATOR_HEIGHT := 1.0
 const INDICATOR_OFFSET := 1.5

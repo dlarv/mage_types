@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chppunbrjtubr"]
 
 [ext_resource type="PackedScene" uid="uid://d3r25la1qyo7l" path="res://assets/3d/objects/blue/beach/raw/Pillar.glb" id="1_dnfad"]
-[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay.gdshader" id="2_c6xjh"]
+[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay_simple.gdshader" id="2_c6xjh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c6xjh"]
 render_priority = 0

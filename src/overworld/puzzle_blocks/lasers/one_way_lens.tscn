@@ -4,14 +4,24 @@
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_m6xfh"]
 [ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_wvq4j"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_4audp"]
+[ext_resource type="Shader" uid="uid://barei2j1ds8p7" path="res://assets/shaders/clay_shader/magiclay_simple.gdshader" id="3_lh450"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32gow"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmdlc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpioi"]
 resource_local_to_scene = true
+render_priority = 0
 next_pass = ExtResource("2_wvq4j")
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+shader = ExtResource("3_lh450")
+shader_parameter/element_id = 8
+shader_parameter/roughness = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="PrismMesh" id="PrismMesh_82wpf"]
 size = Vector3(0.75, 1, 2)
@@ -32,7 +42,7 @@ shape = SubResource("BoxShape3D_32gow")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=937217782]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.000661999)
-material_override = SubResource("StandardMaterial3D_qmdlc")
+material_override = SubResource("ShaderMaterial_gpioi")
 mesh = SubResource("PrismMesh_82wpf")
 
 [node name="SubReceiver" parent="." unique_id=345917557 instance=ExtResource("2_m6xfh")]

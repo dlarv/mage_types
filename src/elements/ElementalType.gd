@@ -29,7 +29,7 @@ func get_bb_code_name(useAltColor:=false) -> String:
 
 
 func is_blank() -> bool:
-	return name == "Blank"
+	return id == ElementId.BLANK
 
 
 func get_off_def_color() -> Color:

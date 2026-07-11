@@ -4,13 +4,25 @@
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="1_v6um2"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="2_estkt"]
 [ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_mm6jo"]
+[ext_resource type="Shader" uid="uid://barei2j1ds8p7" path="res://assets/shaders/clay_shader/magiclay_simple.gdshader" id="3_03lwq"]
+[ext_resource type="Shader" uid="uid://dl5s3ltd2wxpm" path="res://assets/shaders/clay_shader/magiclay_effects.gdshader" id="4_hxbxb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32gow"]
 size = Vector3(1.4, 2, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03lwq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxbxb"]
+resource_local_to_scene = true
+render_priority = 0
 next_pass = ExtResource("2_mm6jo")
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+shader = ExtResource("3_03lwq")
+shader_parameter/element_id = 8
+shader_parameter/roughness = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_f28pe"]
 top_radius = 0.1
@@ -18,8 +30,96 @@ bottom_radius = 0.7
 height = 0.5
 rings = 64
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm6jo"]
+[sub_resource type="Gradient" id="Gradient_68sun"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dq6xx"]
+noise_type = 3
+frequency = 0.0347
+fractal_octaves = 1
+fractal_gain = 1.285
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_1qy7q"]
+noise = SubResource("FastNoiseLite_dq6xx")
+color_ramp = SubResource("Gradient_68sun")
+
+[sub_resource type="Gradient" id="Gradient_xyh72"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r2m2b"]
+noise_type = 2
+frequency = 0.085
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_pjopa"]
+noise = SubResource("FastNoiseLite_r2m2b")
+color_ramp = SubResource("Gradient_xyh72")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_6a5d6"]
+offsets = PackedFloat32Array(0, 0.29032257, 0.6814516, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12366388, 0.13802302, 0.123665474, 1, 0.34781694, 0.34781697, 0.3478169, 0.4952317, 1, 1, 1, 0.05490196)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6a5d6"]
+frequency = 0.0056
+fractal_lacunarity = 2.275
+fractal_gain = 0.99
+fractal_weighted_strength = 0.6
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_y5ahk"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_6a5d6")
+color_ramp = SubResource("Gradient_6a5d6")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_y5ahk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1dg1q"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_l44ne"]
+noise = SubResource("FastNoiseLite_1dg1q")
+color_ramp = SubResource("Gradient_y5ahk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d78pf"]
 resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_hxbxb")
+shader_parameter/thickness = 0.10000000475
+shader_parameter/outline_energy = 1.0
+shader_parameter/element_id = 8
+shader_parameter/random_noise = SubResource("NoiseTexture3D_l44ne")
+shader_parameter/orange_noise = SubResource("NoiseTexture3D_pjopa")
+shader_parameter/purple_noise = SubResource("NoiseTexture3D_y5ahk")
+shader_parameter/p_color_mod = 0.3
+shader_parameter/magenta_noise = SubResource("NoiseTexture3D_1qy7q")
+shader_parameter/red_pulse_amount = 0.09
+shader_parameter/red_pulse_speed = 2.0
+shader_parameter/m_speed_damp = 7.0
+shader_parameter/m_bright_offset = 0.2
+shader_parameter/o_speed_damp = 15.0
+shader_parameter/c_thickness_mod = 35.0
+shader_parameter/g_pulse_amount = 0.3
+shader_parameter/g_fade_damp = 1.5
+shader_parameter/g_color_mod = 0.1
+shader_parameter/c_bright_offset = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxo42"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_d78pf")
+shader = ExtResource("3_03lwq")
+shader_parameter/element_id = 8
+shader_parameter/roughness = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_b7i8g"]
 top_radius = 0.1
@@ -45,12 +145,12 @@ shape = SubResource("BoxShape3D_32gow")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1626568170]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.300662)
-material_override = SubResource("StandardMaterial3D_03lwq")
+material_override = SubResource("ShaderMaterial_hxbxb")
 mesh = SubResource("CylinderMesh_f28pe")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=774257133]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.295207)
-material_override = SubResource("StandardMaterial3D_mm6jo")
+material_override = SubResource("ShaderMaterial_lxo42")
 mesh = SubResource("CylinderMesh_b7i8g")
 
 [node name="SubReceiver1" parent="." unique_id=1842763126 instance=ExtResource("1_v6um2")]

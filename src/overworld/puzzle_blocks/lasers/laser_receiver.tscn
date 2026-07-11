@@ -1,14 +1,26 @@
 [gd_scene format=3 uid="uid://cgskhp8lbdjsd"]
 
 [ext_resource type="Script" uid="uid://b3o8i5d71jl8e" path="res://src/overworld/puzzle_blocks/lasers/LaserReceiver.gd" id="1_hbigv"]
+[ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="2_4c186"]
 [ext_resource type="PackedScene" uid="uid://cf5nklwcjoux1" path="res://src/overworld/puzzle_blocks/lasers/components/sub_receiver.tscn" id="2_widym"]
+[ext_resource type="Shader" uid="uid://barei2j1ds8p7" path="res://assets/shaders/clay_shader/magiclay_simple.gdshader" id="3_iwnsa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kwb7f"]
 size = Vector3(1, 1, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j5tm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wyaey"]
 resource_local_to_scene = true
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+render_priority = 0
+next_pass = ExtResource("2_4c186")
+shader = ExtResource("3_iwnsa")
+shader_parameter/element_id = 8
+shader_parameter/roughness = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tm5pc"]
 size = Vector3(1, 1, 0.5)
@@ -16,7 +28,7 @@ size = Vector3(1, 1, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_68ba7"]
 size = Vector3(1.5, 1.5, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgvcn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c186"]
 albedo_color = Color(0.74509805, 0.74509805, 0.74509805, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_teih8"]
@@ -32,13 +44,13 @@ _mesh_instance = NodePath("MeshInstance3D")
 shape = SubResource("BoxShape3D_kwb7f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1991819168]
-material_override = SubResource("StandardMaterial3D_8j5tm")
+material_override = SubResource("ShaderMaterial_wyaey")
 mesh = SubResource("BoxMesh_tm5pc")
 
 [node name="Indicator" type="MeshInstance3D" parent="." unique_id=1938019214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.183085)
 mesh = SubResource("BoxMesh_68ba7")
-surface_material_override/0 = SubResource("StandardMaterial3D_bgvcn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4c186")
 
 [node name="SubReceiver" parent="." unique_id=1802832600 instance=ExtResource("2_widym")]
 

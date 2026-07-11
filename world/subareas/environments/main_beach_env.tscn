@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://lp1v5cimlv0" path="res://src/overworld/Water.gd" id="4_hsn5f"]
 [ext_resource type="Texture2D" uid="uid://56t5knh7i81q" path="res://assets/shaders/clay_shader/textures/base_clay_crack_normal.png" id="4_l7n7h"]
 [ext_resource type="Texture2D" uid="uid://cacqty606q0rn" path="res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="5_hsn5f"]
-[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay.gdshader" id="7_l7n7h"]
+[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay_simple.gdshader" id="7_l7n7h"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_76mdr"]
 size = Vector2(100, 100)

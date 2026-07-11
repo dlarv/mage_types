@@ -9,7 +9,7 @@ var _is_emitting := false
 var _material_2: Material
 
 func _ready() -> void:
-	_material_2 = StandardMaterial3D.new()
+	_material_2 = $MeshInstance3D.get_active_material(0)
 	super._ready()
 	$SubEmitter1.stop()
 	$SubEmitter2.stop()
@@ -120,6 +120,5 @@ func create_log(body: MagiClay, e: ElementalType) -> void:
 func _try_set_color(color:Variant=null) -> bool:
 	if not super._try_set_color(color): return false
 	#if in_stasis: _material_2.albedo_color = Color.BLACK
-	#_material_2.set_shader_parameter("element_id", element.id)
-	_material.albedo_color = element.main_color
+	_material_2.set_shader_parameter("element_id", element.id)
 	return true

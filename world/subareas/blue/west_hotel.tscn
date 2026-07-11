@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="11_jmy4x"]
 [ext_resource type="Resource" uid="uid://bsjfeyutvwl8i" path="res://data/items/equipment/sledge_hammer.tres" id="12_hv7p8"]
 [ext_resource type="PackedScene" uid="uid://cbmlyysi0hhkk" path="res://world/subareas/blue/stasis_dungeon/western_red_wing.tscn" id="16_jmy4x"]
-[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay.gdshader" id="17_ddnwv"]
+[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay_simple.gdshader" id="17_ddnwv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uq05v"]
 size = Vector3(5.7, 7, 0.5)

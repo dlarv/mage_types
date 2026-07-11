@@ -3,13 +3,23 @@
 [ext_resource type="Script" uid="uid://drbpmc25edr7x" path="res://src/overworld/puzzle_blocks/lasers/Emitter.gd" id="1_1e8qi"]
 [ext_resource type="Material" uid="uid://btm10i4evcf5n" path="res://assets/shaders/clay_shader/magiclay_effect_material.tres" id="3_37bec"]
 [ext_resource type="PackedScene" uid="uid://djyd1nordbavf" path="res://src/overworld/puzzle_blocks/lasers/components/sub_emitter.tscn" id="3_l2c7w"]
+[ext_resource type="Shader" uid="uid://barei2j1ds8p7" path="res://assets/shaders/clay_shader/magiclay_simple.gdshader" id="4_g7hmc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nfnt1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uea3u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cilgv"]
 resource_local_to_scene = true
+render_priority = 0
 next_pass = ExtResource("3_37bec")
-albedo_color = Color(0.5, 0.5, 0.5, 1)
+shader = ExtResource("4_g7hmc")
+shader_parameter/element_id = 8
+shader_parameter/roughness = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_s6ud6"]
 height = 0.5
@@ -29,5 +39,5 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5
 shape = SubResource("SphereShape3D_nfnt1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=86636321]
-material_override = SubResource("StandardMaterial3D_uea3u")
+material_override = SubResource("ShaderMaterial_cilgv")
 mesh = SubResource("SphereMesh_s6ud6")

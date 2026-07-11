@@ -244,9 +244,6 @@ func get_stable_states() -> void:
 
 func _enter_tree() -> void:
 	build()
-	test_transmutations()
-	# test_side_effects()
-	# test_traversals()
 
 
 func _ready() -> void:
@@ -254,6 +251,10 @@ func _ready() -> void:
 	attack_buff.is_side_effect = true
 	defense_buff.is_side_effect = true
 	speed_buff.is_side_effect = true
+
+	# Ensure shader globals are synced with resources
+	for el: ElementalType in elements.slice(0, 8):
+		RenderingServer.global_shader_parameter_set("element_%s" % el.name[0].to_lower(), el.main_color)
 	
 
 func build()-> void:
