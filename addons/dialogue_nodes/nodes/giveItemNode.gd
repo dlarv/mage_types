@@ -34,7 +34,7 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	last_name = %ItemName.text
 	last_operator = %Operator.selected
 	last_value = %Value.text
-	last_type = %Type.text
+	last_type = %Type.selected
 	
 	return [dict['link']]
 

@@ -3,7 +3,7 @@ extends BaseDialogueNode
 
 var last_type: int
 var last_variable_value: String
-var last_signal_value: String
+var last_signal_value: int
 
 
 func _ready() -> void:
@@ -22,8 +22,7 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 	dict['link'] = connections[0]['to_node'] if connections.size() > 0 else 'END'
 
 	# Signal
-	# To preserve backwards compatibility
-	dict['signal_value'] = $SignalValue.text
+	dict['signal_value'] = $SignalDropdown.selected
 	dict['link'] = connections[0]['to_node'] if connections.size() > 0 else 'END'
 	
 	return dict
@@ -43,11 +42,11 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	# Signal Value
 	# To preserve backwards compatibility
 	if dict.has('signalValue'):
-		$SignalValue.text = dict['signalValue']
+		$SignalDropdown.selected = dict['signalValue']
 	elif dict.has('signal_value'):
-		$SignalValue.text = dict['signal_value']
+		$SignalDropdown.selected = dict['signal_value']
 
-	last_signal_value = $SignalValue.text
+	last_signal_value = $SignalDropdown.selected
 	
 	return [dict['link']]
 
@@ -88,18 +87,18 @@ func _on_variables_updated(variables_list: Array[String]) -> void:
 	%Variable.update_variables(variables_list)
 
 
-func set_signal(new_value: String) -> void:
-	if $SignalValue.text != new_value:
-		$SignalValue.text = new_value
+func set_signal(new_value: int) -> void:
+	if $SignalDropdown.selected != new_value:
+		$SignalDropdown.selected = new_value
 	last_signal_value = new_value
 
 
 func _on_signal_value_changed() -> void:
 	if not undo_redo:
-		set_value($SignalValue.text)
+		set_value($SignalDropdown.selected)
 	
 	undo_redo.create_action('Set signal SignalValue')
-	undo_redo.add_do_method(self, 'set_value', $SignalValue.text)
+	undo_redo.add_do_method(self, 'set_value', $SignalDropdown.selected)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_value', last_signal_value)

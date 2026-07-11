@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_4qbur")
 starts = {
+"ADONIS_1": &"0_7",
 "RETURN_BIN": &"0_6",
 "TUTORIAL_1": &"0_1",
 "TUTORIAL_2": &"0_2",
@@ -15,38 +16,43 @@ starts = {
 nodes = {
 &"0_1": {
 "link": &"5_1",
-"offset": Vector2(-460, -80),
+"offset": Vector2(-400, -320),
 "start_id": "TUTORIAL_1"
 },
 &"0_2": {
 "link": &"1_6",
-"offset": Vector2(-440, 480),
+"offset": Vector2(-280, 280),
 "start_id": "TUTORIAL_2"
 },
 &"0_3": {
 "link": &"1_8",
-"offset": Vector2(-440, 760),
+"offset": Vector2(-260, 540),
 "start_id": "TUTORIAL_3"
 },
 &"0_4": {
 "link": &"1_10",
-"offset": Vector2(-440, 1040),
+"offset": Vector2(-260, 820),
 "start_id": "TUTORIAL_4"
 },
 &"0_5": {
 "link": &"5_2",
-"offset": Vector2(-540, 1320),
+"offset": Vector2(-320, 1120),
 "start_id": "TUTORIAL_EXIT"
 },
 &"0_6": {
 "link": &"5_3",
-"offset": Vector2(-625.5907, 1676.9733),
+"offset": Vector2(-400, 1540),
 "start_id": "RETURN_BIN"
+},
+&"0_7": {
+"link": &"1_1",
+"offset": Vector2(-214.70142, -563.4885),
+"start_id": "ADONIS_1"
 },
 &"10_1": {
 "item_name": "Tutorial Packet",
 "link": "END",
-"offset": Vector2(400, -100),
+"offset": Vector2(560, -280),
 "operator": 0,
 "type": 3,
 "value": "1"
@@ -54,14 +60,27 @@ nodes = {
 &"10_2": {
 "item_name": "Tutorial Packet",
 "link": "END",
-"offset": Vector2(380, 1340),
+"offset": Vector2(600, 1140),
 "operator": 1,
 "type": 3,
 "value": "1"
 },
+&"1_1": {
+"dialogue": "Yee",
+"offset": Vector2(60, -660),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 242),
+"speaker": ""
+},
 &"1_10": {
 "dialogue": "Its a table with another note.",
-"offset": Vector2(-240, 1040),
+"offset": Vector2(-60, 820),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -69,14 +88,14 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0005, 242),
+"size": Vector2(300.00055, 247),
 "speaker": ""
 },
 &"1_11": {
 "dialogue": "You're almost there! The exit is just up ahead.[br]
 The next few puzzles use [i]Laser Bridges[/i]. These use highly concentrated Elemental energy to transmute any MagiClay objects dragged across them. [br]
 Use the triangular [i]Reset[/i] block to return the puzzle to its starting configuration.",
-"offset": Vector2(80, 1040),
+"offset": Vector2(260, 820),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -84,12 +103,12 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00015, 242),
+"size": Vector2(300.00037, 247),
 "speaker": ""
 },
 &"1_14": {
 "dialogue": "Looking in the bin, you notice 2 somewhat identical packets.",
-"offset": Vector2(20, 1620),
+"offset": Vector2(240, 1480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -97,12 +116,12 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00037, 242.00012),
+"size": Vector2(300.00024, 247.00012),
 "speaker": ""
 },
 &"1_15": {
 "dialogue": "Looing in the bin, you notice several laminated pages stapled together.",
-"offset": Vector2(20, 1880),
+"offset": Vector2(240, 1740),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -110,12 +129,12 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00037, 242),
+"size": Vector2(300.00024, 247.00012),
 "speaker": ""
 },
 &"1_4": {
 "dialogue": "Its a table. On it is a note.",
-"offset": Vector2(80, 180),
+"offset": Vector2(140, -60),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -123,7 +142,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00015, 242.00018),
+"size": Vector2(300.00012, 247.00024),
 "speaker": ""
 },
 &"1_5": {
@@ -137,7 +156,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 4. Use the stencils from your tutorial packet to hide irrelevant info.[br]
 [br]
 [i]Please only take one packet, we were only able to make 3 total[/i]",
-"offset": Vector2(420, 180),
+"offset": Vector2(580, 0),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -145,12 +164,12 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00073, 242.00018),
+"size": Vector2(300.00073, 247.00012),
 "speaker": ""
 },
 &"1_6": {
 "dialogue": "Its a table with another note.",
-"offset": Vector2(-240, 480),
+"offset": Vector2(-80, 280),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -158,13 +177,13 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 242.00018),
+"size": Vector2(300.00043, 247.00037),
 "speaker": ""
 },
 &"1_7": {
 "dialogue": "Hey, you're getting it! Your next instructions are just passed the [el]Yellow[/el] room.[br]
 [i]Stencil 2[/i]",
-"offset": Vector2(80, 480),
+"offset": Vector2(240, 280),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -172,12 +191,12 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00015, 242.00018),
+"size": Vector2(300.00024, 247.00037),
 "speaker": ""
 },
 &"1_8": {
 "dialogue": "Its a table with another note.",
-"offset": Vector2(-240, 760),
+"offset": Vector2(-60, 540),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -185,14 +204,14 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 241.99988),
+"size": Vector2(300.00055, 247.00012),
 "speaker": ""
 },
 &"1_9": {
 "dialogue": "Now for something a little harder. The final instructions are in the [el]Purple[/el] room.
 [br][br]
 [i]Stencil 3[/i]",
-"offset": Vector2(80, 760),
+"offset": Vector2(260, 540),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -200,19 +219,24 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00027, 241.99988),
+"size": Vector2(300.00037, 247.00012),
 "speaker": ""
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(394.499, -608.28723),
+"signal_value": 0
 },
 &"4_1": {
 "link": &"10_1",
-"offset": Vector2(60, -100),
+"offset": Vector2(220, -280),
 "type": 0,
 "value": "true",
 "variable": "took_packet"
 },
 &"4_2": {
 "link": &"10_2",
-"offset": Vector2(40, 1320),
+"offset": Vector2(260, 1120),
 "type": 0,
 "value": "true",
 "variable": "returned_packet"
@@ -224,7 +248,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "value2": "false"
 }]),
 "false": &"1_4",
-"offset": Vector2(-260, -80),
+"offset": Vector2(-100, -260),
 "true": &"4_1"
 },
 &"5_2": {
@@ -239,7 +263,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "value2": "false"
 }]),
 "false": "END",
-"offset": Vector2(-280, 1320),
+"offset": Vector2(-60, 1120),
 "true": &"4_2"
 },
 &"5_3": {
@@ -249,8 +273,14 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "value2": "true"
 }]),
 "false": &"1_15",
-"offset": Vector2(-400, 1660),
+"offset": Vector2(-180, 1520),
 "true": &"1_14"
+},
+&"8_1": {
+"attached_nodes": Array[StringName]([&"1_5", &"1_4", &"10_1", &"4_1", &"5_1", &"0_1", &"1_7", &"1_6", &"0_2", &"1_9", &"1_11", &"1_10", &"0_4", &"1_8", &"0_3", &"0_5", &"10_2", &"4_2", &"5_2", &"5_3", &"1_15", &"1_14", &"0_6"]),
+"offset": Vector2(-440, -361),
+"tint_color": Color(0.133333, 0.133333, 0.133333, 1),
+"title": "Frame #1"
 }
 }
 variables = Dictionary[String, Dictionary]({
@@ -263,3 +293,4 @@ variables = Dictionary[String, Dictionary]({
 "value": false
 }
 })
+strays = Array[String](["8_1"])
