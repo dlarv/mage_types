@@ -1,18 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://duf3dedsle555"]
+[gd_scene format=3 uid="uid://duf3dedsle555"]
 
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="1_gljf2"]
-[ext_resource type="PackedScene" uid="uid://p4hix4hg2txy" path="res://assets/3d/characters/blob.blend" id="2_vqxvv"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="3_bqnv6"]
 [ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="4_bqxmt"]
 [ext_resource type="PackedScene" uid="uid://c150qdsgbvtp" path="res://src/overworld/characters/actors/enemy_actor.tscn" id="5_j685c"]
+[ext_resource type="Resource" uid="uid://bblx7lycrgk8e" path="res://data/story/dialog/battle_dialog.tres" id="6_7dxv4"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="6_sa2ad"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="7_7dxv4"]
+[ext_resource type="Resource" uid="uid://b8f32nxxkopmc" path="res://data/items/spell_scrolls/shield.tres" id="8_cqt5s"]
 [ext_resource type="Script" uid="uid://n8ulld1m40ie" path="res://src/battle_system/opponent_controllers/ScriptedOpponent.gd" id="8_qbc4f"]
+[ext_resource type="Resource" uid="uid://cr76i3ewvm3up" path="res://data/items/spell_scrolls/basic/hit_m.tres" id="9_00h7g"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="9_wwnfa"]
 [ext_resource type="Resource" uid="uid://bfcmgeugkgdc4" path="res://data/story/bosses/tutorial_bosses/boss_2.tres" id="10_cqt5s"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_0mcoh"]
-radius = 1.3856
+[ext_resource type="Resource" uid="uid://dxxk0f8sn5ell" path="res://data/items/spell_scrolls/output/unbalanced_assault_bead.tres" id="10_ffuw4"]
+[ext_resource type="PackedScene" uid="uid://drftsadfhum4o" path="res://assets/3d/characters/blue_aligned/adonis.blend" id="10_j685c"]
+[ext_resource type="Resource" uid="uid://dg1mkjcd4555j" path="res://data/items/spell_scrolls/output/satiate_bead.tres" id="11_6paoy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ucadb"]
 radius = 1.56864
@@ -20,36 +22,89 @@ radius = 1.56864
 [sub_resource type="Resource" id="Resource_xpu74"]
 script = ExtResource("4_bqxmt")
 id = "ADONIS_2"
-next = -1
-end_state = ""
+
+[sub_resource type="Resource" id="Resource_sa2ad"]
+script = ExtResource("6_sa2ad")
+id = "2_0"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_7dxv4"]
+script = ExtResource("6_sa2ad")
+turn = 1
+id = "2_1a"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_qbc4f"]
+script = ExtResource("6_sa2ad")
+turn = 1
+id = "2_1b"
+displayAfterTurn = true
+battle_story_interface = "player_spell_element"
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_wwnfa"]
+script = ExtResource("6_sa2ad")
+turn = 2
+id = "2_2b"
+displayAfterTurn = true
+metadata/_custom_type_script = "uid://bg0m7oqtov4b5"
+
+[sub_resource type="Resource" id="Resource_m8lx8"]
+resource_name = "Shield Bead"
+script = ExtResource("7_7dxv4")
+item = ExtResource("8_cqt5s")
+id = 32
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_o6d2u"]
+resource_name = "Magenta Hit Bead"
+script = ExtResource("7_7dxv4")
+item = ExtResource("9_00h7g")
+id = 2
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_yyibs"]
+resource_name = "Unbalanced Assault Bead"
+script = ExtResource("7_7dxv4")
+item = ExtResource("10_ffuw4")
+id = 54
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
+
+[sub_resource type="Resource" id="Resource_h0fqw"]
+resource_name = "Satiate Bead"
+script = ExtResource("7_7dxv4")
+item = ExtResource("11_6paoy")
+id = 26
+allow_stacking = true
+metadata/_custom_type_script = "uid://2vxsmd7ib53v"
 
 [sub_resource type="Resource" id="Resource_00h7g"]
 script = ExtResource("8_qbc4f")
-set_seed = ""
-dialog_ids = Array[ExtResource("6_sa2ad")]([])
-reward_xp = 0.0
-reward_items = Array[ExtResource("7_7dxv4")]([])
+dialog_resource = ExtResource("6_7dxv4")
+dialog_ids = Array[ExtResource("6_sa2ad")]([SubResource("Resource_sa2ad"), SubResource("Resource_7dxv4"), SubResource("Resource_qbc4f"), SubResource("Resource_wwnfa")])
+reward_xp = 50.0
+reward_items = Array[ExtResource("7_7dxv4")]([SubResource("Resource_m8lx8"), SubResource("Resource_o6d2u"), SubResource("Resource_yyibs"), SubResource("Resource_h0fqw")])
 metadata/_custom_type_script = "uid://n8ulld1m40ie"
 
-[node name="Boss2" instance=ExtResource("1_gljf2")]
+[node name="Boss2" unique_id=847891650 node_paths=PackedStringArray("_mesh_instance") instance=ExtResource("1_gljf2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497048, 0)
 collision_layer = 5
+_mesh_instance = NodePath("adonis/rig_v2/Skeleton3D/trunk_bak_001")
 
-[node name="blob2" parent="." index="1" instance=ExtResource("2_vqxvv")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="blob2/blob" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="blob2/blob/StaticBody3D" index="0"]
-shape = SubResource("SphereShape3D_0mcoh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1669506085]
 shape = SubResource("SphereShape3D_ucadb")
 
-[node name="StoryActor" parent="." index="3" groups=["persist"] instance=ExtResource("3_bqnv6")]
+[node name="StoryActor" parent="." index="2" unique_id=314645551 groups=["persist"] instance=ExtResource("3_bqnv6")]
 dialog_ids = Array[ExtResource("4_bqxmt")]([SubResource("Resource_xpu74")])
 
-[node name="EnemyActor" parent="." index="4" instance=ExtResource("5_j685c")]
+[node name="EnemyActor" parent="." index="3" unique_id=1749850615 instance=ExtResource("5_j685c")]
 ai = SubResource("Resource_00h7g")
 _team = Array[ExtResource("9_wwnfa")]([ExtResource("10_cqt5s")])
 
-[editable path="blob2"]
+[node name="adonis" parent="." index="4" unique_id=264559270 instance=ExtResource("10_j685c")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.5, 0)
+
+[editable path="adonis"]

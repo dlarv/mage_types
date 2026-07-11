@@ -100,6 +100,14 @@
 		- [x] Player can click on a BattleActor model to display info about them
 		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
 			- [ ] Hovering status pin should outline that pin
+
+**Battle Talk**
+`EnemyActor`s have a list of `BattleTalk(Resource)`, which are used to display dialog while a battle is happening.
+- `turn`: Which turn to play dialog on. Turn 0 plays before player has a chance to select actions.
+- `display_after_turn`: if true, dialog is displayed after all combatants have acted. Otherwise, dialog is displayed as soon as player hits "end turn", before any actions happen.
+- `repeat`: If true, if player exits battle and reenters it, dialog will display again. Otherwise, `OpponentController` actually deletes resource from array
+- `battle_story_interface`: used to query values from `Battle`. Values are added as-needed.
+	- `player_spell_element`: Gets type of Goose's selected attack for the turn
 ### Action Effects 
  **Calculate and resolve attack/item effects.**
 - [x] Damage.

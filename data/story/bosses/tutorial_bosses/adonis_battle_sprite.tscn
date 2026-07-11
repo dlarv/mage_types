@@ -58,7 +58,6 @@ normal_map = ExtResource("3_5n7y2")
 mesh = NodePath("adonis/rig_v2/Skeleton3D/trunk_bak_001")
 
 [node name="adonis" parent="MeshManager" index="0" unique_id=264559270 instance=ExtResource("3_hj6mo")]
-transform = Transform3D(-0.8433915, 0, -0.5372996, 0, 1, 0, 0.5372996, 0, -0.8433915, 0, 0, 0)
 
 [node name="rig_v2" parent="MeshManager/adonis" index="0" unique_id=1111130541]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

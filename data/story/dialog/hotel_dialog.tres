@@ -6,6 +6,8 @@
 script = ExtResource("1_4qbur")
 starts = {
 "ADONIS_1": &"0_7",
+"ADONIS_2": &"0_8",
+"ADONIS_3": &"0_9",
 "RETURN_BIN": &"0_6",
 "TUTORIAL_1": &"0_1",
 "TUTORIAL_2": &"0_2",
@@ -46,8 +48,18 @@ nodes = {
 },
 &"0_7": {
 "link": &"1_1",
-"offset": Vector2(-214.70142, -563.4885),
+"offset": Vector2(-60, -1160),
 "start_id": "ADONIS_1"
+},
+&"0_8": {
+"link": &"1_2",
+"offset": Vector2(-60, -880),
+"start_id": "ADONIS_2"
+},
+&"0_9": {
+"link": &"1_3",
+"offset": Vector2(-60, -600),
+"start_id": "ADONIS_3"
 },
 &"10_1": {
 "item_name": "Tutorial Packet",
@@ -67,7 +79,7 @@ nodes = {
 },
 &"1_1": {
 "dialogue": "Yee",
-"offset": Vector2(60, -660),
+"offset": Vector2(220, -1260),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -88,7 +100,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 247),
+"size": Vector2(300.00055, 246.99963),
 "speaker": ""
 },
 &"1_11": {
@@ -103,7 +115,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00037, 247),
+"size": Vector2(300.0003, 246.99963),
 "speaker": ""
 },
 &"1_14": {
@@ -116,7 +128,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 247.00012),
+"size": Vector2(300.00043, 247.00024),
 "speaker": ""
 },
 &"1_15": {
@@ -129,12 +141,38 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 247.00012),
+"size": Vector2(300.00043, 247.00085),
+"speaker": ""
+},
+&"1_2": {
+"dialogue": "Yee",
+"offset": Vector2(220, -980),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 242),
+"speaker": ""
+},
+&"1_3": {
+"dialogue": "Yee",
+"offset": Vector2(220, -700),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"3_3",
+"text": ""
+}
+},
+"size": Vector2(300, 242),
 "speaker": ""
 },
 &"1_4": {
 "dialogue": "Its a table. On it is a note.",
-"offset": Vector2(140, -60),
+"offset": Vector2(320, -100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -142,7 +180,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00012, 247.00024),
+"size": Vector2(300.0003, 247.00012),
 "speaker": ""
 },
 &"1_5": {
@@ -156,7 +194,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 4. Use the stencils from your tutorial packet to hide irrelevant info.[br]
 [br]
 [i]Please only take one packet, we were only able to make 3 total[/i]",
-"offset": Vector2(580, 0),
+"offset": Vector2(700, -100),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -164,7 +202,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00073, 247.00012),
+"size": Vector2(300.00092, 247.00012),
 "speaker": ""
 },
 &"1_6": {
@@ -177,7 +215,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00043, 247.00037),
+"size": Vector2(300.00043, 247.00049),
 "speaker": ""
 },
 &"1_7": {
@@ -191,7 +229,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00024, 247.00037),
+"size": Vector2(300.00043, 247.00049),
 "speaker": ""
 },
 &"1_8": {
@@ -204,7 +242,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00055, 247.00012),
+"size": Vector2(300.00055, 247),
 "speaker": ""
 },
 &"1_9": {
@@ -219,12 +257,22 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00037, 247.00012),
+"size": Vector2(300.0003, 247),
 "speaker": ""
 },
 &"3_1": {
 "link": "END",
-"offset": Vector2(394.499, -608.28723),
+"offset": Vector2(560, -1220),
+"signal_value": 0
+},
+&"3_2": {
+"link": "END",
+"offset": Vector2(560, -940),
+"signal_value": 0
+},
+&"3_3": {
+"link": "END",
+"offset": Vector2(560, -660),
 "signal_value": 0
 },
 &"4_1": {
@@ -280,7 +328,13 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "attached_nodes": Array[StringName]([&"1_5", &"1_4", &"10_1", &"4_1", &"5_1", &"0_1", &"1_7", &"1_6", &"0_2", &"1_9", &"1_11", &"1_10", &"0_4", &"1_8", &"0_3", &"0_5", &"10_2", &"4_2", &"5_2", &"5_3", &"1_15", &"1_14", &"0_6"]),
 "offset": Vector2(-440, -361),
 "tint_color": Color(0.133333, 0.133333, 0.133333, 1),
-"title": "Frame #1"
+"title": "Transmutation Tutorial"
+},
+&"8_2": {
+"attached_nodes": Array[StringName]([&"1_1", &"3_1", &"0_7", &"0_8", &"3_2", &"1_2", &"1_3", &"3_3", &"0_9"]),
+"offset": Vector2(-100, -1301),
+"tint_color": Color(0.39, 0.20149998, 0, 1),
+"title": "Battle Tutorial"
 }
 }
 variables = Dictionary[String, Dictionary]({
@@ -293,4 +347,4 @@ variables = Dictionary[String, Dictionary]({
 "value": false
 }
 })
-strays = Array[String](["8_1"])
+strays = Array[String](["8_1", "8_2"])
