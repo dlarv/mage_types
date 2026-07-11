@@ -37,8 +37,12 @@
 - [x] Make lighting warmer
 - [x] Make background darker
 ## Bugs
-- [ ] When player is defeated in battle, it immediately ends before playing animations, etc
-- [ ] Alignment calculations at end of battle crashing due to empty list of elements
+- [ ] Broken battle system #0_7
+	- [ ] When player is defeated in battle, it immediately ends before playing animations, etc
+	- [ ] Alignment calculations at end of battle crashing due to empty list of elements
+	- [x] Player is getting defeated despite logger saying damage < hp
+	- [ ] Power on Confetti Cannon attack says n/a
+	- [ ] Target selection isn't working
 - [ ] Falling animation playing when going thru doorways
 - [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
 - [x] Ethereal Quartz overworld item can be used even when not equipped
@@ -192,6 +196,48 @@ mul $ 10 | sub 1
 To get info about the battlefield state, objects will reference the `Battle` singleton. Specifically, the `ReaderSlot` will read the state and write to the `DataBuffer` mentioned above. This object will be of type `BaseEffectSlot`, but will not apply any effects to any combatants.
 
 Unlike the previous section, these will use a more traditional inheritance structure.
+### Attack Design
+To create a new attack:
+1. Create new `Attack` resource inside `data/.../attacks/`
+2. Fill out `_BattleAction` and `Attack` properties
+3. Add new `EffectSlot` to `Attack.effects`
+4. Assign an `AttackEffect` to the slot
+5. Open `Inventory`
+6. Assign new attack to `Inventory.add_spell`
+	1. This will automatically create the associated item and add it to the inventory
+### Status Effects
+Each element will have 2 status effects: a phobia and something unique. A phobia damages the target whenever they transmute into that element.
+
+| Name           | Element           | Description                              | Impl? |
+| -------------- | ----------------- | ---------------------------------------- | ----- |
+| Stasis         | Blue              | Target cannot transmute for x turns      | Y     |
+| Dissonance     |                   | Prevents Primary+Secondary transmutation | RM    |
+| Flinch         | Purple            | Skips the target's next turn             | Y     |
+| Heal over Time | Red or Magenta    | Heals % HP for x turns                   | Y     |
+| Leech          | Red               | Damages target and heals other team      | N     |
+|                | Orange            | Doubles side effects for x turns         | N     |
+| Magnet         | Yellow or Magenta | Opponents are forced to target target    | N     |
+| Evasion        | Yellow            | Raises evasion for x turns               | N     |
+| Poison         | Green             | Damage over time                         | Y     |
+| Block          | Cyan              | Prevents the next instance of damage     | Y     |
+	
+**Guidance**
+At the moment, there is no cost associated with using an attack, so there's nothing stopping the player from spamming their strongest attacks. I have the following incentives I can use to discourage this behavior:
+- Accuracy: make powerful attacks less accurate
+- Negative side effects: powerful attacks inflict debuffs or status effects on the user
+- Type restrictions: Powerful attacks/effects only work/activate if the user's secondary type matches
+	- This could also be their primary type, but that won't actually restrict their usage during that battle
+- Prevent player from equipping too many powerful spells 
+	- This restriction is built into the item itself
+
+>[!Note]
+>This battle system is already so scuffed, even if there's such an easy thing to exploit, I'm not too cut up about it. Lowkey, I might not have #5 be as present of a mechanism, only for select few attacks.
+	
+>[!idea] Attack Cooldowns
+>I also don't have the infrastructure for this yet, but I like the idea for adding cooldowns to attacks
+
+**Attack Ideas**
+- Taunt/Inverse taunt (like entangled status from Slay the Spire)
 ### Aesthetics
 See also: [[more_dynamic_battles]]
 - [x] Allow attacks to play unique animations.
@@ -329,7 +375,6 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 - [ ] Add final boss to ~~stasis dungeon~~
 ## Elemental System
 - [ ] Add tutorial for transmutation map
-- [ ] Associate symbols with each element to help with differentiation
 - [x] Use proper enum instead of `@export_enum`
 - [x] Add missing reactions and recreate transmutation chart
 	- [x] Orange + Cyan = Green
@@ -357,6 +402,19 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 > 1. Create new KeyItem
 >2. Set KeyItem.id to n+1, where n is id of previous stencil
 >3. Inside ElementFlowChart.gd, add new case to `match` statement in `_on_stencil_button_toggled`
+### Icons
+- [ ] Associate symbols with each element to help with differentiation
+
+I want the UI to have a tactile feel, so I think it'd be cool if the icons had a 3D feel to them.
+
+B: square or trapezoid (static, heavy)
+P: 3 jagged diagonal lines (like claw marks)
+M: flower with sharp petals
+R: crescent moon shape with a barb (magic)
+O: hexagon (same shape as tmap)
+Y: 9-pointed star
+G: Triangle (like hazard symbol)
+C: diamond/rhombus (strength, stability)
 ## Player
  - [x] Player should be able to perform simple actions:
 	- [x] Walking/running.
@@ -381,7 +439,7 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 - [x] Player battle animations
 	- [x] Channeling
 	- [x] Attack
-	- [x] Getting hit
+	- [ ] Getting hit (Got erased for some reason, need to readd) #v0_7
 	- [x] Battle idle
 - [ ] Player Audio FX #v0_8 
 	- [ ] Footsteps
@@ -814,9 +872,9 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 			- [x] Chest not actually adding magenta key to inventory
 	- [x] Move road further north
 	- [x] Move House further east and on hill
-	- [ ] NW Parkour challenge
+	- [x] NW Parkour challenge
 		- [x] Designed challenge
-		- [ ] Placed rewards
+		- [x] Placed rewards
 			- If I give the player a attack/item and I'm not careful, I might upset the balance of my tutorial
 	- [ ] SW Parkour challenge
 		- [x] Designed Challenge
@@ -824,41 +882,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Remodel Hotel exterior
 	- [ ] Place breakable rock in front of East Cave
 	
-This section serves primarily to set the atmosphere and show off the clay shader. The hotel will be constructed of a more "otherworldly" material, this will hopefully cement the clay aesthetic.
-
-**Beach 1 Backtracking Obstacle**
-- 1 geyser and 3 magiclay rocks
-1. Uses Stasis on geyser
-2. Stand on geyser
-3. Use Stasis on each MagiClay rock
-4. Stasis on geyser ends, pushing player up onto cliff
-- Reward: ???
-
-**Northwest Parkour Challenge**
-- Simple, 5 platform parkour challenge
-- Reward: ???
-
-**Southwest Parkour Challenge**
-- 9 platform partially-blind parkour challenge
-	- Southward parkour challenges are more difficult, as the player can't fully see the next platform
-	- The player can gauge where next platform is, based on the light attached to the next platform
-- This challenge give the player access to a southern island. 
-	- I imagine this will be mostly for lore
-	- There'll probably be an NPC here the player can s/w
-
-**Flickering Lamppost Puzzle**
-- 4 platforms in middle of SW Parkour Challenge, each w/ their own lamppost
-- Every 5 seconds a hint sequence begins playing
-	1. All light turns off
-	2. Lights turn on one at a time
-	3. If player jumps on platforms in that order, a chest appears
-- Reward: Magenta Key
-
-**Eastern Caves**
-- Along base of Eastern cliffs
-- Breakable rock blocks entrance
-- Player must return once they have sledgehammer
-- Reward: ???
+[[Map#Beach|Area Breakdown: Beach]]	
 ### Transmutation Tutorial
 - [ ] Transmutation tutorial #v0_7
 	- [x] Layout
@@ -873,104 +897,7 @@ This section serves primarily to set the atmosphere and show off the clay shader
 		- [ ] Add hints to the side rooms
 	- [x] Add pressure plate demo to cave entrance
 	- [ ] Add official env models
-	
-- In-between Beaches 1 and 2
-- Currently, this is a beach house, tho I might change it into a cave system
-- Player's first introduction to *transmutation system*
-- Should teach player how to use *transmutation map*
-- Has a few unique stencils which can't be removed from their respective rooms
-
-Player has to think abstractly: 
-> Its useful to imagine a MagiClay object's journey around the transmutation map, even if its not actually moving.
-
-- It might help to have literal paths the player has to go down. Each room and door will have a color.
-- First few rooms will guide the player, be more handholdy
-- Final challenge will give player a point A and point B and they have to navigate to it using the map
-	
-Player will conceptualize the *Transmutation Map's* arrows as:
-1. Paths
-2. Lasers
-3. Attacks
-
->[!aside] 
->In-game, this area was designed by a Magenta-aligned and Cyan-aligned working together.
-
-**Section 1**
-- R + Y = O
-- Table next to entrance
-	- Stack of Transmutation Maps and a sign asking you to only take one
-	- Stencil with a note asking you not to take it out of the room, as they were not able to make more than one
-		- Stencil shows *Red* and *Orange* only
->[!question] 
->Maybe the transmutation map is already in your pocket. You don't remember how it got there.
->This would make testing/speedrunning the game easier, since you could just skip the tutorial if you don't need it
-
-The room is *Red* with a *Yellow*, *Cyan* and *Blue* path.
-- If player takes *Blue* path, they'll end up at a dead end (*Magenta*). The path from where they came is now labeled Orange
-- If they take the *Cyan* path, they wind up in the same *Red* room
-- If they take the *Yellow* path, they'll end up in the next room
-
-```
-- You are in the Red room.
-- You must reach the Orange Room.
-- Press 'T' to open your transmutation menu.
-- Use these stencils to hide irrelevant info.
-- Please only take one packet, we were only able to make 3 copies.
-```
-
-**Section 1.5**
-- Stencil is ROY
-- Slightly more complicated version of previous room 
-
-The room is *Orange* with a *Yellow*, *Green*, and *Red* path. Player is tasked to getting to *Yellow* room.
-- *Green* will take player to correct room
-- *Yellow* will take player to previous room. This is separate from the path the player used to get into this room.
-- *Red* will return player to current room
-
-```
-The next instructions are in the Yellow room.
-(Stencil #2)
-```
-
-**Section 2**
-- Stencil is PROY 
-- A series of branching paths
-- If player goes backwards, they'll end up at beginning
-- It'll use the same ruleset as the previous sections
-- 4 levels before player reaches next section
-
-```
-- The final instructions are in the Purple room.
-(Stencil #3)
-```
-
-**Section 3**
-- Final room's exit will be blocked off by a gate
-- Two wires lead from gate into 2 side rooms
-- Gates block both side rooms, player must solve introductory bridge puzzle to unlock them
-
-**Introductory Puzzle**
-![[beach_cave_p1.png]]	
-
-**West Room**
-![[beach_cave_p3.png]]
-
-**East Room**
-![[beach_cave_p2.png]]
-
-This section is to force the player to think about the arrows as lasers.
-
->[!idea] Bonus Challenge?
->Given a point A and point B, arrange some colored blocks in the order.
-
-```
-You're almost there! The exit is just up ahead.
-```
-
->[!note] 
->As the player exits the cave, they'll hit a story trigger. This will have them place their tutorial packet into a bin. 
->Interacting with the bin will reveal only 2 packets in there, despite the note at the beginning suggesting that there should be 3.
->This is bc Alex didn't put their's back.
+[[Map#Transmutation Tutorial|Area Breakdown: Transmutation Tutorial]]
 ### Rec Room
 -  [ ] Bartender #v0_7
 	- [x] Design
@@ -986,9 +913,14 @@ You're almost there! The exit is just up ahead.
 - [ ] Adonis Enclave #v0_7
 	- [x] Design
 	- [x] Model
+		- [ ] Add tentacles
 	- [ ] Texturing
 	- [ ] Idle Animation
 	- [ ] Battle Animations
+		- [x] Idle
+		- [x] Channeling
+		- [ ] Attack
+		- [ ] Getting hit
 - [ ] Miniboss #v0_7
 	- [ ] Model
 	- [ ] Texturing
@@ -998,6 +930,8 @@ You're almost there! The exit is just up ahead.
 		- [ ] Attack
 		- [ ] Getting hit
 		- [ ] Battle idle
+		
+[[Map#Rec Room|Area Breakdown: Rec Room]]
 
 >[!note] Blue Aligned Modeling
 >I have a base template blue-aligned character. To create a new character, all you have to do is:

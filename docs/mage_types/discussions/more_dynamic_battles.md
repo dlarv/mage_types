@@ -16,7 +16,7 @@ Battle models can have the following animation states
 - channeling: This will be paired with a particle effect to convey *effectiveness*.
 - attack
 - getting_hit
-- battle_stance: Idle animation, named like this to avoid conflict with player.idle 
+- battle_idle: Idle animation, named like this to avoid conflict with player.idle 
 
 ```mermaid
 stateDiagram-v2

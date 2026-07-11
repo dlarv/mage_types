@@ -1,19 +1,12 @@
->[!note]
->This document is primarily intended to show the room-by-room breakdowns of each region.
 # Blue
-Blue consists of 3 sub-regions:
+Blue consists of the following sub-regions:
 - The hotel
 	- Many of the enclaves exisit inside of the first section, typically inside of the actual hotel rooms.
 	- The hotel should have 3 levels, with the 2nd and 3rd being hidden behind the caves/pools.
-- The pool rooms
-	- The pool rooms are intended to be smaller sections, moreso paying homage to this liminal spaces trope.
 - The caves
 	- The caves seem almost like they were once hidden away, accessible only through holes smashed in the walls.
 
 Each of these sections will weave through each other.
-
->[!idea] Hotel Amenities
->The could be an enclave inside of the workout room. This could be a good place to have some kind of battle tutorial.
 
 >[!idea] Employee Breakroom
 >Next to the front desk will be Employee Breakroom \#1, which is little more than a closet. It contains a chair and a microwave. Entering a specific code into the microwave will open a portal to Magenta Classic, which is a large fairground.
@@ -22,10 +15,141 @@ Each of these sections will weave through each other.
 >
 > A hint for the proper code should be hidden somewhere on the map (all microwaves outside of the breakrooms are locked on a specific time).
 ## Beach
-- Player will spawn on lighthouse pier.
-- They'll find themselves on a lonely nighttime beach. In the distance is an old, abandoned house.
-- Inside the house should be an introduction to the transmutation system.
-![[stencil_bpm.png]]
+This section serves primarily to set the atmosphere and show off the clay shader. The hotel will be constructed of a more "otherworldly" material, this will hopefully cement the clay aesthetic.
+
+**Beach 1 Backtracking Obstacle**
+- 1 geyser and 3 magiclay rocks
+1. Uses Stasis on geyser
+2. Stand on geyser
+3. Use Stasis on each MagiClay rock
+4. Stasis on geyser ends, pushing player up onto cliff
+- Reward: ???
+
+**Northwest Parkour Challenge**
+- Simple, 5 platform parkour challenge
+- Reward: Confetti Cannon
+
+>[!note]
+>In order to not upset the balance of the tutorial, this attack is a Magenta ranged attack that's only a little stronger than Magenta Throw (higher power, hits all enemies). It also inflicts a random phobia.
+
+**Southwest Parkour Challenge**
+- 9 platform partially-blind parkour challenge
+	- Southward parkour challenges are more difficult, as the player can't fully see the next platform
+	- The player can gauge where next platform is, based on the light attached to the next platform
+- This challenge give the player access to a southern island. 
+	- I imagine this will be mostly for lore
+	- There'll probably be an NPC here the player can s/w
+
+**Flickering Lamppost Puzzle**
+- 4 platforms in middle of SW Parkour Challenge, each w/ their own lamppost
+- Every 5 seconds a hint sequence begins playing
+	1. All light turns off
+	2. Lights turn on one at a time
+	3. If player jumps on platforms in that order, a chest appears
+- Reward: Magenta Key
+
+**Eastern Caves**
+- Along base of Eastern cliffs
+- Breakable rock blocks entrance
+- Player must return once they have sledgehammer
+- Reward: ???
+### Transmutation Tutorial
+- Cave system in-between Beaches 1 and 2
+- Player's first introduction to *transmutation system*
+- Should teach player how to use *transmutation map*
+- Has a few unique stencils which can't be removed from their respective rooms
+
+Player has to think abstractly: 
+> Its useful to imagine a MagiClay object's journey around the transmutation map, even if its not actually moving.
+
+- It might help to have literal paths the player has to go down. Each room and door will have a color.
+- First few rooms will guide the player, be more handholdy
+- Final challenge will give player a point A and point B and they have to navigate to it using the map
+	
+Player will conceptualize the *Transmutation Map's* arrows as:
+1. Paths
+2. Lasers
+3. Attacks
+
+>[!aside] 
+>In-game, this area was designed by a Magenta-aligned and Cyan-aligned working together.
+
+**Section 1**
+- R + Y = O
+- Table next to entrance
+	- Stack of Transmutation Maps and a sign asking you to only take one
+	- Stencil with a note asking you not to take it out of the room, as they were not able to make more than one
+		- Stencil shows *Red* and *Orange* only
+>[!question] 
+>Maybe the transmutation map is already in your pocket. You don't remember how it got there.
+>This would make testing/speedrunning the game easier, since you could just skip the tutorial if you don't need it
+
+The room is *Red* with a *Yellow*, *Cyan* and *Blue* path.
+- If player takes *Blue* path, they'll end up at a dead end (*Magenta*). The path from where they came is now labeled Orange
+- If they take the *Cyan* path, they wind up in the same *Red* room
+- If they take the *Yellow* path, they'll end up in the next room
+
+```
+- You are in the Red room.
+- You must reach the Orange Room.
+- Press 'T' to open your transmutation menu.
+- Use these stencils to hide irrelevant info.
+- Please only take one packet, we were only able to make 3 copies.
+```
+
+**Section 1.5**
+- Stencil is ROY
+- Slightly more complicated version of previous room 
+
+The room is *Orange* with a *Yellow*, *Green*, and *Red* path. Player is tasked to getting to *Yellow* room.
+- *Green* will take player to correct room
+- *Yellow* will take player to previous room. This is separate from the path the player used to get into this room.
+- *Red* will return player to current room
+
+```
+The next instructions are in the Yellow room.
+(Stencil #2)
+```
+
+**Section 2**
+- Stencil is PROY 
+- A series of branching paths
+- If player goes backwards, they'll end up at beginning
+- It'll use the same ruleset as the previous sections
+- 4 levels before player reaches next section
+
+```
+- The final instructions are in the Purple room.
+(Stencil #3)
+```
+
+**Section 3**
+- Final room's exit will be blocked off by a gate
+- Two wires lead from gate into 2 side rooms
+- Gates block both side rooms, player must solve introductory bridge puzzle to unlock them
+
+**Introductory Puzzle**
+![[beach_cave_p1.png]]	
+
+**West Room**
+![[beach_cave_p3.png]]
+
+**East Room**
+![[beach_cave_p2.png]]
+
+This section is to force the player to think about the arrows as lasers.
+
+>[!idea] Bonus Challenge?
+>Given a point A and point B, arrange some colored blocks in the order.
+
+```
+You're almost there! The exit is just up ahead.
+```
+
+>[!note] 
+>As the player exits the cave, they'll hit a story trigger. This will have them place their tutorial packet into a bin. 
+>Interacting with the bin will reveal only 2 packets in there, despite the note at the beginning suggesting that there should be 3.
+>This is bc Alex didn't put their's back.
 ## Hotel
 - Battle Tutorial: Inside Rec Room.
 - First boss inside hall1, forcing player to backtrack to Rec Room.
@@ -56,16 +180,15 @@ Each of these sections will weave through each other.
 - Introduce Primary and Secondary type.
 - Explains transmutation hint.
 - Melee attacks also transmute user.
-- Side effects might be mentioned, but I don't really want to focus on them here.
-	- I'm considering adding an equipment that will turn off side effects.
+- Side effects are turned off using an item held by the boss. This way, they only happen on the very last turn of battle, when the player transmute.
 	
 **Starting Config**
 - Player (Blue/Blue)
 	- Magenta Throw (*Attack*)
 - Boss (Blue/Blue)
-	- Blue Hit (*Attack*)
-	- Red Hit (*Attack*)
-	- Training Wheels? (*Equipment*): turns off side effects
+	1. Blue Hit (*Attack*)
+	2. Red Hit (*Attack*)
+	- Training Wheels (*Equipment*): turns off side effects
 	
 **Dialog**	
 >**Turn 0**
@@ -250,7 +373,7 @@ Each of these sections will weave through each other.
 - Max Spawn Count: 10
 - Monster:
 	- Glass Cannon Purple?
-#### L Hallway
+#### Rampage
 - The marks the Northernmost section of the Western hotel.
 - All the rooms and dividing walls have been smashed down, making this section much bigger and more chaotic than the rest of the hotel.
 	- This was done by someone losing their mind, distressed by how the rooms seemed to overlap in physical space.
@@ -275,10 +398,7 @@ Some areas will only be accessible thru the halls.
 - Library: Room containing a lot of lore documents
 ## Caves
 This website can be used to create procedurally generated cave maps: https://watabou.itch.io/cave-generator.
-### Ziggurat 
-- Inside the Grand Enclave Ziggurat, there are 8 giant pillars the player can use to ascend to the surface. However, the first one has collapsed, revealing a hidden side path. The player must venture down this side route and loop back in order to ascend.
-	- The player will use a geyser to scale the side of the giant pillar. Therefore, they should be introduced down the side paths.
-## The Ascent
-After solving the stasis dungeon, the player reenters the ziggurat, this time with access to the top of the pillars. The player will follow a counter-clockwise path to the surface. There are 7 pillars, I don't know whether each one should have some form of challenge, or just a few.
+	
+As the player heads north, the walls of the hotel start to crumble and crack, revealing the caves underneath. The central area of this section will be the Mound (formerly the Ziggurat). The player will weave thru the surrounding caves and this cavern, slowly ascending towards the surface.
 
-On the top-most pillar there will be an out-of-order elevator. In the actual game, this is what the player will use to reach the surface.**
+Inside the surrounding caves, the player will run into multiple Portal Complex Excavation sites. These are notes and tools left by an Orange team providing commentary and lore details: [[demo_script]].
