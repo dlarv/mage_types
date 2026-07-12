@@ -8,6 +8,7 @@ starts = {
 "ADONIS_1": &"0_7",
 "ADONIS_2": &"0_8",
 "ADONIS_3": &"0_9",
+"MINI_BOSS_1": &"0_10",
 "RETURN_BIN": &"0_6",
 "TUTORIAL_1": &"0_1",
 "TUTORIAL_2": &"0_2",
@@ -20,6 +21,11 @@ nodes = {
 "link": &"5_1",
 "offset": Vector2(-400, -320),
 "start_id": "TUTORIAL_1"
+},
+&"0_10": {
+"link": &"1_12",
+"offset": Vector2(1155.0574, -1264.7847),
+"start_id": "MINI_BOSS_1"
 },
 &"0_2": {
 "link": &"1_6",
@@ -87,7 +93,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 247),
+"size": Vector2(300, 247),
 "speaker": ""
 },
 &"1_10": {
@@ -115,7 +121,20 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0003, 247),
+"size": Vector2(300.00024, 247),
+"speaker": ""
+},
+&"1_12": {
+"dialogue": "asdf",
+"offset": Vector2(1380, -1300),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"3_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
 "speaker": ""
 },
 &"1_14": {
@@ -128,7 +147,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00043, 247.00012),
+"size": Vector2(300.00037, 247),
 "speaker": ""
 },
 &"1_15": {
@@ -141,7 +160,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00043, 247.0011),
+"size": Vector2(300.00037, 247.00146),
 "speaker": ""
 },
 &"1_2": {
@@ -154,7 +173,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00006, 247),
+"size": Vector2(300, 247),
 "speaker": ""
 },
 &"1_3": {
@@ -167,7 +186,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00006, 247),
+"size": Vector2(300, 247),
 "speaker": ""
 },
 &"1_4": {
@@ -180,7 +199,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 247.00012),
+"size": Vector2(300.00024, 246.99994),
 "speaker": ""
 },
 &"1_5": {
@@ -202,7 +221,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0008, 247.00012),
+"size": Vector2(300.0008, 246.99994),
 "speaker": ""
 },
 &"1_6": {
@@ -215,7 +234,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00043, 247.00037),
+"size": Vector2(300.00043, 247.00049),
 "speaker": ""
 },
 &"1_7": {
@@ -229,7 +248,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00043, 247.00037),
+"size": Vector2(300.00037, 247.00049),
 "speaker": ""
 },
 &"1_8": {
@@ -242,7 +261,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00055, 247),
+"size": Vector2(300.00055, 246.99988),
 "speaker": ""
 },
 &"1_9": {
@@ -257,7 +276,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0003, 247),
+"size": Vector2(300.00024, 246.99988),
 "speaker": ""
 },
 &"3_1": {
@@ -273,6 +292,11 @@ People frequently get lost in here, but luckily for you we made this handy map a
 &"3_3": {
 "link": "END",
 "offset": Vector2(560, -660),
+"signal_value": 0
+},
+&"3_4": {
+"link": "END",
+"offset": Vector2(1740, -1280),
 "signal_value": 0
 },
 &"4_1": {
@@ -335,6 +359,14 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "offset": Vector2(-100, -1301),
 "tint_color": Color(0.39, 0.20149998, 0, 1),
 "title": "Battle Tutorial"
+},
+&"9_1": {
+"link": "END",
+"offset": Vector2(920, -840),
+"signal_value": 0,
+"type": 0,
+"value": "",
+"variable": ""
 }
 }
 variables = Dictionary[String, Dictionary]({
@@ -347,4 +379,4 @@ variables = Dictionary[String, Dictionary]({
 "value": false
 }
 })
-strays = Array[String](["8_1", "8_2"])
+strays = Array[String](["8_1", "8_2", "9_1"])

@@ -135,20 +135,20 @@ shadow_caster_mask = 4294967293
 
 [node name="Blue" parent="Overworld" unique_id=543950842 instance=ExtResource("10_5iu1q")]
 
-[node name="Boss1" parent="Overworld" unique_id=298045260 groups=["detached_env"] instance=ExtResource("11_o1net")]
+[node name="Boss1" parent="Overworld" unique_id=2023714278 groups=["detached_env"] instance=ExtResource("11_o1net")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7224, -1.52219, -115.886)
 _element = 0
 
-[node name="Boss2" parent="Overworld" unique_id=1183559783 groups=["detached_env"] instance=ExtResource("18_j7vgi")]
+[node name="Boss2" parent="Overworld" unique_id=847891650 groups=["detached_env"] instance=ExtResource("18_j7vgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7576, -1.50295, -116)
 _element = 0
 
-[node name="Boss3" parent="Overworld" unique_id=1426542449 groups=["detached_env"] instance=ExtResource("20_bwxdu")]
+[node name="Boss3" parent="Overworld" unique_id=1301987887 groups=["detached_env"] instance=ExtResource("20_bwxdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6451, -1.48372, -120.125)
 _element = 0
 
-[node name="MiniBoss1" parent="Overworld" unique_id=442518573 instance=ExtResource("15_b2suy")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -110.315, -0.0609789, -82.7645)
+[node name="MiniBoss1" parent="Overworld" unique_id=526224947 instance=ExtResource("15_b2suy")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -112.04839, -0.0609789, -92.94928)
 _element = 0
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
