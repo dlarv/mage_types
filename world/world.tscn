@@ -100,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.22214, 4.214539, 64.340866
 dash_speed = 900.0
 
 [node name="Camera3D" type="Camera3D" parent="Overworld/Player" unique_id=1009984194]
-transform = Transform3D(1, 0, 0, 0, 0.66262025, 0.7489559, 0, -0.7489559, 0.66262025, 0, 6, 4)
+transform = Transform3D(1, 0, 0, 0, 0.8338859, 0.5519369, 0, -0.5519369, 0.8338859, 0, 5.9999995, 7.300003)
 fov = 85.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld" unique_id=899131619]
@@ -147,8 +147,8 @@ _element = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6451, -1.48372, -120.125)
 _element = 0
 
-[node name="MiniBoss1" parent="Overworld" unique_id=526224947 instance=ExtResource("15_b2suy")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -112.04839, -0.0609789, -92.94928)
+[node name="MiniBoss1" parent="Overworld" unique_id=526224947 groups=["detached_env"] instance=ExtResource("15_b2suy")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -115.04839, -0.39686093, -92.94928)
 _element = 0
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
