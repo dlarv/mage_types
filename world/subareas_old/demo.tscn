@@ -33,7 +33,7 @@
 [ext_resource type="Resource" path="res://data/items/key_items/stasis_spell.tres" id="31_bgmhm"]
 [ext_resource type="Resource" path="res://data/items/key_items/catalyst_spell.tres" id="31_wygu8"]
 [ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="33_pt6jj"]
-[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="34_71jxw"]
+[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/cutscene_actor.tscn" id="34_71jxw"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gp5q1"]
 script = ExtResource("5_6t7e1")

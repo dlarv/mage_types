@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcttnbqwhpyrf"]
+[gd_scene format=3 uid="uid://dcttnbqwhpyrf"]
 
 [ext_resource type="Script" uid="uid://cu228q2rjqd77" path="res://src/overworld/characters/actors/StoryActor.gd" id="1_txya0"]
 
-[node name="StoryActor" type="Node3D" groups=["dialog"]]
+[node name="StoryActor" type="Node3D" unique_id=1499816193 groups=["dialog"]]
 script = ExtResource("1_txya0")

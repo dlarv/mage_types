@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c8oluuihnxxkw"]
+
+[ext_resource type="Script" uid="uid://ci3dptq14p2mq" path="res://src/overworld/characters/actors/CutsceneActor.gd" id="1_lhxcf"]
+
+[node name="AnimationActor" type="Node3D"]
+script = ExtResource("1_lhxcf")

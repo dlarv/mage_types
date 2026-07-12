@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cirl3we5riu76"]
+[gd_scene format=3 uid="uid://cirl3we5riu76"]
 
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="1_7c171"]
 [ext_resource type="PackedScene" uid="uid://bah8cqf0plk1i" path="res://src/overworld/magiclay/instances/magiclay_terrain.tscn" id="2_tmi81"]
@@ -21,8 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="18_vx8gm"]
 [ext_resource type="PackedScene" uid="uid://rstqcovkkcaa" path="res://src/story_system/story_trigger.tscn" id="19_w3fo2"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="20_b35vk"]
-[ext_resource type="Resource" uid="uid://5l78hk1jadb6" path="res://data/items/key_items/golem_spell.tres" id="21_tmi81"]
-[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/animation_actor.tscn" id="22_rqrum"]
+[ext_resource type="Resource" path="res://data/items/key_items/golem_spell.tres" id="21_tmi81"]
+[ext_resource type="PackedScene" uid="uid://c8oluuihnxxkw" path="res://src/overworld/characters/actors/cutscene_actor.tscn" id="22_rqrum"]
 
 [sub_resource type="Animation" id="Animation_tmi81"]
 length = 0.001
