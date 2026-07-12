@@ -61,6 +61,12 @@ func show_results(actors: Array[BattleActor], xp: float, dialogBox: DialogueBox,
 		display.next.connect(_on_animation_finished)
 
 
+func show_defeat(dialogBox: DialogueBox) -> void:
+	dialogBox.show_text("You were defeated....")
+	await dialogBox.dialogue_ended
+
+
+
 func _on_finish_button_pressed() -> void:
 	if _animating_xp:
 		skip.emit()
@@ -72,3 +78,6 @@ func _on_animation_finished(_b: bool) -> void:
 	display_count -= 1
 	if display_count <= 0:
 		_animating_xp = false
+
+
+

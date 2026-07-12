@@ -11,7 +11,5 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if track_player_distance:
+	if track_player_distance and _player:
 		_player_distance = global_position.distance_to(_player.global_position)
-		print(_player_distance)
-

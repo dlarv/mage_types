@@ -287,17 +287,20 @@ func _resolve_end_of_battle(pause:=true) -> void:
 	
 	remove_child(gui)
 
+	var rewardScreen := RewardScreen.instantiate()
+	$CanvasLayer.add_child(rewardScreen)
+	$CanvasLayer.show()
 	if pause and len(allies) > _defeated_allies:
-		var rewardScreen := RewardScreen.instantiate()
-		$CanvasLayer.add_child(rewardScreen)
-		$CanvasLayer.show()
 		Inventory.add_items(ai.reward_items)
 		
 		if not simulator_mode:
 			rewardScreen.show_results(allies, ai.reward_xp, _dialog_box, ai.reward_items)
+			await rewardScreen.pressed
+	elif pause and not simulator_mode:
+		rewardScreen.show_defeat(_dialog_box)
 		await rewardScreen.pressed
-		$CanvasLayer.remove_child(rewardScreen)
-		$CanvasLayer.hide()
+	$CanvasLayer.remove_child(rewardScreen)
+	$CanvasLayer.hide()
 
 
 func _prep_next_turn() -> void:
