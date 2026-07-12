@@ -42,6 +42,15 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 				actor.status_effects_removed.emit([BLOCK] as Array[StatusEffect])
 	get_tree().call_group("hp_display", "animate_hp")
 
+	# Animate any defeated characters
+	var last: BattleSprite
+	for actor in turnData.get_defeated():
+		last = _sprites[actor]
+		last.play_animation("defeated")
+
+	if last:
+		await last.defeated_finished	
+
 	finished.emit()
 
 

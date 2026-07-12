@@ -59,5 +59,3 @@ func apply_effects(data: ActorTurnData) -> ActorTurnData:
 
 func apply_cost(user: BattleActor) -> float: 
 	return 0
-
-

@@ -14,6 +14,7 @@ const MessageFeed := preload("res://src/battle_system/gui/message_feed/MessageFe
 @export var post_attack_delay := 0.1
 @export var post_transmutation_delay := 0.2
 @export var post_turn_delay := 1.0
+@export var end_battle_delay := 5.0
 @export var ai: OpponentController 
 @export var _dialog_box: DialogueBox
 var message_feed: MessageFeed:
@@ -161,10 +162,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		message_feed.append_action_message(turnData)
 
 		await gui.animate_action(turnData, missed)
-		await get_tree().create_timer(post_attack_delay).timeout
 
-		var defeatedActors := turnData.get_defeated()
-		
 		# Check if battle should end.
 		if await _check_if_battle_ended(): return
 

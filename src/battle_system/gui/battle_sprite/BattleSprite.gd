@@ -4,6 +4,7 @@ signal hovered(actor: BattleActor)
 signal selected(actor: BattleActor)
 signal status_effect_icon_pressed(effect: StatusEffect)
 signal channeling_finished
+signal defeated_finished
 
 const ALLY_FONT_SIZE := 45
 const ENEMY_FONT_SIZE := 64
@@ -27,11 +28,11 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	if not self.actor.equipment_activated.is_connected(_on_equipment_activated):
 		self.actor.equipment_activated.connect(_on_equipment_activated)
 
+	# %DefaultMesh.show()
 	if $MeshManager.mesh == null:
 		$MeshManager.mesh = %DefaultMesh
-		%DefaultMesh.show()
 	else:
-		%DefaultMesh.hide()
+		$MeshManager.default_to_aura(%DefaultMesh)
 
 
 	_animation_state = $AnimationTree["parameters/playback"]
@@ -45,14 +46,6 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	_indicator_mat = StandardMaterial3D.new()
 	_indicator_mat.albedo_color = Color.DARK_GRAY
 	$Indicator.set_surface_override_material(0, _indicator_mat)
-
-	# var animationPlayerParent: Node = $MeshManager.mesh
-	# while animationPlayerParent.get_parent() != self:
-	# 	animationPlayerParent = animationPlayerParent.get_parent()
-	#
-	# _animation_player = animationPlayerParent.find_child("AnimationPlayer", true) 
-	# if _animation_player and _animation_player.has_animation("battle_stance"):
-	# 	_animation_player.play("battle_stance")
 
 	if isEnemy:
 		$PinManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
@@ -131,10 +124,6 @@ func toggle_intentions(val: bool) -> void: %EmitterController.toggle_intentions(
 
 
 func play_animation(name: String) -> void:
-	# if not _animation_tree.has_animation(name):
-	# 	push_error("BattleSprite(%s) is missing Animation(%s)!" % [actor.name, name])
-	# 	return
-
 	_animation_state.travel(name)
 	await _animation_state.state_finished
 
@@ -219,3 +208,5 @@ func _on_state_finished(stateName: String) -> void:
 	match stateName:
 		"channeling":
 			channeling_finished.emit()
+		"defeated":
+			defeated_finished.emit()

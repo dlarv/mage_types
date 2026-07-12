@@ -49,7 +49,10 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, data:
 
 func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
 	var actualDmg := target.apply_damage(dmg)
-
+	
+	if target.is_defeated:
+		data.set_defeated(target)
+	
 	if actualDmg == dmg:
 		MyLogger.append_battle_log("Dealt %d damage to %s." % [dmg, target.name])
 		data.add_damage(target, actualDmg)
