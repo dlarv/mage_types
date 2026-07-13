@@ -20,11 +20,15 @@ func setup(actor: BattleActor) -> void:
 		material.set_shader_parameter("alpha", 1)
 		return
 
-	# mesh.material_override = dim_material
 	material.set_shader_parameter("alpha", AURA_ALPHA)
 
 	set_element(0, actor.element1)
 	set_element(1, actor.element2)
+
+	if not Battle.selection_phase_started.is_connected(_on_selection_phase_started):
+		Battle.selection_phase_started.connect(_on_selection_phase_started)
+	if not Battle.action_phase_started.is_connected(_on_action_phase_started):
+		Battle.action_phase_started.connect(_on_action_phase_started)
 
 
 func play_intro() -> void:
@@ -52,3 +56,10 @@ func set_defeated() -> void:
 
 func _flicker(alpha: int) -> void:
 	material.set_shader_parameter("alpha", alpha)
+
+
+func _on_selection_phase_started() -> void:
+	%DefaultMesh/AnimationPlayer.play_backwards("fade_out")
+
+func _on_action_phase_started() -> void:
+	%DefaultMesh/AnimationPlayer.play("fade_out")

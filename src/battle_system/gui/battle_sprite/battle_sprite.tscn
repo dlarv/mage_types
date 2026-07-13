@@ -109,6 +109,22 @@ tracks/0/keys = {
 "values": [Vector3(0, 2, 0), Vector3(-2, 2, 0), Vector3(2, 2, 0), Vector3(-2, 2, 0), Vector3(0, 2, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_tcegq"]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DefaultMesh/..:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.1]
+}
+
 [sub_resource type="Animation" id="Animation_wspvd"]
 resource_name = "flicker"
 tracks/0/type = "value"
@@ -121,7 +137,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.03333333, 0.1, 0.13333334, 0.16666667, 0.2, 0.70000005),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.6, 0.6, 0.0, 0.6, 0.0, 0.6, 0.0]
+"values": [0.8, 0.8, 0.0, 0.6, 0.0, 0.6, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_prwnc"]
@@ -147,6 +163,7 @@ _data = {
 &"attack": SubResource("Animation_ugy7d"),
 &"battle_idle": SubResource("Animation_gtem4"),
 &"channeling": SubResource("Animation_sdiku"),
+&"fade_out": SubResource("Animation_tcegq"),
 &"flicker": SubResource("Animation_wspvd"),
 &"getting_hit": SubResource("Animation_prwnc")
 }
