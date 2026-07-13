@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://35n5qpjjefqh"]
 
 [ext_resource type="PackedScene" uid="uid://c4a31odwnedry" path="res://src/battle_system/gui/battle_sprite/battle_sprite.tscn" id="1_vf6v7"]
+[ext_resource type="Shader" uid="uid://dll6hbvtmfshr" path="res://assets/shaders/battle_actor_shader/fresnel.gdshader" id="2_80hud"]
 [ext_resource type="PackedScene" uid="uid://dxq4tddujhh51" path="res://assets/3d/characters/blue_aligned/miniboss.blend" id="2_ph3s7"]
 [ext_resource type="Texture2D" uid="uid://c1nnd5ng26t3u" path="res://assets/3d/characters/blue_aligned/textures/miniboss_diffuse.png" id="3_budl7"]
 [ext_resource type="Texture2D" uid="uid://cxt1sc7i83krx" path="res://assets/3d/characters/blue_aligned/textures/miniboss_roughness.png" id="4_80hud"]
@@ -12,61 +13,18 @@ size = Vector3(10, 10, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_ph3s7"]
 size = Vector3(15, 0.2, 15)
 
-[sub_resource type="Shader" id="Shader_4ho0o"]
-code = "shader_type spatial;
-
-// For some reason 0,0 on the gradient is white, not black.
-// This is the point where the 
-const float OFFSET = .002;
-
-uniform sampler2D normal_map;
-uniform sampler2D gradient;
-uniform float alpha = .5;
-
-float fresnel(float amount, vec3 normal, vec3 view)
-{
-	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
-}
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	vec3 base_color = vec3(0.0);
-	float coord = fresnel(2.5, NORMAL, VIEW);
-	vec4 col = texture(gradient, vec2(coord + OFFSET, 0));
-	ALBEDO = base_color + col.rgb;
-	
-	NORMAL_MAP = texture(normal_map, UV).rgb;
-	ALPHA = alpha;
-}
-
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
 [sub_resource type="Gradient" id="Gradient_gtem4"]
 offsets = PackedFloat32Array(0.08716707, 0.10169491)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_sdiku"]
 gradient = SubResource("Gradient_gtem4")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_budl7"]
-resource_local_to_scene = true
-render_priority = 1
-shader = SubResource("Shader_4ho0o")
-shader_parameter/gradient = SubResource("GradientTexture1D_sdiku")
-shader_parameter/alpha = 1.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_80hud"]
 resource_local_to_scene = true
-render_priority = 1
-shader = SubResource("Shader_4ho0o")
+render_priority = 0
+shader = ExtResource("2_80hud")
 shader_parameter/gradient = SubResource("GradientTexture1D_sdiku")
-shader_parameter/alpha = 0.5
+shader_parameter/alpha = 0.6
 
 [sub_resource type="SphereMesh" id="SphereMesh_m17xt"]
 radius = 10.0
@@ -132,17 +90,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.92013, 10)
 [node name="MeshManager" parent="." index="7" unique_id=2002955007 node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 10)
 mesh = NodePath("miniboss/RIG-Armature/Skeleton3D/Final")
-material = SubResource("ShaderMaterial_budl7")
+material = SubResource("ShaderMaterial_80hud")
 
 [node name="DefaultMesh" parent="MeshManager" index="0" unique_id=1147391923]
-visible = false
 material_override = SubResource("ShaderMaterial_80hud")
 mesh = SubResource("SphereMesh_m17xt")
 
 [node name="miniboss" parent="MeshManager" index="1" unique_id=767575186 instance=ExtResource("2_ph3s7")]
 transform = Transform3D(2.9885843, 0, -0.2614674, 0, 3.0000012, 0, 0.2614674, 0, 2.9885843, 0, 0.4, -2)
 
-[node name="Skeleton3D" parent="MeshManager/miniboss/RIG-Armature" parent_id_path=PackedInt32Array(767575186, 1911793782) index="0" unique_id=746762499]
+[node name="Skeleton3D" parent="MeshManager/miniboss/RIG-Armature" parent_id_path=PackedInt32Array(767575186, 1373742357) index="0" unique_id=1501155779]
 bones/2/position = Vector3(0.10598973, -0.8868426, 0.1527772)
 bones/2/rotation = Quaternion(0.773235, -0.03403652, 0.016710253, 0.632985)
 bones/4/rotation = Quaternion(0.8017349, 0.5880799, -0.1066912, 0.0005436899)
@@ -304,7 +261,7 @@ bones/144/position = Vector3(-0.17255682, 0.22296374, 1.313966)
 bones/144/rotation = Quaternion(0.005821041, 0.70708287, 0.70708287, -0.0058217286)
 bones/145/rotation = Quaternion(0.15483907, -0.12301682, 0.9264875, -0.32017595)
 
-[node name="Final" parent="MeshManager/miniboss/RIG-Armature/Skeleton3D" index="0" unique_id=1881832995]
+[node name="Final" parent="MeshManager/miniboss/RIG-Armature/Skeleton3D" index="0" unique_id=872194720]
 mesh = SubResource("ArrayMesh_sxbjt")
 
 [node name="AnimationTree" parent="." index="8" unique_id=1992368467]

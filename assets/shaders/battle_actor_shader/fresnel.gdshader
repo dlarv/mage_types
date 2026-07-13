@@ -4,8 +4,8 @@ shader_type spatial;
 // This is the point where the 
 const float OFFSET = .002;
 
-uniform sampler2D normal_map;
 uniform sampler2D gradient;
+uniform float alpha;
 
 float fresnel(float amount, vec3 normal, vec3 view)
 {
@@ -21,6 +21,5 @@ void fragment() {
 	float coord = fresnel(2.5, NORMAL, VIEW);
 	vec4 col = texture(gradient, vec2(coord + OFFSET, 0));
 	ALBEDO = base_color + col.rgb;
-	
-	NORMAL_MAP = texture(normal_map, UV).rgb;
+	ALPHA = alpha;
 }

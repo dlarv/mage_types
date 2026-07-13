@@ -2,38 +2,43 @@
 extends Node
 
 const FresnelShader := preload("res://assets/shaders/battle_actor_shader/fresnel.gdshader")
+const AURA_ALPHA := 0.5
 
 @export var mesh: MeshInstance3D
-
-
 @export var material: ShaderMaterial
-@export_tool_button("Create Material") var create_material := func(grad:Gradient=null) -> void:
-	material = ShaderMaterial.new()
-	material.set_shader(FresnelShader.duplicate())
-
-	var tex := GradientTexture1D.new()
-	if not grad:
-		_gradient = Gradient.new()
-	else:
-		_gradient = grad
-	tex.gradient = _gradient
-
-	material.set_shader_parameter("gradient", tex)
-	material.set_shader_parameter("normal_map", normal_map)
-
-	mesh.material_override = material
-
-@export var normal_map: Texture2D
+@export var flicker_delay: float
 
 var _gradient: Gradient
 
 
 func setup(actor: BattleActor) -> void: 
-	var grad: Gradient = material.get_shader_parameter("gradient").gradient.duplicate()
-	create_material.call(grad)
+	_gradient = material.get_shader_parameter("gradient").gradient
+	%DefaultMesh.material_override = material
+	
+	if mesh == %DefaultMesh:
+		mesh.material_override = material
+		material.set_shader_parameter("alpha", 1)
+		return
 
-	_gradient.set_color(0, actor.element1.main_color)
-	_gradient.set_color(1, actor.element2.main_color)
+	# mesh.material_override = dim_material
+	material.set_shader_parameter("alpha", AURA_ALPHA)
+
+	set_element(0, actor.element1)
+	set_element(1, actor.element2)
+
+
+func play_intro() -> void:
+	var shape: SphereMesh = %DefaultMesh.mesh
+
+	var radius := shape.radius
+	shape.radius = 0
+	var height := shape.height
+	shape.height = 0
+
+	var tween := create_tween()
+	tween.set_parallel()
+	tween.tween_property(shape, "radius", radius, 1)
+	tween.tween_property(shape, "height", height, 1)
 
 
 func set_element(id: int, element: ElementalType) -> void: 
@@ -41,5 +46,9 @@ func set_element(id: int, element: ElementalType) -> void:
 
 
 func set_defeated() -> void: 
-	_gradient.set_color(0, Color.DARK_GRAY)
-	_gradient.set_color(1, Color.GRAY)
+	await get_tree().create_timer(flicker_delay).timeout
+	%DefaultMesh/AnimationPlayer.play("flicker")
+
+
+func _flicker(alpha: int) -> void:
+	material.set_shader_parameter("alpha", alpha)

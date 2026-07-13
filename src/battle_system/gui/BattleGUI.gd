@@ -112,7 +112,6 @@ func _on_active_actor_changed(index: int) -> void:
 	team_display.cancel_target_selection()
 	team_display.highlight(index)
 
-	
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
@@ -157,3 +156,7 @@ func animate_action(data: ActorTurnData, missed: bool) -> void:
 
 func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void:
 	team_display.animate_status_activation(actor, effect)
+
+
+func play_intros() -> void:
+	team_display.play_intros()

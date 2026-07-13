@@ -218,6 +218,11 @@ func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void
 	sprite.animate_status_activation(effect)
 
 
+func play_intros() -> void:
+	for sprite in sprites:
+		sprite.play_intro()
+
+
 class TeamDisplayActor:
 	signal hovered(disp: TeamDisplayActor)
 

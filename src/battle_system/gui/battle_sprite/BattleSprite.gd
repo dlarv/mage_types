@@ -28,13 +28,6 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	if not self.actor.equipment_activated.is_connected(_on_equipment_activated):
 		self.actor.equipment_activated.connect(_on_equipment_activated)
 
-	# %DefaultMesh.show()
-	if $MeshManager.mesh == null:
-		$MeshManager.mesh = %DefaultMesh
-	else:
-		$MeshManager.default_to_aura(%DefaultMesh)
-
-
 	_animation_state = $AnimationTree["parameters/playback"]
 	_animation_state.state_finished.connect(_on_state_finished)
 
@@ -121,6 +114,10 @@ func get_target_position() -> Vector2:
 
 
 func toggle_intentions(val: bool) -> void: %EmitterController.toggle_intentions(val)
+
+
+func play_intro() -> void:
+	$MeshManager.play_intro()
 
 
 func play_animation(name: String) -> void:

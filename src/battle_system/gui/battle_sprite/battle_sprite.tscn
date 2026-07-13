@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/battle_sprite/pin_manager.tscn" id="3_ya2xk"]
 [ext_resource type="PackedScene" uid="uid://bor2kywevh8c" path="res://src/battle_system/gui/battle_sprite/emitter_controller.tscn" id="4_yav0q"]
 [ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/FresnelMeshManager.gd" id="5_4ho0o"]
+[ext_resource type="Shader" uid="uid://dll6hbvtmfshr" path="res://assets/shaders/battle_actor_shader/fresnel.gdshader" id="6_gtem4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
 size = Vector3(2, 2, 2)
@@ -12,55 +13,18 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_5ocyf"]
 size = Vector3(5, 0.2, 5)
 
-[sub_resource type="Shader" id="Shader_4ho0o"]
-code = "shader_type spatial;
-
-// For some reason 0,0 on the gradient is white, not black.
-// This is the point where the 
-const float OFFSET = .002;
-
-uniform sampler2D normal_map;
-uniform sampler2D gradient;
-
-float fresnel(float amount, vec3 normal, vec3 view)
-{
-	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
-}
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	vec3 base_color = vec3(0.0);
-	float coord = fresnel(2.5, NORMAL, VIEW);
-	vec4 col = texture(gradient, vec2(coord + OFFSET, 0));
-	ALBEDO = base_color + col.rgb;
-	
-	NORMAL_MAP = texture(normal_map, UV).rgb;
-}
-
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
 [sub_resource type="Gradient" id="Gradient_gtem4"]
-offsets = PackedFloat32Array(0.08716707, 0.14527845)
+offsets = PackedFloat32Array(0.08716707, 0.10169491)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_sdiku"]
 gradient = SubResource("Gradient_gtem4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ugy7d"]
+resource_local_to_scene = true
 render_priority = 0
-shader = SubResource("Shader_4ho0o")
+shader = ExtResource("6_gtem4")
 shader_parameter/gradient = SubResource("GradientTexture1D_sdiku")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_prwnc"]
-render_priority = 0
-shader = SubResource("Shader_4ho0o")
-shader_parameter/gradient = SubResource("GradientTexture1D_sdiku")
+shader_parameter/alpha = 0.6
 
 [sub_resource type="SphereMesh" id="SphereMesh_4ho0o"]
 radius = 2.0
@@ -79,6 +43,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DefaultMesh/..:material:shader_parameter/alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
 }
 
 [sub_resource type="Animation" id="Animation_ugy7d"]
@@ -133,6 +109,21 @@ tracks/0/keys = {
 "values": [Vector3(0, 2, 0), Vector3(-2, 2, 0), Vector3(2, 2, 0), Vector3(-2, 2, 0), Vector3(0, 2, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_wspvd"]
+resource_name = "flicker"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%DefaultMesh/..:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.1, 0.13333334, 0.16666667, 0.2, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.6, 0.6, 0.0, 0.6, 0.0, 0.6, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_prwnc"]
 resource_name = "getting_hit"
 length = 0.25
@@ -156,6 +147,7 @@ _data = {
 &"attack": SubResource("Animation_ugy7d"),
 &"battle_idle": SubResource("Animation_gtem4"),
 &"channeling": SubResource("Animation_sdiku"),
+&"flicker": SubResource("Animation_wspvd"),
 &"getting_hit": SubResource("Animation_prwnc")
 }
 
@@ -241,14 +233,16 @@ billboard = 1
 font_size = 64
 outline_size = 16
 
-[node name="MeshManager" type="Node3D" parent="." unique_id=2002955007]
+[node name="MeshManager" type="Node3D" parent="." unique_id=2002955007 node_paths=PackedStringArray("mesh")]
 script = ExtResource("5_4ho0o")
+mesh = NodePath("DefaultMesh")
 material = SubResource("ShaderMaterial_ugy7d")
+flicker_delay = null
 
 [node name="DefaultMesh" type="MeshInstance3D" parent="MeshManager" unique_id=1147391923]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-material_override = SubResource("ShaderMaterial_prwnc")
+material_override = SubResource("ShaderMaterial_ugy7d")
 mesh = SubResource("SphereMesh_4ho0o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MeshManager/DefaultMesh" unique_id=80588037]

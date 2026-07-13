@@ -74,6 +74,9 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	message_feed.setup(allies + enemies)
 
 	_prep_next_turn()
+
+	gui.play_intros()
+
 	await _dialog(false)
 
 
