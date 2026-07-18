@@ -48,7 +48,7 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 		last = _sprites[actor]
 		last.play_animation("defeated")
 
-	if last:
+	if last and last.has_animation("defeated"):
 		await last.defeated_finished	
 
 	finished.emit()

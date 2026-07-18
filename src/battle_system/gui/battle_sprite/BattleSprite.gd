@@ -125,6 +125,10 @@ func play_animation(name: String) -> void:
 	await _animation_state.state_finished
 
 
+func has_animation(n: String) -> bool:
+	return $AnimationTree.has_animation(n)
+
+
 func start_channeling_particles(duration: float, strength: float) -> void:
 	%EmitterController.play_channeling(duration, strength)
 

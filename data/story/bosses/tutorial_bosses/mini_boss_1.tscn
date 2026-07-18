@@ -110,13 +110,15 @@ shape = SubResource("BoxShape3D_ut024")
 [node name="StoryActor" parent="." index="2" unique_id=1639439589 groups=["persist"] instance=ExtResource("3_ul8vp")]
 dialog_ids = Array[ExtResource("4_kuhn7")]([SubResource("Resource_xpu74")])
 
-[node name="EnemyActor" parent="." index="3" unique_id=618280856 instance=ExtResource("5_cairb")]
+[node name="EnemyActor" parent="." index="3" unique_id=618280856 node_paths=PackedStringArray("_mesh") instance=ExtResource("5_cairb")]
 ai = SubResource("Resource_ut024")
 _team = Array[ExtResource("10_ts6sl")]([ExtResource("11_yqy7t")])
+_mesh = NodePath("../miniboss/RIG-Armature/Skeleton3D/Final")
+_defeat_fade_out_duration = null
 
 [node name="miniboss" parent="." index="4" unique_id=2055421398 instance=ExtResource("12_yqy7t")]
 
-[node name="Skeleton3D" parent="miniboss/RIG-Armature" parent_id_path=PackedInt32Array(2055421398, 1373742357) index="0" unique_id=1501155779]
+[node name="Skeleton3D" parent="miniboss/RIG-Armature" parent_id_path=PackedInt32Array(2055421398, 896763247) index="0" unique_id=1914950851]
 bones/2/position = Vector3(0.12194063, -0.8593294, 0.15349112)
 bones/2/rotation = Quaternion(0.773235, -0.03403652, 0.016710253, 0.632985)
 bones/4/rotation = Quaternion(0.8015056, 0.58809096, -0.10832724, -0.0017345066)
@@ -269,7 +271,7 @@ bones/144/position = Vector3(-0.17074132, 0.24329309, 1.3144243)
 bones/144/rotation = Quaternion(0.005821041, 0.70708287, 0.70708287, -0.0058217286)
 bones/145/rotation = Quaternion(0.15483907, -0.12301682, 0.9264875, -0.32017595)
 
-[node name="Final" parent="miniboss/RIG-Armature/Skeleton3D" index="0" unique_id=872194720]
+[node name="Final" parent="miniboss/RIG-Armature/Skeleton3D" index="0" unique_id=1446414048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.085, 0)
 mesh = SubResource("ArrayMesh_cithl")
 
