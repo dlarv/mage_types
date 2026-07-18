@@ -17,6 +17,8 @@ Battle models can have the following animation states
 - attack
 - getting_hit
 - battle_idle: Idle animation, named like this to avoid conflict with player.idle 
+- defeated
+- battle_entry
 
 ```mermaid
 stateDiagram-v2

@@ -118,6 +118,7 @@ func toggle_intentions(val: bool) -> void: %EmitterController.toggle_intentions(
 
 func play_intro() -> void:
 	$MeshManager.play_intro()
+	play_animation("battle_entry")
 
 
 func play_animation(name: String) -> void:
