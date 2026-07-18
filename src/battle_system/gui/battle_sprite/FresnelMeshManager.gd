@@ -61,5 +61,6 @@ func _flicker(alpha: int) -> void:
 func _on_selection_phase_started() -> void:
 	%DefaultMesh/AnimationPlayer.play_backwards("fade_out")
 
+
 func _on_action_phase_started() -> void:
 	%DefaultMesh/AnimationPlayer.play("fade_out")
