@@ -92,7 +92,7 @@ anim_player = NodePath("../../miniboss/AnimationPlayer")
 
 [node name="miniboss" parent="." index="5" unique_id=365088041 instance=ExtResource("12_yqy7t")]
 
-[node name="Skeleton3D" parent="miniboss/RIG-Armature" parent_id_path=PackedInt32Array(365088041, 513925303) index="0" unique_id=194872291]
+[node name="Skeleton3D" parent="miniboss/RIG-Armature" parent_id_path=PackedInt32Array(365088041, 3295272) index="0" unique_id=1493482002]
 bones/4/rotation = Quaternion(-5.2167437e-08, -1.1920932e-07, 1.5382561e-08, 1)
 bones/5/rotation = Quaternion(6.4258806e-08, 7.790646e-14, -1.6048031e-07, 1)
 bones/6/rotation = Quaternion(-9.992923e-08, -9.244121e-14, 1.7799007e-08, 1)

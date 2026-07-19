@@ -355,7 +355,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.433571)
 [node name="Label3D" type="Label3D" parent="." unique_id=412857806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92013, 3)
 billboard = 1
-text = "sdf"
 font_size = 64
 outline_size = 16
 

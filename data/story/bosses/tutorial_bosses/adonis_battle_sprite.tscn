@@ -79,51 +79,65 @@ transitions = ["battle_idle", "getting_hit", SubResource("AnimationNodeStateMach
 graph_offset = Vector2(83, -105)
 
 [node name="BattleSprite" unique_id=1135726583 instance=ExtResource("1_3vmmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="BodyPins" parent="PinManager" parent_id_path=PackedInt32Array(1721910986) index="0" unique_id=105569702]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="PoisonPin" parent="PinManager/BodyPins" index="0" unique_id=1188710084]
 transform = Transform3D(0.7198463, 0.6689536, 0.18526395, -0.2620026, 0.5090083, -0.81991804, -0.64278764, 0.5416753, 0.5416753, -0.00529324, 2.3783598, -0.18231001)
+visible = false
 
 [node name="FlinchPin" parent="PinManager/BodyPins" index="1" unique_id=1100354622]
 transform = Transform3D(0.7071067, 0.5000002, 0.5000002, 0, 0.707107, -0.707107, -0.7071068, 0.5000002, 0.5000002, 0.0947067, 2.57836, 0.017690003)
+visible = false
 
 [node name="StasisPin" parent="PinManager/BodyPins" index="2" unique_id=408654759]
 transform = Transform3D(0.8660254, 0.482963, 0.1294095, 0, 0.25881898, -0.96592593, -0.49999997, 0.8365164, 0.22414382, 0.394707, 3.8399796, 0.40863195)
+visible = false
 
 [node name="HealingPin" parent="PinManager/BodyPins" index="3" unique_id=755772939]
 transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, -0.0052929968, 2.897492, 0.3409875)
+visible = false
 
 [node name="BlockingPin" parent="PinManager/BodyPins" index="4" unique_id=1542530980]
 transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, -0.205293, 3.4163299, 0.3409875)
+visible = false
 
 [node name="PhobiaCrown" parent="PinManager" parent_id_path=PackedInt32Array(1721910986) index="1" unique_id=1535404151]
 transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 0, 4.5, 0)
 
 [node name="BluePhobiaPin" parent="PinManager/PhobiaCrown" index="0" unique_id=1217982673]
 transform = Transform3D(1, 3.7252903e-09, 2.2351742e-08, 0, 0.939693, 0.34202, 0, -0.3420201, 0.939693, 0, 0, -0.3000001)
+visible = false
 
 [node name="PurplePhobiaPin" parent="PinManager/PhobiaCrown" index="1" unique_id=1460119351]
 transform = Transform3D(0.707107, 0.24184503, -0.664463, 0, 0.939693, 0.34202, 0.7071071, -0.24184501, 0.664463, 0.09, 0, -0.2)
+visible = false
 
 [node name="MagentaPhobiaPin" parent="PinManager/PhobiaCrown" index="2" unique_id=1243658658]
 transform = Transform3D(-4.4703484e-08, 0.34202003, -0.939693, 0, 0.939693, 0.34202, 1, 1.6763806e-08, -2.9802322e-08, 0.10076108, 0, -0.017431129)
+visible = false
 
 [node name="RedPhobiaPin" parent="PinManager/PhobiaCrown" index="3" unique_id=494374641]
 transform = Transform3D(-0.70710707, 0.24184501, -0.664463, 0, 0.939692, 0.34202, 0.707107, 0.24184501, -0.664463, 0.10076108, 0, 0.09454687)
+visible = false
 
 [node name="OrangePhobiaPin" parent="PinManager/PhobiaCrown" index="4" unique_id=2122292006]
 transform = Transform3D(-1, 2.99003e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 0, 0.155142)
+visible = false
 
 [node name="YellowPhobiaPin" parent="PinManager/PhobiaCrown" index="5" unique_id=821290546]
 transform = Transform3D(-0.70710707, -0.24184504, 0.664463, 0, 0.939692, 0.34202, -0.7071072, 0.24184501, -0.664463, -0.10076111, 0, 0.12940913)
+visible = false
 
 [node name="GreenPhobiaPin" parent="PinManager/PhobiaCrown" index="6" unique_id=531372243]
 transform = Transform3D(-4.4703484e-08, -0.34202003, 0.939693, 0, 0.939693, 0.34202, -1, 1.3038516e-08, -4.4703484e-08, -0.10076108, 0, 0.017431129)
+visible = false
 
 [node name="CyanPhobiaPin" parent="PinManager/PhobiaCrown" index="7" unique_id=1828226427]
 transform = Transform3D(0.70710707, -0.24184501, 0.664463, 0, 0.939692, 0.34202, -0.707107, -0.24184501, 0.664463, -0.09, 0, -0.2)
+visible = false
 
 [node name="MeshManager" parent="." index="7" unique_id=2002955007 node_paths=PackedStringArray("mesh")]
 mesh = NodePath("adonis/rig_v2/Skeleton3D/trunk_bak_001")
@@ -131,10 +145,10 @@ material = SubResource("ShaderMaterial_hj6mo")
 
 [node name="adonis" parent="MeshManager" index="0" unique_id=1672581305 instance=ExtResource("3_hj6mo")]
 
-[node name="rig_v2" parent="MeshManager/adonis" index="0" unique_id=1482978610]
+[node name="rig_v2" parent="MeshManager/adonis" index="0" unique_id=1118241322]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Skeleton3D" parent="MeshManager/adonis/rig_v2" index="0" unique_id=404204075]
+[node name="Skeleton3D" parent="MeshManager/adonis/rig_v2" index="0" unique_id=1296589353]
 bones/5/position = Vector3(0.14355667, 2.413086, -0.07980785)
 bones/5/rotation = Quaternion(0.10121544, -0.589302, 0.07473969, 0.79805547)
 bones/7/rotation = Quaternion(-0.19475178, -1.0426107e-07, -2.4053703e-08, 0.9808526)
