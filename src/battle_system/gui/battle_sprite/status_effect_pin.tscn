@@ -19,13 +19,16 @@ metadata/_custom_type_script = "uid://lcf8uedn57am"
 [sub_resource type="BoxShape3D" id="BoxShape3D_34x07"]
 size = Vector3(0.5, 1.4, 0.5)
 
-[node name="StatusEffectPin" type="Node3D" unique_id=478960280]
+[node name="StatusEffectPin" type="Node3D" unique_id=719137169]
 script = ExtResource("1_vqfle")
+status_effect = 0
+bone_name = null
 
 [node name="status_pin" parent="." unique_id=126523187 instance=ExtResource("1_7dhbf")]
+unique_name_in_owner = true
 
 [node name="Cube" parent="status_pin" index="0" unique_id=1588737404]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.601213, 0)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.60121346, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_1gyes")
 
 [node name="PhobiaHead" parent="status_pin/Cube" index="0" unique_id=1387481429]
@@ -33,9 +36,10 @@ visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_1gyes")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=640255748]
+unique_name_in_owner = true
 script = ExtResource("3_c0yfk")
 tooltip_settings_override = SubResource("Resource_65bbx")
-tooltip_strings = Array[String](["[color=808080ff]Blank[/color]-Phobic"])
+tooltip_strings = Array[String](["Stasis"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1522734927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0.65496, 0)

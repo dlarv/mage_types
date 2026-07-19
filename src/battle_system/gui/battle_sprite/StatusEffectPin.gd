@@ -41,30 +41,32 @@ var _mat: StandardMaterial3D
 var _effect_name: String:
 	set(val):
 		_effect_name = val
-		if len($Area3D.tooltip_strings) == 0:
-			$Area3D.tooltip_strings = [""] as Array[String]
-		$Area3D.tooltip_strings[0] = _effect_name
+		if len(%Area3D.tooltip_strings) == 0:
+			%Area3D.tooltip_strings = [""] as Array[String]
+		%Area3D.tooltip_strings[0] = _effect_name
 var _wiggling := false
+
 
 func _enter_tree() -> void:
 	_mat = StandardMaterial3D.new()
 	_mat.albedo_color = element.main_color
-	$status_pin/Cube.set_surface_override_material(1, _mat)
-	$status_pin/Cube/PhobiaHead.set_surface_override_material(0, _mat)
+	%status_pin/Cube.set_surface_override_material(1, _mat)
+	%status_pin/Cube/PhobiaHead.set_surface_override_material(0, _mat)
 
 
-	$Area3D.tooltip_strings = [""] as Array[String]
+	%Area3D.tooltip_strings = [""] as Array[String]
 	if status_effect == Effect.PHOBIC:
 		_effect_name = "%s-Phobic" % element.get_bb_code_name()
 	else:
 		_effect_name = str(Effect.keys()[status_effect]).capitalize()
 
 
+
 func _show_head(e: Effect) -> void:
 	if e == Effect.PHOBIC: 
-		$status_pin/Cube/PhobiaHead.show()
+		%status_pin/Cube/PhobiaHead.show()
 	else:
-		$status_pin/Cube/PhobiaHead.hide()
+		%status_pin/Cube/PhobiaHead.hide()
 
 
 func _on_input_event(camera:Node, event:InputEvent, event_position:Vector3, normal:Vector3, shape_idx:int) -> void:
@@ -84,16 +86,16 @@ func _on_mouse_entered() -> void:
 func insert(effect: StatusEffect) -> void:
 	show()
 	self.effect = effect
-	$status_pin/AnimationPlayer.play("insert")
+	%status_pin/AnimationPlayer.play("insert")
 
 func set_duration(duration: int) -> void:
-	$Area3D.tooltip_strings[0] = "%s (%d turns)" % [ _effect_name, duration ]
+	%Area3D.tooltip_strings[0] = "%s (%d turns)" % [ _effect_name, duration ]
 
 
 func activate() -> void:
 	_wiggling = true
-	$status_pin/AnimationPlayer.play("wiggle")
-	await $status_pin/AnimationPlayer.animation_finished
+	%status_pin/AnimationPlayer.play("wiggle")
+	await %status_pin/AnimationPlayer.animation_finished
 	_wiggling = false
 
 

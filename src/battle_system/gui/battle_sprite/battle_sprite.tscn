@@ -225,9 +225,10 @@ states/channeling/position = Vector2(602, 100)
 states/getting_hit/node = SubResource("AnimationNodeAnimation_ugy7d")
 states/getting_hit/position = Vector2(394, 194)
 transitions = ["battle_idle", "getting_hit", SubResource("AnimationNodeStateMachineTransition_prwnc"), "getting_hit", "battle_idle", SubResource("AnimationNodeStateMachineTransition_wspvd"), "battle_idle", "channeling", SubResource("AnimationNodeStateMachineTransition_tcegq"), "channeling", "attack", SubResource("AnimationNodeStateMachineTransition_8jw31"), "attack", "battle_idle", SubResource("AnimationNodeStateMachineTransition_qcc80"), "Start", "battle_idle", SubResource("AnimationNodeStateMachineTransition_mukc0"), "battle_idle", "battle_entry", SubResource("AnimationNodeStateMachineTransition_s3frm"), "battle_entry", "battle_idle", SubResource("AnimationNodeStateMachineTransition_15s3s")]
-graph_offset = Vector2(53, -57)
+graph_offset = Vector2(0, -151)
 
 [node name="BattleSprite" type="Node3D" unique_id=1135726583 node_paths=PackedStringArray("transmutation_hint")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_dntod")
 transmutation_hint = NodePath("TransmutationHint")
 

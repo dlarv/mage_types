@@ -33,11 +33,11 @@ var _active_pin: Node3D
 
 func _ready() -> void:
 	pins = {
-		"Poison": $PoisonPin,
-		"Healing": $HealingPin,
-		"Stasis": $StasisPin,
-		"Blocking": $BlockingPin,
-		"Flinched": $FlinchPin,
+		"Poison": $BodyPins/PoisonPin,
+		"Healing": $BodyPins/HealingPin,
+		"Stasis": $BodyPins/StasisPin,
+		"Blocking": $BodyPins/BlockingPin,
+		"Flinched": $BodyPins/FlinchPin,
 		"BluePhobic": $PhobiaCrown/BluePhobiaPin,
 		"PurplePhobic": $PhobiaCrown/PurplePhobiaPin,
 		"MagentaPhobic": $PhobiaCrown/MagentaPhobiaPin,

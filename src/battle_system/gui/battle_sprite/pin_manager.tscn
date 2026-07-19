@@ -1,98 +1,99 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1d7new22f1kk"]
+[gd_scene format=3 uid="uid://b1d7new22f1kk"]
 
 [ext_resource type="Script" uid="uid://dl4tto6qxysr1" path="res://src/battle_system/gui/battle_sprite/PinManager.gd" id="1_gn02h"]
 [ext_resource type="PackedScene" uid="uid://bihss5o636fyv" path="res://src/battle_system/gui/battle_sprite/status_effect_pin.tscn" id="2_n265t"]
 
-[node name="PinManager" type="Node3D"]
+[node name="PinManager" type="Node3D" unique_id=65143131]
 script = ExtResource("1_gn02h")
 
-[node name="PoisonPin" parent="." instance=ExtResource("2_n265t")]
+[node name="BodyPins" type="Node3D" parent="." unique_id=105569702]
+
+[node name="PoisonPin" parent="BodyPins" unique_id=1188710084 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, 0.707107, 0.707107, 0, 0.707107, -0.707107, -1, -3.09086e-08, -3.09086e-08, -0.00529324, 0.37836, 0.01769)
 visible = false
 status_effect = 2
-_element = "green"
+_element = 0
 
-[node name="FlinchPin" parent="." instance=ExtResource("2_n265t")]
+[node name="FlinchPin" parent="BodyPins" unique_id=1100354622 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, 0.707107, 0.707107, 0, 0.707107, -0.707107, -1, -3.09086e-08, -3.09086e-08, 0.0947067, 0.67836, -0.38231)
 visible = false
 status_effect = 5
-_element = "purple"
+_element = 0
 
-[node name="StasisPin" parent="." instance=ExtResource("2_n265t")]
+[node name="StasisPin" parent="BodyPins" unique_id=408654759 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0.394707, 1.23998, 0.00863194)
 visible = false
-status_effect = 0
-_element = "blue"
+_element = 0
 
-[node name="HealingPin" parent="." instance=ExtResource("2_n265t")]
+[node name="HealingPin" parent="BodyPins" unique_id=755772939 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, 0.194707, 0.297492, -0.0590125)
 visible = false
 status_effect = 4
-_element = "magenta"
+_element = 0
 
-[node name="BlockingPin" parent="." instance=ExtResource("2_n265t")]
+[node name="BlockingPin" parent="BodyPins" unique_id=1542530980 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, -0.005293, 0.81633, -0.0590125)
 visible = false
 status_effect = 1
-_element = "cyan"
+_element = 0
 
-[node name="PhobiaCrown" type="Node3D" parent="."]
+[node name="PhobiaCrown" type="Node3D" parent="." unique_id=1535404151]
 
-[node name="BluePhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="BluePhobiaPin" parent="PhobiaCrown" unique_id=1217982673 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 1.75, -0.3)
-visible = false
-_element = "blue"
+status_effect = 3
+_element = 0
 
-[node name="PurplePhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="PurplePhobiaPin" parent="PhobiaCrown" unique_id=1460119351 instance=ExtResource("2_n265t")]
 transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, 0.3, 1.53866, -0.3)
-visible = false
-_element = "purple"
+status_effect = 3
+_element = 1
 
-[node name="MagentaPhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="MagentaPhobiaPin" parent="PhobiaCrown" unique_id=1243658658 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, 0.34202, -0.939693, 0, 0.939693, 0.34202, 1, 1.49502e-08, -4.10753e-08, 0.3, 1.38948, 0)
-visible = false
-_element = "magenta"
+status_effect = 3
+_element = 2
 
-[node name="RedPhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="RedPhobiaPin" parent="PhobiaCrown" unique_id=494374641 instance=ExtResource("2_n265t")]
 transform = Transform3D(-0.707107, 0.241845, -0.664463, 0, 0.939692, 0.34202, 0.707107, 0.241845, -0.664463, 0.3, 1.15729, 0.111978)
-visible = false
-_element = "red"
+status_effect = 3
+_element = 3
 
-[node name="OrangePhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="OrangePhobiaPin" parent="PhobiaCrown" unique_id=2122292006 instance=ExtResource("2_n265t")]
 transform = Transform3D(-1, 2.99003e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.04932, 0.155142)
-visible = false
-_element = "orange"
+status_effect = 3
+_element = 4
 
-[node name="YellowPhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="YellowPhobiaPin" parent="PhobiaCrown" unique_id=821290546 instance=ExtResource("2_n265t")]
 transform = Transform3D(-0.707107, -0.241845, 0.664463, 0, 0.939692, 0.34202, -0.707107, 0.241845, -0.664463, -0.3, 1.15729, 0.111978)
-visible = false
-_element = "yellow"
+status_effect = 3
+_element = 5
 
-[node name="GreenPhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="GreenPhobiaPin" parent="PhobiaCrown" unique_id=531372243 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, -0.34202, 0.939693, 0, 0.939693, 0.34202, -1, 1.49502e-08, -4.10753e-08, -0.3, 1.38948, 0)
-visible = false
-_element = "green"
+status_effect = 3
+_element = 6
 
-[node name="CyanPhobiaPin" parent="PhobiaCrown" instance=ExtResource("2_n265t")]
+[node name="CyanPhobiaPin" parent="PhobiaCrown" unique_id=1828226427 instance=ExtResource("2_n265t")]
 transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939692, 0.34202, -0.707107, -0.241845, 0.664463, -0.3, 1.53866, -0.3)
-visible = false
-_element = "cyan"
+status_effect = 3
+_element = 7
 
-[connection signal="pin_hovered" from="PoisonPin" to="." method="_on_pin_hovered"]
-[connection signal="pin_selected" from="PoisonPin" to="." method="_on_pin_selected"]
-[connection signal="pin_unhovered" from="PoisonPin" to="." method="_on_pin_unhovered"]
-[connection signal="pin_hovered" from="FlinchPin" to="." method="_on_pin_hovered"]
-[connection signal="pin_selected" from="FlinchPin" to="." method="_on_pin_selected"]
-[connection signal="pin_unhovered" from="FlinchPin" to="." method="_on_pin_unhovered"]
-[connection signal="pin_hovered" from="StasisPin" to="." method="_on_pin_hovered"]
-[connection signal="pin_selected" from="StasisPin" to="." method="_on_pin_selected"]
-[connection signal="pin_unhovered" from="StasisPin" to="." method="_on_pin_unhovered"]
-[connection signal="pin_hovered" from="HealingPin" to="." method="_on_pin_hovered"]
-[connection signal="pin_selected" from="HealingPin" to="." method="_on_pin_selected"]
-[connection signal="pin_unhovered" from="HealingPin" to="." method="_on_pin_unhovered"]
-[connection signal="pin_hovered" from="BlockingPin" to="." method="_on_pin_hovered"]
-[connection signal="pin_selected" from="BlockingPin" to="." method="_on_pin_selected"]
-[connection signal="pin_unhovered" from="BlockingPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="BodyPins/PoisonPin" to="." method="_on_pin_hovered"]
+[connection signal="pin_selected" from="BodyPins/PoisonPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="BodyPins/PoisonPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="BodyPins/FlinchPin" to="." method="_on_pin_hovered"]
+[connection signal="pin_selected" from="BodyPins/FlinchPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="BodyPins/FlinchPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="BodyPins/StasisPin" to="." method="_on_pin_hovered"]
+[connection signal="pin_selected" from="BodyPins/StasisPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="BodyPins/StasisPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="BodyPins/HealingPin" to="." method="_on_pin_hovered"]
+[connection signal="pin_selected" from="BodyPins/HealingPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="BodyPins/HealingPin" to="." method="_on_pin_unhovered"]
+[connection signal="pin_hovered" from="BodyPins/BlockingPin" to="." method="_on_pin_hovered"]
+[connection signal="pin_selected" from="BodyPins/BlockingPin" to="." method="_on_pin_selected"]
+[connection signal="pin_unhovered" from="BodyPins/BlockingPin" to="." method="_on_pin_unhovered"]
 [connection signal="pin_hovered" from="PhobiaCrown/BluePhobiaPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="PhobiaCrown/BluePhobiaPin" to="." method="_on_pin_selected"]
 [connection signal="pin_unhovered" from="PhobiaCrown/BluePhobiaPin" to="." method="_on_pin_unhovered"]

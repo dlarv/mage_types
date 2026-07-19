@@ -14,6 +14,7 @@ var _gradient: Gradient
 func setup(actor: BattleActor) -> void: 
 	_gradient = material.get_shader_parameter("gradient").gradient
 	%DefaultMesh.material_override = material
+	%DefaultMesh.show()
 	
 	if mesh == %DefaultMesh:
 		mesh.material_override = material

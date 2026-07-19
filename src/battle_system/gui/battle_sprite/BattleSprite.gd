@@ -28,6 +28,7 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	if not self.actor.equipment_activated.is_connected(_on_equipment_activated):
 		self.actor.equipment_activated.connect(_on_equipment_activated)
 
+	$AnimationTree.active = true
 	_animation_state = $AnimationTree["parameters/playback"]
 	_animation_state.state_finished.connect(_on_state_finished)
 
