@@ -58,6 +58,7 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	actor.status_effects_removed.connect(remove_status_effects)
 	actor.was_just_defeated.connect(func() -> void: 
 		_indicator_mat.albedo_color = Color.BLACK
+		$PinManager.hide_pins.call()
 		$MeshManager.set_defeated()
 		_is_defeated = true)
 	actor.action_selected.connect(_on_action_selected)
