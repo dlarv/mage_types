@@ -8,22 +8,10 @@ const StatusEffectManager := preload("res://src/battle_system/StatusEffectManage
 const Effects := StatusEffectManager.StatusEffects
 
 @export_tool_button("Show Pins")
-var show_pins := func() -> void:
-	for child in get_children():
-		if child.name == "PhobiaCrown":
-			for child2 in child.get_children():
-				child2.show()
-		else:
-			child.show()
+var show_pins := _toggle_pin_visibility.bind(true)
 
 @export_tool_button("Hide Pins")
-var hide_pins := func() -> void:
-	for child in get_children():
-		if child.name == "PhobiaCrown":
-			for child2 in child.get_children():
-				child2.hide()
-		else:
-			child.hide()
+var hide_pins := _toggle_pin_visibility.bind(false)
 
 
 var pins: Dictionary[String, Node]= {}
@@ -94,3 +82,10 @@ func activate_pin(effect: StatusEffect) -> void:
 	var pin: Node = pins.get(key)
 	if pin:
 		pin.activate()
+
+
+func _toggle_pin_visibility(val: bool) -> void:
+	for pin in %BodyPins.get_children():
+		pin.visible = val
+	for pin in %PhobiaCrown.get_children():
+		pin.visible = val

@@ -8,7 +8,6 @@ signal pin_unhovered(pin: Node3D)
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
 const Effect := StatusEffectManager.StatusEffects
 
-# @export_enum("Stasis", "Healing", "Poison", "Blocking", "Phobic")
 @export var status_effect: Effect = Effect.PHOBIC:
 	set(val):
 		status_effect = val
@@ -17,13 +16,10 @@ const Effect := StatusEffectManager.StatusEffects
 		else:
 			_effect_name = str(Effect.keys()[status_effect]).capitalize()
 
+		element = map_status_to_element(val, name)
 		_show_head(val)
 
 
-@export var _element := ElementalType.ElementId.BLANK:
-	set(value):
-		_element = value
-		element = ElementManager.elements[int(value)]
 var element: ElementalType = ElementManager.Blank:
 	set(value): 
 		if value == null:
@@ -48,18 +44,18 @@ var _wiggling := false
 
 
 func _enter_tree() -> void:
+	element = map_status_to_element(status_effect, name)
+
 	_mat = StandardMaterial3D.new()
 	_mat.albedo_color = element.main_color
 	%status_pin/Cube.set_surface_override_material(1, _mat)
 	%status_pin/Cube/PhobiaHead.set_surface_override_material(0, _mat)
-
 
 	%Area3D.tooltip_strings = [""] as Array[String]
 	if status_effect == Effect.PHOBIC:
 		_effect_name = "%s-Phobic" % element.get_bb_code_name()
 	else:
 		_effect_name = str(Effect.keys()[status_effect]).capitalize()
-
 
 
 func _show_head(e: Effect) -> void:
@@ -104,3 +100,19 @@ func remove() -> void:
 		await get_tree().create_timer(0.01).timeout
 	
 	hide()
+
+
+static func map_status_to_element(status: StatusEffect.Effects, name: String="") -> ElementalType:
+	const SE := StatusEffect.Effects
+	match status:
+		SE.STASIS: return ElementManager.Blue
+		SE.BLOCK: return ElementManager.Cyan
+		SE.POISON: return ElementManager.Green
+		SE.HEALING: return ElementManager.Magenta
+		SE.FLINCH: return ElementManager.Purple
+		SE.PHOBIC:
+			for el in ElementManager.elements:
+				if el.name.to_lower() in name.to_lower():
+					return el
+	return ElementManager.Blank
+

@@ -7,77 +7,54 @@
 script = ExtResource("1_gn02h")
 
 [node name="BodyPins" type="Node3D" parent="." unique_id=105569702]
+unique_name_in_owner = true
 
 [node name="PoisonPin" parent="BodyPins" unique_id=1188710084 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, 0.707107, 0.707107, 0, 0.707107, -0.707107, -1, -3.09086e-08, -3.09086e-08, -0.00529324, 0.37836, 0.01769)
-visible = false
 status_effect = 2
-_element = 0
 
 [node name="FlinchPin" parent="BodyPins" unique_id=1100354622 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, 0.707107, 0.707107, 0, 0.707107, -0.707107, -1, -3.09086e-08, -3.09086e-08, 0.0947067, 0.67836, -0.38231)
-visible = false
 status_effect = 5
-_element = 0
 
 [node name="StasisPin" parent="BodyPins" unique_id=408654759 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0.394707, 1.23998, 0.00863194)
-visible = false
-_element = 0
+status_effect = 0
 
 [node name="HealingPin" parent="BodyPins" unique_id=755772939 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, 0.194707, 0.297492, -0.0590125)
-visible = false
 status_effect = 4
-_element = 0
 
 [node name="BlockingPin" parent="BodyPins" unique_id=1542530980 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, -0.005293, 0.81633, -0.0590125)
-visible = false
 status_effect = 1
-_element = 0
 
 [node name="PhobiaCrown" type="Node3D" parent="." unique_id=1535404151]
+unique_name_in_owner = true
 
 [node name="BluePhobiaPin" parent="PhobiaCrown" unique_id=1217982673 instance=ExtResource("2_n265t")]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 1.75, -0.3)
-status_effect = 3
-_element = 0
 
 [node name="PurplePhobiaPin" parent="PhobiaCrown" unique_id=1460119351 instance=ExtResource("2_n265t")]
 transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, 0.3, 1.53866, -0.3)
-status_effect = 3
-_element = 1
 
 [node name="MagentaPhobiaPin" parent="PhobiaCrown" unique_id=1243658658 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, 0.34202, -0.939693, 0, 0.939693, 0.34202, 1, 1.49502e-08, -4.10753e-08, 0.3, 1.38948, 0)
-status_effect = 3
-_element = 2
 
 [node name="RedPhobiaPin" parent="PhobiaCrown" unique_id=494374641 instance=ExtResource("2_n265t")]
 transform = Transform3D(-0.707107, 0.241845, -0.664463, 0, 0.939692, 0.34202, 0.707107, 0.241845, -0.664463, 0.3, 1.15729, 0.111978)
-status_effect = 3
-_element = 3
 
 [node name="OrangePhobiaPin" parent="PhobiaCrown" unique_id=2122292006 instance=ExtResource("2_n265t")]
 transform = Transform3D(-1, 2.99003e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.04932, 0.155142)
-status_effect = 3
-_element = 4
 
 [node name="YellowPhobiaPin" parent="PhobiaCrown" unique_id=821290546 instance=ExtResource("2_n265t")]
 transform = Transform3D(-0.707107, -0.241845, 0.664463, 0, 0.939692, 0.34202, -0.707107, 0.241845, -0.664463, -0.3, 1.15729, 0.111978)
-status_effect = 3
-_element = 5
 
 [node name="GreenPhobiaPin" parent="PhobiaCrown" unique_id=531372243 instance=ExtResource("2_n265t")]
 transform = Transform3D(-4.37114e-08, -0.34202, 0.939693, 0, 0.939693, 0.34202, -1, 1.49502e-08, -4.10753e-08, -0.3, 1.38948, 0)
-status_effect = 3
-_element = 6
 
 [node name="CyanPhobiaPin" parent="PhobiaCrown" unique_id=1828226427 instance=ExtResource("2_n265t")]
 transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939692, 0.34202, -0.707107, -0.241845, 0.664463, -0.3, 1.53866, -0.3)
-status_effect = 3
-_element = 7
 
 [connection signal="pin_hovered" from="BodyPins/PoisonPin" to="." method="_on_pin_hovered"]
 [connection signal="pin_selected" from="BodyPins/PoisonPin" to="." method="_on_pin_selected"]
