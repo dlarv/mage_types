@@ -76,6 +76,7 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	_prep_next_turn()
 
 	gui.play_intros()
+	selection_phase_started.emit()
 
 	await _dialog(false)
 
