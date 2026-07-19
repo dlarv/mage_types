@@ -40,7 +40,7 @@
 - [x] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 - [ ] Water in beach2 getting loaded when player is inside the caves
 - [ ] Monitor can alter colors on screen
-- [ ] Bugfix: Cannot rechallenge miniboss after losing #v0_7
+- [x] Bugfix: Cannot rechallenge miniboss after losing #v0_7
 - [x] Bugfix: Cannot view BattleSprite text or see pins #v0_7
 ## Optimizations
 - [ ] When player moves thru door, for a brief second both chunks are visible. This causes a weird visual distortion

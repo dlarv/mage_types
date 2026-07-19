@@ -133,6 +133,10 @@ func _proceed(node_name: String) -> void:
 	
 	var id := int(node_name.split('_')[0])
 	
+	# TEMP_FIX: sometimes game crashes after combat b/c node_name=""
+	if not data.nodes.has(node_name):
+		stop()
+		return
 	process_functions[id].call(data.nodes[node_name])
 
 

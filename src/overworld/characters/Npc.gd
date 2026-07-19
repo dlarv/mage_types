@@ -11,6 +11,7 @@ const BATTLE_DELAY := 0.5
 		disabled = val
 		if $Interactable:
 			$Interactable.disabled = val
+@export var one_shot := true
 var team: Array[BattleActor]:
 	get:
 		if not enemy_actor: return []
@@ -57,12 +58,12 @@ func _on_body_entered(body:Node3D) -> void:
 
 	if animation_actor and auto_trigger:
 		animation_actor.play_animation(body)
-		$Interactable.set_disabled(true)
-		set_deferred("monitoring", false)
+		$Interactable.set_disabled(one_shot)
+		set_deferred("monitoring", not one_shot)
 	elif story_actor and auto_trigger:
 		body.call_deferred("start_dialog", self)
-		$Interactable.set_disabled(true)
-		set_deferred("monitoring", false)
+		$Interactable.set_disabled(one_shot)
+		set_deferred("monitoring", not one_shot)
 	elif story_actor or vendor_actor: 
 		pass
 	elif enemy_actor and not _on_cooldown:
