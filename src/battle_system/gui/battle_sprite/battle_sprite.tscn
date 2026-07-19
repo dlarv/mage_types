@@ -56,6 +56,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.6]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DefaultMesh/../../PinManager/PhobiaCrown:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.3, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%DefaultMesh/../../PinManager/BodyPins:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.1000001, 1.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%DefaultMesh/../../PinManager:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ugy7d"]
 resource_name = "attack"
@@ -72,6 +108,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 2, 0), Vector3(0, 2, -3), Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DefaultMesh/../../PinManager:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -3), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_8jw31"]
@@ -94,6 +142,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 2, 0), Vector3(0, 2.5, 0), Vector3(0, 2, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DefaultMesh/../../PinManager:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.0333333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_sdiku"]
 resource_name = "channeling"
@@ -110,6 +170,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 2, 0), Vector3(-2, 2, 0), Vector3(2, 2, 0), Vector3(-2, 2, 0), Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DefaultMesh/../../PinManager:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2, 0, 0), Vector3(2, 0, 0), Vector3(-2, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_tcegq"]
@@ -158,6 +230,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 2, 0), Vector3(0, 2, 3), Vector3(0, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DefaultMesh/../../PinManager:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 3), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sdiku"]
@@ -228,7 +312,6 @@ transitions = ["battle_idle", "getting_hit", SubResource("AnimationNodeStateMach
 graph_offset = Vector2(0, -151)
 
 [node name="BattleSprite" type="Node3D" unique_id=1135726583 node_paths=PackedStringArray("transmutation_hint")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_dntod")
 transmutation_hint = NodePath("TransmutationHint")
 
@@ -250,13 +333,29 @@ size_flags_vertical = 0
 
 [node name="PinManager" parent="." unique_id=1721910986 instance=ExtResource("3_ya2xk")]
 
+[node name="BodyPins" parent="PinManager" index="0" unique_id=105569702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1000001, 1.5)
+
+[node name="PoisonPin" parent="PinManager/BodyPins" index="0" unique_id=1188710084]
+transform = Transform3D(0.75873977, 0.60696816, 0.23644033, 0.32374442, -0.03640503, -0.9454444, -0.5652466, 0.79389244, -0.2241244, -0.6052933, 0.37836003, -0.08231008)
+
+[node name="FlinchPin" parent="PinManager/BodyPins" index="1" unique_id=1100354622]
+transform = Transform3D(0.86602545, 0.3535535, 0.3535535, 0, 0.707107, -0.707107, -0.5, 0.61237264, 0.61237264, -0.30529332, 0.5783601, -0.38231003)
+
+[node name="StasisPin" parent="PinManager/BodyPins" index="2" unique_id=408654759]
+transform = Transform3D(0.9396926, 0.3303661, 0.0885213, -0.17101005, 0.67798054, -0.7149112, -0.2961981, 0.65665877, 0.69358927, 0.394707, 0.8399799, -0.1913681)
+
+[node name="PhobiaCrown" parent="PinManager" index="1" unique_id=1535404151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+
 [node name="EmitterController" parent="." unique_id=1933626235 instance=ExtResource("4_yav0q")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.433571)
 
 [node name="Label3D" type="Label3D" parent="." unique_id=412857806]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92013, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92013, 3)
 billboard = 1
+text = "sdf"
 font_size = 64
 outline_size = 16
 
@@ -289,3 +388,5 @@ anim_player = NodePath("../MeshManager/DefaultMesh/AnimationPlayer")
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]
 [connection signal="pin_selected" from="PinManager" to="." method="_on_pin_selected"]
+
+[editable path="PinManager"]
