@@ -377,10 +377,15 @@ func get_matchup(element1: ElementalType, element2: ElementalType) -> ElementalT
 	return node.get_result(element2)
 
 
-func get_side_effect(a: ElementalType, b: ElementalType) -> _AttackEffect:
-	if a == null || b == null || a.is_blank() || b.is_blank(): 
-		return null
-	return matchups[a.id].get_effect(b)
+func get_side_effect(a: ElementalType, b: ElementalType=null) -> _AttackEffect:
+	if a == null || a.is_blank(): return null
+	if b == null:
+		if a.is_defensive_type: 
+			return defense_buff
+		return attack_buff
+	elif b != null:
+		return matchups[a.id].get_effect(b)
+	return null
 
 
 func get_all_matchups() -> Array:

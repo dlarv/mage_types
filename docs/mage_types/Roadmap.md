@@ -270,6 +270,7 @@ See also: [[more_dynamic_battles]]
 	- [x] (Primary | Secondary) + Attack
 	- [x] Primary + Secondary
 	- [x] Apply side effects.
+- [x] Remove speed side effect
 ### End Battle
 **End battle when player runs away or a team is defeated.**
 - [x] Reset stat boosts and status effects

@@ -233,7 +233,7 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 
 	message_feed.append_transmutation_message(target, e1, newType, e2, isInternal) 
 
-	var buff := ElementManager.get_side_effect(e1, e2)
+	var buff := ElementManager.get_side_effect(newType)
 
 	if not buff.apply_effect(ActorTurnData.empty(target), target).is_empty():
 		message_feed.append_side_effect_message(target, buff)
