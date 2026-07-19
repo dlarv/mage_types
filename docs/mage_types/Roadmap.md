@@ -27,27 +27,21 @@
 #v0_7: Tutorial Visual Polish
 #v0_8: Audio polish
 #v0_9: GUI and Settings
-# The List
-- [x] Texture bottles
-- [x] Rig bartender's fingers
-- [x] Give bartender bottle and glass
-- [x] Texture shelf
-- [x] Texture backwall (stones or bricks?)
-- [ ] Add plant to vase
-- [x] Make lighting warmer
-- [x] Make background darker
 ## Bugs
-- [ ] Broken battle system #0_7
-	- [ ] When player is defeated in battle, it immediately ends before playing animations, etc
-	- [ ] Alignment calculations at end of battle crashing due to empty list of elements
+- [x] Broken battle system #v0_7
+	- [x] When player is defeated in battle, it immediately ends before playing animations, etc
+	- [x] Alignment calculations at end of battle crashing due to empty list of elements
 	- [x] Player is getting defeated despite logger saying damage < hp
-	- [ ] Power on Confetti Cannon attack says n/a
-	- [ ] Target selection isn't working
+	- [x] Power on Confetti Cannon attack says n/a
+	- [x] Target selection isn't working
 - [ ] Falling animation playing when going thru doorways
 - [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
 - [x] Ethereal Quartz overworld item can be used even when not equipped
 - [x] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 - [ ] Water in beach2 getting loaded when player is inside the caves
+- [ ] Monitor can alter colors on screen
+- [ ] Bugfix: Cannot rechallenge miniboss after losing #v0_7
+- [x] Bugfix: Cannot view BattleSprite text or see pins #v0_7
 ## Optimizations
 - [ ] When player moves thru door, for a brief second both chunks are visible. This causes a weird visual distortion
 ## Battle 
@@ -65,12 +59,15 @@
 	- [x] Stat changes.
 	- [x] Use 3d models instead of 2d sprites for characters.
 
-- [ ] Fresnel shader #v0_7 
+- [x] Fresnel shader #v0_7 
 	- [x] Test to ensure shader works with more complicated models
 	- [x] Dynamically change battle sprite albedo using fresnel effect
 	- [x] Ensure each battle actor has their own instance of shader
-	- [ ] Fade between default texture and fresnel when battle starts
-	- [ ] Animation when character is defeated, burst
+	- [x] Fade between default texture and fresnel when battle starts
+	- [x] Animation when character is defeated, burst
+	- [x] Test using emission instead of diffuse
+I think this would be better if it was overlaid on top of model.
+Evenutally, I'd like this to be more of a halo, outlining the combatants
 
 - [x] Show information about the following, when queried by player
 	- [x] Attack info.
@@ -92,6 +89,7 @@
 - [x] Calculate turn order based on actor's speed and action priority
 	- [x] Display speed ranking 
 	- [ ] Speed ranking/turn order accounts for priority
+	- [ ] Speed ranking is incorrect
 	
 - [ ] Make controls less obtrusive
 	- [x] Attack, Item, and Run buttons should be small and off to the side
@@ -194,7 +192,7 @@ class AttackEffect:
 
 EXAMPLE OUTPUT
 div $ 10
-	func cmd(buffer: DataBuffer) -> float:
+	func cmd(buffer: *DataBuffer*) -> float:
 		return div.bind(10.0).bind(buffer.buffer) # returns buffer.buffer / 10
 mul $ 10 | sub 1
 	func cmd(buffer: DataBuffer) -> float:
@@ -254,17 +252,15 @@ See also: [[more_dynamic_battles]]
 	- [x] Channeling 
 	- [x] Attack
 	- [x] Getting hit
+	- [x] Defeated
+	- [x] Battle Entry
 - [x] Animation for status effects proc
-- [ ] Battle music
-- [ ] Battle sound effects
-	- [ ] Attack missing
-	- [ ] Attack landing
-	- [ ] Channeling
-	- [ ] Status Effect being inflicted
-	- [ ] Status Effect proc
+- [ ] Battle music #v0_8
+- [ ] Battle sound effects #v0_8
 - [ ] Setting to control speed and turn off animations
 - [ ] Use buttons to skip battle animations
-- [ ] Attack Animation refactor
+- [ ] Attack Animation refactor #v0_8
+	- [ ] Make effects more 3D
 	- [ ] Renamed class and references
 	- [ ] Animation should be selected via enum
 	- [ ] Animation should be integrated with BattleActor animations
@@ -411,7 +407,7 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 >2. Set KeyItem.id to n+1, where n is id of previous stencil
 >3. Inside ElementFlowChart.gd, add new case to `match` statement in `_on_stencil_button_toggled`
 ### Icons
-- [ ] Associate symbols with each element to help with differentiation
+- [ ] Associate symbols with each element to help with differentiation #v0_7
 
 I want the UI to have a tactile feel, so I think it'd be cool if the icons had a 3D feel to them.
 
@@ -430,12 +426,12 @@ C: diamond/rhombus (strength, stability)
 	- [x]  Pickup objects and place in inventory.
 	- [x] Open chests.
 	- [x] Drag objects.
-- [ ] Each player action should have corresponding animations. #v0_7
+- [ ] Each player action should have corresponding animations. 
 	- [x] Idle
 		- [x] space weight shifting out more
 	- [x] Walk
 		- [x] Get feedback, I can't tell what's off
-			- [ ] I think I fixed it (broadstrokes), so it can wait until I get feedback for the rest
+			- [x] I think I fixed it (broadstrokes), so it can wait until I get feedback for the rest
 	- [x] Jump
 	- [ ] Dash
 		- ~~Removed dash, as I didn't like how it looked~~
@@ -444,14 +440,13 @@ C: diamond/rhombus (strength, stability)
 		- [x] Player should only move their legs when they're moving
 		- [x] Different animation for moving forward/backward vs sidways
 		- [x] Reposition drag animations to look like player is actually holding draggable
-- [x] Player battle animations
+- [x] Player battle animations #v0_7
 	- [x] Channeling
 	- [x] Attack
-	- [ ] Getting hit (Got erased for some reason, need to readd) #v0_7
+	- [x] Getting hit (Got erased for some reason, need to readd) 
 	- [x] Battle idle
+	- [x] Entry animation
 - [ ] Player Audio FX #v0_8 
-	- [ ] Footsteps
-	- [ ] Dash and jump sounds
 - [x] Textures
 	- [x] Compare NextPassTransparency with Swapping diffuse maps
 		- Swapping diffuse maps looks far better than the next pass method
@@ -724,13 +719,17 @@ Player selects new spell or equipment from inside Inventory:
 4. Player confirms which spell/equipment to replace.
 5. Modify `BattleActor`.
 6. `CharacterScreen` (which listens for changes to `BattleActor`) updates GUI.
-### Scrapbook
-- [ ] Scrapbook containing hints and notes the player has found
-	- Notes can be obtained by interacting with parts of the environment. Diagetically, they are written on some form of carbon-paper sticky notes, allowing the player to take more than one copy of the same note. 
-	- [ ] Notes can be obtained from overworld
-	- [ ] Notes can be reorganized
-	- [ ] Notes can be deleted
-	- [ ] Player can create notes and drawings on notebook pages
+### Scrapbook System
+**Dynamic and interesting UI system. It really feels like you're running around with loose paper in your pocket.**
+- [ ] Customizable UI system #v0_9
+	- [ ] Ability to pin certain notes on the screen (e.g. have transmutation map on screen in overworld)
+		- [ ] Be able to dictate which elements can be pinned or moved
+		- [ ] Dictate where these elements can be pinned/moved to
+	- [ ] Ability to draw with mouse on screen?
+	- [ ] Ability to create sticky notes and pin them to different screens (e.g. overworld, specific menus)
+- [ ] Inventory/Menus are diagetically a notebook Goose is carrying around #v0_9
+	- [ ] Elements textured to look like paper
+	- [ ] Text has handwriting font
 ## Settings and Accessibility 
 - [ ] Allow player to reassign keybindings.
 
@@ -786,7 +785,7 @@ To manage a character who has multiple dialog trees, there are a few options:
 	- Answers player has previously given them.
 	- Items in player's inventory.
 	- If the player has defeated them in battle.
-- [ ] Integrate my fork of DialogueNodes 
+- [x] Integrate my fork of DialogueNodes 
 - [x] Communicate specified story vars between DialogueData objects.
 ### Story Events and Quests
 - [x] Story Events
@@ -819,27 +818,16 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Revisit clay shader. GDShader version should ideally be indistinguishable from the blender one
 	- [ ] PrincipledBSDF should have a plasticky look
 ### Misc Areas
+[Asset List](https://docs.google.com/spreadsheets/d/1XJIIeOj9dk2dSPPr7dwkUpTZwAMfA4FIh9KXVK2XvD8/edit?gid=1925621405#gid=1925621405): for more specific details about decor, env, and other assets.
+
 - [ ] Hallways #v0_7
-	- [ ] Wallpaper
-	- [ ] Assets made out of clay or plastic
 	- [ ] Local lighting
-	- [ ] Ambient sounds #v0_8 
-		- [ ] Ice Machine #v0_8 
-	- [ ] Ambient music #v0_8 
-- [x] Puzzle block demos:
-	- [x] Laser blocks demos
-		- [x] DraggableMirror?
-		- [x] RotatableMirror?
-		- [x] DraggableEmitter?
-		- [x] OneWayLens?
-	- [x] Pressure plate demo
-		- [x] Bug: Player activated pressure plate not working
-	- [x] Delay demo
-	- [x] Timer demo
-	- [x] Relay demo
-		- [x] Create indicator block, which differentiates between off/on/invalid_off
-	- [ ] Give Rail puzzleblock a model
-	- [ ] Add models for empty puzzle blocks?
+	- [ ] Wallpaper
+	- [ ] Make carpet triplanar
+	- [ ] Decor 
+- [ ] Hotel room decor  #v0_7  
+- [ ] Hallway audio #v0_8
+- [ ] Add models for empty puzzle blocks
 - [ ] Replace placeholder door blockers/etc with models and diagetic explanations.
 	- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
 	- [ ] Add out-of-order elevator to final pillar in ziggurat room
@@ -848,46 +836,27 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Delay/animation before returning control to player? This would be necessary if rotating player model to face away from door
 ### Beach
 - [ ] Wave ambience #v0_8
-- [x] Beach 1 #v0_7
-	- [x] Layout
-	- [x] Modeling
-	- [x] Texturing
-		- [x] Adjust colors
-	- [x] Fix holes in model exposed during waves 
-	- [x] Keep player from sliding off sand thru gap in water teleport collider, causing player to fall into the void 
-	- [x] Fix water texture
-	- [x] Fix pier collider and materials
+- [x] Beach 1 Env Asset #v0_7
 - [ ] Beach 1 backtracking puzzle
 	- [x] Placed puzzleblocks
 	- [ ] Reward: ???
 - [ ] Beach 2 #v0_7
-	- [x] Layout
-	- [x] Modeling
-	- [x] Textures
+	- [x] Env asset
 	- [ ] Decor assets
-		- [x] Street lights
-		- [x] Rocks/tidepools
-		- [ ] ~~Midground decor~~
-		- [ ] ~~Transformer in NE corner?~~
-		- [ ] Sandcastle on sand
-		- [x] Replace tidepools w/ solid rock
-		- [x] Lamppost island puzzle
-			- [x] Designed
-			- [x] Implemented
-			- [x] Placed reward (hidden chest)
-			- [x] Puzzle is broken for some reason
-			- [x] Stepping on same island twice shouldn't append twice
-			- [x] Chest not actually adding magenta key to inventory
-	- [x] Move road further north
-	- [x] Move House further east and on hill
+	- [x] Lamppost island puzzle
+		- [x] Designed
+		- [x] Implemented
+		- [x] Placed reward (hidden chest)
+		- [x] Puzzle is broken for some reason
+		- [x] Stepping on same island twice shouldn't append twice
+		- [x] Chest not actually adding magenta key to inventory
 	- [x] NW Parkour challenge
 		- [x] Designed challenge
 		- [x] Placed rewards
 			- If I give the player a attack/item and I'm not careful, I might upset the balance of my tutorial
-	- [ ] SW Parkour challenge
-		- [x] Designed Challenge
+	- [ ] South Beach Island
+		- [x] Designed parkour Challenge
 		- [ ]  Place NPC/reward
-	- [ ] Remodel Hotel exterior
 	- [ ] Place breakable rock in front of East Cave
 	
 [[Map#Beach|Area Breakdown: Beach]]	
@@ -907,37 +876,20 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Add official env models
 [[Map#Transmutation Tutorial|Area Breakdown: Transmutation Tutorial]]
 ### Rec Room
--  [ ] Bartender #v0_7
-	- [x] Design
-	- [x] Model
-		- [x] Body
-		- [x] Head
-		- [x] Hair
-	- [x] Texturing
-	- [x] Rigging 
-	- [x] Idle Animation
-		- [x] ~~Cleaning a glass, passes it to tentacle, which puts it away~~ Lol no, tentacle will just sway
+- [ ] Bartender #v0_7
 	- [ ] Rewrite dialogue
 - [ ] Adonis Enclave #v0_7
-	- [x] Design
-	- [x] Model
-		- [ ] Add tentacles
-	- [ ] Texturing
-	- [ ] Idle Animation
-	- [ ] Battle Animations
-		- [x] Idle
-		- [x] Channeling
-		- [ ] Attack
-		- [ ] Getting hit
-- [ ] Miniboss #v0_7
-	- [ ] Model
-	- [ ] Texturing
-	- [ ] Rigging 
-	- [ ] Animation
-		- [ ] Channeling
-		- [ ] Attack
-		- [ ] Getting hit
-		- [ ] Battle idle
+	- [ ] Differentiate models
+	- [ ] Overworld animations
+- [ ] Add Alice to bar #v0_7
+	- [ ] Idle animation
+	- [ ] Looks up when player walks by
+	- [ ] Disappears after joining your party
+- [ ] Rec room decor #v0_7
+	- [ ] Layout & planning
+- [x] Miniboss #v0_7
+	- [x] Animate boss fading away when defeated
+	- [x] Fix rig weights
 		
 [[Map#Rec Room|Area Breakdown: Rec Room]]
 
@@ -1005,6 +957,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 - [ ] Northern Caves/Portal Complex Excavation
 	- [ ] Create and add models for murals
 	- [ ] Orange chatlog object created and placed
+- [x] Remove Mound/Ziggurat and Cave access #v0_7
 - [ ] Southern Beach
 - [ ] Central hotel
 - [ ] Employee breakroom
