@@ -18,52 +18,52 @@ starts = {
 nodes = {
 &"0_1": {
 "link": &"1_39",
-"offset": Vector2(-400, -120),
+"offset": Vector2(-280, -320),
 "start_id": "1_0"
 },
 &"0_2": {
 "link": &"1_2",
-"offset": Vector2(-80, 960),
+"offset": Vector2(-320, 840),
 "start_id": "2_0"
 },
 &"0_3": {
 "link": &"1_3",
-"offset": Vector2(-80, 2000),
+"offset": Vector2(-300, 2000),
 "start_id": "3_0"
 },
 &"0_4": {
 "link": &"1_8",
-"offset": Vector2(-80, 140),
+"offset": Vector2(40, -60),
 "start_id": "1_1a"
 },
 &"0_5": {
 "link": &"1_6",
-"offset": Vector2(-80, 400),
+"offset": Vector2(40, 200),
 "start_id": "1_1b"
 },
 &"0_6": {
 "link": &"1_16",
-"offset": Vector2(-60, 680),
+"offset": Vector2(60, 480),
 "start_id": "1_2b"
 },
 &"0_7": {
 "link": &"1_25",
-"offset": Vector2(-80, 1220),
+"offset": Vector2(-320, 1100),
 "start_id": "2_1a"
 },
 &"0_8": {
 "link": &"1_30",
-"offset": Vector2(-80, 1480),
+"offset": Vector2(-320, 1360),
 "start_id": "2_1b"
 },
 &"0_9": {
 "link": &"1_35",
-"offset": Vector2(-80, 1740),
+"offset": Vector2(-320, 1620),
 "start_id": "2_2b"
 },
 &"1_1": {
 "dialogue": "To start, select an attack from the menu below. You likely only have one.",
-"offset": Vector2(160, -120),
+"offset": Vector2(280, -320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -71,12 +71,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00034, 242.00012),
+"size": Vector2(300.00006, 242.00012),
 "speaker": "Aegean"
 },
 &"1_10": {
 "dialogue": "Your [i]secondary[/i] type is the composition of your outer crust. This thin crust is highly reactive, frequently changing multiple times per turn.",
-"offset": Vector2(800, 140),
+"offset": Vector2(920, -60),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -84,12 +84,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.00012),
+"size": Vector2(300.00024, 242),
 "speaker": "Aegean"
 },
 &"1_11": {
 "dialogue": "Pay attention to my left (your right) side when you attack.",
-"offset": Vector2(1120, 140),
+"offset": Vector2(1240, -60),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -97,12 +97,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242.00012),
+"size": Vector2(300.00024, 242),
 "speaker": "Aegean"
 },
 &"1_12": {
 "dialogue": "As I mentioned, your [i]secondary[/i] type is highly reactive, reacting to any element it comes into contact with.",
-"offset": Vector2(480, 400),
+"offset": Vector2(600, 200),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -110,12 +110,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242),
+"size": Vector2(300.00043, 241.99988),
 "speaker": "Aegean"
 },
 &"1_13": {
 "dialogue": "This largely applies to your opponent's attacks. However, your [i]secondary[/i] type will also react to your own [i]melee[/i] attacks, since you're channeling that energy in close quarters.",
-"offset": Vector2(800, 400),
+"offset": Vector2(920, 200),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -123,12 +123,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242),
+"size": Vector2(300.00024, 241.99988),
 "speaker": "Aegean"
 },
 &"1_14": {
 "dialogue": "Additionally, your [i]secondary[/i] type will react with your [i]primary[/i] type (Only your [i]secondary[/i] will change, of course).",
-"offset": Vector2(1120, 400),
+"offset": Vector2(1240, 200),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -136,12 +136,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242),
+"size": Vector2(300.00024, 241.99988),
 "speaker": "Aegean"
 },
 &"1_15": {
 "dialogue": "My next attack will be a [el]Red[/el] melee attack, which will demonstrate these effects.",
-"offset": Vector2(1440, 400),
+"offset": Vector2(1560, 200),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -149,12 +149,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 242),
+"size": Vector2(300, 241.99988),
 "speaker": "Aegean"
 },
 &"1_16": {
 "dialogue": "You'll also notice that your transmutations had side effects, which are just stat buffs.",
-"offset": Vector2(160, 680),
+"offset": Vector2(280, 480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -162,12 +162,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00034, 241.99988),
+"size": Vector2(300.00006, 241.99994),
 "speaker": "Aegean"
 },
 &"1_17": {
 "dialogue": "Dallas will teach you a bit more about these in the next lesson.",
-"offset": Vector2(480, 680),
+"offset": Vector2(600, 480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -175,12 +175,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 241.99988),
+"size": Vector2(300.00043, 241.99994),
 "speaker": "Aegean"
 },
 &"1_18": {
 "dialogue": "If you're wondering why I haven't had any side effects during this battle, its because I have an item which turns them off. It makes describing the battle mechanics much simpler, don't you think!",
-"offset": Vector2(800, 680),
+"offset": Vector2(920, 480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -188,155 +188,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241.99988),
+"size": Vector2(300.00024, 241.99994),
 "speaker": "Aegean"
 },
 &"1_19": {
 "dialogue": "Well, that everything I have to teach you. Why don't you finish up this fight and Dallas will pick it up where I left off.",
-"offset": Vector2(1120, 680),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300.00018, 241.99988),
-"speaker": "Aegean"
-},
-&"1_2": {
-"dialogue": "Sup. So right, affinities!",
-"offset": Vector2(160, 960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_20",
-"text": ""
-}
-},
-"size": Vector2(300.00034, 242),
-"speaker": "Dallas"
-},
-&"1_20": {
-"dialogue": "So the elements of this world are split into 2 [i]affinity[/i] groups: [color=red]offensive[/color] and [color=blue]defensive[/color].",
-"offset": Vector2(480, 960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_21",
-"text": ""
-}
-},
-"size": Vector2(300.00018, 242),
-"speaker": "Dallas"
-},
-&"1_21": {
-"dialogue": "You've noticed the [b]sword[/b] and [b]shield[/b] icons next to your attacks, right? Those tell you which [i]affinity[/i] group that attack's element belongs to.",
-"offset": Vector2(800, 960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_22",
-"text": ""
-}
-},
-"size": Vector2(300, 242),
-"speaker": "Dallas"
-},
-&"1_22": {
-"dialogue": " Its a bit confusing, but these [i]affinity[/i] groups don't actually have anything to do with whether an attack does damage.",
-"offset": Vector2(1120, 960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_23",
-"text": ""
-}
-},
-"size": Vector2(300.00018, 242),
-"speaker": "Dallas"
-},
-&"1_23": {
-"dialogue": "Like, [el]Blue[/el] is a [color=blue]defensive[/color] type, a lot of its moves will be support or defense focused, but there are [el]Blue[/el] attacks that deal damage.",
-"offset": Vector2(1440, 960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_24",
-"text": ""
-}
-},
-"size": Vector2(300.00024, 242),
-"speaker": "Dallas"
-},
-&"1_24": {
-"dialogue": "You can find the full list inside your [i]Transmutation Menu[/i].",
-"offset": Vector2(1760, 960),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300.00024, 242),
-"speaker": "Dallas"
-},
-&"1_25": {
-"dialogue": "Every time you transmute, there will be side effects, which are, like, stat buffs.",
-"offset": Vector2(160, 1220),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_26",
-"text": ""
-}
-},
-"size": Vector2(300.00034, 241.99994),
-"speaker": "Dallas"
-},
-&"1_26": {
-"dialogue": " If you go from [color=red]offensive[/color] -> [color=blue]defensive[/color], you'll get a [color=blue]defense[/color] buff.",
-"offset": Vector2(480, 1220),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_27",
-"text": ""
-}
-},
-"size": Vector2(300.00018, 241.99994),
-"speaker": "Dallas"
-},
-&"1_27": {
-"dialogue": "If you go from [color=blue]defensive[/color]-> [color=red]offensive[/color], you'll get an [color=red]attack[/color] buff.",
-"offset": Vector2(800, 1220),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_28",
-"text": ""
-}
-},
-"size": Vector2(300, 241.99994),
-"speaker": "Dallas"
-},
-&"1_28": {
-"dialogue": "And if you stay within the same [i]affinity[/i] group, you'll get a [color=green]speed[/color] buff.",
-"offset": Vector2(1120, 1220),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_29",
-"text": ""
-}
-},
-"size": Vector2(300.00018, 241.99994),
-"speaker": "Dallas"
-},
-&"1_29": {
-"dialogue": "This info can also be found inside your [i]Transmutation Menu[/i].",
-"offset": Vector2(1440, 1220),
+"offset": Vector2(1240, 480),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -345,11 +202,154 @@ nodes = {
 }
 },
 "size": Vector2(300.00024, 241.99994),
+"speaker": "Aegean"
+},
+&"1_2": {
+"dialogue": "Sup. So right, affinities!",
+"offset": Vector2(-80, 840),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_20",
+"text": ""
+}
+},
+"size": Vector2(300.00027, 241.99994),
+"speaker": "Dallas"
+},
+&"1_20": {
+"dialogue": "So the elements of this world are split into 2 [i]affinity[/i] groups: [color=red]offensive[/color] and [color=blue]defensive[/color].",
+"offset": Vector2(240, 840),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_21",
+"text": ""
+}
+},
+"size": Vector2(300.0003, 241.99994),
+"speaker": "Dallas"
+},
+&"1_21": {
+"dialogue": "You've noticed the [b]sword[/b] and [b]shield[/b] icons next to your attacks, right? Those tell you which [i]affinity[/i] group that attack's element belongs to.",
+"offset": Vector2(560, 840),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_22",
+"text": ""
+}
+},
+"size": Vector2(300, 241.99994),
+"speaker": "Dallas"
+},
+&"1_22": {
+"dialogue": " Its a bit confusing, but these [i]affinity[/i] groups don't actually have anything to do with whether an attack does damage.",
+"offset": Vector2(880, 840),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_23",
+"text": ""
+}
+},
+"size": Vector2(300.00012, 241.99994),
+"speaker": "Dallas"
+},
+&"1_23": {
+"dialogue": "Like, [el]Blue[/el] is a [color=blue]defensive[/color] type, a lot of its moves will be support or defense focused, but there are [el]Blue[/el] attacks that deal damage.",
+"offset": Vector2(1200, 840),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_24",
+"text": ""
+}
+},
+"size": Vector2(300.00024, 241.99994),
+"speaker": "Dallas"
+},
+&"1_24": {
+"dialogue": "You can find the full list inside your [i]Transmutation Menu[/i].",
+"offset": Vector2(1620, 880),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00073, 241.99994),
+"speaker": "Dallas"
+},
+&"1_25": {
+"dialogue": "Every time you transmute, there will be side effects, which are, like, stat buffs.",
+"offset": Vector2(-80, 1100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_26",
+"text": ""
+}
+},
+"size": Vector2(300.00027, 242.00006),
+"speaker": "Dallas"
+},
+&"1_26": {
+"dialogue": "All you have to remember is the end result.",
+"offset": Vector2(240, 1100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_27",
+"text": ""
+}
+},
+"size": Vector2(300.0003, 242.00006),
+"speaker": "Dallas"
+},
+&"1_27": {
+"dialogue": "If you transmute into an [color=red]offensive[/color], you'll get an [color=red]attack[/color] buff.",
+"offset": Vector2(560, 1100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_28",
+"text": ""
+}
+},
+"size": Vector2(300, 242.00006),
+"speaker": "Dallas"
+},
+&"1_28": {
+"dialogue": "And if you transmute into a [color=blue]defensive[/color] element, you'll get a [color=blue]defense[/color] boost.",
+"offset": Vector2(880, 1100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00012, 242.00006),
+"speaker": "Dallas"
+},
+&"1_29": {
+"dialogue": "This info can also be found inside your [i]Transmutation Menu[/i].",
+"offset": Vector2(1200, 1100),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00024, 242.00006),
 "speaker": "Dallas"
 },
 &"1_3": {
 "dialogue": "Thou hast learned much.",
-"offset": Vector2(160, 2000),
+"offset": Vector2(-60, 2000),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -357,12 +357,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00034, 242.00012),
+"size": Vector2(300.00052, 242),
 "speaker": "Duke"
 },
 &"1_30": {
 "dialogue": "You went from [el]Purple[/el] to [el]Blue[/el], which are [color=red]offensive[/color] and [color=blue]defensive[/color] types, respectively.",
-"offset": Vector2(160, 1480),
+"offset": Vector2(-80, 1360),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -370,12 +370,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00034, 242.0003),
+"size": Vector2(300.00027, 241.99994),
 "speaker": "Dallas"
 },
 &"1_31": {
 "dialogue": "Right, so because your end result was a [color=blue]defensive[/color], so you got a [color=blue]defense[/color] buff.",
-"offset": Vector2(480, 1480),
+"offset": Vector2(240, 1360),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -383,12 +383,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242.0003),
+"size": Vector2(300.0003, 241.99994),
 "speaker": "Dallas"
 },
 &"1_32": {
 "dialogue": "If you hover your mouse over the 3rd and 4th dials under your health bar, they will tell you you've a received a 30% buff to both your defense stats!",
-"offset": Vector2(800, 1480),
+"offset": Vector2(560, 1360),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -396,12 +396,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.0003),
+"size": Vector2(300, 241.99994),
 "speaker": "Dallas"
 },
 &"1_33": {
 "dialogue": "And since the attack you used was [el]Magenta[/el], I also received a [color=blue]defense[/color] buff!",
-"offset": Vector2(1500, 1480),
+"offset": Vector2(1260, 1360),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -409,12 +409,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.0003),
+"size": Vector2(300.0005, 241.99994),
 "speaker": "Dallas"
 },
 &"1_34": {
 "dialogue": "And since the attack you used didn't react at all with me, I didn't receive any side effects. Bummer dude ;)",
-"offset": Vector2(1500, 1740),
+"offset": Vector2(1260, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -422,12 +422,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241.99994),
+"size": Vector2(300.0005, 241.99963),
 "speaker": "Dallas"
 },
 &"1_35": {
 "dialogue": "That was a lot of side effects just then, but I hope you were able to follow all of that.",
-"offset": Vector2(160, 1740),
+"offset": Vector2(-80, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -435,12 +435,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00034, 241.99994),
+"size": Vector2(300.00027, 241.99963),
 "speaker": "Dallas"
 },
 &"1_36": {
 "dialogue": "Every action a combatant can have like, up to 4 transmutation and therefore 4 side effects!",
-"offset": Vector2(480, 1740),
+"offset": Vector2(240, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -448,12 +448,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 241.99994),
+"size": Vector2(300.0003, 241.99963),
 "speaker": "Dallas"
 },
 &"1_37": {
 "dialogue": "And if one side transmutes more often than the other, battles can become pretty one sided.",
-"offset": Vector2(800, 1740),
+"offset": Vector2(560, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -461,12 +461,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241.99994),
+"size": Vector2(300, 241.99963),
 "speaker": "Dallas"
 },
 &"1_38": {
 "dialogue": "Come now, show me what thou canst do together!",
-"offset": Vector2(480, 2000),
+"offset": Vector2(260, 2000),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -474,12 +474,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242.00012),
+"size": Vector2(300.00018, 242),
 "speaker": "Duke"
 },
 &"1_39": {
 "dialogue": "Before we begin, press 'M' to toggle your Message Log.",
-"offset": Vector2(-180, -140),
+"offset": Vector2(-60, -340),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -487,12 +487,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242),
+"size": Vector2(300.00027, 242),
 "speaker": "Aegean"
 },
 &"1_4": {
 "dialogue": "Then, click on me to select your target.",
-"offset": Vector2(480, -120),
+"offset": Vector2(600, -320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -500,12 +500,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242.00012),
+"size": Vector2(300.00043, 242.00012),
 "speaker": "Aegean"
 },
 &"1_5": {
 "dialogue": "You'll notice a strange popup when you do. This is called the [i]Transmutation Hint[/i].",
-"offset": Vector2(800, -120),
+"offset": Vector2(920, -320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -513,12 +513,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.00012),
+"size": Vector2(300.00024, 242.00012),
 "speaker": "Aegean"
 },
 &"1_6": {
 "dialogue": "Notice how my [el]Blue[/el] [i]secondary[/i] type reacted with your [el]Magenta[/el] attack to form [el]Purple[/el]?",
-"offset": Vector2(160, 400),
+"offset": Vector2(280, 200),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -526,12 +526,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00034, 242),
+"size": Vector2(300.00006, 241.99988),
 "speaker": "Aegean"
 },
 &"1_7": {
 "dialogue": "Right now, just remember the color of the top-right square.",
-"offset": Vector2(1120, -120),
+"offset": Vector2(1240, -320),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -539,25 +539,25 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242.00012),
+"size": Vector2(300.00024, 242.00012),
 "speaker": "Aegean"
 },
 &"1_8": {
 "dialogue": "Unlike most other things in this world, combatants actually have two types.",
-"offset": Vector2(160, 140),
+"offset": Vector2(280, -60),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_9",
+"link": "END",
 "text": ""
 }
 },
-"size": Vector2(300.00034, 242.00012),
+"size": Vector2(300.00006, 242),
 "speaker": "Aegean"
 },
 &"1_9": {
 "dialogue": "Your [i]primary[/i] type is the composition of your inner core. It has a lot of inertia and will not change during battle.",
-"offset": Vector2(480, 140),
+"offset": Vector2(600, -60),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -565,7 +565,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242.00012),
+"size": Vector2(300.00043, 242),
 "speaker": "Aegean"
 },
 &"5_1": {
@@ -575,7 +575,26 @@ nodes = {
 "value2": "magenta"
 }]),
 "false": &"1_34",
-"offset": Vector2(1120, 1480),
+"offset": Vector2(880, 1360),
 "true": &"1_33"
+},
+&"8_1": {
+"attached_nodes": Array[StringName]([&"0_1", &"1_19", &"1_18", &"1_17", &"1_16", &"0_6", &"1_15", &"1_14", &"1_13", &"1_12", &"1_6", &"0_5", &"1_11", &"1_10", &"1_9", &"1_8", &"0_4", &"1_7", &"1_5", &"1_4", &"1_1", &"1_39"]),
+"offset": Vector2(-320, -381),
+"tint_color": Color(0.0015716553, 0.29861456, 0.40234375, 1),
+"title": "Frame #1"
+},
+&"8_2": {
+"attached_nodes": Array[StringName]([&"0_2", &"1_37", &"1_36", &"1_35", &"0_9", &"1_34", &"1_33", &"5_1", &"1_32", &"1_31", &"1_30", &"0_8", &"1_29", &"1_28", &"1_27", &"1_26", &"1_25", &"0_7", &"1_23", &"1_22", &"1_21", &"1_20", &"1_2", &"1_24"]),
+"offset": Vector2(-360, 799),
+"tint_color": Color(0, 0.24975586, 0.515625, 1),
+"title": "Frame #1"
+},
+&"8_3": {
+"attached_nodes": Array[StringName]([&"0_3", &"1_38", &"1_3"]),
+"offset": Vector2(-340, 1959),
+"tint_color": Color(0, 0, 0.1796875, 1),
+"title": "Frame #1"
 }
 }
+strays = Array[String](["8_1", "8_2", "8_3", "1_9", "1_10", "1_11", "1_29"])

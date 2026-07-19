@@ -8,19 +8,17 @@
 [sub_resource type="LabelSettings" id="LabelSettings_7tiy6"]
 font_size = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrdbm"]
-bg_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
-
 [node name="ElementMenu" type="TabContainer" unique_id=1427694101]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 3
 script = ExtResource("1_5vsek")
 
 [node name="Transmutation Map" parent="." unique_id=141858091 instance=ExtResource("2_5re3p")]
+visible = false
 layout_mode = 2
 
 [node name="Matchup Chart" parent="." unique_id=1281128475 instance=ExtResource("1_x58qa")]
@@ -163,57 +161,7 @@ text = "Radioactive glass cannons."
 [node name="HSeparator" type="HSeparator" parent="Affinity/VBoxContainer" unique_id=628146607]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Affinity/VBoxContainer" unique_id=1122979827]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_wrdbm")
-
-[node name="SideEffects_VBox" type="VBoxContainer" parent="Affinity/VBoxContainer/Panel" unique_id=18568876]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Affinity/VBoxContainer/Panel/SideEffects_VBox" unique_id=1434422544]
-layout_mode = 2
-size_flags_vertical = 8
-text = "Side Effects"
-label_settings = SubResource("LabelSettings_7tiy6")
-horizontal_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Affinity/VBoxContainer/Panel/SideEffects_VBox" unique_id=1858999103]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[center][color=blue]Defensive[/color] →[color=red]Offensive[/color] = [color=red]+Attack[/color][/center]"
-fit_content = true
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="Affinity/VBoxContainer/Panel/SideEffects_VBox" unique_id=386757883]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[center][color=red]Offensive[/color] →[color=blue]Defensive[/color]= [color=blue]+Defense[/color]"
-fit_content = true
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="Affinity/VBoxContainer/Panel/SideEffects_VBox" unique_id=436696621]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[center][color=red]Offensive[/color] →[color=red]Offensive[/color] = [color=green]+Speed[/color]"
-fit_content = true
-
-[node name="RichTextLabel4" type="RichTextLabel" parent="Affinity/VBoxContainer/Panel/SideEffects_VBox" unique_id=2102221513]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[center][color=blue]Defensive[/color]→[color=blue]Defensive[/color]= [color=green]+Speed[/color]"
-fit_content = true
-
 [node name="Battle Cheat Sheet" type="MarginContainer" parent="." unique_id=1562089520]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
@@ -228,5 +176,7 @@ text = "
 [ul] Your [i]Secondary[/i] type will change 0-2 times per attack.[ol] First, your [i]Secondary[/i] type will react with the attack's type.
  Second, your [i]Secondary[/i] type will react with your [i]Primary[/i] type.[/ol][/ul]
 
-[ul] Your type is affected by your own melee attacks."
+[ul] Your type is affected by your own melee attacks.[/ul]
+
+[ul]Transmuting into a [color=blue]defensive[/color] element gives you a defense boost, and vice versa."
 fit_content = true
