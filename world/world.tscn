@@ -10,10 +10,6 @@
 [ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="7_jdm3g"]
 [ext_resource type="PackedScene" uid="uid://c51362yiro4j6" path="res://src/gui/hud_layer.tscn" id="8_mswir"]
 [ext_resource type="PackedScene" uid="uid://d26evhvt7xff8" path="res://world/subareas/blue/blue.tscn" id="10_5iu1q"]
-[ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/story/bosses/tutorial_bosses/boss_1.tscn" id="11_o1net"]
-[ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="15_b2suy"]
-[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="18_j7vgi"]
-[ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/story/bosses/tutorial_bosses/boss_3.tscn" id="20_bwxdu"]
 
 [sub_resource type="Environment" id="Environment_b2suy"]
 ambient_light_source = 3
@@ -134,22 +130,6 @@ light_indirect_energy = 5.0
 shadow_caster_mask = 4294967293
 
 [node name="Blue" parent="Overworld" unique_id=543950842 instance=ExtResource("10_5iu1q")]
-
-[node name="Boss1" parent="Overworld" unique_id=2023714278 groups=["detached_env"] instance=ExtResource("11_o1net")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7224, -1.52219, -115.886)
-_element = 0
-
-[node name="Boss2" parent="Overworld" unique_id=847891650 groups=["detached_env"] instance=ExtResource("18_j7vgi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7576, -1.50295, -116)
-_element = 0
-
-[node name="Boss3" parent="Overworld" unique_id=1301987887 groups=["detached_env"] instance=ExtResource("20_bwxdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6451, -1.48372, -120.125)
-_element = 0
-
-[node name="MiniBoss1" parent="Overworld" unique_id=526224947 groups=["detached_env"] instance=ExtResource("15_b2suy")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -115.04839, -0.2373887, -92.94928)
-_element = 0
 
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]

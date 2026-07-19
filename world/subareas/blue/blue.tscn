@@ -11,9 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_2.tscn" id="15_6yind"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_3.tscn" id="16_cjdov"]
+[ext_resource type="PackedScene" uid="uid://deg7o2or7hfh5" path="res://data/story/bosses/tutorial_bosses/boss_1.tscn" id="18_egugs"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
 [ext_resource type="PackedScene" uid="uid://c8c2q612u3dbv" path="res://assets/3d/objects/blue/hotel/side_table.tscn" id="19_ts5q1"]
+[ext_resource type="PackedScene" uid="uid://duf3dedsle555" path="res://data/story/bosses/tutorial_bosses/boss_2.tscn" id="19_yncb8"]
 [ext_resource type="PackedScene" uid="uid://bx0t6toelcbm7" path="res://assets/3d/objects/blue/hotel/ice_machine.tscn" id="20_iqqkl"]
+[ext_resource type="PackedScene" uid="uid://dd5d10xtjpg2x" path="res://data/story/bosses/tutorial_bosses/boss_3.tscn" id="20_mwtcr"]
+[ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="21_j64is"]
 [ext_resource type="PackedScene" uid="uid://d3gyuo707xdex" path="res://assets/3d/objects/blue/hotel/vase_blue.tscn" id="21_yq576"]
 [ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://3msomq4tjs6m" path="res://assets/3d/characters/blue_aligned/bartender.blend" id="23_mwtcr"]
@@ -1197,13 +1201,32 @@ mesh = SubResource("BoxMesh_41gmd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk1/Chunk/Obstacle/StaticBody3D" unique_id=30187108]
 shape = SubResource("BoxShape3D_d08kw")
 
-[node name="HallChunk2" type="Area3D" parent="HotelRooms" unique_id=1655093668 groups=["persist"]]
+[node name="Boss1" parent="HotelRooms/HallChunk1/Chunk" unique_id=2023714278 groups=["detached_env"] instance=ExtResource("18_egugs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.277599, -1.52219, -36.886)
+_element = 0
+
+[node name="Boss2" parent="HotelRooms/HallChunk1/Chunk" unique_id=847891650 groups=["detached_env"] instance=ExtResource("19_yncb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.242401, -1.50295, -37)
+_element = 0
+
+[node name="Boss3" parent="HotelRooms/HallChunk1/Chunk" unique_id=1301987887 groups=["detached_env"] instance=ExtResource("20_mwtcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3549, -1.48372, -41.125)
+_element = 0
+
+[node name="HallChunk2" type="Area3D" parent="HotelRooms" unique_id=1655093668 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108, 0, -78)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk2" unique_id=1208850281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7.5, -3.5)
 shape = SubResource("BoxShape3D_uke47")
+
+[node name="Node3D" type="Node3D" parent="HotelRooms/HallChunk2" unique_id=1985959976]
+
+[node name="MiniBoss1" parent="HotelRooms/HallChunk2/Node3D" unique_id=526224947 groups=["detached_env"] instance=ExtResource("21_j64is")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -6.9000015, 0, -13.099998)
+_element = 0
 
 [node name="HotelRoomChunk" type="Area3D" parent="HotelRooms" unique_id=934549543 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158, 0, -158)
