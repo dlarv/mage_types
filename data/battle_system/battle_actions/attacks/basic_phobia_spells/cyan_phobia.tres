@@ -23,10 +23,10 @@ script = ExtResource("2_upu2q")
 attack_effect = SubResource("Resource_qfnlr")
 
 [resource]
-resource_name = "Glaukophobia"
+resource_name = "Frigophobia"
 script = ExtResource("6_pej2m")
 effects = Array[ExtResource("2_8so8y")]([SubResource("Resource_r063c")])
 power = 0
-name = "Glaukophobia"
+name = "Frigophobia"
 _element = 7
 attack_range = 2

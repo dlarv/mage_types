@@ -23,10 +23,11 @@ script = ExtResource("3_fevoq")
 attack_effect = SubResource("Resource_4iq1y")
 
 [resource]
-resource_name = "Hydrophobia"
+resource_name = "Mycophobia"
 script = ExtResource("1_q23s8")
 effects = Array[ExtResource("2_tkr0o")]([SubResource("Resource_0f64n")])
 power = 0
-name = "Hydrophobia"
+name = "Mycophobia"
 _element = 0
 attack_range = 2
+details = "You feel the mold seep into your skin"
