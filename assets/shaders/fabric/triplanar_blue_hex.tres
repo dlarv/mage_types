@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://wnghgm87l7mw"]
+
+[ext_resource type="Texture2D" uid="uid://bgubget5ekx1v" path="res://assets/shaders/fabric/felt_blue_hex_math_2.png" id="1_q4dqt"]
+
+[resource]
+albedo_color = Color(0.3314507, 0.557466, 1, 1)
+albedo_texture = ExtResource("1_q4dqt")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
