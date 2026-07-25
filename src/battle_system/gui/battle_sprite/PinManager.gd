@@ -13,7 +13,6 @@ var show_pins := _toggle_pin_visibility.bind(true)
 @export_tool_button("Hide Pins")
 var hide_pins := _toggle_pin_visibility.bind(false)
 
-
 var pins: Dictionary[String, Node]= {}
 var status_manager: StatusEffectManager
 
@@ -35,6 +34,7 @@ func _ready() -> void:
 		"GreenPhobic": $PhobiaCrown/GreenPhobiaPin,
 		"CyanPhobic": $PhobiaCrown/CyanPhobiaPin,
 	} 
+
 
 
 func insert_pin(effect: StatusEffect) -> void:
