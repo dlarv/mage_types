@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ElementalType" format=3 uid="uid://bn6di6k824f3x"]
 
+[ext_resource type="Texture2D" uid="uid://dd4pqvaiml8ei" path="res://assets/graphics/elemental_icons/magenta_icon.svg" id="1_nfett"]
 [ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="1_rhvj1"]
 
 [resource]
@@ -8,3 +9,4 @@ id = 2
 name = "Magenta"
 main_color = Color(1, 0.12549, 1, 1)
 is_defensive_type = true
+icon = ExtResource("1_nfett")

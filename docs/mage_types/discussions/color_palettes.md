@@ -16,4 +16,3 @@
 - Pants: \#1D4C6AFF
 - Undershirt: \#7BCCFFFF
 - Jacket: \#543E20FF
-

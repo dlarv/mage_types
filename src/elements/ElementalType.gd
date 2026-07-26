@@ -9,6 +9,7 @@ enum ElementId { BLUE, PURPLE, MAGENTA, RED, ORANGE, YELLOW, GREEN, CYAN, BLANK 
 @export var main_color: Color 
 @export var is_defensive_type: bool
 @export var text_color: Color 
+@export var icon: Texture2D
 @export var color_palette: Array[Color]
 
 func _init() -> void:

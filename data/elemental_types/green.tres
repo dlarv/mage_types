@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ElementalType" format=3 uid="uid://c6faueqchwfh5"]
 
 [ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="1_gm5y5"]
+[ext_resource type="Texture2D" uid="uid://bvvhks5f2bgxm" path="res://assets/graphics/elemental_icons/green_icon.svg" id="1_vy4yl"]
 
 [resource]
 script = ExtResource("1_gm5y5")
 id = 6
 name = "Green"
 main_color = Color(0.145098, 1, 0.188235, 1)
+icon = ExtResource("1_vy4yl")

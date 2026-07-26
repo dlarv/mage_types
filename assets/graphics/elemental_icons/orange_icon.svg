@@ -1,0 +1,14 @@
+<!-- sample rectangle -->
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22.06 8 L 41.94 8 56 22.06 56 41.94 41.14 56 22.06 56 8 41.14 8 22.06 Z" style="fill:none;stroke:white;stroke-width:4"/>
+  <path d="M22.06 8 L 32 32 41.14 8" style="fill:white;stroke:white;stroke-width:4"/>
+  <path d="M32 32 L52 22.06 41.14 8" style="fill:white;stroke:white;stroke-width:4"/>
+
+
+  <path d="M32 32 L 22.06 56" style="fill:none;stroke:white;stroke-width:4">
+
+  <!-- <path d="M22.06 8 L 32 32 8 41.14 M 32 32 L 41.14 56 M 32 32 L 56 22.06" style="fill:none;stroke:white;stroke-width:3"> -->
+  <!-- <path d="M22.06 8 L 32 32 22.06 56 M 32 32 L 56 22.06"  style="fill:none;stroke:white;stroke-width:4"/> -->
+
+
+</svg>

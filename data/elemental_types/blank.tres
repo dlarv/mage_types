@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://c01111ik0ns7g"]
+[gd_resource type="Resource" script_class="ElementalType" format=3 uid="uid://c01111ik0ns7g"]
 
 [ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="1_mcgo6"]
+[ext_resource type="Texture2D" uid="uid://bbsi42sjrp14q" path="res://assets/graphics/elemental_icons/blank_icon.svg" id="1_yd53e"]
 
 [resource]
 script = ExtResource("1_mcgo6")
@@ -8,5 +9,4 @@ id = 8
 name = "Blank"
 main_color = Color(0.5, 0.5, 0.5, 1)
 is_defensive_type = true
-text_color = Color(0, 0, 0, 1)
-color_palette = Array[Color]([])
+icon = ExtResource("1_yd53e")

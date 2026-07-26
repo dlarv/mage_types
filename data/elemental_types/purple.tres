@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ElementalType" format=3 uid="uid://7n44jif83o35"]
 
+[ext_resource type="Texture2D" uid="uid://cgkfg5mgcy8kd" path="res://assets/graphics/elemental_icons/purple_icon.svg" id="1_fv1y7"]
 [ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="1_tm0il"]
 
 [resource]
@@ -8,3 +9,4 @@ id = 1
 name = "Purple"
 main_color = Color(0.478431, 0, 0.772549, 1)
 text_color = Color(1, 1, 1, 1)
+icon = ExtResource("1_fv1y7")

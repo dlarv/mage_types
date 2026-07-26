@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ElementalType" format=3 uid="uid://dv8hp2socsise"]
 
 [ext_resource type="Script" uid="uid://8udpxupu8ta1" path="res://src/elements/ElementalType.gd" id="1_etnfn"]
+[ext_resource type="Texture2D" uid="uid://41lvdj0a0454" path="res://assets/graphics/elemental_icons/yellow_icon.svg" id="1_ys7ei"]
 
 [resource]
 script = ExtResource("1_etnfn")
@@ -8,3 +9,4 @@ id = 5
 name = "Yellow"
 main_color = Color(1, 1, 0.298039, 1)
 is_defensive_type = true
+icon = ExtResource("1_ys7ei")
