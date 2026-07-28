@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bjvnp3n2y8abf"]
+
+[ext_resource type="Texture2D" uid="uid://c3l7x124k2raw" path="res://assets/graphics/elemental_icons/blue_icon.svg" id="1_4o463"]
+[ext_resource type="Texture2D" uid="uid://cgkfg5mgcy8kd" path="res://assets/graphics/elemental_icons/purple_icon.svg" id="2_t6xne"]
+[ext_resource type="Texture2D" uid="uid://dd4pqvaiml8ei" path="res://assets/graphics/elemental_icons/magenta_icon.svg" id="3_x3mxg"]
+[ext_resource type="Texture2D" uid="uid://dac2f5i8fpoga" path="res://assets/graphics/elemental_icons/red_icon.svg" id="4_3lq03"]
+[ext_resource type="Texture2D" uid="uid://bln7p6fv5epq0" path="res://assets/graphics/elemental_icons/orange_icon.svg" id="5_ixe4q"]
+[ext_resource type="Texture2D" uid="uid://41lvdj0a0454" path="res://assets/graphics/elemental_icons/yellow_icon.svg" id="6_negjv"]
+[ext_resource type="Texture2D" uid="uid://bvvhks5f2bgxm" path="res://assets/graphics/elemental_icons/green_icon.svg" id="7_klwot"]
+[ext_resource type="Texture2D" uid="uid://btmtrgxowxc38" path="res://assets/graphics/elemental_icons/cyan_icon.svg" id="8_at0ie"]
+
+[node name="Control" type="PanelContainer" unique_id=885852094]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1420.0
+offset_bottom = 636.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.725, 0.725)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=979738930]
+visible = false
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=918001927]
+layout_mode = 2
+columns = 4
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer" unique_id=545241013]
+self_modulate = Color(0, 0, 0.8627451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_4o463")
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer" unique_id=1737793383]
+self_modulate = Color(0.47843137, 0, 0.77254903, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_t6xne")
+
+[node name="TextureRect3" type="TextureRect" parent="GridContainer" unique_id=608333204]
+self_modulate = Color(1, 0.1254902, 1, 1)
+layout_mode = 2
+texture = ExtResource("3_x3mxg")
+
+[node name="TextureRect4" type="TextureRect" parent="GridContainer" unique_id=571077408]
+self_modulate = Color(0.67058825, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("4_3lq03")
+
+[node name="TextureRect5" type="TextureRect" parent="GridContainer" unique_id=2064587181]
+self_modulate = Color(1, 0.26666668, 0, 1)
+layout_mode = 2
+texture = ExtResource("5_ixe4q")
+
+[node name="TextureRect6" type="TextureRect" parent="GridContainer" unique_id=1544579572]
+self_modulate = Color(1, 1, 0.29803923, 1)
+layout_mode = 2
+texture = ExtResource("6_negjv")
+
+[node name="TextureRect7" type="TextureRect" parent="GridContainer" unique_id=57721488]
+self_modulate = Color(0.14509805, 1, 0.1882353, 1)
+layout_mode = 2
+texture = ExtResource("7_klwot")
+
+[node name="TextureRect8" type="TextureRect" parent="GridContainer" unique_id=1992721116]
+self_modulate = Color(0.1254902, 0.9019608, 0.9019608, 1)
+layout_mode = 2
+texture = ExtResource("8_at0ie")
