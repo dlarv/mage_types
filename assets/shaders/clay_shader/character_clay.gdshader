@@ -13,6 +13,6 @@ void fragment() {
 	
 	vec3 primary = (texture(element_map, UV).r * color_1).rgb;
 	vec3 secondary = (texture(element_map, UV).g * color_2).rgb;
-	float weight = (1.0 - texture(element_map, UV).b);
-	ALBEDO = texture(diffuse_map, UV).rgb * weight + primary + secondary;
+	vec3 diffuse = texture(element_map, UV).b * texture(diffuse_map, UV).rgb;
+	ALBEDO = diffuse + primary + secondary;
 }

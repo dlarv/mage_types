@@ -10,6 +10,11 @@
 [ext_resource type="Resource" uid="uid://xxonecselnvh" path="res://data/items/equipment/stasis_shard.tres" id="8_l271a"]
 [ext_resource type="PackedScene" uid="uid://dx4vs3amy34h2" path="res://assets/3d/characters/goose/goose_v4.blend" id="9_8ydov"]
 [ext_resource type="PackedScene" uid="uid://1fxri2vcuann" path="res://src/player/PCElementShaderManager.tscn" id="10_8ydov"]
+[ext_resource type="Shader" uid="uid://bh4ny2n75s83r" path="res://assets/shaders/clay_shader/character_clay.gdshader" id="11_wlj80"]
+[ext_resource type="Texture2D" uid="uid://3ge2gitaiijd" path="res://assets/3d/characters/goose/textures/goose_diffuse.png" id="12_6bm8s"]
+[ext_resource type="Texture2D" uid="uid://bto1a5akqxjxv" path="res://assets/3d/characters/goose/textures/goose_element.png" id="13_hrerp"]
+[ext_resource type="Texture2D" uid="uid://tnqqr3bu48w7" path="res://assets/3d/characters/goose/textures/goose_normal.png" id="14_oyld2"]
+[ext_resource type="Texture2D" uid="uid://dk1ywovl2kc7n" path="res://assets/3d/characters/goose/textures/goose_rough.png" id="15_vwsmr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f637b"]
 height = 3.0
@@ -266,6 +271,16 @@ states/walk/position = Vector2(400, 137)
 transitions = ["Start", "IdleNeutral", SubResource("AnimationNodeStateMachineTransition_5efpn"), "IdleNeutral", "walk", SubResource("AnimationNodeStateMachineTransition_p6grl"), "walk", "IdleNeutral", SubResource("AnimationNodeStateMachineTransition_wcxbk"), "walk", "FreeFall", SubResource("AnimationNodeStateMachineTransition_hja65"), "FreeFall", "IdleNeutral", SubResource("AnimationNodeStateMachineTransition_cwolq"), "jump", "FreeFall", SubResource("AnimationNodeStateMachineTransition_vwi60"), "IdleNeutral", "jump", SubResource("AnimationNodeStateMachineTransition_o04tx"), "walk", "running_jump", SubResource("AnimationNodeStateMachineTransition_a4vah"), "running_jump", "FreeFall", SubResource("AnimationNodeStateMachineTransition_j2873"), "running_jump", "walk", SubResource("AnimationNodeStateMachineTransition_dpt0q"), "running_jump", "IdleNeutral", SubResource("AnimationNodeStateMachineTransition_e7e1q"), "IdleNeutral", "Dragging", SubResource("AnimationNodeStateMachineTransition_8ydov"), "Dragging", "IdleNeutral", SubResource("AnimationNodeStateMachineTransition_oyld2"), "walk", "Dragging", SubResource("AnimationNodeStateMachineTransition_6bm8s")]
 graph_offset = Vector2(7.0498657, -122.38599)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcdrv"]
+render_priority = 0
+shader = ExtResource("11_wlj80")
+shader_parameter/diffuse_map = ExtResource("12_6bm8s")
+shader_parameter/normal_map = ExtResource("14_oyld2")
+shader_parameter/rough_map = ExtResource("15_vwsmr")
+shader_parameter/element_map = ExtResource("13_hrerp")
+shader_parameter/color_1 = Color(0, 0, 0, 1)
+shader_parameter/color_2 = Color(0, 0, 0, 1)
+
 [node name="Player" type="CharacterBody3D" unique_id=1613643988 node_paths=PackedStringArray("model", "anim_player") groups=["persist", "player"]]
 collision_layer = 113
 collision_mask = 49
@@ -330,10 +345,10 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../goose_v4/AnimationPlayer")
 parameters/Dragging/DragTimeScale/scale = 1.0
 
-[node name="goose_v4" parent="." unique_id=1951052604 instance=ExtResource("9_8ydov")]
+[node name="goose_v4" parent="." unique_id=189377087 instance=ExtResource("9_8ydov")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Skeleton3D" parent="goose_v4/rig" parent_id_path=PackedInt32Array(1951052604, 806836715) index="0" unique_id=1248528529]
+[node name="Skeleton3D" parent="goose_v4/rig" parent_id_path=PackedInt32Array(189377087, 2031212170) index="0" unique_id=530765047]
 bones/0/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
 bones/1/position = Vector3(0.023627762, 0.0870098, 4.5006638)
 bones/1/rotation = Quaternion(0.7904554, 0, 0, 0.6125196)
@@ -551,7 +566,6 @@ bones/230/position = Vector3(-0.20766543, 0.90444005, -0.03486109)
 bones/230/rotation = Quaternion(-0.31839588, -0.6526163, 0.5676485, 0.3879321)
 bones/230/scale = Vector3(1.0000001, 1.0000002, 0.99999994)
 bones/231/rotation = Quaternion(-2.3560307e-08, -0.029272057, 3.0629884e-08, 0.99957156)
-bones/231/scale = Vector3(1, 1.0000002, 1.0000001)
 bones/232/rotation = Quaternion(0.1268749, -0.029269103, 0.003745377, 0.9914798)
 bones/232/scale = Vector3(0.99999917, 1.0000005, 0.9999993)
 bones/233/rotation = Quaternion(6.3446336e-08, 3.492455e-09, -5.1222727e-08, 1)
@@ -589,6 +603,7 @@ bones/274/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
 [node name="PCElementShaderManager" parent="." unique_id=1974747347 node_paths=PackedStringArray("mesh") instance=ExtResource("10_8ydov")]
 battle_actor = ExtResource("2_x42xx")
 mesh = NodePath("../goose_v4/rig/Skeleton3D/Final")
+_special_material = SubResource("ShaderMaterial_jcdrv")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FlushJumpBufferTimer" to="." method="_on_flush_jump_buffer_timer_timeout"]
