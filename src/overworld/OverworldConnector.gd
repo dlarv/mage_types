@@ -59,7 +59,7 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:Variant) -> voi
 	if enemy is EnemyActor:
 		healPlayer = enemy.heal_player_after_battle
 
-	%WorldEnvironment.environment.volumetric_fog_density = 0
+	%WorldEnvironment.environment = null
 	world.process_mode = Node.PROCESS_MODE_DISABLED
 	hud.hide()
 	Battle.start(allies, Inventory.get_battle_items(), enemy.team, enemy.ai)
