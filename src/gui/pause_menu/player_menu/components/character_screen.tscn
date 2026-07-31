@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk5s033cfegw5"]
+[gd_scene format=3 uid="uid://dk5s033cfegw5"]
 
 [ext_resource type="Script" uid="uid://c7qokqmpvyiy8" path="res://src/gui/pause_menu/player_menu/components/CharacterScreen.gd" id="1_pabo1"]
 [ext_resource type="PackedScene" uid="uid://biqiuai6gr2tr" path="res://src/elements/gui/element_icon.tscn" id="2_p3dnk"]
@@ -14,81 +14,80 @@ size = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6grvl"]
 bg_color = Color(0, 0.624535, 0.999897, 1)
 
-[node name="CharacterScreen" type="TabContainer"]
+[node name="CharacterScreen" type="TabContainer" unique_id=555366662]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 script = ExtResource("1_pabo1")
 
-[node name="General" type="MarginContainer" parent="."]
-visible = false
+[node name="General" type="MarginContainer" parent="." unique_id=805365531]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="General"]
+[node name="VBoxContainer" type="VBoxContainer" parent="General" unique_id=227128899]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="General/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="General/VBoxContainer" unique_id=2075123671]
 layout_mode = 2
 
-[node name="Name_Label" type="Label" parent="General/VBoxContainer/HBoxContainer"]
+[node name="Name_Label" type="Label" parent="General/VBoxContainer/HBoxContainer" unique_id=1062400657]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Name"
 label_settings = SubResource("LabelSettings_1lgfw")
 
-[node name="Label" type="Label" parent="General/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="General/VBoxContainer/HBoxContainer" unique_id=947796214]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "lvl"
 
-[node name="LevelSpinBox" type="SpinBox" parent="General/VBoxContainer/HBoxContainer"]
+[node name="LevelSpinBox" type="SpinBox" parent="General/VBoxContainer/HBoxContainer" unique_id=1197533239]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
 max_value = 500.0
 value = 1.0
 
-[node name="HSeparator" type="HSeparator" parent="General/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="General/VBoxContainer" unique_id=1107555586]
 layout_mode = 2
 
-[node name="Elements_HBox" type="HBoxContainer" parent="General/VBoxContainer"]
+[node name="Elements_HBox" type="HBoxContainer" parent="General/VBoxContainer" unique_id=427320025]
 layout_mode = 2
 
-[node name="Primary" parent="General/VBoxContainer/Elements_HBox" instance=ExtResource("2_p3dnk")]
+[node name="Primary" parent="General/VBoxContainer/Elements_HBox" unique_id=1996070209 instance=ExtResource("2_p3dnk")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Secondary" parent="General/VBoxContainer/Elements_HBox" instance=ExtResource("2_p3dnk")]
+[node name="Secondary" parent="General/VBoxContainer/Elements_HBox" unique_id=1835045531 instance=ExtResource("2_p3dnk")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Bias_Label" type="Label" parent="General/VBoxContainer"]
+[node name="Bias_Label" type="Label" parent="General/VBoxContainer" unique_id=1467375896]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Alignment:"
 
-[node name="Bias_ElementIcon" parent="General/VBoxContainer" instance=ExtResource("2_p3dnk")]
+[node name="Bias_ElementIcon" parent="General/VBoxContainer" unique_id=566597356 instance=ExtResource("2_p3dnk")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HSeparator2" type="HSeparator" parent="General/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="General/VBoxContainer" unique_id=172260579]
 layout_mode = 2
 
-[node name="XpHBox" type="HBoxContainer" parent="General/VBoxContainer"]
+[node name="XpHBox" type="HBoxContainer" parent="General/VBoxContainer" unique_id=595979180]
 layout_mode = 2
 
-[node name="Level" type="Label" parent="General/VBoxContainer/XpHBox"]
+[node name="Level" type="Label" parent="General/VBoxContainer/XpHBox" unique_id=343113719]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lv1"
 
-[node name="XpSlider" type="HSlider" parent="General/VBoxContainer/XpHBox"]
+[node name="XpSlider" type="HSlider" parent="General/VBoxContainer/XpHBox" unique_id=1721664365]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -99,145 +98,146 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_6grvl")
 editable = false
 scrollable = false
 
-[node name="XpTotals" type="Label" parent="General/VBoxContainer"]
+[node name="XpTotals" type="Label" parent="General/VBoxContainer" unique_id=1618679392]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/0"
 horizontal_alignment = 2
 
-[node name="HSeparator3" type="HSeparator" parent="General/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="General/VBoxContainer" unique_id=473185395]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="General/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="General/VBoxContainer" unique_id=1615103992]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="General/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="General/VBoxContainer/PanelContainer" unique_id=267373756]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer" unique_id=1753650792]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=44844874]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Stats:"
 horizontal_alignment = 1
 
-[node name="Stats_HBox" type="HBoxContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Stats_HBox" type="HBoxContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=488651182]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Hp_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_HBox" instance=ExtResource("3_j3qxa")]
+[node name="Hp_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_HBox" unique_id=1802808621 instance=ExtResource("3_j3qxa")]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 1
 stat = "HP"
 
-[node name="HSeparator" type="HSeparator" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=982011404]
 layout_mode = 2
 
-[node name="Stats_Container" type="GridContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Stats_Container" type="GridContainer" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=851415094]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
 
-[node name="MAttack_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+[node name="MAttack_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" unique_id=1919954126 instance=ExtResource("3_j3qxa")]
 layout_mode = 2
 stat = "MELEE_ATTACK"
 
-[node name="RAttack_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+[node name="RAttack_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" unique_id=836062872 instance=ExtResource("3_j3qxa")]
 layout_mode = 2
 stat = "RANGED_ATTACK"
 
-[node name="MDefense_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+[node name="MDefense_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" unique_id=417812775 instance=ExtResource("3_j3qxa")]
 layout_mode = 2
 stat = "MELEE_DEFENSE"
 
-[node name="RDefense_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+[node name="RDefense_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" unique_id=155324131 instance=ExtResource("3_j3qxa")]
 layout_mode = 2
 stat = "RANGED_DEFENSE"
 
-[node name="Speed_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+[node name="Speed_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" unique_id=2140329053 instance=ExtResource("3_j3qxa")]
 layout_mode = 2
 stat = "SPEED"
 
-[node name="Evasion_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" instance=ExtResource("3_j3qxa")]
+[node name="Evasion_StatItem" parent="General/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Stats_Container" unique_id=1974554993 instance=ExtResource("3_j3qxa")]
 layout_mode = 2
 stat = "EVASION"
 
-[node name="Button and Beads" type="MarginContainer" parent="."]
+[node name="Button and Beads" type="MarginContainer" parent="." unique_id=1317664415]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads" unique_id=1051833906]
 layout_mode = 2
 
-[node name="ListVBox" type="VBoxContainer" parent="Button and Beads/HBoxContainer"]
+[node name="ListVBox" type="VBoxContainer" parent="Button and Beads/HBoxContainer" unique_id=264898325]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Button and Beads/HBoxContainer/ListVBox"]
+[node name="Label" type="Label" parent="Button and Beads/HBoxContainer/ListVBox" unique_id=2082447446]
 layout_mode = 2
 text = "Equipment (Button)"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads/HBoxContainer/ListVBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Button and Beads/HBoxContainer/ListVBox" unique_id=764150027]
 layout_mode = 2
 
-[node name="OverworldEquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
+[node name="OverworldEquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer" unique_id=500802946]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer"]
+[node name="EquipmentButton" type="Button" parent="Button and Beads/HBoxContainer/ListVBox/HBoxContainer" unique_id=1152350587]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="Button and Beads/HBoxContainer/ListVBox"]
+[node name="Label2" type="Label" parent="Button and Beads/HBoxContainer/ListVBox" unique_id=1722525725]
 layout_mode = 2
 text = "Spells (Beads)"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Button and Beads/HBoxContainer/ListVBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Button and Beads/HBoxContainer/ListVBox" unique_id=534750107]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SpellScroller" type="VBoxContainer" parent="Button and Beads/HBoxContainer/ListVBox/ScrollContainer"]
+[node name="SpellScroller" type="VBoxContainer" parent="Button and Beads/HBoxContainer/ListVBox/ScrollContainer" unique_id=1517799793]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Button and Beads/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Button and Beads/HBoxContainer" unique_id=1554793144]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InfoDisplay" parent="Button and Beads/HBoxContainer/VBoxContainer" instance=ExtResource("4_3lj6l")]
+[node name="InfoDisplay" parent="Button and Beads/HBoxContainer/VBoxContainer" unique_id=200626060 instance=ExtResource("4_3lj6l")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Control_HBox" type="HBoxContainer" parent="Button and Beads/HBoxContainer/VBoxContainer"]
+[node name="Control_HBox" type="HBoxContainer" parent="Button and Beads/HBoxContainer/VBoxContainer" unique_id=74974855]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Replace_Button" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox"]
+[node name="Replace_Button" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox" unique_id=2123218473]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Replace"
 
-[node name="RemoveButton" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox"]
+[node name="RemoveButton" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox" unique_id=235739098]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Remove"
 
-[node name="Cancel_Button" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox"]
+[node name="Cancel_Button" type="Button" parent="Button and Beads/HBoxContainer/VBoxContainer/Control_HBox" unique_id=1086644929]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
