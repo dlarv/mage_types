@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://biqiuai6gr2tr"]
 
 [ext_resource type="Script" uid="uid://bytpfk06xs7ht" path="res://src/elements/gui/ElementIcon.gd" id="1_2nvp8"]
-[ext_resource type="Texture2D" uid="uid://bvvhks5f2bgxm" path="res://assets/graphics/elemental_icons/green_icon.svg" id="2_lgr8t"]
+[ext_resource type="Texture2D" uid="uid://c3l7x124k2raw" path="res://assets/graphics/elemental_icons/blue_icon.svg" id="2_lgr8t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wv7q"]
 resource_local_to_scene = true
 
 [node name="ElementIcon" type="ColorRect" unique_id=2003567271]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(64, 64)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-color = Color(0.145098, 1, 0.188235, 1)
+color = Color(0, 0, 0.862745, 1)
 script = ExtResource("1_2nvp8")
-_element = 6
+_element = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=526467105]
 layout_mode = 1
@@ -28,8 +28,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=449313958]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("2_lgr8t")
 expand_mode = 1
@@ -38,7 +37,7 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=801781412]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Green"
+text = "Blue"
 label_settings = SubResource("LabelSettings_2wv7q")
 horizontal_alignment = 1
 vertical_alignment = 1
