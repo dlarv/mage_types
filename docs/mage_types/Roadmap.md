@@ -858,7 +858,9 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] South Beach Island
 		- [x] Designed parkour Challenge
 		- [ ]  Place NPC/reward
-	- [ ] Place breakable rock in front of East Cave
+	- [x] Place breakable rock in front of East Cave
+		- [ ] Make cave smaller so boulder can actually cover it
+	- [ ] Make section of beach below sandcastle flatter
 	
 [[Map#Beach|Area Breakdown: Beach]]	
 ### Transmutation Tutorial
