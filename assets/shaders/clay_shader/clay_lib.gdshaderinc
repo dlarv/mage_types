@@ -46,8 +46,9 @@ vec3 get_triplanar_normal_map() {
 }
 
 vec3 get_simple_normal_map(vec2 uv) {
-	float adjusted_crack_scale = crack_scale * GLOBAL_CRACK_SCALAR + crack_offset;
-	vec3 crack_base_normal = texture(cracks, uv).xyz;
-	vec3 fingerprint_normal = texture(fingerprints, uv).xyz;
+	vec2 crack_uv = uv * crack_scale * GLOBAL_CRACK_SCALAR + crack_offset;
+	vec2 fingerprint_uv = uv * fingerprint_scale + fingerprint_offset;
+	vec3 crack_base_normal = texture(cracks, crack_uv).xyz;
+	vec3 fingerprint_normal = texture(fingerprints, fingerprint_uv).xyz;
 	return fingerprint_normal * crack_base_normal;
 }
