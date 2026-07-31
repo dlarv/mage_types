@@ -7,13 +7,12 @@
 render_priority = 0
 shader = ExtResource("2_c6xjh")
 shader_parameter/show_diffuse_test = false
-shader_parameter/base_color = Color(0, 0, 0, 1)
 shader_parameter/roughness = 1.0
 shader_parameter/fingerprint_offset = 0.0
 shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
-shader_parameter/crack_detail_level = 0.5
+shader_parameter/base_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_c6xjh"]
 height = 11.5

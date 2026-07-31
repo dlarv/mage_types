@@ -16,6 +16,7 @@ ambient_light_source = 3
 ambient_light_color = Color(0.8425167, 0.9312991, 1, 1)
 ambient_light_sky_contribution = 0.8
 ambient_light_energy = 0.15
+glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 

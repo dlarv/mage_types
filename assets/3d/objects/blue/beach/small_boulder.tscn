@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d12p86mvw1tk"]
+
+[ext_resource type="PackedScene" uid="uid://b5c6e1e7xs0d2" path="res://assets/3d/objects/blue/beach/raw/Boulder_002.glb" id="1_3llh2"]
+[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay_simple.gdshader" id="2_5vdgj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fjny"]
+render_priority = 0
+shader = ExtResource("2_5vdgj")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 2.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/base_color = Color(0.57700837, 0.5770084, 0.57700837, 1)
+shader_parameter/use_triplanar = false
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3llh2"]
+radius = 1.1
+
+[node name="SmallBoulder" unique_id=1661157211 instance=ExtResource("1_3llh2")]
+
+[node name="Boulder_002" parent="." index="0" unique_id=1149229115]
+surface_material_override/0 = SubResource("ShaderMaterial_1fjny")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Boulder_002" index="0" unique_id=2098203280]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boulder_002/StaticBody3D" index="0" unique_id=390891678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_3llh2")

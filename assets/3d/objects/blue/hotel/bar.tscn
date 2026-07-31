@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bx6oxo5u068w2"]
+
+[ext_resource type="PackedScene" uid="uid://b1rs2c4f0nxao" path="res://assets/3d/objects/blue/hotel/raw/Bar.glb" id="1_b2y8p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioaok"]
+size = Vector3(9.2, 2, 1.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_agim5"]
+size = Vector3(9.5, 0.3, 2.3)
+
+[node name="Bar" unique_id=1826279851 instance=ExtResource("1_b2y8p")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1637717310]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=753599338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20000029, 1, -0.050000012)
+shape = SubResource("BoxShape3D_ioaok")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1247461893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35000038, 2.15, -0.05000016)
+shape = SubResource("BoxShape3D_agim5")

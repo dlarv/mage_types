@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bihjlp4s00xhf"]
+
+[ext_resource type="PackedScene" uid="uid://dglv7sushq7n1" path="res://assets/3d/objects/blue/beach/raw/Stalagmite_002.glb" id="1_d6cu5"]
+[ext_resource type="Texture2D" uid="uid://b0odpmmulptss" path="res://assets/3d/objects/blue/beach/raw/textures/stalagmite_2_normal.png" id="2_b7cl4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofpmo"]
+normal_enabled = true
+normal_texture = ExtResource("2_b7cl4")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b7cl4"]
+height = 2.1
+
+[node name="Stalagmite2" unique_id=1910723990 instance=ExtResource("1_d6cu5")]
+
+[node name="Stalagmite_002" parent="." index="0" unique_id=46820224]
+surface_material_override/0 = SubResource("StandardMaterial3D_ofpmo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stalagmite_002" index="0" unique_id=295490922]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stalagmite_002/StaticBody3D" index="0" unique_id=1788227748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+shape = SubResource("CylinderShape3D_b7cl4")

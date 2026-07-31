@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cw5nc0vaotaxt"]
+
+[ext_resource type="PackedScene" uid="uid://2dxgqw67n73m" path="res://assets/3d/objects/blue/hotel/raw/PoolTable.glb" id="1_f4j4r"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_x5mm4"]
+
+[node name="PoolTable" unique_id=652037437 instance=ExtResource("1_f4j4r")]
+
+[node name="PoolTable" parent="." index="0" unique_id=598974519]
+surface_material_override/0 = ExtResource("2_x5mm4")

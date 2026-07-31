@@ -17,6 +17,9 @@
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="11_1vpu4"]
 [ext_resource type="Resource" uid="uid://c4erte10ui5ws" path="res://data/items/key_items/magenta_key.tres" id="12_ji4u4"]
 [ext_resource type="Resource" uid="uid://b43lxfbq75vtw" path="res://data/items/spell_scrolls/output/confetti_cannon_bead.tres" id="15_yi3f6"]
+[ext_resource type="PackedScene" uid="uid://ouc848441g1x" path="res://assets/3d/objects/blue/beach/sandcastle.tscn" id="18_dpbhw"]
+[ext_resource type="PackedScene" uid="uid://dxjcd636e5sx3" path="res://assets/3d/objects/blue/beach/obelisk.tscn" id="18_r2be5"]
+[ext_resource type="PackedScene" uid="uid://byfoh2n6hn67b" path="res://assets/3d/objects/blue/beach/large_boulder.tscn" id="19_cg7vx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gn7b1"]
 size = Vector3(105, 25, 103)
@@ -154,7 +157,7 @@ text = "If you get stuck, use Ctrl+f to enter fly mode.
 font_size = 64
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="HotelExteriorChunk/Chunk" unique_id=397485391]
-transform = Transform3D(0.99888986, 0.04652654, -0.007369057, 0, 0.156434, 0.9876884, 0.047106493, -0.986592, 0.15626033, 0, 11.9111, 33.33571)
+transform = Transform3D(0.97689545, -0.2135905, -0.0073690414, 0.040488068, 0.15110363, 0.98768836, -0.20984747, -0.96516675, 0.15626031, 1.0679526, 11.155582, 38.16154)
 light_color = Color(0.49411765, 0.67058825, 1, 1)
 light_energy = 0.4
 shadow_enabled = true
@@ -624,6 +627,15 @@ material = ExtResource("8_5jrit")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.5, -13.5, 128.5)
 size = Vector3(10, 4, 4)
 material = ExtResource("8_5jrit")
+
+[node name="Obelisk" parent="HotelExteriorChunk/Chunk" unique_id=1551934087 instance=ExtResource("18_r2be5")]
+transform = Transform3D(2.9999998, 0, 0, 0, 3, 0, 0, 0, 2.9999998, 32, -0.39999998, 44)
+
+[node name="Sandcastle" parent="." unique_id=1000982128 instance=ExtResource("18_dpbhw")]
+transform = Transform3D(0.9961947, -0.08715574, -4.656613e-10, 0.08682408, 0.9924039, -0.08715574, 0.0075961226, 0.08682409, 0.9961947, 61.008717, -9.199241, 83.29131)
+
+[node name="LargeBoulder" parent="." unique_id=1991580072 instance=ExtResource("19_cg7vx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179, -9, 76)
 
 [connection signal="timeout" from="HotelExteriorChunk/Chunk/SunkenLampPuzzle/Timer" to="HotelExteriorChunk/Chunk/SunkenLampPuzzle" method="_on_timer_timeout"]
 [connection signal="body_entered" from="HotelExteriorChunk/Chunk/SunkenLampPuzzle/Reset1" to="HotelExteriorChunk/Chunk/SunkenLampPuzzle" method="_reset"]

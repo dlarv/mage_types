@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dbw1rxpijpta4"]
+
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="1_dwy8g"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dwy8g"]
+resource_local_to_scene = true
+material = ExtResource("1_dwy8g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ddcpn"]
+size = Vector2(10, 10)
+
+[node name="PlasticMaterialTest" type="Node3D" unique_id=50136490]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=616663631]
+mesh = SubResource("SphereMesh_dwy8g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=510099444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_ddcpn")
