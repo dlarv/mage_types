@@ -11,6 +11,7 @@ signal on_loaded(chunk: Chunk)
 ## This value is passed to any animation_actors in scene that do not have their own.
 @export var animation_player: AnimationPlayer
 @export var fog_level := 0.0
+@export var environment: Environment
 
 var _persistent_objs: Dictionary[NodePath, Node]= {}
 

@@ -32,11 +32,11 @@ func _ready() -> void:
 	for chunk in get_tree().get_nodes_in_group("chunk"):
 		chunk.on_loaded.connect(func(c: Chunk) -> void:
 			if not _player.god_mode:
-				%WorldEnvironment.environment.volumetric_fog_density = c.fog_level
+				%WorldEnvironment.environment = c.environment
 		)
 	
 	_player.entered_god_mode.connect(func() -> void:
-		%WorldEnvironment.environment.volumetric_fog_density = 0
+		%WorldEnvironment.environment = null
 	)
 
 

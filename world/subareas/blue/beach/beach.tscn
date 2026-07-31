@@ -21,8 +21,26 @@
 [ext_resource type="PackedScene" uid="uid://dxjcd636e5sx3" path="res://assets/3d/objects/blue/beach/obelisk.tscn" id="18_r2be5"]
 [ext_resource type="PackedScene" uid="uid://byfoh2n6hn67b" path="res://assets/3d/objects/blue/beach/large_boulder.tscn" id="19_cg7vx"]
 
+[sub_resource type="Environment" id="Environment_5foko"]
+ambient_light_source = 3
+ambient_light_color = Color(0.8425167, 0.9312991, 1, 1)
+ambient_light_sky_contribution = 0.8
+ambient_light_energy = 0.15
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.07
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_gn7b1"]
 size = Vector3(105, 25, 103)
+
+[sub_resource type="Environment" id="Environment_r2be5"]
+ambient_light_source = 3
+ambient_light_color = Color(0.8425167, 0.9312991, 1, 1)
+ambient_light_sky_contribution = 0.8
+ambient_light_energy = 0.15
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkys2"]
 size = Vector3(260, 44.450253, 229)
@@ -71,7 +89,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.39735, 0, 0)
 script = ExtResource("3_5jrit")
 chunk = NodePath("Chunk")
 non_persistent = [NodePath("Chunk/BacktrackingPuzzle/MagiclayRock"), NodePath("Chunk/BacktrackingPuzzle/MagiclayRock2"), NodePath("Chunk/BacktrackingPuzzle/MagiclayRock3")]
-fog_level = 0.1
+environment = SubResource("Environment_5foko")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BeachChunk" unique_id=748606485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7.5, 62.33571)
@@ -142,7 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342, 0, 126.336)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 0)
 script = ExtResource("3_5jrit")
 chunk = NodePath("Chunk")
-fog_level = 0.1
+environment = SubResource("Environment_r2be5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelExteriorChunk" unique_id=980789944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4621887, 11.209017, 58.33571)
