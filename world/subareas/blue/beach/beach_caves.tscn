@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_exmbl"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="5_eroq7"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="5_gcly8"]
+[ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay_simple.gdshader" id="5_upves"]
 [ext_resource type="Script" uid="uid://dv8k5oh3a7m23" path="res://src/overworld/characters/Dialog.gd" id="6_upves"]
 [ext_resource type="PackedScene" uid="uid://cfpuqf3hfg6by" path="res://src/overworld/puzzle_blocks/bridges/bridge.tscn" id="6_yng4o"]
 [ext_resource type="PackedScene" uid="uid://ck6cq5qaxuf80" path="res://src/overworld/puzzle_blocks/bridges/pillar.tscn" id="7_s01sn"]
@@ -102,7 +103,20 @@ shader_parameter/element_id = 7
 [sub_resource type="BoxShape3D" id="BoxShape3D_upves"]
 size = Vector3(1, 1, 2)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mtce"]
+render_priority = 0
+shader = ExtResource("5_upves")
+shader_parameter/show_diffuse_test = false
+shader_parameter/roughness = 1.0
+shader_parameter/fingerprint_offset = 0.0
+shader_parameter/fingerprint_scale = 1.0
+shader_parameter/crack_offset = 0.0
+shader_parameter/crack_scale = 1.0
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/use_triplanar = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_4pdg5"]
+material = SubResource("ShaderMaterial_7mtce")
 size = Vector3(1, 1, 2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7mtce"]
