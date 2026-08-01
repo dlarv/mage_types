@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c0lunojco2h8i"]
+
+[ext_resource type="PackedScene" uid="uid://cchvehuy65l0o" path="res://assets/3d/objects/blue/hotel/raw/SmallBonsaiTree.glb" id="1_3ttx6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_udpdv"]
+radius = 0.31152344
+height = 1.2548828
+
+[node name="SmallBonsaiTree" unique_id=269969241 instance=ExtResource("1_3ttx6")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SmallBonsaiTree" parent_id_path=PackedInt32Array(988769437) index="0" unique_id=642811741]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallBonsaiTree/StaticBody3D" index="0" unique_id=1207232903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00041153282, 0.57314485, -0.035933502)
+shape = SubResource("CapsuleShape3D_udpdv")

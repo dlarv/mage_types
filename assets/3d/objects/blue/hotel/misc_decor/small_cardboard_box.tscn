@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://1gq4ajk4hvy3"]
+
+[ext_resource type="PackedScene" uid="uid://cqeknnmig20us" path="res://assets/3d/objects/blue/hotel/raw/CardboardBox.glb" id="1_qb8am"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qb8am"]
+size = Vector3(0.35200197, 0.35998535, 0.3683594)
+
+[node name="SmallCardboardBox" unique_id=1549984367 instance=ExtResource("1_qb8am")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CardboardBox" parent_id_path=PackedInt32Array(641000126) index="0" unique_id=212478873]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CardboardBox/StaticBody3D" index="0" unique_id=1281196163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026123226, 0.17840576, 0.0060546696)
+shape = SubResource("BoxShape3D_qb8am")

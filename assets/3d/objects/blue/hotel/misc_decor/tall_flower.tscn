@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dqojeodfv88qn"]
+
+[ext_resource type="PackedScene" uid="uid://c3i220dwsngdk" path="res://assets/3d/objects/blue/hotel/raw/TallFlower.glb" id="1_els22"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_exchg"]
+radius = 0.5522461
+height = 4.5
+
+[node name="TallFlower" unique_id=1306097842 instance=ExtResource("1_els22")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TallFlower" parent_id_path=PackedInt32Array(85341931) index="0" unique_id=695514464]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 2.2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TallFlower/StaticBody3D" index="0" unique_id=741800184]
+transform = Transform3D(-4.371139e-08, 1, 5.960464e-08, -1, -4.3711385e-08, -5.9604645e-08, -5.9604645e-08, -5.9604645e-08, 1, -0.11347222, -5.2459058e-08, 7.4505806e-08)
+shape = SubResource("CapsuleShape3D_exchg")

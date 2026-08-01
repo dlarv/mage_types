@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ciae6yorciubg"]
+
+[ext_resource type="PackedScene" uid="uid://cmitqj8ornpat" path="res://assets/3d/objects/blue/hotel/raw/HighTable.glb" id="1_p36sn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p36sn"]
+size = Vector3(6, 2.7, 4)
+
+[node name="HighTable" unique_id=659993282 instance=ExtResource("1_p36sn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HighTable" parent_id_path=PackedInt32Array(675272157) index="0" unique_id=1707047931]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HighTable/StaticBody3D" index="0" unique_id=2083750104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+shape = SubResource("BoxShape3D_p36sn")

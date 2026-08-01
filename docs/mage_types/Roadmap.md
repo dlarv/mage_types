@@ -408,7 +408,12 @@ Dual combat system. Some enemies can attack the player in the overworld. Some en
 >2. Set KeyItem.id to n+1, where n is id of previous stencil
 >3. Inside ElementFlowChart.gd, add new case to `match` statement in `_on_stencil_button_toggled`
 ### Icons
-- [ ] Associate symbols with each element to help with differentiation #v0_7
+- [x] Create symbols for each element to help with differentiation #v0_7
+- [ ] Add icons to help differentiate elements at a glance #v0_9
+	 - [ ] Add icons to Bridge and pressure plates
+	 - [ ] Add icon mode, which adds a hovering icon above each MagiClay object 
+	 - [ ] Add icons to attacks in battle menus
+	 - [ ] Add icons to BattleActorDisplay cards
 
 I want the UI to have a tactile feel, so I think it'd be cool if the icons had a 3D feel to them.
 
@@ -563,11 +568,6 @@ I think idea \#2 would fit better with the currently designed systems.
 	 - [x] Visual indicator that can be used to distinguish MagiClay Element (besides color)
 	 - [x] Bugfix: Geyser doesn't seem to like the triplanar texture, so I might need to bake it
 	 - [x] Added option to turn off fancy MagiClay Effects
-- [ ] Add icons to help differentiate elements at a glance #v0_9
-	 - [ ] Add icons to Bridge and pressure plates
-	 - [ ] Add icon mode, which adds a hovering icon above each MagiClay object 
-	 - [ ] Add icons to attacks in battle menus
-	 - [ ] Add icons to BattleActorDisplay cards
 	 
 MagiClay has 2 associated shaders:
 - `MagiClay.gdshader`: This restricts the color to globally defined colors (see [[color_palettes]]).
@@ -824,7 +824,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 - [ ] Hallways #v0_7
 	- [ ] Local lighting
 	- [ ] Wallpaper
-	- [ ] Make carpet triplanar
+	- [x] Make carpet triplanar
 	- [ ] Decor 
 - [ ] Hotel room decor  #v0_7  
 - [ ] Hallway audio #v0_8
@@ -843,7 +843,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Reward: ???
 - [ ] Beach 2 #v0_7
 	- [x] Env asset
-	- [ ] Decor assets
+	- [x] Decor assets
 	- [x] Lamppost island puzzle
 		- [x] Designed
 		- [x] Implemented

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b7wppb1jj34et"]
+
+[ext_resource type="PackedScene" uid="uid://ctrcgglcpa6us" path="res://assets/3d/objects/blue/hotel/raw/FrontDesk.glb" id="1_2qseg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njedx"]
+size = Vector3(10.5, 2.3, 2.4)
+
+[node name="FrontDesk" unique_id=603268914 instance=ExtResource("1_2qseg")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FrontDesk" parent_id_path=PackedInt32Array(1441706207) index="0" unique_id=1882774381]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontDesk/StaticBody3D" index="0" unique_id=963474329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.15, 0)
+shape = SubResource("BoxShape3D_njedx")

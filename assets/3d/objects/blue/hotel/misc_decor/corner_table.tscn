@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://2iadqyyihydw"]
+
+[ext_resource type="PackedScene" uid="uid://c361ygsroxbq6" path="res://assets/3d/objects/blue/hotel/raw/CornerTable.glb" id="1_o7oha"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7oha"]
+size = Vector3(1.2516847, 1.5, 1.2)
+
+[node name="CornerTable" unique_id=84860735 instance=ExtResource("1_o7oha")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CornerTable" parent_id_path=PackedInt32Array(2108739409) index="0" unique_id=481085506]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CornerTable/StaticBody3D" index="0" unique_id=1529713476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52584237, 0.65, 0.5)
+shape = SubResource("BoxShape3D_o7oha")

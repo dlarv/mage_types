@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bcncjtebhcob0"]
+
+[ext_resource type="PackedScene" uid="uid://5ilnx6i2fjpk" path="res://assets/3d/objects/blue/hotel/raw/Trashcan.glb" id="1_aj4d2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_aj4d2"]
+height = 2.35
+radius = 1.1
+
+[node name="Trashcan" unique_id=1427404842 instance=ExtResource("1_aj4d2")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trashcan" parent_id_path=PackedInt32Array(1732900861) index="0" unique_id=1420167950]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trashcan/StaticBody3D" index="0" unique_id=1338421580]
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0, 1.175, 0)
+shape = SubResource("CylinderShape3D_aj4d2")

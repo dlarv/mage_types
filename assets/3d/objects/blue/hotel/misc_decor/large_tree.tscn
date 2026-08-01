@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dryfwf80n7hs4"]
+
+[ext_resource type="PackedScene" uid="uid://dhhg7j5up2ruq" path="res://assets/3d/objects/blue/hotel/raw/LargeTree.glb" id="1_sc36i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_re1uv"]
+radius = 0.6
+height = 3.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sc36i"]
+radius = 0.4
+height = 1.4
+
+[node name="LargeTree" unique_id=375813429 instance=ExtResource("1_sc36i")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LargeTree" parent_id_path=PackedInt32Array(357517518) index="0" unique_id=417570295]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LargeTree/StaticBody3D" index="0" unique_id=50134646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.825, -0.036)
+shape = SubResource("CapsuleShape3D_re1uv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LargeTree/StaticBody3D" index="1" unique_id=375595049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4499998, 3.3250005, -0.035933502)
+shape = SubResource("CapsuleShape3D_sc36i")

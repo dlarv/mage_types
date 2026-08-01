@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cw5nc0vaotaxt"]
+
+[ext_resource type="PackedScene" uid="uid://2dxgqw67n73m" path="res://assets/3d/objects/blue/hotel/raw/PoolTable.glb" id="1_f4j4r"]
+
+[sub_resource type="Gradient" id="Gradient_vxh6c"]
+offsets = PackedFloat32Array(0, 0.4064838)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rntet"]
+frequency = 0.0285
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r1hdj"]
+noise = SubResource("FastNoiseLite_rntet")
+color_ramp = SubResource("Gradient_vxh6c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjk2c"]
+resource_local_to_scene = true
+albedo_color = Color(0.21725973, 0.10311181, 0.014404751, 1)
+roughness_texture = SubResource("NoiseTexture2D_r1hdj")
+normal_enabled = true
+normal_scale = 0.2
+clearcoat_roughness = 0.3
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.1
+subsurf_scatter_transmittance_enabled = true
+uv1_scale = Vector3(2.865, 2.865, 2.865)
+
+[node name="PoolTable" unique_id=652037437 instance=ExtResource("1_f4j4r")]
+
+[node name="PoolTable" parent="." index="0" unique_id=334601519]
+surface_material_override/0 = SubResource("StandardMaterial3D_fjk2c")

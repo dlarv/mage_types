@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bkyhipqxny734"]
+
+[ext_resource type="PackedScene" uid="uid://0fwke3fcexh6" path="res://assets/3d/objects/blue/hotel/raw/WeightBench.glb" id="1_bl302"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bl302"]
+size = Vector3(1.8000001, 0.4317627, 1.4599609)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xyh1"]
+size = Vector3(1.8000001, 0.4317627, 1.1683594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7pu57"]
+size = Vector3(1.8000001, 0.4317627, 0.78132325)
+
+[node name="WeightBench" unique_id=696570140 instance=ExtResource("1_bl302")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WeightBench" parent_id_path=PackedInt32Array(913181640) index="0" unique_id=1501521240]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WeightBench/StaticBody3D" index="0" unique_id=1173798473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.940697e-08, 0.22015381, 0.22998047)
+shape = SubResource("BoxShape3D_bl302")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WeightBench/StaticBody3D" index="1" unique_id=1585923146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.940697e-08, 0.652576, 0.0841797)
+shape = SubResource("BoxShape3D_0xyh1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WeightBench/StaticBody3D" index="2" unique_id=1905483867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.940697e-08, 1.0815141, -0.10933837)
+shape = SubResource("BoxShape3D_7pu57")

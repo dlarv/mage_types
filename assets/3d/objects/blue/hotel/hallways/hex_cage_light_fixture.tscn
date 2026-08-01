@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c70p4oupit6e7"]
+
+[ext_resource type="PackedScene" uid="uid://1tlmhy48i7og" path="res://assets/3d/objects/blue/hotel/raw/HexCageLightFixture.glb" id="1_duveq"]
+
+[node name="HexCageLightFixture" unique_id=1435953130 instance=ExtResource("1_duveq")]

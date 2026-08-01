@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bb2ari0nbs188"]
+
+[ext_resource type="PackedScene" uid="uid://b6hlnxlojgr2l" path="res://assets/3d/objects/blue/hotel/raw/SmallBluePlant.glb" id="1_3m8jd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3m8jd"]
+radius = 0.33789063
+height = 1.125
+
+[node name="SmallBluePlant" unique_id=77098294 instance=ExtResource("1_3m8jd")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SmallBluePlant" parent_id_path=PackedInt32Array(1388476339) index="0" unique_id=273298989]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallBluePlant/StaticBody3D" index="0" unique_id=229461475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018493176, 0.5375003, -0.035933502)
+shape = SubResource("CapsuleShape3D_3m8jd")

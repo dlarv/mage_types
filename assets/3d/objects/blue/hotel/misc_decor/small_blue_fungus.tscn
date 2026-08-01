@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://y12myjb0nylo"]
+
+[ext_resource type="PackedScene" uid="uid://rqcooi6jfqcf" path="res://assets/3d/objects/blue/hotel/raw/SmallBlueFungus.glb" id="1_tguy3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tguy3"]
+radius = 0.4
+height = 1.15
+
+[node name="SmallBlueFungus" unique_id=1238138834 instance=ExtResource("1_tguy3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SmallBlueFungus" parent_id_path=PackedInt32Array(131621683) index="0" unique_id=394553263]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallBlueFungus/StaticBody3D" index="0" unique_id=974157801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05000019, 0.4250003, -0.035933502)
+shape = SubResource("CapsuleShape3D_tguy3")
