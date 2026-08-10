@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b0yiej0j8f877"]
+
+[ext_resource type="PackedScene" uid="uid://c2u3lr7xsov57" path="res://assets/3d/objects/blue/hotel/raw/Treadmill.glb" id="1_irxy1"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_2hkym"]
+[ext_resource type="Material" uid="uid://bmsb0we4y5xqk" path="res://assets/shaders/misc/felt_material.tres" id="3_reppk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qliu"]
+size = Vector3(2.2, 0.2, 2.9101563)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_irxy1"]
+size = Vector3(2.2, 1.6, 0.3401367)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hkym"]
+size = Vector3(0.3, 1.6, 1.5250976)
+
+[node name="Treadmill" unique_id=541844412 instance=ExtResource("1_irxy1")]
+
+[node name="Treadmill" parent="." index="0" unique_id=1470427990]
+surface_material_override/0 = ExtResource("2_2hkym")
+surface_material_override/1 = ExtResource("2_2hkym")
+surface_material_override/2 = ExtResource("3_reppk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Treadmill" index="0" unique_id=615220864]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Treadmill/StaticBody3D" index="0" unique_id=445464127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 0.099999994, -0.05507809)
+shape = SubResource("BoxShape3D_3qliu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Treadmill/StaticBody3D" index="1" unique_id=2070416120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 0.79999995, -1.3700682)
+shape = SubResource("BoxShape3D_irxy1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Treadmill/StaticBody3D" index="2" unique_id=1885538260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0500001, 0.79999995, -0.7999999)
+shape = SubResource("BoxShape3D_2hkym")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Treadmill/StaticBody3D" index="3" unique_id=684003781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000017, 0.79999995, -0.7625487)
+shape = SubResource("BoxShape3D_2hkym")

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://56t5knh7i81q" path="res://assets/shaders/clay_shader/textures/base_clay_crack_normal.png" id="4_l7n7h"]
 [ext_resource type="Texture2D" uid="uid://cacqty606q0rn" path="res://assets/shaders/clay_shader/textures/base_clay_crack_detail_normal.png" id="5_hsn5f"]
 [ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay_simple.gdshader" id="7_l7n7h"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="9_76mdr"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_76mdr"]
 size = Vector2(100, 100)
@@ -1066,7 +1067,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_mr6v0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BeachSand/StaticBody3D" index="0" unique_id=1680031527]
 shape = SubResource("ConcavePolygonShape3D_aex22")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Railing" parent_id_path=PackedInt32Array(1612353429) index="0" unique_id=1439821070]
+[node name="Railing" parent="." index="21" unique_id=1612353429]
+surface_material_override/0 = ExtResource("9_76mdr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Railing" index="0" unique_id=1439821070]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Railing/StaticBody3D" index="0" unique_id=1116044511]
 shape = SubResource("ConcavePolygonShape3D_w06xy")
@@ -1087,7 +1091,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_002/StaticBody3D" index="0" unique_id=472282006]
 shape = SubResource("ConcavePolygonShape3D_3jaj5")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Railing_002" parent_id_path=PackedInt32Array(183856800) index="0" unique_id=404045971]
+[node name="Railing_002" parent="." index="25" unique_id=183856800]
+surface_material_override/0 = ExtResource("9_76mdr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Railing_002" index="0" unique_id=404045971]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Railing_002/StaticBody3D" index="0" unique_id=2134252773]
 shape = SubResource("ConcavePolygonShape3D_lr36o")

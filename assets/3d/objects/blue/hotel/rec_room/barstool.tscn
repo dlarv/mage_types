@@ -1,14 +1,39 @@
 [gd_scene format=3 uid="uid://dj7f54ugbqbb4"]
 
 [ext_resource type="PackedScene" uid="uid://fr25npex4ibm" path="res://assets/3d/objects/blue/hotel/raw/Barstool.glb" id="1_nu2fb"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_761yi"]
+[ext_resource type="Texture2D" uid="uid://bht2w2x47a41o" path="res://assets/shaders/misc/textures/felt_combo.png" id="3_rhw07"]
+[ext_resource type="Texture2D" uid="uid://djgpq8hcfyrd7" path="res://assets/shaders/misc/textures/felt_rough.png" id="4_csqob"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q6vol"]
+noise_type = 2
+frequency = 0.0013
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_shsw3"]
+noise = SubResource("FastNoiseLite_q6vol")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr2up"]
+resource_local_to_scene = true
+albedo_color = Color(0.46985644, 0.4490553, 0.40529257, 1)
+albedo_texture = SubResource("NoiseTexture2D_shsw3")
+roughness_texture = ExtResource("4_csqob")
+normal_scale = 0.1
+normal_texture = ExtResource("3_rhw07")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nu2fb"]
 height = 1.4750001
 radius = 0.3154297
 
-[node name="Barstool" unique_id=752806187 instance=ExtResource("1_nu2fb")]
+[node name="Barstool" unique_id=2145963575 instance=ExtResource("1_nu2fb")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Barstool" parent_id_path=PackedInt32Array(761240153) index="0" unique_id=1117302487]
+[node name="Barstool" parent="." index="0" unique_id=1817103772]
+surface_material_override/0 = ExtResource("2_761yi")
+surface_material_override/1 = SubResource("StandardMaterial3D_sr2up")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barstool" index="0" unique_id=1117302487]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barstool/StaticBody3D" index="0" unique_id=1329183326]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0.73750067, 0)

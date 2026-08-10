@@ -1723,8 +1723,9 @@ operation = 2
 size = Vector3(1.5, 11, 2)
 material = SubResource("ShaderMaterial_aa6kh")
 
-[node name="LightChunk" type="Area3D" parent="." unique_id=873182400]
+[node name="LightChunk" type="Area3D" parent="." unique_id=873182400 node_paths=PackedStringArray("chunk")]
 script = ExtResource("2_exmbl")
+chunk = NodePath("DirectionalLight3D")
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightChunk" unique_id=1976296052]

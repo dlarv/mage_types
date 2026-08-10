@@ -1,10 +1,18 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://wnghgm87l7mw"]
 
 [ext_resource type="Texture2D" uid="uid://bgubget5ekx1v" path="res://assets/shaders/fabric/felt_blue_hex_math_2.png" id="1_q4dqt"]
+[ext_resource type="Texture2D" uid="uid://bht2w2x47a41o" path="res://assets/shaders/misc/textures/felt_combo.png" id="2_lv4ne"]
+[ext_resource type="Texture2D" uid="uid://djgpq8hcfyrd7" path="res://assets/shaders/misc/textures/felt_rough.png" id="3_nmcqj"]
 
 [resource]
 albedo_color = Color(0.3314507, 0.557466, 1, 1)
 albedo_texture = ExtResource("1_q4dqt")
+roughness_texture = ExtResource("3_nmcqj")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("2_lv4ne")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 uv1_world_triplanar = true

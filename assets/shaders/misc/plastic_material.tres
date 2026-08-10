@@ -1,23 +1,23 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://ddu1en5jickwv"]
 
-[sub_resource type="Gradient" id="Gradient_vxh6c"]
-offsets = PackedFloat32Array(0, 0.4064838)
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="1_rntet"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rntet"]
-frequency = 0.0285
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r1hdj"]
-noise = SubResource("FastNoiseLite_rntet")
-color_ramp = SubResource("Gradient_vxh6c")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
 
 [resource]
 resource_local_to_scene = true
-albedo_color = Color(0, 0.11372549, 1, 1)
-roughness_texture = SubResource("NoiseTexture2D_r1hdj")
+albedo_color = Color(0.026410585, 0.0024697888, 0, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
 normal_enabled = true
-normal_scale = 0.2
+normal_scale = 1.5
+normal_texture = ExtResource("1_rntet")
 clearcoat_roughness = 0.3
-subsurf_scatter_enabled = true
-subsurf_scatter_strength = 0.1
 subsurf_scatter_transmittance_enabled = true
-uv1_scale = Vector3(2.865, 2.865, 2.865)

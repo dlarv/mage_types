@@ -1,5 +1,17 @@
 [gd_scene format=3 uid="uid://d1eocsfm84l8e"]
 
 [ext_resource type="PackedScene" uid="uid://de88wdnrhvki1" path="res://assets/3d/objects/blue/hotel/raw/CurvedLightFixture.glb" id="1_qxuqb"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_ijb2i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rc3q0"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.33361515, 0.33361515, 0.33361515, 0.38700002)
+refraction_enabled = true
+refraction_scale = 1.0
 
 [node name="CurvedLightFixture" unique_id=1652934704 instance=ExtResource("1_qxuqb")]
+
+[node name="CurvedLightFixture" parent="." index="0" unique_id=1550815339]
+surface_material_override/0 = ExtResource("2_ijb2i")
+surface_material_override/2 = SubResource("StandardMaterial3D_rc3q0")

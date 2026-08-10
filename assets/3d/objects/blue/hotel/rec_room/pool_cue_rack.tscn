@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c0xwh028b62cw"]
+
+[ext_resource type="PackedScene" uid="uid://3pady6sbdck3" path="res://assets/3d/objects/blue/hotel/raw/PoolCueRack_001.glb" id="1_lu005"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_cfg3g"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="3_oewuv"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1qsv"]
+resource_local_to_scene = true
+albedo_color = Color(0.25570342, 0.08310891, 3.6098065e-08, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("3_oewuv")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hmh5"]
+resource_local_to_scene = true
+albedo_color = Color(0.73084015, 0.5263582, 0.30257583, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 0.8
+normal_texture = ExtResource("3_oewuv")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lu005"]
+size = Vector3(2.4, 21.7, 2.5)
+
+[node name="PoolCueRack" unique_id=79689291 instance=ExtResource("1_lu005")]
+
+[node name="PoolCueRack_001" parent="." index="0" unique_id=1751085697]
+surface_material_override/0 = ExtResource("2_cfg3g")
+surface_material_override/1 = SubResource("StandardMaterial3D_j1qsv")
+surface_material_override/2 = SubResource("StandardMaterial3D_6hmh5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PoolCueRack_001" index="0" unique_id=1297910880]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PoolCueRack_001/StaticBody3D" index="0" unique_id=618173829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.350001, -0.25)
+shape = SubResource("BoxShape3D_lu005")

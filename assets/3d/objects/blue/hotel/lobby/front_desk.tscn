@@ -1,13 +1,40 @@
 [gd_scene format=3 uid="uid://b7wppb1jj34et"]
 
 [ext_resource type="PackedScene" uid="uid://ctrcgglcpa6us" path="res://assets/3d/objects/blue/hotel/raw/FrontDesk.glb" id="1_2qseg"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="2_msbr2"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_njedx"]
+
+[sub_resource type="Gradient" id="Gradient_30nmy"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_15dew"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ssbua"]
+noise = SubResource("FastNoiseLite_15dew")
+color_ramp = SubResource("Gradient_30nmy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyyyx"]
+resource_local_to_scene = true
+albedo_color = Color(0.21936381, 0.2478163, 0.26549158, 1)
+roughness_texture = SubResource("NoiseTexture2D_ssbua")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("2_msbr2")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_njedx"]
 size = Vector3(10.5, 2.3, 2.4)
 
 [node name="FrontDesk" unique_id=603268914 instance=ExtResource("1_2qseg")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FrontDesk" parent_id_path=PackedInt32Array(1441706207) index="0" unique_id=1882774381]
+[node name="FrontDesk" parent="." index="0" unique_id=997217162]
+surface_material_override/0 = SubResource("StandardMaterial3D_kyyyx")
+surface_material_override/1 = ExtResource("2_njedx")
+surface_material_override/2 = ExtResource("2_njedx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FrontDesk" index="0" unique_id=1882774381]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FrontDesk/StaticBody3D" index="0" unique_id=963474329]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.15, 0)

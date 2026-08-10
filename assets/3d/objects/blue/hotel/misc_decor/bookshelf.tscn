@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://dls345t3tcpfj"]
 
-[ext_resource type="PackedScene" uid="uid://dn5pdp3d3njsp" path="res://assets/3d/objects/blue/hotel/raw/Barshelves_001.glb" id="1_s5vgd"]
+[ext_resource type="PackedScene" uid="uid://do5p5npdek5xu" path="res://assets/3d/objects/blue/hotel/raw/Barshelves.glb" id="1_s5vgd"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_s4nf8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5vgd"]
-size = Vector3(3.4, 6.2000003, 1)
+size = Vector3(3.6000001, 6.4, 0.90000004)
 
-[node name="Barshelves" unique_id=853664790 instance=ExtResource("1_s5vgd")]
+[node name="Bookshelf" unique_id=28369413 instance=ExtResource("1_s5vgd")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Barshelves_001" parent_id_path=PackedInt32Array(474492373) index="0" unique_id=160139576]
+[node name="Barshelves" parent="." index="0" unique_id=1916138212]
+surface_material_override/0 = ExtResource("2_s4nf8")
+surface_material_override/1 = ExtResource("2_s4nf8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Barshelves_001/StaticBody3D" index="0" unique_id=976872000]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 3.1000001, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Barshelves" index="0" unique_id=116362098]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barshelves/StaticBody3D" index="0" unique_id=1227822754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7881393e-07, 3.2, 0.049999982)
 shape = SubResource("BoxShape3D_s5vgd")

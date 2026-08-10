@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://6k4hu3d4uncq"]
+
+[ext_resource type="PackedScene" uid="uid://bxdddbscagmui" path="res://assets/3d/objects/blue/hotel/raw/WhiskeyBottle.glb" id="1_itrjr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omsca"]
+albedo_color = Color(0.2378034, 0.067318276, 0, 1)
+roughness = 0.2
+
+[node name="WhiskeyBottle" unique_id=362750870 instance=ExtResource("1_itrjr")]
+
+[node name="WhiskeyBottle" parent="." index="0" unique_id=2001751430]
+surface_material_override/0 = SubResource("StandardMaterial3D_omsca")

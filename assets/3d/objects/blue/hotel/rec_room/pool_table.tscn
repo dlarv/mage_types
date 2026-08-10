@@ -1,30 +1,57 @@
 [gd_scene format=3 uid="uid://cw5nc0vaotaxt"]
 
 [ext_resource type="PackedScene" uid="uid://2dxgqw67n73m" path="res://assets/3d/objects/blue/hotel/raw/PoolTable.glb" id="1_f4j4r"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_30nmy"]
+[ext_resource type="Material" uid="uid://bmsb0we4y5xqk" path="res://assets/shaders/misc/felt_material.tres" id="3_15dew"]
+[ext_resource type="Texture2D" uid="uid://bht2w2x47a41o" path="res://assets/shaders/misc/textures/felt_combo.png" id="4_k6qbx"]
+[ext_resource type="Texture2D" uid="uid://djgpq8hcfyrd7" path="res://assets/shaders/misc/textures/felt_rough.png" id="5_bho6j"]
 
-[sub_resource type="Gradient" id="Gradient_vxh6c"]
-offsets = PackedFloat32Array(0, 0.4064838)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rntet"]
-frequency = 0.0285
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r1hdj"]
-noise = SubResource("FastNoiseLite_rntet")
-color_ramp = SubResource("Gradient_vxh6c")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjk2c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6chb"]
 resource_local_to_scene = true
-albedo_color = Color(0.21725973, 0.10311181, 0.014404751, 1)
-roughness_texture = SubResource("NoiseTexture2D_r1hdj")
+albedo_color = Color(0, 0.0212664, 0.004861618, 1)
+roughness_texture = ExtResource("5_bho6j")
 normal_enabled = true
-normal_scale = 0.2
-clearcoat_roughness = 0.3
+normal_scale = 0.3
+normal_texture = ExtResource("4_k6qbx")
 subsurf_scatter_enabled = true
-subsurf_scatter_strength = 0.1
-subsurf_scatter_transmittance_enabled = true
-uv1_scale = Vector3(2.865, 2.865, 2.865)
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(3.01, 3.01, 3.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_30nmy"]
+size = Vector3(3.819275, 1.5060546, 6.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15dew"]
+size = Vector3(0.8, 0.7, 6.7000003)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ssbua"]
+size = Vector3(2.3, 0.7, 0.7)
 
 [node name="PoolTable" unique_id=652037437 instance=ExtResource("1_f4j4r")]
 
-[node name="PoolTable" parent="." index="0" unique_id=334601519]
-surface_material_override/0 = SubResource("StandardMaterial3D_fjk2c")
+[node name="PoolTable" parent="." index="0" unique_id=640064198]
+surface_material_override/0 = ExtResource("2_30nmy")
+surface_material_override/1 = ExtResource("3_15dew")
+surface_material_override/2 = SubResource("StandardMaterial3D_s6chb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PoolTable" index="0" unique_id=1486644236]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PoolTable/StaticBody3D" index="0" unique_id=452734610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0082092285, 0.7530273, -0.05000007)
+shape = SubResource("BoxShape3D_30nmy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PoolTable/StaticBody3D" index="1" unique_id=724711524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5678467, 1.45, 0.04999993)
+shape = SubResource("BoxShape3D_15dew")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="PoolTable/StaticBody3D" index="2" unique_id=802083782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4821534, 1.45, 0.05000007)
+shape = SubResource("BoxShape3D_15dew")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="PoolTable/StaticBody3D" index="3" unique_id=403349859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067846626, 1.45, -2.9500003)
+shape = SubResource("BoxShape3D_ssbua")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="PoolTable/StaticBody3D" index="4" unique_id=1762979106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067846626, 1.45, 3.0499997)
+shape = SubResource("BoxShape3D_ssbua")

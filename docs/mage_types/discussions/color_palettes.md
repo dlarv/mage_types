@@ -16,3 +16,10 @@
 - Pants: \#1D4C6AFF
 - Undershirt: \#7BCCFFFF
 - Jacket: \#543E20FF
+
+**Alice**
+- Hair: \#000000
+- Eyes: \#003431
+- Jumper Base Color: \#74EDEB
+- Jumper Fringe Gradient: {(0.003, \#7D7D7D), (0.227, \#B0B0B0), (0.293, \#FFF)}
+- Sleeve Gradient: {(0.182, \#000), (0.324, \#969393), (0.5, \#C9C9C9), (0.662, \#969393), (0.87, \#000)}

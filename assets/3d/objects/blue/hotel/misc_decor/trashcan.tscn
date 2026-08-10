@@ -1,14 +1,39 @@
 [gd_scene format=3 uid="uid://bcncjtebhcob0"]
 
 [ext_resource type="PackedScene" uid="uid://5ilnx6i2fjpk" path="res://assets/3d/objects/blue/hotel/raw/Trashcan.glb" id="1_aj4d2"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="2_m0l3q"]
+
+[sub_resource type="Gradient" id="Gradient_30nmy"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_15dew"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ssbua"]
+noise = SubResource("FastNoiseLite_15dew")
+color_ramp = SubResource("Gradient_30nmy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj6ib"]
+resource_local_to_scene = true
+albedo_color = Color(0.009902235, 0.009422578, 0.0081946105, 1)
+roughness_texture = SubResource("NoiseTexture2D_ssbua")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("2_m0l3q")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_aj4d2"]
 height = 2.35
 radius = 1.1
 
-[node name="Trashcan" unique_id=1427404842 instance=ExtResource("1_aj4d2")]
+[node name="Trashcan" unique_id=1267752765 instance=ExtResource("1_aj4d2")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Trashcan" parent_id_path=PackedInt32Array(1732900861) index="0" unique_id=1420167950]
+[node name="Trashcan" parent="." index="0" unique_id=305974459]
+surface_material_override/0 = SubResource("StandardMaterial3D_aj6ib")
+surface_material_override/1 = SubResource("StandardMaterial3D_aj6ib")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trashcan" index="0" unique_id=1420167950]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trashcan/StaticBody3D" index="0" unique_id=1338421580]
 transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0, 1.175, 0)

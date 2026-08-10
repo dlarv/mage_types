@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://djq07rr2esdg6"]
+
+[ext_resource type="PackedScene" uid="uid://p4671ckoek88" path="res://assets/3d/objects/blue/hotel/raw/LobbyBell.glb" id="1_top0i"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_kc3ng"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kc3ng"]
+albedo_color = Color(0.41488972, 0.46046394, 0.5453569, 1)
+metallic = 1.0
+roughness = 0.21
+
+[node name="LobbyBell" unique_id=1768288451 instance=ExtResource("1_top0i")]
+
+[node name="LobbyBell" parent="." index="0" unique_id=1204843348]
+surface_material_override/0 = ExtResource("2_kc3ng")
+surface_material_override/1 = SubResource("StandardMaterial3D_kc3ng")

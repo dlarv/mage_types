@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://c0twcl0gra8ce"]
+
+[ext_resource type="PackedScene" uid="uid://cdnfemlmsmabn" path="res://assets/3d/objects/blue/hotel/raw/MopCart.glb" id="1_q8xgc"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="3_43agr"]
+[ext_resource type="Texture2D" uid="uid://bht2w2x47a41o" path="res://assets/shaders/misc/textures/felt_combo.png" id="3_msqhy"]
+[ext_resource type="Texture2D" uid="uid://djgpq8hcfyrd7" path="res://assets/shaders/misc/textures/felt_rough.png" id="4_ec4i6"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n45ec"]
+resource_local_to_scene = true
+albedo_color = Color(0.026410585, 0.0024697888, 0, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("3_43agr")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7stq"]
+resource_local_to_scene = true
+albedo_color = Color(0.598506, 0.6396244, 0, 1)
+roughness_texture = ExtResource("4_ec4i6")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("3_msqhy")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(3.01, 3.01, 3.01)
+
+[sub_resource type="Gradient" id="Gradient_msqhy"]
+colors = PackedColorArray(0.8132577, 0.8132577, 0.81325763, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bdl66"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iuhlp"]
+noise = SubResource("FastNoiseLite_bdl66")
+color_ramp = SubResource("Gradient_msqhy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us5pk"]
+resource_local_to_scene = true
+albedo_color = Color(0.8346536, 0.8295818, 0.82375497, 1)
+albedo_texture = SubResource("NoiseTexture2D_iuhlp")
+roughness_texture = ExtResource("4_ec4i6")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("3_msqhy")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(3.01, 3.01, 3.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec4i6"]
+resource_local_to_scene = true
+albedo_color = Color(0.24296656, 0.23817825, 0.21712184, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("3_43agr")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msqhy"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0.3096755, 0.5369226, 1)
+roughness = 0.0
+backlight = Color(0.36282945, 0.36282945, 0.36282945, 1)
+refraction_enabled = true
+refraction_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdl66"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0, 0.3408989, 0.68567586, 1)
+roughness = 0.0
+backlight = Color(0.36282945, 0.36282945, 0.36282945, 1)
+refraction_enabled = true
+refraction_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuhlp"]
+resource_local_to_scene = true
+albedo_color = Color(1.3235956e-07, 0.23511288, 0.10276342, 1)
+roughness_texture = ExtResource("4_ec4i6")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("3_msqhy")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(3.01, 3.01, 3.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8xgc"]
+size = Vector3(1.6, 1.3000001, 3.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n45ec"]
+size = Vector3(1.6, 1, 1.6)
+
+[node name="MopCart" unique_id=731104346 instance=ExtResource("1_q8xgc")]
+
+[node name="MopCart" parent="." index="0" unique_id=1182320831]
+surface_material_override/0 = SubResource("StandardMaterial3D_n45ec")
+surface_material_override/1 = SubResource("StandardMaterial3D_n45ec")
+surface_material_override/2 = SubResource("StandardMaterial3D_s7stq")
+surface_material_override/3 = SubResource("StandardMaterial3D_us5pk")
+surface_material_override/4 = SubResource("StandardMaterial3D_ec4i6")
+surface_material_override/5 = SubResource("StandardMaterial3D_msqhy")
+surface_material_override/6 = SubResource("StandardMaterial3D_bdl66")
+surface_material_override/7 = SubResource("StandardMaterial3D_iuhlp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MopCart" index="0" unique_id=95916617]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MopCart/StaticBody3D" index="0" unique_id=22217114]
+transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.3499996, -0.19999999)
+shape = SubResource("BoxShape3D_q8xgc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MopCart/StaticBody3D" index="1" unique_id=489904617]
+transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 8.568168e-08, 1.5123792, -1)
+shape = SubResource("BoxShape3D_n45ec")

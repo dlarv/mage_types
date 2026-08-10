@@ -813,11 +813,13 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Allow easy addition of achievements for arbitrary game states.
 	- [ ] Have achievements sync with steam library/etc.
 - [ ] Beastiary describing monsters
-- [ ] Materials and textures
-	- [ ] Clay shader cracks are inverted?
+- [ ] Materials and textures #v0_7
+	- [ ] Bugfix: Clay shader cracks/fingerprints are inverted?
 		- Ensure normals are correct
-	- [ ] Revisit clay shader. GDShader version should ideally be indistinguishable from the blender one
-	- [ ] PrincipledBSDF should have a plasticky look
+	- [ ] Plastic material for decor
+	- [ ] Felt material for carpet
+	- [x] Painted material for wallpaper
+	- [ ] Get feedback on materials
 ### Misc Areas
 [Asset List](https://docs.google.com/spreadsheets/d/1XJIIeOj9dk2dSPPr7dwkUpTZwAMfA4FIh9KXVK2XvD8/edit?gid=1925621405#gid=1925621405): for more specific details about decor, env, and other assets.
 

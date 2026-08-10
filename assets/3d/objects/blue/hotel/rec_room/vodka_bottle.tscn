@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dalyhr7240pxu"]
+
+[ext_resource type="PackedScene" uid="uid://ckv8msol7iuop" path="res://assets/3d/objects/blue/hotel/raw/VodkaBottle.glb" id="1_ywrta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vb7pb"]
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu15b"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="VodkaBottle" unique_id=1418622924 instance=ExtResource("1_ywrta")]
+
+[node name="VodkaBottle" parent="." index="0" unique_id=1944554488]
+surface_material_override/0 = SubResource("StandardMaterial3D_vb7pb")
+surface_material_override/1 = SubResource("StandardMaterial3D_qu15b")

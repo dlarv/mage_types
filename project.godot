@@ -58,7 +58,7 @@ run/main_run_args="--verbose"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/database_manager/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/matchupmanager/plugin.cfg", "res://addons/modequipmentdropdown/plugin.cfg", "res://addons/tooltips_pro/plugin.cfg")
+enabled=PackedStringArray("res://addons/database_manager/plugin.cfg", "res://addons/dialogue_nodes/plugin.cfg", "res://addons/matchupmanager/plugin.cfg", "res://addons/modequipmentdropdown/plugin.cfg", "res://addons/so_fluffy/plugin.cfg", "res://addons/tooltips_pro/plugin.cfg")
 
 [global_group]
 

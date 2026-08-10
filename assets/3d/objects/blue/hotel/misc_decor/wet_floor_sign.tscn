@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bjx6p06vxh62f"]
+
+[ext_resource type="PackedScene" uid="uid://clrtjukfeg0fm" path="res://assets/3d/objects/blue/hotel/raw/WetFloorSign.glb" id="1_ixfhk"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="2_yr4us"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yr4us"]
+resource_local_to_scene = true
+albedo_color = Color(0.7487618, 0.6933896, 0, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("2_yr4us")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixfhk"]
+size = Vector3(2.6000001, 5.8, 2.6000001)
+
+[node name="WetFloorSign" unique_id=839864196 instance=ExtResource("1_ixfhk")]
+
+[node name="WetFloorSign" parent="." index="0" unique_id=2097498352]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_yr4us")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WetFloorSign" index="0" unique_id=195156607]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WetFloorSign/StaticBody3D" index="0" unique_id=104785722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000001, 2.8000011, -3.2392652e-08)
+shape = SubResource("BoxShape3D_ixfhk")

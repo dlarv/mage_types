@@ -1,13 +1,52 @@
 [gd_scene format=3 uid="uid://2iadqyyihydw"]
 
 [ext_resource type="PackedScene" uid="uid://c361ygsroxbq6" path="res://assets/3d/objects/blue/hotel/raw/CornerTable.glb" id="1_o7oha"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_byfrr"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="3_3kq26"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqpb7"]
+resource_local_to_scene = true
+albedo_color = Color(0.026410585, 0.0024697888, 0, 1)
+roughness = 0.58
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("3_3kq26")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kq26"]
+resource_local_to_scene = true
+albedo_color = Color(0.17771202, 0.1868493, 0.17622721, 1)
+roughness = 0.0
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("3_3kq26")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o7oha"]
 size = Vector3(1.2516847, 1.5, 1.2)
 
-[node name="CornerTable" unique_id=84860735 instance=ExtResource("1_o7oha")]
+[node name="CornerTable" unique_id=14176064 instance=ExtResource("1_o7oha")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CornerTable" parent_id_path=PackedInt32Array(2108739409) index="0" unique_id=481085506]
+[node name="CornerTable" parent="." index="0" unique_id=139250157]
+surface_material_override/0 = ExtResource("2_byfrr")
+surface_material_override/1 = SubResource("StandardMaterial3D_rqpb7")
+surface_material_override/2 = SubResource("StandardMaterial3D_3kq26")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CornerTable" index="0" unique_id=481085506]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CornerTable/StaticBody3D" index="0" unique_id=1529713476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52584237, 0.65, 0.5)

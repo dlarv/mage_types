@@ -1,13 +1,32 @@
 [gd_scene format=3 uid="uid://dcfb43esonmna"]
 
 [ext_resource type="PackedScene" uid="uid://cchu5i4p328h6" path="res://assets/3d/objects/blue/hotel/raw/CenterTable.glb" id="1_qtkil"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_67das"]
+[ext_resource type="Texture2D" uid="uid://bht2w2x47a41o" path="res://assets/shaders/misc/textures/felt_combo.png" id="3_spphc"]
+[ext_resource type="Texture2D" uid="uid://djgpq8hcfyrd7" path="res://assets/shaders/misc/textures/felt_rough.png" id="4_frp0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wurm"]
+resource_local_to_scene = true
+albedo_color = Color(0.00046446174, 0.1281186, 0.5092442, 1)
+roughness_texture = ExtResource("4_frp0k")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("3_spphc")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(3.01, 3.01, 3.01)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_67das"]
 size = Vector3(4, 1, 4.2000003)
 
-[node name="CenterTable" unique_id=1886051845 instance=ExtResource("1_qtkil")]
+[node name="CenterTable" unique_id=1992056715 instance=ExtResource("1_qtkil")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CenterTable" parent_id_path=PackedInt32Array(1279682189) index="0" unique_id=1079098722]
+[node name="CenterTable" parent="." index="0" unique_id=579860623]
+surface_material_override/0 = ExtResource("2_67das")
+surface_material_override/1 = SubResource("StandardMaterial3D_5wurm")
+surface_material_override/2 = ExtResource("2_67das")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CenterTable" index="0" unique_id=1079098722]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CenterTable/StaticBody3D" index="0" unique_id=1665027013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018432617, 0.5, -5.9604645e-08)

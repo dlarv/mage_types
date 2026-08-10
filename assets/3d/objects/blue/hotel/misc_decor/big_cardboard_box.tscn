@@ -1,13 +1,87 @@
 [gd_scene format=3 uid="uid://7rt01r3nxblk"]
 
 [ext_resource type="PackedScene" uid="uid://doeoxinevheiu" path="res://assets/3d/objects/blue/hotel/raw/BigCardboardBox.glb" id="1_0luc3"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="2_11byp"]
+[ext_resource type="Texture2D" uid="uid://c30o4w6k65ms" path="res://assets/shaders/misc/textures/wallpaper/brush_stroke_normal.png" id="3_0yhaj"]
+[ext_resource type="Texture2D" uid="uid://c353htcncverx" path="res://assets/shaders/misc/textures/wallpaper/canvas_normal.png" id="4_ie78d"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="5_otb4o"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adwyf"]
+resource_local_to_scene = true
+albedo_color = Color(0.23848763, 0.152886, 0.04126685, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("2_11byp")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_11byp"]
+seed = 11
+frequency = 0.0238
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0yhaj"]
+noise = SubResource("FastNoiseLite_11byp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bk2x0"]
+noise_type = 0
+frequency = 0.26
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lay8g"]
+noise = SubResource("FastNoiseLite_bk2x0")
+
+[sub_resource type="Gradient" id="Gradient_rwubj"]
+colors = PackedColorArray(0.3491902, 0.3491902, 0.3491902, 1, 0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vc0rp"]
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rwubj"]
+noise = SubResource("FastNoiseLite_vc0rp")
+color_ramp = SubResource("Gradient_rwubj")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vc0rp"]
+transparency = 1
+blend_mode = 3
+roughness = 0.79
+roughness_texture = SubResource("NoiseTexture2D_rwubj")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("3_0yhaj")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh40v"]
+next_pass = SubResource("StandardMaterial3D_vc0rp")
+albedo_color = Color(0.82238823, 0.8228853, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_0yhaj")
+normal_scale = 1.5
+normal_texture = ExtResource("4_ie78d")
+heightmap_texture = SubResource("NoiseTexture2D_lay8g")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.23
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6nk1"]
 size = Vector3(0.8, 0.8, 0.9539063)
 
-[node name="BigCardboardBox" unique_id=588112042 instance=ExtResource("1_0luc3")]
+[node name="BigCardboardBox" unique_id=1885243061 instance=ExtResource("1_0luc3")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BigCardboardBox" parent_id_path=PackedInt32Array(548176077) index="0" unique_id=1539898907]
+[node name="BigCardboardBox" parent="." index="0" unique_id=1008559322]
+surface_material_override/0 = SubResource("StandardMaterial3D_adwyf")
+surface_material_override/1 = SubResource("StandardMaterial3D_wh40v")
+surface_material_override/2 = ExtResource("5_otb4o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BigCardboardBox" index="0" unique_id=1539898907]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BigCardboardBox/StaticBody3D" index="0" unique_id=1134902329]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.4, -0.024728194)

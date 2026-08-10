@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://ciae6yorciubg"]
 
 [ext_resource type="PackedScene" uid="uid://cmitqj8ornpat" path="res://assets/3d/objects/blue/hotel/raw/HighTable.glb" id="1_p36sn"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_ij61k"]
+[ext_resource type="Material" uid="uid://bmsb0we4y5xqk" path="res://assets/shaders/misc/felt_material.tres" id="3_1iawe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p36sn"]
 size = Vector3(6, 2.7, 4)
 
-[node name="HighTable" unique_id=659993282 instance=ExtResource("1_p36sn")]
+[node name="HighTable" unique_id=1719727665 instance=ExtResource("1_p36sn")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HighTable" parent_id_path=PackedInt32Array(675272157) index="0" unique_id=1707047931]
+[node name="HighTable" parent="." index="0" unique_id=595050967]
+surface_material_override/0 = ExtResource("2_ij61k")
+surface_material_override/1 = ExtResource("3_1iawe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HighTable" index="0" unique_id=1707047931]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HighTable/StaticBody3D" index="0" unique_id=2083750104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)

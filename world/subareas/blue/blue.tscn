@@ -5,9 +5,14 @@
 [ext_resource type="Script" uid="uid://cjk323awkifki" path="res://src/overworld/DetachedChunk.gd" id="3_4g4u6"]
 [ext_resource type="PackedScene" uid="uid://cdcd3tsc1juh" path="res://world/subareas/blue/beach/beach.tscn" id="3_n2ypl"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_5og7y"]
+[ext_resource type="PackedScene" uid="uid://b7wppb1jj34et" path="res://assets/3d/objects/blue/hotel/lobby/front_desk.tscn" id="5_7gnmi"]
 [ext_resource type="PackedScene" uid="uid://c3q0alm5ksq0w" path="res://world/subareas/blue/rec_room.tscn" id="5_sv55n"]
+[ext_resource type="PackedScene" uid="uid://2iadqyyihydw" path="res://assets/3d/objects/blue/hotel/misc_decor/corner_table.tscn" id="6_psjbi"]
+[ext_resource type="PackedScene" uid="uid://djq07rr2esdg6" path="res://assets/3d/objects/blue/hotel/misc_decor/lobby_bell.tscn" id="6_w3r7y"]
+[ext_resource type="PackedScene" uid="uid://dcfb43esonmna" path="res://assets/3d/objects/blue/hotel/misc_decor/center_table.tscn" id="7_w3r7y"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
+[ext_resource type="PackedScene" uid="uid://b0v2eq1ocrvv0" path="res://assets/3d/objects/blue/hotel/hallways/wall_light.tscn" id="9_psjbi"]
 [ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_1.tscn" id="14_srry2"]
 [ext_resource type="PackedScene" uid="uid://1oyqrdfmdmyj" path="res://assets/3d/objects/blue/hotel/misc_decor/big_blue_plant.tscn" id="14_xlpqq"]
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_2.tscn" id="15_6yind"]
@@ -182,7 +187,7 @@ size = Vector3(307, 161, 301)
 
 [node name="Blue" type="Node3D" unique_id=543950842]
 
-[node name="BlueEnv" parent="." unique_id=1579148020 instance=ExtResource("1_yeg0x")]
+[node name="BlueEnv" parent="." unique_id=1023341826 instance=ExtResource("1_yeg0x")]
 
 [node name="Doors" type="Node3D" parent="." unique_id=1914560580]
 
@@ -1146,6 +1151,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, -12)
 text = "Press M to open your map"
 font_size = 64
 
+[node name="FrontDesk" parent="HotelRooms/LobbyChunk/Chunk" unique_id=603268914 instance=ExtResource("5_7gnmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.800003)
+
+[node name="LobbyBell" parent="HotelRooms/LobbyChunk/Chunk/FrontDesk" unique_id=1768288451 instance=ExtResource("6_w3r7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.31239, -0.19999695)
+
+[node name="CornerTable" parent="HotelRooms/LobbyChunk/Chunk" unique_id=14176064 instance=ExtResource("6_psjbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 0, 20.1)
+
+[node name="CenterTable" parent="HotelRooms/LobbyChunk/Chunk" unique_id=1992056715 instance=ExtResource("7_w3r7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4, 0, 15.1)
+
 [node name="BreakroomChunk" type="Area3D" parent="HotelRooms" unique_id=619939966 groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -59)
 script = ExtResource("3_4g4u6")
@@ -1164,6 +1181,9 @@ shape = SubResource("BoxShape3D_lmeiv")
 
 [node name="HallChunk1" parent="HotelRooms" unique_id=276947841 instance=ExtResource("5_sv55n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -78)
+
+[node name="WallLight" parent="HotelRooms/HallChunk1" unique_id=140043734 instance=ExtResource("9_psjbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -9.099998)
 
 [node name="HallChunk2" type="Area3D" parent="HotelRooms" unique_id=1655093668 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108, 0, -78)
