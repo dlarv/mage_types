@@ -48,6 +48,11 @@ _player = NodePath("../Overworld/Player")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="OverworldConnector" unique_id=2141793340]
 unique_name_in_owner = true
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="OverworldConnector" unique_id=1317795197]
+unique_name_in_owner = true
+transform = Transform3D(0.7660445, 0.32139385, -0.5566705, -1.3505036e-08, 0.8660254, 0.5, 0.64278764, -0.38302222, 0.6634139, 0, 0, 0)
+light_energy = 0.5
+
 [node name="DialogueBox_Layer" type="CanvasLayer" parent="." unique_id=860147379]
 process_mode = 3
 layer = 3

@@ -40,8 +40,12 @@ func _validate_property(property: Dictionary) -> void:
 
 
 func _ready() -> void:
-	if not disabled:
+	if disabled: return
+	if is_flickering:
 		toggle()
+	else:
+		light.light_energy = energy
+		light.light_color = color
 
 
 func _process(delta: float) -> void:

@@ -33,6 +33,8 @@ func _ready() -> void:
 		chunk.on_loaded.connect(func(c: Chunk) -> void:
 			if not _player.god_mode:
 				%WorldEnvironment.environment = c.environment
+
+			%DirectionalLight3D.visible = c.use_global_lighting
 		)
 	
 	_player.entered_god_mode.connect(func() -> void:

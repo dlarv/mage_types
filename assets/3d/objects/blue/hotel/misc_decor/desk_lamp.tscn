@@ -26,9 +26,21 @@ normal_texture = ExtResource("2_3xao2")
 clearcoat_roughness = 0.3
 subsurf_scatter_transmittance_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_2aq2s"]
+colors = PackedColorArray(0.50534403, 0.5053441, 0.50534403, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2aq2s"]
+noise_type = 2
+frequency = 0.009
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ipd1a"]
+noise = SubResource("FastNoiseLite_2aq2s")
+color_ramp = SubResource("Gradient_2aq2s")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjr8v"]
 resource_local_to_scene = true
 albedo_color = Color(0.5048853, 0.6240991, 0.9471044, 1)
+albedo_texture = SubResource("NoiseTexture2D_ipd1a")
 roughness_texture = ExtResource("4_ipd1a")
 normal_enabled = true
 normal_scale = 0.1
@@ -38,7 +50,6 @@ subsurf_scatter_strength = 0.3
 backlight_enabled = true
 backlight = Color(0.7792914, 0.7792914, 0.7792913, 1)
 refraction_scale = -1.0
-uv1_scale = Vector3(3.01, 3.01, 3.01)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xao2"]
 albedo_color = Color(1, 0.754328, 0.6467281, 1)
@@ -51,12 +62,12 @@ material = SubResource("StandardMaterial3D_3xao2")
 radius = 0.1
 height = 0.2
 
-[node name="DeskLamp" unique_id=924994707 node_paths=PackedStringArray("light") instance=ExtResource("1_gspib")]
+[node name="DeskLamp" unique_id=692765185 node_paths=PackedStringArray("light") instance=ExtResource("1_gspib")]
 script = ExtResource("2_2aq2s")
 light = NodePath("OmniLight3D")
 color = Color(1, 0.5058824, 0.29803923, 1)
 
-[node name="DeskLamp" parent="." index="0" unique_id=1938115766]
+[node name="DeskLamp" parent="." index="0" unique_id=126210573]
 surface_material_override/0 = SubResource("StandardMaterial3D_ipd1a")
 surface_material_override/1 = SubResource("StandardMaterial3D_qjr8v")
 

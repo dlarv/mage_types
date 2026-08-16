@@ -12,6 +12,7 @@ signal on_loaded(chunk: Chunk)
 @export var animation_player: AnimationPlayer
 @export var fog_level := 0.0
 @export var environment: Environment
+@export var use_global_lighting := true
 
 var _persistent_objs: Dictionary[NodePath, Node]= {}
 

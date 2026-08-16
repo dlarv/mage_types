@@ -824,15 +824,15 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 [Asset List](https://docs.google.com/spreadsheets/d/1XJIIeOj9dk2dSPPr7dwkUpTZwAMfA4FIh9KXVK2XvD8/edit?gid=1925621405#gid=1925621405): for more specific details about decor, env, and other assets.
 
 - [ ] Hallways #v0_7
-	- [ ] Local lighting
-	- [ ] Wallpaper
+	- [x] Local lighting
+	- [x] Wallpaper
 	- [x] Make carpet triplanar
 	- [ ] Decor 
 - [ ] Hotel room decor  #v0_7  
 - [ ] Hallway audio #v0_8
 - [ ] Add models for empty puzzle blocks
 - [ ] Replace placeholder door blockers/etc with models and diagetic explanations.
-	- [ ] Add colliders and "Wet floor signs" to block access to Purple and Pools
+	- [x] Add colliders and "Wet floor signs" to block access to Purple and Pools
 	- [ ] Add out-of-order elevator to final pillar in ziggurat room
 	- [ ] On doors player cannot enter, add "Do not disturb" signage
 - [ ] Create door models and animations
@@ -843,7 +843,10 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 - [ ] Beach 1 backtracking puzzle
 	- [x] Placed puzzleblocks
 	- [ ] Reward: ???
-- [ ] Beach 2 #v0_7
+- [ ] Beach 2
+	- [ ] South Beach Island
+		- [x] Designed parkour Challenge
+		- [ ]  Place NPC/reward
 	- [x] Env asset
 	- [x] Decor assets
 	- [x] Lamppost island puzzle
@@ -857,12 +860,9 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [x] Designed challenge
 		- [x] Placed rewards
 			- If I give the player a attack/item and I'm not careful, I might upset the balance of my tutorial
-	- [ ] South Beach Island
-		- [x] Designed parkour Challenge
-		- [ ]  Place NPC/reward
 	- [x] Place breakable rock in front of East Cave
-		- [ ] Make cave smaller so boulder can actually cover it
-	- [ ] Make section of beach below sandcastle flatter
+		- [x] Make cave smaller so boulder can actually cover it
+	- [x] Make section of beach below sandcastle flatter
 	
 [[Map#Beach|Area Breakdown: Beach]]	
 ### Transmutation Tutorial

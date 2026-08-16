@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c1bn1cuasf0qq" path="res://assets/3d/objects/blue/hotel/rec_room/wine_glass.tscn" id="5_eww0a"]
 [ext_resource type="PackedScene" uid="uid://f3l2edh7cy36" path="res://assets/3d/objects/blue/hotel/rec_room/stack_of_cups.tscn" id="5_l6ew0"]
 [ext_resource type="PackedScene" uid="uid://7rt01r3nxblk" path="res://assets/3d/objects/blue/hotel/misc_decor/big_cardboard_box.tscn" id="7_5tqir"]
-[ext_resource type="PackedScene" uid="uid://y12myjb0nylo" path="res://assets/3d/objects/blue/hotel/misc_decor/small_blue_fungus.tscn" id="9_0ta32"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdhbr"]
 albedo_color = Color(0.3733583, 0, 0.08651466, 1)
@@ -481,14 +480,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76136494, 1.8708259, 0.2164
 [node name="WineBottle" parent="Bookshelves2/WineBottles2/WineBottle6" index="0" unique_id=634359434]
 surface_material_override/0 = SubResource("StandardMaterial3D_eww0a")
 
-[node name="SmallBlueFungus" parent="Bookshelves2" unique_id=1238138834 instance=ExtResource("9_0ta32")]
-transform = Transform3D(0.9936624, 0, -0.11240548, 0, 1, 0, 0.11240548, 0, 0.9936624, 0.11550903, 3.3973038, 0.04107803)
-
 [node name="BigCardboardBox" parent="Bookshelves2" unique_id=342559913 instance=ExtResource("7_5tqir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0335829, 6.1880555, 0.045436025)
 
 [node name="BigCardboardBox2" parent="Bookshelves2" unique_id=1188472403 instance=ExtResource("7_5tqir")]
 transform = Transform3D(-0.99405634, 0, -0.108866885, 0, 1, 0, 0.108866885, 0, -0.99405634, 0.022325516, 6.1975827, 0.045436025)
+
+[node name="SmallBluePlant" parent="Bookshelves2" unique_id=5814949 instance=ExtResource("4_7ws1n")]
+transform = Transform3D(-0.6604342, 0, 0.75088394, 0, 1, 0, -0.75088394, 0, -0.6604342, 0.105596066, 3.1918414, -0.014226496)
 
 [editable path="Bookshelves/WhiskeyL/WhiskeyBottle"]
 [editable path="Bookshelves/WhiskeyL/WhiskeyBottle2"]

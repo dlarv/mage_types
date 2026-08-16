@@ -3,7 +3,7 @@ extends Node3D
 const HINT_COUNT := 4
 ## Chance that hitting reset trigger will cause a hint sequence to start, if one hasn't started already
 const RESET_HINT_SEQUENCE_TRIGGER := 0.5
-const Lamppost := preload("res://assets/3d/objects/blue/beach/FlickeringLamppost.gd")
+const Lamppost := preload("res://src/overworld/Lamp.gd")
 enum PuzzleStates { SEQUENCE_START, HINT_PAUSE, HINTING, SEQUENCE_END }
 
 @export var correct_sequence: Array[int]
@@ -71,7 +71,7 @@ func _on_timer_timeout() -> void:
 			_hint_start()
 		PuzzleStates.HINTING:
 			var idx := correct_sequence[_curr_hint_index]
-			lamps[idx].spot_light.light_energy = 0
+			lamps[idx].light.light_energy = 0
 			$Timer.wait_time = hint_between_time
 			_curr_state = PuzzleStates.HINT_PAUSE
 			$Timer.start()
@@ -84,7 +84,7 @@ func _sequence_start() -> void:
 	# Turn off all lights at once
 	for lamp in lamps:
 		lamp.disabled = true
-		lamp.spot_light.light_energy = 0
+		lamp.light.light_energy = 0
 	
 	$Timer.wait_time = hint_start_delay
 	_curr_state = PuzzleStates.HINT_PAUSE
@@ -104,7 +104,7 @@ func _hint_start() -> void:
 
 	_curr_state = PuzzleStates.HINTING
 	$Timer.wait_time = hint_hold_time
-	lamps[idx].spot_light.light_energy = hint_brightness
+	lamps[idx].light.light_energy = hint_brightness
 	$Timer.start()
 	
 
