@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c58vw11neqnxf"]
 
 [ext_resource type="PackedScene" uid="uid://dlenp5wltweqt" path="res://assets/3d/objects/blue/beach/raw/Lamppost.glb" id="1_p77c2"]
-[ext_resource type="Script" uid="uid://cun7ijhchhxxs" path="res://assets/3d/objects/blue/beach/FlickeringLamppost.gd" id="2_1n23l"]
+[ext_resource type="Script" uid="uid://cun7ijhchhxxs" path="res://src/overworld/Lamp.gd" id="2_1n23l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1n23l"]
 albedo_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
@@ -27,8 +27,12 @@ size = Vector3(4.5, 0.3, 0.2)
 [sub_resource type="SphereShape3D" id="SphereShape3D_1n23l"]
 radius = 0.4
 
-[node name="Lamppost" unique_id=913564205 instance=ExtResource("1_p77c2")]
+[node name="Lamppost" unique_id=913564205 node_paths=PackedStringArray("light") instance=ExtResource("1_p77c2")]
 script = ExtResource("2_1n23l")
+light = NodePath("SpotLight3D")
+energy = null
+color = Color(1, 1, 1, 1)
+is_flickering = true
 
 [node name="Lamppost" parent="." index="0" unique_id=174464689]
 surface_material_override/0 = SubResource("StandardMaterial3D_1n23l")
@@ -36,7 +40,6 @@ surface_material_override/1 = SubResource("StandardMaterial3D_jwut2")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="1" unique_id=1025481499]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.9369397, 7.240395, -0.0003881082)
-light_energy = 20.0
 spot_range = 9.0
 spot_angle = 24.074528
 

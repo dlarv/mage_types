@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0v2eq1ocrvv0"]
 
 [ext_resource type="PackedScene" uid="uid://bni3s77225cvu" path="res://assets/3d/objects/blue/hotel/raw/WallLight.glb" id="1_erhch"]
+[ext_resource type="Script" uid="uid://cun7ijhchhxxs" path="res://src/overworld/Lamp.gd" id="2_y8eu5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_erhch"]
 noise_type = 2
@@ -20,7 +21,11 @@ refraction_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8eu5"]
 metallic = 1.0
 
-[node name="WallLight" unique_id=1600417850 instance=ExtResource("1_erhch")]
+[node name="WallLight" unique_id=1600417850 node_paths=PackedStringArray("light") instance=ExtResource("1_erhch")]
+script = ExtResource("2_y8eu5")
+light = NodePath("OmniLight3D")
+energy = 1.5
+color = Color(1, 0.79607844, 0.64705884, 1)
 
 [node name="WallLight" parent="." index="0" unique_id=1599517862]
 surface_material_override/0 = SubResource("StandardMaterial3D_erhch")
@@ -28,5 +33,5 @@ surface_material_override/1 = SubResource("StandardMaterial3D_y8eu5")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=2100415917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
-light_color = Color(1, 0.7969758, 0.64830476, 1)
+light_color = Color(1, 0.79607844, 0.64705884, 1)
 light_energy = 1.5

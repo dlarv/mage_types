@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cut6c1bfy6oy0"]
+
+[ext_resource type="PackedScene" uid="uid://ds8bndgjgi1sg" path="res://assets/3d/objects/blue/hotel/raw/DeskLamp.glb" id="1_gspib"]
+[ext_resource type="Script" uid="uid://cun7ijhchhxxs" path="res://src/overworld/Lamp.gd" id="2_2aq2s"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="2_3xao2"]
+[ext_resource type="Texture2D" uid="uid://bht2w2x47a41o" path="res://assets/shaders/misc/textures/felt_combo.png" id="3_2aq2s"]
+[ext_resource type="Texture2D" uid="uid://djgpq8hcfyrd7" path="res://assets/shaders/misc/textures/felt_rough.png" id="4_ipd1a"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ipd1a"]
+resource_local_to_scene = true
+albedo_color = Color(0.0049384558, 0, 0.46119225, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("2_3xao2")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjr8v"]
+resource_local_to_scene = true
+albedo_color = Color(0.5048853, 0.6240991, 0.9471044, 1)
+roughness_texture = ExtResource("4_ipd1a")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("3_2aq2s")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+backlight_enabled = true
+backlight = Color(0.7792914, 0.7792914, 0.7792913, 1)
+refraction_scale = -1.0
+uv1_scale = Vector3(3.01, 3.01, 3.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xao2"]
+albedo_color = Color(1, 0.754328, 0.6467281, 1)
+emission_enabled = true
+emission = Color(1, 0.8979519, 0.848619, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_3xao2"]
+material = SubResource("StandardMaterial3D_3xao2")
+radius = 0.1
+height = 0.2
+
+[node name="DeskLamp" unique_id=924994707 node_paths=PackedStringArray("light") instance=ExtResource("1_gspib")]
+script = ExtResource("2_2aq2s")
+light = NodePath("OmniLight3D")
+color = Color(1, 0.5058824, 0.29803923, 1)
+
+[node name="DeskLamp" parent="." index="0" unique_id=1938115766]
+surface_material_override/0 = SubResource("StandardMaterial3D_ipd1a")
+surface_material_override/1 = SubResource("StandardMaterial3D_qjr8v")
+
+[node name="LightBulb" type="MeshInstance3D" parent="DeskLamp" index="0" unique_id=665722288]
+transform = Transform3D(4.570516, 0, 0, 0, 4.570516, 0, 0, 0, 4.570516, 0, 5.741555, 0)
+mesh = SubResource("SphereMesh_3xao2")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=863931890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_color = Color(1, 0.5058824, 0.29803923, 1)
+omni_range = 1.6
