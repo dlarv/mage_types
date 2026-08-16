@@ -12,13 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://dcfb43esonmna" path="res://assets/3d/objects/blue/hotel/misc_decor/center_table.tscn" id="7_w3r7y"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
-[ext_resource type="PackedScene" uid="uid://b0v2eq1ocrvv0" path="res://assets/3d/objects/blue/hotel/hallways/wall_light.tscn" id="9_psjbi"]
 [ext_resource type="PackedScene" uid="uid://bcncjtebhcob0" path="res://assets/3d/objects/blue/hotel/misc_decor/trashcan.tscn" id="11_psjbi"]
 [ext_resource type="PackedScene" uid="uid://7rt01r3nxblk" path="res://assets/3d/objects/blue/hotel/misc_decor/big_cardboard_box.tscn" id="13_w3r7y"]
 [ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_1.tscn" id="14_srry2"]
 [ext_resource type="PackedScene" uid="uid://pv7igjrijnuy" path="res://assets/3d/objects/blue/hotel/misc_decor/short_divider_wall.tscn" id="14_vcupr"]
 [ext_resource type="PackedScene" uid="uid://hxs50733onk1" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_2.tscn" id="15_6yind"]
 [ext_resource type="PackedScene" uid="uid://dryfwf80n7hs4" path="res://assets/3d/objects/blue/hotel/misc_decor/large_tree.tscn" id="15_n2ypl"]
+[ext_resource type="PackedScene" uid="uid://cut6c1bfy6oy0" path="res://assets/3d/objects/blue/hotel/misc_decor/desk_lamp.tscn" id="15_wbgmf"]
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="16_61fdq"]
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_3.tscn" id="16_cjdov"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
@@ -1140,6 +1140,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -35)
 script = ExtResource("3_4g4u6")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/LobbyChunk" unique_id=412797874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8500004, 7.5, 2.199997)
@@ -1156,10 +1157,13 @@ font_size = 64
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000005, 0, -13.800003)
 
 [node name="LobbyBell" parent="HotelRooms/LobbyChunk/Chunk/FrontDesk" unique_id=1768288451 instance=ExtResource("6_w3r7y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.31239, -0.19999695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.312, 0.79999924)
 
 [node name="CornerTable" parent="HotelRooms/LobbyChunk/Chunk" unique_id=14176064 instance=ExtResource("6_psjbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 0, 20.1)
+
+[node name="DeskLamp" parent="HotelRooms/LobbyChunk/Chunk/CornerTable" unique_id=692765185 instance=ExtResource("15_wbgmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999962, 1.4, 0.5)
 
 [node name="CenterTable" parent="HotelRooms/LobbyChunk/Chunk" unique_id=1992056715 instance=ExtResource("7_w3r7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4, 0, 15.1)
@@ -1181,7 +1185,7 @@ transform = Transform3D(-0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, -0.9
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7, 0, -10)
 
 [node name="LargeTree" parent="HotelRooms/LobbyChunk/Chunk" unique_id=1825076331 instance=ExtResource("15_n2ypl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -11)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -11, 0, -11)
 
 [node name="LargeTree2" parent="HotelRooms/LobbyChunk/Chunk" unique_id=1913080417 instance=ExtResource("15_n2ypl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -18)
@@ -1204,6 +1208,18 @@ transform = Transform3D(-1.4488888, 0, -0.3882287, 0, 1.5, 0, 0.3882287, 0, -1.4
 [node name="ShortDividerWall" parent="HotelRooms/LobbyChunk/Chunk" unique_id=428251671 instance=ExtResource("14_vcupr")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5, 0, -15)
 
+[node name="DeskLamp" parent="HotelRooms/LobbyChunk/Chunk" unique_id=924994707 instance=ExtResource("15_wbgmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.3, -14.099998)
+
+[node name="SmallBluePlant" parent="HotelRooms/LobbyChunk/Chunk" unique_id=77098294 instance=ExtResource("19_mwtcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 2.3, -13.599998)
+
+[node name="SmallRedPlant" parent="HotelRooms/LobbyChunk/Chunk" unique_id=571481014 instance=ExtResource("22_7gnmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.3, -14.500004)
+
+[node name="SmallBonsaiTree" parent="HotelRooms/LobbyChunk/Chunk" unique_id=269969241 instance=ExtResource("20_j64is")]
+transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, -3.4, 2.3000002, -13.599998)
+
 [node name="BreakroomChunk" type="Area3D" parent="HotelRooms" unique_id=619939966 groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -59)
 script = ExtResource("3_4g4u6")
@@ -1222,9 +1238,7 @@ shape = SubResource("BoxShape3D_lmeiv")
 
 [node name="HallChunk1" parent="HotelRooms" unique_id=276947841 instance=ExtResource("5_sv55n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -78)
-
-[node name="WallLight" parent="HotelRooms/HallChunk1" unique_id=140043734 instance=ExtResource("9_psjbi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -9.099998)
+use_global_lighting = false
 
 [node name="HallChunk2" type="Area3D" parent="HotelRooms" unique_id=1655093668 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108, 0, -78)
@@ -1517,13 +1531,13 @@ _element = 5
 [node name="WestHotel" parent="." unique_id=2129615624 instance=ExtResource("22_yncb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
 
-[node name="SmallBluePlant" parent="." unique_id=77098294 instance=ExtResource("19_mwtcr")]
+[node name="SmallBluePlant" parent="." unique_id=618861137 instance=ExtResource("19_mwtcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -86)
 
-[node name="SmallBonsaiTree" parent="." unique_id=269969241 instance=ExtResource("20_j64is")]
+[node name="SmallBonsaiTree" parent="." unique_id=845253448 instance=ExtResource("20_j64is")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -86)
 
-[node name="SmallRedPlant" parent="." unique_id=571481014 instance=ExtResource("22_7gnmi")]
+[node name="SmallRedPlant" parent="." unique_id=1633693174 instance=ExtResource("22_7gnmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -86)
 
 [node name="LargeTree" parent="." unique_id=1533150889 instance=ExtResource("15_n2ypl")]

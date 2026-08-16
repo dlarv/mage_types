@@ -572,6 +572,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.536743e-07, 0, -1.8999996)
 [node name="RedRoom" type="Area3D" parent="Section1" unique_id=965927499 node_paths=PackedStringArray("chunk")]
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom" unique_id=2910632]
@@ -670,6 +671,7 @@ dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_gcly8")])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -20)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/OrangeRoom" unique_id=456068751]
@@ -768,6 +770,7 @@ dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_7mtce")])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -13)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/Magenta Room" unique_id=1119794714]
@@ -900,6 +903,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.002
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 42)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/YellowRoom" unique_id=244002405]
@@ -978,6 +982,7 @@ material = SubResource("ShaderMaterial_7io46")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 20)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom" unique_id=1657190992]
@@ -1093,6 +1098,7 @@ dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_upves")])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, -3)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/OrangeRoom" unique_id=318728145]
@@ -1251,6 +1257,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8999996)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Reset")]
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom" unique_id=143467115]
@@ -1493,6 +1500,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -3)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
 resets = [NodePath("Chunk/Reset")]
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/EastRoom" unique_id=1456309921]
@@ -1585,6 +1593,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -24)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
 resets = [NodePath("Reset")]
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/WestRoom" unique_id=192377803]
@@ -1695,6 +1704,7 @@ reset_positions_of = [null]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -41)
 script = ExtResource("2_exmbl")
 chunk = NodePath("Chunk")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/CyanChunk" unique_id=251198262]
@@ -1726,6 +1736,7 @@ material = SubResource("ShaderMaterial_aa6kh")
 [node name="LightChunk" type="Area3D" parent="." unique_id=873182400 node_paths=PackedStringArray("chunk")]
 script = ExtResource("2_exmbl")
 chunk = NodePath("DirectionalLight3D")
+use_global_lighting = false
 metadata/_custom_type_script = "uid://bylr8xlkovkcu"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightChunk" unique_id=1976296052]
