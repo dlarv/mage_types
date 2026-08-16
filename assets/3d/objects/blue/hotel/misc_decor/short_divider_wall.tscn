@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://pv7igjrijnuy"]
+
+[ext_resource type="PackedScene" uid="uid://c2mqovq04cbi4" path="res://assets/3d/objects/blue/hotel/raw/ShortDividerWall.glb" id="1_b03ef"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_m0m0s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b03ef"]
+size = Vector3(2.5, 96, 4.9)
+
+[node name="ShortDividerWall" unique_id=428251671 instance=ExtResource("1_b03ef")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ShortDividerWall" parent="." index="0" unique_id=661084821]
+surface_material_override/0 = ExtResource("2_m0m0s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ShortDividerWall" index="0" unique_id=1991482338]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShortDividerWall/StaticBody3D" index="0" unique_id=1226310741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 47.500027, 0.049999952)
+shape = SubResource("BoxShape3D_b03ef")

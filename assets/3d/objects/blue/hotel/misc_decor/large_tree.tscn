@@ -1,23 +1,58 @@
 [gd_scene format=3 uid="uid://dryfwf80n7hs4"]
 
 [ext_resource type="PackedScene" uid="uid://dhhg7j5up2ruq" path="res://assets/3d/objects/blue/hotel/raw/LargeTree.glb" id="1_sc36i"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="2_mrvbs"]
+[ext_resource type="Texture2D" uid="uid://fh431aybdmjp" path="res://assets/3d/objects/blue/hotel/raw/textures/large_tree_diffuse.png" id="3_y8xfh"]
+[ext_resource type="Texture2D" uid="uid://bn23xx1xnmwc1" path="res://assets/3d/objects/blue/hotel/raw/textures/large_tree_normal.png" id="4_vj0ym"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrvbs"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_color = Color(0.026410585, 0.0024697888, 0, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("2_mrvbs")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ojy6"]
+albedo_texture = ExtResource("3_y8xfh")
+normal_enabled = true
+normal_texture = ExtResource("4_vj0ym")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_re1uv"]
 radius = 0.6
-height = 3.8
+height = 4.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sc36i"]
 radius = 0.4
-height = 1.4
+height = 1.6
 
-[node name="LargeTree" unique_id=375813429 instance=ExtResource("1_sc36i")]
+[node name="LargeTree" unique_id=1442317945 instance=ExtResource("1_sc36i")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="LargeTree" parent_id_path=PackedInt32Array(357517518) index="0" unique_id=417570295]
+[node name="LargeTree" parent="." index="0" unique_id=1849948157]
+transform = Transform3D(0.9827898, 0.18472739, 0, -0.18472739, 0.9827898, 0, 0, 0, 1, 0.95846677, 3.202414, -0.14868069)
+surface_material_override/0 = SubResource("StandardMaterial3D_mrvbs")
+surface_material_override/1 = SubResource("StandardMaterial3D_0ojy6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LargeTree" index="0" unique_id=417570295]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LargeTree/StaticBody3D" index="0" unique_id=50134646]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.825, -0.036)
+transform = Transform3D(0.98480785, -0.17364818, 0, 0.17364818, 0.98480785, 0, 0, 0, 1, -0.7125461, -1.4123538, -0.036)
 shape = SubResource("CapsuleShape3D_re1uv")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="LargeTree/StaticBody3D" index="1" unique_id=375595049]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4499998, 3.3250005, -0.035933502)
+transform = Transform3D(0.9659261, -0.2588191, 0, 0.2588191, 0.9659261, 0, 0, 0, 1, 0.90314764, 0.779891, 0.26406652)
 shape = SubResource("CapsuleShape3D_sc36i")

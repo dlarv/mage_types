@@ -12,7 +12,7 @@ height = 2.1
 
 [node name="Stalagmite1" unique_id=1895921658 instance=ExtResource("1_3sx6x")]
 
-[node name="Stalagmite_001" parent="." index="0" unique_id=1987071414]
+[node name="Stalagmite_001" parent="." index="0" unique_id=1927031709]
 surface_material_override/0 = SubResource("StandardMaterial3D_4l2j3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Stalagmite_001" index="0" unique_id=1640229115]

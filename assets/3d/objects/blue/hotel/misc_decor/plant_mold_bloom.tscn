@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://buwmairwhotkd"]
+
+[ext_resource type="PackedScene" uid="uid://cwdhxgqsx64tx" path="res://assets/3d/objects/blue/hotel/raw/PlantMold.glb" id="1_aek28"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="2_bmpn0"]
+[ext_resource type="Texture2D" uid="uid://tphgvqrjia54" path="res://assets/3d/objects/blue/hotel/raw/textures/mold_bloom_normal.png" id="3_bmpn0"]
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74ape"]
+resource_local_to_scene = true
+albedo_color = Color(0.026410585, 0.0024697888, 0, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("2_bmpn0")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rk1m"]
+albedo_color = Color(0.0019832756, 0.109515406, 0.54441696, 1)
+roughness = 0.4
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("3_bmpn0")
+
+[node name="PlantMold" unique_id=1649782773 instance=ExtResource("1_aek28")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="PlantMold" parent="." index="0" unique_id=96755847]
+surface_material_override/0 = SubResource("StandardMaterial3D_74ape")
+surface_material_override/1 = SubResource("StandardMaterial3D_4rk1m")
