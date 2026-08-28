@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dcfb43esonmna" path="res://assets/3d/objects/blue/hotel/misc_decor/center_table.tscn" id="7_w3r7y"]
 [ext_resource type="PackedScene" uid="uid://dh6ti3acb6qa" path="res://src/overworld/puzzle_blocks/lockables/chest.tscn" id="8_flv43"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="9_mipr7"]
+[ext_resource type="PackedScene" uid="uid://b0v2eq1ocrvv0" path="res://assets/3d/objects/blue/hotel/hallways/wall_light.tscn" id="9_psjbi"]
 [ext_resource type="PackedScene" uid="uid://bcncjtebhcob0" path="res://assets/3d/objects/blue/hotel/misc_decor/trashcan.tscn" id="11_psjbi"]
 [ext_resource type="PackedScene" uid="uid://7rt01r3nxblk" path="res://assets/3d/objects/blue/hotel/misc_decor/big_cardboard_box.tscn" id="13_w3r7y"]
 [ext_resource type="PackedScene" uid="uid://btp6ixngeo1j7" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_1.tscn" id="14_srry2"]
@@ -23,12 +24,18 @@
 [ext_resource type="PackedScene" uid="uid://e8cuohoyb4kr" path="res://world/subareas/blue/transmutation_dungeon/transmutation_puzzle_3.tscn" id="16_cjdov"]
 [ext_resource type="PackedScene" uid="uid://h8buyp6ewnv8" path="res://world/subareas/blue/supply_closet.tscn" id="18_sh3xv"]
 [ext_resource type="PackedScene" uid="uid://bb2ari0nbs188" path="res://assets/3d/objects/blue/hotel/misc_decor/small_blue_plant.tscn" id="19_mwtcr"]
+[ext_resource type="PackedScene" uid="uid://drlmghtosc1wg" path="res://assets/3d/objects/blue/hotel/misc_decor/side_table.tscn" id="19_qoepi"]
 [ext_resource type="PackedScene" uid="uid://c0lunojco2h8i" path="res://assets/3d/objects/blue/hotel/misc_decor/small_bonsai_tree.tscn" id="20_j64is"]
+[ext_resource type="PackedScene" uid="uid://dj7f54ugbqbb4" path="res://assets/3d/objects/blue/hotel/rec_room/barstool.tscn" id="21_6veki"]
 [ext_resource type="PackedScene" uid="uid://ba32jlx8ovpoi" path="res://data/story/bosses/tutorial_bosses/mini_boss_1.tscn" id="21_j64is"]
 [ext_resource type="PackedScene" uid="uid://djg4idw6jrutp" path="res://assets/3d/objects/blue/hotel/misc_decor/small_red_plant.tscn" id="22_7gnmi"]
+[ext_resource type="PackedScene" uid="uid://w3hwr7xpa0lu" path="res://assets/3d/objects/blue/hotel/misc_decor/microwave.tscn" id="22_7jbtl"]
 [ext_resource type="PackedScene" uid="uid://chuyluogsxeer" path="res://world/subareas/blue/west_hotel.tscn" id="22_yncb8"]
 [ext_resource type="PackedScene" uid="uid://buwmairwhotkd" path="res://assets/3d/objects/blue/hotel/misc_decor/plant_mold_bloom.tscn" id="25_ljs8d"]
 [ext_resource type="PackedScene" uid="uid://cndg852mpwaie" path="res://assets/3d/objects/blue/hotel/misc_decor/divider_wall.tscn" id="26_7gnmi"]
+[ext_resource type="PackedScene" uid="uid://dtdwli3udybow" path="res://assets/3d/objects/blue/hotel/misc_decor/bollards.tscn" id="27_1nkb5"]
+[ext_resource type="PackedScene" uid="uid://dce7qss85nvt" path="res://assets/3d/objects/blue/hotel/misc_decor/couch.tscn" id="30_wbgmf"]
+[ext_resource type="PackedScene" uid="uid://da8vdwyp4obwr" path="res://src/overworld/readable.tscn" id="36_lmeiv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(2, 3.5, 1)
@@ -67,10 +74,10 @@ size = Vector3(1, 8.8, 2.8)
 size = Vector3(1, 10, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yncb8"]
-size = Vector3(1, 8.8, 2.4)
+size = Vector3(1, 7, 2.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4icov"]
-size = Vector3(1, 10, 3)
+size = Vector3(1, 7, 2.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rayr4"]
 size = Vector3(1, 10, 10.1)
@@ -156,17 +163,15 @@ size = Vector3(19, 25, 39)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkveg"]
 size = Vector3(17, 25, 42)
 
+[sub_resource type="Environment" id="Environment_1nkb5"]
+fog_enabled = true
+fog_density = 0.05
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_fnsom"]
 size = Vector3(17, 25, 177)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cgtin"]
 size = Vector3(46, 25, 33)
-
-[sub_resource type="BoxMesh" id="BoxMesh_41gmd"]
-size = Vector3(10, 5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d08kw"]
-size = Vector3(10, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dpk1r"]
 size = Vector3(15, 25, 30)
@@ -188,7 +193,7 @@ size = Vector3(307, 161, 301)
 
 [node name="Blue" type="Node3D" unique_id=543950842]
 
-[node name="BlueEnv" parent="." unique_id=476595335 instance=ExtResource("1_yeg0x")]
+[node name="BlueEnv" parent="." unique_id=312490479 instance=ExtResource("1_yeg0x")]
 
 [node name="Doors" type="Node3D" parent="." unique_id=1914560580]
 
@@ -391,18 +396,18 @@ script = ExtResource("2_bteo7")
 point_2 = NodePath("CollisionShape3D2/Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/Breakroom1ToBreakroom2" unique_id=977052890]
-transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, -45.6, 4.4, -1.5000076)
+transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, -45.6, 3.5, -1.5000076)
 shape = SubResource("BoxShape3D_yncb8")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Breakroom1ToBreakroom2/CollisionShape3D" unique_id=1664209846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -1.5, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Doors/Breakroom1ToBreakroom2" unique_id=1317006606]
-transform = Transform3D(1, 0, -1.7136335e-07, 0, 1, 0, 1.7136335e-07, 0, 1, -43.1, 5, -3.7999992)
+transform = Transform3D(1, 0, -1.7136335e-07, 0, 1, 0, 1.7136335e-07, 0, 1, -43.1, 3.5, -3.7999992)
 shape = SubResource("BoxShape3D_4icov")
 
 [node name="Marker3D" type="Marker3D" parent="Doors/Breakroom1ToBreakroom2/CollisionShape3D2" unique_id=507100559]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -1.5, 0)
 
 [node name="Hall4ToInfHall" type="Area3D" parent="Doors" unique_id=245452617 node_paths=PackedStringArray("point_2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0, -88.5)
@@ -1166,7 +1171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4, 0, 20.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999962, 1.4, 0.5)
 
 [node name="CenterTable" parent="HotelRooms/LobbyChunk/Chunk" unique_id=1992056715 instance=ExtResource("7_w3r7y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4, 0, 15.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 16.500002)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="HotelRooms/LobbyChunk/Chunk" unique_id=320266657]
 transform = Transform3D(0.9659258, -0.066987306, 0.25, 0, 0.96592593, 0.2588191, -0.25881907, -0.25000006, 0.9330128, 0, 7, 0)
@@ -1182,7 +1187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -13)
 transform = Transform3D(-0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, -0.9659258, -7, 0, -15)
 
 [node name="Trashcan" parent="HotelRooms/LobbyChunk/Chunk" unique_id=1267752765 instance=ExtResource("11_psjbi")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7, 0, -10)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6, 0, -12.599998)
 
 [node name="LargeTree" parent="HotelRooms/LobbyChunk/Chunk" unique_id=1825076331 instance=ExtResource("15_n2ypl")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -11, 0, -11)
@@ -1220,21 +1225,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.3, -14.500004)
 [node name="SmallBonsaiTree" parent="HotelRooms/LobbyChunk/Chunk" unique_id=269969241 instance=ExtResource("20_j64is")]
 transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, -3.4, 2.3000002, -13.599998)
 
-[node name="BreakroomChunk" type="Area3D" parent="HotelRooms" unique_id=619939966 groups=["persist"]]
+[node name="BreakroomChunk" type="Area3D" parent="HotelRooms" unique_id=619939966 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -59)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BreakroomChunk" unique_id=1219276320]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7, 7.5, 4.1000023)
 shape = SubResource("BoxShape3D_vcupr")
 
-[node name="BreakroomChunk2" type="Area3D" parent="HotelRooms" unique_id=1675383109 groups=["persist"]]
+[node name="Node3D" type="Node3D" parent="HotelRooms/BreakroomChunk" unique_id=681025196]
+
+[node name="BigCardboardBox" parent="HotelRooms/BreakroomChunk/Node3D" unique_id=1180428548 instance=ExtResource("13_w3r7y")]
+transform = Transform3D(1.8126155, 0, -0.84523654, 0, 2, 0, 0.84523654, 0, 1.8126155, -47, 0, 2)
+
+[node name="BreakroomChunk2" type="Area3D" parent="HotelRooms" unique_id=1675383109 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -59)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Node3D")
+use_global_lighting = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/BreakroomChunk2" unique_id=748249316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8, 7.5, 0.40000153)
 shape = SubResource("BoxShape3D_lmeiv")
+
+[node name="Node3D" type="Node3D" parent="HotelRooms/BreakroomChunk2" unique_id=1102004560]
+
+[node name="WallLight" parent="HotelRooms/BreakroomChunk2/Node3D" unique_id=1600417850 instance=ExtResource("9_psjbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 5.3, -0.099998474)
+is_flickering = true
+time_range = Vector2(0.1, 0.3)
+dim_light_range = Vector2(0.6, 0.8)
+bright_light_range = Vector2(0.8, 1)
+
+[node name="SideTable" parent="HotelRooms/BreakroomChunk2/Node3D" unique_id=1480362671 instance=ExtResource("19_qoepi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -1)
+
+[node name="Barstool" parent="HotelRooms/BreakroomChunk2/Node3D" unique_id=2145963575 instance=ExtResource("21_6veki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="HotelRooms/BreakroomChunk2/Node3D" unique_id=1979079850]
+transform = Transform3D(0.09716107, -0.7398142, 0.6657587, 0.9303218, 0.3051926, 0.20336908, -0.35363996, 0.5996102, 0.71791804, -27.5, 5, 1.2000008)
+light_color = Color(1, 0.79607844, 0.64705884, 1)
+light_energy = 0.3
+
+[node name="Microwave" parent="HotelRooms/BreakroomChunk2/Node3D" unique_id=1723700035 instance=ExtResource("22_7jbtl")]
+transform = Transform3D(1.4488888, 0, 0.3882286, 0, 1.5, 0, -0.3882286, 0, 1.4488888, -29, 1.4983155, -1)
 
 [node name="HallChunk1" parent="HotelRooms" unique_id=276947841 instance=ExtResource("5_sv55n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -78)
@@ -1317,6 +1353,7 @@ shape = SubResource("BoxShape3D_fkveg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, -78)
 script = ExtResource("3_4g4u6")
 chunk = NodePath("Chunk")
+environment = SubResource("Environment_1nkb5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/InfHallChunk" unique_id=1095353498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.5, 79)
@@ -1335,31 +1372,55 @@ shape = SubResource("BoxShape3D_cgtin")
 
 [node name="Node3D" type="Node3D" parent="HotelRooms/HallChunk5" unique_id=2045249188]
 
-[node name="Obstacle2" type="MeshInstance3D" parent="HotelRooms/HallChunk5/Node3D" unique_id=67418469 groups=["detached_env"]]
-transform = Transform3D(7.4505806e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 7.4505806e-08, 30.5, 0.4, -54.600006)
-mesh = SubResource("BoxMesh_41gmd")
+[node name="Bollards" parent="HotelRooms/HallChunk5/Node3D" unique_id=864657879 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25881904, 29, 0, -58)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HotelRooms/HallChunk5/Node3D/Obstacle2" unique_id=1517428105]
+[node name="Bollards2" parent="HotelRooms/HallChunk5/Node3D" unique_id=1560991946 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(0.17364815, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, 0.17364815, 29.7, 0, -55.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk5/Node3D/Obstacle2/StaticBody3D" unique_id=1369532586]
-shape = SubResource("BoxShape3D_d08kw")
+[node name="Bollards3" parent="HotelRooms/HallChunk5/Node3D" unique_id=1066254415 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(0.17364815, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, 0.17364815, 28.7, 0, -52.5)
 
-[node name="HallChunk6" type="Area3D" parent="HotelRooms" unique_id=1621589753 groups=["persist"]]
+[node name="HallChunk6" type="Area3D" parent="HotelRooms" unique_id=1621589753 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 0, -166)
 script = ExtResource("3_4g4u6")
+chunk = NodePath("Node3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk6" unique_id=1456962264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7.5, -0.5)
 shape = SubResource("BoxShape3D_dpk1r")
 
-[node name="Obstacle" type="MeshInstance3D" parent="HotelRooms/HallChunk6" unique_id=882423357 groups=["detached_env"]]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.699997, 0.4, 1)
-mesh = SubResource("BoxMesh_41gmd")
+[node name="Node3D" type="Node3D" parent="HotelRooms/HallChunk6" unique_id=1677635531]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HotelRooms/HallChunk6/Obstacle" unique_id=1297574340]
+[node name="Bollards" parent="HotelRooms/HallChunk6/Node3D" unique_id=1793297169 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.96592593, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, -0.96592593, -3, 0, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk6/Obstacle/StaticBody3D" unique_id=623559403]
-shape = SubResource("BoxShape3D_d08kw")
+[node name="Bollards2" parent="HotelRooms/HallChunk6/Node3D" unique_id=2069978291 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-1.0000001, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1.0000001, 1.6000061, 0, 0.6000061)
+
+[node name="Bollards3" parent="HotelRooms/HallChunk6/Node3D" unique_id=655049723 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.96592593, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, -0.96592593, -1.3999939, 0, -1.3999939)
+
+[node name="Bollards4" parent="HotelRooms/HallChunk6/Node3D" unique_id=1402099141 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.2588191, 0, -0.96592593, 0, 1, 0, 0.96592593, 0, -0.2588191, 1.6000061, 0, -2.399994)
+
+[node name="Bollards5" parent="HotelRooms/HallChunk6/Node3D" unique_id=434316015 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-2.9802322e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -2.9802322e-08, 3.2000122, 0, -3.0999908)
+
+[node name="Bollards6" parent="HotelRooms/HallChunk6/Node3D" unique_id=856205064 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.96592593, 0, 0.2588191, 0, 1, 0, -0.2588191, 0, -0.96592593, -3.2999878, 0, 3.300003)
+
+[node name="Bollards7" parent="HotelRooms/HallChunk6/Node3D" unique_id=836942758 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.98480785, 0, 0.17364824, 0, 1, 0, -0.17364824, 0, -0.98480785, -0.49998474, 0, 2.4000092)
+
+[node name="Bollards8" parent="HotelRooms/HallChunk6/Node3D" unique_id=1648238303 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.7660445, 0, -0.64278764, 0, 1, 0, 0.64278764, 0, -0.7660445, 1.6000214, 0, -4.699997)
+
+[node name="Bollards9" parent="HotelRooms/HallChunk6/Node3D" unique_id=683784380 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(0.08715558, 0, -0.9961948, 0, 1, 0, 0.9961948, 0, 0.08715558, 3.5000305, 0, -7.399994)
+
+[node name="Bollards10" parent="HotelRooms/HallChunk6/Node3D" unique_id=1078891260 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.57357657, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.57357657, 1.7000275, 0, -6.699997)
 
 [node name="HallChunk7" type="Area3D" parent="HotelRooms" unique_id=825033781 node_paths=PackedStringArray("chunk") groups=["persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 0, -201)
@@ -1372,23 +1433,20 @@ shape = SubResource("BoxShape3D_npiad")
 
 [node name="Chunk" type="Node3D" parent="HotelRooms/HallChunk7" unique_id=1106298492]
 
-[node name="Obstacle" type="MeshInstance3D" parent="HotelRooms/HallChunk7/Chunk" unique_id=496410415 groups=["detached_env"]]
-transform = Transform3D(7.4505806e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 7.4505806e-08, -23.5, 0.4, -9.600006)
-mesh = SubResource("BoxMesh_41gmd")
+[node name="Bollards" parent="HotelRooms/HallChunk7/Chunk" unique_id=1078388237 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.087155744, 0, -0.9961948, 0, 1, 0, 0.9961948, 0, -0.087155744, 32.6, 0, -12.600006)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HotelRooms/HallChunk7/Chunk/Obstacle" unique_id=1170536946]
+[node name="Bollards2" parent="HotelRooms/HallChunk7/Chunk" unique_id=509365630 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, 32.6, 0, -7.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk7/Chunk/Obstacle/StaticBody3D" unique_id=649756064]
-shape = SubResource("BoxShape3D_d08kw")
+[node name="Bollards3" parent="HotelRooms/HallChunk7/Chunk" unique_id=87291212 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(-0.087155744, 0, -0.9961948, 0, 1, 0, 0.9961948, 0, -0.087155744, -23.399994, 0, -12.600006)
 
-[node name="Obstacle2" type="MeshInstance3D" parent="HotelRooms/HallChunk7/Chunk" unique_id=137998643 groups=["detached_env"]]
-transform = Transform3D(7.4505806e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 7.4505806e-08, 32.5, 0.4, -9.600006)
-mesh = SubResource("BoxMesh_41gmd")
+[node name="Bollards4" parent="HotelRooms/HallChunk7/Chunk" unique_id=2137818013 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(0.17364818, 0, -0.9848079, 0, 1, 0, 0.9848079, 0, 0.17364818, -23.399994, 0, -7.5)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HotelRooms/HallChunk7/Chunk/Obstacle2" unique_id=312277788]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HotelRooms/HallChunk7/Chunk/Obstacle2/StaticBody3D" unique_id=1725314852]
-shape = SubResource("BoxShape3D_d08kw")
+[node name="Bollards5" parent="HotelRooms/HallChunk7/Chunk" unique_id=1762425373 instance=ExtResource("27_1nkb5")]
+transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, -22.399994, 0, -10.5)
 
 [node name="SupplyClosetChunk" parent="HotelRooms" unique_id=1534903731 instance=ExtResource("18_sh3xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, -240.2)
@@ -1531,17 +1589,12 @@ _element = 5
 [node name="WestHotel" parent="." unique_id=2129615624 instance=ExtResource("22_yncb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0, 65)
 
-[node name="SmallBluePlant" parent="." unique_id=618861137 instance=ExtResource("19_mwtcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -86)
+[node name="Couch" parent="." unique_id=657119742 instance=ExtResource("30_wbgmf")]
+transform = Transform3D(-5.6824803e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.6824803e-08, 18, 0, -19)
 
-[node name="SmallBonsaiTree" parent="." unique_id=845253448 instance=ExtResource("20_j64is")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -86)
+[node name="Couch2" parent="." unique_id=937832890 instance=ExtResource("30_wbgmf")]
+transform = Transform3D(-1.3, 0, 1.13649605e-07, 0, 1.3, 0, -1.13649605e-07, 0, -1.3, 12.9, 0, -14.1)
 
-[node name="SmallRedPlant" parent="." unique_id=1633693174 instance=ExtResource("22_7gnmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -86)
-
-[node name="LargeTree" parent="." unique_id=1533150889 instance=ExtResource("15_n2ypl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -85)
-
-[node name="PlantMold" parent="." unique_id=253767024 instance=ExtResource("25_ljs8d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -86)
+[node name="Readable" parent="." unique_id=1171627487 instance=ExtResource("36_lmeiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 2, -87)
+dialog_id = "READABLE_TEST"

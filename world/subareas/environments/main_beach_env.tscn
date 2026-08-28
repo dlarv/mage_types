@@ -826,7 +826,7 @@ colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90
 noise = SubResource("FastNoiseLite_nytw8")
 color_ramp = SubResource("Gradient_twg1l")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smuyo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76mdr"]
 resource_local_to_scene = true
 albedo_color = Color(0.026410585, 0.0024697888, 0, 1)
 roughness_texture = SubResource("NoiseTexture2D_xephk")
@@ -928,7 +928,7 @@ script = ExtResource("4_hsn5f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -3.3999996, 58.050003)
 shape = SubResource("BoxShape3D_76mdr")
 
-[node name="Pier" parent="." index="2" unique_id=2146522929]
+[node name="Pier" parent="." index="2" unique_id=1798850825]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pier" index="0" unique_id=970374761]
@@ -936,7 +936,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pier/StaticBody3D" index="0" unique_id=1474794473]
 shape = SubResource("ConcavePolygonShape3D_smuyo")
 
-[node name="Lighthouse" parent="." index="3" unique_id=370944875]
+[node name="Lighthouse" parent="." index="3" unique_id=390992551]
 surface_material_override/0 = SubResource("ShaderMaterial_vkklm")
 surface_material_override/1 = SubResource("ShaderMaterial_ecf38")
 surface_material_override/2 = SubResource("ShaderMaterial_0qrl7")
@@ -954,7 +954,7 @@ speed = 0.5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lighthouse/StaticBody3D" index="0" unique_id=1130921446]
 shape = SubResource("ConcavePolygonShape3D_tbbdx")
 
-[node name="Wall_005" parent="." index="4" unique_id=1367121245]
+[node name="Wall_005" parent="." index="4" unique_id=397060475]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall_005" index="0" unique_id=1585433454]
@@ -962,7 +962,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_005/StaticBody3D" index="0" unique_id=1075650860]
 shape = SubResource("ConcavePolygonShape3D_1msdm")
 
-[node name="Cliff" parent="." index="5" unique_id=863952674]
+[node name="Cliff" parent="." index="5" unique_id=903457677]
 surface_material_override/0 = SubResource("ShaderMaterial_76mdr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cliff" index="0" unique_id=1239553114]
@@ -970,7 +970,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_76mdr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cliff/StaticBody3D" index="0" unique_id=1314747367]
 shape = SubResource("ConcavePolygonShape3D_datgn")
 
-[node name="Ground_001" parent="." index="6" unique_id=1634108488]
+[node name="Ground_001" parent="." index="6" unique_id=924102576]
 surface_material_override/0 = SubResource("ShaderMaterial_smuyo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground_001" index="0" unique_id=2105117553]
@@ -978,7 +978,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_smuyo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_001/StaticBody3D" index="0" unique_id=1020539252]
 shape = SubResource("ConcavePolygonShape3D_wa7fn")
 
-[node name="Beach" parent="." index="7" unique_id=1928754301]
+[node name="Beach" parent="." index="7" unique_id=257712475]
 surface_material_override/0 = SubResource("ShaderMaterial_tbbdx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Beach" index="0" unique_id=1382211514]
@@ -986,7 +986,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_tbbdx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Beach/StaticBody3D" index="0" unique_id=1802886617]
 shape = SubResource("ConcavePolygonShape3D_ir2ed")
 
-[node name="Wall_006" parent="." index="8" unique_id=1524671237]
+[node name="Wall_006" parent="." index="8" unique_id=126890325]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall_006" index="0" unique_id=728221638]
@@ -994,7 +994,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_006/StaticBody3D" index="0" unique_id=185731514]
 shape = SubResource("ConcavePolygonShape3D_44fbd")
 
-[node name="Island" parent="." index="9" unique_id=1566881954]
+[node name="Island" parent="." index="9" unique_id=625380115]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Island" index="0" unique_id=1054519069]
@@ -1002,7 +1002,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Island/StaticBody3D" index="0" unique_id=2020591711]
 shape = SubResource("ConcavePolygonShape3D_jre1m")
 
-[node name="Wall_004" parent="." index="10" unique_id=1612195370]
+[node name="Wall_004" parent="." index="10" unique_id=425967664]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall_004" index="0" unique_id=2007955916]
@@ -1010,7 +1010,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_004/StaticBody3D" index="0" unique_id=2073215590]
 shape = SubResource("ConcavePolygonShape3D_0uger")
 
-[node name="CaveMouth" parent="." index="11" unique_id=639981253]
+[node name="CaveMouth" parent="." index="11" unique_id=540515976]
 surface_material_override/0 = SubResource("ShaderMaterial_aex22")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CaveMouth" index="0" unique_id=596414601]
@@ -1018,7 +1018,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_aex22")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CaveMouth/StaticBody3D" index="0" unique_id=26344120]
 shape = SubResource("ConcavePolygonShape3D_76mdr")
 
-[node name="CaveMouth_001" parent="." index="12" unique_id=1878544773]
+[node name="CaveMouth_001" parent="." index="12" unique_id=1617165665]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CaveMouth_001" index="0" unique_id=414592732]
@@ -1026,12 +1026,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CaveMouth_001/StaticBody3D" index="0" unique_id=379555429]
 shape = SubResource("ConcavePolygonShape3D_rs58n")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="HotelExterior" parent_id_path=PackedInt32Array(801216935) index="0" unique_id=1237167786]
+[node name="StaticBody3D" type="StaticBody3D" parent="HotelExterior" parent_id_path=PackedInt32Array(1665000104) index="0" unique_id=1237167786]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HotelExterior/StaticBody3D" index="0" unique_id=1614428071]
 shape = SubResource("ConcavePolygonShape3D_l7n7h")
 
-[node name="Wall" parent="." index="14" unique_id=602264132]
+[node name="Wall" parent="." index="14" unique_id=363156612]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall" index="0" unique_id=69020023]
@@ -1039,7 +1039,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D" index="0" unique_id=759437319]
 shape = SubResource("ConcavePolygonShape3D_hsn5f")
 
-[node name="Hill" parent="." index="15" unique_id=796332819]
+[node name="Hill" parent="." index="15" unique_id=540601539]
 surface_material_override/0 = SubResource("ShaderMaterial_76mdr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hill" index="0" unique_id=584690385]
@@ -1047,7 +1047,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_76mdr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hill/StaticBody3D" index="0" unique_id=719872775]
 shape = SubResource("ConcavePolygonShape3D_mr6v0")
 
-[node name="Wall_003" parent="." index="16" unique_id=2096893240]
+[node name="Wall_003" parent="." index="16" unique_id=1282903172]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall_003" index="0" unique_id=1389222347]
@@ -1055,7 +1055,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_003/StaticBody3D" index="0" unique_id=2145788998]
 shape = SubResource("ConcavePolygonShape3D_fl68y")
 
-[node name="Hill_001" parent="." index="17" unique_id=1768250526]
+[node name="Hill_001" parent="." index="17" unique_id=48916249]
 surface_material_override/0 = SubResource("ShaderMaterial_7bl8s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hill_001" index="0" unique_id=1241791353]
@@ -1063,7 +1063,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_7bl8s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hill_001/StaticBody3D" index="0" unique_id=2136407743]
 shape = SubResource("ConcavePolygonShape3D_k4oqj")
 
-[node name="Ground" parent="." index="18" unique_id=1001458131]
+[node name="Ground" parent="." index="18" unique_id=603382674]
 surface_material_override/0 = SubResource("ShaderMaterial_fl68y")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground" index="0" unique_id=409925550]
@@ -1071,7 +1071,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_fl68y")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" index="0" unique_id=307091583]
 shape = SubResource("ConcavePolygonShape3D_f4f4o")
 
-[node name="Road" parent="." index="19" unique_id=307069528]
+[node name="Road" parent="." index="19" unique_id=293458775]
 surface_material_override/0 = SubResource("ShaderMaterial_k4oqj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Road" index="0" unique_id=458034700]
@@ -1079,7 +1079,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_k4oqj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D" index="0" unique_id=1561302363]
 shape = SubResource("ConcavePolygonShape3D_fe8po")
 
-[node name="BeachSand" parent="." index="20" unique_id=254739570]
+[node name="BeachSand" parent="." index="20" unique_id=241730814]
 surface_material_override/0 = SubResource("ShaderMaterial_mr6v0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BeachSand" index="0" unique_id=550611026]
@@ -1087,15 +1087,15 @@ surface_material_override/0 = SubResource("ShaderMaterial_mr6v0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BeachSand/StaticBody3D" index="0" unique_id=1240918489]
 shape = SubResource("ConcavePolygonShape3D_aex22")
 
-[node name="Railing" parent="." index="21" unique_id=741539010]
-surface_material_override/0 = SubResource("StandardMaterial3D_smuyo")
+[node name="Railing" parent="." index="21" unique_id=694701693]
+surface_material_override/0 = SubResource("StandardMaterial3D_76mdr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Railing" index="0" unique_id=1439821070]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Railing/StaticBody3D" index="0" unique_id=1116044511]
 shape = SubResource("ConcavePolygonShape3D_w06xy")
 
-[node name="Wall_001" parent="." index="22" unique_id=102201260]
+[node name="Wall_001" parent="." index="22" unique_id=1983546924]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall_001" index="0" unique_id=925736774]
@@ -1103,7 +1103,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_001/StaticBody3D" index="0" unique_id=1307477306]
 shape = SubResource("ConcavePolygonShape3D_cer54")
 
-[node name="Wall_002" parent="." index="23" unique_id=1608519367]
+[node name="Wall_002" parent="." index="23" unique_id=30960231]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall_002" index="0" unique_id=217269496]
@@ -1111,15 +1111,15 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_002/StaticBody3D" index="0" unique_id=472282006]
 shape = SubResource("ConcavePolygonShape3D_3jaj5")
 
-[node name="Railing_002" parent="." index="25" unique_id=2011867924]
-surface_material_override/0 = SubResource("StandardMaterial3D_smuyo")
+[node name="Railing_002" parent="." index="25" unique_id=996200373]
+surface_material_override/0 = SubResource("StandardMaterial3D_76mdr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Railing_002" index="0" unique_id=404045971]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Railing_002/StaticBody3D" index="0" unique_id=2134252773]
 shape = SubResource("ConcavePolygonShape3D_lr36o")
 
-[node name="CaveLedge" parent="." index="26" unique_id=1764842917]
+[node name="CaveLedge" parent="." index="26" unique_id=828006923]
 surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CaveLedge" index="0" unique_id=1686505353]
@@ -1127,7 +1127,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CaveLedge/StaticBody3D" index="0" unique_id=213642650]
 shape = SubResource("ConcavePolygonShape3D_tddli")
 
-[node name="TidepoolEast" parent="." index="27" unique_id=1548642610]
+[node name="TidepoolEast" parent="." index="27" unique_id=1299051789]
 surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TidepoolEast" index="0" unique_id=601712654]
@@ -1135,7 +1135,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TidepoolEast/StaticBody3D" index="0" unique_id=607310000]
 shape = SubResource("ConcavePolygonShape3D_1vp8h")
 
-[node name="PillarEast" parent="." index="28" unique_id=1115294814]
+[node name="PillarEast" parent="." index="28" unique_id=1164036401]
 surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="PillarEast" index="0" unique_id=1673919276]
@@ -1143,7 +1143,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PillarEast/StaticBody3D" index="0" unique_id=621152460]
 shape = SubResource("ConcavePolygonShape3D_4p1nv")
 
-[node name="TidepoolWest" parent="." index="29" unique_id=1211830343]
+[node name="TidepoolWest" parent="." index="29" unique_id=72270459]
 surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TidepoolWest" index="0" unique_id=239618160]
@@ -1151,7 +1151,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TidepoolWest/StaticBody3D" index="0" unique_id=690642092]
 shape = SubResource("ConcavePolygonShape3D_7bl8s")
 
-[node name="IslandWest" parent="." index="30" unique_id=1357006251]
+[node name="IslandWest" parent="." index="30" unique_id=200299977]
 surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="IslandWest" index="0" unique_id=1242099828]
@@ -1159,7 +1159,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IslandWest/StaticBody3D" index="0" unique_id=454711670]
 shape = SubResource("ConcavePolygonShape3D_3tccr")
 
-[node name="Wall_007" parent="." index="31" unique_id=1161529893]
+[node name="Wall_007" parent="." index="31" unique_id=814050443]
 surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Wall_007" index="0" unique_id=1193812926]
@@ -1167,7 +1167,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_1vp8h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_007/StaticBody3D" index="0" unique_id=930125710]
 shape = SubResource("ConcavePolygonShape3D_pqmap")
 
-[node name="IslandWest_001" parent="." index="32" unique_id=273639722]
+[node name="IslandWest_001" parent="." index="32" unique_id=591803275]
 surface_material_override/0 = SubResource("ShaderMaterial_hsn5f")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="IslandWest_001" index="0" unique_id=1954863727]
@@ -1175,7 +1175,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_hsn5f")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IslandWest_001/StaticBody3D" index="0" unique_id=1270312585]
 shape = SubResource("ConcavePolygonShape3D_cft0h")
 
-[node name="IslandWest_002" parent="." index="33" unique_id=990262997]
+[node name="IslandWest_002" parent="." index="33" unique_id=1336948520]
 surface_material_override/0 = SubResource("ShaderMaterial_f4f4o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="IslandWest_002" index="0" unique_id=1401796306]
