@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://drlmghtosc1wg"]
+
+[ext_resource type="PackedScene" uid="uid://cfrd8hud1j73a" path="res://assets/3d/objects/blue/hotel/raw/SideTable.glb" id="1_w6m80"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="2_2d7ky"]
+[ext_resource type="Material" uid="uid://gf6iqh3iu31v" path="res://assets/shaders/misc/metal_material.tres" id="3_a2uo0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1harp"]
+size = Vector3(3.8, 10, 2)
+
+[node name="SideTable" unique_id=1480362671 instance=ExtResource("1_w6m80")]
+
+[node name="SideTable" parent="." index="0" unique_id=1089005251]
+surface_material_override/0 = ExtResource("2_2d7ky")
+surface_material_override/1 = ExtResource("2_2d7ky")
+surface_material_override/2 = ExtResource("3_a2uo0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SideTable" index="0" unique_id=1175730918]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SideTable/StaticBody3D" index="0" unique_id=2009011124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0342716e-07, 4.5, 0)
+shape = SubResource("BoxShape3D_1harp")

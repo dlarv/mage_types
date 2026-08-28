@@ -14,7 +14,7 @@ colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90
 noise = SubResource("FastNoiseLite_nytw8")
 color_ramp = SubResource("Gradient_twg1l")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74ape"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmpn0"]
 resource_local_to_scene = true
 albedo_color = Color(0.026410585, 0.0024697888, 0, 1)
 roughness_texture = SubResource("NoiseTexture2D_xephk")
@@ -31,9 +31,19 @@ normal_enabled = true
 normal_scale = 1.5
 normal_texture = ExtResource("3_bmpn0")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_74ape"]
+radius = 3.3
+height = 14.900001
+
 [node name="PlantMold" unique_id=1649782773 instance=ExtResource("1_aek28")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="PlantMold" parent="." index="0" unique_id=96755847]
-surface_material_override/0 = SubResource("StandardMaterial3D_74ape")
+surface_material_override/0 = SubResource("StandardMaterial3D_bmpn0")
 surface_material_override/1 = SubResource("StandardMaterial3D_4rk1m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PlantMold" index="0" unique_id=548793162]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlantMold/StaticBody3D" index="0" unique_id=82519058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.6723266, 0)
+shape = SubResource("CapsuleShape3D_74ape")

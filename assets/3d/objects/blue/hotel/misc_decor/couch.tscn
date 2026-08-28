@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dce7qss85nvt"]
+
+[ext_resource type="PackedScene" uid="uid://btx8v4xv8rtuf" path="res://assets/3d/objects/blue/hotel/raw/Couch.glb" id="1_mdgwv"]
+[ext_resource type="Texture2D" uid="uid://c353htcncverx" path="res://assets/shaders/misc/textures/wallpaper/canvas_normal.png" id="2_daihf"]
+[ext_resource type="Texture2D" uid="uid://bht2w2x47a41o" path="res://assets/shaders/misc/textures/felt_combo.png" id="2_jshg6"]
+[ext_resource type="Texture2D" uid="uid://djgpq8hcfyrd7" path="res://assets/shaders/misc/textures/felt_rough.png" id="3_1jlvd"]
+[ext_resource type="Material" uid="uid://ddu1en5jickwv" path="res://assets/shaders/misc/plastic_material.tres" id="5_1jlvd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fqak"]
+resource_local_to_scene = true
+albedo_color = Color(0.05464995, 0.11647885, 0.17568392, 1)
+roughness_texture = ExtResource("3_1jlvd")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("2_jshg6")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(3.01, 3.01, 3.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jshg6"]
+albedo_color = Color(0.1683385, 0.2922002, 0.40857837, 1)
+roughness = 0.6
+normal_enabled = true
+normal_texture = ExtResource("2_daihf")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1jlvd"]
+size = Vector3(4, 0.6, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4fqak"]
+size = Vector3(0.5, 0.4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15q58"]
+size = Vector3(3.1000001, 1.4, 0.8)
+
+[node name="Couch" unique_id=657119742 instance=ExtResource("1_mdgwv")]
+
+[node name="Couch" parent="." index="0" unique_id=1736878810]
+surface_material_override/0 = SubResource("StandardMaterial3D_4fqak")
+surface_material_override/1 = SubResource("StandardMaterial3D_jshg6")
+surface_material_override/2 = ExtResource("5_1jlvd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Couch" index="0" unique_id=1766436960]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Couch/StaticBody3D" index="0" unique_id=37150327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, -0.6999998, 0)
+shape = SubResource("BoxShape3D_1jlvd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Couch/StaticBody3D" index="1" unique_id=1126295169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, -0.19999981, 0)
+shape = SubResource("BoxShape3D_4fqak")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Couch/StaticBody3D" index="2" unique_id=1391400845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, -0.19999981, 0)
+shape = SubResource("BoxShape3D_4fqak")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Couch/StaticBody3D" index="3" unique_id=1003122666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05000013, 0.3000002, -0.59999996)
+shape = SubResource("BoxShape3D_15q58")

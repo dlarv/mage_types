@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://w3hwr7xpa0lu"]
+
+[ext_resource type="PackedScene" uid="uid://bfuw4dljuqhtp" path="res://assets/3d/objects/blue/hotel/raw/Microwave.glb" id="1_swih2"]
+[ext_resource type="Material" uid="uid://gf6iqh3iu31v" path="res://assets/shaders/misc/metal_material.tres" id="2_4udkw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aloud"]
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plsei"]
+albedo_color = Color(0.9650993, 0.9694355, 0.9779665, 1)
+metallic = 1.0
+roughness = 0.21
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4dt7"]
+albedo_color = Color(0.17395777, 0.19853678, 0.24789175, 1)
+metallic = 1.0
+roughness = 0.21
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_swih2"]
+size = Vector3(1.9980469, 1, 1)
+
+[node name="Microwave" unique_id=1723700035 instance=ExtResource("1_swih2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Microwave" parent="." index="0" unique_id=1804280982]
+surface_material_override/0 = ExtResource("2_4udkw")
+surface_material_override/1 = SubResource("StandardMaterial3D_aloud")
+surface_material_override/2 = SubResource("StandardMaterial3D_plsei")
+surface_material_override/3 = SubResource("StandardMaterial3D_f4dt7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Microwave" index="0" unique_id=1226252676]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Microwave/StaticBody3D" index="0" unique_id=959290886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21040523, 0.49398097, 0)
+shape = SubResource("BoxShape3D_swih2")
