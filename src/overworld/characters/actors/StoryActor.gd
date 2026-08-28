@@ -5,7 +5,7 @@ class_name StoryActor
 
 signal dialog_started(dialog_id: String, data: Variant)
 
-@export var dialog_ids: Array[Dialog]
+@export var dialog_ids: Array[Dialog] = []
 @export var current_id: int = 0
 @export var animation_player: AnimationPlayer
 

@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://da8vdwyp4obwr"]
+
+[ext_resource type="Script" uid="uid://colsvpe661uim" path="res://src/overworld/Readable.gd" id="1_54g7w"]
+[ext_resource type="PackedScene" uid="uid://drgbwti23hs40" path="res://src/overworld/interactable.tscn" id="1_qap7p"]
+[ext_resource type="PackedScene" uid="uid://cvy0e264r3jvl" path="res://assets/3d/objects/blue/hotel/raw/Thumbtack.glb" id="2_1nf2y"]
+[ext_resource type="Material" uid="uid://gf6iqh3iu31v" path="res://assets/shaders/misc/metal_material.tres" id="3_je335"]
+[ext_resource type="Texture2D" uid="uid://c30o4w6k65ms" path="res://assets/shaders/misc/textures/wallpaper/brush_stroke_normal.png" id="3_rj8uf"]
+[ext_resource type="Texture2D" uid="uid://c353htcncverx" path="res://assets/shaders/misc/textures/wallpaper/canvas_normal.png" id="4_65b7y"]
+[ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="5_65b7y"]
+[ext_resource type="Script" uid="uid://cu228q2rjqd77" path="res://src/overworld/characters/actors/StoryActor.gd" id="7_o40d2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bk2x0"]
+noise_type = 0
+frequency = 0.26
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lay8g"]
+noise = SubResource("FastNoiseLite_bk2x0")
+
+[sub_resource type="Gradient" id="Gradient_rwubj"]
+colors = PackedColorArray(0.3491902, 0.3491902, 0.3491902, 1, 0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vc0rp"]
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rwubj"]
+noise = SubResource("FastNoiseLite_vc0rp")
+color_ramp = SubResource("Gradient_rwubj")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vc0rp"]
+transparency = 1
+blend_mode = 3
+roughness = 0.79
+roughness_texture = SubResource("NoiseTexture2D_rwubj")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("3_rj8uf")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifwdc"]
+next_pass = SubResource("StandardMaterial3D_vc0rp")
+albedo_color = Color(0.9648382, 0.9094217, 2.3102762e-06, 1)
+roughness = 0.9
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("4_65b7y")
+heightmap_texture = SubResource("NoiseTexture2D_lay8g")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.23
+uv1_scale = Vector3(60, 60, 60)
+
+[sub_resource type="Gradient" id="Gradient_twg1l"]
+offsets = PackedFloat32Array(0.16458853, 1)
+colors = PackedColorArray(0.42365083, 0.42365056, 0.4236507, 1, 0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nytw8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xephk"]
+noise = SubResource("FastNoiseLite_nytw8")
+color_ramp = SubResource("Gradient_twg1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54g7w"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+roughness_texture = SubResource("NoiseTexture2D_xephk")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("5_65b7y")
+clearcoat_roughness = 0.3
+subsurf_scatter_transmittance_enabled = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_65b7y"]
+animation = &"StickyNoteSway"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_o40d2"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_54g7w"]
+graph_offset = Vector2(-329.5644, 28.12384)
+nodes/StickyNoteSway/node = SubResource("AnimationNodeAnimation_65b7y")
+nodes/StickyNoteSway/position = Vector2(-200, 180)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_o40d2")
+nodes/TimeScale/position = Vector2(0, 160)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"StickyNoteSway"]
+
+[node name="Readable" type="Node3D" unique_id=1171627487]
+script = ExtResource("1_54g7w")
+
+[node name="Readable" parent="." unique_id=229866651 instance=ExtResource("1_qap7p")]
+message_override = "Read"
+
+[node name="Thumbtack" parent="." unique_id=447269547 instance=ExtResource("2_1nf2y")]
+transform = Transform3D(-1.3113417e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.3113417e-08, 0, 0, 0)
+
+[node name="StickyNote" parent="Thumbtack" index="0" unique_id=1891117672]
+transform = Transform3D(1.548326, 0, 7.1054274e-15, 0, 1.548326, 0, -7.1054274e-15, 0, 1.548326, 0, 0.18198477, 0)
+blend_shapes/StickyNote.003 = 0.012675593
+surface_material_override/0 = SubResource("StandardMaterial3D_ifwdc")
+surface_material_override/1 = SubResource("StandardMaterial3D_54g7w")
+surface_material_override/2 = ExtResource("3_je335")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=323734128]
+root_node = NodePath("../Thumbtack")
+tree_root = SubResource("AnimationNodeBlendTree_54g7w")
+anim_player = NodePath("../Thumbtack/AnimationPlayer")
+parameters/TimeScale/scale = 0.5
+
+[node name="StoryActor" type="Node3D" parent="." unique_id=495429627]
+unique_name_in_owner = true
+script = ExtResource("7_o40d2")
+metadata/_custom_type_script = "uid://cu228q2rjqd77"
+
+[connection signal="interacted" from="Readable" to="." method="_on_readable_interacted"]
+
+[editable path="Thumbtack"]

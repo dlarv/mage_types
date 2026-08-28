@@ -9,6 +9,7 @@ starts = {
 "ADONIS_2": &"0_8",
 "ADONIS_3": &"0_9",
 "MINI_BOSS_1": &"0_10",
+"READABLE_TEST": &"0_11",
 "RETURN_BIN": &"0_6",
 "TUTORIAL_1": &"0_1",
 "TUTORIAL_2": &"0_2",
@@ -26,6 +27,11 @@ nodes = {
 "link": &"1_12",
 "offset": Vector2(1155.0574, -1264.7847),
 "start_id": "MINI_BOSS_1"
+},
+&"0_11": {
+"link": &"1_13",
+"offset": Vector2(-1079.1918, -452.38483),
+"start_id": "READABLE_TEST"
 },
 &"0_2": {
 "link": &"1_6",
@@ -93,7 +99,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 247),
+"size": Vector2(300.00012, 247),
 "speaker": ""
 },
 &"1_10": {
@@ -106,7 +112,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 247),
+"size": Vector2(300.0006, 247),
 "speaker": ""
 },
 &"1_11": {
@@ -121,7 +127,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 247),
+"size": Vector2(300.00012, 247),
 "speaker": ""
 },
 &"1_12": {
@@ -131,6 +137,19 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 0: {
 "condition": Array[Dictionary]([]),
 "link": &"3_4",
+"text": ""
+}
+},
+"size": Vector2(300.0005, 242),
+"speaker": ""
+},
+&"1_13": {
+"dialogue": "This is a note",
+"offset": Vector2(-860, -520),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
 "text": ""
 }
 },
@@ -147,7 +166,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00037, 247),
+"size": Vector2(300.00037, 246.99988),
 "speaker": ""
 },
 &"1_15": {
@@ -173,7 +192,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 247),
+"size": Vector2(300.00012, 247),
 "speaker": ""
 },
 &"1_3": {
@@ -186,7 +205,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 247),
+"size": Vector2(300.00012, 247),
 "speaker": ""
 },
 &"1_4": {
@@ -199,7 +218,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 246.99994),
+"size": Vector2(300.00037, 246.99988),
 "speaker": ""
 },
 &"1_5": {
@@ -221,7 +240,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0008, 246.99994),
+"size": Vector2(300.00073, 246.99988),
 "speaker": ""
 },
 &"1_6": {
@@ -261,7 +280,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00055, 246.99988),
+"size": Vector2(300.0006, 247),
 "speaker": ""
 },
 &"1_9": {
@@ -276,7 +295,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00024, 246.99988),
+"size": Vector2(300.00012, 247),
 "speaker": ""
 },
 &"3_1": {
