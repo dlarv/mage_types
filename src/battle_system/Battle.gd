@@ -12,6 +12,7 @@ const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle
 const MessageFeed := preload("res://src/battle_system/gui/message_feed/MessageFeed.gd")
 
 @export var post_attack_delay := 0.1
+@export var inter_transmutation_delay := 0.5
 @export var post_transmutation_delay := 0.2
 @export var post_turn_delay := 1.0
 @export var end_battle_delay := 5.0
@@ -144,8 +145,13 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 	await _dialog(false)
 
 	for turnData in _actions:
-		if turnData == null or turnData.user.is_defeated:
+		if turnData.user.is_defeated:
 			continue
+
+		await _calculate_transmutation(turnData.user.element1, turnData.user.element2, turnData.user, 1, true)
+
+		if turnData == null:
+			return
 			
 		var flinch := turnData.user.flinching
 		if flinch != null:
@@ -174,8 +180,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if not missed:
 			for target in turnData.targets:
 				if target.is_defeated: continue
-				_calculate_transmutations(target, turnData.action)
-				await get_tree().create_timer(post_transmutation_delay).timeout
+				await _calculate_transmutations(target, turnData.action)
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -188,8 +193,7 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 		if not missed and turnData.targets.find(turnData.user) == -1 \
 				and turnData.action is Attack \
 				and (turnData.action).attack_range == Attack.AttackRange.MELEE:
-			_calculate_transmutations(turnData.user, turnData.action, true) 
-		await get_tree().create_timer(post_transmutation_delay).timeout
+			await _calculate_transmutations(turnData.user, turnData.action, true) 
 
 		# Check if battle should end.
 		# This will trigger if final actor died to phobia.
@@ -217,19 +221,28 @@ func _calculate_transmutations(target: BattleActor, action: _BattleAction, isMel
 		return
 
  	# Calculate secondary + attack 
-	_calculate_transmutation(target.element2, action.element, target, 1, false, isMelee)
+	await _calculate_transmutation(target.element2, action.element, target, 1, false, isMelee)
+
 	# Return early if target died due to phobia.
 	if target.is_defeated: return
+
 	# Calculate internal transmutation.
-	_calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
+	await _calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
+
+	if target.is_defeated: return
+
+	# Calculate 2nd internal transmutation.
+	await _calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
+
+	await get_tree().create_timer(post_transmutation_delay).timeout
 
 
 func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false, isMelee:=false) -> bool:
 	var newType := ElementManager.get_matchup(e1, e2)
 	if newType == null: return false
 
-	if isMelee:
-		message_feed.append_info("Melee attack's also cause transmutations in their user!")
+	# if isMelee:
+	# 	message_feed.append_info("Melee attack's also cause transmutations in their user!")
 
 	message_feed.append_transmutation_message(target, e1, newType, e2, isInternal) 
 
@@ -239,6 +252,8 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 		message_feed.append_side_effect_message(target, buff)
 
 	target.set_element(id, newType)
+
+	await get_tree().create_timer(inter_transmutation_delay).timeout
 
 	return true
 
