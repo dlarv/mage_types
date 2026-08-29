@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cggu5tjstlodq"]
+[gd_scene format=3 uid="uid://cggu5tjstlodq"]
 
 [ext_resource type="Script" uid="uid://br3wte2u67bgo" path="res://src/beastiary/WildEnemyActor.gd" id="1_vo0ai"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="2_f3dyy"]
@@ -20,28 +20,20 @@ _base_ranged_attack = 20.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 8.0
 _base_speed = 20.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_e2qo8"]
 resource_local_to_scene = true
 script = ExtResource("2_f3dyy")
 name = "Default Green"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_c845e")
-reset_hp_after_battle = true
-_element1 = "green"
-_element2 = "green"
-_alignment = "green"
+_element1 = 6
+_element2 = 6
 attacks = Array[ExtResource("3_mcifd")]([ExtResource("4_vo0ai"), ExtResource("5_7x54j"), ExtResource("6_mpgu5"), ExtResource("7_dfgyg")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_x8pnq"]
 script = ExtResource("8_b287j")
-dialog_ids = Array[ExtResource("6_dfgyg")]([])
-reward_xp = 0.0
-reward_items = Array[ExtResource("7_i714q")]([])
 metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_etfuu"]
@@ -62,29 +54,29 @@ albedo_texture = SubResource("GradientTexture1D_odypl")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wvewt"]
 radius = 0.6
 
-[node name="DefaultGreen" type="CharacterBody3D"]
+[node name="DefaultGreen" type="CharacterBody3D" unique_id=924576120]
 script = ExtResource("1_vo0ai")
 monster_id = 7
 team = Array[ExtResource("2_f3dyy")]([SubResource("Resource_e2qo8")])
 ai = SubResource("Resource_x8pnq")
 is_transmutable = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=724405576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_etfuu")
 
-[node name="AggressiveBehavior" parent="." instance=ExtResource("9_3at6w")]
+[node name="AggressiveBehavior" parent="." unique_id=1343991652 instance=ExtResource("9_3at6w")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=947352528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_46v11")
 surface_material_override/0 = SubResource("StandardMaterial3D_81u14")
 
-[node name="BattleTrigger" type="Area3D" parent="."]
+[node name="BattleTrigger" type="Area3D" parent="." unique_id=730122416]
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleTrigger" unique_id=1306331737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_wvewt")
 
