@@ -36,6 +36,7 @@
 	- [x] Target selection isn't working
 - [ ] Falling animation playing when going thru doorways
 - [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
+- [ ] Player is getting clipped into breakroom collider
 - [x] Ethereal Quartz overworld item can be used even when not equipped
 - [x] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 - [ ] Water in beach2 getting loaded when player is inside the caves
@@ -816,8 +817,8 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 - [ ] Materials and textures #v0_7
 	- [ ] Bugfix: Clay shader cracks/fingerprints are inverted?
 		- Ensure normals are correct
-	- [ ] Plastic material for decor
-	- [ ] Felt material for carpet
+	- [x] Plastic material for decor
+	- [x] Felt material for carpet
 	- [x] Painted material for wallpaper
 	- [ ] Get feedback on materials
 ### Misc Areas
@@ -827,8 +828,8 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [x] Local lighting
 	- [x] Wallpaper
 	- [x] Make carpet triplanar
-	- [ ] Decor 
-- [ ] Hotel room decor  #v0_7  
+	- [ ] Decor (paintings)
+- [ ] Hotel room decor 
 - [ ] Hallway audio #v0_8
 - [ ] Add models for empty puzzle blocks
 - [ ] Replace placeholder door blockers/etc with models and diagetic explanations.
@@ -890,8 +891,9 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Idle animation
 	- [ ] Looks up when player walks by
 	- [ ] Disappears after joining your party
-- [ ] Rec room decor #v0_7
-	- [ ] Layout & planning
+- [x] Rec room decor #v0_7
+	- [x] Layout & planning
+	- [ ] Fix treadmill
 - [x] Miniboss #v0_7
 	- [x] Animate boss fading away when defeated
 	- [x] Fix rig weights
