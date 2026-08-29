@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cvy0e264r3jvl" path="res://assets/3d/objects/blue/hotel/raw/Thumbtack.glb" id="2_1nf2y"]
 [ext_resource type="Material" uid="uid://gf6iqh3iu31v" path="res://assets/shaders/misc/metal_material.tres" id="3_je335"]
 [ext_resource type="Texture2D" uid="uid://c30o4w6k65ms" path="res://assets/shaders/misc/textures/wallpaper/brush_stroke_normal.png" id="3_rj8uf"]
+[ext_resource type="Texture2D" uid="uid://c5v4fxs51etx0" path="res://assets/3d/objects/blue/hotel/raw/textures/read_me.png" id="4_3k6en"]
 [ext_resource type="Texture2D" uid="uid://c353htcncverx" path="res://assets/shaders/misc/textures/wallpaper/canvas_normal.png" id="4_65b7y"]
 [ext_resource type="Texture2D" uid="uid://du1o8km6gfb5j" path="res://assets/shaders/misc/textures/micro_bumps_normal.png" id="5_65b7y"]
 [ext_resource type="Script" uid="uid://cu228q2rjqd77" path="res://src/overworld/characters/actors/StoryActor.gd" id="7_o40d2"]
@@ -15,6 +16,11 @@ frequency = 0.26
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lay8g"]
 noise = SubResource("FastNoiseLite_bk2x0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1jix"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("4_3k6en")
 
 [sub_resource type="Gradient" id="Gradient_rwubj"]
 colors = PackedColorArray(0.3491902, 0.3491902, 0.3491902, 1, 0.735357, 0.735357, 0.735357, 1)
@@ -28,6 +34,7 @@ color_ramp = SubResource("Gradient_rwubj")
 seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vc0rp"]
+next_pass = SubResource("StandardMaterial3D_w1jix")
 transparency = 1
 blend_mode = 3
 roughness = 0.79
@@ -88,12 +95,12 @@ script = ExtResource("1_54g7w")
 [node name="Readable" parent="." unique_id=229866651 instance=ExtResource("1_qap7p")]
 message_override = "Read"
 
-[node name="Thumbtack" parent="." unique_id=447269547 instance=ExtResource("2_1nf2y")]
+[node name="Thumbtack" parent="." unique_id=1800099654 instance=ExtResource("2_1nf2y")]
 transform = Transform3D(-1.3113417e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.3113417e-08, 0, 0, 0)
 
-[node name="StickyNote" parent="Thumbtack" index="0" unique_id=1891117672]
+[node name="StickyNote" parent="Thumbtack" index="0" unique_id=530520155]
 transform = Transform3D(1.548326, 0, 7.1054274e-15, 0, 1.548326, 0, -7.1054274e-15, 0, 1.548326, 0, 0.18198477, 0)
-blend_shapes/StickyNote.003 = 0.012675593
+blend_shapes/StickyNote.003 = 0.3606779
 surface_material_override/0 = SubResource("StandardMaterial3D_ifwdc")
 surface_material_override/1 = SubResource("StandardMaterial3D_54g7w")
 surface_material_override/2 = ExtResource("3_je335")
