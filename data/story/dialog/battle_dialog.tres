@@ -71,7 +71,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242.00012),
+"size": Vector2(300.00006, 247.00003),
 "speaker": "Aegean"
 },
 &"1_10": {
@@ -80,16 +80,16 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_11",
+"link": &"1_40",
 "text": ""
 }
 },
-"size": Vector2(300.00024, 242),
+"size": Vector2(300, 240),
 "speaker": "Aegean"
 },
 &"1_11": {
-"dialogue": "Pay attention to my left (your right) side when you attack.",
-"offset": Vector2(1240, -60),
+"dialogue": "Pay attention to the outside of my aura after you attack.",
+"offset": Vector2(1560, -60),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
@@ -97,7 +97,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 242),
+"size": Vector2(300.00006, 246.99995),
 "speaker": "Aegean"
 },
 &"1_12": {
@@ -110,7 +110,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 241.99988),
+"size": Vector2(300.0005, 247.00024),
 "speaker": "Aegean"
 },
 &"1_13": {
@@ -123,7 +123,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 241.99988),
+"size": Vector2(300.00018, 247.00024),
 "speaker": "Aegean"
 },
 &"1_14": {
@@ -136,7 +136,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 241.99988),
+"size": Vector2(300.00006, 247.00024),
 "speaker": "Aegean"
 },
 &"1_15": {
@@ -149,7 +149,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241.99988),
+"size": Vector2(300.00012, 247.00024),
 "speaker": "Aegean"
 },
 &"1_16": {
@@ -162,7 +162,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 241.99994),
+"size": Vector2(300.00006, 246.99994),
 "speaker": "Aegean"
 },
 &"1_17": {
@@ -175,7 +175,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 241.99994),
+"size": Vector2(300.0005, 246.99994),
 "speaker": "Aegean"
 },
 &"1_18": {
@@ -188,7 +188,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 241.99994),
+"size": Vector2(300.00018, 246.99994),
 "speaker": "Aegean"
 },
 &"1_19": {
@@ -201,7 +201,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 241.99994),
+"size": Vector2(300.00006, 246.99994),
 "speaker": "Aegean"
 },
 &"1_2": {
@@ -214,7 +214,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00027, 241.99994),
+"size": Vector2(300.00024, 246.99976),
 "speaker": "Dallas"
 },
 &"1_20": {
@@ -227,7 +227,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 241.99994),
+"size": Vector2(300.0003, 246.99976),
 "speaker": "Dallas"
 },
 &"1_21": {
@@ -240,7 +240,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241.99994),
+"size": Vector2(300.00006, 246.99976),
 "speaker": "Dallas"
 },
 &"1_22": {
@@ -253,7 +253,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 241.99994),
+"size": Vector2(300, 246.99976),
 "speaker": "Dallas"
 },
 &"1_23": {
@@ -266,7 +266,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 241.99994),
+"size": Vector2(300.00037, 246.99976),
 "speaker": "Dallas"
 },
 &"1_24": {
@@ -279,7 +279,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00073, 241.99994),
+"size": Vector2(300.00067, 246.99982),
 "speaker": "Dallas"
 },
 &"1_25": {
@@ -292,7 +292,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00027, 242.00006),
+"size": Vector2(300.00024, 247.00012),
 "speaker": "Dallas"
 },
 &"1_26": {
@@ -305,7 +305,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 242.00006),
+"size": Vector2(300.0003, 247.00012),
 "speaker": "Dallas"
 },
 &"1_27": {
@@ -318,7 +318,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 242.00006),
+"size": Vector2(300.00006, 247.00012),
 "speaker": "Dallas"
 },
 &"1_28": {
@@ -331,7 +331,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 242.00006),
+"size": Vector2(300, 247.00012),
 "speaker": "Dallas"
 },
 &"1_29": {
@@ -344,7 +344,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 242.00006),
+"size": Vector2(300.00037, 247.00012),
 "speaker": "Dallas"
 },
 &"1_3": {
@@ -357,7 +357,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00052, 242),
+"size": Vector2(300.0005, 246.99951),
 "speaker": "Duke"
 },
 &"1_30": {
@@ -370,7 +370,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00027, 241.99994),
+"size": Vector2(300.00024, 246.99988),
 "speaker": "Dallas"
 },
 &"1_31": {
@@ -383,7 +383,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 241.99994),
+"size": Vector2(300.0003, 246.99988),
 "speaker": "Dallas"
 },
 &"1_32": {
@@ -396,7 +396,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241.99994),
+"size": Vector2(300.00006, 246.99988),
 "speaker": "Dallas"
 },
 &"1_33": {
@@ -409,7 +409,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0005, 241.99994),
+"size": Vector2(300.00055, 246.99988),
 "speaker": "Dallas"
 },
 &"1_34": {
@@ -422,7 +422,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0005, 241.99963),
+"size": Vector2(300.00055, 247.00012),
 "speaker": "Dallas"
 },
 &"1_35": {
@@ -435,7 +435,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00027, 241.99963),
+"size": Vector2(300.00024, 247.00012),
 "speaker": "Dallas"
 },
 &"1_36": {
@@ -448,7 +448,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0003, 241.99963),
+"size": Vector2(300.0003, 247.00012),
 "speaker": "Dallas"
 },
 &"1_37": {
@@ -461,7 +461,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 241.99963),
+"size": Vector2(300.00006, 247.00012),
 "speaker": "Dallas"
 },
 &"1_38": {
@@ -474,7 +474,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 242),
+"size": Vector2(300.00018, 246.99951),
 "speaker": "Duke"
 },
 &"1_39": {
@@ -487,7 +487,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00027, 242),
+"size": Vector2(300.00024, 247),
 "speaker": "Aegean"
 },
 &"1_4": {
@@ -500,7 +500,20 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 242.00012),
+"size": Vector2(300.0005, 247.00003),
+"speaker": "Aegean"
+},
+&"1_40": {
+"dialogue": "Each combatant has an aura, which communicates this information to you. The center of this aura shows you their primary type, with your secondary type being shown by the outside.",
+"offset": Vector2(1240, -60),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
 "speaker": "Aegean"
 },
 &"1_5": {
@@ -513,7 +526,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 242.00012),
+"size": Vector2(300.00018, 247.00003),
 "speaker": "Aegean"
 },
 &"1_6": {
@@ -526,7 +539,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 241.99988),
+"size": Vector2(300.00006, 247.00024),
 "speaker": "Aegean"
 },
 &"1_7": {
@@ -539,7 +552,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 242.00012),
+"size": Vector2(300.00006, 247.00003),
 "speaker": "Aegean"
 },
 &"1_8": {
@@ -552,7 +565,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00006, 242),
+"size": Vector2(300.00006, 246.99995),
 "speaker": "Aegean"
 },
 &"1_9": {
@@ -565,7 +578,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 242),
+"size": Vector2(300.0005, 246.99995),
 "speaker": "Aegean"
 },
 &"5_1": {
@@ -579,7 +592,7 @@ nodes = {
 "true": &"1_33"
 },
 &"8_1": {
-"attached_nodes": Array[StringName]([&"0_1", &"1_19", &"1_18", &"1_17", &"1_16", &"0_6", &"1_15", &"1_14", &"1_13", &"1_12", &"1_6", &"0_5", &"1_11", &"1_10", &"1_9", &"1_8", &"0_4", &"1_7", &"1_5", &"1_4", &"1_1", &"1_39"]),
+"attached_nodes": Array[StringName]([&"0_1", &"1_19", &"1_18", &"1_17", &"1_16", &"0_6", &"1_15", &"1_14", &"1_13", &"1_12", &"1_6", &"0_5", &"1_11", &"1_10", &"1_9", &"1_8", &"0_4", &"1_7", &"1_5", &"1_4", &"1_1", &"1_39", &"1_40"]),
 "offset": Vector2(-320, -381),
 "tint_color": Color(0.0015716553, 0.29861456, 0.40234375, 1),
 "title": "Frame #1"
@@ -597,4 +610,4 @@ nodes = {
 "title": "Frame #1"
 }
 }
-strays = Array[String](["8_1", "8_2", "8_3", "1_9", "1_10", "1_11", "1_29"])
+strays = Array[String](["8_2", "8_3", "8_1", "1_9", "1_29", "1_11", "1_10", "1_40"])
