@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://bpknr2o40rp3b"]
+[gd_scene format=3 uid="uid://bpknr2o40rp3b"]
 
 [ext_resource type="Script" uid="uid://cqu78r45p61p" path="res://src/battle_system/battle_simulator/BattleSimulator.gd" id="1_mvkuh"]
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="2_5bpb0"]
@@ -85,9 +85,6 @@
 
 [sub_resource type="Resource" id="Resource_6d8gb"]
 script = ExtResource("4_5bpb0")
-dialog_ids = Array[ExtResource("2_5bpb0")]([])
-reward_xp = 0.0
-reward_items = Array[ExtResource("3_6d8gb")]([])
 metadata/_custom_type_script = "uid://d1mg4a2i56tfm"
 
 [sub_resource type="Resource" id="Resource_2y36f"]
@@ -95,23 +92,15 @@ resource_local_to_scene = true
 script = ExtResource("5_x20xe")
 _base_melee_attack = 8.0
 _base_ranged_attack = 8.0
-_base_melee_defense = 10.0
-_base_ranged_defense = 10.0
-_base_speed = 10.0
-_base_evasion = 100.0
 hp = 60.0
 
 [sub_resource type="Resource" id="Resource_ka2df"]
 resource_local_to_scene = true
 script = ExtResource("4_qfwgk")
-name = "Guy"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_2y36f")
-reset_hp_after_battle = true
-_element1 = "blue"
-_element2 = "purple"
-_alignment = "blank"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("3_vmh88"), ExtResource("7_xf0x8"), ExtResource("24_8vmkg")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -122,19 +111,15 @@ _base_ranged_attack = 5.0
 _base_melee_defense = 18.0
 _base_ranged_defense = 13.0
 _base_speed = 5.0
-_base_evasion = 100.0
 hp = 60.0
 
 [sub_resource type="Resource" id="Resource_1vmhe"]
 script = ExtResource("4_qfwgk")
 name = "Default Blue"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_jjxj6")
-reset_hp_after_battle = true
-_element1 = "blue"
-_element2 = "blue"
-_alignment = "blue"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("3_vmh88")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -145,20 +130,16 @@ _base_ranged_attack = 18.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 8.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_7jftm"]
 resource_local_to_scene = true
 script = ExtResource("4_qfwgk")
 name = "Default Purple"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_6lgku")
-reset_hp_after_battle = true
-_element1 = "purple"
-_element2 = "purple"
-_alignment = "purple"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("6_ajy8m")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -169,19 +150,15 @@ _base_ranged_attack = 3.0
 _base_melee_defense = 18.0
 _base_ranged_defense = 15.0
 _base_speed = 7.0
-_base_evasion = 100.0
 hp = 65.0
 
 [sub_resource type="Resource" id="Resource_hbt3b"]
 script = ExtResource("4_qfwgk")
 name = "Default Magenta"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_gxxk7")
-reset_hp_after_battle = true
-_element1 = "magenta"
-_element2 = "magenta"
-_alignment = "magenta"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("7_xf0x8")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -192,20 +169,16 @@ _base_ranged_attack = 18.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 8.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_e2qo8"]
 resource_local_to_scene = true
 script = ExtResource("4_qfwgk")
 name = "Default Red"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_c845e")
-reset_hp_after_battle = true
-_element1 = "red"
-_element2 = "red"
-_alignment = "red"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("8_tnql1")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -216,20 +189,16 @@ _base_ranged_attack = 18.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 8.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_y71b7"]
 resource_local_to_scene = true
 script = ExtResource("4_qfwgk")
 name = "Default Orange"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_gqwdd")
-reset_hp_after_battle = true
-_element1 = "orange"
-_element2 = "orange"
-_alignment = "orange"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("9_rmnva")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -240,20 +209,16 @@ _base_ranged_attack = 18.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 8.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_fnd1s"]
 resource_local_to_scene = true
 script = ExtResource("4_qfwgk")
 name = "Default Yellow"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_8r6wr")
-reset_hp_after_battle = true
-_element1 = "yellow"
-_element2 = "yellow"
-_alignment = "yellow"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("10_0hvxv")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -264,20 +229,16 @@ _base_ranged_attack = 18.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 8.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_eu864"]
 resource_local_to_scene = true
 script = ExtResource("4_qfwgk")
 name = "Default Green"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_vphmt")
-reset_hp_after_battle = true
-_element1 = "green"
-_element2 = "green"
-_alignment = "green"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("11_u8ni3")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
@@ -288,662 +249,654 @@ _base_ranged_attack = 18.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 8.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_7bodg"]
 resource_local_to_scene = true
 script = ExtResource("4_qfwgk")
 name = "Default Cyan"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_iu3lh")
-reset_hp_after_battle = true
-_element1 = "cyan"
-_element2 = "cyan"
-_alignment = "cyan"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("12_nsly5")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
 [sub_resource type="Resource" id="Resource_s6b3u"]
 script = ExtResource("5_x20xe")
 _base_melee_attack = 18.0
-_base_ranged_attack = 10.0
 _base_melee_defense = 8.0
 _base_ranged_defense = 11.0
 _base_speed = 16.0
-_base_evasion = 100.0
 hp = 35.0
 
 [sub_resource type="Resource" id="Resource_rovan"]
 script = ExtResource("4_qfwgk")
 name = "Despair"
-id = 0
-level = 1
 stat_manager = SubResource("Resource_s6b3u")
 reset_hp_after_battle = false
-_element1 = "purple"
-_element2 = "purple"
-_alignment = "purple"
+_element1 = 0
+_element2 = 0
+_alignment = 0
 attacks = Array[ExtResource("2_kfmod")]([ExtResource("6_ajy8m"), ExtResource("13_aone4"), ExtResource("14_852gu")])
 metadata/_custom_type_script = "uid://y8fyrqmofw4u"
 
-[node name="BattleSimulator" type="Node"]
+[node name="BattleSimulator" type="Node" unique_id=190842174]
 process_mode = 3
 script = ExtResource("1_mvkuh")
 ai = SubResource("Resource_6d8gb")
 
-[node name="Setup" type="PanelContainer" parent="."]
+[node name="Setup" type="PanelContainer" parent="." unique_id=639053218]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Setup"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup" unique_id=762552496]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Setup/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Setup/VBoxContainer" unique_id=742443222]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer" unique_id=1586234912]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=656146472]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=630650125]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1835949786]
 layout_mode = 2
 text = "Player Team"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1294136317]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="PlayerScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=537872970]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=619692373]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2" unique_id=604927883]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=77136311]
 layout_mode = 2
 text = "Opp Team"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1622906203]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OpponentScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer"]
+[node name="OpponentScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer" unique_id=316416960]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VSeparator" type="VSeparator" parent="Setup/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Setup/VBoxContainer/HBoxContainer" unique_id=1882217685]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer" unique_id=1192434703]
 layout_mode = 2
 
-[node name="NewBattleActorButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="NewBattleActorButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2099072504]
 layout_mode = 2
 text = "New Combatant"
 
-[node name="HSeparator" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1907093950]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1696420780]
 layout_mode = 2
 text = "Monster Templates"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2027312526]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MonsterScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+[node name="MonsterScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer" unique_id=14851076]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Guy" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Guy" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=313479538]
 layout_mode = 2
 text = "Guy"
 
-[node name="Default Blue" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Blue" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=652021260]
 layout_mode = 2
 text = "Default Blue"
 
-[node name="Default Purple" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Purple" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=984024657]
 layout_mode = 2
 text = "Default Purple"
 
-[node name="Default Magenta" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Magenta" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=775002024]
 layout_mode = 2
 text = "Default Magenta"
 
-[node name="Default Red" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Red" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=289384468]
 layout_mode = 2
 text = "Default Red"
 
-[node name="Default Orange" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Orange" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=2114025490]
 layout_mode = 2
 text = "Default Orange"
 
-[node name="Default Yellow" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Yellow" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=939321760]
 layout_mode = 2
 text = "Default Yellow"
 
-[node name="Default Green" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Green" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=1035376345]
 layout_mode = 2
 text = "Default Green"
 
-[node name="Default Cyan" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Default Cyan" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=907056109]
 layout_mode = 2
 text = "Default Cyan"
 
-[node name="Despair" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller"]
+[node name="Despair" type="Button" parent="Setup/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MonsterScroller" unique_id=1615495272]
 layout_mode = 2
 text = "Despair"
 
-[node name="VSeparator2" type="VSeparator" parent="Setup/VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="Setup/VBoxContainer/HBoxContainer" unique_id=210560209]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Setup/VBoxContainer/HBoxContainer" unique_id=1513414690]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer" unique_id=33882569]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1561750248]
 layout_mode = 2
 
-[node name="Name" type="LineEdit" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Name" type="LineEdit" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=898939226]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Guy"
 placeholder_text = "Name"
 
-[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1115560150]
 layout_mode = 2
 text = "Lvl"
 
-[node name="Level" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Level" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=563943593]
 unique_name_in_owner = true
 layout_mode = 2
 value = 1.0
 
-[node name="HSeparator" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1223832666]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=416968767]
 layout_mode = 2
 text = "Stats"
 
-[node name="GridContainer" type="GridContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1498797342]
 layout_mode = 2
 columns = 4
 
-[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=951932487]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Hp"
 
-[node name="HpSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="HpSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=640819943]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 value = 50.0
 
-[node name="Label2" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label2" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1434525787]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Spe"
 
-[node name="SpeedSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SpeedSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1106073597]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 value = 10.0
 
-[node name="Label3" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label3" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1673548424]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "MAtk"
 
-[node name="MASpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MASpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=979177927]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 value = 10.0
 
-[node name="Label4" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label4" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1805231487]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "RAtk"
 
-[node name="RASpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="RASpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1117831371]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 value = 10.0
 
-[node name="Label5" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label5" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1918178714]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "MDef"
 
-[node name="MDSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="MDSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=346864492]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 value = 10.0
 
-[node name="Label6" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Label6" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=484157994]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "RDef"
 
-[node name="RDSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="RDSpinBox" type="SpinBox" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1113225060]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 value = 10.0
 
-[node name="HSeparator2" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1437098266]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=114146357]
 layout_mode = 2
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="Attacks" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+[node name="Attacks" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=1211838330]
 layout_mode = 2
 size_flags_vertical = 3
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks" unique_id=209215389]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AttackSelector" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer"]
+[node name="AttackSelector" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer" unique_id=1146007159]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Purple Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Purple Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=756681993]
 layout_mode = 2
 text = "Purple Throw"
 
-[node name="Orange Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Orange Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1679932239]
 layout_mode = 2
 text = "Orange Hit"
 
-[node name="Orange Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Orange Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1688825895]
 layout_mode = 2
 text = "Orange Throw"
 
-[node name="Green Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Green Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=912578979]
 layout_mode = 2
 text = "Green Throw"
 
-[node name="Blue Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Blue Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1497863787]
 layout_mode = 2
 text = "Blue Hit"
 
-[node name="Cyan Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Cyan Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1742618726]
 layout_mode = 2
 text = "Cyan Hit"
 
-[node name="Red Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Red Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=582325515]
 layout_mode = 2
 text = "Red Throw"
 
-[node name="Blue Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Blue Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=612031773]
 layout_mode = 2
 text = "Blue Throw"
 
-[node name="Green Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Green Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1549922435]
 layout_mode = 2
 text = "Green Hit"
 
-[node name="Purple Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Purple Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=2063139046]
 layout_mode = 2
 text = "Purple Hit"
 
-[node name="Yellow Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Yellow Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1926982492]
 layout_mode = 2
 text = "Yellow Hit"
 
-[node name="Magenta Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Magenta Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1079055160]
 layout_mode = 2
 text = "Magenta Hit"
 
-[node name="Yellow Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Yellow Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1571920323]
 layout_mode = 2
 text = "Yellow Throw"
 
-[node name="Red Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Red Hit" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1949350531]
 layout_mode = 2
 text = "Red Hit"
 
-[node name="Cyan Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Cyan Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=2053891976]
 layout_mode = 2
 text = "Cyan Throw"
 
-[node name="Magenta Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Magenta Throw" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1893607523]
 layout_mode = 2
 text = "Magenta Throw"
 
-[node name="Unbalanced Assault" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Unbalanced Assault" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=101624916]
 layout_mode = 2
 text = "Unbalanced Assault"
 
-[node name="Reinforce" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Reinforce" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=777262059]
 layout_mode = 2
 text = "Reinforce"
 
-[node name="Alchemy Beam" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Alchemy Beam" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=546875153]
 layout_mode = 2
 text = "Alchemy Beam"
 
-[node name="Freezing Gale" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Freezing Gale" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1524603648]
 layout_mode = 2
 text = "Freezing Gale"
 
-[node name="Fortress" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Fortress" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=2049155197]
 layout_mode = 2
 text = "Fortress"
 
-[node name="Steel Shot" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Steel Shot" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1281468915]
 layout_mode = 2
 text = "Steel Shot"
 
-[node name="Shield" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Shield" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=438759220]
 layout_mode = 2
 text = "Shield"
 
-[node name="Snipe" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Snipe" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1686536123]
 layout_mode = 2
 text = "Snipe"
 
-[node name="Terror" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Terror" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1720206566]
 layout_mode = 2
 text = "Terror"
 
-[node name="Wail" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Wail" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1870209171]
 layout_mode = 2
 text = "Wail"
 
-[node name="Rush" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Rush" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1602582226]
 layout_mode = 2
 text = "Rush"
 
-[node name="Desolation" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Desolation" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1892189292]
 layout_mode = 2
 text = "Desolation"
 
-[node name="Consume" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Consume" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1754412138]
 layout_mode = 2
 text = "Consume"
 
-[node name="Drain" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Drain" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=437758347]
 layout_mode = 2
 text = "Drain"
 
-[node name="Satiate" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Satiate" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=800370974]
 layout_mode = 2
 text = "Satiate"
 
-[node name="Crush" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Crush" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=935855356]
 layout_mode = 2
 text = "Crush"
 
-[node name="Leech" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Leech" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1154409003]
 layout_mode = 2
 text = "Leech"
 
-[node name="Blood Shock" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Blood Shock" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=431402877]
 layout_mode = 2
 text = "Blood Shock"
 
-[node name="Cleave" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Cleave" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1623338851]
 layout_mode = 2
 text = "Cleave"
 
-[node name="Bite" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Bite" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1941713233]
 layout_mode = 2
 text = "Bite"
 
-[node name="Reactor Breach" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Reactor Breach" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1935616185]
 layout_mode = 2
 text = "Reactor Breach"
 
-[node name="Disarmament" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Disarmament" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=141069325]
 layout_mode = 2
 text = "Disarmament"
 
-[node name="Sting" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Sting" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=2077564868]
 layout_mode = 2
 text = "Sting"
 
-[node name="Orbital Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Orbital Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1247765512]
 layout_mode = 2
 text = "Orbital Strike"
 
-[node name="Total Meltdown" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Total Meltdown" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1308680135]
 layout_mode = 2
 text = "Total Meltdown"
 
-[node name="Conduct Green" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Green" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=624532174]
 layout_mode = 2
 text = "Conduct Green"
 
-[node name="Conduct Purple" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Purple" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1208919928]
 layout_mode = 2
 text = "Conduct Purple"
 
-[node name="Conduct Orange" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Orange" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1556384451]
 layout_mode = 2
 text = "Conduct Orange"
 
-[node name="Conduct Yellow" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Yellow" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=423652845]
 layout_mode = 2
 text = "Conduct Yellow"
 
-[node name="Conduct Blue" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Blue" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1403481564]
 layout_mode = 2
 text = "Conduct Blue"
 
-[node name="Conduct Cyan" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Cyan" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=2001008474]
 layout_mode = 2
 text = "Conduct Cyan"
 
-[node name="Conduct Red" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Red" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1173895213]
 layout_mode = 2
 text = "Conduct Red"
 
-[node name="Conduct Magenta" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Conduct Magenta" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1062432860]
 layout_mode = 2
 text = "Conduct Magenta"
 
-[node name="Orange Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Orange Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=646964914]
 layout_mode = 2
 text = "Orange Strike"
 
-[node name="Purple Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Purple Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=865816879]
 layout_mode = 2
 text = "Purple Strike"
 
-[node name="Cyan Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Cyan Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=744229413]
 layout_mode = 2
 text = "Cyan Strike"
 
-[node name="Abyss Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Abyss Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=262608369]
 layout_mode = 2
 text = "Abyss Strike"
 
-[node name="Green Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Green Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=811547718]
 layout_mode = 2
 text = "Green Strike"
 
-[node name="Blue Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Blue Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=2059341651]
 layout_mode = 2
 text = "Blue Strike"
 
-[node name="Red Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Red Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=2103067050]
 layout_mode = 2
 text = "Red Strike"
 
-[node name="Magenta Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Magenta Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=892202807]
 layout_mode = 2
 text = "Magenta Strike"
 
-[node name="Yellow Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Yellow Strike" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=679223877]
 layout_mode = 2
 text = "Yellow Strike"
 
-[node name="Xanthophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Xanthophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1952434829]
 layout_mode = 2
 text = "Xanthophobia"
 
-[node name="Hydrophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Hydrophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=901450282]
 layout_mode = 2
 text = "Hydrophobia"
 
-[node name="Photophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Photophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1281360867]
 layout_mode = 2
 text = "Photophobia"
 
-[node name="Prasinophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Prasinophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=742543696]
 layout_mode = 2
 text = "Prasinophobia"
 
-[node name="Nyctophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Nyctophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=524482344]
 layout_mode = 2
 text = "Nyctophobia"
 
-[node name="Hemophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Hemophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=688897601]
 layout_mode = 2
 text = "Hemophobia"
 
-[node name="Porphyrophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Porphyrophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=882478746]
 layout_mode = 2
 text = "Porphyrophobia"
 
-[node name="Glaukophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Glaukophobia" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1508973547]
 layout_mode = 2
 text = "Glaukophobia"
 
-[node name="Terrify" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Terrify" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=996119650]
 layout_mode = 2
 text = "Terrify"
 
-[node name="Brave the Dark" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector"]
+[node name="Brave the Dark" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer/AttackSelector" unique_id=1868239046]
 layout_mode = 2
 text = "Brave the Dark"
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks" unique_id=2065940709]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AttackScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer2"]
+[node name="AttackScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Attacks/ScrollContainer2" unique_id=2079435070]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Equipment" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+[node name="Equipment" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=1768570652]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment" unique_id=1394722869]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EquipmentScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer"]
+[node name="EquipmentScroller" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer" unique_id=600497502]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Training Wheels" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller"]
+[node name="Training Wheels" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller" unique_id=293024751]
 layout_mode = 2
 text = "Training Wheels"
 
-[node name="Thorn Band" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller"]
+[node name="Thorn Band" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller" unique_id=934518254]
 layout_mode = 2
 text = "Thorn Band"
 
-[node name="Willpower" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller"]
+[node name="Willpower" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller" unique_id=155932045]
 layout_mode = 2
 text = "Willpower"
 
-[node name="Sunset Orb" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller"]
+[node name="Sunset Orb" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller" unique_id=1600292040]
 layout_mode = 2
 text = "Sunset Orb"
 
-[node name="Stasis Shard" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller"]
+[node name="Stasis Shard" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller" unique_id=2144029945]
 layout_mode = 2
 text = "Stasis Shard"
 
-[node name="Reactor Shard" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller"]
+[node name="Reactor Shard" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller" unique_id=791162980]
 layout_mode = 2
 text = "Reactor Shard"
 
-[node name="Sledge Hammer" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller"]
+[node name="Sledge Hammer" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/ScrollContainer/EquipmentScroller" unique_id=1329394917]
 layout_mode = 2
 text = "Sledge Hammer"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment" unique_id=1086236152]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EquipmentLabel" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/VBoxContainer"]
+[node name="EquipmentLabel" type="Label" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/VBoxContainer" unique_id=58626511]
 unique_name_in_owner = true
 layout_mode = 2
 text = "None"
 horizontal_alignment = 1
 
-[node name="RemoveEquipmentButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/VBoxContainer"]
+[node name="RemoveEquipmentButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Equipment/VBoxContainer" unique_id=1477700323]
 layout_mode = 2
 text = "X"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=51155260]
 layout_mode = 2
 
-[node name="AddPlayerButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="AddPlayerButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1439666197]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Add Player"
 
-[node name="AddOpponentButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="AddOpponentButton" type="Button" parent="Setup/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=995564943]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Add Opponent"
 
-[node name="StartButton" type="Button" parent="Setup/VBoxContainer"]
+[node name="StartButton" type="Button" parent="Setup/VBoxContainer" unique_id=642430705]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Start"

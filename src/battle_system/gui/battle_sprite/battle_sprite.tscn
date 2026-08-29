@@ -5,13 +5,41 @@
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/battle_sprite/pin_manager.tscn" id="3_ya2xk"]
 [ext_resource type="PackedScene" uid="uid://bor2kywevh8c" path="res://src/battle_system/gui/battle_sprite/emitter_controller.tscn" id="4_yav0q"]
 [ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/FresnelMeshManager.gd" id="5_4ho0o"]
-[ext_resource type="Shader" uid="uid://dll6hbvtmfshr" path="res://assets/shaders/battle_actor_shader/fresnel.gdshader" id="6_gtem4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
 size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ocyf"]
 size = Vector3(5, 0.2, 5)
+
+[sub_resource type="Shader" id="Shader_4ho0o"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+
+// For some reason 0,0 on the gradient is white, not black.
+// This is the point where the 
+const float OFFSET = .002;
+
+uniform sampler2D gradient;
+uniform float alpha;
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 base_color = vec3(0.0);
+	float coord = fresnel(2.5, NORMAL, VIEW);
+	vec4 col = texture(gradient, vec2(coord + OFFSET, 0));
+	ALBEDO = base_color + col.rgb;
+	ALPHA = alpha;
+}
+"
 
 [sub_resource type="Gradient" id="Gradient_gtem4"]
 offsets = PackedFloat32Array(0.08716707, 0.10169491)
@@ -22,9 +50,9 @@ gradient = SubResource("Gradient_gtem4")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ugy7d"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("6_gtem4")
+shader = SubResource("Shader_4ho0o")
 shader_parameter/gradient = SubResource("GradientTexture1D_sdiku")
-shader_parameter/alpha = 0.6
+shader_parameter/alpha = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_4ho0o"]
 radius = 2.0
@@ -54,7 +82,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.6]
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -338,15 +366,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1000001, 1.5)
 
 [node name="PoisonPin" parent="PinManager/BodyPins" index="0" unique_id=1188710084]
 transform = Transform3D(0.75873977, 0.60696816, 0.23644033, 0.32374442, -0.03640503, -0.9454444, -0.5652466, 0.79389244, -0.2241244, -0.6052933, 0.37836003, -0.08231008)
+visible = false
 
 [node name="FlinchPin" parent="PinManager/BodyPins" index="1" unique_id=1100354622]
 transform = Transform3D(0.86602545, 0.3535535, 0.3535535, 0, 0.707107, -0.707107, -0.5, 0.61237264, 0.61237264, -0.30529332, 0.5783601, -0.38231003)
+visible = false
 
 [node name="StasisPin" parent="PinManager/BodyPins" index="2" unique_id=408654759]
 transform = Transform3D(0.9396926, 0.3303661, 0.0885213, -0.17101005, 0.67798054, -0.7149112, -0.2961981, 0.65665877, 0.69358927, 0.394707, 0.8399799, -0.1913681)
+visible = false
+
+[node name="HealingPin" parent="PinManager/BodyPins" index="3" unique_id=755772939]
+visible = false
+
+[node name="BlockingPin" parent="PinManager/BodyPins" index="4" unique_id=1542530980]
+visible = false
 
 [node name="PhobiaCrown" parent="PinManager" index="1" unique_id=1535404151]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+
+[node name="BluePhobiaPin" parent="PinManager/PhobiaCrown" index="0" unique_id=1217982673]
+visible = false
+
+[node name="PurplePhobiaPin" parent="PinManager/PhobiaCrown" index="1" unique_id=1460119351]
+visible = false
+
+[node name="MagentaPhobiaPin" parent="PinManager/PhobiaCrown" index="2" unique_id=1243658658]
+visible = false
+
+[node name="RedPhobiaPin" parent="PinManager/PhobiaCrown" index="3" unique_id=494374641]
+visible = false
+
+[node name="OrangePhobiaPin" parent="PinManager/PhobiaCrown" index="4" unique_id=2122292006]
+visible = false
+
+[node name="YellowPhobiaPin" parent="PinManager/PhobiaCrown" index="5" unique_id=821290546]
+visible = false
+
+[node name="GreenPhobiaPin" parent="PinManager/PhobiaCrown" index="6" unique_id=531372243]
+visible = false
+
+[node name="CyanPhobiaPin" parent="PinManager/PhobiaCrown" index="7" unique_id=1828226427]
+visible = false
 
 [node name="EmitterController" parent="." unique_id=1933626235 instance=ExtResource("4_yav0q")]
 unique_name_in_owner = true
@@ -372,7 +433,6 @@ material = SubResource("ShaderMaterial_ugy7d")
 [node name="DefaultMesh" type="MeshInstance3D" parent="MeshManager" unique_id=1147391923]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-material_override = SubResource("ShaderMaterial_ugy7d")
 mesh = SubResource("SphereMesh_4ho0o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MeshManager/DefaultMesh" unique_id=80588037]

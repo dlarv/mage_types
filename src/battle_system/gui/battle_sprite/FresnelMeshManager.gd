@@ -1,5 +1,5 @@
 @tool
-extends Node
+extends Node3D
 
 const FresnelShader := preload("res://assets/shaders/battle_actor_shader/fresnel.gdshader")
 const AURA_ALPHA := 0.5
@@ -13,19 +13,20 @@ var _gradient: Gradient
 
 
 func setup(actor: BattleActor) -> void: 
+	material = material.duplicate_deep()
+
 	_gradient = material.get_shader_parameter("gradient").gradient
 	%DefaultMesh.material_override = material
 	%DefaultMesh.show()
-	
-	if mesh == %DefaultMesh:
-		mesh.material_override = material
-		material.set_shader_parameter("alpha", 1)
-		return
-
-	material.set_shader_parameter("alpha", AURA_ALPHA)
 
 	set_element(0, actor.element1)
 	set_element(1, actor.element2)
+
+	if mesh == %DefaultMesh:
+		material.set_shader_parameter("alpha", 1)
+		return 
+
+	material.set_shader_parameter("alpha", AURA_ALPHA)
 
 	if not Battle.selection_phase_started.is_connected(_on_selection_phase_started):
 		Battle.selection_phase_started.connect(_on_selection_phase_started)
@@ -34,6 +35,8 @@ func setup(actor: BattleActor) -> void:
 
 
 func play_intro() -> void:
+	if mesh == %DefaultMesh: return
+
 	var shape: SphereMesh = %DefaultMesh.mesh
 
 	var radius := shape.radius
@@ -51,12 +54,15 @@ func play_intro() -> void:
 
 
 func set_element(id: int, element: ElementalType) -> void: 
-	%DefaultMesh/AnimationPlayer.play_backwards("fade_out")
-	await %DefaultMesh/AnimationPlayer.animation_finished
-	_gradient.set_color(id, element.main_color)
-	await get_tree().create_timer(TRANS_FADE_OUT_DELAY).timeout
-	%DefaultMesh/AnimationPlayer.play("fade_out")
+	if mesh != %DefaultMesh:
+		%DefaultMesh/AnimationPlayer.play_backwards("fade_out")
+		await %DefaultMesh/AnimationPlayer.animation_finished
 
+	_gradient.set_color(id, element.main_color)
+
+	if mesh != %DefaultMesh:
+		await get_tree().create_timer(TRANS_FADE_OUT_DELAY).timeout
+		%DefaultMesh/AnimationPlayer.play("fade_out")
 
 
 func set_defeated() -> void: 
@@ -69,8 +75,10 @@ func _flicker(alpha: int) -> void:
 
 
 func _on_selection_phase_started() -> void:
+	if mesh == %DefaultMesh: return
 	%DefaultMesh/AnimationPlayer.play_backwards("fade_out")
 
 
 func _on_action_phase_started() -> void:
+	if mesh == %DefaultMesh: return
 	%DefaultMesh/AnimationPlayer.play("fade_out")
