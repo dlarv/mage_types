@@ -3,6 +3,9 @@ extends Node
 signal battle_ended(endState: EndState)
 signal selection_phase_started()
 signal action_phase_started()
+signal transmutations_started(target: BattleActor)
+signal transmutations_finished(target: BattleActor)
+
 
 enum EndState { WON, DEFEATED, FLED }
 enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES, TEAM_0, TEAM_1, ATTACKS }
@@ -12,12 +15,13 @@ const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle
 const MessageFeed := preload("res://src/battle_system/gui/message_feed/MessageFeed.gd")
 
 @export var post_attack_delay := 0.1
-@export var inter_transmutation_delay := 0.5
-@export var post_transmutation_delay := 0.2
+@export var inter_transmutation_delay := 0.8
+@export var post_transmutation_delay := 0.1
 @export var post_turn_delay := 1.0
-@export var end_battle_delay := 5.0
+@export var end_battle_delay := 1.0
 @export var ai: OpponentController 
 @export var _dialog_box: DialogueBox
+
 var message_feed: MessageFeed:
 	get:
 		if not gui: return null
@@ -220,6 +224,9 @@ func _calculate_transmutations(target: BattleActor, action: _BattleAction, isMel
 		gui.animate_status_activation(target, target.stasis)
 		return
 
+	# await get_tree().create_timer(inter_transmutation_delay).timeout
+	transmutations_started.emit(target)
+
  	# Calculate secondary + attack 
 	await _calculate_transmutation(target.element2, action.element, target, 1, false, isMelee)
 
@@ -235,6 +242,8 @@ func _calculate_transmutations(target: BattleActor, action: _BattleAction, isMel
 	await _calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
 
 	await get_tree().create_timer(post_transmutation_delay).timeout
+
+	transmutations_finished.emit(target)
 
 
 func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false, isMelee:=false) -> bool:
@@ -302,17 +311,21 @@ func _resolve_end_of_battle(pause:=true) -> void:
 		enemy.resolve_end_of_battle(_turn_counter)
 		enemy.was_just_defeated.disconnect(_increment_defeat_counter)
 	
-	remove_child(gui)
+	await get_tree().create_timer(end_battle_delay).timeout
+
 
 	var rewardScreen := RewardScreen.instantiate()
 	$CanvasLayer.add_child(rewardScreen)
-	$CanvasLayer.show()
 	if pause and len(allies) > _defeated_allies:
 		Inventory.add_items(ai.reward_items)
 		
 		if not simulator_mode:
-			rewardScreen.show_results(allies, ai.reward_xp, _dialog_box, ai.reward_items)
+			await rewardScreen.show_core_changes(allies, _dialog_box)
+			remove_child(gui)
+			$CanvasLayer.show()
+			rewardScreen.show_results(allies, ai.reward_xp, ai.reward_items)
 			await rewardScreen.pressed
+
 	elif pause and not simulator_mode:
 		rewardScreen.show_defeat(_dialog_box)
 		await rewardScreen.pressed

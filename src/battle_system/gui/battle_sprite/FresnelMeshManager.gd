@@ -3,7 +3,7 @@ extends Node3D
 
 const FresnelShader := preload("res://assets/shaders/battle_actor_shader/fresnel.gdshader")
 const AURA_ALPHA := 0.5
-const TRANS_FADE_OUT_DELAY := .2
+const TRANS_FADE_OUT_DELAY := .3
 
 @export var mesh: MeshInstance3D
 @export var material: ShaderMaterial
@@ -54,15 +54,19 @@ func play_intro() -> void:
 
 
 func set_element(id: int, element: ElementalType) -> void: 
-	if mesh != %DefaultMesh:
-		%DefaultMesh/AnimationPlayer.play_backwards("fade_out")
-		await %DefaultMesh/AnimationPlayer.animation_finished
-
 	_gradient.set_color(id, element.main_color)
 
-	if mesh != %DefaultMesh:
+
+func fade_aura(fadeIn: bool) -> void:
+	if mesh == %DefaultMesh: return
+
+	if fadeIn:
+		%DefaultMesh/AnimationPlayer.play_backwards("fade_out")
+		await %DefaultMesh/AnimationPlayer.animation_finished
+	else:
 		await get_tree().create_timer(TRANS_FADE_OUT_DELAY).timeout
 		%DefaultMesh/AnimationPlayer.play("fade_out")
+
 
 
 func set_defeated() -> void: 

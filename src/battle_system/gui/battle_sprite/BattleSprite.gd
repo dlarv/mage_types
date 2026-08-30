@@ -64,6 +64,15 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	actor.action_selected.connect(_on_action_selected)
 	actor.status_activated.connect(animate_status_activation)
 
+	Battle.transmutations_started.connect(func(_actor: BattleActor) -> void:
+		if _actor != actor: return
+		$MeshManager.fade_aura(true)
+	)
+	Battle.transmutations_finished.connect(func(_actor: BattleActor) -> void:
+		if _actor != actor: return
+		$MeshManager.fade_aura(false)
+	)
+
 	$ActionLabel3D.position = $Label3D.position
 	$ActionLabel3D.position.y -= 0.3
 
