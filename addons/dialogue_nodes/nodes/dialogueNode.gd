@@ -20,8 +20,8 @@ var _character: Character = null
 
 
 func _ready() -> void:
-	_register_timer(%Dialogue, "text_changed", _on_dialogue_text_changed)
-	_register_timer(%CustomSpeaker, "text_changed", _on_custom_speaker_changed)
+	_register_timer(%Dialogue, "text_changed", _on_dialogue_text_changed, %TimerParent)
+	_register_timer(%CustomSpeaker, "text_changed", _on_custom_speaker_changed, %TimerParent)
 
 	options.clear()
 	for idx in range(get_child_count() - 1, -1, -1):
@@ -342,10 +342,10 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_option_text_changed(new_text: String, option: BoxContainer) -> void:
-	if not undo_redo: 
-		option.set_text(new_text)
-		update_slots()
-		return
+	# if not undo_redo: 
+	# 	option.set_text(new_text)
+	# 	update_slots()
+	# 	return
 	
 	var idx := option.get_index()
 	

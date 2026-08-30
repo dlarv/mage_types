@@ -13,12 +13,13 @@ var editor: Control
 
 func _enter_tree() -> void:
 	editor = EditorScene.instantiate()
+
+	# get undo redo manager
+	editor.undo_redo = get_undo_redo()
 	
 	# add editor to main viewport
 	get_editor_interface().get_editor_main_screen().add_child(editor)
 	
-	# get undo redo manager
-	editor.undo_redo = get_undo_redo()
 	
 	_make_visible(false)
 	
