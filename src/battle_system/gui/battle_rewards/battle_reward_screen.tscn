@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqy5rq3jtb86q" path="res://src/battle_system/gui/battle_rewards/BattleRewardScreen.gd" id="1_c3dpa"]
 
 [node name="BattleRewardScreen" type="PanelContainer" unique_id=919720070]
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

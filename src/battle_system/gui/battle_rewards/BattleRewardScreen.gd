@@ -5,6 +5,7 @@ signal skip()
 
 const Display := preload("res://src/battle_system/gui/battle_rewards/actor_display.tscn")
 
+var displays := []
 var display_count := 0
 var _animating_xp := false
 
@@ -14,9 +15,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		pressed.emit()
 
-
-func show_results(actors: Array[BattleActor], xp: float, dialogBox: DialogueBox, otherRewards: Array[ItemSlot]=[]) -> void:
-	var displays := []
+func show_core_changes(actors: Array[BattleActor], dialogBox: DialogueBox) -> void:
 	for actor in actors:
 		var display := Display.instantiate()
 		%HBoxContainer.add_child(display)
@@ -35,6 +34,9 @@ func show_results(actors: Array[BattleActor], xp: float, dialogBox: DialogueBox,
 		dialogBox.show_text(msg)
 		await dialogBox.dialogue_ended
 
+
+
+func show_results(actors: Array[BattleActor], xp: float, otherRewards: Array[ItemSlot]=[]) -> void:
 	%ItemHeader.visible = len(otherRewards)
 	for slot in otherRewards:
 		var hbox := HBoxContainer.new()
@@ -64,7 +66,6 @@ func show_results(actors: Array[BattleActor], xp: float, dialogBox: DialogueBox,
 func show_defeat(dialogBox: DialogueBox) -> void:
 	dialogBox.show_text("You were defeated....")
 	await dialogBox.dialogue_ended
-
 
 
 func _on_finish_button_pressed() -> void:
