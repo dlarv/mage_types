@@ -1,11 +1,27 @@
 [gd_scene format=3 uid="uid://dnlxtiohl2siv"]
 
 [ext_resource type="Script" uid="uid://bbp7wb2mq0gi2" path="res://addons/dialogue_nodes/objects/StoryManager.gd" id="1_1ty53"]
+[ext_resource type="Script" uid="uid://42coc6buijm5" path="res://addons/dialogue_nodes/objects/Character.gd" id="2_tfq5e"]
 
-[node name="StoryManager" type="Control" unique_id=370909819]
+[sub_resource type="Resource" id="Resource_tfq5e"]
+script = ExtResource("2_tfq5e")
+name = "Goose"
+
+[sub_resource type="Resource" id="Resource_2u0f3"]
+script = ExtResource("2_tfq5e")
+name = "Alice"
+color = Color(0, 0.9765625, 1, 1)
+
+[sub_resource type="Resource" id="Resource_2pu75"]
+script = ExtResource("2_tfq5e")
+name = "Bartender"
+color = Color(0, 0.0390625, 1, 1)
+
+[node name="StoryManager" type="Control" unique_id=1316442045]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_1ty53")
+characters = Array[ExtResource("2_tfq5e")]([SubResource("Resource_tfq5e"), SubResource("Resource_2u0f3"), SubResource("Resource_2pu75")])
 variables = Dictionary[String, Dictionary]({
 "battle_result": {
 "type": 4,
