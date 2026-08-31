@@ -69,7 +69,7 @@ _mesh_instance = NodePath("adonis/rig_v2/Skeleton3D/trunk_bak_001")
 [node name="adonis" parent="." index="0" unique_id=264559270 instance=ExtResource("2_d3cvv")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.5, 0)
 
-[node name="Skeleton3D" parent="adonis/rig_v2" parent_id_path=PackedInt32Array(264559270, 1111130541) index="0" unique_id=1090572010]
+[node name="Skeleton3D" parent="adonis/rig_v2" parent_id_path=PackedInt32Array(264559270, 328227314) index="0" unique_id=345002484]
 bones/3/rotation = Quaternion(-1.4204472e-09, -0.0025330416, 4.6434767e-10, 0.9999968)
 bones/4/rotation = Quaternion(2.0998703e-09, 0.009893694, -6.693836e-10, 0.99995106)
 bones/5/position = Vector3(0.14355667, 2.413086, -0.07980785)

@@ -107,7 +107,7 @@ _team = Array[ExtResource("9_wwnfa")]([ExtResource("10_cqt5s")])
 [node name="adonis" parent="." index="4" unique_id=889105819 instance=ExtResource("10_j685c")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.5, 0)
 
-[node name="Skeleton3D" parent="adonis/rig_v2" parent_id_path=PackedInt32Array(889105819, 2106257022) index="0" unique_id=443046775]
+[node name="Skeleton3D" parent="adonis/rig_v2" parent_id_path=PackedInt32Array(889105819, 328227314) index="0" unique_id=345002484]
 bones/5/position = Vector3(0.14355667, 2.413086, -0.07980785)
 bones/5/rotation = Quaternion(0.10121544, -0.589302, 0.07473969, 0.79805547)
 bones/7/rotation = Quaternion(-0.19475178, -1.0426107e-07, -2.4053703e-08, 0.9808526)
