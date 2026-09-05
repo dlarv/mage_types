@@ -15,7 +15,7 @@ signal dialogue_processed(speaker: Variant, dialogue: String, options: Array[Str
 signal option_selected(idx: int)
 ## Triggered when a SignalNode is encountered while processing the dialogue.
 ## Passes a [param value] defined in the SignalNode in the tree.
-signal dialogue_signal(value: String, next: String)
+signal dialogue_signal(value: Variant, next: String)
 ## Triggered when a variable value is changed.
 ## Passes the [param variable_name] along with it's [param value]
 signal variable_changed(variable_name: String, value)
@@ -106,7 +106,7 @@ func stop() -> void:
 	dialogue_ended.emit()
 	# This way, user can do `await dialogue_box.dialogue_signal` in their code and it'll work even
 	# if there is no other signal emitted
-	dialogue_signal.emit('dialog_ended')
+	dialogue_signal.emit(StoryManager.get_signal_from_key('dialog_ended'))
 
 
 ## Continues processing the dialogue tree from the node connected to the option at [param idx].
@@ -350,4 +350,3 @@ func show_text(msg: String) -> void:
 	_running = true
 	dialogue_started.emit("MISC")
 	_process_dialogue(self, data)
-
