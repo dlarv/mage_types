@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1e4u3b3xpq6x"]
 
-[ext_resource type="Script" uid="uid://cx7m4x7nb5dob" path="res://addons/dialogue_nodes/nodes/giveItemNode.gd" id="1_vivx2"]
+[ext_resource type="Script" uid="uid://cmx3qb6t5o8qf" path="res://src/story_system/dialogue_nodes/giveItemNode.gd" id="1_vivx2"]
 
 [node name="GiveItemNode" type="GraphNode" unique_id=19098923]
 offset_right = 300.0

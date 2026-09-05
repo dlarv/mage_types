@@ -14,27 +14,25 @@ signal dialogue_processed(speaker: Variant, dialogue: String, options: Array[Str
 signal option_selected(idx: int)
 ## Triggered when a SignalNode is encountered while processing the dialogue.
 ## Passes a [param value] of type [String] that is defined in the SignalNode in the dialogue tree.
-signal dialogue_signal(value: int)
+signal dialogue_signal(value: String)
 ## Triggered when a variable value is changed.
 ## Passes the [param variable_name] along with it's [param value]
 signal variable_changed(variable_name: String, value)
 ## Triggered when a dialogue tree has ended processing and reached the end of the dialogue.
 ## The [DialogueBox] may hide based on the [member hide_on_dialogue_end] property.
 signal dialogue_ended
-## Dlarv: Triggered when cutscene or battle has finished.
-signal event_finished()
 
 
 @export_group('Data')
 ## Contains the [param DialogueData] resource created using the Dialogue Nodes editor.
-@export var data: DialogueData:
+@export var data: DialogueData :
 	get:
 		return data
 	set(value):
 		data = value
 		if _dialogue_parser:
 			_dialogue_parser.set_data(data)
-			#variables = _dialogue_parser.variables
+			variables = _dialogue_parser.variables
 			characters = _dialogue_parser.characters
 ## The default start ID to begin dialogue from. This is the value you set in the Dialogue Nodes editor.
 @export var start_id: String
@@ -66,14 +64,12 @@ signal event_finished()
 @export var custom_effects: Array[RichTextEffect] = [
 	RichTextWait.new(),
 	RichTextGhost.new(),
-	RichTextMatrix.new(),
-	# Dlarv:
-	RichTextElement.new(),
+	RichTextMatrix.new()
 	]
 
 @export_group('Options')
 ## The maximum number of options to show in the dialogue box.
-@export var max_options_count := 4:
+@export var max_options_count := 4 :
 	get:
 		return max_options_count
 	set(value):
@@ -141,7 +137,7 @@ signal event_finished()
 
 ## Contains the variable data from the [param DialogueData] parsed in an easy to access dictionary.[br]
 ## Example: [code]{ "COINS": 10, "NAME": "Obama", "ALIVE": true }[/code]
-#var variables: Dictionary
+var variables: Dictionary
 ## Contains all the [param Character] resources loaded from the path in the [member data].
 var characters: Array[Character]
 ## Displays the portrait image of the speaker in the [DialogueBox]. Access the speaker's texture by [member DialogueBox.portrait.texture]. This value is automatically set while running a dialogue tree.
@@ -152,8 +148,6 @@ var speaker_label: Label
 var dialogue_label: RichTextLabel
 ## Contains all the option buttons. The currently displayed options are visible while the rest are hidden. This value is automatically set while running a dialogue tree.
 var options_container: BoxContainer
-## Determines whether non-dialog nodes automatically move to the next node.
-var auto_proceed := true
 
 # [param DialogueParser] used for parsing the dialogue [member data].[br]
 # NOTE: Using [param DialogueParser] as a child instead of extending from it, because [DialogueBox] needs to extend from [Panel].
@@ -169,6 +163,8 @@ func _enter_tree() -> void:
 			remove_child(child)
 			child.queue_free()
 	
+	custom_effects = StoryManager.custom_text_effects
+
 	var margin_container = MarginContainer.new()
 	add_child(margin_container)
 	margin_container.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -216,7 +212,7 @@ func _enter_tree() -> void:
 	add_child(_dialogue_parser)
 	# _dialogue_parser.data = data
 	_dialogue_parser.set_data(data)
-	#variables = _dialogue_parser.variables
+	variables = _dialogue_parser.variables
 	characters = _dialogue_parser.characters
 	skip_options_condition_checks = skip_options_condition_checks
 	
@@ -234,6 +230,8 @@ func _ready() -> void:
 			_wait_effect = effect
 			_wait_effect.wait_finished.connect(_on_wait_finished)
 			break
+	
+	_dialogue_parser.init_process_functions(StoryManager.custom_node_functions)
 	
 	hide()
 
@@ -253,8 +251,6 @@ func _process(delta) -> void:
 
 
 func _input(event) -> void:
-	# Dlarv: Hiding DialogueBox should prevent user input.
-	if not visible: return
 	if is_running() and Input.is_action_just_pressed(skip_input_action):
 		if _wait_effect and not _wait_effect.skip:
 			_wait_effect.skip = true
@@ -301,8 +297,8 @@ func _on_dialogue_processed(speaker: Variant, dialogue: String, options: Array[S
 	if speaker is Character:
 		speaker_label.text = speaker.name
 		speaker_label.modulate = speaker.color
-		portrait.texture = speaker.image
-		if not speaker.image: portrait.hide()
+		portrait.texture = speaker.get_active_sprite()
+		if not portrait.texture: portrait.hide()
 	elif speaker is String:
 		speaker_label.text = speaker
 		speaker_label.modulate = Color.WHITE
@@ -334,12 +330,8 @@ func _on_option_selected(idx: int) -> void:
 	option_selected.emit(idx)
 
 
-func _on_dialogue_signal(value: int, next_node:="") -> void:
+func _on_dialogue_signal(value: String) -> void:
 	dialogue_signal.emit(value)
-	# Dlarv: Wait for event to finish, if necessary.
-	if not auto_proceed:
-		await event_finished
-	_dialogue_parser._proceed(next_node)
 
 
 func _on_variable_changed(variable_name: String, value) -> void:
@@ -349,18 +341,12 @@ func _on_variable_changed(variable_name: String, value) -> void:
 func _on_dialogue_ended() -> void:
 	if hide_on_dialogue_end: hide()
 	dialogue_ended.emit()
-	# Dlarv
-	dialogue_signal.emit(StoryManager.DialogSignal.DIALOG_ENDED)
 
 
 func _on_wait_finished() -> void:
 	options_container.show()
 	if Engine.is_editor_hint(): return
 	options_container.get_child(0).grab_focus()
-
-
-func _on_event_finished() -> void:
-	event_finished.emit()
 
 
 func show_text(msg: String) -> void:

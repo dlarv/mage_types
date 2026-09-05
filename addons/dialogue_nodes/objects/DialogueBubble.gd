@@ -135,6 +135,8 @@ func _enter_tree() -> void:
 		for child in get_children():
 			remove_child(child)
 			child.queue_free()
+
+	custom_effects = StoryManager.custom_text_effects
 	
 	if Engine.is_editor_hint():
 		bbcode_enabled = true
@@ -203,6 +205,8 @@ func _ready() -> void:
 		scale = Vector2.ZERO
 		modulate = Color.TRANSPARENT
 		hide()
+
+	_dialogue_parser.init_process_functions(StoryManager.custom_node_functions)
 
 
 func _process(delta) -> void:

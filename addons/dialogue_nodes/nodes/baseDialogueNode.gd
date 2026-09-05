@@ -26,7 +26,7 @@ func _on_modified() -> void:
 	modified.emit()
 
 
-func _register_timer(node: Control, signal_name: String, fn: Callable, parent_override: Control=null) -> Timer:
+func _register_timer(node: Control, signal_name: String, fn: Callable, parent_override: Node = null) -> Timer:
 	var timer := Timer.new()
 	timer.wait_time = 0.5
 	timer.one_shot = true
@@ -34,7 +34,8 @@ func _register_timer(node: Control, signal_name: String, fn: Callable, parent_ov
 	if parent_override == null:
 		add_child(timer)
 	else:
-		parent_override.add_child(timer)
+		# parent_override.add_child(timer)
+		pass
 
 	var timer_func := func(_a=0,_b=0,_c=0) -> void: 
 		timer.stop()
@@ -45,3 +46,4 @@ func _register_timer(node: Control, signal_name: String, fn: Callable, parent_ov
 	return timer
 
 
+static func process(parser: DialogueParser, dict: Dictionary): pass

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="StoryState" format=3 uid="uid://ukxed1hyxpc"]
+
+[ext_resource type="Script" uid="uid://42coc6buijm5" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_j06qk"]
+[ext_resource type="Script" uid="uid://p2xk5plmxiiy" path="res://addons/dialogue_nodes/objects/StoryState.gd" id="2_ckapx"]
+
+[sub_resource type="Resource" id="Resource_bf8tm"]
+script = ExtResource("1_j06qk")
+name = "Goose"
+metadata/_custom_type_script = "uid://42coc6buijm5"
+
+[sub_resource type="Resource" id="Resource_j06qk"]
+script = ExtResource("1_j06qk")
+name = "Alice"
+color = Color(0, 0.9296875, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ckapx"]
+script = ExtResource("1_j06qk")
+name = "Bartender"
+color = Color(0.06470588, 0, 0.515625, 1)
+
+[resource]
+script = ExtResource("2_ckapx")
+characters = Array[ExtResource("1_j06qk")]([SubResource("Resource_bf8tm"), SubResource("Resource_j06qk"), SubResource("Resource_ckapx")])
+variables = Dictionary[String, Dictionary]({
+"battle_result": {
+"type": 4,
+"value": ""
+},
+"current_cutscene": {
+"type": 4,
+"value": ""
+},
+"misc_battle_data": {
+"type": 4,
+"value": ""
+},
+"target_ally": {
+"type": 4,
+"value": ""
+}
+})
+metadata/_custom_type_script = "uid://p2xk5plmxiiy"

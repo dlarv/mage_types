@@ -21,6 +21,9 @@ run/main_scene="uid://dtmepgi2qn6wl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/flush_stdout_on_print.debug=false
 config/icon="uid://c510ou4fg55vi"
+story_manager/custom_nodes=["uid://b1e4u3b3xpq6x"]
+story_manager/story_state_path="uid://ukxed1hyxpc"
+story_manager/custom_text_effects=["res://addons/dialogue_nodes/objects/bbcodeWait.gd", "res://addons/dialogue_nodes/objects/bbcodeGhost.gd", "res://addons/dialogue_nodes/objects/bbcodeMatrix.gd", "uid://dvdk5u1gpbgu0"]
 
 [autoload]
 

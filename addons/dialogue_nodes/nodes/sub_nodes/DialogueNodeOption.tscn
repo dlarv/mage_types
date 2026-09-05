@@ -4,27 +4,27 @@
 [ext_resource type="Texture2D" uid="uid://b10pucyepsb2s" path="res://addons/dialogue_nodes/icons/Filter.svg" id="1_pklbs"]
 [ext_resource type="PackedScene" uid="uid://d2m5p53k8qhhp" path="res://addons/dialogue_nodes/nodes/sub_nodes/ConditionList.tscn" id="3_figav"]
 
-[node name="Option1" type="HBoxContainer" unique_id=202344588 groups=["dialogue_node_options"]]
+[node name="Option1" type="HBoxContainer" unique_id=1358793635 groups=["dialogue_node_options"]]
 offset_right = 150.0
 offset_bottom = 32.0
 script = ExtResource("1_hro80")
 
-[node name="FilterButton" type="Button" parent="." unique_id=29922195]
+[node name="FilterButton" type="Button" parent="." unique_id=1703157978]
 visible = false
 layout_mode = 2
 icon = ExtResource("1_pklbs")
 
-[node name="LineEdit" type="LineEdit" parent="." unique_id=946985650]
+[node name="LineEdit" type="LineEdit" parent="." unique_id=463747369]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Option Text"
 
-[node name="FilterPanel" type="PopupPanel" parent="." unique_id=1888913954]
+[node name="FilterPanel" type="PopupPanel" parent="." unique_id=74276904]
 position = Vector2i(0, 50)
 size = Vector2i(300, 32)
 min_size = Vector2i(300, 0)
 
-[node name="ConditionList" parent="FilterPanel" unique_id=1501470837 instance=ExtResource("3_figav")]
+[node name="ConditionList" parent="FilterPanel" unique_id=730297094 instance=ExtResource("3_figav")]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 296.0

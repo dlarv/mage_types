@@ -18,7 +18,7 @@ color_regions = {
 custom_minimum_size = Vector2(300, 240)
 offset_top = -1.0
 offset_right = 300.0
-offset_bottom = 243.0
+offset_bottom = 239.0
 theme_override_constants/separation = 4
 resizable = true
 title = "Dialogue"
@@ -82,7 +82,7 @@ script = ExtResource("1")
 layout_mode = 2
 text = "Speaker"
 
-[node name="TimerParent" type="Control" parent="." unique_id=347399675]
+[node name="TimerParent" type="Control" parent="." unique_id=1492941249]
 unique_name_in_owner = true
 layout_mode = 2
 

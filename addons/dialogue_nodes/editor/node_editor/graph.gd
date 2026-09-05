@@ -8,7 +8,7 @@ signal run_requested(start_node_idx: int)
 ## Replaces unknown custom nodes with informational box
 const ErrorNode := preload('res://addons/dialogue_nodes/nodes/ErrorNode.tscn')
 
-@export var NodeScenes: Array[PackedScene] = [
+const DefaultNodeScenes: Array[PackedScene] = [
 	preload('res://addons/dialogue_nodes/nodes/StartNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/DialogueNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/CommentNode.tscn'),
@@ -18,11 +18,12 @@ const ErrorNode := preload('res://addons/dialogue_nodes/nodes/ErrorNode.tscn')
 	preload('res://addons/dialogue_nodes/nodes/NestNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/ForkNode.tscn'),
 	preload('res://addons/dialogue_nodes/nodes/GraphFrame.tscn'),
-	preload('res://addons/dialogue_nodes/nodes/SetSignalNode.tscn'),
+	preload('res://addons/dialogue_nodes/nodes/SetSignalNode.tscn')
 ]
 @export var detach_icon: Texture2D = preload('res://addons/dialogue_nodes/icons/ExternalLink.svg')
 
 @onready var popup_menu := $PopupMenu
+@onready var NodeScenes := DefaultNodeScenes.duplicate()
 
 const _duplicate_offset := Vector2(20, 20)
 
@@ -43,8 +44,9 @@ func _ready() -> void:
 	if not Engine.is_editor_hint(): return
 	editor_settings = EditorInterface.get_editor_settings()
 	editor_settings.settings_changed.connect(update_slots_color)
+	StoryEditor.subscribe_to_variables(_on_variables_updated.bind(true))
 
-	StoryManager.variable_list_updated.connect(_on_variables_updated.bind(true))
+	# StoryManager.variable_list_updated.connect(_on_variables_updated.bind(true))
 
 
 func _input(_event) -> void:
@@ -110,8 +112,8 @@ func init_add_menu(add_menu: PopupMenu) -> void:
 	
 	# add entries for nodes in the nodes list
 	for i in range(NodeScenes.size()):
-		var scene_instance := NodeScenes[i].instantiate()
-		var scene_name := scene_instance.name
+		var scene_instance = NodeScenes[i].instantiate()
+		var scene_name: String = scene_instance.name
 		scene_instance.queue_free()
 		add_menu.add_item(scene_name, i)
 
@@ -167,10 +169,10 @@ func connect_node_signals(node: GraphElement) -> void:
 
 		if node.has_method("_on_variables_updated"):
 			variables_updated.connect(node._on_variables_updated)
-			node._on_variables_updated(last_variable_list + StoryManager.get_variable_list())
+			node._on_variables_updated(last_variable_list + StoryEditor.get_variable_list())
 
 		if node.has_method("_on_characters_updated"):
-			StoryManager.character_list_updated.connect(node._on_characters_updated)
+			StoryEditor.subscribe_to_characters(node._on_characters_updated)
 			node._on_characters_updated()
 
 	# Start node
@@ -189,7 +191,7 @@ func disconnect_node_signals(node: GraphElement) -> void:
 	if node.has_method("_on_variables_updated"):
 		variables_updated.disconnect(node._on_variables_updated)
 	if node.has_method("_on_characters_updated"):
-		StoryManager.character_list_updated.disconnect(node._on_characters_updated)
+		StoryEditor.unsubscribe_to_characters(node._on_characters_updated)
 
 	# Start node
 	if id == 0:
@@ -529,7 +531,7 @@ func _on_variables_updated(variable_list: Array[String], is_globals:=false) -> v
 		globals = variable_list
 	else:
 		locals = variable_list
-		globals = StoryManager.get_variable_list()
+		globals = StoryEditor.get_variable_list()
 
 		last_variable_list = locals
 	
@@ -572,3 +574,14 @@ func _on_graph_elements_unlinked_to_frame_request(element: StringName, frame: St
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'attach_node_to_frame', element, frame)
 	undo_redo.commit_action()
+
+
+func update_custom_nodes(nodes: Array[PackedScene]) -> void:
+	NodeScenes = DefaultNodeScenes.duplicate()
+
+	NodeScenes += nodes
+	
+	$PopupMenu.clear()
+	for node in NodeScenes:
+		$PopupMenu.add_item(node.get_state().get_node_name(0))
+

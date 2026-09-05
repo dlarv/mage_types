@@ -1,74 +1,61 @@
 @tool
 extends Node
+class_name BaseStoryManager
 
-signal character_list_updated
-signal variable_list_updated(list: Array[String])
+## When inheriting from this script, declaring this enum will allow you to use these values inside of signal nodes
+# enum DialogSignal {}
 
-enum DialogSignal { BATTLE_STARTED, PLAY_CUTSCENE, MENU_OPENED, DIALOG_ENDED, ADD_ALLY, REMOVE_ALLY, }
+var characters: Array[Character]:
+	get:
+		if len(characters) == 0:
+			load_data()
+		return characters
 
-@export var characters: Array[Character]
-@export var variables: Dictionary[String, Dictionary]
+var variables: Dictionary[String, Dictionary]:
+	get:
+		if len(variables) == 0:
+			load_data()
+		return variables 
 
+var custom_node_functions: Array[Callable]:
+	get:
+		if len(custom_node_functions):
+			load_data()
+		return custom_node_functions
 
-func add_character(character: Character) -> void:
-	characters.append(character)
-	character_list_updated.emit()
+var custom_text_effects: Array[RichTextEffect]:
+	get:
+		if len(custom_text_effects):
+			load_data()
+		return custom_text_effects
+	
 
-
-func remove_character(character: Character) -> void:
-	var idx: int = StoryManager.characters.find(character)
-	StoryManager.characters.remove_at(idx)
-	character_list_updated.emit()
-
-
-func new_variable(key: String) -> void:
-	if variables.has(key):
-		push_error("Could not add var. '%s' already exists" % key)
-		return
-	variables[key] = {}
-	variable_list_updated.emit(get_variable_list())
-
-
-func remove_variable(key: String) -> void:
-	if not variables.has(key):
-		push_error("Could not remove var. '%s' not found" % key)
-		return
-	variables.erase(key)
-	variable_list_updated.emit(get_variable_list())
+func _enter_tree() -> void:
+	load_data()
 
 
-func rename_variable(old_name: String, new_name: String) -> void:
-	if not variables.has(old_name):
-		push_error("Could not rename var. '%s' not found" % old_name)
-		return
+func load_data() -> void:
+	var story_state := StoryState.load_story_state()
+	variables = story_state.variables
+	characters = story_state.characters
 
-	var data := variables.get(old_name)
-	variables.erase(old_name)
-	variables[new_name] = data
-
-	variable_list_updated.emit(get_variable_list())
-
-
-func get_variable_list() -> Array[String]:
-	return variables.keys()
+	custom_node_functions = []
+	for node in story_state.get_custom_nodes():
+		custom_node_functions.append(node.instantiate().process)
+	
+	custom_text_effects = story_state.get_custom_text_effects()
 
 
-func set_variable(key: String, val: Variant) -> void:
-	if not variables.has(key): 
-		push_warning("StoryVar(%s) not found" % key)
-		return
-	variables[key].value = val
-
-
-func get_variable(key: String) -> Variant:
-	if not variables.has(key): 
-		push_warning("StoryVar(%s) not found" % key)
-		return null
-	return variables[key]
-
-
-## Takes mixed local and global vars and updates global var values
+# ## Takes mixed local and global vars and updates global var values
 func update_variables(data: Dictionary) -> void:
 	for key in data:
 		if variables.has(key):
 			variables[key].value = data[key]
+
+
+func get_valid_signals() -> Array:
+	return []
+
+
+func get_signal_from_key(key: String) -> Variant: 
+	return key
