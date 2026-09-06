@@ -4,40 +4,37 @@
 [ext_resource type="Script" uid="uid://bg0m7oqtov4b5" path="res://src/battle_system/opponent_controllers/BattleTalk.gd" id="2_yx8au"]
 [ext_resource type="Script" uid="uid://d1mg4a2i56tfm" path="res://src/battle_system/opponent_controllers/OpponentController.gd" id="3_p7an0"]
 [ext_resource type="Script" uid="uid://2vxsmd7ib53v" path="res://src/items/ItemSlot.gd" id="3_rjdi1"]
-[ext_resource type="Script" uid="uid://b1pjspi1h8amj" path="res://addons/_dialogue_nodes/objects/DialogueBox.gd" id="5_ari74"]
+[ext_resource type="Script" uid="uid://b1pjspi1h8amj" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="5_ari74"]
 [ext_resource type="Resource" uid="uid://bblx7lycrgk8e" path="res://data/story/dialog/battle_dialog.tres" id="6_domvp"]
-[ext_resource type="Script" uid="uid://m31i3axecagx" path="res://addons/_dialogue_nodes/objects/bbcodeWait.gd" id="6_w22k8"]
-[ext_resource type="Script" uid="uid://blmdt7v8bd0nl" path="res://addons/_dialogue_nodes/objects/bbcodeGhost.gd" id="7_lufxd"]
-[ext_resource type="Script" uid="uid://bsoctnc26xumr" path="res://addons/_dialogue_nodes/objects/bbcodeMatrix.gd" id="8_67cow"]
+[ext_resource type="Script" uid="uid://m31i3axecagx" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_w22k8"]
+[ext_resource type="Script" uid="uid://blmdt7v8bd0nl" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_lufxd"]
+[ext_resource type="Script" uid="uid://bsoctnc26xumr" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="8_67cow"]
 [ext_resource type="Script" uid="uid://dvdk5u1gpbgu0" path="res://src/gui/RichTextElement.gd" id="9_fi3yn"]
 
 [sub_resource type="Resource" id="Resource_4h2rc"]
 script = ExtResource("3_p7an0")
-dialog_ids = Array[ExtResource("2_yx8au")]([])
-reward_xp = 0.0
-reward_items = Array[ExtResource("3_rjdi1")]([])
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_j0fqi"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_domvp"]
 script = ExtResource("6_w22k8")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_ec65t"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_56uxo"]
 script = ExtResource("7_lufxd")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_4x15a"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_dka5h"]
 script = ExtResource("8_67cow")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_ipreh"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_0so62"]
 script = ExtResource("9_fi3yn")
 
-[node name="Battle" type="Node2D" node_paths=PackedStringArray("_dialog_box")]
+[node name="Battle" type="Node2D" unique_id=960793637 node_paths=PackedStringArray("_dialog_box")]
 script = ExtResource("1_7277n")
 ai = SubResource("Resource_4h2rc")
 _dialog_box = NodePath("DialogBox_Layer/DialogueBox")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=993077263]
 visible = false
 
-[node name="Bg" type="Panel" parent="CanvasLayer"]
+[node name="Bg" type="Panel" parent="CanvasLayer" unique_id=1920869569]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,10 +43,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DialogBox_Layer" type="CanvasLayer" parent="."]
+[node name="DialogBox_Layer" type="CanvasLayer" parent="." unique_id=1592074887]
 layer = 2
 
-[node name="DialogueBox" type="Panel" parent="DialogBox_Layer"]
+[node name="DialogueBox" type="Panel" parent="DialogBox_Layer" unique_id=692344306]
 visible = false
 custom_minimum_size = Vector2(500, 300)
 anchors_preset = 12
@@ -63,4 +60,4 @@ size_flags_vertical = 3
 script = ExtResource("5_ari74")
 data = ExtResource("6_domvp")
 skip_input_action = "skip_text"
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_j0fqi"), SubResource("RichTextEffect_ec65t"), SubResource("RichTextEffect_4x15a"), SubResource("RichTextEffect_ipreh")])
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_domvp"), SubResource("RichTextEffect_56uxo"), SubResource("RichTextEffect_dka5h"), SubResource("RichTextEffect_0so62")])

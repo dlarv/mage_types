@@ -10,3 +10,5 @@ func get_valid_signals() -> Array:
 
 func get_signal_from_key(key: String) -> Variant: 
 	return DialogSignal[key.to_upper()]
+
+

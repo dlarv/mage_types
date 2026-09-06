@@ -26,8 +26,7 @@ func _ready() -> void:
 
 	UIManager.setup()
 
-	event_finished.connect(dialog_box._on_event_finished)
-	dialog_box.auto_proceed = false
+	# event_finished.connect(dialog_box._on_event_finished)
 
 	for chunk in get_tree().get_nodes_in_group("chunk"):
 		chunk.on_loaded.connect(func(c: Chunk) -> void:
@@ -109,6 +108,7 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 				await get_tree().create_timer(0.1).timeout
 				get_tree().paused = true
 				_paused_dialog = false
+				StoryManager.end_event()
 			DialogSignal.ADD_ALLY:
 				var ally: String = StoryManager.get_variable("target_ally")
 				_player.add_ally(ally)

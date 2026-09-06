@@ -52,3 +52,4 @@ func get_custom_text_effects() -> Array[RichTextEffect]:
 static func load_story_state() -> StoryState:
 	var path := ProjectSettings.get_setting("application/story_manager/story_state_path")
 	return ResourceLoader.load(path)
+

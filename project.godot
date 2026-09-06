@@ -31,11 +31,11 @@ ElementManager="*res://src/elements/element_manager.tscn"
 MyLogger="*res://src/logger.tscn"
 Settings="*res://src/settings/settings.tscn"
 Inventory="*res://src/items/Inventory.tscn"
+StoryManager="*uid://yg8lxg4t0soh"
 UIManager="*res://src/gui/ui_manager.tscn"
 Battle="*res://src/battle_system/battle.tscn"
 TooltipManager="*res://addons/tooltips_pro/scripts/tooltip_manager.gd"
 TooltipPlaceholderVariables="*res://addons/tooltips_pro/scripts/tooltip_placeholder_variables.gd"
-StoryManager="*uid://yg8lxg4t0soh"
 
 [debug]
 
