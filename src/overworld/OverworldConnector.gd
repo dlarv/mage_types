@@ -108,7 +108,6 @@ func _on_player_dialog_started(dialogId: String, npc: Variant) -> void:
 				await get_tree().create_timer(0.1).timeout
 				get_tree().paused = true
 				_paused_dialog = false
-				StoryManager.end_event()
 			DialogSignal.ADD_ALLY:
 				var ally: String = StoryManager.get_variable("target_ally")
 				_player.add_ally(ally)

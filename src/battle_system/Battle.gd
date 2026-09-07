@@ -330,8 +330,11 @@ func _resolve_end_of_battle(pause:=true) -> void:
 	elif pause and not simulator_mode:
 		rewardScreen.show_defeat(_dialog_box)
 		await rewardScreen.pressed
+	else:
+		remove_child(gui)
 	$CanvasLayer.remove_child(rewardScreen)
 	$CanvasLayer.hide()
+	StoryManager.end_event()
 
 
 func _prep_next_turn() -> void:
