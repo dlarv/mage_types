@@ -43,13 +43,15 @@ func _on_browse_button_pressed() -> void:
 	$OpenDialog.popup_centered()
 
 
-func _on_file_selected() -> void:
+func _on_file_selected(path:="") -> void:
+	if path == "":
+		path = %FilePath.text
 	if not undo_redo: 
-		set_path(%FilePath.text)
+		set_path(path)
 		return
 
 	undo_redo.create_action('Set file FilePath')
-	undo_redo.add_do_method(self, 'set_path', %FilePath.text)
+	undo_redo.add_do_method(self, 'set_path', path)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_path', file_path)
