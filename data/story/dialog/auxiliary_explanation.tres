@@ -1,0 +1,554 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://db5bnrgo5eb73"]
+
+[ext_resource type="Script" uid="uid://eit47g61t72a" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_dgguo"]
+
+[resource]
+script = ExtResource("1_dgguo")
+starts = {
+"ALIGNMENT": &"0_3",
+"BACKROOMS": &"0_1",
+"ENCLAVES": &"0_2"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-160, 60),
+"start_id": "BACKROOMS"
+},
+&"0_2": {
+"link": &"1_19",
+"offset": Vector2(-200, 1480),
+"start_id": "ENCLAVES"
+},
+&"0_3": {
+"link": &"1_20",
+"offset": Vector2(-240, 960),
+"start_id": "ALIGNMENT"
+},
+&"1_1": {
+"dialogue": "Its kind of hard to explain...",
+"offset": Vector2(40, 60),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 245.99976),
+"speaker": 2,
+"sprite": -1
+},
+&"1_10": {
+"dialogue": "This is the longest dream I've ever had",
+"offset": Vector2(2260, 340),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300.00012, 246.00024),
+"speaker": 1,
+"sprite": -1
+},
+&"1_11": {
+"dialogue": "Though I'm sure that doesn't mean anything to you if you don't think I'm real...",
+"offset": Vector2(2580, 340),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_17",
+"text": ""
+}
+},
+"size": Vector2(300, 246.00024),
+"speaker": 1,
+"sprite": -1
+},
+&"1_12": {
+"dialogue": "That's the spirit! Might as well enjoy the ride.",
+"offset": Vector2(2340, 0),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300.00037, 246),
+"speaker": 2,
+"sprite": -1
+},
+&"1_13": {
+"dialogue": "That's rough buddy.",
+"offset": Vector2(2040, -280),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300.0006, 246),
+"speaker": 1,
+"sprite": -1
+},
+&"1_14": {
+"dialogue": "I think you'll find its not so bad once you've been here a bit longer",
+"offset": Vector2(3680, 80),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_15",
+"text": ""
+}
+},
+"size": Vector2(300.00073, 246),
+"speaker": 2,
+"sprite": -1
+},
+&"1_15": {
+"dialogue": "...",
+"offset": Vector2(4000, 80),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_16",
+"text": ""
+}
+},
+"size": Vector2(300.00098, 246),
+"speaker": 1,
+"sprite": -1
+},
+&"1_16": {
+"dialogue": "And are able to roam a bit more freely, of course.",
+"offset": Vector2(4320, 80),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": "What's the rest of this place like?"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": "Is it just this hotel?"
+}
+},
+"size": Vector2(300, 316),
+"speaker": 2,
+"sprite": -1
+},
+&"1_17": {
+"dialogue": "I think you'll find this \"dream\" more real than you're likely used to.",
+"offset": Vector2(2940, 340),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_18",
+"text": ""
+}
+},
+"size": Vector2(300.00024, 246.00024),
+"speaker": 2,
+"sprite": -1
+},
+&"1_18": {
+"dialogue": "But it shouldn't be too much of a nightmare, I hope.",
+"offset": Vector2(3260, 340),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300, 246.00024),
+"speaker": 2,
+"sprite": -1
+},
+&"1_19": {
+"dialogue": "Part of the [el]Blue[/el]-aligned condition is our legs merging into a sort of trunk-like structure. Which, needless to say, makes travel difficult.",
+"offset": Vector2(0, 1460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_30",
+"text": "Oh wow"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_28",
+"text": "So you're stuck in place?"
+}
+},
+"size": Vector2(300, 281),
+"speaker": 2,
+"sprite": -1
+},
+&"1_2": {
+"dialogue": "You know the backrooms?",
+"offset": Vector2(360, 60),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_4",
+"text": "Yes"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_3",
+"text": "No"
+}
+},
+"size": Vector2(300.00037, 316),
+"speaker": 1,
+"sprite": -1
+},
+&"1_20": {
+"dialogue": "You remember the difference between your [i]primary[/i] and [i]secondary[/i] types, right?",
+"offset": Vector2(-20, 960),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_21",
+"text": "Yes"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_22",
+"text": "No"
+}
+},
+"size": Vector2(300.00024, 281),
+"speaker": 2,
+"sprite": -1
+},
+&"1_21": {
+"dialogue": "So right now, you two are \"unaligned,\" which means your core can change.",
+"offset": Vector2(800, 980),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_23",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_22": {
+"dialogue": "Your [i]primary[/i] type is simply the composition of your core. Its whichever element forms the majority of your spine, heart, etc.",
+"offset": Vector2(380, 1180),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_21",
+"text": "Gotcha"
+}
+},
+"size": Vector2(300.00012, 246.00006),
+"speaker": 2,
+"sprite": -1
+},
+&"1_23": {
+"dialogue": "Not often, to be sure. Mostly when you level up.",
+"offset": Vector2(1140, 1020),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_24",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_24": {
+"dialogue": "However, given time, you'll develop an alignment. When this happens, your core will become \"locked\" to a specific element.",
+"offset": Vector2(1460, 1020),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_25",
+"text": ""
+}
+},
+"size": Vector2(300.00018, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_25": {
+"dialogue": "Myself, as well as those gentlemen over there, are [el]Blue[/el]-aligned.",
+"offset": Vector2(1800, 1020),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_26",
+"text": "So your primary type is forever Blue?"
+}
+},
+"size": Vector2(300.00024, 246),
+"speaker": 2,
+"sprite": -1
+},
+&"1_26": {
+"dialogue": "Precisely. And when this happens, it comes with certain mutations. For us [el]Blues[/el], this means tentacles and trunks. ",
+"offset": Vector2(2120, 1020),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_27",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_27": {
+"dialogue": "But for other colors, this can range from scales, to shells, to evaporating to mist.",
+"offset": Vector2(2440, 1020),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_28": {
+"dialogue": "A good question, but no.",
+"offset": Vector2(342.33307, 1720.0094),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_29",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_29": {
+"dialogue": "We have little feet we can wobble around on, but its slow and quite tiring.",
+"offset": Vector2(680, 1720),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_30",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_3": {
+"dialogue": "Oh, well then I got nothing",
+"offset": Vector2(720, 460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300.00024, 246),
+"speaker": 1,
+"sprite": -1
+},
+&"1_30": {
+"dialogue": "Because of this, we have a tendency to form small groups, which are called enclaves.",
+"offset": Vector2(1080, 1500),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_31",
+"text": "That must suck"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_33",
+"text": "Does it hurt?"
+}
+},
+"size": Vector2(300, 281),
+"speaker": 2,
+"sprite": -1
+},
+&"1_31": {
+"dialogue": "I feared the same, many, many years ago. ",
+"offset": Vector2(1480, 1460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_32",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_32": {
+"dialogue": "But its not a fast process, so you have time to prepare yourself",
+"offset": Vector2(1800, 1460),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_33": {
+"dialogue": "No, its not painful. Uncomfortable at times, sure, but not painful.",
+"offset": Vector2(1480, 1720),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_34",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_34": {
+"dialogue": "Its not a fast process, so you have time to prepare yourself",
+"offset": Vector2(1800, 1720),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 2,
+"sprite": -1
+},
+&"1_4": {
+"dialogue": "We've noclipped into the backrooms and we're here forever and have no escape and we'll never see anyone or anything from our previous life again...",
+"offset": Vector2(680, 0),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300.00037, 246),
+"speaker": 1,
+"sprite": -1
+},
+&"1_5": {
+"dialogue": "It'll be okay, remember what we talked about.",
+"offset": Vector2(1000, 0),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_6",
+"text": ""
+}
+},
+"size": Vector2(300.00073, 246),
+"speaker": 2,
+"sprite": -1
+},
+&"1_6": {
+"dialogue": "Though I will say, you're being awfully calm about this.",
+"offset": Vector2(1320, 0),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_13",
+"text": "I've already had my existential crisis today"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_12",
+"text": "As long as I don't have to finish my calc homework"
+},
+2: {
+"condition": Array[Dictionary]([]),
+"link": &"1_10",
+"text": "This is just a weird dream..."
+}
+},
+"size": Vector2(300, 351),
+"speaker": 2,
+"sprite": -1
+},
+&"1_7": {
+"dialogue": "You've been transported to another dimension.",
+"offset": Vector2(1040, 500),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_9",
+"text": "Huh, neat"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_8",
+"text": "Is there anyway home?"
+}
+},
+"size": Vector2(300.0006, 316),
+"speaker": 2,
+"sprite": -1
+},
+&"1_8": {
+"dialogue": "Nope! We're here forever and have no escape and we'll never see anyone or anything from our previous life again...",
+"offset": Vector2(1420, 700),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300.0003, 246.00012),
+"speaker": 1,
+"sprite": -1
+},
+&"1_9": {
+"dialogue": "Neat?!? You're fine with that??",
+"offset": Vector2(1620, 360),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": &"1_13",
+"text": "I've already had my existential crisis today"
+},
+1: {
+"condition": Array[Dictionary]([]),
+"link": &"1_12",
+"text": "As long as I don't have to finish my calc homework"
+},
+2: {
+"condition": Array[Dictionary]([]),
+"link": &"1_10",
+"text": "This is just a weird dream..."
+}
+},
+"size": Vector2(300.00012, 351.00024),
+"speaker": 1,
+"sprite": -1
+}
+}
