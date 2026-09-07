@@ -17,9 +17,6 @@ func _ready() -> void:
 	stencil_shader = %TextureRect.material
 	%AdvancedOptionsPane.visible = Settings.debug_mode and not Settings.play_test_mode
 
-	# if Settings.play_test_mode:
-	# 	_on_stencil_button_toggled(true, 1)
-	
 	if not Inventory.key_item_obtained.is_connected(activate_stencil):
 		Inventory.key_item_obtained.connect(activate_stencil)
 	if not Inventory.key_item_lost.is_connected(deactivate_stencil):

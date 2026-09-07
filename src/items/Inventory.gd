@@ -147,16 +147,17 @@ func add(item: _Item, amount:=1) -> void:
 
 
 func _increment_quantity(slot: ItemSlot, amount: int) -> void:
-	if slot.allow_stacking:
-		slot.quantity += amount
-		quantity_changed.emit(slot)
+	slot.quantity += amount
 
-	elif slot.quantity == 0:
-		slot.quantity = 1
-		quantity_changed.emit(slot)
+	if slot.quantity > slot.max_quantity:
+		slot.quantity = slot.max_quantity
 
+	quantity_changed.emit(slot)
 
 func add_key_item(item: KeyItem, amount:=1) -> void:
+	if amount < 0:
+		remove_key_item(item, -amount)
+		return
 	key_item_obtained.emit(item)
 
 	# If this throws an index out of bounds error, something has gone wrong and it should crash.
@@ -190,9 +191,11 @@ func remove(item: _Item, amount:=1) -> ItemSlot:
 	return slot
 
 
-func remove_key_item(item: KeyItem) -> void:
+func remove_key_item(item: KeyItem, quantity:=1) -> void:
 	key_item_lost.emit(item)
-	key_items[item.unique_name].quantity -= 1
+
+	var slot: ItemSlot = key_items[item.unique_name]
+	_increment_quantity(slot, -quantity)
 
 
 func has_key_item(id: StringName) -> bool:
