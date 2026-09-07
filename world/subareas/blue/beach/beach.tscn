@@ -19,7 +19,6 @@
 [ext_resource type="Resource" uid="uid://c4erte10ui5ws" path="res://data/items/key_items/magenta_key.tres" id="12_ji4u4"]
 [ext_resource type="Resource" uid="uid://b43lxfbq75vtw" path="res://data/items/spell_scrolls/output/confetti_cannon_bead.tres" id="15_yi3f6"]
 [ext_resource type="PackedScene" uid="uid://ouc848441g1x" path="res://assets/3d/objects/blue/beach/sandcastle.tscn" id="18_dpbhw"]
-[ext_resource type="PackedScene" uid="uid://dxjcd636e5sx3" path="res://assets/3d/objects/blue/beach/obelisk.tscn" id="18_r2be5"]
 [ext_resource type="PackedScene" uid="uid://byfoh2n6hn67b" path="res://assets/3d/objects/blue/beach/large_boulder.tscn" id="19_cg7vx"]
 
 [sub_resource type="Environment" id="Environment_5foko"]
@@ -135,11 +134,11 @@ size = 13.0
 _element = 5
 
 [node name="MagiclayDisk" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=570814267 instance=ExtResource("5_5foko")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.397354, 6, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.397354, 6, 24)
 _element = 0
 
 [node name="MagiclayDisk2" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=1869156845 instance=ExtResource("5_5foko")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.397354, 4, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.397354, 4, 24)
 _element = 3
 
 [node name="MagiclayDisk3" parent="BeachChunk/Chunk/BacktrackingPuzzle" unique_id=2033659747 instance=ExtResource("5_5foko")]
@@ -152,7 +151,7 @@ locks = [NodePath("../PressurePlate")]
 permanent = true
 
 [node name="PressurePlate" parent="BeachChunk/Chunk" unique_id=347881199 instance=ExtResource("6_m3tiu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.397354, 3, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.397354, 3, 24)
 _element = 3
 
 [node name="BeachCaves" parent="." unique_id=1901693184 instance=ExtResource("2_1otd5")]
@@ -333,7 +332,7 @@ transform = Transform3D(0.9069927, -0.42114383, 0.0013327387, 0.4208918, 0.90633
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/StreetLamps/FallenLamppost" index="1" unique_id=1025481499]
 transform = Transform3D(0.90699273, -0.00133273, -0.4211439, 0.42089182, 0.03760586, 0.9063308, 0.0146295875, -0.9992917, 0.03466917, -6.231983, 5.8623505, 0.08900833)
-light_energy = 27.200815
+light_energy = 27.92517
 spot_range = 31.0
 
 [node name="StaticBody3D" parent="HotelExteriorChunk/Chunk/StreetLamps/FallenLamppost" index="2" unique_id=1216273974]
@@ -365,7 +364,7 @@ bright_light_range = Vector2(25, 30)
 transform = Transform3D(0.99999994, 0, -2.9802322e-08, 1.4901161e-08, 1, 0, 2.9802322e-08, 0, 1, 0.049743652, -0.19363117, -0.005689621)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SunkenLamps/SunkenLamppost3" index="1" unique_id=1025481499]
-light_energy = 27.61818
+light_energy = 28.26168
 spot_range = 18.0
 
 [node name="SunkenLampPuzzle" type="Node3D" parent="HotelExteriorChunk/Chunk" unique_id=698796298 node_paths=PackedStringArray("reward_node")]
@@ -474,7 +473,7 @@ dim_light_range = Vector2(10, 13)
 bright_light_range = Vector2(18, 20)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/NWParkour/SunkenLamppostEnd" index="1" unique_id=1025481499]
-light_energy = 18.482943
+light_energy = 18.911503
 spot_range = 11.0
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="HotelExteriorChunk/Chunk/NWParkour" unique_id=1486127577]
@@ -560,6 +559,13 @@ bright_light_range = Vector2(18, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, -11, -24)
 items = Array[ExtResource("11_1vpu4")]([SubResource("Resource_dpbhw")])
 
+[node name="Lamppost" parent="HotelExteriorChunk/Chunk/SWParkour/Chest" unique_id=1478455748 instance=ExtResource("8_1otd5")]
+transform = Transform3D(-0.99567884, -0.030149817, 0.08783105, -0.022557558, 0.99602365, 0.08618584, -0.09008004, 0.083832234, -0.9923998, 4.4391947, -1.5715892, 63.134136)
+energy = 1.0
+time_range = Vector2(0, 1)
+dim_light_range = Vector2(15, 18)
+bright_light_range = Vector2(18, 20)
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="HotelExteriorChunk/Chunk/SWParkour" unique_id=1238637453]
 use_collision = true
 
@@ -588,7 +594,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar2/Lamppost" index="1" unique_id=1025481499]
-light_energy = 26.286171
+light_energy = 26.516657
 spot_range = 18.0
 
 [node name="SunkenPillar3" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=369697352]
@@ -604,7 +610,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar3/Lamppost" index="1" unique_id=1025481499]
-light_energy = 27.063852
+light_energy = 29.25541
 spot_range = 18.0
 
 [node name="SunkenPillar4" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=1162547764]
@@ -620,7 +626,7 @@ dim_light_range = Vector2(8, 9)
 bright_light_range = Vector2(9, 10)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar4/Lamppost" index="1" unique_id=1025481499]
-light_energy = 9.225659
+light_energy = 9.4194355
 spot_range = 18.0
 
 [node name="SunkenPillar5" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=98371441]
@@ -637,7 +643,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar5/Lamppost" index="1" unique_id=1025481499]
-light_energy = 26.052889
+light_energy = 29.709936
 spot_range = 18.0
 
 [node name="SunkenPillar6" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=396883549]
@@ -654,7 +660,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar6/Lamppost" index="1" unique_id=1025481499]
-light_energy = 25.235615
+light_energy = 25.404684
 spot_range = 18.0
 
 [node name="SWIsland" type="Node3D" parent="HotelExteriorChunk/Chunk" unique_id=968371229]
@@ -696,11 +702,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.5, -13.5, 128.5)
 size = Vector3(10, 4, 4)
 material = ExtResource("8_5jrit")
 
-[node name="Obelisk" parent="HotelExteriorChunk/Chunk" unique_id=1551934087 instance=ExtResource("18_r2be5")]
-transform = Transform3D(2.9999998, 0, 0, 0, 3, 0, 0, 0, 2.9999998, 32, -0.39999998, 44)
-
 [node name="Sandcastle" parent="." unique_id=1000982128 instance=ExtResource("18_dpbhw")]
-transform = Transform3D(1.0000001, 1.0477379e-09, 0, 1.1632437e-09, 0.9961948, -0.08715574, 0, 0.087155744, 0.9961947, 61.156425, -9.083155, 88.82247)
+transform = Transform3D(1.0000001, 1.0477379e-09, 0, 1.1632437e-09, 0.9961948, -0.08715574, 0, 0.087155744, 0.9961947, 61.156425, -9.5391655, 88.78258)
 
 [node name="LargeBoulder" parent="." unique_id=1991580072 instance=ExtResource("19_cg7vx")]
 transform = Transform3D(0.9848077, 0, 0.17364828, 0, 1, 0, -0.17364828, 0, 0.9848077, 179.87202, -9, 74.72399)

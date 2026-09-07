@@ -367,13 +367,18 @@ shader_parameter/element_id = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mtce"]
 size = Vector3(1, 3, 13.2)
 
-[sub_resource type="Resource" id="Resource_6fo2d"]
+[sub_resource type="Resource" id="Resource_opl4n"]
 script = ExtResource("6_upves")
-id = "RETURN_BIN"
+id = "TUTORIAL_EXIT"
 metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gcly8"]
 radius = 1.4
+
+[sub_resource type="Resource" id="Resource_6fo2d"]
+script = ExtResource("6_upves")
+id = "RETURN_BIN"
+metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6l8lo"]
 
@@ -1454,7 +1459,7 @@ shape = SubResource("BoxShape3D_7mtce")
 
 [node name="StoryActor" parent="Section3/PurpleRoom/Chunk/ReturnPacketTrigger" unique_id=1421829850 instance=ExtResource("5_gcly8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4706726, -1.5, -46.949448)
-dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_6fo2d")])
+dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_opl4n")])
 
 [node name="ReturnBasket" parent="Section3/PurpleRoom/Chunk" unique_id=134916207 instance=ExtResource("4_4pdg5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, -49.2)
@@ -1535,7 +1540,7 @@ size = Vector3(1, 1.3000001, 15)
 material = SubResource("ShaderMaterial_jbfvx")
 
 [node name="Bridge1" parent="Section3/EastRoom/Chunk" unique_id=1376827802 instance=ExtResource("6_yng4o")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.6662474, -20.92102)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.676074, -20.92102)
 use_laser_input = false
 _element = 4
 
@@ -1545,7 +1550,7 @@ use_laser_input = false
 _element = 1
 
 [node name="Bridge2" parent="Section3/EastRoom/Chunk" unique_id=877265578 instance=ExtResource("6_yng4o")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.6662474, -16.92102)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.676074, -16.92102)
 use_laser_input = false
 _element = 0
 
@@ -1555,7 +1560,7 @@ use_laser_input = false
 _element = 0
 
 [node name="Bridge3" parent="Section3/EastRoom/Chunk" unique_id=1889093576 instance=ExtResource("6_yng4o")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.6662474, -12.9210205)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.676074, -12.9210205)
 use_laser_input = false
 _element = 1
 
@@ -1586,7 +1591,7 @@ _element = 2
 
 [node name="Reset" parent="Section3/EastRoom/Chunk" unique_id=38949980 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000015, -0.98216, -22.7)
-reset_positions_of = [null]
+reset_positions_of = [NodePath("../MagiclayDisk")]
 
 [node name="WestRoom" type="Area3D" parent="Section3" unique_id=1556223914 node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -24)
