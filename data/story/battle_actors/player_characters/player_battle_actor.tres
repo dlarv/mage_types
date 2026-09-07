@@ -15,7 +15,8 @@ metadata/_custom_type_script = "uid://ccl64vcc20maa"
 script = ExtResource("6_m5g4e")
 next_level_xp = 50
 _base_melee_attack = 8.0
-_base_ranged_attack = 8.0
+_base_ranged_attack = 80.0
+_base_speed = 100.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]

@@ -277,13 +277,14 @@ func _dialog(isAfterTurn: bool) -> void:
 
 func _check_if_battle_ended() -> bool:
 	if _defeated_allies == len(allies):
-		StoryManager.set_event_variable("battle_result", "defeated")
+		StoryManager.set_variable("battle_result", "defeated")
 		MyLogger.append_battle_log("You were defeated...")
 		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.DEFEATED)
 		return true
 	elif _defeated_enemies == len(enemies):
-		StoryManager.set_event_variable("battle_result", "won")
+		StoryManager.set_variable("battle_result", "won")
+		print(StoryManager.get_variable("battle_result"))
 		MyLogger.append_battle_log("You won!")
 		await _resolve_end_of_battle()
 		battle_ended.emit(EndState.WON)

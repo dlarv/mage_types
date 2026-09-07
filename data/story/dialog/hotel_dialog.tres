@@ -105,8 +105,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.001, 251),
-"speaker": "Aegean"
+"size": Vector2(300.00098, 251),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_10": {
 "dialogue": "Its a table with another note.",
@@ -119,7 +120,8 @@ nodes = {
 }
 },
 "size": Vector2(300, 251.00098),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_100": {
 "dialogue": "The latter are known as [i]internal reactions[/i] and you can have up to 2 per attack. I'll leave it up to you to figure out why and to explore any exceptions you might find.",
@@ -132,7 +134,8 @@ nodes = {
 }
 },
 "size": Vector2(300.00073, 251),
-"speaker": "Aegean"
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_11": {
 "dialogue": "You're almost there! The exit is just up ahead.[br]
@@ -147,7 +150,8 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 }
 },
 "size": Vector2(300, 251.00098),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_12": {
 "dialogue": "rawr xd ",
@@ -159,8 +163,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "dlarv pls change this later"
 }
 },
-"size": Vector2(300.00082, 286),
-"speaker": ""
+"size": Vector2(300.00085, 286),
+"speaker": "",
+"sprite": -1
 },
 &"1_13": {
 "dialogue": "This is a note",
@@ -173,7 +178,8 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 }
 },
 "size": Vector2(300.00098, 246),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_14": {
 "dialogue": "Looking in the bin, you notice 2 somewhat identical packets.",
@@ -186,7 +192,8 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 }
 },
 "size": Vector2(300.00098, 251.00122),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_15": {
 "dialogue": "Looing in the bin, you notice several laminated pages stapled together.",
@@ -198,8 +205,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00098, 251.00012),
-"speaker": ""
+"size": Vector2(300.00098, 251.00006),
+"speaker": "",
+"sprite": -1
 },
 &"1_16": {
 "dialogue": "Hello there, I'm sure the new girl will be happy to see you.",
@@ -211,8 +219,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.001, 251),
-"speaker": "Aegean"
+"size": Vector2(300.00098, 251),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_17": {
 "dialogue": "Well done! Now speak to Dallas for the next lesson.",
@@ -225,7 +234,8 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 }
 },
 "size": Vector2(300.0027, 251),
-"speaker": "Aegean"
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_18": {
 "dialogue": "It's okay, we can continue whenever you're ready.",
@@ -237,8 +247,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00192, 251),
-"speaker": "Aegean"
+"size": Vector2(300.00195, 251),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_19": {
 "dialogue": "Hello again. Do you need a refresher on battle transmutation?",
@@ -255,8 +266,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Just saying hi"
 }
 },
-"size": Vector2(300.001, 321),
-"speaker": "Aegean"
+"size": Vector2(300.00098, 321),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_2": {
 "dialogue": "Alright, let's do this!",
@@ -268,8 +280,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00095, 286.00073),
-"speaker": "Dallas"
+"size": Vector2(300.00098, 286.00073),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_20": {
 "dialogue": "Sup! We'll talk in a bit little man. ",
@@ -281,8 +294,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00095, 281.99976),
-"speaker": "Dallas"
+"size": Vector2(300.00098, 281.99976),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_21": {
 "dialogue": "Hey dude. You need a refresher on side effects?",
@@ -299,8 +313,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Nah man, I'm good"
 }
 },
-"size": Vector2(300.0009, 321.00024),
-"speaker": "Dallas"
+"size": Vector2(300.00085, 321.00018),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_22": {
 "dialogue": "No sweat dude! Take a break and we'll continue later.",
@@ -312,8 +327,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00098, 251),
-"speaker": "Dallas"
+"size": Vector2(300.00085, 251.00003),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_23": {
 "dialogue": "Niiiiice, good job! Now talk to Duke, he'll bring it all home!",
@@ -326,7 +342,8 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 }
 },
 "size": Vector2(300.00024, 251),
-"speaker": "Dallas"
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_24": {
 "dialogue": "Good day! Speak to the barkeep. All will make more sense that way.",
@@ -338,8 +355,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00058, 251.00134),
-"speaker": "Duke"
+"size": Vector2(300.0006, 251.00134),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_25": {
 "dialogue": "Speak with Dallas. He is the one on the right.",
@@ -352,7 +370,8 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 }
 },
 "size": Vector2(300, 251.00049),
-"speaker": "Duke"
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_26": {
 "dialogue": "Very well done! Thou art ready to challenge the monster.",
@@ -364,8 +383,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0016, 251.00122),
-"speaker": "Duke"
+"size": Vector2(300.00195, 251.00107),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_27": {
 "dialogue": "Worry not, my friend. I will remain here until you are ready.",
@@ -377,8 +397,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251),
-"speaker": "Duke"
+"size": Vector2(300.00098, 251.00018),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_28": {
 "dialogue": "You should go talk to her and the bartender, they'll be able to orient you.",
@@ -390,8 +411,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00143, 282),
-"speaker": "Aegean"
+"size": Vector2(300.0016, 282),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_29": {
 "dialogue": "Oh hey there stranger. Welcome to the Azure Hotel.",
@@ -403,7 +425,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00098, 283),
+"size": Vector2(300.00098, 282.99988),
 "speaker": 2,
 "sprite": -1
 },
@@ -417,8 +439,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00058, 316.99963),
-"speaker": "Duke"
+"size": Vector2(300.0006, 316.99957),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_30": {
 "dialogue": "So the fundamental difference between complex organisms such as ourselves and the chunks of clay you may find laying about would be our dual composition.",
@@ -430,8 +453,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00143, 251),
-"speaker": "Aegean"
+"size": Vector2(300.0016, 251),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_31": {
 "dialogue": "For now, you should go talk to the guys at the bar.",
@@ -443,8 +467,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00095, 251),
-"speaker": "Dallas"
+"size": Vector2(300.00098, 251),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_32": {
 "dialogue": "Talk to Aegean first. He's on the left.",
@@ -456,8 +481,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 251),
-"speaker": "Dallas"
+"size": Vector2(300, 251.00003),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_33": {
 "dialogue": "Hello again, my friend.",
@@ -479,8 +505,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Farewell my friend"
 }
 },
-"size": Vector2(300.00058, 356),
-"speaker": "Duke"
+"size": Vector2(300.0006, 356),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_34": {
 "dialogue": "Thy training will begin with Aegean. He stands to the left.",
@@ -492,8 +519,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 251),
-"speaker": "Duke"
+"size": Vector2(300, 251.00024),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_35": {
 "dialogue": "Actually, Alice why don't you give them a hand? See how well you two work together?",
@@ -505,8 +533,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00046, 251.00012),
-"speaker": "Bartender"
+"size": Vector2(300.00055, 251.00006),
+"speaker": "Bartender",
+"sprite": -1
 },
 &"1_36": {
 "dialogue": "Sure, makes sense",
@@ -518,8 +547,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0001, 251.00012),
-"speaker": "Alice"
+"size": Vector2(300.00012, 251.00006),
+"speaker": "Alice",
+"sprite": -1
 },
 &"1_37": {
 "dialogue": "Alice joined your party!",
@@ -531,8 +561,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00195, 251.00012),
-"speaker": ""
+"size": Vector2(300.00195, 251.00006),
+"speaker": "",
+"sprite": -1
 },
 &"1_38": {
 "dialogue": "Yeah, so every time you transmute, you'll get these little stat boosts.",
@@ -544,8 +575,9 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 251.00024),
-"speaker": "Dallas"
+"size": Vector2(300, 251.00021),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_39": {
 "dialogue": "Fiinallyy, we've been waiting forever for you!",
@@ -562,7 +594,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Where am I?"
 }
 },
-"size": Vector2(300, 359.99805),
+"size": Vector2(300, 359.99792),
 "speaker": 1,
 "sprite": -1
 },
@@ -577,7 +609,8 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 }
 },
 "size": Vector2(300.0005, 251),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_40": {
 "dialogue": "Well, not *you* specifically. Just the next castaway, which happens to be you.",
@@ -589,7 +622,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 283),
+"size": Vector2(300, 282.99988),
 "speaker": 1,
 "sprite": -1
 },
@@ -608,7 +641,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Aw, I'm not the chosen one?"
 }
 },
-"size": Vector2(300.0005, 353),
+"size": Vector2(300.0005, 352.99988),
 "speaker": 1,
 "sprite": -1
 },
@@ -622,7 +655,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0005, 283),
+"size": Vector2(300.0005, 282.99988),
 "speaker": 1,
 "sprite": -1
 },
@@ -650,7 +683,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0005, 283.00122),
+"size": Vector2(300.0005, 283.00146),
 "speaker": 2,
 "sprite": -1
 },
@@ -692,7 +725,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00003, 283),
+"size": Vector2(300, 282.99988),
 "speaker": 1,
 "sprite": -1
 },
@@ -706,7 +739,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0012, 283),
+"size": Vector2(300.00122, 282.99988),
 "speaker": 2,
 "sprite": -1
 },
@@ -729,7 +762,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Is it the monster?"
 }
 },
-"size": Vector2(300.0007, 353),
+"size": Vector2(300.00073, 352.99988),
 "speaker": 1,
 "sprite": -1
 },
@@ -743,7 +776,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00003, 283),
+"size": Vector2(300, 283),
 "speaker": 2,
 "sprite": -1
 },
@@ -767,7 +800,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300.00098, 251),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_50": {
 "dialogue": "He had a... let's say independent spirit.",
@@ -779,7 +813,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0012, 283),
+"size": Vector2(300.00122, 283),
 "speaker": 2,
 "sprite": -1
 },
@@ -793,7 +827,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0007, 283.0005),
+"size": Vector2(300.00073, 283.0005),
 "speaker": 1,
 "sprite": -1
 },
@@ -816,7 +850,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "How'd he get past that monster?"
 }
 },
-"size": Vector2(300.00058, 353.0005),
+"size": Vector2(300.00073, 353.0005),
 "speaker": 2,
 "sprite": -1
 },
@@ -863,7 +897,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0017, 283.0005),
+"size": Vector2(300.0017, 283),
 "speaker": 2,
 "sprite": -1
 },
@@ -877,7 +911,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00342, 283.0005),
+"size": Vector2(300.00342, 283),
 "speaker": 1,
 "sprite": -1
 },
@@ -900,7 +934,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "How do you propose we do that?"
 }
 },
-"size": Vector2(300.0016, 353.0005),
+"size": Vector2(300.00195, 353.0005),
 "speaker": 1,
 "sprite": -1
 },
@@ -914,7 +948,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00098, 283.00024),
+"size": Vector2(300.00073, 283.0005),
 "speaker": 1,
 "sprite": -1
 },
@@ -938,7 +972,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Oh easy, we got this"
 }
 },
-"size": Vector2(300.0005, 388.00024),
+"size": Vector2(300.00098, 388.0005),
 "speaker": 2,
 "sprite": -1
 },
@@ -953,7 +987,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300, 251),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_60": {
 "dialogue": "Luckily, those gentleman over there will be more than happy to give you some pointers.",
@@ -965,7 +1000,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00098, 283.00024),
+"size": Vector2(300.00098, 282.9995),
 "speaker": 2,
 "sprite": -1
 },
@@ -979,7 +1014,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 283.0006),
+"size": Vector2(300, 283.0005),
 "speaker": 2,
 "sprite": -1
 },
@@ -993,7 +1028,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 283.0006),
+"size": Vector2(300.0005, 283.0005),
 "speaker": 1,
 "sprite": -1
 },
@@ -1007,7 +1042,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0011, 283.0006),
+"size": Vector2(300.00122, 283.0005),
 "speaker": 2,
 "sprite": -1
 },
@@ -1021,7 +1056,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 283.00024),
+"size": Vector2(300, 283),
 "speaker": 1,
 "sprite": -1
 },
@@ -1035,7 +1070,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 283.00024),
+"size": Vector2(300.0005, 282.9995),
 "speaker": 2,
 "sprite": -1
 },
@@ -1049,7 +1084,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0039, 283.00024),
+"size": Vector2(300.0039, 282.9995),
 "speaker": 1,
 "sprite": -1
 },
@@ -1077,7 +1112,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 283.00098),
+"size": Vector2(300.0005, 283.00098),
 "speaker": 2,
 "sprite": -1
 },
@@ -1107,7 +1142,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300.00098, 251),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_70": {
 "dialogue": "Oh, well, the only way out is blocked by this huge monster...",
@@ -1119,7 +1155,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00095, 282.99988),
+"size": Vector2(300.00098, 282.99976),
 "speaker": 1,
 "sprite": -1
 },
@@ -1148,7 +1184,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "I'm good"
 }
 },
-"size": Vector2(300.00003, 388.00098),
+"size": Vector2(300, 388.00098),
 "speaker": 2,
 "sprite": -1
 },
@@ -1171,7 +1207,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Is it the monster?"
 }
 },
-"size": Vector2(300.00073, 353.00098),
+"size": Vector2(300.00073, 353.00073),
 "speaker": 2,
 "sprite": -1
 },
@@ -1208,7 +1244,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Is it the monster?"
 }
 },
-"size": Vector2(300, 353),
+"size": Vector2(300, 352.9995),
 "speaker": 2,
 "sprite": -1
 },
@@ -1222,8 +1258,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00034, 251.00024),
-"speaker": "Dallas"
+"size": Vector2(300.00024, 251.00021),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_76": {
 "dialogue": "And what stat changes depends on the end result of your transmutation",
@@ -1235,8 +1272,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00024),
-"speaker": "Dallas"
+"size": Vector2(300, 251.00021),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_77": {
 "dialogue": "So if you transmute into a [color=blue]defensive[/color] element, you'll get a [color=blue]defense[/color] boost.",
@@ -1248,8 +1286,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00012, 246.00024),
-"speaker": "Dallas"
+"size": Vector2(300.00012, 246.00023),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_78": {
 "dialogue": "Side effects are, like, super important dude. If your opponent be transmuting and you are not, no bueno",
@@ -1261,8 +1300,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.00024),
-"speaker": "Dallas"
+"size": Vector2(300.0005, 251.00021),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_79": {
 "dialogue": "With 1 attack, you can have up to 3 transmutations. Double if its melee.",
@@ -1274,8 +1314,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00024),
-"speaker": "Dallas"
+"size": Vector2(300, 251.00021),
+"speaker": "Dallas",
+"sprite": -1
 },
 &"1_8": {
 "dialogue": "Its a table with another note.",
@@ -1288,7 +1329,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300, 251.00049),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_80": {
 "dialogue": "A joy, to those predispositioned to it.",
@@ -1300,8 +1342,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00073),
-"speaker": "Duke"
+"size": Vector2(300, 251.00085),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_81": {
 "dialogue": "One boon of Blue-alignment is longevity and youth.",
@@ -1313,8 +1356,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00061),
-"speaker": "Duke"
+"size": Vector2(300, 251.00073),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_82": {
 "dialogue": "Tis difficult to tell of time in a place such as this, but Aegean arrived just shy of 400 years after my day of birth.",
@@ -1331,8 +1375,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Wait, so are you actually a Duke?"
 }
 },
-"size": Vector2(300, 321.0011),
-"speaker": "Duke"
+"size": Vector2(300, 321.00122),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_83": {
 "dialogue": "Nay my friend, though I wish it were so. A shade of Blue beget my name, which I took when my fate was set towards [el]Blue[/el] alighnment.",
@@ -1345,7 +1390,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300.0005, 251.00049),
-"speaker": "Duke"
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_84": {
 "dialogue": "There's a book somewhere that lists all known color names. At least,, there was when I last roamed free.",
@@ -1358,7 +1404,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300, 251.00024),
-"speaker": "Duke"
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_85": {
 "dialogue": "There were others in our enclave, once. Many have left for new adventures.",
@@ -1370,8 +1417,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.00024),
-"speaker": "Duke"
+"size": Vector2(300.0005, 251.00012),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_86": {
 "dialogue": "And to preempt your curiosity, friend, we [el]Blue[/el]-aligned are afforded a degree of mobility, though a costly endeavor it be indeed.",
@@ -1388,8 +1436,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Fascinating"
 }
 },
-"size": Vector2(300, 321.00024),
-"speaker": "Duke"
+"size": Vector2(300, 321),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_87": {
 "dialogue": "Nonsense, a prudent line of questions, as perchance you may join us one day.",
@@ -1401,8 +1450,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.00098),
-"speaker": "Duke"
+"size": Vector2(300.0005, 251.00061),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_88": {
 "dialogue": "Indeed. And furthermore, no enclave truly lives in isolation.",
@@ -1414,8 +1464,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251),
-"speaker": "Duke"
+"size": Vector2(300.0005, 251.00012),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_89": {
 "dialogue": "We have nerve-like roots buried deep into the foundation of this world.",
@@ -1427,8 +1478,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00061),
-"speaker": "Duke"
+"size": Vector2(300, 251.00049),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_9": {
 "dialogue": "Now for something a little harder. The final instructions are in the [el]Purple[/el] room.
@@ -1443,7 +1495,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300, 251.00049),
-"speaker": ""
+"speaker": "",
+"sprite": -1
 },
 &"1_90": {
 "dialogue": "Oh... wow...",
@@ -1455,7 +1508,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00122, 283.0006),
+"size": Vector2(300.00098, 283.0005),
 "speaker": 1,
 "sprite": -1
 },
@@ -1469,8 +1522,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00058, 251.00073),
-"speaker": "Duke"
+"size": Vector2(300.0006, 251.00085),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_92": {
 "dialogue": "We boast a greater clarity of mind and depth of memory. I remember each day as though it was yesterday. And without the madness such acuity might otherwise bring, which is a gift indeed.",
@@ -1483,7 +1537,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300.0005, 251),
-"speaker": "Duke"
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_93": {
 "dialogue": "We possess great longevity, though that is not unique to our kind.",
@@ -1495,8 +1550,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00049),
-"speaker": "Duke"
+"size": Vector2(300, 251.00043),
+"speaker": "Duke",
+"sprite": -1
 },
 &"1_94": {
 "dialogue": "Your so-called primary type is the composition of your core.",
@@ -1509,7 +1565,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300, 251),
-"speaker": "Aegean"
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_95": {
 "dialogue": "This will really only change when you level up, so you don't need to worry about it over the course of a fight.",
@@ -1522,7 +1579,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300, 251),
-"speaker": "Aegean"
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_96": {
 "dialogue": "Your secondary type, on the other hand, is highly reactive.",
@@ -1534,8 +1592,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00073, 251),
-"speaker": "Aegean"
+"size": Vector2(300.0005, 251),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_97": {
 "dialogue": "And, of course, eventually your core will be locked to one color in a condition known as alignment.",
@@ -1548,7 +1607,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 }
 },
 "size": Vector2(300.00024, 251),
-"speaker": "Aegean"
+"speaker": "Aegean",
+"sprite": -1
 },
 &"1_98": {
 "dialogue": "It forms a sort of outer shell, though the exact placement varies from person to person. Yours, for instance, seems to affect your hair somewhat.",
@@ -1560,8 +1620,9 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251),
-"speaker": "Aegean "
+"size": Vector2(300, 251),
+"speaker": "Aegean ",
+"sprite": -1
 },
 &"1_99": {
 "dialogue": "Anyways, your secondary type is very reactive. It'll react to your opponent's attacks, your melee attacks, and even your primary type.",
@@ -1573,18 +1634,19 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00134, 251),
-"speaker": "Aegean"
+"size": Vector2(300.00098, 251),
+"speaker": "Aegean",
+"sprite": -1
 },
 &"2_1": {
 "comment": "Apparently nerves were known about even back in ancient Greece",
 "offset": Vector2(2440, 1200),
-"size": Vector2(240.00098, 139.99951)
+"size": Vector2(240.00122, 139.99939)
 },
 &"2_2": {
 "comment": "It may seem like Orange/Cyan can have 3 internal transmutations, but I don't believe there's actually a way to reach that state.",
 "offset": Vector2(2719.6458, -694.2639),
-"size": Vector2(259.99963, 240.00024)
+"size": Vector2(259.99927, 240.00024)
 },
 &"3_1": {
 "auto_proceed": false,
@@ -1875,8 +1937,8 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "link": &"1_37",
 "offset": Vector2(1260, 180),
 "signal_value": {
-"use_enum": false,
-"value": ""
+"use_enum": true,
+"value": "ADD_ALLY"
 },
 "type": 0,
 "value": "PARTNER",
