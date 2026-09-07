@@ -39,7 +39,8 @@ func load_data(dict: Dictionary, no_signal:=false) -> void:
 func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, no_signal:=false) -> HBoxContainer:
 	var new_variable := variable_item_scene.instantiate()
 	var_container.add_child(new_variable, true)
-	
+
+	new_variable.undo_redo = undo_redo
 	new_variable.load_data(new_name, data)
 	new_variable.undo_redo = undo_redo
 	new_variable.modified.connect(_on_modified)
@@ -48,7 +49,7 @@ func add_variable(new_name:= '', data:= {'type': TYPE_STRING, 'value': ''}, no_s
 	
 	variable_list.append(new_name)
 
-	if no_signal:
+	if not no_signal:
 		variable_list_updated.emit(variable_list)
 		variable_added.emit(new_name, data)
 		modified.emit()
@@ -111,9 +112,8 @@ func _on_add_button_pressed() -> void:
 	undo_redo.commit_action()
 
 
-func _on_delete_requested(variable: BoxContainer) -> void:
+func _on_delete_requested(variable: Control) -> void:
 	if not undo_redo:
-		#variable.queue_free()
 		remove_variable(variable.get_index())
 		return
 	
