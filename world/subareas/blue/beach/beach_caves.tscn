@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cslj0rb0d4weo" path="res://src/overworld/characters/npc.tscn" id="4_4pdg5"]
 [ext_resource type="PackedScene" uid="uid://c68p6h8se2syt" path="res://src/overworld/puzzle_blocks/relay.tscn" id="4_aa6kh"]
 [ext_resource type="PackedScene" uid="uid://yhrncuvcuqjc" path="res://src/overworld/puzzle_blocks/lockables/gate.tscn" id="4_exmbl"]
+[ext_resource type="PackedScene" uid="uid://da8vdwyp4obwr" path="res://src/overworld/readable.tscn" id="5_7mtce"]
 [ext_resource type="PackedScene" uid="uid://lua4awvg0cf" path="res://src/overworld/puzzle_blocks/wire.tscn" id="5_eroq7"]
 [ext_resource type="PackedScene" uid="uid://dcttnbqwhpyrf" path="res://src/overworld/characters/actors/story_actor.tscn" id="5_gcly8"]
 [ext_resource type="Shader" uid="uid://bhoj74vpf70qy" path="res://assets/shaders/clay_shader/clay_simple.gdshader" id="5_upves"]
@@ -119,14 +120,6 @@ shader_parameter/use_triplanar = true
 material = SubResource("ShaderMaterial_7mtce")
 size = Vector3(1, 1, 2)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7mtce"]
-radius = 2.0
-
-[sub_resource type="Resource" id="Resource_gcly8"]
-script = ExtResource("6_upves")
-id = "TUTORIAL_1"
-metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1e3xw"]
 render_priority = 0
 shader = ExtResource("3_eroq7")
@@ -159,11 +152,6 @@ shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/element_id = 6
-
-[sub_resource type="Resource" id="Resource_7mtce"]
-script = ExtResource("6_upves")
-id = "TUTORIAL_2"
-metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4g53"]
 size = Vector3(11, 20, 20)
@@ -266,11 +254,6 @@ shader_parameter/fingerprint_scale = 1.0
 shader_parameter/crack_offset = 0.0
 shader_parameter/crack_scale = 1.0
 shader_parameter/element_id = 7
-
-[sub_resource type="Resource" id="Resource_upves"]
-script = ExtResource("6_upves")
-id = "TUTORIAL_3"
-metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3lu8c"]
 render_priority = 0
@@ -383,11 +366,6 @@ metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
 [sub_resource type="BoxShape3D" id="BoxShape3D_6l8lo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gcly8"]
-
-[sub_resource type="Resource" id="Resource_6l8lo"]
-script = ExtResource("6_upves")
-id = "TUTORIAL_4"
-metadata/_custom_type_script = "uid://dv8k5oh3a7m23"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aa6kh"]
 size = Vector3(27, 20, 19)
@@ -654,23 +632,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.05000007, -6)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_kvux5")
 
-[node name="Table" parent="Section1/RedRoom/Chunk" unique_id=716295297 instance=ExtResource("4_4pdg5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.70000005, 2)
+[node name="Table" type="StaticBody3D" parent="Section1/RedRoom/Chunk" unique_id=400357401]
+transform = Transform3D(-0.08715576, 0, 0.99619466, 0, 1, 0, -0.99619466, 0, -0.08715576, -0.19999981, -0.70000005, -0.6)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Section1/RedRoom/Chunk/Table" unique_id=400357401]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom/Chunk/Table/StaticBody3D" unique_id=1433568775]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom/Chunk/Table" unique_id=1433568775]
 shape = SubResource("BoxShape3D_upves")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Section1/RedRoom/Chunk/Table/StaticBody3D" unique_id=1568622168]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Section1/RedRoom/Chunk/Table" unique_id=1568622168]
 mesh = SubResource("BoxMesh_4pdg5")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/RedRoom/Chunk/Table" unique_id=1892989476]
-shape = SubResource("SphereShape3D_7mtce")
-
-[node name="StoryActor" parent="Section1/RedRoom/Chunk/Table" unique_id=181141063 instance=ExtResource("5_gcly8")]
-dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_gcly8")])
+[node name="Readable" parent="Section1/RedRoom/Chunk/Table" unique_id=1171627487 instance=ExtResource("5_7mtce")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
+dialog_id = "TUTORIAL_1"
 
 [node name="OrangeRoom" type="Area3D" parent="Section1" unique_id=219537799 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -20)
@@ -753,23 +727,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.05000007, -7)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_4i8w8")
 
-[node name="Table" parent="Section1/OrangeRoom/Chunk" unique_id=626730974 instance=ExtResource("4_4pdg5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.70000005, 2)
+[node name="Table" type="StaticBody3D" parent="Section1/OrangeRoom/Chunk" unique_id=383495259]
+transform = Transform3D(-0.6427877, 0, 0.7660445, 0, 1, 0, -0.7660445, 0, -0.6427877, -23, -0.70000005, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Section1/OrangeRoom/Chunk/Table" unique_id=1240083838]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/OrangeRoom/Chunk/Table/StaticBody3D" unique_id=1496673670]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/OrangeRoom/Chunk/Table" unique_id=1566633720]
 shape = SubResource("BoxShape3D_upves")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Section1/OrangeRoom/Chunk/Table/StaticBody3D" unique_id=1299897823]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Section1/OrangeRoom/Chunk/Table" unique_id=949301137]
 mesh = SubResource("BoxMesh_4pdg5")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section1/OrangeRoom/Chunk/Table" unique_id=2044543369]
-shape = SubResource("SphereShape3D_7mtce")
-
-[node name="StoryActor" parent="Section1/OrangeRoom/Chunk/Table" unique_id=78039828 instance=ExtResource("5_gcly8")]
-dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_7mtce")])
+[node name="Readable" parent="Section1/OrangeRoom/Chunk/Table" unique_id=355248638 instance=ExtResource("5_7mtce")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
+dialog_id = "TUTORIAL_2"
 
 [node name="Magenta Room" type="Area3D" parent="Section1" unique_id=846473639 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -13)
@@ -1081,23 +1051,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.05000007, -5)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_q104o")
 
-[node name="Table" parent="Section2/RedRoom/Chunk" unique_id=1844265857 instance=ExtResource("4_4pdg5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.70000005, 6)
+[node name="Table" type="StaticBody3D" parent="Section2/RedRoom/Chunk" unique_id=1909086378]
+transform = Transform3D(-0.7071067, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7071067, -2, -0.70000005, 1)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Section2/RedRoom/Chunk/Table" unique_id=98419885]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom/Chunk/Table/StaticBody3D" unique_id=2003944655]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom/Chunk/Table" unique_id=1226039950]
 shape = SubResource("BoxShape3D_upves")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Section2/RedRoom/Chunk/Table/StaticBody3D" unique_id=1074579053]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Section2/RedRoom/Chunk/Table" unique_id=2110272258]
 mesh = SubResource("BoxMesh_4pdg5")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section2/RedRoom/Chunk/Table" unique_id=816628409]
-shape = SubResource("SphereShape3D_7mtce")
-
-[node name="StoryActor" parent="Section2/RedRoom/Chunk/Table" unique_id=836071826 instance=ExtResource("5_gcly8")]
-dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_upves")])
+[node name="Readable" parent="Section2/RedRoom/Chunk/Table" unique_id=1954879996 instance=ExtResource("5_7mtce")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
+dialog_id = "TUTORIAL_3"
 
 [node name="OrangeRoom" type="Area3D" parent="Section2" unique_id=921858125 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, -3)
@@ -1482,23 +1448,19 @@ shape = SubResource("BoxShape3D_6l8lo")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Section3/PurpleRoom/Chunk/ReturnBasket/StaticBody3D" unique_id=724099639]
 mesh = SubResource("BoxMesh_gcly8")
 
-[node name="Table" parent="Section3/PurpleRoom/Chunk" unique_id=872302217 instance=ExtResource("4_4pdg5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.70000005, 1)
+[node name="Table" type="StaticBody3D" parent="Section3/PurpleRoom/Chunk" unique_id=1588021061]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 3.5999985, -0.70000005, -0.100000024)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Section3/PurpleRoom/Chunk/Table" unique_id=836633593]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/Table/StaticBody3D" unique_id=1539588812]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/Table" unique_id=726773070]
 shape = SubResource("BoxShape3D_upves")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Section3/PurpleRoom/Chunk/Table/StaticBody3D" unique_id=790623825]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Section3/PurpleRoom/Chunk/Table" unique_id=656675384]
 mesh = SubResource("BoxMesh_4pdg5")
-skeleton = NodePath("../..")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/Table" unique_id=872904017]
-shape = SubResource("SphereShape3D_7mtce")
-
-[node name="StoryActor" parent="Section3/PurpleRoom/Chunk/Table" unique_id=383971993 instance=ExtResource("5_gcly8")]
-dialog_ids = Array[ExtResource("6_upves")]([SubResource("Resource_6l8lo")])
+[node name="Readable" parent="Section3/PurpleRoom/Chunk/Table" unique_id=1999199489 instance=ExtResource("5_7mtce")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
+dialog_id = "TUTORIAL_4"
 
 [node name="EastRoom" type="Area3D" parent="Section3" unique_id=35845067 node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -3)
