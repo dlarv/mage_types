@@ -93,6 +93,10 @@ fov = 85.0
 
 [node name="Blue" parent="Overworld" unique_id=543950842 instance=ExtResource("10_5iu1q")]
 
+[node name="PlayTestModeSpawnPoint" type="Marker3D" parent="Overworld" unique_id=1728706751]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 245.7, 3.1000001, 134.3)
+
 [connection signal="battle_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_battle_started"]
 [connection signal="cutscene_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_cutscene_started"]
 [connection signal="dialog_started" from="Overworld/Player" to="OverworldConnector" method="_on_player_dialog_started"]
