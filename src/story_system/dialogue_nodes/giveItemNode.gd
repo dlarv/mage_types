@@ -3,13 +3,12 @@ extends BaseDialogueNode
 
 var last_name: String
 var last_operator: int
-var last_value: String
+var last_value: int
 var last_type: int
 
 
 func _ready() -> void:
 	_register_timer(%ItemName, "text_changed", _on_item_changed)
-	_register_timer(%Value, "text_changed", _on_value_changed)
 
 
 func _to_dict(graph: GraphEdit) -> Dictionary:
@@ -18,7 +17,7 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 	
 	dict['item_name'] = %ItemName.text
 	dict['operator'] = %Operator.selected
-	dict['value'] = %Value.text
+	dict['quantity'] = %Quantity.value
 	dict['type'] = %Type.selected
 	dict['link'] = connections[0]['to_node'] if connections.size() > 0 else 'END'
 	
@@ -28,12 +27,12 @@ func _to_dict(graph: GraphEdit) -> Dictionary:
 func _from_dict(dict: Dictionary) -> Array[String]:
 	%ItemName.text = dict['item_name']
 	%Operator.selected = dict['operator']
-	%Value.text = dict['value']
+	%Quantity.value = dict['quantity']
 	%Type.selected = dict['type']
 	
 	last_name = %ItemName.text
 	last_operator = %Operator.selected
-	last_value = %Value.text
+	last_value = %Quantity.value
 	last_type = %Type.selected
 	
 	return [dict['link']]
@@ -71,22 +70,22 @@ func _on_operator_selected(idx: int) -> void:
 	undo_redo.commit_action()
 
 
-func _on_value_changed() -> void:
+func _on_quantity_value_changed(value: float) -> void:
 	if not undo_redo:
-		set_value(%Value.text)
+		set_value(%Quantity.text)
 		return
 
 	undo_redo.create_action('Set Value')
-	undo_redo.add_do_method(self, 'set_value', %Value.text)
+	undo_redo.add_do_method(self, 'set_value', %Quantity.value)
 	undo_redo.add_do_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, '_on_modified')
 	undo_redo.add_undo_method(self, 'set_value', last_value)
 	undo_redo.commit_action()
 
 
-func set_value(new_value: String) -> void:
-	if %Value.text != new_value:
-		%Value.text = new_value
+func set_value(new_value: int) -> void:
+	if %Quantity.value != new_value:
+		%Quantity.value = new_value
 	last_value = new_value
 
 
@@ -102,3 +101,11 @@ func _on_type_selected(idx: int) -> void:
 	undo_redo.add_undo_property(self, 'last_operator', last_type)
 	undo_redo.commit_action()
 
+
+static func process(parser: DialogueParser, dict: Dictionary) -> void:
+	if dict.operator == 0:
+		Inventory.find_and_add_item(dict.item_name, dict.type, dict.quantity)
+	else:
+		Inventory.find_and_add_item(dict.item_name, dict.type, -dict.quantity)
+
+	parser.proceed(dict.link)

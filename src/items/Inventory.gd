@@ -232,6 +232,7 @@ func find_and_add_item(item: Variant, type: Category, amount:=1) -> void:
 			if item is StringName or item is String:
 				var key: String = item.to_upper().replace(" ", "_")
 				add_key_item(key_items[key].item, amount)
+				return
 			else:
 				push_error("KeyItems can only be found using their unique_name")
 				return
