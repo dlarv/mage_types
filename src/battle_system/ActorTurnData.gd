@@ -20,7 +20,7 @@ var recoil_dmg: int
 var phobia_dmg: int
 var missed: bool:
 	get:
-		return effects.values().all(func(x: ActorTurnEffect) -> bool: return x.missed)
+		return len(effects) > 0 and effects.values().all(func(x: ActorTurnEffect) -> bool: return x.missed)
 var element: ElementalType
 var user_was_defeated := false
 var blocked_dmg := 0
