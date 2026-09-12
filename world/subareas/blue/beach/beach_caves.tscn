@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b4x37iu3x3ttk" path="res://src/overworld/magiclay/instances/magiclay_disk.tscn" id="8_auv5o"]
 [ext_resource type="PackedScene" uid="uid://ci63qi5oga08n" path="res://src/overworld/puzzle_blocks/bridges/bridge_cap.tscn" id="8_yt1ct"]
 [ext_resource type="PackedScene" uid="uid://db77srkl7kagj" path="res://src/overworld/puzzle_blocks/reset.tscn" id="9_jbfvx"]
+[ext_resource type="PackedScene" uid="uid://dpoqhindijjpr" path="res://src/elements/icon_flag.tscn" id="18_6l8lo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b7ooe"]
 size = Vector3(2, 3, 1)
@@ -1462,6 +1463,27 @@ skeleton = NodePath("")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
 dialog_id = "TUTORIAL_4"
 
+[node name="IconFlag" parent="Section3/PurpleRoom/Chunk" unique_id=289782440 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.159111, -0.3105829, 0, 0.3105829, 1.159111, 0, 0, 0, 1.2, 6, -1.1, -7)
+
+[node name="IconFlag2" parent="Section3/PurpleRoom/Chunk" unique_id=526943858 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.159111, 0.31058288, 0, -0.31058288, 1.159111, 0, 0, 0, 1.2, 12, -1.1, -9)
+
+[node name="IconFlag3" parent="Section3/PurpleRoom/Chunk" unique_id=1330665435 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1817694, 0.20837782, 0, -0.20837782, 1.1817694, 0, 0, 0, 1.2, 6, -1.1, -15)
+element = 0
+
+[node name="IconFlag4" parent="Section3/PurpleRoom/Chunk" unique_id=221138622 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1954337, -0.10458691, 0, 0.10458691, 1.1954337, 0, 0, 0, 1.2, 0, -1.1, -9)
+element = 0
+
+[node name="IconFlag5" parent="Section3/PurpleRoom/Chunk" unique_id=701126657 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.0352759, -0.09057492, 0.6, 0.10458691, 1.1954337, 0, -0.5977168, 0.05229345, 1.0392305, -1, -1.1, -2.4)
+
+[node name="IconFlag6" parent="Section3/PurpleRoom/Chunk" unique_id=202554447 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1206031, 0.42356005, 0.069615275, -0.42706302, 1.0805633, 0.29999995, 0.04320368, -0.3049258, 1.1598077, 12.199997, -1.1, -15.4)
+element = 4
+
 [node name="EastRoom" type="Area3D" parent="Section3" unique_id=35845067 node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -3)
 script = ExtResource("2_exmbl")
@@ -1554,6 +1576,36 @@ _element = 2
 [node name="Reset" parent="Section3/EastRoom/Chunk" unique_id=38949980 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9000015, -0.98216, -22.7)
 reset_positions_of = [NodePath("../MagiclayDisk")]
+
+[node name="IconFlag" parent="Section3/EastRoom/Chunk" unique_id=1779142315 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1817694, 0.20837778, 0, -0.20837778, 1.1817694, 0, 0, 0, 1.2000002, 6, -1.1, -23.2)
+element = 1
+
+[node name="IconFlag2" parent="Section3/EastRoom/Chunk" unique_id=167073320 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1415015, -0.20127754, 0.31058285, 0.20837784, 1.1817694, 0, -0.30586445, 0.053932156, 1.1591111, 2, -1.1, -23.2)
+element = 4
+
+[node name="IconFlag3" parent="Section3/EastRoom/Chunk" unique_id=1263022268 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1817695, -4.4024336e-08, 0.20837784, 4.4703484e-08, 1.2000002, 0, -0.20837784, 7.7626785e-09, 1.1817695, 7, -1.1, -19.2)
+element = 0
+
+[node name="IconFlag4" parent="Section3/EastRoom/Chunk" unique_id=796227719 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.122616, 0.31701794, 0.28148365, -0.29356492, 1.1561103, -0.13125797, -0.30586442, 0.05393215, 1.1591111, 3, -1.1, -19.2)
+element = 0
+
+[node name="IconFlag5" parent="Section3/EastRoom/Chunk" unique_id=118545475 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1228278, -0.42113727, -0.043605767, 0.41453323, 1.118642, -0.12962522, 0.08614102, 0.10622561, 1.1921815, 7, -1.1, -15)
+
+[node name="IconFlag6" parent="Section3/EastRoom/Chunk" unique_id=1444703166 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.0893829, -0.09323889, 0.4945216, 0.08409775, 1.1963706, 0.04030928, -0.4961579, -0.0019367835, 1.0926226, 0.9000015, -1.1, -15)
+element = 1
+
+[node name="IconFlag7" parent="Section3/EastRoom/Chunk" unique_id=1474001690 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1915122, -0.07977885, -0.118043065, 0.08409774, 1.1963705, 0.040309273, 0.11500609, -0.04829675, 1.1934996, -4.0999985, -1.1, -18)
+
+[node name="IconFlag8" parent="Section3/EastRoom/Chunk" unique_id=855770572 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(0.97437674, -0.044942133, -0.69897807, 0.084097736, 1.1963705, 0.04030927, 0.6953542, -0.08171563, 0.9745793, 12.599998, -1.1, -18.1)
+element = 3
 
 [node name="WestRoom" type="Area3D" parent="Section3" unique_id=1556223914 node_paths=PackedStringArray("chunk", "resets")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -24)
@@ -1662,6 +1714,32 @@ curve = SubResource("Curve3D_ygtki")
 [node name="Head" parent="Section3/WestRoom/Chunk/Wire" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1, 1.6999998)
 visible = false
+
+[node name="IconFlag" parent="Section3/WestRoom/Chunk" unique_id=126647351 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1817694, 0.20837778, 0, -0.20837778, 1.1817694, 0, 0, 0, 1.2000002, 8, -1.1, 4.8)
+element = 0
+
+[node name="IconFlag2" parent="Section3/WestRoom/Chunk" unique_id=294116979 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1591111, -4.318025e-08, 0.3105829, 4.4703484e-08, 1.2000002, 0, -0.3105829, 1.1570113e-08, 1.1591111, 13.599998, -1.1, 10.5)
+element = 0
+
+[node name="IconFlag3" parent="Section3/WestRoom/Chunk" unique_id=829749993 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.0505112, -0.507142, 0.28148362, 0.48986158, 1.0875695, 0.13125801, -0.31058285, 1.1570111e-08, 1.159111, 2, -1.1, 10.7)
+element = 0
+
+[node name="IconFlag4" parent="Section3/WestRoom/Chunk" unique_id=1242211977 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1565378, 0.3058644, 0.094164744, -0.29999986, 1.159111, -0.0803847, -0.11144528, 0.053932145, 1.1935959, 7.800003, -1.1, 13.099999)
+
+[node name="IconFlag5" parent="Section3/WestRoom/Chunk" unique_id=5403187 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1515911, -0.3146692, 0.12174142, 0.3184614, 1.1567518, -0.02253283, -0.11144526, 0.05393215, 1.1935959, -0.7999954, -1.1, 13.099999)
+
+[node name="IconFlag6" parent="Section3/WestRoom/Chunk" unique_id=1531934691 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1573486, 0.07546705, -0.3079753, -0.094611496, 1.1946144, -0.062811956, 0.3026428, 0.084861144, 1.1581041, 13.200005, -1.1, 0.5999994)
+element = 4
+
+[node name="IconFlag7" parent="Section3/WestRoom/Chunk" unique_id=769776213 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1612047, -0.20848131, 0.21940614, 0.21319482, 1.1808934, -0.0062380377, -0.2148291, 0.045016564, 1.1797547, -2.899994, -1.1, -0.80000067)
+element = 1
 
 [node name="Reset" parent="Section3/WestRoom" unique_id=354852941 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.98216, 32.1)
