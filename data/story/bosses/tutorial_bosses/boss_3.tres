@@ -4,7 +4,6 @@
 [ext_resource type="Resource" uid="uid://bdbpkjy3ask80" path="res://data/battle_system/battle_actions/attacks/basic/hit_b.tres" id="2_ealhk"]
 [ext_resource type="Resource" uid="uid://b5lv3isotgsxh" path="res://data/battle_system/battle_actions/attacks/basic/hit_r.tres" id="3_ealhk"]
 [ext_resource type="Resource" uid="uid://cvg7imt703rjl" path="res://data/battle_system/battle_actions/attacks/elementals/red/satiate.tres" id="5_ealhk"]
-[ext_resource type="Resource" uid="uid://dqcoagywyfuiv" path="res://data/battle_system/battle_actions/attacks/elementals/cyan/shield.tres" id="5_l5xr3"]
 [ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="6_jwvs8"]
 [ext_resource type="Script" uid="uid://burwfji6c87fg" path="res://src/battle_system/StatManager.gd" id="7_md84n"]
 [ext_resource type="PackedScene" uid="uid://dobu1g7y1216b" path="res://data/story/bosses/tutorial_bosses/adonis_battle_sprite.tscn" id="7_t58yd"]
@@ -26,5 +25,5 @@ stat_manager = SubResource("Resource_6u7d0")
 _element1 = 0
 _element2 = 1
 _alignment = 0
-attacks = Array[ExtResource("1_skfmv")]([ExtResource("2_ealhk"), ExtResource("3_ealhk"), ExtResource("5_l5xr3"), ExtResource("5_ealhk")])
+attacks = Array[ExtResource("1_skfmv")]([ExtResource("2_ealhk"), ExtResource("3_ealhk"), ExtResource("5_ealhk")])
 sprite_path = ExtResource("7_t58yd")

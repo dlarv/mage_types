@@ -103,6 +103,7 @@ dialog_ids = Array[ExtResource("4_bqxmt")]([SubResource("Resource_xpu74")])
 [node name="EnemyActor" parent="." index="3" unique_id=1749850615 instance=ExtResource("5_j685c")]
 ai = SubResource("Resource_00h7g")
 _team = Array[ExtResource("9_wwnfa")]([ExtResource("10_cqt5s")])
+disappear_on_defeat = false
 
 [node name="adonis" parent="." index="4" unique_id=889105819 instance=ExtResource("10_j685c")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.5, 0)
