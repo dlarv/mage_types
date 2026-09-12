@@ -1272,7 +1272,7 @@ light_energy = 0.3
 [node name="Microwave" parent="HotelRooms/BreakroomChunk2/Node3D" unique_id=1723700035 instance=ExtResource("22_7jbtl")]
 transform = Transform3D(1.4488888, 0, 0.3882286, 0, 1.5, 0, -0.3882286, 0, 1.4488888, -29, 1.4983155, -1)
 
-[node name="HallChunk1" parent="HotelRooms" unique_id=276947841 instance=ExtResource("5_sv55n")]
+[node name="RecRoomChunk" parent="HotelRooms" unique_id=276947841 instance=ExtResource("5_sv55n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -78)
 use_global_lighting = false
 
