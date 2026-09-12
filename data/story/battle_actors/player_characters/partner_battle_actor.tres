@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="BattleActor" format=3 uid="uid://wbbhxo5h3qcy"]
+[gd_resource type="Resource" script_class="PlayerBattleActor" format=3 uid="uid://wbbhxo5h3qcy"]
 
 [ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_klh7n"]
 [ext_resource type="Script" uid="uid://c543gj3rx4kfw" path="res://src/battle_system/battle_actions/BattleAction.gd" id="2_e0366"]
 [ext_resource type="Resource" uid="uid://chma1nlbe2tge" path="res://data/battle_system/battle_actions/attacks/basic/throw_b.tres" id="3_fe3if"]
 [ext_resource type="Resource" uid="uid://jn8nbtetrpdl" path="res://data/battle_system/battle_actions/attacks/basic/hit_m.tres" id="4_4uj5l"]
 [ext_resource type="Resource" uid="uid://q1l847rlbb6i" path="res://data/battle_system/battle_actions/attacks/basic_phobia_spells/blue_phobia.tres" id="5_0cjya"]
-[ext_resource type="Script" uid="uid://y8fyrqmofw4u" path="res://src/battle_system/BattleActor.gd" id="6_n56eq"]
+[ext_resource type="Script" uid="uid://ccfa2tjo30wje" path="res://src/battle_system/PlayerBattleActor.gd" id="6_e0366"]
 [ext_resource type="PackedScene" uid="uid://dgrfhd0s3my0y" path="res://data/story/battle_actors/player_characters/battle_sprites/alice_battle_sprite.tscn" id="7_e0366"]
 [ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="7_ppfbh"]
 
@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://ccl64vcc20maa"
 [sub_resource type="Resource" id="Resource_nqvwl"]
 script = ExtResource("7_ppfbh")
 total_xp = 50
-_base_melee_attack = 12.0
+_base_melee_attack = 120.0
 _base_ranged_attack = 12.0
 _base_melee_defense = 16.0
 _base_ranged_defense = 16.0
@@ -26,7 +26,7 @@ hp = 55.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
 [resource]
-script = ExtResource("6_n56eq")
+script = ExtResource("6_e0366")
 name = "Alice"
 id = 2
 level = 2
