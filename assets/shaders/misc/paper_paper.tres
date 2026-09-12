@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cr8ly26o37xam"]
+
+[ext_resource type="Texture2D" uid="uid://mmmthi4qx1jv" path="res://assets/shaders/misc/textures/construction_paper.jpg" id="1_v6tu8"]
+[ext_resource type="Texture2D" uid="uid://cy1eeckltcy3p" path="res://assets/shaders/misc/textures/paper_rough.png" id="2_csvkd"]
+
+[resource]
+resource_local_to_scene = true
+albedo_color = Color(0.585062, 0.585062, 0.5850621, 1)
+roughness_texture = ExtResource("2_csvkd")
+normal_enabled = true
+normal_texture = ExtResource("1_v6tu8")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(0.8, 0.8, 0.8)

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dpoqhindijjpr"]
+
+[ext_resource type="PackedScene" uid="uid://cvbkonbr4cddp" path="res://assets/3d/objects/blue/hotel/raw/Flag.glb" id="1_aghdw"]
+[ext_resource type="Script" uid="uid://7nmtr374ptxn" path="res://src/elements/IconFlag.gd" id="2_tktgt"]
+[ext_resource type="Material" uid="uid://duq7frvuljto0" path="res://assets/shaders/misc/wood_material.tres" id="3_do12h"]
+[ext_resource type="Texture2D" uid="uid://mmmthi4qx1jv" path="res://assets/shaders/misc/textures/construction_paper.jpg" id="5_2b417"]
+[ext_resource type="Texture2D" uid="uid://dd4pqvaiml8ei" path="res://assets/graphics/elemental_icons/magenta_icon.svg" id="5_wqy6o"]
+[ext_resource type="Texture2D" uid="uid://cy1eeckltcy3p" path="res://assets/shaders/misc/textures/paper_rough.png" id="6_mgut6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqy6o"]
+resource_local_to_scene = true
+albedo_color = Color(0.585062, 0.585062, 0.5850621, 1)
+roughness_texture = ExtResource("6_mgut6")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("5_2b417")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_do12h"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 0.12549, 1, 1)
+albedo_texture = ExtResource("5_wqy6o")
+roughness_texture = ExtResource("6_mgut6")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("5_2b417")
+uv1_scale = Vector3(1.2, 1.2, 1.2)
+uv1_offset = Vector3(-0.1, -0.1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2b417"]
+resource_local_to_scene = true
+next_pass = SubResource("StandardMaterial3D_do12h")
+albedo_color = Color(0.585062, 0.585062, 0.5850621, 1)
+roughness_texture = ExtResource("6_mgut6")
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("5_2b417")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.3
+uv1_scale = Vector3(0.8, 0.8, 0.8)
+
+[node name="IconFlag" unique_id=169935383 instance=ExtResource("1_aghdw")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+script = ExtResource("2_tktgt")
+element = 2
+
+[node name="Flag" parent="." index="0" unique_id=1023960691]
+surface_material_override/0 = ExtResource("3_do12h")
+surface_material_override/1 = SubResource("StandardMaterial3D_wqy6o")
+surface_material_override/2 = SubResource("StandardMaterial3D_2b417")
