@@ -132,6 +132,17 @@ static func empty(user: BattleActor=null) -> ActorTurnData: return ActorTurnData
 func is_flee() -> bool: return team_index == -1
 func is_empty() -> bool: return team_index == -2
 
+static func sort(a: ActorTurnData, b: ActorTurnData, tie_breaker: bool) -> bool:
+	if a == null: return false
+	elif b == null: return true
+	# Higher priority goes first.
+	if a.priority != b.priority:
+		return a.priority > b.priority
+	# Then higher speed goes first.
+	if a.user.speed != b.user.speed:
+		return a.user.speed > b.user.speed
+	return tie_breaker
+
 
 class ActorTurnEffect:
 	var was_defeated := false

@@ -3,12 +3,10 @@
 [ext_resource type="Script" uid="uid://hggtsq73slh7" path="res://src/battle_system/gui/BattleGUI.gd" id="1_ik08k"]
 [ext_resource type="PackedScene" uid="uid://66dqcg6jwva5" path="res://src/battle_system/gui/components/team_display.tscn" id="2_ov218"]
 [ext_resource type="PackedScene" uid="uid://chxhvxvxw2ffu" path="res://src/battle_system/gui/player_controls.tscn" id="2_s8f4v"]
+[ext_resource type="PackedScene" uid="uid://cvwp3g228xcxt" path="res://src/battle_system/gui/components/turn_order_display/turn_order_display.tscn" id="4_bdnlw"]
 [ext_resource type="PackedScene" uid="uid://dm1f1o20pmtbn" path="res://src/gui/info_display/info_display.tscn" id="4_k2fdd"]
 [ext_resource type="PackedScene" uid="uid://dfi0hsn01hn8c" path="res://src/battle_system/gui/message_feed/message_feed.tscn" id="4_po4wd"]
 [ext_resource type="PackedScene" uid="uid://col1jalr638u0" path="res://src/battle_system/gui/animator/battle_animator.tscn" id="5_s7ygr"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_po4wd"]
-font_size = 18
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5iq7"]
 albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
@@ -17,12 +15,11 @@ albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
 material = SubResource("StandardMaterial3D_u5iq7")
 size = Vector2(50, 50)
 
-[node name="BattleGUI" type="Node3D" unique_id=2016789074 node_paths=PackedStringArray("message_box", "team_display", "player_controls", "turn_order_display")]
+[node name="BattleGUI" type="Node3D" unique_id=2016789074 node_paths=PackedStringArray("message_box", "team_display", "player_controls")]
 script = ExtResource("1_ik08k")
 message_box = NodePath("CanvasLayer/HBoxContainer/DisplayContainer/InfoDisplay")
 team_display = NodePath("TeamDisplay")
 player_controls = NodePath("CanvasLayer/HBoxContainer/PlayerControls")
-turn_order_display = NodePath("CanvasLayer/HBoxContainer/TurnOrder/VBoxContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=918362704]
 
@@ -68,16 +65,8 @@ layout_mode = 2
 columns = 4
 metadata/_tab_index = 1
 
-[node name="TurnOrder" type="VBoxContainer" parent="CanvasLayer/HBoxContainer" unique_id=1061438082]
-layout_mode = 2
-tooltip_text = "The order in which the combatants will move. This does not account for priority!"
-
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/TurnOrder" unique_id=428602661]
-layout_mode = 2
-text = "Speed Ranking"
-label_settings = SubResource("LabelSettings_po4wd")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/TurnOrder" unique_id=243859800]
+[node name="TurnOrderDisplay" parent="CanvasLayer/HBoxContainer" unique_id=661892478 instance=ExtResource("4_bdnlw")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=463859644]

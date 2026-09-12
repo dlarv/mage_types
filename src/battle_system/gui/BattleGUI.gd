@@ -3,16 +3,17 @@ extends Node3D
 ## Display messages.
 ## Play animations.
 
-signal actions_selected(actions: Array[ActorTurnData])
+signal action_selection_finished(actions: Array[ActorTurnData])
 signal target_selected(actor: BattleActor)
+signal action_selected(actor: BattleActor, data: ActorTurnData)
 
 const TeamDisplay := preload("res://src/battle_system/gui/components/TeamDisplay.gd")
 
 @export var message_box: RichTextLabel 
 @export var team_display: TeamDisplay
 @export var player_controls: Control
-@export var turn_order_display: VBoxContainer
 
+@onready var turn_order_display := %TurnOrderDisplay
 var allies: Array[BattleActor] = []
 var enemies: Array[BattleActor] = []
 var messages: Array[String] = []
@@ -67,16 +68,20 @@ func _on_action_target_selection_cancelled() -> void:
 
 func _on_action_selected(index: int, action: _BattleAction) -> void:
 	# Actor flinched or was defeated
+	var ally := allies[index]
 	if action == null:
-		_selected_actions[index] = ActorTurnData.new(allies[index], null, [], 0)
+		_selected_actions[index] = ActorTurnData.new(ally, null, [], 0)
+		action_selected.emit(ally, _selected_actions[index]) 
 		return
 
-	allies[index].action_selected.emit(action)
-	var targets: Array[BattleActor] = await select_targets(allies[index], action)
+	ally.action_selected.emit(action)
+	var targets: Array[BattleActor] = await select_targets(ally, action)
 	if len(targets) == 0: return
 
-	var actorAction := ActorTurnData.new(allies[index], action, targets, 0)
+	var actorAction := ActorTurnData.new(ally, action, targets, 0)
 	_selected_actions[index] = actorAction
+	action_selected.emit(ally, actorAction)
+
 	message_box.clear_message()
 	player_controls.next_character()
 
@@ -115,9 +120,9 @@ func _on_active_actor_changed(index: int) -> void:
 
 func _on_turn_ended(tryRunningAway: bool) -> void:
 	if tryRunningAway:
-		actions_selected.emit([ActorTurnData.flee()] as Array[ActorTurnData])
+		action_selection_finished.emit([ActorTurnData.flee()] as Array[ActorTurnData])
 	else:
-		actions_selected.emit(_selected_actions)
+		action_selection_finished.emit(_selected_actions)
 		_selected_actions = []
 		_selected_actions.resize(len(allies))
 

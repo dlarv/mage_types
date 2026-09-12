@@ -34,7 +34,7 @@ var allies: Array[BattleActor] = []
 var _defeated_allies: int = 0
 var _defeated_enemies: int = 0
 var _turn_counter: int = 0
-var _actions: Array[ActorTurnData] = []
+var _actions: Dictionary[BattleActor, ActorTurnData] = {}
 var tie_breaker := false
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -50,16 +50,21 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 	_defeated_allies = 0
 	_defeated_enemies = 0
 	_turn_counter = 0
+	_actions = {}
 
 	self.allies = allies
 	self.enemies = enemies
 	self.ai = ai	
 
+
 	for ally: BattleActor in allies:
+		_actions[ally] = null
+		_actions[ally] = ActorTurnData.new(ally, null, [], 0)
 		ally.setup()
 		ally.was_just_defeated.connect(_increment_defeat_counter.bind(true))
 
 	for enemy: BattleActor in enemies:
+		_actions[enemy] = ActorTurnData.new(enemy, null, [], 1)
 		enemy.setup()
 		enemy.was_just_defeated.connect(_increment_defeat_counter.bind(false))
 
@@ -73,7 +78,8 @@ func start(allies: Array[BattleActor], allyItems: Array[RegularItem], enemies: A
 
 	gui = BattleGUI.instantiate()
 	add_child(gui)
-	gui.actions_selected.connect(_on_player_actions_selected)
+	gui.action_selection_finished.connect(_on_player_action_selection_finished)
+	gui.action_selected.connect(_on_action_selected)
 	gui.setup(allies, allyItems, enemies)
 
 	message_feed.setup(allies + enemies)
@@ -110,7 +116,12 @@ func query_battlefield_state(asker: BattleActor, param: BattlefieldStateParams) 
 	return null
 
 
-func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
+func _on_action_selected(actor: BattleActor, action: ActorTurnData) -> void:
+	_actions[actor] = action
+	gui.turn_order_display.update_turn_order(_actions)
+
+
+func _on_player_action_selection_finished(allyActions: Array[ActorTurnData]) -> void:
 	_dialog_box.stop()
 	gui.enable_player_controls(false)
 	action_phase_started.emit()
@@ -132,23 +143,15 @@ func _on_player_actions_selected(allyActions: Array[ActorTurnData]) -> void:
 
 	# Get actions for opponent's team.
 	# var enemyActions = ai.get_actions(allies)
-	_actions.append_array(allyActions)
+	# _actions.append_array(allyActions)
 
 	# Calculate turn order based on priority and actor speed.
-	_actions.sort_custom(func(a: ActorTurnData, b: ActorTurnData) -> bool:
-		if a == null: return false
-		elif b == null: return true
-		# Higher priority goes first.
-		if a.priority != b.priority:
-			return a.priority > b.priority
-		# Then higher speed goes first.
-		if a.user.speed != b.user.speed:
-			return a.user.speed > b.user.speed
-		return tie_breaker)
+	var actions := _actions.values()
+	actions.sort_custom(ActorTurnData.sort.bind(tie_breaker))
 
 	await _dialog(false)
 
-	for turnData in _actions:
+	for turnData: ActorTurnData in actions:
 		if turnData.user.is_defeated:
 			continue
 
@@ -341,19 +344,13 @@ func _prep_next_turn() -> void:
 	selection_phase_started.emit()
 
 	MyLogger.append_battle_log("\n********************************AI********************************")
-	_actions.assign(ai.get_actions(allies))
+	for action in ai.get_actions(allies):
+		_actions[action.user] = action
 	MyLogger.append_battle_log("\n********************************END AI********************************")
 
 	tie_breaker = randf() < 0.5
-	var speedRank := allies.duplicate()
-	speedRank.append_array(enemies)
-	speedRank.sort_custom(func(a: BattleActor, b: BattleActor) -> bool:
-		if a.speed != b.speed:
-			return a.speed > b.speed
-		return tie_breaker)
-	speedRank.map(func(a: BattleActor) -> String: return a.name)
-
-	gui.display_turn_order(speedRank)
+	gui.turn_order_display.set_tie_breaker(tie_breaker)
+	gui.turn_order_display.update_turn_order(_actions)
 
 
 func _increment_defeat_counter(isAlly: bool) -> void:
