@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm5d4v64vlqg7"]
+[gd_scene format=3 uid="uid://bm5d4v64vlqg7"]
 
 [ext_resource type="Script" uid="uid://cyaq6ipngmlun" path="res://src/battle_system/gui/components/TransmutationHint.gd" id="1_2qos5"]
 [ext_resource type="PackedScene" uid="uid://30dbgu5k66cc" path="res://src/battle_system/gui/components/transmutation_hint_icon.tscn" id="2_3h48n"]
 
-[node name="TransmutationHint" type="PanelContainer" node_paths=PackedStringArray("attack_element_1", "attack_element_2", "attack_element_3", "internal_element_1", "internal_element_2", "internal_element_3")]
+[node name="TransmutationHint" type="PanelContainer" unique_id=2035669427 node_paths=PackedStringArray("attack_element_1", "attack_element_2", "attack_element_3", "internal_element_1", "internal_element_2", "internal_element_3")]
 custom_minimum_size = Vector2(150, 150)
 offset_right = 395.0
 offset_bottom = 200.0
+mouse_filter = 2
 script = ExtResource("1_2qos5")
 attack_element_1 = NodePath("GridContainer/Icon1")
 attack_element_2 = NodePath("GridContainer/Icon2")
@@ -15,117 +16,117 @@ internal_element_1 = NodePath("GridContainer/Icon4")
 internal_element_2 = NodePath("GridContainer/Icon5")
 internal_element_3 = NodePath("GridContainer/Icon6")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=520842980]
 layout_mode = 2
 theme_override_constants/h_separation = 0
 columns = 5
 
-[node name="Label" type="Label" parent="GridContainer"]
+[node name="Label" type="Label" parent="GridContainer" unique_id=1235311229]
 layout_mode = 2
 text = "Secondary"
 
-[node name="Label2" type="Label" parent="GridContainer"]
+[node name="Label2" type="Label" parent="GridContainer" unique_id=2090697734]
 layout_mode = 2
 text = "          +          "
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="GridContainer"]
+[node name="Label3" type="Label" parent="GridContainer" unique_id=1438824638]
 layout_mode = 2
 text = "Attack"
 
-[node name="Label4" type="Label" parent="GridContainer"]
+[node name="Label4" type="Label" parent="GridContainer" unique_id=1210687940]
 layout_mode = 2
 text = "          =          "
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="GridContainer"]
+[node name="Label5" type="Label" parent="GridContainer" unique_id=168357415]
 layout_mode = 2
 text = "Result 1"
 
-[node name="Icon1" parent="GridContainer" instance=ExtResource("2_3h48n")]
+[node name="Icon1" parent="GridContainer" unique_id=1846980426 instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Plus" type="Label" parent="GridContainer"]
+[node name="Plus" type="Label" parent="GridContainer" unique_id=192341821]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "          +          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon2" parent="GridContainer" instance=ExtResource("2_3h48n")]
+[node name="Icon2" parent="GridContainer" unique_id=975405762 instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Equals" type="Label" parent="GridContainer"]
+[node name="Equals" type="Label" parent="GridContainer" unique_id=193481562]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "          =          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon3" parent="GridContainer" instance=ExtResource("2_3h48n")]
+[node name="Icon3" parent="GridContainer" unique_id=1298870978 instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="GridContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="HSeparator2" type="HSeparator" parent="GridContainer"]
+[node name="HSeparator" type="HSeparator" parent="GridContainer" unique_id=1380262498]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HSeparator3" type="HSeparator" parent="GridContainer"]
+[node name="HSeparator2" type="HSeparator" parent="GridContainer" unique_id=588408004]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HSeparator4" type="HSeparator" parent="GridContainer"]
+[node name="HSeparator3" type="HSeparator" parent="GridContainer" unique_id=1065176035]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HSeparator5" type="HSeparator" parent="GridContainer"]
+[node name="HSeparator4" type="HSeparator" parent="GridContainer" unique_id=270778407]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label6" type="Label" parent="GridContainer"]
+[node name="HSeparator5" type="HSeparator" parent="GridContainer" unique_id=51927454]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label6" type="Label" parent="GridContainer" unique_id=2076630031]
 layout_mode = 2
 text = "Primary"
 
-[node name="Label7" type="Label" parent="GridContainer"]
+[node name="Label7" type="Label" parent="GridContainer" unique_id=1945409339]
 layout_mode = 2
 text = "          +          "
 horizontal_alignment = 1
 
-[node name="Label8" type="Label" parent="GridContainer"]
+[node name="Label8" type="Label" parent="GridContainer" unique_id=534293414]
 layout_mode = 2
 text = "Result 1"
 
-[node name="Label9" type="Label" parent="GridContainer"]
+[node name="Label9" type="Label" parent="GridContainer" unique_id=1603390830]
 layout_mode = 2
 text = "          =          "
 horizontal_alignment = 1
 
-[node name="Label10" type="Label" parent="GridContainer"]
+[node name="Label10" type="Label" parent="GridContainer" unique_id=321307018]
 layout_mode = 2
 text = "Result 2"
 
-[node name="Icon4" parent="GridContainer" instance=ExtResource("2_3h48n")]
+[node name="Icon4" parent="GridContainer" unique_id=172795726 instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Plus2" type="Label" parent="GridContainer"]
+[node name="Plus2" type="Label" parent="GridContainer" unique_id=116313187]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "          +          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon5" parent="GridContainer" instance=ExtResource("2_3h48n")]
+[node name="Icon5" parent="GridContainer" unique_id=458661872 instance=ExtResource("2_3h48n")]
 layout_mode = 2
 
-[node name="Equals2" type="Label" parent="GridContainer"]
+[node name="Equals2" type="Label" parent="GridContainer" unique_id=587123616]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "          =          "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon6" parent="GridContainer" instance=ExtResource("2_3h48n")]
+[node name="Icon6" parent="GridContainer" unique_id=1033859835 instance=ExtResource("2_3h48n")]
 layout_mode = 2
