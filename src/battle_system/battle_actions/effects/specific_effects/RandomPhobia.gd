@@ -19,6 +19,7 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 		var e := ElementManager.elements[index]
 		var phobia := PhobiaEffect.new()
 		phobia.element = e
+		phobia._strength = _strength
 
 		# Apply effect.
 		target.add_status_effect(phobia)
