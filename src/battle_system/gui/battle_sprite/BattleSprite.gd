@@ -124,9 +124,6 @@ func get_target_position() -> Vector2:
 	return pos2D
 
 
-func toggle_intentions(val: bool) -> void: %EmitterController.toggle_intentions(val)
-
-
 func play_intro() -> void:
 	$MeshManager.play_intro()
 	play_animation("battle_entry")

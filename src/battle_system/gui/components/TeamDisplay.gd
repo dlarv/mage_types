@@ -206,13 +206,6 @@ func highlight(index: int) -> void:
 	sprites[_highlighted_actor_index].set_highlight(true)
 
 
-## Show intentions particle effect.
-func show_enemy_intentions(val: bool) -> void:
-	for actor: TeamDisplayActor in actors.values():
-		if not actor.is_ally:
-			actor.sprite.toggle_intentions(val)
-
-
 func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void:
 	var sprite := actors[actor].sprite
 	sprite.animate_status_activation(effect)

@@ -5,6 +5,7 @@ const TurnOrderItem := preload("res://src/battle_system/gui/components/turn_orde
 # Value used by Battle to break speed ties
 var _tie_breaker: bool
 
+
 func update_turn_order(data: Dictionary[BattleActor, ActorTurnData]) -> void:
 	var actions := data.values()
 	actions.sort_custom(ActorTurnData.sort.bind(_tie_breaker))
