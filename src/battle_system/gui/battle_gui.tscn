@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 101, 0)
 mesh = SubResource("PlaneMesh_633xf")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1968339942]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 105, 10)
+transform = Transform3D(0.9449318, -0.15216804, 0.28973925, 0, 0.8853288, 0.4649655, -0.32726738, -0.43936065, 0.8365754, 3.2973099, 107.23628, 8.628608)
 
 [node name="TeamDisplay" parent="." unique_id=1566178055 node_paths=PackedStringArray("ally_container") instance=ExtResource("2_ov218")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)

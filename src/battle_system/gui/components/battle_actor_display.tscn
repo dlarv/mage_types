@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://deg4ffl4kkgel"]
+[gd_scene format=3 uid="uid://deg4ffl4kkgel"]
 
 [ext_resource type="Script" uid="uid://bijf3xh2wqaqi" path="res://src/battle_system/gui/components/BattleActorDisplay.gd" id="1_5ryt8"]
 [ext_resource type="PackedScene" uid="uid://d0u0yls8gquxd" path="res://src/battle_system/gui/components/stat_display/stat_change_display.tscn" id="2_mxncc"]
@@ -13,7 +13,7 @@ size = Vector2(0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s5tk"]
 bg_color = Color(0, 1, 0, 1)
 
-[node name="BattleActorDisplay" type="MarginContainer" node_paths=PackedStringArray("stat_change_display") groups=["hp_display"]]
+[node name="BattleActorDisplay" type="MarginContainer" unique_id=1902196922 node_paths=PackedStringArray("stat_change_display") groups=["hp_display"]]
 custom_minimum_size = Vector2(200, 120)
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,40 +25,40 @@ size_flags_vertical = 8
 script = ExtResource("1_5ryt8")
 stat_change_display = NodePath("VBoxContainer/StatChangeDisplay")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=79155095]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="ElementalHBox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ElementalHBox" type="HBoxContainer" parent="VBoxContainer" unique_id=317759170]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ElementalHBox"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ElementalHBox" unique_id=174594413]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Element1" type="ColorRect" parent="VBoxContainer/ElementalHBox/PanelContainer"]
+[node name="Element1" type="ColorRect" parent="VBoxContainer/ElementalHBox/PanelContainer" unique_id=1764909684]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/ElementalHBox/PanelContainer"]
+[node name="NameLabel" type="Label" parent="VBoxContainer/ElementalHBox/PanelContainer" unique_id=1328015882]
 unique_name_in_owner = true
 layout_mode = 2
 text = "      Basic"
 label_settings = SubResource("LabelSettings_tdbtg")
 
-[node name="Element2" type="ColorRect" parent="VBoxContainer/ElementalHBox"]
+[node name="Element2" type="ColorRect" parent="VBoxContainer/ElementalHBox" unique_id=798385618]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HealthBar" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HealthBar" type="HBoxContainer" parent="VBoxContainer" unique_id=2043139370]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HealthBar"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HealthBar" unique_id=988412930]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -69,13 +69,13 @@ value = 100.0
 editable = false
 scrollable = false
 
-[node name="HpLabel" type="Label" parent="VBoxContainer/HealthBar"]
+[node name="HpLabel" type="Label" parent="VBoxContainer/HealthBar" unique_id=772816806]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 text = "100/100"
 
-[node name="StatChangeDisplay" parent="VBoxContainer" instance=ExtResource("2_mxncc")]
+[node name="StatChangeDisplay" parent="VBoxContainer" unique_id=40708362 instance=ExtResource("2_mxncc")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 1

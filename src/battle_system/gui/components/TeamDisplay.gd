@@ -10,6 +10,8 @@ const _BattleSprite := preload("res://src/battle_system/gui/battle_sprite/Battle
 const DefaultBattleSprite := preload("res://src/battle_system/gui/battle_sprite/battle_sprite.tscn")
 const _BattleActorDisplay := preload("res://src/battle_system/gui/components/BattleActorDisplay.gd")
 const BattleActorDisplay := preload("res://src/battle_system/gui/components/battle_actor_display.tscn")
+const ALLY_SPRITE_SEPARATION := 5.5
+const OPPONENT_SPRITE_SEPARATION := 2.5
 
 @export var ally_container: Container
 @export var opponent_container: Container
@@ -106,8 +108,6 @@ func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamD
 			if not Settings.enable_transmutation_hints: continue
 			d.disable_transmutation_hint())
 
-	# sprite.position.x += len(sprites) * 3
-
 	var display := BattleActorDisplay.instantiate()
 	display.setup(actor)
 	displays.append(display)
@@ -115,11 +115,11 @@ func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamD
 	if isAlly:
 		ally_container.add_child(display)
 		$AllyParent.add_child(sprite)
-		sprite.position.x += $AllyParent.get_child_count() * 2.5
+		sprite.position.x += $AllyParent.get_child_count() * ALLY_SPRITE_SEPARATION
 	else:
 		opponent_container.add_child(display)
 		$OpponentParent.add_child(sprite)
-		sprite.position.x += $OpponentParent.get_child_count() * 2.5
+		sprite.position.x += $OpponentParent.get_child_count() * OPPONENT_SPRITE_SEPARATION
 		sprite.rotation_degrees.y = 180
 
 	var disp := TeamDisplayActor.new(sprite, display, isAlly)
