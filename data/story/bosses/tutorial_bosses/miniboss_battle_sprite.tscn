@@ -186,7 +186,7 @@ mesh = SubResource("SphereMesh_m17xt")
 [node name="miniboss" parent="MeshManager" index="1" unique_id=1697047092 instance=ExtResource("2_ph3s7")]
 transform = Transform3D(2.8977776, 0, -0.77645713, 0, 3, 0, 0.77645713, 0, 2.8977776, -3, 0, 0)
 
-[node name="Skeleton3D" parent="MeshManager/miniboss/RIG-Armature" parent_id_path=PackedInt32Array(1697047092, 1524155435) index="0" unique_id=406547269]
+[node name="Skeleton3D" parent="MeshManager/miniboss/RIG-Armature" parent_id_path=PackedInt32Array(1697047092, 1265637859) index="0" unique_id=1745529514]
 bones/2/rotation = Quaternion(-3.725289e-09, 2.1490683e-08, 1.6237012e-15, 1)
 bones/4/rotation = Quaternion(-7.414854e-08, -1.2238208e-07, -0.08915567, 0.9960177)
 bones/5/rotation = Quaternion(3.8815955e-08, 9.0728796e-14, -2.610629e-07, 1)
