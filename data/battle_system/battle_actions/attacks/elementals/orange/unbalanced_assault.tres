@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://bixhfjqqui5ig"
 resource_name = "Damage"
 script = ExtResource("3_8k2jc")
 name = "Damage"
-_strength = "25"
+_strength = "35"
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_6jkja"]
@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://cxk4u03wsacm8"
 resource_name = "Damage"
 script = ExtResource("3_8k2jc")
 name = "Damage"
-_strength = "50"
+_strength = "70"
 metadata/_custom_type_script = "uid://dn43soynbu2kq"
 
 [sub_resource type="Resource" id="Resource_ldqsy"]
@@ -51,7 +51,7 @@ metadata/_custom_type_script = "uid://cxsoib03ectl0"
 resource_name = "Unbalanced Assault"
 script = ExtResource("2_mdcs0")
 effects = Array[ExtResource("1_bhiyu")]([SubResource("Resource_83lia")])
-power = 25
+power = 35
 name = "Unbalanced Assault"
 animation = ExtResource("1_skh0b")
 _element = 4
