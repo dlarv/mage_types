@@ -39,8 +39,15 @@ TooltipPlaceholderVariables="*res://addons/tooltips_pro/scripts/tooltip_placehol
 
 [custom]
 
+general/play_test_mode=false
+battle/enable_transmutation_hint=true
+general/use_mouse_targeting=true
+battle/show_battle_turn_order=true
+battle/show_opponent_intentions=true
+battle/auto_end_turn=true
+general/helper_text_interval=0.8
+general/saved_game_directory="user://games"
 general/debug_mode=true
-general/play_test_mode=true
 
 [debug]
 

@@ -31,15 +31,10 @@ func _exit_tree() -> void:
 	pass
 
 
-func add_custom_setting(subcategory: String, name: String, value: Variant, initial_value=null, restart:=false) -> void:
+func add_custom_setting(subcategory: String, name: String, value: Variant, restart:=false) -> void:
 	var path := "%s/%s/%s" % [CUSTOM_SETTING_ROOT_PATH, subcategory, name]
 	
 	if not ProjectSettings.has_setting(path): 
 		ProjectSettings.set_setting(path, value)
-
-		if initial_value != null:
-			ProjectSettings.set_initial_value(path, initial_value)
-		else:
-			ProjectSettings.set_initial_value(path, value)
 
 	ProjectSettings.set_restart_if_changed(path, restart)

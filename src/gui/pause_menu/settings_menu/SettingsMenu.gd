@@ -9,7 +9,8 @@ func _ready() -> void:
 
 
 func _on_transmutation_hints_toggled(value: bool) -> void:
-	ProjectSettings.set_setting("custom/battle/enable_transmutation_hint", value)
+	# ProjectSettings.set_setting("custom/battle/enable_transmutation_hint", value)
+	pass
 
 
 func _on_debug_mode_toggled(value: bool) -> void:
