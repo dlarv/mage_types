@@ -4,6 +4,8 @@ class_name Damage
 
 const ALIGNMENT_BONUS := 0.3
 
+@export var allow_blocking := true
+
 func _init() -> void:
 	# Force call of _set_name()
 	name = "Damage"
@@ -48,7 +50,7 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, data:
 
 
 func _apply_to(data: ActorTurnData, target: BattleActor, dmg: int) -> void:
-	var actualDmg := target.apply_damage(dmg)
+	var actualDmg := target.apply_damage(dmg, allow_blocking, data)
 	
 	if target.is_defeated:
 		data.set_defeated(target)

@@ -123,14 +123,15 @@ func get_defeated() -> Array[BattleActor]:
 
 
 func did_actor_block(actor: BattleActor) -> bool:
-	if actor == user: return StatusEffect.Effects.BLOCK in activated_status_effects
-	return StatusEffect.Effects.BLOCK in effects[actor].activated_status_effects
+	if actor == user: return blocked_dmg > 0
+	return effects[actor].blocked_dmg > 0
 
 
 static func flee() -> ActorTurnData: return ActorTurnData.new(null, null, [], -1)
 static func empty(user: BattleActor=null) -> ActorTurnData: return ActorTurnData.new(user, null, [], -1)
 func is_flee() -> bool: return team_index == -1
 func is_empty() -> bool: return team_index == -2
+
 
 static func sort(a: ActorTurnData, b: ActorTurnData, tie_breaker: bool) -> bool:
 	if a == null: return false

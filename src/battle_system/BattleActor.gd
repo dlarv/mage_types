@@ -209,11 +209,12 @@ func _calc_blocking(dmg: int, allowBlocking: bool, data: ActorTurnData) -> int:
 		blocking = statuses.blocking
 
 	if blocking:
-		dmg = int(float(dmg) * (1.0 - blocking.get_strength()))
+		var blocked_dmg := dmg * blocking.get_strength()
+		dmg -= blocked_dmg
 
 		statuses.remove_blocking()
 		if data != null:
-			data.add_activated_effect(self, blocking.id)
+			data.add_activated_effect(self, blocking.id, blocked_dmg)
 	return dmg
 
 
