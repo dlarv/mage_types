@@ -5,12 +5,11 @@ extends Menu
 
 func _ready() -> void:
 	_debug_mode_toggle.set_pressed_no_signal(ProjectSettings.get_setting("custom/general/debug_mode"))
-	#_transmutation_hint_toggle.set_pressed_no_signal(ProjectSettings.get_setting("custom/enable_transmutation_hint"))
+	_transmutation_hint_toggle.set_pressed_no_signal(ProjectSettings.get_setting("custom/battle/enable_transmutation_hint"))
 
 
 func _on_transmutation_hints_toggled(value: bool) -> void:
-	# ProjectSettings.set_setting("custom/battle/enable_transmutation_hint", value)
-	pass
+	ProjectSettings.set_setting("custom/battle/enable_transmutation_hint", value)
 
 
 func _on_debug_mode_toggled(value: bool) -> void:

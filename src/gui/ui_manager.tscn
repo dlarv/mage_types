@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ch52g6fw70mk4"]
+[gd_scene format=3 uid="uid://ch52g6fw70mk4"]
 
 [ext_resource type="Script" uid="uid://jef6qiilbxth" path="res://src/gui/UIManager.gd" id="1_86rq7"]
 [ext_resource type="PackedScene" uid="uid://b644ydrvhju3b" path="res://src/gui/pause_menu/player_menu/player_menu.tscn" id="2_i5nhe"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dos802eriaax3" path="res://src/gui/pause_menu/map_menu/map_menu.tscn" id="12_67sa7"]
 [ext_resource type="PackedScene" uid="uid://c0pdv12umd3wn" path="res://src/gui/pause_menu/beastiary_menu/beastiary_menu.tscn" id="13_umo3j"]
 
-[node name="UIManager" type="CanvasLayer" node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu", "golem_menu", "catalyst_menu", "map_menu", "beastiary_menu")]
+[node name="UIManager" type="CanvasLayer" unique_id=1380264028 node_paths=PackedStringArray("main_menu", "player_menu", "inventory", "matchup_chart", "settings_menu", "vendor_menu", "save_menu", "golem_menu", "catalyst_menu", "map_menu", "beastiary_menu")]
 process_mode = 3
 layer = 5
 script = ExtResource("1_86rq7")
@@ -30,7 +30,7 @@ catalyst_menu = NodePath("PanelContainer/MarginContainer/TabContainer/CatalystDe
 map_menu = NodePath("PanelContainer/MarginContainer/TabContainer/Map")
 beastiary_menu = NodePath("PanelContainer/MarginContainer/TabContainer/BeastiaryMenu")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1788132396]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -39,21 +39,21 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=224962038]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TabContainer" type="TabContainer" parent="PanelContainer/MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/MarginContainer" unique_id=50684482]
 layout_mode = 2
 current_tab = 0
 tabs_visible = false
 
-[node name="MainMenu" type="Control" parent="PanelContainer/MarginContainer/TabContainer"]
+[node name="MainMenu" type="Control" parent="PanelContainer/MarginContainer/TabContainer" unique_id=1178869641]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/TabContainer/MainMenu"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/TabContainer/MainMenu" unique_id=1424519742]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,107 +61,109 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer" unique_id=1335613779]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Player_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="Player_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=529651326]
 layout_mode = 2
 text = "Party"
 
-[node name="Inventory_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="Inventory_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=1129127127]
 layout_mode = 2
 text = "Inventory"
 
-[node name="Transmutation_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="Transmutation_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=851656762]
 layout_mode = 2
 text = "Transmutation Chart"
 
-[node name="MapButton" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="MapButton" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=747842655]
 layout_mode = 2
 text = "Map
 "
 
-[node name="BeastiaryButton" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="BeastiaryButton" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=1736071771]
 layout_mode = 2
+disabled = true
 text = "Beastiary"
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=1074443565]
 layout_mode = 2
 
-[node name="OpenSettings_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="OpenSettings_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=470804410]
 layout_mode = 2
 text = "Settings"
 
-[node name="SaveGame_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="SaveGame_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=1728374562]
 layout_mode = 2
+disabled = true
 text = "Save/Load"
 
-[node name="MainMenu_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="MainMenu_Button" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=942886281]
 layout_mode = 2
 disabled = true
 text = "Main Menu"
 
-[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/TabContainer/MainMenu/CenterContainer/VBoxContainer" unique_id=316999428]
 layout_mode = 2
 text = "Quit"
 
-[node name="PlayerMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("2_i5nhe")]
+[node name="PlayerMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=508490021 instance=ExtResource("2_i5nhe")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="SettingsMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("4_sopbh")]
+[node name="SettingsMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=850477010 instance=ExtResource("4_sopbh")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VendorMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("5_b4qo4")]
+[node name="VendorMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=991327904 instance=ExtResource("5_b4qo4")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="ElementMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("5_la646")]
+[node name="ElementMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=1042527800 instance=ExtResource("5_la646")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
-[node name="InventoryMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("6_f4ewy")]
+[node name="InventoryMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=374138533 instance=ExtResource("6_f4ewy")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 
-[node name="GolemCreationMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("7_no0ww")]
+[node name="GolemCreationMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=111214406 instance=ExtResource("7_no0ww")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 6
 
-[node name="SaveMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("7_8cc7c")]
+[node name="SaveMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=1861216894 instance=ExtResource("7_8cc7c")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 7
 
-[node name="CatalystDeviceMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("8_mil63")]
+[node name="CatalystDeviceMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=1162791947 instance=ExtResource("8_mil63")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 8
 
-[node name="StasisOverworldSpell" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("9_pssjn")]
+[node name="StasisOverworldSpell" parent="PanelContainer/MarginContainer/TabContainer" unique_id=290585549 instance=ExtResource("9_pssjn")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 9
 
-[node name="CatalystTutorial" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("10_2thxe")]
+[node name="CatalystTutorial" parent="PanelContainer/MarginContainer/TabContainer" unique_id=361369974 instance=ExtResource("10_2thxe")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 10
 
-[node name="Map" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("12_67sa7")]
+[node name="Map" parent="PanelContainer/MarginContainer/TabContainer" unique_id=1990393146 instance=ExtResource("12_67sa7")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 11
 
-[node name="BeastiaryMenu" parent="PanelContainer/MarginContainer/TabContainer" instance=ExtResource("13_umo3j")]
+[node name="BeastiaryMenu" parent="PanelContainer/MarginContainer/TabContainer" unique_id=748367551 instance=ExtResource("13_umo3j")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 12
