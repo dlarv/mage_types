@@ -35,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://cndg852mpwaie" path="res://assets/3d/objects/blue/hotel/misc_decor/divider_wall.tscn" id="26_7gnmi"]
 [ext_resource type="PackedScene" uid="uid://dtdwli3udybow" path="res://assets/3d/objects/blue/hotel/misc_decor/bollards.tscn" id="27_1nkb5"]
 [ext_resource type="PackedScene" uid="uid://dce7qss85nvt" path="res://assets/3d/objects/blue/hotel/misc_decor/couch.tscn" id="30_wbgmf"]
-[ext_resource type="PackedScene" uid="uid://da8vdwyp4obwr" path="res://src/overworld/readable.tscn" id="36_lmeiv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6dj"]
 size = Vector3(2, 3.5, 1)
@@ -1594,7 +1593,3 @@ transform = Transform3D(-5.6824803e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.6824803e-
 
 [node name="Couch2" parent="." unique_id=937832890 instance=ExtResource("30_wbgmf")]
 transform = Transform3D(-1.3, 0, 1.13649605e-07, 0, 1.3, 0, -1.13649605e-07, 0, -1.3, 12.9, 0, -14.1)
-
-[node name="Readable" parent="." unique_id=1171627487 instance=ExtResource("36_lmeiv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 2, -87)
-dialog_id = "READABLE_TEST"
