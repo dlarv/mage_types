@@ -11,7 +11,6 @@ const ENEMY_FONT_SIZE := 64
 const ACTION_FONT_SIZE_MODIFER := 1.2
 const EQUIPMENT_TEXT_DURATION := 0.8
 const ACTION_TEXT_DURATION := 0.8
-const ENEMY_MODEL_ROTATION := 212.5
 
 @export var transmutation_hint: Control
 
@@ -42,12 +41,12 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 	$Indicator.set_surface_override_material(0, _indicator_mat)
 
 	if isEnemy:
-		$PinManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
-		$PinManager/PhobiaCrown.rotation_degrees.y += ENEMY_MODEL_ROTATION
+		# $PinManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
+		# $PinManager/PhobiaCrown.rotation_degrees.y += ENEMY_MODEL_ROTATION
 
 		$Label3D.font_size = ENEMY_FONT_SIZE
 		$ActionLabel3D.font_size = ENEMY_FONT_SIZE * ACTION_FONT_SIZE_MODIFER
-		$MeshManager.mesh.rotation_degrees.y += ENEMY_MODEL_ROTATION
+		# $MeshManager.mesh.rotation_degrees.y += ENEMY_MODEL_ROTATION
 	else:
 		$Label3D.font_size = ALLY_FONT_SIZE
 		$ActionLabel3D.font_size = ALLY_FONT_SIZE * ACTION_FONT_SIZE_MODIFER

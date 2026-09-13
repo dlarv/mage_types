@@ -12,6 +12,7 @@ const _BattleActorDisplay := preload("res://src/battle_system/gui/components/Bat
 const BattleActorDisplay := preload("res://src/battle_system/gui/components/battle_actor_display.tscn")
 const ALLY_SPRITE_SEPARATION := 5.5
 const OPPONENT_SPRITE_SEPARATION := 2.5
+const ENEMY_MODEL_ROTATION := 180.0
 
 @export var ally_container: Container
 @export var opponent_container: Container
@@ -120,7 +121,7 @@ func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamD
 		opponent_container.add_child(display)
 		$OpponentParent.add_child(sprite)
 		sprite.position.x += $OpponentParent.get_child_count() * OPPONENT_SPRITE_SEPARATION
-		sprite.rotation_degrees.y = 180
+		# sprite.rotation_degrees.y = ENEMY_MODEL_ROTATION
 
 	var disp := TeamDisplayActor.new(sprite, display, isAlly)
 	actors[actor] = disp
