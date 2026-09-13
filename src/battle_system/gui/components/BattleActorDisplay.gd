@@ -72,6 +72,8 @@ func display_stat_change(stat: StatManager.Stats, value: float) -> void:
 
 func set_defeated() -> void:
 	modulate = Color(1, 1, 1, .5)
+	next_hp = 0
+	animate_hp()
 
 
 func change_element(id: int, e: ElementalType) -> void:
