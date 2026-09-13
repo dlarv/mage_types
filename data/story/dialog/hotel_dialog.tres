@@ -139,7 +139,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.00049),
+"size": Vector2(300.00037, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -153,7 +153,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(320.00244, 250.99854),
+"size": Vector2(320.00293, 251.00012),
 "speaker": 2,
 "sprite": -1
 },
@@ -172,7 +172,7 @@ nodes = {
 "text": "Where do they come from?"
 }
 },
-"size": Vector2(300.00012, 321.00244),
+"size": Vector2(300, 321.00208),
 "speaker": 2,
 "sprite": -1
 },
@@ -186,7 +186,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00244, 251.00012),
+"size": Vector2(300.00244, 250.99988),
 "speaker": 2,
 "sprite": -1
 },
@@ -200,12 +200,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.0011),
+"size": Vector2(300.00146, 251.00073),
 "speaker": 2,
 "sprite": -1
 },
 &"1_105": {
-"dialogue": "Right now, you're at the bottom most point, in a section called the Azure hotel.",
+"dialogue": "Right now, you're at the bottom most point, in a section called the Azure Hotel.",
 "offset": Vector2(2200, 3320),
 "options": {
 0: {
@@ -214,7 +214,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0017, 251.00012),
+"size": Vector2(300.00244, 250.99988),
 "speaker": 2,
 "sprite": -1
 },
@@ -238,7 +238,7 @@ nodes = {
 "text": "What else is there?"
 }
 },
-"size": Vector2(300.00244, 355.9995),
+"size": Vector2(300.00244, 355.99988),
 "speaker": 2,
 "sprite": -1
 },
@@ -252,7 +252,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00098, 251.00049),
+"size": Vector2(300.00134, 250.99988),
 "speaker": 1,
 "sprite": -1
 },
@@ -266,7 +266,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00195, 251),
+"size": Vector2(300.00195, 251.00012),
 "speaker": 1,
 "sprite": -1
 },
@@ -280,14 +280,14 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0044, 300),
+"size": Vector2(300.0044, 300.00012),
 "speaker": 2,
 "sprite": -1
 },
 &"1_11": {
-"dialogue": "You're almost there! The exit is just up ahead.[br]
-The next few puzzles use [i]Laser Bridges[/i]. These use highly concentrated Elemental energy to transmute any MagiClay objects dragged across them. [br]
-Use the triangular [i]Reset[/i] block to return the puzzle to its starting configuration.",
+"dialogue": "You're almost there! The exit is just up ahead.[br][br]
+The next few puzzles use [i]Laser Bridges[/i]. These use highly concentrated Elemental energy to transmute any MagiClay objects dragged across them. [br][br]
+Use the triangular [i]Reset[/i] blocks to return the puzzle to its starting configuration.",
 "offset": Vector2(-1280, -740),
 "options": {
 0: {
@@ -310,7 +310,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251),
+"size": Vector2(300.0017, 251.00012),
 "speaker": 2,
 "sprite": -1
 },
@@ -320,26 +320,12 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": &"1_112",
-"text": ""
-}
-},
-"size": Vector2(300.00098, 251),
-"speaker": 1,
-"sprite": -1
-},
-&"1_112": {
-"dialogue": "Sure, what would you like to talk about?",
-"offset": Vector2(5620, 3680),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
 "link": &"6_6",
 "text": ""
 }
 },
-"size": Vector2(300, 251),
-"speaker": 2,
+"size": Vector2(300, 251.00012),
+"speaker": 1,
 "sprite": -1
 },
 &"1_113": {
@@ -352,7 +338,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 250.99854),
+"size": Vector2(300, 250.99976),
 "speaker": 2,
 "sprite": -1
 },
@@ -366,7 +352,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251),
+"size": Vector2(300.00195, 251.00012),
 "speaker": 2,
 "sprite": -1
 },
@@ -385,7 +371,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Goodbye"
 }
 },
-"size": Vector2(300.00244, 321.00146),
+"size": Vector2(300.00208, 321.0011),
 "speaker": 1,
 "sprite": -1
 },
@@ -404,7 +390,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "No"
 }
 },
-"size": Vector2(300, 321.0005),
+"size": Vector2(300, 321.0011),
 "speaker": 2,
 "sprite": -1
 },
@@ -418,7 +404,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251),
+"size": Vector2(300.00195, 251.00012),
 "speaker": 2,
 "sprite": -1
 },
@@ -432,7 +418,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00085, 250.99902),
+"size": Vector2(300.00098, 250.99988),
 "speaker": 2,
 "sprite": -1
 },
@@ -446,7 +432,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(340, 246.00098),
+"size": Vector2(339.9995, 246.00122),
 "speaker": 2,
 "sprite": -1
 },
@@ -460,7 +446,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "dlarv pls change this later"
 }
 },
-"size": Vector2(300.0005, 286),
+"size": Vector2(300, 286),
 "speaker": "",
 "sprite": -1
 },
@@ -474,7 +460,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 250.99976),
+"size": Vector2(300, 251.00049),
 "speaker": 2,
 "sprite": -1
 },
@@ -488,7 +474,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251),
+"size": Vector2(300, 250.99976),
 "speaker": 2,
 "sprite": -1
 },
@@ -502,7 +488,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 246.00146),
+"size": Vector2(300.00024, 246.00171),
 "speaker": 2,
 "sprite": -1
 },
@@ -516,7 +502,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.0039),
+"size": Vector2(300, 251.0039),
 "speaker": 2,
 "sprite": -1
 },
@@ -530,7 +516,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251.00171),
+"size": Vector2(300.00195, 251.0022),
 "speaker": 2,
 "sprite": -1
 },
@@ -544,7 +530,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00171),
+"size": Vector2(300.00098, 251.0022),
 "speaker": 2,
 "sprite": -1
 },
@@ -558,7 +544,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 251.00171),
+"size": Vector2(300.0005, 251.0022),
 "speaker": 2,
 "sprite": -1
 },
@@ -572,7 +558,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.0039),
+"size": Vector2(300, 251.0039),
 "speaker": 2,
 "sprite": -1
 },
@@ -586,7 +572,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00073, 250.99878),
+"size": Vector2(300.00122, 251.00024),
 "speaker": 2,
 "sprite": -1
 },
@@ -600,7 +586,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00122, 250.99854),
+"size": Vector2(300.00098, 250.99976),
 "speaker": "DLARV",
 "sprite": -1
 },
@@ -619,7 +605,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "sprite": -1
 },
 &"1_130": {
-"dialogue": "The parkour challenge on the south beach is there if you want to play through it, but there is nothing at the end. Just to be respectful of your time lol.",
+"dialogue": "The parkour challenge on the south beach is there if you want to play through it, but there is nothing at the end. Just trying to be respectful of your time lol.",
 "offset": Vector2(3341.075, 4370.687),
 "options": {
 0: {
@@ -628,7 +614,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 246.00244),
+"size": Vector2(300.00024, 246.00317),
 "speaker": "DLARV",
 "sprite": -1
 },
@@ -642,7 +628,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00122, 246.00073),
+"size": Vector2(300.0016, 245.99951),
 "speaker": 1,
 "sprite": -1
 },
@@ -656,7 +642,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0005, 250.99878),
+"size": Vector2(300.0006, 251),
 "speaker": 1,
 "sprite": -1
 },
@@ -670,7 +656,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 250.99878),
+"size": Vector2(300, 251),
 "speaker": 2,
 "sprite": -1
 },
@@ -684,7 +670,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00244, 250.99878),
+"size": Vector2(300.00317, 251),
 "speaker": 2,
 "sprite": -1
 },
@@ -698,7 +684,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00195, 250.99878),
+"size": Vector2(300.00195, 251),
 "speaker": 2,
 "sprite": -1
 },
@@ -712,7 +698,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00003, 251),
+"size": Vector2(300, 251),
 "speaker": "",
 "sprite": -1
 },
@@ -726,7 +712,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 250.99951),
+"size": Vector2(300, 251),
 "speaker": "",
 "sprite": -1
 },
@@ -759,7 +745,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 250.99951),
+"size": Vector2(300, 251),
 "speaker": "",
 "sprite": -1
 },
@@ -773,7 +759,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 251.00049),
+"size": Vector2(300, 251),
 "speaker": "",
 "sprite": -1
 },
@@ -787,7 +773,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00098, 251.00122),
+"size": Vector2(300.00098, 251.00098),
 "speaker": 1,
 "sprite": -1
 },
@@ -801,7 +787,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 251.00049),
+"size": Vector2(300, 251),
 "speaker": 2,
 "sprite": -1
 },
@@ -815,7 +801,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -829,7 +815,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 251),
 "speaker": 1,
 "sprite": -1
 },
@@ -843,7 +829,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -857,7 +843,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -871,7 +857,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -885,7 +871,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -941,7 +927,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00342, 251),
+"size": Vector2(300.0039, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -965,7 +951,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Just saying hi"
 }
 },
-"size": Vector2(300.00098, 321),
+"size": Vector2(300.00098, 356),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -993,7 +979,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00195, 281.99976),
+"size": Vector2(300.00195, 282),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1012,7 +998,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Nah man, I'm good"
 }
 },
-"size": Vector2(300.00098, 320.99976),
+"size": Vector2(300.00098, 321),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1026,7 +1012,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00244, 250.99951),
+"size": Vector2(300.00293, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1040,7 +1026,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0017, 251.00049),
+"size": Vector2(300.00146, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1054,7 +1040,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251.00122),
+"size": Vector2(300.00195, 251.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -1068,7 +1054,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00104, 251.00122),
+"size": Vector2(300.00146, 251.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -1082,7 +1068,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00244, 251),
+"size": Vector2(300.00195, 251),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -1096,7 +1082,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00195, 251.00073),
+"size": Vector2(300.00244, 251.00049),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -1110,7 +1096,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0011, 282),
+"size": Vector2(300.00098, 282),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -1124,7 +1110,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00098, 282.99927),
+"size": Vector2(300.00098, 282.99902),
 "speaker": 2,
 "sprite": -1
 },
@@ -1138,7 +1124,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00146, 316.9995),
+"size": Vector2(300.00195, 316.9995),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -1152,7 +1138,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00122, 251.00049),
+"size": Vector2(300.00098, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -1166,7 +1152,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00122, 251),
+"size": Vector2(300.00098, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1180,7 +1166,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.00024),
+"size": Vector2(300, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1204,7 +1190,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Farewell my friend"
 }
 },
-"size": Vector2(300.00146, 356.0005),
+"size": Vector2(300.00195, 356.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -1218,7 +1204,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00104, 251.00024),
+"size": Vector2(300.00146, 251.00049),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -1232,7 +1218,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00098),
+"size": Vector2(300, 251.00098),
 "speaker": 2,
 "sprite": -1
 },
@@ -1246,7 +1232,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00293, 251.00098),
+"size": Vector2(300.0027, 251.00098),
 "speaker": 1,
 "sprite": -1
 },
@@ -1260,7 +1246,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00293, 251.00098),
+"size": Vector2(300.0033, 251.00098),
 "speaker": "",
 "sprite": -1
 },
@@ -1274,7 +1260,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00024, 250.99976),
+"size": Vector2(300, 251.00098),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1293,7 +1279,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Where am I?"
 }
 },
-"size": Vector2(300, 359.99817),
+"size": Vector2(300, 359.99805),
 "speaker": 1,
 "sprite": -1
 },
@@ -1321,7 +1307,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 282.99927),
+"size": Vector2(300, 282.99902),
 "speaker": 1,
 "sprite": -1
 },
@@ -1340,7 +1326,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Aw, I'm not the chosen one?"
 }
 },
-"size": Vector2(300, 353.00012),
+"size": Vector2(300, 353),
 "speaker": 1,
 "sprite": -1
 },
@@ -1354,7 +1340,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00195, 283.0006),
+"size": Vector2(300.00195, 283.0005),
 "speaker": 1,
 "sprite": -1
 },
@@ -1368,7 +1354,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00195, 283.00012),
+"size": Vector2(300.00195, 283),
 "speaker": 2,
 "sprite": -1
 },
@@ -1382,7 +1368,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300, 283.0016),
+"size": Vector2(300, 283.00195),
 "speaker": 2,
 "sprite": -1
 },
@@ -1410,7 +1396,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Because of the monster?"
 }
 },
-"size": Vector2(300.00006, 388.0011),
+"size": Vector2(300, 388.00098),
 "speaker": 2,
 "sprite": -1
 },
@@ -1424,7 +1410,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00003, 282.99927),
+"size": Vector2(300, 282.99902),
 "speaker": 1,
 "sprite": -1
 },
@@ -1438,7 +1424,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00146, 282.99927),
+"size": Vector2(300.00195, 282.99902),
 "speaker": 2,
 "sprite": -1
 },
@@ -1461,7 +1447,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": "Is it the monster?"
 }
 },
-"size": Vector2(300.0006, 353.00012),
+"size": Vector2(300.0005, 353),
 "speaker": 1,
 "sprite": -1
 },
@@ -1475,7 +1461,7 @@ Use the triangular [i]Reset[/i] block to return the puzzle to its starting confi
 "text": ""
 }
 },
-"size": Vector2(300.00003, 283.00012),
+"size": Vector2(300, 283),
 "speaker": 2,
 "sprite": -1
 },
@@ -1512,7 +1498,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00146, 282.99768),
+"size": Vector2(300.00195, 282.99756),
 "speaker": 2,
 "sprite": -1
 },
@@ -1526,7 +1512,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0006, 282.99866),
+"size": Vector2(300.0005, 282.99854),
 "speaker": 1,
 "sprite": -1
 },
@@ -1549,7 +1535,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "How'd he get past that monster?"
 }
 },
-"size": Vector2(300, 353.0011),
+"size": Vector2(300, 353.00098),
 "speaker": 2,
 "sprite": -1
 },
@@ -1563,7 +1549,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0028, 282.99915),
+"size": Vector2(300.00293, 282.99902),
 "speaker": 2,
 "sprite": -1
 },
@@ -1582,7 +1568,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "..."
 }
 },
-"size": Vector2(300.00098, 353.0016),
+"size": Vector2(300.00098, 353.00122),
 "speaker": 1,
 "sprite": -1
 },
@@ -1596,7 +1582,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00513, 283.0006),
+"size": Vector2(300.0044, 283.00122),
 "speaker": 2,
 "sprite": -1
 },
@@ -1610,7 +1596,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00195, 283.0006),
+"size": Vector2(300.0022, 283.00122),
 "speaker": 1,
 "sprite": -1
 },
@@ -1633,7 +1619,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "How do you propose we do that?"
 }
 },
-"size": Vector2(300.00244, 352.99878),
+"size": Vector2(300.00195, 352.9978),
 "speaker": 1,
 "sprite": -1
 },
@@ -1647,7 +1633,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00098, 283.00012),
+"size": Vector2(300.00134, 283.0005),
 "speaker": 1,
 "sprite": -1
 },
@@ -1675,7 +1661,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Oh easy, we got this"
 }
 },
-"size": Vector2(300, 387.9967),
+"size": Vector2(300, 387.99683),
 "speaker": 2,
 "sprite": -1
 },
@@ -1703,7 +1689,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00098, 282.99963),
+"size": Vector2(300.00122, 282.99878),
 "speaker": 2,
 "sprite": -1
 },
@@ -1717,7 +1703,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00098, 283.00012),
+"size": Vector2(300.00098, 283),
 "speaker": 2,
 "sprite": -1
 },
@@ -1731,7 +1717,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 283.00012),
+"size": Vector2(300, 283),
 "speaker": 1,
 "sprite": -1
 },
@@ -1745,7 +1731,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00146, 283.00012),
+"size": Vector2(300.00195, 283),
 "speaker": 2,
 "sprite": -1
 },
@@ -1759,7 +1745,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 283.00012),
+"size": Vector2(300.00024, 283),
 "speaker": 1,
 "sprite": -1
 },
@@ -1773,7 +1759,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00195, 282.99963),
+"size": Vector2(300.00195, 282.99878),
 "speaker": 2,
 "sprite": -1
 },
@@ -1787,7 +1773,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00195, 280.0006),
+"size": Vector2(300.0022, 279.99976),
 "speaker": 1,
 "sprite": -1
 },
@@ -1801,7 +1787,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00098, 283.0022),
+"size": Vector2(300.00122, 283.0017),
 "speaker": 2,
 "sprite": -1
 },
@@ -1815,7 +1801,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00195, 283.0022),
+"size": Vector2(300.00195, 283.0017),
 "speaker": 2,
 "sprite": -1
 },
@@ -1829,12 +1815,12 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00195, 283.0011),
+"size": Vector2(300.0022, 283.00098),
 "speaker": 2,
 "sprite": -1
 },
 &"1_7": {
-"dialogue": "Hey, you're getting it! Your next instructions are just beyond the [el]Yellow[/el] room.[br]
+"dialogue": "Hey, you're getting it! Your next instructions are just [u]beyond[/u] the [el]Yellow[/el] room.[br]
 [i]Hint: Use Stencil 2[/i]",
 "offset": Vector2(-1300, -1280),
 "options": {
@@ -1858,7 +1844,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 283.00098),
+"size": Vector2(300, 283.00146),
 "speaker": 1,
 "sprite": -1
 },
@@ -1887,7 +1873,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "I'm good"
 }
 },
-"size": Vector2(300.00095, 388.00098),
+"size": Vector2(300.00098, 388.00085),
 "speaker": 2,
 "sprite": -1
 },
@@ -1910,7 +1896,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Is it the monster?"
 }
 },
-"size": Vector2(300, 352.99963),
+"size": Vector2(300, 353),
 "speaker": 2,
 "sprite": -1
 },
@@ -1924,7 +1910,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 282.9972),
+"size": Vector2(300, 282.9973),
 "speaker": 1,
 "sprite": -1
 },
@@ -1947,7 +1933,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Is it the monster?"
 }
 },
-"size": Vector2(300, 353.0011),
+"size": Vector2(300.0005, 353.0005),
 "speaker": 2,
 "sprite": -1
 },
@@ -1961,7 +1947,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00024, 250.99976),
+"size": Vector2(300, 251.00098),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1975,7 +1961,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00244, 250.99976),
+"size": Vector2(300.00293, 251.00098),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -1989,7 +1975,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00122, 245.99927),
+"size": Vector2(300.00146, 246),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -2003,7 +1989,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0017, 250.99976),
+"size": Vector2(300.00146, 251.00098),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -2017,7 +2003,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 250.99976),
+"size": Vector2(300.0005, 251.00098),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -2031,7 +2017,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00146),
+"size": Vector2(300, 251.00195),
 "speaker": "",
 "sprite": -1
 },
@@ -2045,7 +2031,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00122, 251.00073),
+"size": Vector2(300.00146, 251.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2059,7 +2045,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251.00049),
+"size": Vector2(300, 251.00049),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2078,7 +2064,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Wait, so are you actually a Duke?"
 }
 },
-"size": Vector2(300.0011, 321.00342),
+"size": Vector2(300.00098, 321.00342),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2092,7 +2078,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251.00049),
+"size": Vector2(300.00195, 251.00049),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2106,7 +2092,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0022, 251),
+"size": Vector2(300.00293, 251),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2120,7 +2106,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251.00122),
+"size": Vector2(300.00195, 251.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2139,7 +2125,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": "Fascinating"
 }
 },
-"size": Vector2(300.0022, 320.99902),
+"size": Vector2(300.00293, 321),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2153,7 +2139,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00122),
+"size": Vector2(300.0005, 251.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2167,7 +2153,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0017, 250.99951),
+"size": Vector2(300.00195, 251),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2181,7 +2167,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00293, 251.00171),
+"size": Vector2(300.0027, 251.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2197,7 +2183,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00146),
+"size": Vector2(300, 251.00195),
 "speaker": "",
 "sprite": -1
 },
@@ -2211,7 +2197,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00293, 283.0017),
+"size": Vector2(300.00317, 283.00098),
 "speaker": 1,
 "sprite": -1
 },
@@ -2225,7 +2211,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251.00073),
+"size": Vector2(300.00195, 251.00098),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2239,7 +2225,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00146, 251.00049),
+"size": Vector2(300.00195, 251.00049),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2253,7 +2239,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0022, 251),
+"size": Vector2(300.00293, 251),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -2267,7 +2253,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.0005, 251.00049),
+"size": Vector2(300.00098, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -2281,7 +2267,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00244, 251.00049),
+"size": Vector2(300.00293, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -2295,7 +2281,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300, 251.00049),
+"size": Vector2(300, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -2309,7 +2295,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00122, 251.00049),
+"size": Vector2(300.00098, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -2323,7 +2309,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00049),
+"size": Vector2(300, 251),
 "speaker": "Aegean ",
 "sprite": -1
 },
@@ -2337,24 +2323,24 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "text": ""
 }
 },
-"size": Vector2(300.00098, 251.00049),
+"size": Vector2(300.00098, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
 &"2_1": {
 "comment": "Apparently nerves were known about even back in ancient Greece",
 "offset": Vector2(2440, 1200),
-"size": Vector2(239.9978, 139.99878)
+"size": Vector2(239.99805, 139.99854)
 },
 &"2_2": {
 "comment": "It may seem like Orange/Cyan can have 3 internal transmutations, but I don't believe there's actually a way to reach that state.",
 "offset": Vector2(3540, -1340),
-"size": Vector2(260.00098, 240.00146)
+"size": Vector2(260.00085, 240.00195)
 },
 &"2_3": {
 "comment": "^This nest loops back to the beginning of this same tree",
-"offset": Vector2(5960, 3880),
-"size": Vector2(200, 100)
+"offset": Vector2(5680, 3920),
+"size": Vector2(200.00049, 100.00012)
 },
 &"3_1": {
 "auto_proceed": false,
@@ -2560,7 +2546,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "start_id": "BACKROOMS"
 },
 &"6_3": {
-"file_path": "res://data/story/dialog/hotel_dialog.tres",
+"file_path": "res://data/story/dialog/auxiliary_explanation.tres",
 "link": &"1_108",
 "offset": Vector2(4040, 3660),
 "start_id": "ENCLAVES"
@@ -2580,7 +2566,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 &"6_6": {
 "file_path": "res://data/story/dialog/hotel_dialog.tres",
 "link": "END",
-"offset": Vector2(5940, 3680),
+"offset": Vector2(5660, 3700),
 "start_id": "BARTENDER"
 },
 &"7_1": {
@@ -2695,7 +2681,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 "title": "Intro"
 },
 &"8_4": {
-"attached_nodes": Array[StringName]([&"1_71", &"1_101", &"5_8", &"6_2", &"4_10", &"1_102", &"1_103", &"0_13", &"1_105", &"1_106", &"1_115", &"1_116", &"6_3", &"6_5", &"1_107", &"1_108", &"1_109", &"1_110", &"1_111", &"1_112", &"6_6", &"2_3", &"1_113", &"1_114", &"1_117", &"1_118", &"1_120", &"1_121", &"1_123", &"1_124", &"1_125", &"1_126", &"1_127", &"1_128", &"1_129", &"1_132", &"1_133", &"1_134", &"1_135"]),
+"attached_nodes": Array[StringName]([&"1_71", &"1_101", &"5_8", &"6_2", &"4_10", &"1_102", &"1_103", &"0_13", &"1_105", &"1_106", &"1_115", &"1_116", &"6_3", &"6_5", &"1_107", &"1_108", &"1_109", &"1_110", &"1_111", &"6_6", &"2_3", &"1_113", &"1_114", &"1_117", &"1_118", &"1_120", &"1_121", &"1_123", &"1_124", &"1_125", &"1_126", &"1_127", &"1_128", &"1_129", &"1_132", &"1_133", &"1_134", &"1_135"]),
 "offset": Vector2(-120, 3259),
 "tint_color": Color(0, 0.033455808, 0.3046875, 1),
 "title": "Bartender"
@@ -2716,7 +2702,7 @@ People frequently get lost in here, but luckily for you we made this handy map a
 variables = Dictionary[String, Dictionary]({
 "adonis_tutorial_state": {
 "type": 2,
-"value": 0
+"value": -1
 },
 "heard_intro_expo": {
 "type": 1,
@@ -2739,4 +2725,4 @@ variables = Dictionary[String, Dictionary]({
 "value": false
 }
 })
-strays = Array[String](["8_4", "8_1", "8_2", "8_3", "2_1", "2_3", "2_2"])
+strays = Array[String](["8_4", "8_1", "8_2", "8_3", "2_1", "2_2", "2_3"])
