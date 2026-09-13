@@ -266,6 +266,9 @@ bones/306/rotation = Quaternion(-0.03397388, -0.04599424, -0.011457666, 0.998298
 bones/307/rotation = Quaternion(-0.034904044, -0.048830822, -0.008188221, 0.99816346)
 bones/308/rotation = Quaternion(-0.035551213, -0.051538225, -0.0046423166, 0.99802727)
 
+[node name="Interactable" parent="." index="1"]
+label_offset = Vector3(0, 2.5, 2)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1309979957]
 shape = SubResource("SphereShape3D_ucadb")
 
