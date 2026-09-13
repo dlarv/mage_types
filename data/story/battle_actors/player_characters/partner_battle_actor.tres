@@ -17,11 +17,12 @@ metadata/_custom_type_script = "uid://ccl64vcc20maa"
 [sub_resource type="Resource" id="Resource_nqvwl"]
 script = ExtResource("7_ppfbh")
 total_xp = 50
-_base_melee_attack = 120.0
+_base_melee_attack = 12.0
 _base_ranged_attack = 12.0
 _base_melee_defense = 16.0
 _base_ranged_defense = 16.0
 _base_speed = 14.0
+_base_evasion = 10.0
 hp = 55.0
 metadata/_custom_type_script = "uid://3val1kw3ysgx"
 
