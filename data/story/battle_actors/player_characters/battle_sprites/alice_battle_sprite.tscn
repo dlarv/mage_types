@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://dll6hbvtmfshr" path="res://assets/shaders/battle_actor_shader/fresnel.gdshader" id="4_7oii2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yahwx"]
+size = Vector3(1, 3.2, 1)
 
 [sub_resource type="Gradient" id="Gradient_gtem4"]
 offsets = PackedFloat32Array(0.08716707, 0.10169491)
@@ -89,6 +90,7 @@ graph_offset = Vector2(49, -127)
 [node name="AliceBattleSprite" unique_id=675071263 instance=ExtResource("1_yahwx")]
 
 [node name="CollisionShape3D" parent="Area3D" parent_id_path=PackedInt32Array(1798959719) index="0" unique_id=1419480897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7729369, 0)
 shape = SubResource("BoxShape3D_yahwx")
 
 [node name="BodyPins" parent="PinManager" parent_id_path=PackedInt32Array(1721910986) index="0" unique_id=105569702]
