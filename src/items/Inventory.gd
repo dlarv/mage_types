@@ -98,7 +98,7 @@ func _enter_tree() -> void:
 		for item in equipment:
 			item.quantity = 99
 
-	if ProjectSettings.get_setting("custom/general/play_test_mode"): 
+	if ProjectSettings.get_setting("custom/battle/play_test_mode"): 
 		use_override = "NONE"
 		# for item in key_items:
 		# 	item.quantity = 0
@@ -293,7 +293,7 @@ func _reorder_item_array(list: Array[ItemSlot]) -> void:
 
 		if Engine.is_editor_hint():
 			var err := ResourceSaver.save(item.item, item.item.resource_path)
-			print("Overwriting %s.......%s" % [item.item.resource_path, error_string(err)])
+			# print("Overwriting %s.......%s" % [item.item.resource_path, error_string(err)])
 
 
 func serialize() -> Dictionary:
