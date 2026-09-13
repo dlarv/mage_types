@@ -61,6 +61,11 @@ func add_xp(xp: float) -> int:
 	return stat_manager.add_xp(xp)
 
 
+## Returns total_xp as a percentage of xp needed for next level up
+func get_xp_percentage() -> float:
+	return float(stat_manager.total_xp) / float(stat_manager.next_level_xp)
+
+
 func level_up(levels:=1, forceReset:=false) -> Dictionary[StatManager.Stats, float]:
 	level += levels
 	MyLogger.append_battle_log("BattleActor(%s) is now level(%d)!" % [name, level])

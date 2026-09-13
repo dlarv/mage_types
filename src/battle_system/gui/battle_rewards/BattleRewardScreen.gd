@@ -15,6 +15,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		pressed.emit()
 
+
 func show_core_changes(actors: Array[BattleActor], dialogBox: DialogueBox) -> void:
 	for actor in actors:
 		var display := Display.instantiate()

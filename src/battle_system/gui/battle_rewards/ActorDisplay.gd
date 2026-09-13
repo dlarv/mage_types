@@ -29,22 +29,27 @@ func set_actor(actor: BattleActor) -> void:
 	%RangedDefense.text = str(actor.get_stat(Stats.RANGED_DEFENSE))
 	%Speed.text = str(actor.get_stat(Stats.SPEED))
 	if actor.stat_manager is PlayerStatManager:
-		%XpSlider.value = int(actor.stat_manager.total_xp / actor.stat_manager.next_level_xp * 100)
+		%XpSlider.value = actor.get_xp_percentage()
 	%Level.text = "Lv%d" % actor.level
 
 
 func add_xp(amount: float) -> void:
+	var start_xp: float = _actor.get_xp_percentage()
 	var levels := _actor.add_xp(amount)
+	var finish_xp: float = _actor.get_xp_percentage()
+
 	var stats: Dictionary[Stats, float] = _actor.level_up(levels)
 
-	tween = create_tween()
-	var sliderValue := int(_actor.stat_manager.total_xp / _actor.stat_manager.next_level_xp * 100)
-	if levels > 0 and sliderValue == 0: sliderValue = 100
-	tween.tween_property(%XpSlider, "value", sliderValue, DELAY)
-	tween.play()
-	await next
+	if levels == 0:
+		await _animate_xp_bar(start_xp, finish_xp)
+	elif levels == 1:
+		await _animate_xp_bar(start_xp, 1.0)
+	else:
+		await _animate_xp_bar(start_xp, 1.0)
+		for level in levels:
+			await _animate_xp_bar(0, 1, 1/float(level))
+		await _animate_xp_bar(0, finish_xp)
 
-	%XpSlider.value = int(_actor.stat_manager.total_xp / _actor.stat_manager.next_level_xp * 100)
 	if levels == 0: return
 
 	%Level.text = "Lv%d +%d" % [_actor.level, levels]
@@ -60,3 +65,13 @@ func _next(skip:=false) -> void:
 	if tween:
 		tween.stop()
 	next.emit(skip)
+
+
+func _animate_xp_bar(start: float, end: float, delay_mod:=1.0) -> void:
+	%XpSlider.max_value = 1.0
+
+	%XpSlider.value = start
+	var tween := create_tween()
+	tween.tween_property(%XpSlider, "value", end, DELAY * delay_mod)
+	tween.play()
+	await next
