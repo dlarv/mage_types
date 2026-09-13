@@ -17,8 +17,8 @@ starts = {
 }
 nodes = {
 &"0_1": {
-"link": &"1_39",
-"offset": Vector2(-280, -320),
+"link": &"1_1",
+"offset": Vector2(40, -320),
 "start_id": "1_0"
 },
 &"0_2": {
@@ -71,7 +71,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251),
+"size": Vector2(300.00024, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -85,7 +85,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251),
+"size": Vector2(300.0006, 250.99973),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -99,7 +99,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0014, 251),
+"size": Vector2(300.00134, 250.99973),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -113,7 +113,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251.00024),
+"size": Vector2(300, 251.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -127,7 +127,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251.00024),
+"size": Vector2(300.0006, 251.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -141,7 +141,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 251.00024),
+"size": Vector2(300.0006, 251.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -155,7 +155,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0014, 251.00024),
+"size": Vector2(300.00134, 251.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -169,7 +169,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251),
+"size": Vector2(300.00024, 251.00006),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -183,7 +183,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251),
+"size": Vector2(300, 250.99994),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -197,7 +197,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251),
+"size": Vector2(300.0006, 250.99994),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -211,7 +211,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 251),
+"size": Vector2(300.0006, 250.99994),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -225,7 +225,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00024),
+"size": Vector2(300.00012, 251.00024),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -239,7 +239,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00024),
+"size": Vector2(300.00024, 251.00024),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -281,7 +281,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00024),
+"size": Vector2(300.00024, 251.00024),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -295,7 +295,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00067, 250.99988),
+"size": Vector2(300.00073, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -309,7 +309,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 250.99988),
+"size": Vector2(300.00012, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -323,7 +323,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 250.99988),
+"size": Vector2(300.00024, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -337,7 +337,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00037, 250.99988),
+"size": Vector2(300.00037, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -351,7 +351,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 250.99988),
+"size": Vector2(300, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -365,7 +365,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 250.99988),
+"size": Vector2(300.00024, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -379,7 +379,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00055, 250.99982),
+"size": Vector2(300.0005, 251.00012),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -393,7 +393,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00024),
+"size": Vector2(300.00012, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -407,7 +407,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00024),
+"size": Vector2(300.00024, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -421,7 +421,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00037, 251.00024),
+"size": Vector2(300.00037, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -435,7 +435,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00024),
+"size": Vector2(300.00024, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -449,7 +449,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00055),
+"size": Vector2(300.00024, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -463,7 +463,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00055),
+"size": Vector2(300.00012, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -477,7 +477,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251.00055),
+"size": Vector2(300.00024, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -491,7 +491,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00037, 251.00055),
+"size": Vector2(300.00037, 251.00037),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -505,22 +505,8 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 250.99982),
+"size": Vector2(300.00012, 251.00012),
 "speaker": "Duke",
-"sprite": -1
-},
-&"1_39": {
-"dialogue": "Before we begin, press 'M' to toggle your Message Log.",
-"offset": Vector2(-60, -340),
-"options": {
-0: {
-"condition": Array[Dictionary]([]),
-"link": &"1_1",
-"text": ""
-}
-},
-"size": Vector2(300.0003, 251),
-"speaker": "Aegean",
 "sprite": -1
 },
 &"1_4": {
@@ -533,7 +519,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251),
+"size": Vector2(300, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -547,7 +533,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 251),
+"size": Vector2(300.0006, 250.99973),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -561,7 +547,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 251.00012),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -575,7 +561,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 240),
+"size": Vector2(300.00024, 251.00012),
 "speaker": "Duke",
 "sprite": -1
 },
@@ -589,7 +575,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251),
+"size": Vector2(300.0006, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -603,7 +589,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 282.00024),
+"size": Vector2(300.00024, 282.00018),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -617,7 +603,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00043, 251),
+"size": Vector2(300.0006, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -631,7 +617,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 251),
+"size": Vector2(300.00024, 250.99973),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -645,7 +631,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251),
+"size": Vector2(300, 250.99973),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -660,8 +646,8 @@ nodes = {
 "true": &"1_33"
 },
 &"8_1": {
-"attached_nodes": Array[StringName]([&"0_1", &"1_19", &"1_18", &"1_17", &"1_16", &"0_6", &"1_15", &"1_14", &"1_13", &"1_12", &"1_6", &"0_5", &"1_11", &"1_10", &"1_9", &"1_8", &"0_4", &"1_7", &"1_5", &"1_4", &"1_1", &"1_39", &"1_40"]),
-"offset": Vector2(-320, -381),
+"attached_nodes": Array[StringName]([&"0_1", &"1_19", &"1_18", &"1_17", &"1_16", &"0_6", &"1_15", &"1_14", &"1_13", &"1_12", &"1_6", &"0_5", &"1_11", &"1_10", &"1_9", &"1_8", &"0_4", &"1_7", &"1_5", &"1_4", &"1_1", &"1_40"]),
+"offset": Vector2(0, -361),
 "tint_color": Color(0.0015716553, 0.29861456, 0.40234375, 1),
 "title": "Frame #1"
 },
