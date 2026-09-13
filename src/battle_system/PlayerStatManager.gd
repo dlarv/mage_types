@@ -149,7 +149,7 @@ func add_xp(xp: float) -> int:
 	while total_xp >= next_level_xp:
 		total_xp -= next_level_xp
 		levels += 1
-		next_level_xp = 50 * levels
+		next_level_xp = 50 * (levels + 1)
 	
 	return levels
 
