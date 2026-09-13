@@ -3,7 +3,7 @@ extends MagiClay
 
 signal battle_ended(state: Battle.EndState)
 
-const BATTLE_DELAY := 0.5
+const BATTLE_DELAY := 1.5
 
 @export var auto_trigger := false
 @export var disabled := false:
@@ -55,6 +55,7 @@ func _ready() -> void:
 
 func _on_body_entered(body:Node3D) -> void:
 	if not body.is_in_group("player"): return
+	if _on_cooldown: return
 
 	if animation_actor and auto_trigger:
 		animation_actor.play_animation(body)
@@ -71,7 +72,7 @@ func _on_body_entered(body:Node3D) -> void:
 		body.call_deferred("start_battle", self)
 			
 
-## Called by OverworldConnector is this character is part of the "wild_enemies" group.
+## Called by OverworldConnector if this character is part of the "wild_enemies" group.
 func _end_battle_cooldown() -> void:
 	await get_tree().create_timer(BATTLE_DELAY).timeout
 	_on_cooldown = false 
@@ -104,7 +105,7 @@ func deserialize(data: Dictionary) -> void:
 
 func _on_interactable_interacted(obj:Node3D) -> void:
 	if not _player: return
-	if story_actor != null:
+	if story_actor != null and not _on_cooldown:
 		_player.call_deferred("start_dialog", self)
 	else:
 		_player.call_deferred("open_shop", self)

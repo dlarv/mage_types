@@ -56,22 +56,12 @@ func setup(actor: BattleActor, isEnemy: bool) -> void:
 
 	actor.status_effect_added.connect(add_status_effect)
 	actor.status_effects_removed.connect(remove_status_effects)
-	actor.was_just_defeated.connect(func() -> void: 
-		_indicator_mat.albedo_color = Color.BLACK
-		$PinManager.hide_pins.call()
-		$MeshManager.set_defeated()
-		_is_defeated = true)
+	actor.was_just_defeated.connect(_on_actor_defeated) 
 	actor.action_selected.connect(_on_action_selected)
 	actor.status_activated.connect(animate_status_activation)
 
-	Battle.transmutations_started.connect(func(_actor: BattleActor) -> void:
-		if _actor != actor: return
-		$MeshManager.fade_aura(true)
-	)
-	Battle.transmutations_finished.connect(func(_actor: BattleActor) -> void:
-		if _actor != actor: return
-		$MeshManager.fade_aura(false)
-	)
+	Battle.transmutations_started.connect(_on_transmutation_phase.bind(true))
+	Battle.transmutations_finished.connect(_on_transmutation_phase.bind(false))
 
 	$ActionLabel3D.position = $Label3D.position
 	$ActionLabel3D.position.y -= 0.3
@@ -81,6 +71,14 @@ func _exit_tree() -> void:
 	if self.actor.equipment_activated.is_connected(_on_equipment_activated):
 		self.actor.equipment_activated.disconnect(_on_equipment_activated)
 
+	actor.status_effect_added.disconnect(add_status_effect)
+	actor.status_effects_removed.disconnect(remove_status_effects)
+	actor.was_just_defeated.disconnect(_on_actor_defeated) 
+	actor.action_selected.disconnect(_on_action_selected)
+	actor.status_activated.disconnect(animate_status_activation)
+
+	Battle.transmutations_started.disconnect(_on_transmutation_phase.bind(true))
+	Battle.transmutations_finished.disconnect(_on_transmutation_phase.bind(false))
 
 func set_element(id: int, element: ElementalType) -> void:
 	$MeshManager.set_element(id, element)
@@ -220,3 +218,15 @@ func _on_state_finished(stateName: String) -> void:
 			channeling_finished.emit()
 		"defeated":
 			defeated_finished.emit()
+
+
+func _on_actor_defeated() -> void:
+	_indicator_mat.albedo_color = Color.BLACK
+	$PinManager.hide_pins.call()
+	$MeshManager.set_defeated()
+	_is_defeated = true
+
+
+func _on_transmutation_phase(a: BattleActor, started: bool) -> void:
+	if a != actor: return
+	$MeshManager.fade_aura(started)

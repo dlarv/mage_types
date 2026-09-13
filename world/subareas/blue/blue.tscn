@@ -1286,7 +1286,7 @@ shape = SubResource("BoxShape3D_uke47")
 
 [node name="Node3D" type="Node3D" parent="HotelRooms/HallChunk2" unique_id=1985959976]
 
-[node name="MiniBoss1" parent="HotelRooms/HallChunk2/Node3D" unique_id=526224947 groups=["detached_env"] instance=ExtResource("21_j64is")]
+[node name="MiniBoss1" parent="HotelRooms/HallChunk2/Node3D" unique_id=526224947 groups=["detached_env", "wild_enemies"] instance=ExtResource("21_j64is")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -6.9000015, 0, -13.099998)
 _element = 0
 

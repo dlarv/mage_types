@@ -331,8 +331,8 @@ func _resolve_end_of_battle(pause:=true) -> void:
 			await rewardScreen.pressed
 
 	elif pause and not simulator_mode:
-		rewardScreen.show_defeat(_dialog_box)
-		await rewardScreen.pressed
+		await rewardScreen.show_defeat(_dialog_box)
+		remove_child(gui)
 	else:
 		remove_child(gui)
 	$CanvasLayer.remove_child(rewardScreen)

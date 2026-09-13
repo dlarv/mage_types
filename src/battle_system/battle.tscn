@@ -14,16 +14,28 @@
 [sub_resource type="Resource" id="Resource_4h2rc"]
 script = ExtResource("3_p7an0")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_domvp"]
-script = ExtResource("6_w22k8")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_domvp"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.09985284, 0.09985284, 0.09985284, 0.90000004)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_56uxo"]
-script = ExtResource("7_lufxd")
+script = ExtResource("6_w22k8")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_dka5h"]
-script = ExtResource("8_67cow")
+script = ExtResource("7_lufxd")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_0so62"]
+script = ExtResource("8_67cow")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_s3ysh"]
 script = ExtResource("9_fi3yn")
 
 [node name="Battle" type="Node2D" unique_id=960793637 node_paths=PackedStringArray("_dialog_box")]
@@ -57,7 +69,8 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_domvp")
 script = ExtResource("5_ari74")
 data = ExtResource("6_domvp")
 skip_input_action = "skip_text"
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_domvp"), SubResource("RichTextEffect_56uxo"), SubResource("RichTextEffect_dka5h"), SubResource("RichTextEffect_0so62")])
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_56uxo"), SubResource("RichTextEffect_dka5h"), SubResource("RichTextEffect_0so62"), SubResource("RichTextEffect_s3ysh")])

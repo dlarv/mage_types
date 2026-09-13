@@ -41,7 +41,6 @@ func _ready() -> void:
 	)
 
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("create_log"):
 		MyLogger.save_log()
@@ -59,6 +58,8 @@ func _on_player_battle_started(allies: Array[BattleActor], enemy:Variant) -> voi
 	var healPlayer := false
 	if enemy is EnemyActor:
 		healPlayer = enemy.heal_player_after_battle
+
+	get_tree().call_group("wild_enemies", "_start_battle_cooldown")
 
 	%WorldEnvironment.environment = null
 	world.process_mode = Node.PROCESS_MODE_DISABLED

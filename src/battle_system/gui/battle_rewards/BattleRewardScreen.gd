@@ -79,6 +79,3 @@ func _on_animation_finished(_b: bool) -> void:
 	display_count -= 1
 	if display_count <= 0:
 		_animating_xp = false
-
-
-
