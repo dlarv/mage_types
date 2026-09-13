@@ -647,6 +647,12 @@ skeleton = NodePath("")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
 dialog_id = "TUTORIAL_1"
 
+[node name="FlyPrompt" type="Label3D" parent="Section1/RedRoom/Chunk" unique_id=1448421419]
+transform = Transform3D(0.96592575, 0, -0.25881925, 0, 1, 0, 0.25881925, 0, 0.96592575, 6, 1, 0.99313354)
+text = "If you get stuck, use Ctrl+f to enter fly mode.
+(This is a debug tool, not a part of the actual game)"
+font_size = 64
+
 [node name="OrangeRoom" type="Area3D" parent="Section1" unique_id=219537799 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -20)
 script = ExtResource("2_exmbl")
@@ -1526,7 +1532,7 @@ material = SubResource("ShaderMaterial_jbfvx")
 [node name="Bridge1" parent="Section3/EastRoom/Chunk" unique_id=1376827802 instance=ExtResource("6_yng4o")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8287354, -4.676074, -20.92102)
 use_laser_input = false
-_element = 4
+_element = 5
 
 [node name="Bridge" parent="Section3/EastRoom/Chunk/Bridge1" unique_id=1793468484 instance=ExtResource("6_yng4o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 0, 4)
@@ -1583,28 +1589,29 @@ element = 1
 
 [node name="IconFlag2" parent="Section3/EastRoom/Chunk" unique_id=167073320 instance=ExtResource("18_6l8lo")]
 transform = Transform3D(1.1415015, -0.20127754, 0.31058285, 0.20837784, 1.1817694, 0, -0.30586445, 0.053932156, 1.1591111, 2, -1.1, -23.2)
-element = 4
+element = 5
 
 [node name="IconFlag3" parent="Section3/EastRoom/Chunk" unique_id=1263022268 instance=ExtResource("18_6l8lo")]
-transform = Transform3D(1.1817695, -4.4024336e-08, 0.20837784, 4.4703484e-08, 1.2000002, 0, -0.20837784, 7.7626785e-09, 1.1817695, 7, -1.1, -19.2)
+transform = Transform3D(1.1817695, -4.4024336e-08, 0.20837784, 4.4703484e-08, 1.2000002, 0, -0.20837784, 7.7626785e-09, 1.1817695, 7, -1.1, -18.800001)
 element = 0
 
 [node name="IconFlag4" parent="Section3/EastRoom/Chunk" unique_id=796227719 instance=ExtResource("18_6l8lo")]
-transform = Transform3D(1.122616, 0.31701794, 0.28148365, -0.29356492, 1.1561103, -0.13125797, -0.30586442, 0.05393215, 1.1591111, 3, -1.1, -19.2)
+transform = Transform3D(1.122616, 0.31701794, 0.28148365, -0.29356492, 1.1561103, -0.13125797, -0.30586442, 0.05393215, 1.1591111, 3, -1.1, -18.800001)
 element = 0
 
 [node name="IconFlag5" parent="Section3/EastRoom/Chunk" unique_id=118545475 instance=ExtResource("18_6l8lo")]
-transform = Transform3D(1.1228278, -0.42113727, -0.043605767, 0.41453323, 1.118642, -0.12962522, 0.08614102, 0.10622561, 1.1921815, 7, -1.1, -15)
+transform = Transform3D(1.1228278, -0.42113727, -0.043605767, 0.41453323, 1.118642, -0.12962522, 0.08614102, 0.10622561, 1.1921815, 7, -1.1, -14.700001)
+element = 5
 
 [node name="IconFlag6" parent="Section3/EastRoom/Chunk" unique_id=1444703166 instance=ExtResource("18_6l8lo")]
-transform = Transform3D(1.0893829, -0.09323889, 0.4945216, 0.08409775, 1.1963706, 0.04030928, -0.4961579, -0.0019367835, 1.0926226, 0.9000015, -1.1, -15)
+transform = Transform3D(1.0893829, -0.09323889, 0.4945216, 0.08409775, 1.1963706, 0.04030928, -0.4961579, -0.0019367835, 1.0926226, 0.9000015, -1.1, -14.700001)
 element = 1
 
 [node name="IconFlag7" parent="Section3/EastRoom/Chunk" unique_id=1474001690 instance=ExtResource("18_6l8lo")]
 transform = Transform3D(1.1915122, -0.07977885, -0.118043065, 0.08409774, 1.1963705, 0.040309273, 0.11500609, -0.04829675, 1.1934996, -4.0999985, -1.1, -18)
 
 [node name="IconFlag8" parent="Section3/EastRoom/Chunk" unique_id=855770572 instance=ExtResource("18_6l8lo")]
-transform = Transform3D(0.97437674, -0.044942133, -0.69897807, 0.084097736, 1.1963705, 0.04030927, 0.6953542, -0.08171563, 0.9745793, 12.599998, -1.1, -18.1)
+transform = Transform3D(1.1534398, -0.070180185, -0.32349882, 0.084097736, 1.1963705, 0.040309273, 0.3201628, -0.061416462, 1.1548694, 12.599998, -1.1, -18.1)
 element = 3
 
 [node name="WestRoom" type="Area3D" parent="Section3" unique_id=1556223914 node_paths=PackedStringArray("chunk", "resets")]

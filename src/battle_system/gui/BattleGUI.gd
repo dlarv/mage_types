@@ -136,7 +136,7 @@ func _on_show_info(action: Variant, limitInfo:=false) -> void:
 
 
 func display_turn_order(actors: Array[BattleActor]) -> void:
-	if not Settings.show_battle_turn_order:
+	if not ProjectSettings.get_setting("custom/battle/show_battle_turn_order"):
 		turn_order_display.get_parent().hide()
 		return
 	else:

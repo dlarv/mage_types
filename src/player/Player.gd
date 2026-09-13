@@ -45,11 +45,12 @@ var active_chunk: Chunk = null
 var _golem: Golem = null
 
 func _ready() -> void:
-	player_name = Settings.player_name
-	Settings.player_name_changed.connect(func(name: String) -> void:
-		player_name = name)
+	# player_name = Settings.player_name
+	# Settings.player_name_changed.connect(func(name: String) -> void:
+	# 	player_name = name
+	# )
 
-	if Settings.play_test_mode:
+	if ProjectSettings.get_setting("custom/general/play_test_mode"):
 		var spawnPoint: Node3D = get_tree().get_current_scene().get_node("%PlayTestModeSpawnPoint")
 		if spawnPoint:
 			global_position = spawnPoint.global_position
@@ -190,3 +191,5 @@ func deserialize(data: Dictionary) -> void:
 
 	team_changed.emit(team)
 	actor_changed.emit(battle_actor)
+
+

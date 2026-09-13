@@ -188,7 +188,7 @@ func _on_pin_selected(effect: StatusEffect) -> void: status_effect_icon_pressed.
 
 func animate_status_activation(effect: StatusEffect, data:Variant=null) -> void:
 	$PinManager.activate_pin(effect)
-	set_helper_text(effect.name, Settings.helper_text_interval)
+	set_helper_text(effect.name, ProjectSettings.get_setting("custom/general/helper_text_interval"))
 
 
 func set_helper_text(msg: String, duration: float) -> void: 

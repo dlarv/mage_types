@@ -98,7 +98,7 @@ func _enter_tree() -> void:
 		for item in equipment:
 			item.quantity = 99
 
-	if Settings.play_test_mode: 
+	if ProjectSettings.get_setting("custom/general/play_test_mode"): 
 		use_override = "NONE"
 		# for item in key_items:
 		# 	item.quantity = 0

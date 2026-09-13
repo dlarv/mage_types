@@ -7,16 +7,16 @@ func _ready() -> void:
 
 func open(fileName: String) -> void:
 	# Load settings like the seed before opening scene.
-	var path := "%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ]
+	var path := "%s/%s" % [ ProjectSettings.get_setting("custom/general/saved_game_directory"), fileName ]
 	var file := FileAccess.open(path, FileAccess.READ)
 
 	# Information that must be accessed by home page before main scene is instantiated is saved at the beginning
 	# of the file inside a dictionary.
 	var data: Variant = file.get_var()
-	if data.has("player_name"):
-		Settings.set_player_name(data["player_name"])
-
-	Settings.loaded_save_data = file
+	# if data.has("player_name"):
+	# 	Settings.set_player_name(data["player_name"])
+	#
+	# Settings.loaded_save_data = file
 	get_tree().change_scene_to_file("res://world/demo.tscn")
 
 
@@ -36,7 +36,7 @@ func _on_continue_button_pressed() -> void:
 	var maxTime := -1
 	var maxPath: String
 	for game: String in %SaveMenu.saved_games:
-		var time := FileAccess.get_modified_time("%s/%s" % [Settings.SAVE_ROOT_DIR, game])
+		var time := FileAccess.get_modified_time("%s/%s" % [ProjectSettings.get_setting("custom/general/saved_game_directory"), game])
 		if time > maxTime:
 			maxPath = game
 			maxTime = time
@@ -70,7 +70,7 @@ func _on_save_menu_load_button_pressed(fileName:String) -> void:
 func _on_create_game_button_pressed() -> void:
 	var playerName: String = %Name_LineEdit.text
 	if playerName.is_empty():
-		playerName = "Player"
+		playerName = "Goose"
 
-	Settings.set_player_name(playerName)
+	# Settings.set_player_name(playerName)
 	get_tree().change_scene_to_file("res://world/demo.tscn")

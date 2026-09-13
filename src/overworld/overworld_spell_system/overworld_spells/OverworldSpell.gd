@@ -75,7 +75,7 @@ func _spawn_projectile(collision_test: Callable, action_to_perform: Callable, el
 	if not _is_mouse_pos_valid: return
 	var projectile := Projectile.instantiate()
 	var target: Vector3
-	if not Settings.use_mouse_targeting:
+	if not ProjectSettings.get_setting("custom/general/use_mouse_targeting"):
 		target = global_basis.z
 	else:
 		target = _mouse_pos.normalized()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://t8uvl87jd1pk"]
+[gd_scene format=3 uid="uid://t8uvl87jd1pk"]
 
 [ext_resource type="Script" uid="uid://br4vom0bjstcs" path="res://src/settings/Settings.gd" id="1_vt1hh"]
 
-[node name="Settings" type="Node"]
+[node name="Settings" type="Node" unique_id=429322299]
 script = ExtResource("1_vt1hh")
 debug_mode = true
+play_test_mode = true

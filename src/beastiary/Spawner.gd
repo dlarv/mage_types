@@ -4,10 +4,7 @@ signal player_defeated_enemy()
 signal enemy_defeated_player()
 signal player_ran()
 
-static var rng := RandomNumberGenerator.new():
-	set(val):
-		rng = val
-		rng.seed = Settings.random_seed
+static var rng := RandomNumberGenerator.new()
 
 @export var weighted_enemy_pool: Dictionary[PackedScene, float] = {}
 var _enemy_pool: Array[PackedScene]

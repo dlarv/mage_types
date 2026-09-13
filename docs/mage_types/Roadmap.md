@@ -36,7 +36,8 @@
 	- [x] Target selection isn't working
 - [ ] Falling animation playing when going thru doorways
 - [ ] Getting teleported by falling into water can clip player into collider or cause looped falling
-- [ ] Player is getting clipped into breakroom collider
+- [ ] Shield icon not disappearing
+- [x] Player is getting clipped into breakroom collider
 - [x] Ethereal Quartz overworld item can be used even when not equipped
 - [x] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 - [ ] Water in beach2 getting loaded when player is inside the caves
@@ -882,8 +883,8 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Add official env models
 [[Map#Transmutation Tutorial|Area Breakdown: Transmutation Tutorial]]
 ### Rec Room
-- [ ] Bartender #v0_7
-	- [ ] Rewrite dialogue
+- [x] Bartender #v0_7
+	- [x] Rewrite dialogue
 - [ ] Adonis Enclave #v0_7
 	- [ ] Differentiate models
 	- [ ] Overworld animations

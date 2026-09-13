@@ -105,7 +105,7 @@ func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamD
 			_allow_selecting_targets = false
 			_selected_target = null 
 			d.disable_selection()
-			if not Settings.enable_transmutation_hints: continue
+			if not ProjectSettings.get_setting("custom/battle/enable_transmutation_hints"): continue
 			d.disable_transmutation_hint())
 
 	var display := BattleActorDisplay.instantiate()
@@ -149,7 +149,7 @@ func select_target(user: BattleActor, action: _BattleAction) -> void:
 			sprite.enable_selection(Color.GREEN)
 			_selected_target = actors[user]
 
-			if Settings.enable_transmutation_hints:
+			if ProjectSettings.get_setting("custom/battle/enable_transmutation_hints"):
 				sprite.enable_transmutation_hint(action)
 			
 		_BattleAction.TargetType.ALLY:
@@ -178,7 +178,7 @@ func _enable_target_selection(highlightColor: Color, action: _BattleAction) -> v
 	for sprite: Node in sprites:
 		sprite.enable_selection(highlightColor)
 
-		if Settings.enable_transmutation_hints:
+		if ProjectSettings.get_setting("custom/battle/enable_transmutation_hints"):
 			sprite.enable_transmutation_hint(action)
 
 
@@ -190,12 +190,12 @@ func cancel_target_selection() -> void:
 	for d in sprites:
 		d.disable_selection()
 
-		if Settings.enable_transmutation_hints:
+		if ProjectSettings.get_setting("custom/battle/enable_transmutation_hints"):
 			d.disable_transmutation_hint()
 
 
 func enable_transmutation_hint(target: BattleActor, action: _BattleAction) -> void:
-	if not Settings.enable_transmutation_hints: return
+	if not ProjectSettings.get_setting("custom/battle/enable_transmutation_hints"): return
 	get_sprite(target).enable_transmutation_hint(action)
 
 

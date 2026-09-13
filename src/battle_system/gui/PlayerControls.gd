@@ -167,7 +167,7 @@ func populate_characters_menu(allies: Array[BattleActor], enemies: Array[BattleA
 		button.size_flags_vertical = Button.SIZE_EXPAND_FILL
 		button.text = enemy.name
 		button.pressed.connect(func() -> void: 
-			show_info.emit(enemy, not Settings.debug_mode)
+			show_info.emit(enemy, not ProjectSettings.get_setting("custom/general/debug_mode"))
 		)
 		character_scroller.add_child(button)
 
@@ -236,7 +236,9 @@ func calc_character_selector_state(index: int) -> void:
 	next_button.disabled = index == _edge_index
 	end_button.disabled = !_allow_end_turn
 
-	if _allow_end_turn and Settings.auto_end_turn and not _force_manual_end_turn:
+	if _allow_end_turn \
+			and ProjectSettings.get_setting("custom/battle/auto_end_turn") \
+			and not _force_manual_end_turn:
 		_on_end_turn_button_pressed()
 
 

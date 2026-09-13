@@ -22,10 +22,9 @@ func _ready() -> void:
 func setup() -> void:
 	var root := DirAccess.open("user://")
 	root.make_dir_recursive("games")
+	var dir := DirAccess.open("user://games")
 
 	var group := ButtonGroup.new()
-	var dir := DirAccess.open(Settings.SAVE_ROOT_DIR)
-
 	# Remove previous children
 	for child in %SavedGamesScroller.get_children():
 		%SavedGamesScroller.remove_child(child)
@@ -47,14 +46,14 @@ func setup() -> void:
 		obj.tree_exiting.connect(func() -> void:
 			_freed_objs.append(obj.get_path()))
 
-	if Settings.loaded_save_data:
-		read_file(Settings.loaded_save_data)
-		Settings.loaded_save_data = null
+	# if Settings.loaded_save_data:
+	# 	read_file(Settings.loaded_save_data)
+	# 	Settings.loaded_save_data = null
 
 
 func save() -> void:
 	var fileName: String = %LineEdit.text
-	var path := "%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ]
+	var path := "%s/%s" % [ ProjectSettings.get_setting("custom/general/saved_game_directory"), fileName ]
 	if not fileName in saved_games:
 		var button := Button.new()
 		button.text = fileName
@@ -96,14 +95,14 @@ func load() -> void:
 			singleton.reload()
 
 	var fileName: String = %LineEdit.text
-	var path := "%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ]
+	var path := "%s/%s" % [ ProjectSettings.get_setting("custom/general/saved_game_directory"), fileName ]
 	var file := FileAccess.open(path, FileAccess.READ)
 
 	# Information that must be accessed by home page before main scene is instantiated is saved at the beginning
 	# of the file inside a dictionary.
 	var data: Variant = file.get_var()
 	if data.has("player_name"):
-		Settings.set_player_name(data["player_name"])
+		# Settings.set_player_name(data["player_name"])
 		print("Set player name to %s" % data["player_name"])
 
 	# Read rest of data.
@@ -141,7 +140,7 @@ func _on_delete_button_pressed() -> void:
 	var index := saved_games.find(fileName)
 	saved_games.remove_at(index)
 
-	DirAccess.remove_absolute("%s/%s" % [ Settings.SAVE_ROOT_DIR, fileName ])
+	DirAccess.remove_absolute("%s/%s" % [ ProjectSettings.get_setting("custom/general/saved_game_directory"), fileName ])
 
 	for child in %SavedGamesScroller.get_children():
 		if child.text == fileName:

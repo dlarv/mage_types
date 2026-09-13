@@ -6,7 +6,7 @@ var _is_hunting := false
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	super._ready()
-	if Settings.debug_mode:
+	if ProjectSettings.get_setting("custom/general/debug_mode"):
 		var indicator := MeshInstance3D.new()
 		indicator.name = "TargetIndicator"
 		indicator.mesh = SphereMesh.new()

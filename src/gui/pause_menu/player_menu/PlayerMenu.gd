@@ -11,8 +11,8 @@ func setup(player: Node3D) -> void:
 	_player = player
 	_player.team_changed.connect(_setup_team)
 
-	if not Settings.player_name.is_empty():
-		_player.battle_actor.name = Settings.player_name
+	# if not Settings.player_name.is_empty():
+	# 	_player.battle_actor.name = Settings.player_name
 
 	$Player.setup(_player.battle_actor, true)
 	_player.actor_changed.connect($Player.setup.bind(true))

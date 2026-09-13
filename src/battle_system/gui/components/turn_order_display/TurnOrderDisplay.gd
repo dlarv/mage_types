@@ -20,7 +20,7 @@ func update_turn_order(data: Dictionary[BattleActor, ActorTurnData]) -> void:
 			
 		var element: ElementalType
 		if action.action != null:
-			if action.team_index == 1 and not Settings.show_opponent_intentions:
+			if action.team_index == 1 and not ProjectSettings.get_setting("custom/battle/show_opponent_intentions"):
 				element = ElementManager.Blank
 			else:
 				element = action.action.element
