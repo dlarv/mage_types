@@ -25,19 +25,17 @@ func setup(actor: BattleActor) -> void:
 	actor.was_just_defeated.connect(set_defeated)
 	actor.damage_applied.connect(set_health)
 	actor.stat_manager.stat_changed.connect(display_stat_change)
-	actor.element_changed.connect(func(id: int, e: ElementalType) -> void:
-		if id == 0:
-			%Element1.color = e.main_color
-		else:
-			%Element2.color = e.main_color
-	)
-	actor.status_activated.connect(func(effect: StatusEffect, data: Variant) -> void:
-		match effect.id:
-			StatusEffect.Effects.POISON,StatusEffect.Effects.PHOBIC:
-				animate_hp()
-	)
+	actor.element_changed.connect(change_element)
+	actor.status_activated.connect(_on_status_activated)
 
 
+func _exit_tree() -> void:
+	actor.was_just_defeated.disconnect(set_defeated)
+	actor.damage_applied.disconnect(set_health)
+	actor.stat_manager.stat_changed.disconnect(display_stat_change)
+	actor.element_changed.disconnect(change_element)
+	actor.status_activated.disconnect(_on_status_activated)
+	
 
 func set_health(hp: int) -> void:
 	next_hp = hp
@@ -74,3 +72,17 @@ func display_stat_change(stat: StatManager.Stats, value: float) -> void:
 
 func set_defeated() -> void:
 	modulate = Color(1, 1, 1, .5)
+
+
+func change_element(id: int, e: ElementalType) -> void:
+	if id == 0:
+		%Element1.color = e.main_color
+	else:
+		%Element2.color = e.main_color
+
+
+ 
+func _on_status_activated(effect: StatusEffect, data: Variant) -> void:
+	match effect.id:
+		StatusEffect.Effects.POISON,StatusEffect.Effects.PHOBIC:
+			animate_hp()
