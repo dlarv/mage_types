@@ -85,7 +85,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0006, 250.99973),
+"size": Vector2(300.0006, 250.99976),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -99,7 +99,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00134, 250.99973),
+"size": Vector2(300.00128, 250.99976),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -113,7 +113,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 251.00024),
+"size": Vector2(300.00012, 251.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -141,7 +141,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0006, 251.00024),
+"size": Vector2(300.00024, 251.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -155,7 +155,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00134, 251.00024),
+"size": Vector2(300.00128, 251.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -169,7 +169,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00006),
+"size": Vector2(300.00024, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -183,7 +183,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 250.99994),
+"size": Vector2(300.00012, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -197,7 +197,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0006, 250.99994),
+"size": Vector2(300.0006, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -211,7 +211,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0006, 250.99994),
+"size": Vector2(300.00024, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -225,7 +225,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251.00024),
+"size": Vector2(300.00024, 251.00012),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -239,7 +239,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00024),
+"size": Vector2(300, 251.00012),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -253,7 +253,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00037, 251.00024),
+"size": Vector2(300.00012, 251.00012),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -267,7 +267,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 251.00024),
+"size": Vector2(300, 251.00012),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -281,7 +281,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00024),
+"size": Vector2(300, 251.00012),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -295,7 +295,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00073, 251),
+"size": Vector2(300.00085, 250.99988),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -309,7 +309,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251),
+"size": Vector2(300.00024, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -323,7 +323,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251),
+"size": Vector2(300, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -337,7 +337,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00037, 251),
+"size": Vector2(300.00012, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -365,7 +365,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251),
+"size": Vector2(300, 251),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -393,7 +393,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251.00037),
+"size": Vector2(300.00024, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -407,7 +407,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00037),
+"size": Vector2(300, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -421,7 +421,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00037, 251.00037),
+"size": Vector2(300.00012, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -431,25 +431,25 @@ nodes = {
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_39",
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00037),
+"size": Vector2(300.00018, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
 &"1_34": {
-"dialogue": "And since the attack you used didn't react at all with me, I didn't receive any side effects. Bummer dude ;)",
+"dialogue": "And since the attack you used didn't react at all with me, I didn't receive any side effects. ",
 "offset": Vector2(1260, 1620),
 "options": {
 0: {
 "condition": Array[Dictionary]([]),
-"link": "END",
+"link": &"1_43",
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00037),
+"size": Vector2(300.00018, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -463,7 +463,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 251.00037),
+"size": Vector2(300.00024, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -477,7 +477,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00037),
+"size": Vector2(300, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -491,7 +491,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00037, 251.00037),
+"size": Vector2(300.00012, 251.0003),
 "speaker": "Dallas",
 "sprite": -1
 },
@@ -509,6 +509,20 @@ nodes = {
 "speaker": "Duke",
 "sprite": -1
 },
+&"1_39": {
+"dialogue": "Thanks man!",
+"offset": Vector2(1580, 1360),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 240),
+"speaker": "Dallas",
+"sprite": -1
+},
 &"1_4": {
 "dialogue": "Then, click on me to select your target.",
 "offset": Vector2(600, -320),
@@ -519,7 +533,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 251),
+"size": Vector2(300.00012, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -533,7 +547,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0006, 250.99973),
+"size": Vector2(300.00024, 250.99976),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -561,8 +575,22 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 251.00012),
+"size": Vector2(300.00012, 251.00012),
 "speaker": "Duke",
+"sprite": -1
+},
+&"1_43": {
+"dialogue": "Bummer dude ;)",
+"offset": Vector2(1580, 1620),
+"options": {
+0: {
+"condition": Array[Dictionary]([]),
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Dallas",
 "sprite": -1
 },
 &"1_5": {
@@ -589,7 +617,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 282.00018),
+"size": Vector2(300.00024, 282.00024),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -603,7 +631,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.0006, 251),
+"size": Vector2(300.00024, 251),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -617,7 +645,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 250.99973),
+"size": Vector2(300.00024, 250.99976),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -631,7 +659,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 250.99973),
+"size": Vector2(300.00012, 250.99976),
 "speaker": "Aegean",
 "sprite": -1
 },
@@ -652,7 +680,7 @@ nodes = {
 "title": "Frame #1"
 },
 &"8_2": {
-"attached_nodes": Array[StringName]([&"0_2", &"1_37", &"1_36", &"1_35", &"0_9", &"1_34", &"1_33", &"5_1", &"1_32", &"1_31", &"1_30", &"0_8", &"1_29", &"1_28", &"1_27", &"1_26", &"1_25", &"0_7", &"1_23", &"1_22", &"1_21", &"1_20", &"1_2", &"1_24"]),
+"attached_nodes": Array[StringName]([&"0_2", &"1_37", &"1_36", &"1_35", &"0_9", &"1_34", &"1_33", &"5_1", &"1_32", &"1_31", &"1_30", &"0_8", &"1_29", &"1_28", &"1_27", &"1_26", &"1_25", &"0_7", &"1_23", &"1_22", &"1_21", &"1_20", &"1_2", &"1_24", &"1_39", &"1_43"]),
 "offset": Vector2(-360, 799),
 "tint_color": Color(0, 0.24975586, 0.515625, 1),
 "title": "Frame #1"
@@ -664,4 +692,4 @@ nodes = {
 "title": "Frame #1"
 }
 }
-strays = Array[String](["8_2", "8_1", "8_3"])
+strays = Array[String](["8_1", "8_3", "8_2"])
