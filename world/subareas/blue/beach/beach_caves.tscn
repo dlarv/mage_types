@@ -1420,8 +1420,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -5)
 _element = 2
 
 [node name="Reset" parent="Section3/PurpleRoom/Chunk" unique_id=996469747 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.98216, -9)
-reset_positions_of = [null]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.98216, -1)
+reset_positions_of = [NodePath("../MagiclayDisk")]
 
 [node name="ReturnPacketTrigger" parent="Section3/PurpleRoom/Chunk" unique_id=224352467 instance=ExtResource("4_4pdg5")]
 auto_trigger = true
@@ -1456,7 +1456,7 @@ shape = SubResource("BoxShape3D_6l8lo")
 mesh = SubResource("BoxMesh_gcly8")
 
 [node name="Table" type="StaticBody3D" parent="Section3/PurpleRoom/Chunk" unique_id=1588021061]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 3.5999985, -0.70000005, -0.100000024)
+transform = Transform3D(-8.940697e-08, 0, 0.99999976, 0, 1, 0, -0.99999976, 0, -8.940697e-08, 10.599998, -0.70000005, -1.0999999)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Section3/PurpleRoom/Chunk/Table" unique_id=726773070]
 shape = SubResource("BoxShape3D_upves")
@@ -1752,7 +1752,7 @@ element = 1
 
 [node name="Reset" parent="Section3/WestRoom" unique_id=354852941 node_paths=PackedStringArray("reset_positions_of") instance=ExtResource("9_jbfvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.98216, 32.1)
-reset_positions_of = [null]
+reset_positions_of = [NodePath("../Chunk/MagiclayDisk")]
 
 [node name="CyanChunk" type="Area3D" parent="Section3" unique_id=214374323 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -41)
