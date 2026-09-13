@@ -7,7 +7,7 @@
 custom_minimum_size = Vector2(150, 150)
 offset_right = 395.0
 offset_bottom = 200.0
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("1_2qos5")
 attack_element_1 = NodePath("GridContainer/Icon1")
 attack_element_2 = NodePath("GridContainer/Icon2")
