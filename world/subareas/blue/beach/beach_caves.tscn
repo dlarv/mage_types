@@ -1471,9 +1471,11 @@ dialog_id = "TUTORIAL_4"
 
 [node name="IconFlag" parent="Section3/PurpleRoom/Chunk" unique_id=289782440 instance=ExtResource("18_6l8lo")]
 transform = Transform3D(1.159111, -0.3105829, 0, 0.3105829, 1.159111, 0, 0, 0, 1.2, 6, -1.1, -7)
+element = 5
 
 [node name="IconFlag2" parent="Section3/PurpleRoom/Chunk" unique_id=526943858 instance=ExtResource("18_6l8lo")]
 transform = Transform3D(1.159111, 0.31058288, 0, -0.31058288, 1.159111, 0, 0, 0, 1.2, 12, -1.1, -9)
+element = 5
 
 [node name="IconFlag3" parent="Section3/PurpleRoom/Chunk" unique_id=1330665435 instance=ExtResource("18_6l8lo")]
 transform = Transform3D(1.1817694, 0.20837782, 0, -0.20837782, 1.1817694, 0, 0, 0, 1.2, 6, -1.1, -15)
