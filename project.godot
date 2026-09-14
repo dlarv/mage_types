@@ -39,7 +39,7 @@ TooltipPlaceholderVariables="*res://addons/tooltips_pro/scripts/tooltip_placehol
 
 [custom]
 
-general/play_test_mode=false
+general/play_test_mode=true
 battle/enable_transmutation_hint=true
 general/use_mouse_targeting=true
 battle/show_battle_turn_order=true
@@ -398,5 +398,5 @@ element_c={
 }
 magiclay_effect_mode={
 "type": "int",
-"value": 0
+"value": 1
 }
