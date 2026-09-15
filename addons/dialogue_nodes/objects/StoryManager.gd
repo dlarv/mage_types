@@ -24,7 +24,7 @@ var variables: Dictionary[String, Dictionary]:
 
 var custom_node_functions: Array[Callable]:
 	get:
-		if len(custom_node_functions):
+		if len(custom_node_functions) == 0:
 			load_data()
 		return custom_node_functions
 
@@ -45,10 +45,7 @@ func load_data() -> void:
 	variables = story_state.variables
 	characters = story_state.characters
 
-	custom_node_functions = []
-	for node in story_state.get_custom_nodes():
-		custom_node_functions.append(node.instantiate().process)
-	
+	custom_node_functions = story_state.get_processor_functions()
 	custom_text_effects = story_state.get_custom_text_effects()
 
 
@@ -80,7 +77,7 @@ func set_variable(key: String, value: Variant, suppress_warning:=false) -> bool:
 		variables[key].set("value", value)
 		return true
 	if not suppress_warning:
-		push_warning("Story Variable(%s) not found!")
+		push_warning("Story Variable(%s) not found!" % key)
 	return false
 
 

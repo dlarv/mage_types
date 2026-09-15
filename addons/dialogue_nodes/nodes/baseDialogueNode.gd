@@ -48,4 +48,4 @@ func _register_timer(node: Control, signal_name: String, fn: Callable, parent_ov
 	return timer
 
 
-static func process(parser: DialogueParser, dict: Dictionary): pass
+func get_processor_path() -> String: return ""

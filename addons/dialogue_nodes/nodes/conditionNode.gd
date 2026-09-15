@@ -44,10 +44,3 @@ func _on_variables_updated(variables_list: Array[String]) -> void:
 func subscribe_to_variables() -> bool: return true
 
 
-static func process(parser: DialogueParser, dict: Dictionary):
-	var result = parser.check_condition(dict['condition'])
-	parser.proceed(dict[str(result).to_lower()])
-
-
-
-# Checks the condition based on dict.value1, dict.value2 and dict.operator

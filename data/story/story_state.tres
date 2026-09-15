@@ -39,4 +39,5 @@ variables = Dictionary[String, Dictionary]({
 "value": ""
 }
 })
+custom_processor_paths = Array[String](["res://src/story_system/dialogue_nodes/GiveItemProcessor.gd"])
 metadata/_custom_type_script = "uid://p2xk5plmxiiy"

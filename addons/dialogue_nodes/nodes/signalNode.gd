@@ -24,14 +24,3 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	
 	return [dict['link']]
 
-
-static func process(parser: DialogueParser, dict: Dictionary):
-	var key: Variant = dict.signal_value.value
-	if dict.signal_value.use_enum:
-		key = StoryManager.get_signal_from_key(dict.signal_value.value)
-
-	parser.dialogue_signal.emit(key)
-	if dict.auto_proceed:
-		parser.proceed(dict.link)
-	else:
-		parser.start_event(dict.link)

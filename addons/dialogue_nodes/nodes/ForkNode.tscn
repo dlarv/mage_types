@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsv8k2uht3jij"]
+[gd_scene format=3 uid="uid://bsv8k2uht3jij"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/nodes/forkNode.gd" id="1_8xybu"]
+[ext_resource type="Script" uid="uid://4h54qkgdhurn" path="res://addons/dialogue_nodes/nodes/forkNode.gd" id="1_8xybu"]
 [ext_resource type="Texture2D" uid="uid://cj0m8q8hgm0ed" path="res://addons/dialogue_nodes/icons/Add.svg" id="2_3eo50"]
 
-[node name="ForkNode" type="GraphNode"]
+[node name="ForkNode" type="GraphNode" unique_id=1960135732]
 custom_minimum_size = Vector2(300, 0)
 offset_right = 300.0
 offset_bottom = 137.0
@@ -37,16 +37,16 @@ slot/2/right_icon = null
 slot/2/draw_stylebox = true
 script = ExtResource("1_8xybu")
 
-[node name="ForkTitle" type="LineEdit" parent="."]
+[node name="ForkTitle" type="LineEdit" parent="." unique_id=736927567]
 layout_mode = 2
 placeholder_text = "Title"
 
-[node name="AddButton" type="Button" parent="."]
+[node name="AddButton" type="Button" parent="." unique_id=505604282]
 layout_mode = 2
 icon = ExtResource("2_3eo50")
 icon_alignment = 1
 
-[node name="DefaultLabel" type="Label" parent="."]
+[node name="DefaultLabel" type="Label" parent="." unique_id=546639687]
 layout_mode = 2
 text = "Default exit"
 horizontal_alignment = 2

@@ -7,6 +7,7 @@ signal variable_list_updated(list: Array[String])
 
 @export var characters: Array[Character]
 @export var variables: Dictionary[String, Dictionary]
+@export var custom_processor_paths: Array[String] = []
 
 
 func get_variable_list() -> Array[String]:
@@ -18,21 +19,6 @@ func update_variables(data: Dictionary) -> void:
 	for key in data:
 		if variables.has(key):
 			variables[key].value = data[key]
-
-
-func get_custom_nodes() -> Array[PackedScene]:
-	if not ProjectSettings.has_setting("application/story_manager/custom_nodes"):
-		return []
-
-	var output: Array[PackedScene] = []
-	for path in ProjectSettings.get_setting("application/story_manager/custom_nodes"):
-		var node := load(path)
-		if node is PackedScene:
-			if not node.instantiate() is BaseDialogueNode:
-				push_error("CustomNode(%s) does not inherit BaseDialogueNode! Skipping..." % node)
-				continue
-			output.append(node)
-	return output
 
 
 func get_custom_text_effects() -> Array[RichTextEffect]:
@@ -52,4 +38,15 @@ func get_custom_text_effects() -> Array[RichTextEffect]:
 static func load_story_state() -> StoryState:
 	var path := ProjectSettings.get_setting("application/story_manager/story_state_path")
 	return ResourceLoader.load(path)
+
+
+func get_processor_functions() -> Array[Callable]:
+	var output: Array[Callable] = []
+	for path in custom_processor_paths:
+		var processor = load(path)
+		if processor.has_method("process"):
+			output.append(processor.process)
+
+	return output
+
 

@@ -61,6 +61,7 @@ func set_data(new_data: DialogueData) -> void:
 	variables.clear()
 	for var_name in data.variables:
 		variables[var_name] = data.variables[var_name].value
+		print(var_name)
 	#DLARV
 	for var_name in StoryManager.variables:
 		variables[var_name] = StoryManager.variables[var_name].value
@@ -69,19 +70,19 @@ func set_data(new_data: DialogueData) -> void:
 
 
 func init_process_functions(custom: Array[Callable]) -> void:
-	var root := "res://addons/dialogue_nodes/nodes"
 	_process_functions = [
-		load("%s/startNode.gd" % root).process,
+		DialogueNodeProcessor.process_start,
 		_process_dialogue,
 		func(): pass, # Comment
-		load("%s/signalNode.gd" % root).process,
-		load("%s/setNode.gd" % root).process,
-		load("%s/conditionNode.gd" % root).process,
+		DialogueNodeProcessor.process_signal,
+		DialogueNodeProcessor.process_set,
+		DialogueNodeProcessor.process_condition,
 		_process_nest,
-		load("%s/forkNode.gd" % root).process,
+		DialogueNodeProcessor.process_fork,
 		func(): pass, # graph frame
-		load("%s/setSignalNode.gd" % root).process,
+		load("res://addons/dialogue_nodes/objects/processors/SetSignalProcessor.gd").process,
 	]
+
 
 	_process_functions += custom
 

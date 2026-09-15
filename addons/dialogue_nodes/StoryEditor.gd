@@ -44,6 +44,7 @@ static func load_data() -> void:
 	story_state = StoryState.load_story_state()
 	story_state.character_list_updated.emit(characters)
 	story_state.variable_list_updated.emit(story_state.variables.keys())
+	load_custom_node_paths()
 
 
 static func add_character(character: Character) -> void:
@@ -106,5 +107,19 @@ static func unsubscribe_to_characters(fn: Callable) -> void:
 	story_state.character_list_updated.disconnect(fn)
 
 
-static func get_custom_node_paths() -> Array[PackedScene]:
-	return story_state.get_custom_nodes()
+static func load_custom_node_paths() -> Array[PackedScene]:
+	if not ProjectSettings.has_setting("application/story_manager/custom_nodes"):
+		return []
+
+	var output: Array[PackedScene] = []
+	story_state.custom_processor_paths = []
+	for path in ProjectSettings.get_setting("application/story_manager/custom_nodes"):
+		var node := load(path)
+		if node is PackedScene:
+			var instance = node.instantiate()
+			if not instance is BaseDialogueNode:
+				push_error("CustomNode(%s) does not inherit BaseDialogueNode! Skipping..." % node)
+				continue
+			output.append(node)
+			story_state.custom_processor_paths.append(instance.get_processor_path())
+	return output

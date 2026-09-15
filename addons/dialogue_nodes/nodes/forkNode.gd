@@ -7,8 +7,7 @@ extends BaseDialogueNode
 ## bottom) to be valid is used to exit, with a default option with no conditions always last.
 
 
-const ForkItemScene := preload('res://addons/dialogue_nodes/nodes/sub_nodes/ForkItem.tscn')
-
+var ForkItemScene = preload('res://addons/dialogue_nodes/nodes/sub_nodes/ForkItem.tscn')
 var forks: Array[Control] = []
 var base_color: Color = Color.WHITE
 var last_variable_list: Array[String]
@@ -54,7 +53,7 @@ func _from_dict(dict: Dictionary) -> Array[String]:
 	$ForkTitle.text = dict['fork_title']
 	
 	for idx in dict['forks']:
-		var new_item := ForkItemScene.instantiate()
+		var new_item = ForkItemScene.instantiate()
 		add_item(new_item, idx + 1)
 		new_item.set_condition(dict['forks'][idx]['condition'])
 		var link: String = dict['forks'][idx]['link']
@@ -122,7 +121,7 @@ func remove_item(item: BoxContainer) -> void:
 
 
 func _on_add_button_pressed() -> void:
-	var new_item := ForkItemScene.instantiate()
+	var new_item = ForkItemScene.instantiate()
 	
 	if not undo_redo:
 		add_item(new_item, -3)
@@ -165,14 +164,3 @@ func _on_variables_updated(variables_list: Array[String]) -> void:
 
 
 func subscribe_to_variables() -> bool: return true
-
-
-static func process(parser: DialogueParser, dict: Dictionary):
-	var result = dict.default
-	var forks = dict.forks
-	# index traversal to ensure they're checked in order
-	for i in range(0, forks.size()):
-		if parser.check_condition(forks[i].condition):
-			result = forks[i].link
-			break
-	parser.proceed(result)

@@ -102,10 +102,5 @@ func _on_type_selected(idx: int) -> void:
 	undo_redo.commit_action()
 
 
-static func process(parser: DialogueParser, dict: Dictionary) -> void:
-	if dict.operator == 0:
-		Inventory.find_and_add_item(dict.item_name, dict.type, dict.quantity)
-	else:
-		Inventory.find_and_add_item(dict.item_name, dict.type, -dict.quantity)
-
-	parser.proceed(dict.link)
+func get_processor_path() -> String:
+	return "res://src/story_system/dialogue_nodes/GiveItemProcessor.gd"
