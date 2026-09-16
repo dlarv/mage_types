@@ -89,6 +89,8 @@ func _on_action_selected(index: int, action: _BattleAction) -> void:
 func select_targets(user: BattleActor, action:_BattleAction) -> Array[BattleActor]:
 	var targets: Array[BattleActor] = []
 
+	team_display.select_target(user, action)
+	targets = [ await target_selected ]
 	match action.target:
 		_BattleAction.TargetType.ALLIES:
 			targets = allies
@@ -101,10 +103,6 @@ func select_targets(user: BattleActor, action:_BattleAction) -> Array[BattleActo
 
 		_BattleAction.TargetType.RANDOM:
 			targets = [ (allies + enemies).pick_random() ]
-
-		_:
-			team_display.select_target(user, action)
-			targets = [ await target_selected ]
 
 	
 	if len(targets) == 1 and targets[0] == null:

@@ -416,7 +416,6 @@ func deserialize(data: Dictionary) -> void:
 
 ## Func Override methods
 func add_func_override(key: StringName, call: Callable) -> void:
-	var i := call.get_argument_count()
 	_func_overrides[key] = call
 
 

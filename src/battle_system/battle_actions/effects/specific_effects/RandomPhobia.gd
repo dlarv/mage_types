@@ -23,7 +23,7 @@ func apply_effect(data: ActorTurnData, target: BattleActor, effectiveness:=1.0) 
 
 		# Apply effect.
 		target.add_status_effect(phobia)
-		phobia.apply_effect(data, target)
+		#phobia.apply_effect(data, target)
 
 	return data
 

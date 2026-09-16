@@ -162,14 +162,35 @@ func select_target(user: BattleActor, action: _BattleAction) -> void:
 			_selected_target = actors[user].opposite
 
 		_BattleAction.TargetType.ANY:
-			_enable_target_selection(Color.BLUE, action)
+			_enable_target_selection(Color.YELLOW, action)
 			_selected_target = actors[user].next
 
 		# These cases are handled by caller.
-		# _BattleAction.TargetType.ALLIES:
-		# _BattleAction.TargetType.ENEMIES:
-		# _BattleAction.TargetType.ALL:
-		# _BattleAction.TargetType.RANDOM:
+		_BattleAction.TargetType.ALLIES:
+			var t: Array = actors.values() \
+			.filter(
+				func(x: TeamDisplayActor) -> bool: 
+					return x.is_ally
+			).map(func(x: TeamDisplayActor) -> _BattleSprite:
+				return x.sprite
+			) 
+			_enable_forced_target_selection(Color.BLUE, action, t)
+			_selected_target = actors[user].next
+
+		_BattleAction.TargetType.ENEMIES:
+			var t: Array = actors.values() \
+			.filter(
+				func(x: TeamDisplayActor) -> bool: 
+					return not x.is_ally
+			).map(func(x: TeamDisplayActor) -> _BattleSprite:
+				return x.sprite
+			) 
+			_enable_forced_target_selection(Color.BLUE, action, t)
+			_selected_target = actors[user].opposite
+
+		_BattleAction.TargetType.ALL,_BattleAction.TargetType.RANDOM:
+			_enable_target_selection(Color.BLUE, action)
+			_selected_target = actors[user].opposite
 	
 	_selected_target.hover(true)
 
@@ -177,6 +198,15 @@ func select_target(user: BattleActor, action: _BattleAction) -> void:
 func _enable_target_selection(highlightColor: Color, action: _BattleAction) -> void:
 	_allow_selecting_targets = true
 	for sprite: Node in sprites:
+		sprite.enable_selection(highlightColor)
+
+		if ProjectSettings.get_setting("custom/battle/enable_transmutation_hint"):
+			sprite.enable_transmutation_hint(action)
+
+
+func _enable_forced_target_selection(highlightColor: Color, action: _BattleAction, validTargets: Array) -> void:
+	_allow_selecting_targets = true
+	for sprite: Node in validTargets:
 		sprite.enable_selection(highlightColor)
 
 		if ProjectSettings.get_setting("custom/battle/enable_transmutation_hint"):

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ccl64vcc20maa" path="res://src/battle_system/AlignmentManager.gd" id="1_ryjtr"]
 [ext_resource type="Script" uid="uid://ccfa2tjo30wje" path="res://src/battle_system/PlayerBattleActor.gd" id="2_kljnf"]
 [ext_resource type="Resource" uid="uid://bf6tcu40uv266" path="res://data/battle_system/battle_actions/attacks/basic/throw_m.tres" id="3_yuipy"]
+[ext_resource type="Resource" uid="uid://b6ykq580gcql7" path="res://data/battle_system/battle_actions/attacks/elementals/magenta/confetti_cannon.tres" id="4_n25sc"]
 [ext_resource type="PackedScene" uid="uid://boqoojlep4rdu" path="res://data/story/battle_actors/player_characters/battle_sprites/goose_battle_sprite.tscn" id="5_tjvpd"]
 [ext_resource type="Script" uid="uid://3val1kw3ysgx" path="res://src/battle_system/PlayerStatManager.gd" id="6_m5g4e"]
 
@@ -26,6 +27,6 @@ stat_manager = SubResource("Resource_3y0wy")
 _element1 = 0
 _element2 = 0
 alignment_manager = SubResource("Resource_cb2ej")
-attacks = Array[ExtResource("1_60dwf")]([ExtResource("3_yuipy")])
+attacks = Array[ExtResource("1_60dwf")]([ExtResource("3_yuipy"), ExtResource("4_n25sc")])
 sprite_path = ExtResource("5_tjvpd")
 metadata/_custom_type_script = "uid://ccfa2tjo30wje"
