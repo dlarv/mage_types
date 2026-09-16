@@ -10,7 +10,7 @@
 script = ExtResource("3_6rxdf")
 strength_is_percent_hp = false
 name = "InstantHealthChange"
-_strength = "40"
+_strength = "20"
 metadata/_custom_type_script = "uid://nh2nt72jmw33"
 
 [sub_resource type="Resource" id="Resource_we1ag"]
@@ -29,6 +29,6 @@ animation = ExtResource("1_iiabu")
 _element = 3
 attack_range = 2
 target = 0
-details = "If user is [el]Red[/el], heals 40 hp.
-Otherwise, only heals 20."
+details = "If user is [el]Red[/el], heals 20 hp.
+Otherwise, only heals 10."
 metadata/_custom_type_script = "uid://c140c4j4qwln7"
