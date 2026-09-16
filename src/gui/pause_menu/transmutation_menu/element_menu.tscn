@@ -156,6 +156,8 @@ theme_override_constants/separation = 20
 [node name="Green" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox" unique_id=360752179 instance=ExtResource("5_81x5c")]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+color = Color(0.145098, 1, 0.188235, 1)
+_element = 6
 
 [node name="Green_Label" type="Label" parent="Affinity/VBoxContainer/HBoxContainer/Offensive_VBox" unique_id=993165807]
 layout_mode = 2

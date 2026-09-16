@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfm2gywqc5rvp"]
 
 [ext_resource type="Script" uid="uid://dqpk42g68jc4p" path="res://addons/matchupmanager/ElementFlowChart.gd" id="1_oarhx"]
-[ext_resource type="Texture2D" uid="uid://cj0m8q8hgm0ed" path="res://addons/_dialogue_nodes/icons/Add.svg" id="2_kvcg0"]
+[ext_resource type="Texture2D" uid="uid://cj0m8q8hgm0ed" path="res://addons/dialogue_nodes/icons/Add.svg" id="2_kvcg0"]
 [ext_resource type="Shader" uid="uid://4uh336bptox5" path="res://addons/matchupmanager/flow_chart.gdshader" id="2_wra6w"]
 [ext_resource type="Texture2D" uid="uid://bfo77iaulivgd" path="res://assets/graphics/matchup_graphs/matchup_graph_v5.png" id="3_wra6w"]
 
@@ -53,6 +53,7 @@ theme_override_constants/separation = 20
 
 [node name="AdvancedOptionsPane" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1616102256]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/AdvancedOptionsPane" unique_id=884878169]
