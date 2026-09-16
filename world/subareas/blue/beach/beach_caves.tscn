@@ -644,7 +644,7 @@ mesh = SubResource("BoxMesh_4pdg5")
 skeleton = NodePath("")
 
 [node name="Readable" parent="Section1/RedRoom/Chunk/Table" unique_id=1171627487 instance=ExtResource("5_7mtce")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
+transform = Transform3D(-4.4703484e-08, 0, -1, 0, 1, 0, 1, 0, -4.4703484e-08, -0.5174314, 0.4000001, 0.19923782)
 dialog_id = "TUTORIAL_1"
 
 [node name="FlyPrompt" type="Label3D" parent="Section1/RedRoom/Chunk" unique_id=1448421419]
@@ -652,6 +652,26 @@ transform = Transform3D(0.96592575, 0, -0.25881925, 0, 1, 0, 0.25881925, 0, 0.96
 text = "If you get stuck, use Ctrl+f to enter fly mode.
 (This is a debug tool, not a part of the actual game)"
 font_size = 64
+
+[node name="Readable2" parent="Section1/RedRoom/Chunk" unique_id=346436416 instance=ExtResource("5_7mtce")]
+transform = Transform3D(0.99619466, 0, 0.087155715, 0, 1, 0, -0.087155715, 0, 0.99619466, -3.8564231, 0.50000006, -6.301903)
+dialog_id = "TUTORIAL_1_5"
+
+[node name="IconFlag" parent="Section1/RedRoom/Chunk" unique_id=169935383 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1817693, 0.20837781, 0, -0.20837781, 1.1817693, 0, 0, 0, 1.1999999, 2.2, -1.1, -5.2)
+element = 5
+
+[node name="IconFlag2" parent="Section1/RedRoom/Chunk" unique_id=1154300507 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.2, 4.4703484e-08, 0, -4.4703484e-08, 1.2, 0, 0, 0, 1.1999999, -5.8, -1.1, -5.2)
+element = 6
+
+[node name="IconFlag3" parent="Section1/RedRoom/Chunk" unique_id=322964610 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1910899, 0.10299802, -0.103423, -0.10102321, 1.1954337, 0.027069079, 0.10535291, -0.018161308, 1.1952282, 6.4999995, -2, -4.7)
+element = 7
+
+[node name="IconFlag4" parent="Section1/RedRoom/Chunk" unique_id=1155182971 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1777717, 0.09478795, 0.20944884, -0.10102321, 1.1954337, 0.027069079, -0.20651363, -0.044200324, 1.1812695, 2.4999995, -2, 2.2000003)
+element = 3
 
 [node name="OrangeRoom" type="Area3D" parent="Section1" unique_id=219537799 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -20)
@@ -747,6 +767,22 @@ skeleton = NodePath("")
 [node name="Readable" parent="Section1/OrangeRoom/Chunk/Table" unique_id=355248638 instance=ExtResource("5_7mtce")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
 dialog_id = "TUTORIAL_2"
+
+[node name="IconFlag" parent="Section1/OrangeRoom/Chunk" unique_id=847449983 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.2, 1.4901161e-08, 0, -1.4901161e-08, 1.2, 0, 0, 0, 1.1999999, -22.5, -1.6, -5.800001)
+element = 5
+
+[node name="IconFlag2" parent="Section1/OrangeRoom/Chunk" unique_id=445587655 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1954337, -0.10458688, 0, 0.10458688, 1.1954337, 0, 0, 0, 1.1999999, -27.199999, -1.6, -5.9000015)
+element = 3
+
+[node name="IconFlag3" parent="Section1/OrangeRoom/Chunk" unique_id=394674147 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.2, 1.4901161e-08, 0, -1.4901161e-08, 1.2, 0, 0, 0, 1.1999999, -13.799999, -1.6, -5.9000015)
+element = 6
+
+[node name="IconFlag4" parent="Section1/OrangeRoom/Chunk" unique_id=1647944093 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.159111, 1.4393416e-08, -0.31058285, -1.4901161e-08, 1.2, 0, 0.31058288, 3.8567043e-09, 1.1591109, -17.8, -1.6, 2.0999985)
+element = 4
 
 [node name="Magenta Room" type="Area3D" parent="Section1" unique_id=846473639 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -13)
@@ -960,6 +996,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.05000007, -5)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_7io46")
 
+[node name="IconFlag" parent="Section2/YellowRoom/Chunk" unique_id=609273752 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1954337, 0.1045869, 0, -0.1045869, 1.1954337, 0, 0, 0, 1.1999999, 2.5, -1.6, -4.1000004)
+element = 4
+
+[node name="IconFlag2" parent="Section2/YellowRoom/Chunk" unique_id=481517346 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1276312, 0.41042417, 0, -0.41042417, 1.1276312, 0, 0, 0, 1.1999999, -5.5, -1.6, -4.1000004)
+element = 5
+
+[node name="IconFlag3" parent="Section2/YellowRoom/Chunk" unique_id=173516652 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.0219809, 0.37197062, 0.5071419, -0.41042417, 1.1276312, 0, -0.47655755, -0.17345275, 1.0875692, -0.5, -1.6, 3.8999996)
+element = 5
+
 [node name="RedRoom" type="Area3D" parent="Section2" unique_id=658107862 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 20)
 script = ExtResource("2_exmbl")
@@ -1072,6 +1120,22 @@ skeleton = NodePath("")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0.5, 0)
 dialog_id = "TUTORIAL_3"
 
+[node name="IconFlag" parent="Section2/RedRoom/Chunk" unique_id=470138955 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.159111, -0.31058288, 0, 0.31058288, 1.159111, 0, 0, 0, 1.1999999, 8.5, -1.6, -4.1000004)
+element = 7
+
+[node name="IconFlag2" parent="Section2/RedRoom/Chunk" unique_id=1013506058 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1954337, -0.10458687, 0, 0.10458687, 1.1954337, 0, 0, 0, 1.1999999, -0.5, -1.6, -4.1000004)
+element = 6
+
+[node name="IconFlag3" parent="Section2/RedRoom/Chunk" unique_id=1784032771 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1817694, 0.20837784, 0, -0.20837784, 1.1817694, 0, 0, 0, 1.1999999, -5.5, -1.6, -4.1000004)
+element = 5
+
+[node name="IconFlag4" parent="Section2/RedRoom/Chunk" unique_id=589731267 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.0234424, 0.18046057, -0.59999996, -0.20837785, 1.1817695, -1.668357e-08, 0.5908847, 0.10418896, 1.0392303, 4.799999, -1.6, 3.3999996)
+element = 3
+
 [node name="OrangeRoom" type="Area3D" parent="Section2" unique_id=921858125 node_paths=PackedStringArray("chunk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, -3)
 script = ExtResource("2_exmbl")
@@ -1152,6 +1216,21 @@ material = SubResource("ShaderMaterial_6ec7p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.05000007, -5)
 size = Vector3(1, 3.1000001, 1)
 material = SubResource("ShaderMaterial_6ec7p")
+
+[node name="IconFlag" parent="Section2/OrangeRoom/Chunk" unique_id=1650671077 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.159111, -0.31058288, 0, 0.31058288, 1.159111, 0, 0, 0, 1.1999999, 8.5, -1.6, -4.1000004)
+element = 0
+
+[node name="IconFlag2" parent="Section2/OrangeRoom/Chunk" unique_id=1795517909 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1954337, 0.1045869, 0, -0.1045869, 1.1954337, 0, 0, 0, 1.1999999, 2.5, -1.6, -4.0999985)
+
+[node name="IconFlag3" parent="Section2/OrangeRoom/Chunk" unique_id=1982015028 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.1276312, 0.41042417, 0, -0.41042417, 1.1276312, 0, 0, 0, 1.1999999, -5.5, -1.6, -4.0999985)
+element = 6
+
+[node name="IconFlag4" parent="Section2/OrangeRoom/Chunk" unique_id=242501770 instance=ExtResource("18_6l8lo")]
+transform = Transform3D(1.159111, 1.4393416e-08, -0.31058285, -1.4901161e-08, 1.2, 0, 0.31058288, 3.8567043e-09, 1.1591109, 3.5, -1.6, 4.5999985)
+element = 4
 
 [node name="Section3" type="Node3D" parent="." unique_id=749895819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 0)
