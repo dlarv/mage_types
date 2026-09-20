@@ -79,6 +79,7 @@ func _exit_tree() -> void:
 	Battle.transmutations_started.disconnect(_on_transmutation_phase.bind(true))
 	Battle.transmutations_finished.disconnect(_on_transmutation_phase.bind(false))
 
+
 func set_element(id: int, element: ElementalType) -> void:
 	$MeshManager.set_element(id, element)
 
@@ -174,10 +175,12 @@ func select() -> void:
 	transmutation_hint.deactivate()
 
 
-func add_status_effect(effect: StatusEffect) -> void: $PinManager.insert_pin(effect)
+func add_status_effect(effect: StatusEffect) -> void: 
+	$PinManager.insert_pin(effect)
 
 
-func remove_status_effects(effects: Array[StatusEffect]) -> void: $PinManager.remove_pins(effects)
+func remove_status_effects(effects: Array[StatusEffect]) -> void: 
+	$PinManager.remove_pins(effects)
 
 
 func _on_pin_selected(effect: StatusEffect) -> void: status_effect_icon_pressed.emit(effect)

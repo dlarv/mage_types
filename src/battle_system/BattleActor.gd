@@ -210,11 +210,14 @@ func _calc_blocking(dmg: int, allowBlocking: bool, data: ActorTurnData) -> int:
 
 	if blocking:
 		var blocked_dmg := dmg * blocking.get_strength()
-		dmg -= blocked_dmg
+		dmg -= int(round(blocked_dmg))
 
-		statuses.remove_blocking()
+		status_activated.emit(blocking, blocked_dmg)
+		remove_status_effect(blocking)
+
 		if data != null:
 			data.add_activated_effect(self, blocking.id, blocked_dmg)
+
 	return dmg
 
 
@@ -259,8 +262,8 @@ func add_status_effect(effect: StatusEffect) -> bool:
 
 func remove_status_effect(effect: StatusEffect) -> void:
 	MyLogger.append_battle_log("Actor(%s)'s StatusEffect(%s) was removed." % [ name, effect.name ])
+	status_effects_removed.emit([ effect ] as Array[StatusEffect])
 	statuses.remove([effect])
-	status_effects_removed.emit([ effect ])
 
 
 func has_status_effect(effect: StatusEffect) -> bool:
