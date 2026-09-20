@@ -161,5 +161,9 @@ func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void
 	team_display.animate_status_activation(actor, effect)
 
 
+func animate_transmutations(actor: BattleActor) -> void:
+	$BattleAnimator.animate_transmutations(actor)
+
+
 func play_intros() -> void:
 	team_display.play_intros()

@@ -26,16 +26,16 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_56uxo"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_domvp"]
 script = ExtResource("6_w22k8")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_dka5h"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_56uxo"]
 script = ExtResource("7_lufxd")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_0so62"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_dka5h"]
 script = ExtResource("8_67cow")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_s3ysh"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_0so62"]
 script = ExtResource("9_fi3yn")
 
 [node name="Battle" type="Node2D" unique_id=960793637 node_paths=PackedStringArray("_dialog_box")]
@@ -73,4 +73,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_domvp")
 script = ExtResource("5_ari74")
 data = ExtResource("6_domvp")
 skip_input_action = "skip_text"
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_56uxo"), SubResource("RichTextEffect_dka5h"), SubResource("RichTextEffect_0so62"), SubResource("RichTextEffect_s3ysh")])
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_domvp"), SubResource("RichTextEffect_56uxo"), SubResource("RichTextEffect_dka5h"), SubResource("RichTextEffect_0so62")])

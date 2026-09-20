@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmcakb8l8y1ao" path="res://src/battle_system/gui/battle_sprite/BattleSprite.gd" id="1_dntod"]
 [ext_resource type="PackedScene" uid="uid://bm5d4v64vlqg7" path="res://src/battle_system/gui/components/transmutation_hint.tscn" id="2_n1qvi"]
-[ext_resource type="PackedScene" path="res://src/battle_system/gui/battle_sprite/BattleActorController.tscn" id="3_pqrdp"]
+[ext_resource type="PackedScene" uid="uid://gpwqdrk32rvh" path="res://src/battle_system/gui/battle_sprite/BattleActorController.tscn" id="3_pqrdp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1sjx"]
 size = Vector3(2, 5.6, 2)
@@ -57,7 +57,7 @@ resource_local_to_scene = true
 radius = 2.0
 height = 4.0
 
-[node name="BattleSprite2" type="Node3D" unique_id=1135726583 node_paths=PackedStringArray("transmutation_hint")]
+[node name="BattleSprite" type="Node3D" unique_id=1135726583 node_paths=PackedStringArray("transmutation_hint")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_dntod")
 transmutation_hint = NodePath("TransmutationHint")
@@ -91,8 +91,9 @@ font_size = 64
 outline_size = 16
 
 [node name="BattleActorController" parent="." unique_id=216566120 instance=ExtResource("3_pqrdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="MeshManager" parent="BattleActorController" index="0" unique_id=881244844]
+[node name="MeshManager" parent="BattleActorController" index="1" unique_id=881244844]
 material = SubResource("ShaderMaterial_yav0q")
 
 [node name="DefaultMesh" parent="BattleActorController/MeshManager" index="0" unique_id=81261168]

@@ -1,9 +1,64 @@
-[gd_scene format=3 uid="uid://f4w1lnetk151"]
+[gd_scene format=3 uid="uid://gpwqdrk32rvh"]
 
 [ext_resource type="Script" uid="uid://w1rxy5631ej6" path="res://src/battle_system/gui/battle_sprite/BattleActorController.gd" id="1_bo3j3"]
 [ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/FresnelMeshManager.gd" id="2_mnslo"]
 [ext_resource type="PackedScene" uid="uid://bor2kywevh8c" path="res://src/battle_system/gui/battle_sprite/emitter_controller.tscn" id="3_go84y"]
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/battle_sprite/pin_manager.tscn" id="4_ettfe"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ho0o"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_prwnc"]
+animation = &"battle_entry"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtem4"]
+animation = &"battle_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sdiku"]
+animation = &"channeling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ugy7d"]
+animation = &"getting_hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_prwnc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wspvd"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcegq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jw31"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qcc80"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mukc0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s3frm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15s3s"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kb7wn"]
+states/Start/position = Vector2(258, 82)
+states/attack/node = SubResource("AnimationNodeAnimation_4ho0o")
+states/attack/position = Vector2(602, 10)
+states/battle_entry/node = SubResource("AnimationNodeAnimation_prwnc")
+states/battle_entry/position = Vector2(339, 10)
+states/battle_idle/node = SubResource("AnimationNodeAnimation_gtem4")
+states/battle_idle/position = Vector2(394, 104)
+states/channeling/node = SubResource("AnimationNodeAnimation_sdiku")
+states/channeling/position = Vector2(602, 100)
+states/getting_hit/node = SubResource("AnimationNodeAnimation_ugy7d")
+states/getting_hit/position = Vector2(394, 194)
+transitions = ["battle_idle", "getting_hit", SubResource("AnimationNodeStateMachineTransition_prwnc"), "getting_hit", "battle_idle", SubResource("AnimationNodeStateMachineTransition_wspvd"), "battle_idle", "channeling", SubResource("AnimationNodeStateMachineTransition_tcegq"), "channeling", "attack", SubResource("AnimationNodeStateMachineTransition_8jw31"), "attack", "battle_idle", SubResource("AnimationNodeStateMachineTransition_qcc80"), "Start", "battle_idle", SubResource("AnimationNodeStateMachineTransition_mukc0"), "battle_idle", "battle_entry", SubResource("AnimationNodeStateMachineTransition_s3frm"), "battle_entry", "battle_idle", SubResource("AnimationNodeStateMachineTransition_15s3s")]
+graph_offset = Vector2(172, -108)
 
 [sub_resource type="Shader" id="Shader_go84y"]
 resource_local_to_scene = true
@@ -278,63 +333,15 @@ _data = {
 &"getting_hit": SubResource("Animation_prwnc")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ho0o"]
-animation = &"attack"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_prwnc"]
-animation = &"battle_entry"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtem4"]
-animation = &"battle_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sdiku"]
-animation = &"channeling"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ugy7d"]
-animation = &"getting_hit"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_prwnc"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wspvd"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcegq"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jw31"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qcc80"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mukc0"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s3frm"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15s3s"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kb7wn"]
-states/Start/position = Vector2(258, 82)
-states/attack/node = SubResource("AnimationNodeAnimation_4ho0o")
-states/attack/position = Vector2(602, 10)
-states/battle_entry/node = SubResource("AnimationNodeAnimation_prwnc")
-states/battle_entry/position = Vector2(292, -15)
-states/battle_idle/node = SubResource("AnimationNodeAnimation_gtem4")
-states/battle_idle/position = Vector2(394, 104)
-states/channeling/node = SubResource("AnimationNodeAnimation_sdiku")
-states/channeling/position = Vector2(602, 100)
-states/getting_hit/node = SubResource("AnimationNodeAnimation_ugy7d")
-states/getting_hit/position = Vector2(394, 194)
-transitions = ["battle_idle", "getting_hit", SubResource("AnimationNodeStateMachineTransition_prwnc"), "getting_hit", "battle_idle", SubResource("AnimationNodeStateMachineTransition_wspvd"), "battle_idle", "channeling", SubResource("AnimationNodeStateMachineTransition_tcegq"), "channeling", "attack", SubResource("AnimationNodeStateMachineTransition_8jw31"), "attack", "battle_idle", SubResource("AnimationNodeStateMachineTransition_qcc80"), "Start", "battle_idle", SubResource("AnimationNodeStateMachineTransition_mukc0"), "battle_idle", "battle_entry", SubResource("AnimationNodeStateMachineTransition_s3frm"), "battle_entry", "battle_idle", SubResource("AnimationNodeStateMachineTransition_15s3s")]
-graph_offset = Vector2(-44, -94)
-
 [node name="BattleActorController" type="Node3D" unique_id=216566120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_bo3j3")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=170614063]
+root_node = NodePath("%DefaultMesh")
+tree_root = SubResource("AnimationNodeStateMachine_kb7wn")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../MeshManager/DefaultMesh/AnimationPlayer")
 
 [node name="MeshManager" type="Node3D" parent="." unique_id=881244844 node_paths=PackedStringArray("mesh")]
 script = ExtResource("2_mnslo")
@@ -348,11 +355,6 @@ mesh = SubResource("SphereMesh_2dvh2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MeshManager/DefaultMesh" unique_id=1017191831]
 libraries/ = SubResource("AnimationLibrary_k5ta0")
-
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=170614063]
-root_node = NodePath("%DefaultMesh")
-tree_root = SubResource("AnimationNodeStateMachine_kb7wn")
-anim_player = NodePath("../MeshManager/DefaultMesh/AnimationPlayer")
 
 [node name="EmitterController" parent="." unique_id=846933363 instance=ExtResource("3_go84y")]
 unique_name_in_owner = true

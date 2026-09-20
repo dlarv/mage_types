@@ -3,9 +3,6 @@ extends Node
 signal battle_ended(endState: EndState)
 signal selection_phase_started()
 signal action_phase_started()
-signal transmutations_started(target: BattleActor)
-signal transmutations_finished(target: BattleActor)
-
 
 enum EndState { WON, DEFEATED, FLED }
 enum BattlefieldStateParams { COMBATANTS, ALLIES, ENEMIES, TEAM_0, TEAM_1, ATTACKS }
@@ -14,9 +11,6 @@ const BattleGUI := preload("res://src/battle_system/gui/battle_gui.tscn")
 const RewardScreen := preload("res://src/battle_system/gui/battle_rewards/battle_reward_screen.tscn")
 const MessageFeed := preload("res://src/battle_system/gui/message_feed/MessageFeed.gd")
 
-@export var post_attack_delay := 0.1
-@export var inter_transmutation_delay := 0.8
-@export var post_transmutation_delay := 0.1
 @export var post_turn_delay := 1.0
 @export var end_battle_delay := 1.0
 @export var ai: OpponentController 
@@ -152,14 +146,11 @@ func _on_player_action_selection_finished(allyActions: Array[ActorTurnData]) -> 
 	await _dialog(false)
 
 	for turnData: ActorTurnData in actions:
-		if turnData.user.is_defeated:
-			continue
+		if turnData == null or turnData.user.is_defeated: continue
 
-		await _calculate_transmutation(turnData.user.element1, turnData.user.element2, turnData.user, 1, true)
+		_calculate_transmutation(turnData.user.element1, turnData.user.element2, turnData.user, 1, true)
+		await gui.animate_transmutations(turnData.user)
 
-		if turnData == null:
-			return
-			
 		var flinch := turnData.user.flinching
 		if flinch != null:
 			MyLogger.append_battle_log("%s flinched! They were unable to move." % turnData.user.name)
@@ -173,44 +164,26 @@ func _on_player_action_selection_finished(allyActions: Array[ActorTurnData]) -> 
 		
 		# Apply action effects.
 		var res := turnData.execute()
-		var msg: Array[String] = []#res.msg
 		var missed: bool = res.missed
 
 		message_feed.append_action_message(turnData)
-
-		await gui.animate_action(turnData, missed)
-
-		# Check if battle should end.
-		if await _check_if_battle_ended(): return
 
 		# Calculate target transmutations.
 		if not missed:
 			for target in turnData.targets:
 				if target.is_defeated: continue
-				await _calculate_transmutations(target, turnData.action)
+				_calculate_transmutations(target, turnData.action)
 
-		# Check if battle should end.
-		# This will trigger if final actor died to phobia.
-		if await _check_if_battle_ended(): return
-
-		# Calculate user transmutations.
-		# If the user targeted themselves 
-		# (e.g. Target = Allies || Self || Ally).
-		# This only applies to melee attacks.
+		# Calculate user transmutations if they used a melee attack
 		if not missed and turnData.targets.find(turnData.user) == -1 \
 				and turnData.action is Attack \
 				and (turnData.action).attack_range == Attack.AttackRange.MELEE:
-			await _calculate_transmutations(turnData.user, turnData.action, true) 
+			_calculate_transmutations(turnData.user, turnData.action, true) 
 
-		# Check if battle should end.
-		# This will trigger if final actor died to phobia.
-		if await _check_if_battle_ended(): return
+		await gui.animate_action(turnData, missed)
 
 		# Resolve user's status effects.
-		resolve_end_of_turn(turnData)
-
-		# Check if battle should end due to poison/etc.
-		if await _check_if_battle_ended(): return
+		if await resolve_end_of_turn(turnData): return
 
 		# Pause before processing next turn.
 		await get_tree().create_timer(post_turn_delay).timeout
@@ -227,26 +200,27 @@ func _calculate_transmutations(target: BattleActor, action: _BattleAction, isMel
 		gui.animate_status_activation(target, target.stasis)
 		return
 
-	# await get_tree().create_timer(inter_transmutation_delay).timeout
-	transmutations_started.emit(target)
+	# DLARV: Deprecated
+	# # await get_tree().create_timer(inter_transmutation_delay).timeout
+	# transmutations_started.emit(target)
 
  	# Calculate secondary + attack 
-	await _calculate_transmutation(target.element2, action.element, target, 1, false, isMelee)
+	_calculate_transmutation(target.element2, action.element, target, 1, false, isMelee)
 
 	# Return early if target died due to phobia.
 	if target.is_defeated: return
 
 	# Calculate internal transmutation.
-	await _calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
+	_calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
 
 	if target.is_defeated: return
 
 	# Calculate 2nd internal transmutation.
-	await _calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
+	_calculate_transmutation(target.element1, target.element2, target, 1, true, isMelee)
 
-	await get_tree().create_timer(post_transmutation_delay).timeout
-
-	transmutations_finished.emit(target)
+	# DLARV: Deprecated
+	# await get_tree().create_timer(post_transmutation_delay).timeout
+	# transmutations_finished.emit(target)
 
 
 func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: BattleActor, id: int, isInternal:=false, isMelee:=false) -> bool:
@@ -265,7 +239,8 @@ func _calculate_transmutation(e1: ElementalType, e2: ElementalType, target: Batt
 
 	target.set_element(id, newType)
 
-	await get_tree().create_timer(inter_transmutation_delay).timeout
+	# DLARV: Deprecated
+	# await get_tree().create_timer(inter_transmutation_delay).timeout
 
 	return true
 
@@ -295,7 +270,10 @@ func _check_if_battle_ended() -> bool:
 	return false
 
 
-func resolve_end_of_turn(turnData: ActorTurnData) -> void:
+func resolve_end_of_turn(turnData: ActorTurnData) -> bool:
+	# This will trigger if final actor died to phobia.
+	if await _check_if_battle_ended(): return true
+
 	var a := allies if turnData.team_index == 0 else enemies
 	var o := enemies if turnData.team_index == 0 else allies
 	turnData.resolve_end_of_turn(a, o)
@@ -304,6 +282,10 @@ func resolve_end_of_turn(turnData: ActorTurnData) -> void:
 	message_feed.newline()
 
 	turnData.user.turn_ended.emit()
+
+	# Check if battle should end due to poison/etc.
+	if await _check_if_battle_ended(): return true
+	return false
 
 
 func _resolve_end_of_battle(pause:=true) -> void:
