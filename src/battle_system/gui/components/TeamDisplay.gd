@@ -80,19 +80,39 @@ func setup(allies: Array[BattleActor], enemies: Array[BattleActor]) -> void:
 
 
 func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamDisplayActor:
+	var display := _init_battle_actor_display(actor)
+	var sprite := _init_battle_sprite(actor, display, isAlly, insertIndex)
+
+	if isAlly:
+		ally_container.add_child(display)
+		$AllyParent.add_child(sprite)
+		sprite.position.x += $AllyParent.get_child_count() * ALLY_SPRITE_SEPARATION
+	else:
+		opponent_container.add_child(display)
+		$OpponentParent.add_child(sprite)
+		sprite.position.x += $OpponentParent.get_child_count() * OPPONENT_SPRITE_SEPARATION
+
+	var disp := TeamDisplayActor.new(sprite, display, isAlly)
+	actors[actor] = disp
+	disp.hovered.connect(_on_actor_hovered)
+
+	battle_sprite_added.emit(actor, sprite)
+	return disp 
+
+
+func _init_battle_sprite(actor: BattleActor, display: _BattleActorDisplay, isAlly: bool, insertIndex: int) -> _BattleSprite:
 	var sprite: _BattleSprite 
 	if actor.sprite_path == null:
 		sprite = DefaultBattleSprite.instantiate()
 	else:
 		sprite = actor.sprite_path.instantiate()
 
-	sprite.setup(actor, not isAlly)
+	sprite.setup(actor, display, not isAlly)
 	if insertIndex == -1:
 		sprites[sprites.find(null)] = sprite
 	else:
 		sprites[insertIndex] = sprite
 
-	actor.element_changed.connect(sprite.set_element)
 	sprite.status_effect_icon_pressed.connect(func(effect: StatusEffect) -> void: 
 		status_effect_icon_pressed.emit(effect)
 	)
@@ -108,27 +128,15 @@ func add_display(actor: BattleActor, isAlly: bool, insertIndex: int=-1) -> TeamD
 			d.disable_selection()
 			if not ProjectSettings.get_setting("custom/battle/enable_transmutation_hint"): continue
 			d.disable_transmutation_hint())
+	return sprite
 
+
+func _init_battle_actor_display(actor: BattleActor) -> _BattleActorDisplay:
 	var display := BattleActorDisplay.instantiate()
 	display.setup(actor)
 	displays.append(display)
-	
-	if isAlly:
-		ally_container.add_child(display)
-		$AllyParent.add_child(sprite)
-		sprite.position.x += $AllyParent.get_child_count() * ALLY_SPRITE_SEPARATION
-	else:
-		opponent_container.add_child(display)
-		$OpponentParent.add_child(sprite)
-		sprite.position.x += $OpponentParent.get_child_count() * OPPONENT_SPRITE_SEPARATION
 		# sprite.rotation_degrees.y = ENEMY_MODEL_ROTATION
-
-	var disp := TeamDisplayActor.new(sprite, display, isAlly)
-	actors[actor] = disp
-	disp.hovered.connect(_on_actor_hovered)
-
-	battle_sprite_added.emit(actor, sprite)
-	return disp 
+	return display
 
 
 func get_display(actor: Variant) -> _BattleActorDisplay:
@@ -244,7 +252,7 @@ func animate_status_activation(actor: BattleActor, effect: StatusEffect) -> void
 
 func play_intros() -> void:
 	for sprite in sprites:
-		sprite.play_intro()
+		sprite.get_controller().play_intro()
 
 
 class TeamDisplayActor:

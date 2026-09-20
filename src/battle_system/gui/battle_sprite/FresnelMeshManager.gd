@@ -68,7 +68,6 @@ func fade_aura(fadeIn: bool) -> void:
 		%DefaultMesh/AnimationPlayer.play("fade_out")
 
 
-
 func set_defeated() -> void: 
 	await get_tree().create_timer(flicker_delay).timeout
 	%DefaultMesh/AnimationPlayer.play("flicker")

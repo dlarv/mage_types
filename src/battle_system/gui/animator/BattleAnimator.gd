@@ -3,22 +3,25 @@ extends Node3D
 signal finished()
 
 const BattleSprite := preload("res://src/battle_system/gui/battle_sprite/BattleSprite.gd")
+const Controller := preload("res://src/battle_system/gui/battle_sprite/BattleActorController.gd")
 const BLOCK := preload("res://data/battle_system/status_effects/blocking_effect.tres")
+const DURATION := 3.0
 
 var _sprites: Dictionary[BattleActor, BattleSprite] = {}
 
 
 func animate(turnData: ActorTurnData, missed: bool) -> void:
 	# Play user.channeling & channeling particle effect
-	const DURATION := 3.0
-	var userSprite := _sprites[turnData.user]
+	var userSprite :=_sprites[turnData.user]
+	var userController := userSprite.get_controller()
+
 	var affinity: float = turnData.action.calculate_affinity(turnData.user)
-	userSprite.start_channeling_particles(DURATION, affinity)
+	userController.start_channeling_particles(DURATION, affinity)
 
 	userSprite.set_action_text(turnData.action)
 
-	userSprite.play_animation("channeling")
-	await userSprite.channeling_finished
+	userController.play_animation("channeling")
+	await userController.channeling_finished
 
 	# Play user.attack, attack animation, then targets.getting_hit
 	var userPosition: Vector2 = userSprite.get_target_position()
@@ -33,14 +36,14 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 
 	# Play animation for each target getting hit
 	for actor in turnData.targets:
-		_sprites[actor].play_animation("getting_hit")
+		_sprites[actor].get_controller().play_animation("getting_hit")
 
 	get_tree().call_group("hp_display", "animate_hp")
 
 	# Animate any defeated characters
-	var last: BattleSprite
+	var last: Controller
 	for actor in turnData.get_defeated():
-		last = _sprites[actor]
+		last = _sprites[actor].get_controller()
 		last.play_animation("defeated")
 
 	#if last and last.has_animation("defeated"):
