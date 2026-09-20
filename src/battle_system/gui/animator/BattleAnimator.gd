@@ -35,6 +35,8 @@ func animate(turnData: ActorTurnData, missed: bool) -> void:
 	# Calculate melee transmutations
 	await animate_transmutations(userController)
 
+	await animate_end_of_turn(userController)
+
 	finished.emit()
 
 
@@ -67,7 +69,13 @@ func _animate_defeats(actors: Array[BattleActor]) -> void:
 func _animate_impacts(targets: Array[BattleActor]) -> void: 
 	for actor in targets:
 		var controller := _sprites[actor].get_controller()
-		controller.play_animation("getting_hit")
+		await controller.play_animation("getting_hit")
 		await animate_transmutations(controller)
 
 	get_tree().call_group("hp_display", "animate_hp")
+
+
+func animate_end_of_turn(controller: Controller) -> void:
+	controller.animate_status_activation(StatusEffect.Effects.POISON)
+	controller.animate_status_activation(StatusEffect.Effects.HEALING)
+	await get_tree().create_timer(0.5).timeout

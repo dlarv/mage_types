@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://dn43soynbu2kq" path="res://src/battle_system/battle_actions/effects/Damage.gd" id="6_lc27v"]
 [ext_resource type="Script" uid="uid://cxk4u03wsacm8" path="res://src/battle_system/battle_actions/effect_slots/EffectSlot.gd" id="7_xn2us"]
 [ext_resource type="Script" uid="uid://c140c4j4qwln7" path="res://src/battle_system/battle_actions/Attack.gd" id="8_5u12k"]
-[ext_resource type="Resource" uid="uid://dd7wk01w5ccs6" path="res://data/items/equipment/training_wheels.tres" id="9_djiaw"]
 [ext_resource type="PackedScene" uid="uid://dobu1g7y1216b" path="res://data/story/bosses/tutorial_bosses/adonis_battle_sprite.tscn" id="11_6l48p"]
 
 [sub_resource type="Resource" id="Resource_bvuqs"]
@@ -55,5 +54,4 @@ stat_manager = SubResource("Resource_advf4")
 _element1 = 0
 _element2 = 0
 attacks = Array[ExtResource("2_0kd5o")]([ExtResource("2_f77mh"), ExtResource("3_qh7aw"), SubResource("Resource_y6l1e")])
-equipment = ExtResource("9_djiaw")
 sprite_path = ExtResource("11_6l48p")
