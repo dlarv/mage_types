@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 signal helper_text_requested(msg: String, duration: float)
 signal channeling_finished
@@ -54,9 +54,8 @@ func setup(actor: BattleActor, display: BattleActorDisplay, isEnemy: bool) -> vo
 	actor.element_changed.connect(_append_transmutation)
 
 	if isEnemy and flip_model_if_enemy:
+		rotation_degrees.y += ENEMY_MODEL_ROTATION
 		$PinManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
-		$PinManager/PhobiaCrown.rotation_degrees.y += ENEMY_MODEL_ROTATION
-		$MeshManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
 
 
 func _exit_tree() -> void:
