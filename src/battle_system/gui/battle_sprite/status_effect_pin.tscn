@@ -42,6 +42,9 @@ tooltip_strings = Array[String](["[color=808080ff]Blank[/color]-Phobic"])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00747681, 0.65496, 0)
 shape = SubResource("BoxShape3D_34x07")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1803107224]
+unique_name_in_owner = true
+
 [connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]

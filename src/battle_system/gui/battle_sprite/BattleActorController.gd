@@ -8,6 +8,8 @@ const BattleActorDisplay := preload("res://src/battle_system/gui/components/Batt
 
 const EQUIPMENT_TEXT_DURATION := 0.8
 const ENEMY_MODEL_ROTATION := 180.0
+const GETTING_HIT_SFX: AudioStream = null
+const CHANNELING_SFX: AudioStream = null
 
 @export var flip_model_if_enemy := false
 @export var pre_transmutation_delay := 0.4
@@ -32,6 +34,7 @@ func setup(actor: BattleActor, display: BattleActorDisplay, isEnemy: bool) -> vo
 	$AnimationTree.active = true
 	_animation_state = $AnimationTree["parameters/playback"]
 	_animation_state.state_finished.connect(_on_state_finished)
+	_animation_state.state_started.connect(_on_state_started)
 
 	if not actor.equipment_activated.is_connected(_on_equipment_activated):
 		actor.equipment_activated.connect(_on_equipment_activated)
@@ -93,10 +96,10 @@ func _on_state_finished(stateName: String) -> void:
 			channeling_finished.emit()
 		"defeated":
 			defeated_finished.emit()
-		# "getting_hit":
-		# 	for status in _new_status_queue:
-		# 		$PinManager.insert_pin(status)
-		# 	_new_status_queue = []
+
+
+func _on_state_started(stateName: String) -> void:
+	pass
 
 
 func has_animation(n: String) -> bool:

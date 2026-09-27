@@ -90,8 +90,8 @@ Evenutally, I'd like this to be more of a halo, outlining the combatants
 
 - [x] Calculate turn order based on actor's speed and action priority
 	- [x] Display speed ranking 
-	- [ ] Speed ranking/turn order accounts for priority
-	- [ ] Speed ranking is incorrect
+	- [x] Speed ranking/turn order accounts for priority
+	- [x] Speed ranking is incorrect
 	
 - [ ] Make controls less obtrusive
 	- [x] Attack, Item, and Run buttons should be small and off to the side
@@ -100,6 +100,11 @@ Evenutally, I'd like this to be more of a halo, outlining the combatants
 		- [x] Player can click on a BattleActor model to display info about them
 		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
 			- [ ] Hovering status pin should outline that pin
+			
+- [ ] Sound effects subtly communicate info to player #v0_8
+	- [x] Status pins dynamically change their SFX based on selected status effect
+	- [ ] BattleActors play SFX for `getting_hit` and `channeling` animations
+		- These will be handled by `AnimationTree`. This may seem like it'll add extra work, but I already have to adjust most animations in Godot to sync `StatusPin` movements with character's.
 
 **Battle Talk**
 `EnemyActor`s have a list of `BattleTalk(Resource)`, which are used to display dialog while a battle is happening.
@@ -894,7 +899,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Disappears after joining your party
 - [x] Rec room decor #v0_7
 	- [x] Layout & planning
-	- [ ] Fix treadmill
+	- [ ] Fix treadmill 
 - [x] Miniboss #v0_7
 	- [x] Animate boss fading away when defeated
 	- [x] Fix rig weights
