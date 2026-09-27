@@ -101,9 +101,9 @@ Evenutally, I'd like this to be more of a halo, outlining the combatants
 		- [x] Hovering over status pin should tell you what it is and how many turns remaining it has
 			- [ ] Hovering status pin should outline that pin
 			
-- [ ] Sound effects subtly communicate info to player #v0_8
+- [x] Sound effects subtly communicate info to player #v0_8
 	- [x] Status pins dynamically change their SFX based on selected status effect
-	- [ ] BattleActors play SFX for `getting_hit` and `channeling` animations
+	- [x] BattleActors play SFX for `getting_hit` and `channeling` animations
 		- These will be handled by `AnimationTree`. This may seem like it'll add extra work, but I already have to adjust most animations in Godot to sync `StatusPin` movements with character's.
 
 **Battle Talk**
