@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://w1rxy5631ej6" path="res://src/battle_system/gui/battle_sprite/BattleActorController.gd" id="1_bo3j3"]
 [ext_resource type="Script" uid="uid://dhm1dkv4io2ok" path="res://src/battle_system/gui/battle_sprite/FresnelMeshManager.gd" id="2_mnslo"]
+[ext_resource type="AudioStream" uid="uid://c3yvolg7qu6tu" path="res://assets/audio/battle_system/channeling.ogg" id="3_2dvh2"]
 [ext_resource type="PackedScene" uid="uid://bor2kywevh8c" path="res://src/battle_system/gui/battle_sprite/emitter_controller.tscn" id="3_go84y"]
 [ext_resource type="PackedScene" uid="uid://b1d7new22f1kk" path="res://src/battle_system/gui/battle_sprite/pin_manager.tscn" id="4_ettfe"]
+[ext_resource type="AudioStream" uid="uid://ddpbpr0tmfrxj" path="res://assets/audio/battle_system/smack.ogg" id="4_k5ta0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ho0o"]
 animation = &"attack"
@@ -260,6 +262,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-2, 0, 0), Vector3(2, 0, 0), Vector3(-2, 0, 0), Vector3(0, 0, 0)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_2dvh2")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tcegq"]
 resource_name = "fade_out"
@@ -320,6 +337,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 3), Vector3(0, 0, 0)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_k5ta0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5ta0"]
 _data = {
@@ -346,6 +378,7 @@ anim_player = NodePath("../MeshManager/DefaultMesh/AnimationPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=451281327]
 unique_name_in_owner = true
+volume_db = -10.0
 
 [node name="MeshManager" type="Node3D" parent="." unique_id=881244844 node_paths=PackedStringArray("mesh")]
 script = ExtResource("2_mnslo")
