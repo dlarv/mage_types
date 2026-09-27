@@ -97,7 +97,7 @@ func append_battle_log(msg: Variant) -> void:
 	msg = msg.strip_edges()
 	if msg.is_empty(): return
 
-	msg = msg.replace("[lb]", "[").replace("[rb]", "]")
+	msg = msg.replace("[lb]", "{").replace("[rb]", "}")
 	msg = _regex.sub(msg, "", true)
 
 	# Turn headings

@@ -44,7 +44,7 @@ func calculate_damage(attack: float, defense: float, effectiveness: float, data:
 	var power: float = get_strength(data.get_vars())# / 4.0# + (strength * float(user.level) / 10.0)
 	var dmg := power * (attack/defense) * effectiveness
 	var rand := randf_range(.8, 1)
-	MyLogger.append_battle_log("Dmg(%f) = Pwr(%f) * [Att(%f)/Def(%f)] * Affinity(%f) * Rand(%f)" 
+	MyLogger.append_battle_log("Dmg(%f) = Pwr(%f) * [lb]Att(%f)/Def(%f)[rb] * Affinity(%f) * Rand(%f)" 
 			% [dmg, power, attack, defense, effectiveness, rand])
 	return int(dmg * rand)
 
