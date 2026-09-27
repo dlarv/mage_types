@@ -56,7 +56,7 @@ func setup(actor: BattleActor, display: BattleActorDisplay, isEnemy: bool) -> vo
 	if isEnemy and flip_model_if_enemy:
 		$PinManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
 		$PinManager/PhobiaCrown.rotation_degrees.y += ENEMY_MODEL_ROTATION
-		$MeshManager.mesh.rotation_degrees.y += ENEMY_MODEL_ROTATION
+		$MeshManager.rotation_degrees.y += ENEMY_MODEL_ROTATION
 
 
 func _exit_tree() -> void:

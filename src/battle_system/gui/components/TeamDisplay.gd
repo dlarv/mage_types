@@ -12,7 +12,6 @@ const _BattleActorDisplay := preload("res://src/battle_system/gui/components/Bat
 const BattleActorDisplay := preload("res://src/battle_system/gui/components/battle_actor_display.tscn")
 const ALLY_SPRITE_SEPARATION := 5.5
 const OPPONENT_SPRITE_SEPARATION := 2.5
-const ENEMY_MODEL_ROTATION := 180.0
 
 @export var ally_container: Container
 @export var opponent_container: Container
@@ -135,7 +134,6 @@ func _init_battle_actor_display(actor: BattleActor) -> _BattleActorDisplay:
 	var display := BattleActorDisplay.instantiate()
 	display.setup(actor)
 	displays.append(display)
-		# sprite.rotation_degrees.y = ENEMY_MODEL_ROTATION
 	return display
 
 
