@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bihss5o636fyv"]
 
-[ext_resource type="PackedScene" uid="uid://bf5xeo1sqpim4" path="res://assets/3d/objects/status_pin.blend" id="1_7dhbf"]
+[ext_resource type="PackedScene" uid="uid://w0274anm4rgo" path="res://assets/3d/objects/status_pin.blend" id="1_7dhbf"]
 [ext_resource type="Script" uid="uid://cvh014ij6lugl" path="res://src/battle_system/gui/battle_sprite/StatusEffectPin.gd" id="1_vqfle"]
 [ext_resource type="Script" uid="uid://coqwnstoj346c" path="res://addons/tooltips_pro/scripts/tooltip_trigger.gd" id="3_c0yfk"]
 [ext_resource type="Script" uid="uid://lcf8uedn57am" path="res://addons/tooltips_pro/scripts/tooltip_settings.gd" id="4_1gyes"]
@@ -25,11 +25,11 @@ script = ExtResource("1_vqfle")
 [node name="status_pin" parent="." unique_id=126523187 instance=ExtResource("1_7dhbf")]
 unique_name_in_owner = true
 
-[node name="Cube" parent="status_pin" index="0" unique_id=1588737404]
+[node name="Cube" parent="status_pin" index="0" unique_id=2137479781]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.60121346, 0)
 surface_material_override/1 = SubResource("StandardMaterial3D_1gyes")
 
-[node name="PhobiaHead" parent="status_pin/Cube" index="0" unique_id=1387481429]
+[node name="PhobiaHead" parent="status_pin/Cube" index="0" unique_id=1066507899]
 surface_material_override/0 = SubResource("StandardMaterial3D_1gyes")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=640255748]
@@ -44,6 +44,7 @@ shape = SubResource("BoxShape3D_34x07")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1803107224]
 unique_name_in_owner = true
+volume_db = -10.0
 
 [connection signal="input_event" from="Area3D" to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]

@@ -7,6 +7,7 @@ signal pin_unhovered(pin: Node3D)
 
 const StatusEffectManager := preload("res://src/battle_system/StatusEffectManager.gd")
 const Effect := StatusEffectManager.StatusEffects
+const INSERTION_PIN := preload("res://assets/audio/battle_system/pin_insert.ogg")
 
 @export var status_effect: Effect = Effect.PHOBIC:
 	set(val):
@@ -43,8 +44,6 @@ var _effect_name: String:
 var _is_wiggling := false
 
 var _activation_sfx: AudioStream
-var _insertion_sfx: AudioStream
-
 
 func _enter_tree() -> void:
 	element = map_status_to_element(status_effect, name)
@@ -89,7 +88,7 @@ func insert(effect: StatusEffect) -> void:
 	show()
 	self._effect = effect
 	%status_pin/AnimationPlayer.play("insert")
-	_play_stream(_insertion_sfx)
+	_play_stream(INSERTION_PIN)
 
 
 func set_duration(duration: int) -> void:
@@ -138,6 +137,14 @@ static func map_status_to_element(status: StatusEffect.Effects, name: String="")
 	return ElementManager.Blank
 
 
-static func map_status_to_audio_stream(status: StatusEffect.Effects, name: String="") -> AudioStream:
+static func map_status_to_audio_stream(status: StatusEffect.Effects) -> AudioStream:
+	const SE := StatusEffect.Effects
+	const PATH := "res://assets/audio/battle_system"
+	match status:
+		SE.STASIS: return load("%s/%s" % [PATH, "stasis.ogg"])
+		SE.POISON: return load("%s/%s" % [PATH, "poison.ogg"])
+		SE.BLOCK: return load("%s/%s" % [PATH, "block.ogg"])
+		SE.HEALING: return load("%s/%s" % [PATH, "healing.ogg"])
+		SE.FLINCH: return load("%s/%s" % [PATH, "flinch.ogg"])
+		SE.PHOBIC: return load("%s/%s" % [PATH, "phobia.ogg"])
 	return null
-
