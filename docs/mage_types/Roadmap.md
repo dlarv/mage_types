@@ -42,6 +42,7 @@
 - [x] Opening Sunken Lamp Puzzle chest doesn't actually add Magenta Key to inventory
 - [ ] Water in beach2 getting loaded when player is inside the caves
 - [ ] Monitor can alter colors on screen
+- [ ] Alice extending back arm during attack animation
 - [x] Bugfix: Cannot rechallenge miniboss after losing #v0_7
 - [x] Bugfix: Cannot view BattleSprite text or see pins #v0_7
 ## Optimizations
@@ -251,7 +252,7 @@ At the moment, there is no cost associated with using an attack, so there's noth
 
 **Attack Ideas**
 - Taunt/Inverse taunt (like entangled status from Slay the Spire)
-### Aesthetics
+### Aesthetics and Animations
 See also: [[more_dynamic_battles]]
 - [x] Allow attacks to play unique animations.
 - [x] Battle models animations backend support
@@ -264,10 +265,18 @@ See also: [[more_dynamic_battles]]
 - [x] Animation for status effects proc
 - [ ] Battle music #v0_8
 - [ ] Battle sound effects #v0_8
+	- [ ] Inflicted
+	- [ ] Activating
+		- [ ] Block
+		- [ ] Poison
+		- [ ] Flinch
+		- [ ] Phobia
+		- [ ] Healing
+		- [ ] Stasis
 - [ ] Setting to control speed and turn off animations
 - [ ] Use buttons to skip battle animations
-- [ ] Attack Animation refactor #v0_8
-	- [ ] Make effects more 3D
+- [ ] Attack Animation refactor #tbd
+	- [ ] Make effects use 3D particles
 	- [ ] Renamed class and references
 	- [ ] Animation should be selected via enum
 	- [ ] Animation should be integrated with BattleActor animations
@@ -459,7 +468,11 @@ C: diamond/rhombus (strength, stability)
 	- [x] Getting hit (Got erased for some reason, need to readd) 
 	- [x] Battle idle
 	- [x] Entry animation
-- [ ] Player Audio FX #v0_8 
+- [ ] Player Audio FX #v0_8
+	- [ ] Dash wooshing
+	- [ ] Dragging
+	- [ ] Jumping (subtle)
+	- [ ] Heavy fall crunch
 - [x] Textures
 	- [x] Compare NextPassTransparency with Swapping diffuse maps
 		- Swapping diffuse maps looks far better than the next pass method
@@ -570,11 +583,12 @@ I think idea \#2 would fit better with the currently designed systems.
 	- [ ] There should be a visual indicator of which objects can be targeted by which spells.
 	- [ ] These visual indicators shouldn't interfere with each other, if a single object can be targetable by multiple spells.
 
-**MagiClay Visuals**
+**MagiClay Visuals and Audio**
 - [x] MagiClay Aesthetics #v0_7
 	 - [x] Visual indicator that can be used to distinguish MagiClay Element (besides color)
 	 - [x] Bugfix: Geyser doesn't seem to like the triplanar texture, so I might need to bake it
 	 - [x] Added option to turn off fancy MagiClay Effects
+- [ ] Transmutation SFX #v0_8
 	 
 MagiClay has 2 associated shaders:
 - `MagiClay.gdshader`: This restricts the color to globally defined colors (see [[color_palettes]]).
@@ -615,6 +629,14 @@ These effects are as follows:
 >[!important] Delays and Pressure plates
 >Delays and pressure plates do not work together well. When the player drops a block on the pressure plate, it temporarily exits the tree. When it reenters, it does not reactivate the delay.
 
+- [ ] Fix wire design #v0_7b
+	- [ ] Conspiracy board red thread
+	- [ ] Reroute existing wire
+	- [ ] Add rope physics to wire #hard 
+- [ ] PuzzleBlock redesigns #v0_7b
+	- [ ] Chest
+	- [ ] Laser bridge
+	- [ ] Gate
 ### Wild Enemies 
 **Wild enemies should spawn inside defined areas of the map.**
 - [ ] Wild enemies should have overworld models.
@@ -834,26 +856,45 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [x] Local lighting
 	- [x] Wallpaper
 	- [x] Make carpet triplanar
-	- [ ] Decor (paintings)
+- [ ] Directions sign (Hotel lobby) #v0_7b
+- [ ] Decor paintings #v0_7b
+	- [ ] Paradolia
+	- [ ] Random colors
+	- [ ] Icons
+	- [ ] Eyes
 - [ ] Hotel room decor 
 - [ ] Hallway audio #v0_8
+	- [ ] Footsteps on carpet
+	- [ ] Hall ambience
 - [ ] Add models for empty puzzle blocks
 - [ ] Replace placeholder door blockers/etc with models and diagetic explanations.
 	- [x] Add colliders and "Wet floor signs" to block access to Purple and Pools
 	- [ ] Add out-of-order elevator to final pillar in ziggurat room
 	- [ ] On doors player cannot enter, add "Do not disturb" signage
-- [ ] Create door models and animations
+- [ ] Doors
+	- [x] Door Model
+	- [ ] Opening animation
 	- [ ] Delay/animation before returning control to player? This would be necessary if rotating player model to face away from door
 ### Beach
-- [ ] Wave ambience #v0_8
+- [ ] Beach SFX #v0_8
+	- [ ] Wave ambience 
+	- [ ] Cave ambience
+	- [ ] Lightpost buzzing
+	- [ ] Footsteps on sand
+	- [ ] Footsteps on rock (asphalt)
+- [ ] Water remodel #v0_7b #hard
+	- [ ] Water should look like slab
+	- [ ] Stopmotion style effect when player falls in
 - [x] Beach 1 Env Asset #v0_7
 - [ ] Beach 1 backtracking puzzle
 	- [x] Placed puzzleblocks
 	- [ ] Reward: ???
+- [ ] Lightpost material still placeholder #v0_7b #bugfix #asset_3d
 - [ ] Beach 2
-	- [ ] South Beach Island
+	- [ ] South Beach Island #vtbd
 		- [x] Designed parkour Challenge
 		- [ ]  Place NPC/reward
+	- [ ] Hotel Facade model #v0_7b #hard
 	- [x] Env asset
 	- [x] Decor assets
 	- [x] Lamppost island puzzle
@@ -872,7 +913,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [x] Make section of beach below sandcastle flatter
 	
 [[Map#Beach|Area Breakdown: Beach]]	
-### Transmutation Tutorial
+### Transmutation Tutorial (Beach Caves)
 - [ ] Transmutation tutorial #v0_7
 	- [x] Layout
 	- [x] Design puzzles
@@ -885,18 +926,20 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 		- [x] Add explanation for how laser bridges work
 		- [ ] Add hints to the side rooms
 	- [x] Add pressure plate demo to cave entrance
-	- [ ] Add official env models
+- [ ] Add official beach cave env model #v0_7b #hard
 [[Map#Transmutation Tutorial|Area Breakdown: Transmutation Tutorial]]
 ### Rec Room
-- [x] Bartender #v0_7
+- [ ] Bartender #v0_7
 	- [x] Rewrite dialogue
-- [ ] Adonis Enclave #v0_7
+	- [ ] Reanimate idle #v0_7b
+- [ ] Adonis Enclave #v0_7b
 	- [ ] Differentiate models
 	- [ ] Overworld animations
-- [ ] Add Alice to bar #v0_7
-	- [ ] Idle animation
+- [ ] Add Alice to bar #v0_7b
+	- [ ] Idle animation 
 	- [ ] Looks up when player walks by
 	- [ ] Disappears after joining your party
+	- [ ] Player can s/w Alice to get extra lore/etc #tbd
 - [x] Rec room decor #v0_7
 	- [x] Layout & planning
 	- [ ] Fix treadmill 
@@ -943,6 +986,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Assets
 - [ ] Add gate blocking CB from Lobby
 ### Motel
+- [ ] Motel exterior facade #tbd
 - [ ] Motel Environment
 	- [ ] Layout
 	- [ ] Model
