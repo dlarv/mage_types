@@ -265,14 +265,16 @@ See also: [[more_dynamic_battles]]
 - [x] Animation for status effects proc
 - [ ] Battle music #v0_8
 - [ ] Battle sound effects #v0_8
-	- [ ] Inflicted
+	- [x] Inflicted
 	- [ ] Activating
-		- [ ] Block
-		- [ ] Poison
-		- [ ] Flinch
-		- [ ] Phobia
-		- [ ] Healing
+		- [x] Block
+		- [x] Poison
+		- [x] Flinch
+		- [x] Phobia
+		- [x] Healing
 		- [ ] Stasis
+	- [x] Channeling
+	- [x] Getting Hit
 - [ ] Setting to control speed and turn off animations
 - [ ] Use buttons to skip battle animations
 - [ ] Attack Animation refactor #tbd

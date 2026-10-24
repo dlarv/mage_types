@@ -5,11 +5,11 @@ signal channeling_finished
 signal defeated_finished
 
 const BattleActorDisplay := preload("res://src/battle_system/gui/components/BattleActorDisplay.gd")
+const GettingHitSFX: AudioStream = preload("res://assets/audio/battle_system/smack.ogg")
+const ChannelingSFX: AudioStream = preload("res://assets/audio/battle_system/channeling.ogg")
 
 const EQUIPMENT_TEXT_DURATION := 0.8
 const ENEMY_MODEL_ROTATION := 180.0
-const GETTING_HIT_SFX: AudioStream = null
-const CHANNELING_SFX: AudioStream = null
 
 @export var flip_model_if_enemy := false
 @export var pre_transmutation_delay := 0.4
@@ -80,13 +80,18 @@ func play_animation(name: String) -> void:
 			await get_tree().create_timer(post_status_insertion_delay).timeout
 			return
 
+		%AudioStreamPlayer.stream = GettingHitSFX
+		%AudioStreamPlayer.play()
 		for status in _new_status_queue:
 			$PinManager.insert_pin(status)
 		_new_status_queue = []
 		await get_tree().create_timer(post_status_insertion_delay).timeout
 
+	elif name == "channeling":
+		%AudioStreamPlayer.stream = ChannelingSFX
+		%AudioStreamPlayer.play()
+
 	_animation_state.travel(name)
-	# _animation_state.state_finished
 
 
 func _on_state_finished(stateName: String) -> void:

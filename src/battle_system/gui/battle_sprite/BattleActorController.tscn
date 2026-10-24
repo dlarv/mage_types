@@ -264,7 +264,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "audio"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("%AudioStreamPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -339,7 +339,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "audio"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("%AudioStreamPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
