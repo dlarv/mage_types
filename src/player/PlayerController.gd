@@ -4,6 +4,8 @@ enum MoveDirection { FORWARD, RIGHT, LEFT, BACKWARD }
 
 signal entered_god_mode
 
+const DashSFX := preload("res://assets/audio/player/dash.ogg")
+const DragSFX := preload("res://assets/audio/player/dragging.ogg")
 const MAX_FREEFALL_DIST := -40.0
 const HEAVY_FALL_THRESHOLD := -21.0
 
@@ -100,6 +102,9 @@ func _physics_process(delta: float) -> void:
 	if draggable != null:
 		_move_drag_mode(delta)
 		return
+	elif %AudioStreamPlayer.stream == DragSFX:
+		%AudioStreamPlayer.stream = null
+		%AudioStreamPlayer.stop()
 
 	if is_on_floor():
 		if _is_heavy_fall:
@@ -145,6 +150,8 @@ func _physics_process(delta: float) -> void:
 		dash_tween = create_tween()
 		dash_tween.tween_interval(0.1)
 		dash_tween.tween_property(self, "dash_velocity", 0, 0.1).set_ease(Tween.EASE_OUT)
+		%AudioStreamPlayer.stream = DashSFX
+		%AudioStreamPlayer.play()
 
 	# Jumping, while accounting for coyote time.
 	elif _can_jump and dash_velocity <= dash_speed / 3:
@@ -242,6 +249,8 @@ func _move_drag_mode(delta: float) -> void:
 		_drag_mode_direction = MoveDirection.RIGHT
 	elif relDir == Vector3.LEFT:
 		_drag_mode_direction = MoveDirection.LEFT
+	else:
+		%AudioStreamPlayer.stop()
 	
 	baseVelocity *= dragSpeed
 	velocity += baseVelocity
@@ -257,6 +266,10 @@ func _move_drag_mode(delta: float) -> void:
 		global_position.y = yPos
 
 	else:
+		if %AudioStreamPlayer.stream != DragSFX:
+			%AudioStreamPlayer.stream = DragSFX
+		if not %AudioStreamPlayer.playing:
+			%AudioStreamPlayer.play()
 		move_and_slide()
 
 

@@ -278,10 +278,12 @@ See also: [[more_dynamic_battles]]
 - [ ] Setting to control speed and turn off animations
 - [ ] Use buttons to skip battle animations
 - [ ] Attack Animation refactor #tbd
-	- [ ] Make effects use 3D particles
 	- [ ] Renamed class and references
 	- [ ] Animation should be selected via enum
 	- [ ] Animation should be integrated with BattleActor animations
+- [ ] Battleground redesign #v0_7b 
+	- [ ] Attack Animations use 3D particles
+	- [ ] Add decor to ground/env
 ### Misc Mechanics
 - [x] Remove expired status conditions and stat changes.
 - [x] Apply transmutations and related effects when necessary.
@@ -472,7 +474,9 @@ C: diamond/rhombus (strength, stability)
 	- [x] Entry animation
 - [ ] Player Audio FX #v0_8
 	- [ ] Dash wooshing
+		- [ ] Lower decibels
 	- [ ] Dragging
+		- [ ] Stop playing when player stops moving
 	- [ ] Jumping (subtle)
 	- [ ] Heavy fall crunch
 - [x] Textures
@@ -590,7 +594,7 @@ I think idea \#2 would fit better with the currently designed systems.
 	 - [x] Visual indicator that can be used to distinguish MagiClay Element (besides color)
 	 - [x] Bugfix: Geyser doesn't seem to like the triplanar texture, so I might need to bake it
 	 - [x] Added option to turn off fancy MagiClay Effects
-- [ ] Transmutation SFX #v0_8
+- [ ] MagiClay Transmutation SFX #v0_8
 	 
 MagiClay has 2 associated shaders:
 - `MagiClay.gdshader`: This restricts the color to globally defined colors (see [[color_palettes]]).
