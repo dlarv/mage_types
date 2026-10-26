@@ -473,10 +473,10 @@ C: diamond/rhombus (strength, stability)
 	- [x] Battle idle
 	- [x] Entry animation
 - [ ] Player Audio FX #v0_8
-	- [ ] Dash wooshing
-		- [ ] Lower decibels
-	- [ ] Dragging
-		- [ ] Stop playing when player stops moving
+	- [x] Dash wooshing
+		- [x] Lower decibels
+	- [x] Dragging
+		- [x] Stop playing when player stops moving
 	- [ ] Jumping (subtle)
 	- [ ] Heavy fall crunch
 - [x] Textures
@@ -643,6 +643,12 @@ These effects are as follows:
 	- [ ] Chest
 	- [ ] Laser bridge
 	- [ ] Gate
+- [ ] Puzzle Block Audio #v0_8
+	- [ ] Whooshing to geyser
+	- [ ] Scraping when gate moves
+	- [ ] Clicking of pressure plate
+	- [ ] Chest opening
+	
 ### Wild Enemies 
 **Wild enemies should spawn inside defined areas of the map.**
 - [ ] Wild enemies should have overworld models.
@@ -883,11 +889,11 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Delay/animation before returning control to player? This would be necessary if rotating player model to face away from door
 ### Beach
 - [ ] Beach SFX #v0_8
-	- [ ] Wave ambience 
+	- [x] Wave ambience 
 	- [ ] Cave ambience
-	- [ ] Lightpost buzzing
-	- [ ] Footsteps on sand
-	- [ ] Footsteps on rock (asphalt)
+	- [x] Lightpost buzzing
+	- [x] Footsteps on sand
+	- [x] Footsteps on rock (asphalt)
 - [ ] Water remodel #v0_7b #hard
 	- [ ] Water should look like slab
 	- [ ] Stopmotion style effect when player falls in
