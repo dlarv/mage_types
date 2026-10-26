@@ -617,6 +617,9 @@ volume_db = -35.0
 script = ExtResource("17_hrerp")
 underfoot_material = "WOOD"
 
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=720767799]
+current = true
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="FlushJumpBufferTimer" to="." method="_on_flush_jump_buffer_timer_timeout"]
 

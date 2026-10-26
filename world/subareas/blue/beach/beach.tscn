@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bg4yxe4cvdepb" path="res://src/overworld/puzzle_blocks/pressure_plate.tscn" id="6_m3tiu"]
 [ext_resource type="PackedScene" uid="uid://cd4m2jl8p13ds" path="res://src/overworld/puzzle_blocks/geyser.tscn" id="7_ji4u4"]
 [ext_resource type="PackedScene" uid="uid://c58vw11neqnxf" path="res://assets/3d/objects/blue/beach/lamppost.tscn" id="8_1otd5"]
+[ext_resource type="AudioStream" uid="uid://vv2r84lvrx6l" path="res://assets/audio/blue/audacity/ocean_waves.mp3" id="8_5foko"]
 [ext_resource type="Material" uid="uid://plen0swcshlr" path="res://assets/placeholder_grid_texture/placeholder_grid.tres" id="8_5jrit"]
 [ext_resource type="PackedScene" uid="uid://chppunbrjtubr" path="res://assets/3d/objects/blue/beach/sunken_pillar.tscn" id="9_0xv0c"]
 [ext_resource type="Script" uid="uid://01qkk2h0lo8m" path="res://world/subareas/blue/beach/SunkenLampPuzzle.gd" id="9_sgeyw"]
@@ -153,6 +154,13 @@ permanent = true
 [node name="PressurePlate" parent="BeachChunk/Chunk" unique_id=347881199 instance=ExtResource("6_m3tiu")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40.397354, 3, 24)
 _element = 3
+
+[node name="OceanAudioPlayer" type="AudioStreamPlayer3D" parent="BeachChunk/Chunk" unique_id=1357566493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, 63)
+stream = ExtResource("8_5foko")
+volume_db = -10.0
+unit_size = 5.0
+autoplay = true
 
 [node name="BeachCaves" parent="." unique_id=1901693184 instance=ExtResource("2_1otd5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342, 0, 126.336)
@@ -326,7 +334,7 @@ transform = Transform3D(0.9069927, -0.42114383, 0.0013327387, 0.4208918, 0.90633
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/StreetLamps/FallenLamppost" index="1" unique_id=1025481499]
 transform = Transform3D(0.90699273, -0.00133273, -0.4211439, 0.42089182, 0.03760586, 0.9063308, 0.0146295875, -0.9992917, 0.03466917, -6.231983, 5.8623505, 0.08900833)
-light_energy = 21.014814
+light_energy = 27.399008
 spot_range = 31.0
 
 [node name="StaticBody3D" parent="HotelExteriorChunk/Chunk/StreetLamps/FallenLamppost" index="2" unique_id=1216273974]
@@ -358,7 +366,7 @@ bright_light_range = Vector2(25, 30)
 transform = Transform3D(0.99999994, 0, -2.9802322e-08, 1.4901161e-08, 1, 0, 2.9802322e-08, 0, 1, 0.049743652, -0.19363117, -0.005689621)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SunkenLamps/SunkenLamppost3" index="1" unique_id=1025481499]
-light_energy = 25.56387
+light_energy = 29.123577
 spot_range = 18.0
 
 [node name="SunkenLampPuzzle" type="Node3D" parent="HotelExteriorChunk/Chunk" unique_id=698796298 node_paths=PackedStringArray("reward_node")]
@@ -467,7 +475,7 @@ dim_light_range = Vector2(10, 13)
 bright_light_range = Vector2(18, 20)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/NWParkour/SunkenLamppostEnd" index="1" unique_id=1025481499]
-light_energy = 18.080496
+light_energy = 19.927525
 spot_range = 11.0
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="HotelExteriorChunk/Chunk/NWParkour" unique_id=1486127577]
@@ -588,7 +596,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar2/Lamppost" index="1" unique_id=1025481499]
-light_energy = 28.431084
+light_energy = 27.963272
 spot_range = 18.0
 
 [node name="SunkenPillar3" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=369697352]
@@ -604,7 +612,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar3/Lamppost" index="1" unique_id=1025481499]
-light_energy = 28.179384
+light_energy = 26.078856
 spot_range = 18.0
 
 [node name="SunkenPillar4" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=1162547764]
@@ -620,7 +628,7 @@ dim_light_range = Vector2(8, 9)
 bright_light_range = Vector2(9, 10)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar4/Lamppost" index="1" unique_id=1025481499]
-light_energy = 9.11567
+light_energy = 9.681116
 spot_range = 18.0
 
 [node name="SunkenPillar5" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=98371441]
@@ -637,7 +645,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar5/Lamppost" index="1" unique_id=1025481499]
-light_energy = 27.031805
+light_energy = 29.857552
 spot_range = 18.0
 
 [node name="SunkenPillar6" type="CSGBox3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D" unique_id=396883549]
@@ -654,7 +662,7 @@ dim_light_range = Vector2(20, 25)
 bright_light_range = Vector2(25, 30)
 
 [node name="SpotLight3D" parent="HotelExteriorChunk/Chunk/SWParkour/CSGCombiner3D/SunkenPillar6/Lamppost" index="1" unique_id=1025481499]
-light_energy = 27.607864
+light_energy = 27.68768
 spot_range = 18.0
 
 [node name="SWIsland" type="Node3D" parent="HotelExteriorChunk/Chunk" unique_id=968371229]
@@ -708,6 +716,34 @@ transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.965
 text = "I don't have an actual fix for this yet :,("
 font_size = 50
 autowrap_mode = 2
+
+[node name="OceanAudioPlayer" type="AudioStreamPlayer3D" parent="HotelExteriorChunk/Chunk" unique_id=1563507167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, -1, 109)
+stream = ExtResource("8_5foko")
+volume_db = -10.0
+unit_size = 3.0
+autoplay = true
+
+[node name="OceanAudioPlayer2" type="AudioStreamPlayer3D" parent="HotelExteriorChunk/Chunk" unique_id=234559324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 105.1)
+stream = ExtResource("8_5foko")
+volume_db = -10.0
+unit_size = 5.0
+autoplay = true
+
+[node name="OceanAudioPlayer3" type="AudioStreamPlayer3D" parent="HotelExteriorChunk/Chunk" unique_id=988229161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89, -1, 23.099998)
+stream = ExtResource("8_5foko")
+volume_db = -10.0
+unit_size = 5.0
+autoplay = true
+
+[node name="OceanAudioPlayer4" type="AudioStreamPlayer3D" parent="HotelExteriorChunk/Chunk" unique_id=361576489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69, -1, 138.1)
+stream = ExtResource("8_5foko")
+volume_db = -10.0
+unit_size = 5.0
+autoplay = true
 
 [node name="Sandcastle" parent="." unique_id=1000982128 instance=ExtResource("18_dpbhw")]
 transform = Transform3D(1.0000001, 1.0477379e-09, 0, 1.1632437e-09, 0.9961948, -0.08715574, 0, 0.087155744, 0.9961947, 61.156425, -9.5391655, 88.78258)

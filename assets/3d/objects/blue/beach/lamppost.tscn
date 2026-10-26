@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dlenp5wltweqt" path="res://assets/3d/objects/blue/beach/raw/Lamppost.glb" id="1_p77c2"]
 [ext_resource type="Script" uid="uid://cun7ijhchhxxs" path="res://src/overworld/Lamp.gd" id="2_1n23l"]
+[ext_resource type="AudioStream" uid="uid://csq2su1bc25qi" path="res://assets/audio/blue/buzzing_streetlight.mp3" id="3_jwut2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1n23l"]
 albedo_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
@@ -30,8 +31,6 @@ radius = 0.4
 [node name="Lamppost" unique_id=913564205 node_paths=PackedStringArray("light") instance=ExtResource("1_p77c2")]
 script = ExtResource("2_1n23l")
 light = NodePath("SpotLight3D")
-energy = null
-color = Color(1, 1, 1, 1)
 is_flickering = true
 
 [node name="Lamppost" parent="." index="0" unique_id=174464689]
@@ -40,6 +39,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_jwut2")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="1" unique_id=1025481499]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.9369397, 7.240395, -0.0003881082)
+light_energy = 0.0
 spot_range = 9.0
 spot_angle = 24.074528
 
@@ -60,3 +60,11 @@ shape = SubResource("BoxShape3D_1n23l")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3" unique_id=1164363308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9439754, 7.6239257, 2.9802322e-08)
 shape = SubResource("SphereShape3D_1n23l")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3" unique_id=892142318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5.5, 0)
+stream = ExtResource("3_jwut2")
+volume_db = -10.0
+unit_size = 0.8
+autoplay = true
+bus = &"Background"
