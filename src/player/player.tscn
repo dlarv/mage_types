@@ -610,6 +610,7 @@ _special_material = SubResource("ShaderMaterial_jcdrv")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1189848052]
 unique_name_in_owner = true
 stream = ExtResource("16_6bm8s")
+volume_db = -5.0
 
 [node name="PlayerFootstepPlayer" type="AudioStreamPlayer" parent="." unique_id=557678660]
 unique_name_in_owner = true

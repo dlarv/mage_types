@@ -73,7 +73,9 @@ extends AudioStreamPlayer
 var _player: Node3D
 var _is_walking: bool:
 	get:
-		return (abs(_player.velocity.x) > 0 or abs(_player.velocity.z) > 0) and _player.is_on_floor()
+		return (abs(_player.velocity.x) > 0 or abs(_player.velocity.z) > 0) \
+				and _player.is_on_floor() \
+				and _player.draggable == null
 var _cycle_timer: Timer
 
 
