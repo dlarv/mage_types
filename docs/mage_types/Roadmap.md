@@ -876,7 +876,7 @@ StoryTriggers are triggered by having an Npc node with `Npc.auto_trigger = true`
 	- [ ] Eyes
 - [ ] Hotel room decor 
 - [ ] Hallway audio #v0_8
-	- [ ] Footsteps on carpet
+	- [x] Footsteps on carpet
 	- [ ] Hall ambience
 - [ ] Add models for empty puzzle blocks
 - [ ] Replace placeholder door blockers/etc with models and diagetic explanations.
