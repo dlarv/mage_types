@@ -85,6 +85,7 @@ func save_log() -> void:
 
 func append_log(msg: Variant) -> void:
 	if Engine.is_editor_hint(): return
+	elif not ProjectSettings.get_setting("custom/general/print_logs"): return
 	if msg is Array:
 		logs.append_array(msg)
 	else:
